@@ -16,8 +16,8 @@
       <h1 class="leader align-center">Does this change improve the code?</h1>
     </header>
     <section class="main hbox space-between">
-      <article v-html="unifiedDiff" v-if="diffStyle == 'unified'"></article>
-      <article v-html="sideBySideDiff" v-else></article>
+      <article v-html="unifiedDiff" v-show="diffStyle == 'unified'" id="unified"></article>
+      <article v-html="sideBySideDiff" v-show="diffStyle != 'unified'" id="sideBySide"></article>
     </section>
     <footer>
       <div class="grid">
@@ -54,6 +54,7 @@
 
 <script>
   import "diff2html/dist/diff2html.min.js";
+  import "diff2html/dist/diff2html-ui.min.js";
   import "diff2html/dist/diff2html.min.css";
 
   export default {
@@ -89,11 +90,16 @@ index cdbe1c3..413b2af 100644
  }
 \\ No newline at end of file`;
 
-      this.unifiedDiff = Diff2Html.getPrettyHtml(code);
-      this.sideBySideDiff = Diff2Html.getPrettyHtml(code, {
-          outputFormat: 'side-by-side'
-        }
-      );
+      const diff = new Diff2HtmlUI({diff: code});
+
+      diff.draw('#unified', {});
+      diff.draw('#sideBySide', {outputFormat: 'side-by-side', matching: 'lines'});
+
+//      this.unifiedDiff = Diff2Html.getPrettyHtml(code);
+//      this.sideBySideDiff = Diff2Html.getPrettyHtml(code, {
+//          outputFormat: 'side-by-side'
+//        }
+//      );
     }
   }
 </script>
