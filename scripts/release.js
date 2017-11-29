@@ -1,4 +1,3 @@
-var version = require('../package.json').version;
 var chalk = require('chalk');
 const ora = require('ora');
 var fs = require('fs-extra');
@@ -8,7 +7,7 @@ var exec = require('child_process').exec;
 var gulp = require('gulp');
 var crlfToLf = require('gulp-line-ending-corrector');
 
-var releasePackageName = 'code-assessor-' + version + '.tar.gz';
+var releasePackageName = 'code-assessor.tar.gz';
 
 console.log('');
 console.log("Preparing release package.");
