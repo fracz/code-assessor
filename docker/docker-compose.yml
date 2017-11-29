@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  site:
+    container_name: code-fracz-pl
+    build: .
+    restart: unless-stopped
+    networks: [proxy]
+    environment:
+      VIRTUAL_HOST: code.fracz.pl,www.code.fracz.pl
+      LETSENCRYPT_HOST: code.fracz.pl,www.code.fracz.pl
+      LETSENCRYPT_EMAIL: fraczwojciech@gmail.com
+    expose: [80]
+    volumes:
+      - ../:/var/www/html:z
+      - ./apache-conf:/etc/apache2/sites-available:z
+
+networks:
+  proxy:
+    external:
+      name: webproxy
