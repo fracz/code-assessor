@@ -68,32 +68,96 @@
     },
     mounted() {
 
-      const code = `diff --git a/cdbe1c3e7d97dd042cd09570e1506efdd8dad469 b/413b2af26c23b742b0e7afce7674b7e180efb748
-index cdbe1c3..413b2af 100644
---- a/cdbe1c3e7d97dd042cd09570e1506efdd8dad469.java
-+++ b/cdbe1c3e7d97dd042cd09570e1506efdd8dad469.java
-@@ -1,13 +1,13 @@
--private List<Intent> buildInitialIntents(@NonNull Context context, @NonNull PackageManager pm, @NonNull Intent resolveIntent, @NonNull Intent emailIntent, @NonNull List<Uri> attachments) {
-+@NonNull
-+private List<Intent> buildInitialIntents(@NonNull PackageManager pm, @NonNull Intent resolveIntent, @NonNull Intent emailIntent) {
-     final List<ResolveInfo> resolveInfoList = pm.queryIntentActivities(resolveIntent, PackageManager.MATCH_DEFAULT_ONLY);
-     final List<Intent> initialIntents = new ArrayList<Intent>();
-     for (ResolveInfo info : resolveInfoList) {
-         final Intent packageSpecificIntent = new Intent(emailIntent);
-         packageSpecificIntent.setPackage(info.activityInfo.packageName);
--        grantPermission(context, emailIntent, info.activityInfo.packageName, attachments);
-         if (packageSpecificIntent.resolveActivity(pm) != null) {
-             initialIntents.add(packageSpecificIntent);
+      const code = `diff --git a/6e8401e88ece0481cf9102c0aec6304ec5194b85.java b/5214a611412dd27bf32ba827cf47d0f0d2db239e.java
+index 6e8401e..5214a61 100644
+--- a/6e8401e88ece0481cf9102c0aec6304ec5194b85
++++ b/5214a611412dd27bf32ba827cf47d0f0d2db239e
+@@ -1,66 +1,49 @@
+ @Override
+ public void send(@NonNull Context context, @NonNull CrashReportData errorContent) throws ReportSenderException {
+     final PackageManager pm = context.getPackageManager();
+     final String subject = context.getPackageName() + " Crash Report";
+     final String body = buildBody(errorContent);
+     final InstanceCreator instanceCreator = new InstanceCreator();
+     final ArrayList<Uri> attachments = instanceCreator.create(config.attachmentUriProvider(), new DefaultAttachmentProvider()).getAttachments(context, config);
+     final Intent resolveIntent = new Intent(android.content.Intent.ACTION_SENDTO);
+     resolveIntent.setData(Uri.fromParts("mailto", config.mailTo(), null));
+     resolveIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+     resolveIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
+     resolveIntent.putExtra(android.content.Intent.EXTRA_TEXT, body);
+     final ComponentName componentName = resolveIntent.resolveActivity(pm);
+     if (componentName != null) {
+         if (attachments.size() == 0) {
+             context.startActivity(resolveIntent);
+         } else {
+             String packageName = componentName.getPackageName();
+             final Intent emailIntent = new Intent(attachments.size() == 1 ? Intent.ACTION_SEND : Intent.ACTION_SEND_MULTIPLE);
+             emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { config.mailTo() });
+             emailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+             emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+             emailIntent.putExtra(Intent.EXTRA_TEXT, body);
+             emailIntent.setType("message/rfc822");
+             emailIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, attachments);
+             if (packageName.equals("android")) {
+-                final List<ResolveInfo> resolveInfoList = pm.queryIntentActivities(resolveIntent, PackageManager.MATCH_DEFAULT_ONLY);
+-                final List<Intent> initialIntents = new ArrayList<Intent>();
+-                for (ResolveInfo info : resolveInfoList) {
+-                    final Intent packageSpecificIntent = new Intent(emailIntent);
+-                    packageSpecificIntent.setPackage(info.activityInfo.packageName);
+-                    if (packageSpecificIntent.resolveActivity(pm) != null) {
+-                        initialIntents.add(packageSpecificIntent);
+-                    }
+-                }
++                // multiple activities support the intent and no default is set
++                final List<Intent> initialIntents = buildInitialIntents(pm, resolveIntent, emailIntent);
+                 if (initialIntents.size() > 1) {
+-                    final Intent chooser = new Intent(Intent.ACTION_CHOOSER);
+-                    chooser.putExtra(Intent.EXTRA_INTENT, initialIntents.remove(0));
+-                    chooser.putExtra(Intent.EXTRA_INITIAL_INTENTS, initialIntents.toArray(new Intent[initialIntents.size()]));
+-                    chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+-                    context.startActivity(chooser);
++                    showChooser(context, initialIntents);
+                     return;
+                 } else if (initialIntents.size() == 1) {
++                    // only one of them supports attachments, use that one
+                     packageName = initialIntents.get(0).getPackage();
+                 }
+-                emailIntent.setPackage(packageName);
+-                if (emailIntent.resolveActivity(pm) != null) {
+-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+-                        emailIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+-                    } else {
+-                        // flags do not work on extras prior to android 5, so we have to grant read permissions manually
+-                        for (Uri uri : attachments) {
+-                            context.grantUriPermission(packageName, uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+-                        }
+-                    }
+-                    context.startActivity(emailIntent);
+-                } else {
+-                    ACRA.log.w(LOG_TAG, "No email client supporting attachments found. Attachments will be ignored");
+-                    context.startActivity(resolveIntent);
+-                }
++            }
++            emailIntent.setPackage(packageName);
++            if (emailIntent.resolveActivity(pm) != null) {
++                grantPermission(context, emailIntent, packageName, attachments);
++                context.startActivity(emailIntent);
++            } else {
++                ACRA.log.w(LOG_TAG, "No email client supporting attachments found. Attachments will be ignored");
++                context.startActivity(resolveIntent);
+             }
          }
+     } else {
+         throw new ReportSenderException("No email client found");
      }
-     return initialIntents;
  }
-\\ No newline at end of file`;
+\\ No newline at end of file
+`;
 
       const diff = new Diff2HtmlUI({diff: code});
 
       diff.draw('#unified', {});
-      diff.draw('#sideBySide', {inputFormat: 'json', outputFormat: 'side-by-side', matching: 'lines'});
+      diff.draw('#sideBySide', {inputFormat: 'json', outputFormat: 'side-by-side', matching: 'lines', synchronisedScroll: true});
       diff.highlightCode('#unified');
       diff.highlightCode('#sideBySide');
 
@@ -233,6 +297,9 @@ index cdbe1c3..413b2af 100644
     -moz-flex: 1;
     -ms-flex: 1;
     flex: 1;
+
+    position: relative;
+    overflow-y: auto;
   }
 
   article {
