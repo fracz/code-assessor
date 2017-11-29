@@ -53,9 +53,9 @@
 </template>
 
 <script>
+  import "diff2html/dist/diff2html.min.css";
   import "diff2html/dist/diff2html.min.js";
   import "diff2html/dist/diff2html-ui.min.js";
-  import "diff2html/dist/diff2html.min.css";
 
   export default {
     name: 'HelloWorld',
@@ -70,8 +70,8 @@
 
       const code = `diff --git a/cdbe1c3e7d97dd042cd09570e1506efdd8dad469 b/413b2af26c23b742b0e7afce7674b7e180efb748
 index cdbe1c3..413b2af 100644
---- a/cdbe1c3e7d97dd042cd09570e1506efdd8dad469
-+++ b/413b2af26c23b742b0e7afce7674b7e180efb748
+--- a/cdbe1c3e7d97dd042cd09570e1506efdd8dad469.java
++++ b/cdbe1c3e7d97dd042cd09570e1506efdd8dad469.java
 @@ -1,13 +1,13 @@
 -private List<Intent> buildInitialIntents(@NonNull Context context, @NonNull PackageManager pm, @NonNull Intent resolveIntent, @NonNull Intent emailIntent, @NonNull List<Uri> attachments) {
 +@NonNull
@@ -93,7 +93,9 @@ index cdbe1c3..413b2af 100644
       const diff = new Diff2HtmlUI({diff: code});
 
       diff.draw('#unified', {});
-      diff.draw('#sideBySide', {outputFormat: 'side-by-side', matching: 'lines'});
+      diff.draw('#sideBySide', {inputFormat: 'json', outputFormat: 'side-by-side', matching: 'lines'});
+      diff.highlightCode('#unified');
+      diff.highlightCode('#sideBySide');
 
 //      this.unifiedDiff = Diff2Html.getPrettyHtml(code);
 //      this.sideBySideDiff = Diff2Html.getPrettyHtml(code, {
