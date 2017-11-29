@@ -2,14 +2,14 @@
 
 namespace codeassessor\controllers;
 
-use Assert\Assertion;
-use suplascripts\models\HasSuplaApi;
-use suplascripts\models\scene\SceneExecutor;
-use suplascripts\models\supla\SuplaApiException;
+use codeassessor\app\Application;
 
 class CodeController extends BaseController {
-
-    public function getRandomAction($params) {
-        return $this->response($this->getApi()->getChannelWithState($params['id']));
+    public function getRandomAction() {
+        $id = rand(1, 4);
+        return $this->response([
+            'id' => $id,
+            'diff' => file_get_contents(Application::VAR_PATH . "/diffs/0000$id.txt"),
+        ]);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace codeassessor\models;
+namespace codeassessor\model;
 
 use codeassessor\app\Application;
 

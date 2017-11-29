@@ -21,11 +21,12 @@ class Application extends App {
             throw new \BadMethodCallException('Application can be instantiated only once. Use getInstance() instead.');
         }
         self::$instance = $this;
-        if (!$config) {
-            $config = require __DIR__ . '/../settings.php';
-        }
-        parent::__construct(['settings' => $config]);
+//        if (!$config) {
+//            $config = require __DIR__ . '/../settings.php';
+//        }
+        parent::__construct(['settings' => ['displayErrorDetails' => true]]);
         $this->configureServices();
+        $this->enableCors();
     }
 
     private function configureServices() {
@@ -54,5 +55,19 @@ class Application extends App {
     public static function version(): string {
         $version = @file_get_contents(self::VAR_PATH . '/system/version');
         return $version ?: 'UNKNOWN';
+    }
+
+    private function enableCors() {
+        $this->options('/{routes:.+}', function ($request, $response, $args) {
+            return $response;
+        });
+
+        $this->add(function ($req, $res, $next) {
+            $response = $next($req, $res);
+            return $response
+                ->withHeader('Access-Control-Allow-Origin', 'http://localhost:8080')
+                ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+                ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        });
     }
 }

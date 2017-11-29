@@ -6,6 +6,10 @@ import 'metro-dist/css/metro-icons.min.css'
 // import 'metro-dist/js/metro.min.js'
 import App from './App'
 import router from './router'
+import VueResource from 'vue-resource';
+
+Vue.use(VueResource);
+Vue.http.options.root = process.env.NODE_ENV == 'production' ? '/api' : 'http://code.dev/api';
 
 Vue.config.productionTip = false
 

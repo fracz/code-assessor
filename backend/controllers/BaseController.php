@@ -4,7 +4,7 @@ namespace codeassessor\controllers;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
-use codeassessor\models\HasApp;
+use codeassessor\model\HasApp;
 use Throwable;
 
 abstract class BaseController {

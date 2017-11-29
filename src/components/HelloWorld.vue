@@ -23,21 +23,21 @@
       <div class="grid">
         <div class="row cells3">
           <div class="cell align-center">
-            <button class="button large-button danger">
+            <button class="button large-button danger" @click="fetch()">
               <span class="mif-thumbs-down"></span>
               No, it makes the code worse
               <small>(&darr;)</small>
             </button>
           </div>
           <div class="cell align-center">
-            <button class="button large-button warning">
+            <button class="button large-button warning" @click="fetch()">
               <span class="mif-question"></span>
               This change does not change the quality of the code
               <small>(Esc)</small>
             </button>
           </div>
           <div class="cell align-center">
-            <button class="button large-button success">
+            <button class="button large-button success" @click="fetch()">
               <span class="mif-thumbs-up"></span>
               Yes, the code is better after this change!
               <small>(&uarr;)</small>
@@ -68,40 +68,30 @@
     },
     mounted() {
 
-      const code = `diff --git a/cdbe1c3e7d97dd042cd09570e1506efdd8dad469 b/413b2af26c23b742b0e7afce7674b7e180efb748
-index cdbe1c3..413b2af 100644
---- a/cdbe1c3e7d97dd042cd09570e1506efdd8dad469
-+++ b/413b2af26c23b742b0e7afce7674b7e180efb748
-@@ -1,13 +1,13 @@
--private List<Intent> buildInitialIntents(@NonNull Context context, @NonNull PackageManager pm, @NonNull Intent resolveIntent, @NonNull Intent emailIntent, @NonNull List<Uri> attachments) {
-+@NonNull
-+private List<Intent> buildInitialIntents(@NonNull PackageManager pm, @NonNull Intent resolveIntent, @NonNull Intent emailIntent) {
-     final List<ResolveInfo> resolveInfoList = pm.queryIntentActivities(resolveIntent, PackageManager.MATCH_DEFAULT_ONLY);
-     final List<Intent> initialIntents = new ArrayList<Intent>();
-     for (ResolveInfo info : resolveInfoList) {
-         final Intent packageSpecificIntent = new Intent(emailIntent);
-         packageSpecificIntent.setPackage(info.activityInfo.packageName);
--        grantPermission(context, emailIntent, info.activityInfo.packageName, attachments);
-         if (packageSpecificIntent.resolveActivity(pm) != null) {
-             initialIntents.add(packageSpecificIntent);
-         }
-     }
-     return initialIntents;
- }
-\\ No newline at end of file`;
 
-      const diff = new Diff2HtmlUI({diff: code});
-
-      diff.draw('#unified', {});
-      diff.draw('#sideBySide', {inputFormat: 'json', outputFormat: 'side-by-side', matching: 'lines', synchronisedScroll: true});
-      diff.highlightCode('#unified');
-      diff.highlightCode('#sideBySide');
-
+      this.fetch();
 //      this.unifiedDiff = Diff2Html.getPrettyHtml(code);
 //      this.sideBySideDiff = Diff2Html.getPrettyHtml(code, {
 //          outputFormat: 'side-by-side'
 //        }
 //      );
+    },
+    methods: {
+      fetch() {
+        this.$http.get('code/random').then(({body}) => {
+          const diff = new Diff2HtmlUI({diff: body.diff});
+
+          diff.draw('#unified', {});
+          diff.draw('#sideBySide', {
+            inputFormat: 'json',
+            outputFormat: 'side-by-side',
+            matching: 'lines',
+            synchronisedScroll: true
+          });
+          diff.highlightCode('#unified');
+          diff.highlightCode('#sideBySide');
+        });
+      }
     }
   }
 </script>

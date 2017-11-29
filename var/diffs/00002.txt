@@ -1,0 +1,34 @@
+diff --git a/a8d288bd71c53f9ce4ca3e9a91a07af89d5b9924 b/cfd9efc2a1b59b46559625b158c3836fcb26e7dd
+index a8d288b..cfd9efc 100644
+--- a/a8d288bd71c53f9ce4ca3e9a91a07af89d5b9924
++++ b/cfd9efc2a1b59b46559625b158c3836fcb26e7dd
+@@ -1,26 +1,26 @@
+ /**
+  * Completes a file. After a file is completed, it cannot be written to.
+  * <p>
+- * This operation requires users to have {@link FileSystemAction#WRITE} permission on the path.
++ * This operation requires users to have {@link Mode.Bits#WRITE} permission on the path.
+  *
+  * @param path the file path to complete
+  * @param options the method options
+  * @throws BlockInfoException if a block information exception is encountered
+  * @throws FileDoesNotExistException if the file does not exist
+  * @throws InvalidPathException if an invalid path is encountered
+  * @throws InvalidFileSizeException if an invalid file size is encountered
+  * @throws FileAlreadyCompletedException if the file is already completed
+  * @throws AccessControlException if permission checking fails
+  */
+ public void completeFile(AlluxioURI path, CompleteFileOptions options) throws BlockInfoException, FileDoesNotExistException, InvalidPathException, InvalidFileSizeException, FileAlreadyCompletedException, AccessControlException {
+     MasterContext.getMasterSource().incCompleteFileOps(1);
+     long flushCounter = AsyncJournalWriter.INVALID_FLUSH_COUNTER;
+     try (LockedInodePath inodePath = mInodeTree.lockFullInodePath(path, InodeTree.LockMode.WRITE)) {
+-        mPermissionChecker.checkPermission(FileSystemAction.WRITE, inodePath);
++        mPermissionChecker.checkPermission(Mode.Bits.WRITE, inodePath);
+         // Even readonly mount points should be able to complete a file, for UFS reads in CACHE mode.
+         flushCounter = completeFileAndJournal(inodePath, options);
+     } finally {
+         // finally runs after resources are closed (unlocked).
+         waitForJournalFlush(flushCounter);
+     }
+ }
+\ No newline at end of file
