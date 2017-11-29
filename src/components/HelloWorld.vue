@@ -1,61 +1,46 @@
 <template>
   <div class="vbox viewport">
     <header>
-      <h1 class="leader align-center">Which code is better?</h1>
+      <div class="place-right">
+        <label class="input-control radio small-check">
+          <input type="radio" value="unified" v-model="diffStyle">
+          <span class="check"></span>
+          <span class="caption">Unified</span>
+        </label>
+        <label class="input-control radio small-check">
+          <input type="radio" value="side-by-side" v-model="diffStyle">
+          <span class="check"></span>
+          <span class="caption">Side by side</span>
+        </label>
+      </div>
+      <h1 class="leader align-center">Does this change improve the code?</h1>
     </header>
     <section class="main hbox space-between">
-      <article>
-        <pre class="language-java line-numbers" style="white-space: pre-wrap"><code class="language-java">private List&lt;Intent> buildInitialIntents(@NonNull Context context, @NonNull PackageManager pm, @NonNull Intent resolveIntent, @NonNull Intent emailIntent, @NonNull List&lt;Uri> attachments) {
-  final List&lt;ResolveInfo> resolveInfoList = pm.queryIntentActivities(resolveIntent, PackageManager.MATCH_DEFAULT_ONLY);
-  final List&lt;Intent> initialIntents = new ArrayList&lt;Intent>();
-    for (ResolveInfo info : resolveInfoList) {
-      final Intent packageSpecificIntent = new Intent(emailIntent);
-      packageSpecificIntent.setPackage(info.activityInfo.packageName);
-      grantPermission(context, emailIntent, info.activityInfo.packageName, attachments);
-      if (packageSpecificIntent.resolveActivity(pm) != null) {
-        initialIntents.add(packageSpecificIntent);
-      }
-    }
-  return initialIntents;
-}</code></pre>
-      </article>
-      <article>
-        <pre class="language-java line-numbers" style="white-space: pre-wrap"><code class="language-java">private List&lt;Intent> buildInitialIntents(@NonNull PackageManager pm, @NonNull Intent resolveIntent, @NonNull Intent emailIntent) {
-    final List&lt;ResolveInfo> resolveInfoList = pm.queryIntentActivities(resolveIntent, PackageManager.MATCH_DEFAULT_ONLY);
-    final List&lt;Intent> initialIntents = new ArrayList&lt;Intent>();
-    for (ResolveInfo info : resolveInfoList) {
-        final Intent packageSpecificIntent = new Intent(emailIntent);
-        packageSpecificIntent.setPackage(info.activityInfo.packageName);
-        if (packageSpecificIntent.resolveActivity(pm) != null) {
-            initialIntents.add(packageSpecificIntent);
-        }
-    }
-    return initialIntents;
-}</code></pre>
-      </article>
+      <article v-html="unifiedDiff" v-if="diffStyle == 'unified'"></article>
+      <article v-html="sideBySideDiff" v-else></article>
     </section>
     <footer>
       <div class="grid">
         <div class="row cells3">
           <div class="cell align-center">
-            <button class="button large-button success">
-              <span class="mif-thumbs-up"></span>
-              The left one is better
-              <small>(&larr;)</small>
+            <button class="button large-button danger">
+              <span class="mif-thumbs-down"></span>
+              No, it makes the code worse
+              <small>(&darr;)</small>
             </button>
           </div>
           <div class="cell align-center">
             <button class="button large-button warning">
               <span class="mif-question"></span>
-              There is no difference in quality of them
+              This change does not change the quality of the code
               <small>(Esc)</small>
             </button>
           </div>
           <div class="cell align-center">
             <button class="button large-button success">
               <span class="mif-thumbs-up"></span>
-              The right one is better
-              <small>(&rarr;)</small>
+              Yes, the code is better after this change!
+              <small>(&uarr;)</small>
             </button>
           </div>
         </div>
@@ -68,16 +53,47 @@
 </template>
 
 <script>
-  import Prism from 'prismjs'
-  import 'prismjs/themes/prism-okaidia.css'
-  import 'prismjs/components/prism-java.min.js'
-  import 'prismjs/plugins/line-numbers/prism-line-numbers.js'
-  import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
+  import "diff2html/dist/diff2html.min.js";
+  import "diff2html/dist/diff2html.min.css";
 
   export default {
     name: 'HelloWorld',
+    data() {
+      return {
+        unifiedDiff: 'aa',
+        sideBySideDiff: 'aa',
+        diffStyle: 'side-by-side'
+      }
+    },
     mounted() {
-      Prism.highlightAll()
+
+      const code = `diff --git a/cdbe1c3e7d97dd042cd09570e1506efdd8dad469 b/413b2af26c23b742b0e7afce7674b7e180efb748
+index cdbe1c3..413b2af 100644
+--- a/cdbe1c3e7d97dd042cd09570e1506efdd8dad469
++++ b/413b2af26c23b742b0e7afce7674b7e180efb748
+@@ -1,13 +1,13 @@
+-private List<Intent> buildInitialIntents(@NonNull Context context, @NonNull PackageManager pm, @NonNull Intent resolveIntent, @NonNull Intent emailIntent, @NonNull List<Uri> attachments) {
++@NonNull
++private List<Intent> buildInitialIntents(@NonNull PackageManager pm, @NonNull Intent resolveIntent, @NonNull Intent emailIntent) {
+     final List<ResolveInfo> resolveInfoList = pm.queryIntentActivities(resolveIntent, PackageManager.MATCH_DEFAULT_ONLY);
+     final List<Intent> initialIntents = new ArrayList<Intent>();
+     for (ResolveInfo info : resolveInfoList) {
+         final Intent packageSpecificIntent = new Intent(emailIntent);
+         packageSpecificIntent.setPackage(info.activityInfo.packageName);
+-        grantPermission(context, emailIntent, info.activityInfo.packageName, attachments);
+         if (packageSpecificIntent.resolveActivity(pm) != null) {
+             initialIntents.add(packageSpecificIntent);
+         }
+     }
+     return initialIntents;
+ }
+\\ No newline at end of file`;
+
+      this.unifiedDiff = Diff2Html.getPrettyHtml(code);
+      this.sideBySideDiff = Diff2Html.getPrettyHtml(code, {
+          outputFormat: 'side-by-side'
+        }
+      );
     }
   }
 </script>
@@ -95,6 +111,10 @@
     padding: 0.25em;
     margin: 0.25em;
     border-radius: 0.25em;
+  }
+
+  .d2h-file-header {
+    display: none;
   }
 
   /*
