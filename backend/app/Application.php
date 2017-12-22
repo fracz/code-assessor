@@ -2,12 +2,16 @@
 
 namespace codeassessor\app;
 
+use codeassessor\database\EloquentExceptionHandler;
+use Illuminate\Contracts\Debug\ExceptionHandler;
+use Illuminate\Database\Capsule\Manager as Capsule;
 use Slim\App;
 
 /**
  * @property-read \Slim\Http\Request $request
  * @property-read \Slim\Http\Response $response
  * @property-read \Slim\Collection $settings
+ * @property-read Capsule $db
  */
 class Application extends App {
 
@@ -16,15 +20,13 @@ class Application extends App {
 
     private static $instance;
 
-    public function __construct(array $config = null) {
+    public function __construct() {
         if (self::$instance) {
             throw new \BadMethodCallException('Application can be instantiated only once. Use getInstance() instead.');
         }
         self::$instance = $this;
-//        if (!$config) {
-//            $config = require __DIR__ . '/../settings.php';
-//        }
-        parent::__construct(['settings' => ['displayErrorDetails' => true]]);
+        $config = require __DIR__ . '/../settings.php';
+        parent::__construct(['settings' => $config]);
         $this->configureServices();
         $this->enableCors();
     }
@@ -34,7 +36,17 @@ class Application extends App {
     }
 
     private function configureDb() {
-
+        $this->getContainer()['db'] = function ($container) {
+            $capsule = new Capsule;
+            $capsule->addConnection($container['settings']['db']);
+            $capsule->getContainer()->bind(ExceptionHandler::class, EloquentExceptionHandler::class);
+//            $capsule->setEventDispatcher(new Dispatcher(new Container));
+            $capsule->bootEloquent();
+            $capsule->setAsGlobal();
+            return $capsule;
+        };
+        /* get db from container to properly initialize before first use of Model elements*/
+        $this->getContainer()->get('db');
     }
 
     public static function getInstance(): Application {

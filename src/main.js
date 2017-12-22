@@ -9,9 +9,9 @@ import router from './router'
 import VueResource from 'vue-resource';
 
 Vue.use(VueResource);
-Vue.http.options.root = process.env.NODE_ENV == 'production' ? '/api' : 'http://code.dev/api';
+Vue.http.options.root = process.env.NODE_ENV == 'production' ? '/api' : 'http://code.local/api';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
@@ -19,4 +19,4 @@ new Vue({
   router,
   template: '<App/>',
   components: { App }
-})
+});

@@ -23,21 +23,21 @@
       <div class="grid">
         <div class="row cells3">
           <div class="cell align-center">
-            <button class="button large-button danger" @click="fetch()">
+            <button class="button large-button danger" @click="assess(-1)">
               <span class="mif-thumbs-down"></span>
               No, it makes the code worse
               <small>(&darr;)</small>
             </button>
           </div>
           <div class="cell align-center">
-            <button class="button large-button warning" @click="fetch()">
+            <button class="button large-button warning" @click="assess(0)">
               <span class="mif-question"></span>
               This change does not change the quality of the code
               <small>(Esc)</small>
             </button>
           </div>
           <div class="cell align-center">
-            <button class="button large-button success" @click="fetch()">
+            <button class="button large-button success" @click="assess(1)">
               <span class="mif-thumbs-up"></span>
               Yes, the code is better after this change!
               <small>(&uarr;)</small>
@@ -61,6 +61,7 @@
     name: 'HelloWorld',
     data() {
       return {
+        diffId: undefined,
         unifiedDiff: 'aa',
         sideBySideDiff: 'aa',
         diffStyle: 'side-by-side'
@@ -80,7 +81,7 @@
       fetch() {
         this.$http.get('code/random').then(({body}) => {
           const diff = new Diff2HtmlUI({diff: body.diff});
-
+          this.diffId = body.id;
           diff.draw('#unified', {});
           diff.draw('#sideBySide', {
             inputFormat: 'json',
@@ -91,6 +92,9 @@
           diff.highlightCode('#unified');
           diff.highlightCode('#sideBySide');
         });
+      },
+      assess(score) {
+        this.$http.put('code/' + this.diffId, {score}).then(() => this.fetch());
       }
     }
   }

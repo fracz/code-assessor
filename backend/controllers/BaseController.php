@@ -2,9 +2,9 @@
 
 namespace codeassessor\controllers;
 
+use codeassessor\model\HasApp;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use codeassessor\model\HasApp;
 use Throwable;
 
 abstract class BaseController {
@@ -16,6 +16,13 @@ abstract class BaseController {
 
     protected function request(): Request {
         return $this->getApp()->request;
+    }
+
+    protected function ensureExists($object, $errorMessage = 'Element not found') {
+        if (!$object) {
+            throw new Http404Exception($errorMessage);
+        }
+        return $object;
     }
 
     protected function beforeAction() {
