@@ -10,6 +10,7 @@ class CodeassManager extends Application {
         $this->addCommands([
             new ImportCodeSamplesFromFilesCommand(),
             new MigrateDbCommand(),
+            new ScoreBoardCommand(),
         ]);
     }
 }

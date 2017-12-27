@@ -1,7 +1,8 @@
 <template>
   <div class="vbox viewport">
     <header>
-      <div class="place-right">
+      <div class="stats">
+        Assessed: {{ stats.assessed }}
         <label class="input-control radio small-check">
           <input type="radio" value="unified" v-model="diffStyle">
           <span class="check"></span>
@@ -13,7 +14,7 @@
           <span class="caption">Side by side</span>
         </label>
       </div>
-      <h1 class="leader align-center">Does this change improve the code?</h1>
+      <h1 class="leader align-center">Which code is better?</h1>
     </header>
     <section class="main hbox space-between">
       <article v-html="unifiedDiff" v-show="diffStyle == 'unified'" id="unified"></article>
@@ -23,32 +24,40 @@
       <div class="grid">
         <div class="row cells3">
           <div class="cell align-center">
-            <button class="button large-button danger" @click="assess(-1)">
-              <span class="mif-thumbs-down"></span>
-              No, it makes the code worse
-              <small>(&darr;)</small>
+            <button :class="'button large-button success ' + (currentAssessment === -1 ? 'chosen' : '')"
+                    @click="assess(-1)" :disabled="currentAssessment !== undefined">
+              The left one is better
+              <small>(&larr;)</small>
             </button>
           </div>
           <div class="cell align-center">
-            <button class="button large-button warning" @click="assess(0)">
-              <span class="mif-question"></span>
-              This change does not change the quality of the code
+            <button :class="'button large-button warning ' + (currentAssessment === 0 ? 'chosen' : '')"
+                    @click="assess(0)" :disabled="currentAssessment !== undefined">
+              ¯\_(ツ)_/¯
               <small>(Esc)</small>
             </button>
           </div>
           <div class="cell align-center">
-            <button class="button large-button success" @click="assess(1)">
-              <span class="mif-thumbs-up"></span>
-              Yes, the code is better after this change!
-              <small>(&uarr;)</small>
+            <button :class="'button large-button success ' + (currentAssessment === 1 ? 'chosen' : '')"
+                    @click="assess(1)" :disabled="currentAssessment !== undefined">
+              The right one is better
+              <small>(&rarr;)</small>
             </button>
           </div>
         </div>
       </div>
       <div class="progress small" data-role="progress">
-        <div class="bar default" style="width: 80%"></div>
+        <div class="bar default" :style="{width: progressWidth}"></div>
       </div>
     </footer>
+    <div data-role="dialog" id="dialogIdle" data-overlay="true" data-overlay-color="op-dark" data-type="alert">
+      <h1>Are you paying attention?</h1>
+      <h4>
+        We have noticed you did not assess the third example in a row.
+      </h4>
+      <a class="button alert" href="https://stackoverflow.com/">You're right. Take me away from here.</a>
+      <button class="button primary" @click="assess(0)">I'm here, let me continue the experiment</button>
+    </div>
   </div>
 </template>
 
@@ -57,6 +66,8 @@
   import "diff2html/dist/diff2html.min.js";
   import "diff2html/dist/diff2html-ui.min.js";
 
+  const TIME_LIMIT = 30;
+
   export default {
     name: 'Comparator',
     data() {
@@ -64,22 +75,27 @@
         diffId: undefined,
         unifiedDiff: 'aa',
         sideBySideDiff: 'aa',
-        diffStyle: 'side-by-side'
+        diffStyle: 'side-by-side',
+        timePassed: 0,
+        idleCounter: 0,
+        testProbability: 0,
+        currentAssessment: undefined,
+        stats: {
+          assessed: 0
+        }
       }
     },
     mounted() {
-
-
+      window.addEventListener('keyup', (event) => {
+        this.keyUp(event.keyCode);
+      });
+      this.stats.assessed = this.$localStorage.get('assessed');
       this.fetch();
-//      this.unifiedDiff = Diff2Html.getPrettyHtml(code);
-//      this.sideBySideDiff = Diff2Html.getPrettyHtml(code, {
-//          outputFormat: 'side-by-side'
-//        }
-//      );
     },
     methods: {
       fetch() {
-        this.$http.get('code/random').then(({body}) => {
+        this.stopTimer();
+        return this.$http.get('code/random').then(({body}) => {
           const diff = new Diff2HtmlUI({diff: body.diff});
           this.diffId = body.id;
           diff.draw('#unified', {});
@@ -91,10 +107,57 @@
           });
           diff.highlightCode('#unified');
           diff.highlightCode('#sideBySide');
+          this.startTimer();
         });
       },
-      assess(score) {
-        this.$http.put('code/' + this.diffId, {score}).then(() => this.fetch());
+      assess(score, clearIdle = true) {
+        if (clearIdle) {
+          this.idleCounter = 0;
+          metroDialog.close('#dialogIdle');
+        }
+        this.stopTimer();
+        if (score != 0) {
+          this.$localStorage.set('assessed', ++this.stats.assessed);
+        }
+        this.currentAssessment = score;
+        this.$http.put('code/' + this.diffId, {score})
+          .then(() => setTimeout(() => {
+            this.fetch().then(() => this.currentAssessment = undefined);
+          }, 200));
+      },
+      stopTimer() {
+        clearInterval(this.timer);
+        this.timePassed = 0;
+      },
+      startTimer() {
+        this.timer = setInterval(() => this.increaseTimer(), 1000);
+      },
+      increaseTimer() {
+        ++this.timePassed;
+        if (this.timePassed > TIME_LIMIT) {
+          if (this.idleCounter < 2) {
+            this.assess(0, false);
+            ++this.idleCounter;
+          } else {
+            metroDialog.open('#dialogIdle')
+          }
+        }
+      },
+      keyUp(keyCode) {
+        if (keyCode == 37) {
+          this.assess(-1);
+        }
+        if (event.keyCode == 39) {
+          this.assess(1);
+        }
+        if (event.keyCode == 27) {
+          this.assess(0);
+        }
+      }
+    },
+    computed: {
+      progressWidth() {
+        return Math.round(this.timePassed * 100 / TIME_LIMIT) + '%';
       }
     }
   }
@@ -136,6 +199,18 @@
     width: 100%;
     height: 100%;
     margin: 0;
+  }
+
+  .bar {
+    transition: width 1s linear;
+  }
+
+  .op-dark {
+    background: rgba(29, 29, 29, 0.7);
+  }
+
+  .dialog {
+    padding: 15px;
   }
 
   /* encapsulate the various syntax in helper clases */
@@ -215,6 +290,15 @@
     height: 80px;
   }
 
+  footer .button {
+    font-size: 1.5em;
+  }
+
+  footer .button[disabled]:not(.chosen) {
+    border-color: #AAA !important;;
+    background: #AAA !important;
+  }
+
   .main {
     /* previous syntax */
     -webkit-box-flex: 1;
@@ -258,5 +342,10 @@
     -moz-flex: 1;
     -ms-flex: 1;
     flex: 1;
+  }
+
+  .stats {
+    position: absolute;
+    right: 10px;
   }
 </style>

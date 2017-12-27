@@ -86,7 +86,7 @@
     height: 100%;
     width: 600px;
     max-width: 25%;
-    background: url('../assets/left.png') no-repeat center center;
+    background: url('../assets/left.png') no-repeat center right;
     background-size: cover;
   }
 
@@ -96,7 +96,7 @@
     height: 100%;
     width: 600px;
     max-width: 25%;
-    background: url('../assets/right.png') no-repeat center center;
+    background: url('../assets/right.png') no-repeat center left;
     background-size: cover;
   }
 
