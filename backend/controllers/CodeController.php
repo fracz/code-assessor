@@ -10,11 +10,15 @@ use codeassessor\model\CodeSampleAssessment;
 class CodeController extends BaseController {
     public function getRandomAction() {
         $rules = $this->getApp()->getSetting('rules');
+        $skipIds = $this->request()->getParam('skipIds', '');
+        $skipIds = implode(',', array_filter(array_map('intval', explode(',', $skipIds))));
+        if (!$skipIds) $skipIds = 0;
         $sample = $this->getApp()->db->getConnection()->selectOne(<<<QUERY
             SELECT id, filename FROM (
               SELECT cs.*, COUNT(csa.id) count, IFNULL(SUM(csa.score), 0) score 
               FROM code_samples cs 
               LEFT JOIN code_sample_assessments csa ON cs.id=csa.sample_id 
+              WHERE cs.id NOT IN($skipIds)
               GROUP BY cs.id
               HAVING 
               (score != 0 AND ABS(score) < $rules[min_score_to_decide] AND count < $rules[max_votes_to_give_up])

@@ -25,21 +25,21 @@
         <div class="row cells3">
           <div class="cell align-center">
             <button :class="'button large-button success ' + (currentAssessment === -1 ? 'chosen' : '')"
-                    @click="assess(-1)" :disabled="currentAssessment !== undefined">
+                    @click="assess(-1)" :disabled="currentAssessment !== undefined || timePassed < 5">
               The left one is better
               <small>(&larr;)</small>
             </button>
           </div>
           <div class="cell align-center">
             <button :class="'button large-button warning ' + (currentAssessment === 0 ? 'chosen' : '')"
-                    @click="assess(0)" :disabled="currentAssessment !== undefined">
+                    @click="assess(0)" :disabled="currentAssessment !== undefined || timePassed < 5">
               ¯\_(ツ)_/¯
               <small>(Esc)</small>
             </button>
           </div>
           <div class="cell align-center">
             <button :class="'button large-button success ' + (currentAssessment === 1 ? 'chosen' : '')"
-                    @click="assess(1)" :disabled="currentAssessment !== undefined">
+                    @click="assess(1)" :disabled="currentAssessment !== undefined || timePassed < 5">
               The right one is better
               <small>(&rarr;)</small>
             </button>
@@ -80,6 +80,7 @@
         idleCounter: 0,
         testProbability: 0,
         currentAssessment: undefined,
+        skipIds: [],
         stats: {
           assessed: 0
         }
@@ -90,14 +91,17 @@
         this.keyUp(event.keyCode);
       });
       this.stats.assessed = this.$localStorage.get('assessed');
+      this.skipIds = (this.$localStorage.get('skipIds') || '').split(',').filter(a => !!a);
       this.fetch();
     },
     methods: {
       fetch() {
         this.stopTimer();
-        return this.$http.get('code/random').then(({body}) => {
+        return this.$http.get('code/random?skipIds=' + this.skipIds.join(',')).then(({body}) => {
           const diff = new Diff2HtmlUI({diff: body.diff});
           this.diffId = body.id;
+          this.skipIds.push(this.diffId);
+          this.$localStorage.set('skipIds', this.skipIds.join(','));
           diff.draw('#unified', {});
           diff.draw('#sideBySide', {
             inputFormat: 'json',
@@ -111,6 +115,9 @@
         });
       },
       assess(score, clearIdle = true) {
+        if (this.timePassed < 5) {
+          return;
+        }
         if (clearIdle) {
           this.idleCounter = 0;
           metroDialog.close('#dialogIdle');
