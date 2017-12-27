@@ -15,6 +15,19 @@ services:
       - ../:/var/www:z
       - ./apache-conf:/etc/apache2/sites-available:z
 
+  code-db:
+    container_name: $code-fracz-com-db
+    restart: unless-stopped
+    image: mysql
+    networks: [default]
+    environment:
+      MYSQL_ROOT_PASSWORD: ala123
+      MYSQL_DATABASE: codeass
+      MYSQL_USER: codeass
+      MYSQL_PASSWORD: ala123
+    volumes:
+       - ../var/mysql:/var/lib/mysql:z
+
 networks:
   proxy:
     external:
