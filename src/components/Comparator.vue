@@ -58,7 +58,7 @@
   import "diff2html/dist/diff2html-ui.min.js";
 
   export default {
-    name: 'HelloWorld',
+    name: 'Comparator',
     data() {
       return {
         diffId: undefined,
