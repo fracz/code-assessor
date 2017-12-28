@@ -58,6 +58,21 @@
       <a class="button alert" href="https://stackoverflow.com/">You're right. Take me away from here.</a>
       <button class="button primary" @click="assess(0)">I'm here, let me continue the experiment</button>
     </div>
+    <div data-role="dialog" id="dialogWrongTest" data-overlay="true" data-overlay-color="op-dark" data-type="alert">
+      <h1>Are you paying attention?</h1>
+      <h4>This was only a test to ensure you are reading the code. Most of the reviewers marked this example
+        differently.</h4>
+      <h4>While we know the code quality is strongly opinion based, this mechanism exist to prevent us from random,
+        unthoughtful input.</h4>
+      <h4>The next failed test will result in 10-minutes ban from this experiment.</h4>
+      <button class="button primary" @click="fetch()">Got it!</button>
+    </div>
+    <div data-role="dialog" id="dialogBan" data-overlay="true" data-overlay-color="op-dark" data-type="alert">
+      <h1>You have been banned for 10 minutes!</h1>
+      <h4>You have failed two random tests in a row which resulted in a temporary ban from this experiment.</h4>
+      <h4>Come back in a while to continue.</h4>
+      <h4>Please, forgive us if you have been banned mistakenly.</h4>
+    </div>
   </div>
 </template>
 
@@ -67,18 +82,22 @@
   import "diff2html/dist/diff2html-ui.min.js";
 
   const TIME_LIMIT = 30;
+  const MIN_TEST_PER_TASKS = 15;
 
   export default {
     name: 'Comparator',
     data() {
       return {
         diffId: undefined,
-        unifiedDiff: 'aa',
-        sideBySideDiff: 'aa',
+        unifiedDiff: '',
+        sideBySideDiff: '',
         diffStyle: 'side-by-side',
         timePassed: 0,
         idleCounter: 0,
-        testProbability: 0,
+        testProbability: 10,
+        testNextFailBan: false,
+        testing: false,
+        testExpectation: undefined,
         currentAssessment: undefined,
         skipIds: [],
         stats: {
@@ -92,14 +111,21 @@
       });
       this.stats.assessed = this.$localStorage.get('assessed');
       this.skipIds = (this.$localStorage.get('skipIds') || '').split(',').filter(a => !!a);
-      this.fetch();
+      if (this.$localStorage.get('banUntil') > new Date().getTime()) {
+        setTimeout(() => metroDialog.open('#dialogBan'));
+      } else {
+        this.fetch();
+      }
     },
     methods: {
       fetch() {
+        metroDialog.close('#dialogWrongTest');
         this.stopTimer();
-        return this.$http.get('code/random?skipIds=' + this.skipIds.join(',')).then(({body}) => {
+        this.testing = Math.random() < (this.testProbability / MIN_TEST_PER_TASKS);
+        return this.$http.get('code/' + (this.testing ? 'test' : 'random') + '?skipIds=' + this.skipIds.join(',')).then(({body}) => {
           const diff = new Diff2HtmlUI({diff: body.diff});
           this.diffId = body.id;
+          this.testExpectation = body.positive;
           this.skipIds.push(this.diffId);
           this.$localStorage.set('skipIds', this.skipIds.join(','));
           diff.draw('#unified', {});
@@ -127,10 +153,35 @@
           this.$localStorage.set('assessed', ++this.stats.assessed);
         }
         this.currentAssessment = score;
-        this.$http.put('code/' + this.diffId, {score})
-          .then(() => setTimeout(() => {
-            this.fetch().then(() => this.currentAssessment = undefined);
-          }, 200));
+        if (this.testing) {
+          const chosen = score > 0;
+          if (score != 0 && chosen != this.testExpectation) {
+            if (this.testNextFailBan) {
+              metroDialog.open('#dialogBan');
+              this.$localStorage.set('banUntil', new Date().getTime() + 600000);
+            } else {
+              this.testProbability = Math.round(this.testProbability / 2);
+              metroDialog.open('#dialogWrongTest');
+              this.testNextFailBan = true;
+            }
+            this.currentAssessment = undefined;
+          } else {
+            if (score != 0) {
+              // test passed
+              this.testProbability = 0;
+              this.testNextFailBan = false;
+            }
+            setTimeout(() => {
+              this.fetch().then(() => this.currentAssessment = undefined);
+            }, 200);
+          }
+        } else {
+          ++this.testProbability;
+          this.$http.put('code/' + this.diffId, {score})
+            .then(() => setTimeout(() => {
+              this.fetch().then(() => this.currentAssessment = undefined);
+            }, 200));
+        }
       },
       stopTimer() {
         clearInterval(this.timer);
