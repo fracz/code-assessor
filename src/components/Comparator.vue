@@ -34,7 +34,7 @@
             <button :class="'button large-button warning ' + (currentAssessment === 0 ? 'chosen' : '')"
                     @click="assess(0)" :disabled="currentAssessment !== undefined || timePassed < 5">
               ¯\_(ツ)_/¯
-              <small>(Esc)</small>
+              <small>(&darr;)</small>
             </button>
           </div>
           <div class="cell align-center">
@@ -208,8 +208,11 @@
         if (event.keyCode == 39) {
           this.assess(1);
         }
-        if (event.keyCode == 27) {
+        if (event.keyCode == 40) {
           this.assess(0);
+        }
+        if (event.keyCode == 27) {
+          window.location.assign('/');
         }
       }
     },
