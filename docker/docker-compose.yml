@@ -5,7 +5,7 @@ services:
     container_name: code-fracz-com
     build: .
     restart: unless-stopped
-    networks: [proxy]
+    networks: [default, proxy]
     environment:
       VIRTUAL_HOST: code.fracz.com,www.code.fracz.com
       LETSENCRYPT_HOST: code.fracz.com,www.code.fracz.com
@@ -16,7 +16,7 @@ services:
       - ./apache-conf:/etc/apache2/sites-available:z
 
   code-db:
-    container_name: $code-fracz-com-db
+    container_name: code-fracz-com-db
     restart: unless-stopped
     image: mysql
     networks: [default]
