@@ -17,7 +17,7 @@ class ImportCodeSamplesFromFilesCommand extends Command {
 
     protected function execute(InputInterface $input, OutputInterface $output) {
         $dir = Application::VAR_PATH . '/diffs';
-        $files = array_diff(scandir($dir), ['.', '..', 'README.txt']);
+        $files = array_diff(scandir($dir), ['.', '..', 'README.txt', '.gitignore']);
         Application::getInstance();
         foreach ($files as $file) {
             CodeSample::firstOrNew([CodeSample::FILENAME => $file])->save();
