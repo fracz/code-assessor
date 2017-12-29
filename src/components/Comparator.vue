@@ -94,7 +94,7 @@
         diffStyle: 'side-by-side',
         timePassed: 0,
         idleCounter: 0,
-        testProbability: 10,
+        testProbability: 0,
         testNextFailBan: false,
         testing: false,
         testExpectation: undefined,

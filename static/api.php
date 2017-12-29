@@ -1,2 +1,2 @@
 <?php
-require __DIR__ . '/../backend/index.php';
+require __DIR__ . '/../../backend/index.php';
