@@ -9,15 +9,15 @@
       <p>
         <strong>What to expect?</strong>
         We will show you a Java source code refactoring changes and ask you to tell if the change does
-        or does not improve the overall quality of the code. Every change is a single method no longer than 100 lines.
+        or does not improve the overall quality of the code. Every change is a single method no longer than 40 lines.
       </p>
       <p>
-        <strong>But it is strongy opinion based what <em>good code</em> means!</strong>
+        <strong>But it is strongly opinion based what <em>good code</em> means!</strong>
         Exactly! But maybe, maybe there are some rules we can discover thanks to your answers!
       </p>
       <p>
         <strong>Time limits?</strong>
-        30 seconds per every change. If you can't distinguish which code is better after this time, you will be
+        60 seconds per every change. If you can't distinguish which code is better after this time, you will be
         presented with another one. You can stop the whole experiment when you want and come back later.
       </p>
       <p>

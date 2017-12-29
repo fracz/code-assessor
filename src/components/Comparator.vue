@@ -81,7 +81,7 @@
   import "diff2html/dist/diff2html.min.js";
   import "diff2html/dist/diff2html-ui.min.js";
 
-  const TIME_LIMIT = 30;
+  const TIME_LIMIT = 60;
   const MIN_TEST_PER_TASKS = 15;
 
   export default {
