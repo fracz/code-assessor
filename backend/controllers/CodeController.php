@@ -30,6 +30,7 @@ class CodeController extends BaseController {
             LIMIT 1;
 QUERY
         );
+//        $sample->filename = '0.txt';
         return $this->response([
             'id' => $sample->id,
             'diff' => file_get_contents(Application::VAR_PATH . "/diffs/$sample->filename"),
