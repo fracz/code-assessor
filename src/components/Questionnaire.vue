@@ -57,7 +57,7 @@
   export default {
     data() {
       return {
-        experience: -2
+        experience: undefined
       }
     },
     methods: {
