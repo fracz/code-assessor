@@ -5,7 +5,7 @@
     <div class="content">
       <h1>Which code is better?</h1>
       <h2>Tell us your opinion and help in teaching AI what <em>good code</em> means!</h2>
-      <router-link to="/play" class="play">Show me the code!</router-link>
+      <a @click="begin()" class="play">Show me the code!</a>
       <p>
         <strong>What to expect?</strong>
         We will show you a Java source code refactoring changes and ask you to tell if the change does
@@ -36,7 +36,17 @@
 </template>
 
 <script>
-  export default {}
+  export default {
+    methods: {
+      begin() {
+        if (this.$localStorage.get('respondentId')) {
+          this.$router.push('/play');
+        } else {
+          this.$router.push('/say-hello');
+        }
+      }
+    }
+  }
 </script>
 
 <style scoped>
@@ -112,6 +122,7 @@
     padding: 10px 15px;
     font-family: Consolas, monospace;
     text-decoration: none;
+    cursor: pointer;
   }
 
   a.play:hover {

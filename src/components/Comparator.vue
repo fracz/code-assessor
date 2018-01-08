@@ -102,7 +102,8 @@
         skipIds: [],
         stats: {
           assessed: 0
-        }
+        },
+        respondentId: 0
       }
     },
     mounted() {
@@ -116,6 +117,7 @@
       } else {
         this.fetch();
       }
+      this.respondentId = this.$localStorage.get('respondentId');
     },
     methods: {
       fetch() {
@@ -177,7 +179,7 @@
           }
         } else {
           ++this.testProbability;
-          this.$http.put('code/' + this.diffId, {score})
+          this.$http.put('code/' + this.diffId, {score, respondentId: this.respondentId})
             .then(() => setTimeout(() => {
               this.fetch().then(() => this.currentAssessment = undefined);
             }, 200));

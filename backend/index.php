@@ -4,6 +4,7 @@ namespace codeassessor;
 
 use codeassessor\app\Application;
 use codeassessor\controllers\CodeController;
+use codeassessor\controllers\RespondentsController;
 
 require __DIR__ . '/vendor/autoload.php';
 ini_set('display_errors', 'On');
@@ -15,6 +16,7 @@ $app->group('/api', function () use ($app) {
     $app->get('/code/random', CodeController::class . ':getRandom');
     $app->get('/code/test', CodeController::class . ':getTest');
     $app->put('/code/{id}', CodeController::class . ':assess');
+    $app->post('/respondents', RespondentsController::class . ':createNew');
 });
 $app->run();
 
