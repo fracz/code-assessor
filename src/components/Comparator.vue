@@ -411,4 +411,17 @@
     position: absolute;
     right: 10px;
   }
+
+  del, ins {
+    background-color: lightblue !important;
+  }
+
+  .d2h-ins, .d2h-del {
+    background-color: #e1f4f7 !important;
+    border-color: lightblue !important;
+  }
+
+  #sideBySide .d2h-code-line-prefix {
+    visibility: hidden;
+  }
 </style>
