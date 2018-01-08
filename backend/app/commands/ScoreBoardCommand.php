@@ -4,6 +4,8 @@ namespace codeassessor\app\commands;
 
 use codeassessor\app\Application;
 use codeassessor\model\ArrayToTextTable;
+use codeassessor\model\CodeSampleAssessment;
+use codeassessor\model\Respondent;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -31,6 +33,8 @@ class ScoreBoardCommand extends Command {
             ORDER BY score DESC;
 QUERY
         ));
+        $output->writeln("Respondents: " . Respondent::count());
+        $output->writeln("Assessments: " . CodeSampleAssessment::count());
         $renderer = new ArrayToTextTable($results);
         $renderer->showHeaders(true);
         $renderer->render();
