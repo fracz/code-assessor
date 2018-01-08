@@ -47,7 +47,7 @@
         <span class="caption">I'd rather not say</span>
       </label>
       <div class="align-center">
-        <button class="button primary large-button">Begin!</button>
+        <button class="button primary large-button" :disabled="experience !== undefined">Begin!</button>
       </div>
     </form>
   </div>
@@ -62,14 +62,16 @@
     },
     methods: {
       begin() {
-        if (this.experience < -1) {
-          window.location.assign('https://www.google.com/doodles/celebrating-50-years-of-kids-coding');
-        } else {
-          this.$http.post('respondents', {experience: this.experience}).then(response => {
-            const respondent = response.body;
-            this.$localStorage.set('respondentId', respondent.id);
-            this.$router.push('/play');
-          });
+        if (this.experience !== undefined) {
+          if (this.experience < -1) {
+            window.location.assign('https://www.google.com/doodles/celebrating-50-years-of-kids-coding');
+          } else {
+            this.$http.post('respondents', {experience: this.experience}).then(response => {
+              const respondent = response.body;
+              this.$localStorage.set('respondentId', respondent.id);
+              this.$router.push('/play');
+            });
+          }
         }
       }
     }
