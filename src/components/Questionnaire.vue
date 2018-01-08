@@ -47,7 +47,7 @@
         <span class="caption">I'd rather not say</span>
       </label>
       <div class="align-center">
-        <button class="button primary large-button" :disabled="experience !== undefined">Begin!</button>
+        <button class="button primary large-button" :disabled="experience === undefined">Begin!</button>
       </div>
     </form>
   </div>
