@@ -2,7 +2,7 @@
   <div>
     <h1 class="align-center">What is your experience in coding?</h1>
     <p class="align-center">
-      This information will help us in determining the respondents profile.<br>
+      This information will help us in determining the respondents' profile.<br>
       This answer is the only information we store about you.
     </p>
     <form @submit.prevent="begin()">
