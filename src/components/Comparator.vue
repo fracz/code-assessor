@@ -150,6 +150,7 @@
           this.idleCounter = 0;
           metroDialog.close('#dialogIdle');
         }
+        const time = this.timePassed;
         this.stopTimer();
         if (score != 0) {
           this.$localStorage.set('assessed', ++this.stats.assessed);
@@ -179,7 +180,7 @@
           }
         } else {
           ++this.testProbability;
-          this.$http.put('code/' + this.diffId, {score, respondentId: this.respondentId})
+          this.$http.put('code/' + this.diffId, {score, respondentId: this.respondentId, time})
             .then(() => setTimeout(() => {
               this.fetch().then(() => this.currentAssessment = undefined);
             }, 200));

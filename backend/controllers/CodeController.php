@@ -66,10 +66,12 @@ QUERY
         Assertion::keyExists($body, 'score');
         $score = intval($body['score']);
         $respondentId = intval($body['respondentId'] ?? 0);
+        $time = intval($body['time'] ?? 0);
         Assertion::inArray($score, [-1, 0, 1]);
         $codeSample->assessments()->create([
             CodeSampleAssessment::SCORE => $score,
             CodeSampleAssessment::RESPONDENT_ID => $respondentId ?: null,
+            CodeSampleAssessment::TIME => $time ?: null,
         ])->save();
         return $this->response(['ok' => true])->withStatus(201);
     }
