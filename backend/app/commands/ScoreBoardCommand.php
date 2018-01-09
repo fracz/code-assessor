@@ -35,6 +35,7 @@ QUERY
         ));
         $output->writeln("Respondents: " . Respondent::count());
         $output->writeln("Assessments: " . CodeSampleAssessment::count());
+        $output->writeln("Average assessment time: " . CodeSampleAssessment::avg(CodeSampleAssessment::TIME));
         $renderer = new ArrayToTextTable($results);
         $renderer->showHeaders(true);
         $renderer->render();
