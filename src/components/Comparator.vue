@@ -108,7 +108,7 @@
     },
     mounted() {
       window.addEventListener('keyup', (event) => {
-        this.keyUp(event.keyCode);
+        this.keyUp(event);
       });
       this.stats.assessed = this.$localStorage.get('assessed');
       this.skipIds = (this.$localStorage.get('skipIds') || '').split(',').filter(a => !!a);
@@ -142,7 +142,7 @@
           this.startTimer();
         });
       },
-      assess(score, clearIdle = true) {
+      assess(score, clearIdle = true, forSure = false) {
         if (this.timePassed < 5) {
           return;
         }
@@ -180,7 +180,11 @@
           }
         } else {
           ++this.testProbability;
-          this.$http.put('code/' + this.diffId, {score, respondentId: this.respondentId, time})
+          const request = {score, respondentId: this.respondentId, time};
+          if (forSure) {
+            request.forSure = true;
+          }
+          this.$http.put('code/' + this.diffId, request)
             .then(() => setTimeout(() => {
               this.fetch().then(() => this.currentAssessment = undefined);
             }, 200));
@@ -204,15 +208,16 @@
           }
         }
       },
-      keyUp(keyCode) {
-        if (keyCode == 37) {
-          this.assess(-1);
+      keyUp(event) {
+        console.log(event);
+        if (event.keyCode == 37) {
+          this.assess(-1, true, event.shiftKey);
         }
         if (event.keyCode == 39) {
-          this.assess(1);
+          this.assess(1, true, event.shiftKey);
         }
         if (event.keyCode == 40) {
-          this.assess(0);
+          this.assess(0, true, event.shiftKey);
         }
         if (event.keyCode == 27) {
           window.location.assign('/');
