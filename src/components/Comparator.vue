@@ -1,6 +1,9 @@
 <template>
   <div class="vbox viewport">
     <header>
+      <div style="position: absolute">
+        <a href="/">Quit (Esc)</a>
+      </div>
       <div class="stats">
         Assessed: {{ stats.assessed }}
         <label class="input-control radio small-check">
