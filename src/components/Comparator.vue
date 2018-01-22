@@ -212,7 +212,6 @@
         }
       },
       keyUp(event) {
-        console.log(event);
         if (event.keyCode == 37) {
           this.assess(-1, true, event.shiftKey);
         }
