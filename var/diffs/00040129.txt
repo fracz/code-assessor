@@ -1,0 +1,22 @@
+diff --git a/e5a19b6e103c68502ed9cec6be33a8acbfbc4d2a b/e415df2b2cf4b4abe83bc8cbb2e824b5ff535859
+index e5a19b6e10..e415df2b2c 100644
+--- a/e5a19b6e103c68502ed9cec6be33a8acbfbc4d2a
++++ b/e415df2b2cf4b4abe83bc8cbb2e824b5ff535859
+@@ -1,13 +1,13 @@
+ @Test
+ public void shouldReturnNonExistentRuleAddedInTransaction() throws Exception {
+     // GIVEN
+     // -- non-existent rule added in the transaction
+-    txContext.indexCreate(state, labelId1, key1);
++    indexCreate(txContext, state, labelId1, key1);
+     // WHEN
+-    IndexDescriptor rule = txContext.indexGetForLabelAndPropertyKey(state, labelId1, key1);
++    IndexDescriptor rule = indexGetForLabelAndPropertyKey(txContext, state, labelId1, key1);
+     Iterator<IndexDescriptor> labelRules = txContext.indexesGetForLabel(state, labelId1);
+     // THEN
+-    IndexDescriptor expectedRule = new IndexDescriptor(labelId1, key1);
++    IndexDescriptor expectedRule = IndexDescriptorFactory.from(new NodePropertyDescriptor(labelId1, key1));
+     assertEquals(expectedRule, rule);
+     assertEquals(asSet(expectedRule), asSet(labelRules));
+ }
+\ No newline at end of file

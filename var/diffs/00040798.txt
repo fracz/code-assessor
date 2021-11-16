@@ -1,0 +1,28 @@
+diff --git a/31d98f0897da13fa2c1c8e6706d07c61a85f21cd b/19693770a57b72fce555c731f7de222947e301ba
+index 31d98f0897..19693770a5 100644
+--- a/31d98f0897da13fa2c1c8e6706d07c61a85f21cd
++++ b/19693770a57b72fce555c731f7de222947e301ba
+@@ -1,17 +1,18 @@
+ /**
+- * <!-- begin-user-doc -->
+- * <!-- end-user-doc -->
++ * <!-- begin-user-doc --> <!-- end-user-doc -->
++ *
+  * @generated NOT
+  */
+ public DecimalValue fetchSensorValue() {
+     try {
+         short chipTemperature = getMbrick().getTinkerforgeDevice().getChipTemperature();
+-        setTemperature(chipTemperature);
+-        return new DecimalValue(chipTemperature / 100);
++        DecimalValue value = Tools.calculate100(chipTemperature);
++        setSensorValue(value);
++        return value;
+     } catch (TimeoutException e) {
+         TinkerforgeErrorHandler.handleError(this, TinkerforgeErrorHandler.TF_TIMEOUT_EXCEPTION, e);
+     } catch (NotConnectedException e) {
+         TinkerforgeErrorHandler.handleError(this, TinkerforgeErrorHandler.TF_NOT_CONNECTION_EXCEPTION, e);
+     }
+     return null;
+ }
+\ No newline at end of file

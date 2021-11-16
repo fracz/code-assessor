@@ -1,0 +1,18 @@
+diff --git a/5682066b50f216bf64f8bcd7b7ffb822d8173ead b/443461c1a643bad5ed134bcf8d77d9417294ced7
+index 5682066b50..443461c1a6 100644
+--- a/5682066b50f216bf64f8bcd7b7ffb822d8173ead
++++ b/443461c1a643bad5ed134bcf8d77d9417294ced7
+@@ -1,9 +1,9 @@
+ @Override
+ public OStorageOperationResult<ORawBuffer> readRecordIfVersionIsNotLatest(final ORecordId rid, final String fetchPlan, final boolean ignoreCache, final int recordVersion) throws ORecordNotFoundException {
+     if (getCurrentSession().commandExecuting)
+         // PENDING NETWORK OPERATION, CAN'T EXECUTE IT NOW
+         return new OStorageOperationResult<ORawBuffer>(null);
+-    OBinaryRequest request = new OReadRecordIfVersionIsNotLatestRequest(rid, recordVersion, fetchPlan, ignoreCache);
+-    OBinaryResponse<OStorageOperationResult<ORawBuffer>> response = new OReadRecordIfVersionIsNotLatestResponse();
+-    return networkOperation(request, response, "Error on read record " + rid);
++    OReadRecordIfVersionIsNotLatestRequest request = new OReadRecordIfVersionIsNotLatestRequest(rid, recordVersion, fetchPlan, ignoreCache);
++    OReadRecordIfVersionIsNotLatestResponse response = networkOperation(request, "Error on read record " + rid);
++    return new OStorageOperationResult<ORawBuffer>(response.getResult());
+ }
+\ No newline at end of file

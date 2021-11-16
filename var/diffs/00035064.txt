@@ -1,0 +1,14 @@
+diff --git a/d2551004e73e8dbe2178d9424c7ea109898b3208 b/3e1067a2fbb5935a614cd6067e135c92c880d643
+index d2551004e7..3e1067a2fb 100644
+--- a/d2551004e73e8dbe2178d9424c7ea109898b3208
++++ b/3e1067a2fbb5935a614cd6067e135c92c880d643
+@@ -1,5 +1,5 @@
+ public float getPrefHeight() {
+-    if (sizeInvalid)
+-        computeSize();
+-    return prefHeight;
++    if (backgroundPatch != null)
++        return Math.max(layout.getPrefHeight(), (int) backgroundPatch.getTotalHeight());
++    return layout.getPrefHeight();
+ }
+\ No newline at end of file

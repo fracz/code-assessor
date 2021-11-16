@@ -1,0 +1,24 @@
+diff --git a/561adbffee17d7343d039c47aeb0ef86b403a973 b/3e6e9ce345bfa365b88a05f83c88a0f4ef921317
+index 561adbffee..3e6e9ce345 100644
+--- a/561adbffee17d7343d039c47aeb0ef86b403a973
++++ b/3e6e9ce345bfa365b88a05f83c88a0f4ef921317
+@@ -1,9 +1,11 @@
+-private Ansi.Color getColor(StyledTextOutput.Style style) {
+-    String override = System.getProperty(String.format("org.gradle.color.%s", style.name().toLowerCase()));
+-    if (override != null) {
+-        return Ansi.Color.valueOf(override.toUpperCase());
+-    } else {
+-        Ansi.Color color = defaults.get(style);
+-        return color == null ? DEFAULT : color;
++private Color getColor(String name) {
++    if (!useColor) {
++        return noDecoration;
+     }
++    Color color = colors.get(name);
++    if (color == null) {
++        color = createColor(name);
++        colors.put(name, color);
++    }
++    return color;
+ }
+\ No newline at end of file

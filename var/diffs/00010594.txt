@@ -1,0 +1,21 @@
+diff --git a/9d8acdefa9c3c4c8a5c889fd25230ef9a0e65d8a b/fdd8237b3916d910e12d57638c691df99556053c
+index 9d8acdefa9..fdd8237b39 100644
+--- a/9d8acdefa9c3c4c8a5c889fd25230ef9a0e65d8a
++++ b/fdd8237b3916d910e12d57638c691df99556053c
+@@ -1,8 +1,8 @@
+ /**
+- * Import a scheme from the given stream and source scheme name.
+- *
+- * @param inputStream  The input stream to import from.
+- * @param sourceScheme The source scheme name (one of returned by <code>readSchemeNames</code> method).
+- * @param scheme       The target scheme receiving data.
++ * Import a scheme from the given virtual file
++ * @param project
++ * @param selectedFile  The input file to import from.
++ * @param currentScheme
++ * @param schemeCreator Callback that provides the target scheme receiving data.
+  */
+-void importScheme(@NotNull InputStream inputStream, @Nullable String sourceScheme, T scheme) throws SchemeImportException;
+\ No newline at end of file
++boolean importScheme(@NotNull Project project, @NotNull VirtualFile selectedFile, T currentScheme, @NotNull PairConvertor<String, Boolean, T> schemeCreator) throws SchemeImportException;
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/8bfd798e3eb6fb35ad8bbcead08347b19dfb3f61 b/48e930f27fc94fc321c61dfbf3d119b1cde3ed01
+index 8bfd798e3e..48e930f27f 100644
+--- a/8bfd798e3eb6fb35ad8bbcead08347b19dfb3f61
++++ b/48e930f27fc94fc321c61dfbf3d119b1cde3ed01
+@@ -1,8 +1,5 @@
+-public void message(final String text, final int currentLine) {
+-    UIUtil.invokeLaterIfNeeded(new Runnable() {
+-
+-        public void run() {
+-            addInfo(text, currentLine, MESSAGE_COLOR);
+-        }
+-    });
++public void message(PlaybackRunner runner, final String text, final int currentLine) {
++    if (myRunner != runner)
++        return;
++    _message(text, currentLine);
+ }
+\ No newline at end of file

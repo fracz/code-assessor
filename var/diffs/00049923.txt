@@ -1,0 +1,17 @@
+diff --git a/531a498a2067a44df948a4abb428f84e38ec4524 b/ec75a05f5de48b6d43ee0f58f3839bf963e92661
+index 531a498a20..ec75a05f5d 100644
+--- a/531a498a2067a44df948a4abb428f84e38ec4524
++++ b/ec75a05f5de48b6d43ee0f58f3839bf963e92661
+@@ -1,7 +1,8 @@
+ public int computeHeaderHeight() {
+-    int y = topMargin + parent.sizingGC.getFontMetrics().getHeight() + bottomMargin;
+-    if (getImage() != null) {
+-        y = Math.max(y, topMargin + getImage().getBounds().height + bottomMargin);
++    int y = topMargin + grid.sizingGC.getFontMetrics().getHeight() + bottomMargin;
++    Image image = grid.getColumnLabelProvider().getImage(element);
++    if (image != null) {
++        y = Math.max(y, topMargin + image.getBounds().height + bottomMargin);
+     }
+     return y;
+ }
+\ No newline at end of file

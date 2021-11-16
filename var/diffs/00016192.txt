@@ -1,0 +1,12 @@
+diff --git a/d7b05c6cca45a96d7ad762a0b6556b7b859ffb09 b/98e5d6f5272a67643385832bc0eef0082d2b364e
+index d7b05c6cca..98e5d6f527 100644
+--- a/d7b05c6cca45a96d7ad762a0b6556b7b859ffb09
++++ b/98e5d6f5272a67643385832bc0eef0082d2b364e
+@@ -1,5 +1,4 @@
+ @Override
+ public void visitVarInsn(int opcode, int var) {
+-    int newVar = remapper.remap(var);
+-    super.visitVarInsn(opcode, newVar);
++    remapper.visitVarInsn(opcode, var, new InstructionAdapter(mv));
+ }
+\ No newline at end of file

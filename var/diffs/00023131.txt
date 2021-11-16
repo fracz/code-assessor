@@ -1,0 +1,57 @@
+diff --git a/77879e5ec488dbcc9f445a8e85ee0c1c4f53c22d b/b2be10fd470b1eedb70e0da35aa4903032761274
+index 77879e5ec4..b2be10fd47 100644
+--- a/77879e5ec488dbcc9f445a8e85ee0c1c4f53c22d
++++ b/b2be10fd470b1eedb70e0da35aa4903032761274
+@@ -1,38 +1,38 @@
+ /**
+  * Removes discovered printers given their ids. This method should be called
+  * during a printer discovery period, i.e. after a call to
+  * {@link #onStartPrinterDiscovery()} and before the corresponding
+  * call to {@link #onStopPrinterDiscovery()}, otherwise it does nothing.
+  * <p>
+  * For every printer discovery period all printers have to be added. You
+  * should remove only printers that were added in this printer discovery
+  * period by a call to {@link #addDiscoveredPrinters(List)}. You can call
+  * this method as many times as necessary during the discovery period
+  * but should not pass in already removed printer ids. If a printer with
+  * a given id is already removed in the same discovery period, it will
+- * be ignored.
++ * be ignored. If you want to update an already added printer, you should
++ * removed it and then re-add it.
+  * </p>
+  *
+  * @param printerIds A list with disappeared printer ids.
+  *
+- * @throws IllegalStateException If this service is not connected.
+- *
+  * @see #addDiscoveredPrinters(List)
+  * @see #onStartPrinterDiscovery()
+  * @see #onStopPrinterDiscovery()
++ *
++ * @throws IllegalStateException If this service is not connected.
+  */
+ public final void removeDiscoveredPrinters(List<PrinterId> printerIds) {
++    final IPrinterDiscoveryObserver observer;
+     synchronized (mLock) {
+-        if (mClient == null) {
+-            throw new IllegalStateException("Print serivice not connected!");
+-        }
+-        if (mDiscoveringPrinters) {
+-            try {
+-                // Calling with a lock into the system is fine.
+-                mClient.removeDiscoveredPrinters(printerIds);
+-            } catch (RemoteException re) {
+-                Log.e(LOG_TAG, "Error removing discovered printers!", re);
+-            }
++        throwIfNotConnectedLocked();
++        observer = mDiscoveryObserver;
++    }
++    if (observer != null) {
++        try {
++            observer.removeDiscoveredPrinters(printerIds);
++        } catch (RemoteException re) {
++            Log.e(LOG_TAG, "Error removing discovered printers", re);
+         }
+     }
+ }
+\ No newline at end of file

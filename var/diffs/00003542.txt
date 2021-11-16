@@ -1,0 +1,17 @@
+diff --git a/a6654fd5eecbda2e1a0c131e56b9040c7dc5585d b/c6b53417992a92311654de547cb6149297b4fdba
+index a6654fd5ee..c6b5341799 100644
+--- a/a6654fd5eecbda2e1a0c131e56b9040c7dc5585d
++++ b/c6b53417992a92311654de547cb6149297b4fdba
+@@ -1,8 +1,8 @@
+ @Override
+-public void updateParameters(List<String> parameters) {
++public void updateParameters(@NotNull Command command) {
+     if (accepted) {
+-        parameters.add("--trust-server-cert");
++        command.put("--trust-server-cert");
+         // force --non-interactive as it is required by --trust-server-cert, but --non-interactive is not default mode for 1.7 or earlier
+-        parameters.add("--non-interactive");
++        command.put("--non-interactive");
+     }
+ }
+\ No newline at end of file

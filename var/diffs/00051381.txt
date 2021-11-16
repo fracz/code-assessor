@@ -1,0 +1,14 @@
+diff --git a/3332d62be0df7f477925f144b673f75d50789177 b/f713a3c41c3b252a0ea0a1682aa1e5bd60db2e90
+index 3332d62be0..f713a3c41c 100644
+--- a/3332d62be0df7f477925f144b673f75d50789177
++++ b/f713a3c41c3b252a0ea0a1682aa1e5bd60db2e90
+@@ -1,7 +1,7 @@
+ @Override
+ public JDBCExecutionContext openContext(DBRProgressMonitor monitor, DBCExecutionPurpose purpose, String taskTitle) {
+     if (connection == null) {
+         throw new IllegalStateException(CoreMessages.editors_sql_status_not_connected_to_database);
+     }
+-    return new JDBCConnectionImpl(this, monitor, purpose, taskTitle, false);
++    return createConnection(monitor, purpose, taskTitle, false);
+ }
+\ No newline at end of file

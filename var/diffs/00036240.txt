@@ -1,0 +1,18 @@
+diff --git a/d354a4a80f94c451b6defde1a91ebc4beadf1360 b/411413c2aa9c92f6822a6f1001af4fa21dcfb7c9
+index d354a4a80f..411413c2aa 100644
+--- a/d354a4a80f94c451b6defde1a91ebc4beadf1360
++++ b/411413c2aa9c92f6822a6f1001af4fa21dcfb7c9
+@@ -1,11 +1,4 @@
+ public List<Invocation> findAllMatchingUnverifiedChunks(List<Invocation> invocations, InvocationMatcher wanted) {
+     List<Invocation> unverified = removeVerifiedInOrder(invocations);
+-    List<Invocation> allChunks = new LinkedList<Invocation>();
+-    // TODO use filter
+-    for (Invocation invocation : unverified) {
+-        if (wanted.matches(invocation)) {
+-            allChunks.add(invocation);
+-        }
+-    }
+-    return allChunks;
++    return ListUtil.filter(unverified, new RemoveNotMatching(wanted));
+ }
+\ No newline at end of file

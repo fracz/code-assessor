@@ -1,0 +1,24 @@
+diff --git a/df982e2689083c03b930f606436a1835932c3d9d b/32ba0d4912f9ce9ab8c9272bd54103252ba354fe
+index df982e2689..32ba0d4912 100644
+--- a/df982e2689083c03b930f606436a1835932c3d9d
++++ b/32ba0d4912f9ce9ab8c9272bd54103252ba354fe
+@@ -1,16 +1,12 @@
+ /**
+  * Build a {@link FutureRequestExecutionService} from the current properties and a HTTP client.
+  *
+  * @param httpClient the provided HTTP client
+  * @return the built request executor service
+  */
+ private FutureRequestExecutionService buildRequestExecutorService(final CloseableHttpClient httpClient) {
+-    final ExecutorService definedExecutorService;
+-    // no executor service provided -> create a default one
+     if (this.executorService == null) {
+-        definedExecutorService = new ThreadPoolExecutor(this.threadsNumber, this.threadsNumber, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>(this.queueSize));
+-    } else {
+-        definedExecutorService = this.executorService;
++        this.executorService = new ThreadPoolExecutor(this.threadsNumber, this.threadsNumber, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>(this.queueSize));
+     }
+-    return new FutureRequestExecutionService(httpClient, definedExecutorService);
++    return new FutureRequestExecutionService(httpClient, this.executorService);
+ }
+\ No newline at end of file

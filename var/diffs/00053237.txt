@@ -1,0 +1,11 @@
+diff --git a/a5b0d4abd8697ca23a22cd24ce9764cdcd6b7b95 b/afd0c735152650949bf10a149bd9a3f7a8cfef2d
+index a5b0d4abd8..afd0c73515 100644
+--- a/a5b0d4abd8697ca23a22cd24ce9764cdcd6b7b95
++++ b/afd0c735152650949bf10a149bd9a3f7a8cfef2d
+@@ -1,4 +1,4 @@
+ @Override
+ protected boolean isRowNumberSelectItem() {
+-    return getSqlParser().getLexer().getCurrentToken().getLiterals().equalsIgnoreCase("ROW_NUMBER");
++    return getSqlParser().skipIfEqual(SQLServerKeyword.ROW_NUMBER);
+ }
+\ No newline at end of file

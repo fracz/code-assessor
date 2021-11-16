@@ -1,0 +1,18 @@
+diff --git a/89ed72b7b7c859a6b960073908fe701b9157f732 b/6753730f5753b8b61a5ce0574e85147e8d5be808
+index 89ed72b7b7..6753730f57 100644
+--- a/89ed72b7b7c859a6b960073908fe701b9157f732
++++ b/6753730f5753b8b61a5ce0574e85147e8d5be808
+@@ -1,12 +1,11 @@
+ @Override
+ public void deletedEdge(InternalEdge edge) {
+     super.deletedEdge(edge);
+     if (edge.isNew())
+         return;
+     if (!edge.isInline()) {
+         // Only store those deleted edges that matter, i.e. those that we need to erase from memory on their own
+-        lockManager.deleteEdge(edge);
+         boolean success = deletedEdges.add(edge);
+         assert success;
+     }
+ }
+\ No newline at end of file

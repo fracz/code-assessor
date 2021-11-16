@@ -1,0 +1,20 @@
+diff --git a/4d4deff2752a9d55f19abaa58a38fc80a3d938ae b/bdd9836b051ea7c580665f2266d93ca4e1e8e736
+index 4d4deff275..bdd9836b05 100644
+--- a/4d4deff2752a9d55f19abaa58a38fc80a3d938ae
++++ b/bdd9836b051ea7c580665f2266d93ca4e1e8e736
+@@ -1,11 +1,4 @@
+-public void remove(MavenIndex i) throws MavenIndexException {
+-    try {
+-        try {
+-            closeIndexData(myIndicesData.remove(i));
+-        } finally {
+-            clearIndexData(i);
+-        }
+-    } catch (IOException e) {
+-        throw new MavenIndexException(e);
+-    }
++public synchronized void remove(MavenIndex i) throws MavenIndexException {
++    i.remove();
++    myIndices.remove(i);
+ }
+\ No newline at end of file

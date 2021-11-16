@@ -1,0 +1,20 @@
+diff --git a/2e28b3d91523e2f26b922863c356dae6beca9de9 b/f7b1f068c861aeabf82a2f3423be6e0687ef4e41
+index 2e28b3d915..f7b1f068c8 100644
+--- a/2e28b3d91523e2f26b922863c356dae6beca9de9
++++ b/f7b1f068c861aeabf82a2f3423be6e0687ef4e41
+@@ -1,11 +1,11 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiBinaryExpression comparison = (PsiBinaryExpression) location.getParent();
+-    assert comparison != null;
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiBinaryExpression comparison = (PsiBinaryExpression) infos[0];
+     final PsiJavaToken sign = comparison.getOperationSign();
+     final IElementType tokenType = sign.getTokenType();
+     if (tokenType.equals(JavaTokenType.EQEQ)) {
+         return InspectionGadgetsBundle.message("comparison.to.na.n.problem.descriptor1");
+     } else {
+         return InspectionGadgetsBundle.message("comparison.to.na.n.problem.descriptor2");
+     }
+ }
+\ No newline at end of file

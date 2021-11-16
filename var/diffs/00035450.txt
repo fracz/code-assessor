@@ -1,0 +1,33 @@
+diff --git a/d921273b5d48ca16250e8a073b665e7d2432f8be b/472606bade2e89bf57a600f9a902145a237bfe12
+index d921273b5d..472606bade 100644
+--- a/d921273b5d48ca16250e8a073b665e7d2432f8be
++++ b/472606bade2e89bf57a600f9a902145a237bfe12
+@@ -1,25 +1,24 @@
+ @SuppressWarnings("UnusedParameters")
+-private void onStatusChanged(int status) {
++private void onStatusChanged(final byte status) {
+     // others.
+     synchronized (statusChangedNotifyLock) {
+         if (model.getStatus() == FileDownloadStatus.paused) {
+             if (FileDownloadLog.NEED_LOG) {
+                 /**
+                  * Already paused or the current status is paused.
+                  *
+                  * We don't need to call-back to Task in here, because the pause status has
+                  * already handled by {@link BaseDownloadTask#pause()} manually.
+                  *
+                  * In some case, it will arrive here by High concurrent cause.  For performance
+                  * more make sense.
+                  *
+                  * High concurrent cause.
+                  */
+                 FileDownloadLog.d(this, "High concurrent cause, Already paused and we don't " + "need to call-back to Task in here, %d", getId());
+             }
+             return;
+         }
+-        transferModel.update(model);
+-        FileDownloadEventPool.getImpl().asyncPublishInFlow(new DownloadTransferEvent(transferModel.copy()));
++        MessageSnapshotFlow.getImpl().inflow(MessageSnapshotTaker.take(status, model, this));
+     }
+ }
+\ No newline at end of file

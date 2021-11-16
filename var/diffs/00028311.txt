@@ -1,0 +1,15 @@
+diff --git a/0ad8de14f82533eb7ea81db2857afc3b790a87e3 b/5be643124f223d14eda09a7498fcf2d285f9018b
+index 0ad8de14f8..5be643124f 100644
+--- a/0ad8de14f82533eb7ea81db2857afc3b790a87e3
++++ b/5be643124f223d14eda09a7498fcf2d285f9018b
+@@ -1,6 +1,7 @@
+ @Test
+ public void testListenInvalidHost() {
+-    client = vertx.createHttpClient(new ClientOptions());
++    server.close();
++    server = vertx.createHttpServer(new HttpServerOptions().setPort(DEFAULT_HTTP_PORT).setHost("iqwjdoqiwjdoiqwdiojwd"));
+     server.requestHandler(noOpHandler());
+-    server.listen(DEFAULT_HTTP_PORT, "iqwjdoqiwjdoiqwdiojwd", onFailure(s -> testComplete()));
++    server.listen(onFailure(s -> testComplete()));
+ }
+\ No newline at end of file

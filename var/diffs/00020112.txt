@@ -1,0 +1,16 @@
+diff --git a/5e5446099a9ee9ccaa2b01d22e0d7698a5dad59e b/2415dc9a392faf5ec7f5fe890914a4f48b3462b1
+index 5e5446099a..2415dc9a39 100644
+--- a/5e5446099a9ee9ccaa2b01d22e0d7698a5dad59e
++++ b/2415dc9a392faf5ec7f5fe890914a4f48b3462b1
+@@ -1,8 +1,5 @@
+ @Override
+ public int hashCode() {
+-    final int prime = 31;
+-    int result = 1;
+-    result = prime * result + ((name == null) ? 0 : name.hashCode());
+-    result = prime * result + ((owner == null) ? 0 : owner.hashCode());
+-    return result;
++    long hash = hashCode64();
++    return (int) (hash ^ (hash >>> 32));
+ }
+\ No newline at end of file

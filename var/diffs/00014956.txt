@@ -1,0 +1,15 @@
+diff --git a/a493211408f8b61421aaf563a5d23313915a2a2a b/0af3bdbe30d5600460d401296fcdf94287c62719
+index a493211408..0af3bdbe30 100644
+--- a/a493211408f8b61421aaf563a5d23313915a2a2a
++++ b/0af3bdbe30d5600460d401296fcdf94287c62719
+@@ -1,3 +1,7 @@
+-protected boolean isReferenceAtCaret(PsiElement nameIdentifier, PsiReference ref) {
+-    return nameIdentifier != null && ref.getElement() == nameIdentifier.getParent();
++protected boolean isReferenceAtCaret(PsiElement nameIdentifier, PsiReference ref, int offset) {
++    if (nameIdentifier != null && ref.getElement() == nameIdentifier.getParent()) {
++        final TextRange textRange = nameIdentifier.getTextRange();
++        return textRange != null && contains(textRange, offset);
++    }
++    return false;
+ }
+\ No newline at end of file

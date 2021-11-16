@@ -1,0 +1,18 @@
+diff --git a/7f27dc3bf06db198211a4f2e0d62d380932f052f b/825917888df7b68882e5a187d51a97b516cc17df
+index 7f27dc3bf0..825917888d 100644
+--- a/7f27dc3bf06db198211a4f2e0d62d380932f052f
++++ b/825917888df7b68882e5a187d51a97b516cc17df
+@@ -1,10 +1,9 @@
+ private void showResult(final long time, final boolean hasErrors) {
+-    final Shell shell = DBeaverUI.getActiveWorkbenchShell();
+-    shell.getDisplay().asyncExec(new Runnable() {
++    DBeaverUI.asyncExec(new Runnable() {
+
+         @Override
+         public void run() {
+-            UIUtils.showMessageBox(shell, "Data transfer", "Data transfer completed " + (hasErrors ? "with errors " : "") + "(" + RuntimeUtils.formatExecutionTime(time) + ")", hasErrors ? SWT.ICON_ERROR : SWT.ICON_INFORMATION);
++            UIUtils.showMessageBox(DBeaverUI.getActiveWorkbenchShell(), "Data transfer", "Data transfer completed " + (hasErrors ? "with errors " : "") + "(" + RuntimeUtils.formatExecutionTime(time) + ")", hasErrors ? SWT.ICON_ERROR : SWT.ICON_INFORMATION);
+         }
+     });
+ }
+\ No newline at end of file

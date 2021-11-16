@@ -1,0 +1,16 @@
+diff --git a/9cf180d6da96bd81304020acec2d64244478a148 b/b47f729e2961c3e274f1d153095441d76f346602
+index 9cf180d6da..b47f729e29 100644
+--- a/9cf180d6da96bd81304020acec2d64244478a148
++++ b/b47f729e2961c3e274f1d153095441d76f346602
+@@ -1,7 +1,8 @@
+ public static Lesson nextLesson(@NotNull final Lesson lesson) {
+     List<Lesson> lessons = lesson.getCourse().getLessons();
+-    if (lesson.getIndex() + 1 >= lessons.size()) {
++    int nextLessonIndex = lesson.getIndex();
++    if (nextLessonIndex >= lessons.size()) {
+         return null;
+     }
+-    return lessons.get(lesson.getIndex() + 1);
++    return lessons.get(nextLessonIndex);
+ }
+\ No newline at end of file

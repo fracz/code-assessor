@@ -1,0 +1,13 @@
+diff --git a/b8c7687abfb5d6a1e4978aadbbf884a5cd038f4d b/fc563d6410b3de104a3b1f03959936f5fb1cf57b
+index b8c7687abf..fc563d6410 100644
+--- a/b8c7687abfb5d6a1e4978aadbbf884a5cd038f4d
++++ b/fc563d6410b3de104a3b1f03959936f5fb1cf57b
+@@ -1,4 +1,6 @@
+ @Override
+ protected XmlDocument wrapDocument(ThreadContext context, RubyClass klass, Document doc) {
+-    return new HtmlDocument(context.getRuntime(), klass, doc);
++    HtmlDocument htmlDocument = new HtmlDocument(context.getRuntime(), klass, doc);
++    htmlDocument.setEncoding(ruby_encoding);
++    return htmlDocument;
+ }
+\ No newline at end of file

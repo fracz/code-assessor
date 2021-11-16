@@ -1,0 +1,14 @@
+diff --git a/926ebfcacf0346452a48ffe6c0f3e710ee7f99fc b/8bb32e1c247a87f12ef67aac3d4b6ac639e7c488
+index 926ebfcacf..8bb32e1c24 100644
+--- a/926ebfcacf0346452a48ffe6c0f3e710ee7f99fc
++++ b/8bb32e1c247a87f12ef67aac3d4b6ac639e7c488
+@@ -1,5 +1,7 @@
++@NotNull
+ @Override
+ public String getColumnId() {
+     DBPDataSource dataSource = getDataSource();
+-    return DBUtils.getSimpleQualifiedName(dataSource == null ? null : dataSource.getContainer().getName(), getAttribute().getEntityName(), getAttribute().getName());
++    DBCAttributeMetaData metaAttribute = binding.getMetaAttribute();
++    return DBUtils.getSimpleQualifiedName(dataSource == null ? null : dataSource.getContainer().getName(), metaAttribute.getEntityName(), metaAttribute.getName());
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/6462464586819ceff2b102b0957ebcf4995ba172 b/279f0b0a1d2bd9e89f610840bc2c609e3e22a388
+index 6462464586..279f0b0a1d 100644
+--- a/6462464586819ceff2b102b0957ebcf4995ba172
++++ b/279f0b0a1d2bd9e89f610840bc2c609e3e22a388
+@@ -1,10 +1,8 @@
+ @Override
+ public Long next() throws StorageException {
+-    if (next == null)
+-        next = nextInternal();
+-    if (next == null)
++    if (!hasNext())
+         throw new NoSuchElementException();
+     Long result = next;
+     next = null;
+     return result;
+ }
+\ No newline at end of file

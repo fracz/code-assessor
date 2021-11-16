@@ -1,0 +1,12 @@
+diff --git a/bdfd0dfef4b23f0f8cec8c81a14cee5d9fd821f9 b/1dbafb7540c6910111cc46797ed74146fbf42810
+index bdfd0dfef4..1dbafb7540 100644
+--- a/bdfd0dfef4b23f0f8cec8c81a14cee5d9fd821f9
++++ b/1dbafb7540c6910111cc46797ed74146fbf42810
+@@ -1,5 +1,4 @@
+ public <T extends BinaryToolSpec> Compiler<T> createAssembler() {
+     CommandLineTool<AssembleSpec> commandLineTool = commandLineTool(ToolType.ASSEMBLER);
+-    commandLineTool.withSpecTransformer(withSystemArgs(AssembleSpec.class, platformConfiguration.getAssemblerArgs()));
+-    return (Compiler<T>) new Assembler(commandLineTool, tools.getArgTransformer(ToolType.ASSEMBLER), getOutputFileSuffix());
++    return (Compiler<T>) new Assembler(commandLineTool, toolRegistry.getTool(ToolType.ASSEMBLER).getArgAction(), getOutputFileSuffix());
+ }
+\ No newline at end of file

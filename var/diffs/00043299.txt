@@ -1,0 +1,18 @@
+diff --git a/e997362503a926384f275d4d82f0b3f8b94b1457 b/9552560b348b419ed8c64be9995106a70f6bc800
+index e997362503..9552560b34 100644
+--- a/e997362503a926384f275d4d82f0b3f8b94b1457
++++ b/9552560b348b419ed8c64be9995106a70f6bc800
+@@ -1,6 +1,9 @@
+ @Override
+-public boolean add(final Object e) {
+-    if (converted && e instanceof ORID)
+-        converted = false;
++public boolean add(Object e) {
++    if (status == MULTIVALUE_STATUS.ALL_RIDS && e instanceof ORecord<?>)
++        // IT'S BETTER TO LEAVE ALL RIDS AND EXTRACT ONLY THIS ONE
++        e = ((ORecord<?>) e).getIdentity();
++    else
++        status = ORecordMultiValueHelper.getStatus(status, e);
+     return super.add(e);
+ }
+\ No newline at end of file

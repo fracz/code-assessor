@@ -1,0 +1,17 @@
+diff --git a/c2f4c7b3937666e31c14abb5ae9c6d27c879bd75 b/b661ee4388c38ed6c1f1475eb32c009c7548d1a5
+index c2f4c7b393..b661ee4388 100644
+--- a/c2f4c7b3937666e31c14abb5ae9c6d27c879bd75
++++ b/b661ee4388c38ed6c1f1475eb32c009c7548d1a5
+@@ -1,8 +1,8 @@
+-private void assertIndexExists(IndexDescriptor descriptor, Iterator<IndexDescriptor> indexes) throws NoSuchIndexException {
++private void assertIndexExists(IndexDescriptor index, Iterator<IndexDescriptor> indexes) throws NoSuchIndexException {
+     for (IndexDescriptor existing : loop(indexes)) {
+-        if (existing.getPropertyKeyId() == descriptor.getPropertyKeyId()) {
++        if (existing.equals(index)) {
+             return;
+         }
+     }
+-    throw new NoSuchIndexException(descriptor);
++    throw new NoSuchIndexException(index.descriptor());
+ }
+\ No newline at end of file

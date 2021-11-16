@@ -1,0 +1,14 @@
+diff --git a/fd9c6e6c730ed10021e54d9bc60680fad8239946 b/6f7ee7d9969b1decc076ff52c489cd2fd41fa308
+index fd9c6e6c73..6f7ee7d996 100644
+--- a/fd9c6e6c730ed10021e54d9bc60680fad8239946
++++ b/6f7ee7d9969b1decc076ff52c489cd2fd41fa308
+@@ -1,5 +1,5 @@
+ public synchronized Map<String, String> getGlobalConfigurations() throws IOException {
+-    OBinaryRequest request = new OGetGlobalConfigurationsRequest();
+-    OBinaryResponse<Map<String, String>> response = new OGetGlobalConfigurationsResponse();
+-    return networkAdminOperation(request, response, "Cannot retrieve the configuration list");
++    OGetGlobalConfigurationsRequest request = new OGetGlobalConfigurationsRequest();
++    OGetGlobalConfigurationsResponse response = networkAdminOperation(request, "Cannot retrieve the configuration list");
++    return response.getConfigs();
+ }
+\ No newline at end of file

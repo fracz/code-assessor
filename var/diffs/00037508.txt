@@ -1,0 +1,12 @@
+diff --git a/ed7967a4984fa2001bf5a9cb2028967f678a3317 b/e1be96b0ff0a6599cf0c73c81c307b8b1b01bea8
+index ed7967a498..e1be96b0ff 100644
+--- a/ed7967a4984fa2001bf5a9cb2028967f678a3317
++++ b/e1be96b0ff0a6599cf0c73c81c307b8b1b01bea8
+@@ -1,5 +1,5 @@
+ private Application readCallerApplication(Buffer row) {
+     String callerApplicationName = row.read2PrefixedString();
+     short callerServiceType = row.readShort();
+-    return new Application(callerApplicationName, callerServiceType);
++    return createApplication(callerApplicationName, callerServiceType);
+ }
+\ No newline at end of file

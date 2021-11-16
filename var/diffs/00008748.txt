@@ -1,0 +1,16 @@
+diff --git a/013b6c20335409930771adc2a4a35e8e9084596d b/8d1efa4803e0151c05f271c2d5d0a0b7c38a92a2
+index 013b6c2033..8d1efa4803 100644
+--- a/013b6c20335409930771adc2a4a35e8e9084596d
++++ b/8d1efa4803e0151c05f271c2d5d0a0b7c38a92a2
+@@ -1,7 +1,6 @@
+ private void showTree(final XValue value, final String name) {
+     XValueMarkers<?, ?> valueMarkers = ((XDebugSessionImpl) myDebugSession).getValueMarkers();
+-    XDebuggerTree tree = new XDebuggerTree(myDebugSession.getProject(), myDebugSession.getDebugProcess().getEditorsProvider(), myDebugSession.getCurrentPosition(), XDebuggerActions.INSPECT_TREE_POPUP_GROUP, valueMarkers);
+-    tree.getModel().addTreeModelListener(createTreeListener(tree));
+-    XValueHintTreeComponent component = new XValueHintTreeComponent(this, tree, Pair.create(value, name));
+-    showTreePopup(component, tree, name);
++    Pair<XValue, String> pair = Pair.create(value, name);
++    XDebuggerTreeCreator creator = new XDebuggerTreeCreator(myDebugSession.getProject(), myDebugSession.getDebugProcess().getEditorsProvider(), myDebugSession.getCurrentPosition(), valueMarkers);
++    showTreePopup(creator, pair);
+ }
+\ No newline at end of file

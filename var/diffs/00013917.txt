@@ -1,0 +1,14 @@
+diff --git a/8b0fd4a24b4a21e61e843978ea1700df0b010ec1 b/3512bed9fb16365c87a43adb809b3f5a70c3b98d
+index 8b0fd4a24b..3512bed9fb 100644
+--- a/8b0fd4a24b4a21e61e843978ea1700df0b010ec1
++++ b/3512bed9fb16365c87a43adb809b3f5a70c3b98d
+@@ -1,6 +1,7 @@
+ private void configureFile(String text) {
+     PsiFile psiFile = myFixture.configureByText("test.txt", text);
+     Document document = myFixture.getDocument(psiFile);
+-    TaskCompletionContributor.installCompletion(document, getProject(), null, false);
++    final Project project = getProject();
++    TextFieldWithAutoCompletionContributor.installCompletion(document, project, new ActivateTaskDialog.MyTextFieldWithAutoCompletionListProvider(project), false);
+     document.putUserData(CommitMessage.DATA_CONTEXT_KEY, new MapDataContext());
+ }
+\ No newline at end of file

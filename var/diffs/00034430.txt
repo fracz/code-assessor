@@ -1,0 +1,14 @@
+diff --git a/3164706fea06d4caadad7ac5d5427912935d2ddc b/a23f2c8a46daa2bb34945adcd8b6748f6986f101
+index 3164706fea..a23f2c8a46 100644
+--- a/3164706fea06d4caadad7ac5d5427912935d2ddc
++++ b/a23f2c8a46daa2bb34945adcd8b6748f6986f101
+@@ -1,4 +1,6 @@
+ public static Set<Part> getTextParts(Part part) throws MessagingException {
+-    List<Part> attachments = new ArrayList<Part>();
+-    return getParts(getViewables(part, attachments));
++    List<Viewable> viewableParts = new ArrayList<>();
++    List<Part> nonViewableParts = new ArrayList<>();
++    findViewablesAndAttachments(part, viewableParts, nonViewableParts);
++    return getParts(viewableParts);
+ }
+\ No newline at end of file

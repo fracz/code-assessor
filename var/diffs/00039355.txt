@@ -1,0 +1,23 @@
+diff --git a/9193a4069183b20937a6bfef8b42b8d719abc520 b/3a5197d7e90dff721ab20cbd3464fe3dceef16df
+index 9193a40691..3a5197d7e9 100644
+--- a/9193a4069183b20937a6bfef8b42b8d719abc520
++++ b/3a5197d7e90dff721ab20cbd3464fe3dceef16df
+@@ -1,14 +1,13 @@
+ // RELATIONSHIP TYPE TOKEN COMMAND
+ @Test
+ public void shouldApplyRelationshipTypeTokenCommandToTheStore() throws Exception {
+     // given
+-    final CommandHandler applier = newApplier(false);
++    final BatchTransactionApplier applier = newApplier(false);
+     final RelationshipTypeTokenRecord record = new RelationshipTypeTokenRecord(42);
++    final Command command = new RelationshipTypeTokenCommand().init(record);
+     // when
+-    boolean result = apply(applier, (handler, tx) -> {
+-        return handler.visitRelationshipTypeTokenCommand((RelationshipTypeTokenCommand) new Command.RelationshipTypeTokenCommand().init(record));
+-    }, transactionToApply);
++    boolean result = apply(applier, command::handle, transactionToApply);
+     // then
+     assertFalse(result);
+     verify(relationshipTypeTokenStore, times(1)).updateRecord(record);
+ }
+\ No newline at end of file

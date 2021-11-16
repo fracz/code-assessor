@@ -1,0 +1,19 @@
+diff --git a/abd3d6950ab8e53306918b0e77f9468fc0d8a334 b/d4cd2ec5ab1525a904536141f27003410bf25bde
+index abd3d6950a..d4cd2ec5ab 100644
+--- a/abd3d6950ab8e53306918b0e77f9468fc0d8a334
++++ b/d4cd2ec5ab1525a904536141f27003410bf25bde
+@@ -1,10 +1,8 @@
+ public final void start() {
+     synchronized (LOCK) {
+-        myRunning = true;
+-        if (myRunner != null)
++        if (isRunning() || isDisposed())
+             return;
+-        Application app = ApplicationManager.getApplication();
+-        myRunner = app != null ? new AppPool() : new PlainThread();
+-        myRunner.run(this);
++        myState = TimerState.startup;
++        mySharedThread.queue(this, 0);
+     }
+ }
+\ No newline at end of file

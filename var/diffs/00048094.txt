@@ -1,0 +1,29 @@
+diff --git a/d1dd9141bdaaa16d9fba113de2c9d84a28df5337 b/890878788a03e748533c6046133edab50660ee77
+index d1dd9141bd..890878788a 100644
+--- a/d1dd9141bdaaa16d9fba113de2c9d84a28df5337
++++ b/890878788a03e748533c6046133edab50660ee77
+@@ -1,18 +1,14 @@
+ @Override
+ protected Connection openConnection(@NotNull DBRProgressMonitor monitor, @NotNull String purpose) throws DBCException {
+     Connection mysqlConnection = super.openConnection(monitor, purpose);
+     {
+         // Provide client info
+-        IProduct product = Platform.getProduct();
+-        if (product != null) {
+-            String appName = DBeaverCore.getProductTitle();
+-            try {
+-                mysqlConnection.setClientInfo("ApplicationName", appName + " - " + purpose);
+-            } catch (Throwable e) {
+-                // just ignore
+-                log.debug(e);
+-            }
++        try {
++            mysqlConnection.setClientInfo("ApplicationName", DBUtils.getClientApplicationName(getContainer()) + " - " + purpose);
++        } catch (Throwable e) {
++            // just ignore
++            log.debug(e);
+         }
+     }
+     return mysqlConnection;
+ }
+\ No newline at end of file

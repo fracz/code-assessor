@@ -1,0 +1,12 @@
+diff --git a/236413a717a82bf33b0e5531dc910c2597cd37af b/acb5206a8b15029ff097cd2aac8a945278ab07ed
+index 236413a717..acb5206a8b 100644
+--- a/236413a717a82bf33b0e5531dc910c2597cd37af
++++ b/acb5206a8b15029ff097cd2aac8a945278ab07ed
+@@ -1,4 +1,4 @@
+ @Override
+-public Action generate(int i) {
+-    return createAction(NULL_ACTION_OWNER, outputArtifact, (i & 1) == 0 ? "0" : "1", (i & 2) == 0);
++public Action generate(ImmutableSet<KeyAttributes> attributesToFlip) {
++    return createAction(NULL_ACTION_OWNER, outputArtifact, attributesToFlip.contains(KeyAttributes.DATA) ? "0" : "1", attributesToFlip.contains(KeyAttributes.MAKE_EXECUTABLE));
+ }
+\ No newline at end of file

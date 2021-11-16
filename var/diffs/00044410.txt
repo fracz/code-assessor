@@ -1,0 +1,23 @@
+diff --git a/406b205911b5e02b164c222cf2132b760699c52c b/5ffd6e5b727bb4eb1863378755005c65421a7440
+index 406b205911..5ffd6e5b72 100644
+--- a/406b205911b5e02b164c222cf2132b760699c52c
++++ b/5ffd6e5b727bb4eb1863378755005c65421a7440
+@@ -1,15 +1,6 @@
+ @Test
+ public void geomFromTextRectangleTest() {
+-    ODocument polygon = new ODocument("Rectangle");
+-    polygon.field("coordinates", new ArrayList<Double>() {
+-
+-        {
+-            add(-45d);
+-            add(-30d);
+-            add(45d);
+-            add(30d);
+-        }
+-    });
++    ODocument polygon = rectangle();
+     // RECTANGLE
+-    checkFromText(polygon, "select ST_GeomFromText('POLYGON ((-45 30, 45 30, 45 -30, -45 -30,-45 30))') as geom");
++    checkFromText(polygon, "select ST_GeomFromText('" + RECTANGLEWKT + "') as geom");
+ }
+\ No newline at end of file

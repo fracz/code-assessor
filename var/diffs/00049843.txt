@@ -1,0 +1,18 @@
+diff --git a/1cf19196112452204185bda3e6679ad21ef616f0 b/ad1af1132d463987201eee71cb8d964feaf4c266
+index 1cf1919611..ad1af1132d 100644
+--- a/1cf19196112452204185bda3e6679ad21ef616f0
++++ b/ad1af1132d463987201eee71cb8d964feaf4c266
+@@ -1,9 +1,9 @@
+ void addWizardPages(DataTransferWizard wizard) {
+-    for (SubSettings subSettings : nodeSettings.values()) {
+-        if (subSettings.pages != null) {
+-            for (IWizardPage page : subSettings.pages) {
++    for (NodeSettings nodeSettings : this.nodeSettings.values()) {
++        if (nodeSettings.pages != null) {
++            for (IWizardPage page : nodeSettings.pages) {
+                 wizard.addPage(page);
+             }
+         }
+     }
+ }
+\ No newline at end of file

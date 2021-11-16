@@ -1,0 +1,12 @@
+diff --git a/51fdf86a4cef72c815e137b5252f064baf6e64af b/81aecf3eda752bb8061777d5342f071a968478ec
+index 51fdf86a4c..81aecf3eda 100644
+--- a/51fdf86a4cef72c815e137b5252f064baf6e64af
++++ b/81aecf3eda752bb8061777d5342f071a968478ec
+@@ -1,4 +1,4 @@
++@Override
+ public int compareTo(Token<String> o) {
+-    assert StorageService.getPartitioner() instanceof OrderPreservingPartitioner;
+-    return StorageService.getPartitioner().getDecoratedKeyComparator().compare(this.token, o.token);
++    return token.compareTo(o.token);
+ }
+\ No newline at end of file

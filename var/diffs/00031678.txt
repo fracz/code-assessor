@@ -1,0 +1,14 @@
+diff --git a/0ce43dea37a0551ab6e7bf9d71785c3e9c148bf6 b/832ff70ddf7a7f35fc19ba8c250447988fa97e7c
+index 0ce43dea37..832ff70ddf 100644
+--- a/0ce43dea37a0551ab6e7bf9d71785c3e9c148bf6
++++ b/832ff70ddf7a7f35fc19ba8c250447988fa97e7c
+@@ -1,7 +1,7 @@
+ private void updateZoomableControllerBounds() {
+     getPlainBounds(mImageBounds);
+-    mViewBounds.set(0, 0, getWidth(), getHeight());
++    getLimitBounds(mViewBounds);
+     mZoomableController.setImageBounds(mImageBounds);
+     mZoomableController.setViewBounds(mViewBounds);
+     FLog.v(TAG, "updateZoomableControllerBounds: view %x, view bounds: %s, image bounds: %s", this.hashCode(), mViewBounds, mImageBounds);
+ }
+\ No newline at end of file

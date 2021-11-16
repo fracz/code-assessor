@@ -1,0 +1,21 @@
+diff --git a/1e63b4ce623e2cf75d33f71b971f595223d4e169 b/07af6b189e4c987e978b0c26e80135cfdbd344c8
+index 1e63b4ce62..07af6b189e 100644
+--- a/1e63b4ce623e2cf75d33f71b971f595223d4e169
++++ b/07af6b189e4c987e978b0c26e80135cfdbd344c8
+@@ -1,12 +1,7 @@
+ @Override
+ public void initToolBar() {
+     mToolbar.setTitle("关于我");
+-    mToolbar.setNavigationIcon(R.drawable.action_button_back_pressed_light);
+-    mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+-
+-        @Override
+-        public void onClick(View v) {
+-            finish();
+-        }
+-    });
++    ActionBar actionBar = getSupportActionBar();
++    if (actionBar != null)
++        actionBar.setDisplayHomeAsUpEnabled(true);
+ }
+\ No newline at end of file

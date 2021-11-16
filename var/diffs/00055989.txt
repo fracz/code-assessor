@@ -1,0 +1,15 @@
+diff --git a/32607dd4cd138102fbe4d896e06f374e84b96e83 b/156b08e11df5c60d96557493208e18ba520f40f9
+index 32607dd4cd..156b08e11d 100644
+--- a/32607dd4cd138102fbe4d896e06f374e84b96e83
++++ b/156b08e11df5c60d96557493208e18ba520f40f9
+@@ -1,7 +1,8 @@
++@Test
+ public void testAliasThatOverridesEarlierBean() {
+-    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] { "/org/springframework/context/support/simpleContext.xml", "/org/springframework/context/support/aliasThatOverridesParent.xml" });
++    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] { FQ_SIMPLE_CONTEXT, ALIAS_THAT_OVERRIDES_PARENT_CONTEXT });
+     Object myMs = ctx.getBean("myMessageSource");
+     Object someMs2 = ctx.getBean("someMessageSource");
+     assertSame(myMs, someMs2);
+     assertOneMessageSourceOnly(ctx, myMs);
+ }
+\ No newline at end of file

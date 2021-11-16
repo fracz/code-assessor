@@ -1,0 +1,21 @@
+diff --git a/b8e1b688834ce18cf539c2c6afbd8a743884b2a4 b/57597ebcc59a87101dbcec3ba0f6e00f70da8297
+index b8e1b68883..57597ebcc5 100644
+--- a/b8e1b688834ce18cf539c2c6afbd8a743884b2a4
++++ b/57597ebcc59a87101dbcec3ba0f6e00f70da8297
+@@ -1,11 +1,11 @@
+ public void handler(TBase<?, ?> tbase, DatagramPacket datagramPacket) {
+-    if (logger.isDebugEnabled()) {
+-        logger.debug("handle " + tbase);
+-    }
++    assert (tbase instanceof JVMInfoThriftDTO);
+     try {
+         JVMInfoThriftDTO dto = (JVMInfoThriftDTO) tbase;
+-        System.out.println("Got JVM DTO. " + dto);
++        if (logger.isInfoEnabled()) {
++            logger.info("Received JVM=" + dto);
++        }
+     } catch (Exception e) {
+         logger.warn("ReadJVMData handle error " + e.getMessage(), e);
+     }
+ }
+\ No newline at end of file

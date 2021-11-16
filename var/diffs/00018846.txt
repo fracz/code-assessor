@@ -1,0 +1,14 @@
+diff --git a/25dccd90bfff4723879598e4e4bd6c4220e821d9 b/b9d32a4020b56340c43ee2a5867412aaab0f15bc
+index 25dccd90bf..b9d32a4020 100644
+--- a/25dccd90bfff4723879598e4e4bd6c4220e821d9
++++ b/b9d32a4020b56340c43ee2a5867412aaab0f15bc
+@@ -1,7 +1,4 @@
+ public void markAsNoSession(long messageId, long threadId) {
+-    SQLiteDatabase database = databaseHelper.getWritableDatabase();
+-    ContentValues contentValues = new ContentValues();
+-    contentValues.put(MESSAGE_BOX, Types.MESSAGE_BOX_NO_SESSION_INBOX);
+-    database.update(TABLE_NAME, contentValues, ID_WHERE, new String[] { messageId + "" });
++    updateMailboxBitmask(messageId, Types.ENCRYPTION_MASK, Types.ENCRYPTION_REMOTE_NO_SESSION_BIT);
+     notifyConversationListeners(threadId);
+ }
+\ No newline at end of file

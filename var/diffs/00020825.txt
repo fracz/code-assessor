@@ -1,0 +1,17 @@
+diff --git a/b9ce18c44221292712020c945238a78b38814f66 b/6a4549d87e85cc08646e73d855f90e0acfce2de8
+index b9ce18c442..6a4549d87e 100644
+--- a/b9ce18c44221292712020c945238a78b38814f66
++++ b/6a4549d87e85cc08646e73d855f90e0acfce2de8
+@@ -1,10 +1,10 @@
+ public MySqlDescribeStatement parseDescribe() throws ParserException {
+-    if (identifierEquals("DESC") || identifierEquals("DESCRIBE")) {
++    if (lexer.token() == Token.DESC || identifierEquals("DESCRIBE")) {
+         lexer.nextToken();
+     } else {
+         throw new ParserException("expect DESC, actual " + lexer.token());
+     }
+     MySqlDescribeStatement stmt = new MySqlDescribeStatement();
+     stmt.setObject(this.exprParser.name());
+     return stmt;
+ }
+\ No newline at end of file

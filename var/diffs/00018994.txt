@@ -1,0 +1,23 @@
+diff --git a/6a9ebbc64b998fe7764722ef61664de932eb439e b/e3d577042e6d4693996e1a71d24051b4427dd448
+index 6a9ebbc64b..e3d577042e 100644
+--- a/6a9ebbc64b998fe7764722ef61664de932eb439e
++++ b/e3d577042e6d4693996e1a71d24051b4427dd448
+@@ -1,15 +1,11 @@
+-// based on:
+-// http://developer.android.com/reference/android/hardware/Camera.Parameters.html#setRotation(int)
+ public int getCameraPictureRotation(int orientation) {
+-    Camera.CameraInfo info = new Camera.CameraInfo();
+-    Camera.getCameraInfo(cameraId, info);
+-    int rotation;
++    final CameraInfo info = getCameraInfo();
++    final int rotation;
+     orientation = (orientation + 45) / 90 * 90;
+     if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+         rotation = (info.orientation - orientation + 360) % 360;
+     } else {
+-        // back-facing camera
+         rotation = (info.orientation + orientation) % 360;
+     }
+     return rotation;
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/6e9e4fc40ef7f5e784aca1a96591a4186013e515 b/b89319a71ca5fd62a07ede853e6e4b77d8ee5c92
+index 6e9e4fc40e..b89319a71c 100644
+--- a/6e9e4fc40ef7f5e784aca1a96591a4186013e515
++++ b/b89319a71ca5fd62a07ede853e6e4b77d8ee5c92
+@@ -1,5 +1,11 @@
+ @Override
+ protected Statement withAfterClasses(Statement statement) {
+     final Statement afterClasses = super.withAfterClasses(statement);
+-    return new AfterCallbackStatement(afterClasses, this);
++    return new AfterCallbackStatement(afterClasses, new Statement() {
++
++        @Override
++        public void evaluate() throws Throwable {
++            after();
++        }
++    });
+ }
+\ No newline at end of file

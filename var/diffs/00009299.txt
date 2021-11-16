@@ -1,0 +1,21 @@
+diff --git a/7ed2f059bfc2e48171bdb8aef8e365f904d18a28 b/db1f5d6f855a2f4b7ee5edce145f4e1d1833164d
+index 7ed2f059bf..db1f5d6f85 100644
+--- a/7ed2f059bfc2e48171bdb8aef8e365f904d18a28
++++ b/db1f5d6f855a2f4b7ee5edce145f4e1d1833164d
+@@ -1,12 +1,8 @@
+-protected void doSplit(@NotNull String text, @NotNull TextRange range, List<CheckArea> results) {
+-    Matcher matcher;
++protected void doSplit(@NotNull String text, @NotNull TextRange range, Consumer<TextRange> consumer) {
+     final WordSplitter ws = SplitterFactory.getInstance().getWordSplitter();
+-    matcher = EXTENDED_WORD_AND_SPECIAL.matcher(range.substring(text));
++    Matcher matcher = EXTENDED_WORD_AND_SPECIAL.matcher(range.substring(text));
+     while (matcher.find()) {
+         TextRange found = matcherRange(range, matcher);
+-        final List<CheckArea> res = ws.split(text, found);
+-        if (res != null) {
+-            results.addAll(res);
+-        }
++        ws.split(text, found, consumer);
+     }
+ }
+\ No newline at end of file

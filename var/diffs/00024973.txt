@@ -1,0 +1,30 @@
+diff --git a/de32b5ee1439165b82346f23e49798f372d90fcd b/6529e03071512a6fe7ae79c34fc23b09a367b797
+index de32b5ee14..6529e03071 100644
+--- a/de32b5ee1439165b82346f23e49798f372d90fcd
++++ b/6529e03071512a6fe7ae79c34fc23b09a367b797
+@@ -1,18 +1,12 @@
+ /**
+- * encode the buffers.
+- * After encoding, flip each buffer.
++ * Encode the buffers, i.e. compute parities.
+  *
+  * @param buffers data buffers + parity buffers
+  */
+-private void encode(ByteBuffer[] buffers) {
+-    ByteBuffer[] dataBuffers = new ByteBuffer[numDataBlocks];
+-    ByteBuffer[] parityBuffers = new ByteBuffer[numAllBlocks - numDataBlocks];
+-    for (int i = 0; i < numAllBlocks; i++) {
+-        if (i < numDataBlocks) {
+-            dataBuffers[i] = buffers[i];
+-        } else {
+-            parityBuffers[i - numDataBlocks] = buffers[i];
+-        }
+-    }
++private static void encode(RawErasureEncoder encoder, int numData, ByteBuffer[] buffers) {
++    final ByteBuffer[] dataBuffers = new ByteBuffer[numData];
++    final ByteBuffer[] parityBuffers = new ByteBuffer[buffers.length - numData];
++    System.arraycopy(buffers, 0, dataBuffers, 0, dataBuffers.length);
++    System.arraycopy(buffers, numData, parityBuffers, 0, parityBuffers.length);
+     encoder.encode(dataBuffers, parityBuffers);
+ }
+\ No newline at end of file

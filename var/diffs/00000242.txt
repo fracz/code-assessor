@@ -1,0 +1,19 @@
+diff --git a/f075e1f5cb9625040e64c2ef6d9f9aee5b3ea4f2 b/ab93f1d38612435db3ac1dbc0ecf4d2a86b1f2bb
+index f075e1f5cb..ab93f1d386 100644
+--- a/f075e1f5cb9625040e64c2ef6d9f9aee5b3ea4f2
++++ b/ab93f1d38612435db3ac1dbc0ecf4d2a86b1f2bb
+@@ -1,12 +1,12 @@
+ /**
+  * Tests for default {@link CreateOptions}.
+  */
+ @Test
+ public void defaults() throws IOException {
+-    CreateOptions options = new CreateOptions();
++    CreateOptions options = CreateOptions.defaults();
+     Permission expectedPs = Permission.defaults().applyFileUMask();
+     // Verify that the owner and group are not set.
+     Assert.assertEquals("", options.getPermission().getOwner());
+     Assert.assertEquals("", options.getPermission().getGroup());
+     Assert.assertEquals(expectedPs.getMode().toShort(), options.getPermission().getMode().toShort());
+ }
+\ No newline at end of file

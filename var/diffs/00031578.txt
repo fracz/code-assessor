@@ -1,0 +1,35 @@
+diff --git a/9745533333bc42fab569fab77ea4919a3ba2606c b/8f269be7e8a0ffd2b41804b8071f2a987fd8d3a4
+index 9745533333..8f269be7e8 100644
+--- a/9745533333bc42fab569fab77ea4919a3ba2606c
++++ b/8f269be7e8a0ffd2b41804b8071f2a987fd8d3a4
+@@ -1,24 +1,19 @@
+ /**
+  * Called by the dispatcher when the user clicks 'logout'.
+  */
+ public void go() {
+     Facebook fb = Session.restore(getActivity()).getFb();
+     // clear the local session data
+     Session.clearSavedSession(getActivity());
+-    fb.addSessionListener(new SessionListener() {
++    new AsyncFacebook(fb).logout(getActivity(), new RequestListener() {
+
+-        public void onLogoutFinish() {
++        public void onError(String error) {
++            Log.e("app", error);
+             dispatcher.runHandler("login");
+         }
+
+-        public void onAuthFail(String error) {
+-        }
+-
+-        public void onAuthSucceed() {
+-        }
+-
+-        public void onLogoutBegin() {
++        public void onComplete(String response) {
++            dispatcher.runHandler("login");
+         }
+     });
+-    fb.logout(getActivity());
+ }
+\ No newline at end of file

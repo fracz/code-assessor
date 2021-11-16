@@ -1,0 +1,17 @@
+diff --git a/51b293c614e4927f543c4b00fee0215f93b471d8 b/a23510335b5e76245cc2a998f5657927c649e37a
+index 51b293c614..a23510335b 100644
+--- a/51b293c614e4927f543c4b00fee0215f93b471d8
++++ b/a23510335b5e76245cc2a998f5657927c649e37a
+@@ -1,7 +1,8 @@
+ /**
+  * Delegates to the OQueryExecutor the query execution.
+  */
+-public List<T> execute(final int iLimit) {
+-    limit = iLimit;
+-    return database.getStorage().getCommandExecutor().execute(this, iLimit);
++@SuppressWarnings("unchecked")
++public List<T> execute(final Object... iArgs) {
++    parameters = iArgs;
++    return (List<T>) database.getStorage().command(this);
+ }
+\ No newline at end of file

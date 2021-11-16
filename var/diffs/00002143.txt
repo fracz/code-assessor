@@ -1,0 +1,12 @@
+diff --git a/76e4b212b14c18aa6c4d36f3b1bc805f0b716416 b/e0b8d78cf4e134eefc58d7b40249ba10498b0c0e
+index 76e4b212b1..e0b8d78cf4 100644
+--- a/76e4b212b14c18aa6c4d36f3b1bc805f0b716416
++++ b/e0b8d78cf4e134eefc58d7b40249ba10498b0c0e
+@@ -1,5 +1,5 @@
+ public PsiElement addBefore(@NotNull PsiElement psiElement, PsiElement beforeThis) throws IncorrectOperationException {
+     PyUtil.ensureWritable(this);
+     checkPyExpression(psiElement);
+-    return getLanguage().getElementGenerator().insertItemIntoList(getProject(), this, null, (PyExpression) psiElement);
++    return PyElementGenerator.getInstance(getProject()).insertItemIntoList(this, null, (PyExpression) psiElement);
+ }
+\ No newline at end of file

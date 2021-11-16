@@ -1,0 +1,16 @@
+diff --git a/a7ef1e20969e06bfa5d485681b2fac697721a355 b/830e4331c08ff1b38453dfef19401d9dcd88db47
+index a7ef1e2096..830e4331c0 100644
+--- a/a7ef1e20969e06bfa5d485681b2fac697721a355
++++ b/830e4331c08ff1b38453dfef19401d9dcd88db47
+@@ -1,9 +1,3 @@
+ private static KCVSConfiguration getGlobalConfiguration(final BackendOperation.TransactionalProvider txProvider, final KeyColumnValueStore store, final Configuration config) {
+-    try {
+-        KCVSConfiguration kcvsConfig = new KCVSConfiguration(txProvider, config.get(TIMESTAMP_PROVIDER), store, SYSTEM_CONFIGURATION_IDENTIFIER);
+-        kcvsConfig.setMaxOperationWaitTime(config.get(SETUP_WAITTIME));
+-        return kcvsConfig;
+-    } catch (BackendException e) {
+-        throw new TitanException("Could not open global configuration", e);
+-    }
++    return getConfiguration(txProvider, store, SYSTEM_CONFIGURATION_IDENTIFIER, config);
+ }
+\ No newline at end of file

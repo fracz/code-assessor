@@ -1,0 +1,14 @@
+diff --git a/6ec7582f3520ca61d273cebf285aa7922598d8c1 b/f373115b4b4861fd761c8b3d9e2042b8dfb6e52b
+index 6ec7582f35..f373115b4b 100644
+--- a/6ec7582f3520ca61d273cebf285aa7922598d8c1
++++ b/f373115b4b4861fd761c8b3d9e2042b8dfb6e52b
+@@ -1,7 +1,7 @@
+ public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
+     if (new ObjectMethodsGuru().isToString(method)) {
+-        return "SmartNull returned by unstubbed " + formatMethodCall() + " method on mock";
++        return "SmartNull returned by this unstubbed method call on a mock:\n" + invocation.toString();
+     }
+     new Reporter().smartNullPointerException(invocation.toString(), location);
+     return null;
+ }
+\ No newline at end of file

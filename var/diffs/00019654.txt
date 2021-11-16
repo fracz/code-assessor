@@ -1,0 +1,18 @@
+diff --git a/5bc03899a13a8c4a5b13280fd7e90a33ec53d76a b/082df501ce9484e47d1f2e55702189b72fd4633b
+index 5bc03899a1..082df501ce 100644
+--- a/5bc03899a13a8c4a5b13280fd7e90a33ec53d76a
++++ b/082df501ce9484e47d1f2e55702189b72fd4633b
+@@ -1,8 +1,7 @@
++@Override
+ public void stop() {
+     super.stop();
+-    if (zooKeeperLogPositionManager.isStart()) {
+-        zooKeeperLogPositionManager.stop();
+-    }
+-    executor.shutdownNow();
+-    positions.clear();
++    executor.shutdown();
++    zooKeeperLogPositionManager.stop();
++    memoryLogPositionManager.stop();
+ }
+\ No newline at end of file

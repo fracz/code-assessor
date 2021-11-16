@@ -1,0 +1,14 @@
+diff --git a/f86e41ee7f9aa7e5711311c91a48e6f0e322215f b/9602e7bd761fb5fb03c0e3469d1b98bba3631749
+index f86e41ee7f..9602e7bd76 100644
+--- a/f86e41ee7f9aa7e5711311c91a48e6f0e322215f
++++ b/9602e7bd761fb5fb03c0e3469d1b98bba3631749
+@@ -1,4 +1,7 @@
+ @Override
+ public DBSDataType getDataType() {
+-    return this;
++    if (structType == null) {
++        structType = new StructType();
++    }
++    return structType;
+ }
+\ No newline at end of file

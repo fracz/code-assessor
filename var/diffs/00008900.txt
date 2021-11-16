@@ -1,0 +1,14 @@
+diff --git a/24a4e568f6eb91bf063bf1af5539c7c04f148c5b b/63874e288fff9b554972d78696d4e3badd6b60a5
+index 24a4e568f6..63874e288f 100644
+--- a/24a4e568f6eb91bf063bf1af5539c7c04f148c5b
++++ b/63874e288fff9b554972d78696d4e3badd6b60a5
+@@ -1,5 +1,5 @@
+ @NotNull
+-private static HEquations convertEquations(MessageDigest md, Key methodKey, List<Equation> rawMethodEquations) {
+-    List<DirectionResultPair> compressedMethodEquations = ContainerUtil.map(rawMethodEquations, equation -> BytecodeAnalysisConverter.convert(equation, md));
+-    return new HEquations(compressedMethodEquations, methodKey.stable);
++private static Equations convertEquations(EKey methodKey, List<Equation> rawMethodEquations) {
++    List<DirectionResultPair> compressedMethodEquations = ContainerUtil.map(rawMethodEquations, equation -> new DirectionResultPair(equation.key.dirKey, equation.result));
++    return new Equations(compressedMethodEquations, methodKey.stable);
+ }
+\ No newline at end of file

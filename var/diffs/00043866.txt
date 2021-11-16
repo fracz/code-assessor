@@ -1,0 +1,17 @@
+diff --git a/f50045d28401d0a5cdd92e4fd7156736d296c3af b/3c82c46ba320af2aa2e18002b2565ab313294988
+index f50045d284..3c82c46ba3 100644
+--- a/f50045d28401d0a5cdd92e4fd7156736d296c3af
++++ b/3c82c46ba320af2aa2e18002b2565ab313294988
+@@ -1,9 +1,9 @@
+ @BeforeMethod
+-public void beforeMethod() {
+-    database.open("admin", "admin");
++public void beforeMethod() throws Exception {
++    super.beforeMethod();
+     OIndex<?> index = getIndex();
+     if (index == null) {
+         OBinarySerializerFactory.getInstance().registerSerializer(new OHash256Serializer(), null);
+         database.getMetadata().getIndexManager().createIndex("custom-hash", "UNIQUE", new ORuntimeKeyIndexDefinition(OHash256Serializer.ID), null, null, null);
+     }
+ }
+\ No newline at end of file

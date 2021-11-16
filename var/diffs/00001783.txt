@@ -1,0 +1,16 @@
+diff --git a/5de8781cf7a48ca5ad290b572fb14f3e68848c58 b/182352d4d5513c2b7ccfd50da170a5935a1fd83e
+index 5de8781cf7..182352d4d5 100644
+--- a/5de8781cf7a48ca5ad290b572fb14f3e68848c58
++++ b/182352d4d5513c2b7ccfd50da170a5935a1fd83e
+@@ -1,9 +1,3 @@
+ public void testUseAnyVariable() {
+-    doTest(null, null, null, new GenParams() {
+-
+-        @Override
+-        public ParameterInfoImpl[] genParams(PsiMethod method) throws IncorrectOperationException {
+-            return new ParameterInfoImpl[] { new ParameterInfoImpl(-1, "l", myFactory.createTypeFromText("List", method), "null", true) };
+-        }
+-    }, false);
++    doTest(null, null, null, method -> new ParameterInfoImpl[] { new ParameterInfoImpl(-1, "l", myFactory.createTypeFromText("List", method), "null", true) }, false);
+ }
+\ No newline at end of file

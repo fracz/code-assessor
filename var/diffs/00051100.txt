@@ -1,0 +1,14 @@
+diff --git a/bf2efb652916d6b2dc80e89b4fc2aaa7e79d1918 b/31c739b0c89ab8fe32272fec764a2231185deddc
+index bf2efb6529..31c739b0c8 100644
+--- a/bf2efb652916d6b2dc80e89b4fc2aaa7e79d1918
++++ b/31c739b0c89ab8fe32272fec764a2231185deddc
+@@ -1,7 +1,7 @@
+ @Override
+ public void setAutoCommit(boolean autoCommit) throws SQLException {
+     getOriginal().setAutoCommit(autoCommit);
+     if (!disableLogging) {
+-        QMUtils.getDefaultHandler().handleTransactionAutocommit(this, autoCommit);
++        QMUtils.getDefaultHandler().handleTransactionAutocommit(context, autoCommit);
+     }
+ }
+\ No newline at end of file

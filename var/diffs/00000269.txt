@@ -1,0 +1,14 @@
+diff --git a/cf712693c55aa26ccfdb1da4c5b0672c1cd1bc04 b/912b582b313226bb50d78cdcf5f2bc7f311fb6c9
+index cf712693c5..912b582b31 100644
+--- a/cf712693c55aa26ccfdb1da4c5b0672c1cd1bc04
++++ b/912b582b313226bb50d78cdcf5f2bc7f311fb6c9
+@@ -1,7 +1,7 @@
+ @Override
+ public void cleanup() throws IOException {
+     String oldDir = mBaseDir;
+     mBaseDir = mSwiftContainer + UUID.randomUUID();
+     UnderFileSystem ufs = UnderFileSystem.get(mBaseDir);
+-    ufs.deleteDirectory(oldDir, new DeleteOptions().setRecursive(true));
++    ufs.deleteDirectory(oldDir, DeleteOptions.defaults().setRecursive(true));
+ }
+\ No newline at end of file

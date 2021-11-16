@@ -1,0 +1,17 @@
+diff --git a/56ce9c9f09896877e5bc11e3aa848d91930ac76c b/dfd3c861606e106cafd7442cf0bf68ab367171f1
+index 56ce9c9f09..dfd3c86160 100644
+--- a/56ce9c9f09896877e5bc11e3aa848d91930ac76c
++++ b/dfd3c861606e106cafd7442cf0bf68ab367171f1
+@@ -1,4 +1,10 @@
+ @Override
+ protected void doFix(@NotNull Project project, @NotNull ProblemDescriptor descriptor) {
+-    replaceExpression((GrExpression) descriptor.getPsiElement(), replacement);
++    PsiElement element = descriptor.getPsiElement().getParent();
++    if (!(element instanceof GrReferenceExpression))
++        return;
++    PsiElement call = element.getParent();
++    if (!(call instanceof GrMethodCallExpression))
++        return;
++    replaceExpression(replacement.getElementToReplace((GrMethodCallExpression) call), replacement.getReplacement());
+ }
+\ No newline at end of file

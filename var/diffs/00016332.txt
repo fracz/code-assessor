@@ -1,0 +1,16 @@
+diff --git a/0216864073dd7c5e37975d9b8d30d585482ad4e9 b/abf86ecd53495d617256c8c103edddc4f91c3f82
+index 0216864073..abf86ecd53 100644
+--- a/0216864073dd7c5e37975d9b8d30d585482ad4e9
++++ b/abf86ecd53495d617256c8c103edddc4f91c3f82
+@@ -1,7 +1,7 @@
+ @NotNull
+ private LexicalScope getDeclarationsScope(String path) throws IOException {
+     KtFile ktFile = KotlinTestUtils.loadJetFile(getProject(), new File(path));
+-    BindingTrace trace = new CliLightClassGenerationSupport.CliBindingTrace();
+-    LazyResolveTestUtil.resolve(getProject(), trace, Collections.singletonList(ktFile), getEnvironment());
+-    return trace.get(BindingContext.LEXICAL_SCOPE, ktFile);
++    AnalysisResult result = JvmResolveUtil.analyze(ktFile, getEnvironment());
++    // noinspection ConstantConditions
++    return result.getBindingContext().get(BindingContext.LEXICAL_SCOPE, ktFile);
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/4a36db19c418902e1e8e43dc41d2bf278ff304ad b/8eeb50b7317d38871d4fcab15eddf6c6a0b0d514
+index 4a36db19c4..8eeb50b731 100644
+--- a/4a36db19c418902e1e8e43dc41d2bf278ff304ad
++++ b/8eeb50b7317d38871d4fcab15eddf6c6a0b0d514
+@@ -1,6 +1,8 @@
+ public int getRegCount() {
+-    if (type == PrimitiveType.LONG || type == PrimitiveType.DOUBLE)
+-        return 2;
+-    else
+-        return 1;
++    if (isPrimitive()) {
++        PrimitiveType type = getPrimitiveType();
++        if (type == PrimitiveType.LONG || type == PrimitiveType.DOUBLE)
++            return 2;
++    }
++    return 1;
+ }
+\ No newline at end of file

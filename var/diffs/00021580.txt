@@ -1,0 +1,13 @@
+diff --git a/c88fe5f7b724b18f6a0019d7857a9ea274f9bd86 b/df4e739ded35a68359447537efd3c0f1b73cf7d9
+index c88fe5f7b7..df4e739ded 100644
+--- a/c88fe5f7b724b18f6a0019d7857a9ea274f9bd86
++++ b/df4e739ded35a68359447537efd3c0f1b73cf7d9
+@@ -1,4 +1,5 @@
+ @Provides
+-ThreadExecutor provideThreadExecutor() {
+-    return JobExecutor.getInstance();
++@Singleton
++ThreadExecutor provideThreadExecutor(JobExecutor jobExecutor) {
++    return jobExecutor;
+ }
+\ No newline at end of file

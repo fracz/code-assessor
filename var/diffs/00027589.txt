@@ -1,0 +1,13 @@
+diff --git a/57ffbcb1d741b5d5e11c0ee95bf17974167fd0a7 b/ec90354565a8063b61f86992555fbece044e7772
+index 57ffbcb1d7..ec90354565 100644
+--- a/57ffbcb1d741b5d5e11c0ee95bf17974167fd0a7
++++ b/ec90354565a8063b61f86992555fbece044e7772
+@@ -1,6 +1,5 @@
+ @Test
+ public void testWeirdSchemaOnExactURI() throws Exception {
+     final URIExtractionNamespace extractionNamespace = new URIExtractionNamespace(new URI(FAKE_SCHEME, namespace.getUri().getUserInfo(), namespace.getUri().getHost(), namespace.getUri().getPort(), namespace.getUri().getPath(), namespace.getUri().getQuery(), namespace.getUri().getFragment()), null, null, namespace.getNamespaceParseSpec(), Period.millis((int) namespace.getPollMs()), null);
+-    final Map<String, String> map = new HashMap<>();
+-    Assert.assertNotNull(factory.populateCache(id, extractionNamespace, null, map));
++    Assert.assertNotNull(populator.populateCache(extractionNamespace, null, null, scheduler));
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/eab1c1ad0a3abf3a9dbd85db837b392f1ed394ef b/00073dbfbeca41e32434dfb7c80d446b2554dde4
+index eab1c1ad0a..00073dbfbe 100644
+--- a/eab1c1ad0a3abf3a9dbd85db837b392f1ed394ef
++++ b/00073dbfbeca41e32434dfb7c80d446b2554dde4
+@@ -1,10 +1,10 @@
+ @Override
+ public Object execute(int docId, Map<String, Object> vars) {
+-    this.docId = docId;
++    docMap.setNextDocId(docId);
+     if (vars == null) {
+         vars = cachedVars.get().get();
+         vars.clear();
+     }
+-    vars.put("doc", this);
++    vars.put("doc", docMap);
+     return scriptService.execute(script, vars);
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/04b749eddb0a2fbdbd840efc0e47e698ea356e49 b/f85e0b343a85084024edfc8391cfc748fa83f72c
+index 04b749eddb..f85e0b343a 100644
+--- a/04b749eddb0a2fbdbd840efc0e47e698ea356e49
++++ b/f85e0b343a85084024edfc8391cfc748fa83f72c
+@@ -1,4 +1,4 @@
+ private static void doTest(List<TimedVcsCommit> started, List<TimedVcsCommit> expected) {
+-    List<TimedVcsCommit> sorted = new VcsLogSorter<TimedVcsCommit>().sortByDateTopoOrder(started);
++    List<TimedVcsCommit> sorted = VcsLogSorter.sortByDateTopoOrder(started);
+     assertEquals(toStr(expected), toStr(sorted));
+ }
+\ No newline at end of file

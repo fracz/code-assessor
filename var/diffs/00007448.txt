@@ -1,0 +1,17 @@
+diff --git a/8eacd87f0b1bec396c26ff3263ad217edbd608c2 b/1e3ab5d526f2765dc6b957e6dc3b88715f0dd59d
+index 8eacd87f0b..1e3ab5d526 100644
+--- a/8eacd87f0b1bec396c26ff3263ad217edbd608c2
++++ b/1e3ab5d526f2765dc6b957e6dc3b88715f0dd59d
+@@ -1,6 +1,9 @@
+ @NotNull
+-private GrStatement getAnchor(PsiElement[] replaced, PsiElement replacedExpression) {
+-    PsiElement anchor = GrIntroduceHandlerBase.findAnchor(replaced, GroovyRefactoringUtil.getEnclosingContainer(replacedExpression));
++private GrStatement getAnchor(PsiElement[] replaced) {
++    PsiElement parent = PsiTreeUtil.findCommonParent(replaced);
++    PsiElement container = getEnclosingContainer(parent);
++    assert container != null;
++    PsiElement anchor = GrIntroduceHandlerBase.findAnchor(replaced, container);
+     GrIntroduceHandlerBase.assertStatement(anchor, myOccurrences, myContext.getScope());
+     return (GrStatement) anchor;
+ }
+\ No newline at end of file

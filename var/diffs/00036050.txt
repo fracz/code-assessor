@@ -1,0 +1,18 @@
+diff --git a/e3dec5bce86c5f0ceb494efbc15b5d59a79423bd b/9dc951ca7769b64bba0b7e59c821fb654d6035f2
+index e3dec5bce8..9dc951ca77 100644
+--- a/e3dec5bce86c5f0ceb494efbc15b5d59a79423bd
++++ b/9dc951ca7769b64bba0b7e59c821fb654d6035f2
+@@ -1,10 +1,3 @@
+-public synchronized int nextSequenceNumber() {
+-    if (invocationSequenceNumber.get() == null) {
+-        invocationSequenceNumber.set(1);
+-        return 1;
+-    } else {
+-        int next = invocationSequenceNumber.get() + 1;
+-        invocationSequenceNumber.set(next);
+-        return next;
+-    }
++public int nextSequenceNumber() {
++    return invocationSequenceNumber++;
+ }
+\ No newline at end of file

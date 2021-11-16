@@ -1,0 +1,15 @@
+diff --git a/33afac01c63379d9f34b1f08ee702666ce6bbed7 b/77ae186e8ebcd2108596776d15a96c8df67011f1
+index 33afac01c6..77ae186e8e 100644
+--- a/33afac01c63379d9f34b1f08ee702666ce6bbed7
++++ b/77ae186e8ebcd2108596776d15a96c8df67011f1
+@@ -1,4 +1,8 @@
+ public int showDialog() {
+-    this.setVisible(true);
++    // if in- nor outgoing checkbox is set, check both
++    if (wsUiHelper.getDirection() == null) {
++        wsUiHelper.setDirection(null);
++    }
++    setVisible(true);
+     return exitResult;
+ }
+\ No newline at end of file

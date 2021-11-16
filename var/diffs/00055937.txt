@@ -1,0 +1,22 @@
+diff --git a/cce9d7ee62171e2c074ca306040fffd2d9ca1d4f b/e3b7e20e2bbdc3a86849944e357d3cbf3662a264
+index cce9d7ee62..e3b7e20e2b 100644
+--- a/cce9d7ee62171e2c074ca306040fffd2d9ca1d4f
++++ b/e3b7e20e2bbdc3a86849944e357d3cbf3662a264
+@@ -1,12 +1,15 @@
+ private void defaultReaders() {
+     messageReader(new DecoderHttpMessageReader<>(new ByteArrayDecoder()));
+     messageReader(new DecoderHttpMessageReader<>(new ByteBufferDecoder()));
+-    messageReader(new ServerSentEventHttpMessageReader(sseDecoders()));
++    if (jackson2Present) {
++        // SSE ahead of String e.g. "test/event-stream" + Flux<String>
++        messageReader(new ServerSentEventHttpMessageReader(new Jackson2JsonDecoder()));
++    }
+     messageReader(new DecoderHttpMessageReader<>(new StringDecoder(false)));
+     if (jaxb2Present) {
+         messageReader(new DecoderHttpMessageReader<>(new Jaxb2XmlDecoder()));
+     }
+     if (jackson2Present) {
+         messageReader(new DecoderHttpMessageReader<>(new Jackson2JsonDecoder()));
+     }
+ }
+\ No newline at end of file

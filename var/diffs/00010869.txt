@@ -1,0 +1,17 @@
+diff --git a/17c7fa98696dc56101866c3b96e6103abd864110 b/fd6f996e5311ca84bb33601e924afb71fcc41752
+index 17c7fa9869..fd6f996e53 100644
+--- a/17c7fa98696dc56101866c3b96e6103abd864110
++++ b/fd6f996e5311ca84bb33601e924afb71fcc41752
+@@ -1,8 +1,6 @@
+ public void pause(final boolean doPause) {
+-    if (doPause)
+-        myOutput = myDeferingPrinter;
+-    else {
+-        myOutput = this;
+-        myDeferingPrinter.printOn(myOutput);
++    myPaused = doPause;
++    if (!doPause) {
++        myPausedPrinter.printAndForget(this);
+     }
+ }
+\ No newline at end of file

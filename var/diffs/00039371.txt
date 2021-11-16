@@ -1,0 +1,17 @@
+diff --git a/1e692b85cc201b22f1d22b1454ef4b1cb39d81b2 b/bd1aeb13ea74cacb503e326d899b6344e15b8199
+index 1e692b85cc..bd1aeb13ea 100644
+--- a/1e692b85cc201b22f1d22b1454ef4b1cb39d81b2
++++ b/bd1aeb13ea74cacb503e326d899b6344e15b8199
+@@ -1,9 +1,10 @@
+ @Test
+ public void shouldExecuteCommandsInTheSameOrderRegardlessOfItBeingRecoveredOrNot() throws Exception {
+     // Given
+     TransactionRecordState tx = injectAllPossibleCommands();
+     // When
+     PhysicalTransactionRepresentation commands = transactionRepresentationOf(tx);
+     // Then
+-    commands.accept(new CommandHandler.HandlerVisitor(new OrderVerifyingCommandHandler()));
++    final OrderVerifyingCommandHandler orderVerifyingCommandHandler = new OrderVerifyingCommandHandler();
++    commands.accept(element -> element.handle(orderVerifyingCommandHandler));
+ }
+\ No newline at end of file

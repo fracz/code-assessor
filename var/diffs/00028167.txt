@@ -1,0 +1,24 @@
+diff --git a/d2176bc9d9d84f36cbce6a96bd52958f90dd1fe5 b/7c868d89b1d3a9a7c8beebe9a0b5061658165fc3
+index d2176bc9d9..7c868d89b1 100644
+--- a/d2176bc9d9d84f36cbce6a96bd52958f90dd1fe5
++++ b/7c868d89b1d3a9a7c8beebe9a0b5061658165fc3
+@@ -1,14 +1,15 @@
+ @Override
+-public void update(Profile profile) throws NotFoundException {
++public void update(ProfileImpl profile) throws NotFoundException {
++    requireNonNull(profile, "Required non-null profile");
+     lock.writeLock().lock();
+     try {
+-        final Profile myProfile = profiles.get(profile.getId());
++        final Profile myProfile = profiles.get(profile.getUserId());
+         if (myProfile == null) {
+-            throw new NotFoundException(String.format("Profile not found %s", profile.getId()));
++            throw new NotFoundException(format("Profile with id '%s' not found", profile.getUserId()));
+         }
+         myProfile.getAttributes().clear();
+         myProfile.getAttributes().putAll(profile.getAttributes());
+     } finally {
+         lock.writeLock().unlock();
+     }
+ }
+\ No newline at end of file

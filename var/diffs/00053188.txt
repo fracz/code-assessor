@@ -1,0 +1,25 @@
+diff --git a/fceda7cac617e102290022c4a266407037ff6474 b/faf82e8bea4ebb3582f887ce364d145b888bed3b
+index fceda7cac6..faf82e8bea 100644
+--- a/fceda7cac617e102290022c4a266407037ff6474
++++ b/faf82e8bea4ebb3582f887ce364d145b888bed3b
+@@ -1,11 +1,16 @@
+ /**
+  * 将分组列加入解析上下文.
+  *
+  * @param owner 列拥有者
+  * @param name 列名称
+  * @param orderByType 排序类型
++ *
++ * @return 分组列
+  */
+-public void addGroupByColumns(final Optional<String> owner, final String name, final OrderByType orderByType) {
+-    String rawName = SQLUtil.getExactlyValue(name);
+-    parsedResult.getMergeContext().getGroupByColumns().add(new GroupByColumn(owner, rawName, getAlias(rawName), orderByType));
++// TODO rename addGroupByColumns => addGroupByColumn
++public GroupByColumn addGroupByColumns(final Optional<String> owner, final String name, final OrderByType orderByType) {
++    String rawName = owner.isPresent() ? SQLUtil.getExactlyValue(owner.get()) + "." + SQLUtil.getExactlyValue(name) : SQLUtil.getExactlyValue(name);
++    GroupByColumn result = new GroupByColumn(owner, SQLUtil.getExactlyValue(name), getAlias(rawName), orderByType);
++    parsedResult.getMergeContext().getGroupByColumns().add(result);
++    return result;
+ }
+\ No newline at end of file

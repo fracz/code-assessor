@@ -1,0 +1,23 @@
+diff --git a/840b9e6d81347f4a2d12649700085d1e20c1740e b/50ac5e0c8a47dd45a5fe39f46d82493331a25824
+index 840b9e6d81..50ac5e0c8a 100644
+--- a/840b9e6d81347f4a2d12649700085d1e20c1740e
++++ b/50ac5e0c8a47dd45a5fe39f46d82493331a25824
+@@ -1,16 +1,14 @@
+ private byte[] changeMethod(ClassPool classPool, ClassLoader classLoader, String javassistClassName, byte[] classfileBuffer) {
+     try {
+         CtClass cc = classPool.get(javassistClassName);
+         updateSetInternalMethod(classPool, cc);
+         updateExecuteQueryMethod(classPool, cc);
+         updateConstructor(classPool, cc);
+-        byte[] newClassfileBuffer = cc.toBytecode();
+-        // cc.writeFile();
+         printClassConvertComplete(javassistClassName);
+-        return newClassfileBuffer;
++        return cc.toBytecode();
+     } catch (Exception e) {
+         logger.error(e.getMessage());
+         e.printStackTrace();
+     }
+     return null;
+ }
+\ No newline at end of file

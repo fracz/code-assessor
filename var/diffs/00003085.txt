@@ -1,0 +1,18 @@
+diff --git a/c2365b8c349cbd663ff3314596cbdeadaa230502 b/5b98a873a728b71ced2190c4869b68ce1ed33ae4
+index c2365b8c34..5b98a873a7 100644
+--- a/c2365b8c349cbd663ff3314596cbdeadaa230502
++++ b/5b98a873a728b71ced2190c4869b68ce1ed33ae4
+@@ -1,9 +1,9 @@
+-private EditorWindow getEditorWindow(DataContext context) {
+-    final Project project = PlatformDataKeys.PROJECT.getData(context);
++private static EditorWindow getEditorWindow(DataContext dataContext) {
++    final Project project = PlatformDataKeys.PROJECT.getData(dataContext);
+     final FileEditorManagerEx fileEditorManager = FileEditorManagerEx.getInstanceEx(project);
+-    EditorWindow editorWindow = (EditorWindow) context.getData(DataConstantsEx.EDITOR_WINDOW);
++    EditorWindow editorWindow = EditorWindow.DATA_KEY.getData(dataContext);
+     if (editorWindow == null) {
+         editorWindow = fileEditorManager.getCurrentWindow();
+     }
+     return editorWindow;
+ }
+\ No newline at end of file

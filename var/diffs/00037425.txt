@@ -1,0 +1,14 @@
+diff --git a/4afdf0f61fef93044eafb1260ceaf774681566f4 b/b2b3f4860cedf31bd7967f611c27b8229b2b237f
+index 4afdf0f61f..b2b3f4860c 100644
+--- a/4afdf0f61fef93044eafb1260ceaf774681566f4
++++ b/b2b3f4860cedf31bd7967f611c27b8229b2b237f
+@@ -1,7 +1,6 @@
+ @Override
+ public void after(Object target, String className, String methodName, Object[] args, Object result) {
+     // TODO result 가 Exception 타입일경우 호출 실패임.
+-    Trace.record(Annotation.ServerSend, System.currentTimeMillis() - start.get());
+-    start.remove();
++    Trace.record(Annotation.ServerSend, StopWatch.stopAndGetElapsed("InvokeMethodInterceptor-starttime"));
+     RequestTracer.endTransaction();
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/7895e343779338dd4edd811085e2d733c5312eea b/91bd09e2870c4343bc82ebf99b5981a71e42b94e
+index 7895e34377..91bd09e287 100644
+--- a/7895e343779338dd4edd811085e2d733c5312eea
++++ b/91bd09e2870c4343bc82ebf99b5981a71e42b94e
+@@ -1,5 +1,7 @@
+-@Test(expected = IOException.class)
++@Test
+ public void getTestAbnormal5() throws IOException {
++    mThrown.expect(IllegalArgumentException.class);
++    mThrown.expectMessage("Tachyon scheme must be either \"tachyon\" or \"tachyon-ft\".");
+     // API user may have this typo: tacyon
+     TachyonFS.get(new TachyonURI("tacyon://" + sHost + ":" + sPort), mMasterTachyonConf);
+ }
+\ No newline at end of file

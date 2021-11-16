@@ -1,0 +1,16 @@
+diff --git a/64bed9d1131ca24e189984d35a5f6b1a31d3b8c2 b/b85dabd422887fb7f1e47b962fd91e67af0877be
+index 64bed9d113..b85dabd422 100644
+--- a/64bed9d1131ca24e189984d35a5f6b1a31d3b8c2
++++ b/b85dabd422887fb7f1e47b962fd91e67af0877be
+@@ -1,8 +1,7 @@
+ @Before
+ public void setup() throws Exception {
+     mock.varargs("first very long argument", "second very long argument", "another very long argument");
+-    multi = getLastInvocation();
+-    multi.toString();
++    multi = new InvocationMatcher(getLastInvocation());
+     mock.varargs("short arg");
+-    shortie = getLastInvocation();
++    shortie = new InvocationMatcher(getLastInvocation());
+ }
+\ No newline at end of file

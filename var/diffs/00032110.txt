@@ -1,0 +1,10 @@
+diff --git a/a35775dded1e1ce21c57fb2250f071acb354f9df b/0faf79b00181d8c9d98753cda5cfe1d835d178e9
+index a35775dded..0faf79b001 100644
+--- a/a35775dded1e1ce21c57fb2250f071acb354f9df
++++ b/0faf79b00181d8c9d98753cda5cfe1d835d178e9
+@@ -1,3 +1,3 @@
+ public void testExposeExpression14() {
+-    helperExposeExpression("function f(){ return goo() && foo();}", "foo", "function f(){" + "var temp$jscomp$0; if (temp$jscomp$0 = goo()) temp$jscomp$0 = foo();" + "return temp$jscomp$0;" + "}");
++    helperExposeExpression("function f(){ return goo() && foo();}", "foo", LINE_JOINER.join("function f() {", "  var temp$jscomp$0; if (temp$jscomp$0 = goo()) temp$jscomp$0 = foo();", "  return temp$jscomp$0;", "}"));
+ }
+\ No newline at end of file

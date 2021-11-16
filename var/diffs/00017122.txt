@@ -1,0 +1,15 @@
+diff --git a/bad641d8063cbcd3f5b3b6609da3bd771c20fb56 b/84ba5c37b6447471c2f1e214076165dc825f9ca4
+index bad641d806..84ba5c37b6 100644
+--- a/bad641d8063cbcd3f5b3b6609da3bd771c20fb56
++++ b/84ba5c37b6447471c2f1e214076165dc825f9ca4
+@@ -1,5 +1,8 @@
+ @Override
+ public void extendNamespaceScope(@NotNull BindingTrace trace, @NotNull NamespaceDescriptor namespaceDescriptor, @NotNull WritableScope namespaceMemberScope) {
+-    namespaceMemberScope.importScope(javaSemanticServices.getDescriptorResolver().createJavaPackageScope(DescriptorUtils.getFQName(namespaceDescriptor).toSafe(), namespaceDescriptor));
++    JetScope javaPackageScope = javaSemanticServices.getDescriptorResolver().createJavaPackageScope(DescriptorUtils.getFQName(namespaceDescriptor).toSafe(), namespaceDescriptor);
++    if (javaPackageScope != null) {
++        namespaceMemberScope.importScope(javaPackageScope);
++    }
+     delegateConfiguration.extendNamespaceScope(trace, namespaceDescriptor, namespaceMemberScope);
+ }
+\ No newline at end of file

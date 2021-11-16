@@ -1,0 +1,19 @@
+diff --git a/2bcccd2c50b26669a140199a72795dc609b006c4 b/7639c9cc220124e298127a995ac017b07899f16e
+index 2bcccd2c50..7639c9cc22 100644
+--- a/2bcccd2c50b26669a140199a72795dc609b006c4
++++ b/7639c9cc220124e298127a995ac017b07899f16e
+@@ -1,12 +1,4 @@
+ @Nullable
+ public static ASTNode skipWhitespaceAndComments(final ASTNode node) {
+-    ASTNode element = node;
+-    while (true) {
+-        if (element == null)
+-            return null;
+-        if (!isWhitespaceOrComment(element))
+-            break;
+-        element = element.getTreeNext();
+-    }
+-    return element;
++    return skipWhitespaceCommentsAndTokens(node, TokenSet.EMPTY);
+ }
+\ No newline at end of file

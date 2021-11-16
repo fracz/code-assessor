@@ -1,0 +1,17 @@
+diff --git a/62adea00a2dd83b65f160c835c666e441ca97c6d b/458fdef67c9e79434ba3896ce05e6f2c7183e11e
+index 62adea00a2..458fdef67c 100644
+--- a/62adea00a2dd83b65f160c835c666e441ca97c6d
++++ b/458fdef67c9e79434ba3896ce05e6f2c7183e11e
+@@ -1,9 +1,10 @@
+ public AnnotationKeyMatcher addAnnotationMatcher(ServiceType serviceType, AnnotationKeyMatcher annotationKeyMatcher) {
+     if (serviceType == null) {
+         throw new NullPointerException("serviceType must not be null");
+     }
+     if (annotationKeyMatcher == null) {
+         throw new NullPointerException("annotationKeyMatcher must not be null");
+     }
+-    return this.buildMap.put(serviceType.getCode(), annotationKeyMatcher);
++    int code = serviceType.getCode();
++    return this.buildMap.put(code, annotationKeyMatcher);
+ }
+\ No newline at end of file

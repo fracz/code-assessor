@@ -1,0 +1,17 @@
+diff --git a/6ef1c00f5057808232d4c0b65f5ccba7a32928a1 b/6d227ce4cab9768d2e115e4c176602ea6b424b78
+index 6ef1c00f50..6d227ce4ca 100644
+--- a/6ef1c00f5057808232d4c0b65f5ccba7a32928a1
++++ b/6d227ce4cab9768d2e115e4c176602ea6b424b78
+@@ -1,8 +1,8 @@
+ @Override
+-public Iterator<NodePropertyConstraint> constraintsGetForLabelAndPropertyKey(KernelStatement state, int labelId, int propertyKeyId) {
+-    Iterator<NodePropertyConstraint> constraints = storeLayer.constraintsGetForLabelAndPropertyKey(labelId, propertyKeyId);
++public Iterator<NodePropertyConstraint> constraintsGetForLabelAndPropertyKey(KernelStatement state, NodePropertyDescriptor descriptor) {
++    Iterator<NodePropertyConstraint> constraints = storeLayer.constraintsGetForLabelAndPropertyKey(descriptor);
+     if (state.hasTxStateWithChanges()) {
+-        return state.txState().constraintsChangesForLabelAndProperty(labelId, propertyKeyId).apply(constraints);
++        return state.txState().constraintsChangesForLabelAndProperty(descriptor).apply(constraints);
+     }
+     return constraints;
+ }
+\ No newline at end of file

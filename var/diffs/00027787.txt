@@ -1,0 +1,15 @@
+diff --git a/f1de33a12a9b036dff2b77715e04d0e36f269d56 b/e682d128c40d12e3693b543fa978d0b2efd08087
+index f1de33a12a..e682d128c4 100644
+--- a/f1de33a12a9b036dff2b77715e04d0e36f269d56
++++ b/e682d128c40d12e3693b543fa978d0b2efd08087
+@@ -1,8 +1,4 @@
+ @Override
+ public int hashCode() {
+-    int hash = 7;
+-    hash = hash * 31 + Objects.hashCode(name);
+-    hash = hash * 31 + Objects.hashCode(recipe);
+-    hash = hash * 31 + getMachineConfigs().hashCode();
+-    return hash;
++    return Objects.hash(name, recipe, machineConfigs);
+ }
+\ No newline at end of file

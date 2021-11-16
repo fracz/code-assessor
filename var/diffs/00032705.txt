@@ -1,0 +1,29 @@
+diff --git a/58ca9de9c47e52e1a466ad760ed9e36c6a91962a b/56ac701727c8af60e75c8a0b9a400580551c57cc
+index 58ca9de9c4..56ac701727 100644
+--- a/58ca9de9c47e52e1a466ad760ed9e36c6a91962a
++++ b/56ac701727c8af60e75c8a0b9a400580551c57cc
+@@ -1,22 +1,22 @@
+ // propagate
+ @GwtIncompatible
+ public void testPropagate_NoneDeclared_CheckedThrown() {
+     Sample sample = new Sample() {
+
+         @Override
+         public void noneDeclared() {
+             try {
+                 methodThatThrowsChecked();
+             } catch (Throwable t) {
+                 throw Throwables.propagate(t);
+             }
+         }
+     };
+     // Expect the undeclared exception to have been chained inside another
+     try {
+         sample.noneDeclared();
+         fail();
+     } catch (RuntimeException expected) {
+-        assertTrue(expected.getCause() instanceof SomeCheckedException);
++        assertThat(expected.getCause()).isInstanceOf(SomeCheckedException.class);
+     }
+ }
+\ No newline at end of file

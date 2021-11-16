@@ -1,0 +1,12 @@
+diff --git a/1645e68b8b042bc4507a6415a3f03dce808fa307 b/cc5658648d80c932e668e4423d32b4518c61e122
+index 1645e68b8b..cc5658648d 100644
+--- a/1645e68b8b042bc4507a6415a3f03dce808fa307
++++ b/cc5658648d80c932e668e4423d32b4518c61e122
+@@ -1,4 +1,4 @@
+-MapScanResult<ScanObjectEntry, ScanObjectEntry> scanIterator(InetSocketAddress client, long startPos) {
+-    Future<MapScanResult<ScanObjectEntry, ScanObjectEntry>> f = commandExecutor.readAsync(client, getName(), new ScanCodec(codec), RedisCommands.HSCAN, getName(), startPos);
++MapScanResult<ScanObjectEntry, ScanObjectEntry> scanIterator(String name, InetSocketAddress client, long startPos) {
++    Future<MapScanResult<ScanObjectEntry, ScanObjectEntry>> f = commandExecutor.readAsync(client, name, new ScanCodec(codec), RedisCommands.HSCAN, name, startPos);
+     return get(f);
+ }
+\ No newline at end of file

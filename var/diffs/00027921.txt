@@ -1,0 +1,23 @@
+diff --git a/85da4afbdf8b49154544bc925ce052e852422d38 b/048126bf564f512f00845da0bd0d6f31ae91cbe5
+index 85da4afbdf..048126bf56 100644
+--- a/85da4afbdf8b49154544bc925ce052e852422d38
++++ b/048126bf564f512f00845da0bd0d6f31ae91cbe5
+@@ -1,10 +1,10 @@
+-@Path("branch-list")
+-@POST
+-@Consumes(MediaType.APPLICATION_JSON)
+-@Produces({ MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN })
+-public GenericEntity<List<Branch>> branchList(BranchListRequest request) throws ApiException {
++@GET
++@Path("branch")
++@Produces(MediaType.APPLICATION_JSON)
++public List<Branch> branchList(@QueryParam("listMode") String listMode) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+-        return new GenericEntity<List<Branch>>(gitConnection.branchList(request)) {
+-        };
++        return gitConnection.branchList(listMode == null ? null : BranchListMode.valueOf(listMode));
++    } catch (IllegalArgumentException exception) {
++        throw new BadRequestException(exception.getMessage());
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/5f7ab9a38c7e0f9e8f33beb3a41e686a7c1cb4d6 b/0b41492c689e501c2acbec57e4b88878e2561a14
+index 5f7ab9a38c..0b41492c68 100644
+--- a/5f7ab9a38c7e0f9e8f33beb3a41e686a7c1cb4d6
++++ b/0b41492c689e501c2acbec57e4b88878e2561a14
+@@ -1,8 +1,8 @@
+ @Test
+ public void getObject() throws Exception {
+     assertTrue(actualResultSet.next());
+-    assertThat(actualResultSet.getObject(2), is((Object) "OL_1"));
++    assertThat(actualResultSet.getObject(1), is((Object) 1L));
+     assertTrue(actualResultSet.next());
+-    assertThat(actualResultSet.getObject("order_no"), is((Object) "OL_2"));
++    assertThat(actualResultSet.getObject("order_id"), is((Object) 2L));
+     assertFalse(actualResultSet.next());
+ }
+\ No newline at end of file

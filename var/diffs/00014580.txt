@@ -1,0 +1,20 @@
+diff --git a/c0e21cbffdc26568538e14f7629fdb683568133c b/5848384aa8d55e7aafc9cb847b6dfbd084d2c1ad
+index c0e21cbffd..5848384aa8 100644
+--- a/c0e21cbffdc26568538e14f7629fdb683568133c
++++ b/5848384aa8d55e7aafc9cb847b6dfbd084d2c1ad
+@@ -1,11 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiClass aClass = (PsiClass) location.getParent();
+-    assert aClass != null;
+-    PsiClass ancestor = aClass.getSuperClass();
+-    while (SerializationUtils.isSerializable(ancestor)) {
+-        assert ancestor != null;
+-        ancestor = ancestor.getSuperClass();
+-    }
+-    assert ancestor != null;
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiClass ancestor = (PsiClass) infos[0];
+     return InspectionGadgetsBundle.message("serializable.with.unconstructable.ancestor.problem.descriptor", ancestor.getName());
+ }
+\ No newline at end of file

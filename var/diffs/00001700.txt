@@ -1,0 +1,25 @@
+diff --git a/596e33187afc84b8e20176eef339a2217fe3e210 b/f7dfd8bd9ab96a498bdac1c64f46b484964b3137
+index 596e33187a..f7dfd8bd9a 100644
+--- a/596e33187afc84b8e20176eef339a2217fe3e210
++++ b/f7dfd8bd9ab96a498bdac1c64f46b484964b3137
+@@ -1,18 +1,18 @@
+ public static TextWithImports createEvaluationText(final DebuggerTreeNodeImpl node, final DebuggerContextImpl context) {
+     final Project project = context.getProject();
+     return PsiDocumentManager.getInstance(project).commitAndRunReadAction(new Computable<TextWithImports>() {
+
+         public TextWithImports compute() {
+             PsiExpression expressionText = null;
+             try {
+                 expressionText = getEvaluationExpression(node, context);
+             } catch (EvaluateException e) {
+                 LOG.error(e.getMessage());
+                 return null;
+             }
+             if (expressionText == null)
+                 return null;
+-            return EvaluationManager.getInstance().createExpressionFragment(expressionText);
++            return new TextWithImportsImpl(expressionText);
+         }
+     });
+ }
+\ No newline at end of file

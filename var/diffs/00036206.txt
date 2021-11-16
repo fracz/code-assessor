@@ -1,0 +1,18 @@
+diff --git a/dddacda6d7057a4877df58d1d890730e5deef131 b/f11c4284cca112e53f8b42a4c7d5b450735ed48f
+index dddacda6d7..f11c4284cc 100644
+--- a/dddacda6d7057a4877df58d1d890730e5deef131
++++ b/f11c4284cca112e53f8b42a4c7d5b450735ed48f
+@@ -1,9 +1,9 @@
+ @Before
+ public void setup() {
+-    state = new MockingProgressImpl();
+-    invocationContainerImpl = new InvocationContainerImpl(state, new MockSettingsImpl());
++    state = mockingProgress();
++    invocationContainerImpl = new InvocationContainerImpl(new MockSettingsImpl());
+     invocationContainerImpl.setInvocationForPotentialStubbing(new InvocationBuilder().toInvocationMatcher());
+-    invocationContainerImplStubOnly = new InvocationContainerImpl(state, new MockSettingsImpl().stubOnly());
++    invocationContainerImplStubOnly = new InvocationContainerImpl(new MockSettingsImpl().stubOnly());
+     invocationContainerImplStubOnly.setInvocationForPotentialStubbing(new InvocationBuilder().toInvocationMatcher());
+     simpleMethod = new InvocationBuilder().simpleMethod().toInvocation();
+ }
+\ No newline at end of file

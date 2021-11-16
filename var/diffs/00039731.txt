@@ -1,0 +1,13 @@
+diff --git a/da676264206d9a09ba3cfc58a2f3eabec924d400 b/45e679f9e8383fa1e96fac775d571a49a31a3c0f
+index da67626420..45e679f9e8 100644
+--- a/da676264206d9a09ba3cfc58a2f3eabec924d400
++++ b/45e679f9e8383fa1e96fac775d571a49a31a3c0f
+@@ -1,5 +1,5 @@
+ @Override
+-public DoubleLongRegister indexUpdatesAndSize(int labelId, int propertyKeyId, DoubleLongRegister target) {
+-    counts(indexStatisticsKey(labelId, propertyKeyId)).copyTo(target);
++public DoubleLongRegister indexUpdatesAndSize(IndexDescriptor descriptor, DoubleLongRegister target) {
++    counts(indexStatisticsKey(descriptor)).copyTo(target);
+     return target;
+ }
+\ No newline at end of file

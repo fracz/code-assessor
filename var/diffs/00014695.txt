@@ -1,0 +1,17 @@
+diff --git a/b4d09c99b35f2004440a42fa29b5e22b836e68b5 b/14de2dd2fdc167b4602b868f1f5689bb2c3abe7d
+index b4d09c99b3..14de2dd2fd 100644
+--- a/b4d09c99b35f2004440a42fa29b5e22b836e68b5
++++ b/14de2dd2fdc167b4602b868f1f5689bb2c3abe7d
+@@ -1,8 +1,8 @@
+-@Nullable
+-protected String buildErrorString(PsiElement location) {
+-    if (location instanceof PsiJavaToken) {
++@NotNull
++protected String buildErrorString(Object... infos) {
++    if (Boolean.TRUE.equals(infos[0])) {
+         return InspectionGadgetsBundle.message("test.case.with.constructor.problem.descriptor.initializer");
+     } else {
+         return InspectionGadgetsBundle.message("test.case.with.constructor.problem.descriptor");
+     }
+ }
+\ No newline at end of file

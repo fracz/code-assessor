@@ -1,0 +1,15 @@
+diff --git a/f9f7ba808705e280bb17438fc79a2a230b50c8c5 b/e6ea1e6fbb4f268443a777aed5d1f7924ed1e3f9
+index f9f7ba8087..e6ea1e6fbb 100644
+--- a/f9f7ba808705e280bb17438fc79a2a230b50c8c5
++++ b/e6ea1e6fbb4f268443a777aed5d1f7924ed1e3f9
+@@ -1,4 +1,8 @@
+ private void initialize() {
+-    this.setName("ExtensionManualRequest");
++    this.setName(NAME);
+     this.setOrder(36);
++    // add default manual request editor
++    ManualRequestEditorDialog httpSendEditorDialog = new ManualHttpRequestEditorDialog(true, "manual");
++    httpSendEditorDialog.setTitle(Constant.messages.getString("manReq.dialog.title"));
++    dialogues.put(httpSendEditorDialog.getMessageType(), httpSendEditorDialog);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/63b1d9d1a46bb54f7698a12e1f67d23815846dea b/05ead08a2b5b51e6a4ea97674dd2fb0384888e82
+index 63b1d9d1a4..05ead08a2b 100644
+--- a/63b1d9d1a46bb54f7698a12e1f67d23815846dea
++++ b/05ead08a2b5b51e6a4ea97674dd2fb0384888e82
+@@ -1,8 +1,6 @@
+ @Override
+ public MapBodySpec containsValues(Object... values) {
+-    List<Object> missing = Arrays.stream(values).filter(value -> !this.body.containsValue(value)).collect(Collectors.toList());
+-    if (!missing.isEmpty()) {
+-        fail("Response body map does not contain values " + Arrays.toString(values));
+-    }
++    List<?> missing = Arrays.stream(values).filter(v -> !this.body.containsValue(v)).collect(toList());
++    assertTrue("Response body map does not contain values " + missing, missing.isEmpty());
+     return this;
+ }
+\ No newline at end of file

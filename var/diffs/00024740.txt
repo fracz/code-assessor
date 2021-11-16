@@ -1,0 +1,13 @@
+diff --git a/9b6b389883a922d845ec7e3c59d089c3ae9954fb b/b6c3dc15d8b7e652e0d4865f6167d662385e1e35
+index 9b6b389883..b6c3dc15d8 100644
+--- a/9b6b389883a922d845ec7e3c59d089c3ae9954fb
++++ b/b6c3dc15d8b7e652e0d4865f6167d662385e1e35
+@@ -1,4 +1,4 @@
+-public SecondaryIndex highestSelectivityIndex(List<IndexExpression> clause) {
+-    IndexExpression expr = highestSelectivityPredicate(clause, false);
+-    return expr == null ? null : indexManager.getIndexForColumn(expr.column);
++public SecondaryIndex highestSelectivityIndex(RowFilter filter) {
++    RowFilter.Expression expr = highestSelectivityPredicate(filter, false);
++    return expr == null ? null : indexManager.getIndexForColumn(expr.column());
+ }
+\ No newline at end of file

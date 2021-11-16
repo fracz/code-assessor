@@ -1,0 +1,21 @@
+diff --git a/fef58b418a091e46817652cc08d1ebca7181b27d b/af94ea278e8f56acb21f3c048189dd9c3cc467d0
+index fef58b418a..af94ea278e 100644
+--- a/fef58b418a091e46817652cc08d1ebca7181b27d
++++ b/af94ea278e8f56acb21f3c048189dd9c3cc467d0
+@@ -1,14 +1,14 @@
+ @Override
+ public <T> T getProperty(final String key) {
+-    FaunusType type = FaunusGraph.getCurrent().getTypes().get(key);
++    FaunusType type = FaunusType.DEFAULT_MANAGER.get(key);
+     // First, handle special cases
+     if (type.equals(FaunusType.COUNT))
+         return (T) Long.valueOf(this.pathCount());
+     Collection<Object> values = properties.get(type);
+     if (values.isEmpty())
+         return null;
+     else if (values.size() == 1)
+         return (T) values.iterator().next();
+     else
+         throw new IllegalStateException("Use getProperties(String) method for multi-valued properties");
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/d6e6881181c2d5c1f1a6141b10cb0b2669907508 b/7eb6a435f098b43c1a4ee0a1c9a95eac27a13e5b
+index d6e6881181..7eb6a435f0 100644
+--- a/d6e6881181c2d5c1f1a6141b10cb0b2669907508
++++ b/7eb6a435f098b43c1a4ee0a1c9a95eac27a13e5b
+@@ -1,4 +1,6 @@
+ @Override
+ public List<ByteBuffer> bounds(Bound b, QueryOptions options) throws InvalidRequestException {
+-    return Composites.toByteBuffers(boundsAsComposites(b, options));
++    if (!isPartitionKey)
++        throw new UnsupportedOperationException();
++    return toByteBuffers(boundsAsClustering(b, options));
+ }
+\ No newline at end of file

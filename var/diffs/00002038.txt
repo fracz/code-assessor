@@ -1,0 +1,24 @@
+diff --git a/b910c59433d7048abe7c131c2b27414f1142f21a b/93f6e81ce63f67f9a94dd1ced0830f9178cb9fa6
+index b910c59433..93f6e81ce6 100644
+--- a/b910c59433d7048abe7c131c2b27414f1142f21a
++++ b/93f6e81ce63f67f9a94dd1ced0830f9178cb9fa6
+@@ -1,17 +1,12 @@
+ public SourceToOutputMapping getSourceToOutputMap(String moduleName, boolean testSources) throws Exception {
+     final Map<String, SourceToOutputMapping> storageMap = testSources ? myTestSourceToOutputs : myProductionSourceToOutputs;
+     SourceToOutputMapping mapping;
+     synchronized (mySourceToOutputLock) {
+         mapping = storageMap.get(moduleName);
+         if (mapping == null) {
+-            mapping = createStorage(getSourceToOutputRoot(moduleName, testSources), new StorageFactory<SourceToOutputMapping>() {
+-
+-                public SourceToOutputMapping create(File dataFile) throws Exception {
+-                    return new SourceToOutputMapping(dataFile);
+-                }
+-            });
++            mapping = new SourceToOutputMapping(new File(getSourceToOutputRoot(moduleName, testSources), "data"));
+             storageMap.put(moduleName, mapping);
+         }
+     }
+     return mapping;
+ }
+\ No newline at end of file

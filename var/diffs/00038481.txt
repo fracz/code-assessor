@@ -1,0 +1,19 @@
+diff --git a/eb293650c0612e9cface82785cc35dff53a07e75 b/db031d498a721ee03a03ce9db86142779ce19c0c
+index eb293650c0..db031d498a 100644
+--- a/eb293650c0612e9cface82785cc35dff53a07e75
++++ b/db031d498a721ee03a03ce9db86142779ce19c0c
+@@ -1,10 +1,10 @@
+-public Relationship getRelationship(long relationshipId) throws DatabaseBlockedException {
+-    Transaction tx = database.graph.beginTx();
++public Relationship getRelationship(long relationshipId) {
++    Transaction tx = database.getGraph().beginTx();
+     try {
+-        Relationship relationship = database.graph.getRelationshipById(relationshipId);
++        Relationship relationship = database.getGraph().getRelationshipById(relationshipId);
+         tx.success();
+         return relationship;
+     } finally {
+         tx.finish();
+     }
+ }
+\ No newline at end of file

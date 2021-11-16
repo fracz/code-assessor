@@ -1,0 +1,19 @@
+diff --git a/cd311d341ac382a686fed5c3dd4ed324a347b63f b/9518481c9a8b468b85de1276a85909695291fb88
+index cd311d341a..9518481c9a 100644
+--- a/cd311d341ac382a686fed5c3dd4ed324a347b63f
++++ b/9518481c9a8b468b85de1276a85909695291fb88
+@@ -1,12 +1,12 @@
+-private ParsedDocument innerCreate(String type, String id, String source) {
++private ParsedDocument innerCreate(String type, String id, byte[] source) {
+     DocumentMapper docMapper = mapperService.type(type);
+     if (docMapper == null) {
+         throw new DocumentMapperNotFoundException("No mapper found for type [" + type + "]");
+     }
+     ParsedDocument doc = docMapper.parse(type, id, source);
+     if (logger.isTraceEnabled()) {
+         logger.trace("Indexing {}", doc);
+     }
+     engine.create(new Engine.Create(doc.doc(), docMapper.mappers().indexAnalyzer(), docMapper.type(), doc.id(), doc.source()));
+     return doc;
+ }
+\ No newline at end of file

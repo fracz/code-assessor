@@ -1,0 +1,22 @@
+diff --git a/5b53d022b7fbfb8dc323b206ba4c098a9ed92ef2 b/c4fcee3c5f3c1614a074e8e1c34e65cb727932c3
+index 5b53d022b7..c4fcee3c5f 100644
+--- a/5b53d022b7fbfb8dc323b206ba4c098a9ed92ef2
++++ b/c4fcee3c5f3c1614a074e8e1c34e65cb727932c3
+@@ -1,11 +1,7 @@
+-public void testAfterThrowingWithRuntimeTypeSpecified() {
++@Test(expected = Throwable.class)
++public void testAfterThrowingWithRuntimeTypeSpecified() throws Throwable {
+     mockCollaborator.noArgsOnRuntimeExceptionMatch();
+-    mockControl.replay();
+-    try {
+-        this.testBean.exceptional(new RuntimeException());
+-        fail("should throw exception");
+-    } catch (Throwable t) {
+-    // no-op
+-    }
+-    mockControl.verify();
++    replay(mockCollaborator);
++    this.testBean.exceptional(new RuntimeException());
++    verify(mockCollaborator);
+ }
+\ No newline at end of file

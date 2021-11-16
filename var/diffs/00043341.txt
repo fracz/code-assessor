@@ -1,0 +1,11 @@
+diff --git a/429554403d743da43e0be87c058918ac24ebc607 b/1defd5be4fbc8dc6d6f4c4cfbc56c59064d0fe9a
+index 429554403d..1defd5be4f 100644
+--- a/429554403d743da43e0be87c058918ac24ebc607
++++ b/1defd5be4fbc8dc6d6f4c4cfbc56c59064d0fe9a
+@@ -1,4 +1,4 @@
+ @Override
+ public OIndexEngine createIndexEngine(String name, Boolean durableInNonTxMode, OStorage storage, int version) {
+-    return null;
++    return new OLuceneIndexEngineDelegate(name, durableInNonTxMode, storage, version);
+ }
+\ No newline at end of file

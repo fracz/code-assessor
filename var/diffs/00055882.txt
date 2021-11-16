@@ -1,0 +1,15 @@
+diff --git a/dafdb63970bf1d4d42b81ac92efb0f196a791dbc b/fc933b60096bc2f0d0f47b10c3d3645b80afa865
+index dafdb63970..fc933b6009 100644
+--- a/dafdb63970bf1d4d42b81ac92efb0f196a791dbc
++++ b/fc933b60096bc2f0d0f47b10c3d3645b80afa865
+@@ -1,8 +1,8 @@
+ @Test
+ public void partialContentInvalidRangeHeader() throws Exception {
+     this.request.addHeader("Range", "bytes= foo bar");
+     this.exchange.getAttributes().put(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE, "foo.txt");
+-    TestSubscriber.subscribe(this.handler.handle(this.exchange)).assertComplete();
++    ScriptedSubscriber.create().expectNextCount(0).expectComplete().verify(this.handler.handle(this.exchange));
+     assertEquals(HttpStatus.REQUESTED_RANGE_NOT_SATISFIABLE, this.response.getStatusCode());
+     assertEquals("bytes", this.response.getHeaders().getFirst("Accept-Ranges"));
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/9f712d9895c00cd6c4c5944c81fe599173e602b0 b/0f41989428c4839a8fa994928c6a843a0f60e816
+index 9f712d9895..0f41989428 100644
+--- a/9f712d9895c00cd6c4c5944c81fe599173e602b0
++++ b/0f41989428c4839a8fa994928c6a843a0f60e816
+@@ -1,15 +1,15 @@
+ @Override
+ public void writeTo(StreamOutput out) throws IOException {
+-    out.writeString(name);
++    super.writeTo(out);
+     out.writeByte(comparatorType.id());
+     out.writeVInt(entries.size());
+     for (FullEntry entry : entries) {
+         out.writeLong(entry.time);
+         out.writeVLong(entry.count);
+         out.writeDouble(entry.min);
+         out.writeDouble(entry.max);
+         out.writeVLong(entry.totalCount);
+         out.writeDouble(entry.total);
+     }
+     releaseCache();
+ }
+\ No newline at end of file

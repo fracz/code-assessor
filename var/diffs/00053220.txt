@@ -1,0 +1,32 @@
+diff --git a/30bba8829ec1299aa00e75ab64549c6d6c71c24e b/96eca981aa063ead5f5891a5f5641fbf2a67c4e5
+index 30bba8829e..96eca981aa 100644
+--- a/30bba8829ec1299aa00e75ab64549c6d6c71c24e
++++ b/96eca981aa063ead5f5891a5f5641fbf2a67c4e5
+@@ -1,17 +1,19 @@
+ protected SQLSelectQuery query() {
+     if (getLexer().equalToken(Token.LEFT_PAREN)) {
+         getLexer().nextToken();
+         SQLSelectQuery select = query();
+         accept(Token.RIGHT_PAREN);
+-        return queryRest(select);
++        queryRest();
++        return select;
+     }
+     SQLSelectQueryBlock queryBlock = new SQLSelectQueryBlock();
+     accept(Token.SELECT);
+     getLexer().skipIfEqual(Token.COMMENT);
+-    parseDistinct(queryBlock);
+-    parseSelectList(queryBlock);
+-    parseFrom(queryBlock);
+-    parseWhere(queryBlock);
+-    parseGroupBy(queryBlock);
+-    return queryRest(queryBlock);
++    parseDistinct();
++    parseSelectList();
++    parseFrom();
++    parseWhere();
++    parseGroupBy();
++    queryRest();
++    return queryBlock;
+ }
+\ No newline at end of file

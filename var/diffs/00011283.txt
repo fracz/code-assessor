@@ -1,0 +1,23 @@
+diff --git a/8898c65059d84f3382176e89857bdcda2ddb76b4 b/1ac5e85171c69d223265a9263bd027a7182f37c4
+index 8898c65059..1ac5e85171 100644
+--- a/8898c65059d84f3382176e89857bdcda2ddb76b4
++++ b/1ac5e85171c69d223265a9263bd027a7182f37c4
+@@ -1,13 +1,11 @@
+ @Nullable
+ public static String getResourceClassName(@NotNull PsiField field) {
+-    PsiClass resourceClass = field.getContainingClass();
++    final PsiClass resourceClass = field.getContainingClass();
+     if (resourceClass != null) {
+-        PsiClass parentClass = resourceClass.getContainingClass();
+-        if (parentClass != null) {
+-            if (AndroidUtils.R_CLASS_NAME.equals(parentClass.getName()) && parentClass.getContainingClass() == null) {
+-                return resourceClass.getName();
+-            }
++        final PsiClass parentClass = resourceClass.getContainingClass();
++        if (parentClass != null && AndroidUtils.R_CLASS_NAME.equals(parentClass.getName()) && parentClass.getContainingClass() == null) {
++            return resourceClass.getName();
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

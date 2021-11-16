@@ -1,0 +1,18 @@
+diff --git a/e866999ee2754d649ba746f3690b9513308cd9c7 b/d305cfc02ed2894ba68a9827f59ad4b999428e70
+index e866999ee2..d305cfc02e 100644
+--- a/e866999ee2754d649ba746f3690b9513308cd9c7
++++ b/d305cfc02ed2894ba68a9827f59ad4b999428e70
+@@ -1,11 +1,9 @@
+ protected void insertCode(SketchCode newCode) {
+     // make sure the user didn't hide the sketch folder
+     ensureExistence();
+     // add file to the code/codeCount list, resort the list
+     if (codeCount == code.length) {
+-        SketchCode[] temp = new SketchCode[codeCount + 1];
+-        System.arraycopy(code, 0, temp, 0, codeCount);
+-        code = temp;
++        code = (SketchCode[]) PApplet.expand(code);
+     }
+     code[codeCount++] = newCode;
+ }
+\ No newline at end of file

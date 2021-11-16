@@ -1,0 +1,11 @@
+diff --git a/bb2fd6b3867fe94c01e2c3e9e9cece4294e824d1 b/b0dfac874b1478f87ace50ff00616ca3c0c81d09
+index bb2fd6b386..b0dfac874b 100644
+--- a/bb2fd6b3867fe94c01e2c3e9e9cece4294e824d1
++++ b/b0dfac874b1478f87ace50ff00616ca3c0c81d09
+@@ -1,4 +1,4 @@
+ @Override
+-public void ambiguity(@NotNull BindingTrace trace, @NotNull Set<? extends CallableDescriptor> descriptors) {
++public <D extends CallableDescriptor> void ambiguity(@NotNull BindingTrace trace, @NotNull Set<ResolvedCall<D>> descriptors) {
+     trace.report(OVERLOAD_RESOLUTION_AMBIGUITY.on(callNode, descriptors));
+ }
+\ No newline at end of file

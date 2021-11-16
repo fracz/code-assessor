@@ -1,0 +1,31 @@
+diff --git a/11e17d0359eb39a7c224b42172df746297415640 b/9b4147371bc1e8b59f7f052aa86b76f42fc7e458
+index 11e17d0359..9b4147371b 100644
+--- a/11e17d0359eb39a7c224b42172df746297415640
++++ b/9b4147371bc1e8b59f7f052aa86b76f42fc7e458
+@@ -1,16 +1,17 @@
+ /**
+- * Returns Druid Aggregation corresponding to a SQL {@link AggregateCall}.
++ * Returns a Druid Aggregation corresponding to a SQL {@link AggregateCall}. This method should ignore filters;
++ * they will be applied to your aggregator in a later step.
+  *
+- * @param name                 desired output name of the aggregation
+- * @param rowSignature         signature of the rows being aggregated
+  * @param plannerContext       SQL planner context
++ * @param rowSignature         signature of the rows being aggregated
++ * @param rexBuilder           a rexBuilder, in case you need one
++ * @param name                 desired output name of the aggregation
++ * @param aggregateCall        aggregate call object
++ * @param project              project that should be applied before aggregation; may be null
+  * @param existingAggregations existing aggregations for this query; useful for re-using aggregations. May be safely
+  * ignored if you do not want to re-use existing aggregations.
+- * @param project              SQL projection to apply before the aggregate call, may be null
+- * @param aggregateCall        SQL aggregate call
+- * @param filter               filter that should be applied to the aggregation, may be null
+  *
+  * @return aggregation, or null if the call cannot be translated
+  */
+ @Nullable
+-Aggregation toDruidAggregation(final String name, final RowSignature rowSignature, final PlannerContext plannerContext, final List<Aggregation> existingAggregations, final Project project, final AggregateCall aggregateCall, final DimFilter filter);
+\ No newline at end of file
++Aggregation toDruidAggregation(final PlannerContext plannerContext, final RowSignature rowSignature, final RexBuilder rexBuilder, final String name, final AggregateCall aggregateCall, final Project project, final List<Aggregation> existingAggregations);
+\ No newline at end of file

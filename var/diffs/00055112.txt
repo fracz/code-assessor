@@ -1,0 +1,35 @@
+diff --git a/23d646c82821dfc646325385e8dead69687c72b4 b/7c503052f963a017148726d2ae2048d857bf4329
+index 23d646c828..7c503052f9 100644
+--- a/23d646c82821dfc646325385e8dead69687c72b4
++++ b/7c503052f963a017148726d2ae2048d857bf4329
+@@ -1,26 +1,26 @@
+ /**
+- * Check if {@code region} contains in {@code container}.<br>
++ * Check if {@code region} contains in {@code container}.
++ * <br>
+  * For simple region (not from exception handlers) search in parents
+  * otherwise run recursive search because exception handlers can have several parents
+  */
+ public static boolean isRegionContainsRegion(IContainer container, IRegion region) {
+     if (container == region) {
+         return true;
+     }
+     if (region == null) {
+         return false;
+     }
+     IRegion parent = region.getParent();
+     while (container != parent) {
+         if (parent == null) {
+             if (region.getAttributes().contains(AttributeType.EXC_HANDLER)) {
+                 return isRegionContainsExcHandlerRegion(container, region);
+-            } else {
+-                return false;
+             }
++            return false;
+         }
+         region = parent;
+         parent = region.getParent();
+     }
+     return true;
+ }
+\ No newline at end of file

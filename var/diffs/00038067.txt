@@ -1,0 +1,12 @@
+diff --git a/d43efedeac547d038a80919c30543af50aea0198 b/79aa3c9797d6b6a941453af387a3a4016dbe0e33
+index d43efedeac..79aa3c9797 100644
+--- a/d43efedeac547d038a80919c30543af50aea0198
++++ b/79aa3c9797d6b6a941453af387a3a4016dbe0e33
+@@ -1,4 +1,4 @@
+ @Override
+-protected void startUpMaster() {
+-    master = new MasterImpl(new EmbeddedGraphDatabase(MASTER_PATH.getAbsolutePath()));
++protected void startUpMaster(int numSlaves) {
++    master = new MasterImpl(new EmbeddedGraphDatabase(dbPath(0).getAbsolutePath()));
+ }
+\ No newline at end of file

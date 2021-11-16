@@ -1,0 +1,20 @@
+diff --git a/db8fab296525d22dcfe1d93a785eedfd0a1a1375 b/8a532d8235fa1b331b54feb8cf6de376b50874c4
+index db8fab2965..8a532d8235 100644
+--- a/db8fab296525d22dcfe1d93a785eedfd0a1a1375
++++ b/8a532d8235fa1b331b54feb8cf6de376b50874c4
+@@ -1,8 +1,10 @@
+ public static List<Node> all() throws IOException, APIException {
+-    List<Node> nodes = Lists.newArrayList();
+-    NodeResponse response = Api.get(INITIAL_NODE, "/cluster/nodes/", NodeResponse.class);
+-    for (NodeSummaryResponse nsr : response.nodes) {
+-        nodes.add(new Node(nsr));
++    // TODO don't just get the node list once
++    if (nodes.size() == 0) {
++        NodeResponse response = Api.getUnauthenticated(INITIAL_NODE, "/cluster/nodes/", NodeResponse.class);
++        for (NodeSummaryResponse nsr : response.nodes) {
++            nodes.add(new Node(nsr));
++        }
+     }
+     return nodes;
+ }
+\ No newline at end of file

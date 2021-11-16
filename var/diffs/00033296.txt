@@ -1,0 +1,17 @@
+diff --git a/41ef3871e061a91df915c1ec1c51cd40d5698eb9 b/d2606ef115e004d444626ad23da1f758ac5b8181
+index 41ef3871e0..d2606ef115 100644
+--- a/41ef3871e061a91df915c1ec1c51cd40d5698eb9
++++ b/d2606ef115e004d444626ad23da1f758ac5b8181
+@@ -1,9 +1,9 @@
+ @Override
+ public void run() {
+     try {
+         artifact.getFile();
+-        visitor.artifactAvailable(artifact);
++        listener.artifactAvailable(artifact);
+     } catch (Throwable t) {
+-        artifactFailures.addFailure(artifact, t);
++        owner.failure = t;
+     }
+ }
+\ No newline at end of file

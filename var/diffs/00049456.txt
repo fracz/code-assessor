@@ -1,0 +1,25 @@
+diff --git a/11d0208c83950c4e3e746032419d5bf3799a4b68 b/890811bc87f9ab37321138cc3e6767133889f91e
+index 11d0208c83..890811bc87 100644
+--- a/11d0208c83950c4e3e746032419d5bf3799a4b68
++++ b/890811bc87f9ab37321138cc3e6767133889f91e
+@@ -1,18 +1,18 @@
+ private void checkContainerConnection(IRunnableContext runnableContext) {
+     // then we need to check connection
+     if (containerNode instanceof DBNDataSource && containerNode.getDataSource() == null) {
+         try {
+             runnableContext.run(true, true, new IRunnableWithProgress() {
+
+                 @Override
+                 public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+                     containerNode.initializeNode(new DefaultProgressMonitor(monitor), null);
+                 }
+             });
+         } catch (InvocationTargetException e) {
+-            UIUtils.showErrorDialog(null, "Init connection", "Error connecting to datasource", e.getTargetException());
++            DBUserInterface.getInstance().showError("Init connection", "Error connecting to datasource", e.getTargetException());
+         } catch (InterruptedException e) {
+         // ignore
+         }
+     }
+ }
+\ No newline at end of file

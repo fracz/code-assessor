@@ -1,0 +1,25 @@
+diff --git a/af55c97094699ecc75ee54e66ea42c84fba0ccc3 b/e601a833f9ea2c240d48605a6ce8f65025a99cb1
+index af55c97094..e601a833f9 100644
+--- a/af55c97094699ecc75ee54e66ea42c84fba0ccc3
++++ b/e601a833f9ea2c240d48605a6ce8f65025a99cb1
+@@ -1,13 +1,8 @@
+-long getExecutionTime(final CallTreeNode node) {
+-    final SpanAlign align = node.getValue();
+-    long elapsedTime;
+-    if (align.isSpan()) {
+-        elapsedTime = align.getSpanBo().getElapsed();
+-    } else {
+-        elapsedTime = align.getSpanEventBo().getEndElapsed();
++public long getExecutionTime() {
++    final CallTreeNode current = getCurrent();
++    final SpanAlign align = current.getValue();
++    if (!current.hasChild()) {
++        return align.getElapsed();
+     }
+-    if (!node.hasChild()) {
+-        return elapsedTime;
+-    }
+-    return elapsedTime - getChildrenElapsedTime(node);
++    return align.getElapsed() - getChildrenTotalElapsedTime(current);
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/86b91d10116baaa25ab9b34b51d5202b0f438ab7 b/e80b8e9789d35820e2f1c284b8c91e7fce166862
+index 86b91d1011..e80b8e9789 100644
+--- a/86b91d10116baaa25ab9b34b51d5202b0f438ab7
++++ b/e80b8e9789d35820e2f1c284b8c91e7fce166862
+@@ -1,12 +1,6 @@
+ /**
+  * End response reached: release the channel in the pool to being reused
+  */
+-public void endResponse(final OChannelBinaryAsynchClient iNetwork) {
+-    try {
+-        iNetwork.endResponse();
+-        connectionManager.release(iNetwork);
+-    } catch (IOException e) {
+-        connectionManager.remove(iNetwork);
+-        OLogManager.instance().warn(this, "dirty data left in the socket closing", e);
+-    }
++public void endResponse(final OChannelBinaryAsynchClient iNetwork) throws IOException {
++    iNetwork.endResponse();
+ }
+\ No newline at end of file

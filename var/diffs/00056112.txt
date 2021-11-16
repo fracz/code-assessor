@@ -1,0 +1,20 @@
+diff --git a/0df669f113b447daef93a7e091e0b6a870e1f36d b/bc034420904915b6ea54c2e233ad863e05dfd403
+index 0df669f113..bc03442090 100644
+--- a/0df669f113b447daef93a7e091e0b6a870e1f36d
++++ b/bc034420904915b6ea54c2e233ad863e05dfd403
+@@ -1,13 +1,13 @@
+ /**
+  * Test that inner bean for target means that we can use
+  * autowire without ambiguity from target and proxy
+  */
+ @Test
+ public void testTargetAsInnerBean() {
+-    ListableBeanFactory bf = new XmlBeanFactory(new ClassPathResource("innerBeanTarget.xml", getClass()));
++    ListableBeanFactory bf = new XmlBeanFactory(new ClassPathResource(INNER_BEAN_TARGET_CONTEXT, CLASS));
+     ITestBean itb = (ITestBean) bf.getBean("testBean");
+     assertEquals("innerBeanTarget", itb.getName());
+     assertEquals("Only have proxy and interceptor: no target", 3, bf.getBeanDefinitionCount());
+     DependsOnITestBean doit = (DependsOnITestBean) bf.getBean("autowireCheck");
+     assertSame(itb, doit.tb);
+ }
+\ No newline at end of file

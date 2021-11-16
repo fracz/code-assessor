@@ -1,0 +1,37 @@
+diff --git a/d7adaa0a02d6d61ea74c77b8ca8b8b4a84bdfcb0 b/737c51478f95647adeceb0a1c3cdbc195a50f19d
+index d7adaa0a02..737c51478f 100644
+--- a/d7adaa0a02d6d61ea74c77b8ca8b8b4a84bdfcb0
++++ b/737c51478f95647adeceb0a1c3cdbc195a50f19d
+@@ -1,22 +1,22 @@
+ private void initConstraint() {
+-    String constraint = "";
++    StringBuilder constraintBuilder = new StringBuilder();
+     if (isPrimaryKey()) {
+-        constraint += "PRIMARY KEY";
++        constraintBuilder.append("PRIMARY KEY");
+         if (pkAsc) {
+-            constraint += " ASC";
++            constraintBuilder.append(" ASC");
+         }
+         if (pkDesc) {
+-            constraint += " DESC";
++            constraintBuilder.append(" DESC");
+         }
+     }
+     if (notNull) {
+-        constraint += " NOT NULL";
++        constraintBuilder.append(" NOT NULL");
+     }
+     if (unique) {
+-        constraint += " UNIQUE";
++        constraintBuilder.append(" UNIQUE");
+     }
+-    constraint = constraint.trim();
+-    if (constraint.length() > 0) {
+-        setConstraints(constraint);
++    String newContraints = constraintBuilder.toString().trim();
++    if (constraintBuilder.length() > 0) {
++        constraints = newContraints;
+     }
+ }
+\ No newline at end of file

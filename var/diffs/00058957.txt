@@ -1,0 +1,14 @@
+diff --git a/c1460d5575ac3e9989424459e02f7aca3ca06dcd b/65ef862d46cdd4a4b28e0ebcf2d1f12ab062207d
+index c1460d5575..65ef862d46 100644
+--- a/c1460d5575ac3e9989424459e02f7aca3ca06dcd
++++ b/65ef862d46cdd4a4b28e0ebcf2d1f12ab062207d
+@@ -1,6 +1,5 @@
+ @Override
+ public TitanTransaction start() {
+-    verifyOpen();
+-    isOpen = false;
+-    return graph.newTransaction(this);
++    TransactionConfiguration immutable = new ImmutableTxCfg(isReadOnly, assignIDsImmediately, verifyExternalVertexExistence, verifyInternalVertexExistence, acquireLocks, verifyUniqueness, propertyPrefetching, singleThreaded, threadBound, hasTimestamp(), timestamp, timestampProvider, indexCacheWeight, vertexCacheSize, metricsPrefix, defaultTypeMaker, new BasicConfiguration(TITAN_NS, storageConfiguration.getConfiguration(), Restriction.NONE));
++    return graph.newTransaction(immutable);
+ }
+\ No newline at end of file

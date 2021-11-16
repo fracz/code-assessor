@@ -1,0 +1,29 @@
+diff --git a/d75b89b8a3a171a196e433d774131ed29281098d b/ffbcc5b805b9a6f25451d99d510c3ef1e1fd143e
+index d75b89b8a3..ffbcc5b805 100644
+--- a/d75b89b8a3a171a196e433d774131ed29281098d
++++ b/ffbcc5b805b9a6f25451d99d510c3ef1e1fd143e
+@@ -1,20 +1,19 @@
+ public int getClusterIdByName(final String iClusterName) {
+     checkOpeness();
+     if (iClusterName == null)
+         throw new IllegalArgumentException("Cluster name is null");
+     if (iClusterName.length() == 0)
+         throw new IllegalArgumentException("Cluster name is empty");
+     if (Character.isDigit(iClusterName.charAt(0)))
+         return Integer.parseInt(iClusterName);
+     // SEARCH IT BETWEEN PHYSICAL CLUSTERS
+-    OCluster segment;
+     lock.acquireSharedLock();
+     try {
+-        segment = clusterMap.get(iClusterName.toLowerCase());
++        final OCluster segment = clusterMap.get(iClusterName.toLowerCase());
++        if (segment != null)
++            return segment.getId();
+     } finally {
+         lock.releaseSharedLock();
+     }
+-    if (segment != null)
+-        return segment.getId();
+     return -1;
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/fda8967906b7a957b230d9a550588d61e371f39f b/a5024d901d2f98f3d998acbf462236d7172084c7
+index fda8967906..a5024d901d 100644
+--- a/fda8967906b7a957b230d9a550588d61e371f39f
++++ b/a5024d901d2f98f3d998acbf462236d7172084c7
+@@ -1,6 +1,4 @@
+ public void setContourColorRes(@ColorRes int colorRes) {
+-    if (getDrawable() instanceof IconicsDrawable) {
+-        ((IconicsDrawable) getDrawable()).contourColorRes(colorRes);
+-    }
+     mIconBundle.mContourColor = ContextCompat.getColor(getContext(), colorRes);
++    mIconBundle.applyProperties();
+ }
+\ No newline at end of file

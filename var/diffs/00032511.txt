@@ -1,0 +1,12 @@
+diff --git a/97471a82985c2464d13ad8637e4f51fe431c9f32 b/331a819eeaf7ae3683301a0c94449628f769c92a
+index 97471a8298..331a819eea 100644
+--- a/97471a82985c2464d13ad8637e4f51fe431c9f32
++++ b/331a819eeaf7ae3683301a0c94449628f769c92a
+@@ -1,4 +1,5 @@
+ @Test
+ public void refactorMethodInnerInner() throws Exception {
+-    refactoring.addInputLines("in/Test.java", "package foo.bar;", "class Test<T> {", "  <D> static void something(T t) {", "      class B {", "        class C<T,D> {}", "      }", "    }", "  }", "}").addOutputLines("out/Test.java", "package foo.bar;", "class Test<T> {", "  <D> static void something(T t) {", "      class B {", "        class C<T2,D2> {}", "      }", "    }", "  }", "}");
++    refactoring.addInputLines("in/Test.java", "package foo.bar;", "class Test<T> {", "  static <D> void something(D t) {", "    class B {", "      class C<T,D> {}", "    }", "  }", "}").addOutputLines("out/Test.java", "package foo.bar;", "class Test<T> {", "  static <D> void something(D t) {", "    class B {", // T isn't accessible to the inner since the method is static
++    "      class C<T,D2> {}", "    }", "  }", "}").doTest();
+ }
+\ No newline at end of file

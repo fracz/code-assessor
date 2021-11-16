@@ -1,0 +1,15 @@
+diff --git a/4053e7875e269059ed6af8899cab85d1aac1e641 b/a62eb5650b28b720fe62126ebb8475f965786524
+index 4053e7875e..a62eb5650b 100644
+--- a/4053e7875e269059ed6af8899cab85d1aac1e641
++++ b/a62eb5650b28b720fe62126ebb8475f965786524
+@@ -1,5 +1,8 @@
++/**
++ * Expect a header with the given name to match the specified values.
++ */
+ public WebTestClient.ResponseSpec valueEquals(String headerName, String... values) {
+-    List<String> actual = this.headers.get(headerName);
++    List<String> actual = getHeaders().get(headerName);
+     assertEquals("Response header [" + headerName + "]", Arrays.asList(values), actual);
+     return this.responseSpec;
+ }
+\ No newline at end of file

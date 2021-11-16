@@ -1,0 +1,20 @@
+diff --git a/0fe198928561070a84776f5aab9712677b7e8077 b/55f3004c5562ad909e00191e751f61185abf79f4
+index 0fe1989285..55f3004c55 100644
+--- a/0fe198928561070a84776f5aab9712677b7e8077
++++ b/55f3004c5562ad909e00191e751f61185abf79f4
+@@ -1,12 +1,12 @@
+ @Test(groups = { "broken" })
+ public void testElementsWithVaryingStructure() {
+     RunTest(getSampleWithVaryingStructure());
+-    TestTools.AssertGridCreated(project, 5, 6);
+-    TestTools.PrintProject(project);
++    log(project);
++    assertProjectCreated(project, 5, 6);
+     Row row0 = project.rows.get(0);
+     Assert.assertNotNull(row0);
+     Assert.assertEquals(row0.cells.size(), 6);
+     Row row5 = project.rows.get(5);
+     Assert.assertNotNull(row5);
+     Assert.assertEquals(row5.cells.size(), 6);
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/3838f5f52e55e0abb670a801cb9b49b428739a0e b/6643d3d0092cc508bd9fbf9513691d68296dd41e
+index 3838f5f52e..6643d3d009 100644
+--- a/3838f5f52e55e0abb670a801cb9b49b428739a0e
++++ b/6643d3d0092cc508bd9fbf9513691d68296dd41e
+@@ -1,9 +1,12 @@
+ public boolean showHint(final Editor editor) {
+     final String referenceName = getRefName();
++    /*
+     final PsiFile[] files = getRefFiles(referenceName);
+-    if (!(files != null && files.length > 0))
++    if (!(files != null && files.length > 0)) return false;
++    */
++    if (ResolveImportUtil.resolveInRoots(myReference.getElement(), referenceName) == null)
+         return false;
+     String hintText = ShowAutoImportPass.getMessage(false, getRefName());
+     HintManager.getInstance().showQuestionHint(editor, hintText, myReference.getElement().getTextOffset(), myReference.getElement().getTextRange().getEndOffset(), this);
+     return true;
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/37db102ac59c54037f47bb8e0ae1f7a0f21fab33 b/c165ba9607f1a6db11e4bb4b672aa96ac4ce1438
+index 37db102ac5..c165ba9607 100644
+--- a/37db102ac59c54037f47bb8e0ae1f7a0f21fab33
++++ b/c165ba9607f1a6db11e4bb4b672aa96ac4ce1438
+@@ -1,13 +1,7 @@
+-@Deprecated
+ public AnnotationKey findAnnotationKeyByName(String keyName) {
+-    final List<AnnotationKey> annotationKeyList = nameLookupTable.get(keyName);
+-    if (annotationKeyList == null) {
++    final AnnotationKey annotationKey = nameLookupTable.get(keyName);
++    if (annotationKey == null) {
+         throw new NoSuchElementException(keyName);
+-    } else {
+-        if (annotationKeyList.isEmpty()) {
+-            throw new NoSuchElementException(keyName);
+-        } else {
+-            return annotationKeyList.get(0);
+-        }
+     }
++    return annotationKey;
+ }
+\ No newline at end of file

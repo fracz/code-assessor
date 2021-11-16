@@ -1,0 +1,33 @@
+diff --git a/cb855e22be3c53fb40c9d95dac3ddd1ec51c8720 b/30b669a1d520152818e545402d8595970d290996
+index cb855e22be..30b669a1d5 100644
+--- a/cb855e22be3c53fb40c9d95dac3ddd1ec51c8720
++++ b/30b669a1d520152818e545402d8595970d290996
+@@ -1,13 +1,19 @@
+ private void stopEdit() {
+     String newName = myNameEditorField.getText();
+-    SchemeListItem<T> selectedItem = getSelectedItem();
+-    String validationMessage = selectedItem != null ? selectedItem.validateSchemeName(newName) : null;
+-    if (validationMessage != null) {
+-        mySchemesPanel.showInfo(validationMessage, MessageType.ERROR);
+-    } else {
+-        cancelEdit();
+-        if (selectedItem != null && selectedItem.getScheme() != null) {
+-            mySchemesPanel.getActions().doRename(selectedItem.getScheme(), newName);
++    MySchemeListItem<T> selectedItem = getSelectedItem();
++    if (selectedItem != null) {
++        if (newName.equals(selectedItem.getSchemeName())) {
++            cancelEdit();
++            return;
++        }
++        String validationMessage = validateSchemeName(newName);
++        if (validationMessage != null) {
++            mySchemesPanel.showInfo(validationMessage, MessageType.ERROR);
++        } else {
++            cancelEdit();
++            if (selectedItem.getScheme() != null) {
++                mySchemesPanel.getActions().renameScheme(selectedItem.getScheme(), newName);
++            }
+         }
+     }
+ }
+\ No newline at end of file

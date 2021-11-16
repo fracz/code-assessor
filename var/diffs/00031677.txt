@@ -1,0 +1,16 @@
+diff --git a/6541fe6fbb42b5c4178f78ab0c265e6933575c42 b/1a752a8b3459d59b7b59ff26ed31e76f39115f7c
+index 6541fe6fbb..1a752a8b34 100644
+--- a/6541fe6fbb42b5c4178f78ab0c265e6933575c42
++++ b/1a752a8b3459d59b7b59ff26ed31e76f39115f7c
+@@ -1,6 +1,9 @@
++/**
++ * Sets a custom zoomable controller, instead of using the default one.
++ */
+ public void setZoomableController(ZoomableController zoomableController) {
+     Preconditions.checkNotNull(zoomableController);
+     mZoomableController.setListener(null);
+     mZoomableController = zoomableController;
+-    mZoomableController.setListener(this);
++    mZoomableController.setListener(mZoomableListener);
+ }
+\ No newline at end of file

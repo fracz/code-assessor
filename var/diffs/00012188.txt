@@ -1,0 +1,16 @@
+diff --git a/c205ad3a08bd711fa6567ab76e0bafd65d4384b2 b/09059e41c76575552cd3d06af6c3f988398aa8b9
+index c205ad3a08..09059e41c7 100644
+--- a/c205ad3a08bd711fa6567ab76e0bafd65d4384b2
++++ b/09059e41c76575552cd3d06af6c3f988398aa8b9
+@@ -1,9 +1,3 @@
+ private List<Repository> initRepositories(String... names) {
+-    return ContainerUtil.map(names, new Function<String, Repository>() {
+-
+-        @Override
+-        public Repository fun(String s) {
+-            return initRepository(s);
+-        }
+-    });
++    return ContainerUtil.map(names, this::initRepository);
+ }
+\ No newline at end of file

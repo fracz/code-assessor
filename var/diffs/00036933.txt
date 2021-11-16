@@ -1,0 +1,12 @@
+diff --git a/6661c5c2325be6a824dda6f0a55250b979538bd3 b/8370bee6d6be32793e876d0f65f88bb5b1398552
+index 6661c5c232..8370bee6d6 100644
+--- a/6661c5c2325be6a824dda6f0a55250b979538bd3
++++ b/8370bee6d6be32793e876d0f65f88bb5b1398552
+@@ -1,5 +1,4 @@
+ public static byte[] modify(ClassPool classPool, ClassLoader classLoader, String javassistClassName, byte[] classFileBuffer) {
+-    log("CubridStatementModifier modifing");
+-    // printClassInfo(javassistClassName);
++    logger.info("CubridStatementModifier modifing. %s", javassistClassName);
+     return changeMethod(classPool, classLoader, javassistClassName, classFileBuffer);
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/3eb46fa11629d5cd6940866d7902f6663d2b60f3 b/13aec96302965d84264b799deed20efea390a39f
+index 3eb46fa116..13aec96302 100644
+--- a/3eb46fa11629d5cd6940866d7902f6663d2b60f3
++++ b/13aec96302965d84264b799deed20efea390a39f
+@@ -1,9 +1,9 @@
+ @Test
+ public void shouldTakeValueFromCacheIfSameTimestampFlushedToRocks() throws Exception {
+-    cachingStore.put("1", "a", DEFAULT_TIMESTAMP);
++    cachingStore.put(bytesKey("1"), bytesValue("a"), DEFAULT_TIMESTAMP);
+     cachingStore.flush();
+-    cachingStore.put("1", "b", DEFAULT_TIMESTAMP);
+-    final WindowStoreIterator<String> fetch = cachingStore.fetch("1", DEFAULT_TIMESTAMP, DEFAULT_TIMESTAMP);
+-    assertEquals(KeyValue.pair(DEFAULT_TIMESTAMP, "b"), fetch.next());
++    cachingStore.put(bytesKey("1"), bytesValue("b"), DEFAULT_TIMESTAMP);
++    final WindowStoreIterator<byte[]> fetch = cachingStore.fetch(bytesKey("1"), DEFAULT_TIMESTAMP, DEFAULT_TIMESTAMP);
++    verifyKeyValue(fetch.next(), DEFAULT_TIMESTAMP, "b");
+     assertFalse(fetch.hasNext());
+ }
+\ No newline at end of file

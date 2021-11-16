@@ -1,0 +1,16 @@
+diff --git a/5c65f4019ea73db6c7b308f905b1fa212a2d839e b/5fea025dd0f4eb9d7b64e752cfac632f219138be
+index 5c65f4019e..5fea025dd0 100644
+--- a/5c65f4019ea73db6c7b308f905b1fa212a2d839e
++++ b/5fea025dd0f4eb9d7b64e752cfac632f219138be
+@@ -1,8 +1,9 @@
+-public void filesDirty(@Nullable final Collection<VirtualFile> filesDirty, @Nullable final Collection<VirtualFile> dirsRecursivelyDirty) {
++public boolean filesDirty(@Nullable final Collection<VirtualFile> filesDirty, @Nullable final Collection<VirtualFile> dirsRecursivelyDirty) {
+     if (filesDirty != null) {
+         myVFiles.addAll(filesDirty);
+     }
+     if (dirsRecursivelyDirty != null) {
+         myVDirs.addAll(dirsRecursivelyDirty);
+     }
++    return true;
+ }
+\ No newline at end of file

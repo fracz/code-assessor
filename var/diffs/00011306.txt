@@ -1,0 +1,26 @@
+diff --git a/311c8d122b6714e562e80d0fd9a8820fe506b38d b/5b9f7d0011d10f32fc4200099fed27a3497d0fd7
+index 311c8d122b..5b9f7d0011 100644
+--- a/311c8d122b6714e562e80d0fd9a8820fe506b38d
++++ b/5b9f7d0011d10f32fc4200099fed27a3497d0fd7
+@@ -1,16 +1,7 @@
+-private static void collectPathsAndNotify(final VirtualFile file, final Function<Collection<File>, Void> notification) {
+-    final Set<File> pathsToMark = new THashSet<>(FileUtil.FILE_HASHING_STRATEGY);
++private static void collectPathsAndNotify(final VirtualFile file, final Consumer<Collection<File>> notification) {
+     if (!isIgnoredOrUnderIgnoredDirectory(file)) {
+-        final boolean inContent = isInContentOfOpenedProject(file);
+-        processRecursively(file, !inContent, new FileProcessor() {
+-
+-            @Override
+-            public void execute(final VirtualFile file) {
+-                pathsToMark.add(new File(file.getPath()));
+-            }
+-        });
+-    }
+-    if (!pathsToMark.isEmpty()) {
+-        notification.fun(pathsToMark);
++        final Set<File> pathsToMark = new THashSet<>(FileUtil.FILE_HASHING_STRATEGY);
++        processRecursively(file, !isInContentOfOpenedProject(file), f -> pathsToMark.add(new File(f.getPath())));
++        notification.consume(pathsToMark);
+     }
+ }
+\ No newline at end of file

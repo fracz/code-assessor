@@ -1,0 +1,15 @@
+diff --git a/5bad5f9830587dd7a7a73ac6a2c4f3ebe10d481d b/5cc50cb3b09042968e9ef6a5fd2c0268dd1815ee
+index 5bad5f9830..5cc50cb3b0 100644
+--- a/5bad5f9830587dd7a7a73ac6a2c4f3ebe10d481d
++++ b/5cc50cb3b09042968e9ef6a5fd2c0268dd1815ee
+@@ -1,8 +1,4 @@
+ @Override
+ public final StandardTitanTx tx() {
+-    StandardTitanTx tx = getVertex(0).tx();
+-    if (!tx.isClosed())
+-        return tx;
+-    else
+-        return tx.getNextTx();
++    return getVertex(0).tx();
+ }
+\ No newline at end of file

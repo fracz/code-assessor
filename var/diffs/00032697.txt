@@ -1,0 +1,17 @@
+diff --git a/ca5718f3b7ed88cd6e689c9364ff3fcae05948a1 b/d215a077b506a8cae30aefeebe686f5987281ca2
+index ca5718f3b7..d215a077b5 100644
+--- a/ca5718f3b7ed88cd6e689c9364ff3fcae05948a1
++++ b/d215a077b506a8cae30aefeebe686f5987281ca2
+@@ -1,10 +1,10 @@
+ @Test
+ public void parallelEdges_undirected() {
+-    UndirectedGraph<Integer, String> undirectedGraph = Graphs.createUndirected(MULTIGRAPH);
++    Graph<Integer, String> undirectedGraph = GraphBuilder.undirected().allowsParallelEdges(true).build();
+     undirectedGraph.addEdge(E12, N1, N2);
+     undirectedGraph.addEdge(E12_A, N1, N2);
+     undirectedGraph.addEdge(E21, N2, N1);
+     assertThat(Graphs.parallelEdges(undirectedGraph, E12)).containsExactly(E12_A, E21);
+     assertThat(Graphs.parallelEdges(undirectedGraph, E12_A)).containsExactly(E12, E21);
+     assertThat(Graphs.parallelEdges(undirectedGraph, E21)).containsExactly(E12, E12_A);
+ }
+\ No newline at end of file

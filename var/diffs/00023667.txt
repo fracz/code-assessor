@@ -1,0 +1,27 @@
+diff --git a/f09f2c4722cb93994bdf9384fe4ced0e97e74715 b/127bd91eae583414d4dff51915f40346eb62bd3b
+index f09f2c4722..127bd91eae 100644
+--- a/f09f2c4722cb93994bdf9384fe4ced0e97e74715
++++ b/127bd91eae583414d4dff51915f40346eb62bd3b
+@@ -1,17 +1,19 @@
+ /**
+  * Shows the action button.
+  * @param fadeIn whether or not to animate the action button in.
+  * @param fadeInDuration the duration of the action button animation, only used if
+  * {@param fadeIn} is true.
+  */
+ public void showActionButton(boolean fadeIn, int fadeInDuration) {
+     mActionButtonView.setVisibility(View.VISIBLE);
+     if (fadeIn) {
+         if (mActionButtonView.getAlpha() < 1f) {
+-            mActionButtonView.setAlpha(0f);
+-            mActionButtonView.animate().alpha(1f).setDuration(fadeInDuration).setInterpolator(PhoneStatusBar.ALPHA_IN).withLayer().start();
++            mActionButtonView.animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(fadeInDuration).setInterpolator(PhoneStatusBar.ALPHA_IN).withLayer().start();
+         }
+     } else {
++        mActionButtonView.setScaleX(1f);
++        mActionButtonView.setScaleY(1f);
+         mActionButtonView.setAlpha(1f);
++        mActionButtonView.setTranslationZ(mActionButtonTranslationZ);
+     }
+ }
+\ No newline at end of file

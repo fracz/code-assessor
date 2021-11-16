@@ -1,0 +1,11 @@
+diff --git a/06bff5160c55e4e255f468d2a99f96fd5142fd66 b/13dcba575f39881d134e00c68be694f4d3182ffd
+index 06bff5160c..13dcba575f 100644
+--- a/06bff5160c55e4e255f468d2a99f96fd5142fd66
++++ b/13dcba575f39881d134e00c68be694f4d3182ffd
+@@ -1,4 +1,4 @@
+ @Test
+ public void shouldNeverVerifyWhenVerificationIsInAtLeastMode() throws Exception {
+-    verifier.verify(null, null, VerificationModeImpl.atLeastOnce());
++    assertFalse(verifier.appliesTo(VerificationModeImpl.atLeastOnce()));
+ }
+\ No newline at end of file

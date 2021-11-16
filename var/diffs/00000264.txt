@@ -1,0 +1,16 @@
+diff --git a/0c405433eaa3468e9f1a8670a1238022fc856293 b/6b37ac93afb43c2ef5699a1c16d3637810ddbd40
+index 0c405433ea..6b37ac93af 100644
+--- a/0c405433eaa3468e9f1a8670a1238022fc856293
++++ b/6b37ac93afb43c2ef5699a1c16d3637810ddbd40
+@@ -1,9 +1,9 @@
+ /**
+  * Test case for {@link S3AUnderFileSystem#delete(String, boolean)}.
+  */
+ @Test
+ public void deleteNonRecursiveOnAmazonClientException() throws IOException {
+     Mockito.when(mClient.listObjectsV2(Matchers.any(ListObjectsV2Request.class))).thenThrow(AmazonClientException.class);
+-    boolean result = mS3UnderFileSystem.deleteDirectory(PATH, new DeleteOptions().setRecursive(false));
++    boolean result = mS3UnderFileSystem.deleteDirectory(PATH, DeleteOptions.defaults().setRecursive(false));
+     Assert.assertFalse(result);
+ }
+\ No newline at end of file

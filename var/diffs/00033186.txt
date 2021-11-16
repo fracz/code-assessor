@@ -1,0 +1,14 @@
+diff --git a/48294735f1c8361c57cd92235c3e7d41e6430ff8 b/1330990599676c2b9b875ca50854e8072aee0c63
+index 48294735f1..1330990599 100644
+--- a/48294735f1c8361c57cd92235c3e7d41e6430ff8
++++ b/1330990599676c2b9b875ca50854e8072aee0c63
+@@ -1,7 +1,6 @@
+ @Test
+ public void testCreatePublishOptionsWithUploadModuleDescriptorFalse() {
+-    PublishInstruction publishInstruction = new PublishInstruction();
+-    PublishOptions publishOptions = publishOptionsFactory.createPublishOptions(WrapUtil.toSet(TEST_CONF), publishInstruction);
++    PublishOptions publishOptions = publishOptionsFactory.createPublishOptions(WrapUtil.toSet(TEST_CONF), null);
+     assertThat(publishOptions.getSrcIvyPattern(), equalTo(null));
+     checkCommonValues(publishOptions);
+ }
+\ No newline at end of file

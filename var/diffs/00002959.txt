@@ -1,0 +1,15 @@
+diff --git a/34b1e1426446d4d12ddc567d12b546ab9ff27456 b/a2c556a5ff1891484013af2c9d5b3024879b0178
+index 34b1e14264..a2c556a5ff 100644
+--- a/34b1e1426446d4d12ddc567d12b546ab9ff27456
++++ b/a2c556a5ff1891484013af2c9d5b3024879b0178
+@@ -1,3 +1,7 @@
+-private AnalysisScope getProjectScope(DataContext dataContext) {
+-    return new AnalysisScope(PlatformDataKeys.PROJECT.getData(dataContext));
++private static AnalysisScope getProjectScope(DataContext dataContext) {
++    final Project data = PlatformDataKeys.PROJECT.getData(dataContext);
++    if (data == null) {
++        return null;
++    }
++    return new AnalysisScope(data);
+ }
+\ No newline at end of file

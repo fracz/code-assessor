@@ -1,0 +1,30 @@
+diff --git a/8994125aed616d52121f58f7d9518f1f1c9e4777 b/dee2cf881da87ac81f5f217dfbbfb2f8b99be02b
+index 8994125aed..dee2cf881d 100644
+--- a/8994125aed616d52121f58f7d9518f1f1c9e4777
++++ b/dee2cf881da87ac81f5f217dfbbfb2f8b99be02b
+@@ -1,20 +1,19 @@
+ public static boolean validateUniqueKey(ResultSetViewer viewer) {
+     final DBCEntityIdentifier identifier = viewer.getVirtualEntityIdentifier();
+     if (identifier == null) {
+         // No key
+         return false;
+     }
+     if (!CommonUtils.isEmpty(identifier.getAttributes())) {
+         // Key already defined
+         return true;
+     }
+-    DBSEntity ownerEntity = identifier.getReferrer().getParentObject();
+-    if (ownerEntity instanceof DBVEntity) {
+-    // if (CommonUtils.getBoolean(((DBVEntity)ownerEntity).getProperty(DBVConstants.PROPERTY_USE_VIRTUAL_KEY_QUIET))) {
+-    // return true;
+-    // }
++    if (viewer.getDataSource().getContainer().getPreferenceStore().getBoolean(PROPERTY_USE_ALL_COLUMNS_QUIET)) {
++        if (useAllColumns(viewer.getControl().getShell(), viewer)) {
++            return true;
++        }
+     }
+     ValidateUniqueKeyUsageDialog dialog = new ValidateUniqueKeyUsageDialog(viewer);
+     int result = dialog.open();
+     return result == IDialogConstants.OK_ID;
+ }
+\ No newline at end of file

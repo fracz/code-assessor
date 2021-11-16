@@ -1,0 +1,20 @@
+diff --git a/a9e994bda0bac59221671605355a1a59f788c9b7 b/69f262d3cade20c116a5592ac8b69e766358379a
+index a9e994bda0..69f262d3ca 100644
+--- a/a9e994bda0bac59221671605355a1a59f788c9b7
++++ b/69f262d3cade20c116a5592ac8b69e766358379a
+@@ -1,6 +1,9 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiField field = (PsiField) ((PsiReference) location).resolve();
+-    assert field != null;
+-    final PsiType type = field.getType();
+-    return InspectionGadgetsBundle.message("return.date.calendar.field.problem.descriptor", type.getPresentableText());
++@NotNull
++public String buildErrorString(Object... infos) {
++    final boolean date = ((Boolean) infos[0]).booleanValue();
++    if (date) {
++        return InspectionGadgetsBundle.message("return.date.calendar.field.problem.descriptor", "Date");
++    } else {
++        return InspectionGadgetsBundle.message("return.date.calendar.field.problem.descriptor", "Calendar");
++    }
+ }
+\ No newline at end of file

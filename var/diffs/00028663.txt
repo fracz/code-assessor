@@ -1,0 +1,19 @@
+diff --git a/5f1adc1e7fe74db031cfae3bee112c6f059886c9 b/4a614e622d8bffafa2f7019c2dccf6984512cecd
+index 5f1adc1e7f..4a614e622d 100644
+--- a/5f1adc1e7fe74db031cfae3bee112c6f059886c9
++++ b/4a614e622d8bffafa2f7019c2dccf6984512cecd
+@@ -1,11 +1,8 @@
+ @Override
+ public QueryValidationException validate() {
+-    QueryValidationException validationExceptions = null;
+-    if (queryBuilder == null) {
+-        validationExceptions = QueryValidationException.addValidationError("[field_masking_span] must have inner span query clause", validationExceptions);
+-    }
++    QueryValidationException validationExceptions = validateInnerQuery(queryBuilder, null);
+     if (fieldName == null || fieldName.isEmpty()) {
+-        validationExceptions = QueryValidationException.addValidationError("[field_masking_span] must have set field name", validationExceptions);
++        validationExceptions = addValidationError("field name is null or empty", validationExceptions);
+     }
+     return validationExceptions;
+ }
+\ No newline at end of file

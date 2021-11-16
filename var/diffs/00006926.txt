@@ -1,0 +1,17 @@
+diff --git a/03fad7d06bb933903c4c826df5b6b118445483b0 b/b81608e89f3fc2c19f3ff48bba39079a04914d7f
+index 03fad7d06b..b81608e89f 100644
+--- a/03fad7d06bb933903c4c826df5b6b118445483b0
++++ b/b81608e89f3fc2c19f3ff48bba39079a04914d7f
+@@ -1,7 +1,9 @@
++@Nullable
+ protected Editor createEditor(VirtualFile file) {
+-    final FileEditorManager instance = FileEditorManager.getInstance(getProject());
++    final Project project = myProjectFixture.getProject();
++    final FileEditorManager instance = FileEditorManager.getInstance(project);
+     if (file.getFileType() != null && file.getFileType().isBinary()) {
+         return null;
+     }
+-    return instance.openTextEditor(new OpenFileDescriptor(getProject(), file, 0), false);
++    return instance.openTextEditor(new OpenFileDescriptor(project, file, 0), false);
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/9760b596af7036270aab091da8f97a085b9264d3 b/9ef4ab9124c2fe05030733a2ad6a3f03a8c1a926
+index 9760b596af..9ef4ab9124 100644
+--- a/9760b596af7036270aab091da8f97a085b9264d3
++++ b/9ef4ab9124c2fe05030733a2ad6a3f03a8c1a926
+@@ -1,9 +1,10 @@
+ private Iterable<NodePropertyUpdate> convertIntoLogicalPropertyUpdates(Iterable<PropertyCommand> propertyCommands) {
++    final PropertyStore propertyStore = getPropertyStore();
+     return new NestingIterable<NodePropertyUpdate, PropertyCommand>(propertyCommands) {
+
+         @Override
+         protected Iterator<NodePropertyUpdate> createNestedIterator(PropertyCommand command) {
+-            return PropertyPhysicalToLogicalConverter.INSTANCE.apply(Pair.of(command.getBefore(), command.getAfter())).iterator();
++            return propertyStore.toLogicalUpdates(command.getBefore(), command.getAfter()).iterator();
+         }
+     };
+ }
+\ No newline at end of file

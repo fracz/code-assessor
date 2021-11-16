@@ -1,0 +1,18 @@
+diff --git a/f851cb0e80ab509ce6e3557d37b2a7a185666b52 b/2516b886b37dc097d6aa0cbf0034403a4c907d09
+index f851cb0e80..2516b886b3 100644
+--- a/f851cb0e80ab509ce6e3557d37b2a7a185666b52
++++ b/2516b886b37dc097d6aa0cbf0034403a4c907d09
+@@ -1,11 +1,6 @@
+ public boolean remove(Object key, OIdentifiable value) {
+-    Query query = null;
+-    if (isCollectionDelete()) {
+-        query = OLuceneIndexType.createDeleteQuery(value, index.getFields(), key);
+-    } else {
+-        query = OLuceneIndexType.createQueryId(value);
+-    }
++    Query query = deleteQuery(key, value);
+     if (query != null)
+         deleteDocument(query);
+     return true;
+ }
+\ No newline at end of file

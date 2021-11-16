@@ -1,0 +1,16 @@
+diff --git a/1953d2b2b7fa7f948a3a777a22ecb2ec0df753a1 b/999e2eadcb08339a208789d442af69685acdb984
+index 1953d2b2b7..999e2eadcb 100644
+--- a/1953d2b2b7fa7f948a3a777a22ecb2ec0df753a1
++++ b/999e2eadcb08339a208789d442af69685acdb984
+@@ -1,7 +1,7 @@
+ @Override
+ public SQLXML createSQLXML() throws SQLException {
+-    if (conn != null) {
+-        return conn.createSQLXML();
++    if (conn == null) {
++        throw new SQLException("connection not init");
+     }
+-    throw new SQLException("connection not init");
++    return conn.createSQLXML();
+ }
+\ No newline at end of file

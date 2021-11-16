@@ -1,0 +1,18 @@
+diff --git a/6f367e4903aa166373f53feb4a2b3256736b0509 b/d9652dea1e57c9c1216c8c788da410c9d7c16179
+index 6f367e4903..d9652dea1e 100644
+--- a/6f367e4903aa166373f53feb4a2b3256736b0509
++++ b/d9652dea1e57c9c1216c8c788da410c9d7c16179
+@@ -1,9 +1,9 @@
+ protected int layout(final SectionRow sectionRow) {
+     if (sectionRow.section() == 0) {
+         return R.layout.project_context_view;
+-    } else if (!project.hasComments()) {
+-        return R.layout.empty_comment_feed_layout;
+-    } else {
++    } else if (sectionRow.section() == 1) {
+         return R.layout.comment_card_view;
++    } else {
++        return R.layout.empty_comment_feed_layout;
+     }
+ }
+\ No newline at end of file

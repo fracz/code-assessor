@@ -1,0 +1,26 @@
+diff --git a/a6b00f77796c2a38ee90df3025a0fadcaa360caf b/5ac97b52a6e59d5ad299d83cf90e998770458051
+index a6b00f7779..5ac97b52a6 100644
+--- a/a6b00f77796c2a38ee90df3025a0fadcaa360caf
++++ b/5ac97b52a6e59d5ad299d83cf90e998770458051
+@@ -1,17 +1,16 @@
+-/**
+- * This test is not marked with @Test becuase some of the implementations use random partitioning (passes for BerkeleyDB and HBase)
+- */
+-protected void testGetKeysWithKeyRange() throws Exception {
++@Test
++@Category({ OrderedKeyStoreTests.class })
++public void testGetKeysWithKeyRange() throws Exception {
+     populateDBWith100Keys();
+     StoreTransaction txn = startTx();
+     KeyIterator keyIterator = store.getKeys(new // key start
+     KeyRangeQuery(// key start
+     KeyColumnValueStoreUtil.longToByteBuffer(10), // key end
+     KeyColumnValueStoreUtil.longToByteBuffer(40), // column start
+     new ReadArrayBuffer("b".getBytes()), new ReadArrayBuffer("c".getBytes())), txn);
+     try {
+         examineGetKeysResults(keyIterator, 10, 40, 1);
+     } finally {
+         txn.commit();
+     }
+ }
+\ No newline at end of file

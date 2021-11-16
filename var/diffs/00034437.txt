@@ -1,0 +1,13 @@
+diff --git a/51cc1ca9adb52396d3ccdcb9ac9bc06ddd08510b b/09d4eb0d173f38fcff10e6b8a655d65c9981338d
+index 51cc1ca9ad..09d4eb0d17 100644
+--- a/51cc1ca9adb52396d3ccdcb9ac9bc06ddd08510b
++++ b/09d4eb0d173f38fcff10e6b8a655d65c9981338d
+@@ -1,5 +1,4 @@
+ @Override
+-public void onNext(String searchText) {
+-    _log(String.format("onNext You searched for %s", searchText));
+-    onCompleted();
++public void onNext(OnTextChangeEvent onTextChangeEvent) {
++    _log(format("onNext You searched for %s", onTextChangeEvent.text().toString()));
+ }
+\ No newline at end of file

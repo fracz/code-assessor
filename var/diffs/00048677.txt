@@ -1,0 +1,30 @@
+diff --git a/4525b069d6c6dc3bf61554cb266b4b3987d154de b/480f9dcfb202d1345da67176be32a7f9b3e2afac
+index 4525b069d6..480f9dcfb2 100644
+--- a/4525b069d6c6dc3bf61554cb266b4b3987d154de
++++ b/480f9dcfb202d1345da67176be32a7f9b3e2afac
+@@ -1,11 +1,16 @@
+ private boolean closeActiveTransactions() {
+-    TransactionCloser closer = new TransactionCloser();
+-    try {
+-        DBeaverUI.runInProgressService(closer);
+-    } catch (InvocationTargetException e) {
+-        log.error(e.getTargetException());
+-    } catch (InterruptedException e) {
+-    // ignore
++    DBeaverCore core = DBeaverCore.getInstance();
++    for (IProject project : core.getLiveProjects()) {
++        if (project.isOpen()) {
++            DataSourceRegistry registry = core.getProjectRegistry().getDataSourceRegistry(project);
++            if (registry != null) {
++                for (DataSourceDescriptor dataSourceDescriptor : registry.getDataSources()) {
++                    if (!DataSourceHandler.checkAndCloseActiveTransaction(dataSourceDescriptor)) {
++                        return false;
++                    }
++                }
++            }
++        }
+     }
+-    return closer.getResult();
++    return true;
+ }
+\ No newline at end of file

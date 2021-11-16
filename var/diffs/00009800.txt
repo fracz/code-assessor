@@ -1,0 +1,23 @@
+diff --git a/afded13e51b4bcb5d178ebf228f0049bf8c159d0 b/9fc7da80a5d6079cd34a666281e5f430b660e2d8
+index afded13e51..9fc7da80a5 100644
+--- a/afded13e51b4bcb5d178ebf228f0049bf8c159d0
++++ b/9fc7da80a5d6079cd34a666281e5f430b660e2d8
+@@ -1,10 +1,8 @@
+-public void projectsIgnoredStateChanged(List<MavenProject> ignored, List<MavenProject> unignored) {
+-    if (!isActivated)
+-        return;
+-    for (MavenProject each : ignored) {
+-        setIgnored(each, true);
+-    }
+-    for (MavenProject each : ignored) {
+-        setIgnored(each, false);
+-    }
++public void projectsIgnoredStateChanged(final List<MavenProject> ignored, final List<MavenProject> unignored) {
++    scheduleStructureUpdate(new Runnable() {
++
++        public void run() {
++            myStructure.updateIgnored(ContainerUtil.concat(ignored, unignored));
++        }
++    });
+ }
+\ No newline at end of file

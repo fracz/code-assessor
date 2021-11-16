@@ -1,0 +1,25 @@
+diff --git a/7a25a89be42ba9f70df441b903581b7d70c4d795 b/1573886ed844885fe9fcc4af15c5c3104f427832
+index 7a25a89be4..1573886ed8 100644
+--- a/7a25a89be42ba9f70df441b903581b7d70c4d795
++++ b/1573886ed844885fe9fcc4af15c5c3104f427832
+@@ -1,18 +1,18 @@
+ @Override
+ public void writeTo(StreamOutput out) throws IOException {
+     super.writeTo(out);
+     out.writeFloat(minScore);
+-    out.writeBytesHolder(querySource, querySourceOffset, querySourceLength);
++    out.writeBytesReference(querySource, true);
+     out.writeVInt(types.length);
+     for (String type : types) {
+         out.writeUTF(type);
+     }
+     if (filteringAliases != null) {
+         out.writeVInt(filteringAliases.length);
+         for (String alias : filteringAliases) {
+             out.writeUTF(alias);
+         }
+     } else {
+         out.writeVInt(0);
+     }
+ }
+\ No newline at end of file

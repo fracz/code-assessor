@@ -1,0 +1,11 @@
+diff --git a/d2f1ba9be7b0813a461cf73f656802ae94d558be b/a20d58faa432da1c83b357d417261f60e5491709
+index d2f1ba9be7..a20d58faa4 100644
+--- a/d2f1ba9be7b0813a461cf73f656802ae94d558be
++++ b/a20d58faa432da1c83b357d417261f60e5491709
+@@ -1,4 +1,4 @@
+ @Test(expected = SQLParserException.class)
+ public void assertNegativeLimitRowCount() throws SQLParserException {
+-    SQLParserFactory.create(DatabaseType.MySQL, "select * from order limit -2,-1", Collections.emptyList(), new ShardingRuleMockBuilder().build()).parse();
++    new SQLParserEngine(DatabaseType.MySQL, "select * from order limit -2,-1", new ShardingRuleMockBuilder().build(), Collections.emptyList()).parseStatement();
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/64b191cd81bc6d0a3946c5e5c74deae5f9a21b42 b/7f0043034268a80ad0c49bf5a3613fe09f0dd634
+index 64b191cd81..7f00430342 100644
+--- a/64b191cd81bc6d0a3946c5e5c74deae5f9a21b42
++++ b/7f0043034268a80ad0c49bf5a3613fe09f0dd634
+@@ -1,4 +1,4 @@
+-public ScopedBindingBuilder visitInstance(T instance, Set<InjectionPoint> injectionPoints) {
+-    binder.bind(key).toInstance(instance);
++public ScopedBindingBuilder visitInstance(InstanceBinding<T> binding) {
++    binder.bind(key).toInstance(binding.getInstance());
+     return null;
+ }
+\ No newline at end of file

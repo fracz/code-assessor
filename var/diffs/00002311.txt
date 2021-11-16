@@ -1,0 +1,13 @@
+diff --git a/5e7b1c31f6d85a967dd0e9b44031758b050c4393 b/1a245b725f95a1810265f582a8193addd005b56b
+index 5e7b1c31f6..1a245b725f 100644
+--- a/5e7b1c31f6d85a967dd0e9b44031758b050c4393
++++ b/1a245b725f95a1810265f582a8193addd005b56b
+@@ -1,5 +1,5 @@
+-public void changeEvent(DebuggerContextImpl newContext, int event) {
+-    if (event == DebuggerSession.EVENT_DETACHED) {
++public void changeEvent(DebuggerContextImpl newContext, DebuggerSession.Event event) {
++    if (event == DebuggerSession.Event.DETACHED) {
+         close(CANCEL_EXIT_CODE);
+     }
+ }
+\ No newline at end of file

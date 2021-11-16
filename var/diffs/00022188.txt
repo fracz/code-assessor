@@ -1,0 +1,16 @@
+diff --git a/cb4fbf07498f4d08493b175402b9878574f819e6 b/c2280beb0fc188234b6458757118a25a5c361fe4
+index cb4fbf0749..c2280beb0f 100644
+--- a/cb4fbf07498f4d08493b175402b9878574f819e6
++++ b/c2280beb0fc188234b6458757118a25a5c361fe4
+@@ -1,6 +1,7 @@
+ @Override
+ public void send(int resultCode, Bundle resultData) throws RemoteException {
+-    final AssistStructure structure = resultData.getParcelable(VoiceInteractionSession.KEY_STRUCTURE);
+-    final IBinder binder = resultData.getBinder(VoiceInteractionSession.KEY_AUTO_FILL_CALLBACK);
+-    mHandlerCaller.obtainMessageOO(MSG_AUTO_FILL_ACTIVITY, structure, binder).sendToTarget();
++    final AssistStructure structure = resultData.getParcelable(KEY_STRUCTURE);
++    final IBinder binder = resultData.getBinder(KEY_CALLBACK);
++    final int flags = resultData.getInt(KEY_FLAGS, 0);
++    mHandlerCaller.obtainMessageIOO(MSG_AUTO_FILL_ACTIVITY, flags, structure, binder).sendToTarget();
+ }
+\ No newline at end of file

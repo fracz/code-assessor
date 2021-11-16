@@ -1,0 +1,14 @@
+diff --git a/ba9f91d4c75acc5c19fa823cc3a8efbbdb335aad b/39d39f34ecc5fdc99b0f49e25dbef6b287c80eb2
+index ba9f91d4c7..39d39f34ec 100644
+--- a/ba9f91d4c75acc5c19fa823cc3a8efbbdb335aad
++++ b/39d39f34ecc5fdc99b0f49e25dbef6b287c80eb2
+@@ -1,7 +1,3 @@
+ public int getContactFastTitleColor() {
+-    if (contactFastTitleColor != 0) {
+-        return contactFastTitleColor;
+-    } else {
+-        return getMainColor();
+-    }
++    return getColorWithFallback(contactFastTitleColor, getMainColor());
+ }
+\ No newline at end of file

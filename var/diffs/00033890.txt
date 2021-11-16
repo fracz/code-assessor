@@ -1,0 +1,19 @@
+diff --git a/112330859f7106c2ce792fa02a15f3ce7419e8de b/6542fc6bd101f53d94d8d04a6e8efdcdd9c78706
+index 112330859f..6542fc6bd1 100644
+--- a/112330859f7106c2ce792fa02a15f3ce7419e8de
++++ b/6542fc6bd101f53d94d8d04a6e8efdcdd9c78706
+@@ -1,11 +1,12 @@
+ @Override
+ public Operation close(Status status) {
+     // TODO(user): Handle synchronization properly.
+     Preconditions.checkNotNull(status, "status");
+     this.phase = Phase.CLOSED;
+     if (this.status != null && this.status.getCode() != status.getCode()) {
+         logger.severefmt(status.getCause(), "Attempting to override status of already closed operation from %s to %s", this.status.getCode(), status.getCode());
++    } else {
++        this.status = status;
+     }
+-    this.status = status;
+     return this;
+ }
+\ No newline at end of file

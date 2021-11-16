@@ -1,0 +1,21 @@
+diff --git a/d2f91ca8ccaccd0e42f6dca8b1f581bd4ebd3246 b/061b9991daaca26ff0153ee44e665e35115149c7
+index d2f91ca8cc..061b9991da 100644
+--- a/d2f91ca8ccaccd0e42f6dca8b1f581bd4ebd3246
++++ b/061b9991daaca26ff0153ee44e665e35115149c7
+@@ -1,14 +1,8 @@
+ private OAbstractPaginatedStorage getStorage(String name) {
+     OAbstractPaginatedStorage storage = storages.get(name);
+     if (storage == null) {
+-        try {
+-            storage = new OLocalPaginatedStorage(name, buildName(name), configurations.getStorageMode(), writeCacheIdGen.nextId(), readCache);
+-        } catch (Exception e) {
+-            final String message = "Error on opening database: " + name + ". Current location is: " + basePath;
+-            OLogManager.instance().error(this, message, e);
+-            throw OException.wrapException(new ODatabaseException(message), e);
+-        }
++        storage = (OAbstractPaginatedStorage) disk.createStorage(buildName(name), new HashMap<>());
+         storages.put("storage", storage);
+     }
+     return storage;
+ }
+\ No newline at end of file

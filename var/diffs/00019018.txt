@@ -1,0 +1,19 @@
+diff --git a/45d5efe0dd29e17e521463a0273d63f47c4a2373 b/cd42a329850d9e87fe0ec4429edd828b868566b2
+index 45d5efe0dd..cd42a32985 100644
+--- a/45d5efe0dd29e17e521463a0273d63f47c4a2373
++++ b/cd42a329850d9e87fe0ec4429edd828b868566b2
+@@ -1,12 +1,11 @@
+ public static Bitmap transformBitmap(@NonNull Bitmap bitmap, @NonNull Matrix transformMatrix) {
+     try {
+         Bitmap converted = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), transformMatrix, true);
+-        if (bitmap != converted) {
+-            bitmap.recycle();
++        if (!bitmap.sameAs(converted)) {
+             bitmap = converted;
+         }
+     } catch (OutOfMemoryError error) {
+         Log.e(TAG, "transformBitmap: ", error);
+     }
+     return bitmap;
+ }
+\ No newline at end of file

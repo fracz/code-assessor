@@ -1,0 +1,12 @@
+diff --git a/22519d7e46908925c762b29f714d259e2519fb96 b/ad43ba4443b7aa2dfe027bfa449a503f4c56b329
+index 22519d7e46..ad43ba4443 100644
+--- a/22519d7e46908925c762b29f714d259e2519fb96
++++ b/ad43ba4443b7aa2dfe027bfa449a503f4c56b329
+@@ -1,4 +1,5 @@
+ @Override
+-protected void configureServerSocket(ServerSocket serverSocket) throws IOException {
++protected ServerSocket configureServerSocket(ServerSocket serverSocket) throws IOException {
+     serverSocket.setReceiveBufferSize(SOCKET_BUFFER_SIZE);
++    return serverSocket;
+ }
+\ No newline at end of file

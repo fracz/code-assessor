@@ -1,0 +1,23 @@
+diff --git a/683ae8af83d8b50df2faee1e89f57d433d5e1e7a b/b1058c3d959098ae2080d08a8c3385cb255c4799
+index 683ae8af83..b1058c3d95 100644
+--- a/683ae8af83d8b50df2faee1e89f57d433d5e1e7a
++++ b/b1058c3d959098ae2080d08a8c3385cb255c4799
+@@ -1,12 +1,12 @@
+ @Test
+ public void subscriberCanReceivePacketsFromMultipleSessions() throws Exception {
+-    channel2Handler = eitherSessionHandler();
++    channel2Handler = eitherSessionAssertingHandler();
+     final Subscriber subscriber = newSubscriber(aeron);
+-    final List<LogAppender> logAppenders = createLogAppenders(SESSION_ID);
+-    final List<LogAppender> otherLogAppenders = createLogAppenders(SESSION_ID_2);
++    sendNewBufferNotification(NEW_SUBSCRIPTION_BUFFER_EVENT, SESSION_ID_1, TERM_ID_1);
++    sendNewBufferNotification(NEW_SUBSCRIPTION_BUFFER_EVENT, SESSION_ID_2, TERM_ID_2);
+     aeron.conductor().doWork();
+     skip(toDriverBuffer, 1);
+-    writePacket(logAppenders.get(0));
+-    writePacket(otherLogAppenders.get(0));
++    writePackets(appendersSession1[0], 1);
++    writePackets(appendersSession2[0], 1);
+     assertThat(subscriber.read(), is(2));
+ }
+\ No newline at end of file

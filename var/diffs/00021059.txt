@@ -1,0 +1,23 @@
+diff --git a/2cf57a023f2a531571f95ae6a25ae5e32fd30db9 b/7b93308b01248cf35b0366136ddf811e65cf72e7
+index 2cf57a023f..7b93308b01 100644
+--- a/2cf57a023f2a531571f95ae6a25ae5e32fd30db9
++++ b/7b93308b01248cf35b0366136ddf811e65cf72e7
+@@ -1,14 +1,7 @@
+ public boolean apply(String label) {
+     if (excludes != null) {
+-        if (Arrays.binarySearch(excludes, label) >= 0) {
+-            return false;
+-        }
++        return Arrays.binarySearch(excludes, label) == -1;
+     }
+-    if (includes != null) {
+-        if (Arrays.binarySearch(includes, label) >= 0) {
+-            return true;
+-        }
+-        return false;
+-    }
+-    return true;
++    return //
++    includes != null && Arrays.binarySearch(includes, label) >= 0;
+ }
+\ No newline at end of file

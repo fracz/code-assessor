@@ -1,0 +1,19 @@
+diff --git a/0e60bc820725ad37f4d665c8dfb7d92d87b47f7a b/1065b0c63335291e555ee883d1f616c9344eae7d
+index 0e60bc8207..1065b0c633 100644
+--- a/0e60bc820725ad37f4d665c8dfb7d92d87b47f7a
++++ b/1065b0c63335291e555ee883d1f616c9344eae7d
+@@ -1,5 +1,10 @@
+-@Override
+ public boolean remove(Object o) {
+-    setDirty();
+-    return super.remove(o);
++    final Object old = map.remove(o.hashCode());
++    if (old != null) {
++        if (o instanceof ODocument)
++            ((ODocument) o).removeOwner(this);
++        setDirty();
++        return true;
++    }
++    return false;
+ }
+\ No newline at end of file

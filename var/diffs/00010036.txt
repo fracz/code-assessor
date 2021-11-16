@@ -1,0 +1,18 @@
+diff --git a/9754fa1ba83f3e8d018c73514a06f2a6b38188e7 b/20ea6be0d118fe0bfacfd0b4c81ca33eb48b5272
+index 9754fa1ba8..20ea6be0d1 100644
+--- a/9754fa1ba83f3e8d018c73514a06f2a6b38188e7
++++ b/20ea6be0d118fe0bfacfd0b4c81ca33eb48b5272
+@@ -1,10 +1,10 @@
+ @Nullable
+ public static HighlightInfo checkCyclicInheritance(PsiClass aClass) {
+     PsiClass circularClass = getCircularClass(aClass, new HashSet<PsiClass>());
+     if (circularClass != null) {
+         String description = JavaErrorMessages.message("cyclic.inheritance", HighlightUtil.formatClass(circularClass));
+-        TextRange textRange = HighlightNamesUtil.getClassDeclarationTextRange(aClass);
+-        return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, textRange, description);
++        TextRange range = HighlightNamesUtil.getClassDeclarationTextRange(aClass);
++        return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(range).descriptionAndTooltip(description).create();
+     }
+     return null;
+ }
+\ No newline at end of file

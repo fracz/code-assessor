@@ -1,0 +1,20 @@
+diff --git a/666efcd6e2568b2253a5f923f304748c6f51e484 b/f5ebc1a84545573def5fe137ebcb8fbf1c6e9aae
+index 666efcd6e2..f5ebc1a845 100644
+--- a/666efcd6e2568b2253a5f923f304748c6f51e484
++++ b/f5ebc1a84545573def5fe137ebcb8fbf1c6e9aae
+@@ -1,7 +1,9 @@
+-public Collection<TextRange> getRangesToFormat(@NotNull PsiFile file) {
+-    Collection<TextRange> ranges = getSelectedRanges(mySelectionModel);
+-    if (ranges.isEmpty()) {
+-        return ContainerUtil.newSmartList(file.getTextRange());
++public Collection<TextRange> getRangesToFormat(@NotNull PsiFile file, boolean processChangedTextOnly) throws FilesTooBigForDiffException {
++    if (mySelectionModel != null) {
++        return getSelectedRanges(mySelectionModel);
+     }
+-    return ranges;
++    if (processChangedTextOnly) {
++        return FormatChangedTextUtil.getChangedTextRanges(myProject, file);
++    }
++    return ContainerUtil.newSmartList(file.getTextRange());
+ }
+\ No newline at end of file

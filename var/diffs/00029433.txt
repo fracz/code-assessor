@@ -1,0 +1,18 @@
+diff --git a/cd9648eef2a913e35cf7f36036cf14e64ec70031 b/ef5aaec99af38ffa6b8eb237d64ce775b38d0c38
+index cd9648eef2..ef5aaec99a 100644
+--- a/cd9648eef2a913e35cf7f36036cf14e64ec70031
++++ b/ef5aaec99af38ffa6b8eb237d64ce775b38d0c38
+@@ -1,10 +1,11 @@
+ @Override
+ protected void doClose() throws ElasticSearchException {
++    super.doClose();
+     if (closeFileSystem) {
+         try {
+             fileSystem.close();
+         } catch (IOException e) {
+-            logger.warn("Failed to close file system {}", fileSystem);
++        // ignore
+         }
+     }
+ }
+\ No newline at end of file

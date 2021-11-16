@@ -1,0 +1,20 @@
+diff --git a/33daec647f5c0e836f0612b6bc2a38e4ddefa74e b/72bd84a551a93653c33be5c736ec0f68ab6fe37c
+index 33daec647f..72bd84a551 100644
+--- a/33daec647f5c0e836f0612b6bc2a38e4ddefa74e
++++ b/72bd84a551a93653c33be5c736ec0f68ab6fe37c
+@@ -1,7 +1,10 @@
+ @Override
+-public Void visitConditionalExpression(ConditionalExpressionTree conditionalExpressionTree, VisitorState visitorState) {
+-    for (DescribingMatcher<ConditionalExpressionTree> matcher : conditionalExpressionMatchers) {
+-        evaluateMatch(conditionalExpressionTree, visitorState, matcher);
++public Void visitConditionalExpression(ConditionalExpressionTree tree, VisitorState visitorState) {
++    VisitorState state = visitorState.withPath(getCurrentPath());
++    for (ConditionalExpressionTreeMatcher matcher : conditionalExpressionMatchers) {
++        if (isSuppressed(matcher))
++            continue;
++        reportMatch(matcher.matchConditionalExpression(tree, state), tree, state);
+     }
+-    return super.visitConditionalExpression(conditionalExpressionTree, visitorState);
++    return super.visitConditionalExpression(tree, visitorState);
+ }
+\ No newline at end of file

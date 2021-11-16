@@ -1,0 +1,15 @@
+diff --git a/8e493c8874850accffb94f9137f1ff7cfe40b1aa b/e5ddcb76be1cb6d47cf30fae284325f0f24c2db4
+index 8e493c8874..e5ddcb76be 100644
+--- a/8e493c8874850accffb94f9137f1ff7cfe40b1aa
++++ b/e5ddcb76be1cb6d47cf30fae284325f0f24c2db4
+@@ -1,6 +1,5 @@
+ @Override
+-public void onLoadFinished(Loader<Cursor> arg0, Cursor cursor) {
+-    Cursor pushCursor = ContactAccessor.getInstance().getCursorForContactsWithPush(getActivity());
+-    ((CursorAdapter) getListAdapter()).changeCursor(new MergeCursor(new Cursor[] { pushCursor, cursor }));
+-    ((TextView) getView().findViewById(android.R.id.empty)).setText(R.string.contact_selection_group_activity__no_contacts);
++public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
++    ((CursorAdapter) listView.getAdapter()).changeCursor(data);
++    emptyText.setText(R.string.contact_selection_group_activity__no_contacts);
+ }
+\ No newline at end of file

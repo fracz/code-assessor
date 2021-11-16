@@ -1,0 +1,14 @@
+diff --git a/957e4cb53eae24c098e943b086282411dd0f7161 b/4397f228b5104c7af029d6146c63c133f429056c
+index 957e4cb53e..4397f228b5 100644
+--- a/957e4cb53eae24c098e943b086282411dd0f7161
++++ b/4397f228b5104c7af029d6146c63c133f429056c
+@@ -1,6 +1,6 @@
+ @Override
+-public RelationshipPropertyExistenceConstraint relationshipPropertyExistenceConstraintCreate(KernelStatement state, int relTypeId, int propertyKeyId) throws AlreadyConstrainedException, CreateConstraintFailureException {
+-    RelationshipPropertyExistenceConstraint constraint = new RelationshipPropertyExistenceConstraint(relTypeId, propertyKeyId);
++public RelationshipPropertyExistenceConstraint relationshipPropertyExistenceConstraintCreate(KernelStatement state, RelationshipPropertyDescriptor descriptor) throws AlreadyConstrainedException, CreateConstraintFailureException {
++    RelationshipPropertyExistenceConstraint constraint = new RelationshipPropertyExistenceConstraint(descriptor);
+     state.txState().constraintDoAdd(constraint);
+     return constraint;
+ }
+\ No newline at end of file

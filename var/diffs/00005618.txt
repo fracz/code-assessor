@@ -1,0 +1,18 @@
+diff --git a/6f9fd9b8da1eee0011075607ba8e53cc5647969e b/1eb82627961e0096d2f0db50864a0a4565063c07
+index 6f9fd9b8da..1eb8262796 100644
+--- a/6f9fd9b8da1eee0011075607ba8e53cc5647969e
++++ b/1eb82627961e0096d2f0db50864a0a4565063c07
+@@ -1,5 +1,11 @@
+-public void checkAutoPopup(final char charTyped, final Project project, final Editor editor, final PsiFile file) {
++public boolean checkAutoPopup(final char charTyped, final Project project, final Editor editor, final PsiFile file) {
+     if (charTyped == '@' && file instanceof PsiJavaFile) {
+         autoPopupJavadocLookup(project, editor);
++        return true;
+     }
++    if (charTyped == '#' || charTyped == '.') {
++        AutoPopupController.getInstance(project).autoPopupMemberLookup(editor, new MemberAutoLookupCondition());
++        return true;
++    }
++    return false;
+ }
+\ No newline at end of file

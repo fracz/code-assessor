@@ -1,0 +1,18 @@
+diff --git a/88c70c375e6e520d8434a6cb601a3bd326a470ab b/459d1e3cf6d7993dd5e82dfe01d5f5897ad7aaae
+index 88c70c375e..459d1e3cf6 100644
+--- a/88c70c375e6e520d8434a6cb601a3bd326a470ab
++++ b/459d1e3cf6d7993dd5e82dfe01d5f5897ad7aaae
+@@ -1,4 +1,10 @@
+ @Override
+-public void checkout(@NotNull final String reference, @NotNull List<GitRepository> repositories, @Nullable Runnable callInAwtLater) {
+-    commonCheckout(reference, null, repositories, callInAwtLater);
++public void checkout(@NotNull final String reference, @NotNull final List<GitRepository> repositories, @Nullable Runnable callInAwtLater) {
++    new CommonBackgroundTask(myProject, "Checking out " + reference, callInAwtLater) {
++
++        @Override
++        public void execute(@NotNull ProgressIndicator indicator) {
++            newWorker(indicator).checkout(reference, repositories);
++        }
++    }.runInBackground();
+ }
+\ No newline at end of file

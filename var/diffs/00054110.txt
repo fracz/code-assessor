@@ -1,0 +1,17 @@
+diff --git a/effff0055856e81fa348a77ae912cb0545671ebf b/dc7f8cb9762325d747b40a7ac49f2c22a78bd671
+index effff00558..dc7f8cb976 100644
+--- a/effff0055856e81fa348a77ae912cb0545671ebf
++++ b/dc7f8cb9762325d747b40a7ac49f2c22a78bd671
+@@ -1,7 +1,7 @@
+ @Test
+ public void assertSingleSelect() {
+-    assertSingleTarget("select * from order where order_id = 1", "ds_1", "select * from order_1 where order_id = 1");
+-    assertSingleTarget("select * from order where order_id = ?", Collections.<Object>singletonList(2), "ds_0", "select * from order_0 where order_id = ?");
+-    assertSingleTarget(Collections.singletonList(new ShardingValuePair("order", 1)), "select * from order", "ds_1", "select * from order_1");
+-    assertSingleTarget(Collections.singletonList(new ShardingValuePair("order", 2)), "select * from order", "ds_0", "select * from order_0");
++    assertSingleTargetWithoutParameter("select * from order where order_id = 1", "ds_1", "select * from order_1 where order_id = 1");
++    assertSingleTargetWithoutParameter(Collections.singletonList(new ShardingValuePair("order", 1)), "select * from order", "ds_1", "select * from order_1");
++    assertSingleTargetWithoutParameter(Collections.singletonList(new ShardingValuePair("order", 2)), "select * from order", "ds_0", "select * from order_0");
++    assertSingleTargetWithParameters("select * from order where order_id = ?", Collections.<Object>singletonList(2), "ds_0", "select * from order_0 where order_id = ?");
+ }
+\ No newline at end of file

@@ -1,0 +1,33 @@
+diff --git a/3b93d94eeb25cc8d1a51bdeb336685c36812da7d b/752b8da08dfbcb71208f91b54b9b930fcfac0f14
+index 3b93d94eeb..752b8da08d 100644
+--- a/3b93d94eeb25cc8d1a51bdeb336685c36812da7d
++++ b/752b8da08dfbcb71208f91b54b9b930fcfac0f14
+@@ -1,24 +1,22 @@
+ /**
+  * Add a labeled arc from this node to the argument node.
+  *
+  * @param arcLabel the <code>Class&lt;? extends GrammaticalRelationAnnotation&gt;</code> with which the new arc
+  * is to be labeled.
+  * @param node     the <code>TreeGraphNode</code> to which the new
+  * arc should point.
+  * @return <code>true</code> iff the arc did not already exist.
+  */
+ @SuppressWarnings("unchecked")
+ public <GR extends GrammaticalRelationAnnotation> boolean addArc(Class<GR> arcLabel, TreeGraphNode node) {
+     if (node == null) {
+         return false;
+     }
+     if (!treeGraph().equals(node.treeGraph())) {
+         System.err.println("Warning: you are trying to add an arc from node " + this + " to node " + node + ", but they do not belong to the same TreeGraph!");
+     }
+-    Set<TreeGraphNode> collection = label.get(arcLabel);
+-    if (collection == null) {
+-        collection = Generics.<TreeGraphNode>newHashSet();
+-        label.set(arcLabel, collection);
++    if (!label.containsKey(arcLabel)) {
++        label.set(arcLabel, Generics.<TreeGraphNode>newHashSet());
+     }
+-    return collection.add(node);
++    return ((Collection) label.get(arcLabel)).add(node);
+ }
+\ No newline at end of file

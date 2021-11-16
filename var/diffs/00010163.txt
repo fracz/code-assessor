@@ -1,0 +1,16 @@
+diff --git a/6263217947500cef5beb96de6b702a62d62db902 b/e5ca809a11b03684f36e389134997e8a79754aa1
+index 6263217947..e5ca809a11 100644
+--- a/6263217947500cef5beb96de6b702a62d62db902
++++ b/e5ca809a11b03684f36e389134997e8a79754aa1
+@@ -1,9 +1,6 @@
+ public static boolean isFieldUnused(PsiField field, ProgressIndicator progress, GlobalUsageHelper helper) {
+     if (helper.isLocallyUsed(field) || !weAreSureThereAreNoUsages(field, progress, helper)) {
+         return false;
+     }
+-    if (field instanceof PsiEnumConstant && isEnumValuesMethodUsed(field, progress, helper)) {
+-        return false;
+-    }
+-    return true;
++    return !(field instanceof PsiEnumConstant) || !isEnumValuesMethodUsed(field, progress, helper);
+ }
+\ No newline at end of file

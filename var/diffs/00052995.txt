@@ -1,0 +1,14 @@
+diff --git a/0fe019471cd5d8683e1876776f71edbb2f7aea8b b/c011269c75ebd770a90ffa22998303a1c9033f2f
+index 0fe019471c..c011269c75 100644
+--- a/0fe019471cd5d8683e1876776f71edbb2f7aea8b
++++ b/c011269c75ebd770a90ffa22998303a1c9033f2f
+@@ -1,6 +1,6 @@
+-private void skipStart() {
++private void skipStart(final SelectStatement selectStatement) {
+     if (getSqlParser().skipIfEqual(OracleKeyword.START)) {
+         getSqlParser().accept(DefaultKeyword.WITH);
+-        getSqlParser().parseComparisonCondition(getSelectStatement());
++        getSqlParser().parseComparisonCondition(selectStatement);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/e7481b749fd8e6da23392925f5754a5ee0b669a1 b/b374e2e2d14500c13b3f4fa200863c73136a086d
+index e7481b749f..b374e2e2d1 100644
+--- a/e7481b749fd8e6da23392925f5754a5ee0b669a1
++++ b/b374e2e2d14500c13b3f4fa200863c73136a086d
+@@ -1,16 +1,14 @@
+ public boolean equals(Object o) {
+     if (this == o)
+         return true;
+     if (!(o instanceof EmptyIcon))
+         return false;
++    if (!super.equals(o))
++        return false;
+     final EmptyIcon icon = (EmptyIcon) o;
+     if (height != icon.height)
+         return false;
+     if (width != icon.width)
+         return false;
+-    if (scale != icon.scale)
+-        return false;
+-    if (getJBUIScale() != icon.getJBUIScale())
+-        return false;
+     return true;
+ }
+\ No newline at end of file

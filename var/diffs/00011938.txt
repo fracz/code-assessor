@@ -1,0 +1,18 @@
+diff --git a/5344b17b6782c3773d3bb1e2774c1359ce81c101 b/e8df0947ad65779f0fe45917430308937ff1574b
+index 5344b17b67..e8df0947ad 100644
+--- a/5344b17b6782c3773d3bb1e2774c1359ce81c101
++++ b/e8df0947ad65779f0fe45917430308937ff1574b
+@@ -1,9 +1,10 @@
+-public static Set<UsageDescriptor> getProjectUsages(@NotNull Project project) {
++@NotNull
++public Set<UsageDescriptor> getProjectUsages(@NotNull Project project) {
+     return ContainerUtil.map2Set(ProjectLevelVcsManager.getInstance(project).getAllActiveVcss(), new Function<AbstractVcs, UsageDescriptor>() {
+
+         @Override
+         public UsageDescriptor fun(AbstractVcs vcs) {
+-            return new UsageDescriptor(createGroupDescriptor(), vcs.getName(), 1);
++            return new UsageDescriptor(vcs.getName(), 1);
+         }
+     });
+ }
+\ No newline at end of file

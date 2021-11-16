@@ -1,0 +1,16 @@
+diff --git a/b972be3fd24a8dbc8593d6826d64f803c7c211c9 b/e4f32e81952517c46ea88d6d8d859de4990a3d1b
+index b972be3fd2..e4f32e8195 100644
+--- a/b972be3fd24a8dbc8593d6826d64f803c7c211c9
++++ b/e4f32e81952517c46ea88d6d8d859de4990a3d1b
+@@ -1,6 +1,8 @@
+ protected void parse(TestSearchContext context, XContentBuilder sortBuilder) throws Exception {
++    QueryParseContext parseContext = context.getQueryShardContext().parseContext();
+     XContentParser parser = XContentHelper.createParser(sortBuilder.bytes());
++    parser.setParseFieldMatcher(ParseFieldMatcher.STRICT);
++    parseContext.reset(parser);
+     parser.nextToken();
+-    GeoDistanceSortParser geoParser = new GeoDistanceSortParser();
+-    geoParser.parse(parser, context.getQueryShardContext());
++    GeoDistanceSortBuilder.PROTOTYPE.fromXContent(parseContext, null);
+ }
+\ No newline at end of file

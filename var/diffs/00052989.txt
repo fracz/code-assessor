@@ -1,0 +1,18 @@
+diff --git a/ff1d3bc81b0927fbf5ddbd414f73bcd3c1dd299a b/04c81d929dbde36e820baa99984c82e60d3f7b27
+index ff1d3bc81b..04c81d929d 100644
+--- a/ff1d3bc81b0927fbf5ddbd414f73bcd3c1dd299a
++++ b/04c81d929dbde36e820baa99984c82e60d3f7b27
+@@ -1,9 +1,9 @@
+ @Override
+-protected void customizedSelect() {
++protected void customizedSelect(final SelectStatement selectStatement) {
+     if (getSqlParser().equalAny(DefaultKeyword.FOR)) {
+         skipForUpdate();
+     }
+-    if (getSelectStatement().getOrderByItems().isEmpty()) {
+-        parseOrderBy();
++    if (selectStatement.getOrderByItems().isEmpty()) {
++        parseOrderBy(selectStatement);
+     }
+ }
+\ No newline at end of file

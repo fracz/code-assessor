@@ -1,0 +1,16 @@
+diff --git a/b4cd6a29218b326495cab7bfddb101e89cb9b6bd b/e3aa017e1a3789a69c0da6d8621ba7c253acc359
+index b4cd6a2921..e3aa017e1a 100644
+--- a/b4cd6a29218b326495cab7bfddb101e89cb9b6bd
++++ b/e3aa017e1a3789a69c0da6d8621ba7c253acc359
+@@ -1,8 +1,8 @@
+ @Override
+-public EntityEditorInput evaluate() throws InvocationTargetException, InterruptedException {
++public EntityEditorInput evaluate(DBRProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+     try {
+-        return getEditorInput().initializeRealInput(getProgressMonitor());
++        return getEditorInput().initializeRealInput(monitor);
+     } catch (Throwable ex) {
+         throw new InvocationTargetException(ex);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/48196397ad99af5902cc4212f20303dc553f9ed1 b/96d56a07ff16c85bbd4040c299e30df8936e6a66
+index 48196397ad..96d56a07ff 100644
+--- a/48196397ad99af5902cc4212f20303dc553f9ed1
++++ b/96d56a07ff16c85bbd4040c299e30df8936e6a66
+@@ -1,14 +1,14 @@
+ /**
+  * Create a {@link ConsoleReporter} attached to the Titan Metrics registry.
+  *
+- * @param reportIntervalInMS
+- * milliseconds to wait between dumping metrics to the console
++ * @param reportInterval
++ * time to wait between dumping metrics to the console
+  */
+-public synchronized void addConsoleReporter(long reportIntervalInMS) {
++public synchronized void addConsoleReporter(Duration reportInterval) {
+     if (null != consoleReporter) {
+         log.debug("Metrics ConsoleReporter already active; not creating another");
+         return;
+     }
+     consoleReporter = ConsoleReporter.forRegistry(getRegistry()).build();
+-    consoleReporter.start(reportIntervalInMS, TimeUnit.MILLISECONDS);
++    consoleReporter.start(reportInterval.getLength(SCHEDULING_TIME_UNIT), SCHEDULING_TIME_UNIT);
+ }
+\ No newline at end of file

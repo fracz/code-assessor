@@ -1,0 +1,25 @@
+diff --git a/8ad26a01ce45db2fb6a148337cdca04ed81ba9de b/1b40d5552c43c77151ecc155b97fc3bf7f902a0b
+index 8ad26a01ce..1b40d5552c 100644
+--- a/8ad26a01ce45db2fb6a148337cdca04ed81ba9de
++++ b/1b40d5552c43c77151ecc155b97fc3bf7f902a0b
+@@ -1,17 +1,17 @@
+ @Override
+-public void init(final List<ResultSet> preResultSet) throws SQLException {
++public ComponentResultSet init(final List<ResultSet> preResultSet) throws SQLException {
+     input(preResultSet);
+     setDelegate(preResultSet.get(0));
+     effectiveResultSetQueue = new LinkedList<>(Collections2.filter(preResultSet, new Predicate<ResultSet>() {
+
+         @Override
+         public boolean apply(final ResultSet input) {
+             try {
+                 return input.next();
+             } catch (final SQLException ex) {
+                 throw new ShardingJdbcException(ex);
+             }
+         }
+     }));
+-    log.trace("Effective result set:{}", effectiveResultSetQueue);
++    return this;
+ }
+\ No newline at end of file

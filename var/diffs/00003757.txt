@@ -1,0 +1,16 @@
+diff --git a/eb1a448d8890dcc5ca66a44b921c7cdeb9ccc4fe b/4e3b266d52caf10429f8099d68e3972b454f6078
+index eb1a448d88..4e3b266d52 100644
+--- a/eb1a448d8890dcc5ca66a44b921c7cdeb9ccc4fe
++++ b/4e3b266d52caf10429f8099d68e3972b454f6078
+@@ -1,8 +1,9 @@
++@Nullable
+ public static String getPropertyNameByGetterName(String methodName, boolean canBeBoolean) {
+     if (methodName.startsWith(GET_PREFIX) && methodName.length() > 3) {
+         return decapitalize(methodName.substring(3));
+     } else if (methodName.startsWith(IS_PREFIX) && methodName.length() > 2 && canBeBoolean) {
+         return decapitalize(methodName.substring(2));
+     }
+-    return methodName;
++    return null;
+ }
+\ No newline at end of file

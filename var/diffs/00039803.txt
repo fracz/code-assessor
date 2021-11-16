@@ -1,0 +1,12 @@
+diff --git a/b168339c529bcf4d59172b709e044795e85074e3 b/eeb796658012295b4b4180e0f43300c866a3e8ff
+index b168339c52..eeb7966580 100644
+--- a/b168339c529bcf4d59172b709e044795e85074e3
++++ b/eeb796658012295b4b4180e0f43300c866a3e8ff
+@@ -1,5 +1,4 @@
+ @Override
+ public String getUserMessage(TokenNameLookup tokenNameLookup) {
+-    String entityName = EntityType.NODE == entityType ? tokenNameLookup.labelGetName(ruleEntityId) : tokenNameLookup.relationshipTypeGetName(ruleEntityId);
+-    return String.format(messageTemplate, messagePrefix, entityName, tokenNameLookup.propertyKeyGetName(propertyKeyId));
++    return String.format(messageTemplate, messagePrefix, descriptor.entityNameText(tokenNameLookup), descriptor.propertyNameText(tokenNameLookup));
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/a1f9ef690f89a51fa14560e94c9689deb24e0df8 b/57f85034e6856f7f4a05bc955f72e3159f82c0b2
+index a1f9ef690f..57f85034e6 100644
+--- a/a1f9ef690f89a51fa14560e94c9689deb24e0df8
++++ b/57f85034e6856f7f4a05bc955f72e3159f82c0b2
+@@ -1,9 +1,8 @@
++@GET
+ @Path("log")
+-@POST
+-@Consumes(MediaType.APPLICATION_JSON)
+ @Produces({ MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN })
+-public LogPage log(LogRequest request) throws ApiException {
++public LogPage log(@QueryParam("fileFilter") List<String> fileFilter, @QueryParam("since") String revisionRangeSince, @QueryParam("until") String revisionRangeUntil) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+-        return gitConnection.log(request);
++        return gitConnection.log(LogParams.create().withFileFilter(fileFilter).withRevisionRangeSince(revisionRangeSince).withRevisionRangeUntil(revisionRangeUntil));
+     }
+ }
+\ No newline at end of file

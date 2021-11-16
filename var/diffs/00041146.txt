@@ -1,0 +1,13 @@
+diff --git a/464ee5f376a970ee1bec59837e10eea10d8497d1 b/f5cc80cf4552e93202a0080e3a10d89476c71478
+index 464ee5f376..f5cc80cf45 100644
+--- a/464ee5f376a970ee1bec59837e10eea10d8497d1
++++ b/f5cc80cf4552e93202a0080e3a10d89476c71478
+@@ -1,6 +1,5 @@
+-@Override
+-public void onSequenceDropped(ODocument iDocument) {
++public void onSequenceDropped(ODatabaseDocumentInternal database, ODocument iDocument) {
+     String name = OSequence.getSequenceName(iDocument);
+     validateSequenceExists(name);
+     sequences.remove(name);
+ }
+\ No newline at end of file

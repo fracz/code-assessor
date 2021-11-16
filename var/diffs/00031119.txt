@@ -1,0 +1,15 @@
+diff --git a/4019512f86879f0431ba612161dfee2c2a32cbae b/55f95ec54aa86506907a5f2853ddd3feb5655295
+index 4019512f86..55f95ec54a 100644
+--- a/4019512f86879f0431ba612161dfee2c2a32cbae
++++ b/55f95ec54aa86506907a5f2853ddd3feb5655295
+@@ -1,8 +1,3 @@
+ private ValuesSource.Numeric numericScript(ValuesSourceConfig<?> config) throws IOException {
+-    setScorerIfNeeded(config.script);
+-    setReaderIfNeeded(config.script);
+-    scorerAwares.add(config.script);
+-    readerAwares.add(config.script);
+-    ValuesSource.Numeric source = new ValuesSource.Numeric.Script(config.script, config.scriptValueType);
+-    return source;
++    return new ValuesSource.Numeric.Script(config.script, config.scriptValueType);
+ }
+\ No newline at end of file

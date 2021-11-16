@@ -1,0 +1,22 @@
+diff --git a/13bb035f605fdb9c82e9a8339a7cce438050bc07 b/d563d278b95fbdaea4e336aefa5ea8b96bb7ba8f
+index 13bb035f60..d563d278b9 100644
+--- a/13bb035f605fdb9c82e9a8339a7cce438050bc07
++++ b/d563d278b95fbdaea4e336aefa5ea8b96bb7ba8f
+@@ -1,10 +1,10 @@
+ @Override
+ public AtomicTitanQuery labels(String... type) {
+-    if (type.length == 0) {
+-        this.type = null;
+-    } else {
+-        Preconditions.checkArgument(type.length == 1);
+-        type(type[0]);
++    Preconditions.checkNotNull(type);
++    TitanType[] ttype = new TitanType[type.length];
++    Preconditions.checkNotNull(tx);
++    for (int i = 0; i < type.length; i++) {
++        ttype[i] = tx.getType(type[i]);
+     }
+-    return this;
++    return types(ttype);
+ }
+\ No newline at end of file

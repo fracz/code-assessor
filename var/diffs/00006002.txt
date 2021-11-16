@@ -1,0 +1,15 @@
+diff --git a/6b9452316c8771c653749fdc171629facbde1e73 b/bae7f6cb293fd34f217c5bc21a5916abacfbd9b9
+index 6b9452316c..bae7f6cb29 100644
+--- a/6b9452316c8771c653749fdc171629facbde1e73
++++ b/bae7f6cb293fd34f217c5bc21a5916abacfbd9b9
+@@ -1,7 +1,3 @@
+-@Override
+-public void update(AnActionEvent e) {
+-    final GuiEditor editor = GuiEditorUtil.getEditorFromContext(e.getDataContext());
+-    if (editor == null || getContainerToPack(editor) == null) {
+-        e.getPresentation().setEnabled(false);
+-    }
++protected void update(@NotNull GuiEditor editor, final ArrayList<RadComponent> selection, final AnActionEvent e) {
++    e.getPresentation().setEnabled(getContainerToPack(selection) != null);
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/198b8d37cec3a464545e9f86bc73da9e30902907 b/8b1fd11789a15aacd826968279c81761277f8f20
+index 198b8d37ce..8b1fd11789 100644
+--- a/198b8d37cec3a464545e9f86bc73da9e30902907
++++ b/8b1fd11789a15aacd826968279c81761277f8f20
+@@ -1,7 +1,7 @@
+-private void initializeTypeParameters(List<TypeParameterDescriptorInitialization> typeParametersInitialization, TypeVariableResolver typeVariableByPsiResolver) {
++private void initializeTypeParameters(List<TypeParameterDescriptorInitialization> typeParametersInitialization, @NotNull DeclarationDescriptor typeParametersOwner, @NotNull String context) {
+     List<TypeParameterDescriptor> prevTypeParameters = new ArrayList<TypeParameterDescriptor>();
+     for (TypeParameterDescriptorInitialization psiTypeParameter : typeParametersInitialization) {
+         prevTypeParameters.add(psiTypeParameter.descriptor);
+-        initializeTypeParameter(psiTypeParameter, new TypeVariableResolverFromTypeDescriptors(prevTypeParameters, typeVariableByPsiResolver));
++        initializeTypeParameter(psiTypeParameter, TypeVariableResolvers.typeVariableResolverFromTypeParameters(prevTypeParameters, typeParametersOwner, context));
+     }
+ }
+\ No newline at end of file

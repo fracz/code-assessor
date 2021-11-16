@@ -1,0 +1,16 @@
+diff --git a/fb20c9c36dd4844d990cc6c5ec2c990859546467 b/191fa1b51d0543ad7a8081fba7a42896570951d5
+index fb20c9c36d..191fa1b51d 100644
+--- a/fb20c9c36dd4844d990cc6c5ec2c990859546467
++++ b/191fa1b51d0543ad7a8081fba7a42896570951d5
+@@ -1,8 +1,7 @@
+-public TermBuffer rotate() throws IOException {
+-    final TermBuffer newBuffer = clean;
++public void rotate() throws IOException {
++    final BasicLogBuffers newBuffer = clean;
+     clean = dirty;
+     dirty = current;
+     dirty.reset(logTemplate, stateTemplate);
+     current = newBuffer;
+-    return newBuffer;
+ }
+\ No newline at end of file

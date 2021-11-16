@@ -1,0 +1,14 @@
+diff --git a/daf11317b92cb6f20bca5789fbe1782d067c5a29 b/9fe45885acbd0f3d9689629a6aeb3cfa304593c2
+index daf11317b9..9fe45885ac 100644
+--- a/daf11317b92cb6f20bca5789fbe1782d067c5a29
++++ b/9fe45885acbd0f3d9689629a6aeb3cfa304593c2
+@@ -1,7 +1,4 @@
+ @Override
+ public boolean isPageComplete() {
+-    if (wizard.getPageSettings() != this) {
+-        return true;
+-    }
+-    return this.connectionEditor != null && this.connectionEditor.isComplete();
++    return wizard.getPageSettings() != this || this.connectionEditor != null && this.connectionEditor.isComplete();
+ }
+\ No newline at end of file

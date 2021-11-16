@@ -1,0 +1,23 @@
+diff --git a/2aae7b9325d9a3093fa49c43dbfa178f2e89cfcc b/c850d26ba8dce01495f42beea059e42cad64fd9a
+index 2aae7b9325..c850d26ba8 100644
+--- a/2aae7b9325d9a3093fa49c43dbfa178f2e89cfcc
++++ b/c850d26ba8dce01495f42beea059e42cad64fd9a
+@@ -1,9 +1,10 @@
+ @Override
+-public boolean contains(Object o) {
+-    RedisConnection<Object, Object> connection = connectionManager.connectionReadOp();
+-    try {
+-        return connection.sismember(getName(), o);
+-    } finally {
+-        connectionManager.releaseRead(connection);
+-    }
++public boolean contains(final Object o) {
++    return connectionManager.read(new ResultOperation<Boolean, Object>() {
++
++        @Override
++        public Future<Boolean> execute(RedisAsyncConnection<Object, Object> async) {
++            return async.sismember(getName(), o);
++        }
++    });
+ }
+\ No newline at end of file

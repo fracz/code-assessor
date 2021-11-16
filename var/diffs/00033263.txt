@@ -1,0 +1,19 @@
+diff --git a/ebea01b48c64b18424452bed72aa09261680312d b/79b7b1eb7710d3ac88e0c63a2f466155fe3f5cb8
+index ebea01b48c..79b7b1eb77 100644
+--- a/ebea01b48c64b18424452bed72aa09261680312d
++++ b/79b7b1eb7710d3ac88e0c63a2f466155fe3f5cb8
+@@ -1,12 +1,3 @@
+ private String resolveToPath(Object destDir) {
+-    Object value = destDir;
+-    while (true) {
+-        if (value instanceof Closure) {
+-            Closure closure = (Closure) value;
+-            value = closure.call();
+-        } else {
+-            break;
+-        }
+-    }
+-    return value.toString();
++    return pathNotationParser.parseNotation(destDir);
+ }
+\ No newline at end of file

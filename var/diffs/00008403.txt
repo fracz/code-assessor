@@ -1,0 +1,16 @@
+diff --git a/132310278d00e2a54d215a66ad13be91dd8ff1b7 b/f0dbf7431f561cfdd93103d3eaddd13fee909913
+index 132310278d..f0dbf7431f 100644
+--- a/132310278d00e2a54d215a66ad13be91dd8ff1b7
++++ b/f0dbf7431f561cfdd93103d3eaddd13fee909913
+@@ -1,8 +1,8 @@
+-@Nullable
++@NotNull
+ public GrExpression getInvokedExpression() {
+     for (PsiElement cur = this.getFirstChild(); cur != null; cur = cur.getNextSibling()) {
+         if (cur instanceof GrExpression)
+             return (GrExpression) cur;
+     }
+-    return null;
++    throw new IncorrectOperationException("invoked expression must not be null");
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/1471bac19a7bbb7a72bdc33b9cc2ab2349386348 b/6ee53e3e03e58d3c8fd309506f549a9e69af6096
+index 1471bac19a..6ee53e3e03 100644
+--- a/1471bac19a7bbb7a72bdc33b9cc2ab2349386348
++++ b/6ee53e3e03e58d3c8fd309506f549a9e69af6096
+@@ -1,5 +1,6 @@
+-@Override
+-public void setState(@NotNull Map<String, SchemaInfo> state) {
+-    super.setState(state);
+-    recalculateSchemaFiles();
++public void setState(@NotNull final Project project, @NotNull Map<String, UserDefinedJsonSchemaConfiguration> state) {
++    synchronized (myLock) {
++        myState.clear();
++        myState.putAll(state);
++    }
+ }
+\ No newline at end of file

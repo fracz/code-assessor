@@ -1,0 +1,21 @@
+diff --git a/bc9dc2a642df94ab9a37c2840a9f3dafb3d49ed1 b/f34cc849533fd47cdf78874a1db6dc07edf48306
+index bc9dc2a642..f34cc84953 100644
+--- a/bc9dc2a642df94ab9a37c2840a9f3dafb3d49ed1
++++ b/f34cc849533fd47cdf78874a1db6dc07edf48306
+@@ -1,13 +1,7 @@
+ @NotNull
+ public static JsExpression translateDotQualifiedExpression(@NotNull JetDotQualifiedExpression expression, @NotNull TranslationContext context) {
+-    if (expression.getSelectorExpression() instanceof JetCallExpression) {
+-        return CallTranslator.translate(expression, context);
+-    }
+     // TODO: problem with extension properties lies here
+     JsExpression receiver = translateReceiver(expression, context);
+-    if (PropertyAccessTranslator.canBePropertyGetterCall(expression, context)) {
+-        return PropertyAccessTranslator.translateAsPropertyGetterCall(PsiUtils.getSelectorAsSimpleName(expression), receiver, context);
+-    }
+-    JsExpression selector = translateSelector(expression, context);
+-    return composeQualifiedExpression(receiver, selector);
++    JetExpression selector = getSelector(expression);
++    return translate(receiver, selector, context);
+ }
+\ No newline at end of file

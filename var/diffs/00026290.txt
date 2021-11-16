@@ -1,0 +1,19 @@
+diff --git a/97dd2365b6ac6860b867e8a9ec585dd355a584e8 b/084679c2e9e332d6141b6e074a9273808a48d30c
+index 97dd2365b6..084679c2e9 100644
+--- a/97dd2365b6ac6860b867e8a9ec585dd355a584e8
++++ b/084679c2e9e332d6141b6e074a9273808a48d30c
+@@ -1,10 +1,10 @@
+ @Test
+ public void testMockJunctionCreation() throws Exception {
+-    String root = scratchDir("dir").getParent().toString();
+-    scratchFile("dir/file.txt", "hello");
+-    WindowsTestUtil.createJunctions(scratchRoot, ImmutableMap.of("junc", "dir"));
++    String root = testUtil.scratchDir("dir").getParent().toString();
++    testUtil.scratchFile("dir/file.txt", "hello");
++    testUtil.createJunctions(ImmutableMap.of("junc", "dir"));
+     String[] children = new File(root + "/junc").list();
+     assertThat(children).isNotNull();
+     assertThat(children).hasLength(1);
+     assertThat(Arrays.asList(children)).containsExactly("file.txt");
+ }
+\ No newline at end of file

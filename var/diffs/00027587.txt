@@ -1,0 +1,14 @@
+diff --git a/fbe6fe156d9f12ca93010d49f245477916f2cc2a b/ff1655293d843b30f8738db32d0701d746e5c916
+index fbe6fe156d..ff1655293d 100644
+--- a/fbe6fe156d9f12ca93010d49f245477916f2cc2a
++++ b/ff1655293d843b30f8738db32d0701d746e5c916
+@@ -1,7 +1,6 @@
+ @Test(expected = FileNotFoundException.class)
+ public void testMissing() throws Exception {
+     URIExtractionNamespace badNamespace = new URIExtractionNamespace(namespace.getUri(), null, null, namespace.getNamespaceParseSpec(), Period.millis((int) namespace.getPollMs()), null);
+     Assert.assertTrue(new File(namespace.getUri()).delete());
+-    ConcurrentMap<String, String> map = new ConcurrentHashMap<>();
+-    factory.populateCache(id, badNamespace, null, map);
++    populator.populateCache(badNamespace, null, null, scheduler);
+ }
+\ No newline at end of file

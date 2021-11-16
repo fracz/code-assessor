@@ -1,0 +1,11 @@
+diff --git a/97f8442d333d7ee65af1fb9c191f75c5115e9cf0 b/3010b6d10279946dc5fa0fad046529f7141b145e
+index 97f8442d33..3010b6d102 100644
+--- a/97f8442d333d7ee65af1fb9c191f75c5115e9cf0
++++ b/3010b6d10279946dc5fa0fad046529f7141b145e
+@@ -1,4 +1,4 @@
+ public void update(final AnActionEvent e) {
+-    final PropertyInspectorTable inspector = (PropertyInspectorTable) e.getDataContext().getData(PropertyInspectorTable.class.getName());
++    final PropertyInspectorTable inspector = PropertyInspectorTable.DATA_KEY.getData(e.getDataContext());
+     e.getPresentation().setEnabled(inspector != null && inspector.getSelectedIntrospectedProperty() != null && inspector.getComponentClass() != null);
+ }
+\ No newline at end of file

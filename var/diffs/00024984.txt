@@ -1,0 +1,19 @@
+diff --git a/92e0fac7a34c8ff456e8c89ab2eab06e0ac8e878 b/a79ebc3e30e7d6eaee8760053cff72a7d54c1734
+index 92e0fac7a3..a79ebc3e30 100644
+--- a/92e0fac7a34c8ff456e8c89ab2eab06e0ac8e878
++++ b/a79ebc3e30e7d6eaee8760053cff72a7d54c1734
+@@ -1,6 +1,9 @@
+-File lazyPersistReplica(Block b, File f) throws IOException {
+-    File blockFile = FsDatasetImpl.copyBlockFiles(b, f, lazypersistDir);
+-    File metaFile = FsDatasetUtil.getMetaFile(blockFile, b.getGenerationStamp());
+-    dfsUsage.incDfsUsed(b.getNumBytes() + metaFile.length());
++File lazyPersistReplica(ReplicaInfo replicaInfo) throws IOException {
++    if (!lazypersistDir.exists() && !lazypersistDir.mkdirs()) {
++        FsDatasetImpl.LOG.warn("Failed to create " + lazypersistDir);
++    }
++    File metaFile = FsDatasetImpl.copyBlockFiles(replicaInfo, lazypersistDir);
++    File blockFile = Block.metaToBlockFile(metaFile);
++    dfsUsage.incDfsUsed(replicaInfo.getNumBytes() + metaFile.length());
+     return blockFile;
+ }
+\ No newline at end of file

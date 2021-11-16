@@ -1,0 +1,19 @@
+diff --git a/b1adea1d74b61503ba84612f9e1c940151a9ef30 b/9a0da81e2c177d65d028253a4bf60466d01df18f
+index b1adea1d74..9a0da81e2c 100644
+--- a/b1adea1d74b61503ba84612f9e1c940151a9ef30
++++ b/9a0da81e2c177d65d028253a4bf60466d01df18f
+@@ -1,10 +1,10 @@
+ @Test
+ public void testAffectsOnlyDoesNotTakeIntoAccountParentChanges() {
+-    root.createDirectory(1, "dir");
+-    root.createDirectory(2, "dir/dir2");
+-    root.createFile(3, "dir/dir2/file", null, -1);
++    createDirectory(root, 1, "dir");
++    createDirectory(root, 2, "dir/dir2");
++    createFile(root, 3, "dir/dir2/file", null, -1);
+     Change c = new RenameChange("dir", "newDir");
+     c.applyTo(root);
+     assertFalse(c.affectsOnlyInside(root.getEntry("newDir/dir2")));
+     assertTrue(c.affectsOnlyInside(root.getEntry("newDir")));
+ }
+\ No newline at end of file

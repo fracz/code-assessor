@@ -1,0 +1,14 @@
+diff --git a/548c2716532444d6b1c8c558d95bf6a3e52aad35 b/78b5019f73ed28f9e1eed10f9ccd14373aba5fb0
+index 548c271653..78b5019f73 100644
+--- a/548c2716532444d6b1c8c558d95bf6a3e52aad35
++++ b/78b5019f73ed28f9e1eed10f9ccd14373aba5fb0
+@@ -1,7 +1,3 @@
+ public int getToolBarColor() {
+-    if (toolBarColor != 0) {
+-        return toolBarColor;
+-    } else {
+-        return getMainColor();
+-    }
++    return getColorWithFallback(toolBarColor, getMainColor());
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/92ab747fa18812eb9db4cec68cd7aac057ce6b96 b/fc8343d6ff27fdcb3019879c6d283c843ac110b3
+index 92ab747fa1..fc8343d6ff 100644
+--- a/92ab747fa18812eb9db4cec68cd7aac057ce6b96
++++ b/fc8343d6ff27fdcb3019879c6d283c843ac110b3
+@@ -1,10 +1,10 @@
+ @BeforeMethod
+ public void setUp() throws Exception {
+     // doNothing().when(acceptValidator).validateOnAccept(any(Factory.class));
+     dto = DtoFactory.getInstance();
+     factoryBuilder = spy(new FactoryBuilder(new SourceStorageParametersValidator()));
+     doNothing().when(factoryBuilder).checkValid(any(Factory.class));
+     when(factoryParametersResolverHolder.getFactoryParametersResolvers()).thenReturn(factoryParametersResolvers);
+-    when(userDao.getById(anyString())).thenReturn(new User().withName(JettyHttpServer.ADMIN_USER_NAME));
++    when(userDao.getById(anyString())).thenReturn(new UserImpl(null, null, JettyHttpServer.ADMIN_USER_NAME, null, null));
+     factoryService = new FactoryService(factoryStore, createValidator, acceptValidator, editValidator, new LinksHelper(), factoryBuilder, workspaceManager, factoryParametersResolverHolder, userDao);
+ }
+\ No newline at end of file

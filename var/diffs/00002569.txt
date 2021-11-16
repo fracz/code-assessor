@@ -1,0 +1,19 @@
+diff --git a/56080fbff5a2263e46a87810523928e4f802f27e b/2eefa06a19ddf7234081345139aefec798479cb9
+index 56080fbff5..2eefa06a19 100644
+--- a/56080fbff5a2263e46a87810523928e4f802f27e
++++ b/2eefa06a19ddf7234081345139aefec798479cb9
+@@ -1,12 +1,10 @@
+ @Override
+ public void tearDown() throws Exception {
+     try {
+         WriteCommandAction.runWriteCommandAction(getProject(), () -> myFileTypeManager.removeAssociatedExtension(JsonSchemaFileType.INSTANCE, "*Schema.json"));
+         final JsonSchemaMappingsProjectConfiguration instance = JsonSchemaMappingsProjectConfiguration.getInstance(getProject());
+-        for (JsonSchemaMappingsConfigurationBase.SchemaInfo schema : mySchemas) {
+-            instance.removeSchema(schema);
+-        }
++        instance.setState(myProject, Collections.emptyMap());
+     } finally {
+         super.tearDown();
+     }
+ }
+\ No newline at end of file

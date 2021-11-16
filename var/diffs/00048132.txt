@@ -1,0 +1,12 @@
+diff --git a/408794de89edf5ce715771ee32a9e3789c167c56 b/ac7d2e341f5aa03b64ed1d772969bd296d63cf45
+index 408794de89..ac7d2e341f 100644
+--- a/408794de89edf5ce715771ee32a9e3789c167c56
++++ b/ac7d2e341f5aa03b64ed1d772969bd296d63cf45
+@@ -1,4 +1,5 @@
+ @Override
+ public String getDefaultActiveObject() {
+-    return preferenceStore.getString(DBeaverPreferences.DEFAULT_ACTIVE_OBJECT);
++    // preferenceStore.getString(DBeaverPreferences.DEFAULT_ACTIVE_OBJECT);
++    return connectionInfo.getBootstrap().getDefaultObjectName();
+ }
+\ No newline at end of file

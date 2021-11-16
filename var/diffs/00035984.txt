@@ -1,0 +1,13 @@
+diff --git a/7f96ab07a0e038af0b5cc6abdc6f6431f6a1924d b/79cb19a416e2fa3f4d801fe6657bf075a0da93c3
+index 7f96ab07a0..79cb19a416 100644
+--- a/7f96ab07a0e038af0b5cc6abdc6f6431f6a1924d
++++ b/79cb19a416e2fa3f4d801fe6657bf075a0da93c3
+@@ -1,5 +1,5 @@
+-public static synchronized void reportNot() {
++public synchronized void reportNot() {
+     Stack<IArgumentMatcher> stack = threadToArgumentMatcherStack.get();
+-    assertState(stack != null, "no matchers found.");
++    assertState(stack != null, missingMatchers());
+     stack.push(new Not(popLastArgumentMatchers(1).get(0)));
+ }
+\ No newline at end of file

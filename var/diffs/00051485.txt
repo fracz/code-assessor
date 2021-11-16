@@ -1,0 +1,14 @@
+diff --git a/89a2a197a1d5e54b7f4e235b40e9bc4e8d4be799 b/d6dc811b7709ee8f11df5fca5fad6a82b388982f
+index 89a2a197a1..d6dc811b77 100644
+--- a/89a2a197a1d5e54b7f4e235b40e9bc4e8d4be799
++++ b/d6dc811b7709ee8f11df5fca5fad6a82b388982f
+@@ -1,6 +1,6 @@
+ @Override
+-public boolean refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
++public DBSObject refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
+     this.reconnect(monitor, false);
+     getRegistry().notifyDataSourceListeners(new DBPEvent(DBPEvent.Action.OBJECT_UPDATE, DataSourceDescriptor.this));
+-    return true;
++    return this;
+ }
+\ No newline at end of file

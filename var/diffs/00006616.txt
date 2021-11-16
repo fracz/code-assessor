@@ -1,0 +1,18 @@
+diff --git a/9a8d9df74767f055cdcac4e2e644fd2ba3d74833 b/aca31402cf7127a050e3b5e0215b2ab0dc2f9fc4
+index 9a8d9df747..aca31402cf 100644
+--- a/9a8d9df74767f055cdcac4e2e644fd2ba3d74833
++++ b/aca31402cf7127a050e3b5e0215b2ab0dc2f9fc4
+@@ -1,10 +1,9 @@
+ @NotNull
+ private static PsiElement getTargetElement(Extension e) {
+     DomTarget extensionTarget = DomTarget.getTarget(e);
+     if (extensionTarget != null) {
+         return PomService.convertToPsi(extensionTarget);
+-    } else {
+-        // shouldn't happen, fallback for additional safety
+-        return e.getXmlTag();
+     }
++    // shouldn't happen, fallback for additional safety
++    return e.getXmlTag();
+ }
+\ No newline at end of file

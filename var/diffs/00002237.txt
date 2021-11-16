@@ -1,0 +1,11 @@
+diff --git a/038644b12dbbc6bdbc1e2eef2bc75c7b76eaaf05 b/2c0b097be5b38717eab7686917f64c1d46deed31
+index 038644b12d..2c0b097be5 100644
+--- a/038644b12dbbc6bdbc1e2eef2bc75c7b76eaaf05
++++ b/2c0b097be5b38717eab7686917f64c1d46deed31
+@@ -1,4 +1,4 @@
+ @Override
+ protected boolean isDirectory() {
+-    return ((VirtualFile) userObject).isDirectory() && FileStatusManager.getInstance(myProject).getStatus((VirtualFile) userObject) != FileStatus.NOT_CHANGED;
++    return (getUserObject()).isDirectory() && FileStatusManager.getInstance(myProject).getStatus(getUserObject()) != FileStatus.NOT_CHANGED;
+ }
+\ No newline at end of file

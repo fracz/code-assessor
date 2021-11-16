@@ -1,0 +1,22 @@
+diff --git a/e4f21b0f33da7351617b3e28402f7748b69678d9 b/888877b82e5194c826a04528938c2e43e6f62e4a
+index e4f21b0f33..888877b82e 100644
+--- a/e4f21b0f33da7351617b3e28402f7748b69678d9
++++ b/888877b82e5194c826a04528938c2e43e6f62e4a
+@@ -1,13 +1,13 @@
+ @Test
+ public void publish() {
+     final Configuration otherConfiguration = configurationContainer.add("testConf").extendsFrom(configuration);
+-    final PublishInstruction publishInstruction = createAnonymousPublishInstruction();
++    final File someDescriptorDestination = new File("somePath");
+     final List<DependencyResolver> dependencyResolvers = toList(context.mock(DependencyResolver.class, "publish"));
+     context.checking(new Expectations() {
+
+         {
+-            allowing(ivyServiceStub).publish(new LinkedHashSet<Configuration>(otherConfiguration.getHierarchy()), publishInstruction, dependencyResolvers);
++            allowing(ivyServiceStub).publish(new LinkedHashSet<Configuration>(otherConfiguration.getHierarchy()), someDescriptorDestination, dependencyResolvers);
+         }
+     });
+-    otherConfiguration.publish(dependencyResolvers, publishInstruction);
++    otherConfiguration.publish(dependencyResolvers, someDescriptorDestination);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/98a42cda36bb4b21c978d7c5c122c4ce82a042d2 b/d56a0eb5359ad1d0d385a774bfbeab3829b051e8
+index 98a42cda36..d56a0eb535 100644
+--- a/98a42cda36bb4b21c978d7c5c122c4ce82a042d2
++++ b/d56a0eb5359ad1d0d385a774bfbeab3829b051e8
+@@ -1,6 +1,6 @@
+ private LogAppender newAppender(final int index, final long sessionId, final long channelId, final long termId) throws IOException {
+-    final AtomicBuffer logBuffer = bufferUsage.newBuffer(newBufferMessage, index);
+-    final AtomicBuffer stateBuffer = bufferUsage.newBuffer(newBufferMessage, index + BUFFER_COUNT);
++    final AtomicBuffer logBuffer = newBuffer(newBufferMessage, index);
++    final AtomicBuffer stateBuffer = newBuffer(newBufferMessage, index + BufferRotationDescriptor.BUFFER_COUNT);
+     final byte[] header = DataHeaderFlyweight.createDefaultHeader(sessionId, channelId, termId);
+     return new LogAppender(logBuffer, stateBuffer, header, MAX_FRAME_LENGTH);
+ }
+\ No newline at end of file

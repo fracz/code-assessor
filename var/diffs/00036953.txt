@@ -1,0 +1,28 @@
+diff --git a/46dc178bc373bf1be28fa0e7997a2e240ed70844 b/93979fd64ff5e4598d2126feae025453fcf85e9d
+index 46dc178bc3..93979fd64f 100644
+--- a/46dc178bc373bf1be28fa0e7997a2e240ed70844
++++ b/93979fd64ff5e4598d2126feae025453fcf85e9d
+@@ -1,11 +1,17 @@
+ private static String getInvokeMethodCatchInsertCode() {
+     StringBuilder insertCode = new StringBuilder();
+-    // insertCode.append("{");
+-    // insertCode.append("System.out.println(\"------------------------------------------------\");");
+-    // insertCode.append("System.out.println(\"--- \"+$e.getMessage()+\" is occured !!!\");");
++    if (logger.isDebugEnabled()) {
++        insertCode.append("{");
++        insertCode.append("System.out.println(\"------------------------------------------------\");");
++        insertCode.append("System.out.println(\"--- \"+$e.getMessage()+\" is occured !!!\");");
++    }
+     insertCode.append(CLASS_NAME_REQUEST_TRACER).append(".exceptionTransaction($e);");
+-    // insertCode.append("System.out.println(\"------------------------------------------------\");");
++    if (logger.isDebugEnabled()) {
++        insertCode.append("System.out.println(\"------------------------------------------------\");");
++    }
+     insertCode.append("throw $e;");
+-    // insertCode.append("}");
++    if (logger.isDebugEnabled()) {
++        insertCode.append("}");
++    }
+     return insertCode.toString();
+ }
+\ No newline at end of file

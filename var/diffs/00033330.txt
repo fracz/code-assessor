@@ -1,0 +1,19 @@
+diff --git a/eb9271fdf06010e41d998ae7fa6b8bbfd4a2cfd6 b/1fdaeaa3dabb04820264f883bbdffe39e9a9d62b
+index eb9271fdf0..1fdaeaa3da 100644
+--- a/eb9271fdf06010e41d998ae7fa6b8bbfd4a2cfd6
++++ b/1fdaeaa3dabb04820264f883bbdffe39e9a9d62b
+@@ -1,9 +1,9 @@
+-private synchronized TaskProgressEvent toTaskProgressEvent(InternalTaskProgressEvent event) {
++private TaskProgressEvent toTaskProgressEvent(InternalTaskProgressEvent event) {
+     if (event instanceof InternalTaskStartedProgressEvent) {
+         return taskStartedEvent((InternalTaskStartedProgressEvent) event);
+-    }
+-    if (event instanceof InternalTaskFinishedProgressEvent) {
++    } else if (event instanceof InternalTaskFinishedProgressEvent) {
+         return taskFinishedEvent((InternalTaskFinishedProgressEvent) event);
++    } else {
++        return null;
+     }
+-    return null;
+ }
+\ No newline at end of file

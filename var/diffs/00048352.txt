@@ -1,0 +1,18 @@
+diff --git a/8d832e4e853473463cf3435dc7cb2c5cc9238bd3 b/ae667393aecba3a4805fc3c5fef00c2cecf47cac
+index 8d832e4e85..ae667393ae 100644
+--- a/8d832e4e853473463cf3435dc7cb2c5cc9238bd3
++++ b/ae667393aecba3a4805fc3c5fef00c2cecf47cac
+@@ -1,8 +1,11 @@
+ @Override
+ @Nullable
+ public IResultSetSelection getSelection() {
+     if (activePresentation instanceof ISelectionProvider) {
+-        return (IResultSetSelection) ((ISelectionProvider) activePresentation).getSelection();
++        ISelection selection = ((ISelectionProvider) activePresentation).getSelection();
++        if (selection instanceof IResultSetSelection) {
++            return (IResultSetSelection) selection;
++        }
+     }
+     return new EmptySelection();
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/b3ae344cdee2438be0d61149a4e7bf32f0f13d40 b/7051a1bf2c319bb6c1981e0d2834f8b9c72029dd
+index b3ae344cde..7051a1bf2c 100644
+--- a/b3ae344cdee2438be0d61149a4e7bf32f0f13d40
++++ b/7051a1bf2c319bb6c1981e0d2834f8b9c72029dd
+@@ -1,10 +1,14 @@
++/**
++ * @see WebSocketMessage#forward(OutputStream)
++ */
+ @Override
+ public void forward(OutputStream out) throws IOException {
+-    // does only forward finished messages
+     if (!isFinished) {
++        // do not forward unfinished messages
+         return;
+     }
+     for (ByteBuffer frame : frames) {
++        // forward frame by frame
+         forwardFrame(frame, out);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/6494de1e0451e160a3805af7c2d3aa2363e532be b/dcc09b46b52d6e9370c2de4a806b38df7f4a1218
+index 6494de1e04..dcc09b46b5 100644
+--- a/6494de1e0451e160a3805af7c2d3aa2363e532be
++++ b/dcc09b46b52d6e9370c2de4a806b38df7f4a1218
+@@ -1,12 +1,11 @@
+ /**
+  * Splits element text in tokens according to spell checker strategy of given language
+  * @param element Psi element
+  * @param language Usually element.getLanguage()
+- * @return tokens array
++ * @param consumer the consumer of tokens
+  */
+-@Nullable
+-public static Token[] tokenize(@NotNull final PsiElement element, @NotNull final Language language) {
++public static void tokenize(@NotNull final PsiElement element, @NotNull final Language language, TokenConsumer consumer) {
+     final SpellcheckingStrategy factoryByLanguage = getFactoryByLanguage(language);
+     final Tokenizer tokenizer = factoryByLanguage.getTokenizer(element);
+-    return tokenizer.tokenize(element);
++    tokenizer.tokenize(element, consumer);
+ }
+\ No newline at end of file

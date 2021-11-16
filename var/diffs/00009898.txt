@@ -1,0 +1,25 @@
+diff --git a/32b22ab35db3a257d6fa0a26e9939df3ad94d825 b/39c1d1bd86e00609a094e40108c303da639cc4c6
+index 32b22ab35d..39c1d1bd86 100644
+--- a/32b22ab35db3a257d6fa0a26e9939df3ad94d825
++++ b/39c1d1bd86e00609a094e40108c303da639cc4c6
+@@ -1,12 +1,15 @@
+ public void disposeUIResources() {
+-    disposeModuleEditors();
++    for (final ModuleEditor moduleEditor : myModuleEditors) {
++        final ModifiableRootModel model = moduleEditor.dispose();
++        if (model != null) {
++            model.dispose();
++        }
++    }
++    myModuleEditors.clear();
+     ApplicationManager.getApplication().runWriteAction(new Runnable() {
+
+         public void run() {
+             myModuleModel.dispose();
+         }
+     });
+-    if (myProjectJdkConfigurable != null) {
+-        myProjectJdkConfigurable.disposeUIResources();
+-    }
+ }
+\ No newline at end of file

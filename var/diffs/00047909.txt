@@ -1,0 +1,19 @@
+diff --git a/e8996bd8f3024dffcfaf6219cb5611cf07f1fe7f b/fbf74161704d58a926cc56073032db89618b4f7f
+index e8996bd8f3..fbf7416170 100644
+--- a/e8996bd8f3024dffcfaf6219cb5611cf07f1fe7f
++++ b/fbf74161704d58a926cc56073032db89618b4f7f
+@@ -1,12 +1,11 @@
+ public static void resetStaticState() {
+     ShadowWrangler.getInstance().silence();
+     Robolectric.application = new Application();
+-    Robolectric.backgroundScheduler = new Scheduler();
+-    Robolectric.uiThreadScheduler = new Scheduler();
+     TestSharedPreferences.reset();
+     ShadowToast.reset();
+     ShadowAlertDialog.reset();
+     ShadowDialog.reset();
+     ShadowLooper.resetAll();
++    Robolectric.backgroundScheduler.reset();
+     ShadowDefaultRequestDirector.reset();
+ }
+\ No newline at end of file

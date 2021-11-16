@@ -1,0 +1,18 @@
+diff --git a/3d0a56dd414cc17598ccaaa0ea9f91759d763c5f b/12685b1821c340be736d52d9b75058e33553f26b
+index 3d0a56dd41..12685b1821 100644
+--- a/3d0a56dd414cc17598ccaaa0ea9f91759d763c5f
++++ b/12685b1821c340be736d52d9b75058e33553f26b
+@@ -1,9 +1,6 @@
+-private void parseSelectList() {
+-    containStarForMainStatement = false;
++private void parseSelectList(final SelectStatement selectStatement) {
+     do {
+-        parseSelectItem();
++        parseSelectItem(selectStatement);
+     } while (sqlParser.skipIfEqual(Symbol.COMMA));
+-    if (!parseMainStatement) {
+-        selectListLastPosition = sqlParser.getLexer().getCurrentToken().getEndPosition() - sqlParser.getLexer().getCurrentToken().getLiterals().length();
+-    }
++    selectStatement.setSelectListLastPosition(sqlParser.getLexer().getCurrentToken().getEndPosition() - sqlParser.getLexer().getCurrentToken().getLiterals().length());
+ }
+\ No newline at end of file

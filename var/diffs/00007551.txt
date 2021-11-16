@@ -1,0 +1,18 @@
+diff --git a/11c42620b47f382c4942809568745c29c019badc b/c606356f4b6000173e80bcbdc5883cd0c1ce45cb
+index 11c42620b4..c606356f4b 100644
+--- a/11c42620b47f382c4942809568745c29c019badc
++++ b/c606356f4b6000173e80bcbdc5883cd0c1ce45cb
+@@ -1,11 +1,10 @@
+ public static CourseInfo getCourseInfo(Project project, String courseId) {
+     final String url = EduStepicNames.COURSES + "/" + courseId;
+     try {
+-        login(project);
+-        final StepicWrappers.CoursesContainer coursesContainer = getFromStepic(url, StepicWrappers.CoursesContainer.class);
++        final StepicWrappers.CoursesContainer coursesContainer = EduStepicAuthorizedClient.getFromStepic(url, StepicWrappers.CoursesContainer.class, project);
+         return coursesContainer.courses.get(0);
+     } catch (IOException e) {
+         LOG.error(e.getMessage());
+     }
+     return null;
+ }
+\ No newline at end of file

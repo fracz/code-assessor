@@ -1,0 +1,18 @@
+diff --git a/169a6c61a4f8207b08ccb89d366bb5438a1c85da b/8df0f2dd6abc3230f036ca0296a9e4ab4492dad2
+index 169a6c61a4..8df0f2dd6a 100644
+--- a/169a6c61a4f8207b08ccb89d366bb5438a1c85da
++++ b/8df0f2dd6abc3230f036ca0296a9e4ab4492dad2
+@@ -1,8 +1,7 @@
+ public Collection<OStorage> getStorages() {
+-    engineLock.readLock().lock();
+-    try {
+-        return new ArrayList<OStorage>(storages.values());
+-    } finally {
+-        engineLock.readLock().unlock();
++    List<OStorage> storages = new ArrayList<>();
++    for (OEmbeddedDBFactory factory : factories) {
++        storages.addAll(factory.getStorages());
+     }
++    return storages;
+ }
+\ No newline at end of file

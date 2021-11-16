@@ -1,0 +1,17 @@
+diff --git a/60190c31fcd3166173981ea2b9aa13f3c8cce9d9 b/31d8141a1088ddd5e34e4c1fcd9e635055eaf6d7
+index 60190c31fc..31d8141a10 100644
+--- a/60190c31fcd3166173981ea2b9aa13f3c8cce9d9
++++ b/31d8141a1088ddd5e34e4c1fcd9e635055eaf6d7
+@@ -1,8 +1,8 @@
+ private void createUIComponents() {
+     myJavaVisibilityPanel = new JavaVisibilityPanel(false, true);
+-    if (myContext.expression == null) {
+-        myTypeCombo = GrTypeComboBox.createTypeComboBoxWithDefType(myContext.var.getDeclaredType());
++    if (myContext.getExpression() == null) {
++        myTypeCombo = GrTypeComboBox.createTypeComboBoxWithDefType(myContext.getVar().getDeclaredType());
+     } else {
+-        myTypeCombo = GrTypeComboBox.createTypeComboBoxFromExpression(myContext.expression);
++        myTypeCombo = GrTypeComboBox.createTypeComboBoxFromExpression(myContext.getExpression());
+     }
+ }
+\ No newline at end of file

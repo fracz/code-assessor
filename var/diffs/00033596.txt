@@ -1,0 +1,29 @@
+diff --git a/dfb6210d640cd21f3db621610da0a3c8c01213c6 b/7eb18f9aea3516b75afeb014a0399bd73464357d
+index dfb6210d64..7eb18f9aea 100644
+--- a/dfb6210d640cd21f3db621610da0a3c8c01213c6
++++ b/7eb18f9aea3516b75afeb014a0399bd73464357d
+@@ -1,18 +1,17 @@
+ private boolean isOrphanedPom(MavenModuleVersionMetaData metaData, ExternalResourceArtifactResolver artifactResolver) {
+     if (metaData.isPomPackaging()) {
+         return false;
+     }
+     // check custom packaging
+-    if (!metaData.isKnownJarPackaging()) {
+-        ModuleVersionArtifactMetaData customArtifactMetaData = metaData.artifact(metaData.getPackaging(), metaData.getPackaging(), null);
+-        if (artifactResolver.artifactExists(customArtifactMetaData, new DefaultResourceAwareResolveResult())) {
+-            return false;
+-        }
++    ModuleVersionArtifactMetaData artifact;
++    if (metaData.isKnownJarPackaging()) {
++        artifact = metaData.artifact("jar", "jar", null);
++    } else {
++        artifact = metaData.artifact(metaData.getPackaging(), metaData.getPackaging(), null);
+     }
+-    ModuleVersionArtifactMetaData artifact = metaData.artifact("jar", "jar", null);
+     if (artifactResolver.artifactExists(artifact, new DefaultResourceAwareResolveResult())) {
+         return false;
+     }
+     LOGGER.debug("POM file found for module '{}' in repository '{}' but no artifact found. Ignoring.", metaData.getId(), getName());
+     return true;
+ }
+\ No newline at end of file

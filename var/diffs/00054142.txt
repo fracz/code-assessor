@@ -1,0 +1,13 @@
+diff --git a/14a5f6b40f15fb1240fb078d6e5ecb9a8e13d040 b/5a49694cdf2d822704a59b9d86d7dc5953ff626f
+index 14a5f6b40f..5a49694cdf 100644
+--- a/14a5f6b40f15fb1240fb078d6e5ecb9a8e13d040
++++ b/5a49694cdf2d822704a59b9d86d7dc5953ff626f
+@@ -1,6 +1,5 @@
+ @Before
+ public void init() throws SQLException {
+-    shardingDataSource = getShardingDataSource();
+-    shardingConnection = shardingDataSource.getConnection();
++    shardingConnection = getShardingDataSource().getConnection();
+     actual = shardingConnection.prepareStatement("SELECT user_id AS `uid` FROM `t_order` WHERE `status` = 'init'");
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/52c6d71a0666cc8db544af3427b1adc42037a970 b/ca1ffd598ee0136be3b5bc5e3893873ab125b2cd
+index 52c6d71a06..ca1ffd598e 100644
+--- a/52c6d71a0666cc8db544af3427b1adc42037a970
++++ b/ca1ffd598ee0136be3b5bc5e3893873ab125b2cd
+@@ -1,6 +1,6 @@
+ private void setTableToken(final SQLStatement sqlStatement, final int beginPosition, final SQLPropertyExpression propertyExpr) {
+     String owner = propertyExpr.getOwner().getName();
+-    if (!sqlStatement.getTables().isEmpty() && sqlStatement.getTables().getSingleTableName().equalsIgnoreCase(SQLUtil.getExactlyValue(owner))) {
++    if (sqlStatement.getTables().getTableNames().contains(SQLUtil.getExactlyValue(propertyExpr.getOwner().getName()))) {
+         sqlStatement.getSqlTokens().add(new TableToken(beginPosition - owner.length(), owner));
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,30 @@
+diff --git a/17f7c8c1f0ecd4d223ed124837872f864e6899c9 b/b7cebcee8ae33ab8d75a70f667789de0cd0828f0
+index 17f7c8c1f0..b7cebcee8a 100644
+--- a/17f7c8c1f0ecd4d223ed124837872f864e6899c9
++++ b/b7cebcee8ae33ab8d75a70f667789de0cd0828f0
+@@ -1,22 +1,23 @@
+ private InputStream getInputStream() throws IOException {
+     ContentResolver contentResolver = context.getContentResolver();
+     Uri uri = getData().uri;
+     switch(matcher.match(uri)) {
+         case ID_LOOKUP:
+             uri = ContactsContract.Contacts.lookupContact(contentResolver, uri);
+             if (null == uri) {
+                 return null;
+             }
++        // Resolved the uri to a contact uri, intentionally fall through to process the resolved uri
+         case ID_CONTACT:
+             if (SDK_INT < ICE_CREAM_SANDWICH) {
+                 return openContactPhotoInputStream(contentResolver, uri);
+             } else {
+                 return ContactPhotoStreamIcs.get(contentResolver, uri);
+             }
+         case ID_THUMBNAIL:
+         case ID_DISPLAY_PHOTO:
+             return contentResolver.openInputStream(uri);
+         default:
+-            return null;
++            throw new IllegalStateException("Invalid uri: " + uri);
+     }
+ }
+\ No newline at end of file

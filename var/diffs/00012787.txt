@@ -1,0 +1,19 @@
+diff --git a/0d9b7a3532760e2e56b67f0bccb7b0bfdb83e1cc b/ef25a40168e757e11204c77bef2f3ca803411bc2
+index 0d9b7a3532..ef25a40168 100644
+--- a/0d9b7a3532760e2e56b67f0bccb7b0bfdb83e1cc
++++ b/ef25a40168e757e11204c77bef2f3ca803411bc2
+@@ -1,12 +1,12 @@
+ public boolean enabled() {
+     if (myProject == null || myProject.isDefault() || myManager == null) {
+         return false;
+     }
+     if (checkMappings()) {
+         return false;
+     }
+-    if (Extensions.getExtensions(VcsEP.EP_NAME, myProject).length == 0) {
++    if (!((ProjectLevelVcsManagerImpl) myManager).haveVcses()) {
+         return false;
+     }
+     return true;
+ }
+\ No newline at end of file

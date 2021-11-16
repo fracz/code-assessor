@@ -1,0 +1,16 @@
+diff --git a/e39c7f4c9b088f21a9417f100da27a5ae3de7b3a b/7ac0aacb631f3c1d5b6fcd85c450fe0b36da651b
+index e39c7f4c9b..7ac0aacb63 100644
+--- a/e39c7f4c9b088f21a9417f100da27a5ae3de7b3a
++++ b/7ac0aacb631f3c1d5b6fcd85c450fe0b36da651b
+@@ -1,9 +1,9 @@
+ public static void pushByteIntMap(TByteIntHashMap map) {
+     Queue<TByteIntHashMap> ref = byteIntHashMap.get();
+     if (ref == null) {
+-        ref = new LinkedTransferQueue<TByteIntHashMap>();
++        ref = ConcurrentCollections.newQueue();
+         byteIntHashMap.set(ref);
+     }
+     map.clear();
+     ref.add(map);
+ }
+\ No newline at end of file

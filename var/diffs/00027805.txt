@@ -1,0 +1,12 @@
+diff --git a/b080807fc53189c45e521fa7045fdf4fc5c486ee b/caf7cd44e86f17f6bd5db83a159b049738b3781b
+index b080807fc5..caf7cd44e8 100644
+--- a/b080807fc53189c45e521fa7045fdf4fc5c486ee
++++ b/caf7cd44e86f17f6bd5db83a159b049738b3781b
+@@ -1,4 +1,4 @@
+ @Override
+-public Promise<Void> destroyMachine(@NotNull final String machineId) {
+-    return asyncRequestFactory.createRequest(DELETE, baseHttpUrl + '/' + machineId, null, false).loader(loaderFactory.newLoader("Destroying machine...")).send();
++public Promise<Void> destroyMachine(@NotNull final String workspaceId, @NotNull final String machineId) {
++    return asyncRequestFactory.createRequest(DELETE, baseHttpUrl + workspaceId + "/machine/" + machineId, null, false).loader(loaderFactory.newLoader("Destroying machine...")).send();
+ }
+\ No newline at end of file

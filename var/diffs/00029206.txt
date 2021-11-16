@@ -1,0 +1,17 @@
+diff --git a/d1b7a1ac45a7328009144579462ca042fb032d85 b/20c7a280b6fb806630f6d6108ae9877ba4e60815
+index d1b7a1ac45..20c7a280b6 100644
+--- a/d1b7a1ac45a7328009144579462ca042fb032d85
++++ b/20c7a280b6fb806630f6d6108ae9877ba4e60815
+@@ -1,10 +1,10 @@
+ @Override
+ public String toString() {
+     String sSource = "_na_";
+     try {
+-        sSource = Unicode.fromBytes(source, sourceOffset, sourceLength);
++        sSource = XContentHelper.convertToJson(source, false);
+     } catch (Exception e) {
+     // ignore
+     }
+     return "index {[" + index + "][" + type + "][" + id + "], source[" + sSource + "]}";
+ }
+\ No newline at end of file

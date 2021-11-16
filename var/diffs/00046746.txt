@@ -1,0 +1,19 @@
+diff --git a/f975c72210a9d32adbf69a51b3c6b526603dbbfe b/62c03da7174ba4661ea12c015d5d25c65b97fff5
+index f975c72210..62c03da717 100644
+--- a/f975c72210a9d32adbf69a51b3c6b526603dbbfe
++++ b/62c03da7174ba4661ea12c015d5d25c65b97fff5
+@@ -1,10 +1,10 @@
+ @Test
+ public void subscriberCanReceiveAMessage() throws Exception {
+-    channel2Handler = assertingHandler();
++    channel2Handler = sessionAssertingHandler();
+     final Subscriber subscriber = newSubscriber(aeron);
+-    final List<LogAppender> logAppenders = createLogAppenders(SESSION_ID);
++    sendNewBufferNotification(NEW_SUBSCRIPTION_BUFFER_EVENT, SESSION_ID_1, TERM_ID_1);
+     aeron.conductor().doWork();
+     skip(toDriverBuffer, 1);
+-    writePacket(logAppenders.get(0));
++    writePackets(appendersSession1[0], 1);
+     assertThat(subscriber.read(), is(1));
+ }
+\ No newline at end of file

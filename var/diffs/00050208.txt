@@ -1,0 +1,21 @@
+diff --git a/3f13a7f84c72b669f892b83f32695843916b547c b/01f284c932926a893d72a485173e28659b9e4d94
+index 3f13a7f84c..01f284c932 100644
+--- a/3f13a7f84c72b669f892b83f32695843916b547c
++++ b/01f284c932926a893d72a485173e28659b9e4d94
+@@ -1,11 +1,11 @@
+ @Override
+ protected MySQLProcedure runTask() {
+-    CreateProcedureDialog dialog = new CreateProcedureDialog(DBeaverUI.getActiveWorkbenchShell(), parent.getDataSource());
+-    if (dialog.open() != IDialogConstants.OK_ID) {
++    CreateProcedurePage editPage = new CreateProcedurePage(parent);
++    if (!editPage.edit()) {
+         return null;
+     }
+     MySQLProcedure newProcedure = new MySQLProcedure(parent);
+-    newProcedure.setProcedureType(dialog.getProcedureType());
+-    newProcedure.setName(dialog.getProcedureName());
++    newProcedure.setProcedureType(editPage.getProcedureType());
++    newProcedure.setName(editPage.getProcedureName());
+     return newProcedure;
+ }
+\ No newline at end of file

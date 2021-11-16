@@ -1,0 +1,20 @@
+diff --git a/7caaabb0fb6b447b6eeb3a49d9b4d7596a1363ff b/bf9135717dbdf9618941c1c1233dac3409501029
+index 7caaabb0fb..bf9135717d 100644
+--- a/7caaabb0fb6b447b6eeb3a49d9b4d7596a1363ff
++++ b/bf9135717dbdf9618941c1c1233dac3409501029
+@@ -1,12 +1,12 @@
+ @Test
+ public void shouldReturnCorrectUniquenessRuleForLabelAndProperty() throws SchemaRuleNotFoundException, DuplicateSchemaRuleException {
+     // Given
+     createSchema(uniquenessConstraint(LABEL1, PROP1), uniquenessConstraint(LABEL2, PROP1));
+     // When
+-    UniquePropertyConstraintRule rule = storage.uniquenessConstraint(labelId(LABEL1), propId(PROP1));
++    UniquePropertyConstraintRule rule = storage.uniquenessConstraint(nodeDescriptor(LABEL1, PROP1));
+     // Then
+     assertNotNull(rule);
+     assertEquals(labelId(LABEL1), rule.getLabel());
+-    assertEquals(propId(PROP1), rule.getPropertyKey());
++    assertEquals(propId(PROP1), rule.descriptor().getPropertyKeyId());
+     assertEquals(SchemaRule.Kind.UNIQUENESS_CONSTRAINT, rule.getKind());
+ }
+\ No newline at end of file

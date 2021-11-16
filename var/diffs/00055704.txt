@@ -1,0 +1,24 @@
+diff --git a/9fb7b37b8675261e833233af7feb9b12d8b2520d b/828559f6e82ea4a096189fc00db8111070c4316a
+index 9fb7b37b86..828559f6e8 100644
+--- a/9fb7b37b8675261e833233af7feb9b12d8b2520d
++++ b/828559f6e82ea4a096189fc00db8111070c4316a
+@@ -1,9 +1,13 @@
+-private Set<MediaType> getConsumableMediaTypes(HttpServletRequest request, Set<RequestMappingInfo> partialMatches) {
+-    Set<MediaType> result = new HashSet<MediaType>();
+-    for (RequestMappingInfo partialMatch : partialMatches) {
+-        if (partialMatch.getConsumesCondition().getMatchingCondition(request) == null) {
+-            result.addAll(partialMatch.getConsumesCondition().getConsumableMediaTypes());
++/**
++ * Return declared "consumable" types but only among those that also
++ * match the "methods" condition.
++ */
++public Set<MediaType> getConsumableMediaTypes() {
++    Set<MediaType> result = new LinkedHashSet<MediaType>();
++    for (PartialMatch match : this.partialMatches) {
++        if (match.hasMethodsMatch()) {
++            result.addAll(match.getInfo().getConsumesCondition().getConsumableMediaTypes());
+         }
+     }
+     return result;
+ }
+\ No newline at end of file

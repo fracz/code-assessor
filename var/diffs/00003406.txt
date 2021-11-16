@@ -1,0 +1,20 @@
+diff --git a/abddb8a9a9ba47cecdc653909f8f07c2dabd0cb9 b/4eb50726d62f3bb0cab85f8ee9b87a342db1e01f
+index abddb8a9a9..4eb50726d6 100644
+--- a/abddb8a9a9ba47cecdc653909f8f07c2dabd0cb9
++++ b/4eb50726d62f3bb0cab85f8ee9b87a342db1e01f
+@@ -1,12 +1,12 @@
+ public void validate() throws ConfigurationException {
+     Module module = myModulesCombo.getModule();
+     if (module == null) {
+         throw new ConfigurationException(AndroidBundle.message("android.wizard.specify.tested.module.error"));
+     } else if (AndroidFacet.getInstance(module) == null) {
+         throw new ConfigurationException(AndroidBundle.message("android.wizard.tested.module.without.facet.error"));
+     }
+-    String moduleDirPath = new File(module.getModuleFilePath()).getParent();
++    String moduleDirPath = AndroidRootUtil.getModuleDirPath(module);
+     if (moduleDirPath == null) {
+-        throw new ConfigurationException(AndroidBundle.message("android.wizard.cannot.find.module.parent.dir.error", moduleDirPath));
++        throw new ConfigurationException(AndroidBundle.message("android.wizard.cannot.find.module.parent.dir.error", module.getName()));
+     }
+ }
+\ No newline at end of file

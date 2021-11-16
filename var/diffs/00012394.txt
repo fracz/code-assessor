@@ -1,0 +1,25 @@
+diff --git a/5730d4f2a5baeeddf67287688191c7d1a660d54c b/12135ce065cdabb735e3f0ddb7ec5f4d15ccb2af
+index 5730d4f2a5..12135ce065 100644
+--- a/5730d4f2a5baeeddf67287688191c7d1a660d54c
++++ b/12135ce065cdabb735e3f0ddb7ec5f4d15ccb2af
+@@ -1,17 +1,17 @@
+ @Override
+ protected void notifyUnresolvedRemain() {
+-    GitVcs.IMPORTANT_ERROR_NOTIFICATION.createNotification("Local changes were restored with conflicts", "Your uncommitted changes were saved to <a href='saver'>stash</a>.<br/>" + "Unstash is not complete, you have unresolved merges in your working tree<br/>" + "<a href='resolve'>Resolve</a> conflicts and drop the stash.", NotificationType.WARNING, new NotificationListener() {
++    VcsNotifier.getInstance(myProject).notifyStrongWarning("Local changes were restored with conflicts", "Your uncommitted changes were saved to <a href='saver'>stash</a>.<br/>" + "Unstash is not complete, you have unresolved merges in your working tree<br/>" + "<a href='resolve'>Resolve</a> conflicts and drop the stash.", new NotificationListener() {
+
+         @Override
+         public void hyperlinkUpdate(@NotNull Notification notification, @NotNull HyperlinkEvent event) {
+             if (event.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+                 if (event.getDescription().equals("saver")) {
+                     // we don't use #showSavedChanges to specify unmerged root first
+                     GitUnstashDialog.showUnstashDialog(myProject, new ArrayList<VirtualFile>(myStashedRoots), myStashedRoots.iterator().next());
+                 } else if (event.getDescription().equals("resolve")) {
+                     mergeNoProceed();
+                 }
+             }
+         }
+-    }).notify(myProject);
++    });
+ }
+\ No newline at end of file

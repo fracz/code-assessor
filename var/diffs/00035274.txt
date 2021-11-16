@@ -1,0 +1,16 @@
+diff --git a/a7a0e2c551f9532a4167784b9a16b448c7ea62e1 b/807122f2414208f9d814e9bc2b2215851e5b0463
+index a7a0e2c551..807122f241 100644
+--- a/a7a0e2c551f9532a4167784b9a16b448c7ea62e1
++++ b/807122f2414208f9d814e9bc2b2215851e5b0463
+@@ -1,8 +1,6 @@
+-/**
+- * Sets the style of this widget.
+- * @param style
+- */
+ public void setStyle(SliderStyle style) {
++    if (style == null)
++        throw new IllegalArgumentException("style cannot be null.");
+     this.style = style;
+     invalidateHierarchy();
+ }
+\ No newline at end of file

@@ -1,0 +1,25 @@
+diff --git a/76b3a256dec7aac1835cdb76d50305c5fb2fe3d0 b/0c8d83cf7ffb10277adbddb94adc9f0e6f929a37
+index 76b3a256de..0c8d83cf7f 100644
+--- a/76b3a256dec7aac1835cdb76d50305c5fb2fe3d0
++++ b/0c8d83cf7ffb10277adbddb94adc9f0e6f929a37
+@@ -1,17 +1,18 @@
++@SuppressWarnings("SSBasedInspection")
+ @Override
+ public void setVisible(boolean b) {
+     super.setVisible(b);
+     if (b && myRestoreFullScreen) {
+         SwingUtilities.invokeLater(new Runnable() {
+
+             @Override
+             public void run() {
+-                WindowManagerEx.getInstanceEx().setFullScreen(IdeFrameImpl.this, true);
++                toggleFullScreen(true);
+                 if (SystemInfo.isMacOSLion) {
+                     setBounds(ScreenUtil.getScreenRectangle(getLocationOnScreen()));
+                 }
+                 myRestoreFullScreen = false;
+             }
+         });
+     }
+ }
+\ No newline at end of file

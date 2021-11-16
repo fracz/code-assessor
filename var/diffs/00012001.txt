@@ -1,0 +1,13 @@
+diff --git a/fcc962fbd4bb1bd7f04b7996e48ac4efd2400304 b/c9704cbf0176a78a108b3a617a10e453459798c3
+index fcc962fbd4..c9704cbf01 100644
+--- a/fcc962fbd4bb1bd7f04b7996e48ac4efd2400304
++++ b/c9704cbf0176a78a108b3a617a10e453459798c3
+@@ -1,5 +1,5 @@
+ @Nullable
+ public static PsiElement[] getLinePsiElements(int offset, VirtualFile file, Project project, BreadcrumbsProvider infoProvider) {
+-    final LinkedList<PsiCrumb> lineElements = getLineElements(offset, file, project, infoProvider);
+-    return lineElements != null ? toPsiElementArray(lineElements) : null;
++    Collection<Pair<PsiElement, BreadcrumbsProvider>> pairs = getLineElements(offset, file, project, infoProvider);
++    return pairs == null ? null : toPsiElementArray(pairs);
+ }
+\ No newline at end of file

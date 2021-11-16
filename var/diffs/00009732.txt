@@ -1,0 +1,13 @@
+diff --git a/91cee3804654294a50abbced6d16ad08f62ad03f b/11a54875ec72925ee0164503233ece8fb5575483
+index 91cee38046..11a54875ec 100644
+--- a/91cee3804654294a50abbced6d16ad08f62ad03f
++++ b/11a54875ec72925ee0164503233ece8fb5575483
+@@ -1,5 +1,5 @@
+-public void messageEdt(PlaybackContext context, String text, int curentLine, Type type) {
++public void messageEdt(PlaybackContext context, String text, Type type) {
+     if (type == Type.message || type == Type.error) {
+-        frame.getStatusBar().setInfo("Line " + curentLine + ": " + text);
++        frame.getStatusBar().setInfo("Line " + context.getCurrentLine() + ": " + text);
+     }
+ }
+\ No newline at end of file

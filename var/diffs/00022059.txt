@@ -1,0 +1,21 @@
+diff --git a/7466f0e5a60636220f8db91abcadb0eecf97e7bf b/1807fc5d013d552609b76940762bfa3ae115f230
+index 7466f0e5a6..1807fc5d01 100644
+--- a/7466f0e5a60636220f8db91abcadb0eecf97e7bf
++++ b/1807fc5d013d552609b76940762bfa3ae115f230
+@@ -1,9 +1,9 @@
+ @Override
+-public void onRectangleOnScreenRequested(int dsiplayId, Rect rectangle, boolean immediate) {
++public void onRectangleOnScreenRequested(int left, int top, int right, int bottom) {
+     SomeArgs args = SomeArgs.obtain();
+-    args.argi1 = rectangle.left;
+-    args.argi2 = rectangle.top;
+-    args.argi3 = rectangle.right;
+-    args.argi4 = rectangle.bottom;
+-    mHandler.obtainMessage(MESSAGE_ON_RECTANGLE_ON_SCREEN_REQUESTED, 0, immediate ? 1 : 0, args).sendToTarget();
++    args.argi1 = left;
++    args.argi2 = top;
++    args.argi3 = right;
++    args.argi4 = bottom;
++    mHandler.obtainMessage(MESSAGE_ON_RECTANGLE_ON_SCREEN_REQUESTED, args).sendToTarget();
+ }
+\ No newline at end of file

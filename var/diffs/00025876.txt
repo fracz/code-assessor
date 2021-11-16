@@ -1,0 +1,20 @@
+diff --git a/8ab32ca4c5242999003f8051cfbbdad32cf6da58 b/c697e8ed3ac404efbf7b3b6ac13ffd48add6e8db
+index 8ab32ca4c5..c697e8ed3a 100644
+--- a/8ab32ca4c5242999003f8051cfbbdad32cf6da58
++++ b/c697e8ed3ac404efbf7b3b6ac13ffd48add6e8db
+@@ -1,11 +1,9 @@
++@VisibleForTesting
+ public void closeNote(String user, String noteId) {
+     // close interpreters in this note session
++    LOGGER.info("Close Note: {}", noteId);
+     List<InterpreterSetting> settings = getInterpreterSettings(noteId);
+-    if (settings == null || settings.size() == 0) {
+-        return;
+-    }
+-    logger.info("closeNote: {}", noteId);
+     for (InterpreterSetting setting : settings) {
+-        removeInterpretersForNote(setting, user, noteId);
++        setting.closeInterpreters(user, noteId);
+     }
+ }
+\ No newline at end of file

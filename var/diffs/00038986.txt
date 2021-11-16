@@ -1,0 +1,27 @@
+diff --git a/10a2cabc2b8876b8505b947492a0ba954a328c63 b/9640cc88ce9aed4d44a47909818bb066e89edab5
+index 10a2cabc2b..9640cc88ce 100644
+--- a/10a2cabc2b8876b8505b947492a0ba954a328c63
++++ b/9640cc88ce9aed4d44a47909818bb066e89edab5
+@@ -1,16 +1,15 @@
+-private Integer parsePort(KernelData kernel) {
+-    String configValue = (String) kernel.getParam(ENABLE_ONLINE_BACKUP);
+-    if (configValue != null) {
++public static Integer parsePort(String backupConfigValue) {
++    if (backupConfigValue != null) {
+         int port = BackupServer.DEFAULT_PORT;
+-        if (configValue.contains("=")) {
+-            Map<String, String> args = parseConfigValue(configValue);
++        if (backupConfigValue.contains("=")) {
++            Map<String, String> args = parseMapFromConfigValue(ENABLE_ONLINE_BACKUP, backupConfigValue);
+             if (args.containsKey("port")) {
+                 port = Integer.parseInt(args.get("port"));
+             }
+-        } else if (!Boolean.parseBoolean(configValue)) {
++        } else if (!Boolean.parseBoolean(backupConfigValue)) {
+             return null;
+         }
+         return Integer.valueOf(port);
+     }
+     return null;
+ }
+\ No newline at end of file

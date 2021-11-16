@@ -1,0 +1,18 @@
+diff --git a/13567f351187b15f3ec9c343587e7122eccd86e5 b/6e1f6ff2eff3ca310edf9dba0decb74c88b7e4d8
+index 13567f3511..6e1f6ff2ef 100644
+--- a/13567f351187b15f3ec9c343587e7122eccd86e5
++++ b/6e1f6ff2eff3ca310edf9dba0decb74c88b7e4d8
+@@ -1,11 +1,9 @@
+ public void dispose() {
+     for (DriverDescriptor driver : drivers) {
+         driver.dispose();
+     }
+     drivers.clear();
+     tools.clear();
+     toolGroups.clear();
+-    if (this.instance != null) {
+-        this.instance.close();
+-    }
++    instance = null;
+ }
+\ No newline at end of file

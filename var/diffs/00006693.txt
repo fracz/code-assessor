@@ -1,0 +1,18 @@
+diff --git a/9273b50aebf979429eaf038f7cb512afd02d370a b/0ee9676f1b03995367d675419dd3e105bca03aa3
+index 9273b50aeb..0ee9676f1b 100644
+--- a/9273b50aebf979429eaf038f7cb512afd02d370a
++++ b/0ee9676f1b03995367d675419dd3e105bca03aa3
+@@ -1,11 +1,9 @@
+ @Override
+ public void pass(final ElementToWorkOn elementToWorkOn) {
+     if (elementToWorkOn == null)
+         return;
+     final PsiExpression expr = elementToWorkOn.getExpression();
+     final PsiLocalVariable localVar = elementToWorkOn.getLocalVariable();
+     final boolean isInvokedOnDeclaration = elementToWorkOn.isInvokedOnDeclaration();
+-    if (invoke(editor, project, expr, localVar, isInvokedOnDeclaration)) {
+-        editor.getSelectionModel().removeSelection();
+-    }
++    invoke(editor, project, expr, localVar, isInvokedOnDeclaration);
+ }
+\ No newline at end of file

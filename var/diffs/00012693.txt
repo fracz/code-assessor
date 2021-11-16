@@ -1,0 +1,24 @@
+diff --git a/66d80a9a8f889b6ab54710d4e184b373554672c5 b/54a8273c5620670b0da9c15dd055fb1db9edc3fe
+index 66d80a9a8f..54a8273c56 100644
+--- a/66d80a9a8f889b6ab54710d4e184b373554672c5
++++ b/54a8273c5620670b0da9c15dd055fb1db9edc3fe
+@@ -1,16 +1,16 @@
+ public void setValue(XValueNodeImpl node) {
+     if (node.getValueContainer() instanceof PyDebugValue) {
+         PyDebugValue debugValue = (PyDebugValue) node.getValueContainer();
+         if ("ndarray".equals(debugValue.getType())) {
+             myComponent.setDefaultStatus();
+-            final NumpyArrayValueProvider valueProvider = new NumpyArrayValueProvider(node, myComponent, myProject);
++            final NumpyArrayValueProvider valueProvider = new NumpyArrayValueProvider(node, this, myProject);
+             try {
+                 valueProvider.startFillTable();
+             } catch (Exception e) {
+-                myComponent.setErrorText(e);
++                setErrorText(e.getMessage());
+             }
+         } else {
+             myComponent.setNotApplicableStatus(node);
+         }
+     }
+ }
+\ No newline at end of file

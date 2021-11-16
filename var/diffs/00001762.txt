@@ -1,0 +1,16 @@
+diff --git a/b5342936c58539b021c672b7dadb1f30b50899bf b/dbfb25597578d61cea5ddfd179c6defed7adb2d8
+index b5342936c5..dbfb255975 100644
+--- a/b5342936c58539b021c672b7dadb1f30b50899bf
++++ b/dbfb25597578d61cea5ddfd179c6defed7adb2d8
+@@ -1,9 +1,3 @@
+ public void testRemoveAllParams() throws Exception {
+-    doTest(new GenParams() {
+-
+-        @Override
+-        public TypeParameterInfo[] gen(PsiClass aClass) {
+-            return new TypeParameterInfo[0];
+-        }
+-    });
++    doTest(aClass -> new TypeParameterInfo[0]);
+ }
+\ No newline at end of file

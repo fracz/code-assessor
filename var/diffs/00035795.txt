@@ -1,0 +1,13 @@
+diff --git a/3622315e2ad5dd4a50325ec5ea111aa05d15b82d b/67fd959a15312f14ee1112a0719097b4c8ad3177
+index 3622315e2a..67fd959a15 100644
+--- a/3622315e2ad5dd4a50325ec5ea111aa05d15b82d
++++ b/67fd959a15312f14ee1112a0719097b4c8ad3177
+@@ -1,4 +1,6 @@
+ @Test
+ public void shouldNotCheckForWrongNumberOfModificationsWhenVerifyingInOrder() throws Exception {
+-    behavior.checkForWrongNumberOfInvocations(toLowerCaseInvocation, VerifyingMode.inOrder(1, Arrays.asList(new Object())));
++    VerifyingMode inOrder = VerifyingMode.inOrder(1, Arrays.asList(new Object()));
++    assertTrue(inOrder.orderOfInvocationsMatters());
++    behavior.checkForWrongNumberOfInvocations(toLowerCaseInvocation, inOrder);
+ }
+\ No newline at end of file

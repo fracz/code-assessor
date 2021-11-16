@@ -1,0 +1,11 @@
+diff --git a/a68a547457e091f9d1e1ad7c38d83b0f8a2cf29c b/c08390ad61db23da90d281e6146100a415abc009
+index a68a547457..c08390ad61 100644
+--- a/a68a547457e091f9d1e1ad7c38d83b0f8a2cf29c
++++ b/c08390ad61db23da90d281e6146100a415abc009
+@@ -1,4 +1,4 @@
+ @Before
+ public void setUp() throws Exception {
+-    replicationClient = new JerseyReplicationClient(config, "http://localhost:" + serverMockRule.getHttpPort() + "/eureka/v2");
++    replicationClient = JerseyReplicationClient.createReplicationClient(config, "http://localhost:" + serverMockRule.getHttpPort() + "/eureka/v2");
+ }
+\ No newline at end of file

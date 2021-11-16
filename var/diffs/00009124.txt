@@ -1,0 +1,15 @@
+diff --git a/5918e7e43797c56246a5d123d28a94c5103f3735 b/4027014c134149deb84462b9e70a2db89b3d0343
+index 5918e7e437..4027014c13 100644
+--- a/5918e7e43797c56246a5d123d28a94c5103f3735
++++ b/4027014c134149deb84462b9e70a2db89b3d0343
+@@ -1,8 +1,7 @@
+ @Override
+ public DfaInstructionState[] visitCheckReturnValue(CheckReturnValueInstruction instruction, DataFlowRunner runner, DfaMemoryState memState) {
+-    PsiElement aReturn = instruction.getReturn();
+-    if (aReturn instanceof PsiExpression && returnedExpressions.contains(aReturn)) {
++    if (returnedExpressions.contains(instruction.getReturn())) {
+         myResult &= nullsExpected ? memState.isNull(memState.peek()) : memState.isNotNull(memState.peek());
+     }
+     return super.visitCheckReturnValue(instruction, runner, memState);
+ }
+\ No newline at end of file

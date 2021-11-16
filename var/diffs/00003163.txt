@@ -1,0 +1,11 @@
+diff --git a/cf4c2dfea7c9ffc0cd243fdabcdfc4fe582a0805 b/a1265e56aab195c5df68b49fd50023d6fad3c4ca
+index cf4c2dfea7..a1265e56aa 100644
+--- a/cf4c2dfea7c9ffc0cd243fdabcdfc4fe582a0805
++++ b/a1265e56aab195c5df68b49fd50023d6fad3c4ca
+@@ -1,4 +1,4 @@
+ public boolean isSelected(AnActionEvent e) {
+-    ImageComponentDecorator decorator = (ImageComponentDecorator) e.getDataContext().getData(ImageComponentDecorator.class.getName());
++    ImageComponentDecorator decorator = ImageComponentDecorator.DATA_KEY.getData(e.getDataContext());
+     return decorator != null && decorator.isEnabledForActionPlace(e.getPlace()) && decorator.isTransparencyChessboardVisible();
+ }
+\ No newline at end of file

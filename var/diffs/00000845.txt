@@ -1,0 +1,18 @@
+diff --git a/ba08138839365887e00018316e593bbc24e972ef b/c8c99fbcca74481f7bcfa60ab9e5676ebf72228c
+index ba08138839..c8c99fbcca 100644
+--- a/ba08138839365887e00018316e593bbc24e972ef
++++ b/c8c99fbcca74481f7bcfa60ab9e5676ebf72228c
+@@ -1,11 +1,11 @@
+ @Override
+ public void start() {
++    super.start();
+     NativeBitmapFactory.loadLibs();
+     if (mCacheManager == null) {
+         mCacheManager = new CacheManager(mMaxCacheSize, MAX_CACHE_SCREEN_SIZE);
+         mCacheManager.begin();
+     } else {
+         mCacheManager.resume();
+     }
+-    DanmakuGlobalConfig.DEFAULT.registerConfigChangedCallback(this);
+ }
+\ No newline at end of file

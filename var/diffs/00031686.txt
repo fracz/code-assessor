@@ -1,0 +1,22 @@
+diff --git a/9b2034b4bf9f88adc2c06eb7bd6358336700fcae b/f65e61864d5d7fcfa5871b9671a9eb1da0cc315f
+index 9b2034b4bf..f65e61864d 100644
+--- a/9b2034b4bf9f88adc2c06eb7bd6358336700fcae
++++ b/f65e61864d5d7fcfa5871b9671a9eb1da0cc315f
+@@ -1,12 +1,13 @@
+ protected void onSetStyle(DebugComponent element, String ruleName, String name, String value) {
++    element.setOverrider(mOverrider);
+     if ("layout".equals(ruleName)) {
+-        element.setStyleOverride(name, cast(name, value));
++        setStyleOverride(element, name, cast(name, value));
+         logStyleUpdate(element.getContext());
+     } else if ("props".equals(ruleName)) {
+-        element.setPropOverride(name, cast(name, value));
++        setPropOverride(element, name, cast(name, value));
+         logStyleUpdate(element.getContext());
+     } else if ("state".equals(ruleName)) {
+-        element.setStateOverride(name, cast(name, value));
++        setStateOverride(element, name, cast(name, value));
+         logStyleUpdate(element.getContext());
+     }
+ }
+\ No newline at end of file

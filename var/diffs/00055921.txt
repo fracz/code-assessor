@@ -1,0 +1,14 @@
+diff --git a/437e3aee3c719c4c39497b721b9762d9305a437b b/6f772e75ac4286b8b7ae76b002b7dc2d1bedc98d
+index 437e3aee3c..6f772e75ac 100644
+--- a/437e3aee3c719c4c39497b721b9762d9305a437b
++++ b/6f772e75ac4286b8b7ae76b002b7dc2d1bedc98d
+@@ -1,5 +1,5 @@
+ @Test
+-public void testNumberToNumber() {
+-    NumberToNumber n = new NumberToNumber();
+-    assertEquals(Long.valueOf(1), n.convert(Integer.valueOf(1), Long.class));
++public void testNumberToNumber() throws Exception {
++    Converter<Number, Long> c = new NumberToNumberFactory().getConverter(Long.class);
++    assertEquals(Long.valueOf(1), c.convert(Integer.valueOf(1)));
+ }
+\ No newline at end of file

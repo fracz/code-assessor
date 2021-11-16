@@ -1,0 +1,22 @@
+diff --git a/937c7c6fa7bfb1b962d380106b249a4fd11e8e12 b/f801bca7f99a0c0a8028b26227e687a22d3db326
+index 937c7c6fa7..f801bca7f9 100644
+--- a/937c7c6fa7bfb1b962d380106b249a4fd11e8e12
++++ b/f801bca7f99a0c0a8028b26227e687a22d3db326
+@@ -1,8 +1,10 @@
+-/**
+- * Terminates the state and returns the last array of subscribers.
+- * @return the last array of subscribers
+- */
+ @SuppressWarnings("unchecked")
+-public AsyncSubscription<T>[] terminate() {
+-    return TerminalAtomicsHelper.terminate(subscribers, TERMINATED);
++Observer<? super T>[] terminate(Object notification) {
++    if (compareAndSet(get(), notification)) {
++        Observer<? super T>[] a = subscribers.get();
++        if (a != TERMINATED) {
++            return subscribers.getAndSet(TERMINATED);
++        }
++    }
++    return TERMINATED;
+ }
+\ No newline at end of file

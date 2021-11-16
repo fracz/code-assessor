@@ -1,0 +1,29 @@
+diff --git a/de7537f6ea03decd528c840cfb84cd0b94839e50 b/cbad8677f16a1918a8ba838cb89940b319c4c694
+index de7537f6ea..cbad8677f1 100644
+--- a/de7537f6ea03decd528c840cfb84cd0b94839e50
++++ b/cbad8677f16a1918a8ba838cb89940b319c4c694
+@@ -1,21 +1,21 @@
+-public void addMapper(Class<?> type) {
++public <T> void addMapper(Class<T> type) {
+     if (type.isInterface()) {
+         if (hasMapper(type)) {
+             throw new BindingException("Type " + type + " is already known to the MapperRegistry.");
+         }
+         boolean loadCompleted = false;
+         try {
+-            knownMappers.put(type, new ConcurrentHashMap<Method, MapperMethod>());
++            knownMappers.put(type, new MapperProxyFactory<T>(type));
+             // It's important that the type is added before the parser is run
+             // otherwise the binding may automatically be attempted by the
+             // mapper parser. If the type is already known, it won't try.
+             MapperAnnotationBuilder parser = new MapperAnnotationBuilder(config, type);
+             parser.parse();
+             loadCompleted = true;
+         } finally {
+             if (!loadCompleted) {
+                 knownMappers.remove(type);
+             }
+         }
+     }
+ }
+\ No newline at end of file

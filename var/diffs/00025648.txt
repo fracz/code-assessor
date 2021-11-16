@@ -1,0 +1,29 @@
+diff --git a/588463b004a2fd3ce86bd7f86cd7605dd7ed3032 b/148d8e0288074e79d65d53073a55f87a740f6406
+index 588463b004..148d8e0288 100644
+--- a/588463b004a2fd3ce86bd7f86cd7605dd7ed3032
++++ b/148d8e0288074e79d65d53073a55f87a740f6406
+@@ -1,20 +1,22 @@
+ @Override
+ public boolean isReady(KafkaSpoutMessageId msgId) {
+     boolean retry = false;
+-    if (toRetryMsgs.contains(msgId)) {
++    if (isScheduled(msgId)) {
+         final long currentTimeNanos = Time.nanoTime();
+         for (RetrySchedule retrySchedule : retrySchedules) {
+             if (retrySchedule.retry(currentTimeNanos)) {
+                 if (retrySchedule.msgId.equals(msgId)) {
+                     retry = true;
+                     LOG.debug("Found entry to retry {}", retrySchedule);
++                    // Stop searching if the message is known to be ready for retry
++                    break;
+                 }
+             } else {
+                 LOG.debug("Entry to retry not found {}", retrySchedule);
+                 // Stop searching as soon as passed current time
+                 break;
+             }
+         }
+     }
+     return retry;
+ }
+\ No newline at end of file

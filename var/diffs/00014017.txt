@@ -1,0 +1,21 @@
+diff --git a/833c8fe3f88307af8e71c6ac1ea0b7213c322b84 b/448035dcc725d9edc84ba48dea1c02a51cadcd00
+index 833c8fe3f8..448035dcc7 100644
+--- a/833c8fe3f88307af8e71c6ac1ea0b7213c322b84
++++ b/448035dcc725d9edc84ba48dea1c02a51cadcd00
+@@ -1,11 +1,7 @@
+-public void dropProviderFromCache(@NotNull final VirtualFile key) {
++// ! the only point for refreshing json schema caches
++public void dropProviderFromCache(@NotNull final VirtualFile schemaFile) {
+     synchronized (myLock) {
+-        final Set<VirtualFile> dirtySet = myDefinitions.dropKey(key);
+-        final Iterator<VirtualFile> iterator = myWrappers.keySet().iterator();
+-        while (iterator.hasNext()) {
+-            final VirtualFile current = iterator.next();
+-            if (dirtySet.contains(current))
+-                iterator.remove();
+-        }
++        myDefinitions.dropKey(schemaFile);
++        myWrappers.remove(schemaFile);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,32 @@
+diff --git a/9daf0d15839a64b471880605426f9eb5c5e20249 b/c9c4b09a7e171a46659b5c96c6e7a0e79b0b896d
+index 9daf0d1583..c9c4b09a7e 100644
+--- a/9daf0d15839a64b471880605426f9eb5c5e20249
++++ b/c9c4b09a7e171a46659b5c96c6e7a0e79b0b896d
+@@ -1,24 +1,25 @@
+ // ------------------------------------------------------------------------
+ // Implementation of the SignatureVisitor interface
+ // ------------------------------------------------------------------------
+ @Override
+-public void visitFormalTypeParameter(final String name, TypeInfoVariance variance) {
++public JetSignatureVisitor visitFormalTypeParameter(final String name, TypeInfoVariance variance) {
+     if (!hasFormals) {
+         hasFormals = true;
+         buf.append('<');
+     }
+     switch(variance) {
+         case OUT:
+             buf.append("out ");
+             break;
+         case IN:
+             buf.append("in ");
+             break;
+         case INVARIANT:
+             break;
+         default:
+             throw new IllegalStateException();
+     }
+     buf.append(name);
+     buf.append(':');
++    return this;
+ }
+\ No newline at end of file

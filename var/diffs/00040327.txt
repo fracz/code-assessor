@@ -1,0 +1,25 @@
+diff --git a/31db0f4b29691ede6a9f0a9c1fde717d56728b3f b/25012b0373f35dc0b3626d9a0a53c56854e10324
+index 31db0f4b29..25012b0373 100644
+--- a/31db0f4b29691ede6a9f0a9c1fde717d56728b3f
++++ b/25012b0373f35dc0b3626d9a0a53c56854e10324
+@@ -1,12 +1,14 @@
+ @Override
+-void decode(ByteBuf encoded, SpdyHeadersFrame frame) throws Exception {
+-    int len = setInput(encoded);
++void decode(ByteBuf headerBlock, SpdyHeadersFrame frame) throws Exception {
++    int len = setInput(headerBlock);
+     int numBytes;
+     do {
+-        numBytes = decompress(encoded.alloc(), frame);
++        numBytes = decompress(headerBlock.alloc(), frame);
+     } while (numBytes > 0);
++    // it is always capable of consuming the entire input
+     if (decompressor.getRemaining() != 0) {
+-        throw new SpdyProtocolException("client sent extra data beyond headers");
++        // we reached the end of the deflate stream
++        throw INVALID_HEADER_BLOCK;
+     }
+-    encoded.skipBytes(len);
++    headerBlock.skipBytes(len);
+ }
+\ No newline at end of file

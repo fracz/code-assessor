@@ -1,0 +1,21 @@
+diff --git a/9aac0c558502365fbe314944239bf75df76e8fc3 b/7aa2cf290e4f024ea694dba8dc3711cd6a16c36f
+index 9aac0c5585..7aa2cf290e 100644
+--- a/9aac0c558502365fbe314944239bf75df76e8fc3
++++ b/7aa2cf290e4f024ea694dba8dc3711cd6a16c36f
+@@ -1,9 +1,9 @@
+ @Test
+ public void shouldMarkInvocationsAsVerified() {
+-    VerifyingRecorder<Object> recorder = new VerifyingRecorder<Object>(new InvocationsMarkerExtension(), Collections.<Verifier>emptyList());
+-    Invocation recorded = new InvocationBuilder().method("simpleMethod").toInvocation();
+-    recorder.recordInvocation(recorded);
+-    InvocationMatcher wanted = new InvocationBuilder().method("differentMethod").toInvocationMatcher();
+-    recorder.verify(wanted, OngoingVerifyingMode.atLeastOnce());
+-    assertThat(invocationsMarkedAsVerified, collectionHasExactlyInOrder(recorded));
++    recorder.recordInvocation(simpleMethod);
++    OngoingVerifyingMode mode = OngoingVerifyingMode.atLeastOnce();
++    recorder.verify(differentMethod, mode);
++    assertThat(marker.invocations, collectionHasExactlyInOrder(simpleMethod));
++    assertEquals(marker.mode, mode);
++    assertEquals(marker.wanted, differentMethod);
+ }
+\ No newline at end of file

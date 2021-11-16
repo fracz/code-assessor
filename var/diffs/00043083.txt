@@ -1,0 +1,25 @@
+diff --git a/1ea850f2f8fcfcb927a95a0c64be714b93b3609c b/310726b9ad54c9b784ffa7bb39395dc91084439c
+index 1ea850f2f8..310726b9ad 100644
+--- a/1ea850f2f8fcfcb927a95a0c64be714b93b3609c
++++ b/310726b9ad54c9b784ffa7bb39395dc91084439c
+@@ -1,13 +1,13 @@
+-protected void loadConfiguration() {
++protected void loadConfiguration(final OServerConfiguration iConfiguration) {
+     try {
+-        String config = OServerConfiguration.DEFAULT_CONFIG_FILE;
+-        if (System.getProperty(OServerConfiguration.PROPERTY_CONFIG_FILE) != null)
+-            config = System.getProperty(OServerConfiguration.PROPERTY_CONFIG_FILE);
+-        configurationLoader = new OServerConfigurationLoaderXml(OServerConfiguration.class, config);
+-        configuration = configurationLoader.load();
++        configuration = iConfiguration;
++        // FILL THE CONTEXT CONFIGURATION WITH SERVER'S PARAMETERS
++        contextConfiguration = new OContextConfiguration();
++        if (iConfiguration.properties != null)
++            for (OServerEntryConfiguration prop : iConfiguration.properties) contextConfiguration.setValue(prop.name, prop.value);
+         loadStorages();
+         loadUsers();
+     } catch (IOException e) {
+         OLogManager.instance().error(this, "Error on reading server configuration.", OConfigurationException.class);
+     }
+ }
+\ No newline at end of file

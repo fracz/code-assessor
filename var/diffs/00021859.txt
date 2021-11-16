@@ -1,0 +1,25 @@
+diff --git a/d943810499b73d9ee482a0676943db21912df91a b/c91b379238e4f02bc743d117967e80e5214c53d4
+index d943810499..c91b379238 100644
+--- a/d943810499b73d9ee482a0676943db21912df91a
++++ b/c91b379238e4f02bc743d117967e80e5214c53d4
+@@ -1,14 +1,16 @@
+ /**
+  * Start WPS pin method configuration with pin obtained
+  * from the device
++ * @return empty string on failure. null is never returned.
+  */
+-static int startWpsWithPinFromDevice(String bssid) {
+-    int pin = WifiNative.startWpsWithPinFromDeviceCommand(bssid);
++static String startWpsWithPinFromDevice(WpsConfiguration config) {
++    String pin = WifiNative.startWpsWithPinFromDeviceCommand(config.BSSID);
+     /* WPS leaves all networks disabled */
+-    if (pin != -1) {
++    if (!TextUtils.isEmpty(pin)) {
+         markAllNetworksDisabled();
+     } else {
+         Log.e(TAG, "Failed to start WPS pin method configuration");
++        pin = "";
+     }
+     return pin;
+ }
+\ No newline at end of file

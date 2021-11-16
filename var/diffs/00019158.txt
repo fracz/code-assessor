@@ -1,0 +1,14 @@
+diff --git a/6e7a27a0411f6f8f93df383bcd656841e707e78b b/5cdaa87538b455d6ea714e00728701031b46a316
+index 6e7a27a041..5cdaa87538 100644
+--- a/6e7a27a0411f6f8f93df383bcd656841e707e78b
++++ b/5cdaa87538b455d6ea714e00728701031b46a316
+@@ -1,7 +1,3 @@
+ public int getProfileContactIconColor() {
+-    if (profileContactIconColor != 0) {
+-        return profileContactIconColor;
+-    } else {
+-        return getListActionColor();
+-    }
++    return getColorWithFallback(profileContactIconColor, getListActionColor());
+ }
+\ No newline at end of file

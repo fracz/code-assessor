@@ -1,0 +1,12 @@
+diff --git a/7deb5e6d98d9296a50262c7727998ab302a90090 b/32d7e905ae0c1f09444b93cc75a5f462d37f8c87
+index 7deb5e6d98..32d7e905ae 100644
+--- a/7deb5e6d98d9296a50262c7727998ab302a90090
++++ b/32d7e905ae0c1f09444b93cc75a5f462d37f8c87
+@@ -1,5 +1,4 @@
+ public void open() {
+-    GraphDatabaseConfiguration config = new GraphDatabaseConfiguration(homeDir);
+-    graphdb = config.openDatabase();
++    graphdb = GraphDatabaseFactory.open(homeDir);
+     tx = graphdb.startTransaction();
+ }
+\ No newline at end of file

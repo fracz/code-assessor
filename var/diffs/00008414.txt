@@ -1,0 +1,12 @@
+diff --git a/c42c71a946fa6d89dd425ac5abd41579d2f3264f b/620a70abeb889248b06aad45eacb80cf2a1b10d9
+index c42c71a946..620a70abeb 100644
+--- a/c42c71a946fa6d89dd425ac5abd41579d2f3264f
++++ b/620a70abeb889248b06aad45eacb80cf2a1b10d9
+@@ -1,5 +1,5 @@
+ @Override
+ public void visitApplicationStatement(GrApplicationStatement applicationStatement) {
+     super.visitApplicationStatement(applicationStatement);
+-    checkMethodCall(applicationStatement, applicationStatement.getInvokedExpression());
++    checkMethodCall(new GrMethodCallInfo(applicationStatement));
+ }
+\ No newline at end of file

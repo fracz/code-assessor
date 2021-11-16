@@ -1,0 +1,20 @@
+diff --git a/e32fefa6bd5cecfdc610ecc6b612c3690af21cc4 b/fc23329b8ab73e03cc750b4243f045323c186421
+index e32fefa6bd..fc23329b8a 100644
+--- a/e32fefa6bd5cecfdc610ecc6b612c3690af21cc4
++++ b/fc23329b8ab73e03cc750b4243f045323c186421
+@@ -1,10 +1,10 @@
+ @Override
+ public Publisher<Long> getAndAdd(final long delta) {
+-    return commandExecutor.writeReactive(getName(), StringCodec.INSTANCE, new RedisStrictCommand<Long>("INCRBY", new SingleConvertor<Long>() {
++    return reactive(new Supplier<RFuture<Long>>() {
+
+         @Override
+-        public Long convert(Object obj) {
+-            return ((Long) obj) - delta;
++        public RFuture<Long> get() {
++            return instance.getAndAddAsync(delta);
+         }
+-    }), getName(), delta);
++    });
+ }
+\ No newline at end of file

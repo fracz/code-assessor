@@ -1,0 +1,15 @@
+diff --git a/900e0e6e0bf300ff0348603e061d5bb96871f15e b/7ca66aa32d0a0c095f96d3dcf35da96600ad3d19
+index 900e0e6e0b..7ca66aa32d 100644
+--- a/900e0e6e0bf300ff0348603e061d5bb96871f15e
++++ b/7ca66aa32d0a0c095f96d3dcf35da96600ad3d19
+@@ -1,3 +1,7 @@
+-public void setDatabase(final ODatabaseRecord iDatabase) {
+-    this._database = iDatabase;
++public boolean setDatabase(final ODatabaseRecord iDatabase) {
++    if (_database != iDatabase) {
++        this._database = iDatabase;
++        return true;
++    }
++    return false;
+ }
+\ No newline at end of file

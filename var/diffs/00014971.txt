@@ -1,0 +1,14 @@
+diff --git a/2849017bb373f5bb4e9c62a9cc8afe0e62a28092 b/c71ecc53ae83661e9928723b0d9805babf5eec42
+index 2849017bb3..c71ecc53ae 100644
+--- a/2849017bb373f5bb4e9c62a9cc8afe0e62a28092
++++ b/c71ecc53ae83661e9928723b0d9805babf5eec42
+@@ -1,6 +1,5 @@
+ public void testUrlCompletionInDtd() throws Exception {
+     configureByFile("20.xml");
+-    final PsiReference referenceAt = myFixture.getFile().findReferenceAt(myFixture.getEditor().getCaretModel().getOffset() - 1);
+-    assertNotNull(referenceAt);
+-    assertTrue(referenceAt.getVariants().length > 0);
++    complete();
++    checkResultByFile("20_after.xml");
+ }
+\ No newline at end of file

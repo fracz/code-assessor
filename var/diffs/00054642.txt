@@ -1,0 +1,20 @@
+diff --git a/0787b7856a99c727b929bbd12908df60ce3e3f4b b/3bbbb02401aff74f2848d0712b91da52e6c1d266
+index 0787b7856a..3bbbb02401 100644
+--- a/0787b7856a99c727b929bbd12908df60ce3e3f4b
++++ b/3bbbb02401aff74f2848d0712b91da52e6c1d266
+@@ -1,11 +1,10 @@
+-private void processAmbiguousIdentifier(final int position) {
++private TokenType processAmbiguousIdentifier(final int position, final String literals) {
+     int i = 0;
+     while (CharTypes.isWhitespace(charAt(position + i))) {
+         i++;
+     }
+     if (DefaultKeyword.BY.name().equalsIgnoreCase(String.valueOf(new char[] { charAt(position + i), charAt(position + i + 1) }))) {
+-        tokenType = dictionary.getToken(literals);
+-    } else {
+-        tokenType = Literals.IDENTIFIER;
++        return dictionary.getToken(literals);
+     }
++    return Literals.IDENTIFIER;
+ }
+\ No newline at end of file

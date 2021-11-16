@@ -1,0 +1,15 @@
+diff --git a/00b467fa48013ce22eef2f6755c33fbe1e0dba7a b/84c44659e93f4aff7e7f9e5db2002f938a24254a
+index 00b467fa48..84c44659e9 100644
+--- a/00b467fa48013ce22eef2f6755c33fbe1e0dba7a
++++ b/84c44659e93f4aff7e7f9e5db2002f938a24254a
+@@ -1,4 +1,8 @@
+ @Override
+ public void run() {
+-    loadLocalMessageForDisplay((LocalMessage) message);
++    // We check to see if we've previously processed the source message since this
++    // could be called when switching from HTML to text replies. If that happens, we
++    // only want to update the UI with quoted text (which picks the appropriate
++    // part).
++    loadLocalMessageForDisplay(message, mAction);
+ }
+\ No newline at end of file

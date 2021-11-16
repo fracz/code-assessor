@@ -1,0 +1,17 @@
+diff --git a/6f1eb40f8beec212d6158d30eaa6718ef7a0647e b/89467648f7acc2cb11770c9867256a48b3be61f4
+index 6f1eb40f8b..89467648f7 100644
+--- a/6f1eb40f8beec212d6158d30eaa6718ef7a0647e
++++ b/89467648f7acc2cb11770c9867256a48b3be61f4
+@@ -1,8 +1,5 @@
+-private static void unexpectedDiagnostics(List<Diagnostic> actual, DiagnosticDiffCallbacks callbacks) {
+-    for (Diagnostic diagnostic : actual) {
+-        List<TextRange> textRanges = diagnostic.getTextRanges();
+-        for (TextRange textRange : textRanges) {
+-            callbacks.unexpectedDiagnostic(TextDiagnostic.asTextDiagnostic(diagnostic), textRange.getStartOffset(), textRange.getEndOffset());
+-        }
++private static void unexpectedDiagnostics(DiagnosticDescriptor descriptor, DiagnosticDiffCallbacks callbacks) {
++    for (Diagnostic diagnostic : descriptor.diagnostics) {
++        callbacks.unexpectedDiagnostic(TextDiagnostic.asTextDiagnostic(diagnostic), descriptor.start, descriptor.end);
+     }
+ }
+\ No newline at end of file

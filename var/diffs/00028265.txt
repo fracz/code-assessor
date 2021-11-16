@@ -1,0 +1,20 @@
+diff --git a/f34df15646e325830e1125d3e06d033c2b65573a b/5124619bf2adb1b8cf5221eaf367759eefe6df50
+index f34df15646..5124619bf2 100644
+--- a/f34df15646e325830e1125d3e06d033c2b65573a
++++ b/5124619bf2adb1b8cf5221eaf367759eefe6df50
+@@ -1,13 +1,11 @@
+ /**
+  * Sets the active {@link RecordDecoderFactory} to be used for decoding
+  * resource records.
+  *
+  * @param factory
+  * the {@link RecordDecoderFactory} to use
+  */
+ public static void setFactory(RecordDecoderFactory factory) {
+-    if (factory == null) {
+-        throw new NullPointerException("Cannot set record decoder factory to null.");
+-    }
++    Objects.requireNonNull(factory, "Cannot set record decoder factory to null.");
+     RecordDecoderFactory.factory = factory;
+ }
+\ No newline at end of file

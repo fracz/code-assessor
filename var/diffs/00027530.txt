@@ -1,0 +1,19 @@
+diff --git a/b62cb647b05068c8d2b8bc0c3aca7fa676da47d1 b/235d3c3f063092c9517c94f23e1a4a31c3413ca3
+index b62cb647b0..235d3c3f06 100644
+--- a/b62cb647b05068c8d2b8bc0c3aca7fa676da47d1
++++ b/235d3c3f063092c9517c94f23e1a4a31c3413ca3
+@@ -1,10 +1,10 @@
+-private void assertUpdated(String namespace, String key, String expected) throws InterruptedException {
++private void assertUpdated(CacheScheduler.Entry entry, String key, String expected) throws InterruptedException {
+     waitForUpdates(1_000L, 2L);
+-    Map<String, String> map = extractionCacheManager.getCacheMap(namespace);
++    Map<String, String> map = entry.getCache();
+     // rely on test timeout to break out of this loop
+     while (!expected.equals(map.get(key))) {
+         Thread.sleep(100);
+-        map = extractionCacheManager.getCacheMap(namespace);
++        map = entry.getCache();
+     }
+     Assert.assertEquals("update check", expected, map.get(key));
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/6d453654775d46ed56c43037cdbfcbef174bfa1e b/83d6d3840ab8bf5069a22834ead9ac1f2e7fe9a9
+index 6d45365477..83d6d3840a 100644
+--- a/6d453654775d46ed56c43037cdbfcbef174bfa1e
++++ b/83d6d3840ab8bf5069a22834ead9ac1f2e7fe9a9
+@@ -1,14 +1,15 @@
+ public void setDisplayName(final String name) {
+     final ModifiableModuleModel modifiableModuleModel = myConfigurator.getModuleModel();
+     // nothing changed
+     if (Comparing.strEqual(name, myModuleName))
+         return;
+     try {
+         modifiableModuleModel.renameModule(myModule, name);
+     } catch (ModuleWithNameAlreadyExists moduleWithNameAlreadyExists) {
+         Messages.showErrorDialog(getModuleEditor().getPanel(), IdeBundle.message("error.module.already.exists", name), IdeBundle.message("title.rename.module"));
+         return;
+     }
++    myConfigurator.moduleRenamed(myModuleName, name);
+     myModuleName = name;
+-    myConfigurator.setModified(!Comparing.strEqual(myModule.getName(), myModuleName));
++    myConfigurator.setModified(true);
+ }
+\ No newline at end of file

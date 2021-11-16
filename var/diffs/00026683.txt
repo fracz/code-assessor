@@ -1,0 +1,19 @@
+diff --git a/baafa7859e53937f9197588a466ddfcb20957073 b/d76abc33b9f022cbe8a439c7128024c3f6d47267
+index baafa7859e..d76abc33b9 100644
+--- a/baafa7859e53937f9197588a466ddfcb20957073
++++ b/d76abc33b9f022cbe8a439c7128024c3f6d47267
+@@ -1,12 +1,11 @@
+ @Override
+-public INDArray preProcess(INDArray input, Layer layer) {
++public INDArray preProcess(INDArray input, int miniBatchSize) {
+     // Need to reshape FF activations (2d) activations to 3d (for input into RNN layer)
+     if (input.rank() != 2)
+         throw new IllegalArgumentException("Invalid input: expect NDArray with rank 2 (i.e., activations for FF layer)");
+     if (input.ordering() == 'f')
+         input = Shape.toOffsetZeroCopy(input, 'c');
+     int[] shape = input.shape();
+-    int miniBatchSize = layer.getInputMiniBatchSize();
+     INDArray reshaped = input.reshape(miniBatchSize, shape[0] / miniBatchSize, shape[1]);
+     return reshaped.permute(0, 2, 1);
+ }
+\ No newline at end of file

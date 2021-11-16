@@ -1,0 +1,13 @@
+diff --git a/2d5c3c04f499ed9ea1f8dd749d038dc5ddd418d0 b/f99b28d05f7812e9225f483135b0790863e5876c
+index 2d5c3c04f4..f99b28d05f 100644
+--- a/2d5c3c04f499ed9ea1f8dd749d038dc5ddd418d0
++++ b/f99b28d05f7812e9225f483135b0790863e5876c
+@@ -1,5 +1,6 @@
+-private PsiClass findClass(Project project, String qualifiedName) {
++private PsiClass findClass(String qualifiedName) {
++    Project project = getProject();
+     JavaPsiFacade javaFacade = JavaPsiFacade.getInstance(project);
+     GlobalSearchScope javaSearchScope = GlobalSearchScope.allScope(project);
+     return javaFacade.findClass(qualifiedName, javaSearchScope);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/e57e21caad17f048aa42c116595d7fcaf57ec41a b/ce750fafc35b1e57ca5fd24c7b85460cc5a5ab60
+index e57e21caad..ce750fafc3 100644
+--- a/e57e21caad17f048aa42c116595d7fcaf57ec41a
++++ b/ce750fafc35b1e57ca5fd24c7b85460cc5a5ab60
+@@ -1,6 +1,7 @@
+ /**
+  * Invalides the layout of this widget and every parent widget to the root of the hierarchy.
+  */
+ public void invalidateHierarchy() {
+-    Widget.invalidateHierarchy(getTable());
++    super.invalidate();
++    getTable().invalidateHierarchy();
+ }
+\ No newline at end of file

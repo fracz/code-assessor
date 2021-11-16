@@ -1,0 +1,13 @@
+diff --git a/334f00ec08d13dfcbdf91129c56433ff09d3a110 b/cc9ae2de412581a59cb8b4198d52701c6e98cc5a
+index 334f00ec08..cc9ae2de41 100644
+--- a/334f00ec08d13dfcbdf91129c56433ff09d3a110
++++ b/cc9ae2de412581a59cb8b4198d52701c6e98cc5a
+@@ -1,5 +1,5 @@
+ protected static File getCompilerLib() {
+-    File file = new File(getKotlinProjectHome(), "dist" + File.separator + "kotlinc" + File.separator + "lib");
+-    assertTrue("no kotlin compiler lib at " + file, file.isDirectory());
++    File file = PathUtil.getKotlinPathsForDistDirectory().getLibPath().getAbsoluteFile();
++    assertTrue("Lib directory doesn't exist. Run 'ant dist'", file.isDirectory());
+     return file;
+ }
+\ No newline at end of file

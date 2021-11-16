@@ -1,0 +1,27 @@
+diff --git a/719c46854f44003b9b42ce8bc594c12c23e02e0f b/e0e79a2db33eb013e15918f40b99cef1434156bb
+index 719c46854f..e0e79a2db3 100644
+--- a/719c46854f44003b9b42ce8bc594c12c23e02e0f
++++ b/e0e79a2db33eb013e15918f40b99cef1434156bb
+@@ -1,13 +1,10 @@
+ @Override
+-public void updateRetry(int id, String errMsg) {
+-    final FileDownloadModel downloadModel = find(id);
+-    if (downloadModel != null) {
+-        downloadModel.setStatus(FileDownloadStatus.retry);
+-        downloadModel.setErrMsg(errMsg);
+-        // db
+-        ContentValues cv = new ContentValues();
+-        cv.put(FileDownloadModel.ERR_MSG, errMsg);
+-        cv.put(FileDownloadModel.STATUS, FileDownloadStatus.retry);
+-        db.update(TABLE_NAME, cv, FileDownloadModel.ID + " = ? ", new String[] { String.valueOf(id) });
+-    }
++public void updateRetry(FileDownloadModel model, String errMsg) {
++    model.setStatus(FileDownloadStatus.retry);
++    model.setErrMsg(errMsg);
++    // db
++    ContentValues cv = new ContentValues();
++    cv.put(FileDownloadModel.ERR_MSG, errMsg);
++    cv.put(FileDownloadModel.STATUS, FileDownloadStatus.retry);
++    update(model.getId(), cv);
+ }
+\ No newline at end of file

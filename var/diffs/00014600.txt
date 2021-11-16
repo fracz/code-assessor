@@ -1,0 +1,20 @@
+diff --git a/509c7698473bc1829100526828849a8570dec495 b/5d18ed45918b38c8d0823ef8799512560b14fb7f
+index 509c769847..5d18ed4591 100644
+--- a/509c7698473bc1829100526828849a8570dec495
++++ b/5d18ed45918b38c8d0823ef8799512560b14fb7f
+@@ -1,12 +1,12 @@
+ private static boolean isSocketFactoryMethod(PsiMethodCallExpression expression) {
+     final PsiReferenceExpression methodExpression = expression.getMethodExpression();
+-    final String methodName = methodExpression.getReferenceName();
+-    if (!ACCEPT.equals(methodName)) {
++    @NonNls final String methodName = methodExpression.getReferenceName();
++    if (!"accept".equals(methodName)) {
+         return false;
+     }
+     final PsiExpression qualifier = methodExpression.getQualifierExpression();
+     if (qualifier == null) {
+         return false;
+     }
+     return TypeUtils.expressionHasTypeOrSubtype("java.net.ServerSocket", qualifier);
+ }
+\ No newline at end of file

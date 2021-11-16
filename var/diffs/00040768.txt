@@ -1,0 +1,26 @@
+diff --git a/3f50bb7d22126dc2ae97ec7e57e0209f65e781ee b/d7fa8e73884ab3d9710f2f00c6b569aea66e58b7
+index 3f50bb7d22..d7fa8e7388 100644
+--- a/3f50bb7d22126dc2ae97ec7e57e0209f65e781ee
++++ b/d7fa8e73884ab3d9710f2f00c6b569aea66e58b7
+@@ -1,15 +1,15 @@
+ @SuppressWarnings("rawtypes")
+ public void updated(Dictionary config) throws ConfigurationException {
+     if (config != null) {
+-        Prowl.apiKey = (String) config.get("apikey");
+         Prowl.url = (String) config.get("url");
++        Prowl.apiKey = (String) config.get("apikey");
++        if (StringUtils.isBlank(Prowl.apiKey)) {
++            throw new ConfigurationException("prowl.apikey", "The parameter 'apikey' must be configured. Please refer to your 'openhab.cfg'");
++        }
+         String priorityString = (String) config.get("defaultpriority");
+-        if (priorityString != null) {
++        if (StringUtils.isNotBlank(priorityString)) {
+             Prowl.priority = Integer.valueOf(priorityString);
+         }
+-        // check mandatory settings
+-        if (apiKey == null || apiKey.isEmpty())
+-            return;
+         initialized = true;
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/7405637fa08502be352be78941652fe22bee5e68 b/b97aea324399f9e2d020213c3017f629a800b17e
+index 7405637fa0..b97aea3243 100644
+--- a/7405637fa08502be352be78941652fe22bee5e68
++++ b/b97aea324399f9e2d020213c3017f629a800b17e
+@@ -1,10 +1,10 @@
+ public ByteBuffer execute(int protocolVersion, List<ByteBuffer> parameters) throws InvalidRequestException {
+-    CBuilder builder = cfm.getKeyValidatorAsCType().builder();
++    CBuilder builder = CBuilder.create(cfm.getKeyValidatorAsClusteringComparator());
+     for (int i = 0; i < parameters.size(); i++) {
+         ByteBuffer bb = parameters.get(i);
+         if (bb == null)
+             return null;
+         builder.add(bb);
+     }
+-    return partitioner.getTokenFactory().toByteArray(partitioner.getToken(builder.build().toByteBuffer()));
++    return partitioner.getTokenFactory().toByteArray(partitioner.getToken(CFMetaData.serializePartitionKey(builder.build())));
+ }
+\ No newline at end of file

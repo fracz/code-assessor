@@ -1,0 +1,19 @@
+diff --git a/b5c35ce16642f3b216630476983f03c53a98d8fe b/dfe306b146c1cbaed52f98b838e5d8f20a8a3196
+index b5c35ce166..dfe306b146 100644
+--- a/b5c35ce16642f3b216630476983f03c53a98d8fe
++++ b/dfe306b146c1cbaed52f98b838e5d8f20a8a3196
+@@ -1,11 +1,10 @@
+ @Before
+-public void setUp() {
++public void setUp() throws Exception {
+     mMaster = mock(AlluxioMaster.class);
+     mContext = mock(ServletContext.class);
+     mBlockMaster = PowerMockito.mock(BlockMaster.class);
+     when(mMaster.getBlockMaster()).thenReturn(mBlockMaster);
+     when(mContext.getAttribute(MasterUIWebServer.ALLUXIO_MASTER_SERVLET_RESOURCE_KEY)).thenReturn(mMaster);
+-    Configuration.set(PropertyKey.UNDERFS_ADDRESS, "test://test");
+-    UnderFileSystemRegistry.register(new UnderFileSystemFactoryMock());
++    registerFileSystemMock();
+     mHandler = new AlluxioMasterRestServiceHandler(mContext);
+ }
+\ No newline at end of file

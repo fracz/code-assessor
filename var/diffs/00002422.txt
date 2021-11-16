@@ -1,0 +1,10 @@
+diff --git a/591d8997a2165a3e9d3b3bed8d5d7a456d13be0b b/959f5a20b6499d74e6877bab07b4066d3ca4e541
+index 591d8997a2..959f5a20b6 100644
+--- a/591d8997a2165a3e9d3b3bed8d5d7a456d13be0b
++++ b/959f5a20b6499d74e6877bab07b4066d3ca4e541
+@@ -1,3 +1,3 @@
+ public void addFileCopyInstruction(@NotNull File file, @NotNull String outputFileName) {
+-    addCopyInstruction(childPathInJar(outputFileName), new FileBasedArtifactSourceRoot(file, SourceFileFilter.ALL));
++    addCopyInstruction(childPathInJar(outputFileName), myInstructionsBuilder.createFileBasedRoot(file, SourceFileFilter.ALL));
+ }
+\ No newline at end of file

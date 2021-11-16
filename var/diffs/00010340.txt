@@ -1,0 +1,16 @@
+diff --git a/1f70ff97cfc26b8474ca5a332dd52da98ca10f70 b/22f8e5b4e7db936b067dc39a4db2ed0ab01401db
+index 1f70ff97cf..22f8e5b4e7 100644
+--- a/1f70ff97cfc26b8474ca5a332dd52da98ca10f70
++++ b/22f8e5b4e7db936b067dc39a4db2ed0ab01401db
+@@ -1,4 +1,8 @@
+ private void fireListenersAboutDeletion(int index) {
+-    final CacheEntry cacheEntry = myCache[index];
+-    myEventDispatcher.getMulticaster().objectRemoved(cacheEntry.key, cacheEntry.value);
++    if (myListeners != null) {
++        final CacheEntry cacheEntry = myCache[index];
++        for (DeletedPairsListener myListener : myListeners) {
++            myListener.objectRemoved(cacheEntry.key, cacheEntry.value);
++        }
++    }
+ }
+\ No newline at end of file

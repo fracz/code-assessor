@@ -1,0 +1,16 @@
+diff --git a/913bc65d64e1899aaa992ee5950f8df0191b07e5 b/0b49c38544a423e11be6468000420525d201301d
+index 913bc65d64..0b49c38544 100644
+--- a/913bc65d64e1899aaa992ee5950f8df0191b07e5
++++ b/0b49c38544a423e11be6468000420525d201301d
+@@ -1,6 +1,7 @@
+ public void scan() {
+-    final int gaps = scanners[currentIndex].scan(this::onGap);
+-    onScanComplete(gaps);
+-// TODO: determine if the buffer is complete and we need to rotate currentIndex
++    scanCursor = 0;
++    scanners[currentIndex].scan(this::onGap);
++    onScanComplete();
++// TODO: determine if the buffer is complete and we need to rotate currentIndex for next scanner
+ // if (0 == gaps && ... )
+ }
+\ No newline at end of file

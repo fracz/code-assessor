@@ -1,0 +1,13 @@
+diff --git a/40c9acd39bf124e16e761bbe36c0bfe69d7bf8aa b/7e5736f28ad2d18ae198c72ec86022718d243ab8
+index 40c9acd39b..7e5736f28a 100644
+--- a/40c9acd39bf124e16e761bbe36c0bfe69d7bf8aa
++++ b/7e5736f28ad2d18ae198c72ec86022718d243ab8
+@@ -1,5 +1,5 @@
+ public void startFacebookConfirmationActivity(@NonNull final ErrorEnvelope.FacebookUser facebookUser, @NonNull final LoginReason loginReason) {
+     final Intent intent = new Intent(this, FacebookConfirmationActivity.class).putExtra(IntentKey.LOGIN_REASON, loginReason).putExtra(IntentKey.FACEBOOK_USER, facebookUser);
+-    startActivityForResult(intent, ActivityRequestCodes.LOGIN_TOUT_ACTIVITY_FACEBOOK_CONFIRMATION_ACTIVITY_FORWARD);
+-    overridePendingTransition(R.anim.slide_in_right, R.anim.fade_out_slide_out_left);
++    startActivityForResult(intent, ActivityRequestCodes.LOGIN_FLOW);
++    TransitionUtils.slideInFromRight(this);
+ }
+\ No newline at end of file

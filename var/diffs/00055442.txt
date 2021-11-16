@@ -1,0 +1,22 @@
+diff --git a/1c0e34d7edae2bd1a4e9ddfc57910aca517637d0 b/6e1fec40b529f88695347bf932e3958bff6333ee
+index 1c0e34d7ed..6e1fec40b5 100644
+--- a/1c0e34d7edae2bd1a4e9ddfc57910aca517637d0
++++ b/6e1fec40b529f88695347bf932e3958bff6333ee
+@@ -1,12 +1,11 @@
+ @Override
+ protected final Mono<Void> writeAndFlushWithInternal(Publisher<? extends Publisher<? extends DataBuffer>> body) {
+     if (this.writeCalled.compareAndSet(false, true)) {
+-        Processor<? super Publisher<? extends DataBuffer>, Void> bodyProcessor = createBodyFlushProcessor();
++        Processor<? super Publisher<? extends DataBuffer>, Void> processor = createBodyFlushProcessor();
+         return Mono.from(subscriber -> {
+-            body.subscribe(bodyProcessor);
+-            bodyProcessor.subscribe(subscriber);
++            body.subscribe(processor);
++            processor.subscribe(subscriber);
+         });
+-    } else {
+-        return Mono.error(new IllegalStateException("writeWith() or writeAndFlushWith() has already been called"));
+     }
++    return Mono.error(new IllegalStateException("writeWith() or writeAndFlushWith() has already been called"));
+ }
+\ No newline at end of file

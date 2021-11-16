@@ -1,0 +1,15 @@
+diff --git a/f0ecc5092a5a7a53b17901ab53c65c7b9b58e3f3 b/f24b02c21384ea9cda0d8539c3d2f83da08ff901
+index f0ecc5092a..f24b02c213 100644
+--- a/f0ecc5092a5a7a53b17901ab53c65c7b9b58e3f3
++++ b/f24b02c21384ea9cda0d8539c3d2f83da08ff901
+@@ -1,7 +1,7 @@
+ @Test
+ public void equalsPrependSlash() {
+-    RequestMappingInfo key1 = new RequestMappingInfo(singleton("/foo"), methods(GET));
+-    RequestMappingInfo key2 = new RequestMappingInfo(singleton("foo"), methods(GET));
++    RequestMappingInfo key1 = new RequestMappingInfo(new String[] { "/foo" }, GET);
++    RequestMappingInfo key2 = new RequestMappingInfo(new String[] { "foo" }, GET);
+     assertEquals(key1, key2);
+     assertEquals(key1.hashCode(), key2.hashCode());
+ }
+\ No newline at end of file

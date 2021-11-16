@@ -1,0 +1,26 @@
+diff --git a/661f1373b6e64007a5f920060f67f2297bf16413 b/f0a1b146d5d884cc1dcdd686cc52f8da361d1adf
+index 661f1373b6..f0a1b146d5 100644
+--- a/661f1373b6e64007a5f920060f67f2297bf16413
++++ b/f0a1b146d5d884cc1dcdd686cc52f8da361d1adf
+@@ -1,19 +1,14 @@
+ public void test_simple() throws Exception {
+     String sql = //
+     "SELECT Row, Name " + //
+     "FROM(" + //
+     "SELECT ROW_NUMBER() OVER (ORDER BY ProductID) AS Row, Name " + //
+     "FROM Product " + //
+     ") AS ProductsWithRowNumbers " + "WHERE Row >= 6 AND Row <= 10";
+-    String expect = //
+-    "SELECT Row, Name" + //
+-    "\nFROM (SELECT ROW_NUMBER() OVER (ORDER BY ProductID) AS Row, Name" + //
+-    "\n\tFROM Product" + //
+-    "\n\t) ProductsWithRowNumbers" + //
+-    "\nWHERE Row >= 6" + "\n\tAND Row <= 10";
++    String expect = "SELECT Row, Name\n" + "FROM (\n" + "\tSELECT ROW_NUMBER() OVER (ORDER BY ProductID) AS Row, Name\n" + "\tFROM Product\n" + ") ProductsWithRowNumbers\n" + "WHERE Row >= 6\n" + "\tAND Row <= 10";
+     SQLServerStatementParser parser = new SQLServerStatementParser(sql);
+     SQLStatement stmt = parser.parseStatementList().get(0);
+     String text = TestUtils.outputSqlServer(stmt);
+     Assert.assertEquals(expect, text);
+ // System.out.println(text);
+ }
+\ No newline at end of file

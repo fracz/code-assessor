@@ -1,0 +1,14 @@
+diff --git a/f39e6d02f7c59064216c2452a92d3b35e212f663 b/b3a0bfcd747ffd16db6ed1ec0eeec77d1583b4ec
+index f39e6d02f7..b3a0bfcd74 100644
+--- a/f39e6d02f7c59064216c2452a92d3b35e212f663
++++ b/b3a0bfcd747ffd16db6ed1ec0eeec77d1583b4ec
+@@ -1,7 +1,7 @@
+ @Override
+ protected void onDetachedFromWindow() {
+     setListening(false);
+-    mHost.getUserInfoController().remListener(mUserListener);
++    mHost.getUserInfoController().remListener(this);
+     mHost.getNetworkController().removeEmergencyListener(this);
+     super.onDetachedFromWindow();
+ }
+\ No newline at end of file

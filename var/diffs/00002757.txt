@@ -1,0 +1,12 @@
+diff --git a/0da413c5965d260e32020c4b0c9f1c97423c60cf b/7c7952743fc944a46e74bb4e44a2f29978491431
+index 0da413c596..7c7952743f 100644
+--- a/0da413c5965d260e32020c4b0c9f1c97423c60cf
++++ b/7c7952743fc944a46e74bb4e44a2f29978491431
+@@ -1,5 +1,5 @@
+ @Override
+ public PsiType getSelectedType() {
+-    PsiType type = context.var == null ? context.expression.getType() : context.var.getDeclaredType();
++    PsiType type = context.getVar() == null ? context.getExpression().getType() : context.getVar().getDeclaredType();
+     return TypesUtil.unboxPrimitiveTypeWrapper(type);
+ }
+\ No newline at end of file

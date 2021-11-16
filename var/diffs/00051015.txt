@@ -1,0 +1,28 @@
+diff --git a/10f6872d253099a0c9b4f049b2d8d0599de7d816 b/7e2728d2933cad4718e3392462aab81c0ab6fb00
+index 10f6872d25..7e2728d293 100644
+--- a/10f6872d253099a0c9b4f049b2d8d0599de7d816
++++ b/7e2728d2933cad4718e3392462aab81c0ab6fb00
+@@ -1,16 +1,18 @@
+ @Override
+ public void modifyText(ModifyEvent e) {
+     if (handleEditorChange) {
+         if (loaderJob.getState() == Job.RUNNING) {
+             // Cancel it and create new one
+             loaderJob.cancel();
+             loaderJob = new SelectorLoaderJob();
+         }
+-        if (loaderJob.getState() == Job.WAITING) {
+-            loaderJob.setPattern(getEditorValue());
+-        } else {
+-            loaderJob.setPattern(getEditorValue());
++        try {
++            loaderJob.setPattern(extractEditorValue());
++        } catch (DBException e1) {
++            log.error(e1);
++        }
++        if (loaderJob.getState() != Job.WAITING) {
+             loaderJob.schedule(500);
+         }
+     }
+ }
+\ No newline at end of file

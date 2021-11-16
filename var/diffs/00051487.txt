@@ -1,0 +1,18 @@
+diff --git a/816eb22f5735c12e41d94ba06f656fa349258c68 b/d46c2c403644853fb144fba64ea3130b856db076
+index 816eb22f57..d46c2c4036 100644
+--- a/816eb22f5735c12e41d94ba06f656fa349258c68
++++ b/d46c2c403644853fb144fba64ea3130b856db076
+@@ -1,10 +1,10 @@
+ @Override
+-public boolean refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
++public DBSObject refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
+     super.refreshObject(monitor);
+     this.selectedEntityName = null;
+     this.tableTypeCache.clearCache();
+     this.catalogs = null;
+     this.schemas = null;
+     this.initialize(monitor);
+-    return true;
++    return this;
+ }
+\ No newline at end of file

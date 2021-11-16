@@ -1,0 +1,15 @@
+diff --git a/0d90a4b1973459687b1b010f3e3ae62df1fc82aa b/4ac8fff149694ccc9d28d5e9e54346f08a43d999
+index 0d90a4b197..4ac8fff149 100644
+--- a/0d90a4b1973459687b1b010f3e3ae62df1fc82aa
++++ b/4ac8fff149694ccc9d28d5e9e54346f08a43d999
+@@ -1,8 +1,8 @@
+ @NotNull
+ private JsExpression translateObjectLiteralExpression() {
+     ClassDescriptor containingClass = getContainingClass(descriptor);
+     if (containingClass == null) {
+         return translate(context());
+     }
+-    return context().literalFunctionTranslator().translate(containingClass, context(), classDeclaration, descriptor, this);
++    return new LiteralFunctionTranslator(context()).translate(containingClass, context(), classDeclaration, descriptor, this);
+ }
+\ No newline at end of file

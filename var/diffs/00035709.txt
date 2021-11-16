@@ -1,0 +1,13 @@
+diff --git a/e3f573d61ca5198e99ce1897fd529e699fc0efb3 b/977c85217642e5691e485b382a84a845ae2aae91
+index e3f573d61c..977c852176 100644
+--- a/e3f573d61ca5198e99ce1897fd529e699fc0efb3
++++ b/977c85217642e5691e485b382a84a845ae2aae91
+@@ -1,4 +1,4 @@
+-public void tooLittleActualInvocations(int wantedCount, int actualCount, PrintableInvocation wanted, HasStackTrace lastActualInvocationStackTrace) {
+-    String ending = (lastActualInvocationStackTrace != null) ? "-> at " + lastActualInvocationStackTrace.getStackTrace()[0] + "\n" : "\n";
+-    throw new TooLittleActualInvocations(join(wanted.toString(), "Wanted " + pluralize(wantedCount) + ":", "-> at " + new Location(), "But was " + pluralize(actualCount) + ":", ending));
++public void tooLittleActualInvocations(int wantedCount, int actualCount, PrintableInvocation wanted, HasStackTrace lastActualStackTrace) {
++    String message = createTooLittleInvocationsMessage(wantedCount, actualCount, wanted, lastActualStackTrace);
++    throw new TooLittleActualInvocations(message);
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/45e8d71ed325085eaa24fbc84ba86804d6d81185 b/c45e9640a757b62e4d9426e261fdf1f6a24d260e
+index 45e8d71ed3..c45e9640a7 100644
+--- a/45e8d71ed325085eaa24fbc84ba86804d6d81185
++++ b/c45e9640a757b62e4d9426e261fdf1f6a24d260e
+@@ -1,9 +1,9 @@
+-private List<Entry> convert(List<KeyValueEntry> entries) {
+-    if (entries == null)
+-        return null;
+-    List<Entry> newentries = new ArrayList<Entry>(entries.size());
+-    for (KeyValueEntry entry : entries) {
+-        newentries.add(new StaticBufferEntry(getColumn(entry.getKey()), entry.getValue()));
++private List<Entry> convert(RecordIterator<KeyValueEntry> entries) throws StorageException {
++    List<Entry> newentries = new ArrayList<Entry>(entries.hasNext() ? 20 : 0);
++    while (entries.hasNext()) {
++        KeyValueEntry entry = entries.next();
++        newentries.add(getEntry(entry));
+     }
++    entries.close();
+     return newentries;
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/6b509f4cc62744a49d8bf1f3f48b1e12e92aba15 b/e36908a65716b1086f86a2529821c6555df4432f
+index 6b509f4cc6..e36908a657 100644
+--- a/6b509f4cc62744a49d8bf1f3f48b1e12e92aba15
++++ b/e36908a65716b1086f86a2529821c6555df4432f
+@@ -1,9 +1,10 @@
+ /**
+  * Returns a {@link JPanel} that is used to position all WebSocket messages.
++ *
+  * @return
+  */
+-public JPanel createMessagesContainer() {
++public JPanel createMessagesContainer(LayoutManager2 layout) {
+     JPanel messagesPane = new JPanel();
+-    messagesPane.setLayout(new SpringLayout());
++    messagesPane.setLayout(layout);
+     return messagesPane;
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/e09dc2bba4d6936c025a17fec837add863c3300a b/cc4a8be1e760e69f7c2a753e86bfca4d71add891
+index e09dc2bba4..cc4a8be1e7 100644
+--- a/e09dc2bba4d6936c025a17fec837add863c3300a
++++ b/cc4a8be1e760e69f7c2a753e86bfca4d71add891
+@@ -1,3 +1,4 @@
+ public int getRowByHash(Hash commitHash) {
+-    return getNodeByHash(commitHash).getRowIndex();
++    Node node = getNodeByHash(commitHash);
++    return node == null ? -1 : node.getRowIndex();
+ }
+\ No newline at end of file

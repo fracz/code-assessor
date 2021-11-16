@@ -1,0 +1,17 @@
+diff --git a/bd19a7be10b3bf7c70c5b591a7f5d4d658028f02 b/93cf5029673cf3a8e9049a10849e337bf152aa22
+index bd19a7be10..93cf502967 100644
+--- a/bd19a7be10b3bf7c70c5b591a7f5d4d658028f02
++++ b/93cf5029673cf3a8e9049a10849e337bf152aa22
+@@ -1,10 +1,8 @@
+ protected Collection<File> getFilesToRemove(CvsContext context) {
+     File[] files = context.getSelectedIOFiles();
+     ArrayList<File> result = new ArrayList<File>();
+     if (files == null)
+         return result;
+-    for (int i = 0; i < files.length; i++) {
+-        result.add(files[i]);
+-    }
++    result.addAll(Arrays.asList(files));
+     return result;
+ }
+\ No newline at end of file

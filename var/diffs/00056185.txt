@@ -1,0 +1,21 @@
+diff --git a/d1d0028b1e29413a104e92975fac145123d58cc0 b/5a3487d320a9a9af6716e07ed330fc259b2ca2e7
+index d1d0028b1e..5a3487d320 100644
+--- a/d1d0028b1e29413a104e92975fac145123d58cc0
++++ b/5a3487d320a9a9af6716e07ed330fc259b2ca2e7
+@@ -1,11 +1,6 @@
+-public void testSimpleAfterThrowing() {
++@Test(expected = Throwable.class)
++public void testSimpleAfterThrowing() throws Throwable {
+     mockCollaborator.noArgs();
+-    mockControl.replay();
+-    try {
+-        this.testBean.exceptional(new Throwable());
+-        fail("should throw exception");
+-    } catch (Throwable t) {
+-    // no-op
+-    }
+-    mockControl.verify();
++    replay(mockCollaborator);
++    this.testBean.exceptional(new Throwable());
+ }
+\ No newline at end of file

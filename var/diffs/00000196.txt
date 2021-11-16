@@ -1,0 +1,19 @@
+diff --git a/9106dff3b86400e8c64aab5b84711725023cebc1 b/c729f0127593c9b245afa722baea1c0a317da6fb
+index 9106dff3b8..c729f01275 100644
+--- a/9106dff3b86400e8c64aab5b84711725023cebc1
++++ b/c729f0127593c9b245afa722baea1c0a317da6fb
+@@ -1,12 +1,9 @@
+ /**
+  * A trailing {@link SwiftUnderFileSystem#PATH_SEPARATOR} is added if not present.
+  *
+  * @param path URI to the object
+  * @return folder path
+  */
+ private String addFolderSuffixIfNotPresent(String path) {
+-    if (!path.endsWith(PATH_SEPARATOR)) {
+-        path = path + PATH_SEPARATOR;
+-    }
+-    return path;
++    return PathUtils.normalizePath(path, PATH_SEPARATOR);
+ }
+\ No newline at end of file

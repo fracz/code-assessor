@@ -1,0 +1,22 @@
+diff --git a/02578733afc16e3b2a81d7cca269ab87b3eb8667 b/22f299e1277d95ab1580573a0eaacefa673c82e8
+index 02578733af..22f299e127 100644
+--- a/02578733afc16e3b2a81d7cca269ab87b3eb8667
++++ b/22f299e1277d95ab1580573a0eaacefa673c82e8
+@@ -1,10 +1,11 @@
+ @Override
+ public void writeToParcel(Parcel dest, int flags) {
+-    int count = mColors.size();
++    List<Color> mainColors = getMainColors();
++    int count = mainColors.size();
+     dest.writeInt(count);
+-    for (Pair<Color, Integer> color : mColors) {
+-        dest.writeInt(color.first.toArgb());
+-        dest.writeInt(color.second);
++    for (int i = 0; i < count; i++) {
++        Color color = mainColors.get(i);
++        dest.writeInt(color.toArgb());
+     }
+-    dest.writeBoolean(mSupportsDarkText);
++    dest.writeInt(mColorHints);
+ }
+\ No newline at end of file

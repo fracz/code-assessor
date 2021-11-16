@@ -1,0 +1,23 @@
+diff --git a/0ea65884a99b15e268d74aa667abe4c2b73bca37 b/1f061a1d144434ec254cf7edbd9cb0c622e9dbe1
+index 0ea65884a9..1f061a1d14 100644
+--- a/0ea65884a99b15e268d74aa667abe4c2b73bca37
++++ b/1f061a1d144434ec254cf7edbd9cb0c622e9dbe1
+@@ -1,6 +1,15 @@
+ /**
+- * Returns the platform for the arch.
++ * Returns the platform for the architecture.
++ *
++ * @throws IllegalArgumentException if there is no valid apple platform for the given
++ * architecture.
+  */
+ public static Platform forArch(String arch) {
+-    return Containing.item(SIMULATOR_ARCHS, arch) ? SIMULATOR : DEVICE;
++    if (IOS_SIMULATOR_ARCHS.contains(arch)) {
++        return IOS_SIMULATOR;
++    } else if (IOS_DEVICE_ARCHS.contains(arch)) {
++        return IOS_DEVICE;
++    } else {
++        throw new IllegalArgumentException("No supported apple platform registered for architecture " + arch);
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/4e3654f0498b648d75229db7eb5c715d3fbcbc1e b/7b36abc359f0b860e0e4c367382fa934eff52dc9
+index 4e3654f049..7b36abc359 100644
+--- a/4e3654f0498b648d75229db7eb5c715d3fbcbc1e
++++ b/7b36abc359f0b860e0e4c367382fa934eff52dc9
+@@ -1,5 +1,5 @@
+ @Override
+ public String getColumnName(final int column) throws SQLException {
+-    checkIndex(column);
+-    return indexToColumnNameMap.get(column - 1);
++    Preconditions.checkArgument(column == 1);
++    return generatedKeyColumn;
+ }
+\ No newline at end of file

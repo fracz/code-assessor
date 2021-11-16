@@ -1,0 +1,23 @@
+diff --git a/4999b0076c532df0808b6715f582e59dac389f25 b/41ae6fbee247d885c2b3cad9f16ff15a89bb93a8
+index 4999b0076c..41ae6fbee2 100644
+--- a/4999b0076c532df0808b6715f582e59dac389f25
++++ b/41ae6fbee247d885c2b3cad9f16ff15a89bb93a8
+@@ -1,13 +1,13 @@
+-private MavenLocalVersion makeLocalVersion(DBRProgressMonitor monitor, String versionStr, boolean setActive) throws IllegalArgumentException {
+-    MavenLocalVersion version = getLocalVersion(versionStr);
++private MavenArtifactVersion makeLocalVersion(DBRProgressMonitor monitor, String versionStr, boolean setActive) throws IllegalArgumentException, IOException {
++    MavenArtifactVersion version = getVersion(versionStr);
+     if (version == null) {
+-        version = new MavenLocalVersion(this, versionStr, new Date());
+-        version.getMetaData(monitor);
++        version = new MavenArtifactVersion(monitor, this, versionStr);
+         localVersions.add(version);
+         repository.flushCache();
+     }
+     if (setActive) {
+         activeVersion = versionStr;
++        repository.flushCache();
+     }
+     return version;
+ }
+\ No newline at end of file

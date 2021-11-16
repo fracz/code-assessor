@@ -1,0 +1,25 @@
+diff --git a/0e2ffce8a1f800ef49a4e235e29907d69c5815e2 b/dbc961c0e65b42d6410ba9e049d6ca16e956b295
+index 0e2ffce8a1..dbc961c0e6 100644
+--- a/0e2ffce8a1f800ef49a4e235e29907d69c5815e2
++++ b/dbc961c0e65b42d6410ba9e049d6ca16e956b295
+@@ -1,18 +1,14 @@
+ @Test
+ public void open_withNoSecurityExternalAuth_connectsToServer() throws Exception {
+-    username = "user";
+-    password = "password";
+-    authenticationType = AuthType.EXTERNAL;
+-    connectionSecurity = ConnectionSecurity.NONE;
+     MockSmtpServer server = new MockSmtpServer();
+     server.output("220 localhost Simple Mail Transfer Service Ready");
+     server.expect("EHLO localhost");
+     server.output("250-localhost Hello client.localhost");
+     server.output("250 AUTH EXTERNAL");
+     server.expect("AUTH EXTERNAL dXNlcg==");
+     server.output("235 2.7.0 Authentication successful");
+-    SmtpTransport transport = startServerAndCreateSmtpTransport(server);
++    SmtpTransport transport = startServerAndCreateSmtpTransport(server, AuthType.EXTERNAL, ConnectionSecurity.NONE);
+     transport.open();
+     server.verifyConnectionStillOpen();
+     server.verifyInteractionCompleted();
+ }
+\ No newline at end of file

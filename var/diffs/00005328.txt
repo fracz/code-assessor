@@ -1,0 +1,17 @@
+diff --git a/1b6e2c274f04d693cb13c56b72b9056af4e122da b/f913c5e309d1f252a093390cad13065ca1c194a2
+index 1b6e2c274f..f913c5e309 100644
+--- a/1b6e2c274f04d693cb13c56b72b9056af4e122da
++++ b/f913c5e309d1f252a093390cad13065ca1c194a2
+@@ -1,8 +1,8 @@
+ @Override
+ public LibraryType<?> getType() {
+-    final LibraryType<?> type = ((LibraryEx) myLibrary).getType();
+-    if (type != null) {
+-        return type;
++    final LibraryKind kind = ((LibraryEx) myLibrary).getKind();
++    if (kind != null) {
++        return LibraryType.findByKind(kind);
+     }
+     return detectType();
+ }
+\ No newline at end of file

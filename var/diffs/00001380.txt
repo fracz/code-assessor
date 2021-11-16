@@ -1,0 +1,28 @@
+diff --git a/a2e42ca079e29a43dd3ef45f53c6646edf8fd9ec b/a3355703c58dc3d24b861a8942b65370a63bf460
+index a2e42ca079..a3355703c5 100644
+--- a/a2e42ca079e29a43dd3ef45f53c6646edf8fd9ec
++++ b/a3355703c58dc3d24b861a8942b65370a63bf460
+@@ -1,18 +1,15 @@
+ public void run() {
+     if (!myEditor.ensureEditable()) {
+         return;
+     }
+     final Palette palette = Palette.getInstance(myEditor.getProject());
+     IntrospectedProperty[] props = palette.getIntrospectedProperties(myLabel);
+     for (IntrospectedProperty prop : props) {
+-        if (prop.getName().equals(SwingProperties.LABEL_FOR)) {
+-            try {
+-                prop.setValue(myLabel, myComponent.getId());
+-                myEditor.refreshAndSave(false);
+-            } catch (Exception e) {
+-                LOG.error(e);
+-            }
++        if (prop.getName().equals(SwingProperties.LABEL_FOR) && prop instanceof IntroComponentProperty) {
++            IntroComponentProperty icp = (IntroComponentProperty) prop;
++            icp.setValueEx(myLabel, myComponent.getId());
++            myEditor.refreshAndSave(false);
+             break;
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/99cba3571bfb13f91fe3bc829dd355fa49e2146e b/7a67b888bc5801ebfa65f1ecbe67857f0b6fb6c9
+index 99cba3571b..7a67b888bc 100644
+--- a/99cba3571bfb13f91fe3bc829dd355fa49e2146e
++++ b/7a67b888bc5801ebfa65f1ecbe67857f0b6fb6c9
+@@ -1,10 +1,10 @@
+ protected String[] collectContextMenuPreferencePages() {
+     String[] ids = super.collectContextMenuPreferencePages();
+     String[] more = new String[ids.length + 4];
+-    more[0] = "org.jkiss.dbeaver.preferences.main.sqleditor";
+-    more[1] = "org.jkiss.dbeaver.preferences.main.sql.format";
+-    more[2] = "org.jkiss.dbeaver.preferences.main.sqlexecute";
+-    more[3] = "org.jkiss.dbeaver.preferences.main.sql.templates";
+-    System.arraycopy(ids, 0, more, 4, ids.length);
++    more[ids.length] = "org.jkiss.dbeaver.preferences.main.sqleditor";
++    more[ids.length + 1] = "org.jkiss.dbeaver.preferences.main.sql.format";
++    more[ids.length + 2] = "org.jkiss.dbeaver.preferences.main.sqlexecute";
++    more[ids.length + 3] = "org.jkiss.dbeaver.preferences.main.sql.templates";
++    System.arraycopy(ids, 0, more, 0, ids.length);
+     return more;
+ }
+\ No newline at end of file

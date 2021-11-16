@@ -1,0 +1,22 @@
+diff --git a/772a8d3bf77eceb40991ba42ee04a9878fdca4ce b/21cbec20893c10f8becd5de797774c6cfc02a000
+index 772a8d3bf7..21cbec2089 100644
+--- a/772a8d3bf77eceb40991ba42ee04a9878fdca4ce
++++ b/21cbec20893c10f8becd5de797774c6cfc02a000
+@@ -1,12 +1,11 @@
+ @Override
+ protected void doOKAction() {
+     final GrTypeDefinition clazz = (GrTypeDefinition) myContext.scope;
+     final String name = getName();
+-    if (clazz.findFieldByName(name, true) != null) {
+-        int answer = showYesNoDialog(myContext.project, RefactoringBundle.message("field.exists", name, clazz.getQualifiedName()), REFACTORING_NAME, getWarningIcon());
+-        if (answer != 0) {
+-            return;
+-        }
++    String message = RefactoringBundle.message("field.exists", name, clazz.getQualifiedName());
++    if (clazz.findFieldByName(name, true) != null && showYesNoDialog(myContext.project, message, REFACTORING_NAME, getWarningIcon()) != 0) {
++        return;
+     }
++    GroovyApplicationSettings.getInstance().SPECIFY_VAR_TYPE_EXPLICITLY = getSelectedType() != null;
+     super.doOKAction();
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/6728c10f3b2f21b02f31ddbebfd37409965e00bb b/c4ec651585e021e49c6e6a6181708fc2cdd33459
+index 6728c10f3b..c4ec651585 100644
+--- a/6728c10f3b2f21b02f31ddbebfd37409965e00bb
++++ b/c4ec651585e021e49c6e6a6181708fc2cdd33459
+@@ -1,11 +1,11 @@
+ @Override
+-public boolean addRulesFromFile(String rulesFile) {
++public synchronized boolean addRulesFromFile(String rulesFile) {
++    log.debug("Adding drools rules from file {}", rulesFile);
+     try {
+         final String rulesSource = Files.toString(new File(rulesFile), Charsets.UTF_8);
+-        rules.add(rulesSource);
+-        return deployRules(increaseRulesVersion());
++        return addRule(rulesSource);
+     } catch (IOException e) {
+         log.warn("Could not read drools source file. Not loading rules.", e);
+     }
+     return false;
+ }
+\ No newline at end of file

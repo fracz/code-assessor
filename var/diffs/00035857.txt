@@ -1,0 +1,18 @@
+diff --git a/6774e9dc415a96e88dee79b53b40754b5450b95b b/b269c0fd11d1ae382d5e2b9bdd064eb327746495
+index 6774e9dc41..b269c0fd11 100644
+--- a/6774e9dc415a96e88dee79b53b40754b5450b95b
++++ b/b269c0fd11d1ae382d5e2b9bdd064eb327746495
+@@ -1,11 +1,11 @@
+ @Test
+ public void shouldNotAllowExtraInterfaceThatIsTheSameAsTheMockedType() throws Exception {
+     try {
+         // when
+-        validator.validateExtraInterfaces(IMethods.class, new Class<?>[] { IMethods.class });
++        validator.validateExtraInterfaces(IMethods.class, (Collection) asList(IMethods.class));
+         fail();
+     } catch (MockitoException e) {
+         // then
+         assertContains("You mocked following type: IMethods", e.getMessage());
+     }
+ }
+\ No newline at end of file

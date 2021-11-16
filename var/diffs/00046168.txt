@@ -1,0 +1,19 @@
+diff --git a/80cb5280821027141412ad9ce55f75702fe6f73a b/bdbad21b881b5b4728159043479a3eaa8da0a1a5
+index 80cb528082..bdbad21b88 100644
+--- a/80cb5280821027141412ad9ce55f75702fe6f73a
++++ b/bdbad21b881b5b4728159043479a3eaa8da0a1a5
+@@ -1,10 +1,10 @@
+-protected void trimCandidates(String newWord) {
+-    ArrayList<CompletionCandidate> newCandidate = new ArrayList<CompletionCandidate>();
++protected static List<CompletionCandidate> trimCandidates(String newWord, List<CompletionCandidate> candidates) {
++    ArrayList<CompletionCandidate> newCandidate = new ArrayList<>();
+     newWord = newWord.toLowerCase();
+     for (CompletionCandidate comp : candidates) {
+         if (comp.getNoHtmlLabel().toLowerCase().startsWith(newWord)) {
+             newCandidate.add(comp);
+         }
+     }
+-    candidates = newCandidate;
++    return newCandidate;
+ }
+\ No newline at end of file

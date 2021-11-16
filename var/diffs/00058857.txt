@@ -1,0 +1,16 @@
+diff --git a/467a274524ae7a988773a15041d6e334a99ba353 b/3a231d47188597f2a92f64e4bdbfe49618d0eab1
+index 467a274524..3a231d4718 100644
+--- a/467a274524ae7a988773a15041d6e334a99ba353
++++ b/3a231d47188597f2a92f64e4bdbfe49618d0eab1
+@@ -1,8 +1,5 @@
+ public KeyColumnValueStoreManager openStorageManager() throws StorageException {
+-    Configuration config = StorageSetup.getBerkeleyJEStorageConfiguration();
+-    config.subset(KeyValueStoreManagerAdapter.KEYLENGTH_NAMESPACE).setProperty(storeName, 8);
+-    BerkeleyJEStoreManager sm = new BerkeleyJEStoreManager(config);
+-    KeyValueStoreManagerAdapter smadapter = new KeyValueStoreManagerAdapter(sm, config);
+-    // assertEquals(8,((KeyValueStoreAdapter)smadapter.openDatabase(storeName)).getKeyLength());
++    BerkeleyJEStoreManager sm = new BerkeleyJEStoreManager(StorageSetup.getBerkeleyJEStorageConfiguration());
++    KeyValueStoreManagerAdapter smadapter = new KeyValueStoreManagerAdapter(sm, ImmutableMap.of(storeName, 8));
+     return smadapter;
+ }
+\ No newline at end of file

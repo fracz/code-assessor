@@ -1,0 +1,20 @@
+diff --git a/fa52eea805bba414a4cae2d739f466815ec75b23 b/63b3583d9b4682e4ea6e39ab22d9300394a54459
+index fa52eea805..63b3583d9b 100644
+--- a/fa52eea805bba414a4cae2d739f466815ec75b23
++++ b/63b3583d9b4682e4ea6e39ab22d9300394a54459
+@@ -1,11 +1,11 @@
+ @Test(dataProvider = "GitConnectionFactory", dataProviderClass = GitConnectionFactoryProvider.class)
+ public void testSimpleRemoteAdd(GitConnectionFactory connectionFactory) throws GitException, IOException {
+     // given
+     GitConnection connection = connectToInitializedGitRepository(connectionFactory, repository);
+-    int beforeCount = connection.remoteList(newDto(RemoteListRequest.class)).size();
++    int beforeCount = connection.remoteList(null, false).size();
+     // when
+-    connection.remoteAdd(newDto(RemoteAddRequest.class).withName("origin").withUrl("some.url"));
++    connection.remoteAdd(RemoteAddParams.create("origin", "some.url"));
+     // then
+-    int afterCount = connection.remoteList(newDto(RemoteListRequest.class)).size();
++    int afterCount = connection.remoteList(null, false).size();
+     assertEquals(afterCount, beforeCount + 1);
+ }
+\ No newline at end of file

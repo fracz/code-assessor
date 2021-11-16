@@ -1,0 +1,18 @@
+diff --git a/d667d51466c75d8292e8165abc66bb40ad792c70 b/6ac7eaa5c461297e686826c3cd42249d133a0a11
+index d667d51466..6ac7eaa5c4 100644
+--- a/d667d51466c75d8292e8165abc66bb40ad792c70
++++ b/6ac7eaa5c461297e686826c3cd42249d133a0a11
+@@ -1,11 +1,5 @@
+ private static boolean isEnabled(final Project project) {
+     if (project == null)
+         return false;
+-    final AbstractVcs[] activeVcss = ProjectLevelVcsManager.getInstance(project).getAllActiveVcss();
+-    for (AbstractVcs vcs : activeVcss) {
+-        if (vcs.getName().equals(SvnVcs.VCS_NAME)) {
+-            return true;
+-        }
+-    }
+-    return false;
++    return ProjectLevelVcsManager.getInstance(project).checkVcsIsActive(SvnVcs.VCS_NAME);
+ }
+\ No newline at end of file

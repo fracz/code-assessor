@@ -1,0 +1,18 @@
+diff --git a/e99ebca790bbe32bda2648a2ca33e1051bfe8549 b/b79b5b0104eb4d8ff45616424a44f185aab8b6ea
+index e99ebca790..b79b5b0104 100644
+--- a/e99ebca790bbe32bda2648a2ca33e1051bfe8549
++++ b/b79b5b0104eb4d8ff45616424a44f185aab8b6ea
+@@ -1,8 +1,10 @@
+ public void close() throws StorageException {
+     if (tx != null)
+         tx.commit();
+-    if (null != store)
+-        ((KeyColumnValueStore) store).close();
++    if (null != store1)
++        store1.close();
++    if (null != store2)
++        store2.close();
+     if (null != manager)
+         manager.close();
+ }
+\ No newline at end of file

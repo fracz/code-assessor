@@ -1,0 +1,15 @@
+diff --git a/904d19fe2a7b87bfad419ab3c65f42dac8ac4785 b/4f73e3d30ed0ed70b39c9358d2051ca6b999ef4e
+index 904d19fe2a..4f73e3d30e 100644
+--- a/904d19fe2a7b87bfad419ab3c65f42dac8ac4785
++++ b/4f73e3d30ed0ed70b39c9358d2051ca6b999ef4e
+@@ -1,6 +1,7 @@
++@Test
+ public void testOneObjectArgBoundToProxyUsingThis() {
+     mockCollaborator.oneObjectArg(this.testBeanProxy);
+-    mockControl.replay();
++    replay(mockCollaborator);
+     testBeanProxy.getAge();
+-    mockControl.verify();
++    verify(mockCollaborator);
+ }
+\ No newline at end of file

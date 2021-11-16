@@ -1,0 +1,14 @@
+diff --git a/ed7d76bb2d722f0a3acb4c9f4d9bb30c43467f67 b/3fdef44bcb2d609d704e0f45ff0deb16cb16d235
+index ed7d76bb2d..3fdef44bcb 100644
+--- a/ed7d76bb2d722f0a3acb4c9f4d9bb30c43467f67
++++ b/3fdef44bcb2d609d704e0f45ff0deb16cb16d235
+@@ -1,7 +1,7 @@
+ @Override
+ public boolean isEmpty() {
+     if (start == null || end == null)
+         return false;
+     int cmp = start.compareTo(end);
+-    return cmp < 0 || (cmp == 0 && startInclusive && endInclusive);
++    return cmp > 0 || (cmp == 0 && (!startInclusive || !endInclusive));
+ }
+\ No newline at end of file

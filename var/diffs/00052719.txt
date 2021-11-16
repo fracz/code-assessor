@@ -1,0 +1,17 @@
+diff --git a/156bae3718cb1db1b947e34fd2bbe62c5154cd15 b/a0f2ff2c2e2ec418bb804787bbe1fc5d1cd6316d
+index 156bae3718..a0f2ff2c2e 100644
+--- a/156bae3718cb1db1b947e34fd2bbe62c5154cd15
++++ b/a0f2ff2c2e2ec418bb804787bbe1fc5d1cd6316d
+@@ -1,10 +1,10 @@
+ private List<ShardingValue<?>> getShardingValues(final Collection<String> shardingColumns) {
+     List<ShardingValue<?>> result = new ArrayList<>(shardingColumns.size());
+     for (String each : shardingColumns) {
+         Optional<Condition> condition = sqlStatement.getConditions().find(new Column(each, logicTable));
+         if (condition.isPresent()) {
+-            result.add(SingleRouterUtil.convertConditionToShardingValue(condition.get(), parameters));
++            result.add(condition.get().getShardingValue(parameters));
+         }
+     }
+     return result;
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/55c6b3917ae625aecde5ca9bd41bf96c93be8216 b/29f3973343aa212353fe1aa3263159fa71f4fcf7
+index 55c6b3917a..29f3973343 100644
+--- a/55c6b3917ae625aecde5ca9bd41bf96c93be8216
++++ b/29f3973343aa212353fe1aa3263159fa71f4fcf7
+@@ -1,8 +1,6 @@
++@Override
+ protected void shutdownDbs() throws Exception {
+-    for (StandaloneDbCom slave : jvms) {
+-        slave.initiateShutdown();
+-    }
+-    for (int i = 0; i < jvms.size(); i++) {
+-        waitUntilShutdownFileFound(dbPath(i));
++    for (StandaloneDatabase slave : jvms) {
++        slave.shutdown();
+     }
+ }
+\ No newline at end of file

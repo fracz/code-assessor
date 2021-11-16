@@ -1,0 +1,25 @@
+diff --git a/0b778d603be85d84e8f0eaff68e25021e199859d b/219dbd44e7ff3b6709ed365b1d04a69f86aee154
+index 0b778d603b..219dbd44e7 100644
+--- a/0b778d603be85d84e8f0eaff68e25021e199859d
++++ b/219dbd44e7ff3b6709ed365b1d04a69f86aee154
+@@ -1,9 +1,12 @@
+ @Override
+-public void setDatabase(final ODatabaseRecord iDatabase) {
+-    super.setDatabase(iDatabase);
+-    if (_fieldValues != null)
+-        for (Object f : _fieldValues.values()) {
+-            if (f instanceof ORecordElement)
+-                ((ORecordElement) f).setDatabase(iDatabase);
+-        }
++public boolean setDatabase(final ODatabaseRecord iDatabase) {
++    if (super.setDatabase(iDatabase)) {
++        if (_fieldValues != null)
++            for (Object f : _fieldValues.values()) {
++                if (f instanceof ORecordElement)
++                    ((ORecordElement) f).setDatabase(iDatabase);
++            }
++        return true;
++    }
++    return false;
+ }
+\ No newline at end of file

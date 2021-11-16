@@ -1,0 +1,22 @@
+diff --git a/fdeceac147c1f3746c5fc4290d780c22d0844a7a b/56f06f32d13e1e07061154a314db23a7e7adbf75
+index fdeceac147..56f06f32d1 100644
+--- a/fdeceac147c1f3746c5fc4290d780c22d0844a7a
++++ b/56f06f32d13e1e07061154a314db23a7e7adbf75
+@@ -1,14 +1,10 @@
+ @Override
+ public RequestOptions addHeader(CharSequence name, CharSequence value) {
+-    if (name == null) {
+-        throw new NullPointerException("name");
+-    }
+-    if (value == null) {
+-        throw new NullPointerException("value");
+-    }
++    Objects.requireNonNull(name, "name");
++    Objects.requireNonNull(value, "value");
+     if (headers == null) {
+         headers = new CaseInsensitiveHeaders();
+     }
+     headers.add(name, value);
+     return this;
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/3d56d95e9a1477fbf86e5376d46ca78fb97befb3 b/f49f95b6e8afc4768c0a47a7fd0bef1a84ca3223
+index 3d56d95e9a..f49f95b6e8 100644
+--- a/3d56d95e9a1477fbf86e5376d46ca78fb97befb3
++++ b/f49f95b6e8afc4768c0a47a7fd0bef1a84ca3223
+@@ -1,7 +1,3 @@
+ public int getActionShareColor() {
+-    if (actionShareColor != 0) {
+-        return actionShareColor;
+-    } else {
+-        return getMainColor();
+-    }
++    return getColorWithFallback(actionShareColor, getMainColor());
+ }
+\ No newline at end of file

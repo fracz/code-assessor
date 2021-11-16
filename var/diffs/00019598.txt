@@ -1,0 +1,14 @@
+diff --git a/d5d687e7f8d7cd9bb6eeff7b5a05e199ca12ab1f b/0a20b01167dc4a3dab46dc11462fbec834995e6d
+index d5d687e7f8..0a20b01167 100644
+--- a/d5d687e7f8d7cd9bb6eeff7b5a05e199ca12ab1f
++++ b/0a20b01167dc4a3dab46dc11462fbec834995e6d
+@@ -1,6 +1,6 @@
+ public void setProgress(@FloatRange(from = 0f, to = 1f) float progress) {
+     this.progress = progress;
+-    for (AnimatableLayer layer : layers) {
+-        layer.setProgress(progress);
++    if (compositionLayer != null) {
++        compositionLayer.setProgress(progress);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/5a4962ea53089932af5561cb3f365f028e308d63 b/b1f41225883a15cd1d208f2175e235bb3a501ce4
+index 5a4962ea53..b1f4122588 100644
+--- a/5a4962ea53089932af5561cb3f365f028e308d63
++++ b/b1f41225883a15cd1d208f2175e235bb3a501ce4
+@@ -1,5 +1,10 @@
+ @Override
+ public StackValue visitSuperExpression(JetSuperExpression expression, StackValue data) {
+-    // }
+-    return StackValue.none();
++    final DeclarationDescriptor descriptor = bindingContext.get(BindingContext.REFERENCE_TARGET, expression.getInstanceReference());
++    if (descriptor instanceof ClassDescriptor) {
++        return generateThisOrOuter((ClassDescriptor) descriptor);
++    } else {
++        JetType type = context.getThisDescriptor().getDefaultType();
++        return StackValue.local(0, asmType(type));
++    }
+ }
+\ No newline at end of file

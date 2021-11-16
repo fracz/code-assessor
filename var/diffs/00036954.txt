@@ -1,0 +1,28 @@
+diff --git a/f220966104137d14adde469ce22346a7e8c3fb6d b/e1182e9337343fc10f3195f6421c137cc76ee2d8
+index f220966104..e1182e9337 100644
+--- a/f220966104137d14adde469ce22346a7e8c3fb6d
++++ b/e1182e9337343fc10f3195f6421c137cc76ee2d8
+@@ -1,16 +1,20 @@
+ private static StringBuilder getParameterValues() {
+     StringBuilder insertCode = new StringBuilder();
+     insertCode.append("java.util.Enumeration attrs=tempRequest.getParameterNames();");
+     insertCode.append("StringBuilder params=new StringBuilder();");
+     insertCode.append("while(attrs.hasMoreElements()) {");
+     insertCode.append("String keyString=attrs.nextElement().toString();");
+-    // insertCode.append("System.out.println(key+\"=\"+tempRequest.getParameter(key.toString()));");
++    if (logger.isDebugEnabled()) {
++        insertCode.append("System.out.println(keyString+\"=\"+tempRequest.getParameter(keyString));");
++    }
+     insertCode.append("Object value=tempRequest.getParameter(keyString);");
+     insertCode.append("if(value!=null) {");
+     insertCode.append("String valueString=value.toString();");
+     insertCode.append("int valueStringLength=valueString.length();");
+     insertCode.append("if(valueStringLength>0 && valueStringLength<100) params.append(keyString).append(\"=\").append(valueString).append(\",\");");
+     insertCode.append("}}");
+-    // insertCode.append("System.out.println(params);");
++    if (logger.isDebugEnabled()) {
++        insertCode.append("System.out.println(params);");
++    }
+     return insertCode;
+ }
+\ No newline at end of file

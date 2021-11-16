@@ -1,0 +1,17 @@
+diff --git a/2e3aa759c0bc0ea6790d4945ea8e1ed5987d6827 b/cc4ad34104e453cb22bb7f3ac7d713b6456313cb
+index 2e3aa759c0..cc4ad34104 100644
+--- a/2e3aa759c0bc0ea6790d4945ea8e1ed5987d6827
++++ b/cc4ad34104e453cb22bb7f3ac7d713b6456313cb
+@@ -1,6 +1,6 @@
+-public void setAttr(Token x, Token expr) {
+-    System.out.println(x + "=" + expr);
+-    if (!r.resolves(x.getText(), alt))
+-        System.err.println("not found: " + x);
+-    new AttributeChecks(g, r, alt, node, expr.getText()).examine();
++public void setAttr(String expr, Token x, Token rhs) {
++    if (!node.space.resolves(x.getText(), node)) {
++        ErrorManager.grammarError(ErrorType.UNKNOWN_SIMPLE_ATTRIBUTE, g.fileName, x, x.getText(), expr);
++    }
++    new AttributeChecks(g, r, alt, node, rhs.getText()).examineAction();
+ }
+\ No newline at end of file

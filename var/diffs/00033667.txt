@@ -1,0 +1,27 @@
+diff --git a/8136f0e344f7bb69e8f7c9c3a062504c92b32370 b/771a92c2a676a76785cd2c5a7f4d080a72fb79ff
+index 8136f0e344..771a92c2a6 100644
+--- a/8136f0e344f7bb69e8f7c9c3a062504c92b32370
++++ b/771a92c2a676a76785cd2c5a7f4d080a72fb79ff
+@@ -1,15 +1,13 @@
+ private static File gradleUserHome(ParsedCommandLine options) {
+-    String gradleUserHome = null;
+     if (options.hasOption(GRADLE_USER_HOME_OPTION)) {
+-        gradleUserHome = options.option(GRADLE_USER_HOME_OPTION).getValue();
++        return new File(options.option(GRADLE_USER_HOME_OPTION).getValue());
+     }
+-    if (gradleUserHome != null) {
++    String gradleUserHome;
++    if ((gradleUserHome = System.getProperty(GRADLE_USER_HOME_PROPERTY_KEY)) != null) {
+         return new File(gradleUserHome);
+-    } else if ((gradleUserHome = System.getProperty(GRADLE_USER_HOME_PROPERTY_KEY)) != null) {
+-        return new File(gradleUserHome);
+-    } else if ((gradleUserHome = System.getenv(GRADLE_USER_HOME_ENV_KEY)) != null) {
++    }
++    if ((gradleUserHome = System.getenv(GRADLE_USER_HOME_ENV_KEY)) != null) {
+         return new File(gradleUserHome);
+-    } else {
+-        return new File(DEFAULT_GRADLE_USER_HOME);
+     }
++    return new File(DEFAULT_GRADLE_USER_HOME);
+ }
+\ No newline at end of file

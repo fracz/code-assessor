@@ -1,0 +1,15 @@
+diff --git a/a6e758c1c5500703dc7e57d6fd79474799d41fa4 b/5ae9d33e8f7558c240c16e280f103ab90c0512da
+index a6e758c1c5..5ae9d33e8f 100644
+--- a/a6e758c1c5500703dc7e57d6fd79474799d41fa4
++++ b/5ae9d33e8f7558c240c16e280f103ab90c0512da
+@@ -1,3 +1,7 @@
+-public static Object getValue(String expression, Object root) throws OgnlException {
+-    return Ognl.getValue(parseExpression(expression), root);
++public static Object getValue(String expression, Object root) {
++    try {
++        return Ognl.getValue(parseExpression(expression), root);
++    } catch (OgnlException e) {
++        throw new BuilderException("Error evaluating expression '" + expression + "'. Cause: " + e, e);
++    }
+ }
+\ No newline at end of file

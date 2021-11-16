@@ -1,0 +1,24 @@
+diff --git a/5d707661dbd5b65c209f5997641b1e26ec03103f b/8b394ed534d1bf76ab1f057ed2e7cc27ebc861be
+index 5d707661db..8b394ed534 100644
+--- a/5d707661dbd5b65c209f5997641b1e26ec03103f
++++ b/8b394ed534d1bf76ab1f057ed2e7cc27ebc861be
+@@ -1,16 +1,14 @@
+-private static String processPercents(String ans, String numPat) {
++protected String processPercents(String ans, String numPat) {
+     // 1. if "6%" then put together
+     // 2. if others, separate '%' and others
+     // logger.info("Process percents called!");
+     // first , just separate all '%'
+     Matcher m = percentsPat.matcher(ans);
+     ans = m.replaceAll(" $1 ");
+     // second , combine "6%" patterns
+-    if (percentsWhitePat == null) {
+-        percentsWhitePat = Pattern.compile("(" + numPat + ")" + percentStr);
+-    }
++    percentsWhitePat = patternMap.computeIfAbsent("(" + numPat + ")" + percentStr, (s) -> Pattern.compile(s));
+     Matcher m2 = percentsWhitePat.matcher(ans);
+     ans = m2.replaceAll("$1$2");
+     ans = ans.trim();
+     return ans;
+ }
+\ No newline at end of file

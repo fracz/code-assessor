@@ -1,0 +1,18 @@
+diff --git a/5515430b0cd15aca133708cdcfe85f10dfff4991 b/6a4f57b20ad50dd7d7464acb47a81103003ab2af
+index 5515430b0c..6a4f57b20a 100644
+--- a/5515430b0cd15aca133708cdcfe85f10dfff4991
++++ b/6a4f57b20ad50dd7d7464acb47a81103003ab2af
+@@ -1,9 +1,4 @@
+-SingleParameterInjector<?>[] createParameterInjector(InjectorImpl injector, ConstructionProxy<T> constructionProxy) {
+-    try {
+-        return constructionProxy.getParameters().isEmpty() ? // default constructor.
+-        null : injector.getParametersInjectors(constructionProxy.getMember(), constructionProxy.getParameters());
+-    } catch (ResolveFailedException e) {
+-        injector.errorHandler.handle(e.getMessage(constructionProxy.getMember()));
+-        return null;
+-    }
++SingleParameterInjector<?>[] createParameterInjector(Errors errors, InjectorImpl injector, ConstructionProxy<T> constructionProxy) throws ResolveFailedException {
++    return constructionProxy.getParameters().isEmpty() ? // default constructor.
++    null : injector.getParametersInjectors(constructionProxy.getMember(), constructionProxy.getParameters(), errors);
+ }
+\ No newline at end of file

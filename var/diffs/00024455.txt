@@ -1,0 +1,17 @@
+diff --git a/de643f1edd3bd806a95f59854536c100965b85ec b/3f73bd2eda49a3b9dd1a505b44ded94cbf40d20c
+index de643f1edd..3f73bd2eda 100644
+--- a/de643f1edd3bd806a95f59854536c100965b85ec
++++ b/3f73bd2eda49a3b9dd1a505b44ded94cbf40d20c
+@@ -1,6 +1,7 @@
+ public static CFMetaData createTableFromName(String keyspace, String table) {
+-    Row partition = readSchemaPartitionForTable(COLUMNFAMILIES, keyspace, table);
+-    if (isEmptySchemaPartition(partition))
+-        throw new RuntimeException(String.format("%s:%s not found in the schema definitions keyspace.", keyspace, table));
+-    return createTableFromTablePartition(partition);
++    return readSchemaPartitionForTableAndApply(COLUMNFAMILIES, keyspace, table, partition -> {
++        if (partition.isEmpty())
++            throw new RuntimeException(String.format("%s:%s not found in the schema definitions keyspace.", keyspace, table));
++        return createTableFromTablePartition(partition);
++    });
+ }
+\ No newline at end of file

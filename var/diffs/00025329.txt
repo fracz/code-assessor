@@ -1,0 +1,13 @@
+diff --git a/fec539261fb3fc8861539880bfca0c1aec242861 b/432e97f33a570994e6f9ec04efb5e07f2fa30aa5
+index fec539261f..432e97f33a 100644
+--- a/fec539261fb3fc8861539880bfca0c1aec242861
++++ b/432e97f33a570994e6f9ec04efb5e07f2fa30aa5
+@@ -1,3 +1,5 @@
+-public WindowStore get() {
+-    return maybeWrapCaching(maybeWrapLogged(new RocksDBSegmentedBytesStore(name, retentionPeriod, numSegments, new WindowKeySchema())));
++public WindowStore<K, V> get() {
++    final RocksDBSegmentedBytesStore segmentedBytesStore = new RocksDBSegmentedBytesStore(name, retentionPeriod, numSegments, new WindowKeySchema());
++    final RocksDBWindowStore<Bytes, byte[]> innerStore = RocksDBWindowStore.bytesStore(segmentedBytesStore, retainDuplicates, windowSize);
++    return new MeteredWindowStore<>(maybeWrapCaching(maybeWrapLogged(innerStore)), METRICS_SCOPE, time, keySerde, valueSerde);
+ }
+\ No newline at end of file

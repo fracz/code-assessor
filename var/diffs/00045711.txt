@@ -1,0 +1,24 @@
+diff --git a/d842ee831791829dd89805f24c9c6c204f06187b b/21888acb3387495ed9e0cbca9eff4dd2db159100
+index d842ee8317..21888acb33 100644
+--- a/d842ee831791829dd89805f24c9c6c204f06187b
++++ b/21888acb3387495ed9e0cbca9eff4dd2db159100
+@@ -1,10 +1,16 @@
+ /**
+  * Propagates the dirty status to the owner, if any. This happens when the object is embedded in another one.
+  */
+ @Override
+ public ORecordAbstract<Object> setDirty() {
+-    if (_owner != null)
++    if (_owners != null) {
+         // PROPAGATES TO THE OWNER
+-        _owner.setDirty();
++        ORecordElement e;
++        for (WeakReference<ORecordElement> o : _owners) {
++            e = o.get();
++            if (e != null)
++                e.setDirty();
++        }
++    }
+     return super.setDirty();
+ }
+\ No newline at end of file

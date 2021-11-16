@@ -1,0 +1,25 @@
+diff --git a/9d3813dc7baa15a5b538b10e607becfdff27fa30 b/82464eeba8c3852a03d1d10a135f37a5c8a5000b
+index 9d3813dc7b..82464eeba8 100644
+--- a/9d3813dc7baa15a5b538b10e607becfdff27fa30
++++ b/82464eeba8c3852a03d1d10a135f37a5c8a5000b
+@@ -1,14 +1,14 @@
+ private static void markLoops(MethodNode mth) {
+     for (BlockNode block : mth.getBasicBlocks()) {
+         for (BlockNode succ : block.getSuccessors()) {
+             // block -> succ is a back edge.
+             if (block.getDoms().get(succ.getId())) {
+-                succ.getAttributes().add(AttributeFlag.LOOP_START);
+-                block.getAttributes().add(AttributeFlag.LOOP_END);
+-                LoopAttr loop = new LoopAttr(succ, block);
+-                succ.getAttributes().add(loop);
+-                block.getAttributes().add(loop);
++                succ.add(AFlag.LOOP_START);
++                block.add(AFlag.LOOP_END);
++                LoopInfo loop = new LoopInfo(succ, block);
++                succ.addAttr(AType.LOOP, loop);
++                block.addAttr(AType.LOOP, loop);
+             }
+         }
+     }
+ }
+\ No newline at end of file

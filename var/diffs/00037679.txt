@@ -1,0 +1,23 @@
+diff --git a/65163c5c268eeda8d5e960a6ad0a731a33192a86 b/9ccccc84053006879ae1c78a80b0d7855d7c412e
+index 65163c5c26..9ccccc8405 100644
+--- a/65163c5c268eeda8d5e960a6ad0a731a33192a86
++++ b/9ccccc84053006879ae1c78a80b0d7855d7c412e
+@@ -1,12 +1,10 @@
+-private HashMap<String, List<AnnotationKey>> buildNameTable(Collection<AnnotationKey> buildMap) {
+-    final HashMap<String, List<AnnotationKey>> nameLookupTable = new HashMap<String, List<AnnotationKey>>();
++private HashMap<String, AnnotationKey> buildNameTable(Collection<AnnotationKey> buildMap) {
++    final HashMap<String, AnnotationKey> nameLookupTable = new HashMap<String, AnnotationKey>();
+     for (AnnotationKey annotationKey : buildMap) {
+-        List<AnnotationKey> annotationKeyList = nameLookupTable.get(annotationKey.getName());
+-        if (annotationKeyList == null) {
+-            annotationKeyList = new ArrayList<AnnotationKey>();
+-            nameLookupTable.put(annotationKey.getName(), annotationKeyList);
++        final AnnotationKey exist = nameLookupTable.put(annotationKey.getName(), annotationKey);
++        if (exist != null) {
++            throwDuplicatedAnnotationKey(annotationKey, exist);
+         }
+-        annotationKeyList.add(annotationKey);
+     }
+     return nameLookupTable;
+ }
+\ No newline at end of file

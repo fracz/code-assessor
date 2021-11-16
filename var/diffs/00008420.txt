@@ -1,0 +1,12 @@
+diff --git a/dab1ecf8645ac0332781c4507e4b62f2f7626957 b/03e5c755855b8395ac65fc5324c5877d1ee5f13b
+index dab1ecf864..03e5c75585 100644
+--- a/dab1ecf8645ac0332781c4507e4b62f2f7626957
++++ b/03e5c755855b8395ac65fc5324c5877d1ee5f13b
+@@ -1,5 +1,5 @@
+ @Override
+ public void visitMethodCallExpression(GrMethodCallExpression methodCallExpression) {
+     super.visitMethodCallExpression(methodCallExpression);
+-    checkMethodCall(methodCallExpression, methodCallExpression.getInvokedExpression());
++    checkMethodCall(new GrMethodCallInfo(methodCallExpression));
+ }
+\ No newline at end of file

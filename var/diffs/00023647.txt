@@ -1,0 +1,22 @@
+diff --git a/1d84e4d7ba932379c249beddc5744da7d0e6d396 b/f95b047bfd2a990910af80ee15faffd6150c5ab8
+index 1d84e4d7ba..f95b047bfd 100644
+--- a/1d84e4d7ba932379c249beddc5744da7d0e6d396
++++ b/f95b047bfd2a990910af80ee15faffd6150c5ab8
+@@ -1,14 +1,13 @@
+ /**
+  * * TaskStackViewScroller.TaskStackViewScrollerCallbacks ***
+  */
+ @Override
+-public void onScrollChanged(float prevScroll, float curScroll) {
++public void onScrollChanged(float prevScroll, float curScroll, TaskViewAnimation animation) {
+     mUIDozeTrigger.poke();
+-    requestSynchronizeStackViewsWithModel();
+-    postInvalidateOnAnimation();
++    updateTaskViewsToLayoutOnNextFrame(animation);
+     if (shouldShowHistoryButton() && prevScroll > SHOW_HISTORY_BUTTON_SCROLL_THRESHOLD && curScroll <= SHOW_HISTORY_BUTTON_SCROLL_THRESHOLD) {
+         EventBus.getDefault().send(new ShowHistoryButtonEvent());
+     } else if (prevScroll < HIDE_HISTORY_BUTTON_SCROLL_THRESHOLD && curScroll >= HIDE_HISTORY_BUTTON_SCROLL_THRESHOLD) {
+         EventBus.getDefault().send(new HideHistoryButtonEvent());
+     }
+ }
+\ No newline at end of file

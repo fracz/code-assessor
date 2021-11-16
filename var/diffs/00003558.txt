@@ -1,0 +1,16 @@
+diff --git a/e3dbc534011f9a5a4afde7bd97c1e3989f53b493 b/53ea3ddadb2276d5778613ec718429219ccb3bdb
+index e3dbc53401..53ea3ddadb 100644
+--- a/e3dbc534011f9a5a4afde7bd97c1e3989f53b493
++++ b/53ea3ddadb2276d5778613ec718429219ccb3bdb
+@@ -1,7 +1,9 @@
+ @Before
+ public void setUp() {
+     root = new TestVirtualFile("root");
+     file = new TestVirtualFile("file", "new content", 1L);
+     root.addChild(file);
+-    updater = new Updater(vcs, new TestIdeaGateway(), root);
++    TestIdeaGateway gw = new TestIdeaGateway();
++    gw.setContentRoots(root);
++    updater = new Updater(vcs, gw);
+ }
+\ No newline at end of file

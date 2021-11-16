@@ -1,0 +1,28 @@
+diff --git a/ed3cfcb2e025e6199bb527a23daabcf72d320119 b/bfb182c179047957cb99552691bba68a969c4762
+index ed3cfcb2e0..bfb182c179 100644
+--- a/ed3cfcb2e025e6199bb527a23daabcf72d320119
++++ b/bfb182c179047957cb99552691bba68a969c4762
+@@ -1,15 +1,18 @@
+ private void closeBufferAndDeleteFile() throws IOException {
+     if (buffer != null) {
+         buffer.close();
+         buffer = null;
+     }
+     if (writeAheadLog != null) {
+         writeAheadLog.delete();
+         writeAheadLog = null;
+     }
+-    File file = new File(storageLocal.getConfiguration().getDirectory() + "/readWriteDiskCacheTest.tst");
+-    if (file.exists()) {
+-        boolean delete = file.delete();
+-        Assert.assertTrue(delete);
++    File testFile = new File(storageLocal.getConfiguration().getDirectory() + "/readWriteDiskCacheTest.tst");
++    if (testFile.exists()) {
++        Assert.assertTrue(testFile.delete());
++    }
++    File idMapFile = new File(storageLocal.getConfiguration().getDirectory() + "/name_id_map.cm");
++    if (idMapFile.exists()) {
++        Assert.assertTrue(idMapFile.delete());
+     }
+ }
+\ No newline at end of file

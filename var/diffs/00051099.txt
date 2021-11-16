@@ -1,0 +1,14 @@
+diff --git a/b1ace19b74b140a2ef5c9367c2eae8a313d973e3 b/7857d79749bdb8837fd1e4c48c4728e1719a4ee0
+index b1ace19b74..7857d79749 100644
+--- a/b1ace19b74b140a2ef5c9367c2eae8a313d973e3
++++ b/7857d79749bdb8837fd1e4c48c4728e1719a4ee0
+@@ -1,7 +1,7 @@
+ @Override
+ public void commit() throws SQLException {
+     getOriginal().commit();
+     if (!disableLogging) {
+-        QMUtils.getDefaultHandler().handleTransactionCommit(this);
++        QMUtils.getDefaultHandler().handleTransactionCommit(context);
+     }
+ }
+\ No newline at end of file

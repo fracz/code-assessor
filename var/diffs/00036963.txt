@@ -1,0 +1,17 @@
+diff --git a/4a1d9ef6d2dfe212aaa1a29a2f8d0b5dacaed505 b/46867c45f62a73895da8104b95a1c67f02577561
+index 4a1d9ef6d2..46867c45f6 100644
+--- a/4a1d9ef6d2dfe212aaa1a29a2f8d0b5dacaed505
++++ b/46867c45f62a73895da8104b95a1c67f02577561
+@@ -1,9 +1,9 @@
+ private static void updateCreateStatementMethod(ClassPool classPool, CtClass cc) throws Exception {
+     CtClass[] params = new CtClass[2];
+     params[0] = classPool.getCtClass("int");
+     params[1] = classPool.getCtClass("int");
+     CtMethod serviceMethod = cc.getDeclaredMethod("createStatement", params);
+-    log("*** Changing createStatement method ");
+-    // serviceMethod.insertBefore(getCreateStatementMethodBeforeInsertCode());
++    logger.info("Changing createStatement method ");
++    serviceMethod.insertBefore(getCreateStatementMethodBeforeInsertCode());
+     serviceMethod.insertAfter(getCreateStatementMethodAfterInsertCode());
+ }
+\ No newline at end of file

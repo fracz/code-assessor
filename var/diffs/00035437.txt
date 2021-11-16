@@ -1,0 +1,16 @@
+diff --git a/17bbbe65dd84ff286699bf8ede1bfad471b7cb49 b/5bbd6bffc52d062fd9c7432e5abb2a077e108792
+index 17bbbe65dd..5bbd6bffc5 100644
+--- a/17bbbe65dd84ff286699bf8ede1bfad471b7cb49
++++ b/5bbd6bffc52d062fd9c7432e5abb2a077e108792
+@@ -1,8 +1,8 @@
+ @Override
+-public void notifyRetry() {
++public void notifyRetry(MessageSnapshot snapshot) {
+     if (FileDownloadLog.NEED_LOG) {
+         FileDownloadLog.d(this, "notify retry %s %d %d %s", task, task.getAutoRetryTimes(), task.getRetryingTimes(), task.getEx());
+     }
+     task.ing();
+-    process(FileDownloadStatus.retry);
++    process(snapshot);
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/49d6ff2d19e0e12d8a267998865b9bf94ce50649 b/e70822eaef165d256665b08c3894f573ee751b17
+index 49d6ff2d19..e70822eaef 100644
+--- a/49d6ff2d19e0e12d8a267998865b9bf94ce50649
++++ b/e70822eaef165d256665b08c3894f573ee751b17
+@@ -1,10 +1,10 @@
+-private boolean tryToFindNextUsageViaEditorSearchComponent(Editor editor, boolean forwardOrBackward) {
++private boolean tryToFindNextUsageViaEditorSearchComponent(Editor editor, SearchResults.Direction forwardOrBackward) {
+     if (editor.getHeaderComponent() instanceof EditorSearchComponent) {
+         EditorSearchComponent searchComponent = (EditorSearchComponent) editor.getHeaderComponent();
+         if (searchComponent.hasMatches()) {
+             searchComponent.moveCursor(forwardOrBackward);
+             return true;
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

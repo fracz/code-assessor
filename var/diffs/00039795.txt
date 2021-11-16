@@ -1,0 +1,12 @@
+diff --git a/4bb7f5816c733638b2574cd77af6e6006af0b85c b/b15a08b04d01cbff6d0e3a7c22ae31dad4d456d6
+index 4bb7f5816c..b15a08b04d 100644
+--- a/4bb7f5816c733638b2574cd77af6e6006af0b85c
++++ b/b15a08b04d01cbff6d0e3a7c22ae31dad4d456d6
+@@ -1,4 +1,4 @@
+ @Override
+-public void visitIndexSample(int labelId, int propertyKeyId, long unique, long size) {
+-    out.printf("\tIndexSample[(%s {%s})]:\tunique=%d, size=%d%n", label(labelId), propertyKey(propertyKeyId), unique, size);
++public void visitIndexSample(IndexDescriptor index, long unique, long size) {
++    out.printf("\tIndexSample[(%s {%s})]:\tunique=%d, size=%d%n", label(index.getLabelId()), index.descriptor().propertyIdText(), unique, size);
+ }
+\ No newline at end of file

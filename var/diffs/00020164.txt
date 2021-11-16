@@ -1,0 +1,29 @@
+diff --git a/f77ab8a03075dcdbb3d73a3bb9a6e57ef281604e b/d2d4498efc0cbcd54fc6d5ec3bf4dd0a6edc6a8e
+index f77ab8a030..d2d4498efc 100644
+--- a/f77ab8a03075dcdbb3d73a3bb9a6e57ef281604e
++++ b/d2d4498efc0cbcd54fc6d5ec3bf4dd0a6edc6a8e
+@@ -1,8 +1,17 @@
+ public SQLSelect clone() {
+-    SQLSelect clone = new SQLSelect();
+-    clone.withSubQuery = this.withSubQuery;
+-    clone.query = this.query;
+-    clone.orderBy = this.orderBy;
+-    clone.hints = this.hints;
+-    return clone;
++    SQLSelect x = new SQLSelect();
++    x.withSubQuery = this.withSubQuery;
++    x.query = this.query;
++    if (orderBy != null) {
++        x.setOrderBy(this.orderBy);
++    }
++    if (restriction != null) {
++        x.setRestriction(restriction.clone());
++    }
++    if (this.hints != null) {
++        for (SQLHint hint : this.hints) {
++            x.hints.add(hint);
++        }
++    }
++    return x;
+ }
+\ No newline at end of file

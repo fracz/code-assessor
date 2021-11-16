@@ -1,0 +1,16 @@
+diff --git a/9aab28076d16a1cc9c564ba758be950a0f041eee b/7ce8743d0847c5f880403f280c93fa6b5f2786e8
+index 9aab28076d..7ce8743d08 100644
+--- a/9aab28076d16a1cc9c564ba758be950a0f041eee
++++ b/7ce8743d0847c5f880403f280c93fa6b5f2786e8
+@@ -1,5 +1,7 @@
+ public static boolean areElementsEqual(Element e1, Element e2) {
+-    Document d1 = new Document((Element) e1.clone());
+-    Document d2 = new Document((Element) e2.clone());
+-    return areDocumentsEqual(d1, d2);
++    if (!attListsEqual(e1.getAttributes(), e2.getAttributes()))
++        return false;
++    if (!contentListsEqual(e1.getContent(), e2.getContent()))
++        return false;
++    return true;
+ }
+\ No newline at end of file

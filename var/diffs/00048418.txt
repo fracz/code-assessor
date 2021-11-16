@@ -1,0 +1,17 @@
+diff --git a/2946ab43f2c5433713333d975fd0d0ede8874c16 b/bc141824641ae19adfa972411720154cb206eebd
+index 2946ab43f2..bc14182464 100644
+--- a/2946ab43f2c5433713333d975fd0d0ede8874c16
++++ b/bc141824641ae19adfa972411720154cb206eebd
+@@ -1,10 +1,10 @@
+ public List<DB2XMLString> getXmlStrings(DBRProgressMonitor monitor) throws DBException {
+     if (listXMLStrings == null) {
+-        try (JDBCSession session = getDefaultContext(true).openSession(monitor, DBCExecutionPurpose.META, "Load Global XMLStrings")) {
++        try (JDBCSession session = DBUtils.openMetaSession(monitor, this, "Load Global XMLStrings")) {
+             listXMLStrings = DB2Utils.readXMLStrings(monitor, session);
+         } catch (SQLException e) {
+             LOG.warn(e);
+         }
+     }
+     return listXMLStrings;
+ }
+\ No newline at end of file

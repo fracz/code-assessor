@@ -1,0 +1,11 @@
+diff --git a/b73cd63d27e350dbe88be8badc6fc105afa94c37 b/3c438889db706eb929cd5b480be1c4959e576237
+index b73cd63d27..3c438889db 100644
+--- a/b73cd63d27e350dbe88be8badc6fc105afa94c37
++++ b/3c438889db706eb929cd5b480be1c4959e576237
+@@ -1,3 +1,4 @@
+ public void tooManyActualInvocations(int wantedCount, int actualCount, PrintableInvocation wanted, HasStackTrace firstUndesired) {
+-    throw new TooManyActualInvocations(join(wanted.toString(), "Wanted " + pluralize(wantedCount) + ":", "-> at " + new Location(), "but was " + pluralize(actualCount) + ". Undesired invocation:", "-> at " + firstUndesired.getStackTrace()[0], ""));
++    String message = createTooManyInvocationsMessage(wantedCount, actualCount, wanted, firstUndesired);
++    throw new TooManyActualInvocations(message);
+ }
+\ No newline at end of file

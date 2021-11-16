@@ -1,0 +1,22 @@
+diff --git a/f38872f43e3d83e617779ee62a3392e76845e3dc b/021142b73aed488bb90efbda3c87ea521a5d5707
+index f38872f43e..021142b73a 100644
+--- a/f38872f43e3d83e617779ee62a3392e76845e3dc
++++ b/021142b73aed488bb90efbda3c87ea521a5d5707
+@@ -1,10 +1,14 @@
+ /**
+  * Creates a lambda call by combining the call without blocks and the call blocks, so that the
+  * calling portion sans blocks can be reused by method references.
+  */
+-private void printLambdaCall(ITypeBinding functionalTypeBinding, IMethodBinding methodBinding, List<VariableDeclaration> parameters, boolean isCapturing) {
++private void printLambdaCall(LambdaExpression node) {
++    ITypeBinding functionalTypeBinding = node.functionalTypeBinding();
++    IMethodBinding methodBinding = node.getMethodBinding();
++    IMethodBinding functionalInterface = functionalTypeBinding.getFunctionalInterfaceMethod();
++    List<VariableDeclaration> parameters = node.getParameters();
++    boolean isCapturing = node.isCapturing();
+     String newClassName = nameTable.getFullLambdaName(methodBinding);
+     printLambdaCallWithoutBlocks(functionalTypeBinding, newClassName, isCapturing);
+-    IMethodBinding functionalInterface = functionalTypeBinding.getFunctionalInterfaceMethod();
+     printLambdaCallBlocks(functionalInterface, parameters, isCapturing);
+ }
+\ No newline at end of file

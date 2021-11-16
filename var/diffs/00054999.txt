@@ -1,0 +1,20 @@
+diff --git a/866956a181fdb89d1001e9812dbe43d0f88e9408 b/7546c3022a2de72d15f3fd4e41e219a0580c8806
+index 866956a181..7546c3022a 100644
+--- a/866956a181fdb89d1001e9812dbe43d0f88e9408
++++ b/7546c3022a2de72d15f3fd4e41e219a0580c8806
+@@ -1,8 +1,8 @@
+-public static ClassInfo fromType(ArgType type) {
+-    ClassInfo cls = CLASSINFO_CACHE.get(type);
+-    if (cls == null) {
+-        cls = new ClassInfo(type);
+-        CLASSINFO_CACHE.put(type, cls);
++public static ClassInfo fromType(DexNode dex, ArgType type) {
++    ClassInfo cls = dex.getInfoStorage().getCls(type);
++    if (cls != null) {
++        return cls;
+     }
+-    return cls;
++    cls = new ClassInfo(dex, type);
++    return dex.getInfoStorage().putCls(cls);
+ }
+\ No newline at end of file

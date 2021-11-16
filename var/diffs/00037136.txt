@@ -1,0 +1,13 @@
+diff --git a/56d99ba98f6a997d00f0059b871c618c969514e7 b/532441317dfda3dd82b89d7955ed6fb8c2280538
+index 56d99ba98f..532441317d 100644
+--- a/56d99ba98f6a997d00f0059b871c618c969514e7
++++ b/532441317dfda3dd82b89d7955ed6fb8c2280538
+@@ -1,4 +1,6 @@
+ private Interceptor getInterceptor(final TestClassLoader loader, int index) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, ClassNotFoundException {
+-    Interceptor interceptor = (Interceptor) loader.loadClass("com.navercorp.pinpoint.test.javasssit.TestInterceptors").getMethod("get", int.class).invoke(null, index);
++    Class<?> interceptorClazz = loader.loadClass("com.navercorp.pinpoint.test.javasssit.TestInterceptors");
++    Method getMethod = interceptorClazz.getMethod("get", int.class);
++    Interceptor interceptor = (Interceptor) getMethod.invoke(null, index);
+     return interceptor;
+ }
+\ No newline at end of file

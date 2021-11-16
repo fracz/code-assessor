@@ -1,0 +1,21 @@
+diff --git a/5b94b29982addf0ea59be0de67f7e9dc9ef49c5f b/495a87464bfe0ecd3451455df1641460b7ebc1a9
+index 5b94b29982..495a87464b 100644
+--- a/5b94b29982addf0ea59be0de67f7e9dc9ef49c5f
++++ b/495a87464bfe0ecd3451455df1641460b7ebc1a9
+@@ -1,11 +1,9 @@
+ @Override
+ public NetworkStats getNetworkStatsDetail() {
+     mContext.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE, "NetworkManagementService");
+-    final String[] knownUids = PATH_PROC_UID_STAT.list();
+-    final NetworkStats stats = new NetworkStats(SystemClock.elapsedRealtime(), knownUids.length);
+-    for (String uid : knownUids) {
+-        final int uidInt = Integer.parseInt(uid);
+-        collectNetworkStatsDetail(stats, uidInt);
++    if (STATS_NETFILTER.exists()) {
++        return getNetworkStatsDetailNetfilter(UID_ALL);
++    } else {
++        return getNetworkStatsDetailUidstat(UID_ALL);
+     }
+-    return stats;
+ }
+\ No newline at end of file

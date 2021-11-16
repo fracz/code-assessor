@@ -1,0 +1,16 @@
+diff --git a/4030f63746b2ce2300b1959b8ada1f8f50aeed4c b/e9b8578077530d746147b93245bd39c5604d1977
+index 4030f63746..e9b8578077 100644
+--- a/4030f63746b2ce2300b1959b8ada1f8f50aeed4c
++++ b/e9b8578077530d746147b93245bd39c5604d1977
+@@ -1,4 +1,8 @@
+ @Override
+-public Query buildQuery(Object query) throws ParseException {
+-    return queryBuilder.query(index, query, mgrWriter.getIndexWriter().getAnalyzer(), getLuceneVersion(metadata));
++public Query buildQuery(Object query) {
++    try {
++        return queryBuilder.query(index, query, mgrWriter.getIndexWriter().getAnalyzer(), getLuceneVersion(metadata));
++    } catch (ParseException e) {
++        throw new OIndexEngineException("Error parsing query", e);
++    }
+ }
+\ No newline at end of file

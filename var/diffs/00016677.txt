@@ -1,0 +1,15 @@
+diff --git a/f222af53a403be11d1776d294f1676dce6985d66 b/722f0d6d7637587e7c3ec0c8bc48a16f0f5de236
+index f222af53a4..722f0d6d76 100644
+--- a/f222af53a403be11d1776d294f1676dce6985d66
++++ b/722f0d6d7637587e7c3ec0c8bc48a16f0f5de236
+@@ -1,6 +1,8 @@
+-// TODO: make the reference null
+ public void removeAliasForThis(@NotNull DeclarationDescriptor descriptor) {
+     Stack<JsName> aliasStack = aliasesForThis.get(descriptor.getOriginal());
+     assert !aliasStack.empty();
+     aliasStack.pop();
++    if (aliasStack.empty()) {
++        aliasesForThis.put(descriptor, null);
++    }
+ }
+\ No newline at end of file

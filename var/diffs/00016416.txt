@@ -1,0 +1,24 @@
+diff --git a/496f89745d61b81c9d198acfa27cd3b9f12efa99 b/557657368937c43eea49039c6ed1030cb66b9aba
+index 496f89745d..5576573689 100644
+--- a/496f89745d61b81c9d198acfa27cd3b9f12efa99
++++ b/557657368937c43eea49039c6ed1030cb66b9aba
+@@ -1,16 +1,15 @@
+ @Nullable
+ @Override
+ public Result<KotlinDeclarationsCache> compute() {
+     // but we put it here to guard for the case of further modifications
+     synchronized (declarationAnalysisLock) {
+-        BindingTraceContext trace = new BindingTraceContext();
+-        incompleteTrace = trace;
++        incompleteTrace = new BindingTraceContext();
+         AnalyzeExhaust analyzeExhaust;
+         try {
+-            analyzeExhaust = AnalyzerFacadeForJVM.analyzeFilesWithJavaIntegration(project, JetFilesProvider.getInstance(project).allInScope(GlobalSearchScope.allScope(project)), trace, Collections.<AnalyzerScriptParameter>emptyList(), Predicates.<PsiFile>alwaysFalse(), true);
++            analyzeExhaust = AnalyzerFacadeForJVM.analyzeFilesWithJavaIntegration(project, JetFilesProvider.getInstance(project).allInScope(GlobalSearchScope.allScope(project)), incompleteTrace, Collections.<AnalyzerScriptParameter>emptyList(), Predicates.<PsiFile>alwaysFalse(), true);
+         } finally {
+             incompleteTrace = null;
+         }
+         return Result.<KotlinDeclarationsCache>create(new KotlinDeclarationsCacheImpl(analyzeExhaust), PsiModificationTracker.OUT_OF_CODE_BLOCK_MODIFICATION_COUNT, KotlinCacheManager.getInstance(project).getDeclarationsTracker());
+     }
+ }
+\ No newline at end of file

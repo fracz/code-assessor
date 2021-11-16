@@ -1,0 +1,18 @@
+diff --git a/37ece812622ef24bb1b6bcd3b3bb1395625be679 b/73d0dab441ad81e534d054cb6a88f5878f7277f7
+index 37ece81262..73d0dab441 100644
+--- a/37ece812622ef24bb1b6bcd3b3bb1395625be679
++++ b/73d0dab441ad81e534d054cb6a88f5878f7277f7
+@@ -1,7 +1,6 @@
+ /**
+- * Subclass should handle assertions on the lucene query produced by the query builder under test here
+- * @param queryBuilder the original queryBuilder used in this test
+- * @param query the lucene query constructed from this
+- * @param context the {@link QueryParseContext} that can be used for assertions
++ * Run after default equality comparison between lucene expected query and result of {@link QueryBuilder#toQuery(QueryParseContext)}.
++ * Can contain additional assertions that are query specific. Empty default implementation.
+  */
+-protected abstract void assertLuceneQuery(QB queryBuilder, Query query, QueryParseContext context) throws IOException;
+\ No newline at end of file
++protected void assertLuceneQuery(QB queryBuilder, Query query, QueryParseContext context) {
++}
+\ No newline at end of file

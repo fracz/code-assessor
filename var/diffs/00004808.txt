@@ -1,0 +1,21 @@
+diff --git a/cecfd4c81d087b5e1d0f768671f3db1a09f7006b b/9ac87ebc28c933c1796fbc2ae8ac5c06f9d47572
+index cecfd4c81d..9ac87ebc28 100644
+--- a/cecfd4c81d087b5e1d0f768671f3db1a09f7006b
++++ b/9ac87ebc28c933c1796fbc2ae8ac5c06f9d47572
+@@ -1,11 +1,11 @@
+ @NotNull
+ @Override
+ public Tokenizer getTokenizer(PsiElement element) {
+     if (element instanceof PsiComment)
+-        return new CommentTokenizer();
++        return myCommentTokenizer;
+     if (element instanceof XmlAttributeValue)
+-        return new XmlAttributeTokenizer();
++        return myXmlAttributeTokenizer;
+     if (element instanceof XmlText)
+-        return new XmlTextTokenizer();
+-    return new Tokenizer();
++        return myXmlTextTokenizer;
++    return EMPTY_TOKENIZER;
+ }
+\ No newline at end of file

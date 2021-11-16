@@ -1,0 +1,25 @@
+diff --git a/1d27b490420f09f2f103115623c43e367a102eb8 b/114f2ba3ef55bf7b15edead00ffb788e1999ddef
+index 1d27b49042..114f2ba3ef 100644
+--- a/1d27b490420f09f2f103115623c43e367a102eb8
++++ b/114f2ba3ef55bf7b15edead00ffb788e1999ddef
+@@ -1,10 +1,15 @@
++/**
++ * Saves course state for serialization
++ *
++ * @return xml element with attributes and content typical for course
++ */
+ public Element saveState() {
+-    Element courseElement = new Element("courseElement");
+-    courseElement.setAttribute("name", name);
+-    courseElement.setAttribute("description", description);
+-    courseElement.setAttribute("myResourcePath", myResourcePath);
++    Element courseElement = new Element(COURSE_ELEMENT_NAME);
++    courseElement.setAttribute(NAME_ATTRIBUTE_NAME, name);
++    courseElement.setAttribute(DESCRIPTION_ATTRIBUTE_NAME, description);
++    courseElement.setAttribute(RESOURCE_PATH_ATTRIBUTE_NAME, myResourcePath);
+     for (Lesson lesson : lessons) {
+         courseElement.addContent(lesson.saveState());
+     }
+     return courseElement;
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/9cc1dc3f12bf5e41180403bf9b36d77a8075e8e1 b/16e3fdb3f94b167aea3a59db9855861f083c24f3
+index 9cc1dc3f12..16e3fdb3f9 100644
+--- a/9cc1dc3f12bf5e41180403bf9b36d77a8075e8e1
++++ b/16e3fdb3f94b167aea3a59db9855861f083c24f3
+@@ -1,15 +1,4 @@
+-public static PoolType getPoolType(int fullPartitionID) {
+-    switch(// & 11b (last two bits)
+-    fullPartitionID & 3) {
+-        case 0:
+-            return VERTEX;
+-        case 1:
+-            return RELATION;
+-        case 2:
+-            return RELATIONTYPE;
+-        case 3:
+-            return GENERICTYPE;
+-        default:
+-            throw new IllegalArgumentException("Unrecognized partition id: " + fullPartitionID);
+-    }
++public static PoolType getPoolType(int idNamespace) {
++    Preconditions.checkArgument(idNamespace >= 0 && idNamespace < values().length);
++    return values()[idNamespace];
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/efe48aa1f72f851a0c554485d5998eb715c7d530 b/750a15099fd1619534a1aa3e5189bfd09fc61fbd
+index efe48aa1f7..750a15099f 100644
+--- a/efe48aa1f72f851a0c554485d5998eb715c7d530
++++ b/750a15099fd1619534a1aa3e5189bfd09fc61fbd
+@@ -1,9 +1,10 @@
+ @Nullable
+ public static HighlightInfo checkGenericArrayCreation(PsiElement element, PsiType type) {
+     if (type instanceof PsiArrayType) {
+         if (!isReifiableType(((PsiArrayType) type).getComponentType())) {
+-            return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, element, JavaErrorMessages.message("generic.array.creation"));
++            String description = JavaErrorMessages.message("generic.array.creation");
++            return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(element).descriptionAndTooltip(description).create();
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

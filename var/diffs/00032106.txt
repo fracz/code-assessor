@@ -1,0 +1,17 @@
+diff --git a/d8ad727f1d60edf1143f4eab492edebd07170159 b/cf7ace2aa71df752c02b119e3b1d79d10d58eefd
+index d8ad727f1d..cf7ace2aa7 100644
+--- a/d8ad727f1d60edf1143f4eab492edebd07170159
++++ b/cf7ace2aa71df752c02b119e3b1d79d10d58eefd
+@@ -1,8 +1,8 @@
+ public void testCanExposeExpression8() {
+     // Can it be decompose?
+-    helperCanExposeExpression(DecompositionType.DECOMPOSABLE, "HangoutStarter.prototype.launchHangout = function() {\n" + "  var self = a.b;\n" + "  var myUrl = new goog.Uri(getDomServices_(self).getDomHelper()." + "getWindow().location.href);\n" + "};", "getDomServices_");
++    helperCanExposeExpression(DecompositionType.DECOMPOSABLE, LINE_JOINER.join("HangoutStarter.prototype.launchHangout = function() {", "  var self = a.b;", "  var myUrl = new goog.Uri(", "      getDomServices_(self).getDomHelper().getWindow().location.href);", "};"), "getDomServices_");
+     // Verify it is properly expose the target expression.
+-    helperExposeExpression("HangoutStarter.prototype.launchHangout = function() {\n" + "  var self = a.b;\n" + "  var myUrl = new goog.Uri(getDomServices_(self).getDomHelper()." + "getWindow().location.href);\n" + "};", "getDomServices_", "HangoutStarter.prototype.launchHangout = function() {" + "  var self = a.b;" + "  var temp_const$jscomp$0 = goog.Uri;" + "  var myUrl = new temp_const$jscomp$0(getDomServices_(self)." + "      getDomHelper().getWindow().location.href)}");
++    helperExposeExpression(LINE_JOINER.join("HangoutStarter.prototype.launchHangout = function() {", "  var self = a.b;", "  var myUrl =", "      new goog.Uri(getDomServices_(self).getDomHelper().getWindow().location.href);", "};"), "getDomServices_", LINE_JOINER.join("HangoutStarter.prototype.launchHangout = function() {", "  var self = a.b;", "  var temp_const$jscomp$0 = goog.Uri;", "  var myUrl = new temp_const$jscomp$0(", "      getDomServices_(self).getDomHelper().getWindow().location.href);", "}"));
+     // Verify the results can be properly moved.
+-    helperMoveExpression("HangoutStarter.prototype.launchHangout = function() {" + "  var self = a.b;" + "  var temp_const$jscomp$0 = goog.Uri;" + "  var myUrl = new temp_const$jscomp$0(getDomServices_(self)." + "      getDomHelper().getWindow().location.href)}", "getDomServices_", "HangoutStarter.prototype.launchHangout = function() {" + "  var self=a.b;" + "  var temp_const$jscomp$0=goog.Uri;" + "  var result$jscomp$0=getDomServices_(self);" + "  var myUrl=new temp_const$jscomp$0(result$jscomp$0.getDomHelper()." + "      getWindow().location.href)}");
++    helperMoveExpression(LINE_JOINER.join("HangoutStarter.prototype.launchHangout = function() {", "  var self = a.b;", "  var temp_const$jscomp$0 = goog.Uri;", "  var myUrl = new temp_const$jscomp$0(", "      getDomServices_(self).getDomHelper().getWindow().location.href);", "}"), "getDomServices_", LINE_JOINER.join("HangoutStarter.prototype.launchHangout = function() {", "  var self=a.b;", "  var temp_const$jscomp$0=goog.Uri;", "  var result$jscomp$0=getDomServices_(self);", "  var myUrl=new temp_const$jscomp$0(", "      result$jscomp$0.getDomHelper().getWindow().location.href);", "}"));
+ }
+\ No newline at end of file

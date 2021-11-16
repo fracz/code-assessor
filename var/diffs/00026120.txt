@@ -1,0 +1,26 @@
+diff --git a/ee10cf934b00c856b962b346f8c4561c7603dd65 b/8086ddbc12168349b91d16d4f0b4f7f1f6cf9acb
+index ee10cf934b..8086ddbc12 100644
+--- a/ee10cf934b00c856b962b346f8c4561c7603dd65
++++ b/8086ddbc12168349b91d16d4f0b4f7f1f6cf9acb
+@@ -1,18 +1,18 @@
+ /**
+  * Builds the Environment.
+  */
+ public Environment build() {
+-    Preconditions.checkArgument(mutability.isMutable());
++    Preconditions.checkArgument(!mutability.isFrozen());
+     if (parent != null) {
+-        Preconditions.checkArgument(!parent.mutability().isMutable());
++        Preconditions.checkArgument(parent.mutability().isFrozen());
+     }
+     Frame globalFrame = new Frame(mutability, parent);
+     Frame dynamicFrame = new Frame(mutability, null);
+     if (semantics == null) {
+         semantics = Options.getDefaults(SkylarkSemanticsOptions.class);
+     }
+     if (importedExtensions == null) {
+         importedExtensions = ImmutableMap.of();
+     }
+     return new Environment(globalFrame, dynamicFrame, semantics, eventHandler, importedExtensions, fileContentHashCode, phase, label);
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/c51970b56b7d4c8680786ec7cd96d3efcab16d09 b/750c9ae0077257d10f491c18c20b98901fd0555b
+index c51970b56b..750c9ae007 100644
+--- a/c51970b56b7d4c8680786ec7cd96d3efcab16d09
++++ b/750c9ae0077257d10f491c18c20b98901fd0555b
+@@ -1,4 +1,10 @@
+ @Override
+-public Publisher<Double> getScore(V o) {
+-    return commandExecutor.readReactive(getName(), StringCodec.INSTANCE, RedisCommands.ZSCORE, getName(), o);
++public Publisher<Double> getScore(final V o) {
++    return reactive(new Supplier<RFuture<Double>>() {
++
++        @Override
++        public RFuture<Double> get() {
++            return instance.getScoreAsync(o);
++        }
++    });
+ }
+\ No newline at end of file

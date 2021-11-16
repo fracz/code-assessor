@@ -1,0 +1,14 @@
+diff --git a/c0325d7fadb44e98ec997ce08695c1f98fc728a6 b/4fb3aa36242a32c3203ee2511fe822cd6daed014
+index c0325d7fad..4fb3aa3624 100644
+--- a/c0325d7fadb44e98ec997ce08695c1f98fc728a6
++++ b/4fb3aa36242a32c3203ee2511fe822cd6daed014
+@@ -1,5 +1,7 @@
+ @Override
+ protected void saveSettings(PsiVariable psiVariable) {
+-    JavaRefactoringSettings.getInstance().INTRODUCE_PARAMETER_CREATE_FINALS = psiVariable.hasModifierProperty(PsiModifier.FINAL);
++    final JavaRefactoringSettings settings = JavaRefactoringSettings.getInstance();
++    InplaceIntroduceParameterPopup.super.saveSettings(settings);
++    settings.INTRODUCE_PARAMETER_CREATE_FINALS = psiVariable.hasModifierProperty(PsiModifier.FINAL);
+     TypeSelectorManagerImpl.typeSelected(psiVariable.getType(), myDefaultParameterTypePointer.getType());
+ }
+\ No newline at end of file

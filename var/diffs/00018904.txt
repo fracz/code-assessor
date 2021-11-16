@@ -1,0 +1,11 @@
+diff --git a/87b76038582df08d2f4faa94249f1186059d35e5 b/4463139d335287d30f4c886c26d98ebce3f9322d
+index 87b7603858..4463139d33 100644
+--- a/87b76038582df08d2f4faa94249f1186059d35e5
++++ b/4463139d335287d30f4c886c26d98ebce3f9322d
+@@ -1,3 +1,4 @@
+ public void updateBundleMessageBody(MasterSecret masterSecret, long messageId, String body) {
+-    updateMessageBodyAndType(messageId, body, Types.TOTAL_MASK, Types.BASE_INBOX_TYPE | Types.ENCRYPTION_REMOTE_BIT | Types.SECURE_MESSAGE_BIT);
++    String encryptedBody = getEncryptedBody(masterSecret, body);
++    updateMessageBodyAndType(messageId, encryptedBody, Types.TOTAL_MASK, Types.BASE_INBOX_TYPE | Types.SECURE_MESSAGE_BIT);
+ }
+\ No newline at end of file

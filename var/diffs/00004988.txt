@@ -1,0 +1,12 @@
+diff --git a/f53f49f3334b9c88933ae5ab14fc053171596362 b/4ba025a5d9283536a1a256dd879c6b4db757bb9f
+index f53f49f333..4ba025a5d9 100644
+--- a/f53f49f3334b9c88933ae5ab14fc053171596362
++++ b/4ba025a5d9283536a1a256dd879c6b4db757bb9f
+@@ -1,4 +1,4 @@
+ @Override
+-public boolean managesLibrary(@NotNull Library library, LibrariesContainer container) {
+-    return getGppVersion(container.getLibraryFiles(library, OrderRootType.CLASSES)) != null;
++public boolean managesLibrary(final VirtualFile[] libraryFiles) {
++    return getGppVersion(libraryFiles) != null;
+ }
+\ No newline at end of file

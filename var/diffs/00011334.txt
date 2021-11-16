@@ -1,0 +1,11 @@
+diff --git a/61759300b92a09ec140d51aa1c87139730244f2d b/65bfb8c023335aa25a541ab4eb0beeaf571b5521
+index 61759300b9..65bfb8c023 100644
+--- a/61759300b92a09ec140d51aa1c87139730244f2d
++++ b/65bfb8c023335aa25a541ab4eb0beeaf571b5521
+@@ -1,3 +1,3 @@
+-private static boolean isSuitableForTask(List<String> tags, PyTestTask task) {
+-    return isSuitableForTags(tags, task.getTags());
++private static boolean isSuitableForTask(List<String> availableTags, @NotNull final Set<String> requiredTags) {
++    return isSuitableForTags(availableTags, requiredTags);
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/ccaf8f5dd979e2e72c043861cf7e311f554e2ac0 b/c27abdb853c4730ca91e4241a0748f54500a7b9d
+index ccaf8f5dd9..c27abdb853 100644
+--- a/ccaf8f5dd979e2e72c043861cf7e311f554e2ac0
++++ b/c27abdb853c4730ca91e4241a0748f54500a7b9d
+@@ -1,10 +1,9 @@
+-private void cleanUpContainer(Optional<String> containerIdOptional) {
++private void cleanUpContainer(@Nullable String containerId) {
+     try {
+-        if (containerIdOptional.isPresent()) {
+-            String containerId = containerIdOptional.get();
++        if (containerId != null) {
+             docker.removeContainer(RemoveContainerParams.create(containerId).withRemoveVolumes(true).withForce(true));
+         }
+     } catch (Exception ex) {
+         LOG.error("Failed to remove docker container.", ex);
+     }
+ }
+\ No newline at end of file

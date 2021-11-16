@@ -1,0 +1,19 @@
+diff --git a/57a426bafae14207c854e7a07d6ab48ac4fed468 b/dbbe485e97a7043b864693069750beac80c58953
+index 57a426bafa..dbbe485e97 100644
+--- a/57a426bafae14207c854e7a07d6ab48ac4fed468
++++ b/dbbe485e97a7043b864693069750beac80c58953
+@@ -1,10 +1,9 @@
+-private void generateExpressionWithNullFallback(@NotNull JetExpression expression, @NotNull Label ifnull) {
++private StackValue generateExpressionWithNullFallback(@NotNull JetExpression expression, @NotNull Label ifnull) {
+     expression = JetPsiUtil.deparenthesize(expression);
+     Type type = expressionType(expression);
+     if (expression instanceof JetSafeQualifiedExpression && !isPrimitive(type)) {
+-        StackValue value = generateSafeQualifiedExpression((JetSafeQualifiedExpression) expression, ifnull);
+-        value.put(type, v);
++        return StackValue.lazyCast(generateSafeQualifiedExpression((JetSafeQualifiedExpression) expression, ifnull), type);
+     } else {
+-        gen(expression, type);
++        return genLazy(expression, type);
+     }
+ }
+\ No newline at end of file

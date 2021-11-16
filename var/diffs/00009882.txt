@@ -1,0 +1,25 @@
+diff --git a/27b4f875b7f426821aa63a4ee68164ec8f451fdb b/1086656694297452c24269a8a3871699394a712f
+index 27b4f875b7..1086656694 100644
+--- a/27b4f875b7f426821aa63a4ee68164ec8f451fdb
++++ b/1086656694297452c24269a8a3871699394a712f
+@@ -1,10 +1,15 @@
+ private void initSliceFieldActions() {
+-    myComponent.getSliceTextField().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "strokeEnter");
+-    myComponent.getSliceTextField().getActionMap().put("strokeEnter", new AbstractAction() {
++    if (myComponent.getSliceTextField().getEditor() == null) {
++        LOG.error("Null editor in slice field.");
++        return;
++    }
++    myComponent.getSliceTextField().getEditor().getContentComponent().addKeyListener(new KeyAdapter() {
+
+         @Override
+-        public void actionPerformed(ActionEvent e) {
+-            doReslice(getSliceText(), null);
++        public void keyPressed(KeyEvent e) {
++            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
++                doReslice(getSliceText(), null);
++            }
+         }
+     });
+ }
+\ No newline at end of file

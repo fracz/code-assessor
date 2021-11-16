@@ -1,0 +1,11 @@
+diff --git a/5d8f37d12ac1913a2fa9dac176a8c5064cf5c849 b/315d3b70e62dcf96eee4a64f147da0c0c4bad06d
+index 5d8f37d12a..315d3b70e6 100644
+--- a/5d8f37d12ac1913a2fa9dac176a8c5064cf5c849
++++ b/315d3b70e62dcf96eee4a64f147da0c0c4bad06d
+@@ -1,4 +1,4 @@
+ @Override
+ protected void onFailure() {
+-    GitVcs.IMPORTANT_ERROR_NOTIFICATION.createNotification(myErrorMessage, NotificationType.ERROR).notify(myProject);
++    VcsNotifier.getInstance(myProject).notifyError("", myErrorMessage);
+ }
+\ No newline at end of file

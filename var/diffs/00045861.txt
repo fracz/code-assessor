@@ -1,0 +1,18 @@
+diff --git a/a9dedd24b7a20c61e7aa74f50ab98b5afc7ad1f5 b/84d85471a9640bf828b922caef752ee9bdc3cd5b
+index a9dedd24b7..84d85471a9 100644
+--- a/a9dedd24b7a20c61e7aa74f50ab98b5afc7ad1f5
++++ b/84d85471a9640bf828b922caef752ee9bdc3cd5b
+@@ -1,10 +1,10 @@
+ public long getSize() {
+     final OTransactionIndexChanges indexChanges = database.getTransaction().getIndexChanges(delegate.getName());
+     long tot;
+     if (indexChanges == null || !indexChanges.cleared)
+         // BEGIN FROM 0
+-        tot = 0;
+-    else
+         tot = delegate.getSize();
++    else
++        tot = 0;
+     return tot;
+ }
+\ No newline at end of file

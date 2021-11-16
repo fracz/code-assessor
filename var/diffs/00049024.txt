@@ -1,0 +1,19 @@
+diff --git a/aa831f031c311981155c57611e81c5b2106f673e b/a54ec6531812ef510730f0933f17f8eb084ba5d3
+index aa831f031c..a54ec65318 100644
+--- a/aa831f031c311981155c57611e81c5b2106f673e
++++ b/a54ec6531812ef510730f0933f17f8eb084ba5d3
+@@ -1,11 +1,12 @@
+ protected void enableHandlerContent(NetworkHandlerDescriptor descriptor) {
+     HandlerBlock handlerBlock = configurations.get(descriptor);
+-    if (handlerBlock.configuration.isEnabled()) {
++    DBWHandlerConfiguration handlerConfiguration = handlerBlock.loadedConfigs.get(wizard.getPageSettings().getActiveDataSource().getId());
++    if (handlerConfiguration.isEnabled()) {
+         if (handlerBlock.blockEnableState != null) {
+             handlerBlock.blockEnableState.restore();
+             handlerBlock.blockEnableState = null;
+         }
+     } else if (handlerBlock.blockEnableState == null) {
+         handlerBlock.blockEnableState = ControlEnableState.disable(handlerBlock.blockControl);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/ea4a9a5ff23099310e3c7003097f681023a68a0e b/085608ad213a30b38eb10b24670026f1cdc921ad
+index ea4a9a5ff2..085608ad21 100644
+--- a/ea4a9a5ff23099310e3c7003097f681023a68a0e
++++ b/085608ad213a30b38eb10b24670026f1cdc921ad
+@@ -1,9 +1,5 @@
+ public static Mutation makeDropFunctionMutation(KSMetaData keyspace, UDFunction function, long timestamp) {
+     // Include the serialized keyspace in case the target node missed a CREATE KEYSPACE migration (see CASSANDRA-5631).
+     Mutation mutation = makeCreateKeyspaceMutation(keyspace, timestamp, false);
+-    ColumnFamily cells = mutation.addOrGet(Functions);
+-    int ldt = (int) (System.currentTimeMillis() / 1000);
+-    Composite prefix = Functions.comparator.make(function.name().name, functionSignatureWithTypes(function));
+-    cells.addAtom(new RangeTombstone(prefix, prefix.end(), timestamp, ldt));
+-    return mutation;
++    return RowUpdateBuilder.deleteRow(Functions, timestamp, mutation, function.name().name, functionSignatureWithTypes(function));
+ }
+\ No newline at end of file

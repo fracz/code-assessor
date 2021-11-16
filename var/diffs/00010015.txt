@@ -1,0 +1,12 @@
+diff --git a/4f72c846bbd6aab440a191ca7de936b31852893c b/aff34eee7719e92b65e5b20597e4e78f05f2193a
+index 4f72c846bb..aff34eee77 100644
+--- a/4f72c846bbd6aab440a191ca7de936b31852893c
++++ b/aff34eee7719e92b65e5b20597e4e78f05f2193a
+@@ -1,5 +1,5 @@
+ private static HighlightInfo getSameErasureMessage(final boolean sameClass, final PsiMethod method, final PsiMethod superMethod, TextRange textRange) {
+     @NonNls final String key = sameClass ? "generics.methods.have.same.erasure" : method.hasModifierProperty(PsiModifier.STATIC) ? "generics.methods.have.same.erasure.hide" : "generics.methods.have.same.erasure.override";
+     String description = JavaErrorMessages.message(key, HighlightMethodUtil.createClashMethodMessage(method, superMethod, !sameClass));
+-    return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, textRange, description);
++    return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(textRange).descriptionAndTooltip(description).create();
+ }
+\ No newline at end of file

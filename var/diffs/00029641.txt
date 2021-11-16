@@ -1,0 +1,17 @@
+diff --git a/3634b299c8bc599d8ce7d864420a75732d140e47 b/4ee27ed44c70f833492391f62753ff9e49af773b
+index 3634b299c8..4ee27ed44c 100644
+--- a/3634b299c8bc599d8ce7d864420a75732d140e47
++++ b/4ee27ed44c70f833492391f62753ff9e49af773b
+@@ -1,10 +1,10 @@
+ public long asLong() {
+-    if (this == AUTO) {
++    if (this.equals(AUTO)) {
+         return 1;
+     }
+     try {
+         return Long.parseLong(fuzziness.toString());
+     } catch (NumberFormatException ex) {
+         return (long) Double.parseDouble(fuzziness.toString());
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/a662d8bcee4d837a83330468e7b0b77a2f13e34f b/89faa925144d35877330ce73c21f2a4bbe7d354b
+index a662d8bcee..89faa92514 100644
+--- a/a662d8bcee4d837a83330468e7b0b77a2f13e34f
++++ b/89faa925144d35877330ce73c21f2a4bbe7d354b
+@@ -1,3 +1,3 @@
+-public IndexStatistics getIndex(int labelId, int propertyKeyId) {
+-    return indexMap.get(new IndexDescriptor(labelId, propertyKeyId));
++public IndexStatistics getIndex(NodePropertyDescriptor descriptor) {
++    return indexMap.get(IndexDescriptorFactory.from(descriptor));
+ }
+\ No newline at end of file

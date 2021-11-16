@@ -1,0 +1,21 @@
+diff --git a/3127b4f5e318869866d2407c40818ffd932368a9 b/fec58f7ac379a8811056899fff7559c2dfa4eca3
+index 3127b4f5e3..fec58f7ac3 100644
+--- a/3127b4f5e318869866d2407c40818ffd932368a9
++++ b/fec58f7ac379a8811056899fff7559c2dfa4eca3
+@@ -1,14 +1,8 @@
+ @Override
+ protected void started(TestState state) {
+     TestDescriptorInternal test = state.test;
+     if (test.getName().equals(test.getClassName())) {
+-        testSuiteReport = documentBuilder.newDocument();
+-        rootElement = testSuiteReport.createElement("testsuite");
+-        testSuiteReport.appendChild(rootElement);
+-        // Add an empty properties element for compatibility
+-        rootElement.appendChild(testSuiteReport.createElement("properties"));
+-        outputs.put(TestOutputEvent.Destination.StdOut, new StringBuilder());
+-        outputs.put(TestOutputEvent.Destination.StdErr, new StringBuilder());
++        xmlTestsuite = new XmlTestsuite(testResultsDir, test.getClassName(), state.getStartTime());
+         testSuite = state;
+     }
+ }
+\ No newline at end of file

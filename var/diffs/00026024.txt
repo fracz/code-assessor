@@ -1,0 +1,30 @@
+diff --git a/030d5a054dab25f80e2a45647ce69cb82a8b07b2 b/3a043b4965d17265b6e14071e695878460cb5d0d
+index 030d5a054d..3a043b4965 100644
+--- a/030d5a054dab25f80e2a45647ce69cb82a8b07b2
++++ b/3a043b4965d17265b6e14071e695878460cb5d0d
+@@ -1,19 +1,19 @@
+ /**
+  * Displays the identity provider metadata.
+  * Checks to make sure metadata exists, and if not, generates it first.
+  *
+  * @param response servlet response
+  * @throws IOException the iO exception
+  */
+ @RequestMapping(method = RequestMethod.GET, value = SamlIdPConstants.ENDPOINT_IDP_METADATA)
+ public void generateMetadataForIdp(final HttpServletResponse response) throws IOException {
+     final File metadataFile = this.metadataAndCertificatesGenerationService.performGenerationSteps();
+     final String contents = FileUtils.readFileToString(metadataFile, StandardCharsets.UTF_8);
+     response.setContentType(CONTENT_TYPE);
+     response.setStatus(HttpServletResponse.SC_OK);
+-    final PrintWriter writer = response.getWriter();
+-    logger.debug("Producing metadata for the response");
+-    writer.write(contents);
+-    writer.flush();
+-    writer.close();
++    try (PrintWriter writer = response.getWriter()) {
++        logger.debug("Producing metadata for the response");
++        writer.write(contents);
++        writer.flush();
++    }
+ }
+\ No newline at end of file

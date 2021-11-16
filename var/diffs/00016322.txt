@@ -1,0 +1,16 @@
+diff --git a/de841ab56164a0e37262c8f54e33f37bad38cda1 b/8e520d3cd3ff70ad6f0138dcc35aeb29c9def170
+index de841ab561..8e520d3cd3 100644
+--- a/de841ab56164a0e37262c8f54e33f37bad38cda1
++++ b/8e520d3cd3ff70ad6f0138dcc35aeb29c9def170
+@@ -1,9 +1,9 @@
+ @Nullable
+ @IfNotParsed
+ public JetExpression getBaseExpression() {
+     PsiElement expression = getOperationSign().getNextSibling();
+-    while (expression != null && false == expression instanceof JetExpression) {
++    while (expression != null && !(expression instanceof JetExpression)) {
+         expression = expression.getNextSibling();
+     }
+     return (JetExpression) expression;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/8ea1c29e8a84164e74d538e7d4d1374ed68c1cb7 b/36dd76a2c5bde75cfd279ff506e1c46526c6809d
+index 8ea1c29e8a..36dd76a2c5 100644
+--- a/8ea1c29e8a84164e74d538e7d4d1374ed68c1cb7
++++ b/36dd76a2c5bde75cfd279ff506e1c46526c6809d
+@@ -1,7 +1,6 @@
+-public DocumentationProvider getProviderFromElement(final PsiElement element) {
++public static DocumentationProvider getProviderFromElement(final PsiElement element) {
+     SmartPsiElementPointer originalElementPointer = element != null ? element.getUserData(ORIGINAL_ELEMENT_KEY) : null;
+     PsiElement originalElement = originalElementPointer != null ? originalElementPointer.getElement() : null;
+     PsiFile containingFile = (originalElement != null) ? originalElement.getContainingFile() : (element != null) ? element.getContainingFile() : null;
+-    VirtualFile vfile = (containingFile != null) ? containingFile.getVirtualFile() : null;
+-    return (vfile != null) ? getProvider(vfile.getFileType()) : null;
++    return containingFile.getLanguage().getDocumentationProvider();
+ }
+\ No newline at end of file

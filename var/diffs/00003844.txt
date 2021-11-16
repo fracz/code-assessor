@@ -1,0 +1,16 @@
+diff --git a/f419c2c2931bcac59ac11cd2bd653c916e7bbf99 b/ccc0692f2c05a9d688b1a8a73f709cea50406bcd
+index f419c2c293..ccc0692f2c 100644
+--- a/f419c2c2931bcac59ac11cd2bd653c916e7bbf99
++++ b/ccc0692f2c05a9d688b1a8a73f709cea50406bcd
+@@ -1,8 +1,8 @@
+ private static boolean isInStaticMethod(PsiElement element) {
+     PyFunction containingMethod = PsiTreeUtil.getParentOfType(element, PyFunction.class, false, PyClass.class);
+     if (containingMethod != null) {
+-        final Set<PyFunction.Flag> flags = PyUtil.detectDecorationsAndWrappersOf(containingMethod);
+-        return flags.contains(PyFunction.Flag.STATICMETHOD);
++        final PyFunction.Modifier modifier = containingMethod.getModifier();
++        return modifier == PyFunction.Modifier.STATICMETHOD;
+     }
+     return false;
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/6cca1161b33a2d1c1a1f4d777666e24859847a83 b/dafd4947999ef297b4e2d5a79683a0abf93b7538
+index 6cca1161b3..dafd494799 100644
+--- a/6cca1161b33a2d1c1a1f4d777666e24859847a83
++++ b/dafd4947999ef297b4e2d5a79683a0abf93b7538
+@@ -1,6 +1,4 @@
+ public void setRoundedCornersRes(@DimenRes int cornerRadiusRes) {
+-    if (getDrawable() instanceof IconicsDrawable) {
+-        ((IconicsDrawable) getDrawable()).roundedCornersRes(cornerRadiusRes);
+-    }
+     mIconBundle.mCornerRadius = getContext().getResources().getDimensionPixelSize(cornerRadiusRes);
++    mIconBundle.applyProperties();
+ }
+\ No newline at end of file

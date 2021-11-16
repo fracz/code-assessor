@@ -1,0 +1,21 @@
+diff --git a/4ded5c1dcc94da9bad8ca9e6fa72d7ec20328d28 b/363dff137fba00ca911c11a5ad353365ef829d3e
+index 4ded5c1dcc..363dff137f 100644
+--- a/4ded5c1dcc94da9bad8ca9e6fa72d7ec20328d28
++++ b/363dff137fba00ca911c11a5ad353365ef829d3e
+@@ -1,7 +1,11 @@
++/**
++ * Will be removed in 1.10
++ */
++@Deprecated
+ public void startup() {
+-    if (graph != null) {
+-        log.info("Successfully started database");
+-    } else {
+-        log.error("Failed to start database. GraphDatabaseService has not been properly initialized.");
++    try {
++        start();
++    } catch (Throwable e) {
++        throw new RuntimeException(e);
+     }
+ }
+\ No newline at end of file

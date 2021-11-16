@@ -1,0 +1,14 @@
+diff --git a/4788eb55b6a146b876db694453bb9f922f48839b b/578ef69f7a13176b50b6c04c5e2c0ec65c012dff
+index 4788eb55b6..578ef69f7a 100644
+--- a/4788eb55b6a146b876db694453bb9f922f48839b
++++ b/578ef69f7a13176b50b6c04c5e2c0ec65c012dff
+@@ -1,7 +1,7 @@
+ @Override
+ public Object extractEditorValue() throws DBException {
+-    try (DBCSession session = valueController.getExecutionContext().openSession(VoidProgressMonitor.INSTANCE, DBCExecutionPurpose.UTIL, "Make datetime value from editor")) {
++    try (DBCSession session = valueController.getExecutionContext().openSession(new VoidProgressMonitor(), DBCExecutionPurpose.UTIL, "Make datetime value from editor")) {
+         final String strValue = timeEditor.getValue();
+         return valueController.getValueHandler().getValueFromObject(session, valueController.getValueType(), strValue, false);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/404a98a6215546e17a37154f8227401d2d21dc92 b/9fdc756e098fbd74cac55a6011268be18a54fa96
+index 404a98a621..9fdc756e09 100644
+--- a/404a98a6215546e17a37154f8227401d2d21dc92
++++ b/9fdc756e098fbd74cac55a6011268be18a54fa96
+@@ -1,7 +1,5 @@
+-protected IRubyObject parsePrefix(String qName) {
++protected void parsePrefix(String qName) {
+     int index = qName.indexOf(':');
+-    if (index != -1) {
+-        return node().ruby.newString(qName.substring(0, index));
+-    }
+-    return node().ruby.getNil();
++    if (index != -1)
++        prefix = qName.substring(0, index);
+ }
+\ No newline at end of file

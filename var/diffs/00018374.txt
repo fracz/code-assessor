@@ -1,0 +1,25 @@
+diff --git a/4e0110eef1f233e72a573985b8da01a9805432d3 b/b5b04358682913a3ad0473d66ecb9e7164ad8ec6
+index 4e0110eef1..b5b0435868 100644
+--- a/4e0110eef1f233e72a573985b8da01a9805432d3
++++ b/b5b04358682913a3ad0473d66ecb9e7164ad8ec6
+@@ -1,17 +1,15 @@
+ @Override
+ public Subscriber<? super T> apply(Subscriber<? super T> t) {
+     Predicate<? super T> coll;
+     try {
+         coll = predicateSupplier.get();
+     } catch (Throwable e) {
+-        t.onSubscribe(EmptySubscription.INSTANCE);
+-        t.onError(e);
++        EmptySubscription.error(e, t);
+         return CancelledSubscriber.INSTANCE;
+     }
+     if (coll == null) {
+-        t.onSubscribe(EmptySubscription.INSTANCE);
+-        t.onError(new NullPointerException("predicateSupplier returned null"));
++        EmptySubscription.error(new NullPointerException("predicateSupplier returned null"), t);
+         return CancelledSubscriber.INSTANCE;
+     }
+     return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/a54657be0db2b8a6fa8052e86eefa7d3ff2bd96c b/557b1db88b8dc5e9b8b51d8fab3bbfb98dde3fd0
+index a54657be0d..557b1db88b 100644
+--- a/a54657be0db2b8a6fa8052e86eefa7d3ff2bd96c
++++ b/557b1db88b8dc5e9b8b51d8fab3bbfb98dde3fd0
+@@ -1,4 +1,13 @@
+-@SuppressWarnings("unchecked")
++/**
++ * Gets a binding implementation. First, this checks for an explicit binding.
++ * If no explicit binding is found, it looks for a just-in-time binding.
++ */
+ public <T> BindingImpl<T> getBinding(Key<T> key) {
+-    return (BindingImpl<T>) bindings.get(key);
++    // Check explicit bindings, i.e. bindings created by modules.
++    BindingImpl<T> binding = getExplicitBindingImpl(key);
++    if (binding != null) {
++        return binding;
++    }
++    // Look for an on-demand binding.
++    return getJitBindingImpl(key);
+ }
+\ No newline at end of file

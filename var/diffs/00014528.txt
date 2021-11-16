@@ -1,0 +1,17 @@
+diff --git a/549340c726d57966f850d1797014abfe42482abc b/3f17d3de1708158700c5b88c7f087db0869cda99
+index 549340c726..3f17d3de17 100644
+--- a/549340c726d57966f850d1797014abfe42482abc
++++ b/3f17d3de1708158700c5b88c7f087db0869cda99
+@@ -1,7 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiModifierList modifiers = (PsiModifierList) location.getParent();
+-    assert modifiers != null;
+-    final PsiMethod meth = (PsiMethod) modifiers.getParent();
+-    assert meth != null;
+-    return InspectionGadgetsBundle.message("public.constructor.in.non.public.class.problem.descriptor", meth.getName());
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiMethod method = (PsiMethod) infos[0];
++    return InspectionGadgetsBundle.message("public.constructor.in.non.public.class.problem.descriptor", method.getName());
+ }
+\ No newline at end of file

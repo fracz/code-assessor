@@ -1,0 +1,22 @@
+diff --git a/570b749a03d4c3312459c7921c6a62f07fdfddda b/456cc2bb290dadb21d76b64dc4fa6d1aafba2b24
+index 570b749a03..456cc2bb29 100644
+--- a/570b749a03d4c3312459c7921c6a62f07fdfddda
++++ b/456cc2bb290dadb21d76b64dc4fa6d1aafba2b24
+@@ -1,13 +1,14 @@
+ @BeforeClass
+ public static void beforeClass() throws IOException {
+-    for (String cf : CFS) {
+-        CFM.add(new CFMetaData(KS, cf, ColumnFamilyType.Standard, null));
++    for (String table : TABLES) {
++        UUID tableID = CFMetaData.generateLegacyCfId(KS, table);
++        CFM.add(CFMetaData.Builder.create(KS, table).withId(tableID).addPartitionKey("thekey", UTF8Type.instance).addClusteringColumn("thecolumn", UTF8Type.instance).build());
+     }
+     tempDataDir = File.createTempFile("cassandra", "unittest");
+     // hack to create a temp dir
+     tempDataDir.delete();
+     tempDataDir.mkdir();
+     Directories.overrideDataDirectoriesForTest(tempDataDir.getPath());
+     // Create two fake data dir for tests, one using CF directories, one that do not.
+     createTestFiles();
+ }
+\ No newline at end of file

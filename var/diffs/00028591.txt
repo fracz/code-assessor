@@ -1,0 +1,24 @@
+diff --git a/77ed689a91020a1e93675b1cdb3f57cc3756efd1 b/cd5a85b7a7511ab61f3c85c617fca19c80a8bf04
+index 77ed689a91..cd5a85b7a7 100644
+--- a/77ed689a91020a1e93675b1cdb3f57cc3756efd1
++++ b/cd5a85b7a7511ab61f3c85c617fca19c80a8bf04
+@@ -1,12 +1,16 @@
+ /**
+  * Test creates the {@link Query} from the {@link QueryBuilder} under test and delegates the
+  * assertions being made on the result to the implementing subclass.
+  */
+ @Test
+ @Repeat(iterations = 20)
+ public void testToQuery() throws IOException {
+-    testQuery = createTestQueryBuilder();
++    QB testQuery = createTestQueryBuilder();
+     QueryParseContext context = createContext();
+     context.setAllowUnmappedFields(true);
+-    assertLuceneQuery(testQuery, testQuery.toQuery(context), context);
++    Query expectedQuery = createExpectedQuery(testQuery, context);
++    Query actualQuery = testQuery.toQuery(context);
++    assertThat(actualQuery, instanceOf(expectedQuery.getClass()));
++    assertThat(actualQuery, equalTo(expectedQuery));
++    assertLuceneQuery(testQuery, actualQuery, context);
+ }
+\ No newline at end of file

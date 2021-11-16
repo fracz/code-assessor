@@ -1,0 +1,11 @@
+diff --git a/4f700e15d567d277c00c0b74dbdb5bc1def3d516 b/eaf8de56092c66f6a827952aa3cdd039ad90ccb3
+index 4f700e15d5..eaf8de5609 100644
+--- a/4f700e15d567d277c00c0b74dbdb5bc1def3d516
++++ b/eaf8de56092c66f6a827952aa3cdd039ad90ccb3
+@@ -1,3 +1,3 @@
+-private void validateUniquenessConstraintCanBeCreated(int labelId, int propertyKeyId) {
+-    verifyIndexOrUniquenessConstraintCanBeCreated(labelId, propertyKeyId, "It is not allowed to create uniqueness constraints and indexes on the same {label;property}");
++private void validateUniquenessConstraintCanBeCreated(NodePropertyDescriptor descriptor) {
++    verifyIndexOrUniquenessConstraintCanBeCreated(descriptor, "It is not allowed to create uniqueness constraints and indexes on the same {label;property}");
+ }
+\ No newline at end of file

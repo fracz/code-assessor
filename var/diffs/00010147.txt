@@ -1,0 +1,11 @@
+diff --git a/55df331b7f6cae68602d7ea45adf87d2bfe0d4d9 b/bee61a1284fe38791c6d3014461a1768edb267e6
+index 55df331b7f..bee61a1284 100644
+--- a/55df331b7f6cae68602d7ea45adf87d2bfe0d4d9
++++ b/bee61a1284fe38791c6d3014461a1768edb267e6
+@@ -1,4 +1,4 @@
+ private static HighlightInfo createMemberReferencedError(@NonNls final String resolvedName, @NotNull TextRange textRange) {
+     String description = JavaErrorMessages.message("member.referenced.before.constructor.called", resolvedName);
+-    return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, textRange, description);
++    return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(textRange).descriptionAndTooltip(description).create();
+ }
+\ No newline at end of file

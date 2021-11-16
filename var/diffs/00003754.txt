@@ -1,0 +1,28 @@
+diff --git a/a7ca8af8ccd3794e76b955846bf8973a41bb6ba0 b/00d294e92664b40dfd727707ca88e94d78de8f4c
+index a7ca8af8cc..00d294e926 100644
+--- a/a7ca8af8ccd3794e76b955846bf8973a41bb6ba0
++++ b/00d294e92664b40dfd727707ca88e94d78de8f4c
+@@ -1,21 +1,21 @@
+ @Nullable
+ public static PsiMethod findPropertyGetter(PsiClass aClass, String propertyName, boolean isStatic, boolean checkSuperClasses) {
+     if (aClass == null)
+         return null;
+     PsiMethod[] methods;
+     if (checkSuperClasses) {
+         methods = aClass.getAllMethods();
+     } else {
+         methods = aClass.getMethods();
+     }
+     for (PsiMethod method : methods) {
+         if (method.hasModifierProperty(PsiModifier.STATIC) != isStatic)
+             continue;
+         if (isSimplePropertyGetter(method)) {
+-            if (getPropertyNameByGetter(method).equals(propertyName)) {
++            if (propertyName.equals(getPropertyNameByGetter(method))) {
+                 return method;
+             }
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/8c33b85d8b07f52aa7cd4ee76e0d441eefac2d83 b/ffb2f9abbb949b5a3d62ed21d7464eac141284b9
+index 8c33b85d8b..ffb2f9abbb 100644
+--- a/8c33b85d8b07f52aa7cd4ee76e0d441eefac2d83
++++ b/ffb2f9abbb949b5a3d62ed21d7464eac141284b9
+@@ -1,14 +1,12 @@
+ @Override
+ @Nullable
+ public Charset getEncoding(@Nullable VirtualFile virtualFile, boolean useParentDefaults) {
+     VirtualFile parent = virtualFile;
+-    while (true) {
++    while (parent != null) {
+         Charset charset = myMapping.get(parent);
+         if (charset != null || !useParentDefaults)
+             return charset;
+-        if (parent == null)
+-            break;
+         parent = parent.getParent();
+     }
+     return getDefaultCharset();
+ }
+\ No newline at end of file

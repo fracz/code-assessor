@@ -1,0 +1,19 @@
+diff --git a/ab2f14ed35307fe24a2d02fe1259da9039174000 b/20fa618fa4f79a7e1c373a91c5006d89f38fe1fd
+index ab2f14ed35..20fa618fa4 100644
+--- a/ab2f14ed35307fe24a2d02fe1259da9039174000
++++ b/20fa618fa4f79a7e1c373a91c5006d89f38fe1fd
+@@ -1,8 +1,8 @@
++/**
++ * @deprecated see replacement in {@link com.netflix.discovery.endpoint.EndpointUtils}
++ */
++@Deprecated
+ @Override
+ public List<String> getDiscoveryServiceUrls(String zone) {
+-    boolean shouldUseDns = clientConfig.shouldUseDnsForFetchingServiceUrls();
+-    if (shouldUseDns) {
+-        return getServiceUrlsFromDNS(zone, clientConfig.shouldPreferSameZoneEureka());
+-    }
+-    return getServiceUrlsFromConfig(zone, clientConfig.shouldPreferSameZoneEureka());
++    return EndpointUtils.getDiscoveryServiceUrls(clientConfig, zone, urlRandomizer);
+ }
+\ No newline at end of file

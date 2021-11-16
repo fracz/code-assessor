@@ -1,0 +1,22 @@
+diff --git a/bd7c49625156da9e6d9606e92c05228892ae59ed b/a0be322515013eb67e24cc30ccbab2e57cae7cd2
+index bd7c496251..a0be322515 100644
+--- a/bd7c49625156da9e6d9606e92c05228892ae59ed
++++ b/a0be322515013eb67e24cc30ccbab2e57cae7cd2
+@@ -1,14 +1,15 @@
+ @Override
+ protected void addCustomFields(XContentBuilder builder, ClusterRerouteResponse response) throws IOException {
+     builder.startObject("state");
+     // by default, return everything but metadata
+     if (request.param("metric") == null) {
+         request.params().put("metric", DEFAULT_METRICS);
+     }
+-    response.getState().settingsFilter(settingsFilter).toXContent(builder, request);
++    settingsFilter.addFilterSettingParams(request);
++    response.getState().toXContent(builder, request);
+     builder.endObject();
+     if (clusterRerouteRequest.explain()) {
+         assert response.getExplanations() != null;
+         response.getExplanations().toXContent(builder, ToXContent.EMPTY_PARAMS);
+     }
+ }
+\ No newline at end of file

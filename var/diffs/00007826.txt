@@ -1,0 +1,24 @@
+diff --git a/473ebb484a0462bcae6e7693bfaf771a1eefaa0f b/2e22a6f848ff573f1fd613ea044c78eb91177913
+index 473ebb484a..2e22a6f848 100644
+--- a/473ebb484a0462bcae6e7693bfaf771a1eefaa0f
++++ b/2e22a6f848ff573f1fd613ea044c78eb91177913
+@@ -1,10 +1,10 @@
+-void parseTag(XmlTag tag) {
+-    final String name = tag.getName();
+-    if ("target".compareToIgnoreCase(name) == 0) {
+-        myName = tag.getAttributeValue("name");
+-        myDepends = tag.getAttributeValue("depends");
+-    }
+-    for (XmlTag subTag : tag.getSubTags()) {
+-        parseTag(subTag);
++void parseTag() {
++    if (myName == null) {
++        final XmlTag tag = getSourceTag();
++        final String name = tag.getName();
++        if ("target".compareToIgnoreCase(name) == 0) {
++            myName = tag.getAttributeValue("name");
++            myDepends = tag.getAttributeValue("depends");
++        }
+     }
+ }
+\ No newline at end of file

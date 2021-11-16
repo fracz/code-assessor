@@ -1,0 +1,15 @@
+diff --git a/5cb4031eaa964a860552a472a1fe6e064cd7d8a6 b/dd6e4249e1b601d33e016fb24fdb8f2d1acfcac7
+index 5cb4031eaa..dd6e4249e1 100644
+--- a/5cb4031eaa964a860552a472a1fe6e064cd7d8a6
++++ b/dd6e4249e1b601d33e016fb24fdb8f2d1acfcac7
+@@ -1,8 +1,8 @@
+ @Override
+ @SuppressWarnings("rawtypes")
+ public Object getAdapter(Class adapter) {
+     if (adapter == DBSStructureAssistant.class) {
+         return new DB2StructureAssistant(this);
+     }
+-    return null;
++    return super.getAdapter(adapter);
+ }
+\ No newline at end of file

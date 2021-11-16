@@ -1,0 +1,18 @@
+diff --git a/0e9658ccf4c6fb4080f6c3680f8023533c88b54a b/77f93e36bc83f94268c0d85f152a73d53dc69651
+index 0e9658ccf4..77f93e36bc 100644
+--- a/0e9658ccf4c6fb4080f6c3680f8023533c88b54a
++++ b/77f93e36bc83f94268c0d85f152a73d53dc69651
+@@ -1,7 +1,10 @@
+ /**
+  * Sets multiple configuration attributes at once. The attributes are copied from the source map.
++ * This method can be used with both a {@link ConfigurationAttributes.Key proper attribute key},
++ * or with a {@link String} in which case the type of the attribute is expected to be a {@link String}.
++ * Type safety is guaranteed at runtime.
+  * @param attributes the attributes to be copied to this configuration
+  * @return this configuration
+  */
+ @Incubating
+-Configuration attributes(Map<String, String> attributes);
+\ No newline at end of file
++Configuration attributes(Map<?, ?> attributes);
+\ No newline at end of file

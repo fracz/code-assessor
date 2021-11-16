@@ -1,0 +1,17 @@
+diff --git a/1e7eb2844a7b83bbea360bd56bcc395f5e03ebe5 b/07605e0ca97181cfa293aebbc36b3014cbeb26f9
+index 1e7eb2844a..07605e0ca9 100644
+--- a/1e7eb2844a7b83bbea360bd56bcc395f5e03ebe5
++++ b/07605e0ca97181cfa293aebbc36b3014cbeb26f9
+@@ -1,8 +1,8 @@
+ void addNewRow(int rowNum, @NotNull Object[] data) {
+-    RowData newRow = new RowData(curRows.size(), data, null);
+-    newRow.visualNumber = rowNum;
+-    newRow.state = RowData.STATE_ADDED;
++    RowData newRow = new RowData(curRows.size(), data);
++    newRow.setVisualNumber(rowNum);
++    newRow.setState(RowData.STATE_ADDED);
+     shiftRows(newRow, 1);
+     curRows.add(rowNum, newRow);
+     changesCount++;
+ }
+\ No newline at end of file

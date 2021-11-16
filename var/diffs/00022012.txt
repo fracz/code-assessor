@@ -1,0 +1,25 @@
+diff --git a/16762088335bb91361ccbe74170f0554255c15bd b/b71f040bb70fb7b9249f17e042d66a43d2548f04
+index 1676208833..b71f040bb7 100644
+--- a/16762088335bb91361ccbe74170f0554255c15bd
++++ b/b71f040bb70fb7b9249f17e042d66a43d2548f04
+@@ -1,15 +1,17 @@
+ /**
+  * Returns the current list of child Animator objects controlled by this
+  * AnimatorSet. This is a copy of the internal list; modifications to the returned list
+  * will not affect the AnimatorSet, although changes to the underlying Animator objects
+  * will affect those objects being managed by the AnimatorSet.
+  *
+  * @return ArrayList<Animator> The list of child animations of this AnimatorSet.
+  */
+ public ArrayList<Animator> getChildAnimations() {
+     ArrayList<Animator> childList = new ArrayList<Animator>();
+-    for (Node node : mNodes) {
+-        childList.add(node.animation);
++    int size = mNodes.size();
++    for (int i = 0; i < size; i++) {
++        Node node = mNodes.get(i);
++        childList.add(node.mAnimation);
+     }
+     return childList;
+ }
+\ No newline at end of file

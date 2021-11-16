@@ -1,0 +1,12 @@
+diff --git a/59f24c4d877e7a3cf34ed778f67c5b9f758de716 b/f7abd1b99d56f92771bc2b49069968c517aca21f
+index 59f24c4d87..f7abd1b99d 100644
+--- a/59f24c4d877e7a3cf34ed778f67c5b9f758de716
++++ b/f7abd1b99d56f92771bc2b49069968c517aca21f
+@@ -1,4 +1,4 @@
+ @Override
+-public PropertyConstraintRule writeRelationshipPropertyExistenceConstraint(long ruleId, int type, int key) throws CreateConstraintFailureException {
+-    throw propertyExistenceConstraintsNotAllowed(new RelationshipPropertyExistenceConstraint(type, key));
++public PropertyConstraintRule writeRelationshipPropertyExistenceConstraint(long ruleId, RelationshipPropertyDescriptor descriptor) throws CreateConstraintFailureException {
++    throw propertyExistenceConstraintsNotAllowed(new RelationshipPropertyExistenceConstraint(descriptor));
+ }
+\ No newline at end of file

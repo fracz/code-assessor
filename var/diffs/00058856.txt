@@ -1,0 +1,13 @@
+diff --git a/dece0611fc203c791046c43cd63938d98c33b4e6 b/6265622074c5ff44e73600d7855a6b318b6e20d4
+index dece0611fc..6265622074 100644
+--- a/dece0611fc203c791046c43cd63938d98c33b4e6
++++ b/6265622074c5ff44e73600d7855a6b318b6e20d4
+@@ -1,2 +1,5 @@
+ // 1. Store
+-public EdgeStore getEdgeStore() throws StorageException;
+\ No newline at end of file
++public KeyColumnValueStore getEdgeStore() {
++    Preconditions.checkNotNull(edgeStore, "Backend has not yet been initialized");
++    return edgeStore;
++}
+\ No newline at end of file

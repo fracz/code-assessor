@@ -1,0 +1,15 @@
+diff --git a/bd1103e0d0b3cc440baee1175f4885a33690ac41 b/a9dd519f83225d3c6be08f17965b7fd3d2b5d15f
+index bd1103e0d0..a9dd519f83 100644
+--- a/bd1103e0d0b3cc440baee1175f4885a33690ac41
++++ b/a9dd519f83225d3c6be08f17965b7fd3d2b5d15f
+@@ -1,8 +1,8 @@
+ @Nullable
+ public static MergeList fromDataContext(DataContext dataContext) {
+-    MergeList mergeList = (MergeList) dataContext.getData(MERGE_LIST);
++    MergeList mergeList = MergeList.DATA_KEY.getData(dataContext);
+     if (mergeList != null)
+         return mergeList;
+     MergePanel2 mergePanel = MergePanel2.fromDataContext(dataContext);
+     return mergePanel == null ? null : mergePanel.getMergeList();
+ }
+\ No newline at end of file

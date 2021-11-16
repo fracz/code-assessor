@@ -1,0 +1,19 @@
+diff --git a/e924e4eb106b8f7250170703f670a67f31260de2 b/72f76872a31ce13cdf3e911987f2338c4e5f9a46
+index e924e4eb10..72f76872a3 100644
+--- a/e924e4eb106b8f7250170703f670a67f31260de2
++++ b/72f76872a31ce13cdf3e911987f2338c4e5f9a46
+@@ -1,11 +1,12 @@
+ private Object popSpan() {
+     while (true) {
+-        Object obj = getRecorder().pop();
++        OrderedSpanRecorder recorder = getRecorder();
++        Object obj = recorder.pop();
+         if (obj == null) {
+             return null;
+         }
+         if (!isIgnored(obj)) {
+             return obj;
+         }
+     }
+ }
+\ No newline at end of file

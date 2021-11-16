@@ -1,0 +1,21 @@
+diff --git a/a083dc0424a03632ae10d3d458d9ebb22965fe05 b/e16bea19a00a682a19a16f507eec76bfd9002007
+index a083dc0424..e16bea19a0 100644
+--- a/a083dc0424a03632ae10d3d458d9ebb22965fe05
++++ b/e16bea19a00a682a19a16f507eec76bfd9002007
+@@ -1,13 +1,14 @@
+ public void hideList() {
+-    if (scroll == null || scroll.getParent() == null)
++    if (!scroll.hasParent())
+         return;
++    selected = null;
+     Stage stage = scroll.getStage();
+     if (stage != null) {
+         if (previousScrollFocus != null && previousScrollFocus.getStage() == null)
+             previousScrollFocus = null;
+         Actor actor = stage.getScrollFocus();
+         if (actor == null || actor.isDescendantOf(scroll))
+             stage.setScrollFocus(previousScrollFocus);
+     }
+     scroll.addAction(sequence(fadeOut(0.15f, Interpolation.fade), removeActor()));
+ }
+\ No newline at end of file

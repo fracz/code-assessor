@@ -1,0 +1,21 @@
+diff --git a/8aa22392dcd589781ac7fb0190eec320194b5577 b/77902665c994a1c91341b75b80350b8aab28e37d
+index 8aa22392dc..77902665c9 100644
+--- a/8aa22392dcd589781ac7fb0190eec320194b5577
++++ b/77902665c994a1c91341b75b80350b8aab28e37d
+@@ -1,12 +1,12 @@
+-private void resolveExplicitAttributes(final BuildConfiguration configuration, AttributeMap attributes, final ImmutableSortedKeyListMultimap.Builder<Attribute, LabelAndConfiguration> builder) {
+-    attributes.visitLabels(new AttributeMap.AcceptsLabelAttribute() {
++private void resolveExplicitAttributes(final RuleResolver depResolver) {
++    depResolver.attributeMap.visitLabels(new AttributeMap.AcceptsLabelAttribute() {
+
+         @Override
+         public void acceptLabelAttribute(Label label, Attribute attribute) {
+             if (attribute.getType() == BuildType.NODEP_LABEL || attribute.isImplicit() || attribute.isLateBound()) {
+                 return;
+             }
+-            builder.put(attribute, LabelAndConfiguration.of(label, configuration));
++            depResolver.resolveDep(attribute, label);
+         }
+     });
+ }
+\ No newline at end of file

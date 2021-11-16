@@ -1,0 +1,29 @@
+diff --git a/b2b56ae407e03986b757cb0c76280cb1c1425876 b/d010d13473e6dd1638dc6d911bac474059a9ff30
+index b2b56ae407..d010d13473 100644
+--- a/b2b56ae407e03986b757cb0c76280cb1c1425876
++++ b/d010d13473e6dd1638dc6d911bac474059a9ff30
+@@ -1,20 +1,22 @@
+ /**
+  * Gets list of workspaces which has given namespace
+  *
+  * <p>Returned workspaces have either {@link WorkspaceStatus#STOPPED} status
+  * or status defined by their runtime instances(if those exist).
+  *
+  * @param namespace
+  * the namespace to find workspaces
+  * @return the list of workspaces or empty list if no matches
+  * @throws NullPointerException
+  * when {@code namespace} is null
+  * @throws ServerException
+  * when any server error occurs while getting workspaces with {@link WorkspaceDao#getByNamespace(String)}
+  */
+ public List<WorkspaceImpl> getByNamespace(String namespace) throws ServerException {
+     requireNonNull(namespace, "Required non-null namespace");
+     final List<WorkspaceImpl> workspaces = workspaceDao.getByNamespace(namespace);
+-    workspaces.forEach(this::normalizeState);
++    for (WorkspaceImpl workspace : workspaces) {
++        normalizeState(workspace);
++    }
+     return workspaces;
+ }
+\ No newline at end of file

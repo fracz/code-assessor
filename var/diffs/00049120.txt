@@ -1,0 +1,19 @@
+diff --git a/3953bd4d8dbcce870e33494c55e939459c8d40c5 b/6271016d8d3a1a5ff6cca8de918454a3bdb94f31
+index 3953bd4d8d..6271016d8d 100644
+--- a/3953bd4d8dbcce870e33494c55e939459c8d40c5
++++ b/6271016d8d3a1a5ff6cca8de918454a3bdb94f31
+@@ -1,11 +1,8 @@
+ public void setDriverParameter(String name, String value, boolean setDefault) {
+-    Object valueObject = value;
+-    IPropertyDescriptor prop = getProviderDescriptor().getDriverProperty(name);
+-    if (prop instanceof IPropertyDescriptorEx) {
+-        valueObject = RuntimeUtils.convertString(value, ((IPropertyDescriptorEx) prop).getDataType());
+-    }
++    DBPPropertyDescriptor prop = getProviderDescriptor().getDriverProperty(name);
++    Object valueObject = prop == null ? value : RuntimeUtils.convertString(value, prop.getDataType());
+     customParameters.put(name, valueObject);
+     if (setDefault) {
+         defaultParameters.put(name, valueObject);
+     }
+ }
+\ No newline at end of file

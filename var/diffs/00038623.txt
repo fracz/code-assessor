@@ -1,0 +1,22 @@
+diff --git a/78706ff9587e050546a536097874d9da6ffca644 b/768f5a0fbee91776a4f606d25edf3b3ddf0a80e0
+index 78706ff958..768f5a0fbe 100644
+--- a/78706ff9587e050546a536097874d9da6ffca644
++++ b/768f5a0fbee91776a4f606d25edf3b3ddf0a80e0
+@@ -1,12 +1,8 @@
+-public void start(NeoServerWithEmbeddedWebServer neoServer, StringLogger logger) {
+-    try {
+-        startRoundRobinDB(neoServer);
+-    } catch (RuntimeException e) {
+-        log.error(e);
+-        return;
+-    }
+-    neoServer.getWebServer().addStaticContent(DEFAULT_WEB_ADMIN_STATIC_WEB_CONTENT_LOCATION, DEFAULT_WEB_ADMIN_PATH);
++@Override
++public void start(StringLogger logger) {
++    startRoundRobinDB();
++    webServer.addStaticContent(DEFAULT_WEB_ADMIN_STATIC_WEB_CONTENT_LOCATION, DEFAULT_WEB_ADMIN_PATH);
+     log.info("Mounted webadmin at [%s]", DEFAULT_WEB_ADMIN_PATH);
+     if (logger != null)
+         logger.logMessage("Mounted webadmin at: " + DEFAULT_WEB_ADMIN_PATH);
+ }
+\ No newline at end of file

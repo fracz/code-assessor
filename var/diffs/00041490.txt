@@ -1,0 +1,15 @@
+diff --git a/785bd829038c78db45deb6996f14f95a97cd4743 b/0b3890ca81ee2cf8a1b8640fbe8d11f07fd396a5
+index 785bd82903..0b3890ca81 100644
+--- a/785bd829038c78db45deb6996f14f95a97cd4743
++++ b/0b3890ca81ee2cf8a1b8640fbe8d11f07fd396a5
+@@ -1,7 +1,6 @@
+ private File getConfigFile() {
+-    OStorage storage = Orient.instance().getStorage(databaseName);
+-    if (storage instanceof OLocalPaginatedStorage) {
+-        return new File(((OLocalPaginatedStorage) storage).getStoragePath() + File.separator + CONFIG_FILE);
++    if (fileConfigPath != null) {
++        return new File(fileConfigPath);
+     }
+     return null;
+ }
+\ No newline at end of file

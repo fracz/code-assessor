@@ -1,0 +1,35 @@
+diff --git a/8440dc85dc69165720122e182ae5c6de15388ab0 b/b70e62a79194df044d38958e88e352e375e125f4
+index 8440dc85dc..b70e62a791 100644
+--- a/8440dc85dc69165720122e182ae5c6de15388ab0
++++ b/b70e62a79194df044d38958e88e352e375e125f4
+@@ -1,24 +1,10 @@
+-/**
+- * Returns status <b>200</b> and {@link UserDescriptor} built from user with given {@code id}
+- * or status <b>404</b> when user with given {@code id} was not found.
+- *
+- * @param id
+- * identifier to search user
+- * @return entity of found user
+- * @throws NotFoundException
+- * when user with given identifier doesn't exist
+- * @throws ServerException
+- * when some error occurred while retrieving user
+- * @see UserDescriptor
+- * @see #getByAlias(String)
+- */
+ @GET
+ @Path("/{id}")
+-@GenerateLink(rel = LINK_REL_GET_USER_BY_ID)
+ @Produces(APPLICATION_JSON)
+-@ApiOperation(value = "Get user by ID", notes = "Get user by its ID in the system", response = UserDescriptor.class)
+-@ApiResponses({ @ApiResponse(code = 200, message = "OK"), @ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 500, message = "Internal Server Error") })
+-public UserDescriptor getById(@ApiParam(value = "User ID") @PathParam("id") String id) throws NotFoundException, ServerException {
++@GenerateLink(rel = LINK_REL_USER)
++@ApiOperation("Get user by identifier")
++@ApiResponses({ @ApiResponse(code = 200, message = "The response contains requested user entity"), @ApiResponse(code = 404, message = "User with requested identifier not found"), @ApiResponse(code = 500, message = "Impossible to get user due to internal server error") })
++public UserDto getById(@ApiParam("User identifier") @PathParam("id") String id) throws NotFoundException, ServerException {
+     final User user = userManager.getById(id);
+-    return injectLinks(toDescriptor(user), getServiceContext());
++    return linksInjector.injectLinks(asDto(user), getServiceContext());
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/52e5f3ff0e067498e9b7e069af5a1a1d23cc206e b/836ebf993175fc9d3b461848a3cdcbccaaf7006e
+index 52e5f3ff0e..836ebf9931 100644
+--- a/52e5f3ff0e067498e9b7e069af5a1a1d23cc206e
++++ b/836ebf993175fc9d3b461848a3cdcbccaaf7006e
+@@ -1,7 +1,7 @@
+ @Override
+ protected Ref<UnusedDeclarationInspection> compute(PsiFile file, RefManagerImpl refManager) {
+     Tools tools = ((GlobalInspectionContextImpl) refManager.getContext()).getTools().get(UnusedDeclarationInspection.SHORT_NAME);
+-    InspectionToolWrapper toolWrapper = tools != null ? (InspectionToolWrapper) tools.getEnabledTool(file) : null;
++    InspectionToolWrapper toolWrapper = tools == null ? null : tools.getEnabledTool(file);
+     InspectionProfileEntry tool = toolWrapper == null ? null : toolWrapper.getTool();
+     return Ref.create(tool instanceof UnusedDeclarationInspection ? (UnusedDeclarationInspection) tool : null);
+ }
+\ No newline at end of file

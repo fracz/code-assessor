@@ -1,0 +1,21 @@
+diff --git a/22cbfa65a4e01932a87f32eabf0e8f3cea15e7c5 b/24a88ad27cc5d609bf7c58d23c0652980aaf4d78
+index 22cbfa65a4..24a88ad27c 100644
+--- a/22cbfa65a4e01932a87f32eabf0e8f3cea15e7c5
++++ b/24a88ad27cc5d609bf7c58d23c0652980aaf4d78
+@@ -1,14 +1,12 @@
+ @Override
+ void resetChildIter() {
+     decommitVariableGroups();
+     removeNamedNodes();
+-    // lazy initialization saves quite a bit of time in use cases
+-    // where we call something other than matches()
+-    treeNodeMatchCandidateIterator = null;
++    treeNodeMatchCandidateIterator = myNode.rel.searchNodeIterator(tree, this);
+     finished = false;
+     nextTreeNodeMatchCandidate = null;
+     if (childMatcher != null) {
+         // need to tell the children to clean up any preexisting data
+         childMatcher.resetChildIter();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/36a77ab5e5fe420b3de5389ded640b38529d3bfb b/17463a6fdaee18ccdf3709e7a1db2f590bbd8561
+index 36a77ab5e5..17463a6fda 100644
+--- a/36a77ab5e5fe420b3de5389ded640b38529d3bfb
++++ b/17463a6fdaee18ccdf3709e7a1db2f590bbd8561
+@@ -1,12 +1,12 @@
+ @Override
+ public String getUserMessage(TokenNameLookup tokenNameLookup) {
+     StringBuilder message = new StringBuilder();
+     for (Iterator<IndexEntryConflictException> iterator = conflicts.iterator(); iterator.hasNext(); ) {
+         IndexEntryConflictException conflict = iterator.next();
+-        message.append(conflict.evidenceMessage(tokenNameLookup.labelGetName(constraint.label()), tokenNameLookup.propertyKeyGetName(constraint.propertyKey())));
++        message.append(conflict.evidenceMessage(tokenNameLookup.labelGetName(constraint.label()), constraint.descriptor().propertyNameText(tokenNameLookup)));
+         if (iterator.hasNext()) {
+             message.append(System.lineSeparator());
+         }
+     }
+     return message.toString();
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/207d61adb718ebae55d5c736d850719e3cada3f4 b/f52e6ad1c28c684688059e9ec0e81683fda4e182
+index 207d61adb7..f52e6ad1c2 100644
+--- a/207d61adb718ebae55d5c736d850719e3cada3f4
++++ b/f52e6ad1c28c684688059e9ec0e81683fda4e182
+@@ -1,13 +1,14 @@
++@Nullable
+ @Override
+ public Image getColumnImage(Object element, int columnIndex) {
+     DBDAttributeConstraint constraint = (DBDAttributeConstraint) element;
+-    if (columnIndex == 0 && constraint.getAttribute().getMetaAttribute() instanceof IObjectImageProvider) {
+-        return ((IObjectImageProvider) constraint.getAttribute().getMetaAttribute()).getObjectImage();
++    if (columnIndex == 0 && constraint.getAttribute() instanceof IObjectImageProvider) {
++        return ((IObjectImageProvider) constraint.getAttribute()).getObjectImage();
+     }
+     if (columnIndex == 2) {
+         if (constraint.getOrderPosition() > 0) {
+             return constraint.isOrderDescending() ? DBIcon.SORT_DECREASE.getImage() : DBIcon.SORT_INCREASE.getImage();
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

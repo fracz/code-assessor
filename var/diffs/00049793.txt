@@ -1,0 +1,10 @@
+diff --git a/dfa9bfa0a7320e2bcb5a9d6aa2c63d58208e8766 b/f1341121246ddb18c94d4567c067dbd42e14a1ba
+index dfa9bfa0a7..f134112124 100644
+--- a/dfa9bfa0a7320e2bcb5a9d6aa2c63d58208e8766
++++ b/f1341121246ddb18c94d4567c067dbd42e14a1ba
+@@ -1,3 +1,3 @@
+ protected Driver getDriverInstance(DBRProgressMonitor monitor) throws DBException {
+-    return Driver.class.cast(container.getDriver().getDriverInstance(RuntimeUtils.makeContext(monitor)));
++    return Driver.class.cast(container.getDriver().getDriverInstance(new MonitorRunnableContext(monitor)));
+ }
+\ No newline at end of file

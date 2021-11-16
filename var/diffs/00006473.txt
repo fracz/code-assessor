@@ -1,0 +1,20 @@
+diff --git a/01d7b6bbd78cda8e3973d4244f8735eefe1e3b8e b/77170aecbe321f2595a205ec93529e037996061f
+index 01d7b6bbd7..77170aecbe 100644
+--- a/01d7b6bbd78cda8e3973d4244f8735eefe1e3b8e
++++ b/77170aecbe321f2595a205ec93529e037996061f
+@@ -1,12 +1,10 @@
+-public FileType readScheme(final Document document, final File file) throws InvalidDataException, IOException, JDOMException {
++public FileType readScheme(final Document document) throws InvalidDataException, IOException, JDOMException {
+     if (document == null) {
+         throw new InvalidDataException();
+     }
+     Element root = document.getRootElement();
+     if (root == null || !ELEMENT_FILETYPE.equals(root.getName())) {
+         throw new InvalidDataException();
+     }
+-    final FileType fileType = loadFileType(root, false);
+-    standardFileTypeRead[0] |= myInitialAssociations.hasAssociationsFor(fileType);
+-    return fileType;
++    return loadFileType(root, false);
+ }
+\ No newline at end of file

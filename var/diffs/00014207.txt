@@ -1,0 +1,18 @@
+diff --git a/a07bd749437e1b8a2fd10dedf6778e036eb88d5b b/194d596c19e94ced5cf9217b5839b8578710748a
+index a07bd74943..194d596c19 100644
+--- a/a07bd749437e1b8a2fd10dedf6778e036eb88d5b
++++ b/194d596c19e94ced5cf9217b5839b8578710748a
+@@ -1,8 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiMethod method = (PsiMethod) location.getParent();
+-    assert method != null;
+-    final CyclomaticComplexityVisitor visitor = new CyclomaticComplexityVisitor();
+-    method.accept(visitor);
+-    final int coupling = visitor.getComplexity();
+-    return InspectionGadgetsBundle.message("cyclomatic.complexity.problem.descriptor", coupling);
++@NotNull
++public String buildErrorString(Object... infos) {
++    final Integer complexity = (Integer) infos[0];
++    return InspectionGadgetsBundle.message("cyclomatic.complexity.problem.descriptor", complexity);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/b42f9d5c3ec3c7867bfa655b800222965d18b7a0 b/29a19dbe742b207b719b902a692b8b3bcc24f3c8
+index b42f9d5c3e..29a19dbe74 100644
+--- a/b42f9d5c3ec3c7867bfa655b800222965d18b7a0
++++ b/29a19dbe742b207b719b902a692b8b3bcc24f3c8
+@@ -1,7 +1,6 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiField field = (PsiField) location.getParent();
+-    assert field != null;
+-    final PsiType type = field.getType();
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiType type = (PsiType) infos[0];
+     final String typeString = type.getPresentableText();
+     return InspectionGadgetsBundle.message("volatile.field.problem.descriptor", typeString);
+ }
+\ No newline at end of file

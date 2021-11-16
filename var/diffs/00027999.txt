@@ -1,0 +1,19 @@
+diff --git a/c37d36fd128e495bc6d383539229ade390b52c64 b/30621babc50aa3209775da9883f283eeb4ea5cf6
+index c37d36fd12..30621babc5 100644
+--- a/c37d36fd128e495bc6d383539229ade390b52c64
++++ b/30621babc50aa3209775da9883f283eeb4ea5cf6
+@@ -1,12 +1,11 @@
+ @Test(dataProvider = "GitConnectionFactory", dataProviderClass = GitConnectionFactoryProvider.class, expectedExceptions = GitException.class, expectedExceptionsMessageRegExp = "No remote repository specified.  " + "Please, specify either a URL or a remote name from which new revisions should be fetched in request.")
+ public void testWhenThereAreNoAnyRemotesBehindTheProxy(GitConnectionFactory connectionFactory) throws Exception {
+     // given
+     System.setProperty("http.proxyUser", "user1");
+     System.setProperty("http.proxyPassword", "paswd1");
+     System.setProperty("https.proxyUser", "user2");
+     System.setProperty("https.proxyPassword", "paswd2");
+     GitConnection connection = connectToInitializedGitRepository(connectionFactory, repository);
+     // when
+-    PullRequest request = newDto(PullRequest.class);
+-    connection.pull(request);
++    connection.pull(PullParams.create(null));
+ }
+\ No newline at end of file

@@ -1,0 +1,33 @@
+diff --git a/e147d38596245a42594d4a7101d3a923446dc25f b/fd8cc680baaa92455d109c38bbe7adad0834aa88
+index e147d38596..fd8cc680ba 100644
+--- a/e147d38596245a42594d4a7101d3a923446dc25f
++++ b/fd8cc680baaa92455d109c38bbe7adad0834aa88
+@@ -1,14 +1,17 @@
+-private void parseInternal() {
++private SelectStatement parseInternal() {
++    SelectStatement result = new SelectStatement();
+     sqlParser.getLexer().nextToken();
+     parseDistinct();
+-    parseBeforeSelectList();
+-    parseSelectList();
+-    parseFrom();
+-    parseWhere();
+-    customizedBetweenWhereAndGroupBy();
+-    parseGroupBy();
+-    customizedBetweenGroupByAndOrderBy();
+-    parseOrderBy();
+-    customizedSelect();
++    parseBeforeSelectList(result);
++    parseSelectList(result);
++    parseFrom(result);
++    result.getItems().addAll(items);
++    parseWhere(result);
++    customizedBetweenWhereAndGroupBy(result);
++    parseGroupBy(result);
++    customizedBetweenGroupByAndOrderBy(result);
++    parseOrderBy(result);
++    customizedSelect(result);
+     processUnsupportedTokens();
++    return result;
+ }
+\ No newline at end of file

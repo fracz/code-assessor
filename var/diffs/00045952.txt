@@ -1,0 +1,34 @@
+diff --git a/4f30f3cce020cc68da87556eb20fb615a73558b2 b/ccfa26804fb5fd02d7201e8caa6630c6b981a89c
+index 4f30f3cce0..ccfa26804f 100644
+--- a/4f30f3cce020cc68da87556eb20fb615a73558b2
++++ b/ccfa26804fb5fd02d7201e8caa6630c6b981a89c
+@@ -1,27 +1,24 @@
+ /**
+  * Set the connection to be secure, using the specified keystore and
+  * truststore. This has to be called before any route mapping is done. You
+  * have to supply a keystore file, truststore file is optional (keystore
+  * will be reused).
+  * This method is only relevant when using embedded Jetty servers. It should
+  * not be used if you are using Servlets, where you will need to secure the
+  * connection in the servlet container
+  *
+  * @param keystoreFile       The keystore file location as string
+  * @param keystorePassword   the password for the keystore
+  * @param truststoreFile     the truststore file location as string, leave null to reuse
+  * keystore
+  * @param truststorePassword the trust store password
+  */
+ public synchronized void secure(String keystoreFile, String keystorePassword, String truststoreFile, String truststorePassword) {
+     if (initialized) {
+         throwBeforeRouteMappingException();
+     }
+     if (keystoreFile == null) {
+         throw new IllegalArgumentException("Must provide a keystore file to run secured");
+     }
+-    this.keystoreFile = keystoreFile;
+-    this.keystorePassword = keystorePassword;
+-    this.truststoreFile = truststoreFile;
+-    this.truststorePassword = truststorePassword;
++    sslStores = SslStores.create(keystoreFile, keystorePassword, truststoreFile, truststorePassword);
+ }
+\ No newline at end of file

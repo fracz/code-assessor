@@ -1,0 +1,19 @@
+diff --git a/92206974e85b68da037713d20840227f2c1001b4 b/2f346276c2b05149e701dd4d4472f73414cd8620
+index 92206974e8..2f346276c2 100644
+--- a/92206974e85b68da037713d20840227f2c1001b4
++++ b/2f346276c2b05149e701dd4d4472f73414cd8620
+@@ -1,11 +1,9 @@
+ @Override
+ protected void doUnregister(URL url) {
+     try {
+-        String availableNodePath = toServerNodePath(url, toAvailableServerTypePath(url));
+-        deleteNode(availableNodePath);
+-        String unavailableNodePath = toServerNodePath(url, toUnavailableServerTypePath(url));
+-        deleteNode(unavailableNodePath);
++        removeNode(url, ZkNodeType.AVAILABLE_SERVER);
++        removeNode(url, ZkNodeType.UNAVAILABLE_SERVER);
+     } catch (Throwable e) {
+         throw new MotanFrameworkException(String.format("Failed to unregister %s to zookeeper(%s), cause: %s", url, getUrl(), e.getMessage()));
+     }
+ }
+\ No newline at end of file

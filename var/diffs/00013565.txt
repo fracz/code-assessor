@@ -1,0 +1,20 @@
+diff --git a/0ab66b65005bc2223edb6090934ed0956d6c421c b/f1b61be7c39f9fc3109e938a53094c1c4c9257f5
+index 0ab66b6500..f1b61be7c3 100644
+--- a/0ab66b65005bc2223edb6090934ed0956d6c421c
++++ b/f1b61be7c39f9fc3109e938a53094c1c4c9257f5
+@@ -1,6 +1,9 @@
+-public Result calculateResult(@NotNull Expression[] params, ExpressionContext context) {
+-    if (params.length != 1)
+-        return null;
+-    Result result = params[0].calculateResult(context);
+-    return execute(result);
++@Override
++protected Result calculateResult(@NotNull Expression[] params, ExpressionContext context, boolean quick) {
++    String text = getTextResult(params, context);
++    if (text != null && text.length() > 0) {
++        text = text.substring(0, 1).toLowerCase() + text.substring(1, text.length());
++        return new TextResult(text);
++    }
++    return null;
+ }
+\ No newline at end of file

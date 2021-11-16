@@ -1,0 +1,24 @@
+diff --git a/81bc83587b7a817c75a72150a52f8c98ddc90fe5 b/3ca15bf312b8d2b8ce297826c993fa482300887a
+index 81bc83587b..3ca15bf312 100644
+--- a/81bc83587b7a817c75a72150a52f8c98ddc90fe5
++++ b/3ca15bf312b8d2b8ce297826c993fa482300887a
+@@ -1,15 +1,16 @@
+ private void checkTypeElement(PsiTypeElement typeElement) {
+     if (typeElement == null) {
+         return;
+     }
+     final PsiType type = typeElement.getType();
+     final PsiType componentType = type.getDeepComponentType();
+     if (!(componentType instanceof PsiClassType)) {
+         return;
+     }
+     final PsiClassType classType = (PsiClassType) componentType;
+-    if (!isSubclass(classType, PsiTreeUtil.getParentOfType(typeElement, PsiClass.class))) {
++    final PsiClass parentClass = PsiTreeUtil.getParentOfType(typeElement, PsiClass.class);
++    if (!isSubclass(classType, parentClass)) {
+         return;
+     }
+-    registerError(typeElement);
++    registerError(typeElement, parentClass);
+ }
+\ No newline at end of file

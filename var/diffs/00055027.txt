@@ -1,0 +1,17 @@
+diff --git a/c5ad9f13e6b4071a925bb3afa9a3c065a01092f8 b/4620c0ee779210c3f810abd72612a4d14df08ac8
+index c5ad9f13e6..4620c0ee77 100644
+--- a/c5ad9f13e6b4071a925bb3afa9a3c065a01092f8
++++ b/4620c0ee779210c3f810abd72612a4d14df08ac8
+@@ -1,8 +1,10 @@
+ private void declareVars(CodeWriter code, IContainer cont) {
+     DeclareVariablesAttr declVars = (DeclareVariablesAttr) cont.getAttributes().get(AttributeType.DECLARE_VARIABLES);
+     if (declVars != null) {
+         for (RegisterArg v : declVars.getVars()) {
+-            code.startLine(declareVar(v)).add(';');
++            code.startLine();
++            declareVar(code, v);
++            code.add(';');
+         }
+     }
+ }
+\ No newline at end of file

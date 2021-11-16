@@ -1,0 +1,14 @@
+diff --git a/8800a21ddc8b2e6d7dde4b78f8a7985b5028471b b/8327688cb8bbb8e2dedda09c60789e7d0049dd4c
+index 8800a21ddc..8327688cb8 100644
+--- a/8800a21ddc8b2e6d7dde4b78f8a7985b5028471b
++++ b/8327688cb8bbb8e2dedda09c60789e7d0049dd4c
+@@ -1,7 +1,3 @@
+ public int getActionAddContactColor() {
+-    if (actionAddContactColor != 0) {
+-        return actionAddContactColor;
+-    } else {
+-        return getMainColor();
+-    }
++    return getColorWithFallback(actionAddContactColor, getMainColor());
+ }
+\ No newline at end of file

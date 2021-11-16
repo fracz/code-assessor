@@ -1,0 +1,16 @@
+diff --git a/2bf34e7db5e005f9d14080b48f4a24ffecf4d37b b/0289d7f77836ff85a2f4fd33c3b2cd44084798b0
+index 2bf34e7db5..0289d7f778 100644
+--- a/2bf34e7db5e005f9d14080b48f4a24ffecf4d37b
++++ b/0289d7f77836ff85a2f4fd33c3b2cd44084798b0
+@@ -1,9 +1,7 @@
+ public static SentimentModel loadSerialized(String path) {
+     try {
+         return IOUtils.readObjectFromURLOrClasspathOrFileSystem(path);
+-    } catch (IOException e) {
+-        throw new RuntimeIOException(e);
+-    } catch (ClassNotFoundException e) {
++    } catch (IOException | ClassNotFoundException e) {
+         throw new RuntimeIOException(e);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/f49b62fb47c106efbbf8cbe0e57c513a02db44b1 b/fbf23a21d8a8d7fa21fe1076bbae1bef23312a4e
+index f49b62fb47..fbf23a21d8 100644
+--- a/f49b62fb47c106efbbf8cbe0e57c513a02db44b1
++++ b/fbf23a21d8a8d7fa21fe1076bbae1bef23312a4e
+@@ -1,6 +1,7 @@
+-@Override
+-protected DataSender createUdpSpanDataSender(int port, String threadName, int writeQueueSize, int timeout, int sendBufferSize) {
+-    ListenableDataSender<TBase<?, ?>> sender = new ListenableDataSender<TBase<?, ?>>();
+-    sender.setListener(new OrderedSpanRecorder());
++private DataSender createUdpSpanDataSender() {
++    ListenableDataSender<TBase<?, ?>> sender = new ListenableDataSender<TBase<?, ?>>("SpanDataSender");
++    OrderedSpanRecorder orderedSpanRecorder = new OrderedSpanRecorder();
++    sender.setListener(orderedSpanRecorder);
++    this.orderedSpanRecorder = orderedSpanRecorder;
+     return sender;
+ }
+\ No newline at end of file

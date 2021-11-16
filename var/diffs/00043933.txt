@@ -1,0 +1,17 @@
+diff --git a/a1ee9f416377a018206296444a9d33f1f7805c98 b/070d5e0405bd2b59fb653483710bad7b085228fe
+index a1ee9f4163..070d5e0405 100644
+--- a/a1ee9f416377a018206296444a9d33f1f7805c98
++++ b/070d5e0405bd2b59fb653483710bad7b085228fe
+@@ -1,9 +1,8 @@
+ @BeforeMethod
+-public void beforeMethod() {
+-    database.open("admin", "admin");
++public void beforeMethod() throws Exception {
++    super.beforeMethod();
+     final OSchema schema = database.getMetadata().getSchema();
+     final OClass oClass = schema.createClass("DropPropertyIndexTestClass");
+     oClass.createProperty("prop1", EXPECTED_PROP1_TYPE);
+     oClass.createProperty("prop2", EXPECTED_PROP2_TYPE);
+-    schema.save();
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/a7c5fe15589ca47c765280c803657ea5f50abe55 b/a1993fafaa6622cc491d7c546a09dc2a311feeba
+index a7c5fe1558..a1993fafaa 100644
+--- a/a7c5fe15589ca47c765280c803657ea5f50abe55
++++ b/a1993fafaa6622cc491d7c546a09dc2a311feeba
+@@ -1,11 +1,11 @@
+-private Configuration createConfigurationStub(final String name) {
+-    final Configuration configurationStub = IvyConverterTestUtil.createNamedConfigurationStub(name, context);
++private Configuration createConfigurationStub(final PublishArtifact publishArtifact) {
++    final Configuration configurationStub = IvyConverterTestUtil.createNamedConfigurationStub(publishArtifact.getName(), context);
+     context.checking(new Expectations() {
+
+         {
+             allowing(configurationStub).getArtifacts();
+-            will(returnValue(WrapUtil.toSet(createNamedPublishArtifact(name))));
++            will(returnValue(WrapUtil.toSet(publishArtifact)));
+         }
+     });
+     return configurationStub;
+ }
+\ No newline at end of file

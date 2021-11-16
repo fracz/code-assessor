@@ -1,0 +1,19 @@
+diff --git a/e0c0ad5cec44581c25ca5ed09a5f382056e9f84c b/44f30fd0edf981b3a7950fc0a8dd61aad2d84e53
+index e0c0ad5cec..44f30fd0ed 100644
+--- a/e0c0ad5cec44581c25ca5ed09a5f382056e9f84c
++++ b/44f30fd0edf981b3a7950fc0a8dd61aad2d84e53
+@@ -1,7 +1,9 @@
+-private List<Comparable<?>> getAggregationValues(final List<AggregationSelectItem> aggregationColumns) throws SQLException {
+-    List<Comparable<?>> result = new ArrayList<>(aggregationColumns.size());
+-    for (AggregationSelectItem each : aggregationColumns) {
+-        result.add((Comparable<?>) resultSet.getObject(each.getIndex()));
++private List<Comparable<?>> getAggregationValues(final List<AggregationSelectItem> aggregationSelectItems) throws SQLException {
++    List<Comparable<?>> result = new ArrayList<>(aggregationSelectItems.size());
++    for (AggregationSelectItem each : aggregationSelectItems) {
++        Object value = resultSet.getObject(each.getIndex());
++        Preconditions.checkState(null == value || value instanceof Comparable, "Aggregation value must implements Comparable");
++        result.add((Comparable<?>) value);
+     }
+     return result;
+ }
+\ No newline at end of file

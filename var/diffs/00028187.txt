@@ -1,0 +1,13 @@
+diff --git a/71de8ce0f558ca0aad638ed3422979882ef0e1e9 b/e3d3d8c25f4e8e6c3eff6cee4dd2259a580b03c4
+index 71de8ce0f5..e3d3d8c25f 100644
+--- a/71de8ce0f558ca0aad638ed3422979882ef0e1e9
++++ b/e3d3d8c25f4e8e6c3eff6cee4dd2259a580b03c4
+@@ -1,5 +1,5 @@
+ @Test(expectedExceptions = ConflictException.class)
+ public void shouldThrowConflictExceptionOnCreationIfUserNameIsReserved() throws Exception {
+-    final User user = new User().withEmail("test@email.com").withName("reserved");
+-    new UserManager(userDao, profileDao, preferenceDao, new String[] { "reserved" }).create(user, false);
++    final User user = new UserImpl("id", "test@email.com", "reserved");
++    manager.create(user, false);
+ }
+\ No newline at end of file

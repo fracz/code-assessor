@@ -1,0 +1,15 @@
+diff --git a/434062a0ff7e9257ae07dd2979c897f88da765dd b/a9c89e1a445cc69c352c9c375f53da2cb7fda416
+index 434062a0ff..a9c89e1a44 100644
+--- a/434062a0ff7e9257ae07dd2979c897f88da765dd
++++ b/a9c89e1a445cc69c352c9c375f53da2cb7fda416
+@@ -1,8 +1,6 @@
+ public void close() {
+     commandExecuting = false;
+-    sessionId = uniqueClientSessionId;
+-    serverURL = null;
+     serverURLIndex = -1;
+-    tokens = new HashMap<String, byte[]>();
+     connections = new HashSet<OChannelBinary>();
++    sessions = new HashMap<String, OStorageRemoteNodeSession>();
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/551535ab5949f991b8e4125f15eb00d1da273188 b/0629c5a60cf88fde2a7425aebb09c78f8c728393
+index 551535ab59..0629c5a60c 100644
+--- a/551535ab5949f991b8e4125f15eb00d1da273188
++++ b/0629c5a60cf88fde2a7425aebb09c78f8c728393
+@@ -1,10 +1,9 @@
+ @Override
+-public INDArray backprop(INDArray output, Layer layer) {
++public INDArray backprop(INDArray output, int miniBatchSize) {
+     // Output: 3d epsilons (RNN)
+     if (output.ordering() == 'f')
+         output = Shape.toOffsetZeroCopy(output, 'c');
+     int[] shape = output.shape();
+-    int miniBatchSize = layer.getInputMiniBatchSize();
+     INDArray reshaped = output.reshape(miniBatchSize, shape[0] / miniBatchSize, product);
+     return reshaped.permute(0, 2, 1);
+ }
+\ No newline at end of file

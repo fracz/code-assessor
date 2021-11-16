@@ -1,0 +1,18 @@
+diff --git a/40db0513116959a4524279662641182e87bacd98 b/4d9eea48b7601d80a53536367a2b84218ab718f7
+index 40db051311..4d9eea48b7 100644
+--- a/40db0513116959a4524279662641182e87bacd98
++++ b/4d9eea48b7601d80a53536367a2b84218ab718f7
+@@ -1,10 +1,10 @@
+-public static SchemaRuleCommand createIndexRule(SchemaIndexProvider.Descriptor provider, long id, int label, int property) {
+-    SchemaRule rule = IndexRule.indexRule(id, label, property, provider);
++public static SchemaRuleCommand createIndexRule(SchemaIndexProvider.Descriptor provider, long id, NodePropertyDescriptor descriptor) {
++    SchemaRule rule = IndexRule.indexRule(id, descriptor, provider);
+     RecordSerializer serializer = new RecordSerializer();
+     serializer.append((AbstractSchemaRule) rule);
+     DynamicRecord record = new DynamicRecord(id);
+     record.setInUse(true);
+     record.setCreated();
+     record.setData(serializer.serialize());
+     return new SchemaRuleCommand(Collections.<DynamicRecord>emptyList(), asList(record), rule);
+ }
+\ No newline at end of file

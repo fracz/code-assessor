@@ -1,0 +1,10 @@
+diff --git a/c205ffb699db71dae6940c00c15f4d202251f266 b/3847325971f2eb9cd142a442a4b8e7d0c9f676b7
+index c205ffb699..3847325971 100644
+--- a/c205ffb699db71dae6940c00c15f4d202251f266
++++ b/3847325971f2eb9cd142a442a4b8e7d0c9f676b7
+@@ -1,3 +1,3 @@
+ private void assertResponseBody(String responseBody) {
+-    TestSubscriber.subscribe(this.response.getBody()).assertValuesWith(buf -> assertEquals(responseBody, DataBufferTestUtils.dumpString(buf, StandardCharsets.UTF_8)));
++    ScriptedSubscriber.<DataBuffer>create().consumeNextWith(buf -> assertEquals(responseBody, DataBufferTestUtils.dumpString(buf, StandardCharsets.UTF_8))).expectComplete().verify(this.response.getBody());
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/05b3051e8b9c256b8aa054eb6743ba662f8f538a b/4236a87f2c9a4d95012a7aa36ef153892c1e2bc2
+index 05b3051e8b..4236a87f2c 100644
+--- a/05b3051e8b9c256b8aa054eb6743ba662f8f538a
++++ b/4236a87f2c9a4d95012a7aa36ef153892c1e2bc2
+@@ -1,5 +1,5 @@
+ @Override
+ public IValueManager getValueManager() {
+     DBSTypedObject valueType = getValueType();
+-    return DataManagerRegistry.getInstance().getManager(getExecutionContext().getDataSource(), valueType.getDataKind(), getValueHandler().getValueObjectType(valueType));
++    return DataManagerRegistry.findValueManager(getExecutionContext().getDataSource().getContainer(), valueType.getDataKind(), getValueHandler().getValueObjectType(valueType));
+ }
+\ No newline at end of file

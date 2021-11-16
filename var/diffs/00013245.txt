@@ -1,0 +1,15 @@
+diff --git a/a966d65eb927d0b630ba5f4c7d254760dfe0bf6a b/beac3304aef3274f63a52802c66a785919556d8f
+index a966d65eb9..beac3304ae 100644
+--- a/a966d65eb927d0b630ba5f4c7d254760dfe0bf6a
++++ b/beac3304aef3274f63a52802c66a785919556d8f
+@@ -1,5 +1,7 @@
+ public void run() {
+-    VirtualFile virtualFile = theElement.getContainingFile().getVirtualFile();
++    VirtualFile virtualFile = context.getVirtualFile();
+     FileEditor editor = FileEditorManager.getInstance(myProject).getSelectedEditor(virtualFile);
+-    structureView.select(theElement, editor, requestFocus);
++    if (editor != null) {
++        structureView.selectCurrentElement(editor, requestFocus);
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/2cc7e9a2b4388ee1199636ee54533dd9b34496da b/555e4b0f4f97895cee16ab486522019e420afb20
+index 2cc7e9a2b4..555e4b0f4f 100644
+--- a/2cc7e9a2b4388ee1199636ee54533dd9b34496da
++++ b/555e4b0f4f97895cee16ab486522019e420afb20
+@@ -1,10 +1,5 @@
+ public void test_oracle_oderby_0() throws Exception {
+     String sql = "select * from t order by id";
+     String result = PagerUtils.limit(sql, JdbcConstants.ORACLE, 0, 10);
+-    Assert.assertEquals(//
+-    "SELECT XX.*, ROWNUM AS RN" + //
+-    "\nFROM (SELECT *" + //
+-    "\n\tFROM t" + //
+-    "\n\tORDER BY id" + //
+-    "\n\t) XX" + "\nWHERE ROWNUM <= 10", result);
++    Assert.assertEquals("SELECT XX.*, ROWNUM AS RN\n" + "FROM (\n" + "\tSELECT *\n" + "\tFROM t\n" + "\tORDER BY id\n" + ") XX\n" + "WHERE ROWNUM <= 10", result);
+ }
+\ No newline at end of file

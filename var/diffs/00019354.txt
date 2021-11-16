@@ -1,0 +1,13 @@
+diff --git a/d0fb1889fc0a9c1072f882d2a5b607760ea8b183 b/1eacc99b6d554dff8dc429bd41c2461b275a8d44
+index d0fb1889fc..1eacc99b6d 100644
+--- a/d0fb1889fc0a9c1072f882d2a5b607760ea8b183
++++ b/1eacc99b6d554dff8dc429bd41c2461b275a8d44
+@@ -1,4 +1,5 @@
+-@Override
+ public void onStickerClicked(Sticker sticker) {
+-    messenger().sendSticker(peer, sticker);
++    if (onStickerClickListener != null) {
++        onStickerClickListener.onStickerClicked(sticker);
++    }
+ }
+\ No newline at end of file

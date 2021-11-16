@@ -1,0 +1,17 @@
+diff --git a/b270cf7beb58debbd4ba2e912a68ec57d1671516 b/c813e42dd53ed75fa9e82f628f5c09f58b70526a
+index b270cf7beb..c813e42dd5 100644
+--- a/b270cf7beb58debbd4ba2e912a68ec57d1671516
++++ b/c813e42dd53ed75fa9e82f628f5c09f58b70526a
+@@ -1,4 +1,10 @@
+ @Override
+ public QueryValidationException validate() {
+-    return validateInnerQuery(filterBuilder, null);
++    QueryValidationException validationException = null;
++    if (filterBuilder == null) {
++        validationException = addValidationError("inner clause [filter] cannot be null.", validationException);
++    } else {
++        validateInnerQuery(filterBuilder, validationException);
++    }
++    return validationException;
+ }
+\ No newline at end of file

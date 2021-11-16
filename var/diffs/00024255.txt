@@ -1,0 +1,11 @@
+diff --git a/1426013049beaa111880dc6320cba04a2bd80f99 b/e411e923caf77ec22573f71f7a008b8301e87630
+index 1426013049..e411e923ca 100644
+--- a/1426013049beaa111880dc6320cba04a2bd80f99
++++ b/e411e923caf77ec22573f71f7a008b8301e87630
+@@ -1,3 +1,3 @@
+-public static Commit emptyCommit(ByteBuffer key, CFMetaData metadata) {
+-    return new Commit(key, UUIDGen.minTimeUUID(0), ArrayBackedSortedColumns.factory.create(metadata));
++public static Commit emptyCommit(DecoratedKey key, CFMetaData metadata) {
++    return new Commit(UUIDGen.minTimeUUID(0), PartitionUpdate.emptyUpdate(metadata, key));
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/da1d2d3489cef5a5751b127b3a0c649de8e4c02c b/6c1020eab24f1feec56b56528c016a9e643d3d1f
+index da1d2d3489..6c1020eab2 100644
+--- a/da1d2d3489cef5a5751b127b3a0c649de8e4c02c
++++ b/6c1020eab24f1feec56b56528c016a9e643d3d1f
+@@ -1,7 +1,7 @@
+ @Test
+ public void decodeMultipleChunksToJsonObject() throws InterruptedException {
+     JsonObjectDecoder decoder = new JsonObjectDecoder();
+     Flux<DataBuffer> source = Flux.just(stringBuffer("{\"foo\": \"foofoo\""), stringBuffer(", \"bar\": \"barbar\"}"));
+     Flux<String> output = decoder.decode(source, null, null, Collections.emptyMap()).map(JsonObjectDecoderTests::toString);
+-    TestSubscriber.subscribe(output).assertValues("{\"foo\": \"foofoo\", \"bar\": \"barbar\"}");
++    ScriptedSubscriber.<String>create().expectNext("{\"foo\": \"foofoo\", \"bar\": \"barbar\"}").expectComplete().verify(output);
+ }
+\ No newline at end of file

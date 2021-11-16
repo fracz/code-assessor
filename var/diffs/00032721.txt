@@ -1,0 +1,16 @@
+diff --git a/d16f8cb3b0b02ee196085b2c147b081d5b27a734 b/752d3585258e741d4e7406a520a3c3fe28562ee7
+index d16f8cb3b0..752d358525 100644
+--- a/d16f8cb3b0b02ee196085b2c147b081d5b27a734
++++ b/752d3585258e741d4e7406a520a3c3fe28562ee7
+@@ -1,8 +1,9 @@
+ public T get(Errors errors, InternalContext context, Dependency<?> dependency) throws ErrorsException {
++    errors = errors.withSource(providerKey);
+     Provider<? extends T> provider = providerFactory.get(errors, context, dependency);
+     try {
+         return errors.checkForNull(provider.get(), source, dependency);
+     } catch (RuntimeException userException) {
+-        throw errors.withSource(source).errorInProvider(userException).toException();
++        throw errors.errorInProvider(userException).toException();
+     }
+ }
+\ No newline at end of file

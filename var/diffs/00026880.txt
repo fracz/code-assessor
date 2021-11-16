@@ -1,0 +1,11 @@
+diff --git a/4d9a9feb98bf8b072984b43bc3bc19bc0a49335e b/8587fda0322ef299a99f4ac15a52efed51447b71
+index 4d9a9feb98..8587fda032 100644
+--- a/4d9a9feb98bf8b072984b43bc3bc19bc0a49335e
++++ b/8587fda0322ef299a99f4ac15a52efed51447b71
+@@ -1,4 +1,4 @@
+ @Override
+ public double l2RegularizedCoefficient() {
+-    return (MatrixFunctions.pow(getW(), 2).sum() / 2.0) * l2 + 1e-6;
++    return ((double) pow(getW(), 2).sum(Integer.MAX_VALUE).element() / 2.0) * l2 + 1e-6;
+ }
+\ No newline at end of file

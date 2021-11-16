@@ -1,0 +1,29 @@
+diff --git a/5d2d08a8fa54057fba265717ea76fa9d5e8d53fd b/3ee1a2afe89684b3b2533b67a45c6fe432c4aaf9
+index 5d2d08a8fa..3ee1a2afe8 100644
+--- a/5d2d08a8fa54057fba265717ea76fa9d5e8d53fd
++++ b/3ee1a2afe89684b3b2533b67a45c6fe432c4aaf9
+@@ -1,19 +1,20 @@
+ @Override
+ public boolean close() {
+     final Lock writeLock = startStopSync.writeLock();
+     try {
+         writeLock.lockInterruptibly();
+     } catch (InterruptedException e) {
+         throw Throwables.propagate(e);
+     }
+     try {
+-        if (!started) {
++        if (entry == null) {
+             LOG.warn("Not started! [%s]", extractorID);
+             return true;
+         }
+-        started = false;
+-        return manager.checkedDelete(extractorID);
++        entry.close();
++        entry = null;
++        return true;
+     } finally {
+         writeLock.unlock();
+     }
+ }
+\ No newline at end of file

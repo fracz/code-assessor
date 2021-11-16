@@ -1,0 +1,26 @@
+diff --git a/5daf764e1207ac03ed0189f2ba29ed0726511f01 b/908e6fcb77f1c160c2648074246e78d4748eeab9
+index 5daf764e12..908e6fcb77 100644
+--- a/5daf764e1207ac03ed0189f2ba29ed0726511f01
++++ b/908e6fcb77f1c160c2648074246e78d4748eeab9
+@@ -1,17 +1,15 @@
+ @Override
+ public void onTextAvailable(ProcessEvent event, Key outputType) {
+     Iterator<String> lines = LineHandlerHelper.splitText(event.getText()).iterator();
+     if (ProcessOutputTypes.STDOUT == outputType) {
+         while (lines.hasNext()) {
+             String line = lines.next();
+             if (indicator != null && showTextOnIndicator) {
+                 indicator.setText2(line);
+             }
+-            out.write(line);
+-        }
+-    } else if (ProcessOutputTypes.STDERR == outputType) {
+-        while (lines.hasNext()) {
+-            err.write(lines.next());
++            addToOutput(line, ProcessOutputTypes.STDOUT);
+         }
++    } else {
++        super.onTextAvailable(event, outputType);
+     }
+ }
+\ No newline at end of file

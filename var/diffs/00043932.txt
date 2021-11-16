@@ -1,0 +1,13 @@
+diff --git a/035fdf9be5a805866fa984290a48648630aec211 b/f00359f142b5303db473ddbaeb58f00d07e9ea0d
+index 035fdf9be5..f00359f142 100644
+--- a/035fdf9be5a805866fa984290a48648630aec211
++++ b/f00359f142b5303db473ddbaeb58f00d07e9ea0d
+@@ -1,6 +1,6 @@
+ @AfterMethod
+ public void afterMethod() throws Exception {
+     database.command(new OCommandSQL("drop class DropPropertyIndexTestClass")).execute();
+     database.getMetadata().getSchema().reload();
+-    database.close();
++    super.afterMethod();
+ }
+\ No newline at end of file

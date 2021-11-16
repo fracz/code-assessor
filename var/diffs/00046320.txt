@@ -1,0 +1,21 @@
+diff --git a/4b91b1b7e3520863a80ddf29b862ef607b554240 b/65132c3d211c5ddcacb61b4a9985710c8da27452
+index 4b91b1b7e3..65132c3d21 100644
+--- a/4b91b1b7e3520863a80ddf29b862ef607b554240
++++ b/65132c3d211c5ddcacb61b4a9985710c8da27452
+@@ -1,14 +1,14 @@
+ @Override
+ public void run() {
+     scrollPane.getViewport().removeAll();
+     completionList.setModel(items);
+     completionList.setSelectedIndex(0);
+     scrollPane.setViewportView(completionList);
+     popupMenu.setPopupSize(popupMenu.getSize().width, setHeight(items.getSize()));
+-    log("Suggestion updated" + System.nanoTime());
++    // log("Suggestion updated" + System.nanoTime());
+     textarea.requestFocusInWindow();
+     popupMenu.show(textarea, location.x, textarea.getBaseline(0, 0) + location.y);
+     completionList.validate();
+     scrollPane.validate();
+     popupMenu.validate();
+ }
+\ No newline at end of file

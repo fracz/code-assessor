@@ -1,0 +1,14 @@
+diff --git a/9076c7284391d309f89077147f9aead85eb51a5c b/e6049052715d4639cbb79df817f3c08d9d744ece
+index 9076c72843..e604905271 100644
+--- a/9076c7284391d309f89077147f9aead85eb51a5c
++++ b/e6049052715d4639cbb79df817f3c08d9d744ece
+@@ -1,7 +1,7 @@
+ private void _before(MethodVisitor mw, Context context) {
+     mw.visitVarInsn(ALOAD, context.serializer());
+     mw.visitVarInsn(ALOAD, context.obj());
+     mw.visitVarInsn(ILOAD, context.var("seperator"));
+-    mw.visitMethodInsn(INVOKESTATIC, getType(FilterUtils.class), "writeBefore", "(Lcom/alibaba/fastjson/serializer/JSONSerializer;Ljava/lang/Object;C)C");
++    mw.visitMethodInsn(INVOKESTATIC, "com/alibaba/fastjson/serializer/FilterUtils", "writeBefore", "(Lcom/alibaba/fastjson/serializer/JSONSerializer;Ljava/lang/Object;C)C");
+     mw.visitVarInsn(ISTORE, context.var("seperator"));
+ }
+\ No newline at end of file

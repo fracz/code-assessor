@@ -1,0 +1,16 @@
+diff --git a/f2d96db8421d84f1e1067e917901322abd000dd1 b/0a7edcc478d1fd5a5d10f4adafeed431259fe2d6
+index f2d96db842..0a7edcc478 100644
+--- a/f2d96db8421d84f1e1067e917901322abd000dd1
++++ b/0a7edcc478d1fd5a5d10f4adafeed431259fe2d6
+@@ -1,9 +1,5 @@
+ public static Mutation dropTypeFromSchemaMutation(KSMetaData keyspace, UserType type, long timestamp) {
+     // Include the serialized keyspace in case the target node missed a CREATE KEYSPACE migration (see CASSANDRA-5631).
+     Mutation mutation = makeCreateKeyspaceMutation(keyspace, timestamp, false);
+-    ColumnFamily cells = mutation.addOrGet(Usertypes);
+-    int ldt = (int) (System.currentTimeMillis() / 1000);
+-    Composite prefix = Usertypes.comparator.make(type.name);
+-    cells.addAtom(new RangeTombstone(prefix, prefix.end(), timestamp, ldt));
+-    return mutation;
++    return RowUpdateBuilder.deleteRow(Usertypes, timestamp, mutation, type.name);
+ }
+\ No newline at end of file

@@ -1,0 +1,25 @@
+diff --git a/dfc08d0274f8af4efa729e1221d141ca61456b6b b/1c9731ec7b0bd9426bf5a3cbae6f3eb58abd0dd2
+index dfc08d0274..1c9731ec7b 100644
+--- a/dfc08d0274f8af4efa729e1221d141ca61456b6b
++++ b/1c9731ec7b0bd9426bf5a3cbae6f3eb58abd0dd2
+@@ -1,15 +1,15 @@
+ private DBNNode finaActiveNode(DBRProgressMonitor monitor, DBNNode node) throws DBException {
+-    List<? extends DBNNode> children = node.getChildren(monitor);
+-    if (!CommonUtils.isEmpty(children)) {
+-        if (children.get(0) instanceof DBNContainer) {
++    DBNNode[] children = node.getChildren(monitor);
++    if (!ArrayUtils.isEmpty(children)) {
++        if (children[0] instanceof DBNContainer) {
+             // Use only first folder to search
+-            return finaActiveNode(monitor, children.get(0));
++            return finaActiveNode(monitor, children[0]);
+         }
+         for (DBNNode child : children) {
+             if (NavigatorUtils.isDefaultElement(child)) {
+                 return child;
+             }
+         }
+     }
+     return node;
+ }
+\ No newline at end of file

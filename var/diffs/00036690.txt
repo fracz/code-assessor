@@ -1,0 +1,15 @@
+diff --git a/843f671084da20d15c35790aff0289472040d2ec b/0f4970b76b947d55effcaacdb0e8e07cc591b192
+index 843f671084..0f4970b76b 100644
+--- a/843f671084da20d15c35790aff0289472040d2ec
++++ b/0f4970b76b947d55effcaacdb0e8e07cc591b192
+@@ -1,6 +1,6 @@
+ private HttpConnection getHttpConnection(final Object[] args) {
+-    if (args == null || args.length <= 1 || !(args[1] instanceof HttpConnection)) {
+-        return null;
++    if (args != null && args.length > 1 && args[1] instanceof HttpConnection) {
++        return (HttpConnection) args[1];
+     }
+-    return (HttpConnection) args[1];
++    return null;
+ }
+\ No newline at end of file

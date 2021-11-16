@@ -1,0 +1,32 @@
+diff --git a/e38a963347927eacd97c71cfbf996ca84d655f93 b/456e4b513285dafa50889f5ef7d325c7464858b8
+index e38a963347..456e4b5132 100644
+--- a/e38a963347927eacd97c71cfbf996ca84d655f93
++++ b/456e4b513285dafa50889f5ef7d325c7464858b8
+@@ -1,21 +1,25 @@
+ /**
+  * Initializes the default native {@link FileSystem} instance as a platform native
+  * (Unix or Windows) file system. If it's not initialized, then initialize it,
+  * otherwise verify if the type of the instance is correct.
+  */
+ public static synchronized FileSystem getNativeFileSystem() {
+     if (OS.getCurrent() == OS.WINDOWS) {
+         if (defaultNativeFileSystem == null) {
+             defaultNativeFileSystem = new WindowsFileSystem();
+         } else {
+             Verify.verify(defaultNativeFileSystem instanceof WindowsFileSystem);
+         }
+     } else {
+         if (defaultNativeFileSystem == null) {
+-            defaultNativeFileSystem = new UnixFileSystem();
++            try {
++                defaultNativeFileSystem = (FileSystem) Class.forName(TestConstants.TEST_REAL_UNIX_FILE_SYSTEM).newInstance();
++            } catch (Exception e) {
++                throw new IllegalStateException(e);
++            }
+         } else {
+             Verify.verify(defaultNativeFileSystem instanceof UnixFileSystem);
+         }
+     }
+     return defaultNativeFileSystem;
+ }
+\ No newline at end of file

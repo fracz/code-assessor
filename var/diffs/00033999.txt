@@ -1,0 +1,17 @@
+diff --git a/707a73001975cbf53b722bc11bc10c35256f4c88 b/f858c8946c644e48c568743496b8abeb0a36d990
+index 707a730019..f858c8946c 100644
+--- a/707a73001975cbf53b722bc11bc10c35256f4c88
++++ b/f858c8946c644e48c568743496b8abeb0a36d990
+@@ -1,10 +1,10 @@
+ /**
+  * Test of decompose method, of class EigenValueDecomposition.
+  */
+ @Test
+ public void testDecompose2() {
+     System.out.println("decompose");
+-    EigenValueDecomposition result = EigenValueDecomposition.decompose(A, true, true);
++    EigenValueDecomposition result = new EigenValueDecomposition(new ColumnMajorMatrix(A, true), true);
+     assertTrue(Math.equals(eigenValues, result.getEigenValues(), 1E-7));
+     assertTrue(null == result.getEigenVectors());
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/d5d6587162f8c4b44eda7ab32142cf8563dabef4 b/4e1de9f8aeb5f9cee28900aea2b1907cfe7caf7b
+index d5d6587162..4e1de9f8ae 100644
+--- a/d5d6587162f8c4b44eda7ab32142cf8563dabef4
++++ b/4e1de9f8aeb5f9cee28900aea2b1907cfe7caf7b
+@@ -1,13 +1,10 @@
+ /**
+  * {@inheritDoc}
+  */
+ public Token getRequestToken() {
+-    OAuthRequest request = new OAuthRequest(config.getRequestTokenVerb(), config.getRequestTokenEndpoint());
+-    request.addOAuthParameter(OAuthConstants.CALLBACK, config.getCallback());
+-    if (scope != NO_SCOPE)
+-        request.addOAuthParameter(OAuthConstants.SCOPE, scope);
++    OAuthRequest request = new OAuthRequest(api.getRequestTokenVerb(), api.getRequestTokenEndpoint());
+     addOAuthParams(request, OAuthConstants.EMPTY_TOKEN);
+     addOAuthHeader(request);
+     Response response = request.send();
+-    return rtExtractor.extract(response.getBody());
++    return api.getRequestTokenExtractor().extract(response.getBody());
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/ba6e0b056aa8fa9bed1d4061e0aa1beebe8944bd b/c33d36a8447707bc0bb113c690c569300eca43c1
+index ba6e0b056a..c33d36a844 100644
+--- a/ba6e0b056aa8fa9bed1d4061e0aa1beebe8944bd
++++ b/c33d36a8447707bc0bb113c690c569300eca43c1
+@@ -1,5 +1,11 @@
+ @Override
+ public PsiType visitCapturedWildcardType(final PsiCapturedWildcardType type) {
+     PsiWildcardType mapped = mapType(type.getWildcard());
+-    return mapped == null ? null : PsiCapturedWildcardType.create(mapped, type.getContext(), type.getTypeParameter());
++    if (mapped == null) {
++        return null;
++    } else {
++        final PsiCapturedWildcardType capturedWildcardType = PsiCapturedWildcardType.create(mapped, type.getContext(), type.getTypeParameter());
++        capturedWildcardType.setUpperBound(mapType(type.getUpperBound()));
++        return capturedWildcardType;
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/fe1d58589110162987f41426afc01ea71739bfd4 b/a02f96f81ddf18b502130da5cd9f690f202b7b15
+index fe1d585891..a02f96f81d 100644
+--- a/fe1d58589110162987f41426afc01ea71739bfd4
++++ b/a02f96f81ddf18b502130da5cd9f690f202b7b15
+@@ -1,12 +1,10 @@
+ @Override
+ public void createNewTag(@NotNull final String name, @NotNull final String reference, @NotNull final List<GitRepository> repositories, @Nullable Runnable callInAwtLater) {
+     new CommonBackgroundTask(myProject, "Checking out new branch " + name, callInAwtLater) {
+
+         @Override
+         public void execute(@NotNull ProgressIndicator indicator) {
+-            for (GitRepository repository : repositories) {
+-                myGit.createNewTag(repository, name, null, reference);
+-            }
++            newWorker(indicator).createNewTag(name, reference, repositories);
+         }
+     }.runInBackground();
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/bade65f57ac90da67cba2bcda0460e4d3150cbea b/8d49f7917bab15303ac164bf193edeaa76e23da7
+index bade65f57a..8d49f7917b 100644
+--- a/bade65f57ac90da67cba2bcda0460e4d3150cbea
++++ b/8d49f7917bab15303ac164bf193edeaa76e23da7
+@@ -1,4 +1,6 @@
+ @Override
+-public IndexRule addIndexRule(long labelId, long propertyKey) throws ConstraintViolationKernelException {
+-    return state.addIndexRule(labelId, propertyKey);
++public IndexDescriptor addIndexRule(long labelId, long propertyKey) throws ConstraintViolationKernelException {
++    IndexDescriptor rule = new IndexDescriptor(labelId, propertyKey);
++    state.addIndexRule(rule);
++    return rule;
+ }
+\ No newline at end of file

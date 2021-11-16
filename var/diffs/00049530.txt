@@ -1,0 +1,17 @@
+diff --git a/5e9208f183056a7b7a84ad8d11abcfd4cc333c40 b/cf380379b6de5c3c4d18d2e9ab9ae0f491bbe395
+index 5e9208f183..cf380379b6 100644
+--- a/5e9208f183056a7b7a84ad8d11abcfd4cc333c40
++++ b/cf380379b6de5c3c4d18d2e9ab9ae0f491bbe395
+@@ -1,10 +1,10 @@
+ private void executeFinishCommand() {
+     String commandLine = translatePattern(settings.getFinishProcessCommand(), DBUtils.getObjectOwnerProject(sourceObject), stripObjectName(sourceObject.getName()), outputFile);
+     DBRShellCommand command = new DBRShellCommand(commandLine);
+     DBRProcessDescriptor processDescriptor = new DBRProcessDescriptor(command);
+     try {
+         processDescriptor.execute();
+     } catch (DBException e) {
+-        UIUtils.showErrorDialog(null, "Run process", "Error running process [" + commandLine + "]", e);
++        DBUserInterface.getInstance().showError("Run process", "Error running process [" + commandLine + "]", e);
+     }
+ }
+\ No newline at end of file

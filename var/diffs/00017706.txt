@@ -1,0 +1,14 @@
+diff --git a/596f9b41ed6a886c23cabaa2f12c25f31ff7536e b/22e70d1b25abaee6b10db9fad28f211f1c998c1b
+index 596f9b41ed..22e70d1b25 100644
+--- a/596f9b41ed6a886c23cabaa2f12c25f31ff7536e
++++ b/22e70d1b25abaee6b10db9fad28f211f1c998c1b
+@@ -1,7 +1,4 @@
+ @Override
+ public ClassDescriptor fun(Name name) {
+-    NestedClassDescriptors _this = NestedClassDescriptors.this;
+-    if (!_this.declaredNames.contains(name.asString()))
+-        return null;
+-    return resolveNestedClass(name);
++    return NestedClassDescriptors.this.declaredNames.contains(name) ? descriptorFinder.findClass(classId.createNestedClassId(name)) : null;
+ }
+\ No newline at end of file

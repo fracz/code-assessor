@@ -1,0 +1,20 @@
+diff --git a/18d7d5af1982f5cdd216bd8e3062cebd9ad4e99a b/443b699a63db4f9d51388f7174fd607a1abf906d
+index 18d7d5af19..443b699a63 100644
+--- a/18d7d5af1982f5cdd216bd8e3062cebd9ad4e99a
++++ b/443b699a63db4f9d51388f7174fd607a1abf906d
+@@ -1,13 +1,13 @@
+ private boolean isValid() {
+-    if (isDumbMode() && !(this instanceof DumbAware)) {
++    if (isDumbMode() && !DumbService.isDumbAware(this)) {
+         return false;
+     }
+     if (myDocument != null && myDocument.getModificationStamp() != myInitialStamp)
+         return false;
+     if (myProject != null && myDocument != null) {
+         PsiFile file = PsiDocumentManager.getInstance(myProject).getPsiFile(myDocument);
+         if (file == null || !file.isValid())
+             return false;
+     }
+     return true;
+ }
+\ No newline at end of file

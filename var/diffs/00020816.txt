@@ -1,0 +1,19 @@
+diff --git a/8abba71b675975b96ab025cbb32270cc378c8b28 b/e5943be7cda537bd86728210459bcb0d93257aa0
+index 8abba71b67..e5943be7cd 100644
+--- a/8abba71b675975b96ab025cbb32270cc378c8b28
++++ b/e5943be7cda537bd86728210459bcb0d93257aa0
+@@ -1,8 +1,11 @@
+ /* (non-Javadoc)
+      * @see com.alibaba.druid.filter.wall.WallVisitor#isPermitTable(java.lang.String)
+      */
+ @Override
+ public boolean isPermitTable(String name) {
+-    // TODO Auto-generated method stub
+-    return false;
++    if (!config.isTableCheck()) {
++        return false;
++    }
++    name = WallVisitorUtils.form(name);
++    return config.getPermitTables().contains(name);
+ }
+\ No newline at end of file

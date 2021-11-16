@@ -1,0 +1,16 @@
+diff --git a/0946ab5ae0c9552ba5d11a1767a92323ea825cc1 b/c15005258b5313fdf383884779cf54d307224c6a
+index 0946ab5ae0..c15005258b 100644
+--- a/0946ab5ae0c9552ba5d11a1767a92323ea825cc1
++++ b/c15005258b5313fdf383884779cf54d307224c6a
+@@ -1,8 +1,7 @@
+ public void importDatabase(final String options, final InputStream inputStream, final String name, final OCommandOutputListener listener) {
+-    OBinaryRequest request = new OImportRequest(inputStream, options, name);
+-    OImportResponse response = new OImportResponse();
+-    networkOperationRetryTimeout(request, response, "Error sending import request", 0, OGlobalConfiguration.NETWORK_REQUEST_TIMEOUT.getValueAsInteger());
++    OImportRequest request = new OImportRequest(inputStream, options, name);
++    OImportResponse response = networkOperationRetryTimeout(request, "Error sending import request", 0, OGlobalConfiguration.NETWORK_REQUEST_TIMEOUT.getValueAsInteger());
+     for (String message : response.getMessages()) {
+         listener.onMessage(message);
+     }
+ }
+\ No newline at end of file

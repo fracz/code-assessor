@@ -1,0 +1,14 @@
+diff --git a/fb8c383fe07e074a6bcc0e39bbf9af669e3eb6ae b/f473866d4b28441653d3496103e4434afa1d19b1
+index fb8c383fe0..f473866d4b 100644
+--- a/fb8c383fe07e074a6bcc0e39bbf9af669e3eb6ae
++++ b/f473866d4b28441653d3496103e4434afa1d19b1
+@@ -1,6 +1,6 @@
+ @Override
+-public synchronized void putAll(final List<KeyValue<K, V>> entries) {
+-    for (KeyValue<K, V> entry : entries) {
++public synchronized void putAll(final List<KeyValue<Bytes, byte[]>> entries) {
++    for (KeyValue<Bytes, byte[]> entry : entries) {
+         put(entry.key, entry.value);
+     }
+ }
+\ No newline at end of file

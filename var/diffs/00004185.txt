@@ -1,0 +1,16 @@
+diff --git a/0ebb82433ba57e06c6f329062f871104379a1457 b/5b133d8ace6a086bd501f8d8f96fd6649fbca4b2
+index 0ebb82433b..5b133d8ace 100644
+--- a/0ebb82433ba57e06c6f329062f871104379a1457
++++ b/5b133d8ace6a086bd501f8d8f96fd6649fbca4b2
+@@ -1,9 +1,9 @@
+ public int getState() {
+-    int state = baseLexer.getState();
++    int state = super.getState();
+     state |= ((seenScript) ? SEEN_SCRIPT : 0);
+     state |= ((seenTag) ? SEEN_TAG : 0);
+     state |= ((seenStyle) ? SEEN_STYLE : 0);
+     state |= ((seenAttribute) ? SEEN_ATTRIBUTE : 0);
+     state |= ((seenContentType) ? SEEN_CONTENT_TYPE : 0);
+     return state;
+ }
+\ No newline at end of file

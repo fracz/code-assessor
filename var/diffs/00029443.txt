@@ -1,0 +1,12 @@
+diff --git a/f02b55975c7ef32a7e545395efb09a3da3b69a41 b/4c7078901a84891e094394edbc1242b2f803a6e7
+index f02b55975c..4c7078901a 100644
+--- a/f02b55975c7ef32a7e545395efb09a3da3b69a41
++++ b/4c7078901a84891e094394edbc1242b2f803a6e7
+@@ -1,5 +1,5 @@
+ @Override
+ public Settings indexSettings() {
+     // checksum file to be written twice during restore operation
+-    return Settings.builder().put(super.indexSettings()).put(MockFSDirectoryService.RANDOM_PREVENT_DOUBLE_WRITE, false).put(MockFSDirectoryService.RANDOM_NO_DELETE_OPEN_FILE, false).put("cloud.enabled", true).put("plugins." + PluginsService.LOAD_PLUGIN_FROM_CLASSPATH, true).build();
++    return Settings.builder().put(super.indexSettings()).put(MockFSDirectoryService.RANDOM_PREVENT_DOUBLE_WRITE, false).put(MockFSDirectoryService.RANDOM_NO_DELETE_OPEN_FILE, false).put("cloud.enabled", true).put("plugin.types", CloudAwsPlugin.class.getName()).build();
+ }
+\ No newline at end of file

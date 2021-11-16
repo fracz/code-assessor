@@ -1,0 +1,18 @@
+diff --git a/9c6288cf8a8d8376152da47d3dbee2dde0968a6b b/454b9a40c0eab598c29094a3bff2fbb846b9793f
+index 9c6288cf8a..454b9a40c0 100644
+--- a/9c6288cf8a8d8376152da47d3dbee2dde0968a6b
++++ b/454b9a40c0eab598c29094a3bff2fbb846b9793f
+@@ -1,9 +1,9 @@
+ @Override
+ public double squaredLoss() {
+-    DoubleMatrix squaredDiff = pow(reconstruct(input).sub(input), 2);
+-    double loss = squaredDiff.columnSums().sum() / input.rows;
++    INDArray squaredDiff = pow(reconstruct(input).sub(input), 2);
++    double loss = (double) squaredDiff.sum(Integer.MAX_VALUE).element() / input.rows();
+     if (this.useRegularization) {
+-        loss += 0.5 * l2 * MatrixFunctions.pow(W, 2).sum();
++        loss += 0.5 * l2 * (double) pow(W, 2).sum(Integer.MAX_VALUE).element();
+     }
+     return loss;
+ }
+\ No newline at end of file

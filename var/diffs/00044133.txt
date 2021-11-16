@@ -1,0 +1,14 @@
+diff --git a/f3faf8a64dd3adc9210bcf88dace157427f103c4 b/3d97f7ac43352088643846feead0caf7ae7dd4c7
+index f3faf8a64d..3d97f7ac43 100644
+--- a/f3faf8a64dd3adc9210bcf88dace157427f103c4
++++ b/3d97f7ac43352088643846feead0caf7ae7dd4c7
+@@ -1,6 +1,6 @@
+ public int getCreatedInstancesInPool(final String url) {
+-    final OResourcePool<String, OChannelBinaryAsynchClient> pool = connections.get(url);
++    final ORemoteConnectionPool pool = connections.get(url);
+     if (pool == null)
+         return 0;
+-    return pool.getCreatedInstances();
++    return pool.getPool().getCreatedInstances();
+ }
+\ No newline at end of file

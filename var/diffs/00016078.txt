@@ -1,0 +1,27 @@
+diff --git a/fa02ad347b79740781d7ec6d5348a2e89e2c894f b/9838da24a22598f7721a5e07d60fcb67494102de
+index fa02ad347b..9838da24a2 100644
+--- a/fa02ad347b79740781d7ec6d5348a2e89e2c894f
++++ b/9838da24a22598f7721a5e07d60fcb67494102de
+@@ -1,12 +1,14 @@
+-public static JetIntentionActionFactory<JetProperty> createFactory() {
+-    return new JetIntentionActionFactory<JetProperty>() {
++public static JetIntentionActionFactory createFactory() {
++    return new JetIntentionActionFactory() {
+
+         @Override
+-        public JetIntentionAction<JetProperty> createAction(DiagnosticWithPsiElement diagnostic) {
+-            assert diagnostic.getPsiElement() instanceof JetProperty;
+-            DiagnosticWithParameters<PsiElement> diagnosticWithParameters = assertAndCastToDiagnosticWithParameters(diagnostic, DiagnosticParameters.TYPE);
+-            JetType type = diagnosticWithParameters.getParameter(DiagnosticParameters.TYPE);
+-            return new RemovePartsFromPropertyFix((JetProperty) diagnostic.getPsiElement(), type);
++        public JetIntentionAction<JetProperty> createAction(Diagnostic diagnostic) {
++            PsiElement element = diagnostic.getPsiElement();
++            assert element instanceof JetElement;
++            JetProperty property = PsiTreeUtil.getParentOfType(element, JetProperty.class);
++            if (property == null)
++                return null;
++            return new RemovePartsFromPropertyFix(property);
+         }
+     };
+ }
+\ No newline at end of file

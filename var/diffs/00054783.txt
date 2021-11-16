@@ -1,0 +1,31 @@
+diff --git a/54d41462dfe7e0f257278b01ba123911ae13cc14 b/9cc59334bf79722dbe621d761fc439f64b668d23
+index 54d41462df..9cc59334bf 100644
+--- a/54d41462dfe7e0f257278b01ba123911ae13cc14
++++ b/9cc59334bf79722dbe621d761fc439f64b668d23
+@@ -1,22 +1,12 @@
+-/**
+- * 提供命令行输入方式
+- *
+- * @param keypass
+- * @param storealias
+- * @param storepass
+- * @param signtureFile
+- * @param signApk
+- * @throws IOException
+- */
+-public void setSignData(File signtureFile, String keypass, String storealias, String storepass, boolean signApk) throws IOException {
+-    mUseSignAPk = signApk;
++public void setSignData(File signatureFile, String keypass, String storealias, String storepass) throws IOException {
++    mUseSignAPk = true;
+     if (mUseSignAPk) {
+-        mSignatureFile = signtureFile;
++        mSignatureFile = signatureFile;
+         if (!mSignatureFile.exists()) {
+             throw new IOException(String.format("the signature file do not exit, raw path= %s\n", mSignatureFile.getAbsolutePath()));
+         }
+         mKeyPass = keypass;
+         mStoreAlias = storealias;
+         mStorePass = storepass;
+     }
+ }
+\ No newline at end of file

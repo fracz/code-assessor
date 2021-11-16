@@ -1,0 +1,20 @@
+diff --git a/a00373946e525cc833c2122d35fcd810d792bd89 b/f5182bd889ec78468de4f4e8e16abe3730054adb
+index a00373946e..f5182bd889 100644
+--- a/a00373946e525cc833c2122d35fcd810d792bd89
++++ b/f5182bd889ec78468de4f4e8e16abe3730054adb
+@@ -1,8 +1,12 @@
+ @Override
+ public void widgetSelected(SelectionEvent e) {
+     if (((Button) e.widget).getSelection()) {
++        if (curFormat == e.widget.getData()) {
++            return;
++        }
++        saveOptions();
+         curFormat = (SQLTargetConverterDescriptor) e.widget.getData();
+-        options.clear();
+-        updateResult();
++        loadOptions();
++        onFormatChange();
+     }
+ }
+\ No newline at end of file

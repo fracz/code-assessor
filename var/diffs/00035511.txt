@@ -1,0 +1,23 @@
+diff --git a/0654d24a9df072af087c08a14ae3f16ed82b3780 b/af413e52e0e8f6fc25a8c30f7bdfd8252da680f8
+index 0654d24a9d..af413e52e0 100644
+--- a/0654d24a9df072af087c08a14ae3f16ed82b3780
++++ b/af413e52e0e8f6fc25a8c30f7bdfd8252da680f8
+@@ -1,15 +1,15 @@
+ /**
+  * @return any error, will return true
+  */
+ @Override
+ public boolean isIdle() {
+-    if (getService() == null) {
+-        return true;
++    if (!isConnected()) {
++        return DownloadServiceNotConnectedHelper.isIdle();
+     }
+     try {
+         getService().isIdle();
+     } catch (RemoteException e) {
+         e.printStackTrace();
+     }
+     return true;
+ }
+\ No newline at end of file

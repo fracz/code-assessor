@@ -1,0 +1,18 @@
+diff --git a/f5fdf6708a157eb1bbc9d952740b8c6d7f0cdd52 b/f4b289a17ac8d35ba4f79d631d7c0222705b8543
+index f5fdf6708a..f4b289a17a 100644
+--- a/f5fdf6708a157eb1bbc9d952740b8c6d7f0cdd52
++++ b/f4b289a17ac8d35ba4f79d631d7c0222705b8543
+@@ -1,10 +1,11 @@
+ private void doProcessStandardLibraryNamespace(WritableScope outerScope, NamespaceDescriptorImpl standardLibraryNamespace, List<JetFile> files) {
+     ArrayList<JetDeclaration> toAnalyze = new ArrayList<JetDeclaration>();
+     for (JetFile file : files) {
+-        context.getNamespaceDescriptors().put(file, standardLibraryNamespace);
++        // TODO 1 restore
++        // context.getPackageFragments().put(file, standardLibraryNamespace);
+         context.getNamespaceScopes().put(file, standardLibraryNamespace.getMemberScope());
+         toAnalyze.addAll(file.getDeclarations());
+     }
+     // context.getDeclaringScopes().put(file, outerScope);
+     doProcess(outerScope, standardLibraryNamespace.getBuilder(), toAnalyze);
+ }
+\ No newline at end of file

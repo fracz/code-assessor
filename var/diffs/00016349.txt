@@ -1,0 +1,17 @@
+diff --git a/7fde53b031df2f600ecf88a0f786a83b674b39ca b/b52b52090afff6de28885743b7e3e947d0f4e4f2
+index 7fde53b031..b52b52090a 100644
+--- a/7fde53b031df2f600ecf88a0f786a83b674b39ca
++++ b/b52b52090afff6de28885743b7e3e947d0f4e4f2
+@@ -1,8 +1,8 @@
+-private boolean addEntryIfParentExists(NamespaceDescriptor parentDescriptor, JsPropertyInitializer entry, Map<NamespaceDescriptor, List<JsExpression>> descriptorToDeclarationPlace) {
+-    List<JsExpression> parentDefineInvocation = descriptorToDeclarationPlace.get(parentDescriptor);
++private boolean addEntryIfParentExists(NamespaceDescriptor parentDescriptor, JsPropertyInitializer entry, Map<NamespaceDescriptor, DefineInvocation> descriptorToDeclarationPlace) {
++    DefineInvocation parentDefineInvocation = descriptorToDeclarationPlace.get(parentDescriptor);
+     if (parentDefineInvocation != null) {
+-        getListFromPlace(parentDefineInvocation).add(entry);
++        parentDefineInvocation.getMembers().add(entry);
+         return true;
+     }
+     return false;
+ }
+\ No newline at end of file

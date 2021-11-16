@@ -1,0 +1,36 @@
+diff --git a/a53cad85b35709d6a0f4ea6c68562c9df74dec03 b/d541aed27c7ec2e889dd2cda1a95f527a9149fef
+index a53cad85b3..d541aed27c 100644
+--- a/a53cad85b35709d6a0f4ea6c68562c9df74dec03
++++ b/d541aed27c7ec2e889dd2cda1a95f527a9149fef
+@@ -1,24 +1,24 @@
+ /**
+- * Returns DfaValue describing the return value of this contract or null if this contract assumes that any value could be returned.
++ * Returns DfaValue describing the return value of this contract
+  *
+  * @param factory factory to create values
+- * @param resultType method result type
++ * @param defaultResult default result value for the called method
+  * @return a DfaValue describing the return value of this contract
+  */
+-@Nullable
+-DfaValue getDfaReturnValue(DfaValueFactory factory, PsiType resultType) {
++@NotNull
++DfaValue getDfaReturnValue(DfaValueFactory factory, DfaValue defaultResult) {
+     switch(getReturnValue()) {
+         case NULL_VALUE:
+             return factory.getConstFactory().getNull();
+         case NOT_NULL_VALUE:
+-            return factory.createTypeValue(resultType, Nullness.NOT_NULL);
++            return defaultResult instanceof DfaTypeValue ? ((DfaTypeValue) defaultResult).withNullness(Nullness.NOT_NULL) : DfaUnknownValue.getInstance();
+         case TRUE_VALUE:
+             return factory.getConstFactory().getTrue();
+         case FALSE_VALUE:
+             return factory.getConstFactory().getFalse();
+         case THROW_EXCEPTION:
+             return factory.getConstFactory().getContractFail();
+         default:
+-            return null;
++            return defaultResult;
+     }
+ }
+\ No newline at end of file

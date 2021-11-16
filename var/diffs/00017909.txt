@@ -1,0 +1,19 @@
+diff --git a/addf48ef56b02a74715f9eb2c6b567ba0c3f03e5 b/9e5cf206a1eb38eb302af6b1aba8a57299d85fe4
+index addf48ef56..9e5cf206a1 100644
+--- a/addf48ef56b02a74715f9eb2c6b567ba0c3f03e5
++++ b/9e5cf206a1eb38eb302af6b1aba8a57299d85fe4
+@@ -1,7 +1,9 @@
+ @Test
+ public void testAllAppsForRegions() throws Exception {
+-    Applications appsForRemoteRegion = client.getApplicationsForARegion(REMOTE_REGION);
+-    Assert.assertTrue("No apps for remote region found.", null != appsForRemoteRegion && !appsForRemoteRegion.getRegisteredApplications().isEmpty());
+-    Applications appsForLocalRegion = client.getApplicationsForARegion("us-east-1");
+-    Assert.assertTrue("No apps for local region found.", null != appsForLocalRegion && !appsForLocalRegion.getRegisteredApplications().isEmpty());
++    prepareRemoteRegionRegistry();
++    EurekaClient client = discoveryClientResource.getClient();
++    Applications appsForRemoteRegion = client.getApplicationsForARegion(TEST_REMOTE_REGION);
++    assertThat(countInstances(appsForRemoteRegion), is(equalTo(4)));
++    Applications appsForLocalRegion = client.getApplicationsForARegion(TEST_LOCAL_REGION);
++    assertThat(countInstances(appsForLocalRegion), is(equalTo(4)));
+ }
+\ No newline at end of file

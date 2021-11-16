@@ -1,0 +1,22 @@
+diff --git a/ccf195ecf60c7af876e83ba5337c4b4804cd3e18 b/c88b7baaf027046bfb7b2409ed484dd3882807ee
+index ccf195ecf6..c88b7baaf0 100644
+--- a/ccf195ecf60c7af876e83ba5337c4b4804cd3e18
++++ b/c88b7baaf027046bfb7b2409ed484dd3882807ee
+@@ -1,13 +1,14 @@
+ /**
+  * Return all the fields in a hash.
+  * <p>
+  * <b>Time complexity:</b> O(N), where N is the total number of entries
+  *
+  * @param key
+  * @return All the fields names contained into a hash.
+  */
+-public List<byte[]> hkeys(final byte[] key) {
++public Set<byte[]> hkeys(final byte[] key) {
+     checkIsInMulti();
+     client.hkeys(key);
+-    return client.getBinaryMultiBulkReply();
++    final List<byte[]> lresult = client.getBinaryMultiBulkReply();
++    return new HashSet<byte[]>(lresult);
+ }
+\ No newline at end of file

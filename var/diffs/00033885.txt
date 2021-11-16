@@ -1,0 +1,11 @@
+diff --git a/f2df9cb013a6b2f396b42bf6f0eeee8e030d50f0 b/4c468820819c5a25fd98481ec32c46abf83cb29e
+index f2df9cb013..4c46882081 100644
+--- a/f2df9cb013a6b2f396b42bf6f0eeee8e030d50f0
++++ b/4c468820819c5a25fd98481ec32c46abf83cb29e
+@@ -1,3 +1,4 @@
+ public T unique() {
+-    return null;
++    Cursor cursor = dao.db.rawQuery(sql, parameters);
++    return dao.loadUniqueAndCloseCursor(cursor);
+ }
+\ No newline at end of file

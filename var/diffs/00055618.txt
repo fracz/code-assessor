@@ -1,0 +1,25 @@
+diff --git a/31f050978ae253192b8d81cb2d65f7cb118ea751 b/9cd78e5bb09cd47d0d5234b3e703b0df630d3c81
+index 31f050978a..9cd78e5bb0 100644
+--- a/31f050978ae253192b8d81cb2d65f7cb118ea751
++++ b/9cd78e5bb09cd47d0d5234b3e703b0df630d3c81
+@@ -1,17 +1,17 @@
+ /**
+  * Check that a prototype can't inherit from a bogus parent.
+  * If a singleton does this the factory will fail to load.
+  */
+ @Test
+ public void testBogusParentageFromParentFactory() throws Exception {
+-    XmlBeanFactory parent = new XmlBeanFactory(new ClassPathResource("parent.xml", getClass()));
+-    XmlBeanFactory child = new XmlBeanFactory(new ClassPathResource("child.xml", getClass()), parent);
++    XmlBeanFactory parent = new XmlBeanFactory(PARENT_CONTEXT);
++    XmlBeanFactory child = new XmlBeanFactory(CHILD_CONTEXT, parent);
+     try {
+         child.getBean("bogusParent", TestBean.class);
+         fail();
+     } catch (BeanDefinitionStoreException ex) {
+         // check exception message contains the name
+         assertTrue(ex.getMessage().indexOf("bogusParent") != -1);
+         assertTrue(ex.getCause() instanceof NoSuchBeanDefinitionException);
+     }
+ }
+\ No newline at end of file

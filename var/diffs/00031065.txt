@@ -1,0 +1,22 @@
+diff --git a/4886c0deed39f2ed8dc4abb0cf4d07a673253b03 b/65a6323c3fd0a5067fc65645de91b16ae9624cbf
+index 4886c0deed..65a6323c3f 100644
+--- a/4886c0deed39f2ed8dc4abb0cf4d07a673253b03
++++ b/65a6323c3fd0a5067fc65645de91b16ae9624cbf
+@@ -1,14 +1,15 @@
+ @Override
+ public boolean get(int doc) throws IOException {
+-    Object val = searchScript.execute(doc);
++    searchScript.setNextDocId(doc);
++    Object val = searchScript.run();
+     if (val == null) {
+         return false;
+     }
+     if (val instanceof Boolean) {
+         return (Boolean) val;
+     }
+     if (val instanceof Number) {
+         return ((Number) val).longValue() != 0;
+     }
+     throw new IOException("Can't handle type [" + val + "] in script filter");
+ }
+\ No newline at end of file

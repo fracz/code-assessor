@@ -1,0 +1,21 @@
+diff --git a/b58ba0fbbf6892339f15ee4beed1f35b94912acc b/f5cb92c21ccd694b47d6b8cdc5b78ec335edf086
+index b58ba0fbbf..f5cb92c21c 100644
+--- a/b58ba0fbbf6892339f15ee4beed1f35b94912acc
++++ b/f5cb92c21ccd694b47d6b8cdc5b78ec335edf086
+@@ -1,10 +1,10 @@
+ @Test
+ public void testValidToken() throws IOException {
+     OClientConnection conn = new OClientConnection(1, null);
+     OTokenHandler handler = new OTokenHandlerImpl(null);
+-    byte[] tokenBytes = handler.getSignedBinaryToken(db, db.getUser(), conn.data);
+-    conn.validateSession(tokenBytes, handler);
+-    assertTrue(conn.tokenBased);
+-    assertEquals(tokenBytes, conn.tokenBytes);
+-    assertNotNull(conn.token);
++    byte[] tokenBytes = handler.getSignedBinaryToken(db, db.getUser(), conn.getData());
++    conn.validateSession(tokenBytes, handler, null);
++    assertTrue(conn.getTokenBased());
++    assertEquals(tokenBytes, conn.getTokenBytes());
++    assertNotNull(conn.getToken());
+ }
+\ No newline at end of file

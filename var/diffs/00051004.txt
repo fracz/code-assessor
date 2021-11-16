@@ -1,0 +1,28 @@
+diff --git a/bef1b9997e0d4e3f0bef88251ca8b8c79657eae9 b/d61b0bc79cadda91ada258a01ecba24d983b12bb
+index bef1b9997e..d61b0bc79c 100644
+--- a/bef1b9997e0d4e3f0bef88251ca8b8c79657eae9
++++ b/d61b0bc79cadda91ada258a01ecba24d983b12bb
+@@ -1,15 +1,9 @@
+ private void saveValue() {
+-    DBeaverUI.runInUI(DBeaverUI.getActiveWorkbenchWindow(), new DBRRunnableWithProgress() {
+-
+-        @Override
+-        public void run(DBRProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+-            try {
+-                Object newValue = extractValue(monitor);
+-                valueController.closeInlineEditor();
+-                valueController.updateValue(newValue);
+-            } catch (DBException e) {
+-                throw new InvocationTargetException(e);
+-            }
+-        }
+-    });
++    try {
++        Object newValue = extractEditorValue();
++        valueController.closeInlineEditor();
++        valueController.updateValue(newValue);
++    } catch (DBException e) {
++        UIUtils.showErrorDialog(getControl().getShell(), "Value save", "Can't save edited value", e);
++    }
+ }
+\ No newline at end of file

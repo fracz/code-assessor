@@ -1,0 +1,12 @@
+diff --git a/4628ff1a6c499101e938e4613e25ff72096b8f1d b/84460401468a462de7139396d3c565afff56c4be
+index 4628ff1a6c..8446040146 100644
+--- a/4628ff1a6c499101e938e4613e25ff72096b8f1d
++++ b/84460401468a462de7139396d3c565afff56c4be
+@@ -1,3 +1,5 @@
+ public void validate() throws ConfigurationException {
+-    doGetServer();
++    if (getSelectedAccount() == null) {
++        throw new ConfigurationException("Account required");
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/29d8d333f02bd5aba2fbe6bb34d1ca1a97bb9c21 b/ac252a4efc741a8f6c6889da37d0587eb5a37fb8
+index 29d8d333f0..ac252a4efc 100644
+--- a/29d8d333f02bd5aba2fbe6bb34d1ca1a97bb9c21
++++ b/ac252a4efc741a8f6c6889da37d0587eb5a37fb8
+@@ -1,8 +1,4 @@
+ public int getTextOffset() {
+-    final ASTNode refName = findChildByRole(ChildRole.REFERENCE_NAME);
+-    if (refName != null) {
+-        return refName.getStartOffset();
+-    } else {
+-        return super.getTextOffset();
+-    }
++    final ASTNode refName = getReferenceNameNode();
++    return refName != null ? refName.getStartOffset() : super.getTextOffset();
+ }
+\ No newline at end of file

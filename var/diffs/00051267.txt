@@ -1,0 +1,13 @@
+diff --git a/cb9c8aab0eefa9799bd060b891faa7c33c586984 b/cb75353fe60f9f70a4f4e58c666e952991a341fb
+index cb9c8aab0e..cb75353fe6 100644
+--- a/cb9c8aab0eefa9799bd060b891faa7c33c586984
++++ b/cb75353fe60f9f70a4f4e58c666e952991a341fb
+@@ -1,5 +1,5 @@
+ @NotNull
+ @Override
+-public Collection<JDBCExecutionContext> getAllContexts() {
+-    return allContexts;
++public JDBCExecutionContext[] getAllContexts() {
++    return allContexts.toArray(new JDBCExecutionContext[allContexts.size()]);
+ }
+\ No newline at end of file

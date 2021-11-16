@@ -1,0 +1,25 @@
+diff --git a/6161ea41f9fcb0dd561e6e87fa1080aef5da45f9 b/2993394f88bf8961c6367fa965df1e2e281e6a00
+index 6161ea41f9..2993394f88 100644
+--- a/6161ea41f9fcb0dd561e6e87fa1080aef5da45f9
++++ b/2993394f88bf8961c6367fa965df1e2e281e6a00
+@@ -1,17 +1,17 @@
+ @Test
+ public void shouldDropCreatedConstraintIndexWhenRollingBackConstraintCreation() throws Exception {
+     // given
+     {
+         SchemaWriteOperations statement = schemaWriteOperationsInNewTransaction();
+-        statement.uniquePropertyConstraintCreate(typeId, propertyKeyId);
+-        assertEquals(asSet(new IndexDescriptor(typeId, propertyKeyId)), asSet(statement.uniqueIndexesGetAll()));
++        statement.uniquePropertyConstraintCreate(descriptor);
++        assertEquals(asSet(IndexDescriptorFactory.from(descriptor)), asSet(statement.uniqueIndexesGetAll()));
+     }
+     // when
+     rollback();
+     // then
+     {
+         ReadOperations statement = readOperationsInNewTransaction();
+         assertEquals(emptySetOf(IndexDescriptor.class), asSet(statement.uniqueIndexesGetAll()));
+         commit();
+     }
+ }
+\ No newline at end of file

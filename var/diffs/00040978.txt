@@ -1,0 +1,30 @@
+diff --git a/405ea22ba4916bc3756ea019bb92e97a1a9dc705 b/7341bde9148778b503c0f171beb6961297e19ff3
+index 405ea22ba4..7341bde914 100644
+--- a/405ea22ba4916bc3756ea019bb92e97a1a9dc705
++++ b/7341bde9148778b503c0f171beb6961297e19ff3
+@@ -1,23 +1,20 @@
+ /**
+- * <p>
+  * Transforms the input <code>source</code> by the command line.
+- * </p>
+  *
+  * @param commandLine
+  * the command to execute. Command line should contain %s string,
+  * which will be replaced by the input data.
+- *
+  * @param source
+  * the input to transform
+  */
+ public String transform(String commandLine, String source) throws TransformationException {
+     if (commandLine == null || source == null) {
+         throw new TransformationException("the given parameters 'commandLine' and 'source' must not be null");
+     }
+     logger.debug("about to transform '{}' by the commanline '{}'", source, commandLine);
+-    commandLine = String.format(commandLine, source);
+     long startTime = System.currentTimeMillis();
++    commandLine = String.format(commandLine, source);
+     String result = ExecUtil.executeCommandLineAndWaitResponse(commandLine, 5000);
+     logger.trace("command line execution elapsed {} ms", System.currentTimeMillis() - startTime);
+     return result;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/96b011577801ab78f77332ce6f7d86fdc16c131f b/023eb25b062d84f8ec2e41488c90d05c991c872f
+index 96b0115778..023eb25b06 100644
+--- a/96b011577801ab78f77332ce6f7d86fdc16c131f
++++ b/023eb25b062d84f8ec2e41488c90d05c991c872f
+@@ -1,8 +1,6 @@
+ @NotNull
+-private TypeParameterDescriptor makeUninitializedTypeParameter(@NotNull DeclarationDescriptor containingDeclaration, @NotNull PsiTypeParameter psiTypeParameter) {
+-    assert typeParameterDescriptorCache.get(psiTypeParameter) == null : psiTypeParameter.getText();
++private TypeParameterDescriptorInitialization makeUninitializedTypeParameter(@NotNull DeclarationDescriptor containingDeclaration, @NotNull PsiTypeParameter psiTypeParameter) {
+     TypeParameterDescriptor typeParameterDescriptor = TypeParameterDescriptor.createForFurtherModification(containingDeclaration, // TODO
+     Collections.<AnnotationDescriptor>emptyList(), false, Variance.INVARIANT, psiTypeParameter.getName(), psiTypeParameter.getIndex());
+-    typeParameterDescriptorCache.put(psiTypeParameter, new TypeParameterDescriptorInitialization(typeParameterDescriptor));
+-    return typeParameterDescriptor;
++    return new TypeParameterDescriptorInitialization(typeParameterDescriptor, psiTypeParameter);
+ }
+\ No newline at end of file

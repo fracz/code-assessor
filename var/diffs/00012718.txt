@@ -1,0 +1,22 @@
+diff --git a/53917573156dd9927cde2ad726f2ab26cae98959 b/5bfd20b9aca77bcd4aa32b6c989397842c620ec6
+index 5391757315..5bfd20b9ac 100644
+--- a/53917573156dd9927cde2ad726f2ab26cae98959
++++ b/5bfd20b9aca77bcd4aa32b6c989397842c620ec6
+@@ -1,12 +1,14 @@
+-private void registerNonUndoableAction(final DocumentReference r, final boolean isComplex) {
++private void registerNonUndoableAction(final DocumentReference r) {
++    if (myUndoManager.undoableActionsForDocumentAreEmpty(r))
++        return;
+     myUndoManager.undoableActionPerformed(new NonUndoableAction() {
+
+         public DocumentReference[] getAffectedDocuments() {
+             return new DocumentReference[] { r };
+         }
+
+         public boolean isComplex() {
+-            return isComplex;
++            return true;
+         }
+     });
+ }
+\ No newline at end of file

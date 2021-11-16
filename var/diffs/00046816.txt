@@ -1,0 +1,16 @@
+diff --git a/a1cf7277b8eefeddd621c9cf4d352db4df86ecef b/522532a3ecd4c6c12a58cbc842f24fa8cc735646
+index a1cf7277b8..522532a3ec 100644
+--- a/a1cf7277b8eefeddd621c9cf4d352db4df86ecef
++++ b/522532a3ecd4c6c12a58cbc842f24fa8cc735646
+@@ -1,9 +1,9 @@
+ private void awaitSubscriptionIsConnected(final Subscription subscription, final long timeout) {
+     final long limit = System.currentTimeMillis() + timeout;
+     while (subscription.imageCount() == 0) {
+-        LockSupport.parkNanos(1000);
++        LockSupport.parkNanos(TIMEOUT);
+         if (limit < System.currentTimeMillis()) {
+             fail("awaitSubscriptionIsConnected has timed out");
+         }
+     }
+ }
+\ No newline at end of file

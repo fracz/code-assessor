@@ -1,0 +1,20 @@
+diff --git a/48ede17cdbb71f7d317b3067f75646614876e64b b/6d1a104532bc189cfd06f8ad02cd4a3013e5bf94
+index 48ede17cdb..6d1a104532 100644
+--- a/48ede17cdbb71f7d317b3067f75646614876e64b
++++ b/6d1a104532bc189cfd06f8ad02cd4a3013e5bf94
+@@ -1,7 +1,10 @@
+ @Override
+-public Void visitAnnotation(AnnotationTree annotationTree, VisitorState visitorState) {
+-    for (DescribingMatcher<AnnotationTree> matcher : annotationMatchers) {
+-        evaluateMatch(annotationTree, visitorState, matcher);
++public Void visitAnnotation(AnnotationTree tree, VisitorState visitorState) {
++    VisitorState state = visitorState.withPath(getCurrentPath());
++    for (AnnotationTreeMatcher matcher : annotationMatchers) {
++        if (isSuppressed(matcher))
++            continue;
++        reportMatch(matcher.matchAnnotation(tree, state), tree, state);
+     }
+-    return super.visitAnnotation(annotationTree, visitorState);
++    return super.visitAnnotation(tree, visitorState);
+ }
+\ No newline at end of file

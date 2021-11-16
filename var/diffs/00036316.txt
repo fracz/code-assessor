@@ -1,0 +1,20 @@
+diff --git a/7f59a8c33f22e5e3c4ad382726253a03e7ff071c b/1816b6b379324f0443139eb867afce9bfbb2e173
+index 7f59a8c33f..1816b6b379 100644
+--- a/7f59a8c33f22e5e3c4ad382726253a03e7ff071c
++++ b/1816b6b379324f0443139eb867afce9bfbb2e173
+@@ -1,9 +1,9 @@
+ public void verify(List<Invocation> invocations, InvocationMatcher wanted) {
+     invocations = new AllInvocationsFinder().getAllInvocations(this.getMocksToBeVerifiedInOrder());
+-    List<Verifier> verifiers = Arrays.asList(new MissingInvocationInOrderVerifier(), new NumberOfInvocationsInOrderVerifier());
+-    for (Verifier verifier : verifiers) {
+-        if (verifier.appliesTo(this)) {
+-            verifier.verify(invocations, wanted, this);
+-        }
++    MissingInvocationInOrderVerifier missingInvocation = new MissingInvocationInOrderVerifier();
++    NumberOfInvocationsInOrderVerifier numberOfCalls = new NumberOfInvocationsInOrderVerifier();
++    if (wantedCount() > 0 || (verification == Verification.AT_LEAST && wantedCount() == 1)) {
++        missingInvocation.verify(invocations, wanted, this);
+     }
++    numberOfCalls.verify(invocations, wanted, this);
+ }
+\ No newline at end of file

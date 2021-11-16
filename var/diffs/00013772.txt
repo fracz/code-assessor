@@ -1,0 +1,12 @@
+diff --git a/fc2113afecbcca1c574c6762610ea40d9d1e770c b/ed7edd15ec01ac22a3a0d47f1ae127368207070c
+index fc2113afec..ed7edd15ec 100644
+--- a/fc2113afecbcca1c574c6762610ea40d9d1e770c
++++ b/ed7edd15ec01ac22a3a0d47f1ae127368207070c
+@@ -1,4 +1,4 @@
+-private IndexingContext createContext(IndexInfo newInfo) throws IOException, UnsupportedExistingLuceneIndexException {
+-    return myIndexer.addIndexingContext(newInfo.id, newInfo.id, newInfo.getRepositoryFile(), new File(myIndexDir, newInfo.id), newInfo.getRepositoryUrl(), // repo update url
++private IndexingContext createContext(MavenRepositoryInfo i) throws IOException, UnsupportedExistingLuceneIndexException {
++    return myIndexer.addIndexingContext(i.getId(), i.getId(), i.getRepositoryFile(), new File(myIndexDir, i.getId()), i.getRepositoryUrl(), // repo update url
+     null, NexusIndexer.FULL_INDEX);
+ }
+\ No newline at end of file

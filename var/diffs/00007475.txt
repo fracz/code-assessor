@@ -1,0 +1,13 @@
+diff --git a/92f39a7398931506ad659f8e87e9af8aba06864d b/1db431df751e6dec37e42a55be51761a62eb52cc
+index 92f39a7398..1db431df75 100644
+--- a/92f39a7398931506ad659f8e87e9af8aba06864d
++++ b/1db431df751e6dec37e42a55be51761a62eb52cc
+@@ -1,3 +1,6 @@
+ public GrExpression[] getArguments() {
+-    return getArgumentList().getArguments();
++    final GrCommandArgumentList list = getArgumentList();
++    if (list == null)
++        return GrExpression.EMPTY_ARRAY;
++    return list.getExpressionArguments();
+ }
+\ No newline at end of file

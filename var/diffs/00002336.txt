@@ -1,0 +1,16 @@
+diff --git a/f21a8246f0bcc5e1f26b8966a2f19c3d135566c1 b/177c1ccd1d27c3d2ab579c3b12dde07f587de421
+index f21a8246f0..177c1ccd1d 100644
+--- a/f21a8246f0bcc5e1f26b8966a2f19c3d135566c1
++++ b/177c1ccd1d27c3d2ab579c3b12dde07f587de421
+@@ -1,3 +1,9 @@
+ public boolean matchSonsOptionally(final PsiElement element, final PsiElement element2) {
+-    return (element == null && matchContext.getOptions().isLooseMatching()) || matchSons(element, element2);
++    if (element == null && matchContext.getOptions().isLooseMatching()) {
++        return true;
++    }
++    if (element == null || element2 == null) {
++        return element == element2;
++    }
++    return matchSequentiallyOptionally(element.getFirstChild(), element2.getFirstChild());
+ }
+\ No newline at end of file

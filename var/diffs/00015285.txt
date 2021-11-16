@@ -1,0 +1,31 @@
+diff --git a/9a10b07c5fae76cf68f22fcba636431fa7790065 b/34d9ea7336de37587504798dc3fb8576a49ce403
+index 9a10b07c5f..34d9ea7336 100644
+--- a/9a10b07c5fae76cf68f22fcba636431fa7790065
++++ b/34d9ea7336de37587504798dc3fb8576a49ce403
+@@ -1,21 +1,22 @@
+ /**
+- * @see #resolveMethodTypeParametersFromJetSignature(String, com.intellij.psi.PsiMethod, org.jetbrains.jet.lang.descriptors.DeclarationDescriptor, TypeVariableResolver)
++ * @see #resolveMethodTypeParametersFromJetSignature(String, com.intellij.psi.PsiMethod, org.jetbrains.jet.lang.descriptors.DeclarationDescriptor)
+  */
+-private List<TypeParameterDescriptorInitialization> resolveClassTypeParametersFromJetSignature(String jetSignature, final PsiClass clazz, final ClassDescriptor classDescriptor, final TypeVariableResolver outerClassTypeVariableResolver) {
+-    JetSignatureTypeParametersVisitor jetSignatureTypeParametersVisitor = new JetSignatureTypeParametersVisitor(outerClassTypeVariableResolver, classDescriptor, clazz) {
++private List<TypeParameterDescriptorInitialization> resolveClassTypeParametersFromJetSignature(String jetSignature, final PsiClass clazz, final ClassDescriptor classDescriptor) {
++    String context = "class " + clazz.getQualifiedName();
++    JetSignatureTypeParametersVisitor jetSignatureTypeParametersVisitor = new JetSignatureTypeParametersVisitor(classDescriptor, clazz, context) {
+
+         @Override
+         public JetSignatureVisitor visitSuperclass() {
+             // TODO
+             return new JetSignatureAdapter();
+         }
+
+         @Override
+         public JetSignatureVisitor visitInterface() {
+             // TODO
+             return new JetSignatureAdapter();
+         }
+     };
+     new JetSignatureReader(jetSignature).accept(jetSignatureTypeParametersVisitor);
+     return jetSignatureTypeParametersVisitor.r;
+ }
+\ No newline at end of file

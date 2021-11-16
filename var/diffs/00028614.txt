@@ -1,0 +1,16 @@
+diff --git a/75694542c6a9c283ac3ff16717c2bdd732243c9c b/2755e7214d88e29ce9bc6ad9c78a4334fdc37565
+index 75694542c6..2755e7214d 100644
+--- a/75694542c6a9c283ac3ff16717c2bdd732243c9c
++++ b/2755e7214d88e29ce9bc6ad9c78a4334fdc37565
+@@ -1,9 +1,9 @@
+ public static void pushFloatIntMap(TFloatIntHashMap map) {
+     Queue<TFloatIntHashMap> ref = floatIntHashMap.get();
+     if (ref == null) {
+-        ref = new LinkedTransferQueue<TFloatIntHashMap>();
++        ref = ConcurrentCollections.newQueue();
+         floatIntHashMap.set(ref);
+     }
+     map.clear();
+     ref.add(map);
+ }
+\ No newline at end of file

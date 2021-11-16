@@ -1,0 +1,23 @@
+diff --git a/cacc37432572a54a2691077c47837cee4befcf22 b/6ea15125ee343e16d2c63f4373ec90b07f157045
+index cacc374325..6ea15125ee 100644
+--- a/cacc37432572a54a2691077c47837cee4befcf22
++++ b/6ea15125ee343e16d2c63f4373ec90b07f157045
+@@ -1,15 +1,15 @@
+ @Override
+ protected void doFix(Project project, ProblemDescriptor descriptor) throws IncorrectOperationException {
+     final PsiElement methodNameIdentifier = descriptor.getPsiElement();
+     final PsiElement parent = methodNameIdentifier.getParent();
+     if (!(parent instanceof PsiReferenceExpression)) {
+         return;
+     }
+     final PsiReferenceExpression methodExpression = (PsiReferenceExpression) parent;
+     final PsiExpression qualifier = methodExpression.getQualifierExpression();
+-    if (qualifier == null && ImportUtils.addStaticImport(JUnitCommonClassNames.ORG_JUNIT_ASSERT, "assertArrayEquals", methodExpression)) {
++    if (qualifier == null && ImportUtils.addStaticImport(myAssertClassName, "assertArrayEquals", methodExpression)) {
+         PsiReplacementUtil.replaceExpression(methodExpression, "assertArrayEquals");
+     } else {
+-        PsiReplacementUtil.replaceExpression(methodExpression, "org.junit.Assert.assertArrayEquals");
++        PsiReplacementUtil.replaceExpression(methodExpression, myAssertClassName + ".assertArrayEquals");
+     }
+ }
+\ No newline at end of file

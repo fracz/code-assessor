@@ -1,0 +1,17 @@
+diff --git a/e90292afff8893e864a9be313b9f5c227f4858bb b/d025809491a862bf3080e583f017077655b5f881
+index e90292afff..d025809491 100644
+--- a/e90292afff8893e864a9be313b9f5c227f4858bb
++++ b/d025809491a862bf3080e583f017077655b5f881
+@@ -1,9 +1,9 @@
+ boolean isInBatchEditMode() {
+     if (mEditor == null)
+         return false;
+-    final Editor.InputMethodState ims = getEditor().mInputMethodState;
++    final Editor.InputMethodState ims = mEditor.mInputMethodState;
+     if (ims != null) {
+         return ims.mBatchEditNesting > 0;
+     }
+-    return getEditor().mInBatchEditControllers;
++    return mEditor.mInBatchEditControllers;
+ }
+\ No newline at end of file

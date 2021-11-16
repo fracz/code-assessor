@@ -1,0 +1,16 @@
+diff --git a/ec29a7b0d395f34f71ce639e413578236cfcf326 b/625ece63db0b6e51a151ef902ab4fbe6bc5cc345
+index ec29a7b0d3..625ece63db 100644
+--- a/ec29a7b0d395f34f71ce639e413578236cfcf326
++++ b/625ece63db0b6e51a151ef902ab4fbe6bc5cc345
+@@ -1,8 +1,8 @@
+-public void testQualifiedSelfReference() throws Exception {
++public void testQualifiedSelfReference() {
+     final String testName = getTestName(false).toLowerCase();
+     configureByFile(testName + ".py");
+     final String fullPath = getTestDataPath() + testName + ".txt";
+     final PyClass pyClass = ((PyFile) myFile).getTopLevelClasses().get(0);
+-    final ControlFlow flow = pyClass.getMethods()[0].getControlFlow();
++    final ControlFlow flow = ControlFlowCache.getControlFlow(pyClass.getMethods()[0]);
+     check(fullPath, flow);
+ }
+\ No newline at end of file

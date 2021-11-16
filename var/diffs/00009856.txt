@@ -1,0 +1,16 @@
+diff --git a/7a286bcb719d22a994138fdba03ccb6c220abceb b/e4bbbd19d90a02cfee374538eda52c6e999c3f6c
+index 7a286bcb71..e4bbbd19d9 100644
+--- a/7a286bcb719d22a994138fdba03ccb6c220abceb
++++ b/e4bbbd19d90a02cfee374538eda52c6e999c3f6c
+@@ -1,8 +1,8 @@
+ private void patchPluginXmls(@NotNull XmlFile[] pluginXmls, @Nullable PsiClass serviceInterface, @NotNull PsiClass serviceImplementation) {
+     DescriptorUtil.checkPluginXmlsWritable(serviceImplementation.getProject(), pluginXmls);
+-    WriteAction.run(() -> CommandProcessor.getInstance().runUndoTransparentAction(() -> {
++    WriteCommandAction.runWriteCommandAction(serviceImplementation.getProject(), DevKitBundle.message("new.service.patch.plugin.xml.action.name"), null, () -> {
+         for (XmlFile pluginXml : pluginXmls) {
+             patchPluginXml(pluginXml, serviceInterface, serviceImplementation);
+         }
+-    }));
++    });
+ }
+\ No newline at end of file

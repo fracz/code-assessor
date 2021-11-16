@@ -1,0 +1,14 @@
+diff --git a/7531776b8e082f3b9c6ec27f0b168350bcffc7a1 b/2098958f24951e8693551bc3c1c0c5cadf0b3bb0
+index 7531776b8e..2098958f24 100644
+--- a/7531776b8e082f3b9c6ec27f0b168350bcffc7a1
++++ b/2098958f24951e8693551bc3c1c0c5cadf0b3bb0
+@@ -1,7 +1,7 @@
+ public void run() {
+     try {
+-        binding.injector.initializeBinding(binding, errors.withSource(source));
++        ((InjectorImpl) binding.getInjector()).initializeBinding(binding, errors.withSource(source));
+     } catch (ErrorsException e) {
+         errors.merge(e.getErrors());
+     }
+ }
+\ No newline at end of file

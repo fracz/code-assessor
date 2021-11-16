@@ -1,0 +1,27 @@
+diff --git a/7c87e0b1dbfb6708dced4eb92492c7a24a9fa0f5 b/239c47b166eb5907290ef8fb3008b6b20b5d7e5e
+index 7c87e0b1db..239c47b166 100644
+--- a/7c87e0b1dbfb6708dced4eb92492c7a24a9fa0f5
++++ b/239c47b166eb5907290ef8fb3008b6b20b5d7e5e
+@@ -1,12 +1,12 @@
+ public void visitClass(@NotNull PsiClass aClass) {
+-    if (aClass instanceof PsiAnonymousClass) {
+-        final PsiAnonymousClass anAnonymousClass = (PsiAnonymousClass) aClass;
+-        final InnerClassReferenceVisitor visitor = new InnerClassReferenceVisitor(anAnonymousClass);
+-        anAnonymousClass.accept(visitor);
+-        if (!visitor.canInnerClassBeStatic()) {
+-            return;
+-        }
+-        final PsiJavaCodeReferenceElement classNameIdentifier = anAnonymousClass.getBaseClassReference();
+-        registerError(classNameIdentifier);
++    if (!(aClass instanceof PsiAnonymousClass)) {
++        return;
+     }
++    final PsiAnonymousClass anAnonymousClass = (PsiAnonymousClass) aClass;
++    final InnerClassReferenceVisitor visitor = new InnerClassReferenceVisitor(anAnonymousClass);
++    anAnonymousClass.accept(visitor);
++    if (!visitor.canInnerClassBeStatic()) {
++        return;
++    }
++    registerClassError(aClass);
+ }
+\ No newline at end of file

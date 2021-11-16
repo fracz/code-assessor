@@ -1,0 +1,17 @@
+diff --git a/229f4ea960b0663ea129be522af4b5cfba284eab b/452e77c5370f5edc5cfb64f1d504946525985470
+index 229f4ea960..452e77c537 100644
+--- a/229f4ea960b0663ea129be522af4b5cfba284eab
++++ b/452e77c5370f5edc5cfb64f1d504946525985470
+@@ -1,6 +1,9 @@
+ @GET
+ @Path("/cluster")
+ @Produces("application/json")
+-public Response getClusterInfo() {
+-    return Response.status(Response.Status.OK).entity(serverInventoryView.getInventory()).build();
++public Response getClusterInfo(@QueryParam("full") String full) {
++    if (full != null) {
++        return Response.ok(serverInventoryView.getInventory()).build();
++    }
++    return Response.ok(Iterables.transform(serverInventoryView.getInventory(), simplifyClusterFn)).build();
+ }
+\ No newline at end of file

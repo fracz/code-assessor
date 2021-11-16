@@ -1,0 +1,15 @@
+diff --git a/761e2cf15870e0d7f52da667ce4b41b9fce4adfc b/9388b93afb4a3d8ff04b237a99b5008381bf5a31
+index 761e2cf158..9388b93afb 100644
+--- a/761e2cf15870e0d7f52da667ce4b41b9fce4adfc
++++ b/9388b93afb4a3d8ff04b237a99b5008381bf5a31
+@@ -1,8 +1,6 @@
+ @Override
+ public NetServerOptions addCrlPath(String crlPath) throws NullPointerException {
+-    if (crlPath == null) {
+-        throw new NullPointerException("No null crl accepted");
+-    }
++    Objects.requireNonNull(crlPath, "No null crl accepted");
+     crlPaths.add(crlPath);
+     return this;
+ }
+\ No newline at end of file

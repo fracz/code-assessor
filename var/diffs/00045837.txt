@@ -1,0 +1,20 @@
+diff --git a/bb7cd4d3e2785adbca8324089ee3dfc275bb321e b/ff254438efdd05b2203af1d7c78f20adaae6569d
+index bb7cd4d3e2..ff254438ef 100644
+--- a/bb7cd4d3e2785adbca8324089ee3dfc275bb321e
++++ b/ff254438efdd05b2203af1d7c78f20adaae6569d
+@@ -1,13 +1,13 @@
+ public synchronized ODatabaseDocumentInternal openNoAuthenticate(String name, String user) {
+     try {
+         OrientDBConfig config = solveConfig(null);
+         OAbstractPaginatedStorage storage = getStorage(name);
+         // THIS OPEN THE STORAGE ONLY THE FIRST TIME
+         storage.open(config.getConfigurations());
+-        final ODatabaseDocumentEmbedded embedded = new ODatabaseDocumentEmbedded(storage);
++        final ODatabaseDocumentEmbedded embedded = factory.newInstance(storage);
+         embedded.internalOpen(user, "nopwd", config, false);
+         return embedded;
+     } catch (Exception e) {
+         throw OException.wrapException(new ODatabaseException("Cannot open database '" + name + "'"), e);
+     }
+ }
+\ No newline at end of file

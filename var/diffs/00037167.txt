@@ -1,0 +1,13 @@
+diff --git a/4a3f5fd177260a8dd6c15554b076a564015eb9ef b/8f4485935a456b3e27ec06cb859893d5525692bd
+index 4a3f5fd177..8f4485935a 100644
+--- a/4a3f5fd177260a8dd6c15554b076a564015eb9ef
++++ b/8f4485935a456b3e27ec06cb859893d5525692bd
+@@ -1,6 +1,4 @@
+ private static void updateExecuteQueryMethod(ClassPool classPool, CtClass cc) throws Exception {
+     CtMethod serviceMethod = cc.getDeclaredMethod("execute", null);
+-    logger.info("*** Changing execute() method ");
+-    // serviceMethod.insertBefore(getExecuteQueryMethodBeforeInsertCode());
+-    serviceMethod.insertAfter(getExecuteQueryMethodAfterInsertCode());
++    serviceMethod.insertAfter("{" + TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".put(" + TomcatProfilerConstant.REQ_DATA_TYPE_DB_EXECUTE_QUERY + "); }");
+ }
+\ No newline at end of file

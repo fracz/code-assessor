@@ -1,0 +1,19 @@
+diff --git a/ff6dc1796bc1ddafd78a5a2a3046c6686203a41e b/8945e7eb2570d7f9224ea40cf38183a8081ae695
+index ff6dc1796b..8945e7eb25 100644
+--- a/ff6dc1796bc1ddafd78a5a2a3046c6686203a41e
++++ b/8945e7eb2570d7f9224ea40cf38183a8081ae695
+@@ -1,7 +1,10 @@
+ private Connection connectDB() throws SQLException {
++    String url = db.getProperty("cubrid.url");
++    String user = db.getProperty("cubrid.user");
++    String password = db.getProperty("cubrid.password");
+     Driver driver = new CUBRIDDriver();
+     Properties properties = new Properties();
+-    properties.setProperty("user", "dba");
+-    properties.setProperty("password", "nhn!@#123");
+-    return driver.connect("jdbc:cubrid:10.101.57.233:30102:pinpoint:::", properties);
++    properties.setProperty("user", user);
++    properties.setProperty("password", password);
++    return driver.connect(url, properties);
+ }
+\ No newline at end of file

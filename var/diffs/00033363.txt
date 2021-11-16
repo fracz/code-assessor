@@ -1,0 +1,22 @@
+diff --git a/f03f3e703bd8886671f41cdf7d540b21621a49bf b/0895f44aec9ba52a27b40ba08b0713fc8f01b711
+index f03f3e703b..0895f44aec 100644
+--- a/f03f3e703bd8886671f41cdf7d540b21621a49bf
++++ b/0895f44aec9ba52a27b40ba08b0713fc8f01b711
+@@ -1,10 +1,12 @@
+-public void onCompleteActivity() {
++public void onCompleteActivity(CompletionAware completionAware) {
++    LOGGER.info("Marking the daemon as idle, address: " + connectorAddress);
++    if (completionAware.isStopped()) {
++        LOGGER.info("The daemon was stopped so it's no longer in the registry. We will not update the registry.");
++        return;
++    }
+     try {
+-        LOGGER.info("Marking the daemon as idle, address: " + connectorAddress);
+         daemonRegistry.markIdle(connectorAddress);
+     } catch (DaemonRegistry.EmptyRegistryException e) {
+         LOGGER.warn("Cannot mark daemon as idle because the registry is empty.");
+-    } catch (Exception e) {
+-        LOGGER.error("Unable to mark idle", e);
+     }
+ }
+\ No newline at end of file

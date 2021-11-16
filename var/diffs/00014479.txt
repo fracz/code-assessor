@@ -1,0 +1,17 @@
+diff --git a/50c00a5377827f299c4d22c04f1eb5193edf81ec b/f3a0660ea61a3138e5ab61bde0346c9a581b187a
+index 50c00a5377..f3a0660ea6 100644
+--- a/50c00a5377827f299c4d22c04f1eb5193edf81ec
++++ b/f3a0660ea61a3138e5ab61bde0346c9a581b187a
+@@ -1,8 +1,9 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiMethod element = (PsiMethod) location.getParent();
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiMethod element = (PsiMethod) infos[0];
+     if (element.isConstructor()) {
+         return InspectionGadgetsBundle.message("overloaded.vararg.constructor.problem.descriptor");
+     } else {
+         return InspectionGadgetsBundle.message("overloaded.vararg.method.problem.descriptor");
+     }
+ }
+\ No newline at end of file

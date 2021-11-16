@@ -1,0 +1,17 @@
+diff --git a/9c99dfa0a4b09e3fe341e33a0e4bfafc4562ad9d b/a7d58fb547da16da04ac0cda45d68c73831e616a
+index 9c99dfa0a4..a7d58fb547 100644
+--- a/9c99dfa0a4b09e3fe341e33a0e4bfafc4562ad9d
++++ b/a7d58fb547da16da04ac0cda45d68c73831e616a
+@@ -1,9 +1,4 @@
+ @NotNull
+-public final Converter getConverterInstance(final Class<? extends Converter> converterClass) throws InstantiationException, IllegalAccessException {
+-    Converter converter = myConverterInstances.get(converterClass);
+-    if (converter == null) {
+-        converter = converterClass.newInstance();
+-        myConverterInstances.put(converterClass, converter);
+-    }
+-    return converter;
++private Converter getConverterInstance(final Class<? extends Converter> converterClass) throws InstantiationException, IllegalAccessException {
++    return myConverterInstances.get(converterClass);
+ }
+\ No newline at end of file

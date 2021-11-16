@@ -1,0 +1,11 @@
+diff --git a/4964f655afb55007525380c5ef99618a69779a06 b/cd681edd7a8b83f63223eb15db084f369ec3b00b
+index 4964f655af..cd681edd7a 100644
+--- a/4964f655afb55007525380c5ef99618a69779a06
++++ b/cd681edd7a8b83f63223eb15db084f369ec3b00b
+@@ -1,4 +1,4 @@
+ @Test(expected = ParserUnsupportedException.class)
+ public void assertAlter() throws SQLParserException {
+-    SQLParserFactory.create(DatabaseType.MySQL, "ALTER TABLE `order` ADD COLUMN `other` VARCHAR(45)", Collections.emptyList(), new ShardingRuleMockBuilder().build());
++    new SQLParserEngine(DatabaseType.MySQL, "ALTER TABLE `order` ADD COLUMN `other` VARCHAR(45)", new ShardingRuleMockBuilder().build(), Collections.emptyList()).parseStatement();
+ }
+\ No newline at end of file

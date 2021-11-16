@@ -1,0 +1,12 @@
+diff --git a/9576f1ed3a7796e517e0cb2052b9c96e15b4e31f b/25054b5897d25d0f6795a0dacba1e52cad52e863
+index 9576f1ed3a..25054b5897 100644
+--- a/9576f1ed3a7796e517e0cb2052b9c96e15b4e31f
++++ b/25054b5897d25d0f6795a0dacba1e52cad52e863
+@@ -1,4 +1,4 @@
+ @Override
+-public void validateNodePropertyExistenceConstraint(Iterator<Cursor<NodeItem>> allNodes, int label, int propertyKey) throws CreateConstraintFailureException {
+-    throw propertyExistenceConstraintsNotAllowed(new NodePropertyExistenceConstraint(label, propertyKey));
++public void validateNodePropertyExistenceConstraint(Iterator<Cursor<NodeItem>> allNodes, NodePropertyDescriptor descriptor) throws CreateConstraintFailureException {
++    throw propertyExistenceConstraintsNotAllowed(new NodePropertyExistenceConstraint(descriptor));
+ }
+\ No newline at end of file

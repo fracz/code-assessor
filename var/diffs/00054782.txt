@@ -1,0 +1,27 @@
+diff --git a/914636281e843484003a1395546630a09d44bd1e b/76ae046200c2955dff3678f3b07199d8555dae57
+index 914636281e..76ae046200 100644
+--- a/914636281e843484003a1395546630a09d44bd1e
++++ b/76ae046200c2955dff3678f3b07199d8555dae57
+@@ -1,18 +1,10 @@
+-/**
+- * 提供命令行设置mapping模式
+- *
+- * @param mappingFile
+- * @param usemapping
+- * @throws IOException
+- */
+-public void setKeepMappingData(File mappingFile, boolean usemapping) throws IOException {
+-    mUseKeepMapping = usemapping;
++public void setKeepMappingData(File mappingFile) throws IOException {
++    mUseKeepMapping = true;
+     if (mUseKeepMapping) {
+         mOldMappingFile = mappingFile;
+         if (!mOldMappingFile.exists()) {
+-            throw new IOException(String.format("the old mapping file do not exit, raw path= %s\n", mOldMappingFile.getAbsolutePath()));
+-        // System.exit(-1);
++            throw new IOException(String.format("the old mapping file do not exit, raw path= %s", mOldMappingFile.getAbsolutePath()));
+         }
+         processOldMappingFile();
+     }
+ }
+\ No newline at end of file

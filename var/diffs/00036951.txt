@@ -1,0 +1,17 @@
+diff --git a/390cf3e84872b1849da381e10bf84a5776f3ebeb b/a19abd373c184bf8a80e5f9a8b4da293b8f7dc5e
+index 390cf3e848..a19abd373c 100644
+--- a/390cf3e84872b1849da381e10bf84a5776f3ebeb
++++ b/a19abd373c184bf8a80e5f9a8b4da293b8f7dc5e
+@@ -1,8 +1,10 @@
+ private static String getInvokeMethodAfterInsertCode() {
+     StringBuilder insertCode = new StringBuilder();
+     insertCode.append("{");
+     insertCode.append(CLASS_NAME_REQUEST_TRACER).append(".endTransaction();");
+-    // insertCode.append("System.out.println(\"--- ApplicationFilterChain.doFilter() is ended.\");");
++    if (logger.isDebugEnabled()) {
++        insertCode.append("System.out.println(\"--- ApplicationFilterChain.doFilter() is ended.\");");
++    }
+     insertCode.append("}");
+     return insertCode.toString();
+ }
+\ No newline at end of file

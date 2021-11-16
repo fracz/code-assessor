@@ -1,0 +1,16 @@
+diff --git a/3f1e6c951bc4a8f53297c70c9eaf1bfbc6a3669e b/383733613617c72d5ff499e1e174cd4bc8ebb4e6
+index 3f1e6c951b..3837336136 100644
+--- a/3f1e6c951bc4a8f53297c70c9eaf1bfbc6a3669e
++++ b/383733613617c72d5ff499e1e174cd4bc8ebb4e6
+@@ -1,7 +1,7 @@
+-public void requestFocusInWindow() {
++public boolean requestFocusInWindow() {
+     if (myComponent instanceof JComboBox) {
+-        ((JComboBox) myComponent).getEditor().getEditorComponent().requestFocusInWindow();
++        return ((JComboBox) myComponent).getEditor().getEditorComponent().requestFocusInWindow();
+     } else {
+-        myComponent.requestFocusInWindow();
++        return myComponent.requestFocusInWindow();
+     }
+ }
+\ No newline at end of file

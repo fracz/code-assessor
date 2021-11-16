@@ -1,0 +1,22 @@
+diff --git a/7e9a1e25ceaaf24159f6da213925b7fe516d9d87 b/7c8b43429ac68f618c04e9197d86b7c0914bd5e3
+index 7e9a1e25ce..7c8b43429a 100644
+--- a/7e9a1e25ceaaf24159f6da213925b7fe516d9d87
++++ b/7c8b43429ac68f618c04e9197d86b7c0914bd5e3
+@@ -1,15 +1,15 @@
+ @Nullable
+ public static Manifest getManifestFromJar(@NotNull File library) {
+     if (!library.canRead())
+         return null;
+     try {
+         JarFile jarFile = new JarFile(library);
+         try {
+             return jarFile.getManifest();
+         } finally {
+             jarFile.close();
+         }
+     } catch (IOException ignored) {
++        return null;
+     }
+-    return null;
+ }
+\ No newline at end of file

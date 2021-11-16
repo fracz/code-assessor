@@ -1,0 +1,14 @@
+diff --git a/51429a453ca1d75784468c788e82dc8ea58c4e6c b/0c7787459bae95545bc9ac82f4c9f43e58629c51
+index 51429a453c..0c7787459b 100644
+--- a/51429a453ca1d75784468c788e82dc8ea58c4e6c
++++ b/0c7787459bae95545bc9ac82f4c9f43e58629c51
+@@ -1,7 +1,7 @@
+ public int doWork() {
+-    int workDone = safeInvoke(driverAgentInvoker);
++    int workDone = (null != driverAgentInvoker) ? driverAgentInvoker.invoke() : 0;
+     workDone += aeronClientAgentInvoker.invoke();
+     workDone += preSessionWork();
+     workDone += super.doWork();
+     return workDone;
+ }
+\ No newline at end of file

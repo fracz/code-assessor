@@ -1,0 +1,13 @@
+diff --git a/49c66d6238f050e0d8f95e4ba792381d646d7d8d b/a1f3d2ac2884804cc44d5101258c39123fe9d788
+index 49c66d6238..a1f3d2ac28 100644
+--- a/49c66d6238f050e0d8f95e4ba792381d646d7d8d
++++ b/a1f3d2ac2884804cc44d5101258c39123fe9d788
+@@ -1,5 +1,5 @@
+ @Override
+ public void writeFailed(Throwable x) {
+-    webSocketMessageProcessor.cancel();
+-    webSocketMessageProcessor.onError(x);
++    getSendProcessor().cancel();
++    getSendProcessor().onError(x);
+ }
+\ No newline at end of file

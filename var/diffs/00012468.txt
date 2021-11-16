@@ -1,0 +1,16 @@
+diff --git a/37df0dc1dbbc087bc432ea0f4beefd92a792fdee b/0c7d14d056a9c913b7c69542dda4031d286fe0fa
+index 37df0dc1db..0c7d14d056 100644
+--- a/37df0dc1dbbc087bc432ea0f4beefd92a792fdee
++++ b/0c7d14d056a9c913b7c69542dda4031d286fe0fa
+@@ -1,9 +1,8 @@
+ @Test
+ public void testNoDifferenceForDirectoryWithEqualContents() {
+     vcs.createDirectory("dir");
+     vcs.createFile("dir/file", null, -1);
+     vcs.delete("dir/file");
+     List<Revision> rr = vcs.getRevisionsFor("dir");
+-    Difference d = rr.get(0).getDifferenceWith(rr.get(2));
+-    assertFalse(d.hasDifference());
++    assertTrue(rr.get(0).getDifferencesWith(rr.get(2)).isEmpty());
+ }
+\ No newline at end of file

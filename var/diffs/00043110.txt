@@ -1,0 +1,25 @@
+diff --git a/46e795136d54d530399c99ce6bdc8deae87333ec b/304e10ef5e0182b6afb16b8e97d8537c0590ecf2
+index 46e795136d..304e10ef5e 100644
+--- a/46e795136d54d530399c99ce6bdc8deae87333ec
++++ b/304e10ef5e0182b6afb16b8e97d8537c0590ecf2
+@@ -1,18 +1,17 @@
+-public int create(final Map<String, Object> iOptions) {
++public void create(final Map<String, Object> iOptions) {
+     addUser();
+     level2cache.startup();
+     final boolean locked = lock.acquireExclusiveLock();
+     try {
+         addDataSegment(OStorage.DATA_DEFAULT_NAME);
+         // ADD THE METADATA CLUSTER TO STORE INTERNAL STUFF
+         addCluster(OStorage.CLUSTER_INTERNAL_NAME, null);
+         // ADD THE INDEX CLUSTER TO STORE, BY DEFAULT, ALL THE RECORDS OF INDEXING
+         addCluster(OStorage.CLUSTER_INDEX_NAME, null);
+         // ADD THE DEFAULT CLUSTER
+         defaultClusterId = addCluster(OStorage.CLUSTER_DEFAULT_NAME, null);
+         open = true;
+     } finally {
+         lock.releaseExclusiveLock(locked);
+     }
+-    return -1;
+ }
+\ No newline at end of file

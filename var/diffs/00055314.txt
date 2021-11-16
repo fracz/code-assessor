@@ -1,0 +1,14 @@
+diff --git a/c2c43c78621c7d886265235b9743537c05b610c5 b/7df7e34bfeb78b65c8921928494a88658d3d2c11
+index c2c43c7862..7df7e34bfe 100644
+--- a/c2c43c78621c7d886265235b9743537c05b610c5
++++ b/7df7e34bfeb78b65c8921928494a88658d3d2c11
+@@ -1,7 +1,6 @@
+ private static IRubyObject asXmlNodeOrNamespace(ThreadContext context, IRubyObject possibleNode) {
+     if (possibleNode instanceof XmlNode || possibleNode instanceof XmlNamespace) {
+         return possibleNode;
+-    } else {
+-        throw context.getRuntime().newArgumentError("node must be a Nokogiri::XML::Node or Nokogiri::XML::Namespace");
+     }
++    throw context.getRuntime().newArgumentError("node must be a Nokogiri::XML::Node or Nokogiri::XML::Namespace");
+ }
+\ No newline at end of file

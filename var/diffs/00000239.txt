@@ -1,0 +1,22 @@
+diff --git a/37a3e4e6d3fd85c4963564d1d34c47cc35da3782 b/f37ecaba1c206ec224848fc3626130d75376f5f1
+index 37a3e4e6d3..f37ecaba1c 100644
+--- a/37a3e4e6d3fd85c4963564d1d34c47cc35da3782
++++ b/f37ecaba1c206ec224848fc3626130d75376f5f1
+@@ -1,15 +1,15 @@
+ /**
+  * Tests the {@link FileSystemMaster#checkConsistency(AlluxioURI, CheckConsistencyOptions)} method
+  * when no files are consistent.
+  */
+ @Test
+ public void inconsistent() throws Exception {
+     String ufsDirectory = mFileSystem.getStatus(DIRECTORY).getUfsPath();
+     UnderFileSystem ufs = UnderFileSystem.get(ufsDirectory);
+-    ufs.deleteDirectory(ufsDirectory, new DeleteOptions().setRecursive(true));
++    ufs.deleteDirectory(ufsDirectory, DeleteOptions.defaults().setRecursive(true));
+     List<AlluxioURI> expected = Lists.newArrayList(FILE, DIRECTORY);
+     List<AlluxioURI> result = mFileSystemMaster.checkConsistency(new AlluxioURI("/"), CheckConsistencyOptions.defaults());
+     Collections.sort(expected);
+     Collections.sort(result);
+     Assert.assertEquals(expected, result);
+ }
+\ No newline at end of file

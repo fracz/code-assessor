@@ -1,0 +1,13 @@
+diff --git a/1fe8fe7fd1e760a92e3c2df4e979c08901bc23ea b/9ec8eca6bcd6da5ae26f65c2d9310590dfca00ae
+index 1fe8fe7fd1..9ec8eca6bc 100644
+--- a/1fe8fe7fd1e760a92e3c2df4e979c08901bc23ea
++++ b/9ec8eca6bcd6da5ae26f65c2d9310590dfca00ae
+@@ -1,6 +1,6 @@
+ @Test
+ public void decodeToMonoWithEmptyFlux() throws InterruptedException {
+     Flux<DataBuffer> source = Flux.empty();
+     Mono<String> output = this.decoder.decodeToMono(source, ResolvableType.forClass(String.class), null, Collections.emptyMap());
+-    TestSubscriber.subscribe(output).assertNoError().assertComplete().assertNoValues();
++    ScriptedSubscriber.<String>create().expectNextCount(0).expectComplete().verify(output);
+ }
+\ No newline at end of file

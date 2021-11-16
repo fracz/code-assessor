@@ -1,0 +1,16 @@
+diff --git a/deb5d804ba78aaea2eb460a26abe5e1a5a57abd4 b/14249838c899b72233176bc5273bcff83d0efa9f
+index deb5d804ba..14249838c8 100644
+--- a/deb5d804ba78aaea2eb460a26abe5e1a5a57abd4
++++ b/14249838c899b72233176bc5273bcff83d0efa9f
+@@ -1,9 +1,9 @@
+ public void reset() {
+-    mySettingsToClone.clear();
+     mySchemes.clear();
+     ContainerUtil.addAll(mySchemes, CodeStyleSchemesImpl.getSchemeManager().getAllSchemes());
+     mySchemes.add(myProjectScheme);
++    updateClonedSettings();
+     mySelectedScheme = getProjectSettings().USE_PER_PROJECT_SETTINGS ? myProjectScheme : CodeStyleSchemes.getInstance().findPreferredScheme(getProjectSettings().PREFERRED_PROJECT_CODE_STYLE);
+     myDispatcher.getMulticaster().schemeListChanged();
+     myDispatcher.getMulticaster().currentSchemeChanged(this);
+ }
+\ No newline at end of file

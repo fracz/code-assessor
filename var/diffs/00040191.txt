@@ -1,0 +1,16 @@
+diff --git a/88dc60492480f687a8565213e2a1282625f19e17 b/9a4e6b4e88eb662caf4f81d0fdbdcd57d83e0156
+index 88dc604924..9a4e6b4e88 100644
+--- a/88dc60492480f687a8565213e2a1282625f19e17
++++ b/9a4e6b4e88eb662caf4f81d0fdbdcd57d83e0156
+@@ -1,9 +1,9 @@
+ @Test
+ public void shouldAddRelationshipPropertyExistenceConstraint() {
+     // Given
+-    RelationshipPropertyExistenceConstraint constraint = new RelationshipPropertyExistenceConstraint(1, 42);
++    RelationshipPropertyExistenceConstraint constraint = new RelationshipPropertyExistenceConstraint(relDescriptor1);
+     // When
+     state.constraintDoAdd(constraint);
+     // Then
+     assertEquals(singleton(constraint), state.constraintsChangesForRelationshipType(1).getAdded());
+ }
+\ No newline at end of file

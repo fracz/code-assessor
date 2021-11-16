@@ -1,0 +1,16 @@
+diff --git a/3031383983345c4bae6a6d4ad563302348958258 b/301297970aa38d8841e427035c995653655b02d7
+index 3031383983..301297970a 100644
+--- a/3031383983345c4bae6a6d4ad563302348958258
++++ b/301297970aa38d8841e427035c995653655b02d7
+@@ -1,9 +1,9 @@
+ public static void pushShortIntMap(TShortIntHashMap map) {
+     Queue<TShortIntHashMap> ref = shortIntHashMap.get();
+     if (ref == null) {
+-        ref = new LinkedTransferQueue<TShortIntHashMap>();
++        ref = ConcurrentCollections.newQueue();
+         shortIntHashMap.set(ref);
+     }
+     map.clear();
+     ref.add(map);
+ }
+\ No newline at end of file

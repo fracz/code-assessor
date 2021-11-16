@@ -1,0 +1,23 @@
+diff --git a/636e316fafb793203d5e5a13c01487d64b0ef16b b/aafdc24354ae7dcbb29edc2b5eb91d0cfcc78a42
+index 636e316faf..aafdc24354 100644
+--- a/636e316fafb793203d5e5a13c01487d64b0ef16b
++++ b/aafdc24354ae7dcbb29edc2b5eb91d0cfcc78a42
+@@ -1,14 +1,14 @@
+ /**
+  * Return the per-user per-package state.
+  */
+ @GuardedBy("mLock")
+ @NonNull
+ private PackageShortcuts getPackageShortcutsLocked(@NonNull String packageName, @UserIdInt int userId) {
+-    final ArrayMap<String, PackageShortcuts> userPackages = getUserShortcutsLocked(userId);
+-    PackageShortcuts shortcuts = userPackages.get(packageName);
++    final UserShortcuts userPackages = getUserShortcutsLocked(userId);
++    PackageShortcuts shortcuts = userPackages.getPackages().get(packageName);
+     if (shortcuts == null) {
+         shortcuts = new PackageShortcuts(userId, packageName);
+-        userPackages.put(packageName, shortcuts);
++        userPackages.getPackages().put(packageName, shortcuts);
+     }
+     return shortcuts;
+ }
+\ No newline at end of file

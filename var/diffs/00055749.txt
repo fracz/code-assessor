@@ -1,0 +1,40 @@
+diff --git a/31602db36ee05ff4d9c3230a542ffe66204f61c3 b/07ed03ef4b0aac10512ded26241d7eeabef8bc2d
+index 31602db36e..07ed03ef4b 100644
+--- a/31602db36ee05ff4d9c3230a542ffe66204f61c3
++++ b/07ed03ef4b0aac10512ded26241d7eeabef8bc2d
+@@ -1,23 +1,22 @@
+ /**
+- * Returns a new {@code RequestCondition} that contains all conditions of this key that match the request.
++ * Checks if any of the producible media type expressions match the given request and returns an instance that
++ * is guaranteed to contain matching media type expressions only.
+  *
+- * @param request the request
+- * @return a new request condition that contains all matching attributes, or {@code null} if not all conditions match
++ * @param request the current request
++ *
++ * @return the same instance if the condition contains no expressions;
++ * or a new condition with matching expressions; or {@code null} if no expressions match.
+  */
+ public ProducesRequestCondition getMatchingCondition(HttpServletRequest request) {
+     if (isEmpty()) {
+         return this;
+     }
+-    Set<ProduceRequestCondition> matchingConditions = new LinkedHashSet<ProduceRequestCondition>(getConditions());
+-    for (Iterator<ProduceRequestCondition> iterator = matchingConditions.iterator(); iterator.hasNext(); ) {
+-        ProduceRequestCondition condition = iterator.next();
+-        if (!condition.match(request)) {
++    Set<ProduceMediaTypeExpression> result = new LinkedHashSet<ProduceMediaTypeExpression>(expressions);
++    for (Iterator<ProduceMediaTypeExpression> iterator = result.iterator(); iterator.hasNext(); ) {
++        ProduceMediaTypeExpression expression = iterator.next();
++        if (!expression.match(request)) {
+             iterator.remove();
+         }
+     }
+-    if (matchingConditions.isEmpty()) {
+-        return null;
+-    } else {
+-        return new ProducesRequestCondition(matchingConditions);
+-    }
++    return (result.isEmpty()) ? null : new ProducesRequestCondition(result);
+ }
+\ No newline at end of file

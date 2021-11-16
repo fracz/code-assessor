@@ -1,0 +1,21 @@
+diff --git a/7dbf9e5621a3e97517ab8bfefad59f8b24ac93c2 b/9162dfd783e1f4c6aaa08f71af46afe1d533f377
+index 7dbf9e5621..9162dfd783 100644
+--- a/7dbf9e5621a3e97517ab8bfefad59f8b24ac93c2
++++ b/9162dfd783e1f4c6aaa08f71af46afe1d533f377
+@@ -1,11 +1,10 @@
+-/**
+- * Returns the arithmetic mean of all recorded values.
+- *
+- * @return the arithmetic mean of all recorded values
+- */
++/* (non-Javadoc)
++     * @see com.yammer.metrics.core.Summarized#mean()
++     */
++@Override
+ public double mean() {
+     if (count() > 0) {
+         return _sum.get() / (double) count();
+     }
+     return 0.0;
+ }
+\ No newline at end of file

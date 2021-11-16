@@ -1,0 +1,12 @@
+diff --git a/87c4b25cca277f3cb76542c02995c91146c2d18b b/72e560444a7ee6d07dcd9305b091350bf04c6ce6
+index 87c4b25cca..72e560444a 100644
+--- a/87c4b25cca277f3cb76542c02995c91146c2d18b
++++ b/72e560444a7ee6d07dcd9305b091350bf04c6ce6
+@@ -1,4 +1,5 @@
+ @Override
+ public String toString() {
+-    return String.format("IndexKey[%s (%s {%s})]", type.name(), label(labelId), propertyKey(propertyKeyId));
++    String propertyText = descriptor.descriptor().propertyIdText();
++    return String.format("IndexKey[%s (%s {%s})]", type.name(), label(descriptor.getLabelId()), propertyText);
+ }
+\ No newline at end of file

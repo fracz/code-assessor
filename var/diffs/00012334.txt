@@ -1,0 +1,19 @@
+diff --git a/3f669f4eb488c0025b158bb871aaeccc84a9115a b/6481880fed7c4d10d6a895595331edc97a30a114
+index 3f669f4eb4..6481880fed 100644
+--- a/3f669f4eb488c0025b158bb871aaeccc84a9115a
++++ b/6481880fed7c4d10d6a895595331edc97a30a114
+@@ -1,9 +1,8 @@
+ @Nullable
+-protected InspectionGadgetsFix buildFix(PsiElement location) {
+-    final PsiMethod containingMethod = PsiTreeUtil.getParentOfType(location, PsiMethod.class);
+-    if (mayBeReplacedByIterativeMethod(containingMethod)) {
+-        return new RemoveTailRecursionFix();
+-    } else {
++protected InspectionGadgetsFix buildFix(Object... infos) {
++    final PsiMethod containingMethod = (PsiMethod) infos[0];
++    if (!mayBeReplacedByIterativeMethod(containingMethod)) {
+         return null;
+     }
++    return new RemoveTailRecursionFix();
+ }
+\ No newline at end of file

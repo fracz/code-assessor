@@ -1,0 +1,14 @@
+diff --git a/b283e84613826f92766932601f8e11cbaf17de74 b/74428e2d2969bbdb4e7a0a892cc11d8c2950f28d
+index b283e84613..74428e2d29 100644
+--- a/b283e84613826f92766932601f8e11cbaf17de74
++++ b/74428e2d2969bbdb4e7a0a892cc11d8c2950f28d
+@@ -1,3 +1,7 @@
+ public boolean contains(VirtualFile file) {
+-    return myBaseScope.contains(file) | (myLibraryFiles == null ? false : myLibraryFiles.contains(file));
++    //
++    if (myAllLibraryFiles != null && myAllLibraryFiles.contains(file)) {
++        return myLibraryFiles == null ? false : myLibraryFiles.contains(file);
++    }
++    return myBaseScope.contains(file);
+ }
+\ No newline at end of file

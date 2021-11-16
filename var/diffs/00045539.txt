@@ -1,0 +1,22 @@
+diff --git a/8a53daf10cad433c9fb719b039b040b38c8f1a1d b/6ac7aacdf7e68a3b63e7a2e7d4f2009bfb56bd43
+index 8a53daf10c..6ac7aacdf7 100644
+--- a/8a53daf10cad433c9fb719b039b040b38c8f1a1d
++++ b/6ac7aacdf7e68a3b63e7a2e7d4f2009bfb56bd43
+@@ -1,6 +1,11 @@
+-private void executeReads(int number, ODatabase database) throws Exception {
+-    for (int j = 0; j < number; j++) {
+-        ODatabaseUtils.readOperation(database, j);
+-        consoleWriter.addRead();
+-    }
++private void executeReads(int number, final ODatabase database) throws Exception {
++    executeOperations(number, 0, database, new Invokable<ODocument, Integer, ODocument>() {
++
++        @Override
++        public ODocument invoke(Integer value, ODocument doc) throws Exception {
++            ODatabaseUtils.readOperation(database, value);
++            consoleWriter.addRead();
++            return null;
++        }
++    });
+ }
+\ No newline at end of file

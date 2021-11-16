@@ -1,0 +1,19 @@
+diff --git a/cbe0e9b54e837d81e8d2676837d448405fd96285 b/e0246d48dddc790bb31f0aea26e4013c3ef3f7d6
+index cbe0e9b54e..e0246d48dd 100644
+--- a/cbe0e9b54e837d81e8d2676837d448405fd96285
++++ b/e0246d48dddc790bb31f0aea26e4013c3ef3f7d6
+@@ -1,11 +1,7 @@
+ public static boolean isEnabled(final DataContext dc) {
+     final Project project = CommonDataKeys.PROJECT.getData(dc);
+     if (project == null)
+         return false;
+-    ShelvedChangeList[] changeLists = ShelvedChangesViewManager.SHELVED_CHANGELIST_KEY.getData(dc);
+-    if (changeLists == null)
+-        changeLists = ShelvedChangesViewManager.SHELVED_RECYCLED_CHANGELIST_KEY.getData(dc);
+-    if (changeLists == null || changeLists.length != 1)
+-        return false;
+-    return true;
++    List<ShelvedChangeList> changeLists = ShelvedChangesViewManager.getShelvedLists(dc);
++    return changeLists.size() == 1;
+ }
+\ No newline at end of file

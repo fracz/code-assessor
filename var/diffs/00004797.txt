@@ -1,0 +1,20 @@
+diff --git a/6e5e3a89df6ac0ac7e51654782fd4facd77d7bef b/333e7cc5ed1abf6b1d5d9d19e09fe7225b268dad
+index 6e5e3a89df..333e7cc5ed 100644
+--- a/6e5e3a89df6ac0ac7e51654782fd4facd77d7bef
++++ b/333e7cc5ed1abf6b1d5d9d19e09fe7225b268dad
+@@ -1,8 +1,11 @@
+-@NotNull
+ public AntProject getAntProject() {
+     if (myProject != null)
+         return myProject;
+     final XmlFile baseFile = getSourceElement();
+-    final XmlTag tag = baseFile.getDocument().getRootTag();
+-    return myProject = new AntProjectImpl(this, tag);
++    final XmlDocument document = baseFile.getDocument();
++    assert document != null;
++    final XmlTag tag = document.getRootTag();
++    myProject = new AntProjectImpl(this, tag, createProjectDefinition());
++    ((AntProjectImpl) myProject).loadPredefinedProperties(myAntProject);
++    return myProject;
+ }
+\ No newline at end of file

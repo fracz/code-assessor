@@ -1,0 +1,19 @@
+diff --git a/19ad7651ecbea80a82e1a3f266689719d2d7d7c7 b/15cdae4b2e8709520f880e4a2c1d249a0d0590d1
+index 19ad7651ec..15cdae4b2e 100644
+--- a/19ad7651ecbea80a82e1a3f266689719d2d7d7c7
++++ b/15cdae4b2e8709520f880e4a2c1d249a0d0590d1
+@@ -1,12 +1,12 @@
+ /**
+  * Main method to access the configurer for HTTP message readers and writers.
+  * <p>Use {@link #configureHttpMessageCodecs(ServerCodecConfigurer)} to
+  * configure the readers and writers.
+  */
+ protected final ServerCodecConfigurer getMessageCodecsConfigurer() {
+     if (this.messageCodecsConfigurer == null) {
+-        this.messageCodecsConfigurer = new ServerCodecConfigurer();
++        this.messageCodecsConfigurer = ServerCodecConfigurer.create();
+         configureHttpMessageCodecs(this.getMessageCodecsConfigurer());
+     }
+     return this.messageCodecsConfigurer;
+ }
+\ No newline at end of file

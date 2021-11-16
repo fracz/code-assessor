@@ -1,0 +1,17 @@
+diff --git a/cb14a23e743025f91a31084384e4e8e81fc77684 b/1f3af1888d6d88880515b56e4b236ce125c7fc59
+index cb14a23e74..1f3af1888d 100644
+--- a/cb14a23e743025f91a31084384e4e8e81fc77684
++++ b/1f3af1888d6d88880515b56e4b236ce125c7fc59
+@@ -1,9 +1,9 @@
+ @Test
+ public void shouldReturnLatestPartialAfterCheckout_AndWatchListNotEmpty() {
+     ScmMaterialConfig material = SetOneConfigRepo();
+     PartialConfig part = new PartialConfig();
+     when(plugin.Load(any(File.class), any(PartialConfigLoadContext.class))).thenReturn(part);
+     repoConfigDataSource.onCheckoutComplete(material, folder, "7a8f");
+-    assertThat(partialConfig.lastPartials().length, is(1));
+-    assertThat(partialConfig.lastPartials()[0], is(part));
++    assertThat(partialConfig.lastPartials().size(), is(1));
++    assertThat(partialConfig.lastPartials().get(0), is(part));
+ }
+\ No newline at end of file

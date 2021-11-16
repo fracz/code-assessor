@@ -1,0 +1,22 @@
+diff --git a/ad27ac94bf37268b4d28c0d19da6fa84cd19ac0c b/9c95618c2a791dc427df00bff2cc2451c3f20b17
+index ad27ac94bf..9c95618c2a 100644
+--- a/ad27ac94bf37268b4d28c0d19da6fa84cd19ac0c
++++ b/9c95618c2a791dc427df00bff2cc2451c3f20b17
+@@ -1,12 +1,12 @@
+ @Override
+ public boolean apply(Mutation mutation) {
+-    for (ColumnFamily cf : mutation.getColumnFamilies()) {
+-        for (Cell c : cf.getSortedColumns()) {
+-            if (new String(c.name().toByteBuffer().array(), StandardCharsets.UTF_8).startsWith(CELLNAME)) {
+-                hash = hash(hash, c.value());
++    for (PartitionUpdate update : mutation.getPartitionUpdates()) {
++        for (Row row : update) {
++            for (Cell cell : row) {
++                hash = hash(hash, cell.value());
+                 ++cells;
+             }
+         }
+     }
+     return true;
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/23a64ebf0ecf65ca1fd68ad929aad9fe0489a14f b/6849f56f229723cf80b60457f02a63ebd352d25a
+index 23a64ebf0e..6849f56f22 100644
+--- a/23a64ebf0ecf65ca1fd68ad929aad9fe0489a14f
++++ b/6849f56f229723cf80b60457f02a63ebd352d25a
+@@ -1,9 +1,9 @@
+ public void update(AnActionEvent e) {
+     final DataContext dataContext = e.getDataContext();
+-    final Project project = (Project) dataContext.getData(DataConstants.PROJECT);
+-    final Module[] modules = (Module[]) dataContext.getData(DataConstants.MODULE_CONTEXT_ARRAY);
++    final Project project = PlatformDataKeys.PROJECT.getData(dataContext);
++    final Module[] modules = LangDataKeys.MODULE_CONTEXT_ARRAY.getData(dataContext);
+     boolean active = project != null && modules != null && modules.length != 0;
+     final Presentation presentation = e.getPresentation();
+     presentation.setVisible(active);
+     presentation.setText(myModuleGroup.presentableText());
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/f204a540b2353cc3f0bda05c0c347852bf7a01fd b/d90a89f8c7d9e859e9d2094a1acd948ad80e9ed7
+index f204a540b2..d90a89f8c7 100644
+--- a/f204a540b2353cc3f0bda05c0c347852bf7a01fd
++++ b/d90a89f8c7d9e859e9d2094a1acd948ad80e9ed7
+@@ -1,11 +1,12 @@
+ @Test
+ public void testRemoteAddress() {
++    client = vertx.createHttpClient(new ClientOptions());
+     server.requestHandler(req -> {
+-        assertEquals("localhost", req.remoteAddress().getHostName());
++        assertEquals(DEFAULT_HTTP_HOST, req.remoteAddress().getHostName());
+         req.response().end();
+     });
+-    server.listen(port, "localhost", onSuccess(s -> {
+-        client.getNow("some-uri", resp -> resp.endHandler(v -> testComplete()));
++    server.listen(DEFAULT_HTTP_PORT, DEFAULT_HTTP_HOST, onSuccess(s -> {
++        client.getNow(new RequestOptions().setPort(DEFAULT_HTTP_PORT).setRequestURI(DEFAULT_TEST_URI), resp -> resp.endHandler(v -> testComplete()));
+     }));
+     await();
+ }
+\ No newline at end of file

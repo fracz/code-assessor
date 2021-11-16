@@ -1,0 +1,21 @@
+diff --git a/7c5b82d38a89d1021d035fdbd35de4fc4d56f92e b/91ff3ebce96049015f278fa4052e385b3701acba
+index 7c5b82d38a..91ff3ebce9 100644
+--- a/7c5b82d38a89d1021d035fdbd35de4fc4d56f92e
++++ b/91ff3ebce96049015f278fa4052e385b3701acba
+@@ -1,14 +1,14 @@
+ public void testProvisionExceptionsAreWrappedForBindToProviderType() {
+     try {
+         Guice.createInjector(new AbstractModule() {
+
+             protected void configure() {
+                 bind(F.class).toProvider(FProvider.class);
+             }
+         }).getInstance(F.class);
+         fail();
+     } catch (ProvisionException e) {
+-        assertTrue("Known failure. ProvisionExceptions are not wrapped.", e.getCause() instanceof ProvisionException);
++        assertEquals("User Exception", e.getCause().getMessage());
+         assertContains(e.getMessage(), "while locating " + "com.google.inject.ProvisionExceptionTest$F");
+     }
+ }
+\ No newline at end of file

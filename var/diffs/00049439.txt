@@ -1,0 +1,26 @@
+diff --git a/93c64ded02f2a79e467011f929f33be36a2c6357 b/af697a7e3d9a0465b9602625f0621e50e0dbf42d
+index 93c64ded02..af697a7e3d 100644
+--- a/93c64ded02f2a79e467011f929f33be36a2c6357
++++ b/af697a7e3d9a0465b9602625f0621e50e0dbf42d
+@@ -1,19 +1,19 @@
+ @Override
+ protected Control createControl(Composite editPlaceholder) {
+     final DBDContent content = (DBDContent) valueController.getValue();
+     if (curStreamManager == null) {
+         detectStreamManager(content);
+     }
+     if (curStreamManager != null) {
+         try {
+             streamEditor = curStreamManager.getInstance().createPanelEditor(valueController);
+         } catch (Throwable e) {
+-            UIUtils.showErrorDialog(editPlaceholder.getShell(), "No stream editor", "Can't create stream editor", e);
++            DBUserInterface.getInstance().showError("No stream editor", "Can't create stream editor", e);
+         }
+     }
+     if (streamEditor == null) {
+         return UIUtils.createInfoLabel(editPlaceholder, "No Editor");
+     }
+     editorControl = streamEditor.createControl(valueController);
+     return editorControl;
+ }
+\ No newline at end of file

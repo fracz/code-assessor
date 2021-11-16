@@ -1,0 +1,19 @@
+diff --git a/f0be7282635bace3874ee1c4160ae503b92e2816 b/0e43a22e7a8a7e85d0e2fec4b64c9ccce1395709
+index f0be728263..0e43a22e7a 100644
+--- a/f0be7282635bace3874ee1c4160ae503b92e2816
++++ b/0e43a22e7a8a7e85d0e2fec4b64c9ccce1395709
+@@ -1,9 +1,11 @@
+ private static String getSetParameterBeforeInsertCode() {
+     StringBuilder sb = new StringBuilder();
+     sb.append("{");
+-    // sb.append("System.out.println(\"-----JtdsPreparedStatement.setParameter(int,String,int,int,int) method is called\");");
+-    // sb.append("System.out.println(\"-----Position=\"+$1+\" Value=\"+$2);");
++    if (logger.isDebugEnabled()) {
++        sb.append("System.out.println(\"-----JtdsPreparedStatement.setParameter(int,String,int,int,int) method is called\");");
++        sb.append("System.out.println(\"-----Position=\"+$1+\" Value=\"+$2);");
++    }
+     sb.append(TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".putSqlParam($1,$2);");
+     sb.append("}");
+     return sb.toString();
+ }
+\ No newline at end of file

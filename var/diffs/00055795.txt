@@ -1,0 +1,16 @@
+diff --git a/f6da772360ae930ce584d557b00298739bed8676 b/9ae1318425eac41b8fe1b6101d9a7b5eebb37c24
+index f6da772360..9ae1318425 100644
+--- a/f6da772360ae930ce584d557b00298739bed8676
++++ b/9ae1318425eac41b8fe1b6101d9a7b5eebb37c24
+@@ -1,9 +1,9 @@
+ @Test
+ public void ofServerSentEventClass() throws Exception {
+     Flux<String> body = Flux.just("foo");
+     BodyInserter<Flux<String>, ServerHttpResponse> inserter = BodyInserters.fromServerSentEvents(body, String.class);
+     assertEquals(body, inserter.t());
+     MockServerHttpResponse response = new MockServerHttpResponse();
+     Mono<Void> result = inserter.insert(response, this.context);
+-    TestSubscriber.subscribe(result).assertComplete();
++    ScriptedSubscriber.create().expectNextCount(0).expectComplete().verify(result);
+ }
+\ No newline at end of file

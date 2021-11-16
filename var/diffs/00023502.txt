@@ -1,0 +1,33 @@
+diff --git a/8099bd32486cd11c05afe53ac78b075fe78f7826 b/bcf26e1ebfd5b5c233c43252f08d78577a7ba7c9
+index 8099bd3248..bcf26e1ebf 100644
+--- a/8099bd32486cd11c05afe53ac78b075fe78f7826
++++ b/bcf26e1ebfd5b5c233c43252f08d78577a7ba7c9
+@@ -1,19 +1,15 @@
+ /**
+  * Returns the task stack bounds in the current orientation. These bounds do not account for
+  * the system insets.
+  */
+-public void getTaskStackBounds(int width, int height, Rect taskStackBounds) {
+-    if (hasSearchBarAppWidget()) {
+-        Rect searchBarBounds = new Rect();
+-        getSearchBarBounds(width, height, searchBarBounds);
+-        if (isLandscape && transposeRecentsLayoutWithOrientation) {
+-            // In landscape, the search bar appears on the left, so shift the task rect right
+-            taskStackBounds.set(searchBarBounds.width(), 0, width, height);
+-        } else {
+-            // In portrait, the search bar appears on the top, so shift the task rect below
+-            taskStackBounds.set(0, searchBarBounds.height(), width, height);
+-        }
++public void getTaskStackBounds(int windowWidth, int windowHeight, int topInset, int rightInset, Rect taskStackBounds) {
++    Rect searchBarBounds = new Rect();
++    getSearchBarBounds(windowWidth, windowHeight, topInset, searchBarBounds);
++    if (isLandscape && transposeRecentsLayoutWithOrientation) {
++        // In landscape, the search bar appears on the left
++        taskStackBounds.set(searchBarBounds.right, topInset, windowWidth - rightInset, windowHeight);
+     } else {
+-        taskStackBounds.set(0, 0, width, height);
++        // In portrait, the search bar appears on the top (which already has the inset)
++        taskStackBounds.set(0, searchBarBounds.bottom, windowWidth, windowHeight);
+     }
+ }
+\ No newline at end of file

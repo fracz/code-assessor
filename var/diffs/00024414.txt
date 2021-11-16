@@ -1,0 +1,21 @@
+diff --git a/10facffccc2cdf2e502a5fd86d47820e6847d873 b/ae8cd5b8d512211e2ac15119163fd1904b9faa28
+index 10facffccc..ae8cd5b8d5 100644
+--- a/10facffccc2cdf2e502a5fd86d47820e6847d873
++++ b/ae8cd5b8d512211e2ac15119163fd1904b9faa28
+@@ -1,6 +1,12 @@
+-public void serialize(IndexInfo info, DataOutputPlus out) throws IOException {
+-    type.serializer().serialize(info.firstName, out);
+-    type.serializer().serialize(info.lastName, out);
++public void serialize(IndexInfo info, DataOutputPlus out, SerializationHeader header) throws IOException {
++    ISerializer<ClusteringPrefix> clusteringSerializer = metadata.serializers().clusteringPrefixSerializer(version, header);
++    clusteringSerializer.serialize(info.firstName, out);
++    clusteringSerializer.serialize(info.lastName, out);
+     out.writeLong(info.offset);
+     out.writeLong(info.width);
++    if (version.storeRows()) {
++        out.writeBoolean(info.endOpenMarker != null);
++        if (info.endOpenMarker != null)
++            DeletionTime.serializer.serialize(info.endOpenMarker, out);
++    }
+ }
+\ No newline at end of file

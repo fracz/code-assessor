@@ -1,0 +1,17 @@
+diff --git a/1619345c8a98eb18a893d5327d87075f6d84bc9e b/ad26255a12bd8fee3e200b1d13a4dbb6df608bc9
+index 1619345c8a..ad26255a12 100644
+--- a/1619345c8a98eb18a893d5327d87075f6d84bc9e
++++ b/ad26255a12bd8fee3e200b1d13a4dbb6df608bc9
+@@ -1,8 +1,7 @@
+ @Nullable
+-private static PsiElement getProblemElement(PsiClass aClass, @Nullable PsiMethod method) {
+-    if (method != null && method.getContainingClass() == aClass) {
++private static PsiElement getProblemElement(PsiClass psiClass, @Nullable PsiMethod method) {
++    if (method != null && method.getContainingClass() == psiClass) {
+         return PsiUtil.getReturnedExpression(method);
+-    } else {
+-        return aClass.getNameIdentifier();
+     }
++    return psiClass.getNameIdentifier();
+ }
+\ No newline at end of file

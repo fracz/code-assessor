@@ -1,0 +1,19 @@
+diff --git a/1b2b2a6854f0657ab53c7a10243e79b7d902aed8 b/32397f70dbacee46cc9a99c8c848723688792e7d
+index 1b2b2a6854..32397f70db 100644
+--- a/1b2b2a6854f0657ab53c7a10243e79b7d902aed8
++++ b/32397f70dbacee46cc9a99c8c848723688792e7d
+@@ -1,9 +1,9 @@
+ @Override
+ public int hashCode() {
+-    int result = myParent != null ? myParent.hashCode() : 0;
+-    result = 31 * result + (myAny ? 1 : 0);
++    int result = (myAny ? 1 : 0);
+     result = 31 * result + (myNothing ? 1 : 0);
+-    result = 31 * result + mySchema.hashCode();
+-    result = 31 * result + (mySteps != null ? mySteps.hashCode() : 0);
++    result = 31 * result + myResolveState.hashCode();
++    result = 31 * result + (mySchema != null ? mySchema.hashCode() : 0);
++    result = 31 * result + mySteps.hashCode();
+     return result;
+ }
+\ No newline at end of file

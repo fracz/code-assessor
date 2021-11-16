@@ -1,0 +1,20 @@
+diff --git a/40d739c11bf9f7ccb0ab8d28e4483138d256efbd b/e2b4ebf5f0622006712420a6f44b8f758c872363
+index 40d739c11b..e2b4ebf5f0 100644
+--- a/40d739c11bf9f7ccb0ab8d28e4483138d256efbd
++++ b/e2b4ebf5f0622006712420a6f44b8f758c872363
+@@ -1,8 +1,9 @@
+ public void verify(List<Invocation> invocations, InvocationMatcher wanted) {
+-    List<Verifier> verifiers = Arrays.asList(new MissingInvocationVerifier(), new NumberOfInvocationsVerifier());
+-    for (Verifier verifier : verifiers) {
+-        if (verifier.appliesTo(this)) {
+-            verifier.verify(invocations, wanted, this);
+-        }
++    MissingInvocationVerifier missingInvocation = new MissingInvocationVerifier();
++    NumberOfInvocationsVerifier numberOfInvocations = new NumberOfInvocationsVerifier();
++    // TODO duplicated
++    if (wantedCount() > 0 || (verification == Verification.AT_LEAST && wantedCount() == 1)) {
++        missingInvocation.verify(invocations, wanted, this);
+     }
++    numberOfInvocations.verify(invocations, wanted, this);
+ }
+\ No newline at end of file

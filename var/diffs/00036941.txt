@@ -1,0 +1,17 @@
+diff --git a/75ec06bc8fa8e5f8db198034cbc780e840671543 b/b1189281c00091e11d32f656311a88ce53eae7da
+index 75ec06bc8f..b1189281c0 100644
+--- a/75ec06bc8fa8e5f8db198034cbc780e840671543
++++ b/b1189281c00091e11d32f656311a88ce53eae7da
+@@ -1,6 +1,10 @@
+ @SuppressWarnings("unused")
+ private static String getGetConnectionMethodBeforeInsertCode() {
+     StringBuilder sb = new StringBuilder();
+-    // sb.append("}");
++    if (logger.isDebugEnabled()) {
++        sb.append("{");
++        sb.append("System.out.println(\"-----BasicDataSource.getConnection() method is called\");");
++        sb.append("}");
++    }
+     return sb.toString();
+ }
+\ No newline at end of file

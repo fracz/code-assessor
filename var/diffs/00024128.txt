@@ -1,0 +1,15 @@
+diff --git a/0019c641f52ad1b7d88a52ba2d487cb0f41362a8 b/18ac0814d3911c82643bb5d4e0e9328fc9d839f9
+index 0019c641f5..18ac0814d3 100644
+--- a/0019c641f52ad1b7d88a52ba2d487cb0f41362a8
++++ b/18ac0814d3911c82643bb5d4e0e9328fc9d839f9
+@@ -1,6 +1,6 @@
+ private static void checkResult(int count, Object[] btree) {
+-    BTreeSet<Integer> vs = new BTreeSet<>(btree, CMP);
+-    assert vs.size() == count;
++    Iterator<Integer> iter = BTree.slice(btree, true);
+     int i = 0;
+-    for (Integer j : vs) assertEquals(j, ints[i++]);
++    while (iter.hasNext()) assertEquals(iter.next(), ints[i++]);
++    assertFalse(iter.hasNext());
+ }
+\ No newline at end of file

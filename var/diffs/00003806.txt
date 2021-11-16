@@ -1,0 +1,15 @@
+diff --git a/792ba8c7d94d022bdb91fbb2735d28abef1be544 b/e816419ff4eab58c145ae35bafceeec323d33a10
+index 792ba8c7d9..e816419ff4 100644
+--- a/792ba8c7d94d022bdb91fbb2735d28abef1be544
++++ b/e816419ff4eab58c145ae35bafceeec323d33a10
+@@ -1,7 +1,6 @@
+-private void updateNodesToInsert(final ArrayList<TreeNode> nodesToInsert, TreeUpdatePass pass) {
++private void updateNodesToInsert(final ArrayList<TreeNode> nodesToInsert, TreeUpdatePass pass, boolean canSmartExpand, boolean forceUpdate) {
+     for (TreeNode aNodesToInsert : nodesToInsert) {
+         DefaultMutableTreeNode childNode = (DefaultMutableTreeNode) aNodesToInsert;
+-        addLoadingNode(childNode);
+-        updateNodeChildren(childNode, pass, null, false);
++        updateNodeChildren(childNode, pass, null, false, canSmartExpand, forceUpdate);
+     }
+ }
+\ No newline at end of file

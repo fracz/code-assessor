@@ -1,0 +1,19 @@
+diff --git a/d1d253f0a076069d4833cc47ea0c247d7d10de83 b/5d7f1f9e394f310c6e8fb301d1a62ca603f960dd
+index d1d253f0a0..5d7f1f9e39 100644
+--- a/d1d253f0a076069d4833cc47ea0c247d7d10de83
++++ b/5d7f1f9e394f310c6e8fb301d1a62ca603f960dd
+@@ -1,12 +1,12 @@
+ private void saveValue() {
+     try {
+         Object newValue = extractEditorValue();
+         if (dirty || control instanceof Combo || control instanceof CCombo || control instanceof List) {
+             // Combos are always dirty (because drop-down menu sets a selection)
+             valueController.updateValue(newValue, true);
+         }
+     } catch (DBException e) {
+         ((IMultiController) valueController).closeInlineEditor();
+-        UIUtils.showErrorDialog(null, "Value save", "Can't save edited value", e);
++        DBUserInterface.getInstance().showError("Value save", "Can't save edited value", e);
+     }
+ }
+\ No newline at end of file

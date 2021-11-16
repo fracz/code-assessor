@@ -1,0 +1,12 @@
+diff --git a/8d71ef293fb8c7c0da072afa283359dbbb8673c6 b/f8f1a94a8d64fd9e04a92a4f86ba31e06c4a2cfa
+index 8d71ef293f..f8f1a94a8d 100644
+--- a/8d71ef293fb8c7c0da072afa283359dbbb8673c6
++++ b/f8f1a94a8d64fd9e04a92a4f86ba31e06c4a2cfa
+@@ -1,4 +1,4 @@
+-private void showJspOrLocalClassMessage() {
++private void showJspOrLocalClassMessage(Editor editor) {
+     String message = RefactoringBundle.getCannotRefactorMessage(RefactoringBundle.message("refactoring.is.not.supported.for.local.and.jsp.classes"));
+-    CommonRefactoringUtil.showErrorMessage(REFACTORING_NAME, message, HelpID.REPLACE_CONSTRUCTOR_WITH_FACTORY, myProject);
++    CommonRefactoringUtil.showErrorHint(myProject, editor, message, REFACTORING_NAME, HelpID.REPLACE_CONSTRUCTOR_WITH_FACTORY);
+ }
+\ No newline at end of file

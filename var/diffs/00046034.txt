@@ -1,0 +1,12 @@
+diff --git a/78b6ee23830310fc5186080cd273a564f45cc9a0 b/d8e30b3709607ae76d18da22f945da27ea1f5c10
+index 78b6ee2383..d8e30b3709 100644
+--- a/78b6ee23830310fc5186080cd273a564f45cc9a0
++++ b/d8e30b3709607ae76d18da22f945da27ea1f5c10
+@@ -1,5 +1,5 @@
+ @Test
+ public void testNullPartial() throws Exception {
+-    InternalAggregationFunction bigIntAgg = metadata.getFunctionRegistry().getAggregateFunctionImplementation(new Signature("array_agg", AGGREGATE, "array(bigint)", "bigint"));
++    InternalAggregationFunction bigIntAgg = metadata.getFunctionRegistry().getAggregateFunctionImplementation(new Signature("array_agg", AGGREGATE, parseTypeSignature("array(bigint)"), parseTypeSignature(StandardTypes.BIGINT)));
+     assertAggregation(bigIntAgg, 1.0, Arrays.asList(2L, 3L), createLongsBlock(new Long[] { null, 2L, null, 3L, null }));
+ }
+\ No newline at end of file

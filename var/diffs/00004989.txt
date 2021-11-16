@@ -1,0 +1,13 @@
+diff --git a/cfbee88eec06ee356e60be75cda6c99adf831935 b/b3b6d082b93e8b8673ad3d7fca936a3d9f140cc1
+index cfbee88eec..b3b6d082b9 100644
+--- a/cfbee88eec06ee356e60be75cda6c99adf831935
++++ b/b3b6d082b93e8b8673ad3d7fca936a3d9f140cc1
+@@ -1,5 +1,5 @@
+ @Nls
+ @Override
+-public String getLibraryVersion(@NotNull Library library, LibrariesContainer container) {
+-    return getGradleVersion(container.getLibraryFiles(library, OrderRootType.CLASSES));
++public String getLibraryVersion(final VirtualFile[] libraryFiles) {
++    return getGradleVersion(libraryFiles);
+ }
+\ No newline at end of file

@@ -1,0 +1,23 @@
+diff --git a/0687e5159c2e44aacda50848a5f62c49c1900a6d b/9a6f97cf22c24fc1e937d4554d2635c08f8a800e
+index 0687e5159c..9a6f97cf22 100644
+--- a/0687e5159c2e44aacda50848a5f62c49c1900a6d
++++ b/9a6f97cf22c24fc1e937d4554d2635c08f8a800e
+@@ -1,14 +1,14 @@
+ @Override
+ protected void saveSettings(DataSourceDescriptor dataSource) {
+-    if (pageSettings != null) {
++    if (isPageActive(pageSettings)) {
+         pageSettings.saveSettings(dataSource);
+     }
+     pageGeneral.saveSettings(dataSource);
+-    if (pageNetwork != null) {
++    if (isPageActive(pageNetwork)) {
+         pageNetwork.saveConfigurations(dataSource);
+     }
+     pageEvents.saveConfigurations(dataSource);
+     for (WizardPrefPage prefPage : prefPages) {
+-        prefPage.performFinish();
++        savePageSettings(prefPage);
+     }
+ }
+\ No newline at end of file

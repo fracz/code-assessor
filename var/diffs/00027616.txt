@@ -1,0 +1,23 @@
+diff --git a/1947d9a55e4436852b945a8c61ff7817fb3f4ade b/71ce76cb5faeff3b73c7eff16088a66f71c973c3
+index 1947d9a55e..71ce76cb5f 100644
+--- a/1947d9a55e4436852b945a8c61ff7817fb3f4ade
++++ b/71ce76cb5faeff3b73c7eff16088a66f71c973c3
+@@ -1,16 +1,16 @@
+ @Override
+ public Sequence<T> run(final Query<T> query, Map<String, Object> responseContext) {
+     final Closeable closeable = adapter.increment();
+     if (closeable != null) {
+         try {
+             final Sequence<T> baseSequence = factory.createRunner(adapter).run(query, responseContext);
+-            return new ResourceClosingSequence<T>(baseSequence, closeable);
++            return Sequences.withBaggage(baseSequence, closeable);
+         } catch (RuntimeException e) {
+             CloseQuietly.close(closeable);
+             throw e;
+         }
+     } else {
+         // Segment was closed before we had a chance to increment the reference count
+         return new ReportTimelineMissingSegmentQueryRunner<T>(descriptor).run(query, responseContext);
+     }
+ }
+\ No newline at end of file

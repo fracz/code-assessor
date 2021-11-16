@@ -1,0 +1,19 @@
+diff --git a/f1debf6ce6a81fbbae1146192f25478fae2d5a6e b/41bc0cfa0bc7e69ea82b4a410be47a4c2999b3eb
+index f1debf6ce6..41bc0cfa0b 100644
+--- a/f1debf6ce6a81fbbae1146192f25478fae2d5a6e
++++ b/41bc0cfa0bc7e69ea82b4a410be47a4c2999b3eb
+@@ -1,9 +1,10 @@
+-public void replaceClassName(String oldClassName, String newClassName) {
+-    final DRootElement rootElement = getRootElement();
+-    final DClassElement oldClassElement = findClassElement(rootElement, oldClassName);
++public void replaceClassName(final DClassElement oldClassElement, String newClassName) {
+     if (oldClassElement == null)
+         return;
++    final DRootElement rootElement = getRootElement();
++    rootElement.removeClassElement(oldClassElement.getName());
+     oldClassElement.setName(newClassName);
++    rootElement.mergeAddClass(oldClassElement);
+     // updateClassNameInTree(oldClassElement, newClassName);
+     fireChange();
+ }
+\ No newline at end of file

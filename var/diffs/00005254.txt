@@ -1,0 +1,36 @@
+diff --git a/e4b24e5173fde1bc7522e5bce348229afa89a6c4 b/aa6cb92b1fa73cf72bf1df7441edce593229a2fb
+index e4b24e5173..aa6cb92b1f 100644
+--- a/e4b24e5173fde1bc7522e5bce348229afa89a6c4
++++ b/aa6cb92b1fa73cf72bf1df7441edce593229a2fb
+@@ -1,7 +1,26 @@
+-public boolean isInTheChain(Change before, Change after) {
+-    List<Change> cc = new ArrayList<Change>(before.getChanges());
++public boolean isInTheChain(final Change before, final Change after) {
++    // final List<Change> cc = new ArrayList<Change>(after.getChanges());
++    // try {
++    // accept(new ChangeVisitor() {
++    // @Override
++    // public void visit(StructuralChange c) throws IOException, StopVisitingException {
++    // if (c == before) stop();
++    // if (c == after) return;
++    // if (c.affectsSameAs(cc)) cc.add(c);
++    // }
++    // });
++    // }
++    // catch (IOException e) {
++    // throw new RuntimeException(e);
++    // }
++    // catch (ChangeVisitor.StopVisitingException e) {
++    // }
++    // return before.affectsSameAs(cc);
++    List<Change> cc = new ArrayList<Change>();
++    cc.add(before);
+     for (Change c : Reversed.list(getPlainChangesAfter(before))) {
+-        c.collectChangesInTheChain(cc);
++        if (c.affectsSameAs(cc))
++            cc.add(c);
+     }
+-    return after.isInTheChain(cc);
++    return after.affectsSameAs(cc);
+ }
+\ No newline at end of file

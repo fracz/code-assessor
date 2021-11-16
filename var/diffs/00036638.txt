@@ -1,0 +1,21 @@
+diff --git a/a556e6bc71d6a100fe87add3b1adc8c18c66b0cf b/12adc959b4e2535c0979826714208ce6b05d8c73
+index a556e6bc71..12adc959b4 100644
+--- a/a556e6bc71d6a100fe87add3b1adc8c18c66b0cf
++++ b/12adc959b4e2535c0979826714208ce6b05d8c73
+@@ -1,14 +1,13 @@
+ @Override
+ public SpanEventRecorder currentSpanEventRecorder() {
+     SpanEvent spanEvent = callStack.peek();
+     if (spanEvent == null) {
+         if (isWarn) {
+             PinpointException exception = new PinpointException("call stack is empty");
+             logger.warn("[DefaultTrace] Corrupted call stack found.", exception);
+         }
+         // make dummy.
+         spanEvent = new SpanEvent(spanRecorder.getSpan());
+     }
+-    spanEventRecorder.setWrapped(spanEvent);
+-    return spanEventRecorder;
++    return wrappedSpanEventRecorder(spanEvent);
+ }
+\ No newline at end of file

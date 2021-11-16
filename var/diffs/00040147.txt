@@ -1,0 +1,16 @@
+diff --git a/3feaec56e6d95b7f42f83bc9ffdaf43ff45f7d24 b/4b9754a847edfa64f589324ca7fe2486445b5e5a
+index 3feaec56e6..4b9754a847 100644
+--- a/3feaec56e6d95b7f42f83bc9ffdaf43ff45f7d24
++++ b/4b9754a847edfa64f589324ca7fe2486445b5e5a
+@@ -1,6 +1,6 @@
+ @Override
+-public IndexDescriptor indexCreate(KernelStatement state, int labelId, int propertyKey) {
+-    IndexDescriptor rule = new IndexDescriptor(labelId, propertyKey);
+-    state.txState().indexRuleDoAdd(rule);
+-    return rule;
++public IndexDescriptor indexCreate(KernelStatement state, NodePropertyDescriptor descriptor) {
++    IndexDescriptor indexDescriptor = IndexDescriptorFactory.from(descriptor);
++    state.txState().indexRuleDoAdd(indexDescriptor);
++    return indexDescriptor;
+ }
+\ No newline at end of file

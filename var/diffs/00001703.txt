@@ -1,0 +1,19 @@
+diff --git a/9c730b98aa855cce0d7503bd72c038add645c86a b/b64284794485a0470e17eeb2dc464784ebb10365
+index 9c730b98aa..b642847944 100644
+--- a/9c730b98aa855cce0d7503bd72c038add645c86a
++++ b/b64284794485a0470e17eeb2dc464784ebb10365
+@@ -1,10 +1,11 @@
+ public void visitArrayAccessExpression(PsiArrayAccessExpression expression) {
+-    if (expression.getIndexExpression() == null) {
++    final PsiExpression indexExpression = expression.getIndexExpression();
++    if (indexExpression == null) {
+         throw new EvaluateRuntimeException(EvaluateExceptionUtil.INVALID_EXPRESSION(expression.getText()));
+     }
+-    expression.getIndexExpression().accept(this);
++    indexExpression.accept(this);
+     Evaluator indexEvaluator = myResult;
+     expression.getArrayExpression().accept(this);
+     Evaluator arrayEvaluator = myResult;
+     myResult = new ArrayAccessEvaluator(arrayEvaluator, indexEvaluator);
+ }
+\ No newline at end of file

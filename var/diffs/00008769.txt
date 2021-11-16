@@ -1,0 +1,20 @@
+diff --git a/c41c91ecaee3c391b39e7abc10bc7ea5729d24d7 b/21cea7f09a99ea53a85b27ef04b6d480fc459133
+index c41c91ecae..21cea7f09a 100644
+--- a/c41c91ecaee3c391b39e7abc10bc7ea5729d24d7
++++ b/21cea7f09a99ea53a85b27ef04b6d480fc459133
+@@ -1,11 +1,12 @@
+ /**
+  * Applies the choosen policy.
+  *
+  * @param clazz          PSIClass.
+  * @param existingMethod existing method if one exists.
+  * @param newMethod      new method.
+  * @param editor
+  * @return if the policy was executed normally (not cancelled)
+  * @throws IncorrectOperationException is thrown if there is an IDEA error.
+  */
+-boolean applyMethod(PsiClass clazz, PsiMethod existingMethod, PsiMethod newMethod, Editor editor) throws IncorrectOperationException;
+\ No newline at end of file
++@Nullable
++PsiMethod applyMethod(PsiClass clazz, PsiMethod existingMethod, PsiMethod newMethod, Editor editor) throws IncorrectOperationException;
+\ No newline at end of file

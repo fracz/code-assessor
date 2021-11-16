@@ -1,0 +1,17 @@
+diff --git a/b38251d695571a88707bf7299d488344ae399edf b/631b723daf1a6f7e0d8773b3af28f6dfd897ae36
+index b38251d695..631b723daf 100644
+--- a/b38251d695571a88707bf7299d488344ae399edf
++++ b/631b723daf1a6f7e0d8773b3af28f6dfd897ae36
+@@ -1,9 +1,5 @@
+ @Override
+ public OPhysicalPosition[] read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
+-    final int positionsCount = network.readInt();
+-    if (positionsCount == 0) {
+-        return OCommonConst.EMPTY_PHYSICAL_POSITIONS_ARRAY;
+-    } else {
+-        return OStorageRemote.readPhysicalPositions(network, positionsCount);
+-    }
++    this.previousPositions = OBinaryProtocolHelper.readPhysicalPositions(network);
++    return this.previousPositions;
+ }
+\ No newline at end of file

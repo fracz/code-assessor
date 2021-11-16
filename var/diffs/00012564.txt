@@ -1,0 +1,18 @@
+diff --git a/12821bec821f27efecc93c52321ba511195abeeb b/81e0baa60a266c17d937b68aaeb75f8688fb57b9
+index 12821bec82..81e0baa60a 100644
+--- a/12821bec821f27efecc93c52321ba511195abeeb
++++ b/81e0baa60a266c17d937b68aaeb75f8688fb57b9
+@@ -1,10 +1,4 @@
+ @NotNull
+-public DirtBuilder getDirtyRoots(@NotNull VcsGuess vcsGuess) {
+-    FilePath fp = VcsUtil.getFilePath(ProjectBaseDirectory.getInstance(myProject).getBaseDir(myBaseDir));
+-    DirtBuilder dirt = new DirtBuilder(vcsGuess);
+-    AbstractVcs vcs = vcsGuess.getVcsForDirty(fp);
+-    if (vcs != null) {
+-        dirt.addDirtyDirRecursively(vcs, fp);
+-    }
+-    return dirt;
++public Collection<VirtualFile> getDirtyRoots() {
++    return Collections.singletonList(ProjectBaseDirectory.getInstance(myProject).getBaseDir(myBaseDir));
+ }
+\ No newline at end of file

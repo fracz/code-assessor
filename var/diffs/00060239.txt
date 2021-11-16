@@ -1,0 +1,21 @@
+diff --git a/e953d1db12ce67fda3e4fd8f59190da238641743 b/e6f380cff1a3a1783104af5c72537dd2ce5671f1
+index e953d1db12..e6f380cff1 100644
+--- a/e953d1db12ce67fda3e4fd8f59190da238641743
++++ b/e6f380cff1a3a1783104af5c72537dd2ce5671f1
+@@ -1,10 +1,13 @@
+ @Override
+ protected List<URL> doDiscover(URL url) {
+     try {
+-        String parentPath = toAvailableServerTypePath(url);
+-        List<String> currentChilds = zkClient.getChildren(parentPath);
++        String parentPath = toNodeTypePath(url, ZkNodeType.AVAILABLE_SERVER);
++        List<String> currentChilds = new ArrayList<String>();
++        if (zkClient.exists(parentPath)) {
++            currentChilds = zkClient.getChildren(parentPath);
++        }
+         return nodeChildsToUrls(parentPath, currentChilds);
+     } catch (Throwable e) {
+         throw new MotanFrameworkException(String.format("Failed to discover %s from zookeeper(%s), cause: %s", url, getUrl(), e.getMessage()));
+     }
+ }
+\ No newline at end of file

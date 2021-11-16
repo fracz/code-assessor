@@ -1,0 +1,22 @@
+diff --git a/589925e60903e364f476d23d27d49ac0e160760a b/3eafb93e591083f1c6074b0a10853ea6d4bd9f7a
+index 589925e609..3eafb93e59 100644
+--- a/589925e60903e364f476d23d27d49ac0e160760a
++++ b/3eafb93e591083f1c6074b0a10853ea6d4bd9f7a
+@@ -1,15 +1,13 @@
+ /**
+  * Count the number of traversers currently in the graph
+  *
+  * @return the count
+  * @throws IOException
+  */
+ public FaunusPipeline count() throws IOException {
+     this.state.checkLocked();
+-    Configuration configuration = new Configuration();
+-    configuration.setClass(CountMapReduce.CLASS, this.state.getElementType(), Element.class);
+-    this.compiler.addMapReduce(CountMapReduce.Map.class, CountMapReduce.Combiner.class, CountMapReduce.Reduce.class, NullWritable.class, LongWritable.class, NullWritable.class, LongWritable.class, configuration);
++    this.compiler.addMapReduce(CountMapReduce.Map.class, CountMapReduce.Combiner.class, CountMapReduce.Reduce.class, NullWritable.class, LongWritable.class, NullWritable.class, LongWritable.class, CountMapReduce.createConfiguration(this.state.getElementType()));
+     makeMapReduceString(CountMapReduce.class);
+     this.state.lock();
+     return this;
+ }
+\ No newline at end of file

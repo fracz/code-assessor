@@ -1,0 +1,26 @@
+diff --git a/727b48ba23960a16db09cbf14a7eb792bca49ea7 b/2e9e606f1c9501bebf9d13aa7659d0c802d3dec2
+index 727b48ba23..2e9e606f1c 100644
+--- a/727b48ba23960a16db09cbf14a7eb792bca49ea7
++++ b/2e9e606f1c9501bebf9d13aa7659d0c802d3dec2
+@@ -1,13 +1,17 @@
+ /**
+  * Changes the gravity for the text on a bootstrap button that is not wrap_content
+  * @param gravity - string for either center, right, or left.
+  */
+ public void setTextGravity(String gravity) {
++    int gravityId = -1;
+     if (gravity.equals("left")) {
+-        lblMiddle.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
++        gravityId = Gravity.LEFT;
+     } else if (gravity.equals("center")) {
+-        lblMiddle.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
++        gravityId = Gravity.CENTER_HORIZONTAL;
+     } else if (gravity.equals("right")) {
+-        lblMiddle.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
++        gravityId = Gravity.RIGHT;
++    }
++    if (gravityId != -1) {
++        lblMiddle.setGravity(gravityId | Gravity.CENTER_VERTICAL);
+     }
+ }
+\ No newline at end of file

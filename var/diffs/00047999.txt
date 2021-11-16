@@ -1,0 +1,16 @@
+diff --git a/56ab46b0a8fbecf2a1e22fb40f5425520682a2ba b/a0902b27d2f054450383cb97f4c5fa8d610322a7
+index 56ab46b0a8..a0902b27d2 100644
+--- a/56ab46b0a8fbecf2a1e22fb40f5425520682a2ba
++++ b/a0902b27d2f054450383cb97f4c5fa8d610322a7
+@@ -1,8 +1,8 @@
+ @Override
+-public java.util.List<MySQLGrant> evaluate() throws InvocationTargetException, InterruptedException {
++public java.util.List<MySQLGrant> evaluate(DBRProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+     try {
+-        return getDatabaseObject().getGrants(getProgressMonitor());
++        return getDatabaseObject().getGrants(monitor);
+     } catch (DBException e) {
+         throw new InvocationTargetException(e);
+     }
+ }
+\ No newline at end of file

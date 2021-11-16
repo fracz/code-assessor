@@ -1,0 +1,21 @@
+diff --git a/d3100f3131b07ebae4040f8362d0de89df6923bb b/4343dd017d3d4856ee2b4602adcb12ac878af336
+index d3100f3131..4343dd017d 100644
+--- a/d3100f3131b07ebae4040f8362d0de89df6923bb
++++ b/4343dd017d3d4856ee2b4602adcb12ac878af336
+@@ -1,8 +1,13 @@
+-public OStorage createStorage(String iURL, Map<String, String> iConfiguration) {
++public OStorage createStorage(final String iURL, final Map<String, String> iConfiguration) {
+     try {
+-        return new OStorageRemote(iURL, "rw");
++        OStorageRemote sharedStorage = sharedStorages.get(iURL);
++        if (sharedStorage == null) {
++            sharedStorage = new OStorageRemote(iURL, "rw");
++            sharedStorages.put(iURL, sharedStorage);
++        }
++        return new OStorageRemoteThread(sharedStorage);
+     } catch (Throwable t) {
+         OLogManager.instance().error(this, "Error on opening database: " + iURL, t, ODatabaseException.class);
+     }
+     return null;
+ }
+\ No newline at end of file

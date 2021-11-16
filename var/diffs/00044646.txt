@@ -1,0 +1,21 @@
+diff --git a/6f2a836b99ad1f720b00705209b26d7e548a1f02 b/23a96f4324f518ef140160e4f888176d9ab0c268
+index 6f2a836b99..23a96f4324 100644
+--- a/6f2a836b99ad1f720b00705209b26d7e548a1f02
++++ b/23a96f4324f518ef140160e4f888176d9ab0c268
+@@ -1,13 +1,11 @@
+ private void configureEndBlocks(Collection<ODocument> iEndBlocks, OCommandContext iContext) throws IllegalAccessException, InstantiationException {
+-    // END BLOCKS
+-    String name;
+     endBlocks = new ArrayList<OBlock>();
+     if (iEndBlocks != null) {
+         for (ODocument block : iEndBlocks) {
+-            name = block.fieldNames()[0];
++            final String name = block.fieldNames()[0];
+             final OBlock b = factory.getBlock(name);
+             endBlocks.add(b);
+-            configureComponent(b, (ODocument) block.field(name), iContext);
++            configureComponent(b, block.<ODocument>field(name), iContext);
+         }
+     }
+ }
+\ No newline at end of file

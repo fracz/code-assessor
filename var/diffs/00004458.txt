@@ -1,0 +1,36 @@
+diff --git a/6d29e4bfde878ae7ad1a216cf505948efe864fd1 b/5a807814d215e61bd7148e8631b24e8d57f837e0
+index 6d29e4bfde..5a807814d2 100644
+--- a/6d29e4bfde878ae7ad1a216cf505948efe864fd1
++++ b/5a807814d215e61bd7148e8631b24e8d57f837e0
+@@ -1,15 +1,20 @@
+-public void loadState(Element rootElement) {
+-    name = rootElement.getAttributeValue("name");
++/**
++ * initializes lesson after reopening of project or IDE restart
++ *
++ * @param lessonElement xml element which contains information about lesson
++ */
++public void loadState(Element lessonElement) {
++    name = lessonElement.getAttributeValue(NAME_ATTRIBUTE_NAME);
+     try {
+-        myIndex = rootElement.getAttribute("myIndex").getIntValue();
++        myIndex = lessonElement.getAttribute(INDEX_ATTRIBUTE_NAME).getIntValue();
++        List<Element> taskElements = lessonElement.getChildren();
++        taskList = new ArrayList<Task>(taskElements.size());
++        for (Element taskElement : taskElements) {
++            Task task = new Task();
++            task.loadState(taskElement);
++            taskList.add(task);
++        }
+     } catch (DataConversionException e) {
+         e.printStackTrace();
+     }
+-    List<Element> taskElements = rootElement.getChildren();
+-    taskList = new ArrayList<Task>(taskElements.size());
+-    for (Element taskElement : taskElements) {
+-        Task task = new Task();
+-        task.loadState(taskElement);
+-        taskList.add(task);
+-    }
+ }
+\ No newline at end of file

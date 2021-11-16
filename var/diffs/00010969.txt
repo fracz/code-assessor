@@ -1,0 +1,19 @@
+diff --git a/d07bcf1ac3d24eb690b0c749393b1f6a3705845c b/9d43e78b2fec01f4055b49f61dd03de503e8b1dd
+index d07bcf1ac3..9d43e78b2f 100644
+--- a/d07bcf1ac3d24eb690b0c749393b1f6a3705845c
++++ b/9d43e78b2fec01f4055b49f61dd03de503e8b1dd
+@@ -1,12 +1,12 @@
+ public void refreshUi() {
+     updateList();
+     if (isVisible() && !ApplicationManager.getApplication().isUnitTestMode()) {
+         if (myEditor.getComponent().getRootPane() == null) {
+             LOG.assertTrue(false, "Null root pane");
+         }
+         Point point = calculatePosition();
+         Dimension preferredSize = getComponent().getPreferredSize();
+         setBounds(point.x, point.y, preferredSize.width, preferredSize.height);
+-        HintManagerImpl.getInstanceImpl().adjustEditorHintPosition(this, myEditor, getComponent().getLocation());
++        HintManagerImpl.getInstanceImpl().adjustEditorHintPosition(this, myEditor, point);
+     }
+ }
+\ No newline at end of file

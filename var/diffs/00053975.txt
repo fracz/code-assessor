@@ -1,0 +1,19 @@
+diff --git a/f4af53d2a327f2e80b862d99176ec59a4a45d625 b/35ca714766eb1a2d339366bc99000c392ddc85f3
+index f4af53d2a3..35ca714766 100644
+--- a/f4af53d2a327f2e80b862d99176ec59a4a45d625
++++ b/35ca714766eb1a2d339366bc99000c392ddc85f3
+@@ -1,9 +1,10 @@
+ @Test
+-public void parseWithoutCondition() throws SQLException, NoSuchFieldException, IllegalAccessException {
++public void parseWithoutCondition() {
++    String sql = "UPDATE TABLE_XXX SET field1=field1+1";
+     ShardingRule shardingRule = createShardingRule();
+-    SQLParsingEngine statementParser = new SQLParsingEngine(DatabaseType.MySQL, "UPDATE TABLE_XXX SET field1=field1+1", shardingRule);
++    SQLParsingEngine statementParser = new SQLParsingEngine(DatabaseType.MySQL, sql, shardingRule);
+     UpdateSQLContext sqlContext = (UpdateSQLContext) statementParser.parseStatement();
+     assertThat(sqlContext.getTables().get(0).getName(), is("TABLE_XXX"));
+     // TODO 放入rewrite模块断言
+-    assertThat(new SQLRewriteEngine(sqlContext.getSqlBuilderContext()).rewrite().toString(), is("UPDATE [Token(TABLE_XXX)] SET field1=field1+1"));
++    assertThat(new SQLRewriteEngine(sql, sqlContext).rewrite().toString(), is("UPDATE [Token(TABLE_XXX)] SET field1=field1+1"));
+ }
+\ No newline at end of file

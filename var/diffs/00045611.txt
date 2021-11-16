@@ -1,0 +1,29 @@
+diff --git a/d32badc361f5abce20b0b7e9b0d9200d1dadcd91 b/7d67ae7452d1ce698162d726ff7b0712ae277fe8
+index d32badc361..7d67ae7452 100644
+--- a/d32badc361f5abce20b0b7e9b0d9200d1dadcd91
++++ b/7d67ae7452d1ce698162d726ff7b0712ae277fe8
+@@ -1,11 +1,16 @@
+ /**
+  * Serialize the class name size + class name + object content
++ *
++ * @param iValue
+  */
+-public String toStream(final ODatabaseComplex<?> iDatabase, final Object iObject) {
+-    if (iObject == null)
+-        return null;
+-    OSerializableStream stream = (OSerializableStream) iObject;
+-    if (!(iObject instanceof OSerializableStream))
+-        throw new OSerializationException("Can't serialize the object since it's not implements the OSerializableStream interface");
+-    return iObject.getClass().getName() + OStreamSerializerHelper.SEPARATOR + OBinaryProtocol.bytes2string(stream.toStream());
++public StringBuilder toStream(final ODatabaseComplex<?> iDatabase, final StringBuilder iOutput, Object iValue) {
++    if (iValue != null) {
++        OSerializableStream stream = (OSerializableStream) iValue;
++        if (!(iValue instanceof OSerializableStream))
++            throw new OSerializationException("Can't serialize the object since it's not implements the OSerializableStream interface");
++        iOutput.append(iValue.getClass().getName());
++        iOutput.append(OStreamSerializerHelper.SEPARATOR);
++        iOutput.append(OBinaryProtocol.bytes2string(stream.toStream()));
++    }
++    return iOutput;
+ }
+\ No newline at end of file

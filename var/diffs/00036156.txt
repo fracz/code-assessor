@@ -1,0 +1,28 @@
+diff --git a/e06fae750dbd234d361092a73e22393bf931c34a b/160a728d0b56524558b13d505c3b624c302b0310
+index e06fae750d..160a728d0b 100644
+--- a/e06fae750dbd234d361092a73e22393bf931c34a
++++ b/160a728d0b56524558b13d505c3b624c302b0310
+@@ -1,13 +1,12 @@
+ @Test
+ public void shouldReportTooLittleInvocations() throws Exception {
+-    Invocation first = new InvocationBuilder().toInvocation();
+-    Invocation second = new InvocationBuilder().toInvocation();
+-    finderStub.validMatchingChunkToReturn.addAll(asList(first, second));
+-    try {
+-        checker.check(invocations, wanted, 4, context);
+-        fail();
+-    } catch (VerificationInOrderFailure e) {
+-        assertContains("Wanted 4 times", e.getMessage());
+-        assertContains("But was 2 times", e.getMessage());
+-    }
++    Invocation first = buildSimpleMethod().toInvocation();
++    Invocation second = buildSimpleMethod().toInvocation();
++    wanted = buildSimpleMethod().toInvocationMatcher();
++    invocations = asList(first, second);
++    exception.expect(VerificationInOrderFailure.class);
++    exception.expectMessage("mock.simpleMethod()");
++    exception.expectMessage("Wanted 4 times");
++    exception.expectMessage("But was 2 times");
++    checker.check(invocations, wanted, 4, context);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/c9b74095ac7489f71685ce63399bc329cae03f59 b/9ae0a32ca850ab34bcfc924ee24f0e856b02a2ab
+index c9b74095ac..9ae0a32ca8 100644
+--- a/c9b74095ac7489f71685ce63399bc329cae03f59
++++ b/9ae0a32ca850ab34bcfc924ee24f0e856b02a2ab
+@@ -1,8 +1,9 @@
+ @Nullable
+ @Override
+ public Image getImage(Object element) {
+     if (columnIndex == 0) {
+-        return DBeaverIcons.getImage(getObjectImage((OBJECT_TYPE) element));
++        DBPImage objectImage = getObjectImage((OBJECT_TYPE) element);
++        return objectImage == null ? null : DBeaverIcons.getImage(objectImage);
+     }
+     return null;
+ }
+\ No newline at end of file

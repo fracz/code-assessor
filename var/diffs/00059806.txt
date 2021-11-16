@@ -1,0 +1,13 @@
+diff --git a/fd2caa7f4cdcf35a2db02ba1d36f890a8ad0f0fb b/f567cda3b4b14f4eb7a73f6bead34f8dec6138a0
+index fd2caa7f4c..f567cda3b4 100644
+--- a/fd2caa7f4cdcf35a2db02ba1d36f890a8ad0f0fb
++++ b/f567cda3b4b14f4eb7a73f6bead34f8dec6138a0
+@@ -1,6 +1,6 @@
+ public void open() throws StorageException {
+     manager = openStorageManager();
+-    tx = new CacheTransaction(manager.beginTransaction(StandardTransactionConfig.of()), manager, bufferSize, 1, 0, true);
++    tx = new CacheTransaction(manager.beginTransaction(StandardTransactionConfig.of()), manager, bufferSize, 1, ZeroDuration.INSTANCE, true);
+     store1 = new NoKCVSCache(manager.openDatabase(storeName1));
+     store2 = new NoKCVSCache(manager.openDatabase(storeName2));
+ }
+\ No newline at end of file

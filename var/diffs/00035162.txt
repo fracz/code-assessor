@@ -1,0 +1,15 @@
+diff --git a/3bebb91e9a90f45c8bd940fa805ba9351b3ee1af b/89a70b5c2f76685c12122590306bc6bb6b0dda6f
+index 3bebb91e9a..89a70b5c2f 100644
+--- a/3bebb91e9a90f45c8bd940fa805ba9351b3ee1af
++++ b/89a70b5c2f76685c12122590306bc6bb6b0dda6f
+@@ -1,5 +1,7 @@
+ public FontCache cacheMultiLineText(FontCache cache, CharSequence str, int width, de.matthiasmann.twl.HAlignment align) {
+     if (cache == null)
+-        cache = new GdxFontCache(this, str.length());
+-    return (GdxFontCache) bitmapFont.cacheMultiLineText((GdxFontCache) cache, str, 0, 0, com.badlogic.gdx.graphics.Color.WHITE, width, HAlignment.values()[align.ordinal()]);
++        cache = new GdxFontCache();
++    BitmapFontCache bitmapCache = ((GdxFontCache) cache).bitmapCache;
++    bitmapFont.cacheMultiLineText(bitmapCache, str, 0, 0, com.badlogic.gdx.graphics.Color.WHITE, width, HAlignment.values()[align.ordinal()]);
++    return cache;
+ }
+\ No newline at end of file

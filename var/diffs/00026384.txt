@@ -1,0 +1,13 @@
+diff --git a/3b652b79e9d283125437e6718255f8bd70ff2ccd b/294aa482fc3e4574570d1a18b65972f1446e7c38
+index 3b652b79e9..294aa482fc 100644
+--- a/3b652b79e9d283125437e6718255f8bd70ff2ccd
++++ b/294aa482fc3e4574570d1a18b65972f1446e7c38
+@@ -1,3 +1,6 @@
++/**
++ * Returns if the required cache matches the provided type.
++ */
+ private static boolean hasCacheOfType(Method testMethod, Class<?> cacheType) {
+-    return Arrays.stream(testMethod.getParameterTypes()).anyMatch(param -> cacheType.isAssignableFrom(param));
++    return Arrays.stream(testMethod.getParameterTypes()).anyMatch(cacheType::isAssignableFrom);
+ }
+\ No newline at end of file

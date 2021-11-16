@@ -1,0 +1,19 @@
+diff --git a/b5d62b556dfe30e0e6d90a733ef463cc07ad1ac3 b/68877bd6e4e8e8d192648e8383d1d0b0f7271e16
+index b5d62b556d..68877bd6e4 100644
+--- a/b5d62b556dfe30e0e6d90a733ef463cc07ad1ac3
++++ b/68877bd6e4e8e8d192648e8383d1d0b0f7271e16
+@@ -1,12 +1,12 @@
+ @Nullable
+ public static ASTNode findDocComment(@NotNull CompositeElement element) {
+     TreeElement node = element.getFirstChildNode();
+-    while (node != null && (ElementType.WHITE_SPACE_BIT_SET.contains(node.getElementType()) || node.getElementType() == JavaTokenType.C_STYLE_COMMENT || node.getElementType() == JavaTokenType.END_OF_LINE_COMMENT)) {
++    while (node != null && (isWhitespaceOrComment(node) && !(node.getPsi() instanceof PsiDocComment))) {
+         node = node.getTreeNext();
+     }
+     if (node != null && node.getElementType() == JavaDocElementType.DOC_COMMENT) {
+         return node;
+     } else {
+         return null;
+     }
+ }
+\ No newline at end of file

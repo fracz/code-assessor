@@ -1,0 +1,15 @@
+diff --git a/99f0e6bab63f8eb0fe81b746fab60ea3963339ec b/7021703266caa899f926769e8cd536474c59e39c
+index 99f0e6bab6..7021703266 100644
+--- a/99f0e6bab63f8eb0fe81b746fab60ea3963339ec
++++ b/7021703266caa899f926769e8cd536474c59e39c
+@@ -1,7 +1,8 @@
+ public static AtmosphereDeployerConfiguration init(String[] args) {
+-    AtmosphereDeployerConfiguration cfg = AtmosphereConfigurationParser.parseOptions(args, AtmosphereDeployer.class.getCanonicalName());
++    AtmosphereDeployerConfiguration cfg = new AtmosphereDeployerConfiguration();
++    cfg = (AtmosphereDeployerConfiguration) ConfigurationParser.parseOptions(args, AtmosphereDeployer.class.getCanonicalName(), (DeployerServerConfiguration) cfg);
+     if (logger.isLoggable(Level.INFO)) {
+         logger.log(Level.INFO, cfg.toString());
+     }
+     return cfg;
+ }
+\ No newline at end of file

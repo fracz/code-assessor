@@ -1,0 +1,29 @@
+diff --git a/682c564b6ac315d5935dc35edb1079889e55db39 b/a00bbe644348c938ef5d472537094bf51b27b6af
+index 682c564b6a..a00bbe6443 100644
+--- a/682c564b6ac315d5935dc35edb1079889e55db39
++++ b/a00bbe644348c938ef5d472537094bf51b27b6af
+@@ -1,15 +1,15 @@
+ protected void parseJoinTable() {
+-    if (getSqlParser().skipJoin()) {
++    if (sqlParser.skipJoin()) {
+         parseTable();
+-        if (getSqlParser().skipIfEqual(DefaultKeyword.ON)) {
++        if (sqlParser.skipIfEqual(DefaultKeyword.ON)) {
+             do {
+-                parseTableCondition(getSqlParser().getLexer().getCurrentToken().getEndPosition());
+-                getSqlParser().accept(Symbol.EQ);
+-                parseTableCondition(getSqlParser().getLexer().getCurrentToken().getEndPosition() - getSqlParser().getLexer().getCurrentToken().getLiterals().length());
+-            } while (getSqlParser().skipIfEqual(DefaultKeyword.AND));
+-        } else if (getSqlParser().skipIfEqual(DefaultKeyword.USING)) {
+-            getSqlParser().skipParentheses();
++                parseTableCondition(sqlParser.getLexer().getCurrentToken().getEndPosition());
++                sqlParser.accept(Symbol.EQ);
++                parseTableCondition(sqlParser.getLexer().getCurrentToken().getEndPosition() - sqlParser.getLexer().getCurrentToken().getLiterals().length());
++            } while (sqlParser.skipIfEqual(DefaultKeyword.AND));
++        } else if (sqlParser.skipIfEqual(DefaultKeyword.USING)) {
++            sqlParser.skipParentheses();
+         }
+         parseJoinTable();
+     }
+ }
+\ No newline at end of file

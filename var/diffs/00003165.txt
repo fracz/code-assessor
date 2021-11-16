@@ -1,0 +1,13 @@
+diff --git a/c666bf18117bd16d63e8d15e8d18b8cc0be558b9 b/6f22c4155de37b469cd65cd81ffeb3853d8630a2
+index c666bf1811..6f22c4155d 100644
+--- a/c666bf18117bd16d63e8d15e8d18b8cc0be558b9
++++ b/6f22c4155de37b469cd65cd81ffeb3853d8630a2
+@@ -1,6 +1,6 @@
+ public void update(final AnActionEvent e) {
+     super.update(e);
+-    ImageComponentDecorator decorator = (ImageComponentDecorator) e.getDataContext().getData(ImageComponentDecorator.class.getName());
++    ImageComponentDecorator decorator = ImageComponentDecorator.DATA_KEY.getData(e.getDataContext());
+     e.getPresentation().setEnabled(decorator != null && decorator.isEnabledForActionPlace(e.getPlace()));
+     e.getPresentation().setText(isSelected(e) ? "Hide Chessboard" : "Show Chessboard");
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/851004c48b9c818b970accec5bf444afc0ad05e0 b/bb37f0cbbe87b9834ecbaf20a0313995483c723e
+index 851004c48b..bb37f0cbbe 100644
+--- a/851004c48b9c818b970accec5bf444afc0ad05e0
++++ b/bb37f0cbbe87b9834ecbaf20a0313995483c723e
+@@ -1,7 +1,3 @@
+ public int getGroupActionAddTextColor() {
+-    if (groupActionAddTextColor != 0) {
+-        return groupActionAddTextColor;
+-    } else {
+-        return getListActionColor();
+-    }
++    return getColorWithFallback(groupActionAddTextColor, getListActionColor());
+ }
+\ No newline at end of file

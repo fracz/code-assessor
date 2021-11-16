@@ -1,0 +1,20 @@
+diff --git a/ef3b9461437e2dbac7c7de0e019504ec359666ff b/b1b10e59c4c290f13d8d5bb208f2c6eb3ebeb3bc
+index ef3b946143..b1b10e59c4 100644
+--- a/ef3b9461437e2dbac7c7de0e019504ec359666ff
++++ b/b1b10e59c4c290f13d8d5bb208f2c6eb3ebeb3bc
+@@ -1,9 +1,9 @@
+ /* reinit weights */
+ private void resetWeights() {
+-    syn1 = FloatMatrix.zeros(vocab.size(), layerSize);
+-    syn0 = FloatMatrix.zeros(vocab.size(), layerSize);
+-    org.jblas.util.Random.seed(1);
+-    for (int i = 0; i < syn0.rows; i++) for (int j = 0; j < syn0.columns; j++) {
+-        syn0.put(i, j, (float) (org.jblas.util.Random.nextFloat() - 0.5) / layerSize);
++    syn1 = NDArrays.zeros(vocab.size(), layerSize);
++    syn0 = NDArrays.zeros(vocab.size(), layerSize);
++    RandomGenerator g = new MersenneTwister(123);
++    for (int i = 0; i < syn0.rows(); i++) for (int j = 0; j < syn0.columns(); j++) {
++        syn0.put(i, j, (float) (g.nextFloat() - 0.5) / layerSize);
+     }
+ }
+\ No newline at end of file

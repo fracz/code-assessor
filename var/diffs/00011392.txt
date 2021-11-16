@@ -1,0 +1,17 @@
+diff --git a/c00d67d9f03cc5b5f7d8761a5a938f9cf03fe4d3 b/6e398f1837e3ee91bf10d6785df5fdf0f3bccbfd
+index c00d67d9f0..6e398f1837 100644
+--- a/c00d67d9f03cc5b5f7d8761a5a938f9cf03fe4d3
++++ b/6e398f1837e3ee91bf10d6785df5fdf0f3bccbfd
+@@ -1,4 +1,8 @@
+-@Nullable
+-public DomElementPresentation getPresentation() {
+-    return getManager().getDomElementPresentation(getProxy());
++@NotNull
++public ElementPresentation getPresentation() {
++    final ElementPresentation presentation = ElementPresentationManager.getElementPresentation(getProxy());
++    if (presentation != null) {
++        return presentation;
++    }
++    return new BasicDomElementPresentation(getProxy());
+ }
+\ No newline at end of file

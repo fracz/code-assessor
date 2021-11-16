@@ -1,0 +1,16 @@
+diff --git a/875a6fb9c707c53d08e1aa94bb0205f4ca769d7f b/a4aae8327906277010f9677477c172316c351bfd
+index 875a6fb9c7..a4aae83279 100644
+--- a/875a6fb9c707c53d08e1aa94bb0205f4ca769d7f
++++ b/a4aae8327906277010f9677477c172316c351bfd
+@@ -1,6 +1,8 @@
+ @Override
+ public void dispose() {
+-    assert !isDisposed();
+-    Disposer.dispose(myRootsWatcher);
++    if (isDisposed()) {
++        throwDisposalError("Already disposed:");
++    }
+     myDisposed = true;
++    kill(null);
+ }
+\ No newline at end of file

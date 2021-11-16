@@ -1,0 +1,20 @@
+diff --git a/6eb367bd0c27570cc915a65f2e837a8c019983d2 b/337daef0d3fef656bb01c26e238cace7f371979e
+index 6eb367bd0c..337daef0d3 100644
+--- a/6eb367bd0c27570cc915a65f2e837a8c019983d2
++++ b/337daef0d3fef656bb01c26e238cace7f371979e
+@@ -1,12 +1,7 @@
+-private static void closeStorage(File root, @Nullable AbstractStateStorage<?, ?> storage) {
++private static void closeStorage(@Nullable AbstractStateStorage<?, ?> storage) throws IOException {
+     if (storage != null) {
+         synchronized (storage) {
+-            try {
+-                storage.close();
+-            } catch (IOException e) {
+-                LOG.error(e);
+-                FileUtil.delete(root);
+-            }
++            storage.close();
+         }
+     }
+ }
+\ No newline at end of file

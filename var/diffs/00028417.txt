@@ -1,0 +1,13 @@
+diff --git a/fa2e9ec78800ee3f6b65ca8cd5f90bbb12e9ca14 b/27a145e2527120b8bd6eaa8ee63933166634d4e9
+index fa2e9ec788..27a145e252 100644
+--- a/fa2e9ec78800ee3f6b65ca8cd5f90bbb12e9ca14
++++ b/27a145e2527120b8bd6eaa8ee63933166634d4e9
+@@ -1,4 +1,5 @@
+ @Override
+-public DatagramSocketImpl endHandler(Handler<Void> endHandler) {
+-    return (DatagramSocketImpl) super.closeHandler(endHandler);
++public DatagramSocketImpl endHandler(Handler<Void> handler) {
++    endHandler = handler;
++    return this;
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/89e84a9491e51193f8070d17149afcce3cf6d28c b/0efb3c416d4111dc1fc443bbdc0c3471b1843b7e
+index 89e84a9491..0efb3c416d 100644
+--- a/89e84a9491e51193f8070d17149afcce3cf6d28c
++++ b/0efb3c416d4111dc1fc443bbdc0c3471b1843b7e
+@@ -1,12 +1,11 @@
+ private SQLParsedResult buildHintParsedResult(final String logicSql) {
+-    SQLParsedResult result = new SQLParsedResult(new ConditionContext());
+-    result.setSqlType(SQLUtil.getTypeByStart(logicSql));
++    SQLParsedResult result = new SQLParsedResult(SQLUtil.getTypeByStart(logicSql), new ConditionContext());
+     log.trace("Get {} SQL Statement", result.getSqlType());
+     SQLBuilder sqlBuilder = new SQLBuilder();
+     try {
+         sqlBuilder.append(logicSql);
+     } catch (final IOException ignored) {
+     }
+     result.setSqlBuilder(sqlBuilder);
+     return result;
+ }
+\ No newline at end of file

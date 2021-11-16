@@ -1,0 +1,15 @@
+diff --git a/3f13d3cd091acd89804a45b607d3ad37e1a2e592 b/40fc5f6f88e3c1a3acf9232047a8aac9e7ff5dcd
+index 3f13d3cd09..40fc5f6f88 100644
+--- a/3f13d3cd091acd89804a45b607d3ad37e1a2e592
++++ b/40fc5f6f88e3c1a3acf9232047a8aac9e7ff5dcd
+@@ -1,8 +1,8 @@
+ private Node shiftExpr(TokenStream ts) throws IOException, JavaScriptException {
+-    CodePosition position = getNextTokenPosition(ts);
+     Node pn = addExpr(ts);
+     while (ts.matchToken(TokenStream.SHOP)) {
++        CodePosition position = ts.tokenPosition;
+         pn = nf.createBinary(TokenStream.SHOP, ts.getOp(), pn, addExpr(ts), position);
+     }
+     return pn;
+ }
+\ No newline at end of file

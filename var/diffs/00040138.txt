@@ -1,0 +1,12 @@
+diff --git a/93c63082e1355cbde62ad419d0302afbe2cb1b89 b/0479c2300104da990070432a7b3896db56037641
+index 93c63082e1..0479c23001 100644
+--- a/93c63082e1355cbde62ad419d0302afbe2cb1b89
++++ b/0479c2300104da990070432a7b3896db56037641
+@@ -1,4 +1,4 @@
+ @Override
+-public void validateRelationshipPropertyExistenceConstraint(Cursor<RelationshipItem> allRels, int type, int key) throws CreateConstraintFailureException {
+-    throw propertyExistenceConstraintsNotAllowed(new RelationshipPropertyExistenceConstraint(type, key));
++public void validateRelationshipPropertyExistenceConstraint(Cursor<RelationshipItem> allRels, RelationshipPropertyDescriptor descriptor) throws CreateConstraintFailureException {
++    throw propertyExistenceConstraintsNotAllowed(new RelationshipPropertyExistenceConstraint(descriptor));
+ }
+\ No newline at end of file

@@ -1,0 +1,25 @@
+diff --git a/03a298ec5656d990b0cacb46dd93fdddc6e1b154 b/dc6ec3b6ef52645c6a0323b59add57c5f60a14d1
+index 03a298ec56..dc6ec3b6ef 100644
+--- a/03a298ec5656d990b0cacb46dd93fdddc6e1b154
++++ b/dc6ec3b6ef52645c6a0323b59add57c5f60a14d1
+@@ -1,13 +1,14 @@
+-// ###  RELATIONAL METHODS
++// ////////////////////////////////////////////////////////////////////////////////////
++// PROTECTED METHODS
++// ////////////////////////////////////////////////////////////////////////////////////
+ /**
+  * Retrieves related entities on a field on the object.
+  *
+  * @param type the type of this object.
+- * @param through the field on the other object through which this object is related.
++ * @param foreignKey the field on the other object through which this object is related.
+  * @return ArrayList<E> ArrayList of objects returned by the query.
+  */
+-protected <E extends Model> ArrayList<E> getMany(Class<? extends Model> type, String through) {
++protected final <E extends Model> ArrayList<E> getMany(Class<? extends Model> type, String foreignKey) {
+     final String tableName = ReflectionUtils.getTableName(type);
+-    final String selection = tableName + "." + through + "=" + getId();
+-    return query(type, false, null, selection, null, null, null, null, null);
++    return new Select().from(type).where(tableName + "." + foreignKey + "=?", getId()).execute();
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/7a14f14263f482860c13f600f3f78303e2abd2b3 b/132039a32baec4a35d350e8f1a2479722690f4f8
+index 7a14f14263..132039a32b 100644
+--- a/7a14f14263f482860c13f600f3f78303e2abd2b3
++++ b/132039a32baec4a35d350e8f1a2479722690f4f8
+@@ -1,10 +1,9 @@
+ @Test
+ public void writeFailure() throws Exception {
+-    EmbeddedChannel channel = new EmbeddedChannelNoException(new DataServerBlockWriteHandler(NettyExecutors.BLOCK_WRITER_EXECUTOR, mBlockWorker));
+-    channel.writeInbound(buildWriteRequest(0, 1024));
++    mChannelNoException.writeInbound(buildWriteRequest(0, PACKET_SIZE));
+     mBlockWriter.close();
+-    channel.writeInbound(buildWriteRequest(1024, 1024));
+-    Object writeResponse = waitForResponse(channel);
++    mChannelNoException.writeInbound(buildWriteRequest(PACKET_SIZE, PACKET_SIZE));
++    Object writeResponse = waitForResponse(mChannelNoException);
+     Assert.assertTrue(writeResponse instanceof RPCProtoMessage);
+     checkWriteResponse(writeResponse, Protocol.Status.Code.INTERNAL);
+ }
+\ No newline at end of file

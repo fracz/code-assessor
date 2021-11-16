@@ -1,0 +1,18 @@
+diff --git a/7c7340567028e96624d97b53c3bd1abf86f542c8 b/a7168155562e4bc2c10ec73d3e761a005bfe002e
+index 7c73405670..a716815556 100644
+--- a/7c7340567028e96624d97b53c3bd1abf86f542c8
++++ b/a7168155562e4bc2c10ec73d3e761a005bfe002e
+@@ -1,8 +1,10 @@
+ @NotNull
+ private JsExpression getClassReference(@NotNull ClassDescriptor superClassDescriptor) {
+     // NOTE: aliasing here is needed for the declaration generation step
+-    if (aliaser().hasAliasForDeclaration(superClassDescriptor)) {
+-        return aliaser().getAliasForDeclaration(superClassDescriptor).makeRef();
++    JsName name = context().getNameForDescriptor(superClassDescriptor);
++    JsName alias = aliasingMap.get(name);
++    if (alias != null) {
++        return alias.makeRef();
+     }
+     return getQualifiedReference(context(), superClassDescriptor);
+ }
+\ No newline at end of file

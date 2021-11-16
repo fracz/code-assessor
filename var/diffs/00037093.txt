@@ -1,0 +1,24 @@
+diff --git a/dc138690fda66e3986c9e689b6ad67ea8ab021ae b/54c0a671b7cc250a8c620c02d57a6b7abaa670af
+index dc138690fd..54c0a671b7 100644
+--- a/dc138690fda66e3986c9e689b6ad67ea8ab021ae
++++ b/54c0a671b7cc250a8c620c02d57a6b7abaa670af
+@@ -1,13 +1,14 @@
+ private DefaultProfilerPluginContext setupPlugin(URL jar, ProfilerPlugin plugin) {
+     final ClassInjector classInjector = JarProfilerPluginClassInjector.of(agent.getInstrumentation(), agent.getClassPool(), jar);
+     final DefaultProfilerPluginContext context = new DefaultProfilerPluginContext(agent, classInjector);
+-    final GuardProfilerPluginContext guard = new GuardProfilerPluginContext(context);
++    final GuardProfilerPluginContext guardPluginContext = new GuardProfilerPluginContext(context);
++    final GuardInstrumentContext guardInstrumentContext = preparePlugin(plugin, context);
+     try {
+-        preparePlugin(plugin, context);
+         // WARN external plugin api
+-        plugin.setup(guard);
++        plugin.setup(guardPluginContext);
+     } finally {
+-        guard.close();
++        guardPluginContext.close();
++        guardInstrumentContext.close();
+     }
+     return context;
+ }
+\ No newline at end of file

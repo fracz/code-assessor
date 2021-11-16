@@ -1,0 +1,14 @@
+diff --git a/1172334ab70d1fe7d334e8a5eac983cfaa7a0513 b/2ee5de452028fd37f3a25cb4c9a36749c7d34c99
+index 1172334ab7..2ee5de4520 100644
+--- a/1172334ab70d1fe7d334e8a5eac983cfaa7a0513
++++ b/2ee5de452028fd37f3a25cb4c9a36749c7d34c99
+@@ -1,5 +1,6 @@
+ public synchronized void lock(final ORID rid) {
+-    if (!db.lockRecord(rid, reqId))
+-        throw new ODistributedRecordLockedException(rid);
++    final ODistributedRequestId lockHolder = db.lockRecord(rid, reqId);
++    if (lockHolder != null)
++        throw new ODistributedRecordLockedException(rid, lockHolder);
+     acquiredLocks.add(rid);
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/53c121b2f4e22cb61cbd6d8efdc089ff76db3502 b/b31ece3bf973ae059ad193164897bec481cd0a5c
+index 53c121b2f4..b31ece3bf9 100644
+--- a/53c121b2f4e22cb61cbd6d8efdc089ff76db3502
++++ b/b31ece3bf973ae059ad193164897bec481cd0a5c
+@@ -1,4 +1,3 @@
+-protected boolean thereAreUnversionedFiles(final AnActionEvent e) {
+-    final List<VirtualFile> unversionedFiles = getUnversionedFiles(e);
+-    return unversionedFiles != null && !(unversionedFiles.isEmpty());
++private static boolean thereAreUnversionedFiles(AnActionEvent e) {
++    return !getUnversionedFiles(e).isEmpty();
+ }
+\ No newline at end of file

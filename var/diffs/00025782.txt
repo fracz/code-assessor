@@ -1,0 +1,14 @@
+diff --git a/737e45f5b6133d1573da7e50bf5ddbfb40e06735 b/342f689d234ed9fd51688ce055db992a0f0441ba
+index 737e45f5b6..342f689d23 100644
+--- a/737e45f5b6133d1573da7e50bf5ddbfb40e06735
++++ b/342f689d234ed9fd51688ce055db992a0f0441ba
+@@ -1,3 +1,7 @@
+ private void generateId() {
+-    id = "note_" + System.currentTimeMillis() + "_" + new Random(System.currentTimeMillis()).nextInt();
++    // id = "note_"+System.currentTimeMillis()+"_"+new Random(System.currentTimeMillis()).nextInt();
++    /**
++     * This is actually more humain readable
++     */
++    id = IdHashes.encode(System.currentTimeMillis() + new Random(System.currentTimeMillis()).nextInt());
+ }
+\ No newline at end of file

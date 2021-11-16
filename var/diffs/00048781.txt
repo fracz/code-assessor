@@ -1,0 +1,18 @@
+diff --git a/c2d0099132d05660cba2fbb9d2f59c07e1c9ea54 b/fa13f40c0553c19183d59dc1923b2e776410b14e
+index c2d0099132..fa13f40c05 100644
+--- a/c2d0099132d05660cba2fbb9d2f59c07e1c9ea54
++++ b/fa13f40c0553c19183d59dc1923b2e776410b14e
+@@ -1,11 +1,11 @@
+ @Override
+ public void aboutToRun(IJobChangeEvent event) {
+     model.setUpdateInProgress(true);
+-    getControl().getDisplay().asyncExec(new Runnable() {
++    DBeaverUI.asyncExec(new Runnable() {
+
+         @Override
+         public void run() {
+             filtersPanel.enableFilters(false);
+         }
+     });
+ }
+\ No newline at end of file

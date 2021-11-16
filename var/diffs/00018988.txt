@@ -1,0 +1,19 @@
+diff --git a/13df85ccd8a69f4a1b39b89cf22a9f54e02115c6 b/0e1ca084e8ed3580e7ab7abd43ca64642356c453
+index 13df85ccd8..0e1ca084e8 100644
+--- a/13df85ccd8a69f4a1b39b89cf22a9f54e02115c6
++++ b/0e1ca084e8ed3580e7ab7abd43ca64642356c453
+@@ -1,11 +1,11 @@
+-private long createThreadForRecipients(String recipients, int recipientCount) {
++private long createThreadForRecipients(String recipients, int recipientCount, int distributionType) {
+     ContentValues contentValues = new ContentValues(4);
+     long date = System.currentTimeMillis();
+     contentValues.put(DATE, date - date % 1000);
+     contentValues.put(RECIPIENT_IDS, recipients);
+     if (recipientCount > 1)
+-        contentValues.put(TYPE, 1);
++        contentValues.put(TYPE, distributionType);
+     contentValues.put(MESSAGE_COUNT, 0);
+     SQLiteDatabase db = databaseHelper.getWritableDatabase();
+     return db.insert(TABLE_NAME, null, contentValues);
+ }
+\ No newline at end of file

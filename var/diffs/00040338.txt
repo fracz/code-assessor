@@ -1,0 +1,28 @@
+diff --git a/d8027f197255dd44f4fe6b050f367e72a6c56985 b/a92ce9ca8022994a07ab8147ac5ae3e6e3cbf880
+index d8027f1972..a92ce9ca80 100644
+--- a/d8027f197255dd44f4fe6b050f367e72a6c56985
++++ b/a92ce9ca8022994a07ab8147ac5ae3e6e3cbf880
+@@ -1,8 +1,15 @@
+-int sendChunk(ChannelBuffer a) {
+-    int size = a.readableBytes();
+-    String hex = Integer.toHexString(size) + HttpTunnelingClientSocketPipelineSink.LINE_TERMINATOR;
+-    synchronized (writeLock) {
+-        channel.write(new DefaultHttpChunk(a)).awaitUninterruptibly();
+-    }
+-    return size + hex.length() + HttpTunnelingClientSocketPipelineSink.LINE_TERMINATOR.length();
++void sendChunk(ChannelBuffer a, final ChannelFuture future) {
++    final int size = a.readableBytes();
++    channel.write(new DefaultHttpChunk(a)).addListener(new ChannelFutureListener() {
++
++        public void operationComplete(ChannelFuture f) throws Exception {
++            if (f.isSuccess()) {
++                future.setSuccess();
++                fireWriteComplete(HttpTunnelingClientSocketChannel.this, size);
++            } else {
++                future.setFailure(f.getCause());
++                fireExceptionCaught(HttpTunnelingClientSocketChannel.this, f.getCause());
++            }
++        }
++    });
+ }
+\ No newline at end of file

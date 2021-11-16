@@ -1,0 +1,16 @@
+diff --git a/abc6b981c7fecaf257b4985163cae8db317cdc77 b/6fcf67ef21fb5ad561e92b9b9ea2ce1f9aa9f5bb
+index abc6b981c7..6fcf67ef21 100644
+--- a/abc6b981c7fecaf257b4985163cae8db317cdc77
++++ b/6fcf67ef21fb5ad561e92b9b9ea2ce1f9aa9f5bb
+@@ -1,9 +1,9 @@
+ private Node assignExpr(TokenStream ts, boolean inForInit) throws IOException, JavaScriptException {
+-    CodePosition position = getNextTokenPosition(ts);
+     Node pn = condExpr(ts, inForInit);
+     if (ts.matchToken(TokenStream.ASSIGN)) {
+         // omitted: "invalid assignment left-hand side" check.
++        CodePosition position = ts.tokenPosition;
+         pn = nf.createBinary(TokenStream.ASSIGN, ts.getOp(), pn, assignExpr(ts, inForInit), position);
+     }
+     return pn;
+ }
+\ No newline at end of file

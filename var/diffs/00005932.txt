@@ -1,0 +1,17 @@
+diff --git a/3dc99b5d2eca2abea0a4678df929a702c2fbedb4 b/6f90bdaefdf2ae8836a2d1d32d6481001f4e6169
+index 3dc99b5d2e..6f90bdaefd 100644
+--- a/3dc99b5d2eca2abea0a4678df929a702c2fbedb4
++++ b/6f90bdaefdf2ae8836a2d1d32d6481001f4e6169
+@@ -1,6 +1,8 @@
+ @Override
+ protected void perform(XValueNodeImpl node, @NotNull String nodeName, AnActionEvent e) {
+-    final MyDialog dialog = new MyDialog(e.getProject());
+-    dialog.setValue(node);
+-    dialog.show();
++    Project p = e.getProject();
++    if (p != null && node != null && node.getValueContainer() instanceof PyDebugValue && node.isComputed()) {
++        final ViewArrayDialog dialog = new ViewArrayDialog(p, (PyDebugValue) (node.getValueContainer()));
++        dialog.show();
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/3c50dd79ebf408696a6ca6fb688084396ee75408 b/47a394ab6fa44d135cc8a97be6a70a9c64ea4ace
+index 3c50dd79eb..47a394ab6f 100644
+--- a/3c50dd79ebf408696a6ca6fb688084396ee75408
++++ b/47a394ab6fa44d135cc8a97be6a70a9c64ea4ace
+@@ -1,8 +1,9 @@
+ @Test
+ public void testSimplePopulator() throws Exception {
+     final StaticMapExtractionNamespaceCacheFactory factory = new StaticMapExtractionNamespaceCacheFactory();
+     final StaticMapExtractionNamespace namespace = new StaticMapExtractionNamespace(MAP);
+-    final Map<String, String> cache = new HashMap<>();
+-    Assert.assertEquals(factory.getVersion(), factory.populateCache(null, namespace, null, cache));
+-    Assert.assertEquals(MAP, cache);
++    CacheScheduler.VersionedCache versionedCache = factory.populateCache(namespace, null, null, scheduler);
++    Assert.assertNotNull(versionedCache);
++    Assert.assertEquals(factory.getVersion(), versionedCache.getVersion());
++    Assert.assertEquals(MAP, versionedCache.getCache());
+ }
+\ No newline at end of file

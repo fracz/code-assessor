@@ -1,0 +1,17 @@
+diff --git a/bba0c5904ef870d72fa114b055294b6c22f03df7 b/891d6c8c7ecbc463dfc3b97f78046822b5d75413
+index bba0c5904e..891d6c8c7e 100644
+--- a/bba0c5904ef870d72fa114b055294b6c22f03df7
++++ b/891d6c8c7ecbc463dfc3b97f78046822b5d75413
+@@ -1,9 +1,9 @@
+-protected void scanIdentifier() {
++private Token scanIdentifier() {
+     Tokenizer tokenizer = new Tokenizer(input, dictionary, position);
+     if ('`' == currentChar()) {
+         tokenizer.scanContentUntil('`', GeneralLiterals.IDENTIFIER);
+     } else {
+         tokenizer.scanIdentifier();
+     }
+-    setTokenizerResult(tokenizer);
++    return new Token(tokenizer);
+ }
+\ No newline at end of file

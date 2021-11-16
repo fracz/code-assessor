@@ -1,0 +1,22 @@
+diff --git a/44320c6ff00eaeac6ee8bfe8845fe052465eb86c b/f29c62b16961375c888758a53ebf98910496f7c1
+index 44320c6ff0..f29c62b169 100644
+--- a/44320c6ff00eaeac6ee8bfe8845fe052465eb86c
++++ b/f29c62b16961375c888758a53ebf98910496f7c1
+@@ -1,15 +1,7 @@
+ /**
+  * Returns whether or not any layers in this composition has a matte layer.
+  */
+ @SuppressWarnings({ "unused", "WeakerAccess" })
+ public boolean hasMatte() {
+-    for (AnimatableLayer layer : layers) {
+-        if (!(layer instanceof LayerView)) {
+-            continue;
+-        }
+-        if (((LayerView) layer).hasMatte()) {
+-            return true;
+-        }
+-    }
+-    return false;
++    return compositionLayer != null && compositionLayer.hasMatte();
+ }
+\ No newline at end of file

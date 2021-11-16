@@ -1,0 +1,27 @@
+diff --git a/69a15bd60e8ebd7eba05efdcb448406d8d3ff089 b/e6888f3d91201c9566e6f62f3218647c84b18389
+index 69a15bd60e..e6888f3d91 100644
+--- a/69a15bd60e8ebd7eba05efdcb448406d8d3ff089
++++ b/e6888f3d91201c9566e6f62f3218647c84b18389
+@@ -1,10 +1,17 @@
+ public void render() {
+     // first load the cached result
+-    JSONObject result = readCache();
+-    if (result != null) {
+-        renderResult(renderStream(result));
++    try {
++        String cached = FileIO.read(getActivity(), CACHE_FILE);
++        if (cached != null) {
++            JSONObject obj = new JSONObject(cached);
++            renderResult(StreamRenderer.render(obj));
++        }
++    } catch (IOException e) {
++        e.printStackTrace();
++    } catch (JSONException e) {
++        e.printStackTrace();
+     }
+     // TODO figure out why the cached result isn't rendered immediately
+     // if the following line is executed.
+-    fb.request("me/home", new StremRequestListener());
++    fb.request("me/home", new StreamRequestListener());
+ }
+\ No newline at end of file

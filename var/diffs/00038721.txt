@@ -1,0 +1,23 @@
+diff --git a/4f47595b2886f75f3d4cf849c3bcafe700040382 b/032057de714ad541129e9b206f9b54e65e58aa44
+index 4f47595b28..032057de71 100644
+--- a/4f47595b2886f75f3d4cf849c3bcafe700040382
++++ b/032057de714ad541129e9b206f9b54e65e58aa44
+@@ -1,9 +1,14 @@
+ private TxState newTxState() {
+     return new TxState(new OldTxStateBridgeImpl(nodeManager, transactionManager.getTransactionState()), persistenceManager, new TxState.IdGeneration() {
+
+         @Override
+-        public long newSchemaRuleId() {
+-            return neoStore.getSchemaStore().nextId();
++        public long newNodeId() {
++            throw new UnsupportedOperationException("not implemented");
+         }
+-    }, providerMap);
++
++        @Override
++        public long newRelationshipId() {
++            throw new UnsupportedOperationException("not implemented");
++        }
++    });
+ }
+\ No newline at end of file

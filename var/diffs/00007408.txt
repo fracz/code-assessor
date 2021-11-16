@@ -1,0 +1,21 @@
+diff --git a/bd748e41ed7673aedde8a58fb187eeac44e60ac3 b/843c95662b33e990a2b2971f09f3a1ed763b365d
+index bd748e41ed..843c95662b 100644
+--- a/bd748e41ed7673aedde8a58fb187eeac44e60ac3
++++ b/843c95662b33e990a2b2971f09f3a1ed763b365d
+@@ -1,13 +1,12 @@
+ /**
+  * check whether passed container is grid and cellIndex is in proper range
+  */
+ private static void check(@NotNull RadContainer grid, final boolean isRow, final int cellIndex) {
+-    if (!grid.isGrid()) {
++    if (!grid.getLayoutManager().isGrid()) {
+         throw new IllegalArgumentException("container must be grid");
+     }
+-    final GridLayoutManager layout = (GridLayoutManager) grid.getLayout();
+-    final int cellCount = isRow ? layout.getRowCount() : layout.getColumnCount();
++    final int cellCount = isRow ? grid.getGridRowCount() : grid.getGridColumnCount();
+     if (cellIndex < 0 || cellIndex >= cellCount) {
+         throw new IllegalArgumentException("invalid index: " + cellIndex);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/546daf17f8432431e8c3eca4d14ebe436df5a675 b/27059e185582f306cc6fb9f7ea58104cd89fa793
+index 546daf17f8..27059e1855 100644
+--- a/546daf17f8432431e8c3eca4d14ebe436df5a675
++++ b/27059e185582f306cc6fb9f7ea58104cd89fa793
+@@ -1,6 +1,6 @@
+ @Override
+-public IndexDescriptor indexGetForLabelAndPropertyKey(KernelStatement state, int labelId, int propertyKey) {
++public IndexDescriptor indexGetForLabelAndPropertyKey(KernelStatement state, NodePropertyDescriptor descriptor) {
+     acquireSharedSchemaLock(state);
+     state.assertOpen();
+-    return schemaReadDelegate.indexGetForLabelAndPropertyKey(state, labelId, propertyKey);
++    return schemaReadDelegate.indexGetForLabelAndPropertyKey(state, descriptor);
+ }
+\ No newline at end of file

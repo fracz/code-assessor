@@ -1,0 +1,13 @@
+diff --git a/81c7f461ae2084df6b58d71029749965b6c01bd4 b/be23e4a7bfc58c910c2d01f6060e5ccf0db422a5
+index 81c7f461ae..be23e4a7bf 100644
+--- a/81c7f461ae2084df6b58d71029749965b6c01bd4
++++ b/be23e4a7bfc58c910c2d01f6060e5ccf0db422a5
+@@ -1,6 +1,6 @@
+ @Test
+ public void testLogin() {
+-    LoginPage loginPage = new LoginPage(new WebClient());
+     AlbumListPage albumListPage = loginPage.enterUsername("admin").enterPassword("password").login();
++    albumListPage.navigateToPage();
+     assertTrue(albumListPage.isAt());
+ }
+\ No newline at end of file

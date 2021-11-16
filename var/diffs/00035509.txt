@@ -1,0 +1,24 @@
+diff --git a/08bbb4884f5a4b671559dce474247d62b470302a b/dea7e1d9409452f32cf909898c5f79b71de60665
+index 08bbb4884f..dea7e1d940 100644
+--- a/08bbb4884f5a4b671559dce474247d62b470302a
++++ b/dea7e1d9409452f32cf909898c5f79b71de60665
+@@ -1,13 +1,13 @@
+ @Override
+-public int getStatus(final int downloadId) {
+-    int status = FileDownloadStatus.INVALID_STATUS;
+-    if (getService() == null) {
+-        return status;
++public int getStatus(final int id) {
++    if (!isConnected()) {
++        return DownloadServiceNotConnectedHelper.getStatus(id);
+     }
++    int status = FileDownloadStatus.INVALID_STATUS;
+     try {
+-        status = getService().getStatus(downloadId);
++        status = getService().getStatus(id);
+     } catch (RemoteException e) {
+         e.printStackTrace();
+     }
+     return status;
+ }
+\ No newline at end of file

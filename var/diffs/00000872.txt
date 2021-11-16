@@ -1,0 +1,26 @@
+diff --git a/4dd635070d79d16dbd60ba79d036139c37c4e4f7 b/ff9a16545e3fbbe9de6168c1d0256be5bedc5982
+index 4dd635070d..ff9a16545e 100644
+--- a/4dd635070d79d16dbd60ba79d036139c37c4e4f7
++++ b/ff9a16545e3fbbe9de6168c1d0256be5bedc5982
+@@ -1,12 +1,12 @@
+-private void processActiveTab(@NotNull final MTConfig config, @NotNull final FileColorManager fileColorManager, final VirtualFile file, final EditorWindow editorWindow) {
++private void processActiveTab(@NotNull final FileStatusManager fileStatusManager, @NotNull final VirtualFile file, @NotNull final EditorWindow editorWindow) {
+     final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+-    final Color highlightColor = mtTheme.getBorderColor();
++    final MTConfig mtConfig = MTConfig.getInstance();
+     final Color backgroundColor = mtTheme.getBackgroundColor();
+-    if (file != null) {
+-        // setTabHighlightColor(highlightColor, file, editorWindow);
+-        setTabColor(backgroundColor, file, editorWindow);
+-        if (config.getIsBoldTabs()) {
+-            setBoldTabs(config, file, editorWindow);
+-        }
++    FileStatus status = fileStatusManager.getStatus(file);
++    // Set tab color
++    setTabColor(backgroundColor, file, editorWindow, status);
++    // bold tabs
++    if (mtConfig.getIsBoldTabs()) {
++        setBoldTabs(file, editorWindow);
+     }
+ }
+\ No newline at end of file

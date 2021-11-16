@@ -1,0 +1,18 @@
+diff --git a/985a05553c47658697d2dd66a8df9efb7a5bc412 b/e7995abc21c3e0aca1bc5c16ae87cf4be3434ac9
+index 985a05553c..e7995abc21 100644
+--- a/985a05553c47658697d2dd66a8df9efb7a5bc412
++++ b/e7995abc21c3e0aca1bc5c16ae87cf4be3434ac9
+@@ -1,10 +1,11 @@
+ private void runEnterAnimation(final FeedAdapter.CellFeedViewHolder holder) {
+-    holder.itemView.setTranslationY(Utils.getScreenHeight(holder.itemView.getContext()));
++    final int screenHeight = Utils.getScreenHeight(holder.itemView.getContext());
++    holder.itemView.setTranslationY(screenHeight);
+     holder.itemView.animate().translationY(0).setInterpolator(new DecelerateInterpolator(3.f)).setDuration(700).setListener(new AnimatorListenerAdapter() {
+
+         @Override
+         public void onAnimationEnd(Animator animation) {
+             dispatchAddFinished(holder);
+         }
+     }).start();
+ }
+\ No newline at end of file

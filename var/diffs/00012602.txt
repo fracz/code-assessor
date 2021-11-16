@@ -1,0 +1,15 @@
+diff --git a/ca081bd6f89238faa8244160107ec63043d61f35 b/9f78a0c9882f965bc498e3fcb2e6e7b3ff020ef1
+index ca081bd6f8..9f78a0c988 100644
+--- a/ca081bd6f89238faa8244160107ec63043d61f35
++++ b/9f78a0c9882f965bc498e3fcb2e6e7b3ff020ef1
+@@ -1,6 +1,7 @@
+ public void processVariants(@NotNull final PsiScopeProcessor processor) {
+-    for (PsiElement context : getContexts()) {
+-        if (!getFileReferenceContext(context).processVariants(processor))
++    for (PsiFileSystemItem context : getContexts()) {
++        final FileReferenceHelper<PsiFileSystemItem> helper = FileReferenceHelperRegistrar.getHelper(context);
++        if (helper != null && !helper.processVariants(context, processor))
+             return;
+     }
+ }
+\ No newline at end of file

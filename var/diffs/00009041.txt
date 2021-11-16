@@ -1,0 +1,15 @@
+diff --git a/c33b4cd26764bbd65288f05c2ecedb5a280080ab b/63d8f5d9aefda20fcbaa8a223b4d3e020ad0a4b2
+index c33b4cd267..63d8f5d9ae 100644
+--- a/c33b4cd26764bbd65288f05c2ecedb5a280080ab
++++ b/63d8f5d9aefda20fcbaa8a223b4d3e020ad0a4b2
+@@ -1,7 +1,6 @@
+ @Override
+ protected void processResponse(final ProtocolFrame response) throws PyDebuggerException {
+     super.processResponse(response);
+-    final PyDebugValue value = ProtocolParser.parseValue(response.getPayload());
+-    final String name = (myExecute ? "" : myExpression);
+-    myValue = new PyDebugValue(name, value.getType(), value.getValue(), value.isContainer(), value.isErrorOnEval(), null, myDebugProcess);
++    final PyDebugValue value = ProtocolParser.parseValue(response.getPayload(), myDebugProcess);
++    myValue = value.setName((myExecute ? "" : myExpression));
+ }
+\ No newline at end of file

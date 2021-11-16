@@ -1,0 +1,15 @@
+diff --git a/4b392ae4f6c55a1ff1de05fb37177fc6d058ee1c b/2f8c246306a40741472a56377dba93aa4238d8b1
+index 4b392ae4f6..2f8c246306 100644
+--- a/4b392ae4f6c55a1ff1de05fb37177fc6d058ee1c
++++ b/2f8c246306a40741472a56377dba93aa4238d8b1
+@@ -1,8 +1,6 @@
+ @Override
+ public int hashCode() {
+-    int result = width;
++    int result = 31 * super.hashCode() + width;
+     result = 31 * result + height;
+-    result = 31 * result + (scale != +0.0f ? Float.floatToIntBits(scale) : 0);
+-    result = 31 * result + (getJBUIScale() != +0.0f ? Float.floatToIntBits(getJBUIScale()) : 0);
+     return result;
+ }
+\ No newline at end of file

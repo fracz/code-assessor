@@ -1,0 +1,21 @@
+diff --git a/3c8af6d44275515f5ff1b11ea9cdd53ba4b23cae b/b10f01dceb6cbe8a49a1a1dd618a5d62edf0c063
+index 3c8af6d442..b10f01dceb 100644
+--- a/3c8af6d44275515f5ff1b11ea9cdd53ba4b23cae
++++ b/b10f01dceb6cbe8a49a1a1dd618a5d62edf0c063
+@@ -1,10 +1,12 @@
+ int skipComment() {
+-    if ('/' == charAt(offset) && '/' == charAt(offset + 1) || '-' == charAt(offset) && '-' == charAt(offset + 1)) {
++    char currentChar = charAt(offset);
++    char nextChar = charAt(offset + 1);
++    if (isSingleLineCommentBegin(currentChar, nextChar)) {
+         return skipSingleLineComment(2);
+-    } else if ('#' == charAt(offset)) {
++    } else if ('#' == currentChar) {
+         return skipSingleLineComment(1);
+-    } else if ('/' == charAt(offset) && '*' == charAt(offset + 1)) {
++    } else if (isMultipleLineCommentBegin(currentChar, nextChar)) {
+         return skipMultiLineComment();
+     }
+     return offset;
+ }
+\ No newline at end of file

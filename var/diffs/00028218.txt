@@ -1,0 +1,15 @@
+diff --git a/4b750182b5d2a50a80cc7716f2ee0d641db31ce4 b/2b0e53f4022c3efbd43b5bc245098e82cf4361b1
+index 4b750182b5..2b0e53f402 100644
+--- a/4b750182b5d2a50a80cc7716f2ee0d641db31ce4
++++ b/2b0e53f4022c3efbd43b5bc245098e82cf4361b1
+@@ -1,7 +1,6 @@
+ public CaOptions addCertPath(String certPath) throws NullPointerException {
+-    if (certPath == null) {
+-        throw new NullPointerException("No null certificate accepted");
+-    }
++    Objects.requireNonNull(certPath, "No null certificate accepted");
++    Arguments.require(!certPath.isEmpty(), "No empty certificate path accepted");
+     certPaths.add(certPath);
+     return this;
+ }
+\ No newline at end of file

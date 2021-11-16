@@ -1,0 +1,18 @@
+diff --git a/accf7d6ca56c59891a1080a61ef1c6a3dd8b57b7 b/3604bd65f12a3948b5404f6551c3819a0e50c25e
+index accf7d6ca5..3604bd65f1 100644
+--- a/accf7d6ca56c59891a1080a61ef1c6a3dd8b57b7
++++ b/3604bd65f12a3948b5404f6551c3819a0e50c25e
+@@ -1,12 +1,11 @@
+ @Test
+ public void shouldGetAddedLabels() throws Exception {
+     // GIVEN
+-    TxState state = new TxState();
+     state.addLabelToNode(1, 0);
+     state.addLabelToNode(1, 1);
+     state.addLabelToNode(2, 1);
+     // WHEN
+     Set<Long> addedLabels = state.getNodeStateLabelDiffSets(1).getAdded();
+     // THEN
+     assertEquals(asSet(1L, 2L), addedLabels);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/9090f8a9ff7ea652f846fff39cb777da2ba9d7cb b/5a34d9279e206cbcc78a0fdd06ea8a498b4ebaef
+index 9090f8a9ff..5a34d9279e 100644
+--- a/9090f8a9ff7ea652f846fff39cb777da2ba9d7cb
++++ b/5a34d9279e206cbcc78a0fdd06ea8a498b4ebaef
+@@ -1,9 +1,9 @@
+ private void configurationIsAskedForConflictStrategy() {
+     context.checking(new Expectations() {
+
+         {
+             allowing(configurationStub).getVersionConflictStrategy();
+-            will(returnValue(VersionConflictStrategy.LATEST));
++            will(returnValue(new DefaultVersionConflictStrategy()));
+         }
+     });
+ }
+\ No newline at end of file

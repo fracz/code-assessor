@@ -1,0 +1,23 @@
+diff --git a/6f3b0343220006310eb4e810e18ad900c4b33bd4 b/b6516b2ffc12d718fa9e64438ad5c47a74b03344
+index 6f3b034322..b6516b2ffc 100644
+--- a/6f3b0343220006310eb4e810e18ad900c4b33bd4
++++ b/b6516b2ffc12d718fa9e64438ad5c47a74b03344
+@@ -1,13 +1,15 @@
++@Override
+ protected void sendPacket(Object message) {
+     if (message instanceof TBase) {
+         try {
+-            chunkSerializedBuffer.add((TBase<?, ?>) message);
+-            logger.debug("Send packet {message={}}", message);
++            final TBase<?, ?> packet = (TBase<?, ?>) message;
++            chunkHeaderBufferedSerializer.add(packet);
++            logger.debug("Send packet {}", packet);
+         } catch (TException e) {
+             logger.warn("sendPacket fail.", e);
+         }
+     } else {
+         logger.warn("sendPacket fail. invalid type:{}", message != null ? message.getClass() : null);
+         return;
+     }
+ }
+\ No newline at end of file

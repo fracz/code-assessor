@@ -1,0 +1,14 @@
+diff --git a/ea507b3bab55f3030ccb9577bda65ca0c4946a81 b/d24cef6abafa19b17072ccc86392738713061d1f
+index ea507b3bab..d24cef6aba 100644
+--- a/ea507b3bab55f3030ccb9577bda65ca0c4946a81
++++ b/d24cef6abafa19b17072ccc86392738713061d1f
+@@ -1,7 +1,7 @@
+ private MoveProvider getMoveProvider(DataContext dataContext) {
+-    final MoveProvider moveProvider = (MoveProvider) dataContext.getData(MOVE_PROVIDER);
++    final MoveProvider moveProvider = MoveProvider.DATA_KEY.getData(dataContext);
+     if (moveProvider != null) {
+         return moveProvider;
+     }
+     return myDefaultMoveProvider;
+ }
+\ No newline at end of file

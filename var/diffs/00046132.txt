@@ -1,0 +1,17 @@
+diff --git a/0137162508abd0b020d75228e69e2dccd1230fb8 b/c01ecdb958ef18b7ae78e0e3f24e7235560474a6
+index 0137162508..c01ecdb958 100644
+--- a/0137162508abd0b020d75228e69e2dccd1230fb8
++++ b/c01ecdb958ef18b7ae78e0e3f24e7235560474a6
+@@ -1,9 +1,9 @@
+ @Test
+ public void testGroupBySum() {
+     List<Tuple> expected = computeExpected("SELECT orderstatus, SUM(custkey) FROM orders GROUP BY orderstatus", VARIABLE_BINARY, FIXED_INT_64);
+-    BlockStream groupBySource = createBlockStream(ordersData, 2, VARIABLE_BINARY);
+-    BlockStream aggregateSource = createBlockStream(ordersData, 1, FIXED_INT_64);
++    BlockStream groupBySource = createBlockStream(ordersData, Column.ORDER_ORDERSTATUS, VARIABLE_BINARY);
++    BlockStream aggregateSource = createBlockStream(ordersData, Column.ORDER_TOTALPRICE, DOUBLE);
+     GroupByBlockStream groupBy = new GroupByBlockStream(groupBySource);
+     HashAggregationBlockStream aggregation = new HashAggregationBlockStream(groupBy, aggregateSource, SumAggregation.PROVIDER);
+     assertEqualsIgnoreOrder(tuples(aggregation), expected);
+ }
+\ No newline at end of file

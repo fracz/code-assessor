@@ -1,0 +1,21 @@
+diff --git a/dd77f0054442546ca41eba80d674de85a1daee08 b/8c567990e4e4549711d7ed16aff184025a50ed87
+index dd77f00544..8c567990e4 100644
+--- a/dd77f0054442546ca41eba80d674de85a1daee08
++++ b/8c567990e4e4549711d7ed16aff184025a50ed87
+@@ -1,12 +1,14 @@
+ public IFolder getResourceDefaultRoot(IProject project, Class<? extends DBPResourceHandler> handlerType) {
+     if (project == null) {
+         return null;
+     }
+     for (ResourceHandlerDescriptor rhd : handlerDescriptors) {
+         DBPResourceHandler handler = rhd.getHandler();
+         if (handler != null && handler.getClass() == handlerType) {
+-            return project.getFolder(rhd.getDefaultRoot());
++            final IFolder linkFolder = project.getFolder(rhd.getFolderLinkName());
++            final IFolder realFolder = project.getFolder(rhd.getDefaultRoot());
++            return realFolder;
+         }
+     }
+     return project.getFolder(DefaultResourceHandlerImpl.DEFAULT_ROOT);
+ }
+\ No newline at end of file

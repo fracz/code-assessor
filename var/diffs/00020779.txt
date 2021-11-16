@@ -1,0 +1,13 @@
+diff --git a/83a1b8cfd7c180711a4da3673d310668dc8822b8 b/59030c1382b7d1c0c21400a0269fafc0579aeb46
+index 83a1b8cfd7..59030c1382 100644
+--- a/83a1b8cfd7c180711a4da3673d310668dc8822b8
++++ b/59030c1382b7d1c0c21400a0269fafc0579aeb46
+@@ -1,3 +1,6 @@
+ public Map<String, Object> returnJSONBasicStat() {
+-    return ctx.returnJSONBasicStat();
++    Map<String, Object> dataMap = new LinkedHashMap<String, Object>();
++    dataMap.put("Version", VERSION.getVersionNumber());
++    dataMap.put("Drivers", getDriversData());
++    return dataMap;
+ }
+\ No newline at end of file

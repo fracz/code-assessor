@@ -1,0 +1,15 @@
+diff --git a/f9ddee87771fe63158b9956044df526cef65f3e0 b/e2e714be4fba39238357c3c1bd21332342f57318
+index f9ddee8777..e2e714be4f 100644
+--- a/f9ddee87771fe63158b9956044df526cef65f3e0
++++ b/e2e714be4fba39238357c3c1bd21332342f57318
+@@ -1,8 +1,7 @@
+ @Test
+-public void shouldNotSendZeroLengthDataFrameAfterReceivingStatusMessage() {
++public void shouldNotSendZeroLengthDataFrameAfterReceivingStatusMessage() throws Exception {
+     currentTimestamp += TimeUnit.MILLISECONDS.toNanos(Publication.HEARTBEAT_TIMEOUT_MS);
+     publication.onStatusMessage(INITIAL_TERM_ID, 0, 0, rcvAddress);
+     publications.forEach(0, Publication::heartbeatCheck);
+-    receiveAndSaveAllFrames();
+     assertThat(receivedFrames.size(), is(0));
+ }
+\ No newline at end of file

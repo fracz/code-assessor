@@ -1,0 +1,14 @@
+diff --git a/0e268ea9dceee7f95b7c0b33b93e37caca9c275a b/afd9f6b7519660fadc0d05e08ea86fca42d88108
+index 0e268ea9dc..afd9f6b751 100644
+--- a/0e268ea9dceee7f95b7c0b33b93e37caca9c275a
++++ b/afd9f6b7519660fadc0d05e08ea86fca42d88108
+@@ -1,5 +1,7 @@
+ @Test
+ public void shouldReportOnlyTheChangedLineInNewSnippet() {
+-    AppliedFix fix = AppliedFix.fromSource("public class Foo {\n" + "  int 3;\n" + "}").apply(SuggestedFix.prefixWith(new Position(25, 26, null), "three"));
++    when(node.getStartPosition()).thenReturn(25);
++    when(node.getEndPosition(same(endPositions))).thenReturn(26);
++    AppliedFix fix = AppliedFix.fromSource("public class Foo {\n" + "  int 3;\n" + "}", endPositions).apply(new SuggestedFix().prefixWith(node, "three"));
+     assertThat(fix.getNewCodeSnippet().toString(), equalTo("int three3;"));
+ }
+\ No newline at end of file

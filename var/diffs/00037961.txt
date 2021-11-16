@@ -1,0 +1,14 @@
+diff --git a/181ec37cd056cc69a2371dd0ad56491f6d9458a5 b/8d31510249b597e3dcbce85c4d1a6e21714182eb
+index 181ec37cd0..8d31510249 100644
+--- a/181ec37cd056cc69a2371dd0ad56491f6d9458a5
++++ b/8d31510249b597e3dcbce85c4d1a6e21714182eb
+@@ -1,6 +1,6 @@
+-private long getLabelId(HighlyAvailableGraphDatabase db, Label label) throws LabelNotFoundKernelException {
++private static long getLabelId(HighlyAvailableGraphDatabase db, Label label) {
+     try (Transaction ignore = db.beginTx()) {
+-        ThreadToStatementContextBridge bridge = db.getDependencyResolver().resolveDependency(ThreadToStatementContextBridge.class);
++        ThreadToStatementContextBridge bridge = threadToStatementContextBridgeFrom(db);
+         return bridge.instance().readOperations().labelGetForName(label.name());
+     }
+ }
+\ No newline at end of file

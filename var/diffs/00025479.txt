@@ -1,0 +1,27 @@
+diff --git a/a4b3ad91ddfe4ebaac497fada7d887086a7465cd b/9b3b529d5a52699367e762c046ff8a22dd39cdfc
+index a4b3ad91dd..9b3b529d5a 100644
+--- a/a4b3ad91ddfe4ebaac497fada7d887086a7465cd
++++ b/9b3b529d5a52699367e762c046ff8a22dd39cdfc
+@@ -1,13 +1,12 @@
+ @Test(dataProvider = "whenNotYetMarkedAsModifiedData")
+ public void shouldReturnCorrectModifiedTimeEvenWhenNotYetMarkedAsModified(int secondsToAdvance) {
+     // given
+-    Time.startSimulating();
+-    NthLastModifiedTimeTracker tracker = new NthLastModifiedTimeTracker(ANY_NUM_TIMES_TO_TRACK);
+-    // when
+-    advanceSimulatedTimeBy(secondsToAdvance);
+-    int seconds = tracker.secondsSinceOldestModification();
+-    // then
+-    assertThat(seconds).isEqualTo(secondsToAdvance);
+-    // cleanup
+-    Time.stopSimulating();
++    try (SimulatedTime t = new SimulatedTime()) {
++        NthLastModifiedTimeTracker tracker = new NthLastModifiedTimeTracker(ANY_NUM_TIMES_TO_TRACK);
++        // when
++        Time.advanceTimeSecs(secondsToAdvance);
++        int seconds = tracker.secondsSinceOldestModification();
++        // then
++        assertThat(seconds).isEqualTo(secondsToAdvance);
++    }
+ }
+\ No newline at end of file

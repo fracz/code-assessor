@@ -1,0 +1,12 @@
+diff --git a/3351fe8931b277f814ac9417a4dd59ba6051d4c6 b/2fa2be2628892a7407ac7092ae6fd7a4b90bc431
+index 3351fe8931..2fa2be2628 100644
+--- a/3351fe8931b277f814ac9417a4dd59ba6051d4c6
++++ b/2fa2be2628892a7407ac7092ae6fd7a4b90bc431
+@@ -1,4 +1,4 @@
+ public Pair<String, ClassBuilder> forAnonymousSubclass(JetExpression expression) {
+-    String className = injector.getJetTypeMapper().getClosureAnnotator().classNameForAnonymousClass(expression);
+-    return Pair.create(className, factory.forAnonymousSubclass(className));
++    String className = getInjector().getJetTypeMapper().getClosureAnnotator().classNameForAnonymousClass(expression);
++    return Pair.create(className, getFactory().forAnonymousSubclass(className));
+ }
+\ No newline at end of file

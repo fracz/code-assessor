@@ -1,0 +1,24 @@
+diff --git a/0aa84d0e2131483a359320f90f3d4f1933fa4b5e b/079017c8cf94c1db66df5af74be5cda764cd1441
+index 0aa84d0e21..079017c8cf 100644
+--- a/0aa84d0e2131483a359320f90f3d4f1933fa4b5e
++++ b/079017c8cf94c1db66df5af74be5cda764cd1441
+@@ -1,9 +1,13 @@
+-private static Map<DecoratedKey, ColumnFamily> readSchemaForKeyspaces(String schemaTableName, Set<String> keyspaceNames) {
+-    Map<DecoratedKey, ColumnFamily> schema = new HashMap<>();
++private static Map<DecoratedKey, FilteredPartition> readSchemaForKeyspaces(String schemaTableName, Set<String> keyspaceNames) {
++    Map<DecoratedKey, FilteredPartition> schema = new HashMap<>();
+     for (String keyspaceName : keyspaceNames) {
+-        Row schemaEntity = readSchemaPartitionForKeyspace(schemaTableName, keyspaceName);
+-        if (schemaEntity.cf != null)
+-            schema.put(schemaEntity.key, schemaEntity.cf);
++        // We don't to return the RowIterator directly because we should guarantee that this iterator
++        // will be closed, and putting it in a Map make that harder/more awkward.
++        readSchemaPartitionForKeyspaceAndApply(schemaTableName, keyspaceName, partition -> {
++            if (!partition.isEmpty())
++                schema.put(partition.partitionKey(), FilteredPartition.create(partition));
++            return null;
++        });
+     }
+     return schema;
+ }
+\ No newline at end of file

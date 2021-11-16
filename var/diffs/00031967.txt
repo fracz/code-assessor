@@ -1,0 +1,14 @@
+diff --git a/dd4b6bdd6445aded1b695bd3f77a666154c26646 b/9d02de88d45a682cd2c53ee5182ce602647a80a9
+index dd4b6bdd64..9d02de88d4 100644
+--- a/dd4b6bdd6445aded1b695bd3f77a666154c26646
++++ b/9d02de88d45a682cd2c53ee5182ce602647a80a9
+@@ -1,5 +1,6 @@
+ @Override
+ public void process(Node externs, Node root) {
+-    NodeTraversal.traverseRoots(compiler, new GatherCandidates(), externs, root);
+-    NodeTraversal.traverseRoots(compiler, new ReplaceCandidates(), externs, root);
++    // Find and replace the properties in non-extern AST.
++    NodeTraversal.traverse(compiler, root, new GatherCandidates());
++    NodeTraversal.traverse(compiler, root, new ReplaceCandidates());
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/ecd4a138ef7779314357b124e7d5e1c66a486841 b/26627c6785ce55fb7c0dd909eee0ad4c0b4afd79
+index ecd4a138ef..26627c6785 100644
+--- a/ecd4a138ef7779314357b124e7d5e1c66a486841
++++ b/26627c6785ce55fb7c0dd909eee0ad4c0b4afd79
+@@ -1,4 +1,7 @@
+ @Override
+ public Iterable<Edge> getEdges(String key, Object value) {
+-    return new PropertyFilteredIterable<Edge>(key, value, this.getEdges());
++    if (!containsType(key))
++        return IterablesUtil.emptyIterable();
++    else
++        return (Iterable) getEdges(getPropertyKey(key), value);
+ }
+\ No newline at end of file

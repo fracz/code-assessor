@@ -1,0 +1,15 @@
+diff --git a/326b761aefa495144b99e84eea0fb25bdf09e39f b/1c71d33fd5c456488c38c91ca7219ba9ed1604e7
+index 326b761aef..1c71d33fd5 100644
+--- a/326b761aefa495144b99e84eea0fb25bdf09e39f
++++ b/1c71d33fd5c456488c38c91ca7219ba9ed1604e7
+@@ -1,7 +1,7 @@
+ @Override
+-public void train(DoubleMatrix input, double lr, Object[] params) {
++public void train(INDArray input, double lr, Object[] params) {
+     if (visibleType == VisibleUnit.GAUSSIAN)
+-        this.sigma = MatrixUtil.columnVariance(input).divi(input.rows);
++        this.sigma = input.var(1).divi(input.rows());
+     int k = (int) params[0];
+     contrastiveDivergence(lr, k, input);
+ }
+\ No newline at end of file

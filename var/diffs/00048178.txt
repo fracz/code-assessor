@@ -1,0 +1,23 @@
+diff --git a/7917cc5f7aba0b094edad8f1a21b08116d476d5b b/fd652eff0ea1e1dc94909e0f9b2f46bc994a66e0
+index 7917cc5f7a..fd652eff0e 100644
+--- a/7917cc5f7aba0b094edad8f1a21b08116d476d5b
++++ b/fd652eff0ea1e1dc94909e0f9b2f46bc994a66e0
+@@ -1,14 +1,14 @@
+ @Override
+ protected DB2Sequence createDatabaseObject(DBRProgressMonitor monitor, DBECommandContext context, final DB2Schema schema, Object copyFrom) {
+     return new UITask<DB2Sequence>() {
+
+         @Override
+         protected DB2Sequence runTask() {
+-            CreateEntityDialog dialog = new CreateEntityDialog(DBeaverUI.getActiveWorkbenchShell(), schema.getDataSource(), DB2Messages.edit_db2_sequence_manager_dialog_title);
+-            if (dialog.open() != IDialogConstants.OK_ID) {
++            EntityEditPage page = new EntityEditPage(schema.getDataSource(), DBSEntityType.SEQUENCE);
++            if (!EditObjectDialog.showDialog(page)) {
+                 return null;
+             }
+-            return new DB2Sequence(schema, dialog.getEntityName());
++            return new DB2Sequence(schema, page.getEntityName());
+         }
+     }.execute();
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/c462d5a578ab19eafdb7ee7b03861dd562bfeb2b b/f5fe5a431b707d8357a36179eccee2fcfbee8c77
+index c462d5a578..f5fe5a431b 100644
+--- a/c462d5a578ab19eafdb7ee7b03861dd562bfeb2b
++++ b/f5fe5a431b707d8357a36179eccee2fcfbee8c77
+@@ -1,8 +1,8 @@
+ public synchronized void setLastCommittedTx(long txId) {
+     long current = getLastCommittedTx();
+     if ((current + 1) != txId && !isInRecoveryMode()) {
+         throw new InvalidRecordException("Could not set tx commit id[" + txId + "] since the current one is[" + current + "]");
+     }
+-    setRecord(3, txId);
++    setRecord(LATEST_TX_POSITION, txId);
+     lastCommittedTx.set(txId);
+ }
+\ No newline at end of file

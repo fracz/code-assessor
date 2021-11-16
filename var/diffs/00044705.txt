@@ -1,0 +1,23 @@
+diff --git a/a984c639e0e59a81f5e1539c08aa5c86da4010bf b/ef16b498f3dae794a257a10c7009526397e1f9c5
+index a984c639e0..ef16b498f3 100644
+--- a/a984c639e0e59a81f5e1539c08aa5c86da4010bf
++++ b/ef16b498f3dae794a257a10c7009526397e1f9c5
+@@ -1,6 +1,15 @@
+ @Override
+ public int addBlobCluster(String iClusterName, Object... iParameters) {
+-    int id = addCluster(iClusterName, iParameters);
+-    getMetadata().getSchema().addBlobCluster(iClusterName);
++    int id;
++    if (getStorage() instanceof OStorageProxy) {
++        id = command(new OCommandSQL("create blob cluster :1")).execute(iClusterName);
++        getMetadata().getSchema().reload();
++    } else {
++        if (!existsCluster(iClusterName)) {
++            id = addCluster(iClusterName, iParameters);
++        } else
++            id = getClusterIdByName(iClusterName);
++        getMetadata().getSchema().addBlobCluster(id);
++    }
+     return id;
+ }
+\ No newline at end of file

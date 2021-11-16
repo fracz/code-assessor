@@ -1,0 +1,16 @@
+diff --git a/9d84e0e345575904c775065495d5f3d836a37cdc b/a5aba84adfcb624d5527c91690f0d731c172c2dd
+index 9d84e0e345..a5aba84adf 100644
+--- a/9d84e0e345575904c775065495d5f3d836a37cdc
++++ b/a5aba84adfcb624d5527c91690f0d731c172c2dd
+@@ -1,8 +1,8 @@
+ @Override
+-public void notifyStarted() {
++public void notifyStarted(MessageSnapshot snapshot) {
+     if (FileDownloadLog.NEED_LOG) {
+         FileDownloadLog.d(this, "notify started %s", task);
+     }
+     task.ing();
+-    process(FileDownloadStatus.started);
++    process(snapshot);
+ }
+\ No newline at end of file

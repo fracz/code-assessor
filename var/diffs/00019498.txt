@@ -1,0 +1,16 @@
+diff --git a/93fb1fdc16cf101199ba61a0ff3cc351a459f38b b/25667ac19c26af0af36f7653ca54c27fd68c24c6
+index 93fb1fdc16..25667ac19c 100644
+--- a/93fb1fdc16cf101199ba61a0ff3cc351a459f38b
++++ b/25667ac19c26af0af36f7653ca54c27fd68c24c6
+@@ -1,9 +1,7 @@
+ @Override
+ public KeyframeAnimation<Integer> createAnimation() {
+     if (!hasAnimation()) {
+         return new StaticKeyframeAnimation<>(initialValue);
+     }
+-    KeyframeAnimation<Integer> animation = new NumberKeyframeAnimation<>(duration, composition, keyTimes, Integer.class, keyValues, interpolators);
+-    animation.setStartDelay(delay);
+-    return animation;
++    return new NumberKeyframeAnimation<>(keyframes, Integer.class);
+ }
+\ No newline at end of file

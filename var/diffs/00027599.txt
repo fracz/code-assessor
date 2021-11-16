@@ -1,0 +1,14 @@
+diff --git a/0c487334a798f3a89821991fd8eed0987c7abe4b b/b86778f9d209e3d5764d52b4b58dd5ceb29f4258
+index 0c487334a7..b86778f9d2 100644
+--- a/0c487334a798f3a89821991fd8eed0987c7abe4b
++++ b/b86778f9d209e3d5764d52b4b58dd5ceb29f4258
+@@ -1,5 +1,6 @@
+ @Override
+ public void close() throws IOException {
+-    yielder.close();
+-    yielderYielder.close();
++    try (Closeable toClose = yielderYielder) {
++        yielder.close();
++    }
+ }
+\ No newline at end of file

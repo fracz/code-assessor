@@ -1,0 +1,19 @@
+diff --git a/fda1ad4bf11d411e556ae0dc3a6563d39b2448e6 b/61e91d5f01207c2491327dc7905844407f7b83d3
+index fda1ad4bf1..61e91d5f01 100644
+--- a/fda1ad4bf11d411e556ae0dc3a6563d39b2448e6
++++ b/61e91d5f01207c2491327dc7905844407f7b83d3
+@@ -1,11 +1,12 @@
+ public <T> T verify(T mock, VerificationMode mode) {
+     if (mock == null) {
+         throw nullPassedToVerify();
+     }
+     if (!mockUtil.isMock(mock)) {
+         throw notAMockPassedToVerify(mock.getClass());
+     }
+-    VerificationMode actualMode = this.mockingProgress.maybeVerifyLazily(mode);
++    MockingProgress mockingProgress = mockingProgress();
++    VerificationMode actualMode = mockingProgress.maybeVerifyLazily(mode);
+     mockingProgress.verificationStarted(new MockAwareVerificationMode(mock, actualMode));
+     return mock;
+ }
+\ No newline at end of file

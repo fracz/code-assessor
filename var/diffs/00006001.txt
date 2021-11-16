@@ -1,0 +1,18 @@
+diff --git a/a70fa703b3b7109ca90d576ffc65ef79448ccf87 b/d8a49a56fc19b5746fee3e75f56a76ff0baf010a
+index a70fa703b3..d8a49a56fc 100644
+--- a/a70fa703b3b7109ca90d576ffc65ef79448ccf87
++++ b/d8a49a56fc19b5746fee3e75f56a76ff0baf010a
+@@ -1,11 +1,10 @@
+-private RadContainer getContainerToPack(final GuiEditor editor) {
+-    ArrayList<RadComponent> selection = FormEditingUtil.getSelectedComponents(editor);
++private static RadContainer getContainerToPack(final List<RadComponent> selection) {
+     if (selection.size() != 1 || !(selection.get(0) instanceof RadContainer)) {
+         return null;
+     }
+     RadContainer container = (RadContainer) selection.get(0);
+     if (!container.getParent().isXY()) {
+         return null;
+     }
+     return container;
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/86e0c673e0af9aa599c22cbe1e98306314df89c7 b/3a362a77ece8e27118e0752bc45b45bad4641e30
+index 86e0c673e0..3a362a77ec 100644
+--- a/86e0c673e0af9aa599c22cbe1e98306314df89c7
++++ b/3a362a77ece8e27118e0752bc45b45bad4641e30
+@@ -1,9 +1,9 @@
+ @Override
+-public EntityDiagram evaluate() throws InvocationTargetException, InterruptedException {
++public EntityDiagram evaluate(DBRProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+     try {
+-        return loadContentFromFile(getProgressMonitor());
++        return loadContentFromFile(monitor);
+     } catch (DBException e) {
+         log.error(e);
+     }
+     return null;
+ }
+\ No newline at end of file

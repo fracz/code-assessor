@@ -1,0 +1,11 @@
+diff --git a/d26ba01e3bf119334b0cb710e4171ccc096b3aa2 b/c25d458afd5d54808007cea710587b15f5f90bef
+index d26ba01e3b..c25d458afd 100644
+--- a/d26ba01e3bf119334b0cb710e4171ccc096b3aa2
++++ b/c25d458afd5d54808007cea710587b15f5f90bef
+@@ -1,4 +1,4 @@
+ @Override
+ public KeyValueIterator<K, V> range(K from, K to) {
+-    return new MeteredKeyValueIterator<>(this.inner.range(from, to), this.rangeTime);
++    return innerMetered.range(from, to);
+ }
+\ No newline at end of file

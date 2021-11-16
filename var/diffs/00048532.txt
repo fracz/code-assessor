@@ -1,0 +1,19 @@
+diff --git a/93e7568e0a3b7abe2d61973d6d47fe0f8d2e5f7e b/2d4aed8697b55827a2e5fa342b91fc6c6b790db3
+index 93e7568e0a..2d4aed8697 100644
+--- a/93e7568e0a3b7abe2d61973d6d47fe0f8d2e5f7e
++++ b/2d4aed8697b55827a2e5fa342b91fc6c6b790db3
+@@ -1,12 +1,12 @@
+ @Override
+ public void createControl(Composite parent) {
+     Composite placeholder = UIUtils.createPlaceholder(parent, 1);
+-    driverTreeControl = new DriverTreeControl(placeholder);
++    DriverTreeControl driverTreeControl = new DriverTreeControl(placeholder);
+     driverTreeControl.initDrivers(this, wizard.getAvailableProvides(), true);
+     Control control = driverTreeControl.getControl();
+     GridData gd = new GridData(GridData.FILL_BOTH);
+     gd.heightHint = 200;
+     control.setLayoutData(gd);
+     setControl(placeholder);
+     UIUtils.setHelp(placeholder, IHelpContextIds.CTX_CON_WIZARD_DRIVER);
+ }
+\ No newline at end of file

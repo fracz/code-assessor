@@ -1,0 +1,27 @@
+diff --git a/28abc8b1790960a14aea0c7f7310f5f0d00a3ee4 b/dce2fffa53001106d93e416da43c3fe6b8ceeee8
+index 28abc8b179..dce2fffa53 100644
+--- a/28abc8b1790960a14aea0c7f7310f5f0d00a3ee4
++++ b/dce2fffa53001106d93e416da43c3fe6b8ceeee8
+@@ -1,12 +1,14 @@
+ @Override
+-public synchronized void loadState(Element state) {
+-    List<Element> children = state.getChildren("file");
+-    for (Element element : children) {
+-        String url = element.getAttributeValue("url", "");
+-        String status = element.getAttributeValue("status");
+-        VirtualFile file = VirtualFileManager.getInstance().findFileByUrl(url);
++public void loadState(State state) {
++    final VirtualFileManager fileManager = VirtualFileManager.getInstance();
++    if (state.entries == null)
++        return;
++    for (Entry entry : state.entries) {
++        if (entry.url == null || entry.status == null)
++            continue;
++        final VirtualFile file = fileManager.findFileByUrl(entry.url);
+         if (file != null) {
+-            myStatus.put(file, StringUtil.isNotEmpty(status) ? status : ENABLED);
++            myStatus.put(file, entry);
+         }
+     }
+ }
+\ No newline at end of file

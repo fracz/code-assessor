@@ -1,0 +1,12 @@
+diff --git a/f3164352ea675a4e191c7eae942ae5c923a4951f b/6aa94a72ee53fd57d350fc6a31dd597c58849aa9
+index f3164352ea..6aa94a72ee 100644
+--- a/f3164352ea675a4e191c7eae942ae5c923a4951f
++++ b/6aa94a72ee53fd57d350fc6a31dd597c58849aa9
+@@ -1,4 +1,4 @@
+ @Override
+-public AbstractCassandraStoreManager openStorageManager() throws StorageException {
+-    return new AstyanaxStoreManager(CassandraStorageSetup.getGenericCassandraStorageConfiguration(getClass().getSimpleName()));
++public AbstractCassandraStoreManager openStorageManager(Configuration c) throws StorageException {
++    return new AstyanaxStoreManager(c);
+ }
+\ No newline at end of file

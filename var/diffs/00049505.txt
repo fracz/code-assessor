@@ -1,0 +1,18 @@
+diff --git a/075355bbdd9de957669cb27a58718f3ae0bf5bd5 b/39bcb53b0df9c095efee1af34c45687994c50609
+index 075355bbdd..39bcb53b0d 100644
+--- a/075355bbdd9de957669cb27a58718f3ae0bf5bd5
++++ b/39bcb53b0df9c095efee1af34c45687994c50609
+@@ -1,11 +1,11 @@
+ private void initEntityEditor(IDatabaseEditorInput result) {
+     if (result == null) {
+         return;
+     }
+     try {
+         entityEditor.init(entityEditor.getEditorSite(), result);
+         entityEditor.recreateEditorControl();
+     } catch (Exception e) {
+-        UIUtils.showErrorDialog(entityEditor.getSite().getShell(), "Editor init", "Can't initialize editor", e);
++        DBUserInterface.getInstance().showError("Editor init", "Can't initialize editor", e);
+     }
+ }
+\ No newline at end of file

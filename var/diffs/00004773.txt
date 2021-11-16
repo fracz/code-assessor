@@ -1,0 +1,17 @@
+diff --git a/c0f462e1ca0334023867853143d278eb6aab7e9e b/451f0a5a933d216a5f8294145422a28c21413544
+index c0f462e1ca..451f0a5a93 100644
+--- a/c0f462e1ca0334023867853143d278eb6aab7e9e
++++ b/451f0a5a933d216a5f8294145422a28c21413544
+@@ -1,6 +1,10 @@
+ protected void dispose() {
+-    PsiManager.getInstance(myProject).removePsiTreeChangeListener(myPsiListener);
++    for (Runnable runnable : myDisposeRunnables) {
++        runnable.run();
++    }
++    myDisposeRunnables.clear();
++    myEditor.dispose();
+     DebuggerManagerEx.getInstanceEx(myProject).getContextManager().removeListener(myContextListener);
+     myEvaluationPanel.dispose();
+     super.dispose();
+ }
+\ No newline at end of file

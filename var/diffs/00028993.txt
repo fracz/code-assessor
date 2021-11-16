@@ -1,0 +1,26 @@
+diff --git a/a0e3a43e1eeac19a87901c2b8d8c2bba3d2394d6 b/ac0b064565296ae8f45f948301f90404ca76e136
+index a0e3a43e1e..ac0b064565 100644
+--- a/a0e3a43e1eeac19a87901c2b8d8c2bba3d2394d6
++++ b/ac0b064565296ae8f45f948301f90404ca76e136
+@@ -1,12 +1,12 @@
+ @Override
+ public void writeTo(StreamOutput out) throws IOException {
+-    out.writeNamedWriteableList(this.mustClauses);
+-    out.writeNamedWriteableList(this.mustNotClauses);
+-    out.writeNamedWriteableList(this.shouldClauses);
+-    out.writeNamedWriteableList(this.filterClauses);
+-    out.writeFloat(this.boost);
+-    out.writeBoolean(this.adjustPureNegative);
+-    out.writeBoolean(this.disableCoord);
++    out.writeNamedWriteableList(mustClauses);
++    out.writeNamedWriteableList(mustNotClauses);
++    out.writeNamedWriteableList(shouldClauses);
++    out.writeNamedWriteableList(filterClauses);
++    out.writeFloat(boost);
++    out.writeBoolean(adjustPureNegative);
++    out.writeBoolean(disableCoord);
+     out.writeOptionalString(queryName);
+-    out.writeOptionalString(this.minimumShouldMatch);
++    out.writeOptionalString(minimumShouldMatch);
+ }
+\ No newline at end of file

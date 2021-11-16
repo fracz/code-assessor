@@ -1,0 +1,30 @@
+diff --git a/3de9bbfa9eca45b508c657ac99208997e16842fe b/5de9e07aba5b6ee1fe509b34d3918e1d3523bb2a
+index 3de9bbfa9e..5de9e07aba 100644
+--- a/3de9bbfa9eca45b508c657ac99208997e16842fe
++++ b/5de9e07aba5b6ee1fe509b34d3918e1d3523bb2a
+@@ -1,14 +1,14 @@
+ public SQLOrderBy parseOrderBy() {
+-    if (getLexer().equalToken(Token.ORDER)) {
+-        SQLOrderBy orderBy = new SQLOrderBy();
++    if (!getLexer().equalToken(Token.ORDER)) {
++        return null;
++    }
++    SQLOrderBy result = new SQLOrderBy();
++    getLexer().nextToken();
++    accept(Token.BY);
++    result.addItem(parseSelectOrderByItem());
++    while (getLexer().equalToken(Token.COMMA)) {
+         getLexer().nextToken();
+-        accept(Token.BY);
+-        orderBy.addItem(parseSelectOrderByItem());
+-        while (getLexer().equalToken(Token.COMMA)) {
+-            getLexer().nextToken();
+-            orderBy.addItem(parseSelectOrderByItem());
+-        }
+-        return orderBy;
++        result.addItem(parseSelectOrderByItem());
+     }
+-    return null;
++    return result;
+ }
+\ No newline at end of file

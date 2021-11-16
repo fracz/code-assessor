@@ -1,0 +1,19 @@
+diff --git a/36d28b3226385ab5b4ec0eccccb5b3020fb7709d b/6d69a574c1599b22199cacf48bed3b2a093e0a34
+index 36d28b3226..6d69a574c1 100644
+--- a/36d28b3226385ab5b4ec0eccccb5b3020fb7709d
++++ b/6d69a574c1599b22199cacf48bed3b2a093e0a34
+@@ -1,8 +1,7 @@
+ public static long read(ByteBuffer in) {
+-    long value = readPositive(in);
+-    boolean neg = value % 2 == 1;
+-    value = value / 2;
+-    if (neg)
+-        value = -value;
+-    return value;
++    long value = readUnsigned(in);
++    if ((value & 1) == 1)
++        return -(value >>> 1);
++    else
++        return value >>> 1;
+ }
+\ No newline at end of file

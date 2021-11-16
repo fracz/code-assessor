@@ -1,0 +1,17 @@
+diff --git a/d074320e08b1dc8c40465f01d5d5c93d44b08853 b/ebe70eb9c9c15e84321ca1bddda93ad47c5c8fd6
+index d074320e08..ebe70eb9c9 100644
+--- a/d074320e08b1dc8c40465f01d5d5c93d44b08853
++++ b/ebe70eb9c9c15e84321ca1bddda93ad47c5c8fd6
+@@ -1,10 +1,10 @@
+ @Test
+ public void testAutowireWithParent() throws Exception {
+-    XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("autowire.xml", getClass()));
++    XmlBeanFactory xbf = new XmlBeanFactory(AUTOWIRE_CONTEXT);
+     DefaultListableBeanFactory lbf = new DefaultListableBeanFactory();
+     MutablePropertyValues pvs = new MutablePropertyValues();
+     pvs.addPropertyValue("name", "kerry");
+     lbf.registerBeanDefinition("spouse", new RootBeanDefinition(TestBean.class, pvs));
+     xbf.setParentBeanFactory(lbf);
+     doTestAutowire(xbf);
+ }
+\ No newline at end of file

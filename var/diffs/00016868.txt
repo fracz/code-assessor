@@ -1,0 +1,19 @@
+diff --git a/f9bb2d10cf2c9e859421a30da9c8037474c3e0a5 b/60216a516ece9baa535b12300e3125a0cd5e0695
+index f9bb2d10cf..60216a516e 100644
+--- a/f9bb2d10cf2c9e859421a30da9c8037474c3e0a5
++++ b/60216a516ece9baa535b12300e3125a0cd5e0695
+@@ -1,11 +1,8 @@
+ @NotNull
+ public static FunctionDescriptor getFunctionDescriptorForCallExpression(@NotNull BindingContext context, @NotNull JetCallExpression expression) {
+-    // TODO: move to PSI utils
+-    JetExpression calleeExpression = expression.getCalleeExpression();
+-    assert calleeExpression != null;
++    JetExpression calleeExpression = PsiUtils.getCallee(expression);
+     ResolvedCall<?> resolvedCall = getResolvedCall(context, calleeExpression);
+-    // TODO
+-    CallableDescriptor descriptor = resolvedCall.getCandidateDescriptor();
++    CallableDescriptor descriptor = getDescriptorForResolvedCall(resolvedCall);
+     assert descriptor instanceof FunctionDescriptor : "Callee expression must have resolved call with descriptor of type FunctionDescriptor";
+     return (FunctionDescriptor) descriptor;
+ }
+\ No newline at end of file

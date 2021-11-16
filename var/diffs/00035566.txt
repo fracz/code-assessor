@@ -1,0 +1,34 @@
+diff --git a/963cb8a749d6807a5cbb1e5122052d2b9f95cbc9 b/1932d80279c00e1960904b4722fb2b2c6c9081d5
+index 963cb8a749..1932d80279 100644
+--- a/963cb8a749d6807a5cbb1e5122052d2b9f95cbc9
++++ b/1932d80279c00e1960904b4722fb2b2c6c9081d5
+@@ -1,14 +1,20 @@
+-protected Object parseResponse(String responseBody) throws JSONException {
+-    if (null == responseBody)
+-        return null;
++protected Object parseResponse(byte[] responseBody) throws JSONException {
+     Object result = null;
+-    // trim the string to prevent start with blank, and test if the string is valid JSON, because the parser don't do this :(. If Json is not valid this will return null
+-    responseBody = responseBody.trim();
+-    if (responseBody.startsWith("{") || responseBody.startsWith("[")) {
+-        result = new JSONTokener(responseBody).nextValue();
++    String responseBodyText = null;
++    try {
++        responseBodyText = new String(responseBody, "UTF-8");
++    } catch (UnsupportedEncodingException e) {
++        throw new JSONException("Unable to convert response to UTF-8 string");
++    }
++    // trim the string to prevent start with blank, and test if the string
++    // is valid JSON, because the parser don't do this :(. If Json is not
++    // valid this will return null
++    responseBodyText = responseBodyText.trim();
++    if (responseBodyText.startsWith("{") || responseBodyText.startsWith("[")) {
++        result = new JSONTokener(responseBodyText).nextValue();
+     }
+     if (result == null) {
+-        result = responseBody;
++        result = responseBodyText;
+     }
+     return result;
+ }
+\ No newline at end of file

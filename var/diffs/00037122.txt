@@ -1,0 +1,25 @@
+diff --git a/95d521a729373b6613931668714845cef985de2b b/ea77945523bd108aaf2123890a4410259ee3a45c
+index 95d521a729..ea77945523 100644
+--- a/95d521a729373b6613931668714845cef985de2b
++++ b/ea77945523bd108aaf2123890a4410259ee3a45c
+@@ -1,12 +1,12 @@
+ @Test
+ public void threadLocalBindTest() {
+-    final AgentInformation agentInformation = new TestAgentInformation();
+-    DefaultTraceContext traceContext1 = new DefaultTraceContext(agentInformation);
+-    Assert.assertNotNull(traceContext1.newTraceObject());
+-    DefaultTraceContext traceContext2 = new DefaultTraceContext(agentInformation);
++    ProfilerConfig profilerConfig = new DefaultProfilerConfig();
++    TraceContext traceContext = MockTraceContextFactory.newTestTraceContext(profilerConfig);
++    Assert.assertNotNull(traceContext.newTraceObject());
++    TraceContext traceContext2 = MockTraceContextFactory.newTestTraceContext(profilerConfig);
+     Trace notExist = traceContext2.currentRawTraceObject();
+     Assert.assertNull(notExist);
+-    Assert.assertNotNull(traceContext1.currentRawTraceObject());
+-    traceContext1.removeTraceObject();
+-    Assert.assertNull(traceContext1.currentRawTraceObject());
++    Assert.assertNotNull(traceContext.currentRawTraceObject());
++    traceContext.removeTraceObject();
++    Assert.assertNull(traceContext.currentRawTraceObject());
+ }
+\ No newline at end of file

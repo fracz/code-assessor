@@ -1,0 +1,14 @@
+diff --git a/b1b0d59898fc4cc91ed9e8eea90fc8d892b58e3d b/b1af6218aadaac998f1c338ce12bb74a001da9d9
+index b1b0d59898..b1af6218aa 100644
+--- a/b1b0d59898fc4cc91ed9e8eea90fc8d892b58e3d
++++ b/b1af6218aadaac998f1c338ce12bb74a001da9d9
+@@ -1,5 +1,5 @@
+-void addShortcut(@NonNull ShortcutService s, @NonNull ShortcutInfo newShortcut) {
+-    deleteShortcut(s, newShortcut.getId());
+-    s.saveIconAndFixUpShortcut(getPackageUserId(), newShortcut);
++void addShortcut(@NonNull ShortcutInfo newShortcut) {
++    deleteShortcut(newShortcut.getId());
++    mShortcutUser.mService.saveIconAndFixUpShortcut(getPackageUserId(), newShortcut);
+     mShortcuts.put(newShortcut.getId(), newShortcut);
+ }
+\ No newline at end of file

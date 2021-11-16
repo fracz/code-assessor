@@ -1,0 +1,17 @@
+diff --git a/d172cce3e70c3cef53134049aa97a5374674ca86 b/b1fcce5af954d1953085429439b9e3b2b35b66a4
+index d172cce3e7..b1fcce5af9 100644
+--- a/d172cce3e70c3cef53134049aa97a5374674ca86
++++ b/b1fcce5af954d1953085429439b9e3b2b35b66a4
+@@ -1,10 +1,10 @@
+ @Test
+ public void testValue() {
+     process("{source: { content: { value: 'name,surname\nJay,Miner' } }, extractor : { csv: {} }, transformers: [{field: {fieldName:'test', value: 33}}], loader: { test: {} } }");
+     assertEquals(1, getResult().size());
+     ODocument doc = getResult().get(0);
+     assertEquals(3, doc.fields());
+     assertEquals("Jay", doc.field("name"));
+     assertEquals("Miner", doc.field("surname"));
+-    assertEquals(33, doc.<Object>field("test"));
++    assertEquals(doc.<Integer>field("test"), Integer.valueOf(33));
+ }
+\ No newline at end of file

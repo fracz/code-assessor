@@ -1,0 +1,17 @@
+diff --git a/90158a830936fb254287f0713b22e0dd4a56199f b/be466078f4d31e06cf7ec6e424d15fd29c318c03
+index 90158a8309..be466078f4 100644
+--- a/90158a830936fb254287f0713b22e0dd4a56199f
++++ b/be466078f4d31e06cf7ec6e424d15fd29c318c03
+@@ -1,10 +1,9 @@
+ /**
+  * We don't need to explicitly handle refresh visuals because the times when
+  * this needs to be done it is handled by the table e.g. handleNameChange()
+  */
+ @Override
+ protected void refreshVisuals() {
+     ERDEntityAttribute column = (ERDEntityAttribute) getModel();
+-    EditableLabel columnLabel = (EditableLabel) getFigure();
+-    columnLabel.setText(column.getLabelText());
++    getFigure().setText(column.getLabelText());
+ }
+\ No newline at end of file

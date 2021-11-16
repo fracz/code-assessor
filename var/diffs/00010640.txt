@@ -1,0 +1,23 @@
+diff --git a/02d4677d01379949088d0892639bb88ed0aad8cc b/23ae03e84dc662b88846ed0499185655c4431316
+index 02d4677d01..23ae03e84d 100644
+--- a/02d4677d01379949088d0892639bb88ed0aad8cc
++++ b/23ae03e84dc662b88846ed0499185655c4431316
+@@ -1,16 +1,16 @@
+ @Override
+ protected ActionGroup getActionGroup(boolean inToolbar) {
+     final DefaultActionGroup actionGroup = new DefaultActionGroup();
+     if (inToolbar) {
+         // actionGroup.add(new SortByStatusAction("Sort by Status"));
+         actionGroup.add(new MyFilterEnabledAction());
+     // actionGroup.add(new MyFilterBundleAction());
+     } else {
+         actionGroup.add(new RefreshAction());
+-        actionGroup.addAction(new SortByStatusAction("Sort by Status"));
++        actionGroup.addAction(createSortersGroup());
+         actionGroup.add(Separator.getInstance());
+         actionGroup.add(new ActionInstallPlugin(getAvailable(), getInstalled()));
+         actionGroup.add(new UninstallPluginAction(this, pluginTable));
+     }
+     return actionGroup;
+ }
+\ No newline at end of file

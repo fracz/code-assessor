@@ -1,0 +1,23 @@
+diff --git a/82279fe75baee2c1677a14dafaad4032054d54ed b/58d90c78a5d5df00ead7236c53802f93baaa217d
+index 82279fe75b..58d90c78a5 100644
+--- a/82279fe75baee2c1677a14dafaad4032054d54ed
++++ b/58d90c78a5d5df00ead7236c53802f93baaa217d
+@@ -1,14 +1,15 @@
+ /**
+  * Returns the operation log by node and db name
+  *
+  * @param iNodeId
+  * Node id
+  * @param iDatabaseName
+  * Database's name
+  * @return OOperationLog instance
+  */
+ public OOperationLog getOperationLog(final String iNodeId, final String iDatabaseName) {
+-    if (manager.getId().equals(iNodeId))
++    if (manager.itsMe(iNodeId))
+         return localLogs.get(iDatabaseName);
+-    return nodes.get(iNodeId).getDatabase(iDatabaseName).log;
++    final ODistributedNode node = nodes.get(iNodeId);
++    return node != null ? node.getDatabase(iDatabaseName).log : null;
+ }
+\ No newline at end of file

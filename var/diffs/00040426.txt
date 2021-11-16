@@ -1,0 +1,16 @@
+diff --git a/0cf8812d6f2fc05bbbc22d953fc163ca4689f627 b/74fab98d3e9e4a4fcbb227ad984a2f1de5684962
+index 0cf8812d6f..74fab98d3e 100644
+--- a/0cf8812d6f2fc05bbbc22d953fc163ca4689f627
++++ b/74fab98d3e9e4a4fcbb227ad984a2f1de5684962
+@@ -1,6 +1,9 @@
+ /**
+  * Enables logger (if {@link #disableLogging()} was called before)
++ *
++ * @deprecated Use {@link #writeLogs(boolean) writeLogs(true)} instead
+  */
++@Deprecated
+ public static void enableLogging() {
+-    DISABLED = false;
++    writeLogs(true);
+ }
+\ No newline at end of file

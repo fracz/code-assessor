@@ -1,0 +1,23 @@
+diff --git a/bf0b62b2608eef2a984aa89ec0fa7d4245f24edc b/c6fd3a3066cb9b9110342a9880a55cb46ddf2d92
+index bf0b62b260..c6fd3a3066 100644
+--- a/bf0b62b2608eef2a984aa89ec0fa7d4245f24edc
++++ b/c6fd3a3066cb9b9110342a9880a55cb46ddf2d92
+@@ -1,15 +1,15 @@
+ private void parseQueryPartitionClause(ModelColumnClause modelColumnClause) {
+     if (identifierEquals("PARTITION")) {
+         QueryPartitionClause queryPartitionClause = new QueryPartitionClause();
+         lexer.nextToken();
+         accept(Token.BY);
+         if (lexer.token() == Token.LPAREN) {
+             lexer.nextToken();
+-            createExprParser().exprList(queryPartitionClause.getExprList());
++            exprParser.exprList(queryPartitionClause.getExprList());
+             accept(Token.RPAREN);
+         } else {
+-            createExprParser().exprList(queryPartitionClause.getExprList());
++            exprParser.exprList(queryPartitionClause.getExprList());
+         }
+         modelColumnClause.setQueryPartitionClause(queryPartitionClause);
+     }
+ }
+\ No newline at end of file

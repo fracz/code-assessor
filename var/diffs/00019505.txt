@@ -1,0 +1,17 @@
+diff --git a/1fcac075aae5ef2d62920d13db56ddf95abd323f b/fd89402357fe7d962a29bcfd5410d621fe5fa9a6
+index 1fcac075aa..fd89402357 100644
+--- a/1fcac075aae5ef2d62920d13db56ddf95abd323f
++++ b/fd89402357fe7d962a29bcfd5410d621fe5fa9a6
+@@ -1,9 +1,7 @@
+ @Override
+-public KeyframeAnimation<PointF> createAnimation() {
++public BaseKeyframeAnimation<?, PointF> createAnimation() {
+     if (!hasAnimation()) {
+         return new StaticKeyframeAnimation<>(initialPoint);
+     }
+-    KeyframeAnimation<PointF> animation = new PathKeyframeAnimation(duration, composition, keyTimes, animationPath, interpolators);
+-    animation.setStartDelay(delay);
+-    return animation;
++    return new PathKeyframeAnimation(keyframes);
+ }
+\ No newline at end of file

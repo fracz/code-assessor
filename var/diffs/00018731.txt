@@ -1,0 +1,21 @@
+diff --git a/89a13ee12f1a137f8908c9b508b7e79281b4c1eb b/c0e7a3c8c929906ac98c90297b038a7f2a174e74
+index 89a13ee12f..c0e7a3c8c9 100644
+--- a/89a13ee12f1a137f8908c9b508b7e79281b4c1eb
++++ b/c0e7a3c8c929906ac98c90297b038a7f2a174e74
+@@ -1,13 +1,8 @@
++@Override
+ public byte[] getPaddedMessageBody(byte[] messageBody) {
+-    int paddedBodySize;
+-    if (messageBody.length <= ENCRYPTED_SINGLE_MESSAGE_BODY_MAX_SIZE) {
+-        paddedBodySize = ENCRYPTED_SINGLE_MESSAGE_BODY_MAX_SIZE;
+-    } else {
+-        paddedBodySize = getMaxBodySizeForCurrentRecordCount(messageBody.length);
+-    }
++    int paddedBodySize = getMaxBodySizeForBytes(messageBody.length);
+     Log.w("SessionCipher", "Padding message body out to: " + paddedBodySize);
+     byte[] paddedBody = new byte[paddedBodySize];
+-    assert (messageBody.length <= paddedBody.length);
+     System.arraycopy(messageBody, 0, paddedBody, 0, messageBody.length);
+     return paddedBody;
+ }
+\ No newline at end of file

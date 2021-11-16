@@ -1,0 +1,31 @@
+diff --git a/628d6c5350733dc1cf6bcc2d38c69753439af84e b/7906697a73f9f512f1ce030510094aa458141286
+index 628d6c5350..7906697a73 100644
+--- a/628d6c5350733dc1cf6bcc2d38c69753439af84e
++++ b/7906697a73f9f512f1ce030510094aa458141286
+@@ -1,18 +1,22 @@
+-static void setFocus(Controllable player) throws MediaException, InterruptedException {
++static void setFocus(Controllable player) throws MediaException {
+     FocusControl focusControl = (FocusControl) player.getControl("javax.microedition.amms.control.camera.FocusControl");
+     if (focusControl != null) {
+         if (focusControl.isMacroSupported() && !focusControl.getMacro()) {
+             focusControl.setMacro(true);
+         }
+         if (focusControl.isAutoFocusSupported()) {
+             focusControl.setFocus(FocusControl.AUTO);
+-            // let it focus...
+-            Thread.sleep(FOCUS_TIME_MS);
++            try {
++                // let it focus...
++                Thread.sleep(FOCUS_TIME_MS);
++            } catch (InterruptedException ie) {
++            // continue
++            }
+             try {
+                 focusControl.setFocus(FocusControl.AUTO_LOCK);
+             } catch (MediaException me) {
+             // continue; some phones like the SE K850 don't support this?
+             }
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/c9258ac750c9f3f65e771dfd8bc48683293c84ab b/faad1d825b9657c44b28baf3fe4d253c47cab619
+index c9258ac750..faad1d825b 100644
+--- a/c9258ac750c9f3f65e771dfd8bc48683293c84ab
++++ b/faad1d825b9657c44b28baf3fe4d253c47cab619
+@@ -1,9 +1,9 @@
+ public void addEntry(HistoryEntry entry) {
+     for (HistoryEntry entry2 : _futureEntries) {
+         entry2.delete();
+     }
+-    _futureEntries.clear();
+-    _pastEntries.add(entry);
+     entry.apply(ProjectManager.singleton.getProject(_projectID));
++    _pastEntries.add(entry);
++    _futureEntries.clear();
+     setModified();
+ }
+\ No newline at end of file

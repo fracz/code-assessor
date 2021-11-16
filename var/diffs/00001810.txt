@@ -1,0 +1,26 @@
+diff --git a/7f5545a20538356851d9ca3b9d0e761761b92bcb b/402981f5304c569bd3e9d24d7d2b6d609fe604b3
+index 7f5545a205..402981f530 100644
+--- a/7f5545a20538356851d9ca3b9d0e761761b92bcb
++++ b/402981f5304c569bd3e9d24d7d2b6d609fe604b3
+@@ -1,14 +1,10 @@
+ public void testRenamePackage() throws Exception {
+-    final PerformAction action = new PerformAction() {
+-
+-        @Override
+-        public void performAction(VirtualFile rootDir, VirtualFile rootAfter) throws Exception {
+-            final JavaPsiFacade psiFacade = JavaPsiFacade.getInstance(myProject);
+-            final PsiPackage sourcePackage = psiFacade.findPackage("pack1");
+-            assertNotNull(sourcePackage);
+-            RenamePsiPackageProcessor.createRenameMoveProcessor("pack1.pack2", sourcePackage, false, false).run();
+-            FileDocumentManager.getInstance().saveAllDocuments();
+-        }
++    final PerformAction action = (rootDir, rootAfter) -> {
++        final JavaPsiFacade psiFacade = JavaPsiFacade.getInstance(myProject);
++        final PsiPackage sourcePackage = psiFacade.findPackage("pack1");
++        assertNotNull(sourcePackage);
++        RenamePsiPackageProcessor.createRenameMoveProcessor("pack1.pack2", sourcePackage, false, false).run();
++        FileDocumentManager.getInstance().saveAllDocuments();
+     };
+     doTest(action);
+ }
+\ No newline at end of file

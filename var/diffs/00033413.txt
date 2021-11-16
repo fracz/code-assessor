@@ -1,0 +1,24 @@
+diff --git a/3420a9b146c49199818fddc9462270cc2cea691f b/0c73cf4306ddec303b8d7abc8b003a3f74e474b4
+index 3420a9b146..0c73cf4306 100644
+--- a/3420a9b146c49199818fddc9462270cc2cea691f
++++ b/0c73cf4306ddec303b8d7abc8b003a3f74e474b4
+@@ -1,11 +1,9 @@
+-public List<DaemonStatus> getAll() {
+-    List<DaemonStatus> out = new LinkedList<DaemonStatus>();
+-    List<File> files = getAllFiles();
+-    for (File file : files) {
+-        DaemonStatus daemonStatus = openRegistry(file).get();
+-        if (daemonStatus != null) {
+-            out.add(daemonStatus);
+-        }
++public synchronized List<DaemonStatus> getAll() {
++    // TODO SF ugly
++    if (!daemonDir.getRegistry().exists()) {
++        return new LinkedList<DaemonStatus>();
+     }
+-    return out;
++    DaemonRegistryFile file = registry();
++    // TODO SF ugly
++    return new LinkedList(file.getDaemonStatuses());
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/ee20576fb563b71e5978846612a294092a3085fa b/82da9fcdde15c6473a299589e0661a48bc59591b
+index ee20576fb5..82da9fcdde 100644
+--- a/ee20576fb563b71e5978846612a294092a3085fa
++++ b/82da9fcdde15c6473a299589e0661a48bc59591b
+@@ -1,3 +1,8 @@
+-public boolean affects(Entry e) {
+-    return e.getIdPath().startsWith(myAffectedIdPath);
++@Override
++public boolean affects(IdPath... pp) {
++    for (IdPath p : pp) {
++        if (p.startsWith(myAffectedIdPath))
++            return true;
++    }
++    return false;
+ }
+\ No newline at end of file

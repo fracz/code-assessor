@@ -1,0 +1,40 @@
+diff --git a/94272fcb21727011f58ab05ef4fd2bea4f274d19 b/1280ec503b5caac8d5aae31d6755a02e5742b7d6
+index 94272fcb21..1280ec503b 100644
+--- a/94272fcb21727011f58ab05ef4fd2bea4f274d19
++++ b/1280ec503b5caac8d5aae31d6755a02e5742b7d6
+@@ -1,17 +1,20 @@
+-public synchronized void setMasterSecret(final MasterSecret masterSecret) {
+-    this.masterSecret = masterSecret;
+-    foregroundService();
+-    broadcastNewSecret();
+-    startTimeoutIfAppropriate();
+-    new AsyncTask<Void, Void, Void>() {
++public void setMasterSecret(final MasterSecret masterSecret) {
++    synchronized (KeyCachingService.class) {
++        KeyCachingService.masterSecret = masterSecret;
++        foregroundService();
++        broadcastNewSecret();
++        startTimeoutIfAppropriate();
++        new AsyncTask<Void, Void, Void>() {
+
+-        @Override
+-        protected Void doInBackground(Void... params) {
+-            if (!DatabaseUpgradeActivity.isUpdate(KeyCachingService.this)) {
+-                DecryptingQueue.schedulePendingDecrypts(KeyCachingService.this, masterSecret);
+-                MessageNotifier.updateNotification(KeyCachingService.this, masterSecret);
++            @Override
++            protected Void doInBackground(Void... params) {
++                if (!DatabaseUpgradeActivity.isUpdate(KeyCachingService.this)) {
++                    // DecryptingQueue.schedulePendingDecrypts(KeyCachingService.this, masterSecret);
++                    ApplicationContext.getInstance(KeyCachingService.this).getJobManager().setEncryptionKeys(new EncryptionKeys(ParcelUtil.serialize(masterSecret)));
++                    MessageNotifier.updateNotification(KeyCachingService.this, masterSecret);
++                }
++                return null;
+             }
+-            return null;
+-        }
+-    }.execute();
++        }.execute();
++    }
+ }
+\ No newline at end of file

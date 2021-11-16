@@ -1,0 +1,16 @@
+diff --git a/a11e7eaf053dc55c91a95369415f58f33c5f924f b/b8a01d661fcbf257165243d0ab45837e4a7cf8d0
+index a11e7eaf05..b8a01d661f 100644
+--- a/a11e7eaf053dc55c91a95369415f58f33c5f924f
++++ b/b8a01d661fcbf257165243d0ab45837e4a7cf8d0
+@@ -1,6 +1,7 @@
+ /**
+- * Set the search locations that will be considered.
++ * Set the search locations that will be considered as a comma-separated list.
+  */
+-public void setSearchLocations(String[] searchLocations) {
+-    this.searchLocations = (searchLocations == null ? null : searchLocations.clone());
++public void setSearchLocations(String locations) {
++    Assert.hasLength(locations, "Locations must not be empty");
++    this.searchLocations = locations;
+ }
+\ No newline at end of file

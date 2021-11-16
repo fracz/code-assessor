@@ -1,0 +1,18 @@
+diff --git a/9335fce523c319ed38a2389a739f78b1987d0df4 b/54b0c9b24f7ba7e9f9688c8f8d6d3852c8468244
+index 9335fce523..54b0c9b24f 100644
+--- a/9335fce523c319ed38a2389a739f78b1987d0df4
++++ b/54b0c9b24f7ba7e9f9688c8f8d6d3852c8468244
+@@ -1,10 +1,7 @@
+ public JBTabs setPaintBorder(int top, int left, int right, int bottom) {
+-    if (myTopBorderSize == top && myLeftBorderSize == left && myRightBorderSize == right && myBottomBorderSize == bottom)
++    if (myBorderSize.top == top && myBorderSize.left == left && myBorderSize.right == right && myBorderSize.bottom == bottom)
+         return this;
+-    myTopBorderSize = getBorder(top);
+-    myLeftBorderSize = getBorder(left);
+-    myRightBorderSize = getBorder(right);
+-    myBottomBorderSize = getBorder(bottom);
++    myBorderSize = new Insets(getBorder(top), getBorder(left), getBorder(bottom), getBorder(right));
+     revalidateAndRepaint(false);
+     return this;
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/1d0fcd4e02c993cb5542d2aeab8bb34c91c7d9ee b/06205b529515582ccdde7662ffe342fe5e4b8c31
+index 1d0fcd4e02..06205b5295 100644
+--- a/1d0fcd4e02c993cb5542d2aeab8bb34c91c7d9ee
++++ b/06205b529515582ccdde7662ffe342fe5e4b8c31
+@@ -1,14 +1,13 @@
+ @Override
+ public void close() throws StorageException {
+-    boolean ok = false;
+     closeInvocationCounter.inc();
+-    final Timer.Context tc = closeTimer.time();
++    Timer.Context tc = closeTimer.time();
+     try {
+         backend.close();
+-        ok = true;
++    } catch (StorageException e) {
++        closeFailureCounter.inc();
++        throw e;
+     } finally {
+         tc.stop();
+-        if (!ok)
+-            closeFailureCounter.inc();
+     }
+ }
+\ No newline at end of file

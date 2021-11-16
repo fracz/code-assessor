@@ -1,0 +1,10 @@
+diff --git a/2e7a6d074407edd00d7b23bdc15245132f59104b b/3d25cfa3c08d73b56d56eef7c9766bef4b1ba66f
+index 2e7a6d0744..3d25cfa3c0 100644
+--- a/2e7a6d074407edd00d7b23bdc15245132f59104b
++++ b/3d25cfa3c08d73b56d56eef7c9766bef4b1ba66f
+@@ -1,3 +1,3 @@
+ public Object getData(String dataId) {
+-    return dataId.equals(DataConstants.EDITOR) ? myEditor : super.getData(dataId);
++    return PlatformDataKeys.EDITOR.is(dataId) ? myEditor : super.getData(dataId);
+ }
+\ No newline at end of file

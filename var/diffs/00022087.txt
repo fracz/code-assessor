@@ -1,0 +1,24 @@
+diff --git a/c641929ac000ee69ead9571b88b151628813a8d8 b/f42400ee89c6494a30e30ba1b7914ee2f1deda54
+index c641929ac0..f42400ee89 100644
+--- a/c641929ac000ee69ead9571b88b151628813a8d8
++++ b/f42400ee89c6494a30e30ba1b7914ee2f1deda54
+@@ -1,16 +1,17 @@
+ public void onScaleEnd(ScaleGestureDetector detector) {
+     if (mPinchToZoomAnimating) {
+         mPinchToZoomAnimating = false;
+-        mWebView.setViewSizeAnchor(mWebView.viewToContentX((int) mZoomCenterX + mWebView.getScrollX()), mWebView.viewToContentY((int) mZoomCenterY + mWebView.getScrollY()));
++        mAnchorX = mWebView.viewToContentX((int) mZoomCenterX + mWebView.getScrollX());
++        mAnchorY = mWebView.viewToContentY((int) mZoomCenterY + mWebView.getScrollY());
+         // don't reflow when zoom in; when zoom out, do reflow if the
+         // new scale is almost minimum scale;
+         boolean reflowNow = !canZoomOut() || (mActualScale <= 0.8 * mTextWrapScale);
+         // force zoom after mPreviewZoomOnly is set to false so that the
+         // new view size will be passed to the WebKit
+         refreshZoomScale(reflowNow);
+         // call invalidate() to draw without zoom filter
+         mWebView.invalidate();
+     }
+     mWebView.mViewManager.endZoom();
+     mWebView.onPinchToZoomAnimationEnd(detector);
+ }
+\ No newline at end of file

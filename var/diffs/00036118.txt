@@ -1,0 +1,17 @@
+diff --git a/b0bb3141f8a766fde1453191456b5fe57d098ce7 b/333f00f8f06f65fde3f27b90f9f0fcbc0a2a3ff0
+index b0bb3141f8..333f00f8f0 100644
+--- a/b0bb3141f8a766fde1453191456b5fe57d098ce7
++++ b/333f00f8f06f65fde3f27b90f9f0fcbc0a2a3ff0
+@@ -1,9 +1,4 @@
+ private static String readNow(InputStream is) throws IOException {
+-    BufferedReader r = new BufferedReader(new InputStreamReader(is));
+-    StringBuilder sb = new StringBuilder();
+-    String line;
+-    while (null != (line = r.readLine())) {
+-        sb.append(line).append("\n");
+-    }
+-    return sb.toString();
++    java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
++    return s.hasNext() ? s.next() : "";
+ }
+\ No newline at end of file

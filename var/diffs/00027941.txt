@@ -1,0 +1,27 @@
+diff --git a/650a3601dfff1020a2fbb7559415b5984ac68b3a b/c3a0e10a42d0391fd0ad8396ae4d604cc92e11ad
+index 650a3601df..c3a0e10a42 100644
+--- a/650a3601dfff1020a2fbb7559415b5984ac68b3a
++++ b/c3a0e10a42d0391fd0ad8396ae4d604cc92e11ad
+@@ -1,18 +1,8 @@
+-/**
+- * Show file content from specified revision or branch.
+- *
+- * @param request
+- * request that contains file name with its full path and revision or branch
+- * @return response that contains content of the file
+- * @throws ApiException
+- * when some error occurred while retrieving the content of the file
+- */
++@GET
+ @Path("show")
+-@POST
+-@Consumes(MediaType.APPLICATION_JSON)
+ @Produces({ MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN })
+-public ShowFileContentResponse showFileContent(ShowFileContentRequest request) throws ApiException {
++public ShowFileContentResponse showFileContent(@QueryParam("file") String file, @QueryParam("version") String version) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+-        return gitConnection.showFileContent(request);
++        return gitConnection.showFileContent(file, version);
+     }
+ }
+\ No newline at end of file

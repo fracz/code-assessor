@@ -1,0 +1,18 @@
+diff --git a/fac07e265f255677bf6b8f37811a20ff9e03e19f b/2cc4127ea2656e8893922dabd48250193d7579c9
+index fac07e265f..2cc4127ea2 100644
+--- a/fac07e265f255677bf6b8f37811a20ff9e03e19f
++++ b/2cc4127ea2656e8893922dabd48250193d7579c9
+@@ -1,11 +1,11 @@
+ /**
+  * Goes to the user list screen.
+  *
+  * @param context A Context needed to open the destiny activity.
+  */
+ public void navigateToUserList(Context context) {
+     if (context != null) {
+-        Intent intentToLaunch = createIntentToLaunch(context, UserListActivity.class);
++        Intent intentToLaunch = UserListActivity.getCallingIntent(context);
+         context.startActivity(intentToLaunch);
+     }
+ }
+\ No newline at end of file

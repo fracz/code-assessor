@@ -1,0 +1,15 @@
+diff --git a/64c38fd80f6800b242153d0f94ec39f3705cff94 b/ca8c80fd927003d5e321395e1d5cb8719bf0fb98
+index 64c38fd80f..ca8c80fd92 100644
+--- a/64c38fd80f6800b242153d0f94ec39f3705cff94
++++ b/ca8c80fd927003d5e321395e1d5cb8719bf0fb98
+@@ -1,7 +1,7 @@
+ @Before
+ public void setUp() {
+     graph = new OrientGraph("memory:OETLBaseTest");
+     graph.setUseLightweightEdges(false);
+-    proc = new OETLProcessor();
+-    proc.getFactory().registerLoader(OETLStubLoader.class);
++    OETLComponentFactory factory = new OETLComponentFactory().registerLoader(OETLStubLoader.class).registerExtractor(OETLStubRandomExtractor.class);
++    configurator = new OETLProcessorConfigurator(factory);
+ }
+\ No newline at end of file

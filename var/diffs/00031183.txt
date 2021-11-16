@@ -1,0 +1,17 @@
+diff --git a/6b0af2b0aa2aaca0e783d469dab68e20bce33989 b/52b0a4b6de0662b9f910f3687e27a4953726b396
+index 6b0af2b0aa..52b0a4b6de 100644
+--- a/6b0af2b0aa2aaca0e783d469dab68e20bce33989
++++ b/52b0a4b6de0662b9f910f3687e27a4953726b396
+@@ -1,7 +1,7 @@
+ @Override
+-public InternalAggregation buildAggregation(long owningBucketOrdinal) {
+-    if (valuesSource == null) {
+-        return new InternalSum(name, 0, formatter, metaData());
++public InternalAggregation buildAggregation(long bucket) {
++    if (valuesSource == null || bucket >= sums.size()) {
++        return buildEmptyAggregation();
+     }
+-    return new InternalSum(name, sums.get(owningBucketOrdinal), formatter, metaData());
++    return new InternalSum(name, sums.get(bucket), formatter, metaData());
+ }
+\ No newline at end of file

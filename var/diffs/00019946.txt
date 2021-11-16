@@ -1,0 +1,18 @@
+diff --git a/32e4970ebc9b0d086d569c0ff3e40c8b91065b9d b/b7ab1ada4ffde5b3ba97df5d41698800fbbad764
+index 32e4970ebc..b7ab1ada4f 100644
+--- a/32e4970ebc9b0d086d569c0ff3e40c8b91065b9d
++++ b/b7ab1ada4ffde5b3ba97df5d41698800fbbad764
+@@ -1,7 +1,11 @@
+ @Override
+ public ResultSetMetaData resultSet_getMetaData(ResultSetProxy resultSet) throws SQLException {
+     if (this.pos < filterSize) {
+         return nextFilter().resultSet_getMetaData(this, resultSet);
+     }
+-    return wrap(resultSet.getResultSetRaw().getMetaData(), resultSet);
++    ResultSetMetaData metaData = resultSet.getResultSetRaw().getMetaData();
++    if (metaData == null) {
++        return null;
++    }
++    return new ResultSetMetaDataProxyImpl(metaData, dataSource.createMetaDataId(), resultSet);
+ }
+\ No newline at end of file

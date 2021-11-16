@@ -1,0 +1,14 @@
+diff --git a/cc82b2e1545bd1610b5dd50b7d451c6dcd232c8c b/2288246797890552f4d2adac1131bda5471bffdf
+index cc82b2e154..2288246797 100644
+--- a/cc82b2e1545bd1610b5dd50b7d451c6dcd232c8c
++++ b/2288246797890552f4d2adac1131bda5471bffdf
+@@ -1,6 +1,6 @@
+-private void generateSingleBranchIf(JetExpression expression, boolean inverse) {
++private void generateSingleBranchIf(StackValue condition, JetExpression expression, boolean inverse) {
+     Label endLabel = new Label();
+-    myStack.pop().condJump(endLabel, inverse, v);
++    condition.condJump(endLabel, inverse, v);
+     gen(expression, Type.VOID_TYPE);
+     v.mark(endLabel);
+ }
+\ No newline at end of file

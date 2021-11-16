@@ -1,0 +1,22 @@
+diff --git a/f8dacbdb98d24fbefa21d8baefc07f1222b109be b/07458f0193f268d53aa7c5e6b06f0c09cf1ba07d
+index f8dacbdb98..07458f0193 100644
+--- a/f8dacbdb98d24fbefa21d8baefc07f1222b109be
++++ b/07458f0193f268d53aa7c5e6b06f0c09cf1ba07d
+@@ -1,7 +1,11 @@
+-public static void dropDatabase(String dbName, OMode mode, String password) throws Exception {
+-    if (mode == OMode.PLOCAL || mode == OMode.MEMORY) {
+-        openDatabase(mode, getDatabaseUrl(dbName, mode), null).drop();
+-    } else if (mode == OMode.REMOTE) {
+-        new OServerAdmin("remote:localhost:2424").connect("root", password).dropDatabase(dbName, "plocal");
++public static void dropDatabase(ODatabaseIdentifier databaseIdentifier) throws Exception {
++    switch(databaseIdentifier.getMode()) {
++        case PLOCAL:
++        case MEMORY:
++            openDatabase(databaseIdentifier).drop();
++            break;
++        case REMOTE:
++            new OServerAdmin(databaseIdentifier.getUrl()).connect("root", databaseIdentifier.getPassword()).dropDatabase(databaseIdentifier.getName(), "plocal");
++            break;
+     }
+ }
+\ No newline at end of file

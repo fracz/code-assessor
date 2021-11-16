@@ -1,0 +1,13 @@
+diff --git a/78cbd3cb028ed65bd576f38358f9169c53c3e781 b/35be644523a7ed3a9589a888e3f0967896e84091
+index 78cbd3cb02..35be644523 100644
+--- a/78cbd3cb028ed65bd576f38358f9169c53c3e781
++++ b/35be644523a7ed3a9589a888e3f0967896e84091
+@@ -1,6 +1,5 @@
+ private RepositoryTransportWagonAdapter createAdapter(String protocol, MavenArtifactRepository artifactRepository, RepositoryTransportFactory repositoryTransportFactory) {
+-    Credentials credentials = ((AuthenticationSupportedInternal) artifactRepository).getConfiguredCredentials();
+-    RepositoryTransport transport = repositoryTransportFactory.createTransport(protocol, artifactRepository.getName(), credentials, artifactRepository.getAuthentication());
++    RepositoryTransport transport = repositoryTransportFactory.createTransport(protocol, artifactRepository.getName(), ((AuthenticationSupportedInternal) artifactRepository).getConfiguredAuthentication());
+     URI rootUri = artifactRepository.getUrl();
+     return new RepositoryTransportWagonAdapter(transport, rootUri);
+ }
+\ No newline at end of file

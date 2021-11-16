@@ -1,0 +1,16 @@
+diff --git a/7738c53990d0db9c834aac137b7bdfd9b014c370 b/27e9cab89ba839377bcdddb5dfcef919f8d0dd6a
+index 7738c53990..27e9cab89b 100644
+--- a/7738c53990d0db9c834aac137b7bdfd9b014c370
++++ b/27e9cab89ba839377bcdddb5dfcef919f8d0dd6a
+@@ -1,6 +1,8 @@
+ public void init(float density) {
+-    DEFAULT_MAX_ZOOM_SCALE = 4.0f * density;
+-    DEFAULT_MIN_ZOOM_SCALE = 0.25f * density;
++    setDefaultZoomScale(density);
+     mMaxZoomScale = DEFAULT_MAX_ZOOM_SCALE;
+     mMinZoomScale = DEFAULT_MIN_ZOOM_SCALE;
++    mActualScale = density;
++    mInvActualScale = 1 / density;
++    mTextWrapScale = density;
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/35324cc2e605e28714335d5fb09b35efeccf8330 b/0853e75a0e6abf4518a84a6b989480b9bbe49cde
+index 35324cc2e6..0853e75a0e 100644
+--- a/35324cc2e605e28714335d5fb09b35efeccf8330
++++ b/0853e75a0e6abf4518a84a6b989480b9bbe49cde
+@@ -1,12 +1,11 @@
+ @Override
+ public void itemSelected(LookupEvent event) {
+     final LookupElement item = event.getItem();
+     if (item != null) {
+         final PsiElement element = myStartElement.getElement();
+         final Object object = item.getObject();
+-        if (element != null && object instanceof List) {
+-            @SuppressWarnings("unchecked") final List<String> signature = (List<String>) object;
+-            WriteAction.run(() -> applyFix(project, element, signature));
++        if (element != null && object instanceof ReflectiveSignature) {
++            WriteAction.run(() -> applyFix(project, element, (ReflectiveSignature) object));
+         }
+     }
+ }
+\ No newline at end of file

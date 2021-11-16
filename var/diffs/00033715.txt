@@ -1,0 +1,14 @@
+diff --git a/f0ab4377c78e9379519e0960bf8df253dbd90e33 b/17c26582bba9ca18b65d7c13c9814e587f078c80
+index f0ab4377c7..17c26582bb 100644
+--- a/f0ab4377c78e9379519e0960bf8df253dbd90e33
++++ b/17c26582bba9ca18b65d7c13c9814e587f078c80
+@@ -1,7 +1,7 @@
+ private static void storeModificationTime(TarEntry entry, long lastModified) {
+     // This will be divided by 1000 internally
+     entry.setModTime(lastModified);
+     // Store excess nanoseconds in group ID
+-    long excessNanos = (lastModified % 1000) * 1000 * 1000;
++    long excessNanos = TimeUnit.MILLISECONDS.toNanos(lastModified % 1000);
+     entry.setGroupId(excessNanos);
+ }
+\ No newline at end of file

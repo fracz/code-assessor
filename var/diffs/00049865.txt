@@ -1,0 +1,15 @@
+diff --git a/24e8b2780d1e174704caaa07995f6486437570c0 b/7691a40ca251cf948b3ee939cfe752a9fd99327f
+index 24e8b2780d..7691a40ca2 100644
+--- a/24e8b2780d1e174704caaa07995f6486437570c0
++++ b/7691a40ca251cf948b3ee939cfe752a9fd99327f
+@@ -1,8 +1,8 @@
+ @Nullable
+ @Override
+ public Object getAdapter(Class adapter) {
+     if (adapter == DBSStructureAssistant.class) {
+         return new OracleStructureAssistant(this);
+     }
+-    return null;
++    return super.getAdapter(adapter);
+ }
+\ No newline at end of file

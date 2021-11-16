@@ -1,0 +1,18 @@
+diff --git a/9645ead6a070b6fc151a53188b45bb59c0af0ccb b/0ae5064530490e7acf961a01550130d925d9489b
+index 9645ead6a0..0ae5064530 100644
+--- a/9645ead6a070b6fc151a53188b45bb59c0af0ccb
++++ b/0ae5064530490e7acf961a01550130d925d9489b
+@@ -1,9 +1,11 @@
+ @Override
+ public void start(Callback<WsAgentComponent, Exception> callback) {
+     callback.onSuccess(this);
+     if (partStack == null || !partStack.containsPart(this)) {
+         workspaceAgent.openPart(this, NAVIGATION, LAST);
+     }
+     refreshView();
+-    commandManager.addCommandChangedListener(this);
++    eventBus.addHandler(CommandAddedEvent.getType(), e -> refreshView());
++    eventBus.addHandler(CommandRemovedEvent.getType(), e -> refreshView());
++    eventBus.addHandler(CommandUpdatedEvent.getType(), e -> refreshView());
+ }
+\ No newline at end of file

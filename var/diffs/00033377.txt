@@ -1,0 +1,24 @@
+diff --git a/3ffd38dc24f573cd51f2a9996886a6afbe80cbd2 b/57cca1d57bdc23a1f5e3cbcb61d06c853996d8e6
+index 3ffd38dc24..57cca1d57b 100644
+--- a/3ffd38dc24f573cd51f2a9996886a6afbe80cbd2
++++ b/57cca1d57bdc23a1f5e3cbcb61d06c853996d8e6
+@@ -1,15 +1,14 @@
+ private static GradleProvider findGradleInstallFromGradleRunner() {
+-    GradleDistributionLocator gradleDistributionLocator = new DefaultGradleDistributionLocator(GradleRunner.class);
+-    File gradleHome = gradleDistributionLocator.getGradleHome();
+-    if (gradleHome == null) {
++    GradleInstallation gradleInstallation = CurrentGradleInstallation.get();
++    if (gradleInstallation == null) {
+         String messagePrefix = "Could not find a Gradle installation to use based on the location of the GradleRunner class";
+         try {
+             File classpathForClass = ClasspathUtil.getClasspathForClass(GradleRunner.class);
+             messagePrefix += ": " + classpathForClass.getAbsolutePath();
+         } catch (Exception ignore) {
+         // ignore
+         }
+         throw new InvalidRunnerConfigurationException(messagePrefix + ". Please specify a Gradle runtime to use via GradleRunner.withGradleVersion() or similar.");
+     }
+-    return GradleProvider.installation(gradleHome);
++    return GradleProvider.installation(gradleInstallation.getGradleHome());
+ }
+\ No newline at end of file

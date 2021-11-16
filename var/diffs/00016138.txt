@@ -1,0 +1,18 @@
+diff --git a/1884926b98053748098f8482bd6d276c4634edf5 b/9b8687709a9fc2b1937d9883989577a39422e5d2
+index 1884926b98..9b8687709a 100644
+--- a/1884926b98053748098f8482bd6d276c4634edf5
++++ b/9b8687709a9fc2b1937d9883989577a39422e5d2
+@@ -1,9 +1,6 @@
+ public static boolean isExpressionWithValidReference(@NotNull JetExpression expression, @NotNull BindingContext context) {
+-    if (!(expression instanceof JetReferenceExpression)) {
+-        return false;
++    if (expression instanceof JetCallExpression) {
++        return isCallExpressionWithValidReference(expression, context);
+     }
+-    if (!(expression instanceof JetCallExpression)) {
+-        return true;
+-    }
+-    return isCallExpressionWithValidReference(expression, context);
++    return expression instanceof JetReferenceExpression;
+ }
+\ No newline at end of file

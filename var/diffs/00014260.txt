@@ -1,0 +1,14 @@
+diff --git a/c71c2b2cc926f53ad91f2f352eae0ed964bea33a b/ba2f08602f3de227a552b0b93930071651c2d03e
+index c71c2b2cc9..ba2f08602f 100644
+--- a/c71c2b2cc926f53ad91f2f352eae0ed964bea33a
++++ b/ba2f08602f3de227a552b0b93930071651c2d03e
+@@ -1,4 +1,6 @@
+-public String buildErrorString(Object arg) {
+-    final String className = ((PsiNamedElement) arg).getName();
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiNamedElement element = (PsiNamedElement) infos[0];
++    final String className = element.getName();
+     return InspectionGadgetsBundle.message("feature.envy.problem.descriptor", className);
+ }
+\ No newline at end of file

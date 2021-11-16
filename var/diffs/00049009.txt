@@ -1,0 +1,19 @@
+diff --git a/fef60e8a8a267de85ef34b1f9f60ef818d738d51 b/9fb119fce3b314953fae1be3cafddb19fb426bcc
+index fef60e8a8a..9fb119fce3 100644
+--- a/fef60e8a8a267de85ef34b1f9f60ef818d738d51
++++ b/9fb119fce3b314953fae1be3cafddb19fb426bcc
+@@ -1,10 +1,11 @@
+ synchronized void readNextSegment() {
+     if (!dataReceiver.isHasMoreData()) {
+         return;
+     }
+-    if (getDataContainer() != null && !model.isUpdateInProgress() && dataPumpJob == null) {
++    DBSDataContainer dataContainer = getDataContainer();
++    if (dataContainer != null && !model.isUpdateInProgress() && dataPumpJob == null) {
+         dataReceiver.setHasMoreData(false);
+         dataReceiver.setNextSegmentRead(true);
+-        runDataPump(getDataContainer(), null, model.getRowCount(), getSegmentMaxRows(), -1, null);
++        runDataPump(dataContainer, null, model.getRowCount(), getSegmentMaxRows(), -1, null);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/39b67bf952ea16e94eca60f55fbb8d2f95d2bdb2 b/3076045695b5faab504cfa411b91c5edf6621e00
+index 39b67bf952..3076045695 100644
+--- a/39b67bf952ea16e94eca60f55fbb8d2f95d2bdb2
++++ b/3076045695b5faab504cfa411b91c5edf6621e00
+@@ -1,5 +1,5 @@
+ // returns if expanding finished
+-public static boolean interpret(List<Token> tokens, int startIndex, CustomTemplateCallback callback, State initialState, String surroundedText, TemplateInvokationListener listener) {
+-    XmlZenCodingInterpreter interpreter = new XmlZenCodingInterpreter(tokens, startIndex, callback, initialState, surroundedText, listener);
+-    return interpreter.invoke(startIndex);
++public static void interpret(List<Token> tokens, int startIndex, CustomTemplateCallback callback, State initialState, String surroundedText) {
++    XmlZenCodingInterpreter interpreter = new XmlZenCodingInterpreter(tokens, callback, initialState, surroundedText);
++    interpreter.invoke(startIndex);
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/72721604c894004737c7fa5d8c4e4127cd7f3786 b/46063daf48c4fe942a6ce40eebda6092c97807cf
+index 72721604c8..46063daf48 100644
+--- a/72721604c894004737c7fa5d8c4e4127cd7f3786
++++ b/46063daf48c4fe942a6ce40eebda6092c97807cf
+@@ -1,11 +1,12 @@
+ private WriteResult tryDeleteLockOnce(StaticBuffer key, StaticBuffer col, StoreTransaction txh) {
+     Throwable t = null;
+     final long before = times.getApproxNSSinceEpoch();
+     try {
+-        store.mutate(key, ImmutableList.<Entry>of(), Arrays.asList(col), overrideTimestamp(txh, before));
++        StoreTransaction newTx = overrideTimestamp(txh, before);
++        store.mutate(key, ImmutableList.<Entry>of(), Arrays.asList(col), newTx);
+     } catch (StorageException e) {
+         t = e;
+     }
+     final long after = times.getApproxNSSinceEpoch();
+     return new WriteResult(before, after, null, t);
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/0815b184f08fb96801f619a6de93b5215a470b3e b/35c4c1e535d9f1e1df3fd1b30daf612752932427
+index 0815b184f0..35c4c1e535 100644
+--- a/0815b184f08fb96801f619a6de93b5215a470b3e
++++ b/35c4c1e535d9f1e1df3fd1b30daf612752932427
+@@ -1,6 +1,5 @@
+-private TachyonFile createEmptyFile(TachyonURI fileURI) throws IOException, TachyonException {
+-    OutStreamOptions options = new OutStreamOptions.Builder(new TachyonConf()).setTachyonStorageType(TachyonStorageType.STORE).setUnderStorageType(UnderStorageType.NO_PERSIST).build();
+-    FileOutStream os = mTfs.getOutStream(fileURI, options);
++private void createEmptyFile(TachyonURI fileURI) throws IOException, TachyonException {
++    CreateFileOptions options = CreateFileOptions.defaults().setWriteType(WriteType.MUST_CACHE);
++    FileOutStream os = mTfs.createFile(fileURI, options);
+     os.close();
+-    return mTfs.open(fileURI);
+ }
+\ No newline at end of file

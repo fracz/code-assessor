@@ -1,0 +1,21 @@
+diff --git a/8c72154f6f44d5482d45c8089af40bd96ecd4eba b/a3f63eb7ac88d112d541cb8b674b7838bd36b02b
+index 8c72154f6f..a3f63eb7ac 100644
+--- a/8c72154f6f44d5482d45c8089af40bd96ecd4eba
++++ b/a3f63eb7ac88d112d541cb8b674b7838bd36b02b
+@@ -1,13 +1,13 @@
+ /**
+  * Acquire a network channel from the pool. Don't lock the write stream since the connection usage is exclusive.
+  *
+  * @param iCommand
+  * id. Ids described at {@link OChannelBinaryProtocol}
++ * @param session
+  * @return connection to server
+  * @throws IOException
+  */
+-public OChannelBinaryAsynchClient beginRequest(final OChannelBinaryAsynchClient network, final byte iCommand) throws IOException {
+-    OStorageRemoteSession session = getCurrentSession();
++public OChannelBinaryAsynchClient beginRequest(final OChannelBinaryAsynchClient network, final byte iCommand, OStorageRemoteSession session) throws IOException {
+     network.beginRequest(iCommand, session);
+     return network;
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/1686e35d74f016f88d06519bc5e552fac39f3c92 b/b7719e9f65ed2679ec933eab3ab4e53c9d2f033e
+index 1686e35d74..b7719e9f65 100644
+--- a/1686e35d74f016f88d06519bc5e552fac39f3c92
++++ b/b7719e9f65ed2679ec933eab3ab4e53c9d2f033e
+@@ -1,16 +1,16 @@
+ @Override
+-public List<MySQLPrivilege> evaluate() throws InvocationTargetException, InterruptedException {
++public List<MySQLPrivilege> evaluate(DBRProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+     try {
+-        final List<MySQLPrivilege> privList = getDatabaseObject().getDataSource().getPrivilegesByKind(getProgressMonitor(), MySQLPrivilege.Kind.ADMIN);
++        final List<MySQLPrivilege> privList = getDatabaseObject().getDataSource().getPrivilegesByKind(monitor, MySQLPrivilege.Kind.ADMIN);
+         for (Iterator<MySQLPrivilege> iterator = privList.iterator(); iterator.hasNext(); ) {
+             MySQLPrivilege priv = iterator.next();
+             // Remove proxy (it is not singleton)
+             if (priv.getName().equalsIgnoreCase("proxy")) {
+                 iterator.remove();
+             }
+         }
+         return privList;
+     } catch (DBException e) {
+         throw new InvocationTargetException(e);
+     }
+ }
+\ No newline at end of file

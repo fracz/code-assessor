@@ -1,0 +1,19 @@
+diff --git a/efe3342d770ab62cff594ec8acab3fb8721cd39f b/def11e8b7c47adf907ea718a1aba3fd72b6423af
+index efe3342d77..def11e8b7c 100644
+--- a/efe3342d770ab62cff594ec8acab3fb8721cd39f
++++ b/def11e8b7c47adf907ea718a1aba3fd72b6423af
+@@ -1,12 +1,12 @@
+ /**
+  * Deletes the directory at the given path if it exists.
+  *
+  * @param path path to the directory
+  * @throws IOException if the directory cannot be deleted
+  */
+ public static void deleteDirIfExists(final String path) throws IOException {
+     UnderFileSystem ufs = UnderFileSystem.get(path);
+-    if (ufs.isDirectory(path) && !ufs.deleteDirectory(path, new DeleteOptions().setRecursive(true))) {
++    if (ufs.isDirectory(path) && !ufs.deleteDirectory(path, DeleteOptions.defaults().setRecursive(true))) {
+         throw new IOException("Folder " + path + " already exists but can not be deleted.");
+     }
+ }
+\ No newline at end of file

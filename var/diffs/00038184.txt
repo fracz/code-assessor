@@ -1,0 +1,23 @@
+diff --git a/82c463dbaec1f007504122245b8cfeb629c146da b/92ce913024b3e8a2d0f3a969bec0336418bd7b4d
+index 82c463dbae..92ce913024 100644
+--- a/82c463dbaec1f007504122245b8cfeb629c146da
++++ b/92ce913024b3e8a2d0f3a969bec0336418bd7b4d
+@@ -1,15 +1,14 @@
+ @Test
+ public void cacheEntryShouldBePurgedWhenApplied() throws Throwable {
+-    // given a cache in submitApplyJob, the contents of the cache should only contain unapplied "things"
+-    applicationProcess.start();
++    // given
+     inFlightMap.put(0L, new RaftLogEntry(0, operation(nullTx)));
+     inFlightMap.put(1L, new RaftLogEntry(0, operation(nullTx)));
+     inFlightMap.put(2L, new RaftLogEntry(0, operation(nullTx)));
+     // when
+     applicationProcess.notifyCommitted(0);
+-    applier.sync(false);
++    applicationProcess.start();
+     // then the cache should have had its get method called.
+     assertNull(inFlightMap.get(0L));
+     assertNotNull(inFlightMap.get(1L));
+     assertNotNull(inFlightMap.get(2L));
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/8085f5bb0f8fddfccb3fb51e419d5b9af8b40264 b/f5459f1bcedeb29d43a43b08554710c3698832af
+index 8085f5bb0f..f5459f1bce 100644
+--- a/8085f5bb0f8fddfccb3fb51e419d5b9af8b40264
++++ b/f5459f1bcedeb29d43a43b08554710c3698832af
+@@ -1,13 +1,13 @@
+ public void testProvisionExceptionsAreWrappedForBindToProviderType() {
+     try {
+         Guice.createInjector(new AbstractModule() {
+
+             protected void configure() {
+                 bind(F.class).toProvider(FProvider.class);
+             }
+         }).getInstance(F.class);
+         fail();
+     } catch (ProvisionException e) {
+-        assertContains(e.getMessage(), "1) User Exception", "at " + ProvisionExceptionTest.class.getName(), ".configure(ProvisionExceptionTest.java");
++        assertContains(e.getMessage(), "1) User Exception", "at binding for ", FProvider.class.getName(), ".class(ProvisionExceptionTest.java", "at binding for ", F.class.getName(), ".class(ProvisionExceptionTest.java:");
+     }
+ }
+\ No newline at end of file

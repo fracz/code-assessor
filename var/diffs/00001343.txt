@@ -1,0 +1,22 @@
+diff --git a/d6ff0e3d241edb809e5d13c4b53bf96107d70b7b b/60cf7faae1f0cb92bcfcd5f835ca309cd5a5a269
+index d6ff0e3d24..60cf7faae1 100644
+--- a/d6ff0e3d241edb809e5d13c4b53bf96107d70b7b
++++ b/60cf7faae1f0cb92bcfcd5f835ca309cd5a5a269
+@@ -1,12 +1,8 @@
+ @Override
+ public void initToolBar() {
+-    mToolbar.setNavigationIcon(R.drawable.action_button_back_pressed_light);
+     mToolbar.setTitle("游戏中心");
+-    mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+-
+-        @Override
+-        public void onClick(View v) {
+-            finish();
+-        }
+-    });
++    setSupportActionBar(mToolbar);
++    ActionBar actionBar = getSupportActionBar();
++    if (actionBar != null)
++        actionBar.setDisplayHomeAsUpEnabled(true);
+ }
+\ No newline at end of file

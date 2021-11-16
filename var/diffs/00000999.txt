@@ -1,0 +1,16 @@
+diff --git a/2b5edbe724f9860237f99f1575355c191dab428e b/74e4cb9e389d28f243c34106481711e098552df5
+index 2b5edbe724..74e4cb9e38 100644
+--- a/2b5edbe724f9860237f99f1575355c191dab428e
++++ b/74e4cb9e389d28f243c34106481711e098552df5
+@@ -1,5 +1,7 @@
+ @Subscribe
+-public void handleLookupTableUpdate(LookupTablesUpdated event) {
+-    // TODO use executor and call initialize/update/start or similar on lookup table
+-    event.lookupTableNames().forEach(name -> updateTable(name, lookupTables.get(name)));
++public void handleLookupTableUpdate(LookupTablesUpdated updated) {
++    scheduler.schedule(() -> {
++        // load the DTO, and recreate the table
++        updated.lookupTableIds().forEach(id -> dbTables.get(id).map(this::createLookupTable));
++    }, 0, TimeUnit.SECONDS);
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/06edb04dd7bcf59eb29e5a989f35336b0c3be032 b/cc1ae40ba7071d7b8072b8080a1b97bb33160914
+index 06edb04dd7..cc1ae40ba7 100644
+--- a/06edb04dd7bcf59eb29e5a989f35336b0c3be032
++++ b/cc1ae40ba7071d7b8072b8080a1b97bb33160914
+@@ -1,9 +1,11 @@
+ @Override
+-public boolean containsValue(Object value) {
+-    RedisConnection<Object, Object> connection = connectionManager.connectionReadOp();
+-    try {
+-        return connection.hvals(getName()).contains(value);
+-    } finally {
+-        connectionManager.releaseRead(connection);
+-    }
++public boolean containsValue(final Object value) {
++    List<V> list = connectionManager.read(new ResultOperation<List<V>, V>() {
++
++        @Override
++        public Future<List<V>> execute(RedisAsyncConnection<Object, V> async) {
++            return async.hvals(getName());
++        }
++    });
++    return list.contains(value);
+ }
+\ No newline at end of file

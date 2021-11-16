@@ -1,0 +1,21 @@
+diff --git a/ca76791dfeaf253282520a6ebdcf558f881ca6f6 b/b08795314bf79cecde459ce449c1f181eb72ecf5
+index ca76791dfe..b08795314b 100644
+--- a/ca76791dfeaf253282520a6ebdcf558f881ca6f6
++++ b/b08795314bf79cecde459ce449c1f181eb72ecf5
+@@ -1,12 +1,12 @@
+ /* (non-Javadoc)
+ 	 * @see android.view.ViewGroup#fitSystemWindows(android.graphics.Rect)
+ 	 */
+ @Override
+ protected boolean fitSystemWindows(Rect insets) {
+     int leftPadding = getPaddingLeft() + insets.left;
+     int rightPadding = getPaddingRight() + insets.right;
+-    int topPadding = insets.top;
+-    int bottomPadding = insets.bottom;
++    int topPadding = getPaddingTop() + insets.top;
++    int bottomPadding = getPaddingBottom() + insets.bottom;
+     this.setPadding(leftPadding, topPadding, rightPadding, bottomPadding);
+-    return super.fitSystemWindows(insets);
++    return true;
+ }
+\ No newline at end of file

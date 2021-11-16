@@ -1,0 +1,25 @@
+diff --git a/702418147d76968f6ef9c916cee317d1623ae847 b/fe70296da2c816a9a0daed94e2ae047b9ee31d20
+index 702418147d..fe70296da2 100644
+--- a/702418147d76968f6ef9c916cee317d1623ae847
++++ b/fe70296da2c816a9a0daed94e2ae047b9ee31d20
+@@ -1,11 +1,10 @@
+ public void write(DataOutput out) throws IOException {
+-    if (compactedCf != null) {
+-        DataOutputBuffer buffer = new DataOutputBuffer();
+-        DataOutputBuffer headerBuffer = new DataOutputBuffer();
+-        ColumnIndexer.serialize(compactedCf, headerBuffer);
+-        ColumnFamily.serializer().serializeForSSTable(compactedCf, buffer);
+-        out.writeLong(headerBuffer.getLength() + buffer.getLength());
+-        out.write(headerBuffer.getData(), 0, headerBuffer.getLength());
+-        out.write(buffer.getData(), 0, buffer.getLength());
+-    }
++    assert compactedCf != null;
++    DataOutputBuffer buffer = new DataOutputBuffer();
++    DataOutputBuffer headerBuffer = new DataOutputBuffer();
++    ColumnIndexer.serialize(compactedCf, headerBuffer);
++    ColumnFamily.serializer().serializeForSSTable(compactedCf, buffer);
++    out.writeLong(headerBuffer.getLength() + buffer.getLength());
++    out.write(headerBuffer.getData(), 0, headerBuffer.getLength());
++    out.write(buffer.getData(), 0, buffer.getLength());
+ }
+\ No newline at end of file

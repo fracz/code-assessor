@@ -1,0 +1,14 @@
+diff --git a/55b45a0224ede435617e8da931b200e5193bc8b4 b/ccaf00c0b8c39d1e49ad59c15be157383158a3f0
+index 55b45a0224..ccaf00c0b8 100644
+--- a/55b45a0224ede435617e8da931b200e5193bc8b4
++++ b/ccaf00c0b8c39d1e49ad59c15be157383158a3f0
+@@ -1,3 +1,6 @@
+-private static HighlightInfo warning(int start, int end, String description) {
+-    return new HighlightInfo(HighlightInfoType.WARNING, start, end, description, null);
++private static HighlightInfo warning(int start, int end, @NotNull String description) {
++    HighlightInfo.Builder builder = HighlightInfo.newHighlightInfo(HighlightInfoType.WARNING);
++    builder.range(start, end);
++    builder.descriptionAndTooltip(description);
++    return builder.create();
+ }
+\ No newline at end of file

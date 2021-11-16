@@ -1,0 +1,16 @@
+diff --git a/1fb199bfd0278df39aacc4017a08f8496ec87b0c b/7c0e01807973c0507206d9c7b80c9d5efc3d9038
+index 1fb199bfd0..7c0e018079 100644
+--- a/1fb199bfd0278df39aacc4017a08f8496ec87b0c
++++ b/7c0e01807973c0507206d9c7b80c9d5efc3d9038
+@@ -1,9 +1,8 @@
+ private void initRS() {
+     FullscreenBlur.createRenderTargets(mRS, mWidth, mHeight);
+     // Reflection maps from SD card
+     mEnvCube = new TextureCube("sdcard/scenegraph/", "cube_env.png");
+     mDiffCube = new TextureCube("sdcard/scenegraph/", "cube_spec.png");
+     initPaintShaders();
+-    ScriptC_render renderLoop = mSceneManager.getRenderLoop();
+-    mLoadingScreen.setRenderLoop(renderLoop);
++    mLoadingScreen.setRenderLoop(mSceneManager.getRenderLoop());
+ }
+\ No newline at end of file

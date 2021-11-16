@@ -1,0 +1,17 @@
+diff --git a/20de85f49c9f27788094d5591b29ba3e6060a327 b/4aa2d6fb157b92d968b9ca7b73eff98a86f4547b
+index 20de85f49c..4aa2d6fb15 100644
+--- a/20de85f49c9f27788094d5591b29ba3e6060a327
++++ b/4aa2d6fb157b92d968b9ca7b73eff98a86f4547b
+@@ -1,4 +1,9 @@
+ @Override
+-public LookupResult get(Object key) {
+-    return getLookupTable().dataAdapter().get(key);
++public LookupResult get(LookupCacheKey key, Callable<LookupResult> loader) {
++    try {
++        return loader.call();
++    } catch (Exception e) {
++        LOG.warn("Loading value from data adapter failed for key {}, returning empty result", key, e);
++        return LookupResult.empty();
++    }
+ }
+\ No newline at end of file

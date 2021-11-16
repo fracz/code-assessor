@@ -1,0 +1,41 @@
+diff --git a/362e2f91177504b270bb0001d6191a56698c09c8 b/dbeeedec7cc69ee9343bd31b5c7919398fca9e49
+index 362e2f9117..dbeeedec7c 100644
+--- a/362e2f91177504b270bb0001d6191a56698c09c8
++++ b/dbeeedec7cc69ee9343bd31b5c7919398fca9e49
+@@ -1,22 +1,20 @@
+ @Nullable
+ @Override
+ protected ValidationInfo doValidate() {
+-    switch(myButtonEnumModel.getSelected()) {
+-        case CREATE_BRANCH:
+-            String branchName = myBranchName.getText().trim();
+-            if (branchName.isEmpty()) {
+-                return new ValidationInfo("Branch name should not be empty", myBranchName);
+-            } else if (branchName.contains(" ")) {
+-                return new ValidationInfo("Branch name should not contain spaces");
+-            } else {
+-                return null;
+-            }
+-        case CREATE_CHANGELIST:
+-            if (myChangelistName.getText().trim().isEmpty()) {
+-                return new ValidationInfo("Changelist name should not be empty");
+-            }
+-        case DO_NOTHING:
++    if (myCreateBranchJBCheckBox.isSelected()) {
++        String branchName = myBranchName.getText().trim();
++        if (branchName.isEmpty()) {
++            return new ValidationInfo("Branch name should not be empty", myBranchName);
++        } else if (branchName.contains(" ")) {
++            return new ValidationInfo("Branch name should not contain spaces");
++        } else {
+             return null;
++        }
++    }
++    if (myCreateChangelistJBCheckBox.isSelected()) {
++        if (myChangelistName.getText().trim().isEmpty()) {
++            return new ValidationInfo("Changelist name should not be empty");
++        }
+     }
+     return null;
+ }
+\ No newline at end of file

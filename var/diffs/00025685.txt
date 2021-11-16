@@ -1,0 +1,14 @@
+diff --git a/0560d665eb79209101081bf8a0a4ee5845b7fcdd b/52400153378e064b537ec10dda3b14f5a6c1d07c
+index 0560d665eb..5240015337 100644
+--- a/0560d665eb79209101081bf8a0a4ee5845b7fcdd
++++ b/52400153378e064b537ec10dda3b14f5a6c1d07c
+@@ -1,5 +1,5 @@
+ @Override
+-public void prepare(Map stormConf, TopologyContext context, OutputCollector collector) {
+-    init(context, collector);
+-    bolt.prepare(stormConf, context, this.collector);
++public void prepare(Map stormConf, TopologyContext context, OutputCollector outputCollector) {
++    init(context, new AnchoringOutputCollector(outputCollector));
++    bolt.prepare(stormConf, context, collector);
+ }
+\ No newline at end of file

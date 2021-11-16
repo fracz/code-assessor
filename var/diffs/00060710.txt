@@ -1,0 +1,20 @@
+diff --git a/cc76ac3182e73ef4f992d8074cb0886f7098e437 b/e5a8cf45d337fe80b5eea53b71fde4cd8ec4d51f
+index cc76ac3182..e5a8cf45d3 100644
+--- a/cc76ac3182e73ef4f992d8074cb0886f7098e437
++++ b/e5a8cf45d337fe80b5eea53b71fde4cd8ec4d51f
+@@ -1,12 +1,12 @@
+ private static void embedVerticalSeparationPattern(int xStart, int yStart, ByteMatrix matrix) throws WriterException {
+     // We know the width and height.
+     if (VERTICAL_SEPARATION_PATTERN[0].length != 1 || VERTICAL_SEPARATION_PATTERN.length != 7) {
+         throw new WriterException("Bad vertical separation pattern");
+     }
+     for (int y = 0; y < 7; ++y) {
+-        if (!isEmpty(matrix.get(yStart + y, xStart))) {
++        if (!isEmpty(matrix.get(xStart, yStart + y))) {
+             throw new WriterException();
+         }
+-        matrix.set(yStart + y, xStart, VERTICAL_SEPARATION_PATTERN[y][0]);
++        matrix.set(xStart, yStart + y, VERTICAL_SEPARATION_PATTERN[y][0]);
+     }
+ }
+\ No newline at end of file

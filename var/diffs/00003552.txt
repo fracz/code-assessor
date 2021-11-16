@@ -1,0 +1,13 @@
+diff --git a/5f9743e3d8de35f76c285d16f42914b0105a3bac b/171381046a3057e98b4377bf81d787a3bdfb1b24
+index 5f9743e3d8..171381046a 100644
+--- a/5f9743e3d8de35f76c285d16f42914b0105a3bac
++++ b/171381046a3057e98b4377bf81d787a3bdfb1b24
+@@ -1,4 +1,6 @@
+ private void updateFrom(VirtualFile root) {
+-    Updater u = new Updater(vcs, new TestIdeaGateway(), root);
++    TestIdeaGateway gw = new TestIdeaGateway();
++    gw.setContentRoots(root);
++    Updater u = new Updater(vcs, gw);
+     CacheUpdaterHelper.performUpdate(u);
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/089a70da5bad37b6eca6bca91195a245d32d2134 b/ba62cb5797dc14f9dd965033b99c6a847bb55d45
+index 089a70da5b..ba62cb5797 100644
+--- a/089a70da5bad37b6eca6bca91195a245d32d2134
++++ b/ba62cb5797dc14f9dd965033b99c6a847bb55d45
+@@ -1,4 +1,6 @@
+ public Query buildQuery(Object query) throws ParseException {
++    // OLuceneIndexEngine luceneIndexEngine = (OLuceneIndexEngine) indexEngine;
+     // return luceneIndexEngine.buildQuery(query);
+-    return null;
++    OLuceneIndexEngine oIndexEngine = (OLuceneIndexEngine) storage.getIndexEngine(indexId);
++    return oIndexEngine.buildQuery(query);
+ }
+\ No newline at end of file

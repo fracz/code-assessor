@@ -1,0 +1,18 @@
+diff --git a/6562f371d7e1414f87c7b73e54815cd9b56ba5ce b/e5ddc16115ff1098cff239ff044ed13ba435014a
+index 6562f371d7..e5ddc16115 100644
+--- a/6562f371d7e1414f87c7b73e54815cd9b56ba5ce
++++ b/e5ddc16115ff1098cff239ff044ed13ba435014a
+@@ -1,9 +1,11 @@
+ @Override
+ public void testGraphQueryForEdges() {
+     TitanGraph g = (TitanGraph) graphTest.generateGraph();
+     if (g.getRelationType("weight") == null) {
+-        PropertyKey weight = g.makePropertyKey("weight").dataType(Double.class).cardinality(Cardinality.SINGLE).make();
++        TitanManagement mgmt = g.getManagementSystem();
++        mgmt.makePropertyKey("weight").dataType(Double.class).cardinality(Cardinality.SINGLE).make();
++        mgmt.commit();
+     }
+     g.shutdown();
+     super.testGraphQueryForEdges();
+ }
+\ No newline at end of file

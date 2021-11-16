@@ -1,0 +1,18 @@
+diff --git a/f58e16dba86e5f467cd73833474c1f998cd157d6 b/a85eb6c89583701b12689193efef0f196e282abf
+index f58e16dba8..a85eb6c895 100644
+--- a/f58e16dba86e5f467cd73833474c1f998cd157d6
++++ b/a85eb6c89583701b12689193efef0f196e282abf
+@@ -1,8 +1,9 @@
+ private void writeToFile(int fileNumber, long pageIndex) throws IOException {
+-    OCachePointer pointer = buffer.load(fileIds.get(fileNumber), pageIndex);
++    OCacheEntry cacheEntry = buffer.load(fileIds.get(fileNumber), pageIndex);
++    OCachePointer pointer = cacheEntry.getCachePointer();
+     pointer.acquireExclusiveLock();
+-    buffer.markDirty(fileIds.get(fileNumber), pageIndex);
++    cacheEntry.markDirty();
+     directMemory.set(pointer.getDataPointer() + systemOffset, new byte[] { version.byteValue(), 2, 3, seed, 5, 6, (byte) fileNumber, (byte) (pageIndex & 0xFF) }, 0, 8);
+     pointer.releaseExclusiveLock();
+-    buffer.release(fileIds.get(fileNumber), pageIndex);
++    buffer.release(cacheEntry);
+ }
+\ No newline at end of file

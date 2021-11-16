@@ -1,0 +1,15 @@
+diff --git a/be6df7ebeb5cfb0ffbe089f454c17435adbce934 b/5e92e4dd2ef908aa4ccfaf6ea0109638cc073d94
+index be6df7ebeb..5e92e4dd2e 100644
+--- a/be6df7ebeb5cfb0ffbe089f454c17435adbce934
++++ b/5e92e4dd2ef908aa4ccfaf6ea0109638cc073d94
+@@ -1,7 +1,7 @@
+ @Override
+ public Collection<PsiElement> getAdditionalElementsToDelete(PsiElement element, Collection<PsiElement> allElementsToDelete, boolean askUser) {
+-    if (element instanceof JetObjectDeclarationName && element.getParent() instanceof JetObjectDeclaration) {
+-        return Arrays.asList(element.getParent());
++    if (element instanceof JetObjectDeclarationName) {
++        return Arrays.asList(getObjectDeclarationOrFail(element));
+     }
+     return super.getAdditionalElementsToDelete(element, allElementsToDelete, askUser);
+ }
+\ No newline at end of file

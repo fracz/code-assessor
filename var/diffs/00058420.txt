@@ -1,0 +1,18 @@
+diff --git a/8590317ae4629b2d105a3fbc1aeab755f15423e7 b/647cb9d6cb82ea4cd34bd26ab61141fd585066d2
+index 8590317ae4..647cb9d6cb 100644
+--- a/8590317ae4629b2d105a3fbc1aeab755f15423e7
++++ b/647cb9d6cb82ea4cd34bd26ab61141fd585066d2
+@@ -1,10 +1,5 @@
+ public static long readPositive(ByteBuffer in) {
+-    long value = 0;
+-    byte b = 0;
+-    do {
+-        b = in.get();
+-        value = value << 7;
+-        value = value | (b & mask);
+-    } while (b >= 0);
++    long value = readUnsigned(in);
++    assert value >= 0;
+     return value;
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/fb16e29dbf5bb2433330ddf97ca745e4229a260e b/66ce434e0d2534a7f6bdf5ec6c18a20ff2cab556
+index fb16e29dbf..66ce434e0d 100644
+--- a/fb16e29dbf5bb2433330ddf97ca745e4229a260e
++++ b/66ce434e0d2534a7f6bdf5ec6c18a20ff2cab556
+@@ -1,11 +1,11 @@
+ /**
+  * Returns true if there are any old but not ancient segments.
+  */
+-public static boolean hasOldButNotAncientSegments(HttpRequestBuilder httpClient, String index) throws Exception {
+-    for (UpgradeStatus status : getUpgradeStatus(httpClient, upgradePath(index))) {
+-        if (status.toUpgradeBytes > status.toUpgradeBytesAncient) {
++public static boolean hasOldButNotAncientSegments(Client client, String index) throws Exception {
++    for (IndexUpgradeStatus status : getUpgradeStatus(client, index)) {
++        if (status.getToUpgradeBytes() > status.getToUpgradeBytesAncient()) {
+             return true;
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

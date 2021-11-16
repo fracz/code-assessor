@@ -1,0 +1,15 @@
+diff --git a/efc14d1e5b998218e04e2474fb59eb43fc65da97 b/5479cb584564ac5a4fea7437f02ac0597dfcf9b1
+index efc14d1e5b..5479cb5845 100644
+--- a/efc14d1e5b998218e04e2474fb59eb43fc65da97
++++ b/5479cb584564ac5a4fea7437f02ac0597dfcf9b1
+@@ -1,8 +1,8 @@
+ public void actionPerformed(final AnActionEvent e) {
+     final GuiEditor editor = FormEditingUtil.getEditorFromContext(e.getDataContext());
+-    CaptionSelection selection = e.getData(CaptionSelection.DATA_KEY);
++    CaptionSelection selection = CaptionSelection.DATA_KEY.getData(e.getDataContext());
+     if (editor == null || selection == null || selection.getFocusedIndex() < 0)
+         return;
+     FormEditingUtil.deleteRowOrColumn(editor, selection.getContainer(), selection.getSelection(), selection.isRow());
+     selection.getContainer().revalidate();
+ }
+\ No newline at end of file

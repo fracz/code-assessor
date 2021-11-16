@@ -1,0 +1,16 @@
+diff --git a/d9033af7fed9a6c57e38e82e2ab82e0938907360 b/94236aef1f2e58ebcfc0ea8c31078606821dd3c8
+index d9033af7fe..94236aef1f 100644
+--- a/d9033af7fed9a6c57e38e82e2ab82e0938907360
++++ b/94236aef1f2e58ebcfc0ea8c31078606821dd3c8
+@@ -1,6 +1,8 @@
++@Override
+ @Before
+ public void setUp() throws Exception {
+-    httpServer = new SimpleEurekaHttpServer(requestHandler);
++    super.setUp();
+     httpClientFactory = JerseyEurekaHttpClientFactory.newBuilder().withClientName("test").withMaxConnectionsPerHost(10).withMaxTotalConnections(10).withDecoder(JacksonJson.class.getSimpleName(), EurekaAccept.full.name()).withEncoder(JacksonJson.class.getSimpleName()).build();
+-    this.eurekaHttpClient = httpClientFactory.create("http://localhost:" + httpServer.getServerPort() + "/v2");
++    int port = getHttpServer().getServerPort();
++    this.eurekaHttpClient = httpClientFactory.create("http://localhost:" + port + "/v2");
+ }
+\ No newline at end of file

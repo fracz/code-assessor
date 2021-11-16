@@ -1,0 +1,21 @@
+diff --git a/9ba30a83924a5f4ccce1c9a9497ce1cd111a2ba4 b/d3ef71fea87f84062cd876a00fbb35d6ea8a2d2a
+index 9ba30a8392..d3ef71fea8 100644
+--- a/9ba30a83924a5f4ccce1c9a9497ce1cd111a2ba4
++++ b/d3ef71fea87f84062cd876a00fbb35d6ea8a2d2a
+@@ -1,10 +1,8 @@
+-@Path("tag-list")
+-@POST
+-@Consumes(MediaType.APPLICATION_JSON)
+-@Produces({ MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN })
+-public GenericEntity<List<Tag>> tagList(TagListRequest request) throws ApiException {
++@GET
++@Path("tag")
++@Produces(MediaType.APPLICATION_JSON)
++public List<Tag> tagList(@QueryParam("pattern") String pattern) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+-        return new GenericEntity<List<Tag>>(gitConnection.tagList(request)) {
+-        };
++        return gitConnection.tagList(pattern);
+     }
+ }
+\ No newline at end of file

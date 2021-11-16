@@ -1,0 +1,14 @@
+diff --git a/4c4c4eb37fe1331190cc8cfd89793be7216e4a14 b/95e2e5ea91944fac962955a8fbc709ae3fbd1312
+index 4c4c4eb37f..95e2e5ea91 100644
+--- a/4c4c4eb37fe1331190cc8cfd89793be7216e4a14
++++ b/95e2e5ea91944fac962955a8fbc709ae3fbd1312
+@@ -1,5 +1,6 @@
+ @AfterClass
+ public void tearDown() throws Exception {
+-    if (!db.isClosed())
+-        db.close();
++    if (db.isClosed())
++        db.open("admin", "admin");
++    db.drop();
+ }
+\ No newline at end of file

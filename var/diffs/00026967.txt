@@ -1,0 +1,19 @@
+diff --git a/2353721b894d33679e8fb5c41f9dbd5eae6636eb b/ec77f12aa5bb421895a811116671da0de73107ba
+index 2353721b89..ec77f12aa5 100644
+--- a/2353721b894d33679e8fb5c41f9dbd5eae6636eb
++++ b/ec77f12aa5bb421895a811116671da0de73107ba
+@@ -1,12 +1,9 @@
+ /**
+  * @param args
+  */
+ public static void main(String[] args) throws Exception {
+     MnistDataFetcher fetcher = new MnistDataFetcher();
+     fetcher.fetch(60000);
+     DataSet save = fetcher.next();
+-    BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("mnist-data.bin"));
+-    save.write(bos);
+-    bos.flush();
+-    bos.close();
++    SerializationUtils.saveObject(save, new File(args[0]));
+ }
+\ No newline at end of file

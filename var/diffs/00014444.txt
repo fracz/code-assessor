@@ -1,0 +1,17 @@
+diff --git a/9592977004f1a4393a7eaa3a13548804ba918b83 b/101609e4e7abce062ff932f5c03f2ce8ddba2cbb
+index 9592977004..101609e4e7 100644
+--- a/9592977004f1a4393a7eaa3a13548804ba918b83
++++ b/101609e4e7abce062ff932f5c03f2ce8ddba2cbb
+@@ -1,8 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiMethod method = (PsiMethod) location.getParent();
+-    assert method != null;
+-    final NestingDepthVisitor visitor = new NestingDepthVisitor();
+-    method.accept(visitor);
+-    final int nestingDepth = visitor.getMaximumDepth();
++@NotNull
++public String buildErrorString(Object... infos) {
++    final Integer nestingDepth = (Integer) infos[0];
+     return InspectionGadgetsBundle.message("nesting.depth.problem.descriptor", nestingDepth);
+ }
+\ No newline at end of file

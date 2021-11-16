@@ -1,0 +1,18 @@
+diff --git a/e3d680da6fcd839a962ca29a75d917d34d31417e b/a2653c110ad6fa5acb30c10f34dfa6441bd6e436
+index e3d680da6f..a2653c110a 100644
+--- a/e3d680da6fcd839a962ca29a75d917d34d31417e
++++ b/a2653c110ad6fa5acb30c10f34dfa6441bd6e436
+@@ -1,10 +1,9 @@
+ public void testConstructor2() throws Exception {
+     PsiReference ref = configureByFile("constructor2/A.groovy");
+-    PsiElement resolved = ref.resolve();
+-    assertTrue(resolved instanceof PsiMethod);
+-    final PsiMethod method = (PsiMethod) resolved;
++    PsiMethod method = ((GrNewExpression) ref.getElement().getParent()).resolveConstructor();
++    assertNotNull(method);
+     assertTrue(method.isConstructor());
+     final PsiParameter[] parameters = method.getParameterList().getParameters();
+     assertEquals(1, parameters.length);
+     assertTrue(parameters[0].getType().equalsToText("java.util.Map"));
+ }
+\ No newline at end of file

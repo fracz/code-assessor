@@ -1,0 +1,20 @@
+diff --git a/dcbd74bc0ba867fed211acaccd18725b6a5b2728 b/63bf134df68f4ef33dc585990804182923645ee5
+index dcbd74bc0b..63bf134df6 100644
+--- a/dcbd74bc0ba867fed211acaccd18725b6a5b2728
++++ b/63bf134df68f4ef33dc585990804182923645ee5
+@@ -1,9 +1,11 @@
+ @Override
+ public NetworkStats getNetworkStatsUidDetail(int uid) {
+     if (Binder.getCallingUid() != uid) {
+         mContext.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE, "NetworkManagementService");
+     }
+-    final NetworkStats stats = new NetworkStats(SystemClock.elapsedRealtime(), 1);
+-    collectNetworkStatsDetail(stats, uid);
+-    return stats;
++    if (STATS_NETFILTER.exists()) {
++        return getNetworkStatsDetailNetfilter(uid);
++    } else {
++        return getNetworkStatsDetailUidstat(uid);
++    }
+ }
+\ No newline at end of file

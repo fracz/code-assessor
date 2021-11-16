@@ -1,0 +1,20 @@
+diff --git a/957c4614ed5132179d24c58fb3ec9ed9580db509 b/2a4c7d7f96e25841a5374c183b6d9c89b36d9a7f
+index 957c4614ed..2a4c7d7f96 100644
+--- a/957c4614ed5132179d24c58fb3ec9ed9580db509
++++ b/2a4c7d7f96e25841a5374c183b6d9c89b36d9a7f
+@@ -1,13 +1,9 @@
+ public final void write(JSONSerializer serializer, Object object, Object fieldName, Type fieldType, int features) throws IOException {
+     SerializeWriter out = serializer.out;
+     if (object == null) {
+-        if (out.isEnabled(SerializerFeature.WriteNullListAsEmpty)) {
+-            out.write("[]");
+-        } else {
+-            out.writeNull();
+-        }
++        out.writeNull(SerializerFeature.WriteNullListAsEmpty);
+         return;
+     }
+     char[] chars = (char[]) object;
+     out.writeString(new String(chars));
+ }
+\ No newline at end of file

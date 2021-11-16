@@ -1,0 +1,12 @@
+diff --git a/83aab868e7e04330dd7fbc5405c4e64c74dbd56b b/8e24badb173aa3923b598a4e7f9edb3c1b7f0ec6
+index 83aab868e7..8e24badb17 100644
+--- a/83aab868e7e04330dd7fbc5405c4e64c74dbd56b
++++ b/8e24badb173aa3923b598a4e7f9edb3c1b7f0ec6
+@@ -1,5 +1,5 @@
+ @Override
+ protected ShardDfsOnlyRequest newShardRequest(int numShards, ShardRouting shard, DfsOnlyRequest request) {
+-    String[] filteringAliases = clusterService.state().metaData().filteringAliases(shard.index(), request.indices());
++    String[] filteringAliases = indexNameExpressionResolver.filteringAliases(clusterService.state(), shard.index(), request.indices());
+     return new ShardDfsOnlyRequest(shard, numShards, filteringAliases, request.nowInMillis, request);
+ }
+\ No newline at end of file

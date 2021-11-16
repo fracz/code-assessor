@@ -1,0 +1,33 @@
+diff --git a/c4bc75637481faa27acdbfd3ee08e663535b7239 b/7415e1a18c23afd67c136e671c14dc9625e14674
+index c4bc756374..7415e1a18c 100644
+--- a/c4bc75637481faa27acdbfd3ee08e663535b7239
++++ b/7415e1a18c23afd67c136e671c14dc9625e14674
+@@ -1,24 +1,24 @@
+ /**
+  * Return the element at the current position and move backward the cursor to the previous position available.
+  *
+  * @return the previous record found, otherwise the NoSuchElementException exception is thrown when no more records are found.
+  */
+ @SuppressWarnings("unchecked")
+ @Override
+ public REC previous() {
+     checkDirection(false);
+-    final REC record = (REC) getRecord();
++    ORecordInternal<?> record = getRecord();
+     // ITERATE UNTIL THE PREVIOUS GOOD RECORD
+     while (currentClusterIdx > -1) {
+         // MOVE BACKWARD IN THE CURRENT CLUSTER
+         while (hasPrevious()) {
+-            if (readCurrentRecord(record, -1) != null)
++            if ((record = readCurrentRecord(record, -1)) != null)
+                 // FOUND
+-                return record;
++                return (REC) record;
+         }
+         // CLUSTER EXHAUSTED, TRY WITH THE PREVIOUS ONE
+         currentClusterIdx--;
+         updateClusterRange();
+     }
+     throw new NoSuchElementException();
+ }
+\ No newline at end of file

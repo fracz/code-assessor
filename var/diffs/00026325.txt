@@ -1,0 +1,13 @@
+diff --git a/3d22ec63d8e2537a3ff43ced7653c9b52ba51466 b/b13c8b8f3609e0eecf22fcec5cda56615103a904
+index 3d22ec63d8..b13c8b8f36 100644
+--- a/3d22ec63d8e2537a3ff43ced7653c9b52ba51466
++++ b/b13c8b8f3609e0eecf22fcec5cda56615103a904
+@@ -1,6 +1,6 @@
+ /**
+  * Returns whether the specified type is a label type or not.
+  */
+ public static boolean isLabelType(Type<?> type) {
+-    return type == LABEL || type == LABEL_LIST || type == LABEL_DICT_UNARY || type == NODEP_LABEL || type == NODEP_LABEL_LIST || type == FILESET_ENTRY_LIST;
++    return type.getLabelClass() != LabelClass.NONE;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/ed4e6c696d7c1a54a795d96f412e2407326bcc43 b/66a062d13518d697fb0e2a9a81a5e31cfb0a0447
+index ed4e6c696d..66a062d135 100644
+--- a/ed4e6c696d7c1a54a795d96f412e2407326bcc43
++++ b/66a062d13518d697fb0e2a9a81a5e31cfb0a0447
+@@ -1,5 +1,7 @@
+-private void initializeTypeParameters(PsiTypeParameterListOwner typeParameterListOwner) {
+-    for (PsiTypeParameter psiTypeParameter : typeParameterListOwner.getTypeParameters()) {
+-        initializeTypeParameter(psiTypeParameter, resolveTypeParameterInitialization(psiTypeParameter));
++private void initializeTypeParameters(List<TypeParameterDescriptorInitialization> typeParametersInitialization, TypeVariableResolver typeVariableByPsiResolver) {
++    List<TypeParameterDescriptorInitialization> prevTypeParameters = new ArrayList<TypeParameterDescriptorInitialization>();
++    for (TypeParameterDescriptorInitialization psiTypeParameter : typeParametersInitialization) {
++        prevTypeParameters.add(psiTypeParameter);
++        initializeTypeParameter(psiTypeParameter, new TypeVariableResoverFromTypeDescriptorsInitialization(prevTypeParameters, typeVariableByPsiResolver));
+     }
+ }
+\ No newline at end of file

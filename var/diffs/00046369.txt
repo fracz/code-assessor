@@ -1,0 +1,37 @@
+diff --git a/e063b05b997638129b302f0e28c7961a81660be0 b/00509908743982e60bac1e5a3cdadcab6196d3b0
+index e063b05b99..0050990874 100644
+--- a/e063b05b997638129b302f0e28c7961a81660be0
++++ b/00509908743982e60bac1e5a3cdadcab6196d3b0
+@@ -1,27 +1,30 @@
++/**
++ * Handler for File &rarr; Print.
++ */
+ public void handlePrint() {
+     statusNotice("Printing...");
+     // printerJob = null;
+     if (printerJob == null) {
+         printerJob = PrinterJob.getPrinterJob();
+     }
+     if (pageFormat != null) {
+         // System.out.println("setting page format " + pageFormat);
+         printerJob.setPrintable(textarea.getPainter(), pageFormat);
+     } else {
+         printerJob.setPrintable(textarea.getPainter());
+     }
+     // set the name of the job to the code name
+-    printerJob.setJobName(sketch.current.name);
++    printerJob.setJobName(sketch.current.getPrettyName());
+     if (printerJob.printDialog()) {
+         try {
+             printerJob.print();
+             statusNotice("Done printing.");
+         } catch (PrinterException pe) {
+             statusError("Error while printing.");
+             pe.printStackTrace();
+         }
+     } else {
+         statusNotice("Printing canceled.");
+     }
+ // printerJob = null;  // clear this out?
+ }
+\ No newline at end of file

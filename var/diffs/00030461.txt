@@ -1,0 +1,21 @@
+diff --git a/6e2c8406ebfef8487c070c277ad7ab23c28a4edc b/2b549d2acfa861a78058a310567b0a306a56f15f
+index 6e2c8406eb..2b549d2acf 100644
+--- a/6e2c8406ebfef8487c070c277ad7ab23c28a4edc
++++ b/2b549d2acfa861a78058a310567b0a306a56f15f
+@@ -1,11 +1,12 @@
+ // called by the current engine
+ @Override
+-public void onFailedEngine(ShardId shardId, String reason, @Nullable Throwable failure) {
+-    for (Engine.FailedEngineListener listener : delegates) {
++public void onFailedEngine(String reason, @Nullable Throwable failure) {
++    final ShardFailure shardFailure = new ShardFailure(shardRouting, reason, failure);
++    for (Callback<ShardFailure> listener : delegates) {
+         try {
+-            listener.onFailedEngine(shardId, reason, failure);
++            listener.handle(shardFailure);
+         } catch (Exception e) {
+             logger.warn("exception while notifying engine failure", e);
+         }
+     }
+ }
+\ No newline at end of file

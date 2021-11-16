@@ -1,0 +1,20 @@
+diff --git a/9cb0ea8b79d2c5052da6ae7f4995b243bf2096d0 b/8ab739751ae442af5c127497bdb98f9b4d715073
+index 9cb0ea8b79..8ab739751a 100644
+--- a/9cb0ea8b79d2c5052da6ae7f4995b243bf2096d0
++++ b/8ab739751ae442af5c127497bdb98f9b4d715073
+@@ -1,11 +1,10 @@
+ @Override
+-public synchronized V putIfAbsent(final K key, final V value) {
++public synchronized byte[] putIfAbsent(final Bytes key, final byte[] value) {
+     Objects.requireNonNull(key, "key cannot be null");
+     validateStoreOpen();
+-    final byte[] rawKey = serdes.rawKey(key);
+-    final V v = get(rawKey);
++    final byte[] v = getInternal(key);
+     if (v == null) {
+-        put(rawKey, value);
++        putInternal(key, value);
+     }
+     return v;
+ }
+\ No newline at end of file

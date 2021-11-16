@@ -1,0 +1,13 @@
+diff --git a/60fa75cfaa2c389c2760249a5af98aa68280dd3b b/88c16868c8447000a6e5dbca2b67cb33da9b759b
+index 60fa75cfaa..88c16868c8 100644
+--- a/60fa75cfaa2c389c2760249a5af98aa68280dd3b
++++ b/88c16868c8447000a6e5dbca2b67cb33da9b759b
+@@ -1,4 +1,5 @@
+ public Color getBackgroundColor() {
+-    Properties properties = getProperties();
+-    return ColorUtil.fromHex("#" + properties.getProperty("material.tab.backgroundColor"));
++    MTConfig config = MTConfig.getInstance();
++    final MTTheme mtTheme = config.getSelectedTheme();
++    return mtTheme.getBackgroundColor();
+ }
+\ No newline at end of file

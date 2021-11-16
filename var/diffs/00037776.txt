@@ -1,0 +1,17 @@
+diff --git a/099a66887b3f90cefb9afca3b4a1c5ba0b318c3c b/80062a23ac0b3aa06a32298c04f36ffd05cb3c6b
+index 099a66887b..80062a23ac 100644
+--- a/099a66887b3f90cefb9afca3b4a1c5ba0b318c3c
++++ b/80062a23ac0b3aa06a32298c04f36ffd05cb3c6b
+@@ -1,8 +1,8 @@
+ private byte[] serialize(Object neoValue) throws IOException {
+     RecordingByteChannel channel = new RecordingByteChannel();
+-    RecordMessage msg = new RecordMessage(record(neoValue));
+-    MessageFormat.Writer writer = new PackStreamMessageFormatV1.Writer(new Neo4jPack.Packer(new BufferedChannelOutput(channel)), NO_OP);
+-    writer.write(msg).flush();
++    BoltResponseMessageWriter writer = new BoltResponseMessageWriter(new Neo4jPack.Packer(new BufferedChannelOutput(channel)), NO_BOUNDARY_HOOK);
++    writer.onRecord(record(neoValue));
++    writer.flush();
+     channel.eof();
+     return channel.getBytes();
+ }
+\ No newline at end of file

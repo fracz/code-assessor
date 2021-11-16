@@ -1,0 +1,25 @@
+diff --git a/c64b2c3608539f826be803a3ba4c2ea6c849ad5f b/df8e055233bbb0fef2b1edd697bb680859bf9983
+index c64b2c3608..df8e055233 100644
+--- a/c64b2c3608539f826be803a3ba4c2ea6c849ad5f
++++ b/df8e055233bbb0fef2b1edd697bb680859bf9983
+@@ -1,17 +1,14 @@
+ private void parseTable() {
+     if (sqlParser.skipIfEqual(Symbol.LEFT_PAREN)) {
+-        if (!selectStatement.getTables().isEmpty()) {
+-            throw new UnsupportedOperationException("Cannot support subquery for nested tables.");
+-        }
+         containSubquery = true;
+-        containStar = false;
+         sqlParser.skipUselessParentheses();
+-        parse();
++        parseInternal();
+         sqlParser.skipUselessParentheses();
+         if (getSqlParser().equalAny(DefaultKeyword.WHERE, Assist.END)) {
+             return;
+         }
+     }
++    parseMainStatement = true;
+     customizedParseTableFactor();
+     parseJoinTable();
+ }
+\ No newline at end of file

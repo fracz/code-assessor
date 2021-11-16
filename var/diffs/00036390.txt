@@ -1,0 +1,20 @@
+diff --git a/a7714156147e971369e9ad88a849bcd0743ca723 b/93b1374d31f02a35831da737c8267bffccbca414
+index a771415614..93b1374d31 100644
+--- a/a7714156147e971369e9ad88a849bcd0743ca723
++++ b/93b1374d31f02a35831da737c8267bffccbca414
+@@ -1,9 +1,9 @@
+ @Override
+ public Map<String, Object> getComponentConfiguration() {
+-    // TODO: expose this completely in clojure API
+-    Map<String, Object> ret = new HashMap<String, Object>();
+-    if (!_isDistributed) {
+-        ret.put(Config.TOPOLOGY_MAX_TASK_PARALLELISM, 1);
++    IFn hof = Utils.loadClojureFn(_confSpec.get(0), _confSpec.get(1));
++    try {
++        return (Map) hof.applyTo(RT.seq(_params));
++    } catch (Exception e) {
++        throw new RuntimeException(e);
+     }
+-    return ret;
+ }
+\ No newline at end of file

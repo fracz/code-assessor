@@ -1,0 +1,13 @@
+diff --git a/02bcbda66a7255d5aa4ed3706815d7a1d3c0ca38 b/7c8ceb78b79fe4b183d4fb3dadbc5d1cb090f812
+index 02bcbda66a..7c8ceb78b7 100644
+--- a/02bcbda66a7255d5aa4ed3706815d7a1d3c0ca38
++++ b/7c8ceb78b79fe4b183d4fb3dadbc5d1cb090f812
+@@ -1,5 +1,5 @@
+ @Override
+-public void finished(boolean aborted, int errors, int warnings) {
+-    result.set(!aborted && errors == 0);
++public void finished(@NotNull ActivityExecutionResult executionResult) {
++    result.set(!executionResult.isAborted() && executionResult.getErrors() == 0);
+     finished.up();
+ }
+\ No newline at end of file

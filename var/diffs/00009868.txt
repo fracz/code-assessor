@@ -1,0 +1,13 @@
+diff --git a/34213f90466165b0ebdca8b905a1004c96cb994e b/27ffe8f1d946306f58f75247b463ce59156aedb5
+index 34213f9046..27ffe8f1d9 100644
+--- a/34213f90466165b0ebdca8b905a1004c96cb994e
++++ b/27ffe8f1d946306f58f75247b463ce59156aedb5
+@@ -1,4 +1,4 @@
+-public boolean processInitState(final Component focusOwner, final KeyEvent e, final boolean modalContext, final DataContext dataContext) {
+-    myCurrentEvent.focusOwner = focusOwner;
+-    return process(e, modalContext, dataContext);
++public boolean processInitState() {
++    myCurrentEvent.focusOwner = myDispatcher.getContext().getFocusOwner();
++    return process();
+ }
+\ No newline at end of file

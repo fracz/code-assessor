@@ -1,0 +1,19 @@
+diff --git a/27355e6d1feb01027234a08fec10d4457feb2cbd b/06ae7bf5bb8e9ee42fb4898fac56e93a9ad73324
+index 27355e6d1f..06ae7bf5bb 100644
+--- a/27355e6d1feb01027234a08fec10d4457feb2cbd
++++ b/06ae7bf5bb8e9ee42fb4898fac56e93a9ad73324
+@@ -1,12 +1,8 @@
+ public static FadeTo $(float alpha, float duration) {
+     FadeTo action = pool.obtain();
+-    if (alpha < 0)
+-        alpha = 0;
+-    if (alpha > 1)
+-        alpha = 1;
+-    action.toAlpha = alpha;
++    action.toAlpha = Math.min(Math.max(alpha, 0.0f), 1.0f);
+     action.duration = duration;
+     action.invDuration = 1 / duration;
+     action.listener = null;
+     return action;
+ }
+\ No newline at end of file

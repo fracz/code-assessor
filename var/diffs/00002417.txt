@@ -1,0 +1,16 @@
+diff --git a/293ea359df8c11cdf8a38b729ae2f46cbfb21206 b/e424266995cf6db4c6c4b0881bfb90328d64b09f
+index 293ea359df..e424266995 100644
+--- a/293ea359df8c11cdf8a38b729ae2f46cbfb21206
++++ b/e424266995cf6db4c6c4b0881bfb90328d64b09f
+@@ -1,8 +1,8 @@
+ @Override
+-public boolean process(ArtifactSourceRoot root, int rootIndex, Collection<DestinationInfo> destinations) throws IOException {
++public boolean process(ArtifactSourceRoot root, DestinationInfo destinations) throws IOException {
+     final File rootFile = root.getRootFile();
+     if (rootFile.exists()) {
+-        processRecursively(rootFile, rootIndex, dataManager, root.getFilter(), currentPaths);
++        processRecursively(rootFile, root.getRootIndex(), dataManager, root.getFilter(), currentPaths);
+     }
+     return true;
+ }
+\ No newline at end of file

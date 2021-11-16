@@ -1,0 +1,18 @@
+diff --git a/f1c4ff5206367a7679e6de803a9ef5be4658c7ce b/4d6fea3e97f30aa860d82e45e83008ede170ff19
+index f1c4ff5206..4d6fea3e97 100644
+--- a/f1c4ff5206367a7679e6de803a9ef5be4658c7ce
++++ b/4d6fea3e97f30aa860d82e45e83008ede170ff19
+@@ -1,11 +1,11 @@
+ public boolean tryToMove(final PsiElement element, final Project project, final DataContext dataContext, final PsiReference reference, final Editor editor) {
+     if (CollectHighlightsUtil.isOutsideSourceRootJavaFile(element.getContainingFile()))
+         return false;
+     if (isReferenceInAnonymousClass(reference))
+         return false;
+     if (element instanceof PsiClass && !(element instanceof PsiAnonymousClass) && element.getParent() instanceof PsiFile) {
+-        MoveClassesOrPackagesImpl.doMove(project, new PsiElement[] { element }, (PsiElement) dataContext.getData(DataConstantsEx.TARGET_PSI_ELEMENT), null);
++        MoveClassesOrPackagesImpl.doMove(project, new PsiElement[] { element }, LangDataKeys.TARGET_PSI_ELEMENT.getData(dataContext), null);
+         return true;
+     }
+     return false;
+ }
+\ No newline at end of file

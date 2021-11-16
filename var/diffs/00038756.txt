@@ -1,0 +1,21 @@
+diff --git a/a2238e0cb9ebc2790eba0d1e1ad086478b9fbd03 b/e46f280bb631b95b3135d69051aee1f83f05a347
+index a2238e0cb9..e46f280bb6 100644
+--- a/a2238e0cb9ebc2790eba0d1e1ad086478b9fbd03
++++ b/e46f280bb631b95b3135d69051aee1f83f05a347
+@@ -1,14 +1,12 @@
+ void doRollback() throws XAException {
+     status = Status.STATUS_ROLLING_BACK;
+     LinkedList<Xid> rolledbackXids = new LinkedList<Xid>();
+-    Iterator<ResourceElement> itr = resourceList.iterator();
+-    while (itr.hasNext()) {
+-        ResourceElement re = itr.next();
++    for (ResourceElement re : resourceList) {
+         if (!rolledbackXids.contains(re.getXid())) {
+             rolledbackXids.add(re.getXid());
+             re.getResource().rollback(re.getXid());
+         }
+     }
+     status = Status.STATUS_ROLLEDBACK;
+     transactionContext.rollback();
+ }
+\ No newline at end of file

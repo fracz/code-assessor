@@ -1,0 +1,14 @@
+diff --git a/0ed6264324626980ec4efffdc79b01f195e51c9d b/a32263ed3cebf38799d8988e1686f49b84784c86
+index 0ed6264324..a32263ed3c 100644
+--- a/0ed6264324626980ec4efffdc79b01f195e51c9d
++++ b/a32263ed3cebf38799d8988e1686f49b84784c86
+@@ -1,7 +1,7 @@
+ @Override
+ public void visitElement(PsiElement element) {
+-    super.visitElement(element);
++    myToVisitChildren = true;
+     if (element instanceof LeafPsiElement && !(element instanceof PsiWhiteSpace) && !(element instanceof PsiComment)) {
+         visitLeafElement((LeafPsiElement) element);
+     }
+ }
+\ No newline at end of file

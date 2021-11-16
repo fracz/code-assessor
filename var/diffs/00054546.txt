@@ -1,0 +1,24 @@
+diff --git a/ccf3f20264b99377f136d6d1286b57678269f032 b/6ef267635d51aa1e0f629b716320de6d0ee6f0f9
+index ccf3f20264..6ef267635d 100644
+--- a/ccf3f20264b99377f136d6d1286b57678269f032
++++ b/6ef267635d51aa1e0f629b716320de6d0ee6f0f9
+@@ -1,15 +1,15 @@
+ protected SQLTableConstraint parseConstraint() {
+     if (getLexer().equalToken(Token.CONSTRAINT)) {
+         getLexer().nextToken();
+     }
+     if (getLexer().equalToken(Token.IDENTIFIER)) {
+         this.exprParser.name();
+-        throw new ParserException("TODO");
++        throw new ParserUnsupportedException(getLexer().getToken());
+     }
+     if (getLexer().equalToken(Token.PRIMARY)) {
+         getLexer().nextToken();
+         accept(Token.KEY);
+-        throw new ParserException("TODO");
++        throw new ParserUnsupportedException(getLexer().getToken());
+     }
+-    throw new ParserException("TODO");
++    throw new ParserUnsupportedException(getLexer().getToken());
+ }
+\ No newline at end of file

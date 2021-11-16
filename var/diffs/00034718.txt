@@ -1,0 +1,15 @@
+diff --git a/0c5be2c1c50d8365ae8ab94ede2be5229255b3e1 b/e9f2f47b017e1ae57e2e4edd6f46528c8b44ff11
+index 0c5be2c1c5..e9f2f47b01 100644
+--- a/0c5be2c1c50d8365ae8ab94ede2be5229255b3e1
++++ b/e9f2f47b017e1ae57e2e4edd6f46528c8b44ff11
+@@ -1,8 +1,4 @@
+ public PushParser until(byte b, DataCallback callback) {
+-    UntilWaiter waiter = new UntilWaiter();
+-    waiter.value = b;
+-    waiter.callback = callback;
+-    mWaiting.add(waiter);
+-    mNeeded++;
++    mWaiting.add(new UntilWaiter(b, callback));
+     return this;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/cb3e0c6bc7fb7f2656e0f0d4e25dcc2bc9dd04e0 b/8f9ff1c4efe79887a9a6beab4d7177311109f924
+index cb3e0c6bc7..8f9ff1c4ef 100644
+--- a/cb3e0c6bc7fb7f2656e0f0d4e25dcc2bc9dd04e0
++++ b/8f9ff1c4efe79887a9a6beab4d7177311109f924
+@@ -1,9 +1,9 @@
+ /**
+  * Test case for {@link OSSUnderFileSystem#deleteDirectory(String, DeleteOptions)}.
+  */
+ @Test
+ public void deleteRecursiveOnServiceException() throws IOException {
+     Mockito.when(mClient.listObjects(Matchers.any(ListObjectsRequest.class))).thenThrow(ServiceException.class);
+-    boolean result = mOSSUnderFileSystem.deleteDirectory(PATH, new DeleteOptions().setRecursive(true));
++    boolean result = mOSSUnderFileSystem.deleteDirectory(PATH, DeleteOptions.defaults().setRecursive(true));
+     Assert.assertFalse(result);
+ }
+\ No newline at end of file

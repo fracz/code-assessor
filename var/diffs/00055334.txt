@@ -1,0 +1,20 @@
+diff --git a/9e8cd26a331fea8016bbf95d848f6104da8526dd b/ea6eb3db21c2aab1db21960025aaf47cb61c561b
+index 9e8cd26a33..ea6eb3db21 100644
+--- a/9e8cd26a331fea8016bbf95d848f6104da8526dd
++++ b/ea6eb3db21c2aab1db21960025aaf47cb61c561b
+@@ -1,12 +1,12 @@
+ @JRubyMethod(visibility = Visibility.PRIVATE)
+ public IRubyObject get(ThreadContext context, IRubyObject attribute) {
+     String key = attribute.convertToString().asJavaString();
+-    if (node instanceof Element) {
+-        Element element = (Element) node;
++    if (node() instanceof Element) {
++        Element element = (Element) node();
+         String value = element.getAttribute(key);
+         if (!value.equals("")) {
+             return RubyString.newString(context.getRuntime(), value);
+         }
+     }
+     return context.getRuntime().getNil();
+ }
+\ No newline at end of file

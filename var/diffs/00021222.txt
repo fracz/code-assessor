@@ -1,0 +1,16 @@
+diff --git a/0c04671da816aaa8a8d4b7bb6fdba7f1ceb96289 b/d88457b67abfac72a823b9c1a3ba1e17bd9b9dcf
+index 0c04671da8..d88457b67a 100644
+--- a/0c04671da816aaa8a8d4b7bb6fdba7f1ceb96289
++++ b/d88457b67abfac72a823b9c1a3ba1e17bd9b9dcf
+@@ -1,9 +1,5 @@
+ public void writeFieldNullNumber(char seperator, String name) {
+     write(seperator);
+     writeFieldName(name);
+-    if (isEnabled(SerializerFeature.WriteNullNumberAsZero)) {
+-        write('0');
+-    } else {
+-        writeNull();
+-    }
++    writeNull(SerializerFeature.WriteNullNumberAsZero);
+ }
+\ No newline at end of file

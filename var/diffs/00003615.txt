@@ -1,0 +1,15 @@
+diff --git a/fa5988755b3b3a4712a97ff5f3fdeeeb98406db6 b/b383a4ad3dfd64d72c6872b3536592748ca062db
+index fa5988755b..b383a4ad3d 100644
+--- a/fa5988755b3b3a4712a97ff5f3fdeeeb98406db6
++++ b/b383a4ad3dfd64d72c6872b3536592748ca062db
+@@ -1,7 +1,4 @@
+-public static StudyTaskManager getInstance(Project project) {
++public static StudyTaskManager getInstance(@NotNull final Project project) {
+     StudyTaskManager item = myTaskManagers.get(project.getBasePath());
+-    if (item != null) {
+-        return item;
+-    }
+-    return new StudyTaskManager(project);
++    return item != null ? item : new StudyTaskManager(project);
+ }
+\ No newline at end of file

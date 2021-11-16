@@ -1,0 +1,15 @@
+diff --git a/09f91cae8ed82ffd490e284f0de73ed6d03b8af5 b/ecb203aa834f7dd423eb47d9820e3a16ea98b82e
+index 09f91cae8e..ecb203aa83 100644
+--- a/09f91cae8ed82ffd490e284f0de73ed6d03b8af5
++++ b/ecb203aa834f7dd423eb47d9820e3a16ea98b82e
+@@ -1,8 +1,3 @@
+ public static void advanceTime(long ms) {
+-    if (!simulating.get())
+-        throw new IllegalStateException("Cannot simulate time unless in simulation mode");
+-    if (ms < 0)
+-        throw new IllegalArgumentException("advanceTime only accepts positive time as an argument");
+-    long newTime = simulatedCurrTimeMs.addAndGet(ms);
+-    LOG.debug("Advanced simulated time to {}", newTime);
++    advanceTimeNanos(millisToNanos(ms));
+ }
+\ No newline at end of file

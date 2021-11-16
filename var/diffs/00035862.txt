@@ -1,0 +1,17 @@
+diff --git a/4c2cce6baccc23958199016929a83a81a011b1c8 b/76c207839e8fd2d930178eca3c92f8bb8675471a
+index 4c2cce6bac..76c207839e 100644
+--- a/4c2cce6baccc23958199016929a83a81a011b1c8
++++ b/76c207839e8fd2d930178eca3c92f8bb8675471a
+@@ -1,8 +1,9 @@
+ @Test
+ public void shouldAllowMultipleInterfaces() {
+     // when
+     mockSettingsImpl.extraInterfaces(List.class, Set.class);
+     // then
+-    assertEquals(List.class, mockSettingsImpl.getExtraInterfaces()[0]);
+-    assertEquals(Set.class, mockSettingsImpl.getExtraInterfaces()[1]);
++    assertEquals(2, mockSettingsImpl.getExtraInterfaces().size());
++    assertTrue(mockSettingsImpl.getExtraInterfaces().contains(List.class));
++    assertTrue(mockSettingsImpl.getExtraInterfaces().contains(Set.class));
+ }
+\ No newline at end of file

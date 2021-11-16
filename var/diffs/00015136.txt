@@ -1,0 +1,13 @@
+diff --git a/092a2ff67e852d52e445d9285c89f98a159591b1 b/fc22c3594789fc299fedc3b3f3d71e019f932222
+index 092a2ff67e..fc22c35947 100644
+--- a/092a2ff67e852d52e445d9285c89f98a159591b1
++++ b/fc22c3594789fc299fedc3b3f3d71e019f932222
+@@ -1,6 +1,5 @@
+ @NotNull
+ public CodegenContext intoClosure(@NotNull FunctionDescriptor funDescriptor, @NotNull LocalLookup localLookup, @NotNull JetTypeMapper typeMapper) {
+-    ClassDescriptor classDescriptor = typeMapper.getBindingContext().get(CLASS_FOR_FUNCTION, funDescriptor);
+-    assert classDescriptor != null : "Closure class for function should be present: " + funDescriptor;
++    ClassDescriptor classDescriptor = anonymousClassForFunction(typeMapper.getBindingContext(), funDescriptor);
+     return new ClosureContext(typeMapper, funDescriptor, classDescriptor, this, localLookup);
+ }
+\ No newline at end of file

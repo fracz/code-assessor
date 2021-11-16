@@ -1,0 +1,14 @@
+diff --git a/02802ca53d375ecb33d6e5f38724670456d2bb96 b/268b1ea25a7c3db3ac8940943f85c2575e6320bc
+index 02802ca53d..268b1ea25a 100644
+--- a/02802ca53d375ecb33d6e5f38724670456d2bb96
++++ b/268b1ea25a7c3db3ac8940943f85c2575e6320bc
+@@ -1,7 +1,7 @@
+ @Test
+ public void assertGetTableShardingStrategyFromDefault() {
+-    ShardingStrategy strategy = createTableShardingStrategy();
++    ShardingStrategy strategy = new NoneShardingStrategy();
+     TableRule tableRule = createTableRule();
+     ShardingRule actual = ShardingRule.builder().dataSourceRule(createDataSourceRule()).tableRules(Collections.singletonList(tableRule)).tableShardingStrategy(strategy).build();
+     assertThat(actual.getTableShardingStrategy(tableRule), is(strategy));
+ }
+\ No newline at end of file

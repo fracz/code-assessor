@@ -1,0 +1,17 @@
+diff --git a/eae44ed73d01365b83b0537ce7d45281c36aa27f b/b16120d81dfbad6e7c3e6f311c0fdcb29d91dc3a
+index eae44ed73d..b16120d81d 100644
+--- a/eae44ed73d01365b83b0537ce7d45281c36aa27f
++++ b/b16120d81dfbad6e7c3e6f311c0fdcb29d91dc3a
+@@ -1,7 +1,5 @@
+-void report(Exception ex) {
+-    if (ex != null) {
+-        if (mErrorCallback != null)
+-            mErrorCallback.onException(ex);
+-    }
+-    onCompleted(ex);
++@Override
++protected void report(Exception e) {
++    super.report(e);
++    onCompleted(e);
+ }
+\ No newline at end of file

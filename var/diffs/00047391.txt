@@ -1,0 +1,13 @@
+diff --git a/778ed7126617eee6ad8a78afad031c4c553c19bd b/740bede4e8ec2e84eddece529b13bb5044dc348e
+index 778ed71266..740bede4e8 100644
+--- a/778ed7126617eee6ad8a78afad031c4c553c19bd
++++ b/740bede4e8ec2e84eddece529b13bb5044dc348e
+@@ -1,5 +1,4 @@
+ @Override
+-public LocalCachedMapOptions<K, V> writer(MapWriter<K, V> writer, org.redisson.api.MapOptions.WriteMode writeMode) {
+-    super.writer(writer, writeMode);
+-    return this;
++public LocalCachedMapOptions<K, V> writer(MapWriter<K, V> writer) {
++    return (LocalCachedMapOptions<K, V>) super.writer(writer);
+ }
+\ No newline at end of file

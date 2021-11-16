@@ -1,0 +1,17 @@
+diff --git a/d7aee924368428a37270fc49319a8e165e0de845 b/eba814a282740360ad8a796a749483cbd561324b
+index d7aee92436..eba814a282 100644
+--- a/d7aee924368428a37270fc49319a8e165e0de845
++++ b/eba814a282740360ad8a796a749483cbd561324b
+@@ -1,10 +1,10 @@
+ protected void initApplication() throws Exception {
+     boolean firstTime = ourApplication == null;
+     ourApplication = IdeaTestApplication.getInstance(null);
+     ourApplication.setDataProvider(this);
+     if (firstTime) {
+         cleanPersistedVFSContent();
+     }
+     // try to remember old sdks as soon as possible after the app instantiation
+-    myOldSdks = ProjectJdkTable.getInstance().getAllJdks();
++    myOldSdks = new SdkLeakTracker();
+ }
+\ No newline at end of file

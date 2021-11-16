@@ -1,0 +1,27 @@
+diff --git a/e5fa82f0d09c9989f0a743907235391f555e204b b/020a8d9c9316ca9ad2ab77fd2148cc10d5036a24
+index e5fa82f0d0..020a8d9c93 100644
+--- a/e5fa82f0d09c9989f0a743907235391f555e204b
++++ b/020a8d9c9316ca9ad2ab77fd2148cc10d5036a24
+@@ -1,19 +1,17 @@
+ @Test
+ public void shouldNotStoreUniquenessConstraintThatIsRemovedInTheSameTransaction() throws Exception {
+     // given
+-    newTransaction();
+-    long label = statement.getOrCreateLabelId("Foo");
+-    long propertyKey = statement.getOrCreatePropertyKeyId("bar");
+-    commit();
++    SchemaStateCheck schemaState = new SchemaStateCheck().setUp();
+     newTransaction();
+     UniquenessConstraint constraint = statement.addUniquenessConstraint(label, propertyKey);
+     // when
+     statement.dropConstraint(constraint);
+     // then
+     assertFalse("should not have any constraints", statement.getConstraints(label, propertyKey).hasNext());
+     // when
+     commit();
+     newTransaction();
+     // then
+     assertFalse("should not have any constraints", statement.getConstraints(label, propertyKey).hasNext());
++    schemaState.assertNotCleared();
+ }
+\ No newline at end of file

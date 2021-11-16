@@ -1,0 +1,21 @@
+diff --git a/72e30aaedc9ddb76390d028d4ac0ac5b7b10cdb3 b/fb904be96e61237cafbcfce9498cd3cb55e4e0d0
+index 72e30aaedc..fb904be96e 100644
+--- a/72e30aaedc9ddb76390d028d4ac0ac5b7b10cdb3
++++ b/fb904be96e61237cafbcfce9498cd3cb55e4e0d0
+@@ -1,14 +1,14 @@
+ public synchronized void setMasterSecret(final MasterSecret masterSecret) {
+     this.masterSecret = masterSecret;
+     foregroundService();
+     broadcastNewSecret();
+     startTimeoutIfAppropriate();
+-    DecryptingQueue.schedulePendingDecrypts(this, masterSecret);
+     new Thread() {
+
+         @Override
+         public void run() {
++            DecryptingQueue.schedulePendingDecrypts(KeyCachingService.this, masterSecret);
+             MessageNotifier.updateNotification(KeyCachingService.this, masterSecret);
+         }
+     }.start();
+ }
+\ No newline at end of file

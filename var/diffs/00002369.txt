@@ -1,0 +1,20 @@
+diff --git a/e1edce831aba046d30ca4e012d3cb8c04bdc3471 b/bd8f7e648e272db10c4a541edd5380715c183f94
+index e1edce831a..bd8f7e648e 100644
+--- a/e1edce831aba046d30ca4e012d3cb8c04bdc3471
++++ b/bd8f7e648e272db10c4a541edd5380715c183f94
+@@ -1,10 +1,7 @@
+-public static boolean canProcess(CompiledPattern compiledPattern, SearchScope scope) {
+-    if (!checkLanguages(getLanguages(compiledPattern))) {
++public static boolean canProcess(CompiledPattern compiledPattern) {
++    Set<Language> patternLanguages = getLanguages(compiledPattern);
++    if (!checkLanguages(patternLanguages)) {
+         return false;
+     }
+-    if (scope instanceof LocalSearchScope) {
+-        PsiElement[] elements = ((LocalSearchScope) scope).getScope();
+-        return checkLanguages(getLanguages(elements));
+-    }
+-    return scope instanceof GlobalSearchScope;
++    return true;
+ }
+\ No newline at end of file

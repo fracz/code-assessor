@@ -1,0 +1,16 @@
+diff --git a/528b4200d6c28b150390787f4bd22c4c0432c357 b/0e71b16db7e182a0015312a908b7c2d09499edcf
+index 528b4200d6..0e71b16db7 100644
+--- a/528b4200d6c28b150390787f4bd22c4c0432c357
++++ b/0e71b16db7e182a0015312a908b7c2d09499edcf
+@@ -1,8 +1,4 @@
+-@NotNull
+ @Override
+-protected CreateFileFromTemplateDialog.Builder buildDialog(Project project, final PsiDirectory directory) {
+-    final CreateFileFromTemplateDialog.Builder builder = CreateFileFromTemplateDialog.createDialog(project, GroovyBundle.message("newscript.dlg.prompt"));
+-    builder.addKind("Groovy script", GroovyIcons.GROOVY_ICON_16x16, "GroovyScript.groovy");
+-    builder.addKind("GroovyDSL script", GroovyIcons.GROOVY_ICON_16x16, GROOVY_DSL_SCRIPT_TMPL);
+-    return builder;
++protected void buildDialog(Project project, PsiDirectory directory, CreateFileFromTemplateDialog.Builder builder) {
++    builder.setTitle(GroovyBundle.message("newscript.dlg.prompt")).addKind("Groovy script", GroovyIcons.GROOVY_ICON_16x16, "GroovyScript.groovy").addKind("GroovyDSL script", GroovyIcons.GROOVY_ICON_16x16, GROOVY_DSL_SCRIPT_TMPL);
+ }
+\ No newline at end of file

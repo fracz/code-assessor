@@ -1,0 +1,24 @@
+diff --git a/2372d7ba0854732384efe7d343a646cc5ec085e9 b/f1d68c708c38db5610002a1c825531e1ca18c9dd
+index 2372d7ba08..f1d68c708c 100644
+--- a/2372d7ba0854732384efe7d343a646cc5ec085e9
++++ b/f1d68c708c38db5610002a1c825531e1ca18c9dd
+@@ -1,11 +1,10 @@
+ @Test
+ public void testSuccessfulLogin() {
+-    final LoginViewModel vm = new LoginViewModel(environment());
+-    final TestSubscriber<Void> loginSuccess = new TestSubscriber<>();
+-    vm.outputs.loginSuccess().subscribe(loginSuccess);
+-    vm.inputs.email("hello@kickstarter.com");
+-    vm.inputs.password("danisawesome");
+-    vm.inputs.loginClick();
+-    loginSuccess.assertValueCount(1);
+-    koalaTest.assertValues("Login");
++    this.vm = new LoginViewModel.ViewModel(environment());
++    this.vm.outputs.loginSuccess().subscribe(this.loginSuccess);
++    this.vm.inputs.email("hello@kickstarter.com");
++    this.vm.inputs.password("codeisawesome");
++    this.vm.inputs.loginClick();
++    this.loginSuccess.assertValueCount(1);
++    this.koalaTest.assertValues("Login");
+ }
+\ No newline at end of file

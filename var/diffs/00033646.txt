@@ -1,0 +1,20 @@
+diff --git a/af8b0029679759a1ef552a77a98ed4ccd24c8bf6 b/c38dd0514ecb8118959c9d69abcef943462fae74
+index af8b002967..c38dd0514e 100644
+--- a/af8b0029679759a1ef552a77a98ed4ccd24c8bf6
++++ b/c38dd0514ecb8118959c9d69abcef943462fae74
+@@ -1,7 +1,10 @@
+ @Override
+-public Configuration attributes(Map<String, String> attributes) {
+-    validateMutation(MutationType.ATTRIBUTES);
+-    ensureAttributes();
+-    this.attributes.putAll(attributes);
++public Configuration attributes(Map<?, ?> attributes) {
++    for (Map.Entry<?, ?> entry : attributes.entrySet()) {
++        Object rawKey = entry.getKey();
++        ConfigurationAttributes.Key<Object> key = Cast.uncheckedCast(asAttribute(rawKey));
++        Object value = entry.getValue();
++        configurationAttributes.attribute(key, value);
++    }
+     return this;
+ }
+\ No newline at end of file

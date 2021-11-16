@@ -1,0 +1,20 @@
+diff --git a/71768989d425c91e5e5e028ba1ca9f235f140492 b/23ba3da68f28883aeaddbba7a7e89dac8ad18779
+index 71768989d4..23ba3da68f 100644
+--- a/71768989d425c91e5e5e028ba1ca9f235f140492
++++ b/23ba3da68f28883aeaddbba7a7e89dac8ad18779
+@@ -1,9 +1,9 @@
+ @Override
+-public List<AstError> visitMethodInvocation(MethodInvocationTree node, VisitorState visitorState) {
+-    AstError error = checker.check(node, visitorState.withPath(getCurrentPath()));
+-    List<AstError> result = new ArrayList<AstError>();
+-    if (error != null) {
+-        result.add(error);
++public List<MatchDescription> visitMethodInvocation(MethodInvocationTree node, VisitorState visitorState) {
++    VisitorState state = visitorState.withPath(getCurrentPath());
++    List<MatchDescription> result = new ArrayList<MatchDescription>();
++    if (checker.matches(node, state)) {
++        result.add(checker.describe(node, state));
+     }
+     return result;
+ }
+\ No newline at end of file

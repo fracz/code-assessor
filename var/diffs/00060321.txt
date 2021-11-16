@@ -1,0 +1,16 @@
+diff --git a/a691422280ac128abf70995ec115c4b2801f9c5d b/ae66cf5c4ba83e67b6f2a449311c54761e5f2542
+index a691422280..ae66cf5c4b 100644
+--- a/a691422280ac128abf70995ec115c4b2801f9c5d
++++ b/ae66cf5c4ba83e67b6f2a449311c54761e5f2542
+@@ -1,6 +1,9 @@
+ @Override
+ public void onEvent(Event event) {
+-    if (event.getType() == ModalDismissedEvent.TYPE) {
++    if (event.getType().equals(ModalDismissedEvent.TYPE)) {
+         layout.onModalDismissed();
++    } else if (event.getType().equals(JsDevReloadEvent.TYPE)) {
++        modalController.destroy();
++        layout.destroy();
+     }
+ }
+\ No newline at end of file

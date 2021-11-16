@@ -1,0 +1,25 @@
+diff --git a/40be7184685b374aec6736be97fc87a653252a3f b/5ecf1fb9a06041a17226123105c5ef32d458cdfd
+index 40be718468..5ecf1fb9a0 100644
+--- a/40be7184685b374aec6736be97fc87a653252a3f
++++ b/5ecf1fb9a06041a17226123105c5ef32d458cdfd
+@@ -1,15 +1,16 @@
+ /**
+  * There is a possible case that current cache update event reflects particular document change. It's also possible that
+  * current object is constructed before document change and we need to normalize 'after change' data later then.
+  * <p/>
+  * This method allows to do that, i.e. it's assumed that current cache update event will be used within the cache that is
+  * bound to the given document and normalizes 'new offsets' if necessary when the document is really changed.
+  *
+  * @param document      document which change caused current cache update event construction
+  * @param foldingModel  fold model to use
+  */
+-public void updateNewOffsetsIfNecessary(@NotNull Document document, @NotNull FoldingModelEx foldingModel) {
++public void updateNewOffsetsIfNecessary(@NotNull Editor editor) {
++    Document document = editor.getDocument();
+     myNewLogicalLinesDiff = document.getLineNumber(myNewExactEndOffset) - document.getLineNumber(myExactStartOffset);
+-    myNewStartOffset = getNotFoldedLineStartOffset(myExactStartOffset, document, foldingModel);
+-    myNewEndOffset = getNotFoldedLineEndOffset(myNewExactEndOffset, document, foldingModel);
++    myNewStartOffset = EditorUtil.getNotFoldedLineStartOffset(editor, myExactStartOffset);
++    myNewEndOffset = EditorUtil.getNotFoldedLineEndOffset(editor, myNewExactEndOffset);
+ }
+\ No newline at end of file

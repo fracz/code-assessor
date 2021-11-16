@@ -1,0 +1,32 @@
+diff --git a/ada7842c1dfaffa3f815797e66d13c866c277782 b/4f4cb3c04879f9b51bd64860cf6bb2e60242485b
+index ada7842c1d..4f4cb3c048 100644
+--- a/ada7842c1dfaffa3f815797e66d13c866c277782
++++ b/4f4cb3c04879f9b51bd64860cf6bb2e60242485b
+@@ -1,25 +1,25 @@
+ public Iterable<Vertex> getVertices(final Direction direction, final String... labels) {
+     return new Iterable<Vertex>() {
+
+         public Iterator<Vertex> iterator() {
+             return new Iterator<Vertex>() {
+
+                 final Iterator<Edge> edges = getEdges(direction).iterator();
+
+                 final Direction opposite = direction.opposite();
+
+                 public void remove() {
+                     throw new UnsupportedOperationException();
+                 }
+
+                 public boolean hasNext() {
+                     return this.edges.hasNext();
+                 }
+
+                 public Vertex next() {
+-                    return this.edges.next().getVertex(opposite);
++                    return this.edges.next().getVertex(this.opposite);
+                 }
+             };
+         }
+     };
+ }
+\ No newline at end of file

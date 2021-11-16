@@ -1,0 +1,25 @@
+diff --git a/b59df4f4e043df841b7b204b5b625ad2b4ff04fb b/f45354c7e90d3de37140fceefbe1695b2f3c99d6
+index b59df4f4e0..f45354c7e9 100644
+--- a/b59df4f4e043df841b7b204b5b625ad2b4ff04fb
++++ b/f45354c7e90d3de37140fceefbe1695b2f3c99d6
+@@ -1,17 +1,15 @@
+ @Override
+ public void subscribe(Subscriber<? super T> s) {
+     if (compareAndSet(false, true)) {
+         Iterator<? extends T> it;
+         try {
+             it = stream.iterator();
+         } catch (Throwable e) {
+-            s.onSubscribe(EmptySubscription.INSTANCE);
+-            s.onError(e);
++            EmptySubscription.error(e, s);
+             return;
+         }
+         s.onSubscribe(new StreamSourceSubscription<>(stream, it, s));
+         return;
+     }
+-    s.onSubscribe(EmptySubscription.INSTANCE);
+-    s.onError(new IllegalStateException("Contents already consumed"));
++    EmptySubscription.error(new IllegalStateException("Contents already consumed"), s);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/caac99456ec1e546e8cb764a19688f916ca7250c b/f958c3f556c0215ab3b12fda2fdadad1ce29a8c5
+index caac99456e..f958c3f556 100644
+--- a/caac99456ec1e546e8cb764a19688f916ca7250c
++++ b/f958c3f556c0215ab3b12fda2fdadad1ce29a8c5
+@@ -1,7 +1,7 @@
+-private SimpleRoutingResult generateRoutingResult(final TableRule tableRule, final Collection<String> routedDataSources, final Collection<String> routedTables) {
+-    SimpleRoutingResult result = new SimpleRoutingResult();
++private RoutingResult generateRoutingResult(final TableRule tableRule, final Collection<String> routedDataSources, final Collection<String> routedTables) {
++    RoutingResult result = new RoutingResult();
+     for (DataNode each : tableRule.getActualDataNodes(routedDataSources, routedTables)) {
+-        result.put(each.getDataSourceName(), new TableUnit(each.getDataSourceName(), logicTableName, each.getTableName()));
++        result.getTableUnits().getTableUnits().add(new TableUnit(each.getDataSourceName(), logicTableName, each.getTableName()));
+     }
+     return result;
+ }
+\ No newline at end of file

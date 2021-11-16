@@ -1,0 +1,20 @@
+diff --git a/a6d6865cd4a87687710090e27fb92874ddd33a0c b/2aab964a7ebcf87e8e45cb1bb754401d1bc2a469
+index a6d6865cd4..2aab964a7e 100644
+--- a/a6d6865cd4a87687710090e27fb92874ddd33a0c
++++ b/2aab964a7ebcf87e8e45cb1bb754401d1bc2a469
+@@ -1,13 +1,13 @@
+ /**
+  * @param line input format:
+  * ab123|-adada 193 352
+  * 123|-             // no parent
+  */
+ @NotNull
+ public static Pair<String, String[]> parseCommitParents(@NotNull String line) {
+     int separatorIndex = nextSeparatorIndex(line, 0);
+     String commitHashStr = line.substring(0, separatorIndex);
+     String parentHashStr = line.substring(separatorIndex + 2, line.length());
+     String[] parentsHashes = parentHashStr.split("\\s");
+-    return new Pair<String, String[]>(commitHashStr, parentsHashes);
++    return Pair.create(commitHashStr, parentsHashes);
+ }
+\ No newline at end of file

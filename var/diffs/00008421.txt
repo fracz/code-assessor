@@ -1,0 +1,18 @@
+diff --git a/c642d7379192e42eac601ddec48b83810ba9d382 b/e4c430df6afeda1db467462236a06a803eeaab6e
+index c642d73791..e4c430df6a 100644
+--- a/c642d7379192e42eac601ddec48b83810ba9d382
++++ b/e4c430df6afeda1db467462236a06a803eeaab6e
+@@ -1,10 +1,11 @@
+ @Override
+ public void visitNewExpression(GrNewExpression newExpression) {
+     super.visitNewExpression(newExpression);
+     if (newExpression.getArrayCount() > 0)
+         return;
+     GrCodeReferenceElement refElement = newExpression.getReferenceElement();
+     if (refElement == null)
+         return;
+-    checkConstructorCall(newExpression, refElement);
++    GrNewExpressionInfo info = new GrNewExpressionInfo(newExpression);
++    checkConstructorCall(info);
+ }
+\ No newline at end of file

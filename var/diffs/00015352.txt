@@ -1,0 +1,17 @@
+diff --git a/39b9c8405924273627dfd8d2f2222a88b495786c b/9dc74196a8d307a0663371bc84f81a53823ea76e
+index 39b9c84059..9dc74196a8 100644
+--- a/39b9c8405924273627dfd8d2f2222a88b495786c
++++ b/9dc74196a8d307a0663371bc84f81a53823ea76e
+@@ -1,10 +1,10 @@
+ @Override
+ public void addFunctionDescriptor(@NotNull SimpleFunctionDescriptor functionDescriptor) {
+-    super.addFunctionDescriptor(functionDescriptor);
++    superBuilder.addFunctionDescriptor(functionDescriptor);
+     functions.add(functionDescriptor);
+     if (functionDescriptor.getKind() != CallableMemberDescriptor.Kind.FAKE_OVERRIDE) {
+         declaredCallableMembers.add(functionDescriptor);
+     }
+     allCallableMembers.add(functionDescriptor);
+     scopeForMemberResolution.addFunctionDescriptor(functionDescriptor);
+ }
+\ No newline at end of file

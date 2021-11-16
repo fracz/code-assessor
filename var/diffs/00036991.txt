@@ -1,0 +1,12 @@
+diff --git a/fff4576b0f958970ce34c0ef5794ae33c1a98f1d b/b137ce46529617ed65094204925242433f8d2128
+index fff4576b0f..b137ce4652 100644
+--- a/fff4576b0f958970ce34c0ef5794ae33c1a98f1d
++++ b/b137ce46529617ed65094204925242433f8d2128
+@@ -1,5 +1,4 @@
+ public static byte[] modify(ClassPool classPool, ClassLoader classLoader, String javassistClassName, byte[] classFileBuffer) {
+-    log("MySQLConnectionImplModifier modifing");
+-    // printClassInfo(javassistClassName);
++    logger.info("MySQLConnectionImplModifier modifing. %s", javassistClassName);
+     return changeMethods(classPool, classLoader, javassistClassName, classFileBuffer);
+ }
+\ No newline at end of file

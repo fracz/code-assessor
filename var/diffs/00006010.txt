@@ -1,0 +1,29 @@
+diff --git a/d74cba2164021b5b90168f35602bd5700af762d4 b/f7544c88a8fdd669d73c98a2f26ca01b33268f08
+index d74cba2164..f7544c88a8 100644
+--- a/d74cba2164021b5b90168f35602bd5700af762d4
++++ b/f7544c88a8fdd669d73c98a2f26ca01b33268f08
+@@ -1,22 +1,22 @@
+ /**
+  * Ensures that offset of the {@link #myCurrentBlock currently processed block} is not increased if we make a wrap on it.
+  *
+  * @return <code>true</code> if it's ok to wrap at the currently processed block; <code>false</code> otherwise
+  */
+ private boolean positionAfterWrappingIsSuitable() {
+     final WhiteSpace whiteSpace = myCurrentBlock.getWhiteSpace();
+     if (whiteSpace.containsLineFeeds())
+         return true;
+     final int spaces = whiteSpace.getSpaces();
+     int indentSpaces = whiteSpace.getIndentSpaces();
+     try {
+         final int startColumnNow = CoreFormatterUtil.getStartColumn(myCurrentBlock);
+         whiteSpace.ensureLineFeed();
+         adjustLineIndent();
+         final int startColumnAfterWrap = CoreFormatterUtil.getStartColumn(myCurrentBlock);
+         return startColumnNow > startColumnAfterWrap;
+     } finally {
+-        whiteSpace.removeLineFeeds(myCurrentBlock.getSpaceProperty(), this);
++        whiteSpace.removeLineFeeds(myCurrentBlock.getSpaceProperty(), myBlockMapperHelper);
+         whiteSpace.setSpaces(spaces, indentSpaces);
+     }
+ }
+\ No newline at end of file

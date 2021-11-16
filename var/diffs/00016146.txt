@@ -1,0 +1,21 @@
+diff --git a/6df1c92d1eed47eab7266b2d2f9140390f3b3c99 b/617d0ddf2f7d0e701e16e8a354621231d6baabce
+index 6df1c92d1e..617d0ddf2f 100644
+--- a/6df1c92d1eed47eab7266b2d2f9140390f3b3c99
++++ b/617d0ddf2f7d0e701e16e8a354621231d6baabce
+@@ -1,12 +1,6 @@
+-@Nullable
++@NotNull
+ private PropertyGetterDescriptor getGetterDescriptor() {
+-    PropertyDescriptor property = getNullablePropertyDescriptor();
+-    if (property == null) {
+-        return null;
+-    }
+-    PropertyGetterDescriptor getter = property.getGetter();
+-    if (getter == null) {
+-        return null;
+-    }
++    PropertyGetterDescriptor getter = propertyDescriptor.getGetter();
++    assert getter != null;
+     return getter;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/9f58e9699649f8e28c591007eaf669fe630969c9 b/a9b01ded72c3c9e5a61efbc898a66a4449e80c50
+index 9f58e96996..a9b01ded72 100644
+--- a/9f58e9699649f8e28c591007eaf669fe630969c9
++++ b/a9b01ded72c3c9e5a61efbc898a66a4449e80c50
+@@ -1,7 +1,7 @@
+ public void test_0() throws Exception {
+     String sql = "SHOW WARNINGS;";
+     SQLStatementParser parser = new MySqlStatementParser(sql);
+     List<SQLStatement> stmtList = parser.parseStatementList();
+-    String text = output(stmtList);
+-    Assert.assertEquals("SHOW WARNINGS;", text);
++    String text = SQLUtils.toSQLString(stmtList, JdbcConstants.MYSQL);
++    assertEquals("SHOW WARNINGS;", text);
+ }
+\ No newline at end of file

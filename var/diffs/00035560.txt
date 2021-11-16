@@ -1,0 +1,17 @@
+diff --git a/34d498a61d0f0f2754b86dd36711fd30233d1052 b/98a0b88469c39a0fd88f6ee0d1303205259a98a3
+index 34d498a61d..98a0b88469 100644
+--- a/34d498a61d0f0f2754b86dd36711fd30233d1052
++++ b/98a0b88469c39a0fd88f6ee0d1303205259a98a3
+@@ -1,7 +1,8 @@
+ protected void sendMessage(Message msg) {
+-    if (handler != null) {
+-        handler.sendMessage(msg);
+-    } else {
++    if (forceSynchronous || handler == null) {
+         handleMessage(msg);
++    } else if (!Thread.currentThread().isInterrupted()) {
++        // do not send messages if request has been cancelled
++        handler.sendMessage(msg);
+     }
+ }
+\ No newline at end of file

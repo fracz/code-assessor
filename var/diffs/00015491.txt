@@ -1,0 +1,19 @@
+diff --git a/420acc85481546bc5045b8b9609f92a039ac6166 b/e762bc05ec423b61b052bfc36d1208beeb3d074f
+index 420acc8548..e762bc05ec 100644
+--- a/420acc85481546bc5045b8b9609f92a039ac6166
++++ b/e762bc05ec423b61b052bfc36d1208beeb3d074f
+@@ -1,12 +1,12 @@
+ private void genGetStaticGetTypeInfoMethod() {
+     final MethodVisitor mv = v.newMethod(myClass, Opcodes.ACC_PUBLIC, "getTypeInfo", "()Ljet/typeinfo/TypeInfo;", null, null);
+     if (v.generateCode()) {
+         mv.visitCode();
+         InstructionAdapter v = new InstructionAdapter(mv);
+-        String owner = state.getTypeMapper().jvmName(descriptor, OwnerKind.IMPLEMENTATION);
++        String owner = typeMapper.mapType(descriptor.getDefaultType(), OwnerKind.IMPLEMENTATION).getInternalName();
+         v.getstatic(owner, "$staticTypeInfo", "Ljet/typeinfo/TypeInfo;");
+         v.areturn(JetTypeMapper.TYPE_TYPEINFO);
+         mv.visitMaxs(0, 0);
+         mv.visitEnd();
+     }
+ }
+\ No newline at end of file

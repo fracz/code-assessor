@@ -1,0 +1,31 @@
+diff --git a/158732f6f4041d9fe4f8594dbaa072fe097462a9 b/fd3391b5ed8715425685e87355302c1844644cae
+index 158732f6f4..fd3391b5ed 100644
+--- a/158732f6f4041d9fe4f8594dbaa072fe097462a9
++++ b/fd3391b5ed8715425685e87355302c1844644cae
+@@ -1,18 +1,22 @@
+ /**
+- * Flattens input collections (including arrays).
++ * Flattens input collections (including arrays *but* not maps).
+  * If input is not a collection wraps it in a collection and returns it.
+  * @param input any object
+  * @return collection of flattened input or single input wrapped in a collection.
+  */
+ public static Collection normalize(Object input) {
+     // TODO SF - do we even need it given there's a flatten() method in groovy?
+     if (input == null) {
+         return emptyList();
+     } else if (input instanceof Collection) {
+-        return flatten((Collection) input);
++        Collection out = new LinkedList();
++        flatten((Collection) input, out, false, true);
++        return out;
+     } else if (input.getClass().isArray()) {
+-        return flatten(asList((Object[]) input));
++        Collection out = new LinkedList();
++        flatten(asList((Object[]) input), out, false, true);
++        return out;
+     } else {
+         return asList(input);
+     }
+ }
+\ No newline at end of file

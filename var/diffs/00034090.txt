@@ -1,0 +1,13 @@
+diff --git a/55a45d530678a608b9f4f283acc7c7ce4a875b70 b/1a903365b059d70d2742b0850350ca3db0953832
+index 55a45d5306..1a903365b0 100644
+--- a/55a45d530678a608b9f4f283acc7c7ce4a875b70
++++ b/1a903365b059d70d2742b0850350ca3db0953832
+@@ -1,6 +1,3 @@
+ public void startNewDay() {
+-    for (DwarvenMineWorker worker : workers) {
+-        worker.wakeUp();
+-        worker.goToMine();
+-    }
++    makeActions(workers, DwarvenMineWorker.Action.WAKE_UP, DwarvenMineWorker.Action.GO_TO_MINE);
+ }
+\ No newline at end of file

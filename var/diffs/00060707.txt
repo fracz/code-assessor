@@ -1,0 +1,15 @@
+diff --git a/fd4b0954646624755667ee154d1688aea8ca64d8 b/c0b2fa41eb90a2eb256508477b986bf4f4c2a240
+index fd4b095464..c0b2fa41eb 100644
+--- a/fd4b0954646624755667ee154d1688aea8ca64d8
++++ b/c0b2fa41eb90a2eb256508477b986bf4f4c2a240
+@@ -1,7 +1,7 @@
+ // Embed the lonely dark dot at left bottom corner. JISX0510:2004 (p.46)
+ private static void embedDarkDotAtLeftBottomCorner(ByteMatrix matrix) throws WriterException {
+-    if (matrix.get(matrix.height() - 8, 8) == 0) {
++    if (matrix.get(8, matrix.height() - 8) == 0) {
+         throw new WriterException();
+     }
+-    matrix.set(matrix.height() - 8, 8, 1);
++    matrix.set(8, matrix.height() - 8, 1);
+ }
+\ No newline at end of file

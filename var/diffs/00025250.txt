@@ -1,0 +1,21 @@
+diff --git a/fb9fedf46a086324e9d453b1b8559f1fa114e2cb b/25ec3840ee01e0e2c5904850709847cc3ef3dfc0
+index fb9fedf46a..25ec3840ee 100644
+--- a/fb9fedf46a086324e9d453b1b8559f1fa114e2cb
++++ b/25ec3840ee01e0e2c5904850709847cc3ef3dfc0
+@@ -1,11 +1,9 @@
+ @Override
+-public synchronized V delete(final K key) {
++public synchronized byte[] delete(final Bytes key) {
+     validateStoreOpen();
+     Objects.requireNonNull(key);
+-    final byte[] rawKey = serdes.rawKey(key);
+-    final Bytes bytesKey = Bytes.wrap(rawKey);
+-    final V v = get(rawKey);
+-    cache.delete(cacheName, bytesKey);
+-    underlying.delete(bytesKey);
++    final byte[] v = getInternal(key);
++    cache.delete(cacheName, key);
++    underlying.delete(key);
+     return v;
+ }
+\ No newline at end of file

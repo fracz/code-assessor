@@ -1,0 +1,18 @@
+diff --git a/41d94ae7eed45d7dcfc2b439f249664681fcac0e b/1b6714871a38e6527de1095a4762adfc9d50ee9f
+index 41d94ae7ee..1b6714871a 100644
+--- a/41d94ae7eed45d7dcfc2b439f249664681fcac0e
++++ b/1b6714871a38e6527de1095a4762adfc9d50ee9f
+@@ -1,11 +1,7 @@
+-/**
+- * Sets the value of this slider
+- * @param value the value
+- */
+ public void setValue(float value) {
+     if (value < min || value > max)
+-        throw new IllegalArgumentException("value must be >= min && <= max");
++        throw new IllegalArgumentException("value must be >= min and <= max: " + value);
+     this.value = value;
+     if (listener != null)
+         listener.changed(this, getValue());
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/d7e6f2324a3b18d65900059624ad143d251caff0 b/bcf42480fb7785184ed20ebc7f4e22b25ce5ccb1
+index d7e6f2324a..bcf42480fb 100644
+--- a/d7e6f2324a3b18d65900059624ad143d251caff0
++++ b/bcf42480fb7785184ed20ebc7f4e22b25ce5ccb1
+@@ -1,8 +1,3 @@
+ protected int getMinimumIdleSize(SubscribesConnectionEntry entry) {
+-    int minimumIdleSize = config.getSlaveConnectionMinimumIdleSize();
+-    // is it a master connection pool?
+-    if (entry.getNodeType() == NodeType.MASTER && loadBalancer == null) {
+-        minimumIdleSize = config.getMasterConnectionMinimumIdleSize();
+-    }
+-    return minimumIdleSize;
++    return config.getSlaveConnectionMinimumIdleSize();
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/148adab757b14b0b6200827ec35d195435fb8e88 b/410b6fa63589149f397504471345fa5ce32bf707
+index 148adab757..410b6fa635 100644
+--- a/148adab757b14b0b6200827ec35d195435fb8e88
++++ b/410b6fa63589149f397504471345fa5ce32bf707
+@@ -1,7 +1,7 @@
+ public void actionPerformed(AnActionEvent e) {
+-    final JComponent component = (JComponent) e.getDataContext().getData(DataConstants.CONTEXT_COMPONENT);
++    final Component component = PlatformDataKeys.CONTEXT_COMPONENT.getData(e.getDataContext());
+     if (component instanceof JTextComponent) {
+         final JTextComponent textComponent = (JTextComponent) component;
+         textComponent.setText("");
+     }
+ }
+\ No newline at end of file

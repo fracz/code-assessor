@@ -1,0 +1,19 @@
+diff --git a/963edead5e917d76262b17af1c7a89c964656982 b/588eca65efbb2eb4ea05bbf33305322afd75ca1f
+index 963edead5e..588eca65ef 100644
+--- a/963edead5e917d76262b17af1c7a89c964656982
++++ b/588eca65efbb2eb4ea05bbf33305322afd75ca1f
+@@ -1,12 +1,12 @@
+ /* IO failure on close */
+ @Test
+ public void mustRetryCloseIfFailure() throws Exception {
+     // GIVEN
+     AtomicBoolean throwOnNext = new AtomicBoolean();
+     IOException exception = new IOException("My failure");
+     PageCache pageCache = pageCacheThatThrowExceptionWhenToldTo(exception, throwOnNext);
+-    try (GBPTree<MutableLong, MutableLong> index = new GBPTreeBuilder<>(pageCache, indexFile, layout).build()) {
++    try (GBPTree<MutableLong, MutableLong> index = index(pageCache).build()) {
+         // WHEN
+         throwOnNext.set(true);
+     }
+ }
+\ No newline at end of file

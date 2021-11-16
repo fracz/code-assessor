@@ -1,0 +1,20 @@
+diff --git a/ed2aeef044835b5c7a33abd544d0310d86fb10ff b/8f21f5c62251c6fd2849a4c8e05cedde5bca0252
+index ed2aeef044..8f21f5c622 100644
+--- a/ed2aeef044835b5c7a33abd544d0310d86fb10ff
++++ b/8f21f5c62251c6fd2849a4c8e05cedde5bca0252
+@@ -1,13 +1,13 @@
+ /**
+  * Calculate activation from previous layer including pre processing where necessary
+  *
+  * @param curr  the current layer
+  * @param input the input
+  * @return the activation from the previous layer
+  */
+ public INDArray activationFromPrevLayer(int curr, INDArray input, boolean training) {
+     if (getLayerWiseConfigurations().getInputPreProcess(curr) != null)
+-        input = getLayerWiseConfigurations().getInputPreProcess(curr).preProcess(input, layers[curr]);
++        input = getLayerWiseConfigurations().getInputPreProcess(curr).preProcess(input, getInputMiniBatchSize());
+     INDArray ret = layers[curr].activate(input, training);
+     return ret;
+ }
+\ No newline at end of file

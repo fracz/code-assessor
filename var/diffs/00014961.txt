@@ -1,0 +1,12 @@
+diff --git a/9b3e7b43aec6a2e27347eae191e7ce30969d2ebd b/ff6debb9e82f8906a9a2c95c2d4f15e7a89b26f5
+index 9b3e7b43ae..ff6debb9e8 100644
+--- a/9b3e7b43aec6a2e27347eae191e7ce30969d2ebd
++++ b/ff6debb9e82f8906a9a2c95c2d4f15e7a89b26f5
+@@ -1,3 +1,5 @@
++@Nullable
+ public static ItemPresentation getItemPresentation(NavigationItem element) {
+-    return getItemPresentationProvider(element).getPresentation(element);
++    final ItemPresentationProvider<NavigationItem> provider = getItemPresentationProvider(element);
++    return provider != null ? provider.getPresentation(element) : null;
+ }
+\ No newline at end of file

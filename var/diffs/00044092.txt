@@ -1,0 +1,17 @@
+diff --git a/8ee14db7ab0861fa5df6cf71348500ade553f7a9 b/f8f7d3f77fa1e7013c6fb96795d293618683a21e
+index 8ee14db7ab..f8f7d3f77f 100644
+--- a/8ee14db7ab0861fa5df6cf71348500ade553f7a9
++++ b/f8f7d3f77fa1e7013c6fb96795d293618683a21e
+@@ -1,9 +1,5 @@
+ @Override
+ public Boolean read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
+-    byte result = 0;
+-    result = network.readByte();
+-    if (result == 1) {
+-        return true;
+-    }
+-    return false;
++    result = network.readByte() != 0;
++    return result;
+ }
+\ No newline at end of file

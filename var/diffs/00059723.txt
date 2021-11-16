@@ -1,0 +1,15 @@
+diff --git a/e4f91c2e0d8bf06fb143d2cf02bbc68ece950e3a b/7cf9c30c7afb279a9c0b4deea56575e8e399c92e
+index e4f91c2e0d..7cf9c30c7a 100644
+--- a/e4f91c2e0d8bf06fb143d2cf02bbc68ece950e3a
++++ b/7cf9c30c7afb279a9c0b4deea56575e8e399c92e
+@@ -1,7 +1,7 @@
+-private static void sleepAndConvertInterrupts(final long millis) throws StorageException {
++private void sleepAndConvertInterrupts(Duration d) throws StorageException {
+     try {
+-        Timestamps.MILLI.sleepPast(millis, TimeUnit.MILLISECONDS);
++        times.sleepPast(times.getTime().add(d));
+     } catch (InterruptedException e) {
+         throw new PermanentStorageException(e);
+     }
+ }
+\ No newline at end of file

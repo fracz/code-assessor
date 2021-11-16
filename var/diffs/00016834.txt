@@ -1,0 +1,17 @@
+diff --git a/5aea3798e0c45718adbcd856035752a490838b63 b/d5405f579cfd1f8fa75086e458a7f520f0ecec54
+index 5aea3798e0..d5405f579c 100644
+--- a/5aea3798e0c45718adbcd856035752a490838b63
++++ b/d5405f579cfd1f8fa75086e458a7f520f0ecec54
+@@ -1,9 +1,10 @@
+ @NotNull
+ private JsExpression translateAsEqualsCall() {
+-    Intrinsic intrinsic = context().intrinsics().getIntrinsic(getOperationDescriptor(expression, context()));
++    assert operationDescriptor != null : "Equals operation must resolve to descriptor.";
++    Intrinsic intrinsic = context().intrinsics().getIntrinsic(operationDescriptor);
+     // TODO
+     ((EqualsIntrinsic) intrinsic).setNegated(expression.getOperationToken().equals(JetTokens.EXCLEQ));
+     JsExpression left = translateLeftExpression(context(), expression);
+     JsExpression right = translateRightExpression(context(), expression);
+     return intrinsic.apply(left, Arrays.asList(right), context());
+ }
+\ No newline at end of file

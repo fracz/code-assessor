@@ -1,0 +1,13 @@
+diff --git a/2b5f99ae0ca6c5392635c2be71548464a41355d3 b/25952a907a31489121463d4fa41c80fa8ff5b8ab
+index 2b5f99ae0c..25952a907a 100644
+--- a/2b5f99ae0ca6c5392635c2be71548464a41355d3
++++ b/25952a907a31489121463d4fa41c80fa8ff5b8ab
+@@ -1,4 +1,5 @@
+ private TraceContext getDefaultTraceContext() {
+-    DefaultTraceContext defaultTraceContext = new DefaultTraceContext(new TestAgentInformation());
+-    return defaultTraceContext;
++    ProfilerConfig profilerConfig = new DefaultProfilerConfig();
++    TraceContext traceContext = MockTraceContextFactory.newTestTraceContext(profilerConfig);
++    return traceContext;
+ }
+\ No newline at end of file

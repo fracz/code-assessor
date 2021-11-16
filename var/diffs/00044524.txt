@@ -1,0 +1,19 @@
+diff --git a/c9c62ef23e3855e583cf3259065164103cbb8467 b/405e8d62e09e6cb77e335d2c792af4bd5d6833b8
+index c9c62ef23e..405e8d62e0 100644
+--- a/c9c62ef23e3855e583cf3259065164103cbb8467
++++ b/405e8d62e09e6cb77e335d2c792af4bd5d6833b8
+@@ -1,10 +1,10 @@
+ /**
+  * Returns the list of databases on the connected remote server.
+  *
+  * @throws IOException
+  */
+ public synchronized Map<String, String> listDatabases() throws IOException {
+-    OBinaryRequest request = new OListDatabasesRequest();
+-    OBinaryResponse<Map<String, String>> response = new OListDatabasesReponse();
+-    return networkAdminOperation(request, response, "Cannot retrieve the configuration list");
++    OListDatabasesRequest request = new OListDatabasesRequest();
++    OListDatabasesReponse response = networkAdminOperation(request, "Cannot retrieve the configuration list");
++    return response.getDatabases();
+ }
+\ No newline at end of file

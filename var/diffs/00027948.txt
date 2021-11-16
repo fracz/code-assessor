@@ -1,0 +1,14 @@
+diff --git a/e31d45b8763e3ce10b27ef66fea49664a9f1e798 b/ea9b9e375308d98a14b4349b87c5a5a9c9479582
+index e31d45b876..ea9b9e3753 100644
+--- a/e31d45b8763e3ce10b27ef66fea49664a9f1e798
++++ b/ea9b9e375308d98a14b4349b87c5a5a9c9479582
+@@ -1,6 +1,6 @@
+ @Override
+ public Promise<Status> getStatus(DevMachine devMachine, Path project) {
+     final String params = "?projectPath=" + project.toString() + "&format=" + PORCELAIN;
+-    final String url = devMachine.getWsAgentBaseUrl() + STATUS + params;
+-    return asyncRequestFactory.createPostRequest(url, null).loader(loader).header(CONTENTTYPE, APPLICATION_JSON).header(ACCEPT, APPLICATION_JSON).send(dtoUnmarshallerFactory.newUnmarshaller(Status.class));
++    final String url = appContext.getDevMachine().getWsAgentBaseUrl() + STATUS + params;
++    return asyncRequestFactory.createGetRequest(url).loader(loader).header(CONTENTTYPE, APPLICATION_JSON).header(ACCEPT, APPLICATION_JSON).send(dtoUnmarshallerFactory.newUnmarshaller(Status.class));
+ }
+\ No newline at end of file

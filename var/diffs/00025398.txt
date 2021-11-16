@@ -1,0 +1,17 @@
+diff --git a/d145da321da6db3440fbc02e1d9f7d8c066a8157 b/924c7f506d03fa90ff3ff77b790756e7b92d07a0
+index d145da321d..924c7f506d 100644
+--- a/d145da321da6db3440fbc02e1d9f7d8c066a8157
++++ b/924c7f506d03fa90ff3ff77b790756e7b92d07a0
+@@ -1,6 +1,8 @@
+ private void clearPunctuationState(ProcessorNode processorNode) {
+-    Set<String> state = punctuationState.get(processorNode);
+-    if (state != null) {
+-        state.clear();
++    if (!punctuationState.isEmpty()) {
++        Map<String, Integer> state = punctuationState.row(processorNode);
++        if (!state.isEmpty()) {
++            state.clear();
++        }
+     }
+ }
+\ No newline at end of file

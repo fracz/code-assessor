@@ -1,0 +1,14 @@
+diff --git a/5b04b7a89d72ed9ca0a4e906798c047862c5295a b/0a49d37beeba78f8f3560f3ae75d6a03dc035da2
+index 5b04b7a89d..0a49d37bee 100644
+--- a/5b04b7a89d72ed9ca0a4e906798c047862c5295a
++++ b/0a49d37beeba78f8f3560f3ae75d6a03dc035da2
+@@ -1,7 +1,7 @@
+ @Test
+ public void testPreProcessorBackprop3to2() {
+     ReshapePreProcessor processor = new ReshapePreProcessor(new int[] { 1, 784, 7 }, new int[] { 1, 5488 });
+-    INDArray check3to2 = processor.backprop(in3D, null);
++    INDArray check3to2 = processor.backprop(in3D, -1);
+     int val3to2 = check3to2.shape().length;
+     assertTrue(val3to2 == 3);
+ }
+\ No newline at end of file

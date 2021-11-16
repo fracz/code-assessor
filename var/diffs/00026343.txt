@@ -1,0 +1,21 @@
+diff --git a/c1c9d98ab6d185deea04bd98eafca694fb3b60ad b/04e228f7a1c5290d03df1354b40a3d9d1dc7b109
+index c1c9d98ab6..04e228f7a1 100644
+--- a/c1c9d98ab6d185deea04bd98eafca694fb3b60ad
++++ b/04e228f7a1c5290d03df1354b40a3d9d1dc7b109
+@@ -1,13 +1,12 @@
+ /**
+  * Gets the list of directories that the spawn will assume to be writable.
+  *
+  * @throws IOException because we might resolve symlinks, which throws {@link IOException}.
+  */
+ protected ImmutableSet<Path> getWritableDirs(Path sandboxExecRoot, Map<String, String> env) throws IOException {
+-    Builder<Path> writableDirs = ImmutableSet.builder();
+     // We have to make the TEST_TMPDIR directory writable if it is specified.
+     if (env.containsKey("TEST_TMPDIR")) {
+-        writableDirs.add(sandboxExecRoot.getRelative(env.get("TEST_TMPDIR")));
++        return ImmutableSet.of(sandboxExecRoot.getRelative(env.get("TEST_TMPDIR")));
+     }
+-    return writableDirs.build();
++    return ImmutableSet.of();
+ }
+\ No newline at end of file

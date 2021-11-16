@@ -1,0 +1,12 @@
+diff --git a/227bef99e01e35b290f4875459bb353250bf7914 b/4339a3e09eae61a6f1df02d28db85403d51468bd
+index 227bef99e0..4339a3e09e 100644
+--- a/227bef99e01e35b290f4875459bb353250bf7914
++++ b/4339a3e09eae61a6f1df02d28db85403d51468bd
+@@ -1,4 +1,4 @@
+-public static int getDefaultGcBefore(ColumnFamilyStore cfs) {
++public static int getDefaultGcBefore(ColumnFamilyStore cfs, int nowInSec) {
+     // add any GcGrace however since 2ndary indexes are local to a node.
+-    return cfs.isIndex() ? (int) (System.currentTimeMillis() / 1000) : cfs.gcBefore(System.currentTimeMillis());
++    return cfs.isIndex() ? nowInSec : cfs.gcBefore(nowInSec);
+ }
+\ No newline at end of file

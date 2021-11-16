@@ -1,0 +1,12 @@
+diff --git a/250b321e38a356e51d7c1d1b85a8f3e2f0945b8d b/56ae0ffe63bf65a1e3c871953604bfba266b0751
+index 250b321e38..56ae0ffe63 100644
+--- a/250b321e38a356e51d7c1d1b85a8f3e2f0945b8d
++++ b/56ae0ffe63bf65a1e3c871953604bfba266b0751
+@@ -1,4 +1,5 @@
+ @NotNull
+ public String getText() {
+-    return XmlErrorMessages.message(myInJsp ? "create.taglib.declaration.quickfix" : "create.namespace.declaration.quickfix");
++    final String alias = StringUtil.capitalize(XmlExtension.getExtension(myFile).getNamespaceAlias());
++    return XmlErrorMessages.message("create.namespace.declaration.quickfix", alias);
+ }
+\ No newline at end of file

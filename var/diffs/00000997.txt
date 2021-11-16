@@ -1,0 +1,13 @@
+diff --git a/19e3fabf97ac5bb3fc620f3def485050b8d867c4 b/983c56d58abada0f3125f1a656ffe0194b327076
+index 19e3fabf97..983c56d58a 100644
+--- a/19e3fabf97ac5bb3fc620f3def485050b8d867c4
++++ b/983c56d58abada0f3125f1a656ffe0194b327076
+@@ -1,6 +1,6 @@
+ public Collection<LookupCache> getCaches(Set<String> cacheNames) {
+     if (cacheNames == null) {
+         return Collections.emptySet();
+     }
+-    return liveCaches.entrySet().stream().filter(e -> cacheNames.contains(e.getKey())).map(Map.Entry::getValue).collect(Collectors.toSet());
++    return cacheNames.stream().map(liveCaches::get).filter(Objects::nonNull).collect(Collectors.toSet());
+ }
+\ No newline at end of file

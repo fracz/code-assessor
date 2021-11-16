@@ -1,0 +1,21 @@
+diff --git a/43dbf07a4f6f0e4a2df51569774b72b84ec130ba b/2b5566487432cb237176c2dba6c27a222c2a01bc
+index 43dbf07a4f..2b55664874 100644
+--- a/43dbf07a4f6f0e4a2df51569774b72b84ec130ba
++++ b/2b5566487432cb237176c2dba6c27a222c2a01bc
+@@ -1,9 +1,10 @@
+-private Breakpoint findBreakpoint(DataContext dataContext) {
+-    Project project = (Project) dataContext.getData(DataConstants.PROJECT);
++@Nullable
++private static Breakpoint findBreakpoint(final Project project) {
+     Editor editor = FileEditorManager.getInstance(project).getSelectedTextEditor();
+-    if (editor == null)
++    if (editor == null) {
+         return null;
+-    BreakpointManager manager = (DebuggerManagerEx.getInstanceEx(project)).getBreakpointManager();
++    }
++    BreakpointManager manager = DebuggerManagerEx.getInstanceEx(project).getBreakpointManager();
+     int offset = editor.getCaretModel().getOffset();
+-    return manager.findBreakpoint(editor.getDocument(), offset);
++    return manager.findBreakpoint(editor.getDocument(), offset, null);
+ }
+\ No newline at end of file

@@ -1,0 +1,23 @@
+diff --git a/545491d310fc8233e350aac7126e25a944a4401e b/d9506b4dc94f02488939008672255d55458324d8
+index 545491d310..d9506b4dc9 100644
+--- a/545491d310fc8233e350aac7126e25a944a4401e
++++ b/d9506b4dc94f02488939008672255d55458324d8
+@@ -1,14 +1,10 @@
+ @NotNull
+-protected InspectionGadgetsFix[] buildFixes(PsiElement location) {
+-    final PsiElement parent = location.getParent();
+-    final Collection<PsiClass> weakestClasses = calculateWeakestClassesNecessary(parent, useRighthandTypeAsWeakestTypeInAssignments);
+-    if (weakestClasses.isEmpty()) {
+-        return InspectionGadgetsFix.EMPTY_ARRAY;
+-    }
++protected InspectionGadgetsFix[] buildFixes(Object... infos) {
++    final Iterable<PsiClass> weakerClasses = (Iterable<PsiClass>) infos[1];
+     final Collection<InspectionGadgetsFix> fixes = new ArrayList();
+-    for (PsiClass weakestClass : weakestClasses) {
++    for (PsiClass weakestClass : weakerClasses) {
+         final String qualifiedName = weakestClass.getQualifiedName();
+         fixes.add(new TypeMayBeWeakenedFix(qualifiedName));
+     }
+     return fixes.toArray(new InspectionGadgetsFix[fixes.size()]);
+ }
+\ No newline at end of file

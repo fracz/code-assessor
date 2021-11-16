@@ -1,0 +1,18 @@
+diff --git a/e5b3fccce102344697aff0fc504272ec1c736350 b/ad06abcfc06b9b23832d0c89deddfd5d426e0740
+index e5b3fccce1..ad06abcfc0 100644
+--- a/e5b3fccce102344697aff0fc504272ec1c736350
++++ b/ad06abcfc06b9b23832d0c89deddfd5d426e0740
+@@ -1,7 +1,8 @@
+-public void ensureStateInfo(RandomAccessFile lockFileAccess) throws IOException {
+-    if (lockFileAccess.length() < protocol.getSize()) {
+-        // File did not exist before locking
++public StateInfo ensureStateInfo(RandomAccessFile lockFileAccess) throws IOException {
++    if (lockFileAccess.length() == 0) {
+         // TODO SF add coverage that we're actually marking dirty here
+-        markDirty(lockFileAccess);
++        return markDirty(lockFileAccess);
++    } else {
++        return readStateInfo(lockFileAccess);
+     }
+ }
+\ No newline at end of file

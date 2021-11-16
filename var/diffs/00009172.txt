@@ -1,0 +1,17 @@
+diff --git a/ac202c8cee130ff520fb117ebfed8f9fb99fedaf b/e1e69e05b5ac4d8f88929eaef4c92079f5f0b9d8
+index ac202c8cee..e1e69e05b5 100644
+--- a/ac202c8cee130ff520fb117ebfed8f9fb99fedaf
++++ b/e1e69e05b5ac4d8f88929eaef4c92079f5f0b9d8
+@@ -1,8 +1,10 @@
+ public PsiType getUpperBound() {
+     final PsiType bound = myExistential.getBound();
+     if (myExistential.isExtends()) {
+         return bound;
++    } else if (bound instanceof PsiCapturedWildcardType) {
++        return PsiWildcardType.createSuper(myContext.getManager(), ((PsiCapturedWildcardType) bound).getUpperBound());
+     } else {
+-        return bound instanceof PsiCapturedWildcardType ? PsiWildcardType.createSuper(myContext.getManager(), ((PsiCapturedWildcardType) bound).getUpperBound()) : PsiType.getJavaLangObject(myContext.getManager(), getResolveScope());
++        return PsiType.getJavaLangObject(myContext.getManager(), getResolveScope());
+     }
+ }
+\ No newline at end of file

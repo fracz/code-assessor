@@ -1,0 +1,38 @@
+diff --git a/9f327a248a13fe608527761233c011fe2617d24c b/de5abfe5af93a2556e2baa0e025a447dec184e7e
+index 9f327a248a..de5abfe5af 100644
+--- a/9f327a248a13fe608527761233c011fe2617d24c
++++ b/de5abfe5af93a2556e2baa0e025a447dec184e7e
+@@ -1,20 +1,28 @@
+ /**
+  * Decodes image from URL into {@link Bitmap}. Image is scaled close to incoming {@link ImageSize image size} during
+  * decoding. Initial image size is reduced by the power of 2 (according Android recommendations)
+  *
+  * @param imageUrl
+  * Image URL (<b>i.e.:</b> "http://site.com/image.png", "file:///mnt/sdcard/image.png")
+  * @param targetImageSize
+  * Image size to scale to during decoding
+  * @return Decoded bitmap
+  * @throws IOException
+  */
+ public static Bitmap decodeFile(URL imageUrl, ImageSize targetImageSize) throws IOException {
+     InputStream is = imageUrl.openStream();
+-    Options decodeOptions = getBitmapOptionsForImageDecoding(is, targetImageSize);
+-    is.close();
++    Options decodeOptions;
++    try {
++        decodeOptions = getBitmapOptionsForImageDecoding(is, targetImageSize);
++    } finally {
++        is.close();
++    }
+     is = imageUrl.openStream();
+-    Bitmap result = decodeImageStream(is, decodeOptions);
+-    is.close();
++    Bitmap result;
++    try {
++        result = BitmapFactory.decodeStream(is, null, decodeOptions);
++    } finally {
++        is.close();
++    }
+     return result;
+ }
+\ No newline at end of file

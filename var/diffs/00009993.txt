@@ -1,0 +1,19 @@
+diff --git a/5a05747588f0ce4c87b8b754e828caabeaa35d41 b/3cc46e57eb5e7a34233820eb85e5e0347d145c95
+index 5a05747588..3cc46e57eb 100644
+--- a/5a05747588f0ce4c87b8b754e828caabeaa35d41
++++ b/3cc46e57eb5e7a34233820eb85e5e0347d145c95
+@@ -1,12 +1,12 @@
+ @Nullable
+ public static HighlightInfo checkEnumInstantiation(PsiNewExpression expression) {
+     final PsiType type = expression.getType();
+     if (type instanceof PsiClassType) {
+         final PsiClass aClass = ((PsiClassType) type).resolve();
+         if (aClass != null && aClass.isEnum()) {
+             String description = JavaErrorMessages.message("enum.types.cannot.be.instantiated");
+-            return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, expression, description);
++            return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(expression).descriptionAndTooltip(description).create();
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

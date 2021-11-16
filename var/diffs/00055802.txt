@@ -1,0 +1,14 @@
+diff --git a/570afca0e187daf2a74788f6c4cca72ee5f8107e b/ddf642c4595f749174d2fc5e1e14f7986e90000d
+index 570afca0e1..ddf642c459 100644
+--- a/570afca0e187daf2a74788f6c4cca72ee5f8107e
++++ b/ddf642c4595f749174d2fc5e1e14f7986e90000d
+@@ -1,6 +1,6 @@
+ @Test
+-public void writeStringBuilder() throws InterruptedException {
++public void writeStringBuilder() {
+     Flux<StringBuilder> stringBuilderFlux = Flux.just(new StringBuilder("foo"));
+     Flux<DataBuffer> output = Flux.from(this.encoder.encode(stringBuilderFlux, this.bufferFactory, null, null, Collections.emptyMap()));
+-    TestSubscriber.subscribe(output).assertNoError().assertComplete().assertValuesWith(stringConsumer("foo"));
++    ScriptedSubscriber.<DataBuffer>create().consumeNextWith(stringConsumer("foo")).expectComplete().verify(output);
+ }
+\ No newline at end of file

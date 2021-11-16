@@ -1,0 +1,17 @@
+diff --git a/8903f8f29609c67ce60db93dd72fdb23fc0f2cd0 b/21839504b41d7ed78ef0b88a71b488c6ca967af7
+index 8903f8f296..21839504b4 100644
+--- a/8903f8f29609c67ce60db93dd72fdb23fc0f2cd0
++++ b/21839504b41d7ed78ef0b88a71b488c6ca967af7
+@@ -1,10 +1,7 @@
+ @NotNull
+ @Override
+ protected Map<String, EntryInfo> createEntriesMap() throws IOException {
+-    FileAccessorCache.Handle<ZipFile> existingZipRef = getCachedZipFileHandle(true);
+-    try {
++    try (ResourceHandle<ZipFile> existingZipRef = acquireZipHandle()) {
+         return buildEntryMapForZipFile(existingZipRef.get());
+-    } finally {
+-        existingZipRef.release();
+     }
+ }
+\ No newline at end of file

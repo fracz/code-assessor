@@ -1,0 +1,22 @@
+diff --git a/bdac38a140980b673ff8f7fc0334a075ae86e043 b/899dfa61f33b6fb0e34b4d257385b3562ffb93b9
+index bdac38a140..899dfa61f3 100644
+--- a/bdac38a140980b673ff8f7fc0334a075ae86e043
++++ b/899dfa61f33b6fb0e34b4d257385b3562ffb93b9
+@@ -1,13 +1,13 @@
+ @Test
+ public void shouldNotLogWhenTestPasses() throws Exception {
+-    runner = new VerboseMockitoJUnitRunner(this.getClass(), loggerStub) {
++    runner = new VerboseMockitoJUnitRunner(this.getClass(), loggerStub, new RunnerImplStub() {
+
+         @Override
+-        public void runTest(RunNotifier notifier) {
++        public void run(RunNotifier notifier) {
+             when(mock.simpleMethod()).thenReturn("foo");
+             notifier.fireTestFinished(null);
+             assertEquals("", loggerStub.getLoggedInfo());
+         }
+-    };
++    });
+     runner.run(notifier);
+ }
+\ No newline at end of file

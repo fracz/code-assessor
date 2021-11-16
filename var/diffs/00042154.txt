@@ -1,0 +1,13 @@
+diff --git a/341d27d3743888cec21dc57c594416b848df50fe b/88e6a38835ce574a9498e9bedc14ace5d2bef65c
+index 341d27d374..88e6a38835 100644
+--- a/341d27d3743888cec21dc57c594416b848df50fe
++++ b/88e6a38835ce574a9498e9bedc14ace5d2bef65c
+@@ -1,6 +1,3 @@
+ public Query buildQuery(final Object query) throws ParseException {
+-    return storage.callIndexEngine(false, false, indexId, engine -> {
+-        OLuceneIndexEngine indexEngine = (OLuceneIndexEngine) engine;
+-        return indexEngine.buildQuery(query);
+-    });
++    return storage.callIndexEngine(false, false, indexId, engine -> ((OLuceneIndexEngine) engine).buildQuery(query));
+ }
+\ No newline at end of file

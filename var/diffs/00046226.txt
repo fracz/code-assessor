@@ -1,0 +1,19 @@
+diff --git a/d62f6da76b2882539a18894b94e0d2e77925bd44 b/08e8fd8b11e2e042abf5a4893a4862c5305c8a2c
+index d62f6da76b..08e8fd8b11 100644
+--- a/d62f6da76b2882539a18894b94e0d2e77925bd44
++++ b/08e8fd8b11e2e042abf5a4893a4862c5305c8a2c
+@@ -1,11 +1,11 @@
+ protected void endPixelsOp() {
+     // Restoring current framebuffer prior to the pixel operation
+     if (pixOpChangedFB) {
+         popFramebuffer();
+         pixOpChangedFB = false;
+     }
+     // Restoring default read/draw buffer configuration.
+-    pgl.readBuffer(currentFramebuffer.getDefaultReadBuffer());
+-    pgl.drawBuffer(currentFramebuffer.getDefaultDrawBuffer());
++    pgl.readBuffer(getCurrentFB().getDefaultReadBuffer());
++    pgl.drawBuffer(getCurrentFB().getDefaultDrawBuffer());
+     pixelsOp = OP_NONE;
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/45b332718b17b0acd8ce40b110a90e669bd3bc43 b/3e9b776b6523fd16af4397e0c088f796b8e7e9bd
+index 45b332718b..3e9b776b65 100644
+--- a/45b332718b17b0acd8ce40b110a90e669bd3bc43
++++ b/3e9b776b6523fd16af4397e0c088f796b8e7e9bd
+@@ -1,8 +1,10 @@
+ @Nullable
+ public String getPasswordForCvsRoot(String cvsRoot) {
+-    if (myCvsRootToStoringPasswordMap.containsKey(cvsRoot))
+-        return myCvsRootToStoringPasswordMap.get(cvsRoot);
+-    if (myCvsRootToPasswordMap.containsKey(cvsRoot))
++    synchronized (myLock) {
++        String password = myCvsRootToStoringPasswordMap.get(cvsRoot);
++        if (password != null) {
++            return password;
++        }
+         return myCvsRootToPasswordMap.get(cvsRoot);
+-    return null;
++    }
+ }
+\ No newline at end of file

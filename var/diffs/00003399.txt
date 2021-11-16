@@ -1,0 +1,17 @@
+diff --git a/013562ea7ee6709c41fa4d411391055b1144c429 b/439e3807b2b412b8d2fab6d425535f0589adb4d1
+index 013562ea7e..439e3807b2 100644
+--- a/013562ea7ee6709c41fa4d411391055b1144c429
++++ b/439e3807b2b412b8d2fab6d425535f0589adb4d1
+@@ -1,9 +1,4 @@
+ @Nullable
+-private String getModuleDirPath() {
+-    String moduleFilePath = getModule().getModuleFilePath();
+-    String moduleDirPath = new File(moduleFilePath).getParent();
+-    if (moduleDirPath != null) {
+-        moduleDirPath = FileUtil.toSystemIndependentName(moduleDirPath);
+-    }
+-    return moduleDirPath;
++public String getModuleDirPath() {
++    return AndroidRootUtil.getModuleDirPath(getModule());
+ }
+\ No newline at end of file

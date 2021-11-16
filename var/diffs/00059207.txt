@@ -1,0 +1,27 @@
+diff --git a/89f7aab7493d19eecc3e36834a31cf0ba3ef941b b/cf8e1e85af28dad0e1592218b2d98cce0a285e3c
+index 89f7aab749..cf8e1e85af 100644
+--- a/89f7aab7493d19eecc3e36834a31cf0ba3ef941b
++++ b/cf8e1e85af28dad0e1592218b2d98cce0a285e3c
+@@ -1,13 +1,10 @@
+ @Override
+-public void acquireLock(StaticBuffer key, StaticBuffer column, StaticBuffer expectedValue, StoreTransaction txh) throws StorageException {
+-    acquireLockInvocationCounter.inc();
+-    Timer.Context tc = acquireLockTimer.time();
+-    try {
+-        backend.acquireLock(key, column, expectedValue, txh);
+-    } catch (StorageException e) {
+-        acquireLockFailureCounter.inc();
+-        throw e;
+-    } finally {
+-        tc.stop();
+-    }
++public void acquireLock(final StaticBuffer key, final StaticBuffer column, final StaticBuffer expectedValue, final StoreTransaction txh) throws StorageException {
++    runWithMetrics(txh.getConfiguration().getMetricsPrefix(), metricsStoreName, M_ACQUIRE_LOCK, new StorageCallable<Void>() {
++
++        public Void call() throws StorageException {
++            backend.acquireLock(key, column, expectedValue, txh);
++            return null;
++        }
++    });
+ }
+\ No newline at end of file

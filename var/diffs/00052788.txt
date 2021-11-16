@@ -1,0 +1,11 @@
+diff --git a/45c4770a6513f5144c4fa979e4290900c03b0034 b/496eb074a7d0f161bd2c9da181edb8c1a2555333
+index 45c4770a65..496eb074a7 100644
+--- a/45c4770a6513f5144c4fa979e4290900c03b0034
++++ b/496eb074a7d0f161bd2c9da181edb8c1a2555333
+@@ -1,4 +1,4 @@
+ @Test
+ public void assertIsShardingColumnForDefaultTableShardingStrategy() {
+-    assertTrue(ShardingRule.builder().tableShardingStrategy(new StandardShardingStrategy("column", new TestPreciseShardingAlgorithm())).dataSourceRule(createDataSourceRule()).tableRules(Collections.singletonList(createTableRuleWithAllStrategies())).build().isShardingColumn(new Column("column", "")));
++    assertTrue(ShardingRule.builder(createDataSourceRule()).tableShardingStrategy(new StandardShardingStrategy("column", new TestPreciseShardingAlgorithm())).tableRules(Collections.singletonList(createTableRuleWithAllStrategies())).build().isShardingColumn(new Column("column", "")));
+ }
+\ No newline at end of file

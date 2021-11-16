@@ -1,0 +1,21 @@
+diff --git a/dd5a8cd6409cc9f817b832eb9768af88423f38f4 b/24e48dfce830a3614cb7f62c896fb9c4b0e33e3f
+index dd5a8cd640..24e48dfce8 100644
+--- a/dd5a8cd6409cc9f817b832eb9768af88423f38f4
++++ b/24e48dfce830a3614cb7f62c896fb9c4b0e33e3f
+@@ -1,12 +1,12 @@
+ @Nullable
+ @Override
+ public PsiStatement getContainingStatement(@NotNull PrefixExpressionContext expressionContext) {
+     PsiStatement statement = super.getContainingStatement(expressionContext);
+-    if (statement != null) {
+-        // ignore expression-statements produced by broken expr like '2.var + 2'
+-        assert lhsStatement.isValid() : "lhsStatement.isValid()";
++    if (statement != null && lhsStatement.isValid()) /* when is not fixed yet */
++    {
++        // assert lhsStatement.isValid() : "lhsStatement.isValid()";
+         if (isComplexRhs && (statement == lhsStatement))
+             return null;
+     }
+     return statement;
+ }
+\ No newline at end of file

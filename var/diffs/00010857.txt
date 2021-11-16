@@ -1,0 +1,17 @@
+diff --git a/4f466c6c7599b8eddb66b3012f3d0125014e05f4 b/ac9b515cf3637a6f77366c7a2c0b4199bb59a48e
+index 4f466c6c75..ac9b515cf3 100644
+--- a/4f466c6c7599b8eddb66b3012f3d0125014e05f4
++++ b/ac9b515cf3637a6f77366c7a2c0b4199bb59a48e
+@@ -1,9 +1,3 @@
+-public List<VirtualFile> removeManagedFiles(List<VirtualFile> files) {
+-    List<VirtualFile> removedFiles = new ArrayList<VirtualFile>();
+-    for (VirtualFile each : files) {
+-        if (myManagedFilesPaths.remove(each.getPath())) {
+-            removedFiles.add(each);
+-        }
+-    }
+-    return removedFiles;
++public void removeManagedFiles(List<VirtualFile> files) {
++    myManagedFilesPaths.removeAll(MavenUtil.collectPaths(files));
+ }
+\ No newline at end of file

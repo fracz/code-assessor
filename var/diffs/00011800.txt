@@ -1,0 +1,14 @@
+diff --git a/c4f1885af119de9966d4337ed29491ff97f965e2 b/c06be51eeecda2d7af1718bc9fd16d54f7b15b2a
+index c4f1885af1..c06be51eee 100644
+--- a/c4f1885af119de9966d4337ed29491ff97f965e2
++++ b/c06be51eeecda2d7af1718bc9fd16d54f7b15b2a
+@@ -1,5 +1,6 @@
+-static void disableFile(final VirtualFile vfile, String error) {
+-    DslActivationStatus.getInstance().disableFile(vfile, error);
++static void disableFile(@NotNull VirtualFile vfile, @NotNull Status status, @Nullable String message) {
++    assert status != Status.ACTIVE;
++    setStatusAndMessage(vfile, status, message);
+     vfile.putUserData(CACHED_EXECUTOR, null);
+     clearScriptCache();
+ }
+\ No newline at end of file

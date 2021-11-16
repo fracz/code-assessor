@@ -1,0 +1,18 @@
+diff --git a/b7e7ac5dac4d92a989f827d1c1e48327e52941e3 b/ee38ebcfea1cbbcd0191aac6474692b41a424f22
+index b7e7ac5dac..ee38ebcfea 100644
+--- a/b7e7ac5dac4d92a989f827d1c1e48327e52941e3
++++ b/ee38ebcfea1cbbcd0191aac6474692b41a424f22
+@@ -1,5 +1,8 @@
+-public String toStream(final ODatabaseComplex<?> iDatabase, Object iObject) {
+-    if (iObject == null)
+-        return "";
+-    return iObject.getClass().getName() + OStreamSerializerHelper.SEPARATOR + iObject;
++public StringBuilder toStream(final ODatabaseComplex<?> iDatabase, final StringBuilder iOutput, Object iObject) {
++    if (iObject != null) {
++        iOutput.append(iObject.getClass().getName());
++        iOutput.append(OStreamSerializerHelper.SEPARATOR);
++        iOutput.append(iObject.toString());
++    }
++    return iOutput;
+ }
+\ No newline at end of file

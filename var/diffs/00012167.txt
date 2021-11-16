@@ -1,0 +1,19 @@
+diff --git a/380e7dd055b3207cdc9253dcbb945dc71b35912f b/e71200d0b24a4237d581a1a7d38d7a56115d8066
+index 380e7dd055..e71200d0b2 100644
+--- a/380e7dd055b3207cdc9253dcbb945dc71b35912f
++++ b/e71200d0b24a4237d581a1a7d38d7a56115d8066
+@@ -1,9 +1,6 @@
+ public void uninstallListeners() {
+-    if (myConnection != null) {
+-        myConnection.disconnect();
+-    }
+-    WolfTheProblemSolver.getInstance(myProject).removeProblemListener(myProblemListener);
+-    PsiManager.getInstance(myProject).removePsiTreeChangeListener(myPsiTreeChangeAdapter);
+-    FileStatusManager.getInstance(myProject).removeFileStatusListener(myFileStatusListener);
+-    myUpdateAlarm.cancelAllRequests();
++    myDetacher.run();
++    myDetacher = null;
++    myListUpdateAlarm.cancelAllRequests();
++    myModelUpdateAlarm.cancelAllRequests();
+ }
+\ No newline at end of file

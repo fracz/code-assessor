@@ -1,0 +1,14 @@
+diff --git a/94b016346f32a6e31218137f53ae7e977a4c5aa4 b/52ec23e43763aab992a8ffc1680a27cddd1d7a2f
+index 94b016346f..52ec23e437 100644
+--- a/94b016346f32a6e31218137f53ae7e977a4c5aa4
++++ b/52ec23e43763aab992a8ffc1680a27cddd1d7a2f
+@@ -1,5 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiClass aClass = (PsiClass) location.getParent();
+-    final int totalDependencies = calculateTotalDependencies(aClass);
++@NotNull
++public String buildErrorString(Object... infos) {
++    final Integer totalDependencies = (Integer) infos[0];
+     return InspectionGadgetsBundle.message("overly.coupled.class.problem.descriptor", totalDependencies);
+ }
+\ No newline at end of file

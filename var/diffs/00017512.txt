@@ -1,0 +1,19 @@
+diff --git a/506b08e84dc902e7b8d38acb02ddd53db0df698c b/e84169fc76227710911a4356f7ff042e84f45e86
+index 506b08e84d..e84169fc76 100644
+--- a/506b08e84dc902e7b8d38acb02ddd53db0df698c
++++ b/e84169fc76227710911a4356f7ff042e84f45e86
+@@ -1,10 +1,9 @@
+ public static Test suite() {
+-    return TranslatorTestCaseBuilder.suiteForDirectory("translator", "/testFiles/examples/cases/", true, new TranslatorTestCaseBuilder.NamedTestFactory() {
++    return Suite.suiteForDirectory("examples/", new Suite.SingleFileTester() {
+
+-        @NotNull
+         @Override
+-        public Test createTest(@NotNull String dataPath, @NotNull String name) {
+-            return (new ExampleTestSuite(name));
++        public void performTest(@NotNull Suite test, @NotNull String filename) throws Exception {
++            test.testFunctionOutput(filename, "Anonymous", "box", "OK");
+         }
+     });
+ }
+\ No newline at end of file

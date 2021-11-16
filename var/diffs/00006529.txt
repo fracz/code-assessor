@@ -1,0 +1,27 @@
+diff --git a/ea8d05fd14fa39cb84a60c56f49d13f59806a78e b/8664fb8f89daaadb355a87f1b09537eee0d079f9
+index ea8d05fd14..8664fb8f89 100644
+--- a/ea8d05fd14fa39cb84a60c56f49d13f59806a78e
++++ b/8664fb8f89daaadb355a87f1b09537eee0d079f9
+@@ -1,12 +1,18 @@
+ private static void doQuickFixInternal(final Project project, final List<String> targetList, final String qualifiedName, final PsiElement context) {
+     targetList.add(qualifiedName);
+     Collections.sort(targetList);
+     final InspectionProfile inspectionProfile = InspectionProjectProfileManager.getInstance(project).getInspectionProfile(context);
+     // correct save settings
+     ((InspectionProfileImpl) inspectionProfile).isProperSetting(HighlightDisplayKey.find(UnusedSymbolLocalInspection.SHORT_NAME));
++    // TODO lesya
++    InspectionProfileManager.getInstance().fireProfileChanged(inspectionProfile);
++/*
+     try {
+-        inspectionProfile.save();
+-    } catch (IOException e) {
+-        Messages.showErrorDialog(project, e.getMessage(), CommonBundle.getErrorTitle());
++      inspectionProfile.save();
+     }
++    catch (IOException e) {
++      Messages.showErrorDialog(project, e.getMessage(), CommonBundle.getErrorTitle());
++    }
++
++    */
+ }
+\ No newline at end of file

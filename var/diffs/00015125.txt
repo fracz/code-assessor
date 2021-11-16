@@ -1,0 +1,19 @@
+diff --git a/503fd971bd4ce1f7200f13c96a21af01804176c1 b/4533d5a312b989cb2a6bb610a89c8f2dd8acdf67
+index 503fd971bd..4533d5a312 100644
+--- a/503fd971bd4ce1f7200f13c96a21af01804176c1
++++ b/4533d5a312b989cb2a6bb610a89c8f2dd8acdf67
+@@ -1,7 +1,11 @@
+ @Override
+ public Void visitBinaryExpression(@NotNull JetBinaryExpression binaryExpression, Void arg) {
+-    if (binaryExpression.getOperationToken() == JetTokens.EQ && binaryExpression.getLeft() instanceof JetNameReferenceExpression) {
+-        assignedNames.add(((JetNameReferenceExpression) binaryExpression.getLeft()).getReferencedNameAsName());
++    if (binaryExpression.getOperationToken() == JetTokens.EQ) {
++        JetExpression left = JetPsiUtil.deparenthesize(binaryExpression.getLeft());
++        if (left instanceof JetNameReferenceExpression) {
++            // deparenthesize
++            assignedNames.add(((JetNameReferenceExpression) left).getReferencedNameAsName());
++        }
+     }
+     return null;
+ }
+\ No newline at end of file

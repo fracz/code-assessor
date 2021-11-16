@@ -1,0 +1,15 @@
+diff --git a/7553a98958e366d0e219eed70d0b8240620ec337 b/369288700da2135c0940838cc7e059b9c82d8c33
+index 7553a98958..369288700d 100644
+--- a/7553a98958e366d0e219eed70d0b8240620ec337
++++ b/369288700da2135c0940838cc7e059b9c82d8c33
+@@ -1,8 +1,6 @@
+ @Override
+ public void changesProcessed() {
+     synchronized (LOCK) {
+-        if (!myDisposed) {
+-            myProgressHolder.processed();
+-        }
++        myDirtInProgress = null;
+     }
+ }
+\ No newline at end of file

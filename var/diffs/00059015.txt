@@ -1,0 +1,26 @@
+diff --git a/22deb1373bfdbab1d6493beb74ae02279b640860 b/696baa6a670706576cdc6f195f626b270b4bb0a4
+index 22deb1373b..696baa6a67 100644
+--- a/22deb1373bfdbab1d6493beb74ae02279b640860
++++ b/696baa6a670706576cdc6f195f626b270b4bb0a4
+@@ -1,15 +1,13 @@
+ @Override
+ public boolean containsKey(StaticBuffer key, StoreTransaction txh) throws StorageException {
+-    boolean ok = false;
+     containsKeyInvocationCounter.inc();
+-    final Timer.Context tc = containsKeyTimer.time();
++    Timer.Context tc = containsKeyTimer.time();
+     try {
+-        final boolean result = backend.containsKey(key, txh);
+-        ok = true;
+-        return result;
++        return backend.containsKey(key, txh);
++    } catch (StorageException e) {
++        containsKeyFailureCounter.inc();
++        throw e;
+     } finally {
+         tc.stop();
+-        if (!ok)
+-            containsKeyFailureCounter.inc();
+     }
+ }
+\ No newline at end of file

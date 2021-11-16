@@ -1,0 +1,25 @@
+diff --git a/0679f7c7b6a9af3bf50373e728e72c895737671d b/cd9d2f0cfe2f008c83f5f359cbdef1be7dea3f18
+index 0679f7c7b6..cd9d2f0cfe 100644
+--- a/0679f7c7b6a9af3bf50373e728e72c895737671d
++++ b/cd9d2f0cfe2f008c83f5f359cbdef1be7dea3f18
+@@ -1,17 +1,17 @@
+ private void releaseCompiledSqlIfNotInCache() {
+     if (mCompiledSql == null) {
+         return;
+     }
+     synchronized (mDatabase.mCompiledQueries) {
+         if (!mDatabase.mCompiledQueries.containsValue(mCompiledSql)) {
+             // it is NOT in compiled-sql cache. i.e., responsibility of
+             // releasing this statement is on me.
+             mCompiledSql.releaseSqlStatement();
+-            mCompiledSql = null;
+-            nStatement = 0;
+         } else {
+             // it is in compiled-sql cache. reset its CompiledSql#mInUse flag
+             mCompiledSql.release();
+         }
+     }
++    mCompiledSql = null;
++    nStatement = 0;
+ }
+\ No newline at end of file

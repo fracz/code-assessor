@@ -1,0 +1,13 @@
+diff --git a/0aff95d2658a00dde96f11bc4e0f8daf3db33da1 b/8f83afc00791e21f71ce2b24e1a87114c7bf5dd1
+index 0aff95d265..8f83afc007 100644
+--- a/0aff95d2658a00dde96f11bc4e0f8daf3db33da1
++++ b/8f83afc00791e21f71ce2b24e1a87114c7bf5dd1
+@@ -1,5 +1,6 @@
+ public void gen(JetNamedFunction f) {
+-    Method method = state.getTypeMapper().mapToCallableMethod(f, owner.getContextKind()).getSignature();
+     final FunctionDescriptor functionDescriptor = state.getBindingContext().get(BindingContext.FUNCTION, f);
++    assert functionDescriptor != null;
++    Method method = state.getTypeMapper().mapToCallableMethod(functionDescriptor, false, owner.getContextKind()).getSignature();
+     generateMethod(f, method, functionDescriptor);
+ }
+\ No newline at end of file

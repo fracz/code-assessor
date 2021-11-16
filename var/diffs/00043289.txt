@@ -1,0 +1,29 @@
+diff --git a/f9d99a17a77a8e13d06ac5a9af7be1c1f05080d3 b/64f4eb23cf1615806db537041fc3835c3af9c54a
+index f9d99a17a7..64f4eb23cf 100644
+--- a/f9d99a17a77a8e13d06ac5a9af7be1c1f05080d3
++++ b/64f4eb23cf1615806db537041fc3835c3af9c54a
+@@ -1,21 +1,20 @@
+ /**
+  * Return the element at the current position and move forward the cursor to the next position available.
+  *
+  * @return the next record found, otherwise the NoSuchElementException exception is thrown when no more records are found.
+  */
+ @SuppressWarnings("unchecked")
+ public REC next() {
+     checkDirection(true);
+     if (currentTxEntryPosition > -1)
+         // IN TX
+         return (REC) txEntries.get(currentTxEntryPosition).getRecord();
++    ORecordInternal<?> record = getRecord();
+     // ITERATE UNTIL THE NEXT GOOD RECORD
+     while (hasNext()) {
+-        ORecordInternal<?> record = getRecord();
+-        record = readCurrentRecord(record, +1);
+-        if (record != null)
++        if ((record = readCurrentRecord(record, +1)) != null)
+             // FOUND
+             return (REC) record;
+     }
+     throw new NoSuchElementException();
+ }
+\ No newline at end of file

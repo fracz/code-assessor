@@ -1,0 +1,25 @@
+diff --git a/df8e055233bbb0fef2b1edd697bb680859bf9983 b/0dbaa8e2f6facb47f071aa791fdce5be45d1b47e
+index df8e055233..0dbaa8e2f6 100644
+--- a/df8e055233bbb0fef2b1edd697bb680859bf9983
++++ b/0dbaa8e2f6facb47f071aa791fdce5be45d1b47e
+@@ -1,14 +1,13 @@
+-private void parseTable() {
++private void parseTable(final SelectStatement selectStatement) {
++    items.addAll(selectStatement.getItems());
+     if (sqlParser.skipIfEqual(Symbol.LEFT_PAREN)) {
+-        containSubquery = true;
+         sqlParser.skipUselessParentheses();
+-        parseInternal();
++        selectStatement.setSubStatement(parseInternal());
+         sqlParser.skipUselessParentheses();
+         if (getSqlParser().equalAny(DefaultKeyword.WHERE, Assist.END)) {
+             return;
+         }
+     }
+-    parseMainStatement = true;
+-    customizedParseTableFactor();
+-    parseJoinTable();
++    customizedParseTableFactor(selectStatement);
++    parseJoinTable(selectStatement);
+ }
+\ No newline at end of file

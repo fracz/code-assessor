@@ -1,0 +1,17 @@
+diff --git a/4a12e5949ad86ce3427db16a3687ddde9780fd2e b/a6cbc11340ecb95578d2a53a7ed0435d43be908a
+index 4a12e5949a..a6cbc11340 100644
+--- a/4a12e5949ad86ce3427db16a3687ddde9780fd2e
++++ b/a6cbc11340ecb95578d2a53a7ed0435d43be908a
+@@ -1,9 +1,8 @@
+-@Override
+-protected void elementFinished(@NotNull PsiElement element) {
++public void elementFinished(@NotNull PsiElement element, RecursiveTokenizingVisitor globalVisitor) {
+     if (element instanceof JSStatement) {
+         PsiElement parent = element.getParent();
+         if (parent instanceof JSIfStatement || parent instanceof JSLoopStatement) {
+-            myTokens.add(new IndentToken(-1, element.getTextRange().getEndOffset()));
++            globalVisitor.addToken(new IndentToken(-1, globalVisitor.getBaseOffset() + element.getTextRange().getEndOffset()));
+         }
+     }
+ }
+\ No newline at end of file

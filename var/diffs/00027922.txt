@@ -1,0 +1,14 @@
+diff --git a/9d337517255ad5de4994e348e79a2980e0555370 b/75a36f3d8bd148793a456c15fce69d413bd2aeb1
+index 9d33751725..75a36f3d8b 100644
+--- a/9d337517255ad5de4994e348e79a2980e0555370
++++ b/75a36f3d8bd148793a456c15fce69d413bd2aeb1
+@@ -1,7 +1,7 @@
+-@Path("branch-rename")
+ @POST
++@Path("branch")
+ public void branchRename(@QueryParam("oldName") String oldName, @QueryParam("newName") String newName) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+         gitConnection.branchRename(oldName, newName);
+     }
+ }
+\ No newline at end of file

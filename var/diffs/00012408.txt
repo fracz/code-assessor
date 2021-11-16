@@ -1,0 +1,16 @@
+diff --git a/963977bdef7d683658a8f17169f4c937b760b818 b/8cbd545f96faff7ad3e28f160c097174f68fb79b
+index 963977bdef..8cbd545f96 100644
+--- a/963977bdef7d683658a8f17169f4c937b760b818
++++ b/8cbd545f96faff7ad3e28f160c097174f68fb79b
+@@ -1,9 +1,9 @@
+ @Override
+ public void process(@Nullable HgCommandResult result) {
+     if (!HgErrorUtil.hasErrorsInCommandExecution(result)) {
+         updateDirectoryMappings(mapRoot);
+-        new HgCommandResultNotifier(myProject.isDefault() ? null : myProject).notifySuccess(HgVcsMessages.message("hg4idea.init.created.notification.title"), HgVcsMessages.message("hg4idea.init.created.notification.description", selectedRoot.getPresentableUrl()));
++        VcsNotifier.getInstance(myProject).notifySuccess(HgVcsMessages.message("hg4idea.init.created.notification.title"), HgVcsMessages.message("hg4idea.init.created.notification.description", selectedRoot.getPresentableUrl()));
+     } else {
+         new HgCommandResultNotifier(myProject.isDefault() ? null : myProject).notifyError(result, HgVcsMessages.message("hg4idea.init.error.title"), HgVcsMessages.message("hg4idea.init.error.description", selectedRoot.getPresentableUrl()));
+     }
+ }
+\ No newline at end of file

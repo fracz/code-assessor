@@ -1,0 +1,24 @@
+diff --git a/df1f64650a3db94fbd847e595173c00106edfe53 b/0153766083f737ac30468dbe22cf4efd14c59cd8
+index df1f64650a..0153766083 100644
+--- a/df1f64650a3db94fbd847e595173c00106edfe53
++++ b/0153766083f737ac30468dbe22cf4efd14c59cd8
+@@ -1,14 +1,16 @@
+-protected void checkSyntax(String query, boolean isCorrect) {
++protected SimpleNode checkSyntax(String query, boolean isCorrect) {
+     OrientSql osql = getParserFor(query);
+     try {
+-        osql.OrientGrammar();
++        SimpleNode result = osql.OrientGrammar();
+         if (!isCorrect) {
+             fail();
+         }
++        return result;
+     } catch (Exception e) {
+         if (isCorrect) {
+             e.printStackTrace();
+             fail();
+         }
+     }
++    return null;
+ }
+\ No newline at end of file

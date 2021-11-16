@@ -1,0 +1,15 @@
+diff --git a/485757a3630413d041eadc99451a61694f1f331a b/d2df534e9a4ff074bf70c4d6feeca6ae54db9765
+index 485757a363..d2df534e9a 100644
+--- a/485757a3630413d041eadc99451a61694f1f331a
++++ b/d2df534e9a4ff074bf70c4d6feeca6ae54db9765
+@@ -1,7 +1,7 @@
+-public Result preprocessEnter(final PsiFile file, final Editor editor, final int caretOffset, final DataContext dataContext, final EditorActionHandler originalHandler) {
+-    if (file instanceof XmlFile && isBetweenXmlTags(editor, caretOffset)) {
++public Result preprocessEnter(final PsiFile file, final Editor editor, final Ref<Integer> caretOffset, final Ref<Integer> caretAdvance, final DataContext dataContext, final EditorActionHandler originalHandler) {
++    if (file instanceof XmlFile && isBetweenXmlTags(editor, caretOffset.get().intValue())) {
+         originalHandler.execute(editor, dataContext);
+         return Result.HandledAndForceIndent;
+     }
+     return Result.NotHandled;
+ }
+\ No newline at end of file

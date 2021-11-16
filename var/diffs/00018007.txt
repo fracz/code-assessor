@@ -1,0 +1,13 @@
+diff --git a/ccc9cb8a1a85726a2685002311a910e18d211ad3 b/39f50460e1355ad1d6cc370b2d14f81c99b62aeb
+index ccc9cb8a1a..39f50460e1 100644
+--- a/ccc9cb8a1a85726a2685002311a910e18d211ad3
++++ b/39f50460e1355ad1d6cc370b2d14f81c99b62aeb
+@@ -1,5 +1,5 @@
+ protected PeerEurekaNode createPeerEurekaNode(String peerEurekaNodeUrl) {
+-    HttpReplicationClient replicationClient = new JerseyReplicationClient(config, peerEurekaNodeUrl);
+     String name = PeerEurekaNode.class.getSimpleName() + ": " + peerEurekaNodeUrl + "apps/: ";
+-    return new PeerEurekaNode(registry, name, peerEurekaNodeUrl, replicationClient, config);
++    JerseyReplicationClient replicationClient = new JerseyReplicationClient(serverConfig, serverCodecs, peerEurekaNodeUrl);
++    return new PeerEurekaNode(registry, name, peerEurekaNodeUrl, replicationClient, serverConfig);
+ }
+\ No newline at end of file

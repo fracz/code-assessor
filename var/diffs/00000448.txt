@@ -1,0 +1,20 @@
+diff --git a/1ac6cf28ece8aa9fdcbd10b015a71c8712b49957 b/882f6ba709b2fc1d6c6aa05c23de7a457a1da56e
+index 1ac6cf28ec..882f6ba709 100644
+--- a/1ac6cf28ece8aa9fdcbd10b015a71c8712b49957
++++ b/882f6ba709b2fc1d6c6aa05c23de7a457a1da56e
+@@ -1,11 +1,11 @@
+ @Override
+ public boolean equals(Object obj) {
+     if (this == obj) {
+         return true;
+-    } else if (obj instanceof TachyonConf) {
++    }
++    if (obj instanceof TachyonConf) {
+         Properties props = ((TachyonConf) obj).getInternalProperties();
+         return mProperties.equals(props);
+-    } else {
+-        return false;
+     }
++    return false;
+ }
+\ No newline at end of file

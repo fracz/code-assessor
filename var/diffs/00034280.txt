@@ -1,0 +1,33 @@
+diff --git a/1ca2fe498988576f917af770d49479576a317819 b/81a537ee4ead23680c76719f6fb67ad9c05d9f0b
+index 1ca2fe4989..81a537ee4e 100644
+--- a/1ca2fe498988576f917af770d49479576a317819
++++ b/81a537ee4ead23680c76719f6fb67ad9c05d9f0b
+@@ -1,21 +1,10 @@
+ @Override
+-public Dialog onCreateDialog(int id) {
+-    switch(id) {
++public Dialog onCreateDialog(int dialogId) {
++    switch(dialogId) {
+         case DIALOG_CONFIRM:
+-            return ConfirmationDialog.create(this, id, R.string.dialog_confirm_delete_title, "", R.string.dialog_confirm_delete_confirm_button, R.string.dialog_confirm_delete_cancel_button, new Runnable() {
+-
+-                @Override
+-                public void run() {
+-                    triggerDelete(mNotificationID);
+-                    finish();
+-                }
+-            }, new Runnable() {
+-
+-                @Override
+-                public void run() {
+-                    finish();
+-                }
+-            });
++            {
++                return createDeleteConfirmationDialog(dialogId);
++            }
+     }
+-    return super.onCreateDialog(id);
++    return super.onCreateDialog(dialogId);
+ }
+\ No newline at end of file

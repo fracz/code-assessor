@@ -1,0 +1,14 @@
+diff --git a/0317f23d4bc9e84de8b50b1265dcf46a4e9e7070 b/9f43b0d8c503aa46c4aab36812f98018deeeca87
+index 0317f23d4b..9f43b0d8c5 100644
+--- a/0317f23d4bc9e84de8b50b1265dcf46a4e9e7070
++++ b/9f43b0d8c503aa46c4aab36812f98018deeeca87
+@@ -1,4 +1,5 @@
+-public StateInfo readStateInfo(RandomAccessFile lockFileAccess) {
+-    int id = readPreviousOwnerId(lockFileAccess);
+-    return new StateInfo(id, id == UNKNOWN_PREVIOUS_OWNER);
++public StateInfo readStateInfo(RandomAccessFile lockFileAccess) throws IOException {
++    // skip the protocol byte
++    lockFileAccess.seek(1);
++    return protocol.readState(lockFileAccess);
+ }
+\ No newline at end of file

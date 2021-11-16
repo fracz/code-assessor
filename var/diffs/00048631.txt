@@ -1,0 +1,17 @@
+diff --git a/929f96a779edf6bd4610b9c363829fa78a2db6c6 b/420e7056e0f96530addb216b81ea573ae9cb2522
+index 929f96a779..420e7056e0 100644
+--- a/929f96a779edf6bd4610b9c363829fa78a2db6c6
++++ b/420e7056e0f96530addb216b81ea573ae9cb2522
+@@ -1,9 +1,9 @@
+ @Override
+ public Object[] evaluate() throws InvocationTargetException, InterruptedException {
+     try {
+-        List<? extends DBNNode> children = filterNavigableChildren(parentNode.getChildren(getProgressMonitor()));
+-        return CommonUtils.isEmpty(children) ? new Object[0] : children.toArray();
++        DBNNode[] children = filterNavigableChildren(parentNode.getChildren(getProgressMonitor()));
++        return children == null ? new Object[0] : children;
+     } catch (Throwable ex) {
+         throw new InvocationTargetException(ex);
+     }
+ }
+\ No newline at end of file

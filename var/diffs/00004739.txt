@@ -1,0 +1,18 @@
+diff --git a/a77098affb52840adb904b8077335e5a3e9aee0d b/9fc876592bcc3a4ec40b50155f7e6435f9aafb2b
+index a77098affb..9fc876592b 100644
+--- a/a77098affb52840adb904b8077335e5a3e9aee0d
++++ b/9fc876592bcc3a4ec40b50155f7e6435f9aafb2b
+@@ -1,11 +1,11 @@
+ private SpacingImpl getSpacingImpl(final int minSpaces, final int maxSpaces, final int minLineFeeds, final boolean readOnly, final boolean safe, final boolean keepLineBreaksFlag, final int keepLineBreaks, final boolean keepFirstColumn, int prefLineFeeds) {
+-    synchronized (this) {
++    synchronized (ourSharedSpacing) {
+         ourSharedSpacing.init(minSpaces, maxSpaces, minLineFeeds, readOnly, safe, keepLineBreaksFlag, keepLineBreaks, keepFirstColumn, prefLineFeeds);
+         SpacingImpl spacing = ourSharedProperties.get(ourSharedSpacing);
+         if (spacing == null) {
+             spacing = new SpacingImpl(minSpaces, maxSpaces, minLineFeeds, readOnly, safe, keepLineBreaksFlag, keepLineBreaks, keepFirstColumn, prefLineFeeds);
+             ourSharedProperties.put(spacing, spacing);
+         }
+         return spacing;
+     }
+ }
+\ No newline at end of file

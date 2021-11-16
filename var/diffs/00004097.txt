@@ -1,0 +1,13 @@
+diff --git a/2061b7f1a54cbbff497424ac418f4dbc8d887f72 b/66acc9300021b03700189682e58e2b190cada048
+index 2061b7f1a5..66acc93000 100644
+--- a/2061b7f1a54cbbff497424ac418f4dbc8d887f72
++++ b/66acc9300021b03700189682e58e2b190cada048
+@@ -1,6 +1,5 @@
+ private String formatProjectString(MavenProject project) {
+     if (project == null)
+         return "<none>";
+-    MavenId id = project.getMavenId();
+-    return id.groupId + ":" + id.artifactId + ":" + id.version;
++    return project.getMavenId().displayString();
+ }
+\ No newline at end of file

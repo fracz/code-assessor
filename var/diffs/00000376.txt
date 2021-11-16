@@ -1,0 +1,12 @@
+diff --git a/8e848ff319ed262362738c5f5aa346e495212c98 b/cf57fb18b16dd00ab570a9f8f0885b1501f66aed
+index 8e848ff319..cf57fb18b1 100644
+--- a/8e848ff319ed262362738c5f5aa346e495212c98
++++ b/cf57fb18b16dd00ab570a9f8f0885b1501f66aed
+@@ -1,4 +1,4 @@
+-@Test(expected = IOException.class)
++@Test
+ public void mkdirInvalidPathTest() throws IOException {
+-    mFsShell.mkdir(new String[] { "mkdir", "/test File Invalid Path" });
++    Assert.assertEquals(-1, mFsShell.run(new String[] { "mkdir", "/test File Invalid Path" }));
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/7ab923d258d68432698cae948491368df6f9a07a b/45f1608e7bb72e177e0185ab9e9c2e2d2f1a4362
+index 7ab923d258..45f1608e7b 100644
+--- a/7ab923d258d68432698cae948491368df6f9a07a
++++ b/45f1608e7bb72e177e0185ab9e9c2e2d2f1a4362
+@@ -1,12 +1,9 @@
+ public boolean process(final CharSequence text) {
+-    newText.setLength(0);
+-    try {
+-        myStatus = ApplyFilePatchBase.applyModifications(patch, text, newText);
+-    } catch (ApplyPatchException ex) {
+-        // continue to older versions
++    final GenericPatchApplier applier = new GenericPatchApplier(text, hunks);
++    if (!applier.execute()) {
+         return true;
+     }
+     myBase = text;
+-    myBaseRevisionLoaded = true;
++    myPatched = applier.getAfter();
+     return false;
+ }
+\ No newline at end of file

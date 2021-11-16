@@ -1,0 +1,13 @@
+diff --git a/cd0380081a5d890d3b97a901259b5ebe4d48331c b/c94f0c4861aeb8816b02b9f53d8e476bbfccccd6
+index cd0380081a..c94f0c4861 100644
+--- a/cd0380081a5d890d3b97a901259b5ebe4d48331c
++++ b/c94f0c4861aeb8816b02b9f53d8e476bbfccccd6
+@@ -1,6 +1,3 @@
+ public IRubyObject getName() {
+-    if (node().qName == null) {
+-        node().qName = node().ruby.getNil();
+-    }
+-    return node().qName;
++    return stringOrNil(ruby, name);
+ }
+\ No newline at end of file

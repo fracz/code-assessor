@@ -1,0 +1,13 @@
+diff --git a/6bcd47be6c58f3c3561bf5f8f228051d706e52b3 b/b791da9899274422e712f44a1a24d795470e41c9
+index 6bcd47be6c..b791da9899 100644
+--- a/6bcd47be6c58f3c3561bf5f8f228051d706e52b3
++++ b/b791da9899274422e712f44a1a24d795470e41c9
+@@ -1,6 +1,4 @@
+ @Override
+ public Trace removeTraceObject() {
+-    final Trace trace = currentRawTraceObject();
+-    this.threadLocal.remove();
+-    return trace;
++    return this.threadLocalBinder.remove();
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/4a3084dec16656c59eba5dc1709d24c6b5371929 b/8fb3ca0f101755e7082119ea4c173d20b278a44a
+index 4a3084dec1..8fb3ca0f10 100644
+--- a/4a3084dec16656c59eba5dc1709d24c6b5371929
++++ b/8fb3ca0f101755e7082119ea4c173d20b278a44a
+@@ -1,8 +1,7 @@
+ @Override
+ protected boolean onDoubleClick(MouseEvent event) {
+-    Object source = event.getSource();
+-    if (!(source instanceof JBTable))
++    if (event.getSource() != myResultsPreviewTable)
+         return false;
+-    navigateToSelectedUsage((JBTable) source);
++    navigateToSelectedUsage();
+     return true;
+ }
+\ No newline at end of file

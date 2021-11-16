@@ -1,0 +1,16 @@
+diff --git a/78e5c4526d534d3c12e8aac18f2e9ec1e3534526 b/6a68c7b1ccd77328cebca9783939cb1c3930b94f
+index 78e5c4526d..6a68c7b1cc 100644
+--- a/78e5c4526d534d3c12e8aac18f2e9ec1e3534526
++++ b/6a68c7b1ccd77328cebca9783939cb1c3930b94f
+@@ -1,8 +1,7 @@
+ @BeforeClass
+-public void beforeClass() {
+-    database.open("admin", "admin");
++public void beforeClass() throws Exception {
++    super.beforeClass();
+     database.command(new OCommandSQL("create class IndexTxTestClass")).execute();
+     database.command(new OCommandSQL("create property IndexTxTestClass.name string")).execute();
+     database.command(new OCommandSQL("create index IndexTxTestIndex on IndexTxTestClass (name) unique")).execute();
+-    database.close();
+ }
+\ No newline at end of file

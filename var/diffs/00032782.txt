@@ -1,0 +1,26 @@
+diff --git a/f6aeb0811349dc423c7e0763dbed75ef992fdc4a b/ff6fe1014db9d547dc9c1c10f0964c1417eeadf7
+index f6aeb08113..ff6fe1014d 100644
+--- a/f6aeb0811349dc423c7e0763dbed75ef992fdc4a
++++ b/ff6fe1014db9d547dc9c1c10f0964c1417eeadf7
+@@ -1,15 +1,12 @@
+ /**
+  * Get the line number associated with the given member.
+  *
+- * @param member a field, constructor, or method belonging to the class used
+- * during construction
++ * @param member a field, constructor, or method belonging to the class used during construction
+  * @return the wrapped line number, or null if not available
+- * @throws IllegalArgumentException if the member does not belong to the
+- * class used during construction
++ * @throws IllegalArgumentException if the member does not belong to the class used during
++ * construction
+  */
+ public Integer getLineNumber(Member member) {
+-    if (!cls.equals(member.getDeclaringClass())) {
+-        throw new IllegalArgumentException("Member " + member + " belongs to " + member.getDeclaringClass() + ", not " + cls);
+-    }
+-    return lines.get(getKey(member));
++    checkArgument(type == member.getDeclaringClass(), "Member %s belongs to %s, not %s", member, member.getDeclaringClass(), type);
++    return lines.get(MoreTypes.memberKey(member));
+ }
+\ No newline at end of file

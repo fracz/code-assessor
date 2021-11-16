@@ -1,0 +1,19 @@
+diff --git a/69799f6d7b08b610bfddd990cd28f14c71bf32aa b/87ba93e68f69913efcbbe2490c8d453a6de54109
+index 69799f6d7b..87ba93e68f 100644
+--- a/69799f6d7b08b610bfddd990cd28f14c71bf32aa
++++ b/87ba93e68f69913efcbbe2490c8d453a6de54109
+@@ -1,10 +1,11 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiSwitchStatement switchStatement = (PsiSwitchStatement) location.getParent();
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiSwitchStatement switchStatement = (PsiSwitchStatement) infos[0];
+     assert switchStatement != null;
+     final PsiExpression switchStatementExpression = switchStatement.getExpression();
+     assert switchStatementExpression != null;
+     final PsiType switchStatementType = switchStatementExpression.getType();
+     assert switchStatementType != null;
+     final String switchStatementTypeText = switchStatementType.getPresentableText();
+     return InspectionGadgetsBundle.message("enum.switch.statement.which.misses.cases.problem.descriptor", switchStatementTypeText);
+ }
+\ No newline at end of file

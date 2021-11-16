@@ -1,0 +1,22 @@
+diff --git a/c05ba2a8a6e2e5e8e5639df428cf5bcc34bca3fd b/24e88dbb6dbfa7b314ac6d69f56af9ddb5311ef6
+index c05ba2a8a6..24e88dbb6d 100644
+--- a/c05ba2a8a6e2e5e8e5639df428cf5bcc34bca3fd
++++ b/24e88dbb6dbfa7b314ac6d69f56af9ddb5311ef6
+@@ -1,10 +1,13 @@
+-protected void waitForEventCount(int count, int maxMillis) throws InterruptedException {
++protected void waitForEventCount(int expectedCount, int maxMillis) throws InterruptedException {
+     for (int i = 0; i < maxMillis; i++) {
+-        if (eventCount.get() == count) {
++        int currentCount = eventCount.get();
++        if (currentCount == expectedCount) {
+             break;
++        } else if (currentCount > expectedCount) {
++            fail("Current count (" + currentCount + ") is already higher than expected count (" + expectedCount + ")");
+         } else {
+             Thread.sleep(1);
+         }
+     }
+-    assertEquals(count, eventCount.get());
++    assertEquals(expectedCount, eventCount.get());
+ }
+\ No newline at end of file

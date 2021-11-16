@@ -1,0 +1,22 @@
+diff --git a/75fc1243ec98dd062dec597b5d2dcb7ecc13920e b/b06d83eba28cc93ed43de34f939254fe1058bc7a
+index 75fc1243ec..b06d83eba2 100644
+--- a/75fc1243ec98dd062dec597b5d2dcb7ecc13920e
++++ b/b06d83eba28cc93ed43de34f939254fe1058bc7a
+@@ -1,15 +1,15 @@
+ // Tests that pinning a file prevents it from being evicted.
+ @Test
+ public void pinFileTest() throws Exception {
+     // Create a file that fills the entire Tachyon store
+     TachyonFile file = TachyonFSTestUtils.createByteFile(mTFS, "/test1", TachyonStorageType.STORE, UnderStorageType.NO_PERSIST, MEM_CAPACITY_BYTES);
+     // Pin the file
+-    mTFS.setPin(file, true);
++    mTFS.setState(file, mSetPinned);
+     CommonUtils.sleepMs(LOG, mWorkerToMasterHeartbeatIntervalMs * 3);
+     // Confirm the pin with master
+     Assert.assertTrue(mTFS.getInfo(file).isIsPinned());
+     // Try to create a file that cannot be stored unless the previous file is evicted, expect an
+     // exception since worker cannot serve the request
+     mThrown.expect(IOException.class);
+     TachyonFSTestUtils.createByteFile(mTFS, "/test2", TachyonStorageType.STORE, UnderStorageType.NO_PERSIST, MEM_CAPACITY_BYTES);
+ }
+\ No newline at end of file

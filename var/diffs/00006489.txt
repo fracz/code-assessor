@@ -1,0 +1,14 @@
+diff --git a/0f43015cbbc9882db45aeb7ce55cb56d08024062 b/b8fc7f7d2a8dc43ac09048aa62d1c551ccc023db
+index 0f43015cbb..b8fc7f7d2a 100644
+--- a/0f43015cbbc9882db45aeb7ce55cb56d08024062
++++ b/b8fc7f7d2a8dc43ac09048aa62d1c551ccc023db
+@@ -1,7 +1,7 @@
+ public void updateProfile(Profile profile) {
+-    super.updateProfile(profile);
++    mySchemesManager.addNewScheme(profile, true);
+     final Project[] projects = ProjectManager.getInstance().getOpenProjects();
+     for (Project project : projects) {
+         InspectionProjectProfileManager.getInstance(project).initProfileWrapper(profile);
+     }
+ }
+\ No newline at end of file

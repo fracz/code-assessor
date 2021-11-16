@@ -1,0 +1,15 @@
+diff --git a/fe45db380ff0bd8c4fe5405597e3abdfd53a818b b/f58b541551a2e51a299d84bf6c617179e9666c0b
+index fe45db380f..f58b541551 100644
+--- a/fe45db380ff0bd8c4fe5405597e3abdfd53a818b
++++ b/f58b541551a2e51a299d84bf6c617179e9666c0b
+@@ -1,8 +1,8 @@
+ @Test
+ public void createDirected_multigraph() {
+-    DirectedGraph<Integer, String> directedMultigraph = Graphs.createDirected(config().multigraph());
++    Graph<Integer, String> directedMultigraph = GraphBuilder.directed().allowsParallelEdges(true).build();
+     assertThat(directedMultigraph.addEdge(E12, N1, N2)).isTrue();
+     assertThat(directedMultigraph.addEdge(E12_A, N1, N2)).isTrue();
+     assertThat(directedMultigraph.edgesConnecting(N1, N2)).isEqualTo(ImmutableSet.of(E12, E12_A));
+     assertThat(directedMultigraph.edgesConnecting(N2, N1)).isEmpty();
+ }
+\ No newline at end of file

@@ -1,0 +1,25 @@
+diff --git a/d834ed91fb12a8757de80f606c2a76cce943db3c b/d338fe859a0b1a066505d2f07f729f9c666d1c1e
+index d834ed91fb..d338fe859a 100644
+--- a/d834ed91fb12a8757de80f606c2a76cce943db3c
++++ b/d338fe859a0b1a066505d2f07f729f9c666d1c1e
+@@ -1,16 +1,16 @@
+ @Override
+-public EntityDiagram evaluate() throws InvocationTargetException, InterruptedException {
++public EntityDiagram evaluate(DBRProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+     if (refreshMetadata && object instanceof DBPRefreshableObject) {
+         try {
+-            getEditorInput().getNavigatorNode().refreshNode(getProgressMonitor(), ERDEditorEmbedded.this);
++            getEditorInput().getNavigatorNode().refreshNode(monitor, ERDEditorEmbedded.this);
+         } catch (DBException e) {
+             log.warn("Error refreshing database metadata", e);
+         }
+     }
+     try {
+-        return loadFromDatabase(getProgressMonitor());
++        return loadFromDatabase(monitor);
+     } catch (DBException e) {
+         log.error("Error loading ER diagram", e);
+     }
+     return null;
+ }
+\ No newline at end of file

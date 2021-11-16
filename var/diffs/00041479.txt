@@ -1,0 +1,24 @@
+diff --git a/ccd3c0e4a77efa29d29983040ca595cbd15074f2 b/fcaa75bbb841d346dbe70a076f1098da98917313
+index ccd3c0e4a7..fcaa75bbb8 100644
+--- a/ccd3c0e4a77efa29d29983040ca595cbd15074f2
++++ b/fcaa75bbb841d346dbe70a076f1098da98917313
+@@ -1,8 +1,17 @@
+-protected void end(OCommandContext context) {
++@Override
++public void end() {
++    for (OTransformer t : transformers) t.end();
++    extractor.end();
++    loader.end();
++    for (OBlock t : endBlocks) {
++        t.begin();
++        t.execute();
++        t.end();
++    }
+     elapsed = System.currentTimeMillis() - startTime;
+     if (dumpTask != null) {
+         dumpTask.cancel();
+     }
+     out(false, "END ETL PROCESSOR");
+     dumpProgress(false);
+ }
+\ No newline at end of file

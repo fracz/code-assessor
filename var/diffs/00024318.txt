@@ -1,0 +1,11 @@
+diff --git a/9af1d5d69c4a6152073a0da3380d339fee0e5ad5 b/3437aedf459755e7d92425ddb0dfe1e76a7192d6
+index 9af1d5d69c..3437aedf45 100644
+--- a/9af1d5d69c4a6152073a0da3380d339fee0e5ad5
++++ b/3437aedf459755e7d92425ddb0dfe1e76a7192d6
+@@ -1,3 +1,3 @@
+-protected ByteBuffer getIndexedValue(ByteBuffer rowKey, Cell cell) {
+-    return cell.name().get(columnDef.position() + 1);
++protected ByteBuffer getIndexedValue(ByteBuffer rowKey, Clustering clustering, ByteBuffer cellValue, CellPath path) {
++    return path.get(0);
+ }
+\ No newline at end of file

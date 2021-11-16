@@ -1,0 +1,15 @@
+diff --git a/1127460a4a6d0cc3a69a9f104aab9cffb15d2d20 b/45854b4c5f6e9807abf8eea5d4dae153b2d21338
+index 1127460a4a..45854b4c5f 100644
+--- a/1127460a4a6d0cc3a69a9f104aab9cffb15d2d20
++++ b/45854b4c5f6e9807abf8eea5d4dae153b2d21338
+@@ -1,7 +1,7 @@
+-long getFileId(TachyonURI uri, String caller) throws AccessControlException, FileDoesNotExistException {
++private long getFileId(TachyonURI uri) throws AccessControlException, FileDoesNotExistException {
+     long fileId = mFileSystemMaster.getFileId(uri);
+     if (fileId == IdUtils.INVALID_FILE_ID) {
+-        throw new FileDoesNotExistException(String.format("Failed to %s: path %s does not exist", caller, uri));
++        throw new FileDoesNotExistException(ExceptionMessage.PATH_DOES_NOT_EXIST.getMessage(uri));
+     }
+     return fileId;
+ }
+\ No newline at end of file

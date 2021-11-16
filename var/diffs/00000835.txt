@@ -1,0 +1,15 @@
+diff --git a/2d10591789587167fd95b25e8d0b7796a81c3532 b/44ae1eb94667baad566dbde096e76f85fdd33148
+index 2d10591789..44ae1eb946 100644
+--- a/2d10591789587167fd95b25e8d0b7796a81c3532
++++ b/44ae1eb94667baad566dbde096e76f85fdd33148
+@@ -1,4 +1,8 @@
+ @Override
+ public boolean onTouchEvent(MotionEvent event) {
+-    return mTouchHelper.onTouchEvent(event);
++    boolean isEventConsumed = mTouchHelper.onTouchEvent(event);
++    if (!isEventConsumed) {
++        return super.onTouchEvent(event);
++    }
++    return isEventConsumed;
+ }
+\ No newline at end of file

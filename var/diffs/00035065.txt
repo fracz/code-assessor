@@ -1,0 +1,14 @@
+diff --git a/5bf3f0542548fab0bc62f4c4f35b5dea97455d6d b/c2603611202ec5e5bb88e7a69b3795476dfec79e
+index 5bf3f05425..c260361120 100644
+--- a/5bf3f0542548fab0bc62f4c4f35b5dea97455d6d
++++ b/c2603611202ec5e5bb88e7a69b3795476dfec79e
+@@ -1,5 +1,5 @@
+ public float getPrefWidth() {
+-    if (sizeInvalid)
+-        computeSize();
+-    return prefWidth;
++    if (backgroundPatch != null)
++        return Math.max(layout.getPrefWidth(), (int) backgroundPatch.getTotalWidth());
++    return layout.getPrefWidth();
+ }
+\ No newline at end of file

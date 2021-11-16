@@ -1,0 +1,16 @@
+diff --git a/ad599f593fdaf51773d5feec9b02f5605c782dce b/1afc07798b5e76a5f4013ae7b6717d0977e0f8ca
+index ad599f593f..1afc07798b 100644
+--- a/ad599f593fdaf51773d5feec9b02f5605c782dce
++++ b/1afc07798b5e76a5f4013ae7b6717d0977e0f8ca
+@@ -1,5 +1,8 @@
+ @Override
+ public int getHoldCount() {
+-    Long opStatus = commandExecutor.evalRead(getName(), LongCodec.INSTANCE, RedisCommands.EVAL_LONG, "local v = redis.call('get', KEYS[1]); " + "if (v == false) then " + "  return 0; " + "else " + "  local o = cjson.decode(v); " + "  return o['c']; " + "end", Collections.<Object>singletonList(getName()));
+-    return opStatus.intValue();
++    Long res = commandExecutor.read(getName(), LongCodec.INSTANCE, RedisCommands.HGET, getName(), getLockName());
++    if (res == null) {
++        return 0;
++    }
++    return res.intValue();
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/e545c64b5391fa7363cbbe27907c106317ba88ab b/4ee9e7107d9bfb87554c282f295737f575dbcece
+index e545c64b53..4ee9e7107d 100644
+--- a/e545c64b5391fa7363cbbe27907c106317ba88ab
++++ b/4ee9e7107d9bfb87554c282f295737f575dbcece
+@@ -1,5 +1,5 @@
+ @Override
+ public final Object getCell(final int columnIndex) {
+-    Preconditions.checkArgument(inRange(columnIndex));
+-    return rowData[columnIndex - 1];
++    Preconditions.checkArgument(columnIndex > 0 && columnIndex < data.length + 1);
++    return data[columnIndex - 1];
+ }
+\ No newline at end of file

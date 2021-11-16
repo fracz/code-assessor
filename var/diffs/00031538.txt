@@ -1,0 +1,16 @@
+diff --git a/4e71a89eaebfdc05799f08363c2b66275e86459b b/7879330e754b74dbb9272bff7adc58f7948b9ae1
+index 4e71a89eae..7879330e75 100644
+--- a/4e71a89eaebfdc05799f08363c2b66275e86459b
++++ b/7879330e754b74dbb9272bff7adc58f7948b9ae1
+@@ -1,9 +1,9 @@
+ /**
+  * indexes the given requests on the supplied primary, modifying it for replicas
+  */
+ protected IndexResponse indexOnPrimary(IndexRequest request, IndexShard primary) throws Exception {
+-    final Engine.IndexResult indexResult = executeIndexRequestOnPrimary(request, primary, null);
++    final Engine.IndexResult indexResult = executeIndexRequestOnPrimary(request, primary, new TransportShardBulkActionTests.NoopMappingUpdatePerformer());
+     request.primaryTerm(primary.getPrimaryTerm());
+     TransportWriteActionTestHelper.performPostWriteActions(primary, request, indexResult.getTranslogLocation(), logger);
+     return new IndexResponse(primary.shardId(), request.type(), request.id(), indexResult.getSeqNo(), indexResult.getVersion(), indexResult.isCreated());
+ }
+\ No newline at end of file

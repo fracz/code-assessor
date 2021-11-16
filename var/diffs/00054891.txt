@@ -1,0 +1,23 @@
+diff --git a/047dc15635262067ef7c2f86a0300d40ba4641c6 b/e135e7ed51f535a5bd18bc4f28734571f90f6cf9
+index 047dc15635..e135e7ed51 100644
+--- a/047dc15635262067ef7c2f86a0300d40ba4641c6
++++ b/e135e7ed51f535a5bd18bc4f28734571f90f6cf9
+@@ -1,10 +1,14 @@
+-public void loadFiles(List<File> files) throws IOException, DecodeException {
++public void loadFiles(List<File> files) throws JadxException {
+     if (files.isEmpty()) {
+-        throw new JadxRuntimeException("Empty file list");
++        throw new JadxException("Empty file list");
+     }
+     inputFiles.clear();
+     for (File file : files) {
+-        inputFiles.add(new InputFile(file));
++        try {
++            inputFiles.add(new InputFile(file));
++        } catch (IOException e) {
++            throw new JadxException("Error load file: " + file, e);
++        }
+     }
+     parse();
+ }
+\ No newline at end of file

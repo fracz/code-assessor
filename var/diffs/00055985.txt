@@ -1,0 +1,15 @@
+diff --git a/91b7084c3338e05595e66ed79c48471b4b8dd02e b/d567c8f9d083b659af5818a372bcd85c91a0c3a2
+index 91b7084c33..d567c8f9d0 100644
+--- a/91b7084c3338e05595e66ed79c48471b4b8dd02e
++++ b/d567c8f9d083b659af5818a372bcd85c91a0c3a2
+@@ -1,6 +1,7 @@
+ /**
+- * Configure custom argument resolvers without overriding the built-in ones.
++ * Configure resolvers for custom controller method arguments.
+  */
+ public void setCustomArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+-    this.customArgumentResolvers = resolvers;
++    this.customArgumentResolvers.clear();
++    this.customArgumentResolvers.addAll(resolvers);
+ }
+\ No newline at end of file

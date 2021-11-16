@@ -1,0 +1,16 @@
+diff --git a/cd97e0704f759e0ee1f8ac7c52d35076a5e88f35 b/6b62605a4c3a44a4c54981e37d23d8bedfbcda67
+index cd97e0704f..6b62605a4c 100644
+--- a/cd97e0704f759e0ee1f8ac7c52d35076a5e88f35
++++ b/6b62605a4c3a44a4c54981e37d23d8bedfbcda67
+@@ -1,9 +1,9 @@
+ protected HistoryEntry createHistoryEntry(Project project, long historyEntryID) throws Exception {
+     Column column = project.columnModel.getColumnByName(_columnName);
+     if (column == null) {
+         throw new Exception("No column named " + _columnName);
+     }
+     String description = "Remove column " + column.getName();
+     Change change = new ColumnRemovalChange(project.columnModel.columns.indexOf(column));
+-    return ProjectManager.singleton.createHistoryEntry(historyEntryID, project, description, ColumnRemovalOperation.this, change);
++    return new HistoryEntry(historyEntryID, project, description, ColumnRemovalOperation.this, change);
+ }
+\ No newline at end of file

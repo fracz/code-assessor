@@ -1,0 +1,14 @@
+diff --git a/caa9ab64e909b6412edf156083fcd74d0b3a1f81 b/b700760e4166885989d926715b8d09ca51c2ed7e
+index caa9ab64e9..b700760e41 100644
+--- a/caa9ab64e909b6412edf156083fcd74d0b3a1f81
++++ b/b700760e4166885989d926715b8d09ca51c2ed7e
+@@ -1,7 +1,7 @@
+ @Test
+ public void testInitMethodIsInvoked() throws Exception {
+-    XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("initializers.xml", getClass()));
++    XmlBeanFactory xbf = new XmlBeanFactory(INITIALIZERS_CONTEXT);
+     DoubleInitializer in = (DoubleInitializer) xbf.getBean("init-method1");
+     // Initializer should have doubled value
+     assertEquals(14, in.getNum());
+ }
+\ No newline at end of file

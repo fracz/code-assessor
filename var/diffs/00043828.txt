@@ -1,0 +1,16 @@
+diff --git a/4190efa7a7200ff417b3571f944fd97967137238 b/d2fc3e139056f9c65f3fc1de112e2b870cbdf1f2
+index 4190efa7a7..d2fc3e1390 100644
+--- a/4190efa7a7200ff417b3571f944fd97967137238
++++ b/d2fc3e139056f9c65f3fc1de112e2b870cbdf1f2
+@@ -1,8 +1,6 @@
+ @Test(dependsOnMethods = { "testDbCreationNoSecurity" })
+ public void testDbCreationDefault() throws IOException {
+-    if (url.startsWith(OEngineMemory.NAME))
+-        OGlobalConfiguration.STORAGE_KEEP_OPEN.setValue(true);
+     if (ODatabaseHelper.existsDatabase(url))
+-        ODatabaseHelper.dropDatabase(new OObjectDatabaseTx(url), url, "plocal");
+-    ODatabaseHelper.createDatabase(new OObjectDatabaseTx(url), url, "plocal");
++        ODatabaseHelper.dropDatabase(new OObjectDatabaseTx(url), url, getStorageType());
++    ODatabaseHelper.createDatabase(new OObjectDatabaseTx(url), url, getStorageType());
+ }
+\ No newline at end of file

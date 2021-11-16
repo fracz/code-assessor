@@ -1,0 +1,20 @@
+diff --git a/222206c0fd65c2d8f59a8e12aa89dcc228e8020d b/3f7f4e53b6ea271ac46c5c2ac732fbc17e5d86e5
+index 222206c0fd..3f7f4e53b6 100644
+--- a/222206c0fd65c2d8f59a8e12aa89dcc228e8020d
++++ b/3f7f4e53b6ea271ac46c5c2ac732fbc17e5d86e5
+@@ -1,12 +1,12 @@
+ @Override
+-public byte[] encode(@NotNull final byte[] value) {
++public byte[] encode(final byte[] value) {
+     try {
+         final Cipher cipher = Cipher.getInstance(this.cipherAlgorithm);
+         final SecretKeySpec key = new SecretKeySpec(this.encryptionSecretKey.getBytes(), this.secretKeyAlgorithm);
+         cipher.init(Cipher.ENCRYPT_MODE, key, new IvParameterSpec(this.encryptionSeed.getBytes()));
+         final byte[] result = cipher.doFinal(value);
+-        return result;
++        return sign(result);
+     } catch (final Exception e) {
+         throw new RuntimeException(e);
+     }
+ }
+\ No newline at end of file

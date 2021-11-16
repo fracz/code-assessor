@@ -1,0 +1,20 @@
+diff --git a/9d48d91560f2fdbafa6b50546269911db3b3c43c b/2bde0ba0f3f3f67584c40299e6361a95ab70a7ac
+index 9d48d91560..2bde0ba0f3 100644
+--- a/9d48d91560f2fdbafa6b50546269911db3b3c43c
++++ b/2bde0ba0f3f3f67584c40299e6361a95ab70a7ac
+@@ -1,10 +1,10 @@
+ /**
+  * Adds myModuleName as a qualifier to target.
+  * @param target_node what to qualify
+- * @param generator
+  * @param project
+  */
+-private void qualifyTarget(ASTNode target_node, PyElementGenerator generator, Project project) {
+-    target_node.addChild(generator.createDot(project), target_node.getFirstChildNode());
+-    target_node.addChild(sure(generator.createFromText(project, PyReferenceExpression.class, myQualifier, new int[] { 0, 0 }).getNode()), target_node.getFirstChildNode());
++private void qualifyTarget(ASTNode target_node, Project project) {
++    final PyElementGenerator generator = PyElementGenerator.getInstance(project);
++    target_node.addChild(generator.createDot(), target_node.getFirstChildNode());
++    target_node.addChild(sure(generator.createFromText(PyReferenceExpression.class, myQualifier, new int[] { 0, 0 }).getNode()), target_node.getFirstChildNode());
+ }
+\ No newline at end of file

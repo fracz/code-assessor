@@ -1,0 +1,31 @@
+diff --git a/a6251ef23533b1fec74a1d2bfaace56b226edd8b b/ef6968a29bde59e046c431d7b0c8a414e0682b9c
+index a6251ef235..ef6968a29b 100644
+--- a/a6251ef23533b1fec74a1d2bfaace56b226edd8b
++++ b/ef6968a29bde59e046c431d7b0c8a414e0682b9c
+@@ -1,13 +1,16 @@
+ public void build() {
+-    while (iter.hasNext()) {
+-        if (isStopRequested())
+-            throw new CompactionInterruptedException(getCompactionInfo());
+-        DecoratedKey key = iter.next();
+-        Keyspace.indexRow(key, cfs, idxNames);
+-    }
+     try {
+-        iter.close();
+-    } catch (IOException e) {
+-        throw new RuntimeException(e);
++        while (iter.hasNext()) {
++            if (isStopRequested())
++                throw new CompactionInterruptedException(getCompactionInfo());
++            DecoratedKey key = iter.next();
++            Keyspace.indexPartition(key, cfs, idxNames);
++        }
++    } finally {
++        try {
++            iter.close();
++        } catch (IOException e) {
++            throw new RuntimeException(e);
++        }
+     }
+ }
+\ No newline at end of file

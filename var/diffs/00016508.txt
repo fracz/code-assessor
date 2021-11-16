@@ -1,0 +1,20 @@
+diff --git a/362b63e1c8b23ca3c5a7a08b80c86fe9221e35cd b/081a40db4beee61a32d78843f2deb4ca277e4272
+index 362b63e1c8..081a40db4b 100644
+--- a/362b63e1c8b23ca3c5a7a08b80c86fe9221e35cd
++++ b/081a40db4beee61a32d78843f2deb4ca277e4272
+@@ -1,12 +1,13 @@
+ @Nullable
+ private static String getSDKBuildNumber(@NotNull final String sdkHomePath) {
+     try {
+         return FileUtil.loadFile(new File(sdkHomePath, "build.txt")).trim();
+     } catch (final IOException e) {
+         try {
+-            return getJarImplementationVersion(getKotlinCompilerJar(new File(sdkHomePath)));
++            final File compilerJar = PathUtil.getCompilerPath(new File(sdkHomePath));
++            return compilerJar == null ? null : getJarImplementationVersion(compilerJar);
+         } catch (final IOException e1) {
+             return null;
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/4ca7c0f25a0f6c646499b4f61473b055d807b622 b/140dfc099e3d7208b815878df7fadefea97fb7ee
+index 4ca7c0f25a..140dfc099e 100644
+--- a/4ca7c0f25a0f6c646499b4f61473b055d807b622
++++ b/140dfc099e3d7208b815878df7fadefea97fb7ee
+@@ -1,11 +1,9 @@
+ @Override
+ @NotNull
+ public JsNode visitObjectDeclaration(@NotNull JetObjectDeclaration expression, @NotNull TranslationContext context) {
+-    // TODO: util
+-    JetObjectDeclarationName nameAsDeclaration = expression.getNameAsDeclaration();
+-    assert nameAsDeclaration != null;
+-    DeclarationDescriptor descriptor = getDescriptorForElement(context.bindingContext(), nameAsDeclaration);
++    JetObjectDeclarationName objectDeclarationName = getObjectDeclarationName(expression);
++    DeclarationDescriptor descriptor = getDescriptorForElement(context.bindingContext(), objectDeclarationName);
+     JsName propertyName = context.getNameForDescriptor(descriptor);
+     JsExpression value = ClassTranslator.generateClassCreationExpression(expression, context);
+     return AstUtil.newVar(propertyName, value);
+ }
+\ No newline at end of file

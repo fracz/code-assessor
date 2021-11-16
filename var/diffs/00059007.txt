@@ -1,0 +1,13 @@
+diff --git a/dd1b0afdf5a9924a6244d522026705f0c05f0588 b/91216f11664955bf9e799fa43a47feca76e57e69
+index dd1b0afdf5..91216f1166 100644
+--- a/dd1b0afdf5a9924a6244d522026705f0c05f0588
++++ b/91216f11664955bf9e799fa43a47feca76e57e69
+@@ -1,4 +1,6 @@
+ @Override
+ public boolean hasNext() throws StorageException {
+-    return keyiter.hasNext();
++    if (next == null)
++        next = nextInternal();
++    return next != null;
+ }
+\ No newline at end of file

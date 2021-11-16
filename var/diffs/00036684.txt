@@ -1,0 +1,27 @@
+diff --git a/4eed7e853c0536a182f2794885f45ed64b39b7e8 b/42c4b61b67963e793d7d5694df616751d8d9a41e
+index 4eed7e853c..42c4b61b67 100644
+--- a/4eed7e853c0536a182f2794885f45ed64b39b7e8
++++ b/42c4b61b67963e793d7d5694df616751d8d9a41e
+@@ -1,20 +1,19 @@
+ public AnnotationBo getDisplayArgument0(Span span) {
+     // TODO needs a more generalized implementation for Arcus
+     List<AnnotationBo> list = span.getAnnotationBoList();
+     if (list == null) {
+         return null;
+     }
+-    final ServiceType serviceType = span.getServiceType();
+-    final AnnotationKeyMatcher matcher = annotationKeyMatcherService.findAnnotationKeyMatcher(serviceType);
++    final AnnotationKeyMatcher matcher = annotationKeyMatcherService.findAnnotationKeyMatcher(span.getServiceType());
+     ;
+     if (matcher == null) {
+         return null;
+     }
+     for (AnnotationBo annotation : list) {
+         int key = annotation.getKey();
+         if (matcher.matches(key)) {
+             return annotation;
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

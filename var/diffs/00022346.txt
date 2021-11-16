@@ -1,0 +1,29 @@
+diff --git a/9c3ec4ce00c7827b84387c7d35e75ec8a11e8f4f b/bd87312632cd41b3937ec6d901213b9aefe47527
+index 9c3ec4ce00..bd87312632 100644
+--- a/9c3ec4ce00c7827b84387c7d35e75ec8a11e8f4f
++++ b/bd87312632cd41b3937ec6d901213b9aefe47527
+@@ -1,19 +1,19 @@
+ /**
+  * Set whether the cursor is visible.  The default is true.
+  *
+  * @attr ref android.R.styleable#TextView_cursorVisible
+  */
+ @android.view.RemotableViewMethod
+ public void setCursorVisible(boolean visible) {
+     // visible is the default value with no edit data
+     if (visible && mEditor == null)
+         return;
+     createEditorIfNeeded("setCursorVisible");
+-    if (getEditor().mCursorVisible != visible) {
+-        getEditor().mCursorVisible = visible;
++    if (mEditor.mCursorVisible != visible) {
++        mEditor.mCursorVisible = visible;
+         invalidate();
+-        getEditor().makeBlink();
++        mEditor.makeBlink();
+         // InsertionPointCursorController depends on mCursorVisible
+-        getEditor().prepareCursorControllers();
++        mEditor.prepareCursorControllers();
+     }
+ }
+\ No newline at end of file

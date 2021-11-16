@@ -1,0 +1,18 @@
+diff --git a/035b1122818365d7d4095b9710b5fb1dc3cced98 b/780ddaf7e3c2d6546d40d7b95d80a6ac52d7c7c0
+index 035b112281..780ddaf7e3 100644
+--- a/035b1122818365d7d4095b9710b5fb1dc3cced98
++++ b/780ddaf7e3c2d6546d40d7b95d80a6ac52d7c7c0
+@@ -1,10 +1,11 @@
+ public static JavaSdkVersion getJavaSdkVersion(@NotNull PsiElement element) {
+     final Module module = ModuleUtilCore.findModuleForPsiElement(element);
+     if (module != null) {
+         final Sdk sdk = ModuleRootManager.getInstance(module).getSdk();
+         if (sdk != null && sdk.getSdkType() instanceof JavaSdk) {
+-            return JavaSdk.getInstance().getVersion(sdk);
++            String version = sdk.getVersionString();
++            return version == null ? null : JdkVersionUtil.getVersion(version);
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

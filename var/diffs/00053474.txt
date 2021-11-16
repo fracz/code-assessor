@@ -1,0 +1,14 @@
+diff --git a/912eb4f7d2009496108f988c09788997d2ada737 b/ffebff68b660a2674bf37252346c7341428c8ba9
+index 912eb4f7d2..ffebff68b6 100644
+--- a/912eb4f7d2009496108f988c09788997d2ada737
++++ b/ffebff68b660a2674bf37252346c7341428c8ba9
+@@ -1,7 +1,5 @@
+ @Test
+ public void assertToJsonForComplexStrategy() {
+-    ComplexShardingStrategyConfiguration actual = new ComplexShardingStrategyConfiguration();
+-    actual.setShardingColumns("order_id,item_id");
+-    actual.setAlgorithmClassName("xxx.XXXAlgorithm");
++    ComplexShardingStrategyConfiguration actual = new ComplexShardingStrategyConfiguration("order_id,item_id", "xxx.XXXAlgorithm");
+     assertThat(ShardingRuleConfigurationConverter.toJson(getCommonShardingRuleConfig(actual)), is(getJsonForComplexStrategy()));
+ }
+\ No newline at end of file

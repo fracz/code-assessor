@@ -1,0 +1,11 @@
+diff --git a/b9662ac9455af3e3b05a13a6f76564137302fe5e b/e947e0b2698400c141c8cff186a00f6a926c7461
+index b9662ac945..e947e0b269 100644
+--- a/b9662ac9455af3e3b05a13a6f76564137302fe5e
++++ b/e947e0b2698400c141c8cff186a00f6a926c7461
+@@ -1,3 +1,3 @@
+-public boolean managesLibrary(@NotNull Library library, LibrariesContainer container) {
+-    return LibrariesUtil.getGroovyLibraryHome(container.getLibraryFiles(library, OrderRootType.CLASSES)) != null;
++public boolean managesLibrary(final VirtualFile[] libraryFiles) {
++    return LibrariesUtil.getGroovyLibraryHome(libraryFiles) != null;
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/cad0911e874afd6294ead12dfbd0718e67afb577 b/53946132ad0ce8b7fd45d2ef9806629e3e70bea5
+index cad0911e87..53946132ad 100644
+--- a/cad0911e874afd6294ead12dfbd0718e67afb577
++++ b/53946132ad0ce8b7fd45d2ef9806629e3e70bea5
+@@ -1,8 +1,13 @@
+-public static boolean canDeleteCells(final RadContainer grid, final int[] cells, final boolean row, final boolean mustBeEmpty) {
++public static boolean canDeleteCells(final RadContainer grid, final int[] cells, final boolean row) {
++    // for multiple cells, we can't determine if deleting all cells will have a correct result
+     for (int cell : cells) {
+-        if (!canDeleteCell(grid, cell, row, mustBeEmpty)) {
++        CellStatus status = canDeleteCell(grid, cell, row);
++        if (status != CellStatus.Empty) {
++            if (cells.length == 1 && status == CellStatus.Redundant) {
++                return true;
++            }
+             return false;
+         }
+     }
+     return true;
+ }
+\ No newline at end of file

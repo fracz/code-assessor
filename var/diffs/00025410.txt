@@ -1,0 +1,24 @@
+diff --git a/6b9f733348f2d6d095dd61b851642fdde1f27ac9 b/ad93d3ae0b6ba21b48338a018f0c63d06f92d452
+index 6b9f733348..ad93d3ae0b 100644
+--- a/6b9f733348f2d6d095dd61b851642fdde1f27ac9
++++ b/ad93d3ae0b6ba21b48338a018f0c63d06f92d452
+@@ -1,16 +1,10 @@
+ private void addSinkNode(SinkNode sinkNode, int parallelism) {
+     String boltId = UniqueIdGen.getInstance().getUniqueBoltId();
+     sinkNode.setComponentId(boltId);
+     sinkNode.setParallelism(parallelism);
+     if (node instanceof SpoutNode) {
+-        addNode(sinkNode, parallelism, Utils.DEFAULT_STREAM_ID);
++        addNode(node, sinkNode, Utils.DEFAULT_STREAM_ID, parallelism);
+     } else {
+-        /*
+-              * add a stream__sink stream to the current node (parent) for emitting
+-              * just the values (no punctuation) to the bolt.
+-              */
+-        String sinkStream = StreamUtil.getSinkStream(stream);
+-        node.addOutputStream(sinkStream);
+-        addNode(sinkNode, parallelism, sinkStream);
++        addNode(node, sinkNode, parallelism);
+     }
+ }
+\ No newline at end of file

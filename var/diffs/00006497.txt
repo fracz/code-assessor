@@ -1,0 +1,16 @@
+diff --git a/09a54f6bb9646a794f890a1344b2f13751d4c399 b/84bb605031377f9d6a28cb52e7f2d30ff688eec7
+index 09a54f6bb9..84bb605031 100644
+--- a/09a54f6bb9646a794f890a1344b2f13751d4c399
++++ b/84bb605031377f9d6a28cb52e7f2d30ff688eec7
+@@ -1,9 +1,4 @@
+ @Nullable
+ public Keymap getKeymap(String name) {
+-    for (Keymap keymap : myKeymaps) {
+-        if (name.equals(keymap.getName())) {
+-            return keymap;
+-        }
+-    }
+-    return null;
++    return mySchemesManager.findSchemeByName(name);
+ }
+\ No newline at end of file

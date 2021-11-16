@@ -1,0 +1,11 @@
+diff --git a/d577725b984af54436e4f613d0b6a27ba203bc6c b/1767311c17638c2c3afccb892e79eb107d9e7c8b
+index d577725b98..1767311c17 100644
+--- a/d577725b984af54436e4f613d0b6a27ba203bc6c
++++ b/1767311c17638c2c3afccb892e79eb107d9e7c8b
+@@ -1,4 +1,4 @@
+ @Override
+ protected void doSaveDocument(IProgressMonitor monitor, Object element, IDocument document, boolean overwrite) throws CoreException {
+-    setSourceText(new DefaultProgressMonitor(monitor), document.get());
++    setSourceText(RuntimeUtils.makeMonitor(monitor), document.get());
+ }
+\ No newline at end of file

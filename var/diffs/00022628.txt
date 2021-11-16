@@ -1,0 +1,23 @@
+diff --git a/3ea98c3a1ebdc642c21986ba95641db762865d5e b/31771776b5d2d2c252c63c85f3f8f2dc8ab25fa3
+index 3ea98c3a1e..31771776b5 100644
+--- a/3ea98c3a1ebdc642c21986ba95641db762865d5e
++++ b/31771776b5d2d2c252c63c85f3f8f2dc8ab25fa3
+@@ -1,16 +1,15 @@
+ /**
+  * Called when updating or posting a notification to the heads up.
+  */
+ public void updateNotification(NotificationData.Entry headsUp, boolean alert) {
+     if (DEBUG)
+         Log.v(TAG, "updateNotification");
+     headsUp.row.setChildrenExpanded(false, /* expanded */
+     false);
+     headsUp.row.sendAccessibilityEvent(AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED);
+     if (alert) {
+         HeadsUpEntry headsUpEntry = mHeadsUpEntries.get(headsUp.key);
+         headsUpEntry.updateEntry();
+-        setEntryToShade(headsUpEntry, mIsExpanded, false, /* justAdded */
+-        false);
++        setEntryPinned(headsUpEntry, !mIsExpanded);
+     }
+ }
+\ No newline at end of file

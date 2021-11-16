@@ -1,0 +1,16 @@
+diff --git a/b0717e1ab65e52065064a989017c4edcc38d3972 b/dbc5083d0b9408bf67aaa38d0d313eca7571c51a
+index b0717e1ab6..dbc5083d0b 100644
+--- a/b0717e1ab65e52065064a989017c4edcc38d3972
++++ b/dbc5083d0b9408bf67aaa38d0d313eca7571c51a
+@@ -1,9 +1,9 @@
+ public Collection<GenericSchema> getSchemas(DBRProgressMonitor monitor) throws DBException {
+     if (schemas == null && !isInitialized) {
+-        try (JDBCSession session = this.getDataSource().getDefaultContext(true).openSession(monitor, DBCExecutionPurpose.META, "Load catalog schemas")) {
++        try (JDBCSession session = DBUtils.openMetaSession(monitor, this.getDataSource(), "Load catalog schemas")) {
+             this.schemas = this.getDataSource().loadSchemas(session, this);
+             this.isInitialized = true;
+         }
+     }
+     return schemas;
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/82c23d9da22b194e30ec1cb1475e2442dbf5ff13 b/fdb42315db2824ca58d2c0032443d0165690a7a3
+index 82c23d9da2..fdb42315db 100644
+--- a/82c23d9da22b194e30ec1cb1475e2442dbf5ff13
++++ b/fdb42315db2824ca58d2c0032443d0165690a7a3
+@@ -1,16 +1,16 @@
+ private int[] getCheckedRows() {
+     int count = 0;
+     for (MemberInfo info : myMemberInfos) {
+         if (info.isChecked()) {
+             count++;
+         }
+     }
+     int[] rows = new int[count];
+     int currentRow = 0;
+-    for (int idx = 0; idx < myMemberInfos.length; idx++) {
+-        if (myMemberInfos[idx].isChecked()) {
++    for (int idx = 0; idx < myMemberInfos.size(); idx++) {
++        if (myMemberInfos.get(idx).isChecked()) {
+             rows[currentRow++] = idx;
+         }
+     }
+     return rows;
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/900c18cfd032030e6b78b7dbbad97defc14407f0 b/7d7732250de0b4a69ac7573724ecb4d9f73af2e7
+index 900c18cfd0..7d7732250d 100644
+--- a/900c18cfd032030e6b78b7dbbad97defc14407f0
++++ b/7d7732250de0b4a69ac7573724ecb4d9f73af2e7
+@@ -1,12 +1,12 @@
+ public void onTestStart(ITestResult iTestResult) {
+     TestDescriptorInternal testInternal;
+     Object parentId;
+     synchronized (lock) {
+         testInternal = new DefaultTestMethodDescriptor(idGenerator.generateId(), iTestResult.getTestClass().getName(), iTestResult.getName());
+-        Object oldTestId = tests.put(testInternal.getName(), testInternal.getId());
+-        assert oldTestId == null;
++        Object oldTestId = tests.put(iTestResult, testInternal.getId());
++        assert oldTestId == null : "Apparently some other test has started but it hasn't finished. " + "Expect the resultProcessor to break. " + "Don't expect to see this assertion stack trace due to the current architecture";
+         parentId = testMethodToSuiteMapping.get(iTestResult.getMethod());
+         assert parentId != null;
+     }
+     resultProcessor.started(testInternal, new TestStartEvent(iTestResult.getStartMillis(), parentId));
+ }
+\ No newline at end of file

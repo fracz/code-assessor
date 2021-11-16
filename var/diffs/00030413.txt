@@ -1,0 +1,35 @@
+diff --git a/ce0c50dbf24ee50eb539832039328a266dd883fc b/51281caaca81072e8ac348857b807b5111821611
+index ce0c50dbf2..51281caaca 100644
+--- a/ce0c50dbf24ee50eb539832039328a266dd883fc
++++ b/51281caaca81072e8ac348857b807b5111821611
+@@ -1,26 +1,26 @@
+ @Override
+ public void run() {
+     try {
+         if (!routingTableDirty) {
+             return;
+         }
+         if (lifecycle.stopped()) {
+             return;
+         }
+         clusterService.submitStateUpdateTask(CLUSTER_UPDATE_TASK_SOURCE, new ClusterStateUpdateTask() {
+
+             @Override
+             public ClusterState execute(ClusterState currentState) {
+-                RoutingTable newRoutingTable = shardsAllocation.reroute(currentState);
+-                if (newRoutingTable == currentState.routingTable()) {
++                RoutingAllocation.Result routingResult = shardsAllocation.reroute(currentState);
++                if (!routingResult.changed()) {
+                     // no state changed
+                     return currentState;
+                 }
+-                return newClusterStateBuilder().state(currentState).routingTable(newRoutingTable).build();
++                return newClusterStateBuilder().state(currentState).routingResult(routingResult).build();
+             }
+         });
+         routingTableDirty = false;
+     } catch (Exception e) {
+         logger.warn("Failed to reroute routing table", e);
+     }
+ }
+\ No newline at end of file

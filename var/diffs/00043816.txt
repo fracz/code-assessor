@@ -1,0 +1,12 @@
+diff --git a/6b89e4b6a6545ed9e7496cd8392fce8360b4d21e b/2a9751da4f8e03beb57735c586d99471991af9a3
+index 6b89e4b6a6..2a9751da4f 100644
+--- a/6b89e4b6a6545ed9e7496cd8392fce8360b4d21e
++++ b/2a9751da4f8e03beb57735c586d99471991af9a3
+@@ -1,5 +1,5 @@
+ @AfterMethod
+ public void afterMethod() throws Exception {
+     database.command(new OCommandSQL("delete from Collector")).execute();
+-    database.close();
++    super.afterMethod();
+ }
+\ No newline at end of file

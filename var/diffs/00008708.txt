@@ -1,0 +1,22 @@
+diff --git a/e0a79e8135918f351deb62a368151fce1dffb616 b/5ab57db1c723d713b9542a86c187b7dddeeec152
+index e0a79e8135..5ab57db1c7 100644
+--- a/e0a79e8135918f351deb62a368151fce1dffb616
++++ b/5ab57db1c723d713b9542a86c187b7dddeeec152
+@@ -1,11 +1,11 @@
+-private Pair storeSelection() {
+-    ArrayList selectedNodes = new ArrayList();
++private Pair<ElementNode, List<ElementNode>> storeSelection() {
++    List<ElementNode> selectedNodes = new ArrayList<ElementNode>();
+     TreePath[] paths = myTree.getSelectionPaths();
+     if (paths != null) {
+-        for (int i = 0; i < paths.length; i++) {
+-            selectedNodes.add(paths[i].getLastPathComponent());
++        for (TreePath path : paths) {
++            selectedNodes.add((ElementNode) path.getLastPathComponent());
+         }
+     }
+     TreePath leadSelectionPath = myTree.getLeadSelectionPath();
+-    return new Pair(leadSelectionPath != null ? leadSelectionPath.getLastPathComponent() : null, selectedNodes);
++    return Pair.create(leadSelectionPath != null ? (ElementNode) leadSelectionPath.getLastPathComponent() : null, selectedNodes);
+ }
+\ No newline at end of file

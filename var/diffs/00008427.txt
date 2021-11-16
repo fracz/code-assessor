@@ -1,0 +1,15 @@
+diff --git a/e8a598dd58eadde48941e0558188bda5d3b863b7 b/bf05b6af9854a555580c74de47d2b11a6fc89255
+index e8a598dd58..bf05b6af98 100644
+--- a/e8a598dd58eadde48941e0558188bda5d3b863b7
++++ b/bf05b6af9854a555580c74de47d2b11a6fc89255
+@@ -1,6 +1,6 @@
+ public void testAliasedConstructor() throws Exception {
+     PsiReference ref = configureByFile("aliasedConstructor/A.groovy");
+-    final PsiElement resolved = ref.resolve();
+-    assertTrue(resolved instanceof PsiMethod);
+-    assertEquals("JFrame", ((PsiMethod) resolved).getName());
++    PsiMethod resolved = ((GrNewExpression) ref.getElement().getParent()).resolveConstructor();
++    assertNotNull(resolved);
++    assertEquals("JFrame", resolved.getName());
+ }
+\ No newline at end of file

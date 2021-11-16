@@ -1,0 +1,19 @@
+diff --git a/8df56a480edd529280ac04a79889e27d71e0ad0e b/3e48c0f348d2ce69db7f2cbe15f16eaaf64e04c5
+index 8df56a480e..3e48c0f348 100644
+--- a/8df56a480edd529280ac04a79889e27d71e0ad0e
++++ b/3e48c0f348d2ce69db7f2cbe15f16eaaf64e04c5
+@@ -1,11 +1,10 @@
+-protected void parseUpdateSet(SQLUpdateStatement update) {
++protected final void parseUpdateSet(final SQLUpdateStatement updateStatement) {
+     accept(Token.SET);
+     while (true) {
+-        SQLUpdateSetItem item = this.exprParser.parseUpdateSetItem();
+-        update.addItem(item);
++        updateStatement.addItem(exprParser.parseUpdateSetItem());
+         if (!getLexer().equalToken(Token.COMMA)) {
+             break;
+         }
+         getLexer().nextToken();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/cfbbba3e6ddb919b4d259f8b954847d706c75f22 b/74274027fce38a429f727a692334a86a6577d1c5
+index cfbbba3e6d..74274027fc 100644
+--- a/cfbbba3e6ddb919b4d259f8b954847d706c75f22
++++ b/74274027fce38a429f727a692334a86a6577d1c5
+@@ -1,13 +1,18 @@
+ /**
+- * Removes user from persistent layer by his identifier.
++ * Removes user and his dependencies by given {@code id}.
+  *
+  * @param id
+  * user identifier
++ * @throws NullPointerException
++ * when {@code id} is null
+  * @throws ConflictException
+  * when given user cannot be deleted
+  * @throws ServerException
+  * when any other error occurs
+  */
+-public void remove(String id) throws NotFoundException, ServerException, ConflictException {
++public void remove(String id) throws ServerException, ConflictException {
++    requireNonNull(id, "Required non-null id");
++    profileDao.remove(id);
++    preferencesDao.remove(id);
+     userDao.remove(id);
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/e4c5fe0fe0327c82d698021bfa0471df7dcdec6d b/df8a27602b596033dc426d0fb3e1b4125aa674cc
+index e4c5fe0fe0..df8a27602b 100644
+--- a/e4c5fe0fe0327c82d698021bfa0471df7dcdec6d
++++ b/df8a27602b596033dc426d0fb3e1b4125aa674cc
+@@ -1,16 +1,16 @@
+-public RunProfileState getState(DataContext context, Executor executor, RunnerSettings runnerSettings, ConfigurationPerRunnerSettings configurationSettings) {
+-    final JavaCommandLineState state = new JavaCommandLineState(runnerSettings, configurationSettings) {
++public RunProfileState getState(@NotNull final Executor executor, @NotNull final ExecutionEnvironment env) throws ExecutionException {
++    final JavaCommandLineState state = new JavaCommandLineState(env) {
+
+         protected JavaParameters createJavaParameters() {
+             return myParameters;
+         }
+     };
+     final TextConsoleBuilder builder = TextConsoleBuilderFactory.getInstance().createBuilder(myProject);
+     if (myFilters != null) {
+         for (final Filter myFilter : myFilters) {
+             builder.addFilter(myFilter);
+         }
+     }
+     state.setConsoleBuilder(builder);
+     return state;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/34ec660f9130cbb4a313d4405d14c041a96b5e3b b/40132573f97a66d50ab85acda2e4375ccb93c114
+index 34ec660f91..40132573f9 100644
+--- a/34ec660f9130cbb4a313d4405d14c041a96b5e3b
++++ b/40132573f97a66d50ab85acda2e4375ccb93c114
+@@ -1,8 +1,8 @@
+ private void updateModel() {
+     DataContext context = DataManager.getInstance().getDataContext();
+-    if (context.getData(DataConstants.IDE_VIEW) == myIdeView || context.getData(DataConstants.PROJECT) != myProject || isNodePopupShowing()) {
++    if (LangDataKeys.IDE_VIEW.getData(context) == myIdeView || PlatformDataKeys.PROJECT.getData(context) != myProject || isNodePopupShowing()) {
+         scheduleModelUpdate();
+         return;
+     }
+     myModel.updateModel(context);
+ }
+\ No newline at end of file

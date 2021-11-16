@@ -1,0 +1,29 @@
+diff --git a/7f5c7b7f9b28ba9f459fd8af4197c3468a9b6615 b/d60baae926406679ee9cf0513e3cb083c71e4ac6
+index 7f5c7b7f9b..d60baae926 100644
+--- a/7f5c7b7f9b28ba9f459fd8af4197c3468a9b6615
++++ b/d60baae926406679ee9cf0513e3cb083c71e4ac6
+@@ -1,9 +1,16 @@
+-public synchronized IndexOutput openAndPutIndexOutput(String key, String fileName, StoreFileMetaData metaData, Store store) throws IOException {
+-    if (isCanceled()) {
+-        return null;
+-    }
+-    final ConcurrentMap<String, IndexOutput> outputs = openIndexOutputs;
+-    IndexOutput indexOutput = store.createVerifyingOutput(fileName, IOContext.DEFAULT, metaData);
+-    outputs.put(key, indexOutput);
++/**
++ * Creates an {@link org.apache.lucene.store.IndexOutput} for the given file name. Note that the
++ * IndexOutput actually point at a temporary file.
++ * <p/>
++ * Note: You can use {@link #getOpenIndexOutput(String)} with the same filename to retrieve the same IndexOutput
++ * at a later stage
++ */
++public IndexOutput openAndPutIndexOutput(String fileName, StoreFileMetaData metaData, Store store) throws IOException {
++    ensureNotFinished();
++    String tempFileName = getTempNameForFile(fileName);
++    // add first, before it's created
++    tempFileNames.add(tempFileName);
++    IndexOutput indexOutput = store.createVerifyingOutput(tempFileName, IOContext.DEFAULT, metaData);
++    openIndexOutputs.put(fileName, indexOutput);
+     return indexOutput;
+ }
+\ No newline at end of file

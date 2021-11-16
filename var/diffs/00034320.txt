@@ -1,0 +1,16 @@
+diff --git a/795f9c971ad9052310e9ba862c9e3e7eceb8afd4 b/65a5a7ff7cbd5eb5f19e890764ef3c995e888832
+index 795f9c971a..65a5a7ff7c 100644
+--- a/795f9c971ad9052310e9ba862c9e3e7eceb8afd4
++++ b/65a5a7ff7cbd5eb5f19e890764ef3c995e888832
+@@ -1,4 +1,9 @@
+ public void removeHeader(String name) {
+-    ArrayList<String> removeFields = findHeaders(name);
++    ArrayList<Field> removeFields = new ArrayList<Field>();
++    for (Field field : mFields) {
++        if (field.name.equalsIgnoreCase(name)) {
++            removeFields.add(field);
++        }
++    }
+     mFields.removeAll(removeFields);
+ }
+\ No newline at end of file

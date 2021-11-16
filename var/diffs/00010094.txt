@@ -1,0 +1,18 @@
+diff --git a/84e8e43acb8d6b4e24dbe3a4aaefd6cdf781655f b/2fa12a935b62e1603e8e112c7d54309c5ca51002
+index 84e8e43acb..2fa12a935b 100644
+--- a/84e8e43acb8d6b4e24dbe3a4aaefd6cdf781655f
++++ b/2fa12a935b62e1603e8e112c7d54309c5ca51002
+@@ -1,11 +1,11 @@
+ @Nullable
+ static HighlightInfo checkAnnotationMethodParameters(@NotNull PsiParameterList list) {
+     final PsiElement parent = list.getParent();
+     if (PsiUtil.isAnnotationMethod(parent) && list.getParametersCount() > 0) {
+         final String message = JavaErrorMessages.message("annotation.interface.members.may.not.have.parameters");
+-        final HighlightInfo highlightInfo = HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, list, message);
++        final HighlightInfo highlightInfo = HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(list).descriptionAndTooltip(message).create();
+         QuickFixAction.registerQuickFixAction(highlightInfo, new RemoveParameterListFix((PsiMethod) parent));
+         return highlightInfo;
+     }
+     return null;
+ }
+\ No newline at end of file

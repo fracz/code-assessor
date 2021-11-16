@@ -1,0 +1,15 @@
+diff --git a/092e8e0650d5dc2e595506165e5db24d1e4f4b7a b/7bdf3e1e419c8cbf5af34da2790a64d53ad08299
+index 092e8e0650..7bdf3e1e41 100644
+--- a/092e8e0650d5dc2e595506165e5db24d1e4f4b7a
++++ b/7bdf3e1e419c8cbf5af34da2790a64d53ad08299
+@@ -1,8 +1,8 @@
+ @Test
+ public void addEdge_tooManyNodes() {
+     try {
+-        addEdge(Graphs.<Integer, String>createDirected(), E11, ImmutableSet.<Integer>of(N1, N2, N3));
++        addEdge(GraphBuilder.directed().<Integer, String>build(), E11, ImmutableSet.of(N1, N2, N3));
+         fail("Should have rejected adding an edge to a Graph with > 2 nodes");
+     } catch (IllegalArgumentException expected) {
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/cd771a2da69b7eb20392eba1d0ea1c587708de04 b/bdc50230b6023c6f08972ee791996cfb0f633d37
+index cd771a2da6..bdc50230b6 100644
+--- a/cd771a2da69b7eb20392eba1d0ea1c587708de04
++++ b/bdc50230b6023c6f08972ee791996cfb0f633d37
+@@ -1,16 +1,16 @@
+ /**
+  * TODO: Use this factory for the whole document infrastructure to simplify new documentation engine support
+  * Factory that returns appropriate instance of {@link StructuredDocString} if specificed
+  *
+  * @return instance or null if no doctype os set
+  */
+ @Nullable
+ public StructuredDocString getDocString() {
+     if (myDocStringFormat.equals(DocStringFormat.EPYTEXT)) {
+-        return new EpydocString();
++        return DocStringFormat.EPYTEXT.getProvider().parseDocStringContent("");
+     }
+     if (myDocStringFormat.equals(DocStringFormat.REST)) {
+-        return new SphinxDocString();
++        return DocStringFormat.REST.getProvider().parseDocStringContent("");
+     }
+     return null;
+ }
+\ No newline at end of file

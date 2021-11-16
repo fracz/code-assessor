@@ -1,0 +1,20 @@
+diff --git a/d056e77386fd45c2ffa15705236a3c0cadbcccbd b/ab49b6c8672f22a394813161c9c7c115334270cc
+index d056e77386..ab49b6c867 100644
+--- a/d056e77386fd45c2ffa15705236a3c0cadbcccbd
++++ b/ab49b6c8672f22a394813161c9c7c115334270cc
+@@ -1,13 +1,13 @@
+ @Override
+ public boolean equals(Object obj) {
+     if (this == obj)
+         return true;
+     if (!super.equals(obj))
+         return false;
+     if (getClass() != obj.getClass())
+         return false;
+     IndexRule other = (IndexRule) obj;
+-    if (!Arrays.equals(propertyKeys, other.propertyKeys))
++    if (propertyKey != other.propertyKey)
+         return false;
+     return true;
+ }
+\ No newline at end of file

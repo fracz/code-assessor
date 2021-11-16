@@ -1,0 +1,14 @@
+diff --git a/861f4be0fd9b8b877e1832c3ff88d69a57d8efb3 b/a749e5f526be3bc95a681af460db8f541d0a40bb
+index 861f4be0fd..a749e5f526 100644
+--- a/861f4be0fd9b8b877e1832c3ff88d69a57d8efb3
++++ b/a749e5f526be3bc95a681af460db8f541d0a40bb
+@@ -1,7 +1,7 @@
+ @Test
+ public void testDoubleBooleanAutowire() {
+-    XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("constructor-arg.xml", getClass()));
++    XmlBeanFactory xbf = new XmlBeanFactory(CONSTRUCTOR_ARG_CONTEXT);
+     DoubleBooleanConstructorBean bean = (DoubleBooleanConstructorBean) xbf.getBean("beanWithDoubleBoolean");
+     assertEquals(Boolean.TRUE, bean.boolean1);
+     assertEquals(Boolean.FALSE, bean.boolean2);
+ }
+\ No newline at end of file

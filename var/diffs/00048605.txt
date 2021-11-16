@@ -1,0 +1,24 @@
+diff --git a/40d7f6133c94d50d296c33d6e4e4866ee2da66d8 b/c58c80d1b9e2c0840d16b599be701b5ea3e5d8ce
+index 40d7f6133c..c58c80d1b9 100644
+--- a/40d7f6133c94d50d296c33d6e4e4866ee2da66d8
++++ b/c58c80d1b9e2c0840d16b599be701b5ea3e5d8ce
+@@ -1,15 +1,15 @@
+ protected void reloadChildren(DBRProgressMonitor monitor) throws DBException {
+-    List<DBNDatabaseNode> oldChildren;
++    DBNDatabaseNode[] oldChildren;
+     synchronized (this) {
+         if (childNodes == null) {
+             // Nothing to reload
+             return;
+         }
+-        oldChildren = new ArrayList<>(childNodes);
++        oldChildren = Arrays.copyOf(childNodes, childNodes.length);
+     }
+     List<DBNDatabaseNode> newChildren = new ArrayList<>();
+     loadChildren(monitor, getMeta(), oldChildren, newChildren);
+     synchronized (this) {
+-        childNodes = newChildren;
++        childNodes = newChildren.toArray(new DBNDatabaseNode[newChildren.size()]);
+     }
+ }
+\ No newline at end of file

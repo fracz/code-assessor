@@ -1,0 +1,16 @@
+diff --git a/0ecaaacb5a1f7c9286d9bb7081b58082941955f4 b/43554d9ceb97d27d27839af6ee414ce4fa91c0c1
+index 0ecaaacb5a..43554d9ceb 100644
+--- a/0ecaaacb5a1f7c9286d9bb7081b58082941955f4
++++ b/43554d9ceb97d27d27839af6ee414ce4fa91c0c1
+@@ -1,9 +1,8 @@
+ /*
+      * (non-Javadoc)
+      * @see java.util.concurrent.BlockingQueue#poll(long, java.util.concurrent.TimeUnit)
+      */
+ @Override
+ public V poll(long timeout, TimeUnit unit) throws InterruptedException {
+-    Future<V> res = pollAsync(timeout, unit);
+-    return res.await().getNow();
++    return blockingQueue.poll(timeout, unit);
+ }
+\ No newline at end of file

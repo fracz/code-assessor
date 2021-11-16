@@ -1,0 +1,22 @@
+diff --git a/937d605c14375004796bbd269f129dc74a63dd88 b/b64f00deeef79af36fe324711516991105ff4f80
+index 937d605c14..b64f00deee 100644
+--- a/937d605c14375004796bbd269f129dc74a63dd88
++++ b/b64f00deeef79af36fe324711516991105ff4f80
+@@ -1,14 +1,13 @@
+ @Override
+-public void release(long fileId, long pageIndex) {
++public void release(OCacheEntry cacheEntry) {
+     synchronized (syncObject) {
+-        OReadCacheEntry cacheEntry = get(fileId, pageIndex, false);
+         if (cacheEntry != null)
+             cacheEntry.usagesCount--;
+         else
+             throw new IllegalStateException("record should be released is already free!");
+         if (cacheEntry.usagesCount == 0 && cacheEntry.isDirty) {
+-            writeCache.store(fileId, pageIndex, cacheEntry.dataPointer);
++            writeCache.store(cacheEntry.fileId, cacheEntry.pageIndex, cacheEntry.dataPointer);
+             cacheEntry.isDirty = false;
+         }
+     }
+ }
+\ No newline at end of file

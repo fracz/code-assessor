@@ -1,0 +1,23 @@
+diff --git a/293079f735036bda445962429ca7f1b8c0d5b6e9 b/5095959443d78b2bc8b5f7e467f7223ad61b728c
+index 293079f735..5095959443 100644
+--- a/293079f735036bda445962429ca7f1b8c0d5b6e9
++++ b/5095959443d78b2bc8b5f7e467f7223ad61b728c
+@@ -1,13 +1,10 @@
+ private boolean fillStatementParameters(final List<SQLQueryParameter> parameters) {
+-    final RunnableWithResult<Boolean> binder = new RunnableWithResult<Boolean>() {
++    return new UIConfirmation() {
+
+         @Override
+-        public void run() {
++        public Boolean runTask() {
+             SQLQueryParameterBindDialog dialog = new SQLQueryParameterBindDialog(partSite, getExecutionContext(), parameters);
+-            result = (dialog.open() == IDialogConstants.OK_ID);
++            return (dialog.open() == IDialogConstants.OK_ID);
+         }
+-    };
+-    DBeaverUI.syncExec(binder);
+-    Boolean result = binder.getResult();
+-    return result != null && result;
++    }.execute();
+ }
+\ No newline at end of file

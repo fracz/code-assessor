@@ -1,0 +1,24 @@
+diff --git a/f50b274726cba25b663215b2040e3594085ed145 b/deccd5d83402956dc5d50edce1a97658b67d368c
+index f50b274726..deccd5d834 100644
+--- a/f50b274726cba25b663215b2040e3594085ed145
++++ b/deccd5d83402956dc5d50edce1a97658b67d368c
+@@ -1,14 +1,14 @@
+ @Override
+ public synchronized void shutdown() throws TitanException {
+     if (!isOpen)
+         return;
+-    super.shutdown();
+-    etManager.close();
+-    idAssigner.close();
+     try {
++        super.shutdown();
++        idAssigner.close();
+         backend.close();
+     } catch (StorageException e) {
+         throw new TitanException("Could not close storage backend", e);
++    } finally {
++        isOpen = false;
+     }
+-    isOpen = false;
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/4412713f7e21d4cb192022ab5e6f2e121767c2ba b/63d55e462e5df42d5ba0c11cf7f79a6c430d3563
+index 4412713f7e..63d55e462e 100644
+--- a/4412713f7e21d4cb192022ab5e6f2e121767c2ba
++++ b/63d55e462e5df42d5ba0c11cf7f79a6c430d3563
+@@ -1,7 +1,3 @@
+ static Mutation makeStopSessionMutation(ByteBuffer sessionId, int elapsed, int ttl) {
+-    Mutation mutation = new Mutation(NAME, sessionId);
+-    ColumnFamily cells = mutation.addOrGet(Sessions);
+-    CFRowAdder adder = new CFRowAdder(cells, cells.metadata().comparator.builder().build(), FBUtilities.timestampMicros(), ttl);
+-    adder.add("duration", elapsed);
+-    return mutation;
++    return new RowUpdateBuilder(Sessions, FBUtilities.timestampMicros(), ttl, sessionId).clustering().add("duration", elapsed).build();
+ }
+\ No newline at end of file

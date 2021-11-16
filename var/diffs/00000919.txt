@@ -1,0 +1,19 @@
+diff --git a/5be826b5753efaa4c5144b63c9ffb12b2457f55d b/2b53506f157df78739c24362c4a303c8f290adef
+index 5be826b575..2b53506f15 100644
+--- a/5be826b5753efaa4c5144b63c9ffb12b2457f55d
++++ b/2b53506f157df78739c24362c4a303c8f290adef
+@@ -1,10 +1,10 @@
+ private void updateOptionsMenu() {
+-    if (mMenu == null) {
++    if (mCopyTextMenuItem == null && mDeleteMenuItem == null) {
+         return;
+     }
+     Broadcast broadcast = mBroadcastAndCommentListResource.getBroadcast();
+     boolean hasBroadcast = broadcast != null;
+-    mMenu.findItem(R.id.action_copy_text).setVisible(hasBroadcast);
++    mCopyTextMenuItem.setVisible(hasBroadcast);
+     boolean canDelete = hasBroadcast && broadcast.isAuthorOneself(getActivity());
+-    mMenu.findItem(R.id.action_delete).setVisible(canDelete);
++    mDeleteMenuItem.setVisible(canDelete);
+ }
+\ No newline at end of file

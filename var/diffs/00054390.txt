@@ -1,0 +1,18 @@
+diff --git a/aacdc6eb307d7dc8b5a2c7c5c6efe19b896ca7c8 b/8278a8fb25ddabd8166855d8a5b9ad0d6cd18d26
+index aacdc6eb30..8278a8fb25 100644
+--- a/aacdc6eb307d7dc8b5a2c7c5c6efe19b896ca7c8
++++ b/8278a8fb25ddabd8166855d8a5b9ad0d6cd18d26
+@@ -1,10 +1,10 @@
+ @Override
+ public boolean next() throws SQLException {
+     if (skipAll) {
+         return false;
+     }
+     if (limit.getRowCountValue() > 0) {
+-        return ++rowNumber <= limit.getRowCountValue() && resultSetMerger.next();
++        return ++rowNumber <= limit.getRowCountValue() && getResultSetMerger().next();
+     }
+-    return resultSetMerger.next();
++    return getResultSetMerger().next();
+ }
+\ No newline at end of file

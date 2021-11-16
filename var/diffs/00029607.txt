@@ -1,0 +1,22 @@
+diff --git a/86edddedf4e57d13e2cd6bb2edede15a36ff4da4 b/02d69fab8933ccdbdcea1bc3ee11361ec2e194e1
+index 86edddedf4..02d69fab89 100644
+--- a/86edddedf4e57d13e2cd6bb2edede15a36ff4da4
++++ b/02d69fab8933ccdbdcea1bc3ee11361ec2e194e1
+@@ -1,10 +1,10 @@
+ public void testUpgrade_0_90_6() throws Exception {
+     String indexName = "index-0.90.6";
+-    loadIndex(indexName, Node.HTTP_ENABLED, true);
+-    UpgradeTest.assertNotUpgraded(httpClient(), indexName);
+-    assertTrue(UpgradeTest.hasAncientSegments(httpClient(), indexName));
+-    UpgradeTest.runUpgrade(httpClient(), indexName, "wait_for_completion", "true", "only_ancient_segments", "true");
+-    assertFalse(UpgradeTest.hasAncientSegments(httpClient(), "index-0.90.6"));
++    loadIndex(indexName);
++    UpgradeTest.assertNotUpgraded(client(), indexName);
++    assertTrue(UpgradeTest.hasAncientSegments(client(), indexName));
++    assertNoFailures(client().admin().indices().prepareUpgrade(indexName).setUpgradeOnlyAncientSegments(true).get());
++    assertFalse(UpgradeTest.hasAncientSegments(client(), "index-0.90.6"));
+     // This index has only ancient segments, so it should now be fully upgraded:
+-    UpgradeTest.assertUpgraded(httpClient(), indexName);
++    UpgradeTest.assertUpgraded(client(), indexName);
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/28010196ff60c3aef87d67cd40d4ec48637abc06 b/a5518e06ebf896785d6b0cd35b62197429250ee9
+index 28010196ff..a5518e06eb 100644
+--- a/28010196ff60c3aef87d67cd40d4ec48637abc06
++++ b/a5518e06ebf896785d6b0cd35b62197429250ee9
+@@ -1,11 +1,10 @@
+ @Nullable
+-private static CrumbPresentation[] getCrumbPresentations(@NotNull final LinkedList<BreadcrumbsPsiItem> items, @NotNull PsiElement firstElement) {
++private static CrumbPresentation[] getCrumbPresentations(final PsiElement[] elements) {
+     for (BreadcrumbsPresentationProvider provider : BreadcrumbsPresentationProvider.EP_NAME.getExtensions()) {
+-        final PsiElement[] elements = toPsiElementArray(items);
+         final CrumbPresentation[] presentations = provider.getCrumbPresentations(elements);
+         if (presentations != null) {
+             return presentations;
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

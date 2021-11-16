@@ -1,0 +1,15 @@
+diff --git a/a67d9019212f642357d22913218a8cb9d6989417 b/1536f4374319fe31712161215cb0fde4aeede1a6
+index a67d901921..1536f43743 100644
+--- a/a67d9019212f642357d22913218a8cb9d6989417
++++ b/1536f4374319fe31712161215cb0fde4aeede1a6
+@@ -1,6 +1,6 @@
+ @Override
+ public OPhysicalPosition[] lowerPhysicalPositions(final int iClusterId, final OPhysicalPosition physicalPosition) {
+-    OBinaryRequest request = new OLowerPhysicalPositionsRequest(physicalPosition, iClusterId);
+-    OBinaryResponse<OPhysicalPosition[]> response = new OLowerPhysicalPositionsResponse();
+-    return networkOperation(request, response, "Error on retrieving lower positions after " + physicalPosition.clusterPosition);
++    OLowerPhysicalPositionsRequest request = new OLowerPhysicalPositionsRequest(physicalPosition, iClusterId);
++    OLowerPhysicalPositionsResponse response = networkOperation(request, "Error on retrieving lower positions after " + physicalPosition.clusterPosition);
++    return response.getPreviousPositions();
+ }
+\ No newline at end of file

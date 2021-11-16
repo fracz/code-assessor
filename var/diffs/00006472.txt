@@ -1,0 +1,19 @@
+diff --git a/7d4370cdb1540c7f210d7722436b754b61e0b043 b/6963f75737e46e413886574197bd3442adb3c39e
+index 7d4370cdb1..6963f75737 100644
+--- a/7d4370cdb1540c7f210d7722436b754b61e0b043
++++ b/6963f75737e46e413886574197bd3442adb3c39e
+@@ -1,7 +1,10 @@
+ // returns true if at least one standard file type has been read
+ @SuppressWarnings({ "EmptyCatchBlock" })
+ private boolean loadAllFileTypes() {
+-    final boolean[] standardFileTypeRead = new boolean[] { false };
+-    mySchemesManager.loadSchemes(FILE_SPEC, createSchemeProcessor(standardFileTypeRead), RoamingType.PER_USER);
+-    return standardFileTypeRead[0];
++    Collection<FileType> collection = mySchemesManager.loadSchemes();
++    boolean res = false;
++    for (FileType fileType : collection) {
++        res |= myInitialAssociations.hasAssociationsFor(fileType);
++    }
++    return res;
+ }
+\ No newline at end of file

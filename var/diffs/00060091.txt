@@ -1,0 +1,12 @@
+diff --git a/578a3c2424a40788b5b51dbe0c96cb5f472fe7df b/c39c475ab5d3b30653e91783e53000ca8183f606
+index 578a3c2424..c39c475ab5 100644
+--- a/578a3c2424a40788b5b51dbe0c96cb5f472fe7df
++++ b/c39c475ab5d3b30653e91783e53000ca8183f606
+@@ -1,5 +1,5 @@
+ @Before
+ public void setUp() throws Exception {
+-    hbaseConf.deleteAll();
++    new HBaseStorageManager(getHBaseConfiguration()).deleteAll();
+     super.setUp();
+ }
+\ No newline at end of file

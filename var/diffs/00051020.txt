@@ -1,0 +1,15 @@
+diff --git a/46181e380fab7ad2342dba7e3cda4eb8f13dbf30 b/3926b3913f01d82e374d948623225a96a7093ad3
+index 46181e380f..3926b3913f 100644
+--- a/46181e380fab7ad2342dba7e3cda4eb8f13dbf30
++++ b/3926b3913f01d82e374d948623225a96a7093ad3
+@@ -1,8 +1,4 @@
+ @Override
+ public void setSchema(String schema) throws SQLException {
+-    try {
+-        getConnection().setSchema(schema);
+-    } catch (IncompatibleClassChangeError e) {
+-        throw new SQLFeatureNotSupportedException(JDBCConstants.ERROR_API_NOT_SUPPORTED_17);
+-    }
++    JDBCUtils.callMethod17(getConnection(), "setSchema", null, new Class[] { String.class }, schema);
+ }
+\ No newline at end of file

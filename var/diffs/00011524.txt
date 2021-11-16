@@ -1,0 +1,16 @@
+diff --git a/1a70abd3f726a346ce19836429ddd24b2197e00a b/8a913159b450660e4abb06ef3f00739329d4c543
+index 1a70abd3f7..8a913159b4 100644
+--- a/1a70abd3f726a346ce19836429ddd24b2197e00a
++++ b/8a913159b450660e4abb06ef3f00739329d4c543
+@@ -1,9 +1,8 @@
+ @Nullable
+ private static LineMarkerInfo getMethodMarker(final PsiElement element, final PyFunction function) {
+-    PyFunction[] superMethods = function.findSuperMethods();
+-    if (superMethods.length > 0) {
++    if (PySuperMethodsSearch.search(function).findFirst() != null) {
+         LineMarkerInfo info = new LineMarkerInfo(element, element.getTextRange().getStartOffset(), OVERRIDING_METHOD_ICON, Pass.UPDATE_ALL, null, new PyLineMarkerNavigator());
+         return info;
+     }
+     return null;
+ }
+\ No newline at end of file

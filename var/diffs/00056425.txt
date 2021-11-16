@@ -1,0 +1,26 @@
+diff --git a/0197aaeb9a5a668fcceb04c2be61113f45dedc05 b/2481503b27afe9634f37c65929224b49eeea179b
+index 0197aaeb9a..2481503b27 100644
+--- a/0197aaeb9a5a668fcceb04c2be61113f45dedc05
++++ b/2481503b27afe9634f37c65929224b49eeea179b
+@@ -1,18 +1,17 @@
+ /**
+  * Returns all the dependencies of a certain node.
+  *
+  * @param node The node to return dependents for
+  * @return map of dependencies
+  */
+-private static <// separating this out helps some compilers
+-GR extends GrammaticalRelationAnnotation> Map<Class<? extends GrammaticalRelationAnnotation>, Set<TreeGraphNode>> getAllDependents(TreeGraphNode node) {
++private static Map<Class<? extends GrammaticalRelationAnnotation>, Set<TreeGraphNode>> getAllDependents(TreeGraphNode node) {
+     Map<Class<? extends GrammaticalRelationAnnotation>, Set<TreeGraphNode>> newMap = Generics.newHashMap();
+     for (Class<?> o : node.label.keySet()) {
+         if (GrammaticalRelationAnnotation.class.isAssignableFrom(o)) {
+             // ignore any non-GrammaticalRelationAnnotation element
+-            Class<GR> typedKey = ErasureUtils.uncheckedCast(o);
++            Class<? extends GrammaticalRelationAnnotation> typedKey = ErasureUtils.uncheckedCast(o);
+             newMap.put(typedKey, node.label.get(typedKey));
+         }
+     }
+     return newMap;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/325e8eef824c52a532eab680553843d2cbe7f9e5 b/eded7fc861eb67a134bb2b4ee5c7c1816d6a4907
+index 325e8eef82..eded7fc861 100644
+--- a/325e8eef824c52a532eab680553843d2cbe7f9e5
++++ b/eded7fc861eb67a134bb2b4ee5c7c1816d6a4907
+@@ -1,9 +1,3 @@
+ public void testGenericTypesInOldParameters() {
+-    doTest(null, null, null, new GenParams() {
+-
+-        @Override
+-        public ParameterInfoImpl[] genParams(PsiMethod method) throws IncorrectOperationException {
+-            return new ParameterInfoImpl[] { new ParameterInfoImpl(0, "t", myFactory.createTypeFromText("T", method), null) };
+-        }
+-    }, false);
++    doTest(null, null, null, method -> new ParameterInfoImpl[] { new ParameterInfoImpl(0, "t", myFactory.createTypeFromText("T", method), null) }, false);
+ }
+\ No newline at end of file

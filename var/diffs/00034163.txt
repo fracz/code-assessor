@@ -1,0 +1,17 @@
+diff --git a/6a38e068f16534c26e5a6b979af5b111d89c647c b/6d6d337b6fa28bec102d54a60c05604065bbd880
+index 6a38e068f1..6d6d337b6f 100644
+--- a/6a38e068f16534c26e5a6b979af5b111d89c647c
++++ b/6d6d337b6fa28bec102d54a60c05604065bbd880
+@@ -1,9 +1,9 @@
+ public void testInvokeNativeLong() {
+     if (NativeLong.SIZE == 4) {
+         assertEquals("Expect 32-bit zero", new NativeLong(0), lib.returnLongZero());
+-        assertEquals("Expect 32-bit magic", "12345678", Integer.toHexString(lib.returnLongMagic().intValue()));
++        assertEquals("Expect 32-bit magic", new NativeLong(INT_MAGIC), lib.returnLongMagic());
+     } else {
+         assertEquals("Expect 64-bit zero", new NativeLong(0L), lib.returnLongZero());
+-        assertEquals("Expect 64-bit magic", "123456789abcdef0", Long.toHexString(lib.returnLongMagic().longValue()));
++        assertEquals("Expect 64-bit magic", new NativeLong(LONG_MAGIC), lib.returnLongMagic());
+     }
+ }
+\ No newline at end of file

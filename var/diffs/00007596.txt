@@ -1,0 +1,18 @@
+diff --git a/4c4fe458b0ca423d5353c59c66b05b537a9b66f9 b/4036eac141d9d234e483de2d8c5986ff41d4d7c0
+index 4c4fe458b0..4036eac141 100644
+--- a/4c4fe458b0ca423d5353c59c66b05b537a9b66f9
++++ b/4036eac141d9d234e483de2d8c5986ff41d4d7c0
+@@ -1,11 +1,11 @@
+ @Override
+ public void setUp() throws Exception {
+     super.setUp();
+     IdeaTestApplication application = LightPlatformTestCase.initApplication();
+     LightPlatformTestCase.doSetup(myProjectDescriptor, LocalInspectionTool.EMPTY_ARRAY, getTestRootDisposable());
+     InjectedLanguageManagerImpl.pushInjectors(getProject());
+     myOldCodeStyleSettings = getCurrentCodeStyleSettings().clone();
+     myOldCodeStyleSettings.getIndentOptions(StdFileTypes.JAVA);
+     application.setDataProvider(new TestDataProvider(getProject()));
+-    myOldSdks = ProjectJdkTable.getInstance().getAllJdks();
++    myOldSdks = new SdkLeakTracker();
+ }
+\ No newline at end of file

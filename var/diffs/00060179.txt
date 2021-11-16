@@ -1,0 +1,13 @@
+diff --git a/740a65e1b5e6f4e3519878d10833a37aa4503305 b/8d37dbed5f83519529fd0bc9634c1f4f93ff4eeb
+index 740a65e1b5..8d37dbed5f 100644
+--- a/740a65e1b5e6f4e3519878d10833a37aa4503305
++++ b/8d37dbed5f83519529fd0bc9634c1f4f93ff4eeb
+@@ -1,6 +1,5 @@
+ @Override
+ public VertexCentricQueryBuilder limit(int limit) {
+-    Preconditions.checkArgument(limit >= 0, "Limit must be non-negative [%s]", limit);
+-    this.limit = limit;
++    super.limit(limit);
+     return this;
+ }
+\ No newline at end of file

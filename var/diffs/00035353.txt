@@ -1,0 +1,22 @@
+diff --git a/6b401db9af39d97199578bf2549c8c9a9a0143f4 b/5e7e41df0d211f999bedfcccab045d03cc15cc01
+index 6b401db9af..5e7e41df0d 100644
+--- a/6b401db9af39d97199578bf2549c8c9a9a0143f4
++++ b/5e7e41df0d211f999bedfcccab045d03cc15cc01
+@@ -1,13 +1,8 @@
+ @Override
+-public void updateError(FileDownloadModel model, Throwable throwable, long sofar) {
+-    final String errMsg = throwable.toString();
+-    model.setStatus(FileDownloadStatus.error);
+-    model.setErrMsg(errMsg);
+-    model.setSoFar(sofar);
+-    // db
++public void updateError(int id, Throwable throwable, long sofar) {
+     ContentValues cv = new ContentValues();
+-    cv.put(FileDownloadModel.ERR_MSG, errMsg);
++    cv.put(FileDownloadModel.ERR_MSG, throwable.toString());
+     cv.put(FileDownloadModel.STATUS, FileDownloadStatus.error);
+     cv.put(FileDownloadModel.SOFAR, sofar);
+-    update(model.getId(), cv);
++    update(id, cv);
+ }
+\ No newline at end of file

@@ -1,0 +1,33 @@
+diff --git a/fcf950c768f6a56ea926ec348721867ea1e37281 b/7a38ace9719893daf2259cb11879830eb33eaa8a
+index fcf950c768..7a38ace971 100644
+--- a/fcf950c768f6a56ea926ec348721867ea1e37281
++++ b/7a38ace9719893daf2259cb11879830eb33eaa8a
+@@ -1,13 +1,16 @@
++/**
++ * To be implemented by concrete UntypedActor, this defines the behavior of the
++ * UntypedActor.
++ *
++ * @param message
++ */
+ @Override
+-public void onReceive(final Object message) throws Exception {
+-    if (message instanceof SentenceMessage) {
+-        SentenceMessage message2 = (SentenceMessage) message;
+-        processMessage(message2);
+-    } else if (message instanceof Collection) {
+-        Collection<SentenceMessage> message2 = (Collection<SentenceMessage>) message;
+-        for (SentenceMessage message3 : message2) {
+-            processMessage(message3);
+-        }
+-    } else
+-        unhandled(message);
++public void onReceive(Object message) throws Exception {
++    if (message instanceof String) {
++        vec.trainSentence(message.toString());
++    } else if (message instanceof SentenceMessage) {
++        ((SentenceMessage) message).getChanged().incrementAndGet();
++        vec.trainSentence(((SentenceMessage) message).getSentence());
++        ((SentenceMessage) message).getChanged().incrementAndGet();
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,37 @@
+diff --git a/2d114f95efefc13144035a1b5a896d45fb958317 b/b168ad4ec641761b724d0ac9d3c9d943bad44fd4
+index 2d114f95ef..b168ad4ec6 100644
+--- a/2d114f95efefc13144035a1b5a896d45fb958317
++++ b/b168ad4ec641761b724d0ac9d3c9d943bad44fd4
+@@ -1,22 +1,24 @@
+ // public void testPydevTests_Debugger() {
+ // unittests("tests_python/test_debugger.py");
+ // }
+ private void unittests(final String script) {
+-    runPythonTest(new PyUnitTestTask("", script) {
++    runPythonTest(new PyProcessWithConsoleTestTask<PyUnitTestProcessRunner>(SdkCreationType.SDK_PACKAGES_ONLY) {
+
++        @NotNull
+         @Override
+-        protected String getTestDataPath() {
+-            return PythonHelpersLocator.getPythonCommunityPath() + "/helpers/pydev";
++        protected PyUnitTestProcessRunner createProcessRunner() throws Exception {
++            return new PyUnitTestProcessRunner(getTestDataPath(), script);
+         }
+
++        @NotNull
+         @Override
+-        public void after() {
+-            allTestsPassed();
++        public String getTestDataPath() {
++            return PythonHelpersLocator.getPythonCommunityPath() + "/helpers/pydev";
+         }
+
+         @Override
+-        protected int getTestTimeout() {
+-            return 600000;
++        protected void checkTestResults(@NotNull final PyUnitTestProcessRunner runner, @NotNull final String stdout, @NotNull final String stderr, @NotNull final String all) {
++            runner.assertAllTestsPassed();
+         }
+     });
+ }
+\ No newline at end of file

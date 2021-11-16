@@ -1,0 +1,15 @@
+diff --git a/7a8b2cd96668e3741e3955df87f0cf676172c676 b/9d83a540e0315fb4810ef055d08a6590a4a87c7e
+index 7a8b2cd966..9d83a540e0 100644
+--- a/7a8b2cd96668e3741e3955df87f0cf676172c676
++++ b/9d83a540e0315fb4810ef055d08a6590a4a87c7e
+@@ -1,7 +1,7 @@
+ public void test_0() throws Exception {
+     String sql = "SELECT TRUE, true, FALSE, false;";
+     SQLStatementParser parser = new MySqlStatementParser(sql);
+     List<SQLStatement> stmtList = parser.parseStatementList();
+-    String text = output(stmtList);
+-    Assert.assertEquals("SELECT true, true, false, false;", text);
++    String text = SQLUtils.toSQLString(stmtList, null);
++    assertEquals("SELECT true, true, false, false;", text);
+ }
+\ No newline at end of file

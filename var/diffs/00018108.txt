@@ -1,0 +1,28 @@
+diff --git a/2be36ba19ebb472ac0e04e47e9413975e04af9b9 b/9161610ff7f86929a20baed86910bac35c42134f
+index 2be36ba19e..9161610ff7 100644
+--- a/2be36ba19ebb472ac0e04e47e9413975e04af9b9
++++ b/9161610ff7f86929a20baed86910bac35c42134f
+@@ -1,15 +1,17 @@
+-protected static ProjectManager load(File dir) {
++protected void load() {
+     try {
+-        return loadFromFile(new File(dir, "projects.json"));
++        loadFromFile(new File(_workspaceDir, "workspace.json"));
++        return;
+     } catch (Exception e) {
+     }
+     try {
+-        return loadFromFile(new File(dir, "projects.json.temp"));
++        loadFromFile(new File(_workspaceDir, "workspace.temp.json"));
++        return;
+     } catch (Exception e) {
+     }
+     try {
+-        return loadFromFile(new File(dir, "projects.json.old"));
++        loadFromFile(new File(_workspaceDir, "workspace.old.json"));
++        return;
+     } catch (Exception e) {
+     }
+-    return null;
+ }
+\ No newline at end of file

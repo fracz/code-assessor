@@ -1,0 +1,12 @@
+diff --git a/a62f9506bd971648a0ee98b8729b9642da1854e8 b/6c7bd2cd779f4f2ee98c2276a568469ada53d01a
+index a62f9506bd..6c7bd2cd77 100644
+--- a/a62f9506bd971648a0ee98b8729b9642da1854e8
++++ b/6c7bd2cd779f4f2ee98c2276a568469ada53d01a
+@@ -1,4 +1,4 @@
+ protected void startBlock() {
+-    this.connection.getProgressMonitor().startBlock(this, SQLUtils.stripTransformations(this.description == null ? // $NON-NLS-1$
+-    (query == null ? "?" : JDBCUtils.limitQueryLength(query, 200)) : this.description));
++    this.connection.getProgressMonitor().startBlock(this, SQLUtils.stripTransformations(this.query == null ? "?" : // $NON-NLS-1$
++    JDBCUtils.limitQueryLength(query, 200)));
+ }
+\ No newline at end of file

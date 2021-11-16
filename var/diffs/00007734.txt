@@ -1,0 +1,24 @@
+diff --git a/c0b655e3921cd671e8e2ca2f52cee24b8f04ba89 b/22387c9e1f9eadcb526e6c88f472ec87d0afcb95
+index c0b655e392..22387c9e1f 100644
+--- a/c0b655e3921cd671e8e2ca2f52cee24b8f04ba89
++++ b/22387c9e1f9eadcb526e6c88f472ec87d0afcb95
+@@ -1,13 +1,9 @@
+ @Nullable
+ public VirtualFile markDirty() {
+-    synchronized (lock) {
+-        myRelPathsToEntries = null;
+-        myJarFile.set(null);
+-        final NewVirtualFile root = (NewVirtualFile) JarFileSystem.getInstance().findFileByPath(myBasePath + JarFileSystem.JAR_SEPARATOR);
+-        if (root != null) {
+-            root.markDirty();
+-            return root;
+-        }
+-        return null;
++    clear();
++    final VirtualFile root = JarFileSystem.getInstance().findFileByPath(myBasePath + JarFileSystem.JAR_SEPARATOR);
++    if (root instanceof NewVirtualFile) {
++        ((NewVirtualFile) root).markDirty();
+     }
++    return root;
+ }
+\ No newline at end of file

@@ -1,0 +1,23 @@
+diff --git a/a6ef7021182d51a72824c8d061409528fef8e57f b/1f67e974c18d54750271a89479b2814df2709931
+index a6ef702118..1f67e974c1 100644
+--- a/a6ef7021182d51a72824c8d061409528fef8e57f
++++ b/1f67e974c18d54750271a89479b2814df2709931
+@@ -1,6 +1,12 @@
+-public static StackValue genToString(InstructionAdapter v, StackValue receiver, Type receiverType) {
+-    Type type = stringValueOfType(receiverType);
+-    receiver.put(type, v);
+-    v.invokestatic("java/lang/String", "valueOf", "(" + type.getDescriptor() + ")Ljava/lang/String;", false);
+-    return StackValue.onStack(JAVA_STRING_TYPE);
++public static StackValue genToString(final InstructionAdapter v, final StackValue receiver, final Type receiverType) {
++    return StackValue.operation(JAVA_STRING_TYPE, new Function1<InstructionAdapter, Unit>() {
++
++        @Override
++        public Unit invoke(InstructionAdapter adapter) {
++            Type type = stringValueOfType(receiverType);
++            receiver.put(type, v);
++            v.invokestatic("java/lang/String", "valueOf", "(" + type.getDescriptor() + ")Ljava/lang/String;", false);
++            return null;
++        }
++    });
+ }
+\ No newline at end of file

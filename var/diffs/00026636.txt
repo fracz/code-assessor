@@ -1,0 +1,14 @@
+diff --git a/85975197089e0e8a6fba4d4960e9e8e2530a17e9 b/13d29b8577d35d74b29530b0dc740ec0096c8131
+index 8597519708..13d29b8577 100644
+--- a/85975197089e0e8a6fba4d4960e9e8e2530a17e9
++++ b/13d29b8577d35d74b29530b0dc740ec0096c8131
+@@ -1,6 +1,5 @@
+ @Override
+ public INDArray derivativeActivation(INDArray input) {
+-    // INDArray deriv = Nd4j.getExecutioner().execAndReturn(Nd4j.getOpFactory().createTransform(conf().getLayer().getActivationFunction(), input).derivative());
+-    INDArray deriv = conf().getLayer().getActivationFn().getGradient(input);
+-    return deriv;
++    // return deriv;
++    throw new UnsupportedOperationException();
+ }
+\ No newline at end of file

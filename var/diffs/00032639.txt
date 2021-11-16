@@ -1,0 +1,32 @@
+diff --git a/99ddf161850a66270c577beb45d11c8f2c3bebad b/0920fd41bd63108e79a7ce9ce78fbe3e49014fcb
+index 99ddf16185..0920fd41bd 100644
+--- a/99ddf161850a66270c577beb45d11c8f2c3bebad
++++ b/0920fd41bd63108e79a7ce9ce78fbe3e49014fcb
+@@ -1,20 +1,19 @@
+ /**
+  * Returns true iff {@code graph} has at least one cycle.
+  */
+-// TODO(user): Implement a similar method for undirected graphs, taking into
+-// consideration the difference in implementation, due to the notion of undirected
+-// edges. For instance, we should keep track of the edge used to reach a node to avoid
+-// reusing it (making a cycle by getting back to that node). Also, parallel edges will
+-// need to be carefully handled for undirected graphs.
+-public static boolean isCyclic(DirectedGraph<?, ?> graph) {
+-    checkNotNull(graph, "Directed graph passed can't be null.");
++public static boolean isCyclic(Graph<?, ?> graph) {
++    // TODO(user): Implement an algorithm that also works on undirected graphs.
++    // For instance, we should keep track of the edge used to reach a node to avoid
++    // reusing it (making a cycle by getting back to that node). Also, parallel edges
++    // will need to be carefully handled for undirected graphs.
++    checkArgument(graph.isDirected(), "isCyclic() currently only works on directed graphs");
+     Map<Object, NodeVisitState> nodeToVisitState = Maps.newHashMap();
+     for (Object node : graph.nodes()) {
+         if (nodeToVisitState.get(node) == null) {
+             if (isSubgraphCyclic(graph, nodeToVisitState, node)) {
+                 return true;
+             }
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

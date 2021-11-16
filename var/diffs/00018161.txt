@@ -1,0 +1,21 @@
+diff --git a/bef9813e4495a0877d1418dcf23dfdb714473b04 b/8b95166d622f658962e5b19cc903d93d6f196b83
+index bef9813e44..8b95166d62 100644
+--- a/bef9813e4495a0877d1418dcf23dfdb714473b04
++++ b/8b95166d622f658962e5b19cc903d93d6f196b83
+@@ -1,11 +1,10 @@
+ @Test
+ public void canParseSample() {
+     RunTest(getSample());
+-    AssertGridCreate(project, 4, 6);
+-    PrintProject(project);
++    TestTools.AssertGridCreated(project, 4, 6);
++    TestTools.PrintProject(project);
+     Row row = project.rows.get(0);
+     Assert.assertNotNull(row);
+-    Assert.assertNotNull(row.cells);
+-    Assert.assertNotNull(row.cells.get(2));
+-    Assert.assertEquals(row.cells.get(2).value, "Author 1, The");
++    Assert.assertNotNull(row.getCell(1));
++    Assert.assertEquals(row.getCell(1).value, "Author 1, The");
+ }
+\ No newline at end of file

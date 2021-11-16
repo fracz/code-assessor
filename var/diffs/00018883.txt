@@ -1,0 +1,19 @@
+diff --git a/dbd8ee9f3b9cf9727d158ddbbffe341a51c6f516 b/f65106beebfd8b292f20658a7a0575174d7a8ec1
+index dbd8ee9f3b..f65106beeb 100644
+--- a/dbd8ee9f3b9cf9727d158ddbbffe341a51c6f516
++++ b/f65106beebfd8b292f20658a7a0575174d7a8ec1
+@@ -1,7 +1,7 @@
+-private long storeSecureMessage(MasterSecret masterSecret, TextMessage message, String messageBody) {
+-    long messageId = DatabaseFactory.getSmsDatabase(context).insertSecureMessageReceived(message, messageBody);
+-    Log.w("SmsReceiver", "Inserted secure message received: " + messageId);
+-    if (masterSecret != null)
+-        DecryptingQueue.scheduleDecryption(context, masterSecret, messageId, message.getSender(), messageBody);
+-    return messageId;
++private Pair<Long, Long> storeSecureMessage(MasterSecret masterSecret, IncomingTextMessage message) {
++    Pair<Long, Long> messageAndThreadId = DatabaseFactory.getEncryptingSmsDatabase(context).insertMessageInbox(masterSecret, message);
++    if (masterSecret != null) {
++        DecryptingQueue.scheduleDecryption(context, masterSecret, messageAndThreadId.first, message.getSender(), message.getMessageBody(), message.isSecureMessage());
++    }
++    return messageAndThreadId;
+ }
+\ No newline at end of file

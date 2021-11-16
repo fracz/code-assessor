@@ -1,0 +1,14 @@
+diff --git a/05fb9802ccaed0a1e58199cdf234ad952cea63f5 b/3d649139a8328c5af4e2ef2d90f57a69a7b12513
+index 05fb9802cc..3d649139a8 100644
+--- a/05fb9802ccaed0a1e58199cdf234ad952cea63f5
++++ b/3d649139a8328c5af4e2ef2d90f57a69a7b12513
+@@ -1,6 +1,3 @@
+-@BackpressureSupport(BackpressureKind.PASS_THROUGH)
+-@SchedulerSupport(SchedulerKind.NONE)
+-public final <// TODO generics
+-R> Observable<R> compose(Transformer<T, R> composer) {
+-    return fromPublisher(to(composer));
++public final <R> Observable<R> compose(Function<? super Observable<T>, ? extends Observable<R>> convert) {
++    return to(convert);
+ }
+\ No newline at end of file

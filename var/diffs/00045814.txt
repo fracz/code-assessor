@@ -1,0 +1,36 @@
+diff --git a/0a3b0e1a8ebbfcfb519b094fe78d750c679e1f4d b/7e68d120e449274e4678c5d90d3047bc2bca5583
+index 0a3b0e1a8e..7e68d120e4 100644
+--- a/0a3b0e1a8ebbfcfb519b094fe78d750c679e1f4d
++++ b/7e68d120e449274e4678c5d90d3047bc2bca5583
+@@ -1,17 +1,25 @@
+ public Set<String> dictionaryKeys() {
+     checkConnection();
+     do {
+-        boolean locked = acquireExclusiveLock();
++        boolean locked = lock.acquireExclusiveLock();
+         try {
+-            writeCommand(OChannelBinaryProtocol.REQUEST_DICTIONARY_KEYS);
+-            network.readStatus();
+-            return network.readStringSet();
++            try {
++                beginRequest(OChannelBinaryProtocol.REQUEST_DICTIONARY_KEYS);
++            } finally {
++                endRequest();
++            }
++            try {
++                beginResponse();
++                return network.readStringSet();
++            } finally {
++                endResponse();
++            }
+         } catch (Exception e) {
+             if (handleException("Error on getting keys of database's dictionary", e))
+                 break;
+         } finally {
+-            releaseExclusiveLock(locked);
++            lock.releaseExclusiveLock(locked);
+         }
+     } while (true);
+     return null;
+ }
+\ No newline at end of file

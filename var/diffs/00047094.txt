@@ -1,0 +1,20 @@
+diff --git a/c5b54e7b0577d923619a48797ed4b86b7a8ec55a b/6ba49cedc16db1eeaddc00ebfe71aee7db7dcc5d
+index c5b54e7b05..6ba49cedc1 100644
+--- a/c5b54e7b0577d923619a48797ed4b86b7a8ec55a
++++ b/6ba49cedc16db1eeaddc00ebfe71aee7db7dcc5d
+@@ -1,11 +1,7 @@
+ public C get(final D channel, final int sessionId, final int streamId) {
+-    final Int2ObjectHashMap<Int2ObjectHashMap<C>> sessionMap = channelMap.get(channel);
+-    if (sessionMap == null) {
++    final CompoundIdMap<C> idMap = channelMap.get(channel);
++    if (null == idMap) {
+         return null;
+     }
+-    final Int2ObjectHashMap<C> channelMap = sessionMap.get(sessionId);
+-    if (channelMap == null) {
+-        return null;
+-    }
+-    return channelMap.get(streamId);
++    return idMap.get(sessionId, streamId);
+ }
+\ No newline at end of file

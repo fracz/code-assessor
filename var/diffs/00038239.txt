@@ -1,0 +1,15 @@
+diff --git a/c56cf82bcf12fb92375afe37ff74530babaae0d1 b/96ff36bebfd8e979bf2ea0894877cbdb489a3e2e
+index c56cf82bcf..96ff36bebf 100644
+--- a/c56cf82bcf12fb92375afe37ff74530babaae0d1
++++ b/96ff36bebfd8e979bf2ea0894877cbdb489a3e2e
+@@ -1,8 +1,8 @@
+ protected void reevaluateMyself() {
+     shutdownIfNecessary();
+     if (brokerSaysIAmMaster()) {
+-        this.localGraph = new EmbeddedGraphDbImpl(storeDir, config, this, LockManagerFactory.DEFAULT, IdGeneratorFactory.DEFAULT, DefaultRelationshipTypeCreator.INSTANCE, TxIdGeneratorFactory.DEFAULT, TxRollbackHook.DEFAULT);
++        this.localGraph = new EmbeddedGraphDbImpl(storeDir, config, this, CommonFactories.defaultLockManagerFactory(), CommonFactories.defaultIdGeneratorFactory(), CommonFactories.defaultRelationshipTypeCreator(), CommonFactories.defaultTxIdGeneratorFactory(), CommonFactories.defaultTxRollbackHook());
+     } else {
+         this.localGraph = new EmbeddedGraphDbImpl(storeDir, config, this, new SlaveLockManagerFactory(broker, this), new SlaveIdGeneratorFactory(broker, this), new SlaveRelationshipTypeCreator(broker, this), new SlaveTxIdGeneratorFactory(broker, this), new SlaveTxRollbackHook(broker, this));
+     }
+ }
+\ No newline at end of file

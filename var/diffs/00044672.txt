@@ -1,0 +1,22 @@
+diff --git a/3d73e1ed47322fb0e950d476b9697f5821c2cfea b/d86e027aee2357e2e89112be8da4a1b34b978fdd
+index 3d73e1ed47..d86e027aee 100644
+--- a/3d73e1ed47322fb0e950d476b9697f5821c2cfea
++++ b/d86e027aee2357e2e89112be8da4a1b34b978fdd
+@@ -1,14 +1,15 @@
+ @Override
+ public <DB extends ODatabase> DB create() {
+     try {
+         super.create();
+         // CREATE THE DEFAULT SCHEMA WITH DEFAULT USER
+         metadata.create();
+-        metadata.getSecurity().createUser("admin", "admin", OUser.MODE.ALLOW_ALL_BUT, null);
++        ORole role = metadata.getSecurity().createRole("admin", ORole.ALLOW_MODES.ALLOW_ALL_BUT);
++        metadata.getSecurity().createUser("admin", "admin", new String[] { role.getName() });
+         metadata.getSecurity().save();
+         dictionary.create();
+     } catch (Exception e) {
+         throw new ODatabaseException("Can't create database", e);
+     }
+     return (DB) this;
+ }
+\ No newline at end of file

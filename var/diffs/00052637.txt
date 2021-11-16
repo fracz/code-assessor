@@ -1,0 +1,12 @@
+diff --git a/4cd255643a5b1a729da00b08277600c8c6920bcc b/1b681ec9e6f0839097b7842edeb76092eec03d7e
+index 4cd255643a..1b681ec9e6 100644
+--- a/4cd255643a5b1a729da00b08277600c8c6920bcc
++++ b/1b681ec9e6f0839097b7842edeb76092eec03d7e
+@@ -1,5 +1,4 @@
+ private void setTokenizerResult(final Tokenizer tokenizer) {
+-    literals = tokenizer.getLiterals();
+-    token = tokenizer.getToken();
++    token = new Token(tokenizer.getTokenType(), tokenizer.getLiterals(), tokenizer.getCurrentPosition());
+     position = tokenizer.getCurrentPosition();
+ }
+\ No newline at end of file

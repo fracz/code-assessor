@@ -1,0 +1,19 @@
+diff --git a/78918b6bd78e0519b9de0f9581543aeeb79da976 b/cf1b831474a91c19caf784ab63db089c2edeb836
+index 78918b6bd7..cf1b831474 100644
+--- a/78918b6bd78e0519b9de0f9581543aeeb79da976
++++ b/cf1b831474a91c19caf784ab63db089c2edeb836
+@@ -1,6 +1,10 @@
+ @Test
+ public void startedRuntimeShouldBeTheSameToRuntimeTakenFromGetMethod() throws Exception {
+-    final WorkspaceImpl workspace = createWorkspace();
+-    final RuntimeDescriptor descriptor = runtimes.start(workspace, workspace.getConfig().getDefaultEnv());
+-    assertEquals(runtimes.get(workspace.getId()).getRuntime(), descriptor.getRuntime());
++    // given
++    WorkspaceImpl workspace = createWorkspace();
++    // when
++    RuntimeDescriptor descriptorFromStartMethod = runtimes.start(workspace, workspace.getConfig().getDefaultEnv(), false);
++    RuntimeDescriptor descriptorFromGetMethod = runtimes.get(workspace.getId());
++    // then
++    assertEquals(descriptorFromStartMethod, descriptorFromGetMethod);
+ }
+\ No newline at end of file

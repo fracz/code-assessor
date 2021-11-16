@@ -1,0 +1,14 @@
+diff --git a/c5c77ad8df7e00ac5af1db303a6309e236139d81 b/0092843c87bb6db02761bcbfb71093517a2b23c1
+index c5c77ad8df..0092843c87 100644
+--- a/c5c77ad8df7e00ac5af1db303a6309e236139d81
++++ b/0092843c87bb6db02761bcbfb71093517a2b23c1
+@@ -1,7 +1,7 @@
+ public TimeValue asTimeValue() {
+-    if (this == AUTO) {
++    if (this.equals(AUTO)) {
+         return TimeValue.timeValueMillis(1);
+     } else {
+         return TimeValue.parseTimeValue(fuzziness.toString(), null, "fuzziness");
+     }
+ }
+\ No newline at end of file

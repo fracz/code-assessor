@@ -1,0 +1,18 @@
+diff --git a/eefa8a91504f155935026ca8a75a331386030ced b/82b501c51bc5c7a7993cdf59fae959a91e59f950
+index eefa8a9150..82b501c51b 100644
+--- a/eefa8a91504f155935026ca8a75a331386030ced
++++ b/82b501c51bc5c7a7993cdf59fae959a91e59f950
+@@ -1,7 +1,9 @@
+-public void refresh() {
++public void refresh(DBCExecutionContext executionContext) {
+     // Refresh plan
+-    DBPDataSource dataSource = getDataSource();
+-    planner = DBUtils.getAdapter(DBCQueryPlanner.class, dataSource);
++    if (executionContext != null) {
++        DBPDataSource dataSource = executionContext.getDataSource();
++        planner = DBUtils.getAdapter(DBCQueryPlanner.class, dataSource);
++    }
+     planTree.clearListData();
+     refreshPlanAction.setEnabled(false);
+ }
+\ No newline at end of file

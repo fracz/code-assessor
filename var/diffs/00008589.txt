@@ -1,0 +1,10 @@
+diff --git a/b2a555daeb0ca6e855ef2dbeeb96948b81e633e5 b/2a7d962e0c528b979dc82a26ad806c7efa45fa59
+index b2a555daeb..2a7d962e0c 100644
+--- a/b2a555daeb0ca6e855ef2dbeeb96948b81e633e5
++++ b/2a7d962e0c528b979dc82a26ad806c7efa45fa59
+@@ -1,3 +1,3 @@
+ protected boolean isAvailableForLanguage(Language language) {
+-    return language instanceof JavaLanguage || language.equals(StdFileTypes.JSPX.getLanguage()) || language.equals(StdFileTypes.JSP.getLanguage()) || LanguageRefactoringSupport.INSTANCE.forLanguage(language).getInlineHandler() != null;
++    return language instanceof JavaLanguage || language.equals(StdFileTypes.JSPX.getLanguage()) || language.equals(StdFileTypes.JSP.getLanguage()) || InlineHandlers.getInlineHandlers(language).size() > 0;
+ }
+\ No newline at end of file

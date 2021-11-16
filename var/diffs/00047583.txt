@@ -1,0 +1,18 @@
+diff --git a/4ece65e4b2ee60e226572b0f9e824b2fbb486e14 b/404a458184c4a7e84fe684cd8b2e41072632f442
+index 4ece65e4b2..404a458184 100644
+--- a/4ece65e4b2ee60e226572b0f9e824b2fbb486e14
++++ b/404a458184c4a7e84fe684cd8b2e41072632f442
+@@ -1,4 +1,10 @@
+ @Override
+-public Publisher<Boolean> containsAll(Collection<?> c) {
+-    return commandExecutor.evalReadReactive(getName(), codec, new RedisCommand<Boolean>("EVAL", new BooleanReplayConvertor(), 4, ValueType.OBJECTS), "local s = redis.call('zrange', KEYS[1], 0, -1);" + "for i = 1, table.getn(s), 1 do " + "for j = 1, table.getn(ARGV), 1 do " + "if ARGV[j] == s[i] " + "then table.remove(ARGV, j) end " + "end; " + "end;" + "return table.getn(ARGV) == 0 and 1 or 0; ", Collections.<Object>singletonList(getName()), c.toArray());
++public Publisher<Boolean> containsAll(final Collection<?> c) {
++    return reactive(new Supplier<RFuture<Boolean>>() {
++
++        @Override
++        public RFuture<Boolean> get() {
++            return instance.containsAllAsync(c);
++        }
++    });
+ }
+\ No newline at end of file

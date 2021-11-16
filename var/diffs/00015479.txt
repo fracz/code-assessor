@@ -1,0 +1,22 @@
+diff --git a/04f9ad0429d5d1b0987498bbc20e476ab7f4314d b/a581904323488076184d9f0a9a43928020e759ed
+index 04f9ad0429..a581904323 100644
+--- a/04f9ad0429d5d1b0987498bbc20e476ab7f4314d
++++ b/a581904323488076184d9f0a9a43928020e759ed
+@@ -1,8 +1,10 @@
+-private StackValue generateReceiver(FunctionDescriptor descriptor) {
+-    assert context instanceof CodegenContext.FunctionContext;
+-    CodegenContext.FunctionContext cur = (CodegenContext.FunctionContext) context;
+-    if (cur.getReceiverDescriptor() == descriptor) {
+-        return cur.getReceiverExpression(typeMapper);
++private StackValue generateReceiver(DeclarationDescriptor provided, ClassDescriptor required) {
++    assert context instanceof CodegenContext.ReceiverContext;
++    CodegenContext.ReceiverContext cur = (CodegenContext.ReceiverContext) context;
++    if (cur.getReceiverDescriptor() == provided) {
++        StackValue result = cur.getReceiverExpression(typeMapper);
++        return castToRequiredTypeOfInterfaceIfNeeded(result, provided, required);
+     }
+-    return context.lookupInContext(descriptor, v, StackValue.local(0, JetTypeMapper.TYPE_OBJECT));
++    StackValue result = context.lookupInContext(provided, v, StackValue.local(0, JetTypeMapper.TYPE_OBJECT));
++    return castToRequiredTypeOfInterfaceIfNeeded(result, provided, required);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/9af033a8325d77335b9aeaca593910957cbedaaf b/cc6d5decdef60388c73e3d86bc190c9de0ceb510
+index 9af033a832..cc6d5decde 100644
+--- a/9af033a8325d77335b9aeaca593910957cbedaaf
++++ b/cc6d5decdef60388c73e3d86bc190c9de0ceb510
+@@ -1,7 +1,3 @@
+ public int getTextSecondaryAccentColor() {
+-    if (textSecondaryAccentColor != 0) {
+-        return getTextSecondaryColor();
+-    } else {
+-        return textSecondaryAccentColor;
+-    }
++    return getColorWithFallback(textSecondaryAccentColor, getTextSecondaryColor());
+ }
+\ No newline at end of file

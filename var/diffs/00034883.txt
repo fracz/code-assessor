@@ -1,0 +1,25 @@
+diff --git a/17200ddd1145aad8460e06e80eaf287a55375868 b/2602052583131a7aa63b5181a93bea84482c13a1
+index 17200ddd11..2602052583 100644
+--- a/17200ddd1145aad8460e06e80eaf287a55375868
++++ b/2602052583131a7aa63b5181a93bea84482c13a1
+@@ -1,17 +1,17 @@
+ public void tryToScrollTo(int to, int duration) {
+-    if (mCurrentPos == to) {
++    if (mPtrIndicator.isAlreadyHere(to)) {
+         return;
+     }
+-    mStart = mCurrentPos;
++    mStart = mPtrIndicator.getCurrentPosY();
+     mTo = to;
+     int distance = to - mStart;
+     if (DEBUG) {
+         CLog.d(LOG_TAG, "tryToScrollTo: start: %s, distance:%s, to:%s", mStart, distance, to);
+     }
+     removeCallbacks(this);
+     mLastFlingY = 0;
+     mScroller = new Scroller(getContext());
+     mScroller.startScroll(0, 0, 0, distance, duration);
+     post(this);
+     mIsRunning = true;
+ }
+\ No newline at end of file

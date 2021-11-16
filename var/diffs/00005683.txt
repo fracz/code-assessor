@@ -1,0 +1,19 @@
+diff --git a/7c5bb1ca0e0fcc9286b6fd974f5ace887d1fcf7b b/2a9762da8dff8cbfe64943c32f3bd1a131f8917d
+index 7c5bb1ca0e..2a9762da8d 100644
+--- a/7c5bb1ca0e0fcc9286b6fd974f5ace887d1fcf7b
++++ b/2a9762da8dff8cbfe64943c32f3bd1a131f8917d
+@@ -1,10 +1,10 @@
+ @Test
+ public void testAffectsOnlyMoveParent() {
+-    root.createDirectory(1, "root");
+-    root.createDirectory(2, "root/dir");
+-    root.createDirectory(3, "root/dir/dir2");
++    createDirectory(root, 1, "root");
++    createDirectory(root, 2, "root/dir");
++    createDirectory(root, 3, "root/dir/dir2");
+     Change c = new MoveChange("root/dir/dir2", "root");
+     c.applyTo(root);
+     assertFalse(c.affectsOnlyInside(root.getEntry("root/dir2")));
+     assertTrue(c.affectsOnlyInside(root.getEntry("root")));
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/f8ba376960f509bed4b8cbf0518184df3e1dc022 b/6c9e3d88d6083c2e011710ec12c3882f24d7464f
+index f8ba376960..6c9e3d88d6 100644
+--- a/f8ba376960f509bed4b8cbf0518184df3e1dc022
++++ b/6c9e3d88d6083c2e011710ec12c3882f24d7464f
+@@ -1,4 +1,6 @@
+ @Test
+ public void testReturnTable() throws Exception {
+-    assertTrue(json.format(GremlinPluginTest.executeTestScript("" + "t = new Table();" + "g.v(1).out('knows').as('friends').table(t).iterate();t;", null)).contains("josh"));
++    Representation result = GremlinPluginTest.executeTestScript("" + "t = new Table();" + "g.v(1).out('knows').as('friends').table(t).iterate();t;", null);
++    String resultString = json.format(result);
++    assertTrue(resultString, resultString.contains("josh"));
+ }
+\ No newline at end of file

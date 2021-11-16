@@ -1,0 +1,13 @@
+diff --git a/0883243825d29f640566e4eb0889bd9ff4c4b1f3 b/d0005e1a4915d7095e7981bede44cef24256c15e
+index 0883243825..d0005e1a49 100644
+--- a/0883243825d29f640566e4eb0889bd9ff4c4b1f3
++++ b/d0005e1a4915d7095e7981bede44cef24256c15e
+@@ -1,6 +1,6 @@
+ @Test
+ public void shouldEncodeResourceRegion() throws Exception {
+     ResourceRegion region = new ResourceRegion(this.resource, 0, 6);
+     Flux<DataBuffer> result = this.encoder.encode(Mono.just(region), this.bufferFactory, ResolvableType.forClass(ResourceRegion.class), MimeTypeUtils.APPLICATION_OCTET_STREAM, Collections.emptyMap());
+-    TestSubscriber.subscribe(result).assertNoError().assertComplete().assertValuesWith(stringConsumer("Spring"));
++    ScriptedSubscriber.<DataBuffer>create().consumeNextWith(stringConsumer("Spring")).expectComplete().verify(result);
+ }
+\ No newline at end of file

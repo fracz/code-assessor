@@ -1,0 +1,21 @@
+diff --git a/ff39423bdb2c841615e61a39434c89361102ce0d b/e76589adf3ab075e74a62b2a4255065587b572db
+index ff39423bdb..e76589adf3 100644
+--- a/ff39423bdb2c841615e61a39434c89361102ce0d
++++ b/e76589adf3ab075e74a62b2a4255065587b572db
+@@ -1,12 +1,12 @@
+ private void initGroovyFilterManager() {
+     FilterLoader.getInstance().setCompiler(new GroovyCompiler());
+-    String scriptRoot = System.getProperty("zuul.filter.root");
+-    if (scriptRoot != null)
+-        scriptRoot = scriptRoot + File.pathSeparator;
++    String scriptRoot = System.getProperty("zuul.filter.root", "");
++    if (scriptRoot.length() > 0)
++        scriptRoot = scriptRoot + File.separator;
+     try {
+         FilterFileManager.setFilenameFilter(new GroovyFileFilter());
+         FilterFileManager.init(5, scriptRoot + "pre", scriptRoot + "route", scriptRoot + "post");
+     } catch (Exception e) {
+         throw new RuntimeException(e);
+     }
+ }
+\ No newline at end of file

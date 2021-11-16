@@ -1,0 +1,16 @@
+diff --git a/2f5a8e025b6753ba55f277da119f554f9d5980bb b/6302a2e91a16fd9d6654f8f31803f2afe95a7c32
+index 2f5a8e025b..6302a2e91a 100644
+--- a/2f5a8e025b6753ba55f277da119f554f9d5980bb
++++ b/6302a2e91a16fd9d6654f8f31803f2afe95a7c32
+@@ -1,9 +1,9 @@
+ @Override
+ public void entryAdded(EntryEvent<String, Object> iEvent) {
+     if (iEvent.getKey().startsWith("node.")) {
+         final String nodeId = ((ODocument) iEvent.getValue()).field("id");
+-        registerAndAlignNode(iEvent.getMember(), false);
++        remoteClusterNodes.put(nodeId, iEvent.getMember());
+         aligningNodes.remove(nodeId);
+         OClientConnectionManager.instance().pushDistribCfg2Clients(getClusterConfiguration());
+     }
+ }
+\ No newline at end of file

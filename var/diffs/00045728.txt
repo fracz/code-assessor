@@ -1,0 +1,18 @@
+diff --git a/4246e22da9fb4cf0e003b66d12ad0eee149ce423 b/71ee14e922416d8d7dee26defddb8eae3fdc24fe
+index 4246e22da9..71ee14e922 100644
+--- a/4246e22da9fb4cf0e003b66d12ad0eee149ce423
++++ b/71ee14e922416d8d7dee26defddb8eae3fdc24fe
+@@ -1,5 +1,9 @@
+-@Override
+-public boolean addAll(Collection<? extends Object> c) {
++public boolean addAll(final Collection<? extends Object> c) {
++    if (c.size() == 0)
++        return false;
++    for (Object o : c) {
++        add(o);
++    }
+     setDirty();
+-    return super.addAll(c);
++    return true;
+ }
+\ No newline at end of file

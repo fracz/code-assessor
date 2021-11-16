@@ -1,0 +1,25 @@
+diff --git a/6062016e9e4c190ebd461d8ccb5ebf911184678b b/ff584d8eda145170738cd222238e71bb4ecdde7c
+index 6062016e9e..ff584d8eda 100644
+--- a/6062016e9e4c190ebd461d8ccb5ebf911184678b
++++ b/ff584d8eda145170738cd222238e71bb4ecdde7c
+@@ -1,13 +1,14 @@
+ @Override
+ public boolean equals(Object o) {
+-    if (!(o instanceof PsiCapturedWildcardType))
++    if (!(o instanceof PsiCapturedWildcardType)) {
+         return false;
++    }
+     final PsiCapturedWildcardType captured = (PsiCapturedWildcardType) o;
+-    if (!myContext.equals(captured.myContext) || !myExistential.equals(captured.myExistential))
++    if (!myContext.equals(captured.myContext) || !myExistential.equals(captured.myExistential)) {
++        return false;
++    }
++    if (myContext instanceof PsiReferenceExpression && !Comparing.equal(myParameter, captured.myParameter)) {
+         return false;
+-    if (myContext instanceof PsiReferenceExpression) {
+-        if (myParameter != null ? !myParameter.equals(captured.myParameter) : captured.myParameter != null)
+-            return false;
+     }
+     return true;
+ }
+\ No newline at end of file

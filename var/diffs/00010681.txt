@@ -1,0 +1,20 @@
+diff --git a/f8a692e86f0f44f0c58f49bbfc278514b3585099 b/e3b88737e75f49a7ac40614023acf04e129212c7
+index f8a692e86f..e3b88737e7 100644
+--- a/f8a692e86f0f44f0c58f49bbfc278514b3585099
++++ b/e3b88737e75f49a7ac40614023acf04e129212c7
+@@ -1,10 +1,7 @@
+-boolean fieldVisible(final int className, final FieldRepr field) {
++private boolean fieldVisible(final int className, final FieldRepr field) {
+     final ClassRepr r = reprByName(className);
+-    if (r != null) {
+-        if (r.getFields().contains(field)) {
+-            return true;
+-        }
+-        return findOverriddenFields(field, r).size() > 0;
++    if (r == null || r.getFields().contains(field)) {
++        return true;
+     }
+-    return true;
++    return hasOverriddenFields(field, r);
+ }
+\ No newline at end of file

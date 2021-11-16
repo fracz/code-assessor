@@ -1,0 +1,12 @@
+diff --git a/0a7b42378e2fce3094d7e1df73e4cbae61948feb b/cc7f2a84b5c96fc456c20024cb55bfb49804cf1a
+index 0a7b42378e..cc7f2a84b5 100644
+--- a/0a7b42378e2fce3094d7e1df73e4cbae61948feb
++++ b/cc7f2a84b5c96fc456c20024cb55bfb49804cf1a
+@@ -1,5 +1,5 @@
+ public void open() throws StorageException {
+     manager = openStorageManager();
+     store = manager.openDatabase(storeName);
+-    tx = manager.beginTransaction(new StoreTxConfig());
++    tx = manager.beginTransaction(StandardTransactionConfig.of());
+ }
+\ No newline at end of file

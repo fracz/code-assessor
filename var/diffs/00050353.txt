@@ -1,0 +1,29 @@
+diff --git a/611000f29dd83a066c2230af336364cd948da7f1 b/970a9fbce3cbc4783ceae3ba61049a8e61920df6
+index 611000f29d..970a9fbce3 100644
+--- a/611000f29dd83a066c2230af336364cd948da7f1
++++ b/970a9fbce3cbc4783ceae3ba61049a8e61920df6
+@@ -1,21 +1,19 @@
+ // ////////////////////////////////////////////////////
+ // Clipboard
+ @Override
+-public void addClipboardData(ClipboardData clipboardData) {
++public void addClipboardData(CopyMode mode, ClipboardData clipboardData) {
+     String selectedText;
+-    // Cope selected cells
+-    IStructuredSelection selection = itemsViewer.getStructuredSelection();
+-    if (selection.size() > 1) {
++    if (mode == CopyMode.ADVANCED) {
+         // Multiple rows selected
+         // Copy all of them in tsv format
+         selectedText = copyGridToText();
+         if (!CommonUtils.isEmpty(selectedText)) {
+             clipboardData.addTransfer(TextTransfer.getInstance(), selectedText);
+         }
+     } else {
+         selectedText = getRenderer().getSelectedText();
+     }
+     if (!CommonUtils.isEmpty(selectedText)) {
+         clipboardData.addTransfer(TextTransfer.getInstance(), selectedText);
+     }
+ }
+\ No newline at end of file

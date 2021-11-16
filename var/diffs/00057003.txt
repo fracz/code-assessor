@@ -1,0 +1,29 @@
+diff --git a/015be5035e86bfe50d207a5a1c688cdbae897576 b/d41caecd97eb397c07a8a1b7db3513254b3e09fb
+index 015be5035e..d41caecd97 100644
+--- a/015be5035e86bfe50d207a5a1c688cdbae897576
++++ b/d41caecd97eb397c07a8a1b7db3513254b3e09fb
+@@ -1,22 +1,20 @@
+ /**
+  * This is used for argument parsing in arch variable.
+  * It can extract a comma separated argument.
+  * Assumes the input format is "name(arg,arg,arg)", with possible
+  * spaces around the parentheses and comma(s).
+  *
+  * @param str arch variable component input
+  * @param num Number of argument
+  * @return The int value of the arg or 0 if missing or empty
+  */
+ static int getParenthesizedNum(String str, int num) {
+     String[] args = str.split("\\s*[,()]\\s*");
+     int ans = 0;
+     try {
+         ans = Integer.parseInt(args[num]);
+-    } catch (NumberFormatException nfe) {
+-    // just leave ans as 0
+-    } catch (ArrayIndexOutOfBoundsException aioobe) {
++    } catch (NumberFormatException | ArrayIndexOutOfBoundsException nfe) {
+     // just leave ans as 0
+     }
+     return ans;
+ }
+\ No newline at end of file

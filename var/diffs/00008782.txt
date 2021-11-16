@@ -1,0 +1,26 @@
+diff --git a/d55faee3dcffb5577f2924b684176a34cccad91c b/f21b7b566d35952a8b6472b9805bcba248a97a2a
+index d55faee3dc..f21b7b566d 100644
+--- a/d55faee3dcffb5577f2924b684176a34cccad91c
++++ b/f21b7b566d35952a8b6472b9805bcba248a97a2a
+@@ -1,12 +1,17 @@
++/**
++ * initializes course after project reopening or IDE restart
++ *
++ * @param courseElement xml element which contains information about course
++ */
+ public void loadState(Element courseElement) {
+-    name = courseElement.getAttributeValue("name");
+-    description = courseElement.getAttributeValue("description");
+-    myResourcePath = courseElement.getAttributeValue("myResourcePath");
++    name = courseElement.getAttributeValue(NAME_ATTRIBUTE_NAME);
++    description = courseElement.getAttributeValue(DESCRIPTION_ATTRIBUTE_NAME);
++    myResourcePath = courseElement.getAttributeValue(RESOURCE_PATH_ATTRIBUTE_NAME);
+     List<Element> lessonElements = courseElement.getChildren();
+     lessons = new ArrayList<Lesson>(lessonElements.size());
+     for (Element lessonElement : lessonElements) {
+         Lesson lesson = new Lesson();
+         lesson.loadState(lessonElement);
+         lessons.add(lesson);
+     }
+ }
+\ No newline at end of file

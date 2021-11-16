@@ -1,0 +1,22 @@
+diff --git a/1cedbe71af29f8468f147e7af84f02fc68bfdb00 b/3fdf144cb19997f8b9bf6c8d74c528cff0b007d7
+index 1cedbe71af..3fdf144cb1 100644
+--- a/1cedbe71af29f8468f147e7af84f02fc68bfdb00
++++ b/3fdf144cb19997f8b9bf6c8d74c528cff0b007d7
+@@ -1,12 +1,13 @@
+ private void initializeMasterSecret() {
+     hasSecret = false;
+     newKeyReceiver = new NewKeyReceiver();
+     clearKeyReceiver = new ClearKeyReceiver();
+     IntentFilter newKeyFilter = new IntentFilter(KeyCachingService.NEW_KEY_EVENT);
+     registerReceiver(newKeyReceiver, newKeyFilter, KeyCachingService.KEY_PERMISSION, null);
+     IntentFilter clearKeyFilter = new IntentFilter(KeyCachingService.CLEAR_KEY_EVENT);
+     registerReceiver(clearKeyReceiver, clearKeyFilter, KeyCachingService.KEY_PERMISSION, null);
+-    Intent bindIntent = new Intent(this, KeyCachingService.class);
+-    startService(bindIntent);
+-    bindService(bindIntent, serviceConnection, Context.BIND_AUTO_CREATE);
++    initializeWithMasterSecret(KeyCachingService.getMasterSecret(this));
++// Intent bindIntent   = new Intent(this, KeyCachingService.class);
++// startService(bindIntent);
++// bindService(bindIntent, serviceConnection, Context.BIND_AUTO_CREATE);
+ }
+\ No newline at end of file

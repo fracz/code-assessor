@@ -1,0 +1,17 @@
+diff --git a/223a421551d1875efcf96af3097c766867816c83 b/fe9a3df1c2c5552058b36e702e112ad57f2c87fb
+index 223a421551..fe9a3df1c2 100644
+--- a/223a421551d1875efcf96af3097c766867816c83
++++ b/fe9a3df1c2c5552058b36e702e112ad57f2c87fb
+@@ -1,9 +1,9 @@
+-public void resetRateLimiting(@NonNull ShortcutService s) {
++public void resetRateLimiting() {
+     if (ShortcutService.DEBUG) {
+         Slog.d(TAG, "resetRateLimiting: " + getPackageName());
+     }
+     if (mApiCallCount > 0) {
+         mApiCallCount = 0;
+-        s.scheduleSaveUser(getOwnerUserId());
++        mShortcutUser.mService.scheduleSaveUser(getOwnerUserId());
+     }
+ }
+\ No newline at end of file

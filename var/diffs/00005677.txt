@@ -1,0 +1,15 @@
+diff --git a/a3e3bc99db96832ccea779d2caffe50526d62aea b/ba3da2bbbc556e6638f3ccb9d02504cd1d4226b3
+index a3e3bc99db..ba3da2bbbc 100644
+--- a/a3e3bc99db96832ccea779d2caffe50526d62aea
++++ b/ba3da2bbbc556e6638f3ccb9d02504cd1d4226b3
+@@ -1,7 +1,7 @@
+ @Test
+ public void testAffectedEntryForCreateFileChange() {
+-    root.createDirectory(99, "dir");
++    createDirectory(root, 99, "dir");
+     StructuralChange c = new CreateFileChange(1, "dir/name", null, -1);
+     c.applyTo(root);
+-    assertEquals(list(idp(99, 1)), c.getAffectedIdPaths());
++    assertEquals(list(idp(-1, 99, 1)), c.getAffectedIdPaths());
+ }
+\ No newline at end of file

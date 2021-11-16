@@ -1,0 +1,22 @@
+diff --git a/9b1d8e03e4eb66599e8a5c949b08aa28db167a86 b/3e1b959afb6659e83b9996aadce0c210aff14c6f
+index 9b1d8e03e4..3e1b959afb 100644
+--- a/9b1d8e03e4eb66599e8a5c949b08aa28db167a86
++++ b/3e1b959afb6659e83b9996aadce0c210aff14c6f
+@@ -1,11 +1,12 @@
+ public void run() {
+     PsiDocumentManager.getInstance(project).commitDocument(editor.getDocument());
+     PsiFile psi = PsiDocumentManager.getInstance(project).getPsiFile(editor.getDocument());
+-    PsiElement method = psi.findElementAt(range.getStartOffset());
+-    if (method != null) {
+-        method = PsiTreeUtil.getParentOfType(method, PsiMethod.class, false);
++    PsiElement el = PsiTreeUtil.findElementOfClassAtOffset(psi, editor.getCaretModel().getOffset() - 1, PsiMethod.class, false);
++    if (el != null) {
++        PsiMethod method = PsiTreeUtil.getParentOfType(el, PsiMethod.class, false);
+         if (method != null) {
+-            CreateFromUsageUtils.setupEditor((PsiMethod) method, editor);
++            GenerateMembersUtil.setupGeneratedMethod(method);
++            CreateFromUsageUtils.setupEditor(method, editor);
+         }
+     }
+ }
+\ No newline at end of file

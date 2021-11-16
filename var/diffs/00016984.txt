@@ -1,0 +1,15 @@
+diff --git a/1e6a8d3315489539597f4b470e2e63e6cf00b4a1 b/ee0d13476e3a43b0ccf0d609794e10c901e664d2
+index 1e6a8d3315..ee0d13476e 100644
+--- a/1e6a8d3315489539597f4b470e2e63e6cf00b4a1
++++ b/ee0d13476e3a43b0ccf0d609794e10c901e664d2
+@@ -1,7 +1,8 @@
+ @Nullable
+ private static ClassData getClassData(@NotNull PsiClass psiClass) {
+     VirtualFile virtualFile = getVirtualFileForPsiClass(psiClass);
+     if (virtualFile == null)
+         return null;
+-    return KotlinClassFileHeader.readKotlinHeaderFromClassFile(virtualFile).readClassData();
++    String[] data = KotlinClassFileHeader.readKotlinHeaderFromClassFile(virtualFile).getAnnotationData();
++    return data == null ? null : JavaProtoBufUtil.readClassDataFrom(data);
+ }
+\ No newline at end of file

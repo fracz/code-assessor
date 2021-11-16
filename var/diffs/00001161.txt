@@ -1,0 +1,13 @@
+diff --git a/6122b45446f4a69250ef26dcad6ff77c56d34698 b/3f2b7f7d7917df0802ccb3e94f3621d90058bbe2
+index 6122b45446..3f2b7f7d79 100644
+--- a/6122b45446f4a69250ef26dcad6ff77c56d34698
++++ b/3f2b7f7d7917df0802ccb3e94f3621d90058bbe2
+@@ -1,4 +1,4 @@
+-public void cleanInput(MessageInput input) {
+-    // Remove in Mongo.
+-    Input.destroy(new BasicDBObject("_id", new ObjectId(input.getPersistId())), _core, Input.COLLECTION);
++public void cleanInput(MessageInput messageInput) {
++    Input input = inputService.find(messageInput.getPersistId());
++    inputService.destroy(input);
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/1807bd12c3647b3714cc58023246da7aafc630d9 b/d8ede235808708ff40383dbb912755842c637170
+index 1807bd12c3..d8ede23580 100644
+--- a/1807bd12c3647b3714cc58023246da7aafc630d9
++++ b/d8ede235808708ff40383dbb912755842c637170
+@@ -1,8 +1,9 @@
+-public void step(@NotNull JsonSchemaObject parent, @NotNull TransitionResultConsumerI resultConsumer, boolean acceptAdditionalPropertiesSchemas) {
++@NotNull
++public Pair<ThreeState, JsonSchemaObject> step(@NotNull JsonSchemaObject parent, boolean acceptAdditionalPropertiesSchemas) {
+     if (myName != null) {
+-        propertyStep(parent, resultConsumer, acceptAdditionalPropertiesSchemas);
++        return propertyStep(parent, acceptAdditionalPropertiesSchemas);
+     } else {
+         assert myIdx >= 0;
+-        arrayElementStep(parent, resultConsumer);
++        return arrayElementStep(parent, acceptAdditionalPropertiesSchemas);
+     }
+ }
+\ No newline at end of file

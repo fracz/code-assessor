@@ -1,0 +1,15 @@
+diff --git a/cf4ddacee5e9a5eeb7b743bdfd25a5bf317c93f9 b/b02f2c7bd3f9800c86ea246561ea19b8901624a1
+index cf4ddacee5..b02f2c7bd3 100644
+--- a/cf4ddacee5e9a5eeb7b743bdfd25a5bf317c93f9
++++ b/b02f2c7bd3f9800c86ea246561ea19b8901624a1
+@@ -1,8 +1,8 @@
+ public static void createWorkspaceFile(Path repositoryDirectory, Rule rule) throws RepositoryFunctionException {
+     try {
+         Path workspaceFile = repositoryDirectory.getRelative("WORKSPACE");
+-        FileSystemUtils.writeContent(workspaceFile, Charset.forName("UTF-8"), "# DO NOT EDIT: automatically generated WORKSPACE file for " + rule + "\n");
++        FileSystemUtils.writeContent(workspaceFile, Charset.forName("UTF-8"), String.format("# DO NOT EDIT: automatically generated WORKSPACE file for %s\n", rule));
+     } catch (IOException e) {
+         throw new RepositoryFunctionException(e, Transience.TRANSIENT);
+     }
+ }
+\ No newline at end of file

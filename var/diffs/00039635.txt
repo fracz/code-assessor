@@ -1,0 +1,12 @@
+diff --git a/d06adcb17e49427bfa8f5d2a375c3fa1faa8bd0f b/333390cce4db53e1ce0a9144fea87bed8e7d8740
+index d06adcb17e..333390cce4 100644
+--- a/d06adcb17e49427bfa8f5d2a375c3fa1faa8bd0f
++++ b/333390cce4db53e1ce0a9144fea87bed8e7d8740
+@@ -1,3 +1,5 @@
+ public void label(int id, String name, int... dynamicIds) throws IOException {
+-    write(new Command.LabelTokenCommand(null, withName(new LabelTokenRecord(id), dynamicIds, name)));
++    Command.LabelTokenCommand command = new Command.LabelTokenCommand();
++    command.init(withName(new LabelTokenRecord(id), dynamicIds, name));
++    write(command);
+ }
+\ No newline at end of file

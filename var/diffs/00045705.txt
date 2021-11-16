@@ -1,0 +1,20 @@
+diff --git a/8e7db1d9527f18d87ebaf524190ad55080bc9f8a b/4ba55a7caab2770e44b1cc6340c4264840d41943
+index 8e7db1d952..4ba55a7caa 100644
+--- a/8e7db1d9527f18d87ebaf524190ad55080bc9f8a
++++ b/4ba55a7caab2770e44b1cc6340c4264840d41943
+@@ -1,11 +1,10 @@
+-private static OGraphVertexOutIterator readSubNodes(final OGraphVertex iNode) {
+-    OGraphVertexOutIterator iterator = iNode.outIterator();
++private static int readSubNodes(final OGraphVertex iNode) {
+     int i = 0;
+-    for (OGraphVertex v : iNode.outIterator()) {
++    for (OGraphEdge e : iNode.getOutEdges()) {
+         // System.out.print(v.get("id") + " - ");
+         ++i;
+         if (i % 10000 == 0)
+             System.out.print(".");
+     }
+-    return iterator;
++    return i;
+ }
+\ No newline at end of file

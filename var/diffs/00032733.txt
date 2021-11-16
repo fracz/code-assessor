@@ -1,0 +1,23 @@
+diff --git a/e2905e1ff4edb1b84b158d0cd75c4d3b61fbc974 b/9270117633f737486e7e9103bd7d2f923000cf62
+index e2905e1ff4..9270117633 100644
+--- a/e2905e1ff4edb1b84b158d0cd75c4d3b61fbc974
++++ b/9270117633f737486e7e9103bd7d2f923000cf62
+@@ -1,14 +1,12 @@
+ public Void call(InternalContext context) {
+-    Dependency<?> dependency = Dependency.get(binding.key);
+     context.setDependency(dependency);
+-    errors.pushSource(dependency);
++    Errors errorsForBinding = errors.withSource(dependency);
+     try {
+-        binding.internalFactory.get(errors, context, dependency);
++        binding.internalFactory.get(errorsForBinding, context, dependency);
+     } catch (ErrorsException e) {
+-        errors.merge(e.getErrors());
++        errorsForBinding.merge(e.getErrors());
+     } finally {
+         context.setDependency(null);
+-        errors.popSource(dependency);
+     }
+     return null;
+ }
+\ No newline at end of file

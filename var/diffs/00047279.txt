@@ -1,0 +1,21 @@
+diff --git a/cbf30ca392e996080a3cfc0c8e22a61d3dc8c573 b/18ad434842532a03a946949fefad86caa8b5fd14
+index cbf30ca392..18ad434842 100644
+--- a/cbf30ca392e996080a3cfc0c8e22a61d3dc8c573
++++ b/18ad434842532a03a946949fefad86caa8b5fd14
+@@ -1,13 +1,13 @@
+ @Test(expectedExceptions = IllegalStateException.class)
+ public void shouldThrowExceptionWhenWritingInReadTrans() {
++    SharedGroup db = new SharedGroup(createDBFileName(), SharedGroup.Durability.ASYNC);
+     ReadTransaction rt = db.beginRead();
+     try {
+         // Should throw exception, as this method creates a new table, if the table does not exists, thereby making it a mutable operation
+-        Table tbl = rt.getTable("newTable");
++        rt.getTable("newTable");
+         rt.endRead();
+         assert (false);
+     } finally {
+         rt.endRead();
+-        clear();
+     }
+ }
+\ No newline at end of file

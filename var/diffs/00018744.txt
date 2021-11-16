@@ -1,0 +1,21 @@
+diff --git a/e55995073211ebf10d6a47d2477c70e08aee6d98 b/d0a9ee097744bc78a8358f231695f75fef981449
+index e559950732..d0a9ee0977 100644
+--- a/e55995073211ebf10d6a47d2477c70e08aee6d98
++++ b/d0a9ee097744bc78a8358f231695f75fef981449
+@@ -1,12 +1,7 @@
+ @Override
+ public void run() {
+-    for (Slide slide : result.getSlides()) {
+-        if (slide.hasImage()) {
+-            slide.setThumbnailOn(context, mmsThumbnail);
+-            mmsThumbnail.setOnClickListener(new ThumbnailClickListener(slide));
+-            mmsThumbnail.setVisibility(View.VISIBLE);
+-            return;
+-        }
++    if (mediaThumbnail.getTag() == tag) {
++        Log.w(TAG, "displaying media thumbnail");
++        mediaThumbnail.show(result.first, result.second);
+     }
+-    mmsThumbnail.setVisibility(View.GONE);
+ }
+\ No newline at end of file

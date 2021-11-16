@@ -1,0 +1,12 @@
+diff --git a/a186bf28b1c29dbd3233f4921ae3d4628e4a80c8 b/af49dad1c0c2838229e1ca03a654c5423e54cf10
+index a186bf28b1..af49dad1c0 100644
+--- a/a186bf28b1c29dbd3233f4921ae3d4628e4a80c8
++++ b/af49dad1c0c2838229e1ca03a654c5423e54cf10
+@@ -1,4 +1,4 @@
+ @Override
+-protected void startUpMaster() throws Exception {
+-    masterJvm = spawnJvm(MASTER_PATH, MASTER_PORT, 999, "-master", "true");
++protected void startUpMaster(int numSlaves) throws Exception {
++    jvms.add(spawnJvm(numSlaves, dbPath(0), MASTER_PORT, 0, "-master", "true"));
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/867e33c1fb7d5581a3d5c1b9efc72f9da9ab0189 b/a2cda76498e3fb2c323d777b4bcb42984c1cd05a
+index 867e33c1fb..a2cda76498 100644
+--- a/867e33c1fb7d5581a3d5c1b9efc72f9da9ab0189
++++ b/a2cda76498e3fb2c323d777b4bcb42984c1cd05a
+@@ -1,10 +1,9 @@
+ @Override
+ public Yielder<OutType> next(final OutType initValue) {
+-    return doItNamed(new Callable<Yielder<OutType>>() {
+-
+-        @Override
+-        public Yielder<OutType> call() throws Exception {
+-            return yielder.next(initValue);
+-        }
+-    });
++    try {
++        return yielder.next(initValue);
++    } catch (SegmentMissingException e) {
++        appendMissingSegment(responseContext);
++        return Yielders.done(initValue, null);
++    }
+ }
+\ No newline at end of file

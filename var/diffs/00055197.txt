@@ -1,0 +1,14 @@
+diff --git a/666dcb385485199f7eea03388897dd3d08184887 b/2a3164e92db46f44c5e71c0cf7abef5fb20f7d19
+index 666dcb3854..2a3164e92d 100644
+--- a/666dcb385485199f7eea03388897dd3d08184887
++++ b/2a3164e92db46f44c5e71c0cf7abef5fb20f7d19
+@@ -1,7 +1,7 @@
+ @Override
+ protected FragmentMvpDelegate<V, P> getMvpDelegate() {
+     if (mvpDelegate == null) {
+-        mvpDelegate = new FragmentMvpViewStateDelegateImpl<V, P>(this);
++        mvpDelegate = new FragmentMvpViewStateDelegateImpl<>(this, this, true, true);
+     }
+     return mvpDelegate;
+ }
+\ No newline at end of file

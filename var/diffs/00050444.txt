@@ -1,0 +1,26 @@
+diff --git a/5a530d727171c2507a8ca816fd1db14e9b9522ea b/6235263f91fdd2627f60b53f1d220ab41f0a75e4
+index 5a530d7271..6235263f91 100644
+--- a/5a530d727171c2507a8ca816fd1db14e9b9522ea
++++ b/6235263f91fdd2627f60b53f1d220ab41f0a75e4
+@@ -1,19 +1,19 @@
+ @Override
+ public IAdaptable createElement(IMemento memento) {
+     // Get the node path.
+     final String nodePath = memento.getString(TAG_NODE);
+     if (nodePath == null) {
+         return null;
+     }
+     final DBNModel navigatorModel = DBeaverCore.getInstance().getNavigatorModel();
+     try {
+-        final DBNNode node = navigatorModel.getNodeByPath(VoidProgressMonitor.INSTANCE, nodePath);
++        final DBNNode node = navigatorModel.getNodeByPath(new VoidProgressMonitor(), nodePath);
+         if (node != null) {
+             return new NodeEditorInput(node);
+         }
+     } catch (DBException e) {
+         log.error("Error opening node '" + nodePath + "'", e);
+         return null;
+     }
+     return null;
+ }
+\ No newline at end of file

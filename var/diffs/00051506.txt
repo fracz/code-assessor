@@ -1,0 +1,19 @@
+diff --git a/e7d7e0737ab7f6d42d0d20ff136bf46d96b12c98 b/a7f6f81e24e46bd0b5a9d8a06de25734f9a96188
+index e7d7e0737a..a7f6f81e24 100644
+--- a/e7d7e0737ab7f6d42d0d20ff136bf46d96b12c98
++++ b/a7f6f81e24e46bd0b5a9d8a06de25734f9a96188
+@@ -1,11 +1,11 @@
+ @Override
+-public boolean refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
++public DBSObject refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
+     super.refreshObject(monitor);
+     this.getContainer().indexCache.clearObjectCache(this);
+     partitionInfo = null;
+     if (partitionCache != null) {
+         partitionCache.clearCache();
+     }
+     realRowCount = null;
+-    return true;
++    return this;
+ }
+\ No newline at end of file

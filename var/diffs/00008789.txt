@@ -1,0 +1,16 @@
+diff --git a/f53063645fac0e7967d8fabde0c9c4b28a2e0d27 b/d3a7907cbf8e51cd2d1cd7d38a302d079b839fce
+index f53063645f..d3a7907cbf 100644
+--- a/f53063645fac0e7967d8fabde0c9c4b28a2e0d27
++++ b/d3a7907cbf8e51cd2d1cd7d38a302d079b839fce
+@@ -1,8 +1,7 @@
+ public static StudyEditor getSelectedStudyEditor(Project project) {
+-    StudyEditor selectedStudyEditor = null;
+     FileEditor fileEditor = FileEditorManagerImpl.getInstanceEx(project).getSplitters().getCurrentWindow().getSelectedEditor().getSelectedEditorWithProvider().getFirst();
+     if (fileEditor instanceof StudyEditor) {
+-        selectedStudyEditor = (StudyEditor) fileEditor;
++        return (StudyEditor) fileEditor;
+     }
+-    return selectedStudyEditor;
++    return null;
+ }
+\ No newline at end of file

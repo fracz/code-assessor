@@ -1,0 +1,12 @@
+diff --git a/bff94675ebfbccdb16516a3d770ae91f842f5291 b/6cb77e58e1c6fe64c66aae924a68f2371167a81a
+index bff94675eb..6cb77e58e1 100644
+--- a/bff94675ebfbccdb16516a3d770ae91f842f5291
++++ b/6cb77e58e1c6fe64c66aae924a68f2371167a81a
+@@ -1,4 +1,4 @@
+ public Document buildDocument(Object key) {
+-    // return luceneIndexEngine.buildDocument(key);
+-    return null;
++    OLuceneIndexEngine oIndexEngine = (OLuceneIndexEngine) storage.getIndexEngine(indexId);
++    return oIndexEngine.buildDocument(key);
+ }
+\ No newline at end of file

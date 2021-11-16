@@ -1,0 +1,19 @@
+diff --git a/29396cc68057aefdcdce5819e5bf6b47fcbede95 b/7c77c544faa9832c233dad212bc27f1717b4ab38
+index 29396cc680..7c77c544fa 100644
+--- a/29396cc68057aefdcdce5819e5bf6b47fcbede95
++++ b/7c77c544faa9832c233dad212bc27f1717b4ab38
+@@ -1,11 +1,12 @@
+ @Nullable
+ public static DBPDataSourceContainer getContainer(@Nullable DBSObject object) {
+     if (object == null) {
+         log.warn("Null object passed");
+         return null;
+     }
+     if (object instanceof DBPDataSourceContainer) {
+         return (DBPDataSourceContainer) object;
+     }
+-    return object.getDataSource().getContainer();
++    final DBPDataSource dataSource = object.getDataSource();
++    return dataSource == null ? null : dataSource.getContainer();
+ }
+\ No newline at end of file

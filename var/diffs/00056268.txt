@@ -1,0 +1,22 @@
+diff --git a/746e7b2bdc9377107bac5163f48d23f35b9bd1a7 b/f6d2a0efea71a11e68edf98b415723287b0a90a0
+index 746e7b2bdc..f6d2a0efea 100644
+--- a/746e7b2bdc9377107bac5163f48d23f35b9bd1a7
++++ b/f6d2a0efea71a11e68edf98b415723287b0a90a0
+@@ -1,12 +1,13 @@
+ /**
+  * Connect to the origin server either directly or via a proxy.
+  */
+-private void connect(Request request) throws IOException {
++private void connect() throws IOException {
+     if (connection != null)
+         throw new IllegalStateException();
+     if (routeSelector == null) {
+-        routeSelector = RouteSelector.get(request, client);
++        address = createAddress(client, networkRequest);
++        routeSelector = RouteSelector.get(address, networkRequest, client);
+     }
+-    connection = routeSelector.next(this);
++    connection = nextConnection();
+     route = connection.getRoute();
+ }
+\ No newline at end of file

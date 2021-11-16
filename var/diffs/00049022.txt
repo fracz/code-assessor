@@ -1,0 +1,24 @@
+diff --git a/89c6b6e382b86f34efe9dd263bef6cb617b5891b b/121531918813256582ea36fa479b2884b3caccd1
+index 89c6b6e382..1215319188 100644
+--- a/89c6b6e382b86f34efe9dd263bef6cb617b5891b
++++ b/121531918813256582ea36fa479b2884b3caccd1
+@@ -1,14 +1,14 @@
+ @Override
+ public void createControl(Composite parent) {
+-    TabFolder tunnelTypeFolder = new TabFolder(parent, SWT.TOP);
+-    tunnelTypeFolder.setLayoutData(new GridData(GridData.FILL_BOTH));
++    handlersFolder = new TabFolder(parent, SWT.TOP);
++    handlersFolder.setLayoutData(new GridData(GridData.FILL_BOTH));
+     NetworkHandlerRegistry registry = DBeaverCore.getInstance().getNetworkHandlerRegistry();
+     for (NetworkHandlerDescriptor descriptor : registry.getDescriptors()) {
+         try {
+-            createHandlerTab(tunnelTypeFolder, descriptor);
++            createHandlerTab(handlersFolder, descriptor);
+         } catch (DBException e) {
+             log.warn(e);
+         }
+     }
+-    setControl(tunnelTypeFolder);
++    setControl(handlersFolder);
+ }
+\ No newline at end of file

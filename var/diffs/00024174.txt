@@ -1,0 +1,15 @@
+diff --git a/e18c49e4eb729dc9dcd7efac9fd685bef36644e8 b/37f06ab6648f206b6d306997cef1b427d9e9c910
+index e18c49e4eb..37f06ab664 100644
+--- a/e18c49e4eb729dc9dcd7efac9fd685bef36644e8
++++ b/37f06ab6648f206b6d306997cef1b427d9e9c910
+@@ -1,6 +1,7 @@
+-public void addExist(Composite prefix) throws InvalidRequestException {
+-    RowCondition previous = conditions.put(prefix, new ExistCondition(prefix, now));
++public void addExist(Clustering clustering) throws InvalidRequestException {
++    RowCondition previous = conditions.put(clustering, new ExistCondition(clustering));
+     // this should be prevented by the parser, but it doesn't hurt to check
+     if (previous instanceof NotExistCondition)
+         throw new InvalidRequestException("Cannot mix IF EXISTS and IF NOT EXISTS conditions for the same row");
++    hasExists = true;
+ }
+\ No newline at end of file

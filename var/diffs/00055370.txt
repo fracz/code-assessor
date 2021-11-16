@@ -1,0 +1,27 @@
+diff --git a/3b5f8c22085426b605a662bfa0bb4b8e2806b1a7 b/b7ffea341e3a4e94b0ab58a323f54b2898e9abc9
+index 3b5f8c2208..b7ffea341e 100644
+--- a/3b5f8c22085426b605a662bfa0bb4b8e2806b1a7
++++ b/b7ffea341e3a4e94b0ab58a323f54b2898e9abc9
+@@ -1,15 +1,10 @@
+ @Override
+ public Object getProperty(String name) {
+-    if (!name.startsWith("random.")) {
+-        return null;
++    for (PropertySource<?> propertySource : this.sources) {
++        Object value = propertySource.getProperty(name);
++        if (value != null) {
++            return value;
++        }
+     }
+-    if (name.endsWith("int")) {
+-        return getSource().nextInt();
+-    }
+-    if (name.endsWith("long")) {
+-        return getSource().nextLong();
+-    }
+-    byte[] bytes = new byte[32];
+-    getSource().nextBytes(bytes);
+-    return DigestUtils.md5DigestAsHex(bytes);
++    return null;
+ }
+\ No newline at end of file

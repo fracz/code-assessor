@@ -1,0 +1,19 @@
+diff --git a/04d59e84fe509b7ef6132bfcb5f551c0308f4ddb b/7870973aa0d1c10dbf6b68da760f05b4dbf7519e
+index 04d59e84fe..7870973aa0 100644
+--- a/04d59e84fe509b7ef6132bfcb5f551c0308f4ddb
++++ b/7870973aa0d1c10dbf6b68da760f05b4dbf7519e
+@@ -1,12 +1,11 @@
+ /**
+  * Freeze slave with <code>host:port</code> from slaves list.
+  * Re-attach pub/sub listeners from it to other slave.
+  * Shutdown old master client.
+  */
+ protected void changeMaster(String host, int port) {
+     ConnectionEntry oldMaster = masterEntry;
+-    RedisClient client = new RedisClient(group, host, port);
+-    masterEntry = new ConnectionEntry(client, this.config.getMasterConnectionPoolSize());
++    setupMasterEntry(host, port);
+     slaveDown(host, port);
+     oldMaster.getClient().shutdown();
+ }
+\ No newline at end of file

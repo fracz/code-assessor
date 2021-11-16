@@ -1,0 +1,17 @@
+diff --git a/fd00d59a3e69b9e8f740eb68ae6d0b1ec032576e b/438c7ee148aadef3d3fbe0d256f7365b647899fa
+index fd00d59a3e..438c7ee148 100644
+--- a/fd00d59a3e69b9e8f740eb68ae6d0b1ec032576e
++++ b/438c7ee148aadef3d3fbe0d256f7365b647899fa
+@@ -1,8 +1,10 @@
+ @Test
+ public void shouldSerializeAndDeserializeUnusedRecords() throws Exception {
+     // Given
+     NodeRecord before = new NodeRecord(12, false, 1, 2);
+     NodeRecord after = new NodeRecord(12, false, 2, 1);
+     // When
+-    assertSerializationWorksFor(new Command.NodeCommand(null, before, after));
++    Command.NodeCommand nodeCommand = new Command.NodeCommand();
++    nodeCommand.init(before, after);
++    assertSerializationWorksFor(nodeCommand);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/d604169c9a9e37f58c988849fc001b047579ca6d b/c5830fab2ba0d49b9b3da72b87211470a716193b
+index d604169c9a..c5830fab2b 100644
+--- a/d604169c9a9e37f58c988849fc001b047579ca6d
++++ b/c5830fab2ba0d49b9b3da72b87211470a716193b
+@@ -1,7 +1,6 @@
+-public static synchronized void initialize() {
++public static synchronized void initialize(File dir) {
+     if (singleton == null) {
+-        File dir = getProjectLocation();
+         logger.info("Using workspace directory: {}", dir.getAbsolutePath());
+         singleton = new ProjectManager(dir);
+     }
+ }
+\ No newline at end of file

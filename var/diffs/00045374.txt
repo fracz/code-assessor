@@ -1,0 +1,16 @@
+diff --git a/fa2e864754d836987d776fe39c7534a0d4f6e0ce b/324362fbeb06eb51e9a56042a5514fa1778cb9ab
+index fa2e864754..324362fbeb 100644
+--- a/fa2e864754d836987d776fe39c7534a0d4f6e0ce
++++ b/324362fbeb06eb51e9a56042a5514fa1778cb9ab
+@@ -1,8 +1,9 @@
+ public void load() {
+     final long timer = PROFILER.startChrono();
+     try {
+-        init(true);
++        OSharedContext shared = init();
++        shared.load(database);
+     } finally {
+         PROFILER.stopChrono(PROFILER.getDatabaseMetric(getDatabase().getName(), "metadata.load"), "Loading of database metadata", timer, "db.*.metadata.load");
+     }
+ }
+\ No newline at end of file

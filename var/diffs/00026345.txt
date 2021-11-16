@@ -1,0 +1,56 @@
+diff --git a/798c6e08cd04cadd9350091194505c199d0b1e34 b/a186070276dd69127ebe5d8230fadd3309c9f198
+index 798c6e08cd..a186070276 100644
+--- a/798c6e08cd04cadd9350091194505c199d0b1e34
++++ b/a186070276dd69127ebe5d8230fadd3309c9f198
+@@ -1,34 +1,31 @@
+ /**
+- * Gets the single "effective" architecture for the given {@link PlatformType}. Prefer this over
+- * {@link #getArchitectures(PlatformType)} only in cases if in the context of a rule which
+- * is only concerned with a single architecture (such as {@code objc_library}, which registers
+- * single-architecture compile actions.
++ * Gets the single "effective" architecture for this configuration's {@link PlatformType} (for
++ * example, "i386" or "arm64"). Prefer this over {@link #getMultiArchitectures(PlatformType)}
++ * only if in the context of rule logic which is only concerned with a single architecture (such
++ * as in {@code objc_library}, which registers single-architecture compile actions).
+  *
+  * <p>Single effective architecture is determined using the following rules:
+  * <ol>
+  * <li>If {@code --apple_split_cpu} is set (done via prior configuration transition), then
+  * that is the effective architecture.</li>
+- * <li>In the case of iOS, use {@code --ios_cpu}.</li>
++ * <li>If the multi cpus flag (e.g. {@code --ios_multi_cpus}) is set and non-empty, then the first
++ * such architecture is returned.</li>
++ * <li>In the case of iOS, use {@code --ios_cpu} for backwards compatibility.</li>
+  * <li>Use the default.</li></ol>
+- *
+- * @throws IllegalArgumentException if {@code --apple_platform_type} is set (via prior
+- * configuration transition) yet does not match {@code platformType}
+  */
+-// TODO(cparsons): Support platform types other than iOS.
+-// TODO(b/28958783): Consider changing this behavior to be more consistent between single and
+-// multi-arch cases.
+-public String getSingleArchitecture(PlatformType platformType) {
++public String getSingleArchitecture() {
+     if (!Strings.isNullOrEmpty(appleSplitCpu)) {
+-        if (applePlatformType != platformType) {
+-            throw new IllegalArgumentException(String.format("Expected post-split-transition platform type %s to match input %s ", applePlatformType, platformType));
+-        }
+         return appleSplitCpu;
+     }
+-    switch(platformType) {
++    switch(applePlatformType) {
+         case IOS:
+-            return getIosCpu();
+-        // TODO(cparsons): Support other platform types.
++            if (!getIosMultiCpus().isEmpty()) {
++                return getIosMultiCpus().get(0);
++            } else {
++                return getIosCpu();
++            }
++        // TODO(cparsons): Support platform types other than iOS.
+         default:
+-            throw new IllegalArgumentException("Unhandled platform type " + platformType);
++            throw new IllegalArgumentException("Unhandled platform type " + applePlatformType);
+     }
+ }
+\ No newline at end of file

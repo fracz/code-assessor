@@ -1,0 +1,18 @@
+diff --git a/3af62b11762c62c9a3af33f266595182ab1d2018 b/5244e85542e33d6b16903ca4a40705c1f6391db8
+index 3af62b1176..5244e85542 100644
+--- a/3af62b11762c62c9a3af33f266595182ab1d2018
++++ b/5244e85542e33d6b16903ca4a40705c1f6391db8
+@@ -1,9 +1,11 @@
+ @Override
+ protected void clearPreferences(IPreferenceStore store) {
+-    // store.setToDefault(PrefConstants.DEFAULT_AUTO_COMMIT);
++    store.setToDefault(PrefConstants.AGENT_ENABLED);
++    store.setToDefault(PrefConstants.AGENT_LONG_OPERATION_NOTIFY);
++    store.setToDefault(PrefConstants.AGENT_LONG_OPERATION_TIMEOUT);
+     store.setToDefault(PrefConstants.KEEP_STATEMENT_OPEN);
+     store.setToDefault(PrefConstants.QUERY_ROLLBACK_ON_ERROR);
+     store.setToDefault(PrefConstants.MEMORY_CONTENT_MAX_SIZE);
+     store.setToDefault(PrefConstants.READ_EXPENSIVE_PROPERTIES);
+     store.setToDefault(PrefConstants.META_CASE_SENSITIVE);
+ }
+\ No newline at end of file

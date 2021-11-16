@@ -1,0 +1,15 @@
+diff --git a/a3f5714e9ea99b53cd83180599fc86d5c9fe4659 b/52d1013ff64d3722f7c91f6dce465cd9e2cf4b1a
+index a3f5714e9e..52d1013ff6 100644
+--- a/a3f5714e9ea99b53cd83180599fc86d5c9fe4659
++++ b/52d1013ff64d3722f7c91f6dce465cd9e2cf4b1a
+@@ -1,6 +1,7 @@
+-public void recoverFromStore(ShardRouting shard, StoreRecoveryService.RecoveryListener recoveryListener) {
++public boolean recoverFromStore(ShardRouting shard) {
+     // if its post api allocation, the index should exists
+     assert shard.primary() : "recover from store only makes sense if the shard is a primary shard";
+     final boolean shouldExist = shard.allocatedPostIndexCreate();
+-    storeRecoveryService.recover(this, shouldExist, recoveryListener);
++    StoreRecovery storeRecovery = new StoreRecovery(shardId, logger);
++    return storeRecovery.recoverFromStore(this, shouldExist, localNode);
+ }
+\ No newline at end of file

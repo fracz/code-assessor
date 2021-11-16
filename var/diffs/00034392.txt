@@ -1,0 +1,16 @@
+diff --git a/b438ee293260965fb705736b7a6e5859ed50639f b/1faeaebb9c068a52b2262705d55e38f56595936b
+index b438ee2932..1faeaebb9c 100644
+--- a/b438ee293260965fb705736b7a6e5859ed50639f
++++ b/1faeaebb9c068a52b2262705d55e38f56595936b
+@@ -1,9 +1,9 @@
+ @Test
+ public void getHighestUid_imapConnectionThrowsNegativesResponse_shouldReturnMinusOne() throws Exception {
+     ImapFolder folder = createFolder("Folder");
+     prepareImapFolderForOpen(OPEN_MODE_RW);
+-    doThrow(NegativeImapResponseException.class).when(imapConnection).executeSimpleCommand("UID SEARCH *:*");
++    doThrow(NegativeImapResponseException.class).when(imapConnection).executeSelectedStateCommand(any(UidSearchCommand.class));
+     folder.open(OPEN_MODE_RW);
+     long highestUid = folder.getHighestUid();
+     assertEquals(-1L, highestUid);
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/1b26b4d0fe19eaef1115edbf347db70edc257ac6 b/241611c89933ca86aef1f834e4651a1f7e781e0a
+index 1b26b4d0fe..241611c899 100644
+--- a/1b26b4d0fe19eaef1115edbf347db70edc257ac6
++++ b/241611c89933ca86aef1f834e4651a1f7e781e0a
+@@ -1,4 +1,4 @@
+ @Override
+ public int hashCode() {
+-    return subQuery.hashCode() + 31 * Objects.hashCode(function) ^ Float.floatToIntBits(getBoost());
++    return Objects.hash(super.hashCode(), subQuery.hashCode(), function, combineFunction, minScore, maxBoost);
+ }
+\ No newline at end of file

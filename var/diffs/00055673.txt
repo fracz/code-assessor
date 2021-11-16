@@ -1,0 +1,20 @@
+diff --git a/560b047caaca54e8ae8f2f696c809bc93e0c2ad3 b/d7586a37c19129e6719316843a0c00680f05d79e
+index 560b047caa..d7586a37c1 100644
+--- a/560b047caaca54e8ae8f2f696c809bc93e0c2ad3
++++ b/d7586a37c19129e6719316843a0c00680f05d79e
+@@ -1,13 +1,13 @@
+ @Test
+ public void testRejectsOverrideOfBogusMethodName() {
+     DefaultListableBeanFactory xbf = new DefaultListableBeanFactory();
+     XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(xbf);
+     try {
+-        reader.loadBeanDefinitions(new ClassPathResource("invalidOverridesNoSuchMethod.xml", getClass()));
++        reader.loadBeanDefinitions(INVALID_NO_SUCH_METHOD_CONTEXT);
+         xbf.getBean("constructorOverrides");
+         fail("Shouldn't allow override of bogus method");
+     } catch (BeanDefinitionStoreException ex) {
+         // Check that the bogus method name was included in the error message
+         assertTrue("Bogus method name correctly reported", ex.getMessage().indexOf("bogusMethod") != -1);
+     }
+ }
+\ No newline at end of file

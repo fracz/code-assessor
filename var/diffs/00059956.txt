@@ -1,0 +1,14 @@
+diff --git a/e9f537a456f4d939afd928b9d1a7409b9d90ac07 b/d2eeca08d7eb6e154410ad2adbde17408dd09d48
+index e9f537a456..d2eeca08d7 100644
+--- a/e9f537a456f4d939afd928b9d1a7409b9d90ac07
++++ b/d2eeca08d7eb6e154410ad2adbde17408dd09d48
+@@ -1,7 +1,6 @@
+ @Override
+ public void add(InternalVertex vertex, long id) {
+     Preconditions.checkNotNull(vertex);
+-    Preconditions.checkArgument(id > 0, "Vertex id must be positive");
+-    assert !map.containsKey(id);
++    Preconditions.checkArgument(!map.containsKey(id));
+     map.put(id, vertex);
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/e4b537933f01b15c50900631f047266514710003 b/919d34b38c58828bb031843f3968be3087dcad36
+index e4b537933f..919d34b38c 100644
+--- a/e4b537933f01b15c50900631f047266514710003
++++ b/919d34b38c58828bb031843f3968be3087dcad36
+@@ -1,5 +1,5 @@
+ public PsiElement setName(@NotNull String name) throws IncorrectOperationException {
+-    final ASTNode nameElement = getLanguage().getElementGenerator().createNameIdentifier(getProject(), name);
++    final ASTNode nameElement = PyElementGenerator.getInstance(getProject()).createNameIdentifier(name);
+     getNode().replaceChild(getNameNode(), nameElement);
+     return this;
+ }
+\ No newline at end of file

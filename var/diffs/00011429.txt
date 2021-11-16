@@ -1,0 +1,19 @@
+diff --git a/ea930b58159d109261c60d5a6ee9b27043e97d67 b/b8b28925a9ce091b8128c5a2bcdd04634d0612e3
+index ea930b5815..b8b28925a9 100644
+--- a/ea930b58159d109261c60d5a6ee9b27043e97d67
++++ b/b8b28925a9ce091b8128c5a2bcdd04634d0612e3
+@@ -1,9 +1,11 @@
+ private TreeElement addInternalHack(TreeElement first, ASTNode last, ASTNode anchor, Boolean beforeFlag, FileType fileType) {
+     if (first instanceof XmlTagChild && fileType == StdFileTypes.XHTML) {
+-        if (beforeFlag == null || !beforeFlag.booleanValue())
++        if (beforeFlag == null || !beforeFlag.booleanValue()) {
+             addChildren(first, last.getTreeNext(), anchor.getTreeNext());
+-        addChildren(first, last.getTreeNext(), anchor);
++        } else {
++            addChildren(first, last.getTreeNext(), anchor);
++        }
+         return first;
+     }
+     return super.addInternal(first, last, anchor, beforeFlag);
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/ef5db22f2bc736f987ea53e48d144ddc09095c3d b/cba22454b8467bff03591ce4d8823bcc74522562
+index ef5db22f2b..cba22454b8 100644
+--- a/ef5db22f2bc736f987ea53e48d144ddc09095c3d
++++ b/cba22454b8467bff03591ce4d8823bcc74522562
+@@ -1,10 +1,10 @@
+ @Override
+ public final void setMaxRows(final int max) throws SQLException {
+     if (getRoutedStatements().isEmpty()) {
+-        recordMethodInvocation(Statement.class, "setMaxRows", new Class[] { int.class }, new Object[] { max });
++        recordMethodInvocation(targetClass, "setMaxRows", new Class[] { int.class }, new Object[] { max });
+         return;
+     }
+     for (Statement each : getRoutedStatements()) {
+         each.setMaxRows(max);
+     }
+ }
+\ No newline at end of file

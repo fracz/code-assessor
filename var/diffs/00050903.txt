@@ -1,0 +1,24 @@
+diff --git a/53a79f5a9ea3e13e80cfa70fa2591f66d2b19ae7 b/d60dbddd6ffc99fd242111444fea89e37fbdd5f8
+index 53a79f5a9e..d60dbddd6f 100644
+--- a/53a79f5a9ea3e13e80cfa70fa2591f66d2b19ae7
++++ b/d60dbddd6ffc99fd242111444fea89e37fbdd5f8
+@@ -1,12 +1,12 @@
+ private void toggleColumnOrder(TableItem item) {
+     DBDAttributeBinding column = (DBDAttributeBinding) item.getData();
+-    DBQOrderColumn columnOrder = dataFilter.getOrderColumn(column.getAttributeName());
+-    if (columnOrder == null) {
+-        dataFilter.addOrderColumn(new DBQOrderColumn(column.getAttributeName(), false));
+-    } else if (!columnOrder.isDescending()) {
+-        columnOrder.setDescending(true);
++    DBQAttributeConstraint constraint = dataFilter.getConstraint(column);
++    if (constraint.getOrderBy() == null) {
++        constraint.setOrderBy(DBQOrder.ASCENDING);
++    } else if (constraint.getOrderBy() == DBQOrder.ASCENDING) {
++        constraint.setOrderBy(DBQOrder.DESCENDING);
+     } else {
+-        dataFilter.removeOrderColumn(columnOrder);
++        constraint.setOrderBy(null);
+     }
+     columnsViewer.refresh();
+ }
+\ No newline at end of file

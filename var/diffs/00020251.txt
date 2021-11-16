@@ -1,0 +1,23 @@
+diff --git a/c837ede09d12ba00998d5aeca54174b3a87f602a b/6778ecde20a3edb1cd857f9b3b3d102510be6a32
+index c837ede09d..6778ecde20 100644
+--- a/c837ede09d12ba00998d5aeca54174b3a87f602a
++++ b/6778ecde20a3edb1cd857f9b3b3d102510be6a32
+@@ -1,16 +1,12 @@
+ public boolean isDecrypt(Properties connectinProperties, Properties configFileProperties) {
+-    boolean decrypt = false;
+     String decrypterId = connectinProperties.getProperty(CONFIG_DECRYPT);
+     if (decrypterId == null || decrypterId.length() == 0) {
+         if (configFileProperties != null) {
+             decrypterId = configFileProperties.getProperty(CONFIG_DECRYPT);
+         }
+     }
+     if (decrypterId == null || decrypterId.length() == 0) {
+         decrypterId = System.getProperty(SYS_PROP_CONFIG_DECRYPT);
+     }
+-    if ("true".equals(decrypterId)) {
+-        decrypt = true;
+-    }
+-    return decrypt;
++    return Boolean.valueOf(decrypterId);
+ }
+\ No newline at end of file

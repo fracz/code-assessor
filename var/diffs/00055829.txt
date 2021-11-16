@@ -1,0 +1,15 @@
+diff --git a/5f4a636acb1f781696cd37fc2ed2a38da744bfa9 b/1fe04496456bf2cb173ff2033ac0d5b62d4f4d6f
+index 5f4a636acb..1fe0449645 100644
+--- a/5f4a636acb1f781696cd37fc2ed2a38da744bfa9
++++ b/1fe04496456bf2cb173ff2033ac0d5b62d4f4d6f
+@@ -1,7 +1,7 @@
+ private void assertHandlerResultValue(Mono<HandlerResult> mono, String expected) {
+-    TestSubscriber.subscribe(mono).assertValuesWith(result -> {
++    ScriptedSubscriber.<HandlerResult>create().consumeNextWith(result -> {
+         Optional<?> optional = result.getReturnValue();
+         assertTrue(optional.isPresent());
+         assertEquals(expected, optional.get());
+-    });
++    }).expectComplete().verify(mono);
+ }
+\ No newline at end of file

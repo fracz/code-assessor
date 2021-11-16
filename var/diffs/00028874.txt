@@ -1,0 +1,15 @@
+diff --git a/f44f2c4320b495e88378b440597dc0610aec34d3 b/cf46bb15f6d9122c47793ecf06177a95a3465c3b
+index f44f2c4320..cf46bb15f6 100644
+--- a/f44f2c4320b495e88378b440597dc0610aec34d3
++++ b/cf46bb15f6d9122c47793ecf06177a95a3465c3b
+@@ -1,7 +1,4 @@
+ public IndexOutput getOpenIndexOutput(String key) {
+-    final ConcurrentMap<String, IndexOutput> outputs = openIndexOutputs;
+-    if (canceled || outputs == null) {
+-        return null;
+-    }
+-    return outputs.get(key);
++    ensureNotFinished();
++    return openIndexOutputs.get(key);
+ }
+\ No newline at end of file

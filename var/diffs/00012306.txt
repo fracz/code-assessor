@@ -1,0 +1,25 @@
+diff --git a/8a2d34f87f266185a4095f1ef57da64f882b0f57 b/a36aaa29fed40220a59aa60169743e8de7f90e64
+index 8a2d34f87f..a36aaa29fe 100644
+--- a/8a2d34f87f266185a4095f1ef57da64f882b0f57
++++ b/a36aaa29fed40220a59aa60169743e8de7f90e64
+@@ -1,15 +1,7 @@
+-public InspectionGadgetsFix buildFix(PsiElement location) {
+-    final PsiReferenceExpression reference = (PsiReferenceExpression) location;
+-    final PsiMember member = (PsiMember) reference.resolve();
+-    if (member == null) {
+-        return null;
+-    }
++public InspectionGadgetsFix buildFix(Object... infos) {
++    final PsiMember member = (PsiMember) infos[1];
+     final String memberName = member.getName();
+-    final PsiClass containingClass = member.getContainingClass();
+-    if (containingClass == null) {
+-        return null;
+-    }
+-    final String containingClassName = containingClass.getName();
+-    String elementName = containingClassName + '.' + memberName;
++    final String containingClassName = (String) infos[0];
++    final String elementName = containingClassName + '.' + memberName;
+     return new MakePackagePrivateFix(elementName);
+ }
+\ No newline at end of file

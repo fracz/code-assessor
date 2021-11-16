@@ -1,0 +1,18 @@
+diff --git a/eb8c88d2c398b6f6355726b2dac254fb80069186 b/cc2c38d902ed5089a0b84681892c2b6fa7ea5602
+index eb8c88d2c3..cc2c38d902 100644
+--- a/eb8c88d2c398b6f6355726b2dac254fb80069186
++++ b/cc2c38d902ed5089a0b84681892c2b6fa7ea5602
+@@ -1,8 +1,8 @@
+ @Override
+-public UpdateRecord getUpdate(String sessionID, String workerID, long timestamp) {
+-    SessionTypeWorkerId id = new SessionTypeWorkerId(sessionID, workerID);
+-    Map<Long, byte[]> map = updates.get(id);
++public Persistable getUpdate(String sessionID, String typeID, String workerID, long timestamp) {
++    SessionTypeWorkerId id = new SessionTypeWorkerId(sessionID, typeID, workerID);
++    Map<Long, Persistable> map = updates.get(id);
+     if (map == null)
+         return null;
+-    return new UpdateRecord(sessionID, workerID, timestamp, map.get(timestamp));
++    return map.get(timestamp);
+ }
+\ No newline at end of file

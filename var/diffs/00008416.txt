@@ -1,0 +1,14 @@
+diff --git a/1c1c7da8d4412f6e92d3ffb47c0566ca216f68b1 b/5156070af12abd01e4cc7e33f3de1296abe97a26
+index 1c1c7da8d4..5156070af1 100644
+--- a/1c1c7da8d4412f6e92d3ffb47c0566ca216f68b1
++++ b/5156070af12abd01e4cc7e33f3de1296abe97a26
+@@ -1,5 +1,7 @@
+ @Override
+ public void visitConstructorInvocation(GrConstructorInvocation invocation) {
+     super.visitConstructorInvocation(invocation);
+-    checkConstructorCall(invocation, invocation.getInvokedExpression());
++    GrConstructorInvocationInfo info = new GrConstructorInvocationInfo(invocation);
++    checkConstructorCall(info);
++    checkNamedArgumentsType(info);
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/520e3f7d49f6dcd2b073e58c2fe8308e5b9e50af b/8988256dc9e17c306cc2a1a3d53784e1df60ec61
+index 520e3f7d49..8988256dc9 100644
+--- a/520e3f7d49f6dcd2b073e58c2fe8308e5b9e50af
++++ b/8988256dc9e17c306cc2a1a3d53784e1df60ec61
+@@ -1,4 +1,4 @@
+-public <V> V acceptTargetVisitor(BindingTargetVisitor<? super T, V> visitor) {
++public <V> V acceptTargetVisitor(BindingTargetVisitor<T, V> visitor) {
+     checkState(injectionPoints != null, "not initialized");
+-    return visitor.visitConstructor(lateBoundConstructor.getConstructor(), injectionPoints);
++    return visitor.visitConstructor(this);
+ }
+\ No newline at end of file

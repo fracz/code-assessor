@@ -1,0 +1,18 @@
+diff --git a/b0e61bf54317bc326d77cc8efed5f5b7f5dc317b b/2b1bcc6f5454aa0d13ad9c8125eeb1d8313e93d5
+index b0e61bf543..2b1bcc6f54 100644
+--- a/b0e61bf54317bc326d77cc8efed5f5b7f5dc317b
++++ b/2b1bcc6f5454aa0d13ad9c8125eeb1d8313e93d5
+@@ -1,10 +1,9 @@
+ // todo do not forget to create caches for calculated merges etc etc
+-public static JsonSchemaObject merge(@NotNull JsonSchemaObject base, @NotNull JsonSchemaObject other) {
+-    final JsonSchemaObject object = new JsonSchemaObject(base.getPeerPointer());
++public static JsonSchemaObject merge(@NotNull JsonSchemaObject base, @NotNull JsonSchemaObject other, @NotNull JsonSchemaObject pointTo) {
++    final JsonSchemaObject object = new JsonSchemaObject(pointTo.getPeerPointer());
+     object.mergeValues(other);
+     object.mergeValues(base);
+-    // todo pay attention
+     object.setRef(other.getRef());
+     object.setDefinitionsPointer(base.getDefinitionsPointer());
+     return object;
+ }
+\ No newline at end of file

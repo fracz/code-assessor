@@ -1,0 +1,20 @@
+diff --git a/557a2f9370a09d37629a1061fac5fb5502ac0db8 b/379287e8a5ba463ce5d63dec89e6ad92e5328169
+index 557a2f9370..379287e8a5 100644
+--- a/557a2f9370a09d37629a1061fac5fb5502ac0db8
++++ b/379287e8a5ba463ce5d63dec89e6ad92e5328169
+@@ -1,13 +1,11 @@
+ public long getLong(String key, final long defaultValue) {
+     if (mProperties.containsKey(key)) {
+         String rawValue = mProperties.getProperty(key);
+         try {
+             return Long.parseLong(lookup(rawValue));
+         } catch (NumberFormatException e) {
+             LOG.warn("Configuration cannot evaluate key " + key + " as long.");
+-            return defaultValue;
+         }
+-    } else {
+-        return defaultValue;
+     }
++    return defaultValue;
+ }
+\ No newline at end of file

@@ -1,0 +1,32 @@
+diff --git a/d32ed309268595be48a90474a8a689fe75e0be21 b/e11ad761a39b6c24f46f7cebd544759601a2fb75
+index d32ed30926..e11ad761a3 100644
+--- a/d32ed309268595be48a90474a8a689fe75e0be21
++++ b/e11ad761a39b6c24f46f7cebd544759601a2fb75
+@@ -1,12 +1,17 @@
+-public void notify(final InjectorImpl injector) {
+-    injector.withDefaultSource(source, new Runnable() {
++public void notify(final InjectorImpl injector, final Errors errors) {
++    try {
++        SourceProviders.withDefaultChecked(source, new Callable<Void>() {
+
+-        public void run() {
+-            try {
+-                targetFactory = injector.getInternalFactory(targetKey);
+-            } catch (ResolveFailedException e) {
+-                injector.errorHandler.handle(e.getMessage(source));
++            public Void call() throws ResolveFailedException {
++                targetFactory = injector.getInternalFactory(targetKey, errors);
++                return null;
+             }
+-        }
+-    });
++        });
++    } catch (RuntimeException e) {
++        throw e;
++    } catch (ResolveFailedException e) {
++        errors.merge(e.getErrors());
++    } catch (Exception e) {
++        throw new AssertionError();
++    }
+ }
+\ No newline at end of file

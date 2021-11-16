@@ -1,0 +1,15 @@
+diff --git a/6c24347aa8380bb933dcc3356e13280880be2beb b/d2974215405d00c940c6e338d6898ff0b7418387
+index 6c24347aa8..d297421540 100644
+--- a/6c24347aa8380bb933dcc3356e13280880be2beb
++++ b/d2974215405d00c940c6e338d6898ff0b7418387
+@@ -1,7 +1,7 @@
+ /**
+  * {@inheritDoc}
+  */
+ public boolean removeAll(Channel channel) {
+-    channel2CreationDate.remove(channel);
+-    return !closed.get() && remove(channel2IdleChannel.get(channel));
++    ChannelCreation creation = channel2Creation.remove(channel);
++    return !isClosed.get() && creation != null && connectionsPool.get(creation.key).remove(channel);
+ }
+\ No newline at end of file

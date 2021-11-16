@@ -1,0 +1,49 @@
+diff --git a/24857f157d32ce8e09ee4b18bd12373df1cb187a b/e3fe3c7bf83b509c2bac8adbc39f7b3966e0282f
+index 24857f157d..e3fe3c7bf8 100644
+--- a/24857f157d32ce8e09ee4b18bd12373df1cb187a
++++ b/e3fe3c7bf83b509c2bac8adbc39f7b3966e0282f
+@@ -1,13 +1,37 @@
++// public void insertMention(int uid) {
++// UserVM user = users().get(uid);
++// String name = user.getName().get();
++// String nick = user.getNick().get();
++// Editable text = messageEditText.getText();
++// if (text.length() > 0 && text.charAt(text.length() - 1) != ' ') text.append(" ");
++//
++// String mentionString = ((nick != null && !nick.isEmpty()) ? "@" + nick : name) + (messageEditText.getText().length() > 0 ? " " : ": ");
++//
++// text.append(mentionString);
++// messageEditText.requestFocus();
++// keyboardUtils.setImeVisibility(messageEditText, true);
++// }
+ // Back button handling
++// @Override
++// public void onBackPressed() {
++// if (isAutocompleteVisible) {
++// hideMentions();
++// //        } else if (isShareVisible) {
++// //            hideShare();
++// //        } else if (emojiKeyboard.isShowing()) {
++// //            emojiKeyboard.dismiss();
++// } else {
++// super.onBackPressed();
++// }
++// }
+ @Override
+ public void onBackPressed() {
+-    if (isAutocompleteVisible) {
+-        hideMentions();
+-    } else if (isShareVisible) {
+-        hideShare();
+-    } else if (emojiKeyboard.isShowing()) {
+-        emojiKeyboard.dismiss();
++    Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.chatFragment);
++    if (fragment instanceof ChatFragment) {
++        if (!((ChatFragment) fragment).onBackPressed()) {
++            super.onBackPressed();
++        }
+     } else {
+         super.onBackPressed();
+     }
+ }
+\ No newline at end of file

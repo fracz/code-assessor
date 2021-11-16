@@ -1,0 +1,24 @@
+diff --git a/25d11adf3736e64dc49eecde21e6bacb55147160 b/698d3f024e70d806a7cd4c90e382e03f19a0f911
+index 25d11adf37..698d3f024e 100644
+--- a/25d11adf3736e64dc49eecde21e6bacb55147160
++++ b/698d3f024e70d806a7cd4c90e382e03f19a0f911
+@@ -1,17 +1,11 @@
+ @Test
+ public final void gauge() throws Exception {
+     final String value = "gaugeValue";
+     assertReporterOutput(new Callable<GaugeMetric<String>>() {
+
+         @Override
+         public GaugeMetric<String> call() throws Exception {
+-            return new GaugeMetric<String>() {
+-
+-                @Override
+-                public String value() {
+-                    return value;
+-                }
+-            };
++            return createGauge();
+         }
+     }, expectedGaugeResult(value));
+ }
+\ No newline at end of file

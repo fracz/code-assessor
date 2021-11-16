@@ -1,0 +1,23 @@
+diff --git a/5212b84a220a17b3493a434fdaa7ba03d5e84124 b/e9447b08a323004a47f679e5164a92b91f0f265b
+index 5212b84a22..e9447b08a3 100644
+--- a/5212b84a220a17b3493a434fdaa7ba03d5e84124
++++ b/e9447b08a323004a47f679e5164a92b91f0f265b
+@@ -1,14 +1,13 @@
+ @Test
+ public void shouldApplyNeoStoreCommandToTheStoreInRecovery() throws Exception {
+     // given
+-    final CommandHandler applier = newApplier(true);
++    final BatchTransactionApplier applier = newApplier(true);
+     final NeoStoreRecord record = new NeoStoreRecord();
+     record.setNextProp(42);
++    final Command command = new Command.NeoStoreCommand().init(record);
+     // when
+-    boolean result = apply(applier, (handler, tx) -> {
+-        return handler.visitNeoStoreCommand(new Command.NeoStoreCommand().init(record));
+-    }, transactionToApply);
++    boolean result = apply(applier, command::handle, transactionToApply);
+     // then
+     assertFalse(result);
+     verify(metaDataStore, times(1)).setGraphNextProp(record.getNextProp());
+ }
+\ No newline at end of file

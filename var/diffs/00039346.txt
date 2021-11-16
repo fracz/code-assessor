@@ -1,0 +1,23 @@
+diff --git a/507a0905c611801a92b698efee89b01146b69e1e b/3b5e24b4094156828b64cfb12021aad88fe381b3
+index 507a0905c6..3b5e24b409 100644
+--- a/507a0905c611801a92b698efee89b01146b69e1e
++++ b/3b5e24b4094156828b64cfb12021aad88fe381b3
+@@ -1,14 +1,13 @@
+ // PROPERTY KEY TOKEN COMMAND
+ @Test
+ public void shouldApplyPropertyKeyTokenCommandToTheStore() throws Exception {
+     // given
+-    final CommandHandler applier = newApplier(false);
++    final BatchTransactionApplier applier = newApplier(false);
+     final PropertyKeyTokenRecord record = new PropertyKeyTokenRecord(42);
++    final Command command = new PropertyKeyTokenCommand().init(record);
+     // when
+-    boolean result = apply(applier, (handler, tx) -> {
+-        return handler.visitPropertyKeyTokenCommand((PropertyKeyTokenCommand) new Command.PropertyKeyTokenCommand().init(record));
+-    }, transactionToApply);
++    boolean result = apply(applier, command::handle, transactionToApply);
+     // then
+     assertFalse(result);
+     verify(propertyKeyTokenStore, times(1)).updateRecord(record);
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/9af03bf0d21e50e3ff155b33e8e937ebe0b4577c b/866b3a1e3ce2c6afc3f092ec2ff36d51741ed5d1
+index 9af03bf0d2..866b3a1e3c 100644
+--- a/9af03bf0d21e50e3ff155b33e8e937ebe0b4577c
++++ b/866b3a1e3ce2c6afc3f092ec2ff36d51741ed5d1
+@@ -1,11 +1,12 @@
+ @Test
+ public void shouldPointToTooLittleInvocationsUnverifiedChunk() {
+-    Strictly strictly = createStrictOrderVerifier(mock, mockTwo);
++    strictly.verify(mock).simpleMethod(anyInt());
+     strictly.verify(mockTwo).simpleMethod(anyInt());
++    strictly.verify(mock).simpleMethod(anyInt());
+     try {
+         strictly.verify(mockTwo, times(3)).simpleMethod(anyInt());
+         fail();
+-    } catch (TooLittleActualInvocations e) {
++    } catch (StrictVerificationFailure e) {
+         assertThat(e.getCause(), hasFirstMethodInStackTrace("fourth"));
+     }
+ }
+\ No newline at end of file

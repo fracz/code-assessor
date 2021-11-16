@@ -1,0 +1,20 @@
+diff --git a/8c4f688a9de5fdcd180efdb1277d390b6ece3932 b/61b756d43c490d7f7be7005cc2802c9ccfdc03da
+index 8c4f688a9d..61b756d43c 100644
+--- a/8c4f688a9de5fdcd180efdb1277d390b6ece3932
++++ b/61b756d43c490d7f7be7005cc2802c9ccfdc03da
+@@ -1,13 +1,13 @@
+ private void mapNewTable(DatabaseMappingContainer mapping) {
+     String tableName = EnterNameDialog.chooseName(getShell(), "New table name", transformTargetName(mapping.getMappingType() == DatabaseMappingType.create ? mapping.getTargetName() : ""));
+     if (!CommonUtils.isEmpty(tableName)) {
+         try {
+             mapping.setTargetName(tableName);
+             mapping.refreshMappingType(getWizard().getContainer(), DatabaseMappingType.create);
+             mappingViewer.refresh();
+             updatePageCompletion();
+         } catch (DBException e) {
+-            UIUtils.showErrorDialog(getShell(), "Mapping error", "Error mapping new table", e);
++            DBUserInterface.getInstance().showError("Mapping error", "Error mapping new table", e);
+         }
+     }
+ }
+\ No newline at end of file

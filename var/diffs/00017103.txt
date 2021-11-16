@@ -1,0 +1,18 @@
+diff --git a/479f7867ac400191eb11112565d2442d08031ecf b/d2eaba73dbc1d4bd6aeaf387d5465ce5a832bd86
+index 479f7867ac..d2eaba73db 100644
+--- a/479f7867ac400191eb11112565d2442d08031ecf
++++ b/d2eaba73dbc1d4bd6aeaf387d5465ce5a832bd86
+@@ -1,10 +1,10 @@
+ @Override
+-protected void invoke(@NotNull final Project project, @NotNull final Editor editor, JetFile file) throws IncorrectOperationException {
++protected void invoke(@NotNull final Project project, final Editor editor, JetFile file) throws IncorrectOperationException {
+     CommandProcessor.getInstance().runUndoTransparentAction(new Runnable() {
+
+         @Override
+         public void run() {
+-            createAction(project, editor).execute();
++            new MyAction(project, editor, element, possibleSignatures).execute();
+         }
+     });
+ }
+\ No newline at end of file

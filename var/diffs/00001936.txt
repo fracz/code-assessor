@@ -1,0 +1,24 @@
+diff --git a/71f404df84f1368595204d8f5e06da41575120eb b/1a3a659f8b978afd2fbe1cf032f5a5c35fdd2797
+index 71f404df84..1a3a659f8b 100644
+--- a/71f404df84f1368595204d8f5e06da41575120eb
++++ b/1a3a659f8b978afd2fbe1cf032f5a5c35fdd2797
+@@ -1,14 +1,14 @@
+ @Override
+ public void visitMethodCallExpression(PsiMethodCallExpression expression) {
+     super.visitMethodCallExpression(expression);
+     PsiReference reference = expression.getMethodExpression().getReference();
+-    if (reference == null || refs.contains(reference))
++    if (reference == null)
+         return;
+-    PsiClassType[] exceptionTypes = ExceptionUtil.getUnhandledExceptions(expression, block);
++    PsiClassType[] exceptionTypes = ExceptionUtil.getUnhandledExceptions(expression, myPlace);
+     for (final PsiClassType actualType : exceptionTypes) {
+-        if (type.isAssignableFrom(actualType) && typeFilter.value(actualType)) {
+-            refs.add(reference);
++        if (type.isAssignableFrom(actualType) && myTypeFilter.value(actualType)) {
++            addOccurrence(expression.getMethodExpression());
+             break;
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/aed21ff063a6d221cd3ab514c235a954704faf1d b/471e3935489e9083473c6295295cb65fe86d04e5
+index aed21ff063..471e393548 100644
+--- a/aed21ff063a6d221cd3ab514c235a954704faf1d
++++ b/471e3935489e9083473c6295295cb65fe86d04e5
+@@ -1,14 +1,10 @@
+ @Override
+ public boolean hasNext() {
+     if (reader == null)
+         return false;
+     try {
+-        final boolean res = reader.ready();
+-        if (!res)
+-            // CLOSE IT
+-            end();
+-        return res;
++        return reader.ready();
+     } catch (IOException e) {
+         throw new OExtractorException(e);
+     }
+ }
+\ No newline at end of file

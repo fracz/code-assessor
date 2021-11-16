@@ -1,0 +1,22 @@
+diff --git a/5dce9a764e1daa72095c1f5aded2a590fd268be3 b/65f5e6d688bf950e5327223a8db98f0c0884bddc
+index 5dce9a764e..65f5e6d688 100644
+--- a/5dce9a764e1daa72095c1f5aded2a590fd268be3
++++ b/65f5e6d688bf950e5327223a8db98f0c0884bddc
+@@ -1,11 +1,11 @@
+-String getPushedCommitsDescription(GitCommitsByBranch commitsByBranch) {
++String getPushedCommitsDescription() {
+     StringBuilder sb = new StringBuilder();
+-    for (Map.Entry<GitBranch, BranchResult> entry : myBranchResults.entrySet()) {
++    for (Map.Entry<GitBranch, GitPushBranchResult> entry : myBranchResults.entrySet()) {
+         GitBranch branch = entry.getKey();
+-        BranchResult branchResult = entry.getValue();
+-        if (branchResult == BranchResult.SUCCESS) {
+-            sb.append(branch.getName() + ": pushed " + commits(pushedCommitsNum(commitsByBranch, branch))).append("<br/>");
++        GitPushBranchResult branchResult = entry.getValue();
++        if (branchResult.isSuccess()) {
++            sb.append(branch.getName() + ": pushed " + commits(branchResult.getNumberOfPushedCommits())).append("<br/>");
+         }
+     }
+     return sb.toString();
+ }
+\ No newline at end of file

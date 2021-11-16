@@ -1,0 +1,18 @@
+diff --git a/675169b7640348b2175ae0058302ced288b439a8 b/69ac682e875274aa625ccf15fe6dd04fdefad326
+index 675169b764..69ac682e87 100644
+--- a/675169b7640348b2175ae0058302ced288b439a8
++++ b/69ac682e875274aa625ccf15fe6dd04fdefad326
+@@ -1,11 +1,11 @@
+ public void simplify() {
+     enable = null;
+     validate = null;
+     rely = null;
+     if (this.name instanceof SQLIdentifierExpr) {
+         SQLIdentifierExpr identExpr = (SQLIdentifierExpr) this.name;
+         String columnName = identExpr.getName();
+         columnName = SQLUtils.normalize(columnName, dbType);
+-        identExpr.setName(columnName);
++        this.setName(columnName);
+     }
+ }
+\ No newline at end of file

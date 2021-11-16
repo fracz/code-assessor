@@ -1,0 +1,23 @@
+diff --git a/ce6cc2feeecbe78a54173677bee89a21ac7f9794 b/e0a57357a3ba6a53dfd6ab72f73de3e16f19f423
+index ce6cc2feee..e0a57357a3 100644
+--- a/ce6cc2feeecbe78a54173677bee89a21ac7f9794
++++ b/e0a57357a3ba6a53dfd6ab72f73de3e16f19f423
+@@ -1,8 +1,11 @@
+-public Response<Void> doneCommitting(SlaveContext context, final int eventIdentifier) {
+-    return sendRequest(RequestType.DONE_COMMITTING, context, new Serializer() {
++public Response<Void> doneCommitting(SlaveContext context) {
++    try {
++        return sendRequest(RequestType.DONE_COMMITTING, context, new Serializer() {
+
+-        public void write(ChannelBuffer buffer) throws IOException {
+-            buffer.writeInt(eventIdentifier);
+-        }
+-    }, VOID_DESERIALIZER);
++            public void write(ChannelBuffer buffer) throws IOException {
++            }
++        }, VOID_DESERIALIZER);
++    } finally {
++        releaseChannel();
++    }
+ }
+\ No newline at end of file

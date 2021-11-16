@@ -1,0 +1,16 @@
+diff --git a/e28421700fc07a87ec39dec91e648a6a942c9c8e b/8ba4a82490ccee2a7621a3575184042d8d5264a9
+index e28421700f..8ba4a82490 100644
+--- a/e28421700fc07a87ec39dec91e648a6a942c9c8e
++++ b/8ba4a82490ccee2a7621a3575184042d8d5264a9
+@@ -1,7 +1,5 @@
+ private StatementExecutorWrapper createStatementExecutorWrapperForDML(final Statement statement, final String dataSource) {
+-    try {
+-        return new StatementExecutorWrapper(statement, new SQLExecutionUnit(dataSource, (SQLBuilder) new SQLBuilder().append(DELETE_FROM_DUAL)));
+-    } catch (final IOException ex) {
+-        throw new RuntimeException(ex);
+-    }
++    SQLBuilder sqlBuilder = new SQLBuilder();
++    sqlBuilder.append(DELETE_FROM_DUAL);
++    return new StatementExecutorWrapper(statement, new SQLExecutionUnit(dataSource, sqlBuilder));
+ }
+\ No newline at end of file

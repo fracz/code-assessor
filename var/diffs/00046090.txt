@@ -1,0 +1,14 @@
+diff --git a/94b1c2d106a26e16b350daf20510fca4c9dd0037 b/e0b04e60262b9dfaaf4ece111d5679c8597c22b9
+index 94b1c2d106..e0b04e6026 100644
+--- a/94b1c2d106a26e16b350daf20510fca4c9dd0037
++++ b/e0b04e60262b9dfaaf4ece111d5679c8597c22b9
+@@ -1,5 +1,7 @@
+ @Test
+ public void testBindLiteralForDecimal() {
+-    Signature function = functionSignature().returnType("boolean").argumentTypes("decimal(p1,s1)", "decimal(p2,s2)").literalParameters("p1", "s1", "p2", "s2").build();
++    TypeSignature leftType = parseTypeSignature("decimal(p1,s1)", ImmutableSet.of("p1", "s1"));
++    TypeSignature rightType = parseTypeSignature("decimal(p2,s2)", ImmutableSet.of("p2", "s2"));
++    Signature function = functionSignature().returnType(parseTypeSignature(StandardTypes.BOOLEAN)).argumentTypes(leftType, rightType).build();
+     assertThat(function).boundTo("decimal(2,1)", "decimal(1,0)").produces(new BoundVariables(ImmutableMap.of(), ImmutableMap.of("p1", 2L, "s1", 1L, "p2", 1L, "s2", 0L)));
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/2308c6fd54c380e242ae3fcce5de7489f88750a7 b/a08243f942599cfbc2c34010a3b7d77aee557f2e
+index 2308c6fd54..a08243f942 100644
+--- a/2308c6fd54c380e242ae3fcce5de7489f88750a7
++++ b/a08243f942599cfbc2c34010a3b7d77aee557f2e
+@@ -1,6 +1,6 @@
+ @Override
+ public void onError(String message, Throwable cause) {
+-    if (errorCount.getAndIncrement() == 1) {
+-        emitter.error(new RuntimeException(message, cause));
++    if (this.terminated.getAndIncrement() == 0) {
++        this.sink.error(new RuntimeException(message, cause));
+     }
+ }
+\ No newline at end of file

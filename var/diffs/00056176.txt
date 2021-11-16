@@ -1,0 +1,15 @@
+diff --git a/111f1769ff4ae3f406bc327c7b822b048aefc2e0 b/120d171b2b5fde331e3369e6f25d4a03855dbe24
+index 111f1769ff..120d171b2b 100644
+--- a/111f1769ff4ae3f406bc327c7b822b048aefc2e0
++++ b/120d171b2b5fde331e3369e6f25d4a03855dbe24
+@@ -1,6 +1,7 @@
++@Test
+ public void testReturningByType() {
+     mockCollaborator.objectMatchNoArgs();
+-    mockControl.replay();
++    replay(mockCollaborator);
+     testBeanProxy.returnsThis();
+-    mockControl.verify();
++    verify(mockCollaborator);
+ }
+\ No newline at end of file

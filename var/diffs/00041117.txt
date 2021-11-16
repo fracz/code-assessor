@@ -1,0 +1,20 @@
+diff --git a/cfb77d9ef7a2b5bd2e8ce6e49df1f37f588bd9e6 b/f3e09ae051b246838701805b11f51fc3e255cd94
+index cfb77d9ef7..f3e09ae051 100644
+--- a/cfb77d9ef7a2b5bd2e8ce6e49df1f37f588bd9e6
++++ b/f3e09ae051b246838701805b11f51fc3e255cd94
+@@ -1,11 +1,10 @@
+-public void updateClusterConfiguration(final byte[] iContent) {
+-    if (iContent == null)
++public void updateClusterConfiguration(final ODocument obj) {
++    if (obj == null)
+         return;
+     synchronized (clusterConfiguration) {
+-        clusterConfiguration.reset();
+         // UPDATE IT
+-        clusterConfiguration.fromStream(iContent);
++        clusterConfiguration = obj;
+         if (OLogManager.instance().isDebugEnabled())
+             OLogManager.instance().debug(this, "Received new cluster configuration: %s", clusterConfiguration.toJSON(""));
+     }
+ }
+\ No newline at end of file

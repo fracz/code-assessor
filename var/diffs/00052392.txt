@@ -1,0 +1,18 @@
+diff --git a/a2ecc32ee6bc8f8db29491b76d1007fa94e90f3b b/d2710c4c14d866b1afe223828d54b5eadebbac18
+index a2ecc32ee6..d2710c4c14 100644
+--- a/a2ecc32ee6bc8f8db29491b76d1007fa94e90f3b
++++ b/d2710c4c14d866b1afe223828d54b5eadebbac18
+@@ -1,11 +1,10 @@
+ /**
+  * 合并结果集.
+  *
+  * @return 归并完毕后的结果集
+  * @throws SQLException SQL异常
+  */
+ public ResultSetMerger merge() throws SQLException {
+     selectStatement.setIndexForItems(columnLabelIndexMap);
+-    ResultSetMerger result = !selectStatement.getGroupByItems().isEmpty() || !selectStatement.getAggregationSelectItems().isEmpty() ? buildMemoryResultSet() : buildStreamResultSet();
+-    return buildDecorateResultSet(result);
++    return decorate(build());
+ }
+\ No newline at end of file

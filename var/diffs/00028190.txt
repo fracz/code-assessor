@@ -1,0 +1,30 @@
+diff --git a/fdc3853739d647db74ce52aad3d22cf0cbda6b81 b/06eee011332b301dcb4f323e8bdb2a220c3d4949
+index fdc3853739..06eee01133 100644
+--- a/fdc3853739d647db74ce52aad3d22cf0cbda6b81
++++ b/06eee011332b301dcb4f323e8bdb2a220c3d4949
+@@ -1,18 +1,9 @@
+-/**
+- * Returns {@link UserDescriptor} of current user.
+- *
+- * @return entity of current user.
+- * @throws NotFoundException
+- * when current user not found
+- * @throws ServerException
+- * when some error occurred while retrieving current user
+- */
+ @GET
+-@GenerateLink(rel = LINK_REL_GET_CURRENT_USER)
+ @Produces(APPLICATION_JSON)
+-@ApiOperation(value = "Get current user", notes = "Get user currently logged in the system", response = UserDescriptor.class, position = 2)
+-@ApiResponses({ @ApiResponse(code = 200, message = "OK"), @ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 500, message = "Internal Server Error") })
+-public UserDescriptor getCurrent() throws NotFoundException, ServerException {
+-    final User user = userManager.getById(currentUserId());
+-    return injectLinks(toDescriptor(user), getServiceContext());
++@GenerateLink(rel = LINK_REL_CURRENT_USER)
++@ApiOperation("Get logged in user")
++@ApiResponses({ @ApiResponse(code = 200, message = "The response contains currently logged in user entity"), @ApiResponse(code = 500, message = "Couldn't get user due to internal server error") })
++public UserDto getCurrent() throws NotFoundException, ServerException {
++    final User user = userManager.getById(userId());
++    return linksInjector.injectLinks(asDto(user), getServiceContext());
+ }
+\ No newline at end of file

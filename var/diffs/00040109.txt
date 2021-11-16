@@ -1,0 +1,11 @@
+diff --git a/5fac4b4c8a6d88263a12e9648afbe6c047f4faea b/5b2e06f0ea3d2b7e65dd364949355e2ae0c313e0
+index 5fac4b4c8a..5b2e06f0ea 100644
+--- a/5fac4b4c8a6d88263a12e9648afbe6c047f4faea
++++ b/5b2e06f0ea3d2b7e65dd364949355e2ae0c313e0
+@@ -1,3 +1,3 @@
+-public UniquePropertyConstraintRule uniquenessConstraint(int labelId, final int propertyKeyId) throws SchemaRuleNotFoundException, DuplicateSchemaRuleException {
+-    return nodeConstraintRule(UniquePropertyConstraintRule.class, labelId, propertyKeyId);
++public UniquePropertyConstraintRule uniquenessConstraint(NodePropertyDescriptor descriptor) throws SchemaRuleNotFoundException, DuplicateSchemaRuleException {
++    return nodeConstraintRule(UniquePropertyConstraintRule.class, descriptor);
+ }
+\ No newline at end of file

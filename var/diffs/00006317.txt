@@ -1,0 +1,21 @@
+diff --git a/4d158e13fc90a26b94ebe10a47a649d6c660eb66 b/d7c07764fc9a1da568924c74389512ce99cf6c37
+index 4d158e13fc..d7c07764fc 100644
+--- a/4d158e13fc90a26b94ebe10a47a649d6c660eb66
++++ b/d7c07764fc9a1da568924c74389512ce99cf6c37
+@@ -1,12 +1,13 @@
+ public static Task previousTask(@NotNull final Task task) {
+     Lesson currentLesson = task.getLesson();
+-    if (task.getIndex() - 1 >= 0) {
+-        return currentLesson.getTaskList().get(task.getIndex() - 1);
++    int prevTaskIndex = task.getIndex() - 2;
++    if (prevTaskIndex >= 0) {
++        return currentLesson.getTaskList().get(prevTaskIndex);
+     }
+     Lesson prevLesson = previousLesson(currentLesson);
+     if (prevLesson == null) {
+         return null;
+     }
+     // getting last task in previous lesson
+     return prevLesson.getTaskList().get(prevLesson.getTaskList().size() - 1);
+ }
+\ No newline at end of file

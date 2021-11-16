@@ -1,0 +1,23 @@
+diff --git a/54f18bf188b00dd99e9590c785731ef6f85bdb2e b/dc0b749772c5e360d1d55b5a4efd2a945f99fe39
+index 54f18bf188..dc0b749772 100644
+--- a/54f18bf188b00dd99e9590c785731ef6f85bdb2e
++++ b/dc0b749772c5e360d1d55b5a4efd2a945f99fe39
+@@ -1,14 +1,14 @@
+ private <D extends CallableDescriptor> boolean checkReceiverAbsence(ResolutionTask<D> task, TracingStrategy tracing, D candidate, TemporaryBindingTrace temporaryTrace) {
+     ReceiverDescriptor receiver = task.getReceiver();
+     ReceiverDescriptor candidateReceiver = candidate.getReceiver();
+-    if (receiver != NO_RECEIVER) {
+-        if (candidateReceiver == NO_RECEIVER) {
++    if (receiver.exists()) {
++        if (!candidateReceiver.exists()) {
+             tracing.noReceiverAllowed(temporaryTrace);
+             return false;
+         }
+-    } else if (candidateReceiver != NO_RECEIVER) {
++    } else if (candidateReceiver.exists()) {
+         tracing.missingReceiver(temporaryTrace, candidateReceiver);
+         return false;
+     }
+     return true;
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/cef3857a4ff333c78afd09c191c3107c2dd0cb2d b/56de81a309305486d926148d0a816de4c69728b2
+index cef3857a4f..56de81a309 100644
+--- a/cef3857a4ff333c78afd09c191c3107c2dd0cb2d
++++ b/56de81a309305486d926148d0a816de4c69728b2
+@@ -1,7 +1,3 @@
+ public int getFabColor() {
+-    if (fabColor != 0) {
+-        return fabColor;
+-    } else {
+-        return getMainColor();
+-    }
++    return getColorWithFallback(fabColor, getMainColor());
+ }
+\ No newline at end of file

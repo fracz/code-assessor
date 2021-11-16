@@ -1,0 +1,20 @@
+diff --git a/292854bcb507d1488c22d7460b9fb35d27a8ec54 b/f3618ef6916c166c1d7bf1e047ea825852a9ab07
+index 292854bcb5..f3618ef691 100644
+--- a/292854bcb507d1488c22d7460b9fb35d27a8ec54
++++ b/f3618ef6916c166c1d7bf1e047ea825852a9ab07
+@@ -1,13 +1,13 @@
+ @Test
+ public void testDefaultLazyInit() throws Exception {
+     InitAndIB.constructed = false;
+-    XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("default-lazy-init.xml", getClass()));
++    XmlBeanFactory xbf = new XmlBeanFactory(DEFAULT_LAZY_CONTEXT);
+     assertFalse(InitAndIB.constructed);
+     xbf.preInstantiateSingletons();
+     assertTrue(InitAndIB.constructed);
+     try {
+         xbf.getBean("lazy-and-bad");
+     } catch (BeanCreationException ex) {
+         assertTrue(ex.getCause() instanceof ServletException);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/bc366df972f0691d80e0e3c2ba34b1ea96453e6c b/bf3184e6e5b94648452d0d3b8d49fc84755530ac
+index bc366df972..bf3184e6e5 100644
+--- a/bc366df972f0691d80e0e3c2ba34b1ea96453e6c
++++ b/bf3184e6e5b94648452d0d3b8d49fc84755530ac
+@@ -1,7 +1,5 @@
+ @Nullable
+-private static PsiNamedElement getElementToMove(@NotNull PsiElement element) {
+-    if (element instanceof PyFunction && ((PyFunction) element).isTopLevel() || element instanceof PyClass && ((PyClass) element).isTopLevel()) {
+-        return (PsiNamedElement) element;
+-    }
+-    return null;
++public static PsiNamedElement getElementToMove(@NotNull PsiElement element) {
++    final ScopeOwner owner = (element instanceof ScopeOwner) ? (ScopeOwner) element : ScopeUtil.getScopeOwner(element);
++    return (owner instanceof PsiNamedElement) ? (PsiNamedElement) owner : null;
+ }
+\ No newline at end of file

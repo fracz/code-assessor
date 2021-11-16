@@ -1,0 +1,17 @@
+diff --git a/154cc52377a853da8859fc40924218100d00091b b/5de800eac27078b87790fc7d018d9f6fa340f0a0
+index 154cc52377..5de800eac2 100644
+--- a/154cc52377a853da8859fc40924218100d00091b
++++ b/5de800eac27078b87790fc7d018d9f6fa340f0a0
+@@ -1,9 +1,10 @@
+ private Color getCaptionColor(final int i) {
+     if (mySelectionModel.isSelectedIndex(i)) {
+         return LightColors.BLUE;
+     }
+-    if (GridChangeUtil.canDeleteCell(mySelectedContainer, i, myIsRow, false)) {
++    final GridChangeUtil.CellStatus status = GridChangeUtil.canDeleteCell(mySelectedContainer, i, myIsRow);
++    if (status == GridChangeUtil.CellStatus.Empty || status == GridChangeUtil.CellStatus.Redundant) {
+         return Color.PINK;
+     }
+     return LightColors.GREEN;
+ }
+\ No newline at end of file

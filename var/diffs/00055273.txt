@@ -1,0 +1,12 @@
+diff --git a/bbf9ff5a8f9b48676479aab0b07e61de10d18dd1 b/453e2d1d2923444d807a366cd1d2d305bc1854e1
+index bbf9ff5a8f..453e2d1d29 100644
+--- a/bbf9ff5a8f9b48676479aab0b07e61de10d18dd1
++++ b/453e2d1d2923444d807a366cd1d2d305bc1854e1
+@@ -1,4 +1,5 @@
+ @Override
+ public void characters(char[] chars, int start, int length) {
+-    add(ReaderNode.createTextNode(ruby, new String(chars, start, length), depth));
++    ReaderNode.TextNode node = new ReaderNode.TextNode(ruby, new String(chars, start, length), depth, langStack, xmlBaseStack);
++    nodeQueue.add(node);
+ }
+\ No newline at end of file

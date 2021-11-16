@@ -1,0 +1,12 @@
+diff --git a/902a78812aa400f9f969fd5d600d48950e44c7f4 b/d614b4b3dd02403b9cb3435c6cf52ddc08bad2b5
+index 902a78812a..d614b4b3dd 100644
+--- a/902a78812aa400f9f969fd5d600d48950e44c7f4
++++ b/d614b4b3dd02403b9cb3435c6cf52ddc08bad2b5
+@@ -1,5 +1,5 @@
+ public void testSystemDependency() throws Exception {
+     importProject("<groupId>test</groupId>" + "<artifactId>project</artifactId>" + "<version>1</version>" + "<dependencies>" + "  <dependency>" + "    <groupId>junit</groupId>" + "    <artifactId>junit</artifactId>" + "    <version>4.0</version>" + "    <scope>system</scope>" + "    <systemPath>" + getRepositoryPath() + "/junit/junit/4.0/junit-4.0.jar</systemPath>" + "  </dependency>" + "</dependencies>");
+     assertModules("project");
+-    assertModuleLibDep("project", "Maven: junit:junit:4.0", "jar://" + getRepositoryPath() + "/junit/junit/4.0/junit-4.0.jar!/", "jar://" + getRepositoryPath() + "/junit/junit/4.0/junit-4.0-sources.jar!/", "jar://" + getRepositoryPath() + "/junit/junit/4.0/junit-4.0-javadoc.jar!/");
++    assertModuleLibDep("project", "Maven: junit:junit:4.0", Arrays.asList("jar://" + getRepositoryPath() + "/junit/junit/4.0/junit-4.0.jar!/"), Collections.<String>emptyList(), Collections.<String>emptyList());
+ }
+\ No newline at end of file

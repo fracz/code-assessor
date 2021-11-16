@@ -1,0 +1,15 @@
+diff --git a/106924f5001fddc22d81f9fab41d52fc077c5dbe b/273c3cfad593d4c49ea95aa14eff0afca3525c09
+index 106924f500..273c3cfad5 100644
+--- a/106924f5001fddc22d81f9fab41d52fc077c5dbe
++++ b/273c3cfad593d4c49ea95aa14eff0afca3525c09
+@@ -1,7 +1,7 @@
+ /**
+  * Tells the stream grouping at runtime the number of tasks in the target bolt.
+  * This information should be used in taskIndicies to determine the target tasks.
+  *
+  * It also tells the grouping the metadata on the stream this grouping will be used on.
+  */
+-void prepare(Fields outFields, int numTasks);
+\ No newline at end of file
++void prepare(TopologyContext context, Fields outFields, List<Integer> targetTasks);
+\ No newline at end of file

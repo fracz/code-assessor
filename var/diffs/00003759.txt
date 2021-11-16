@@ -1,0 +1,15 @@
+diff --git a/13cf2e4bc069ce3e36a4f3dbd23b5cd2085ab759 b/e80e80be3699157e2059cfb086ce6bb27a3d3b51
+index 13cf2e4bc0..e80e80be36 100644
+--- a/13cf2e4bc069ce3e36a4f3dbd23b5cd2085ab759
++++ b/e80e80be3699157e2059cfb086ce6bb27a3d3b51
+@@ -1,7 +1,8 @@
++@Nullable
+ public static String getPropertyNameBySetterName(String methodName) {
+     if (methodName.startsWith("set") && methodName.length() > 3) {
+         return StringUtil.decapitalize(methodName.substring(3));
+     } else {
+-        return methodName;
++        return null;
+     }
+ }
+\ No newline at end of file

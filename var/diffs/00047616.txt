@@ -1,0 +1,24 @@
+diff --git a/27cc25910c7264937795c4146c4e41b5043ac8b8 b/c4825f36bc00fd6f3a0ba0d69088ab8f1c74ddd3
+index 27cc25910c..c4825f36bc 100644
+--- a/27cc25910c7264937795c4146c4e41b5043ac8b8
++++ b/c4825f36bc00fd6f3a0ba0d69088ab8f1c74ddd3
+@@ -1,12 +1,14 @@
+ @Override
+ public boolean isExpired() {
+-    boolean result = false;
++    if (maxIdleTime == 0 && ttl == 0) {
++        return false;
++    }
+     long currentTime = System.currentTimeMillis();
+     if (ttl != 0 && creationTime + ttl < currentTime) {
+-        result = true;
++        return true;
+     }
+     if (maxIdleTime != 0 && lastAccess + maxIdleTime < currentTime) {
+-        result = true;
++        return true;
+     }
+-    return result;
++    return false;
+ }
+\ No newline at end of file

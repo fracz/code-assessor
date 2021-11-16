@@ -1,0 +1,20 @@
+diff --git a/0a8c73e7790c2842aa6e5b4b95f0948cf5cfad92 b/3b7393d90d71db9a33c0e975947c1896f4bd1398
+index 0a8c73e779..3b7393d90d 100644
+--- a/0a8c73e7790c2842aa6e5b4b95f0948cf5cfad92
++++ b/3b7393d90d71db9a33c0e975947c1896f4bd1398
+@@ -1,12 +1,13 @@
+ @Override
+ public void visitVariable(GrVariable variable) {
+     super.visitVariable(variable);
+     if (GroovyRefactoringUtil.isLocalVariable(variable) || variable instanceof GrParameter) {
+         final TextAttributesKey attribute = GrHighlightUtil.getDeclarationHighlightingAttribute(variable, null);
+         if (attribute != null) {
+             final PsiElement nameElement = variable.getNameIdentifierGroovy();
+             assert myInfos != null;
+-            myInfos.add(HighlightInfo.createHighlightInfo(HighlightInfoType.INFORMATION, nameElement, null, attribute));
++            HighlightInfo.Builder builder = HighlightInfo.newHighlightInfo(HighlightInfoType.INFORMATION).range(nameElement);
++            myInfos.add(builder.needsUpdateOnTyping(false).textAttributes(attribute).create());
+         }
+     }
+ }
+\ No newline at end of file

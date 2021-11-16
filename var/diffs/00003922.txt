@@ -1,0 +1,17 @@
+diff --git a/122cb603feb56f244e5a376d1be807e3f013020e b/73f8619b349f2a99b078c058aa8c4fcce4ca65db
+index 122cb603fe..73f8619b34 100644
+--- a/122cb603feb56f244e5a376d1be807e3f013020e
++++ b/73f8619b349f2a99b078c058aa8c4fcce4ca65db
+@@ -1,9 +1,9 @@
+ private static <T> DataValidator<T> getValidator(String dataId) {
+     if (!ourExtensionsLoaded) {
+         ourExtensionsLoaded = true;
+-        for (KeyedLazyInstanceEP ep : Extensions.getExtensions(EP_NAME)) {
+-            ourValidators.put(ep.key, (DataValidator) ep.getInstance());
++        for (KeyedLazyInstanceEP<DataValidator> ep : Extensions.getExtensions(EP_NAME)) {
++            ourValidators.put(ep.key, ep.getInstance());
+         }
+     }
+     return ourValidators.get(dataId);
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/1e8a3169709b3213c70efe579c9c2328304d6f72 b/70a95e738f0d000be0be5e8fb242bc7b1c332f5a
+index 1e8a316970..70a95e738f 100644
+--- a/1e8a3169709b3213c70efe579c9c2328304d6f72
++++ b/70a95e738f0d000be0be5e8fb242bc7b1c332f5a
+@@ -1,6 +1,6 @@
+ private KCVSMessage parseMessage(Entry msg) {
+     ReadBuffer r = msg.asReadBuffer();
+-    long timestamp = r.getLong();
++    Timepoint timestamp = new Timepoint(r.getLong(), times.getUnit());
+     String senderId = manager.serializer.readObjectNotNull(r, String.class);
+     return new KCVSMessage(msg.getValue(), timestamp, senderId);
+ }
+\ No newline at end of file

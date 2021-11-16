@@ -1,0 +1,23 @@
+diff --git a/0633fd8f47f90dff59e1abb3dfaf37b348b09c0c b/605a0df3e983a7ee6d97d5d5c70c5379beb9b8a6
+index 0633fd8f47..605a0df3e9 100644
+--- a/0633fd8f47f90dff59e1abb3dfaf37b348b09c0c
++++ b/605a0df3e983a7ee6d97d5d5c70c5379beb9b8a6
+@@ -1,12 +1,12 @@
+ @Override
+-public void lock(long timeMillisecond) {
+-    long start = Timestamps.MILLI.getTime();
+-    first.lock(timeMillisecond);
+-    long remaining = Math.max(0, timeMillisecond - (start - Timestamps.MILLI.getTime()));
++public void lock(Duration timeout) {
++    Timer t = new Timer(times).start();
++    first.lock(timeout);
++    Duration remainingTimeout = timeout.sub(t.elapsed());
+     try {
+-        second.lock(remaining);
++        second.lock(remainingTimeout);
+     } catch (RuntimeException e) {
+         first.unlock();
+         throw e;
+     }
+ }
+\ No newline at end of file

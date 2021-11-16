@@ -1,0 +1,15 @@
+diff --git a/48fd26ca9dda63376307b14c62960c2d4452ebdd b/854c7e0ab9abcb99dc2666b3e22a79114d147acd
+index 48fd26ca9d..854c7e0ab9 100644
+--- a/48fd26ca9dda63376307b14c62960c2d4452ebdd
++++ b/854c7e0ab9abcb99dc2666b3e22a79114d147acd
+@@ -1,5 +1,6 @@
+ @Override
+-public void loadState(JsonSchemaMappingsConfigurationBase state) {
+-    super.loadState(state);
+-    recalculateSchemaFiles();
++public void loadState(JsonSchemaMappingsProjectConfiguration state) {
++    synchronized (myLock) {
++        XmlSerializerUtil.copyBean(state, this);
++    }
+ }
+\ No newline at end of file

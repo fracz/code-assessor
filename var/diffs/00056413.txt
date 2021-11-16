@@ -1,0 +1,17 @@
+diff --git a/b7caafb928b2fb98d9a514e0ffd0508151d76fb5 b/abdcf74f7cc1fa78c7cc76b878872c9c371476e6
+index b7caafb928..abdcf74f7c 100644
+--- a/b7caafb928b2fb98d9a514e0ffd0508151d76fb5
++++ b/abdcf74f7cc1fa78c7cc76b878872c9c371476e6
+@@ -1,8 +1,8 @@
+-private static boolean hasC(List<Label> tags) {
+-    for (Label tag : tags) {
+-        if (tag.toString().startsWith("CC")) {
++private static boolean hasC(List tags) {
++    for (int i = 0, tsize = tags.size(); i < tsize; i++) {
++        if (tags.get(i).toString().startsWith("CC")) {
+             return true;
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

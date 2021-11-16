@@ -1,0 +1,17 @@
+diff --git a/36f7cc68b12aac5a916fca8c97998c45d88953a2 b/ee6764ccaac5f8a34cecd85fec98510a1110b6c4
+index 36f7cc68b1..ee6764ccaa 100644
+--- a/36f7cc68b12aac5a916fca8c97998c45d88953a2
++++ b/ee6764ccaac5f8a34cecd85fec98510a1110b6c4
+@@ -1,7 +1,7 @@
+ @Test
+ public void assertGetConnection() throws SQLException {
+-    Connection connection = mockConnection();
+-    DataSource dataSource = mock(DataSource.class);
+-    when(dataSource.getConnection()).thenReturn(connection);
+-    assertThat(createShardingDataSource(dataSource).getConnection().getConnection("ds", SQLType.DQL), is(connection));
++    DataSource dataSource = mockDataSource("H2");
++    Map<String, DataSource> dataSourceMap = new HashMap<>(1, 1);
++    dataSourceMap.put("ds", dataSource);
++    assertThat(createShardingDataSource(dataSourceMap).getConnection().getConnection("ds", SQLType.DQL), is(dataSource.getConnection()));
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/5cbbdd2103904ea96238b4f19dd4a4c5ce58ef57 b/dffa2e4b7be852683d2e61940ba7a8c4bf01662a
+index 5cbbdd2103..dffa2e4b7b 100644
+--- a/5cbbdd2103904ea96238b4f19dd4a4c5ce58ef57
++++ b/dffa2e4b7be852683d2e61940ba7a8c4bf01662a
+@@ -1,7 +1,7 @@
+ @Test
+ public void shouldTriggerResampling() throws SchemaRuleNotFoundException, ProcedureException {
+-    IndexDescriptor index = new IndexDescriptor(123, 456);
+-    when(operations.indexGetForLabelAndPropertyKey(anyInt(), anyInt())).thenReturn(index);
++    IndexDescriptor index = IndexDescriptorFactory.from(new NodePropertyDescriptor(123, 456));
++    when(operations.indexGetForLabelAndPropertyKey(anyObject())).thenReturn(index);
+     procedure.resampleIndex(":Person(name)");
+     verify(indexingService).triggerIndexSampling(index, IndexSamplingMode.TRIGGER_REBUILD_ALL);
+ }
+\ No newline at end of file

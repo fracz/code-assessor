@@ -1,0 +1,15 @@
+diff --git a/72f90c90999e1a0d9b4efb26e2a7dff32e3ceb48 b/80df95b32257ee227bca8948fd30071a1e049d82
+index 72f90c9099..80df95b322 100644
+--- a/72f90c90999e1a0d9b4efb26e2a7dff32e3ceb48
++++ b/80df95b32257ee227bca8948fd30071a1e049d82
+@@ -1,7 +1,7 @@
+ public void invoke(@NotNull Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
+     PyCallExpression problemElement = PsiTreeUtil.getParentOfType(file.findElementAt(editor.getCaretModel().getOffset()), PyCallExpression.class);
+     if (problemElement != null) {
+-        PyElementGenerator elementGenerator = PythonLanguage.getInstance().getElementGenerator();
+-        problemElement.getCallee().replace(elementGenerator.createCallExpression(project, myNewName).getCallee());
++        PyElementGenerator elementGenerator = PyElementGenerator.getInstance(project);
++        problemElement.getCallee().replace(elementGenerator.createCallExpression(myNewName).getCallee());
+     }
+ }
+\ No newline at end of file

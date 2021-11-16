@@ -1,0 +1,11 @@
+diff --git a/842ab13623087766843e0852a6bddc8affddcb77 b/443c327ec20beb6d408fa02019f402486e827d2e
+index 842ab13623..443c327ec2 100644
+--- a/842ab13623087766843e0852a6bddc8affddcb77
++++ b/443c327ec20beb6d408fa02019f402486e827d2e
+@@ -1,4 +1,4 @@
+ @NotNull
+ public TranslationContext innerContextWithAliasesForExpressions(@NotNull Map<JetExpression, JsExpression> aliases) {
+-    return new TranslationContext(this, aliasingContext.withExpressionsAliased(aliases));
++    return this.innerWithAliasingContext(aliasingContext.withExpressionsAliased(aliases));
+ }
+\ No newline at end of file

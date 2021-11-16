@@ -1,0 +1,18 @@
+diff --git a/bd0f56210feba4956d68e4ccfd2275341f6979aa b/6806a9ed6777477359e4e0de8abf935609b9191b
+index bd0f56210f..6806a9ed67 100644
+--- a/bd0f56210feba4956d68e4ccfd2275341f6979aa
++++ b/6806a9ed6777477359e4e0de8abf935609b9191b
+@@ -1,10 +1,10 @@
+-private void removeEnumValues(NodeTraversal t, Node objLit) {
++private void removeEnumValues(Node objLit) {
+     if (objLit.isObjectLit() && objLit.hasChildren()) {
+         for (Node key : objLit.children()) {
+             Node value = key.getFirstChild();
+             Node replacementValue = IR.number(0).srcrefTree(value);
+             key.replaceChild(value, replacementValue);
+         }
+-        t.reportCodeChange();
++        compiler.reportChangeToEnclosingScope(objLit);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/583b6b8c519c5ef74528b5bbd6c2b12b2dadde0d b/a610e4798e71a2ca9d31676c7af332128d9d05d6
+index 583b6b8c51..a610e4798e 100644
+--- a/583b6b8c519c5ef74528b5bbd6c2b12b2dadde0d
++++ b/a610e4798e71a2ca9d31676c7af332128d9d05d6
+@@ -1,8 +1,6 @@
+ public long getSerializedSize() {
+-    if (valueBuffers.size() != 1) {
++    if (!versionOne) {
+         throw new UnsupportedOperationException("Method not supported for version 2 GenericIndexed.");
+     }
+-    return theBuffer.remaining() + 2 + Ints.BYTES + // 2 Bytes for version and sorted flag. 4 bytes to store numbers
+-    Ints.BYTES;
+-// of bytes and next 4 bytes to store number of elements.
++    return getSerializedSizeVersionOne();
+ }
+\ No newline at end of file

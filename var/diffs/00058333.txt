@@ -1,0 +1,18 @@
+diff --git a/7bc7bc8187294892c9d1d264656a1c322edc440c b/789dceb39f2d62372f1df817a2c0e07d3a83f6c4
+index 7bc7bc8187..789dceb39f 100644
+--- a/7bc7bc8187294892c9d1d264656a1c322edc440c
++++ b/789dceb39f2d62372f1df817a2c0e07d3a83f6c4
+@@ -1,11 +1,11 @@
+ @Override
+ public PersistitKeyValueStore openDatabase(String name) throws StorageException {
+     if (stores.containsKey(name)) {
+         return stores.get(name);
+     }
+-    PersistitTransaction tx = new PersistitTransaction(db, new StoreTxConfig());
++    PersistitTransaction tx = new PersistitTransaction(db, StandardTransactionConfig.of());
+     PersistitKeyValueStore store = new PersistitKeyValueStore(name, this, db);
+     tx.commit();
+     stores.put(name, store);
+     return store;
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/729c5b815adba2bd6f94a9fd2856f751f67b5a19 b/7f5a5f345ccafc92ebb6e3531090c4a235145691
+index 729c5b815a..7f5a5f345c 100644
+--- a/729c5b815adba2bd6f94a9fd2856f751f67b5a19
++++ b/7f5a5f345ccafc92ebb6e3531090c4a235145691
+@@ -1,12 +1,11 @@
+ // lol duplication
+-private int extractSequenceNumber() throws Exception {
++private void extractSequenceNumber() throws Exception {
+     if (this.sequenceNumber == -1) {
+         int seqNum = this.sliceInteger(HEADER_PART_SEQNUM_START, HEADER_PART_SEQNUM_LENGTH);
+         if (seqNum >= 0) {
+             this.sequenceNumber = seqNum;
+         } else {
+             throw new Exception("Could not extract sequence number");
+         }
+     }
+-    return this.sequenceNumber;
+ }
+\ No newline at end of file

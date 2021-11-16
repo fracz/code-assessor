@@ -1,0 +1,15 @@
+diff --git a/b836c4dbd2018775d14929d7b51335875b461d04 b/955d08fea90a6a31cb8c4ada720c6cbd87799d8b
+index b836c4dbd2..955d08fea9 100644
+--- a/b836c4dbd2018775d14929d7b51335875b461d04
++++ b/955d08fea90a6a31cb8c4ada720c6cbd87799d8b
+@@ -1,7 +1,5 @@
+ public void moveNoteToTrash(String noteId) {
+-    try {
+-        interpreterSettingManager.setInterpreterBinding("", noteId, new ArrayList<String>());
+-    } catch (IOException e) {
+-        e.printStackTrace();
++    for (InterpreterSetting interpreterSetting : interpreterSettingManager.getInterpreterSettings(noteId)) {
++        interpreterSettingManager.removeInterpretersForNote(interpreterSetting, "", noteId);
+     }
+ }
+\ No newline at end of file

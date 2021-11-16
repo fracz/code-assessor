@@ -1,0 +1,15 @@
+diff --git a/29b88ad5b2ccdc83ad32aa47f17ce1ea5f946ecf b/67c3472fd745418a03f15cf41404ec4de65e109a
+index 29b88ad5b2..67c3472fd7 100644
+--- a/29b88ad5b2ccdc83ad32aa47f17ce1ea5f946ecf
++++ b/67c3472fd745418a03f15cf41404ec4de65e109a
+@@ -1,7 +1,4 @@
+ public DataSourceDescriptor getDataSourceContainer() {
+-    DBPDataSource dataSource = getObject().getDataSource();
+-    if (dataSource == null) {
+-        return null;
+-    }
+-    return (DataSourceDescriptor) dataSource.getContainer();
++    DBPDataSource dataSource = getDataSource();
++    return dataSource == null ? null : (DataSourceDescriptor) dataSource.getContainer();
+ }
+\ No newline at end of file

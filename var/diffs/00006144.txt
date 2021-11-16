@@ -1,0 +1,17 @@
+diff --git a/64fd89a2d37755ceccf15e625dafcf2efea29259 b/0141c02744743962aacc71520e9b63ac0244ce16
+index 64fd89a2d3..0141c02744 100644
+--- a/64fd89a2d37755ceccf15e625dafcf2efea29259
++++ b/0141c02744743962aacc71520e9b63ac0244ce16
+@@ -1,10 +1,6 @@
+ @Override
+ public void initComponent() {
+-    if (ApplicationManager.getApplication().isUnitTestMode())
+-        return;
+-    if (ApplicationManager.getApplication().isHeadlessEnvironment())
+-        return;
+-    if (myProject.isDefault())
++    if (!isNormalProject())
+         return;
+     doInit();
+ }
+\ No newline at end of file

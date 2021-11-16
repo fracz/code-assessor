@@ -1,0 +1,19 @@
+diff --git a/965798aa25312d2d11b4f4a8185b817b8efd284c b/f6d2f71e29812c4343c648543e222ee978358924
+index 965798aa25..f6d2f71e29 100644
+--- a/965798aa25312d2d11b4f4a8185b817b8efd284c
++++ b/f6d2f71e29812c4343c648543e222ee978358924
+@@ -1,11 +1,11 @@
+ /**
+  * sync
+  */
+ @Override
+-public void notifyBlockComplete() {
++public void notifyBlockComplete(MessageSnapshot snapshot) {
+     if (FileDownloadLog.NEED_LOG) {
+         FileDownloadLog.d(this, "notify block completed %s %s", task, Thread.currentThread().getName());
+     }
+     task.ing();
+-    process(FileDownloadStatus.blockComplete);
++    process(snapshot);
+ }
+\ No newline at end of file

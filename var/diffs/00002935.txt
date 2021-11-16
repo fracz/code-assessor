@@ -1,0 +1,18 @@
+diff --git a/ae69f63f00a468e273e5e9a0c14c227388db2b44 b/b7901b62a74e449bfb48ec5b6418d672974b2a0a
+index ae69f63f00..b7901b62a7 100644
+--- a/ae69f63f00a468e273e5e9a0c14c227388db2b44
++++ b/b7901b62a74e449bfb48ec5b6418d672974b2a0a
+@@ -1,11 +1,4 @@
+ @Nullable
+ protected String getHelpId(DataContext dataContext) {
+-    if (myHelpID != null) {
+-        return myHelpID;
+-    }
+-    Object helpIDObj = dataContext.getData(DataConstants.HELP_ID);
+-    if (helpIDObj != null) {
+-        return helpIDObj.toString();
+-    }
+-    return null;
++    return myHelpID != null ? myHelpID : PlatformDataKeys.HELP_ID.getData(dataContext);
+ }
+\ No newline at end of file

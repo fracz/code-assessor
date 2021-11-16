@@ -1,0 +1,12 @@
+diff --git a/1e6b8c058d8f544302fc6d619587151a063c9554 b/77b0271d3b151afe822534652ee1f300e4499e8b
+index 1e6b8c058d..77b0271d3b 100644
+--- a/1e6b8c058d8f544302fc6d619587151a063c9554
++++ b/77b0271d3b151afe822534652ee1f300e4499e8b
+@@ -1,5 +1,5 @@
+ @Test(expected = InvalidRequestException.class)
+ public void sameKeyDifferentCfColumnFamilies() throws ConfigurationException, InvalidRequestException {
+     CFMetaData metadata = makeCfMetaData("ks1", "cf1", TriggerDefinition.create("test", SameKeyDifferentCfTrigger.class.getName()));
+-    TriggerExecutor.instance.execute(bytes("k1"), makeCf(metadata, "v1", null));
++    TriggerExecutor.instance.execute(makeCf(metadata, "k1", "v1", null));
+ }
+\ No newline at end of file

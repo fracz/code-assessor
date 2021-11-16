@@ -1,0 +1,18 @@
+diff --git a/2d5e46f76d276133820fea4006a02a965a5d2697 b/1b5040778326c29d10a8d5b99bdf6439ab8bb6de
+index 2d5e46f76d..1b50407783 100644
+--- a/2d5e46f76d276133820fea4006a02a965a5d2697
++++ b/1b5040778326c29d10a8d5b99bdf6439ab8bb6de
+@@ -1,11 +1,11 @@
+ public long getLastCommittedTx() {
+     long txId = lastCommittedTx.get();
+     if (txId == -1) {
+         synchronized (this) {
+-            txId = getRecord(3);
++            txId = getRecord(LATEST_TX_POSITION);
+             // CAS since multiple threads may pass the if check above
+             lastCommittedTx.compareAndSet(-1, txId);
+         }
+     }
+     return txId;
+ }
+\ No newline at end of file

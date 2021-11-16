@@ -1,0 +1,14 @@
+diff --git a/bb80c7e01b28db75b464e50ba578fb117fa75f3d b/c49f324b1c198874826a3a333aa829bd04aad835
+index bb80c7e01b..c49f324b1c 100644
+--- a/bb80c7e01b28db75b464e50ba578fb117fa75f3d
++++ b/c49f324b1c198874826a3a333aa829bd04aad835
+@@ -1,7 +1,7 @@
+ @Nullable
+ public XDebugSessionImpl getCurrentSession() {
+     if (myLastActiveSession != null) {
+         return myLastActiveSession;
+     }
+-    return !mySessions.isEmpty() ? mySessions.get(0) : null;
++    return !myName2Session.isEmpty() ? myName2Session.get(myName2Session.keySet().iterator().next()) : null;
+ }
+\ No newline at end of file

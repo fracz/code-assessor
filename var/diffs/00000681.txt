@@ -1,0 +1,20 @@
+diff --git a/ee0035dd94fd9a09048ac92ecafed6e223f7c398 b/b05f09dba652db7c444ae873ea712f8138c27ec5
+index ee0035dd94..b05f09dba6 100644
+--- a/ee0035dd94fd9a09048ac92ecafed6e223f7c398
++++ b/b05f09dba652db7c444ae873ea712f8138c27ec5
+@@ -1,8 +1,8 @@
+-/**
+- * {@inheritDoc}
+- */
+ @Override
+-public void close(AtmosphereResponse r) throws IOException {
+-    logger.trace("WebSocket.close()");
+-    outbound.close(1005, ByteBuffer.wrap(new byte[0]));
++public void close() {
++    try {
++        outbound.close(1005, ByteBuffer.wrap(new byte[0]));
++    } catch (IOException e) {
++        logger.trace("", e);
++    }
+ }
+\ No newline at end of file

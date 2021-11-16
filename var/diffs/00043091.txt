@@ -1,0 +1,23 @@
+diff --git a/840924b3f5ba244325685cc3c1aea27421c99b74 b/b6b5fd693efc1766265dcb16688ac1588c62afab
+index 840924b3f5..b6b5fd693e 100644
+--- a/840924b3f5ba244325685cc3c1aea27421c99b74
++++ b/b6b5fd693efc1766265dcb16688ac1588c62afab
+@@ -1,13 +1,13 @@
+ public OServerAdmin setGlobalConfiguration(final OGlobalConfiguration iConfig, final Object iValue) throws IOException {
+     storage.checkConnection();
+     try {
+-        storage.beginRequest(OChannelBinaryProtocol.REQUEST_CONFIG_SET);
+-        storage.getNetwork().writeString(iConfig.getKey());
+-        storage.getNetwork().writeString(iValue != null ? iValue.toString() : "");
+-        storage.beginResponse();
++        final OChannelBinaryClient network = storage.beginRequest(OChannelBinaryProtocol.REQUEST_CONFIG_SET);
++        network.writeString(iConfig.getKey());
++        network.writeString(iValue != null ? iValue.toString() : "");
++        storage.beginResponse(network);
+     } catch (Exception e) {
+         OLogManager.instance().exception("Can't set the configuration value: " + iConfig.getKey(), e, OStorageException.class);
+         storage.close();
+     }
+     return this;
+ }
+\ No newline at end of file

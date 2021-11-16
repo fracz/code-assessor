@@ -1,0 +1,19 @@
+diff --git a/4a6f77d6ae15b8ac586e32697695b88e93daa9fb b/4a67eb6d983d041d67e9bb4335acc29bda4f9b27
+index 4a6f77d6ae..4a67eb6d98 100644
+--- a/4a6f77d6ae15b8ac586e32697695b88e93daa9fb
++++ b/4a67eb6d983d041d67e9bb4335acc29bda4f9b27
+@@ -1,6 +1,12 @@
+ private static List<Mention> mentionReorderingBySpan(List<Mention> mentionsInSent) {
+-    TreeSet<Mention> ordering = new TreeSet<>((m1, m2) -> (m1.appearEarlierThan(m2)) ? -1 : (m2.appearEarlierThan(m1)) ? 1 : 0);
++    TreeSet<Mention> ordering = new TreeSet<>(new Comparator<Mention>() {
++
++        @Override
++        public int compare(Mention m1, Mention m2) {
++            return (m1.appearEarlierThan(m2)) ? -1 : (m2.appearEarlierThan(m1)) ? 1 : 0;
++        }
++    });
+     ordering.addAll(mentionsInSent);
+     List<Mention> orderedMentions = Generics.newArrayList(ordering);
+     return orderedMentions;
+ }
+\ No newline at end of file

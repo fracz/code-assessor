@@ -1,0 +1,18 @@
+diff --git a/6d174b7ad4d267cacd16a6ebdc60afc70ca5766c b/bf9ebcb8084c914a9887365b48fb749207ad39d3
+index 6d174b7ad4..bf9ebcb808 100644
+--- a/6d174b7ad4d267cacd16a6ebdc60afc70ca5766c
++++ b/bf9ebcb8084c914a9887365b48fb749207ad39d3
+@@ -1,10 +1,5 @@
+ @Override
+ public boolean supportsReturnType(MethodParameter returnType) {
+-    Class<?> bodyType;
+-    if (ResponseEntity.class.isAssignableFrom(returnType.getParameterType())) {
+-        bodyType = ResolvableType.forMethodParameter(returnType).getGeneric(0).resolve();
+-    } else {
+-        bodyType = returnType.getParameterType();
+-    }
+-    return (getAdapterFor(bodyType) != null);
++    Class<?> bodyType = ResponseEntity.class.isAssignableFrom(returnType.getParameterType()) ? ResolvableType.forMethodParameter(returnType).getGeneric(0).resolve() : returnType.getParameterType();
++    return bodyType != null && supportsBodyType(bodyType);
+ }
+\ No newline at end of file

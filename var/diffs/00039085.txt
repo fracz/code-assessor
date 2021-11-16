@@ -1,0 +1,18 @@
+diff --git a/e441ac3d794884162a22e64f07024425e550f172 b/99c785573524a60198c931ecf5543f5dd1d028c0
+index e441ac3d79..99c7855735 100644
+--- a/e441ac3d794884162a22e64f07024425e550f172
++++ b/99c785573524a60198c931ecf5543f5dd1d028c0
+@@ -1,3 +1,10 @@
+-public Iterable<Path> findAllPaths(Node start, Node end) {
+-    return traversal.filter(new StopCondition(end)).traverse(start).paths();
++public Iterable<WeightedPath> findAllPaths(Node start, Node end) {
++    Traverser traverser = TRAVERSAL.expand(expander).sourceSelector(new SelectorFactory(costEvaluator)).filter(new StopCondition(end)).traverse(start);
++    return new IterableWrapper<WeightedPath, Path>(traverser.paths()) {
++
++        @Override
++        protected WeightedPath underlyingObjectToObject(Path path) {
++            return new WeightedPathImpl(costEvaluator, path);
++        }
++    };
+ }
+\ No newline at end of file

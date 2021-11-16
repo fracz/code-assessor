@@ -1,0 +1,25 @@
+diff --git a/d566eaf1a7517568182d3a60a55d724580fa7785 b/3df4f7fb56fe5bce5f37bbb2d61f3e964035a728
+index d566eaf1a7..3df4f7fb56 100644
+--- a/d566eaf1a7517568182d3a60a55d724580fa7785
++++ b/3df4f7fb56fe5bce5f37bbb2d61f3e964035a728
+@@ -1,12 +1,12 @@
+-public static JetIntentionActionFactory<JetNamedDeclaration> createFactory() {
+-    return new JetIntentionActionFactory<JetNamedDeclaration>() {
++public static JetIntentionActionFactory createFactory() {
++    return new JetIntentionActionFactory() {
+
+         @Override
+-        public JetIntentionAction<JetNamedDeclaration> createAction(DiagnosticWithPsiElement diagnostic) {
+-            assert diagnostic.getPsiElement() instanceof JetNamedDeclaration;
+-            DiagnosticWithParameters<PsiElement> diagnosticWithParameters = assertAndCastToDiagnosticWithParameters(diagnostic, DiagnosticParameters.TYPE);
+-            JetType type = diagnosticWithParameters.getParameter(DiagnosticParameters.TYPE);
+-            return new AddReturnTypeFix((JetNamedDeclaration) diagnostic.getPsiElement(), type);
++        public JetIntentionAction<JetNamedDeclaration> createAction(Diagnostic diagnostic) {
++            JetNamedDeclaration declaration = QuickFixUtil.getParentElementOfType(diagnostic, JetNamedDeclaration.class);
++            if (declaration == null)
++                return null;
++            return new AddReturnTypeFix(declaration);
+         }
+     };
+ }
+\ No newline at end of file

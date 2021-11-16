@@ -1,0 +1,18 @@
+diff --git a/8d220e0bc621716177d89fa049f23ce19d89b004 b/447fb5b020b973ec41586abb23a04a27cc63feb9
+index 8d220e0bc6..447fb5b020 100644
+--- a/8d220e0bc621716177d89fa049f23ce19d89b004
++++ b/447fb5b020b973ec41586abb23a04a27cc63feb9
+@@ -1,9 +1,10 @@
+ @Override
+ protected void render(SpriteBatch batch) {
+     if (region.getTexture() != null) {
++        batch.setColor(color);
+         if (scaleX == 0 && scaleY == 0 && rotation == 0)
+-            batch.draw(region, x, y, width, height, color);
++            batch.draw(region, x, y, width, height);
+         else
+-            batch.draw(region, x, y, originX, originY, width, height, scaleX, scaleY, rotation, color);
++            batch.draw(region, x, y, originX, originY, width, height, scaleX, scaleY, rotation);
+     }
+ }
+\ No newline at end of file

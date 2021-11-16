@@ -1,0 +1,18 @@
+diff --git a/ed668f89126c4cdbecaa24673836bcca8bcdd022 b/daf6eb932efedc96a74e67db0021d76c731acdec
+index ed668f8912..daf6eb932e 100644
+--- a/ed668f89126c4cdbecaa24673836bcca8bcdd022
++++ b/daf6eb932efedc96a74e67db0021d76c731acdec
+@@ -1,6 +1,10 @@
+-@SuppressWarnings("unused")
+ private static String getExecuteQueryMethodBeforeInsertCode() {
+     StringBuilder sb = new StringBuilder();
+-    // sb.append("}");
++    if (logger.isDebugEnabled()) {
++        sb.append("{");
++        sb.append("System.out.println(\"-----StatementImpl.executeQuery(String) method is called\");");
++        sb.append("System.out.println(\"-----Query=[\"+$1+\"]\");");
++        sb.append("}");
++    }
+     return sb.toString();
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/78af4f414d2453871afe79d81ee5ead1cde25271 b/802c98022429e746a3e3d898c6f1c4c4e7049edd
+index 78af4f414d..802c980224 100644
+--- a/78af4f414d2453871afe79d81ee5ead1cde25271
++++ b/802c98022429e746a3e3d898c6f1c4c4e7049edd
+@@ -1,6 +1,3 @@
+ public GlobalSearchScope getModuleWithLibrariesScope() {
+-    if (myModuleWithLibrariesScope == null) {
+-        myModuleWithLibrariesScope = new ModuleWithDependenciesScope(this, true, true, false, true);
+-    }
+-    return myModuleWithLibrariesScope;
++    return getCachedScope(COMPILE | TESTS | LIBRARIES);
+ }
+\ No newline at end of file

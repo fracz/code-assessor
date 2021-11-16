@@ -1,0 +1,21 @@
+diff --git a/fe2112bd6f266ec6ba3837955a71ce27c0b43468 b/a79492332d20a894256011b6db6ae2ffbe4588a3
+index fe2112bd6f..a79492332d 100644
+--- a/fe2112bd6f266ec6ba3837955a71ce27c0b43468
++++ b/a79492332d20a894256011b6db6ae2ffbe4588a3
+@@ -1,9 +1,12 @@
+ @Override
+ public void execute(T input) {
+     if (state == null) {
+         state = aggregator.init();
+     }
+-    R curAggregate = (state != null) ? state : aggregator.init();
+-    state = aggregator.apply(input, curAggregate);
+-    mayBeForwardAggUpdate(state);
++    state = aggregator.apply(state, input);
++    if (emitAggregate) {
++        mayBeForwardAggUpdate(state);
++    } else {
++        mayBeForwardAggUpdate(aggregator.result(state));
++    }
+ }
+\ No newline at end of file

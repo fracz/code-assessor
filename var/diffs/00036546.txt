@@ -1,0 +1,29 @@
+diff --git a/411f55202f5d3aee38597780cf45f7b17caedb81 b/0b32ec408e3513aeea2b3150a607bfe18d77f9f0
+index 411f55202f..0b32ec408e 100644
+--- a/411f55202f5d3aee38597780cf45f7b17caedb81
++++ b/0b32ec408e3513aeea2b3150a607bfe18d77f9f0
+@@ -1,16 +1,21 @@
+ @Test
+ @Ignore
+ public void startStop() {
++    DataReceiver receiver = null;
+     try {
+-        DataReceiver receiver = new UDPReceiver("test", new PacketHandlerFactory() {
++        receiver = new UDPReceiver("test", new PacketHandlerFactory() {
+
+             @Override
+             public PacketHandler createPacketHandler() {
+                 return null;
+             }
+-        }, "127.0.0.1", 10999, 1024, 1, 10);
++        }, "127.0.0.1", 10999, 1024, 1, 10, true);
+     } catch (Exception e) {
+         e.printStackTrace();
+         Assert.fail(e.getMessage());
++    } finally {
++        if (receiver != null) {
++            receiver.shutdown();
++        }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/0f4648f45b1f64f1fa37e9890d64e26cb88c9949 b/3556093a153d1cb5abaf4091915a4ef30aa05409
+index 0f4648f45b..3556093a15 100644
+--- a/0f4648f45b1f64f1fa37e9890d64e26cb88c9949
++++ b/3556093a153d1cb5abaf4091915a4ef30aa05409
+@@ -1,17 +1,14 @@
+ @Override
+ public boolean equals(Object obj) {
+     if (this == obj)
+         return true;
+     if (obj == null)
+         return false;
+     if (hash != obj.hashCode())
+         return false;
+     if (getClass() != obj.getClass()) {
+         return false;
+     }
+     // TODO: don't use toString
+-    if (!toString().equals(obj.toString())) {
+-        return false;
+-    }
+-    return true;
++    return toString().equals(obj.toString());
+ }
+\ No newline at end of file

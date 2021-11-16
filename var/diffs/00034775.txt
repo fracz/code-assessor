@@ -1,0 +1,18 @@
+diff --git a/60b58f8217cf3071d05dd6ff029f42a03fae7307 b/0d2830b1eeed5cc1e31f0274009a810c65fd7261
+index 60b58f8217..0d2830b1ee 100644
+--- a/60b58f8217cf3071d05dd6ff029f42a03fae7307
++++ b/0d2830b1eeed5cc1e31f0274009a810c65fd7261
+@@ -1,8 +1,9 @@
+-public void add(String key, T value) {
++public synchronized void add(String key, T value) {
+     ArrayList<T> ret = get(key);
+     if (ret == null) {
+-        ret = new ArrayList<T>();
+-        put(key, ret);
++        TaggedList<T> put = new TaggedList<T>();
++        ret = put;
++        internal.put(key, put);
+     }
+     ret.add(value);
+ }
+\ No newline at end of file

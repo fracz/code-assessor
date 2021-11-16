@@ -1,0 +1,14 @@
+diff --git a/807114d1c0908d06a77b091da3bd5a195e4c6774 b/f085c8e4ff3de0241a8abc37e2db19b00912313e
+index 807114d1c0..f085c8e4ff 100644
+--- a/807114d1c0908d06a77b091da3bd5a195e4c6774
++++ b/f085c8e4ff3de0241a8abc37e2db19b00912313e
+@@ -1,6 +1,7 @@
+ @Override
+ public synchronized String toString() {
+     StringBuilder sb = new StringBuilder("INode(");
+-    sb.append(mName).append(",").append(mId).append(",").append(mParentId).append(")");
++    sb.append(mName).append(",").append(mId).append(",").append(mParentId);
++    sb.append(mHasCheckpointed).append(",").append(mCheckpointPath).append(")");
+     return sb.toString();
+ }
+\ No newline at end of file

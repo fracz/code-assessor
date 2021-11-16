@@ -1,0 +1,21 @@
+diff --git a/a938f12c80a098db6c9e6fc599ed74a47c043a5c b/22080e334b4debbdba17e8deb2d9afae9e2c46b4
+index a938f12c80..22080e334b 100644
+--- a/a938f12c80a098db6c9e6fc599ed74a47c043a5c
++++ b/22080e334b4debbdba17e8deb2d9afae9e2c46b4
+@@ -1,12 +1,12 @@
+ @Override
+-public boolean process(@NotNull List<CompositePackagingElement<?>> parents, @NotNull ArtifactPackagingElement artifactPackagingElement) {
++public boolean process(@NotNull ArtifactPackagingElement artifactPackagingElement, @NotNull PackagingElementPath path) {
+     final Artifact included = artifactPackagingElement.findArtifact(context);
+-    if (!parents.isEmpty() && included != null) {
+-        final CompositePackagingElement<?> parent = parents.get(0);
++    final CompositePackagingElement<?> parent = path.getLastParent();
++    if (parent != null && included != null) {
+         final List<PackagingElement<?>> elements = myExternalDependencies.get(included);
+         if (elements != null) {
+             elementsToInclude.add(Pair.create(parent, elements));
+         }
+     }
+     return true;
+ }
+\ No newline at end of file

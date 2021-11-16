@@ -1,0 +1,23 @@
+diff --git a/8a6ac42cc04d7fb65b238584add1efc0ebbba4c7 b/f665ebe8cf37f65e84458a3fef40eea266692cd6
+index 8a6ac42cc0..f665ebe8cf 100644
+--- a/8a6ac42cc04d7fb65b238584add1efc0ebbba4c7
++++ b/f665ebe8cf37f65e84458a3fef40eea266692cd6
+@@ -1,13 +1,6 @@
+ private static List<VirtualFile> getGdslFiles(final Project project) {
+-    return CachedValuesManager.getManager(project).getCachedValue(project, new CachedValueProvider<List<VirtualFile>>() {
+-
+-        @Nullable
+-        @Override
+-        public Result<List<VirtualFile>> compute() {
+-            final List<VirtualFile> result = ContainerUtil.newArrayList();
+-            getBundledGdslFiles(result);
+-            getProjectGdslFiles(project, result);
+-            return Result.create(result, PsiModificationTracker.MODIFICATION_COUNT, ProjectRootManager.getInstance(project));
+-        }
+-    });
++    final List<VirtualFile> result = ContainerUtil.newArrayList();
++    result.addAll(getBundledGdslFiles());
++    result.addAll(getProjectGdslFiles(project));
++    return result;
+ }
+\ No newline at end of file

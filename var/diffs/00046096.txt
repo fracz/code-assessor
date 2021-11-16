@@ -1,0 +1,12 @@
+diff --git a/2047da7f4aa03cc68689cb76a835e2148fd5ee38 b/310ecdf1d43b157228ad6027508be63c5a8178f5
+index 2047da7f4a..310ecdf1d4 100644
+--- a/2047da7f4aa03cc68689cb76a835e2148fd5ee38
++++ b/310ecdf1d43b157228ad6027508be63c5a8178f5
+@@ -1,5 +1,5 @@
+ @Test
+ public void testBindUnknownToConcreteArray() {
+-    Signature function = functionSignature().returnType("boolean").argumentTypes("array(boolean)").build();
++    Signature function = functionSignature().returnType(parseTypeSignature(StandardTypes.BOOLEAN)).argumentTypes(parseTypeSignature("array(boolean)")).build();
+     assertThat(function).boundTo("unknown").withCoercion().succeeds();
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/7dba3c01f379988d8b768311549111f06c14d58a b/6476cfe0246240172ce04304b939d0fe9036e05d
+index 7dba3c01f3..6476cfe024 100644
+--- a/7dba3c01f379988d8b768311549111f06c14d58a
++++ b/6476cfe0246240172ce04304b939d0fe9036e05d
+@@ -1,9 +1,7 @@
+-protected <T extends Tree> void reportMatch(Matcher<T> matcher, T match, VisitorState state) {
+-    state.getMatchListener().onMatch(match);
+-    if (matcher instanceof DescribingMatcher) {
+-        DescribingMatcher<T> describingMatcher = (DescribingMatcher<T>) matcher;
+-        Description description = describingMatcher.describe(match, state);
+-        description.severity = matcher.getClass().getAnnotation(BugPattern.class).severity();
+-        state.getDescriptionListener().onDescribed(description);
++protected <T extends Tree> void reportMatch(Description description, T match, VisitorState state) {
++    if (description == null || description == Description.NO_MATCH) {
++        return;
+     }
++    state.getMatchListener().onMatch(match);
++    state.getDescriptionListener().onDescribed(description);
+ }
+\ No newline at end of file

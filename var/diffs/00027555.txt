@@ -1,0 +1,18 @@
+diff --git a/470d2e0e34ce1ef7671951304a9a730acca5fe42 b/d4d6877ddde8fc8ccc17257c0ceb165b399a506a
+index 470d2e0e34..d4d6877ddd 100644
+--- a/470d2e0e34ce1ef7671951304a9a730acca5fe42
++++ b/d4d6877ddde8fc8ccc17257c0ceb165b399a506a
+@@ -1,6 +1,9 @@
+-@Test(timeout = 60_000)
++@Test(timeout = 10_000)
+ public void testSimpleSubmission() throws ExecutionException, InterruptedException {
+-    final String namespaceID = "ns";
+     URIExtractionNamespace namespace = new URIExtractionNamespace(tmpFile.toURI(), null, null, new URIExtractionNamespace.ObjectMapperFlatDataParser(URIExtractionNamespaceTest.registerTypes(new ObjectMapper())), new Period(0), null);
+-    NamespaceExtractionCacheManagersTest.waitFor(manager.schedule(namespaceID, namespace));
++    CacheScheduler.Entry entry = scheduler.schedule(namespace);
++    waitFor(entry);
++    Map<String, String> cache = entry.getCache();
++    Assert.assertNull(cache.put("key", "val"));
++    Assert.assertEquals("val", cache.get("key"));
+ }
+\ No newline at end of file

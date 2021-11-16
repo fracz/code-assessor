@@ -1,0 +1,18 @@
+diff --git a/a7686220ba8844e3c9cac3f4b4b783c2fe9eca99 b/55cfcaa594b966689c75a251ed49ce8761788736
+index a7686220ba..55cfcaa594 100644
+--- a/a7686220ba8844e3c9cac3f4b4b783c2fe9eca99
++++ b/55cfcaa594b966689c75a251ed49ce8761788736
+@@ -1,6 +1,10 @@
+ public void getServerFilesManagers(final Ref<SvnServerFileManager> systemManager, final Ref<SvnServerFileManager> userManager) {
+     // created only if does not exist
+-    SVNConfigFile.createDefaultConfiguration(new File(getConfigurationDirectory()));
++    final File dir = new File(getConfigurationDirectory());
++    if (!dir.exists()) {
++        SVNConfigFile.createDefaultConfiguration(dir);
++    }
+     systemManager.set(new SvnServerFileManagerImpl(new IdeaSVNConfigFile(new File(SVNFileUtil.getSystemConfigurationDirectory(), SERVERS_FILE_NAME))));
+-    userManager.set(new SvnServerFileManagerImpl(new IdeaSVNConfigFile(new File(getConfigurationDirectory(), SERVERS_FILE_NAME))));
++    initServers();
++    userManager.set(new SvnServerFileManagerImpl(myConfigFile));
+ }
+\ No newline at end of file

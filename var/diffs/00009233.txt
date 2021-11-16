@@ -1,0 +1,17 @@
+diff --git a/f809233d5d8aca5daf145dd58768fab67ce73f56 b/c5b30c17fd3ba31fef87977381f35d2d025f60b1
+index f809233d5d..c5b30c17fd 100644
+--- a/f809233d5d8aca5daf145dd58768fab67ce73f56
++++ b/c5b30c17fd3ba31fef87977381f35d2d025f60b1
+@@ -1,10 +1,3 @@
+ protected List<PsiElement> getOccurrences(PsiElement element, @NotNull final PyExpression expression) {
+-    PsiElement context = PsiTreeUtil.getParentOfType(expression, PyFunction.class);
+-    if (context == null) {
+-        context = PsiTreeUtil.getParentOfType(expression, PyClass.class);
+-    }
+-    if (context == null) {
+-        context = expression.getContainingFile();
+-    }
+-    return PyRefactoringUtil.getOccurrences(expression, context);
++    return PyRefactoringUtil.getOccurrences(expression, ScopeUtil.getScopeOwner(expression));
+ }
+\ No newline at end of file

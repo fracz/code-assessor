@@ -1,0 +1,28 @@
+diff --git a/c43d8a535c3bac15596db9786463e5153eb66a90 b/382a45c839fe17a0ab1542bed606a64f71b95a05
+index c43d8a535c..382a45c839 100644
+--- a/c43d8a535c3bac15596db9786463e5153eb66a90
++++ b/382a45c839fe17a0ab1542bed606a64f71b95a05
+@@ -1,21 +1,18 @@
+ public void visitField(@NotNull PsiField field) {
+     super.visitField(field);
+     if (!field.hasModifierProperty(PsiModifier.STATIC) || !field.hasModifierProperty(PsiModifier.FINAL)) {
+         return;
+     }
+     final String name = field.getName();
+     if (name == null) {
+         return;
+     }
+     final PsiType type = field.getType();
+-    if (type == null) {
+-        return;
+-    }
+     if (!ClassUtils.isImmutable(type)) {
+         return;
+     }
+     if (isValid(name)) {
+         return;
+     }
+-    registerFieldError(field);
++    registerFieldError(field, name);
+ }
+\ No newline at end of file

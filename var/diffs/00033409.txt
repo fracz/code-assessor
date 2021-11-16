@@ -1,0 +1,14 @@
+diff --git a/48b586be5babe671366c0d8d4120ac4aac715d95 b/1a4e1b6589ccbac1919c38190b1fa1d4ee1023d2
+index 48b586be5b..1a4e1b6589 100644
+--- a/48b586be5babe671366c0d8d4120ac4aac715d95
++++ b/1a4e1b6589ccbac1919c38190b1fa1d4ee1023d2
+@@ -1,4 +1,5 @@
+-public void markIdle() {
+-    assertHasStatus();
+-    status.setIdle(true);
++public void markIdle(Address address) {
++    synchronized (statuses) {
++        statuses.get(address).setIdle(true);
++    }
+ }
+\ No newline at end of file

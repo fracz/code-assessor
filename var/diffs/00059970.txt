@@ -1,0 +1,13 @@
+diff --git a/d69550c578b1acf6ce44d4a6a99c26c74fa7f3d2 b/18f9d24e12125560f91b3689c26ba0fc0d203fce
+index d69550c578..18f9d24e12 100644
+--- a/d69550c578b1acf6ce44d4a6a99c26c74fa7f3d2
++++ b/18f9d24e12125560f91b3689c26ba0fc0d203fce
+@@ -1,5 +1,5 @@
+ @Override
+ public boolean containsType(String name) {
+-    // To change body of implemented methods use File | Settings | File Templates.
+-    return false;
++    verifyOpen();
++    return (typeCache.containsKey(name) || !Iterables.isEmpty(getVertices(SystemKey.TypeName, name)));
+ }
+\ No newline at end of file

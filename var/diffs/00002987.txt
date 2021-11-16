@@ -1,0 +1,13 @@
+diff --git a/c3301d71e1021c79d8b97b0bff6e9d1e3858eac5 b/ed7ab4aa1abba7cf6ad2c4f717cd6ff2712ef6e3
+index c3301d71e1..ed7ab4aa1a 100644
+--- a/c3301d71e1021c79d8b97b0bff6e9d1e3858eac5
++++ b/ed7ab4aa1abba7cf6ad2c4f717cd6ff2712ef6e3
+@@ -1,6 +1,6 @@
+ public void update(AnActionEvent event) {
+     Presentation presentation = event.getPresentation();
+     DataContext dataContext = event.getDataContext();
+     ExporterToTextFile exporterToTextFile = getExporter(dataContext);
+-    presentation.setEnabled(dataContext.getData(DataConstants.PROJECT) != null && exporterToTextFile != null && exporterToTextFile.canExport());
++    presentation.setEnabled(PlatformDataKeys.PROJECT.getData(dataContext) != null && exporterToTextFile != null && exporterToTextFile.canExport());
+ }
+\ No newline at end of file

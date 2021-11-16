@@ -1,0 +1,23 @@
+diff --git a/50451efdedce283474660f153cfef69003dfe56e b/e4f4a55a4b51e0b84b1e3cad57dccf432a3c6e67
+index 50451efded..e4f4a55a4b 100644
+--- a/50451efdedce283474660f153cfef69003dfe56e
++++ b/e4f4a55a4b51e0b84b1e3cad57dccf432a3c6e67
+@@ -1,13 +1,12 @@
+ @Override
+-@Nullable
+-public Token[] tokenize(@NotNull PsiLiteralExpression element) {
++public void tokenize(@NotNull PsiLiteralExpression element, TokenConsumer consumer) {
+     if (!(element.getType() instanceof PsiClassType)) {
+         // not a string literal
+-        return null;
++        return;
+     }
+     final PsiModifierListOwner listOwner = PsiTreeUtil.getParentOfType(element, PsiModifierListOwner.class);
+     if (listOwner != null && AnnotationUtil.isAnnotated(listOwner, Collections.singleton(AnnotationUtil.NON_NLS))) {
+-        return null;
++        return;
+     }
+-    return new Token[] { new Token<PsiLiteralExpression>(element, SplitterFactory.getInstance().getStringLiteralSplitter()) };
++    consumer.consumeToken(element, SplitterFactory.getInstance().getStringLiteralSplitter());
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/ac4007e1f555237829ffaaeb719170d8b1826a05 b/efcd272af6240f886816d59558570cce6930b11a
+index ac4007e1f5..efcd272af6 100644
+--- a/ac4007e1f555237829ffaaeb719170d8b1826a05
++++ b/efcd272af6240f886816d59558570cce6930b11a
+@@ -1,10 +1,11 @@
+-private void updateNonNullMemberInfos(Collection<MemberInfo> equalsMemberInfos) {
++@Override
++protected void updateNonNullMemberInfos(Collection<MemberInfo> equalsMemberInfos) {
+     final ArrayList<MemberInfo> list = new ArrayList<MemberInfo>();
+-    for (MemberInfoBase<PsiMember> equalsMemberInfo : equalsMemberInfos) {
++    for (MemberInfo equalsMemberInfo : equalsMemberInfos) {
+         PsiField field = (PsiField) equalsMemberInfo.getMember();
+         if (!(field.getType() instanceof PsiPrimitiveType)) {
+-            list.add(myFieldsToNonNull.get(equalsMemberInfo.getMember()));
++            list.add(fieldsToNonNull.get(equalsMemberInfo.getMember()));
+         }
+     }
+-    myNonNullPanel.getTable().setMemberInfos(list);
++    nonNullPanel.getTable().setMemberInfos(list);
+ }
+\ No newline at end of file

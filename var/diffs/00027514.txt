@@ -1,0 +1,12 @@
+diff --git a/9ecafaa079d5fa7008ecde880a60150c0bf6f8e8 b/07df7f53992a1dcf980da6d24a1ed39ff81ce828
+index 9ecafaa079..07df7f5399 100644
+--- a/9ecafaa079d5fa7008ecde880a60150c0bf6f8e8
++++ b/07df7f53992a1dcf980da6d24a1ed39ff81ce828
+@@ -1,5 +1,3 @@
+ public float readFloat(InputStream in) throws IOException {
+-    byte[] floatBytes = new byte[4];
+-    ByteStreams.readFully(in, floatBytes);
+-    return ByteBuffer.wrap(floatBytes).getFloat();
++    return Float.intBitsToFloat(readInt(in));
+ }
+\ No newline at end of file

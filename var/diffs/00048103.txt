@@ -1,0 +1,21 @@
+diff --git a/a7508a13dbd13845b492b2f23839dcceea34eec8 b/de3bed3df5efc3b3c8fa5bd51ceceed2e5652bf6
+index a7508a13db..de3bed3df5 100644
+--- a/a7508a13dbd13845b492b2f23839dcceea34eec8
++++ b/de3bed3df5efc3b3c8fa5bd51ceceed2e5652bf6
+@@ -1,11 +1,9 @@
+-private DBEPersistAction[] createOrReplaceProcedureQuery(OracleProcedureStandalone procedure) {
++private void createOrReplaceProcedureQuery(List<DBEPersistAction> actionList, OracleProcedureStandalone procedure) {
+     String source = OracleUtils.normalizeSourceName(procedure, false);
+     if (source == null) {
+-        return null;
++        return;
+     }
+-    List<DBEPersistAction> actions = new ArrayList<>();
+     // $NON-NLS-2$
+-    actions.add(new SQLDatabasePersistAction("Create procedure", source));
+-    OracleUtils.addSchemaChangeActions(actions, procedure);
+-    return actions.toArray(new DBEPersistAction[actions.size()]);
++    actionList.add(new SQLDatabasePersistAction("Create procedure", source));
++    OracleUtils.addSchemaChangeActions(actionList, procedure);
+ }
+\ No newline at end of file

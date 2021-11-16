@@ -1,0 +1,23 @@
+diff --git a/3f3e0ad33f5759adb7bc5c327a1f83c350548aa7 b/3df9f32474908d867bef94104ebaf1e7db6a03a0
+index 3f3e0ad33f..3df9f32474 100644
+--- a/3f3e0ad33f5759adb7bc5c327a1f83c350548aa7
++++ b/3df9f32474908d867bef94104ebaf1e7db6a03a0
+@@ -1,13 +1,15 @@
+-private void updateAudioSinkLocked() {
++private boolean updateAudioSinkLocked() {
+     if (mInfo.getAudioType() == AudioManager.DEVICE_NONE) {
+-        return;
++        return false;
+     }
++    AudioDevicePort previousSink = mAudioSink;
+     if (mOverrideAudioType == AudioManager.DEVICE_NONE) {
+         mAudioSink = findAudioSinkFromAudioPolicy();
+     } else {
+         AudioDevicePort audioSink = findAudioDevicePort(mOverrideAudioType, mOverrideAudioAddress);
+         if (audioSink != null) {
+             mAudioSink = audioSink;
+         }
+     }
++    return mAudioSink == null ? (previousSink != null) : !mAudioSink.equals(previousSink);
+ }
+\ No newline at end of file

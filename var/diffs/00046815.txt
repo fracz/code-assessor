@@ -1,0 +1,16 @@
+diff --git a/be6634c260921964ecec879d645e66fd4c279986 b/dbc31dac31ca6510728bac4085d85b9f80513ec7
+index be6634c260..dbc31dac31 100644
+--- a/be6634c260921964ecec879d645e66fd4c279986
++++ b/dbc31dac31ca6510728bac4085d85b9f80513ec7
+@@ -1,9 +1,9 @@
+ private void awaitPublicationIsConnected(final Publication publication, final long timeout) {
+     final long limit = System.currentTimeMillis() + timeout;
+     while (!publication.isConnected()) {
+-        LockSupport.parkNanos(1000);
++        LockSupport.parkNanos(TIMEOUT);
+         if (limit < System.currentTimeMillis()) {
+             fail("awaitPublicationIsConnected has timed out");
+         }
+     }
+ }
+\ No newline at end of file

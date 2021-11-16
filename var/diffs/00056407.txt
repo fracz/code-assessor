@@ -1,0 +1,22 @@
+diff --git a/8cd4195876d06348932d21f32093fb78fff286e7 b/fb72eb960713f5d42b571df485714db913e60946
+index 8cd4195876..fb72eb9607 100644
+--- a/8cd4195876d06348932d21f32093fb78fff286e7
++++ b/fb72eb960713f5d42b571df485714db913e60946
+@@ -1,13 +1,14 @@
+ private boolean containsVP(Tree t) {
+     String cat = tlp.basicCategory(t.label().value());
+     if (cat.equals("VP")) {
+         return true;
+     } else {
+-        for (Tree kid : t.children()) {
+-            if (containsVP(kid)) {
++        Tree[] kids = t.children();
++        for (int i = 0; i < kids.length; i++) {
++            if (containsVP(kids[i])) {
+                 return true;
+             }
+         }
+         return false;
+     }
+ }
+\ No newline at end of file

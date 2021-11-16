@@ -1,0 +1,14 @@
+diff --git a/64e8cee96ff243e2512b0d2a3362c91d71b61428 b/9684bdacc7a9d4b0295b26ab3c26068fc58716a0
+index 64e8cee96f..9684bdacc7 100644
+--- a/64e8cee96ff243e2512b0d2a3362c91d71b61428
++++ b/9684bdacc7a9d4b0295b26ab3c26068fc58716a0
+@@ -1,7 +1,3 @@
+ public int getDialogsTitleColor() {
+-    if (dialogsTitleColor != 0) {
+-        return dialogsTitleColor;
+-    } else {
+-        return getTextPrimaryColor();
+-    }
++    return getColorWithFallback(dialogsTitleColor, getTextPrimaryColor());
+ }
+\ No newline at end of file

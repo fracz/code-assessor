@@ -1,0 +1,12 @@
+diff --git a/bd1fc99a77898133ebcaa19addc358f1f26a605e b/663beb7392d27168603d30a075740706ca4cc9e2
+index bd1fc99a77..663beb7392 100644
+--- a/bd1fc99a77898133ebcaa19addc358f1f26a605e
++++ b/663beb7392d27168603d30a075740706ca4cc9e2
+@@ -1,4 +1,4 @@
+ @Override
+-protected void createGraphics(float scale) {
+-    this.graphics = IOSGraphics.alloc().init(scale, this, config, input, config.useGL30, view);
++protected IOSGraphics createGraphics(float scale) {
++    return IOSGraphics.alloc().init(scale, this, config, input, config.useGL30, view);
+ }
+\ No newline at end of file

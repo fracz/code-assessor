@@ -1,0 +1,20 @@
+diff --git a/2118b041f2598c223730c98378b6e19221de9d9a b/460a1b9334986c431a49a06e02dee3b5786555e8
+index 2118b041f2..460a1b9334 100644
+--- a/2118b041f2598c223730c98378b6e19221de9d9a
++++ b/460a1b9334986c431a49a06e02dee3b5786555e8
+@@ -1,8 +1,12 @@
+ public void onOutput(final String text, final ConsoleViewContentType contentType) {
+     if (!myMarked && contentType == ConsoleViewContentType.ERROR_OUTPUT) {
+         myPrinter.mark();
+         myMarked = true;
+     }
+-    final ExternalOutput printable = new ExternalOutput(text, contentType);
+-    addLast(printable);
++    addLast(new Printable() {
++
++        public void printOn(final Printer printer) {
++            printer.print(text, contentType);
++        }
++    });
+ }
+\ No newline at end of file

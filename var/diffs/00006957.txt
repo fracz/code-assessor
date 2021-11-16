@@ -1,0 +1,17 @@
+diff --git a/6ca1768dd37b6796c11c5363bf97e0acd3d609e7 b/9267fec953e555a0a8181d0b99e42ba87aacc485
+index 6ca1768dd3..9267fec953 100644
+--- a/6ca1768dd37b6796c11c5363bf97e0acd3d609e7
++++ b/9267fec953e555a0a8181d0b99e42ba87aacc485
+@@ -1,10 +1,10 @@
+-public Rectangle getDropFeedbackRectangle(final int x, final int y, final int componentCount) {
++public Rectangle getDropFeedbackRectangle(Point location, final int componentCount) {
+     JComponent component = getDelegee();
+     int maxX = 0;
+     for (Component child : component.getComponents()) {
+         int childX = child.getBounds().x + child.getBounds().width;
+         if (childX > maxX)
+             maxX = childX;
+     }
+     return new Rectangle(maxX, getDelegee().getInsets().top, getPreferredSize().height, getPreferredSize().height);
+ }
+\ No newline at end of file

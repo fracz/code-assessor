@@ -1,0 +1,15 @@
+diff --git a/8b2cfd13f1bc949d4b62b958135898b1119288fb b/473acaad3b41e2e3fd3a5417f0de3e2fdc68ed1a
+index 8b2cfd13f1..473acaad3b 100644
+--- a/8b2cfd13f1bc949d4b62b958135898b1119288fb
++++ b/473acaad3b41e2e3fd3a5417f0de3e2fdc68ed1a
+@@ -1,6 +1,7 @@
+ public boolean canMoveTo(SourcePosition position) {
+-    if (!canAddLineBreakpoint(myProject, getDocument(), position.getLine())) {
++    if (!super.canMoveTo(position)) {
+         return false;
+     }
+-    return super.canMoveTo(position);
++    final Document document = PsiDocumentManager.getInstance(getProject()).getDocument(position.getFile());
++    return canAddLineBreakpoint(myProject, document, position.getLine());
+ }
+\ No newline at end of file

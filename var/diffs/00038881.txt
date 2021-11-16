@@ -1,0 +1,26 @@
+diff --git a/583b8c92844c550d0cf1b49768f81226a0103475 b/83fb3d5f364e4077d7d69cf386abaff55e73ee7e
+index 583b8c9284..83fb3d5f36 100644
+--- a/583b8c92844c550d0cf1b49768f81226a0103475
++++ b/83fb3d5f364e4077d7d69cf386abaff55e73ee7e
+@@ -1,15 +1,16 @@
+ @Override
+ public Iterable<IndexDefinition> getIndexes(final Label label) {
+     StatementContext context = ctxProvider.getCtxForReading();
+     try {
+-        return map(new Function<Long, IndexDefinition>() {
++        Iterable<IndexRule> indexRules = context.getIndexRules(context.getLabelId(label.name()));
++        return map(new Function<IndexRule, IndexDefinition>() {
+
+             @Override
+-            public IndexDefinition apply(Long propertyKey) {
+-                return new IndexDefinitionImpl(ctxProvider, label, propertyKeyManager.getKeyByIdOrNull(propertyKey.intValue()).getKey());
++            public IndexDefinition apply(IndexRule rule) {
++                return new IndexDefinitionImpl(ctxProvider, label, propertyKeyManager.getKeyByIdOrNull((int) rule.getPropertyKey()).getKey());
+             }
+-        }, context.getIndexedProperties(context.getLabelId(label.name())));
++        }, indexRules);
+     } catch (LabelNotFoundKernelException e) {
+         return emptyList();
+     }
+ }
+\ No newline at end of file

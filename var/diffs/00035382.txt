@@ -1,0 +1,24 @@
+diff --git a/4c018e04aac3eb54ca8219dfbc0f13422207b4ee b/b817765b5b1226d918c78f599fd5c6d6ef06b01f
+index 4c018e04aa..b817765b5b 100644
+--- a/4c018e04aac3eb54ca8219dfbc0f13422207b4ee
++++ b/b817765b5b1226d918c78f599fd5c6d6ef06b01f
+@@ -1,14 +1,14 @@
+ private void addHeader(Request.Builder builder) {
+     if (header != null && header.getNamesAndValues() != null) {
+         if (FileDownloadLog.NEED_LOG) {
+             FileDownloadLog.v(this, "%d add outside header: %s", getId(), header);
+         }
+         builder.headers(Headers.of(header.getNamesAndValues()));
+     }
+-    if (isContinueDownloadAvailable) {
+-        if (!TextUtils.isEmpty(this.etag)) {
+-            builder.addHeader("If-Match", this.etag);
++    if (isResumeDownloadAvailable) {
++        if (!TextUtils.isEmpty(model.getETag())) {
++            builder.addHeader("If-Match", model.getETag());
+         }
+-        builder.addHeader("Range", String.format("bytes=%d-", downloadTransfer.getSoFarBytes()));
++        builder.addHeader("Range", String.format("bytes=%d-", model.getSoFar()));
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/22768e87a074c65871b29c3819f2fc4aa888d377 b/b1638c70ad2b29cca488c513465edda1b79fba4a
+index 22768e87a0..b1638c70ad 100644
+--- a/22768e87a074c65871b29c3819f2fc4aa888d377
++++ b/b1638c70ad2b29cca488c513465edda1b79fba4a
+@@ -1,13 +1,15 @@
+-protected void printSelectList(List<SQLSelectItem> selectList) {
++protected void printSelectList(final List<SQLSelectItem> selectList) {
+     incrementIndent();
+-    for (int i = 0, size = selectList.size(); i < size; ++i) {
+-        if (i != 0) {
+-            if (i % selectListNumberOfLine == 0) {
++    int count = 0;
++    for (SQLSelectItem each : selectList) {
++        if (0 != count) {
++            if (0 == count % selectListNumberOfLine) {
+                 println();
+             }
+             print(", ");
+         }
+-        selectList.get(i).accept(this);
++        each.accept(this);
++        count++;
+     }
+     decrementIndent();
+ }
+\ No newline at end of file

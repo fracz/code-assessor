@@ -1,0 +1,14 @@
+diff --git a/dcf0e3362f0d6e4f2ec5f51d0e90243174621589 b/14841a32e662bc7ae24d5f61ad87c16f8a560193
+index dcf0e3362f..14841a32e6 100644
+--- a/dcf0e3362f0d6e4f2ec5f51d0e90243174621589
++++ b/14841a32e662bc7ae24d5f61ad87c16f8a560193
+@@ -1,6 +1,6 @@
+ @Override
+ public void open() throws StorageException {
+-    manager = openStorageManager();
+-    store = new HashPrefixKeyColumnValueStore(manager.openDatabase(storeName), 4);
++    manager = new HashPrefixStoreManager(openStorageManager(), 4);
++    store = manager.openDatabase(storeName);
+     tx = startTx();
+ }
+\ No newline at end of file

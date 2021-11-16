@@ -1,0 +1,12 @@
+diff --git a/dbed982bfe97b148ef68ea92850c334aa484b249 b/b51c6a1f552fd345c45118593e5b61f127570790
+index dbed982bfe..b51c6a1f55 100644
+--- a/dbed982bfe97b148ef68ea92850c334aa484b249
++++ b/b51c6a1f552fd345c45118593e5b61f127570790
+@@ -1,5 +1,5 @@
+ @Override
+ protected ShardValidateQueryRequest newShardRequest(int numShards, ShardRouting shard, ValidateQueryRequest request) {
+-    String[] filteringAliases = clusterService.state().metaData().filteringAliases(shard.index(), request.indices());
++    String[] filteringAliases = indexNameExpressionResolver.filteringAliases(clusterService.state(), shard.index(), request.indices());
+     return new ShardValidateQueryRequest(shard.shardId(), filteringAliases, request);
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/6987a1b7f6a984db8cb9f19ff1936dbbc2e8f2cf b/9a7cdc951532d046c536f470912b45e2319e5179
+index 6987a1b7f6..9a7cdc9515 100644
+--- a/6987a1b7f6a984db8cb9f19ff1936dbbc2e8f2cf
++++ b/9a7cdc951532d046c536f470912b45e2319e5179
+@@ -1,16 +1,16 @@
+ /**
+  * This test can run multiple times, but due to static keyed lookup of the locators,
+- * 2nd and subsequent calls will actuall get back same locator instance. This is not
++ * 2nd and subsequent calls will actually get back same locator instance. This is not
+  * really an issue, since the contained bean factories will still be loaded and released.
+  */
+ @Test
+ public void testGetInstance() {
+     // Try with and without 'classpath*:' prefix, and with 'classpath:' prefix.
+-    BeanFactoryLocator facLoc = ContextSingletonBeanFactoryLocator.getInstance(ClassUtils.addResourcePathToPackagePath(getClass(), "ContextSingletonBeanFactoryLocatorTests.xml"));
++    BeanFactoryLocator facLoc = ContextSingletonBeanFactoryLocator.getInstance(ClassUtils.addResourcePathToPackagePath(CLASS, CONTEXT));
+     getInstanceTest1(facLoc);
+-    facLoc = ContextSingletonBeanFactoryLocator.getInstance("classpath*:" + ClassUtils.addResourcePathToPackagePath(getClass(), "ContextSingletonBeanFactoryLocatorTests.xml"));
++    facLoc = ContextSingletonBeanFactoryLocator.getInstance("classpath*:" + ClassUtils.addResourcePathToPackagePath(CLASS, CONTEXT));
+     getInstanceTest2(facLoc);
+     // This will actually get another locator instance, as the key is the resource name.
+-    facLoc = ContextSingletonBeanFactoryLocator.getInstance("classpath:" + ClassUtils.addResourcePathToPackagePath(getClass(), "ContextSingletonBeanFactoryLocatorTests.xml"));
++    facLoc = ContextSingletonBeanFactoryLocator.getInstance("classpath:" + ClassUtils.addResourcePathToPackagePath(CLASS, CONTEXT));
+     getInstanceTest3(facLoc);
+ }
+\ No newline at end of file

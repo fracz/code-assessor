@@ -1,0 +1,14 @@
+diff --git a/ab172115ff27c9f2a79666f04478842d56510b79 b/06cb793013098374e797691afd93a7fb46f7add8
+index ab172115ff..06cb793013 100644
+--- a/ab172115ff27c9f2a79666f04478842d56510b79
++++ b/06cb793013098374e797691afd93a7fb46f7add8
+@@ -1,6 +1,7 @@
+ @JRubyMethod
+ public IRubyObject children(ThreadContext context) {
+     XmlNodeSet result = new XmlNodeSet(context.getRuntime(), node.getChildNodes());
+-    result.setDocument((XmlDocument) fromNode(context, this.getOwnerDocument()));
++    XmlDocument xmlDocument = (XmlDocument) fromNode(context, this.getOwnerDocument());
++    result.setDocument(xmlDocument);
+     return result;
+ }
+\ No newline at end of file

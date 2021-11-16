@@ -1,0 +1,16 @@
+diff --git a/7ef0a712678faf8f4722e4bb8aed22d67fc73afe b/aaaa566ea6df5554f9784c2db7978a29460f0024
+index 7ef0a71267..aaaa566ea6 100644
+--- a/7ef0a712678faf8f4722e4bb8aed22d67fc73afe
++++ b/aaaa566ea6df5554f9784c2db7978a29460f0024
+@@ -1,9 +1,9 @@
+ private ReceiveChannelEndpoint getOrCreateReceiveChannelEndpoint(final UdpChannel udpChannel) {
+     ReceiveChannelEndpoint channelEndpoint = receiveChannelEndpointByChannelMap.get(udpChannel.canonicalForm());
+     if (null == channelEndpoint) {
+-        channelEndpoint = new ReceiveChannelEndpoint(udpChannel, new DataPacketDispatcher(fromReceiverConductorProxy, receiverProxy.receiver()), logger, systemCounters, dataLossGenerator);
++        channelEndpoint = receiveChannelEndpointSupplier.generate(udpChannel, new DataPacketDispatcher(fromReceiverConductorProxy, receiverProxy.receiver()), context);
+         receiveChannelEndpointByChannelMap.put(udpChannel.canonicalForm(), channelEndpoint);
+         receiverProxy.registerReceiveChannelEndpoint(channelEndpoint);
+     }
+     return channelEndpoint;
+ }
+\ No newline at end of file

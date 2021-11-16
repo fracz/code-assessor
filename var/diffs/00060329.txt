@@ -1,0 +1,12 @@
+diff --git a/083e4d5350cdb2136479878f51a9b2392685de86 b/de35f008f24ce0d55bc74f4fa297c933ba1daad8
+index 083e4d5350..de35f008f2 100644
+--- a/083e4d5350cdb2136479878f51a9b2392685de86
++++ b/de35f008f24ce0d55bc74f4fa297c933ba1daad8
+@@ -1,5 +1,4 @@
+ @Override
+ public void onJsDevReload() {
+-    if (onJsDevReloadListener != null)
+-        onJsDevReloadListener.onJsDevReload();
++    EventBus.instance.post(new JsDevReloadEvent());
+ }
+\ No newline at end of file

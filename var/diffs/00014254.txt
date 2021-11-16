@@ -1,0 +1,15 @@
+diff --git a/550b8959ffd6f9818930e6904c866249c47e31f4 b/36b40b1cc137a9342e0e903b06a2251ad2e0f54c
+index 550b8959ff..36b40b1cc1 100644
+--- a/550b8959ffd6f9818930e6904c866249c47e31f4
++++ b/36b40b1cc137a9342e0e903b06a2251ad2e0f54c
+@@ -1,6 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiClass aClass = (PsiClass) location.getParent();
+-    final PsiClass superClass = aClass.getSuperClass();
+-    assert superClass != null;
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiClass superClass = (PsiClass) infos[0];
+     return InspectionGadgetsBundle.message("extends.concrete.collection.problem.descriptor", superClass.getQualifiedName());
+ }
+\ No newline at end of file

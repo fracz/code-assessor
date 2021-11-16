@@ -1,0 +1,12 @@
+diff --git a/c71fdb0687c66590579c70d18caa209b54c00d93 b/fc0826d1ded4ef30b5c640a30b401f295bcfb013
+index c71fdb0687..fc0826d1de 100644
+--- a/c71fdb0687c66590579c70d18caa209b54c00d93
++++ b/fc0826d1ded4ef30b5c640a30b401f295bcfb013
+@@ -1,5 +1,5 @@
+ @Test
+ public void testNullOnly() throws Exception {
+-    InternalAggregationFunction bigIntAgg = metadata.getFunctionRegistry().getAggregateFunctionImplementation(new Signature("array_agg", AGGREGATE, "array(bigint)", "bigint"));
++    InternalAggregationFunction bigIntAgg = metadata.getFunctionRegistry().getAggregateFunctionImplementation(new Signature("array_agg", AGGREGATE, parseTypeSignature("array(bigint)"), parseTypeSignature(StandardTypes.BIGINT)));
+     assertAggregation(bigIntAgg, 1.0, null, createLongsBlock(new Long[] { null, null, null }));
+ }
+\ No newline at end of file

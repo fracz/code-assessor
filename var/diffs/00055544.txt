@@ -1,0 +1,27 @@
+diff --git a/1e985df8c1f15f54118a8d525dcfa465a7b186d5 b/31ce152077ac4f610cfd74e7d0a6876daee2a852
+index 1e985df8c1..31ce152077 100644
+--- a/1e985df8c1f15f54118a8d525dcfa465a7b186d5
++++ b/31ce152077ac4f610cfd74e7d0a6876daee2a852
+@@ -1,12 +1,18 @@
+ /**
+  * Returns a {@link ResourceHttpRequestHandler} instance.
+  */
+ protected ResourceHttpRequestHandler getRequestHandler() {
+     Assert.isTrue(!CollectionUtils.isEmpty(locations), "At least one location is required for resource handling.");
+     ResourceHttpRequestHandler requestHandler = new ResourceHttpRequestHandler();
+-    requestHandler.setLocations(locations);
+-    if (cachePeriod != null) {
+-        requestHandler.setCacheSeconds(cachePeriod);
++    if (this.resourceResolvers != null) {
++        requestHandler.setResourceResolvers(this.resourceResolvers);
++    }
++    if (this.resourceTransformers != null) {
++        requestHandler.setResourceTransformers(this.resourceTransformers);
++    }
++    requestHandler.setLocations(this.locations);
++    if (this.cachePeriod != null) {
++        requestHandler.setCacheSeconds(this.cachePeriod);
+     }
+     return requestHandler;
+ }
+\ No newline at end of file

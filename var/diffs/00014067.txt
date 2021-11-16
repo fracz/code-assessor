@@ -1,0 +1,21 @@
+diff --git a/75a88f28870fd09b714617b8be0b4f7af598e06c b/519fdaabd4aebaa7661ecfc6d41139a6af753f19
+index 75a88f2887..519fdaabd4 100644
+--- a/75a88f28870fd09b714617b8be0b4f7af598e06c
++++ b/519fdaabd4aebaa7661ecfc6d41139a6af753f19
+@@ -1,12 +1,11 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiElement parent = location.getParent();
+-    assert parent != null;
+-    final PsiMethodCallExpression call = (PsiMethodCallExpression) parent.getParent();
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiMethodCallExpression call = (PsiMethodCallExpression) infos[0];
+     if (isIntegerGetInteger(call)) {
+         return InspectionGadgetsBundle.message("archaic.system.property.accessors.problem.descriptor.Integer");
+     } else if (isLongGetLong(call)) {
+         return InspectionGadgetsBundle.message("archaic.system.property.accessors.problem.descriptor.Long");
+     } else {
+         return InspectionGadgetsBundle.message("archaic.system.property.accessors.problem.descriptor.Boolean");
+     }
+ }
+\ No newline at end of file

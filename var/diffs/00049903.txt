@@ -1,0 +1,18 @@
+diff --git a/7c9bdfd8960487ca7ba635a4ac4a0329ad701a0e b/08d8c0f9c628daacb7fae504832ddc1c256671a2
+index 7c9bdfd896..08d8c0f9c6 100644
+--- a/7c9bdfd8960487ca7ba635a4ac4a0329ad701a0e
++++ b/08d8c0f9c628daacb7fae504832ddc1c256671a2
+@@ -1,11 +1,7 @@
+ public static IFolder getScriptsFolder(IProject project, boolean forceCreate) throws CoreException {
+     if (project == null) {
+         IStatus status = new Status(IStatus.ERROR, DBeaverCore.getCorePluginID(), "No active project to locate Script Folder");
+         throw new CoreException(status);
+     }
+-    final IFolder scriptsFolder = DBeaverCore.getInstance().getProjectRegistry().getResourceDefaultRoot(project, ScriptsHandlerImpl.class);
+-    if (!scriptsFolder.exists() && forceCreate) {
+-        scriptsFolder.create(true, true, new NullProgressMonitor());
+-    }
+-    return scriptsFolder;
++    return DBeaverCore.getInstance().getProjectRegistry().getResourceDefaultRoot(project, ScriptsHandlerImpl.class, forceCreate);
+ }
+\ No newline at end of file

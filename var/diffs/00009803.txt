@@ -1,0 +1,17 @@
+diff --git a/b6d473c8d09caf4eb690ba050fa47fc7cb0819b9 b/3d37ab8da536d1bbb30324588fec4ce4aafb5f7c
+index b6d473c8d0..3d37ab8da5 100644
+--- a/b6d473c8d09caf4eb690ba050fa47fc7cb0819b9
++++ b/3d37ab8da536d1bbb30324588fec4ce4aafb5f7c
+@@ -1,5 +1,8 @@
+ public void updateShortcuts(@Nullable String actionId) {
+-    for (PomNode pomNode : myFileToNode.values()) {
+-        pomNode.updateShortcuts(actionId);
+-    }
++    scheduleStructureUpdate(new Runnable() {
++
++        public void run() {
++            myStructure.updateShortcuts();
++        }
++    });
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/677512495de72d4b2b72a89091de5c3dbe8a2412 b/f6c19492b7e6da1e9ded94ed3b9fb8e770e6205c
+index 677512495d..f6c19492b7 100644
+--- a/677512495de72d4b2b72a89091de5c3dbe8a2412
++++ b/f6c19492b7e6da1e9ded94ed3b9fb8e770e6205c
+@@ -1,4 +1,6 @@
++/**
++ * @deprecated please use CommandProcessor.getInstance().addAffectedFiles instead
++ */
+ public static void markVirtualFileForUndo(@NotNull Project project, @NotNull VirtualFile file) {
+-    final DocumentReference ref = DocumentReferenceManager.getInstance().create(file);
+-    markDocumentReferenceForUndo(project, ref, "markVirtualFileForUndo: " + file.getPath());
++    CommandProcessor.getInstance().addAffectedFiles(project, file);
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/adbf083d6fea8ad69fcd1b3d145aef469f4a48f1 b/2661450bddf3e5f82ec13d0b7619281be41be48a
+index adbf083d6f..2661450bdd 100644
+--- a/adbf083d6fea8ad69fcd1b3d145aef469f4a48f1
++++ b/2661450bddf3e5f82ec13d0b7619281be41be48a
+@@ -1,4 +1,4 @@
+ @Override
+ public Sequence<T> run(Query<T> query, Map<String, Object> responseContext) {
+-    return new ResourceClosingSequence<>(runner.run(query, responseContext), closeable);
++    return Sequences.withBaggage(runner.run(query, responseContext), closeable);
+ }
+\ No newline at end of file

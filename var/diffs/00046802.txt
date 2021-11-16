@@ -1,0 +1,16 @@
+diff --git a/33583bf0846ee763df2a4ae0af5abc44f955e03d b/3ed83c5e89c4f89365e88967d5c96d9755b56b1b
+index 33583bf084..3ed83c5e89 100644
+--- a/33583bf0846ee763df2a4ae0af5abc44f955e03d
++++ b/3ed83c5e89c4f89365e88967d5c96d9755b56b1b
+@@ -1,3 +1,8 @@
+-void updateCatalogFromMeta(final long recordingId, final ByteBuffer metaDataBuffer) throws IOException {
+-    catalogFileChannel.write(metaDataBuffer, recordingId * RECORD_LENGTH);
++void updateCatalogFromMeta(final long recordingId, final long lastPosition, final long startTime, final long endTime) throws IOException {
++    byteBuffer.clear();
++    if (!readDescriptor(recordingId, byteBuffer)) {
++        throw new IllegalArgumentException("Invalid recording id : " + recordingId);
++    }
++    recordingDescriptorEncoder.wrap(unsafeBuffer, CATALOG_FRAME_LENGTH).lastPosition(lastPosition).startTime(startTime).endTime(endTime);
++    catalogFileChannel.write(byteBuffer, recordingId * RECORD_LENGTH);
+ }
+\ No newline at end of file

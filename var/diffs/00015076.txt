@@ -1,0 +1,12 @@
+diff --git a/35d6472dbc2d5b9cd2d9bac0bf54eca85a2a41b0 b/a476e6576be4cda2741c8100ddfd8a14f7a2af8f
+index 35d6472dbc..a476e6576b 100644
+--- a/35d6472dbc2d5b9cd2d9bac0bf54eca85a2a41b0
++++ b/a476e6576be4cda2741c8100ddfd8a14f7a2af8f
+@@ -1,4 +1,3 @@
+-private boolean needSyntheticAccessorInBindingTrace(@NotNull CallableMemberDescriptor descriptor, @NotNull JetTypeMapper typeMapper) {
+-    Boolean result = typeMapper.getBindingContext().get(BindingContext.NEED_SYNTHETIC_ACCESSOR, descriptor);
+-    return result == null ? false : result.booleanValue();
++private static boolean needSyntheticAccessorInBindingTrace(@NotNull CallableMemberDescriptor descriptor, @NotNull BindingContext bindingContext) {
++    return Boolean.TRUE.equals(bindingContext.get(BindingContext.NEED_SYNTHETIC_ACCESSOR, descriptor));
+ }
+\ No newline at end of file

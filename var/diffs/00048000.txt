@@ -1,0 +1,21 @@
+diff --git a/0a5c7207abb6be515a4e032159ff5608e911aa66 b/52a4b3be74dacd1235274aeaac9a3d14e2130aa4
+index 0a5c7207ab..52a4b3be74 100644
+--- a/0a5c7207abb6be515a4e032159ff5608e911aa66
++++ b/52a4b3be74dacd1235274aeaac9a3d14e2130aa4
+@@ -1,13 +1,13 @@
+ void loadGrants() {
+     LoadingJob.createService(new DatabaseLoadService<List<MySQLGrant>>(MySQLMessages.editors_user_editor_abstract_load_grants, getDatabaseObject().getDataSource()) {
+
+         @Override
+-        public java.util.List<MySQLGrant> evaluate() throws InvocationTargetException, InterruptedException {
++        public java.util.List<MySQLGrant> evaluate(DBRProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+             try {
+-                return getDatabaseObject().getGrants(getProgressMonitor());
++                return getDatabaseObject().getGrants(monitor);
+             } catch (DBException e) {
+                 throw new InvocationTargetException(e);
+             }
+         }
+     }, getPageControl().createGrantsLoadVisualizer()).schedule();
+ }
+\ No newline at end of file

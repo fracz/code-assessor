@@ -1,0 +1,21 @@
+diff --git a/f07c43af6d5bdeac5cdabe9dc69e874f5bd8a3f9 b/f94f7227341b956da052ff1378027885e1649c7e
+index f07c43af6d..f94f722734 100644
+--- a/f07c43af6d5bdeac5cdabe9dc69e874f5bd8a3f9
++++ b/f94f7227341b956da052ff1378027885e1649c7e
+@@ -1,9 +1,8 @@
+-public GraphDatabaseConfiguration getConfiguration() {
+-    GraphDatabaseConfiguration config = new GraphDatabaseConfiguration(DiskgraphTest.homeDir);
+-    CassandraStorageConfiguration cassConf = new CassandraStorageConfiguration();
+-    cassConf.setHostname(address);
+-    cassConf.setSelfHostname(address);
+-    cassConf.setThriftTimeoutMS(5 * 60000);
+-    config.setStorage(cassConf);
++public Configuration getConfiguration() {
++    Configuration config = new BaseConfiguration().subset(GraphDatabaseConfiguration.STORAGE_NAMESPACE);
++    config.addProperty(GraphDatabaseConfiguration.STORAGE_DIRECTORY_KEY, DiskgraphTest.homeDir);
++    config.addProperty(CassandraThriftStorageManager.PROP_HOSTNAME, address);
++    config.addProperty(CassandraThriftStorageManager.PROP_SELF_HOSTNAME, address);
++    config.addProperty(CassandraThriftStorageManager.PROP_TIMEOUT, 5 * 60000);
+     return config;
+ }
+\ No newline at end of file

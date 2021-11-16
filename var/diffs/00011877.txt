@@ -1,0 +1,15 @@
+diff --git a/bde699475c87998e60101dde12dab649fb96d7db b/379544f10a176448ba4e95132ed919a49cde8bdf
+index bde699475c..379544f10a 100644
+--- a/bde699475c87998e60101dde12dab649fb96d7db
++++ b/379544f10a176448ba4e95132ed919a49cde8bdf
+@@ -1,5 +1,7 @@
+ @Nullable
+-public String haveStuff() {
++public void haveStuff() throws VcsException {
+     final boolean canShow = checkContentsAvailable(myChange.getBeforeRevision(), myChange.getAfterRevision());
+-    return canShow ? null : "Can not load contents of " + ChangesUtil.getFilePath(myChange).getPath();
++    if (!canShow) {
++        throw new VcsException("Can not load contents of " + ChangesUtil.getFilePath(myChange).getPath());
++    }
+ }
+\ No newline at end of file

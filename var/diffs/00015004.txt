@@ -1,0 +1,13 @@
+diff --git a/d4cb41593241d5dcb34b5e9a89cb5b0ed6e93c1e b/329bd50bf6d1cb080d0409e1af610ef5820a80d4
+index d4cb415932..329bd50bf6 100644
+--- a/d4cb41593241d5dcb34b5e9a89cb5b0ed6e93c1e
++++ b/329bd50bf6d1cb080d0409e1af610ef5820a80d4
+@@ -1,6 +1,4 @@
+ @NotNull
+ private JsExpression nativeExtensionCall() {
+-    receiver = getExtensionFunctionCallReceiver();
+-    return methodCall(callParameters(resolveThisObject(/*just get qualifier if null = */
+-    true)));
++    return methodCall(callParameters.getReceiver());
+ }
+\ No newline at end of file

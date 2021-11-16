@@ -1,0 +1,18 @@
+diff --git a/ea4cec79eae4cf7b0b67d86073507ad81f4310ef b/20bacf03492712c599d9822c6daafb41c8c2d0eb
+index ea4cec79ea..20bacf0349 100644
+--- a/ea4cec79eae4cf7b0b67d86073507ad81f4310ef
++++ b/20bacf03492712c599d9822c6daafb41c8c2d0eb
+@@ -1,11 +1,11 @@
+ @NotNull
+ protected JsExpression translateAsMethodCall() {
+-    if (isStatement || isPrefix) {
++    if (returnValueIgnored() || isPrefix(expression)) {
+         return asPrefix();
+     }
+     if (isVariableReassignment) {
+         return asPostfixWithReassignment();
+     } else {
+         return asPostfixWithNoReassignment();
+     }
+ }
+\ No newline at end of file

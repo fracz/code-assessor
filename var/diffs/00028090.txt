@@ -1,0 +1,20 @@
+diff --git a/0fe0c4c5895584d9b0858275dd4e49fae5b6877a b/d99b5d6a93e60eaed36974fdb97e3f86f4a9df77
+index 0fe0c4c589..d99b5d6a93 100644
+--- a/0fe0c4c5895584d9b0858275dd4e49fae5b6877a
++++ b/d99b5d6a93e60eaed36974fdb97e3f86f4a9df77
+@@ -1,12 +1,12 @@
+ @NotNull
+-private CreateRenameRefactoring createRenameRefactoringDto(TextEditor editor) {
++private CreateRenameRefactoring createRenameRefactoringDto(TextEditor editor, boolean isActiveLinkedMode) {
+     CreateRenameRefactoring dto = dtoFactory.createDto(CreateRenameRefactoring.class);
+     dto.setOffset(editor.getCursorOffset());
+-    dto.setRefactorLightweight(!isActiveLinkedEditor);
++    dto.setRefactorLightweight(isActiveLinkedMode);
+     String fqn = JavaSourceFolderUtil.getFQNForFile(editor.getEditorInput().getFile());
+     dto.setPath(fqn);
+     String projectPath = editor.getDocument().getFile().getProject().getProjectConfig().getPath();
+     dto.setProjectPath(projectPath);
+     dto.setType(JAVA_ELEMENT);
+     return dto;
+ }
+\ No newline at end of file

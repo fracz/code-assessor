@@ -1,0 +1,17 @@
+diff --git a/1ddfd6461ac13e680ac4bb1eae4221f73041468a b/22f8e5b4e7db936b067dc39a4db2ed0ab01401db
+index 1ddfd6461a..22f8e5b4e7 100644
+--- a/1ddfd6461ac13e680ac4bb1eae4221f73041468a
++++ b/22f8e5b4e7db936b067dc39a4db2ed0ab01401db
+@@ -1,6 +1,8 @@
+ private void fireListenersAboutDeletion(int index) {
+-    final CacheEntry cacheEntry = myCache[index];
+-    for (int i = 0; i < myListeners.size(); i++) {
+-        myListeners.get(i).objectRemoved(cacheEntry.key, cacheEntry.value);
++    if (myListeners != null) {
++        final CacheEntry cacheEntry = myCache[index];
++        for (DeletedPairsListener myListener : myListeners) {
++            myListener.objectRemoved(cacheEntry.key, cacheEntry.value);
++        }
+     }
+ }
+\ No newline at end of file

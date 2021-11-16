@@ -1,0 +1,22 @@
+diff --git a/1cb90a2b5ad95b395667b8aa0ced63e47f701c33 b/da22a737446d3b6cf428543c2acfd8f2593e284e
+index 1cb90a2b5a..da22a73744 100644
+--- a/1cb90a2b5ad95b395667b8aa0ced63e47f701c33
++++ b/da22a737446d3b6cf428543c2acfd8f2593e284e
+@@ -1,15 +1,10 @@
+ /**
+  * Kill a submitted application by sending a call to the ASM
+  *
+  * @param appId Application Id to be killed.
+  * @throws YarnException
+  * @throws IOException
+  */
+ private void forceKillApplication(ApplicationId appId) throws YarnException, IOException {
+-    // TODO clarify whether multiple jobs with the same app id can be submitted and be running at
+-    // the same time.
+-    // If yes, can we kill a particular attempt only?
+-    // Response can be ignored as it is non-null on success or
+-    // throws an exception in case of failures
+-    yarnClient.killApplication(appId);
++    jstormClientContext.yarnClient.killApplication(appId);
+ }
+\ No newline at end of file

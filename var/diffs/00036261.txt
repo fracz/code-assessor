@@ -1,0 +1,16 @@
+diff --git a/cd267fc8316095d96994402d128c682cec409679 b/255c179bcb51f2c5041ab2e55e6c57be1328381f
+index cd267fc831..255c179bcb 100644
+--- a/cd267fc8316095d96994402d128c682cec409679
++++ b/255c179bcb51f2c5041ab2e55e6c57be1328381f
+@@ -1,4 +1,9 @@
+-@Test(expected = VerifcationInOrderFailed.class)
++@Test
+ public void shouldFailWhenMiddleMethodVerifiedFirst() {
+     inOrder.verify(mockTwo, times(2)).simpleMethod(2);
++    try {
++        inOrder.verify(mockOne).simpleMethod(1);
++        fail();
++    } catch (VerifcationInOrderFailed e) {
++    }
+ }
+\ No newline at end of file

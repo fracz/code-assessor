@@ -1,0 +1,19 @@
+diff --git a/605a0df3e983a7ee6d97d5d5c70c5379beb9b8a6 b/688e99e6c6fcaae65fdb082b01ee121a47b7f789
+index 605a0df3e9..688e99e6c6 100644
+--- a/605a0df3e983a7ee6d97d5d5c70c5379beb9b8a6
++++ b/688e99e6c6fcaae65fdb082b01ee121a47b7f789
+@@ -1,12 +1,12 @@
+ @Override
+ public void lock(Duration timeout) {
+-    Timer t = new Timer(times).start();
++    Timer t = times.getTimer().start();
+     first.lock(timeout);
+     Duration remainingTimeout = timeout.sub(t.elapsed());
+     try {
+         second.lock(remainingTimeout);
+     } catch (RuntimeException e) {
+         first.unlock();
+         throw e;
+     }
+ }
+\ No newline at end of file

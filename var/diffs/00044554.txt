@@ -1,0 +1,15 @@
+diff --git a/153f0d15bd8b09af725d86676d6bb01c9875ff4e b/ff95884b0be8423c8127d28711dfbebf02fd31ae
+index 153f0d15bd..ff95884b0b 100644
+--- a/153f0d15bd8b09af725d86676d6bb01c9875ff4e
++++ b/ff95884b0be8423c8127d28711dfbebf02fd31ae
+@@ -1,6 +1,5 @@
+ public void reload() {
+-    OBinaryRequest request = new OReloadRequest();
+-    OBinaryResponse<OCluster[]> response = new OReloadResponse();
+-    OCluster[] res = networkOperation(request, response, "Error on reloading database information");
+-    updateStorageInformations(res);
++    OReloadRequest request = new OReloadRequest();
++    OReloadResponse response = networkOperation(request, "Error on reloading database information");
++    updateStorageInformations(response.getClusters());
+ }
+\ No newline at end of file

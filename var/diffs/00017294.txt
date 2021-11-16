@@ -1,0 +1,23 @@
+diff --git a/8243068fe278dd00b03bb8b12a388b0ea120d67a b/5d97d5d8373469b9870a6c1a19893b521609395a
+index 8243068fe2..5d97d5d837 100644
+--- a/8243068fe278dd00b03bb8b12a388b0ea120d67a
++++ b/5d97d5d8373469b9870a6c1a19893b521609395a
+@@ -1,15 +1,15 @@
+ @Override
+ public void visitWhileExpression(JetWhileExpression expression) {
+     Label condition = new Label();
+     myContinueTargets.push(condition);
+     v.mark(condition);
+     Label end = new Label();
+     myBreakTargets.push(end);
+-    gen(expression.getCondition());
+-    myStack.pop().condJump(end, true, v);
++    final StackValue conditionValue = generateIntermediateValue(expression.getCondition());
++    conditionValue.condJump(end, true, v);
+     gen(expression.getBody(), Type.VOID_TYPE);
+     v.goTo(condition);
+     v.mark(end);
+     myBreakTargets.pop();
+     myContinueTargets.pop();
+ }
+\ No newline at end of file

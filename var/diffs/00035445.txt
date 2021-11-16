@@ -1,0 +1,13 @@
+diff --git a/a69615e6e00c62b98133b1bd31e023a7de9d0af2 b/9dae6fe8d736a019950ef1086c9234ae2683c7ba
+index a69615e6e0..9dae6fe8d7 100644
+--- a/a69615e6e00c62b98133b1bd31e023a7de9d0af2
++++ b/9dae6fe8d736a019950ef1086c9234ae2683c7ba
+@@ -1,5 +1,5 @@
+ private void onConnected(final boolean resuming, final long total, final String etag) {
+-    helper.updateConnected(getId(), total, etag);
+-    transferModel.setResuming(resuming);
++    helper.updateConnected(model, total, etag);
++    this.isResuming = resuming;
+     onStatusChanged(model.getStatus());
+ }
+\ No newline at end of file

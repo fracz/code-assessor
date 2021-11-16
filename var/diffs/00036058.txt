@@ -1,0 +1,21 @@
+diff --git a/5b95f6a98895de756b6c62c7a606c5cacd06c4bf b/0f0f578f0144c1f3013046dcb966f339c9e90101
+index 5b95f6a988..0f0f578f01 100644
+--- a/5b95f6a98895de756b6c62c7a606c5cacd06c4bf
++++ b/0f0f578f0144c1f3013046dcb966f339c9e90101
+@@ -1,10 +1,10 @@
+-public synchronized void validateState() {
+-    if (verifyingModeLocal.get() != null) {
+-        verifyingModeLocal.set(null);
++public void validateState() {
++    if (verifyingModeLocal != null) {
++        verifyingModeLocal = null;
+         Exceptions.unfinishedVerificationException();
+     }
+-    if (stubbingModeLocal.get() != null) {
+-        stubbingModeLocal.set(null);
++    if (stubbingModeLocal) {
++        stubbingModeLocal = false;
+         Exceptions.unfinishedStubbing();
+     }
+ }
+\ No newline at end of file

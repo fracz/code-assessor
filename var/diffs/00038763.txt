@@ -1,0 +1,21 @@
+diff --git a/aa78f93d0ff62ff88409c648e3a16792cd7a1284 b/c0928ea375d2328fdc3a37d38504c0ebb177ed99
+index aa78f93d0f..c0928ea375 100644
+--- a/aa78f93d0ff62ff88409c648e3a16792cd7a1284
++++ b/c0928ea375d2328fdc3a37d38504c0ebb177ed99
+@@ -1,11 +1,12 @@
+ @Test
+ public void addingUniquenessConstraintShouldBeIdempotent() throws Exception {
+     // given
+-    UniquenessConstraint constraint1 = state.addConstraint(new UniquenessConstraint(1, 17), true);
++    UniquenessConstraint constraint1 = new UniquenessConstraint(1, 17);
++    state.addConstraint(constraint1);
+     // when
+-    UniquenessConstraint constraint2 = state.addConstraint(new UniquenessConstraint(1, 17), true);
++    UniquenessConstraint constraint2 = new UniquenessConstraint(1, 17);
++    state.addConstraint(constraint2);
+     // then
+     assertEquals(constraint1, constraint2);
+     assertEquals(Collections.singleton(constraint1), state.constraintsForLabel(1).getAdded());
+-    verify(persistenceManager, times(1)).createSchemaRule(any(SchemaRule.class));
+ }
+\ No newline at end of file

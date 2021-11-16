@@ -1,0 +1,25 @@
+diff --git a/63b19f07166d1f481db87e302096d3e4b8b89c9a b/0c3b1a5a75ab0c95da2ca8a1d3bf9bd2af2926fe
+index 63b19f0716..0c3b1a5a75 100644
+--- a/63b19f07166d1f481db87e302096d3e4b8b89c9a
++++ b/0c3b1a5a75ab0c95da2ca8a1d3bf9bd2af2926fe
+@@ -1,17 +1,16 @@
+ /**
+  * Causes the animation to start over.
+  * If animation is stopped any effects will occur after restart.<br>
+  * If rewinding input source fails then state is not affected.
+  * This method is thread-safe.
+  */
+ public void reset() {
+     mExecutor.execute(new SafeRunnable(this) {
+
+         @Override
+         public void doWork() {
+-            mNativeInfoHandle.reset();
+-            mIsRunning = true;
+-            mRenderTask.run();
++            if (mNativeInfoHandle.reset())
++                start();
+         }
+     });
+ }
+\ No newline at end of file

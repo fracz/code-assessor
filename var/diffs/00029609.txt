@@ -1,0 +1,20 @@
+diff --git a/50ea109f30bb69e64f7719d5813a507840edf89d b/ed485c762de3b425a9b9d08e2eb4a8a5a64d86f5
+index 50ea109f30..ed485c762d 100644
+--- a/50ea109f30bb69e64f7719d5813a507840edf89d
++++ b/ed485c762de3b425a9b9d08e2eb4a8a5a64d86f5
+@@ -1,9 +1,9 @@
+-public static void assertNotUpgraded(HttpRequestBuilder httpClient, String index) throws Exception {
+-    for (UpgradeStatus status : getUpgradeStatus(httpClient, upgradePath(index))) {
+-        assertTrue("index " + status.indexName + " should not be zero sized", status.totalBytes != 0);
++public static void assertNotUpgraded(Client client, String index) throws Exception {
++    for (IndexUpgradeStatus status : getUpgradeStatus(client, index)) {
++        assertTrue("index " + status.getIndex() + " should not be zero sized", status.getTotalBytes() != 0);
+         // TODO: it would be better for this to be strictly greater, but sometimes an extra flush
+         // mysteriously happens after the second round of docs are indexed
+-        assertTrue("index " + status.indexName + " should have recovered some segments from transaction log", status.totalBytes >= status.toUpgradeBytes);
+-        assertTrue("index " + status.indexName + " should need upgrading", status.toUpgradeBytes != 0);
++        assertTrue("index " + status.getIndex() + " should have recovered some segments from transaction log", status.getTotalBytes() >= status.getToUpgradeBytes());
++        assertTrue("index " + status.getIndex() + " should need upgrading", status.getToUpgradeBytes() != 0);
+     }
+ }
+\ No newline at end of file

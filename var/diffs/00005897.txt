@@ -1,0 +1,23 @@
+diff --git a/921c3d1c60a265b238231bf7f8d4d942b46a02f5 b/0c660ab94b1dd869b233681cfcb1a3210853bfe4
+index 921c3d1c60..0c660ab94b 100644
+--- a/921c3d1c60a265b238231bf7f8d4d942b46a02f5
++++ b/0c660ab94b1dd869b233681cfcb1a3210853bfe4
+@@ -1,12 +1,11 @@
+ @Override
+ public boolean tryToMove(@NotNull PsiElement element, @NotNull Project project, @Nullable DataContext dataContext, @Nullable PsiReference reference, @Nullable Editor editor) {
+-    final PsiNamedElement elementToMove = getElementToMove(element);
+-    if (elementToMove != null) {
+-        doMove(project, new PsiElement[] { element }, null, null);
+-        return true;
+-    }
+-    if (element instanceof PsiNamedElement && !(element instanceof PyParameter)) {
++    final PsiNamedElement e = getElementToMove(element);
++    if (e instanceof PyClass || e instanceof PyFunction) {
++        if (isTopLevel(e)) {
++            doMove(project, new PsiElement[] { e }, null, null);
++        }
+         return true;
+     }
+     return false;
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/a83e1b8241edcde59896525dec48604de0763350 b/d9d478b1a3271b8eb40aa715330437220e427c74
+index a83e1b8241..d9d478b1a3 100644
+--- a/a83e1b8241edcde59896525dec48604de0763350
++++ b/d9d478b1a3271b8eb40aa715330437220e427c74
+@@ -1,15 +1,15 @@
+ private void init() {
+     if (inited) {
+         return;
+     }
+     lock.lock();
+-    if (inited) {
+-        return;
+-    }
+     try {
++        if (inited) {
++            return;
++        }
+         initByClassLoader();
+         inited = true;
+     } finally {
+         lock.unlock();
+     }
+ }
+\ No newline at end of file

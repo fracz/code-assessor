@@ -1,0 +1,15 @@
+diff --git a/dbf424298751289dd2cf7d5b5f0901f6b6736e16 b/e35199fdcb8fbbd79d926abf68dab6f5da3020b4
+index dbf4242987..e35199fdcb 100644
+--- a/dbf424298751289dd2cf7d5b5f0901f6b6736e16
++++ b/e35199fdcb8fbbd79d926abf68dab6f5da3020b4
+@@ -1,8 +1,8 @@
+ @Test
+ public void createUndirected_multigraph() {
+-    UndirectedGraph<Integer, String> undirectedMultigraph = Graphs.createUndirected(Graphs.MULTIGRAPH);
++    Graph<Integer, String> undirectedMultigraph = GraphBuilder.undirected().allowsParallelEdges(true).build();
+     assertThat(undirectedMultigraph.addEdge(E12, N1, N2)).isTrue();
+     assertThat(undirectedMultigraph.addEdge(E12_A, N1, N2)).isTrue();
+     assertThat(undirectedMultigraph.addEdge(E21, N2, N1)).isTrue();
+     assertThat(undirectedMultigraph.edgesConnecting(N1, N2)).isEqualTo(ImmutableSet.of(E12, E12_A, E21));
+ }
+\ No newline at end of file

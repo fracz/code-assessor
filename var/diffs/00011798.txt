@@ -1,0 +1,16 @@
+diff --git a/db3078c1b772dfb71f0ee11868aedb418f37002d b/6d90c74da2028273b586bf436aeafee15bed0f47
+index db3078c1b7..6d90c74da2 100644
+--- a/db3078c1b772dfb71f0ee11868aedb418f37002d
++++ b/6d90c74da2028273b586bf436aeafee15bed0f47
+@@ -1,6 +1,7 @@
+ @Override
+ public void contentsChanged(@NotNull VirtualFileEvent event) {
+-    if (event.getFileName().endsWith(".gdsl")) {
+-        disableFile(event.getFile(), MODIFIED);
+-    }
++    final VirtualFile file = event.getFile();
++    if (event.isFromRefresh() || !GdslUtil.GDSL_FILTER.value(file) || getStatus(file) != Status.ACTIVE)
++        return;
++    disableFile(file, Status.MODIFIED, null);
+ }
+\ No newline at end of file

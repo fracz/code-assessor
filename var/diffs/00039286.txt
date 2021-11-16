@@ -1,0 +1,21 @@
+diff --git a/b45c77714e83d1dbec46da45876b881096ab5e75 b/2c72fdc32175b054dc648abdf267a171c16c5fe3
+index b45c77714e..2c72fdc321 100644
+--- a/b45c77714e83d1dbec46da45876b881096ab5e75
++++ b/2c72fdc32175b054dc648abdf267a171c16c5fe3
+@@ -1,12 +1,13 @@
+ @Test
+ public void mustWriteHeaderOnInitialization() throws Exception {
+     // GIVEN
+     byte[] headerBytes = new byte[12];
+     ThreadLocalRandom.current().nextBytes(headerBytes);
+     Consumer<PageCursor> headerWriter = pc -> pc.putBytes(headerBytes);
+     // WHEN
+-    try (GBPTree<MutableLong, MutableLong> ignore = index().with(headerWriter).build()) {
++    PageCache pageCache = createPageCache(DEFAULT_PAGE_SIZE);
++    try (GBPTree<MutableLong, MutableLong> ignore = index(pageCache).with(headerWriter).build()) {
+     }
+     // THEN
+-    verifyHeader(headerBytes);
++    verifyHeader(pageCache, headerBytes);
+ }
+\ No newline at end of file

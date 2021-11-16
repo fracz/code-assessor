@@ -1,0 +1,20 @@
+diff --git a/217023bf75d46f30bc0a7d3d33080d332df3eb1e b/5636b800d3cf75d16ca96457af66b17a3da75aa6
+index 217023bf75..5636b800d3 100644
+--- a/217023bf75d46f30bc0a7d3d33080d332df3eb1e
++++ b/5636b800d3cf75d16ca96457af66b17a3da75aa6
+@@ -1,12 +1,11 @@
+ // returns TRUE if zoom out succeeds and FALSE if no zoom changes.
+ private boolean zoom(float zoomMultiplier) {
+     // TODO: alternatively we can disallow this during draw history mode
+     mWebView.switchOutDrawHistory();
+     // Center zooming to the center of the screen.
+     mZoomCenterX = mWebView.getViewWidth() * .5f;
+     mZoomCenterY = mWebView.getViewHeight() * .5f;
+-    int anchorX = mWebView.viewToContentX((int) mZoomCenterX + mWebView.getScrollX());
+-    int anchorY = mWebView.viewToContentY((int) mZoomCenterY + mWebView.getScrollY());
+-    mWebView.setViewSizeAnchor(anchorX, anchorY);
++    mAnchorX = mWebView.viewToContentX((int) mZoomCenterX + mWebView.getScrollX());
++    mAnchorY = mWebView.viewToContentY((int) mZoomCenterY + mWebView.getScrollY());
+     return startZoomAnimation(mActualScale * zoomMultiplier, true);
+ }
+\ No newline at end of file

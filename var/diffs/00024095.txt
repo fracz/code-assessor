@@ -1,0 +1,11 @@
+diff --git a/39ce8a3c6663ed3db76446e5a637a263a4dc93a7 b/118b7f9bb88df148553507096a702d6a2cbb7c74
+index 39ce8a3c66..118b7f9bb8 100644
+--- a/39ce8a3c6663ed3db76446e5a637a263a4dc93a7
++++ b/118b7f9bb88df148553507096a702d6a2cbb7c74
+@@ -1,3 +1,4 @@
+ public static SlicePredicate getInputSlicePredicate(Configuration conf) {
+-    return predicateFromString(conf.get(INPUT_PREDICATE_CONFIG));
++    String s = conf.get(INPUT_PREDICATE_CONFIG);
++    return s == null ? null : predicateFromString(s);
+ }
+\ No newline at end of file

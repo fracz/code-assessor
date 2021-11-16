@@ -1,0 +1,11 @@
+diff --git a/c06fda704eac5aa2c2e51424f9e5c7887f1d38c0 b/9c29d0d1df00a3f8ab827d67ba9a41c735ac8fdc
+index c06fda704e..9c29d0d1df 100644
+--- a/c06fda704eac5aa2c2e51424f9e5c7887f1d38c0
++++ b/9c29d0d1df00a3f8ab827d67ba9a41c735ac8fdc
+@@ -1,4 +1,4 @@
+ public boolean isEnabled(Editor editor, DataContext dataContext) {
+     SelectionModel selectionModel = editor.getSelectionModel();
+-    return dataContext.getData(DataConstants.IS_MODAL_CONTEXT) != Boolean.TRUE && (selectionModel.hasSelection() || selectionModel.hasBlockSelection());
++    return PlatformDataKeys.IS_MODAL_CONTEXT.getData(dataContext) != Boolean.TRUE && (selectionModel.hasSelection() || selectionModel.hasBlockSelection());
+ }
+\ No newline at end of file

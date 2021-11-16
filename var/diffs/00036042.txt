@@ -1,0 +1,11 @@
+diff --git a/38ae9f87999521cbaaac8f64a3ffe82b23032bbd b/49696d536c23f90d54c526fc30270d7026c311a2
+index 38ae9f8799..49696d536c 100644
+--- a/38ae9f87999521cbaaac8f64a3ffe82b23032bbd
++++ b/49696d536c23f90d54c526fc30270d7026c311a2
+@@ -1,4 +1,4 @@
+ @Test
+ public void shouldNeverVerifyWhenVerificationIsExplicit() throws Exception {
+-    verifier.verify(null, null, VerificationModeImpl.times(1));
++    assertFalse(verifier.appliesTo(VerificationModeImpl.times(1)));
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/f77032717b5baa9df2f117a406427f0b83148d6b b/bcbc95579e6c64fc705c1efe74a8ac931ba960d0
+index f77032717b..bcbc95579e 100644
+--- a/f77032717b5baa9df2f117a406427f0b83148d6b
++++ b/bcbc95579e6c64fc705c1efe74a8ac931ba960d0
+@@ -1,8 +1,8 @@
+ public void exportDataFromQuery() {
+     SQLScriptElement sqlQuery = extractActiveQuery();
+     if (sqlQuery instanceof SQLQuery) {
+         processQueries(Collections.singletonList(sqlQuery), false, true, true);
+     } else {
+-        UIUtils.showErrorDialog(getSite().getShell(), "Extract data", "Can't extract data from control command");
++        DBUserInterface.getInstance().showError("Extract data", "Can't extract data from control command");
+     }
+ }
+\ No newline at end of file

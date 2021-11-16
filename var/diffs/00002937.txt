@@ -1,0 +1,18 @@
+diff --git a/60ba5b2012d6209e1921246c21bb0cbe06db57dc b/76fb52c0226e61ccf62f5f09f80fb3da05187feb
+index 60ba5b2012..76fb52c022 100644
+--- a/60ba5b2012d6209e1921246c21bb0cbe06db57dc
++++ b/76fb52c0226e61ccf62f5f09f80fb3da05187feb
+@@ -1,11 +1,11 @@
+ public void update(AnActionEvent event) {
+     Presentation presentation = event.getPresentation();
+     DataContext dataContext = event.getDataContext();
+-    CopyProvider provider = (CopyProvider) dataContext.getData(DataConstants.COPY_PROVIDER);
++    CopyProvider provider = PlatformDataKeys.COPY_PROVIDER.getData(dataContext);
+     presentation.setEnabled(provider != null && provider.isCopyEnabled(dataContext));
+     if (event.getPlace().equals(ActionPlaces.EDITOR_POPUP) && provider != null) {
+         presentation.setVisible(provider.isCopyVisible(dataContext));
+     } else {
+         presentation.setVisible(true);
+     }
+ }
+\ No newline at end of file

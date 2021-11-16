@@ -1,0 +1,14 @@
+diff --git a/0a606cbf8da547e10d80dc360bff8452eba14e06 b/df760676f9170db1323df292e2f624dc16bced96
+index 0a606cbf8d..df760676f9 100644
+--- a/0a606cbf8da547e10d80dc360bff8452eba14e06
++++ b/df760676f9170db1323df292e2f624dc16bced96
+@@ -1,7 +1,3 @@
+ public int getSettingsSubtitleColor() {
+-    if (settingsSubtitleColor != 0) {
+-        return settingsSubtitleColor;
+-    } else {
+-        return getTextSecondaryColor();
+-    }
++    return getColorWithFallback(settingsSubtitleColor, getTextSecondaryColor());
+ }
+\ No newline at end of file

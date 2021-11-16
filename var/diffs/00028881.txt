@@ -1,0 +1,18 @@
+diff --git a/2d28644a6cc00ebe7fcdc214b58e955816d77dac b/61466d0adb6c01145269a0d2e37dd0ba1df5b5cb
+index 2d28644a6c..61466d0adb 100644
+--- a/2d28644a6cc00ebe7fcdc214b58e955816d77dac
++++ b/61466d0adb6c01145269a0d2e37dd0ba1df5b5cb
+@@ -1,9 +1,4 @@
+-public void retryRecovery(final StartRecoveryRequest request, TimeValue retryAfter, final RecoveryStatus status, final RecoveryListener listener) {
+-    threadPool.schedule(retryAfter, ThreadPool.Names.GENERIC, new Runnable() {
+-
+-        @Override
+-        public void run() {
+-            doRecovery(request, status, listener);
+-        }
+-    });
++protected void retryRecovery(final long recoveryId, TimeValue retryAfter) {
++    logger.trace("will retrying recovery with id [{}] in [{}]", recoveryId, retryAfter);
++    threadPool.schedule(retryAfter, ThreadPool.Names.GENERIC, new RecoveryRunner(recoveryId));
+ }
+\ No newline at end of file

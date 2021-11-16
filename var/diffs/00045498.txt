@@ -1,0 +1,21 @@
+diff --git a/c7f9bc23626028035a579d825cc4a8c06ebd0b8b b/8fc02c7aa108d3f3dd9024d875fc4e88bbd51bdb
+index c7f9bc2362..8fc02c7aa1 100644
+--- a/c7f9bc23626028035a579d825cc4a8c06ebd0b8b
++++ b/8fc02c7aa108d3f3dd9024d875fc4e88bbd51bdb
+@@ -1,6 +1,13 @@
+-private ODocument listDatabases() {
++private void listDatabases() throws IOException {
+     checkServerAccess("server.dblist");
+     final ODocument result = new ODocument();
+     result.field("databases", OServerMain.server().getAvailableStorageNames());
+-    return result;
++    setDataCommandInfo("List databases");
++    beginResponse();
++    try {
++        sendOk(clientTxId);
++        channel.writeBytes(result.toStream());
++    } finally {
++        endResponse();
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,27 @@
+diff --git a/548f4509da1eec5b4795517467ec953d514a578d b/365939e1137126b34a25eb303e6bb7febb1ea402
+index 548f4509da..365939e113 100644
+--- a/548f4509da1eec5b4795517467ec953d514a578d
++++ b/365939e1137126b34a25eb303e6bb7febb1ea402
+@@ -1,13 +1,20 @@
+ /* ---------------------------------------------------------------
+      * Changing Edges
+ 	 * ---------------------------------------------------------------
+ 	 */
+ @Override
+ public synchronized void remove() {
+-    for (TitanRelation r : SimpleAtomicQuery.queryAll(it()).relations()) {
++    // TODO: It's Blueprints semantics to remove all edges - is this correct?
++    Iterator<TitanRelation> iter = it().getRelations().iterator();
++    while (iter.hasNext()) {
++        iter.next();
++        iter.remove();
++    }
++    // Finally remove internal/hidden relations
++    for (TitanRelation r : QueryUtil.queryAll(it())) {
+         if (r.getType().equals(SystemKey.VertexState))
+             r.remove();
+         else
+             throw new IllegalStateException("Cannot remove node since it is still connected");
+     }
+ }
+\ No newline at end of file

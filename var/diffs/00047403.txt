@@ -1,0 +1,12 @@
+diff --git a/6e4c26ac110a6a98b25120f6ce1e7acf373dfd2f b/ec9c5ff76a8b46672080bdb9a1a3a5d15b15b290
+index 6e4c26ac11..ec9c5ff76a 100644
+--- a/6e4c26ac110a6a98b25120f6ce1e7acf373dfd2f
++++ b/ec9c5ff76a8b46672080bdb9a1a3a5d15b15b290
+@@ -1,5 +1,4 @@
+ @Override
+ public V pollLastAndOfferFirstTo(String queueName, long timeout, TimeUnit unit) throws InterruptedException {
+-    Future<V> res = pollLastAndOfferFirstToAsync(queueName, timeout, unit);
+-    return res.await().getNow();
++    return blockingQueue.pollLastAndOfferFirstTo(queueName, timeout, unit);
+ }
+\ No newline at end of file

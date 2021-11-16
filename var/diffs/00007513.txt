@@ -1,0 +1,31 @@
+diff --git a/0e0b64e198f2e5b86a85107eaf7e2a52aefa69fd b/3a58cfcdc3ce02de92f83ef88ab67299aa76390e
+index 0e0b64e198..3a58cfcdc3 100644
+--- a/0e0b64e198f2e5b86a85107eaf7e2a52aefa69fd
++++ b/3a58cfcdc3ce02de92f83ef88ab67299aa76390e
+@@ -1,22 +1,23 @@
+-public boolean canDrop(@Nullable Point location, final int componentCount) {
+-    if (componentCount != 1) {
++@Override
++public boolean canDrop(@Nullable Point location, ComponentDragObject dragObject) {
++    if (dragObject.getComponentCount() != 1) {
+         return false;
+     }
+     /*
+     TODO[yole]: support multi-drop (is it necessary?)
+     if (componentCount == 2) {
+       return isEmptySplitComponent(getSplitPane().getLeftComponent()) &&
+              isEmptySplitComponent(getSplitPane().getRightComponent());
+     }
+     */
+     if (location == null) {
+         return isEmptySplitComponent(getSplitPane().getLeftComponent()) || isEmptySplitComponent(getSplitPane().getRightComponent());
+     }
+     final Component component;
+     if (isLeft(location)) {
+         component = getSplitPane().getLeftComponent();
+     } else {
+         component = getSplitPane().getRightComponent();
+     }
+     return isEmptySplitComponent(component);
+ }
+\ No newline at end of file

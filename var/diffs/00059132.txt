@@ -1,0 +1,27 @@
+diff --git a/af3973eac31fce48226ac40801c10de346282c5a b/7fb28696d6928d50549a136e6281e378e9e15bd0
+index af3973eac3..7fb28696d6 100644
+--- a/af3973eac31fce48226ac40801c10de346282c5a
++++ b/7fb28696d6928d50549a136e6281e378e9e15bd0
+@@ -1,14 +1,20 @@
++/**
++ * Returns the list of adjacent vertex ids for this query. By reading those ids
++ * from the entries directly (without creating objects) we get much better performance.
++ *
++ * @return
++ */
+ public VertexList vertexIds() {
+     AbstractLongList list = new LongArrayList();
+     for (Long id : Iterables.transform(this, new Function<Entry, Long>() {
+
+         @Nullable
+         @Override
+         public Long apply(@Nullable Entry entry) {
+-            return edgeSerializer.readRelation(vertex.getID(), entry, true, tx).getOtherVertexId();
++            return edgeSerializer.readRelation(entry, true, tx).getOtherVertexId();
+         }
+     })) {
+         list.add(id);
+     }
+     return new VertexLongList(tx, list);
+ }
+\ No newline at end of file

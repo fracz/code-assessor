@@ -1,0 +1,19 @@
+diff --git a/2b3a5b1b8e090262a2a6922ace8a125ad6324bee b/6075b7c83817d4879a2fec72c43090304b1029e7
+index 2b3a5b1b8e..6075b7c838 100644
+--- a/2b3a5b1b8e090262a2a6922ace8a125ad6324bee
++++ b/6075b7c83817d4879a2fec72c43090304b1029e7
+@@ -1,12 +1,10 @@
+-@NotNull
+ @Override
+-protected Type generateExpression(int i, @NotNull ExpressionValueArgument argument) {
++protected void generateExpression(int i, @NotNull ExpressionValueArgument argument) {
+     ValueParameterDescriptor parameter = valueParameters.get(i);
+     Type type = valueParameterTypes.get(i);
+     ValueArgument valueArgument = argument.getValueArgument();
+     assert valueArgument != null;
+     JetExpression argumentExpression = valueArgument.getArgumentExpression();
+     assert argumentExpression != null : valueArgument.asElement().getText();
+     callGenerator.genValueAndPut(parameter, argumentExpression, type, i);
+-    return type;
+ }
+\ No newline at end of file

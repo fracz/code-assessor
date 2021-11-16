@@ -1,0 +1,25 @@
+diff --git a/bd6787e14bd73174940c159a76dfcd2662c389e0 b/dbfd868bb3005cebf19c9fad5b3111e775ba3c65
+index bd6787e14b..dbfd868bb3 100644
+--- a/bd6787e14bd73174940c159a76dfcd2662c389e0
++++ b/dbfd868bb3005cebf19c9fad5b3111e775ba3c65
+@@ -1,8 +1,17 @@
+ @Override
+ public INDArray preProcess(INDArray input, int miniBatchSize) {
+     // Should usually never happen
+     if (input.rank() == 2)
+         return input;
+-    INDArray inputPermuted = input.permute(0, 2, 3, 1);
+-    return super.preProcess(inputPermuted, miniBatchSize);
++    /* DL4J convolutional input:       # channels, # rows, # cols
++         * TensorFlow convolutional input: # rows, # cols, # channels
++         * Theano convolutional input:     # channels, # rows, # cols
++         */
++    /* TODO: remove the extra copies of the input. These are only
++         * used for debugging purposes during development and testing.
++         */
++    INDArray flatInput = super.preProcess(input, miniBatchSize);
++    INDArray permuted = input.permute(0, 2, 3, 1);
++    INDArray flatPermuted = super.preProcess(permuted, miniBatchSize);
++    return flatPermuted;
+ }
+\ No newline at end of file

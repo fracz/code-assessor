@@ -1,0 +1,18 @@
+diff --git a/bd177be5c54826d8de25a965ac00b812755f70c8 b/7be6f2bfb5f5c243a728c9ee5f0bffe0985e5ee0
+index bd177be5c5..7be6f2bfb5 100644
+--- a/bd177be5c54826d8de25a965ac00b812755f70c8
++++ b/7be6f2bfb5f5c243a728c9ee5f0bffe0985e5ee0
+@@ -1,10 +1,9 @@
+ private static ResultSet buildReducer(final ResultSetMergeContext resultSetMergeContext) throws SQLException {
+-    if (resultSetMergeContext.isNeedMemorySortForGroupBy()) {
+-        resultSetMergeContext.setGroupByKeysToCurrentOrderByKeys();
+-        return new MemoryOrderByReducerResultSet(resultSetMergeContext);
++    if (resultSetMergeContext.getSqlStatement().isGroupByAndOrderByDifferent()) {
++        return new MemorySortResultSet(resultSetMergeContext.getShardingResultSets().getResultSets(), resultSetMergeContext.getSqlStatement().getGroupByList());
+     }
+     if (!resultSetMergeContext.getSqlStatement().getGroupByList().isEmpty() || !resultSetMergeContext.getSqlStatement().getOrderByList().isEmpty()) {
+         return new StreamingOrderByReducerResultSet(resultSetMergeContext);
+     }
+     return new IteratorReducerResultSet(resultSetMergeContext);
+ }
+\ No newline at end of file

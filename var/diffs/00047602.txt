@@ -1,0 +1,22 @@
+diff --git a/e808f1c352197b8591957507be83a6a0526f368e b/9f36e99eba6bca748cf0d3cc787a291b18f5aabd
+index e808f1c352..9f36e99eba 100644
+--- a/e808f1c352197b8591957507be83a6a0526f368e
++++ b/9f36e99eba6bca748cf0d3cc787a291b18f5aabd
+@@ -1,11 +1,13 @@
+-public Collection<RedisPubSubConnection> slaveDown(String host, int port, FreezeReason freezeReason) {
+-    Collection<RedisPubSubConnection> conns = slaveBalancer.freeze(host, port, freezeReason);
++public boolean slaveDown(String host, int port, FreezeReason freezeReason) {
++    if (!slaveBalancer.freeze(host, port, freezeReason)) {
++        return false;
++    }
+     // add master as slave if no more slaves available
+     if (config.getReadMode() == ReadMode.SLAVE && slaveBalancer.getAvailableClients() == 0) {
+         InetSocketAddress addr = masterEntry.getClient().getAddr();
+         if (slaveUp(addr.getHostName(), addr.getPort(), FreezeReason.SYSTEM)) {
+             log.info("master {}:{} used as slave", addr.getHostName(), addr.getPort());
+         }
+     }
+-    return conns;
++    return true;
+ }
+\ No newline at end of file

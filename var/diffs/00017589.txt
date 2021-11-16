@@ -1,0 +1,22 @@
+diff --git a/799acf50d430ff4506df391608a13617639e6ede b/ab4f63615ccaa5d3dc2b8f8a34af710a2927c580
+index 799acf50d4..ab4f63615c 100644
+--- a/799acf50d430ff4506df391608a13617639e6ede
++++ b/ab4f63615ccaa5d3dc2b8f8a34af710a2927c580
+@@ -1,15 +1,7 @@
+ @Nullable
+ public JsNameRef getQualifierForDescriptor(@NotNull DeclarationDescriptor descriptor) {
+-    // TODO: refactor
+-    if (descriptor instanceof PropertyDescriptor) {
+-        return null;
+-    }
+-    if (isVariableAsFunction(descriptor)) {
+-        return null;
+-    }
+-    // TODO: hack!
+-    if (AnnotationsUtils.isNativeObject(descriptor)) {
++    if (qualifierIsNull.get(descriptor) != null) {
+         return null;
+     }
+     return qualifiers.get(descriptor.getOriginal());
+ }
+\ No newline at end of file

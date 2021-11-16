@@ -1,0 +1,13 @@
+diff --git a/90721c9d4bb6055ccfe291744d23ef1c2b1d3b16 b/c0a3c92e0292b5cc233ff6dccbc5c36a0a871cef
+index 90721c9d4b..c0a3c92e02 100644
+--- a/90721c9d4bb6055ccfe291744d23ef1c2b1d3b16
++++ b/c0a3c92e0292b5cc233ff6dccbc5c36a0a871cef
+@@ -1,5 +1,4 @@
+ @Nullable
+-public static VirtualFile getManifestFile(@NotNull Module module) {
+-    AndroidFacet facet = AndroidFacet.getInstance(module);
+-    return facet == null ? null : getFileByRelativeModulePath(module, facet.getConfiguration().MANIFEST_FILE_RELATIVE_PATH, true);
++public static VirtualFile getManifestFile(@NotNull AndroidFacet facet) {
++    return getFileByRelativeModulePath(facet.getModule(), facet.getConfiguration().MANIFEST_FILE_RELATIVE_PATH, true);
+ }
+\ No newline at end of file

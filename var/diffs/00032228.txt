@@ -1,0 +1,14 @@
+diff --git a/50a42afdad8cd51f1a5577ccb0bd6f6dd500c02d b/cfd8f9bd115cecb35599b9112dc9bb9206c2af54
+index 50a42afdad..cfd8f9bd11 100644
+--- a/50a42afdad8cd51f1a5577ccb0bd6f6dd500c02d
++++ b/cfd8f9bd115cecb35599b9112dc9bb9206c2af54
+@@ -1,7 +1,7 @@
+ /**
+  * The types in @template annotations must start with a capital letter, and contain
+  * only letters, digits, and underscores.
+  */
+ private static boolean validTemplateTypeName(String name) {
+-    return name.length() != 0 && CharMatcher.JAVA_UPPER_CASE.matches(name.charAt(0)) && CharMatcher.JAVA_LETTER_OR_DIGIT.or(CharMatcher.is('_')).matchesAllOf(name);
++    return !name.isEmpty() && CharMatcher.JAVA_UPPER_CASE.matches(name.charAt(0)) && CharMatcher.JAVA_LETTER_OR_DIGIT.or(CharMatcher.is('_')).matchesAllOf(name);
+ }
+\ No newline at end of file

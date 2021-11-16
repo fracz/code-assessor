@@ -1,0 +1,11 @@
+diff --git a/03b538276e9f8fc4bace22df0f8e469f15030614 b/9ed7e12d12b8236f4904f03b535b684cf551904a
+index 03b538276e..9ed7e12d12 100644
+--- a/03b538276e9f8fc4bace22df0f8e469f15030614
++++ b/9ed7e12d12b8236f4904f03b535b684cf551904a
+@@ -1,3 +1,3 @@
+-private static RequestMappingInfo createFromRequestMapping(RequestMapping annotation) {
+-    return new RequestMappingInfo(Arrays.asList(annotation.value()), RequestConditionFactory.parseMethods(annotation.method()), RequestConditionFactory.parseParams(annotation.params()), RequestConditionFactory.parseHeaders(annotation.headers()), RequestConditionFactory.parseConsumes(annotation.consumes(), annotation.headers()), RequestConditionFactory.parseProduces(annotation.produces(), annotation.headers()));
++private RequestMappingInfo createFromRequestMapping(RequestMapping annotation) {
++    return new RequestMappingInfo(new PatternsRequestCondition(annotation.value(), getUrlPathHelper(), getPathMatcher()), new RequestMethodsRequestCondition(annotation.method()), new ParamsRequestCondition(annotation.params()), new HeadersRequestCondition(annotation.headers()), new ConsumesRequestCondition(annotation.consumes(), annotation.headers()), new ProducesRequestCondition(annotation.produces(), annotation.headers()));
+ }
+\ No newline at end of file

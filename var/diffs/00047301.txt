@@ -1,0 +1,11 @@
+diff --git a/6e1e9e89eb13cc0a50d5c806841b206c27618c63 b/fdcc400f36ac65b98ae94066932423356213ebdc
+index 6e1e9e89eb..fdcc400f36 100644
+--- a/6e1e9e89eb13cc0a50d5c806841b206c27618c63
++++ b/fdcc400f36ac65b98ae94066932423356213ebdc
+@@ -1,4 +1,4 @@
+ @Override
+ public Publisher<Boolean> removeAll(Collection<?> c) {
+-    return commandExecutor.evalWriteReactive(getName(), codec, new RedisCommand<Boolean>("EVAL", new BooleanReplayConvertor(), 4), "local v = false " + "for i = 0, table.getn(ARGV), 1 do " + "if redis.call('lrem', KEYS[1], 0, ARGV[i]) == 1 " + "then v = true end " + "end " + "return v ", Collections.<Object>singletonList(getName()), c.toArray());
++    return commandExecutor.evalWriteReactive(getName(), codec, RedissonList.EVAL_BOOLEAN_ARGS1, "local v = false " + "for i = 0, table.getn(ARGV), 1 do " + "if redis.call('lrem', KEYS[1], 0, ARGV[i]) == 1 " + "then v = true end " + "end " + "return v ", Collections.<Object>singletonList(getName()), c.toArray());
+ }
+\ No newline at end of file

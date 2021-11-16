@@ -1,0 +1,12 @@
+diff --git a/52623aa3ff9cd368516833d920bfeea215927323 b/6bad114a007cf1e112d2ccaf869d2c9d95be20e9
+index 52623aa3ff..6bad114a00 100644
+--- a/52623aa3ff9cd368516833d920bfeea215927323
++++ b/6bad114a007cf1e112d2ccaf869d2c9d95be20e9
+@@ -1,4 +1,4 @@
+-private static void updateView(@NotNull final Editor editor, @NotNull final VirtualFile file, @NotNull final Project project) {
++private static void updateView(@NotNull final Editor editor, @NotNull final TaskFile taskFile) {
+     editor.getMarkupModel().removeAllHighlighters();
+-    CCProjectService.getInstance(project).drawAnswerPlaceholders(file, editor);
++    StudyUtils.drawAllWindows(editor, taskFile, false);
+ }
+\ No newline at end of file

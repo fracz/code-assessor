@@ -1,0 +1,23 @@
+diff --git a/9a3794b90fb27e0c6fbfb3685e9d4d773ef9fe98 b/b94a8b184bbf94490ade0666b0e35b501bffc127
+index 9a3794b90f..b94a8b184b 100644
+--- a/9a3794b90fb27e0c6fbfb3685e9d4d773ef9fe98
++++ b/b94a8b184bbf94490ade0666b0e35b501bffc127
+@@ -1,7 +1,13 @@
+ @Override
+-protected List<Pair<String, ? extends ChannelHandler>> getFinalChannelHandlers(MessageInput input) {
+-    final List<Pair<String, ? extends ChannelHandler>> finalChannelHandlers = Lists.newArrayList();
+-    finalChannelHandlers.add(Pair.of("framer", new DelimiterBasedFrameDecoder(maxFrameLength, delimiter)));
+-    finalChannelHandlers.addAll(super.getFinalChannelHandlers(input));
++protected LinkedHashMap<String, Callable<? extends ChannelHandler>> getFinalChannelHandlers(MessageInput input) {
++    final LinkedHashMap<String, Callable<? extends ChannelHandler>> finalChannelHandlers = Maps.newLinkedHashMap();
++    finalChannelHandlers.put("framer", new Callable<ChannelHandler>() {
++
++        @Override
++        public ChannelHandler call() throws Exception {
++            return new DelimiterBasedFrameDecoder(maxFrameLength, delimiter);
++        }
++    });
++    finalChannelHandlers.putAll(super.getFinalChannelHandlers(input));
+     return finalChannelHandlers;
+ }
+\ No newline at end of file

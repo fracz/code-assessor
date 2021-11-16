@@ -1,0 +1,19 @@
+diff --git a/9d88848a7554b503cec155ef951468ec891afbd5 b/719e42772573dc85bb1c735c91879848da26736e
+index 9d88848a75..719e427725 100644
+--- a/9d88848a7554b503cec155ef951468ec891afbd5
++++ b/719e42772573dc85bb1c735c91879848da26736e
+@@ -1,12 +1,12 @@
+ @Test
+ public void shouldThrowAnExceptionIfTheIndexDoesNotExist() throws SchemaRuleNotFoundException, IndexNotFoundKernelException {
+     when(operations.labelGetForName(anyString())).thenReturn(0);
+     when(operations.propertyKeyGetForName(anyString())).thenReturn(0);
+-    when(operations.indexGetForLabelAndPropertyKey(anyInt(), anyInt())).thenThrow(new IndexSchemaRuleNotFoundException(-1, -1));
++    when(operations.indexGetForLabelAndPropertyKey(anyObject())).thenThrow(new IndexSchemaRuleNotFoundException(anyDescriptor));
+     try {
+         procedure.awaitIndex(":Person(name)", timeout, timeoutUnits);
+         fail("Expected an exception");
+     } catch (ProcedureException e) {
+         assertThat(e.status(), is(Status.Schema.IndexNotFound));
+     }
+ }
+\ No newline at end of file

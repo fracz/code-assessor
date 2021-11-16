@@ -1,0 +1,16 @@
+diff --git a/92530c1e11b0ef4767e25ec9566ae04801a03067 b/45ab510e3c258f736423755d471739842b42d86d
+index 92530c1e11..45ab510e3c 100644
+--- a/92530c1e11b0ef4767e25ec9566ae04801a03067
++++ b/45ab510e3c258f736423755d471739842b42d86d
+@@ -1,9 +1,9 @@
+ @Nullable
+ private static GrField getProperty(DataContext dataContext) {
+-    final PsiElement element = (PsiElement) dataContext.getData(DataConstants.PSI_ELEMENT);
++    final PsiElement element = LangDataKeys.PSI_ELEMENT.getData(dataContext);
+     if (element instanceof GrField && ((GrField) element).isProperty())
+         return (GrField) element;
+     if (element instanceof GrAccessorMethod)
+         return ((GrAccessorMethod) element).getProperty();
+     return null;
+ }
+\ No newline at end of file

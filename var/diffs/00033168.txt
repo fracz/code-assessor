@@ -1,0 +1,14 @@
+diff --git a/118df2b97459be520576ff60b4862cda72b73690 b/4aac3a568e240cbbe85d4463743461a03752f0ca
+index 118df2b974..4aac3a568e 100644
+--- a/118df2b97459be520576ff60b4862cda72b73690
++++ b/4aac3a568e240cbbe85d4463743461a03752f0ca
+@@ -1,6 +1,6 @@
+-private Artifact expectedIvyArtifact(Configuration configuration, ModuleDescriptor moduleDescriptor) {
++private Artifact expectedIvyArtifact(Configuration configuration, ModuleDescriptor moduleDescriptor, Map<String, String> additionalExtraAttributes) {
+     PublishArtifact publishArtifact = configuration.getArtifacts().iterator().next();
+     Map<String, String> extraAttributes = WrapUtil.toMap(Dependency.CLASSIFIER, publishArtifact.getClassifier());
+-    extraAttributes.put(DefaultIvyDependencyPublisher.FILE_PATH_EXTRA_ATTRIBUTE, publishArtifact.getFile().getAbsolutePath());
++    extraAttributes.putAll(additionalExtraAttributes);
+     return new DefaultArtifact(moduleDescriptor.getModuleRevisionId(), publishArtifact.getDate(), publishArtifact.getName(), publishArtifact.getType(), publishArtifact.getExtension(), extraAttributes);
+ }
+\ No newline at end of file

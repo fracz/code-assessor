@@ -1,0 +1,17 @@
+diff --git a/ea7d3d3c7f62e6dab3d5529c9b183418fc6a8f1a b/1287d56d560ae63f66b53e3faa570511b3f1c1f3
+index ea7d3d3c7f..1287d56d56 100644
+--- a/ea7d3d3c7f62e6dab3d5529c9b183418fc6a8f1a
++++ b/1287d56d560ae63f66b53e3faa570511b3f1c1f3
+@@ -1,8 +1,10 @@
+ public void testIntArray() throws Exception {
+-    Model model = new ModelResolver(new ObjectMapper()).resolve(IntArrayBean.class, new ModelConverterContextMock());
++    ModelResolver modelResolver = new ModelResolver(new ObjectMapper());
++    ModelConverterContextImpl context = new ModelConverterContextImpl(modelResolver);
++    Model model = context.resolve(IntArrayBean.class);
+     Map<String, Property> props = model.getProperties();
+     assertEquals(1, props.size());
+     Property prop = props.values().iterator().next();
+     assertEquals("b", prop.getName());
+ // !!! TODO
+ }
+\ No newline at end of file

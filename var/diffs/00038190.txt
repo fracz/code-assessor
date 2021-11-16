@@ -1,0 +1,26 @@
+diff --git a/96cd0f192a8bc38cafb26a6fd0a1c03c2077d4ed b/80fbf43e2194acb16637bc7ede14d2b7252d88fe
+index 96cd0f192a..80fbf43e21 100644
+--- a/96cd0f192a8bc38cafb26a6fd0a1c03c2077d4ed
++++ b/80fbf43e2194acb16637bc7ede14d2b7252d88fe
+@@ -1,13 +1,15 @@
+ @Test
+ public void shouldFailWhenCacheAndLogMiss() throws Throwable {
+-    // When an entry is not in the log, we must fail.
+-    applicationProcess.start();
++    // given
+     inFlightMap.put(0L, new RaftLogEntry(0, operation(nullTx)));
+     raftLog.append(new RaftLogEntry(0, operation(nullTx)));
+     raftLog.append(new RaftLogEntry(1, operation(nullTx)));
+     // when
+     applicationProcess.notifyCommitted(2);
+-    applier.sync(false);
+-    // then
+-    assertFalse(dbHealth.isHealthy());
++    try {
++        applicationProcess.start();
++        fail();
++    } catch (IllegalStateException e) {
++    // expected
++    }
+ }
+\ No newline at end of file

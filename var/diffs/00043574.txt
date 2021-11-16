@@ -1,0 +1,12 @@
+diff --git a/33e30c38a189e22b8b5c988b20159d17a1c56ebc b/176e48f21904c23313c479ec64657e7c24492bee
+index 33e30c38a1..176e48f219 100644
+--- a/33e30c38a189e22b8b5c988b20159d17a1c56ebc
++++ b/176e48f21904c23313c479ec64657e7c24492bee
+@@ -1,4 +1,4 @@
+ public int getSessionId() {
+-    final OStorageRemoteThreadLocal instance = OStorageRemoteThreadLocal.INSTANCE;
+-    return instance != null ? instance.get().sessionId : -1;
++    OStorageRemoteSession session = getCurrentSession();
++    return session != null ? session.sessionId : -1;
+ }
+\ No newline at end of file

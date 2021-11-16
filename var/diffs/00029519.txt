@@ -1,0 +1,16 @@
+diff --git a/20f9fcce53cce8d514df179b8fa906632f754a82 b/1cd5b043b4d846bf69a26548d78775303c850d6a
+index 20f9fcce53..1cd5b043b4 100644
+--- a/20f9fcce53cce8d514df179b8fa906632f754a82
++++ b/1cd5b043b4d846bf69a26548d78775303c850d6a
+@@ -1,9 +1,9 @@
+ protected boolean matchesIndices(String currentIndex, String... indices) {
+-    final String[] concreteIndices = clusterService.state().metaData().concreteIndices(IndicesOptions.lenientExpandOpen(), indices);
++    final String[] concreteIndices = indexNameExpressionResolver.concreteIndices(clusterService.state(), IndicesOptions.lenientExpandOpen(), indices);
+     for (String index : concreteIndices) {
+         if (Regex.simpleMatch(index, currentIndex)) {
+             return true;
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

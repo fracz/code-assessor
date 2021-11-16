@@ -1,0 +1,17 @@
+diff --git a/6fd007b9ef2bf02f43f4d375e29e9720e217ecc3 b/86579afe1d631fcbb5bfa911bb5bdaa1f6d597ab
+index 6fd007b9ef..86579afe1d 100644
+--- a/6fd007b9ef2bf02f43f4d375e29e9720e217ecc3
++++ b/86579afe1d631fcbb5bfa911bb5bdaa1f6d597ab
+@@ -1,10 +1,10 @@
+ TaskRecord createTaskRecord(int taskId, ActivityInfo info, Intent intent, IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor, boolean toTop) {
+     TaskRecord task = new TaskRecord(mService, taskId, info, intent, voiceSession, voiceInteractor);
+     // add the task to stack first, mTaskPositioner might need the stack association
+     addTask(task, toTop, "createTaskRecord");
+-    final boolean isLockscreenShown = mService.mLockScreenShown == LOCK_SCREEN_SHOWN;
++    final boolean isLockscreenShown = mService.mStackSupervisor.mKeyguardController.isKeyguardShowing();
+     if (!layoutTaskInStack(task, info.windowLayout) && mBounds != null && task.isResizeable() && !isLockscreenShown) {
+         task.updateOverrideConfiguration(mBounds);
+     }
+     return task;
+ }
+\ No newline at end of file

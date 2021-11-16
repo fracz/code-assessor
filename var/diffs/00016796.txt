@@ -1,0 +1,22 @@
+diff --git a/7c16451f4efcac73c28512c9c6be60d5b2f231cb b/bfa7c015974b26fc131c4c4aa66161c4f297a5ae
+index 7c16451f4e..bfa7c01597 100644
+--- a/7c16451f4efcac73c28512c9c6be60d5b2f231cb
++++ b/bfa7c015974b26fc131c4c4aa66161c4f297a5ae
+@@ -1,8 +1,13 @@
+ private void addBinaryIntrinsics(@NotNull FunctionDescriptor descriptor) {
+     String functionName = descriptor.getName();
+     boolean isUnary = !DescriptorUtils.hasParameters(descriptor);
++    if (isUnary)
++        return;
+     JetToken token = OperatorConventions.BINARY_OPERATION_NAMES.inverse().get(functionName);
+-    if (token != null && OperatorTable.hasCorrespondingBinaryOperator(token) && (!isUnary)) {
+-        descriptorToIntrinsicMap.put(descriptor, BinaryOperationIntrinsic.newInstance(token));
+-    }
++    if (token == null)
++        return;
++    // TODO: implement range and contains intrinsic
++    if (!OperatorTable.hasCorrespondingBinaryOperator(token))
++        return;
++    functionIntrinsics.put(descriptor, BinaryOperationIntrinsic.newInstance(token));
+ }
+\ No newline at end of file

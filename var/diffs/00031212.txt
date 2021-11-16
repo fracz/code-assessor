@@ -1,0 +1,23 @@
+diff --git a/a32758e6e80524462c96cbdbda2a99ac8a6a7339 b/18d9a7631bded0bc9534a51ef0e7357783990bff
+index a32758e6e8..18d9a7631b 100644
+--- a/a32758e6e80524462c96cbdbda2a99ac8a6a7339
++++ b/18d9a7631bded0bc9534a51ef0e7357783990bff
+@@ -1,13 +1,15 @@
+ /**
+  * Generic test that creates new query from the test query and checks both for equality
+  * and asserts equality on the two queries.
+  */
+ @Test
+ public void testFromXContent() throws IOException {
+-    QueryParseContext context = new QueryParseContext(index, queryParserService);
++    QueryParseContext context = createContext();
+     String contentString = testQuery.toString();
+-    context.reset(XContentFactory.xContent(contentString).createParser(contentString));
++    XContentParser parser = XContentFactory.xContent(contentString).createParser(contentString);
++    context.reset(parser);
++    assertQueryHeader(parser, testQuery.parserName());
+     QueryBuilder newQuery = queryParserService.queryParser(testQuery.parserName()).fromXContent(context);
+     assertNotSame(newQuery, testQuery);
+     assertEquals(newQuery, testQuery);
+ }
+\ No newline at end of file

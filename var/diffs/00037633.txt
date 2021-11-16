@@ -1,0 +1,15 @@
+diff --git a/8b0339b3cd4a187205d6cf760c0940001d8a11e7 b/8bca04ab0c7abd545e1b4370f1e13e1e8c72a6d1
+index 8b0339b3cd..8bca04ab0c 100644
+--- a/8b0339b3cd4a187205d6cf760c0940001d8a11e7
++++ b/8bca04ab0c7abd545e1b4370f1e13e1e8c72a6d1
+@@ -1,8 +1,7 @@
+ public static void printStackTrace() {
+-    log("#################################################");
+     StackTraceElement[] stackList = Thread.currentThread().getStackTrace();
+     int length = stackList.length;
+     for (int loop = 2; loop < length; loop++) {
+-        log(stackList[loop].toString());
++        logger.info("***" + stackList[loop].toString());
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/ef7655c944028460eca217a7be9caf9da397d99e b/9b936fb2d86fccd4a50bd6885bb1c269649a43e8
+index ef7655c944..9b936fb2d8 100644
+--- a/ef7655c944028460eca217a7be9caf9da397d99e
++++ b/9b936fb2d86fccd4a50bd6885bb1c269649a43e8
+@@ -1,11 +1,11 @@
+ @Override
+-public void changeEvent(DebuggerContextImpl newContext, int event) {
+-    if (DebuggerSession.EVENT_ATTACHED == event || DebuggerSession.EVENT_RESUME == event) {
++public void changeEvent(DebuggerContextImpl newContext, DebuggerSession.Event event) {
++    if (DebuggerSession.Event.ATTACHED == event || DebuggerSession.Event.RESUME == event) {
+         startLabelsUpdate();
+-    } else if (DebuggerSession.EVENT_PAUSE == event || DebuggerSession.EVENT_DETACHED == event || DebuggerSession.EVENT_DISPOSE == event) {
++    } else if (DebuggerSession.Event.PAUSE == event || DebuggerSession.Event.DETACHED == event || DebuggerSession.Event.DISPOSE == event) {
+         myUpdateLabelsAlarm.cancelAllRequests();
+     }
+-    if (DebuggerSession.EVENT_DETACHED == event || DebuggerSession.EVENT_DISPOSE == event) {
++    if (DebuggerSession.Event.DETACHED == event || DebuggerSession.Event.DISPOSE == event) {
+         stateManager.removeListener(this);
+     }
+ }
+\ No newline at end of file

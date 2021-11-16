@@ -1,0 +1,12 @@
+diff --git a/e4faf833f564255f2a33fdfbf6c1176820bcf328 b/36f18f0f5e29e459755a757d23374decacb03d1e
+index e4faf833f5..36f18f0f5e 100644
+--- a/e4faf833f564255f2a33fdfbf6c1176820bcf328
++++ b/36f18f0f5e29e459755a757d23374decacb03d1e
+@@ -1,3 +1,5 @@
+ public boolean arePackagesTheSame(PsiElement element1, PsiElement element2) {
+-    return false;
++    PsiFile file1 = ResolveUtil.getContextFile(element1);
++    PsiFile file2 = ResolveUtil.getContextFile(element2);
++    return Comparing.equal(file1, file2);
+ }
+\ No newline at end of file

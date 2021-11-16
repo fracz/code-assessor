@@ -1,0 +1,19 @@
+diff --git a/958f43b5d054a843aca82395a9b299624d555b71 b/842b43e610e0cd0c3d72320591d8fc4b112c03c7
+index 958f43b5d0..842b43e610 100644
+--- a/958f43b5d054a843aca82395a9b299624d555b71
++++ b/842b43e610e0cd0c3d72320591d8fc4b112c03c7
+@@ -1,10 +1,11 @@
+ public void visitField(@NotNull PsiField field) {
+     super.visitField(field);
+     if (!field.hasModifierProperty(PsiModifier.VOLATILE)) {
+         return;
+     }
+     final PsiType type = field.getType();
+-    if (type.getArrayDimensions() != 0) {
+-        registerFieldError(field);
++    if (type.getArrayDimensions() == 0) {
++        return;
+     }
++    registerFieldError(field, type);
+ }
+\ No newline at end of file

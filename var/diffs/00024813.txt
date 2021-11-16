@@ -1,0 +1,10 @@
+diff --git a/ed5f779d3c08bda8be3e5ee8260192439292c977 b/b368afd054ad5c54e08d09abbfeacc2b63d862fc
+index ed5f779d3c..b368afd054 100644
+--- a/ed5f779d3c08bda8be3e5ee8260192439292c977
++++ b/b368afd054ad5c54e08d09abbfeacc2b63d862fc
+@@ -1,3 +1,3 @@
+ public static void savePaxosProposal(Commit proposal) {
+-    executeInternal(String.format("UPDATE system.%s USING TIMESTAMP ? AND TTL ? SET proposal_ballot = ?, proposal = ? WHERE row_key = ? AND cf_id = ?", PAXOS), UUIDGen.microsTimestamp(proposal.ballot), paxosTtl(proposal.update.metadata), proposal.ballot, proposal.update.toBytes(), proposal.key, proposal.update.id());
++    executeInternal(String.format("UPDATE system.%s USING TIMESTAMP ? AND TTL ? SET proposal_ballot = ?, proposal = ?, proposal_version = ? WHERE row_key = ? AND cf_id = ?", PAXOS), UUIDGen.microsTimestamp(proposal.ballot), paxosTtl(proposal.update.metadata()), proposal.ballot, PartitionUpdate.toBytes(proposal.update, MessagingService.current_version), MessagingService.current_version, proposal.update.partitionKey().getKey(), proposal.update.metadata().cfId);
+ }
+\ No newline at end of file

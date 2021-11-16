@@ -1,0 +1,27 @@
+diff --git a/94c2d247205c44a99ebd1c09cca195d57e870d81 b/bbaaecb99dbee593b145585f21418a71cd3fd66e
+index 94c2d24720..bbaaecb99d 100644
+--- a/94c2d247205c44a99ebd1c09cca195d57e870d81
++++ b/bbaaecb99dbee593b145585f21418a71cd3fd66e
+@@ -1,16 +1,16 @@
+ @Nullable
+ private static PsiLocalVariable getIncrementedVariable(PsiExpression expression, TerminalBlock tb, List<PsiVariable> variables) {
+     // have only one non-final variable
+     if (variables.size() != 1)
+         return null;
+     // have single expression which is either ++x or x++ or x+=1 or x=x+1
+-    PsiExpression operand = extractIncrementedLValue(expression);
+-    if (!(operand instanceof PsiReferenceExpression))
++    PsiReferenceExpression operand = tryCast(extractIncrementedLValue(expression), PsiReferenceExpression.class);
++    if (operand == null)
+         return null;
+-    PsiElement element = ((PsiReferenceExpression) operand).resolve();
++    PsiLocalVariable variable = tryCast(operand.resolve(), PsiLocalVariable.class);
+     // the referred variable is the same as non-final variable and not used in intermediate operations
+-    if (element instanceof PsiLocalVariable && variables.contains(element) && !tb.isReferencedInOperations((PsiVariable) element)) {
+-        return (PsiLocalVariable) element;
++    if (variable != null && variables.contains(variable) && !tb.isReferencedInOperations(variable)) {
++        return variable;
+     }
+     return null;
+ }
+\ No newline at end of file

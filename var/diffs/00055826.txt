@@ -1,0 +1,13 @@
+diff --git a/34a6916d6f6dcd9517749589b933fa5fab9bbdc1 b/204ced0ba7ce46c233adc2fb1fb0db51c8216bec
+index 34a6916d6f..204ced0ba7 100644
+--- a/34a6916d6f6dcd9517749589b933fa5fab9bbdc1
++++ b/204ced0ba7ce46c233adc2fb1fb0db51c8216bec
+@@ -1,6 +1,6 @@
+ @Test
+ public void emptyBodyWithSingle() throws Exception {
+     ResolvableType type = httpEntityType(forClassWithGenerics(Single.class, String.class));
+     HttpEntity<Single<String>> entity = resolveValueWithEmptyBody(type);
+-    TestSubscriber.subscribe(RxReactiveStreams.toPublisher(entity.getBody())).assertNoValues().assertError(ServerWebInputException.class);
++    ScriptedSubscriber.create().expectNextCount(0).expectError(ServerWebInputException.class).verify(RxReactiveStreams.toPublisher(entity.getBody()));
+ }
+\ No newline at end of file

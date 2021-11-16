@@ -1,0 +1,17 @@
+diff --git a/295a9381f53cafb5e526bda988d9429c62f308f1 b/857c71f029be3617a37018f515cc8265f56971c6
+index 295a9381f5..857c71f029 100644
+--- a/295a9381f53cafb5e526bda988d9429c62f308f1
++++ b/857c71f029be3617a37018f515cc8265f56971c6
+@@ -1,4 +1,10 @@
+ @Override
+ public void run() {
+-    getFetcher().fetch(false);
++    try {
++        final Resource[] resources = ResourceCRLRevocationChecker.this.getResources();
++        final Map<URL, X509CRL> results = getFetcher().fetch(resources);
++        ResourceCRLRevocationChecker.this.addCrls(results);
++    } catch (final Exception e) {
++        logger.debug(e.getMessage(), e);
++    }
+ }
+\ No newline at end of file

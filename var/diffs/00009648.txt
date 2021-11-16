@@ -1,0 +1,12 @@
+diff --git a/07e46567aca4c8cc927ee6575fa0dec7720a18d5 b/9e7c89605c92cd8768d3a58f4a75a7b901476749
+index 07e46567ac..9e7c89605c 100644
+--- a/07e46567aca4c8cc927ee6575fa0dec7720a18d5
++++ b/9e7c89605c92cd8768d3a58f4a75a7b901476749
+@@ -1,5 +1,5 @@
+ public String getErrorMessage(final String s, final ConvertContext context) {
+     final DomElement parent = context.getInvocationElement().getParent();
+     assert parent != null;
+-    return CodeInsightBundle.message("error.cannot.resolve.0.1", TypeNameManager.getTypeName(parent.getClass()), s);
++    return CodeInsightBundle.message("error.cannot.resolve.0.1", TypePresentationService.getService().getTypeName(parent), s);
+ }
+\ No newline at end of file

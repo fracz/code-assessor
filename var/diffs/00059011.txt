@@ -1,0 +1,27 @@
+diff --git a/c39a478c299cd6535a7d4dc8c735a223237517a8 b/8964b091211b04a1ffbfae05b7b96174d959c5e8
+index c39a478c29..8964b09121 100644
+--- a/c39a478c299cd6535a7d4dc8c735a223237517a8
++++ b/8964b091211b04a1ffbfae05b7b96174d959c5e8
+@@ -1,15 +1,13 @@
+ @Override
+-public E next() throws StorageException {
+-    boolean ok = false;
++public StaticBuffer next() throws StorageException {
+     nextInvocationCounter.inc();
+-    final Timer.Context tc = nextTimer.time();
++    Timer.Context tc = nextTimer.time();
+     try {
+-        E result = i.next();
+-        ok = true;
+-        return result;
++        return iterator.next();
++    } catch (StorageException e) {
++        nextFailureCounter.inc();
++        throw e;
+     } finally {
+         tc.stop();
+-        if (!ok)
+-            nextFailureCounter.inc();
+     }
+ }
+\ No newline at end of file

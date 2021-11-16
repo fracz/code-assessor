@@ -1,0 +1,18 @@
+diff --git a/2d14b5177f6cdf6a8d98e7c2264e26896e7d68e2 b/4ea3f3dba404a3188d5982b1793b6b9dd008b66d
+index 2d14b5177f..4ea3f3dba4 100644
+--- a/2d14b5177f6cdf6a8d98e7c2264e26896e7d68e2
++++ b/4ea3f3dba404a3188d5982b1793b6b9dd008b66d
+@@ -1,10 +1,5 @@
++@Nullable
+ @Override
+ public PsiType getNominalType() {
+-    if (getParent() instanceof GrThrowStatement)
+-        return super.getNominalType();
+-    GroovyResolveResult[] candidates = multiResolve(true);
+-    if (candidates.length == 1) {
+-        return extractLastParameterType(candidates[0]);
+-    }
+-    return null;
++    return GroovyIndexPropertyUtil.getSimpleArrayAccessType(this);
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/aea356b567c66e41d784846efe772d0ba8ed4956 b/70a857003907ea433292ca7de96cedf101de9f6d
+index aea356b567..70a8570039 100644
+--- a/aea356b567c66e41d784846efe772d0ba8ed4956
++++ b/70a857003907ea433292ca7de96cedf101de9f6d
+@@ -1,10 +1,10 @@
+ private ReadableByteChannel getLogicalLogOrMyself(long version) throws IOException {
+     if (version < logVersion) {
+         return getLogicalLog(version);
+     } else if (version == logVersion) {
+-        String currentLogName = fileName + (currentLog == LOG1 ? ".1" : ".2");
++        String currentLogName = getCurrentLogFileName();
+         return new RandomAccessFile(currentLogName, "r").getChannel();
+     } else {
+         throw new RuntimeException("Version[" + version + "] is higher then current log version[" + logVersion + "]");
+     }
+ }
+\ No newline at end of file

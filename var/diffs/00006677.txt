@@ -1,0 +1,12 @@
+diff --git a/cd1b4df466ebcea918342e4a7272f890be2febc7 b/414df6c05fdf0d932a41bcfca4799f3b35563b97
+index cd1b4df466..414df6c05f 100644
+--- a/cd1b4df466ebcea918342e4a7272f890be2febc7
++++ b/414df6c05fdf0d932a41bcfca4799f3b35563b97
+@@ -1,4 +1,5 @@
+ @Override
+ public String getElementText(PsiElement element) {
+-    return getFileTarget(element).getName();
++    final PsiFile file = getContainingFile(element);
++    return file != null ? file.getName() : super.getElementText(element);
+ }
+\ No newline at end of file

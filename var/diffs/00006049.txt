@@ -1,0 +1,16 @@
+diff --git a/a75781f3a11df9ceb652f8e3726d36c84a7de31a b/28d0d9fb2d15003b18c4811ac8e8d902c8403c91
+index a75781f3a1..28d0d9fb2d 100644
+--- a/a75781f3a11df9ceb652f8e3726d36c84a7de31a
++++ b/28d0d9fb2d15003b18c4811ac8e8d902c8403c91
+@@ -1,6 +1,8 @@
+-private Presentation performAction(boolean inlineThisOnly, String dirToCopy) {
++private Pair<Presentation, AndroidInlineTestConfig> performAction(boolean inlineThisOnly, String dirToCopy) {
+     final String testName = getTestName(true);
+     final VirtualFile f = myFixture.copyFileToProject(BASE_PATH + testName + ".xml", dirToCopy + "/test" + testName + "_" + Boolean.toString(inlineThisOnly) + ".xml");
+     myFixture.configureFromExistingVirtualFile(f);
+-    return myFixture.testAction(new AndroidInlineStyleReferenceAction(new AndroidInlineTestConfig(inlineThisOnly)));
++    final AndroidInlineTestConfig config = new AndroidInlineTestConfig(inlineThisOnly);
++    final Presentation presentation = myFixture.testAction(new AndroidInlineStyleReferenceAction(config));
++    return Pair.create(presentation, config);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/140320a4551af91c2486255026b1ed73a92e333d b/04dea1a490a9c2870029cc9752e0029347d324fc
+index 140320a455..04dea1a490 100644
+--- a/140320a4551af91c2486255026b1ed73a92e333d
++++ b/04dea1a490a9c2870029cc9752e0029347d324fc
+@@ -1,7 +1,7 @@
+ @Test(dataProvider = "GitConnectionFactory", dataProviderClass = org.eclipse.che.git.impl.GitConnectionFactoryProvider.class, expectedExceptions = GitException.class)
+ public void testCommitWithCleanIndex(GitConnectionFactory connectionFactory) throws GitException, IOException {
+     // given
+     GitConnection connection = connectToGitRepositoryWithContent(connectionFactory, repository);
+     // when
+-    connection.commit(newDto(CommitRequest.class)).withMessage("test commit");
++    connection.commit(CommitParams.create("test commit"));
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/57631d4339234c43132589b72c83e823c2dae2f1 b/6be7932114e44b9cd968f4f6a1dc42b138ab2397
+index 57631d4339..6be7932114 100644
+--- a/57631d4339234c43132589b72c83e823c2dae2f1
++++ b/6be7932114e44b9cd968f4f6a1dc42b138ab2397
+@@ -1,10 +1,11 @@
+-void destroyHandles() {
++@Override
++protected void destroyHandles() {
+     checkCudnn(cudnnDestroyActivationDescriptor(activationDesc));
+     checkCudnn(cudnnDestroyConvolutionDescriptor(convDesc));
+     checkCudnn(cudnnDestroyFilterDescriptor(filterDesc));
+     checkCudnn(cudnnDestroyTensorDescriptor(srcTensorDesc));
+     checkCudnn(cudnnDestroyTensorDescriptor(dstTensorDesc));
+     checkCudnn(cudnnDestroyTensorDescriptor(biasTensorDesc));
+     checkCudnn(cudnnDestroyTensorDescriptor(deltaTensorDesc));
+-    checkCudnn(cudnnDestroy(this));
++    super.destroyHandles();
+ }
+\ No newline at end of file

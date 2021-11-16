@@ -1,0 +1,17 @@
+diff --git a/905bb7c7623cf76c27cdcdb9a5c1d7761d525c97 b/c37154d363c14d1b9db246b9e0c1d45768ff2eaf
+index 905bb7c762..c37154d363 100644
+--- a/905bb7c7623cf76c27cdcdb9a5c1d7761d525c97
++++ b/c37154d363c14d1b9db246b9e0c1d45768ff2eaf
+@@ -1,9 +1,10 @@
+ private void visit(GrReferenceElement element) {
+     final PsiElement resolved = element.resolve();
+     final TextAttributesKey attribute = GrHighlightUtil.getDeclarationHighlightingAttribute(resolved, element);
+     if (attribute != null) {
+         final PsiElement refNameElement = GrHighlightUtil.getElementToHighlight(element);
+         assert myInfos != null;
+-        myInfos.add(HighlightInfo.createHighlightInfo(HighlightInfoType.INFORMATION, refNameElement, null, attribute));
++        HighlightInfo.Builder builder = HighlightInfo.newHighlightInfo(HighlightInfoType.INFORMATION).range(refNameElement);
++        myInfos.add(builder.needsUpdateOnTyping(false).textAttributes(attribute).create());
+     }
+ }
+\ No newline at end of file

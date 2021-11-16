@@ -1,0 +1,25 @@
+diff --git a/d5a7eeb91620d84626da3c0f765736626387283c b/44b25d70066de4136119138eea8a4a09458ebad6
+index d5a7eeb916..44b25d7006 100644
+--- a/d5a7eeb91620d84626da3c0f765736626387283c
++++ b/44b25d70066de4136119138eea8a4a09458ebad6
+@@ -1,15 +1,15 @@
++@Test
+ public void testAllOperations() {
+-    MockControl control = MockControl.createControl(ConfigurableApplicationContext.class);
+-    ConfigurableApplicationContext ctx = (ConfigurableApplicationContext) control.getMock();
++    ConfigurableApplicationContext ctx = createMock(ConfigurableApplicationContext.class);
+     ctx.close();
+-    control.replay();
++    replay(ctx);
+     ContextBeanFactoryReference bfr = new ContextBeanFactoryReference(ctx);
+     assertNotNull(bfr.getFactory());
+     bfr.release();
+     try {
+         bfr.getFactory();
+     } catch (IllegalStateException e) {
+     // expected
+     }
+-    control.verify();
++    verify(ctx);
+ }
+\ No newline at end of file

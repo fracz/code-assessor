@@ -1,0 +1,16 @@
+diff --git a/10dbdf6911b9dd5d7fe973b64dc5875860c84fa9 b/0b3a920eb173d3ac0fe7bf51165559121c80bdb8
+index 10dbdf6911..0b3a920eb1 100644
+--- a/10dbdf6911b9dd5d7fe973b64dc5875860c84fa9
++++ b/0b3a920eb173d3ac0fe7bf51165559121c80bdb8
+@@ -1,6 +1,7 @@
+ // Keep information about try blocks that cover current instruction -
+ // pushing and popping it to stack entering and exiting tryCatchBlock start and end labels
+-public void updateCoveringTryBlocks(@NotNull AbstractInsnNode curIns) {
+-    super.updateCoveringTryBlocks(curIns, false);
+-    checkCoveringBlocksInvariant(getCoveringFromInnermost());
++@Override
++protected void updateCoveringTryBlocks(@NotNull LabelNode curIns, boolean directOrder) {
++    super.updateCoveringTryBlocks(curIns, directOrder);
++    checkCoveringBlocksInvariant(getTryBlocksMetaInfo().getCurrentIntervals());
+ }
+\ No newline at end of file

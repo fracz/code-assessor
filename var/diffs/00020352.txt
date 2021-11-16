@@ -1,0 +1,15 @@
+diff --git a/49f9aa25d3737676b159638261b29ec9a9bd6554 b/4c1cba4d2d8f1f5f2a18ed96a6ac9c0979bc6511
+index 49f9aa25d3..4c1cba4d2d 100644
+--- a/49f9aa25d3737676b159638261b29ec9a9bd6554
++++ b/4c1cba4d2d8f1f5f2a18ed96a6ac9c0979bc6511
+@@ -1,6 +1,6 @@
+ public void setOffset(SQLExpr offset) {
+-    if (offset != null) {
+-        offset.setParent(this);
++    if (limit == null) {
++        limit = new SQLLimit();
+     }
+-    this.offset = offset;
++    this.limit.setOffset(offset);
+ }
+\ No newline at end of file

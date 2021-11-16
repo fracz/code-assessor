@@ -1,0 +1,21 @@
+diff --git a/0f7887e49843696071283f43707122306c547e46 b/9fcbd7851d0493c02d6877a8de15b0ce5c4ae766
+index 0f7887e498..9fcbd7851d 100644
+--- a/0f7887e49843696071283f43707122306c547e46
++++ b/9fcbd7851d0493c02d6877a8de15b0ce5c4ae766
+@@ -1,14 +1,14 @@
+ @Test(expectedExceptions = IllegalStateException.class)
+ public void shouldThrowExceptionAfterClosedReadTransaction() {
++    SharedGroup db = new SharedGroup(createDBFileName(), SharedGroup.Durability.ASYNC);
+     ReadTransaction rt = db.beginRead();
+     try {
+         Table tbl = rt.getTable("EmployeeTable");
+         rt.endRead();
+         // Should throw exception, the table is invalid when transaction has been closed
+         tbl.getColumnCount();
+         assert (false);
+     } finally {
+         rt.endRead();
+-        clear();
+     }
+ }
+\ No newline at end of file

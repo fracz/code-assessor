@@ -1,0 +1,19 @@
+diff --git a/9839a8be641318e4b72d9c668350b66de7c68281 b/6cb5228e9c123242a8d225c4778e31a841bc77b0
+index 9839a8be64..6cb5228e9c 100644
+--- a/9839a8be641318e4b72d9c668350b66de7c68281
++++ b/6cb5228e9c123242a8d225c4778e31a841bc77b0
+@@ -1,11 +1,10 @@
+-@Override
+-protected boolean isLexicalNode(@NotNull PsiElement element) {
+-    if (super.isLexicalNode(element)) {
++private static boolean isLexicalNode(@NotNull PsiElement element) {
++    if (element instanceof PsiWhiteSpace || element instanceof PsiErrorElement) {
+         return true;
+     }
+     if (!(element instanceof LeafElement)) {
+         return false;
+     }
+     IElementType type = ((LeafElement) element).getElementType();
+     return type == JSTokenTypes.COMMA || type == JSTokenTypes.SEMICOLON;
+ }
+\ No newline at end of file

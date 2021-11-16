@@ -1,0 +1,14 @@
+diff --git a/d814c850606fc4ea599ede3f162178c024972193 b/c014c55a53a56a33ef9cd80416bdb0de6eb09f01
+index d814c85060..c014c55a53 100644
+--- a/d814c850606fc4ea599ede3f162178c024972193
++++ b/c014c55a53a56a33ef9cd80416bdb0de6eb09f01
+@@ -1,3 +1,6 @@
+-public SQLStatement parseUse() {
+-    throw new ParserException("TODO " + lexer.token());
++public SQLUseStatement parseUse() {
++    accept(Token.USE);
++    SQLUseStatement stmt = new SQLUseStatement();
++    stmt.setDatabase(this.exprParser.name());
++    return stmt;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/acc0e573755ca28aa8a1cd5facb8f842df337448 b/75284d4462ffa1717cf84f0f07031816e80d84fb
+index acc0e57375..75284d4462 100644
+--- a/acc0e573755ca28aa8a1cd5facb8f842df337448
++++ b/75284d4462ffa1717cf84f0f07031816e80d84fb
+@@ -1,7 +1,5 @@
+ public void threadStarted(ThreadReference thread) {
+     DebuggerManagerThreadImpl.assertIsManagerThread();
+-    final Map<ThreadReference, ThreadReferenceProxyImpl> allThreads = myAllThreads;
+-    if (!allThreads.containsKey(thread)) {
+-        allThreads.put(thread, new ThreadReferenceProxyImpl(this, thread));
+-    }
++    // add a proxy
++    getThreadReferenceProxy(thread);
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/50ceb5164ae69b19bc8ac052ca606579d2e30b5e b/0d9206f58d9c7157b6f2b86efff35f2eed4704f2
+index 50ceb5164a..0d9206f58d 100644
+--- a/50ceb5164ae69b19bc8ac052ca606579d2e30b5e
++++ b/0d9206f58d9c7157b6f2b86efff35f2eed4704f2
+@@ -1,6 +1,5 @@
+ @Override
+ public void update(final AnActionEvent e) {
+     super.update(e);
+-    final Presentation presentation = e.getPresentation();
+-    presentation.setText(ProjectBundle.message(myEditTestSources ? "module.toggle.test.sources.action" : "module.toggle.sources.action"));
++    e.getPresentation().setText(myEditHandler.getRootTypeName());
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/15ede4088e7a8f8fc59e16549e41052e49824628 b/56a6273d30a401f7fda851b1a4b69b1e7768d2ec
+index 15ede4088e..56a6273d30 100644
+--- a/15ede4088e7a8f8fc59e16549e41052e49824628
++++ b/56a6273d30a401f7fda851b1a4b69b1e7768d2ec
+@@ -1,6 +1,5 @@
+ @Override
+-public Integer read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
++public void read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
+     version = network.readVersion();
+     changes = OBinaryProtocolHelper.readCollectionChanges(network);
+-    return version;
+ }
+\ No newline at end of file

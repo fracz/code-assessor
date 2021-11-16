@@ -1,0 +1,15 @@
+diff --git a/a0bc8be9ea2f06264036a69ae2a86ad854660c5f b/058b300142c79eafd61a76c63b58be3ebb5fc1f1
+index a0bc8be9ea..058b300142 100644
+--- a/a0bc8be9ea2f06264036a69ae2a86ad854660c5f
++++ b/058b300142c79eafd61a76c63b58be3ebb5fc1f1
+@@ -1,5 +1,5 @@
+-public synchronized VerifyingMode pullVerifyingMode() {
+-    VerifyingMode verifyingMode = verifyingModeLocal.get();
+-    verifyingModeLocal.set(null);
+-    return verifyingMode;
++public VerifyingMode pullVerifyingMode() {
++    VerifyingMode temp = verifyingModeLocal;
++    verifyingModeLocal = null;
++    return temp;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/a0b61d97b3c3acd3989cf9767c305ebcf918956a b/3786676c57b6c658f4b75a3141152359caf6f1b6
+index a0b61d97b3..3786676c57 100644
+--- a/a0b61d97b3c3acd3989cf9767c305ebcf918956a
++++ b/3786676c57b6c658f4b75a3141152359caf6f1b6
+@@ -1,8 +1,8 @@
+-public static void initDiffFrame(FrameWrapper frameWrapper, final DiffPanelImpl diffPanel) {
++public static void initDiffFrame(FrameWrapper frameWrapper, final DiffPanelImpl diffPanel, final JComponent mainComponent) {
+     Project project = diffPanel.getProject();
+-    frameWrapper.setComponent(diffPanel.getComponent());
++    frameWrapper.setComponent(mainComponent);
+     frameWrapper.setProject(project);
+     frameWrapper.setImage(ImageLoader.loadFromResource("/diff/Diff.png"));
+     frameWrapper.setPreferredFocusedComponent(diffPanel.getPreferredFocusedComponent());
+     frameWrapper.closeOnEsc();
+ }
+\ No newline at end of file

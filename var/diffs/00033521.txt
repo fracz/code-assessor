@@ -1,0 +1,31 @@
+diff --git a/eadfc5ced5ec2db986afd0caa8c2ba59e62f5dcc b/7ab9ef89158dbca054653931d751f4181277ce8e
+index eadfc5ced5..7ab9ef8915 100644
+--- a/eadfc5ced5ec2db986afd0caa8c2ba59e62f5dcc
++++ b/7ab9ef89158dbca054653931d751f4181277ce8e
+@@ -1,20 +1,18 @@
+-public void validate(String version, BuildOperationParametersVersion1 operationParameters) {
+-    GradleVersion ver = GradleVersion.version(version);
+-    // TODO SF don't need an introspector here, as we're in the consumer. Refactor.
+-    CompatibleIntrospector introspector = new CompatibleIntrospector(operationParameters);
+-    if (introspector.isConfigured("getJavaHome")) {
++public void validate(ConsumerConnection connection, ConsumerOperationParameters operationParameters) {
++    GradleVersion ver = GradleVersion.version(connection.getMetaData().getVersion());
++    if (operationParameters.getJavaHome() != null) {
+         if (lessThan(ver, "1.0-milestone-8")) {
+             throw Exceptions.unsupportedOperationConfiguration("modelBuilder.setJavaHome() and buildLauncher.setJavaHome()");
+         }
+     }
+-    if (introspector.isConfigured("getJvmArguments")) {
++    if (operationParameters.getJvmArguments() != null) {
+         if (lessThan(ver, "1.0-milestone-8")) {
+             throw Exceptions.unsupportedOperationConfiguration("modelBuilder.setJvmArguments() and buildLauncher.setJvmArguments()");
+         }
+     }
+-    if (introspector.isConfigured("getStandardInput")) {
++    if (operationParameters.getStandardInput() != null) {
+         if (lessThan(ver, "1.0-milestone-8")) {
+             throw Exceptions.unsupportedOperationConfiguration("modelBuilder.setStandardInput() and buildLauncher.setStandardInput()");
+         }
+     }
+ }
+\ No newline at end of file

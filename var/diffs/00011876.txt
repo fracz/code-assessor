@@ -1,0 +1,20 @@
+diff --git a/f56cc1270c25fbb7b79b406c15eda5c1c794e917 b/5d5a43371f27ee7d04b62438f1c9dd069c280bd0
+index f56cc1270c..5d5a43371f 100644
+--- a/f56cc1270c25fbb7b79b406c15eda5c1c794e917
++++ b/5d5a43371f27ee7d04b62438f1c9dd069c280bd0
+@@ -1,9 +1,9 @@
+ @Nullable
+-public String quickCheckHaveStuff() {
+-    if (mySteps.isEmpty())
+-        return "Nothing selected to show diff";
++public void quickCheckHaveStuff() throws VcsException {
++    if (mySteps.isEmpty()) {
++        throw new VcsException("Nothing selected to show diff");
++    }
+     if (mySteps.size() == 1) {
+-        return mySteps.get(0).haveStuff();
++        mySteps.get(0).haveStuff();
+     }
+-    return null;
+ }
+\ No newline at end of file

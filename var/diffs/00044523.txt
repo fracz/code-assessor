@@ -1,0 +1,22 @@
+diff --git a/1820c3cd8b29af977016fd2397c3d92d6eb1372e b/0a914048d3a91cb39576d726708911ad8993eafe
+index 1820c3cd8b..0a914048d3 100644
+--- a/1820c3cd8b29af977016fd2397c3d92d6eb1372e
++++ b/0a914048d3a91cb39576d726708911ad8993eafe
+@@ -1,13 +1,12 @@
+ /**
+  * Returns the server information in form of document.
+  *
+  * @throws IOException
+  */
+ public synchronized ODocument getServerInfo() throws IOException {
+-    OBinaryRequest request = new OGetServerInfoRequest();
+-    OBinaryResponse<String> response = new OGetServerInfoResponse();
+-    String result = networkAdminOperation(request, response, "Cannot retrieve server information");
++    OGetServerInfoRequest request = new OGetServerInfoRequest();
++    OGetServerInfoResponse response = networkAdminOperation(request, "Cannot retrieve server information");
+     ODocument res = new ODocument();
+-    res.fromJSON(result);
++    res.fromJSON(response.getResult());
+     return res;
+ }
+\ No newline at end of file

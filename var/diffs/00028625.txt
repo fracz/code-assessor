@@ -1,0 +1,15 @@
+diff --git a/64f9b4488f61d130f2a27ca852b9db83ce5a337e b/ea31234c6286634e8eb73a3440565a97e5608488
+index 64f9b4488f..ea31234c62 100644
+--- a/64f9b4488f61d130f2a27ca852b9db83ce5a337e
++++ b/ea31234c6286634e8eb73a3440565a97e5608488
+@@ -1,7 +1,8 @@
+ public Collection<DfsSearchResult> obtainDfsResults() {
+     Collection<DfsSearchResult> dfsSearchResults;
+     while ((dfsSearchResults = cacheDfsResults.poll()) == null) {
+-        cacheDfsResults.offer(new LinkedTransferQueue<DfsSearchResult>());
++        Queue<DfsSearchResult> offer = ConcurrentCollections.newQueue();
++        cacheDfsResults.offer(offer);
+     }
+     return dfsSearchResults;
+ }
+\ No newline at end of file

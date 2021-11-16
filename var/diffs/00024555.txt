@@ -1,0 +1,12 @@
+diff --git a/72fadd70f07ba66d45c50f84822ea172ae0918af b/73a01e70c2d10929955df84b60238f800d74e559
+index 72fadd70f0..73a01e70c2 100644
+--- a/72fadd70f07ba66d45c50f84822ea172ae0918af
++++ b/73a01e70c2d10929955df84b60238f800d74e559
+@@ -1,4 +1,4 @@
+ @Override
+-public List<Row> search(ExtendedFilter filter) {
+-    return Arrays.asList(new Row(LAST_INDEXED_KEY, LAST_INDEXED_ROW));
++public UnfilteredPartitionIterator search(ReadCommand filter, ReadOrderGroup orderGroup) {
++    return new SingletonUnfilteredPartitionIterator(LAST_INDEXED_PARTITION, false);
+ }
+\ No newline at end of file

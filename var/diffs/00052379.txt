@@ -1,0 +1,17 @@
+diff --git a/8e4982e5a708b46619b21d5539f7cb982bb867c7 b/1c95c6283a8339b068711814e4729895556a3e35
+index 8e4982e5a7..1c95c6283a 100644
+--- a/8e4982e5a708b46619b21d5539f7cb982bb867c7
++++ b/1c95c6283a8339b068711814e4729895556a3e35
+@@ -1,10 +1,10 @@
+ @Override
+ public final void setMaxFieldSize(final int max) throws SQLException {
+     if (getRoutedStatements().isEmpty()) {
+-        recordMethodInvocation(Statement.class, "setMaxFieldSize", new Class[] { int.class }, new Object[] { max });
++        recordMethodInvocation(targetClass, "setMaxFieldSize", new Class[] { int.class }, new Object[] { max });
+         return;
+     }
+     for (Statement each : getRoutedStatements()) {
+         each.setMaxFieldSize(max);
+     }
+ }
+\ No newline at end of file

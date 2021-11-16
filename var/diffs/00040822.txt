@@ -1,0 +1,28 @@
+diff --git a/d3e8160077b996649a45378d58c3feb4480a9d19 b/b3061b8d0fe632d78d576e543c2511345926aeb9
+index d3e8160077..b3061b8d0f 100644
+--- a/d3e8160077b996649a45378d58c3feb4480a9d19
++++ b/b3061b8d0fe632d78d576e543c2511345926aeb9
+@@ -1,16 +1,18 @@
+ /**
+- * <!-- begin-user-doc -->
+- * <!-- end-user-doc -->
++ * <!-- begin-user-doc --> <!-- end-user-doc -->
++ *
+  * @generated NOT
+  */
+ public DecimalValue fetchSensorValue() {
+     try {
+-        // TODO do not return anything update model instead: thread safe?
+-        return new DecimalValue(tinkerforgeDevice.getAirPressure() / 1000);
++        int airPressure = tinkerforgeDevice.getAirPressure();
++        DecimalValue value = Tools.calculate1000(airPressure);
++        setSensorValue(value);
++        return value;
+     } catch (TimeoutException e) {
+         TinkerforgeErrorHandler.handleError(this, TinkerforgeErrorHandler.TF_TIMEOUT_EXCEPTION, e);
+     } catch (NotConnectedException e) {
+         TinkerforgeErrorHandler.handleError(this, TinkerforgeErrorHandler.TF_NOT_CONNECTION_EXCEPTION, e);
+     }
+     return null;
+ }
+\ No newline at end of file

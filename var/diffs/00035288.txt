@@ -1,0 +1,15 @@
+diff --git a/755d451a51f263bc82603287cbd335b05b3ccf08 b/dc536658a3457e63cf050cefc46d9baf048efa18
+index 755d451a51..dc536658a3 100644
+--- a/755d451a51f263bc82603287cbd335b05b3ccf08
++++ b/dc536658a3457e63cf050cefc46d9baf048efa18
+@@ -1,5 +1,7 @@
+ public float getMaxHeight() {
+-    float height = 0;
+-    for (int i = 0, n = children.size(); i < n; i++) height = Math.max(height, LibgdxToolkit.instance.getMaxHeight(children.get(i)));
++    if (children.isEmpty())
++        return 0;
++    float height = Float.MAX_VALUE;
++    for (int i = 0, n = children.size(); i < n; i++) height = Math.min(height, LibgdxToolkit.instance.getMaxHeight(children.get(i)));
+     return height * scaleY;
+ }
+\ No newline at end of file

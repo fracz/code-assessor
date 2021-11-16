@@ -1,0 +1,14 @@
+diff --git a/25e374e79a624255600739ed39995c39ae02284e b/3c2591638d36a98edaf5bb3ecb619f4eecea541a
+index 25e374e79a..3c2591638d 100644
+--- a/25e374e79a624255600739ed39995c39ae02284e
++++ b/3c2591638d36a98edaf5bb3ecb619f4eecea541a
+@@ -1,7 +1,6 @@
+ @Override
+-public Map<String, String> read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
++public void read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
+     configs = new HashMap<String, String>();
+     final int num = network.readShort();
+     for (int i = 0; i < num; ++i) configs.put(network.readString(), network.readString());
+-    return configs;
+ }
+\ No newline at end of file

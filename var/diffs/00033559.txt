@@ -1,0 +1,13 @@
+diff --git a/ff061923f8a5e076bbe80cb646355f68efd1a82c b/7bb4b26e0486ef0d1a5e5aac1d4ed1b2cc5077f3
+index ff061923f8..7bb4b26e04 100644
+--- a/ff061923f8a5e076bbe80cb646355f68efd1a82c
++++ b/7bb4b26e0486ef0d1a5e5aac1d4ed1b2cc5077f3
+@@ -1,6 +1,5 @@
+ public <T extends BinaryToolSpec> Compiler<T> createObjectiveCppCompiler() {
+     CommandLineTool<ObjectiveCppCompileSpec> commandLineTool = commandLineTool(ToolType.OBJECTIVECPP_COMPILER);
+-    commandLineTool.withSpecTransformer(withSystemArgs(ObjectiveCppCompileSpec.class, platformConfiguration.getObjectiveCppCompilerArgs()));
+-    ObjectiveCppCompiler objectiveCppCompiler = new ObjectiveCppCompiler(commandLineTool, tools.getArgTransformer(ToolType.OBJECTIVECPP_COMPILER), useCommandFile);
++    ObjectiveCppCompiler objectiveCppCompiler = new ObjectiveCppCompiler(commandLineTool, toolRegistry.getTool(ToolType.OBJECTIVECPP_COMPILER).getArgAction(), useCommandFile);
+     return (Compiler<T>) new OutputCleaningCompiler<ObjectiveCppCompileSpec>(objectiveCppCompiler, getOutputFileSuffix());
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/e9f8fe18a74040b937f418cea056b996d8945147 b/b0582f8af6cd0c81d9981ab8a1fdf0af18e685d0
+index e9f8fe18a7..b0582f8af6 100644
+--- a/e9f8fe18a74040b937f418cea056b996d8945147
++++ b/b0582f8af6cd0c81d9981ab8a1fdf0af18e685d0
+@@ -1,14 +1,12 @@
+-/**
+- * Updates block stack.
+- */
+ @Override
+ public boolean shouldTraverse(NodeTraversal nodeTraversal, Node n, Node parent) {
+     if (parent != null && NodeUtil.isTopLevel(parent)) {
+-        topLevelStatements.add(new TopLevelStatement(nodeTraversal.getModule(), n));
++        checkState(topLevelStatementDraft == null, n);
++        topLevelStatementDraft = initializeDraftStatement(nodeTraversal.getModule(), n);
+     }
+     // If node is a new basic block, put on basic block stack
+     if (isBlockBoundary(n, parent)) {
+         blockStack.add(new BasicBlock(peek(blockStack), n));
+     }
+     return true;
+ }
+\ No newline at end of file

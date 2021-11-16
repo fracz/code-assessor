@@ -1,0 +1,22 @@
+diff --git a/fbdbf7f359b903fd51899881e3cc06e8dd77705c b/aea6cb09be81ce51a15fb381d460d347cd643252
+index fbdbf7f359..aea6cb09be 100644
+--- a/fbdbf7f359b903fd51899881e3cc06e8dd77705c
++++ b/aea6cb09be81ce51a15fb381d460d347cd643252
+@@ -1,12 +1,11 @@
+ private boolean shouldLoad() {
+     for (; ; ) {
+-        final long time = clock.currentTime();
+-        final long current = reloadAt.get();
+-        if (current > time) {
++        final long now = clock.currentTime();
++        final long reloadTime = reloadAt.get();
++        if (reloadTime > now) {
+             return false;
+-        }
+-        if (reloadAt.compareAndSet(current, clock.plusMillis(time, timeoutMs))) {
++        } else if (reloadAt.compareAndSet(reloadTime, clock.plusMillis(now, timeoutMs))) {
+             return true;
+         }
+     }
+ }
+\ No newline at end of file

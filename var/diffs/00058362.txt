@@ -1,0 +1,17 @@
+diff --git a/23733d866480f7045bd4132306529da2c5aa5244 b/8033d4137c8a576851e88b954058c4e013f2ece5
+index 23733d8664..8033d4137c 100644
+--- a/23733d866480f7045bd4132306529da2c5aa5244
++++ b/8033d4137c8a576851e88b954058c4e013f2ece5
+@@ -1,10 +1,4 @@
+ @Override
+ public AtomicTitanQuery keys(String... type) {
+-    if (type.length == 0) {
+-        this.type = null;
+-    } else {
+-        Preconditions.checkArgument(type.length == 1);
+-        type(type[0]);
+-    }
+-    return this;
++    return labels(type);
+ }
+\ No newline at end of file

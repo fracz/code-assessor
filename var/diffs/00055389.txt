@@ -1,0 +1,16 @@
+diff --git a/a0e80a245b956497c888b28c9178e603f63d3175 b/dfe19cc280ba8fc5548608e16b6bb21ae05c8e80
+index a0e80a245b..dfe19cc280 100644
+--- a/a0e80a245b956497c888b28c9178e603f63d3175
++++ b/dfe19cc280ba8fc5548608e16b6bb21ae05c8e80
+@@ -1,8 +1,8 @@
+ @Test
+ public void testLoadResourceWithMultipleDocuments() throws Exception {
+     YamlPropertiesFactoryBean factory = new YamlPropertiesFactoryBean();
+     factory.setResources(new Resource[] { new ByteArrayResource("foo: bar\nspam: baz\n---\nfoo: bag".getBytes()) });
+     Properties properties = factory.getObject();
+-    assertEquals("bag", properties.get("foo"));
+-    assertEquals("baz", properties.get("spam"));
++    assertThat(properties.getProperty("foo"), equalTo("bag"));
++    assertThat(properties.getProperty("spam"), equalTo("baz"));
+ }
+\ No newline at end of file

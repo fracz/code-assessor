@@ -1,0 +1,16 @@
+diff --git a/f047ad0144cc995e779d6581b37b7500e8ee5ab0 b/0aba842c3b70b6e17c79b328b3acd7bdea8603bf
+index f047ad0144..0aba842c3b 100644
+--- a/f047ad0144cc995e779d6581b37b7500e8ee5ab0
++++ b/0aba842c3b70b6e17c79b328b3acd7bdea8603bf
+@@ -1,7 +1,7 @@
+ private static String getRevisionName(final ContentRevision revision, final File ioFile) {
+     String revisionName = revision.getRevisionNumber().asString();
+-    if (revisionName.length() == 0) {
+-        revisionName = new Date(ioFile.lastModified()).toString();
++    if (revisionName.length() > 0) {
++        return "(revision " + revisionName + ")";
+     }
+-    return revisionName;
++    return new Date(ioFile.lastModified()).toString();
+ }
+\ No newline at end of file

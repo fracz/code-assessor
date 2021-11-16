@@ -1,0 +1,23 @@
+diff --git a/f11ab1e504d5eed3cbdcb3563855611a7e5a24e0 b/7b581af3e4833a3f7f5903053c29495f47994727
+index f11ab1e504..7b581af3e4 100644
+--- a/f11ab1e504d5eed3cbdcb3563855611a7e5a24e0
++++ b/7b581af3e4833a3f7f5903053c29495f47994727
+@@ -1,14 +1,14 @@
+ /**
+  * Sends a zipped bugreport notification.
+  */
+-private static void sendZippedBugreportNotification(final Context context, final int pid, final File bugreportFile, final File screenshotFile) {
++private static void sendZippedBugreportNotification(final Context context, final BugreportInfo info) {
+     new AsyncTask<Void, Void, Void>() {
+
+         @Override
+         protected Void doInBackground(Void... params) {
+-            File zippedFile = zipBugreport(bugreportFile);
+-            sendBugreportNotification(context, pid, zippedFile, screenshotFile);
++            info.bugreportFile = zipBugreport(info.bugreportFile);
++            sendBugreportNotification(context, info);
+             return null;
+         }
+     }.execute();
+ }
+\ No newline at end of file

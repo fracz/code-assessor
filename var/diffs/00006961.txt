@@ -1,0 +1,22 @@
+diff --git a/f54d6b3d77f3fa1e1db80b2df81b4884379cfd6b b/5474e2de8573b5d95be7aee6c92b0e9fb3372cbe
+index f54d6b3d77..5474e2de85 100644
+--- a/f54d6b3d77f3fa1e1db80b2df81b4884379cfd6b
++++ b/5474e2de8573b5d95be7aee6c92b0e9fb3372cbe
+@@ -1,10 +1,13 @@
+ public RefactoringElementListener getListener(PsiElement element) {
+     if (element instanceof PsiClass) {
+         PsiClass psiClass = (PsiClass) element;
+-        final ComponentItem item = myPalette.getItem(RefactoringUtil.getInnerClassNameForClassLoader(psiClass));
+-        if (item != null) {
+-            return new MyRefactoringElementListener(item);
++        final String oldName = RefactoringUtil.getInnerClassNameForClassLoader(psiClass);
++        if (oldName != null) {
++            final ComponentItem item = myPalette.getItem(oldName);
++            if (item != null) {
++                return new MyRefactoringElementListener(item);
++            }
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

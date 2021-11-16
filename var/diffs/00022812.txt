@@ -1,0 +1,20 @@
+diff --git a/19d9e6b01b8a7514ad5459e6c1c077344d47dd36 b/093079408eb673808b47dbb5eb460a47a650b5de
+index 19d9e6b01b..093079408e 100644
+--- a/19d9e6b01b8a7514ad5459e6c1c077344d47dd36
++++ b/093079408eb673808b47dbb5eb460a47a650b5de
+@@ -1,13 +1,14 @@
+ void autoFill(Dataset dataset) {
+     synchronized (mLock) {
+         mAutoFilledDataset = dataset;
+         // Autofill it directly...
+         if (dataset.getAuthentication() == null) {
+             autoFillApp(dataset);
+             return;
+         }
+         // ...or handle authentication.
++        mDatasetWaitingAuth = dataset;
+         final Intent fillInIntent = createAuthFillInIntent(mStructure, null);
+         startAuthentication(dataset.getAuthentication(), fillInIntent);
+     }
+ }
+\ No newline at end of file

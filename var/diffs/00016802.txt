@@ -1,0 +1,20 @@
+diff --git a/3470fe3ced301669e16f93c57b5f34c18f3e9f1c b/53299c2b709cf10716413ca6119cea9b0c9d092b
+index 3470fe3ced..53299c2b70 100644
+--- a/3470fe3ced301669e16f93c57b5f34c18f3e9f1c
++++ b/53299c2b709cf10716413ca6119cea9b0c9d092b
+@@ -1,13 +1,3 @@
+ public void downloadPlatformTools() {
+-    String downloadURL;
+-    if (SystemInfo.isWindows) {
+-        downloadURL = "http://dl-ssl.google.com/android/repository/platform-tools_r16-windows.zip";
+-    } else if (SystemInfo.isMac) {
+-        downloadURL = "http://dl-ssl.google.com/android/repository/platform-tools_r16-macosx.zip";
+-    } else if (SystemInfo.isUnix) {
+-        downloadURL = "http://dl-ssl.google.com/android/repository/platform-tools_r16-linux.zip";
+-    } else {
+-        throw new IllegalStateException("Your operating system doesn't supported yet.");
+-    }
+-    download(downloadURL, platformToolsZipPath);
++    download(getDownloadUrl("http://dl-ssl.google.com/android/repository/platform-tools_r" + PLATFORM_TOOLS), platformToolsZipPath);
+ }
+\ No newline at end of file

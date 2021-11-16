@@ -1,0 +1,10 @@
+diff --git a/797e3e68f10cc2ddcd956e7f25acfae3ae734f46 b/03fa50d3ab86cf0883925b8c9b643036eb8324a2
+index 797e3e68f1..03fa50d3ab 100644
+--- a/797e3e68f10cc2ddcd956e7f25acfae3ae734f46
++++ b/03fa50d3ab86cf0883925b8c9b643036eb8324a2
+@@ -1,3 +1,3 @@
+ public static <T> QueryRunner<T> makeUnionQueryRunner(QueryRunnerFactory<T, Query<T>> factory, Segment adapter) {
+-    return new FinalizeResultsQueryRunner<T>(factory.getToolchest().postMergeQueryDecoration(factory.getToolchest().mergeResults(new UnionQueryRunner<T>(new BySegmentQueryRunner<T>(segmentId, adapter.getDataInterval().getStart(), factory.createRunner(adapter))))), factory.getToolchest());
++    return new FluentQueryRunnerBuilder<T>(factory.getToolchest()).create(new UnionQueryRunner<T>(new BySegmentQueryRunner<T>(segmentId, adapter.getDataInterval().getStart(), factory.createRunner(adapter)))).mergeResults().applyPostMergeDecoration();
+ }
+\ No newline at end of file

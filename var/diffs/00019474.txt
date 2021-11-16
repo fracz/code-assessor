@@ -1,0 +1,16 @@
+diff --git a/f87a6aa62d75d0601cfbcc1ff3f84c8d020141f4 b/f4a88cd3507c49ba0586f0b3f396c7fe8dcdaef3
+index f87a6aa62d..f4a88cd350 100644
+--- a/f87a6aa62d75d0601cfbcc1ff3f84c8d020141f4
++++ b/f4a88cd3507c49ba0586f0b3f396c7fe8dcdaef3
+@@ -1,8 +1,7 @@
+-@NotNull
+ private SpannableStringBuilder buildMention(int uid, String name) {
+-    String mention = "people://".concat(Integer.toString(uid));
++    String mention = "people://" + uid;
+     MentionSpan span = new MentionSpan(mention, true);
+-    SpannableStringBuilder spannedMention = new SpannableStringBuilder("@".concat(MENTION_BOUNDS_STR).concat(name).concat(MENTION_BOUNDS_STR));
++    SpannableStringBuilder spannedMention = new SpannableStringBuilder("@" + MENTION_BOUNDS_STR + name + MENTION_BOUNDS_STR);
+     spannedMention.setSpan(span, 0, spannedMention.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+     return spannedMention;
+ }
+\ No newline at end of file

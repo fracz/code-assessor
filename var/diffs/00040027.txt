@@ -1,0 +1,17 @@
+diff --git a/02f75cdcfa77ff165e8e3686299d54af7e457c76 b/84fad913f9b6970d3cf6df6c7cf0142e298e2d37
+index 02f75cdcfa..84fad913f9 100644
+--- a/02f75cdcfa77ff165e8e3686299d54af7e457c76
++++ b/84fad913f9b6970d3cf6df6c7cf0142e298e2d37
+@@ -1,9 +1,9 @@
+ @Test
+ public void testThrowExceptionWhenUniqueIndexNotFound() throws SchemaRuleNotFoundException, DuplicateIndexSchemaRuleException {
+     SchemaReadOperations readOperations = setupSchemaReadOperations();
+     TokenNameLookup tokenNameLookup = getDefaultTokenNameLookup();
+-    Mockito.when(readOperations.uniqueIndexesGetForLabel(Mockito.any(KernelStatement.class), Mockito.eq(LABEL1_ID))).thenReturn(Iterators.<IndexDescriptor>emptyIterator());
++    Mockito.when(readOperations.uniqueIndexesGetForLabel(Mockito.any(KernelStatement.class), Mockito.eq(descriptor.getLabelId()))).thenReturn(Iterators.<IndexDescriptor>emptyIterator());
+     expectedException.expect(IndexSchemaRuleNotFoundException.class);
+     expectedException.expect(new KernelExceptionUserMessageMatcher<>(tokenNameLookup, "Uniqueness index for label 'Label1' and property 'Prop1' not found."));
+-    operationsFacade.uniqueIndexGetForLabelAndPropertyKey(LABEL1_ID, PROP1_ID);
++    operationsFacade.uniqueIndexGetForLabelAndPropertyKey(descriptor);
+ }
+\ No newline at end of file

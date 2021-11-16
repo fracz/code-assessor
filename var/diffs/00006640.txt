@@ -1,0 +1,18 @@
+diff --git a/79b34c40bcf17a5a3093af670ac07e403ae65a65 b/6a60fd86a2db63fe5f45225fba1cdfdbc0a46f02
+index 79b34c40bc..6a60fd86a2 100644
+--- a/79b34c40bcf17a5a3093af670ac07e403ae65a65
++++ b/6a60fd86a2db63fe5f45225fba1cdfdbc0a46f02
+@@ -1,4 +1,10 @@
+ @Override
+-protected boolean isEllipsisType(int row) {
+-    return getTypeByRow(row) instanceof PsiEllipsisType;
++public boolean isEllipsisType() {
++    try {
++        return paramTypeCodeFragment.getType() instanceof PsiEllipsisType;
++    } catch (PsiTypeCodeFragment.TypeSyntaxException e) {
++        return false;
++    } catch (PsiTypeCodeFragment.NoTypeException e) {
++        return false;
++    }
+ }
+\ No newline at end of file

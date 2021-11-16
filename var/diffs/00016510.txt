@@ -1,0 +1,11 @@
+diff --git a/35c9ff00025e73b60e491bd4504d4bb605903f3c b/ae7c7e289c60119a3da8d34ff3c21bab65f7b3b2
+index 35c9ff0002..ae7c7e289c 100644
+--- a/35c9ff00025e73b60e491bd4504d4bb605903f3c
++++ b/ae7c7e289c60119a3da8d34ff3c21bab65f7b3b2
+@@ -1,4 +1,3 @@
+ public static boolean isSDKConfiguredFor(@NotNull final Module module) {
+-    final GlobalSearchScope scope = module.getModuleWithDependenciesAndLibrariesScope(false);
+-    return containsKotlinCompilerJar(FilenameIndex.getVirtualFilesByName(module.getProject(), KOTLIN_COMPILER_JAR, scope));
++    return getSDKHomeFor(module) != null;
+ }
+\ No newline at end of file

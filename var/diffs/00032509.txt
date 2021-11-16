@@ -1,0 +1,15 @@
+diff --git a/d50d92322c39e0b186776538b206e5ba13c6a800 b/150389d04258742f0c077ea55ebb012c1e929717
+index d50d92322c..150389d042 100644
+--- a/d50d92322c39e0b186776538b206e5ba13c6a800
++++ b/150389d04258742f0c077ea55ebb012c1e929717
+@@ -1,7 +1,7 @@
+ @SuppressWarnings("unchecked")
+ @Test
+ public void shouldMatchAllAnnotationsOnClass() throws IOException {
+     writeFile("A.java", "package com.google;", "@SampleAnnotation1 @SampleAnnotation2", "public class A {}");
+-    assertCompiles(nodeWithAnnotationMatches(true, new Annotation<Tree>(true, Matchers.anyOf(isType("com.google.SampleAnnotation1"), isType("com.google.SampleAnnotation2")))));
+-    assertCompiles(nodeWithAnnotationMatches(true, new Annotation<Tree>(false, Matchers.anyOf(isType("com.google.SampleAnnotation1"), isType("com.google.SampleAnnotation2")))));
++    assertCompiles(nodeWithAnnotationMatches(true, new Annotation<Tree>(true, anyOf(AnnotationTree.class, isType("com.google.SampleAnnotation1"), isType("com.google.SampleAnnotation2")))));
++    assertCompiles(nodeWithAnnotationMatches(true, new Annotation<Tree>(false, anyOf(AnnotationTree.class, isType("com.google.SampleAnnotation1"), isType("com.google.SampleAnnotation2")))));
+ }
+\ No newline at end of file

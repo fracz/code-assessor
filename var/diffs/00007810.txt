@@ -1,0 +1,20 @@
+diff --git a/072f4c3c2455d3ff4f0235dbdb3169cb3f52d7e5 b/4e8b503e3c56c32a934a55cfebbfa976017c80df
+index 072f4c3c24..4e8b503e3c 100644
+--- a/072f4c3c2455d3ff4f0235dbdb3169cb3f52d7e5
++++ b/4e8b503e3c56c32a934a55cfebbfa976017c80df
+@@ -1,12 +1,12 @@
+ public void doTest(@NotNull VcsRootConfiguration vcsRootConfiguration, @Nullable VirtualFile startDir, @NotNull Collection<String> expectedPaths) throws IOException {
+     initProject(vcsRootConfiguration);
+-    VcsRootDetectInfo info = detect(startDir);
+-    assertRoots(expectedPaths, getPaths(ContainerUtil.filter(info.getRoots(), new Condition<VcsRoot>() {
++    Collection<VcsRoot> vcsRoots = detect(startDir);
++    assertRoots(expectedPaths, getPaths(ContainerUtil.filter(vcsRoots, new Condition<VcsRoot>() {
+
+         @Override
+         public boolean value(VcsRoot root) {
+             assert root.getVcs() != null;
+             return root.getVcs().getKeyInstanceMethod().equals(myVcs.getKeyInstanceMethod());
+         }
+     })));
+ }
+\ No newline at end of file

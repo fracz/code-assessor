@@ -1,0 +1,19 @@
+diff --git a/728dfac5d7801a5e14c686016b1f2df409fa55c1 b/c6a71f4bfc27883e344c843bf1199c45b256e6eb
+index 728dfac5d7..c6a71f4bfc 100644
+--- a/728dfac5d7801a5e14c686016b1f2df409fa55c1
++++ b/c6a71f4bfc27883e344c843bf1199c45b256e6eb
+@@ -1,9 +1,12 @@
+ public void testEnum() throws Exception {
+-    Model model = new ModelResolver(mapper()).resolve(Currency.class);
++    ModelResolver modelResolver = new ModelResolver(mapper());
++    ModelConverterContextMock context = new ModelConverterContextMock();
++    context.delegate = modelResolver;
++    Model model = modelResolver.resolve(Currency.class, context);
+     assertNotNull(model);
+     Set<String> names = model.getProperties().keySet();
+     if (names.contains("declaringClass")) {
+     // TODO how best to handle this?
+     // fail("Enum model should not contain property 'declaringClass', does; properties = " + names);
+     }
+ }
+\ No newline at end of file

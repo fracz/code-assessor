@@ -1,0 +1,15 @@
+diff --git a/990f4034f293ce993db813172df384e1361193c3 b/8f7506b447bff8ee612027be9dac31cf1f5a7d8f
+index 990f4034f2..8f7506b447 100644
+--- a/990f4034f293ce993db813172df384e1361193c3
++++ b/8f7506b447bff8ee612027be9dac31cf1f5a7d8f
+@@ -1,7 +1,6 @@
+ @Test
+ public void testDoRegister() {
+     URL url = new URL(MotanConstants.PROTOCOL_MOTAN, "127.0.0.1", 8001, "com.weibo.motan.demo.service.MotanDemoService");
+-    registry.register(url);
+-    Collection<URL> registeredUrls = registry.getRegisteredServiceUrls();
+-    assertTrue(registeredUrls.contains(url));
++    registry.doRegister(url);
++    assertTrue(zkClient.exists(registry.toNodePath(url, ZkNodeType.UNAVAILABLE_SERVER)));
+ }
+\ No newline at end of file

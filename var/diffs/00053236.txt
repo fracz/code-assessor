@@ -1,0 +1,18 @@
+diff --git a/1f8873dcefbf5d081739ad32dae1d7bb8c466fe6 b/c98b24ca3d9fefde4d5a90e152276610fe8d83d5
+index 1f8873dcef..c98b24ca3d 100644
+--- a/1f8873dcefbf5d081739ad32dae1d7bb8c466fe6
++++ b/c98b24ca3d9fefde4d5a90e152276610fe8d83d5
+@@ -1,9 +1,7 @@
+-public SQLSelect select() {
+-    SQLSelect result = new SQLSelect();
++public final SQLSelect select() {
++    SQLSelect result = createSQLSelect();
+     result.setQuery(query());
+     result.setOrderBy(exprParser.parseOrderBy());
+-    while (getLexer().equalToken(Token.HINT)) {
+-        getLexer().nextToken();
+-    }
++    customizedSelect(result);
+     return result;
+ }
+\ No newline at end of file

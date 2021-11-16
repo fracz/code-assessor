@@ -1,0 +1,26 @@
+diff --git a/bc5129427bd7a5a7bf3f7eec8e788f043954e307 b/fac8c76ec0b3ecf7e2afff8994b2f80dea6c0722
+index bc5129427b..fac8c76ec0 100644
+--- a/bc5129427bd7a5a7bf3f7eec8e788f043954e307
++++ b/fac8c76ec0b3ecf7e2afff8994b2f80dea6c0722
+@@ -1,12 +1,16 @@
+ public Integer start(String[] args) {
++    webServerPort = configurator.configuration().getInt(WEBSERVER_PORT, DEFAULT_WEBSERVER_PORT);
+     try {
+-        webServer.setPort(configurator.configuration().getInt(WEBSERVER_PORT, DEFAULT_WEBSERVER_PORT));
+-        webServer.setPackages(convertPropertiesToSingleString(configurator.configuration().getStringArray(WEBSERVICE_PACKAGES)));
++        webServer.setPort(webServerPort);
++        webServer.addJAXRSPackages(List.from(new String[] { REST_API_PACKAGE }), REST_API_PATH);
++        // webadmin assumes root
++        webServer.addStaticContent("html", "/webadmin");
++        webServer.addJAXRSPackages(List.from(new String[] { WEB_ADMIN_REST_API_PACKAGE }), "/");
+         webServer.start();
+-        log.info("Started Neo Server on port [%s]", webServer.getPort());
++        log.info("Started Neo Server on port [%s]", webServerPort);
+         return 0;
+     } catch (Exception e) {
+-        log.error("Failed to start Neo Server on port [%s]", webServer.getPort());
++        log.error("Failed to start Neo Server on port [%s]", webServerPort);
+         return 1;
+     }
+ }
+\ No newline at end of file

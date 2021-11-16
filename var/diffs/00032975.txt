@@ -1,0 +1,21 @@
+diff --git a/6db0da44d445e4a62d075ab30bab583d4fdf74a4 b/37a146c200b9fb838cf3429382724c388673f17e
+index 6db0da44d4..37a146c200 100644
+--- a/6db0da44d445e4a62d075ab30bab583d4fdf74a4
++++ b/37a146c200b9fb838cf3429382724c388673f17e
+@@ -1,13 +1,12 @@
+ /**
+- * This test demonstrates that if the user throws a ProvisionException,
+- * sometimes we wrap it and sometimes we don't. We should be consistent.
++ * This test demonstrates that if the user throws a ProvisionException, we wrap it to add context.
+  */
+ public void testProvisionExceptionsAreWrappedForBindToType() {
+     try {
+         Guice.createInjector().getInstance(F.class);
+         fail();
+     } catch (ProvisionException e) {
+-        assertTrue(e.getCause() instanceof ProvisionException);
++        assertEquals("User Exception", e.getCause().getMessage());
+         assertContains(e.getMessage(), "while locating " + "com.google.inject.ProvisionExceptionTest$F");
+     }
+ }
+\ No newline at end of file

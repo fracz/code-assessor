@@ -1,0 +1,16 @@
+diff --git a/aab33a2340c344c6c42953e92411f3b5038d44e7 b/f8bfa5e1fa3422ab532d95c22056f62e8a66face
+index aab33a2340..f8bfa5e1fa 100644
+--- a/aab33a2340c344c6c42953e92411f3b5038d44e7
++++ b/f8bfa5e1fa3422ab532d95c22056f62e8a66face
+@@ -1,6 +1,8 @@
+ @Override
+ public void setupEndValues() {
+-    for (Node node : mNodes) {
+-        node.animation.setupEndValues();
++    int size = mNodes.size();
++    for (int i = 0; i < size; i++) {
++        Node node = mNodes.get(i);
++        node.mAnimation.setupEndValues();
+     }
+ }
+\ No newline at end of file

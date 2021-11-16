@@ -1,0 +1,13 @@
+diff --git a/870db5c69960d255d7b110483d82ac8cb979bd14 b/4c0922929b9527fee65ba1edda9b98b588ad06bd
+index 870db5c699..4c0922929b 100644
+--- a/870db5c69960d255d7b110483d82ac8cb979bd14
++++ b/4c0922929b9527fee65ba1edda9b98b588ad06bd
+@@ -1,6 +1,6 @@
+ @Override
+ public void beforeIndexShardClosed(ShardId shardId, @Nullable IndexShard indexShard) {
+     if (indexShard != null) {
+-        removeAndCleanOnGoingRecovery(findRecoveryByShard(indexShard));
++        onGoingRecoveries.cancelRecoveriesForShard(shardId, "shard closed");
+     }
+ }
+\ No newline at end of file

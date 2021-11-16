@@ -1,0 +1,13 @@
+diff --git a/4b0119f331e9192b6232d7c79ed1402aa16cd501 b/e860351eba8e815ba7c4e3e74760c71eb58b0212
+index 4b0119f331..e860351eba 100644
+--- a/4b0119f331e9192b6232d7c79ed1402aa16cd501
++++ b/e860351eba8e815ba7c4e3e74760c71eb58b0212
+@@ -1,6 +1,6 @@
+ @Override
+ public void parse(BserValues values) throws IOException {
+     this.peer = values.getObj(1, new OutPeer());
+     this.rid = values.getLong(3);
+-    this.message = values.getObj(4, new MessageContent());
++    this.message = Message.fromBytes(values.getBytes(4));
+ }
+\ No newline at end of file

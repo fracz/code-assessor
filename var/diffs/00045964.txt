@@ -1,0 +1,19 @@
+diff --git a/a16b73f6784afd4000f247f620327f3645b99ae6 b/b7112e1cd79ac7711e09b42ea1c2121b87810ed3
+index a16b73f678..b7112e1cd7 100644
+--- a/a16b73f6784afd4000f247f620327f3645b99ae6
++++ b/b7112e1cd79ac7711e09b42ea1c2121b87810ed3
+@@ -1,12 +1,6 @@
+ @Test
+ public void shouldBeAbleToGetTheServletPath() {
+-    HttpServletRequest servletRequest = new MockedHttpServletRequest(new HashMap<String, String[]>()) {
+-
+-        @Override
+-        public String getServletPath() {
+-            return THE_SERVLET_PATH;
+-        }
+-    };
++    when(servletRequest.getServletPath()).thenReturn(THE_SERVLET_PATH);
+     Request request = new Request(match, servletRequest);
+     assertEquals("Should have delegated getting the servlet path", THE_SERVLET_PATH, request.servletPath());
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/05992313a4f93a5028ccce9ead5519b7fb368722 b/77511b230b018ff283e91af400cbfb69b6c4ef96
+index 05992313a4..77511b230b 100644
+--- a/05992313a4f93a5028ccce9ead5519b7fb368722
++++ b/77511b230b018ff283e91af400cbfb69b6c4ef96
+@@ -1,6 +1,3 @@
+-private static XmlNSDescriptor getDescriptor(final XmlTag element, final String namespace, final boolean strict) {
+-    XmlNSDescriptor nsDescriptor = element.getNSDescriptor(namespace, strict);
+-    if (nsDescriptor == null && PsiUtil.isInJspFile(element))
+-        nsDescriptor = PsiUtil.getJspFile(element).getDocument().getRootTag().getNSDescriptor(namespace, strict);
+-    return nsDescriptor;
++private static XmlNSDescriptor getDescriptor(final XmlTag element, final String namespace, final boolean strict, final XmlExtension extension) {
++    return extension.getNSDescriptor(element, namespace, strict);
+ }
+\ No newline at end of file

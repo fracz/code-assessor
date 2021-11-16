@@ -1,0 +1,15 @@
+diff --git a/e48602206362c95697864645a6bbb1a9c3a67bab b/b8a81c9d84750744f3b91e08be660408e0b38db8
+index e486022063..b8a81c9d84 100644
+--- a/e48602206362c95697864645a6bbb1a9c3a67bab
++++ b/b8a81c9d84750744f3b91e08be660408e0b38db8
+@@ -1,7 +1,6 @@
+ public void changeListUpdateDone() {
+-    ProjectLevelVcsManagerImpl vcsManager = (ProjectLevelVcsManagerImpl) myVcsManager;
+-    if (vcsManager.hasEmptyContentRevisions()) {
+-        vcsManager.resetHaveEmptyContentRevisions();
++    if (myHaveEmptyContentRevisions) {
++        myHaveEmptyContentRevisions = false;
+         fileStatusesChanged();
+     }
+ }
+\ No newline at end of file

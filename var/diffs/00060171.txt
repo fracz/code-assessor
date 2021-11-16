@@ -1,0 +1,18 @@
+diff --git a/1d0540790023414ca64991fbb189b2774d90cf0a b/0de917ee2d3ba8d38b0cd7a17c0fd39c1fb6c2cf
+index 1d05407900..0de917ee2d 100644
+--- a/1d0540790023414ca64991fbb189b2774d90cf0a
++++ b/0de917ee2d3ba8d38b0cd7a17c0fd39c1fb6c2cf
+@@ -1,11 +1,11 @@
+ protected TypeAttribute.Map getDefinition() {
+     if (definition == null) {
+         TypeAttribute.Map def = new TypeAttribute.Map();
+-        for (TitanProperty p : new VertexCentricQueryBuilder(this).includeHidden().type(SystemKey.TypeDefinition).properties()) {
++        for (TitanProperty p : query().includeHidden().type(SystemKey.TypeDefinition).properties()) {
+             def.add(p.getValue(TypeAttribute.class));
+         }
+         definition = def;
+     }
+     Preconditions.checkNotNull(definition);
+     return definition;
+ }
+\ No newline at end of file

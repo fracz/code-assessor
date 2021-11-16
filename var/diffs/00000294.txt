@@ -1,0 +1,18 @@
+diff --git a/e02f85457925af893512231b5079c810eceb0ab3 b/4c16aabe2ba7c48283fa8d700f34cf0cd4a5e853
+index e02f854579..4c16aabe2b 100644
+--- a/e02f85457925af893512231b5079c810eceb0ab3
++++ b/4c16aabe2ba7c48283fa8d700f34cf0cd4a5e853
+@@ -1,11 +1,11 @@
+ /**
+  * Tests the {@code FilesPersisted} counter when setting a file to persisted.
+  *
+  * @throws Exception if a {@link FileSystemMaster} operation fails
+  */
+ @Test
+ public void filePersistedTest() throws Exception {
+     createCompleteFileWithSingleBlock(NESTED_FILE_URI);
+     mFileSystemMaster.setAttribute(NESTED_FILE_URI, new SetAttributeOptions.Builder().setPersisted(true).build());
+-    Assert.assertEquals(1, mCounters.get("FilesPersisted").getCount());
++    Assert.assertEquals(1, mCounters.get(MasterSource.FILES_PERSISTED).getCount());
+ }
+\ No newline at end of file

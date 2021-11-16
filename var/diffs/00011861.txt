@@ -1,0 +1,13 @@
+diff --git a/d82361689b4fc3884f07f41459ea5be4b31a7c72 b/2885c453a8c3881c9d9827ace8e18207586be9d2
+index d82361689b..2885c453a8 100644
+--- a/d82361689b4fc3884f07f41459ea5be4b31a7c72
++++ b/2885c453a8c3881c9d9827ace8e18207586be9d2
+@@ -1,4 +1,5 @@
+ @NotNull
+-public ReadOnlyList<Commit> build() {
+-    return new SimpleReadOnlyList<Commit>(commits);
++public CommitsModel build() {
++    ReadOnlyList<Commit> commits1 = new SimpleReadOnlyList<Commit>(commits);
++    return CommitsModel.buildModel(commits1);
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/643413d18c73a8fd622d5f480bdee87860ac3c41 b/bad5358955332f6d38c6c9b6aec3dbfd168b04e7
+index 643413d18c..bad5358955 100644
+--- a/643413d18c73a8fd622d5f480bdee87860ac3c41
++++ b/bad5358955332f6d38c6c9b6aec3dbfd168b04e7
+@@ -1,12 +1,11 @@
+ private void addCUBRIDDriverTransformer(ProfilerPluginSetupContext setupContext) {
+     setupContext.addClassFileTransformer("cubrid.jdbc.driver.CUBRIDDriver", new PinpointClassFileTransformer() {
+
+         @Override
+         public byte[] transform(Instrumentor instrumentContext, ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) throws InstrumentException {
+             InstrumentClass target = instrumentContext.getInstrumentClass(loader, className, classfileBuffer);
+-            InterceptorGroup group = instrumentContext.getInterceptorGroup(CubridConstants.GROUP_CUBRID);
+-            target.addGroupedInterceptor("com.navercorp.pinpoint.bootstrap.plugin.jdbc.interceptor.DriverConnectInterceptor", va(new CubridJdbcUrlParser()), group, ExecutionPolicy.ALWAYS);
++            target.addGroupedInterceptor("com.navercorp.pinpoint.bootstrap.plugin.jdbc.interceptor.DriverConnectInterceptor", va(new CubridJdbcUrlParser()), CubridConstants.GROUP_CUBRID, ExecutionPolicy.ALWAYS);
+             return target.toBytecode();
+         }
+     });
+ }
+\ No newline at end of file

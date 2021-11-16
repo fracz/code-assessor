@@ -1,0 +1,17 @@
+diff --git a/49e926f9f2cb750042a2ca3ba166ddce4f781582 b/34e2fa1903d454244c41d932e290c108b7b08d07
+index 49e926f9f2..34e2fa1903 100644
+--- a/49e926f9f2cb750042a2ca3ba166ddce4f781582
++++ b/34e2fa1903d454244c41d932e290c108b7b08d07
+@@ -1,10 +1,10 @@
+ public static VirtualFile getVirtualFile(final String filePath) {
+-    @NonNls final String path = "file://" + filePath.replace(File.separatorChar, '/');
++    @NonNls final String path = VfsUtil.pathToUrl(filePath.replace(File.separatorChar, '/'));
+     return ApplicationManager.getApplication().runReadAction(new Computable<VirtualFile>() {
+
+         @Nullable
+         public VirtualFile compute() {
+             return VirtualFileManager.getInstance().findFileByUrl(path);
+         }
+     });
+ }
+\ No newline at end of file

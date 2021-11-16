@@ -1,0 +1,32 @@
+diff --git a/2bd5d936fa3dbb36abc39e0acc323336b80251d1 b/ef6796a73e15cbf6f8d59a137116f4be0107bc74
+index 2bd5d936fa..ef6796a73e 100644
+--- a/2bd5d936fa3dbb36abc39e0acc323336b80251d1
++++ b/ef6796a73e15cbf6f8d59a137116f4be0107bc74
+@@ -1,14 +1,16 @@
++/**
++ * human readable string
++ */
+ public String toString() {
+     switch(code) {
+-        case OK:
+-            return "OK";
+-        case EOB:
+-            return "END_OF_BATCH";
+-        case FAILURE:
+-            return "FAILURE";
+-        case CLOSE:
+-            return "CLOSE";
+-        default:
+-            return "control message w/ code " + code;
++        case CODE_OK:
++            return "ControlMessage OK";
++        case CODE_EOB:
++            return "ControlMessage END_OF_BATCH";
++        case CODE_FAILURE:
++            return "ControlMessage FAILURE";
++        case CODE_CLOSE:
++            return "ControlMessage CLOSE";
+     }
++    return null;
+ }
+\ No newline at end of file

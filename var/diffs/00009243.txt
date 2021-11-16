@@ -1,0 +1,18 @@
+diff --git a/b53fdd2504b3296aa30d0110b2d8b8e01bf85c46 b/a5acfff284779aa6a819de48bf7f8022345e0f32
+index b53fdd2504..a5acfff284 100644
+--- a/b53fdd2504b3296aa30d0110b2d8b8e01bf85c46
++++ b/a5acfff284779aa6a819de48bf7f8022345e0f32
+@@ -1,8 +1,6 @@
+-public void write(DataOutputStream s) throws IOException {
+-    s.writeUTF(myId);
+-    boolean hasRepo = myRepositoryPathOrUrl != null;
+-    s.writeBoolean(hasRepo);
+-    if (hasRepo)
+-        s.writeUTF(myRepositoryPathOrUrl);
++public synchronized void write(DataOutputStream s) throws IOException {
+     s.writeInt(myKind.getCode());
++    s.writeUTF(myId);
++    writeStringOrNull(s, myRepositoryPathOrUrl);
++    writeStringOrNull(s, myDataDir);
+ }
+\ No newline at end of file

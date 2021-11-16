@@ -1,0 +1,16 @@
+diff --git a/8f5d6f30cc1a09e5ff738a1530b6e0caea658bab b/1775260f422e1b52d979b63b8e3930f2c1253a11
+index 8f5d6f30cc..1775260f42 100644
+--- a/8f5d6f30cc1a09e5ff738a1530b6e0caea658bab
++++ b/1775260f422e1b52d979b63b8e3930f2c1253a11
+@@ -1,8 +1,8 @@
+ @Test
+ public void testLoadArrayOfString() throws Exception {
+     YamlPropertiesFactoryBean factory = new YamlPropertiesFactoryBean();
+     factory.setResources(new Resource[] { new ByteArrayResource("foo:\n- bar\n- baz".getBytes()) });
+     Properties properties = factory.getObject();
+-    assertEquals("bar", properties.get("foo[0]"));
+-    assertEquals("baz", properties.get("foo[1]"));
++    assertThat(properties.getProperty("foo[0]"), equalTo("bar"));
++    assertThat(properties.getProperty("foo[1]"), equalTo("baz"));
+ }
+\ No newline at end of file

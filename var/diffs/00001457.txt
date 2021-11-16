@@ -1,0 +1,20 @@
+diff --git a/078b817502789b7e24efd285294a2f71e117023f b/8b657bfb8997cf13b75cba007dbf376eb0f81b6d
+index 078b817502..8b657bfb89 100644
+--- a/078b817502789b7e24efd285294a2f71e117023f
++++ b/8b657bfb8997cf13b75cba007dbf376eb0f81b6d
+@@ -1,12 +1,9 @@
+ @Override
+ public JComponent getPreferredFocusedComponent() {
+-    TaskManager.VcsOperation operation = getVcsOperation();
+-    if (operation == TaskManager.VcsOperation.CREATE_BRANCH) {
+-        myBranchName.setEnabled(true);
++    if (myCreateBranchJBCheckBox.isSelected()) {
+         return myBranchName;
+-    } else if (operation == TaskManager.VcsOperation.CREATE_CHANGELIST) {
+-        myChangelistName.setEnabled(true);
++    } else if (myCreateChangelistJBCheckBox.isSelected()) {
+         return myChangelistName;
+     } else
+         return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/0e7cb359a5aa0e71d6fdaa4cc0d32daab7cf6e51 b/2be756bde35c955320465452f973c402c87c7fa9
+index 0e7cb359a5..2be756bde3 100644
+--- a/0e7cb359a5aa0e71d6fdaa4cc0d32daab7cf6e51
++++ b/2be756bde35c955320465452f973c402c87c7fa9
+@@ -1,16 +1,9 @@
+ private void handleAutoFillForUser(int userId) {
+-    if (DEBUG)
+-        Slog.d(TAG, "handler.requestAutoFillForUser(): id=" + userId);
+     final IBinder activityToken = getTopActivityForUser();
+-    if (activityToken == null) {
+-        return;
+-    }
+-    synchronized (mLock) {
+-        final AutoFillManagerServiceImpl service = getServiceForUserLocked(userId);
+-        if (service == null) {
+-            Slog.w(TAG, "no service for user " + userId);
+-            return;
++    if (activityToken != null) {
++        synchronized (mLock) {
++            final AutoFillManagerServiceImpl service = getOrCreateServiceForUserLocked(userId);
++            service.requestAutoFillLocked(activityToken, null, null, 0);
+         }
+-        service.requestAutoFillLocked(activityToken, null, null, 0);
+     }
+ }
+\ No newline at end of file

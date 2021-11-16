@@ -1,0 +1,20 @@
+diff --git a/f040b0a1f678e4ad12ae902d0bd11d2cbe3854ec b/4e9eff0cde316a62e97285adb2ede2282d0c6cc3
+index f040b0a1f6..4e9eff0cde 100644
+--- a/f040b0a1f678e4ad12ae902d0bd11d2cbe3854ec
++++ b/4e9eff0cde316a62e97285adb2ede2282d0c6cc3
+@@ -1,12 +1,12 @@
+ @Test
+ public void testExceedRecordLimit() throws Exception {
+     CommitLog.instance.resetUnsafe(true);
++    ColumnFamilyStore cfs = Keyspace.open(KEYSPACE1).getColumnFamilyStore(STANDARD1);
+     try {
+-        Mutation rm = new Mutation(KEYSPACE1, bytes("k"));
+-        rm.add(CF1, Util.cellname("c1"), ByteBuffer.allocate(1 + getMaxRecordDataSize()), 0);
++        Mutation rm = new RowUpdateBuilder(cfs.metadata, 0, "k").clustering("bytes").add("val", ByteBuffer.allocate(1 + getMaxRecordDataSize())).build();
+         CommitLog.instance.add(rm);
+         throw new AssertionError("mutation larger than limit was accepted");
+     } catch (IllegalArgumentException e) {
+     // IAE is thrown on too-large mutations
+     }
+ }
+\ No newline at end of file

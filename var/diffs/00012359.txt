@@ -1,0 +1,15 @@
+diff --git a/120c641473f09fd17c7916b8d669e5645b17f50c b/080d3a9c548bcc0786ddda974e15719cde065eca
+index 120c641473..080d3a9c54 100644
+--- a/120c641473f09fd17c7916b8d669e5645b17f50c
++++ b/080d3a9c548bcc0786ddda974e15719cde065eca
+@@ -1,7 +1,7 @@
+-public InspectionGadgetsFix buildFix(PsiElement location) {
+-    if (location.getParent() instanceof PsiMethodCallExpression) {
++public InspectionGadgetsFix buildFix(Object... infos) {
++    if (infos[0] instanceof PsiMethodCallExpression) {
+         return new UnqualifiedStaticAccessFix(false);
+     } else {
+         return new UnqualifiedStaticAccessFix(true);
+     }
+ }
+\ No newline at end of file

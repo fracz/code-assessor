@@ -1,0 +1,19 @@
+diff --git a/38f59d398eae1be46df4266e41c87a3375ba521a b/6f74df21870107f08383710620b48c6cd7325ad7
+index 38f59d398e..6f74df2187 100644
+--- a/38f59d398eae1be46df4266e41c87a3375ba521a
++++ b/6f74df21870107f08383710620b48c6cd7325ad7
+@@ -1,12 +1,11 @@
+ protected JComponent createTestTreeView() {
+     myTreeView = new SMTRunnerTestTreeView();
+     myTreeView.setLargeModel(true);
+     myTreeView.attachToModel(this);
+     myTreeView.setTestResultsViewer(this);
+     final SMTRunnerTreeStructure structure = new SMTRunnerTreeStructure(myProject, myTestsRootNode);
+     myTreeBuilder = new SMTRunnerTreeBuilder(myTreeView, structure);
+     Disposer.register(this, myTreeBuilder);
+-    myAnimator = new MyAnimator(myTreeBuilder);
+-    Disposer.register(this, myAnimator);
++    myAnimator = new MyAnimator(this, myTreeBuilder);
+     return myTreeView;
+ }
+\ No newline at end of file

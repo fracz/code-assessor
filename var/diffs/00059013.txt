@@ -1,0 +1,24 @@
+diff --git a/b94535862e6a4e53413cfe031e1761fafcd1e8b4 b/89f7aab7493d19eecc3e36834a31cf0ba3ef941b
+index b94535862e..89f7aab749 100644
+--- a/b94535862e6a4e53413cfe031e1761fafcd1e8b4
++++ b/89f7aab7493d19eecc3e36834a31cf0ba3ef941b
+@@ -1,14 +1,13 @@
+ @Override
+ public void acquireLock(StaticBuffer key, StaticBuffer column, StaticBuffer expectedValue, StoreTransaction txh) throws StorageException {
+-    boolean ok = false;
+     acquireLockInvocationCounter.inc();
+-    final Timer.Context tc = acquireLockTimer.time();
++    Timer.Context tc = acquireLockTimer.time();
+     try {
+         backend.acquireLock(key, column, expectedValue, txh);
+-        ok = true;
++    } catch (StorageException e) {
++        acquireLockFailureCounter.inc();
++        throw e;
+     } finally {
+         tc.stop();
+-        if (!ok)
+-            acquireLockFailureCounter.inc();
+     }
+ }
+\ No newline at end of file

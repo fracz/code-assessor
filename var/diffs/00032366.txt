@@ -1,0 +1,15 @@
+diff --git a/ecc15f44d45024dcd2449780119ba9c01b4309c4 b/869659e2cc85ceb7c16fc10830a15f22cff58062
+index ecc15f44d4..869659e2cc 100644
+--- a/ecc15f44d45024dcd2449780119ba9c01b4309c4
++++ b/869659e2cc85ceb7c16fc10830a15f22cff58062
+@@ -1,8 +1,8 @@
+ void setDeclaredType(DeclaredFunctionType declaredType) {
+     Preconditions.checkNotNull(declaredType);
+     this.declaredType = declaredType;
+     // NTI doesn't analyze externs, so we set the type for extern functions here.
+     if (this.root.isFromExterns()) {
+-        this.root.setTypeI(getCommonTypes().fromFunctionType(declaredType.toFunctionType()));
++        this.root.setTypeI(this.commonTypes.fromFunctionType(declaredType.toFunctionType()));
+     }
+ }
+\ No newline at end of file

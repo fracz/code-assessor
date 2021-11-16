@@ -1,0 +1,20 @@
+diff --git a/d94dc23ceb36a84d11512a6a98fad61e160e87c4 b/5fddb66522645ce5d122908a3b054f388baf6a94
+index d94dc23ceb..5fddb66522 100644
+--- a/d94dc23ceb36a84d11512a6a98fad61e160e87c4
++++ b/5fddb66522645ce5d122908a3b054f388baf6a94
+@@ -1,13 +1,13 @@
+ @Nullable
+ public static Icon getProvidersIcon(PsiElement element, int flags) {
+     final boolean dumb = DumbService.getInstance(element.getProject()).isDumb();
+     for (final IconProvider iconProvider : getIconProviders()) {
+-        if (dumb && !(iconProvider instanceof DumbAware)) {
++        if (dumb && !DumbService.isDumbAware(iconProvider)) {
+             continue;
+         }
+         final Icon icon = iconProvider.getIcon(element, flags);
+         if (icon != null)
+             return icon;
+     }
+     return null;
+ }
+\ No newline at end of file

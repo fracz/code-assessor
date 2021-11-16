@@ -1,0 +1,16 @@
+diff --git a/df289f44cedeb89ab3a5d36ff0f1996bd8e098ed b/752da2f4763583912168ade0b89dca57f3855c26
+index df289f44ce..752da2f476 100644
+--- a/df289f44cedeb89ab3a5d36ff0f1996bd8e098ed
++++ b/752da2f4763583912168ade0b89dca57f3855c26
+@@ -1,9 +1,9 @@
+ public static void pushLongObjectMap(ExtTLongObjectHashMap map) {
+     Queue<ExtTLongObjectHashMap> ref = longObjectHashMap.get();
+     if (ref == null) {
+-        ref = new LinkedTransferQueue<ExtTLongObjectHashMap>();
++        ref = ConcurrentCollections.newQueue();
+         longObjectHashMap.set(ref);
+     }
+     map.clear();
+     ref.add(map);
+ }
+\ No newline at end of file

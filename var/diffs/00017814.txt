@@ -1,0 +1,17 @@
+diff --git a/484523c81d827cf7994b99ff014fe82e6c08f62d b/f80c2bfa9d0272f598d682dce8cd8b5f5bd00a64
+index 484523c81d..f80c2bfa9d 100644
+--- a/484523c81d827cf7994b99ff014fe82e6c08f62d
++++ b/f80c2bfa9d0272f598d682dce8cd8b5f5bd00a64
+@@ -1,9 +1,9 @@
+-public void close(CloseCode code, String reason) throws IOException {
++public void close(CloseCode code, String reason, boolean initiatedByRemote) throws IOException {
+     State oldState = this.state;
+     this.state = State.CLOSING;
+     if (oldState == State.OPEN) {
+         sendFrame(new CloseFrame(code, reason));
+     } else {
+-        doClose(code, reason, false);
++        doClose(code, reason, initiatedByRemote);
+     }
+ }
+\ No newline at end of file

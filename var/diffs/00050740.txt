@@ -1,0 +1,20 @@
+diff --git a/e3bddf1fd35f66fee45c93983dfb9f22f5a17982 b/27c19c75a4a7cec2fa7fa852f193d0314d8f949d
+index e3bddf1fd3..27c19c75a4 100644
+--- a/e3bddf1fd35f66fee45c93983dfb9f22f5a17982
++++ b/27c19c75a4a7cec2fa7fa852f193d0314d8f949d
+@@ -1,10 +1,11 @@
+ @Nullable
+ @Override
+ public ICommentsSupport getCommentsSupport() {
+-    SQLDataSource dataSource = getDataSource();
+-    if (dataSource != null) {
+-        return dataSource.getSQLDialect();
++    DBCExecutionContext context = getExecutionContext();
++    DBPDataSource dataSource = context == null ? null : context.getDataSource();
++    if (dataSource instanceof SQLDataSource) {
++        return ((SQLDataSource) dataSource).getSQLDialect();
+     } else {
+         return null;
+     }
+ }
+\ No newline at end of file

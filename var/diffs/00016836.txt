@@ -1,0 +1,14 @@
+diff --git a/9e11c1e356d61332dd50c0f0096ef4af791ec6f8 b/ab7842380224822398fe3c39dfbbabdcc54961d3
+index 9e11c1e356..ab78423802 100644
+--- a/9e11c1e356d61332dd50c0f0096ef4af791ec6f8
++++ b/ab7842380224822398fe3c39dfbbabdcc54961d3
+@@ -1,6 +1,7 @@
+ public void extractAccessor(@Nullable PropertyAccessorDescriptor descriptor, boolean isGetter, @NotNull String propertyName, @NotNull DeclarationContext context) {
+-    assert descriptor != null : "Accessor descriptor should not be null";
++    if (descriptor == null)
++        return;
+     String accessorName = Namer.getNameForAccessor(propertyName, isGetter);
+     declareName(descriptor, context, accessorName);
+     declareScope(descriptor, context, (isGetter ? "getter " : "setter ") + propertyName);
+ }
+\ No newline at end of file

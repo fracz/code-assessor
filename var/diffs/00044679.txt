@@ -1,0 +1,15 @@
+diff --git a/e0c99a428d722cb312877a3d2f73866e48d14515 b/30f06f6d27ce2c7d2aa1159c6e83df8cde04095a
+index e0c99a428d..30f06f6d27 100644
+--- a/e0c99a428d722cb312877a3d2f73866e48d14515
++++ b/30f06f6d27ce2c7d2aa1159c6e83df8cde04095a
+@@ -1,8 +1,8 @@
+ public void load() {
+     try {
+-        tree = new OTreeMapPersistent<String, T>((ODatabaseRecord<?>) database, clusterName, new ORecordId(database.getClusterIdByName(clusterName), DICTIONARY_RECORD_NUM));
++        tree = new OTreeMapPersistent<String, T>((ODatabaseRecord<?>) database, clusterName, new ORecordId(database.getStorage().getConfiguration().dictionaryRecordId));
+         tree.load();
+     } catch (IOException e) {
+         OLogManager.instance().error(this, "Can't load tree from the database", e, ODatabaseException.class);
+     }
+ }
+\ No newline at end of file

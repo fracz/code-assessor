@@ -1,0 +1,30 @@
+diff --git a/dbbfe486e9e111f066be950df2f9d1f2c76742f0 b/89a70a5fea577c03d42b5e5880568bfa4dc665f7
+index dbbfe486e9..89a70a5fea 100644
+--- a/dbbfe486e9e111f066be950df2f9d1f2c76742f0
++++ b/89a70a5fea577c03d42b5e5880568bfa4dc665f7
+@@ -1,17 +1,16 @@
+ /**
+  * Retrieve current theme properties
+  */
+-private static Properties getProperties() {
+-    if (MTTheme.properties == null) {
+-        MTTheme.properties = new Properties();
+-        MTTheme theme = MTTheme.getCurrentPreference();
+-        InputStream stream = MTTheme.class.getResourceAsStream(theme.getId() + ".properties");
++private Properties getProperties() {
++    if (this.properties == null) {
++        this.properties = new Properties();
++        InputStream stream = this.getClass().getResourceAsStream(this.id + ".properties");
+         try {
+-            properties.load(stream);
++            this.properties.load(stream);
+             stream.close();
+         } catch (Exception e) {
+-            ;
++            e.printStackTrace();
+         }
+     }
+-    return MTTheme.properties;
++    return this.properties;
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/163f021eb118100ae0d301c1ed23f73ce4118424 b/3abd45118a974506087f03933baf7e3e542179b8
+index 163f021eb1..3abd45118a 100644
+--- a/163f021eb118100ae0d301c1ed23f73ce4118424
++++ b/3abd45118a974506087f03933baf7e3e542179b8
+@@ -1,9 +1,10 @@
+ private IndexDescriptor indexDescriptor(Label label, String propertyKey) throws TransactionFailureException {
+-    IndexDescriptor descriptor;
+     try (KernelTransaction tx = kernel.newTransaction(KernelTransaction.Type.implicit, AnonymousContext.read());
+         Statement statement = tx.acquireStatement()) {
+-        descriptor = new IndexDescriptor(statement.readOperations().labelGetForName(label.name()), statement.readOperations().propertyKeyGetForName(propertyKey));
++        IndexDefinition indexDefinition = new IndexDefinitionImpl(actions, label, propertyKey, false);
++        NodePropertyDescriptor descriptor = IndexDescriptorFactory.getTokens(statement.readOperations(), indexDefinition);
++        IndexDescriptor index = IndexDescriptorFactory.from(descriptor);
+         tx.success();
++        return index;
+     }
+-    return descriptor;
+ }
+\ No newline at end of file

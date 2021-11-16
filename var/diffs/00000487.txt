@@ -1,0 +1,25 @@
+diff --git a/5f4a6f0ec089c2024b767689ef137e227401759b b/fc2053d8a5cd1d0a1026190487085125f6c9036e
+index 5f4a6f0ec0..fc2053d8a5 100644
+--- a/5f4a6f0ec089c2024b767689ef137e227401759b
++++ b/fc2053d8a5cd1d0a1026190487085125f6c9036e
+@@ -1,14 +1,14 @@
+ @Test
+ public void writeNonEmptyFile() throws Exception {
+-    mEmbeddedChannel = new EmbeddedChannelNoException(new DataServerUFSFileWriteHandler(NettyExecutors.FILE_WRITER_EXECUTOR, mFileSystemWorker));
++    mChannel = new EmbeddedChannelNoException(new DataServerUFSFileWriteHandler(NettyExecutors.FILE_WRITER_EXECUTOR, mFileSystemWorker));
+     long len = 0;
+     for (int i = 0; i < 128; i++) {
+-        mEmbeddedChannel.writeInbound(buildWriteRequest(len, 1024));
+-        len += 1024;
++        mChannel.writeInbound(buildWriteRequest(len, PACKET_SIZE));
++        len += PACKET_SIZE;
+     }
+     // EOF.
+-    mEmbeddedChannel.writeInbound(buildWriteRequest(len, 0));
+-    Object writeResponse = waitForResponse();
++    mChannel.writeInbound(buildWriteRequest(len, 0));
++    Object writeResponse = waitForResponse(mChannel);
+     checkWriteResponse(writeResponse, Protocol.Status.Code.OK);
+     checkFileContent(len);
+ }
+\ No newline at end of file

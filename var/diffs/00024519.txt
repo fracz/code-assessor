@@ -1,0 +1,14 @@
+diff --git a/3655dfd7a35b11bccea99047848aabdfc9e93703 b/77568de148ed841b7f9a97e50d74977d9d8ff0a4
+index 3655dfd7a3..77568de148 100644
+--- a/3655dfd7a35b11bccea99047848aabdfc9e93703
++++ b/77568de148ed841b7f9a97e50d74977d9d8ff0a4
+@@ -1,5 +1,6 @@
+ public ResultMessage executeWithCondition(QueryState queryState, QueryOptions options) throws RequestExecutionException, RequestValidationException {
+     CQL3CasRequest request = makeCasRequest(queryState, options);
+-    ColumnFamily result = StorageProxy.cas(keyspace(), columnFamily(), request.key, request, options.getSerialConsistency(), options.getConsistency(), queryState.getClientState());
+-    return new ResultMessage.Rows(buildCasResultSet(request.key, result, options));
++    try (RowIterator result = StorageProxy.cas(keyspace(), columnFamily(), request.key, request, options.getSerialConsistency(), options.getConsistency(), queryState.getClientState())) {
++        return new ResultMessage.Rows(buildCasResultSet(result, options));
++    }
+ }
+\ No newline at end of file

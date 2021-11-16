@@ -1,0 +1,11 @@
+diff --git a/8f744f8b01b5760dc9ec7e033a02badacf391c34 b/99477bb4dd85e21c45afc458ef64f79c5669cb48
+index 8f744f8b01..99477bb4dd 100644
+--- a/8f744f8b01b5760dc9ec7e033a02badacf391c34
++++ b/99477bb4dd85e21c45afc458ef64f79c5669cb48
+@@ -1,4 +1,4 @@
+ @Override
+ public Future<Boolean> containsAllAsync(Collection<?> c) {
+-    return commandExecutor.evalReadAsync(getName(), codec, new RedisCommand<Boolean>("EVAL", new BooleanReplayConvertor(), 4), "local items = redis.call('lrange', KEYS[1], 0, -1) " + "for i=1, #items do " + "for j = 0, table.getn(ARGV), 1 do " + "if items[i] == ARGV[j] then " + "table.remove(ARGV, j) " + "end " + "end " + "end " + "return table.getn(ARGV) == 0", Collections.<Object>singletonList(getName()), c.toArray());
++    return commandExecutor.evalReadAsync(getName(), codec, EVAL_BOOLEAN_ARGS1, "local items = redis.call('lrange', KEYS[1], 0, -1) " + "for i=1, #items do " + "for j = 0, table.getn(ARGV), 1 do " + "if items[i] == ARGV[j] then " + "table.remove(ARGV, j) " + "end " + "end " + "end " + "return table.getn(ARGV) == 0", Collections.<Object>singletonList(getName()), c.toArray());
+ }
+\ No newline at end of file

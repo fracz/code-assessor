@@ -1,0 +1,32 @@
+diff --git a/4584fd6981b9708a987d35804b95715c03a246d6 b/eaa46e3fb4e17eadee07434d7e861459c01bc204
+index 4584fd6981..eaa46e3fb4 100644
+--- a/4584fd6981b9708a987d35804b95715c03a246d6
++++ b/eaa46e3fb4e17eadee07434d7e861459c01bc204
+@@ -1,17 +1,25 @@
+ /**
+  * Finds the first Under File System factory that supports the given path.
+  *
+  * @param path path
+  * @return factory if available, null otherwise
+  */
+ public static UnderFileSystemFactory find(String path) {
+     Preconditions.checkArgument(path != null, "path may not be null");
++    final String selectedFactoryFormat = "Selected Under File System Factory implementation {} for path {}";
+     for (UnderFileSystemFactory factory : FACTORIES) {
+         if (factory.supportsPath(path)) {
+-            LOG.debug("Selected Under File System Factory implementation {} for path {}", factory.getClass(), path);
++            LOG.debug(selectedFactoryFormat, factory.getClass(), path);
++            return factory;
++        }
++    }
++    // Scan extensions directory on the fly
++    for (UnderFileSystemFactory factory : findExtensions()) {
++        if (factory.supportsPath(path)) {
++            LOG.debug(selectedFactoryFormat, factory.getClass(), path);
+             return factory;
+         }
+     }
+     LOG.warn("No Under File System Factory implementation supports the path {}. Please check if " + "the under storage path is valid.", path);
+     return null;
+ }
+\ No newline at end of file

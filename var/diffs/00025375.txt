@@ -1,0 +1,17 @@
+diff --git a/143080116e800a6fb08fe5849996ded74dd2f46d b/93b1374d31f02a35831da737c8267bffccbca414
+index 143080116e..93b1374d31 100644
+--- a/143080116e800a6fb08fe5849996ded74dd2f46d
++++ b/93b1374d31f02a35831da737c8267bffccbca414
+@@ -1,5 +1,9 @@
+ @Override
+ public Map<String, Object> getComponentConfiguration() {
+-    // TODO: expose this in clojure API
+-    return new HashMap<String, Object>();
++    IFn hof = Utils.loadClojureFn(_confSpec.get(0), _confSpec.get(1));
++    try {
++        return (Map) hof.applyTo(RT.seq(_params));
++    } catch (Exception e) {
++        throw new RuntimeException(e);
++    }
+ }
+\ No newline at end of file

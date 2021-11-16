@@ -1,0 +1,12 @@
+diff --git a/fb51871c2ceca980bb2883131e2ed5d80b809b98 b/bb72f3139167403fca0cfe85a0bdadbdc0914c9d
+index fb51871c2c..bb72f31391 100644
+--- a/fb51871c2ceca980bb2883131e2ed5d80b809b98
++++ b/bb72f3139167403fca0cfe85a0bdadbdc0914c9d
+@@ -1,4 +1,3 @@
+-@SuppressWarnings("unchecked")
+-public void forEach(final ConnectionHandler connectionHandler) {
+-    channelMap.forEach((channel, sessionMap) -> sessionMap.forEach((sessionId, channelMap) -> channelMap.forEach((streamId, value) -> connectionHandler.accept(channel, sessionId, streamId, value))));
++public void forEach(final ConnectionHandler<D, C> connectionHandler) {
++    channelMap.forEach((channel, idMap) -> idMap.forEach((sessionId, streamId, value) -> connectionHandler.accept(channel, sessionId, streamId, value)));
+ }
+\ No newline at end of file

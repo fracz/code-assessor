@@ -1,0 +1,26 @@
+diff --git a/bd759d9501d0ec91a58085ae590e173860e65465 b/e76ead8ef9aed3860fe9ea1ad0964940891349a9
+index bd759d9501..e76ead8ef9 100644
+--- a/bd759d9501d0ec91a58085ae590e173860e65465
++++ b/e76ead8ef9aed3860fe9ea1ad0964940891349a9
+@@ -1,11 +1,14 @@
+ @Override
+ protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+-    ShallowEtagResponseWrapper responseWrapper = new ShallowEtagResponseWrapper(response);
+-    AsyncExecutionChain chain = AsyncExecutionChain.getForCurrentRequest(request);
+-    chain.push(getAsyncCallable(request, response, responseWrapper));
++    ShallowEtagResponseWrapper responseWrapper;
++    if (isAsyncDispatch(request)) {
++        responseWrapper = WebUtils.getNativeResponse(response, ShallowEtagResponseWrapper.class);
++        Assert.notNull(responseWrapper, "Expected wrapped response");
++    } else {
++        responseWrapper = new ShallowEtagResponseWrapper(response);
++    }
+     filterChain.doFilter(request, responseWrapper);
+-    if (!chain.pop()) {
+-        return;
++    if (isLastRequestThread(request)) {
++        updateResponse(request, response, responseWrapper);
+     }
+-    updateResponse(request, response, responseWrapper);
+ }
+\ No newline at end of file

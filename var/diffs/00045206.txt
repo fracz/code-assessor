@@ -1,0 +1,18 @@
+diff --git a/2ee5de452028fd37f3a25cb4c9a36749c7d34c99 b/8beb08b7587fa194d85f4cb06730e6b4d0660698
+index 2ee5de4520..8beb08b758 100644
+--- a/2ee5de452028fd37f3a25cb4c9a36749c7d34c99
++++ b/8beb08b7587fa194d85f4cb06730e6b4d0660698
+@@ -1,6 +1,8 @@
+-public synchronized void lock(final ORID rid) {
+-    final ODistributedRequestId lockHolder = db.lockRecord(rid, reqId);
+-    if (lockHolder != null)
+-        throw new ODistributedRecordLockedException(rid, lockHolder);
++public synchronized void lock(ORID rid) {
++    if (!rid.isPersistent())
++        // CREATE A COPY TO MAINTAIN THE LOCK ON THE CLUSTER AVOIDING THE RID IS TRANSFORMED IN PERSISTENT. THIS ALLOWS TO HAVE
++        // PARALLEL TX BECAUSE NEW RID LOCKS THE ENTIRE CLUSTER.
++        rid = new ORecordId(rid.getClusterId(), -1l);
++    db.lockRecord(rid, reqId, 300);
+     acquiredLocks.add(rid);
+ }
+\ No newline at end of file

@@ -1,0 +1,23 @@
+diff --git a/cef4e7768d5eb8fa1481d075af6f16eb8d935e8c b/9a1304020ec88ca4a57d09b00f74ddedfe5ec985
+index cef4e7768d..9a1304020e 100644
+--- a/cef4e7768d5eb8fa1481d075af6f16eb8d935e8c
++++ b/9a1304020ec88ca4a57d09b00f74ddedfe5ec985
+@@ -1,16 +1,16 @@
+ public void valueChanged(TreeSelectionEvent e) {
+     TreePath path = e.getPath();
+     if (path == null)
+         return;
+-    TestProxy proxy = TestTreeView.getObject(path);
++    TestProxy proxy = (TestProxy) tree.getSelectedTest();
+     if (proxy == null)
+         return;
+     if (ScrollToTestSourceAction.isScrollEnabled(TestNGResults.this)) {
+         OpenSourceUtil.openSourcesFrom(tree, false);
+     }
+     if (proxy == structure.getRootElement()) {
+         console.reset();
+     } else {
+         console.setView(proxy.getOutput(), TestNGConsoleProperties.SCROLL_TO_STACK_TRACE.value(getProperties()) ? proxy.getExceptionMark() : 0);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/f146443b895f8beb0756955b444aff390a1350c0 b/14208ff52e44bb937a282483e010031dec0adf57
+index f146443b89..14208ff52e 100644
+--- a/f146443b895f8beb0756955b444aff390a1350c0
++++ b/14208ff52e44bb937a282483e010031dec0adf57
+@@ -1,8 +1,10 @@
+-void setRectSize(Observable<PointF> rectSize) {
++void setRectSize(KeyframeAnimation<PointF> rectSize) {
+     if (this.rectSize != null) {
+-        this.rectSize.removeChangeListener(changedListener);
++        removeAnimation(this.rectSize);
++        this.rectSize.removeUpdateListener(rectSizeChangedListener);
+     }
+     this.rectSize = rectSize;
+-    this.rectSize.addChangeListener(changedListener);
++    addAnimation(rectSize);
++    rectSize.addUpdateListener(rectSizeChangedListener);
+     invalidateSelf();
+ }
+\ No newline at end of file

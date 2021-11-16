@@ -1,0 +1,21 @@
+diff --git a/3de5055a70c91727282eaa5b60971c7af018880b b/7a82eb606416324c11ee9fe4018ef885e59e402e
+index 3de5055a70..7a82eb6064 100644
+--- a/3de5055a70c91727282eaa5b60971c7af018880b
++++ b/7a82eb606416324c11ee9fe4018ef885e59e402e
+@@ -1,11 +1,7 @@
+ public void testOnAnotherMethod() {
+-    doTest(new Runnable() {
+-
+-        @Override
+-        public void run() {
+-            myFixture.type("int param");
+-            final int nextMethodOffset = ((PsiJavaFile) myFixture.getFile()).getClasses()[0].getMethods()[1].getTextOffset();
+-            myFixture.getEditor().getCaretModel().moveToOffset(nextMethodOffset);
+-        }
++    doTest(() -> {
++        myFixture.type("int param");
++        final int nextMethodOffset = ((PsiJavaFile) myFixture.getFile()).getClasses()[0].getMethods()[1].getTextOffset();
++        myFixture.getEditor().getCaretModel().moveToOffset(nextMethodOffset);
+     }, false, ChangeSignatureDetectorAction.CHANGE_SIGNATURE);
+ }
+\ No newline at end of file

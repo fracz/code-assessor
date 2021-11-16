@@ -1,0 +1,29 @@
+diff --git a/6cf5f349d85b00989dce87f10800deac9a0cbb6f b/b8abd44b7212b08a8d2b8272956440462ec55b91
+index 6cf5f349d8..b8abd44b72 100644
+--- a/6cf5f349d85b00989dce87f10800deac9a0cbb6f
++++ b/b8abd44b7212b08a8d2b8272956440462ec55b91
+@@ -1,21 +1,20 @@
+ /**
+  * Gets the scope for a type based on its annotations. Returns {@code null}
+  * if none specified.
+  *
+  * @param implementation type
+  * @param scopes map of scope names to scopes
+- * @param errorHandler handles errors
+  */
+-static Scope getScopeForType(Class<?> implementation, Map<Class<? extends Annotation>, Scope> scopes, ErrorHandler errorHandler) {
++static Scope getScopeForType(Errors errors, Class<?> implementation, Map<Class<? extends Annotation>, Scope> scopes) {
+     Class<? extends Annotation> found = null;
+     for (Annotation annotation : implementation.getAnnotations()) {
+         if (isScopeAnnotation(annotation)) {
+             if (found != null) {
+-                errorHandler.handle(StackTraceElements.forType(implementation), ErrorMessage.duplicateScopeAnnotations(found, annotation.annotationType()));
++                errors.duplicateScopeAnnotations(found, annotation.annotationType());
+             } else {
+                 found = annotation.annotationType();
+             }
+         }
+     }
+     return scopes.get(found);
+ }
+\ No newline at end of file

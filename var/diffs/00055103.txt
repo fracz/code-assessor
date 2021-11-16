@@ -1,0 +1,25 @@
+diff --git a/da657b2de34ba70c1928d5678fe152419fbe7e1f b/ba6277f7c4a1f49f6a3ee9a730ca29520fa50397
+index da657b2de3..ba6277f7c4 100644
+--- a/da657b2de34ba70c1928d5678fe152419fbe7e1f
++++ b/ba6277f7c4a1f49f6a3ee9a730ca29520fa50397
+@@ -1,12 +1,13 @@
+ @SuppressWarnings("unchecked")
+ private void setFieldsTypesFromSignature() {
+     for (FieldNode field : fields) {
+         Annotation a = field.getAttributes().getAnnotation(Consts.DALVIK_SIGNATURE);
+-        if (a == null)
+-            continue;
+-        String sign = Utils.mergeSignature((List<String>) a.getDefaultValue());
+-        ArgType gType = ArgType.parseSignature(sign);
+-        if (gType != null)
+-            field.setType(gType);
++        if (a != null) {
++            String sign = Utils.mergeSignature((List<String>) a.getDefaultValue());
++            ArgType gType = ArgType.parseSignature(sign);
++            if (gType != null) {
++                field.setType(gType);
++            }
++        }
+     }
+ }
+\ No newline at end of file

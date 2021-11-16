@@ -1,0 +1,14 @@
+diff --git a/61ce8e2271a7f34779bba092034d754e661508e8 b/d1d76345c3db03c01ca87010ec4fa761ed011692
+index 61ce8e2271..d1d76345c3 100644
+--- a/61ce8e2271a7f34779bba092034d754e661508e8
++++ b/d1d76345c3db03c01ca87010ec4fa761ed011692
+@@ -1,7 +1,7 @@
+ @Override
+ public void writeTo(StreamOutput out) throws IOException {
+     super.writeTo(out);
+     out.writeUTF(index);
+     out.writeUTF(type);
+-    out.writeBytesHolder(source, sourceOffset, sourceLength);
++    out.writeBytesReference(source, true);
+ }
+\ No newline at end of file

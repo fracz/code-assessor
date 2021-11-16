@@ -1,0 +1,17 @@
+diff --git a/4e229d1ccf916936dd2158ee20e48eb0ba4c0225 b/ec055b28bf300f3d10146136e1fdf140a2b6e494
+index 4e229d1ccf..ec055b28bf 100644
+--- a/4e229d1ccf916936dd2158ee20e48eb0ba4c0225
++++ b/ec055b28bf300f3d10146136e1fdf140a2b6e494
+@@ -1,5 +1,8 @@
+ @Override
+-public Object getValueFromClipboard(DBSTypedObject column, Clipboard clipboard) {
+-    // By default handler doesn't support any clipboard format
+-    return null;
++public Object getValueFromClipboard(DBCExecutionContext context, DBSTypedObject column, Clipboard clipboard) throws DBCException {
++    String strValue = (String) clipboard.getContents(TextTransfer.getInstance());
++    if (CommonUtils.isEmpty(strValue)) {
++        return null;
++    }
++    return getValueFromObject(context, column, strValue, false);
+ }
+\ No newline at end of file

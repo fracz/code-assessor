@@ -1,0 +1,20 @@
+diff --git a/ed594fe44db0b0f71c2dc232c4536de393c284e6 b/34f36569ee8ccac43d0cccfdb82084da9718126b
+index ed594fe44d..34f36569ee 100644
+--- a/ed594fe44db0b0f71c2dc232c4536de393c284e6
++++ b/34f36569ee8ccac43d0cccfdb82084da9718126b
+@@ -1,11 +1,11 @@
+-private void createConn(Channel ch, Handler<ClientConnection> connectHandler) {
+-    ClientConnection conn = new ClientConnection(vertx, DefaultHttpClient.this, ch, tcpHelper.isSSL(), host, port, keepAlive, pipelining, actualCtx);
++private void createConn(int port, String host, Channel ch, Handler<ClientConnection> connectHandler, ConnectionLifeCycleListener listener) {
++    ClientConnection conn = new ClientConnection(vertx, DefaultHttpClient.this, ch, options.isSsl(), host, port, actualCtx, listener);
+     conn.closeHandler(v -> {
+         // The connection has been closed - tell the pool about it, this allows the pool to create more
+         // connections. Note the pool doesn't actually remove the connection, when the next person to get a connection
+         // gets the closed on, they will check if it's closed and if so get another one.
+-        pool.connectionClosed(conn);
++        listener.connectionClosed(conn);
+     });
+     connectionMap.put(ch, conn);
+     connectHandler.handle(conn);
+ }
+\ No newline at end of file

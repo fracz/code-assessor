@@ -1,0 +1,18 @@
+diff --git a/0ed15dcceb7b4425744f2cfbeb8ec32a18ba0f3e b/a099a4d4226d8895c1f4d1e31f12949ba82abae5
+index 0ed15dcceb..a099a4d422 100644
+--- a/0ed15dcceb7b4425744f2cfbeb8ec32a18ba0f3e
++++ b/a099a4d4226d8895c1f4d1e31f12949ba82abae5
+@@ -1,6 +1,10 @@
+-protected static Message makeBootstrapMetadataMessage(BootstrapMetadataMessage bsMetadataMessage) throws IOException {
++protected static Message makeBootstrapMetadataMessage(BootstrapMetadataMessage bsMetadataMessage) {
+     ByteArrayOutputStream bos = new ByteArrayOutputStream();
+     DataOutputStream dos = new DataOutputStream(bos);
+-    BootstrapMetadataMessage.serializer().serialize(bsMetadataMessage, dos);
++    try {
++        BootstrapMetadataMessage.serializer().serialize(bsMetadataMessage, dos);
++    } catch (IOException e) {
++        throw new IOError(e);
++    }
+     return new Message(FBUtilities.getLocalAddress(), "", StorageService.bootstrapMetadataVerbHandler_, bos.toByteArray());
+ }
+\ No newline at end of file

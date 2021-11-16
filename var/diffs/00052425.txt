@@ -1,0 +1,16 @@
+diff --git a/4ae28b01a2d89cd54a67eddfaae1f87a9c27a257 b/410e3b0c36c7af483237b568061a0d44a4abdd85
+index 4ae28b01a2..410e3b0c36 100644
+--- a/4ae28b01a2d89cd54a67eddfaae1f87a9c27a257
++++ b/410e3b0c36c7af483237b568061a0d44a4abdd85
+@@ -1,9 +1,9 @@
+ @Test
+ public void parseWithoutParameter() {
+     ShardingRule shardingRule = createShardingRule();
+     List<Object> parameters = Collections.emptyList();
+-    SQLStatementParser statementParser = new SQLStatementParser(DatabaseType.MySQL, shardingRule, parameters, new MySQLExprParser(shardingRule, parameters, "UPDATE TABLE_XXX xxx SET TABLE_XXX.field1=field1+1,xxx.field2=2 WHERE " + "TABLE_XXX.field4<10 AND TABLE_XXX.field1=1 AND xxx.field5>10 AND TABLE_XXX.field2 IN (1,3) AND xxx.field6<=10 AND TABLE_XXX.field3 BETWEEN 5 AND 20 AND xxx.field7>=10"));
++    SQLStatementParser statementParser = new SQLStatementParser(DatabaseType.MySQL, shardingRule, parameters, new MySQLParser("UPDATE TABLE_XXX xxx SET TABLE_XXX.field1=field1+1,xxx.field2=2 WHERE " + "TABLE_XXX.field4<10 AND TABLE_XXX.field1=1 AND xxx.field5>10 AND TABLE_XXX.field2 IN (1,3) AND xxx.field6<=10 AND TABLE_XXX.field3 BETWEEN 5 AND 20 AND xxx.field7>=10", shardingRule, parameters));
+     UpdateSQLContext sqlContext = (UpdateSQLContext) statementParser.parseStatement();
+     assertUpdateStatement(sqlContext);
+     assertThat(sqlContext.toSqlBuilder().toString(), is("UPDATE [Token(TABLE_XXX)] xxx SET [Token(TABLE_XXX)].field1=field1+1,xxx.field2=2 WHERE [Token(TABLE_XXX)].field4<10 " + "AND [Token(TABLE_XXX)].field1=1 AND xxx.field5>10 AND [Token(TABLE_XXX)].field2 IN (1,3) AND xxx.field6<=10 AND [Token(TABLE_XXX)].field3 BETWEEN 5 AND 20 AND xxx.field7>=10"));
+ }
+\ No newline at end of file

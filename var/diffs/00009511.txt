@@ -1,0 +1,20 @@
+diff --git a/e40ed36f533e63771648f5ddb5149affd3f02274 b/97ef8f58e379f891851e2c3c2511c9fe7dabbc2f
+index e40ed36f53..97ef8f58e3 100644
+--- a/e40ed36f533e63771648f5ddb5149affd3f02274
++++ b/97ef8f58e379f891851e2c3c2511c9fe7dabbc2f
+@@ -1,8 +1,11 @@
+ private void checkShowPopupMenu(final MouseEvent e) {
+     int cell = getCellAt(e.getPoint());
+     if (cell >= 0 && e.isPopupTrigger()) {
+-        GridChangeActionGroup group = new GridChangeActionGroup(myEditor, mySelectedContainer, cell, getOrientation());
+-        final ActionPopupMenu popupMenu = ActionManager.getInstance().createActionPopupMenu(ActionPlaces.UNKNOWN, group);
+-        popupMenu.getComponent().show(GridCaptionPanel.this, e.getX(), e.getY());
++        myFocusedCell = cell;
++        ActionGroup group = mySelectedContainer.getLayoutManager().getCaptionActions();
++        if (group != null) {
++            final ActionPopupMenu popupMenu = ActionManager.getInstance().createActionPopupMenu(ActionPlaces.UNKNOWN, group);
++            popupMenu.getComponent().show(GridCaptionPanel.this, e.getX(), e.getY());
++        }
+     }
+ }
+\ No newline at end of file

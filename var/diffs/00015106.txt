@@ -1,0 +1,19 @@
+diff --git a/057479f45f18979d00b642f74514fffa3cd05208 b/839bc183e0515d7e92943ea6b75d0b1ce2bcaa3b
+index 057479f45f..839bc183e0 100644
+--- a/057479f45f18979d00b642f74514fffa3cd05208
++++ b/839bc183e0515d7e92943ea6b75d0b1ce2bcaa3b
+@@ -1,10 +1,10 @@
+ private void genSimpleSuperCall(InstructionAdapter iv) {
+-    iv.load(0, Type.getType("L" + superClass + ";"));
++    iv.load(0, superClassAsmType);
+     if (descriptor.getKind() == ClassKind.ENUM_CLASS || descriptor.getKind() == ClassKind.ENUM_ENTRY) {
+         iv.load(1, AsmTypeConstants.JAVA_STRING_TYPE);
+         iv.load(2, Type.INT_TYPE);
+-        iv.invokespecial(superClass, "<init>", "(Ljava/lang/String;I)V");
++        iv.invokespecial(superClassAsmType.getInternalName(), "<init>", "(Ljava/lang/String;I)V");
+     } else {
+-        iv.invokespecial(superClass, "<init>", "()V");
++        iv.invokespecial(superClassAsmType.getInternalName(), "<init>", "()V");
+     }
+ }
+\ No newline at end of file

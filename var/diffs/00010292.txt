@@ -1,0 +1,21 @@
+diff --git a/3d5105c5e19167e9cb3a67c81cf09eb00dad7e5e b/70f5cab265b579354c40eea77bb2034a8d7ff4d6
+index 3d5105c5e1..70f5cab265 100644
+--- a/3d5105c5e19167e9cb3a67c81cf09eb00dad7e5e
++++ b/70f5cab265b579354c40eea77bb2034a8d7ff4d6
+@@ -1,11 +1,14 @@
+ @Override
+ public void visitJSBlock(JSBlockStatement node) {
+     PsiElement parent = node.getParent();
+     if (parent instanceof JSIfStatement || parent instanceof JSLoopStatement) {
++        int temp = myParentOffset;
++        myParentOffset = getTextOffset(node);
+         for (JSStatement statement : node.getStatements()) {
+             statement.accept(this);
+         }
++        myParentOffset = temp;
+     } else {
+-        super.visitJSBlock(node);
++        visitChildren(node);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/fe29288387a8d297e91e61c09778c85cb82ac641 b/e1bd1268b026680b4d5ba43a07410763d4393151
+index fe29288387..e1bd1268b0 100644
+--- a/fe29288387a8d297e91e61c09778c85cb82ac641
++++ b/e1bd1268b026680b4d5ba43a07410763d4393151
+@@ -1,4 +1,8 @@
+ @Override
+ public Operator readFrom(StreamInput in) throws IOException {
+-    return Operator.values()[in.readVInt()];
++    int ordinal = in.readVInt();
++    if (ordinal < 0 || ordinal >= values().length) {
++        throw new IOException("Unknown Operator ordinal [" + ordinal + "]");
++    }
++    return values()[ordinal];
+ }
+\ No newline at end of file

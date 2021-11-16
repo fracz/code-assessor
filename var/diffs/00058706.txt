@@ -1,0 +1,20 @@
+diff --git a/f0d453198e937dcf89050e3d6e65291588468254 b/6c0b31f335b86445637580564157a2be02c461fa
+index f0d453198e..6c0b31f335 100644
+--- a/f0d453198e937dcf89050e3d6e65291588468254
++++ b/6c0b31f335b86445637580564157a2be02c461fa
+@@ -1,12 +1,11 @@
+ /**
+  * Clears the contents of this kv store
+  */
+ public void clear() throws StorageException {
+     try {
+-        while (!exchangePool.isEmpty()) {
+-            exchangePool.get().removeAll();
+-        }
++        Exchange exchange = persistit.getExchange(persistit.getSystemVolume().getName(), name, true);
++        exchange.removeTree();
+     } catch (PersistitException ex) {
+         throw new PermanentStorageException(ex.toString());
+     }
+ }
+\ No newline at end of file

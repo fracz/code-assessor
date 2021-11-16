@@ -1,0 +1,20 @@
+diff --git a/92aea8782d5d83642ec83855c853676c95641dc9 b/1d61bfb68b88b7be80fdea5c078d5a31c97315fb
+index 92aea8782d..1d61bfb68b 100644
+--- a/92aea8782d5d83642ec83855c853676c95641dc9
++++ b/1d61bfb68b88b7be80fdea5c078d5a31c97315fb
+@@ -1,12 +1,13 @@
+ private void initializeDuplicateFlag() {
+     SliceUsage sliceUsage = getValue();
+     List<SliceNode> eq = targetEqualUsages.get(sliceUsage);
+     if (eq == null) {
+         eq = new SmartList<SliceNode>();
+         targetEqualUsages.put(sliceUsage, eq);
+     }
+     eq.add(this);
+     if (eq.size() != 1) {
+-        duplicate = eq.get(0);
++        SliceNode dup = eq.get(0);
++        duplicate = myTreeBuilder.getNodeForElement(dup);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/f98df0a8a5410f84db25d1b4634483e482fc9613 b/684eeef0dbd18831f9673ba5bb05ae18ad02cb32
+index f98df0a8a5..684eeef0db 100644
+--- a/f98df0a8a5410f84db25d1b4634483e482fc9613
++++ b/684eeef0dbd18831f9673ba5bb05ae18ad02cb32
+@@ -1,5 +1,5 @@
+ @Test
+ public void testBindUnparametrizedVarchar() throws Exception {
+-    Signature function = functionSignature().returnType("boolean").argumentTypes("varchar(x)").literalParameters("x").build();
++    Signature function = functionSignature().returnType(parseTypeSignature("boolean")).argumentTypes(parseTypeSignature("varchar(x)", ImmutableSet.of("x"))).build();
+     assertThat(function).boundTo("varchar").produces(new BoundVariables(ImmutableMap.of(), ImmutableMap.of("x", (long) Integer.MAX_VALUE)));
+ }
+\ No newline at end of file

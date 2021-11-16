@@ -1,0 +1,18 @@
+diff --git a/eafddab9d32093e605b9706854da941f231eb273 b/fe1d5ebb8ba9447e3ecf943979064949a2caa4c5
+index eafddab9d3..fe1d5ebb8b 100644
+--- a/eafddab9d32093e605b9706854da941f231eb273
++++ b/fe1d5ebb8ba9447e3ecf943979064949a2caa4c5
+@@ -1,11 +1,10 @@
+ @Override
+ public void prettyPrint(Appendable buffer, int indentLevel) throws IOException {
+     printIndent(buffer, indentLevel);
+     buffer.append("return");
+-    // "return" with no arg is represented internally as returning the None identifier.
+-    if (!(returnExpression instanceof Identifier && ((Identifier) returnExpression).getName().equals("None"))) {
++    if (returnExpression != null) {
+         buffer.append(' ');
+         returnExpression.prettyPrint(buffer, indentLevel);
+     }
+     buffer.append('\n');
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/a1dfa684ac9a3a3edc009bdfea9fa54ad7ed8b7e b/56ec7a9d5a4b80cce0cd1fed33aa95a97f637d9e
+index a1dfa684ac..56ec7a9d5a 100644
+--- a/a1dfa684ac9a3a3edc009bdfea9fa54ad7ed8b7e
++++ b/56ec7a9d5a4b80cce0cd1fed33aa95a97f637d9e
+@@ -1,8 +1,8 @@
+-public static GrReturnStatement[] findReturnStatements(GrMethod method) {
++public static Collection<GrReturnStatement> findReturnStatements(GrMethod method) {
+     ArrayList<GrReturnStatement> vector = new ArrayList<GrReturnStatement>();
+     GrOpenBlock block = method.getBlock();
+     if (block != null) {
+         addReturnStatements(vector, block);
+     }
+-    return vector.toArray(new GrReturnStatement[vector.size()]);
++    return vector;
+ }
+\ No newline at end of file

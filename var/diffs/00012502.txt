@@ -1,0 +1,14 @@
+diff --git a/c3fb39ac0eaa8eb585627ec65c12145dcaf60063 b/af2104fc925f3865d79498a736dfb58477721a27
+index c3fb39ac0e..af2104fc92 100644
+--- a/c3fb39ac0eaa8eb585627ec65c12145dcaf60063
++++ b/af2104fc925f3865d79498a736dfb58477721a27
+@@ -1,7 +1,4 @@
+-/**
+- * @return All elements of certain type
+- */
+ @NotNull
+ public List<T> getElements() {
+-    return Collections.unmodifiableList(myElements);
++    return asStream().collect(Collectors.toList());
+ }
+\ No newline at end of file

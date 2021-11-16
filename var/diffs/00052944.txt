@@ -1,0 +1,11 @@
+diff --git a/4730fc736babf180c70768c6e56570179f753eff b/b59e6e026a9cd286e73f2fe3e524d36af44bda5e
+index 4730fc736b..b59e6e026a 100644
+--- a/4730fc736babf180c70768c6e56570179f753eff
++++ b/b59e6e026a9cd286e73f2fe3e524d36af44bda5e
+@@ -1,3 +1,3 @@
+-private <T> T syncExecute(final BaseStatementUnit baseStatementUnit, final ExecuteUnit<T> executeUnit, final SQLType sqlType, final List<Object> parameters) throws Exception {
+-    return executeInternal(baseStatementUnit, executeUnit, sqlType, parameters, ExecutorExceptionHandler.isExceptionThrown(), ExecutorDataMap.getDataMap());
++private <T> T syncExecute(final SQLType sqlType, final BaseStatementUnit baseStatementUnit, final List<List<Object>> parameterSets, final ExecuteUnit<T> executeUnit) throws Exception {
++    return executeInternal(sqlType, baseStatementUnit, parameterSets, executeUnit, ExecutorExceptionHandler.isExceptionThrown(), ExecutorDataMap.getDataMap());
+ }
+\ No newline at end of file

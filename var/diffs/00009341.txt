@@ -1,0 +1,16 @@
+diff --git a/9163c23813afbafff2518c87e3d5f7d1b3802972 b/bec09dcfa53ecb15e2a3d05ae9195675196c1232
+index 9163c23813..bec09dcfa5 100644
+--- a/9163c23813afbafff2518c87e3d5f7d1b3802972
++++ b/bec09dcfa53ecb15e2a3d05ae9195675196c1232
+@@ -1,8 +1,4 @@
+-public boolean startTemplate(@NotNull String key) {
+-    List<TemplateImpl> templates = findApplicableTemplates(key);
+-    Map<TemplateImpl, String> template2Argument = new HashMap<TemplateImpl, String>();
+-    for (TemplateImpl template : templates) {
+-        template2Argument.put(template, null);
+-    }
++public boolean startTemplate() {
++    Map<TemplateImpl, String> template2Argument = ((TemplateManagerImpl) myTemplateManager).findMatchingTemplates(myFile, myEditor, null, TemplateSettings.getInstance());
+     return ((TemplateManagerImpl) myTemplateManager).startNonCustomTemplates(template2Argument, myEditor, null);
+ }
+\ No newline at end of file

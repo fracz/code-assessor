@@ -1,0 +1,26 @@
+diff --git a/5f42e8c34fe457e1459d869b0abfc607f02cba93 b/08334005fbb0399025465b0c0cc8d9b301d8502b
+index 5f42e8c34f..08334005fb 100644
+--- a/5f42e8c34fe457e1459d869b0abfc607f02cba93
++++ b/08334005fbb0399025465b0c0cc8d9b301d8502b
+@@ -1,17 +1,16 @@
+ @Override
+ public void onOrientationChanged(int orientation) {
+-    if (camera != null && orientation != ORIENTATION_UNKNOWN) {
++    if (camera.isPresent() && orientation != ORIENTATION_UNKNOWN) {
+         int newOutputOrientation = getCameraPictureRotation(orientation);
+         if (newOutputOrientation != outputOrientation) {
+             outputOrientation = newOutputOrientation;
+-            Camera.Parameters params = camera.getParameters();
++            Camera.Parameters params = camera.get().getParameters();
+             params.setRotation(outputOrientation);
+             try {
+-                camera.setParameters(params);
+-                lastPictureOrientation = outputOrientation;
++                camera.get().setParameters(params);
+             } catch (Exception e) {
+                 Log.e(TAG, "Exception updating camera parameters in orientation change", e);
+             }
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/35a035789f3811bd1ed8192dda52f1c540df4936 b/3349becc6b25ec9e519efa39ddfc1fb015378633
+index 35a035789f..3349becc6b 100644
+--- a/35a035789f3811bd1ed8192dda52f1c540df4936
++++ b/3349becc6b25ec9e519efa39ddfc1fb015378633
+@@ -1,8 +1,8 @@
+ // This method is a bit ad-hoc, but it allows us to not make the boxed
+ // instances (which are not final) public.
+ public boolean isNumStrScalarOrObj(JSType t) {
+     if (anyNumOrStr == null) {
+-        return t.isSubtypeOf(JSType.NUM_OR_STR);
++        return t.isSubtypeOf(this.NUMBER_OR_STRING);
+     }
+     return t.isSubtypeOf(anyNumOrStr);
+ }
+\ No newline at end of file

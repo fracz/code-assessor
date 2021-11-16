@@ -1,0 +1,19 @@
+diff --git a/b5950315ae7deb511413e488b1e9834e04b9333c b/fc60840be1e42ead40b6688e1e2cef5e9fc6ee9d
+index b5950315ae..fc60840be1 100644
+--- a/b5950315ae7deb511413e488b1e9834e04b9333c
++++ b/fc60840be1e42ead40b6688e1e2cef5e9fc6ee9d
+@@ -1,11 +1,11 @@
+ protected final synchronized Icon getOrComputeIcon() {
+-    if (!myWasComputed || isDarkVariant != USE_DARK_ICONS || scale != SCALE || filter != IMAGE_FILTER || numberOfPatchers != ourPatchers.size()) {
++    if (!myWasComputed || isDarkVariant != USE_DARK_ICONS || !isJBUIScaleValid() || filter != IMAGE_FILTER || numberOfPatchers != ourPatchers.size()) {
+         isDarkVariant = USE_DARK_ICONS;
+-        scale = SCALE;
++        validateJBUIScale();
+         filter = IMAGE_FILTER;
+         myWasComputed = true;
+         numberOfPatchers = ourPatchers.size();
+         myIcon = compute();
+     }
+     return myIcon;
+ }
+\ No newline at end of file

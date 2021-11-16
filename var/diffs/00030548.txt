@@ -1,0 +1,18 @@
+diff --git a/a22e93d41f5e56fe1b65054b07268d56e36e6b55 b/450546d32aecd3d2e7980e4f5f9bd92fe3dff624
+index a22e93d41f..450546d32a 100644
+--- a/a22e93d41f5e56fe1b65054b07268d56e36e6b55
++++ b/450546d32aecd3d2e7980e4f5f9bd92fe3dff624
+@@ -1,7 +1,9 @@
+ @Test
+ public void testSimpleJacksonGenerator() throws Exception {
+-    JsonBuilder builder = new JsonBuilder();
+-    assertThat(builder.startObject().field("test", "value").endObject().string(), equalTo("{\"test\":\"value\"}"));
++    StringJsonBuilder builder = JsonBuilder.stringJsonBuilder();
++    builder.startObject().field("test", "value").endObject();
++    assertThat(builder.string(), equalTo("{\"test\":\"value\"}"));
+     builder.reset();
+-    assertThat(builder.startObject().field("test", "value").endObject().string(), equalTo("{\"test\":\"value\"}"));
++    builder.startObject().field("test", "value").endObject();
++    assertThat(builder.string(), equalTo("{\"test\":\"value\"}"));
+ }
+\ No newline at end of file

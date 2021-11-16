@@ -1,0 +1,15 @@
+diff --git a/1df0d7995c0315148f77e103d05ecf670747b240 b/7e2fa3e356e57ce40dbe94e2c02c7f11ec216aaf
+index 1df0d7995c..7e2fa3e356 100644
+--- a/1df0d7995c0315148f77e103d05ecf670747b240
++++ b/7e2fa3e356e57ce40dbe94e2c02c7f11ec216aaf
+@@ -1,5 +1,8 @@
+ @Override
+ @NotNull
+ public String getUrl() {
+-    return getUrlFromPair(update());
++    if (isDisposed())
++        return "";
++    Pair<VirtualFile, String> update = myNode.update();
++    return update.second;
+ }
+\ No newline at end of file

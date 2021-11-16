@@ -1,0 +1,20 @@
+diff --git a/eb863cd669ba781078d68d824cf11321f35ccf67 b/7f0d6b2ecb7944afd42142470a2a4004b01ba069
+index eb863cd669..7f0d6b2ecb 100644
+--- a/eb863cd669ba781078d68d824cf11321f35ccf67
++++ b/7f0d6b2ecb7944afd42142470a2a4004b01ba069
+@@ -1,13 +1,11 @@
+ public double getDouble(String key, final double defaultValue) {
+     if (mProperties.containsKey(key)) {
+         String rawValue = mProperties.getProperty(key);
+         try {
+             return Double.parseDouble(lookup(rawValue));
+         } catch (NumberFormatException e) {
+             LOG.warn("Configuration cannot evaluate key " + key + " as double.");
+-            return defaultValue;
+         }
+-    } else {
+-        return defaultValue;
+     }
++    return defaultValue;
+ }
+\ No newline at end of file

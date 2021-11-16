@@ -1,0 +1,13 @@
+diff --git a/20c4995cc7c378b67f73ca7b413f79f124dd67d7 b/f582d3cd9805e58d1e23ac16c796eb07148ddf49
+index 20c4995cc7..f582d3cd98 100644
+--- a/20c4995cc7c378b67f73ca7b413f79f124dd67d7
++++ b/f582d3cd9805e58d1e23ac16c796eb07148ddf49
+@@ -1,6 +1,5 @@
+-@Override
+ public void gossiperStarting() {
+     super.gossiperStarting();
+     Gossiper.instance.addLocalApplicationState(ApplicationState.INTERNAL_IP, StorageService.instance.valueFactory.internalIP(FBUtilities.getLocalAddress().getHostAddress()));
+-    Gossiper.instance.register(this);
++    Gossiper.instance.register(new ReconnectableSnitchHelper(this, myDC, preferLocal));
+ }
+\ No newline at end of file

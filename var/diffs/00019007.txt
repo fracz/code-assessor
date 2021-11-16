@@ -1,0 +1,12 @@
+diff --git a/91a9bd091235340e100a8db4724d7dd8593d90a5 b/d5eaba2b33b3727cfa5ae557ad37b3d2c228b149
+index 91a9bd0912..d5eaba2b33 100644
+--- a/91a9bd091235340e100a8db4724d7dd8593d90a5
++++ b/d5eaba2b33b3727cfa5ae557ad37b3d2c228b149
+@@ -1,4 +1,4 @@
+ public void unbind() {
+-    if (slideDeck != null)
+-        slideDeck.setListener(null);
++    if (slideDeck != null && slideDeckListener != null)
++        slideDeck.removeListener(slideDeckListener);
+ }
+\ No newline at end of file

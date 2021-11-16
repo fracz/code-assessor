@@ -1,0 +1,18 @@
+diff --git a/d86998dfb42aa10895398b1358d612969e708bb8 b/f719b7a8281875c8ddf0b9629f8a3b601af738f7
+index d86998dfb4..f719b7a828 100644
+--- a/d86998dfb42aa10895398b1358d612969e708bb8
++++ b/f719b7a8281875c8ddf0b9629f8a3b601af738f7
+@@ -1,9 +1,7 @@
+ @Test
+ public void testAsCreatedDifference() {
+     FileEntry e = new FileEntry(-1, null, null, -1);
+-    Difference d = e.asCreatedDifference();
+-    assertEquals(CREATED, d.getKind());
+-    assertTrue(d.isFile());
+-    assertNull(d.getLeft());
+-    assertSame(e, d.getRight());
++    ArrayList<Difference> dd = new ArrayList<Difference>();
++    e.collectCreatedDifferences(dd);
++    assertDifference(dd, null, e);
+ }
+\ No newline at end of file

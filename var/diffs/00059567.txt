@@ -1,0 +1,36 @@
+diff --git a/9af2425cd5c817dc9dd77d814a9806c663d861f8 b/423277e4213a2478d93a198bc4d6c2ce0c04ac69
+index 9af2425cd5..423277e421 100644
+--- a/9af2425cd5c817dc9dd77d814a9806c663d861f8
++++ b/423277e4213a2478d93a198bc4d6c2ce0c04ac69
+@@ -1,15 +1,22 @@
+ @Override
+ public synchronized void commit() {
+     Preconditions.checkArgument(isOpen(), "The transaction has already been closed");
+-    if (!getTxConfiguration().isReadOnly()) {
+-        try {
++    try {
++        if (!addedEdges.isEmpty() || !deletedEdges.isEmpty()) {
+             graphdb.save(addedEdges, deletedEdges, this);
+-        } catch (GraphStorageException e) {
+-            abort();
+-            throw e;
+         }
++        txHandle.commit();
++        super.commit();
++    } catch (StorageException e) {
++        try {
++            txHandle.abort();
++            throw new TitanException("Could not commit transaction due to exception during persistence", e);
++        } catch (StorageException s) {
++            throw new TitanException("Failure while trying to abort a unsuccessfully committed transaction", s);
++        } finally {
++            super.abort();
++        }
++    } finally {
++        clear();
+     }
+-    txHandle.commit();
+-    super.commit();
+-    clear();
+ }
+\ No newline at end of file

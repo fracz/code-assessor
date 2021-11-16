@@ -1,0 +1,14 @@
+diff --git a/78015225d927fdc676d23b5627a47fd892a4cfe2 b/2d19580cec4e2fdc6e6814ab24d04623d5207993
+index 78015225d9..2d19580cec 100644
+--- a/78015225d927fdc676d23b5627a47fd892a4cfe2
++++ b/2d19580cec4e2fdc6e6814ab24d04623d5207993
+@@ -1,7 +1,7 @@
+ @Test
+ public void testMultipleAspectsWithParameterApplied() {
+-    ClassPathXmlApplicationContext bf = new ClassPathXmlApplicationContext("/org/springframework/aop/aspectj/autoproxy/aspects.xml");
++    ClassPathXmlApplicationContext bf = newContext("aspects.xml");
+     ITestBean tb = (ITestBean) bf.getBean("adrian");
+     tb.setAge(10);
+     assertEquals(20, tb.getAge());
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/11ba564df6333e8c769c6c77bc52976d5f363959 b/fb58ccbc0f6bab94068c9240113e4df21e3f5652
+index 11ba564df6..fb58ccbc0f 100644
+--- a/11ba564df6333e8c769c6c77bc52976d5f363959
++++ b/fb58ccbc0f6bab94068c9240113e4df21e3f5652
+@@ -1,4 +1,6 @@
+ @Override
+ public void windowEnteredFullScreen(AppEvent.FullScreenEvent event) {
+-    LOG.assertTrue(SystemInfo.isMac, "For mac we set myInFullScreen in the windowWillEnterFullScreenCallBack methods");
++    if (!ORACLE_BUG_ID_8003173) {
++        enterFullscreen();
++    }
+ }
+\ No newline at end of file

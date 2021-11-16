@@ -1,0 +1,20 @@
+diff --git a/201edabd055579e2012be820b296aac5a06f21dd b/b7af864696c0148cebcd5e23f2282df54d176fdf
+index 201edabd05..b7af864696 100644
+--- a/201edabd055579e2012be820b296aac5a06f21dd
++++ b/b7af864696c0148cebcd5e23f2282df54d176fdf
+@@ -1,10 +1,12 @@
+-private static File createLocalPluginsDescriptions(final String file) throws IOException {
++private static File createLocalPluginsDescriptions(String file) throws IOException {
+     File basePath = new File(PathManager.getPluginsPath());
+-    basePath.mkdirs();
++    if (!basePath.isDirectory() && !basePath.mkdirs()) {
++        throw new IOException("Cannot create directory: " + basePath);
++    }
+     File temp = new File(basePath, file);
+     if (temp.exists()) {
+         FileUtil.delete(temp);
+     }
+     FileUtil.createIfDoesntExist(temp);
+     return temp;
+ }
+\ No newline at end of file

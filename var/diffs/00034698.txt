@@ -1,0 +1,15 @@
+diff --git a/a81cf452609e7d0fd839e476716ff60080db527b b/285d650e301210bb0bddf669930b78ff6fb68520
+index a81cf45260..285d650e30 100644
+--- a/a81cf452609e7d0fd839e476716ff60080db527b
++++ b/285d650e301210bb0bddf669930b78ff6fb68520
+@@ -1,7 +1,7 @@
+ private void assertContent() {
+     if (!mFirstWrite)
+         return;
+     mFirstWrite = false;
+-    assert null != mRequest.getHeaders().getHeaders().get("Content-Type");
+-    assert mRequest.getHeaders().getHeaders().get("Transfer-Encoding") != null || mRequest.getHeaders().getContentLength() != -1;
++    assert null != mRequest.getHeaders().get("Content-Type");
++    assert mRequest.getHeaders().get("Transfer-Encoding") != null || HttpUtil.contentLength(mRequest.getHeaders()) != -1;
+ }
+\ No newline at end of file

@@ -1,0 +1,23 @@
+diff --git a/fdd901c30483397f77ff38ee327a576a1389fe0b b/59926dec49abf5a9fa952f0db6c47796917ac47e
+index fdd901c304..59926dec49 100644
+--- a/fdd901c30483397f77ff38ee327a576a1389fe0b
++++ b/59926dec49abf5a9fa952f0db6c47796917ac47e
+@@ -1,15 +1,15 @@
+ public String toString() {
+     @NonNls StringBuilder builder = StringBuilderSpinAllocator.alloc();
+     try {
+         builder.append("AntTypeDef[");
+         builder.append(getSourceElement().getName());
+         builder.append("]");
+-        if (myNewDefinition != null) {
++        if (getDefinition() != null) {
+             builder.append(" class=");
+-            builder.append(myNewDefinition.getClassName());
++            builder.append(getDefinition().getClassName());
+         }
+         return builder.toString();
+     } finally {
+         StringBuilderSpinAllocator.dispose(builder);
+     }
+ }
+\ No newline at end of file

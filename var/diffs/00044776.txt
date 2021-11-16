@@ -1,0 +1,25 @@
+diff --git a/7d2748c16b00074f4f03b0a535ebdf17d7ddf225 b/43a267354a8e853ee2120b59f15635ec5a699b03
+index 7d2748c16b..43a267354a 100644
+--- a/7d2748c16b00074f4f03b0a535ebdf17d7ddf225
++++ b/43a267354a8e853ee2120b59f15635ec5a699b03
+@@ -1,16 +1,12 @@
+ @Override
+ public Set<OIdentifiable> get(final Object key) {
+     final OTransaction transaction = getDatabase().getTransaction();
+     if (transaction.isActive()) {
+-        return storage.callIndexEngine(false, false, indexId, new OIndexEngineCallback<Set<OIdentifiable>>() {
+-
+-            @Override
+-            public Set<OIdentifiable> callEngine(OIndexEngine engine) {
+-                OLuceneIndexEngine indexEngine = (OLuceneIndexEngine) engine;
+-                return (Set<OIdentifiable>) indexEngine.getInTx(key, getTransactionChanges(transaction));
+-            }
++        return storage.callIndexEngine(false, false, indexId, engine -> {
++            OLuceneIndexEngine indexEngine = (OLuceneIndexEngine) engine;
++            return (Set<OIdentifiable>) indexEngine.getInTx(key, getTransactionChanges(transaction));
+         });
+     } else {
+         return (Set<OIdentifiable>) storage.getIndexValue(indexId, key);
+     }
+ }
+\ No newline at end of file

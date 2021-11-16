@@ -1,0 +1,25 @@
+diff --git a/d1073316f00b032d9a5bce85db5468dbf26dd917 b/158961a236addefc8d31634712d4edcef2cd7d8a
+index d1073316f0..158961a236 100644
+--- a/d1073316f00b032d9a5bce85db5468dbf26dd917
++++ b/158961a236addefc8d31634712d4edcef2cd7d8a
+@@ -1,16 +1,16 @@
+ /**
+  * Clear any custom configurations to Redwood
+  * @return this
+  */
+ public RedwoodConfiguration clear() {
+-    tasks = new LinkedList<Runnable>();
+-    tasks.add(new Runnable() {
++    this.tasks = new LinkedList<Runnable>();
++    this.tasks.add(new Runnable() {
+
+         public void run() {
+             Redwood.clearHandlers();
+             Redwood.restoreSystemStreams();
+-            Redwood.clearLoggingClasses();
+         }
+     });
++    this.outputHandler = Redwood.ConsoleHandler.out();
+     return this;
+ }
+\ No newline at end of file

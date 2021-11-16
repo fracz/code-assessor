@@ -1,0 +1,28 @@
+diff --git a/c945c313d0727f294e610b288e22c44ce543d62a b/2051e6dd928f7d90a9715cc6cabfe7ef597f3b39
+index c945c313d0..2051e6dd92 100644
+--- a/c945c313d0727f294e610b288e22c44ce543d62a
++++ b/2051e6dd928f7d90a9715cc6cabfe7ef597f3b39
+@@ -1,9 +1,16 @@
+ public T get() {
+-    return injector.callInContext(new ContextualCallable<T>() {
++    final Errors errors = new Errors();
++    try {
++        T t = injector.callInContext(new ContextualCallable<T>() {
+
+-        public T call(InternalContext context) {
+-            InjectionPoint injectionPoint = context.getInjectionPoint();
+-            return internalFactory.get(context, injectionPoint);
+-        }
+-    });
++            public T call(InternalContext context) throws ResolveFailedException {
++                InjectionPoint injectionPoint = context.getInjectionPoint();
++                return internalFactory.get(errors, context, injectionPoint);
++            }
++        });
++        errors.throwIfNecessary();
++        return t;
++    } catch (ResolveFailedException e) {
++        throw errors.merge(e.getErrors()).toProvisionException();
++    }
+ }
+\ No newline at end of file

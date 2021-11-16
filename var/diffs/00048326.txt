@@ -1,0 +1,21 @@
+diff --git a/ee5d389af871061b3f4113cf75c52903d6b9271d b/5161dab62d9bdfeb2b7a5c398de6b66e0068abe6
+index ee5d389af8..5161dab62d 100644
+--- a/ee5d389af871061b3f4113cf75c52903d6b9271d
++++ b/5161dab62d9bdfeb2b7a5c398de6b66e0068abe6
+@@ -1,13 +1,13 @@
+ @Nullable
+ @Override
+-public Image getCellImage(@NotNull GridCell cell) {
++public Image getCellImage(Object colElement, Object rowElement) {
+     if (!showCelIcons) {
+         return null;
+     }
+-    DBDAttributeBinding attr = (DBDAttributeBinding) (recordMode ? cell.row : cell.col);
++    DBDAttributeBinding attr = (DBDAttributeBinding) (recordMode ? rowElement : colElement);
+     if ((attr.getValueHandler().getFeatures() & DBDValueHandler.FEATURE_SHOW_ICON) != 0) {
+         return getTypeImage(attr.getMetaAttribute());
+     } else {
+         return null;
+     }
+ }
+\ No newline at end of file

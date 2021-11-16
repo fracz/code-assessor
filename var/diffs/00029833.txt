@@ -1,0 +1,15 @@
+diff --git a/2c06a4ad8d1b7982a64cdb1b28abc239998cca1c b/c1960698ac276e93ebfc3a4d80a975033ecdfcd3
+index 2c06a4ad8d..c1960698ac 100644
+--- a/2c06a4ad8d1b7982a64cdb1b28abc239998cca1c
++++ b/c1960698ac276e93ebfc3a4d80a975033ecdfcd3
+@@ -1,8 +1,8 @@
+ @Override
+ public void readFrom(StreamInput in) throws IOException {
+-    name = in.readString();
++    super.readFrom(in);
+     entries = new Entry[in.readVInt()];
+     for (int i = 0; i < entries.length; i++) {
+         entries[i] = new Entry(in.readDouble(), in.readDouble(), in.readVLong(), in.readVLong(), in.readDouble(), in.readDouble(), in.readDouble());
+     }
+ }
+\ No newline at end of file

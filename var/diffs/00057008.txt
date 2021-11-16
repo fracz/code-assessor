@@ -1,0 +1,17 @@
+diff --git a/9b65bc6654933bfa250710311b8cfefbfc8b7efa b/9f2c8227b4b620dc242f992d2c991171b1342d44
+index 9b65bc6654..9f2c8227b4 100644
+--- a/9b65bc6654933bfa250710311b8cfefbfc8b7efa
++++ b/9f2c8227b4b620dc242f992d2c991171b1342d44
+@@ -1,10 +1,8 @@
+ @Override
+ public void load(String allPatternsDir) {
+     try {
+         addPatterns(IOUtils.readObjectFromFile(allPatternsDir + "/allpatterns.ser"));
+-    } catch (IOException e) {
+-        throw new RuntimeException(e);
+-    } catch (ClassNotFoundException e) {
++    } catch (IOException | ClassNotFoundException e) {
+         throw new RuntimeException(e);
+     }
+ }
+\ No newline at end of file

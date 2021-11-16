@@ -1,0 +1,19 @@
+diff --git a/90267c501b32c7d16ee9127c8acf9d783e4fe695 b/982fb71fe8cb2dd85253bdc96ca9495fb7c95f8d
+index 90267c501b..982fb71fe8 100644
+--- a/90267c501b32c7d16ee9127c8acf9d783e4fe695
++++ b/982fb71fe8cb2dd85253bdc96ca9495fb7c95f8d
+@@ -1,10 +1,6 @@
+ @Override
+ public void update(int screenWidth, int screenHeight, boolean centerCamera) {
+-    viewportX = 0;
+-    viewportY = 0;
+-    viewportWidth = screenWidth;
+-    viewportHeight = screenHeight;
+-    worldWidth = screenWidth * unitsPerPixel;
+-    worldHeight = screenHeight * unitsPerPixel;
+-    super.update(screenWidth, screenHeight, centerCamera);
++    setScreenBounds(0, 0, screenWidth, screenHeight);
++    setWorldSize(screenWidth * unitsPerPixel, screenHeight * unitsPerPixel);
++    apply(centerCamera);
+ }
+\ No newline at end of file

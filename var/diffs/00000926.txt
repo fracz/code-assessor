@@ -1,0 +1,18 @@
+diff --git a/68ff4bc9fe5ada103f21110cb681ac39f5ec143a b/db5b1ab52ee677bf1d32e020c7466f304c86bc4c
+index 68ff4bc9fe..db5b1ab52e 100644
+--- a/68ff4bc9fe5ada103f21110cb681ac39f5ec143a
++++ b/db5b1ab52ee677bf1d32e020c7466f304c86bc4c
+@@ -1,7 +1,8 @@
+ @Override
+ public void reloadForActiveAccountChange() {
+-    mMainFragment = HomeFragment.newInstance();
+-    FragmentUtils.replace(mMainFragment, this, R.id.container);
+-    // TODO: NotificationFragment
+-    mNotificationListFragment.refresh();
++    FragmentUtils.remove(mMainFragment);
++    FragmentUtils.remove(mNotificationListFragment);
++    FragmentUtils.execPendingTransactions(this);
++    addFragments();
++    FragmentUtils.execPendingTransactions(this);
+ }
+\ No newline at end of file

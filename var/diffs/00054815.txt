@@ -1,0 +1,21 @@
+diff --git a/ff63e7bab54e895ddc44f56e862de73762ea4684 b/2afaa3203ca491167588e5bb6b1d286fae4885e4
+index ff63e7bab5..2afaa3203c 100644
+--- a/ff63e7bab54e895ddc44f56e862de73762ea4684
++++ b/2afaa3203ca491167588e5bb6b1d286fae4885e4
+@@ -1,14 +1,12 @@
+ public static String getNameFromClassFile(File file) throws IOException {
+     String className = null;
+     FileInputStream in = null;
+     try {
+         in = new FileInputStream(file);
+         ClassReader classReader = new ClassReader(in);
+         className = classReader.getClassName();
+     } finally {
+-        if (in != null) {
+-            in.close();
+-        }
++        close(in);
+     }
+     return className;
+ }
+\ No newline at end of file

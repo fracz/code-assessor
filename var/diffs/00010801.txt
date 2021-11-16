@@ -1,0 +1,13 @@
+diff --git a/c0b15d9043dcdd5cce05257e4c57908a9af8b3f0 b/11ac1e355ab8a30626aea36bff6b574367f2ed6f
+index c0b15d9043..11ac1e355a 100644
+--- a/c0b15d9043dcdd5cce05257e4c57908a9af8b3f0
++++ b/11ac1e355ab8a30626aea36bff6b574367f2ed6f
+@@ -1,5 +1,5 @@
+ @Override
+ @Nullable
+-protected IElementType getOperator(MethodCallData methodInfo, OptionsData optionsData) {
+-    return methodInfo.isNegated() ? mNOT_EQUAL : mEQUAL;
++protected String getOperator(MethodCallData methodInfo, OptionsData optionsData) {
++    return methodInfo.isNegated() ? "!=" : "==";
+ }
+\ No newline at end of file

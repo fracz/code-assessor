@@ -1,0 +1,26 @@
+diff --git a/847167347e9a80cea1c7c6d75272e48caedb7c5d b/498927814559884d5e3459540026a9586d26291f
+index 847167347e..4989278145 100644
+--- a/847167347e9a80cea1c7c6d75272e48caedb7c5d
++++ b/498927814559884d5e3459540026a9586d26291f
+@@ -1,17 +1,14 @@
+ public static boolean isDocTestClass(PyClass pyClass) {
+-    List<PyStatement> result = Lists.newArrayList();
+     for (PyFunction cls : pyClass.getMethods()) {
+         if (isDocTestFunction(cls)) {
+-            result.add(cls);
++            return true;
+         }
+     }
+     if (pyClass.getDocStringExpression() != null) {
+         PyStringLiteralExpression docString = pyClass.getDocStringExpression();
+         if (docString != null && hasExample(docString.getStringValue())) {
+-            result.add(pyClass);
++            return true;
+         }
+     }
+-    if (result.isEmpty())
+-        return false;
+-    return true;
++    return false;
+ }
+\ No newline at end of file

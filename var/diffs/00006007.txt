@@ -1,0 +1,20 @@
+diff --git a/55b0999d19fd9f9fceda56acdb3c4ca930bf110c b/9faa31c42cf640c9be3973ce85450d50894b2d4b
+index 55b0999d19..9faa31c42c 100644
+--- a/55b0999d19fd9f9fceda56acdb3c4ca930bf110c
++++ b/9faa31c42cf640c9be3973ce85450d50894b2d4b
+@@ -1,10 +1,6 @@
+-public void actionPerformed(AnActionEvent e) {
+-    GuiEditor editor = GuiEditorUtil.getEditorFromContext(e.getDataContext());
+-    if (editor != null) {
+-        final ArrayList<RadComponent> selectedComponents = FormEditingUtil.getSelectedComponents(editor);
+-        for (RadComponent component : selectedComponents) {
+-            editor.getRootContainer().setGroupForComponent(component, null);
+-        }
+-        editor.refreshAndSave(true);
++protected void actionPerformed(final GuiEditor editor, final ArrayList<RadComponent> selection, final AnActionEvent e) {
++    for (RadComponent component : selection) {
++        editor.getRootContainer().setGroupForComponent(component, null);
+     }
++    editor.refreshAndSave(true);
+ }
+\ No newline at end of file

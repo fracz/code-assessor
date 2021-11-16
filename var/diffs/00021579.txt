@@ -1,0 +1,13 @@
+diff --git a/967561dd7fbdbd44e2811f6b49f2ca08e2193ce6 b/27e10b4bd2eec593d43b3fdacda5c13fe4b75560
+index 967561dd7f..27e10b4bd2 100644
+--- a/967561dd7fbdbd44e2811f6b49f2ca08e2193ce6
++++ b/27e10b4bd2eec593d43b3fdacda5c13fe4b75560
+@@ -1,4 +1,5 @@
+ @Provides
+-PostExecutionThread providePostExecutionThread() {
+-    return UIThread.getInstance();
++@Singleton
++PostExecutionThread providePostExecutionThread(UIThread uiThread) {
++    return uiThread;
+ }
+\ No newline at end of file

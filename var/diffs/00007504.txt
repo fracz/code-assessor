@@ -1,0 +1,24 @@
+diff --git a/6b0dc6dada6962d7049a470e0f59cb31d0a77a54 b/3bea63df60e948c572d83ac37f268ca3b0048c9e
+index 6b0dc6dada..3bea63df60 100644
+--- a/6b0dc6dada6962d7049a470e0f59cb31d0a77a54
++++ b/3bea63df60e948c572d83ac37f268ca3b0048c9e
+@@ -1,15 +1,15 @@
+ /**
+  * @param x in editor pane coordinates
+  * @param y in editor pane coordinates
+  */
+-public static boolean canDrop(final GuiEditor editor, final int x, final int y, final int componentCount) {
+-    if (componentCount == 0) {
++public static boolean canDrop(final GuiEditor editor, final int x, final int y, final ComponentDragObject dragObject) {
++    if (dragObject.getComponentCount() == 0) {
+         return false;
+     }
+     final RadComponent componentAt = getRadContainerAt(editor, x, y, 0);
+     if (componentAt == null) {
+         return false;
+     }
+     final Point targetPoint = SwingUtilities.convertPoint(editor.getDragLayer(), x, y, componentAt.getDelegee());
+-    return componentAt.canDrop(targetPoint, componentCount);
++    return componentAt.canDrop(targetPoint, dragObject);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/63c11e37043c244b24eea51e5050c958e900df21 b/e2c7ca64ea0b97fea84d258643bd9df6ec74c981
+index 63c11e3704..e2c7ca64ea 100644
+--- a/63c11e37043c244b24eea51e5050c958e900df21
++++ b/e2c7ca64ea0b97fea84d258643bd9df6ec74c981
+@@ -1,7 +1,3 @@
+ public int getSettingsCategoryTextColor() {
+-    if (settingsCategoryTextColor != 0) {
+-        return settingsCategoryTextColor;
+-    } else {
+-        return getMainColor();
+-    }
++    return getColorWithFallback(settingsCategoryTextColor, getMainColor());
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/76d759f99c6df08e65ac9b9d5ee0374d92724372 b/9853a30e2a416667402c9296f2a9ba9951c4a108
+index 76d759f99c..9853a30e2a 100644
+--- a/76d759f99c6df08e65ac9b9d5ee0374d92724372
++++ b/9853a30e2a416667402c9296f2a9ba9951c4a108
+@@ -1,4 +1,8 @@
+ @Override
+ public DBDValue makeNull() {
+-    return new JDBCStruct(type, null);
++    JDBCStruct nullStruct = new JDBCStruct();
++    nullStruct.type = this.type;
++    nullStruct.contents = null;
++    nullStruct.values = new LinkedHashMap<DBSAttributeBase, Object>();
++    return nullStruct;
+ }
+\ No newline at end of file

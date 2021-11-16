@@ -1,0 +1,14 @@
+diff --git a/b8366348e43e5599bdbc7168cc8c72e9c47181d3 b/48ed2b3dd7956fb359814891aa8e7e8d97a9eb61
+index b8366348e4..48ed2b3dd7 100644
+--- a/b8366348e43e5599bdbc7168cc8c72e9c47181d3
++++ b/48ed2b3dd7956fb359814891aa8e7e8d97a9eb61
+@@ -1,7 +1,5 @@
+ private static String subString(String src, int offset, int len) {
+     char[] chars = new char[len];
+-    for (int i = offset; i < offset + len; ++i) {
+-        chars[i - offset] = src.charAt(i);
+-    }
++    src.getChars(offset, offset + len, chars, 0);
+     return new String(chars);
+ }
+\ No newline at end of file

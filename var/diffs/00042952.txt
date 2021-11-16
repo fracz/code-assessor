@@ -1,0 +1,25 @@
+diff --git a/44a60e3c726e91c7317023f388c964a04b691659 b/7cb3c084bb7c7eb8a5d3fb8cf0554c16b3c2d914
+index 44a60e3c72..7cb3c084bb 100644
+--- a/44a60e3c726e91c7317023f388c964a04b691659
++++ b/7cb3c084bb7c7eb8a5d3fb8cf0554c16b3c2d914
+@@ -1,13 +1,9 @@
+ @Override
+-public OPhysicalPosition read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
++public Long read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
+     short clusterId = network.readShort();
+-    ppos.clusterPosition = network.readLong();
+-    ppos.recordVersion = network.readVersion();
+-    // THIS IS A COMPATIBILITY FIX TO AVOID TO FILL THE CLUSTER ID IN CASE OF ASYNC
+-    if (iMode == 0) {
+-        iRid.clusterId = clusterId;
+-        iRid.clusterPosition = ppos.clusterPosition;
+-    }
+-    OStorageRemote.readCollectionChanges(network, collectionManager);
+-    return ppos;
++    long posistion = network.readLong();
++    identity = new ORecordId(clusterId, posistion);
++    version = network.readVersion();
++    changedIds = OBinaryProtocolHelper.readCollectionChanges(network);
++    return posistion;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/ff7297846d51b030d8b7e187fd4697bf5edc1276 b/1baa67471caf4297d3788e09bc52f213cfd6b648
+index ff7297846d..1baa67471c 100644
+--- a/ff7297846d51b030d8b7e187fd4697bf5edc1276
++++ b/1baa67471caf4297d3788e09bc52f213cfd6b648
+@@ -1,6 +1,6 @@
+ @Override
+ public String incrementalBackup(final String backupDirectory) {
+-    OBinaryRequest request = new OIncrementalBackupRequest(backupDirectory);
+-    OBinaryResponse<String> response = new OIncrementalBackupResponse();
+-    return networkOperation(request, response, "Error on incremental backup");
++    OIncrementalBackupRequest request = new OIncrementalBackupRequest(backupDirectory);
++    OIncrementalBackupResponse response = networkOperation(request, "Error on incremental backup");
++    return response.getFileName();
+ }
+\ No newline at end of file

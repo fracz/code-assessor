@@ -1,0 +1,16 @@
+diff --git a/334b0c0968ece3fe1ab59b978dc1780f0c7f7495 b/4e9a3fa7780a055e4a545386a337dcef23e47387
+index 334b0c0968..4e9a3fa778 100644
+--- a/334b0c0968ece3fe1ab59b978dc1780f0c7f7495
++++ b/4e9a3fa7780a055e4a545386a337dcef23e47387
+@@ -1,9 +1,4 @@
+ public void subtreeChanged() {
+     super.subtreeChanged();
+-    if (myControlFlowRef != null) {
+-        myControlFlowRef.clear();
+-    }
+-    if (myScopeRef != null) {
+-        myScopeRef.clear();
+-    }
++    ControlFlowCache.clear(this);
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/2d3295f2c2ab287f13076eb7597a81e4fd3f5511 b/ca12936a767eff86a41c94550f82fcea6f5c4ba8
+index 2d3295f2c2..ca12936a76 100644
+--- a/2d3295f2c2ab287f13076eb7597a81e4fd3f5511
++++ b/ca12936a767eff86a41c94550f82fcea6f5c4ba8
+@@ -1,13 +1,13 @@
+ @Test(dataProvider = "GitConnectionFactory", dataProviderClass = GitConnectionFactoryProvider.class)
+ public void shouldReturnTrueInsideWorkingTree(GitConnectionFactory connectionFactory) throws ServerException, IOException, UnauthorizedException, URISyntaxException {
+     // given
+     GitConnection connection = connectToInitializedGitRepository(connectionFactory, repository);
+     // add new dir into working tree
+     addFile(connection.getWorkingDir().toPath().resolve("new_directory"), "a", "content of a");
+-    connection.add(newDto(AddRequest.class).withFilepattern(Arrays.asList(".")));
+-    connection.commit(newDto(CommitRequest.class).withMessage("test"));
++    connection.add(AddParams.create(singletonList(".")));
++    connection.commit(CommitParams.create("test"));
+     // when
+     boolean isInsideWorkingTree = connection.isInsideWorkTree();
+     // then
+     assertTrue(isInsideWorkingTree);
+ }
+\ No newline at end of file

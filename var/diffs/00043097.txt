@@ -1,0 +1,29 @@
+diff --git a/82ed5b8c17c7c89f2ab5164b30223155a14b6864 b/2b856a2763e4df0e91af41d70a33a49e50fe9a5c
+index 82ed5b8c17..2b856a2763 100644
+--- a/82ed5b8c17c7c89f2ab5164b30223155a14b6864
++++ b/2b856a2763e4df0e91af41d70a33a49e50fe9a5c
+@@ -1,16 +1,15 @@
+ /**
+  * Initializes connection parameters by the reading XML configuration. If not specified, get the parameters defined as global
+  * configuration.
++ *
++ * @param iServerConfig
+  */
+-private void readParameters(final OServerParameterConfiguration[] iParameters) {
++private void readParameters(final OContextConfiguration iServerConfig, final OServerParameterConfiguration[] iParameters) {
++    configuration = new OContextConfiguration(iServerConfig);
++    // SET NETWORK PARAMETERS
+     if (iParameters != null && iParameters.length > 0) {
+         // CONVERT PARAMETERS IN MAP TO INTIALIZE THE CONTEXT-CONFIGURATION
+-        final Map<String, Object> params = new HashMap<String, Object>();
+-        for (OServerParameterConfiguration param : iParameters) {
+-            params.put(param.name, param.value);
+-        }
+-        configuration = new OContextConfiguration(params);
+-    } else
+-        configuration = new OContextConfiguration();
++        for (OServerParameterConfiguration param : iParameters) configuration.setValue(param.name, param.value);
++    }
+     socketBufferSize = configuration.getValueAsInteger(OGlobalConfiguration.NETWORK_SOCKET_BUFFER_SIZE);
+ }
+\ No newline at end of file

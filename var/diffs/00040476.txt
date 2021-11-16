@@ -1,0 +1,25 @@
+diff --git a/cb6e491112685484d8eaed20e9fefec1dd74ab13 b/af0f7235fbb90a5a20425a85c77f41a9418f30ef
+index cb6e491112..af0f7235fb 100644
+--- a/cb6e491112685484d8eaed20e9fefec1dd74ab13
++++ b/af0f7235fbb90a5a20425a85c77f41a9418f30ef
+@@ -1,17 +1,17 @@
+ /**
+  * <!-- begin-user-doc -->
+  * <!-- end-user-doc -->
+  * @generated NOT
+  */
+ @Override
+-public Double fetchSensorValue() {
++public DecimalValue fetchSensorValue() {
+     try {
+         // TODO do not return anything update model instead: thread safe?
+-        return (double) tinkerforgeDevice.getTemperature() / 100.0;
++        return new DecimalValue(tinkerforgeDevice.getTemperature() / 100.0);
+     } catch (TimeoutException e) {
+         TinkerforgeErrorHandler.handleError(this, TinkerforgeErrorHandler.TF_TIMEOUT_EXCEPTION, e);
+     } catch (NotConnectedException e) {
+         TinkerforgeErrorHandler.handleError(this, TinkerforgeErrorHandler.TF_NOT_CONNECTION_EXCEPTION, e);
+     }
+     return null;
+ }
+\ No newline at end of file

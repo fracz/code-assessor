@@ -1,0 +1,16 @@
+diff --git a/40c23e5dc5ffbd99b367180c5ffc3ce0eb68a3eb b/095449b23315172b7386d562f8e62e808723840c
+index 40c23e5dc5..095449b233 100644
+--- a/40c23e5dc5ffbd99b367180c5ffc3ce0eb68a3eb
++++ b/095449b23315172b7386d562f8e62e808723840c
+@@ -1,9 +1,8 @@
+ /**
+  * Adds a standard _id column required by standard Android classes, e.g. list adapters.
+  */
+ public PropertyBuilder addIdProperty() {
+-    PropertyBuilder builder = new Property.PropertyBuilder(PropertyType.Long, "id");
++    PropertyBuilder builder = addLongProperty("id");
+     builder.columnName("_id").primaryKey();
+-    properties.add(builder.getProperty());
+     return builder;
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/18d6d119dd4d93dfce0fab67fb88f543a0e200e2 b/b9afb04387d8c45b5bdf4e50f9214323c1f27913
+index 18d6d119dd..b9afb04387 100644
+--- a/18d6d119dd4d93dfce0fab67fb88f543a0e200e2
++++ b/b9afb04387d8c45b5bdf4e50f9214323c1f27913
+@@ -1,11 +1,7 @@
+ public void testOuterMethodCalls() {
+-    Supplier s = () -> outerCall();
+-    assertEquals("Foo", s.get());
+-    Supplier s2 = () -> privateOuterCall();
+-    assertEquals("Bar", s2.get());
++    assertEquals("Foo", Lambdas.get(() -> outerCall()).apply());
++    assertEquals("Bar", Lambdas.get(() -> privateOuterCall()).apply());
+     Foo foo = new Foo();
+-    Supplier s3 = () -> foo.outer();
+-    assertEquals("Foo", s3.get());
+-    Supplier s4 = () -> foo.getBar().barS.get();
+-    assertEquals("Bar", s4.get());
++    assertEquals("Foo", Lambdas.get(() -> foo.outer()).apply());
++    assertEquals("Bar", Lambdas.get(() -> foo.getBar().barS.apply()).apply());
+ }
+\ No newline at end of file

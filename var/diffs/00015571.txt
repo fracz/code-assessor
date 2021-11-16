@@ -1,0 +1,11 @@
+diff --git a/1a853a06a6049d0dd3c0efe46ac1cd9bc8f2e6f6 b/fe617d9e024d52a11d92eaf80841e6ec2299f1c4
+index 1a853a06a6..fe617d9e02 100644
+--- a/1a853a06a6049d0dd3c0efe46ac1cd9bc8f2e6f6
++++ b/fe617d9e024d52a11d92eaf80841e6ec2299f1c4
+@@ -1,4 +1,4 @@
+ @NotNull
+ public static ClassDescriptor getClassDescriptor(@NotNull BindingContext context, @NotNull JetClassOrObject declaration) {
+-    return getDescriptorForExpression(context, declaration, ClassDescriptor.class);
++    return BindingContextUtils.getNotNull(context, BindingContext.CLASS, declaration);
+ }
+\ No newline at end of file

@@ -1,0 +1,27 @@
+diff --git a/4016dfb4643ee933962d4734f83decc27b215767 b/367b9c8e9c303e3a1453efb623af876921534218
+index 4016dfb464..367b9c8e9c 100644
+--- a/4016dfb4643ee933962d4734f83decc27b215767
++++ b/367b9c8e9c303e3a1453efb623af876921534218
+@@ -1,20 +1,19 @@
+ public void testCanHandleLineNumbersForGuiceGeneratedClasses() {
+     try {
+         Guice.createInjector(new AbstractModule() {
+
+             protected void configure() {
+                 bindInterceptor(Matchers.only(A.class), Matchers.any(), new MethodInterceptor() {
+
+                     public Object invoke(MethodInvocation methodInvocation) {
+                         return null;
+                     }
+                 });
+                 bind(A.class);
+             }
+         });
+         fail();
+     } catch (CreationException expected) {
+-        assertContains(expected.getMessage(), "Error at " + A.class.getName() + "(" + B.class.getName());
+-        assertContains(expected.getMessage(), "Injecting into abstract types is not supported.");
++        assertContains(expected.getMessage(), "Error at " + A.class.getName() + "<init>(LineNumbersTest:", "No implementation for " + B.class.getName() + " was bound.");
+     }
+ }
+\ No newline at end of file

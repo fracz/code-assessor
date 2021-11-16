@@ -1,0 +1,24 @@
+diff --git a/eb3e372f152d12047bb94666f1d7eb3a52481ec7 b/1eb4608185a38baa0135d66c8acd93d9f3322459
+index eb3e372f15..1eb4608185 100644
+--- a/eb3e372f152d12047bb94666f1d7eb3a52481ec7
++++ b/1eb4608185a38baa0135d66c8acd93d9f3322459
+@@ -1,12 +1,8 @@
+-/**
+- * Test of insert method, of class GELFChunkManager.
+- */
+ @Test
+-public void testInsert() {
+-    System.out.println("insert");
+-    GELFMessageChunk chunk = null;
+-    GELFChunkManager instance = new GELFChunkManager();
+-    instance.insert(chunk);
+-    // TODO review the generated test code and remove the default call to fail.
+-    fail("The test case is a prototype.");
++public void testInsert() throws Exception {
++    GELFChunkManager mgr = new GELFChunkManager();
++    String msgId = "lolwat99";
++    assertFalse(mgr.hasMessage(TestHelper.toHex(msgId)));
++    mgr.insert(new GELFMessageChunk(TestHelper.buildGELFMessageChunk(msgId, 0, 3, new byte[1])));
++    assertTrue(mgr.hasMessage(TestHelper.toHex(msgId)));
+ }
+\ No newline at end of file

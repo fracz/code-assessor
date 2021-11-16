@@ -1,0 +1,12 @@
+diff --git a/37b34537a88f743633716fe0d8f3a3e7c28ea4df b/4fcf56bf0d27ffb037b3663940b4d3c4dead5c2e
+index 37b34537a8..4fcf56bf0d 100644
+--- a/37b34537a88f743633716fe0d8f3a3e7c28ea4df
++++ b/4fcf56bf0d27ffb037b3663940b4d3c4dead5c2e
+@@ -1,4 +1,4 @@
+ @Override
+-RelationshipPropertyExistenceConstraint createConstraint(SchemaWriteOperations writeOps, int type, int property) throws Exception {
+-    return writeOps.relationshipPropertyExistenceConstraintCreate(type, property);
++RelationshipPropertyExistenceConstraint createConstraint(SchemaWriteOperations writeOps, RelationshipPropertyDescriptor descriptor) throws Exception {
++    return writeOps.relationshipPropertyExistenceConstraintCreate(descriptor);
+ }
+\ No newline at end of file

@@ -1,0 +1,23 @@
+diff --git a/50810f916a4a1d9dedb5ddcefe19ab6165297666 b/5f1e6a876ff4ef9a55f321fd9f238c587cbe4701
+index 50810f916a..5f1e6a876f 100644
+--- a/50810f916a4a1d9dedb5ddcefe19ab6165297666
++++ b/5f1e6a876ff4ef9a55f321fd9f238c587cbe4701
+@@ -1,14 +1,14 @@
+ public void visitMethod(@NotNull PsiMethod method) {
+     final PsiParameterList parameterList = method.getParameterList();
+     final PsiParameter[] parameters = parameterList.getParameters();
+-    if (parameters == null || parameters.length == 0) {
++    if (parameters.length == 0) {
+         return;
+     }
+     final PsiMethod[] superMethods = method.findSuperMethods();
+     if (superMethods.length == 0) {
+         return;
+     }
+-    for (int i = 0; i < parameters.length; i++) {
+-        checkParameter(parameters[i], i, superMethods);
++    for (final PsiMethod superMethod : superMethods) {
++        checkParameters(superMethod, parameters);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/733473b94a76e2f594cf60aa2d92cd78826d43fe b/061a791aff9f058d6a03ccb416a3b29f2f92232c
+index 733473b94a..061a791aff 100644
+--- a/733473b94a76e2f594cf60aa2d92cd78826d43fe
++++ b/061a791aff9f058d6a03ccb416a3b29f2f92232c
+@@ -1,10 +1,11 @@
+ @Test
+ public void getUidFromMessageId_withMessageIdHeader_shouldIssueUidSearchCommand() throws Exception {
+     ImapFolder folder = createFolder("Folder");
+     prepareImapFolderForOpen(OPEN_MODE_RW);
+     folder.open(OPEN_MODE_RW);
+     ImapMessage message = createImapMessage("2");
+     when(message.getHeader("Message-ID")).thenReturn(new String[] { "<00000000.0000000@example.org>" });
++    setupSearchResponse("1 OK SEARCH Completed");
+     folder.getUidFromMessageId(message);
+-    verify(imapConnection).executeSimpleCommand("UID SEARCH HEADER MESSAGE-ID \"<00000000.0000000@example.org>\"");
++    assertCommandIssued("UID SEARCH HEADER MESSAGE-ID \"<00000000.0000000@example.org>\"");
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/19ae881c79efc44e446356b8ff6d0683b0ae0536 b/bd4bc4dec4c018f2011791c1a3b749fc95995289
+index 19ae881c79..bd4bc4dec4 100644
+--- a/19ae881c79efc44e446356b8ff6d0683b0ae0536
++++ b/bd4bc4dec4c018f2011791c1a3b749fc95995289
+@@ -1,8 +1,9 @@
+ @Override
+ @NotNull
+ public JsExpression translateAsSet(@NotNull JsExpression toSetTo) {
+-    JsName setterName = getSetterName();
+-    JsInvocation setterCall = qualifiedAccessorInvocation(setterName);
+-    setterCall.getArguments().add(toSetTo);
+-    return setterCall;
++    if (isBackingFieldAccess) {
++        return backingFieldAssignment(toSetTo);
++    } else {
++        return setterCall(toSetTo);
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/acf804f4c95dd581d1d3264fae84d55d69664df7 b/39cba3c7d2135aae1b4ddcd13ecea5ef4b56ee7f
+index acf804f4c9..39cba3c7d2 100644
+--- a/acf804f4c95dd581d1d3264fae84d55d69664df7
++++ b/39cba3c7d2135aae1b4ddcd13ecea5ef4b56ee7f
+@@ -1,4 +1,10 @@
+ @Override
+-public Publisher<Integer> removeRangeByRank(int startIndex, int endIndex) {
+-    return commandExecutor.writeReactive(getName(), codec, RedisCommands.ZREMRANGEBYRANK, getName(), startIndex, endIndex);
++public Publisher<Integer> removeRangeByRank(final int startIndex, final int endIndex) {
++    return reactive(new Supplier<RFuture<Integer>>() {
++
++        @Override
++        public RFuture<Integer> get() {
++            return instance.removeRangeByRankAsync(startIndex, endIndex);
++        }
++    });
+ }
+\ No newline at end of file

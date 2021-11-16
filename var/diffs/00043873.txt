@@ -1,0 +1,14 @@
+diff --git a/705ebe3330b8bc17a7bcc222531c664045a776be b/d039eaa2f1560ca54070f714b3f77936ad3625f8
+index 705ebe3330..d039eaa2f1 100644
+--- a/705ebe3330b8bc17a7bcc222531c664045a776be
++++ b/d039eaa2f1560ca54070f714b3f77936ad3625f8
+@@ -1,6 +1,5 @@
+ @BeforeClass
+-public void beforeClass() {
+-    database.open("admin", "admin");
++public void beforeClass() throws Exception {
++    super.beforeClass();
+     database.getMetadata().getIndexManager().createIndex("idxTxAwareMultiValueGetEntriesTest", "NOTUNIQUE", new OSimpleKeyIndexDefinition(OType.INTEGER), null, null, null);
+-    database.close();
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/da29458d64af293fa4d0579102b85c9f249815b4 b/85cd901057cf30ac50dbdd218c287226a24c6ae3
+index da29458d64..85cd901057 100644
+--- a/da29458d64af293fa4d0579102b85c9f249815b4
++++ b/85cd901057cf30ac50dbdd218c287226a24c6ae3
+@@ -1,6 +1,7 @@
+ public Object getData(DataProvider dataProvider) {
+-    final Navigatable element = (Navigatable) dataProvider.getData(DataConstants.NAVIGATABLE);
+-    if (element == null)
++    final Navigatable element = PlatformDataKeys.NAVIGATABLE.getData(dataProvider);
++    if (element == null) {
+         return null;
++    }
+     return new Navigatable[] { element };
+ }
+\ No newline at end of file

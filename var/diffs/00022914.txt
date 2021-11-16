@@ -1,0 +1,26 @@
+diff --git a/8b8e79f419ef0d6b262cdf32eb5d5356ddb4054f b/bff573beddeb36374529c8cd52aa154d8e512dad
+index 8b8e79f419..bff573bedd 100644
+--- a/8b8e79f419ef0d6b262cdf32eb5d5356ddb4054f
++++ b/bff573beddeb36374529c8cd52aa154d8e512dad
+@@ -1,16 +1,13 @@
+ @Override
+ void refreshDirectory(int anim) {
+     final FragmentManager fm = getFragmentManager();
+     final RootInfo root = getCurrentRoot();
+     final DocumentInfo cwd = getCurrentDirectory();
++    if (DEBUG)
++        checkState(!mSearchManager.isSearching());
+     // If started in manage roots mode, there has to be a cwd (i.e. the root dir of the managed
+     // root).
+     Preconditions.checkNotNull(cwd);
+-    if (mState.currentSearch != null) {
+-        // Ongoing search
+-        DirectoryFragment.showSearch(fm, root, mState.currentSearch, anim);
+-    } else {
+-        // Normal boring directory
+-        DirectoryFragment.showDirectory(fm, root, cwd, anim);
+-    }
++    // Normal boring directory
++    DirectoryFragment.showDirectory(fm, root, cwd, anim);
+ }
+\ No newline at end of file

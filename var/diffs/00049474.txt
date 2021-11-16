@@ -1,0 +1,20 @@
+diff --git a/238b04889d744e57ce4a45ade10f8fa1dee8fb33 b/e83a0364dcf8710d670de48a231a947dd4cf5c09
+index 238b04889d..e83a0364dc 100644
+--- a/238b04889d744e57ce4a45ade10f8fa1dee8fb33
++++ b/e83a0364dcf8710d670de48a231a947dd4cf5c09
+@@ -1,13 +1,13 @@
+ @Override
+ protected void buttonPressed(int buttonId) {
+     if (buttonId == IDialogConstants.DETAILS_ID) {
+         try {
+             Object value = ResultSetUtils.getAttributeValueFromClipboard(attr);
+             editor.primeEditorValue(value);
+         } catch (DBException e) {
+-            UIUtils.showErrorDialog(getShell(), "Copy from clipboard", "Can't copy value", e);
++            DBUserInterface.getInstance().showError("Copy from clipboard", "Can't copy value", e);
+         }
+     } else {
+         super.buttonPressed(buttonId);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/509bac29eaea768bb8af3f3dbd3c42cab2924e37 b/75f708ebfb617ff410a35c1726870607cee836e8
+index 509bac29ea..75f708ebfb 100644
+--- a/509bac29eaea768bb8af3f3dbd3c42cab2924e37
++++ b/75f708ebfb617ff410a35c1726870607cee836e8
+@@ -1,8 +1,8 @@
+ public void advance() {
+     if (myStopped)
+         return;
+-    myOriginal.advance();
+-    if (myCondition.stopsAt(myOriginal.getTokenType(), myOriginal.getTokenStart(), myOriginal.getTokenEnd())) {
++    super.advance();
++    if (myCondition.stopsAt(getDelegate().getTokenType(), getDelegate().getTokenStart(), getDelegate().getTokenEnd())) {
+         myStopped = true;
+     }
+ }
+\ No newline at end of file

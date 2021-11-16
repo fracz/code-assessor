@@ -1,0 +1,22 @@
+diff --git a/1d4eb38009907fc66406b05c3f476475cc98ad6c b/0c1f810840849301ccddcae441bd07606d11d6fe
+index 1d4eb38009..0c1f810840 100644
+--- a/1d4eb38009907fc66406b05c3f476475cc98ad6c
++++ b/0c1f810840849301ccddcae441bd07606d11d6fe
+@@ -1,13 +1,9 @@
+ @Override
+ public void update(@NotNull AnActionEvent e) {
+-    TreePath[] paths = getSelectedNodes(e.getDataContext());
+-    if (paths != null) {
+-        for (TreePath path : paths) {
+-            Object node = path.getLastPathComponent();
+-            if (isEnabled(e, node)) {
+-                return;
+-            }
++    for (XValueNodeImpl node : XDebuggerTreeActionBase.getSelectedNodes(e.getDataContext())) {
++        if (isEnabled(e, node)) {
++            return;
+         }
+     }
+     e.getPresentation().setEnabled(false);
+ }
+\ No newline at end of file

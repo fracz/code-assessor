@@ -1,0 +1,24 @@
+diff --git a/6d4456ed1d3cfa63897dd9558841ee0f9d3437b8 b/5d6007af6b36e546aa4e9943179aea9efdf86f02
+index 6d4456ed1d..5d6007af6b 100644
+--- a/6d4456ed1d3cfa63897dd9558841ee0f9d3437b8
++++ b/5d6007af6b36e546aa4e9943179aea9efdf86f02
+@@ -1,8 +1,11 @@
+-public List<VcsDirtyScope> retrieveScopes() {
+-    synchronized (myScopes) {
+-        myEverythingDirty = false;
+-        final ArrayList<VcsDirtyScope> result = new ArrayList<VcsDirtyScope>(myScopes.values());
+-        myScopes.clear();
+-        return result;
+-    }
++@Nullable
++public VcsInvalidated retrieveScopes() {
++    final VcsInvalidated[] result = new VcsInvalidated[1];
++    myLife.doIfAlive(new Runnable() {
++
++        public void run() {
++            result[0] = myScopes.retrieveAndClear();
++        }
++    });
++    return result[0];
+ }
+\ No newline at end of file

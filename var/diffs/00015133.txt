@@ -1,0 +1,19 @@
+diff --git a/0c120a6623838d5dd2ed1ee7af01c59ff5d85445 b/123b044bc83855c3d36625eaa68ad128ba9fd3bb
+index 0c120a6623..123b044bc8 100644
+--- a/0c120a6623838d5dd2ed1ee7af01c59ff5d85445
++++ b/123b044bc83855c3d36625eaa68ad128ba9fd3bb
+@@ -1,9 +1,9 @@
+-private static <T extends DeclarationDescriptor> List<T> getDescriptorsOfType(JetScope scope, Class<T> descriptorClass) {
+-    List<T> r = Lists.newArrayList();
++private static <T extends DeclarationDescriptor> List<CallableMemberDescriptor> getDescriptorsOfType(JetScope scope) {
++    List<CallableMemberDescriptor> r = Lists.newArrayList();
+     for (DeclarationDescriptor decl : scope.getAllDescriptors()) {
+-        if (descriptorClass.isInstance(decl)) {
+-            r.add((T) decl);
++        if (decl instanceof PropertyDescriptor || decl instanceof NamedFunctionDescriptor) {
++            r.add((CallableMemberDescriptor) decl);
+         }
+     }
+     return r;
+ }
+\ No newline at end of file

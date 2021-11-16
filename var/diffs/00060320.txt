@@ -1,0 +1,16 @@
+diff --git a/8e2eec0f7e7b7807e17c530390dd3c0b7d97ce82 b/c4f589bf60a445333cad816929737781104080d9
+index 8e2eec0f7e..c4f589bf60 100644
+--- a/8e2eec0f7e7b7807e17c530390dd3c0b7d97ce82
++++ b/c4f589bf60a445333cad816929737781104080d9
+@@ -1,7 +1,7 @@
+ public void setVisible(boolean visible, boolean animate) {
+-    if (isShowing() && !visible) {
+-        hide(animate);
+-    } else if (isHiding() && visible) {
++    if (visible && isHiding()) {
+         show(animate);
++    } else if (!visible && isShowing()) {
++        hide(animate);
+     }
+ }
+\ No newline at end of file

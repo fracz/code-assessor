@@ -1,0 +1,10 @@
+diff --git a/67c96f73677f7500989dddf09eb80564bb841a1f b/a682a84b9f11c58a5a85d707d2d026b31e221c16
+index 67c96f7367..a682a84b9f 100644
+--- a/67c96f73677f7500989dddf09eb80564bb841a1f
++++ b/a682a84b9f11c58a5a85d707d2d026b31e221c16
+@@ -1,3 +1,3 @@
+ protected JDBCPreparedStatement createPreparedStatementImpl(PreparedStatement original, @Nullable String sql) throws SQLFeatureNotSupportedException {
+-    return new JDBCPreparedStatementImpl(this, original, sql, disableLogging);
++    return new JDBCPreparedStatementImpl(this, original, sql, !isLoggingEnabled());
+ }
+\ No newline at end of file

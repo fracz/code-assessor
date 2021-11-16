@@ -1,0 +1,15 @@
+diff --git a/23735b21e96255da18de6699a17fa65b1d1b7608 b/1e15a2b13ff488477564670f7da22f44ae80efd6
+index 23735b21e9..1e15a2b13f 100644
+--- a/23735b21e96255da18de6699a17fa65b1d1b7608
++++ b/1e15a2b13ff488477564670f7da22f44ae80efd6
+@@ -1,8 +1,8 @@
+ public static SQLEditor openSQLEditor(IWorkbenchWindow workbenchWindow, IEditorInput sqlInput) {
+     try {
+         return (SQLEditor) workbenchWindow.getActivePage().openEditor(sqlInput, SQLEditor.class.getName());
+     } catch (PartInitException e) {
+-        UIUtils.showErrorDialog(workbenchWindow.getShell(), "Can't open editor", null, e);
++        DBUserInterface.getInstance().showError("Can't open editor", null, e);
+     }
+     return null;
+ }
+\ No newline at end of file

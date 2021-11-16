@@ -1,0 +1,21 @@
+diff --git a/80f6f492a65858c7a69f9640563aa69e91c35f43 b/f9060a38df30fbd6540f3b5bfa4f459a54f10b1d
+index 80f6f492a6..f9060a38df 100644
+--- a/80f6f492a65858c7a69f9640563aa69e91c35f43
++++ b/f9060a38df30fbd6540f3b5bfa4f459a54f10b1d
+@@ -1,8 +1,10 @@
+ public void serialize(PrepareResponse response, DataOutputPlus out, int version) throws IOException {
+     out.writeBoolean(response.promised);
+-    ByteBufferUtil.writeWithShortLength(response.inProgressCommit.key, out);
+-    UUIDSerializer.serializer.serialize(response.inProgressCommit.ballot, out, version);
+-    ColumnFamily.serializer.serialize(response.inProgressCommit.update, out, version);
+-    UUIDSerializer.serializer.serialize(response.mostRecentCommit.ballot, out, version);
+-    ColumnFamily.serializer.serialize(response.mostRecentCommit.update, out, version);
++    Commit.serializer.serialize(response.inProgressCommit, out, version);
++    if (version < MessagingService.VERSION_30) {
++        UUIDSerializer.serializer.serialize(response.mostRecentCommit.ballot, out, version);
++        PartitionUpdate.serializer.serialize(response.mostRecentCommit.update, out, version);
++    } else {
++        Commit.serializer.serialize(response.mostRecentCommit, out, version);
++    }
+ }
+\ No newline at end of file

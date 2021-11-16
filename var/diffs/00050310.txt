@@ -1,0 +1,12 @@
+diff --git a/93fb397117e1ba5b7e9a470e78179c2d8c5e7128 b/eb1fcf9c352e2c7db5c1f324eb85894f8e6b1c90
+index 93fb397117..eb1fcf9c35 100644
+--- a/93fb397117e1ba5b7e9a470e78179c2d8c5e7128
++++ b/eb1fcf9c352e2c7db5c1f324eb85894f8e6b1c90
+@@ -1,5 +1,4 @@
+ @Override
+ public DBSObject refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
+-    sourceDeclaration = null;
+-    return this;
++    return getSchema().proceduresCache.refreshObject(monitor, getSchema(), this);
+ }
+\ No newline at end of file

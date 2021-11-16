@@ -1,0 +1,27 @@
+diff --git a/8ca8a9137cd0fed8ebeecfc5e5a137817af538f1 b/7f27d5aaf1e863879b8de8aa7dfd4b71d772f73d
+index 8ca8a9137c..7f27d5aaf1 100644
+--- a/8ca8a9137cd0fed8ebeecfc5e5a137817af538f1
++++ b/7f27d5aaf1e863879b8de8aa7dfd4b71d772f73d
+@@ -1,14 +1,15 @@
+-@Override
+ public void requestPrinterUpdate(PrinterId printerId) {
+-    final RemotePrintService service;
+     synchronized (mLock) {
+         throwIfDestroyedLocked();
++        // No services - nothing to do.
+         if (mActiveServices.isEmpty()) {
+             return;
+         }
+-        service = mActiveServices.get(printerId.getServiceName());
+-    }
+-    if (service != null) {
+-        service.requestPrinterUpdate(printerId);
++        // No session - nothing to do.
++        if (mPrinterDiscoverySession == null) {
++            return;
++        }
++        // Request an updated.
++        mPrinterDiscoverySession.requestPrinterUpdateLocked(printerId);
+     }
+ }
+\ No newline at end of file

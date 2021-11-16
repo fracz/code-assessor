@@ -1,0 +1,14 @@
+diff --git a/ae6be7bb138fb59c977eb9af983155a542e57075 b/cd920cc116fdc1edafc87f6c4c75c9c5524ac575
+index ae6be7bb13..cd920cc116 100644
+--- a/ae6be7bb138fb59c977eb9af983155a542e57075
++++ b/cd920cc116fdc1edafc87f6c4c75c9c5524ac575
+@@ -1,7 +1,4 @@
+ @Override
+ public Query parse(QueryParseContext parseContext) throws IOException, QueryParsingException {
+-    assertEquals(XContentParser.Token.END_OBJECT, parseContext.parser().nextToken());
+-    DummyQuery query = new DummyQuery();
+-    query.isFilter = parseContext.isFilter();
+-    return query;
++    return fromXContent(parseContext).toQuery(parseContext);
+ }
+\ No newline at end of file

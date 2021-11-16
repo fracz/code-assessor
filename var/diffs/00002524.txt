@@ -1,0 +1,15 @@
+diff --git a/799cb85c675b28b5ac9ade99518a4b1e39344588 b/11701496e5ed6ef96639b555ddd927eba1df4401
+index 799cb85c67..11701496e5 100644
+--- a/799cb85c675b28b5ac9ade99518a4b1e39344588
++++ b/11701496e5ed6ef96639b555ddd927eba1df4401
+@@ -1,8 +1,3 @@
+ private boolean breaksStringFormatting(@NotNull String s, @NotNull TextRange range) {
+-    final PyStringFormatParser parser = new PyStringFormatParser(s);
+-    final List<TextRange> ranges = new ArrayList<TextRange>();
+-    for (PyStringFormatParser.SubstitutionChunk chunk : parser.parseSubstitutions()) {
+-        ranges.add(TextRange.create(chunk.getStartIndex(), chunk.getEndIndex()));
+-    }
+-    return breaksRanges(ranges, range);
++    return breaksRanges(PyStringFormatParser.substitutionsToRanges(new PyStringFormatParser(s).parseSubstitutions()), range);
+ }
+\ No newline at end of file

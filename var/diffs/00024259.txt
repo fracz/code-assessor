@@ -1,0 +1,11 @@
+diff --git a/e5758d4927905cd64ee064d7501b0bb10c911322 b/7f7078ad6a32380405e6a0e41f78bc7aa7172d80
+index e5758d4927..7f7078ad6a 100644
+--- a/e5758d4927905cd64ee064d7501b0bb10c911322
++++ b/7f7078ad6a32380405e6a0e41f78bc7aa7172d80
+@@ -1,3 +1,3 @@
+-public static Commit newPrepare(ByteBuffer key, CFMetaData metadata, UUID ballot) {
+-    return new Commit(key, ballot, ArrayBackedSortedColumns.factory.create(metadata));
++public static Commit newPrepare(DecoratedKey key, CFMetaData metadata, UUID ballot) {
++    return new Commit(ballot, PartitionUpdate.emptyUpdate(metadata, key));
+ }
+\ No newline at end of file

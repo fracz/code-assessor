@@ -1,0 +1,13 @@
+diff --git a/bd1f5b90b63bdc6049c295cbe5bea87478d86d88 b/c9a1e65c5ad52c0709e56d731be74627022e03f2
+index bd1f5b90b6..c9a1e65c5a 100644
+--- a/bd1f5b90b63bdc6049c295cbe5bea87478d86d88
++++ b/c9a1e65c5ad52c0709e56d731be74627022e03f2
+@@ -1,5 +1,4 @@
+ @Override
+-public Flux<Object> decode(Publisher<DataBuffer> inputStream, ResolvableType elementType, MimeType mimeType, Map<String, Object> hints) {
+-    JsonObjectDecoder objectDecoder = this.fluxObjectDecoder;
+-    return decodeInternal(objectDecoder, inputStream, elementType, mimeType, hints);
++public Flux<Object> decode(Publisher<DataBuffer> input, ResolvableType elementType, MimeType mimeType, Map<String, Object> hints) {
++    return decodeInternal(this.fluxDecoder, input, elementType, mimeType, hints);
+ }
+\ No newline at end of file

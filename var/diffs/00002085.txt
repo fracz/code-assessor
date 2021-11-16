@@ -1,0 +1,15 @@
+diff --git a/88cd71e66433b0e3320b25c82bd03a973ab784d2 b/68576ccfa2db049528a9da736978e3ffa9daca1c
+index 88cd71e664..68576ccfa2 100644
+--- a/88cd71e66433b0e3320b25c82bd03a973ab784d2
++++ b/68576ccfa2db049528a9da736978e3ffa9daca1c
+@@ -1,7 +1,8 @@
+ public PyStatement fun(String self_name) {
+     if (PyNames.CANONICAL_SELF.equals(self_name)) {
+         return (PyStatement) myDeclaration;
+     }
+     final String text = myDeclaration.getText();
+-    return myGenerator.createFromText(myProject, PyStatement.class, text.replaceFirst(PyNames.CANONICAL_SELF + "\\.", self_name + "."));
++    final Project project = myDeclaration.getProject();
++    return PyElementGenerator.getInstance(project).createFromText(PyStatement.class, text.replaceFirst(PyNames.CANONICAL_SELF + "\\.", self_name + "."));
+ }
+\ No newline at end of file

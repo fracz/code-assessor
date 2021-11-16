@@ -1,0 +1,22 @@
+diff --git a/4ac136da7b959e95bf08575cf015d5f05d1640cd b/fd255909738dd298dafd8cbd3ac58b1447c45efa
+index 4ac136da7b..fd25590973 100644
+--- a/4ac136da7b959e95bf08575cf015d5f05d1640cd
++++ b/fd255909738dd298dafd8cbd3ac58b1447c45efa
+@@ -1,15 +1,15 @@
+ /**
+  * Create an array of sources.
+  *
+  * Convenience function to make it easier to create a number of Sources easier.
+  *
+  * @param builders for the source options, etc.
+  * @return array of new sources.
+  */
+ public Source[] newSources(final Source.Builder[] builders) {
+     final Source[] sources = new Source[builders.length];
+     for (int i = 0, max = builders.length; i < max; i++) {
+-        sources[i] = new Source(this, builders[i]);
++        sources[i] = newSource(builders[i]);
+     }
+     return sources;
+ }
+\ No newline at end of file

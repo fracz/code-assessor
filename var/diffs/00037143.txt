@@ -1,0 +1,14 @@
+diff --git a/8936889a0237f28faf46eea9d4954ad902d7c783 b/b9c25c7f86e5f8d84bbb16363fbca16a4d079ea4
+index 8936889a02..b9c25c7f86 100644
+--- a/8936889a0237f28faf46eea9d4954ad902d7c783
++++ b/b9c25c7f86e5f8d84bbb16363fbca16a4d079ea4
+@@ -1,4 +1,5 @@
+-@Override
+-protected EnhancedDataSender createTcpDataSender(CommandDispatcher commandDispatcher) {
+-    return new TestTcpDataSender();
++protected EnhancedDataSender createTcpDataSender() {
++    TestTcpDataSender tcpDataSender = new TestTcpDataSender();
++    this.tcpDataSender = tcpDataSender;
++    return tcpDataSender;
+ }
+\ No newline at end of file

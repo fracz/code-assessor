@@ -1,0 +1,15 @@
+diff --git a/599caf5ef9b70e9d7037b449a70248a64daabed7 b/8dba6d362b5a218f5467ee4af863ba232d4e3efe
+index 599caf5ef9..8dba6d362b 100644
+--- a/599caf5ef9b70e9d7037b449a70248a64daabed7
++++ b/8dba6d362b5a218f5467ee4af863ba232d4e3efe
+@@ -1,8 +1,7 @@
+ private void returnJSONResult(HttpServletRequest req, HttpServletResponse resp, int resultCode, Object content) throws IOException {
+     PrintWriter out = resp.getWriter();
+     Map<String, Object> json = new HashMap<String, Object>();
+     json.put("ResultCode", resultCode);
+     json.put("Content", content);
+-    String jsonString = JSON.toJSONString(json);
+-    out.print(jsonString);
++    out.print(JSON.toJSONString(json));
+ }
+\ No newline at end of file

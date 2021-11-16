@@ -1,0 +1,13 @@
+diff --git a/487cdee7390bb8c8aead280f8b15311e9534bbb1 b/2adb13e7a78ff4f2984d96d15d959c3da9088ebc
+index 487cdee739..2adb13e7a7 100644
+--- a/487cdee7390bb8c8aead280f8b15311e9534bbb1
++++ b/2adb13e7a78ff4f2984d96d15d959c3da9088ebc
+@@ -1,6 +1,6 @@
+ @Test
+ public void testBindUnknown() {
+-    Signature function = functionSignature().returnType("boolean").argumentTypes("varchar(x)").literalParameters("x").build();
++    Signature function = functionSignature().returnType(parseTypeSignature(StandardTypes.BOOLEAN)).argumentTypes(parseTypeSignature("varchar(x)", ImmutableSet.of("x"))).build();
+     assertThat(function).boundTo("unknown").fails();
+     assertThat(function).boundTo("unknown").withCoercion().succeeds();
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/30b5f4f0ee66e32db7c2ff7980d6072d42660162 b/94dd074a330f0dd91a899413bf219144427f0b5d
+index 30b5f4f0ee..94dd074a33 100644
+--- a/30b5f4f0ee66e32db7c2ff7980d6072d42660162
++++ b/94dd074a330f0dd91a899413bf219144427f0b5d
+@@ -1,9 +1,12 @@
+-private void computeFieldAndFunctionDescriptors(Collection<DeclarationDescriptor> result) {
++@NotNull
++private Collection<DeclarationDescriptor> computeFieldAndFunctionDescriptors() {
++    Collection<DeclarationDescriptor> result = Lists.newArrayList();
+     for (NamedMembers members : declarationProvider.getMembersCache().allMembers()) {
+         Name name = members.getName();
+         ProgressIndicatorProvider.checkCanceled();
+         result.addAll(getFunctions(name));
+         ProgressIndicatorProvider.checkCanceled();
+         result.addAll(getProperties(name));
+     }
++    return result;
+ }
+\ No newline at end of file

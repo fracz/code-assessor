@@ -1,0 +1,15 @@
+diff --git a/92d5c362a9d74e42728b0d79462643414893a3ca b/0ca5722de2ff51787b86a47bb3e05acc6c9da12b
+index 92d5c362a9..0ca5722de2 100644
+--- a/92d5c362a9d74e42728b0d79462643414893a3ca
++++ b/0ca5722de2ff51787b86a47bb3e05acc6c9da12b
+@@ -1,7 +1,8 @@
++@Nullable
+ public static PsiElement getEnclosingContainer(PsiElement place) {
+     PsiElement parent = place.getParent();
+-    while (parent != null && !(parent instanceof GrCodeBlock) && !(parent instanceof GrCaseSection) && !(parent instanceof GroovyFileBase) && !(parent instanceof GrGspDeclarationHolder) && !isLoopOrForkStatement(parent)) {
++    while (parent != null && !(parent instanceof GrDeclarationHolder) && !isLoopOrForkStatement(parent)) {
+         parent = parent.getParent();
+     }
+     return parent;
+ }
+\ No newline at end of file

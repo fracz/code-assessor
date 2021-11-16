@@ -1,0 +1,15 @@
+diff --git a/ac4078fe31f45056783b06a1b01ae4c7a55954a0 b/d33c7a987e47bcd088c130712aec5e3653e90b41
+index ac4078fe31..d33c7a987e 100644
+--- a/ac4078fe31f45056783b06a1b01ae4c7a55954a0
++++ b/d33c7a987e47bcd088c130712aec5e3653e90b41
+@@ -1,8 +1,4 @@
+ @Override
+ public ResultSet getPseudoColumns(String catalog, String schemaPattern, String tableNamePattern, String columnNamePattern) throws SQLException {
+-    try {
+-        return makeResultSet(getOriginal().getPseudoColumns(catalog, schemaPattern, tableNamePattern, columnNamePattern), "Load pseudo columns", catalog, schemaPattern, tableNamePattern, columnNamePattern);
+-    } catch (IncompatibleClassChangeError e) {
+-        throw new SQLFeatureNotSupportedException(JDBCConstants.ERROR_API_NOT_SUPPORTED_17);
+-    }
++    return makeResultSet(JDBCUtils.callMethod17(getOriginal(), "getPseudoColumns", ResultSet.class, new Class[] { String.class, String.class, String.class, String.class }, catalog, schemaPattern, tableNamePattern, columnNamePattern), "Load pseudo columns", catalog, schemaPattern, tableNamePattern, columnNamePattern);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/33fd60fd2d4f5cc97192169351e30e18036ba829 b/a3db821b3cc71ff9a269e82f1ff48271d783e6bd
+index 33fd60fd2d..a3db821b3c 100644
+--- a/33fd60fd2d4f5cc97192169351e30e18036ba829
++++ b/a3db821b3cc71ff9a269e82f1ff48271d783e6bd
+@@ -1,7 +1,7 @@
+ @Override
+ public double getHeight(Tree tree) {
+     String s = getText(tree);
+-    double h = doc.getLineHeight() + nodeHeightPadding * 2;
++    double h = doc.getLineHeight() + nodeHeightPaddingAbove + nodeHeightPaddingBelow;
+     String[] lines = s.split("\n");
+     return h * lines.length;
+ }
+\ No newline at end of file

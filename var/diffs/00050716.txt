@@ -1,0 +1,26 @@
+diff --git a/092adade9ff72a7d5b484e4a4f84e43888c879fc b/5699ba660d81fc755859a3e1f0a918812dc03e23
+index 092adade9f..5699ba660d 100644
+--- a/092adade9ff72a7d5b484e4a4f84e43888c879fc
++++ b/5699ba660d81fc755859a3e1f0a918812dc03e23
+@@ -1,12 +1,16 @@
+ /**
+  * It is a hack function. Generally all command associated widgets should be updated automatically by framework.
+  * Freaking E4 do not do it. I've spent a couple of days fighting it. Guys, you owe me.
+  */
+ private void updateToolbar() {
+-    if (mainToolbar.isEmpty()) {
+-        return;
++    if (!mainToolbar.isEmpty()) {
++        for (IContributionItem item : mainToolbar.getItems()) {
++            item.update();
++        }
+     }
+-    for (IContributionItem item : mainToolbar.getItems()) {
+-        item.update();
++    if (!panelToolBar.isEmpty()) {
++        for (IContributionItem item : panelToolBar.getItems()) {
++            item.update();
++        }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,27 @@
+diff --git a/bb02d192e998bc844c55dfc75d7c69274715487e b/f56052f70b19ce4e8eb6ceb5b61802b57e0c726b
+index bb02d192e9..f56052f70b 100644
+--- a/bb02d192e998bc844c55dfc75d7c69274715487e
++++ b/f56052f70b19ce4e8eb6ceb5b61802b57e0c726b
+@@ -1,14 +1,12 @@
+-private KeyColumnValueStoreMutator getEdgeStoreMutator(TransactionHandle txh) {
++private final KeyColumnValueStoreMutator getEdgeStoreMutator(KeyColumnValueStore store, TransactionHandle txh) {
+     if (config.isEdgeBatchWritingEnabled()) {
+-        try {
+-            MultiWriteKeyColumnValueStore mwstore;
+-            mwstore = (MultiWriteKeyColumnValueStore) edgeStore;
+-            return new BatchKeyColumnValueStoreMutator(txh, mwstore, config.getEdgeBatchWriteSize());
+-        } catch (ClassCastException e) {
+-            config.setEdgeBatchWritingEnabled(false);
++        if (store instanceof MultiWriteKeyColumnValueStore) {
++            return new BatchKeyColumnValueStoreMutator(txh, (MultiWriteKeyColumnValueStore) store, config.getEdgeBatchWriteSize());
++        } else {
++            // config.setEdgeBatchWritingEnabled(false);
+             log.error("Batching writing disabled on edge store");
+-            log.error("Edge store {} does not support batching", edgeStore, e);
++            log.error("Edge store {} does not support batching", store);
+         }
+     }
+-    return new DirectKeyColumnValueStoreMutator(txh, edgeStore);
++    return new DirectKeyColumnValueStoreMutator(txh, store);
+ }
+\ No newline at end of file

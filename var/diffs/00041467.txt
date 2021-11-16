@@ -1,0 +1,18 @@
+diff --git a/994f718e10cb82e56367b28b34f7d398140b0d93 b/08d92f1a951d40244f421af6cb526deb1fc9deaa
+index 994f718e10..08d92f1a95 100644
+--- a/994f718e10cb82e56367b28b34f7d398140b0d93
++++ b/08d92f1a951d40244f421af6cb526deb1fc9deaa
+@@ -1,10 +1,8 @@
+ protected int setIntValue(int pageOffset, int value) throws IOException {
+-    if (changesTree != null) {
+-        byte[] svalue = new byte[OIntegerSerializer.INT_SIZE];
+-        OIntegerSerializer.INSTANCE.serializeNative(value, svalue, 0);
+-        changesTree.add(svalue, pageOffset + PAGE_PADDING);
++    if (changes != null) {
++        changes.setIntValue(pagePointer, pageOffset + PAGE_PADDING, value);
+     } else
+         OIntegerSerializer.INSTANCE.serializeInDirectMemory(value, pagePointer, pageOffset + PAGE_PADDING);
+     cacheEntry.markDirty();
+     return OIntegerSerializer.INT_SIZE;
+ }
+\ No newline at end of file

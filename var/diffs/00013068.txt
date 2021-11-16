@@ -1,0 +1,17 @@
+diff --git a/2f034bc21371a659214b29c87fd8bc497596c055 b/cb91336070fd88b57d67cbd4b625774e629a46a4
+index 2f034bc213..cb91336070 100644
+--- a/2f034bc21371a659214b29c87fd8bc497596c055
++++ b/cb91336070fd88b57d67cbd4b625774e629a46a4
+@@ -1,9 +1,9 @@
+ @Override
+ public void run(@NotNull ProgressIndicator indicator) {
+     try {
+-        executeMerge(mergeDialog, project);
+-        markDirtyAndHandleErrors(project, mergeDialog.getRepository());
++        executeMerge(project, repoRoot, targetValue);
++        markDirtyAndHandleErrors(project, repoRoot);
+     } catch (HgCommandException e) {
+         handleException(project, e);
+     }
+ }
+\ No newline at end of file

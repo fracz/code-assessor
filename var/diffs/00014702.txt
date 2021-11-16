@@ -1,0 +1,15 @@
+diff --git a/db0bf56a9c9a687cc75ac551f9753481a05ce785 b/3a2a5ff113900218a536eeba51eb234525e6a9a4
+index db0bf56a9c..3a2a5ff113 100644
+--- a/db0bf56a9c9a687cc75ac551f9753481a05ce785
++++ b/3a2a5ff113900218a536eeba51eb234525e6a9a4
+@@ -1,7 +1,8 @@
+ private void checkForLabel(PsiStatement statement) {
+     if (!(statement instanceof PsiLabeledStatement)) {
+         return;
+     }
+-    final PsiIdentifier label = ((PsiLabeledStatement) statement).getLabelIdentifier();
++    final PsiLabeledStatement labeledStatement = (PsiLabeledStatement) statement;
++    final PsiIdentifier label = labeledStatement.getLabelIdentifier();
+     registerError(label);
+ }
+\ No newline at end of file

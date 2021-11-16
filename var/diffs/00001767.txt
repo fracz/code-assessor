@@ -1,0 +1,29 @@
+diff --git a/86841619da3c17e927c34f6f2f0e1dc4f839b8ed b/df64f6699a4c922c0e1987900b28c65384bb9d75
+index 86841619da..df64f6699a 100644
+--- a/86841619da3c17e927c34f6f2f0e1dc4f839b8ed
++++ b/df64f6699a4c922c0e1987900b28c65384bb9d75
+@@ -1,15 +1,11 @@
+ private void doDeleteTest() {
+-    doTest(new Runnable() {
+-
+-        @Override
+-        public void run() {
+-            final Editor editor = myFixture.getEditor();
+-            final Document document = editor.getDocument();
+-            final int selectionStart = editor.getSelectionModel().getSelectionStart();
+-            final int selectionEnd = editor.getSelectionModel().getSelectionEnd();
+-            CommandProcessor.getInstance().setCurrentCommandGroupId(EditorActionUtil.DELETE_COMMAND_GROUP);
+-            document.deleteString(selectionStart, selectionEnd);
+-            editor.getCaretModel().moveToOffset(selectionStart);
+-        }
++    doTest(() -> {
++        final Editor editor = myFixture.getEditor();
++        final Document document = editor.getDocument();
++        final int selectionStart = editor.getSelectionModel().getSelectionStart();
++        final int selectionEnd = editor.getSelectionModel().getSelectionEnd();
++        CommandProcessor.getInstance().setCurrentCommandGroupId(EditorActionUtil.DELETE_COMMAND_GROUP);
++        document.deleteString(selectionStart, selectionEnd);
++        editor.getCaretModel().moveToOffset(selectionStart);
+     }, true, ChangeSignatureDetectorAction.CHANGE_SIGNATURE);
+ }
+\ No newline at end of file

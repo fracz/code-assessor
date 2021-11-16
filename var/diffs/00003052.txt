@@ -1,0 +1,15 @@
+diff --git a/7928736366752e8f897d191d1909c581b6194e23 b/42d825d865f19a8da52084ec19a9e816e0f08c3e
+index 7928736366..42d825d865 100644
+--- a/7928736366752e8f897d191d1909c581b6194e23
++++ b/42d825d865f19a8da52084ec19a9e816e0f08c3e
+@@ -1,8 +1,8 @@
+ @Override
+ public boolean tryToMove(PsiElement element, Project project, DataContext dataContext, @Nullable PsiReference reference, Editor editor) {
+     if (canMove(element)) {
+-        doMove(project, new PsiElement[] { element }, (PsiElement) dataContext.getData(DataConstantsEx.TARGET_PSI_ELEMENT), null);
++        doMove(project, new PsiElement[] { element }, LangDataKeys.TARGET_PSI_ELEMENT.getData(dataContext), null);
+         return true;
+     }
+     return false;
+ }
+\ No newline at end of file

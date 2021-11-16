@@ -1,0 +1,25 @@
+diff --git a/21f17829481da15133518ebdeb9c3c74d59c65e4 b/6602c1b453942e1f8a9043f589447390a09452cc
+index 21f1782948..6602c1b453 100644
+--- a/21f17829481da15133518ebdeb9c3c74d59c65e4
++++ b/6602c1b453942e1f8a9043f589447390a09452cc
+@@ -1,16 +1,15 @@
+ public String print(List<VerificationAwareInvocation> invocations) {
+     if (invocations.size() == 1) {
+         return "Actually, above is the only interaction with this mock.";
+     }
+     StringBuilder sb = new StringBuilder("***\n" + "For your reference, here is the list of all invocations ([?] - means unverified).\n");
+     int counter = 0;
+     for (VerificationAwareInvocation i : invocations) {
+-        sb.append(++counter + ". ");
++        sb.append(++counter).append(". ");
+         if (!i.isVerified()) {
+             sb.append("[?]");
+         }
+-        sb.append(i.getLocation() + "\n");
++        sb.append(i.getLocation()).append("\n");
+     }
+-    String scenario = sb.toString();
+-    return scenario;
++    return sb.toString();
+ }
+\ No newline at end of file

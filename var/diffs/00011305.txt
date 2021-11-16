@@ -1,0 +1,11 @@
+diff --git a/1318a87cb5f5cb4c0f9d5bbb86ea5d0667c271fa b/e24e1afa55764aec873a812ff715d699298c3c44
+index 1318a87cb5..e24e1afa55 100644
+--- a/1318a87cb5f5cb4c0f9d5bbb86ea5d0667c271fa
++++ b/e24e1afa55764aec873a812ff715d699298c3c44
+@@ -1,4 +1,4 @@
+ @Override
+ public void beforeFileMovement(@NotNull final VirtualFileMoveEvent event) {
+-    processEventFile("beforeFileMovement", event.getFile(), (eventFile) -> collectPathsAndNotify(eventFile, NOTIFY_DELETED));
++    collectPathsAndNotify(event.getFile(), TranslatingCompilerFilesMonitor::notifyFilesChanged);
+ }
+\ No newline at end of file

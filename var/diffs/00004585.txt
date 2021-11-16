@@ -1,0 +1,16 @@
+diff --git a/05237535dc18f6f40849d5c1d3d45f92f3b5323f b/50b7782e221447f14c3afe5d211a4436ea8ccad4
+index 05237535dc..50b7782e22 100644
+--- a/05237535dc18f6f40849d5c1d3d45f92f3b5323f
++++ b/50b7782e221447f14c3afe5d211a4436ea8ccad4
+@@ -1,8 +1,7 @@
+-protected HierarchyTreeStructure createHierarchyTreeStructure(final String typeName, final PsiElement psiElement) {
++protected HierarchyTreeStructure createHierarchyTreeStructure(@NotNull final String typeName, @NotNull final PsiElement psiElement) {
+     if (!MethodHierarchyTreeStructure.TYPE.equals(typeName)) {
+         LOG.error("unexpected type: " + typeName);
+         return null;
+     }
+-    final HierarchyTreeStructure structure = new MethodHierarchyTreeStructure(myProject, (PsiMethod) psiElement);
+-    return structure;
++    return new MethodHierarchyTreeStructure(myProject, (PsiMethod) psiElement);
+ }
+\ No newline at end of file

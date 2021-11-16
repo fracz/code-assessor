@@ -1,0 +1,17 @@
+diff --git a/830dbb6bba16f141d31ade844c6949438edd7aff b/5726984d76260f3e3d313294ba91573c8a697320
+index 830dbb6bba..5726984d76 100644
+--- a/830dbb6bba16f141d31ade844c6949438edd7aff
++++ b/5726984d76260f3e3d313294ba91573c8a697320
+@@ -1,9 +1,8 @@
+ // grvy-101
+ public void testConstructor3() throws Exception {
+     PsiReference ref = configureByFile("constructor3/A.groovy");
+-    PsiElement resolved = ref.resolve();
+-    assertTrue(resolved instanceof PsiMethod);
+-    final PsiMethod method = (PsiMethod) resolved;
++    PsiMethod method = ((GrNewExpression) ref.getElement().getParent()).resolveConstructor();
++    assertNotNull(method);
+     assertTrue(method.isConstructor());
+     assertEquals(0, method.getParameterList().getParameters().length);
+ }
+\ No newline at end of file

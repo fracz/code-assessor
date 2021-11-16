@@ -1,0 +1,17 @@
+diff --git a/214b82cbf286ba7dc364416baf64249edd54bfef b/d70f76e2f2c7157697eebe6ec3c71a418b0770f7
+index 214b82cbf2..d70f76e2f2 100644
+--- a/214b82cbf286ba7dc364416baf64249edd54bfef
++++ b/d70f76e2f2c7157697eebe6ec3c71a418b0770f7
+@@ -1,6 +1,9 @@
+ public static boolean isCharPresent(final char iCharacter, final char[] iCharacters) {
+-    for (char c : iCharacters) if (iCharacter == c) {
+-        return true;
++    final int len = iCharacters.length;
++    for (int i = 0; i < len; ++i) {
++        if (iCharacter == iCharacters[i]) {
++            return true;
++        }
+     }
+     return false;
+ }
+\ No newline at end of file

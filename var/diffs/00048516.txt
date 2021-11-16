@@ -1,0 +1,27 @@
+diff --git a/3e77bd6275dcd37d0f84b26e2992c598fa4ed277 b/c8b98677414afd6c9a8016eb71e5b9155d08183b
+index 3e77bd6275..c8b9867741 100644
+--- a/3e77bd6275dcd37d0f84b26e2992c598fa4ed277
++++ b/c8b98677414afd6c9a8016eb71e5b9155d08183b
+@@ -1,16 +1,18 @@
+-public static Image getImage(DBPImage image) {
++@NotNull
++public static Image getImage(@NotNull DBPImage image) {
+     if (image == null) {
+         return null;
+-    } else if (image instanceof DBIconBinary) {
++    }
++    if (image instanceof DBIconBinary) {
+         return ((DBIconBinary) image).getImage();
+     } else {
+         IconDescriptor icon = getIconByLocation(image.getLocation());
+         if (icon == null) {
+-            return null;
++            throw new IllegalArgumentException("Image '" + image.getLocation() + "' not found");
+         } else if (image instanceof DBIconComposite) {
+             return getCompositeIcon(icon, (DBIconComposite) image).image;
+         } else {
+             return icon.image;
+         }
+     }
+ }
+\ No newline at end of file

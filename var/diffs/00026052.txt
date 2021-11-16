@@ -1,0 +1,15 @@
+diff --git a/49a6b4d4889ec3419df9da3a93fa40775d08d8dd b/ae59bc706e1a35534d9e340491ff8a23ab18bcc1
+index 49a6b4d488..ae59bc706e 100644
+--- a/49a6b4d4889ec3419df9da3a93fa40775d08d8dd
++++ b/ae59bc706e1a35534d9e340491ff8a23ab18bcc1
+@@ -1,4 +1,8 @@
+ @Override
+ public boolean equals(final Object other) {
+-    return other instanceof CredentialMetaData && this.id.equals(((CredentialMetaData) other).getId());
++    if (!(other instanceof BasicCredentialMetaData)) {
++        return false;
++    }
++    final BasicCredentialMetaData md = (BasicCredentialMetaData) other;
++    return this.id.equals(md.getId()) && this.credentialClass.equals(md.getCredentialClass());
+ }
+\ No newline at end of file

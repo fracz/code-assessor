@@ -1,0 +1,13 @@
+diff --git a/17f0a13de7d8c701173ac38016ee40cc7214ef51 b/327d567ac48c3b86036a5f7bddcfc74fa6bafb3d
+index 17f0a13de7..327d567ac4 100644
+--- a/17f0a13de7d8c701173ac38016ee40cc7214ef51
++++ b/327d567ac48c3b86036a5f7bddcfc74fa6bafb3d
+@@ -1,6 +1,6 @@
+ @NotNull
+ public VcsShowSettingOption getStandardOption(@NotNull VcsConfiguration.StandardOption option, @NotNull AbstractVcs vcs) {
+-    final VcsShowOptionsSettingImpl options = myOptions.get(option.getId());
++    final VcsShowOptionsSettingImpl options = (VcsShowOptionsSettingImpl) getOptions(option);
+     options.addApplicableVcs(vcs);
+     return options;
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/f96393d532f8ba517d1634d807d411cb1bcda51b b/07391ad7c994d65befd32351207e059f9cc333d5
+index f96393d532..07391ad7c9 100644
+--- a/f96393d532f8ba517d1634d807d411cb1bcda51b
++++ b/07391ad7c994d65befd32351207e059f9cc333d5
+@@ -1,7 +1,10 @@
+ private static String getUnquotedValue(XmlAttributeValue value, XmlTag tag) {
+-    String unquotedValue = StringUtil.stripQuotesAroundValue(value.getText());
++    String unquotedValue = value.getText();
++    if (unquotedValue.length() > 0 && (unquotedValue.charAt(0) == '"' || unquotedValue.charAt(0) == '\'')) {
++        unquotedValue = unquotedValue.substring(1, unquotedValue.length() - 1);
++    }
+     if (tag instanceof HtmlTag) {
+         unquotedValue = unquotedValue.toLowerCase();
+     }
+     return unquotedValue;
+ }
+\ No newline at end of file

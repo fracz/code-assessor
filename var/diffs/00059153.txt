@@ -1,0 +1,13 @@
+diff --git a/e3aa73828695f2b4d863b924e2f6e7d938f9fd10 b/93a3f3185672720edf79afc7a765bdc1c180099e
+index e3aa738286..93a3f31856 100644
+--- a/e3aa73828695f2b4d863b924e2f6e7d938f9fd10
++++ b/93a3f3185672720edf79afc7a765bdc1c180099e
+@@ -1,6 +1,5 @@
+ public static void checkName(String name) {
+     Preconditions.checkArgument(StringUtils.isNotBlank(name), "Need to specify name");
++    Preconditions.checkArgument(!SystemTypeManager.isSystemType(name.toLowerCase()) && !Token.isSystemName(name), "Name is reserved by system and cannot be used: %s", name);
+     for (char c : RESERVED_CHARS) Preconditions.checkArgument(name.indexOf(c) < 0, "Name can not contains reserved character %s: %s", c, name);
+-    Preconditions.checkArgument(!name.startsWith(SystemTypeManager.systemETprefix), "Name starts with a reserved keyword: " + SystemTypeManager.systemETprefix);
+-    Preconditions.checkArgument(!SystemTypeManager.isSystemType(name.toLowerCase()), "Name is reserved by system and cannot be used: %s", name);
+ }
+\ No newline at end of file

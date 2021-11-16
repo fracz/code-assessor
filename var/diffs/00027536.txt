@@ -1,0 +1,21 @@
+diff --git a/64a27ab2a62a8366daac2d355fad8d2a45c1cff6 b/7c25a7609bb31f92df840d07c816eb65e36f40fd
+index 64a27ab2a6..7c25a7609b 100644
+--- a/64a27ab2a62a8366daac2d355fad8d2a45c1cff6
++++ b/7c25a7609bb31f92df840d07c816eb65e36f40fd
+@@ -1,9 +1,10 @@
+ @Test(timeout = 10_000L)
+ public void testSkipOld() throws NoSuchFieldException, IllegalAccessException, ExecutionException, InterruptedException {
+-    final JDBCExtractionNamespace extractionNamespace = ensureNamespace();
+-    assertUpdated(namespace, "foo", "bar");
+-    if (tsColumn != null) {
+-        insertValues(handleRef, "foo", "baz", "1900-01-01 00:00:00");
++    try (final CacheScheduler.Entry entry = ensureEntry()) {
++        assertUpdated(entry, "foo", "bar");
++        if (tsColumn != null) {
++            insertValues(handleRef, "foo", "baz", "1900-01-01 00:00:00");
++        }
++        assertUpdated(entry, "foo", "bar");
+     }
+-    assertUpdated(namespace, "foo", "bar");
+ }
+\ No newline at end of file

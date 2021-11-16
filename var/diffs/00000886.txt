@@ -1,0 +1,22 @@
+diff --git a/da359ccd6f8ef471aabe8e0d26a326cd3ddfc6ca b/bf121811ab1ae1272e987a4a8e87b0fef00ca7f9
+index da359ccd6f..bf121811ab 100644
+--- a/da359ccd6f8ef471aabe8e0d26a326cd3ddfc6ca
++++ b/bf121811ab1ae1272e987a4a8e87b0fef00ca7f9
+@@ -1,14 +1,15 @@
+ @Nullable
+ @Override
+ public Color getEditorTabColor(@NotNull Project project, @NotNull VirtualFile virtualFile) {
+-    switch(MTTheme.getCurrentPreference()) {
++    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
++    switch(mtTheme) {
+         case DARKER:
+             return COLOR_DARKER;
+         case PALENIGHT:
+             return COLOR_PALENIGHT;
+         case LIGHTER:
+             return COLOR_LIGHTER;
+         default:
+             return COLOR_DEFAULT;
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/602d625f1ea67b6c207279669ba308d66c3686d4 b/7d633e0cf9fbc8ad305064b8eebc513835e3dd5e
+index 602d625f1e..7d633e0cf9 100644
+--- a/602d625f1ea67b6c207279669ba308d66c3686d4
++++ b/7d633e0cf9fbc8ad305064b8eebc513835e3dd5e
+@@ -1,3 +1,6 @@
++@Override
+ public PsiElement setName(@NotNull String name) throws IncorrectOperationException {
+-    return myMethod.setName(name);
++    String[] argumentsTypes = QuickfixUtil.getArgumentsTypes(myParamInfos);
++    DynamicManager.getInstance(getProject()).replaceDynamicMethodName(getContainingClassName(), getName(), name, argumentsTypes);
++    return super.setName(name);
+ }
+\ No newline at end of file

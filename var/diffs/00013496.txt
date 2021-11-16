@@ -1,0 +1,13 @@
+diff --git a/f8df5c15c608c9293e5fe63dbbea921542a8ea1e b/199fe906e5eb915398b1cb1a1fe175349c6b674d
+index f8df5c15c6..199fe906e5 100644
+--- a/f8df5c15c608c9293e5fe63dbbea921542a8ea1e
++++ b/199fe906e5eb915398b1cb1a1fe175349c6b674d
+@@ -1,5 +1,5 @@
+-public RunProfileState getState(final DataContext context, final Executor executor, RunnerSettings runnerSettings, ConfigurationPerRunnerSettings configurationSettings) {
+-    final JavaCommandLineState state = new MyJavaCommandLineState(runnerSettings, configurationSettings);
++public RunProfileState getState(@NotNull final Executor executor, @NotNull final ExecutionEnvironment env) throws ExecutionException {
++    final JavaCommandLineState state = new MyJavaCommandLineState(env);
+     state.setConsoleBuilder(TextConsoleBuilderFactory.getInstance().createBuilder(getProject()));
+     return state;
+ }
+\ No newline at end of file

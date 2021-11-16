@@ -1,0 +1,20 @@
+diff --git a/97181e9aefcb8992f36dfecd2ed45af581c36773 b/3601e9f28b22b32838c2fced919c4fb20fd36a45
+index 97181e9aef..3601e9f28b 100644
+--- a/97181e9aefcb8992f36dfecd2ed45af581c36773
++++ b/3601e9f28b22b32838c2fced919c4fb20fd36a45
+@@ -1,7 +1,10 @@
+ private static void insertRowWithKey(int key) {
+     long timestamp = System.currentTimeMillis();
+-    DecoratedKey decoratedKey = Util.dk(String.format("%03d", key));
+-    Mutation rm = new Mutation(KEYSPACE1, decoratedKey.getKey());
+-    rm.add("CF_STANDARD1", Util.cellname("col"), ByteBufferUtil.EMPTY_BYTE_BUFFER, timestamp, 1000);
+-    rm.applyUnsafe();
++    DecoratedKey dk = Util.dk(String.format("%03d", key));
++    new RowUpdateBuilder(Keyspace.open(KEYSPACE1).getColumnFamilyStore(CF_STANDARD1).metadata, timestamp, dk.getKey()).add("val", "val").build().applyUnsafe();
++/*
++        Mutation rm = new Mutation(KEYSPACE1, decoratedKey.getKey());
++        rm.add("CF_STANDARD1", Util.cellname("col"), ByteBufferUtil.EMPTY_BYTE_BUFFER, timestamp, 1000);
++        rm.applyUnsafe();
++        */
+ }
+\ No newline at end of file

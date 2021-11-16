@@ -1,0 +1,32 @@
+diff --git a/a773b17014bc3cccec2b55e12964ff11ac497e42 b/269da5b5fc95f5f6991c6f79f551ed528f6cf8c3
+index a773b17014..269da5b5fc 100644
+--- a/a773b17014bc3cccec2b55e12964ff11ac497e42
++++ b/269da5b5fc95f5f6991c6f79f551ed528f6cf8c3
+@@ -1,15 +1,22 @@
+ static boolean isSpecial(char ch, int features) {
+     if (ch == ' ') {
++        // 32
+         return false;
+     }
+-    if (ch == '/' && SerializerFeature.isEnabled(features, SerializerFeature.WriteSlashAsSpecial)) {
+-        return true;
++    if (ch == '/') {
++        // 47
++        return SerializerFeature.isEnabled(features, SerializerFeature.WriteSlashAsSpecial);
+     }
+-    if (ch > '#' && ch != '\\') {
++    if (// 35
++    ch > '#' && // 92
++    ch != '\\') {
+         return false;
+     }
+-    if (ch <= 0x1F || ch == '\\' || ch == '"') {
++    if (// 31
++    ch <= 0x1F || // 92
++    ch == '\\' || // 34
++    ch == '"') {
+         return true;
+     }
+     return false;
+ }
+\ No newline at end of file

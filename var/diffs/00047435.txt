@@ -1,0 +1,17 @@
+diff --git a/a53ab7a3c2f744e6191044d21c0e5b99c564e314 b/85f224a7eca748396c2a624d4839a0a86b5777b6
+index a53ab7a3c2..85f224a7ec 100644
+--- a/a53ab7a3c2f744e6191044d21c0e5b99c564e314
++++ b/85f224a7eca748396c2a624d4839a0a86b5777b6
+@@ -1,9 +1,10 @@
+ @Override
+ public V next() {
+     if (!hasNext()) {
+         throw new NoSuchElementException("No such element at index " + currentIndex);
+     }
+     currentIndex++;
+     removeExecuted = false;
+-    return RedissonSortedSet.this.get(currentIndex);
++    currentElement = RedissonSortedSet.this.get(currentIndex);
++    return currentElement;
+ }
+\ No newline at end of file

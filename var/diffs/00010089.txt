@@ -1,0 +1,18 @@
+diff --git a/c50526d9887357a75db995f471b5ff4db7cf9d94 b/b489019f74956fcf5a8d9b0e0f5fddf1321b2265
+index c50526d988..b489019f74 100644
+--- a/c50526d9887357a75db995f471b5ff4db7cf9d94
++++ b/b489019f74956fcf5a8d9b0e0f5fddf1321b2265
+@@ -1,10 +1,10 @@
+ @Nullable
+ public static HighlightInfo highlightReassignedVariable(PsiVariable variable, PsiElement elementToHighlight) {
+     if (variable instanceof PsiLocalVariable) {
+-        return HighlightInfo.createHighlightInfo(HighlightInfoType.REASSIGNED_LOCAL_VARIABLE, elementToHighlight, null);
++        return HighlightInfo.newHighlightInfo(HighlightInfoType.REASSIGNED_LOCAL_VARIABLE).range(elementToHighlight).create();
+     }
+     if (variable instanceof PsiParameter) {
+-        return HighlightInfo.createHighlightInfo(HighlightInfoType.REASSIGNED_PARAMETER, elementToHighlight, null);
++        return HighlightInfo.newHighlightInfo(HighlightInfoType.REASSIGNED_PARAMETER).range(elementToHighlight).create();
+     }
+     return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/1ef3dfc402d68cad9ae04a44ed7261e7a96dc533 b/2cfd59f88cf5ace4bc20ce3ea531b1e99139ef2d
+index 1ef3dfc402..2cfd59f88c 100644
+--- a/1ef3dfc402d68cad9ae04a44ed7261e7a96dc533
++++ b/2cfd59f88cf5ace4bc20ce3ea531b1e99139ef2d
+@@ -1,14 +1,15 @@
+ @Nullable
+ public static List<HighlightInfo> checkEnumConstantModifierList(PsiModifierList modifierList) {
+     List<HighlightInfo> list = null;
+     PsiElement[] children = modifierList.getChildren();
+     for (PsiElement child : children) {
+         if (child instanceof PsiKeyword) {
+             if (list == null) {
+                 list = new ArrayList<HighlightInfo>();
+             }
+-            list.add(HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, child, JavaErrorMessages.message("modifiers.for.enum.constants")));
++            String description = JavaErrorMessages.message("modifiers.for.enum.constants");
++            list.add(HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(child).descriptionAndTooltip(description).create());
+         }
+     }
+     return list;
+ }
+\ No newline at end of file

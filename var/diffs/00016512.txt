@@ -1,0 +1,21 @@
+diff --git a/6c2c7f86332480340421320f08aea8e7e5f2b540 b/d58357456314c9ee4cf3a141159bc55912b3e43a
+index 6c2c7f8633..d583574563 100644
+--- a/6c2c7f86332480340421320f08aea8e7e5f2b540
++++ b/d58357456314c9ee4cf3a141159bc55912b3e43a
+@@ -1,14 +1,13 @@
+ @Nullable
+-private String getRuntimeVersion() {
+-    VirtualFile kotlinRuntimeJar = getKotlinRuntimeJar();
++private static String getRuntimeVersion(@Nullable final VirtualFile kotlinRuntimeJar) {
+     if (kotlinRuntimeJar == null)
+         return null;
+     VirtualFile manifestFile = kotlinRuntimeJar.findFileByRelativePath(JarFile.MANIFEST_NAME);
+     if (manifestFile != null) {
+         Attributes attributes = ManifestFileUtil.readManifest(manifestFile).getMainAttributes();
+         if (attributes.containsKey(Attributes.Name.IMPLEMENTATION_VERSION)) {
+             return attributes.getValue(Attributes.Name.IMPLEMENTATION_VERSION);
+         }
+     }
+     return UNKNOWN_VERSION;
+ }
+\ No newline at end of file

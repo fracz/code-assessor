@@ -1,0 +1,18 @@
+diff --git a/f2842b5a31d1236d944fbe3442fb0e13162d7891 b/94119e50f98b415146ff877c12cad387a8dc5c30
+index f2842b5a31..94119e50f9 100644
+--- a/f2842b5a31d1236d944fbe3442fb0e13162d7891
++++ b/94119e50f98b415146ff877c12cad387a8dc5c30
+@@ -1,4 +1,10 @@
+ @Override
+-public void accumulate(Number value) {
+-    result = Math.min(result, value.doubleValue());
++public boolean accumulate(Object value) {
++    if (value instanceof Comparable) {
++        if (result == null || AggregateUtils.compareValues((Comparable) value, result) < 0) {
++            result = (Comparable) value;
++        }
++        return true;
++    }
++    return false;
+ }
+\ No newline at end of file

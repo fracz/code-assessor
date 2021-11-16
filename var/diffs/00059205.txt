@@ -1,0 +1,25 @@
+diff --git a/515dda135daece059657fb1e2d11adb83287019b b/b77328de5a7f043f66350f48cad5f625f13dd4f2
+index 515dda135d..b77328de5a 100644
+--- a/515dda135daece059657fb1e2d11adb83287019b
++++ b/b77328de5a7f043f66350f48cad5f625f13dd4f2
+@@ -1,13 +1,9 @@
+ @Override
+ public boolean hasNext() {
+-    hasNextInvocationCounter.inc();
+-    Timer.Context tc = hasNextTimer.time();
+-    try {
+-        return iterator.hasNext();
+-    } catch (RuntimeException e) {
+-        hasNextFailureCounter.inc();
+-        throw e;
+-    } finally {
+-        tc.stop();
+-    }
++    return MetricInstrumentedStore.runWithMetrics(p, null, M_HAS_NEXT, new UncheckedCallable<Boolean>() {
++
++        public Boolean call() {
++            return Boolean.valueOf(iterator.hasNext());
++        }
++    });
+ }
+\ No newline at end of file

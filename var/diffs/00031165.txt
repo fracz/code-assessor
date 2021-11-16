@@ -1,0 +1,18 @@
+diff --git a/524a91021613a82d2429c6a3b30a39742d810f38 b/2cc49bd8483c6a638679a6d8e0e7b00642ded27a
+index 524a910216..2cc49bd848 100644
+--- a/524a91021613a82d2429c6a3b30a39742d810f38
++++ b/2cc49bd8483c6a638679a6d8e0e7b00642ded27a
+@@ -1,8 +1,7 @@
+ @Override
+-public InternalAggregation buildAggregation(long owningBucketOrdinal) {
+-    if (valuesSource == null) {
+-        return new InternalMax(name, Double.NEGATIVE_INFINITY, formatter, metaData());
++public InternalAggregation buildAggregation(long bucket) {
++    if (valuesSource == null || bucket >= maxes.size()) {
++        return buildEmptyAggregation();
+     }
+-    assert owningBucketOrdinal < maxes.size();
+-    return new InternalMax(name, maxes.get(owningBucketOrdinal), formatter, metaData());
++    return new InternalMax(name, maxes.get(bucket), formatter, metaData());
+ }
+\ No newline at end of file

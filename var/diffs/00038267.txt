@@ -1,0 +1,21 @@
+diff --git a/be403a9cb9b07daa8260adc9ef7f73d8e8e9d66d b/737e032d721e7f987050cb19d1360c8c9920052d
+index be403a9cb9..737e032d72 100644
+--- a/be403a9cb9b07daa8260adc9ef7f73d8e8e9d66d
++++ b/737e032d721e7f987050cb19d1360c8c9920052d
+@@ -1,12 +1,12 @@
+ protected boolean stillWorking() {
+-    // If there's a panic we'll just stop working
+     if (panic) {
++        // There has been a panic, so we'll just stop working
+         return false;
+     }
+-    // If upstream has run out and we've processed all
+-    if (endOfUpstream && doneBatches.get() == receivedBatches.get()) {
++    if (endOfUpstream && queuedBatches.get() == 0) {
++        // Upstream has run out and we've processed everything upstream sent us
+         return false;
+     }
+     // We're still working
+     return true;
+ }
+\ No newline at end of file

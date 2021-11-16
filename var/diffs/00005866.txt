@@ -1,0 +1,31 @@
+diff --git a/24dce2b771ff6cda7666f12f896454cee4600956 b/efc5ac1d9bca35fc85cdfd1331e3e5c9fc5a37b6
+index 24dce2b771..efc5ac1d9b 100644
+--- a/24dce2b771ff6cda7666f12f896454cee4600956
++++ b/efc5ac1d9bca35fc85cdfd1331e3e5c9fc5a37b6
+@@ -1,14 +1,18 @@
+ public void close() {
+     try {
+-        closeTimestampStorages();
++        synchronized (mySourceToOutputLock) {
++            closeOutputToSourceStorages();
++        }
+     } finally {
+-        synchronized (myOutputToSourceMap) {
+-            try {
+-                myOutputToSourceMap.close();
+-            } catch (IOException e) {
+-                LOG.error(e);
+-                FileUtil.delete(getOutputToSourceStorageRoot());
++        try {
++            closeStorage(getSourceToFormsRoot(), mySrcToFormMap);
++        } finally {
++            final Mappings mappings = myMappings;
++            if (mappings != null) {
++                synchronized (mappings) {
++                    mappings.close();
++                }
+             }
+         }
+     }
+ }
+\ No newline at end of file

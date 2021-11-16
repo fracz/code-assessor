@@ -1,0 +1,16 @@
+diff --git a/cf03ce3d0e2d7bafe2f5ce466cda5ee3ab8a993c b/237a6e5085644932094fe5ce2bd90063196d09e7
+index cf03ce3d0e..237a6e5085 100644
+--- a/cf03ce3d0e2d7bafe2f5ce466cda5ee3ab8a993c
++++ b/237a6e5085644932094fe5ce2bd90063196d09e7
+@@ -1,8 +1,9 @@
+ public static <T> T mock(Class<T> classToMock) {
+     try {
+         ClassProxyFactory<T> proxyFactory = new ClassProxyFactory<T>();
+-        return proxyFactory.createProxy(classToMock, new MockitoObjectMethodsFilter<MockitoControl>(classToMock, new MockitoControl<T>(), null));
++        MockitoControl<T> mockitoControl = new MockitoControl<T>(MockitoState.instance(), LastArguments.instance());
++        return proxyFactory.createProxy(classToMock, new MockitoObjectMethodsFilter<MockitoControl>(classToMock, mockitoControl, null));
+     } catch (RuntimeExceptionWrapper e) {
+         throw (RuntimeException) e.getRuntimeException().fillInStackTrace();
+     }
+ }
+\ No newline at end of file

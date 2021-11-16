@@ -1,0 +1,15 @@
+diff --git a/a7bc3c6f8030faa78b9b8e3f2daccb2a2d109cea b/2ff3c629a46e2986fb945973d01e40b0ec12922b
+index a7bc3c6f80..2ff3c629a4 100644
+--- a/a7bc3c6f8030faa78b9b8e3f2daccb2a2d109cea
++++ b/2ff3c629a46e2986fb945973d01e40b0ec12922b
+@@ -1,8 +1,6 @@
+ @Override
+ public NetClientOptions addCrlValue(Buffer crlValue) throws NullPointerException {
+-    if (crlValue == null) {
+-        throw new NullPointerException("No null crl accepted");
+-    }
++    Objects.requireNonNull(crlValue, "No null crl accepted");
+     crlValues.add(crlValue);
+     return this;
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/fbaa524d5e56f6903405fc05a304e8bf3426765a b/90ae8f53b8a7ee879b380554a37520dbfc945871
+index fbaa524d5e..90ae8f53b8 100644
+--- a/fbaa524d5e56f6903405fc05a304e8bf3426765a
++++ b/90ae8f53b8a7ee879b380554a37520dbfc945871
+@@ -1,9 +1 @@
+-public Result transition(@NotNull XmlElementDescriptor element) {
+-    if (myGroup.getGroupType() == XmlElementsGroup.Type.LEAF) {
+-        if (element.equals(myGroup.getLeafDescriptor())) {
+-            return consume();
+-        } else
+-            return Result.NONE;
+-    }
+-    return processSubGroups(element);
+-}
+\ No newline at end of file
++public abstract void transition(@NotNull XmlElementDescriptor element, XmlTag xmlTag);
+\ No newline at end of file

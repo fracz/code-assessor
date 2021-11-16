@@ -1,0 +1,18 @@
+diff --git a/6103884504bb41af4bfc1e8091ee5e334f1f0581 b/45e47ed8710bb01ff901904fd88779295116b6c3
+index 6103884504..45e47ed871 100644
+--- a/6103884504bb41af4bfc1e8091ee5e334f1f0581
++++ b/45e47ed8710bb01ff901904fd88779295116b6c3
+@@ -1,10 +1,9 @@
+ @Test
+ public void readFailure() throws Exception {
+-    mChannel = new EmbeddedChannelNoException(new DataServerBlockReadHandler(NettyExecutors.BLOCK_READER_EXECUTOR, mBlockWorker, FileTransferType.MAPPED));
+     long fileSize = PACKET_SIZE * 10 + 1;
+     populateInputFile(0, 0, fileSize - 1);
+     mBlockReader.close();
+-    mChannel.writeInbound(buildReadRequest(0, fileSize));
+-    Object response = waitForOneResponse();
++    mChannelNoException.writeInbound(buildReadRequest(0, fileSize));
++    Object response = waitForOneResponse(mChannelNoException);
+     checkReadResponse(response, Protocol.Status.Code.INTERNAL);
+ }
+\ No newline at end of file

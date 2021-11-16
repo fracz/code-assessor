@@ -1,0 +1,18 @@
+diff --git a/2b7494239e4706627c54f0788cfc86dbcaa3a91a b/a0ff24e2fd23835b643da043ce9d96e903e185b9
+index 2b7494239e..a0ff24e2fd 100644
+--- a/2b7494239e4706627c54f0788cfc86dbcaa3a91a
++++ b/a0ff24e2fd23835b643da043ce9d96e903e185b9
+@@ -1,4 +1,9 @@
+-@NotNull
+-private static String getDefaultBranchName(@NotNull GitBranchType type) {
+-    return type == GitBranchType.LOCAL ? MASTER : ORIGIN_MASTER;
++@Nullable
++@Override
++protected String getDefaultBranchName(@NotNull BranchType type) {
++    if (type == GitBranchType.LOCAL)
++        return MASTER;
++    if (type == GitBranchType.REMOTE)
++        return ORIGIN_MASTER;
++    return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/59927fd9c29d4f3a53a748781fe97a37f2d961c2 b/f8a4f5d5779cf0492b976cc43a0eddbbb19fba05
+index 59927fd9c2..f8a4f5d577 100644
+--- a/59927fd9c29d4f3a53a748781fe97a37f2d961c2
++++ b/f8a4f5d5779cf0492b976cc43a0eddbbb19fba05
+@@ -1,17 +1,17 @@
+ @Override
+ public void run() {
+     IWorkbenchPage activePage = getActivePage();
+     if (activePage == null) {
+         return;
+     }
+     try {
+         IViewPart view = activePage.findView(viewId);
+         if (view == null) {
+             activePage.showView(viewId);
+         } else {
+             activePage.hideView(view);
+         }
+     } catch (PartInitException ex) {
+-        UIUtils.showErrorDialog(null, viewId, "Can't open view " + viewId, ex);
++        DBUserInterface.getInstance().showError(viewId, "Can't open view " + viewId, ex);
+     }
+ }
+\ No newline at end of file

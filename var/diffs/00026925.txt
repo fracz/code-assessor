@@ -1,0 +1,23 @@
+diff --git a/b80fa377f9a7f911079f7c0d4e564d29a510164d b/c6a8e0975408e7bef5dc4e1a343c1ab3b3e5e725
+index b80fa377f9..c6a8e09754 100644
+--- a/b80fa377f9a7f911079f7c0d4e564d29a510164d
++++ b/c6a8e0975408e7bef5dc4e1a343c1ab3b3e5e725
+@@ -1,13 +1,13 @@
+ /**
+  * Corrupts the given input by doing a binomial sampling
+  * given the corruption level
+  * @param x the input to corrupt
+  * @param corruptionLevel the corruption value
+  * @return the binomial sampled corrupted input
+  */
+-public DoubleMatrix getCorruptedInput(DoubleMatrix x, double corruptionLevel) {
+-    DoubleMatrix tilde_x = DoubleMatrix.zeros(x.rows, x.columns);
+-    for (int i = 0; i < x.rows; i++) for (int j = 0; j < x.columns; j++) tilde_x.put(i, j, binomial(rng, 1, 1 - corruptionLevel));
+-    DoubleMatrix ret = tilde_x.mul(x);
++public INDArray getCorruptedInput(INDArray x, double corruptionLevel) {
++    INDArray tilde_x = NDArrays.zeros(x.rows(), x.columns());
++    for (int i = 0; i < x.rows(); i++) for (int j = 0; j < x.columns(); j++) tilde_x.put(i, j, binomial(rng, 1, 1 - corruptionLevel));
++    INDArray ret = tilde_x.mul(x);
+     return ret;
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/0689632254303b8a5cd13e1bf4087c526a4779cc b/341daf832ce35cb984394717f59201f904f755ed
+index 0689632254..341daf832c 100644
+--- a/0689632254303b8a5cd13e1bf4087c526a4779cc
++++ b/341daf832ce35cb984394717f59201f904f755ed
+@@ -1,7 +1,6 @@
+ public static PsiElement doIntroduceVariable(PsiElement expression, PsiElement declaration, List<PsiElement> occurrences, boolean replaceAll) {
+     PsiElement anchor = replaceAll ? findAnchor(occurrences) : PsiTreeUtil.getParentOfType(expression, PyStatement.class);
+     assert anchor != null;
+     final PsiElement parent = anchor.getParent();
+-    parent.addBefore(declaration, anchor);
+-    return parent.getParent();
++    return parent.addBefore(declaration, anchor);
+ }
+\ No newline at end of file

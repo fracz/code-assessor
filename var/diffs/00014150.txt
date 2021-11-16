@@ -1,0 +1,15 @@
+diff --git a/c1ba281f9cc4744824bcdd06a65252ed44527bf4 b/330f94bd1941a0e8b242e267c9c60bd91f69e54c
+index c1ba281f9c..330f94bd19 100644
+--- a/c1ba281f9cc4744824bcdd06a65252ed44527bf4
++++ b/330f94bd1941a0e8b242e267c9c60bd91f69e54c
+@@ -1,5 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiClass aClass = (PsiClass) location.getParent();
+-    final int count = getNestingLevel(aClass);
+-    return InspectionGadgetsBundle.message("inner.class.too.deeply.nested.problem.descriptor", count);
++@NotNull
++public String buildErrorString(Object... infos) {
++    final Integer nestingLevel = (Integer) infos[0];
++    return InspectionGadgetsBundle.message("inner.class.too.deeply.nested.problem.descriptor", nestingLevel);
+ }
+\ No newline at end of file

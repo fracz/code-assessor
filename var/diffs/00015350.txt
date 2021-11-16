@@ -1,0 +1,12 @@
+diff --git a/730206866acc1a4a5d02a717e43ad888e349d349 b/cf1f6da1512225a1dd3d63d2a4bd84a71b4bf034
+index 730206866a..cf1f6da151 100644
+--- a/730206866acc1a4a5d02a717e43ad888e349d349
++++ b/cf1f6da1512225a1dd3d63d2a4bd84a71b4bf034
+@@ -1,5 +1,5 @@
+ private MutableClassDescriptor createClassDescriptor(ClassKind kind, JetClass aClass) {
+-    MutableClassDescriptor classDescriptor = new MutableClassDescriptor(JetTestUtils.DUMMY_TRACE, root, scope, kind);
++    MutableClassDescriptor classDescriptor = new MutableClassDescriptor(root, scope, kind, aClass.getName());
+     descriptorResolver.resolveMutableClassDescriptor(aClass, classDescriptor, JetTestUtils.DUMMY_TRACE);
+     return classDescriptor;
+ }
+\ No newline at end of file

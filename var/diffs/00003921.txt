@@ -1,0 +1,22 @@
+diff --git a/71e7d125e495bd17f7afa0d6c399e5ddf16a2869 b/e3db39bdccceddc63203366f24b6baff7988a0c1
+index 71e7d125e4..e3db39bdcc 100644
+--- a/71e7d125e495bd17f7afa0d6c399e5ddf16a2869
++++ b/e3db39bdccceddc63203366f24b6baff7988a0c1
+@@ -1,13 +1,13 @@
+ private GetDataRule getRuleFromMap(final String dataId) {
+     GetDataRule rule = myDataConstantToRuleMap.get(dataId);
+     if (rule == null && !myDataConstantToRuleMap.containsKey(dataId)) {
+-        final KeyedLazyInstanceEP[] eps = Extensions.getExtensions(GetDataRule.EP_NAME);
+-        for (KeyedLazyInstanceEP ruleEP : eps) {
++        final KeyedLazyInstanceEP<GetDataRule>[] eps = Extensions.getExtensions(GetDataRule.EP_NAME);
++        for (KeyedLazyInstanceEP<GetDataRule> ruleEP : eps) {
+             if (ruleEP.key.equals(dataId)) {
+-                rule = (GetDataRule) ruleEP.getInstance();
++                rule = ruleEP.getInstance();
+             }
+         }
+         myDataConstantToRuleMap.put(dataId, rule);
+     }
+     return rule;
+ }
+\ No newline at end of file

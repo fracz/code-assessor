@@ -1,0 +1,20 @@
+diff --git a/ba59ed40afb502681d0e177d20eed2935593ca26 b/8bb0e1b5bfde4007889add8589b95b2683188732
+index ba59ed40af..8bb0e1b5bf 100644
+--- a/ba59ed40afb502681d0e177d20eed2935593ca26
++++ b/8bb0e1b5bfde4007889add8589b95b2683188732
+@@ -1,13 +1,13 @@
+ /**
+  * Matches any method definitions that fit the following:
+  * 1) Defined method is named "equals."
+  * 2) Defined method returns a boolean.
+  * 3) Defined method takes a single parameter of the same type as the enclosing class.
+  * 4) The enclosing class does not have a method defined that really overrides Object.equals().
+  */
+ @Override
+ // matchers + varargs cause this
+ @SuppressWarnings("unchecked")
+ public boolean matches(MethodTree methodTree, VisitorState state) {
+-    return allOf(methodHasVisibility(Visibility.PUBLIC), methodIsNamed("equals"), methodReturns(state.getSymtab().booleanType), methodHasParameters(variableType(isSameType(findEnclosingClass(state)))), enclosingClass(not(hasMethod(allOf(MethodTree.class, methodIsNamed("equals"), methodReturns(state.getSymtab().booleanType), methodHasParameters(variableType(isSameType(state.getSymtab().objectType)))))))).matches(methodTree, state);
++    return allOf(methodHasVisibility(Visibility.PUBLIC), methodIsNamed("equals"), methodReturns(state.getSymtab().booleanType), methodHasParameters(variableType(isSameType(findEnclosingClass(state)))), enclosingClass(not(hasMethod(Matchers.<MethodTree>allOf(methodIsNamed("equals"), methodReturns(state.getSymtab().booleanType), methodHasParameters(variableType(isSameType(state.getSymtab().objectType)))))))).matches(methodTree, state);
+ }
+\ No newline at end of file

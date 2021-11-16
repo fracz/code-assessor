@@ -1,0 +1,11 @@
+diff --git a/8b257574808bc0116080d5e573e4a43265ff47ce b/2c2ee19c18b5257fe0dd6fa1d528d7a2a862d387
+index 8b25757480..2c2ee19c18 100644
+--- a/8b257574808bc0116080d5e573e4a43265ff47ce
++++ b/2c2ee19c18b5257fe0dd6fa1d528d7a2a862d387
+@@ -1,3 +1,3 @@
+-protected void showErrorMessage(String message, final Project project) {
+-    CommonRefactoringUtil.showErrorMessage(REFACTORING_NAME, message, HelpID.INTRODUCE_VARIABLE, project);
++protected void showErrorMessage(final Project project, Editor editor, String message) {
++    CommonRefactoringUtil.showErrorHint(project, editor, message, REFACTORING_NAME, HelpID.INTRODUCE_VARIABLE);
+ }
+\ No newline at end of file

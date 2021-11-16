@@ -1,0 +1,18 @@
+diff --git a/2c4cdd4d786572c1b121a7195a0d02c104daf452 b/a5d56d25fd80ff09e36ad8a4a52a421765512d8a
+index 2c4cdd4d78..a5d56d25fd 100644
+--- a/2c4cdd4d786572c1b121a7195a0d02c104daf452
++++ b/a5d56d25fd80ff09e36ad8a4a52a421765512d8a
+@@ -1,8 +1,11 @@
+ @Override
+ public boolean isAutoCommit() throws DBCException {
+     try {
+-        return connectionHolder.getAutoCommit();
++        if (autoCommit == null) {
++            autoCommit = getConnection().getAutoCommit();
++        }
++        return autoCommit;
+     } catch (SQLException e) {
+         throw new JDBCException(e, dataSource);
+     }
+ }
+\ No newline at end of file

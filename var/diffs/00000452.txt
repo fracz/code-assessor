@@ -1,0 +1,15 @@
+diff --git a/276564ab651fe6ef23aae1cf20dd02704c369876 b/2d42561c7e210f34457436843737d49966e8aec3
+index 276564ab65..2d42561c7e 100644
+--- a/276564ab651fe6ef23aae1cf20dd02704c369876
++++ b/2d42561c7e210f34457436843737d49966e8aec3
+@@ -1,8 +1,7 @@
+ public <T extends Enum<T>> T getEnum(String key, T defaultValue) {
+     if (mProperties.containsKey(key)) {
+         final String val = get(key, defaultValue.toString());
+         return null == val ? defaultValue : Enum.valueOf(defaultValue.getDeclaringClass(), val);
+-    } else {
+-        return defaultValue;
+     }
++    return defaultValue;
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/0d9538b0ff0c59dffc13669fa6cacd3c6ea665ee b/a6543abefb78ba156f7e47a831af2e67dbd8e266
+index 0d9538b0ff..a6543abefb 100644
+--- a/0d9538b0ff0c59dffc13669fa6cacd3c6ea665ee
++++ b/a6543abefb78ba156f7e47a831af2e67dbd8e266
+@@ -1,8 +1,9 @@
+ /**
+- * @see #resolveClassTypeParametersFromJetSignature(String, com.intellij.psi.PsiClass, org.jetbrains.jet.lang.descriptors.ClassDescriptor, TypeVariableResolver)
++ * @see #resolveClassTypeParametersFromJetSignature(String, com.intellij.psi.PsiClass, org.jetbrains.jet.lang.descriptors.ClassDescriptor)
+  */
+-private List<TypeParameterDescriptorInitialization> resolveMethodTypeParametersFromJetSignature(String jetSignature, final PsiMethod method, final DeclarationDescriptor functionDescriptor, final TypeVariableResolver classTypeVariableResolver) {
+-    JetSignatureTypeParametersVisitor jetSignatureTypeParametersVisitor = new JetSignatureTypeParametersVisitor(classTypeVariableResolver, functionDescriptor, method);
++private List<TypeParameterDescriptorInitialization> resolveMethodTypeParametersFromJetSignature(String jetSignature, final PsiMethod method, final DeclarationDescriptor functionDescriptor) {
++    String context = "method " + method.getName() + " in class " + method.getContainingClass().getQualifiedName();
++    JetSignatureTypeParametersVisitor jetSignatureTypeParametersVisitor = new JetSignatureTypeParametersVisitor(functionDescriptor, method, context);
+     new JetSignatureReader(jetSignature).acceptFormalTypeParametersOnly(jetSignatureTypeParametersVisitor);
+     return jetSignatureTypeParametersVisitor.r;
+ }
+\ No newline at end of file

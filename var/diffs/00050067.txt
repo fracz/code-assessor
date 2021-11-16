@@ -1,0 +1,18 @@
+diff --git a/bd89930c6e2f9fa1f7af2eb91526e198619549ad b/59e9eb07980ecc84d0b3bf0e2d2c550752cf9663
+index bd89930c6e..59e9eb0798 100644
+--- a/bd89930c6e2f9fa1f7af2eb91526e198619549ad
++++ b/59e9eb07980ecc84d0b3bf0e2d2c550752cf9663
+@@ -1,6 +1,10 @@
+ /**
+  * Reorder children nodes
+  */
+-public void updateChildrenOrder(DBRProgressMonitor monitor, boolean reflect) throws DBException {
+-    refreshNodeContent(monitor, getObject(), this, reflect);
++public void updateChildrenOrder(boolean reflect) {
++    try {
++        refreshNodeContent(VoidProgressMonitor.INSTANCE, getObject(), this, reflect);
++    } catch (DBException e) {
++        log.error("Error reordering node children", e);
++    }
+ }
+\ No newline at end of file

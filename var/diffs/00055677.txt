@@ -1,0 +1,15 @@
+diff --git a/0219ba8ba097f8737464c2683b50489b43927a75 b/167b6b698bc76df35ec9613a328623a9017f993b
+index 0219ba8ba0..167b6b698b 100644
+--- a/0219ba8ba097f8737464c2683b50489b43927a75
++++ b/167b6b698bc76df35ec9613a328623a9017f993b
+@@ -1,8 +1,8 @@
+ @Test
+ public void testSatisfiedAllDependencyCheck() throws Exception {
+-    XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("satisfiedAllDependencyCheck.xml", getClass()));
++    XmlBeanFactory xbf = new XmlBeanFactory(SATISFIED_ALL_DEP_CONTEXT);
+     DependenciesBean a = (DependenciesBean) xbf.getBean("a");
+     assertEquals(a.getAge(), 33);
+     assertNotNull(a.getName());
+     assertNotNull(a.getSpouse());
+ }
+\ No newline at end of file

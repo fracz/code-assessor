@@ -1,0 +1,17 @@
+diff --git a/64d4c0ed3f0a71addaaf7fdb6ec236a0ba3248be b/91bd6f09bf7ea9250307e51d140a72c18582cd13
+index 64d4c0ed3f..91bd6f09bf 100644
+--- a/64d4c0ed3f0a71addaaf7fdb6ec236a0ba3248be
++++ b/91bd6f09bf7ea9250307e51d140a72c18582cd13
+@@ -1,9 +1,9 @@
+ private JDBCStatement makeStatement(Statement statement) throws SQLFeatureNotSupportedException {
+     if (statement instanceof CallableStatement) {
+-        return new JDBCCallableStatementImpl(this, (CallableStatement) statement, null);
++        return createCallableStatementImpl((CallableStatement) statement, null);
+     } else if (statement instanceof PreparedStatement) {
+-        return new JDBCPreparedStatementImpl(this, (PreparedStatement) statement, null);
++        return createPreparedStatementImpl((PreparedStatement) statement, null);
+     } else {
+         throw new SQLFeatureNotSupportedException();
+     }
+ }
+\ No newline at end of file

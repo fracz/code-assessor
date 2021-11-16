@@ -1,0 +1,24 @@
+diff --git a/c763735ad0d3430e1c552d8677c6876f28a391f6 b/eac1aacf14d47013132b94cf4094e3a3c29fcfad
+index c763735ad0..eac1aacf14 100644
+--- a/c763735ad0d3430e1c552d8677c6876f28a391f6
++++ b/eac1aacf14d47013132b94cf4094e3a3c29fcfad
+@@ -1,17 +1,15 @@
+ private Document loadXML(String xml) throws JadxException, ParserConfigurationException, SAXException, IOException {
+     Document doc;
+     InputStream xmlStream = null;
+     try {
+         xmlStream = ManifestAttributes.class.getResourceAsStream(xml);
+         if (xmlStream == null) {
+             throw new JadxException(xml + " not found in classpath");
+         }
+         DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+         doc = dBuilder.parse(xmlStream);
+     } finally {
+-        if (xmlStream != null) {
+-            xmlStream.close();
+-        }
++        close(xmlStream);
+     }
+     return doc;
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/e4c5d636569acf736634d2e1917b20fc335e82ca b/0059bda37c764444d552e07ba761aa99a1648789
+index e4c5d63656..0059bda37c 100644
+--- a/e4c5d636569acf736634d2e1917b20fc335e82ca
++++ b/0059bda37c764444d552e07ba761aa99a1648789
+@@ -1,9 +1,9 @@
+ @Override
+-public void addIndexRule(long labelId, long propertyKey) throws ConstraintViolationKernelException {
+-    for (long existingRule : getIndexedProperties(labelId)) {
+-        if (existingRule == propertyKey) {
++public IndexRule addIndexRule(long labelId, long propertyKey) throws ConstraintViolationKernelException {
++    for (IndexRule existingRule : getIndexRules(labelId)) {
++        if (existingRule.getPropertyKey() == propertyKey) {
+             throw new ConstraintViolationKernelException("Property " + propertyKey + " is already indexed for label " + labelId + ".");
+         }
+     }
+-    delegate.addIndexRule(labelId, propertyKey);
++    return delegate.addIndexRule(labelId, propertyKey);
+ }
+\ No newline at end of file

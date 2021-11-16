@@ -1,0 +1,19 @@
+diff --git a/e0327c77ca8e7d6d42dc0b912c94f2c10364c2b4 b/b42d3785bcbf3bdca3376071e823424cd03c4710
+index e0327c77ca..b42d3785bc 100644
+--- a/e0327c77ca8e7d6d42dc0b912c94f2c10364c2b4
++++ b/b42d3785bcbf3bdca3376071e823424cd03c4710
+@@ -1,9 +1,9 @@
+-protected OIndex<?> preProcessBeforeReturn(final OIndex<?> index) {
++protected OIndex<?> preProcessBeforeReturn(ODatabaseDocumentInternal database, final OIndex<?> index) {
+     if (index instanceof OIndexMultiValues)
+-        return new OIndexTxAwareMultiValue(getDatabase(), (OIndex<Set<OIdentifiable>>) index);
++        return new OIndexTxAwareMultiValue(database, (OIndex<Set<OIdentifiable>>) index);
+     else if (index instanceof OIndexDictionary)
+-        return new OIndexTxAwareDictionary(getDatabase(), (OIndex<OIdentifiable>) index);
++        return new OIndexTxAwareDictionary(database, (OIndex<OIdentifiable>) index);
+     else if (index instanceof OIndexOneValue)
+-        return new OIndexTxAwareOneValue(getDatabase(), (OIndex<OIdentifiable>) index);
++        return new OIndexTxAwareOneValue(database, (OIndex<OIdentifiable>) index);
+     return index;
+ }
+\ No newline at end of file

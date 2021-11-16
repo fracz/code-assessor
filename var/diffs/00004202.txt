@@ -1,0 +1,21 @@
+diff --git a/76ac9db591e98fd9aac50e83b9dc71de43f0bc4a b/3523494ba36020a225f2f20ebcfe03f558183149
+index 76ac9db591..3523494ba3 100644
+--- a/76ac9db591e98fd9aac50e83b9dc71de43f0bc4a
++++ b/3523494ba36020a225f2f20ebcfe03f558183149
+@@ -1,14 +1,14 @@
+ public IElementType getTokenType() {
+-    IElementType tokenType = myLexer.getTokenType();
++    IElementType tokenType = super.getTokenType();
+     if (tokenType == null)
+         return tokenType;
+     if (tokenType != XmlTokenType.XML_COMMENT_CHARACTERS && tokenType != XmlTokenType.XML_COMMENT_END && tokenType != XmlTokenType.XML_COMMENT_START && tokenType != XmlTokenType.XML_ATTRIBUTE_VALUE_START_DELIMITER) {
+         // TODO: do not know when this happens!
+         switch(getState()) {
+             case __XmlLexer.DOCTYPE:
+                 tokenType = XmlTokenType.XML_DECL_START;
+                 break;
+         }
+     }
+     return tokenType;
+ }
+\ No newline at end of file

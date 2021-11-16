@@ -1,0 +1,14 @@
+diff --git a/9054737f8f132165cb3e89fb065b8e0e3293d6fe b/26344be5cd9a7842418e76cb4274b8886dd5be52
+index 9054737f8f..26344be5cd 100644
+--- a/9054737f8f132165cb3e89fb065b8e0e3293d6fe
++++ b/26344be5cd9a7842418e76cb4274b8886dd5be52
+@@ -1,6 +1,6 @@
+ public void restart() {
+     synchronized (LOCK) {
+-        start();
+-        myRestartRequest = true;
++        myState = TimerState.restarting;
++        mySharedThread.queue(this, 0);
+     }
+ }
+\ No newline at end of file

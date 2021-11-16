@@ -1,0 +1,17 @@
+diff --git a/e863009836022f3176f474c47f58362d2c74ec90 b/bd06e889b868b261e9c9a86a3358f0fa7609295d
+index e863009836..bd06e889b8 100644
+--- a/e863009836022f3176f474c47f58362d2c74ec90
++++ b/bd06e889b868b261e9c9a86a3358f0fa7609295d
+@@ -1,7 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiMethod method = (PsiMethod) location.getParent();
+-    assert method != null;
+-    final PsiParameterList parameterList = method.getParameterList();
+-    final int numParams = parameterList.getParameters().length;
+-    return InspectionGadgetsBundle.message("parameters.per.method.problem.descriptor", numParams);
++@NotNull
++public String buildErrorString(Object... infos) {
++    final Integer parameterCount = (Integer) infos[0];
++    return InspectionGadgetsBundle.message("parameters.per.method.problem.descriptor", parameterCount);
+ }
+\ No newline at end of file

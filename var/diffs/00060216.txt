@@ -1,0 +1,16 @@
+diff --git a/e384550c6da798fe6c934f648fc9d27c0dfca0b5 b/8e470cf28438e91a6debd1c761daabfeaddc17d6
+index e384550c6d..8e470cf284 100644
+--- a/e384550c6da798fe6c934f648fc9d27c0dfca0b5
++++ b/8e470cf28438e91a6debd1c761daabfeaddc17d6
+@@ -1,7 +1,8 @@
+-private void recordSliceMetrics(String p, List<Entry> row) {
+-    if (null == p)
++private void recordSliceMetrics(StoreTransaction txh, List<Entry> row) {
++    if (!txh.getConfiguration().hasMetricsPrefix())
+         return;
++    String p = txh.getConfiguration().getMetricsPrefix();
+     final MetricManager mgr = MetricManager.INSTANCE;
+     mgr.getCounter(p, metricsStoreName, M_GET_SLICE, M_ENTRIES_COUNT).inc(row.size());
+     mgr.getHistogram(p, metricsStoreName, M_GET_SLICE, M_ENTRIES_HISTO).update(row.size());
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/629117e1ea71ce06cb1350397334428c26be1a4d b/d98af86c3ed21cc36bf9c6183b9f91cc4bf8303e
+index 629117e1ea..d98af86c3e 100644
+--- a/629117e1ea71ce06cb1350397334428c26be1a4d
++++ b/d98af86c3ed21cc36bf9c6183b9f91cc4bf8303e
+@@ -1,6 +1,6 @@
+ @Nullable
+ private static SSBasedInspection getInspection(@NotNull Project project) {
+     final InspectionProfile profile = InspectionProjectProfileManager.getInstance(project).getInspectionProfile();
+-    final InspectionToolWrapper entry = (InspectionToolWrapper) profile.getInspectionTool(SSBasedInspection.SHORT_NAME);
++    final InspectionToolWrapper entry = profile.getInspectionTool(SSBasedInspection.SHORT_NAME, project);
+     return entry == null ? null : (SSBasedInspection) entry.getTool();
+ }
+\ No newline at end of file

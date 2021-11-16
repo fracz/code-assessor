@@ -1,0 +1,27 @@
+diff --git a/1e33fe743e39038d5e2f621410e9b1121e790c99 b/a061f55abd1e7c66f72c72da9a04e6ef2e149372
+index 1e33fe743e..a061f55abd 100644
+--- a/1e33fe743e39038d5e2f621410e9b1121e790c99
++++ b/a061f55abd1e7c66f72c72da9a04e6ef2e149372
+@@ -1,16 +1,18 @@
+-public static ImageDescriptor getImageDescriptor(DBPImage image) {
++@NotNull
++public static ImageDescriptor getImageDescriptor(@NotNull DBPImage image) {
+     if (image == null) {
+         return null;
+-    } else if (image instanceof DBIconBinary) {
++    }
++    if (image instanceof DBIconBinary) {
+         return ((DBIconBinary) image).getImageDescriptor();
+     } else {
+         IconDescriptor icon = getIconByLocation(image.getLocation());
+         if (icon == null) {
+-            return null;
++            throw new IllegalArgumentException("Image '" + image.getLocation() + "' not found");
+         } else if (image instanceof DBIconComposite) {
+             return getCompositeIcon(icon, (DBIconComposite) image).imageDescriptor;
+         } else {
+             return icon.imageDescriptor;
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/df730046c2326f8249b8300b7e413d6125e00e73 b/8a94a1115eb05c8721d4cc69d5b8386993f539fc
+index df730046c2..8a94a1115e 100644
+--- a/df730046c2326f8249b8300b7e413d6125e00e73
++++ b/8a94a1115eb05c8721d4cc69d5b8386993f539fc
+@@ -1,8 +1,4 @@
+ public boolean deleteLogicalLog(long version) {
+-    String name = fileName + ".v" + version;
+-    File file = new File(name);
+-    if (file.exists()) {
+-        return FileUtils.deleteFile(file);
+-    }
+-    return false;
++    File file = new File(getFileName(version));
++    return file.exists() ? FileUtils.deleteFile(file) : false;
+ }
+\ No newline at end of file

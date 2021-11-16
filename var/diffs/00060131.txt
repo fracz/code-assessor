@@ -1,0 +1,19 @@
+diff --git a/e225201520ba11991292b9be28f0d23e0aa52738 b/699847b12795558803dbf326fc1f736198502490
+index e225201520..699847b127 100644
+--- a/e225201520ba11991292b9be28f0d23e0aa52738
++++ b/699847b12795558803dbf326fc1f736198502490
+@@ -1,12 +1,12 @@
+ // ##################################
+ // Property Handling
+ // ##################################
+ @Override
+ public void setProperty(final String key, final Object value) {
+     ElementHelper.validateProperty(this, key, value);
+-    FaunusType type = FaunusGraph.getCurrent().getTypes().get(key);
++    FaunusType type = FaunusType.DEFAULT_MANAGER.get(key);
+     if (properties == NO_PROPERTIES)
+         this.properties = ArrayListMultimap.create();
+     this.properties.removeAll(type);
+     this.properties.put(type, value);
+ }
+\ No newline at end of file

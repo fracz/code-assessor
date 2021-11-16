@@ -1,0 +1,26 @@
+diff --git a/a894f873fe9c44cca5054613e2c4838e91230898 b/e7826c6f8c6d52904daef68fc82de29caf7ce612
+index a894f873fe..e7826c6f8c 100644
+--- a/a894f873fe9c44cca5054613e2c4838e91230898
++++ b/e7826c6f8c6d52904daef68fc82de29caf7ce612
+@@ -1,18 +1,19 @@
+ /**
+  * Called when a shortcut is about to be published.  At this point we know the publisher package
+  * exists (as opposed to Launcher trying to fetch shortcuts from a non-existent package), so
+  * we do some initialization for the package.
+  */
+-private void onShortcutPublish(ShortcutService s) {
++private void onShortcutPublish() {
+     // handlePackageUpdated().
+     if (getPackageInfo().getVersionCode() < 0) {
++        final ShortcutService s = mShortcutUser.mService;
+         final int versionCode = s.getApplicationVersionCode(getPackageName(), getOwnerUserId());
+         if (ShortcutService.DEBUG) {
+             Slog.d(TAG, String.format("Package %s version = %d", getPackageName(), versionCode));
+         }
+         if (versionCode >= 0) {
+             getPackageInfo().setVersionCode(versionCode);
+             s.scheduleSaveUser(getOwnerUserId());
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,30 @@
+diff --git a/8c2d412756857711a3d082ece9895b1edffeeaf5 b/817703bc30e63d165816f41d16b4f219f2a52421
+index 8c2d412756..817703bc30 100644
+--- a/8c2d412756857711a3d082ece9895b1edffeeaf5
++++ b/817703bc30e63d165816f41d16b4f219f2a52421
+@@ -1,16 +1,16 @@
+ /**
+  * We haven't decided on what the desired behaviour of this test should be...
+  */
+ public void testBindNullToInstance() {
+-    Guice.createInjector(new AbstractModule() {
++    try {
++        Guice.createInjector(new AbstractModule() {
+
+-        protected void configure() {
+-            try {
++            protected void configure() {
+                 bind(Foo.class).toInstance(null);
+-                fail();
+-            } catch (NullPointerException expected) {
+-                assertEquals("Binding to null instances is not allowed. " + "Use toProvider(Providers.of(null)) if this is your intended behaviour.", expected.getMessage());
+             }
+-        }
+-    });
++        });
++        fail();
++    } catch (CreationException expected) {
++        assertContains(expected.getMessage(), "Error at " + getClass().getName(), "Binding to null instances is not allowed.");
++    }
+ }
+\ No newline at end of file

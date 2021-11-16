@@ -1,0 +1,18 @@
+diff --git a/b51820d52d89580da9e01fe043e37ac6496095cc b/d9658beb07bbb6b6d8e434401f7b3baabab226c8
+index b51820d52d..d9658beb07 100644
+--- a/b51820d52d89580da9e01fe043e37ac6496095cc
++++ b/d9658beb07bbb6b6d8e434401f7b3baabab226c8
+@@ -1,10 +1,11 @@
+ public void test_asm() throws Exception {
++    JavaBeanInfo beanInfo = JavaBeanInfo.build(int.class, int.class);
+     ASMDeserializerFactory factory = new ASMDeserializerFactory(new ASMClassLoader());
+     Exception error = null;
+     try {
+-        factory.createJavaBeanDeserializer(ParserConfig.getGlobalInstance(), int.class, int.class);
++        factory.createJavaBeanDeserializer(ParserConfig.getGlobalInstance(), beanInfo);
+     } catch (Exception ex) {
+         error = ex;
+     }
+     Assert.assertNotNull(error);
+ }
+\ No newline at end of file

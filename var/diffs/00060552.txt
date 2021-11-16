@@ -1,0 +1,33 @@
+diff --git a/bcb977e55c1209e043f9db324ca1ac639ea807fe b/cb72d2ef0c64e6ecc33d76ae7f355a037f021c42
+index bcb977e55c..cb72d2ef0c 100644
+--- a/bcb977e55c1209e043f9db324ca1ac639ea807fe
++++ b/cb72d2ef0c64e6ecc33d76ae7f355a037f021c42
+@@ -1,19 +1,20 @@
+ /**
+  * Checks if the given entry is affected by this filter, i.e. is filtered
+  * out.
+  *
+  * @param message
+  * @return True if the given entry is filtered out, false if valid.
+  */
+ public boolean isBlacklisted(WebSocketMessageDAO message) {
+     if (opcodeList.size() > 0) {
+-        if (opcodeList.contains(message.readableOpcode)) {
+-            return false;
++        if (!opcodeList.contains(message.readableOpcode)) {
++            return true;
+         }
+-    } else {
+-        // no opcodes are set => show all
+-        return false;
+     }
+-    // do not show the given message
+-    return true;
++    if (direction != null) {
++        if (!message.direction.equals(direction)) {
++            return true;
++        }
++    }
++    return false;
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/0a2d893e400253334bb07529b4fcd56fb37f26b2 b/9c35c883e929fd5fbb8d0f8782c4f8262eb60aa8
+index 0a2d893e40..9c35c883e9 100644
+--- a/0a2d893e400253334bb07529b4fcd56fb37f26b2
++++ b/9c35c883e929fd5fbb8d0f8782c4f8262eb60aa8
+@@ -1,4 +1,4 @@
+ @Override
+-public ReadableDiffSets<RelationshipPropertyConstraint> constraintsChangesForRelationshipTypeAndProperty(int relTypeId, final int propertyKey) {
+-    return constraintsChangesForRelationshipType(relTypeId).filterAdded(constraint -> constraint.propertyKey() == propertyKey);
++public ReadableDiffSets<RelationshipPropertyConstraint> constraintsChangesForRelationshipTypeAndProperty(RelationshipPropertyDescriptor descriptor) {
++    return constraintsChangesForRelationshipType(descriptor.getRelationshipTypeId()).filterAdded(constraint -> constraint.matches(descriptor));
+ }
+\ No newline at end of file

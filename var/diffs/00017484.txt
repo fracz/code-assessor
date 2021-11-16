@@ -1,0 +1,14 @@
+diff --git a/319e75ce5e457f5f757ee955168cb34153fbed72 b/af0f1a0cae752168c0b62a021a66ff3a98449580
+index 319e75ce5e..af0f1a0cae 100644
+--- a/319e75ce5e457f5f757ee955168cb34153fbed72
++++ b/af0f1a0cae752168c0b62a021a66ff3a98449580
+@@ -1,5 +1,7 @@
+-private static String generateToText(JetNamespace namespace, NamespaceCodegen codegen) {
++private String generateToText() {
+     StringWriter writer = new StringWriter();
++    JetFile jetFile = (JetFile) myFixture.getFile();
++    JetNamespace namespace = jetFile.getRootNamespace();
+     codegen.generate(namespace, new TraceClassVisitor(new PrintWriter(writer)));
+     return writer.toString();
+ }
+\ No newline at end of file

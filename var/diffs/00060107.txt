@@ -1,0 +1,14 @@
+diff --git a/80a7f9719cde358f390c6901de429c17cb4ead6b b/b39ef59ded37cd937e034e3546cf38b4508b24e8
+index 80a7f9719c..b39ef59ded 100644
+--- a/80a7f9719cde358f390c6901de429c17cb4ead6b
++++ b/b39ef59ded37cd937e034e3546cf38b4508b24e8
+@@ -1,7 +1,7 @@
+ private RelationCache getPropertyMap() {
+     RelationCache map = data.getCache();
+     if (map == null || !map.hasProperties()) {
+-        map = tx().getGraph().getEdgeSerializer().readRelation(getVertex(position), data, tx());
++        map = RelationConstructor.readRelation(getVertex(position), data, tx());
+     }
+     return map;
+ }
+\ No newline at end of file

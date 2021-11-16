@@ -1,0 +1,18 @@
+diff --git a/6470dc4f312ab1b59d8ef68baf369fd9705aa3f9 b/10606cc7a1b06d3199ed487516432e4c9753dcf1
+index 6470dc4f31..10606cc7a1 100644
+--- a/6470dc4f312ab1b59d8ef68baf369fd9705aa3f9
++++ b/10606cc7a1b06d3199ed487516432e4c9753dcf1
+@@ -1,10 +1,10 @@
+-private void setLimit(final Optional<LimitValue> offset, final Optional<LimitValue> rowCount) {
++private void setLimit(final Optional<LimitValue> offset, final Optional<LimitValue> rowCount, final SelectStatement selectStatement) {
+     Limit limit = new Limit(true);
+     if (offset.isPresent()) {
+         limit.setOffset(offset.get());
+     }
+     if (rowCount.isPresent()) {
+         limit.setRowCount(rowCount.get());
+     }
+-    getSelectStatement().setLimit(limit);
++    selectStatement.setLimit(limit);
+ }
+\ No newline at end of file

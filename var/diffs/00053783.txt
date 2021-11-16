@@ -1,0 +1,13 @@
+diff --git a/a507d91619cb7382da80af66923d00f3bd5274ea b/cdeab980f59b036c4168078c14201962931fc3c5
+index a507d91619..cdeab980f5 100644
+--- a/a507d91619cb7382da80af66923d00f3bd5274ea
++++ b/cdeab980f59b036c4168078c14201962931fc3c5
+@@ -1,6 +1,5 @@
+ public final void parseFrom(final SelectSQLContext sqlContext) {
+-    if (getLexer().equalToken(Token.FROM)) {
+-        getLexer().nextToken();
++    if (getExprParser().getLexer().skipIfEqual(Token.FROM)) {
+         parseTableSource(sqlContext);
+     }
+ }
+\ No newline at end of file

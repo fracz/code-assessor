@@ -1,0 +1,16 @@
+diff --git a/45c185b2d7684f17ae348870b4567185b2b428fc b/5fb35e9912f951ab37b4fc65700a6c3e444f3737
+index 45c185b2d7..5fb35e9912 100644
+--- a/45c185b2d7684f17ae348870b4567185b2b428fc
++++ b/5fb35e9912f951ab37b4fc65700a6c3e444f3737
+@@ -1,8 +1,7 @@
+ /**
+  * After the store has been recovered, we need to start the engine in order to apply operations
+  */
+-public Map<String, Mapping> performTranslogRecovery(boolean indexExists) {
+-    final Map<String, Mapping> recoveredTypes = internalPerformTranslogRecovery(false, indexExists);
++public void performTranslogRecovery(boolean indexExists) {
++    internalPerformTranslogRecovery(false, indexExists);
+     assert recoveryState.getStage() == RecoveryState.Stage.TRANSLOG : "TRANSLOG stage expected but was: " + recoveryState.getStage();
+-    return recoveredTypes;
+ }
+\ No newline at end of file

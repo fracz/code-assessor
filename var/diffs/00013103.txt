@@ -1,0 +1,15 @@
+diff --git a/3f9356b9c3050d403b01a4c6c1d74c534357ef3e b/eff212f8d416ab08ff61265efa4bf12fdb600aec
+index 3f9356b9c3..eff212f8d4 100644
+--- a/3f9356b9c3050d403b01a4c6c1d74c534357ef3e
++++ b/eff212f8d416ab08ff61265efa4bf12fdb600aec
+@@ -1,8 +1,7 @@
+ private static void checkMergedNoChanges(String initialText) throws Exception {
+     final Element element = JDOMUtil.loadDocument(initialText).getRootElement();
+     InspectionProfileImpl profile = createProfile(new InspectionProfileImpl("foo"));
+     profile.readExternal(element);
+-    ModifiableModel model = profile.getModifiableModel();
+-    model.commit();
++    profile.getModifiableModel().commit();
+     assertEquals(initialText, serialize(profile));
+ }
+\ No newline at end of file

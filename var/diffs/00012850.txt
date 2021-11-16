@@ -1,0 +1,17 @@
+diff --git a/61e105b52e050b7937ab77c87aec43e66d98f5a5 b/cca993a847a437e9b6c54463ef1702724d6c9972
+index 61e105b52e..cca993a847 100644
+--- a/61e105b52e050b7937ab77c87aec43e66d98f5a5
++++ b/cca993a847a437e9b6c54463ef1702724d6c9972
+@@ -1,9 +1,7 @@
+ @Override
+ public int getIconWidth() {
+-    if (myWidth <= 1) {
+-        // icon is not loaded yet
++    if (myWidth <= 1 || validateJBUIScale()) {
+         adjustSize();
+-        return scaledVal(myWidth);
+     }
+-    return scaledVal(super.getIconWidth());
++    return scaleVal(myWidth, Scale.ARBITRARY);
+ }
+\ No newline at end of file

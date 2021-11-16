@@ -1,0 +1,22 @@
+diff --git a/5fc92f0fb77568809447699bdda8312b7157f2d2 b/82d147724ac53aa80346d066aab3e19b2b1e4bde
+index 5fc92f0fb7..82d147724a 100644
+--- a/5fc92f0fb77568809447699bdda8312b7157f2d2
++++ b/82d147724ac53aa80346d066aab3e19b2b1e4bde
+@@ -1,14 +1,15 @@
+ private void rebuildComponent() {
+     removeAll();
+     for (MyItemLabel item : myList) {
+         add(item);
+     }
+     revalidate();
+     repaint();
+-    SwingUtilities.invokeLater(new Runnable() {
++    queueAfterAll(new Runnable() {
+
++        @Override
+         public void run() {
+             scrollSelectionToVisible();
+         }
+     });
+ }
+\ No newline at end of file

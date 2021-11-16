@@ -1,0 +1,28 @@
+diff --git a/c1bb27ca75189b5435b56993e4152479d6e625fa b/ef9b5ce4dbf4e731dfcf04e0db2b3062c29cb8eb
+index c1bb27ca75..ef9b5ce4db 100644
+--- a/c1bb27ca75189b5435b56993e4152479d6e625fa
++++ b/ef9b5ce4dbf4e731dfcf04e0db2b3062c29cb8eb
+@@ -1,20 +1,19 @@
+ @Override
+ public final SelectStatement parse() {
+-    getSqlParser().getLexer().nextToken();
+-    parseDistinct();
+-    parseBetweenSelectAndList();
++    sqlParser.getLexer().nextToken();
++    parseBetweenSelectAndSelectList();
+     parseSelectList();
+     skipToFrom();
+     parseFrom();
+     parseWhere();
+     customizedBetweenWhereAndGroupBy();
+     parseGroupBy();
+     customizedBetweenGroupByAndOrderBy();
+     parseOrderBy();
+     customizedQuery();
+     queryRest();
+     customizedSelect();
+     appendDerivedColumns();
+     appendDerivedOrderBy();
+     return selectStatement;
+ }
+\ No newline at end of file

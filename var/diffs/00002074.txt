@@ -1,0 +1,28 @@
+diff --git a/9f3020a5c8ded6d6ed90f0c89be3af0e48e98e3c b/016a03afd2e6996ca732da82cc30a1939831bd87
+index 9f3020a5c8..016a03afd2 100644
+--- a/9f3020a5c8ded6d6ed90f0c89be3af0e48e98e3c
++++ b/016a03afd2e6996ca732da82cc30a1939831bd87
+@@ -1,20 +1,20 @@
+ /**
+  * Adds an import statement, presumably below all other initial imports in the file.
+  * @param file where to operate
+  * @param name which to import (qualified is OK)
+  * @param asName optional name for 'as' clause
+  * @param project to which the file presumably belongs
+  */
+-public static void addImportStatement(PsiFile file, String name, @Nullable String asName, Project project) {
++public static void addImportStatement(PsiFile file, String name, @Nullable String asName) {
+     String as_clause;
+     if (asName == null)
+         as_clause = "";
+     else
+         as_clause = " as " + asName;
+-    final PyImportStatement importNodeToInsert = PythonLanguage.getInstance().getElementGenerator().createImportStatementFromText(project, "import " + name + as_clause + "\n\n");
++    final PyImportStatement importNodeToInsert = PyElementGenerator.getInstance(file.getProject()).createImportStatementFromText("import " + name + as_clause + "\n\n");
+     try {
+         file.addBefore(importNodeToInsert, getInsertPosition(file));
+     } catch (IncorrectOperationException e) {
+         LOG.error(e);
+     }
+ }
+\ No newline at end of file

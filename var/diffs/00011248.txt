@@ -1,0 +1,19 @@
+diff --git a/caf835780d6e96767fff1be6c78240bec85f9a1f b/fb047ae46e11f23277f8c66557ac5edf0e0f3afb
+index caf835780d..fb047ae46e 100644
+--- a/caf835780d6e96767fff1be6c78240bec85f9a1f
++++ b/fb047ae46e11f23277f8c66557ac5edf0e0f3afb
+@@ -1,12 +1,12 @@
+ public void configureByProject(final Project project, final int classPathType, final Sdk jdk) throws CantRunException {
+     if ((classPathType & JDK_ONLY) != 0) {
+         if (jdk == null) {
+             throw CantRunException.noJdkConfigured();
+         }
+         setJdk(jdk);
+     }
+     if ((classPathType & CLASSES_ONLY) == 0) {
+         return;
+     }
+-    ProjectRootsTraversing.collectRoots(project, (classPathType & TESTS_ONLY) != 0 ? ProjectClasspathTraversing.FULL_CLASSPATH_RECURSIVE : ProjectClasspathTraversing.FULL_CLASSPATH_WITHOUT_TESTS, getClassPath());
++    ProjectRootsTraversing.collectRoots(project, getPolicy(project, null, classPathType), getClassPath());
+ }
+\ No newline at end of file

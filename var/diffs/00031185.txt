@@ -1,0 +1,21 @@
+diff --git a/88a4069be657b33120c7306afc7cbda1c1db88b1 b/7c9c29994c31b6f950b3bd5f90ac3cb0e90146f6
+index 88a4069be6..7c9c29994c 100644
+--- a/88a4069be657b33120c7306afc7cbda1c1db88b1
++++ b/7c9c29994c31b6f950b3bd5f90ac3cb0e90146f6
+@@ -1,11 +1,8 @@
+ @Override
+-public void setScorer(Scorer scorer) {
+-    this.currentScorer = scorer;
++public void setScorer(Scorer scorer) throws IOException {
++    this.scorer = scorer;
+     for (LongObjectPagedHashMap.Cursor<TopDocsAndLeafCollector> cursor : topDocsCollectors) {
+-        try {
+-            cursor.value.leafCollector.setScorer(scorer);
+-        } catch (IOException e) {
+-            throw ExceptionsHelper.convertToElastic(e);
+-        }
++        cursor.value.leafCollector.setScorer(scorer);
+     }
++    super.setScorer(scorer);
+ }
+\ No newline at end of file

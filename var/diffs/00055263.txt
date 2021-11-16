@@ -1,0 +1,15 @@
+diff --git a/476011e487cc93bae843dcb27087269e5ec21e7b b/34262d4d308ed00c9739a27a589fd51397164625
+index 476011e487..34262d4d30 100644
+--- a/476011e487cc93bae843dcb27087269e5ec21e7b
++++ b/34262d4d308ed00c9739a27a589fd51397164625
+@@ -1,6 +1,5 @@
+ public RubyBoolean hasAttributes() {
+-    if (node().attributes == null) {
+-        return node().ruby.getFalse();
+-    }
+-    return node().attributes.isEmpty() ? node().ruby.getFalse() : node().ruby.getTrue();
++    if (attributeList == null || attributeList.length == 0)
++        return ruby.getFalse();
++    return ruby.getTrue();
+ }
+\ No newline at end of file

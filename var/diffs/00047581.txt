@@ -1,0 +1,18 @@
+diff --git a/fe2dc1a6db75243da93332a54df9b7e608754d5c b/569bd755501e708af53b155e4cdf6d8d93e398f2
+index fe2dc1a6db..569bd75550 100644
+--- a/fe2dc1a6db75243da93332a54df9b7e608754d5c
++++ b/569bd755501e708af53b155e4cdf6d8d93e398f2
+@@ -1,4 +1,10 @@
+ @Override
+-public Publisher<Double> addScore(V object, Number value) {
+-    return commandExecutor.writeReactive(getName(), StringCodec.INSTANCE, RedisCommands.ZINCRBY, getName(), new BigDecimal(value.toString()).toPlainString(), object);
++public Publisher<Double> addScore(final V object, final Number value) {
++    return reactive(new Supplier<RFuture<Double>>() {
++
++        @Override
++        public RFuture<Double> get() {
++            return instance.addScoreAsync(object, value);
++        }
++    });
+ }
+\ No newline at end of file

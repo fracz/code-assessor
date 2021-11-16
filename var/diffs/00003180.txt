@@ -1,0 +1,17 @@
+diff --git a/80fa47a89d119d9c55f13aa4c9dc578ee52c8834 b/5b077b50d4c90f2ac6a08d4217e8cef373b12627
+index 80fa47a89d..5b077b50d4 100644
+--- a/80fa47a89d119d9c55f13aa4c9dc578ee52c8834
++++ b/5b077b50d4c90f2ac6a08d4217e8cef373b12627
+@@ -1,6 +1,7 @@
+ public void actionPerformed(final AnActionEvent e) {
+-    final DataContext dataContext = e.getDataContext();
+-    final AbstractTestProxy testProxy = (AbstractTestProxy) dataContext.getData(AbstractTestProxy.DATA_CONSTANT);
+-    final ComparisonFailureState state = (ComparisonFailureState) ((TestProxy) testProxy).getState();
+-    state.openDiff(PlatformDataKeys.PROJECT.getData(dataContext));
++    final AbstractTestProxy testProxy = AbstractTestProxy.DATA_KEY.getData(e.getDataContext());
++    if (testProxy != null) {
++        final ComparisonFailureState state = (ComparisonFailureState) ((TestProxy) testProxy).getState();
++        state.openDiff(PlatformDataKeys.PROJECT.getData(e.getDataContext()));
++    }
+ }
+\ No newline at end of file

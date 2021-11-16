@@ -1,0 +1,27 @@
+diff --git a/e97aaa9364b2c8394e19a3cf8bb04e98379f131c b/58272c2481e8e417892dc3af56096960f8968cc8
+index e97aaa9364..58272c2481 100644
+--- a/e97aaa9364b2c8394e19a3cf8bb04e98379f131c
++++ b/58272c2481e8e417892dc3af56096960f8968cc8
+@@ -1,9 +1,15 @@
+ @Override
+ public void computeScroll() {
+-    mStackScroller.computeScroll();
+-    // Synchronize the views
+-    synchronizeStackViewsWithModel();
+-    clipTaskViews(false);
+-    // Notify accessibility
+-    sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_SCROLLED);
++    if (mStackScroller.computeScroll()) {
++        // Notify accessibility
++        sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_SCROLLED);
++    }
++    if (mDeferredTaskViewUpdateAnimation != null) {
++        updateTaskViewsToLayout(mDeferredTaskViewUpdateAnimation);
++        mTaskViewsClipDirty = true;
++        mDeferredTaskViewUpdateAnimation = null;
++    }
++    if (mTaskViewsClipDirty) {
++        clipTaskViews();
++    }
+ }
+\ No newline at end of file

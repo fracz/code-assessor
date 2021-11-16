@@ -1,0 +1,14 @@
+diff --git a/affd5907796bd4b96352af64a9dfb4fab6a4edf2 b/28f5593b1e447674a8f9f37466a4d5633c822f16
+index affd590779..28f5593b1e 100644
+--- a/affd5907796bd4b96352af64a9dfb4fab6a4edf2
++++ b/28f5593b1e447674a8f9f37466a4d5633c822f16
+@@ -1,3 +1,7 @@
+ public RefreshStats getRefreshStats() {
+-    return refreshStats();
++    RefreshStats refreshStats = new RefreshStats();
++    for (ShardStatus shard : shards) {
++        refreshStats.add(shard.getRefreshStats());
++    }
++    return refreshStats;
+ }
+\ No newline at end of file

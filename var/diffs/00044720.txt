@@ -1,0 +1,22 @@
+diff --git a/365f33111bd1b569d04ac910c49eaccc3b5977c0 b/812bd5936def6de80bdd37f0381604ded23c51ea
+index 365f33111b..812bd5936d 100644
+--- a/365f33111bd1b569d04ac910c49eaccc3b5977c0
++++ b/812bd5936def6de80bdd37f0381604ded23c51ea
+@@ -1,9 +1,9 @@
+-@Override
+ public void removeBlobCluster(String clusterName) {
+-    ODatabaseDocumentInternal db = getDatabase();
+-    if (db.getStorage() instanceof OStorageProxy) {
+-        getDatabase().command(new OCommandSQL("delete cluster :1")).execute(clusterName);
+-        reload();
+-    } else
+-        removeBlobClusterInternal(clusterName);
++    acquireSchemaWriteLock();
++    try {
++        int clusterId = getClusterId(clusterName);
++        blobClusters.remove(clusterId);
++    } finally {
++        releaseSchemaWriteLock();
++    }
+ }
+\ No newline at end of file

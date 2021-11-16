@@ -1,0 +1,22 @@
+diff --git a/0bcff60e9ccbad5047a765c9cdb634cec2d4953b b/37269a4bf004562db6af70ae5efa985695dfd08b
+index 0bcff60e9c..37269a4bf0 100644
+--- a/0bcff60e9ccbad5047a765c9cdb634cec2d4953b
++++ b/37269a4bf004562db6af70ae5efa985695dfd08b
+@@ -1,9 +1,11 @@
+ @Test
+-public void testRedirect_whenLocationAndHttpStatusCodeParameters_shouldModifyStatusCodeSuccessfully() {
+-    String finalLocation = "/test";
++public void testRedirect_whenLocationAndHttpStatusCodeParameters_shouldModifyStatusCodeSuccessfully() throws Exception {
++    // NOSONAR
++    final String finalLocation = "/test";
+     int finalStatusCode = HttpServletResponse.SC_BAD_GATEWAY;
+     response.redirect(finalLocation, finalStatusCode);
+-    HttpServletResponse returnResponse = Whitebox.getInternalState(response, "response");
+-    assertNotNull("Should return a HttpServletResponse because we configured it to have one", returnResponse);
+-    assertEquals("Should return status code specified", finalStatusCode, returnResponse.getStatus());
++    verify(httpServletResponse).setStatus(finalStatusCode);
++    verify(httpServletResponse).setHeader("Location", finalLocation);
++    verify(httpServletResponse).setHeader("Connection", "close");
++    verify(httpServletResponse).sendError(finalStatusCode);
+ }
+\ No newline at end of file

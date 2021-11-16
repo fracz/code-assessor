@@ -1,0 +1,19 @@
+diff --git a/3a48b268f8e64b2d0e541bba6a22e8aaeba32635 b/0a58a6e1a808779805921e7c89bc86f4ca8105e2
+index 3a48b268f8..0a58a6e1a8 100644
+--- a/3a48b268f8e64b2d0e541bba6a22e8aaeba32635
++++ b/0a58a6e1a808779805921e7c89bc86f4ca8105e2
+@@ -1,4 +1,8 @@
+-/**
+- * Sets the <a href="http://java.sun.com/javase/6/docs/technotes/guides/net/socketOpt.html">{@code SO_RCVBUF}</a> option.
+- */
+-void setReceiveBufferSize(int receiveBufferSize);
+\ No newline at end of file
++@Override
++public void setReceiveBufferSize(int receiveBufferSize) {
++    try {
++        serverChannel.setOption(SctpStandardSocketOption.SO_RCVBUF, receiveBufferSize);
++    } catch (IOException e) {
++        throw new ChannelException(e);
++    }
++}
+\ No newline at end of file

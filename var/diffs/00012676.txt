@@ -1,0 +1,14 @@
+diff --git a/dec3b495238eb2bf44aae1de0777e7b8119f5258 b/81cf62f019d99939920448bb3a206726b30b8266
+index dec3b49523..81cf62f019 100644
+--- a/dec3b495238eb2bf44aae1de0777e7b8119f5258
++++ b/81cf62f019d99939920448bb3a206726b30b8266
+@@ -1,6 +1,6 @@
+-public void invokeLater(E r, int priority) {
++public void invokeLater(E r, Priority priority) {
+     if (LOG.isDebugEnabled()) {
+         LOG.debug("invokeLater " + r + " in " + this);
+     }
+-    myEvents.put(r, priority);
++    myEvents.put(r, priority.ordinal());
+ }
+\ No newline at end of file

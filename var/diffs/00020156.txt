@@ -1,0 +1,19 @@
+diff --git a/9a9d212d3dce52f56109a3fdf2d3f253037a50f3 b/5681dff5bf90e47260a954196724cf3c147efaab
+index 9a9d212d3d..5681dff5bf 100644
+--- a/9a9d212d3dce52f56109a3fdf2d3f253037a50f3
++++ b/5681dff5bf90e47260a954196724cf3c147efaab
+@@ -1,12 +1,5 @@
+ public void test_oracle_2() throws Exception {
+     String sql = "select * from t";
+     String result = PagerUtils.limit(sql, JdbcConstants.ORACLE, 20, 10);
+-    Assert.assertEquals(//
+-    "SELECT *" + //
+-    "\nFROM (SELECT XX.*, ROWNUM AS RN" + //
+-    "\n\tFROM (SELECT *" + //
+-    "\n\t\tFROM t" + //
+-    "\n\t\t) XX" + //
+-    "\n\tWHERE ROWNUM <= 30" + //
+-    "\n\t) XXX" + "\nWHERE RN > 20", result);
++    Assert.assertEquals("SELECT *\n" + "FROM (\n" + "\tSELECT XX.*, ROWNUM AS RN\n" + "\tFROM (\n" + "\t\tSELECT *\n" + "\t\tFROM t\n" + "\t) XX\n" + "\tWHERE ROWNUM <= 30\n" + ") XXX\n" + "WHERE RN > 20", result);
+ }
+\ No newline at end of file

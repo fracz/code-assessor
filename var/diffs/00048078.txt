@@ -1,0 +1,18 @@
+diff --git a/3e069031b4294db6d375150e4f051128d97e72e9 b/21b6d4153afa52bc39915488d99c27b16dcb8bd1
+index 3e069031b4..21b6d4153a 100644
+--- a/3e069031b4294db6d375150e4f051128d97e72e9
++++ b/21b6d4153afa52bc39915488d99c27b16dcb8bd1
+@@ -1,9 +1,10 @@
+-public String describeState(DBPDataSource dataSource) {
++public String describeState() {
++    DBPDataSource dataSource = getDataSource();
+     String desc = dataContainer.getName();
+-    if (filter != null && filter.hasConditions()) {
++    if (dataSource != null && filter != null && filter.hasConditions()) {
+         StringBuilder condBuffer = new StringBuilder();
+         SQLUtils.appendConditionString(filter, dataSource, null, condBuffer, true);
+         desc += " [" + condBuffer + "]";
+     }
+     return desc;
+ }
+\ No newline at end of file

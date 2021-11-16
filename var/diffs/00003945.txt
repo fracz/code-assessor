@@ -1,0 +1,19 @@
+diff --git a/15552e33fb56684be03ac2ed745f57812a286b46 b/d2363aae09664d20a00702ba63c036967e94efec
+index 15552e33fb..d2363aae09 100644
+--- a/15552e33fb56684be03ac2ed745f57812a286b46
++++ b/d2363aae09664d20a00702ba63c036967e94efec
+@@ -1,12 +1,11 @@
+ public Collection<LineMarkerInfo> queryLineMarkers() {
+     try {
+         if (myFile.getNode() == null) {
+             // binary file? see IDEADEV-2809
+             return new ArrayList<LineMarkerInfo>();
+         }
+-        PsiElement[] elements = CodeInsightUtil.getElementsInRange(myFile, myStartOffset, myEndOffset);
+-        return collectLineMarkers(elements);
++        return collectLineMarkers(CodeInsightUtil.getElementsInRange(myFile, myStartOffset, myEndOffset));
+     } catch (ProcessCanceledException e) {
+         return null;
+     }
+ }
+\ No newline at end of file

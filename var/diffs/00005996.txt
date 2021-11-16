@@ -1,0 +1,15 @@
+diff --git a/b82f619f7f6004d97d78bfed3589a193c7c3eb33 b/034ffc80bc146c7116d4f87e710812f6f89b4185
+index b82f619f7f..034ffc80bc 100644
+--- a/b82f619f7f6004d97d78bfed3589a193c7c3eb33
++++ b/034ffc80bc146c7116d4f87e710812f6f89b4185
+@@ -1,7 +1,3 @@
+-public void actionPerformed(AnActionEvent e) {
+-    GuiEditor editor = GuiEditorUtil.getEditorFromContext(e.getDataContext());
+-    if (editor != null) {
+-        ArrayList<RadComponent> selectedComponents = FormEditingUtil.getSelectedComponents(editor);
+-        groupButtons(editor, selectedComponents);
+-    }
++protected void actionPerformed(final GuiEditor editor, final ArrayList<RadComponent> selection, final AnActionEvent e) {
++    groupButtons(editor, selection);
+ }
+\ No newline at end of file

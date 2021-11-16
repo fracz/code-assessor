@@ -1,0 +1,14 @@
+diff --git a/1a6d9b7dff6406b63a641b895964d4de2d737b58 b/e694656b676ed713962d2fa5a4fda957b0c8b0a4
+index 1a6d9b7dff..e694656b67 100644
+--- a/1a6d9b7dff6406b63a641b895964d4de2d737b58
++++ b/e694656b676ed713962d2fa5a4fda957b0c8b0a4
+@@ -1,7 +1,7 @@
+ @Override
+ public void initComponent() {
+     myVcs = myPlatformFacade.getVcs(myProject);
+     Disposer.register(myProject, this);
+     myProject.getMessageBus().connect().subscribe(ProjectLevelVcsManager.VCS_CONFIGURATION_CHANGED, this);
+-    new GitRootScanner(myProject);
++    GitRootScanner.start(myProject);
+ }
+\ No newline at end of file

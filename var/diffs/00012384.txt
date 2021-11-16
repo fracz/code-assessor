@@ -1,0 +1,11 @@
+diff --git a/eb0dec41e55f27978305946f86f8b19c18494705 b/bbeeea91f71f28920a9dd74263ece04f9cce3b2d
+index eb0dec41e5..bbeeea91f7 100644
+--- a/eb0dec41e55f27978305946f86f8b19c18494705
++++ b/bbeeea91f71f28920a9dd74263ece04f9cce3b2d
+@@ -1,4 +1,4 @@
+ void assertVcsRoots(@NotNull Collection<String> expectedVcsRoots) {
+-    VirtualFile[] actualRoots = myPlatformFacade.getVcsManager(myProject).getRootsUnderVcs(myPlatformFacade.getVcs(myProject));
++    List<VirtualFile> actualRoots = ProjectLevelVcsManager.getInstance(myProject).getRootsUnderVcsWithoutFiltering(myVcs);
+     VcsTestUtil.assertEqualCollections(expectedVcsRoots, getPaths(actualRoots));
+ }
+\ No newline at end of file

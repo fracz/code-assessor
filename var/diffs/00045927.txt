@@ -1,0 +1,19 @@
+diff --git a/c79a43884d9a0716746d559e4a625bbc00c9016d b/ef659b3da9b5086cdc4544667f02579e94dd3481
+index c79a43884d..ef659b3da9 100644
+--- a/c79a43884d9a0716746d559e4a625bbc00c9016d
++++ b/ef659b3da9b5086cdc4544667f02579e94dd3481
+@@ -1,9 +1,7 @@
+ @Test
+-public void testRedirect_whenLocationParameter_shouldModifyStatusCodeSuccessfully() {
+-    String finalLocation = "/test";
+-    int finalStatusCode = HttpServletResponse.SC_MOVED_TEMPORARILY;
++public void testRedirect_whenLocationParameter_shouldModifyStatusCodeSuccessfully() throws Exception {
++    // NOSONAR
++    final String finalLocation = "/test";
+     response.redirect(finalLocation);
+-    HttpServletResponse returnResponse = Whitebox.getInternalState(response, "response");
+-    assertNotNull("Should return a HttpServletResponse because we configured it to have one", returnResponse);
+-    assertEquals("Should return status code specified", finalStatusCode, returnResponse.getStatus());
++    verify(httpServletResponse).sendRedirect(finalLocation);
+ }
+\ No newline at end of file

@@ -1,0 +1,23 @@
+diff --git a/badc88fd9ce11c2aff92122e5b25556d7098a55c b/267b1aa3aff9c8e31f2ac77f3c1bd2d18a8a2f70
+index badc88fd9c..267b1aa3af 100644
+--- a/badc88fd9ce11c2aff92122e5b25556d7098a55c
++++ b/267b1aa3aff9c8e31f2ac77f3c1bd2d18a8a2f70
+@@ -1,12 +1,13 @@
+ /**
+  * Sets the {@link Actor} embedded in this scroll pane.
+  * @param widget the Actor
+  */
+ public void setWidget(Actor widget) {
+     if (widget == null)
+-        throw new IllegalArgumentException("widget must not be null");
+-    this.removeActor(this.widget);
++        throw new IllegalArgumentException("widget cannot be null.");
++    if (this.widget != null)
++        removeActor(this.widget);
+     this.widget = widget;
+-    this.addActor(widget);
+-    invalidate();
++    if (widget != null)
++        addActor(widget);
+ }
+\ No newline at end of file

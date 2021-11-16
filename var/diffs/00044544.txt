@@ -1,0 +1,14 @@
+diff --git a/f75b6e4a3888ae7efc888f03cdaaf6948c55fab4 b/0b30d842c9310b0b65c3ccc8e8434c4dc1246040
+index f75b6e4a38..0b30d842c9 100644
+--- a/f75b6e4a3888ae7efc888f03cdaaf6948c55fab4
++++ b/0b30d842c9310b0b65c3ccc8e8434c4dc1246040
+@@ -1,5 +1,5 @@
+ public long getSize() {
+-    OBinaryRequest request = new OGetSizeRequest();
+-    OBinaryResponse<Long> response = new OGetSizeResponse();
+-    return networkOperation(request, response, "Error on read database size");
++    OGetSizeRequest request = new OGetSizeRequest();
++    OGetSizeResponse response = networkOperation(request, "Error on read database size");
++    return response.getSize();
+ }
+\ No newline at end of file

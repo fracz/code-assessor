@@ -1,0 +1,12 @@
+diff --git a/480bcad018e155dc792d664f936477d13ca5712d b/c40f234238ea23872e025b44cea36c20e8e675a9
+index 480bcad018..c40f234238 100644
+--- a/480bcad018e155dc792d664f936477d13ca5712d
++++ b/c40f234238ea23872e025b44cea36c20e8e675a9
+@@ -1,5 +1,5 @@
+ @Test
+ public void testBindDoubleToBigint() throws Exception {
+-    Signature function = functionSignature().returnType("boolean").argumentTypes("double", "double").build();
++    Signature function = functionSignature().returnType(parseTypeSignature(StandardTypes.BOOLEAN)).argumentTypes(parseTypeSignature(StandardTypes.DOUBLE), parseTypeSignature(StandardTypes.DOUBLE)).build();
+     assertThat(function).boundTo("double", "bigint").withCoercion().succeeds();
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/a3319553d55991d148dce4281e23897df53dbb24 b/c454af21977ae5a5a5eb50eb874c2f25b33694a1
+index a3319553d5..c454af2197 100644
+--- a/a3319553d55991d148dce4281e23897df53dbb24
++++ b/c454af21977ae5a5a5eb50eb874c2f25b33694a1
+@@ -1,11 +1,11 @@
+ @Test(dataProvider = "GitConnectionFactory", dataProviderClass = org.eclipse.che.git.impl.GitConnectionFactoryProvider.class)
+ public void testDiffRaw(GitConnectionFactory connectionFactory) throws GitException, IOException {
+     // given
+     GitConnection connection = connectToInitializedGitRepository(connectionFactory, repository);
+     makeCommitInMaster(connection);
+     // when
+-    DiffRequest request = newDto(DiffRequest.class).withFileFilter(null).withType(DiffType.RAW).withNoRenames(false).withRenameLimit(0);
+-    DiffPage diffPage = connection.diff(request);
++    DiffParams params = DiffParams.create().withFileFilter(null).withType(DiffType.RAW).withNoRenames(false).withRenameLimit(0);
++    DiffPage diffPage = connection.diff(params);
+     // then
+     diffPage.writeTo(System.out);
+ }
+\ No newline at end of file

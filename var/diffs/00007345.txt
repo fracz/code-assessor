@@ -1,0 +1,16 @@
+diff --git a/251b3a523b91c6d256090f2f982cd52a56054e2b b/eb71f32b1147579009b8cdb6291fb13e510fda59
+index 251b3a523b..eb71f32b11 100644
+--- a/251b3a523b91c6d256090f2f982cd52a56054e2b
++++ b/eb71f32b1147579009b8cdb6291fb13e510fda59
+@@ -1,9 +1,8 @@
+ // does not validate definitions section against general schema --> should be done separately
+ private static boolean isInsideSchemaDefinitions(@NotNull PsiElement element, List<JsonSchemaVariantsTreeBuilder.Step> position) {
+     if (!JsonSchemaFileType.INSTANCE.equals(element.getContainingFile().getFileType()))
+         return false;
+     final JsonSchemaVariantsTreeBuilder.Step firstStep = position.get(0);
+     assert firstStep != null;
+-    final JsonSchemaVariantsTreeBuilder.PropertyTransition transition = ObjectUtils.tryCast(firstStep.getTransition(), JsonSchemaVariantsTreeBuilder.PropertyTransition.class);
+-    return transition != null && JsonSchemaObject.DEFINITIONS.equals(transition.getName());
++    return firstStep.isFromObject() && JsonSchemaObject.DEFINITIONS.equals(firstStep.getName());
+ }
+\ No newline at end of file

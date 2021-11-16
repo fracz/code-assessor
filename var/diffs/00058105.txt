@@ -1,0 +1,18 @@
+diff --git a/dfd835b206403f465da01ef1ab30ba1d29b69177 b/bfd22b80ced942da729b765a0febe061b3d38ebb
+index dfd835b206..bfd22b80ce 100644
+--- a/dfd835b206403f465da01ef1ab30ba1d29b69177
++++ b/bfd22b80ced942da729b765a0febe061b3d38ebb
+@@ -1,7 +1,7 @@
+-public TreeNode<E, T> getRightmostNode(TreeNode<E, T> node) {
+-    TreeNode<E, T> n = node;
+-    while (n.right != null) {
+-        n = n.right;
++public IntervalTree<E, T> getRightmostNode() {
++    if (right == null)
++        return this;
++    else {
++        return right.getRightmostNode();
+     }
+-    return n;
+ }
+\ No newline at end of file

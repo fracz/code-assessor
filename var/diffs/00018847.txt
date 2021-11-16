@@ -1,0 +1,16 @@
+diff --git a/7194fec2387ef9fa176ff0fc149081833aa1feaa b/0a2073ca8789b0904e0385a0177d099f53f60ec7
+index 7194fec238..0a2073ca87 100644
+--- a/7194fec2387ef9fa176ff0fc149081833aa1feaa
++++ b/0a2073ca8789b0904e0385a0177d099f53f60ec7
+@@ -1,9 +1,9 @@
+ public void markAsSent(long messageId, byte[] mmsId, long status) {
+     SQLiteDatabase database = databaseHelper.getWritableDatabase();
+     ContentValues contentValues = new ContentValues();
+     contentValues.put(RESPONSE_STATUS, status);
+     contentValues.put(MESSAGE_ID, new String(mmsId));
+-    contentValues.put(MESSAGE_BOX, Types.MESSAGE_BOX_SENT);
+     database.update(TABLE_NAME, contentValues, ID_WHERE, new String[] { messageId + "" });
++    updateMailboxBitmask(messageId, Types.BASE_TYPE_MASK, Types.BASE_SENT_TYPE);
+     notifyConversationListeners(getThreadIdForMessage(messageId));
+ }
+\ No newline at end of file

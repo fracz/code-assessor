@@ -1,0 +1,18 @@
+diff --git a/ebfa1b1804d322f8ba87121b1221337d7e29829e b/81e7c30b255cfcf91bc98816f3fc89d1dfbe9ea9
+index ebfa1b1804..81e7c30b25 100644
+--- a/ebfa1b1804d322f8ba87121b1221337d7e29829e
++++ b/81e7c30b255cfcf91bc98816f3fc89d1dfbe9ea9
+@@ -1,9 +1,9 @@
+ public static File getLocalFileFromURL(URL fileURL) throws IOException {
+     // Escape spaces to avoid URI syntax error
+-    String filePath = fileURL.toString().replace(" ", "%20");
+     try {
+-        return new File(new URI(filePath));
++        URI filePath = GeneralUtils.makeURIFromFilePath(fileURL.toString());
++        return new File(filePath);
+     } catch (URISyntaxException e) {
+-        throw new IOException("Bad local file path: " + filePath, e);
++        throw new IOException("Bad local file path: " + fileURL, e);
+     }
+ }
+\ No newline at end of file

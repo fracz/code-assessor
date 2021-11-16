@@ -1,0 +1,19 @@
+diff --git a/9bc296539d372020b060b5b1dc4ddc7cc181a0ac b/ba09ebab8b0875d016bbe48d65c314cbb188bf27
+index 9bc296539d..ba09ebab8b 100644
+--- a/9bc296539d372020b060b5b1dc4ddc7cc181a0ac
++++ b/ba09ebab8b0875d016bbe48d65c314cbb188bf27
+@@ -1,10 +1,12 @@
+ /**
+  * Create sharding data source.
+  *
+  * @param config orchestration master slave configuration
+  * @return sharding data source
+  * @throws SQLException SQL exception
+  */
+ public static DataSource createDataSource(final OrchestrationMasterSlaveConfiguration config) throws SQLException {
+-    return new OrchestrationMasterSlaveDataSource(config).getDataSource();
++    OrchestrationMasterSlaveDataSource orchestrationMasterSlaveDataSource = new OrchestrationMasterSlaveDataSource(config);
++    orchestrationMasterSlaveDataSource.init();
++    return orchestrationMasterSlaveDataSource.getDataSource();
+ }
+\ No newline at end of file

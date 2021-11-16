@@ -1,0 +1,24 @@
+diff --git a/cecaea225db949741de162c1b9cae9ca10dee22d b/007800045413b2cc80dae24c881de6d7a8cdb9bc
+index cecaea225d..0078000454 100644
+--- a/cecaea225db949741de162c1b9cae9ca10dee22d
++++ b/007800045413b2cc80dae24c881de6d7a8cdb9bc
+@@ -1,17 +1,15 @@
+ /**
+  * Set the listener which is triggered whenever a {@link StateStore} is being restored in order to resume
+  * processing.
+  *
+  * @param globalStateRestoreListener The listener triggered when {@link StateStore} is being restored.
+  */
+ public void setGlobalStateRestoreListener(final StateRestoreListener globalStateRestoreListener) {
+     synchronized (stateLock) {
+         if (state == State.CREATED) {
+-            for (StreamThread thread : threads) {
+-                thread.setGlobalStateRestoreListener(globalStateRestoreListener);
+-            }
++            this.globalStateRestoreListener = globalStateRestoreListener;
+         } else {
+             throw new IllegalStateException("Can only set the GlobalRestoreListener in the CREATED state");
+         }
+     }
+ }
+\ No newline at end of file

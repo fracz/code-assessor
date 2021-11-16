@@ -1,0 +1,14 @@
+diff --git a/afa34398410c693811ee30991f1542fdc5e91a1c b/e8113291d8b1717960c585d035a97a84c189b06a
+index afa3439841..e8113291d8 100644
+--- a/afa34398410c693811ee30991f1542fdc5e91a1c
++++ b/e8113291d8b1717960c585d035a97a84c189b06a
+@@ -1,7 +1,5 @@
+ @Override
+ public SQLDataType parseDataType() {
+-    if (getLexer().equalToken(Token.TYPE)) {
+-        getLexer().nextToken();
+-    }
++    getLexer().skipIfEqual(Token.TYPE);
+     return super.parseDataType();
+ }
+\ No newline at end of file

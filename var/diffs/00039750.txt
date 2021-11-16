@@ -1,0 +1,27 @@
+diff --git a/001e60623a2f5038f2dc2a4da116e5e389b7fdfc b/1dd38c8db4cbcdeb0db962201652d4d30d54fae5
+index 001e60623a..1dd38c8db4 100644
+--- a/001e60623a2f5038f2dc2a4da116e5e389b7fdfc
++++ b/1dd38c8db4cbcdeb0db962201652d4d30d54fae5
+@@ -1,18 +1,18 @@
+ /**
+  * Value format:
+  * <pre>
+  * 0 1 2 3 4 5 6 7   8 9 A B C D E F
+  * [u,u,u,u,u,u,u,u ; s,s,s,s,s,s,s,s]
+  * u - number of updates
+  * s - size of index
+  * </pre>
+- * For key format, see {@link KeyFormat#visitIndexStatistics(int, int, long, long)}
++ * For key format, see {@link KeyFormat#visitIndexStatistics(IndexDescriptor, long, long)}
+  */
+ @Override
+-public void replaceIndexUpdateAndSize(int labelId, int propertyKeyId, long updates, long size) {
++public void replaceIndexUpdateAndSize(IndexDescriptor descriptor, long updates, long size) {
+     try {
+-        updater.apply(indexStatisticsKey(labelId, propertyKeyId), new Write(updates, size));
++        updater.apply(indexStatisticsKey(descriptor), new Write(updates, size));
+     } catch (IOException e) {
+         throw new UnderlyingStorageException(e);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/1859af28e213fc1e94dd1a67246c43fb7f81514c b/a36779127d8ca67b4b4403a6ba99750e3152cf72
+index 1859af28e2..a36779127d 100644
+--- a/1859af28e213fc1e94dd1a67246c43fb7f81514c
++++ b/a36779127d8ca67b4b4403a6ba99750e3152cf72
+@@ -1,4 +1,3 @@
+-public OBinaryPushResponse execute(OStorageRemote remote) {
+-    remote.updateDistributedNodes(this.hosts);
+-    return new OPushDistributedConfigurationResponse();
++public OBinaryPushResponse execute(ORemotePushHandler remote) {
++    return remote.executeUpdateDistributedConfig(this);
+ }
+\ No newline at end of file

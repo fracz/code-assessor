@@ -1,0 +1,28 @@
+diff --git a/a905b6c4ce7e763106ae7f05d88f35a1227938f0 b/5f79cd6dcd743bec539f6aca97fa0efb01332616
+index a905b6c4ce..5f79cd6dcd 100644
+--- a/a905b6c4ce7e763106ae7f05d88f35a1227938f0
++++ b/5f79cd6dcd743bec539f6aca97fa0efb01332616
+@@ -1,19 +1,19 @@
+-public boolean result(ORecordInternal<?> iRecord) {
++public boolean result(final Object iRecord) {
+     if (items == 0)
+         try {
+             sendOk();
+             empty.append("-");
+         } catch (IOException e1) {
+         }
+-    if (limit > -1 && items > limit)
++    if (command.getLimit() > -1 && items > command.getLimit())
+         return false;
+     try {
+         channel.writeByte((byte) 1);
+         items++;
+-        writeRecord(iRecord);
++        writeRecord((ORecordInternal<?>) iRecord);
+         channel.flush();
+     } catch (IOException e) {
+         return false;
+     }
+     return true;
+ }
+\ No newline at end of file

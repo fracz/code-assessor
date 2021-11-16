@@ -1,0 +1,22 @@
+diff --git a/ec729925990826cc089a2209cd0fd2218f4078da b/2919e0ae17ba574a0f5246553a86033a34b120b0
+index ec72992599..2919e0ae17 100644
+--- a/ec729925990826cc089a2209cd0fd2218f4078da
++++ b/2919e0ae17ba574a0f5246553a86033a34b120b0
+@@ -1,14 +1,14 @@
+ @Test
+ public void shouldNotReturnExistentRuleDroppedInTransaction() throws Exception {
+     // GIVEN
+     // -- a rule that exists in the store
+-    IndexDescriptor rule = new IndexDescriptor(labelId1, key1);
++    IndexDescriptor rule = IndexDescriptorFactory.from(new NodePropertyDescriptor(labelId1, key1));
+     when(store.indexesGetForLabel(labelId1)).thenReturn(option(rule).iterator());
+     // -- that same rule dropped in the transaction
+     txContext.indexDrop(state, rule);
+     // WHEN
+-    assertNull(txContext.indexGetForLabelAndPropertyKey(state, labelId1, key1));
++    assertNull(indexGetForLabelAndPropertyKey(txContext, state, labelId1, key1));
+     Iterator<IndexDescriptor> rulesByLabel = txContext.indexesGetForLabel(state, labelId1);
+     // THEN
+     assertEquals(emptySetOf(IndexDescriptor.class), asSet(rulesByLabel));
+ }
+\ No newline at end of file

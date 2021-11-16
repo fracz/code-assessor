@@ -1,0 +1,20 @@
+diff --git a/0d6f476e74c9111780c1f5b8dde1424a27883706 b/26d271b27dae39d5debe8ea5cf6c3660409caf2b
+index 0d6f476e74..26d271b27d 100644
+--- a/0d6f476e74c9111780c1f5b8dde1424a27883706
++++ b/26d271b27dae39d5debe8ea5cf6c3660409caf2b
+@@ -1,11 +1,12 @@
+ public void visitSwitchStatement(@NotNull PsiSwitchStatement statement) {
+     final PsiCodeBlock body = statement.getBody();
+     if (body == null) {
+         return;
+     }
+     final double density = calculateDensity(statement);
+-    if (density * 100.0 > m_limit) {
++    final int intDensity = (int) (density * 100.0);
++    if (intDensity > m_limit) {
+         return;
+     }
+-    registerStatementError(statement);
++    registerStatementError(statement, Integer.valueOf(intDensity));
+ }
+\ No newline at end of file

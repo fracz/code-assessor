@@ -1,0 +1,13 @@
+diff --git a/baf10c0faae8a2526513c21367f756819107db33 b/5e78fc5b8066125940f5d8346a61f7e0bb39aae4
+index baf10c0faa..5e78fc5b80 100644
+--- a/baf10c0faae8a2526513c21367f756819107db33
++++ b/5e78fc5b8066125940f5d8346a61f7e0bb39aae4
+@@ -1,6 +1,6 @@
+ /**
+  * L2 matrix norm. Maximum singular value.
+  */
+ public default double norm2() {
+-    return new SingularValueDecomposition(this).norm();
++    return svd(false).norm();
+ }
+\ No newline at end of file

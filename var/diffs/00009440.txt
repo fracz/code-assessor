@@ -1,0 +1,26 @@
+diff --git a/e73085cd4ac538fab5828d01ce5eebbef67ccacc b/5edbdb04b8ae1f9031f918f947421941a456b453
+index e73085cd4a..5edbdb04b8 100644
+--- a/e73085cd4ac538fab5828d01ce5eebbef67ccacc
++++ b/5edbdb04b8ae1f9031f918f947421941a456b453
+@@ -1,10 +1,15 @@
+ @Override
+-protected void processFolder(HashSet<String> seenNames, PsiManager manager, VirtualFile folder) {
++protected void processFolder(final HashSet<String> seenNames, PsiManager manager, VirtualFile folder) {
+     if (!myExcludedFolders.contains(folder)) {
+-        List<CheckArea> checkAreas = SplitterFactory.getInstance().getIdentifierSplitter().split(folder.getName());
+-        if (checkAreas != null) {
+-            processCheckAreas(checkAreas, seenNames);
+-        }
++        final String name = folder.getName();
++        SplitterFactory.getInstance().getIdentifierSplitter().split(name, TextRange.allOf(name), new Consumer<TextRange>() {
++
++            @Override
++            public void consume(TextRange textRange) {
++                final String word = textRange.substring(name);
++                addSeenWord(seenNames, word);
++            }
++        });
+     }
+     super.processFolder(seenNames, manager, folder);
+ }
+\ No newline at end of file

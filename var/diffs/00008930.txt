@@ -1,0 +1,13 @@
+diff --git a/36e6db472df89177f44597adab7a1d763d067cc2 b/3d4543d419f687865b47016d16413e8bfd4d2ac4
+index 36e6db472d..3d4543d419 100644
+--- a/36e6db472df89177f44597adab7a1d763d067cc2
++++ b/3d4543d419f687865b47016d16413e8bfd4d2ac4
+@@ -1,5 +1,5 @@
+ @NotNull
+ @Override
+-public List<? extends ModuleLevelBuilder> createModuleLevelBuilders(ExecutorService executorService) {
+-    return Arrays.asList(new JavaBuilder(executorService), new ResourcesBuilder());
++public List<? extends ModuleLevelBuilder> createModuleLevelBuilders() {
++    return Arrays.asList(new JavaBuilder(SharedThreadPool.INSTANCE), new ResourcesBuilder());
+ }
+\ No newline at end of file

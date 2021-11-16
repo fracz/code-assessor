@@ -1,0 +1,25 @@
+diff --git a/a76a8b382412014f27103188054452f24fb7763b b/d7a19cf55630eae3e8605989c40664f60226016a
+index a76a8b3824..d7a19cf556 100644
+--- a/a76a8b382412014f27103188054452f24fb7763b
++++ b/d7a19cf55630eae3e8605989c40664f60226016a
+@@ -1,15 +1,12 @@
+ /**
+  * 构建分片规则配置对象.
+  *
+  * @return 分片规则配置对象
+  */
+ public ShardingRule build() {
+-    ShardingRule result = new ShardingRule(dataSourceRule, tableRules, bindingTableRules, databaseShardingStrategy, tableShardingStrategy);
+-    if (null == idGeneratorClass) {
+-        return result;
++    IdGenerator idGenerator = null;
++    if (null != idGeneratorClass) {
++        idGenerator = KeyGeneratorFactory.createKeyGenerator(idGeneratorClass);
+     }
+-    for (TableRule each : tableRules) {
+-        each.fillIdGenerator(idGeneratorClass);
+-    }
+-    return result;
++    return new ShardingRule(dataSourceRule, tableRules, bindingTableRules, databaseShardingStrategy, tableShardingStrategy, idGenerator);
+ }
+\ No newline at end of file

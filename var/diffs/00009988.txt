@@ -1,0 +1,14 @@
+diff --git a/5a8a004e09d64994c44a7f8ecbf755c39692de59 b/222c1f8c745c8f13dd1e3c5f44984b9530908207
+index 5a8a004e09..222c1f8c74 100644
+--- a/5a8a004e09d64994c44a7f8ecbf755c39692de59
++++ b/222c1f8c745c8f13dd1e3c5f44984b9530908207
+@@ -1,6 +1,7 @@
+ public static HighlightInfo checkCannotInheritFromTypeParameter(final PsiClass superClass, final PsiJavaCodeReferenceElement toHighlight) {
+     if (superClass instanceof PsiTypeParameter) {
+-        return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, toHighlight, JavaErrorMessages.message("class.cannot.inherit.from.its.type.parameter"));
++        String description = JavaErrorMessages.message("class.cannot.inherit.from.its.type.parameter");
++        return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(toHighlight).descriptionAndTooltip(description).create();
+     }
+     return null;
+ }
+\ No newline at end of file

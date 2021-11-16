@@ -1,0 +1,26 @@
+diff --git a/547028596da875bf37e8e7c9b41b573a66ac237a b/3f565b382289d26ca7e5c6508f9e57c567aa073e
+index 547028596d..3f565b3822 100644
+--- a/547028596da875bf37e8e7c9b41b573a66ac237a
++++ b/3f565b382289d26ca7e5c6508f9e57c567aa073e
+@@ -1,19 +1,19 @@
+ /**
+  * Returns the bounds that should be used to launch this task.
+  */
+ Rect getLaunchBounds() {
+     // If we're over lockscreen, forget about stack bounds and use fullscreen.
+-    if (mService.mLockScreenShown == LOCK_SCREEN_SHOWN) {
++    if (mService.mStackSupervisor.mKeyguardController.isKeyguardShowing()) {
+         return null;
+     }
+     if (mStack == null) {
+         return null;
+     }
+     final int stackId = mStack.mStackId;
+     if (stackId == HOME_STACK_ID || stackId == FULLSCREEN_WORKSPACE_STACK_ID || (stackId == DOCKED_STACK_ID && !isResizeable())) {
+         return isResizeable() ? mStack.mBounds : null;
+     } else if (!StackId.persistTaskBounds(stackId)) {
+         return mStack.mBounds;
+     }
+     return mLastNonFullscreenBounds;
+ }
+\ No newline at end of file

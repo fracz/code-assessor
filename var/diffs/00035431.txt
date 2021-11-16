@@ -1,0 +1,16 @@
+diff --git a/eef7425fac43e40eb156f97c8d3e316d290142a6 b/e3c60ad6edca13330e9c8fa49082c39cd36ebda0
+index eef7425fac..e3c60ad6ed 100644
+--- a/eef7425fac43e40eb156f97c8d3e316d290142a6
++++ b/e3c60ad6edca13330e9c8fa49082c39cd36ebda0
+@@ -1,8 +1,8 @@
+ @Override
+-public void notifyCompleted() {
++public void notifyCompleted(MessageSnapshot snapshot) {
+     if (FileDownloadLog.NEED_LOG) {
+         FileDownloadLog.d(this, "notify completed %s", task);
+     }
+     task.over();
+-    process(FileDownloadStatus.completed);
++    process(snapshot);
+ }
+\ No newline at end of file

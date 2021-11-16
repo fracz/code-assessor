@@ -1,0 +1,22 @@
+diff --git a/3a8a7dbe23cc2a8aacc611167f20a9ff24a4bd31 b/fc1a5a5a89340d120e1b064c317be6733af3b122
+index 3a8a7dbe23..fc1a5a5a89 100644
+--- a/3a8a7dbe23cc2a8aacc611167f20a9ff24a4bd31
++++ b/fc1a5a5a89340d120e1b064c317be6733af3b122
+@@ -1,12 +1,15 @@
+ public SizeValue estimatedFlushableMemorySize() {
+     long bytes = -1;
+     for (IndexShardStatus shard : this) {
+-        if (shard.estimatedFlushableMemorySize().bytes() != SizeValue.UNKNOWN.bytes()) {
++        if (shard.estimatedFlushableMemorySize() != null) {
+             if (bytes == -1) {
+                 bytes = 0;
+             }
+             bytes += shard.estimatedFlushableMemorySize().bytes();
+         }
+     }
++    if (bytes == -1) {
++        return null;
++    }
+     return new SizeValue(bytes);
+ }
+\ No newline at end of file

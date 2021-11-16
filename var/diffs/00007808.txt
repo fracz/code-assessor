@@ -1,0 +1,19 @@
+diff --git a/ac9e255ea4cb899a5299aa3cd26c041a074aec3d b/011a9253664fc1bfa58169b26d8d4167e70aafa7
+index ac9e255ea4..011a925366 100644
+--- a/ac9e255ea4cb899a5299aa3cd26c041a074aec3d
++++ b/011a9253664fc1bfa58169b26d8d4167e70aafa7
+@@ -1,11 +1,11 @@
+ @Override
+ @CalledInAwt
+ public void enableIntegration() {
+     ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
+
+         public void run() {
+-            VcsRootDetectInfo detectInfo = new VcsRootDetector(myProject).detect();
+-            new GitIntegrationEnabler(myProject, myGit, myPlatformFacade).enable(detectInfo);
++            Collection<VcsRoot> roots = ServiceManager.getService(myProject, VcsRootDetectorI.class).detect();
++            new GitIntegrationEnabler(myProject, myGit, myPlatformFacade).enable(roots);
+         }
+     });
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/604d10c8f352778a3df6b6f697553bcd40507036 b/c6be0daea51648dd301516c9ae24856fc736a7d5
+index 604d10c8f3..c6be0daea5 100644
+--- a/604d10c8f352778a3df6b6f697553bcd40507036
++++ b/c6be0daea51648dd301516c9ae24856fc736a7d5
+@@ -1,7 +1,6 @@
+ @Override
+ public String decompressString(byte[] value) throws IOException {
+     CompressHolder ch = Cached.cached();
+     decompress(value, ch);
+-    UnicodeUtil.UTF8toUTF16(ch.bos.unsafeByteArray(), 0, ch.bos.size(), ch.utf16Result);
+-    return new String(ch.utf16Result.result, 0, ch.utf16Result.length);
++    return Unicode.fromBytes(ch.bos.unsafeByteArray(), 0, ch.bos.size());
+ }
+\ No newline at end of file

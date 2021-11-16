@@ -1,0 +1,22 @@
+diff --git a/a96c8c1fe26e21a61cf6ce390359947b56deab2b b/c3e46eadffd6a90a0d6d32cdcfd4fed98fee4134
+index a96c8c1fe2..c3e46eadff 100644
+--- a/a96c8c1fe26e21a61cf6ce390359947b56deab2b
++++ b/c3e46eadffd6a90a0d6d32cdcfd4fed98fee4134
+@@ -1,6 +1,12 @@
+-private static void parseOutput(@Nullable ISVNLogEntryHandler handler, @NotNull SvnCommand command) throws VcsException, SVNException {
+-    Parser parser = new Parser(handler);
+-    for (String line : StringUtil.splitByLines(command.getOutput(), false)) {
+-        parser.onLine(line);
++private static void parseOutput(@NotNull SvnCommand command, @Nullable ISVNLogEntryHandler handler) throws VcsException, SVNException {
++    try {
++        LogInfo log = CommandUtil.parse(command.getOutput(), LogInfo.class);
++        if (handler != null && log != null) {
++            for (LogEntry entry : log.entries) {
++                handler.handleLogEntry(entry.toLogEntry());
++            }
++        }
++    } catch (JAXBException e) {
++        throw new VcsException(e);
+     }
+ }
+\ No newline at end of file

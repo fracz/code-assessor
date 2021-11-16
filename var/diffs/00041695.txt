@@ -1,0 +1,15 @@
+diff --git a/0f55b5b8b294c197f22a9cf4ee9140f6627e0202 b/788eec6d8995450a483d5e2807376601704ed0b9
+index 0f55b5b8b2..788eec6d89 100644
+--- a/0f55b5b8b294c197f22a9cf4ee9140f6627e0202
++++ b/788eec6d8995450a483d5e2807376601704ed0b9
+@@ -1,7 +1,6 @@
+-@Override
+-protected String getKey(final String iDbBucketKey) {
+-    final String[] parts = getDbBucketKey(iDbBucketKey, 2);
++public String getKey(final String iDbBucketKey) {
++    final String[] parts = OKVServerCommandAbstract.getDbBucketKey(iDbBucketKey, 2);
+     if (parts.length > 2)
+         return parts[2];
+     return null;
+ }
+\ No newline at end of file

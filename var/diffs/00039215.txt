@@ -1,0 +1,21 @@
+diff --git a/bea2c838e678ae132eec34394db82e1d316218ff b/ffd565c3eca10921a457249e417e013dc82f78b5
+index bea2c838e6..ffd565c3ec 100644
+--- a/bea2c838e678ae132eec34394db82e1d316218ff
++++ b/ffd565c3eca10921a457249e417e013dc82f78b5
+@@ -1,14 +1,9 @@
+ @Override
+ public Optional<MemberId> upstreamDatabase() throws UpstreamDatabaseSelectionException {
+     final CoreTopology coreTopology = topologyService.coreServers();
+     if (coreTopology.members().size() == 0) {
+         throw new UpstreamDatabaseSelectionException("No core servers available");
+     }
+     int skippedServers = random.nextInt(coreTopology.members().size());
+-    final Iterator<MemberId> iterator = coreTopology.members().keySet().iterator();
+-    MemberId member;
+-    do {
+-        member = iterator.next();
+-    } while (skippedServers-- > 0);
+-    return Optional.ofNullable(member);
++    return coreTopology.members().keySet().stream().skip(skippedServers).findFirst();
+ }
+\ No newline at end of file

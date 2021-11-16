@@ -1,0 +1,19 @@
+diff --git a/0e6526ee8f616ad0229170f77b332bad8ce74860 b/44be4a0b9dd046f8c9c3627dc44dd68c11987831
+index 0e6526ee8f..44be4a0b9d 100644
+--- a/0e6526ee8f616ad0229170f77b332bad8ce74860
++++ b/44be4a0b9dd046f8c9c3627dc44dd68c11987831
+@@ -1,12 +1,4 @@
+ @Override
+ protected void drawCheckIcon(JComponent c, Graphics2D g, JCheckBox b, Rectangle iconRect, boolean selected, boolean enabled) {
+-    Icon icon;
+-    if (selected) {
+-        icon = IconLoader.findIcon("/com/intellij/ide/ui/laf/icons/checkboxSelectedMac.png", MacIntelliJCheckBoxUI.class, true);
+-    } else {
+-        icon = IconLoader.findIcon("/com/intellij/ide/ui/laf/icons/checkboxMac.png", MacIntelliJCheckBoxUI.class, true);
+-    }
+-    if (icon != null) {
+-        icon.paintIcon(c, g, iconRect.x, iconRect.y);
+-    }
++    getIcon(selected).paintIcon(c, g, iconRect.x, iconRect.y);
+ }
+\ No newline at end of file

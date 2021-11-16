@@ -1,0 +1,44 @@
+diff --git a/6c363f0dc2b23dd970b5e98c1d8584d4a168750f b/311cdbd72661cb416e0a2501c50faa7bd134a7ec
+index 6c363f0dc2..311cdbd726 100644
+--- a/6c363f0dc2b23dd970b5e98c1d8584d4a168750f
++++ b/311cdbd72661cb416e0a2501c50faa7bd134a7ec
+@@ -1,21 +1,20 @@
+ @Override
+-protected void saveSettings(DBPConnectionInfo connectionInfo) {
+-    if (connectionInfo != null) {
+-        if (hostText != null) {
+-            connectionInfo.setHostName(hostText.getText());
+-        }
+-        if (portText != null) {
+-            connectionInfo.setHostPort(portText.getText());
+-        }
+-        if (keyspaceText != null) {
+-            connectionInfo.setDatabaseName(keyspaceText.getText());
+-        }
+-        if (userNameText != null) {
+-            connectionInfo.setUserName(userNameText.getText());
+-        }
+-        if (passwordText != null) {
+-            connectionInfo.setUserPassword(passwordText.getText());
+-        }
+-        super.saveSettings(connectionInfo);
++public void saveSettings(DataSourceDescriptor dataSource) {
++    DBPConnectionInfo connectionInfo = dataSource.getConnectionInfo();
++    if (hostText != null) {
++        connectionInfo.setHostName(hostText.getText());
+     }
++    if (portText != null) {
++        connectionInfo.setHostPort(portText.getText());
++    }
++    if (keyspaceText != null) {
++        connectionInfo.setDatabaseName(keyspaceText.getText());
++    }
++    if (userNameText != null) {
++        connectionInfo.setUserName(userNameText.getText());
++    }
++    if (passwordText != null) {
++        connectionInfo.setUserPassword(passwordText.getText());
++    }
++    super.saveSettings(dataSource);
+ }
+\ No newline at end of file

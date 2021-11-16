@@ -1,0 +1,12 @@
+diff --git a/b4e841d9874535e595d51c866bdfdf35349944fc b/cbefeee46c83e5fb14391ec6ff58669393fdf9ee
+index b4e841d987..cbefeee46c 100644
+--- a/b4e841d9874535e595d51c866bdfdf35349944fc
++++ b/cbefeee46c83e5fb14391ec6ff58669393fdf9ee
+@@ -1,4 +1,4 @@
+-public <T> T createMock(Class<T> typeToMock, Set<Class> extraInterfaces, MockitoInvocationHandler handler, MockSettingsInfo settings) {
++public <T> T createMock(MockCreationSettings<T> settings, MockitoInvocationHandler handler) {
+     MockHandlerInterface mockitoHandler = cast(handler);
+-    return ClassImposterizer.INSTANCE.imposterise(new MethodInterceptorFilter(mockitoHandler, settings), typeToMock, extraInterfaces);
++    return ClassImposterizer.INSTANCE.imposterise(new MethodInterceptorFilter(mockitoHandler, settings), settings.getTypeToMock(), settings.getExtraInterfaces());
+ }
+\ No newline at end of file

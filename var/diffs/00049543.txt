@@ -1,0 +1,23 @@
+diff --git a/3e1824bbed88b748a8d47b9ab77f320ca6b4bf7c b/0f460aca1aa29d22bd62a1c73600f502e797fff2
+index 3e1824bbed..0f460aca1a 100644
+--- a/3e1824bbed88b748a8d47b9ab77f320ca6b4bf7c
++++ b/0f460aca1aa29d22bd62a1c73600f502e797fff2
+@@ -1,16 +1,16 @@
+ @Override
+ public Object extractEditorValue() throws DBException {
+     final DBDContent content = (DBDContent) valueController.getValue();
+     if (content == null) {
+         log.warn("NULL content value. Must be DBDContent.");
+     } else if (streamEditor == null) {
+         log.warn("NULL content editor.");
+     } else {
+         try {
+             streamEditor.extractEditorValue(VoidProgressMonitor.INSTANCE, control, content);
+         } catch (Exception e) {
+-            valueController.showMessage(e.getMessage(), true);
++            valueController.showMessage(e.getMessage(), DBPMessageType.ERROR);
+         }
+     }
+     return content;
+ }
+\ No newline at end of file

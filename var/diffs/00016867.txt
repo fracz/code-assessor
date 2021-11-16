@@ -1,0 +1,14 @@
+diff --git a/0e91263c22c02068d7133a5e92f13576a409a2ef b/993ac4ac2d2da7f9355e1087d904c9d835466757
+index 0e91263c22..993ac4ac2d 100644
+--- a/0e91263c22c02068d7133a5e92f13576a409a2ef
++++ b/993ac4ac2d2da7f9355e1087d904c9d835466757
+@@ -1,4 +1,6 @@
+-@Nullable
++@NotNull
+ public static DeclarationDescriptor getDescriptorForReferenceExpression(@NotNull BindingContext context, @NotNull JetReferenceExpression reference) {
+-    return context.get(BindingContext.REFERENCE_TARGET, reference);
++    DeclarationDescriptor referencedDescriptor = getNullableDescriptorForReferenceExpression(context, reference);
++    assert referencedDescriptor != null : "Reference expression must reference a descriptor.";
++    return referencedDescriptor;
+ }
+\ No newline at end of file

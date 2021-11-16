@@ -1,0 +1,19 @@
+diff --git a/f187a659f83c8cfd0b681373c3d30d2ccae39199 b/463d78d37af34bd06a6af23b5927da67fca43924
+index f187a659f8..463d78d37a 100644
+--- a/f187a659f83c8cfd0b681373c3d30d2ccae39199
++++ b/463d78d37af34bd06a6af23b5927da67fca43924
+@@ -1,11 +1,12 @@
+ @NotNull
+ public AntTarget[] getTargets() {
+     if (myTargets != null)
+         return myTargets;
+     final List<AntTarget> targets = new ArrayList<AntTarget>();
+     for (final AntElement child : getChildren()) {
+         if (child instanceof AntTarget)
+             targets.add((AntTarget) child);
+     }
+-    return myTargets = targets.toArray(new AntTarget[targets.size()]);
++    final int size = targets.size();
++    return myTargets = (size == 0) ? AntTarget.EMPTY_TARGETS : targets.toArray(new AntTarget[size]);
+ }
+\ No newline at end of file

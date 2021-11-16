@@ -1,0 +1,20 @@
+diff --git a/5b6d91adce46bd2d45d9bac4b74e90f12485d958 b/db06b7afb3a14fb55e551fca85d41108d428948d
+index 5b6d91adce..db06b7afb3 100644
+--- a/5b6d91adce46bd2d45d9bac4b74e90f12485d958
++++ b/db06b7afb3a14fb55e551fca85d41108d428948d
+@@ -1,10 +1,13 @@
+ private void updateButtons() {
+     boolean deleteEnabled = false;
+     boolean saveAsEnabled = true;
+     CodeStyleScheme selected = getSelectedScheme();
+     if (selected != null) {
+-        deleteEnabled = !selected.isDefault();
++        deleteEnabled = !cannotBeModified(selected);
+     }
+     myDeleteButton.setEnabled(deleteEnabled);
++    if (myExportButton != null) {
++        myExportButton.setEnabled(deleteEnabled);
++    }
+     mySaveAsButton.setEnabled(saveAsEnabled);
+ }
+\ No newline at end of file

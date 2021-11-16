@@ -1,0 +1,16 @@
+diff --git a/e0891afedee527b21ba0a0603f65ff4c67822803 b/c07a13108942fefffa19548d504facb0b0fbb5c9
+index e0891afede..c07a131089 100644
+--- a/e0891afedee527b21ba0a0603f65ff4c67822803
++++ b/c07a13108942fefffa19548d504facb0b0fbb5c9
+@@ -1,9 +1,8 @@
+ private void addRecents(List<TextWithImports> expressions) {
+-    for (Iterator<TextWithImports> iterator = expressions.iterator(); iterator.hasNext(); ) {
+-        final TextWithImports text = iterator.next();
++    for (final TextWithImports text : expressions) {
+         myComboBox.addItem(text);
+     }
+     if (myComboBox.getItemCount() > 0) {
+         myComboBox.setSelectedIndex(0);
+     }
+ }
+\ No newline at end of file

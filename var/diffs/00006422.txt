@@ -1,0 +1,17 @@
+diff --git a/f6363b43899ae969c219b418cecbf54055c1c884 b/6af9d267d2cb941b2a159e54c991ff5441d4a0cd
+index f6363b4389..6af9d267d2 100644
+--- a/f6363b43899ae969c219b418cecbf54055c1c884
++++ b/6af9d267d2cb941b2a159e54c991ff5441d4a0cd
+@@ -1,7 +1,5 @@
+-public PsiElementListCellRenderer getRenderer(final PsiElement[] elements) {
+-    for (PsiElement element : elements) {
+-        if (!(element instanceof PyElement) || !(element instanceof PsiNamedElement))
+-            return null;
+-    }
+-    return new PyElementListCellRenderer();
++public PsiElementListCellRenderer getRenderer(final PsiElement element) {
++    if (element instanceof PyElement && element instanceof PsiNamedElement)
++        return new PyElementListCellRenderer();
++    return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,29 @@
+diff --git a/ad49521e74fa52738b56ad89bbc70baa1955b441 b/3dde1950b647aaba4620135b33d11db341991d61
+index ad49521e74..3dde1950b6 100644
+--- a/ad49521e74fa52738b56ad89bbc70baa1955b441
++++ b/3dde1950b647aaba4620135b33d11db341991d61
+@@ -1,13 +1,14 @@
+ private void saveAndHide() {
++    balloon.hide();
+     final String newSignature = editor.getDocument().getText();
+-    if (!previousSignature.equals(newSignature)) {
+-        new WriteCommandAction(project) {
+-
+-            @Override
+-            protected void run(Result result) throws Throwable {
+-                ExternalAnnotationsManager.getInstance(project).editExternalAnnotation(method, KOTLIN_SIGNATURE_ANNOTATION, signatureToNameValuePairs(project, newSignature));
+-            }
+-        }.execute();
++    if (previousSignature.equals(newSignature)) {
++        return;
+     }
+-    balloon.hide();
++    new WriteCommandAction(project) {
++
++        @Override
++        protected void run(Result result) throws Throwable {
++            ExternalAnnotationsManager.getInstance(project).editExternalAnnotation(method, KOTLIN_SIGNATURE_ANNOTATION, signatureToNameValuePairs(project, newSignature));
++        }
++    }.execute();
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/30bef5c9ebc847b101fbee91df786557cbe57af3 b/54dd5d5ee6c6db06050ba9f857bb376b40414d1a
+index 30bef5c9eb..54dd5d5ee6 100644
+--- a/30bef5c9ebc847b101fbee91df786557cbe57af3
++++ b/54dd5d5ee6c6db06050ba9f857bb376b40414d1a
+@@ -1,14 +1,11 @@
+-/*
+-      * (non-Javadoc)
+-      * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+-      */
+ @Override
+ public void start(BundleContext context) throws Exception {
+     super.start(context);
+     instance = this;
++    DBeaverUI.getInstance();
+     try {
+         resourceBundle = ResourceBundle.getBundle(CoreMessages.BUNDLE_NAME);
+     } catch (MissingResourceException x) {
+         resourceBundle = null;
+     }
+ }
+\ No newline at end of file

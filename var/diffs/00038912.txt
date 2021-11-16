@@ -1,0 +1,22 @@
+diff --git a/7284c21f55bac6ed267dada5ab3a85db9d4221a8 b/d58a8c8c2f23f2bdf7024103ac50cef3fa93517b
+index 7284c21f55..d58a8c8c2f 100644
+--- a/7284c21f55bac6ed267dada5ab3a85db9d4221a8
++++ b/d58a8c8c2f23f2bdf7024103ac50cef3fa93517b
+@@ -1,14 +1,14 @@
+ @Test
+ public void shouldAddSchemaRuleToCacheWhenApplyingTransactionThatCreatesOne() throws Exception {
+     // GIVEN
+-    WriteTransaction writeTransaction = new WriteTransaction(0, log, transactionState, neoStore, cacheAccessBackDoor, null);
++    WriteTransaction writeTransaction = new WriteTransaction(0, log, transactionState, neoStore, cacheAccessBackDoor, NO_INDEXING);
+     writeTransaction.setCommitTxId(1);
+     // WHEN
+     final long ruleId = schemaStore.nextId();
+-    IndexRule schemaRule = new IndexRule(ruleId, 10, POPULATING, new long[] { 8 });
++    IndexRule schemaRule = new IndexRule(ruleId, 10, POPULATING, 8);
+     writeTransaction.createSchemaRule(schemaRule);
+     writeTransaction.prepare();
+     writeTransaction.commit();
+     // THEN
+     verify(cacheAccessBackDoor).addSchemaRule(schemaRule);
+ }
+\ No newline at end of file

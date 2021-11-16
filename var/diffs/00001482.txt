@@ -1,0 +1,18 @@
+diff --git a/7be01f293b0a9f699b403849fb2419d58b520c27 b/27d0c8719c8c169f3e1e482a18be9fb3e8e6c2cb
+index 7be01f293b..27d0c8719c 100644
+--- a/7be01f293b0a9f699b403849fb2419d58b520c27
++++ b/27d0c8719c8c169f3e1e482a18be9fb3e8e6c2cb
+@@ -1,11 +1,11 @@
+ private TextEditorHighlightingPass[] getPasses(int[] passesToPerform) {
+     ArrayList<TextEditorHighlightingPass> passes = new ArrayList<TextEditorHighlightingPass>();
+     renewFile();
+     if (myFile != null && DaemonCodeAnalyzer.getInstance(myProject).isHighlightingAvailable(myFile)) {
+         PsiDocumentManager.getInstance(myProject).commitAllDocuments();
+         for (int aPassesToPerform : passesToPerform) {
+             appendPass(passes, aPassesToPerform);
+         }
+     }
+-    return passes.toArray(new TextEditorHighlightingPass[passes.size()]);
++    return TextEditorHighlightingPassRegistrar.getInstance(myProject).modifyHighlightingPasses(passes, myFile, myEditor);
+ }
+\ No newline at end of file

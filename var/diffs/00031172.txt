@@ -1,0 +1,16 @@
+diff --git a/187ef32c479ecef92f20a4822f9d587e849fbd14 b/950dcf51e0584a8ea123e16776f7a4a939a43afb
+index 187ef32c47..950dcf51e0 100644
+--- a/187ef32c479ecef92f20a4822f9d587e849fbd14
++++ b/950dcf51e0584a8ea123e16776f7a4a939a43afb
+@@ -1,9 +1,4 @@
+ @Override
+ public boolean needsScores() {
+-    for (Collector collector : aggregatorCollector) {
+-        if (collector.needsScores()) {
+-            return true;
+-        }
+-    }
+-    return false;
++    return aggregatorCollector.needsScores();
+ }
+\ No newline at end of file

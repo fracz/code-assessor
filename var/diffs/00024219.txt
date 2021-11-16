@@ -1,0 +1,20 @@
+diff --git a/7e8eccae9fc8a38ddd026f91ccd8be0da4cbc687 b/694d3fc7f61d9c24881ba0a439eee9fcd3d1f1d0
+index 7e8eccae9f..694d3fc7f6 100644
+--- a/7e8eccae9fc8a38ddd026f91ccd8be0da4cbc687
++++ b/694d3fc7f61d9c24881ba0a439eee9fcd3d1f1d0
+@@ -1,12 +1,9 @@
+-protected void fillCF(ColumnFamilyStore cfs, int rowsPerSSTable) {
++protected void fillCF(ColumnFamilyStore cfs, String colName, int rowsPerSSTable) {
+     CompactionManager.instance.disableAutoCompaction();
+     for (int i = 0; i < rowsPerSSTable; i++) {
+         String key = String.valueOf(i);
+         // create a row and update the birthdate value, test that the index query fetches the new version
+-        Mutation rm;
+-        rm = new Mutation(KEYSPACE1, ByteBufferUtil.bytes(key));
+-        rm.add(cfs.name, Util.cellname(COLUMN), VALUE, System.currentTimeMillis());
+-        rm.applyUnsafe();
++        new RowUpdateBuilder(cfs.metadata, System.currentTimeMillis(), ByteBufferUtil.bytes(key)).clustering(COLUMN).add(colName, VALUE).build().applyUnsafe();
+     }
+     cfs.forceBlockingFlush();
+ }
+\ No newline at end of file

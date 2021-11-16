@@ -1,0 +1,15 @@
+diff --git a/6b0867f832feb2553994adb91abb4e2b7bc83c1b b/33f84d1b567324243943441ba8256cbe9459908c
+index 6b0867f832..33f84d1b56 100644
+--- a/6b0867f832feb2553994adb91abb4e2b7bc83c1b
++++ b/33f84d1b567324243943441ba8256cbe9459908c
+@@ -1,5 +1,5 @@
+-@Nullable
+-protected PsiElement getSelectedElement() {
+-    final TreePath path = getSelectedPath();
+-    return extractPsiElement(path);
++protected final PsiElement getSelectedElement() {
++    final DefaultMutableTreeNode node = getSelectedNode();
++    HierarchyNodeDescriptor descriptor = getDescriptor(node);
++    return descriptor != null ? getElementFromDescriptor(descriptor) : null;
+ }
+\ No newline at end of file

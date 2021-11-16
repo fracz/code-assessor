@@ -1,0 +1,20 @@
+diff --git a/c5b5b98f1390b40ba5a034086288e8feb6b6b24d b/06f4fba1bd80dda0d06d36af3a1bb502aecb1364
+index c5b5b98f13..06f4fba1bd 100644
+--- a/c5b5b98f1390b40ba5a034086288e8feb6b6b24d
++++ b/06f4fba1bd80dda0d06d36af3a1bb502aecb1364
+@@ -1,8 +1,10 @@
+ private void writePending() {
+     // Log.i("NIO", "Writing to buffer...");
+-    mDataSink.write(mPendingWrites);
+-    if (mPendingWrites.remaining() == 0) {
+-        mPendingWrites = null;
+-        onFlushed();
++    if (mPendingWrites != null) {
++        mDataSink.write(mPendingWrites);
++        if (mPendingWrites.remaining() == 0)
++            mPendingWrites = null;
+     }
++    if (mPendingWrites == null && mWritable != null)
++        mWritable.onWriteable();
+ }
+\ No newline at end of file

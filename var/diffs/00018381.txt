@@ -1,0 +1,25 @@
+diff --git a/40ca31795d1cd4635dd1f848228c672ad9a7db83 b/3354f71f2caf6e10993a64b950a2581c9208cc0e
+index 40ca31795d..3354f71f2c 100644
+--- a/40ca31795d1cd4635dd1f848228c672ad9a7db83
++++ b/3354f71f2caf6e10993a64b950a2581c9208cc0e
+@@ -1,17 +1,15 @@
+ @Override
+ public void subscribe(Subscriber<? super T> s) {
+     Publisher<? extends T> pub;
+     try {
+         pub = supplier.get();
+     } catch (Throwable t) {
+-        s.onSubscribe(EmptySubscription.INSTANCE);
+-        s.onError(t);
++        EmptySubscription.error(t, s);
+         return;
+     }
+     if (pub == null) {
+-        s.onSubscribe(EmptySubscription.INSTANCE);
+-        s.onError(new NullPointerException());
++        EmptySubscription.error(new NullPointerException("null publisher supplied"), s);
+         return;
+     }
+     pub.subscribe(s);
+ }
+\ No newline at end of file

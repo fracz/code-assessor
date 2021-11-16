@@ -1,0 +1,24 @@
+diff --git a/bd954bdbdaf1163675e97b55294a17445bda2dfb b/3f5b6fa5994b2a6a3463b1c9a510143a41783778
+index bd954bdbda..3f5b6fa599 100644
+--- a/bd954bdbdaf1163675e97b55294a17445bda2dfb
++++ b/3f5b6fa5994b2a6a3463b1c9a510143a41783778
+@@ -1,16 +1,15 @@
+ /**
+  * Add a namespace definition to this node.  To the underlying
+  * node, add an attribute of the form
+  * <code>xmlns:prefix="uri"</code>.
+  */
+ @JRubyMethod
+ public IRubyObject add_namespace_definition(ThreadContext context, IRubyObject prefix, IRubyObject href) {
+     String prefixString = prefix.isNil() ? "" : rubyStringToString(prefix);
+     String hrefString = rubyStringToString(href);
+-    XmlNamespace ns = this.nsCache.get(context, this, prefixString, hrefString);
+-    if (node instanceof Element) {
+-    }
++    XmlDocument xmlDocument = (XmlDocument) doc;
++    XmlNamespace ns = xmlDocument.getNamespaceCache().put(context.getRuntime(), prefixString, hrefString, xmlDocument);
+     // clear cache
+     namespace_definitions = null;
+     return ns;
+ }
+\ No newline at end of file

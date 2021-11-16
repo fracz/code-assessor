@@ -1,0 +1,22 @@
+diff --git a/c77075b7018ed710a0897160cf9b484c57c911f1 b/7abdb5067ece067c5db9df6b9bf0932091e9a510
+index c77075b701..7abdb5067e 100644
+--- a/c77075b7018ed710a0897160cf9b484c57c911f1
++++ b/7abdb5067ece067c5db9df6b9bf0932091e9a510
+@@ -1,13 +1,13 @@
+ @Test
+ public void testMovingFileFromOneDirectoryToAnother() {
+-    root.createDirectory(1, "dir1");
+-    root.createDirectory(2, "dir2");
+-    root.createFile(3, "dir1/file", null, -1);
++    createDirectory(root, 1, "dir1");
++    createDirectory(root, 2, "dir2");
++    createFile(root, 3, "dir1/file", null, -1);
+     Change c = new MoveChange("dir1/file", "dir2");
+     c.applyTo(root);
+     assertTrue(root.hasEntry("dir2/file"));
+     assertFalse(root.hasEntry("dir1/file"));
+     c.revertOn(root);
+     assertFalse(root.hasEntry("dir2/file"));
+     assertTrue(root.hasEntry("dir1/file"));
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/714a17dd92eb40212c8afbfaa6db9418ee45063a b/4de5c982559aab740f6b2820bb7fc0dc922a24a2
+index 714a17dd92..4de5c98255 100644
+--- a/714a17dd92eb40212c8afbfaa6db9418ee45063a
++++ b/4de5c982559aab740f6b2820bb7fc0dc922a24a2
+@@ -1,8 +1,4 @@
+-public PushParser readBuffer(int length) {
+-    if (length != -1)
+-        mNeeded += length;
+-    BufferWaiter bw = new BufferWaiter();
+-    bw.length = length;
+-    mWaiting.add(bw);
++public PushParser readBuffer(int length, TapCallback<byte[]> callback) {
++    mWaiting.add(new BufferWaiter(length, callback));
+     return this;
+ }
+\ No newline at end of file

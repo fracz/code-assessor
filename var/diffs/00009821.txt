@@ -1,0 +1,19 @@
+diff --git a/2bc71cbcb06ddfe38ce7795314b90071631f9a93 b/7f13d66d7f07dd627ba4bea9225748df35382ad0
+index 2bc71cbcb0..7f13d66d7f 100644
+--- a/2bc71cbcb06ddfe38ce7795314b90071631f9a93
++++ b/7f13d66d7f07dd627ba4bea9225748df35382ad0
+@@ -1,9 +1,9 @@
+ public void testDoesNotAskUserTwiceToRemoveTheSameModule() throws Exception {
+     createProjectPom("<groupId>test</groupId>" + "<artifactId>project</artifactId>" + "<packaging>pom</packaging>" + "<version>1</version>" + "<modules>" + "  <module>m1</module>" + "</modules>");
+-    assertEquals(0, questionsCount);
+-    configMessagesForNoAnswer();
++    AtomicInteger counter = configConfirmationForNoAnswer();
++    assertEquals(0, counter.get());
+     importProject();
+-    assertEquals(1, questionsCount);
++    assertEquals(1, counter.get());
+     importProject();
+-    assertEquals(1, questionsCount);
++    assertEquals(1, counter.get());
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/865e593e161dc72f7c65f5806017c87af48d308e b/4d74286618d35716f3f117e8444c2e4b6cca937c
+index 865e593e16..4d74286618 100644
+--- a/865e593e161dc72f7c65f5806017c87af48d308e
++++ b/4d74286618d35716f3f117e8444c2e4b6cca937c
+@@ -1,4 +1,5 @@
+ @Nullable
+ public static Color getGlobalOrDefaultColor(@NotNull ColorKey colorKey) {
+-    return getColorSchemeForBackground(null).getColor(colorKey);
++    Color color = getColorSchemeForBackground(null).getColor(colorKey);
++    return color != null ? color : colorKey.getDefaultColor();
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/55ecdb03d7418fb926dae900596320224ab79c27 b/959192301549d0a13ce5f7d7c9eeffda92511ace
+index 55ecdb03d7..9591923015 100644
+--- a/55ecdb03d7418fb926dae900596320224ab79c27
++++ b/959192301549d0a13ce5f7d7c9eeffda92511ace
+@@ -1,5 +1,5 @@
+-private void scanSymbol(final int symbolLength) {
++private Token scanSymbol(final int symbolLength) {
+     Tokenizer tokenizer = new Tokenizer(input, dictionary, position);
+     tokenizer.scanSymbol(symbolLength);
+-    setTokenizerResult(tokenizer);
++    return new Token(tokenizer);
+ }
+\ No newline at end of file

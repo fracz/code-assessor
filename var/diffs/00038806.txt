@@ -1,0 +1,14 @@
+diff --git a/d4198d8d55640331b34c5156651a9c4bf1350fbe b/ae68b2b3e850cb5d0b8969e92513e107608b5be1
+index d4198d8d55..ae68b2b3e8 100644
+--- a/d4198d8d55640331b34c5156651a9c4bf1350fbe
++++ b/ae68b2b3e850cb5d0b8969e92513e107608b5be1
+@@ -1,7 +1,7 @@
+ public void handle(Signal signal) {
+     try {
+-        this.action.run();
++        actionRef.get().run();
+     } catch (Exception e) {
+         throw new RuntimeException(e);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/1265e035cd249a9d194adec590d51faa398d1e5e b/08806732c497ab3c337937b08d8fae4f1029ec14
+index 1265e035cd..08806732c4 100644
+--- a/1265e035cd249a9d194adec590d51faa398d1e5e
++++ b/08806732c497ab3c337937b08d8fae4f1029ec14
+@@ -1,11 +1,11 @@
+ @Test
+ public void testSharedServersRoundRobinWithOtherServerRunningOnDifferentPort() throws Exception {
+     // Have a server running on a different port to make sure it doesn't interact
+     CountDownLatch latch = new CountDownLatch(1);
+-    HttpServer theServer = vertx.createHttpServer();
++    HttpServer theServer = vertx.createHttpServer(new HttpServerOptions().setPort(8081));
+     theServer.requestHandler(req -> {
+         fail("Should not process request");
+-    }).listen(8081, onSuccess(s -> latch.countDown()));
++    }).listen(onSuccess(s -> latch.countDown()));
+     awaitLatch(latch);
+     testSharedServersRoundRobin();
+ }
+\ No newline at end of file

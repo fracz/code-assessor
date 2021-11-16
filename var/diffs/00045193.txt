@@ -1,0 +1,24 @@
+diff --git a/04965283e0fa3aec5a9f07ab14b6ccc540a477b0 b/256a8c5bbfa2f48e2c8df6b194cbe167f17fa1a4
+index 04965283e0..256a8c5bbf 100644
+--- a/04965283e0fa3aec5a9f07ab14b6ccc540a477b0
++++ b/256a8c5bbfa2f48e2c8df6b194cbe167f17fa1a4
+@@ -1,12 +1,15 @@
+ /**
+  * Locks the record to be sure distributed transactions never work concurrently against the same records in the meanwhile the
+  * transaction is executed and the OCompleteTxTask is not arrived.
+  *
+  * @see #unlockRecord(OIdentifiable, ODistributedRequestId)
+  * @param iRecord
+  * Record to lock
+  * @param iRequestId
+  * Request id
+- * @return true if the lock succeed, otherwise false
++ * @param timeout
++ * Timeout in ms to wait for the lock
++ * @throws com.orientechnologies.orient.server.distributed.task.ODistributedRecordLockedException
++ * if the record wasn't locked
+  */
+-ODistributedRequestId lockRecord(OIdentifiable iRecord, final ODistributedRequestId iRequestId);
+\ No newline at end of file
++void lockRecord(OIdentifiable iRecord, final ODistributedRequestId iRequestId, long timeout);
+\ No newline at end of file

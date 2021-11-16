@@ -1,0 +1,13 @@
+diff --git a/58da2324d08c27c757797d3a66e7c6248e04cdb6 b/16315ba1e2f141c70404dc0dc40c60b1d92edca2
+index 58da2324d0..16315ba1e2 100644
+--- a/58da2324d08c27c757797d3a66e7c6248e04cdb6
++++ b/16315ba1e2f141c70404dc0dc40c60b1d92edca2
+@@ -1,4 +1,6 @@
+ private void initializeCursor() {
+-    setListAdapter(new ContactSelectionListAdapter(getActivity(), null));
++    ContactSelectionListAdapter adapter = new ContactSelectionListAdapter(getActivity(), null, multi);
++    selectedContacts = adapter.getSelectedContacts();
++    listView.setAdapter(adapter);
+     this.getLoaderManager().initLoader(0, null, this);
+ }
+\ No newline at end of file

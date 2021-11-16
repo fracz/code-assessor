@@ -1,0 +1,17 @@
+diff --git a/9340845a1f7c748114e8ade84b684d4e97caf9b6 b/9193b796cc5bf7b923d5fd2af52a9df723f47f22
+index 9340845a1f..9193b796cc 100644
+--- a/9340845a1f7c748114e8ade84b684d4e97caf9b6
++++ b/9193b796cc5bf7b923d5fd2af52a9df723f47f22
+@@ -1,8 +1,10 @@
+ @Override
+ public int[] executeBatch() throws SQLException {
++    Timer.Context context = MetricsContext.start("ShardingPreparedStatement-executeUpdate");
+     try {
+-        return new BatchPreparedStatementExecutor(getShardingConnection().getShardingContext().getExecutorEngine(), getRouteResult().getSqlStatement().getType(), batchStatementUnits, parameterSets).executeBatch();
++        return getShardingConnection().getShardingContext().getExecutorEngine().executeBatch(batchStatementUnits, parameterSets);
+     } finally {
++        MetricsContext.stop(context);
+         clearBatch();
+     }
+ }
+\ No newline at end of file

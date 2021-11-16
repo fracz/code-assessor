@@ -1,0 +1,25 @@
+diff --git a/16c4654baf5ea9aaeec87fe3368d6b8274392747 b/111523f4963f58a2fba1d7d51281290b15ed8ab1
+index 16c4654baf..111523f496 100644
+--- a/16c4654baf5ea9aaeec87fe3368d6b8274392747
++++ b/111523f4963f58a2fba1d7d51281290b15ed8ab1
+@@ -1,17 +1,18 @@
+ @Override
+ public boolean isProviderEnabled(String provider) {
+     checkResolutionLevelIsSufficientForProviderUse(getCallerAllowedResolutionLevel(), provider);
+     if (LocationManager.FUSED_PROVIDER.equals(provider))
+         return false;
++    int uid = Binder.getCallingUid();
+     long identity = Binder.clearCallingIdentity();
+     try {
+         synchronized (mLock) {
+             LocationProviderInterface p = mProvidersByName.get(provider);
+             if (p == null)
+                 return false;
+-            return isAllowedBySettingsLocked(provider, UserHandle.getUid(mCurrentUserId, 0));
++            return isAllowedByUserSettingsLocked(provider, uid);
+         }
+     } finally {
+         Binder.restoreCallingIdentity(identity);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/6a586589f00221487b4dc9dffd10700b8cafa531 b/a85006fa0d67853a036c5a5e5a7aa4ac830ffc8c
+index 6a586589f0..a85006fa0d 100644
+--- a/6a586589f00221487b4dc9dffd10700b8cafa531
++++ b/a85006fa0d67853a036c5a5e5a7aa4ac830ffc8c
+@@ -1,3 +1,3 @@
+-private Observable<AccessTokenEnvelope> submit(@NonNull final String email, @NonNull final String password, @NonNull final String code) {
+-    return client.login(email, password, code).compose(Transformers.pipeApiErrorsTo(tfaError));
++private Observable<AccessTokenEnvelope> submit(@NonNull final TfaData data) {
++    return client.login(data.email, data.password, data.code).compose(Transformers.pipeApiErrorsTo(tfaError)).doOnSubscribe(() -> formSubmitting.onNext(true)).finallyDo(() -> formSubmitting.onNext(false));
+ }
+\ No newline at end of file

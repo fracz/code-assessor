@@ -1,0 +1,13 @@
+diff --git a/4ad1e167e8fd7f28b004c7249ad736371306fc20 b/28576cf77c9055c0a753e1dd85b5df961fa17125
+index 4ad1e167e8..28576cf77c 100644
+--- a/4ad1e167e8fd7f28b004c7249ad736371306fc20
++++ b/28576cf77c9055c0a753e1dd85b5df961fa17125
+@@ -1,6 +1,6 @@
+ @Test
+ public void shouldPassOnCCParameters() throws Exception {
+     execute("--check-consistency=true", backupDir(), "--name=mybackup", "--cc-graph=false", "--cc-indexes=false", "--cc-label-scan-store=false", "--cc-property-owners=true");
+     verify(backupService).doFullBackup(any(), anyInt(), any(), any(), any(), anyLong(), anyBoolean());
+-    verify(consistencyCheckService).runFullConsistencyCheck(any(), any(), any(), any(), any(), anyBoolean(), eq(new File(".").getCanonicalFile()), eq(false), eq(false), eq(false), eq(true));
++    verify(consistencyCheckService).runFullConsistencyCheck(any(), any(), any(), any(), any(), anyBoolean(), eq(new File(".").getCanonicalFile()), eq(new CheckConsistencyConfig(false, false, false, true)));
+ }
+\ No newline at end of file

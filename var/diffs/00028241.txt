@@ -1,0 +1,25 @@
+diff --git a/b58f31d2acccb56d9f005dd6908397534029c862 b/900b9c0c07fca2242831340141740de5dd131b21
+index b58f31d2ac..900b9c0c07 100644
+--- a/b58f31d2acccb56d9f005dd6908397534029c862
++++ b/900b9c0c07fca2242831340141740de5dd131b21
+@@ -1,17 +1,7 @@
+ @Test
+ public void testSetHandlersAfterListening2() throws Exception {
+     server.requestHandler(noOpHandler());
+     server.listen();
+-    try {
+-        server.requestHandler(noOpHandler());
+-        fail("Should throw exception");
+-    } catch (IllegalStateException e) {
+-    // Ok
+-    }
+-    try {
+-        server.websocketHandler(noOpHandler());
+-        fail("Should throw exception");
+-    } catch (IllegalStateException e) {
+-    // Ok
+-    }
++    assertIllegalStateException(() -> server.requestHandler(noOpHandler()));
++    assertIllegalStateException(() -> server.websocketHandler(noOpHandler()));
+ }
+\ No newline at end of file

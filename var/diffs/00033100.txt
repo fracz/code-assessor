@@ -1,0 +1,20 @@
+diff --git a/8b2964cb3f004231241254992735c0e78b39b365 b/b968828adfe66edc3ef4e2fd551304048245c87a
+index 8b2964cb3f..b968828adf 100644
+--- a/8b2964cb3f004231241254992735c0e78b39b365
++++ b/b968828adfe66edc3ef4e2fd551304048245c87a
+@@ -1,6 +1,10 @@
+ private void writeState(RandomAccessFile lockFileAccess, StateInfo stateInfo) throws IOException {
+-    lockFileAccess.seek(0);
+-    lockFileAccess.writeByte(protocol.getVersion());
+-    protocol.writeState(lockFileAccess, stateInfo);
+-    assert lockFileAccess.getFilePointer() == protocol.getSize();
++    ByteArrayOutputStream outstr = new ByteArrayOutputStream();
++    DataOutputStream dataOutput = new DataOutputStream(outstr);
++    dataOutput.writeByte(protocol.getVersion());
++    dataOutput.flush();
++    protocol.writeState(dataOutput, stateInfo);
++    lockFileAccess.seek(REGION_START);
++    lockFileAccess.write(outstr.toByteArray());
++    assert lockFileAccess.getFilePointer() == stateRegionSize;
+ }
+\ No newline at end of file

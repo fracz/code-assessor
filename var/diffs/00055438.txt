@@ -1,0 +1,14 @@
+diff --git a/54ac3203c723c3bc09dfe53f0c091562f9dd8962 b/51236bb951a981603d742ff7a0d3fdff0c7451c6
+index 54ac3203c7..51236bb951 100644
+--- a/54ac3203c723c3bc09dfe53f0c091562f9dd8962
++++ b/51236bb951a981603d742ff7a0d3fdff0c7451c6
+@@ -1,6 +1,6 @@
+ @Test
+ public void bodyError() {
+     ServerHttpRequest request = generateErrorMultipartRequest();
+-    MultipartHttpMessageReader multipartReader = new SynchronossMultipartHttpMessageReader();
+-    StepVerifier.create(multipartReader.readMono(MULTIPART_VALUE_TYPE, request, emptyMap())).verifyError();
++    ResolvableType elementType = forClassWithGenerics(MultiValueMap.class, String.class, Part.class);
++    StepVerifier.create(this.reader.readMono(elementType, request, emptyMap())).verifyError();
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/591086add40ff1922c9762ab8deaa0e424bb0dd6 b/70ff33fe561bf579badf3654d5094f1acacf2199
+index 591086add4..70ff33fe56 100644
+--- a/591086add40ff1922c9762ab8deaa0e424bb0dd6
++++ b/70ff33fe561bf579badf3654d5094f1acacf2199
+@@ -1,8 +1,6 @@
+ public void initializeTaskToolbox() throws S3ServiceException {
+     if (taskToolboxFactory == null) {
+         final DataSegmentKiller dataSegmentKiller = new S3DataSegmentKiller(s3Service);
+-        final SegmentAnnouncer segmentAnnouncer = new CuratorSegmentAnnouncer(configFactory.build(RealtimeZkSegmentAnnouncerConfig.class), getAnnouncer(), getJsonMapper());
+-        lifecycle.addManagedInstance(segmentAnnouncer);
+-        taskToolboxFactory = new TaskToolboxFactory(taskConfig, new RemoteTaskActionClientFactory(httpClient, coordinatorServiceProvider, new RetryPolicyFactory(configFactory.buildWithReplacements(RetryPolicyConfig.class, ImmutableMap.of("base_path", "druid.worker.taskActionClient"))), getJsonMapper()), emitter, s3Service, segmentPusher, dataSegmentKiller, segmentAnnouncer, getServerInventoryThingie(), getConglomerate(), getJsonMapper());
++        taskToolboxFactory = new TaskToolboxFactory(taskConfig, new RemoteTaskActionClientFactory(httpClient, coordinatorServiceProvider, new RetryPolicyFactory(configFactory.buildWithReplacements(RetryPolicyConfig.class, ImmutableMap.of("base_path", "druid.worker.taskActionClient"))), getJsonMapper()), emitter, s3Service, segmentPusher, dataSegmentKiller, getAnnouncer(), getServerInventoryThingie(), getConglomerate(), getJsonMapper());
+     }
+ }
+\ No newline at end of file

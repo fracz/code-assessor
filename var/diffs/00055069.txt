@@ -1,0 +1,14 @@
+diff --git a/d41c7e41c0e406d98e7100436fb2d1746bdfef64 b/d4596546e27b508f3e02512d449ff10d81f1facc
+index d41c7e41c0..d4596546e2 100644
+--- a/d41c7e41c0e406d98e7100436fb2d1746bdfef64
++++ b/d4596546e27b508f3e02512d449ff10d81f1facc
+@@ -1,5 +1,6 @@
+ private NClass addClass(ClassNode cls) {
+-    NClass nClass = new NClass(cls.getRawName(), -1);
+-    nameMap.put(cls.getRawName(), nClass);
++    String rawName = cls.getRawName();
++    NClass nClass = new NClass(rawName, -1);
++    nameMap.put(rawName, nClass);
+     return nClass;
+ }
+\ No newline at end of file

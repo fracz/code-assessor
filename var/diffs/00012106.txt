@@ -1,0 +1,18 @@
+diff --git a/d5b75afea95073ef69acee20de1b3e692840efe6 b/72286a1a9a78550bbe2012fe450aa7afcde14e4a
+index d5b75afea9..72286a1a9a 100644
+--- a/d5b75afea95073ef69acee20de1b3e692840efe6
++++ b/72286a1a9a78550bbe2012fe450aa7afcde14e4a
+@@ -1,7 +1,8 @@
+ @Override
+-protected void appendDescriptor(@NotNull final InspectionTool tool, @NotNull final UserObjectContainer container, @NotNull final InspectionPackageNode packageNode, final boolean canPackageRepeat) {
+-    final RefElementNode elemNode = addNodeToParent(container, tool, packageNode);
+-    if (tool instanceof DescriptorProviderInspection && !(tool instanceof CommonInspectionToolWrapper)) {
+-        elemNode.add(new OfflineProblemDescriptorNode(((OfflineProblemDescriptorContainer) container).getUserObject(), (DescriptorProviderInspection) tool));
++protected void appendDescriptor(@NotNull GlobalInspectionContextImpl context, @NotNull final InspectionToolWrapper toolWrapper, @NotNull final UserObjectContainer container, @NotNull final InspectionPackageNode packageNode, final boolean canPackageRepeat) {
++    InspectionToolPresentation presentation = context.getPresentation(toolWrapper);
++    final RefElementNode elemNode = addNodeToParent(container, presentation, packageNode);
++    if (toolWrapper instanceof LocalInspectionToolWrapper) {
++        elemNode.add(new OfflineProblemDescriptorNode(((OfflineProblemDescriptorContainer) container).getUserObject(), (LocalInspectionToolWrapper) toolWrapper));
+     }
+ }
+\ No newline at end of file

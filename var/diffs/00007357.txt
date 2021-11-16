@@ -1,0 +1,24 @@
+diff --git a/57f260d2b8fc294862460d3f2e55b9c5138e21c1 b/f37367635362af9449bd3009836dfb95211db512
+index 57f260d2b8..f373676353 100644
+--- a/57f260d2b8fc294862460d3f2e55b9c5138e21c1
++++ b/f37367635362af9449bd3009836dfb95211db512
+@@ -1,16 +1,16 @@
+ @Nullable
+ public static StructuredDocString parse(@Nullable String text) {
+     if (text == null) {
+         return null;
+     }
+     if (isSphinxDocString(text)) {
+-        return new SphinxDocString(text);
++        return DocStringFormat.REST.getProvider().parseDocStringContent(text);
+     }
+     if (isGoogleDocString(text)) {
+         return new GoogleCodeStyleDocString(text);
+     }
+     if (isNumpyDocstring(text)) {
+         return new NumpyDocString(text);
+     }
+-    return new EpydocString(text);
++    return DocStringFormat.EPYTEXT.getProvider().parseDocStringContent(text);
+ }
+\ No newline at end of file

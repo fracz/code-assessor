@@ -1,0 +1,14 @@
+diff --git a/63500233a9236c7bcb47fac24e0eda718c131949 b/f276732411e2a8514cfde32bbc974e74adb9ccc5
+index 63500233a9..f276732411 100644
+--- a/63500233a9236c7bcb47fac24e0eda718c131949
++++ b/f276732411e2a8514cfde32bbc974e74adb9ccc5
+@@ -1,6 +1,6 @@
+ @Test
+-public void readInputStream() {
++public void readInputStream() throws Exception {
+     InputStream is = DataBufferUtilsTests.class.getResourceAsStream("DataBufferUtilsTests.txt");
+     Flux<DataBuffer> flux = DataBufferUtils.read(is, this.bufferFactory, 3);
+-    TestSubscriber.subscribe(flux).assertNoError().assertComplete().assertValuesWith(stringConsumer("foo"), stringConsumer("bar"), stringConsumer("baz"), stringConsumer("qux"));
++    ScriptedSubscriber.<DataBuffer>create().consumeNextWith(stringConsumer("foo")).consumeNextWith(stringConsumer("bar")).consumeNextWith(stringConsumer("baz")).consumeNextWith(stringConsumer("qux")).expectComplete().verify(flux);
+ }
+\ No newline at end of file

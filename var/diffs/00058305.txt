@@ -1,0 +1,16 @@
+diff --git a/4442eacfd5a6ffc583091bcbfeb4d3554984d2b7 b/9ae2bb2b0f1ebc5afbe813780e9e45e885e16686
+index 4442eacfd5..9ae2bb2b0f 100644
+--- a/4442eacfd5a6ffc583091bcbfeb4d3554984d2b7
++++ b/9ae2bb2b0f1ebc5afbe813780e9e45e885e16686
+@@ -1,7 +1,9 @@
+ public void testATMModel() throws Exception {
+-    Model model = new ModelResolver(mapper()).resolve(ATM.class, new ModelConverterContextMock());
++    ModelResolver modelResolver = new ModelResolver(mapper());
++    ModelConverterContextImpl context = new ModelConverterContextImpl(modelResolver);
++    Model model = context.resolve(ATM.class);
+     assertNotNull(model);
+ /*
+     prettyPrint(model);
+     */
+ }
+\ No newline at end of file

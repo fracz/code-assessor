@@ -1,0 +1,16 @@
+diff --git a/9c2f7d0e86ecc0c1f35d6c0f3f8d1d594f7befcb b/287ad7efb26a06bc1712ebf7789eb748c469d269
+index 9c2f7d0e86..287ad7efb2 100644
+--- a/9c2f7d0e86ecc0c1f35d6c0f3f8d1d594f7befcb
++++ b/287ad7efb26a06bc1712ebf7789eb748c469d269
+@@ -1,9 +1,9 @@
+ @Test
+ public void testMin() {
+     Yaml yaml = new Yaml(new Constructor(ShardingRuleConfig.class));
+     Map<String, DataSource> dsMap = new HashMap<>();
+     dsMap.put("ds", new BasicDataSource());
+     ShardingRuleConfig config = (ShardingRuleConfig) yaml.load(ShardingRuleBuilderTest.class.getResourceAsStream("/config/config-min.yaml"));
+-    ShardingRule shardingRule = new ShardingRuleBuilder().setExternalDataSourceMap(dsMap).parse(config).build();
++    ShardingRule shardingRule = new ShardingRuleBuilder("config-min.yaml", dsMap, config).build();
+     assertThat(shardingRule.getTableRules().size(), is(1));
+ }
+\ No newline at end of file

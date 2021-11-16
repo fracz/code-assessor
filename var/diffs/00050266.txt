@@ -1,0 +1,25 @@
+diff --git a/ff1a2cbfe8079b2ae8e4dae75cf645a525423821 b/d99f0d445c1738ca50dd1cc178753316d743f006
+index ff1a2cbfe8..d99f0d445c 100644
+--- a/ff1a2cbfe8079b2ae8e4dae75cf645a525423821
++++ b/d99f0d445c1738ca50dd1cc178753316d743f006
+@@ -1,18 +1,18 @@
+ @Override
+ public void doSave(IProgressMonitor progressMonitor) {
+     for (QueryProcessor queryProcessor : queryProcessors) {
+         for (QueryResultsContainer resultsProvider : queryProcessor.getResultProviders()) {
+             ResultSetViewer rsv = resultsProvider.getResultSetViewer();
+             if (rsv != null && rsv.isDirty()) {
+                 rsv.doSave(progressMonitor);
+             }
+         }
+     }
+     if (ownContext && executionContext != null) {
+         if (DataSourceHandler.isContextTransactionAffected(executionContext)) {
+-            DataSourceHandler.closeActiveTransaction(new DefaultProgressMonitor(progressMonitor), executionContext, true);
++            DataSourceHandler.closeActiveTransaction(RuntimeUtils.makeMonitor(progressMonitor), executionContext, true);
+         }
+     // releaseExecutionContext();
+     }
+     super.doSave(progressMonitor);
+ }
+\ No newline at end of file

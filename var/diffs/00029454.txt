@@ -1,0 +1,14 @@
+diff --git a/a8284e6977cc69a5c331f35ac9da7d0851955c3e b/acb81cb8db15c86a690e43ec8acc7cd5fbfa5319
+index a8284e6977..acb81cb8db 100644
+--- a/a8284e6977cc69a5c331f35ac9da7d0851955c3e
++++ b/acb81cb8db15c86a690e43ec8acc7cd5fbfa5319
+@@ -1,7 +1,7 @@
+ public Collection<Class<? extends Closeable>> shardServices() {
+-    List<Class<? extends Closeable>> services = Lists.newArrayList();
++    List<Class<? extends Closeable>> services = new ArrayList<>();
+     for (Tuple<PluginInfo, Plugin> plugin : plugins) {
+         services.addAll(plugin.v2().shardServices());
+     }
+     return services;
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/9fd557a3a6f13c2846b1827661be88471b5d4212 b/c36d33a2c5931cce9d2dd357181c52769ceb7e28
+index 9fd557a3a6..c36d33a2c5 100644
+--- a/9fd557a3a6f13c2846b1827661be88471b5d4212
++++ b/c36d33a2c5931cce9d2dd357181c52769ceb7e28
+@@ -1,12 +1,11 @@
+ @Nullable
+ public GrTypeElement getEnteredTypeName() {
+     final Document typeEditorDocument = getTypeEditorDocument();
+     if (typeEditorDocument == null)
+         return null;
+     try {
+-        final String typeText = typeEditorDocument.getText();
+-        return GroovyPsiElementFactory.getInstance(myProject).createTypeElement(typeText);
++        return GroovyPsiElementFactory.getInstance(myProject).createTypeElement(typeEditorDocument.getText());
+     } catch (IncorrectOperationException e) {
+         return null;
+     }
+ }
+\ No newline at end of file

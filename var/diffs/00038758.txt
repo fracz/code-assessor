@@ -1,0 +1,21 @@
+diff --git a/dcc685385224163606e0130a03da42e2ee77908f b/0532a3caadec1527feaa4d930dcee67e544048fa
+index dcc6853852..0532a3caad 100644
+--- a/dcc685385224163606e0130a03da42e2ee77908f
++++ b/0532a3caadec1527feaa4d930dcee67e544048fa
+@@ -1,12 +1,4 @@
+-public UniquenessConstraint addConstraint(UniquenessConstraint constraint, boolean create) {
+-    if (getOrCreateLabelState(constraint.label()).uniquenessConstraints().add(constraint) && create) {
+-        // This is obviously wrong - we should not need to allocate an id, and create store layer records this early.
+-        // It should be enough to keep the UniquenessConstraint object around here in this layer, and then allocate
+-        // the ids and create records when we are about to commit the transaction - that would then be done based on
+-        // the state from this layer.
+-        UniquenessConstraintRule rule = new UniquenessConstraintRule(idGeneration.newSchemaRuleId(), constraint.label(), constraint.property());
+-        persistenceManager.createSchemaRule(rule);
+-        constraintRules.put(constraint, rule);
+-    }
+-    return constraint;
++public void addConstraint(UniquenessConstraint constraint) {
++    constraintsChanges.add(constraint);
++    getOrCreateLabelState(constraint.label()).constraintsChanges().add(constraint);
+ }
+\ No newline at end of file

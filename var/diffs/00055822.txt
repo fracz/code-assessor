@@ -1,0 +1,13 @@
+diff --git a/b2e68e5278be52850273aaf4707d4d3d3b4020a1 b/edd8d62351d333fcc6fa880547e2c1d66afe2948
+index b2e68e5278..edd8d62351 100644
+--- a/b2e68e5278be52850273aaf4707d4d3d3b4020a1
++++ b/edd8d62351d333fcc6fa880547e2c1d66afe2948
+@@ -1,6 +1,6 @@
+ @Test
+ public void emptyBodyWithMono() throws Exception {
+     ResolvableType type = httpEntityType(forClassWithGenerics(Mono.class, String.class));
+     HttpEntity<Mono<String>> entity = resolveValueWithEmptyBody(type);
+-    TestSubscriber.subscribe(entity.getBody()).assertNoError().assertComplete().assertNoValues();
++    ScriptedSubscriber.create().expectNextCount(0).expectComplete().verify(entity.getBody());
+ }
+\ No newline at end of file

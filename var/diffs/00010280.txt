@@ -1,0 +1,17 @@
+diff --git a/cdffcaeecfeda2125b22dc49b3cb7e019a6f3cd3 b/ccf47f7e2fadbe87dcd71520734e7237378445a9
+index cdffcaeecf..ccf47f7e2f 100644
+--- a/cdffcaeecfeda2125b22dc49b3cb7e019a6f3cd3
++++ b/ccf47f7e2fadbe87dcd71520734e7237378445a9
+@@ -1,9 +1,7 @@
+-private void addAssertionFor(Integer parameterIndex) {
+-    String parameterName = parameterNames.isEmpty() ? Integer.toString(parameterIndex) : parameterNames.get(parameterIndex);
+-    int variableOffset = (access & Opcodes.ACC_STATIC) != 0 ? 0 : 1;
++private void addAssertionFor(String parameterName, int parameterSlot) {
+     visitLdcInsn(myClassName);
+     visitLdcInsn(name);
+     visitLdcInsn(parameterName);
+-    visitVarInsn(Opcodes.ALOAD, variableOffset + parameterIndex);
++    visitVarInsn(Opcodes.ALOAD, parameterSlot);
+     visitMethodInsn(Opcodes.INVOKESTATIC, "com/intellij/util/PathUtil", "assertArgumentIsSystemIndependent", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", false);
+ }
+\ No newline at end of file

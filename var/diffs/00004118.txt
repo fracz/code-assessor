@@ -1,0 +1,18 @@
+diff --git a/8f87d2a085c7152ae7329257c3b31475b04d9cbd b/a90b1bdc57e043a165fa7f7acf616b19367cda84
+index 8f87d2a085..a90b1bdc57 100644
+--- a/8f87d2a085c7152ae7329257c3b31475b04d9cbd
++++ b/a90b1bdc57e043a165fa7f7acf616b19367cda84
+@@ -1,10 +1,10 @@
+ @Override
+ protected boolean doIsValid(MavenId id, MavenProjectIndicesManager manager, ConvertContext context) {
+-    if (StringUtil.isEmpty(id.groupId) || StringUtil.isEmpty(id.artifactId) || StringUtil.isEmpty(id.version)) {
++    if (StringUtil.isEmpty(id.getGroupId()) || StringUtil.isEmpty(id.getArtifactId()) || StringUtil.isEmpty(id.getVersion())) {
+         return false;
+     }
+     // todo handle ranges more sensibly
+     if (isVersionRange(id))
+         return true;
+-    return manager.hasVersion(id.groupId, id.artifactId, id.version);
++    return manager.hasVersion(id.getGroupId(), id.getArtifactId(), id.getVersion());
+ }
+\ No newline at end of file

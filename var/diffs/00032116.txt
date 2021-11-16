@@ -1,0 +1,13 @@
+diff --git a/30d943f3ac66fe7265e00bd27a4b777ac9dc3944 b/eec89dbc9a1bd59c8f0a2fda8e1334da4af882f8
+index 30d943f3ac..eec89dbc9a 100644
+--- a/30d943f3ac66fe7265e00bd27a4b777ac9dc3944
++++ b/eec89dbc9a1bd59c8f0a2fda8e1334da4af882f8
+@@ -1,5 +1,5 @@
+ // Test multiple levels
+ public void testExposePlusEquals5() {
+-    helperExposeExpression("var x = {}; goo().a.b += foo() + 1", "foo", "var x = {};" + "var temp_const$jscomp$0 = goo().a;" + "var temp_const$jscomp$1 = temp_const$jscomp$0.b;" + "temp_const$jscomp$0.b = temp_const$jscomp$1 + (foo() + 1);");
+-    helperExposeExpression("var x = {}; y = (goo().a.b += foo()) + goo().a", "foo", "var x = {};" + "var temp_const$jscomp$0 = goo().a;" + "var temp_const$jscomp$1 = temp_const$jscomp$0.b;" + "y = (temp_const$jscomp$0.b = temp_const$jscomp$1 + foo()) + goo().a");
++    helperExposeExpression("var x = {}; goo().a.b += foo() + 1", "foo", LINE_JOINER.join("var x = {};", "var temp_const$jscomp$0 = goo().a;", "var temp_const$jscomp$1 = temp_const$jscomp$0.b;", "temp_const$jscomp$0.b = temp_const$jscomp$1 + (foo() + 1);"));
++    helperExposeExpression("var x = {}; y = (goo().a.b += foo()) + goo().a", "foo", LINE_JOINER.join("var x = {};", "var temp_const$jscomp$0 = goo().a;", "var temp_const$jscomp$1 = temp_const$jscomp$0.b;", "y = (temp_const$jscomp$0.b = temp_const$jscomp$1 + foo()) + goo().a"));
+ }
+\ No newline at end of file

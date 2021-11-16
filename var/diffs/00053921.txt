@@ -1,0 +1,22 @@
+diff --git a/78821ad38348be67f68051a8280eaeea4cf199de b/b50310506186bd4652a3e18aa91620e895ee9dc1
+index 78821ad383..b503105061 100644
+--- a/78821ad38348be67f68051a8280eaeea4cf199de
++++ b/b50310506186bd4652a3e18aa91620e895ee9dc1
+@@ -1,9 +1,10 @@
+ private void parseFor() {
+-    if (getSqlParser().skipIfEqual(DefaultKeyword.FOR)) {
+-        getSqlParser().skipIfEqual(DefaultKeyword.UPDATE, PostgreSQLKeyword.SHARE);
+-        if (getSqlParser().equalAny(DefaultKeyword.OF)) {
+-            throw new SQLParsingUnsupportedException(DefaultKeyword.OF);
+-        }
+-        getSqlParser().skipIfEqual(PostgreSQLKeyword.NOWAIT);
++    if (!getSqlParser().skipIfEqual(DefaultKeyword.FOR)) {
++        return;
+     }
++    getSqlParser().skipIfEqual(DefaultKeyword.UPDATE, PostgreSQLKeyword.SHARE);
++    if (getSqlParser().equalAny(DefaultKeyword.OF)) {
++        throw new SQLParsingUnsupportedException(DefaultKeyword.OF);
++    }
++    getSqlParser().skipIfEqual(PostgreSQLKeyword.NOWAIT);
+ }
+\ No newline at end of file

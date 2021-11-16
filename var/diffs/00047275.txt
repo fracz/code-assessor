@@ -1,0 +1,15 @@
+diff --git a/640b94f35a97cad7dc51c4a76a08e1750097517f b/9dc6a79fb95553b81ff0b68bf814b22638f9c511
+index 640b94f35a..9dc6a79fb9 100644
+--- a/640b94f35a97cad7dc51c4a76a08e1750097517f
++++ b/9dc6a79fb95553b81ff0b68bf814b22638f9c511
+@@ -1,6 +1,6 @@
+ @Test
+ public void mustWriteCommit() {
+-    writeOneTransaction(10);
+-    checkRead(10);
+-    clear();
++    SharedGroup db = new SharedGroup(createDBFileName(), SharedGroup.Durability.ASYNC);
++    writeOneTransaction(db, 10);
++    checkRead(db, 10);
+ }
+\ No newline at end of file

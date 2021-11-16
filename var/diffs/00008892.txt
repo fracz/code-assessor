@@ -1,0 +1,25 @@
+diff --git a/7e185e8b3b46fd2a6dc13ed36f4088a7cc930979 b/b42032d8b5193f003d21ea63854b2113b8af3dad
+index 7e185e8b3b..b42032d8b5 100644
+--- a/7e185e8b3b46fd2a6dc13ed36f4088a7cc930979
++++ b/b42032d8b5193f003d21ea63854b2113b8af3dad
+@@ -1,15 +1,15 @@
+ @NotNull
+-private static Map<Bytes, Void> collectKeys(byte[] content) throws NoSuchAlgorithmException {
+-    HashMap<Bytes, Void> map = new HashMap<>();
++private static Map<HMethod, Void> collectKeys(byte[] content) throws NoSuchAlgorithmException {
++    HashMap<HMethod, Void> map = new HashMap<>();
+     MessageDigest md = BytecodeAnalysisConverter.getMessageDigest();
+     new ClassReader(content).accept(new KeyedMethodVisitor() {
+
+         @Nullable
+         @Override
+-        MethodVisitor visitMethod(MethodNode node, Key key) {
+-            map.put(ClassDataIndexer.compressKey(md, key), null);
++        MethodVisitor visitMethod(MethodNode node, Method method, EKey key) {
++            map.put(method.hashed(md), null);
+             return null;
+         }
+     }, ClassReader.SKIP_DEBUG | ClassReader.SKIP_FRAMES);
+     return map;
+ }
+\ No newline at end of file

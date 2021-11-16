@@ -1,0 +1,12 @@
+diff --git a/29099e9331644df4983a633768adc934b7963f44 b/d243241f1b762765fcd644f9c3f6d0601f910978
+index 29099e9331..d243241f1b 100644
+--- a/29099e9331644df4983a633768adc934b7963f44
++++ b/d243241f1b762765fcd644f9c3f6d0601f910978
+@@ -1,4 +1,5 @@
+ public Builder lockWait(long wait, TimeUnit unit) {
+-    this.lockWait = Timestamps.SYSTEM().convert(wait, unit);
++    this.lockWait = wait;
++    this.lockWaitUnit = unit;
+     return self();
+ }
+\ No newline at end of file

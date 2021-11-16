@@ -1,0 +1,15 @@
+diff --git a/d2d42fbee411a9f4a37110c6fb6b4804c1aa9d54 b/b315a454f5dd12e896419ca478437459e9202e57
+index d2d42fbee4..b315a454f5 100644
+--- a/d2d42fbee411a9f4a37110c6fb6b4804c1aa9d54
++++ b/b315a454f5dd12e896419ca478437459e9202e57
+@@ -1,8 +1,4 @@
+ @Override
+ public final int getFetchSize() throws SQLException {
+-    int result = 0;
+-    for (ResultSet each : resultSets) {
+-        result += each.getFetchSize();
+-    }
+-    return result;
++    return getResultSets().get(0).getFetchSize();
+ }
+\ No newline at end of file

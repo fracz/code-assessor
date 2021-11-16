@@ -1,0 +1,18 @@
+diff --git a/1924d43ccf30762104f032e31ccece4f87e4022c b/1901d01ef2ba99341d9d325c2fcdd21a10240d2b
+index 1924d43ccf..1901d01ef2 100644
+--- a/1924d43ccf30762104f032e31ccece4f87e4022c
++++ b/1901d01ef2ba99341d9d325c2fcdd21a10240d2b
+@@ -1,11 +1,5 @@
+ public void test_pg_union_0() throws Exception {
+     String sql = "select id, name from t1 union select id, name from t2 order by id";
+     String result = PagerUtils.count(sql, JdbcConstants.POSTGRESQL);
+-    Assert.assertEquals(//
+-    "SELECT COUNT(*)\n" + //
+-    "FROM (SELECT id, name" + //
+-    "\n\tFROM t1" + //
+-    "\n\tUNION" + //
+-    "\n\tSELECT id, name" + //
+-    "\n\tFROM t2" + "\n\t) ALIAS_COUNT", result);
++    Assert.assertEquals("SELECT COUNT(*)\n" + "FROM (\n" + "\tSELECT id, name\n" + "\tFROM t1\n" + "\tUNION\n" + "\tSELECT id, name\n" + "\tFROM t2\n" + ") ALIAS_COUNT", result);
+ }
+\ No newline at end of file

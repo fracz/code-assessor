@@ -1,0 +1,22 @@
+diff --git a/471c599b3e8d38a7e296483682326206123c6909 b/3380e32ca8e118ec365402226abb93355216d7b2
+index 471c599b3e..3380e32ca8 100644
+--- a/471c599b3e8d38a7e296483682326206123c6909
++++ b/3380e32ca8e118ec365402226abb93355216d7b2
+@@ -1,12 +1,10 @@
+ protected SQLExpr parseSome() {
+-    SQLExpr sqlExpr;
++    SQLSomeExpr result = new SQLSomeExpr();
+     getLexer().nextToken();
+-    SQLSomeExpr someExpr = new SQLSomeExpr();
+     accept(Token.LEFT_PAREN);
+     SQLSelect someSubQuery = createSelectParser().select();
+-    someExpr.setSubQuery(someSubQuery);
++    result.setSubQuery(someSubQuery);
+     accept(Token.RIGHT_PAREN);
+-    someSubQuery.setParent(someExpr);
+-    sqlExpr = someExpr;
+-    return sqlExpr;
++    someSubQuery.setParent(result);
++    return result;
+ }
+\ No newline at end of file

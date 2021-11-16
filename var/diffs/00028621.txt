@@ -1,0 +1,16 @@
+diff --git a/41d74f7e0ab0d2eada9eac3bc809ef06815fa0c5 b/e5a48115136995a6a19fa6ccae69af87c5f3451b
+index 41d74f7e0a..e5a4811513 100644
+--- a/41d74f7e0ab0d2eada9eac3bc809ef06815fa0c5
++++ b/e5a48115136995a6a19fa6ccae69af87c5f3451b
+@@ -1,9 +1,9 @@
+ public static <T> void pushObjectIntMap(TObjectIntHashMap<T> map) {
+     Queue<TObjectIntHashMap> ref = objectIntHashMap.get();
+     if (ref == null) {
+-        ref = new LinkedTransferQueue<TObjectIntHashMap>();
++        ref = ConcurrentCollections.newQueue();
+         objectIntHashMap.set(ref);
+     }
+     map.clear();
+     ref.add(map);
+ }
+\ No newline at end of file

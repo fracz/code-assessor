@@ -1,0 +1,14 @@
+diff --git a/2a6a4fdcb7389b16db8bfd6ae372840f217ac511 b/5a353b61785716a0b89925cf1eb8ea856a0729c0
+index 2a6a4fdcb7..5a353b6178 100644
+--- a/2a6a4fdcb7389b16db8bfd6ae372840f217ac511
++++ b/5a353b61785716a0b89925cf1eb8ea856a0729c0
+@@ -1,3 +1,7 @@
+ public Cursor processMouseMoveEvent(final MouseEvent e) {
+-    return myGridInsertProcessor.processMouseMoveEvent(e.getX(), e.getY(), false, 1, 0);
++    final ComponentItem componentItem = myPaletteManager.getActiveItem(ComponentItem.class);
++    if (componentItem != null) {
++        return myGridInsertProcessor.processMouseMoveEvent(e.getPoint(), false, componentItem);
++    }
++    return FormEditingUtil.getMoveNoDropCursor();
+ }
+\ No newline at end of file

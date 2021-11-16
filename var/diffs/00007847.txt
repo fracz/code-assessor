@@ -1,0 +1,18 @@
+diff --git a/8dc89b186a23d4d30bb9d4d6288ab40cbb987df1 b/af450a5520438978fc264f68adecbe88ec81779d
+index 8dc89b186a..af450a5520 100644
+--- a/8dc89b186a23d4d30bb9d4d6288ab40cbb987df1
++++ b/af450a5520438978fc264f68adecbe88ec81779d
+@@ -1,11 +1,9 @@
+ private static TemplateImpl invokeTemplate(TemplateToken token, boolean hasChildren, final CustomTemplateCallback callback, @Nullable ZenCodingGenerator generator) {
+     TemplateImpl template = token.getTemplate();
+     if (generator != null) {
+         assert template != null;
+-        String s = generator.toString(token, hasChildren, callback.getContext());
+-        template = template.copy();
+-        template.setString(s);
++        template = generator.generateTemplate(token, hasChildren, callback.getContext());
+         removeVariablesWhichHasNoSegment(template);
+     }
+     return template;
+ }
+\ No newline at end of file

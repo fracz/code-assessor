@@ -1,0 +1,19 @@
+diff --git a/925175f4ccfaa1e8e687e4098cbdb20e57aed38c b/aaac809b0675f7d3b69de2289ad9709c35496b6c
+index 925175f4cc..aaac809b06 100644
+--- a/925175f4ccfaa1e8e687e4098cbdb20e57aed38c
++++ b/aaac809b0675f7d3b69de2289ad9709c35496b6c
+@@ -1,11 +1,7 @@
+ public <T> T createView(Class<T> implementsClass) {
+-    Class<T> viewClass = getObjectClass(viewClassName, implementsClass);
+-    if (viewClass == null) {
+-        throw new IllegalStateException("View class '" + viewClassName + "' not found");
+-    }
+     try {
+-        return viewClass.newInstance();
++        return viewType.createInstance(implementsClass);
+     } catch (Throwable ex) {
+-        throw new IllegalStateException("Can't create view '" + viewClassName + "'", ex);
++        throw new IllegalStateException("Can't create view '" + viewType.getImplName() + "'", ex);
+     }
+ }
+\ No newline at end of file

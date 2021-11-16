@@ -1,0 +1,19 @@
+diff --git a/1a3d194b81ba6a2109a4aae4c054465ae5c9ab3b b/bccce41a2bb1b0d4e37a34fd2541baa5d8c9a51f
+index 1a3d194b81..bccce41a2b 100644
+--- a/1a3d194b81ba6a2109a4aae4c054465ae5c9ab3b
++++ b/bccce41a2bb1b0d4e37a34fd2541baa5d8c9a51f
+@@ -1,11 +1,9 @@
+ @Override
+ public NetSocket netSocket() {
+     if (!resumed) {
+         resumed = true;
+-        vertx.getContext().execute(() -> {
+-            // resume the socket now as the user had the chance to register a dataHandler
+-            socket.resume();
+-        });
++        // resume the socket now as the user had the chance to register a dataHandler
++        vertx.getContext().execute(socket::resume);
+     }
+     return socket;
+ }
+\ No newline at end of file

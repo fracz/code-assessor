@@ -1,0 +1,16 @@
+diff --git a/1ab2e279b2b8208823129c6219d96f7fd25eef77 b/ffb37061c82b1a52d85435d9b854939d85be5c13
+index 1ab2e279b2..ffb37061c8 100644
+--- a/1ab2e279b2b8208823129c6219d96f7fd25eef77
++++ b/ffb37061c82b1a52d85435d9b854939d85be5c13
+@@ -1,9 +1,9 @@
+ @Override
+-public List<? extends DBNNode> getChildren(DBRProgressMonitor monitor) throws DBException {
++public DBNNode[] getChildren(DBRProgressMonitor monitor) throws DBException {
+     if (children == null) {
+         if (resource instanceof IContainer) {
+             this.children = readChildNodes(monitor);
+         }
+     }
+     return children;
+ }
+\ No newline at end of file

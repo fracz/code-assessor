@@ -1,0 +1,23 @@
+diff --git a/4a295d7f103e098910f1bd1958bc9f9ab17a914d b/24248d03d411470bfc4988c8d7c8bf7ef430612f
+index 4a295d7f10..24248d03d4 100644
+--- a/4a295d7f103e098910f1bd1958bc9f9ab17a914d
++++ b/24248d03d411470bfc4988c8d7c8bf7ef430612f
+@@ -1,15 +1,15 @@
+ private static SQLASTOutputVisitor getSQLVisitor(final DatabaseType databaseType, final SQLStatement sqlStatement) {
+     if (sqlStatement instanceof SQLSelectStatement) {
+         return VisitorLogProxy.enhance(SQLVisitorRegistry.getSelectVistor(databaseType));
+     }
+-    if (sqlStatement instanceof AbstractSQLInsertStatement) {
+-        return VisitorLogProxy.enhance(SQLVisitorRegistry.getInsertVistor(databaseType));
++    if (sqlStatement instanceof SQLInsertStatement) {
++        return null;
+     }
+     if (sqlStatement instanceof SQLUpdateStatement) {
+         return null;
+     }
+     if (sqlStatement instanceof SQLDeleteStatement) {
+         return null;
+     }
+     throw new SQLParserException("Unsupported SQL statement: [%s]", sqlStatement);
+ }
+\ No newline at end of file

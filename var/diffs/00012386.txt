@@ -1,0 +1,17 @@
+diff --git a/44fc9dfda8e481bf880653b2aec3821e678d31fa b/e90e3c563405c22ce94023e877506c7857997f8b
+index 44fc9dfda8..e90e3c5634 100644
+--- a/44fc9dfda8e481bf880653b2aec3821e678d31fa
++++ b/e90e3c563405c22ce94023e877506c7857997f8b
+@@ -1,9 +1,9 @@
+-Collection<VcsRoot> given(@NotNull Collection<String> roots) {
++private Collection<VcsRoot> given(@NotNull String... roots) {
+     return ContainerUtil.map(roots, new Function<String, VcsRoot>() {
+
+         @Override
+         public VcsRoot fun(String s) {
+-            return new VcsRoot(myVcs, new MockVirtualFile(VcsTestUtil.toAbsolute(s, myProject)));
++            return new VcsRoot(myVcs, VcsUtil.getVirtualFile(VcsTestUtil.toAbsolute(s, myProject)));
+         }
+     });
+ }
+\ No newline at end of file

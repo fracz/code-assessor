@@ -1,0 +1,12 @@
+diff --git a/4f2b9d939094de8b97ad8242d09a2ea6a9a812cd b/3f8ec54e0721263dd659f5a34a2efeb48189ac32
+index 4f2b9d9390..3f8ec54e07 100644
+--- a/4f2b9d939094de8b97ad8242d09a2ea6a9a812cd
++++ b/3f8ec54e0721263dd659f5a34a2efeb48189ac32
+@@ -1,5 +1,5 @@
+ @Test
+ public void testVarchar() throws Exception {
+-    InternalAggregationFunction varcharAgg = metadata.getFunctionRegistry().getAggregateFunctionImplementation(new Signature("array_agg", AGGREGATE, "array(varchar)", "varchar"));
++    InternalAggregationFunction varcharAgg = metadata.getFunctionRegistry().getAggregateFunctionImplementation(new Signature("array_agg", AGGREGATE, parseTypeSignature("array(varchar)"), parseTypeSignature(StandardTypes.VARCHAR)));
+     assertAggregation(varcharAgg, 1.0, Arrays.asList("hello", "world"), createStringsBlock(new String[] { "hello", "world" }));
+ }
+\ No newline at end of file

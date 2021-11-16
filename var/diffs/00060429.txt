@@ -1,0 +1,17 @@
+diff --git a/93248a8ecdc77780fdc77bf540280012a3cc31cd b/b66e46a1056df980e75ea6d605473695939f6df6
+index 93248a8ecd..b66e46a105 100644
+--- a/93248a8ecdc77780fdc77bf540280012a3cc31cd
++++ b/b66e46a1056df980e75ea6d605473695939f6df6
+@@ -1,10 +1,3 @@
+ public String set(String key, String value) {
+-    String command = protocol.buildCommand("SET", key, value);
+-    try {
+-        outputStream.write(command.getBytes());
+-        return protocol.getSingleLineReply(inputStream);
+-    } catch (IOException e) {
+-        // TODO Not sure what to do here
+-        return null;
+-    }
++    return sendCommand("SET", key, value).getSingleLineReply();
+ }
+\ No newline at end of file

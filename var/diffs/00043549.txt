@@ -1,0 +1,35 @@
+diff --git a/59a1b1831bef7e14d5ee7e182ad6c6ff4d22f2a1 b/1c1bf92d42a54b95d52e8b238d5a6133519e17d5
+index 59a1b1831b..1c1bf92d42 100644
+--- a/59a1b1831bef7e14d5ee7e182ad6c6ff4d22f2a1
++++ b/1c1bf92d42a54b95d52e8b238d5a6133519e17d5
+@@ -1,28 +1,19 @@
+ /**
+  * Change the type. It checks for compatibility between the change of type.
+  *
+  * @param iType
+  */
+ private void setTypeInternal(final OType iType) {
+     getDatabase().checkSecurity(ODatabaseSecurityResources.SCHEMA, ORole.PERMISSION_UPDATE);
+     acquireSchemaWriteLock();
+     try {
+         if (iType == type)
+             // NO CHANGES
+             return;
+-        boolean ok = false;
+-        switch(type) {
+-            case LINKLIST:
+-                ok = iType == OType.LINKSET;
+-                break;
+-            case LINKSET:
+-                ok = iType == OType.LINKLIST;
+-                break;
+-        }
+-        if (!ok)
++        if (!type.getCastable().contains(iType))
+             throw new IllegalArgumentException("Cannot change property type from " + type + " to " + iType);
+         type = iType;
+     } finally {
+         releaseSchemaWriteLock();
+     }
+ }
+\ No newline at end of file

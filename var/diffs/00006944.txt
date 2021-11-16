@@ -1,0 +1,14 @@
+diff --git a/ee849d683f0b1e06f88eaa1fd26c5cec955146cb b/de209b5619d0bd040c869659f57010486a2d1957
+index ee849d683f..de209b5619 100644
+--- a/ee849d683f0b1e06f88eaa1fd26c5cec955146cb
++++ b/de209b5619d0bd040c869659f57010486a2d1957
+@@ -1,6 +1,6 @@
+-public boolean canDrop(final int componentCount) {
++public boolean canDrop(final ComponentDragObject dragObject) {
+     if (myMode == GridInsertMode.NoDrop) {
+         return false;
+     }
+-    return myContainer.canDrop(myTargetPoint, componentCount);
++    return myContainer.canDrop(myTargetPoint, dragObject.getComponentCount());
+ }
+\ No newline at end of file

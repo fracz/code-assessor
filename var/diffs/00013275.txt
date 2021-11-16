@@ -1,0 +1,20 @@
+diff --git a/754b1b34077e14e2f198c30b832d2a575720c371 b/e028430246735c22f864e57ce9016655c88ba183
+index 754b1b3407..e028430246 100644
+--- a/754b1b34077e14e2f198c30b832d2a575720c371
++++ b/e028430246735c22f864e57ce9016655c88ba183
+@@ -1,9 +1,10 @@
+-private void checkUnique(JsonValue arrayValue) {
+-    if (myCheckUnique && myValueTexts.containsKey(arrayValue.getText())) {
++private void checkUnique(JsonValueAdapter arrayValue) {
++    final String text = arrayValue.getDelegate().getText();
++    if (myCheckUnique && myValueTexts.containsKey(text)) {
+         if (myNonUnique == null)
+             myNonUnique = new ArrayList<>();
+         myNonUnique.add(arrayValue);
+-        myNonUnique.add(myValueTexts.get(arrayValue.getText()));
++        myNonUnique.add(myValueTexts.get(text));
+     }
+-    myValueTexts.put(arrayValue.getText(), arrayValue);
++    myValueTexts.put(text, arrayValue);
+ }
+\ No newline at end of file

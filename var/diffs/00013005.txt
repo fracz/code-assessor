@@ -1,0 +1,22 @@
+diff --git a/43d1856bf1008395143842e83e1be78f1281f4e6 b/5af4bdf388b0517a172e9f42d8aa46c1ff522b18
+index 43d1856bf1..5af4bdf388 100644
+--- a/43d1856bf1008395143842e83e1be78f1281f4e6
++++ b/5af4bdf388b0517a172e9f42d8aa46c1ff522b18
+@@ -1,14 +1,14 @@
+ @Override
+-protected void notifyUnresolvedRemain(final Collection<VirtualFile> roots) {
++protected void notifyUnresolvedRemain() {
+     GitVcs.IMPORTANT_ERROR_NOTIFICATION.createNotification("Conflicts were not resolved during cherry-pick", "Cherry-pick is not complete, you have unresolved merges in your working tree<br/>" + "<a href='resolve'>Resolve</a> conflicts.", NotificationType.WARNING, new NotificationListener() {
+
+         @Override
+         public void hyperlinkUpdate(@NotNull Notification notification, @NotNull HyperlinkEvent event) {
+             if (event.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+                 if (event.getDescription().equals("resolve")) {
+-                    new CherryPickConflictResolver(myProject, myCommitHash, myCommitAuthor, myCommitMessage).justMerge(roots);
++                    new CherryPickConflictResolver(myProject, myRoot, myCommitHash, myCommitAuthor, myCommitMessage).mergeNoProceed();
+                 }
+             }
+         }
+     }).notify(myProject);
+ }
+\ No newline at end of file

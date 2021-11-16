@@ -1,0 +1,21 @@
+diff --git a/b3f1264dcdf8368648b166053d5b80ccd74d75ae b/14f28839ccad0d6024cf8b3d537c5893062be955
+index b3f1264dcd..14f28839cc 100644
+--- a/b3f1264dcdf8368648b166053d5b80ccd74d75ae
++++ b/14f28839ccad0d6024cf8b3d537c5893062be955
+@@ -1,14 +1,8 @@
+ protected void paintComponent(Graphics g) {
+     if (myOpaqueActive) {
+-        // Fix for GTK+L&F: IDEA-60485 Wrong Navbar background under GTK L&F
+-        final Color bg;
+-        if (myKey != null) {
+-            bg = "List.background".equals(myKey) && UIUtil.isUnderGTKLookAndFeel() ? Color.WHITE : UIManager.getColor(myKey);
+-        } else {
+-            bg = getBackground();
+-        }
++        final Color bg = getBackgroundColor();
+         g.setColor(bg);
+         final Dimension size = getSize();
+         g.fillRect(0, 0, size.width, size.height);
+     }
+ }
+\ No newline at end of file

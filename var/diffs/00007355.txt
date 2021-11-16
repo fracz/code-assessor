@@ -1,0 +1,25 @@
+diff --git a/4859b40682963d851a390fcc216473f9287ca4a2 b/688ea3ae826c8d0cfe9a2f81bb5b882e9e1db628
+index 4859b40682..688ea3ae82 100644
+--- a/4859b40682963d851a390fcc216473f9287ca4a2
++++ b/688ea3ae826c8d0cfe9a2f81bb5b882e9e1db628
+@@ -1,18 +1,15 @@
+ private JsonSchemaObject readObject(@NotNull JsonSchemaFileProvider provider) {
+     final VirtualFile file = provider.getSchemaFile();
+     if (file == null)
+         return null;
+     return ReadAction.compute(() -> {
+         try {
+-            final JsonSchemaObject schemaObject = JsonSchemaReader.create(myProject, file).read();
+-            if (schemaObject.getId() != null)
+-                myDefinitions.register(file, schemaObject.getId());
+-            return schemaObject;
++            return JsonSchemaReader.create(myProject, file).read();
+         } catch (ProcessCanceledException e) {
+         // ignored
+         } catch (Exception e) {
+             logException(provider, e);
+         }
+         return null;
+     });
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/6011dc9294a35f6462cd83e27fe97f1a9f8748a8 b/4b66c0d0ee1d3b66f1616c73106d37d2f4b957bc
+index 6011dc9294..4b66c0d0ee 100644
+--- a/6011dc9294a35f6462cd83e27fe97f1a9f8748a8
++++ b/4b66c0d0ee1d3b66f1616c73106d37d2f4b957bc
+@@ -1,6 +1,3 @@
+ public static boolean isMailTo(Uri uri) {
+-    if (uri == null) {
+-        return false;
+-    }
+-    return MAILTO_SCHEME.equals(uri.getScheme());
++    return uri != null && MAILTO_SCHEME.equals(uri.getScheme());
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/8b382d6f62d4a713081283baa99729acd8d75e58 b/9dc7ebfd0276a4af9a7d79ed19801acf8b03b779
+index 8b382d6f62..9dc7ebfd02 100644
+--- a/8b382d6f62d4a713081283baa99729acd8d75e58
++++ b/9dc7ebfd0276a4af9a7d79ed19801acf8b03b779
+@@ -1,7 +1,7 @@
+-protected static String messageWithLabelAndPropertyName(TokenNameLookup tokenNameLookup, String formatString, int labelId, int propertyKeyId) {
++protected static String messageWithLabelAndPropertyName(TokenNameLookup tokenNameLookup, String formatString, NodePropertyDescriptor descriptor) {
+     if (tokenNameLookup != null) {
+-        return String.format(formatString, tokenNameLookup.labelGetName(labelId), tokenNameLookup.propertyKeyGetName(propertyKeyId));
++        return String.format(formatString, tokenNameLookup.labelGetName(descriptor.getLabelId()), descriptor.propertyNameText(tokenNameLookup));
+     } else {
+-        return String.format(formatString, "label[" + labelId + "]", "key[" + propertyKeyId + "]");
++        return String.format(formatString, "label[" + descriptor.getLabelId() + "]", "key[" + descriptor.propertyIdText() + "]");
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/1b5ee1e6cf5cd822e4abd6d87e482577905df872 b/c8befce5188887e0d076d659b8323d56335814b7
+index 1b5ee1e6cf..c8befce518 100644
+--- a/1b5ee1e6cf5cd822e4abd6d87e482577905df872
++++ b/c8befce5188887e0d076d659b8323d56335814b7
+@@ -1,13 +1,14 @@
+ @Override
+ public void addRightClickMenu() {
+     myCodeSourcePanel.addMouseListener(new EditorMouseAdapter() {
+
+         @Override
+         public void mousePressed(EditorMouseEvent e) {
+             final MouseEvent mouseEvent = e.getMouseEvent();
+             if (SwingUtilities.isRightMouseButton(mouseEvent) && mouseEvent.getClickCount() == 1) {
+-                createClickMenu(mouseEvent.getLocationOnScreen(), new DefaultActionGroup(new IpnbMergeCellAboveAction(), new IpnbMergeCellBelowAction(), new IpnbSplitCellAction()));
++                final ListPopup menu = createClickMenu(new DefaultActionGroup(new IpnbMergeCellAboveAction(), new IpnbMergeCellBelowAction(), new IpnbSplitCellAction()));
++                menu.show(RelativePoint.fromScreen(e.getMouseEvent().getLocationOnScreen()));
+             }
+         }
+     });
+ }
+\ No newline at end of file

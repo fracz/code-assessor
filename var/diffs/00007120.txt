@@ -1,0 +1,21 @@
+diff --git a/9f4e08fb60a2cb0016802825f4921ec56e75f0c2 b/8a1303cd29c33c1ce6a380fbddb46e500cb0c3be
+index 9f4e08fb60..8a1303cd29 100644
+--- a/9f4e08fb60a2cb0016802825f4921ec56e75f0c2
++++ b/8a1303cd29c33c1ce6a380fbddb46e500cb0c3be
+@@ -1,14 +1,14 @@
+ private void clearChanges(Collection<Change> changes, boolean removeConflict) {
+     for (Change change : changes) {
+         ContentRevision revision = change.getAfterRevision();
+         if (revision != null) {
+             FilePath filePath = revision.getFile();
+             String path = filePath.getPath();
+             if (removeConflict) {
+                 myConflicts.remove(path);
+-                addNotification(filePath.getVirtualFile(), false);
++                myEditorNotifications.updateNotifications(filePath.getVirtualFile());
+             }
+             myFileStatusManager.fileStatusChanged(filePath.getVirtualFile());
+         }
+     }
+ }
+\ No newline at end of file

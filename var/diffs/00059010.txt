@@ -1,0 +1,26 @@
+diff --git a/76ade573a89305102f86361110f1e5ac6028ecc6 b/89d64780c0de586800d298936b0ef06bb07c37e5
+index 76ade573a8..89d64780c0 100644
+--- a/76ade573a89305102f86361110f1e5ac6028ecc6
++++ b/89d64780c0de586800d298936b0ef06bb07c37e5
+@@ -1,15 +1,13 @@
+ @Override
+ public boolean hasNext() throws StorageException {
+-    boolean ok = false;
+     hasNextInvocationCounter.inc();
+-    final Timer.Context tc = hasNextTimer.time();
++    Timer.Context tc = hasNextTimer.time();
+     try {
+-        boolean result = i.hasNext();
+-        ok = true;
+-        return result;
++        return iterator.hasNext();
++    } catch (StorageException e) {
++        hasNextFailureCounter.inc();
++        throw e;
+     } finally {
+         tc.stop();
+-        if (!ok)
+-            hasNextFailureCounter.inc();
+     }
+ }
+\ No newline at end of file

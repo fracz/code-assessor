@@ -1,0 +1,12 @@
+diff --git a/dda77f7d586bc66816329224e16728c983ff105d b/1dbde080235f6b1fa569febe51b40ddf943a9c5a
+index dda77f7d58..1dbde08023 100644
+--- a/dda77f7d586bc66816329224e16728c983ff105d
++++ b/1dbde080235f6b1fa569febe51b40ddf943a9c5a
+@@ -1,5 +1,5 @@
+ private MasterSlaveDataSource getMasterSlaveDataSource(final Map<String, DataSource> masterSlaveDataSourceMap) throws SQLException {
+     Map<String, DataSource> slaveDs = new HashMap<>(1, 1);
+     slaveDs.put("dataSource_slave_only", masterSlaveDataSourceMap.get("dataSource_slave_only"));
+-    return new MasterSlaveDataSource("ms_only", "dataSource_master_only", masterSlaveDataSourceMap.get("dataSource_master_only"), slaveDs, MasterSlaveLoadBalanceStrategyType.ROUND_ROBIN);
++    return new MasterSlaveDataSource(new MasterSlaveRule("ms_only", "dataSource_master_only", masterSlaveDataSourceMap.get("dataSource_master_only"), slaveDs));
+ }
+\ No newline at end of file

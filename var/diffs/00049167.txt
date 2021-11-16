@@ -1,0 +1,17 @@
+diff --git a/a83bfea411b4b06d7fe4994d3dfde2ea243d7a2f b/bf9171a9114b5cd123d59244c5420688e8c92e6c
+index a83bfea411..bf9171a911 100644
+--- a/a83bfea411b4b06d7fe4994d3dfde2ea243d7a2f
++++ b/bf9171a9114b5cd123d59244c5420688e8c92e6c
+@@ -1,10 +1,10 @@
+ @Override
+ public Font getFont(Object element) {
+     int colNumber = ((Number) element).intValue();
+     if (mode == ResultSetMode.GRID) {
+-        if (dataFilter.getFilterColumn(visibleColumns[colNumber].getAttributeName()) != null) {
++        if (model.getDataFilter().getFilterColumn(model.getVisibleColumn(colNumber).getAttributeName()) != null) {
+             return boldFont;
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

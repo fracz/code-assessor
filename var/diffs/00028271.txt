@@ -1,0 +1,15 @@
+diff --git a/195404c09cd9e68e28935c694ea109b12b4eb55a b/b050f5c54737ba37bc14c2e966c81e80779e98fe
+index 195404c09c..b050f5c547 100644
+--- a/195404c09cd9e68e28935c694ea109b12b4eb55a
++++ b/b050f5c54737ba37bc14c2e966c81e80779e98fe
+@@ -1,8 +1,6 @@
+ public WebSocketConnectOptions setVersion(int version) {
+     Objects.requireNonNull(version);
+-    if (version != 0 && version != 8 && version != 13) {
+-        throw new IllegalArgumentException("version must be 0 or 8 or 13");
+-    }
++    Arguments.require(0 == version || 8 == version || 13 == version, "version must be 0 or 8 or 13");
+     this.version = version;
+     return this;
+ }
+\ No newline at end of file

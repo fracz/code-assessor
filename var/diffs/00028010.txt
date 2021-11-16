@@ -1,0 +1,15 @@
+diff --git a/6be342c72cdff5e68c6ce04c3574233e6131f5f1 b/163ea76043c21a75f67b84c348eabe59ae245497
+index 6be342c72c..163ea76043 100644
+--- a/6be342c72cdff5e68c6ce04c3574233e6131f5f1
++++ b/163ea76043c21a75f67b84c348eabe59ae245497
+@@ -1,7 +1,4 @@
+ private void addInitialRemote(GitConnection connection) throws GitException {
+-    RemoteAddRequest add = newDto(RemoteAddRequest.class);
+-    add.setName("newRemote");
+-    add.setUrl("newRemote.url");
+-    add.setBranches(Arrays.asList("branch1"));
+-    connection.remoteAdd(add);
++    RemoteAddParams params = RemoteAddParams.create("newRemote", "newRemote.url").withBranches(singletonList("branch1"));
++    connection.remoteAdd(params);
+ }
+\ No newline at end of file

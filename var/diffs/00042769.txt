@@ -1,0 +1,21 @@
+diff --git a/e0de42b1784744af8c7290f78800557e2c90e9c3 b/a1f0b0c171b0ee5f6b639aed6eb2c2a329c0898c
+index e0de42b178..a1f0b0c171 100644
+--- a/e0de42b1784744af8c7290f78800557e2c90e9c3
++++ b/a1f0b0c171b0ee5f6b639aed6eb2c2a329c0898c
+@@ -1,13 +1,11 @@
+ /**
+  * Execute the CREATE CLASS.
+  */
+ public Object execute(final Map<Object, Object> iArgs) {
+     if (className == null)
+         throw new OCommandExecutionException("Can't execute the command because it hasn't been parsed yet");
+-    OClass sourceClass = database.getMetadata().getSchema().getClass(className);
+-    if (sourceClass != null)
++    if (database.getMetadata().getSchema().existsClass(className))
+         throw new OCommandExecutionException("Class " + className + " already exists");
+-    sourceClass = database.getMetadata().getSchema().createClass(className);
+-    database.getMetadata().getSchema().save();
++    final OClass sourceClass = ((OSchemaProxy) database.getMetadata().getSchema()).createClassInternal(className, superClass, clusterIds);
+     return sourceClass.getId();
+ }
+\ No newline at end of file

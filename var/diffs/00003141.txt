@@ -1,0 +1,25 @@
+diff --git a/5e026dfab4aba8372eabfb8ad6f783878e49b5fc b/d99064e9a0a987f988ad27a6e65e284864cb4b08
+index 5e026dfab4..d99064e9a0 100644
+--- a/5e026dfab4aba8372eabfb8ad6f783878e49b5fc
++++ b/d99064e9a0a987f988ad27a6e65e284864cb4b08
+@@ -1,12 +1,15 @@
+ public String expand(final DataContext dataContext) {
+     final Project project = PlatformDataKeys.PROJECT.getData(dataContext);
+-    if (project == null)
++    if (project == null) {
+         return null;
+-    VirtualFile file = (VirtualFile) dataContext.getData(DataConstants.VIRTUAL_FILE);
+-    if (file == null)
++    }
++    VirtualFile file = PlatformDataKeys.VIRTUAL_FILE.getData(dataContext);
++    if (file == null) {
+         return null;
++    }
+     final VirtualFile sourceRoot = ProjectRootManager.getInstance(project).getFileIndex().getSourceRootForFile(file);
+-    if (sourceRoot == null)
++    if (sourceRoot == null) {
+         return null;
++    }
+     return getPath(sourceRoot);
+ }
+\ No newline at end of file

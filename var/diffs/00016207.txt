@@ -1,0 +1,11 @@
+diff --git a/67676dc6886246eadd772d15e14943a3cedccdb2 b/0854297f97aa15c3f9488e9d24b906be3da40609
+index 67676dc688..0854297f97 100644
+--- a/67676dc6886246eadd772d15e14943a3cedccdb2
++++ b/0854297f97aa15c3f9488e9d24b906be3da40609
+@@ -1,4 +1,4 @@
+ @Override
+-public void noneApplicable(@NotNull BindingTrace trace, @NotNull Set<? extends CallableDescriptor> descriptors) {
++public <D extends CallableDescriptor> void noneApplicable(@NotNull BindingTrace trace, @NotNull Set<ResolvedCall<D>> descriptors) {
+     trace.report(NONE_APPLICABLE.on(callNode, descriptors));
+ }
+\ No newline at end of file

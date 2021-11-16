@@ -1,0 +1,15 @@
+diff --git a/136c649eecfdd9d4cf5a628c27d86e4b904cb7e0 b/b83e0a6976e4db6fd62c20620deb5d9db37c31e5
+index 136c649eec..b83e0a6976 100644
+--- a/136c649eecfdd9d4cf5a628c27d86e4b904cb7e0
++++ b/b83e0a6976e4db6fd62c20620deb5d9db37c31e5
+@@ -1,8 +1,8 @@
+ /**
+  * Optimizes imports resorting them and removing unneeded
+  *
+  * @param file file to optimize imports
+  */
+ public static void optimizeImports(@NotNull final PsiFile file) {
+-    new PyImportOptimizer().processFile(file).run();
++    PyImportOptimizer.onlyRemoveUnused().processFile(file).run();
+ }
+\ No newline at end of file

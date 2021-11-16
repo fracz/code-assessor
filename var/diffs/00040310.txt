@@ -1,0 +1,19 @@
+diff --git a/4513320ec50e0d80e39d7ad551f8298f933d1ce9 b/25cbcc3b759da0e940ed7ed4a6806b62da339527
+index 4513320ec5..25cbcc3b75 100644
+--- a/4513320ec50e0d80e39d7ad551f8298f933d1ce9
++++ b/25cbcc3b759da0e940ed7ed4a6806b62da339527
+@@ -1,8 +1,4 @@
+-@Override
+-public InitMaxStreams getInitMaxStreams() {
+-    try {
+-        return serverChannel.getOption(SCTP_INIT_MAXSTREAMS);
+-    } catch (IOException e) {
+-        throw new ChannelException(e);
+-    }
+-}
+\ No newline at end of file
++/**
++ * Gets the <a href="http://openjdk.java.net/projects/sctp/javadoc/com/sun/nio/sctp/SctpStandardSocketOption.html">{@code SCTP_INIT_MAXSTREAMS}</a> option.
++ */
++InitMaxStreams getInitMaxStreams();
+\ No newline at end of file

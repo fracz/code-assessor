@@ -1,0 +1,15 @@
+diff --git a/7b30d06ebad63cbd60edf5601f09509dc5a671eb b/a21365663c9b0c9196a6de06284241ead77b4be4
+index 7b30d06eba..a21365663c 100644
+--- a/7b30d06ebad63cbd60edf5601f09509dc5a671eb
++++ b/a21365663c9b0c9196a6de06284241ead77b4be4
+@@ -1,8 +1,5 @@
+ public T loadByRowId(long rowId) {
+-    if (selectByRowId == null) {
+-        selectByRowId = getSelectAll() + "WHERE ROWID=?";
+-    }
+     String[] idArray = new String[] { Long.toString(rowId) };
+-    Cursor cursor = db.rawQuery(selectByRowId, idArray);
++    Cursor cursor = db.rawQuery(statements.getSelectByRowId(), idArray);
+     return readUniqueAndCloseCursor(cursor);
+ }
+\ No newline at end of file

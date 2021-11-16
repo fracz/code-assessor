@@ -1,0 +1,37 @@
+diff --git a/23e9dff705c6e89266dbd32a34dce74d791a7a02 b/699b0010323ab3edc46b252d0feb5cd8af958101
+index 23e9dff705..699b001032 100644
+--- a/23e9dff705c6e89266dbd32a34dce74d791a7a02
++++ b/699b0010323ab3edc46b252d0feb5cd8af958101
+@@ -1,13 +1,22 @@
+-public static List<PyExpression> removeAndGetSuperClasses(PyClass clazz, Set<String> superClasses) {
+-    if (superClasses.size() == 0)
++/**
++ * Removes super classes by name and returns list of removed
++ *
++ * @param clazz                class to find super classes to remove
++ * @param superClassesToRemove list of super class names
++ * @return list of removed classes
++ */
++@NotNull
++public static List<PyExpression> removeAndGetSuperClasses(@NotNull PyClass clazz, @NotNull Set<String> superClassesToRemove) {
++    if (superClassesToRemove.isEmpty()) {
+         return Collections.emptyList();
+-    final List<PyExpression> toAdd = new ArrayList<PyExpression>();
+-    final PyExpression[] elements = clazz.getSuperClassExpressions();
+-    for (PyExpression element : elements) {
+-        if (superClasses.contains(element.getText())) {
+-            toAdd.add(element);
+-            PyUtil.removeListNode(element);
++    }
++    final List<PyExpression> result = new ArrayList<PyExpression>();
++    for (PyExpression superClassExpression : clazz.getSuperClassExpressions()) {
++        // TODO: We probably should use #getName() here, but #getText() was used in previous version so keeped temporary for backward comp.
++        if (superClassesToRemove.contains(superClassExpression.getText())) {
++            result.add(superClassExpression);
++            superClassExpression.delete();
+         }
+     }
+-    return toAdd;
++    return result;
+ }
+\ No newline at end of file

@@ -1,0 +1,23 @@
+diff --git a/1abc8904dc0019501644cddbaf8246a7c63f64c2 b/248625f41b248ad6657e560535fd2655080250a4
+index 1abc8904dc..248625f41b 100644
+--- a/1abc8904dc0019501644cddbaf8246a7c63f64c2
++++ b/248625f41b248ad6657e560535fd2655080250a4
+@@ -1,11 +1,12 @@
+ @Override
+ public void visitCode() {
+-    for (Integer parameterIndex : annotatedParameterIndices) {
+-        if (stringParameterIndices.contains(parameterIndex)) {
+-            addAssertionFor(parameterIndex);
+-        } else {
+-            throw new InstrumentationException("Only String can be annotated as @SystemIndependent");
++    for (Parameter parameter : parameters) {
++        if (parameter.isSystemIndependent) {
++            if (!parameter.isString) {
++                throw new InstrumentationException("Only String can be annotated as @SystemIndependent");
++            }
++            addAssertionFor(parameter.name, parameter.slot);
+         }
+     }
+     super.visitCode();
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/30b2b37da2d19106cb9493fd3e11325283eae745 b/ae692021d78fec581e7849df27144dbeebc140f6
+index 30b2b37da2..ae692021d7 100644
+--- a/30b2b37da2d19106cb9493fd3e11325283eae745
++++ b/ae692021d78fec581e7849df27144dbeebc140f6
+@@ -1,11 +1,11 @@
++@Test
+ public void shouldPointStackTraceToActualInvocation() {
+-    Strictly strictly = createStrictOrderVerifier(mock, mockTwo);
+     strictly.verify(mock, atLeastOnce()).simpleMethod(anyInt());
+     strictly.verify(mockTwo).simpleMethod(anyInt());
+     try {
+         strictly.verify(mock).simpleMethod(999);
+         fail();
+-    } catch (InvocationDiffersFromActual e) {
++    } catch (StrictVerificationFailure e) {
+         assertThat(e.getCause(), hasFirstMethodInStackTrace("third"));
+     }
+ }
+\ No newline at end of file

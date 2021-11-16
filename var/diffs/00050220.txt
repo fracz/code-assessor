@@ -1,0 +1,17 @@
+diff --git a/00ff51a500b365e599a0c72bdc68718c5a724ca0 b/655492e23734e9a3f64d0d7c0740d44eb79bfdb8
+index 00ff51a500..655492e237 100644
+--- a/00ff51a500b365e599a0c72bdc68718c5a724ca0
++++ b/655492e23734e9a3f64d0d7c0740d44eb79bfdb8
+@@ -1,8 +1,8 @@
+ @Override
+ protected OracleProcedureStandalone runTask() {
+-    CreateProcedureDialog dialog = new CreateProcedureDialog(DBeaverUI.getActiveWorkbenchShell(), parent.getDataSource());
+-    if (dialog.open() != IDialogConstants.OK_ID) {
++    CreateProcedurePage editPage = new CreateProcedurePage(parent);
++    if (!editPage.edit()) {
+         return null;
+     }
+-    return new OracleProcedureStandalone(parent, dialog.getProcedureName(), dialog.getProcedureType());
++    return new OracleProcedureStandalone(parent, editPage.getProcedureName(), editPage.getProcedureType());
+ }
+\ No newline at end of file

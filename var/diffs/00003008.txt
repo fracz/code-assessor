@@ -1,0 +1,20 @@
+diff --git a/0d2f8b2002a42bbf0ab3c09f65bdf5704bcddfbc b/a0bea5124e9cbbdb806a887b7ddf880ccb988621
+index 0d2f8b2002..a0bea5124e 100644
+--- a/0d2f8b2002a42bbf0ab3c09f65bdf5704bcddfbc
++++ b/a0bea5124e9cbbdb806a887b7ddf880ccb988621
+@@ -1,13 +1,12 @@
+ public void update(AnActionEvent event) {
+     super.update(event);
+     final Presentation presentation = event.getPresentation();
+-    final DataContext context = event.getDataContext();
+-    Module module = (Module) context.getData(DataKeys.MODULE.getName());
++    Module module = LangDataKeys.MODULE.getData(event.getDataContext());
+     if (module == null || !LibrariesUtil.hasGroovySdk(module)) {
+         presentation.setEnabled(false);
+         presentation.setVisible(false);
+     } else {
+         presentation.setEnabled(true);
+         presentation.setVisible(true);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/51ea71fdd19027663ba5d4a1bf3f89a2cdff5e7e b/ea215d853766fe82ecfdef43c3dd68b3468588ea
+index 51ea71fdd1..ea215d8537 100644
+--- a/51ea71fdd19027663ba5d4a1bf3f89a2cdff5e7e
++++ b/ea215d853766fe82ecfdef43c3dd68b3468588ea
+@@ -1,4 +1,10 @@
+-private void createAndShowTree(String expressionText, WatchItemDescriptor descriptor, DebuggerContextImpl debuggerContext) {
+-    final InspectDebuggerTree tree = getInspectTree(descriptor);
+-    showTreePopup(tree, debuggerContext, expressionText, new ValueHintTreeComponent(this, tree, expressionText));
++private void createAndShowTree(final String expressionText, final NodeDescriptorImpl descriptor) {
++    final DebuggerTreeCreatorImpl creator = new DebuggerTreeCreatorImpl(getProject());
++    DebuggerInvocationUtil.invokeLater(getProject(), new Runnable() {
++
++        @Override
++        public void run() {
++            showTreePopup(creator, Pair.create(descriptor, expressionText));
++        }
++    });
+ }
+\ No newline at end of file

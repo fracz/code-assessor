@@ -1,0 +1,24 @@
+diff --git a/0aa5f532295afd15b6eaabb1e90e492595f50fbe b/4e21dc075a1a23b7907776c5b1aee7920b01f5f3
+index 0aa5f53229..4e21dc075a 100644
+--- a/0aa5f532295afd15b6eaabb1e90e492595f50fbe
++++ b/4e21dc075a1a23b7907776c5b1aee7920b01f5f3
+@@ -1,10 +1,16 @@
+ private IndexRule findRelevantIndexRule(List<IndexRule> indexRules, int propertyKeyId, long[] labelIds) {
+     for (long labelId : labelIds) {
+         for (IndexRule indexRule : indexRules) {
+-            if (indexRule.getPropertyKey() == propertyKeyId && indexRule.getLabel() == labelId) {
+-                return indexRule;
++            if (indexRule.getLabel() == labelId) {
++                if (indexRule.descriptor().isComposite()) {
++                    throw new UnsupportedOperationException("Composite Index not yet supported");
++                } else {
++                    if (indexRule.descriptor().getPropertyKeyId() == propertyKeyId) {
++                        return indexRule;
++                    }
++                }
+             }
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

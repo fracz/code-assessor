@@ -1,0 +1,19 @@
+diff --git a/1998682a90bfde872fe832e02df24b25af867559 b/fb523e1a00c1e4d7bc37de8085ebc191c45a9813
+index 1998682a90..fb523e1a00 100644
+--- a/1998682a90bfde872fe832e02df24b25af867559
++++ b/fb523e1a00c1e4d7bc37de8085ebc191c45a9813
+@@ -1,11 +1,10 @@
+ public void testPutLabelAndRevertInstantly() throws IOException {
+     VirtualFile f = createChildData(myRoot, "foo.txt");
+     setBinaryContent(f, new byte[] { 123 }, -1, 4000, this);
+-    final LocalHistory localHistory = LocalHistory.getInstance();
+-    final Label testLabel = localHistory.putSystemLabel(myProject, "testLabel");
+-    localHistory.revertToLabel(myProject, myRoot, testLabel);
++    final Label testLabel = LocalHistory.getInstance().putSystemLabel(myProject, "testLabel");
++    revertToLabel(testLabel, myRoot);
+     f = myRoot.findChild("foo.txt");
+     assertNotNull(f);
+     assertEquals(123, f.contentsToByteArray()[0]);
+     assertEquals(4000, f.getTimeStamp());
+ }
+\ No newline at end of file

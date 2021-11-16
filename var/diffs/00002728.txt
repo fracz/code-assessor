@@ -1,0 +1,21 @@
+diff --git a/260cd8d3f1fffd2572b3ccbaa7dff90f1ff7211c b/4ad65d669f6fff61bdfb7712f29990de8ec8cadf
+index 260cd8d3f1..4ad65d669f 100644
+--- a/260cd8d3f1fffd2572b3ccbaa7dff90f1ff7211c
++++ b/4ad65d669f6fff61bdfb7712f29990de8ec8cadf
+@@ -1,13 +1,12 @@
+ @Nullable
+ public static GrTypeDefinition findContainingClass(GrIntroduceContext context) {
+-    PsiElement place = context.place;
+-    while (place != null) {
++    PsiElement place = context.getPlace();
++    while (true) {
+         final GrTypeDefinition typeDefinition = PsiTreeUtil.getParentOfType(place, GrTypeDefinition.class, true, GroovyFileBase.class);
+         if (typeDefinition == null)
+             return null;
+         if (typeDefinition.hasModifierProperty(PsiModifier.STATIC) || typeDefinition.getContainingClass() == null)
+             return typeDefinition;
+         place = typeDefinition;
+     }
+-    return null;
+ }
+\ No newline at end of file

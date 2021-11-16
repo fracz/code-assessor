@@ -1,0 +1,18 @@
+diff --git a/8664aa43549e7cc04c8007303df79bcdffc3a48d b/e21a17823686ec3f8e4ec3e06047006a2592dfda
+index 8664aa4354..e21a178236 100644
+--- a/8664aa43549e7cc04c8007303df79bcdffc3a48d
++++ b/e21a17823686ec3f8e4ec3e06047006a2592dfda
+@@ -1,8 +1,9 @@
+-private void computeInnerClasses(@NotNull PsiClass psiClass, @NotNull Collection<DeclarationDescriptor> result) {
++@NotNull
++private Collection<ClassDescriptor> computeInnerClasses(@NotNull PsiClass psiClass) {
+     // TODO: Trying to hack the situation when we produce namespace descriptor for java class and still want to see inner classes
+     if (descriptor instanceof JavaNamespaceDescriptor) {
+-        result.addAll(getResolver().resolveInnerClasses(descriptor, psiClass, false));
++        return getResolver().resolveInnerClasses(descriptor, psiClass, false);
+     } else {
+-        result.addAll(getResolver().resolveInnerClasses(descriptor, psiClass, ((ClassPsiDeclarationProviderImpl) declarationProvider).isStaticMembers()));
++        return getResolver().resolveInnerClasses(descriptor, psiClass, ((ClassPsiDeclarationProviderImpl) declarationProvider).isStaticMembers());
+     }
+ }
+\ No newline at end of file

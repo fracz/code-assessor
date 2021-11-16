@@ -1,0 +1,16 @@
+diff --git a/7dc9cfcfd609dc51f654c05a6e1f2c5726c5b004 b/dbf7a6cc88773fab4b42af790b65ea959bc2e391
+index 7dc9cfcfd6..dbf7a6cc88 100644
+--- a/7dc9cfcfd609dc51f654c05a6e1f2c5726c5b004
++++ b/dbf7a6cc88773fab4b42af790b65ea959bc2e391
+@@ -1,7 +1,7 @@
+ @Override
+ public void releaseSavepoint(Savepoint savepoint) throws SQLException {
+-    if (conn != null) {
+-        conn.releaseSavepoint(savepoint);
++    if (conn == null) {
++        throw new SQLException("connection not init");
+     }
+-    throw new SQLException("connection not init");
++    conn.releaseSavepoint(savepoint);
+ }
+\ No newline at end of file

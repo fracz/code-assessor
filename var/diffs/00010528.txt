@@ -1,0 +1,17 @@
+diff --git a/e66659cbf98ae04a806f73cc086f002b1478a5c9 b/11651cbe31b0db9946a98f36a417bd4fe1e31b92
+index e66659cbf9..11651cbe31 100644
+--- a/e66659cbf98ae04a806f73cc086f002b1478a5c9
++++ b/11651cbe31b0db9946a98f36a417bd4fe1e31b92
+@@ -1,9 +1,9 @@
+ private CvsElement createRoot(Project project) {
+     String rootName = myCvsRootConfiguration.toString();
+     CvsElement result = CvsElementFactory.FOLDER_ELEMENT_FACTORY.createElement(rootName, myCvsRootConfiguration, project);
+-    result.setName(rootName);
+-    result.setDataProvider(new RootDataProvider(myCvsRootConfiguration, myShowFiles, myShowModules));
++    result.setDataProvider(new RootDataProvider(myCvsRootConfiguration));
+     result.setPath(".");
+     result.cannotBeCheckedOut();
++    result.setChildrenLoader(this);
+     return result;
+ }
+\ No newline at end of file

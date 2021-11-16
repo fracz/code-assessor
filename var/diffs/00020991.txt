@@ -1,0 +1,12 @@
+diff --git a/9894685aa83ae0a5dc118fd0061aff6834757f07 b/f7ed5931ae9bb0dd3ea5533ef441052b7ba3494c
+index 9894685aa8..f7ed5931ae 100644
+--- a/9894685aa83ae0a5dc118fd0061aff6834757f07
++++ b/f7ed5931ae9bb0dd3ea5533ef441052b7ba3494c
+@@ -1,5 +1,5 @@
+ @Override
+ public void setSQLXML(int parameterIndex, SQLXML x) throws SQLException {
+-    setParameter(parameterIndex, new JdbcParameterImpl(Types.SQLXML, x));
++    setParameter(parameterIndex, createParameter(Types.SQLXML, x));
+     createChain().preparedStatement_setSQLXML(this, parameterIndex, x);
+ }
+\ No newline at end of file

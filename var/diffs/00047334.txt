@@ -1,0 +1,19 @@
+diff --git a/8b9c26650ca51d72b8f588dc102a28c6ee6c8c09 b/c959881649e4bc3db3853a60f2c6958b571d0193
+index 8b9c26650c..c959881649 100644
+--- a/8b9c26650ca51d72b8f588dc102a28c6ee6c8c09
++++ b/c959881649e4bc3db3853a60f2c6958b571d0193
+@@ -1,11 +1,3 @@
+-private void unsubscribe(RedissonLockEntry entry) {
+-    synchronized (ENTRIES) {
+-        if (entry.release() == 0) {
+-            // just an assertion
+-            boolean removed = ENTRIES.remove(getEntryName()) == entry;
+-            if (removed) {
+-                commandExecutor.getConnectionManager().unsubscribe(getChannelName());
+-            }
+-        }
+-    }
++private void unsubscribe(Future<RedissonLockEntry> future) {
++    PUBSUB.unsubscribe(future.getNow(), getEntryName(), getChannelName(), commandExecutor.getConnectionManager());
+ }
+\ No newline at end of file

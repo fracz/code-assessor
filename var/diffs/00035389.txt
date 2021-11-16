@@ -1,0 +1,19 @@
+diff --git a/a5020d4ef9dbb5f6101d3c9ddf437f5d9a8c3ec9 b/30a27337fdabb9e70f79f00f5c5afac6e89bc006
+index a5020d4ef9..30a27337fd 100644
+--- a/a5020d4ef9dbb5f6101d3c9ddf437f5d9a8c3ec9
++++ b/30a27337fdabb9e70f79f00f5c5afac6e89bc006
+@@ -1,9 +1,9 @@
+ public void onResume() {
+     if (FileDownloadLog.NEED_LOG) {
+-        FileDownloadLog.d(this, "On resume %d", downloadTransfer.getDownloadId());
++        FileDownloadLog.d(this, "On resume %d", getId());
+     }
+-    downloadTransfer.setStatus(FileDownloadStatus.pending);
+     this.isPending = true;
+-    helper.updatePending(downloadTransfer.getDownloadId());
+-    FileDownloadProcessEventPool.getImpl().asyncPublishInNewThread(event.setTransfer(downloadTransfer));
++    helper.updatePending(getId());
++    model.setStatus(FileDownloadStatus.pending);
++    onStatusChanged(model.getStatus());
+ }
+\ No newline at end of file

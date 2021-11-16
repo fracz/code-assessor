@@ -1,0 +1,21 @@
+diff --git a/3803def54d34c4cd7fe30401c8a97c60481654f3 b/a558b9a81b2196e3ef99831f11a7c00fe7040881
+index 3803def54d..a558b9a81b 100644
+--- a/3803def54d34c4cd7fe30401c8a97c60481654f3
++++ b/a558b9a81b2196e3ef99831f11a7c00fe7040881
+@@ -1,13 +1,12 @@
+-Object createProxy(Class<?> expectedType) {
++Object createProxy(Errors errors, Class<?> expectedType) throws ResolveFailedException {
+     if (!expectedType.isInterface()) {
+-        // TODO: Report better error.
+-        throw new CreationException(new Message(ErrorMessage.cannotSatisfyCircularDependency(expectedType).toString()));
++        throw errors.cannotSatisfyCircularDependency(expectedType).toException();
+     }
+     if (invocationHandlers == null) {
+         invocationHandlers = new ArrayList<DelegatingInvocationHandler<T>>();
+     }
+     DelegatingInvocationHandler<T> invocationHandler = new DelegatingInvocationHandler<T>();
+     invocationHandlers.add(invocationHandler);
+     Object object = Proxy.newProxyInstance(expectedType.getClassLoader(), new Class[] { expectedType }, invocationHandler);
+     return expectedType.cast(object);
+ }
+\ No newline at end of file

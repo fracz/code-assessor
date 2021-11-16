@@ -1,0 +1,19 @@
+diff --git a/c581870ee71242fe2489cf7e312f1d068154fdf5 b/6d2e950ca9924176ca7f8939d98ac08360697293
+index c581870ee7..6d2e950ca9 100644
+--- a/c581870ee71242fe2489cf7e312f1d068154fdf5
++++ b/6d2e950ca9924176ca7f8939d98ac08360697293
+@@ -1,12 +1,12 @@
+ /**
+  * Sets the directory to use to select the default project, and to search for the settings file. Set to null to use the default current directory.
+  *
+  * @param currentDir The directory. Set to null to use the default.
+  */
+ public void setCurrentDir(File currentDir) {
+     if (currentDir != null) {
+         this.currentDir = GFileUtils.canonicalise(currentDir);
+     } else {
+-        this.currentDir = GFileUtils.canonicalise(SystemProperties.getCurrentDir());
++        this.currentDir = new BuildLayoutParameters().getProjectDir();
+     }
+ }
+\ No newline at end of file

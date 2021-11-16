@@ -1,0 +1,16 @@
+diff --git a/fe41c537d46e3767b5e205d4562a0be51d7c5242 b/d5c32d43e155bf9b4e14a09c869a8696b26f3380
+index fe41c537d4..d5c32d43e1 100644
+--- a/fe41c537d46e3767b5e205d4562a0be51d7c5242
++++ b/d5c32d43e155bf9b4e14a09c869a8696b26f3380
+@@ -1,8 +1,8 @@
+ protected int setByteValue(int pageOffset, byte value) {
+-    if (changesTree != null) {
+-        changesTree.add(new byte[] { value }, pageOffset + PAGE_PADDING);
++    if (changes != null) {
++        changes.setByteValue(pagePointer, pageOffset + PAGE_PADDING, value);
+     } else
+         pagePointer.setByte(pageOffset + PAGE_PADDING, value);
+     cacheEntry.markDirty();
+     return OByteSerializer.BYTE_SIZE;
+ }
+\ No newline at end of file

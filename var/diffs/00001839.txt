@@ -1,0 +1,14 @@
+diff --git a/5450ede8056e45378c22a3fe2c234c619153fc8a b/399b23731f6f6ff526670c00e1459214fa09bbfb
+index 5450ede805..399b23731f 100644
+--- a/5450ede8056e45378c22a3fe2c234c619153fc8a
++++ b/399b23731f6f6ff526670c00e1459214fa09bbfb
+@@ -1,5 +1,6 @@
+ /**
+  * Reads the given number of the most recent commits from the log.
++ * @param requirements some limitations on commit data that should be returned.
+  */
+ @NotNull
+-List<? extends VcsCommitMetadata> readFirstBlock(@NotNull VirtualFile root, boolean ordered, int commitCount) throws VcsException;
+\ No newline at end of file
++List<? extends VcsCommitMetadata> readFirstBlock(@NotNull VirtualFile root, @NotNull Requirements requirements) throws VcsException;
+\ No newline at end of file

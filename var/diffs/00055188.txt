@@ -1,0 +1,15 @@
+diff --git a/de9fad017b419f429df1f2f5ce580e0454df251a b/580196ea649ed2d9341297bb21a28b46605f3d75
+index de9fad017b..580196ea64 100644
+--- a/de9fad017b419f429df1f2f5ce580e0454df251a
++++ b/580196ea649ed2d9341297bb21a28b46605f3d75
+@@ -1,7 +1,4 @@
+ @Override
+-public void setViewState(ViewState<V> viewState) {
+-    if (!(viewState instanceof LceViewState)) {
+-        throw new IllegalArgumentException("Only " + LceViewState.class.getSimpleName() + " are allowed as view state");
+-    }
+-    this.viewState = (LceViewState<M, V>) viewState;
++public void setViewState(LceViewState<M, V> viewState) {
++    this.viewState = viewState;
+ }
+\ No newline at end of file

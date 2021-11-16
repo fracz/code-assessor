@@ -1,0 +1,14 @@
+diff --git a/1dd38aea4740ba56ca6ab37ed6c22607786894a3 b/383dd263771ddedbb84fb7218c4e9ce56e0704eb
+index 1dd38aea47..383dd26377 100644
+--- a/1dd38aea4740ba56ca6ab37ed6c22607786894a3
++++ b/383dd263771ddedbb84fb7218c4e9ce56e0704eb
+@@ -1,5 +1,4 @@
+-public static byte[] getFileContents(final SvnVcs vcs, final String path, final boolean isUrl, final SVNRevision revision, final SVNRevision pegRevision) throws VcsException {
+-    File file = new File(path);
+-    WorkingCopyFormat format = vcs.getWorkingCopyFormat(file);
+-    return WorkingCopyFormat.ONE_DOT_EIGHT.equals(format) ? getFileContentsCommandLine(vcs, path, revision, pegRevision) : getFileContentWithSvnKit(vcs, path, isUrl, revision, pegRevision);
++public static byte[] getFileContents(@NotNull final SvnVcs vcs, @NotNull final SvnTarget target, @Nullable final SVNRevision revision, @Nullable final SVNRevision pegRevision) throws VcsException {
++    ClientFactory factory = target.isFile() ? vcs.getFactory(target.getFile()) : vcs.getFactory();
++    return factory.createContentClient().getContent(target, revision, pegRevision);
+ }
+\ No newline at end of file

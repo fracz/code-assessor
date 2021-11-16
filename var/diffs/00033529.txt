@@ -1,0 +1,20 @@
+diff --git a/f2f4ea8b1e35e418eb20908ff179cfcdfa6f414f b/ad3e9defabc8cfedb9dcce654c7a81bf2bbbe659
+index f2f4ea8b1e..ad3e9defab 100644
+--- a/f2f4ea8b1e35e418eb20908ff179cfcdfa6f414f
++++ b/ad3e9defabc8cfedb9dcce654c7a81bf2bbbe659
+@@ -1,9 +1,8 @@
+-private DownloadedAndParsedMetaDataArtifact findDefaultArtifact(DependencyMetaData dependency, ArtifactResolver artifactResolver) {
++private MutableModuleVersionMetaData findDefaultArtifact(DependencyMetaData dependency, ArtifactResolver artifactResolver) {
+     MutableModuleVersionMetaData metaData = getDefaultMetaData(dependency);
+-    ResolvedArtifact artifactRef = findAnyArtifact(metaData, artifactResolver);
+-    if (artifactRef == null) {
+-        return null;
++    if (hasArtifacts(metaData, artifactResolver)) {
++        LOGGER.debug("No meta-data file found for module '{}' in repository '{}', using default data instead.", dependency.getRequested(), getName());
++        return metaData;
+     }
+-    LOGGER.debug("No meta-data file found for module '{}' in repository '{}', using default data instead.", dependency.getRequested(), getName());
+-    return new DownloadedAndParsedMetaDataArtifact(artifactRef.resource, artifactRef.artifactId, metaData);
++    return null;
+ }
+\ No newline at end of file

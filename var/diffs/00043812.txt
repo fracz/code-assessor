@@ -1,0 +1,15 @@
+diff --git a/e0eccdbb09ad306630d00cf19a4fa5f8e2ff4ad2 b/7c167b21aafedebbed7d71361a3d7117bbf3540f
+index e0eccdbb09..7c167b21aa 100644
+--- a/e0eccdbb09ad306630d00cf19a4fa5f8e2ff4ad2
++++ b/7c167b21aafedebbed7d71361a3d7117bbf3540f
+@@ -1,7 +1,7 @@
+ @AfterMethod
+-public void afterMethod() {
++public void afterMethod() throws Exception {
+     database.command(new OCommandSQL("delete from classIndexManagerTestClass")).execute();
+     database.command(new OCommandSQL("delete from classIndexManagerTestClassTwo")).execute();
+     database.command(new OCommandSQL("delete from classIndexManagerTestSuperClass")).execute();
+-    database.close();
++    super.afterMethod();
+ }
+\ No newline at end of file

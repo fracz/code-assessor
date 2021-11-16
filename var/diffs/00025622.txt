@@ -1,0 +1,18 @@
+diff --git a/ea11ecb810420686ca0b6c1682ca7f910a2ac667 b/9b0609bccf438913f2f0f7564fed9ac01dac104b
+index ea11ecb810..9b0609bccf 100644
+--- a/ea11ecb810420686ca0b6c1682ca7f910a2ac667
++++ b/9b0609bccf438913f2f0f7564fed9ac01dac104b
+@@ -1,11 +1,8 @@
+ /**
+  * Gets the declared inputs to the specified component.
+  *
+  * @return A map from subscribed component/stream to the grouping subscribed with.
+  */
+ public Map<GlobalStreamId, Grouping> getSources(String componentId) {
+-    Bolt bolt = _topology.get_bolts().get(componentId);
+-    if (bolt == null)
+-        return null;
+-    return bolt.get_inputs();
++    return getComponentCommon(componentId).get_inputs();
+ }
+\ No newline at end of file

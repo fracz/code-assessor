@@ -1,0 +1,27 @@
+diff --git a/93564d0e9c39213999fb639a71cf3ca7bce7e1dd b/48ffbc22cf98d03bd5ccb7922bf166b1b437edd5
+index 93564d0e9c..48ffbc22cf 100644
+--- a/93564d0e9c39213999fb639a71cf3ca7bce7e1dd
++++ b/48ffbc22cf98d03bd5ccb7922bf166b1b437edd5
+@@ -1,15 +1,18 @@
+ private void onDragStart() {
++    // Here we need to:
++    // 1. Stop any pending pending scroll
+     // 2. Set currentPosition to position of the item that is closest to the center
+-    if (Math.abs(scrolled) > scrollToChangeTheCurrent) {
++    boolean isScrollingThroughMultiplePositions = Math.abs(scrolled) > scrollToChangeTheCurrent;
++    if (isScrollingThroughMultiplePositions) {
+         int scrolledPositions = scrolled / scrollToChangeTheCurrent;
+         currentPosition += scrolledPositions;
+         scrolled -= scrolledPositions * scrollToChangeTheCurrent;
+     }
+-    if (Math.abs(scrolled) >= scrollToChangeTheCurrent * 0.6f) {
++    if (isAnotherItemCloserThanCurrent()) {
+         int direction = dxToDirection(scrolled);
+         currentPosition += direction;
+-        scrolled = (scrollToChangeTheCurrent - Math.abs(scrolled)) * -direction;
++        scrolled = -getHowMuchIsLeftToScroll();
+     }
+     pendingPosition = NO_POSITION;
+     pendingScroll = 0;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/a4c97987348981527147c14dd9cdd2d9b08f26fb b/396e723a5f56b5bda9ac853a78aab20d785f052d
+index a4c9798734..396e723a5f 100644
+--- a/a4c97987348981527147c14dd9cdd2d9b08f26fb
++++ b/396e723a5f56b5bda9ac853a78aab20d785f052d
+@@ -1,7 +1,8 @@
+-public void accept(Token token) {
++@Override
++public void accept(final Token token) {
+     if (getLexer().equalToken(token)) {
+         getLexer().nextToken();
+     } else {
+-        throw new ParserException("syntax error, expect " + token + ", actual " + getLexer().getToken() + " " + getLexer().getLiterals());
++        throw new ParserException(getLexer(), token);
+     }
+ }
+\ No newline at end of file

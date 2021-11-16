@@ -1,0 +1,26 @@
+diff --git a/cb93a904b37b6257fdd44492f4edf5f6404e188e b/5feca9319873b3b74f1c23625fc709d97164d195
+index cb93a904b3..5feca93198 100644
+--- a/cb93a904b37b6257fdd44492f4edf5f6404e188e
++++ b/5feca9319873b3b74f1c23625fc709d97164d195
+@@ -1,16 +1,8 @@
+-private void scrollSelectionToVisible(final int direction) {
++private void scrollSelectionToVisible() {
+     final int selectedIndex = myModel.getSelectedIndex();
+     if (selectedIndex == -1 || selectedIndex >= myList.size())
+         return;
+-    final int firstIndex = myFirstIndex;
+-    while (!myList.get(selectedIndex).isShowing()) {
+-        myFirstIndex = myModel.getIndexByMode(myFirstIndex + direction);
+-        rebuildComponent();
+-        // to be sure not to hang
+-        if (firstIndex == myFirstIndex)
+-            break;
+-    }
+-    // not to miss right button && font corrections
+-    setSize(getPreferredSize());
+-    repaint();
++    MyItemLabel selectedItem = myList.get(selectedIndex);
++    Rectangle rect = selectedItem.getBounds();
++    scrollRectToVisible(rect);
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/da28b52078f9048e7b6274eb02c93724fea233f9 b/ec37407f252d7285c0eec122c201a220e62bdb9c
+index da28b52078..ec37407f25 100644
+--- a/da28b52078f9048e7b6274eb02c93724fea233f9
++++ b/ec37407f252d7285c0eec122c201a220e62bdb9c
+@@ -1,10 +1,8 @@
++/**
++ * Extract all possible intermediate operations
++ * @return the terminal block with all possible terminal operations extracted (may return this if no operations could be extracted)
++ */
+ @NotNull
+-List<Operation> extractOperations() {
+-    List<Operation> result = new ArrayList<>();
+-    while (true) {
+-        Operation op = extractOperation();
+-        if (op == null)
+-            return result;
+-        result.add(op);
+-    }
++TerminalBlock extractOperations() {
++    return StreamEx.iterate(this, Objects::nonNull, TerminalBlock::extractOperation).reduce((a, b) -> b).orElse(this);
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/41876da4b4e6317f201f7bf6f620fb9711312009 b/a92e1b1f07b7bc7cc90c4d112802066f898cfc0c
+index 41876da4b4..a92e1b1f07 100644
+--- a/41876da4b4e6317f201f7bf6f620fb9711312009
++++ b/a92e1b1f07b7bc7cc90c4d112802066f898cfc0c
+@@ -1,7 +1,7 @@
+ private static void assertRstStream(Object msg, int streamId, SpdyStreamStatus status) {
+     assertNotNull(msg);
+     assertTrue(msg instanceof SpdyRstStreamFrame);
+     SpdyRstStreamFrame spdyRstStreamFrame = (SpdyRstStreamFrame) msg;
+-    assertEquals(spdyRstStreamFrame.getStreamId(), streamId);
+-    assertEquals(spdyRstStreamFrame.getStatus(), status);
++    assertEquals(streamId, spdyRstStreamFrame.getStreamId());
++    assertEquals(status, spdyRstStreamFrame.getStatus());
+ }
+\ No newline at end of file

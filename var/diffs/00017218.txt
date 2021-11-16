@@ -1,0 +1,15 @@
+diff --git a/2885f6718f1c10af79880561c57715203aaa7e3d b/8ce5cce7d920305876d59ea282ddfc888832736b
+index 2885f6718f..8ce5cce7d9 100644
+--- a/2885f6718f1c10af79880561c57715203aaa7e3d
++++ b/8ce5cce7d920305876d59ea282ddfc888832736b
+@@ -1,6 +1,5 @@
+ @Override
+-public void put(Type type, InstructionAdapter v) {
+-    v.getstatic(owner.getInternalName(), JvmAbi.PROPERTY_METADATA_ARRAY_NAME, "[" + PROPERTY_METADATA_TYPE);
+-    v.iconst(indexInPropertyMetadataArray);
+-    StackValue.arrayElement(PROPERTY_METADATA_TYPE).put(type, v);
++public void put(@NotNull Type type, @NotNull InstructionAdapter v) {
++    Field array = StackValue.field(Type.getType("[" + PROPERTY_METADATA_TYPE), owner, JvmAbi.PROPERTY_METADATA_ARRAY_NAME, true, StackValue.none());
++    StackValue.arrayElement(PROPERTY_METADATA_TYPE, array, StackValue.constant(indexInPropertyMetadataArray, Type.INT_TYPE)).put(type, v);
+ }
+\ No newline at end of file

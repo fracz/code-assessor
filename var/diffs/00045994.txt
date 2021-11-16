@@ -1,0 +1,21 @@
+diff --git a/423d847cea5a03acf7da3545fa526ef2e124954f b/caa9110915bed0bd4ca92ecc9c055241df70dd5b
+index 423d847cea..caa9110915 100644
+--- a/423d847cea5a03acf7da3545fa526ef2e124954f
++++ b/caa9110915bed0bd4ca92ecc9c055241df70dd5b
+@@ -1,14 +1,8 @@
+ private static boolean containsMetaParameter(Annotation[] annotations) {
+     for (Annotation annotation : annotations) {
+-        if (annotation instanceof TypeParameter) {
+-            return true;
+-        }
+-        if (annotation instanceof OperatorDependency) {
+-            return true;
+-        }
+-        if (annotation instanceof LiteralParameter) {
++        if (annotation instanceof TypeParameter || annotation instanceof LiteralParameter || annotation instanceof OperatorDependency) {
+             return true;
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

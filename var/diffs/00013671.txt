@@ -1,0 +1,25 @@
+diff --git a/ddb74abb9d4fef957773be6818e2368cc703d665 b/3631197c90e1975439f774c99dc69d5b1dfa35a2
+index ddb74abb9d..3631197c90 100644
+--- a/ddb74abb9d4fef957773be6818e2368cc703d665
++++ b/3631197c90e1975439f774c99dc69d5b1dfa35a2
+@@ -1,17 +1,17 @@
+ @NotNull
+ @Override
+ public Icon evaluate() {
+     Icon result;
+     try {
+         result = nonNull(myEvaluator.fun(myParam));
+     } catch (IndexNotReadyException e) {
+         result = EMPTY_ICON;
+     }
+     if (Holder.CHECK_CONSISTENCY) {
+         checkDoesntReferenceThis(result);
+     }
+-    if (myScale != 1f && result instanceof ScalableIcon) {
+-        result = ((ScalableIcon) result).scale(myScale);
++    if (getScale() != 1f && result instanceof ScalableIcon) {
++        result = ((ScalableIcon) result).scale(getScale());
+     }
+     return result;
+ }
+\ No newline at end of file

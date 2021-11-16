@@ -1,0 +1,17 @@
+diff --git a/be16c5f83ba9f7f3e581703e67f76cbd0506a5e5 b/6462464586819ceff2b102b0957ebcf4995ba172
+index be16c5f83b..6462464586 100644
+--- a/be16c5f83ba9f7f3e581703e67f76cbd0506a5e5
++++ b/6462464586819ceff2b102b0957ebcf4995ba172
+@@ -1,4 +1,10 @@
+ @Override
+ public Long next() throws StorageException {
+-    return IDHandler.getKeyID(keyiter.next());
++    if (next == null)
++        next = nextInternal();
++    if (next == null)
++        throw new NoSuchElementException();
++    Long result = next;
++    next = null;
++    return result;
+ }
+\ No newline at end of file

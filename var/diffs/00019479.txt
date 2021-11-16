@@ -1,0 +1,18 @@
+diff --git a/f57e0972acd59e331b51477aca38c33113ad6db6 b/d94cfba2acd1b2990c5bef84c8a7e54b6f185c00
+index f57e0972ac..d94cfba2ac 100644
+--- a/f57e0972acd59e331b51477aca38c33113ad6db6
++++ b/d94cfba2acd1b2990c5bef84c8a7e54b6f185c00
+@@ -1,8 +1,8 @@
+ @Override
+ public void onPause() {
+     super.onPause();
+-    emojiKeyboard.destroy();
+-    Editable text = (Editable) messageBody.getText().subSequence(0, messageBody.getText().length());
+-    convertUrlspansToMarkdownLinks(text);
+-    messenger.saveDraft(peer, text.toString());
++    // TODO: Add markdown processing for keeping mentions in drafts
++    Editable text = (Editable) messageEditText.getText().subSequence(0, messageEditText.getText().length());
++    convertUrlSpansToMarkdownLinks(text);
++    messenger().saveDraft(peer, text.toString());
+ }
+\ No newline at end of file

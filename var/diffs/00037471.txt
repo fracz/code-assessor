@@ -1,0 +1,13 @@
+diff --git a/5b8663de1e3402c97cde2ac040e6e3680a16fe65 b/05553fa42095c88bd594ea3233392c5624c85768
+index 5b8663de1e..05553fa420 100644
+--- a/5b8663de1e3402c97cde2ac040e6e3680a16fe65
++++ b/05553fa42095c88bd594ea3233392c5624c85768
+@@ -1,5 +1,4 @@
+ public AnnotationKeyMatcherRegistry build() {
+-    AnnotationKeyMatcherRegistry annotationKeyMatcherRegistry = new AnnotationKeyMatcherRegistry(buildMap);
+-    buildMap = new IntHashMap<AnnotationKeyMatcher>();
+-    return annotationKeyMatcherRegistry;
++    IntHashMap<AnnotationKeyMatcher> copy = IntHashMapUtils.copy(buildMap);
++    return new AnnotationKeyMatcherRegistry(copy);
+ }
+\ No newline at end of file

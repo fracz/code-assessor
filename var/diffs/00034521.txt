@@ -1,0 +1,19 @@
+diff --git a/6eb14285aae6f9a522e5de7c950961bb526e7c4b b/9720dad03370a1a8284aad314628d3c98e8a3644
+index 6eb14285aa..9720dad033 100644
+--- a/6eb14285aae6f9a522e5de7c950961bb526e7c4b
++++ b/9720dad03370a1a8284aad314628d3c98e8a3644
+@@ -1,12 +1,5 @@
+ @Override
+ @NonNull
+ public Observable<Comment> postProjectComment(@NonNull final Project project, @NonNull final String body) {
+-    final Comment comment = CommentFactory.comment().toBuilder().body(body).build();
+-    observable.onNext(Pair.create("post_project_comment", new HashMap<String, Object>() {
+-
+-        {
+-            put("comment", comment);
+-        }
+-    }));
+-    return Observable.just(comment);
++    return Observable.just(CommentFactory.comment().toBuilder().body(body).build());
+ }
+\ No newline at end of file

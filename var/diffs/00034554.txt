@@ -1,0 +1,14 @@
+diff --git a/169ba17d6a9828ca08e548ef45703a5295a4c587 b/2e3fb982e57de31b3ddead2a635bdd1d3d4e2e8c
+index 169ba17d6a..2e3fb982e5 100644
+--- a/169ba17d6a9828ca08e548ef45703a5295a4c587
++++ b/2e3fb982e57de31b3ddead2a635bdd1d3d4e2e8c
+@@ -1,3 +1,7 @@
+ public static boolean isLocaleGermany(@NonNull final User user) {
+-    return user.location().country().equals("DE");
++    final Location location = user.location();
++    if (location != null) {
++        return location.country().equals("DE");
++    }
++    return false;
+ }
+\ No newline at end of file

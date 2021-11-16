@@ -1,0 +1,24 @@
+diff --git a/200fe7c633b7d85380b805f9b0d7cc0c904170ed b/ca70716e73b22d9572449b33cd395d71b2222998
+index 200fe7c633..ca70716e73 100644
+--- a/200fe7c633b7d85380b805f9b0d7cc0c904170ed
++++ b/ca70716e73b22d9572449b33cd395d71b2222998
+@@ -1,15 +1,14 @@
+ // RELATIONSHIP COMMAND
+ @Test
+ public void shouldApplyRelationshipCommandToTheStore() throws Exception {
+     // given
+-    final CommandHandler applier = newApplier(false);
++    final BatchTransactionApplier applier = newApplier(false);
+     final RelationshipRecord record = new RelationshipRecord(12, 3, 4, 5);
+     record.setInUse(true);
++    final Command command = new Command.RelationshipCommand().init(record);
+     // when
+-    boolean result = apply(applier, (handler, tx) -> {
+-        return handler.visitRelationshipCommand(new Command.RelationshipCommand().init(record));
+-    }, transactionToApply);
++    boolean result = apply(applier, command::handle, transactionToApply);
+     // then
+     assertFalse(result);
+     verify(relationshipStore, times(1)).updateRecord(record);
+ }
+\ No newline at end of file

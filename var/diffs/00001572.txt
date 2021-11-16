@@ -1,0 +1,18 @@
+diff --git a/02c7aa47f237dc88753782202171ca200310ceae b/c4e29924172a0966fad5534191e18fb653623aaf
+index 02c7aa47f2..c4e2992417 100644
+--- a/02c7aa47f237dc88753782202171ca200310ceae
++++ b/c4e29924172a0966fad5534191e18fb653623aaf
+@@ -1,11 +1,4 @@
+ @NotNull
+ private List<GitCommit> getUnmergedCommits(@NotNull GitRepository repository, @NotNull String branchName, @NotNull String baseBranch) {
+-    List<GitCommit> history;
+-    try {
+-        history = GitHistoryUtils.history(myProject, repository.getRoot(), baseBranch + ".." + branchName);
+-    } catch (VcsException e) {
+-        // this is critical, because we need to show the list of unmerged commits, and it shouldn't happen => inform user and developer
+-        throw new GitExecutionException("Couldn't get [git log .." + branchName + "] on repository [" + repository.getRoot() + "]", e);
+-    }
+-    return history;
++    return myGit.history(repository, baseBranch + ".." + branchName);
+ }
+\ No newline at end of file

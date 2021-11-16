@@ -1,0 +1,23 @@
+diff --git a/63b8543e549f21cebb432b56f101073eecddfaf4 b/c38080307c6297b0ba30d48435e081aec1fa9a57
+index 63b8543e54..c38080307c 100644
+--- a/63b8543e549f21cebb432b56f101073eecddfaf4
++++ b/c38080307c6297b0ba30d48435e081aec1fa9a57
+@@ -1,12 +1,7 @@
+ protected JComponent createCenterPanel() {
+-    final Box vBox = Box.createVerticalBox();
+-    final Box labelBox = Box.createHorizontalBox();
+-    final JLabel label = new JLabel();
+-    labelBox.add(label);
+-    labelBox.add(Box.createHorizontalGlue());
+-    vBox.add(labelBox);
+-    vBox.add(Box.createVerticalStrut(4));
+-    vBox.add(createListAndVisibilityPanels());
+-    label.setText(RefactoringBundle.message("moveInstanceMethod.select.an.instance.parameter"));
+-    return vBox;
++    JPanel panel = new JPanel(new BorderLayout(UIUtil.DEFAULT_HGAP, UIUtil.DEFAULT_VGAP));
++    final JLabel label = new JLabel(RefactoringBundle.message("moveInstanceMethod.select.an.instance.parameter"));
++    panel.add(label, BorderLayout.NORTH);
++    panel.add(createListAndVisibilityPanels(), BorderLayout.CENTER);
++    return panel;
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/1af22cfa5309d7a73eb9c3355f4bd957f6f0d13e b/5aeaaab973097c261fa85210c1b4faee208b0e83
+index 1af22cfa53..5aeaaab973 100644
+--- a/1af22cfa5309d7a73eb9c3355f4bd957f6f0d13e
++++ b/5aeaaab973097c261fa85210c1b4faee208b0e83
+@@ -1,6 +1,6 @@
+ public void testSelectToDocumentEnd() throws Exception {
+     init("line1\n" + "line2\n" + "line3\n" + "line4");
+     mouse().clickAt(1, 1).dragTo(2, 2).release();
+-    executeAction("EditorTextEndWithSelection");
++    executeAction(IdeActions.ACTION_EDITOR_TEXT_END_WITH_SELECTION);
+     checkResultByText("line1\n" + "l<selection>ine2<caret></selection>\n" + "l<selection>ine3<caret></selection>\n" + "l<selection>ine4<caret></selection>");
+ }
+\ No newline at end of file

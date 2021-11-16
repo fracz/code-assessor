@@ -1,0 +1,39 @@
+diff --git a/30c790802ed3dc769b66bf6f945a93ca7dc4d6dc b/4b3ba12aef4e46b17f2c6b26ecbaa58b3ea3f29c
+index 30c790802e..4b3ba12aef 100644
+--- a/30c790802ed3dc769b66bf6f945a93ca7dc4d6dc
++++ b/4b3ba12aef4e46b17f2c6b26ecbaa58b3ea3f29c
+@@ -1,32 +1,15 @@
+ private static byte[] changeMethod(ClassPool classPool, ClassLoader classLoader, String javassistClassName, byte[] classfileBuffer) {
+     try {
+         CtClass cc = classPool.get(javassistClassName);
+-        // updateGetConnectionMethod(classPool,cc);
+         updateCloseMethod(classPool, cc);
+-        /*
+-			CtMethod[] methods=cc.getDeclaredMethods();
+-			for(CtMethod method:methods) {
+-//				System.out.println(method.getLongName());
+-				if(!method.isEmpty() ) {
+-					String methodName=method.getName();
+-					if(methodName.equals("getConnection")) {
+-//							&& !methodName.startsWith("version")) {
+-						method.insertBefore("{System.out.println(\"-----DBCP "+method.getLongName()+" is started.\");}");
+-						method.insertAfter("{System.out.println(\"-----DBCP "+method.getLongName()+" is finished.\");}");
+-						System.out.println(method.getLongName());
+-					}
+-				} else {
+-					log(method.getLongName()+" is empty !!!!!");
+-				}
+-			}
+-*/
+         byte[] newClassfileBuffer = null;
+         newClassfileBuffer = cc.toBytecode();
+         // cc.writeFile();
+         printClassConvertComplete(javassistClassName);
+         return newClassfileBuffer;
+     } catch (Exception e) {
++        logger.error(e.getMessage());
+         e.printStackTrace();
+     }
+     return null;
+ }
+\ No newline at end of file

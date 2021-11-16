@@ -1,0 +1,29 @@
+diff --git a/08e79e14c684326a28dee8d26e87b6d177734ccc b/411b5269335cf27c1e2d89440f44df2c804bdd19
+index 08e79e14c6..411b526933 100644
+--- a/08e79e14c684326a28dee8d26e87b6d177734ccc
++++ b/411b5269335cf27c1e2d89440f44df2c804bdd19
+@@ -1,15 +1,9 @@
+-/**
+- * @param context context to create the PendingIntent.
+- * @param account The account to delete the messages on.
+- * @param refs The messages to delete.
+- * @param notificationID ID of the notification that triggered this Activity.
+- * @return PendingIntent that either deletes directly or shows a confirm-dialog on the phone (not on the wear device) first.
+- */
+-public static PendingIntent getIntent(final Context context, final Account account, final Serializable refs, final int notificationID) {
+-    Intent i = new Intent(context, NotificationDeleteConfirmation.class);
+-    i.putExtra(EXTRA_ACCOUNT, account.getUuid());
+-    i.putExtra(EXTRA_MESSAGE_LIST, refs);
+-    i.putExtra(EXTRA_NOTIFICATION_ID, notificationID);
+-    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+-    return PendingIntent.getActivity(context, account.getAccountNumber(), i, PendingIntent.FLAG_UPDATE_CURRENT);
++public static PendingIntent getIntent(Context context, Account account, Serializable messageToDelete, int notificationId) {
++    Intent intent = new Intent(context, NotificationDeleteConfirmation.class);
++    intent.putExtra(EXTRA_ACCOUNT_UUID, account.getUuid());
++    intent.putExtra(EXTRA_MESSAGE_LIST, messageToDelete);
++    intent.putExtra(EXTRA_NOTIFICATION_ID, notificationId);
++    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
++    int accountNumber = account.getAccountNumber();
++    return PendingIntent.getActivity(context, accountNumber, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+ }
+\ No newline at end of file

@@ -1,0 +1,31 @@
+diff --git a/9a1864989c3230633c6351b2b7c42c4c2b905d42 b/1e0a5b6ecc74f6d5da184404c8d33fc9da50abf3
+index 9a1864989c..1e0a5b6ecc 100644
+--- a/9a1864989c3230633c6351b2b7c42c4c2b905d42
++++ b/1e0a5b6ecc74f6d5da184404c8d33fc9da50abf3
+@@ -1,23 +1,21 @@
+ /**
+  * Wraps another chronology, with datetime limits. When withUTC or
+  * withZone is called, the returned LimitChronology instance has
+  * the same limits, except they are time zone adjusted.
+  *
+  * @param base  base chronology to wrap
+  * @param lowerLimit  inclusive lower limit, or null if none
+  * @param upperLimit  exclusive upper limit, or null if none
+  * @throws IllegalArgumentException if chronology is null or limits are invalid
+  */
+ public static LimitChronology getInstance(Chronology base, ReadableDateTime lowerLimit, ReadableDateTime upperLimit) {
+     if (base == null) {
+         throw new IllegalArgumentException("Must supply a chronology");
+     }
+     lowerLimit = lowerLimit == null ? null : lowerLimit.toDateTime();
+     upperLimit = upperLimit == null ? null : upperLimit.toDateTime();
+-    if (lowerLimit != null && upperLimit != null) {
+-        if (!lowerLimit.isBefore(upperLimit)) {
+-            throw new IllegalArgumentException("The lower limit must be come before than the upper limit");
+-        }
++    if (lowerLimit != null && upperLimit != null && !lowerLimit.isBefore(upperLimit)) {
++        throw new IllegalArgumentException("The lower limit must be come before than the upper limit");
+     }
+     return new LimitChronology(base, (DateTime) lowerLimit, (DateTime) upperLimit);
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/2b9483a2bc893d4e7c2e0318857e5e45d5f01150 b/7692d479b24e942eafc13dd2db5eda2758e0134d
+index 2b9483a2bc..7692d479b2 100644
+--- a/2b9483a2bc893d4e7c2e0318857e5e45d5f01150
++++ b/7692d479b24e942eafc13dd2db5eda2758e0134d
+@@ -1,16 +1,12 @@
+ // todo[ann] fix and uncomment
+ // public void testStaticCallArguments() throws Exception { doTest("Impl", "Int", false); }
+ // public void testListArgs() throws Exception { doTest("Impl", "Int", false); }
+ // public void testCovariantReturnTypes() throws Exception { doTest("Impl", "Int", false); }
+ // public void testNewExpr() throws Exception { doTest("Impl", "Int", false); }
+ // public void testForEach1() throws Exception { doTest("Test.MyIterableImpl", "Test.MyIterable", false); }
+ // public void testForEach2() throws Exception { doTest("Test.MyIterableImpl", "Test.MyIterable", false); }
+ private void doTest(@NonNls final String className, @NonNls final String superClassName, final boolean replaceInstanceOf) throws Exception {
+-    doTest(new PerformAction() {
+-
+-        @Override
+-        public void performAction(VirtualFile rootDir, VirtualFile rootAfter) throws Exception {
+-            TurnRefsToSuperTest.this.performAction(className, superClassName, replaceInstanceOf);
+-        }
++    doTest((rootDir, rootAfter) -> {
++        TurnRefsToSuperTest.this.performAction(className, superClassName, replaceInstanceOf);
+     }, true);
+ }
+\ No newline at end of file

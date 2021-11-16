@@ -1,0 +1,21 @@
+diff --git a/a36c5014b56f2bd834d63a7e17e56d991357bcd6 b/d7ef83102bf1ffac08b66f8e079a5e069d5f8794
+index a36c5014b5..d7ef83102b 100644
+--- a/a36c5014b56f2bd834d63a7e17e56d991357bcd6
++++ b/d7ef83102bf1ffac08b66f8e079a5e069d5f8794
+@@ -1,11 +1,14 @@
+ private void assertGotPingWithRetry(Map<String, Integer> counts, Condition<Integer> condition) throws Exception {
+     for (int i = 0; i < 10; i++) {
+         Thread.sleep(200);
+         Collection<Integer> countValues = counts.values();
+-        Integer count = countValues.iterator().next();
++        Integer count = 0;
++        if (countValues.iterator().hasNext()) {
++            count = countValues.iterator().next();
++        }
+         if (condition.isTrue(count)) {
+             return;
+         }
+     }
+     fail();
+ }
+\ No newline at end of file

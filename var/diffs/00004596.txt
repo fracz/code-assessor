@@ -1,0 +1,17 @@
+diff --git a/0f9116de56a48fa28f19cd984df7a0b8c47287d7 b/7ad751bcb9a70574a044e6fe7ca4c8469453ff94
+index 0f9116de56..7ad751bcb9 100644
+--- a/0f9116de56a48fa28f19cd984df7a0b8c47287d7
++++ b/7ad751bcb9a70574a044e6fe7ca4c8469453ff94
+@@ -1,10 +1,10 @@
+ @Override
+ public void visitVariable(PsiVariable variable) {
+     if (!checkVariables)
+         return;
+     final PsiType type = variable.getType();
+     PsiType targetType = getConversionClassType(type);
+     if (targetType != null) {
+-        holder.registerProblem(variable, PROBLEM_DESCRIPTION_FOR_VARIABLE, TypeMigrationVariableTypeFixProvider.createTypeMigrationFix(variable, targetType, true));
++        holder.registerProblem(variable, PROBLEM_DESCRIPTION_FOR_VARIABLE, new MigrateGuavaTypeFix(variable, targetType));
+     }
+ }
+\ No newline at end of file

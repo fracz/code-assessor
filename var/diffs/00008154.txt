@@ -1,0 +1,13 @@
+diff --git a/22f57e15b16da4796ac9dcc59032546416ea84a3 b/4f2d3f31f2d4d6532e0ea2ac00e2c4efe44866c1
+index 22f57e15b1..4f2d3f31f2 100644
+--- a/22f57e15b16da4796ac9dcc59032546416ea84a3
++++ b/4f2d3f31f2d4d6532e0ea2ac00e2c4efe44866c1
+@@ -1,4 +1,4 @@
+-private LibraryInfo[] getRequiredLibraries(LibraryVersionInfo versionInfo) {
+-    List<LibraryInfo> libraryInfos = getLibraries().get(versionInfo);
+-    return libraryInfos.toArray(new LibraryInfo[libraryInfos.size()]);
++private static LibraryInfo[] getRequiredLibraries(Version version) {
++    final LibraryInfo[] infos = LibrariesDownloadAssistant.getLibraryInfos(version);
++    return infos == null ? LibraryInfo.EMPTY_ARRAY : infos;
+ }
+\ No newline at end of file

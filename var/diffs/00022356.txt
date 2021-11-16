@@ -1,0 +1,21 @@
+diff --git a/5ee344a5d200a75bfca6a9b53500278e074a017e b/dbf0a96959afe85f78323328b097dadb9be74d81
+index 5ee344a5d2..dbf0a96959 100644
+--- a/5ee344a5d200a75bfca6a9b53500278e074a017e
++++ b/dbf0a96959afe85f78323328b097dadb9be74d81
+@@ -1,13 +1,13 @@
+ private void setKeyListenerOnly(KeyListener input) {
+     // null is the default value
+     if (mEditor == null && input == null)
+         return;
+     createEditorIfNeeded("setKeyListenerOnly");
+-    if (getEditor().mKeyListener != input) {
+-        getEditor().mKeyListener = input;
++    if (mEditor.mKeyListener != input) {
++        mEditor.mKeyListener = input;
+         if (input != null && !(mText instanceof Editable)) {
+             setText(mText);
+         }
+         setFilters((Editable) mText, mFilters);
+     }
+ }
+\ No newline at end of file

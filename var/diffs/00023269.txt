@@ -1,0 +1,16 @@
+diff --git a/9cb3d32660636d06ba219beb29d8b4a62c3c5f0e b/051842bccf88cb8be95621d2ce20f95a317424bd
+index 9cb3d32660..051842bccf 100644
+--- a/9cb3d32660636d06ba219beb29d8b4a62c3c5f0e
++++ b/051842bccf88cb8be95621d2ce20f95a317424bd
+@@ -1,5 +1,9 @@
+ @Override
+ protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+     super.onLayout(changed, left, top, right, bottom);
+-    mMaxHeightNeedsUpdate = true;
++    boolean updateExpandHeight = mMaxExpandHeight == 0;
++    mMaxExpandHeight = mPrivateLayout.getMaxHeight();
++    if (updateExpandHeight) {
++        applyExpansionToLayout(isExpanded());
++    }
+ }
+\ No newline at end of file

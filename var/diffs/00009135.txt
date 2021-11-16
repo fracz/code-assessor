@@ -1,0 +1,18 @@
+diff --git a/83cb6613298516dab42870e27fd4c8e0ce000a74 b/193f4a81966eb99a6bed2c0b200d0f66e79d9279
+index 83cb661329..193f4a8196 100644
+--- a/83cb6613298516dab42870e27fd4c8e0ce000a74
++++ b/193f4a81966eb99a6bed2c0b200d0f66e79d9279
+@@ -1,9 +1,10 @@
+ @Override
+ public DfaInstructionState[] visitFieldReference(FieldReferenceInstruction instruction, DataFlowRunner runner, DfaMemoryState memState) {
+-    final DfaValue qualifier = dereference(memState, memState.pop(), NullabilityProblem.fieldAccessNPE, instruction.getElementToAssert());
+-    PsiElement parent = instruction.getExpression().getParent();
++    PsiExpression expression = instruction.getExpression();
++    final DfaValue qualifier = dereference(memState, memState.pop(), NullabilityProblemKind.fieldAccessNPE.problem(expression));
++    PsiElement parent = expression.getParent();
+     if (parent instanceof PsiMethodReferenceExpression) {
+         handleMethodReference(qualifier, (PsiMethodReferenceExpression) parent, runner, memState);
+     }
+     return nextInstruction(instruction, runner, memState);
+ }
+\ No newline at end of file

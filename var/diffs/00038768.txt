@@ -1,0 +1,19 @@
+diff --git a/97f36a9b6e5e8ff28223862274777666836e50da b/110f6659daee0dc8417e6b05bd940b0b4d871c85
+index 97f36a9b6e..110f6659da 100644
+--- a/97f36a9b6e5e8ff28223862274777666836e50da
++++ b/110f6659daee0dc8417e6b05bd940b0b4d871c85
+@@ -1,9 +1,11 @@
+ @Test
+ public void shouldDifferentiateBetweenUniquenessConstraintsForDifferentLabels() throws Exception {
+     // when
+-    UniquenessConstraint constraint1 = state.addConstraint(new UniquenessConstraint(1, 17), true);
+-    UniquenessConstraint constraint2 = state.addConstraint(new UniquenessConstraint(2, 17), true);
++    UniquenessConstraint constraint1 = new UniquenessConstraint(1, 17);
++    state.addConstraint(constraint1);
++    UniquenessConstraint constraint2 = new UniquenessConstraint(2, 17);
++    state.addConstraint(constraint2);
+     // then
+     assertEquals(Collections.singleton(constraint1), state.constraintsForLabel(1).getAdded());
+     assertEquals(Collections.singleton(constraint2), state.constraintsForLabel(2).getAdded());
+ }
+\ No newline at end of file

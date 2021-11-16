@@ -1,0 +1,18 @@
+diff --git a/dae01a837a0a459baa55b90c1e119db2b9b2f700 b/c27c7c1459da484f84ce322e0c5f5e60733e12d5
+index dae01a837a..c27c7c1459 100644
+--- a/dae01a837a0a459baa55b90c1e119db2b9b2f700
++++ b/c27c7c1459da484f84ce322e0c5f5e60733e12d5
+@@ -1,7 +1,7 @@
++/**
++ * Adds the item in the underlying List preserving the order of the collection.
++ */
+ public boolean add(final OIdentifiable e) {
+-    if (!contains(e)) {
+-        delegate.add(e);
+-        return true;
+-    }
+-    return false;
++    lazyLoad(true);
++    return internalAdd(e);
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/3489d851fecbee05f05cfde8a4a821aed51908c4 b/f8c95a891839be258f8dbc03ee26e9995339c59f
+index 3489d851fe..f8c95a8918 100644
+--- a/3489d851fecbee05f05cfde8a4a821aed51908c4
++++ b/f8c95a891839be258f8dbc03ee26e9995339c59f
+@@ -1,14 +1,16 @@
+ private int findViewLocked(View view, boolean required) {
+     synchronized (this) {
+-        final int count = mViews != null ? mViews.length : 0;
+-        for (int i = 0; i < count; i++) {
+-            if (mViews[i] == view) {
+-                return i;
++        if (mViews != null) {
++            final int count = mViews.length;
++            for (int i = 0; i < count; i++) {
++                if (mViews[i] == view) {
++                    return i;
++                }
+             }
+         }
+         if (required) {
+             throw new IllegalArgumentException("View not attached to window manager");
+         }
+         return -1;
+     }
+ }
+\ No newline at end of file

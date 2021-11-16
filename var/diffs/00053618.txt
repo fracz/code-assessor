@@ -1,0 +1,18 @@
+diff --git a/79294e8a46a4e22fe063d21a9e1dd71227f137e0 b/9b97cf473723d659b5960b618ff518758e1dfbb4
+index 79294e8a46..9b97cf4737 100644
+--- a/79294e8a46a4e22fe063d21a9e1dd71227f137e0
++++ b/9b97cf473723d659b5960b618ff518758e1dfbb4
+@@ -1,10 +1,10 @@
+ @Test
+ public void assertTableRuleWithDataNodeString() {
+     TableRuleConfiguration tableRuleConfig = new TableRuleConfiguration();
+     tableRuleConfig.setLogicTable("logicTable");
+-    tableRuleConfig.setActualTables("ds0.table_0, ds0.table_1, ds0.table_2, ds1.table_0, ds1.table_1, ds1.table_2");
+-    TableRule actual = tableRuleConfig.build(null);
++    tableRuleConfig.setActualTables("ds${0..1}.table_${0..2}");
++    TableRule actual = tableRuleConfig.build(createDataSourceMap());
+     assertActualTable(actual);
+     assertNull(actual.getDatabaseShardingStrategy());
+     assertNull(actual.getTableShardingStrategy());
+ }
+\ No newline at end of file

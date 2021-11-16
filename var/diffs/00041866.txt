@@ -1,0 +1,22 @@
+diff --git a/a14dc2238eb840ee41f7d597187b51639f06736d b/1f6bd7e23d7b01b84726b8844c86fcfcd552f4d4
+index a14dc2238e..1f6bd7e23d 100644
+--- a/a14dc2238eb840ee41f7d597187b51639f06736d
++++ b/1f6bd7e23d7b01b84726b8844c86fcfcd552f4d4
+@@ -1,7 +1,12 @@
+ protected OStorageRemoteSession getCurrentSession() {
+-    OStorageRemoteThreadLocal instance = OStorageRemoteThreadLocal.INSTANCE;
+-    if (instance != null) {
+-        return instance.get();
++    ODatabaseDocumentTx db = (ODatabaseDocumentTx) ODatabaseRecordThreadLocal.INSTANCE.getIfDefined();
++    if (db == null)
++        return null;
++    OStorageRemoteSession session = (OStorageRemoteSession) ODatabaseDocumentTxInternal.getSessionMetadata(db);
++    if (session == null) {
++        session = new OStorageRemoteSession();
++        session.sessionId = sessionSerialId.decrementAndGet();
++        ODatabaseDocumentTxInternal.setSessionMetadata(db, session);
+     }
+-    return null;
++    return session;
+ }
+\ No newline at end of file

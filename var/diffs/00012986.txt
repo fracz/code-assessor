@@ -1,0 +1,38 @@
+diff --git a/50bcbfc0a84574abd1d0e2b7c2805e0410726ef0 b/5cff95e87f87dfdd2b83acea384ab71e8a7eeb72
+index 50bcbfc0a8..5cff95e87f 100644
+--- a/50bcbfc0a84574abd1d0e2b7c2805e0410726ef0
++++ b/5cff95e87f87dfdd2b83acea384ab71e8a7eeb72
+@@ -1,31 +1,8 @@
+ /**
+  * Collects superclasses of a class all the way up the inheritance chain. The order is <i>not</i> necessarily the MRO.
+  */
+ @NotNull
+ public static PyClass[] getAllSuperClasses(@NotNull PyClass pyClass) {
+-    Set<PyClass> superClasses = new HashSet<PyClass>();
+-    /* ZZZ
+-    List<PyClass> superClassesBuffer = new LinkedList<PyClass>();
+-    while (true) {
+-      final PyClass[] classes = pyClass.getSuperClasses();
+-      if (classes.length == 0) {
+-        break;
+-      }
+-      superClassesBuffer.addAll(Arrays.asList(classes));
+-      if (!superClasses.containsAll(Arrays.asList(classes))) {
+-        superClasses.addAll(Arrays.asList(classes));
+-      }
+-      else {
+-        break;
+-      }
+-      if (!superClassesBuffer.isEmpty()) {
+-        pyClass = superClassesBuffer.remove(0);
+-      }
+-      else {
+-        break;
+-      }
+-    }
+-    */
+-    for (PyClass ancestor : pyClass.iterateAncestors()) superClasses.add(ancestor);
++    Set<PyClass> superClasses = getAllSuperClassesSet(pyClass);
+     return superClasses.toArray(new PyClass[superClasses.size()]);
+ }
+\ No newline at end of file

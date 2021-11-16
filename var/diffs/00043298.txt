@@ -1,0 +1,17 @@
+diff --git a/02b1eebee844efdb39b7208e5185fc1cbe4ec8e2 b/1c56eb8269c13d2313370f4a02e9e3c75308cf76
+index 02b1eebee8..1c56eb8269 100644
+--- a/02b1eebee844efdb39b7208e5185fc1cbe4ec8e2
++++ b/1c56eb8269c13d2313370f4a02e9e3c75308cf76
+@@ -1,4 +1,9 @@
+ @Override
+-public void setDatabase(final ODatabaseRecord iDatabase) {
+-    database = iDatabase;
++public boolean setDatabase(final ODatabaseRecord iDatabase) {
++    if (database != iDatabase) {
++        database = iDatabase;
++        super.setDatabase(iDatabase);
++        return true;
++    }
++    return false;
+ }
+\ No newline at end of file

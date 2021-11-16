@@ -1,0 +1,22 @@
+diff --git a/a5f79f52dcca544f29fae6c7cd2ba32447a8e0cb b/5a2bb98da95f42315b13fb607cedeec3a682e8b3
+index a5f79f52dc..5a2bb98da9 100644
+--- a/a5f79f52dcca544f29fae6c7cd2ba32447a8e0cb
++++ b/5a2bb98da95f42315b13fb607cedeec3a682e8b3
+@@ -1,9 +1,13 @@
+ @Property(viewable = true, order = 3, category = "columns")
+ public List<KeyColumnValue> getColumns() {
++    List<DBDAttributeBinding> rowAttributes = rowController.getRowAttributes();
+     List<KeyColumnValue> columns = new ArrayList<KeyColumnValue>();
+-    DBDRowController row = valueController.getRow();
+-    for (DBCAttributeMetaData col : valueController.getValueLocator().getEntityIdentifier().getResultSetColumns()) {
+-        columns.add(new KeyColumnValue(col, row.getAttributeValue(col)));
++    for (DBCAttributeMetaData metaAttr : rowIdentifier.getEntityIdentifier().getMetaAttributes()) {
++        for (DBDAttributeBinding rowAttr : rowAttributes) {
++            if (rowAttr.matches(metaAttr)) {
++                columns.add(new KeyColumnValue(metaAttr, rowController.getAttributeValue(rowAttr)));
++            }
++        }
+     }
+     return columns;
+ }
+\ No newline at end of file

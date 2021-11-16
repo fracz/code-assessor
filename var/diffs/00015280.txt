@@ -1,0 +1,14 @@
+diff --git a/01c7fe21674db7a196a36a356cda01abb3873f51 b/edbda1ad429bf0fdc35c8b19a9363acc101c1d2e
+index 01c7fe2167..edbda1ad42 100644
+--- a/01c7fe21674db7a196a36a356cda01abb3873f51
++++ b/edbda1ad429bf0fdc35c8b19a9363acc101c1d2e
+@@ -1,6 +1,6 @@
+ private static boolean checkPsiMethodEquality(PsiMethod method1, PsiMethod method2) {
+     if (method1 instanceof JetClsMethod && method2 instanceof JetClsMethod) {
+-        return ((JetClsMethod) method1).getOrigin() == ((JetClsMethod) method2).getOrigin();
++        return ((JetClsMethod) method1).getOrigin().equals(((JetClsMethod) method2).getOrigin());
+     }
+-    return method1 == method2;
++    return method1.equals(method2);
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/500322cad3f23820645e28ea0cd47cfd8ff804af b/336a50514a2fc876cd321cfc3166de7f4019ffe3
+index 500322cad3..336a50514a 100644
+--- a/500322cad3f23820645e28ea0cd47cfd8ff804af
++++ b/336a50514a2fc876cd321cfc3166de7f4019ffe3
+@@ -1,6 +1,3 @@
+ public static boolean isDeclarationAssignment(GrReferenceExpression refExpr) {
+-    if (isAssignmentLhs(refExpr)) {
+-        return isExpandoQualified(refExpr);
+-    }
+-    return false;
++    return isAssignmentLhs(refExpr) && isExpandoQualified(refExpr);
+ }
+\ No newline at end of file

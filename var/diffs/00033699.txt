@@ -1,0 +1,17 @@
+diff --git a/09c43bc212a301e8c913d8278039428a56abe2a1 b/85bc41684bcbc539c2f85c26888aa623f468e4f6
+index 09c43bc212..85bc41684b 100644
+--- a/09c43bc212a301e8c913d8278039428a56abe2a1
++++ b/85bc41684bcbc539c2f85c26888aa623f468e4f6
+@@ -1,3 +1,9 @@
+-protected ConnectionFactory createConnectionFactory() {
+-    return new ConnectionFactory(SINGLETON_REGISTRY.get(ToolingImplementationLoader.class), get(ListenerManager.class), get(ProgressLoggerFactory.class));
++protected Factory<ConnectionFactory> createConnectionFactory() {
++    return new Factory<ConnectionFactory>() {
++
++        public ConnectionFactory create() {
++            ListenerManager listenerManager = createListenerManager();
++            return new ConnectionFactory(get(ToolingImplementationLoader.class), listenerManager, createProgressLoggerFactory(listenerManager));
++        }
++    };
+ }
+\ No newline at end of file

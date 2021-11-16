@@ -1,0 +1,20 @@
+diff --git a/85bcdbf7de6ea4a66f4121b7bf8d59fb10228acf b/db773f68cee431b597021bd5620f0c70e5c3889b
+index 85bcdbf7de..db773f68ce 100644
+--- a/85bcdbf7de6ea4a66f4121b7bf8d59fb10228acf
++++ b/db773f68cee431b597021bd5620f0c70e5c3889b
+@@ -1,10 +1,13 @@
+ public void updatePattern(final String string) {
+     String prevString = myString;
+     myString = string;
+     try {
+-        myMatcher = NameUtil.buildMatcher("*" + string, myMatchAllOccurrences, 0, true, false);
++        String pattern = "*" + string;
++        NameUtil.MatchingCaseSensitivity caseSensitivity = NameUtil.MatchingCaseSensitivity.NONE;
++        String separators = "";
++        myMatcher = myMatchAllOccurrences ? new AllOccurrencesMatcher(pattern, caseSensitivity, separators) : new FixingLayoutMatcher(pattern, caseSensitivity, separators);
+     } catch (Exception e) {
+         myMatcher = null;
+     }
+     fireStateChanged(prevString);
+ }
+\ No newline at end of file

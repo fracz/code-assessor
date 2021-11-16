@@ -1,0 +1,18 @@
+diff --git a/0f1582c4a1955dca753cef65493059fe9cc651ab b/53151d201172f16032597d624ea4411fa28800b1
+index 0f1582c4a1..53151d2011 100644
+--- a/0f1582c4a1955dca753cef65493059fe9cc651ab
++++ b/53151d201172f16032597d624ea4411fa28800b1
+@@ -1,10 +1,9 @@
+ @Test
+ public void readFailure() throws Exception {
+-    mChannel = new EmbeddedChannelNoException(new DataServerUFSFileReadHandler(NettyExecutors.FILE_READER_EXECUTOR, mFileSystemWorker));
+     long fileSize = PACKET_SIZE * 10 + 1;
+     populateInputFile(0, 0, fileSize - 1);
+     mInputStream.close();
+-    mChannel.writeInbound(buildReadRequest(0, fileSize));
+-    Object response = waitForOneResponse();
++    mChannelNoException.writeInbound(buildReadRequest(0, fileSize));
++    Object response = waitForOneResponse(mChannelNoException);
+     checkReadResponse(response, Protocol.Status.Code.INTERNAL);
+ }
+\ No newline at end of file

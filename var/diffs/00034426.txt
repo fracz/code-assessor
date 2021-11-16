@@ -1,0 +1,13 @@
+diff --git a/40c7dd06c24bb1144900bd7176deea1f12025ebe b/a32aac032e4b513635448beb85615a4585b2fcf6
+index 40c7dd06c2..a32aac032e 100644
+--- a/40c7dd06c24bb1144900bd7176deea1f12025ebe
++++ b/a32aac032e4b513635448beb85615a4585b2fcf6
+@@ -1,5 +1,5 @@
+ public int getAttachmentCount(Message message) throws MessagingException {
+-    List<Part> attachments = new ArrayList<Part>();
+-    MessageExtractor.getViewables(message, attachments);
++    List<Part> attachments = new ArrayList<>();
++    MessageExtractor.findViewablesAndAttachments(message, new ArrayList<Viewable>(), attachments);
+     return attachments.size();
+ }
+\ No newline at end of file

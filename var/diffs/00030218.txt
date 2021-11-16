@@ -1,0 +1,20 @@
+diff --git a/c96117295b9ee9bd20491ac038f6a58b20653b00 b/944ae040379e2d81544d948567b52bf00f7c5d44
+index c96117295b..944ae04037 100644
+--- a/c96117295b9ee9bd20491ac038f6a58b20653b00
++++ b/944ae040379e2d81544d948567b52bf00f7c5d44
+@@ -1,13 +1,13 @@
+ /**
+  * Convert this to a {@link TermVectorsRequest} for fetching the terms of the document.
+  */
+ public TermVectorsRequest toTermVectorsRequest() {
+     TermVectorsRequest termVectorsRequest = new TermVectorsRequest(index, type, id).selectedFields(fields).routing(routing).version(version).versionType(versionType).perFieldAnalyzer(perFieldAnalyzer).positions(// ensures these following parameters are never set
+     false).offsets(false).payloads(false).fieldStatistics(false).termStatistics(false).dfs(false);
+     // for artificial docs to make sure that the id has changed in the item too
+     if (doc != null) {
+         termVectorsRequest.doc(doc, true);
+-        this.id(termVectorsRequest.id());
++        this.id = termVectorsRequest.id();
+     }
+     return termVectorsRequest;
+ }
+\ No newline at end of file

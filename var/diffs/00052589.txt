@@ -1,0 +1,19 @@
+diff --git a/71244f5e18af18833232d4bf287373249fe4c447 b/553a02a346bf0cf3783f2baabca2c8a809764b8b
+index 71244f5e18..553a02a346 100644
+--- a/71244f5e18af18833232d4bf287373249fe4c447
++++ b/553a02a346bf0cf3783f2baabca2c8a809764b8b
+@@ -1,10 +1,11 @@
+ /**
+  * Build binding table rules.
+  *
+  * @param bindingTableRules binding table rules
+  * @return this builder
+  */
+-public ShardingRuleBuilder bindingTableRules(final Collection<BindingTableRule> bindingTableRules) {
+-    this.bindingTableRules = bindingTableRules;
++public ShardingRuleBuilder bindingTableRules(final BindingTableRule... bindingTableRules) {
++    this.bindingTableRules.clear();
++    this.bindingTableRules.addAll(Arrays.asList(bindingTableRules));
+     return this;
+ }
+\ No newline at end of file

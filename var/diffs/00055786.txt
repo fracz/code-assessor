@@ -1,0 +1,35 @@
+diff --git a/20cc2a577674a3bd6c28949876250f421b5604ce b/f3561333277b1bf60fb3f674accdf017ad64b032
+index 20cc2a5776..f356133327 100644
+--- a/20cc2a577674a3bd6c28949876250f421b5604ce
++++ b/f3561333277b1bf60fb3f674accdf017ad64b032
+@@ -1,17 +1,19 @@
+ /**
+- * Returns a new {@code RequestMethodsRequestCondition} that contains all conditions that match the request.
+- *
+- * @param request the request
+- * @return a new request condition that contains all matching attributes, or {@code null} if not all conditions match
++ * Checks if any of the HTTP request methods match the given request and returns an instance that
++ * contain the matching request method.
++ * @param request the current request
++ * @return the same instance if the condition contains no request method;
++ * or a new condition with the matching request method; or {@code null} if no request methods match.
+  */
+ public RequestMethodsRequestCondition getMatchingCondition(HttpServletRequest request) {
+-    if (isEmpty()) {
++    if (methods.isEmpty()) {
+         return this;
+-    } else {
+-        if (match(request)) {
+-            return new RequestMethodsRequestCondition(RequestMethod.valueOf(request.getMethod()));
+-        } else {
+-            return null;
++    }
++    RequestMethod incomingRequestMethod = RequestMethod.valueOf(request.getMethod());
++    for (RequestMethod method : methods) {
++        if (method.equals(incomingRequestMethod)) {
++            return new RequestMethodsRequestCondition(method);
+         }
+     }
++    return null;
+ }
+\ No newline at end of file

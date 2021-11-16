@@ -1,0 +1,19 @@
+diff --git a/b322da78b81cf264bfc7c7f6a428812d3ff80c0f b/5f34e56b53d2a39b2f8fdcffb87ec4ff1b7d04f5
+index b322da78b8..5f34e56b53 100644
+--- a/b322da78b81cf264bfc7c7f6a428812d3ff80c0f
++++ b/5f34e56b53d2a39b2f8fdcffb87ec4ff1b7d04f5
+@@ -1,10 +1,8 @@
+-private static boolean isInsideTextRanges(@NotNull Set<TextRange> ranges, int start, int end) {
+-    boolean isInsideProperty = false;
++private static boolean isInsideTextRanges(@NotNull Collection<TextRange> ranges, int start, int end) {
+     for (TextRange range : ranges) {
+         if ((start >= range.getStartOffset() && (end <= range.getEndOffset() || start <= range.getEndOffset())) || (end <= range.getEndOffset() && (end > range.getStartOffset()))) {
+-            isInsideProperty = true;
+-            break;
++            return true;
+         }
+     }
+-    return isInsideProperty;
++    return false;
+ }
+\ No newline at end of file

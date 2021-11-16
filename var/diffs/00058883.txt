@@ -1,0 +1,17 @@
+diff --git a/c14c4b6aa313a589afe054a97b170e7d462ced91 b/67777ffc547647b11f9e3097c8e87dc9cd45b98d
+index c14c4b6aa3..67777ffc54 100644
+--- a/c14c4b6aa313a589afe054a97b170e7d462ced91
++++ b/67777ffc547647b11f9e3097c8e87dc9cd45b98d
+@@ -1,10 +1,9 @@
+ public Set<Integer> deleteValues(int start, int every) throws StorageException {
+     Set<Integer> removed = new HashSet<Integer>();
+     List<ByteBuffer> keys = new ArrayList<ByteBuffer>();
+     for (int i = start; i < numKeys; i = i + every) {
+         removed.add(i);
+-        keys.add(KeyValueStoreUtil.getBuffer(i));
++        store.delete(KeyValueStoreUtil.getBuffer(i), tx);
+     }
+-    store.delete(keys, tx);
+     return removed;
+ }
+\ No newline at end of file

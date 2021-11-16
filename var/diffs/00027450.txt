@@ -1,0 +1,18 @@
+diff --git a/553be6f0f20d0e2ce97da0821b148c035004ae01 b/8d7326d6b616beefc22ef6bcf652bb3fbeb504bf
+index 553be6f0f2..8d7326d6b6 100644
+--- a/553be6f0f20d0e2ce97da0821b148c035004ae01
++++ b/8d7326d6b616beefc22ef6bcf652bb3fbeb504bf
+@@ -1,10 +1,9 @@
+-/* Add lock to the task with given ID */
+-public boolean addLock(final String taskId, final TaskLockType lock) {
++public boolean addLock(final String entryId, final LockType lock) {
+     return retryingHandle(new HandleCallback<Boolean>() {
+
+         @Override
+         public Boolean withHandle(Handle handle) throws Exception {
+-            return handle.createStatement(String.format("INSERT INTO %s (task_id, lock_payload) VALUES (:task_id, :lock_payload)", config.getTaskLockTable())).bind("task_id", taskId).bind("lock_payload", jsonMapper.writeValueAsBytes(lock)).execute() == 1;
++            return handle.createStatement(String.format("INSERT INTO %1$s (%2$s_id, lock_payload) VALUES (:entryId, :payload)", lockTable, entryTypeName)).bind("entryId", entryId).bind("payload", jsonMapper.writeValueAsBytes(lock)).execute() == 1;
+         }
+     });
+ }
+\ No newline at end of file

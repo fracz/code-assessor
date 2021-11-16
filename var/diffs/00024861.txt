@@ -1,0 +1,23 @@
+diff --git a/a0dd22becd55d196c5acad77cc826e1b22a54632 b/b2e5eb13f36a15a37061a5ae0db8527ab983a68b
+index a0dd22becd..b2e5eb13f3 100644
+--- a/a0dd22becd55d196c5acad77cc826e1b22a54632
++++ b/b2e5eb13f36a15a37061a5ae0db8527ab983a68b
+@@ -1,13 +1,15 @@
+ @Test
+ public void testParseError() {
+     try {
+         TypeParser.parse("y");
+         fail("Should not pass");
+-    } catch (ConfigurationException | SyntaxException e) {
++    } catch (ConfigurationException e) {
++    } catch (SyntaxException e) {
+     }
+     try {
+         TypeParser.parse("LongType(reversed@)");
+         fail("Should not pass");
+-    } catch (ConfigurationException | SyntaxException e) {
++    } catch (ConfigurationException e) {
++    } catch (SyntaxException e) {
+     }
+ }
+\ No newline at end of file

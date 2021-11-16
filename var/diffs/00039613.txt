@@ -1,0 +1,21 @@
+diff --git a/8f53bc63f433c97b27e2faa862c1d469df510eb9 b/b313dc3ebdd5f7317405d457577d94d2e738cb6c
+index 8f53bc63f4..b313dc3ebd 100644
+--- a/8f53bc63f433c97b27e2faa862c1d469df510eb9
++++ b/b313dc3ebdd5f7317405d457577d94d2e738cb6c
+@@ -1,12 +1,14 @@
+ @Test
+ public void shouldSerializeInlineLabels() throws Exception {
+     // Given
+     NodeRecord before = new NodeRecord(12, false, 1, 2);
+     before.setInUse(true);
+     NodeRecord after = new NodeRecord(12, false, 2, 1);
+     after.setInUse(true);
+     NodeLabels nodeLabels = parseLabelsField(after);
+     nodeLabels.add(1337, nodeStore);
+     // When
+-    assertSerializationWorksFor(new Command.NodeCommand(null, before, after));
++    Command.NodeCommand nodeCommand = new Command.NodeCommand();
++    nodeCommand.init(before, after);
++    assertSerializationWorksFor(nodeCommand);
+ }
+\ No newline at end of file

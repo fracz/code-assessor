@@ -1,0 +1,19 @@
+diff --git a/eea57e68f3ca666423212dc18e9a57153323ef86 b/026cfbbde8c67d9af62f55fd902b6d3d209a24eb
+index eea57e68f3..026cfbbde8 100644
+--- a/eea57e68f3ca666423212dc18e9a57153323ef86
++++ b/026cfbbde8c67d9af62f55fd902b6d3d209a24eb
+@@ -1,12 +1,12 @@
+ @Override
+ public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+     final String methodName = method.getName();
+     if ("abort".equals(methodName)) {
+         return Void.TYPE;
+     } else if ("isValid".equals(methodName)) {
+         return Boolean.FALSE;
+     } else if ("toString".equals(methodName)) {
+-        return this.getClass().getCanonicalName();
++        return ClosedConnection.class.getCanonicalName();
+     }
+     throw new SQLException("Connection is closed");
+ }
+\ No newline at end of file

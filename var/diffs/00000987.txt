@@ -1,0 +1,11 @@
+diff --git a/cef162e525032eb39c5de2ccbc2e820d70358e07 b/802501c7956beebc88e0c6c4bc7341977db66dbc
+index cef162e525..802501c795 100644
+--- a/cef162e525032eb39c5de2ccbc2e820d70358e07
++++ b/802501c7956beebc88e0c6c4bc7341977db66dbc
+@@ -1,4 +1,4 @@
+ @Nullable
+ public String error() {
+-    return dataAdapter().getError().map(Throwable::getMessage).orElse(null);
++    return Streams.concat(stream(dataAdapter().getError()), stream(cache().getError())).map(Throwable::getMessage).collect(Collectors.joining("\n"));
+ }
+\ No newline at end of file

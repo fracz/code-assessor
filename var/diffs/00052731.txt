@@ -1,0 +1,19 @@
+diff --git a/e2e4af42219c1df02e05079795fccb1c937c8643 b/86a943ea9e75bb6c202d26471ec8d4927f6cbd96
+index e2e4af4221..86a943ea9e 100644
+--- a/e2e4af42219c1df02e05079795fccb1c937c8643
++++ b/86a943ea9e75bb6c202d26471ec8d4927f6cbd96
+@@ -1,11 +1,8 @@
+ /**
+  * 生成Id.
+  *
+- * @param columnName 列名称
+  * @return 生成的id
+  */
+-public Number generateId(final String columnName) {
+-    Number result = autoIncrementColumnMap.get(columnName).generateId();
+-    Preconditions.checkNotNull(result);
+-    return result;
++public Number generateId() {
++    return idGenerator.generateId();
+ }
+\ No newline at end of file

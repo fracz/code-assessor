@@ -1,0 +1,15 @@
+diff --git a/b7f5ba62c85f7abf76639907bec21f74c89875f0 b/9f4b82f6392f67537a51ca97bacf5125fe36ccf0
+index b7f5ba62c8..9f4b82f639 100644
+--- a/b7f5ba62c85f7abf76639907bec21f74c89875f0
++++ b/9f4b82f6392f67537a51ca97bacf5125fe36ccf0
+@@ -1,8 +1,8 @@
+ @Test
+ public void testSimpleDisabled() throws Exception {
+     String mapping = XContentFactory.jsonBuilder().startObject().startObject("type").endObject().string();
+     DocumentMapper docMapper = MapperTests.newParser().parse(mapping);
+-    byte[] source = XContentFactory.jsonBuilder().startObject().field("field", "value").endObject().copiedBytes();
++    BytesReference source = XContentFactory.jsonBuilder().startObject().field("field", "value").endObject().bytes();
+     ParsedDocument doc = docMapper.parse(SourceToParse.source(source).type("type").id("1").ttl(Long.MAX_VALUE));
+     assertThat(doc.rootDoc().getFieldable("_ttl"), equalTo(null));
+ }
+\ No newline at end of file

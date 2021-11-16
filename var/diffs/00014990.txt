@@ -1,0 +1,20 @@
+diff --git a/4ee76318169465e84ce57fd8077a012d11b13e57 b/c2f116de37d55a686e36b9078a60c0566696a9e2
+index 4ee7631816..c2f116de37 100644
+--- a/4ee76318169465e84ce57fd8077a012d11b13e57
++++ b/c2f116de37d55a686e36b9078a60c0566696a9e2
+@@ -1,12 +1,12 @@
+ protected void setUpProject() throws Exception {
+     ProjectManagerEx projectManager = ProjectManagerEx.getInstanceEx();
+-    File projectFile = File.createTempFile("temp", ".ipr");
++    File projectFile = File.createTempFile(PROJECT_FILE_PREFIX, PROJECT_FILE_SUFFIX);
+     myFilesToDelete.add(projectFile);
+     myProject = projectManager.newProject(projectFile.getPath(), false, false);
+     for (ModuleFixtureBuilder moduleFixtureBuilder : myModuleFixtureBuilders) {
+-        moduleFixtureBuilder.getFixture().getModule();
++        moduleFixtureBuilder.getFixture().setUp();
+     }
+     PropertiesReferenceManager.getInstance(myProject).projectOpened();
+     ((StartupManagerImpl) StartupManager.getInstance(myProject)).runStartupActivities();
+     ((StartupManagerImpl) StartupManager.getInstance(myProject)).runPostStartupActivities();
+ }
+\ No newline at end of file

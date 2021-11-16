@@ -1,0 +1,12 @@
+diff --git a/99d94de70ec085cc88125edbd33e11f6360b33b3 b/8812eb3ea418707a28f863e295b4a722e40b5708
+index 99d94de70e..8812eb3ea4 100644
+--- a/99d94de70ec085cc88125edbd33e11f6360b33b3
++++ b/8812eb3ea418707a28f863e295b4a722e40b5708
+@@ -1,4 +1,5 @@
+ @Override
+ public OIndexMultiValues create(String name, OIndexDefinition indexDefinition, String clusterIndexName, Set<String> clustersToIndex, boolean rebuild, OProgressListener progressListener) {
+-    return super.create(name, indexDefinition, clusterIndexName, clustersToIndex, rebuild, progressListener);
++    OIndexMultiValues oIndexMultiValues = super.create(name, indexDefinition, clusterIndexName, clustersToIndex, rebuild, progressListener);
++    return oIndexMultiValues;
+ }
+\ No newline at end of file

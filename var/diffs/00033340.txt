@@ -1,0 +1,25 @@
+diff --git a/bb95677c2d14e19b8e46a577426ece4678b55f78 b/8743798cf277ab0950dc4ca67fdd96e1c4c8ba6a
+index bb95677c2d..8743798cf2 100644
+--- a/bb95677c2d14e19b8e46a577426ece4678b55f78
++++ b/8743798cf277ab0950dc4ca67fdd96e1c4c8ba6a
+@@ -1,18 +1,16 @@
+ public void start() {
+     ProcessBuilder processBuilder = processBuilderFactory.createProcessBuilder(execHandle);
+     try {
+         Process process;
+         // and stderr streams for some of the processes get stuck
+         synchronized (START_LOCK) {
+             process = processBuilder.start();
+             streamsHandler.connectStreams(process, execHandle.getDisplayName());
+         }
+-        synchronized (lock) {
+-            this.process = process;
+-        }
++        setProcess(process);
+         streamsHandler.start();
+         execHandle.started();
+     } catch (Throwable t) {
+         execHandle.failed(t);
+     }
+ }
+\ No newline at end of file

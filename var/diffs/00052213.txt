@@ -1,0 +1,13 @@
+diff --git a/5c47972d48cbfde3beabb1c2eeaaaf993cd0161a b/738e471dc9906f858aeaf797a93c2486f7fd0318
+index 5c47972d48..738e471dc9 100644
+--- a/5c47972d48cbfde3beabb1c2eeaaaf993cd0161a
++++ b/738e471dc9906f858aeaf797a93c2486f7fd0318
+@@ -1,4 +1,5 @@
+ private void scanHint() {
+-    term.scanHint(position);
+-    setTermResult();
++    Tokenizer tokenizer = new Tokenizer(input, dictionary, position - 1);
++    tokenizer.scanHint();
++    setTokenizerResult(tokenizer);
+ }
+\ No newline at end of file

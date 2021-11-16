@@ -1,0 +1,15 @@
+diff --git a/82d04a73f8e30398db91c97208cb922a59a9ef33 b/b7c00a77185771ecd88a4ed3c163f58027fafc95
+index 82d04a73f8..b7c00a7718 100644
+--- a/82d04a73f8e30398db91c97208cb922a59a9ef33
++++ b/b7c00a77185771ecd88a4ed3c163f58027fafc95
+@@ -1,5 +1,5 @@
+-public void selectInTree(VirtualFile file) {
+-    PomNode node = myFileToNode.get(file);
+-    if (node != null)
+-        selectNode(myTreeBuilder, node);
++public void selectInTree(MavenProject project) {
++    if (!isInitialized())
++        return;
++    myStructure.select(project);
+ }
+\ No newline at end of file

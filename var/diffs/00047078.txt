@@ -1,0 +1,18 @@
+diff --git a/36cc7414a90e7519e3004ea37b8c375bd0d3c115 b/b96964b5710888011345ff9cc7ed7b3c998f200d
+index 36cc7414a9..b96964b571 100644
+--- a/36cc7414a90e7519e3004ea37b8c375bd0d3c115
++++ b/b96964b5710888011345ff9cc7ed7b3c998f200d
+@@ -1,7 +1,11 @@
+-private void scheduleTimer(final long delay) {
++private void scheduleTimer() {
++    final long delay = determineNakDelay();
+     if (null == timer) {
+         timer = wheel.newTimeout(delay, TimeUnit.NANOSECONDS, this::onTimerExpire);
+     } else {
++        if (timer.isActive()) {
++            timer.cancel();
++        }
+         wheel.rescheduleTimeout(delay, TimeUnit.NANOSECONDS, timer);
+     }
+ }
+\ No newline at end of file

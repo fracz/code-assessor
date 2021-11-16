@@ -1,0 +1,13 @@
+diff --git a/79d190903e2960f7f90352b4d8101d1fbf379fc7 b/7a4bc92e74b65c78d7b0014bf84159985f13f29e
+index 79d190903e..7a4bc92e74 100644
+--- a/79d190903e2960f7f90352b4d8101d1fbf379fc7
++++ b/7a4bc92e74b65c78d7b0014bf84159985f13f29e
+@@ -1,5 +1,5 @@
+ private void persistDataSourceConfiguration(final Map<String, DataSource> dataSourceMap, final boolean isOverwrite) {
+-    if (!dataNodeStorage.isNodeExisted(ConfigurationNode.DATA_SOURCE_NODE_PATH) || isOverwrite) {
+-        dataNodeStorage.fillNode(ConfigurationNode.DATA_SOURCE_NODE_PATH, DataSourceJsonConverter.toJson(dataSourceMap));
++    if (isOverwrite || !regCenter.isExisted(configNode.getFullPath(ConfigurationNode.DATA_SOURCE_NODE_PATH))) {
++        regCenter.persist(configNode.getFullPath(ConfigurationNode.DATA_SOURCE_NODE_PATH), DataSourceJsonConverter.toJson(dataSourceMap));
+     }
+ }
+\ No newline at end of file

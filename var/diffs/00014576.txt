@@ -1,0 +1,23 @@
+diff --git a/608d6466bd32d2497abf0d8301164e9394ed3224 b/20f3fe379d0c506f459661129398404c41f5e4d4
+index 608d6466bd..20f3fe379d 100644
+--- a/608d6466bd32d2497abf0d8301164e9394ed3224
++++ b/20f3fe379d0c506f459661129398404c41f5e4d4
+@@ -1,13 +1,12 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiClass aClass = (PsiClass) location.getParent();
+-    assert aClass != null;
+-    final boolean hasReadObject = SerializationUtils.hasReadObject(aClass);
+-    final boolean hasWriteObject = SerializationUtils.hasWriteObject(aClass);
++@NotNull
++public String buildErrorString(Object... infos) {
++    final boolean hasReadObject = ((Boolean) infos[0]).booleanValue();
++    final boolean hasWriteObject = ((Boolean) infos[1]).booleanValue();
+     if (!hasReadObject && !hasWriteObject) {
+         return InspectionGadgetsBundle.message("serializable.has.serialization.methods.problem.descriptor");
+     } else if (hasReadObject) {
+         return InspectionGadgetsBundle.message("serializable.has.serialization.methods.problem.descriptor1");
+     } else {
+         return InspectionGadgetsBundle.message("serializable.has.serialization.methods.problem.descriptor2");
+     }
+ }
+\ No newline at end of file

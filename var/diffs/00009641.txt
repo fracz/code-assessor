@@ -1,0 +1,29 @@
+diff --git a/7f7e7e865c578ef2944fba21eb640ccecf4cb44f b/bab6ad6a40bae0372ed5c80329d5eceb221af5c1
+index 7f7e7e865c..bab6ad6a40 100644
+--- a/7f7e7e865c578ef2944fba21eb640ccecf4cb44f
++++ b/bab6ad6a40bae0372ed5c80329d5eceb221af5c1
+@@ -1,11 +1,20 @@
+ @Override
+ public void initComponent() {
+     if (!isNormalProject())
+         return;
+-    MavenUtil.runWhenInitialized(myProject, new DumbAwareRunnable() {
++    if (isInitialized.getAndSet(true))
++        return;
++    CompilerManager compilerManager = CompilerManager.getInstance(myProject);
++    compilerManager.addBeforeTask(new CompileTask() {
++
++        public boolean execute(CompileContext context) {
++            return doExecute(true, context);
++        }
++    });
++    compilerManager.addAfterTask(new CompileTask() {
+
+-        public void run() {
+-            doInit();
++        public boolean execute(CompileContext context) {
++            return doExecute(false, context);
+         }
+     });
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/22edc024c11e9bfc6b65a6bee01476c6d3ca8ef3 b/d2fdab99a1fc70145ef29abfdb2022fb0ef862a4
+index 22edc024c1..d2fdab99a1 100644
+--- a/22edc024c11e9bfc6b65a6bee01476c6d3ca8ef3
++++ b/d2fdab99a1fc70145ef29abfdb2022fb0ef862a4
+@@ -1,4 +1,5 @@
+ @Override
+ public Integer read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
+-    return network.readInt();
++    realSize = network.readInt();
++    return realSize;
+ }
+\ No newline at end of file

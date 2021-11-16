@@ -1,0 +1,21 @@
+diff --git a/ae02802b37677357dc282e023b8946a24ecfa71c b/735e2d0bcb97fbe0b03974afd84301b8898ace34
+index ae02802b37..735e2d0bcb 100644
+--- a/ae02802b37677357dc282e023b8946a24ecfa71c
++++ b/735e2d0bcb97fbe0b03974afd84301b8898ace34
+@@ -1,8 +1,11 @@
+ /**
+- * Convenience method for calling printLambdaCallWithoutBlocks from method references.
++ * Convenience method for calling printCallWithoutBlocksInner from method references.
+  */
+-private void printMethodReferenceCallWithoutBlocks(ITypeBinding functionalTypeBinding, IMethodBinding methodBinding) {
++private void printMethodReferenceCallWithoutBlocks(MethodReference node) {
++    IMethodBinding methodBinding = node.getMethodBinding();
++    ITypeBinding functionalTypeBinding = node.getTypeBinding();
++    IMethodBinding functionalInterface = functionalTypeBinding.getFunctionalInterfaceMethod();
++    String newClassName = nameTable.getMethodReferenceName(methodBinding, functionalInterface);
+     boolean isCapturing = false;
+-    String newClassName = nameTable.getFullFunctionName(methodBinding);
+-    printLambdaCallWithoutBlocks(functionalTypeBinding, newClassName, isCapturing);
++    printCallWithoutBlocksInner(functionalTypeBinding, newClassName, isCapturing);
+ }
+\ No newline at end of file

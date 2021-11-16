@@ -1,0 +1,16 @@
+diff --git a/65f9bd3ce1c79d1c752080c5714e7702133e74c1 b/baa4975e966d431e3c59a6607a0fd4f32083b396
+index 65f9bd3ce1..baa4975e96 100644
+--- a/65f9bd3ce1c79d1c752080c5714e7702133e74c1
++++ b/baa4975e966d431e3c59a6607a0fd4f32083b396
+@@ -1,8 +1,8 @@
+ /**
+  * Returns a new stream where the values are grouped by the keys.
+  *
+  * @return the new stream
+  */
+-public PairStream<K, V> groupByKey() {
+-    return partitionBy(KEY);
++public PairStream<K, Iterable<V>> groupByKey() {
++    return partitionByKey().aggregatePartition(new MergeValues<>());
+ }
+\ No newline at end of file

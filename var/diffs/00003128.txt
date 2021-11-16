@@ -1,0 +1,18 @@
+diff --git a/f165e08e47265210d51cb05ca263a840130c9b35 b/700d6e8eecf42f4c5f87948f99c7b1dbfc0a4330
+index f165e08e47..700d6e8eec 100644
+--- a/f165e08e47265210d51cb05ca263a840130c9b35
++++ b/700d6e8eecf42f4c5f87948f99c7b1dbfc0a4330
+@@ -1,10 +1,10 @@
+ public void actionPerformed(AnActionEvent e) {
+     final DataContext dataContext = e.getDataContext();
+     Project project = PlatformDataKeys.PROJECT.getData(dataContext);
+-    FavoritesTreeNodeDescriptor[] roots = (FavoritesTreeNodeDescriptor[]) dataContext.getData(FavoritesTreeViewPanel.CONTEXT_FAVORITES_ROOTS);
+-    String listName = (String) dataContext.getData(FavoritesTreeViewPanel.FAVORITES_LIST_NAME);
++    FavoritesTreeNodeDescriptor[] roots = FavoritesTreeViewPanel.CONTEXT_FAVORITES_ROOTS_DATA_KEY.getData(dataContext);
++    String listName = FavoritesTreeViewPanel.FAVORITES_LIST_NAME_DATA_KEY.getData(dataContext);
+     String newName = AddNewFavoritesListAction.doAddNewFavoritesList(project);
+     if (newName != null) {
+         new SendToFavoritesAction(newName).doSend(FavoritesManager.getInstance(project), roots, listName);
+     }
+ }
+\ No newline at end of file

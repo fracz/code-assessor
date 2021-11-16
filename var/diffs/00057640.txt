@@ -1,0 +1,36 @@
+diff --git a/c155ff7642862aa64f992466bd5a77812570c905 b/b0668c8beebce8574032b5402844490371673a9e
+index c155ff7642..b0668c8bee 100644
+--- a/c155ff7642862aa64f992466bd5a77812570c905
++++ b/b0668c8beebce8574032b5402844490371673a9e
+@@ -1,24 +1,20 @@
+ public final SemgrexPattern Child(GraphRelation r) throws ParseException {
+     SemgrexPattern child;
+-    switch((jj_ntk == -1) ? jj_ntk_f() : jj_ntk) {
++    switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
+         case 19:
+-            {
+-                child = NodeDisj(r);
+-                break;
+-            }
++            child = NodeDisj(r);
++            break;
+         case 23:
+-            {
+-                child = Description(r);
+-                break;
+-            }
++            child = Description(r);
++            break;
+         default:
+             jj_la1[21] = jj_gen;
+             jj_consume_token(-1);
+             throw new ParseException();
+     }
+     {
+-        if ("" != null)
++        if (true)
+             return child;
+     }
+     throw new Error("Missing return statement in function");
+ }
+\ No newline at end of file

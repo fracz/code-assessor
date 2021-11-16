@@ -1,0 +1,18 @@
+diff --git a/a4f6aa70ac4b5af7e70d9ce7088929bfbb528f73 b/5345a383528f468460801a77c4c238688000607a
+index a4f6aa70ac..5345a38352 100644
+--- a/a4f6aa70ac4b5af7e70d9ce7088929bfbb528f73
++++ b/5345a383528f468460801a77c4c238688000607a
+@@ -1,10 +1,7 @@
+ private Map<String, Object> getJSONDataSourceStat(Integer id) {
+     if (id == null) {
+         return null;
+     }
+-    DruidDataSource ds = getDruidDataSourceById(id);
+-    if (ds == null) {
+-        return null;
+-    }
+-    return getJSONDataSource(ds);
++    DruidDataSource datasource = getDruidDataSourceById(id);
++    return datasource == null ? null : toJSONDataSource(datasource);
+ }
+\ No newline at end of file

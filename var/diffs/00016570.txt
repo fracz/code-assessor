@@ -1,0 +1,22 @@
+diff --git a/bc0a5e2863c7e3e4a74dd0cf005ade20263f6826 b/564ba5074e03cfc2a2cd9ae365cb59f4d768bad9
+index bc0a5e2863..564ba5074e 100644
+--- a/bc0a5e2863c7e3e4a74dd0cf005ade20263f6826
++++ b/564ba5074e03cfc2a2cd9ae365cb59f4d768bad9
+@@ -1,7 +1,12 @@
+ @Override
+ protected void invoke(@NotNull Project project, Editor editor, JetFile file) {
+-    JetFunctionPlatformDescriptorImpl platformDescriptor = new JetFunctionPlatformDescriptorImpl(functionDescriptor, element);
+-    List<ValueParameterDescriptor> parameters = functionDescriptor.getValueParameters();
+-    platformDescriptor.removeParameter(parameters.indexOf(parameterToRemove));
+-    showDialog(project, platformDescriptor);
++    BindingContext bindingContext = AnalyzerFacadeWithCache.analyzeFileWithCache(file).getBindingContext();
++    runChangeSignature(project, functionDescriptor, new JetChangeSignatureConfiguration() {
++
++        @Override
++        public void configure(@NotNull JetChangeSignatureData changeSignatureData, @NotNull BindingContext bindingContext) {
++            List<ValueParameterDescriptor> parameters = functionDescriptor.getValueParameters();
++            changeSignatureData.removeParameter(parameters.indexOf(parameterToRemove));
++        }
++    }, bindingContext, context, getText(), false);
+ }
+\ No newline at end of file

@@ -1,0 +1,34 @@
+diff --git a/e2ae7112d8972f1be05fa83046d08cbe0cd0ef47 b/03d8ed497a85f8d907c143a2bd395eb3a3c61567
+index e2ae7112d8..03d8ed497a 100644
+--- a/e2ae7112d8972f1be05fa83046d08cbe0cd0ef47
++++ b/03d8ed497a85f8d907c143a2bd395eb3a3c61567
+@@ -1,21 +1,16 @@
+ @Override
+ public void run() {
++    if (responseHandler != null) {
++        responseHandler.sendStartMessage();
++    }
+     try {
+-        if (responseHandler != null) {
+-            responseHandler.sendStartMessage();
+-        }
+         makeRequestWithRetries();
+-        if (responseHandler != null) {
+-            responseHandler.sendFinishMessage();
+-        }
+     } catch (IOException e) {
+         if (responseHandler != null) {
+-            responseHandler.sendFinishMessage();
+-            if (this.isBinaryRequest) {
+-                responseHandler.sendFailureMessage(e, (byte[]) null);
+-            } else {
+-                responseHandler.sendFailureMessage(e, (String) null);
+-            }
++            responseHandler.sendFailureMessage(0, null, null, e);
+         }
+     }
++    if (responseHandler != null) {
++        responseHandler.sendFinishMessage();
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/1433525e9d7fefea9a1e60335093ce8e65bad522 b/ba2bf66984cadd929018ece635e46bba5cfe26dc
+index 1433525e9d..ba2bf66984 100644
+--- a/1433525e9d7fefea9a1e60335093ce8e65bad522
++++ b/ba2bf66984cadd929018ece635e46bba5cfe26dc
+@@ -1,14 +1,3 @@
+-/**
+- * Parses other POM.
+- *
+- * @param parseContext Parse context
+- * @param parentId Parent module revision ID
+- * @return POM reader
+- * @throws IOException
+- * @throws SAXException
+- */
+ private PomReader parseOtherPom(DescriptorParseContext parseContext, ModuleComponentIdentifier parentId) throws IOException, SAXException {
+-    LocallyAvailableExternalResource localResource = parseContext.getMetaDataArtifact(parentId, ArtifactType.MAVEN_POM);
+-    PomReader pomReader = new PomReader(localResource, moduleIdentifierFactory);
+-    return finalizePomReader(parseContext, pomReader);
++    return parsePom(parseContext, parentId, Maps.<String, String>newHashMap());
+ }
+\ No newline at end of file

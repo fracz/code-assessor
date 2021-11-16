@@ -1,0 +1,15 @@
+diff --git a/d69dbf59f35a448579fdd852e817d89abcf857cb b/07e078305de3cc83202b80b8f313aa8fb79ef240
+index d69dbf59f3..07e078305d 100644
+--- a/d69dbf59f35a448579fdd852e817d89abcf857cb
++++ b/07e078305de3cc83202b80b8f313aa8fb79ef240
+@@ -1,8 +1,8 @@
+ @Test
+ public void testNoSuchXmlFile() throws Exception {
+     try {
+-        new XmlBeanFactory(new ClassPathResource("missing.xml", getClass()));
++        new XmlBeanFactory(MISSING_CONTEXT);
+         fail("Must not create factory from missing XML");
+     } catch (BeanDefinitionStoreException expected) {
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/de89024402ca6f398095527b7ab9e4267238085f b/c6749c4ce549883b2078c7e681da56f56860c9b4
+index de89024402..c6749c4ce5 100644
+--- a/de89024402ca6f398095527b7ab9e4267238085f
++++ b/c6749c4ce549883b2078c7e681da56f56860c9b4
+@@ -1,8 +1,8 @@
+-private CTabItem getPanelTab(IResultSetPanel panel) {
++private CTabItem getPanelTab(String panelId) {
+     for (CTabItem tab : panelFolder.getItems()) {
+-        if (tab.getData() == panel) {
++        if (CommonUtils.equalObjects(tab.getData(), panelId)) {
+             return tab;
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

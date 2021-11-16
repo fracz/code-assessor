@@ -1,0 +1,13 @@
+diff --git a/869919102f2a12d2ae58086bf75fc4a2a3ca84c5 b/b7027fa20e92a570f3a54b8c9f182d5853068b5d
+index 869919102f..b7027fa20e 100644
+--- a/869919102f2a12d2ae58086bf75fc4a2a3ca84c5
++++ b/b7027fa20e92a570f3a54b8c9f182d5853068b5d
+@@ -1,6 +1,3 @@
+ public void showUnderneathOf(@NotNull Component aComponent) {
+-    final JComponent component = getTargetComponent(aComponent);
+-    final Point point = aComponent.getLocationOnScreen();
+-    point.y += component.getVisibleRect().height;
+-    show(aComponent, point.x, point.y, false);
++    show(new RelativePoint(aComponent, new Point(0, aComponent.getHeight())));
+ }
+\ No newline at end of file

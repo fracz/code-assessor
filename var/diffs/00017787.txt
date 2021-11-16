@@ -1,0 +1,19 @@
+diff --git a/f7f02ae0c8a03155cb29978820922ff5a5575f5e b/1d34f938807abbb3d662447b2d5092858320ba67
+index f7f02ae0c8..1d34f93880 100644
+--- a/f7f02ae0c8a03155cb29978820922ff5a5575f5e
++++ b/1d34f938807abbb3d662447b2d5092858320ba67
+@@ -1,10 +1,12 @@
+ @Override
+ public long tryNext() throws InsufficientCapacityException {
+     if (null == gatingSequences) {
+         throw new NullPointerException("gatingSequences must be set before claiming sequences");
+     }
+     if (!hasAvailableCapacity(1, gatingSequences)) {
+         throw InsufficientCapacityException.INSTANCE;
+     }
+-    return incrementAndGet(1, gatingSequences);
++    long nextSequence = cursor.get() + 1;
++    cursor.set(nextSequence);
++    return nextSequence;
+ }
+\ No newline at end of file

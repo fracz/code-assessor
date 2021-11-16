@@ -1,0 +1,15 @@
+diff --git a/3e4b772b02e98942f280fc0de394efa92441ca5d b/79eb7ebd91f24ae2e77c7f2d6848f8818f2ba920
+index 3e4b772b02..79eb7ebd91 100644
+--- a/3e4b772b02e98942f280fc0de394efa92441ca5d
++++ b/79eb7ebd91f24ae2e77c7f2d6848f8818f2ba920
+@@ -1,7 +1,7 @@
+ @Override
+ public void finishRecord() {
+     checkState(field != -1, "not in record");
+-    checkState(field == fieldCount, "not all fields set");
++    checkState(field == columnTypes.size(), "not all fields set");
+     field = -1;
+-    cassandraSession.execute(insertQuery, values.toArray());
++    cassandraSession.execute(insert.bind(values.toArray()));
+ }
+\ No newline at end of file

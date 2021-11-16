@@ -1,0 +1,14 @@
+diff --git a/3f3f5b41c9e000d9e54f784e161fe3b3db54a866 b/a50b3595c57e343d305cd3c7d51d25663f044b08
+index 3f3f5b41c9..a50b3595c5 100644
+--- a/3f3f5b41c9e000d9e54f784e161fe3b3db54a866
++++ b/a50b3595c57e343d305cd3c7d51d25663f044b08
+@@ -1,7 +1,7 @@
+ public ImmutableMap<SkyFunctionName, SkyFunction> getSkyFunctions(BlazeDirectories directories) {
+     // Some tests require the local_repository rule so we need the appropriate SkyFunctions.
+     RepositoryFunction localRepositoryFunction = new LocalRepositoryFunction();
+     localRepositoryFunction.setDirectories(directories);
+     ImmutableMap<String, RepositoryFunction> repositoryHandlers = ImmutableMap.of(LocalRepositoryRule.NAME, localRepositoryFunction);
+-    return ImmutableMap.of(SkyFunctions.REPOSITORY, new RepositoryDelegatorFunction(directories, repositoryHandlers, new AtomicBoolean(true)), localRepositoryFunction.getSkyFunctionName(), localRepositoryFunction);
++    return ImmutableMap.<SkyFunctionName, SkyFunction>of(SkyFunctions.REPOSITORY, new RepositoryDelegatorFunction(directories, repositoryHandlers, new AtomicBoolean(true)));
+ }
+\ No newline at end of file

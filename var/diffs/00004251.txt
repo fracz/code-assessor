@@ -1,0 +1,15 @@
+diff --git a/49fa90ace58bb96efc99d62b78f61dafe456967d b/ea29c663f1ee558f75a3f46c1b88390105f4d277
+index 49fa90ace5..ea29c663f1 100644
+--- a/49fa90ace58bb96efc99d62b78f61dafe456967d
++++ b/ea29c663f1ee558f75a3f46c1b88390105f4d277
+@@ -1,7 +1,8 @@
+-public void start(final char[] buffer, final int startOffset, final int endOffset, final int initialState) {
++@Override
++public void start(CharSequence buffer, int startOffset, int endOffset, int initialState) {
+     myBaseLexer.start(buffer, startOffset, endOffset, initialState & 0xFFFF);
+     myTokenStart = startOffset;
+     myTypeCache.clear();
+     myEndOffsetCache.clear();
+     doLookAhead();
+ }
+\ No newline at end of file

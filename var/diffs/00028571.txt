@@ -1,0 +1,23 @@
+diff --git a/49fc14843d23ac3fe1a571cc45cd68f480f82298 b/b4a128f9690f78d60905a648fa8ad79ead462c0d
+index 49fc14843d..b4a128f969 100644
+--- a/49fc14843d23ac3fe1a571cc45cd68f480f82298
++++ b/b4a128f9690f78d60905a648fa8ad79ead462c0d
+@@ -1,16 +1,10 @@
+ // Called when the request has ended
+ public synchronized void requestEnded(ClientConnection conn) {
+     if (pipelining) {
+         // Maybe the connection can be reused
+         Waiter waiter = waiters.poll();
+         if (waiter != null) {
+-            vertx.runOnContext(v -> {
+-                try {
+-                    waiter.handler.handle(conn);
+-                } catch (Throwable t) {
+-                    log.error("Unhandled exception", t);
+-                }
+-            });
++            conn.getContext().execute(() -> waiter.handler.handle(conn), true);
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/15181b0aab06e91d297c7aba5eb3ed888174e64a b/803fe7d1503bda4127f24f0b0796b026034146af
+index 15181b0aab..803fe7d150 100644
+--- a/15181b0aab06e91d297c7aba5eb3ed888174e64a
++++ b/803fe7d1503bda4127f24f0b0796b026034146af
+@@ -1,10 +1,11 @@
+ /**
+  * Build data sources's names.
+  *
+  * @param dataSourceNames data sources's names
+  * @return this builder
+  */
+-public TableRuleBuilder dataSourceNames(final Collection<String> dataSourceNames) {
+-    this.dataSourceNames = dataSourceNames;
++public TableRuleBuilder dataSourceNames(final String... dataSourceNames) {
++    this.dataSourceNames.clear();
++    this.dataSourceNames.addAll(Arrays.asList(dataSourceNames));
+     return this;
+ }
+\ No newline at end of file

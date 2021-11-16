@@ -1,0 +1,22 @@
+diff --git a/e67c79aae6389035a45ffb6821733ae4bdde580b b/3d6d8c19670836602c3726f216db0b083240991d
+index e67c79aae6..3d6d8c1967 100644
+--- a/e67c79aae6389035a45ffb6821733ae4bdde580b
++++ b/3d6d8c19670836602c3726f216db0b083240991d
+@@ -1,15 +1,13 @@
+ /**
+  * calc minimum and maximum y value over all datasets
+  */
+-private void calcMinMax() {
+-    // check which dataset to use
+-    ArrayList<DataSet> dataSets = mDataSets;
++protected void calcMinMax(ArrayList<? extends DataSet> dataSets) {
+     mYMin = dataSets.get(0).getYMin();
+     mYMax = dataSets.get(0).getYMax();
+     for (int i = 0; i < dataSets.size(); i++) {
+         if (dataSets.get(i).getYMin() < mYMin)
+             mYMin = dataSets.get(i).getYMin();
+         if (dataSets.get(i).getYMax() > mYMax)
+             mYMax = dataSets.get(i).getYMax();
+     }
+ }
+\ No newline at end of file

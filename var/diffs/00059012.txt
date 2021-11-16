@@ -1,0 +1,33 @@
+diff --git a/8be2dbcc88ea04214f04e7320e6477e55242ad54 b/e29bfb826173844fbcaf84b9428dd5e864af9c3f
+index 8be2dbcc88..e29bfb8261 100644
+--- a/8be2dbcc88ea04214f04e7320e6477e55242ad54
++++ b/e29bfb826173844fbcaf84b9428dd5e864af9c3f
+@@ -1,20 +1,20 @@
+ /**
+  * If the iterator argument is non-null, then return a new
+  * {@code MetricInstrumentedIterator} wrapping it. Metrics for method calls
+  * on the wrapped instance will be prefixed with the string {@code p} which
+  * must be non-null. If the iterator argument is null, then return null.
+  *
+- * @param i
++ * @param keyIterator
+  * The iterator to wrap with Metrics measurements
+- * @param p
++ * @param prefix
+  * The Metrics name prefix string
++ *
+  * @return A wrapper around {@code i} or null if {@code i} is null
+  */
+-public static <E> MetricInstrumentedIterator<E> of(RecordIterator<E> i, String p) {
+-    if (null == i) {
++public static MetricInstrumentedIterator of(KeyIterator keyIterator, String prefix) {
++    if (keyIterator == null) {
+         return null;
+     }
+-    Preconditions.checkNotNull(i);
+-    Preconditions.checkNotNull(p);
+-    return new MetricInstrumentedIterator<E>(i, p);
++    Preconditions.checkNotNull(prefix);
++    return new MetricInstrumentedIterator(keyIterator, prefix);
+ }
+\ No newline at end of file

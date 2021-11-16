@@ -1,0 +1,17 @@
+diff --git a/3c3f35ceb870f916f1ed35bbc7d7f639b962f861 b/f46209add6df67bad9394b6ababd8400984a9dee
+index 3c3f35ceb8..f46209add6 100644
+--- a/3c3f35ceb870f916f1ed35bbc7d7f639b962f861
++++ b/f46209add6df67bad9394b6ababd8400984a9dee
+@@ -1,6 +1,9 @@
+-@SuppressWarnings("unused")
+ private static String getCreateStatementMethodBeforeInsertCode() {
+     StringBuilder sb = new StringBuilder();
+-    // sb.append("}");
++    if (logger.isDebugEnabled()) {
++        sb.append("{");
++        sb.append("System.out.println(\"-----ConnectionImpl.createStatement() method is called\");");
++        sb.append("}");
++    }
+     return sb.toString();
+ }
+\ No newline at end of file

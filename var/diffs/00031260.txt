@@ -1,0 +1,16 @@
+diff --git a/cfb60a03a0d6b41ff1864866d15197111985f75c b/c44baf45ed6863618d279835dc8291a704aaeed7
+index cfb60a03a0..c44baf45ed 100644
+--- a/cfb60a03a0d6b41ff1864866d15197111985f75c
++++ b/c44baf45ed6863618d279835dc8291a704aaeed7
+@@ -1,8 +1,7 @@
+ @Override
+ public void contextRewrite(SearchContext searchContext) throws Exception {
+     searchContext.idCache().refresh(searchContext.searcher().getTopReaderContext().leaves());
+-    parents = context.cacheRecycler().popHashSet();
+-    ParentUidsCollector collector = new ParentUidsCollector(parents, context, parentType);
++    parents = context.cacheRecycler().hashSet(-1);
++    ParentUidsCollector collector = new ParentUidsCollector(parents.v(), context, parentType);
+     searchContext.searcher().search(parentQuery, collector);
+-    parents = collector.collectedUids;
+ }
+\ No newline at end of file

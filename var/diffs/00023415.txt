@@ -1,0 +1,15 @@
+diff --git a/8b20002a6e962f0ef240269882410f8684f0d2c3 b/41bc3dd8768379be4dc9330edc6f8decc94dbb93
+index 8b20002a6e..41bc3dd876 100644
+--- a/8b20002a6e962f0ef240269882410f8684f0d2c3
++++ b/41bc3dd8768379be4dc9330edc6f8decc94dbb93
+@@ -1,6 +1,6 @@
+ public void onRemoveCompleted(String packageName, boolean succeeded) {
+-    synchronized (backupManagerService.mClearDataLock) {
+-        backupManagerService.mClearingData = false;
+-        backupManagerService.mClearDataLock.notifyAll();
++    synchronized (backupManagerService.getClearDataLock()) {
++        backupManagerService.setClearingData(false);
++        backupManagerService.getClearDataLock().notifyAll();
+     }
+ }
+\ No newline at end of file

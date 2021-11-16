@@ -1,0 +1,19 @@
+diff --git a/e3f10c1c223b03a0c1e896c4a7c6e679535a4392 b/6b9d614b261afdde08484df26c7c3c5c03f60429
+index e3f10c1c22..6b9d614b26 100644
+--- a/e3f10c1c223b03a0c1e896c4a7c6e679535a4392
++++ b/6b9d614b261afdde08484df26c7c3c5c03f60429
+@@ -1,12 +1,12 @@
+ @Override
+ protected void okPressed() {
+     if (dialogPage instanceof BaseObjectEditPage) {
+         try {
+             ((BaseObjectEditPage) dialogPage).performFinish();
+         } catch (Exception e) {
+-            UIUtils.showErrorDialog(getShell(), "Error saving data", null, e);
++            DBUserInterface.getInstance().showError("Error saving data", null, e);
+             return;
+         }
+     }
+     super.okPressed();
+ }
+\ No newline at end of file

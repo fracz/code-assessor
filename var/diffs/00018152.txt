@@ -1,0 +1,23 @@
+diff --git a/9077dfe0f51c0620299981461739cb732ebe5675 b/d6e3f6dbc6057e8eb9fa1a572f8100275ffc10d8
+index 9077dfe0f5..d6e3f6dbc6 100644
+--- a/9077dfe0f51c0620299981461739cb732ebe5675
++++ b/d6e3f6dbc6057e8eb9fa1a572f8100275ffc10d8
+@@ -1,11 +1,15 @@
+ @Override
+ public void init() throws ServletException {
+-    super.init();
+     logger.trace("> initialize");
+-    ProjectManager.initialize();
++    String data = getInitParameter("gridworks.data");
++    if (data == null) {
++        throw new ServletException("can't find servlet init config 'gridworks.data', I have to give up initializing");
++    }
++    registerCommands(commandNames);
++    ProjectManager.initialize(new File(data));
+     if (_timer == null) {
+         _timer = new Timer("autosave");
+         _timer.schedule(new AutoSaveTimerTask(), s_autoSavePeriod);
+     }
+     logger.trace("< initialize");
+ }
+\ No newline at end of file

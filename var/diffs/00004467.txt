@@ -1,0 +1,24 @@
+diff --git a/3a06700cfc6c8989a7b218b94ad5ae797da3453b b/b5bef5f94ee38c50bbf65c68027cbaabb0d467d1
+index 3a06700cfc..b5bef5f94e 100644
+--- a/3a06700cfc6c8989a7b218b94ad5ae797da3453b
++++ b/b5bef5f94ee38c50bbf65c68027cbaabb0d467d1
+@@ -1,15 +1,17 @@
+ /**
+  * Creates task files in its task folder in project user created
+  *
+  * @param taskDir      project directory of task which task file belongs to
+  * @param resourceRoot directory where original task file stored
+  * @throws IOException
+  */
+ public void create(VirtualFile taskDir, File resourceRoot) throws IOException {
+     String systemIndependentName = FileUtil.toSystemIndependentName(name);
+     final int index = systemIndependentName.lastIndexOf("/");
+     if (index > 0) {
+         systemIndependentName = systemIndependentName.substring(index + 1);
+     }
+-    FileUtil.copy(new File(resourceRoot, name), new File(taskDir.getPath(), systemIndependentName));
++    File resourceFile = new File(resourceRoot, name);
++    File fileInProject = new File(taskDir.getPath(), systemIndependentName);
++    FileUtil.copy(resourceFile, fileInProject);
+ }
+\ No newline at end of file

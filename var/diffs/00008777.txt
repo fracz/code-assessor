@@ -1,0 +1,19 @@
+diff --git a/01c9f80274f90d0fd14c8c5d49a579a8eda0f921 b/087d3a9e0bea751f2b229dbff37660314eef3a6f
+index 01c9f80274..087d3a9e0b 100644
+--- a/01c9f80274f90d0fd14c8c5d49a579a8eda0f921
++++ b/087d3a9e0bea751f2b229dbff37660314eef3a6f
+@@ -1,10 +1,11 @@
+ /**
+  * Applies the choosen policy.
+  *
+  * @param clazz          PSIClass.
+  * @param newMethod      new method.
+  * @param editor
+  * @return if the policy was executed normally (not cancelled)
+  * @throws com.intellij.util.IncorrectOperationException is thrown if there is an IDEA error.
+  */
+-boolean insertNewMethod(PsiClass clazz, PsiMethod newMethod, Editor editor) throws IncorrectOperationException;
+\ No newline at end of file
++@Nullable
++PsiMethod insertNewMethod(PsiClass clazz, PsiMethod newMethod, Editor editor) throws IncorrectOperationException;
+\ No newline at end of file

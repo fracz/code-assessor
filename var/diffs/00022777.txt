@@ -1,0 +1,21 @@
+diff --git a/99332be275b2c435501c881d2bfcb02700dcb722 b/e314780b1fad807c66644a4868048d1038ef694e
+index 99332be275..e314780b1f 100644
+--- a/99332be275b2c435501c881d2bfcb02700dcb722
++++ b/e314780b1fad807c66644a4868048d1038ef694e
+@@ -1,13 +1,14 @@
+ /**
+  * Removes a dead service.
+  *
+  * @param service The service.
+  * @return True if the service was removed, false otherwise.
+  */
+ private boolean removeDeadServiceLocked(Service service) {
+-    if (false) {
++    if (DEBUG) {
+         Slog.i(LOG_TAG, "Dead service " + service.mService + " removed");
+     }
+     mHandler.removeMessages(service.mId);
++    updateStateOnDisabledService(service);
+     return mServices.remove(service);
+ }
+\ No newline at end of file

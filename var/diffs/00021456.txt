@@ -1,0 +1,17 @@
+diff --git a/6fe866c21e5dddd761a14ae1669f09176f014870 b/0c4e7c5a11bb9ae70971fe82c1ed072fbff148a0
+index 6fe866c21e..0c4e7c5a11 100644
+--- a/6fe866c21e5dddd761a14ae1669f09176f014870
++++ b/0c4e7c5a11bb9ae70971fe82c1ed072fbff148a0
+@@ -1,10 +1,3 @@
+ public static String toJSONStringZ(Object object, SerializeConfig mapping, SerializerFeature... features) {
+-    SerializeWriter out = new SerializeWriter(features);
+-    try {
+-        JSONSerializer serializer = new JSONSerializer(out, mapping);
+-        serializer.write(object);
+-        return out.toString();
+-    } finally {
+-        out.close();
+-    }
++    return toJSONString(object, mapping, emptyFilters, 0, features);
+ }
+\ No newline at end of file

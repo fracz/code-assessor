@@ -1,0 +1,16 @@
+diff --git a/dbcd18b24158360b81c01366a8b42c2d48446a2a b/e252aba85f4741c10765dc5eceb2d0605465ea21
+index dbcd18b241..e252aba85f 100644
+--- a/dbcd18b24158360b81c01366a8b42c2d48446a2a
++++ b/e252aba85f4741c10765dc5eceb2d0605465ea21
+@@ -1,9 +1,9 @@
+ @Override
+ public boolean isClosed() {
+     if (super.isClosed())
+         return true;
+     OStorageRemoteSession session = getCurrentSession();
+     if (session == null)
+         return false;
+-    return session.sessionId < 0;
++    return session.getAll().isEmpty();
+ }
+\ No newline at end of file

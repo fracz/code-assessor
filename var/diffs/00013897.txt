@@ -1,0 +1,11 @@
+diff --git a/13bebb37c5a39ee3035aac87536dd6da5edc1f24 b/c210918270385830b44c64b856bcc139bd54161c
+index 13bebb37c5..c210918270 100644
+--- a/13bebb37c5a39ee3035aac87536dd6da5edc1f24
++++ b/c210918270385830b44c64b856bcc139bd54161c
+@@ -1,3 +1,3 @@
+-public PsiElement copy() {
+-    return new GrDynamicImplicitMethod(myManager, (GrMethod) myMethod.copy(), myContainingClassName);
++public GrDynamicImplicitMethod copy() {
++    return new GrDynamicImplicitMethod(myManager, getName(), getContainingClassName(), hasModifierProperty(PsiModifier.STATIC), ContainerUtil.newArrayList(myParamInfos));
+ }
+\ No newline at end of file

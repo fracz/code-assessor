@@ -1,0 +1,13 @@
+diff --git a/a6ac4009ad5cbcfcc831774d57911be1d649a045 b/be7d0522e5897ef7b1b98745d483c1b50472c7ee
+index a6ac4009ad..be7d0522e5 100644
+--- a/a6ac4009ad5cbcfcc831774d57911be1d649a045
++++ b/be7d0522e5897ef7b1b98745d483c1b50472c7ee
+@@ -1,5 +1,5 @@
+ private void checkDisposed() {
+-    if (disposed) {
+-        throw new MyException("Already disposed: URL=" + toString(), getUserData(CREATE_TRACE), getUserData(KILL_TRACE));
++    if (isDisposed()) {
++        throwDisposalError("Already disposed: URL=" + getUrlNoUpdate());
+     }
+ }
+\ No newline at end of file

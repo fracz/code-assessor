@@ -1,0 +1,17 @@
+diff --git a/6238f40d96016db1708587f7834eb391f7baba03 b/2e50823ca21aca3a76bcfc50d43bc28c7dc1a335
+index 6238f40d96..2e50823ca2 100644
+--- a/6238f40d96016db1708587f7834eb391f7baba03
++++ b/2e50823ca21aca3a76bcfc50d43bc28c7dc1a335
+@@ -1,10 +1,10 @@
+ public void addAnnotationKey(AnnotationKey annotationKey) {
+     if (annotationKey == null) {
+         throw new NullPointerException("annotationKey must not be null");
+     }
+     int code = annotationKey.getCode();
+     final AnnotationKey exist = this.buildMap.put(code, annotationKey);
+     if (exist != null) {
+-        throw new IllegalStateException("already exist. annotationKey:" + annotationKey + ", exist:" + exist);
++        throwDuplicatedAnnotationKey(annotationKey, exist);
+     }
+ }
+\ No newline at end of file

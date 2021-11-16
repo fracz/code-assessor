@@ -1,0 +1,15 @@
+diff --git a/e8b285e76af0f9b4af6d5d4af2116eb9769e61c4 b/f6ffd21a2697cc7f9ec71819f5d7d58764b63b92
+index e8b285e76a..f6ffd21a26 100644
+--- a/e8b285e76af0f9b4af6d5d4af2116eb9769e61c4
++++ b/f6ffd21a2697cc7f9ec71819f5d7d58764b63b92
+@@ -1,4 +1,6 @@
+-public CFMetaData isDense(Boolean prop) {
+-    isDense = prop;
+-    return this;
++// We call dense a CF for which each component of the comparator is a clustering column, i.e. no
++// component is used to store a regular column names. In other words, non-composite static "thrift"
++// and CQL3 CF are *not* dense.
++public boolean isDense() {
++    return isDense;
+ }
+\ No newline at end of file

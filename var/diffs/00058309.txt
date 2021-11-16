@@ -1,0 +1,22 @@
+diff --git a/e4f6445f943a728b4b27c862102dd6a29721a320 b/2e32d390420e7df280846af29db260bab3d7a7cf
+index e4f6445f94..2e32d39042 100644
+--- a/e4f6445f943a728b4b27c862102dd6a29721a320
++++ b/2e32d390420e7df280846af29db260bab3d7a7cf
+@@ -1,13 +1,15 @@
+ public void testMap() throws Exception {
+-    Model model = new ModelResolver(mapper()).resolve(MapBean.class, new ModelConverterContextMock());
++    ModelResolver modelResolver = new ModelResolver(mapper());
++    ModelConverterContextImpl context = new ModelConverterContextImpl(modelResolver);
++    Model model = context.resolve(MapBean.class);
+     Map<String, Property> props = model.getProperties();
+     assertEquals(1, props.size());
+     Property prop = props.get("stuff");
+     assertNotNull(prop);
+ // assertEquals("Map[integer,dateTime]", prop.getType());
+ // assertEquals("object", prop.getType());
+ // assertEquals("java.util.Map", prop.getQualifiedType());
+ // Property items = ((MapProperty)prop).getAdditionalProperties();
+ // assertNotNull(items);
+ // assertEquals("java.util.Calendar", items.getQualifiedType());
+ }
+\ No newline at end of file

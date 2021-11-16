@@ -1,0 +1,18 @@
+diff --git a/9703f0252d10c63552220809f2ed3d423ae23ee2 b/50bb3eecddedb9f15596b319c08e8c1f9fe415b0
+index 9703f0252d..50bb3eecdd 100644
+--- a/9703f0252d10c63552220809f2ed3d423ae23ee2
++++ b/50bb3eecddedb9f15596b319c08e8c1f9fe415b0
+@@ -1,10 +1,10 @@
+ @Test
+ public void shouldIterateOverRange() throws Exception {
+     int items = addItemsToCache();
+-    final KeyValueIterator<String, String> range = store.range(String.valueOf(0), String.valueOf(items));
+-    final List<String> results = new ArrayList<>();
++    final KeyValueIterator<Bytes, byte[]> range = store.range(bytesKey(String.valueOf(0)), bytesKey(String.valueOf(items)));
++    final List<Bytes> results = new ArrayList<>();
+     while (range.hasNext()) {
+         results.add(range.next().key);
+     }
+     assertEquals(items, results.size());
+ }
+\ No newline at end of file

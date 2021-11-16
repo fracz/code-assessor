@@ -1,0 +1,14 @@
+diff --git a/8841644306f8255c9e70877bf54c918a44cf00fd b/c629ee7aefc5b2fae516e80ddc3aeb8ce55b4624
+index 8841644306..c629ee7aef 100644
+--- a/8841644306f8255c9e70877bf54c918a44cf00fd
++++ b/c629ee7aefc5b2fae516e80ddc3aeb8ce55b4624
+@@ -1,7 +1,7 @@
+ public static void createFiles() throws IOException {
+     final long startTimeMs = CommonUtils.getCurrentMs();
+     for (int k = 0; k < sFiles; k++) {
+         int fileId = sMtc.createFile(new TachyonURI(sFileName + (k + sBaseFileNumber)));
+-        FormatUtils.printTimeTakenMs(startTimeMs, LOG, "user_createFiles with fileId " + fileId);
++        LOG.info(FormatUtils.formatTimeTakenMs(startTimeMs, "user_createFiles with fileId " + fileId));
+     }
+ }
+\ No newline at end of file

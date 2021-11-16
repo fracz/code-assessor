@@ -1,0 +1,18 @@
+diff --git a/b370d83b34c90d9b1eaa2c53b48c4ed4e7dd37de b/2f2f335e4bc8bc16683e57834f3d5cedcfefdc61
+index b370d83b34..2f2f335e4b 100644
+--- a/b370d83b34c90d9b1eaa2c53b48c4ed4e7dd37de
++++ b/2f2f335e4bc8bc16683e57834f3d5cedcfefdc61
+@@ -1,8 +1,11 @@
+ public String getCode() {
+     CodeWriter code = cls.getCode();
+     if (code == null) {
+         decompile();
+         code = cls.getCode();
+     }
+-    return code != null ? code.toString() : "error processing class";
++    if (code == null) {
++        return "";
++    }
++    return code.toString();
+ }
+\ No newline at end of file

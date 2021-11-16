@@ -1,0 +1,11 @@
+diff --git a/2bf26ae79aa2f3830eacb0369b8331afe5aaa662 b/a03f150621b3578a84e3be6c91dd565f9ab85887
+index 2bf26ae79a..a03f150621 100644
+--- a/2bf26ae79aa2f3830eacb0369b8331afe5aaa662
++++ b/a03f150621b3578a84e3be6c91dd565f9ab85887
+@@ -1,3 +1,3 @@
+-private int numberOfEntitiesFor(Class<? extends PropertyContainer> type) throws DatabaseBlockedException {
+-    return (int) ((GraphDatabaseAPI) database.graph).getNodeManager().getNumberOfIdsInUse(type);
++private int numberOfEntitiesFor(Class<? extends PropertyContainer> type) {
++    return (int) database.getGraph().getNodeManager().getNumberOfIdsInUse(type);
+ }
+\ No newline at end of file

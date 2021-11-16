@@ -1,0 +1,20 @@
+diff --git a/f1d997ee3a2bc6a40939ff48c0777dd9fee1a550 b/b7d41a386d193fc03a90348566af5ef925a5bfac
+index f1d997ee3a..b7d41a386d 100644
+--- a/f1d997ee3a2bc6a40939ff48c0777dd9fee1a550
++++ b/b7d41a386d193fc03a90348566af5ef925a5bfac
+@@ -1,13 +1,11 @@
+ @Override
+ public GenericRecord parse(ByteBuffer bytes) {
+-    DatumReader<GenericRecord> reader = new GenericDatumReader<GenericRecord>(schemaObj);
+-    ByteBufferInputStream inputStream = new ByteBufferInputStream(Collections.singletonList(bytes));
+-    try {
++    try (ByteBufferInputStream inputStream = new ByteBufferInputStream(Collections.singletonList(bytes))) {
+         return reader.read(null, DecoderFactory.get().binaryDecoder(inputStream, null));
+     } catch (EOFException eof) {
+         // waiting for avro v1.9.0 (#AVRO-813)
+         throw new ParseException(eof, "Avro's unnecessary EOFException, detail: [%s]", "https://issues.apache.org/jira/browse/AVRO-813");
+     } catch (Exception e) {
+         throw new ParseException(e, "Fail to decode avro message!");
+     }
+ }
+\ No newline at end of file

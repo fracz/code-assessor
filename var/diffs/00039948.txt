@@ -1,0 +1,14 @@
+diff --git a/3e477798a8bd297d57a7b34aaf08fac08659b14e b/fa63f4c8c74d3379b50ff4a87697e865ae59d3ef
+index 3e477798a8..fa63f4c8c7 100644
+--- a/3e477798a8bd297d57a7b34aaf08fac08659b14e
++++ b/fa63f4c8c74d3379b50ff4a87697e865ae59d3ef
+@@ -1,6 +1,6 @@
+ @Override
+-public NodePropertyExistenceConstraint nodePropertyExistenceConstraintCreate(KernelStatement state, int labelId, int propertyKeyId) throws AlreadyConstrainedException, CreateConstraintFailureException {
++public NodePropertyExistenceConstraint nodePropertyExistenceConstraintCreate(KernelStatement state, NodePropertyDescriptor descriptor) throws AlreadyConstrainedException, CreateConstraintFailureException {
+     acquireExclusiveSchemaLock(state);
+     state.assertOpen();
+-    return schemaWriteDelegate.nodePropertyExistenceConstraintCreate(state, labelId, propertyKeyId);
++    return schemaWriteDelegate.nodePropertyExistenceConstraintCreate(state, descriptor);
+ }
+\ No newline at end of file

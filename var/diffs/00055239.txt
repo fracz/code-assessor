@@ -1,0 +1,19 @@
+diff --git a/588b8ee2492746f237173ba481d22ebe66ec54c7 b/1f8e21f285af059ba42f8ced895eff73c8188dcc
+index 588b8ee249..1f8e21f285 100644
+--- a/588b8ee2492746f237173ba481d22ebe66ec54c7
++++ b/1f8e21f285af059ba42f8ced895eff73c8188dcc
+@@ -1,7 +1,12 @@
+ /**
+  * Cast <code>node</code> to an XmlNode or raise a type error
+  * in <code>context</code>.
+  */
+ protected static XmlNode asXmlNode(ThreadContext context, IRubyObject node) {
+-    return _asXmlNode(context, node, false);
++    if (node == null || !(node instanceof XmlNode)) {
++        Ruby ruby = context.getRuntime();
++        throw ruby.newTypeError(node, (RubyClass) ruby.getClassFromPath("Nokogiri::XML::Node"));
++    } else {
++        return (XmlNode) node;
++    }
+ }
+\ No newline at end of file

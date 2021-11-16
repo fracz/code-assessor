@@ -1,0 +1,17 @@
+diff --git a/089f8ddcc1247f5d7f84b28ef481871a342512ff b/79a3a582a3a084c52c29b9e04a5065e1d1c8d65a
+index 089f8ddcc1..79a3a582a3 100644
+--- a/089f8ddcc1247f5d7f84b28ef481871a342512ff
++++ b/79a3a582a3a084c52c29b9e04a5065e1d1c8d65a
+@@ -1,10 +1,9 @@
+ private void replaceJsDevReloadListener(ReactInstanceManager manager) {
+     new JsDevReloadListenerReplacer(manager, new JsDevReloadListenerReplacer.Listener() {
+
+         @Override
+         public void onJsDevReload() {
+-            if (onJsDevReloadListener != null)
+-                onJsDevReloadListener.onJsDevReload();
++            EventBus.instance.post(new JsDevReloadEvent());
+         }
+     }).replace();
+ }
+\ No newline at end of file

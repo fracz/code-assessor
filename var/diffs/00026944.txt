@@ -1,0 +1,26 @@
+diff --git a/1548c307ad882d7e03483446d113ba75d5cc1380 b/85d8e7a14db8b23a677fb2af85be7028db12ccfe
+index 1548c307ad..85d8e7a14d 100644
+--- a/1548c307ad882d7e03483446d113ba75d5cc1380
++++ b/85d8e7a14db8b23a677fb2af85be7028db12ccfe
+@@ -1,17 +1,17 @@
+ /**
+  * Slices up an image in to a mini batch.
+  *
+  * @param f the file to load from
+  * @param numMiniBatches the number of images in a mini batch
+  * @param numRowsPerSlice the number of rows for each image
+  * @return a tensor representing one image as a mini batch
+  */
+-public Tensor asImageMiniBatches(File f, int numMiniBatches, int numRowsPerSlice) {
++public INDArray asImageMiniBatches(File f, int numMiniBatches, int numRowsPerSlice) {
+     try {
+-        DoubleMatrix d = asMatrix(f);
+-        Tensor f2 = new Tensor(d, numRowsPerSlice, d.columns, numMiniBatches);
++        INDArray d = asMatrix(f);
++        INDArray f2 = NDArrays.create(new int[] { numMiniBatches, numRowsPerSlice, d.columns() });
+         return f2;
+     } catch (Exception e) {
+         throw new RuntimeException(e);
+     }
+ }
+\ No newline at end of file

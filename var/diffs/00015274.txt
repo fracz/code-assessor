@@ -1,0 +1,21 @@
+diff --git a/a87d472be6b8f35bd9a75f09b1f10d7901238d92 b/63d4b6a24f38b8dab6279bdc17d5015dfea0b7c4
+index a87d472be6..63d4b6a24f 100644
+--- a/a87d472be6b8f35bd9a75f09b1f10d7901238d92
++++ b/63d4b6a24f38b8dab6279bdc17d5015dfea0b7c4
+@@ -1,9 +1,11 @@
+-@NotNull
+-private static JetExpression findExpression(@NotNull PsiFile file, int startOffset, int endOffset) throws IntroduceRefactoringException {
++@Nullable
++private static JetExpression findExpression(@NotNull PsiFile file, int startOffset, int endOffset, boolean failOnNoExpression) throws IntroduceRefactoringException {
+     JetExpression element = CodeInsightUtils.findExpression(file, startOffset, endOffset);
+     if (element == null) {
+-        // todo: if it's infix expression => add (), then commit document then return new created expression
+-        throw new IntroduceRefactoringException(JetRefactoringBundle.message("cannot.refactor.not.expression"));
++        if (failOnNoExpression) {
++            throw new IntroduceRefactoringException(JetRefactoringBundle.message("cannot.refactor.not.expression"));
++        }
++        return null;
+     }
+     return element;
+ }
+\ No newline at end of file

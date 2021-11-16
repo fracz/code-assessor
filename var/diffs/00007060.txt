@@ -1,0 +1,19 @@
+diff --git a/0e4c31871dc4eaf0bd4b16e389d3a9e84bdaf430 b/29c557899ec61d29b03568c1f0f684f9b029a40b
+index 0e4c31871d..29c557899e 100644
+--- a/0e4c31871dc4eaf0bd4b16e389d3a9e84bdaf430
++++ b/29c557899ec61d29b03568c1f0f684f9b029a40b
+@@ -1,9 +1,12 @@
+ @Override
+ public void activate() {
+-    super.activate();
++    if (!myProject.isDefault()) {
++        ChangeListManager.getInstance(myProject).addChangeListListener(myChangeListListener);
++        ProjectLevelVcsManager.getInstance(myProject).addVcsListener(myVcsListener);
++    }
+     SvnApplicationSettings.getInstance().svnActivated();
+     VirtualFileManager.getInstance().addVirtualFileListener(myEntriesFileListener);
+     // this will initialize its inner listener for committed changes upload
+     LoadedRevisionsCache.getInstance(myProject);
+     FrameStateManager.getInstance().addListener(myFrameStateListener);
+ }
+\ No newline at end of file

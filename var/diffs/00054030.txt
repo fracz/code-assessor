@@ -1,0 +1,17 @@
+diff --git a/b172a3d719031ad80af503ad71ba6e7f61f34fe9 b/e2c077a4d71fc50eec42466966c1a1a39484beb9
+index b172a3d719..e2c077a4d7 100644
+--- a/b172a3d719031ad80af503ad71ba6e7f61f34fe9
++++ b/e2c077a4d71fc50eec42466966c1a1a39484beb9
+@@ -1,10 +1,10 @@
+ /**
+  * Add master salve state.
+  *
+  * @param masterSlaveDataSource master-slave datasource
+  */
+ public void addMasterSlaveState(final MasterSlaveDataSource masterSlaveDataSource) {
+-    String instanceNodePath = "/" + name + InstanceStateNode.ROOT + new InstanceStateNode().getInstanceId();
++    String instanceNodePath = instanceStateNode.getFullPath();
+     persistState(instanceNodePath);
+     addMasterSlaveInstancesStateChangeListener(instanceNodePath, masterSlaveDataSource);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/c6b92b0dce27ab3ee1a27ea99b1c2c9609f3f3fa b/e219d92555b19021eea4035b9d47548fc87dc760
+index c6b92b0dce..e219d92555 100644
+--- a/c6b92b0dce27ab3ee1a27ea99b1c2c9609f3f3fa
++++ b/e219d92555b19021eea4035b9d47548fc87dc760
+@@ -1,6 +1,7 @@
+ @Override
+ public void visitNode(@NotNull PsiElement node) {
+-    if (mySettings.SELECTED_PROFILES.contains(node.getLanguage().getDisplayName())) {
++    final Language language = node.getLanguage();
++    if (mySettings.SELECTED_PROFILES.contains(language.getDisplayName()) && DuplicatesProfile.findProfileForLanguage(DuplicatesProfile.getAllProfiles(), language) == myDuplicatesProfile && myDuplicatesProfile.isMyLanguage(language)) {
+         myTreeHasher.hash(node, this);
+     }
+ }
+\ No newline at end of file

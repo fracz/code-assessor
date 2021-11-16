@@ -1,0 +1,18 @@
+diff --git a/15fe3f31f439b3308ba808fe1301fbf5284345e9 b/8ae5890e2c6a4035fa4c966ad8c4bfb4de94a9a5
+index 15fe3f31f4..8ae5890e2c 100644
+--- a/15fe3f31f439b3308ba808fe1301fbf5284345e9
++++ b/8ae5890e2c6a4035fa4c966ad8c4bfb4de94a9a5
+@@ -1,8 +1,6 @@
+ protected Comparator<AbstractDomElementNode> getComparator() {
+-    return new Comparator<AbstractDomElementNode>() {
+-
+-        public int compare(final AbstractDomElementNode node1, final AbstractDomElementNode node2) {
+-            return node1.getNodeName().toLowerCase().compareTo(node2.getNodeName().toLowerCase());
+-        }
+-    };
++    final Object comparator = myDomElement.getRoot().getUserData(COMPARATOR_KEY);
++    if (comparator instanceof Comparator)
++        return (Comparator) comparator;
++    return null;
+ }
+\ No newline at end of file

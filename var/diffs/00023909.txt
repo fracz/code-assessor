@@ -1,0 +1,20 @@
+diff --git a/7eacc3b6729ff80b8b93b765e0dbe2c95757c411 b/3ce7f9607d43563843bf98cf132408e6a56c76bf
+index 7eacc3b672..3ce7f9607d 100644
+--- a/7eacc3b6729ff80b8b93b765e0dbe2c95757c411
++++ b/3ce7f9607d43563843bf98cf132408e6a56c76bf
+@@ -1,13 +1,13 @@
+ protected AbstractCompactedRow getReduced() {
+     assert !rows.isEmpty();
+     CompactionIterable.this.updateCounterFor(rows.size());
+     try {
+         // won't be pulled out from under it.
+-        return new LazilyCompactedRow(controller, ImmutableList.copyOf(rows));
++        return format.getCompactedRowWriter(controller, ImmutableList.copyOf(rows));
+     } finally {
+         rows.clear();
+         long n = 0;
+         for (ICompactionScanner scanner : scanners) n += scanner.getCurrentPosition();
+         bytesRead = n;
+     }
+ }
+\ No newline at end of file

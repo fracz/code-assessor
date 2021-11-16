@@ -1,0 +1,15 @@
+diff --git a/a81882129ebebec3ec8308106e963d66c54c7ef6 b/830940bb59dbe650769a46d28011e510037f53a3
+index a81882129e..830940bb59 100644
+--- a/a81882129ebebec3ec8308106e963d66c54c7ef6
++++ b/830940bb59dbe650769a46d28011e510037f53a3
+@@ -1,3 +1,8 @@
+ public DriverPublication removePublication(final int sessionId, final int streamId) {
+-    return publicationByCompoundIdMap.remove(sessionId, streamId);
++    final PublicationComponents components = publicationByCompoundIdMap.remove(sessionId, streamId);
++    if (null != components) {
++        components.retransmitHandler.close();
++        return components.publication;
++    }
++    return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/7635be9e97b4c9dcce3e657f8dbad8608f844394 b/21a38c5bbd980b916c8452bf299f9bda40584442
+index 7635be9e97..21a38c5bbd 100644
+--- a/7635be9e97b4c9dcce3e657f8dbad8608f844394
++++ b/21a38c5bbd980b916c8452bf299f9bda40584442
+@@ -1,9 +1,10 @@
+ @Test
+ public void parseWithParameter() throws SQLException {
++    String sql = "DELETE FROM TABLE_XXX xxx WHERE field4<? AND field1=? AND field5>? AND field2 IN (?,?) AND field6<=? AND field3 BETWEEN ? AND ? AND field7>=?";
+     ShardingRule shardingRule = createShardingRule();
+-    SQLParsingEngine statementParser = new SQLParsingEngine(DatabaseType.MySQL, "DELETE FROM TABLE_XXX xxx WHERE field4<? AND field1=? AND field5>? AND field2 IN (?,?) AND field6<=? AND field3 BETWEEN ? AND ? AND field7>=?", shardingRule);
++    SQLParsingEngine statementParser = new SQLParsingEngine(DatabaseType.MySQL, sql, shardingRule);
+     DeleteSQLContext sqlContext = (DeleteSQLContext) statementParser.parseStatement();
+     assertDeleteStatementWithParameter(sqlContext);
+     // TODO 放入rewrite模块断言
+-    assertThat(new SQLRewriteEngine(sqlContext.getSqlBuilderContext()).rewrite().toString(), is("DELETE FROM [Token(TABLE_XXX)] xxx WHERE field4<? AND field1=? AND field5>? AND field2 IN (?,?) AND field6<=? AND field3 BETWEEN ? AND ? AND field7>=?"));
++    assertThat(new SQLRewriteEngine(sql, sqlContext).rewrite().toString(), is("DELETE FROM [Token(TABLE_XXX)] xxx WHERE field4<? AND field1=? AND field5>? AND field2 IN (?,?) AND field6<=? AND field3 BETWEEN ? AND ? AND field7>=?"));
+ }
+\ No newline at end of file

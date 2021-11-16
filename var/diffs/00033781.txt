@@ -1,0 +1,20 @@
+diff --git a/a7c1a86e1c404f0e7e752f3e36d4a7599dff9291 b/4035a4c59a3bd63fa7bfb695c0e0ca9308359a8a
+index a7c1a86e1c..4035a4c59a 100644
+--- a/a7c1a86e1c404f0e7e752f3e36d4a7599dff9291
++++ b/4035a4c59a3bd63fa7bfb695c0e0ca9308359a8a
+@@ -1,12 +1,13 @@
+ public InputStream decompress(File source) {
+     try {
+-        InputStream is = new BufferedInputStream(new FileInputStream(source));
++        FileInputStream fileInputStream = new FileInputStream(source);
++        InputStream is = new BufferedInputStream(fileInputStream);
+         // CBZip2InputStream expects the opening "BZ" to be skipped
+         byte[] skip = new byte[2];
+         is.read(skip);
+         return new CBZip2InputStream(is);
+     } catch (Exception e) {
+         String message = String.format("Unable to create bzip2 input stream for file: %s due to: %s.", source.getName(), e.getMessage());
+         throw new RuntimeException(message, e);
+     }
+ }
+\ No newline at end of file

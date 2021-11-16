@@ -1,0 +1,14 @@
+diff --git a/7ee53a39185b9df51d7448421c624813bd6ac8a0 b/4d96fdaa4e2d585b41d38ea549729c521fcf719c
+index 7ee53a3918..4d96fdaa4e 100644
+--- a/7ee53a39185b9df51d7448421c624813bd6ac8a0
++++ b/4d96fdaa4e2d585b41d38ea549729c521fcf719c
+@@ -1,4 +1,7 @@
+ public void finishSchema() {
++    assert mgmt != null;
+     mgmt.commit();
+-    mgmt = null;
++    mgmt = graph.getManagementSystem();
++    newTx();
++    graph.commit();
+ }
+\ No newline at end of file

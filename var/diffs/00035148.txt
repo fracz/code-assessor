@@ -1,0 +1,11 @@
+diff --git a/6c3a2c4a49731739e957c9eaba55177bc8d336c0 b/6f43a337136ac4c16f559b19f6cc0876ebe43b85
+index 6c3a2c4a49..6f43a33713 100644
+--- a/6c3a2c4a49731739e957c9eaba55177bc8d336c0
++++ b/6f43a337136ac4c16f559b19f6cc0876ebe43b85
+@@ -1,4 +1,4 @@
+ protected void init2() {
+-    frameBuffers[SECOND_PASS] = FrameBuffer.createFrameBuffer(Pixmap.Format.RGBA8888, Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), true);
++    frameBuffers[SECOND_PASS] = new FrameBuffer(Pixmap.Format.RGBA8888, Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), true);
+     passShaderProviders[SECOND_PASS] = new Pass2ShaderProvider(new Pass2Shader.Config(this));
+ }
+\ No newline at end of file

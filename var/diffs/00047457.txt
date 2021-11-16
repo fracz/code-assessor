@@ -1,0 +1,17 @@
+diff --git a/348805bdbe38e17276c1de88fb58443d851d0f68 b/92492aa72e9123a709ec2b6203df1b443587ca74
+index 348805bdbe..92492aa72e 100644
+--- a/348805bdbe38e17276c1de88fb58443d851d0f68
++++ b/92492aa72e9123a709ec2b6203df1b443587ca74
+@@ -1,4 +1,10 @@
+ @Override
+ public Publisher<Long> incrementAndGet() {
+-    return commandExecutor.writeReactive(getName(), StringCodec.INSTANCE, RedisCommands.INCR, getName());
++    return reactive(new Supplier<RFuture<Long>>() {
++
++        @Override
++        public RFuture<Long> get() {
++            return instance.incrementAndGetAsync();
++        }
++    });
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/2b74a6052c879dabf6bf7dfc82fd980d3ed7b7da b/855b8fe6e02c0d540c764e8690a1e9d06876bc61
+index 2b74a6052c..855b8fe6e0 100644
+--- a/2b74a6052c879dabf6bf7dfc82fd980d3ed7b7da
++++ b/855b8fe6e02c0d540c764e8690a1e9d06876bc61
+@@ -1,14 +1,14 @@
+ /**
+  * iterate one iteration of the network
+  *
+  * @param input  the input to iterate on
+  */
+ @Override
+ public void iterate(INDArray input) {
+-    this.input = input.dup();
+-    applyDropOutIfNecessary(this.input);
++    setInput(input.dup());
++    applyDropOutIfNecessary(this.input, true);
+     Gradient gradient = gradient();
+     for (String paramType : gradient.gradientForVariable().keySet()) {
+         update(gradient.getGradientFor(paramType), paramType);
+     }
+ }
+\ No newline at end of file

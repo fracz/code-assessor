@@ -1,0 +1,12 @@
+diff --git a/7668733467b7bae512cd61e57ecdcee2446387ba b/f66726d699ba6fc80e6f2ca06452281635bfb399
+index 7668733467..f66726d699 100644
+--- a/7668733467b7bae512cd61e57ecdcee2446387ba
++++ b/f66726d699ba6fc80e6f2ca06452281635bfb399
+@@ -1,5 +1,5 @@
+ @Override
+ public void error(SAXParseException ex) throws SAXParseException {
+-    add(ReaderNode.createExceptionNode(ruby, ex));
++    nodeQueue.add(new ReaderNode.ExceptionNode(ruby, ex));
+     throw ex;
+ }
+\ No newline at end of file

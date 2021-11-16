@@ -1,0 +1,16 @@
+diff --git a/b7bf846e1b8fb462a909bc18b2d168ceb3b3c105 b/24e7f42d3ecd2a26d57406b3fdbd25ff4cd4f3d1
+index b7bf846e1b..24e7f42d3e 100644
+--- a/b7bf846e1b8fb462a909bc18b2d168ceb3b3c105
++++ b/24e7f42d3ecd2a26d57406b3fdbd25ff4cd4f3d1
+@@ -1,7 +1,8 @@
+ public final void resume() {
+     synchronized (LOCK) {
+-        if (myDisposed)
++        if (isDisposed() || isRunning())
+             return;
+-        start();
++        myState = TimerState.running;
++        mySharedThread.queue(this, 0);
+     }
+ }
+\ No newline at end of file

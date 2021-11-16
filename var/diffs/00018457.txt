@@ -1,0 +1,31 @@
+diff --git a/2095b97b608ed0f20e47a010b1f84c6cdc4cbf59 b/15b548a67e4f73757157e799009cf7d4f7343ed7
+index 2095b97b60..15b548a67e 100644
+--- a/2095b97b608ed0f20e47a010b1f84c6cdc4cbf59
++++ b/15b548a67e4f73757157e799009cf7d4f7343ed7
+@@ -1,21 +1,17 @@
+ /**
+  * Returns a specified number of contiguous values from the start of an observable sequence.
+  *
+  * @param items
+  * @param num
+  * @return
+  */
+-public static <T> Observable<T> take(final Observable<T> items, final int num) {
++public static <T> Func1<Observer<T>, Subscription> take(final Observable<T> items, final int num) {
+     // wrap in a Watchbable so that if a chain is built up, then asynchronously subscribed to twice we will have 2 instances of Take<T> rather than 1 handing both, which is not thread-safe.
+-    return new Observable<T>() {
++    return new Func1<Observer<T>, Subscription>() {
+
+         @Override
+-        public Subscription subscribe(Observer<T> actualObserver) {
+-            final AtomicObservableSubscription subscription = new AtomicObservableSubscription();
+-            // wrap in AtomicObserverSingleThreaded so that onNext calls are not interleaved but received
+-            // in the order they are called
+-            subscription.setActual(new Take<T>(items, num).subscribe(new AtomicObserver<T>(actualObserver, subscription)));
+-            return subscription;
++        public Subscription call(Observer<T> observer) {
++            return new Take<T>(items, num).call(observer);
+         }
+     };
+ }
+\ No newline at end of file

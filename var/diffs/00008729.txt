@@ -1,0 +1,12 @@
+diff --git a/0fc668fc72e61db92dca559cbeade7da83d17236 b/5bdf0479e2d4024dcbab7e5c25b60bd073020733
+index 0fc668fc72..5bdf0479e2 100644
+--- a/0fc668fc72e61db92dca559cbeade7da83d17236
++++ b/5bdf0479e2d4024dcbab7e5c25b60bd073020733
+@@ -1,5 +1,5 @@
+ @NotNull
+ private static String cleanFromNullsIfNeeded(@NotNull String text) {
+     // Clipboard on Windows and Linux works with null-terminated strings, on Mac nulls are not treated in a special way.
+-    return SystemInfo.isMac ? text : StringUtil.replace(text, "\000", " ");
++    return SystemInfo.isMac ? text : text.replace('\000', ' ');
+ }
+\ No newline at end of file

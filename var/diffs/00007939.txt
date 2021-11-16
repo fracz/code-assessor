@@ -1,0 +1,16 @@
+diff --git a/ec9379930d6d2e5fe6a0cc14703d246fe8e75d21 b/6171e35d86bfaf8c2e1d174acdd71c9513808df3
+index ec9379930d..6171e35d86 100644
+--- a/ec9379930d6d2e5fe6a0cc14703d246fe8e75d21
++++ b/6171e35d86bfaf8c2e1d174acdd71c9513808df3
+@@ -1,9 +1,9 @@
+ private ChangesBrowserNode getNodeForModule(Module module, Map<Module, ChangesBrowserNode> moduleNodesCache, ChangesBrowserNode root) {
+     ChangesBrowserNode node = moduleNodesCache.get(module);
+     if (node == null) {
+-        node = new ChangesBrowserNode(myProject, module);
++        node = ChangesBrowserNode.create(myProject, module);
+         model.insertNodeInto(node, root, root.getChildCount());
+         moduleNodesCache.put(module, node);
+     }
+     return node;
+ }
+\ No newline at end of file

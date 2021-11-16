@@ -1,0 +1,19 @@
+diff --git a/035a46bac402c9ba2d220fa245638a4b13e25516 b/c1a9d215fe38eb0d5319d627e29d4945f0c2e870
+index 035a46bac4..c1a9d215fe 100644
+--- a/035a46bac402c9ba2d220fa245638a4b13e25516
++++ b/c1a9d215fe38eb0d5319d627e29d4945f0c2e870
+@@ -1,12 +1,12 @@
+ @Override
+ protected void doSetInput(IEditorInput editorInput) throws CoreException {
+     if (!(editorInput instanceof IPathEditorInput)) {
+         throw new PartInitException("Invalid Input: Must be " + IPathEditorInput.class.getSimpleName());
+     }
+     IFile file = ContentUtils.getFileFromEditorInput(editorInput);
+     if (file == null || !file.exists()) {
+         throw new PartInitException("File '" + ((IPathEditorInput) editorInput).getPath() + "' doesn't exists");
+     }
+-    dataSourceContainer = SQLEditorInput.getScriptDataSource(file);
+     super.doSetInput(editorInput);
++    setDataSourceContainer(SQLEditorInput.getScriptDataSource(file));
+ }
+\ No newline at end of file

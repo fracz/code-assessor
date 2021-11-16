@@ -1,0 +1,13 @@
+diff --git a/7af0242f58791ed66cfd1f576c913bf0a35d1cc0 b/82ecf56e9c3dbe4d6c496991454c74ae2bacaf9a
+index 7af0242f58..82ecf56e9c 100644
+--- a/7af0242f58791ed66cfd1f576c913bf0a35d1cc0
++++ b/82ecf56e9c3dbe4d6c496991454c74ae2bacaf9a
+@@ -1,5 +1,6 @@
+ @Nullable
+ @Override
+ public Object getAttributeValue(@NotNull DBSAttributeBase attribute) throws DBCException {
+-    return values.get(attribute);
++    int ordinalPosition = attribute.getOrdinalPosition() - 1;
++    return ordinalPosition >= values.length ? null : values[ordinalPosition];
+ }
+\ No newline at end of file

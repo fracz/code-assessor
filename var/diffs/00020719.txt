@@ -1,0 +1,12 @@
+diff --git a/d697ef4f8e41dca9b7a75e2cd6fd3a6ebeb514ac b/c422439b2be5883bed4a3e5dddeaf8840d419540
+index d697ef4f8e..c422439b2b 100644
+--- a/d697ef4f8e41dca9b7a75e2cd6fd3a6ebeb514ac
++++ b/c422439b2be5883bed4a3e5dddeaf8840d419540
+@@ -1,5 +1,5 @@
+ @Override
+ public void preparedStatement_setString(FilterChain chain, PreparedStatementProxy statement, int parameterIndex, String x) throws SQLException {
+     preparedStatement_setParameterBefore(statement, parameterIndex, Types.VARCHAR, x);
+-    super.preparedStatement_setString(chain, statement, parameterIndex, x);
++    chain.preparedStatement_setString(statement, parameterIndex, x);
+ }
+\ No newline at end of file

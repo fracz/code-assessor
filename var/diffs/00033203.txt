@@ -1,0 +1,25 @@
+diff --git a/a9ebc3a459a761bff5f997b851bae52d8bdccbc1 b/731df26885424e7b2a98d985fa2ea7d99c805baf
+index a9ebc3a459..731df26885 100644
+--- a/a9ebc3a459a761bff5f997b851bae52d8bdccbc1
++++ b/731df26885424e7b2a98d985fa2ea7d99c805baf
+@@ -1,17 +1,17 @@
+ public boolean maybePingOwner(int port, long lockId, String displayName, long timeElapsed) {
+-    if (unlocksConfirmedFrom.containsKey(lockId) && unlocksConfirmedFrom.get(lockId) == port) {
++    if (Integer.valueOf(port).equals(unlocksConfirmedFrom.get(lockId))) {
+         // the unlock was confirmed we are waiting
+         return false;
+     }
+-    if (unlocksRequestedFrom.containsKey(lockId) && unlocksRequestedFrom.get(lockId) == port && timeElapsed < PING_DELAY) {
++    if (Integer.valueOf(port).equals(unlocksRequestedFrom.get(lockId)) && timeElapsed < PING_DELAY) {
+         // the unlock was just requested but not yet confirmed, give it some more time
+         return false;
+     }
+     boolean pingSentSuccessfully = getCommunicator().pingOwner(port, lockId, displayName);
+     if (pingSentSuccessfully) {
+         lock.lock();
+         unlocksRequestedFrom.put(lockId, port);
+         lock.unlock();
+     }
+     return pingSentSuccessfully;
+ }
+\ No newline at end of file

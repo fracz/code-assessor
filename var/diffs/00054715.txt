@@ -1,0 +1,26 @@
+diff --git a/980b2ac8fa1c113edb60cc281d24e1600b7e25cc b/64c5b4f9bf532a0a8164f3521b0d5f68546eac27
+index 980b2ac8fa..64c5b4f9bf 100644
+--- a/980b2ac8fa1c113edb60cc281d24e1600b7e25cc
++++ b/64c5b4f9bf532a0a8164f3521b0d5f68546eac27
+@@ -1,16 +1,17 @@
+ /**
+  * 用实际的值替代占位符,并返回新的构建器.
+  *
++ * @param tokens 占位符集合
+  * @return 新SQL构建器
+  */
+ public SQLBuilder createNewSQLBuilder(final Collection<SQLBuilderToken> tokens) {
+-    SQLBuilder result = new SQLBuilder(this);
++    SQLBuilder result = new SQLBuilder(segments, tokenMap);
+     for (SQLBuilderToken each : tokens) {
+-        SQLBuilderToken origin = tokenMap.get(each.getLabel());
++        SQLBuilderToken originalToken = tokenMap.get(each.getLabel());
+         result.tokenMap.put(each.getLabel(), each);
+-        for (Integer index : origin.getIndexes()) {
++        for (Integer index : originalToken.getIndexes()) {
+             result.segments.set(index, each);
+         }
+     }
+     return result;
+ }
+\ No newline at end of file

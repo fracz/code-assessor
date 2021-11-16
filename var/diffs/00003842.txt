@@ -1,0 +1,19 @@
+diff --git a/f9cfbd2aa406aef92ead8143a5beaf3c341d1384 b/995246fd3b23a912f32ef57814167544ce2be82d
+index f9cfbd2aa4..995246fd3b 100644
+--- a/f9cfbd2aa406aef92ead8143a5beaf3c341d1384
++++ b/995246fd3b23a912f32ef57814167544ce2be82d
+@@ -1,11 +1,11 @@
+ private static boolean isSelf(PyParameter node, PyFunction function) {
+     boolean isSelf = false;
+     final int index = ArrayUtil.find(function.getParameterList().getParameters(), node);
+     if (function.getContainingClass() != null && index == 0) {
+-        final Set<PyFunction.Flag> flags = PyUtil.detectDecorationsAndWrappersOf(function);
+-        if (!flags.contains(PyFunction.Flag.CLASSMETHOD) && !flags.contains(PyFunction.Flag.STATICMETHOD)) {
++        final PyFunction.Modifier modifier = function.getModifier();
++        if (modifier != PyFunction.Modifier.CLASSMETHOD && modifier != PyFunction.Modifier.STATICMETHOD) {
+             isSelf = true;
+         }
+     }
+     return isSelf;
+ }
+\ No newline at end of file

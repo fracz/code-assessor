@@ -1,0 +1,30 @@
+diff --git a/6ece5df2f4ed2e9dc396b79b5f58616eba5ab2ca b/0ab7b92571b626e66de3245ccb082656e316c027
+index 6ece5df2f4..0ab7b92571 100644
+--- a/6ece5df2f4ed2e9dc396b79b5f58616eba5ab2ca
++++ b/0ab7b92571b626e66de3245ccb082656e316c027
+@@ -1,17 +1,19 @@
+-public static JetIntentionActionFactory<JetBinaryExpressionWithTypeRHS> createChangeCastToStaticAssertFactory() {
+-    return new JetIntentionActionFactory<JetBinaryExpressionWithTypeRHS>() {
++public static JetIntentionActionFactory createChangeCastToStaticAssertFactory() {
++    return new JetIntentionActionFactory() {
+
+         @Override
+-        public JetIntentionAction<JetBinaryExpressionWithTypeRHS> createAction(DiagnosticWithPsiElement diagnostic) {
+-            assert diagnostic.getPsiElement() instanceof JetBinaryExpressionWithTypeRHS;
+-            return new ReplaceOperationInBinaryExpressionFix<JetBinaryExpressionWithTypeRHS>((JetBinaryExpressionWithTypeRHS) diagnostic.getPsiElement(), " : ") {
++        public JetIntentionAction<JetBinaryExpressionWithTypeRHS> createAction(Diagnostic diagnostic) {
++            JetBinaryExpressionWithTypeRHS expression = QuickFixUtil.getParentElementOfType(diagnostic, JetBinaryExpressionWithTypeRHS.class);
++            if (expression == null)
++                return null;
++            return new ReplaceOperationInBinaryExpressionFix<JetBinaryExpressionWithTypeRHS>(expression, " : ") {
+
+                 @NotNull
+                 @Override
+                 public String getText() {
+                     return JetBundle.message("replace.cast.with.static.assert");
+                 }
+             };
+         }
+     };
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/78a09f1696d16b1b90dd2ca3ce15aa6d393f00cf b/7111112c97c746ce29e2c65daeba2ec237682446
+index 78a09f1696..7111112c97 100644
+--- a/78a09f1696d16b1b90dd2ca3ce15aa6d393f00cf
++++ b/7111112c97c746ce29e2c65daeba2ec237682446
+@@ -1,15 +1,15 @@
+ @NotNull
+ private Runnable prepareRearrangeCommand(@NotNull final PsiFile file, @NotNull final Collection<TextRange> ranges) {
+     final ArrangementEngine engine = ServiceManager.getService(myProject, ArrangementEngine.class);
+     return new Runnable() {
+
+         @Override
+         public void run() {
+             engine.arrange(file, ranges);
+-            String info = engine.getUserNotificationInfo();
+-            if (info != null && getNotificationInfo() != null) {
+-                getNotificationInfo().setRearrangeCodeNotification(info);
++            if (getInfoCollector() != null) {
++                String info = engine.getUserNotificationInfo();
++                getInfoCollector().setRearrangeCodeNotification(info);
+             }
+         }
+     };
+ }
+\ No newline at end of file

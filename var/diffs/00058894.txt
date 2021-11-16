@@ -1,0 +1,17 @@
+diff --git a/bcc630e439ee08de957e1e4b280646a25077d933 b/eeaab39492f58f42186e5fb5f9858b43035e4d32
+index bcc630e439..eeaab39492 100644
+--- a/bcc630e439ee08de957e1e4b280646a25077d933
++++ b/eeaab39492f58f42186e5fb5f9858b43035e4d32
+@@ -1,10 +1,10 @@
+ @Before
+ public void setUp() throws Exception {
+-    openStorageManager((short) 1).clearStorage();
++    for (int i = 0; i < concurrency; i++) openStorageManager(0).clearStorage();
+     open();
+     k = strToByteBuffer("key");
+     c1 = strToByteBuffer("col1");
+     c2 = strToByteBuffer("col2");
+     v1 = strToByteBuffer("val1");
+     v2 = strToByteBuffer("val2");
+ }
+\ No newline at end of file

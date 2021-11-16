@@ -1,0 +1,28 @@
+diff --git a/20db209096dbf5a82e3cfdbc114021b2be0476ab b/09733e5531750791cb39a7a6072df00cc6d256f6
+index 20db209096..09733e5531 100644
+--- a/20db209096dbf5a82e3cfdbc114021b2be0476ab
++++ b/09733e5531750791cb39a7a6072df00cc6d256f6
+@@ -1,13 +1,13 @@
+ private void setUpTitle() {
+     requestWindowFeature(Window.FEATURE_NO_TITLE);
+     Drawable icon = Drawable.createFromStream(getClass().getClassLoader().getResourceAsStream(FB_ICON), FB_ICON);
+-    mTitleLabel = new TextView(getContext());
+-    mTitleLabel.setText("Facebook");
+-    mTitleLabel.setBackgroundColor(FB_BLUE);
+-    mTitleLabel.setTextColor(Color.WHITE);
+-    mTitleLabel.setTypeface(Typeface.DEFAULT_BOLD);
+-    mTitleLabel.setPadding(MARGIN + PADDING, MARGIN, MARGIN, MARGIN);
+-    mTitleLabel.setCompoundDrawablePadding(MARGIN + PADDING);
+-    mTitleLabel.setCompoundDrawablesWithIntrinsicBounds(icon, null, null, null);
+-    mContent.addView(mTitleLabel);
++    mTitle = new TextView(getContext());
++    mTitle.setText("Facebook");
++    mTitle.setTextColor(Color.WHITE);
++    mTitle.setTypeface(Typeface.DEFAULT_BOLD);
++    mTitle.setBackgroundColor(FB_BLUE);
++    mTitle.setPadding(MARGIN + PADDING, MARGIN, MARGIN, MARGIN);
++    mTitle.setCompoundDrawablePadding(MARGIN + PADDING);
++    mTitle.setCompoundDrawablesWithIntrinsicBounds(icon, null, null, null);
++    mContent.addView(mTitle);
+ }
+\ No newline at end of file

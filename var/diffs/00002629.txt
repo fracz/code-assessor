@@ -1,0 +1,20 @@
+diff --git a/d6a6955f3589b6bf9fd20cdc78415913a071e869 b/db9327bbc09b204da3909913ebdd1b97a22c5b67
+index d6a6955f35..db9327bbc0 100644
+--- a/d6a6955f3589b6bf9fd20cdc78415913a071e869
++++ b/db9327bbc09b204da3909913ebdd1b97a22c5b67
+@@ -1,11 +1,6 @@
+ public boolean isContinuationIndent(int lineStartOffset) {
+-    if (myStackCorrupted || myBrackets.isEmpty()) {
++    if (myIncorrectBracketsOrder)
+         return false;
+-    }
+-    int textStartOffset = CharArrayUtil.shiftForward(myText, lineStartOffset, " \t");
+-    for (int i = myBrackets.size() - 1; i >= 0; i--) {
+-        if (myBrackets.get(i) == Bracket.LPARENTH && myText.charAt(textStartOffset) != ')')
+-            return true;
+-    }
+-    return false;
++    List<Bracket> openedBrackets = excludeBracketsClosedAtLineStart(lineStartOffset);
++    return openedBrackets.contains(Bracket.LPARENTH);
+ }
+\ No newline at end of file

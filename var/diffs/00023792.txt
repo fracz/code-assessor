@@ -1,0 +1,10 @@
+diff --git a/abc10e51f699de7dec2691995c1c66669418b595 b/8019af0358dd145ef50b0fa442b2d5c71816605b
+index abc10e51f6..8019af0358 100644
+--- a/abc10e51f699de7dec2691995c1c66669418b595
++++ b/8019af0358dd145ef50b0fa442b2d5c71816605b
+@@ -1,3 +1,3 @@
+ public boolean canShowErrorDialogs() {
+-    return mShowDialogs && !mSleeping && !mShuttingDown && mLockScreenShown != LOCK_SCREEN_SHOWN;
++    return mShowDialogs && !mSleeping && !mShuttingDown && !mKeyguardController.isKeyguardShowing();
+ }
+\ No newline at end of file

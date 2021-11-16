@@ -1,0 +1,12 @@
+diff --git a/4c7353b7b7dc1cde1e82f080c570cab0130e9c1a b/1944194fe803cffd077b6e7634cf3730b373e8be
+index 4c7353b7b7..1944194fe8 100644
+--- a/4c7353b7b7dc1cde1e82f080c570cab0130e9c1a
++++ b/1944194fe803cffd077b6e7634cf3730b373e8be
+@@ -1,3 +1,5 @@
+ public static boolean isSearchTextOccurencesEnabled(@NotNull PsiElement element) {
+-    return ElementDescriptionUtil.getElementDescription(element, NonCodeSearchDescriptionLocation.NON_JAVA) != null;
++    final FindUsagesManager findUsagesManager = ((FindManagerImpl) FindManager.getInstance(element.getProject())).getFindUsagesManager();
++    final FindUsagesHandler handler = findUsagesManager.getFindUsagesHandler(element, false);
++    return FindUsagesUtil.isSearchForTextOccurencesAvailable(element, false, handler);
+ }
+\ No newline at end of file

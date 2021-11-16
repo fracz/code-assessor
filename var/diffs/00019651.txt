@@ -1,0 +1,23 @@
+diff --git a/1f32eb2ba2d3f165389d9df24095ed2d08d1abc9 b/503d7ae6deffee6438d019b651695659132ac5fc
+index 1f32eb2ba2..503d7ae6de 100644
+--- a/1f32eb2ba2d3f165389d9df24095ed2d08d1abc9
++++ b/503d7ae6deffee6438d019b651695659132ac5fc
+@@ -1,8 +1,13 @@
++@Override
+ public LogPosition getLatestIndexBy(String destination) {
+-    LogPosition logPosition = super.getLatestIndexBy(destination);
+-    if (logPosition == nullPosition) {
+-        return null;
+-    } else {
++    LogPosition logPosition = memoryLogPositionManager.getLatestIndexBy(destination);
++    if (logPosition != null) {
+         return logPosition;
+     }
++    logPosition = zooKeeperLogPositionManager.getLatestIndexBy(destination);
++    // 这里保持和重构前的逻辑一致,重新添加到Memory中
++    if (logPosition != null) {
++        memoryLogPositionManager.persistLogPosition(destination, logPosition);
++    }
++    return logPosition;
+ }
+\ No newline at end of file

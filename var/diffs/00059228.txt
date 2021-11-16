@@ -1,0 +1,20 @@
+diff --git a/2abf77e8f3fce56b270ed5337218fa70596846ba b/dfc3390495cf3ed94958f1a648ec3a2fefc56c19
+index 2abf77e8f3..dfc3390495 100644
+--- a/2abf77e8f3fce56b270ed5337218fa70596846ba
++++ b/dfc3390495cf3ed94958f1a648ec3a2fefc56c19
+@@ -1,10 +1,8 @@
+ /* ################################################
+                 Utility Functions
+     ################################################### */
+-private static ExternalIndexType getExternalIndex(String indexName, ElementCategory elementCategory, StandardTitanTx tx) {
+-    String indexLookupName = ExternalIndexTypeWrapper.getExternalIndexName(indexName, elementCategory);
+-    // retrieve actual index from transaction
+-    ExternalIndexType index = null;
+-    Preconditions.checkArgument(index != null, "There is no index [%s] installed for element category [%s]", indexName, elementCategory);
+-    return index;
++private static final ExternalIndexType getExternalIndex(String indexName, StandardTitanTx transaction) {
++    IndexType index = ManagementSystem.getInternalGraphIndex(indexName, transaction);
++    Preconditions.checkArgument(index.isExternalIndex());
++    return (ExternalIndexType) index;
+ }
+\ No newline at end of file

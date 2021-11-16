@@ -1,0 +1,16 @@
+diff --git a/bac47653f72e22e3a92fadb8565560ae00182e73 b/014ad09523828547cac62e26178a6474111c4bff
+index bac47653f7..014ad09523 100644
+--- a/bac47653f72e22e3a92fadb8565560ae00182e73
++++ b/014ad09523828547cac62e26178a6474111c4bff
+@@ -1,8 +1,7 @@
+ public QMMSessionInfo getSessionInfo(DBCExecutionContext context) {
+-    String contextId = makeContextId(context);
+-    QMMSessionInfo sessionInfo = sessionMap.get(contextId);
++    QMMSessionInfo sessionInfo = sessionMap.get(context.getContextId());
+     if (sessionInfo == null) {
+-        log.warn("Can't find sessionInfo meta information: " + contextId);
++        log.debug("Can't find sessionInfo meta information: " + context.getContextId() + " (" + context.getContextName() + ")");
+     }
+     return sessionInfo;
+ }
+\ No newline at end of file

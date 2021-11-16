@@ -1,0 +1,20 @@
+diff --git a/58c8ab9f2762d775770693dee4c2ecc0ad662c1e b/797d46f295e9448ce47c82e0a6f2ebe51bb4aded
+index 58c8ab9f27..797d46f295 100644
+--- a/58c8ab9f2762d775770693dee4c2ecc0ad662c1e
++++ b/797d46f295e9448ce47c82e0a6f2ebe51bb4aded
+@@ -1,11 +1,10 @@
+ @Test
+ public void addedAdditionalRuleShouldBeVisibleInTx() throws Exception {
+     // GIVEN
+     commitNoLabels();
+     // WHEN
+-    txContext.addIndexRule(labelId1, key1);
+-    txContext.addIndexRule(labelId1, key2);
++    IndexRule rule1 = txContext.addIndexRule(labelId1, key1);
++    IndexRule rule2 = txContext.addIndexRule(labelId1, key2);
+     // THEN
+-    assertEquals(asSet(key1, key2), asSet(txContext.getIndexedProperties(labelId1)));
+-    assertEquals(asSet(), asSet(store.getIndexedProperties(labelId1)));
++    assertEquals(asSet(rule1, rule2), asSet(txContext.getIndexRules(labelId1)));
+ }
+\ No newline at end of file

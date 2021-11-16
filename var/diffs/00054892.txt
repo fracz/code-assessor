@@ -1,0 +1,16 @@
+diff --git a/c15111bd800f3b052454d51de4df5f8760b4549e b/27276be7991baedec5257e722564cafcb67fd537
+index c15111bd80..27276be799 100644
+--- a/c15111bd800f3b052454d51de4df5f8760b4549e
++++ b/27276be7991baedec5257e722564cafcb67fd537
+@@ -1,9 +1,9 @@
+ public void save() {
+     try {
+         ExecutorService ex = getSaveExecutor();
+         ex.shutdown();
+         ex.awaitTermination(1, TimeUnit.DAYS);
+     } catch (InterruptedException e) {
+-        LOG.error("Save interrupted", e);
++        throw new JadxRuntimeException("Save interrupted", e);
+     }
+ }
+\ No newline at end of file

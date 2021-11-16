@@ -1,0 +1,16 @@
+diff --git a/d9373cf7196a2190f839434b01f25cdce2f8c2c5 b/3de38de3957a8063f339ff476a130759a7b21a06
+index d9373cf719..3de38de395 100644
+--- a/d9373cf7196a2190f839434b01f25cdce2f8c2c5
++++ b/3de38de3957a8063f339ff476a130759a7b21a06
+@@ -1,8 +1,8 @@
+ private CellAssignment parseCellAssignment() {
+     CellAssignment cellAssignment = new CellAssignment();
+-    cellAssignment.setMeasureColumn(expr());
++    cellAssignment.setMeasureColumn(getExprParser().expr());
+     accept(Token.LEFT_BRACKET);
+-    cellAssignment.getConditions().addAll(exprParser.exprList(cellAssignment));
++    cellAssignment.getConditions().addAll(getExprParser().exprList(cellAssignment));
+     accept(Token.RIGHT_BRACKET);
+     return cellAssignment;
+ }
+\ No newline at end of file

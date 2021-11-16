@@ -1,0 +1,17 @@
+diff --git a/207b633a9700c3c4540ea4506f746eab0277aa97 b/0248d94c13c78e440479385f05978af9d6f22459
+index 207b633a97..0248d94c13 100644
+--- a/207b633a9700c3c4540ea4506f746eab0277aa97
++++ b/0248d94c13c78e440479385f05978af9d6f22459
+@@ -1,10 +1,9 @@
+ /**
+  * Creates and exposes a TilesContainer for this web application,
+  * delegating to the TilesInitializer.
+  * @throws TilesException in case of setup failure
+  * @see #createTilesInitializer()
+  */
+ public void afterPropertiesSet() throws TilesException {
+-    ServletContextAdapter adaptedContext = new ServletContextAdapter(new DelegatingServletConfig());
+-    createTilesInitializer().initialize(new ServletTilesApplicationContext(adaptedContext));
++    createTilesInitializer().initialize(new PropertyExposingServletTilesApplicationContext(this.servletContext, this.tilesPropertyMap));
+ }
+\ No newline at end of file

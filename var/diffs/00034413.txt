@@ -1,0 +1,15 @@
+diff --git a/70cd8f5286996ff6f92ba32ef47a645556efd2fa b/de19f67ecb8bb9af066fff049bc9247b77387a3e
+index 70cd8f5286..de19f67ecb 100644
+--- a/70cd8f5286996ff6f92ba32ef47a645556efd2fa
++++ b/de19f67ecb8bb9af066fff049bc9247b77387a3e
+@@ -1,5 +1,7 @@
+ private MessageReference getReferenceForPosition(int position) {
+     Cursor cursor = (Cursor) mAdapter.getItem(position);
+-    MessageReference ref = new MessageReference(cursor.getString(ACCOUNT_UUID_COLUMN), cursor.getString(FOLDER_NAME_COLUMN), cursor.getString(UID_COLUMN), null);
+-    return ref;
++    String accountUuid = cursor.getString(ACCOUNT_UUID_COLUMN);
++    String folderName = cursor.getString(FOLDER_NAME_COLUMN);
++    String messageUid = cursor.getString(UID_COLUMN);
++    return new MessageReference(accountUuid, folderName, messageUid, null);
+ }
+\ No newline at end of file

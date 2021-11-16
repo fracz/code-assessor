@@ -1,0 +1,20 @@
+diff --git a/cf69d085347130af8782b2c3e804d64769402404 b/19f6b910b54c7f490aea6aa5b1c6583686823f55
+index cf69d08534..19f6b910b5 100644
+--- a/cf69d085347130af8782b2c3e804d64769402404
++++ b/19f6b910b54c7f490aea6aa5b1c6583686823f55
+@@ -1,8 +1,7 @@
+-public FaunusPipeline out(final String... labels) {
+-    if (state.atVertex()) {
+-        state.add(OUT).add(labels);
+-    } else {
+-        throw new RuntimeException(EDGE_STATE_ERROR);
+-    }
+-    return this;
++public FaunusPipeline out(final String... labels) throws IOException {
++    if (this.state.atVertex()) {
++        this.compiler.verticesVerticesMapReduce(OUT, labels);
++        return this;
++    } else
++        throw new RuntimeException("This step can not follow an edge-based step");
+ }
+\ No newline at end of file

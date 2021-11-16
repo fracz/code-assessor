@@ -1,0 +1,24 @@
+diff --git a/96d41f8855463a3d434f01229faf2b095fdbb033 b/d2fbe63c436a30b66180954ddc38da77a425581d
+index 96d41f8855..d2fbe63c43 100644
+--- a/96d41f8855463a3d434f01229faf2b095fdbb033
++++ b/d2fbe63c436a30b66180954ddc38da77a425581d
+@@ -1,14 +1,16 @@
+ private static JetChangeSignatureConfiguration emptyConfiguration() {
+     return new JetChangeSignatureConfiguration() {
+
++        @NotNull
+         @Override
+-        public void configure(@NotNull JetChangeSignatureData changeSignatureData, @NotNull BindingContext bindingContext) {
+-        // do nothing
++        public JetMethodDescriptor configure(@NotNull JetMethodDescriptor originalDescriptor, @NotNull BindingContext bindingContext) {
++            // do nothing
++            return originalDescriptor;
+         }
+
+         @Override
+         public boolean performSilently(@NotNull Collection<? extends PsiElement> elements) {
+             return false;
+         }
+     };
+ }
+\ No newline at end of file

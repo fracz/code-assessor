@@ -1,0 +1,11 @@
+diff --git a/7162548642386736bac40e56186d13ea9386bd18 b/1ae951599301569d6dfbcd86179eaafde5c0500d
+index 7162548642..1ae9515993 100644
+--- a/7162548642386736bac40e56186d13ea9386bd18
++++ b/1ae951599301569d6dfbcd86179eaafde5c0500d
+@@ -1,4 +1,4 @@
+ public static MergePanel2 fromDataContext(DataContext dataContext) {
+-    DiffViewer diffComponent = (DiffViewer) dataContext.getData(DataConstants.DIFF_VIEWER);
++    DiffViewer diffComponent = PlatformDataKeys.DIFF_VIEWER.getData(dataContext);
+     return diffComponent instanceof MergePanel2 ? (MergePanel2) diffComponent : null;
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/d6213fd7ab3fe25f1dbe6414280d262c0d24055b b/92206974e85b68da037713d20840227f2c1001b4
+index d6213fd7ab..92206974e8 100644
+--- a/d6213fd7ab3fe25f1dbe6414280d262c0d24055b
++++ b/92206974e85b68da037713d20840227f2c1001b4
+@@ -1,13 +1,11 @@
+ @Override
+ protected void doUnregister(URL url) {
+-    String avaliableNodePath = toAvaliableServerNodePath(url);
+-    if (zkClient.exists(avaliableNodePath)) {
+-        zkClient.delete(avaliableNodePath);
+-        LoggerUtil.info(String.format("[ZookeeperRegistry] unregister: path=%s", avaliableNodePath));
+-    }
+-    String unavaliableNodePath = toUnavaliableServerNodePath(url);
+-    if (zkClient.exists(unavaliableNodePath)) {
+-        zkClient.delete(unavaliableNodePath);
+-        LoggerUtil.info(String.format("[ZookeeperRegistry] unregister: path=%s", unavaliableNodePath));
++    try {
++        String availableNodePath = toServerNodePath(url, toAvailableServerTypePath(url));
++        deleteNode(availableNodePath);
++        String unavailableNodePath = toServerNodePath(url, toUnavailableServerTypePath(url));
++        deleteNode(unavailableNodePath);
++    } catch (Throwable e) {
++        throw new MotanFrameworkException(String.format("Failed to unregister %s to zookeeper(%s), cause: %s", url, getUrl(), e.getMessage()));
+     }
+ }
+\ No newline at end of file

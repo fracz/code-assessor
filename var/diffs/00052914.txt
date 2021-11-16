@@ -1,0 +1,18 @@
+diff --git a/2ee06d1ff6668af6aa1b94043528c78d3c0c1c54 b/6e5994b1e18fd7b4cceca538494d84072bc05612
+index 2ee06d1ff6..6e5994b1e1 100644
+--- a/2ee06d1ff6668af6aa1b94043528c78d3c0c1c54
++++ b/6e5994b1e18fd7b4cceca538494d84072bc05612
+@@ -1,10 +1,8 @@
+ @Override
+ public DDLStatement parse() {
+     sqlParser.getLexer().nextToken();
+-    if (!sqlParser.skipIfEqual(DefaultKeyword.TABLE)) {
+-        throw new SQLParsingUnsupportedException(sqlParser.getLexer().getCurrentToken().getType());
+-    }
+-    getSqlParser().skipAll(getSkipWordsBetweenKeywordAndTableName());
++    sqlParser.skipIfEqual(DefaultKeyword.TABLE);
++    getSqlParser().skipAll(getSkipKeywordsBetweenTruncateTableAndTableName());
+     sqlParser.parseSingleTable(truncateStatement);
+     return truncateStatement;
+ }
+\ No newline at end of file

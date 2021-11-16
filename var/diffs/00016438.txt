@@ -1,0 +1,27 @@
+diff --git a/36cc79d018a247f8c4b2a1609c89ecb7262d4704 b/43ec5dba4687e9717014cb56a262a630e8963c48
+index 36cc79d018..43ec5dba46 100644
+--- a/36cc79d018a247f8c4b2a1609c89ecb7262d4704
++++ b/43ec5dba4687e9717014cb56a262a630e8963c48
+@@ -1,15 +1,12 @@
+ public void analyzeFiles(@NotNull Collection<JetFile> files, @NotNull List<AnalyzerScriptParameter> scriptParameters) {
+-    WritableScope scope = new WritableScopeImpl(JetScope.EMPTY, moduleDescriptor, new TraceBasedRedeclarationHandler(trace), "Root scope in analyzeNamespace");
+-    scope.changeLockLevel(WritableScope.LockLevel.BOTH);
+-    NamespaceDescriptorImpl rootNs = namespaceFactory.createNamespaceDescriptorPathIfNeeded(FqName.ROOT);
+-    // map "jet" namespace into KotlinBuiltIns
+-    // @see DefaultModuleConfiguraiton#extendNamespaceScope
+-    namespaceFactory.createNamespaceDescriptorPathIfNeeded(KotlinBuiltIns.getInstance().getBuiltInsPackageFqName());
++    ((ModuleDescriptorImpl) moduleDescriptor).addFragmentProvider(packageFragmentProvider);
++    // "depend on" builtins module
++    ((ModuleDescriptorImpl) moduleDescriptor).addFragmentProvider(KotlinBuiltIns.getInstance().getBuiltInsModule().getPackageFragmentProvider());
+     // Import a scope that contains all top-level namespaces that come from dependencies
+     // This makes the namespaces visible at all, does not import themselves
+-    scope.importScope(rootNs.getMemberScope());
+-    scope.changeLockLevel(WritableScope.LockLevel.READING);
++    PackageViewDescriptor rootPackage = moduleDescriptor.getPackage(FqName.ROOT);
++    assert rootPackage != null : "Coulnd't find root package for " + moduleDescriptor;
+     // dummy builder is used because "root" is module descriptor,
+     // namespaces added to module explicitly in
+-    doProcess(scope, new NamespaceLikeBuilderDummy(), files);
++    doProcess(rootPackage.getMemberScope(), new NamespaceLikeBuilderDummy(), files);
+ }
+\ No newline at end of file

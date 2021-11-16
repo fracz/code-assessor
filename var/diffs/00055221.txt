@@ -1,0 +1,16 @@
+diff --git a/ceeb4159f22227eebe8d4041d67ef5325ccd5fd7 b/0959cabec1608b37fc59199e27f40c2ca32f9811
+index ceeb4159f2..0959cabec1 100644
+--- a/ceeb4159f22227eebe8d4041d67ef5325ccd5fd7
++++ b/0959cabec1608b37fc59199e27f40c2ca32f9811
+@@ -1,7 +1,9 @@
+ /**
+  * This method is broken out so that HtmlDomParserContext can
+  * override it.
+  */
+ protected XmlDocument wrapDocument(ThreadContext context, RubyClass klass, Document doc) {
+-    return new XmlDocument(context.getRuntime(), klass, doc);
++    XmlDocument xmlDocument = new XmlDocument(context.getRuntime(), klass, doc);
++    xmlDocument.setEncoding(ruby_encoding);
++    return xmlDocument;
+ }
+\ No newline at end of file

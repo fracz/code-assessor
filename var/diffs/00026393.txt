@@ -1,0 +1,14 @@
+diff --git a/371ee6a2c73db2483a363f39db090e63d7eb2673 b/73a8d3c032ffa0fd418bc05a4a6e0270a2414cbc
+index 371ee6a2c7..73a8d3c032 100644
+--- a/371ee6a2c73db2483a363f39db090e63d7eb2673
++++ b/73a8d3c032ffa0fd418bc05a4a6e0270a2414cbc
+@@ -1,7 +1,7 @@
+ @Test
+ public void readTextLog() throws Exception {
+     List<TraceEvent> events = makeEvents();
+-    Path filePath = eventsAsLogFile(events, path -> new TextLogEventHandler(path));
++    Path filePath = eventsAsLogFile(events, TextLogEventHandler::new);
+     List<TraceEvent> read = LogReader.textLogStream(filePath).collect(Collectors.toList());
+     assertThat(read, is(equalTo(events)));
+ }
+\ No newline at end of file

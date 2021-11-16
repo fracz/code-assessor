@@ -1,0 +1,18 @@
+diff --git a/6aeeb4e5f807652f6c698272d3920ac59e2f0092 b/c14043ee08f3f48480ce328e712dbb0b574c7896
+index 6aeeb4e5f8..c14043ee08 100644
+--- a/6aeeb4e5f807652f6c698272d3920ac59e2f0092
++++ b/c14043ee08f3f48480ce328e712dbb0b574c7896
+@@ -1,11 +1,8 @@
+ @Override
+ protected boolean isAvailable(AnActionEvent e) {
+-    VirtualFile[] files = e.getData(PlatformDataKeys.VIRTUAL_FILE_ARRAY);
+-    if (files == null || files.length == 0)
+-        return false;
+-    for (VirtualFile each : files) {
++    for (VirtualFile each : getFiles(e)) {
+         if (getProjectsManager(e).isManagedFile(each))
+             return true;
+     }
+     return false;
+ }
+\ No newline at end of file

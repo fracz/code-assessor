@@ -1,0 +1,20 @@
+diff --git a/703552756d86abaaae762842875b7818de953eb5 b/6e23cc6c334dad3d75d8641b60d96c9d8928dee2
+index 703552756d..6e23cc6c33 100644
+--- a/703552756d86abaaae762842875b7818de953eb5
++++ b/6e23cc6c334dad3d75d8641b60d96c9d8928dee2
+@@ -1,12 +1,13 @@
++@Test
+ public void testMultipleConfigLocations() {
+-    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] { "/org/springframework/context/support/test/contextB.xml", "/org/springframework/context/support/test/contextC.xml", "/org/springframework/context/support/test/contextA.xml" });
++    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] { FQ_CONTEXT_B, FQ_CONTEXT_C, FQ_CONTEXT_A });
+     assertTrue(ctx.containsBean("service"));
+     assertTrue(ctx.containsBean("logicOne"));
+     assertTrue(ctx.containsBean("logicTwo"));
+     Service service = (Service) ctx.getBean("service");
+     ctx.refresh();
+     assertTrue(service.isProperlyDestroyed());
+     service = (Service) ctx.getBean("service");
+     ctx.close();
+     assertTrue(service.isProperlyDestroyed());
+ }
+\ No newline at end of file

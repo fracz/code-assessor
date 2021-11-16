@@ -1,0 +1,17 @@
+diff --git a/31224b699c97faf487167d0dc1735fdba8956feb b/c60640da9a8e5c372874aa550f22755b7530bec8
+index 31224b699c..c60640da9a 100644
+--- a/31224b699c97faf487167d0dc1735fdba8956feb
++++ b/c60640da9a8e5c372874aa550f22755b7530bec8
+@@ -1,10 +1,10 @@
+ @Test
+ public void testComplexFactoryReferenceCircle() {
+-    XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("complexFactoryCircle.xml", getClass()));
++    XmlBeanFactory xbf = new XmlBeanFactory(COMPLEX_FACTORY_CIRCLE_CONTEXT);
+     xbf.getBean("proxy1");
+     // check that unused instances from autowiring got removed
+     assertEquals(5, xbf.getSingletonCount());
+     // properly create the remaining two instances
+     xbf.getBean("proxy2");
+     assertEquals(7, xbf.getSingletonCount());
+ }
+\ No newline at end of file

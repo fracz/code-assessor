@@ -1,0 +1,30 @@
+diff --git a/f61f5b00893803c5a08400564b7f1aadd80c7418 b/d5b117a46d54db206177e740bb804b48386299e2
+index f61f5b0089..d5b117a46d 100644
+--- a/f61f5b00893803c5a08400564b7f1aadd80c7418
++++ b/d5b117a46d54db206177e740bb804b48386299e2
+@@ -1,23 +1,23 @@
+ /**
+  * Cleans up the test environment over underfs cluster system, so that we can re-use the running
+  * system for the next test round instead of turning on/off it from time to time. This function is
+  * expected to be called either before or after each test case which avoids certain overhead from
+  * the bootstrap.
+  *
+  * @throws IOException when the operation fails
+  */
+ public void cleanup() throws IOException {
+     if (isStarted()) {
+         String path = getUnderFilesystemAddress() + AlluxioURI.SEPARATOR;
+         UnderFileSystem ufs = UnderFileSystem.get(path);
+         for (String p : ufs.list(path)) {
+             String childPath = PathUtils.concatPath(path, p);
+             // TODO(adit); eliminate this isDirectory call after list is updated to listStatus
+             if (ufs.isDirectory(childPath)) {
+-                ufs.deleteDirectory(childPath, new DeleteOptions().setRecursive(true));
++                ufs.deleteDirectory(childPath, DeleteOptions.defaults().setRecursive(true));
+             } else {
+                 ufs.deleteFile(childPath);
+             }
+         }
+     }
+ }
+\ No newline at end of file

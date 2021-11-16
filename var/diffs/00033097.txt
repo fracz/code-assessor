@@ -1,0 +1,13 @@
+diff --git a/ae1e08744b0539c400c2e9eb8ae5e10af0aec28c b/9d6f210a2b36fbe48d04dabaa2402a3375c16cd8
+index ae1e08744b..9d6f210a2b 100644
+--- a/ae1e08744b0539c400c2e9eb8ae5e10af0aec28c
++++ b/9d6f210a2b36fbe48d04dabaa2402a3375c16cd8
+@@ -1,3 +1,5 @@
+-public void markDirty(RandomAccessFile lockFileAccess) throws IOException {
+-    writeState(lockFileAccess, new StateInfo(StateInfo.UNKNOWN_PREVIOUS_OWNER, true));
++public StateInfo markDirty(RandomAccessFile lockFileAccess) throws IOException {
++    StateInfo stateInfo = new StateInfo(StateInfo.UNKNOWN_PREVIOUS_OWNER, true);
++    writeState(lockFileAccess, stateInfo);
++    return stateInfo;
+ }
+\ No newline at end of file

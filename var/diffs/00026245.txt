@@ -1,0 +1,31 @@
+diff --git a/c9591d7dde73588687bf80e0b225f3486091025a b/0c3145f4448f916b633a4435ad1882704a10c458
+index c9591d7dde..0c3145f444 100644
+--- a/c9591d7dde73588687bf80e0b225f3486091025a
++++ b/0c3145f4448f916b633a4435ad1882704a10c458
+@@ -1,21 +1,17 @@
+ /**
+  * Adds new dependencies to the given rule under the given attribute name
+  *
+- * @param result the builder for the attribute --> dependency labels map
+- * @param rule the rule being evaluated
++ * @param depResolver the resolver for this rule's deps
+  * @param attrName the name of the attribute to add dependency labels to
+  * @param labels the dependencies to add
+- * @param configuration the configuration to apply to those dependencies
+  */
+-private void addExplicitDeps(ImmutableSortedKeyListMultimap.Builder<Attribute, LabelAndConfiguration> result, Rule rule, String attrName, Iterable<Label> labels, BuildConfiguration configuration) {
++private void addExplicitDeps(RuleResolver depResolver, String attrName, Iterable<Label> labels) {
++    Rule rule = depResolver.rule;
+     if (!rule.isAttrDefined(attrName, BuildType.LABEL_LIST) && !rule.isAttrDefined(attrName, BuildType.NODEP_LABEL_LIST)) {
+         return;
+     }
+     Attribute attribute = rule.getRuleClassObject().getAttributeByName(attrName);
+     for (Label label : labels) {
+-        // The configuration must be the configuration after the first transition step (applying
+-        // split configurations). The proper configuration (null) for package groups will be set
+-        // later.
+-        result.put(attribute, LabelAndConfiguration.of(label, configuration));
++        depResolver.resolveDep(attribute, label);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/26c03b4f7a5f0fd7ad70a10e1124445ad2bc4de9 b/9301b1d7ffcee1ba9788dc59d6362d025e30c763
+index 26c03b4f7a..9301b1d7ff 100644
+--- a/26c03b4f7a5f0fd7ad70a10e1124445ad2bc4de9
++++ b/9301b1d7ffcee1ba9788dc59d6362d025e30c763
+@@ -1,15 +1,16 @@
+ private void createNewNameComponent() {
+     myNameSuggestionsField = new NameSuggestionsField(new String[] { myTag.getName() }, myProject, StdFileTypes.PLAIN_TEXT, myEditor);
+-    myNameSuggestionsField.addDataChangedListener(new NameSuggestionsField.DataChanged() {
++    myNameChangedListener = new NameSuggestionsField.DataChanged() {
+
+         public void dataChanged() {
+             validateButtons();
+         }
+-    });
++    };
++    myNameSuggestionsField.addDataChangedListener(myNameChangedListener);
+     myNameSuggestionsField.getComponent().registerKeyboardAction(new ActionListener() {
+
+         public void actionPerformed(ActionEvent e) {
+             completeVariable(myNameSuggestionsField.getEditor());
+         }
+     }, KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, InputEvent.CTRL_MASK), JComponent.WHEN_IN_FOCUSED_WINDOW);
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/b1b1e2d35e0350be0437a766add6f1c6a552a342 b/26b82d89ab17dd27c15c71c7a0b0b0dbb1d89ff8
+index b1b1e2d35e..26b82d89ab 100644
+--- a/b1b1e2d35e0350be0437a766add6f1c6a552a342
++++ b/26b82d89ab17dd27c15c71c7a0b0b0dbb1d89ff8
+@@ -1,14 +1,10 @@
+-protected void registerCustomTask(final String name, final String namespace, final AntTaskDefinition definition) {
++protected void registerCustomTask(final AntTaskDefinition def) {
+     if (myDefinition != null) {
+         if (!myDefinitionCloned) {
++            myDefinition = new AntTaskDefinitionImpl(myDefinition);
+             myDefinitionCloned = true;
+-            myDefinition = myDefinition.clone();
+         }
+-        myDefinition.registerNestedTask(definition.getClassName());
+-        if (myTaskIdToClassMap == null) {
+-            myTaskIdToClassMap = new HashMap<String, String>();
+-        }
+-        myTaskIdToClassMap.put(namespace + name, definition.getClassName());
+-        getAntProject().registerCustomTask(name, namespace, definition);
++        myDefinition.registerNestedTask(def.getTaskId(), def.getClassName());
++        getAntProject().registerCustomTask(def);
+     }
+ }
+\ No newline at end of file

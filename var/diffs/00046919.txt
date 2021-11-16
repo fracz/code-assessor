@@ -1,0 +1,15 @@
+diff --git a/ccd958f2322f212fa8c6d1f0d51e3daca9819326 b/cd95651f2b756474840237a625b8af201366ea1c
+index ccd958f232..cd95651f2b 100644
+--- a/ccd958f2322f212fa8c6d1f0d51e3daca9819326
++++ b/cd95651f2b756474840237a625b8af201366ea1c
+@@ -1,5 +1,7 @@
+ public synchronized void releaseSubscription(final Subscription subscription) {
+-    activeCorrelationId = driverProxy.removeSubscription(subscription.channel(), subscription.streamId(), subscription.correlationId());
+-    subscriptionMap.remove(subscription.channel(), subscription.streamId());
++    final String channel = subscription.channel();
++    final int streamId = subscription.streamId();
++    activeCorrelationId = driverProxy.removeSubscription(channel, streamId, subscription.correlationId());
++    subscriptionMap.remove(channel, streamId);
+     awaitOperationSucceeded();
+ }
+\ No newline at end of file

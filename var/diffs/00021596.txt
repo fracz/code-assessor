@@ -1,0 +1,22 @@
+diff --git a/beab166dea6a1ce78dbb2e7d39bf06de94990c3d b/b4c566692a59eaf90eac3e1ac9905dbb18d86967
+index beab166dea..b4c566692a 100644
+--- a/beab166dea6a1ce78dbb2e7d39bf06de94990c3d
++++ b/b4c566692a59eaf90eac3e1ac9905dbb18d86967
+@@ -1,13 +1,14 @@
+ /**
+  * Set an image from a remote url.
+  *
+  * @param imageUrl The url of the resource to load.
+  */
+ public void setImageUrl(final String imageUrl) {
++    this.imageUrl = imageUrl;
+     AutoLoadImageView.this.loadImagePlaceHolder();
+-    if (imageUrl != null) {
+-        this.loadImageFromUrl(imageUrl);
++    if (this.imageUrl != null) {
++        this.loadImageFromUrl(this.imageUrl);
+     } else {
+         this.loadImagePlaceHolder();
+     }
+ }
+\ No newline at end of file

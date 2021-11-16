@@ -1,0 +1,15 @@
+diff --git a/90fc5b686fe339914685794ab629955b15134a2a b/d88f81132f44f00c5a2fc8b2596a580d9de0f655
+index 90fc5b686f..d88f81132f 100644
+--- a/90fc5b686fe339914685794ab629955b15134a2a
++++ b/d88f81132f44f00c5a2fc8b2596a580d9de0f655
+@@ -1,4 +1,7 @@
+ public void valueChanged(ListSelectionEvent e) {
+-    MyAnAction action = (MyAnAction) options.get(impl.getSelectionIndex());
+-    highlighter.highlight(action.getElement());
++    int index = list.getSelectedIndex();
++    if (index < 0)
++        return;
++    MyUnwrapAction a = (MyUnwrapAction) options.get(index);
++    highlighter.highlight(a.getElement());
+ }
+\ No newline at end of file

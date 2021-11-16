@@ -1,0 +1,17 @@
+diff --git a/1e3fb2f82e08555e4a360a9113a8f5fcc1b12956 b/cb6c55db52ab9a7489b7ec13914d65f90f8dcceb
+index 1e3fb2f82e..cb6c55db52 100644
+--- a/1e3fb2f82e08555e4a360a9113a8f5fcc1b12956
++++ b/cb6c55db52ab9a7489b7ec13914d65f90f8dcceb
+@@ -1,9 +1,9 @@
+-private static UndirectedGraph<Integer, String> buildUndirectedTestGraph() {
+-    UndirectedGraph<Integer, String> undirectedGraph = Graphs.createUndirected(MULTIGRAPH);
++private static Graph<Integer, String> buildUndirectedTestGraph() {
++    Graph<Integer, String> undirectedGraph = GraphBuilder.undirected().allowsParallelEdges(true).build();
+     undirectedGraph.addEdge(E11, N1, N1);
+     undirectedGraph.addEdge(E12, N1, N2);
+     undirectedGraph.addEdge(E11_A, N1, N1);
+     undirectedGraph.addEdge(E12_A, N1, N2);
+     undirectedGraph.addEdge(E21, N2, N1);
+     return undirectedGraph;
+ }
+\ No newline at end of file

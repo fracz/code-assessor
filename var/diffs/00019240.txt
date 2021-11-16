@@ -1,0 +1,18 @@
+diff --git a/043e03b4af52d60d5e5c056a86f535489b073226 b/b636084cf4e96f8cc0965fb5360f0b40930c5ad1
+index 043e03b4af..b636084cf4 100644
+--- a/043e03b4af52d60d5e5c056a86f535489b073226
++++ b/b636084cf4e96f8cc0965fb5360f0b40930c5ad1
+@@ -1,11 +1,10 @@
+ @Override
+ public long getEngineSort() {
+     long uid;
+     if (isHeader) {
+         uid = (((long) localCollectionId & 0xFFFFFFFFL) * 10000000000L);
+     } else {
+         uid = ((long) stickerId & 0xFFFFFFFFL) + (((long) localCollectionId & 0xFFFFFFFFL) * 10000000000L);
+     }
+-    Log.d("STICKER", "ID: " + stickerId + " Collection ID: " + localCollectionId + " Unique id: " + uid);
+-    return uid;
++    return uid * -1;
+ }
+\ No newline at end of file

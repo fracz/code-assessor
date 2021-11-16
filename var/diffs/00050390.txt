@@ -1,0 +1,23 @@
+diff --git a/65abaf6bbb93d5a60046256f94d9452d6f5f0154 b/655c5d67fa1f33267145d9bdf6fdec93f13a0493
+index 65abaf6bbb..655c5d67fa 100644
+--- a/65abaf6bbb93d5a60046256f94d9452d6f5f0154
++++ b/655c5d67fa1f33267145d9bdf6fdec93f13a0493
+@@ -1,16 +1,16 @@
+ @Nullable
+ public static Object makeNullValue(@NotNull final IValueController valueController) {
+     try {
+         DBCExecutionContext executionContext = valueController.getExecutionContext();
+         if (executionContext == null) {
+             throw new DBCException(CoreMessages.editors_sql_status_not_connected_to_database);
+         }
+         // We are going to create NULL value - it shouldn't result in any DB roundtrips so let's use dummy monitor
+-        try (DBCSession session = executionContext.openSession(VoidProgressMonitor.INSTANCE, DBCExecutionPurpose.UTIL, "Set NULL value")) {
++        try (DBCSession session = executionContext.openSession(new VoidProgressMonitor(), DBCExecutionPurpose.UTIL, "Set NULL value")) {
+             return DBUtils.makeNullValue(session, valueController.getValueHandler(), valueController.getValueType());
+         }
+     } catch (DBCException e) {
+         log.error("Can't make NULL value", e);
+         return null;
+     }
+ }
+\ No newline at end of file

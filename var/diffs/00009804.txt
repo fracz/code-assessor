@@ -1,0 +1,13 @@
+diff --git a/321dc3b564731cf3bda8eb3cf15d8bac2ed07f88 b/8d7cd981955309bbfe239111c4751eb03e8d22ea
+index 321dc3b564..8d7cd98195 100644
+--- a/321dc3b564731cf3bda8eb3cf15d8bac2ed07f88
++++ b/8d7cd981955309bbfe239111c4751eb03e8d22ea
+@@ -1,5 +1,3 @@
+-@Nullable
+-private static MavenProjectsNavigator getNavigator(AnActionEvent e) {
+-    Project project = e.getData(PlatformDataKeys.PROJECT);
+-    return project == null ? null : MavenProjectsNavigator.getInstance(project);
++private MavenProjectsNavigator getNavigator(AnActionEvent e) {
++    return MavenProjectsNavigator.getInstance(getProject(e));
+ }
+\ No newline at end of file

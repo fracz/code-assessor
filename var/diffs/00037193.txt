@@ -1,0 +1,14 @@
+diff --git a/15183e5f1e6cc3401ac6e10cf6d506c5c2d6fb35 b/deafda9c8d341add8adc8be8b8c5a2c67a0320e4
+index 15183e5f1e..deafda9c8d 100644
+--- a/15183e5f1e6cc3401ac6e10cf6d506c5c2d6fb35
++++ b/deafda9c8d341add8adc8be8b8c5a2c67a0320e4
+@@ -1,6 +1,4 @@
+ private static void updateCloseMethod(ClassPool classPool, CtClass cc) throws Exception {
+-    CtMethod serviceMethod = cc.getDeclaredMethod("close", null);
+-    logger.info("Changing close method ");
+-    serviceMethod.insertBefore(getCloseMethodBeforeInsertCode());
+-    serviceMethod.insertAfter(getCloseMethodAfterInsertCode());
++    CtMethod method = cc.getDeclaredMethod("close", null);
++    method.insertAfter("{" + TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".put(" + TomcatProfilerConstant.REQ_DATA_TYPE_DB_CLOSE_CONNECTION + "); }");
+ }
+\ No newline at end of file

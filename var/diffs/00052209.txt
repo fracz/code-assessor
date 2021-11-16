@@ -1,0 +1,13 @@
+diff --git a/8a6abaa1950c87d6e808a1ef36c6bc2e51492a1a b/829f0a80e26544bb09323db8a1e573d9a33c09aa
+index 8a6abaa195..829f0a80e2 100644
+--- a/8a6abaa1950c87d6e808a1ef36c6bc2e51492a1a
++++ b/829f0a80e26544bb09323db8a1e573d9a33c09aa
+@@ -1,4 +1,5 @@
+ private void scanAlias() {
+-    term.scanContentUntil(position, '\"', GeneralLiterals.ALIAS, true);
+-    setTermResult();
++    Tokenizer tokenizer = new Tokenizer(input, dictionary, position);
++    tokenizer.scanContentUntil('\"', GeneralLiterals.ALIAS, true);
++    setTokenizerResult(tokenizer);
+ }
+\ No newline at end of file

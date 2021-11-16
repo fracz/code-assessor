@@ -1,0 +1,25 @@
+diff --git a/106d9ffb803b8decc3a18506a1e301c2ff26edc3 b/9ff143e64c730bc6c45b283d87eb5df19586176d
+index 106d9ffb80..9ff143e64c 100644
+--- a/106d9ffb803b8decc3a18506a1e301c2ff26edc3
++++ b/9ff143e64c730bc6c45b283d87eb5df19586176d
+@@ -1,15 +1,13 @@
+-private Set<String> collectCaches(CacheProcessor<Collection<String>> p) throws MavenIndexException {
++private Set<String> collectCaches(MavenIndex.DataProcessor<Collection<String>> p) throws MavenIndexException {
+     try {
+-        final Set<String> result = new HashSet<String>();
+-        for (final IndexData data : myIndicesData.values()) {
+-            if (data.cache == null)
+-                continue;
+-            Collection<String> values = p.process(data.cache);
++        Set<String> result = new HashSet<String>();
++        for (MavenIndex each : getIndices()) {
++            Collection<String> values = each.process(p);
+             if (values != null)
+                 result.addAll(values);
+         }
+         return result;
+     } catch (Exception e) {
+         throw new MavenIndexException(e);
+     }
+ }
+\ No newline at end of file

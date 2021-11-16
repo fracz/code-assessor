@@ -1,0 +1,12 @@
+diff --git a/9700f08286ed71fc7fd3cb10d5eeae477b99ce51 b/b3a7d6c7ebeec702f22ba271c0fd45fc21a61dcf
+index 9700f08286..b3a7d6c7eb 100644
+--- a/9700f08286ed71fc7fd3cb10d5eeae477b99ce51
++++ b/b3a7d6c7ebeec702f22ba271c0fd45fc21a61dcf
+@@ -1,5 +1,5 @@
+ @Override
+ public void setBoolean(int parameterIndex, boolean x) throws SQLException {
+-    setParameter(parameterIndex, new JdbcParameterImpl(Types.BOOLEAN, x));
++    setParameter(parameterIndex, createParameter(Types.BOOLEAN, x));
+     createChain().preparedStatement_setBoolean(this, parameterIndex, x);
+ }
+\ No newline at end of file

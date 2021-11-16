@@ -1,0 +1,12 @@
+diff --git a/1891fe5c03a05d063be68d5cb96336548afe69eb b/917fa29e4b8ee695bfc915d6227c2bc3fd3bf682
+index 1891fe5c03..917fa29e4b 100644
+--- a/1891fe5c03a05d063be68d5cb96336548afe69eb
++++ b/917fa29e4b8ee695bfc915d6227c2bc3fd3bf682
+@@ -1,4 +1,4 @@
+ public boolean isFromFuture() {
+-    final List<String> qName = getImportSourceQName();
+-    return qName != null && qName.size() == 1 && PyNames.FUTURE_MODULE.equals(qName.get(0));
++    final PyQualifiedName qName = getImportSourceQName();
++    return qName != null && qName.matches(PyNames.FUTURE_MODULE);
+ }
+\ No newline at end of file

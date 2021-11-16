@@ -1,0 +1,12 @@
+diff --git a/c8c9fddd41deca606357a1ce119ed38d75835ec2 b/045058456874d02c22f0471bcb2b5a908b43d6ff
+index c8c9fddd41..0450584568 100644
+--- a/c8c9fddd41deca606357a1ce119ed38d75835ec2
++++ b/045058456874d02c22f0471bcb2b5a908b43d6ff
+@@ -1,4 +1,4 @@
+ @Override
+-NodePropertyExistenceConstraint createConstraint(SchemaWriteOperations writeOps, int type, int property) throws Exception {
+-    return writeOps.nodePropertyExistenceConstraintCreate(type, property);
++NodePropertyExistenceConstraint createConstraint(SchemaWriteOperations writeOps, NodePropertyDescriptor descriptor) throws Exception {
++    return writeOps.nodePropertyExistenceConstraintCreate(descriptor);
+ }
+\ No newline at end of file

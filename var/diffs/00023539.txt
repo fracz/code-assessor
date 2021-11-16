@@ -1,0 +1,26 @@
+diff --git a/47a475f0f0d67c2d3f5fd1f1b358c1a298be1695 b/04f69b5eae3f0b9a31ed755188ebe8371b4d87ea
+index 47a475f0f0..04f69b5eae 100644
+--- a/47a475f0f0d67c2d3f5fd1f1b358c1a298be1695
++++ b/04f69b5eae3f0b9a31ed755188ebe8371b4d87ea
+@@ -1,19 +1,15 @@
+ /*
+      * Find all instances of find on the page and highlight them.
+      * @param find  String to find.
+      * @return int  The number of occurances of the String "find"
+      *              that were found.
+      */
+ public int findAll(String find) {
+     // client isn't initialized
+     if (0 == mNativeClass)
+         return 0;
+-    if (mFindIsUp == false) {
+-        recordNewContentSize(mContentWidth, mContentHeight + mFindHeight, false);
+-        mFindIsUp = true;
+-    }
+-    int result = nativeFindAll(find.toLowerCase(), find.toUpperCase());
++    int result = find != null ? nativeFindAll(find.toLowerCase(), find.toUpperCase()) : 0;
+     invalidate();
+     mLastFind = find;
+     return result;
+ }
+\ No newline at end of file

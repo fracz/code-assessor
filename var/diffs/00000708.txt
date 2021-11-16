@@ -1,0 +1,27 @@
+diff --git a/e831237e5b33acf7a3d58e6d27dad03bf4b5cda3 b/1369e4f3725ddf24c1e20a740bf6096ef1c7b6fe
+index e831237e5b..1369e4f372 100644
+--- a/e831237e5b33acf7a3d58e6d27dad03bf4b5cda3
++++ b/1369e4f3725ddf24c1e20a740bf6096ef1c7b6fe
+@@ -1,14 +1,13 @@
+ /**
+  * Changes the type of BootstrapButton
+  * @param bootstrapType - String value for the type of button e.g. "primary"
+  */
+ public void setBootstrapType(String bootstrapType) {
+-    BootstrapTypes type;
+-    // get the correct background type
+-    type = (roundedCorners) ? bbuttonTypeMapRounded.get(bootstrapType) : bbuttonTypeMap.get(bootstrapType);
+-    type = (type == null) ? BootstrapTypes.DEFAULT : type;
+-    layout.setBackgroundResource(type.backgroundDrawable);
+-    lblLeft.setTextColor(getResources().getColor(type.textColour));
+-    lblMiddle.setTextColor(getResources().getColor(type.textColour));
+-    lblRight.setTextColor(getResources().getColor(type.textColour));
++    BootstrapType type = BootstrapType.getBootstrapTypeFromString(bootstrapType);
++    int buttonBg = (roundedCorners) ? type.getRoundedBg() : type.getNormalBg();
++    layout.setBackgroundResource(buttonBg);
++    int textColor = getResources().getColor(type.getTextColour());
++    lblLeft.setTextColor(textColor);
++    lblMiddle.setTextColor(textColor);
++    lblRight.setTextColor(textColor);
+ }
+\ No newline at end of file

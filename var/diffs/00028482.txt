@@ -1,0 +1,21 @@
+diff --git a/557c9932d8c2d0a9b8c97418470b35e43db81a95 b/8b549223d4244515f26d134512c8110d7ebadc8a
+index 557c9932d8..8b549223d4 100644
+--- a/557c9932d8c2d0a9b8c97418470b35e43db81a95
++++ b/8b549223d4244515f26d134512c8110d7ebadc8a
+@@ -1,11 +1,12 @@
+ @Test
+ public void testGetAbsoluteURI() {
++    client = vertx.createHttpClient(new ClientOptions());
+     server.requestHandler(req -> {
+-        assertEquals("http://localhost:" + port + "/foo/bar", req.absoluteURI().toString());
++        assertEquals("http://localhost:" + DEFAULT_HTTP_PORT + "/foo/bar", req.absoluteURI().toString());
+         req.response().end();
+     });
+-    server.listen(port, "localhost", onSuccess(s -> {
+-        client.getNow("/foo/bar", resp -> resp.endHandler(v -> testComplete()));
++    server.listen(DEFAULT_HTTP_PORT, DEFAULT_HTTP_HOST, onSuccess(s -> {
++        client.getNow(new RequestOptions().setPort(DEFAULT_HTTP_PORT).setRequestURI("/foo/bar"), resp -> resp.endHandler(v -> testComplete()));
+     }));
+     await();
+ }
+\ No newline at end of file

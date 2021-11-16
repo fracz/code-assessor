@@ -1,0 +1,17 @@
+diff --git a/6dd4feb6cebd34977b4b0012677a801919e9e0a6 b/8e1c561446635c6a38a9ddf6646baab0df80090b
+index 6dd4feb6ce..8e1c561446 100644
+--- a/6dd4feb6cebd34977b4b0012677a801919e9e0a6
++++ b/8e1c561446635c6a38a9ddf6646baab0df80090b
+@@ -1,7 +1,10 @@
+ public boolean isAvailableOnDataContext(DataContext dataContext) {
+     PsiElement[] elementArray = BaseRefactoringAction.getPsiElementArray(dataContext);
+     if (elementArray == null || elementArray.length != 1 || elementArray[0] == null) {
+         return false;
+     }
+-    return !(elementArray[0] instanceof PsiJavaFile) || elementArray[0] instanceof JspFile;
++    final PsiElement element = elementArray[0];
++    if (element instanceof JspClass || element instanceof JspHolderMethod)
++        return false;
++    return !(element instanceof PsiJavaFile) || element instanceof JspFile;
+ }
+\ No newline at end of file

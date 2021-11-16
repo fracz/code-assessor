@@ -1,0 +1,12 @@
+diff --git a/139a301409a82c9433991dc90d87edd1479ac97f b/3a23c92ddd088fbd9609a1bd9f303db28642b53b
+index 139a301409..3a23c92ddd 100644
+--- a/139a301409a82c9433991dc90d87edd1479ac97f
++++ b/3a23c92ddd088fbd9609a1bd9f303db28642b53b
+@@ -1,5 +1,4 @@
+ public static byte[] modify(ClassPool classPool, ClassLoader classLoader, String javassistClassName, byte[] classFileBuffer) {
+-    log("EntryPointModifier.modifyStandardHostValve()");
+-    // printClassInfo(javassistClassName);
++    logger.info("EntryPointModifier.modifyStandardHostValve(). %s", javassistClassName);
+     return changeServiceMethod(classPool, classLoader, javassistClassName, classFileBuffer);
+ }
+\ No newline at end of file

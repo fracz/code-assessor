@@ -1,0 +1,15 @@
+diff --git a/2bc6601229c0aa9241b680c45d9c1c3a3a0fbd81 b/51a2b52318bb6439c1f41148151e3284050a3387
+index 2bc6601229..51a2b52318 100644
+--- a/2bc6601229c0aa9241b680c45d9c1c3a3a0fbd81
++++ b/51a2b52318bb6439c1f41148151e3284050a3387
+@@ -1,8 +1,4 @@
+ @Override
+ public boolean exists() {
+-    if (status == STATUS.OPEN)
+-        return true;
+-    if (storage == null)
+-        storage = Orient.instance().loadStorage(url);
+-    return storage.exists();
++    throw new UnsupportedOperationException("use OrientDBFactory");
+ }
+\ No newline at end of file

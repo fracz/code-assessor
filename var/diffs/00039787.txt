@@ -1,0 +1,21 @@
+diff --git a/0cdd76ac5d69c5509bc65eb28d04399f696f615a b/42eb2e1c732f28531e7f82701a74052c25fa37c5
+index 0cdd76ac5d..42eb2e1c73 100644
+--- a/0cdd76ac5d69c5509bc65eb28d04399f696f615a
++++ b/42eb2e1c732f28531e7f82701a74052c25fa37c5
+@@ -1,12 +1,14 @@
+ @Test
+ public void shouldListAllConstraints() {
+     // Given
+     createUniquenessConstraint(label1, propertyKey);
+     createUniquenessConstraint(label2, propertyKey);
+     // When
+     Set<PropertyConstraint> constraints = asSet(disk.constraintsGetAll());
+     // Then
++    int labelId1 = labelId(label1);
++    int labelId2 = labelId(label2);
+     int propKeyId = propertyKeyId(propertyKey);
+-    Set<?> expectedConstraints = asSet(new UniquenessConstraint(labelId(label1), propKeyId), new UniquenessConstraint(labelId(label2), propKeyId));
++    Set<?> expectedConstraints = asSet(new UniquenessConstraint(new NodePropertyDescriptor(labelId1, propKeyId)), new UniquenessConstraint(new NodePropertyDescriptor(labelId2, propKeyId)));
+     assertEquals(expectedConstraints, constraints);
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/8841db7cd41bed0ad70c63d32ee9320585d4234b b/09c4b3cc6b5d4b853b018786a2552d796cb0f431
+index 8841db7cd4..09c4b3cc6b 100644
+--- a/8841db7cd41bed0ad70c63d32ee9320585d4234b
++++ b/09c4b3cc6b5d4b853b018786a2552d796cb0f431
+@@ -1,5 +1,11 @@
+ @Override
+-public // norelease to be made abstract once all query builders override toQuery providing their own specific implementation.
+-Query toQuery(QueryParseContext parseContext) throws QueryParsingException, IOException {
+-    return parseContext.indexQueryParserService().queryParser(getName()).parse(parseContext);
++public final Query toQuery(QueryParseContext parseContext) throws IOException {
++    Query query = doToQuery(parseContext);
++    if (query != null) {
++        query.setBoost(boost);
++        if (queryName != null) {
++            parseContext.addNamedQuery(queryName, query);
++        }
++    }
++    return query;
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/4e6ff79f620d8976ec6f25fef8e2a8f1df54e0c5 b/fcac65ff07d2b4828e0868ac831206debeca7687
+index 4e6ff79f62..fcac65ff07 100644
+--- a/4e6ff79f620d8976ec6f25fef8e2a8f1df54e0c5
++++ b/fcac65ff07d2b4828e0868ac831206debeca7687
+@@ -1,4 +1,3 @@
+-private static VcsLog getVcsLog(@NotNull Project project) {
+-    VcsLog logService = ServiceManager.getService(project, VcsLog.class);
+-    return logService != null && ((VcsLogImpl) logService).isReady() ? logService : null;
++private static VcsLog getVcsLog(@NotNull AnActionEvent event) {
++    return event.getData(VcsLogDataKeys.VSC_LOG);
+ }
+\ No newline at end of file

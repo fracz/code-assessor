@@ -1,0 +1,13 @@
+diff --git a/d27bf9b5d52f581a226b9434ae931db3bb882dd8 b/bcb91e41ab3de5f4f6e4c56f6cf0813bb6d4d85e
+index d27bf9b5d5..bcb91e41ab 100644
+--- a/d27bf9b5d52f581a226b9434ae931db3bb882dd8
++++ b/bcb91e41ab3de5f4f6e4c56f6cf0813bb6d4d85e
+@@ -1,6 +1,6 @@
+ public void testSelectToDocumentStart() throws Exception {
+     init("line1\n" + "line2\n" + "line3\n" + "line4");
+     mouse().clickAt(1, 1).dragTo(2, 2).release();
+-    executeAction("EditorTextStartWithSelection");
++    executeAction(IdeActions.ACTION_EDITOR_TEXT_START_WITH_SELECTION);
+     checkResultByText("<selection><caret>l</selection>ine1\n" + "<selection><caret>l</selection>ine2\n" + "line3\n" + "line4");
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/3b95a34db15ce32dde944859e253c8e9dd15f70d b/92527fbb7737e4e341540f143d350bd95581c058
+index 3b95a34db1..92527fbb77 100644
+--- a/3b95a34db15ce32dde944859e253c8e9dd15f70d
++++ b/92527fbb7737e4e341540f143d350bd95581c058
+@@ -1,7 +1,7 @@
+ // </DataWrite>
+ // <SchemaWrite>
+ @Override
+-public IndexDescriptor indexCreate(int labelId, int propertyKeyId) throws AlreadyIndexedException, AlreadyConstrainedException {
++public IndexDescriptor indexCreate(NodePropertyDescriptor descriptor) throws AlreadyIndexedException, AlreadyConstrainedException {
+     statement.assertOpen();
+-    return schemaWrite().indexCreate(statement, labelId, propertyKeyId);
++    return schemaWrite().indexCreate(statement, descriptor);
+ }
+\ No newline at end of file

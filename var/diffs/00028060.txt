@@ -1,0 +1,16 @@
+diff --git a/200493dc9713691bc789d64f89331eec6e3dd61d b/17b93971f6291324308e80b70c37988d75471a04
+index 200493dc97..17b93971f6 100644
+--- a/200493dc9713691bc789d64f89331eec6e3dd61d
++++ b/17b93971f6291324308e80b70c37988d75471a04
+@@ -1,7 +1,7 @@
+ @Override
+-public void onCommandRemoved(CommandImpl command) {
+-    if (command.getName().equals(editedCommand.getName())) {
++public void onCommandRemoved(CommandRemovedEvent event) {
++    if (event.getCommand().getName().equals(editedCommand.getName())) {
+         editorAgent.closeEditor(this);
+-        Scheduler.get().scheduleDeferred(() -> commandManager.removeCommandChangedListener(this));
++        commandRemovedHandlerRegistration.removeHandler();
+     }
+ }
+\ No newline at end of file

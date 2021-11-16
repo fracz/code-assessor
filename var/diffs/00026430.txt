@@ -1,0 +1,17 @@
+diff --git a/6b47155f221629ae5ca38b4ca49958e1ea5bb2e5 b/067d66491f981cf2984f7236747f4051b2346678
+index 6b47155f22..067d66491f 100644
+--- a/6b47155f221629ae5ca38b4ca49958e1ea5bb2e5
++++ b/067d66491f981cf2984f7236747f4051b2346678
+@@ -1,9 +1,9 @@
+ /**
+  * {@inheritDoc}
+  */
+ @Override
+ public void setAutoCommit(boolean autoCommit) throws SQLException {
+     delegate.setAutoCommit(autoCommit);
+-    poolEntry.setAutoCommit(autoCommit);
+-    isConnectionStateDirty = true;
++    isAutoCommit = autoCommit;
++    dirtyBits |= 0b00010;
+ }
+\ No newline at end of file

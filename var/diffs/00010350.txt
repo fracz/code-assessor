@@ -1,0 +1,15 @@
+diff --git a/b590f6e19e6ed22053309fdf8056bf8a667648a6 b/d0ba9ed41010ec9fab5b0193cf38f1e0ccfc98ad
+index b590f6e19e..d0ba9ed410 100644
+--- a/b590f6e19e6ed22053309fdf8056bf8a667648a6
++++ b/d0ba9ed41010ec9fab5b0193cf38f1e0ccfc98ad
+@@ -1,6 +1,6 @@
+ public Indent getIndent(String text, FileType fileType) {
+-    int indent = HelperFactory.createHelper(fileType, myProject).getIndent(text, true);
+-    int indenLevel = indent / IndentHelper.INDENT_FACTOR;
+-    int spaceCount = indent - indenLevel * IndentHelper.INDENT_FACTOR;
++    int indent = IndentHelperImpl.getIndent(myProject, fileType, text, true);
++    int indenLevel = indent / IndentHelperImpl.INDENT_FACTOR;
++    int spaceCount = indent - indenLevel * IndentHelperImpl.INDENT_FACTOR;
+     return new IndentImpl(getSettings(), indenLevel, spaceCount, fileType);
+ }
+\ No newline at end of file

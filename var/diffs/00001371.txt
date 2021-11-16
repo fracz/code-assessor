@@ -1,0 +1,17 @@
+diff --git a/bb2bea1118df974498837df7d56606bdd5cad4fc b/656fc79f26f4fcbc80a47acd8ba0775f2fc906c7
+index bb2bea1118..656fc79f26 100644
+--- a/bb2bea1118df974498837df7d56606bdd5cad4fc
++++ b/656fc79f26f4fcbc80a47acd8ba0775f2fc906c7
+@@ -1,10 +1,7 @@
+ @Override
+ public boolean matchesDefaultMapping(final VirtualFile file, final Object matchContext) {
+     if (matchContext != null) {
+         return true;
+     }
+-    if (myBaseDir != null && VfsUtilCore.isAncestor(myBaseDir, file, false)) {
+-        return !ProjectRootManager.getInstance(myProject).getFileIndex().isIgnored(file);
+-    }
+-    return false;
++    return myBaseDir != null && VfsUtilCore.isAncestor(myBaseDir, file, false);
+ }
+\ No newline at end of file

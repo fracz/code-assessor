@@ -1,0 +1,14 @@
+diff --git a/c826d7f83d1d60ea32453e571ad155852b2b8e53 b/3c2c1247eebc13e7989abca67408ab576b700b54
+index c826d7f83d..3c2c1247ee 100644
+--- a/c826d7f83d1d60ea32453e571ad155852b2b8e53
++++ b/3c2c1247eebc13e7989abca67408ab576b700b54
+@@ -1,7 +1,4 @@
+ public void markAsSentFailed(long messageId) {
+-    SQLiteDatabase database = databaseHelper.getWritableDatabase();
+-    ContentValues contentValues = new ContentValues();
+-    contentValues.put(MESSAGE_BOX, Types.MESSAGE_BOX_SENT_FAILED);
+-    database.update(TABLE_NAME, contentValues, ID_WHERE, new String[] { messageId + "" });
++    updateMailboxBitmask(messageId, Types.BASE_TYPE_MASK, Types.BASE_SENT_FAILED_TYPE);
+     notifyConversationListeners(getThreadIdForMessage(messageId));
+ }
+\ No newline at end of file

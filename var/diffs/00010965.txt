@@ -1,0 +1,23 @@
+diff --git a/5c921f0416238eaed88fdbd41bbfd31e0dc3a424 b/8a2c12a439fbf69f3f0ce78aead75b40fbbb3386
+index 5c921f0416..8a2c12a439 100644
+--- a/5c921f0416238eaed88fdbd41bbfd31e0dc3a424
++++ b/8a2c12a439fbf69f3f0ce78aead75b40fbbb3386
+@@ -1,12 +1,14 @@
+ @Nullable
+ public Component getFocusedDescendantFor(@NotNull final Component comp) {
+     final Component focused = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+     if (focused == null)
+         return null;
+     if (focused == comp || SwingUtilities.isDescendingFrom(focused, comp))
+         return focused;
+-    final JBPopup popup = FocusTrackback.getChildPopup(comp);
+-    if (popup != null && popup.isFocused())
+-        return focused;
++    java.util.List<JBPopup> popups = FocusTrackback.getChildPopups(comp);
++    for (JBPopup each : popups) {
++        if (each.isFocused())
++            return focused;
++    }
+     return null;
+ }
+\ No newline at end of file

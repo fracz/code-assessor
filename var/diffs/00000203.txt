@@ -1,0 +1,16 @@
+diff --git a/daf3f68113bb16e317d3b808ae70921cb8798cd9 b/a0568470686c7710f9fe89ebd56b0af7e2d6a76b
+index daf3f68113..a056847068 100644
+--- a/daf3f68113bb16e317d3b808ae70921cb8798cd9
++++ b/a0568470686c7710f9fe89ebd56b0af7e2d6a76b
+@@ -1,9 +1,9 @@
+ @Test
+ public void validateLockIdWithWrongUserIdTest() throws Exception {
+     long lockId = mLockManager.lockBlock(TEST_USER_ID, TEST_BLOCK_ID, BlockLockType.READ);
+     long wrongUserId = TEST_USER_ID + 1;
+     mThrown.expect(InvalidStateException.class);
+-    mThrown.expectMessage("Failed to validateLock: lockId " + lockId + " is owned by userId " + TEST_USER_ID + ", not " + wrongUserId);
++    mThrown.expectMessage(ExceptionMessage.LOCK_ID_FOR_DIFFERENT_USER.getMessage(lockId, TEST_USER_ID, wrongUserId));
+     // Validate an existing lockId with wrong userId, expect to see IOException
+     mLockManager.validateLock(wrongUserId, TEST_BLOCK_ID, lockId);
+ }
+\ No newline at end of file

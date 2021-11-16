@@ -1,0 +1,13 @@
+diff --git a/793349344bbfb8958fb27366edef2fddea585d2d b/c838c1109324bd93739de3f00f579ef10c570e61
+index 793349344b..c838c11093 100644
+--- a/793349344bbfb8958fb27366edef2fddea585d2d
++++ b/c838c1109324bd93739de3f00f579ef10c570e61
+@@ -1,6 +1,6 @@
+ private static FileChooserDescriptor createFileChooserDescriptor(Component parent) {
+     final FileChooserDescriptor descriptor = new FileChooserDescriptor(false, true, true, false, false, true);
+-    final Module contextModule = (Module) DataManager.getInstance().getDataContext(parent).getData(DataConstants.MODULE_CONTEXT);
++    final Module contextModule = LangDataKeys.MODULE_CONTEXT.getData(DataManager.getInstance().getDataContext(parent));
+     descriptor.putUserData(LangDataKeys.MODULE_CONTEXT, contextModule);
+     return descriptor;
+ }
+\ No newline at end of file

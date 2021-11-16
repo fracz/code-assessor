@@ -1,0 +1,14 @@
+diff --git a/a30ecf791aead6a17179b67bbdc5546c990aeb82 b/6456e509b85a4c77e2f8f0a09bba4165052bccc3
+index a30ecf791a..6456e509b8 100644
+--- a/a30ecf791aead6a17179b67bbdc5546c990aeb82
++++ b/6456e509b85a4c77e2f8f0a09bba4165052bccc3
+@@ -1,3 +1,7 @@
+ public DriverPublication findPublication(final int sessionId, final int streamId) {
+-    return publicationByCompoundIdMap.get(sessionId, streamId);
++    final PublicationComponents components = publicationByCompoundIdMap.get(sessionId, streamId);
++    if (null != components) {
++        return components.publication;
++    }
++    return null;
+ }
+\ No newline at end of file

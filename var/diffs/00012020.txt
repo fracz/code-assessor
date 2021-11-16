@@ -1,0 +1,20 @@
+diff --git a/9d7bddd04f0c729993f4495bac550965e4658955 b/bbabfa3045351653d02f128c6cb0c9e15b9057d5
+index 9d7bddd04f..bbabfa3045 100644
+--- a/9d7bddd04f0c729993f4495bac550965e4658955
++++ b/bbabfa3045351653d02f128c6cb0c9e15b9057d5
+@@ -1,10 +1,9 @@
+ protected void enableInspectionTool(@NotNull InspectionProfileEntry tool) {
+-    // assert !(tool instanceof InspectionToolWrapper) : tool;
+-    InspectionToolWrapper wrapper = InspectionToolRegistrar.wrapTool(tool);
+-    final String shortName = wrapper.getShortName();
++    InspectionToolWrapper toolWrapper = tool instanceof InspectionTool ? new CommonInspectionToolWrapper((InspectionTool) tool) : InspectionToolRegistrar.wrapTool(tool);
++    final String shortName = toolWrapper.getShortName();
+     final HighlightDisplayKey key = HighlightDisplayKey.find(shortName);
+     if (key == null) {
+-        HighlightDisplayKey.register(shortName, wrapper.getDisplayName(), ((LocalInspectionToolWrapper) wrapper).getID());
++        HighlightDisplayKey.register(shortName, toolWrapper.getDisplayName(), ((LocalInspectionToolWrapper) toolWrapper).getID());
+     }
+-    myAvailableTools.put(shortName, wrapper);
++    myAvailableTools.put(shortName, toolWrapper);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/1b7af5a37c4dbafb0914eb6e1803c8419d2e8f90 b/21a6385a086e2d9eac95d997b505be9c655df593
+index 1b7af5a37c..21a6385a08 100644
+--- a/1b7af5a37c4dbafb0914eb6e1803c8419d2e8f90
++++ b/21a6385a086e2d9eac95d997b505be9c655df593
+@@ -1,6 +1,7 @@
+ private void showOutputPanel() {
+     setOutputStateInCell(false);
+     updateBackground(IpnbEditorUtil.getBackground());
+     splitter.setFirstComponent(null);
+-    splitter.setSecondComponent(createOutputPanel(IpnbCodePanel.this.createHideOutputListener(splitter, IpnbCodePanel.this.createToggleBar(splitter))));
++    final JPanel outputPanel = createOutputPanel(createHideOutputListener(splitter, IpnbCodePanel.this.createToggleBar(splitter)));
++    splitter.setSecondComponent(outputPanel);
+ }
+\ No newline at end of file

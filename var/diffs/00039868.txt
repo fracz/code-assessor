@@ -1,0 +1,14 @@
+diff --git a/e1630f45617aa3b19a31158cb5780d262a0efeeb b/cb1199653ce8ba6deca39fd1eb35ee6f89d2d1af
+index e1630f4561..cb1199653c 100644
+--- a/e1630f45617aa3b19a31158cb5780d262a0efeeb
++++ b/cb1199653ce8ba6deca39fd1eb35ee6f89d2d1af
+@@ -1,4 +1,7 @@
+ public void resampleIndex(String indexSpecification) throws ProcedureException {
+     IndexSpecifier index = parse(indexSpecification);
+-    triggerSampling(getIndex(getLabelId(index.label()), getPropertyKeyId(index.property()), index));
++    int labelId = getLabelId(index.label());
++    int propertyKeyId = getPropertyKeyId(index.property());
++    // TODO: Support composite indexes
++    triggerSampling(getIndex(labelId, propertyKeyId, index));
+ }
+\ No newline at end of file

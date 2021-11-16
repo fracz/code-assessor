@@ -1,0 +1,21 @@
+diff --git a/8d13b7fab5f68a23f5d86ac45806cb17bbee1f93 b/6f29d47b00e4b8dd8fb5765c3eafc23b1f55a041
+index 8d13b7fab5..6f29d47b00 100644
+--- a/8d13b7fab5f68a23f5d86ac45806cb17bbee1f93
++++ b/6f29d47b00e4b8dd8fb5765c3eafc23b1f55a041
+@@ -1,13 +1,14 @@
+ public void add(long value) throws IOException {
+-    tempOut.write(Longs.toByteArray(value));
++    SerializerUtils.writeBigEndianLongToOutputStream(tempOut, value, helperBuffer);
+     ++numInserted;
+     if (uniqueValues.size() <= CompressionFactory.MAX_TABLE_SIZE && !uniqueValues.containsKey(value)) {
+         uniqueValues.put(value, uniqueValues.size());
++        valuesAddedInOrder.add(value);
+     }
+     if (value > maxVal) {
+         maxVal = value;
+     }
+     if (value < minVal) {
+         minVal = value;
+     }
+ }
+\ No newline at end of file

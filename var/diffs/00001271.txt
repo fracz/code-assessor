@@ -1,0 +1,21 @@
+diff --git a/e470d6a7cdab6f8e1e98445b308ea9291811e12c b/9b6cb5ac68fb0ef2069f5f42e6e50aeadc0cadc3
+index e470d6a7cd..9b6cb5ac68 100644
+--- a/e470d6a7cdab6f8e1e98445b308ea9291811e12c
++++ b/9b6cb5ac68fb0ef2069f5f42e6e50aeadc0cadc3
+@@ -1,10 +1,11 @@
+ @Override
+ public ResourceModel processResourceModel(ResourceModel resourceModel, Configuration configuration) {
+-    System.out.println("Map for resource model <" + resourceModel + ">:");
++    LOG.debug("Map for resource model <" + resourceModel + ">:");
++    final List<Resource> resources = new ArrayList<>();
+     for (Resource resource : resourceModel.getResources()) {
+-        for (ResourceMethod resourceMethod : resource.getAllMethods()) {
+-            System.out.println(formatEndpoint(resourceMethod.getHttpMethod(), resource.getPathPattern(), resource.getHandlerClasses()));
+-        }
++        resources.add(resource);
++        resources.addAll(findChildResources(resource));
+     }
++    logResources(resources);
+     return resourceModel;
+ }
+\ No newline at end of file

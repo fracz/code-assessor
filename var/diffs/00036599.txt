@@ -1,0 +1,19 @@
+diff --git a/1df3f8ab8db95403eaabc0e3e70094fc2151e3cd b/b21cc52bdda2a1dfe0a2304b1b5921eb5d8f6edd
+index 1df3f8ab8d..b21cc52bdd 100644
+--- a/1df3f8ab8db95403eaabc0e3e70094fc2151e3cd
++++ b/b21cc52bdda2a1dfe0a2304b1b5921eb5d8f6edd
+@@ -1,7 +1,10 @@
+ private Connection connectDB() throws SQLException {
++    String url = db.getProperty("mssqlserver.url");
++    String user = db.getProperty("mssqlserver.user");
++    String password = db.getProperty("mssqlserver.password");
+     Driver driver = new net.sourceforge.jtds.jdbc.Driver();
+     Properties properties = new Properties();
+-    properties.setProperty("user", "pinpoint_user");
+-    properties.setProperty("password", "pinpoint!234");
+-    return driver.connect("jdbc:jtds:sqlserver://10.99.220.85:1433/pinpoint_test", properties);
++    properties.setProperty("user", user);
++    properties.setProperty("password", password);
++    return driver.connect(url, properties);
+ }
+\ No newline at end of file

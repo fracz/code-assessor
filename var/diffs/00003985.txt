@@ -1,0 +1,23 @@
+diff --git a/0dbcc3e6ecfadcaa632a5f6b0e8a5e7b0697b3e7 b/a2794ad0f38bc6cb3d4e0d31976127068e311e12
+index 0dbcc3e6ec..a2794ad0f3 100644
+--- a/0dbcc3e6ecfadcaa632a5f6b0e8a5e7b0697b3e7
++++ b/a2794ad0f38bc6cb3d4e0d31976127068e311e12
+@@ -1,12 +1,12 @@
+-private static void collectResourceDirs(Module module, Set<VirtualFile> result, Set<Module> visited) {
+-    if (!visited.add(module)) {
++private static void collectResourceDirs(AndroidFacet facet, Set<VirtualFile> result, Set<Module> visited) {
++    if (!visited.add(facet.getModule())) {
+         return;
+     }
+-    VirtualFile resDir = AndroidRootUtil.getResourceDir(module);
++    VirtualFile resDir = AndroidRootUtil.getResourceDir(facet);
+     if (resDir != null && !result.add(resDir)) {
+         return;
+     }
+-    for (AndroidFacet depFacet : AndroidSdkUtils.getAllAndroidDependencies(module, false)) {
+-        collectResourceDirs(depFacet.getModule(), result, visited);
++    for (AndroidFacet depFacet : AndroidSdkUtils.getAllAndroidDependencies(facet.getModule(), false)) {
++        collectResourceDirs(depFacet, result, visited);
+     }
+ }
+\ No newline at end of file

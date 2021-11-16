@@ -1,0 +1,17 @@
+diff --git a/e8df6ed6e82c53b2c2011b77ae127f20ea301558 b/b0b552c4d34c86a35bf46125f551631a6d2f5476
+index e8df6ed6e8..b0b552c4d3 100644
+--- a/e8df6ed6e82c53b2c2011b77ae127f20ea301558
++++ b/b0b552c4d34c86a35bf46125f551631a6d2f5476
+@@ -1,10 +1,7 @@
+ @Test
+ public void assertIsShardingColumnForDefaultTableShardingStrategy() throws SQLException {
+     ShardingRuleConfiguration shardingRuleConfig = new ShardingRuleConfiguration();
+     shardingRuleConfig.getTableRuleConfigs().add(createTableRuleConfigWithAllStrategies());
+-    StandardShardingStrategyConfiguration tableShardingStrategyConfig = new StandardShardingStrategyConfiguration();
+-    tableShardingStrategyConfig.setShardingColumn("column");
+-    tableShardingStrategyConfig.setPreciseAlgorithmClassName(TestPreciseShardingAlgorithm.class.getName());
+-    shardingRuleConfig.setDefaultTableShardingStrategyConfig(tableShardingStrategyConfig);
++    shardingRuleConfig.setDefaultTableShardingStrategyConfig(new StandardShardingStrategyConfiguration("column", TestPreciseShardingAlgorithm.class.getName()));
+     assertTrue(shardingRuleConfig.build(createDataSourceMap()).isShardingColumn(new Column("column", "")));
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/5b24ca184ddd40c2263d91b3de3443a27f6544bd b/338fa25107af1e227ddf21415d7ce3cbf4b9d3ae
+index 5b24ca184d..338fa25107 100644
+--- a/5b24ca184ddd40c2263d91b3de3443a27f6544bd
++++ b/338fa25107af1e227ddf21415d7ce3cbf4b9d3ae
+@@ -1,8 +1,8 @@
+ @Override
+ public void drop() {
+     // expected to call assertInUnterminatedTransaction()
+     if (this.isConstraintIndex()) {
+         throw new IllegalStateException("Constraint indexes cannot be dropped directly, " + "instead drop the owning uniqueness constraint.");
+     }
+-    actions.dropIndexDefinitions(label, propertyKey);
++    actions.dropIndexDefinitions(this);
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/a8fcea5cfe49f4a0798f5bb055ae4e16da8a1112 b/874a936df70a7c944eabce7a6981e4fea2bc0698
+index a8fcea5cfe..874a936df7 100644
+--- a/a8fcea5cfe49f4a0798f5bb055ae4e16da8a1112
++++ b/874a936df70a7c944eabce7a6981e4fea2bc0698
+@@ -1,8 +1,8 @@
+ @Override
+ public synchronized void abort() throws StorageException {
+-    if (tx == null)
++    if (!tx.isActive())
+         return;
+-    db.setSessionId(tx.getSessionId());
++    begin();
+     tx.rollback();
+-    isOpen = false;
++    tx.end();
+ }
+\ No newline at end of file

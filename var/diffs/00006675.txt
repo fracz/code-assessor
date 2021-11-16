@@ -1,0 +1,21 @@
+diff --git a/f8b0ca88b2088c706567e8ffc16a6dd859101524 b/710d22b5dab698478417bf659d817606c188acda
+index f8b0ca88b2..710d22b5da 100644
+--- a/f8b0ca88b2088c706567e8ffc16a6dd859101524
++++ b/710d22b5dab698478417bf659d817606c188acda
+@@ -1,13 +1,12 @@
+ @Nullable
+ public static VirtualFile findSourceRoot(@NotNull Module module, VirtualFile file) {
+-    ModuleRootManager rootManager = ModuleRootManager.getInstance(module);
+-    Set<VirtualFile> sourceRoots = new HashSet<VirtualFile>();
+-    Collections.addAll(sourceRoots, rootManager.getSourceRoots());
++    final Set<VirtualFile> sourceRoots = new HashSet<VirtualFile>();
++    Collections.addAll(sourceRoots, ModuleRootManager.getInstance(module).getSourceRoots());
+     while (file != null) {
+         if (sourceRoots.contains(file)) {
+             return file;
+         }
+         file = file.getParent();
+     }
+     return null;
+ }
+\ No newline at end of file

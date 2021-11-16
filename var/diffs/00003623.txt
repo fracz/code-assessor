@@ -1,0 +1,20 @@
+diff --git a/e51aa5f51578f309f3be09a6610ce1e863ed79a5 b/9a7c4ecf935a475e1618fe4d128257ea8f3db009
+index e51aa5f515..9a7c4ecf93 100644
+--- a/e51aa5f51578f309f3be09a6610ce1e863ed79a5
++++ b/9a7c4ecf935a475e1618fe4d128257ea8f3db009
+@@ -1,11 +1,12 @@
+ public Task next() {
+     Lesson currentLesson = this.myLesson;
+-    if (myIndex + 1 < myLesson.getTaskList().size()) {
+-        return myLesson.getTaskList().get(myIndex + 1);
++    List<Task> taskList = myLesson.getTaskList();
++    if (myIndex + 1 < taskList.size()) {
++        return taskList.get(myIndex + 1);
+     }
+     Lesson nextLesson = currentLesson.next();
+     if (nextLesson == null) {
+         return null;
+     }
+     return StudyUtils.getFirst(nextLesson.getTaskList());
+ }
+\ No newline at end of file

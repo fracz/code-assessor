@@ -1,0 +1,19 @@
+diff --git a/f3d9c8b9ec75ac77a9c33aecd6cff7234fafbbed b/20f19c3f430cde321d46c61b357d14e583953828
+index f3d9c8b9ec..20f19c3f43 100644
+--- a/f3d9c8b9ec75ac77a9c33aecd6cff7234fafbbed
++++ b/20f19c3f430cde321d46c61b357d14e583953828
+@@ -1,10 +1,10 @@
+-private ModuleIdentifier parseString(Object notation) {
+-    String[] split = notation.toString().split(":");
++public ModuleIdentifier parseString(String notation) {
++    String[] split = notation.split(":");
+     if (split.length != 3) {
+-        throw new InvalidNotationFormat("Invalid format: '" + notation + "'. The Correct notation is a 3-part group:name:version notation," + "e.g: org.gradle:gradle-core:1.0");
++        throw new DefaultNotationParser.InvalidNotationFormat("Invalid format: '" + notation + "'. The Correct notation is a 3-part group:name:version notation," + "e.g: org.gradle:gradle-core:1.0");
+     }
+     final String group = split[0];
+     final String name = split[1];
+     final String version = split[2];
+     return identifier(group, name, version);
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/cd81cd956a6fc2ce22a624327d5e6d57ed9fcdae b/32ce9e412e1835722c3ed6b8931d1c0485fab7ea
+index cd81cd956a..32ce9e412e 100644
+--- a/cd81cd956a6fc2ce22a624327d5e6d57ed9fcdae
++++ b/32ce9e412e1835722c3ed6b8931d1c0485fab7ea
+@@ -1,13 +1,13 @@
+ public MySqlDescribeStatement parseDescribe() {
+     if (getLexer().equalToken(Token.DESC) || getLexer().identifierEquals(MySqlKeyword.DESCRIBE)) {
+         getLexer().nextToken();
+     } else {
+-        throw new ParserException("expect DESC, actual " + getLexer().getToken());
++        throw new ParserException(getLexer(), Token.DESC);
+     }
+     MySqlDescribeStatement stmt = new MySqlDescribeStatement();
+     stmt.setObject(this.exprParser.name());
+     if (getLexer().equalToken(Token.IDENTIFIER)) {
+         stmt.setColName(this.exprParser.name());
+     }
+     return stmt;
+ }
+\ No newline at end of file

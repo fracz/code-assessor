@@ -1,0 +1,16 @@
+diff --git a/b50fdf5ba173ec2c0fe0d02e390379003d4b4ed2 b/6948245d5b4f1b0956c9f2f1faecb71cd21f017a
+index b50fdf5ba1..6948245d5b 100644
+--- a/b50fdf5ba173ec2c0fe0d02e390379003d4b4ed2
++++ b/6948245d5b4f1b0956c9f2f1faecb71cd21f017a
+@@ -1,8 +1,8 @@
+-public void testSelf() throws Exception {
++public void testSelf() {
+     final String testName = getTestName(false).toLowerCase();
+     configureByFile(testName + ".py");
+     final String fullPath = getTestDataPath() + testName + ".txt";
+     final PyClass pyClass = ((PyFile) myFile).getTopLevelClasses().get(0);
+-    final ControlFlow flow = pyClass.getMethods()[0].getControlFlow();
++    final ControlFlow flow = ControlFlowCache.getControlFlow(pyClass.getMethods()[0]);
+     check(fullPath, flow);
+ }
+\ No newline at end of file

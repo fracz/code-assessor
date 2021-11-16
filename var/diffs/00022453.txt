@@ -1,0 +1,24 @@
+diff --git a/8b96d77e9e1b8e9aa64db49f3aaed0aea69e7056 b/63d5357cb2c0eb37051c86ad50c87cca066c59b5
+index 8b96d77e9e..63d5357cb2 100644
+--- a/8b96d77e9e1b8e9aa64db49f3aaed0aea69e7056
++++ b/63d5357cb2c0eb37051c86ad50c87cca066c59b5
+@@ -1,17 +1,17 @@
+ /**
+  * Returns the {@link ServiceInfo}s of the installed accessibility services.
+  *
+  * @return An unmodifiable list with {@link ServiceInfo}s.
+  */
+ public List<ServiceInfo> getAccessibilityServiceList() {
+     List<ServiceInfo> services = null;
+     try {
+         services = mService.getAccessibilityServiceList();
+-        if (DEBUG) {
++        if (false) {
+             Log.i(LOG_TAG, "Installed AccessibilityServices " + services);
+         }
+     } catch (RemoteException re) {
+         Log.e(LOG_TAG, "Error while obtaining the installed AccessibilityServices. ", re);
+     }
+     return Collections.unmodifiableList(services);
+ }
+\ No newline at end of file

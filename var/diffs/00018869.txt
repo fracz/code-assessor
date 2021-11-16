@@ -1,0 +1,15 @@
+diff --git a/e7230009abe7abd264c187bbacd3f5f6f31d14be b/5b98f071124f0ef8cdfce14152729d343dc6ce1f
+index e7230009ab..5b98f07112 100644
+--- a/e7230009abe7abd264c187bbacd3f5f6f31d14be
++++ b/5b98f071124f0ef8cdfce14152729d343dc6ce1f
+@@ -1,6 +1,6 @@
+ public Cursor getEncryptedRogueMessages(Recipient recipient) {
+-    SQLiteDatabase db = databaseHelper.getReadableDatabase();
+-    String selection = TYPE + " = " + Types.NO_SESSION_TYPE + " AND PHONE_NUMBERS_EQUAL(" + ADDRESS + ", ?)";
++    String selection = TYPE + " & " + Types.ENCRYPTION_REMOTE_NO_SESSION_BIT + " != 0" + " AND PHONE_NUMBERS_EQUAL(" + ADDRESS + ", ?)";
+     String[] args = { recipient.getNumber() };
+-    return db.query(TABLE_NAME, null, selection, args, null, null, null);
++    SQLiteDatabase db = databaseHelper.getReadableDatabase();
++    return db.query(TABLE_NAME, MESSAGE_PROJECTION, selection, args, null, null, null);
+ }
+\ No newline at end of file

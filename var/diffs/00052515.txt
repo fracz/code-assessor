@@ -1,0 +1,20 @@
+diff --git a/fc37ae8256d8ec3243e1dd9692218985506d0209 b/b129240ad7bdbbc1923bc1e52d52b055b14924b5
+index fc37ae8256..b129240ad7 100644
+--- a/fc37ae8256d8ec3243e1dd9692218985506d0209
++++ b/b129240ad7bdbbc1923bc1e52d52b055b14924b5
+@@ -1,13 +1,13 @@
+ void scanHexDecimal() {
+-    int position = offset + 2;
+     length = 3;
++    int position = offset + length - 1;
+     if ('-' == charAt(position)) {
+         position++;
+         length++;
+     }
+     while (isHex(charAt(++position))) {
+         length++;
+     }
+     literals = input.substring(offset, offset + length);
+     token = GeneralLiterals.HEX;
+ }
+\ No newline at end of file

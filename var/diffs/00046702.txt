@@ -1,0 +1,19 @@
+diff --git a/e22dcc25af096fa929e5a17b0493e54398151b8b b/019088c8bc958973038e83b9efd50dd1e501ea07
+index e22dcc25af..019088c8bc 100644
+--- a/e22dcc25af096fa929e5a17b0493e54398151b8b
++++ b/019088c8bc958973038e83b9efd50dd1e501ea07
+@@ -1,4 +1,12 @@
+ @Override
+ public void process() {
+-    channels.forEach(SenderChannel::process);
++    // TODO: handle commandBuffer and dispatch to onStatusMessage so that the channels can be iterated with up to
++    // date flow control information before trying to send
++    channels.forEach((channel) -> {
++        if (channel.state() == SenderChannel.STATE_PENDING) {
++            channelMap.put(channel.destination(), channel.sessionId(), channel.sessionId(), channel);
++            channel.state(SenderChannel.STATE_READY_FOR_SM);
++        }
++        channel.process();
++    });
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/c802f8b1ea6b49d9020c95209db5cedb70324ddb b/6464d0c8eb32ac768883c7da096e18f637bfc612
+index c802f8b1ea..6464d0c8eb 100644
+--- a/c802f8b1ea6b49d9020c95209db5cedb70324ddb
++++ b/6464d0c8eb32ac768883c7da096e18f637bfc612
+@@ -1,12 +1,10 @@
+-private static ResultSet buildReducer(final List<ResultSet> filteredResultSets, final MergeContext mergeContext) throws SQLException {
+-    if (mergeContext.hasGroupBy()) {
+-        if (mergeContext.groupByKeysEqualsOrderByKeys()) {
+-            return join(new StreamingOrderByReducerResultSet(mergeContext.getCurrentOrderByKeys()), filteredResultSets);
+-        }
+-        return join(new MemoryOrderByReducerResultSet(mergeContext.getCurrentOrderByKeys()), filteredResultSets);
+-    } else if (mergeContext.hasOrderBy()) {
+-        return join(new StreamingOrderByReducerResultSet(mergeContext.getCurrentOrderByKeys()), filteredResultSets);
+-    } else {
+-        return join(new IteratorReducerResultSet(), filteredResultSets);
++private static ResultSet buildReducer(final ResultSetMergeContext resultSetMergeContext) throws SQLException {
++    if (resultSetMergeContext.isNeedMemorySortForGroupBy()) {
++        resultSetMergeContext.setGroupByKeysToCurrentOrderByKeys();
++        return new MemoryOrderByReducerResultSet(resultSetMergeContext);
+     }
++    if (resultSetMergeContext.getMergeContext().hasGroupBy() || resultSetMergeContext.getMergeContext().hasOrderBy()) {
++        return new StreamingOrderByReducerResultSet(resultSetMergeContext);
++    }
++    return new IteratorReducerResultSet(resultSetMergeContext);
+ }
+\ No newline at end of file

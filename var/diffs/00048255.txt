@@ -1,0 +1,14 @@
+diff --git a/0124a5ff0994aba9fb20b0a64453588e5e8d2f3a b/f3583a32b6df0e8d6680bd08b823286142f11238
+index 0124a5ff09..f3583a32b6 100644
+--- a/0124a5ff0994aba9fb20b0a64453588e5e8d2f3a
++++ b/f3583a32b6df0e8d6680bd08b823286142f11238
+@@ -1,3 +1,7 @@
+ public static Spreadsheet getActiveSpreadsheet(ExecutionEvent event) {
+-    return Spreadsheet.getFromGrid(getActiveGrid(event));
++    Object control = HandlerUtil.getVariable(event, ISources.ACTIVE_FOCUS_CONTROL_NAME);
++    if (!(control instanceof Spreadsheet)) {
++        return null;
++    }
++    return (Spreadsheet) control;
+ }
+\ No newline at end of file

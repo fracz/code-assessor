@@ -1,0 +1,14 @@
+diff --git a/13c9bb180882916c065febfcdfe00c392929425e b/c0bea4af4e918cb7c5df09e9ef816eeb63c057e7
+index 13c9bb1808..c0bea4af4e 100644
+--- a/13c9bb180882916c065febfcdfe00c392929425e
++++ b/c0bea4af4e918cb7c5df09e9ef816eeb63c057e7
+@@ -1,4 +1,7 @@
+ @Override
+ public List<FullEntry> getEntries() {
+-    return entries();
++    if (!(entries instanceof List)) {
++        entries = new ArrayList<FullEntry>(entries);
++    }
++    return (List<FullEntry>) entries;
+ }
+\ No newline at end of file

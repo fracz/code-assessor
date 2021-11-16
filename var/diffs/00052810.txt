@@ -1,0 +1,20 @@
+diff --git a/d08a704f5c10642741373d559015805919fd926c b/f9e770c6a900ef7c8b10b546a076c0dddebf278e
+index d08a704f5c..f9e770c6a9 100644
+--- a/d08a704f5c10642741373d559015805919fd926c
++++ b/f9e770c6a900ef7c8b10b546a076c0dddebf278e
+@@ -1,13 +1,13 @@
+ private int untilCommentAndHintTerminateSign(final int beginSignLength) {
+     int length = beginSignLength;
+     int position = offset + length;
+     while (!('*' == charAt(position) && '/' == charAt(position + 1))) {
+-        if (CharTypes.EOI == charAt(position)) {
++        if (CharType.isEndOfInput(charAt(position))) {
+             throw new UnterminatedSignException("*/");
+         }
+         position++;
+         length++;
+     }
+     length += 2;
+     return offset + length;
+ }
+\ No newline at end of file

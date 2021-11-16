@@ -1,0 +1,12 @@
+diff --git a/2e46e93a8ea6217f6097472c6f553334b812edb6 b/9efa8798fe9520743234623abbe6b7fba9029ffb
+index 2e46e93a8e..9efa8798fe 100644
+--- a/2e46e93a8ea6217f6097472c6f553334b812edb6
++++ b/9efa8798fe9520743234623abbe6b7fba9029ffb
+@@ -1,4 +1,5 @@
+ @Override
+ public OBonsaiCollectionPointer read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
+-    return networkSerializer.readCollectionPointer(network);
++    collenctionPointer = OCollectionNetworkSerializer.INSTANCE.readCollectionPointer(network);
++    return collenctionPointer;
+ }
+\ No newline at end of file

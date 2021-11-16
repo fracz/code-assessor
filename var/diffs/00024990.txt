@@ -1,0 +1,18 @@
+diff --git a/cdd404dd7e7a64d75bd0b0a44cf019b3ec8d76c8 b/ffe1f1221f40a22499d03a2e3ce7f944729ac6e0
+index cdd404dd7e..ffe1f1221f 100644
+--- a/cdd404dd7e7a64d75bd0b0a44cf019b3ec8d76c8
++++ b/ffe1f1221f40a22499d03a2e3ce7f944729ac6e0
+@@ -1,8 +1,10 @@
+-synchronized void addReplica(String bpid, long blockId, final FsVolumeImpl transientVolume) {
++synchronized void addReplica(String bpid, long blockId, final FsVolumeSpi transientVolume) {
+     Map<Long, ReplicaState> map = replicaMaps.get(bpid);
+     if (map == null) {
+         map = new HashMap<Long, ReplicaState>();
+         replicaMaps.put(bpid, map);
+     }
+-    map.put(blockId, new ReplicaState(bpid, blockId, transientVolume));
++    ReplicaState replicaState = new ReplicaState(bpid, blockId, transientVolume);
++    map.put(blockId, replicaState);
++    replicasNotPersisted.add(replicaState);
+ }
+\ No newline at end of file

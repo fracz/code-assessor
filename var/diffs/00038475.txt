@@ -1,0 +1,22 @@
+diff --git a/1c01f96484ff7e0e5b13bed03a95ccb0bbf762b1 b/9c63281bad73a70de1440eedf1148d841b3bdf31
+index 1c01f96484..9c63281bad 100644
+--- a/1c01f96484ff7e0e5b13bed03a95ccb0bbf762b1
++++ b/9c63281bad73a70de1440eedf1148d841b3bdf31
+@@ -1,14 +1,14 @@
+-public Collection<Long> getIndexedNodes(String indexName, String key, Object value) throws DatabaseBlockedException {
++public Collection<Long> getIndexedNodes(String indexName, String key, Object value) {
+     Index<Node> index = database.getNodeIndex(indexName);
+-    Transaction tx = database.graph.beginTx();
++    Transaction tx = database.getGraph().beginTx();
+     try {
+         Collection<Long> result = new ArrayList<Long>();
+         for (Node node : index.get(key, value)) {
+             result.add(node.getId());
+         }
+         tx.success();
+         return result;
+     } finally {
+         tx.finish();
+     }
+ }
+\ No newline at end of file

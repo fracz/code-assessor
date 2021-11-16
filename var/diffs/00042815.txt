@@ -1,0 +1,16 @@
+diff --git a/25ad3d98b8a3b3981f5da7da8af2f0063e7d9ffd b/5e832f30f26a9fc85ff7d7d7ac41a2bad40b5013
+index 25ad3d98b8..5e832f30f2 100644
+--- a/25ad3d98b8a3b3981f5da7da8af2f0063e7d9ffd
++++ b/5e832f30f26a9fc85ff7d7d7ac41a2bad40b5013
+@@ -1,9 +1,9 @@
+ /**
+  * Returns the original value of a field before it has been changed.
+  *
+  * @param iPropertyName
+  * Property name to retrieve the original value
+  */
+ public Set<String> getDirtyFields() {
+-    return _fieldOriginalValues != null ? Collections.unmodifiableSet(_fieldOriginalValues.keySet()) : null;
++    return (Set<String>) (_fieldOriginalValues != null ? Collections.unmodifiableSet(_fieldOriginalValues.keySet()) : Collections.emptySet());
+ }
+\ No newline at end of file

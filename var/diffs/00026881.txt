@@ -1,0 +1,16 @@
+diff --git a/de0fc792f0b4e814121512b180f38f5062354622 b/1f993125427d0dbac8f10ecca4ede4a1e30d493f
+index de0fc792f0..1f99312542 100644
+--- a/de0fc792f0b4e814121512b180f38f5062354622
++++ b/1f993125427d0dbac8f10ecca4ede4a1e30d493f
+@@ -1,7 +1,7 @@
+ @Override
+ public double mse() {
+-    DoubleMatrix reconstructed = reconstruct(input);
+-    DoubleMatrix diff = reconstructed.sub(input);
+-    double sum = 0.5 * MatrixFunctions.pow(diff, 2).columnSums().sum() / input.rows;
++    INDArray reconstructed = reconstruct(input);
++    INDArray diff = reconstructed.sub(input);
++    double sum = 0.5 * (double) pow(diff, 2).sum(1).sum(Integer.MAX_VALUE).element() / input.rows();
+     return sum;
+ }
+\ No newline at end of file

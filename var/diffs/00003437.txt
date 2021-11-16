@@ -1,0 +1,25 @@
+diff --git a/90a10ebb605343bf9891415877a1853ecc71080e b/4a6c730a38a6714f9f558a7b4b137bfdcdc8932a
+index 90a10ebb60..4a6c730a38 100644
+--- a/90a10ebb605343bf9891415877a1853ecc71080e
++++ b/4a6c730a38a6714f9f558a7b4b137bfdcdc8932a
+@@ -1,7 +1,14 @@
+ private Node findExistingRoot(final VirtualFile childFile) {
+-    for (Node each : myRootProjects) {
+-        if (each.getFile() == childFile)
+-            return each;
+-    }
+-    return null;
++    return visit(new NodeVisitor<Node>() {
++
++        public void visit(final Node node) {
++            if (node.getFile() == childFile) {
++                setResult(node);
++            }
++        }
++
++        public Iterable<Node> getChildren(final Node node) {
++            return null;
++        }
++    });
+ }
+\ No newline at end of file

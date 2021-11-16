@@ -1,0 +1,13 @@
+diff --git a/3e0e22516143eb84a14eafcf183b0ee62a2e25b2 b/aca4c37512d5e79fc99c17bc82bbcee6f2765c49
+index 3e0e225161..aca4c37512 100644
+--- a/3e0e22516143eb84a14eafcf183b0ee62a2e25b2
++++ b/aca4c37512d5e79fc99c17bc82bbcee6f2765c49
+@@ -1,5 +1,6 @@
+ @Override
+ public void release() {
+     stop();
+-    DanmakuFilters.getDefault().clear();
++    if (mDrawTimes != null)
++        mDrawTimes.clear();
+ }
+\ No newline at end of file

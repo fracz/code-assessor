@@ -1,0 +1,14 @@
+diff --git a/bc974213302439620461619f59a04118ca24a6a1 b/30ead9809d5479f19ded17a0df9404f801c0317c
+index bc97421330..30ead9809d 100644
+--- a/bc974213302439620461619f59a04118ca24a6a1
++++ b/30ead9809d5479f19ded17a0df9404f801c0317c
+@@ -1,3 +1,7 @@
+ public List<Object> getDataSourceStatList() {
+-    return ctx.getDataSourceStatList();
++    List<Object> datasourceList = new ArrayList<Object>();
++    for (Object dataSource : getDruidDataSourceInstances()) {
++        datasourceList.add(dataSourceToMapData(dataSource));
++    }
++    return datasourceList;
+ }
+\ No newline at end of file

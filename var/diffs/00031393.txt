@@ -1,0 +1,22 @@
+diff --git a/2f950fdf7769c19bd03f6dffd5454bab436380da b/60bcbcad475202f217b1ef22c3c3d24fecb7c9d0
+index 2f950fdf77..60bcbcad47 100644
+--- a/2f950fdf7769c19bd03f6dffd5454bab436380da
++++ b/60bcbcad475202f217b1ef22c3c3d24fecb7c9d0
+@@ -1,12 +1,15 @@
+ public SizeValue storeSize() {
+     long bytes = -1;
+     for (ShardStatus shard : shards()) {
+-        if (shard.storeSize().bytes() != SizeValue.UNKNOWN.bytes()) {
++        if (shard.storeSize() != null) {
+             if (bytes == -1) {
+                 bytes = 0;
+             }
+             bytes += shard.storeSize().bytes();
+         }
+     }
++    if (bytes == -1) {
++        return null;
++    }
+     return new SizeValue(bytes);
+ }
+\ No newline at end of file

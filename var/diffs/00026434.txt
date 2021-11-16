@@ -1,0 +1,17 @@
+diff --git a/213b3b6f207b501b379b5d59976f4b5d1450942c b/031166bc7619623a82cfbe085e1f4a598c029c5a
+index 213b3b6f20..031166bc76 100644
+--- a/213b3b6f207b501b379b5d59976f4b5d1450942c
++++ b/031166bc7619623a82cfbe085e1f4a598c029c5a
+@@ -1,9 +1,9 @@
+ /**
+  * {@inheritDoc}
+  */
+ @Override
+ public void setTransactionIsolation(int level) throws SQLException {
+     delegate.setTransactionIsolation(level);
+-    poolEntry.setTransactionIsolation(level);
+-    isConnectionStateDirty = true;
++    transactionIsolation = level;
++    dirtyBits |= 0b00100;
+ }
+\ No newline at end of file

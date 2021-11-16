@@ -1,0 +1,13 @@
+diff --git a/db2dcae3ea40949a872780291f179fe0e1411ce9 b/dffd3767aee1b5e48e63cf0ca89eb96cbf79465f
+index db2dcae3ea..dffd3767ae 100644
+--- a/db2dcae3ea40949a872780291f179fe0e1411ce9
++++ b/dffd3767aee1b5e48e63cf0ca89eb96cbf79465f
+@@ -1,4 +1,5 @@
+ @NotNull
+-public TranslationContext newDeclaration(@NotNull DeclarationDescriptor descriptor) {
+-    return contextWithScope(getScopeForDescriptor(descriptor), getBlockForDescriptor(descriptor), aliasingContext, usageTracker);
++public TranslationContext newDeclaration(@NotNull DeclarationDescriptor descriptor, @Nullable DefinitionPlace place) {
++    DynamicContext dynamicContext = DynamicContext.newContext(getScopeForDescriptor(descriptor), getBlockForDescriptor(descriptor));
++    return new TranslationContext(this, staticContext, dynamicContext, aliasingContext, usageTracker, place);
+ }
+\ No newline at end of file

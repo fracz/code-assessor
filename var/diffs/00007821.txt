@@ -1,0 +1,15 @@
+diff --git a/f2b767dd8a7e2071f4d781b47ff3585a6641b67c b/5e8bf87e3f849e8d2855370e719af6d7b8841846
+index f2b767dd8a..5e8bf87e3f 100644
+--- a/f2b767dd8a7e2071f4d781b47ff3585a6641b67c
++++ b/5e8bf87e3f849e8d2855370e719af6d7b8841846
+@@ -1,8 +1,4 @@
+ @NotNull
+ public PyParameterList getParameterList() {
+-    final PyFunctionStub stub = getStub();
+-    if (stub != null) {
+-        return stub.getParameterList().getPsi();
+-    }
+-    return childToPsiNotNull(PyElementTypes.PARAMETER_LIST);
++    return (PyParameterList) getRequiredStubOrPsiChild(PyElementTypes.PARAMETER_LIST);
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/19e7a79652f977ac33fadb0f3c8420c84540a8cd b/537d8675e2d2d6bc6638a2e69615d7c3d3b73287
+index 19e7a79652..537d8675e2 100644
+--- a/19e7a79652f977ac33fadb0f3c8420c84540a8cd
++++ b/537d8675e2d2d6bc6638a2e69615d7c3d3b73287
+@@ -1,4 +1,10 @@
+ @Override
+-public Publisher<Long> publish(M message) {
+-    return commandExecutor.writeReactive(name, codec, RedisCommands.PUBLISH, name, message);
++public Publisher<Long> publish(final M message) {
++    return commandExecutor.reactive(new Supplier<RFuture<Long>>() {
++
++        @Override
++        public RFuture<Long> get() {
++            return topic.publishAsync(message);
++        }
++    });
+ }
+\ No newline at end of file

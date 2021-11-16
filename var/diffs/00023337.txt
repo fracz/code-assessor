@@ -1,0 +1,24 @@
+diff --git a/a6b8f59c6e1c60a1eabafc6b5a356936e2c72cdd b/89b41860825378ed0bfab4cc11aae05d1fb50026
+index a6b8f59c6e..89b4186082 100644
+--- a/a6b8f59c6e1c60a1eabafc6b5a356936e2c72cdd
++++ b/89b41860825378ed0bfab4cc11aae05d1fb50026
+@@ -1,15 +1,16 @@
+ /**
+  * If the caller app hasn't been throttled yet, increment {@link #mApiCallCount}
+  * and return true.  Otherwise just return false.
+  *
+  * <p>This takes care of the resetting the counter for foreground apps as well as after
+  * locale changes, which is done internally by {@link #getApiCallCount}.
+  */
+-public boolean tryApiCall(@NonNull ShortcutService s) {
+-    if (getApiCallCount(s) >= s.mMaxUpdatesPerInterval) {
++public boolean tryApiCall() {
++    final ShortcutService s = mShortcutUser.mService;
++    if (getApiCallCount() >= s.mMaxUpdatesPerInterval) {
+         return false;
+     }
+     mApiCallCount++;
+     s.scheduleSaveUser(getOwnerUserId());
+     return true;
+ }
+\ No newline at end of file

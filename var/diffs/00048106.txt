@@ -1,0 +1,15 @@
+diff --git a/373d40120cf3ba678e806969029368c4015b47ec b/d6ad5e751a9c6f3a4b862155f4be69fbfbfb08dd
+index 373d40120c..d6ad5e751a 100644
+--- a/373d40120cf3ba678e806969029368c4015b47ec
++++ b/d6ad5e751a9c6f3a4b862155f4be69fbfbfb08dd
+@@ -1,6 +1,5 @@
+-private DBEPersistAction[] createOrReplaceProcedureQuery(PostgreProcedure procedure) {
++private void createOrReplaceProcedureQuery(List<DBEPersistAction> actions, PostgreProcedure procedure) {
+     String objectType = procedure.isAggregate() ? "AGGREGATE" : "FUNCTION";
+-    return new DBEPersistAction[] { // $NON-NLS-2$ //$NON-NLS-3$
+-    new SQLDatabasePersistAction("Drop procedure", "DROP " + objectType + " IF EXISTS " + procedure.getFullQualifiedSignature()), // $NON-NLS-2$
+-    new SQLDatabasePersistAction("Create procedure", procedure.getBody()) };
++    actions.add(new SQLDatabasePersistAction("Drop procedure", "DROP " + objectType + " IF EXISTS " + procedure.getFullQualifiedSignature()));
++    actions.add(new SQLDatabasePersistAction("Create procedure", procedure.getBody()));
+ }
+\ No newline at end of file

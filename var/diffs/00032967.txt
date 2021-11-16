@@ -1,0 +1,20 @@
+diff --git a/08c97172e24bdb5bec5bd386991468679ef978f2 b/596d24fc45d1c6f972a000d5daccdba9366c5d81
+index 08c97172e2..596d24fc45 100644
+--- a/08c97172e24bdb5bec5bd386991468679ef978f2
++++ b/596d24fc45d1c6f972a000d5daccdba9366c5d81
+@@ -1,13 +1,13 @@
+ Class<? extends Annotation> findScopeAnnotation(Annotation[] annotations) {
+     Class<? extends Annotation> found = null;
+     for (Annotation annotation : annotations) {
+         if (annotation.annotationType().isAnnotationPresent(ScopeAnnotation.class)) {
+             if (found != null) {
+-                addError(ErrorMessage.duplicateScopeAnnotations(found, annotation.annotationType()).toString());
++                addError(new Errors().duplicateScopeAnnotations(found, annotation.annotationType()).toString());
+             } else {
+                 found = annotation.annotationType();
+             }
+         }
+     }
+     return found;
+ }
+\ No newline at end of file

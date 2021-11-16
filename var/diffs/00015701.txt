@@ -1,0 +1,20 @@
+diff --git a/eedd4b76a2130bbef54c13ef2b5e87a3048853d8 b/b728efb9cde25540b954f339b4e098a869271d38
+index eedd4b76a2..b728efb9cd 100644
+--- a/eedd4b76a2130bbef54c13ef2b5e87a3048853d8
++++ b/b728efb9cde25540b954f339b4e098a869271d38
+@@ -1,13 +1,13 @@
+ private MutableClassDescriptor createClassDescriptorForObject(@NotNull JetClassOrObject declaration, @NotNull NamespaceLike owner) {
+     MutableClassDescriptor mutableClassDescriptor = new MutableClassDescriptor(trace, owner, outerScope, true) {
+
+         @Override
+         public ClassObjectStatus setClassObjectDescriptor(@NotNull MutableClassDescriptor classObjectDescriptor) {
+             return ClassObjectStatus.NOT_ALLOWED;
+         }
+     };
+     visitClassOrObject(declaration, (Map) objects, owner, outerScope, mutableClassDescriptor);
+     createPrimaryConstructor(mutableClassDescriptor);
+-    trace.recordDeclarationResolution((PsiElement) declaration, mutableClassDescriptor);
++    trace.record(BindingContext.CLASS, declaration, mutableClassDescriptor);
+     return mutableClassDescriptor;
+ }
+\ No newline at end of file

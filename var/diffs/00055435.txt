@@ -1,0 +1,16 @@
+diff --git a/82f87ccccd29dbeaf0f8246da39d53dd4f6e4282 b/a402f59f34b80684ef344da49385504a3e8a8e13
+index 82f87ccccd..a402f59f34 100644
+--- a/82f87ccccd29dbeaf0f8246da39d53dd4f6e4282
++++ b/a402f59f34b80684ef344da49385504a3e8a8e13
+@@ -1,6 +1,6 @@
+ @Override
+-public void onPartFinished(StreamStorage streamStorage, Map<String, List<String>> headersFromPart) {
+-    HttpHeaders headers = new HttpHeaders();
+-    headers.putAll(headersFromPart);
+-    emitter.next(new NioPart(headers, streamStorage));
++public void onPartFinished(StreamStorage storage, Map<String, List<String>> headers) {
++    HttpHeaders httpHeaders = new HttpHeaders();
++    httpHeaders.putAll(headers);
++    this.sink.next(new SynchronossPart(httpHeaders, storage));
+ }
+\ No newline at end of file

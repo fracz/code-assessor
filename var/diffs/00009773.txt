@@ -1,0 +1,15 @@
+diff --git a/1ef4086249c1b6ac3546e8cd054906345f3ac19f b/0cdece6f9d38c299a8292af5f2f5ebc974f85b83
+index 1ef4086249..0cdece6f9d 100644
+--- a/1ef4086249c1b6ac3546e8cd054906345f3ac19f
++++ b/0cdece6f9d38c299a8292af5f2f5ebc974f85b83
+@@ -1,8 +1,7 @@
+ protected boolean isPreviewUsages(UsageInfo[] usages) {
+-    if (UsageViewUtil.hasNonCodeUsages(usages)) {
+-        WindowManager.getInstance().getStatusBar(myProject).setInfo(RefactoringBundle.message("occurrences.found.in.comments.strings.and.non.java.files"));
++    if (UsageViewUtil.reportNonRegularUsages(usages, myProject)) {
+         return true;
+     } else {
+         return super.isPreviewUsages(usages);
+     }
+ }
+\ No newline at end of file

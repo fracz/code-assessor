@@ -1,0 +1,21 @@
+diff --git a/b92a8b602907cf87db59a4ad544685e21b106192 b/83b407fac4a6a49cfb6cfd8a00ade217290b7f03
+index b92a8b6029..83b407fac4 100644
+--- a/b92a8b602907cf87db59a4ad544685e21b106192
++++ b/83b407fac4a6a49cfb6cfd8a00ade217290b7f03
+@@ -1,12 +1,12 @@
+ @GET
+ @Path("/version")
+ @Produces(MediaType.APPLICATION_JSON)
+ public Response getVersion() {
+-    final String version = manager.getVersion(extractorID);
+-    if (null == version) {
+-        // Handle race between delete and this method being called
++    final CacheScheduler.CacheState cacheState = factory.entry.getCacheState();
++    if (cacheState instanceof CacheScheduler.NoCache) {
+         return Response.status(Response.Status.NOT_FOUND).build();
+     } else {
++        String version = ((CacheScheduler.VersionedCache) cacheState).getVersion();
+         return Response.ok(ImmutableMap.of("version", version)).build();
+     }
+ }
+\ No newline at end of file

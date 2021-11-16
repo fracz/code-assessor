@@ -1,0 +1,30 @@
+diff --git a/b264be649c61ea6af68078f619d78afdd9a509c8 b/d7e8ad64985f1575b0a0b0bd7a0383d6cbaad3e0
+index b264be649c..d7e8ad6498 100644
+--- a/b264be649c61ea6af68078f619d78afdd9a509c8
++++ b/d7e8ad64985f1575b0a0b0bd7a0383d6cbaad3e0
+@@ -1,17 +1,14 @@
+ @Override
+-protected SelectStatement parseInternal() {
+-    SelectStatement result = new SelectStatement();
+-    getSqlParser().getLexer().nextToken();
++protected void parseInternal(final SelectStatement selectStatement) {
+     parseDistinct();
+-    parseSelectList(result);
+-    parseFrom(result);
+-    parseWhere(result);
+-    skipHierarchicalQueryClause(result);
+-    parseGroupBy(result);
++    parseSelectList(selectStatement);
++    parseFrom(selectStatement);
++    parseWhere(selectStatement);
++    skipHierarchicalQueryClause(selectStatement);
++    parseGroupBy(selectStatement);
+     parseHaving();
+     skipModelClause();
+-    parseOrderBy(result);
++    parseOrderBy(selectStatement);
+     skipFor();
+     parseRest();
+-    return result;
+ }
+\ No newline at end of file

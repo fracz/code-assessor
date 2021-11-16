@@ -1,0 +1,22 @@
+diff --git a/906bb6d049180860077caa8259546aaf4ba6d9b0 b/20fa39476717cc31a585d131bc7a3f65435767e0
+index 906bb6d049..20fa394767 100644
+--- a/906bb6d049180860077caa8259546aaf4ba6d9b0
++++ b/20fa39476717cc31a585d131bc7a3f65435767e0
+@@ -1,9 +1,14 @@
+ /**
+  * Called when a package is updated.
+  */
+-public void handlePackageUpdated(ShortcutService s, @NonNull String packageName, int newVersionCode) {
++public void handlePackageUpdated(@NonNull String packageName, int newVersionCode) {
+     if (!mPackages.containsKey(packageName)) {
+         return;
+     }
+-    getPackageShortcuts(s, packageName).handlePackageUpdated(s, newVersionCode);
++    final ShortcutPackage p = getPackageShortcutsIfExists(packageName);
++    if (p == null) {
++        // No need to instantiate ShortcutPackage.
++        return;
++    }
++    p.handlePackageUpdated(newVersionCode);
+ }
+\ No newline at end of file

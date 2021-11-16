@@ -1,0 +1,14 @@
+diff --git a/01759957d30435d93aa9f4df737f337cd32097d2 b/7e3839bb1f6bd13d8b8d9ef245af1f5b7e1013f1
+index 01759957d3..7e3839bb1f 100644
+--- a/01759957d30435d93aa9f4df737f337cd32097d2
++++ b/7e3839bb1f6bd13d8b8d9ef245af1f5b7e1013f1
+@@ -1,5 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiClass containingClass = ClassUtils.getContainingClass(location);
+-    assert containingClass != null;
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiClass containingClass = (PsiClass) infos[0];
+     return InspectionGadgetsBundle.message("extends.annotation.problem.descriptor", containingClass.getName());
+ }
+\ No newline at end of file

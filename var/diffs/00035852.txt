@@ -1,0 +1,15 @@
+diff --git a/466083ac8fd6f159c0d26e49ddb826eabc69dae9 b/1331c0ff2d14d9f17a44bc2be02e374c88b1431c
+index 466083ac8f..1331c0ff2d 100644
+--- a/466083ac8fd6f159c0d26e49ddb826eabc69dae9
++++ b/1331c0ff2d14d9f17a44bc2be02e374c88b1431c
+@@ -1,8 +1,8 @@
+ public Object answer(InvocationOnMock invocation) throws Throwable {
+-    if (new MockUtil().isMock(throwable)) {
++    if (MockUtil.isMock(throwable)) {
+         throw throwable;
+     }
+     Throwable t = throwable.fillInStackTrace();
+     filter.filter(t);
+     throw t;
+ }
+\ No newline at end of file

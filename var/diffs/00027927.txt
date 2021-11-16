@@ -1,0 +1,16 @@
+diff --git a/4defd84a9b206721fb068510040476bfb9fbc467 b/ddb244d728ffb2348b07bed7e91e5682fc726ffd
+index 4defd84a9b..ddb244d728 100644
+--- a/4defd84a9b206721fb068510040476bfb9fbc467
++++ b/ddb244d728ffb2348b07bed7e91e5682fc726ffd
+@@ -1,8 +1,8 @@
+-@Path("fetch")
+ @POST
++@Path("fetch")
+ @Consumes(MediaType.APPLICATION_JSON)
+ public void fetch(FetchRequest request) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+-        gitConnection.fetch(request);
++        gitConnection.fetch(FetchParams.create(request.getRemote()).withRefSpec(request.getRefSpec()).withTimeout(request.getTimeout()).withRemoveDeletedRefs(request.isRemoveDeletedRefs()).withUsername(request.getUsername()).withPassword(request.getPassword()));
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/471fae475c986e69215527c0ea3be5f019324ee5 b/0825d30b69792c329efba6aaac312dde174cf61e
+index 471fae475c..0825d30b69 100644
+--- a/471fae475c986e69215527c0ea3be5f019324ee5
++++ b/0825d30b69792c329efba6aaac312dde174cf61e
+@@ -1,3 +1,4 @@
+ private boolean shouldSkip(@NotNull DeclarationDescriptor subDescriptor) {
+-    return subDescriptor.getContainingDeclaration() instanceof ClassDescriptor && subDescriptor instanceof FunctionDescriptor && JAVA_OBJECT_METHOD_NAMES.contains(subDescriptor.getName().asString()) && !conf.includeMethodsOfJavaObject || subDescriptor instanceof NamespaceDescriptor && !conf.recurseIntoPackage.apply(DescriptorUtils.getFQName(subDescriptor));
++    return subDescriptor.getContainingDeclaration() instanceof ClassDescriptor && subDescriptor instanceof FunctionDescriptor && JAVA_OBJECT_METHOD_NAMES.contains(subDescriptor.getName().asString()) && !conf.includeMethodsOfJavaObject || // TODO 2 accept safe fq name instead
++    subDescriptor instanceof PackageViewDescriptor && !conf.recurseIntoPackage.apply(((PackageViewDescriptor) subDescriptor).getFqName().toUnsafe());
+ }
+\ No newline at end of file

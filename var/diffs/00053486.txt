@@ -1,0 +1,12 @@
+diff --git a/bf689c1ecb0f0f64f0541e72fdfd261f1e3971a9 b/fe6930a1a26851990095f75fb2b99460caa16d13
+index bf689c1ecb..fe6930a1a2 100644
+--- a/bf689c1ecb0f0f64f0541e72fdfd261f1e3971a9
++++ b/fe6930a1a26851990095f75fb2b99460caa16d13
+@@ -1,5 +1,4 @@
+ @Test
+ public void assertDoEqualShardingForTargetsEmpty() {
+-    PreciseShardingValue<String> shardingValue = null;
+-    assertNull(noneDatabaseShardingAlgorithm.doSharding(Collections.<String>emptyList(), shardingValue));
++    assertNull(noneDatabaseShardingAlgorithm.doSharding(Collections.<String>emptyList(), new PreciseShardingValue<>("tbl", "col", "1")));
+ }
+\ No newline at end of file

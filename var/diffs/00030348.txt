@@ -1,0 +1,16 @@
+diff --git a/43221adfe6d373cfe9c4906573f8557b247d4a69 b/344563d9083b35f5b24edabf9a90c363209a290f
+index 43221adfe6..344563d908 100644
+--- a/43221adfe6d373cfe9c4906573f8557b247d4a69
++++ b/344563d9083b35f5b24edabf9a90c363209a290f
+@@ -1,6 +1,9 @@
+ /**
+  * @return a new {@link QueryParseContext} based on the base test index and queryParserService
+  */
+ protected static QueryParseContext createParseContext() {
+-    return createShardContext().parseContext();
++    QueryParseContext queryParseContext = new QueryParseContext(queryParserService.indicesQueriesRegistry());
++    queryParseContext.reset(null);
++    queryParseContext.parseFieldMatcher(ParseFieldMatcher.STRICT);
++    return queryParseContext;
+ }
+\ No newline at end of file

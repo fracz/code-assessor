@@ -1,0 +1,22 @@
+diff --git a/2cdd2a7dc3b4ba13309774cd740fabbdc2fa2689 b/be7bc8397d758ce29c8ae25ac73569eb2e39959d
+index 2cdd2a7dc3..be7bc8397d 100644
+--- a/2cdd2a7dc3b4ba13309774cd740fabbdc2fa2689
++++ b/be7bc8397d758ce29c8ae25ac73569eb2e39959d
+@@ -1,14 +1,14 @@
+ private void startIntroAnimation() {
+-    ViewCompat.setElevation(toolbar, 0);
++    ViewCompat.setElevation(getToolbar(), 0);
+     contentRoot.setScaleY(0.1f);
+     contentRoot.setPivotY(drawingStartLocation);
+     llAddComment.setTranslationY(200);
+     contentRoot.animate().scaleY(1).setDuration(200).setInterpolator(new AccelerateInterpolator()).setListener(new AnimatorListenerAdapter() {
+
+         @Override
+         public void onAnimationEnd(Animator animation) {
+-            ViewCompat.setElevation(toolbar, Utils.dpToPx(8));
++            ViewCompat.setElevation(getToolbar(), Utils.dpToPx(8));
+             animateContent();
+         }
+     }).start();
+ }
+\ No newline at end of file

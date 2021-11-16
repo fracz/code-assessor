@@ -1,0 +1,19 @@
+diff --git a/3c14946ac0428394009c3714edde0f515af2aa8d b/1af9e819d85efabb7c3f8db3b66f9e3a0d84d8a0
+index 3c14946ac0..1af9e819d8 100644
+--- a/3c14946ac0428394009c3714edde0f515af2aa8d
++++ b/1af9e819d85efabb7c3f8db3b66f9e3a0d84d8a0
+@@ -1,9 +1,9 @@
+-private void updateHashCodeMemberInfos(MemberInfo[] equalsMemberInfos) {
++private void updateHashCodeMemberInfos(Collection<MemberInfo> equalsMemberInfos) {
+     if (myHashCodePanel == null)
+         return;
+-    MemberInfo[] hashCodeFields = new MemberInfo[equalsMemberInfos.length];
+-    for (int i = 0; i < equalsMemberInfos.length; i++) {
+-        hashCodeFields[i] = (MemberInfo) myFieldsToHashCode.get(equalsMemberInfos[i].getMember());
++    List<MemberInfo> hashCodeFields = new ArrayList<MemberInfo>();
++    for (MemberInfo equalsMemberInfo : equalsMemberInfos) {
++        hashCodeFields.add((MemberInfo) myFieldsToHashCode.get(equalsMemberInfo.getMember()));
+     }
+     myHashCodePanel.getTable().setMemberInfos(hashCodeFields);
+ }
+\ No newline at end of file

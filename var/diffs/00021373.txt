@@ -1,0 +1,17 @@
+diff --git a/7b0de8cf894014567edfe8b21b6aa0ec488023b6 b/ea82137b845bc769f99289f26b5b3648354105c8
+index 7b0de8cf89..ea82137b84 100644
+--- a/7b0de8cf894014567edfe8b21b6aa0ec488023b6
++++ b/ea82137b845bc769f99289f26b5b3648354105c8
+@@ -1,8 +1,9 @@
+ @Override
+-public Object process(SerilaizeContext context, Object object, String name, Object value) {
+-    // TODO Auto-generated method stub
++public Object process(SerializeContext context, Object object, String name, Object value) {
++    Class<?> objectClass = context.getBeanClass();
++    UrlIdentify annotation = context.getAnnation(UrlIdentify.class);
+     if (value instanceof Model) {
+         return value;
+     }
+     return value;
+ }
+\ No newline at end of file

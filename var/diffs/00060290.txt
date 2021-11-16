@@ -1,0 +1,22 @@
+diff --git a/3758892b1087872af702155d11c9206b07fadad4 b/dc42e9ee17a07cca739f2c5352bee54f210e5859
+index 3758892b10..dc42e9ee17 100644
+--- a/3758892b1087872af702155d11c9206b07fadad4
++++ b/dc42e9ee17a07cca739f2c5352bee54f210e5859
+@@ -1,14 +1,12 @@
+-public static boolean setField(Object obj, String name, Object value) {
++public static void setField(Object obj, String name, Object value) {
+     try {
+         Field field = getField(obj.getClass(), name);
+         if (field == null) {
+-            return false;
++            return;
+         }
+         field.setAccessible(true);
+         field.set(obj, value);
+-        return true;
+     } catch (Exception e) {
+         e.printStackTrace();
+     }
+-    return false;
+ }
+\ No newline at end of file

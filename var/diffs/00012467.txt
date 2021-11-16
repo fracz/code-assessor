@@ -1,0 +1,16 @@
+diff --git a/665ca521e011fd585105b33b86eee6437b5ccfaa b/8f07d482fdb58c6815e846c7a79add2dbe873f04
+index 665ca521e0..8f07d482fd 100644
+--- a/665ca521e011fd585105b33b86eee6437b5ccfaa
++++ b/8f07d482fdb58c6815e846c7a79add2dbe873f04
+@@ -1,9 +1,8 @@
+ @Test
+ public void testNoDifferenceBetweenRevisions() {
+     vcs.createFile("file", cf("content"), -1);
+     List<Revision> rr = vcs.getRevisionsFor("file");
+     Revision one = rr.get(0);
+     Revision two = rr.get(0);
+-    Difference d = one.getDifferenceWith(two);
+-    assertFalse(d.hasDifference());
++    assertTrue(one.getDifferencesWith(two).isEmpty());
+ }
+\ No newline at end of file

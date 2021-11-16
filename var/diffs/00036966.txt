@@ -1,0 +1,17 @@
+diff --git a/5c9dd7e9304ffbe99275bc3cdb3ecb0e95c15454 b/92898a7d028ea0a4335989667a18c9f16861c9a2
+index 5c9dd7e930..92898a7d02 100644
+--- a/5c9dd7e9304ffbe99275bc3cdb3ecb0e95c15454
++++ b/92898a7d028ea0a4335989667a18c9f16861c9a2
+@@ -1,8 +1,10 @@
+ private static String getExecuteQueryMethodAfterInsertCode() {
+     StringBuilder sb = new StringBuilder();
+     sb.append("{");
+-    // sb.append("System.out.println(\"-----JtdsPreparedStatement.execute() method is ended\");");
++    if (logger.isDebugEnabled()) {
++        sb.append("System.out.println(\"-----JtdsPreparedStatement.execute() method is ended\");");
++    }
+     sb.append(TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".put(" + TomcatProfilerConstant.REQ_DATA_TYPE_DB_EXECUTE_QUERY + ");");
+     sb.append("}");
+     return sb.toString();
+ }
+\ No newline at end of file

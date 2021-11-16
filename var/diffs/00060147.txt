@@ -1,0 +1,13 @@
+diff --git a/8e3b6b97591e7460c85b97c337e1013a059157ac b/760cc82354f1dfca0a0ce015f61bfab775bceab3
+index 8e3b6b9759..760cc82354 100644
+--- a/8e3b6b97591e7460c85b97c337e1013a059157ac
++++ b/760cc82354f1dfca0a0ce015f61bfab775bceab3
+@@ -1,4 +1,6 @@
+ public static final void writeEdgeType(WriteBuffer out, long etid, int dirID) {
++    Preconditions.checkArgument(etid > 0 && (etid << 1) > 0);
+     Preconditions.checkArgument(isValidDirection(dirID));
+-    VariableLong.writePositiveWithPrefix(out, IDManager.getTypeCount(etid), dirID, DIR_BIT_LEN);
++    etid = (IDManager.getTypeCount(etid) << 1) + getDirection(dirID);
++    VariableLong.writePositiveWithPrefix(out, etid, getRelationType(dirID), PREFIX_BIT_LEN);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/0d419e644130600b2bd135fa53e1d6492311c161 b/5a0ccc34d5ac226ec26b9d3b9dd572db90702abf
+index 0d419e6441..5a0ccc34d5 100644
+--- a/0d419e644130600b2bd135fa53e1d6492311c161
++++ b/5a0ccc34d5ac226ec26b9d3b9dd572db90702abf
+@@ -1,9 +1,8 @@
+ /*
+      * (non-Javadoc)
+      * @see org.redisson.core.RBlockingQueue#pollFromAny(long, java.util.concurrent.TimeUnit, java.lang.String[])
+      */
+ @Override
+ public V pollFromAny(long timeout, TimeUnit unit, String... queueNames) throws InterruptedException {
+-    Future<V> res = pollFromAnyAsync(timeout, unit, queueNames);
+-    return res.await().getNow();
++    return blockingQueue.pollFromAny(timeout, unit);
+ }
+\ No newline at end of file

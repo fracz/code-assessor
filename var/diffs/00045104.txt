@@ -1,0 +1,15 @@
+diff --git a/a8e0ae55e4724b6880e1ef10fa7937baca49bfda b/4a573d9bb6e1f0b753f93fd053c9af718c6f6971
+index a8e0ae55e4..4a573d9bb6 100644
+--- a/a8e0ae55e4724b6880e1ef10fa7937baca49bfda
++++ b/4a573d9bb6e1f0b753f93fd053c9af718c6f6971
+@@ -1,4 +1,6 @@
+-public Object execute() {
+-    parse();
+-    return database.getStorage().getCommandExecutor().execute(this);
++/**
++ * Delegates the execution to the configured command executor.
++ */
++public <RET> RET execute(final Object... iArgs) {
++    return (RET) database.getStorage().command(this);
+ }
+\ No newline at end of file

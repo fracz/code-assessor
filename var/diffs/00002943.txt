@@ -1,0 +1,17 @@
+diff --git a/7bdac4b7ad313c8b432fc0b9d549fe61c8a41acf b/eb4a91b29e91ce7f229805c294f19017c2026626
+index 7bdac4b7ad..eb4a91b29e 100644
+--- a/7bdac4b7ad313c8b432fc0b9d549fe61c8a41acf
++++ b/eb4a91b29e91ce7f229805c294f19017c2026626
+@@ -1,10 +1,10 @@
+ PsiPackage getSelectedPackage(DataContext context) {
+-    final PsiElement element = (PsiElement) context.getData(LangDataKeys.PSI_ELEMENT.getName());
++    final PsiElement element = LangDataKeys.PSI_ELEMENT.getData(context);
+     if (element == null) {
+         return null;
+     }
+     if (element instanceof PsiDirectory) {
+         return JavaDirectoryService.getInstance().getPackage(((PsiDirectory) element));
+     }
+     return null;
+ }
+\ No newline at end of file

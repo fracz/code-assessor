@@ -1,0 +1,21 @@
+diff --git a/92af6c7605f45d41bec3ac7a04ebc607175e4e9b b/19a8a6b300224e16fa329a144bfb25692e23dad5
+index 92af6c7605..19a8a6b300 100644
+--- a/92af6c7605f45d41bec3ac7a04ebc607175e4e9b
++++ b/19a8a6b300224e16fa329a144bfb25692e23dad5
+@@ -1,10 +1,7 @@
+-/**
+- * Read the given parameters.
+- */
+ @Override
+-public void readFrom(StreamInput in) throws IOException {
+-    fieldName = in.readString();
+-    value = in.readGenericValue();
+-    boost = in.readFloat();
+-    queryName = in.readOptionalString();
++public QB readFrom(StreamInput in) throws IOException {
++    QB emptyBuilder = createBuilder(in.readString(), in.readGenericValue());
++    emptyBuilder.boost = in.readFloat();
++    emptyBuilder.queryName = in.readOptionalString();
++    return emptyBuilder;
+ }
+\ No newline at end of file

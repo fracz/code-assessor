@@ -1,0 +1,15 @@
+diff --git a/275e2eb5773befd0cfbfcee24009dcce38d81239 b/b1e4cc3c34f2838910821b1adb379bd4504a270e
+index 275e2eb577..b1e4cc3c34 100644
+--- a/275e2eb5773befd0cfbfcee24009dcce38d81239
++++ b/b1e4cc3c34f2838910821b1adb379bd4504a270e
+@@ -1,8 +1,8 @@
+ protected Navigatable[] getNavigatables(final DataContext dataContext) {
+-    Change[] changes = (Change[]) dataContext.getData(VcsDataKeys.SELECTED_CHANGES.getName());
++    Change[] changes = VcsDataKeys.SELECTED_CHANGES.getData(dataContext);
+     if (changes != null) {
+         Collection<Change> changeCollection = Arrays.asList(changes);
+         return ChangesUtil.getNavigatableArray(myProject, ChangesUtil.getFilesFromChanges(changeCollection));
+     }
+     return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/30dcb84850b7f1cc8bade185a79c781833dbc261 b/0ef7fec07aebbaebd11921c124f8d6a3eb4d9aec
+index 30dcb84850..0ef7fec07a 100644
+--- a/30dcb84850b7f1cc8bade185a79c781833dbc261
++++ b/0ef7fec07aebbaebd11921c124f8d6a3eb4d9aec
+@@ -1,13 +1,14 @@
+ public Void call(InternalContext context) {
+-    InjectionPoint<?> injectionPoint = InjectionPoint.newInstance(binding.key, context.getInjector());
++    InjectionPoint<?> injectionPoint = InjectionPoint.newInstance(binding.key);
+     context.setInjectionPoint(injectionPoint);
++    errors.pushInjectionPoint(injectionPoint);
+     try {
+-        binding.internalFactory.get(context, injectionPoint);
+-        return null;
+-    } catch (ProvisionException provisionException) {
+-        provisionException.addContext(injectionPoint);
+-        throw provisionException;
++        binding.internalFactory.get(errors, context, injectionPoint);
++    } catch (ResolveFailedException e) {
++        errors.merge(e.getErrors());
+     } finally {
+         context.setInjectionPoint(null);
++        errors.popInjectionPoint(injectionPoint);
+     }
++    return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/47df380c6834c028ff886a334d4f8820a8de0bb0 b/5d836a06e0fb7677a624dc286bc0ff15c21cc73c
+index 47df380c68..5d836a06e0 100644
+--- a/47df380c6834c028ff886a334d4f8820a8de0bb0
++++ b/5d836a06e0fb7677a624dc286bc0ff15c21cc73c
+@@ -1,8 +1,5 @@
+ private boolean onGap(final AtomicBuffer buffer, final int offset, final int length) {
+-    if (gapIndex < MAX_GAPS) {
+-        gaps[gapIndex].reset(activeTermId, offset, length);
+-        gapIndex++;
+-        return gapIndex == MAX_GAPS;
+-    }
++    scannedGap.reset(activeTermId, offset, length);
++    // only do one gap and have it stop
+     return false;
+ }
+\ No newline at end of file

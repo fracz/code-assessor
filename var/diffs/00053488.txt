@@ -1,0 +1,12 @@
+diff --git a/de3f41005fb0084736b1d3d386fd191ebee7f3c2 b/f73fdc0fdad1e3ed00a040a271ea8fb8c872fc91
+index de3f41005f..f73fdc0fda 100644
+--- a/de3f41005fb0084736b1d3d386fd191ebee7f3c2
++++ b/f73fdc0fdad1e3ed00a040a271ea8fb8c872fc91
+@@ -1,5 +1,4 @@
+ @Test
+ public void assertDoEqualSharding() {
+-    PreciseShardingValue shardingValue = null;
+-    assertThat(noneTableShardingAlgorithm.doSharding(targets, shardingValue), is("tbl"));
++    assertThat(noneTableShardingAlgorithm.doSharding(targets, new PreciseShardingValue<>("tbl", "col", "1")), is("tbl"));
+ }
+\ No newline at end of file

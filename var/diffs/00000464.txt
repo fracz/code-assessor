@@ -1,0 +1,19 @@
+diff --git a/a5fcb660b645452a0200dab169051b6879a4aef1 b/3ddf9ce444855e806a4cee99585cc8c88c6730e0
+index a5fcb660b6..3ddf9ce444 100644
+--- a/a5fcb660b645452a0200dab169051b6879a4aef1
++++ b/3ddf9ce444855e806a4cee99585cc8c88c6730e0
+@@ -1,11 +1,10 @@
+ /**
+  * Retrieves a handle to an object identified by the given path.
+  *
+  * @param path the path to retrieve an object handle for
+  * @return the object handle
+  */
+-private StoredObject getObject(String path) {
+-    String strippedPath = stripPrefixIfPresent(path);
++private StoredObject getObject(final String path) {
+     Container container = mAccount.getContainer(mContainerName);
+-    return container.getObject(strippedPath);
++    return container.getObject(stripPrefixIfPresent(path));
+ }
+\ No newline at end of file

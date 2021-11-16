@@ -1,0 +1,21 @@
+diff --git a/fd84b0249120c54d80306add1e9c38375fa871da b/55799d666bae0f0f0f2a3c0806141fe8f0b5c3ab
+index fd84b02491..55799d666b 100644
+--- a/fd84b0249120c54d80306add1e9c38375fa871da
++++ b/55799d666bae0f0f0f2a3c0806141fe8f0b5c3ab
+@@ -1,13 +1,13 @@
+ @AfterClass
+ public static void afterClass() throws IOException {
+     if (DB_URL.startsWith("remote:")) {
+         OServerAdmin serverAdmin = new OServerAdmin(DB_URL);
+         serverAdmin.connect("root", ODatabaseHelper.getServerRootPassword());
+-        if (serverAdmin.existsDatabase("plocal")) {
+-            serverAdmin.dropDatabase("plocal");
++        if (serverAdmin.existsDatabase(OrientGraphTest.getStorageType())) {
++            serverAdmin.dropDatabase(OrientGraphTest.getStorageType());
+         }
+     } else {
+         OrientGraph graph = new OrientGraph(DB_URL, DB_USER, DB_PASSWORD);
+         graph.drop();
+     }
+ }
+\ No newline at end of file

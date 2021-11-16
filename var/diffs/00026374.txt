@@ -1,0 +1,23 @@
+diff --git a/9332f6bb94afe6896277fa48acfebb9c80696399 b/58a94455288b1a5844addefc1e3b236a532af139
+index 9332f6bb94..58a9445528 100644
+--- a/9332f6bb94afe6896277fa48acfebb9c80696399
++++ b/58a94455288b1a5844addefc1e3b236a532af139
+@@ -1,16 +1,16 @@
+ void checkDrainBlocks(BoundedLocalCache<Integer, Integer> localCache, Runnable task) {
+     NonReentrantLock lock = localCache.evictionLock;
+     AtomicBoolean done = new AtomicBoolean();
+     lock.lock();
+     try {
+         executor.execute(() -> {
+             localCache.lazySetDrainStatus(DrainStatus.REQUIRED);
+             task.run();
+             done.set(true);
+         });
+-        Awaits.await().until(() -> lock.hasQueuedThreads());
++        Awaits.await().until(lock::hasQueuedThreads);
+     } finally {
+         lock.unlock();
+     }
+     Awaits.await().untilTrue(done);
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/a7d5fb24ad87162be60fc735f23ecf6ab5e81ad1 b/32a3ca63bad123203587b8ae5535e111eb344ff0
+index a7d5fb24ad..32a3ca63ba 100644
+--- a/a7d5fb24ad87162be60fc735f23ecf6ab5e81ad1
++++ b/32a3ca63bad123203587b8ae5535e111eb344ff0
+@@ -1,7 +1,9 @@
+-private static Bitmap getContactPhoto(Context context, Uri uri) {
++public static Bitmap getContactPhoto(Context context, Uri uri) {
+     InputStream inputStream = ContactsContract.Contacts.openContactPhotoInputStream(context.getContentResolver(), uri);
++    final Bitmap contactPhoto;
+     if (inputStream == null)
+-        return ContactPhotoFactory.getDefaultContactPhoto(context);
++        contactPhoto = ContactPhotoFactory.getDefaultContactPhoto(context);
+     else
+-        return BitmapFactory.decodeStream(inputStream);
++        contactPhoto = BitmapFactory.decodeStream(inputStream);
++    return contactPhoto;
+ }
+\ No newline at end of file

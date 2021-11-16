@@ -1,0 +1,27 @@
+diff --git a/bd2eeb3bf843ca3fcb3af9f8a376deace79fb487 b/9c6c28913baa37cd9e441300d3ed3d052c0a6da6
+index bd2eeb3bf8..9c6c28913b 100644
+--- a/bd2eeb3bf843ca3fcb3af9f8a376deace79fb487
++++ b/9c6c28913baa37cd9e441300d3ed3d052c0a6da6
+@@ -1,19 +1,19 @@
+ protected AlertCondition getDummyAlertCondition(Map<String, Object> parameters) {
+-    return new AlertCondition(core, stream, CONDITION_ID, null, Tools.iso8601(), STREAM_CREATOR, parameters) {
++    return new AlertCondition(stream, CONDITION_ID, null, Tools.iso8601(), STREAM_CREATOR, parameters) {
+
+         @Override
+         public String getDescription() {
+             return null;
+         }
+
+         @Override
+-        protected CheckResult runCheck() {
++        protected CheckResult runCheck(Indexer indexer) {
+             return null;
+         }
+
+         @Override
+         public List<ResultMessage> getSearchHits() {
+             return null;
+         }
+     };
+ }
+\ No newline at end of file

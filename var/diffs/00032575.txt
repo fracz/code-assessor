@@ -1,0 +1,16 @@
+diff --git a/18f7c47fa3d63d680db50e8e188d7d7f3eb81fed b/66c8f74a3576fe2d7f509ddaa4cd38b2e5421fb1
+index 18f7c47fa3..66c8f74a35 100644
+--- a/18f7c47fa3d63d680db50e8e188d7d7f3eb81fed
++++ b/66c8f74a3576fe2d7f509ddaa4cd38b2e5421fb1
+@@ -1,7 +1,8 @@
+ @Override
+-public Void visitEmptyStatement(EmptyStatementTree node, VisitorState state) {
+-    if (emptyIfMatcher.matches(node, state.withPath(getCurrentPath()))) {
++public Void visitEmptyStatement(EmptyStatementTree node, VisitorState visitorState) {
++    VisitorState state = visitorState.withPath(getCurrentPath());
++    if (emptyIfMatcher.matches(node, state)) {
+         reportMatch(emptyIfMatcher, node, state);
+     }
+     return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/849f3851ecf02c0e8a6a822e72ca0b3200d2802c b/516533a1f7d4fc7f4a667d76f65309efc80a6710
+index 849f3851ec..516533a1f7 100644
+--- a/849f3851ecf02c0e8a6a822e72ca0b3200d2802c
++++ b/516533a1f7d4fc7f4a667d76f65309efc80a6710
+@@ -1,4 +1,5 @@
+ private void onTimerExpire() {
+-    sendNakHandler.onSendNak(currentGap.termId, currentGap.termOffset);
+-    scheduleTimer(determineNakDelay());
++    sendNakHandler.onSendNak(activeGap.termId, activeGap.termOffset);
++    scheduleTimer();
++    nakSentTimestamp = wheel.now();
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/fc2ba2da51e2c41915cdaccb444b95a4c8f465b7 b/76d272a8c171f38e9138059abf3f955c7e7c9939
+index fc2ba2da51..76d272a8c1 100644
+--- a/fc2ba2da51e2c41915cdaccb444b95a4c8f465b7
++++ b/76d272a8c171f38e9138059abf3f955c7e7c9939
+@@ -1,13 +1,12 @@
+ protected final PsiElement[] getValidSelectedElements() {
+     PsiElement[] selectedElements = getSelectedElements();
+     if (selectedElements == null) {
+         return null;
+     }
+-    for (int i = 0; i < selectedElements.length; i++) {
+-        PsiElement element = selectedElements[i];
++    for (PsiElement element : selectedElements) {
+         if (!element.isValid()) {
+             return null;
+         }
+     }
+     return selectedElements;
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/c1fbc1b94280dc0a3b8d5cf5e70d5179b77e67d5 b/a5f0fea84c26dd7953794956a0b39f03bf1a2032
+index c1fbc1b942..a5f0fea84c 100644
+--- a/c1fbc1b94280dc0a3b8d5cf5e70d5179b77e67d5
++++ b/a5f0fea84c26dd7953794956a0b39f03bf1a2032
+@@ -1,15 +1,15 @@
+ @Override
+ protected void onGetStyleRuleNames(DebugComponent element, StyleRuleNameAccumulator accumulator) {
+-    if (!element.getState().isEmpty()) {
++    if (!getState(element).isEmpty()) {
+         accumulator.store("state", element.isLayoutNode());
+     }
+-    if (!element.getProps().isEmpty()) {
++    if (!getProps(element).isEmpty()) {
+         accumulator.store("props", element.isLayoutNode());
+     }
+-    if (!element.getStyles().isEmpty()) {
++    if (!getStyles(element).isEmpty()) {
+         accumulator.store("layout", element.isLayoutNode());
+     }
+     // This method is called once a node is inspected and not during tree creation like many of the
+     // other lifecycle methods.
+     logInspected(element.getContext());
+ }
+\ No newline at end of file

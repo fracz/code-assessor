@@ -1,0 +1,15 @@
+diff --git a/ccba76be8c5ff4505efc4e3fe23ab67e20b9839c b/4da66565e87b44ff2ffa2c9f1584341cd823dced
+index ccba76be8c..4da66565e8 100644
+--- a/ccba76be8c5ff4505efc4e3fe23ab67e20b9839c
++++ b/4da66565e87b44ff2ffa2c9f1584341cd823dced
+@@ -1,7 +1,7 @@
+ public static GitConnection connectToGitRepositoryWithContent(GitConnectionFactory connectionFactory, File repository) throws GitException, IOException {
+     GitConnection connection = connectToInitializedGitRepository(connectionFactory, repository);
+     addFile(connection, "README.txt", CONTENT);
+-    connection.add(newDto(AddRequest.class).withFilepattern(Arrays.asList("README.txt")));
+-    connection.commit(newDto(CommitRequest.class).withMessage("Initial commit"));
++    connection.add(AddParams.create(singletonList("README.txt")));
++    connection.commit(CommitParams.create("Initial commit"));
+     return connection;
+ }
+\ No newline at end of file

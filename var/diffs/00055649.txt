@@ -1,0 +1,14 @@
+diff --git a/f84f0717b28792557cf1b32673d42a451602e650 b/6ee483a1bf7d2be9ecd7399206359de60bdcf073
+index f84f0717b2..6ee483a1bf 100644
+--- a/f84f0717b28792557cf1b32673d42a451602e650
++++ b/6ee483a1bf7d2be9ecd7399206359de60bdcf073
+@@ -1,7 +1,7 @@
+ @Test
+ public void testFactoryReferenceCircle() {
+-    XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("factoryCircle.xml", getClass()));
++    XmlBeanFactory xbf = new XmlBeanFactory(FACTORY_CIRCLE_CONTEXT);
+     TestBean tb = (TestBean) xbf.getBean("singletonFactory");
+     DummyFactory db = (DummyFactory) xbf.getBean("&singletonFactory");
+     assertTrue(tb == db.getOtherTestBean());
+ }
+\ No newline at end of file

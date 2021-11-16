@@ -1,0 +1,31 @@
+diff --git a/b0361c6830cd0048537f0d31baad6de002052cd6 b/b0f03bea9103835fe4ccefb724c3558fd289968b
+index b0361c6830..b0f03bea91 100644
+--- a/b0361c6830cd0048537f0d31baad6de002052cd6
++++ b/b0f03bea9103835fe4ccefb724c3558fd289968b
+@@ -1,24 +1,24 @@
+ public void waitForCompletion() {
+     if (isUnitTestMode()) {
+         while (!myQueue.isEmpty() && doRunCycle()) {
+         /* do nothing */
+         }
+         return;
+     }
+     final Semaphore semaphore = new Semaphore();
+     semaphore.down();
+     scheduleTask(new MavenProjectsProcessorTask() {
+
+         public void perform(Project project, MavenEmbeddersManager embeddersManager, MavenConsole console, MavenProcess process) throws MavenProcessCanceledException {
+             semaphore.up();
+         }
+
+         public boolean immediateInTestMode() {
+             return false;
+         }
+     });
+     while (true) {
+-        if (isStopped || semaphore.waitFor(100))
++        if (isStopped || semaphore.waitFor(QUEUE_POLL_INTERVAL) || myQueue.isEmpty())
+             return;
+     }
+ }
+\ No newline at end of file

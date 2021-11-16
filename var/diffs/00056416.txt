@@ -1,0 +1,21 @@
+diff --git a/a9317438650db5de8d0a497f9084468394840e03 b/3e507163f870b5671b98226c23fd094852569af6
+index a931743865..3e507163f8 100644
+--- a/a9317438650db5de8d0a497f9084468394840e03
++++ b/3e507163f870b5671b98226c23fd094852569af6
+@@ -1,11 +1,12 @@
+ private static boolean lastOfSeveralNNP(Tree parent, Tree t) {
+     Tree last = null;
+     int numNNP = 0;
+-    for (Tree kid : parent.children()) {
+-        if (kid.value().startsWith("NNP")) {
++    Tree[] kids = parent.children();
++    for (int i = 0; i < kids.length; i++) {
++        if (kids[i].value().startsWith("NNP")) {
+             numNNP++;
+-            last = kid;
++            last = kids[i];
+         }
+     }
+     return numNNP > 1 && t.equals(last);
+ }
+\ No newline at end of file

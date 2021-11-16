@@ -1,0 +1,24 @@
+diff --git a/56746268369447d426702d4d242d9928d60f1cec b/73510bab4939841647c0d692c6a4983ce7b66364
+index 5674626836..73510bab49 100644
+--- a/56746268369447d426702d4d242d9928d60f1cec
++++ b/73510bab4939841647c0d692c6a4983ce7b66364
+@@ -1,16 +1,13 @@
+ @Override
+ @NotNull
+ public String getFileName() {
+-    Pair<VirtualFile, String> result = update();
+-    if (result == null) {
+-        checkDisposed();
+-        return "";
+-    }
++    checkDisposed();
++    Pair<VirtualFile, String> result = myNode.update();
+     VirtualFile file = result.first;
+     if (file != null) {
+         return file.getName();
+     }
+     String url = result.second;
+     int index = url.lastIndexOf('/');
+     return index >= 0 ? url.substring(index + 1) : url;
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/dd2badf923247f45d083512ceb196e9c78327a24 b/3c899fad87ba989ef6b5e7381579bd7adb3120de
+index dd2badf923..3c899fad87 100644
+--- a/dd2badf923247f45d083512ceb196e9c78327a24
++++ b/3c899fad87ba989ef6b5e7381579bd7adb3120de
+@@ -1,4 +1,4 @@
+ @Override
+-public RowIndexEntry.IndexSerializer getIndexSerializer(CFMetaData cfMetaData) {
+-    return new RowIndexEntry.Serializer(new IndexHelper.IndexInfo.Serializer(cfMetaData.comparator));
++public RowIndexEntry.IndexSerializer getIndexSerializer(CFMetaData metadata, Version version, SerializationHeader header) {
++    return new RowIndexEntry.Serializer(metadata, version, header);
+ }
+\ No newline at end of file

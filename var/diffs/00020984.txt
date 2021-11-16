@@ -1,0 +1,12 @@
+diff --git a/f7571e3393114def86ed1ac5e4933352879dfded b/2a69081b9137e3818723ac676d5d20295eb14ed1
+index f7571e3393..2a69081b91 100644
+--- a/f7571e3393114def86ed1ac5e4933352879dfded
++++ b/2a69081b9137e3818723ac676d5d20295eb14ed1
+@@ -1,5 +1,5 @@
+ @Override
+ public void setFloat(int parameterIndex, float x) throws SQLException {
+-    setParameter(parameterIndex, new JdbcParameterImpl(Types.FLOAT, x));
++    setParameter(parameterIndex, createParameter(Types.FLOAT, x));
+     createChain().preparedStatement_setFloat(this, parameterIndex, x);
+ }
+\ No newline at end of file

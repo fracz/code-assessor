@@ -1,0 +1,27 @@
+diff --git a/426d0a9eda041218f7efa328e6e7a281ac6e7e71 b/0a2a3d7e1895177a8856c639dd1484ab4b8a6ae2
+index 426d0a9eda..0a2a3d7e18 100644
+--- a/426d0a9eda041218f7efa328e6e7a281ac6e7e71
++++ b/0a2a3d7e1895177a8856c639dd1484ab4b8a6ae2
+@@ -1,20 +1,20 @@
+ @Override
+ public Object execute(ExecutionEvent event) throws ExecutionException {
+     String actionId = event.getCommand().getId();
+     try {
+         switch(actionId) {
+             case CoreCommands.CMD_SQL_EDITOR_OPEN:
+                 openEditor(event);
+                 break;
+             case CoreCommands.CMD_SQL_EDITOR_NEW:
+                 openNewEditor(event);
+                 break;
+             case CoreCommands.CMD_SQL_EDITOR_RECENT:
+                 openRecentEditor(event);
+                 break;
+         }
+     } catch (CoreException e) {
+-        UIUtils.showErrorDialog(HandlerUtil.getActiveShell(event), "Open editor", "Can execute command '" + actionId + "'", e);
++        DBUserInterface.getInstance().showError("Open editor", "Can execute command '" + actionId + "'", e);
+     }
+     return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/9ff59828fcc731dc8e822c30846ef017a56c33d3 b/731fa20f502b02d223aa8899ea9eeae2eea8bcf5
+index 9ff59828fc..731fa20f50 100644
+--- a/9ff59828fcc731dc8e822c30846ef017a56c33d3
++++ b/731fa20f502b02d223aa8899ea9eeae2eea8bcf5
+@@ -1,9 +1,9 @@
+ public void registerSerializer(@NotNull StubSerializer<? extends StubElement> serializer) {
+-    myAllSerializers.add(serializer);
++    super.registerSerializer(serializer);
+     try {
+         myStubSerializationHelper.assignId(serializer);
+     } catch (IOException e) {
+         LOG.info(e);
+         nameStorageCrashed();
+     }
+ }
+\ No newline at end of file

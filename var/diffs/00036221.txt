@@ -1,0 +1,14 @@
+diff --git a/a35a6cdb9b5cdbbb2b91e2d59c07403e015f90f5 b/752d7dda7ed2ccf5441fc920a4bc45e61d95df81
+index a35a6cdb9b..752d7dda7e 100644
+--- a/a35a6cdb9b5cdbbb2b91e2d59c07403e015f90f5
++++ b/752d7dda7ed2ccf5441fc920a4bc45e61d95df81
+@@ -1,7 +1,7 @@
+ @Test
+ public void shouldRemoveStubbableFromProgressAfterStubbing() {
+     List mock = Mockito.mock(List.class);
+     Mockito.when(mock.add("test")).thenReturn(true);
+     // TODO Consider to move to separate test
+-    assertThat(new ThreadSafeMockingProgress().pullOngoingStubbing()).isNull();
++    assertThat(mockingProgress().pullOngoingStubbing()).isNull();
+ }
+\ No newline at end of file

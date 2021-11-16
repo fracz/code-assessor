@@ -1,0 +1,14 @@
+diff --git a/94dccc44c1620585230a62a4ed0f75326a45cbe7 b/f78db89244a6c3a63554a4aab80176d51918f885
+index 94dccc44c1..f78db89244 100644
+--- a/94dccc44c1620585230a62a4ed0f75326a45cbe7
++++ b/f78db89244a6c3a63554a4aab80176d51918f885
+@@ -1,6 +1,6 @@
+ private void validate(Collection<Mutation> tmutations) throws InvalidRequestException {
+     for (Mutation mutation : tmutations) {
+-        QueryProcessor.validateKey(mutation.key());
+-        for (ColumnFamily tcf : mutation.getColumnFamilies()) for (Cell cell : tcf) cell.validateFields(tcf.metadata());
++        QueryProcessor.validateKey(mutation.key().getKey());
++        for (PartitionUpdate update : mutation.getPartitionUpdates()) update.validate();
+     }
+ }
+\ No newline at end of file

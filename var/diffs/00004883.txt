@@ -1,0 +1,25 @@
+diff --git a/5110bfe91dc28a670362e3abf6d3dd9f63608464 b/d73b80348e0ef1624d4a8dc9790a4fae93105cbf
+index 5110bfe91d..d73b80348e 100644
+--- a/5110bfe91dc28a670362e3abf6d3dd9f63608464
++++ b/d73b80348e0ef1624d4a8dc9790a4fae93105cbf
+@@ -1,14 +1,13 @@
+-public static String extractEPName(final Element extensionElement) {
++@NotNull
++public static String extractEPName(@NotNull Element extensionElement, @Nullable String ns) {
+     String epName = extensionElement.getAttributeValue("point");
+     if (epName == null) {
+-        final Element parentElement = extensionElement.getParentElement();
+-        final String ns = parentElement != null ? parentElement.getAttributeValue("defaultExtensionNs") : null;
+-        if (ns != null) {
+-            epName = ns + '.' + extensionElement.getName();
+-        } else {
++        if (ns == null) {
+             Namespace namespace = extensionElement.getNamespace();
+             epName = namespace.getURI() + '.' + extensionElement.getName();
++        } else {
++            epName = ns + '.' + extensionElement.getName();
+         }
+     }
+     return epName;
+ }
+\ No newline at end of file

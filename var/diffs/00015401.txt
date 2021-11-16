@@ -1,0 +1,20 @@
+diff --git a/8723e85e5ed46be09f563033f24a958fb99857cc b/62a7abe28f41f7a11713a401596184f9beb0301b
+index 8723e85e5e..62a7abe28f 100644
+--- a/8723e85e5ed46be09f563033f24a958fb99857cc
++++ b/62a7abe28f41f7a11713a401596184f9beb0301b
+@@ -1,11 +1,9 @@
+ @NotNull
+-private static ExitCode translateAndGenerateOutputFile(@NotNull MainCallParameters mainCall, @NotNull PrintingMessageCollector messageCollector, @NotNull JetCoreEnvironment environmentForJS, @NotNull Config config, @NotNull String outputFile) {
++private static ExitCode translateAndGenerateOutputFile(@NotNull MainCallParameters mainCall, @NotNull JetCoreEnvironment environmentForJS, @NotNull Config config, @NotNull String outputFile) {
+     try {
+         K2JSTranslator.translateWithMainCallParametersAndSaveToFile(mainCall, environmentForJS.getSourceFiles(), outputFile, config);
+     } catch (Exception e) {
+-        messageCollector.report(CompilerMessageSeverity.ERROR, "Exception while translating:\n" + e.getMessage(), CompilerMessageLocation.NO_LOCATION);
+-        // for example inside a mvn plugin we need to see the stack trace
+-        return ExitCode.INTERNAL_ERROR;
++        throw new RuntimeException(e);
+     }
+-    return messageCollector.anyReported(CompilerMessageSeverity.ERROR) ? COMPILATION_ERROR : OK;
++    return OK;
+ }
+\ No newline at end of file

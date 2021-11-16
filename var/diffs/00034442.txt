@@ -1,0 +1,38 @@
+diff --git a/652bcb50b6560d0f4190c2b111626f26cc68d304 b/d3504e078bb5cd4da973053076ee3f035bd57e48
+index 652bcb50b6..d3504e078b 100644
+--- a/652bcb50b6560d0f4190c2b111626f26cc68d304
++++ b/d3504e078bb5cd4da973053076ee3f035bd57e48
+@@ -1,29 +1,19 @@
+ /**
+  * This method will only be called once when the retained Fragment is first created.
+  */
+ @Override
+ public void onCreate(Bundle savedInstanceState) {
+     super.onCreate(savedInstanceState);
+     // Retain this fragment across configuration changes.
+     setRetainInstance(true);
+-    if (_storedIntsObservable != null) {
+-        return;
+-    }
+     //
+-    Observable<Integer> intsObservable = //
++    _storedIntsSubscription = //
+     Observable.interval(1, TimeUnit.SECONDS).map(new Func1<Long, Integer>() {
+
+         @Override
+         public Integer call(Long aLong) {
+             return aLong.intValue();
+         }
+-    }).take(20);
+-    // -----------------------------------------------------------------------------------
+-    // Making our observable "HOT" for the purpose of the demo.
+-    // we can simply use subjects for this.
+-    // Connecteable Observables are messy and a code smell
+-    // _intsObservable = _intsObservable.share();
+-    _storedIntsObservable = intsObservable.replay();
+-    // we use replay to turn the observable "hot"
+-    _storedIntsSubscription = _storedIntsObservable.connect();
++    }).take(//
++    20).subscribe(_intStream);
+ }
+\ No newline at end of file

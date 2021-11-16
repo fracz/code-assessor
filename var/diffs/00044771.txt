@@ -1,0 +1,19 @@
+diff --git a/cbc45cace156565a3d6ac17b7a2e247bfa5af693 b/341d27d3743888cec21dc57c594416b848df50fe
+index cbc45cace1..341d27d374 100644
+--- a/cbc45cace156565a3d6ac17b7a2e247bfa5af693
++++ b/341d27d3743888cec21dc57c594416b848df50fe
+@@ -1,10 +1,6 @@
+ public Query buildQuery(final Object query) throws ParseException {
+-    return storage.callIndexEngine(false, false, indexId, new OIndexEngineCallback<Query>() {
+-
+-        @Override
+-        public Query callEngine(OIndexEngine engine) {
+-            OLuceneIndexEngine indexEngine = (OLuceneIndexEngine) engine;
+-            return indexEngine.buildQuery(query);
+-        }
++    return storage.callIndexEngine(false, false, indexId, engine -> {
++        OLuceneIndexEngine indexEngine = (OLuceneIndexEngine) engine;
++        return indexEngine.buildQuery(query);
+     });
+ }
+\ No newline at end of file

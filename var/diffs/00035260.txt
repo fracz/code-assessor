@@ -1,0 +1,17 @@
+diff --git a/203fbfc71f22ba7bfefc33d657bd37ba83f74769 b/ac326ecd636b7f484b0fcf8488125e54faa96ec8
+index 203fbfc71f..ac326ecd63 100644
+--- a/203fbfc71f22ba7bfefc33d657bd37ba83f74769
++++ b/ac326ecd636b7f484b0fcf8488125e54faa96ec8
+@@ -1,4 +1,10 @@
++/**
++ * Enables word wrap and sets the width that is used to word wrap. The preferred width of the label will be the wrap width and
++ * the preferred height will be the actual height of the wrapped text.
++ * @param wrapWidth Set to zero to disable wrap.
++ */
+ public void setWrapWidth(float wrapWidth) {
+-    setWrap(true);
++    setWrap(wrapWidth != 0);
+     this.wrapWidth = wrapWidth;
++    invalidateHierarchy();
+ }
+\ No newline at end of file

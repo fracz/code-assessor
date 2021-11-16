@@ -1,0 +1,15 @@
+diff --git a/ed8927796a0d9fc29724ea6b6afd9e353171efe5 b/0fac57aa99ab87a054dad78f4e676a3a7f0fecfe
+index ed8927796a..0fac57aa99 100644
+--- a/ed8927796a0d9fc29724ea6b6afd9e353171efe5
++++ b/0fac57aa99ab87a054dad78f4e676a3a7f0fecfe
+@@ -1,8 +1,8 @@
+ @Test
+ public void testNonParametric() throws Exception {
+-    Signature function = functionSignature().returnType("boolean").argumentTypes("bigint").build();
++    Signature function = functionSignature().returnType(parseTypeSignature(StandardTypes.BOOLEAN)).argumentTypes(parseTypeSignature(StandardTypes.BIGINT)).build();
+     assertThat(function).boundTo("bigint").succeeds();
+     assertThat(function).boundTo("varchar").withCoercion().fails();
+     assertThat(function).boundTo("varchar", "bigint").withCoercion().fails();
+     assertThat(function).boundTo("array(bigint)").withCoercion().fails();
+ }
+\ No newline at end of file

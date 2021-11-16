@@ -1,0 +1,16 @@
+diff --git a/3cbc221db2426dcb2cfcbae31e8c59a3fdf880a1 b/70e2ec85c7a9c350c591401db9ef0349894f1850
+index 3cbc221db2..70e2ec85c7 100644
+--- a/3cbc221db2426dcb2cfcbae31e8c59a3fdf880a1
++++ b/70e2ec85c7a9c350c591401db9ef0349894f1850
+@@ -1,6 +1,6 @@
+ @Override
+-public NodePropertyExistenceConstraint nodePropertyExistenceConstraintCreate(KernelStatement state, int labelId, int propertyKeyId) throws AlreadyConstrainedException, CreateConstraintFailureException {
+-    Iterator<Cursor<NodeItem>> nodes = new EntityLoadingIterator<>(nodesGetForLabel(state, labelId), (id) -> nodeCursorById(state, id));
+-    constraintSemantics.validateNodePropertyExistenceConstraint(nodes, labelId, propertyKeyId);
+-    return schemaWriteOperations.nodePropertyExistenceConstraintCreate(state, labelId, propertyKeyId);
++public NodePropertyExistenceConstraint nodePropertyExistenceConstraintCreate(KernelStatement state, NodePropertyDescriptor descriptor) throws AlreadyConstrainedException, CreateConstraintFailureException {
++    Iterator<Cursor<NodeItem>> nodes = new EntityLoadingIterator<>(nodesGetForLabel(state, descriptor.getLabelId()), (id) -> nodeCursorById(state, id));
++    constraintSemantics.validateNodePropertyExistenceConstraint(nodes, descriptor);
++    return schemaWriteOperations.nodePropertyExistenceConstraintCreate(state, descriptor);
+ }
+\ No newline at end of file

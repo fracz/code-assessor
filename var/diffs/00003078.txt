@@ -1,0 +1,15 @@
+diff --git a/43dfbbe42851f2967d6ed6bdbaf9c6e4904332c6 b/cbe893fabca2296f5077c069047a708286be82f2
+index 43dfbbe428..cbe893fabc 100644
+--- a/43dfbbe42851f2967d6ed6bdbaf9c6e4904332c6
++++ b/cbe893fabca2296f5077c069047a708286be82f2
+@@ -1,8 +1,8 @@
+ @Nullable
+ public Object getData(String dataId) {
+     Object data = myPaletteWindow.getData(dataId);
+     if (data != null)
+         return data;
+-    Project project = (Project) myPaletteWindow.getData(DataConstants.PROJECT);
++    Project project = PlatformDataKeys.PROJECT.getData(myPaletteWindow);
+     return myGroup.getData(project, dataId);
+ }
+\ No newline at end of file

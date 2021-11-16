@@ -1,0 +1,18 @@
+diff --git a/9c31f5019a911a18d5ff4ba7e5714493958ec069 b/5b712064411cbaca15dfb14197b8607c87d28942
+index 9c31f5019a..5b71206441 100644
+--- a/9c31f5019a911a18d5ff4ba7e5714493958ec069
++++ b/5b712064411cbaca15dfb14197b8607c87d28942
+@@ -1,10 +1,11 @@
+ protected OutputEventRenderer createOutputEventRenderer() {
+     Spec<FileDescriptor> terminalDetector;
+     if (detectConsole) {
+         StartParameter startParameter = new StartParameter();
+-        terminalDetector = new TerminalDetector(startParameter.getGradleUserHomeDir());
++        JnaBootPathConfigurer jnaConfigurer = new JnaBootPathConfigurer(startParameter.getGradleUserHomeDir());
++        terminalDetector = new TerminalDetectorFactory().create(jnaConfigurer);
+     } else {
+         terminalDetector = Specs.satisfyNone();
+     }
+     return new OutputEventRenderer(terminalDetector).addStandardOutputAndError();
+ }
+\ No newline at end of file

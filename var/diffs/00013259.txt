@@ -1,0 +1,13 @@
+diff --git a/ded6b640d4d4e79eeb044f82554dc3ea76da524a b/700a629479d4bc5a0f82ff131b5871cbc8c86edd
+index ded6b640d4..700a629479 100644
+--- a/ded6b640d4d4e79eeb044f82554dc3ea76da524a
++++ b/700a629479d4bc5a0f82ff131b5871cbc8c86edd
+@@ -1,6 +1,5 @@
+ @Override
+ @NotNull
+ public TextChunk[] getText() {
+-    final TextChunk[] chunks = usagePresentation.getText();
+-    return ArrayUtil.append(chunks, new TextChunk(SimpleTextAttributes.GRAY_ITALIC_ATTRIBUTES.toTextAttributes(), conflictDescription));
++    return new TextChunk[] { new TextChunk(SimpleTextAttributes.REGULAR_ATTRIBUTES.toTextAttributes(), myConflictDescription) };
+ }
+\ No newline at end of file

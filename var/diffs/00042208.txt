@@ -1,0 +1,21 @@
+diff --git a/b64b27f420f228641c7c025fe3fd1d8bf70dddb6 b/8ce618912bdf506b1c61aec34a5bd08e77d11082
+index b64b27f420..8ce618912b 100644
+--- a/b64b27f420f228641c7c025fe3fd1d8bf70dddb6
++++ b/8ce618912bdf506b1c61aec34a5bd08e77d11082
+@@ -1,6 +1,12 @@
+ @Override
+ protected void onIndexEngineChange(int indexId) {
+-    OLuceneIndexEngine oIndexEngine = (OLuceneIndexEngine) storage.getIndexEngine(indexId);
+-    oIndexEngine.initIndex(getName(), getType(), getDefinition(), isAutomatic(), getMetadata());
+-    super.onIndexEngineChange(indexId);
++    storage.callIndexEngine(false, false, indexId, new OIndexEngineCallback<Object>() {
++
++        @Override
++        public Object callEngine(OIndexEngine engine) {
++            OLuceneIndexEngine oIndexEngine = (OLuceneIndexEngine) engine;
++            oIndexEngine.initIndex(getName(), getType(), getDefinition(), isAutomatic(), getMetadata());
++            return null;
++        }
++    });
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/d24210af0571b9ee960c37fcfdcb9bf83592a1a1 b/61935de373ff25c6feec0619b8ebecc78ea7f5e4
+index d24210af05..61935de373 100644
+--- a/d24210af0571b9ee960c37fcfdcb9bf83592a1a1
++++ b/61935de373ff25c6feec0619b8ebecc78ea7f5e4
+@@ -1,9 +1,6 @@
++@Test
+ public void testProceedWithArgsInSameAspect() {
+-    if (!JdkVersion.isAtLeastJava15()) {
+-        // Doesn't work on JDK 1.4 for some reason...
+-        return;
+-    }
+     this.testBean.setMyFloat(1.0F);
+     assertTrue("value changed in around advice", this.testBean.getMyFloat() > 1.9F);
+-    assertTrue("changed value visible to next advice in chain", this.testAspect.getLastBeforeFloatValue() > 1.9F);
++    assertTrue("changed value visible to next advice in chain", this.firstTestAspect.getLastBeforeFloatValue() > 1.9F);
+ }
+\ No newline at end of file

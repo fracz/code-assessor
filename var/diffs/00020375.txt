@@ -1,0 +1,15 @@
+diff --git a/43e0d755cdf0bbe9e12ca5717a48c12f5d6398c7 b/cd498ce95533f1f08cbd9c5b32056eee4d3a21c0
+index 43e0d755cd..cd498ce955 100644
+--- a/43e0d755cdf0bbe9e12ca5717a48c12f5d6398c7
++++ b/cd498ce95533f1f08cbd9c5b32056eee4d3a21c0
+@@ -1,7 +1,6 @@
+ @Override
+ public int hashCode() {
+-    final int prime = 31;
+-    int result = 1;
+-    result = prime * result + ((expr == null) ? 0 : expr.hashCode());
++    int result = expr != null ? expr.hashCode() : 0;
++    result = 31 * result + (partitions != null ? partitions.hashCode() : 0);
+     return result;
+ }
+\ No newline at end of file

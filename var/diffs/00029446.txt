@@ -1,0 +1,16 @@
+diff --git a/5a76f890f09f6489f244cb5faa3b909123a3590c b/27546312f8a323b5584f093ec2054fe24617bdab
+index 5a76f890f0..27546312f8 100644
+--- a/5a76f890f09f6489f244cb5faa3b909123a3590c
++++ b/27546312f8a323b5584f093ec2054fe24617bdab
+@@ -1,9 +1,9 @@
+ @Test
+ public void testMinimumMasterNodesStart() {
+-    Settings nodeSettings = settingsBuilder().put("plugins." + PluginsService.LOAD_PLUGIN_FROM_CLASSPATH, true).put("cloud.enabled", true).put("discovery.type", "ec2").build();
++    Settings nodeSettings = settingsBuilder().put("plugin.types", CloudAwsPlugin.class.getName()).put("cloud.enabled", true).put("discovery.type", "ec2").build();
+     internalCluster().startNode(nodeSettings);
+     // We try to update minimum_master_nodes now
+     ClusterUpdateSettingsResponse response = client().admin().cluster().prepareUpdateSettings().setPersistentSettings(settingsBuilder().put("discovery.zen.minimum_master_nodes", 1)).setTransientSettings(settingsBuilder().put("discovery.zen.minimum_master_nodes", 1)).get();
+     Integer min = response.getPersistentSettings().getAsInt("discovery.zen.minimum_master_nodes", null);
+     assertThat(min, is(1));
+ }
+\ No newline at end of file

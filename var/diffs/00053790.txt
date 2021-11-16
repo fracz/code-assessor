@@ -1,0 +1,13 @@
+diff --git a/1e909a97541777759040e2c5a79a25b12d4bd142 b/7467c7e4ab928c93965b36b0ebfda75f8d5e7b0a
+index 1e909a9754..7467c7e4ab 100644
+--- a/1e909a97541777759040e2c5a79a25b12d4bd142
++++ b/7467c7e4ab928c93965b36b0ebfda75f8d5e7b0a
+@@ -1,5 +1,5 @@
+ protected void queryRest() {
+-    if (getLexer().equalToken(Token.UNION) || getLexer().equalToken(Token.EXCEPT) || getLexer().equalToken(Token.INTERSECT) || getLexer().equalToken(Token.MINUS)) {
+-        throw new ParserUnsupportedException(getLexer().getToken());
++    if (getExprParser().getLexer().equalToken(Token.UNION, Token.EXCEPT, Token.INTERSECT, Token.MINUS)) {
++        throw new ParserUnsupportedException(getExprParser().getLexer().getToken());
+     }
+ }
+\ No newline at end of file

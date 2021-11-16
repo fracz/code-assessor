@@ -1,0 +1,18 @@
+diff --git a/2e92056954ede4d8a36e8189688512ae2b3e8038 b/19e789404c4e103e118c4447f2f9b0ef2e440ed9
+index 2e92056954..19e789404c 100644
+--- a/2e92056954ede4d8a36e8189688512ae2b3e8038
++++ b/19e789404c4e103e118c4447f2f9b0ef2e440ed9
+@@ -1,8 +1,9 @@
+ @Nullable
+ public Library getLibraryByName(String name) {
+-    Library library = myLibraryTable.getLibraryByName(name);
+-    if (library instanceof LibraryEx && ((LibraryEx) library).getType().equals(myLibraryType)) {
+-        return library;
++    for (Library library : myLibs) {
++        if (library.getName().equals(name) && library instanceof LibraryEx && ((LibraryEx) library).getType().equals(myLibraryManager.getLibraryType())) {
++            return library;
++        }
+     }
+     return null;
+ }
+\ No newline at end of file

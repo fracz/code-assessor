@@ -1,0 +1,23 @@
+diff --git a/a999c66e1445e224fb611a1f254ab7b85610b86e b/9d6c0d06dfa9a648ec2f304676be19dd0acff7d1
+index a999c66e14..9d6c0d06df 100644
+--- a/a999c66e1445e224fb611a1f254ab7b85610b86e
++++ b/9d6c0d06dfa9a648ec2f304676be19dd0acff7d1
+@@ -1,16 +1,16 @@
+ @Override
+ protected void setValue(Object element, Object value) {
+     DBNNode object = (DBNNode) element;
+     final ObjectPropertyDescriptor property = objectColumn.getProperty(getObjectValue(object));
+     try {
+         if (property != null) {
+             getListPropertySource().setPropertyValue(null, getObjectValue(object), property, value);
+             if (value instanceof Boolean) {
+                 // Redraw control to let it repaint checkbox
+                 getItemsViewer().getControl().redraw();
+             }
+         }
+     } catch (Exception e) {
+-        UIUtils.showErrorDialog(null, "Error setting property value", "Error setting property '" + property.getId() + "' value", e);
++        DBUserInterface.getInstance().showError("Error setting property value", "Error setting property '" + property.getId() + "' value", e);
+     }
+ }
+\ No newline at end of file

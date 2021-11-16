@@ -1,0 +1,17 @@
+diff --git a/3314c297dbb984f917ebb2842617e63482a37d90 b/0a0366af0f4a7374741c148480589f51bd340e5a
+index 3314c297db..0a0366af0f 100644
+--- a/3314c297dbb984f917ebb2842617e63482a37d90
++++ b/0a0366af0f4a7374741c148480589f51bd340e5a
+@@ -1,6 +1,9 @@
+ @Override
+ public void initialize(Configuration configuration) {
+     super.initialize(configuration);
+-    transport.setupMetrics(this);
+-    setupMetrics();
++    final MetricSet transportMetrics = transport.getMetricSet();
++    if (transportMetrics != null) {
++        metricRegistry.register(getUniqueReadableId(), transportMetrics);
++    }
++    metricRegistry.register(getUniqueReadableId(), localRegistry);
+ }
+\ No newline at end of file

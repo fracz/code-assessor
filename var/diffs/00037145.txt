@@ -1,0 +1,12 @@
+diff --git a/04d605bb8094bc134f2758b2196de2334a076435 b/97f98f53256314fee9f1714efcfb15a9c1a5e10b
+index 04d605bb80..97f98f5325 100644
+--- a/04d605bb8094bc134f2758b2196de2334a076435
++++ b/97f98f53256314fee9f1714efcfb15a9c1a5e10b
+@@ -1,4 +1,3 @@
+-@Override
+-protected DataSender createUdpStatDataSender(int port, String threadName, int writeQueueSize, int timeout, int sendBufferSize) {
+-    return new ListenableDataSender<TBase<?, ?>>();
++private DataSender createUdpStatDataSender() {
++    return new ListenableDataSender<TBase<?, ?>>("StatDataSender");
+ }
+\ No newline at end of file

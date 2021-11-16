@@ -1,0 +1,19 @@
+diff --git a/fe901fa41fb0f9fd832d92b4cd5b2b486e1cd101 b/67ac5c4b907f6e89c3fc5eb1486ccdcd1d11f500
+index fe901fa41f..67ac5c4b90 100644
+--- a/fe901fa41fb0f9fd832d92b4cd5b2b486e1cd101
++++ b/67ac5c4b907f6e89c3fc5eb1486ccdcd1d11f500
+@@ -1,9 +1,11 @@
+ @Override
+ public void readFrom(DataInput in) throws IOException, ClassNotFoundException {
+     index = in.readUTF();
+     type = in.readUTF();
+     id = in.readUTF();
+-    if (in.readBoolean()) {
+-        source = in.readUTF();
++    int size = in.readInt();
++    if (size > 0) {
++        source = new byte[size];
++        in.readFully(source);
+     }
+ }
+\ No newline at end of file

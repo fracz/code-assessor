@@ -1,0 +1,18 @@
+diff --git a/6d11c8e890fa371add52a6468cee74bf94ef6921 b/c815ce5127c5a37c55355da3fb1d06e108269537
+index 6d11c8e890..c815ce5127 100644
+--- a/6d11c8e890fa371add52a6468cee74bf94ef6921
++++ b/c815ce5127c5a37c55355da3fb1d06e108269537
+@@ -1,11 +1,11 @@
+ @Override
+ public final void setFetchSize(final int rows) throws SQLException {
+     this.fetchSize = rows;
+     if (getRoutedStatements().isEmpty()) {
+-        recordMethodInvocation(Statement.class, "setFetchSize", new Class[] { int.class }, new Object[] { rows });
++        recordMethodInvocation(targetClass, "setFetchSize", new Class[] { int.class }, new Object[] { rows });
+         return;
+     }
+     for (Statement each : getRoutedStatements()) {
+         each.setFetchSize(rows);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/514ddab7d2702afb970afd8a84bfe6bcbd52284c b/bc6cf112c7f1dd63af1ecabfc8467c95eb137106
+index 514ddab7d2..bc6cf112c7 100644
+--- a/514ddab7d2702afb970afd8a84bfe6bcbd52284c
++++ b/bc6cf112c7f1dd63af1ecabfc8467c95eb137106
+@@ -1,5 +1,5 @@
+ @SuppressWarnings("deprecation")
+ public static boolean isMobilePhoneLabel(final String label) {
+     // To support mobile type at that time, this custom label had been used.
+-    return (android.provider.Contacts.ContactMethodsColumns.MOBILE_EMAIL_TYPE_NAME.equals(label) || sMobilePhoneLabelSet.contains(label));
++    return ("_AUTO_CELL".equals(label) || sMobilePhoneLabelSet.contains(label));
+ }
+\ No newline at end of file

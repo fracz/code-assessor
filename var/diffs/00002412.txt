@@ -1,0 +1,12 @@
+diff --git a/90420b85f3374a5003a9438170ff4afc898ccfd4 b/199049efc19636210809854f77821d786bb9b26f
+index 90420b85f3..199049efc1 100644
+--- a/90420b85f3374a5003a9438170ff4afc898ccfd4
++++ b/199049efc19636210809854f77821d786bb9b26f
+@@ -1,5 +1,5 @@
+ @Override
+ public void addExtractDirectoryInstruction(@NotNull File jarFile, @NotNull String pathInJar) {
+     final SourceFileFilterImpl filter = new SourceFileFilterImpl(null, myInstructionsBuilder.getRootsIndex(), myInstructionsBuilder.getIgnoredFilePatterns(), false);
+-    addDirectoryCopyInstructions(new JarBasedArtifactSourceRoot(jarFile, pathInJar, filter));
++    addDirectoryCopyInstructions(myInstructionsBuilder.createJarBasedRoot(jarFile, pathInJar, filter));
+ }
+\ No newline at end of file

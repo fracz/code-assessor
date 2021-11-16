@@ -1,0 +1,20 @@
+diff --git a/bce8d884b846560d7c5a9bf412b4b1e18d98c2fd b/a514f8c9acd23a325b7f7807bd08427d36905dc8
+index bce8d884b8..a514f8c9ac 100644
+--- a/bce8d884b846560d7c5a9bf412b4b1e18d98c2fd
++++ b/a514f8c9acd23a325b7f7807bd08427d36905dc8
+@@ -1,13 +1,4 @@
+-/**
+- * Parses imported POM.
+- *
+- * @param parseContext Parse context
+- * @param pomDependencyMgt Dependency management information
+- * @return POM reader
+- * @throws IOException
+- * @throws SAXException
+- */
+ private PomReader parseImportedPom(DescriptorParseContext parseContext, PomDependencyMgt pomDependencyMgt) throws IOException, SAXException {
+     ModuleComponentIdentifier importedId = DefaultModuleComponentIdentifier.newId(pomDependencyMgt.getGroupId(), pomDependencyMgt.getArtifactId(), pomDependencyMgt.getVersion());
+-    return parseOtherPom(parseContext, importedId);
++    return parsePom(parseContext, importedId, Maps.<String, String>newHashMap());
+ }
+\ No newline at end of file

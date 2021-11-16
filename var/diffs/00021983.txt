@@ -1,0 +1,36 @@
+diff --git a/eea2038be85149cdfe0028f2cfa7c14841e5e267 b/c1ca36b78bbe7714161132a469159de633a79ea1
+index eea2038be8..c1ca36b78b 100644
+--- a/eea2038be85149cdfe0028f2cfa7c14841e5e267
++++ b/c1ca36b78bbe7714161132a469159de633a79ea1
+@@ -1,23 +1,17 @@
+ /**
+  * Notifies the Android System that an
+  * {@link AutoFillService#onFillRequest(android.app.assist.AssistStructure,
+  * Bundle, android.os.CancellationSignal, FillCallback)}
+  * could not be fulfilled by the service.
+  *
+  * @param message error message to be displayed to the user.
+  */
+-public void onFailure(CharSequence message) {
+-    if (DEBUG)
+-        Log.d(TAG, "onFailure(): message=" + message);
+-    Preconditions.checkArgument(message != null, "message cannot be null");
+-    synchronized (mCallback) {
+-        assertOnStateLocked(STATE_INITIAL | STATE_WAITING_FILL_RESPONSE_AUTH_RESPONSE | STATE_WAITING_DATASET_AUTH_RESPONSE);
+-        try {
+-            mCallback.showError(message);
+-            setFinalStateLocked(STATE_FINISHED_FAILURE);
+-        } catch (RemoteException e) {
+-            setFinalStateLocked(STATE_FINISHED_ERROR);
+-            e.rethrowAsRuntimeException();
+-        }
++public void onFailure(@Nullable CharSequence message) {
++    assertNotCalled();
++    mCalled = true;
++    try {
++        mCallback.onFailure(message);
++    } catch (RemoteException e) {
++        e.rethrowAsRuntimeException();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/2c80b013e76e83aadca64ccf7c928948faf94c40 b/19605b08ec2e0e673b1779932263b7911af958bb
+index 2c80b013e7..19605b08ec 100644
+--- a/2c80b013e76e83aadca64ccf7c928948faf94c40
++++ b/19605b08ec2e0e673b1779932263b7911af958bb
+@@ -1,16 +1,14 @@
+ long setYear(long instant, int year) {
+     // optimsed implementation of set, due to fixed months
+     int thisYear = getYear(instant);
+     int dayOfYear = getDayOfYear(instant, thisYear);
+     int millisOfDay = getMillisOfDay(instant);
+-    if (dayOfYear > 354) {
+-        // Current year is leap, and day is leap.
+-        if (!isLeapYear(year)) {
+-            // Moving to a non-leap year, leap day doesn't exist.
+-            dayOfYear--;
+-        }
++    // Current year is leap, and day is leap.
++    if (dayOfYear > 354 && !isLeapYear(year)) {
++        // Moving to a non-leap year, leap day doesn't exist.
++        dayOfYear--;
+     }
+     instant = getYearMonthDayMillis(year, 1, dayOfYear);
+     instant += millisOfDay;
+     return instant;
+ }
+\ No newline at end of file

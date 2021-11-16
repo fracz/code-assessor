@@ -1,0 +1,20 @@
+diff --git a/2bbf87f05db4cfc53e95997880213a2abca206ed b/a04a01387f88b456172243d323d685c63dfe6238
+index 2bbf87f05d..a04a01387f 100644
+--- a/2bbf87f05db4cfc53e95997880213a2abca206ed
++++ b/a04a01387f88b456172243d323d685c63dfe6238
+@@ -1,13 +1,13 @@
+ // [TX_1P_COMMIT][identifier]
+ public synchronized void commitOnePhase(int identifier, long txId, ForceMode forceMode) throws XAException {
+     LogEntry.Start startEntry = xidIdentMap.get(identifier);
+     assert startEntry != null;
+     assert txId != -1;
+     try {
++        cacheTxStartPosition(txId, startEntry.getMasterId(), startEntry);
+         LogIoUtils.writeCommit(false, writeBuffer, identifier, txId, System.currentTimeMillis());
+         forceMode.force(writeBuffer);
+-        cacheTxStartPosition(txId, startEntry.getMasterId(), startEntry);
+     } catch (IOException e) {
+         throw Exceptions.withCause(new XAException("Logical log unable to mark 1P-commit [" + identifier + "] "), e);
+     }
+ }
+\ No newline at end of file

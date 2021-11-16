@@ -1,0 +1,14 @@
+diff --git a/d5456315619382e9b8b92c61f38f4a0917a90b32 b/953e62743ffa522242026d2e997b748b03964579
+index d545631561..953e62743f 100644
+--- a/d5456315619382e9b8b92c61f38f4a0917a90b32
++++ b/953e62743ffa522242026d2e997b748b03964579
+@@ -1,6 +1,7 @@
+ public void remove() {
+-    if (askScriptDirectory != null && askScriptDirectory.exists()) {
++    File askScriptDirectory = new File(System.getProperty("java.io.tmpdir") + "/" + EnvironmentContext.getCurrent().getSubject().getUserName());
++    if (askScriptDirectory.exists()) {
+         if (!IoUtil.deleteRecursive(askScriptDirectory))
+             LOG.warn("Ask-pass script deletion failed.");
+     }
+ }
+\ No newline at end of file

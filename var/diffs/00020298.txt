@@ -1,0 +1,15 @@
+diff --git a/7699c153305567578d5426401de889ef6ae2de0f b/733fddbd90a760752e400ffbd2fe361bfd5d0a2e
+index 7699c15330..733fddbd90 100644
+--- a/7699c153305567578d5426401de889ef6ae2de0f
++++ b/733fddbd90a760752e400ffbd2fe361bfd5d0a2e
+@@ -1,6 +1,8 @@
+ public SQLStatement parseInsert() {
+-    accept(Token.INSERT);
+     SQLInsertStatement insertStatement = new SQLInsertStatement();
++    if (lexer.token() == Token.INSERT) {
++        accept(Token.INSERT);
++    }
+     parseInsert0(insertStatement);
+     return insertStatement;
+ }
+\ No newline at end of file

@@ -1,0 +1,27 @@
+diff --git a/acb80ca8affbe5497f05ad8210e6dab0a6518d47 b/e4dd6dd0e392c3adac1871cd200f07cc1ab93ae4
+index acb80ca8af..e4dd6dd0e3 100644
+--- a/acb80ca8affbe5497f05ad8210e6dab0a6518d47
++++ b/e4dd6dd0e392c3adac1871cd200f07cc1ab93ae4
+@@ -1,17 +1,14 @@
+ public static TaskUpToDateState create(final TaskInternal task, final TaskExecution previousExecution) {
+-    return new TaskUpToDateState() {
++    return new SimpleUpToDateState() {
+
+-        public void findChanges(Action<? super TaskUpToDateStateChange> messages) {
++        @Override
++        protected void addAllChanges(List<TaskUpToDateChange> changes) {
+             if (previousExecution == null) {
+-                messages.execute(new DescriptiveChange("No history is available for %s.", task));
++                changes.add(new DescriptiveChange("No history is available for %s.", task));
+             }
+         }
+
+-        public boolean isUpToDate() {
+-            return previousExecution != null;
+-        }
+-
+         public void snapshotAfterTask() {
+         }
+     };
+ }
+\ No newline at end of file

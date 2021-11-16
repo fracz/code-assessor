@@ -1,0 +1,24 @@
+diff --git a/c8d7d1b9ab5e89ae198db05450503f0bc85edfa1 b/0fb2cbe0ba5e4843824b5252eb29c660f0773526
+index c8d7d1b9ab..0fb2cbe0ba 100644
+--- a/c8d7d1b9ab5e89ae198db05450503f0bc85edfa1
++++ b/0fb2cbe0ba5e4843824b5252eb29c660f0773526
+@@ -1,17 +1,13 @@
+ @Override
+ public boolean propagateRecord(Record record) {
+     for (LogFilter filter : filters) {
+         boolean match = filter.matches(record);
+         if (match && disjunctiveMode) {
+             return true;
+         }
+         if (!match && !disjunctiveMode) {
+             return false;
+         }
+     }
+-    if (disjunctiveMode) {
+-        return false;
+-    } else {
+-        return true;
+-    }
++    return !disjunctiveMode;
+ }
+\ No newline at end of file

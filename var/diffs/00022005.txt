@@ -1,0 +1,27 @@
+diff --git a/a4b2346393ec657120e867a2e4246fc780a366ae b/e89f81875b2007b630ccd013edd1713c427582f1
+index a4b2346393..e89f81875b 100644
+--- a/a4b2346393ec657120e867a2e4246fc780a366ae
++++ b/e89f81875b2007b630ccd013edd1713c427582f1
+@@ -1,10 +1,19 @@
+ /**
+  * Calls {@link
+  * Listener#onFillReady(FillResponse, AutofillId, AutofillValue)} if the
+  * fill UI is ready to be displayed (i.e. when response and bounds are set).
+  */
+ void maybeCallOnFillReady() {
+-    if (mResponse != null && (mResponse.getAuthentication() != null || mResponse.getDatasets() != null)) {
+-        mListener.onFillReady(mResponse, mId, mAutofillValue);
++    // First try the current response associated with this View.
++    if (mResponse != null) {
++        if (mResponse.getDatasets() != null) {
++            mListener.onFillReady(mResponse, this.id, mCurrentValue);
++        }
++        return;
++    }
++    // Then checks if the session has a response waiting authentication; if so, uses it instead.
++    final FillResponse currentResponse = mSession.getCurrentResponse();
++    if (currentResponse.getAuthentication() != null) {
++        mListener.onFillReady(currentResponse, this.id, mCurrentValue);
+     }
+ }
+\ No newline at end of file

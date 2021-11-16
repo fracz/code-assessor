@@ -1,0 +1,21 @@
+diff --git a/151287b2bdbb6122a688edc033a3e6515a626cee b/3e18ae749c04a13464fa9edcfd1c76b6718bc358
+index 151287b2bd..3e18ae749c 100644
+--- a/151287b2bdbb6122a688edc033a3e6515a626cee
++++ b/3e18ae749c04a13464fa9edcfd1c76b6718bc358
+@@ -1,12 +1,13 @@
+-public static void writeAllSignaturesOfMethod(StringBuilder builder, PsiMethod method, ClassItemGenerator generator) {
++public static void writeAllSignaturesOfMethod(StringBuilder builder, PsiMethod method, ClassItemGenerator generator, boolean genMainMethod) {
+     if (!(method instanceof GrMethod)) {
+         generator.writeMethod(builder, method, 0);
+         builder.append('\n');
+         return;
+     }
+     int count = getOptionalParameterCount((GrMethod) method);
+-    for (int i = 0; i <= count; i++) {
++    final int start = genMainMethod ? 0 : 1;
++    for (int i = start; i <= count; i++) {
+         generator.writeMethod(builder, method, i);
+         builder.append('\n');
+     }
+ }
+\ No newline at end of file

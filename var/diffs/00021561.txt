@@ -1,0 +1,18 @@
+diff --git a/cca0e882831d3c539d5020505b688f2b601e37d2 b/d8d49a80a94e7d2c82b74c3497f154b548c8e7d5
+index cca0e88283..d8d49a80a9 100644
+--- a/cca0e882831d3c539d5020505b688f2b601e37d2
++++ b/d8d49a80a94e7d2c82b74c3497f154b548c8e7d5
+@@ -1,7 +1,8 @@
+-/**
+- * {@inheritDoc}
+- */
+ @Override
+ protected void initializePresenter() {
+-    this.userListPresenter = new UserListPresenter();
++    // All these dependency initialization could have been avoided using a
++    // dependency injection framework. But in this case are used this way for
++    // learning example purpose.
++    GetUserListUseCase getUserListUseCase = new GetUserListUseCaseImpl(null);
++    this.userListPresenter = new UserListPresenter(this, getUserListUseCase);
+ }
+\ No newline at end of file

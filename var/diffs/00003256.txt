@@ -1,0 +1,20 @@
+diff --git a/b35ecd3e591e09a64839015be3c9c085e22fad9f b/b3e4319447535bebaa1a660aeb50cfd0a1cfec21
+index b35ecd3e59..b3e4319447 100644
+--- a/b35ecd3e591e09a64839015be3c9c085e22fad9f
++++ b/b3e4319447535bebaa1a660aeb50cfd0a1cfec21
+@@ -1,13 +1,13 @@
+ public void processInPlaceInjectorsFor(@NotNull PsiElement element, @NotNull InjProcessor processor) {
+     final boolean dumb = myDumbService.isDumb();
+     MultiHostInjector[] infos = cachedInjectors.get(element.getClass());
+     if (infos != null) {
+         for (MultiHostInjector injector : infos) {
+-            if (dumb && !(injector instanceof DumbAware)) {
++            if (dumb && !DumbService.isDumbAware(injector)) {
+                 continue;
+             }
+             if (!processor.process(element, injector))
+                 return;
+         }
+     }
+ }
+\ No newline at end of file

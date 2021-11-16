@@ -1,0 +1,14 @@
+diff --git a/14f637eb6128178f5fabc2e7e432fb051db6910d b/97f945a86809a2fc3f3b3272a888a6bf9ffd30e3
+index 14f637eb61..97f945a868 100644
+--- a/14f637eb6128178f5fabc2e7e432fb051db6910d
++++ b/97f945a86809a2fc3f3b3272a888a6bf9ffd30e3
+@@ -1,5 +1,7 @@
+ public void testDefaults() throws Exception {
+     CodeStyleScheme defaultScheme = myModel.getSelectedScheme();
+-    assertEquals("Default", defaultScheme.getName());
++    assertEquals(CodeStyleScheme.DEFAULT_SCHEME_NAME, defaultScheme.getName());
+     assertEquals(new CodeStyleSettings(), defaultScheme.getCodeStyleSettings());
++    assertFalse(myModel.isSchemeListModified());
++    assertFalse(myModel.isUsePerProjectSettings());
+ }
+\ No newline at end of file

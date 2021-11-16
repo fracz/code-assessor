@@ -1,0 +1,17 @@
+diff --git a/082af251d6badc9e6e160b009c89474e5296b9ed b/89ff0e84f3ef43ea55f2045b25782b22bf0ef200
+index 082af251d6..89ff0e84f3 100644
+--- a/082af251d6badc9e6e160b009c89474e5296b9ed
++++ b/89ff0e84f3ef43ea55f2045b25782b22bf0ef200
+@@ -1,10 +1,10 @@
+ @Override
+ public final void setQueryTimeout(final int seconds) throws SQLException {
+     if (getRoutedStatements().isEmpty()) {
+-        recordMethodInvocation(Statement.class, "setQueryTimeout", new Class[] { int.class }, new Object[] { seconds });
++        recordMethodInvocation(targetClass, "setQueryTimeout", new Class[] { int.class }, new Object[] { seconds });
+         return;
+     }
+     for (Statement each : getRoutedStatements()) {
+         each.setQueryTimeout(seconds);
+     }
+ }
+\ No newline at end of file

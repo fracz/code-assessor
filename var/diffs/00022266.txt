@@ -1,0 +1,12 @@
+diff --git a/083bea7ee206e8a272f84bbde116301bb239de1f b/74dae63725ff41cbdf37cf5078ad5004fafb986a
+index 083bea7ee2..74dae63725 100644
+--- a/083bea7ee206e8a272f84bbde116301bb239de1f
++++ b/74dae63725ff41cbdf37cf5078ad5004fafb986a
+@@ -1,3 +1,4 @@
+-public void createPrinterDiscoverySession(IPrinterDiscoverySessionObserver observer) {
+-    mHandler.obtainMessage(MyHandler.MSG_CREATE_PRINTER_DISCOVERY_SESSION, observer).sendToTarget();
++public void createPrinterDiscoverySession() {
++    Message message = mHandlerCaller.obtainMessage(HandlerCallerCallback.MSG_CREATE_PRINTER_DISCOVERY_SESSION);
++    mHandlerCaller.executeOrSendMessage(message);
+ }
+\ No newline at end of file

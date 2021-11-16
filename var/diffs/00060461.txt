@@ -1,0 +1,16 @@
+diff --git a/1c9650713c28be4ec850c48c5b98f2862fa71f5a b/b7eec9cc182e6b10b59ba901ad0c79f273f4cc43
+index 1c9650713c..b7eec9cc18 100644
+--- a/1c9650713c28be4ec850c48c5b98f2862fa71f5a
++++ b/b7eec9cc182e6b10b59ba901ad0c79f273f4cc43
+@@ -1,7 +1,7 @@
+ @Override
+ public void sessionChanged(Session session) {
+-    if (manualRequestEditorDialog != null) {
+-        manualRequestEditorDialog.clear();
+-        setDefaultMessageToManualRequestEditor();
++    for (Entry<Class<? extends Message>, ManualRequestEditorDialog> dialogue : dialogues.entrySet()) {
++        dialogue.getValue().clear();
++        dialogue.getValue().setDefaultMessage();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/9a8a58f602df2431b5564dd27fb192bd694aefc1 b/f6f4b85fdc45e585608c2758e4963e3d39d68570
+index 9a8a58f602..f6f4b85fdc 100644
+--- a/9a8a58f602df2431b5564dd27fb192bd694aefc1
++++ b/f6f4b85fdc45e585608c2758e4963e3d39d68570
+@@ -1,14 +1,3 @@
+-public void shutdown() {
+-    try {
+-        if (rrdDb != null) {
+-            rrdDb.close();
+-        }
+-        if (graph != null) {
+-            graph.shutdown();
+-        }
+-        log.info("Successfully shutdown database");
+-    } catch (Exception e) {
+-        log.error("Database did not shut down cleanly. Reason [%s]", e.getMessage());
+-        throw new RuntimeException(e);
+-    }
++@Override
++public void shutdown() throws Throwable {
+ }
+\ No newline at end of file

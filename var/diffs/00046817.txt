@@ -1,0 +1,18 @@
+diff --git a/6b1d985f1ab5301d107eff431c847b6fc798ece2 b/33cd8d5d1b3956da5158defa2a714ecc8cc6ab52
+index 6b1d985f1a..33cd8d5d1b 100644
+--- a/6b1d985f1ab5301d107eff431c847b6fc798ece2
++++ b/33cd8d5d1b3956da5158defa2a714ecc8cc6ab52
+@@ -1,11 +1,11 @@
+ private long offer(final Publication publication, final UnsafeBuffer buffer, final int offset, final int length, final long timeout) {
+     final long limit = System.currentTimeMillis() + timeout;
+     long newPosition;
+     while ((newPosition = publication.offer(buffer, offset, length)) < 0) {
+-        LockSupport.parkNanos(1000);
++        LockSupport.parkNanos(TIMEOUT);
+         if (limit < System.currentTimeMillis()) {
+             fail("Offer has timed out");
+         }
+     }
+     return newPosition;
+ }
+\ No newline at end of file

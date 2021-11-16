@@ -1,0 +1,12 @@
+diff --git a/e13d44d62f0ce8c03a7c071e5578aed0f1c44a0d b/168a1739abeabf392188b016b9009e8fa9ebd113
+index e13d44d62f..168a1739ab 100644
+--- a/e13d44d62f0ce8c03a7c071e5578aed0f1c44a0d
++++ b/168a1739abeabf392188b016b9009e8fa9ebd113
+@@ -1,5 +1,4 @@
+ @Test
+ public void getColumnType() throws Exception {
+-    assertEquals(actualMetaData.getColumnType(1), Types.BIGINT);
+-    assertEquals(actualMetaData.getColumnType(2), Types.VARCHAR);
++    assertThat(actualMetaData.getColumnType(1), is(Types.BIGINT));
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/f56642c3bd088da496c9c753557a9c8cdb8b16f1 b/079ac28eb2e76674765621612a241946911ceeaf
+index f56642c3bd..079ac28eb2 100644
+--- a/f56642c3bd088da496c9c753557a9c8cdb8b16f1
++++ b/079ac28eb2e76674765621612a241946911ceeaf
+@@ -1,6 +1,6 @@
+ private void skipHint() {
+     while (isHintBegin()) {
+-        position = scanHint().getEndPosition();
++        position = new Tokenizer(input, dictionary, position).skipHint();
+         skipWhitespace();
+     }
+ }
+\ No newline at end of file

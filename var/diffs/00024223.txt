@@ -1,0 +1,15 @@
+diff --git a/d9a40c8de0bca4a5556808b3afe2fbbadc412a4b b/73b284ad3e0ade47abf37001bf426eaaa8902a26
+index d9a40c8de0..73b284ad3e 100644
+--- a/d9a40c8de0bca4a5556808b3afe2fbbadc412a4b
++++ b/73b284ad3e0ade47abf37001bf426eaaa8902a26
+@@ -1,6 +1,6 @@
+-public ByteBuffer serializeForNativeProtocol(ColumnDefinition def, List<Cell> cells, int version) {
++public ByteBuffer serializeForNativeProtocol(ColumnDefinition def, Iterator<Cell> cells, int version) {
+     assert isMultiCell();
+-    cells = enforceLimit(def, cells, version);
+     List<ByteBuffer> values = serializedValues(cells);
+-    return CollectionSerializer.pack(values, cells.size(), version);
++    int size = enforceLimit(def, values, version);
++    return CollectionSerializer.pack(values, size, version);
+ }
+\ No newline at end of file

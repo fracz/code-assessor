@@ -1,0 +1,21 @@
+diff --git a/2f7a4491bbf5723ff556c02db877668b60ca6be8 b/42ad1ebed83b2c1d91f8ae379fb63002628a0bd4
+index 2f7a4491bb..42ad1ebed8 100644
+--- a/2f7a4491bbf5723ff556c02db877668b60ca6be8
++++ b/42ad1ebed83b2c1d91f8ae379fb63002628a0bd4
+@@ -1,13 +1,10 @@
+ /**
+- * Load a single record by primary key.
++ * Convenience method to load a record by primary key Id.
+  *
+  * @param type the type of this object.
+  * @param id the primary key id of the record to be loaded.
+  * @return <T> object returned by the query.
+  */
+ public static <T extends Model> T load(Class<? extends Model> type, long id) {
+-    final String tableName = ReflectionUtils.getTableName(type);
+-    final String selection = tableName + ".Id=?";
+-    final String[] selectionArgs = new String[] { String.valueOf(id) };
+-    return querySingle(type, false, null, selection, selectionArgs, null, null, null);
++    return new Select().from(type).where("Id=?", id).executeSingle();
+ }
+\ No newline at end of file

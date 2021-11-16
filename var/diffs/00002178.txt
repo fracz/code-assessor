@@ -1,0 +1,20 @@
+diff --git a/16eca484396b44e537d3d0766a0f94e9e6adfe53 b/d9afa3a05a30d9533a3025a6235237708b44f7a8
+index 16eca48439..d9afa3a05a 100644
+--- a/16eca484396b44e537d3d0766a0f94e9e6adfe53
++++ b/d9afa3a05a30d9533a3025a6235237708b44f7a8
+@@ -1,12 +1,5 @@
+ @NotNull
+ private static GitRemote convertRemoteToGitRemote(@NotNull Collection<Url> urls, @NotNull Remote remote) {
+-    Pair<Collection<String>, Collection<String>> substitutedUrls = substituteUrls(urls, remote);
+-    Collection<String> pushUrls;
+-    if (remote.getPushUrls().isEmpty()) {
+-        pushUrls = substitutedUrls.getSecond();
+-    } else {
+-        // explicit pushUrls are not impacted by insteadOf or pushInsteadOf
+-        pushUrls = remote.getPushUrls();
+-    }
+-    return new GitRemote(remote.myName, substitutedUrls.getFirst(), pushUrls, remote.getFetchSpec(), remote.getPushSpec());
++    UrlsAndPushUrls substitutedUrls = substituteUrls(urls, remote);
++    return new GitRemote(remote.myName, substitutedUrls.getUrls(), substitutedUrls.getPushUrls(), remote.getFetchSpec(), remote.getPushSpec());
+ }
+\ No newline at end of file

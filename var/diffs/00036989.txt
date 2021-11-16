@@ -1,0 +1,17 @@
+diff --git a/57fffd9c413fbb146c773dc58dd0de56068b1eb6 b/160988cb28250cacb066346016b2c40675e1d004
+index 57fffd9c41..160988cb28 100644
+--- a/57fffd9c413fbb146c773dc58dd0de56068b1eb6
++++ b/160988cb28250cacb066346016b2c40675e1d004
+@@ -1,8 +1,10 @@
+ private static String getGetInstanceMethodAfterInsertCode() {
+     StringBuilder sb = new StringBuilder();
+     sb.append("{");
+-    // sb.append("System.out.println(\"-----ConnectionImpl.getInstance() method is ended\");");
++    if (logger.isDebugEnabled()) {
++        sb.append("System.out.println(\"-----ConnectionImpl.getInstance() method is ended\");");
++    }
+     sb.append(TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".putConnection(" + TomcatProfilerConstant.REQ_DATA_TYPE_DB_GET_CONNECTION + ",$5);");
+     sb.append("}");
+     return sb.toString();
+ }
+\ No newline at end of file

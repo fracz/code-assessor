@@ -1,0 +1,20 @@
+diff --git a/dbd122d9bd86bb1283379a64f74cbfe0933f14b7 b/e15e62abc51c5579383acd8d8cf53c8ac9d27af5
+index dbd122d9bd..e15e62abc5 100644
+--- a/dbd122d9bd86bb1283379a64f74cbfe0933f14b7
++++ b/e15e62abc51c5579383acd8d8cf53c8ac9d27af5
+@@ -1,11 +1,12 @@
+ @Test
+ public void shouldPointToUnverifiedInvocation() {
+-    Strictly strictly = createStrictOrderVerifier(mock, mockTwo);
++    strictly.verify(mock).simpleMethod(anyInt());
+     strictly.verify(mockTwo).simpleMethod(anyInt());
++    strictly.verify(mock).simpleMethod(anyInt());
+     try {
+         strictly.verify(mockTwo, times(3)).simpleMethod(999);
+         fail();
+-    } catch (InvocationDiffersFromActual e) {
++    } catch (StrictVerificationFailure e) {
+         assertThat(e.getCause(), hasFirstMethodInStackTrace("fourth"));
+     }
+ }
+\ No newline at end of file

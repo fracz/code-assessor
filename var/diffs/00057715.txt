@@ -1,0 +1,41 @@
+diff --git a/4e93bedd0c865f0e898a27581df33e08694b3174 b/a7160c748cc14dc1e74a81a6455f0e8b642b464f
+index 4e93bedd0c..a7160c748c 100644
+--- a/4e93bedd0c865f0e898a27581df33e08694b3174
++++ b/a7160c748cc14dc1e74a81a6455f0e8b642b464f
+@@ -1,27 +1,23 @@
+ public final TregexPattern Child() throws ParseException {
+     TregexPattern child;
+-    switch((jj_ntk == -1) ? jj_ntk_f() : jj_ntk) {
++    switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
+         case 23:
+-            {
+-                jj_consume_token(23);
+-                child = ChildrenDisj();
+-                jj_consume_token(24);
+-                break;
+-            }
++            jj_consume_token(23);
++            child = ChildrenDisj();
++            jj_consume_token(24);
++            break;
+         case RELATION:
+         case REL_W_STR_ARG:
+-            {
+-                child = Relation();
+-                break;
+-            }
++            child = Relation();
++            break;
+         default:
+             jj_la1[15] = jj_gen;
+             jj_consume_token(-1);
+             throw new ParseException();
+     }
+     {
+-        if ("" != null)
++        if (true)
+             return child;
+     }
+     throw new Error("Missing return statement in function");
+ }
+\ No newline at end of file

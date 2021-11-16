@@ -1,0 +1,23 @@
+diff --git a/d0a5751397a31304d14994b352ae45c0e0b921db b/0182659c346bd1fbeeaccce0c408c0d667c0707a
+index d0a5751397..0182659c34 100644
+--- a/d0a5751397a31304d14994b352ae45c0e0b921db
++++ b/0182659c346bd1fbeeaccce0c408c0d667c0707a
+@@ -1,16 +1,14 @@
+ @Override
+ public String toString() {
+     if (display != null) {
+         return display;
+     }
+     HttpMessage msg = null;
+     try {
+         msg = getHttpMessage();
+         display = getDisplay(msg);
+-    } catch (HttpMalformedHeaderException e1) {
+-        display = "";
+-    } catch (DatabaseException e) {
++    } catch (HttpMalformedHeaderException | DatabaseException e1) {
+         display = "";
+     }
+     return display;
+ }
+\ No newline at end of file

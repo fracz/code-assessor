@@ -1,0 +1,24 @@
+diff --git a/254f34e430ccbac2aadafc2758bcc2ab2670fcd0 b/5f6c78e7f2a8bc3ab291f13e26483ac229cd2b01
+index 254f34e430..5f6c78e7f2 100644
+--- a/254f34e430ccbac2aadafc2758bcc2ab2670fcd0
++++ b/5f6c78e7f2a8bc3ab291f13e26483ac229cd2b01
+@@ -1,9 +1,11 @@
+ @Override
+-public boolean removeAll(Collection<?> c) {
+-    RedisConnection<Object, Object> connection = connectionManager.connectionWriteOp();
+-    try {
+-        return connection.srem(getName(), c.toArray()) > 0;
+-    } finally {
+-        connectionManager.releaseWrite(connection);
+-    }
++public boolean removeAll(final Collection<?> c) {
++    Long res = connectionManager.write(new ResultOperation<Long, Object>() {
++
++        @Override
++        public Future<Long> execute(RedisAsyncConnection<Object, Object> async) {
++            return async.srem(getName(), c.toArray());
++        }
++    });
++    return res > 0;
+ }
+\ No newline at end of file

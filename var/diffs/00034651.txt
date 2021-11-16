@@ -1,0 +1,12 @@
+diff --git a/dc3883ce0abbb51ef222d0b2fc77edea5a1d2f0b b/2641686819b82f007db256ac1d53513852dd472a
+index dc3883ce0a..2641686819 100644
+--- a/dc3883ce0abbb51ef222d0b2fc77edea5a1d2f0b
++++ b/2641686819b82f007db256ac1d53513852dd472a
+@@ -1,3 +1,5 @@
+ FileOutputStream newOutputStream(int index) throws IOException {
+-    return new FileOutputStream(temps[index]);
++    if (outs[index] == null)
++        outs[index] = new FileOutputStream(temps[index]);
++    return outs[index];
+ }
+\ No newline at end of file

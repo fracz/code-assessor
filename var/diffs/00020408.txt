@@ -1,0 +1,25 @@
+diff --git a/5fa7b822f84341f1bb249fac5412ed2f6e29be3d b/73f78ff6d2a50b6800ce1c0e8955cb111bf7aa58
+index 5fa7b822f8..73f78ff6d2 100644
+--- a/5fa7b822f84341f1bb249fac5412ed2f6e29be3d
++++ b/73f78ff6d2a50b6800ce1c0e8955cb111bf7aa58
+@@ -1,17 +1,17 @@
+ private void printSQLPartitions(List<SQLPartition> partitions) {
+     int partitionsSize = partitions.size();
+     if (partitionsSize > 0) {
+         print0(" (");
+-        incrementIndent();
++        this.indentCount++;
+         for (int i = 0; i < partitionsSize; ++i) {
+             println();
+             partitions.get(i).accept(this);
+             if (i != partitionsSize - 1) {
+                 print0(", ");
+             }
+         }
+-        decrementIndent();
++        this.indentCount--;
+         println();
+         print(')');
+     }
+ }
+\ No newline at end of file

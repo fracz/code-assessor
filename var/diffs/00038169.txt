@@ -1,0 +1,13 @@
+diff --git a/e900d796a74b7dd90babd35d8d293c060b5f22e1 b/20489f120fd9daf20224707d2666a8a64124b4e1
+index e900d796a7..20489f120f 100644
+--- a/e900d796a74b7dd90babd35d8d293c060b5f22e1
++++ b/20489f120fd9daf20224707d2666a8a64124b4e1
+@@ -1,6 +1,6 @@
+ @Test
+ public void shouldAskForConsistencyCheckIfSpecified() throws Exception {
+     execute("--check-consistency=true", backupDir(), "--name=mybackup");
+     verify(backupService).doFullBackup(any(), anyInt(), any(), any(), any(), anyLong(), anyBoolean());
+-    verify(consistencyCheckService).runFullConsistencyCheck(any(), any(), any(), any(), any(), anyBoolean(), eq(new File(".").getCanonicalFile()), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean());
++    verify(consistencyCheckService).runFullConsistencyCheck(any(), any(), any(), any(), any(), anyBoolean(), eq(new File(".").getCanonicalFile()), any(CheckConsistencyConfig.class));
+ }
+\ No newline at end of file

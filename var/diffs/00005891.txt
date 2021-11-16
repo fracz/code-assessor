@@ -1,0 +1,22 @@
+diff --git a/03df552afb260f0e11992e6022b8a6645139c841 b/9f4bcee80906e86adeeb30b23b44f09488a3b94b
+index 03df552afb..9f4bcee809 100644
+--- a/03df552afb260f0e11992e6022b8a6645139c841
++++ b/9f4bcee80906e86adeeb30b23b44f09488a3b94b
+@@ -1,11 +1,14 @@
+ private static BuildType convertCompileType(JpsRemoteProto.Message.Request.CompilationRequest.Type compileType) {
+     switch(compileType) {
+         case CLEAN:
+             return BuildType.CLEAN;
+         case MAKE:
+             return BuildType.MAKE;
+         case REBUILD:
+-            return BuildType.REBUILD;
++            return BuildType.PROJECT_REBUILD;
++        case FORCED_COMPILATION:
++            return BuildType.FORCED_COMPILATION;
+     }
+-    return null;
++    // use make by default
++    return BuildType.MAKE;
+ }
+\ No newline at end of file

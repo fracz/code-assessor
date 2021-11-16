@@ -1,0 +1,13 @@
+diff --git a/ed1b6e9e9df120c01bec0cb305e5bea060d5c5b0 b/f11df64d76ef0f78fabee58b34b4cb98bf0e1dea
+index ed1b6e9e9d..f11df64d76 100644
+--- a/ed1b6e9e9df120c01bec0cb305e5bea060d5c5b0
++++ b/f11df64d76ef0f78fabee58b34b4cb98bf0e1dea
+@@ -1,3 +1,6 @@
++/**
++ * Warning: This method only works for stores where there is no database running!
++ */
+ public static long getTxId(FileSystemAbstraction fs, File neoStore) {
+-    return getRecord(fs, neoStore, 3);
++    return getRecord(fs, neoStore, LATEST_TX_POSITION);
+ }
+\ No newline at end of file

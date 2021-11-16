@@ -1,0 +1,14 @@
+diff --git a/ee0175839d114c7ab74ab34654f8d29b73024c77 b/a1c1d3994b84bfc96fe7211c35e78b2af26fcda7
+index ee0175839d..a1c1d3994b 100644
+--- a/ee0175839d114c7ab74ab34654f8d29b73024c77
++++ b/a1c1d3994b84bfc96fe7211c35e78b2af26fcda7
+@@ -1,7 +1,6 @@
+ @Override
+ public Object execute(ExecutionEvent event) throws ExecutionException {
+     final Shell activeShell = HandlerUtil.getActiveShell(event);
+-    PendingTransactionsDialog dialog = new PendingTransactionsDialog(activeShell);
+-    dialog.open();
++    PendingTransactionsDialog.showDialog(activeShell);
+     return null;
+ }
+\ No newline at end of file

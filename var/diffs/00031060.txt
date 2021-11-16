@@ -1,0 +1,15 @@
+diff --git a/35ecc7585bdf9a733335ca31de3c8ddfd47f56fd b/db94b9a7b5dc021fd2caac3fb8347ecd05859a4b
+index 35ecc7585b..db94b9a7b5 100644
+--- a/35ecc7585bdf9a733335ca31de3c8ddfd47f56fd
++++ b/db94b9a7b5dc021fd2caac3fb8347ecd05859a4b
+@@ -1,7 +1,8 @@
+ @Override
+ public void onValue(int docId, double value) {
++    valueScript.setNextDocId(docId);
+     long bucket = bucket(value, interval);
+     counts.adjustOrPutValue(bucket, 1, 1);
+-    double scriptValue = ((Number) valueScript.execute(docId)).doubleValue();
++    double scriptValue = valueScript.runAsDouble();
+     totals.adjustOrPutValue(bucket, scriptValue, scriptValue);
+ }
+\ No newline at end of file

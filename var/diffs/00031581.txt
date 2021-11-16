@@ -1,0 +1,27 @@
+diff --git a/dd14556300ac8677976ea4eccf6c298220fa931d b/80be31fd450ad3f21e56ea992938a32573a375be
+index dd14556300..80be31fd45 100644
+--- a/dd14556300ac8677976ea4eccf6c298220fa931d
++++ b/80be31fd450ad3f21e56ea992938a32573a375be
+@@ -1,15 +1,18 @@
+ /**
+  * Like or unlike a post
+  *
+  * @param post_id
+  * @param val if the action should be a like (true) or an unlike (false)
+  */
+ public void like(final String post_id, final boolean val) {
+-    String method = val ? "POST" : "DELETE";
+-    getFb().request(post_id + "/likes", method, new Bundle(), new ApiRequestListener() {
++    Bundle params = new Bundle();
++    if (!val) {
++        params.putString("method", "delete");
++    }
++    getFb().request(post_id + "/likes", new Bundle(), "POST", new AsyncRequestListener() {
+
+-        public void onRequestSucceed(JSONObject response) {
++        public void onComplete(JSONObject response) {
+             callJs("javascript:onLike('" + post_id + "'," + val + ")");
+         }
+     });
+ }
+\ No newline at end of file

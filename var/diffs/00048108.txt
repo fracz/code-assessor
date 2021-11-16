@@ -1,0 +1,13 @@
+diff --git a/2008c77e3349a9f87bc2536a9289aa6fedfc873e b/ead3922619a48264bbb0742ba25d8ca03649d807
+index 2008c77e33..ead3922619 100644
+--- a/2008c77e3349a9f87bc2536a9289aa6fedfc873e
++++ b/ead3922619a48264bbb0742ba25d8ca03649d807
+@@ -1,4 +1,6 @@
+ @Override
+ public DBEPersistAction[] getPersistActions() {
+-    return makeStructObjectCreateActions(this);
++    List<DBEPersistAction> actions = new ArrayList<>();
++    addStructObjectCreateActions(actions, this);
++    return actions.toArray(new DBEPersistAction[actions.size()]);
+ }
+\ No newline at end of file

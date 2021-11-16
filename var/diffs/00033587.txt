@@ -1,0 +1,17 @@
+diff --git a/77a3c2b1d1ac3a846e7698c5edff361566ee86bb b/7864dd80a8687060330bbda1936cc2fa3bbfd4ff
+index 77a3c2b1d1..7864dd80a8 100644
+--- a/77a3c2b1d1ac3a846e7698c5edff361566ee86bb
++++ b/7864dd80a8687060330bbda1936cc2fa3bbfd4ff
+@@ -1,8 +1,10 @@
+ public void build(BuildIdentifier requestingBuild, ComponentArtifactMetadata artifact) {
+     if (artifact instanceof CompositeProjectComponentArtifactMetadata) {
+         CompositeProjectComponentArtifactMetadata compositeBuildArtifact = (CompositeProjectComponentArtifactMetadata) artifact;
+         BuildIdentifier targetBuild = getBuildIdentifier(compositeBuildArtifact);
+-        includedBuildTaskGraph.addTasks(requestingBuild, targetBuild, compositeBuildArtifact.getTasks());
++        for (String taskName : compositeBuildArtifact.getTasks()) {
++            includedBuildTaskGraph.addTask(requestingBuild, targetBuild, taskName);
++        }
+         execute(targetBuild);
+     }
+ }
+\ No newline at end of file

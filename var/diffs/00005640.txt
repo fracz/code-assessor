@@ -1,0 +1,18 @@
+diff --git a/ca2b0ebdebcce3c1ea6906dbafb532ea02b60368 b/dfa0842e5a4028ac4975f21175d61c6c2f2075ef
+index ca2b0ebdeb..dfa0842e5a 100644
+--- a/ca2b0ebdebcce3c1ea6906dbafb532ea02b60368
++++ b/dfa0842e5a4028ac4975f21175d61c6c2f2075ef
+@@ -1,10 +1,10 @@
+ @Test
+ public void testKeepingIdOnOnRestoringDeletedDirectoryWithContent() {
+-    root.createDirectory(1, "dir");
+-    root.createFile(2, "dir/file", null, -1);
++    createDirectory(root, 1, "dir");
++    createFile(root, 2, "dir/file", null, -1);
+     Change c = new DeleteChange("dir");
+     c.applyTo(root);
+     c.revertOn(root);
+     assertEquals(1, root.getEntry("dir").getId());
+     assertEquals(2, root.getEntry("dir/file").getId());
+ }
+\ No newline at end of file

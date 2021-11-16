@@ -1,0 +1,27 @@
+diff --git a/dc37228d0d936c2d5d03e921f11808442af71979 b/267ab46e086d17d8146c4caad8305db18517bbb1
+index dc37228d0d..267ab46e08 100644
+--- a/dc37228d0d936c2d5d03e921f11808442af71979
++++ b/267ab46e086d17d8146c4caad8305db18517bbb1
+@@ -1,18 +1,16 @@
+ @Override
+ public boolean containsKey(ByteBuffer key, StoreTransaction txh) throws StorageException {
+-    byte[] keyBytes = toArray(key);
+-    Get g = new Get(keyBytes);
+-    g.addFamily(columnFamilyBytes);
++    byte[] keyBytes = ByteBufferUtil.getArray(key);
++    Get g = new Get(keyBytes).addFamily(columnFamilyBytes);
+     try {
+         HTableInterface table = null;
+         try {
+             table = pool.getTable(tableName);
+             return table.exists(g);
+         } finally {
+-            if (null != table)
+-                table.close();
++            IOUtils.closeQuietly(table);
+         }
+     } catch (IOException e) {
+         throw new TemporaryStorageException(e);
+     }
+ }
+\ No newline at end of file

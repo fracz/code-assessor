@@ -1,0 +1,22 @@
+diff --git a/cfdbc35cf88bf996881618ea10fc86a2c548d0ef b/31d7956ff7a5ee9a8564e5f42f08247a2a62ede4
+index cfdbc35cf8..31d7956ff7 100644
+--- a/cfdbc35cf88bf996881618ea10fc86a2c548d0ef
++++ b/31d7956ff7a5ee9a8564e5f42f08247a2a62ede4
+@@ -1,11 +1,12 @@
+-private CommandComplete doRunWithLogging(Connection<Object> connection, Stoppable serverControl, ExecutionListener executionListener) {
++private CommandComplete doRunWithLogging(Connection<Object> connection, Stoppable serverControl) {
+     Command command = (Command) connection.receive();
+     try {
+-        return doRunWithExceptionHandling(command, serverControl, executionListener);
++        return doRunWithExceptionHandling(command, serverControl);
++    } catch (ReportedException e) {
++        throw e;
+     } catch (Throwable throwable) {
+         BuildExceptionReporter exceptionReporter = new BuildExceptionReporter(loggingServices.get(StyledTextOutputFactory.class), new StartParameter(), command.getClientMetaData());
+         exceptionReporter.reportException(throwable);
+-        executionListener.onFailure(throwable);
+-        return null;
++        throw new ReportedException(throwable);
+     }
+ }
+\ No newline at end of file

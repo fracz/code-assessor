@@ -1,0 +1,12 @@
+diff --git a/20f0b19e272f9b2b8ee569f42c60b53fa766cdf8 b/ded796fa06aac7b74f97022457ae324523312d64
+index 20f0b19e27..ded796fa06 100644
+--- a/20f0b19e272f9b2b8ee569f42c60b53fa766cdf8
++++ b/ded796fa06aac7b74f97022457ae324523312d64
+@@ -1,4 +1,4 @@
+ @Override
+-public PropertyConstraintRule writeNodePropertyExistenceConstraint(long ruleId, int label, int propertyKey) throws CreateConstraintFailureException {
+-    throw propertyExistenceConstraintsNotAllowed(new NodePropertyExistenceConstraint(label, propertyKey));
++public PropertyConstraintRule writeNodePropertyExistenceConstraint(long ruleId, NodePropertyDescriptor descriptor) throws CreateConstraintFailureException {
++    throw propertyExistenceConstraintsNotAllowed(new NodePropertyExistenceConstraint(descriptor));
+ }
+\ No newline at end of file

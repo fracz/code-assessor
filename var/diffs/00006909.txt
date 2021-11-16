@@ -1,0 +1,23 @@
+diff --git a/7bb61798c1d07fc3a2a18f6e5368c83a901e865d b/809e11b43fbc164cc2f7428c8b296817ad4f40c1
+index 7bb61798c1..809e11b43f 100644
+--- a/7bb61798c1d07fc3a2a18f6e5368c83a901e865d
++++ b/809e11b43fbc164cc2f7428c8b296817ad4f40c1
+@@ -1,13 +1,10 @@
+ private static boolean definesRun(PsiAnonymousClass aClass) {
+-    final PsiMethod[] methods = aClass.getMethods();
++    final PsiMethod[] methods = aClass.findMethodsByName(HardcodedMethodConstants.RUN, false);
+     for (final PsiMethod method : methods) {
+-        final String methodName = method.getName();
+-        if (HardcodedMethodConstants.RUN.equals(methodName)) {
+-            final PsiParameterList parameterList = method.getParameterList();
+-            if (parameterList.getParametersCount() == 0) {
+-                return true;
+-            }
++        final PsiParameterList parameterList = method.getParameterList();
++        if (parameterList.getParametersCount() == 0) {
++            return true;
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/009d1c1f2277439f5e7bae66ba90ef68f446cae0 b/667ed5d1754c14fce23b209a99f33f727f482e64
+index 009d1c1f22..667ed5d175 100644
+--- a/009d1c1f2277439f5e7bae66ba90ef68f446cae0
++++ b/667ed5d1754c14fce23b209a99f33f727f482e64
+@@ -1,7 +1,3 @@
+ public int getConvSendEnabledColor() {
+-    if (convSendEnabledColor != 0) {
+-        return convSendEnabledColor;
+-    } else {
+-        return getMainColor();
+-    }
++    return getColorWithFallback(convSendEnabledColor, getMainColor());
+ }
+\ No newline at end of file

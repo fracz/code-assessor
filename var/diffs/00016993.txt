@@ -1,0 +1,14 @@
+diff --git a/b06667ad2cec71f7047ef262d8840ccb47700ceb b/f88f292163daf157c01cf5013f4a62999a0181c5
+index b06667ad2c..f88f292163 100644
+--- a/b06667ad2cec71f7047ef262d8840ccb47700ceb
++++ b/f88f292163daf157c01cf5013f4a62999a0181c5
+@@ -1,4 +1,7 @@
+ protected void translateFiles(@NotNull List<JetFile> jetFiles, @NotNull File outputFile, @NotNull MainCallParameters mainCallParameters, @NotNull Config config) throws Exception {
+     // noinspection unchecked
+-    TranslationUtils.translateFiles(mainCallParameters, jetFiles, outputFile, null, null, config, Consumer.EMPTY_CONSUMER);
++    OutputFileCollection outputFiles = translateWithMainCallParameters(mainCallParameters, jetFiles, outputFile, getOutputPrefixFile(), getOutputPostfixFile(), config, getConsumer());
++    File outputDir = outputFile.getParentFile();
++    assert outputDir != null : "Parent file for output file should not be null, outputFilePath: " + outputFile.getPath();
++    OutputUtilsPackage.writeAllTo(outputFiles, outputDir);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/dc01f32c502a586891736db65f2d718fe5b9f600 b/fb9031d035798a8a8b484c6412bd2c36b0eec06e
+index dc01f32c50..fb9031d035 100644
+--- a/dc01f32c502a586891736db65f2d718fe5b9f600
++++ b/fb9031d035798a8a8b484c6412bd2c36b0eec06e
+@@ -1,9 +1,9 @@
+ public static void pushIntIntMap(TIntIntHashMap map) {
+     Queue<TIntIntHashMap> ref = intIntHashMap.get();
+     if (ref == null) {
+-        ref = new LinkedTransferQueue<TIntIntHashMap>();
++        ref = ConcurrentCollections.newQueue();
+         intIntHashMap.set(ref);
+     }
+     map.clear();
+     ref.add(map);
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/266c28da89e03fdb9ecc73ffb3369a85cfd21bcd b/bac7febe66b726e818b0c4f277b3315638d47908
+index 266c28da89..bac7febe66 100644
+--- a/266c28da89e03fdb9ecc73ffb3369a85cfd21bcd
++++ b/bac7febe66b726e818b0c4f277b3315638d47908
+@@ -1,7 +1,7 @@
+ public void update(AnActionEvent e) {
+     super.update(e);
+     final DataContext dataContext = e.getDataContext();
+-    final Project project = (Project) dataContext.getData(DataConstants.PROJECT);
+-    final Module module = (Module) dataContext.getData(DataConstants.MODULE_CONTEXT);
++    final Project project = PlatformDataKeys.PROJECT.getData(dataContext);
++    final Module module = LangDataKeys.MODULE_CONTEXT.getData(dataContext);
+     e.getPresentation().setVisible(project != null && module != null);
+ }
+\ No newline at end of file

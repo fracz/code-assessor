@@ -1,0 +1,19 @@
+diff --git a/06f2de3672dcf0be2bc3307afa0e690f8caec96b b/2c66e021f41bc0acd85781891c81179e73e255fd
+index 06f2de3672..2c66e021f4 100644
+--- a/06f2de3672dcf0be2bc3307afa0e690f8caec96b
++++ b/2c66e021f41bc0acd85781891c81179e73e255fd
+@@ -1,8 +1,9 @@
+ private void handleSelectionFinished() {
+-    PushContactSelectionListFragment contactsFragment = (PushContactSelectionListFragment) getSupportFragmentManager().findFragmentById(R.id.contact_selection_list_fragment);
+-    List<ContactData> contacts = contactsFragment.getSelectedContacts();
+-    Intent resultIntent = getIntent();
+-    resultIntent.putParcelableArrayListExtra("contacts", new ArrayList<ContactData>(contacts));
++    final Intent resultIntent = getIntent();
++    final List<ContactData> selectedContacts = contactsFragment.getSelectedContacts();
++    if (selectedContacts != null) {
++        resultIntent.putParcelableArrayListExtra("contacts", new ArrayList<ContactData>(contactsFragment.getSelectedContacts()));
++    }
+     setResult(RESULT_OK, resultIntent);
+     finish();
+ }
+\ No newline at end of file

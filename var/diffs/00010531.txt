@@ -1,0 +1,12 @@
+diff --git a/aa9e200572b35e9068abd81083ace233dab97bfa b/98a3f9d4a969f3d2a165125dc19d596123f86be8
+index aa9e200572..98a3f9d4a9 100644
+--- a/aa9e200572b35e9068abd81083ace233dab97bfa
++++ b/98a3f9d4a969f3d2a165125dc19d596123f86be8
+@@ -1,4 +1,5 @@
+ public void updatePeriod() {
+     myPeriod++;
+-    myPeriod -= 8 * (myPeriod / 8);
++    myPeriod %= 12;
++    myModel.nodeChanged(this);
+ }
+\ No newline at end of file

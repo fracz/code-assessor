@@ -1,0 +1,22 @@
+diff --git a/82adaf2e0ebd615129a566d3db50ff073154fa1b b/e543c47f29c2718850971141b76a53575e623d0d
+index 82adaf2e0e..e543c47f29 100644
+--- a/82adaf2e0ebd615129a566d3db50ff073154fa1b
++++ b/e543c47f29c2718850971141b76a53575e623d0d
+@@ -1,14 +1,14 @@
+ /**
+  * Attribute level. Zero based
+  * @return attribute level (depth)
+  */
+ public int getLevel() {
+-    if (parent == null) {
++    if (getParentObject() == null) {
+         return 0;
+     }
+     int level = 0;
+-    for (DBDAttributeBinding binding = parent; binding != null; binding = binding.parent) {
++    for (DBDAttributeBinding binding = getParentObject(); binding != null; binding = binding.getParentObject()) {
+         level++;
+     }
+     return level;
+ }
+\ No newline at end of file

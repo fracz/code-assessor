@@ -1,0 +1,18 @@
+diff --git a/25e161e24cb03a418aca9886009d52ae64579c2c b/72460ce324dcbd1c5204599409d61d6b9107ba17
+index 25e161e24c..72460ce324 100644
+--- a/25e161e24cb03a418aca9886009d52ae64579c2c
++++ b/72460ce324dcbd1c5204599409d61d6b9107ba17
+@@ -1,11 +1,5 @@
+ public void test_oracle_union_0() throws Exception {
+     String sql = "select id, name from t1 union select id, name from t2 order by id";
+     String result = PagerUtils.count(sql, JdbcConstants.ORACLE);
+-    Assert.assertEquals(//
+-    "SELECT COUNT(*)\n" + //
+-    "FROM (SELECT id, name" + //
+-    "\n\tFROM t1" + //
+-    "\n\tUNION" + //
+-    "\n\tSELECT id, name" + //
+-    "\n\tFROM t2" + "\n\t) ALIAS_COUNT", result);
++    Assert.assertEquals("SELECT COUNT(*)\n" + "FROM (\n" + "\tSELECT id, name\n" + "\tFROM t1\n" + "\tUNION\n" + "\tSELECT id, name\n" + "\tFROM t2\n" + ") ALIAS_COUNT", result);
+ }
+\ No newline at end of file

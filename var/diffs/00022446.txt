@@ -1,0 +1,33 @@
+diff --git a/f2965d4564c8a9453bad86ff95a0eb30eaf9e1ee b/39c6172fe46ef69c473d41263dc6f2e6b49914bf
+index f2965d4564..39c6172fe4 100644
+--- a/f2965d4564c8a9453bad86ff95a0eb30eaf9e1ee
++++ b/39c6172fe46ef69c473d41263dc6f2e6b49914bf
+@@ -1,14 +1,19 @@
+ /**
+  * Clears the state of this instance.
+  */
+-@Override
+-protected void clear() {
+-    super.clear();
++private void clear() {
+     mEventType = 0;
+-    mPackageName = null;
++    mBooleanProperties = 0;
++    mCurrentItemIndex = INVALID_POSITION;
++    mItemCount = 0;
++    mFromIndex = 0;
++    mAddedCount = 0;
++    mRemovedCount = 0;
+     mEventTime = 0;
+-    while (!mRecords.isEmpty()) {
+-        AccessibilityRecord record = mRecords.remove(0);
+-        record.recycle();
+-    }
++    mClassName = null;
++    mPackageName = null;
++    mContentDescription = null;
++    mBeforeText = null;
++    mParcelableData = null;
++    mText.clear();
+ }
+\ No newline at end of file

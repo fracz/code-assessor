@@ -1,0 +1,25 @@
+diff --git a/16c49b0317c92e10689e3cf97886c8ede69fb365 b/827c52306c8dd8a88ebee282b3106ed1c03e4e13
+index 16c49b0317..827c52306c 100644
+--- a/16c49b0317c92e10689e3cf97886c8ede69fb365
++++ b/827c52306c8dd8a88ebee282b3106ed1c03e4e13
+@@ -1,13 +1,13 @@
+ @Override
+-public void updateParameters(List<String> parameters) {
++public void updateParameters(@NotNull Command command) {
+     if (myAuthentication instanceof SVNPasswordAuthentication) {
+         SVNPasswordAuthentication auth = (SVNPasswordAuthentication) myAuthentication;
+-        parameters.add("--username");
+-        parameters.add(auth.getUserName());
+-        parameters.add("--password");
+-        parameters.add(auth.getPassword());
++        command.put("--username");
++        command.put(auth.getUserName());
++        command.put("--password");
++        command.put(auth.getPassword());
+         if (!auth.isStorageAllowed()) {
+-            parameters.add("--no-auth-cache");
++            command.put("--no-auth-cache");
+         }
+     }
+ }
+\ No newline at end of file

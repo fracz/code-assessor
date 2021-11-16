@@ -1,0 +1,11 @@
+diff --git a/20384822dd459273bb128763ef87d84859afccb8 b/a4380bf6c6777a83d7acf895d2ab1b61996face8
+index 20384822dd..a4380bf6c6 100644
+--- a/20384822dd459273bb128763ef87d84859afccb8
++++ b/a4380bf6c6777a83d7acf895d2ab1b61996face8
+@@ -1,3 +1,3 @@
+-public RunProfileState getState(DataContext dataContext, Executor executor, RunnerSettings runnerSettings, ConfigurationPerRunnerSettings configurationPerRunnerSettings) {
+-    return new TestNGRunnableState(runnerSettings, configurationPerRunnerSettings, this);
++public RunProfileState getState(@NotNull final Executor executor, @NotNull final ExecutionEnvironment env) throws ExecutionException {
++    return new TestNGRunnableState(env, this);
+ }
+\ No newline at end of file

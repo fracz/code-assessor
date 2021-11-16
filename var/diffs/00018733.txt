@@ -1,0 +1,24 @@
+diff --git a/7357de45aba6f1cefc485e3910df8ebe7de78799 b/97886583b62e41e05a6ca170c1870e26dd8196fc
+index 7357de45ab..97886583b6 100644
+--- a/7357de45aba6f1cefc485e3910df8ebe7de78799
++++ b/97886583b62e41e05a6ca170c1870e26dd8196fc
+@@ -1,16 +1,16 @@
+ @Override
+ protected Integer doInBackground(Void... params) {
+     try {
+         Context context = getActivity();
+         TextSecureAccountManager accountManager = TextSecureCommunicationFactory.createManager(context);
+         accountManager.setGcmId(Optional.<String>absent());
+         GoogleCloudMessaging.getInstance(context).unregister();
+         return SUCCESS;
+     } catch (AuthorizationFailedException afe) {
+-        Log.w("ApplicationPreferencesActivity", afe);
++        Log.w(TAG, afe);
+         return SUCCESS;
+     } catch (IOException ioe) {
+-        Log.w("ApplicationPreferencesActivity", ioe);
++        Log.w(TAG, ioe);
+         return NETWORK_ERROR;
+     }
+ }
+\ No newline at end of file

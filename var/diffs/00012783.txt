@@ -1,0 +1,24 @@
+diff --git a/28c640ae0f986853756ce207dccc69e346df42ba b/9ce2f0791d6d6d81271237d5d5480e61e68d5ab0
+index 28c640ae0f..9ce2f0791d 100644
+--- a/28c640ae0f986853756ce207dccc69e346df42ba
++++ b/9ce2f0791d6d6d81271237d5d5480e61e68d5ab0
+@@ -1,13 +1,8 @@
+ public void unregisterVcs(AbstractVcs vcs) {
+-    if (myActiveVcss.contains(vcs)) {
+-        vcs.deactivate();
+-        myActiveVcss.remove(vcs);
++    if ((!ApplicationManager.getApplication().isUnitTestMode()) && (myMappings.haveActiveVcs(vcs.getName()))) {
++        // unlikely
++        LOG.warn("Active vcs '" + vcs.getName() + "' is being unregistered. Remove from mappings first.");
+     }
+-    try {
+-        vcs.shutdown();
+-    } catch (VcsException e) {
+-        LOG.info(e);
+-    }
+-    myVcss.remove(vcs);
+-    myCachedVCSs = null;
++    myMappings.beingUnregistered(vcs.getName());
++    myAllVcsesI.unregisterManually(vcs);
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/9fe15ee7a21b9ceed395c8d28f43d2c620b4312b b/0f7930f8f511c9cc8b18598254e054e898ae4a66
+index 9fe15ee7a2..0f7930f8f5 100644
+--- a/9fe15ee7a21b9ceed395c8d28f43d2c620b4312b
++++ b/0f7930f8f511c9cc8b18598254e054e898ae4a66
+@@ -1,11 +1,11 @@
+-private static List<JSType> fixLengthOfTypeList(int desiredLength, List<JSType> typeList) {
++private List<JSType> fixLengthOfTypeList(int desiredLength, List<JSType> typeList) {
+     int length = typeList.size();
+     if (length == desiredLength) {
+         return typeList;
+     }
+     ImmutableList.Builder<JSType> builder = ImmutableList.builder();
+     for (int i = 0; i < desiredLength; i++) {
+-        builder.add(i < length ? typeList.get(i) : JSType.UNKNOWN);
++        builder.add(i < length ? typeList.get(i) : this.commonTypes.UNKNOWN);
+     }
+     return builder.build();
+ }
+\ No newline at end of file

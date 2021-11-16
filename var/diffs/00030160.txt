@@ -1,0 +1,12 @@
+diff --git a/421d22320c1626b45c4b99eee5d54c80cc736164 b/573d664a1f4171ce3b9cb5301c127d0a90b8af8c
+index 421d22320c..573d664a1f 100644
+--- a/421d22320c1626b45c4b99eee5d54c80cc736164
++++ b/573d664a1f4171ce3b9cb5301c127d0a90b8af8c
+@@ -1,4 +1,4 @@
+ @Override
+-protected void shardOperationOnReplica(ReplicaOperationRequest shardRequest) {
+-    shardRequest.request.processedOnReplicas.incrementAndGet();
++protected void shardOperationOnReplica(ShardId shardId, Request request) {
++    request.processedOnReplicas.incrementAndGet();
+ }
+\ No newline at end of file

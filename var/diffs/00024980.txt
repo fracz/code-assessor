@@ -1,0 +1,25 @@
+diff --git a/25283f50f6f9bf71de82a642afa13a9490d3ceff b/a1b7282539ee5c3a500b32c63777d4bd967096c0
+index 25283f50f6..a1b7282539 100644
+--- a/25283f50f6f9bf71de82a642afa13a9490d3ceff
++++ b/a1b7282539ee5c3a500b32c63777d4bd967096c0
+@@ -1,18 +1,18 @@
+ /**
+  * Put a packet to the data queue
+  *
+  * @param packet the packet to be put into the data queued
+  */
+ void queuePacket(DFSPacket packet) {
+     synchronized (dataQueue) {
+         if (packet == null)
+             return;
+         packet.addTraceParent(Trace.currentSpan());
+         dataQueue.addLast(packet);
+         lastQueuedSeqno = packet.getSeqno();
+         if (LOG.isDebugEnabled()) {
+-            LOG.debug("Queued packet " + packet.getSeqno());
++            LOG.debug("Queued " + packet + ", " + this);
+         }
+         dataQueue.notifyAll();
+     }
+ }
+\ No newline at end of file

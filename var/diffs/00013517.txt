@@ -1,0 +1,16 @@
+diff --git a/53770e556d89bbf626ae01f78e67ea4c72b7f4a2 b/7bc5b4ac5b028536900133368ad4709ba14e6f16
+index 53770e556d..7bc5b4ac5b 100644
+--- a/53770e556d89bbf626ae01f78e67ea4c72b7f4a2
++++ b/7bc5b4ac5b028536900133368ad4709ba14e6f16
+@@ -1,7 +1,7 @@
+-public RunProfileState getState(final DataContext context, final Executor executor, RunnerSettings runnerSettings, ConfigurationPerRunnerSettings configurationSettings) {
+-    GenericDebuggerRunnerSettings debuggerSettings = ((GenericDebuggerRunnerSettings) runnerSettings.getData());
++public RunProfileState getState(@NotNull final Executor executor, @NotNull final ExecutionEnvironment env) throws ExecutionException {
++    GenericDebuggerRunnerSettings debuggerSettings = ((GenericDebuggerRunnerSettings) env.getRunnerSettings().getData());
+     debuggerSettings.LOCAL = false;
+     debuggerSettings.setDebugPort(USE_SOCKET_TRANSPORT ? PORT : SHMEM_ADDRESS);
+     debuggerSettings.setTransport(USE_SOCKET_TRANSPORT ? DebuggerSettings.SOCKET_TRANSPORT : DebuggerSettings.SHMEM_TRANSPORT);
+-    return new RemoteStateState(getProject(), createRemoteConnection(), runnerSettings, configurationSettings);
++    return new RemoteStateState(getProject(), createRemoteConnection(), env.getRunnerSettings(), env.getConfigurationSettings());
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/c3b91a0b5cf1e8b6b8ed6c3d682e52e769b79900 b/af74b3b204f5449f4124a662aba57cc19c0210de
+index c3b91a0b5c..af74b3b204 100644
+--- a/c3b91a0b5cf1e8b6b8ed6c3d682e52e769b79900
++++ b/af74b3b204f5449f4124a662aba57cc19c0210de
+@@ -1,5 +1,5 @@
+ private static ReadCommand namesQuery(String key, String... names) {
+-    SortedSet<CellName> s = new TreeSet<CellName>(cfs().metadata.comparator);
+-    for (String name : names) s.add(CellNames.simpleDense(bytes(name)));
+-    return new SliceByNamesReadCommand(KEYSPACE1, bytes(key), CF_STANDARD, System.currentTimeMillis(), new NamesQueryFilter(s, true));
++    AbstractReadCommandBuilder builder = Util.cmd(cfs(), key);
++    for (String name : names) builder.includeRow(name);
++    return builder.withPagingLimit(100).build();
+ }
+\ No newline at end of file

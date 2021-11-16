@@ -1,0 +1,16 @@
+diff --git a/abb59b39ae60fa97d9fedae771dee92e73635427 b/32cefd4daf020eb3bb8f067a459124133577d906
+index abb59b39ae..32cefd4daf 100644
+--- a/abb59b39ae60fa97d9fedae771dee92e73635427
++++ b/32cefd4daf020eb3bb8f067a459124133577d906
+@@ -1,6 +1,8 @@
+ @Override
+ public double indexSelectivity(int labelId, int propertyKeyId) {
+-    IndexStatistics result1 = regularIndices.getIndex(labelId, propertyKeyId);
+-    IndexStatistics result2 = result1 == null ? uniqueIndices.getIndex(labelId, propertyKeyId) : result1;
++    // TODO: Support composite indexes
++    NodePropertyDescriptor descriptor = new NodePropertyDescriptor(labelId, propertyKeyId);
++    IndexStatistics result1 = regularIndices.getIndex(descriptor);
++    IndexStatistics result2 = result1 == null ? uniqueIndices.getIndex(descriptor) : result1;
+     return result2 == null ? Double.NaN : result2.uniqueValuesPercentage;
+ }
+\ No newline at end of file

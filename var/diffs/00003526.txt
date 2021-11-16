@@ -1,0 +1,34 @@
+diff --git a/97823ccc9ff80f0e6d09f682d4322d7179380c10 b/9519d587c5e6e6f4d95b3f12d1b7ee1102fce9c7
+index 97823ccc9f..9519d587c5 100644
+--- a/97823ccc9ff80f0e6d09f682d4322d7179380c10
++++ b/9519d587c5e6e6f4d95b3f12d1b7ee1102fce9c7
+@@ -1,11 +1,21 @@
+ private static FileType getFileTypeByString(String ourFileType) {
+-    // noinspection HardCodedStringLiteral
+-    if (ourFileType.equals("java")) {
+-        return StdFileTypes.JAVA;
+-    } else // noinspection HardCodedStringLiteral
+-    if (ourFileType.equals("html")) {
++    for (StructuralSearchProfile profile : StructuralSearchUtil.getAllProfiles()) {
++        for (LanguageFileType fileType : profile.getFileTypes()) {
++            if (getPresentableName(fileType).equals(ourFileType)) {
++                return fileType;
++            }
++        }
++    }
++    assert false : "unknown file type: " + ourFileType;
++    return null;
++/*if (ourFileType.equals("java")) {
++      return StdFileTypes.JAVA;
++    }
++    else
++      if (ourFileType.equals("html")) {
+         return StdFileTypes.HTML;
+-    } else {
++      }
++      else {
+         return StdFileTypes.XML;
+-    }
++      }*/
+ }
+\ No newline at end of file

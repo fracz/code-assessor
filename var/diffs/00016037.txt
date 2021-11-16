@@ -1,0 +1,17 @@
+diff --git a/7e6c7391bc82aa2366972b7ddcabb7497b86e118 b/a724b817ca91db9c73d29080dcd353069f8ef839
+index 7e6c7391bc..a724b817ca 100644
+--- a/7e6c7391bc82aa2366972b7ddcabb7497b86e118
++++ b/a724b817ca91db9c73d29080dcd353069f8ef839
+@@ -1,10 +1,9 @@
+ private void processSecondaryConstructor(MutableClassDescriptor classDescriptor, JetSecondaryConstructor constructor) {
+     if (classDescriptor.getKind() == ClassKind.TRAIT) {
+-        // context.getTrace().getErrorHandler().genericError(constructor.getNameNode(), "A trait may not have a constructor");
+-        context.getTrace().report(CONSTRUCTOR_IN_TRAIT.on(constructor.getNameNode()));
++        context.getTrace().report(CONSTRUCTOR_IN_TRAIT.on(constructor.getNameNode().getPsi()));
+     }
+     ConstructorDescriptor constructorDescriptor = context.getDescriptorResolver().resolveSecondaryConstructorDescriptor(classDescriptor.getScopeForMemberResolution(), classDescriptor, constructor);
+     classDescriptor.addConstructor(constructorDescriptor, context.getTrace());
+     context.getConstructors().put(constructor, constructorDescriptor);
+     context.getDeclaringScopes().put(constructor, classDescriptor.getScopeForMemberLookup());
+ }
+\ No newline at end of file

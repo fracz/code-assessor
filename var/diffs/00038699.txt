@@ -1,0 +1,13 @@
+diff --git a/23f44c339d2055a37d832a9e6685ff1affd9819e b/0b252764f87d8d82e3362b457a22661f0e947b99
+index 23f44c339d..0b252764f8 100644
+--- a/23f44c339d2055a37d832a9e6685ff1affd9819e
++++ b/0b252764f87d8d82e3362b457a22661f0e947b99
+@@ -1,4 +1,5 @@
+ @Override
+-public IndexRule apply(SchemaRule from) {
+-    return (IndexRule) from;
++public IndexDescriptor apply(SchemaRule from) {
++    IndexRule rule = (IndexRule) from;
++    return new IndexDescriptor(rule.getLabel(), rule.getPropertyKey());
+ }
+\ No newline at end of file

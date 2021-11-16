@@ -1,0 +1,18 @@
+diff --git a/530e13d0e7f6f0ad13e99fe9b03d3875197c91ba b/3c1ff2be1ad69ddb59b5aa912b92bd7465f77c9b
+index 530e13d0e7..3c1ff2be1a 100644
+--- a/530e13d0e7f6f0ad13e99fe9b03d3875197c91ba
++++ b/3c1ff2be1ad69ddb59b5aa912b92bd7465f77c9b
+@@ -1,5 +1,9 @@
+ public void pack() {
+-    width = getPrefWidth();
+-    height = getPrefHeight();
+-    invalidate();
++    float newWidth = getPrefWidth();
++    float newHeight = getPrefHeight();
++    if (newWidth != width || newHeight != height) {
++        width = newWidth;
++        height = newHeight;
++        invalidate();
++    }
+ }
+\ No newline at end of file

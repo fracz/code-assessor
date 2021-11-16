@@ -1,0 +1,15 @@
+diff --git a/26a75d9dcb573d7534a448a77018e2229cb5a71f b/88f27739f5a842611a5b587f8d480e45a98ab9e4
+index 26a75d9dcb..88f27739f5 100644
+--- a/26a75d9dcb573d7534a448a77018e2229cb5a71f
++++ b/88f27739f5a842611a5b587f8d480e45a98ab9e4
+@@ -1,7 +1,7 @@
+ public void add(String... filenames) throws IOException {
+     if (filenames.length == 0) {
+-        execute(true, "add", ".");
++        myRunEnv.run("add", ".");
+     } else {
+-        execute(true, join("add", filenames));
++        myRunEnv.run("add", filenames);
+     }
+ }
+\ No newline at end of file

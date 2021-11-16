@@ -1,0 +1,22 @@
+diff --git a/48066bb414e94f7ec93789a25bad67da0ffd2c1f b/a5a55111c054e98203b8fbb6f6bc053506b144e1
+index 48066bb414..a5a55111c0 100644
+--- a/48066bb414e94f7ec93789a25bad67da0ffd2c1f
++++ b/a5a55111c054e98203b8fbb6f6bc053506b144e1
+@@ -1,12 +1,14 @@
+ @Test
+ public void shouldDropSchemaRuleFromStore() throws Exception {
+     // GIVEN
+     Collection<DynamicRecord> beforeRecords = serialize(rule, id, true, true);
+     Collection<DynamicRecord> afterRecords = serialize(rule, id, false, false);
+-    SchemaRuleCommand command = new SchemaRuleCommand(neoStore, store, indexes, beforeRecords, afterRecords, rule, txId);
++    when(neoStore.getSchemaStore()).thenReturn(store);
++    SchemaRuleCommand command = new SchemaRuleCommand();
++    command.init(beforeRecords, afterRecords, rule, txId);
+     // WHEN
+-    command.execute();
++    executor.execute(command);
+     // THEN
+     verify(store).updateRecord(first(afterRecords));
+     verify(indexes).dropIndex(rule);
+ }
+\ No newline at end of file

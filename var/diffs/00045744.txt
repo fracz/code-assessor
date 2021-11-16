@@ -1,0 +1,20 @@
+diff --git a/dec8ae1e6cdf642579ceac1166ee7568570bcee4 b/77f94df1ef4b315a0dd00d766d9a1f965ec1eb52
+index dec8ae1e6c..77f94df1ef 100644
+--- a/dec8ae1e6cdf642579ceac1166ee7568570bcee4
++++ b/77f94df1ef4b315a0dd00d766d9a1f965ec1eb52
+@@ -1,12 +1,11 @@
+-private void releaseIndexModificationLock(Set<String> lockedIndexes) {
++private void releaseIndexModificationLock(Set<OIndex<?>> lockedIndexes) {
+     final OMetadataDefault metadata = getMetadata();
+     if (metadata == null)
+         return;
+     final OIndexManager indexManager = metadata.getIndexManager();
+     if (indexManager == null)
+         return;
+-    for (String indexName : lockedIndexes) {
+-        OIndex index = indexManager.getIndex(indexName);
++    for (OIndex<?> index : lockedIndexes) {
+         index.getInternal().releaseModificationLock();
+     }
+ }
+\ No newline at end of file

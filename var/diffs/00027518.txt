@@ -1,0 +1,14 @@
+diff --git a/5f6e9c10621bc9277a79b600ace5d79e40e7deae b/c0869dd492da424314ddf7d7da7a612496098626
+index 5f6e9c1062..c0869dd492 100644
+--- a/5f6e9c10621bc9277a79b600ace5d79e40e7deae
++++ b/c0869dd492da424314ddf7d7da7a612496098626
+@@ -1,6 +1,6 @@
+ public void writeLongs(OutputStream out, long[] longs) throws IOException {
+     writeInt(out, longs.length);
+-    for (int i = 0; i < longs.length; i++) {
+-        writeLong(out, longs[i]);
++    for (long value : longs) {
++        writeLong(out, value);
+     }
+ }
+\ No newline at end of file

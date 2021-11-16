@@ -1,0 +1,17 @@
+diff --git a/783ca2ec1061b25c2fed187611d53ab42c072ed5 b/d3d41c727174b60c49fe7bb2747794768accb455
+index 783ca2ec10..d3d41c7271 100644
+--- a/783ca2ec1061b25c2fed187611d53ab42c072ed5
++++ b/d3d41c727174b60c49fe7bb2747794768accb455
+@@ -1,10 +1,10 @@
+ @NotNull
+ @Override
+ public List<Block> getSubBlocks() {
+     if (mySubBlocks == null) {
+         mySubBlocks = new ArrayList<Block>();
+         mySubBlocks.add(new GroovyBlock(myNameElement.getNode(), myInnerAlignments.get(myNameElement), Indent.getContinuationWithoutFirstIndent(), myWrap, mySettings, myGroovySettings, myInnerAlignments));
+-        GroovyBlockGenerator.addNestedChildrenSuffix(mySubBlocks, myAlignment, myWrap, mySettings, myGroovySettings, myTopLevel, myChildren, myChildren.size(), myInnerAlignments);
++        new GroovyBlockGenerator(this).addNestedChildrenSuffix(mySubBlocks, myAlignment, myTopLevel, myChildren, myChildren.size());
+     }
+     return mySubBlocks;
+ }
+\ No newline at end of file

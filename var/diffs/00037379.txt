@@ -1,0 +1,18 @@
+diff --git a/9915c32c6beef3d6d29409a7425c20ce7ee7638d b/45047e7dfc81e23d256e00e68a0ceaa0ae9bebb4
+index 9915c32c6b..45047e7dfc 100644
+--- a/9915c32c6beef3d6d29409a7425c20ce7ee7638d
++++ b/45047e7dfc81e23d256e00e68a0ceaa0ae9bebb4
+@@ -1,5 +1,11 @@
+ @Override
+ protected Statement withBeforeClasses(Statement statement) {
+     final Statement beforeClasses = super.withBeforeClasses(statement);
+-    return new BeforeCallbackStatement(beforeClasses, this);
++    return new BeforeCallbackStatement(beforeClasses, new Statement() {
++
++        @Override
++        public void evaluate() throws Throwable {
++            before();
++        }
++    });
+ }
+\ No newline at end of file

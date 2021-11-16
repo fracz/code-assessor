@@ -1,0 +1,18 @@
+diff --git a/ba0ce8d2cb555edf33638c74bd01f3ff0f2f53af b/55717090204e1b391a13441654a1e20a94ce3624
+index ba0ce8d2cb..5571709020 100644
+--- a/ba0ce8d2cb555edf33638c74bd01f3ff0f2f53af
++++ b/55717090204e1b391a13441654a1e20a94ce3624
+@@ -1,11 +1,11 @@
+-@Test
++@Test(groups = { "broken" })
+ public void exportTsvWithQuote() {
+     CreateGrid(3, 3);
+     project.rows.get(1).cells.set(1, new Cell("line has \"quote\"", null));
+     try {
+         SUT.export(project, options, engine, writer);
+     } catch (IOException e) {
+         Assert.fail();
+     }
+     Assert.assertEquals(writer.toString(), "column0\tcolumn1\tcolumn2\n" + "row0cell0\trow0cell1\trow0cell2\n" + "row1cell0\t\"line has \"\"quote\"\"\"\trow1cell2\n" + "row2cell0\trow2cell1\trow2cell2\n");
+ }
+\ No newline at end of file

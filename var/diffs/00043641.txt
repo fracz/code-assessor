@@ -1,0 +1,23 @@
+diff --git a/55a6cfc389ca0a705bb8f8bf80d965e3b6221d2b b/c04d2eba6de5288fc57d3587d4c549816d01ba71
+index 55a6cfc389..c04d2eba6d 100644
+--- a/55a6cfc389ca0a705bb8f8bf80d965e3b6221d2b
++++ b/c04d2eba6de5288fc57d3587d4c549816d01ba71
+@@ -1,16 +1,16 @@
+ public boolean shutdown() {
+     try {
+         boolean res = deinit();
+-        if (!OGlobalConfiguration.SERVER_BACKWARD_COMPATIBILITY.getValueAsBoolean() && databases != null) {
++        if (!getContextConfiguration().getValueAsBoolean(OGlobalConfiguration.SERVER_BACKWARD_COMPATIBILITY) && databases != null) {
+             databases.close();
+             databases = null;
+         }
+         return res;
+     } finally {
+         startupLatch = null;
+         if (shutdownLatch != null) {
+             shutdownLatch.countDown();
+             shutdownLatch = null;
+         }
+     }
+ }
+\ No newline at end of file

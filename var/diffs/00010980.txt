@@ -1,0 +1,20 @@
+diff --git a/83278692d9173c6b9462b2fee6f85049a19e82a6 b/090dca8849ecf474f1105853e026c2398963da66
+index 83278692d9..090dca8849 100644
+--- a/83278692d9173c6b9462b2fee6f85049a19e82a6
++++ b/090dca8849ecf474f1105853e026c2398963da66
+@@ -1,11 +1,10 @@
+ /**
+  * Initializes a list of schemes from loaded keymaps.
+  *
+- * @return a scheme to select
+- * @see KeymapSelector#reset()
++ * @see KeymapPanel#reset()
+  */
+-KeymapScheme reset() {
++void reset() {
+     list.clear();
+     getKeymaps().forEach(keymap -> list.add(new KeymapScheme(keymap)));
+-    return getSchemeToSelect(null);
++    selector.selectKeymap(getSchemeToSelect(null), true);
+ }
+\ No newline at end of file

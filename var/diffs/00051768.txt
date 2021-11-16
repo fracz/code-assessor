@@ -1,0 +1,21 @@
+diff --git a/544fe832b52316dda0b901a0a16063862cfca5ce b/fab60d171402041788cf7fd176587451f52a9f93
+index 544fe832b5..fab60d1714 100644
+--- a/544fe832b52316dda0b901a0a16063862cfca5ce
++++ b/fab60d171402041788cf7fd176587451f52a9f93
+@@ -1,14 +1,14 @@
+ @Override
+ public ElementState getDefaultState(@NotNull Object element) {
+     if (element instanceof DBDAttributeBinding) {
+         switch(((DBDAttributeBinding) element).getAttribute().getDataKind()) {
+             case STRUCT:
+                 return ElementState.EXPANDED;
+             case ARRAY:
+-            // return ElementState.COLLAPSED;
++                return ElementState.COLLAPSED;
+             default:
+                 break;
+         }
+     }
+     return ElementState.NONE;
+ }
+\ No newline at end of file

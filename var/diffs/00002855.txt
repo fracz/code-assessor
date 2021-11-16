@@ -1,0 +1,23 @@
+diff --git a/3e40f322833649d05d1662814b8b8c7de09dda98 b/98d073a201821c01d4066301e8e324aef992d823
+index 3e40f32283..98d073a201 100644
+--- a/3e40f322833649d05d1662814b8b8c7de09dda98
++++ b/98d073a201821c01d4066301e8e324aef992d823
+@@ -1,12 +1,8 @@
+-public boolean isWhitespaceReadOnly(@Nullable TextRange range) {
+-    if (myRange == null) {
+-        return false;
+-    }
+-    if (range == null || range.getStartOffset() >= myRange.getEndOffset())
++public boolean isWhitespaceReadOnly(@NotNull TextRange range) {
++    if (range.getStartOffset() >= formattingRange.getEndOffset())
+         return true;
+-    if (myProcessHeadingWhitespace) {
+-        return range.getEndOffset() < myRange.getStartOffset();
+-    } else {
+-        return range.getEndOffset() <= myRange.getStartOffset();
++    if (processHeadingWhitespace && range.getEndOffset() == formattingRange.getStartOffset()) {
++        return false;
+     }
++    return range.getEndOffset() <= formattingRange.getStartOffset();
+ }
+\ No newline at end of file

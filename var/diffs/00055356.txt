@@ -1,0 +1,24 @@
+diff --git a/8a079966f03c643cb3bed43044a3b80c9ab5f652 b/5a8b0ba41e3edf951e219f14cecd5f7c4b49eb6f
+index 8a079966f0..5a8b0ba41e 100644
+--- a/8a079966f03c643cb3bed43044a3b80c9ab5f652
++++ b/5a8b0ba41e3edf951e219f14cecd5f7c4b49eb6f
+@@ -1,13 +1,13 @@
+ @JRubyMethod
+ public IRubyObject unlink(ThreadContext context) {
+-    if (this.node.getNodeType() == Node.ATTRIBUTE_NODE) {
+-        Attr attr = (Attr) this.node;
++    if (this.node().getNodeType() == Node.ATTRIBUTE_NODE) {
++        Attr attr = (Attr) this.node();
+         Element parent = attr.getOwnerElement();
+         parent.removeAttributeNode(attr);
+-    } else if (this.node.getParentNode() == null) {
+-        throw context.getRuntime().newRuntimeError("TYPE: " + this.node.getNodeType() + " PARENT NULL");
++    } else if (this.node().getParentNode() == null) {
++        throw context.getRuntime().newRuntimeError("TYPE: " + this.node().getNodeType() + " PARENT NULL");
+     } else {
+-        node.getParentNode().removeChild(node);
++        node().getParentNode().removeChild(node());
+     }
+     return this;
+ }
+\ No newline at end of file

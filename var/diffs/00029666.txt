@@ -1,0 +1,25 @@
+diff --git a/7d1adbf76a2f6cf3b9b474bebeed987ef1029a98 b/eff0809c7e3a3c910d9f36d3c0b774a9c9d30c43
+index 7d1adbf76a..eff0809c7e 100644
+--- a/7d1adbf76a2f6cf3b9b474bebeed987ef1029a98
++++ b/eff0809c7e3a3c910d9f36d3c0b774a9c9d30c43
+@@ -1,17 +1,17 @@
+ @Override
+ public XContentBuilder toXContent(XContentBuilder builder, Params params) throws IOException {
+-    builder.startObject();
+     builder.startArray(Fields.RESPONSES);
+     for (MultiPercolateResponse.Item item : items) {
+         if (item.isFailure()) {
+             builder.startObject();
+             builder.field(Fields.ERROR, item.getErrorMessage());
+             builder.endObject();
+         } else {
++            builder.startObject();
+             item.getResponse().toXContent(builder, params);
++            builder.endObject();
+         }
+     }
+     builder.endArray();
+-    builder.endObject();
+     return builder;
+ }
+\ No newline at end of file

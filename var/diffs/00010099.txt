@@ -1,0 +1,19 @@
+diff --git a/32fc3f0afd1f1adebd8012edb2f7f155810e9aea b/5c3f8c183d81b4b80ac0dfdd4305bd0255b1240f
+index 32fc3f0afd..5c3f8c183d 100644
+--- a/32fc3f0afd1f1adebd8012edb2f7f155810e9aea
++++ b/5c3f8c183d81b4b80ac0dfdd4305bd0255b1240f
+@@ -1,11 +1,12 @@
+ @Nullable
+ static HighlightInfo checkBreakOutsideLoop(@NotNull PsiBreakStatement statement) {
+     if (statement.getLabelIdentifier() == null) {
+         if (new PsiMatcherImpl(statement).ancestor(EnclosingLoopOrSwitchMatcherExpression.INSTANCE).getElement() == null) {
+-            return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, statement, JavaErrorMessages.message("break.outside.switch.or.loop"));
++            String description = JavaErrorMessages.message("break.outside.switch.or.loop");
++            return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(statement).descriptionAndTooltip(description).create();
+         }
+     } else {
+     // todo labeled
+     }
+     return null;
+ }
+\ No newline at end of file

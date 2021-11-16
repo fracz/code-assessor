@@ -1,0 +1,15 @@
+diff --git a/2511cbb18de451dc5bfcc806dc2de5279a76d5c7 b/6316c7683e54a4d17cb9ee8153367409d08da7a4
+index 2511cbb18d..6316c7683e 100644
+--- a/2511cbb18de451dc5bfcc806dc2de5279a76d5c7
++++ b/6316c7683e54a4d17cb9ee8153367409d08da7a4
+@@ -1,8 +1,7 @@
+ public void testCopyProjectProfile() throws Exception {
+     final Element element = loadProfile();
+     final InspectionProfileImpl profile = createProfile();
+     profile.readExternal(element);
+-    final ModifiableModel model = profile.getModifiableModel();
+-    model.commit();
++    profile.getModifiableModel().commit();
+     assertThat(profile.writeScheme()).isEqualTo(element);
+ }
+\ No newline at end of file

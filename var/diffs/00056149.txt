@@ -1,0 +1,14 @@
+diff --git a/18ea206ecd95bb362ca22eb064dcdcb3a05ce799 b/00d9c34fd6a10804e3ff9b3b9b50b7ed567a5d15
+index 18ea206ecd..00d9c34fd6 100644
+--- a/18ea206ecd95bb362ca22eb064dcdcb3a05ce799
++++ b/00d9c34fd6a10804e3ff9b3b9b50b7ed567a5d15
+@@ -1,4 +1,7 @@
+ @Override
+ public ResponseSpec exchange() {
+-    return toResponseSpec(this.bodySpec.exchange());
++    ClientResponse clientResponse = this.bodySpec.exchange().block(getTimeout());
++    Assert.state(clientResponse != null, "No ClientResponse");
++    ExchangeResult exchangeResult = wiretapConnector.claimRequest(this.requestId);
++    return new DefaultResponseSpec(exchangeResult, clientResponse, this.uriTemplate, getTimeout());
+ }
+\ No newline at end of file

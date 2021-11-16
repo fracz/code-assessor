@@ -1,0 +1,25 @@
+diff --git a/c6e8f767e2c856a1a19f6d8e9201151274e7605e b/e64f899cc4a2ebc6fb1dba7d2e61a3a0524d14c5
+index c6e8f767e2..e64f899cc4 100644
+--- a/c6e8f767e2c856a1a19f6d8e9201151274e7605e
++++ b/e64f899cc4a2ebc6fb1dba7d2e61a3a0524d14c5
+@@ -1,18 +1,18 @@
+ @Nullable
+ private static PsiFile getContainingFileByTree(final PsiElement changeScope) {
+     // there could be pseudo phisical trees (JSPX/JSP/etc.) which must not translate
+     // any changes to document and not to fire any PSI events
+     LOG.assertTrue(changeScope != null);
+     final PsiFile psiFile;
+     final ASTNode node = changeScope.getNode();
+     if (node == null) {
+         psiFile = changeScope.getContainingFile();
+     } else {
+         final FileElement fileElement = TreeUtil.getFileElement((TreeElement) node);
+         // Hack. the containing tree can be invalidated if updating supplementary trees like HTML in JSP.
+         if (fileElement == null)
+             return null;
+         psiFile = (PsiFile) fileElement.getPsi();
+     }
+-    return psiFile.getLanguage() == psiFile.getViewProvider().getBaseLanguage() ? psiFile : null;
++    return psiFile.getNode() != null ? psiFile : null;
+ }
+\ No newline at end of file

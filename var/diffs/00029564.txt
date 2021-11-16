@@ -1,0 +1,13 @@
+diff --git a/0b67947a1d08271b36f379df717f86cb2cafe963 b/44460e71727dccf3fbd050e8bb081acc37ba4557
+index 0b67947a1d..44460e7172 100644
+--- a/0b67947a1d08271b36f379df717f86cb2cafe963
++++ b/44460e71727dccf3fbd050e8bb081acc37ba4557
+@@ -1,6 +1,6 @@
+ @Override
+ protected ClusterBlockException checkBlock(IndicesExistsRequest request, ClusterState state) {
+     // make sure through indices options that the concrete indices call never throws IndexMissingException
+     IndicesOptions indicesOptions = IndicesOptions.fromOptions(true, true, request.indicesOptions().expandWildcardsOpen(), request.indicesOptions().expandWildcardsClosed());
+-    return state.blocks().indicesBlockedException(ClusterBlockLevel.METADATA_READ, clusterService.state().metaData().concreteIndices(indicesOptions, request.indices()));
++    return state.blocks().indicesBlockedException(ClusterBlockLevel.METADATA_READ, indexNameExpressionResolver.concreteIndices(state, indicesOptions, request.indices()));
+ }
+\ No newline at end of file

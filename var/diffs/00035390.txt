@@ -1,0 +1,26 @@
+diff --git a/e7eddafdc839ed7a654a3c7d651839d4d8fae8f5 b/841eef68abcc032eb617226b920b501d7b7ffb49
+index e7eddafdc8..841eef68ab 100644
+--- a/e7eddafdc839ed7a654a3c7d651839d4d8fae8f5
++++ b/841eef68abcc032eb617226b920b501d7b7ffb49
+@@ -1,13 +1,12 @@
+ private void onRetry(Throwable ex, final int retryTimes, final long soFarBytes) {
+     if (FileDownloadLog.NEED_LOG) {
+-        FileDownloadLog.d(this, "On retry %d %s %d %d", downloadTransfer.getDownloadId(), ex, retryTimes, autoRetryTimes);
++        FileDownloadLog.d(this, "On retry %d %s %d %d", getId(), ex, retryTimes, autoRetryTimes);
+     }
+     ex = exFiltrate(ex);
+-    downloadTransfer.setStatus(FileDownloadStatus.retry);
+-    downloadTransfer.setThrowable(ex);
+-    downloadTransfer.setRetryingTimes(retryTimes);
+-    downloadTransfer.setSoFarBytes(soFarBytes);
+-    // TODO 目前是做断点续传，实际还需要看情况而定
+-    helper.updateRetry(downloadTransfer.getDownloadId(), ex.getMessage(), retryTimes);
+-    FileDownloadProcessEventPool.getImpl().asyncPublishInNewThread(new DownloadTransferEvent(downloadTransfer.copy()));
++    helper.updateRetry(getId(), ex.getMessage(), retryTimes, soFarBytes);
++    transferModel.setStatus(FileDownloadStatus.retry);
++    transferModel.setThrowable(ex);
++    transferModel.setRetryingTimes(retryTimes);
++    transferModel.setSoFarBytes(soFarBytes);
++    onStatusChanged(model.getStatus());
+ }
+\ No newline at end of file

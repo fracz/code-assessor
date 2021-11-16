@@ -1,0 +1,17 @@
+diff --git a/3922d4acab6431e28d57dd80e628a10ba3d9ae0d b/c20b5b842110a48acfdd4aa23c2b6064d151a4ba
+index 3922d4acab..c20b5b8421 100644
+--- a/3922d4acab6431e28d57dd80e628a10ba3d9ae0d
++++ b/c20b5b842110a48acfdd4aa23c2b6064d151a4ba
+@@ -1,9 +1,9 @@
+ public void testNamespaceCompletion() throws Exception {
+     myFixture.configureByText("foo.xml", "<schema xmlns=\"<caret>\"/>");
+-    myFixture.completeBasic();
+-    assertSameElements(myFixture.getLookupElementStrings(), "http://www.w3.org/2001/XMLSchema");
++    LookupElement[] elements = myFixture.completeBasic();
++    assertEquals("http://www.w3.org/2001/XMLSchema", elements[0].getLookupString());
+     myFixture.configureByText("unknown.xml", "<unknown_tag_name xmlns=\"<caret>\"/>");
+     myFixture.completeBasic();
+     // all standard schemas actually
+     assertTrue(myFixture.getLookupElementStrings().size() > 3);
+ }
+\ No newline at end of file

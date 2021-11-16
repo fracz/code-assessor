@@ -1,0 +1,19 @@
+diff --git a/16c0a5859cffb94539b430aa2ce193cdea954355 b/13a2ad745cecb4c7bfe52c219b4bd44311156c15
+index 16c0a5859c..13a2ad745c 100644
+--- a/16c0a5859cffb94539b430aa2ce193cdea954355
++++ b/13a2ad745cecb4c7bfe52c219b4bd44311156c15
+@@ -1,10 +1,7 @@
+ @Override
+ protected int getDepthBits() {
+-    if (USE_JOGL_FBOLAYER) {
++    if (USE_JOGL_FBOLAYER)
+         return capabilities.getDepthBits();
+-    } else {
+-        intBuffer.rewind();
+-        getIntegerv(DEPTH_BITS, intBuffer);
+-        return intBuffer.get(0);
+-    }
++    else
++        return super.getDepthBits();
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/e84bb85311aedd59b80a907fb654267bcaf292fb b/4d901996e2a7459add21280754be718290683cd5
+index e84bb85311..4d901996e2 100644
+--- a/e84bb85311aedd59b80a907fb654267bcaf292fb
++++ b/4d901996e2a7459add21280754be718290683cd5
+@@ -1,10 +1,8 @@
+ @NotNull
+ public String[] getSchemeNames() {
+-    List<MyColorScheme> schemes = new ArrayList<>(mySchemes.values());
+-    Collections.sort(schemes, EditorColorSchemesComparator.INSTANCE);
+-    List<String> names = new ArrayList<>(schemes.size());
+-    for (MyColorScheme scheme : schemes) {
++    List<String> names = new ArrayList<>();
++    for (EditorColorsScheme scheme : getOrderedSchemes()) {
+         names.add(scheme.getName());
+     }
+     return ArrayUtil.toStringArray(names);
+ }
+\ No newline at end of file

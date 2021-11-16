@@ -1,0 +1,18 @@
+diff --git a/41edda8144bed728c3a828fe1ca0dfb3748e9ee3 b/476a4433851c7125fff905c3cedd69620561a330
+index 41edda8144..476a443385 100644
+--- a/41edda8144bed728c3a828fe1ca0dfb3748e9ee3
++++ b/476a4433851c7125fff905c3cedd69620561a330
+@@ -1,7 +1,7 @@
+ @Override
+-public JetIntentionAction<JetPropertyAccessor> createAction(DiagnosticWithPsiElement diagnostic) {
+-    assert diagnostic.getPsiElement() instanceof JetPropertyAccessor;
+-    DiagnosticWithParameters<PsiElement> diagnosticWithParameters = assertAndCastToDiagnosticWithParameters(diagnostic, DiagnosticParameters.TYPE);
+-    JetType type = diagnosticWithParameters.getParameter(DiagnosticParameters.TYPE);
+-    return new ChangeAccessorTypeFix((JetPropertyAccessor) diagnostic.getPsiElement(), type);
++public JetIntentionAction<JetPropertyAccessor> createAction(Diagnostic diagnostic) {
++    JetPropertyAccessor accessor = QuickFixUtil.getParentElementOfType(diagnostic, JetPropertyAccessor.class);
++    if (accessor == null)
++        return null;
++    return new ChangeAccessorTypeFix(accessor);
+ }
+\ No newline at end of file

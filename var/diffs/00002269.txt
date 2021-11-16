@@ -1,0 +1,14 @@
+diff --git a/7dcf6f102d3168420946345ced0800a17ddb6f00 b/3c04514225d372dc25e58882d87d77066f4414b4
+index 7dcf6f102d..3c04514225 100644
+--- a/7dcf6f102d3168420946345ced0800a17ddb6f00
++++ b/3c04514225d372dc25e58882d87d77066f4414b4
+@@ -1,7 +1,5 @@
+ @Override
+ @Nullable
+ public T getRepositoryForRoot(@Nullable VirtualFile root) {
+-    Repository repository = myGlobalRepositoryManager.getRepositoryForRoot(root, true);
+-    // noinspection unchecked
+-    return isRootValid(repository) ? (T) repository : null;
++    return validateAndGetRepository(myGlobalRepositoryManager.getRepositoryForRoot(root));
+ }
+\ No newline at end of file

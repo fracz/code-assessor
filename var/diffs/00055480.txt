@@ -1,0 +1,17 @@
+diff --git a/e813762e402b725e140bccbcf7154bab91b90a14 b/a6b2436a73d56a47681c19fca18ec987c30ba0fe
+index e813762e40..a6b2436a73 100644
+--- a/e813762e402b725e140bccbcf7154bab91b90a14
++++ b/a6b2436a73d56a47681c19fca18ec987c30ba0fe
+@@ -1,10 +1,7 @@
+ @Override
+ protected int writeToOutputStream(DataBuffer dataBuffer) throws IOException {
+-    ServletOutputStream outputStream = getServletResponse().getOutputStream();
+     ByteBuffer input = dataBuffer.asByteBuffer();
+     int len = input.remaining();
+-    if (outputStream.isReady() && len > 0) {
+-        ((CoyoteOutputStream) outputStream).write(input);
+-    }
++    ((CoyoteOutputStream) getServletResponse().getOutputStream()).write(input);
+     return len;
+ }
+\ No newline at end of file

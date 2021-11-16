@@ -1,0 +1,23 @@
+diff --git a/d19059b0a01fba8a62efe9d169abdfde0058c777 b/f65cb416391d47301d1546df8779b5263cf172d8
+index d19059b0a0..f65cb41639 100644
+--- a/d19059b0a01fba8a62efe9d169abdfde0058c777
++++ b/f65cb416391d47301d1546df8779b5263cf172d8
+@@ -1,12 +1,13 @@
+ public String toString() {
+     final StringBuilder builder = new StringBuilder();
+     builder.append(myNumber);
+     builder.append("(");
+-    for (int i = 0; i < mySucc.size(); i++) {
+-        if (i > 0)
+-            builder.append(',');
+-        builder.append(mySucc.get(i).myNumber);
++    for (InstructionImpl successor : mySuccessors) {
++        builder.append(successor.myNumber);
++        builder.append(',');
+     }
++    if (!mySuccessors.isEmpty())
++        builder.delete(builder.length() - 1, builder.length());
+     builder.append(") ").append(getElementPresentation());
+     return builder.toString();
+ }
+\ No newline at end of file

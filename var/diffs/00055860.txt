@@ -1,0 +1,13 @@
+diff --git a/966aa4c0d2f70908dd5e48b9911024a2758f8657 b/7d42303fccf99445a4fa7a7b92302ed638fb4b9f
+index 966aa4c0d2..7d42303fcc 100644
+--- a/966aa4c0d2f70908dd5e48b9911024a2758f8657
++++ b/7d42303fccf99445a4fa7a7b92302ed638fb4b9f
+@@ -1,6 +1,6 @@
+ @Test
+ public void nullIfNotRequired() throws Exception {
+     BindingContext bindingContext = new BindingContext();
+     Mono<Object> mono = this.resolver.resolveArgument(this.paramNotRequired, bindingContext, this.exchange);
+-    TestSubscriber.subscribe(mono).assertComplete().assertNoValues();
++    ScriptedSubscriber.create().expectNextCount(0).expectComplete().verify(mono);
+ }
+\ No newline at end of file

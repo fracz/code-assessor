@@ -1,0 +1,26 @@
+diff --git a/7a264df08b18d265dbb1cd2926919a8b3249fae4 b/d6b926fbdedd68224a21376bfd9c25c5060645a1
+index 7a264df08b..d6b926fbde 100644
+--- a/7a264df08b18d265dbb1cd2926919a8b3249fae4
++++ b/d6b926fbdedd68224a21376bfd9c25c5060645a1
+@@ -1,14 +1,13 @@
++@NotNull
+ private InspectionTreeNode getRelativeRootNode(boolean isGroupedBySeverity, HighlightDisplayLevel level) {
+     if (isGroupedBySeverity) {
+         if (mySeverityGroupNodes.containsKey(level)) {
+             return mySeverityGroupNodes.get(level);
+-        } else {
+-            final InspectionSeverityGroupNode severityGroupNode = new InspectionSeverityGroupNode(myProject, level);
+-            mySeverityGroupNodes.put(level, severityGroupNode);
+-            myTree.getRoot().add(severityGroupNode);
+-            return severityGroupNode;
+         }
+-    } else {
+-        return myTree.getRoot();
++        final InspectionSeverityGroupNode severityGroupNode = new InspectionSeverityGroupNode(myProject, level);
++        mySeverityGroupNodes.put(level, severityGroupNode);
++        myTree.getRoot().add(severityGroupNode);
++        return severityGroupNode;
+     }
++    return myTree.getRoot();
+ }
+\ No newline at end of file

@@ -1,0 +1,27 @@
+diff --git a/51b62880e27ff9b515c559ddfbe6b18353c3f561 b/d3957e60001b19531582953dedeee1e8376464bb
+index 51b62880e2..d3957e6000 100644
+--- a/51b62880e27ff9b515c559ddfbe6b18353c3f561
++++ b/d3957e60001b19531582953dedeee1e8376464bb
+@@ -1,14 +1,13 @@
+ @NotNull
+-private Collection<PsiElement> getContexts() {
++private Collection<PsiFileSystemItem> getContexts() {
+     final FileReference contextRef = getContextReference();
+     if (contextRef == null) {
+         return myFileReferenceSet.getDefaultContexts(myFileReferenceSet.getElement());
+-    } else {
+-        ResolveResult[] resolveResults = contextRef.multiResolve(false);
+-        ArrayList<PsiElement> result = new ArrayList<PsiElement>();
+-        for (ResolveResult resolveResult : resolveResults) {
+-            result.add(resolveResult.getElement());
+-        }
+-        return result;
+     }
++    ResolveResult[] resolveResults = contextRef.multiResolve(false);
++    ArrayList<PsiFileSystemItem> result = new ArrayList<PsiFileSystemItem>();
++    for (ResolveResult resolveResult : resolveResults) {
++        result.add((PsiFileSystemItem) resolveResult.getElement());
++    }
++    return result;
+ }
+\ No newline at end of file

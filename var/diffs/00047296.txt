@@ -1,0 +1,24 @@
+diff --git a/afbe9694dbf99a19c9ad38b62c10b178a329bdb2 b/c3e14eed3d3e9dca754e69ba840108d7cedb67b5
+index afbe9694db..c3e14eed3d 100644
+--- a/afbe9694dbf99a19c9ad38b62c10b178a329bdb2
++++ b/c3e14eed3d3e9dca754e69ba840108d7cedb67b5
+@@ -1,11 +1,13 @@
+ @Override
+ public boolean isApplicable(int paramNum) {
+     if (paramNum == 0) {
+-        flipIterator.poll();
+-        if (flipIterator.isEmpty()) {
+-            init(firstDecoder, secondDecoder);
+-            flipIterator.poll();
++        flipDecoders.get().poll();
++        // state should be reseted
++        if (flipDecoders.get().isEmpty()) {
++            flipDecoders.remove();
++            decoders.remove();
++            flipDecoders.get().poll();
+         }
+     }
+-    return flipIterator.peek().isApplicable(paramNum);
++    return flipDecoders.get().peek().isApplicable(paramNum);
+ }
+\ No newline at end of file

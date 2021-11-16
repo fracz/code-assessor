@@ -1,0 +1,19 @@
+diff --git a/e522c604c8b4e698c27e42ff187d84b68b7d0848 b/7a087ff8427051d45e9c56161925ddedf25c966c
+index e522c604c8..7a087ff842 100644
+--- a/e522c604c8b4e698c27e42ff187d84b68b7d0848
++++ b/7a087ff8427051d45e9c56161925ddedf25c966c
+@@ -1,9 +1,6 @@
+-@SuppressWarnings({ "UnnecessaryBoxing" })
++// TODO(spenceg) This method used to cache the lookup, in this package,
++// but actually the valueOf method performs internal caching. This method
++// should be removed.
+ public static Character getCharacter(char c) {
+-    Character cC = CharacterHolder.canonicalCharacters[c];
+-    if (cC == null) {
+-        cC = Character.valueOf(c);
+-        CharacterHolder.canonicalCharacters[c] = cC;
+-    }
+-    return cC;
++    return Character.valueOf(c);
+ }
+\ No newline at end of file

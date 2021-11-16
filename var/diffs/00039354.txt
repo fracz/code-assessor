@@ -1,0 +1,23 @@
+diff --git a/c61f9bf8b122cd3515d00231d07c8d470f385f16 b/9f95bff9974d0d8cd12227ff364b46a97675eb3c
+index c61f9bf8b1..9f95bff997 100644
+--- a/c61f9bf8b122cd3515d00231d07c8d470f385f16
++++ b/9f95bff9974d0d8cd12227ff364b46a97675eb3c
+@@ -1,14 +1,13 @@
+ @Test
+ public void shouldApplyRelationshipGroupCommandToTheStoreInRecovery() throws Exception {
+     // given
+-    final CommandHandler applier = newApplier(true);
++    final BatchTransactionApplier applier = newApplier(true);
+     // when
+     final RelationshipGroupRecord record = new RelationshipGroupRecord(42, 1);
+-    boolean result = apply(applier, (handler, tx) -> {
+-        return handler.visitRelationshipGroupCommand(new Command.RelationshipGroupCommand().init(record));
+-    }, transactionToApply);
++    final Command command = new Command.RelationshipGroupCommand().init(record);
++    boolean result = apply(applier, command::handle, transactionToApply);
+     // then
+     assertFalse(result);
+     verify(relationshipGroupStore, times(1)).setHighestPossibleIdInUse(record.getId());
+     verify(relationshipGroupStore, times(1)).updateRecord(record);
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/b42048ba0297e0c378657614f863698665097400 b/31c8df1d580c9cdfe9d0ec3e251403df03d707e3
+index b42048ba02..31c8df1d58 100644
+--- a/b42048ba0297e0c378657614f863698665097400
++++ b/31c8df1d580c9cdfe9d0ec3e251403df03d707e3
+@@ -1,9 +1,10 @@
+-private INDArray reshape2dTo3d(INDArray in) {
++private INDArray reshape2dTo3d(INDArray in, int miniBatchSize) {
+     if (in.rank() != 2)
+         throw new IllegalArgumentException("Invalid input: expect NDArray with rank 2");
+     // Based on: RnnToFeedForwardPreProcessor
+     int[] shape = in.shape();
+-    int miniBatchSize = getInputMiniBatchSize();
++    if (in.ordering() == 'f')
++        in = Shape.toOffsetZeroCopy(in, 'c');
+     INDArray reshaped = in.reshape(miniBatchSize, shape[0] / miniBatchSize, shape[1]);
+     return reshaped.permute(0, 2, 1);
+ }
+\ No newline at end of file

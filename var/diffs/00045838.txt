@@ -1,0 +1,16 @@
+diff --git a/693579430c5ea90dc05ef51db5d0326a188b205e b/6cf7c2730e48aec5916466116ac3b00e0b08142a
+index 693579430c..6cf7c2730e 100644
+--- a/693579430c5ea90dc05ef51db5d0326a188b205e
++++ b/6cf7c2730e48aec5916466116ac3b00e0b08142a
+@@ -1,8 +1,8 @@
+-public synchronized OEmbeddedDatabasePool poolOpen(String name, String user, String password, OEmbeddedPoolByFactory pool) {
++public synchronized ODatabaseDocumentInternal poolOpen(String name, String user, String password, ODatabasePoolInternal pool) {
+     checkOpen();
+     OAbstractPaginatedStorage storage = getStorage(name);
+     storage.open(pool.getConfig().getConfigurations());
+-    final OEmbeddedDatabasePool embedded = new OEmbeddedDatabasePool(pool, storage);
++    final ODatabaseDocumentEmbedded embedded = factory.newPoolInstance(pool, storage);
+     embedded.internalOpen(user, password, pool.getConfig());
+     return embedded;
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/f8964b8055d7df4bf55e4344a3c1c5dcb2f3561a b/2f5f923c23378578fe298e0dee14004559af5055
+index f8964b8055..2f5f923c23 100644
+--- a/f8964b8055d7df4bf55e4344a3c1c5dcb2f3561a
++++ b/2f5f923c23378578fe298e0dee14004559af5055
+@@ -1,13 +1,6 @@
+ public void test_error_7() throws Exception {
+     DruidPooledConnection conn = dataSource.getConnection().unwrap(DruidPooledConnection.class);
+     conn.close();
+-    {
+-        Exception error = null;
+-        try {
+-            dataSource.setPassword("xx");
+-        } catch (Exception ex) {
+-            error = ex;
+-        }
+-        Assert.assertNotNull(error);
+-    }
++    dataSource.setPassword(dataSource.getPassword());
++    dataSource.setPassword("xx");
+ }
+\ No newline at end of file

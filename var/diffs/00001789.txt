@@ -1,0 +1,17 @@
+diff --git a/3038cfc0e7859f3e8d5da809a9674202e20b28dd b/477976e4505f603c914335e1d75f8cbc812085ed
+index 3038cfc0e7..477976e450 100644
+--- a/3038cfc0e7859f3e8d5da809a9674202e20b28dd
++++ b/477976e4505f603c914335e1d75f8cbc812085ed
+@@ -1,10 +1,3 @@
+ public void testSecondJavaClass() throws Exception {
+-    doTest("d", new Computable<PsiElement>() {
+-
+-        @Nullable
+-        @Override
+-        public PsiElement compute() {
+-            return getJavaFacade().findClass("d.Second");
+-        }
+-    }, false);
++    doTest("d", () -> getJavaFacade().findClass("d.Second"), false);
+ }
+\ No newline at end of file

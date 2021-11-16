@@ -1,0 +1,17 @@
+diff --git a/b47bd1b9bc35f8c7da34c68caffad43462ba45e1 b/875ec64262e3ce7cf3b940bedbba9b036981b495
+index b47bd1b9bc..875ec64262 100644
+--- a/b47bd1b9bc35f8c7da34c68caffad43462ba45e1
++++ b/875ec64262e3ce7cf3b940bedbba9b036981b495
+@@ -1,9 +1,9 @@
+ protected CloudGitApplication createApplication() throws ServerRuntimeException {
+-    return myAgentTaskExecutor.execute(new Computable<CloudGitApplication>() {
++    return getAgentTaskExecutor().execute(new Computable<CloudGitApplication>() {
+
+         @Override
+         public CloudGitApplication compute() {
+-            return myDeployment.createApplication();
++            return getDeployment().createApplication();
+         }
+     });
+ }
+\ No newline at end of file

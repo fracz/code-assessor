@@ -1,0 +1,20 @@
+diff --git a/75a81c49bf5f3122658d35d0ef023f955c245879 b/f5b42395e50e3132580efd66a54c26d8fe6433e0
+index 75a81c49bf..f5b42395e5 100644
+--- a/75a81c49bf5f3122658d35d0ef023f955c245879
++++ b/f5b42395e50e3132580efd66a54c26d8fe6433e0
+@@ -1,14 +1,13 @@
+ @Test
+ public void shouldMapFromAddedLabelToNodes() throws Exception {
+     // GIVEN
+-    TxState state = new TxState();
+     state.addLabelToNode(1, 0);
+     state.addLabelToNode(2, 0);
+     state.addLabelToNode(1, 1);
+     state.addLabelToNode(3, 1);
+     state.addLabelToNode(2, 2);
+     // WHEN
+     Iterable<Long> nodes = state.getAddedNodesWithLabel(2);
+     // THEN
+     assertEquals(asSet(0L, 2L), asSet(nodes));
+ }
+\ No newline at end of file

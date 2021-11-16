@@ -1,0 +1,19 @@
+diff --git a/57ff079115c805c43d0bd686a3248007a27467bc b/81cb5d0d93f6a44846a48c6a529cf49df87f9a62
+index 57ff079115..81cb5d0d93 100644
+--- a/57ff079115c805c43d0bd686a3248007a27467bc
++++ b/81cb5d0d93f6a44846a48c6a529cf49df87f9a62
+@@ -1,11 +1,12 @@
++@Test
+ public void testContextWithInvalidLazyClass() {
+-    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("invalidClass.xml", getClass());
++    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(INVALID_CLASS_CONTEXT, getClass());
+     assertTrue(ctx.containsBean("someMessageSource"));
+     try {
+         ctx.getBean("someMessageSource");
+         fail("Should have thrown CannotLoadBeanClassException");
+     } catch (CannotLoadBeanClassException ex) {
+         assertTrue(ex.contains(ClassNotFoundException.class));
+     }
+     ctx.close();
+ }
+\ No newline at end of file

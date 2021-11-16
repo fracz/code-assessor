@@ -1,0 +1,14 @@
+diff --git a/4f2420e41ae04c776892e3f34dd234b041d78734 b/7c7e3527d17d97a5c5d4d85ccde558cd56fdeb0d
+index 4f2420e41a..7c7e3527d1 100644
+--- a/4f2420e41ae04c776892e3f34dd234b041d78734
++++ b/7c7e3527d17d97a5c5d4d85ccde558cd56fdeb0d
+@@ -1,5 +1,5 @@
+ public static boolean isIndexBuilt(String keyspaceName, String indexName) {
+-    ColumnFamilyStore cfs = Keyspace.open(NAME).getColumnFamilyStore(BUILT_INDEXES);
+-    QueryFilter filter = QueryFilter.getNamesFilter(decorate(ByteBufferUtil.bytes(keyspaceName)), BUILT_INDEXES, FBUtilities.singleton(cfs.getComparator().makeCellName(indexName), cfs.getComparator()), System.currentTimeMillis());
+-    return ColumnFamilyStore.removeDeleted(cfs.getColumnFamily(filter), Integer.MAX_VALUE) != null;
++    String req = "SELECT index_name FROM %s.\"%s\" WHERE table_name=? AND index_name=?";
++    UntypedResultSet result = executeInternal(String.format(req, NAME, BUILT_INDEXES), keyspaceName, indexName);
++    return !result.isEmpty();
+ }
+\ No newline at end of file

@@ -1,0 +1,23 @@
+diff --git a/ea79c4a9654fddcca36b16b8504a8d41ddc1c650 b/efdae0c529f040120bffd36f3be8e8859b1b59f8
+index ea79c4a965..efdae0c529 100644
+--- a/ea79c4a9654fddcca36b16b8504a8d41ddc1c650
++++ b/efdae0c529f040120bffd36f3be8e8859b1b59f8
+@@ -1,12 +1,13 @@
+ @Test
+ public void shouldAcquireSchemaWriteLockBeforeCreatingUniquenessConstraint() throws Exception {
+     // given
+-    UniquenessConstraint constraint = new UniquenessConstraint(0, 0);
+-    when(schemaWriteOps.uniquePropertyConstraintCreate(state, 123, 456)).thenReturn(constraint);
++    NodePropertyDescriptor descriptor = new NodePropertyDescriptor(123, 456);
++    UniquenessConstraint constraint = new UniquenessConstraint(new NodePropertyDescriptor(0, 0));
++    when(schemaWriteOps.uniquePropertyConstraintCreate(state, descriptor)).thenReturn(constraint);
+     // when
+-    PropertyConstraint result = lockingOps.uniquePropertyConstraintCreate(state, 123, 456);
++    PropertyConstraint result = lockingOps.uniquePropertyConstraintCreate(state, descriptor);
+     // then
+     assertSame(constraint, result);
+     order.verify(locks).acquireExclusive(LockTracer.NONE, ResourceTypes.SCHEMA, schemaResource());
+-    order.verify(schemaWriteOps).uniquePropertyConstraintCreate(state, 123, 456);
++    order.verify(schemaWriteOps).uniquePropertyConstraintCreate(state, descriptor);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/8ae2de817b5979b5433015d08f531931929939ea b/a59c6478a1be6d0bbaafbeaac55cd9a74fc49913
+index 8ae2de817b..a59c6478a1 100644
+--- a/8ae2de817b5979b5433015d08f531931929939ea
++++ b/a59c6478a1be6d0bbaafbeaac55cd9a74fc49913
+@@ -1,7 +1,7 @@
+ @Test
+ public void ambiguousMatch() throws Exception {
+     this.mapping.registerMapping("/f?o", this.handler, this.method1);
+     this.mapping.registerMapping("/fo?", this.handler, this.method2);
+     Mono<Object> result = this.mapping.getHandler(createExchange(HttpMethod.GET, "/foo"));
+-    TestSubscriber.subscribe(result).assertError(IllegalStateException.class);
++    ScriptedSubscriber.create().expectError(IllegalStateException.class).verify(result);
+ }
+\ No newline at end of file

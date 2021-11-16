@@ -1,0 +1,12 @@
+diff --git a/641d7ab4b27e8738ae490f4434227b0a8c677058 b/6b7e5ac29459b6cc5e0cf1d91648c43284570c1b
+index 641d7ab4b2..6b7e5ac294 100644
+--- a/641d7ab4b27e8738ae490f4434227b0a8c677058
++++ b/6b7e5ac29459b6cc5e0cf1d91648c43284570c1b
+@@ -1,5 +1,5 @@
+ @Override
+ public void setShort(int parameterIndex, short x) throws SQLException {
+-    setParameter(parameterIndex, new JdbcParameterImpl(Types.SMALLINT, x));
++    setParameter(parameterIndex, createParameter(Types.SMALLINT, x));
+     createChain().preparedStatement_setShort(this, parameterIndex, x);
+ }
+\ No newline at end of file

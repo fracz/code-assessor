@@ -1,0 +1,13 @@
+diff --git a/f5a747a5893e011cc8a74dcadf50b7d1a8a36678 b/602943d20bcee0d199a154a7ced1951edcbd0512
+index f5a747a589..602943d20b 100644
+--- a/f5a747a5893e011cc8a74dcadf50b7d1a8a36678
++++ b/602943d20bcee0d199a154a7ced1951edcbd0512
+@@ -1,4 +1,5 @@
+ protected void scanChars() {
+-    term.scanChars(position);
+-    setTermResult();
++    Tokenizer tokenizer = new Tokenizer(input, dictionary, position);
++    tokenizer.scanChars();
++    setTokenizerResult(tokenizer);
+ }
+\ No newline at end of file

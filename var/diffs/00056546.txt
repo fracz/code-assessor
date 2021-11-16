@@ -1,0 +1,23 @@
+diff --git a/98f81757615e1179523177ca9fb21b733195fbd2 b/f107d40bd3f167daa03dfc66b235d1b662c3e491
+index 98f8175761..f107d40bd3 100644
+--- a/98f81757615e1179523177ca9fb21b733195fbd2
++++ b/f107d40bd3f167daa03dfc66b235d1b662c3e491
+@@ -1,7 +1,11 @@
+-public static String unicodeBlockStringOf(int codePoint) {
+-    Character.Subset block = Character.UnicodeBlock.of(codePoint);
+-    if (block == null) {
+-        return "Undefined";
+-    }
+-    return block.toString();
++/**
++ * Returns a string representation of a character's unicode
++ * block.
++ *
++ * @param c
++ * @return
++ */
++public static String unicodeBlockStringOf(char c) {
++    Character.Subset block = Character.UnicodeBlock.of(c);
++    return block == null ? "Undefined" : block.toString();
+ }
+\ No newline at end of file

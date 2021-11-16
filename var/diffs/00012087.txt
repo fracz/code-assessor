@@ -1,0 +1,16 @@
+diff --git a/940ea30194bc8e5dfa80b65d6d55aa9f626421ab b/b1455321961eb022e1466ee42cc2eb3ed160c9dd
+index 940ea30194..b145532196 100644
+--- a/940ea30194bc8e5dfa80b65d6d55aa9f626421ab
++++ b/b1455321961eb022e1466ee42cc2eb3ed160c9dd
+@@ -1,8 +1,8 @@
+-private void registerActionShortcuts(InspectionTool tool) {
+-    final QuickFixAction[] fixes = tool.getQuickFixes(new RefEntity[0]);
++private void registerActionShortcuts(@NotNull InspectionToolPresentation presentation) {
++    final QuickFixAction[] fixes = presentation.getQuickFixes(RefEntity.EMPTY_ELEMENTS_ARRAY);
+     if (fixes != null) {
+         for (QuickFixAction fix : fixes) {
+             fix.registerCustomShortcutSet(fix.getShortcutSet(), this);
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/40fb6e53fcf81a866eb0684290eaa09c2171a9e4 b/701257610a7b8094dd11936be3e139ce175d8976
+index 40fb6e53fc..701257610a 100644
+--- a/40fb6e53fcf81a866eb0684290eaa09c2171a9e4
++++ b/701257610a7b8094dd11936be3e139ce175d8976
+@@ -1,5 +1,5 @@
+ @Test
+ public void testExtractList() throws Exception {
+     ModelStringList modelDate = (ModelStringList) PageModelExtractor.create(ModelStringList.class).process(pageMocker.getMockPage());
+-    assertThat(modelDate.links).hasSize(8);
++    assertThat(modelDate.links).containsExactly("http://webmagic.io/list/1", "http://webmagic.io/list/2", "http://webmagic.io/list/3", "http://webmagic.io/list/4");
+ }
+\ No newline at end of file

@@ -1,0 +1,23 @@
+diff --git a/9c556e959018a856fb6354605685915e8950f7db b/a6424616d5b9b6c6b7aa45e8ff75666021b1af82
+index 9c556e9590..a6424616d5 100644
+--- a/9c556e959018a856fb6354605685915e8950f7db
++++ b/a6424616d5b9b6c6b7aa45e8ff75666021b1af82
+@@ -1,16 +1,16 @@
+ /**
+  * FunctionType#substituteGenerics is called while instantiating prototype
+  * methods of generic nominal types.
+  */
+ FunctionType substituteGenerics(Map<String, JSType> concreteTypes) {
+-    if (!isGeneric() || JSType.MAP_TO_UNKNOWN.equals(concreteTypes)) {
++    if (!isGeneric() || this.commonTypes.MAP_TO_UNKNOWN.equals(concreteTypes)) {
+         return substituteNominalGenerics(concreteTypes);
+     }
+     ImmutableMap.Builder<String, JSType> builder = ImmutableMap.builder();
+     for (Map.Entry<String, JSType> concreteTypeEntry : concreteTypes.entrySet()) {
+         if (!typeParameters.contains(concreteTypeEntry.getKey())) {
+             builder.put(concreteTypeEntry);
+         }
+     }
+     return substituteNominalGenerics(builder.build());
+ }
+\ No newline at end of file

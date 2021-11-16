@@ -1,0 +1,15 @@
+diff --git a/25061717467a566572c7251e7a66e2fa65453bde b/70fdd0a8f5be6bc7cbf85205a9277dfaf033436f
+index 2506171746..70fdd0a8f5 100644
+--- a/25061717467a566572c7251e7a66e2fa65453bde
++++ b/70fdd0a8f5be6bc7cbf85205a9277dfaf033436f
+@@ -1,7 +1,7 @@
+ public int drawMultiLineText(AnimationState as, int x, int y, CharSequence str, int width, de.matthiasmann.twl.HAlignment align) {
+     FontState fontState = evalFontState(as);
+     x += fontState.offsetX;
+     y += fontState.offsetY + yOffset;
+-    com.badlogic.gdx.graphics.Color color = renderer.getColor(fontState.color);
+-    return bitmapFont.drawMultiLine(renderer.spriteBatch, str, x, y, color, width, gdxAlignment[align.ordinal()]);
++    bitmapFont.setColor(renderer.getColor(fontState.color));
++    return bitmapFont.drawMultiLine(renderer.spriteBatch, str, x, y, width, gdxAlignment[align.ordinal()]).width;
+ }
+\ No newline at end of file

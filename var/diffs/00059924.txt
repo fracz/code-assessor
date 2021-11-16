@@ -1,0 +1,19 @@
+diff --git a/f190c9d82ab5080a4c8eb596d8402a8bdf0c8c31 b/c19bf020110825100c6583b8bc27aa2893d40bd4
+index f190c9d82a..c19bf02011 100644
+--- a/f190c9d82ab5080a4c8eb596d8402a8bdf0c8c31
++++ b/c19bf020110825100c6583b8bc27aa2893d40bd4
+@@ -1,10 +1,10 @@
+ public void testDefaultFilterLimitOneTinkerGraph() throws Exception {
+     Configuration config = new Configuration();
+     config.set(VertexQueryFilter.TITAN_HADOOP_GRAPH_INPUT_VERTEX_QUERY_FILTER, "v.query().limit(1)");
+     VertexQueryFilter query = VertexQueryFilter.create(config);
+-    Map<Long, HadoopVertex> graph = generateGraph(ExampleGraph.TINKERGRAPH);
+-    for (HadoopVertex vertex : graph.values()) {
++    Map<Long, FaunusVertex> graph = generateGraph(ExampleGraph.TINKERGRAPH);
++    for (FaunusVertex vertex : graph.values()) {
+         query.defaultFilter(vertex);
+-        assertEquals(((List) vertex.getEdges(Direction.BOTH)).size(), 1);
++        assertEquals(Iterables.size(vertex.getEdges(Direction.BOTH)), 1);
+     }
+ }
+\ No newline at end of file

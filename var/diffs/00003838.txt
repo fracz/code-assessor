@@ -1,0 +1,14 @@
+diff --git a/ca4985a0f74a6c901058c8ff62db583b890a9d97 b/c8d3d730f89f3ed4ca44c35a4f7506b401835333
+index ca4985a0f7..c8d3d730f8 100644
+--- a/ca4985a0f74a6c901058c8ff62db583b890a9d97
++++ b/c8d3d730f89f3ed4ca44c35a4f7506b401835333
+@@ -1,5 +1,7 @@
+ @Override
+ protected GrInplaceVariableIntroducer getIntroducer(@NotNull GrVariable var, @NotNull GrIntroduceContext context, @NotNull GroovyIntroduceVariableSettings settings, @NotNull List<RangeMarker> occurrenceMarkers, RangeMarker varRangeMarker, RangeMarker expressionRangeMarker, RangeMarker stringPartRangeMarker) {
+     context.getEditor().getCaretModel().moveToOffset(var.getTextOffset());
+-    return new GrInplaceVariableIntroducer(var, context.getEditor(), context.getProject(), REFACTORING_NAME, occurrenceMarkers, var);
++    GrInplaceVariableIntroducer introducer = new GrInplaceVariableIntroducer(var, context.getEditor(), context.getProject(), REFACTORING_NAME, occurrenceMarkers, var);
++    introducer.setAdvertisementText(getAdvertisementText(var.getDeclaredType() != null));
++    return introducer;
+ }
+\ No newline at end of file

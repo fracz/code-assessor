@@ -1,0 +1,15 @@
+diff --git a/f70e3e54a674c467605754adf285e27eb1d69f63 b/59af732094d3b14b4d974feb233b04ca3f09451c
+index f70e3e54a6..59af732094 100644
+--- a/f70e3e54a674c467605754adf285e27eb1d69f63
++++ b/59af732094d3b14b4d974feb233b04ca3f09451c
+@@ -1,6 +1,6 @@
+-public void put1(int start, int end, int newStart) {
++public void put1(int start, int newStart, int length) {
+     myFragments1.put(start, newStart);
+-    myFragments1.put(end, -1);
++    myFragments1.put(start + length, -1);
+     myInvertedFragments1.put(newStart, start);
+-    myInvertedFragments1.put(newStart + end - start, end);
++    myInvertedFragments1.put(newStart + length, -1);
+ }
+\ No newline at end of file

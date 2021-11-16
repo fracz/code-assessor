@@ -1,0 +1,25 @@
+diff --git a/02e750cacde4ddaee32d0731360cccfb3698be22 b/e5d4bbaef8c2bc7da8deb9767048e7b8980b44f9
+index 02e750cacd..e5d4bbaef8 100644
+--- a/02e750cacde4ddaee32d0731360cccfb3698be22
++++ b/e5d4bbaef8c2bc7da8deb9767048e7b8980b44f9
+@@ -1,12 +1,11 @@
+ @Override
+-public Icon scale(float scale) {
+-    if (getScale() == scale) {
+-        return this;
++public EmptyIcon scale(float scale) {
++    if (getScale() == scale || !isCached()) {
++        return (EmptyIcon) super.scale(scale);
+     }
+-    if (myScaledCache != null && myScaledCache.getScale() == scale) {
+-        return myScaledCache;
++    if (myScaledCache == null || myScaledCache.getScale() != scale) {
++        // never cached
++        myScaledCache = copy();
+     }
+-    myScaledCache = createScaledInstance(scale);
+-    myScaledCache.setScale(scale);
+-    return myScaledCache;
++    return myScaledCache.scale(scale);
+ }
+\ No newline at end of file

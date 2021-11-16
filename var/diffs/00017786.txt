@@ -1,0 +1,17 @@
+diff --git a/1b0a715cc52e8a153f4e629a7fa7044da88c375c b/fe9c881c518f0345064fdf3e6ce6e1ab4d440e43
+index 1b0a715cc5..fe9c881c51 100644
+--- a/1b0a715cc52e8a153f4e629a7fa7044da88c375c
++++ b/fe9c881c518f0345064fdf3e6ce6e1ab4d440e43
+@@ -1,7 +1,10 @@
+ @Override
+ public long next() {
+     if (null == gatingSequences) {
+         throw new NullPointerException("gatingSequences must be set before claiming sequences");
+     }
+-    return incrementAndGet(1, gatingSequences);
++    long nextSequence = cursor.get() + 1;
++    waitForFreeSlotAt(nextSequence, gatingSequences);
++    cursor.set(nextSequence);
++    return nextSequence;
+ }
+\ No newline at end of file

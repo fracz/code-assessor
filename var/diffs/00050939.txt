@@ -1,0 +1,28 @@
+diff --git a/8a2fdcd82427dba6e2e300377e7bccfdd071f139 b/85aaff059d378ceb6b042a8f66b2f5514ec58c76
+index 8a2fdcd824..85aaff059d 100644
+--- a/8a2fdcd82427dba6e2e300377e7bccfdd071f139
++++ b/85aaff059d378ceb6b042a8f66b2f5514ec58c76
+@@ -1,16 +1,14 @@
+ public IEditorInput getNestedEditorInput(IDatabaseEditorInput mainInput) {
+-    if (inputFactoryClass == null) {
+-        if (inputFactoryClassName == null) {
+-            return mainInput;
+-        }
+-        inputFactoryClass = getObjectClass(inputFactoryClassName, IDatabaseEditorInputFactory.class);
++    if (inputFactoryType == null || inputFactoryType.getImplName() == null) {
++        return mainInput;
+     }
+     try {
+-        if (inputFactoryClass != null) {
+-            return inputFactoryClass.newInstance().createNestedEditorInput(mainInput);
++        IDatabaseEditorInputFactory instance = inputFactoryType.createInstance(IDatabaseEditorInputFactory.class);
++        if (instance != null) {
++            return instance.createNestedEditorInput(mainInput);
+         }
+     } catch (Exception e) {
+-        log.error(e);
++        log.error("Error instantiating input factory", e);
+     }
+     return mainInput;
+ }
+\ No newline at end of file

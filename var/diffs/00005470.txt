@@ -1,0 +1,20 @@
+diff --git a/19bd25fabb8272dca67004aff519aef0be6eeae0 b/c593e936b189cce5aaf4c761dc2f8a755486fff4
+index 19bd25fabb..c593e936b1 100644
+--- a/19bd25fabb8272dca67004aff519aef0be6eeae0
++++ b/c593e936b189cce5aaf4c761dc2f8a755486fff4
+@@ -1,13 +1,13 @@
+ private JPanel createDescriptionPanel() {
+     JPanel panel = new JPanel(new BorderLayout()) {
+
+         public Dimension getMinimumSize() {
+             return new Dimension(300, -1);
+         }
+     };
++    panel.add(new JLabel(KeyMapBundle.message("action.description.ide.border.factory.title")), BorderLayout.NORTH);
+     myDescription = new JEditorPane(UIUtil.HTML_MIME, "<html><body></body></html>");
+     myDescription.setEditable(false);
+     panel.add(ScrollPaneFactory.createScrollPane(myDescription), BorderLayout.CENTER);
+-    panel.setBorder(IdeBorderFactory.createTitledBorder(KeyMapBundle.message("action.description.ide.border.factory.title")));
+     return panel;
+ }
+\ No newline at end of file

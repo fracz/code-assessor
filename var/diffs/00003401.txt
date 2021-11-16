@@ -1,0 +1,19 @@
+diff --git a/f4aaa0ac38e3e3290a659181615eb2ec3aaf27ba b/edea0b74e0e917452345d620c29e984342e2d1f8
+index f4aaa0ac38..edea0b74e0 100644
+--- a/f4aaa0ac38e3e3290a659181615eb2ec3aaf27ba
++++ b/edea0b74e0e917452345d620c29e984342e2d1f8
+@@ -1,12 +1,12 @@
+ @Nullable
+ private String toAbsolutePath(String genRelativePath) {
+-    String moduleDirPath = new File(myContext.getModule().getModuleFilePath()).getParent();
++    String moduleDirPath = AndroidRootUtil.getModuleDirPath(myContext.getModule());
+     if (moduleDirPath == null)
+         return null;
+     try {
+         return new File(moduleDirPath + genRelativePath).getCanonicalPath();
+     } catch (IOException e) {
+         LOG.info(e);
+         return moduleDirPath + genRelativePath;
+     }
+ }
+\ No newline at end of file

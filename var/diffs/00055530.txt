@@ -1,0 +1,16 @@
+diff --git a/5693e6b2a2108228a418ca87e81ae7b9934bb31a b/61d08e94bd3de52aa4753d2ae6ead71fba72c4ca
+index 5693e6b2a2..61d08e94bd 100644
+--- a/5693e6b2a2108228a418ca87e81ae7b9934bb31a
++++ b/61d08e94bd3de52aa4753d2ae6ead71fba72c4ca
+@@ -1,7 +1,8 @@
+ @Before
+ public void setup() {
+-    this.request = EasyMock.createMock(HttpServletRequest.class);
++    this.request = new MockHttpServletRequest();
++    this.request.setAsyncSupported(true);
+     this.response = new MockHttpServletResponse();
+     this.asyncRequest = new StandardServletAsyncWebRequest(this.request, this.response);
+-    this.asyncRequest.setTimeout(60 * 1000L);
++    this.asyncRequest.setTimeout(44 * 1000L);
+ }
+\ No newline at end of file

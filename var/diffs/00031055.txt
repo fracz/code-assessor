@@ -1,0 +1,12 @@
+diff --git a/c74bec69d977bb21fdd5fb7343cc15f47c3bf5b5 b/b7e541adf81d9f1bebf65724e3d0ce831c6c5434
+index c74bec69d9..b7e541adf8 100644
+--- a/c74bec69d977bb21fdd5fb7343cc15f47c3bf5b5
++++ b/b7e541adf81d9f1bebf65724e3d0ce831c6c5434
+@@ -1,4 +1,5 @@
+ @Override
+ public void copy(int slot, int doc) {
+-    values[slot] = ((Number) script.execute(doc)).doubleValue();
++    script.setNextDocId(doc);
++    values[slot] = script.runAsDouble();
+ }
+\ No newline at end of file

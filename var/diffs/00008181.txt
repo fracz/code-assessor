@@ -1,0 +1,19 @@
+diff --git a/482e1c9766a4f9d2d8afbb750564565895e42a22 b/50bc3412e5fbf5ebe521792c57f1882cf82a124f
+index 482e1c9766..50bc3412e5 100644
+--- a/482e1c9766a4f9d2d8afbb750564565895e42a22
++++ b/50bc3412e5fbf5ebe521792c57f1882cf82a124f
+@@ -1,11 +1,7 @@
+ public String getName() {
+-    XmlElement element = getSourceElement();
+-    if (element == null) {
+-        element = null;
+-    }
+-    PsiElement parent = element.getParent();
++    PsiElement parent = getSourceElement().getParent();
+     if (parent == null) {
+-        parent = null;
++        return null;
+     }
+     return ((XmlAttribute) parent).getValue();
+ }
+\ No newline at end of file

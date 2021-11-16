@@ -1,0 +1,26 @@
+diff --git a/53a9bc61785d008df2b7049baabd04d826a1994f b/85ef47d33d2d2c4f339b0cb3d23b581dad2024ed
+index 53a9bc6178..85ef47d33d 100644
+--- a/53a9bc61785d008df2b7049baabd04d826a1994f
++++ b/85ef47d33d2d2c4f339b0cb3d23b581dad2024ed
+@@ -1,12 +1,16 @@
+-public List<String> getImportSourceQName() {
++public PyQualifiedName getImportSourceQName() {
+     final PyFromImportStatementStub stub = getStub();
+     if (stub != null) {
+-        final List<String> qName = stub.getImportSourceQName();
+-        if (qName != null && qName.size() == 0) {
++        final PyQualifiedName qName = stub.getImportSourceQName();
++        if (qName != null && qName.getComponentCount() == 0) {
+             // relative import only: from .. import the_name
+             return null;
+         }
+         return qName;
+     }
+-    return ResolveImportUtil.getQualifiedName(getImportSource());
++    final PyReferenceExpression importSource = getImportSource();
++    if (importSource == null) {
++        return null;
++    }
++    return importSource.asQualifiedName();
+ }
+\ No newline at end of file

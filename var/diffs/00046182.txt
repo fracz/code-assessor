@@ -1,0 +1,22 @@
+diff --git a/cde368f09c4ad9162d3da26b443958809fc65b72 b/21fe0c7576972632c533048930a3dde2993a024e
+index cde368f09c..21fe0c7576 100644
+--- a/cde368f09c4ad9162d3da26b443958809fc65b72
++++ b/21fe0c7576972632c533048930a3dde2993a024e
+@@ -1,15 +1,14 @@
+ private void finishInstall(boolean error) {
+-    // Finished installing library
+     resetInstallProgressBarState();
+     installRemoveButton.setEnabled(!contrib.isUpdateFlagged());
+     if (error) {
+         setErrorMessage(Language.text("contrib.download_error"));
+     }
+     barButtonCardLayout.show(barButtonCardPane, BUTTON_CONSTRAINT);
+     installInProgress = false;
+     if (updateInProgress) {
+-        updateInProgress = !updateInProgress;
++        updateInProgress = false;
+     }
+     updateButton.setVisible(contribListing.hasUpdates(contrib) && !contrib.isUpdateFlagged());
+     setSelected(true);
+ }
+\ No newline at end of file

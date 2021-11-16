@@ -1,0 +1,33 @@
+diff --git a/48a6c9e74bfd25195b7d03bf395ede3e0472a9b1 b/026838e034148d85bad5b4346d2094967d284c6c
+index 48a6c9e74b..026838e034 100644
+--- a/48a6c9e74bfd25195b7d03bf395ede3e0472a9b1
++++ b/026838e034148d85bad5b4346d2094967d284c6c
+@@ -1,21 +1,21 @@
+ public boolean existsDatabase() throws IOException {
+     storage.checkConnection();
+     try {
++        final OChannelBinaryClient network = storage.beginRequest(OChannelBinaryProtocol.REQUEST_DB_EXIST);
+         try {
+-            storage.beginRequest(OChannelBinaryProtocol.REQUEST_DB_EXIST);
+-            storage.getNetwork().writeString(storage.getName());
++            network.writeString(storage.getName());
+         } finally {
+-            storage.endRequest();
++            storage.endRequest(network);
+         }
+         try {
+-            storage.beginResponse();
+-            return storage.getNetwork().readByte() == 1;
++            storage.beginResponse(network);
++            return network.readByte() == 1;
+         } finally {
+-            storage.endResponse();
++            storage.endResponse(network);
+         }
+     } catch (Exception e) {
+         OLogManager.instance().exception("Error on checking existance of the remote storage: " + storage.getName(), e, OStorageException.class);
+         storage.close();
+     }
+     return false;
+ }
+\ No newline at end of file

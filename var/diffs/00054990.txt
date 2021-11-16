@@ -1,0 +1,19 @@
+diff --git a/6b12ffcccba60f94197344b99b88ed07479eb249 b/80816ab5cc37674c2e8dce68afdb01eb6c707358
+index 6b12ffcccb..80816ab5cc 100644
+--- a/6b12ffcccba60f94197344b99b88ed07479eb249
++++ b/80816ab5cc37674c2e8dce68afdb01eb6c707358
+@@ -1,12 +1,11 @@
+ public IAttribute get(AttributeType type) {
+     if (type.isUniq()) {
+         return uniqAttr.get(type);
+     } else {
+-        int count = getCountInternal(type);
+-        if (count != 0) {
++        if (getMultiCountInternal(type) != 0) {
+             for (IAttribute attr : attributes) if (attr.getType() == type)
+                 return attr;
+         }
+         return null;
+     }
+ }
+\ No newline at end of file

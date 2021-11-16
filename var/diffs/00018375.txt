@@ -1,0 +1,16 @@
+diff --git a/540db83bb9d1d79ee4618e52d649ac54a1e71782 b/8334f388594f302684a9be2b907d4ae9f7d581fb
+index 540db83bb9..8334f38859 100644
+--- a/540db83bb9d1d79ee4618e52d649ac54a1e71782
++++ b/8334f388594f302684a9be2b907d4ae9f7d581fb
+@@ -1,9 +1,8 @@
+ @Override
+ public void subscribe(Subscriber<? super T> s) {
+     if (ACTUAL.compareAndSet(this, null, s)) {
+         s.onSubscribe(this);
+     } else {
+-        s.onSubscribe(EmptySubscription.INSTANCE);
+-        s.onError(new IllegalStateException("Only one Subscriber allowed!"));
++        EmptySubscription.error(new IllegalStateException("Only one Subscriber allowed!"), s);
+     }
+ }
+\ No newline at end of file

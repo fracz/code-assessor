@@ -1,0 +1,18 @@
+diff --git a/451f8dbab1dfa6b9764abb7cd08a4f6480e6bde3 b/a0e0d56ffc30da221d7bf4b6db93698f628dcc61
+index 451f8dbab1..a0e0d56ffc 100644
+--- a/451f8dbab1dfa6b9764abb7cd08a4f6480e6bde3
++++ b/a0e0d56ffc30da221d7bf4b6db93698f628dcc61
+@@ -1,8 +1,9 @@
+ protected void scanIdentifier() {
++    Tokenizer tokenizer = new Tokenizer(input, dictionary, position);
+     if ('`' == charAt(position)) {
+-        term.scanContentUntil(position, '`', GeneralLiterals.IDENTIFIER, false);
++        tokenizer.scanContentUntil('`', GeneralLiterals.IDENTIFIER, false);
+     } else {
+-        term.scanIdentifier(position);
++        tokenizer.scanIdentifier();
+     }
+-    setTermResult();
++    setTokenizerResult(tokenizer);
+ }
+\ No newline at end of file

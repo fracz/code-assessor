@@ -1,0 +1,14 @@
+diff --git a/f374acc0a30d2d79926c7c54d48cc58aeac664da b/481179490c9f9eeafec634167151fe55ce1b7427
+index f374acc0a3..481179490c 100644
+--- a/f374acc0a30d2d79926c7c54d48cc58aeac664da
++++ b/481179490c9f9eeafec634167151fe55ce1b7427
+@@ -1,7 +1,3 @@
+ public int getDialogsCounterBackgroundColor() {
+-    if (dialogsCounterBackgroundColor != 0) {
+-        return dialogsCounterBackgroundColor;
+-    } else {
+-        return getPrimaryAltColor();
+-    }
++    return getColorWithFallback(dialogsCounterBackgroundColor, getPrimaryAltColor());
+ }
+\ No newline at end of file

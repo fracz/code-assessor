@@ -1,0 +1,23 @@
+diff --git a/4d0e36e3a613f9fc76fe56f3df85ee332eb05cec b/f21af8ab9c651482663122e69e9bc5bfbe9cc0a7
+index 4d0e36e3a6..f21af8ab9c 100644
+--- a/4d0e36e3a613f9fc76fe56f3df85ee332eb05cec
++++ b/f21af8ab9c651482663122e69e9bc5bfbe9cc0a7
+@@ -1,12 +1,8 @@
+ public String getCellText(int column, int row) {
+-    IGridLabelProvider contentLabelProvider = getContentLabelProvider();
+-    if (contentLabelProvider != null) {
+-        String text = contentLabelProvider.getText(column, row);
+-        // Truncate too long texts (they are really bad for performance)
+-        if (text.length() > MAX_TOOLTIP_LENGTH) {
+-            text = text.substring(0, MAX_TOOLTIP_LENGTH) + " ...";
+-        }
+-        return text;
++    String text = getContentProvider().getCellText(column, row);
++    // Truncate too long texts (they are really bad for performance)
++    if (text.length() > MAX_TOOLTIP_LENGTH) {
++        text = text.substring(0, MAX_TOOLTIP_LENGTH) + " ...";
+     }
+-    return null;
++    return text;
+ }
+\ No newline at end of file

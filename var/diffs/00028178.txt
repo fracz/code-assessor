@@ -1,0 +1,26 @@
+diff --git a/7de81affb2a3d2505fbab810db5db06a26d43691 b/f77af9d6ac37269785a35f7462ead4e8484121ea
+index 7de81affb2..f77af9d6ac 100644
+--- a/7de81affb2a3d2505fbab810db5db06a26d43691
++++ b/f77af9d6ac37269785a35f7462ead4e8484121ea
+@@ -1,18 +1,18 @@
+ /**
+  * Creates a user and makes that user be the current user.
+  *
+  * @param userProfileDao
+  * the User Profile DAO
+  * @throws Exception
+  * if anything goes wrong
+  */
+-public static void createTestUser(final UserProfileDao userProfileDao) throws Exception {
++public static void createTestUser(final ProfileDao userProfileDao) throws Exception {
+     // set current user
+     EnvironmentContext.getCurrent().setSubject(new SubjectImpl("codenvy", "codenvy", null, false));
+     // rules for mock
+     final Map<String, String> profileAttributes = new HashMap<>();
+     profileAttributes.put("firstName", "Codenvy");
+     profileAttributes.put("lastName", "Codenvy");
+     profileAttributes.put("email", "che@eclipse.org");
+-    Mockito.when(userProfileDao.getById("codenvy")).thenReturn(new Profile().withId("codenvy").withUserId("codenvy").withAttributes(profileAttributes));
++    Mockito.when(userProfileDao.getById("codenvy")).thenReturn(new ProfileImpl("codenvy", profileAttributes));
+ }
+\ No newline at end of file

@@ -1,0 +1,30 @@
+diff --git a/d274b1beb9ab33e81561007c6b89590859e31043 b/27e20a2f5b7e0f1b4b095af6d561490e72dac072
+index d274b1beb9..27e20a2f5b 100644
+--- a/d274b1beb9ab33e81561007c6b89590859e31043
++++ b/27e20a2f5b7e0f1b4b095af6d561490e72dac072
+@@ -1,21 +1,21 @@
+ /**
+  * Tries to return a node representing the <code>SUBJECT</code> (whether
+  * nominal or clausal) of the given node <code>t</code>. Probably, node
+  * <code>t</code> should represent a clause or verb phrase.
+  *
+  * @param t A node in this <code>GrammaticalStructure</code>
+  * @return A node which is the subject of node <code>t</code>, or else
+  * <code>null</code>
+  */
+ public static TreeGraphNode getSubject(TreeGraphNode t) {
+-    TreeGraphNode subj = t.getNodeInRelation(NOMINAL_SUBJECT);
++    TreeGraphNode subj = getNodeInRelation(t, NOMINAL_SUBJECT);
+     if (subj != null) {
+         return subj;
+     }
+-    subj = t.getNodeInRelation(CLAUSAL_SUBJECT);
++    subj = getNodeInRelation(t, CLAUSAL_SUBJECT);
+     if (subj != null) {
+         return subj;
+     } else {
+-        return t.getNodeInRelation(NOMINAL_PASSIVE_SUBJECT);
++        return getNodeInRelation(t, NOMINAL_PASSIVE_SUBJECT);
+     }
+ }
+\ No newline at end of file

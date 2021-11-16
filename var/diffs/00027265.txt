@@ -1,0 +1,21 @@
+diff --git a/cbb5f9cbc31d466dc20d84489120b9d9319e5e4f b/7da082e116cc6620411c69bb338cc93d6c7a4791
+index cbb5f9cbc3..7da082e116 100644
+--- a/cbb5f9cbc31d466dc20d84489120b9d9319e5e4f
++++ b/7da082e116cc6620411c69bb338cc93d6c7a4791
+@@ -1,13 +1,13 @@
+ /**
+  * Returns the sum of the reconstruction entropies
+  * divided by the number of layers
+  * @return the average reconstruction entropy across layers
+  */
+ public double getReconstructionCrossEntropy() {
+     double sum = 0;
+-    for (int i = 0; i < nLayers; i++) {
++    for (int i = 0; i < getnLayers(); i++) {
+         sum += layers[i].getReConstructionCrossEntropy();
+     }
+-    sum /= (double) nLayers;
++    sum /= (double) getnLayers();
+     return sum;
+ }
+\ No newline at end of file

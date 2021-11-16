@@ -1,0 +1,15 @@
+diff --git a/20dd8303e3d6669daf22c7cdbe20a8c493f07bab b/8f2ef073095a89dafbc3f4b79afdc3a7651b029a
+index 20dd8303e3..8f2ef07309 100644
+--- a/20dd8303e3d6669daf22c7cdbe20a8c493f07bab
++++ b/8f2ef073095a89dafbc3f4b79afdc3a7651b029a
+@@ -1,4 +1,8 @@
+ @Override
+ public Query query(QueryParseContext parseContext, String queryText) {
+-    return new ConstantScoreQuery(MissingQueryParser.newFilter(parseContext, queryText, MissingQueryParser.DEFAULT_EXISTENCE_VALUE, MissingQueryParser.DEFAULT_NULL_VALUE, null));
++    Query query = MissingQueryParser.newFilter(parseContext, queryText, MissingQueryParser.DEFAULT_EXISTENCE_VALUE, MissingQueryParser.DEFAULT_NULL_VALUE);
++    if (query != null) {
++        return new ConstantScoreQuery(query);
++    }
++    return null;
+ }
+\ No newline at end of file

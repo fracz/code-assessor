@@ -1,0 +1,20 @@
+diff --git a/61cf81577790907befeed5fae85fb13c53d823f4 b/e679d184b54f54a6485339b37e844ab2a9474cb5
+index 61cf815777..e679d184b5 100644
+--- a/61cf81577790907befeed5fae85fb13c53d823f4
++++ b/e679d184b54f54a6485339b37e844ab2a9474cb5
+@@ -1,10 +1,10 @@
+-private File generateUniqueSchemePatchDir(final String defaultName) {
+-    String[] children = mySchemeManager.getRootDirectory().list();
+-    String uniqueName = UniqueNameGenerator.generateUniqueName(FileUtil.sanitizeName(defaultName), children != null ? ContainerUtil.newArrayList(children) : ContainerUtil.<String>emptyList());
++@NotNull
++private File generateUniqueSchemePatchDir(@NotNull final String defaultName, boolean createResourceDirectory) {
++    String uniqueName = UniqueNameGenerator.generateUniqueName(shortenAndSanitize(defaultName), mySchemeManager.getAllSchemeNames());
+     File dir = new File(myFileProcessor.getBaseDir(), uniqueName);
+-    if (!dir.exists()) {
++    if (createResourceDirectory && !dir.exists()) {
+         // noinspection ResultOfMethodCallIgnored
+         dir.mkdirs();
+     }
+     return dir;
+ }
+\ No newline at end of file

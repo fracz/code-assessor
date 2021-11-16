@@ -1,0 +1,14 @@
+diff --git a/ca84378b4b06da50cb345e6a0e07665fb47e0536 b/f0bcc08bd6b075b0738bb563f107d69ec12adb7b
+index ca84378b4b..f0bcc08bd6 100644
+--- a/ca84378b4b06da50cb345e6a0e07665fb47e0536
++++ b/f0bcc08bd6b075b0738bb563f107d69ec12adb7b
+@@ -1,6 +1,6 @@
+-public synchronized Client getClient() throws Exception {
++public Client getClient() throws Exception {
+     if (clientPool == null || clientPool.isClosed()) {
+-        clientPool = new GenericObjectPool<>(new ClientFactory(getHost(), getPort()));
++        return null;
+     }
+     return clientPool.borrowObject();
+ }
+\ No newline at end of file

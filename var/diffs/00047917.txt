@@ -1,0 +1,11 @@
+diff --git a/34477038cb7294ccd465bca8c87caf0baf076125 b/b0c95413f35a5d7766b95805673d1df3aa7b3af4
+index 34477038cb..b0c95413f3 100644
+--- a/34477038cb7294ccd465bca8c87caf0baf076125
++++ b/b0c95413f35a5d7766b95805673d1df3aa7b3af4
+@@ -1,3 +1,4 @@
+ public Collection<String> getProvidersForListener(LocationListener listener) {
+-    return requestLocationUpdateListenersMap.get(listener);
++    Set<String> providers = requestLocationUpdateListenersMap.get(listener);
++    return providers == null ? Collections.<String>emptyList() : new ArrayList<String>(providers);
+ }
+\ No newline at end of file

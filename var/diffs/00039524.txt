@@ -1,0 +1,19 @@
+diff --git a/17b31be9512490678bb5bc836ae188680a6bd92e b/f5d7f7d76566bdd2303625ab5825037773ffaae1
+index 17b31be951..f5d7f7d765 100644
+--- a/17b31be9512490678bb5bc836ae188680a6bd92e
++++ b/f5d7f7d76566bdd2303625ab5825037773ffaae1
+@@ -1,10 +1,9 @@
+ @Override
+-protected Job<Void> getMasterShutdownDispatcher() {
+-    return new Job<Void>() {
++protected CommonJobs.ShutdownDispatcher getMasterShutdownDispatcher() {
++    return new CommonJobs.ShutdownDispatcher() {
+
+-        public Void execute(GraphDatabaseService db) {
++        public void doShutdown() {
+             master.getGraphDb().shutdown();
+-            return null;
+         }
+     };
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/22e25398f773910c67c2c1c284104932cda14ccb b/812218066efd59dce06ebbcc9ca931f947bf40e4
+index 22e25398f7..812218066e 100644
+--- a/22e25398f773910c67c2c1c284104932cda14ccb
++++ b/812218066efd59dce06ebbcc9ca931f947bf40e4
+@@ -1,9 +1,10 @@
+-private void indexUpdateProperty(KernelStatement state, long nodeId, int labelId, int propertyKey, DefinedProperty before, DefinedProperty after) {
+-    IndexDescriptor descriptor = indexGetForLabelAndPropertyKey(state, labelId, propertyKey);
+-    if (descriptor != null) {
++private void indexUpdateProperty(KernelStatement state, long nodeId, NodePropertyDescriptor descriptor, DefinedProperty before, DefinedProperty after) {
++    // TODO: Update this to handle composite indexes
++    IndexDescriptor indexDescriptor = indexGetForLabelAndPropertyKey(state, descriptor);
++    if (descriptor != null && indexDescriptor != null) {
+         if (after != null) {
+             Validators.INDEX_VALUE_VALIDATOR.validate(after.value());
+         }
+-        state.txState().indexDoUpdateProperty(descriptor, nodeId, before, after);
++        state.txState().indexDoUpdateProperty(indexDescriptor, nodeId, before, after);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/24bc3ebdefbfc04c4ca9abdeda9501346556fb47 b/a8986724c626ca866f84560e6f5069f85ecf6ca0
+index 24bc3ebdef..a8986724c6 100644
+--- a/24bc3ebdefbfc04c4ca9abdeda9501346556fb47
++++ b/a8986724c626ca866f84560e6f5069f85ecf6ca0
+@@ -1,8 +1,3 @@
+ private String output(List<SQLStatement> stmtList) {
+-    StringBuilder out = new StringBuilder();
+-    for (SQLStatement stmt : stmtList) {
+-        stmt.accept(new MySqlOutputVisitor(out));
+-        out.append(";");
+-    }
+-    return out.toString();
++    return SQLUtils.toSQLString(stmtList, JdbcConstants.MYSQL);
+ }
+\ No newline at end of file

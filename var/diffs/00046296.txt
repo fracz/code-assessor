@@ -1,0 +1,29 @@
+diff --git a/41455b6d3745c81dbfb7bc2dcebcae25ac6a624d b/a9cb11aa4d0bbe9e15387db7e3bf0f646d9c7dbd
+index 41455b6d37..a9cb11aa4d 100644
+--- a/41455b6d3745c81dbfb7bc2dcebcae25ac6a624d
++++ b/a9cb11aa4d0bbe9e15387db7e3bf0f646d9c7dbd
+@@ -1,19 +1,14 @@
+ /**
+  * Adds the installed libraries to the listing of libraries, replacing any
+  * pre-existing libraries by the same name as one in the list.
+  */
+ public void updateInstalledList(List<Contribution> installedContributions) {
+     for (Contribution contribution : installedContributions) {
+-        boolean found = false;
+-        for (Contribution existing : allLibraries) {
+-            if (existing.getName().equals(contribution.getName()) && existing.getType() == contribution.getType()) {
+-                replaceContribution(existing, contribution);
+-                found = true;
+-                break;
+-            }
+-        }
+-        if (!found) {
++        Contribution preexistingContribution = getContribution(contribution);
++        if (preexistingContribution != null) {
++            replaceContribution(preexistingContribution, contribution);
++        } else {
+             addContribution(contribution);
+         }
+     }
+ }
+\ No newline at end of file

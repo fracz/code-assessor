@@ -1,0 +1,19 @@
+diff --git a/b4eb609cc3fc7b4ecb3af1408d6857f684ba9ba9 b/d71e910d002e51910f5c9f24f424fcca6334b9a1
+index b4eb609cc3..d71e910d00 100644
+--- a/b4eb609cc3fc7b4ecb3af1408d6857f684ba9ba9
++++ b/d71e910d002e51910f5c9f24f424fcca6334b9a1
+@@ -1,11 +1,11 @@
+ public void release(final OChannelBinaryAsynchClient conn) {
+-    final OResourcePool<String, OChannelBinaryAsynchClient> pool = connections.get(conn.getServerURL());
++    final ORemoteConnectionPool pool = connections.get(conn.getServerURL());
+     if (pool != null) {
+         if (!conn.isConnected()) {
+             OLogManager.instance().debug(this, "Network connection pool is receiving a closed connection to reuse: discard it");
+             remove(conn);
+         } else {
+-            pool.returnResource(conn);
++            pool.getPool().returnResource(conn);
+         }
+     }
+ }
+\ No newline at end of file

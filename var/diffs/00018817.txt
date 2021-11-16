@@ -1,0 +1,18 @@
+diff --git a/c8c0b7a7495b42cc4d7f12c48c183b5e5679639c b/ec30f9e477cf84ee8e19fad9c694db7c29f38dbd
+index c8c0b7a749..ec30f9e477 100644
+--- a/c8c0b7a7495b42cc4d7f12c48c183b5e5679639c
++++ b/ec30f9e477cf84ee8e19fad9c694db7c29f38dbd
+@@ -1,6 +1,7 @@
+-private static void scheduleDecryptFromCursor(Context context, MasterSecret masterSecret, Cursor cursor) {
+-    long id = cursor.getLong(cursor.getColumnIndexOrThrow(SmsDatabase.ID));
+-    String originator = cursor.getString(cursor.getColumnIndexOrThrow(SmsDatabase.ADDRESS));
+-    String body = cursor.getString(cursor.getColumnIndexOrThrow(SmsDatabase.BODY));
+-    scheduleDecryption(context, masterSecret, id, originator, body);
++private static void scheduleDecryptFromCursor(Context context, MasterSecret masterSecret, SmsMessageRecord record) {
++    long messageId = record.getId();
++    String body = record.getBody();
++    String originator = record.getIndividualRecipient().getNumber();
++    boolean isSecureMessage = record.isSecure();
++    scheduleDecryption(context, masterSecret, messageId, originator, body, isSecureMessage);
+ }
+\ No newline at end of file

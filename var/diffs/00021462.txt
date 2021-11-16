@@ -1,0 +1,29 @@
+diff --git a/0a944b41778a659e50326aee19fde3802de4eef5 b/8add66fed7eee33dea49c6732423a2dc08cc0605
+index 0a944b4177..8add66fed7 100644
+--- a/0a944b41778a659e50326aee19fde3802de4eef5
++++ b/8add66fed7eee33dea49c6732423a2dc08cc0605
+@@ -1,13 +1,17 @@
+-public boolean applyLabel(String label) {
+-    List<LabelFilter> labelFilters = this.labelFilters;
+-    if (labelFilters != null) {
+-        boolean apply = true;
+-        for (LabelFilter propertyFilter : labelFilters) {
++public boolean applyLabel(SerializeFilterable javaBeanDeser, String label) {
++    if (this.labelFilters != null) {
++        for (LabelFilter propertyFilter : this.labelFilters) {
++            if (!propertyFilter.apply(label)) {
++                return false;
++            }
++        }
++    }
++    if (javaBeanDeser.labelFilters != null) {
++        for (LabelFilter propertyFilter : javaBeanDeser.labelFilters) {
+             if (!propertyFilter.apply(label)) {
+                 return false;
+             }
+         }
+-        return apply;
+     }
+     return true;
+ }
+\ No newline at end of file

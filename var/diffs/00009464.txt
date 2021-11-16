@@ -1,0 +1,14 @@
+diff --git a/53f234ceba58cc25caebb864442b1c673d4bd1ac b/4d85791531052260e3afb330bc8558707f506e89
+index 53f234ceba..4d85791531 100644
+--- a/53f234ceba58cc25caebb864442b1c673d4bd1ac
++++ b/4d85791531052260e3afb330bc8558707f506e89
+@@ -1,6 +1,6 @@
+ public void execute(@NotNull String key, @NotNull CustomTemplateCallback callback, @Nullable TemplateInvokationListener listener) {
+     List<MyToken> tokens = parse(key, callback);
+     assert tokens != null;
+-    MyInterpreter interpreter = new MyInterpreter(tokens, 0, callback, MyState.WORD, listener);
+-    interpreter.iter();
++    MyInterpreter interpreter = new MyInterpreter(tokens, callback, MyState.WORD, listener);
++    interpreter.invoke(0);
+ }
+\ No newline at end of file

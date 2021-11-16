@@ -1,0 +1,29 @@
+diff --git a/296037830e5cca1336701309b2e3b7f6d2eccfb1 b/c013c1b5726a98e9564d758cd5a3d7736707d6d5
+index 296037830e..c013c1b572 100644
+--- a/296037830e5cca1336701309b2e3b7f6d2eccfb1
++++ b/c013c1b5726a98e9564d758cd5a3d7736707d6d5
+@@ -1,14 +1,20 @@
+ /**
+  * Sets new data filter
+  * @param dataFilter data filter
+  * @return true if visible columns were changed. Spreadsheet has to be refreshed
+  */
+ boolean setDataFilter(DBDDataFilter dataFilter) {
+     this.dataFilter = dataFilter;
+-    List<DBDAttributeBinding> newColumns = this.dataFilter.getOrderedVisibleAttributes();
+-    if (!newColumns.equals(visibleColumns)) {
+-        visibleColumns = newColumns;
++    List<DBDAttributeBinding> newBindings = new ArrayList<DBDAttributeBinding>();
++    for (DBSAttributeBase attr : this.dataFilter.getOrderedVisibleAttributes()) {
++        DBDAttributeBinding binding = getAttributeBinding(attr);
++        if (binding != null) {
++            newBindings.add(binding);
++        }
++    }
++    if (!newBindings.equals(visibleColumns)) {
++        visibleColumns = newBindings;
+         return true;
+     }
+     return false;
+ }
+\ No newline at end of file

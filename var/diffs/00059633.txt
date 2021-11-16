@@ -1,0 +1,22 @@
+diff --git a/0b362933576cc4f6c7af5136181f5e983e3573df b/32eaa360f8af9f503064f377abae14f17e38db09
+index 0b36293357..32eaa360f8 100644
+--- a/0b362933576cc4f6c7af5136181f5e983e3573df
++++ b/32eaa360f8af9f503064f377abae14f17e38db09
+@@ -1,14 +1,15 @@
+ @Test
+ public void testDate() throws ParseException {
+-    tx.makeKey("birthday").single().dataType(GregorianCalendar.class).make();
++    makeKey("birthday", GregorianCalendar.class);
++    finishSchema();
+     Vertex v = tx.addVertex(null);
+     Date date = new SimpleDateFormat("ddMMyyyy").parse("28101978");
+     Calendar c = Calendar.getInstance();
+     c.setTime(date);
+     v.setProperty("birthday", c);
+     // System.out.println(c); // prints Sat Oct 28 00:00:00 CET 1978
+     clopen();
+     v = tx.getVertex(v);
+     // System.out.println(v.getProperty("birthday")); // prints Wed Jan 16 18:49:44 CET 2013
+     assertEquals(c, v.getProperty("birthday"));
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/bf09176105171cb86139814ef38e9848f3843ef9 b/e6481f5767b5819b84a0eaaf938c47ca3ba56ace
+index bf09176105..e6481f5767 100644
+--- a/bf09176105171cb86139814ef38e9848f3843ef9
++++ b/e6481f5767b5819b84a0eaaf938c47ca3ba56ace
+@@ -1,8 +1,9 @@
++@Test
+ public void testMatchingFactoryBeanObject() {
+     assertTrue("Matching bean must be advised (proxied)", this.testFactoryBean1 instanceof Advised);
+     assertEquals("myValue", this.testFactoryBean1.get("myKey"));
+     assertEquals("myValue", this.testFactoryBean1.get("myKey"));
+     assertEquals("Advice not executed: must have been", 2, this.counterAspect.getCount());
+-    FactoryBean fb = (FactoryBean) getApplicationContext().getBean("&testFactoryBean1");
++    FactoryBean<?> fb = (FactoryBean<?>) ctx.getBean("&testFactoryBean1");
+     assertTrue("FactoryBean itself must *not* be advised", !(fb instanceof Advised));
+ }
+\ No newline at end of file

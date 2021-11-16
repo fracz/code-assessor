@@ -1,0 +1,20 @@
+diff --git a/5143838048cc6b3c1644cb86b502d460363ca19b b/5e2fe1e1f59cbd0a7c0424c876677ee07e3d1317
+index 5143838048..5e2fe1e1f5 100644
+--- a/5143838048cc6b3c1644cb86b502d460363ca19b
++++ b/5e2fe1e1f59cbd0a7c0424c876677ee07e3d1317
+@@ -1,9 +1,7 @@
+-private static PsiElement findAnchor(@NotNull List<PsiElement> occurrences) {
+-    PsiElement statement = ContainerUtil.getFirstItem(occurrences);
+-    while (statement != null) {
+-        statement = PsiTreeUtil.getParentOfType(statement, GoStatement.class);
+-        if (statement != null && isCommonAncestor(statement.getParent(), occurrences))
+-            return statement;
++private static PsiElement findAnchor(List<PsiElement> occurrences, PsiElement context) {
++    PsiElement statement = PsiTreeUtil.getParentOfType(ContainerUtil.getFirstItem(occurrences), GoStatement.class);
++    while (statement != null && statement.getParent() != context) {
++        statement = statement.getParent();
+     }
+-    return null;
++    return statement;
+ }
+\ No newline at end of file

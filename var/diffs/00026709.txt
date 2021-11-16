@@ -1,0 +1,23 @@
+diff --git a/4ac1aaeaf2cf954efc11ff366f42799e9df7ffad b/efe1d98c459160542cf3c04e493d4bcd44708165
+index 4ac1aaeaf2..efe1d98c45 100644
+--- a/4ac1aaeaf2cf954efc11ff366f42799e9df7ffad
++++ b/efe1d98c459160542cf3c04e493d4bcd44708165
+@@ -1,6 +1,15 @@
+ @Override
+ protected INDArray preOutput2d(INDArray input, boolean training) {
+-    if (input.rank() == 3)
++    if (input.rank() == 3) {
++        // Case when called from RnnOutputLayer
++        INDArray inputTemp = input;
+         input = reshape3dTo2d(input);
+-    return super.preOutput(input, training);
++        INDArray out = super.preOutput(input, training);
++        this.input = inputTemp;
++        return out;
++    } else {
++        // Case when called from BaseOutputLayer
++        INDArray out = super.preOutput(input, training);
++        return out;
++    }
+ }
+\ No newline at end of file

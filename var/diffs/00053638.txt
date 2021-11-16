@@ -1,0 +1,14 @@
+diff --git a/78ffb94b1c7d79080122ce0c0635700e681523a8 b/bf34f83980625a18d50b8c5afb6015527be6b94e
+index 78ffb94b1c..bf34f83980 100644
+--- a/78ffb94b1c7d79080122ce0c0635700e681523a8
++++ b/bf34f83980625a18d50b8c5afb6015527be6b94e
+@@ -1,6 +1,6 @@
+-protected void printAlias(String alias) {
+-    if ((alias != null) && (alias.length() > 0)) {
++protected void printAlias(final String alias) {
++    if (!Strings.isNullOrEmpty(alias)) {
+         print(" ");
+         print(alias);
+     }
+ }
+\ No newline at end of file

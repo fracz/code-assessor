@@ -1,0 +1,13 @@
+diff --git a/f001fde3c8967a65ec487e6a5a4f2e53e0d3c6d9 b/ba4ea6229e05249ac1ad755ccb26d045c27cd67e
+index f001fde3c8..ba4ea6229e 100644
+--- a/f001fde3c8967a65ec487e6a5a4f2e53e0d3c6d9
++++ b/ba4ea6229e05249ac1ad755ccb26d045c27cd67e
+@@ -1,5 +1,5 @@
+ @Test
+ public void shouldGetNextFromStore() throws Exception {
+-    final MergedSortedCacheWindowStoreKeyValueIterator<String, String> mergeIterator = createIterator(storeKvs, Collections.<KeyValue<Bytes, LRUCacheEntry>>emptyIterator());
+-    assertThat(mergeIterator.next(), equalTo(KeyValue.pair(new Windowed<>(storeKey, storeWindow), storeKey)));
++    final MergedSortedCacheWindowStoreKeyValueIterator mergeIterator = createIterator(storeKvs, Collections.<KeyValue<Bytes, LRUCacheEntry>>emptyIterator());
++    assertThat(convertKeyValuePair(mergeIterator.next()), equalTo(KeyValue.pair(new Windowed<>(storeKey, storeWindow), storeKey)));
+ }
+\ No newline at end of file

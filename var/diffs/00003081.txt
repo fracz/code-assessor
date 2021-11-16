@@ -1,0 +1,13 @@
+diff --git a/15a0dfd287eb6bcd5756b3c5aa4b6436b1a40ff0 b/5dd495b5e950ad187b84730fca602a70eb3279d5
+index 15a0dfd287..5dd495b5e9 100644
+--- a/15a0dfd287eb6bcd5756b3c5aa4b6436b1a40ff0
++++ b/5dd495b5e950ad187b84730fca602a70eb3279d5
+@@ -1,6 +1,6 @@
+ public void update(AnActionEvent event) {
+     Presentation presentation = event.getPresentation();
+     DataContext dataContext = event.getDataContext();
+-    PasteProvider provider = (PasteProvider) dataContext.getData(DataConstants.PASTE_PROVIDER);
++    PasteProvider provider = PlatformDataKeys.PASTE_PROVIDER.getData(dataContext);
+     presentation.setEnabled(provider != null && provider.isPastePossible(dataContext));
+ }
+\ No newline at end of file

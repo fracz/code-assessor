@@ -1,0 +1,26 @@
+diff --git a/03899a12b8d79c6fba20c283234cd3f7e2df97c9 b/8585f0f98b2ad98d15f1bfda85ca54545ea4315a
+index 03899a12b8..8585f0f98b 100644
+--- a/03899a12b8d79c6fba20c283234cd3f7e2df97c9
++++ b/8585f0f98b2ad98d15f1bfda85ca54545ea4315a
+@@ -1,17 +1,17 @@
+ /**
+  * Returns the icon for the given command type ID or {@code null} if none.
+  */
+ @Nullable
+ public SVGResource getCommandTypeIcon(String typeId) {
+-    final CommandType commandType = commandTypeRegistry.getCommandTypeById(typeId);
+-    if (commandType != null) {
+-        final Icon icon = iconRegistry.getIconIfExist("command.type." + commandType.getId());
++    final Optional<CommandType> commandType = commandTypeRegistry.getCommandTypeById(typeId);
++    if (commandType.isPresent()) {
++        final Icon icon = iconRegistry.getIconIfExist("command.type." + commandType.get().getId());
+         if (icon != null) {
+             final SVGImage svgImage = icon.getSVGImage();
+             if (svgImage != null) {
+                 return icon.getSVGResource();
+             }
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

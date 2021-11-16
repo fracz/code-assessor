@@ -1,0 +1,12 @@
+diff --git a/373343b3bb10bf086965798be033a5d6a6e96b49 b/534fb1721f45d9206eb762f4a64bd852c9a4cdec
+index 373343b3bb..534fb1721f 100644
+--- a/373343b3bb10bf086965798be033a5d6a6e96b49
++++ b/534fb1721f45d9206eb762f4a64bd852c9a4cdec
+@@ -1,5 +1,5 @@
+ private void notifyException(VcsException e) {
+     LOG.info("mergeFiles ", e);
+     final String description = "Couldn't check the working tree for unmerged files because of an error.";
+-    GitVcs.IMPORTANT_ERROR_NOTIFICATION.createNotification(myParams.myErrorNotificationTitle, description + myParams.myErrorNotificationAdditionalDescription + "<br/>" + e.getLocalizedMessage(), NotificationType.ERROR, new ResolveNotificationListener()).notify(myProject);
++    VcsNotifier.getInstance(myProject).notifyError(myParams.myErrorNotificationTitle, description + myParams.myErrorNotificationAdditionalDescription + "<br/>" + e.getLocalizedMessage(), new ResolveNotificationListener());
+ }
+\ No newline at end of file

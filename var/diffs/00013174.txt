@@ -1,0 +1,13 @@
+diff --git a/8959c45162f7d59b29ea8f4106cd75fab1ce2c88 b/0a75b40f73df3357229b444f92587f180014a151
+index 8959c45162..0a75b40f73 100644
+--- a/8959c45162f7d59b29ea8f4106cd75fab1ce2c88
++++ b/0a75b40f73df3357229b444f92587f180014a151
+@@ -1,4 +1,6 @@
+ public static void main(String[] args) {
+     Set<String> strings = new HashSet<>();
+-    new Test().query((ResultSet var1) -> strings.add("Col1"));
++    new Test().query(var1 -> {
++        return strings.add("Col1");
++    });
+ }
+\ No newline at end of file

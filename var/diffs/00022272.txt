@@ -1,0 +1,16 @@
+diff --git a/06058131650793ba506ff120d5ac2ca11db3d552 b/1c0f4ec970419ab38408672f95676b84de26d8e4
+index 0605813165..1c0f4ec970 100644
+--- a/06058131650793ba506ff120d5ac2ca11db3d552
++++ b/1c0f4ec970419ab38408672f95676b84de26d8e4
+@@ -1,7 +1,5 @@
+-@Override
+-public void requestPrinterUpdate(PrinterId printerId) {
+-    PrinterDiscoverySession session = mWeakSession.get();
+-    if (session != null) {
+-        session.mHandler.obtainMessage(SessionHandler.MSG_REQUEST_PRINTER_UPDATE, printerId).sendToTarget();
++void requestPrinterUpdate(PrinterId printerId) {
++    if (!mIsDestroyed) {
++        onRequestPrinterUpdate(printerId);
+     }
+ }
+\ No newline at end of file

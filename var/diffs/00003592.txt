@@ -1,0 +1,14 @@
+diff --git a/b1521793b3fb1df1791285849ddc62bfadd9c3cc b/63a4077c1207c90da368f339c89f5bbbd5c157df
+index b1521793b3..63a4077c12 100644
+--- a/b1521793b3fb1df1791285849ddc62bfadd9c3cc
++++ b/63a4077c1207c90da368f339c89f5bbbd5c157df
+@@ -1,4 +1,7 @@
+ @Override
+ public void actionPerformed(AnActionEvent e) {
+-    check(e.getProject());
++    Project project = e.getProject();
++    if (project != null) {
++        check(project);
++    }
+ }
+\ No newline at end of file

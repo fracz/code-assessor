@@ -1,0 +1,16 @@
+diff --git a/bfc84140afe9820335fc263a4abc268ebe518bf4 b/45690b0bba0051abcd8339158a467043bdc53329
+index bfc84140af..45690b0bba 100644
+--- a/bfc84140afe9820335fc263a4abc268ebe518bf4
++++ b/45690b0bba0051abcd8339158a467043bdc53329
+@@ -1,6 +1,8 @@
+ @Override
+ public void serialize(BserWriter writer) throws IOException {
+     writer.writeLong(1, this.rid);
+-    writer.writeInt(2, this.contentType);
+-    writer.writeBytes(3, this.content);
++    if (this.content == null) {
++        throw new IOException();
++    }
++    writer.writeBytes(3, this.content.toByteArray());
+ }
+\ No newline at end of file

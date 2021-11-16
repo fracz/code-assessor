@@ -1,0 +1,10 @@
+diff --git a/a067d89929e7200ed31e50c0950e6734ce10523a b/53e371abdb367ec7d9daed1fe49b01ac5fdf93c4
+index a067d89929..53e371abdb 100644
+--- a/a067d89929e7200ed31e50c0950e6734ce10523a
++++ b/53e371abdb367ec7d9daed1fe49b01ac5fdf93c4
+@@ -1,3 +1,3 @@
+ public void testExposeExpression11() {
+-    helperExposeExpression("if(goo() && foo());", "foo", "var temp$jscomp$0;" + "if (temp$jscomp$0 = goo()) temp$jscomp$0 = foo();" + "if(temp$jscomp$0);");
++    helperExposeExpression("if(goo() && foo());", "foo", LINE_JOINER.join("var temp$jscomp$0;", "if (temp$jscomp$0 = goo()) temp$jscomp$0 = foo();", "if(temp$jscomp$0);"));
+ }
+\ No newline at end of file

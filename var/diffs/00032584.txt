@@ -1,0 +1,13 @@
+diff --git a/b206ffc888c2096c866131257a809c0471f05ba4 b/a48f69f0a0a65c9063c65258e61760e6247f390e
+index b206ffc888..a48f69f0a0 100644
+--- a/b206ffc888c2096c866131257a809c0471f05ba4
++++ b/a48f69f0a0a65c9063c65258e61760e6247f390e
+@@ -1,5 +1,6 @@
+ @Before
+ public void setUp() {
+     diagnostics = new DiagnosticCollector<JavaFileObject>();
+-    printWriter = new PrintWriter(new OutputStreamWriter(new ByteArrayOutputStream()));
++    outputStream = new ByteArrayOutputStream();
++    printWriter = new PrintWriter(new OutputStreamWriter(outputStream));
+ }
+\ No newline at end of file

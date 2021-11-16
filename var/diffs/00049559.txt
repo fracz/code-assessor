@@ -1,0 +1,21 @@
+diff --git a/f7f0131c052c54f1c37e6470e0821a62a8d109e5 b/e793d926b59404518f557802bae586a835d64588
+index f7f0131c05..e793d926b5 100644
+--- a/f7f0131c052c54f1c37e6470e0821a62a8d109e5
++++ b/e793d926b59404518f557802bae586a835d64588
+@@ -1,14 +1,14 @@
+ private void showStatementInEditor(final SQLQuery query, final boolean select) {
+     DBeaverUI.runUIJob("Select SQL query in editor", new DBRRunnableWithProgress() {
+
+         @Override
+         public void run(DBRProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+             if (select) {
+                 selectAndReveal(query.getOffset(), query.getLength());
+-                setStatus(query.getQuery(), false);
++                setStatus(query.getQuery(), DBPMessageType.INFORMATION);
+             } else {
+                 getSourceViewer().revealRange(query.getOffset(), query.getLength());
+             }
+         }
+     });
+ }
+\ No newline at end of file

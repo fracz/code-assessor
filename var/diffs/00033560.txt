@@ -1,0 +1,12 @@
+diff --git a/889cfe5566bfb5928b91dc013f9a615d81738fac b/a694ee026fc055f85269b92fb83181217740bca1
+index 889cfe5566..a694ee026f 100644
+--- a/889cfe5566bfb5928b91dc013f9a615d81738fac
++++ b/a694ee026fc055f85269b92fb83181217740bca1
+@@ -1,5 +1,4 @@
+ public <T extends StaticLibraryArchiverSpec> Compiler<T> createStaticLibraryArchiver() {
+     CommandLineTool<StaticLibraryArchiverSpec> commandLineTool = commandLineTool(ToolType.STATIC_LIB_ARCHIVER);
+-    commandLineTool.withSpecTransformer(withSystemArgs(StaticLibraryArchiverSpec.class, platformConfiguration.getStaticLibraryArchiverArgs()));
+-    return (Compiler<T>) new ArStaticLibraryArchiver(commandLineTool, tools.getArgTransformer(ToolType.STATIC_LIB_ARCHIVER));
++    return (Compiler<T>) new ArStaticLibraryArchiver(commandLineTool, toolRegistry.getTool(ToolType.STATIC_LIB_ARCHIVER).getArgAction());
+ }
+\ No newline at end of file

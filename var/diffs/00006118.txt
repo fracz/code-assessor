@@ -1,0 +1,15 @@
+diff --git a/731f16254a622b3e2ad0e7f01cf90c8af7c73b43 b/83852db951cbab50fbe213c0517d0b10daa28ac3
+index 731f16254a..83852db951 100644
+--- a/731f16254a622b3e2ad0e7f01cf90c8af7c73b43
++++ b/83852db951cbab50fbe213c0517d0b10daa28ac3
+@@ -1,7 +1,4 @@
+ public void apply() {
+-    CodeStyleSettingsManager projectSettingsManager = getProjectSettings();
+-    projectSettingsManager.USE_PER_PROJECT_SETTINGS = myUsePerProjectSettings;
+-    projectSettingsManager.PREFERRED_PROJECT_CODE_STYLE = myUsePerProjectSettings || myGlobalSelected == null ? null : myGlobalSelected.getName();
+-    projectSettingsManager.PER_PROJECT_SETTINGS = myProjectScheme.getCodeStyleSettings();
+-    CodeStyleSchemesImpl.getSchemeManager().setSchemes(mySchemes, myGlobalSelected, null);
++    commitProjectSettings();
++    CodeStyleSchemesImpl.getSchemeManager().setSchemes(getIdeSchemes(), mySelectedScheme instanceof ProjectScheme ? null : mySelectedScheme, null);
+ }
+\ No newline at end of file

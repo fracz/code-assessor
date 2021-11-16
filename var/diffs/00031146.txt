@@ -1,0 +1,22 @@
+diff --git a/e87f7ca93687eab646bde3f0486fcde9fec85173 b/99c4b1dcf0384251e0a1b8c0b606a81f804faf71
+index e87f7ca936..99c4b1dcf0 100644
+--- a/e87f7ca93687eab646bde3f0486fcde9fec85173
++++ b/99c4b1dcf0384251e0a1b8c0b606a81f804faf71
+@@ -1,15 +1,14 @@
+ @Override
+ public void setDocument(int doc) {
+     geoPointValues.setDocument(doc);
+-    count = geoPointValues.count() * distances.length;
+-    grow();
++    resize(geoPointValues.count() * distances.length);
+     int valueCounter = 0;
+     for (FixedSourceDistance distance : distances) {
+         for (int i = 0; i < geoPointValues.count(); ++i) {
+             final GeoPoint point = geoPointValues.valueAt(i);
+             values[valueCounter] = distance.calculate(point.lat(), point.lon());
+             valueCounter++;
+         }
+     }
+     sort();
+ }
+\ No newline at end of file

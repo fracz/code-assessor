@@ -1,0 +1,18 @@
+diff --git a/3a4a003d4549ba2e8d0e9dd7d345a9956b516f9c b/21b3d4493c2150a70a8b00bdb3816edb814b17a2
+index 3a4a003d45..21b3d4493c 100644
+--- a/3a4a003d4549ba2e8d0e9dd7d345a9956b516f9c
++++ b/21b3d4493c2150a70a8b00bdb3816edb814b17a2
+@@ -1,10 +1,10 @@
+ @JRubyMethod
+ public IRubyObject attribute_with_ns(ThreadContext context, IRubyObject name, IRubyObject namespace) {
+-    String namej = name.convertToString().asJavaString();
+-    String nsj = (namespace.isNil()) ? null : namespace.convertToString().asJavaString();
++    String namej = (String) name.toJava(String.class);
++    String nsj = (namespace.isNil()) ? null : (String) namespace.toJava(String.class);
+     Node el = this.node.getAttributes().getNamedItemNS(nsj, namej);
+     if (el == null) {
+         return context.getRuntime().getNil();
+     }
+     return NokogiriHelpers.getCachedNodeOrCreate(context.getRuntime(), el);
+ }
+\ No newline at end of file

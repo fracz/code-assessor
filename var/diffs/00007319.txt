@@ -1,0 +1,18 @@
+diff --git a/122c8d0f398ff62d26c2282885a77e175373fdce b/fa67cf4a2c22aca7d5b0119e7a210649b2e4aa0e
+index 122c8d0f39..fa67cf4a2c 100644
+--- a/122c8d0f398ff62d26c2282885a77e175373fdce
++++ b/fa67cf4a2c22aca7d5b0119e7a210649b2e4aa0e
+@@ -1,11 +1,6 @@
+ public void subtreeChanged() {
+     super.subtreeChanged();
+-    if (myControlFlowRef != null) {
+-        myControlFlowRef.clear();
+-    }
+-    if (myScopeRef != null) {
+-        myScopeRef.clear();
+-    }
++    ControlFlowCache.clear(this);
+     myAbsoluteImportEnabled = null;
+     myDunderAllCalculated = false;
+ }
+\ No newline at end of file

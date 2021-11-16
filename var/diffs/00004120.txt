@@ -1,0 +1,17 @@
+diff --git a/c0ca0d51177ee0d054f7b63fbba2c00a3ff38544 b/2d7ebabcd70ee87e593a98eac2bf4e92faa900a1
+index c0ca0d5117..2d7ebabcd7 100644
+--- a/c0ca0d51177ee0d054f7b63fbba2c00a3ff38544
++++ b/2d7ebabcd70ee87e593a98eac2bf4e92faa900a1
+@@ -1,10 +1,10 @@
+ @Nullable
+ public static MavenPluginInfo readPluginInfo(File localRepository, MavenId mavenId) {
+-    File file = getArtifactFile(localRepository, mavenId.groupId, mavenId.artifactId, mavenId.version, "jar");
++    File file = getArtifactFile(localRepository, mavenId.getGroupId(), mavenId.getArtifactId(), mavenId.getVersion(), "jar");
+     MavenPluginInfo result = ourPluginInfoCache.get(file);
+     if (result == null) {
+         result = createPluginDocument(file);
+         ourPluginInfoCache.put(file, result);
+     }
+     return result;
+ }
+\ No newline at end of file

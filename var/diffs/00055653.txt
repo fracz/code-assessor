@@ -1,0 +1,20 @@
+diff --git a/b5bd579d1a3e29a02f63e85063d5c9a1d504a9b3 b/60ec576996637d5554e345710a90a084a4ec5ca6
+index b5bd579d1a..60ec576996 100644
+--- a/b5bd579d1a3e29a02f63e85063d5c9a1d504a9b3
++++ b/60ec576996637d5554e345710a90a084a4ec5ca6
+@@ -1,12 +1,12 @@
+ @Test
+ public void testInheritanceWithClass() throws Exception {
+-    XmlBeanFactory parent = new XmlBeanFactory(new ClassPathResource("parent.xml", getClass()));
+-    XmlBeanFactory child = new XmlBeanFactory(new ClassPathResource("child.xml", getClass()), parent);
++    XmlBeanFactory parent = new XmlBeanFactory(PARENT_CONTEXT);
++    XmlBeanFactory child = new XmlBeanFactory(CHILD_CONTEXT, parent);
+     assertEquals(DerivedTestBean.class, child.getType("inheritsWithClass"));
+     DerivedTestBean inherits = (DerivedTestBean) child.getBean("inheritsWithClass");
+     // Name property value is overridden
+     assertTrue(inherits.getName().equals("override"));
+     // Age property is inherited from bean in parent factory
+     assertTrue(inherits.getAge() == 1);
+     assertTrue(inherits.wasInitialized());
+ }
+\ No newline at end of file

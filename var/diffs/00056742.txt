@@ -1,0 +1,24 @@
+diff --git a/153c72604fcbcdc4f25942335514a8d44cd8301a b/907dd8950e747e9ed38b1a8488bfaa72d439d319
+index 153c72604f..907dd8950e 100644
+--- a/153c72604fcbcdc4f25942335514a8d44cd8301a
++++ b/907dd8950e747e9ed38b1a8488bfaa72d439d319
+@@ -1,15 +1,14 @@
+ void readWordVectors() {
+-    Embedding embedding = new Embedding(op.wordVectors, op.numHid);
+     this.wordVectors = Generics.newTreeMap();
+-    // for (String word : rawWordVectors.keySet()) {
+-    for (String word : embedding.keySet()) {
++    Map<String, SimpleMatrix> rawWordVectors = RNNUtils.readRawWordVectors(op.wordVectors, op.numHid);
++    for (String word : rawWordVectors.keySet()) {
+         // TODO: factor out unknown word vector code from DVParser
+-        wordVectors.put(word, embedding.get(word));
++        wordVectors.put(word, rawWordVectors.get(word));
+     }
+     String unkWord = op.unkWord;
+     SimpleMatrix unknownWordVector = wordVectors.get(unkWord);
+     wordVectors.put(UNKNOWN_WORD, unknownWordVector);
+     if (unknownWordVector == null) {
+         throw new RuntimeException("Unknown word vector not specified in the word vector file");
+     }
+ }
+\ No newline at end of file

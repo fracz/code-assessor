@@ -1,0 +1,24 @@
+diff --git a/4faadd2c65e4857066205e62cef3309e85323101 b/8f077a23bfe73441f4aa995c3b7815331cab6ee6
+index 4faadd2c65..8f077a23bf 100644
+--- a/4faadd2c65e4857066205e62cef3309e85323101
++++ b/8f077a23bfe73441f4aa995c3b7815331cab6ee6
+@@ -1,15 +1,15 @@
+ @Test
+ public void testInitInvalidRemoteConfigFile() throws SQLException {
+     DruidDataSource dataSource = new DruidDataSource();
+     dataSource.setFilters("config");
+     dataSource.setConnectionProperties("config.file=abcdef");
++    Exception error = null;
+     try {
+         dataSource.init();
+-        Assert.assertTrue("It is here", false);
+     } catch (IllegalArgumentException e) {
+-        e.printStackTrace();
+-        Assert.assertTrue(true);
++        error = e;
+     } finally {
+         JdbcUtils.close(dataSource);
+     }
++    Assert.assertNotNull(error);
+ }
+\ No newline at end of file

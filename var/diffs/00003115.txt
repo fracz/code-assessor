@@ -1,0 +1,14 @@
+diff --git a/a91d6b85bb17fd908209d6546d3ee9e0937af3e4 b/1515e35e8391efa4b132f60cec3ca2ce5aadaf14
+index a91d6b85bb..1515e35e83 100644
+--- a/a91d6b85bb17fd908209d6546d3ee9e0937af3e4
++++ b/1515e35e8391efa4b132f60cec3ca2ce5aadaf14
+@@ -1,3 +1,7 @@
+ public FileEditor openFileEditor() {
+-    return FileEditorManager.getInstance(getProject()).openFile(selectedPropertiesFile.getVirtualFile(), false)[0];
++    final VirtualFile file = selectedPropertiesFile.getVirtualFile();
++    if (file == null) {
++        return null;
++    }
++    return FileEditorManager.getInstance(getProject()).openFile(file, false)[0];
+ }
+\ No newline at end of file

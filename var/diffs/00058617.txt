@@ -1,0 +1,20 @@
+diff --git a/44ee06c0e94b36a564158c933de2286e87b8463c b/5dbb1c5a956e4ef4e33081f398dcc54fca110b9e
+index 44ee06c0e9..5dbb1c5a95 100644
+--- a/44ee06c0e94b36a564158c933de2286e87b8463c
++++ b/5dbb1c5a956e4ef4e33081f398dcc54fca110b9e
+@@ -1,8 +1,8 @@
+ public static void assertGraphOfTheGods(TitanGraph gotg) {
+-    assertEquals(12, Iterables.size(gotg.getVertices()));
+-    assertEquals(3, Iterables.size(gotg.getVertices("label", "god")));
+-    Vertex h = Iterables.getOnlyElement(gotg.getVertices("name", "hercules"));
+-    assertEquals(30, h.getProperty("age"));
+-    assertEquals("demigod", ((TitanVertex) h).getLabel());
+-    assertEquals(5, Iterables.size(h.getEdges(Direction.BOTH)));
++    assertCount(12, gotg.V());
++    assertCount(3, gotg.V().has("label", "god"));
++    Vertex h = getOnlyElement(gotg.V().has("name", "hercules"));
++    assertEquals(30, h.<Integer>value("age").intValue());
++    assertEquals("demigod", h.label());
++    assertCount(5, h.bothE());
+ }
+\ No newline at end of file

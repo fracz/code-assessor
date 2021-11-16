@@ -1,0 +1,21 @@
+diff --git a/cfd9a18cf4e59e929358ad6665435f5ffc8a5a34 b/3d3bd26e876f21094e9c3642d938ec2c456b2cee
+index cfd9a18cf4..3d3bd26e87 100644
+--- a/cfd9a18cf4e59e929358ad6665435f5ffc8a5a34
++++ b/3d3bd26e876f21094e9c3642d938ec2c456b2cee
+@@ -1,12 +1,10 @@
+ @SuppressLint("InlinedApi")
+ @Override
+ public void consume(ParsableByteArray data, long pesTimeUs, boolean startOfPacket) {
+     if (startOfPacket) {
+-        currentSample = getSample(Sample.TYPE_MISC);
+-        currentSample.timeUs = pesTimeUs;
+-        currentSample.isKeyframe = true;
++        startSample(Sample.TYPE_MISC, pesTimeUs);
+     }
+-    if (currentSample != null) {
+-        addToSample(currentSample, data, data.bytesLeft());
++    if (havePendingSample()) {
++        appendSampleData(data, data.bytesLeft());
+     }
+ }
+\ No newline at end of file

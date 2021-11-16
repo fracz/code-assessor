@@ -1,0 +1,13 @@
+diff --git a/8c07b0755d964a0a1988383522e41a022258ec3e b/b9edc244d016df3055784c935a83898b3ebd5437
+index 8c07b0755d..b9edc244d0 100644
+--- a/8c07b0755d964a0a1988383522e41a022258ec3e
++++ b/b9edc244d016df3055784c935a83898b3ebd5437
+@@ -1,6 +1,5 @@
+ public InternalMockHandler create(MockCreationSettings settings) {
+     InternalMockHandler handler = new MockHandlerImpl(settings);
+     InternalMockHandler nullResultGuardian = new NullResultGuardian(handler);
+-    InternalMockHandler notifier = new InvocationNotifierHandler(nullResultGuardian, settings);
+-    return notifier;
++    return new InvocationNotifierHandler(nullResultGuardian, settings);
+ }
+\ No newline at end of file

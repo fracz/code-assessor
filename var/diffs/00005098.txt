@@ -1,0 +1,23 @@
+diff --git a/4183b9f2861c002a4112f3b7d78a3f9abb904a03 b/3f09ae29368889cc016014c384931c6b1d1174b2
+index 4183b9f286..3f09ae2936 100644
+--- a/4183b9f2861c002a4112f3b7d78a3f9abb904a03
++++ b/3f09ae29368889cc016014c384931c6b1d1174b2
+@@ -1,10 +1,10 @@
+ protected void actionPerformed(final GuiEditor editor, final ArrayList<RadComponent> selection, final AnActionEvent e) {
+-    RadComponent component = selection.get(0);
+-    int indent = ((Integer) myIndentProperty.getValue(component)).intValue();
+-    try {
+-        myIndentProperty.setValue(component, adjustIndent(indent));
+-        editor.refreshAndSave(true);
+-    } catch (Exception ex) {
+-        LOG.error(ex);
++    for (RadComponent c : selection) {
++        int indent = ((Integer) myIndentProperty.getValue(c)).intValue();
++        try {
++            myIndentProperty.setValue(c, adjustIndent(indent));
++        } catch (Exception ex) {
++            LOG.error(ex);
++        }
+     }
+ }
+\ No newline at end of file

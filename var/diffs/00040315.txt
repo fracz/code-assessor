@@ -1,0 +1,20 @@
+diff --git a/604f7f7b9fc18d1660311ce2c9de97a346fdb185 b/eeed750acbf098e15f8df89b1917fe04aa6b12f7
+index 604f7f7b9f..eeed750acb 100644
+--- a/604f7f7b9fc18d1660311ce2c9de97a346fdb185
++++ b/eeed750acbf098e15f8df89b1917fe04aa6b12f7
+@@ -1,10 +1,6 @@
+-public Bootstrap channel(Channel channel) {
+-    if (channel == null) {
+-        throw new NullPointerException("channel");
++public B channel(Class<? extends Channel> channelClass) {
++    if (channelClass == null) {
++        throw new NullPointerException("channelClass");
+     }
+-    if (this.channel != null) {
+-        throw new IllegalStateException("channel set already");
+-    }
+-    this.channel = channel;
+-    return this;
++    return channelFactory(new BootstrapChannelFactory(channelClass));
+ }
+\ No newline at end of file

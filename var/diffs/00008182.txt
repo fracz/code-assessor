@@ -1,0 +1,12 @@
+diff --git a/8c3cad624c1dd4649d94e48b0324876deb144b46 b/fbb73cc0a22cc8db6ef118d59e6090ec3e852ba5
+index 8c3cad624c..fbb73cc0a2 100644
+--- a/8c3cad624c1dd4649d94e48b0324876deb144b46
++++ b/fbb73cc0a22cc8db6ef118d59e6090ec3e852ba5
+@@ -1,3 +1,5 @@
+ private int getAttributeValueStartOffset() {
+-    return getAttribute().getValueElement().getTextRange().getStartOffset() + 1;
++    final XmlAttribute attr = getAttribute();
++    final XmlAttributeValue valueElement = attr.getValueElement();
++    return (valueElement == null) ? attr.getTextRange().getEndOffset() + 1 : valueElement.getTextRange().getStartOffset() + 1;
+ }
+\ No newline at end of file

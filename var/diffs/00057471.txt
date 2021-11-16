@@ -1,0 +1,14 @@
+diff --git a/24a5fffec985091c9d41e955448daadc71c8b750 b/f5292c6c9ae0849e6c445e963aca4945348214e9
+index 24a5fffec9..f5292c6c9a 100644
+--- a/24a5fffec985091c9d41e955448daadc71c8b750
++++ b/f5292c6c9ae0849e6c445e963aca4945348214e9
+@@ -1,5 +1,6 @@
+-private static String threadRootClass() {
++private static final String threadRootClass() {
+     StackTraceElement[] trace = Thread.currentThread().getStackTrace();
+     StackTraceElement elem = trace[trace.length - 1];
+-    return elem.getClassName();
++    String clazz = elem.getClassName();
++    return clazz;
+ }
+\ No newline at end of file

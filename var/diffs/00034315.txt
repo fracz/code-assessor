@@ -1,0 +1,22 @@
+diff --git a/259c01b0c2eb82dc29c70e89a536b53b302cd6a9 b/8532294f1aa811c104e881a8d4ed141c6a86ae09
+index 259c01b0c2..8532294f1a 100644
+--- a/259c01b0c2eb82dc29c70e89a536b53b302cd6a9
++++ b/8532294f1aa811c104e881a8d4ed141c6a86ae09
+@@ -1,15 +1,13 @@
+ @Test
+ public void sendMessage_withMessageTooLarge_throwsException() throws Exception {
+-    extensions.add("SIZE 1000");
+     Message message = getDefaultMessageBuilder().setHasAttachments(true).messageSize(1234L).build();
+-    MockSmtpServer server = new MockSmtpServer();
+-    setupConnectAndPlainAuthentication(server);
++    MockSmtpServer server = createServerAndSetupForPlainAuthentication("SIZE 1000");
+     SmtpTransport transport = startServerAndCreateSmtpTransport(server);
+     try {
+         transport.sendMessage(message);
+         fail("Expected message too large error");
+     } catch (MessagingException e) {
+         assertTrue(e.isPermanentFailure());
+         assertEquals("Message too large for server", e.getMessage());
+     }
+ }
+\ No newline at end of file

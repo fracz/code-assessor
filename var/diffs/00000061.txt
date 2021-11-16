@@ -1,0 +1,21 @@
+diff --git a/a72bd2a7258a935817a1af049edcf2a62f042075 b/80731151a57e1f491c0f6ff25ed104c780495758
+index a72bd2a725..80731151a5 100644
+--- a/a72bd2a7258a935817a1af049edcf2a62f042075
++++ b/80731151a57e1f491c0f6ff25ed104c780495758
+@@ -1,13 +1,13 @@
+ /**
+  * Tests the concurrent read of {@link FileInStream}.
+  */
+ @Test
+ public void FileInStreamConcurrencyTest() throws Exception {
+     String uniqPath = PathUtils.uniqPath();
+-    TachyonFile f = TachyonFSTestUtils.createByteFile(sTfs, uniqPath, BLOCK_SIZE * 2, sWriteTachyon);
++    TachyonFSTestUtils.createByteFile(sTfs, uniqPath, BLOCK_SIZE * 2, sWriteTachyon);
+     List<Thread> threads = Lists.newArrayList();
+     for (int i = 0; i < READ_THREADS_NUM; i++) {
+-        threads.add(new Thread(new FileRead(f)));
++        threads.add(new Thread(new FileRead(new TachyonURI(uniqPath))));
+     }
+     ConcurrencyTestUtils.assertConcurrent(threads, 100);
+ }
+\ No newline at end of file

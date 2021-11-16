@@ -1,0 +1,26 @@
+diff --git a/8ff8719f01bb8131f8a9646c494241e191b0eef5 b/6fa56a6f6c39ebd206823bca2bfc9b18f2731491
+index 8ff8719f01..6fa56a6f6c 100644
+--- a/8ff8719f01bb8131f8a9646c494241e191b0eef5
++++ b/6fa56a6f6c39ebd206823bca2bfc9b18f2731491
+@@ -1,12 +1,10 @@
+ public void notify(final InjectorImpl injector, final Errors errors) {
+-    SourceProviders.withDefault(source, new Runnable() {
+-
+-        public void run() {
+-            try {
+-                providerFactory = injector.getInternalFactory(providerKey, errors);
+-            } catch (ResolveFailedException e) {
+-                errors.merge(e.getErrors());
+-            }
+-        }
+-    });
++    errors.pushSource(source);
++    try {
++        providerFactory = injector.getInternalFactory(providerKey, errors);
++    } catch (ErrorsException e) {
++        errors.merge(e.getErrors());
++    } finally {
++        errors.popSource(source);
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/aec6a68acc7462c137c328de8ce97d9f12af4b5b b/d38247393d4197aeac1bab95bffe06459e3ff809
+index aec6a68acc..d38247393d 100644
+--- a/aec6a68acc7462c137c328de8ce97d9f12af4b5b
++++ b/d38247393d4197aeac1bab95bffe06459e3ff809
+@@ -1,8 +1,8 @@
+ @Override
+ void setClosed() {
+     super.setClosed();
+     for (int i = 0; i < numAllBlocks; i++) {
+-        byteArrayManager.release(cellBuffers[i].array());
+         streamers.get(i).release();
+     }
++    cellBuffers.release();
+ }
+\ No newline at end of file

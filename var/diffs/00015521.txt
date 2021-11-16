@@ -1,0 +1,16 @@
+diff --git a/12937aa65cfefefdf73f3fd112ccc8e5c514ad09 b/0d23d8c8c7f922ccece3c040f6e981f862f951a2
+index 12937aa65c..0d23d8c8c7 100644
+--- a/12937aa65cfefefdf73f3fd112ccc8e5c514ad09
++++ b/0d23d8c8c7f922ccece3c040f6e981f862f951a2
+@@ -1,9 +1,9 @@
+ @Override
+ public Void visitClassObject(@NotNull JetClassObject classObject, TranslationContext context) {
+     JetObjectDeclaration declaration = classObject.getObjectDeclaration();
++    JsExpression value = ClassTranslator.generateClassCreation(declaration, context);
+     ClassDescriptor descriptor = getClassDescriptor(context.bindingContext(), declaration);
+-    JsExpression value = ClassTranslator.generateClassCreation(declaration, descriptor, context);
+     JsFunction fun = TranslationUtils.simpleReturnFunction(context.getScopeForDescriptor(descriptor), value);
+     staticResult.add(createClassObjectInitializer(fun, context));
+     return null;
+ }
+\ No newline at end of file

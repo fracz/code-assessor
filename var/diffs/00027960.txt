@@ -1,0 +1,27 @@
+diff --git a/bed3d6f6b3c81d312b235686bc0847887478e649 b/a1e955b36b6f258944bc6f8e25b1a9cb660371d7
+index bed3d6f6b3..a1e955b36b 100644
+--- a/bed3d6f6b3c81d312b235686bc0847887478e649
++++ b/a1e955b36b6f258944bc6f8e25b1a9cb660371d7
+@@ -1,20 +1,20 @@
+ /**
+  * Method for cleaning name of remote branch to be checked out. I.e. it
+  * takes something like "origin/testBranch" and returns "testBranch". This
+  * is needed for view-compatibility with console Git client.
+  *
+  * @param branchName
+  * is a name of branch to be cleaned
+  * @return branchName without remote repository name
+  * @throws GitException
+  */
+ private String cleanRemoteName(String branchName) throws GitException {
+     String returnName = branchName;
+-    List<Remote> remotes = this.remoteList(newDto(RemoteListRequest.class));
++    List<Remote> remotes = this.remoteList(null, false);
+     for (Remote remote : remotes) {
+         if (branchName.startsWith(remote.getName())) {
+             returnName = branchName.replaceFirst(remote.getName() + "/", "");
+         }
+     }
+     return returnName;
+ }
+\ No newline at end of file

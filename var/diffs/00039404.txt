@@ -1,0 +1,17 @@
+diff --git a/4ac1bbc5336f3e735251f06122969e94a42b3bef b/ea57f1cd98f5095084f13c25a5990d9a87b4276d
+index 4ac1bbc533..ea57f1cd98 100644
+--- a/4ac1bbc5336f3e735251f06122969e94a42b3bef
++++ b/ea57f1cd98f5095084f13c25a5990d9a87b4276d
+@@ -1,9 +1,9 @@
+-private static Client initClient() {
++private static Client initClient(String hostNameOrIp, int port) {
+     ExecutorService executor = Executors.newCachedThreadPool();
+     ClientBootstrap bootstrap = new ClientBootstrap(new NioClientSocketChannelFactory(executor, executor));
+     BlockingReadHandler<ChannelBuffer> blockingReadHandler = new BlockingReadHandler<ChannelBuffer>();
+     bootstrap.setPipelineFactory(new ClientPipelineFactory(blockingReadHandler));
+-    ChannelFuture channelFuture = bootstrap.connect(new InetSocketAddress(MasterServer.PORT));
++    ChannelFuture channelFuture = bootstrap.connect(new InetSocketAddress(hostNameOrIp, port));
+     Client client = new Client(blockingReadHandler, channelFuture);
+     return client;
+ }
+\ No newline at end of file

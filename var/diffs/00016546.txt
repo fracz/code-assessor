@@ -1,0 +1,24 @@
+diff --git a/0dc34753d7d739f714ec0b57b893b39ad784c79d b/2e6e4cbc1e3dd34fefcee27c447a628183dc315f
+index 0dc34753d7..2e6e4cbc1e 100644
+--- a/0dc34753d7d739f714ec0b57b893b39ad784c79d
++++ b/2e6e4cbc1e3dd34fefcee27c447a628183dc315f
+@@ -1,15 +1,13 @@
+ private void replaceThis() {
+-    if (!hasThisReference(body)) {
++    if (!hasThisReference(body))
+         return;
+-    }
+-    JsExpression thisReplacement = inliningContext.getThisReplacement(call);
+-    if (thisReplacement == JsLiteral.THIS) {
++    JsExpression thisReplacement = getThisReplacement(call);
++    if (thisReplacement == null)
+         return;
+-    }
+     if (needToAlias(thisReplacement)) {
+         JsName thisName = renamingContext.getFreshName(getThisAlias());
+         renamingContext.newVar(thisName, thisReplacement);
+         thisReplacement = thisName.makeRef();
+     }
+     replaceThisReference(body, thisReplacement);
+ }
+\ No newline at end of file

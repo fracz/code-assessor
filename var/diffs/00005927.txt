@@ -1,0 +1,19 @@
+diff --git a/17a6a64ebc88f4ac83f59f10ea4de06cc5c6b070 b/85dc473502ea5b280df82326125eed7dc1939f7f
+index 17a6a64ebc..85dc473502 100644
+--- a/17a6a64ebc88f4ac83f59f10ea4de06cc5c6b070
++++ b/85dc473502ea5b280df82326125eed7dc1939f7f
+@@ -1,10 +1,8 @@
+ public void forcedChange(int row, int col, Object value) {
+-    String key = formMapKey(row, col);
+-    if (myCachedData.containsKey(key)) {
+-        Object[][] cachedData = myCachedData.get(key);
+-        cachedData[row - getPageRowStart(row)][col - getPageColStart(col)] = value;
+-        myCachedData.put(key, cachedData);
++    Object[][] chunk = myChunkCache.getIfPresent(itemToChunkKey(row, col));
++    if (chunk != null) {
++        chunk[row - getPageRowStart(row)][col - getPageColStart(col)] = value;
+     } else {
+         throw new IllegalArgumentException("Forced to change empty cell in " + row + " row and " + col + "column.");
+     }
+ }
+\ No newline at end of file

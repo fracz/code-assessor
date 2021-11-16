@@ -1,0 +1,15 @@
+diff --git a/ae527bc119d5e9e6c5ac105639acb4cc35a2afe1 b/3d40fcf4d265bca46daed71097487bebd68fa60e
+index ae527bc119..3d40fcf4d2 100644
+--- a/ae527bc119d5e9e6c5ac105639acb4cc35a2afe1
++++ b/3d40fcf4d265bca46daed71097487bebd68fa60e
+@@ -1,7 +1,6 @@
+ @NotNull
+-protected String buildErrorString(Object arg) {
+-    final PsiType expectedType = (PsiType) arg;
+-    assert expectedType != null;
++protected String buildErrorString(Object... infos) {
++    final PsiType expectedType = (PsiType) infos[0];
+     final String typeText = expectedType.getPresentableText();
+     return InspectionGadgetsBundle.message("overly.strong.type.cast.problem.descriptor", typeText);
+ }
+\ No newline at end of file

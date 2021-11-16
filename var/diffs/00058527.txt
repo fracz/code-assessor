@@ -1,0 +1,25 @@
+diff --git a/2400ba70aa5ef9f92443993e1ba7359cfa411c45 b/24fc9f62c01ae1a1f97e7330c69534005f689375
+index 2400ba70aa..24fc9f62c0 100644
+--- a/2400ba70aa5ef9f92443993e1ba7359cfa411c45
++++ b/24fc9f62c01ae1a1f97e7330c69534005f689375
+@@ -1,4 +1,15 @@
++/**
++ * Returns a unique identifier for this entity.
++ * <p/>
++ * The unique identifier may only be set when the transaction in which entity is created commits.
++ * The <a href="https://github.com/thinkaurelius/titan/wiki/Graph-Configuration">Graph Configuration Wiki</a> explains
++ * how to configure when entity ids are assigned.
++ * Some entities are never assigned a unique identifier if they depend on a parent entity.
++ * <p/>
++ *
++ * @return The unique identifier for this entity
++ * @throws IllegalStateException if the entity does not (yet) have a unique identifier
++ * @see #hasId
++ */
+ @Override
+-public default Object id() {
+-    return getId();
+-}
+\ No newline at end of file
++public Object id();
+\ No newline at end of file

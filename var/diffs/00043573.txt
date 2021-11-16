@@ -1,0 +1,12 @@
+diff --git a/f6bebf91ceccdb613a2e5ee38e2543e292dd1859 b/333a7c710a620f93544cb32b7c27d6f78355db15
+index f6bebf91ce..333a7c710a 100644
+--- a/f6bebf91ceccdb613a2e5ee38e2543e292dd1859
++++ b/333a7c710a620f93544cb32b7c27d6f78355db15
+@@ -1,4 +1,4 @@
+ public Set<OChannelBinary> getSessionConnections() {
+-    final OStorageRemoteThreadLocal instance = OStorageRemoteThreadLocal.INSTANCE;
+-    return instance != null ? instance.get().connections : null;
++    OStorageRemoteSession session = getCurrentSession();
++    return session != null ? session.connections : null;
+ }
+\ No newline at end of file

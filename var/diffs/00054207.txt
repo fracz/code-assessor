@@ -1,0 +1,23 @@
+diff --git a/4e28268ac65bc7f7e25ab6f47e39a5d97a1843de b/9ca0a12d795afd12d1b3af216de1783b1534dea7
+index 4e28268ac6..9ca0a12d79 100644
+--- a/4e28268ac65bc7f7e25ab6f47e39a5d97a1843de
++++ b/9ca0a12d795afd12d1b3af216de1783b1534dea7
+@@ -1,16 +1,16 @@
+ @Override
+ public ResultSet getResultSet() throws SQLException {
+     if (null != currentResultSet) {
+         return currentResultSet;
+     }
+     if (1 == routedStatements.size()) {
+         currentResultSet = routedStatements.iterator().next().getResultSet();
+         return currentResultSet;
+     }
+     List<ResultSet> resultSets = new ArrayList<>(routedStatements.size());
+     for (Statement each : routedStatements) {
+         resultSets.add(each.getResultSet());
+     }
+-    currentResultSet = new ShardingResultSet(resultSets, MergeEngine.getResultSet(resultSets, (SelectStatement) getRouteResult().getSqlStatement()));
++    currentResultSet = new ShardingResultSet(resultSets, new MergeEngine(resultSets, (SelectStatement) getRouteResult().getSqlStatement()).merge());
+     return currentResultSet;
+ }
+\ No newline at end of file

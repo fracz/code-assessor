@@ -1,0 +1,20 @@
+diff --git a/8165c6bef41f8e9129aea4d0210ac0582385c764 b/afa3f6fb77a59497380ce05c5c2a511dacc0394e
+index 8165c6bef4..afa3f6fb77 100644
+--- a/8165c6bef41f8e9129aea4d0210ac0582385c764
++++ b/afa3f6fb77a59497380ce05c5c2a511dacc0394e
+@@ -1,13 +1,13 @@
+ public void testLanguage() {
+-    JetParserDefinition.getInstance().addScriptDefinition(new JetScriptDefinition(".lang.kt", new AnalyzerScriptParameter("num", "jet.Int")));
++    JetScriptDefinitionProvider.getInstance(myEnvironment.getProject()).addScriptDefinition(FIB_SCRIPT_DEFINITION);
+     loadFile("script/fib.lang.kt");
+     final Class aClass = loadClass("Fib", generateClassesInFile());
+     try {
+         Constructor constructor = aClass.getConstructor(int.class);
+         Field result = aClass.getField("result");
+         Object script = constructor.newInstance(5);
+         assertEquals(8, result.get(script));
+     } catch (Exception e) {
+         throw new RuntimeException(e);
+     }
+ }
+\ No newline at end of file

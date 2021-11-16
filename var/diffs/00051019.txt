@@ -1,0 +1,15 @@
+diff --git a/c7ba7b5bc6b42bc74158140431ae7369e71d7d3c b/1113d5ee958f53b12536e4f31973ef057593c49f
+index c7ba7b5bc6..1113d5ee95 100644
+--- a/c7ba7b5bc6b42bc74158140431ae7369e71d7d3c
++++ b/1113d5ee958f53b12536e4f31973ef057593c49f
+@@ -1,8 +1,4 @@
+ @Override
+ public void setNetworkTimeout(Executor executor, int milliseconds) throws SQLException {
+-    try {
+-        getConnection().setNetworkTimeout(executor, milliseconds);
+-    } catch (IncompatibleClassChangeError e) {
+-        throw new SQLFeatureNotSupportedException(JDBCConstants.ERROR_API_NOT_SUPPORTED_17);
+-    }
++    JDBCUtils.callMethod17(getConnection(), "setNetworkTimeout", null, new Class[] { Executor.class, Integer.TYPE }, executor, milliseconds);
+ }
+\ No newline at end of file

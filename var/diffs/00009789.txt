@@ -1,0 +1,29 @@
+diff --git a/fcd98f626702f1d0d5fc1dc06bd551f93b10c039 b/6167698d86394dca6f793d57068cdfeeade70902
+index fcd98f6267..6167698d86 100644
+--- a/fcd98f626702f1d0d5fc1dc06bd551f93b10c039
++++ b/6167698d86394dca6f793d57068cdfeeade70902
+@@ -1,18 +1,18 @@
+ private void doInit(boolean tryToLoadExistingTree) {
+     if (isInitialized.getAndSet(true))
+         return;
+     initProjectsTree(tryToLoadExistingTree);
+     initWorkers();
+     listenForSettingsChanges();
+     listenForProjectsTreeChanges();
+-    scheduleReadAllProjects();
+-    if (isUnitTestMode())
+-        return;
+     MavenUtil.runWhenInitialized(myProject, new DumbAwareRunnable() {
+
+         public void run() {
+-            listenForExternalChanges();
+-            fireActivated();
++            if (!isUnitTestMode()) {
++                fireActivated();
++                listenForExternalChanges();
++            }
++            scheduleReadAllProjects();
+         }
+     });
+ }
+\ No newline at end of file

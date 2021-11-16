@@ -1,0 +1,14 @@
+diff --git a/936d387ff794b2a812be828f5b824ccdcab2f294 b/b7ea4bb374b162dbec164a63c1ad907804f7c529
+index 936d387ff7..b7ea4bb374 100644
+--- a/936d387ff794b2a812be828f5b824ccdcab2f294
++++ b/b7ea4bb374b162dbec164a63c1ad907804f7c529
+@@ -1,7 +1,6 @@
+ @Override
+ public void setUp() throws Exception {
+     myInitChangeListManager = false;
+     super.setUp();
+-    final VcsDirtyScopeVfsListener vfsListener = ApplicationManager.getApplication().getComponent(VcsDirtyScopeVfsListener.class);
+-    vfsListener.setForbid(true);
++    VcsDirtyScopeVfsListener.getInstance(myProject).setForbid(true);
+ }
+\ No newline at end of file

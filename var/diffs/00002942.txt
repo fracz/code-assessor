@@ -1,0 +1,17 @@
+diff --git a/147c107076cbf9e380d246296187a9fc31c1aa4e b/92f6fa88055a2ee077b07990077408304d8e4c6a
+index 147c107076..92f6fa8805 100644
+--- a/147c107076cbf9e380d246296187a9fc31c1aa4e
++++ b/92f6fa88055a2ee077b07990077408304d8e4c6a
+@@ -1,7 +1,7 @@
+ public Object getData(DataProvider dataProvider) {
+-    EditorEx editor = (EditorEx) dataProvider.getData(DataConstants.EDITOR);
+-    if (editor == null)
++    final EditorEx editor = (EditorEx) dataProvider.getData(PlatformDataKeys.EDITOR.getName());
++    if (editor == null) {
+         return null;
+-    CopyProvider copyProvider = editor.getCopyProvider();
+-    return copyProvider;
++    }
++    return editor.getCopyProvider();
+ }
+\ No newline at end of file

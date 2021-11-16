@@ -1,0 +1,19 @@
+diff --git a/0d7193ec61375932fe3395c774ed146c094456b4 b/4ac36319814a97b37e1c0918e4f8e61160a1a8a2
+index 0d7193ec61..4ac3631981 100644
+--- a/0d7193ec61375932fe3395c774ed146c094456b4
++++ b/4ac36319814a97b37e1c0918e4f8e61160a1a8a2
+@@ -1,11 +1,11 @@
+ public boolean removeRoot(String url, OrderRootType rootType) {
+     LOG.assertTrue(isWritable());
+     final VirtualFilePointerContainer container = myRoots.get(rootType);
+     final VirtualFilePointer byUrl = container.findByUrl(url);
+     if (byUrl != null) {
+         container.remove(byUrl);
++        myJarDirectories.remove(url);
+         return true;
+-    } else {
+-        return false;
+     }
++    return false;
+ }
+\ No newline at end of file

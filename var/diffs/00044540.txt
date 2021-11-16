@@ -1,0 +1,18 @@
+diff --git a/70f41e7e1052f7abcbc51022dbe35a2c53ee3f91 b/a2a025687df75e5aed0c8e85780189b3e73c6c6f
+index 70f41e7e10..a2a025687d 100644
+--- a/70f41e7e1052f7abcbc51022dbe35a2c53ee3f91
++++ b/a2a025687df75e5aed0c8e85780189b3e73c6c6f
+@@ -1,8 +1,7 @@
+ public boolean dropCluster(final int iClusterId, final boolean iTruncate) {
+-    OBinaryRequest request = new ODropClusterRequest(iClusterId);
+-    OBinaryResponse<Boolean> response = new ODropClusterResponse();
+-    Boolean clusterRemoved = networkOperation(request, response, "Error on removing of cluster");
+-    if (clusterRemoved)
++    ODropClusterRequest request = new ODropClusterRequest(iClusterId);
++    ODropClusterResponse response = networkOperation(request, "Error on removing of cluster");
++    if (response.getResult())
+         removeClusterFromConfiguration(iClusterId);
+-    return clusterRemoved;
++    return response.getResult();
+ }
+\ No newline at end of file

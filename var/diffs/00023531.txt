@@ -1,0 +1,22 @@
+diff --git a/c89c3b96e99c90f3739bfe2e5f433db77bba4332 b/d3f10bb3461976c597f5414748fa59339c835c72
+index c89c3b96e9..d3f10bb346 100644
+--- a/c89c3b96e99c90f3739bfe2e5f433db77bba4332
++++ b/d3f10bb3461976c597f5414748fa59339c835c72
+@@ -1,15 +1,7 @@
+ /**
+  * Resets this view's properties
+  */
+ void resetViewProperties() {
+-    setTranslationX(0f);
+-    setTranslationY(0f);
+-    if (Constants.DebugFlags.App.EnableShadows) {
+-        setTranslationZ(0f);
+-    }
+-    setScaleX(1f);
+-    setScaleY(1f);
+-    setAlpha(1f);
+     setDim(0);
+-    invalidate();
++    TaskViewTransform.reset(this);
+ }
+\ No newline at end of file

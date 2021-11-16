@@ -1,0 +1,14 @@
+diff --git a/3a246712bfad66fe7679734ca180c9fdf79a72a1 b/beb95a710ef9705a9945e93ce559698b4c1c7d12
+index 3a246712bf..beb95a710e 100644
+--- a/3a246712bfad66fe7679734ca180c9fdf79a72a1
++++ b/beb95a710ef9705a9945e93ce559698b4c1c7d12
+@@ -1,6 +1,6 @@
+ public static void savePaxosCommit(Commit commit) {
+     // We always erase the last proposal (with the commit timestamp to no erase more recent proposal in case the commit is old)
+     // even though that's really just an optimization  since SP.beginAndRepairPaxos will exclude accepted proposal older than the mrc.
+-    String cql = "UPDATE system.%s USING TIMESTAMP ? AND TTL ? SET proposal_ballot = null, proposal = null, most_recent_commit_at = ?, most_recent_commit = ? WHERE row_key = ? AND cf_id = ?";
+-    executeInternal(String.format(cql, PAXOS), UUIDGen.microsTimestamp(commit.ballot), paxosTtl(commit.update.metadata), commit.ballot, commit.update.toBytes(), commit.key, commit.update.id());
++    String cql = "UPDATE system.%s USING TIMESTAMP ? AND TTL ? SET proposal_ballot = null, proposal = null, most_recent_commit_at = ?, most_recent_commit = ?, most_recent_commit_version = ? WHERE row_key = ? AND cf_id = ?";
++    executeInternal(String.format(cql, PAXOS), UUIDGen.microsTimestamp(commit.ballot), paxosTtl(commit.update.metadata()), commit.ballot, PartitionUpdate.toBytes(commit.update, MessagingService.current_version), MessagingService.current_version, commit.update.partitionKey().getKey(), commit.update.metadata().cfId);
+ }
+\ No newline at end of file

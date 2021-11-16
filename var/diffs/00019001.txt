@@ -1,0 +1,18 @@
+diff --git a/6eeabe08eaa441148322942a874d6b22572389c7 b/749db5c2fade39c5126dc443e69bf3313e2d76e0
+index 6eeabe08ea..749db5c2fa 100644
+--- a/6eeabe08eaa441148322942a874d6b22572389c7
++++ b/749db5c2fade39c5126dc443e69bf3313e2d76e0
+@@ -1,5 +1,9 @@
+ private void startPreview() {
+-    camera.startPreview();
+-    inPreview = true;
+-    getHost().autoFocusAvailable();
++    if (camera.isPresent()) {
++        try {
++            camera.get().startPreview();
++        } catch (Exception e) {
++            Log.w(TAG, e);
++        }
++    }
+ }
+\ No newline at end of file

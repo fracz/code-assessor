@@ -1,0 +1,13 @@
+diff --git a/cf38ca3964274b6f53554e30d07e4c94b6b70f92 b/34911043a47e29bf24d47e3e6b990f3ef495513e
+index cf38ca3964..34911043a4 100644
+--- a/cf38ca3964274b6f53554e30d07e4c94b6b70f92
++++ b/34911043a47e29bf24d47e3e6b990f3ef495513e
+@@ -1,6 +1,6 @@
+ @Override
+ protected HistoryEntry createHistoryEntry(Project project, long historyEntryID) throws Exception {
+     String description = "Save schema-alignment protograph";
+     Change change = new ProtographChange(_protograph);
+-    return ProjectManager.singleton.createHistoryEntry(historyEntryID, project, description, SaveProtographOperation.this, change);
++    return new HistoryEntry(historyEntryID, project, description, SaveProtographOperation.this, change);
+ }
+\ No newline at end of file

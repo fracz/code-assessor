@@ -1,0 +1,20 @@
+diff --git a/62f856a5c7e9b42265b31d9579a456f0f9a20f81 b/8fa3d2021d2874e4b23ae3cc0cd463a235dcc254
+index 62f856a5c7..8fa3d2021d 100644
+--- a/62f856a5c7e9b42265b31d9579a456f0f9a20f81
++++ b/8fa3d2021d2874e4b23ae3cc0cd463a235dcc254
+@@ -1,10 +1,12 @@
+-private void doCommonInlineAction(boolean inlineThisOnly) {
+-    AndroidInlineStyleHandler.setTestConfig(new AndroidInlineTestConfig(inlineThisOnly));
++private AndroidInlineTestConfig doCommonInlineAction(boolean inlineThisOnly) {
++    final AndroidInlineTestConfig config = new AndroidInlineTestConfig(inlineThisOnly);
++    AndroidInlineStyleHandler.setTestConfig(config);
+     try {
+         final Presentation p = myFixture.testAction(new InlineAction());
+         assertTrue(p.isEnabled());
+         assertTrue(p.isVisible());
+     } finally {
+         AndroidInlineStyleHandler.setTestConfig(null);
+     }
++    return config;
+ }
+\ No newline at end of file

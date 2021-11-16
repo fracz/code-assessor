@@ -1,0 +1,17 @@
+diff --git a/bb27bf81f729c9fed451c2be340a56251732cc9b b/83ebe80eabb847624e6bc3db8f3bcea802bad4c6
+index bb27bf81f7..83ebe80eab 100644
+--- a/bb27bf81f729c9fed451c2be340a56251732cc9b
++++ b/83ebe80eabb847624e6bc3db8f3bcea802bad4c6
+@@ -1,8 +1,9 @@
+ public static void printActiveConnStack(List<List<String>> content, Option opt) {
++    PrintStream out = opt.getPrintStream();
+     for (List<String> stack : content) {
+         for (String line : stack) {
+-            System.out.println(line);
++            out.println(line);
+         }
+-        System.out.println("===============================\n");
++        out.println("===============================\n");
+     }
+ }
+\ No newline at end of file

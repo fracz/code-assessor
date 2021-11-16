@@ -1,0 +1,12 @@
+diff --git a/cd54c1e1118e26459fd0f078300fb637ccdb21d9 b/76847d2b5b9be1463d680809a908b45f6436d15d
+index cd54c1e111..76847d2b5b 100644
+--- a/cd54c1e1118e26459fd0f078300fb637ccdb21d9
++++ b/76847d2b5b9be1463d680809a908b45f6436d15d
+@@ -1,5 +1,5 @@
+ @Test
+ public void assertDoStaticShardingWithoutShardingColumns() {
+-    ShardingStrategy strategy = new ShardingStrategy(Sets.newHashSet("column"), null);
++    ShardingStrategy strategy = new ShardingStrategy(Sets.newHashSet("column"), new NoneShardingAlgorithm());
+     assertThat(strategy.doStaticSharding(targets, Collections.<ShardingValue>emptySet()), is(targets));
+ }
+\ No newline at end of file

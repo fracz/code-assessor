@@ -1,0 +1,16 @@
+diff --git a/bc919b6cdc8247ef153b2828deda045eeb791339 b/212ad8d99e2dab2b067dc4ccc3a2b86ac3d8642b
+index bc919b6cdc..212ad8d99e 100644
+--- a/bc919b6cdc8247ef153b2828deda045eeb791339
++++ b/212ad8d99e2dab2b067dc4ccc3a2b86ac3d8642b
+@@ -1,8 +1,8 @@
+-private void createRelationshipPropertyExistenceConstraint(int relTypeId, int propertyKeyId) {
++private void createRelationshipPropertyExistenceConstraint(RelationshipPropertyDescriptor descriptor) {
+     SchemaStore schemaStore = (SchemaStore) fixture.directStoreAccess().nativeStores().getSchemaStore();
+-    SchemaRule rule = relPropertyExistenceConstraintRule(schemaStore.nextId(), relTypeId, propertyKeyId);
++    SchemaRule rule = relPropertyExistenceConstraintRule(schemaStore.nextId(), descriptor);
+     Collection<DynamicRecord> records = schemaStore.allocateFrom(rule);
+     for (DynamicRecord record : records) {
+         schemaStore.updateRecord(record);
+     }
+ }
+\ No newline at end of file

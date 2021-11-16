@@ -1,0 +1,22 @@
+diff --git a/730db0911976dd69257fa00597ca7672aab6a83a b/587588129dc0152330c028c2994ba1ac79289bd3
+index 730db09119..587588129d 100644
+--- a/730db0911976dd69257fa00597ca7672aab6a83a
++++ b/587588129dc0152330c028c2994ba1ac79289bd3
+@@ -1,14 +1,14 @@
+ void reconnectAttempts(int attempts) {
+-    client.setReconnectAttempts(attempts);
+-    client.setReconnectInterval(10);
++    client.close();
++    client = vertx.createNetClient(new NetClientOptions().setReconnectAttempts(attempts).setReconnectInterval(10));
+     // The server delays starting for a a few seconds, but it should still connect
+     client.connect(1234, (res) -> {
+         assertTrue(res.succeeded());
+         assertFalse(res.failed());
+         testComplete();
+     });
+     // Start the server after a delay
+     vertx.setTimer(2000, id -> startEchoServer(s -> {
+     }));
+     await();
+ }
+\ No newline at end of file

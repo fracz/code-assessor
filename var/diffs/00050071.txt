@@ -1,0 +1,33 @@
+diff --git a/16ef5d6d6e3b617deb73a637dfa1f59fbd5b13da b/ac22a2c2790b0b311b20fde3305cd8b4e1685156
+index 16ef5d6d6e..ac22a2c279 100644
+--- a/16ef5d6d6e3b617deb73a637dfa1f59fbd5b13da
++++ b/ac22a2c2790b0b311b20fde3305cd8b4e1685156
+@@ -1,19 +1,25 @@
+ /**
+  * Returns a (possibly empty) array of <code>String</code>s which are
+  * the items in the receiver's list.
+  * <p>
+  * Note: This is not the actual structure used by the receiver
+  * to maintain its list of items, so modifying the array will
+  * not affect the receiver.
+  * </p>
+  *
+  * @return the items in the receiver's list
+  * @throws SWTException <ul>
+  * <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
+  * <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
+  * </ul>
+  */
+-public TableItem[] getItems() {
++public List<ITEM_TYPE> getItems() {
+     checkWidget();
+-    return this.table.getItems();
++    List<ITEM_TYPE> result = new ArrayList<>();
++    for (TableItem item : this.table.getItems()) {
++        if (item.getData() != null) {
++            result.add((ITEM_TYPE) item.getData());
++        }
++    }
++    return result;
+ }
+\ No newline at end of file

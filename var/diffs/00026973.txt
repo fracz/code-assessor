@@ -1,0 +1,18 @@
+diff --git a/cfeb5a5d4e1afa807cf66a8f84249a610b4fbc1b b/ab9be486627dff42229de082d5e1e1ca1563702e
+index cfeb5a5d4e..ab9be48662 100644
+--- a/cfeb5a5d4e1afa807cf66a8f84249a610b4fbc1b
++++ b/ab9be486627dff42229de082d5e1e1ca1563702e
+@@ -1,8 +1,8 @@
+ @Override
+ public double getParameter(int index) {
+-    if (index >= network.getOutputLayer().getW().length) {
+-        int i = index - network.getOutputLayer().getB().length;
+-        return network.getOutputLayer().getB().get(i);
++    if (index >= network.getOutputLayer().getW().length()) {
++        int i = index - network.getOutputLayer().getB().length();
++        return (double) network.getOutputLayer().getB().getScalar(i).element();
+     } else
+-        return network.getOutputLayer().getW().get(index);
++        return (double) network.getOutputLayer().getW().getScalar(index).element();
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/7dc35e593dcda3c3f559b705e51312d22f844c6e b/403c0d38fdea01808cbc715695b39d7ac892e1ec
+index 7dc35e593d..403c0d38fd 100644
+--- a/7dc35e593dcda3c3f559b705e51312d22f844c6e
++++ b/403c0d38fdea01808cbc715695b39d7ac892e1ec
+@@ -1,9 +1,12 @@
+ /*
+   /**********************************************************
+   /* Test methods
+   /**********************************************************
+    */
+ public void testOuterBean() throws Exception {
+-    Model model = modelResolver().resolve(OuterBean.class, new ModelConverterContextMock());
++    ModelResolver modelResolver = modelResolver();
++    ModelConverterContextImpl context = new ModelConverterContextImpl(modelResolver);
++    ;
++    Model model = context.resolve(OuterBean.class);
+     assertNotNull(model);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/8218261412aaea1df6fb5416ee12d8fc6fddef7f b/00d73c9ef0f6b47ccc137ad2227b0f48bed0e811
+index 8218261412..00d73c9ef0 100644
+--- a/8218261412aaea1df6fb5416ee12d8fc6fddef7f
++++ b/00d73c9ef0f6b47ccc137ad2227b0f48bed0e811
+@@ -1,6 +1,6 @@
+ public static void insert(KeyColumnValueStore store, StoreTransaction txn, long key, String col, String val) throws StorageException {
+-    ByteBuffer k = longToByteBuffer(key);
+-    ByteBuffer c = stringToByteBuffer(col);
+-    ByteBuffer v = stringToByteBuffer(val);
+-    store.mutate(k, Arrays.asList(SimpleEntry.of(c, v)), KeyColumnValueStore.NO_DELETIONS, txn);
++    StaticBuffer k = longToByteBuffer(key);
++    StaticBuffer c = stringToByteBuffer(col);
++    StaticBuffer v = stringToByteBuffer(val);
++    store.mutate(k, Arrays.<Entry>asList(new StaticBufferEntry(c, v)), KeyColumnValueStore.NO_DELETIONS, txn);
+ }
+\ No newline at end of file

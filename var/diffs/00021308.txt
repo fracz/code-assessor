@@ -1,0 +1,21 @@
+diff --git a/088ffb1dfaee2001f38a8ee80ed87774421d9db4 b/6f6b5b946f67e1a53cf6fd3ace51684a4de68879
+index 088ffb1dfa..6f6b5b946f 100644
+--- a/088ffb1dfaee2001f38a8ee80ed87774421d9db4
++++ b/6f6b5b946f67e1a53cf6fd3ace51684a4de68879
+@@ -1,14 +1,14 @@
+ public static JSONPath compile(String path) {
+     if (path == null) {
+         throw new JSONPathException("jsonpath can not be null");
+     }
+     JSONPath jsonpath = pathCache.get(path);
+     if (jsonpath == null) {
+         jsonpath = new JSONPath(path);
+-        if (pathCache.size() < CACHE_SIZE) {
++        if (pathCache.size() < 1024) {
+             pathCache.putIfAbsent(path, jsonpath);
+             jsonpath = pathCache.get(path);
+         }
+     }
+     return jsonpath;
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/7f26b762b6e8ca8aac1a392b74aff5f95053dd1b b/f8ea36b372c0f4368ce39b071e3c15ba79deb79b
+index 7f26b762b6..f8ea36b372 100644
+--- a/7f26b762b6e8ca8aac1a392b74aff5f95053dd1b
++++ b/f8ea36b372c0f4368ce39b071e3c15ba79deb79b
+@@ -1,9 +1,10 @@
+ public void testMissing() throws Exception {
+-    doTest(new TheTest("Missing TYPE_MISMATCH at 56 to 57") {
++    final DiagnosticData typeMismatch1 = diagnostics.get(1);
++    doTest(new TheTest(missing(typeMismatch1)) {
+
+         @Override
+         protected void makeTestData(List<Diagnostic> diagnostics, List<CheckerTestUtil.DiagnosedRange> diagnosedRanges) {
+-            diagnostics.remove(1);
++            diagnostics.remove(typeMismatch1.index);
+         }
+     });
+ }
+\ No newline at end of file

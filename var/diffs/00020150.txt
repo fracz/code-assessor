@@ -1,0 +1,18 @@
+diff --git a/c7dfdef8aaa4b05a0d556c9dd2d604722922f3f3 b/026a1893a0ca98db1e6e815b24a14fd987cb2f1e
+index c7dfdef8aa..026a1893a0 100644
+--- a/c7dfdef8aaa4b05a0d556c9dd2d604722922f3f3
++++ b/026a1893a0ca98db1e6e815b24a14fd987cb2f1e
+@@ -1,11 +1,5 @@
+ public void test_db2_union() throws Exception {
+     String sql = "select * from t1 where id > 1";
+     String result = PagerUtils.limit(sql, JdbcConstants.SQL_SERVER, 100, 10);
+-    Assert.assertEquals(//
+-    "SELECT *" + //
+-    "\nFROM (SELECT *, ROW_NUMBER() OVER () AS ROWNUM" + //
+-    "\n\tFROM t1" + //
+-    "\n\tWHERE id > 1" + //
+-    "\n\t) XX" + //
+-    "\nWHERE ROWNUM > 100" + "\n\tAND ROWNUM <= 110", result);
++    Assert.assertEquals("SELECT *\n" + "FROM (\n" + "\tSELECT *, ROW_NUMBER() OVER () AS ROWNUM\n" + "\tFROM t1\n" + "\tWHERE id > 1\n" + ") XX\n" + "WHERE ROWNUM > 100\n" + "\tAND ROWNUM <= 110", result);
+ }
+\ No newline at end of file

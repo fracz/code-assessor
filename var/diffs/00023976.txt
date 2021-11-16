@@ -1,0 +1,21 @@
+diff --git a/ec8806b514bdcfa26e5f0ecb396fe4a74438b292 b/a4f031d9e4edaa3fc55874c0844ef36f1a92816c
+index ec8806b514..a4f031d9e4 100644
+--- a/ec8806b514bdcfa26e5f0ecb396fe4a74438b292
++++ b/a4f031d9e4edaa3fc55874c0844ef36f1a92816c
+@@ -1,13 +1,10 @@
+ /*
+      param@ key -- value whose hash is used to fill
+      the filter_.
+      This is a general purpose API.
+      */
+ public void add(String key) {
+-    for (int i = 0; i < hashes_; ++i) {
+-        ISimpleHash hash = hashLibrary_.get(i);
+-        int hashValue = hash.hash(key);
+-        int index = Math.abs(hashValue % size_);
+-        filter_.set(index);
++    for (int bucketIndex : getHashBuckets(key)) {
++        filter_.set(bucketIndex);
+     }
+ }
+\ No newline at end of file

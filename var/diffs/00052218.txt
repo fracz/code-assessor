@@ -1,0 +1,20 @@
+diff --git a/c167246d267efdb152bd1443d7fad3a7bb066457 b/34893361beb1312af7e773c3d21d90df3c589283
+index c167246d26..34893361be 100644
+--- a/c167246d267efdb152bd1443d7fad3a7bb066457
++++ b/34893361beb1312af7e773c3d21d90df3c589283
+@@ -1,10 +1,12 @@
+ /**
+  * 释放数据库连接.
+  *
+  * @param connection 待释放的数据库连接
+  */
+ public void release(final Connection connection) {
+-    Preconditions.checkNotNull(connection);
+-    closeConnection(connection);
+     connectionMap.values().remove(connection);
++    try {
++        connection.close();
++    } catch (final SQLException ignored) {
++    }
+ }
+\ No newline at end of file

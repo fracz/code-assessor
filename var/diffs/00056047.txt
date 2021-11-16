@@ -1,0 +1,16 @@
+diff --git a/f759cfdd032384f7d75ef062b4aaba25e2921b49 b/c1b43be582ae6d68ad8a65cb7edd8acdc2571b86
+index f759cfdd03..c1b43be582 100644
+--- a/f759cfdd032384f7d75ef062b4aaba25e2921b49
++++ b/c1b43be582ae6d68ad8a65cb7edd8acdc2571b86
+@@ -1,9 +1,9 @@
+ @Test
+ public void testParseReturningOnOtherAdviceType() {
+     try {
+-        this.context = new ClassPathXmlApplicationContext(getErrorConfigLocation());
++        new ClassPathXmlApplicationContext(getClass().getSimpleName() + "-error.xml", getClass());
+         fail("Expected BeanDefinitionStoreException");
+     } catch (BeanDefinitionStoreException ex) {
+         assertTrue(ex.contains(SAXParseException.class));
+     }
+ }
+\ No newline at end of file

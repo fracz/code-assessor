@@ -1,0 +1,21 @@
+diff --git a/5e775fc1f790f22a100e21161f3ee97c1bd255f5 b/e11f76edbdc7182ba953346928912ccddce4ccad
+index 5e775fc1f7..e11f76edbd 100644
+--- a/5e775fc1f790f22a100e21161f3ee97c1bd255f5
++++ b/e11f76edbdc7182ba953346928912ccddce4ccad
+@@ -1,14 +1,14 @@
+ @Override
+ public void visitDoWhileExpression(JetDoWhileExpression expression) {
+     Label condition = new Label();
+     v.mark(condition);
+     myLoopStarts.push(condition);
+     Label end = new Label();
+     myLoopEnds.push(end);
+     gen(expression.getBody(), Type.VOID_TYPE);
+     gen(expression.getCondition());
+-    myStack.pop().condJump(condition, false, v);
++    myStack.pop().condJump(condition, end, v);
+     v.mark(end);
+     myLoopEnds.pop();
+     myLoopStarts.pop();
+ }
+\ No newline at end of file

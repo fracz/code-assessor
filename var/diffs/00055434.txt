@@ -1,0 +1,16 @@
+diff --git a/ad9dd3751366be920da48d5d23f539991b9029f8 b/b37704b62639f90c7f083896e6e99c5b1b28a8dd
+index ad9dd37513..b37704b626 100644
+--- a/ad9dd3751366be920da48d5d23f539991b9029f8
++++ b/b37704b62639f90c7f083896e6e99c5b1b28a8dd
+@@ -1,6 +1,6 @@
+ @Override
+-public void onFormFieldPartFinished(String fieldName, String fieldValue, Map<String, List<String>> headersFromPart) {
+-    HttpHeaders headers = new HttpHeaders();
+-    headers.putAll(headersFromPart);
+-    emitter.next(new NioPart(headers, fieldValue));
++public void onFormFieldPartFinished(String name, String value, Map<String, List<String>> headers) {
++    HttpHeaders httpHeaders = new HttpHeaders();
++    httpHeaders.putAll(headers);
++    this.sink.next(new SynchronossPart(httpHeaders, value));
+ }
+\ No newline at end of file

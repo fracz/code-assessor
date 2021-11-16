@@ -1,0 +1,11 @@
+diff --git a/3bf64e3c187cbcc4e178ff77bc694dcf205bd38d b/cfba2708a2d689a13d102d6ec4930897cba29769
+index 3bf64e3c18..cfba2708a2 100644
+--- a/3bf64e3c187cbcc4e178ff77bc694dcf205bd38d
++++ b/cfba2708a2d689a13d102d6ec4930897cba29769
+@@ -1,4 +1,4 @@
+ @Override
+ public int getRetryingTimes() {
+-    throw new IllegalStateException(FileDownloadUtils.formatString("No 'retrying times' in this message %d %d", id, status));
++    throw new NoFieldException("getRetryingTimes", this);
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/833ca1f842ca77cff6621738fff687e99d58da8d b/3622ee1348a49c5af57fa0234641ea65cf6ba90d
+index 833ca1f842..3622ee1348 100644
+--- a/833ca1f842ca77cff6621738fff687e99d58da8d
++++ b/3622ee1348a49c5af57fa0234641ea65cf6ba90d
+@@ -1,9 +1,9 @@
+ @Nullable
+ @Override
+ public String getLineIndent(@NotNull Project project, @NotNull Editor editor, Language language, int offset) {
+-    Pair<Type, SyntaxElement> indentData = getIndent(project, editor, language, offset);
+-    if (indentData != null) {
+-        return getIndentString(project, editor, offset, indentData);
++    IndentCalculator indentCalculator = getIndent(project, editor, language, offset);
++    if (indentCalculator != null) {
++        return indentCalculator.getIndentString(getPosition(editor, offset));
+     }
+     return super.getLineIndent(project, editor, language, offset);
+ }
+\ No newline at end of file

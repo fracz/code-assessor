@@ -1,0 +1,17 @@
+diff --git a/daeaa9aaef6223bba97f148d394d89d58942895e b/03230ddc2b89e448d6851b756404a288c2d0127f
+index daeaa9aaef..03230ddc2b 100644
+--- a/daeaa9aaef6223bba97f148d394d89d58942895e
++++ b/03230ddc2b89e448d6851b756404a288c2d0127f
+@@ -1,9 +1,9 @@
+ static boolean isVariableSuitableForStream(PsiVariable variable, PsiStatement statement, TerminalBlock tb) {
+     if (ReferencesSearch.search(variable).forEach(ref -> {
+-        PsiElement element = ref.getElement();
+-        return !(element instanceof PsiExpression) || !PsiUtil.isAccessedForWriting((PsiExpression) element) || tb.operations().anyMatch(op -> op.isWriteAllowed(variable, (PsiExpression) element));
++        PsiExpression expression = tryCast(ref.getElement(), PsiExpression.class);
++        return expression == null || !PsiUtil.isAccessedForWriting(expression) || tb.operations().anyMatch(op -> op.isWriteAllowed(variable, expression));
+     })) {
+         return true;
+     }
+     return HighlightControlFlowUtil.isEffectivelyFinal(variable, statement, null);
+ }
+\ No newline at end of file

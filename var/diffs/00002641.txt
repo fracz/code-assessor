@@ -1,0 +1,19 @@
+diff --git a/fb17e5eac3a3696365f2c3190a85f264a2119b68 b/f8e592c00fd571fa17911c31eabae368fae04dbd
+index fb17e5eac3..f8e592c00f 100644
+--- a/fb17e5eac3a3696365f2c3190a85f264a2119b68
++++ b/f8e592c00fd571fa17911c31eabae368fae04dbd
+@@ -1,10 +1,10 @@
+ public void setDefaultChangeList(@NotNull LocalChangeList list) {
+     synchronized (myChangeLists) {
+         if (myDefaultChangelist != null)
+             myDefaultChangelist.setDefault(false);
+-        list = findRealByCopy(list);
+-        list.setDefault(true);
+-        myDefaultChangelist = list;
++        LocalChangeListImpl realList = findRealByCopy(list);
++        realList.setDefault(true);
++        myDefaultChangelist = realList;
+     }
+     myListeners.getMulticaster().defaultListChanged(list);
+ }
+\ No newline at end of file

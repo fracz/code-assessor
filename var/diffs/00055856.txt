@@ -1,0 +1,16 @@
+diff --git a/936d8e87a03c3bf1f7ba182f49331aa737d69042 b/66ac972a659f217839c8723f6d7baa9d6aed8018
+index 936d8e87a0..66ac972a65 100644
+--- a/936d8e87a03c3bf1f7ba182f49331aa737d69042
++++ b/66ac972a659f217839c8723f6d7baa9d6aed8018
+@@ -1,9 +1,9 @@
+ @Test
+ @SuppressWarnings("unchecked")
+ public void validateMonoTestBean() throws Exception {
+     String body = "{\"bar\":\"b1\"}";
+     ResolvableType type = forClassWithGenerics(Mono.class, TestBean.class);
+     MethodParameter param = this.testMethod.resolveParam(type);
+     Mono<TestBean> mono = resolveValue(param, body);
+-    TestSubscriber.subscribe(mono).assertNoValues().assertError(ServerWebInputException.class);
++    ScriptedSubscriber.create().expectNextCount(0).expectError(ServerWebInputException.class).verify(mono);
+ }
+\ No newline at end of file

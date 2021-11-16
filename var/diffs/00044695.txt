@@ -1,0 +1,24 @@
+diff --git a/235837612bc2c7bbf69924bb8d9abe34a12e4660 b/6310e7971628f9b134175869f25d3001a3cee88b
+index 235837612b..6310e79716 100644
+--- a/235837612bc2c7bbf69924bb8d9abe34a12e4660
++++ b/6310e7971628f9b134175869f25d3001a3cee88b
+@@ -1,11 +1,9 @@
++/**
++ * Binds POJO to ODocument.
++ */
++@Override
+ public byte[] toStream() {
+-    ORecordColumn record = new ORecordColumn();
+-    // WRITE CURRENT SCHEMA VERSION
+-    record.add(String.valueOf(CURRENT_VERSION_NUMBER));
+-    // WRITE CLASSES
+-    record.add(String.valueOf(classesMap.size()));
+-    for (OClass cls : classesMap.values()) {
+-        cls.toStream(record);
+-    }
+-    return record.toStream();
++    field("schemaVersion", CURRENT_VERSION_NUMBER);
++    field("classes", classes.values(), OType.EMBEDDEDSET);
++    return super.toStream();
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/77f114e8be7617f1bff6c40759fa1ab513df6405 b/79f6965f7c9707c50cb582ab2b231e72f1f039c4
+index 77f114e8be..79f6965f7c 100644
+--- a/77f114e8be7617f1bff6c40759fa1ab513df6405
++++ b/79f6965f7c9707c50cb582ab2b231e72f1f039c4
+@@ -1,8 +1,6 @@
+ @Override
+ protected ShardingRule getShardingRule(final Map.Entry<DatabaseType, Map<String, DataSource>> dataSourceEntry) throws SQLException {
+     ShardingRuleConfiguration shardingRuleConfig = new ShardingRuleConfiguration();
+-    HintShardingStrategyConfiguration shardingStrategyConfig = new HintShardingStrategyConfiguration();
+-    shardingStrategyConfig.setAlgorithmClassName(HintModuloDatabaseShardingAlgorithm.class.getName());
+-    shardingRuleConfig.setDefaultDatabaseShardingStrategyConfig(shardingStrategyConfig);
++    shardingRuleConfig.setDefaultDatabaseShardingStrategyConfig(new HintShardingStrategyConfiguration(HintModuloDatabaseShardingAlgorithm.class.getName()));
+     return shardingRuleConfig.build(dataSourceEntry.getValue());
+ }
+\ No newline at end of file

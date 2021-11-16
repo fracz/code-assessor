@@ -1,0 +1,21 @@
+diff --git a/902a7074f4fca5462d3bf6c5277a84a4c5574dfa b/bd6b2dd7125f03df3050b98902288ed7a1ae9a35
+index 902a7074f4..bd6b2dd712 100644
+--- a/902a7074f4fca5462d3bf6c5277a84a4c5574dfa
++++ b/bd6b2dd7125f03df3050b98902288ed7a1ae9a35
+@@ -1,12 +1,13 @@
+ @Test
+ public void testNoParams() {
++    client = vertx.createHttpClient(new ClientOptions());
+     server.requestHandler(req -> {
+         assertNull(req.query());
+         assertTrue(req.params().isEmpty());
+         req.response().end();
+     });
+-    server.listen(port, onSuccess(server -> {
+-        client.getNow("some-uri", resp -> testComplete());
++    server.listen(DEFAULT_HTTP_PORT, onSuccess(server -> {
++        client.getNow(new RequestOptions().setPort(DEFAULT_HTTP_PORT).setPort(DEFAULT_HTTP_PORT).setRequestURI(DEFAULT_TEST_URI), resp -> testComplete());
+     }));
+     await();
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/0fb676893801c8053120d435b180fa6cc5f4b6dd b/374b518f328d67da255a3ddf6fd3ddc5413f9ed8
+index 0fb6768938..374b518f32 100644
+--- a/0fb676893801c8053120d435b180fa6cc5f4b6dd
++++ b/374b518f328d67da255a3ddf6fd3ddc5413f9ed8
+@@ -1,7 +1,7 @@
+ public Collection<Class<? extends Closeable>> indexServices() {
+-    List<Class<? extends Closeable>> services = Lists.newArrayList();
++    List<Class<? extends Closeable>> services = new ArrayList<>();
+     for (Tuple<PluginInfo, Plugin> plugin : plugins) {
+         services.addAll(plugin.v2().indexServices());
+     }
+     return services;
+ }
+\ No newline at end of file

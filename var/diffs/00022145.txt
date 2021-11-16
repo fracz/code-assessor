@@ -1,0 +1,26 @@
+diff --git a/1f9bc1af4820bfc8179e1ec5fd4d5bbe8e61d023 b/70a980fe32505f7a1d1563454551e169653b8465
+index 1f9bc1af48..70a980fe32 100644
+--- a/1f9bc1af4820bfc8179e1ec5fd4d5bbe8e61d023
++++ b/70a980fe32505f7a1d1563454551e169653b8465
+@@ -1,16 +1,15 @@
+ @Override
+-public NetworkStatsHistory getHistoryForNetwork(int networkTemplate) {
++public NetworkStatsHistory getHistoryForNetwork(NetworkTemplate template) {
+     mContext.enforceCallingOrSelfPermission(READ_NETWORK_USAGE_HISTORY, TAG);
+     synchronized (mStatsLock) {
+         // combine all interfaces that match template
+-        final String subscriberId = getActiveSubscriberId();
+         final NetworkStatsHistory combined = new NetworkStatsHistory(mSettings.getNetworkBucketDuration(), estimateNetworkBuckets());
+-        for (InterfaceIdentity ident : mNetworkStats.keySet()) {
+-            final NetworkStatsHistory history = mNetworkStats.get(ident);
+-            if (ident.matchesTemplate(networkTemplate, subscriberId)) {
++        for (NetworkIdentitySet ident : mNetworkStats.keySet()) {
++            if (templateMatches(template, ident)) {
++                final NetworkStatsHistory history = mNetworkStats.get(ident);
+                 combined.recordEntireHistory(history);
+             }
+         }
+         return combined;
+     }
+ }
+\ No newline at end of file

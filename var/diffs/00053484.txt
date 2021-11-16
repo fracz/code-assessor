@@ -1,0 +1,12 @@
+diff --git a/b546530c07746bf80c9e70294866079903e58800 b/79026b176f917e9e2713a3eefd0f345bdc7de222
+index b546530c07..79026b176f 100644
+--- a/b546530c07746bf80c9e70294866079903e58800
++++ b/79026b176f917e9e2713a3eefd0f345bdc7de222
+@@ -1,5 +1,4 @@
+ @Test
+ public void assertDoBetweenSharding() {
+-    RangeShardingValue<String> shardingValue = null;
+-    assertThat(noneDatabaseShardingAlgorithm.doSharding(targets, shardingValue), is(targets));
++    assertThat(noneDatabaseShardingAlgorithm.doSharding(targets, new RangeShardingValue<>("tbl", "col", Range.range("1", BoundType.CLOSED, "2", BoundType.OPEN))), is(targets));
+ }
+\ No newline at end of file

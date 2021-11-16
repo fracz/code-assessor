@@ -1,0 +1,13 @@
+diff --git a/5fe96a3e69daa73b16d5179f25d0d8dbd2f0303b b/a2defa3dda9a4a769fed9e7ba70949a394be3053
+index 5fe96a3e69..a2defa3dda 100644
+--- a/5fe96a3e69daa73b16d5179f25d0d8dbd2f0303b
++++ b/a2defa3dda9a4a769fed9e7ba70949a394be3053
+@@ -1,5 +1,5 @@
+-private static void addRow(DoubleMatrix ret, int row, String[] line) {
++private static void addRow(INDArray ret, int row, String[] line) {
+     double[] vector = new double[4];
+     for (int i = 0; i < 4; i++) vector[i] = Double.parseDouble(line[i]);
+-    ret.putRow(row, new DoubleMatrix(vector));
++    ret.putRow(row, NDArrays.create(vector));
+ }
+\ No newline at end of file

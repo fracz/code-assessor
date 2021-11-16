@@ -1,0 +1,19 @@
+diff --git a/6db3d63bc61aea286f9476b5e38af7004e2ccc73 b/9c19023bb62e8e1767ec792a2788b9ffde288645
+index 6db3d63bc6..9c19023bb6 100644
+--- a/6db3d63bc61aea286f9476b5e38af7004e2ccc73
++++ b/9c19023bb62e8e1767ec792a2788b9ffde288645
+@@ -1,12 +1,12 @@
+ @Test
+ public void testAddOffer() {
+     RBlockingQueueReactive<Integer> queue = redisson.getBlockingQueue("blocking:queue");
+     sync(queue.add(1));
+     sync(queue.offer(2));
+     sync(queue.add(3));
+     sync(queue.offer(4));
+     // MatcherAssert.assertThat(queue, Matchers.contains(1, 2, 3, 4));
+     Assert.assertEquals((Integer) 1, sync(queue.poll()));
+-    MatcherAssert.assertThat(sync(queue), Matchers.contains(2, 3, 4));
++    assertThat(sync(queue)).containsExactly(2, 3, 4);
+     Assert.assertEquals((Integer) 2, sync(queue.peek()));
+ }
+\ No newline at end of file

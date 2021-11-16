@@ -1,0 +1,13 @@
+diff --git a/ff631fa0904ff6e6d9a60c95b718d077a9b71a39 b/3a46023215668b3f5dca8bf1b3fb577da5e4a813
+index ff631fa090..3a46023215 100644
+--- a/ff631fa0904ff6e6d9a60c95b718d077a9b71a39
++++ b/3a46023215668b3f5dca8bf1b3fb577da5e4a813
+@@ -1,5 +1,4 @@
+ public ServiceTypeRegistry build() {
+-    ServiceTypeRegistry serviceTypeRegistry = new ServiceTypeRegistry(buildMap);
+-    buildMap = new IntHashMap<ServiceType>();
+-    return serviceTypeRegistry;
++    IntHashMap<ServiceType> copy = IntHashMapUtils.copy(buildMap);
++    return new ServiceTypeRegistry(copy);
+ }
+\ No newline at end of file

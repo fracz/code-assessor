@@ -1,0 +1,37 @@
+diff --git a/6241744d49d0d35b344031750e1d3d731324611d b/6a7669f2f0dbda78009ff3d16bf870b876613d18
+index 6241744d49..6a7669f2f0 100644
+--- a/6241744d49d0d35b344031750e1d3d731324611d
++++ b/6a7669f2f0dbda78009ff3d16bf870b876613d18
+@@ -1,21 +1,15 @@
+-private void makeRequest() throws IOException, InterruptedException {
++private void makeRequest() throws IOException {
+     if (!Thread.currentThread().isInterrupted()) {
+-        try {
+-            // Fixes #115
+-            if (request.getURI().getScheme() == null)
+-                throw new MalformedURLException("No valid URI scheme was provided");
+-            HttpResponse response = client.execute(request, context);
+-            if (!Thread.currentThread().isInterrupted()) {
+-                if (responseHandler != null) {
+-                    responseHandler.sendResponseMessage(response);
+-                }
+-            } else {
+-                throw new InterruptedException("makeRequest was interrupted");
+-            }
+-        } catch (IOException e) {
+-            if (!Thread.currentThread().isInterrupted()) {
+-                throw e;
++        // Fixes #115
++        if (request.getURI().getScheme() == null) {
++            // subclass of IOException so processed in the caller
++            throw new MalformedURLException("No valid URI scheme was provided");
++        }
++        HttpResponse response = client.execute(request, context);
++        if (!Thread.currentThread().isInterrupted()) {
++            if (responseHandler != null) {
++                responseHandler.sendResponseMessage(response);
+             }
+         }
+     }
+ }
+\ No newline at end of file

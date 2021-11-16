@@ -1,0 +1,12 @@
+diff --git a/e327626f4088a16877abede13cbd15e34fd4a45a b/d0896911f0968b210ba226036596c844a2c0fcf9
+index e327626f40..d0896911f0 100644
+--- a/e327626f4088a16877abede13cbd15e34fd4a45a
++++ b/d0896911f0968b210ba226036596c844a2c0fcf9
+@@ -1,4 +1,4 @@
+ @Override
+-public void replaceIndexSample(int labelId, int propertyKeyId, long unique, long size) {
+-    counts(indexSampleKey(labelId, propertyKeyId)).write(unique, size);
++public void replaceIndexSample(IndexDescriptor descriptor, long unique, long size) {
++    counts(indexSampleKey(descriptor)).write(unique, size);
+ }
+\ No newline at end of file

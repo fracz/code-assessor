@@ -1,0 +1,24 @@
+diff --git a/aaf2144b74fb81083ac4728bf94c446e10314279 b/6b9213b2ecad15be63dbf21c2cb3a96005a32b4f
+index aaf2144b74..6b9213b2ec 100644
+--- a/aaf2144b74fb81083ac4728bf94c446e10314279
++++ b/6b9213b2ecad15be63dbf21c2cb3a96005a32b4f
+@@ -1,14 +1,15 @@
+ @Override
+ public void visit(MethodNode mth) throws JadxException {
+     if (mth.isNoCode()) {
+         return;
+     }
+     for (BlockNode block : mth.getBasicBlocks()) {
+-        for (Iterator<InsnNode> it = block.getInstructions().iterator(); it.hasNext(); ) {
+-            InsnNode insn = it.next();
++        InstructionRemover remover = new InstructionRemover(block.getInstructions());
++        for (InsnNode insn : block.getInstructions()) {
+             if (checkInsn(mth, block, insn)) {
+-                it.remove();
++                remover.add(insn);
+             }
+         }
++        remover.perform();
+     }
+ }
+\ No newline at end of file

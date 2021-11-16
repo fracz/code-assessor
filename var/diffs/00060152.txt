@@ -1,0 +1,18 @@
+diff --git a/d129e7f81f487a2f5133a5b57e58c8ff4cb77532 b/2fcee731829adbbe1a45481e2956134d3add569c
+index d129e7f81f..2fcee73182 100644
+--- a/d129e7f81f487a2f5133a5b57e58c8ff4cb77532
++++ b/2fcee731829adbbe1a45481e2956134d3add569c
+@@ -1,11 +1,11 @@
+ @Override
+ public boolean equals(Object other) {
+     if (this == other)
+         return true;
+     else if (other == null)
+         return false;
+     else if (!getClass().isInstance(other))
+         return false;
+     IndexQuery oth = (IndexQuery) other;
+-    return store.equals(oth.store) && condition.equals(oth.condition) && limit == oth.limit;
++    return ((store == oth.store) || (store != null && store.equals(oth.store))) && condition.equals(oth.condition) && getLimit() == oth.getLimit();
+ }
+\ No newline at end of file

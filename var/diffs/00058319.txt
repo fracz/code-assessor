@@ -1,0 +1,16 @@
+diff --git a/fa40e649604b883f0189d3d36bad05e183059ee0 b/970fdb3e3c5acfd6c36ab0915e8f1d2561633495
+index fa40e64960..970fdb3e3c 100644
+--- a/fa40e649604b883f0189d3d36bad05e183059ee0
++++ b/970fdb3e3c5acfd6c36ab0915e8f1d2561633495
+@@ -1,7 +1,9 @@
+ public void testTheCountBean() throws Exception {
+-    Model model = modelResolver().resolve(TheCount.class, new ModelConverterContextMock());
++    ModelResolver modelResolver = modelResolver();
++    ModelConverterContextImpl context = new ModelConverterContextImpl(modelResolver);
++    Model model = context.resolve(TheCount.class);
+     Map<String, Property> props = model.getProperties();
+     assertEquals(1, props.size());
+     Property prop = props.values().iterator().next();
+     assertEquals("theCount", prop.getName());
+ }
+\ No newline at end of file

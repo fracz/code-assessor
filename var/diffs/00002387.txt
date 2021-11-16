@@ -1,0 +1,29 @@
+diff --git a/bbccfe42382102503b38eda9059df4b97853f211 b/ce10134a91b9bac3e2fc81c6edbfab7741719787
+index bbccfe4238..ce10134a91 100644
+--- a/bbccfe42382102503b38eda9059df4b97853f211
++++ b/ce10134a91b9bac3e2fc81c6edbfab7741719787
+@@ -1,22 +1,15 @@
+ @Nullable
+-private static PatchReader loadPatches(final FilePresentation filePresentation) {
+-    final VirtualFile patchFile = filePresentation.getVf();
+-    if (patchFile == null)
+-        return null;
+-    patchFile.refresh(false, false);
+-    if (!patchFile.isValid()) {
+-        return null;
+-    }
++private static PatchReader loadPatches(@NotNull VirtualFile patchFile) {
+     PatchReader reader;
+     try {
+         reader = PatchVirtualFileReader.create(patchFile);
+     } catch (IOException e) {
+         return null;
+     }
+     try {
+         reader.parseAllPatches();
+     } catch (PatchSyntaxException e) {
+         return null;
+     }
+     return reader;
+ }
+\ No newline at end of file

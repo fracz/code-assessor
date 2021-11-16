@@ -1,0 +1,23 @@
+diff --git a/1a18debddbe898d40471c137da9e9db6d72b8689 b/9138c255093f4d8274286fd136a2959f674226bc
+index 1a18debddb..9138c25509 100644
+--- a/1a18debddbe898d40471c137da9e9db6d72b8689
++++ b/9138c255093f4d8274286fd136a2959f674226bc
+@@ -1,10 +1,12 @@
+-public static JetIntentionActionFactory<JetDelegatorToSuperClass> createFactory() {
+-    return new JetIntentionActionFactory<JetDelegatorToSuperClass>() {
++public static JetIntentionActionFactory createFactory() {
++    return new JetIntentionActionFactory() {
+
+         @Override
+-        public JetIntentionAction<JetDelegatorToSuperClass> createAction(DiagnosticWithPsiElement diagnostic) {
+-            assert diagnostic.getPsiElement() instanceof JetDelegatorToSuperClass;
+-            return new ChangeToInvocationFix((JetDelegatorToSuperClass) diagnostic.getPsiElement());
++        public JetIntentionAction<JetDelegatorToSuperClass> createAction(Diagnostic diagnostic) {
++            if (diagnostic.getPsiElement() instanceof JetDelegatorToSuperClass) {
++                return new ChangeToInvocationFix((JetDelegatorToSuperClass) diagnostic.getPsiElement());
++            }
++            return null;
+         }
+     };
+ }
+\ No newline at end of file

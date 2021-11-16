@@ -1,0 +1,20 @@
+diff --git a/5d0ebc5ed68495e2eac063994210ce2faba8d68e b/07352ccca8485fb635240a0053966e2abd7117e9
+index 5d0ebc5ed6..07352ccca8 100644
+--- a/5d0ebc5ed68495e2eac063994210ce2faba8d68e
++++ b/07352ccca8485fb635240a0053966e2abd7117e9
+@@ -1,12 +1,10 @@
+ public void performCut(DataContext dataContext) {
+     PsiElement[] elements = getValidSelectedElements();
+     if (elements == null) {
+         return;
+     }
+-    for (int i = 0; i < elements.length; i++) {
+-        if (!RefactoringMessageUtil.checkReadOnlyStatusRecursively(myProject, elements[i]))
+-            return;
+-    }
++    if (!RefactoringMessageUtil.checkReadOnlyStatusRecursively(myProject, Arrays.asList(elements)))
++        return;
+     ((CopyPasteManagerEx) CopyPasteManager.getInstance()).setElements(elements, false);
+     updateView();
+ }
+\ No newline at end of file

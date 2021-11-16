@@ -1,0 +1,15 @@
+diff --git a/33934ad2b103b42c187a3e9cff8562cc464d4d73 b/a97576461c842dcb70af7e64ff868cb38ecd3cb5
+index 33934ad2b1..a97576461c 100644
+--- a/33934ad2b103b42c187a3e9cff8562cc464d4d73
++++ b/a97576461c842dcb70af7e64ff868cb38ecd3cb5
+@@ -1,7 +1,6 @@
+-private Collection<String> routeTables(final TableRule tableRule, final String routedDataSource) {
++private Collection<String> routeTables(final TableRule tableRule, final String routedDataSource, final List<ShardingValue<?>> tableShardingValues) {
+     TableShardingStrategy strategy = shardingRule.getTableShardingStrategy(tableRule);
+-    List<ShardingValue<?>> shardingValues = HintManagerHolder.isUseShardingHint() ? getTableShardingValuesFromHint(strategy.getShardingColumns()) : getShardingValues(strategy.getShardingColumns());
+-    Collection<String> result = tableRule.isDynamic() ? strategy.doDynamicSharding(shardingValues) : strategy.doStaticSharding(tableRule.getActualTableNames(routedDataSource), shardingValues);
++    Collection<String> result = tableRule.isDynamic() ? strategy.doDynamicSharding(tableShardingValues) : strategy.doStaticSharding(tableRule.getActualTableNames(routedDataSource), tableShardingValues);
+     Preconditions.checkState(!result.isEmpty(), "no table route info");
+     return result;
+ }
+\ No newline at end of file

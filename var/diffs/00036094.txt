@@ -1,0 +1,16 @@
+diff --git a/8798d071f5460993026700a024828eb70852a499 b/c73ce43195c99c5da69bc389e484257c6a429967
+index 8798d071f5..c73ce43195 100644
+--- a/8798d071f5460993026700a024828eb70852a499
++++ b/c73ce43195c99c5da69bc389e484257c6a429967
+@@ -1,9 +1,9 @@
+ @Test
+ public void shouldPointToFirstMethodBecauseOfTooManyActualInvocations() {
+     try {
+         inOrder.verify(mock, times(0)).simpleMethod(anyInt());
+         fail();
+     } catch (VerifcationInOrderFailure e) {
+-        assertThat(e.getCause(), hasFirstMethodInStackTrace("first"));
++        assertContains("first(", e.getMessage());
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/4bf19ef438ca4a5d36daab0d4726171f6b2eda8e b/fe4f3eefbd4ce1d7717a0f395b7dfd7573463e60
+index 4bf19ef438..fe4f3eefbd 100644
+--- a/4bf19ef438ca4a5d36daab0d4726171f6b2eda8e
++++ b/fe4f3eefbd4ce1d7717a0f395b7dfd7573463e60
+@@ -1,5 +1,5 @@
+ @Override
+ public void onError(WebSocketChannel channel, Void context, Throwable throwable) {
+-    webSocketMessageProcessor.cancel();
+-    webSocketMessageProcessor.onError(throwable);
++    getSendProcessor().cancel();
++    getSendProcessor().onError(throwable);
+ }
+\ No newline at end of file

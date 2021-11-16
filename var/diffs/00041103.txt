@@ -1,0 +1,20 @@
+diff --git a/e8b8523c16e2211fd28326f78fa7875ff724b7d2 b/76588c700da16adf3f1c163f3e4c3ebacadf7576
+index e8b8523c16..76588c700d 100644
+--- a/e8b8523c16e2211fd28326f78fa7875ff724b7d2
++++ b/76588c700da16adf3f1c163f3e4c3ebacadf7576
+@@ -1,12 +1,4 @@
+ @Override
+-public boolean onRecordBeforeUpdate(final ODocument iRecord) {
+-    if ("OUser".equals(iRecord.getClassName())) {
+-        final String password = (String) iRecord.field("password");
+-        if (iRecord.getOriginalValue("password") != null) {
+-            // PASSWORD HAS BEEN CHANGED: ENCRYPT IT
+-            iRecord.field("password", OUser.encryptPassword(password));
+-            return true;
+-        }
+-    }
+-    return false;
++public boolean onRecordBeforeUpdate(final ODocument iDocument) {
++    return encodePassword(iDocument);
+ }
+\ No newline at end of file

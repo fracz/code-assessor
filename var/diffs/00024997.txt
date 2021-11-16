@@ -1,0 +1,26 @@
+diff --git a/eff3c1deb089245df37aedac436d0be17001b222 b/791dd33e2c50c47290fd805f4e099ebaab072f62
+index eff3c1deb0..791dd33e2c 100644
+--- a/eff3c1deb089245df37aedac436d0be17001b222
++++ b/791dd33e2c50c47290fd805f4e099ebaab072f62
+@@ -1,16 +1,15 @@
+ /**
+  * Hardlink all finalized and RBW blocks in fromDir to toDir
+  *
+  * @param fromDir directory where the snapshot is stored
+  * @param toDir the current data directory
+  * @throws IOException if error occurs during hardlink
+  */
+-private void linkAllBlocks(DataNode datanode, File fromDir, File toDir) throws IOException {
++private static void linkAllBlocks(File fromDir, File toDir, int diskLayoutVersion, Configuration conf) throws IOException {
+     // do the link
+-    int diskLayoutVersion = this.getLayoutVersion();
+     // hardlink finalized blocks in tmpDir
+     HardLink hardLink = new HardLink();
+-    DataStorage.linkBlocks(datanode, new File(fromDir, DataStorage.STORAGE_DIR_FINALIZED), new File(toDir, DataStorage.STORAGE_DIR_FINALIZED), diskLayoutVersion, hardLink);
+-    DataStorage.linkBlocks(datanode, new File(fromDir, DataStorage.STORAGE_DIR_RBW), new File(toDir, DataStorage.STORAGE_DIR_RBW), diskLayoutVersion, hardLink);
+-    LOG.info(hardLink.linkStats.report());
++    DataStorage.linkBlocks(fromDir, toDir, DataStorage.STORAGE_DIR_FINALIZED, diskLayoutVersion, hardLink, conf);
++    DataStorage.linkBlocks(fromDir, toDir, DataStorage.STORAGE_DIR_RBW, diskLayoutVersion, hardLink, conf);
++    LOG.info("Linked blocks from " + fromDir + " to " + toDir + ". " + hardLink.linkStats.report());
+ }
+\ No newline at end of file

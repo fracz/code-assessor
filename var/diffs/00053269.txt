@@ -1,0 +1,16 @@
+diff --git a/bacc4e735cfca24eae0dc80b871b86af38fb76b2 b/a2aeb5f2558b52a84b18124182a00692b41f2def
+index bacc4e735c..a2aeb5f255 100644
+--- a/bacc4e735cfca24eae0dc80b871b86af38fb76b2
++++ b/a2aeb5f2558b52a84b18124182a00692b41f2def
+@@ -1,5 +1,8 @@
+ @Override
+ public int executeUpdate() throws SQLException {
+-    Preconditions.checkState(1 == routedStatements.size());
+-    return getTargetStatement().executeUpdate();
++    int result = 0;
++    for (PreparedStatement each : routedStatements) {
++        result += each.executeUpdate();
++    }
++    return result;
+ }
+\ No newline at end of file

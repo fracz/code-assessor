@@ -1,0 +1,11 @@
+diff --git a/e7cff07e48b89f64c2078af53e7d6a1ea145ce22 b/ca0fd28e96bd89ec7c2e43997d4096492b55277d
+index e7cff07e48..ca0fd28e96 100644
+--- a/e7cff07e48b89f64c2078af53e7d6a1ea145ce22
++++ b/ca0fd28e96bd89ec7c2e43997d4096492b55277d
+@@ -1,4 +1,4 @@
+ @Override
+ public long getLargeTotalBytes() {
+-    throw new IllegalStateException(FileDownloadUtils.formatString("No 'large total bytes' in this message %d %d", id, status));
++    throw new NoFieldException("getLargeTotalBytes", this);
+ }
+\ No newline at end of file

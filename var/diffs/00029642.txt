@@ -1,0 +1,17 @@
+diff --git a/5a68d772fb9d41e4dfb91b498b6ce471276e180d b/5d5ac2af0dd91262c5abbfa4a50837d99e03d744
+index 5a68d772fb..5d5ac2af0d 100644
+--- a/5a68d772fb9d41e4dfb91b498b6ce471276e180d
++++ b/5d5ac2af0dd91262c5abbfa4a50837d99e03d744
+@@ -1,10 +1,10 @@
+ public short asShort() {
+-    if (this == AUTO) {
++    if (this.equals(AUTO)) {
+         return 1;
+     }
+     try {
+         return Short.parseShort(fuzziness.toString());
+     } catch (NumberFormatException ex) {
+         return (short) Float.parseFloat(fuzziness.toString());
+     }
+ }
+\ No newline at end of file

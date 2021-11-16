@@ -1,0 +1,22 @@
+diff --git a/812456fb2ea4c0b235284fe8bd4adee9f69ab39f b/246dcd2d958cfcc7f870996c30023d63ced82333
+index 812456fb2e..246dcd2d95 100644
+--- a/812456fb2ea4c0b235284fe8bd4adee9f69ab39f
++++ b/246dcd2d958cfcc7f870996c30023d63ced82333
+@@ -1,8 +1,14 @@
+ /*
+      * This method is used to deliver hints to a particular endpoint.
+      * When we learn that some endpoint is back up we deliver the data
+      * to him via an event driven mechanism.
+     */
+-public void deliverHints(EndPoint to) {
+-    executor_.submit(new HintedHandOff(to));
++public void deliverHints(final EndPoint to) {
++    Runnable r = new Runnable() {
++
++        public void run() {
++            deliverHintsToEndpoint(to);
++        }
++    };
++    executor_.submit(r);
+ }
+\ No newline at end of file

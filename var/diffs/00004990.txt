@@ -1,0 +1,12 @@
+diff --git a/b8bf38c43e18bbbbd5d851ccf138562fc393b201 b/fd8cd4bf856127aafddb28a25af9517bf0670316
+index b8bf38c43e..fd8cd4bf85 100644
+--- a/b8bf38c43e18bbbbd5d851ccf138562fc393b201
++++ b/fd8cd4bf856127aafddb28a25af9517bf0670316
+@@ -1,4 +1,4 @@
+ @Override
+-public boolean managesLibrary(@NotNull Library library, LibrariesContainer container) {
+-    return isGradleSdk(container.getLibraryFiles(library, OrderRootType.CLASSES));
++public boolean managesLibrary(final VirtualFile[] libraryFiles) {
++    return isGradleSdk(libraryFiles);
+ }
+\ No newline at end of file

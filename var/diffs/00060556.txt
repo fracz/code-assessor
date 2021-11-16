@@ -1,0 +1,32 @@
+diff --git a/e44dd0da2cecb8f91cba31acc04ef0e047ea408b b/589799fb306fd4909d32027e28d311f2df4589f0
+index e44dd0da2c..589799fb30 100644
+--- a/e44dd0da2cecb8f91cba31acc04ef0e047ea408b
++++ b/589799fb306fd4909d32027e28d311f2df4589f0
+@@ -1,22 +1,22 @@
+ /**
+  * This method initializes btnReset
+  *
+  * @return javax.swing.JButton
+  */
+ private JButton getBtnReset() {
+     if (btnReset == null) {
+         btnReset = new JButton();
+         btnReset.setText(Constant.messages.getString("history.filter.button.clear"));
+-        btnReset.addActionListener(new java.awt.event.ActionListener() {
++        btnReset.addActionListener(new ActionListener() {
+
+             @Override
+-            public void actionPerformed(java.awt.event.ActionEvent e) {
++            public void actionPerformed(ActionEvent e) {
+                 exitResult = JOptionPane.NO_OPTION;
+-                // Unset everything
+-                opcodeList.setSelectedIndices(new int[0]);
++                wsUiHelper.setSelectedOpcodes(null);
++                wsUiHelper.setDirection(null);
+                 filter.reset();
+             }
+         });
+     }
+     return btnReset;
+ }
+\ No newline at end of file

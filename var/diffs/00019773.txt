@@ -1,0 +1,16 @@
+diff --git a/cc422315f7db2dd5492249c154cec1721c6767e5 b/500e36b56390c68c28207e0370b7496eaface064
+index cc422315f7..500e36b563 100644
+--- a/cc422315f7db2dd5492249c154cec1721c6767e5
++++ b/500e36b56390c68c28207e0370b7496eaface064
+@@ -1,7 +1,7 @@
+ @Override
+ public Clob createClob() throws SQLException {
+-    if (conn != null) {
+-        return conn.createClob();
++    if (conn == null) {
++        throw new SQLException("connection not init");
+     }
+-    throw new SQLException("connection not init");
++    return conn.createClob();
+ }
+\ No newline at end of file

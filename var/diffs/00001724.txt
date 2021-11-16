@@ -1,0 +1,14 @@
+diff --git a/eb7473f3547e74a60862a03b7aa409a65b3cecff b/ac4b6dd66b616bbff1d96e454411001c0799ff90
+index eb7473f354..ac4b6dd66b 100644
+--- a/eb7473f3547e74a60862a03b7aa409a65b3cecff
++++ b/ac4b6dd66b616bbff1d96e454411001c0799ff90
+@@ -1,7 +1,7 @@
+ protected void readEnvs(Element element) {
+     final String parentEnvs = JDOMExternalizerUtil.readField(element, "PARENT_ENVS");
+     if (parentEnvs != null) {
+-        myPassParentEnvs = Boolean.parseBoolean(parentEnvs);
++        setPassParentEnvs(Boolean.parseBoolean(parentEnvs));
+     }
+     EnvironmentVariablesComponent.readExternal(element, getEnvs());
+ }
+\ No newline at end of file

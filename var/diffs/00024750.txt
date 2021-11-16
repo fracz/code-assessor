@@ -1,0 +1,23 @@
+diff --git a/976dda224dda0db3eb09a48c24148e5e0b58de36 b/3838d9aad181141bde165bf45a71e0da9e446d27
+index 976dda224d..3838d9aad1 100644
+--- a/976dda224dda0db3eb09a48c24148e5e0b58de36
++++ b/3838d9aad181141bde165bf45a71e0da9e446d27
+@@ -1,10 +1,10 @@
+-private RangeSliceCommand getRangeCommand(QueryOptions options, int limit, long now) throws RequestValidationException {
+-    IDiskAtomFilter filter = makeFilter(options, limit);
+-    if (filter == null)
+-        return null;
+-    List<IndexExpression> expressions = getValidatedIndexExpressions(options);
++private ReadQuery getRangeCommand(QueryOptions options, DataLimits limit, int nowInSec) throws RequestValidationException {
++    ClusteringIndexFilter clusteringIndexFilter = makeClusteringIndexFilter(options);
++    if (clusteringIndexFilter == null)
++        return ReadQuery.EMPTY;
++    RowFilter rowFilter = getRowFilter(options);
+     // The LIMIT provided by the user is the number of CQL row he wants returned.
+     // We want to have getRangeSlice to count the number of columns, not the number of keys.
+-    AbstractBounds<RowPosition> keyBounds = restrictions.getPartitionKeyBounds(options);
+-    return keyBounds == null ? null : new RangeSliceCommand(keyspace(), columnFamily(), now, filter, keyBounds, expressions, limit, !parameters.isDistinct, false);
++    AbstractBounds<PartitionPosition> keyBounds = restrictions.getPartitionKeyBounds(options);
++    return keyBounds == null ? ReadQuery.EMPTY : new PartitionRangeReadCommand(cfm, nowInSec, queriedColumns, rowFilter, limit, new DataRange(keyBounds, clusteringIndexFilter));
+ }
+\ No newline at end of file

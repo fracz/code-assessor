@@ -1,0 +1,13 @@
+diff --git a/c95fb5545780673d5217ee95b3ee31fe105a260b b/f09a2484b4413b522e80dadec31b042a62f8b698
+index c95fb55457..f09a2484b4 100644
+--- a/c95fb5545780673d5217ee95b3ee31fe105a260b
++++ b/f09a2484b4413b522e80dadec31b042a62f8b698
+@@ -1,4 +1,6 @@
+ @Override
+ public HighlightInfo compute() {
+-    return HighlightInfo.createHighlightInfo(HighlightInfo.convertSeverity(severity), textRange, messageText);
++    TextRange textRange = getTextRange(virtualFile, line, column);
++    String description = StringUtil.join(message, "\n");
++    return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(textRange).descriptionAndTooltip(description).create();
+ }
+\ No newline at end of file

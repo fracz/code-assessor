@@ -1,0 +1,24 @@
+diff --git a/704e93f7662987f6e4078bd4f9c1217c85847e6f b/af24b15279b2cb2b580181d51b2fd320723b98f7
+index 704e93f766..af24b15279 100644
+--- a/704e93f7662987f6e4078bd4f9c1217c85847e6f
++++ b/af24b15279b2cb2b580181d51b2fd320723b98f7
+@@ -1,14 +1,13 @@
+ static JSType getProp(ImmutableSet<? extends TypeWithProperties> types, QualifiedName qname) {
+     if (types == null) {
+         return null;
+     }
+-    JSType ptype = JSType.BOTTOM;
+-    boolean foundProp = false;
++    JSType ptype = null;
+     for (TypeWithProperties t : types) {
+         if (t.mayHaveProp(qname)) {
+-            foundProp = true;
+-            ptype = JSType.join(ptype, t.getProp(qname));
++            JSType tmp = t.getProp(qname);
++            ptype = ptype == null ? tmp : JSType.join(ptype, tmp);
+         }
+     }
+-    return foundProp ? ptype : null;
++    return ptype;
+ }
+\ No newline at end of file

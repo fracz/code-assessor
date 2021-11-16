@@ -1,0 +1,26 @@
+diff --git a/236159bcf773254358cc5d7e5a45795e4a74560c b/f07fb5d34563454d4430fbedf4bdf626ab7f1129
+index 236159bcf7..f07fb5d345 100644
+--- a/236159bcf773254358cc5d7e5a45795e4a74560c
++++ b/f07fb5d34563454d4430fbedf4bdf626ab7f1129
+@@ -1,19 +1,9 @@
+ // Node/edge sets and node/edge connections are the same, but types differ.
+ // (In this case the graphs are considered equal; the type differences are irrelevant.)
+ @Test
+ public void equals_selfLoop_directedVsUndirected() {
+     graph.addEdge(E11, N1, N1);
+-    Graph<Integer, String> g2;
+-    switch(graphType) {
+-        case UNDIRECTED:
+-            g2 = Graphs.createDirected();
+-            break;
+-        case DIRECTED:
+-            g2 = Graphs.createUndirected();
+-            break;
+-        default:
+-            throw new IllegalStateException("Unexpected graph type: " + graphType);
+-    }
++    Graph<Integer, String> g2 = createGraph(oppositeType(graphType));
+     g2.addEdge(E11, N1, N1);
+     new EqualsTester().addEqualityGroup(graph, g2).testEquals();
+ }
+\ No newline at end of file

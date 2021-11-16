@@ -1,0 +1,16 @@
+diff --git a/7bb785ad5ecc31643c6f3f86a91dedaf5b0586f7 b/3430d9b35b82a63951d4e4496821c02bc225ad0b
+index 7bb785ad5e..3430d9b35b 100644
+--- a/7bb785ad5ecc31643c6f3f86a91dedaf5b0586f7
++++ b/3430d9b35b82a63951d4e4496821c02bc225ad0b
+@@ -1,9 +1,9 @@
+ private void awaitArchiveStoppedNotification(final Subscription archiverNotifications) {
+     poll(archiverNotifications, (buffer, offset, length, header) -> {
+         final MessageHeaderDecoder hDecoder = new MessageHeaderDecoder().wrap(buffer, offset);
+         Assert.assertEquals(ArchiveStoppedNotificationDecoder.TEMPLATE_ID, hDecoder.templateId());
+         final ArchiveStoppedNotificationDecoder mDecoder = new ArchiveStoppedNotificationDecoder().wrap(buffer, offset + MessageHeaderDecoder.ENCODED_LENGTH, hDecoder.blockLength(), hDecoder.version());
+         Assert.assertEquals(mDecoder.streamInstanceId(), streamInstanceId);
+-    }, 1, 1000);
++    }, 1, TIMEOUT);
+     println("Archive stopped");
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/2858c254d2689c31a660de441dbd15ed270bc730 b/1b16a4ae539b63de501ca675de963578b81f83b4
+index 2858c254d2..1b16a4ae53 100644
+--- a/2858c254d2689c31a660de441dbd15ed270bc730
++++ b/1b16a4ae539b63de501ca675de963578b81f83b4
+@@ -1,9 +1,9 @@
+ public Profile loadProfile(String path) throws IOException, JDOMException {
+     final File file = new File(path);
+     if (file.exists()) {
+-        InspectionProfileImpl profile = new InspectionProfileImpl(getProfileName(file), file, myRegistrar, this);
+-        profile.load();
++        InspectionProfileImpl profile = new InspectionProfileImpl(getProfileName(file), myRegistrar, this);
++        profile.load(JDOMUtil.loadDocument(file).getRootElement());
+         return profile;
+     }
+     return getProfile(path);
+ }
+\ No newline at end of file

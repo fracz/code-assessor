@@ -1,0 +1,12 @@
+diff --git a/b8bd50e5e30676ad349bdd108471981a6e48e282 b/e4a6fe29d288e9d809c2746337bd1a3a36278287
+index b8bd50e5e3..e4a6fe29d2 100644
+--- a/b8bd50e5e30676ad349bdd108471981a6e48e282
++++ b/e4a6fe29d288e9d809c2746337bd1a3a36278287
+@@ -1,4 +1,4 @@
+ @Override
+-public void incrementIndexUpdates(int labelId, int propertyKeyId, long delta) {
+-    counts(indexStatisticsKey(labelId, propertyKeyId)).increment(delta, 0L);
++public void incrementIndexUpdates(IndexDescriptor descriptor, long delta) {
++    counts(indexStatisticsKey(descriptor)).increment(delta, 0L);
+ }
+\ No newline at end of file

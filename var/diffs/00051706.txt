@@ -1,0 +1,17 @@
+diff --git a/924e21738da4427a3315059e26316cb4b055e871 b/c16e5dc8c8fd404c6081426313ca3716baad5999
+index 924e21738d..c16e5dc8c8 100644
+--- a/924e21738da4427a3315059e26316cb4b055e871
++++ b/c16e5dc8c8fd404c6081426313ca3716baad5999
+@@ -1,10 +1,6 @@
+ public DBPImage getLabelImage() {
+     if (!diagram.hasAttributeStyle(ERDAttributeStyle.ICONS)) {
+         return null;
+     }
+-    if (object instanceof DBPImageProvider) {
+-        return ((DBPImageProvider) object).getObjectImage();
+-    } else {
+-        return DBIcon.TYPE_UNKNOWN;
+-    }
++    return DBUtils.getObjectImage(object);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/64cc918689364634d670c2898a4b99f44e5ec28a b/536f0ce4f3f73377096e3064f44470f0bdb552ea
+index 64cc918689..536f0ce4f3 100644
+--- a/64cc918689364634d670c2898a4b99f44e5ec28a
++++ b/536f0ce4f3f73377096e3064f44470f0bdb552ea
+@@ -1,8 +1,8 @@
+-protected InspectionGadgetsFix buildFix(PsiElement location) {
+-    final PsiClass aClass = (PsiClass) location.getParent();
++protected InspectionGadgetsFix buildFix(Object... infos) {
++    final PsiClass aClass = (PsiClass) infos[0];
+     if (hasNullArgConstructor(aClass)) {
+         return new MakeConstructorPrivateFix();
+     } else {
+         return new CreateEmptyPrivateConstructor();
+     }
+ }
+\ No newline at end of file

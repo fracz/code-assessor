@@ -1,0 +1,14 @@
+diff --git a/962e4464158fb3c2d2d22976fba494c27aa402bc b/69977bd44e46791eb942e4f5399c60886a4d1cda
+index 962e446415..69977bd44e 100644
+--- a/962e4464158fb3c2d2d22976fba494c27aa402bc
++++ b/69977bd44e46791eb942e4f5399c60886a4d1cda
+@@ -1,6 +1 @@
+-/**
+- * Saves the paging state by recording the last seen partition key and cell name (where applicable).
+- * @param last the last row in the current page
+- * @return true if an extra row should be fetched in the next page,false otherwise
+- */
+-protected abstract boolean recordLast(Row last);
+\ No newline at end of file
++protected abstract void recordLast(DecoratedKey key, Row row);
+\ No newline at end of file

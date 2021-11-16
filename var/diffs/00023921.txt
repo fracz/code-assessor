@@ -1,0 +1,12 @@
+diff --git a/8e772b832175236327c8275f4d922d2da14bcc21 b/9d2cc55adb59974ca9b1a772f5d29fdf07d013d2
+index 8e772b8321..9d2cc55adb 100644
+--- a/8e772b832175236327c8275f4d922d2da14bcc21
++++ b/9d2cc55adb59974ca9b1a772f5d29fdf07d013d2
+@@ -1,5 +1,5 @@
+ public CompressionMetadata openAfterClose(long dataLength, long compressedLength) {
+     RefCountedMemory newOffsets = offsets.copy(count * 8L);
+     offsets.unreference();
+-    return new CompressionMetadata(filePath, parameters, newOffsets, count * 8L, dataLength, compressedLength, Descriptor.Version.CURRENT.hasPostCompressionAdlerChecksums);
++    return new CompressionMetadata(filePath, parameters, newOffsets, count * 8L, dataLength, compressedLength, latestVersion.hasPostCompressionAdlerChecksums());
+ }
+\ No newline at end of file

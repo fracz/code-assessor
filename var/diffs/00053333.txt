@@ -1,0 +1,19 @@
+diff --git a/59df631089130c5c5c1340b742b4ad1bf4839207 b/ed76b6c084cf9d269067b4fd5cdfdbda7d50d051
+index 59df631089..ed76b6c084 100644
+--- a/59df631089130c5c5c1340b742b4ad1bf4839207
++++ b/ed76b6c084cf9d269067b4fd5cdfdbda7d50d051
+@@ -1,11 +1,11 @@
+ protected final void parseWhere(final SelectSQLContext sqlContext) {
+     if (sqlContext.getTables().isEmpty()) {
+         return;
+     }
+-    ParserUtil parserUtil = new ParserUtil(exprParser, shardingRule, parameters, sqlContext.getTables().get(0), sqlContext, 0);
+-    Optional<ConditionContext> conditionContext = parserUtil.parseWhere();
++    ParserUtil parserUtil = new ParserUtil(exprParser, parameters, sqlContext, 0);
++    Optional<ConditionContext> conditionContext = parserUtil.parseWhere(getParseContext(sqlContext));
+     if (conditionContext.isPresent()) {
+         sqlContext.getConditionContexts().add(conditionContext.get());
+     }
+     parametersIndex = parserUtil.getParametersIndex();
+ }
+\ No newline at end of file

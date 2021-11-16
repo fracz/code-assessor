@@ -1,0 +1,18 @@
+diff --git a/0806a4a372ecca24d5e5aaf50ed5b42abb14a8d2 b/39f93fc84d59a7f94eb88e6153910a864019ed9f
+index 0806a4a372..39f93fc84d 100644
+--- a/0806a4a372ecca24d5e5aaf50ed5b42abb14a8d2
++++ b/39f93fc84d59a7f94eb88e6153910a864019ed9f
+@@ -1,11 +1,9 @@
+ @Override
+ public synchronized void handleContextClose(@NotNull DBCExecutionContext context) {
+     QMMSessionInfo session = getSessionInfo(context);
+     if (session != null) {
+         session.close();
+         fireMetaEvent(session, QMMetaEvent.Action.END);
+     }
+-    // Remove closed context from map (otherwise we'll be out of memory eventually)
+-    String contextId = makeContextId(context);
+-    sessionMap.remove(contextId);
++    closedSessions.add(context.getContextId());
+ }
+\ No newline at end of file

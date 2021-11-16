@@ -1,0 +1,26 @@
+diff --git a/696baa6a670706576cdc6f195f626b270b4bb0a4 b/bacf0d7af6c222d9db2b45a31cb88a70fffb32bf
+index 696baa6a67..bacf0d7af6 100644
+--- a/696baa6a670706576cdc6f195f626b270b4bb0a4
++++ b/bacf0d7af6c222d9db2b45a31cb88a70fffb32bf
+@@ -1,13 +1,9 @@
+ @Override
+-public boolean containsKey(StaticBuffer key, StoreTransaction txh) throws StorageException {
+-    containsKeyInvocationCounter.inc();
+-    Timer.Context tc = containsKeyTimer.time();
+-    try {
+-        return backend.containsKey(key, txh);
+-    } catch (StorageException e) {
+-        containsKeyFailureCounter.inc();
+-        throw e;
+-    } finally {
+-        tc.stop();
+-    }
++public boolean containsKey(final StaticBuffer key, final StoreTransaction txh) throws StorageException {
++    return runWithMetrics(txh.getConfiguration().getMetricsPrefix(), metricsStoreName, M_CONTAINS_KEY, new StorageCallable<Boolean>() {
++
++        public Boolean call() throws StorageException {
++            return Boolean.valueOf(backend.containsKey(key, txh));
++        }
++    });
+ }
+\ No newline at end of file

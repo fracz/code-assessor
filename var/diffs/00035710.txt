@@ -1,0 +1,12 @@
+diff --git a/46fac3c1a3adb1101fa1d1de502a3510ba07ffc9 b/4f9e8f5f4dfe819f668705ac4c332b13ead71d16
+index 46fac3c1a3..4f9e8f5f4d 100644
+--- a/46fac3c1a3adb1101fa1d1de502a3510ba07ffc9
++++ b/4f9e8f5f4dfe819f668705ac4c332b13ead71d16
+@@ -1,4 +1,4 @@
+ public void tooLittleActualInvocationsInOrder(int wantedCount, int actualCount, PrintableInvocation wanted, HasStackTrace lastActualStackTrace) {
+-    TooLittleInvocations cause = createTooLittleInvocationsCause(lastActualStackTrace);
+-    throw new VerifcationInOrderFailure(join("Verification in order failure", wanted.toString(), "Wanted " + pluralize(wantedCount) + " but was " + actualCount), cause);
++    String message = createTooLittleInvocationsMessage(wantedCount, actualCount, wanted, lastActualStackTrace);
++    throw new VerifcationInOrderFailure(join("Verification in order failure:" + message));
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/337087499db9ad5c328cf2a3ff8533e0b77bf5a1 b/eb62b83d5fdbb5469ffd85a337819d636cced212
+index 337087499d..eb62b83d5f 100644
+--- a/337087499db9ad5c328cf2a3ff8533e0b77bf5a1
++++ b/eb62b83d5fdbb5469ffd85a337819d636cced212
+@@ -1,9 +1,9 @@
+ private void poll(final Subscription s, final FragmentHandler f, final int count, final long timeout) {
+     final long limit = System.currentTimeMillis() + timeout;
+     while (0 >= s.poll(f, count)) {
+-        LockSupport.parkNanos(1000);
++        LockSupport.parkNanos(TIMEOUT);
+         if (limit < System.currentTimeMillis()) {
+             fail("Poll has timed out");
+         }
+     }
+ }
+\ No newline at end of file

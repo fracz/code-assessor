@@ -1,0 +1,16 @@
+diff --git a/e1fbc58a8fb7ffad1b526b9c6eccf6f330859b64 b/3a52796993f1ac40a70528b8e8d352ce254fea4c
+index e1fbc58a8f..3a52796993 100644
+--- a/e1fbc58a8fb7ffad1b526b9c6eccf6f330859b64
++++ b/3a52796993f1ac40a70528b8e8d352ce254fea4c
+@@ -1,9 +1,7 @@
+ @Override
+-@Nullable
+-public String apply(@NotNull GradleSettings settings) {
++public void apply(@NotNull GradleSettings settings) {
+     if (myServiceDirectoryPathModifiedByUser) {
+         settings.setServiceDirectoryPath(ExternalSystemApiUtil.normalizePath(myServiceDirectoryPathField.getText()));
+     }
+     settings.setGradleVmOptions(trimIfPossible(myGradleVmOptionsField.getText()));
+-    return null;
+ }
+\ No newline at end of file

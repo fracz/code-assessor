@@ -1,0 +1,17 @@
+diff --git a/9bb65370af7c99bc9da59b6eb24982f2e0716e92 b/ec7252e14f666f8d4defbad2a1380f76e44b1117
+index 9bb65370af..ec7252e14f 100644
+--- a/9bb65370af7c99bc9da59b6eb24982f2e0716e92
++++ b/ec7252e14f666f8d4defbad2a1380f76e44b1117
+@@ -1,10 +1,10 @@
+ protected HistoryEntry createHistoryEntry(Project project, long historyEntryID) throws Exception {
+     if (project.columnModel.getColumnByName(_oldColumnName) == null) {
+         throw new Exception("No column named " + _oldColumnName);
+     }
+     if (project.columnModel.getColumnByName(_newColumnName) != null) {
+         throw new Exception("Another column already named " + _newColumnName);
+     }
+     Change change = new ColumnRenameChange(_oldColumnName, _newColumnName);
+-    return ProjectManager.singleton.createHistoryEntry(historyEntryID, project, getBriefDescription(null), ColumnRenameOperation.this, change);
++    return new HistoryEntry(historyEntryID, project, getBriefDescription(null), ColumnRenameOperation.this, change);
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/44538cd05d024a879a4981c272a9bb0d000ee0da b/bb77c454a20b4f6e067c7a6fa6bf775227106f2d
+index 44538cd05d..bb77c454a2 100644
+--- a/44538cd05d024a879a4981c272a9bb0d000ee0da
++++ b/bb77c454a20b4f6e067c7a6fa6bf775227106f2d
+@@ -1,5 +1,5 @@
+ @Override
+ public void setUnicodeStream(int parameterIndex, InputStream x, int length) throws SQLException {
+-    setParameter(parameterIndex, new JdbcParameterImpl(TYPE.UnicodeStream, x, length));
++    setParameter(parameterIndex, createParameter(TYPE.UnicodeStream, x, length));
+     createChain().preparedStatement_setUnicodeStream(this, parameterIndex, x, length);
+ }
+\ No newline at end of file

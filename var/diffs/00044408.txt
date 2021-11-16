@@ -1,0 +1,20 @@
+diff --git a/9204d132f471eac8eeb6e60a6a2fac11c6df2f94 b/b893f9e15c6168fe28d46cfb639afd19b0230ab5
+index 9204d132f4..b893f9e15c 100644
+--- a/9204d132f471eac8eeb6e60a6a2fac11c6df2f94
++++ b/b893f9e15c6168fe28d46cfb639afd19b0230ab5
+@@ -1,12 +1,5 @@
+ @Test
+ public void geomFromTextPointTest() {
+-    ODocument point = new ODocument("Point");
+-    point.field("coordinates", new ArrayList<Double>() {
+-
+-        {
+-            add(50d);
+-            add(50d);
+-        }
+-    });
+-    checkFromText(point, "select ST_GeomFromText('POINT(50 50)') as geom");
++    ODocument point = point();
++    checkFromText(point, "select ST_GeomFromText('" + POINTWKT + "') as geom");
+ }
+\ No newline at end of file

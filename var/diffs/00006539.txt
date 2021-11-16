@@ -1,0 +1,15 @@
+diff --git a/86fbd263266c784072d37c5b955c3dd21bdd3399 b/370c7206cfb8bfc6f79001302f83f4c11e9e5aec
+index 86fbd26326..370c7206cf 100644
+--- a/86fbd263266c784072d37c5b955c3dd21bdd3399
++++ b/370c7206cfb8bfc6f79001302f83f4c11e9e5aec
+@@ -1,8 +1,4 @@
+ public static void insertSpacesByGroovyContinuationIndent(Editor editor, Project project) {
+     int indentSize = CodeStyleSettingsManager.getSettings(project).getContinuationIndentSize(GroovyFileType.GROOVY_FILE_TYPE);
+-    StringBuffer buffer = new StringBuffer();
+-    for (int i = 0; i < indentSize; i++) {
+-        buffer.append(" ");
+-    }
+-    EditorModificationUtil.insertStringAtCaret(editor, buffer.toString());
++    EditorModificationUtil.insertStringAtCaret(editor, StringUtil.repeatSymbol(' ', indentSize));
+ }
+\ No newline at end of file

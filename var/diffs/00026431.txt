@@ -1,0 +1,17 @@
+diff --git a/e61d88de6dd27c3f212eca55b2fc4627d3616a95 b/8e730b1ca6b038374a06145f254342cd8bc41aa0
+index e61d88de6d..8e730b1ca6 100644
+--- a/e61d88de6dd27c3f212eca55b2fc4627d3616a95
++++ b/8e730b1ca6b038374a06145f254342cd8bc41aa0
+@@ -1,9 +1,9 @@
+ /**
+  * {@inheritDoc}
+  */
+ @Override
+ public void setCatalog(String catalog) throws SQLException {
+     delegate.setCatalog(catalog);
+-    poolEntry.setCatalog(catalog);
+-    isConnectionStateDirty = true;
++    dbcatalog = catalog;
++    dirtyBits |= 0b01000;
+ }
+\ No newline at end of file

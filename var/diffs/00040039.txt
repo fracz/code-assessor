@@ -1,0 +1,18 @@
+diff --git a/e911b96460b6850ae2a339e5c4a1a3e2f8ddf0cc b/e4916288eed9f480da37c86cf117f26b4226c14a
+index e911b96460..e4916288ee 100644
+--- a/e911b96460b6850ae2a339e5c4a1a3e2f8ddf0cc
++++ b/e4916288eed9f480da37c86cf117f26b4226c14a
+@@ -1,11 +1,11 @@
+ @Override
+ public boolean equals(Object o) {
+     if (this == o) {
+         return true;
+     }
+     if (o == null || getClass() != o.getClass()) {
+         return false;
+     }
+     RelationshipPropertyConstraint that = (RelationshipPropertyConstraint) o;
+-    return propertyKeyId == that.propertyKeyId && relationshipTypeId == that.relationshipTypeId;
++    return this.descriptor.equals(that.descriptor);
+ }
+\ No newline at end of file

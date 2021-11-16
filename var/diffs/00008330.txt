@@ -1,0 +1,22 @@
+diff --git a/56d47099ca01cc86a69fccd356ef58c23f71498c b/7545b190d826a99dc78275232fd508b439054e36
+index 56d47099ca..7545b190d8 100644
+--- a/56d47099ca01cc86a69fccd356ef58c23f71498c
++++ b/7545b190d826a99dc78275232fd508b439054e36
+@@ -1,12 +1,13 @@
+ /**
+  * Saves local changes. In case of error shows a notification and returns false.
+  */
+-private static GitBranchOperationResult save(@NotNull Collection<GitRepository> repositories, @NotNull GitChangesSaver saver) {
++private boolean save(@NotNull Collection<GitRepository> repositories, @NotNull GitChangesSaver saver) {
+     try {
+         saver.saveLocalChanges(GitUtil.getRoots(repositories));
+-        return GitBranchOperationResult.success();
++        return true;
+     } catch (VcsException e) {
+         LOG.info("Couldn't save local changes", e);
+-        return GitBranchOperationResult.error("Git checkout failed", String.format("Tried to save uncommitted changes in %s before checkout, but failed with an error.<br/>%s", saver.getSaverName(), StringUtil.join(e.getMessages())));
++        notifyError("Couldn't save uncommitted changes.", String.format("Tried to save uncommitted changes in %s before checkout, but failed with an error.<br/>%s", saver.getSaverName(), StringUtil.join(e.getMessages())));
++        return false;
+     }
+ }
+\ No newline at end of file

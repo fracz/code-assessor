@@ -1,0 +1,15 @@
+diff --git a/d2abea40156bd26eec334e0e4d0c2c1a8d4953ae b/7f694120f7ebbb250f704bb5567a24b15d6dce18
+index d2abea4015..7f694120f7 100644
+--- a/d2abea40156bd26eec334e0e4d0c2c1a8d4953ae
++++ b/7f694120f7ebbb250f704bb5567a24b15d6dce18
+@@ -1,8 +1,5 @@
+ @NotNull
+ public String[][] getAllKnownProperties(@NotNull final PsiElement element) {
+     final RegExpLanguageHost host = findRegExpHost(element);
+-    if (host != null) {
+-        return host.getAllKnownProperties();
+-    }
+-    return myDefaultProvider.getAllKnownProperties();
++    return host != null ? host.getAllKnownProperties() : myDefaultProvider.getAllKnownProperties();
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/0207e11f7df52574935024e752180b9c4dbc3ed7 b/5390fd019bf499a6e0439130975df8c3939abfc0
+index 0207e11f7d..5390fd019b 100644
+--- a/0207e11f7df52574935024e752180b9c4dbc3ed7
++++ b/5390fd019bf499a6e0439130975df8c3939abfc0
+@@ -1,8 +1,8 @@
+ /**
+  * Starts reading the log from the given timestamp onward. The specified timestamp is included.
+  * @param timestamp
+  * @return
+  */
+ public static ReadMarker fromTime(long timestamp, TimeUnit unit) {
+-    return new ReadMarker(null, convertToMirco(timestamp, unit));
++    return new ReadMarker(null, new Timepoint(timestamp, unit));
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/54e3b829c228e11a40b02c64361bae7daaed29eb b/dfb3002eb4102160b2ca9d67691e4a5e30edcee0
+index 54e3b829c2..dfb3002eb4 100644
+--- a/54e3b829c228e11a40b02c64361bae7daaed29eb
++++ b/dfb3002eb4102160b2ca9d67691e4a5e30edcee0
+@@ -1,10 +1,11 @@
+-public void drop(@Nullable Point location, final RadComponent[] components, final int[] dx, final int[] dy) {
++@Override
++public void drop(@Nullable Point location, RadComponent[] components, ComponentDragObject dragObject) {
+     boolean dropToLeft;
+     if (location != null) {
+         dropToLeft = isLeft(location);
+     } else {
+         dropToLeft = isEmptySplitComponent(getSplitPane().getLeftComponent());
+     }
+     components[0].setCustomLayoutConstraints(dropToLeft ? LwSplitPane.POSITION_LEFT : LwSplitPane.POSITION_RIGHT);
+     addComponent(components[0]);
+ }
+\ No newline at end of file

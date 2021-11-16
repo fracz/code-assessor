@@ -1,0 +1,26 @@
+diff --git a/b4939f4702461a72c0fe532a8c0c96e3e901d447 b/61e14b1c12b07bcd14f1a4f03be944fa339f7e33
+index b4939f4702..61e14b1c12 100644
+--- a/b4939f4702461a72c0fe532a8c0c96e3e901d447
++++ b/61e14b1c12b07bcd14f1a4f03be944fa339f7e33
+@@ -1,13 +1,19 @@
+ // Builds full session id recursively
+ private String getFullSessionId() {
+     // Cache mParentSession locally to prevent a concurrency problem where
+     // Log.endParentSessions() is called while a logging statement is running (Log.i, for
+     // example) and setting mParentSession to null in a different thread after the null check
+     // occurred.
+     Session parentSession = mParentSession;
+     if (parentSession == null) {
+         return mSessionId;
+     } else {
+-        return parentSession.getFullSessionId() + "_" + mSessionId;
++        if (Log.VERBOSE) {
++            return parentSession.getFullSessionId() + // Append "_X" to subsession to show subsession designation.
++            SESSION_SEPARATION_CHAR_CHILD + mSessionId;
++        } else {
++            // Only worry about the base ID at the top of the tree.
++            return parentSession.getFullSessionId();
++        }
+     }
+ }
+\ No newline at end of file

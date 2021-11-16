@@ -1,0 +1,19 @@
+diff --git a/df4e37a9da2f1b2f00885bdf1a448bc0e55bef67 b/99eb091fa99f28c042a4151c38f9c567fc7d56c9
+index df4e37a9da..99eb091fa9 100644
+--- a/df4e37a9da2f1b2f00885bdf1a448bc0e55bef67
++++ b/99eb091fa99f28c042a4151c38f9c567fc7d56c9
+@@ -1,11 +1,11 @@
+ public void visitReferenceElement(PsiJavaCodeReferenceElement reference) {
+     if (!reference.isQualified()) {
+         final JavaResolveResult resolveResult = reference.advancedResolve(false);
+         final PsiElement resolveScope = resolveResult.getCurrentFileResolveScope();
+         if (resolveScope instanceof PsiImportStatementBase) {
+-            // noinspection SuspiciousMethodCalls
+-            redundants.remove(resolveScope);
++            final PsiImportStatementBase importStatementBase = (PsiImportStatementBase) resolveScope;
++            redundants.remove(importStatementBase);
+         }
+     }
+     super.visitReferenceElement(reference);
+ }
+\ No newline at end of file

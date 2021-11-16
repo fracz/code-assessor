@@ -1,0 +1,14 @@
+diff --git a/ee0494b618a762a68bc02a8c977cb0fc6ab1bb41 b/1a487d46c56ff1f68ab4429d7da655a1353f20f1
+index ee0494b618..1a487d46c5 100644
+--- a/ee0494b618a762a68bc02a8c977cb0fc6ab1bb41
++++ b/1a487d46c56ff1f68ab4429d7da655a1353f20f1
+@@ -1,6 +1,6 @@
+ public void refresh(final boolean refreshViewsOnly) {
+-    final int state = getState();
++    final State state = getState();
+     DebuggerContextImpl context = myContextManager.getContext();
+     DebuggerContextImpl newContext = DebuggerContextImpl.createDebuggerContext(this, context.getSuspendContext(), context.getThreadProxy(), context.getFrameProxy());
+-    myContextManager.setState(newContext, state, refreshViewsOnly ? EVENT_REFRESH_VIEWS_ONLY : EVENT_REFRESH, null);
++    myContextManager.setState(newContext, state, refreshViewsOnly ? Event.REFRESH_VIEWS_ONLY : Event.REFRESH, null);
+ }
+\ No newline at end of file

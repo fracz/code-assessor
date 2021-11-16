@@ -1,0 +1,12 @@
+diff --git a/4e6d7748b8a1a3fc82bc79031b70294627e3181a b/34e8b57013887d7fdecd1a2e11fc47b365386680
+index 4e6d7748b8..34e8b57013 100644
+--- a/4e6d7748b8a1a3fc82bc79031b70294627e3181a
++++ b/34e8b57013887d7fdecd1a2e11fc47b365386680
+@@ -1,5 +1,5 @@
+ @Test
+ public void parseOneRecordWithName() throws VcsException {
+-    myParser.parseStatusBeforeName(false);
++    myParser = new GitLogParser(myProject, NameStatus.NAME, GIT_LOG_OPTIONS);
+     doTest(GitTestLogRecord.NameStatusOption.NAME);
+ }
+\ No newline at end of file

@@ -1,0 +1,31 @@
+diff --git a/602a9e7183ec5a8aabd9f7f82540f7043431bc28 b/98936fb8ef6ea2d697282d9b438aea5ff66c482a
+index 602a9e7183..98936fb8ef 100644
+--- a/602a9e7183ec5a8aabd9f7f82540f7043431bc28
++++ b/98936fb8ef6ea2d697282d9b438aea5ff66c482a
+@@ -1,13 +1,20 @@
+-private void navigateInsideBar(Object object) {
++private void navigateInsideBar(final Object object) {
+     myModel.updateModel(object);
+-    immediateUpdateList(true);
++    updateList();
+     myModel.setSelectedIndex(myList.size() - 1);
+     if (myHint != null) {
+         final Dimension dimension = getPreferredSize();
+         final Rectangle bounds = myHint.getBounds();
+         myHint.setBounds(bounds.x, bounds.y, dimension.width, dimension.height);
+     }
+-    // calc bounds
+-    revalidate();
+-    restorePopup();
++    SwingUtilities.invokeLater(new Runnable() {
++
++        public void run() {
++            if (myModel.hasChildren(object)) {
++                restorePopup();
++            } else {
++                doubleClick(object);
++            }
++        }
++    });
+ }
+\ No newline at end of file

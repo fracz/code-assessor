@@ -1,0 +1,16 @@
+diff --git a/0eaad3c83ce491fd466d31ce0f06ec0de77cccaa b/cae967a886b81f626098147214aea834e05a373e
+index 0eaad3c83c..cae967a886 100644
+--- a/0eaad3c83ce491fd466d31ce0f06ec0de77cccaa
++++ b/cae967a886b81f626098147214aea834e05a373e
+@@ -1,9 +1,4 @@
+ @Override
+ public DatabaseMetaData getMetaData() throws SQLException {
+-    if (connectionMap.isEmpty()) {
+-        DataSourceRule dataSourceRule = shardingContext.getShardingRule().getDataSourceRule();
+-        String dataSourceName = dataSourceRule.getDataSourceNames().iterator().next();
+-        connectionMap.put(dataSourceName, dataSourceRule.getDataSource(dataSourceName).getConnection());
+-    }
+-    return connectionMap.values().iterator().next().getMetaData();
++    return getConnection(shardingContext.getShardingRule().getDataSourceRule().getDataSourceNames().iterator().next()).getMetaData();
+ }
+\ No newline at end of file

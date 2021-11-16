@@ -1,0 +1,17 @@
+diff --git a/640019a30c8a473e5b272c74658a3ed0b148cb6e b/947c8e63e8d37f2e6cc5e5df255a18eda8b7d129
+index 640019a30c..947c8e63e8 100644
+--- a/640019a30c8a473e5b272c74658a3ed0b148cb6e
++++ b/947c8e63e8d37f2e6cc5e5df255a18eda8b7d129
+@@ -1,10 +1,5 @@
+ public void test_mysql_3() throws Exception {
+     String sql = "select id, name, salary from t order by id, name";
+     String result = PagerUtils.limit(sql, JdbcConstants.DB2, 20, 10);
+-    Assert.assertEquals(//
+-    "SELECT *" + //
+-    "\nFROM (SELECT id, name, salary, ROW_NUMBER() OVER (ORDER BY id, name) AS ROWNUM" + //
+-    "\n\tFROM t" + //
+-    "\n\t) XX" + //
+-    "\nWHERE ROWNUM > 20" + "\n\tAND ROWNUM <= 30", result);
++    Assert.assertEquals("SELECT *\n" + "FROM (\n" + "\tSELECT id, name, salary, ROW_NUMBER() OVER (ORDER BY id, name) AS ROWNUM\n" + "\tFROM t\n" + ") XX\n" + "WHERE ROWNUM > 20\n" + "\tAND ROWNUM <= 30", result);
+ }
+\ No newline at end of file

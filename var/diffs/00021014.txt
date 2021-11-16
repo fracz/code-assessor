@@ -1,0 +1,13 @@
+diff --git a/5c589dbd8db6df34aba0d68a2ea59fc41eb5892c b/7f231c5977a74dab3c69cad887d831f878cb23c5
+index 5c589dbd8d..7f231c5977 100644
+--- a/5c589dbd8db6df34aba0d68a2ea59fc41eb5892c
++++ b/7f231c5977a74dab3c69cad887d831f878cb23c5
+@@ -1,5 +1,5 @@
+ private void _isEnable(Context context, MethodVisitor mw, Feature feature) {
+     mw.visitVarInsn(ALOAD, context.var("lexer"));
+-    mw.visitFieldInsn(GETSTATIC, getType(Feature.class), feature.name(), "L" + getType(Feature.class) + ";");
+-    mw.visitMethodInsn(INVOKEVIRTUAL, getType(JSONLexerBase.class), "isEnabled", "(" + "L" + getType(Feature.class) + ";" + ")Z");
++    mw.visitFieldInsn(GETSTATIC, "com/alibaba/fastjson/parser/Feature", feature.name(), "Lcom/alibaba/fastjson/parser/Feature;");
++    mw.visitMethodInsn(INVOKEVIRTUAL, "com/alibaba/fastjson/parser/JSONLexerBase", "isEnabled", "(Lcom/alibaba/fastjson/parser/Feature;)Z");
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/d831dbe20f051ceebe68a4d04893e76f757b5841 b/b6bcc395f0649877baf60a412dc2bfc02afcfcd1
+index d831dbe20f..b6bcc395f0 100644
+--- a/d831dbe20f051ceebe68a4d04893e76f757b5841
++++ b/b6bcc395f0649877baf60a412dc2bfc02afcfcd1
+@@ -1,3 +1,7 @@
+-private static HighlightInfo eolError(int start, int end, String description) {
+-    return new HighlightInfo(null, null, HighlightInfoType.ERROR, start, end, description, null, HighlightSeverity.ERROR, true, null, false);
++private static HighlightInfo eolError(int start, int end, @NotNull String description) {
++    HighlightInfo.Builder builder = HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR);
++    builder.range(start, end);
++    builder.description(description);
++    builder.endOfLine();
++    return builder.create();
+ }
+\ No newline at end of file

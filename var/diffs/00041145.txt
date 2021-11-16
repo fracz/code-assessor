@@ -1,0 +1,17 @@
+diff --git a/d5470b74bf82f55c9717279d742995e408c79b01 b/74763ac0c8b8b9b7425c33e6cfe4158fe948d47b
+index d5470b74bf..74763ac0c8 100644
+--- a/d5470b74bf82f55c9717279d742995e408c79b01
++++ b/74763ac0c8b8b9b7425c33e6cfe4158fe948d47b
+@@ -1,9 +1,8 @@
+-@Override
+-public OSequence onSequenceCreated(ODocument iDocument) {
+-    init();
++public OSequence onSequenceCreated(ODatabaseDocumentInternal database, ODocument iDocument) {
++    init(database);
+     OSequence sequence = OSequenceHelper.createSequence(iDocument);
+     final String name = sequence.getName().toUpperCase();
+     validateSequenceNoExists(name);
+     sequences.put(name, sequence);
+     return sequence;
+ }
+\ No newline at end of file

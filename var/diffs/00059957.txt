@@ -1,0 +1,18 @@
+diff --git a/b4e7a34af8a0044615f15cfeeda9082514643cb0 b/fc106f8ad922470b278e0a1c79e909939f41c362
+index b4e7a34af8..fc106f8ad9 100644
+--- a/b4e7a34af8a0044615f15cfeeda9082514643cb0
++++ b/fc106f8ad922470b278e0a1c79e909939f41c362
+@@ -1,4 +1,10 @@
+ @Override
+-public InternalVertex get(long id) {
+-    return (InternalVertex) map.get(id);
++public InternalVertex get(long id, Retriever<Long, InternalVertex> constructor) {
++    InternalVertex v = (InternalVertex) map.get(id);
++    if (v == null) {
++        v = constructor.get(id);
++        Preconditions.checkNotNull(v);
++        map.put(id, v);
++    }
++    return v;
+ }
+\ No newline at end of file

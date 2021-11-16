@@ -1,0 +1,12 @@
+diff --git a/974bb6786a24673d062f9e85eaefa82baf11739f b/219c3b5867facaf7c6de8c7a94b5cfdfe12dd34f
+index 974bb6786a..219c3b5867 100644
+--- a/974bb6786a24673d062f9e85eaefa82baf11739f
++++ b/219c3b5867facaf7c6de8c7a94b5cfdfe12dd34f
+@@ -1,4 +1,5 @@
+ @Test
+ public void assertDoBetweenSharding() {
+-    assertThat(noneTableShardingAlgorithm.doBetweenSharding(targets, null), is(targets));
++    RangeShardingValue shardingValue = null;
++    assertThat(noneTableShardingAlgorithm.doSharding(targets, shardingValue), is(targets));
+ }
+\ No newline at end of file

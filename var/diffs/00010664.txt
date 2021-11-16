@@ -1,0 +1,15 @@
+diff --git a/5a93e86d4ddeaf21472f8b85c563375dd0926e90 b/88ffb04fa34cba5013c792ca31d9ed69e8327c3c
+index 5a93e86d4d..88ffb04fa3 100644
+--- a/5a93e86d4ddeaf21472f8b85c563375dd0926e90
++++ b/88ffb04fa34cba5013c792ca31d9ed69e8327c3c
+@@ -1,8 +1,3 @@
+ public int getCaretPosition() {
+-    if (myEditing) {
+-        if (myEditablePanel != null) {
+-            return myEditablePanel.getCaretPosition();
+-        }
+-    }
+-    return -1;
++    return (myEditing && myEditablePanel != null) ? myEditablePanel.getCaretPosition() : -1;
+ }
+\ No newline at end of file

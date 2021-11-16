@@ -1,0 +1,18 @@
+diff --git a/09b4bd9442517eb28cece20b49632f9b79e7674d b/c1d185951a039443f756d4a0ce45d86a6da670b5
+index 09b4bd9442..c1d185951a 100644
+--- a/09b4bd9442517eb28cece20b49632f9b79e7674d
++++ b/c1d185951a039443f756d4a0ce45d86a6da670b5
+@@ -1,11 +1,10 @@
+ public static boolean shouldEnableDeleteAction(PsiElement[] elements) {
+     if (elements == null || elements.length == 0)
+         return false;
+-    for (int i = 0; i < elements.length; i++) {
+-        PsiElement element = elements[i];
++    for (PsiElement element : elements) {
+         if (element instanceof PsiCompiledElement) {
+             return false;
+         }
+     }
+     return true;
+ }
+\ No newline at end of file

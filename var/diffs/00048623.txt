@@ -1,0 +1,20 @@
+diff --git a/340507f6502a0b61a09651e869fec288955874c2 b/c86f77613a5537ee03d9b6f17f92e70b16d19335
+index 340507f650..c86f77613a 100644
+--- a/340507f6502a0b61a09651e869fec288955874c2
++++ b/c86f77613a5537ee03d9b6f17f92e70b16d19335
+@@ -1,11 +1,11 @@
+ void removeProject(IProject project) {
+-    for (Iterator<DBNProject> iter = projects.iterator(); iter.hasNext(); ) {
+-        DBNProject projectNode = iter.next();
++    for (int i = 0; i < projects.length; i++) {
++        DBNProject projectNode = projects[i];
+         if (projectNode.getProject() == project) {
+-            iter.remove();
++            projects = ArrayUtils.remove(DBNProject.class, projects, i);
+             model.fireNodeEvent(new DBNEvent(this, DBNEvent.Action.REMOVE, projectNode));
+             projectNode.dispose(true);
+             break;
+         }
+     }
+ }
+\ No newline at end of file

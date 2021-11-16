@@ -1,0 +1,16 @@
+diff --git a/528f7b9c844dac7caa72fc0e4a4da624eed06e32 b/d2173cc488dc13103709620dbb908c52a23992dc
+index 528f7b9c84..d2173cc488 100644
+--- a/528f7b9c844dac7caa72fc0e4a4da624eed06e32
++++ b/d2173cc488dc13103709620dbb908c52a23992dc
+@@ -1,9 +1,4 @@
+ @Override
+ public V get(Object key) {
+-    RedisConnection<Object, Object> connection = connectionManager.connectionReadOp();
+-    try {
+-        return (V) connection.hget(getName(), key);
+-    } finally {
+-        connectionManager.releaseRead(connection);
+-    }
++    return getAsync((K) key).awaitUninterruptibly().getNow();
+ }
+\ No newline at end of file

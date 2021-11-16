@@ -1,0 +1,18 @@
+diff --git a/6a1f9a2cbb6015e14bc9c9d05054e14f6de58806 b/eceeec19a58cf753591418a06ca2a1f9e1d112c9
+index 6a1f9a2cbb..eceeec19a5 100644
+--- a/6a1f9a2cbb6015e14bc9c9d05054e14f6de58806
++++ b/eceeec19a58cf753591418a06ca2a1f9e1d112c9
+@@ -1,11 +1,11 @@
+ @Test
+ public void testOpenCloseConnectionPool() throws IOException {
+     ODatabaseDocumentTx db = new ODatabaseDocumentTx(url);
+     if (!ODatabaseHelper.existsDatabase(db, null)) {
+-        ODatabaseHelper.createDatabase(db, url, "plocal");
++        ODatabaseHelper.createDatabase(db, url, getStorageType());
+         db.close();
+     }
+     for (int i = 0; i < 500; i++) {
+         ODatabaseDocumentPool.global().acquire(url, "admin", "admin").close();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,25 @@
+diff --git a/69824b89c9bcfa8d9a75ad99cc109af1d49daec1 b/b053d3f9c345df0abd7a0c2dacca27eaf21fb80d
+index 69824b89c9..b053d3f9c3 100644
+--- a/69824b89c9bcfa8d9a75ad99cc109af1d49daec1
++++ b/b053d3f9c345df0abd7a0c2dacca27eaf21fb80d
+@@ -1,15 +1,15 @@
+ @Override
+ public TypeProjection get(TypeConstructor key) {
+     DeclarationDescriptor declarationDescriptor = key.getDeclarationDescriptor();
+     if (declarationDescriptor instanceof TypeParameterDescriptor) {
+         TypeParameterDescriptor descriptor = (TypeParameterDescriptor) declarationDescriptor;
+-        JetType value = ConstraintsUtil.getValue(getTypeConstraints(descriptor));
+-        if (value != null && !TypeUtils.equalsOrContainsAsArgument(value, DONT_CARE)) {
+-            return new TypeProjection(value);
+-        }
+         if (typeParameterConstraints.containsKey(descriptor)) {
++            JetType value = getTypeConstraints(descriptor).getValue();
++            if (value != null && !TypeUtils.equalsOrContainsAsArgument(value, DONT_CARE)) {
++                return new TypeProjection(value);
++            }
+             return defaultTypeProjection;
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

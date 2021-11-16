@@ -1,0 +1,14 @@
+diff --git a/148d3a2f64aa1f5dfb69726a1b66a9d578672cfd b/489c2bcd0e2d57669802427219e1d676f369e097
+index 148d3a2f64..489c2bcd0e 100644
+--- a/148d3a2f64aa1f5dfb69726a1b66a9d578672cfd
++++ b/489c2bcd0e2d57669802427219e1d676f369e097
+@@ -1,4 +1,7 @@
+ @Override
+ public List<StringEntry> getEntries() {
+-    return entries();
++    if (!(entries instanceof List)) {
++        entries = ImmutableList.copyOf(entries);
++    }
++    return (List<StringEntry>) entries;
+ }
+\ No newline at end of file

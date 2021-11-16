@@ -1,0 +1,22 @@
+diff --git a/8ed917bc5218cd419a9d3166920b6f8f1c56c90d b/b07576de229dfd8825190a7a509984efddc9ccb3
+index 8ed917bc52..b07576de22 100644
+--- a/8ed917bc5218cd419a9d3166920b6f8f1c56c90d
++++ b/b07576de229dfd8825190a7a509984efddc9ccb3
+@@ -1,12 +1,12 @@
+ public int compareTo(DeletionTime dt) {
+-    if (markedForDeleteAt < dt.markedForDeleteAt)
++    if (markedForDeleteAt() < dt.markedForDeleteAt())
+         return -1;
+-    else if (markedForDeleteAt > dt.markedForDeleteAt)
++    else if (markedForDeleteAt() > dt.markedForDeleteAt())
+         return 1;
+-    else if (localDeletionTime < dt.localDeletionTime)
++    else if (localDeletionTime() < dt.localDeletionTime())
+         return -1;
+-    else if (localDeletionTime > dt.localDeletionTime)
++    else if (localDeletionTime() > dt.localDeletionTime())
+         return -1;
+     else
+         return 0;
+ }
+\ No newline at end of file

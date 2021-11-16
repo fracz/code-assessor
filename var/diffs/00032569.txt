@@ -1,0 +1,12 @@
+diff --git a/2799251808be6d3c4a90f16bbe95a7120a2e95aa b/6fa00d466bf9ef331759a269ca134da4e99880f2
+index 2799251808..6fa00d466b 100644
+--- a/2799251808be6d3c4a90f16bbe95a7120a2e95aa
++++ b/6fa00d466bf9ef331759a269ca134da4e99880f2
+@@ -1,5 +1,4 @@
+ @Test
+ public void testNegativeCase() throws Exception {
+-    File source = new File(this.getClass().getResource("NegativeCases.java").toURI());
+-    assertThat(compiler.compile(new String[] { source.getAbsolutePath() }), is(0));
++    compilationHelper.assertCompileSucceeds(new File(this.getClass().getResource("NegativeCases.java").toURI()));
+ }
+\ No newline at end of file

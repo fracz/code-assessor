@@ -1,0 +1,19 @@
+diff --git a/c6b2b7e7455f88659c0b8485254678a8aa0fa1d5 b/f6ab10cf83e7e2be3a241427ae9df6f3ba1fa589
+index c6b2b7e745..f6ab10cf83 100644
+--- a/c6b2b7e7455f88659c0b8485254678a8aa0fa1d5
++++ b/f6ab10cf83e7e2be3a241427ae9df6f3ba1fa589
+@@ -1,12 +1,7 @@
+ public void subtreeChanged() {
+     super.subtreeChanged();
+-    if (myControlFlowRef != null) {
+-        myControlFlowRef.clear();
+-    }
+-    if (myScopeRef != null) {
+-        myScopeRef.clear();
+-    }
++    ControlFlowCache.clear(this);
+     if (myInstanceAttributes != null) {
+         myInstanceAttributes = null;
+     }
+ }
+\ No newline at end of file

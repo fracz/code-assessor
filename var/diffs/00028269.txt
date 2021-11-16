@@ -1,0 +1,14 @@
+diff --git a/067fd1bd734299ae6833814f315416148cec8dc8 b/c3833829314e30bffa9f989c2ff39192ddb3abb7
+index 067fd1bd73..c383382931 100644
+--- a/067fd1bd734299ae6833814f315416148cec8dc8
++++ b/c3833829314e30bffa9f989c2ff39192ddb3abb7
+@@ -1,7 +1,5 @@
+ public WebSocketConnectOptions setMaxWebsocketFrameSize(int maxWebsocketFrameSize) {
+-    if (maxWebsocketFrameSize < 1) {
+-        throw new IllegalArgumentException("maxWebsocketFrameSize must be > 0");
+-    }
++    Arguments.require(maxWebsocketFrameSize > 0, "maxWebsocketFrameSize must be > 0");
+     this.maxWebsocketFrameSize = maxWebsocketFrameSize;
+     return this;
+ }
+\ No newline at end of file

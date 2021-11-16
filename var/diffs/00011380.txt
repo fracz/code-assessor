@@ -1,0 +1,24 @@
+diff --git a/84ee532d736fde96877992eb86146ba3901e0b94 b/0c4fcc63d9f1cbc35ad34c8983db4dbf91586c9f
+index 84ee532d73..0c4fcc63d9 100644
+--- a/84ee532d736fde96877992eb86146ba3901e0b94
++++ b/0c4fcc63d9f1cbc35ad34c8983db4dbf91586c9f
+@@ -1,9 +1,11 @@
+-@Override
+-protected void perform(@NotNull Project project, GitVcs vcs, @NotNull final List<VcsException> exceptions, @NotNull VirtualFile[] affectedFiles) throws VcsException {
+-    saveAll();
+-    final VirtualFile[] roots = ProjectLevelVcsManager.getInstance(project).getRootsUnderVcs(vcs);
+-    for (VirtualFile root : GitUtil.gitRoots(Arrays.asList(roots))) {
+-        final GitLineHandler handler = GitPushUtils.preparePush(project, root);
+-        GitHandlerUtil.doSynchronously(handler, GitBundle.getString("pushing.all.changes"), "git push");
++/**
++ * {@inheritDoc}
++ */
++protected void perform(@NotNull final Project project, @NotNull final List<VirtualFile> gitRoots, @NotNull final VirtualFile defaultRoot, final Set<VirtualFile> affectedRoots, final List<VcsException> exceptions) throws VcsException {
++    GitPushDialog d = new GitPushDialog(project, gitRoots, defaultRoot);
++    d.show();
++    if (!d.isOK()) {
++        return;
+     }
++    GitHandlerUtil.doSynchronously(d.handler(), GitBundle.getString("pushing.all.changes"), "git push");
+ }
+\ No newline at end of file

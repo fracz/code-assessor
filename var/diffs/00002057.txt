@@ -1,0 +1,18 @@
+diff --git a/395e665ef09340bfaa8638f488070c248487790e b/f12b4e767bea8dcfd30a69c74a1eef581a3bc6ac
+index 395e665ef0..f12b4e767b 100644
+--- a/395e665ef09340bfaa8638f488070c248487790e
++++ b/f12b4e767bea8dcfd30a69c74a1eef581a3bc6ac
+@@ -1,8 +1,9 @@
+ @Override
+ protected void doOKAction() {
+     super.doOKAction();
+-    Language language = (Language) myCurrentLanguageCombo.getModel().getSelectedItem();
+-    myBlackLists.put(language, myEditorTextField.getText());
+-    myBlackLists.forEach((lang, text) -> storeBlackListDiff(lang, text));
++    myEditors.forEach((language, editor) -> {
++        String blacklist = editor.getText();
++        storeBlackListDiff(language, blacklist);
++    });
+     myOptions.forEach((option, checkBox) -> option.set(checkBox.isSelected()));
+ }
+\ No newline at end of file

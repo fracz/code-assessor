@@ -1,0 +1,13 @@
+diff --git a/ce987dba197ebaa0a16fd5a1fe3fc8bd5dd1651e b/4adfe66619402bb7f08bd276b404e97540051588
+index ce987dba19..4adfe66619 100644
+--- a/ce987dba197ebaa0a16fd5a1fe3fc8bd5dd1651e
++++ b/4adfe66619402bb7f08bd276b404e97540051588
+@@ -1,6 +1,5 @@
+ @BeforeClass
+ public static void defineSchema() throws Exception {
+-    AbstractType<?> compositeMaxMin = CompositeType.getInstance(Arrays.asList(new AbstractType<?>[] { BytesType.instance, IntegerType.instance }));
+     SchemaLoader.prepareServer();
+-    SchemaLoader.createKeyspace(KEYSPACE1, SimpleStrategy.class, KSMetaData.optsWithRF(1), SchemaLoader.standardCFMD(KEYSPACE1, CF_STANDARD), SchemaLoader.standardCFMD(KEYSPACE1, CF_STANDARD2), SchemaLoader.standardCFMD(KEYSPACE1, CF_STANDARD3), SchemaLoader.standardCFMD(KEYSPACE1, CF_STANDARDCOMPOSITE2, compositeMaxMin), SchemaLoader.standardCFMD(KEYSPACE1, CF_COUNTER1).defaultValidator(CounterColumnType.instance));
++    SchemaLoader.createKeyspace(KEYSPACE1, SimpleStrategy.class, KSMetaData.optsWithRF(1), SchemaLoader.standardCFMD(KEYSPACE1, CF_STANDARD), SchemaLoader.standardCFMD(KEYSPACE1, CF_STANDARD2), SchemaLoader.standardCFMD(KEYSPACE1, CF_STANDARD3), CFMetaData.Builder.create(KEYSPACE1, CF_STANDARDCOMPOSITE2).addPartitionKey("key", AsciiType.instance).addClusteringColumn("name", AsciiType.instance).addClusteringColumn("int", IntegerType.instance).addRegularColumn("val", AsciiType.instance).build(), SchemaLoader.counterCFMD(KEYSPACE1, CF_COUNTER1));
+ }
+\ No newline at end of file

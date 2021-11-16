@@ -1,0 +1,16 @@
+diff --git a/f633e1befa23bd71a8d5c44325c68c6eec71fb0e b/ecb0273f1ac7b01270d5270f376ee0214e0fdc8c
+index f633e1befa..ecb0273f1a 100644
+--- a/f633e1befa23bd71a8d5c44325c68c6eec71fb0e
++++ b/ecb0273f1ac7b01270d5270f376ee0214e0fdc8c
+@@ -1,7 +1,6 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiField field = (PsiField) location.getParent();
+-    assert field != null;
+-    final PsiType type = field.getType();
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiType type = (PsiType) infos[0];
+     final String typeName = type.getPresentableText();
+     return InspectionGadgetsBundle.message("stringbuffer.field.problem.descriptor", typeName);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/964fc73e3b4a0862acdc6fb86c0d08ffe35eaa6b b/cfa47620d16870a8f4d4970e1dc9e9f5f8b47e41
+index 964fc73e3b..cfa47620d1 100644
+--- a/964fc73e3b4a0862acdc6fb86c0d08ffe35eaa6b
++++ b/cfa47620d16870a8f4d4970e1dc9e9f5f8b47e41
+@@ -1,7 +1,7 @@
+ @JRubyMethod(name = { "node_name=", "name=" })
+ public IRubyObject node_name_set(ThreadContext context, IRubyObject nodeName) {
+-    String newName = nodeName.convertToString().asJavaString();
++    String newName = (String) nodeName.toJava(String.class);
+     getOwnerDocument().renameNode(node, null, newName);
+     setName(nodeName);
+     return this;
+ }
+\ No newline at end of file

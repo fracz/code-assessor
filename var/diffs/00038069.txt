@@ -1,0 +1,16 @@
+diff --git a/c1280fe9ed649119bf37840ccb89848c0f43b259 b/1fb3263ab3b230c43533b286f431ca73d0308c5e
+index c1280fe9ed..1fb3263ab3 100644
+--- a/c1280fe9ed649119bf37840ccb89848c0f43b259
++++ b/1fb3263ab3b230c43533b286f431ca73d0308c5e
+@@ -1,9 +1,8 @@
+ public Master getMaster() {
+     int masterId = zooClient.getMaster();
+     if (masterId == machineId) {
+         throw new RuntimeException("I am master");
+     }
+     String host = haServers.get(masterId);
+-    // return new MasterClient( host );
+-    return null;
++    return new MasterClient(host, getHaServerPort(masterId));
+ }
+\ No newline at end of file

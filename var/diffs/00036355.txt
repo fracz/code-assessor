@@ -1,0 +1,16 @@
+diff --git a/22dbcb91cf1c0bbd356f5bff91592cefe7ec3f56 b/9d5a51b834f238eb61841824cd3c74a94848e3f0
+index 22dbcb91cf..9d5a51b834 100644
+--- a/22dbcb91cf1c0bbd356f5bff91592cefe7ec3f56
++++ b/9d5a51b834f238eb61841824cd3c74a94848e3f0
+@@ -1,9 +1,9 @@
+ private Map<String, String> parseParameterMapping(String content) {
+     try {
+-        return ParameterExpressionParser.parse(content);
++        return new ParameterExpression(content);
+     } catch (BuilderException ex) {
+         throw ex;
+     } catch (Exception ex) {
+         throw new BuilderException("Parsing error was found in mapping #{" + content + "}.  Check syntax #{property|(expression), var1=value1, var2=value2, ...} ", ex);
+     }
+ }
+\ No newline at end of file

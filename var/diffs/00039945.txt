@@ -1,0 +1,14 @@
+diff --git a/01da679fbb2d42a9234ac79cc884511a5e566ecd b/41d7a7eb90d0572b394a0187391e2c9982eba249
+index 01da679fbb..41d7a7eb90 100644
+--- a/01da679fbb2d42a9234ac79cc884511a5e566ecd
++++ b/41d7a7eb90d0572b394a0187391e2c9982eba249
+@@ -1,6 +1,6 @@
+ @Override
+-public Iterator<RelationshipPropertyConstraint> constraintsGetForRelationshipTypeAndPropertyKey(KernelStatement state, int relTypeId, int propertyKeyId) {
++public Iterator<RelationshipPropertyConstraint> constraintsGetForRelationshipTypeAndPropertyKey(KernelStatement state, RelationshipPropertyDescriptor descriptor) {
+     acquireSharedSchemaLock(state);
+     state.assertOpen();
+-    return schemaReadDelegate.constraintsGetForRelationshipTypeAndPropertyKey(state, relTypeId, propertyKeyId);
++    return schemaReadDelegate.constraintsGetForRelationshipTypeAndPropertyKey(state, descriptor);
+ }
+\ No newline at end of file

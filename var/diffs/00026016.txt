@@ -1,0 +1,18 @@
+diff --git a/6740016009aa02eea7373dff462fccf2c248b641 b/215db926bdf57506b463a8bc2df7411586323c39
+index 6740016009..215db926bd 100644
+--- a/6740016009aa02eea7373dff462fccf2c248b641
++++ b/215db926bdf57506b463a8bc2df7411586323c39
+@@ -1,11 +1,11 @@
+ @Test
+ public void verifyEntityIdUIInfoExistsDynamically() throws Exception {
+     final MockRequestContext ctx = new MockRequestContext();
+     final MockHttpServletRequest request = new MockHttpServletRequest();
+     request.addParameter(SamlProtocolConstants.PARAMETER_ENTITY_ID, "https://carmenwiki.osu.edu/shibboleth");
+     final MockHttpServletResponse response = new MockHttpServletResponse();
+     final MockServletContext sCtx = new MockServletContext();
+     ctx.setExternalContext(new ServletExternalContext(sCtx, request, response));
+     samlMetadataUIParserAction.doExecute(ctx);
+-    assertTrue(ctx.getFlowScope().contains(MetadataUIUtils.MDUI_FLOW_PARAMETER_NAME));
++    assertNotNull(WebUtils.getServiceUserInterfaceMetadata(ctx, SimpleMetadataUIInfo.class));
+ }
+\ No newline at end of file

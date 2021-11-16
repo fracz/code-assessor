@@ -1,0 +1,12 @@
+diff --git a/977c85217642e5691e485b382a84a845ae2aae91 b/1d95622ff7b586be6fadc852e4525978aa5723a3
+index 977c852176..1d95622ff7 100644
+--- a/977c85217642e5691e485b382a84a845ae2aae91
++++ b/1d95622ff7b586be6fadc852e4525978aa5723a3
+@@ -1,4 +1,4 @@
+-public void tooLittleActualInvocations(int wantedCount, int actualCount, PrintableInvocation wanted, HasStackTrace lastActualStackTrace) {
+-    String message = createTooLittleInvocationsMessage(wantedCount, actualCount, wanted, lastActualStackTrace);
++public void tooLittleActualInvocations(Discrepancy discrepancy, PrintableInvocation wanted, HasStackTrace lastActualStackTrace) {
++    String message = createTooLittleInvocationsMessage(discrepancy, wanted, lastActualStackTrace);
+     throw new TooLittleActualInvocations(message);
+ }
+\ No newline at end of file

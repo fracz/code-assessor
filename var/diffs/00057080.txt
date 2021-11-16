@@ -1,0 +1,30 @@
+diff --git a/a7653bf211ab58415625cfec5866fbeeede62728 b/9172388a752fb1bb5d4753010fc3cbd071d7e00b
+index a7653bf211..9172388a75 100644
+--- a/a7653bf211ab58415625cfec5866fbeeede62728
++++ b/9172388a752fb1bb5d4753010fc3cbd071d7e00b
+@@ -1,15 +1,15 @@
+ public void loadTagIndex() {
+-    if (tagIndex == null) {
+-        tagIndex = new HashIndex<String>();
+-        for (String tag : classIndex.objectsList()) {
+-            String[] parts = tag.split("-");
+-            // if (parts.length > 1)
+-            tagIndex.add(parts[parts.length - 1]);
+-        }
+-        tagIndex.add(flags.backgroundSymbol);
+-    }
+     if (flags.useNERPriorBIO) {
++        if (tagIndex == null) {
++            tagIndex = new HashIndex<String>();
++            for (String tag : classIndex.objectsList()) {
++                String[] parts = tag.split("-");
++                if (parts.length > 1)
++                    tagIndex.add(parts[parts.length - 1]);
++            }
++            tagIndex.add(flags.backgroundSymbol);
++        }
+         if (entityMatrices == null)
+             entityMatrices = readEntityMatrices(flags.entityMatrix, tagIndex);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/f13a09e2c0a1632225f8fbb790111af8a4364a03 b/36756b5c5afe4cd6cefd0efcf65bbd1f68e6ed37
+index f13a09e2c0..36756b5c5a 100644
+--- a/f13a09e2c0a1632225f8fbb790111af8a4364a03
++++ b/36756b5c5afe4cd6cefd0efcf65bbd1f68e6ed37
+@@ -1,8 +1,7 @@
+ @Test
+ public void writeInvalidOffset() throws Exception {
+-    mEmbeddedChannel = new EmbeddedChannelNoException(new DataServerUFSFileWriteHandler(NettyExecutors.FILE_WRITER_EXECUTOR, mFileSystemWorker));
+-    mEmbeddedChannel.writeInbound(buildWriteRequest(0, 1024));
+-    mEmbeddedChannel.writeInbound(buildWriteRequest(1025, 1024));
+-    Object writeResponse = waitForResponse();
++    mChannelNoException.writeInbound(buildWriteRequest(0, PACKET_SIZE));
++    mChannelNoException.writeInbound(buildWriteRequest(PACKET_SIZE + 1, PACKET_SIZE));
++    Object writeResponse = waitForResponse(mChannelNoException);
+     checkWriteResponse(writeResponse, Protocol.Status.Code.INVALID_ARGUMENT);
+ }
+\ No newline at end of file

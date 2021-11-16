@@ -1,0 +1,21 @@
+diff --git a/6a3caae886d94f6a5eb05a2b91b4191ccad6dcd5 b/e35e878e47a7f2ee1f4fefc616036d348669b49e
+index 6a3caae886..e35e878e47 100644
+--- a/6a3caae886d94f6a5eb05a2b91b4191ccad6dcd5
++++ b/e35e878e47a7f2ee1f4fefc616036d348669b49e
+@@ -1,12 +1,12 @@
+ /**
+- * Convert the payload of the given type.
++ * Convert the byte array payload to the given type.
+  *
+  * @param clazz the type of object to return. This type must have previously been
+  * passed to {@link #canConvertFromPayload(Class, MediaType)} and it must have
+  * returned {@code true}.
+  * @param contentType the content type of the payload, can be {@code null}
+  * @param payload the payload to convert from
+  * @return the converted object
+  * @throws IOException in case of I/O errors
+  */
+-T convertFromPayload(Class<? extends T> clazz, MediaType contentType, byte[] payload) throws IOException;
+\ No newline at end of file
++Object convertFromPayload(Class<?> clazz, MediaType contentType, byte[] payload) throws IOException, ContentTypeNotSupportedException;
+\ No newline at end of file

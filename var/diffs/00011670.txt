@@ -1,0 +1,13 @@
+diff --git a/84939b1fded27e0fbc8e8007ff7762e67dd87ba7 b/8548f312b5370b5bfac0f6b6081799372d1de8b2
+index 84939b1fde..8548f312b5 100644
+--- a/84939b1fded27e0fbc8e8007ff7762e67dd87ba7
++++ b/8548f312b5370b5bfac0f6b6081799372d1de8b2
+@@ -1,5 +1,4 @@
+ public void testAddingWithoutUpdate() throws Exception {
+-    index.add(new MavenRepositoryInfo("local", myDataTestFixture.getTestDataPath("local1"), false));
+-    List<ArtifactInfo> result = index.findByArtifactId("junit*");
+-    assertEquals(0, result.size());
++    myIndex.add(new MavenRepositoryInfo("local", myDataTestFixture.getTestDataPath("local1"), false));
++    assertEquals(0, myIndex.findByArtifactId("junit*").size());
+ }
+\ No newline at end of file

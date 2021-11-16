@@ -1,0 +1,22 @@
+diff --git a/e2909f6ed822fdc9c95895e127a491b4bd48f380 b/442695f40afa411dee5f49e7fb226499a16cc135
+index e2909f6ed8..442695f40a 100644
+--- a/e2909f6ed822fdc9c95895e127a491b4bd48f380
++++ b/442695f40afa411dee5f49e7fb226499a16cc135
+@@ -1,12 +1,13 @@
+ @Test
+ public void shouldAcquireSchemaWriteLockBeforeAddingIndexRule() throws Exception {
+     // given
++    NodePropertyDescriptor descriptor = new NodePropertyDescriptor(123, 456);
+     IndexDescriptor rule = mock(IndexDescriptor.class);
+-    when(schemaWriteOps.indexCreate(state, 123, 456)).thenReturn(rule);
++    when(schemaWriteOps.indexCreate(state, descriptor)).thenReturn(rule);
+     // when
+-    IndexDescriptor result = lockingOps.indexCreate(state, 123, 456);
++    IndexDescriptor result = lockingOps.indexCreate(state, descriptor);
+     // then
+     assertSame(rule, result);
+     order.verify(locks).acquireExclusive(LockTracer.NONE, ResourceTypes.SCHEMA, schemaResource());
+-    order.verify(schemaWriteOps).indexCreate(state, 123, 456);
++    order.verify(schemaWriteOps).indexCreate(state, descriptor);
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/bd76785a142ebf4009764fc0600ba667cc00bd2e b/2c9c88304dd50702220168a131a9e78844e5368a
+index bd76785a14..2c9c88304d 100644
+--- a/bd76785a142ebf4009764fc0600ba667cc00bd2e
++++ b/2c9c88304dd50702220168a131a9e78844e5368a
+@@ -1,5 +1,5 @@
+ private void persistMasterSlaveRuleConfiguration(final MasterSlaveRuleConfiguration config, final boolean isOverwrite) {
+-    if (!dataNodeStorage.isNodeExisted(ConfigurationNode.MASTER_SLAVE_NODE_PATH) || isOverwrite) {
+-        dataNodeStorage.fillNode(ConfigurationNode.MASTER_SLAVE_NODE_PATH, GsonFactory.getGson().toJson(config));
++    if (isOverwrite || !regCenter.isExisted(configNode.getFullPath(ConfigurationNode.MASTER_SLAVE_NODE_PATH))) {
++        regCenter.persist(configNode.getFullPath(ConfigurationNode.MASTER_SLAVE_NODE_PATH), GsonFactory.getGson().toJson(config));
+     }
+ }
+\ No newline at end of file

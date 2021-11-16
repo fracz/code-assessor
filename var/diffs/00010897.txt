@@ -1,0 +1,25 @@
+diff --git a/e1ce05dca0cad18d26055d298278ad1fb4d533e4 b/d91d6907fc855bd0b179e0ffc03b3dbdb6b76761
+index e1ce05dca0..d91d6907fc 100644
+--- a/e1ce05dca0cad18d26055d298278ad1fb4d533e4
++++ b/d91d6907fc855bd0b179e0ffc03b3dbdb6b76761
+@@ -1,9 +1,18 @@
+ @Override
+ public FileElement getTreeElement() {
+     FileElement fileElement = myFileElement;
+     if (fileElement != null)
+         return fileElement;
+     synchronized (myTreeElementLock) {
+-        return getTreeElementNoLock();
++        fileElement = myFileElement;
++        if (fileElement == null) {
++            fileElement = new FileElement(TokenType.DUMMY_HOLDER, null);
++            fileElement.setPsi(this);
++            if (myTable != null)
++                fileElement.setCharTable(myTable);
++            myFileElement = fileElement;
++            clearCaches();
++        }
++        return fileElement;
+     }
+ }
+\ No newline at end of file

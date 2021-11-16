@@ -1,0 +1,22 @@
+diff --git a/3ba49e5e47068b3c1ea7da2d8121aa1064252653 b/4a4825eae300a2617a6b9533668cf7582319c742
+index 3ba49e5e47..4a4825eae3 100644
+--- a/3ba49e5e47068b3c1ea7da2d8121aa1064252653
++++ b/4a4825eae300a2617a6b9533668cf7582319c742
+@@ -1,13 +1,10 @@
+ @Override
+ public void setMessage(String data) throws HttpMalformedHeaderException {
+     super.setMessage(data);
+     try {
+-        if (!parse())
+-            mMalformedHeader = true;
+-    } catch (Exception e) {
++        parse();
++    } catch (HttpMalformedHeaderException e) {
+         mMalformedHeader = true;
+-    }
+-    if (mMalformedHeader) {
+-        throw new HttpMalformedHeaderException();
++        throw e;
+     }
+ }
+\ No newline at end of file

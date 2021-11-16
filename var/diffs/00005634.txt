@@ -1,0 +1,24 @@
+diff --git a/296feb838f75e00565be804a48bd4789c8d65e36 b/28b4185f0f63715b19f571d93c4ff2cc1702533b
+index 296feb838f..28b4185f0f 100644
+--- a/296feb838f75e00565be804a48bd4789c8d65e36
++++ b/28b4185f0f63715b19f571d93c4ff2cc1702533b
+@@ -1,15 +1,14 @@
+ @Test
+ public void testDeletingDirectoryWithContent() {
+-    // todo i dont trust to deletion reverting yet... i need some more tests
+-    root.createDirectory(1, "dir1");
+-    root.createDirectory(2, "dir1/dir2");
+-    root.createFile(3, "dir1/dir2/file", c("content"), -1);
++    createDirectory(root, 1, "dir1");
++    createDirectory(root, 2, "dir1/dir2");
++    createFile(root, 3, "dir1/dir2/file", c("content"), -1);
+     Change c = new DeleteChange("dir1");
+     c.applyTo(root);
+     assertFalse(root.hasEntry("dir1"));
+     c.revertOn(root);
+     assertTrue(root.hasEntry("dir1"));
+     assertTrue(root.hasEntry("dir1/dir2"));
+     assertTrue(root.hasEntry("dir1/dir2/file"));
+     assertEquals(c("content"), root.getEntry("dir1/dir2/file").getContent());
+ }
+\ No newline at end of file

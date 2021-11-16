@@ -1,0 +1,20 @@
+diff --git a/4ea29b5906f3c9f6c3fcc1590e6d718b45b6b48f b/4206eff1875c813d3341aaeeddf3c9dbd8cb1a18
+index 4ea29b5906..4206eff187 100644
+--- a/4ea29b5906f3c9f6c3fcc1590e6d718b45b6b48f
++++ b/4206eff1875c813d3341aaeeddf3c9dbd8cb1a18
+@@ -1,7 +1,9 @@
+-private V fetchPrevious(final Bytes key) {
+-    final byte[] result = underlying.get(key);
+-    if (result == null) {
+-        return null;
++private V fetchPrevious(final Bytes key, final long timestamp) {
++    try (final WindowStoreIterator<byte[]> iter = underlying.fetch(key, timestamp, timestamp)) {
++        if (!iter.hasNext()) {
++            return null;
++        } else {
++            return serdes.valueFrom(iter.next().value);
++        }
+     }
+-    return serdes.valueFrom(result);
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/3f96a853036107380e8f79506c85a073831d5a2a b/35843e0c29e3acb62302c8138eee412ffdd67186
+index 3f96a85303..35843e0c29 100644
+--- a/3f96a853036107380e8f79506c85a073831d5a2a
++++ b/35843e0c29e3acb62302c8138eee412ffdd67186
+@@ -1,5 +1,4 @@
+ @JRubyMethod
+ public IRubyObject inner_xml(ThreadContext context) {
+-    Long outer_depth = ((RubyFixnum) nodeQueue.peek().getDepth()).getLongValue();
+-    return getXmlString(context, outer_depth);
++    return stringOrBlank(context.getRuntime(), getInnerXml(nodeQueue, nodeQueue.peek()));
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/40bb9210eb09773aa4c4f939936ac11216c38b29 b/73d5819cb6eb159ee830ca50d682c08fabc0678a
+index 40bb9210eb..73d5819cb6 100644
+--- a/40bb9210eb09773aa4c4f939936ac11216c38b29
++++ b/73d5819cb6eb159ee830ca50d682c08fabc0678a
+@@ -1,9 +1,5 @@
+ public void test_pg_group_0() throws Exception {
+     String sql = "select type, count(*) from t group by type";
+     String result = PagerUtils.count(sql, JdbcConstants.POSTGRESQL);
+-    Assert.assertEquals(//
+-    "SELECT COUNT(*)" + //
+-    "\nFROM (SELECT type, COUNT(*)" + //
+-    "\n\tFROM t" + //
+-    "\n\tGROUP BY type" + "\n\t) ALIAS_COUNT", result);
++    Assert.assertEquals("SELECT COUNT(*)\n" + "FROM (\n" + "\tSELECT type, COUNT(*)\n" + "\tFROM t\n" + "\tGROUP BY type\n" + ") ALIAS_COUNT", result);
+ }
+\ No newline at end of file

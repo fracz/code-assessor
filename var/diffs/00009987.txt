@@ -1,0 +1,15 @@
+diff --git a/748260533009774ee9f737259576ec6300e39b5b b/5cdbb8bf069768cd421ea9077df328995ccb8f9c
+index 7482605330..5cdbb8bf06 100644
+--- a/748260533009774ee9f737259576ec6300e39b5b
++++ b/5cdbb8bf069768cd421ea9077df328995ccb8f9c
+@@ -1,8 +1,8 @@
+ public static HighlightInfo checkCannotInheritFromEnum(PsiClass superClass, PsiElement elementToHighlight) {
+     HighlightInfo errorResult = null;
+     if (Comparing.strEqual("java.lang.Enum", superClass.getQualifiedName())) {
+         String message = JavaErrorMessages.message("classes.extends.enum");
+-        errorResult = HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, elementToHighlight, message);
++        errorResult = HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(elementToHighlight).descriptionAndTooltip(message).create();
+     }
+     return errorResult;
+ }
+\ No newline at end of file

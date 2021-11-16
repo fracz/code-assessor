@@ -1,0 +1,21 @@
+diff --git a/6118e9ef7dd02eb843d63c9aaee849e87af0fb4f b/47b284272d234f200fb02137984e2dbb7b80839f
+index 6118e9ef7d..47b284272d 100644
+--- a/6118e9ef7dd02eb843d63c9aaee849e87af0fb4f
++++ b/47b284272d234f200fb02137984e2dbb7b80839f
+@@ -1,11 +1,11 @@
+-private void generateEqualsForExpressionsOnStack(IElementType opToken, Type leftType, Type rightType) {
++private StackValue generateEqualsForExpressionsOnStack(IElementType opToken, Type leftType, Type rightType) {
+     if (isNumberPrimitive(leftType) && leftType == rightType) {
+-        compareExpressionsOnStack(opToken, leftType);
++        return compareExpressionsOnStack(opToken, leftType);
+     } else {
+         if (opToken == JetTokens.EQEQEQ || opToken == JetTokens.EXCLEQEQEQ) {
+-            myStack.push(StackValue.cmp(opToken, leftType));
++            return StackValue.cmp(opToken, leftType);
+         } else {
+-            generateNullSafeEquals(opToken);
++            return generateNullSafeEquals(opToken);
+         }
+     }
+ }
+\ No newline at end of file

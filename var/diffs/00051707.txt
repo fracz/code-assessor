@@ -1,0 +1,13 @@
+diff --git a/9722f1e2c31f48d21303120d4fc5772b5e73049d b/e43e8b7190361747fa193893382623d388cffaa7
+index 9722f1e2c3..e43e8b7190 100644
+--- a/9722f1e2c31f48d21303120d4fc5772b5e73049d
++++ b/e43e8b7190361747fa193893382623d388cffaa7
+@@ -1,6 +1,3 @@
+ private Image getColumnIcon(DBSEntityAttribute column) {
+-    if (column instanceof DBPImageProvider) {
+-        return DBeaverIcons.getImage(((DBPImageProvider) column).getObjectImage());
+-    }
+-    return null;
++    return DBeaverIcons.getImage(DBUtils.getObjectImage(column));
+ }
+\ No newline at end of file

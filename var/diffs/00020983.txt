@@ -1,0 +1,12 @@
+diff --git a/d4f22ee85fb01dca8955486c31eca23722bac79c b/ecf683e6f8081f1df97d0b793c562d790f82480a
+index d4f22ee85f..ecf683e6f8 100644
+--- a/d4f22ee85fb01dca8955486c31eca23722bac79c
++++ b/ecf683e6f8081f1df97d0b793c562d790f82480a
+@@ -1,5 +1,5 @@
+ @Override
+ public void setDouble(int parameterIndex, double x) throws SQLException {
+-    setParameter(parameterIndex, new JdbcParameterImpl(Types.DOUBLE, x));
++    setParameter(parameterIndex, createParameter(Types.DOUBLE, x));
+     createChain().preparedStatement_setDouble(this, parameterIndex, x);
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/bc7f531244e630ba289a05fcca23d457eeadb29d b/da5893d4cb1cd7bbf3f117338f6106a6545258d4
+index bc7f531244..da5893d4cb 100644
+--- a/bc7f531244e630ba289a05fcca23d457eeadb29d
++++ b/da5893d4cb1cd7bbf3f117338f6106a6545258d4
+@@ -1,4 +1,10 @@
+-/**
+- * Create the query that is being tested
+- */
+-protected abstract QB createTestQueryBuilder();
+\ No newline at end of file
++protected final QB createTestQueryBuilder() {
++    QB query = doCreateTestQueryBuilder();
++    if (randomBoolean()) {
++        query.boost(2.0f / randomIntBetween(1, 20));
++    }
++    if (randomBoolean()) {
++        query.queryName(randomAsciiOfLengthBetween(1, 10));
++    }
++    return query;
++}
+\ No newline at end of file

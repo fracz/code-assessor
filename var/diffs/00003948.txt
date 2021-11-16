@@ -1,0 +1,14 @@
+diff --git a/6c0a372caca0a8be136eb81fbf073a84a628e534 b/92828ad1e18e92ee76cda8f5371b500353b3a931
+index 6c0a372cac..92828ad1e1 100644
+--- a/6c0a372caca0a8be136eb81fbf073a84a628e534
++++ b/92828ad1e18e92ee76cda8f5371b500353b3a931
+@@ -1,6 +1,5 @@
+ private void registerError(PsiJavaCodeReferenceElement reference) {
+-    if (results == null) {
+-        results = new ArrayList<PsiElement>(1);
++    if (isInProject(reference)) {
++        myHolder.registerProblem(reference, InspectionsBundle.message("inspection.1.5.problem.descriptor", "@since 1.5"));
+     }
+-    results.add(reference);
+ }
+\ No newline at end of file

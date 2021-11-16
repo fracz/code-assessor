@@ -1,0 +1,17 @@
+diff --git a/25124de272d8b960b6862ce3c9254abf0bf2c58f b/6bff5aa049757a2264632208402f0e8b0a66097c
+index 25124de272..6bff5aa049 100644
+--- a/25124de272d8b960b6862ce3c9254abf0bf2c58f
++++ b/6bff5aa049757a2264632208402f0e8b0a66097c
+@@ -1,8 +1,8 @@
+-public ProjectVersion3 getModel(final Class<? extends ProjectVersion3> type, final BuildOperationParametersVersion1 operationParameters) {
+-    return run("Load projects", operationParameters, new BuildAction<ProjectVersion3>() {
++public <T> T getModel(final Class<T> type, final BuildOperationParametersVersion1 operationParameters) {
++    return run("Load projects", operationParameters, new BuildAction<T>() {
+
+-        public ProjectVersion3 run(ConnectionVersion4 connection) {
++        public T run(ConsumerConnection connection) {
+             return connection.getModel(type, operationParameters);
+         }
+     });
+ }
+\ No newline at end of file

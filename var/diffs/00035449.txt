@@ -1,0 +1,19 @@
+diff --git a/4680807dc3bbcffa4c4e4c60c00dccf0cd292b79 b/11d3e48327baac01aafce089f4cb83cfa389b18f
+index 4680807dc3..11d3e48327 100644
+--- a/4680807dc3bbcffa4c4e4c60c00dccf0cd292b79
++++ b/11d3e48327baac01aafce089f4cb83cfa389b18f
+@@ -1,10 +1,10 @@
+ private void onRetry(Throwable ex, final int retryTimes) {
+     if (FileDownloadLog.NEED_LOG) {
+         FileDownloadLog.d(this, "On retry %d %s %d %d", getId(), ex, retryTimes, autoRetryTimes);
+     }
+     ex = exFiltrate(ex);
+-    helper.updateRetry(getId(), ex.getMessage());
+-    transferModel.setThrowable(ex);
+-    transferModel.setRetryingTimes(retryTimes);
++    helper.updateRetry(model, ex.getMessage());
++    this.throwable = ex;
++    this.retryingTimes = retryTimes;
+     onStatusChanged(model.getStatus());
+ }
+\ No newline at end of file

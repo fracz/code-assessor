@@ -1,0 +1,30 @@
+diff --git a/63302783cb88b58e299e5f138ad0ba39ecc41b84 b/fac2639defd3cf882842ff4e66260439991b4049
+index 63302783cb..fac2639def 100644
+--- a/63302783cb88b58e299e5f138ad0ba39ecc41b84
++++ b/fac2639defd3cf882842ff4e66260439991b4049
+@@ -1,17 +1,12 @@
+-public static JetIntentionActionFactory<JetBinaryExpressionWithTypeRHS> createRemoveCastFactory() {
+-    return new JetIntentionActionFactory<JetBinaryExpressionWithTypeRHS>() {
++public static JetIntentionActionFactory createRemoveCastFactory() {
++    return new JetIntentionActionFactory() {
+
+         @Override
+-        public JetIntentionAction<JetBinaryExpressionWithTypeRHS> createAction(DiagnosticWithPsiElement diagnostic) {
+-            assert diagnostic.getPsiElement() instanceof JetBinaryExpressionWithTypeRHS;
+-            return new RemoveRightPartOfBinaryExpressionFix<JetBinaryExpressionWithTypeRHS>((JetBinaryExpressionWithTypeRHS) diagnostic.getPsiElement()) {
+-
+-                @NotNull
+-                @Override
+-                public String getText() {
+-                    return JetBundle.message("remove.cast");
+-                }
+-            };
++        public JetIntentionAction<JetBinaryExpressionWithTypeRHS> createAction(Diagnostic diagnostic) {
++            JetBinaryExpressionWithTypeRHS expression = QuickFixUtil.getParentElementOfType(diagnostic, JetBinaryExpressionWithTypeRHS.class);
++            if (expression == null)
++                return null;
++            return new RemoveRightPartOfBinaryExpressionFix<JetBinaryExpressionWithTypeRHS>(expression, JetBundle.message("remove.cast"));
+         }
+     };
+ }
+\ No newline at end of file

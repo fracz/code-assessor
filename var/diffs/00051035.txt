@@ -1,0 +1,12 @@
+diff --git a/9e864b059b780a29f4f67c91c1d30ebd87ec2fb4 b/291d3ce451fa431c3e0468d885763fece50a16c1
+index 9e864b059b..291d3ce451 100644
+--- a/9e864b059b780a29f4f67c91c1d30ebd87ec2fb4
++++ b/291d3ce451fa431c3e0468d885763fece50a16c1
+@@ -1,5 +1,3 @@
+ public boolean isSameToken(int firstToken, int secondToken) {
+-    String firstTokenName = getTokenName(firstToken);
+-    String secondTokenName = getTokenName(secondToken);
+-    return firstTokenName != null && firstTokenName.equalsIgnoreCase(secondTokenName);
++    return firstToken == secondToken || (firstToken == TokenBEGIN && secondToken == Tokenbegin) || (firstToken == Tokenbegin && secondToken == TokenBEGIN) || (firstToken == TokenEND && secondToken == Tokenend) || (firstToken == Tokenend && secondToken == TokenEND);
+ }
+\ No newline at end of file

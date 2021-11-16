@@ -1,0 +1,28 @@
+diff --git a/1db1b00ed1f5aed5a0d591bb438b4108aa8a024e b/e129bfb234422c47dc178f50f4b5d1446bb72013
+index 1db1b00ed1..e129bfb234 100644
+--- a/1db1b00ed1f5aed5a0d591bb438b4108aa8a024e
++++ b/e129bfb234422c47dc178f50f4b5d1446bb72013
+@@ -1,11 +1,14 @@
+-private static ResultSet buildCoupling(final ResultSet preResultSet, final MergeContext mergeContext) throws SQLException {
+-    ResultSet currentResultSet = preResultSet;
+-    if (mergeContext.hasGroupByOrAggregation()) {
+-        currentResultSet = join(new GroupByCouplingResultSet(mergeContext.getGroupByColumns(), mergeContext.getAggregationColumns()), currentResultSet);
++private static ResultSet buildCoupling(final ResultSet resultSet, final ResultSetMergeContext resultSetMergeContext) throws SQLException {
++    ResultSet result = resultSet;
++    if (resultSetMergeContext.getMergeContext().hasGroupByOrAggregation()) {
++        result = new GroupByCouplingResultSet(result, resultSetMergeContext);
+     }
+-    if (mergeContext.needToSort()) {
+-        currentResultSet = join(new MemoryOrderByCouplingResultSet(mergeContext.getCurrentOrderByKeys()), currentResultSet);
++    if (resultSetMergeContext.isNeedMemorySortForOrderBy()) {
++        resultSetMergeContext.setOrderByKeysToCurrentOrderByKeys();
++        result = new MemoryOrderByCouplingResultSet(result, resultSetMergeContext);
+     }
+-    currentResultSet = joinLimit(currentResultSet, mergeContext);
+-    return currentResultSet;
++    if (resultSetMergeContext.getMergeContext().hasLimit()) {
++        result = new LimitCouplingResultSet(result, resultSetMergeContext.getMergeContext());
++    }
++    return result;
+ }
+\ No newline at end of file

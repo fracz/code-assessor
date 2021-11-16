@@ -1,0 +1,14 @@
+diff --git a/8936b2ed4a71dca66aacddd4b515f3ee741cfb50 b/76e424a33a3849bcc246ea20a636c65ad662678a
+index 8936b2ed4a..76e424a33a 100644
+--- a/8936b2ed4a71dca66aacddd4b515f3ee741cfb50
++++ b/76e424a33a3849bcc246ea20a636c65ad662678a
+@@ -1,4 +1,6 @@
+ @Override
+-public DBCSession openIsolatedContext(DBRProgressMonitor monitor, DBCExecutionPurpose purpose, String taskTitle) {
+-    return createConnection(monitor, purpose, taskTitle, true);
++public DBCExecutionContext openIsolatedContext(DBRProgressMonitor monitor) throws DBCException {
++    JDBCExecutionContext context = new JDBCExecutionContext(this);
++    context.connect(monitor);
++    return context;
+ }
+\ No newline at end of file

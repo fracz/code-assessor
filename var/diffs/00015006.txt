@@ -1,0 +1,20 @@
+diff --git a/ed1ac674699c3ef97e9680d813f8a9161bb27e9d b/1767cec1e1910baa1e85ed04b10262504dec9c8a
+index ed1ac67469..1767cec1e1 100644
+--- a/ed1ac674699c3ef97e9680d813f8a9161bb27e9d
++++ b/1767cec1e1910baa1e85ed04b10262504dec9c8a
+@@ -1,13 +1,12 @@
+ @NotNull
+ private TranslationContext createContextWithAliasForThisExpression(@NotNull TranslationContext contextForInlining) {
+     ClassDescriptor classDescriptorForMethod = DescriptorUtils.getClassDescriptorForMethod(getFunctionDescriptor());
+     if (classDescriptorForMethod == null) {
+         return contextForInlining;
+     }
+-    // TODO
+     TranslationContext contextWithAliasForThisExpression = contextForInlining;
+-    TemporaryVariable aliasForThis = contextForInlining.declareTemporary(receiver);
++    TemporaryVariable aliasForThis = contextWithAliasForThisExpression.declareTemporary(getReceiver());
+     contextWithAliasForThisExpression = contextForInlining.innerContextWithThisAliased(classDescriptorForMethod, aliasForThis.name());
+     contextWithAliasForThisExpression.addStatementToCurrentBlock(aliasForThis.assignmentExpression().makeStmt());
+     return contextWithAliasForThisExpression;
+ }
+\ No newline at end of file

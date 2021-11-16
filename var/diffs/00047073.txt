@@ -1,0 +1,23 @@
+diff --git a/d97524a10d304e7da2cea37e275cc3e62e44f8fe b/83b4144871c11061051d443da04bd3379281c6d3
+index d97524a10d..83b4144871 100644
+--- a/d97524a10d304e7da2cea37e275cc3e62e44f8fe
++++ b/83b4144871c11061051d443da04bd3379281c6d3
+@@ -1,13 +1,8 @@
+ private void onGap(final AtomicBuffer buffer, final int offset, final int length) {
++    // grab termId from the actual buffer
+     dataHeader.wrap(buffer, offset);
+-    if (numOutstanding > 0) {
+-    // re-verify gap is still present or we've passed over it (i.e. it was filled)
+-    } else {
+-        // no existing Gaps
+-        // grab termId from the actual buffer
+-        currentGap.reset((int) dataHeader.termId(), offset);
+-        numOutstanding++;
+-        scheduleTimer(determineNakDelay());
+-        nakSentTimestamp = wheel.now();
++    if (scanCursor < scanGaps.length) {
++        scanGaps[scanCursor].reset((int) dataHeader.termId(), offset);
++        scanCursor++;
+     }
+ }
+\ No newline at end of file

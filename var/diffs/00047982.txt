@@ -1,0 +1,31 @@
+diff --git a/466a231694a32576fc753a441765e0569f0b54f1 b/721be1739f03d284b267e85d9e270935158db0b2
+index 466a231694..721be1739f 100644
+--- a/466a231694a32576fc753a441765e0569f0b54f1
++++ b/721be1739f03d284b267e85d9e270935158db0b2
+@@ -1,17 +1,17 @@
+ /**
+- * Get a {@link Map} of the query string parameters.
++ * Get a {@link ParameterList} with the query string parameters.
+  *
+- * @return a map containing the query string parameters
+- * @throws OAuthException if the URL is not valid
++ * @return a {@link ParameterList} containing the query string parameters.
++ * @throws OAuthException if the request URL is not valid.
+  */
+-public Map<String, String> getQueryStringParams() {
++public ParameterList getQueryStringParams() {
+     try {
+-        Map<String, String> params = new HashMap<String, String>();
++        ParameterList result = new ParameterList();
+         String queryString = new URL(url).getQuery();
+-        params.putAll(MapUtils.queryStringToMap(queryString));
+-        params.putAll(this.querystringParams);
+-        return params;
++        result.addQuerystring(queryString);
++        result.addAll(querystringParams);
++        return result;
+     } catch (MalformedURLException mue) {
+         throw new OAuthException("Malformed URL", mue);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/5a1779bc537fb6a20555ba4d8e5413f98e52246a b/99107b0e36543f65c533f884c19fc8baece3f98e
+index 5a1779bc53..99107b0e36 100644
+--- a/5a1779bc537fb6a20555ba4d8e5413f98e52246a
++++ b/99107b0e36543f65c533f884c19fc8baece3f98e
+@@ -1,12 +1,12 @@
+ /**
+  * @hide
+  */
+ public void setExtracting(ExtractedTextRequest req) {
+-    if (getEditor().mInputMethodState != null) {
+-        getEditor().mInputMethodState.mExtractedTextRequest = req;
++    if (mEditor.mInputMethodState != null) {
++        mEditor.mInputMethodState.mExtractedTextRequest = req;
+     }
+     // This would stop a possible selection mode, but no such mode is started in case
+     // extracted mode will start. Some text is selected though, and will trigger an action mode
+     // in the extracted view.
+-    getEditor().hideControllers();
++    mEditor.hideControllers();
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/93de0dc495471fef25c0af8e240acffff6732dc8 b/4778edbf292eb790eb8dc39948897e4a88f86078
+index 93de0dc495..4778edbf29 100644
+--- a/93de0dc495471fef25c0af8e240acffff6732dc8
++++ b/4778edbf292eb790eb8dc39948897e4a88f86078
+@@ -1,12 +1,12 @@
+ @Test
+ public void addingRelationshipPropertyExistenceConstraintConstraintShouldBeIdempotent() {
+     // Given
+-    RelationshipPropertyExistenceConstraint constraint1 = new RelationshipPropertyExistenceConstraint(1, 42);
+-    RelationshipPropertyExistenceConstraint constraint2 = new RelationshipPropertyExistenceConstraint(1, 42);
++    RelationshipPropertyExistenceConstraint constraint1 = new RelationshipPropertyExistenceConstraint(relDescriptor1);
++    RelationshipPropertyExistenceConstraint constraint2 = new RelationshipPropertyExistenceConstraint(relDescriptor1);
+     // When
+     state.constraintDoAdd(constraint1);
+     state.constraintDoAdd(constraint2);
+     // Then
+     assertEquals(constraint1, constraint2);
+     assertEquals(singleton(constraint1), state.constraintsChangesForRelationshipType(1).getAdded());
+ }
+\ No newline at end of file

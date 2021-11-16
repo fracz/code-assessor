@@ -1,0 +1,14 @@
+diff --git a/c101546da0627a306ba4138b047fde1b532f0215 b/b1dcce357378e4fb5624b5e6eaf1cdf881f33609
+index c101546da0..b1dcce3573 100644
+--- a/c101546da0627a306ba4138b047fde1b532f0215
++++ b/b1dcce357378e4fb5624b5e6eaf1cdf881f33609
+@@ -1,6 +1,6 @@
+ @Test
+ public void emptyBodyWithMono() throws Exception {
+     ResolvableType type = forClassWithGenerics(Mono.class, String.class);
+-    TestSubscriber.subscribe(resolveValueWithEmptyBody(type, true)).assertNoValues().assertError(ServerWebInputException.class);
+-    TestSubscriber.subscribe(resolveValueWithEmptyBody(type, false)).assertNoValues().assertComplete();
++    ScriptedSubscriber.<Void>create().expectNextCount(0).expectError(ServerWebInputException.class).verify((Mono<Void>) resolveValueWithEmptyBody(type, true));
++    ScriptedSubscriber.<Void>create().expectNextCount(0).expectComplete().verify((Mono<Void>) resolveValueWithEmptyBody(type, false));
+ }
+\ No newline at end of file

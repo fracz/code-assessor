@@ -1,0 +1,14 @@
+diff --git a/02ae5716e775c5d0849ab7bfa2f2647bd9d47cb9 b/884581807fd5ff6924733448fc8be8770c7a5a24
+index 02ae5716e7..884581807f 100644
+--- a/02ae5716e775c5d0849ab7bfa2f2647bd9d47cb9
++++ b/884581807fd5ff6924733448fc8be8770c7a5a24
+@@ -1,6 +1,6 @@
+ public void setupRedirect() {
+     when(factory.create(Matchers.<String>anyVararg())).thenReturn(sourceClient, redirectedClient);
+-    when(sourceClient.getApplications()).thenReturn(EurekaHttpResponse.<Applications>anEurekaHttpResponse(302).withHeader(HttpHeaders.LOCATION, "http://another.discovery.test/eureka/v2/apps").build());
++    when(sourceClient.getApplications()).thenReturn(anEurekaHttpResponse(302, Applications.class).headers(HttpHeaders.LOCATION, "http://another.discovery.test/eureka/v2/apps").build());
+     when(dnsService.resolveIp("another.discovery.test")).thenReturn("192.168.0.1");
+-    when(redirectedClient.getApplications()).thenReturn(EurekaHttpResponse.responseWith(200, new Applications()));
++    when(redirectedClient.getApplications()).thenReturn(anEurekaHttpResponse(200, new Applications()).type(MediaType.APPLICATION_JSON_TYPE).build());
+ }
+\ No newline at end of file

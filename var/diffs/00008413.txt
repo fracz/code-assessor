@@ -1,0 +1,17 @@
+diff --git a/353f36b301f65086eca305b86e5f425732b1619d b/6accdf43dec1808746bda563367d59c07ce50721
+index 353f36b301..6accdf43de 100644
+--- a/353f36b301f65086eca305b86e5f425732b1619d
++++ b/6accdf43dec1808746bda563367d59c07ce50721
+@@ -1,8 +1,4 @@
+-private void registerCannotApplyError(PsiElement place, PsiType[] argumentTypes, String invokedText) {
+-    final String typesString = buildArgTypesList(argumentTypes);
+-    String message = GroovyBundle.message("cannot.apply.method.or.closure", invokedText, typesString);
+-    PsiElement elementToHighlight = PsiUtil.getArgumentsList(place);
+-    if (elementToHighlight == null || elementToHighlight.getTextRange().getLength() == 0)
+-        elementToHighlight = place;
+-    registerError(elementToHighlight, message);
++private void registerCannotApplyError(String invokedText, CallInfo info) {
++    final String typesString = buildArgTypesList(info.getArgumentTypes());
++    registerError(info.getElementToHighlight(), GroovyBundle.message("cannot.apply.method.or.closure", invokedText, typesString));
+ }
+\ No newline at end of file

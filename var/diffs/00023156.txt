@@ -1,0 +1,17 @@
+diff --git a/c0212072fb3ace9154eb7f466210a5b61b55f78a b/86d8924dc0780d2ec23aaabeb43b610546ca70bc
+index c0212072fb..86d8924dc0 100644
+--- a/c0212072fb3ace9154eb7f466210a5b61b55f78a
++++ b/86d8924dc0780d2ec23aaabeb43b610546ca70bc
+@@ -1,9 +1,9 @@
+ /**
+  * Request the Keyboard Shortcuts screen to show up. This will trigger
+  * {@link #onProvideKeyboardShortcuts} to retrieve the shortcuts for the foreground activity.
+  */
+ public final void requestShowKeyboardShortcuts() {
+     Intent intent = new Intent(Intent.ACTION_SHOW_KEYBOARD_SHORTCUTS);
+-    intent.setComponent(new ComponentName(KEYBOARD_SHORTCUTS_RECEIVER_PKG_NAME, KEYBOARD_SHORTCUTS_RECEIVER_CLASS_NAME));
+-    sendBroadcast(intent);
++    intent.setPackage(KEYBOARD_SHORTCUTS_RECEIVER_PKG_NAME);
++    sendBroadcastAsUser(intent, UserHandle.SYSTEM);
+ }
+\ No newline at end of file

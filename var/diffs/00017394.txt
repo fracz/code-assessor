@@ -1,0 +1,11 @@
+diff --git a/28676ecc60ce5ecef161ec97312c14ca9f2106ea b/6571f353a12c88962291654e8a6ab5edccceaecb
+index 28676ecc60..6571f353a1 100644
+--- a/28676ecc60ce5ecef161ec97312c14ca9f2106ea
++++ b/6571f353a12c88962291654e8a6ab5edccceaecb
+@@ -1,4 +1,4 @@
+ @NotNull
+ public TranslationContext innerContextWithAliased(@NotNull DeclarationDescriptor correspondingDescriptor, @NotNull JsNameRef alias) {
+-    return new TranslationContext(this, aliasingContext.inner(correspondingDescriptor, alias));
++    return this.innerWithAliasingContext(aliasingContext.inner(correspondingDescriptor, alias));
+ }
+\ No newline at end of file

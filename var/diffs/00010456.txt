@@ -1,0 +1,22 @@
+diff --git a/739426e559616cd3f6a582b1ca07c8aa9cf9cedb b/30c7c44ce896f6ce4a58cf8339e4e73d2be0e0cf
+index 739426e559..30c7c44ce8 100644
+--- a/739426e559616cd3f6a582b1ca07c8aa9cf9cedb
++++ b/30c7c44ce896f6ce4a58cf8339e4e73d2be0e0cf
+@@ -1,7 +1,15 @@
+ /**
+  * @param target an element to check.
+  * @return true iff target is inside the __builtins__.py
+  */
+ public static boolean hasInBuiltins(@Nullable PsiElement target) {
+-    return target != null && PyBuiltinCache.BUILTIN_FILE.equals(target.getContainingFile().getName());
++    if (target == null)
++        return false;
++    if (!target.isValid())
++        return false;
++    final PsiFile the_file = target.getContainingFile();
++    if (the_file == null) {
++        return false;
++    }
++    return PyBuiltinCache.BUILTIN_FILE.equals(the_file.getName());
+ }
+\ No newline at end of file

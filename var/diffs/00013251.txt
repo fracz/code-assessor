@@ -1,0 +1,15 @@
+diff --git a/5c38abcbb697ff06ddf7785586af9d1e90d517a7 b/55ef359c02add29c5f41b3ba769825cdb09e09b8
+index 5c38abcbb6..55ef359c02 100644
+--- a/5c38abcbb697ff06ddf7785586af9d1e90d517a7
++++ b/55ef359c02add29c5f41b3ba769825cdb09e09b8
+@@ -1,8 +1,4 @@
+ @NotNull
+ public static List<RangeHighlighter> createInlineHighlighter(@NotNull Editor editor, int start, int end, @NotNull TextDiffType type) {
+-    TextAttributes attributes = getTextAttributes(type, editor, false);
+-    RangeHighlighter highlighter = editor.getMarkupModel().addRangeHighlighter(start, end, INLINE_LAYER, attributes, HighlighterTargetArea.EXACT_RANGE);
+-    if (start == end)
+-        installEmptyRangeRenderer(highlighter, type);
+-    return Collections.singletonList(highlighter);
++    return new InlineHighlighterBuilder(editor, start, end, type).done();
+ }
+\ No newline at end of file

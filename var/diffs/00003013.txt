@@ -1,0 +1,15 @@
+diff --git a/356c7caf024fbbd1c1e7fdd77ad5d20df0eb694d b/bd03481a6eb70c63dbc26172b96686f9ac9df526
+index 356c7caf02..bd03481a6e 100644
+--- a/356c7caf024fbbd1c1e7fdd77ad5d20df0eb694d
++++ b/bd03481a6eb70c63dbc26172b96686f9ac9df526
+@@ -1,8 +1,8 @@
+ @Override
+ public void update(final AnActionEvent e) {
+     super.update(e);
+-    CaptionSelection selection = e.getData(CaptionSelection.DATA_KEY);
++    CaptionSelection selection = CaptionSelection.DATA_KEY.getData(e.getDataContext());
+     if (selection != null) {
+         e.getPresentation().setEnabled(selection.getContainer() != null && selection.getContainer().getLayout() instanceof FormLayout && getCellsToGroup(selection).length > 1 && !isGrouped(selection));
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/16440f51bfa9aff34c2e8c508c51fe1acf1667d5 b/17631f512c9605e38a1b8f89f5a60026f73812e8
+index 16440f51bf..17631f512c 100644
+--- a/16440f51bfa9aff34c2e8c508c51fe1acf1667d5
++++ b/17631f512c9605e38a1b8f89f5a60026f73812e8
+@@ -1,7 +1,8 @@
+ static TVal getCurrent(TRef tref) throws Exception {
+     for (TVal ver = tref; ver != null; ver = ver.prior) {
+-        if (ver.tinfo.status == COMMITTED)
++        if (ver.tinfo != null && ver.tinfo.status == COMMITTED)
+             return ver;
+     }
+-    throw new Exception("Version not found");
++    // this return only if no value was ever successfully set
++    return null;
+ }
+\ No newline at end of file

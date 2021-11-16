@@ -1,0 +1,13 @@
+diff --git a/23ded547ea61b854c8e336f99364a89c071b5679 b/7888b8d270f59575dd85386beabe0ad407f86bd1
+index 23ded547ea..7888b8d270 100644
+--- a/23ded547ea61b854c8e336f99364a89c071b5679
++++ b/7888b8d270f59575dd85386beabe0ad407f86bd1
+@@ -1,6 +1,6 @@
+ @Test
+ public void decodeSingleXmlTypeElement() throws Exception {
+     Flux<DataBuffer> source = Flux.just(stringBuffer(POJO_ROOT));
+     Flux<Object> output = this.decoder.decode(source, ResolvableType.forClass(TypePojo.class), null, Collections.emptyMap());
+-    TestSubscriber.subscribe(output).assertNoError().assertComplete().assertValues(new TypePojo("foofoo", "barbar"));
++    ScriptedSubscriber.<Object>create().expectNext(new TypePojo("foofoo", "barbar")).expectComplete().verify(output);
+ }
+\ No newline at end of file

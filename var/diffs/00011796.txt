@@ -1,0 +1,11 @@
+diff --git a/84c72b60b7371a6e3221607fb624bad2a39dfc9a b/7790c1488dc0b0ec99e516fbee6b6f20bad7c34c
+index 84c72b60b7..7790c1488d 100644
+--- a/84c72b60b7371a6e3221607fb624bad2a39dfc9a
++++ b/7790c1488dc0b0ec99e516fbee6b6f20bad7c34c
+@@ -1,4 +1,4 @@
+ @Override
+ public boolean acceptInput(@NotNull final VirtualFile file) {
+-    return StringUtil.endsWith(file.getNameSequence(), ".gdsl");
++    return GdslUtil.GDSL_FILTER.value(file);
+ }
+\ No newline at end of file

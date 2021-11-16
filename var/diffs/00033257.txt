@@ -1,0 +1,11 @@
+diff --git a/703697aa066cf2d4dd2529e64224461acc060c3f b/876572a352c3afccfb00098c9e81b1d25bfbb3ee
+index 703697aa06..876572a352 100644
+--- a/703697aa066cf2d4dd2529e64224461acc060c3f
++++ b/876572a352c3afccfb00098c9e81b1d25bfbb3ee
+@@ -1,3 +1,4 @@
+ public boolean getUnlockedCleanly() {
+-    return getPreviousOwnerId() != FileLockAccess.UNKNOWN_PREVIOUS_OWNER;
++    assertOpen();
++    return !fileLockAccess.readStateInfo().isDirty();
+ }
+\ No newline at end of file

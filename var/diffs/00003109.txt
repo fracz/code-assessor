@@ -1,0 +1,17 @@
+diff --git a/64e0c4b50a898f0418ec8c47bf96380e6d627ca1 b/4e5683f0ee1f73401457313ff5ee62ffadc3e634
+index 64e0c4b50a..4e5683f0ee 100644
+--- a/64e0c4b50a898f0418ec8c47bf96380e6d627ca1
++++ b/4e5683f0ee1f73401457313ff5ee62ffadc3e634
+@@ -1,10 +1,10 @@
+ public void update(AnActionEvent e) {
+     final DataContext dataContext = e.getDataContext();
+     Project project = PlatformDataKeys.PROJECT.getData(dataContext);
+     if (project == null) {
+         e.getPresentation().setEnabled(false);
+         return;
+     }
+-    String listName = (String) dataContext.getData(FavoritesTreeViewPanel.FAVORITES_LIST_NAME);
++    String listName = FavoritesTreeViewPanel.FAVORITES_LIST_NAME_DATA_KEY.getData(dataContext);
+     e.getPresentation().setEnabled(listName != null && !listName.equals(project.getName()));
+ }
+\ No newline at end of file

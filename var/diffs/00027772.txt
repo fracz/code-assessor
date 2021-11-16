@@ -1,0 +1,16 @@
+diff --git a/72c307c55b5215adc0babb28f7f1f59f225175c0 b/26ae4e95bc8e25e6786481b0a7aea6c49cb09cf9
+index 72c307c55b..26ae4e95bc 100644
+--- a/72c307c55b5215adc0babb28f7f1f59f225175c0
++++ b/26ae4e95bc8e25e6786481b0a7aea6c49cb09cf9
+@@ -1,7 +1,7 @@
+ @Test
+-public void cleanerShouldNotKillAndRemoveContainerIfMachineManagerDetectedExistingThisContainerInTheAPI() throws IOException {
+-    when(machineRegistry.isExist(anyString())).thenReturn(true);
++public void cleanerShouldNotKillAndRemoveContainerIfMachineManagerDetectedExistingThisContainerInTheAPI() throws Exception {
++    when(environmentEngine.getMachine(anyString(), anyString())).thenReturn(instance);
+     cleaner.run();
+     verify(dockerConnector, never()).killContainer(anyString());
+-    verify(dockerConnector, never()).removeContainer(Matchers.<RemoveContainerParams>anyObject());
++    verify(dockerConnector, never()).removeContainer(Matchers.anyObject());
+ }
+\ No newline at end of file

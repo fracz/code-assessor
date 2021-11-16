@@ -1,0 +1,22 @@
+diff --git a/b7ab1fb98f5d60a3b5f74690eecf6205980a2e4f b/f6ededef434435fc3218555b16671f8d5ef2c14e
+index b7ab1fb98f..f6ededef43 100644
+--- a/b7ab1fb98f5d60a3b5f74690eecf6205980a2e4f
++++ b/f6ededef434435fc3218555b16671f8d5ef2c14e
+@@ -1,15 +1,7 @@
+ /**
+  * Returns whether or not any layers in this composition has masks.
+  */
+ @SuppressWarnings({ "unused", "WeakerAccess" })
+ public boolean hasMasks() {
+-    for (AnimatableLayer layer : layers) {
+-        if (!(layer instanceof LayerView)) {
+-            continue;
+-        }
+-        if (((LayerView) layer).hasMasks()) {
+-            return true;
+-        }
+-    }
+-    return false;
++    return compositionLayer != null && compositionLayer.hasMasks();
+ }
+\ No newline at end of file

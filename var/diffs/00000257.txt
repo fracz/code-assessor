@@ -1,0 +1,20 @@
+diff --git a/dedbd8aac9eff1fd62c5f4a7357839d0ac746cac b/a61a8043e59659c5de920973763b7010b9f1976e
+index dedbd8aac9..a61a8043e5 100644
+--- a/dedbd8aac9eff1fd62c5f4a7357839d0ac746cac
++++ b/a61a8043e59659c5de920973763b7010b9f1976e
+@@ -1,13 +1,13 @@
+ /**
+  * Tests getting and setting fields.
+  */
+ @Test
+ public void fields() {
+     boolean createParent = false;
+     Permission perm = Permission.defaults();
+-    MkdirsOptions options = new MkdirsOptions();
++    MkdirsOptions options = MkdirsOptions.defaults();
+     options.setCreateParent(createParent);
+     options.setPermission(perm);
+     Assert.assertEquals(createParent, options.getCreateParent());
+     Assert.assertEquals(perm, options.getPermission());
+ }
+\ No newline at end of file

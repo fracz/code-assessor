@@ -1,0 +1,38 @@
+diff --git a/e8c87072a67a11831699872b4c00b0291cd1cc0d b/c75543cf96a07d96eeb874105d23becdb0e8e729
+index e8c87072a6..c75543cf96 100644
+--- a/e8c87072a67a11831699872b4c00b0291cd1cc0d
++++ b/c75543cf96a07d96eeb874105d23becdb0e8e729
+@@ -1,28 +1,28 @@
+ /**
+  * Create a {@link CsvReporter} attached to the Titan Metrics registry.
+  * <p>
+  * The {@code output} argument must be non-null but need not exist. If it
+  * doesn't already exist, this method attempts to create it by calling
+  * {@link File#mkdirs()}.
+  *
+- * @param reportIntervalInMS
+- * milliseconds to wait between dumping metrics to CSV files in
++ * @param reportInterval
++ * time to wait between dumping metrics to CSV files in
+  * the configured directory
+  * @param output
+  * the path to a directory into which Metrics will periodically
+  * write CSV data
+  */
+-public synchronized void addCsvReporter(long reportIntervalInMS, String output) {
++public synchronized void addCsvReporter(Duration reportInterval, String output) {
+     File outputDir = new File(output);
+     if (null != csvReporter) {
+         log.debug("Metrics CsvReporter already active; not creating another");
+         return;
+     }
+     if (!outputDir.exists()) {
+         if (!outputDir.mkdirs()) {
+             log.warn("Failed to create CSV metrics dir {}", outputDir);
+         }
+     }
+     csvReporter = CsvReporter.forRegistry(getRegistry()).build(outputDir);
+-    csvReporter.start(reportIntervalInMS, TimeUnit.MILLISECONDS);
++    csvReporter.start(reportInterval.getLength(SCHEDULING_TIME_UNIT), SCHEDULING_TIME_UNIT);
+ }
+\ No newline at end of file

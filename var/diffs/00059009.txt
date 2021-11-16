@@ -1,0 +1,25 @@
+diff --git a/a15ae96d2e161001dacedd1c1070e52e0b78a769 b/a706181594fa884dd2051a960681273c33dc99da
+index a15ae96d2e..a706181594 100644
+--- a/a15ae96d2e161001dacedd1c1070e52e0b78a769
++++ b/a706181594fa884dd2051a960681273c33dc99da
+@@ -1,14 +1,13 @@
+ @Override
+ public void close() throws StorageException {
+-    boolean ok = false;
+     closeInvocationCounter.inc();
+-    final Timer.Context tc = closeTimer.time();
++    Timer.Context tc = closeTimer.time();
+     try {
+-        i.close();
+-        ok = true;
++        iterator.close();
++    } catch (StorageException e) {
++        closeFailureCounter.inc();
++        throw e;
+     } finally {
+         tc.stop();
+-        if (!ok)
+-            closeFailureCounter.inc();
+     }
+ }
+\ No newline at end of file

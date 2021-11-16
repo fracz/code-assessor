@@ -1,0 +1,22 @@
+diff --git a/5f19e3b3cb2afae58e1a42af921267be96134dd8 b/018a07f96c0aef23fc7f5298dc1b4f303dda418b
+index 5f19e3b3cb..018a07f96c 100644
+--- a/5f19e3b3cb2afae58e1a42af921267be96134dd8
++++ b/018a07f96c0aef23fc7f5298dc1b4f303dda418b
+@@ -1,13 +1,15 @@
+ public boolean finished() {
++    List<Runnable> listenersToNotify;
+     synchronized (this) {
+         // transition to failed state, only if not already finished
+         if (queryState.isDone()) {
+             return false;
+         }
+         queryState = QueryState.FINISHED;
++        listenersToNotify = ImmutableList.copyOf(listeners);
+     }
+     log.debug("Finished query %s", queryId);
+     queryStats.recordEnd();
+-    queryMonitor.completionEvent(getQueryInfo());
++    notifyListeners(listenersToNotify);
+     return true;
+ }
+\ No newline at end of file

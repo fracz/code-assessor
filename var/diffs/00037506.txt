@@ -1,0 +1,12 @@
+diff --git a/13af4ca209f7b931d21657750fd454a26a579aed b/228d6b58934dc0c1bd97f7e5326670c97396240a
+index 13af4ca209..228d6b5893 100644
+--- a/13af4ca209f7b931d21657750fd454a26a579aed
++++ b/228d6b58934dc0c1bd97f7e5326670c97396240a
+@@ -1,5 +1,5 @@
+ private Application readCallerApplication(byte[] qualifier) {
+     String callerApplicationName = ApplicationMapStatisticsUtils.getDestApplicationNameFromColumnName(qualifier);
+     short callerServiceType = ApplicationMapStatisticsUtils.getDestServiceTypeFromColumnName(qualifier);
+-    return new Application(callerApplicationName, callerServiceType);
++    return createApplication(callerApplicationName, callerServiceType);
+ }
+\ No newline at end of file

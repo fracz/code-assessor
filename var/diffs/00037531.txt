@@ -1,0 +1,24 @@
+diff --git a/c13c3ef8d5e138177fac56a0dd515648e7a63182 b/22bc923afa389938f359b1677f30b1ca5aa2d3ac
+index c13c3ef8d5..22bc923afa 100644
+--- a/c13c3ef8d5e138177fac56a0dd515648e7a63182
++++ b/22bc923afa389938f359b1677f30b1ca5aa2d3ac
+@@ -1,17 +1,17 @@
+ /**
+  * Calling MySQL from Tomcat generates the following message for the caller(Tomcat) :<br/>
+  * emeroad-app (TOMCAT) -> MySQL_DB_ID (MYSQL)[10.25.141.69:3306] <br/>
+  * <br/>
+  * The following message is generated for the callee(MySQL) :<br/>
+  * MySQL (MYSQL) <- emeroad-app (TOMCAT)[localhost:8080]
+  * @param callerApplicationName
+  * @param callerServiceType
+  * @param calleeApplicationName
+  * @param calleeServiceType
+  * @param calleeHost
+  * @param elapsed
+  * @param isError
+  */
+-public void updateCaller(String callerApplicationName, short callerServiceType, String callerAgentId, String calleeApplicationName, short calleeServiceType, String calleeHost, int elapsed, boolean isError) {
++public void updateCaller(String callerApplicationName, ServiceType callerServiceType, String callerAgentId, String calleeApplicationName, ServiceType calleeServiceType, String calleeHost, int elapsed, boolean isError) {
+     mapStatisticsCallerDao.update(callerApplicationName, callerServiceType, callerAgentId, calleeApplicationName, calleeServiceType, calleeHost, elapsed, isError);
+ }
+\ No newline at end of file

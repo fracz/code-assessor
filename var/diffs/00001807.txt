@@ -1,0 +1,19 @@
+diff --git a/b082c55b8bc4c8cec0cd123129916095b5baa5fb b/bc015efe8b62072f279a117319aa9a8503f6f7ca
+index b082c55b8b..bc015efe8b 100644
+--- a/b082c55b8bc4c8cec0cd123129916095b5baa5fb
++++ b/bc015efe8b62072f279a117319aa9a8503f6f7ca
+@@ -1,10 +1,6 @@
+ private MultiFileTestCase.PerformAction createAction(final MigrationMap migrationMap) {
+-    return new MultiFileTestCase.PerformAction() {
+-
+-        @Override
+-        public void performAction(VirtualFile rootDir, VirtualFile rootAfter) throws Exception {
+-            new MigrationProcessor(myProject, migrationMap).run();
+-            FileDocumentManager.getInstance().saveAllDocuments();
+-        }
++    return (rootDir, rootAfter) -> {
++        new MigrationProcessor(myProject, migrationMap).run();
++        FileDocumentManager.getInstance().saveAllDocuments();
+     };
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/3ebec29d5e929ee0c97f37e8836aeae54f6dd508 b/497de5960b4c034d3e03f8ec53c371c710717929
+index 3ebec29d5e..497de5960b 100644
+--- a/3ebec29d5e929ee0c97f37e8836aeae54f6dd508
++++ b/497de5960b4c034d3e03f8ec53c371c710717929
+@@ -1,5 +1,7 @@
++@Override
+ @Before
+ public void setUp() throws Exception {
++    super.setUp();
+     EurekaHttpClientFactory clientFactory = Jersey2ApplicationClientFactory.newBuilder().build();
+-    jersey2HttpClient = (Jersey2ApplicationClient) clientFactory.create(eurekaHttpServer.getServiceURI().toString());
++    jersey2HttpClient = (Jersey2ApplicationClient) clientFactory.create(getHttpServer().getServiceURI().toString());
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/abbf0270abd9ede8b9ee9e5fcabbdbc464c4b6db b/814fbbc2031b13e91c1803058cb777248f3641c1
+index abbf0270ab..814fbbc203 100644
+--- a/abbf0270abd9ede8b9ee9e5fcabbdbc464c4b6db
++++ b/814fbbc2031b13e91c1803058cb777248f3641c1
+@@ -1,10 +1,10 @@
+ @Override
+-public synchronized boolean refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
++public synchronized DBSObject refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
+     collationCache.clearCache();
+     extensionCache.clearCache();
+     tableCache.clearCache();
+     constraintCache.clearCache();
+     proceduresCache.clearCache();
+     indexCache.clearCache();
+-    return true;
++    return this;
+ }
+\ No newline at end of file

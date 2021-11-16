@@ -1,0 +1,17 @@
+diff --git a/c43f4884f6c973911596eb3a08a8a6dc9e55dbb9 b/5503f65226ea9a2fb87345c3e9d381b303cd4fc3
+index c43f4884f6..5503f65226 100644
+--- a/c43f4884f6c973911596eb3a08a8a6dc9e55dbb9
++++ b/5503f65226ea9a2fb87345c3e9d381b303cd4fc3
+@@ -1,9 +1,4 @@
+ public static String getSecret(int size) {
+-    try {
+-        byte[] secret = new byte[size];
+-        SecureRandom.getInstance("SHA1PRNG").nextBytes(secret);
+-        return Base64.encodeBytes(secret);
+-    } catch (NoSuchAlgorithmException nsae) {
+-        throw new AssertionError(nsae);
+-    }
++    byte[] secret = getSecretBytes(size);
++    return Base64.encodeBytes(secret);
+ }
+\ No newline at end of file

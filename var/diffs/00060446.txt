@@ -1,0 +1,27 @@
+diff --git a/df3d5f482f2368f8efe9ccc150ab3f7135f0b83d b/767f951f98d7e260df14676fdf5422a551f45bd6
+index df3d5f482f..767f951f98 100644
+--- a/df3d5f482f2368f8efe9ccc150ab3f7135f0b83d
++++ b/767f951f98d7e260df14676fdf5422a551f45bd6
+@@ -1,16 +1,19 @@
+ @Override
+ public void onScrollStateChanged(int state) {
+     if (currentScrollState == RecyclerView.SCROLL_STATE_IDLE && currentScrollState != state) {
+         notifyScrollStart();
+     }
+     if (state == RecyclerView.SCROLL_STATE_IDLE) {
+         // Scroll is not finished until current view is centered
+-        boolean isScrollStillInProgress = !onScrollEnd();
+-        if (isScrollStillInProgress) {
++        boolean isScrollEnded = onScrollEnd();
++        if (isScrollEnded) {
++            notifyScrollEnd();
++        } else {
++            // because this will then trigger notifyScrollStart()
+             return;
+         }
+     } else if (state == RecyclerView.SCROLL_STATE_DRAGGING) {
+         onDragStart();
+     }
+     currentScrollState = state;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/50383ba5e532b608051857a8beb4d5af755146ec b/c0471a207ad2b2d66edd8ae94b350bad2df0cf2a
+index 50383ba5e5..c0471a207a 100644
+--- a/50383ba5e532b608051857a8beb4d5af755146ec
++++ b/c0471a207ad2b2d66edd8ae94b350bad2df0cf2a
+@@ -1,6 +1,7 @@
+ @Override
+ public void dispatchDraw(Canvas canvas) {
+-    synchronizeStackViewsWithModel();
+-    clipTaskViews();
++    if (synchronizeStackViewsWithModel()) {
++        clipTaskViews();
++    }
+     super.dispatchDraw(canvas);
+ }
+\ No newline at end of file

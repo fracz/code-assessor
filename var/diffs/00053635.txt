@@ -1,0 +1,33 @@
+diff --git a/22e7618e8ebdee45e33ad7136e849702abe6a7be b/f241ee5ad8f1da6f8ce225025d910662443d8765
+index 22e7618e8e..f241ee5ad8 100644
+--- a/22e7618e8ebdee45e33ad7136e849702abe6a7be
++++ b/f241ee5ad8f1da6f8ce225025d910662443d8765
+@@ -1,17 +1,17 @@
+ @Override
+-public void output(StringBuffer buf) {
+-    if (this.only) {
+-        buf.append("ONLY (");
+-        getExpr().output(buf);
+-        buf.append(")");
++public void output(final StringBuffer buffer) {
++    if (only) {
++        buffer.append("ONLY (");
++        getExpr().output(buffer);
++        buffer.append(")");
+     } else {
+-        getExpr().output(buf);
++        getExpr().output(buffer);
+     }
+-    if (this.pivot != null) {
+-        buf.append(" ");
+-        this.pivot.output(buf);
++    if (null != pivot) {
++        buffer.append(" ");
++        pivot.output(buffer);
+     }
+     if (!Strings.isNullOrEmpty(getAlias())) {
+-        buf.append(getAlias());
++        buffer.append(getAlias());
+     }
+ }
+\ No newline at end of file

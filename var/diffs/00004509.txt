@@ -1,0 +1,15 @@
+diff --git a/88c23c3a04ce1ed479d3d8bca991f9d438ffdbb8 b/3a9c0f6ed61628af8963244017e114139c56e4c7
+index 88c23c3a04..3a9c0f6ed6 100644
+--- a/88c23c3a04ce1ed479d3d8bca991f9d438ffdbb8
++++ b/3a9c0f6ed61628af8963244017e114139c56e4c7
+@@ -1,7 +1,6 @@
+ public void testTCData() {
+     final InputStream stream = SplitterTest.class.getResourceAsStream("contents.txt");
+     String text = convertStreamToString(stream);
+-    List<CheckArea> checkAreas = SplitterFactory.getInstance().getPlainTextSplitter().split(text);
+-    List<String> words = wordsToCheck(checkAreas, text);
+-    assertNull(words);
++    List<String> words = wordsToCheck(SplitterFactory.getInstance().getPlainTextSplitter(), text);
++    assertEquals(0, words.size());
+ }
+\ No newline at end of file

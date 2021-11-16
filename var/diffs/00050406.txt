@@ -1,0 +1,43 @@
+diff --git a/5ab21ec05132993235ce775073ea67e6977b85a9 b/ff16c005f11905d65b1b41fe333c1021ab751407
+index 5ab21ec051..ff16c005f1 100644
+--- a/5ab21ec05132993235ce775073ea67e6977b85a9
++++ b/ff16c005f11905d65b1b41fe333c1021ab751407
+@@ -1,36 +1,36 @@
+ /*
+     public static void runWithProgress(IWorkbenchPartSite site, final DBRRunnableWithProgress runnable)
+         throws InvocationTargetException, InterruptedException
+     {
+         IActionBars actionBars = null;
+         if (site instanceof IViewSite) {
+             actionBars = ((IViewSite) site).getActionBars();
+         } else if (site instanceof IEditorSite) {
+             actionBars = ((IEditorSite) site).getActionBars();
+         }
+         IStatusLineManager statusLineManager = null;
+         if (actionBars != null) {
+             statusLineManager = actionBars.getStatusLineManager();
+         }
+         if (statusLineManager == null) {
+             runInProgressService(runnable);
+         } else {
+             IProgressMonitor progressMonitor = statusLineManager.getProgressMonitor();
+             runnable.run(new DefaultProgressMonitor(progressMonitor));
+         }
+     }
+ */
+ public static DBRRunnableContext getDefaultRunnableContext() {
+     IWorkbench workbench = PlatformUI.getWorkbench();
+     if (workbench != null && workbench.getActiveWorkbenchWindow() != null) {
+         return new RunnableContextDelegate(workbench.getActiveWorkbenchWindow());
+     } else {
+         return new DBRRunnableContext() {
+
+             @Override
+             public void run(boolean fork, boolean cancelable, DBRRunnableWithProgress runnable) throws InvocationTargetException, InterruptedException {
+-                runnable.run(VoidProgressMonitor.INSTANCE);
++                runnable.run(new VoidProgressMonitor());
+             }
+         };
+     }
+ }
+\ No newline at end of file

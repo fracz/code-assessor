@@ -1,0 +1,15 @@
+diff --git a/aed55eea6ea2a701ff9ee06ccdb6159b5588413a b/2c3706aa68c9a50a4e82341b3e1f725fc35b0220
+index aed55eea6e..2c3706aa68 100644
+--- a/aed55eea6ea2a701ff9ee06ccdb6159b5588413a
++++ b/2c3706aa68c9a50a4e82341b3e1f725fc35b0220
+@@ -1,5 +1,5 @@
+-public synchronized MockitoExpectation pullControlToBeStubbed() {
+-    MockControl control = lastControl.get();
+-    lastControl.set(null);
+-    return control;
++public MockitoExpectation pullControlToBeStubbed() {
++    MockControl temp = lastControl;
++    lastControl = null;
++    return temp;
+ }
+\ No newline at end of file

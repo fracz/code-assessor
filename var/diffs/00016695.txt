@@ -1,0 +1,14 @@
+diff --git a/7d038b0e1b982e675a3e70a825c49b3401d31528 b/6e8afac61fe87fa2f3e10742d4ddbfec67df6f19
+index 7d038b0e1b..6e8afac61f 100644
+--- a/7d038b0e1b982e675a3e70a825c49b3401d31528
++++ b/6e8afac61fe87fa2f3e10742d4ddbfec67df6f19
+@@ -1,6 +1,6 @@
+ @Override
+ public void addDefaultImports(@NotNull BindingTrace trace, @NotNull WritableScope rootScope, @NotNull Importer importer) {
+-    rootScope.importScope(new JavaPackageScope("", null, javaSemanticServices));
+-    importer.addScopeImport(new JavaPackageScope("java.lang", null, javaSemanticServices));
++    rootScope.importScope(new JavaPackageScope("", createNamespaceDescriptor(JavaDescriptorResolver.JAVA_ROOT, ""), javaSemanticServices));
++    importer.addScopeImport(new JavaPackageScope("java.lang", createNamespaceDescriptor("lang", "java.lang"), javaSemanticServices));
+     delegateConfiguration.addDefaultImports(trace, rootScope, importer);
+ }
+\ No newline at end of file

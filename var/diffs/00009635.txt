@@ -1,0 +1,11 @@
+diff --git a/ec80186364e25d6a10c00866bb7f02697d194e10 b/d0d68333d28cad9be15dc8c76aadc42b0f031eac
+index ec80186364..d0d68333d2 100644
+--- a/ec80186364e25d6a10c00866bb7f02697d194e10
++++ b/d0d68333d28cad9be15dc8c76aadc42b0f031eac
+@@ -1,3 +1,4 @@
+ protected VirtualFile getMavenProjectFile(AnActionEvent e) {
+-    return MavenUtil.getMavenProjectFileFromContext(e.getDataContext());
++    VirtualFile file = e.getData(PlatformDataKeys.VIRTUAL_FILE);
++    return MavenUtil.isMavenProjectFile(file) ? file : null;
+ }
+\ No newline at end of file

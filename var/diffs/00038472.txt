@@ -1,0 +1,19 @@
+diff --git a/ac9f4c228e7d94d951b71f73030473cd64f293ac b/e7bc7eaa36af4051db74e202d6526a786ae7a691
+index ac9f4c228e..e7bc7eaa36 100644
+--- a/ac9f4c228e7d94d951b71f73030473cd64f293ac
++++ b/e7bc7eaa36af4051db74e202d6526a786ae7a691
+@@ -1,10 +1,10 @@
+-public void deleteNode(long id) throws DatabaseBlockedException {
+-    Transaction tx = database.graph.beginTx();
++public void deleteNode(long id) {
++    Transaction tx = database.getGraph().beginTx();
+     try {
+-        Node node = database.graph.getNodeById(id);
++        Node node = database.getGraph().getNodeById(id);
+         node.delete();
+         tx.success();
+     } finally {
+         tx.finish();
+     }
+ }
+\ No newline at end of file

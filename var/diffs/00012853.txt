@@ -1,0 +1,19 @@
+diff --git a/b1c6a786c6eb369cf87e1b46a7f7281ad1759318 b/70f2018bd8bf71520f391548c8a65cf85b09e3da
+index b1c6a786c6..70f2018bd8 100644
+--- a/b1c6a786c6eb369cf87e1b46a7f7281ad1759318
++++ b/70f2018bd8bf71520f391548c8a65cf85b09e3da
+@@ -1,10 +1,10 @@
+ @Override
+-public Icon scale(float scaleFactor) {
+-    if (myScale != scaleFactor) {
+-        myScale = scaleFactor;
++public Icon scale(float scale) {
++    if (getScale() != scale) {
++        super.scale(scale);
+         if (myScaledIcons != null)
+             Arrays.fill(myScaledIcons, null);
+         adjustSize();
+     }
+     return this;
+ }
+\ No newline at end of file

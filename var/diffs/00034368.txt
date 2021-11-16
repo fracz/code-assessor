@@ -1,0 +1,14 @@
+diff --git a/75b01774e7df43df0473daf7f3b9ae6ad70068a1 b/10c0fe825da16e056f67b0d799e3706ceaa51873
+index 75b01774e7..10c0fe825d 100644
+--- a/75b01774e7df43df0473daf7f3b9ae6ad70068a1
++++ b/10c0fe825da16e056f67b0d799e3706ceaa51873
+@@ -1,6 +1,4 @@
+-private void addErrorAnnotation(Part part, CryptoError error, MimeBodyPart outputData) {
+-    OpenPgpResultAnnotation annotation = new OpenPgpResultAnnotation();
+-    annotation.setErrorType(error);
+-    annotation.setOutputData(outputData);
++private void addErrorAnnotation(Part part, CryptoError error, MimeBodyPart replacementPart) {
++    CryptoResultAnnotation annotation = CryptoResultAnnotation.createErrorAnnotation(error, replacementPart);
+     messageAnnotations.put(part, annotation);
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/6b1ce168355047762a71a6906c644168ce12897d b/8721c21c871d3568536e579b7eab72826e891c65
+index 6b1ce16835..8721c21c87 100644
+--- a/6b1ce168355047762a71a6906c644168ce12897d
++++ b/8721c21c871d3568536e579b7eab72826e891c65
+@@ -1,3 +1,4 @@
+ boolean supportsDataFilter() {
+-    return (getDataContainer().getSupportedFeatures() & DBSDataContainer.DATA_FILTER) == DBSDataContainer.DATA_FILTER;
++    DBSDataContainer dataContainer = getDataContainer();
++    return dataContainer != null && (dataContainer.getSupportedFeatures() & DBSDataContainer.DATA_FILTER) == DBSDataContainer.DATA_FILTER;
+ }
+\ No newline at end of file

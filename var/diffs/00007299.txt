@@ -1,0 +1,15 @@
+diff --git a/a85f911228a6ebcfdd8545a5bc33c6072cefdb10 b/769675e030712b3d9024b227c615f7cd33eefa88
+index a85f911228..769675e030 100644
+--- a/a85f911228a6ebcfdd8545a5bc33c6072cefdb10
++++ b/769675e030712b3d9024b227c615f7cd33eefa88
+@@ -1,7 +1,7 @@
+-public void testFunction() throws Exception {
++public void testFunction() {
+     final String testName = getTestName(false).toLowerCase();
+     configureByFile(testName + ".py");
+     final String fullPath = getTestDataPath() + testName + ".txt";
+-    final ControlFlow flow = ((PyFunction) ((PyFile) myFile).getStatements().get(0)).getControlFlow();
++    final ControlFlow flow = ControlFlowCache.getControlFlow((PyFunction) ((PyFile) myFile).getStatements().get(0));
+     check(fullPath, flow);
+ }
+\ No newline at end of file

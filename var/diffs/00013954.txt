@@ -1,0 +1,23 @@
+diff --git a/81e94277129a5d9897a38c8be6145f5b727752bf b/92877277b6f082ed8e5627c4b71e1a92090fedda
+index 81e9427712..92877277b6 100644
+--- a/81e94277129a5d9897a38c8be6145f5b727752bf
++++ b/92877277b6f082ed8e5627c4b71e1a92090fedda
+@@ -1,12 +1,8 @@
+-public static void hideToolWindowBalloon(@NotNull final String id, @NotNull final Project project) {
+-    invokeLaterIfProjectAlive(project, new Runnable() {
+-
+-        @Override
+-        public void run() {
+-            Balloon balloon = ToolWindowManager.getInstance(project).getToolWindowBalloon(id);
+-            if (balloon != null) {
+-                balloon.hide();
+-            }
++public static void hideToolWindowBalloon(@NotNull String id, @NotNull Project project) {
++    invokeLaterIfProjectAlive(project, () -> {
++        Balloon balloon = ToolWindowManager.getInstance(project).getToolWindowBalloon(id);
++        if (balloon != null) {
++            balloon.hide();
+         }
+     });
+ }
+\ No newline at end of file

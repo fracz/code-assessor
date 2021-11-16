@@ -1,0 +1,17 @@
+diff --git a/78bff4cf9c13f5bffc31a38777ccce9702ea80d4 b/383ed80c5dba202130c358a79171a2c66a8f3473
+index 78bff4cf9c..383ed80c5d 100644
+--- a/78bff4cf9c13f5bffc31a38777ccce9702ea80d4
++++ b/383ed80c5dba202130c358a79171a2c66a8f3473
+@@ -1,9 +1,9 @@
+ private Collection<String> extractMultiFields(String field) {
+-    Collection<String> fields = null;
++    Collection<String> fields;
+     if (field != null) {
+         fields = context.simpleMatchToIndexNames(field);
+     } else {
+-        fields = settings.fields();
++        fields = settings.fieldsAndWeights().keySet();
+     }
+     return fields;
+ }
+\ No newline at end of file

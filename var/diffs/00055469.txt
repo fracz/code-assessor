@@ -1,0 +1,14 @@
+diff --git a/bfefb88f0bb13d0bd8427058a2da3b6122e9356f b/6e947858232cb4e405b240a2e42f0a181d81c267
+index bfefb88f0b..6e94785823 100644
+--- a/bfefb88f0bb13d0bd8427058a2da3b6122e9356f
++++ b/6e947858232cb4e405b240a2e42f0a181d81c267
+@@ -1,4 +1,7 @@
+ @Override
+ public Flux<DataBuffer> getBody() {
+-    return channel.receiveByteBuffer().map(dataBufferFactory::wrap);
++    return response.receive().map(buf -> {
++        buf.retain();
++        return dataBufferFactory.wrap(buf);
++    });
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/c5d98925a252df9523c55da9fe330e77d37a6280 b/a3c6350c442493848fa11b54caca8984a10ba2a4
+index c5d98925a2..a3c6350c44 100644
+--- a/c5d98925a252df9523c55da9fe330e77d37a6280
++++ b/a3c6350c442493848fa11b54caca8984a10ba2a4
+@@ -1,6 +1,6 @@
+ @Override
+ public ORecordMetadata getRecordMetadata(final ORID rid) {
+-    OBinaryRequest request = new OGetRecordMetadataRequest(rid);
+-    OBinaryResponse<ORecordMetadata> response = new OGetRecordMetadataResponse();
+-    return networkOperation(request, response, "Error on record metadata read " + rid);
++    OGetRecordMetadataRequest request = new OGetRecordMetadataRequest(rid);
++    OGetRecordMetadataResponse response = networkOperation(request, "Error on record metadata read " + rid);
++    return response.getMetadata();
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/f0af7240748c8a88192dfed7de733b5550ba0ebe b/6c4a74a494b2cbe329f553fb4b2415466918c823
+index f0af724074..6c4a74a494 100644
+--- a/f0af7240748c8a88192dfed7de733b5550ba0ebe
++++ b/6c4a74a494b2cbe329f553fb4b2415466918c823
+@@ -1,6 +1,6 @@
+-protected InspectionToolWrapper[] getInspectionTools(PsiElement psiElement, InspectionManager manager) {
++protected InspectionToolWrapper[] getInspectionTools(PsiElement psiElement, @NotNull InspectionManager manager) {
+     ModifiableModel model = InspectionProjectProfileManager.getInstance(manager.getProject()).getInspectionProfile().getModifiableModel();
+     InspectionProfileWrapper profile = new InspectionProfileWrapper((InspectionProfile) model);
+     profile.init(manager.getProject());
+-    return (InspectionToolWrapper[]) profile.getInspectionTools(psiElement);
++    return profile.getInspectionTools(psiElement);
+ }
+\ No newline at end of file

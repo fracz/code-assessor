@@ -1,0 +1,12 @@
+diff --git a/dc05076ab3e102c0ec8d63e88c715202aab8d2eb b/bcadff7bcc53fa2454dbf499b00b1d9978494fff
+index dc05076ab3..bcadff7bcc 100644
+--- a/dc05076ab3e102c0ec8d63e88c715202aab8d2eb
++++ b/bcadff7bcc53fa2454dbf499b00b1d9978494fff
+@@ -1,4 +1,4 @@
+ public String getServerURL() {
+-    final OStorageRemoteThreadLocal instance = OStorageRemoteThreadLocal.INSTANCE;
+-    return instance != null ? instance.get().serverURL : null;
++    OStorageRemoteSession session = getCurrentSession();
++    return session != null ? session.serverURL : null;
+ }
+\ No newline at end of file

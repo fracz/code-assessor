@@ -1,0 +1,17 @@
+diff --git a/702be8e2265971a7f1dcfb9f99fb8fbb4bd6d843 b/e86155d1a78563861f24b09d56480e098c74a232
+index 702be8e226..e86155d1a7 100644
+--- a/702be8e2265971a7f1dcfb9f99fb8fbb4bd6d843
++++ b/e86155d1a78563861f24b09d56480e098c74a232
+@@ -1,9 +1,4 @@
+-private TextFieldWithAutoCompletion<String> setUpNameComboBox() {
++private NameSuggestionsField setUpNameComboBox() {
+     List<String> possibleNames = Arrays.asList(GroovyNameSuggestionUtil.suggestVariableNames(myExpression, myValidator));
+-    TextFieldWithAutoCompletion<String> result = TextFieldWithAutoCompletion.create(myProject, possibleNames, null, true);
+-    if (possibleNames.size() > 0) {
+-        result.setText(possibleNames.get(0));
+-        result.selectAll();
+-    }
+-    return result;
++    return new NameSuggestionsField(ArrayUtil.toStringArray(possibleNames), myProject, GroovyFileType.GROOVY_FILE_TYPE);
+ }
+\ No newline at end of file

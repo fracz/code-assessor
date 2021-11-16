@@ -1,0 +1,17 @@
+diff --git a/0170016f3f6a026d2797ccf1d23fb0ecf0191d3d b/5c75587a2257a7b6e2845ce7aaa6cd1b311a69ff
+index 0170016f3f..5c75587a22 100644
+--- a/0170016f3f6a026d2797ccf1d23fb0ecf0191d3d
++++ b/5c75587a2257a7b6e2845ce7aaa6cd1b311a69ff
+@@ -1,9 +1,7 @@
+ @Override
+-public KeyframeAnimation<Path> createAnimation() {
++public BaseKeyframeAnimation<?, Path> createAnimation() {
+     if (!hasAnimation()) {
+         return new StaticKeyframeAnimation<>(convertType(initialValue));
+     }
+-    ShapeKeyframeAnimation animation = new ShapeKeyframeAnimation(duration, composition, keyTimes, keyValues, interpolators);
+-    animation.setStartDelay(delay);
+-    return animation;
++    return new ShapeKeyframeAnimation(keyframes);
+ }
+\ No newline at end of file

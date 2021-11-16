@@ -1,0 +1,18 @@
+diff --git a/f144f420eea9732f12daac1cdbf48bc118744ef3 b/c0f939eb80fdda5fbb30a3140e150630d7d4dffc
+index f144f420ee..c0f939eb80 100644
+--- a/f144f420eea9732f12daac1cdbf48bc118744ef3
++++ b/c0f939eb80fdda5fbb30a3140e150630d7d4dffc
+@@ -1,8 +1,6 @@
+ public static void main(String[] args) {
+-    File testFile = new File(System.getProperty("user.home") + "/Desktop/Scenarios/2 Samples/android.jar");
+-    JFrame frame = new JFrame(testFile.getName());
+-    ClassySharkPanel tabPanel = new ClassySharkPanel(frame, testFile);
+-    frame.getContentPane().add(tabPanel);
+-    frame.pack();
+-    frame.setVisible(true);
++    List<String> files = new LinkedList<>();
++    String testFile = System.getProperty("user.home") + "/Desktop/Scenarios/2 Samples/android.jar";
++    files.add(testFile);
++    Main.buildAndShowClassySharkFrame(files);
+ }
+\ No newline at end of file

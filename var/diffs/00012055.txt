@@ -1,0 +1,12 @@
+diff --git a/3a8ce6ab26b011c8e5389418f151326422bb400e b/3b04e570f9cc6b88f78f938277d54fcae43b0980
+index 3a8ce6ab26..3b04e570f9 100644
+--- a/3a8ce6ab26b011c8e5389418f151326422bb400e
++++ b/3b04e570f9cc6b88f78f938277d54fcae43b0980
+@@ -1,4 +1,4 @@
+ @Nullable
+-public NamedScope getScope() {
+-    return myState != null ? ScopeToolStateUtil.getScope(myState) : null;
++public NamedScope getScope(Project project) {
++    return myState == null ? null : myState.getScope(project);
+ }
+\ No newline at end of file

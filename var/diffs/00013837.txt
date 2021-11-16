@@ -1,0 +1,12 @@
+diff --git a/842c37895ce51337591659617fc2e0c03610807d b/d9bba2b23c7ab2798ce66a14c1344c8d46dcbc6d
+index 842c37895c..d9bba2b23c 100644
+--- a/842c37895ce51337591659617fc2e0c03610807d
++++ b/d9bba2b23c7ab2798ce66a14c1344c8d46dcbc6d
+@@ -1,4 +1,3 @@
+-void remove(final VirtualFile file) {
+-    myFileToListName.remove(file);
+-    myFileToStatus.remove(file);
++void remove(final FilePath file) {
++    myFileToStatus.remove(file.getIOFile().getAbsolutePath());
+ }
+\ No newline at end of file

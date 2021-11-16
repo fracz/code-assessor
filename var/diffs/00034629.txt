@@ -1,0 +1,25 @@
+diff --git a/e5c6f9ce4464d9fa6b7133442e8e39a17f99a95a b/235fb0da3a67f25feeab55ef3f63ad657390c877
+index e5c6f9ce44..235fb0da3a 100644
+--- a/e5c6f9ce4464d9fa6b7133442e8e39a17f99a95a
++++ b/235fb0da3a67f25feeab55ef3f63ad657390c877
+@@ -1,16 +1,10 @@
+ /**
+  * Starts the animation. Does nothing if GIF is not animated.
+  * This method is thread-safe.
+  */
+ @Override
+ public void start() {
+-    mExecutor.execute(new SafeRunnable(this) {
+-
+-        @Override
+-        public void doWork() {
+-            mIsRunning = true;
+-            mNextFrameRenderTime = Long.MIN_VALUE;
+-            mExecutor.schedule(mRenderTask, mNativeInfoHandle.restoreRemainder(), TimeUnit.MILLISECONDS);
+-        }
+-    });
++    mIsRunning = true;
++    final long lastFrameRemainder = mNativeInfoHandle.restoreRemainder();
++    startAnimation(lastFrameRemainder);
+ }
+\ No newline at end of file

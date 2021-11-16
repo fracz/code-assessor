@@ -1,0 +1,17 @@
+diff --git a/0a0b1e592549a1cf19c6c16149cbba8c24cfeb47 b/8a399f646c6ab3b5346b6e9cf93c8fb62f62f502
+index 0a0b1e5925..8a399f646c 100644
+--- a/0a0b1e592549a1cf19c6c16149cbba8c24cfeb47
++++ b/8a399f646c6ab3b5346b6e9cf93c8fb62f62f502
+@@ -1,8 +1,7 @@
+ @Nullable
+-private static File getFilePackedIntoLib(@NotNull String filePathFromLib) {
+-    File compilerPath = getDefaultCompilerPath();
+-    if (compilerPath == null)
++private static File getFilePackedIntoLib(@Nullable final File sdkHome, @NotNull final String filePathFromLib) {
++    if (sdkHome == null)
+         return null;
+-    File answer = new File(compilerPath, "lib/" + filePathFromLib);
++    final File answer = new File(sdkHome, "lib/" + filePathFromLib);
+     return answer.exists() ? answer : null;
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/b1f0d9ee4a31a73625f35ab64f2182fab3cf0f5d b/e9ce83eac2fc2454fb1c13807458effecec9e89c
+index b1f0d9ee4a..e9ce83eac2 100644
+--- a/b1f0d9ee4a31a73625f35ab64f2182fab3cf0f5d
++++ b/e9ce83eac2fc2454fb1c13807458effecec9e89c
+@@ -1,12 +1,12 @@
+ private WriteResult tryDeleteLockOnce(StaticBuffer key, StaticBuffer col, StoreTransaction txh) {
+     Throwable t = null;
+-    final Timer delTimer = new Timer(times).start();
++    final Timer delTimer = times.getTimer().start();
+     try {
+         StoreTransaction newTx = overrideTimestamp(txh, delTimer.getStartTime());
+         store.mutate(key, ImmutableList.<Entry>of(), Arrays.asList(col), newTx);
+     } catch (StorageException e) {
+         t = e;
+     }
+     delTimer.stop();
+     return new WriteResult(delTimer.elapsed(), delTimer.getStartTime(), null, t);
+ }
+\ No newline at end of file

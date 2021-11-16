@@ -1,0 +1,13 @@
+diff --git a/6a5691f815b9706e72f522e80b4fa744d78dc70b b/7046da3fc207a1a1be0a2e99bee06c44ac26cd17
+index 6a5691f815..7046da3fc2 100644
+--- a/6a5691f815b9706e72f522e80b4fa744d78dc70b
++++ b/7046da3fc207a1a1be0a2e99bee06c44ac26cd17
+@@ -1,5 +1,5 @@
+ @Override
+-public void messageReceived(final ShardSingleOperationRequest request, final TransportChannel channel) throws Exception {
+-    Response response = shardOperation(request.request(), request.shardId());
++public void messageReceived(final Request request, final TransportChannel channel) throws Exception {
++    Response response = shardOperation(request, request.internalShardId);
+     channel.sendResponse(response);
+ }
+\ No newline at end of file

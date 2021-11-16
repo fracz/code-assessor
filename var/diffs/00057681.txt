@@ -1,0 +1,36 @@
+diff --git a/1293a4da24c05fbbe03c8915979df011fa90170c b/9ddbffd144c591c0f3a4955bb536005e7c3f5c41
+index 1293a4da24..9ddbffd144 100644
+--- a/1293a4da24c05fbbe03c8915979df011fa90170c
++++ b/9ddbffd144c591c0f3a4955bb536005e7c3f5c41
+@@ -1,24 +1,20 @@
+ public final Token IntegerToken() throws ParseException {
+     Token value = null;
+-    switch((jj_ntk == -1) ? jj_ntk_f() : jj_ntk) {
++    switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
+         case NONNEGINT:
+-            {
+-                value = jj_consume_token(NONNEGINT);
+-                break;
+-            }
++            value = jj_consume_token(NONNEGINT);
++            break;
+         case INT:
+-            {
+-                value = jj_consume_token(INT);
+-                break;
+-            }
++            value = jj_consume_token(INT);
++            break;
+         default:
+             jj_la1[61] = jj_gen;
+             jj_consume_token(-1);
+             throw new ParseException();
+     }
+     {
+-        if ("" != null)
++        if (true)
+             return value;
+     }
+     throw new Error("Missing return statement in function");
+ }
+\ No newline at end of file

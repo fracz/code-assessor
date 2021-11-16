@@ -1,0 +1,17 @@
+diff --git a/e0b98957e6124714fc50c81f53db96ef082f9209 b/d3725592d365aaab89cec03801116c7185657bc0
+index e0b98957e6..d3725592d3 100644
+--- a/e0b98957e6124714fc50c81f53db96ef082f9209
++++ b/d3725592d365aaab89cec03801116c7185657bc0
+@@ -1,8 +1,10 @@
+ public void setValidConnectionCheckerClassName(String validConnectionCheckerClass) throws Exception {
+     Class<?> clazz = DruidLoaderUtils.loadClass(validConnectionCheckerClass);
+     ValidConnectionChecker validConnectionChecker = null;
+     if (clazz != null) {
+         validConnectionChecker = (ValidConnectionChecker) clazz.newInstance();
++        this.validConnectionChecker = validConnectionChecker;
++    } else {
++        LOG.error("load validConnectionCheckerClass error : " + validConnectionCheckerClass);
+     }
+-    this.validConnectionChecker = validConnectionChecker;
+ }
+\ No newline at end of file

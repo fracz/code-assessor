@@ -1,0 +1,35 @@
+diff --git a/4fa0944e1fe88b3271af8a0fdd7dca26a35d2c30 b/9ca844a18037ef85d349e613dceb2a77a0c4ca0c
+index 4fa0944e1f..9ca844a180 100644
+--- a/4fa0944e1fe88b3271af8a0fdd7dca26a35d2c30
++++ b/9ca844a18037ef85d349e613dceb2a77a0c4ca0c
+@@ -1,23 +1,18 @@
+ /**
+  * Notifies the Android System that an
+  * {@link AutoFillService#onSaveRequest(android.app.assist.AssistStructure, Bundle,
+  * SaveCallback)} could not be fulfilled by the service.
+  *
+  * @param message error message to be displayed to the user.
+  *
+  * @throws RuntimeException if an error occurred while calling the Android System.
+  */
+ public void onFailure(CharSequence message) {
+-    if (DEBUG)
+-        Log.d(TAG, "onFailure(): message=" + message);
+-    synchronized (mCallback) {
+-        checkNotRepliedYetLocked();
+-        try {
+-            mCallback.showError(message);
+-        } catch (RemoteException e) {
+-            e.rethrowAsRuntimeException();
+-        } finally {
+-            setRepliedLocked();
+-        }
++    assertNotCalled();
++    mCalled = true;
++    try {
++        mCallback.onFailure(message);
++    } catch (RemoteException e) {
++        e.rethrowAsRuntimeException();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/d81ec0a5733ae2466779420851e9e59cef0ce4bf b/5b95b5a0d42e73bf81e3abfdbc32776e6da1ca7d
+index d81ec0a573..5b95b5a0d4 100644
+--- a/d81ec0a5733ae2466779420851e9e59cef0ce4bf
++++ b/5b95b5a0d42e73bf81e3abfdbc32776e6da1ca7d
+@@ -1,10 +1,10 @@
+ private static PyExpression prepareValue(PyStatement def, String localName, Project project) {
+     final PyExpression value = getValue(def);
+     assert value != null;
+     if (def instanceof PyAugAssignmentStatementImpl) {
+         final PyAugAssignmentStatementImpl expression = (PyAugAssignmentStatementImpl) def;
+         String op = expression.getOperation().getText().replace('=', ' ');
+-        return PythonLanguage.getInstance().getElementGenerator().createExpressionFromText(project, localName + " " + op + value.getText() + ")");
++        return PyElementGenerator.getInstance(project).createExpressionFromText(localName + " " + op + value.getText() + ")");
+     }
+     return value;
+ }
+\ No newline at end of file

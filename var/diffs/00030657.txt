@@ -1,0 +1,14 @@
+diff --git a/7c7cbe4f440a6e8ba47bb3fa05310cd2bbe72468 b/286a3a783fcf58f8c73cbcf9eb1c12d3674d6fb3
+index 7c7cbe4f44..286a3a783f 100644
+--- a/7c7cbe4f440a6e8ba47bb3fa05310cd2bbe72468
++++ b/286a3a783fcf58f8c73cbcf9eb1c12d3674d6fb3
+@@ -1,4 +1,6 @@
+-// norelease remove this once all builders implement writeTo themselves
+ @Override
+-public void writeTo(StreamOutput out) throws IOException {
++public final void writeTo(StreamOutput out) throws IOException {
++    doWriteTo(out);
++    out.writeFloat(boost);
++    out.writeOptionalString(queryName);
+ }
+\ No newline at end of file

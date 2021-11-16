@@ -1,0 +1,27 @@
+diff --git a/7adce74d8da0a5450c48bf8d778e1533881b7f9d b/6a9ccb21e678721f33431f033422cab96e7bcaaf
+index 7adce74d8d..6a9ccb21e6 100644
+--- a/7adce74d8da0a5450c48bf8d778e1533881b7f9d
++++ b/6a9ccb21e678721f33431f033422cab96e7bcaaf
+@@ -1,16 +1,6 @@
+-@Test
+-public void testWithNullTargetBeanName() throws Exception {
+-    new BeanFactoryScalarMockTemplate() {
+-
+-        public void doTestInternal(final BeanFactory beanFactory) throws Exception {
+-            new AssertThrows(IllegalArgumentException.class) {
+-
+-                public void test() throws Exception {
+-                    MethodLocatingFactoryBean factory = new MethodLocatingFactoryBean();
+-                    factory.setMethodName("toString()");
+-                    factory.setBeanFactory(beanFactory);
+-                }
+-            }.runTest();
+-        }
+-    }.test();
++@Test(expected = IllegalArgumentException.class)
++public void testWithNullTargetBeanName() {
++    replay(beanFactory);
++    factory.setMethodName("toString()");
++    factory.setBeanFactory(beanFactory);
+ }
+\ No newline at end of file

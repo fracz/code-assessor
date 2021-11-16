@@ -1,0 +1,15 @@
+diff --git a/0c025f823c62d7c4fc940d4f1319946dc3bc74dd b/3073fc581d7fc6f0c18cedd13d479eb4d8a831c8
+index 0c025f823c..3073fc581d 100644
+--- a/0c025f823c62d7c4fc940d4f1319946dc3bc74dd
++++ b/3073fc581d7fc6f0c18cedd13d479eb4d8a831c8
+@@ -1,7 +1,6 @@
+-private DefineInvocation createDefinitionPlace(@Nullable JsExpression initializer, Map<FqName, DefineInvocation> packageFqNameToDefineInvocation) {
++private void createDefinitionPlace(@Nullable JsExpression initializer, Map<FqName, DefineInvocation> packageFqNameToDefineInvocation) {
+     FqName fqName = descriptor.getFqName();
+-    DefineInvocation place = createDefineInvocation(fqName, initializer, new JsObjectLiteral(visitor.getResult(), true), context());
++    DefineInvocation place = DefineInvocation.create(fqName, initializer, new JsObjectLiteral(visitor.getResult(), true), context());
+     packageFqNameToDefineInvocation.put(fqName, place);
+     addToParent(fqName.parent(), getEntry(fqName, place), packageFqNameToDefineInvocation);
+-    return place;
+ }
+\ No newline at end of file

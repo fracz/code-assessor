@@ -1,0 +1,11 @@
+diff --git a/610ce072feb7e8cb5e6cae38bce9eb4c442a914a b/e54c34a800e856fd79ad5b5a8cf92dcf88c4ae8c
+index 610ce072fe..e54c34a800 100644
+--- a/610ce072feb7e8cb5e6cae38bce9eb4c442a914a
++++ b/e54c34a800e856fd79ad5b5a8cf92dcf88c4ae8c
+@@ -1,4 +1,4 @@
+ @Override
+ public void fileCopied(@NotNull final VirtualFileCopyEvent event) {
+-    processEventFile("fileCopied", event.getFile(), (eventFile) -> collectPathsAndNotify(eventFile, NOTIFY_CHANGED));
++    collectPathsAndNotify(event.getFile(), TranslatingCompilerFilesMonitor::notifyFilesChanged);
+ }
+\ No newline at end of file

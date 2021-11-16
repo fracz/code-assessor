@@ -1,0 +1,15 @@
+diff --git a/968cd39cbba69246824820eb3b8843d7df2ce4d1 b/c2954c7f59e7c0d9d337d785af8a4be6d0f8f5b8
+index 968cd39cbb..c2954c7f59 100644
+--- a/968cd39cbba69246824820eb3b8843d7df2ce4d1
++++ b/c2954c7f59e7c0d9d337d785af8a4be6d0f8f5b8
+@@ -1,8 +1,8 @@
+ private UniquenessConstraint createConstraint() throws KernelException {
+     try (KernelTransaction transaction = kernel.newTransaction(KernelTransaction.Type.implicit, AUTH_DISABLED);
+         Statement statement = transaction.acquireStatement()) {
+-        UniquenessConstraint descriptor = statement.schemaWriteOperations().uniquePropertyConstraintCreate(1, 1);
++        UniquenessConstraint descriptor = statement.schemaWriteOperations().uniquePropertyConstraintCreate(descriptor1);
+         transaction.success();
+         return descriptor;
+     }
+ }
+\ No newline at end of file

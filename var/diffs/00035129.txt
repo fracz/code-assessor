@@ -1,0 +1,25 @@
+diff --git a/3f6dcfd20246a8857b5562eea9ab0dc812867f0f b/6ae143afe6175afb5b99539bee6efdab6ec5ec5f
+index 3f6dcfd202..6ae143afe6 100644
+--- a/3f6dcfd20246a8857b5562eea9ab0dc812867f0f
++++ b/6ae143afe6175afb5b99539bee6efdab6ec5ec5f
+@@ -1,11 +1,11 @@
+ /**
+- * Returns the {@link TextureRegion} with name regionName or null in case
+- * the region is undefined.
+- *
+- * @param regionName
+- * the region name
+- * @return the region or null.
++ * Returns the first sprite found with the specified name.<br>
++ * <br>
++ * This method uses string comparison to find the sprite, so the result should be cached rather than calling this method every
++ * frame.
+  */
+-public TextureRegion getRegion(String regionName) {
+-    return regions.get(regionName);
++public AtlasRegion getRegion(String name) {
++    for (int i = 0, n = regions.length; i < n; i++) if (regions[i].name.equals(name))
++        return regions[i];
++    return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/6365a773f6adb37907f69ec4ff3935c9131c8836 b/7cccc20f6a7dc5dedb347de6c4743980c6cd802b
+index 6365a773f6..7cccc20f6a 100644
+--- a/6365a773f6adb37907f69ec4ff3935c9131c8836
++++ b/7cccc20f6a7dc5dedb347de6c4743980c6cd802b
+@@ -1,14 +1,14 @@
+ @Override
+-public List<DBNDatabaseNode> getChildren(DBRProgressMonitor monitor) throws DBException {
++public DBNDatabaseNode[] getChildren(DBRProgressMonitor monitor) throws DBException {
+     if (childNodes == null && allowsChildren()) {
+         if (this.initializeNode(monitor, null)) {
+             final List<DBNDatabaseNode> tmpList = new ArrayList<>();
+             loadChildren(monitor, getMeta(), null, tmpList);
+             if (!monitor.isCanceled()) {
+-                this.childNodes = tmpList;
++                this.childNodes = tmpList.toArray(new DBNDatabaseNode[tmpList.size()]);
+                 this.afterChildRead();
+             }
+         }
+     }
+     return childNodes;
+ }
+\ No newline at end of file

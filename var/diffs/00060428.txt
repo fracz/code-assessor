@@ -1,0 +1,22 @@
+diff --git a/7a9a28c0be5ffb28b3dddcc21b23a427d486a268 b/82057921860ef9e4091511c348d6738ff35952ab
+index 7a9a28c0be..8205792186 100644
+--- a/7a9a28c0be5ffb28b3dddcc21b23a427d486a268
++++ b/82057921860ef9e4091511c348d6738ff35952ab
+@@ -1,15 +1,3 @@
+ public String ping() {
+-    // TODO: I want to be able to do the followin
+-    // return protocol.runCommand(os,
+-    // "PING").getSingleLineReply(inputStream);
+-    // or even maybe
+-    // return protocol.runCommand("PING").getSingleLineReply();
+-    String command = protocol.buildCommand("PING");
+-    try {
+-        outputStream.write(command.getBytes());
+-        return protocol.getSingleLineReply(inputStream);
+-    } catch (IOException e) {
+-        // TODO Not sure what to do here
+-        return null;
+-    }
++    return sendCommand("PING").getSingleLineReply();
+ }
+\ No newline at end of file

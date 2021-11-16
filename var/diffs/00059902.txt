@@ -1,0 +1,19 @@
+diff --git a/30eadcb62423b6ef31169a98a4a5351eb1e2aea4 b/37821705abe3ac29258e5e1a551977a07b64997f
+index 30eadcb624..37821705ab 100644
+--- a/30eadcb62423b6ef31169a98a4a5351eb1e2aea4
++++ b/37821705abe3ac29258e5e1a551977a07b64997f
+@@ -1,10 +1,9 @@
+ protected Iterable<RelationType> getPropertyKeysDirect() {
+     final Set<RelationType> result = Sets.newHashSet();
+-    for (final FaunusRelation r : adjacency.values()) {
+-        if (r.isEdge() && (this instanceof HadoopVertex))
++    for (final TitanRelation r : query().relations()) {
++        if (r.isEdge() && (this instanceof FaunusVertex))
+             continue;
+-        if (!r.isRemoved() && !r.getType().isHidden())
+-            result.add(r.getType());
++        result.add(r.getType());
+     }
+     return result;
+ }
+\ No newline at end of file

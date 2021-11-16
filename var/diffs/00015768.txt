@@ -1,0 +1,15 @@
+diff --git a/0ec63c4156411c5132bb6a142479e4c9af51e4fc b/cee4897e7d3f1e9ee0e57f00bf5cc8c9e150b49a
+index 0ec63c4156..cee4897e7d 100644
+--- a/0ec63c4156411c5132bb6a142479e4c9af51e4fc
++++ b/cee4897e7d3f1e9ee0e57f00bf5cc8c9e150b49a
+@@ -1,7 +1,7 @@
+ @NotNull
+ @Override
+ public String[] getNames(Project project, boolean includeNonProjectItems) {
+-    Collection<String> items = StubIndex.getInstance().getAllKeys(JetIndexKeys.FUNCTIONS_SHORT_NAME_KEY, project);
+-    items.addAll(StubIndex.getInstance().getAllKeys(JetIndexKeys.PROPERTIES_SHORT_NAME_KEY, project));
++    Collection<String> items = StubIndex.getInstance().getAllKeys(JetAllShortFunctionNameIndex.getInstance().getKey(), project);
++    items.addAll(StubIndex.getInstance().getAllKeys(JetShortPropertiesNameIndex.getInstance().getKey(), project));
+     return ArrayUtil.toStringArray(items);
+ }
+\ No newline at end of file

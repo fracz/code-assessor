@@ -1,0 +1,15 @@
+diff --git a/a4af2541319e38f9e5aaceeb3abe8a26c8b4d0e8 b/5f13ccb37d38324b232403b5eb28a5c150d883b7
+index a4af254131..5f13ccb37d 100644
+--- a/a4af2541319e38f9e5aaceeb3abe8a26c8b4d0e8
++++ b/5f13ccb37d38324b232403b5eb28a5c150d883b7
+@@ -1,8 +1,8 @@
+ @Test
+ public void validateLockIdWithNoRecordTest() throws Exception {
+     long badLockId = 1;
+     mThrown.expect(NotFoundException.class);
+-    mThrown.expectMessage("Failed to validateLock: lockId " + badLockId + " has no lock record");
++    mThrown.expectMessage(ExceptionMessage.LOCK_RECORD_NOT_FOUND.getMessage(badLockId));
+     // Validate a non-existing lockId, expect to see IOException
+     mLockManager.validateLock(TEST_USER_ID, TEST_BLOCK_ID, badLockId);
+ }
+\ No newline at end of file

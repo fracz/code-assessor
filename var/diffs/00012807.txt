@@ -1,0 +1,22 @@
+diff --git a/72baf39fb233a62612147ff56524ab600682445a b/da9bed668395254a0b220b2cbc0c186cf913c270
+index 72baf39fb2..da9bed6683 100644
+--- a/72baf39fb233a62612147ff56524ab600682445a
++++ b/da9bed668395254a0b220b2cbc0c186cf913c270
+@@ -1,13 +1,5 @@
+ public void refresh() {
+-    ApplicationManager.getApplication().invokeAndWait(new Runnable() {
+-
+-        public void run() {
+-            try {
+-                refreshFile(getDir(), true);
+-            } catch (Exception e) {
+-                e.printStackTrace();
+-                fail("Exception while refreshing repository", e);
+-            }
+-        }
+-    }, ModalityState.defaultModalityState());
++    final VirtualFile virtualFile = VcsUtil.getVirtualFile(myRootDir);
++    assert virtualFile != null;
++    virtualFile.refresh(false, true);
+ }
+\ No newline at end of file

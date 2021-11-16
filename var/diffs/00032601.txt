@@ -1,0 +1,15 @@
+diff --git a/e745653d0c2307ac5c9ed42310c750948248cf91 b/76ef1788352b7ea7b16f30f611781246e47f6b56
+index e745653d0c..76ef178835 100644
+--- a/e745653d0c2307ac5c9ed42310c750948248cf91
++++ b/76ef1788352b7ea7b16f30f611781246e47f6b56
+@@ -1,8 +1,8 @@
+ /**
+  * Return a matcher for method invocations in which the method being called has the
+  * @CheckReturnValue annotation.
+  */
+ @Override
+ public Matcher<MethodInvocationTree> specializedMatcher() {
+-    return methodSelect(hasAnnotation("javax.annotation.CheckReturnValue", ExpressionTree.class));
++    return methodSelect(Matchers.<ExpressionTree>hasAnnotation("javax.annotation.CheckReturnValue"));
+ }
+\ No newline at end of file

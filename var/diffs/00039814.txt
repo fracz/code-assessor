@@ -1,0 +1,21 @@
+diff --git a/76c920efd85fce0150432fbefebf67fc85a0e63a b/8c56cc7eea905315fe7f27602874266f52081d1e
+index 76c920efd8..8c56cc7eea 100644
+--- a/76c920efd85fce0150432fbefebf67fc85a0e63a
++++ b/8c56cc7eea905315fe7f27602874266f52081d1e
+@@ -1,12 +1,13 @@
+ @Test
+ public void shouldReportDuplicatedIndexRules() throws Exception {
+     // Given
+     int labelId = createLabel();
+     int propertyKeyId = createPropertyKey();
+-    createIndexRule(labelId, propertyKeyId);
+-    createIndexRule(labelId, propertyKeyId);
++    NodePropertyDescriptor descriptor = new NodePropertyDescriptor(labelId, propertyKeyId);
++    createIndexRule(descriptor);
++    createIndexRule(descriptor);
+     // When
+     ConsistencySummaryStatistics stats = check();
+     // Then
+     on(stats).verify(RecordType.SCHEMA, 1).andThatsAllFolks();
+ }
+\ No newline at end of file

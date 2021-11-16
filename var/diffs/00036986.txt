@@ -1,0 +1,17 @@
+diff --git a/e98e0ad7ea1b57fd2d48b321005f8d6ec77b931e b/36ec1c43cd0c6241e866ec02b8fd4aa0a48408a8
+index e98e0ad7ea..36ec1c43cd 100644
+--- a/e98e0ad7ea1b57fd2d48b321005f8d6ec77b931e
++++ b/36ec1c43cd0c6241e866ec02b8fd4aa0a48408a8
+@@ -1,6 +1,9 @@
+-@SuppressWarnings("unused")
+ private static String getCloseMethodBeforeInsertCode() {
+     StringBuilder sb = new StringBuilder();
+-    // sb.append("}");
++    if (logger.isDebugEnabled()) {
++        sb.append("{");
++        sb.append("System.out.println(\"-----ConnectionImpl.close() method is called\");");
++        sb.append("}");
++    }
+     return sb.toString();
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/5e34efaeb562be385ed93a6985cbbc4fbec6b241 b/ae781525ab592f1ba29bf96c556914ed057fab79
+index 5e34efaeb5..ae781525ab 100644
+--- a/5e34efaeb562be385ed93a6985cbbc4fbec6b241
++++ b/ae781525ab592f1ba29bf96c556914ed057fab79
+@@ -1,12 +1,13 @@
+ @Test
+ public void shouldReportDuplicatedNodePropertyExistenceConstraintRules() throws Exception {
+     // Given
+     int labelId = createLabel();
+     int propertyKeyId = createPropertyKey();
+-    createNodePropertyExistenceConstraint(labelId, propertyKeyId);
+-    createNodePropertyExistenceConstraint(labelId, propertyKeyId);
++    NodePropertyDescriptor descriptor = new NodePropertyDescriptor(labelId, propertyKeyId);
++    createNodePropertyExistenceConstraint(descriptor);
++    createNodePropertyExistenceConstraint(descriptor);
+     // When
+     ConsistencySummaryStatistics stats = check();
+     // Then
+     on(stats).verify(RecordType.SCHEMA, 1).andThatsAllFolks();
+ }
+\ No newline at end of file

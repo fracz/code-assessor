@@ -1,0 +1,19 @@
+diff --git a/ad657cdeb967478e6513a56d3437b9e54c53088c b/6ade74d2a3dbe7182cc8fcb370b4722585a27f54
+index ad657cdeb9..6ade74d2a3 100644
+--- a/ad657cdeb967478e6513a56d3437b9e54c53088c
++++ b/6ade74d2a3dbe7182cc8fcb370b4722585a27f54
+@@ -1,11 +1,7 @@
+ public final void suspend() {
+     synchronized (LOCK) {
+-        if (myDisposed)
++        if (isDisposed() || !isRunning())
+             return;
+-        if (myRunning) {
+-            myRunning = false;
+-        } else {
+-            resetToStart();
+-        }
++        myState = TimerState.suspended;
+     }
+ }
+\ No newline at end of file

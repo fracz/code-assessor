@@ -1,0 +1,16 @@
+diff --git a/02b8e8c02b71d3f24f9946f97b7154f0714201d6 b/996b93c792525c093a6f509943047618501bc0b0
+index 02b8e8c02b..996b93c792 100644
+--- a/02b8e8c02b71d3f24f9946f97b7154f0714201d6
++++ b/996b93c792525c093a6f509943047618501bc0b0
+@@ -1,9 +1,9 @@
+ @Test
+ public void parseWithParameter() throws SQLException {
+     ShardingRule shardingRule = createShardingRule();
+     List<Object> parameters = Arrays.<Object>asList(10, 1, 10, 1, 3, 10, 5, 20, 10);
+-    SQLStatementParser statementParser = new SQLStatementParser(DatabaseType.MySQL, shardingRule, parameters, new MySQLParser("DELETE FROM TABLE_XXX xxx WHERE field4<? AND field1=? AND field5>? AND field2 IN (?,?) AND field6<=? AND field3 BETWEEN ? AND ? AND field7>=?", shardingRule, parameters));
++    SQLParserEngine statementParser = new SQLParserEngine(DatabaseType.MySQL, new MySQLParser("DELETE FROM TABLE_XXX xxx WHERE field4<? AND field1=? AND field5>? AND field2 IN (?,?) AND field6<=? AND field3 BETWEEN ? AND ? AND field7>=?", shardingRule, parameters), shardingRule, parameters);
+     DeleteSQLContext sqlContext = (DeleteSQLContext) statementParser.parseStatement();
+     assertDeleteStatement(sqlContext);
+     assertThat(sqlContext.toSqlBuilder().toString(), is("DELETE FROM [Token(TABLE_XXX)] xxx WHERE field4<? AND field1=? AND field5>? AND field2 IN (?,?) AND field6<=? AND field3 BETWEEN ? AND ? AND field7>=?"));
+ }
+\ No newline at end of file

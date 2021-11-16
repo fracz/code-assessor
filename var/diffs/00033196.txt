@@ -1,0 +1,22 @@
+diff --git a/0dd240208d2cf0db141b1578b8c8dc94c155908c b/5f050cff8f05e87b23effacec63574483ed3706c
+index 0dd240208d..5f050cff8f 100644
+--- a/0dd240208d2cf0db141b1578b8c8dc94c155908c
++++ b/5f050cff8f05e87b23effacec63574483ed3706c
+@@ -1,14 +1,12 @@
+ /**
+  * For now just using InProcessCompilerDaemon.
+  *
+  * TODO allow forked compiler
+  */
+-private Compiler<TwirlCompileSpec> getCompiler() {
++private Compiler<TwirlCompileSpec> getCompiler(TwirlCompileSpec spec) {
+     if (compiler == null) {
+-        ProjectInternal projectInternal = (ProjectInternal) getProject();
+         InProcessCompilerDaemonFactory inProcessCompilerDaemonFactory = getServices().get(InProcessCompilerDaemonFactory.class);
+-        TwirlCompiler twirlCompiler = new TwirlCompiler(new TwirlCompilerVersionedInvocationSpecBuilder());
+-        compiler = new DaemonTwirlCompiler(projectInternal.getProjectDir(), twirlCompiler, inProcessCompilerDaemonFactory, getCompilerClasspath().getFiles());
++        compiler = new TwirlCompilerFactory(getProject().getProjectDir(), inProcessCompilerDaemonFactory).newCompiler(spec);
+     }
+     return compiler;
+ }
+\ No newline at end of file

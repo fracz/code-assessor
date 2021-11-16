@@ -1,0 +1,12 @@
+diff --git a/3bbe8f6e287b159e0e96f784e869250e78c1249c b/82225b8c9d61e62bbaee2632cbdfb26536fca46e
+index 3bbe8f6e28..82225b8c9d 100644
+--- a/3bbe8f6e287b159e0e96f784e869250e78c1249c
++++ b/82225b8c9d61e62bbaee2632cbdfb26536fca46e
+@@ -1,5 +1,5 @@
+ @Override
+ public void setUp() throws Exception {
+-    (new HBaseStorageConfiguration()).deleteAll();
++    new HBaseStorageManager(DiskgraphTest.getDirectoryStorageConfiguration()).deleteAll();
+     super.setUp();
+ }
+\ No newline at end of file

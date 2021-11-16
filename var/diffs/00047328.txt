@@ -1,0 +1,12 @@
+diff --git a/7b466f33ac7f6d787eef8a4a408f579b00c270f4 b/d2da04778052059c85f35be53546b5b03065b83e
+index 7b466f33ac..d2da047780 100644
+--- a/7b466f33ac7f6d787eef8a4a408f579b00c270f4
++++ b/d2da04778052059c85f35be53546b5b03065b83e
+@@ -1,5 +1,5 @@
+ @Override
+ public boolean trySetCount(long count) {
+-    Future<Boolean> f = commandExecutor.evalWriteAsync(getName(), LongCodec.INSTANCE, RedisCommands.EVAL_BOOLEAN_R1, "if redis.call('exists', KEYS[1]) == 0 then " + "redis.call('set', KEYS[1], ARGV[2]); " + "redis.call('publish', ARGV[3], ARGV[1]); " + "return true " + "else " + "return false " + "end", Collections.<Object>singletonList(getName()), newCountMessage, count, getChannelName());
++    Future<Boolean> f = commandExecutor.evalWriteAsync(getName(), LongCodec.INSTANCE, RedisCommands.EVAL_BOOLEAN, "if redis.call('exists', KEYS[1]) == 0 then " + "redis.call('set', KEYS[1], ARGV[2]); " + "redis.call('publish', KEYS[2], ARGV[1]); " + "return true " + "else " + "return false " + "end", Arrays.<Object>asList(getName(), getChannelName()), newCountMessage, count);
+     return get(f);
+ }
+\ No newline at end of file

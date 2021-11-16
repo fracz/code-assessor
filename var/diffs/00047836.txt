@@ -1,0 +1,16 @@
+diff --git a/0f7e95d0593f743e71e22605570a0d4b64b019b4 b/e55e90e37a7f43a8954237bf0985b310ef5637f7
+index 0f7e95d059..e55e90e37a 100644
+--- a/0f7e95d0593f743e71e22605570a0d4b64b019b4
++++ b/e55e90e37a7f43a8954237bf0985b310ef5637f7
+@@ -1,7 +1,8 @@
+ @Before
+ public void setUp() throws Exception {
+-    resourceIndex = new ResourceExtractor(testResources());
++    resourceIndex = new PackageResourceIndex("packageName");
++    ResourceExtractor.populate(resourceIndex, testResources().getRClass());
+     rawResourceFiles = new ResBundle();
+-    RawResourceLoader rawResourceLoader = new RawResourceLoader(TEST_RESOURCE_PATH);
++    RawResourceLoader rawResourceLoader = new RawResourceLoader("packageName", TEST_RESOURCE_PATH);
+     rawResourceLoader.loadTo(rawResourceFiles);
+ }
+\ No newline at end of file

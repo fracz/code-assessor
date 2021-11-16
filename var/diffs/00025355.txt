@@ -1,0 +1,16 @@
+diff --git a/c139e1b019230831174a1048a5eae5b765420c85 b/d70accddc249f2fc0b0018516d38cb837e052d0e
+index c139e1b019..d70accddc2 100644
+--- a/c139e1b019230831174a1048a5eae5b765420c85
++++ b/d70accddc249f2fc0b0018516d38cb837e052d0e
+@@ -1,9 +1,5 @@
+ public int size() {
+     synchronized (_lock) {
+-        int size = 0;
+-        for (HashMap<K, V> bucket : _buckets) {
+-            size += bucket.size();
+-        }
+-        return size;
++        return super.size();
+     }
+ }
+\ No newline at end of file

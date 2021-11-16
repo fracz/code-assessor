@@ -1,0 +1,18 @@
+diff --git a/f1d3eb2cce235a06347506cffc1ff8114a48e461 b/c3d45cae49734ecbdcf6943a969562e124a037ef
+index f1d3eb2cce..c3d45cae49 100644
+--- a/f1d3eb2cce235a06347506cffc1ff8114a48e461
++++ b/c3d45cae49734ecbdcf6943a969562e124a037ef
+@@ -1,8 +1,9 @@
+ @Test
+ public void simpleTest() throws IOException, ExecutionException, InterruptedException {
+-    Assert.assertTrue(manager.getKnownIDs().isEmpty());
+-    NamespaceExtractionCacheManagersTest.waitFor(manager.schedule(id, namespace));
+-    Map<String, String> map = manager.getCacheMap(id);
++    Assert.assertEquals(0, scheduler.getActiveEntries());
++    CacheScheduler.Entry entry = scheduler.schedule(namespace);
++    NamespaceExtractionCacheManagerExecutorsTest.waitFor(entry);
++    Map<String, String> map = entry.getCache();
+     Assert.assertEquals("bar", map.get("foo"));
+     Assert.assertEquals(null, map.get("baz"));
+ }
+\ No newline at end of file

@@ -1,0 +1,30 @@
+diff --git a/9e7fecadac228a03400e974e91c85b9e35bf1c40 b/2cdc7667dd34b33908b511c858102b2c662d888f
+index 9e7fecadac..2cdc7667dd 100644
+--- a/9e7fecadac228a03400e974e91c85b9e35bf1c40
++++ b/2cdc7667dd34b33908b511c858102b2c662d888f
+@@ -1,23 +1,22 @@
+ void _start() {
+     try {
+         // Whether service was already started.
+         if (!_checkCanStart()) {
+             this.using = false;
+             // Not ready
+             return;
+         }
+         FileDownloadList.getImpl().add(this);
+         if (_checkCanReuse()) {
+             // Will be removed when the complete message is received in #update
+             return;
+         }
+         if (FileDownloadLog.NEED_LOG) {
+             FileDownloadLog.d(this, "start downloaded by ui process %s", getUrl());
+         }
+         _startExecute();
+     } catch (Throwable e) {
+         e.printStackTrace();
+-        catchException(e);
+-        FileDownloadList.getImpl().removeByError(this);
++        FileDownloadList.getImpl().remove(this, catchException(e));
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/9960bc7679f6682b4a92c9d61a263e8e815d3b4f b/180991fae6873e5a229c4ae8a5fee350b37fc3a2
+index 9960bc7679..180991fae6 100644
+--- a/9960bc7679f6682b4a92c9d61a263e8e815d3b4f
++++ b/180991fae6873e5a229c4ae8a5fee350b37fc3a2
+@@ -1,4 +1,10 @@
+ @Override
+-public Publisher<Boolean> removeAll(Collection<?> c) {
+-    return commandExecutor.evalWriteReactive(getName(), codec, new RedisCommand<Boolean>("EVAL", new BooleanReplayConvertor(), 4, ValueType.OBJECTS), "local v = 0 " + "for i = 1, table.getn(ARGV), 1 do " + "if redis.call('zrem', KEYS[1], ARGV[i]) == 1 " + "then v = 1 end " + "end " + "return v ", Collections.<Object>singletonList(getName()), c.toArray());
++public Publisher<Boolean> removeAll(final Collection<?> c) {
++    return reactive(new Supplier<RFuture<Boolean>>() {
++
++        @Override
++        public RFuture<Boolean> get() {
++            return instance.removeAllAsync(c);
++        }
++    });
+ }
+\ No newline at end of file

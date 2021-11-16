@@ -1,0 +1,22 @@
+diff --git a/55595356f651d897d4ee06d3aaa7ba1583e5dd8d b/13df31071131784ace4ae1071d209b2acee68acc
+index 55595356f6..13df310711 100644
+--- a/55595356f651d897d4ee06d3aaa7ba1583e5dd8d
++++ b/13df31071131784ace4ae1071d209b2acee68acc
+@@ -1,15 +1,14 @@
+ private boolean needsSchemaChecking() {
+     XmlDocument document = myFile.getDocument();
+     if (document == null)
+         return false;
+     XmlTag rootTag = document.getRootTag();
+     if (rootTag == null)
+         return false;
+     XmlAttribute[] attributes = rootTag.getAttributes();
+-    for (int i = 0; i < attributes.length; i++) {
+-        XmlAttribute attribute = attributes[i];
++    for (XmlAttribute attribute : attributes) {
+         if (attribute.getName().startsWith("xmlns"))
+             return true;
+     }
+     return false;
+ }
+\ No newline at end of file

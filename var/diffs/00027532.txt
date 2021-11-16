@@ -1,0 +1,22 @@
+diff --git a/98e186fd476eec84557d4ba40b9cc15eab7af27a b/619c85bb35be42f65c9551fdbb494619e76f73be
+index 98e186fd47..619c85bb35 100644
+--- a/98e186fd476eec84557d4ba40b9cc15eab7af27a
++++ b/619c85bb35be42f65c9551fdbb494619e76f73be
+@@ -1,14 +1,14 @@
+ @Override
+-public String populateCache(final String id, final JDBCExtractionNamespace namespace, final String lastVersion, final Map<String, String> cache) throws Exception {
++public CacheScheduler.VersionedCache populateCache(final JDBCExtractionNamespace namespace, final CacheScheduler.EntryImpl<JDBCExtractionNamespace> id, final String lastVersion, final CacheScheduler scheduler) throws InterruptedException {
+     updateLock.lockInterruptibly();
+     try {
+         log.debug("Running cache populator");
+         try {
+-            return super.populateCache(id, namespace, lastVersion, cache);
++            return delegate.populateCache(namespace, id, lastVersion, scheduler);
+         } finally {
+             updates.incrementAndGet();
+         }
+     } finally {
+         updateLock.unlock();
+     }
+ }
+\ No newline at end of file

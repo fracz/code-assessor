@@ -1,0 +1,22 @@
+diff --git a/0580e7674da08172cc212f7d038b56d0e78fb6f4 b/f653f13168451e14080caad473a6ce8f3d689d5b
+index 0580e7674d..f653f13168 100644
+--- a/0580e7674da08172cc212f7d038b56d0e78fb6f4
++++ b/f653f13168451e14080caad473a6ce8f3d689d5b
+@@ -1,10 +1,12 @@
+ @Override
+ public void visitNewExpression(PsiNewExpression expression) {
+     super.visitNewExpression(expression);
+-    if (expression.getQualifier() != null) {
+-        conflicts.add(GroovyRefactoringBundle.message("groovy.does.not.support.inner.classes.but.it.is.used.in.parameter.initializer"));
++    final PsiExpression qualifier = expression.getQualifier();
++    if (qualifier != null) {
++        conflicts.put(qualifier, GroovyRefactoringBundle.message("groovy.does.not.support.inner.classes.but.it.is.used.in.parameter.initializer"));
+     }
+-    if (expression.getAnonymousClass() != null) {
+-        conflicts.add(GroovyRefactoringBundle.message("groovy.does.not.support.anonymous.classes.but.it.is.used.in.parameter.initializer"));
++    final PsiAnonymousClass anonymousClass = expression.getAnonymousClass();
++    if (anonymousClass != null) {
++        conflicts.put(anonymousClass, GroovyRefactoringBundle.message("groovy.does.not.support.anonymous.classes.but.it.is.used.in.parameter.initializer"));
+     }
+ }
+\ No newline at end of file

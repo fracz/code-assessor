@@ -1,0 +1,33 @@
+diff --git a/ac2629bf6b7e0fa1c588943ac1f80c2235fadb48 b/e31d9583824e6c10a6fb615fbddde1b5e176ffcc
+index ac2629bf6b..e31d958382 100644
+--- a/ac2629bf6b7e0fa1c588943ac1f80c2235fadb48
++++ b/e31d9583824e6c10a6fb615fbddde1b5e176ffcc
+@@ -1,9 +1,19 @@
+-public synchronized OIndex<?> createIndex(final String iName, final String iType, final OType iKeyType, final int[] iClusterIdsToIndex, OIndexCallback iCallback, final OProgressListener iProgressListener, final boolean iAutomatic) {
+-    final OIndexInternal<?> index = OIndexFactory.instance().newInstance(getDatabase(), iType);
+-    index.setCallback(iCallback);
+-    index.create(iName, iKeyType, getDatabase(), defaultClusterName, iClusterIdsToIndex, iProgressListener, iAutomatic);
+-    indexes.put(iName.toLowerCase(), index);
+-    setDirty();
+-    save();
+-    return getIndexInstance(index);
++/**
++ * @param iName - name of index
++ * @param iType
++ * @param iClusterIdsToIndex
++ * @param iProgressListener
++ */
++public OIndex<?> createIndex(final String iName, final String iType, final OIndexDefinition indexDefinition, final int[] iClusterIdsToIndex, final OProgressListener iProgressListener) {
++    acquireExclusiveLock();
++    try {
++        final OIndexInternal<?> index = OIndexFactory.instance().newInstance(getDatabase(), iType);
++        index.create(iName, indexDefinition, getDatabase(), defaultClusterName, iClusterIdsToIndex, iProgressListener);
++        addIndexInternal(index);
++        setDirty();
++        save();
++        return getIndexInstance(index);
++    } finally {
++        releaseExclusiveLock();
++    }
+ }
+\ No newline at end of file

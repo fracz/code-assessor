@@ -1,0 +1,24 @@
+diff --git a/2595208bc2def953306c3ba8814ed88b934baa34 b/860dd7b5ec443937b1f871d37830e7636f590244
+index 2595208bc2..860dd7b5ec 100644
+--- a/2595208bc2def953306c3ba8814ed88b934baa34
++++ b/860dd7b5ec443937b1f871d37830e7636f590244
+@@ -1,14 +1,11 @@
+ public ORecordOperation getRecordEntry(ORID rid) {
+     ORecordOperation e = allEntries.get(rid);
+     if (e != null)
+         return e;
+-    if (rid.isTemporary()) {
+-        final ORecord record = temp2persistent.get(rid);
+-        if (record != null && !record.getIdentity().equals(rid))
+-            rid = record.getIdentity();
++    if (!updatedRids.isEmpty()) {
++        ORID r = updatedRids.get(rid);
++        if (r != null)
++            return allEntries.get(r);
+     }
+-    e = allEntries.get(rid);
+-    if (e != null)
+-        return e;
+     return null;
+ }
+\ No newline at end of file

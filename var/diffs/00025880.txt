@@ -1,0 +1,33 @@
+diff --git a/0d4d8cbf46352cdebad1a20ef50cf44b7fca146a b/80ca27ba4a7c33cd0ca2e047dc172c0e4713a191
+index 0d4d8cbf46..80ca27ba4a 100644
+--- a/0d4d8cbf46352cdebad1a20ef50cf44b7fca146a
++++ b/80ca27ba4a7c33cd0ca2e047dc172c0e4713a191
+@@ -1,16 +1,16 @@
+ public List<InterpreterSetting> getInterpreterSettings(String noteId) {
+-    List<String> interpreterSettingIds = getNoteInterpreterSettingBinding(noteId);
+-    LinkedList<InterpreterSetting> settings = new LinkedList<>();
+-    Iterator<String> iter = interpreterSettingIds.iterator();
+-    while (iter.hasNext()) {
+-        String id = iter.next();
+-        InterpreterSetting setting = get(id);
+-        if (setting == null) {
+-            // interpreter setting is removed from factory. remove id from here, too
+-            iter.remove();
+-        } else {
+-            settings.add(setting);
++    List<InterpreterSetting> settings = new ArrayList<>();
++    synchronized (interpreterSettings) {
++        List<String> interpreterSettingIds = interpreterBindings.get(noteId);
++        if (interpreterSettingIds != null) {
++            for (String settingId : interpreterSettingIds) {
++                if (interpreterSettings.containsKey(settingId)) {
++                    settings.add(interpreterSettings.get(settingId));
++                } else {
++                    LOGGER.warn("InterpreterSetting {} has been removed, but note {} still bind to it.", settingId, noteId);
++                }
++            }
+         }
+     }
+     return settings;
+ }
+\ No newline at end of file

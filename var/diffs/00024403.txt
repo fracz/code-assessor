@@ -1,0 +1,19 @@
+diff --git a/9f4fb29288e62ed839dd60118ca952c4978c8038 b/24eb32f015856b28fb9c99e8da132e46a3a5da82
+index 9f4fb29288..24eb32f015 100644
+--- a/9f4fb29288e62ed839dd60118ca952c4978c8038
++++ b/24eb32f015856b28fb9c99e8da132e46a3a5da82
+@@ -1,6 +1,9 @@
+-private static void deleteHint(ByteBuffer tokenBytes, CellName columnName, long timestamp) {
+-    Mutation mutation = new Mutation(SystemKeyspace.NAME, tokenBytes);
+-    mutation.delete(SystemKeyspace.HINTS, columnName, timestamp);
++private static void deleteHint(ByteBuffer tokenBytes, Clustering clustering, long timestamp) {
++    DecoratedKey dk = StorageService.getPartitioner().decorateKey(tokenBytes);
++    PartitionUpdate upd = new PartitionUpdate(SystemKeyspace.Hints, dk, PartitionColumns.of(hintColumn), 1);
++    Row.Writer writer = upd.writer();
++    Rows.writeClustering(clustering, writer);
++    Cells.writeTombstone(writer, hintColumn, timestamp, FBUtilities.nowInSeconds());
+     // don't bother with commitlog since we're going to flush as soon as we're done with delivery
+-    mutation.applyUnsafe();
++    new Mutation(upd).applyUnsafe();
+ }
+\ No newline at end of file

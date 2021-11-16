@@ -1,0 +1,16 @@
+diff --git a/29108ff9cabb2160adda1847b2bd88ba274e4110 b/c5f754635630be51b035703e849543e8c42d7754
+index 29108ff9ca..c5f7546356 100644
+--- a/29108ff9cabb2160adda1847b2bd88ba274e4110
++++ b/c5f754635630be51b035703e849543e8c42d7754
+@@ -1,8 +1,8 @@
+ @Theory
+ public void shouldRetransmitOnNakOverMtuLength(final BiConsumer<RetransmitHandlerTest, Integer> creator) {
+     final int numFramesPerMtu = MTU_LENGTH / ALIGNED_FRAME_LENGTH;
+     createTermBuffer(creator, numFramesPerMtu * 5);
+-    handler.onNak(offsetOfMessage(0), MTU_LENGTH * 2);
++    handler.onNak(TERM_ID, offsetOfMessage(0), MTU_LENGTH * 2);
+     processTimersUntil(() -> wheel.now() >= TimeUnit.MILLISECONDS.toNanos(100));
+-    verify(retransmitHandler).onAvailable(logBuffer, offsetOfMessage(0), numFramesPerMtu * ALIGNED_FRAME_LENGTH);
++    verify(retransmitSender).send(TERM_ID, offsetOfMessage(0), MTU_LENGTH * 2);
+ }
+\ No newline at end of file

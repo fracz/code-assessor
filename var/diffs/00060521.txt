@@ -1,0 +1,28 @@
+diff --git a/a67185c4b83f8ae0a44c1f38c448fc0985adc76f b/f5a185cf0a766e5c8f445c097c1c802e71e12755
+index a67185c4b8..f5a185cf0a 100644
+--- a/a67185c4b83f8ae0a44c1f38c448fc0985adc76f
++++ b/f5a185cf0a766e5c8f445c097c1c802e71e12755
+@@ -1,21 +1,19 @@
+ /**
+  * decode a base64 string to a object
+  * @param <T> the type of the object
+  * @param base64 a encoded string by ViewState.encode method
+  * @return the decoded object
+  */
+ @SuppressWarnings("unchecked")
+ public static <T> T decode(String base64) {
+     // BASE64Decoder decoder = new BASE64Decoder();
+     try {
+         // byte[]               b    = decoder.decodeBuffer(base64);
+         byte[] b = Base64.decode(base64);
+         ByteArrayInputStream bais = new ByteArrayInputStream(b);
+         ObjectInputStream ois = new ObjectInputStream(bais);
+         return (T) ois.readObject();
+-    } catch (IOException e) {
+-        throw new RuntimeException(e);
+-    } catch (ClassNotFoundException e) {
++    } catch (IOException | ClassNotFoundException e) {
+         throw new RuntimeException(e);
+     }
+ }
+\ No newline at end of file

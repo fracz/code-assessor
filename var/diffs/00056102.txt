@@ -1,0 +1,15 @@
+diff --git a/ef93dda95cd53c5be892e37c1de9f9dea7ec9a90 b/e4245ba3c47f71a54c938b68e6d940fb0319c931
+index ef93dda95c..e4245ba3c4 100644
+--- a/ef93dda95cd53c5be892e37c1de9f9dea7ec9a90
++++ b/e4245ba3c47f71a54c938b68e6d940fb0319c931
+@@ -1,8 +1,8 @@
+ @Test
+ public void testGetObjectTypeWithTargetViaTargetSource() {
+-    BeanFactory bf = new XmlBeanFactory(new ClassPathResource("proxyFactoryTargetSourceTests.xml", getClass()));
++    BeanFactory bf = new XmlBeanFactory(new ClassPathResource(TARGETSOURCE_CONTEXT, CLASS));
+     ITestBean tb = (ITestBean) bf.getBean("viaTargetSource");
+     assertTrue(tb.getName().equals("Adam"));
+     ProxyFactoryBean pfb = (ProxyFactoryBean) bf.getBean("&viaTargetSource");
+     assertTrue("Has correct object type", TestBean.class.isAssignableFrom(pfb.getObjectType()));
+ }
+\ No newline at end of file

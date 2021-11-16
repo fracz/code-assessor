@@ -1,0 +1,20 @@
+diff --git a/9b3df19838b9d3c6a22fe6c6afcc829c97553ca1 b/edd8d76b2ec0ce79b51d7dc4ec4b1e42a894c470
+index 9b3df19838..edd8d76b2e 100644
+--- a/9b3df19838b9d3c6a22fe6c6afcc829c97553ca1
++++ b/edd8d76b2ec0ce79b51d7dc4ec4b1e42a894c470
+@@ -1,12 +1,12 @@
+-private ByteArrayOutputStream getBaseRevisionContents(SvnVcs vcs, VirtualFile file) {
++private ByteArrayOutputStream getBaseRevisionContents(@NotNull SvnVcs vcs, @NotNull VirtualFile file) {
+     ByteArrayOutputStream bos = new ByteArrayOutputStream();
+     try {
+-        byte[] contents = SvnUtil.getFileContents(vcs, file.getPath(), false, SVNRevision.BASE, SVNRevision.UNDEFINED);
++        byte[] contents = SvnUtil.getFileContents(vcs, SvnTarget.fromFile(new File(file.getPath())), SVNRevision.BASE, SVNRevision.UNDEFINED);
+         bos.write(contents);
+     } catch (VcsException e) {
+         LOG.warn(e);
+     } catch (IOException e) {
+         LOG.warn(e);
+     }
+     return bos;
+ }
+\ No newline at end of file

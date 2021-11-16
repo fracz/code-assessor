@@ -1,0 +1,19 @@
+diff --git a/d2b5d3ad0a6230891c21753b656ce4c74bbc782f b/4a312c59b3b96a76f746459a2fe9f99ab81f71ab
+index d2b5d3ad0a..4a312c59b3 100644
+--- a/d2b5d3ad0a6230891c21753b656ce4c74bbc782f
++++ b/4a312c59b3b96a76f746459a2fe9f99ab81f71ab
+@@ -1,11 +1,12 @@
+ @Override
+ public void pauseAllTasks() {
+-    if (getService() == null) {
++    if (!isConnected()) {
++        DownloadServiceNotConnectedHelper.pauseAllTasks();
+         return;
+     }
+     try {
+         getService().pauseAllTasks();
+     } catch (RemoteException e) {
+         e.printStackTrace();
+     }
+ }
+\ No newline at end of file

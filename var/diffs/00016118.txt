@@ -1,0 +1,14 @@
+diff --git a/07d52c37258611f00cbe26bd44fdf27baaf9dcc3 b/e607b59377c9b07df6d0162632b96dee7bad1859
+index 07d52c3725..e607b59377 100644
+--- a/07d52c37258611f00cbe26bd44fdf27baaf9dcc3
++++ b/e607b59377c9b07df6d0162632b96dee7bad1859
+@@ -1,6 +1,6 @@
+-public static void compileScript(@NotNull KtScript script, @NotNull Type classType, @NotNull List<Pair<ScriptDescriptor, Type>> earlierScripts, @NotNull GenerationState state, @NotNull CompilationErrorHandler errorHandler) {
++public static void compileScript(@NotNull KtScript script, @NotNull List<Pair<ScriptDescriptor, Type>> earlierScripts, @NotNull GenerationState state, @NotNull CompilationErrorHandler errorHandler) {
++    state.setScriptResultFieldName(SCRIPT_RESULT_FIELD_NAME);
+     registerEarlierScripts(state, earlierScripts);
+-    registerClassNameForScript(state.getBindingTrace(), script, classType, state.getFileClassesProvider());
+     state.beforeCompile();
+     KotlinCodegenFacade.generatePackage(state, script.getContainingKtFile().getPackageFqName(), Collections.singleton(script.getContainingKtFile()), errorHandler);
+ }
+\ No newline at end of file

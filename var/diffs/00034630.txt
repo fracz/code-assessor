@@ -1,0 +1,25 @@
+diff --git a/525dfe74738281d5ded8dc68cb5fcbc46615e531 b/cdd7a5f815dca62992da5bef7fb0e688fe3cb11e
+index 525dfe7473..cdd7a5f815 100644
+--- a/525dfe74738281d5ded8dc68cb5fcbc46615e531
++++ b/cdd7a5f815dca62992da5bef7fb0e688fe3cb11e
+@@ -1,16 +1,12 @@
+ /**
+  * Stops the animation. Does nothing if GIF is not animated.
+  * This method is thread-safe.
+  */
+ @Override
+ public void stop() {
+     mIsRunning = false;
+     mInvalidationHandler.removeMessages(0);
+-    mExecutor.execute(new SafeRunnable(this) {
+-
+-        @Override
+-        public void doWork() {
+-            mNativeInfoHandle.saveRemainder();
+-        }
+-    });
++    // noinspection StatementWithEmptyBody
++    while (mExecutor.getQueue().remove(mRenderTask)) ;
++    mNativeInfoHandle.saveRemainder();
+ }
+\ No newline at end of file

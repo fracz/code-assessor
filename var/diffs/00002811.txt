@@ -1,0 +1,16 @@
+diff --git a/86790ff5f6dc65f3fed68469577aae82b66c721f b/429cb5fcca32f151cfad5cc3c13e2d8d71027056
+index 86790ff5f6..429cb5fcca 100644
+--- a/86790ff5f6dc65f3fed68469577aae82b66c721f
++++ b/429cb5fcca32f151cfad5cc3c13e2d8d71027056
+@@ -1,8 +1,8 @@
+-private void updateState(Editor editor, String text) {
++private void updateState(Editor editor, String text, boolean animated) {
+     FontMetrics metrics = getFontMetrics(editor).metrics;
+     startWidth = doCalcWidth(myText, metrics);
+     myText = text;
+     int endWidth = doCalcWidth(myText, metrics);
+-    step = 1;
+     steps = Math.max(1, Math.abs(endWidth - startWidth) / metrics.charWidth('a') / ANIMATION_CHARS_PER_STEP);
++    step = animated ? 1 : steps + 1;
+ }
+\ No newline at end of file

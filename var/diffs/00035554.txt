@@ -1,0 +1,28 @@
+diff --git a/c3791c64b91206cd93e450e0ca24748f1f730cdf b/8f148e0d8702cfe4603e75237aa9c71704a73e9c
+index c3791c64b9..8f148e0d87 100644
+--- a/c3791c64b91206cd93e450e0ca24748f1f730cdf
++++ b/8f148e0d8702cfe4603e75237aa9c71704a73e9c
+@@ -1,21 +1,21 @@
+ /**
+  * Returns HttpEntity containing data from RequestParams included with request declaration.
+  * Allows also passing progress from upload via provided ResponseHandler
+  *
+  * @param params          additional request params
+  * @param responseHandler AsyncHttpResponseHandler or its subclass to be notified on progress
+  */
+ private HttpEntity paramsToEntity(RequestParams params, AsyncHttpResponseHandler responseHandler) {
+     HttpEntity entity = null;
+     try {
+         if (params != null) {
+             entity = params.getEntity(responseHandler);
+         }
+     } catch (Throwable t) {
+         if (responseHandler != null)
+-            responseHandler.sendFailureMessage(0, null, t, (String) null);
++            responseHandler.sendFailureMessage(0, null, null, t);
+         else
+             t.printStackTrace();
+     }
+     return entity;
+ }
+\ No newline at end of file

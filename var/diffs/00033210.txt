@@ -1,0 +1,14 @@
+diff --git a/ef6b6f92c1257a65ad7ae313480dd69fcb79c70c b/65c7ef5d34773a38553bf1cf185cac74ce3bd75c
+index ef6b6f92c1..65c7ef5d34 100644
+--- a/ef6b6f92c1257a65ad7ae313480dd69fcb79c70c
++++ b/65c7ef5d34773a38553bf1cf185cac74ce3bd75c
+@@ -1,6 +1,7 @@
+ /**
+  * Returns the task executions for this project.
+  */
+ public CompositeOperation<TaskExecution> getTasks() {
+-    return new CompositeOperation<TaskExecution>(tasks.values());
++    List<TaskExecution> taskExecutions = CollectionUtils.sort(tasks.values(), Operation.comparator());
++    return new CompositeOperation<TaskExecution>(taskExecutions);
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/105f3c9b6d82f66f1c77828a37f91733c9f42408 b/62b26a55ccf0c1c73033908acd6029a4eefa5609
+index 105f3c9b6d..62b26a55cc 100644
+--- a/105f3c9b6d82f66f1c77828a37f91733c9f42408
++++ b/62b26a55ccf0c1c73033908acd6029a4eefa5609
+@@ -1,4 +1,5 @@
++@Override
+ public void shutdownAsync(RedisClient client) {
+-    clients.remove(new RedisClientEntry(client, commandExecutor, null));
++    clientEntries.remove(client);
+     client.shutdownAsync();
+ }
+\ No newline at end of file

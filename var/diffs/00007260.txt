@@ -1,0 +1,14 @@
+diff --git a/c1e4b907265d5afd373b51c15cc76cc5970872cb b/e2499ba5007bbc2fdc87b4920c7acdc680280830
+index c1e4b90726..e2499ba500 100644
+--- a/c1e4b907265d5afd373b51c15cc76cc5970872cb
++++ b/e2499ba5007bbc2fdc87b4920c7acdc680280830
+@@ -1,7 +1,3 @@
+ public boolean canPause() {
+-    if (myCurrentPrintable instanceof AbstractTestProxy) {
+-        final AbstractTestProxy test = (AbstractTestProxy) myCurrentPrintable;
+-        return test.isInProgress();
+-    }
+-    return false;
++    return myCurrentPrintable != null ? myCurrentPrintable.isInProgress() : false;
+ }
+\ No newline at end of file

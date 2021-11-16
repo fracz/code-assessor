@@ -1,0 +1,13 @@
+diff --git a/288948818a30c1069eead6ebfdb3bf38f959ea1b b/9bbd8b7c7bf0dd63bc320cc52a6d03ec1b65afd7
+index 288948818a..9bbd8b7c7b 100644
+--- a/288948818a30c1069eead6ebfdb3bf38f959ea1b
++++ b/9bbd8b7c7bf0dd63bc320cc52a6d03ec1b65afd7
+@@ -1,5 +1,5 @@
+ @AfterMethod
+-public void afterMethod() {
++public void afterMethod() throws Exception {
+     database.command(new OCommandSQL("delete from index:idxTxAwareOneValueGetValuesTest")).execute();
+-    database.close();
++    super.afterMethod();
+ }
+\ No newline at end of file

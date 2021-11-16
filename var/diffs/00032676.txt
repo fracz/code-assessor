@@ -1,0 +1,17 @@
+diff --git a/2b644098c5dc97b8b03372be867fbfd7804714bc b/2bce8579da02931a39d286ba3053bc21c3084576
+index 2b644098c5..2bce8579da 100644
+--- a/2b644098c5dc97b8b03372be867fbfd7804714bc
++++ b/2bce8579da02931a39d286ba3053bc21c3084576
+@@ -1,10 +1,10 @@
+ @Test
+ public void createDirected_noSelfLoops() {
+-    DirectedGraph<Integer, String> directedGraph = Graphs.createDirected(config().noSelfLoops());
++    Graph<Integer, String> directedGraph = GraphBuilder.directed().allowsSelfLoops(false).build();
+     try {
+         directedGraph.addEdge(E11, N1, N1);
+         fail(ERROR_ADDED_SELF_LOOP);
+     } catch (IllegalArgumentException e) {
+         assertThat(e.getMessage()).contains(ERROR_SELF_LOOP);
+     }
+ }
+\ No newline at end of file

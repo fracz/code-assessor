@@ -1,0 +1,12 @@
+diff --git a/cc376534b0ca7180418e12863b3009d9f16f6ccb b/2fc648ac6bf7a92c8d98fb9174abf41928100832
+index cc376534b0..2fc648ac6b 100644
+--- a/cc376534b0ca7180418e12863b3009d9f16f6ccb
++++ b/2fc648ac6bf7a92c8d98fb9174abf41928100832
+@@ -1,5 +1,5 @@
+ @Test
+ public void notFound() {
+     Mono<Object> mono = resolver.resolveArgument(this.cookieParameter, this.bindingContext, this.exchange);
+-    TestSubscriber.subscribe(mono).assertError(ServerWebInputException.class);
++    ScriptedSubscriber.create().expectNextCount(0).expectError(ServerWebInputException.class).verify(mono);
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/7e3066e2999d62be2da689a1fba847c583ba02dc b/0413857537087eb9a6484c3f7a5c24caa49dc39b
+index 7e3066e299..0413857537 100644
+--- a/7e3066e2999d62be2da689a1fba847c583ba02dc
++++ b/0413857537087eb9a6484c3f7a5c24caa49dc39b
+@@ -1,12 +1,12 @@
+ @Before
+ public void setUp() {
+     context.checking(new Expectations() {
+
+         {
+             allowing(configurationStub).getName();
+             will(returnValue("someConfName"));
+             allowing(ivyStub).getSettings();
+-            will(returnValue(ivySettings));
++            will(returnValue(new IvySettings()));
+         }
+     });
+ }
+\ No newline at end of file

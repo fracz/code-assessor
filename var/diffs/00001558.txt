@@ -1,0 +1,18 @@
+diff --git a/5812fb5c3028a5b6ebe836f2ab633a9fc37b84b5 b/ec87b531342f528c0ff7ae50f8e77cd89d1bd936
+index 5812fb5c30..ec87b53134 100644
+--- a/5812fb5c3028a5b6ebe836f2ab633a9fc37b84b5
++++ b/ec87b531342f528c0ff7ae50f8e77cd89d1bd936
+@@ -1,10 +1,10 @@
+ @Override
+-public void checkoutNewBranch(@NotNull final String name, @NotNull final List<GitRepository> repositories, @Nullable final Consumer<Boolean> resultHandler) {
++public void checkoutNewBranch(@NotNull final String name, @NotNull final List<GitRepository> repositories) {
+     new CommonBackgroundTask(myProject, "Checking out new branch " + name, null) {
+
+         @Override
+         public void execute(@NotNull ProgressIndicator indicator) {
+-            doCheckoutNewBranch(name, repositories, resultHandler, indicator);
++            newWorker(indicator).checkoutNewBranch(name, repositories);
+         }
+     }.runInBackground();
+ }
+\ No newline at end of file

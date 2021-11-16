@@ -1,0 +1,19 @@
+diff --git a/59cf9d4b8139f25dd63a28c1a8b04d3a7742b225 b/040e9cdc7ad7162b40c43736a5677803cdd918aa
+index 59cf9d4b81..040e9cdc7a 100644
+--- a/59cf9d4b8139f25dd63a28c1a8b04d3a7742b225
++++ b/040e9cdc7ad7162b40c43736a5677803cdd918aa
+@@ -1,8 +1,7 @@
+-private List<JsonSchemaFileProvider> getProviders() {
+-    final List<JsonSchemaFileProvider> providers = new ArrayList<>();
+-    for (JsonSchemaProviderFactory factory : getProviderFactories()) {
+-        providers.addAll(factory.getProviders(myProject));
++@NotNull
++public Collection<JsonSchemaFileProvider> getProviders() {
++    synchronized (myLock) {
++        ensure();
++        return myUnmodifiableProviders;
+     }
+-    Collections.sort(providers, FILE_PROVIDER_COMPARATOR);
+-    return providers;
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/bf01ad38beba9ca2dcca739217b553c2d8a19fdf b/67e9ccab2fca9681d3691edbe7385113285c8b21
+index bf01ad38be..67e9ccab2f 100644
+--- a/bf01ad38beba9ca2dcca739217b553c2d8a19fdf
++++ b/67e9ccab2fca9681d3691edbe7385113285c8b21
+@@ -1,5 +1,4 @@
+ public <T extends LinkerSpec> Compiler<T> createLinker() {
+     CommandLineTool<LinkerSpec> commandLineTool = commandLineTool(ToolType.LINKER);
+-    commandLineTool.withSpecTransformer(withSystemArgs(LinkerSpec.class, platformConfiguration.getLinkerArgs()));
+-    return (Compiler<T>) new GccLinker(commandLineTool, tools.getArgTransformer(ToolType.LINKER), useCommandFile);
++    return (Compiler<T>) new GccLinker(commandLineTool, toolRegistry.getTool(ToolType.LINKER).getArgAction(), useCommandFile);
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/3005837a983568834d29817f37c8686552473349 b/c96dba0ec35a0c8aac87c37e30e2751817d94b35
+index 3005837a98..c96dba0ec3 100644
+--- a/3005837a983568834d29817f37c8686552473349
++++ b/c96dba0ec35a0c8aac87c37e30e2751817d94b35
+@@ -1,5 +1,5 @@
+ private void init() {
+-    if (tokenHandler == null && OGlobalConfiguration.NETWORK_HTTP_USE_TOKEN.getValueAsBoolean()) {
++    if (tokenHandler == null && server.getContextConfiguration().getValueAsBoolean(OGlobalConfiguration.NETWORK_HTTP_USE_TOKEN)) {
+         tokenHandler = server.getTokenHandler();
+     }
+ }
+\ No newline at end of file

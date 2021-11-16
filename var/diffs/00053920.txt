@@ -1,0 +1,16 @@
+diff --git a/4b6c6dc434525accc7432bf3d697bbaf5ba2548d b/a2e1abc8ab084241d780da18935d07184ea4b04c
+index 4b6c6dc434..a2e1abc8ab 100644
+--- a/4b6c6dc434525accc7432bf3d697bbaf5ba2548d
++++ b/a2e1abc8ab084241d780da18935d07184ea4b04c
+@@ -1,6 +1,7 @@
+ private void skipStart(final SelectStatement selectStatement) {
+-    if (getSqlParser().skipIfEqual(OracleKeyword.START)) {
+-        getSqlParser().accept(DefaultKeyword.WITH);
+-        getSqlParser().parseComparisonCondition(getShardingRule(), selectStatement, Collections.<SelectItem>emptyList());
++    if (!getSqlParser().skipIfEqual(OracleKeyword.START)) {
++        return;
+     }
++    getSqlParser().accept(DefaultKeyword.WITH);
++    getSqlParser().parseComparisonCondition(getShardingRule(), selectStatement, Collections.<SelectItem>emptyList());
+ }
+\ No newline at end of file

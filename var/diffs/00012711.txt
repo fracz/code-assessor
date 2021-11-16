@@ -1,0 +1,15 @@
+diff --git a/80f7fb487584f5346224a67f62b692ba2e36a6d1 b/59e5c6f54d31ba1f61e39e4a695d527f7b49b0ee
+index 80f7fb4875..59e5c6f54d 100644
+--- a/80f7fb487584f5346224a67f62b692ba2e36a6d1
++++ b/59e5c6f54d31ba1f61e39e4a695d527f7b49b0ee
+@@ -1,5 +1,5 @@
+-public void commandFinished(Project project) {
+-    if (myProject == project) {
+-        myCommandStarted = false;
+-    }
++public void commandFinished(Project p) {
++    if (myProject != p)
++        return;
++    myCommandStarted = false;
+ }
+\ No newline at end of file

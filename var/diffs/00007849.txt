@@ -1,0 +1,21 @@
+diff --git a/befec2d1bda7c22811056010642061f97538a42e b/b77e0920db398776603fb2cb2614a7adb6772c11
+index befec2d1bd..b77e0920db 100644
+--- a/befec2d1bda7c22811056010642061f97538a42e
++++ b/b77e0920db398776603fb2cb2614a7adb6772c11
+@@ -1,13 +1,13 @@
+ private boolean isBlockTag() {
+-    if (myTemplateToken instanceof XmlTemplateToken) {
+-        XmlFile xmlFile = ((XmlTemplateToken) myTemplateToken).getFile();
++    if (myTemplateToken != null) {
++        XmlFile xmlFile = myTemplateToken.getFile();
+         XmlDocument document = xmlFile.getDocument();
+         if (document != null) {
+             XmlTag tag = document.getRootTag();
+             if (tag != null) {
+                 return HtmlUtil.isHtmlBlockTagL(tag.getName());
+             }
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

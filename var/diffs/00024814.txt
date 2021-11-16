@@ -1,0 +1,14 @@
+diff --git a/db58954c9a25e874c5502d87318f4f49de5cd0a9 b/9deb721d92e2f67c824492368a698b4692ed9a3d
+index db58954c9a..9deb721d92 100644
+--- a/db58954c9a25e874c5502d87318f4f49de5cd0a9
++++ b/9deb721d92e2f67c824492368a698b4692ed9a3d
+@@ -1,6 +1,5 @@
+ public static void setIndexBuilt(String keyspaceName, String indexName) {
+-    ColumnFamily cf = ArrayBackedSortedColumns.factory.create(NAME, BUILT_INDEXES);
+-    cf.addColumn(new BufferCell(cf.getComparator().makeCellName(indexName), ByteBufferUtil.EMPTY_BYTE_BUFFER, FBUtilities.timestampMicros()));
+-    new Mutation(NAME, ByteBufferUtil.bytes(keyspaceName), cf).apply();
++    String req = "INSERT INTO %s.\"%s\" (table_name, index_name) VALUES (?, ?)";
++    executeInternal(String.format(req, NAME, BUILT_INDEXES), keyspaceName, indexName);
+     forceBlockingFlush(BUILT_INDEXES);
+ }
+\ No newline at end of file

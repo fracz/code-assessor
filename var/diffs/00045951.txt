@@ -1,0 +1,22 @@
+diff --git a/37a2e4c6b4d67c5553643c18ed74acf36ba37593 b/ad1f2e824900396ffd4bb5290de9808c9096ca9c
+index 37a2e4c6b4..ad1f2e8249 100644
+--- a/37a2e4c6b4d67c5553643c18ed74acf36ba37593
++++ b/ad1f2e824900396ffd4bb5290de9808c9096ca9c
+@@ -1,10 +1,12 @@
+ public synchronized void init() {
+     if (!initialized) {
+         routeMatcher = RouteMatcherFactory.get();
+-        new Thread(() -> {
+-            server = SparkServerFactory.create(hasMultipleHandlers());
+-            server.ignite(ipAddress, port, keystoreFile, keystorePassword, truststoreFile, truststorePassword, staticFileFolder, externalStaticFileFolder, latch, maxThreads, minThreads, threadIdleTimeoutMillis, webSocketHandlers, webSocketIdleTimeoutMillis);
+-        }).start();
++        if (!ServletFlag.isIsRunFromServlet()) {
++            new Thread(() -> {
++                server = SparkServerFactory.create(hasMultipleHandlers());
++                server.ignite(ipAddress, port, sslStores, staticFileFolder, externalStaticFileFolder, latch, maxThreads, minThreads, threadIdleTimeoutMillis, webSocketHandlers, webSocketIdleTimeoutMillis);
++            }).start();
++        }
+         initialized = true;
+     }
+ }
+\ No newline at end of file

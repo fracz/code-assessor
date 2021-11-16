@@ -1,0 +1,13 @@
+diff --git a/ff1ad3193f34d18d5836729194e75ea0ba85fcbd b/66cfbc4f63e2d941c61ca4af9b119fae1a598593
+index ff1ad3193f..66cfbc4f63 100644
+--- a/ff1ad3193f34d18d5836729194e75ea0ba85fcbd
++++ b/66cfbc4f63e2d941c61ca4af9b119fae1a598593
+@@ -1,4 +1,6 @@
+-@Test(expected = IOException.class)
++@Test
+ public void getTestAbnormal3() throws IOException {
++    mThrown.expect(NullPointerException.class);
++    mThrown.expectMessage("Tachyon scheme cannot be null. Use tachyon:// or tachyon-ft://.");
+     TachyonFS.get(new TachyonURI("/" + sHost + ":" + (sPort - 1)), mMasterTachyonConf);
+ }
+\ No newline at end of file

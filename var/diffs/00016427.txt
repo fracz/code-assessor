@@ -1,0 +1,20 @@
+diff --git a/4f4bd639ffb509ced2c3f5a318b925be0bb69737 b/5f1a84e7eb749ca449ddd07a1fb3ea1bf166f99b
+index 4f4bd639ff..5f1a84e7eb 100644
+--- a/4f4bd639ffb509ced2c3f5a318b925be0bb69737
++++ b/5f1a84e7eb749ca449ddd07a1fb3ea1bf166f99b
+@@ -1,13 +1,12 @@
+ public void generate() {
+-    v.defineClass(jetFile, V1_6, ACC_PUBLIC | ACC_FINAL, namespacePartName.getInternalName(), null, // "jet/lang/Namespace",
+-    "java/lang/Object", new String[0]);
++    v.defineClass(jetFile, V1_6, ACC_PUBLIC | ACC_FINAL, namespacePartName.getInternalName(), null, "java/lang/Object", ArrayUtil.EMPTY_STRING_ARRAY);
+     v.visitSource(jetFile.getName(), null);
+     writeKotlinPackageFragmentAnnotation();
+     for (JetDeclaration declaration : jetFile.getDeclarations()) {
+         if (declaration instanceof JetNamedFunction || declaration instanceof JetProperty) {
+             genFunctionOrProperty(context, (JetTypeParameterListOwner) declaration, v);
+         }
+     }
+     generateStaticInitializers();
+     v.done();
+ }
+\ No newline at end of file

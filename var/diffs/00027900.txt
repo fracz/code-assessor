@@ -1,0 +1,15 @@
+diff --git a/95d04a0b1ab174d25f3af53a208608325142f80b b/ecb12ae93abbfa6448ed25bebc79386c932062ae
+index 95d04a0b1a..ecb12ae93a 100644
+--- a/95d04a0b1ab174d25f3af53a208608325142f80b
++++ b/ecb12ae93abbfa6448ed25bebc79386c932062ae
+@@ -1,8 +1,7 @@
+ @Test(dataProvider = "GitConnectionFactory", dataProviderClass = GitConnectionFactoryProvider.class, expectedExceptions = GitException.class, expectedExceptionsMessageRegExp = "No remote repository specified.  " + "Please, specify either a URL or a remote name from which new revisions should be fetched in request.")
+ public void testWhenThereAreNoAnyRemotes(GitConnectionFactory connectionFactory) throws Exception {
+     // given
+     GitConnection connection = connectToInitializedGitRepository(connectionFactory, repository);
+     // when
+-    FetchRequest request = newDto(FetchRequest.class);
+-    connection.fetch(request);
++    connection.fetch(FetchParams.create(null));
+ }
+\ No newline at end of file

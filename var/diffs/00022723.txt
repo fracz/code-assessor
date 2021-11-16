@@ -1,0 +1,35 @@
+diff --git a/e8af31e1ebfe1f7d19b5a80c5180144a208318d0 b/74af5b5e83f11613b7e219bb6dfbd4bacc144b3e
+index e8af31e1eb..74af5b5e83 100644
+--- a/e8af31e1ebfe1f7d19b5a80c5180144a208318d0
++++ b/74af5b5e83f11613b7e219bb6dfbd4bacc144b3e
+@@ -1,20 +1,22 @@
+ /**
+- * Return charset String guessed from the source's properties.
++ * <p>
++ * Returns charset String guessed from the source's properties.
+  * This method must be called after parsing target file(s).
++ * </p>
+  * @return Charset String. Null is returned if guessing the source fails.
+  */
+ public String getEstimatedCharset() {
+-    if (mSpecifiedCharset != null) {
++    if (TextUtils.isEmpty(mSpecifiedCharset)) {
+         return mSpecifiedCharset;
+     }
+-    switch(mType) {
+-        case VCardConfig.PARSE_TYPE_WINDOWS_MOBILE_JP:
+-        case VCardConfig.PARSE_TYPE_FOMA:
+-        case VCardConfig.PARSE_TYPE_MOBILE_PHONE_JP:
++    switch(mParseType) {
++        case PARSE_TYPE_WINDOWS_MOBILE_V65_JP:
++        case PARSE_TYPE_DOCOMO_TORELATE_NEST:
++        case PARSE_TYPE_MOBILE_PHONE_JP:
+             return "SHIFT_JIS";
+-        case VCardConfig.PARSE_TYPE_APPLE:
++        case PARSE_TYPE_APPLE:
+             return "UTF-8";
+         default:
+             return null;
+     }
+ }
+\ No newline at end of file

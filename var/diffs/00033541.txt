@@ -1,0 +1,17 @@
+diff --git a/302dd90883936352d503bb844b9cf3db9741581b b/72c0923dca3529f29efc2c9694d9af3e1ff86445
+index 302dd90883..72c0923dca 100644
+--- a/302dd90883936352d503bb844b9cf3db9741581b
++++ b/72c0923dca3529f29efc2c9694d9af3e1ff86445
+@@ -1,9 +1,10 @@
+ private AbstractConflictManager createIvyConflictManager() {
+     if (conflictStrategy.getType() instanceof LatestStrategyType) {
+         return new LatestConflictManager(new LatestRevisionStrategy());
+     } else if (conflictStrategy.getType() instanceof StrictStrategyType) {
+-        return new ForceAwareStrictConflictManager((StrictStrategyType) conflictStrategy.getType());
++        DependencySelector selector = new DependencySelector(((StrictStrategyType) conflictStrategy.getType()).getForce());
++        return new ForceAwareStrictConflictManager(selector);
+     } else {
+         throw new RuntimeException("I don't know what ivy conflict manager to use for this VersionConflictStrategy: " + conflictStrategy);
+     }
+ }
+\ No newline at end of file

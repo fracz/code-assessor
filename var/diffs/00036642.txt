@@ -1,0 +1,22 @@
+diff --git a/64f0dcaf264b459dec0e9cfbbbac448ed5c1d5d7 b/83f056958db1fa45d154221c7e4c96a3b8493af9
+index 64f0dcaf26..83f056958d 100644
+--- a/64f0dcaf264b459dec0e9cfbbbac448ed5c1d5d7
++++ b/83f056958db1fa45d154221c7e4c96a3b8493af9
+@@ -1,8 +1,15 @@
+ @Override
+-public void onRetransformRequest(Class<?> target, final ClassFileTransformer transformer) {
++public RequestHandle onRetransformRequest(Class<?> target, final ClassFileTransformer transformer) {
++    if (target == null) {
++        throw new NullPointerException("target must not be null");
++    }
++    if (transformer == null) {
++        throw new NullPointerException("transformer must not be null");
++    }
+     final TransformerKey key = createTransformKey(target);
+     add(key, transformer);
+     if (logger.isInfoEnabled()) {
+         logger.info("added retransformer classLoader: {}, class: {}, registry size: {}", target.getClassLoader(), target.getName(), transformerMap.size());
+     }
++    return new DefaultRequestHandle(key);
+ }
+\ No newline at end of file

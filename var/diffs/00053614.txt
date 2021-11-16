@@ -1,0 +1,16 @@
+diff --git a/64b55789dd3ac9583d15ca6b741847ece0136789 b/2ef896b4dd0b42602b9f3d874d0aa828febe58e1
+index 64b55789dd..2ef896b4dd 100644
+--- a/64b55789dd3ac9583d15ca6b741847ece0136789
++++ b/2ef896b4dd0b42602b9f3d874d0aa828febe58e1
+@@ -1,8 +1,8 @@
+ @Test
+ public void assertFindActualTableIndex() {
+     TableRuleConfiguration tableRuleConfig = new TableRuleConfiguration();
+     tableRuleConfig.setLogicTable("logicTable");
+-    tableRuleConfig.setActualTables("ds0.table_0, ds0.table_1, ds0.table_2, ds1.table_0, ds1.table_1, ds1.table_2");
+-    TableRule actual = tableRuleConfig.build(null);
++    tableRuleConfig.setActualTables("ds${0..1}.table_${0..2}");
++    TableRule actual = tableRuleConfig.build(createDataSourceMap());
+     assertThat(actual.findActualTableIndex("ds1", "table_1"), is(4));
+ }
+\ No newline at end of file

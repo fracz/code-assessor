@@ -1,0 +1,13 @@
+diff --git a/e73bbb49d564010215648251f8e70090c04fcbbd b/4a73e569103361b3f3a5b300e913e73fc4d7d36c
+index e73bbb49d5..4a73e56910 100644
+--- a/e73bbb49d564010215648251f8e70090c04fcbbd
++++ b/4a73e569103361b3f3a5b300e913e73fc4d7d36c
+@@ -1,5 +1,5 @@
+ public PyFunction buildFunction(Project project) {
+     String text = buildText(project);
+-    PyElementGenerator generator = PythonLanguage.getInstance().getElementGenerator();
+-    return generator.createFromText(project, PyFunction.class, text);
++    PyElementGenerator generator = PyElementGenerator.getInstance(project);
++    return generator.createFromText(PyFunction.class, text);
+ }
+\ No newline at end of file

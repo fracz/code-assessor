@@ -1,0 +1,17 @@
+diff --git a/1b13b9e16c876f3a49fbde1bac56a47eed15aff7 b/96034a47cac3dac1e9d078d3870ff03151c5adc4
+index 1b13b9e16c..96034a47ca 100644
+--- a/1b13b9e16c876f3a49fbde1bac56a47eed15aff7
++++ b/96034a47cac3dac1e9d078d3870ff03151c5adc4
+@@ -1,5 +1,9 @@
+ @Override
+ public void addAnnotationKey(AnnotationKey annotationKey) {
+-    annotationKeyChecker.check(annotationKey, provider);
+-    TypeProviderLoader.this.annotationKeys.add(annotationKey);
++    if (annotationKey == null) {
++        throw new NullPointerException("annotationKey must not be null");
++    }
++    // local check
++    contextAnnotationKeyChecker.check(annotationKey, provider);
++    this.annotationKeys.add(annotationKey);
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/f1e05cd0c21a744c18709ef23c45085375994165 b/3785842b9cc9f3f59b27ee68c6741680ffb99b6a
+index f1e05cd0c2..3785842b9c 100644
+--- a/f1e05cd0c21a744c18709ef23c45085375994165
++++ b/3785842b9cc9f3f59b27ee68c6741680ffb99b6a
+@@ -1,11 +1,13 @@
+ @Override
+ public Pair<Gradient, INDArray> backpropGradient(INDArray epsilon) {
+     // INDArray activationDerivative = Nd4j.getExecutioner().execAndReturn(Nd4j.getOpFactory().createTransform(conf().getLayer().getActivationFunction(), input).derivative());
+-    INDArray activationDerivative = conf().getLayer().getActivationFn().getGradient(input);
+-    INDArray delta = epsilon.muli(activationDerivative);
++    // INDArray activationDerivative = conf().getLayer().getActivationFn().getGradient(input);
++    // INDArray delta = epsilon.muli(activationDerivative);
++    // TODO handle activation function params
++    INDArray delta = conf().getLayer().getActivationFn().backprop(input.dup(), epsilon).getFirst();
+     if (maskArray != null) {
+         delta.muliColumnVector(maskArray);
+     }
+     Gradient ret = new DefaultGradient();
+     return new Pair<>(ret, delta);
+ }
+\ No newline at end of file

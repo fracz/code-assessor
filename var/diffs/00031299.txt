@@ -1,0 +1,13 @@
+diff --git a/1c060abebcccc39187da991755dc063d5bff5028 b/08be148b9c85ec89fdc0b477f6c5f73b443942fb
+index 1c060abebc..08be148b9c 100644
+--- a/1c060abebcccc39187da991755dc063d5bff5028
++++ b/08be148b9c85ec89fdc0b477f6c5f73b443942fb
+@@ -1,4 +1,6 @@
+ @Override
+ public InternalFacet buildFacet(String facetName) {
+-    return new InternalFullHistogramFacet(facetName, comparatorType, entries, cacheRecycler);
++    List<InternalFullHistogramFacet.FullEntry> entries1 = new ArrayList<InternalFullHistogramFacet.FullEntry>(entries.v().valueCollection());
++    entries.release();
++    return new InternalFullHistogramFacet(facetName, comparatorType, entries1);
+ }
+\ No newline at end of file

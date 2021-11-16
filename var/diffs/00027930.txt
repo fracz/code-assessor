@@ -1,0 +1,19 @@
+diff --git a/6672d26adffc903157dae739d80dccdc563cd3aa b/9ab482923c12bbdb9c4d1c6b94d0354e6f46244f
+index 6672d26adf..9ab482923c 100644
+--- a/6672d26adffc903157dae739d80dccdc563cd3aa
++++ b/9ab482923c12bbdb9c4d1c6b94d0354e6f46244f
+@@ -1,10 +1,8 @@
+-@Path("init")
+ @POST
+-@Consumes(MediaType.APPLICATION_JSON)
+-public void init(final InitRequest request) throws ApiException {
+-    request.setWorkingDir(getAbsoluteProjectPath(projectPath));
++@Path("init")
++public void init(@QueryParam("bare") boolean bare) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+-        gitConnection.init(request);
++        gitConnection.init(bare);
+     }
+     projectRegistry.setProjectType(projectPath, GitProjectType.TYPE_ID, true);
+ }
+\ No newline at end of file

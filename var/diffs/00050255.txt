@@ -1,0 +1,19 @@
+diff --git a/9291869c350e700efc31e78a1727baec968661b0 b/2dd3e403155cf799e62f2d73d4cf3b0163c9318d
+index 9291869c35..2dd3e40315 100644
+--- a/9291869c350e700efc31e78a1727baec968661b0
++++ b/2dd3e403155cf799e62f2d73d4cf3b0163c9318d
+@@ -1,12 +1,12 @@
+ @Override
+ public void doSave(IProgressMonitor monitor) {
+     try {
+         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+-        DiagramLoader.save(new DefaultProgressMonitor(monitor), getDiagramPart(), getDiagram(), false, buffer);
++        DiagramLoader.save(RuntimeUtils.makeMonitor(monitor), getDiagramPart(), getDiagram(), false, buffer);
+         final IFile file = getEditorFile();
+         file.setContents(new ByteArrayInputStream(buffer.toByteArray()), true, true, monitor);
+         getCommandStack().markSaveLocation();
+     } catch (Exception e) {
+         UIUtils.showErrorDialog(getSite().getShell(), "Save diagram", null, e);
+     }
+ }
+\ No newline at end of file

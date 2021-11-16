@@ -1,0 +1,22 @@
+diff --git a/9430d09aacff3e04fbb4bd50c2b1c5d249fbf583 b/2e59e115d793e87dd572afde75e5cc4543394291
+index 9430d09aac..2e59e115d7 100644
+--- a/9430d09aacff3e04fbb4bd50c2b1c5d249fbf583
++++ b/2e59e115d793e87dd572afde75e5cc4543394291
+@@ -1,11 +1,12 @@
+-public void beginRequest(byte iCommand, OStorageRemoteSession session, byte[] token) throws IOException {
++public void beginRequest(byte iCommand, OStorageRemoteSession session) throws IOException {
++    OStorageRemoteNodeSession nodeSession = session.get(getServerURL());
+     writeByte(iCommand);
+-    writeInt(session.sessionId);
+-    if (token != null) {
++    writeInt(nodeSession.getSessionId());
++    if (nodeSession.getToken() != null) {
+         if (!session.has(this)) {
+-            writeBytes(token);
++            writeBytes(nodeSession.getToken());
+             session.add(this);
+         } else
+             writeBytes(new byte[] {});
+     }
+ }
+\ No newline at end of file

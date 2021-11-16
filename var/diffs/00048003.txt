@@ -1,0 +1,26 @@
+diff --git a/9026168a903e6a318e12b9d00a3b8f3f95fee2b1 b/0ec29fda19e83188fe1c736b32cd108aec4edf6a
+index 9026168a90..0ec29fda19 100644
+--- a/9026168a903e6a318e12b9d00a3b8f3f95fee2b1
++++ b/0ec29fda19e83188fe1c736b32cd108aec4edf6a
+@@ -1,18 +1,18 @@
+ @Override
+ public synchronized void activatePart() {
+     if (isLoaded) {
+         return;
+     }
+     isLoaded = true;
+     LoadingJob.createService(new DatabaseLoadService<java.util.List<MySQLPrivilege>>(MySQLMessages.editors_user_editor_privileges_service_load_privileges, getExecutionContext()) {
+
+         @Override
+-        public java.util.List<MySQLPrivilege> evaluate() throws InvocationTargetException, InterruptedException {
++        public java.util.List<MySQLPrivilege> evaluate(DBRProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+             try {
+-                return getDatabaseObject().getDataSource().getPrivileges(getProgressMonitor());
++                return getDatabaseObject().getDataSource().getPrivileges(monitor);
+             } catch (DBException e) {
+                 throw new InvocationTargetException(e);
+             }
+         }
+     }, pageControl.createPrivilegesLoadVisualizer()).schedule();
+ }
+\ No newline at end of file

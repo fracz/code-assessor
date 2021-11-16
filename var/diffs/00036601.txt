@@ -1,0 +1,17 @@
+diff --git a/2b7a12812673a4c3a113bbef70a179159d3eacde b/7fb16845c2df164afbcf9ccbe6461ea4cf20d523
+index 2b7a128126..7fb16845c2 100644
+--- a/2b7a12812673a4c3a113bbef70a179159d3eacde
++++ b/7fb16845c2df164afbcf9ccbe6461ea4cf20d523
+@@ -1,7 +1,9 @@
+ private Connection connectDB(String url) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
++    String user = db.getProperty("mysql.user");
++    String password = db.getProperty("mysql.password");
+     Driver driver = new NonRegisteringDriver();
+     Properties properties = new Properties();
+-    properties.setProperty("user", "lucytest");
+-    properties.setProperty("password", "testlucy");
++    properties.setProperty("user", user);
++    properties.setProperty("password", password);
+     return driver.connect(url, properties);
+ }
+\ No newline at end of file

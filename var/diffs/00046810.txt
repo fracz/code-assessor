@@ -1,0 +1,13 @@
+diff --git a/5aeff06630ef72cf2984a110bcc0940d062d0808 b/a6f84730a748d77701d19ac4f8466cab77efbfe4
+index 5aeff06630..a6f84730a7 100644
+--- a/5aeff06630ef72cf2984a110bcc0940d062d0808
++++ b/a6f84730a748d77701d19ac4f8466cab77efbfe4
+@@ -1,5 +1,6 @@
+ void stop() {
+-    metaDataEncoder.endTime(epochClock.time());
++    endTime = epochClock.time();
++    metaDataEncoder.endTime(endTime);
+     metaDataBuffer.force();
+     stopped = true;
+ }
+\ No newline at end of file

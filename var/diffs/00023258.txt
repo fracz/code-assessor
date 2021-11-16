@@ -1,0 +1,23 @@
+diff --git a/798f45d23e811be232e8c3bf48699f3f0a880062 b/f5b65af3d771ae043eab7af13c9d65096565074a
+index 798f45d23e..f5b65af3d7 100644
+--- a/798f45d23e811be232e8c3bf48699f3f0a880062
++++ b/f5b65af3d771ae043eab7af13c9d65096565074a
+@@ -1,15 +1,15 @@
+ /**
+  * Cancels the hotspot and makes the notification inactive.
+  */
+ private void makeInactive() {
+     if (mActivated) {
+         // Make sure that we clear the hotspot from the center.
+-        getBackground().setHotspot(0, getWidth() / 2, getHeight() / 2);
+-        getBackground().removeHotspot(0);
++        mCustomBackground.setHotspot(0, getWidth() / 2, getActualHeight() / 2);
++        mCustomBackground.removeHotspot(0);
+         mActivated = false;
+     }
+     if (mOnActivatedListener != null) {
+         mOnActivatedListener.onReset(this);
+     }
+     removeCallbacks(mTapTimeoutRunnable);
+ }
+\ No newline at end of file

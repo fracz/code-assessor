@@ -1,0 +1,14 @@
+diff --git a/db960d01c66affcec8ee344408c8983e3b235e09 b/be218e6629083957ed7ea2e2629000907a9fba09
+index db960d01c6..be218e6629 100644
+--- a/db960d01c66affcec8ee344408c8983e3b235e09
++++ b/be218e6629083957ed7ea2e2629000907a9fba09
+@@ -1,7 +1,7 @@
+ // ##################################
+ // Serialization Proxy
+ // ##################################
+ @Override
+ public void write(final DataOutput out) throws IOException {
+-    throw new UnsupportedOperationException();
++    new FaunusSerializer(this.getConf()).writeProperty(this, out);
+ }
+\ No newline at end of file

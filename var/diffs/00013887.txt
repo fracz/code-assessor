@@ -1,0 +1,20 @@
+diff --git a/4ca57bb898ba944ddb4a6e5f1a33fcdda78afce4 b/45bc118eaddec598516e7a97441109381e343c62
+index 4ca57bb898..45bc118ead 100644
+--- a/4ca57bb898ba944ddb4a6e5f1a33fcdda78afce4
++++ b/45bc118eaddec598516e7a97441109381e343c62
+@@ -1,7 +1,11 @@
+ @Nullable
+ public String getContent() throws VcsException {
+-    if (file == null || file.isDirectory())
++    if (myFile.isDirectory()) {
+         return null;
+-    GitCommand command = new GitCommand(project, GitVcsSettings.getInstance(project), GitUtil.getVcsRoot(project, file));
+-    return command.getContents(file.getPath(), revision.getRev());
++    }
++    VirtualFile root = GitUtil.getGitRoot(myProject, myFile);
++    GitSimpleHandler h = new GitSimpleHandler(myProject, root, "show");
++    h.setNoSSH(true);
++    h.addParameters(myRevision.getRev() + ":" + GitUtil.relativePath(root, myFile));
++    return h.run();
+ }
+\ No newline at end of file

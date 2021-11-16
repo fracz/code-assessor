@@ -1,0 +1,18 @@
+diff --git a/00d9eeffb1197fff2f52876e0e8174761d0a2564 b/69958f41068e7ab25d72cf220479d8feefaea333
+index 00d9eeffb1..69958f4106 100644
+--- a/00d9eeffb1197fff2f52876e0e8174761d0a2564
++++ b/69958f41068e7ab25d72cf220479d8feefaea333
+@@ -1,8 +1,11 @@
++/**
++ * {@inheritDoc}
++ */
+ public void startFailed(final Throwable exception) {
+     EventQueue.invokeLater(new Runnable() {
+
+         public void run() {
+-            GitUtil.showOperationError(handler.project(), exception.getMessage(), operationName);
++            GitUtil.showOperationError(myHandler.project(), myOperationName, exception.getMessage());
+         }
+     });
+ }
+\ No newline at end of file

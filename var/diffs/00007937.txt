@@ -1,0 +1,16 @@
+diff --git a/512a5caf4874f4b209377f4855b0f689677e5555 b/89ec9db29d719f45b032b6ec6573f1ff1e18d6b0
+index 512a5caf48..89ec9db29d 100644
+--- a/512a5caf4874f4b209377f4855b0f689677e5555
++++ b/89ec9db29d719f45b032b6ec6573f1ff1e18d6b0
+@@ -1,9 +1,9 @@
+ private void buildVirtualFiles(final List<VirtualFile> files, final Object tag) {
+-    ChangesBrowserNode filesNode = new ChangesBrowserNode(myProject, tag);
++    ChangesBrowserNode filesNode = ChangesBrowserNode.create(myProject, tag);
+     model.insertNodeInto(filesNode, root, root.getChildCount());
+     final HashMap<FilePath, ChangesBrowserNode> foldersCache = new HashMap<FilePath, ChangesBrowserNode>();
+     final HashMap<Module, ChangesBrowserNode> moduleCache = new HashMap<Module, ChangesBrowserNode>();
+     for (VirtualFile file : files) {
+         insertChangeNode(file, foldersCache, moduleCache, filesNode);
+     }
+ }
+\ No newline at end of file

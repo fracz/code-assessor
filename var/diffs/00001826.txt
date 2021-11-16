@@ -1,0 +1,17 @@
+diff --git a/69cdebc149d9f6b6674de149d486773cbd00da70 b/0bcf487e66ca1c5279433c5fa27e152fe3550236
+index 69cdebc149..0bcf487e66 100644
+--- a/69cdebc149d9f6b6674de149d486773cbd00da70
++++ b/0bcf487e66ca1c5279433c5fa27e152fe3550236
+@@ -1,9 +1,5 @@
+ private void doTest(@NonNls final String qClassName) throws Exception {
+-    doTest(new PerformAction() {
+-
+-        @Override
+-        public void performAction(VirtualFile rootDir, VirtualFile rootAfter) throws Exception {
+-            SafeDeleteTest.this.performAction(qClassName);
+-        }
++    doTest((rootDir, rootAfter) -> {
++        SafeDeleteTest.this.performAction(qClassName);
+     });
+ }
+\ No newline at end of file

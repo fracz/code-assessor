@@ -1,0 +1,25 @@
+diff --git a/53dfe5ac9920ba56be10b0037c137a2e25636ae5 b/c669bdace9796f512e043cdd7490dd2dbbf4dec8
+index 53dfe5ac99..c669bdace9 100644
+--- a/53dfe5ac9920ba56be10b0037c137a2e25636ae5
++++ b/c669bdace9796f512e043cdd7490dd2dbbf4dec8
+@@ -1,17 +1,14 @@
+ /**
+  * Runs a unit of work within this transaction
+  *
+  * @param r: the runnable job
+  * @throws StorageException
+  */
+-public void run(TransactionRunnable r) throws StorageException {
+-    if (!isOpen) {
+-        throw new PermanentStorageException("transaction is not open");
+-    }
+-    db.setSessionId(tx.getSessionId());
++public void run(PersistitKeyValueStore.PersistitJob r) throws StorageException {
++    begin();
+     try {
+         tx.run(r);
+     } catch (PersistitException ex) {
+         throw new PermanentStorageException(ex.toString());
+     }
+ }
+\ No newline at end of file

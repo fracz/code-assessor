@@ -1,0 +1,20 @@
+diff --git a/e2d8ee1acc1b920aea7ef674674dd9f37534103f b/757aa19fa51695d0a5a21f76b74a09c6f54118d3
+index e2d8ee1acc..757aa19fa5 100644
+--- a/e2d8ee1acc1b920aea7ef674674dd9f37534103f
++++ b/757aa19fa51695d0a5a21f76b74a09c6f54118d3
+@@ -1,8 +1,8 @@
+-private void appendIf(StringBuilder stringBuilder, boolean on, String text) {
+-    if (on) {
+-        if (stringBuilder.length() > 0) {
+-            stringBuilder.append(", ");
+-        }
+-        stringBuilder.append(text);
++private void appendIf(StringBuilder stringBuilder, String text, boolean condition) {
++    if (!condition)
++        return;
++    if (stringBuilder.length() > 0) {
++        stringBuilder.append(", ");
+     }
++    stringBuilder.append(text);
+ }
+\ No newline at end of file

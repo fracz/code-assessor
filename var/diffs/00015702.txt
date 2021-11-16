@@ -1,0 +1,30 @@
+diff --git a/a1ebe1d5616d26d748f7190a68b3b7f95b50f169 b/d4f5e433b22f0a0aca17e66da5083200f2431efa
+index a1ebe1d561..d4f5e433b2 100644
+--- a/a1ebe1d5616d26d748f7190a68b3b7f95b50f169
++++ b/d4f5e433b22f0a0aca17e66da5083200f2431efa
+@@ -1,19 +1,19 @@
+ private BindingTraceAdapter createFieldTrackingTrace(final PropertyDescriptor propertyDescriptor) {
+-    return new BindingTraceAdapter(traceForMembers) {
++    return new BindingTraceAdapter(traceForMembers).addHandler(BindingContext.REFERENCE_TARGET, new BindingTraceAdapter.RecordHandler<JetReferenceExpression, DeclarationDescriptor>() {
+
+         @Override
+-        public void recordReferenceResolution(@NotNull JetReferenceExpression expression, @NotNull DeclarationDescriptor descriptor) {
+-            super.recordReferenceResolution(expression, descriptor);
++        public void handleRecord(WritableSlice<JetReferenceExpression, DeclarationDescriptor> slice, JetReferenceExpression expression, DeclarationDescriptor descriptor) {
+             if (expression instanceof JetSimpleNameExpression) {
+                 JetSimpleNameExpression simpleNameExpression = (JetSimpleNameExpression) expression;
+                 if (simpleNameExpression.getReferencedNameElementType() == JetTokens.FIELD_IDENTIFIER) {
+                     // This check may be considered redundant as long as $x is only accessible from accessors to $x
+                     if (descriptor == propertyDescriptor) {
+                         // TODO : original?
+-                        requireBackingField(propertyDescriptor);
++                        // TODO: this trace?
++                        traceForMembers.record(BindingContext.BACKING_FIELD_REQUIRED, propertyDescriptor);
+                     }
+                 }
+             }
+         }
+-    };
++    });
+ }
+\ No newline at end of file

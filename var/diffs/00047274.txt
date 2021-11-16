@@ -1,0 +1,15 @@
+diff --git a/821290f39d56c7aa132728406fe3653e2d137273 b/babb4042aa7125f8b186e73e0f97899bb5024528
+index 821290f39d..babb4042aa 100644
+--- a/821290f39d56c7aa132728406fe3653e2d137273
++++ b/babb4042aa7125f8b186e73e0f97899bb5024528
+@@ -1,6 +1,6 @@
+ @Test
+ public void mustWriteAndReadEmpty() {
+-    writeOneTransaction(0);
+-    checkRead(0);
+-    clear();
++    SharedGroup db = new SharedGroup(createDBFileName(), SharedGroup.Durability.ASYNC);
++    writeOneTransaction(db, 0);
++    checkRead(db, 0);
+ }
+\ No newline at end of file

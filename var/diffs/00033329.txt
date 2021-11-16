@@ -1,0 +1,17 @@
+diff --git a/b9d6c347a5164209dd30509be037b6cff59dac7b b/ca73ae1b9328f3d2e479f194fc13f29fd6f8fa8e
+index b9d6c347a5..ca73ae1b93 100644
+--- a/b9d6c347a5164209dd30509be037b6cff59dac7b
++++ b/ca73ae1b9328f3d2e479f194fc13f29fd6f8fa8e
+@@ -1,8 +1,9 @@
+-private synchronized BuildProgressEvent toBuildProgressEvent(final InternalBuildProgressEvent event) {
++private BuildProgressEvent toBuildProgressEvent(InternalBuildProgressEvent event) {
+     if (event instanceof InternalBuildStartedProgressEvent) {
+         return buildStartedEvent((InternalBuildStartedProgressEvent) event);
+     } else if (event instanceof InternalBuildFinishedProgressEvent) {
+         return buildFinishedEvent((InternalBuildFinishedProgressEvent) event);
++    } else {
++        return null;
+     }
+-    return null;
+ }
+\ No newline at end of file

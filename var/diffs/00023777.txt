@@ -1,0 +1,22 @@
+diff --git a/3b1031eec1665999aeeac0a5f2256ea9e9df5176 b/9f88d06caf6be9afc48c1c80ca9a582935aaaa2f
+index 3b1031eec1..9f88d06caf 100644
+--- a/3b1031eec1665999aeeac0a5f2256ea9e9df5176
++++ b/9f88d06caf6be9afc48c1c80ca9a582935aaaa2f
+@@ -1,12 +1,12 @@
+ /**
+  * Queries the view for all children and records their location metadata.
+  */
+ private void recordVisibleChildren() {
+     for (int i = 0; i < mHelper.getVisibleChildCount(); i++) {
+-        String modelId = mHelper.getModelIdAt(i);
+-        if (!mKnownIds.contains(modelId)) {
+-            mKnownIds.add(modelId);
+-            recordItemData(mHelper.getAbsoluteRectForChildViewAt(i), modelId);
++        int adapterPosition = mHelper.getAdapterPositionAt(i);
++        if (!mKnownPositions.get(adapterPosition)) {
++            mKnownPositions.put(adapterPosition, true);
++            recordItemData(mHelper.getAbsoluteRectForChildViewAt(i), adapterPosition);
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/480a4b922af477040e22e490ea4a4685e6ebe28d b/9cf9595fa35df5a37242c2de6ff2572fbbdd6f74
+index 480a4b922a..9cf9595fa3 100644
+--- a/480a4b922af477040e22e490ea4a4685e6ebe28d
++++ b/9cf9595fa35df5a37242c2de6ff2572fbbdd6f74
+@@ -1,7 +1,7 @@
+ @Override
+ public int hashCode() {
+-    int result = name.hashCode();
+-    result = 31 * result + serverType.hashCode();
+-    result = 31 * result + serviceType.hashCode();
++    int result = name != null ? name.hashCode() : 0;
++    result = 31 * result + (int) serviceTypeCode;
++    result = 31 * result + (serverType != null ? serverType.hashCode() : 0);
+     return result;
+ }
+\ No newline at end of file

@@ -1,0 +1,37 @@
+diff --git a/e37c794036c53f263ab668ff06538fc5db2dd01c b/922294c37ed3ecc0cde9ccbc359551dcf329c6a7
+index e37c794036..922294c37e 100644
+--- a/e37c794036c53f263ab668ff06538fc5db2dd01c
++++ b/922294c37ed3ecc0cde9ccbc359551dcf329c6a7
+@@ -1,20 +1,24 @@
+ public final Token CmpToken() throws ParseException {
+     Token value = null;
+-    switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
++    switch((jj_ntk == -1) ? jj_ntk_f() : jj_ntk) {
+         case STRREGEXCMP:
+-            value = jj_consume_token(STRREGEXCMP);
+-            break;
++            {
++                value = jj_consume_token(STRREGEXCMP);
++                break;
++            }
+         case NUMCMP:
+-            value = jj_consume_token(NUMCMP);
+-            break;
++            {
++                value = jj_consume_token(NUMCMP);
++                break;
++            }
+         default:
+-            jj_la1[63] = jj_gen;
++            jj_la1[62] = jj_gen;
+             jj_consume_token(-1);
+             throw new ParseException();
+     }
+     {
+-        if (true)
++        if ("" != null)
+             return value;
+     }
+     throw new Error("Missing return statement in function");
+ }
+\ No newline at end of file

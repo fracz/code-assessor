@@ -1,0 +1,14 @@
+diff --git a/e67512fa2a47ec5834c650483183c4fa69342ba6 b/e205eaf8a8fde91a10ef64a80b1ee4285bf01174
+index e67512fa2a..e205eaf8a8 100644
+--- a/e67512fa2a47ec5834c650483183c4fa69342ba6
++++ b/e205eaf8a8fde91a10ef64a80b1ee4285bf01174
+@@ -1,7 +1,5 @@
+ private void trimToSize() throws IOException {
+     while (size > maxSize) {
+-        Map.Entry<String, Entry> toEvict = // lruEntries.eldest();
+-        lruEntries.entrySet().iterator().next();
+-        remove(toEvict.getKey());
++        remove(lruEntries.entrySet().iterator().next().getKey());
+     }
+ }
+\ No newline at end of file

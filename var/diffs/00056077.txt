@@ -1,0 +1,12 @@
+diff --git a/e6e654862221eedb649f2b6fb3c995b823bbefde b/1d13abe80d09cf1f7872c5e73cbfdccb0e27cf94
+index e6e6548622..1d13abe80d 100644
+--- a/e6e654862221eedb649f2b6fb3c995b823bbefde
++++ b/1d13abe80d09cf1f7872c5e73cbfdccb0e27cf94
+@@ -1,5 +1,5 @@
+ @Test
+ public void testWithDependencyChecking() {
+-    ApplicationContext ctx = new ClassPathXmlApplicationContext("org/springframework/aop/framework/withDependencyChecking.xml");
++    ApplicationContext ctx = new ClassPathXmlApplicationContext(DEPENDENCY_CHECK_CONTEXT, getClass());
+     ctx.getBean("testBean");
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/f6a7dd4380b088469f3c79b746891d579837918f b/ada1d7eb124c5e07b3ea44751e00cc395c80e1cd
+index f6a7dd4380..ada1d7eb12 100644
+--- a/f6a7dd4380b088469f3c79b746891d579837918f
++++ b/ada1d7eb124c5e07b3ea44751e00cc395c80e1cd
+@@ -1,12 +1,8 @@
+ @Test
+ public void shouldVerifyMockTwoCompletely() {
+     Strictly strictly = createStrictOrderVerifier(mockTwo, mockThree);
+     strictly.verify(mockTwo, times(2)).simpleMethod(2);
+-    strictly.verify(mockTwo, times(1)).simpleMethod(2);
+-    verifyNoMoreInteractions(mockTwo);
+-    try {
+-        verifyNoMoreInteractions(mockThree);
+-        fail();
+-    } catch (NoInteractionsWanted e) {
+-    }
++    strictly.verify(mockThree).simpleMethod(3);
++    strictly.verify(mockTwo).simpleMethod(2);
++    verifyNoMoreInteractions(mockTwo, mockThree);
+ }
+\ No newline at end of file

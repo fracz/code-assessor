@@ -1,0 +1,20 @@
+diff --git a/c7bf3e57fd985f0530c82187abee56358b87116f b/11a301cfeb910a91a64c4442256d3a4787ac6cee
+index c7bf3e57fd..11a301cfeb 100644
+--- a/c7bf3e57fd985f0530c82187abee56358b87116f
++++ b/11a301cfeb910a91a64c4442256d3a4787ac6cee
+@@ -1,13 +1,13 @@
+ @Test(dependsOnMethods = "queryCreatePoints")
+ public void queryDistance() {
+     database.open("admin", "admin");
+-    database.getMetadata().getIndexManager().load();
++    ;
+     Assert.assertEquals(database.countClass("MapPoint"), 10000);
+     List<ODocument> result = database.command(new OSQLSynchQuery<ODocument>("select from MapPoint where distance(x, y,52.20472, 0.14056 ) <= 30")).execute();
+     Assert.assertTrue(result.size() != 0);
+     for (ODocument d : result) {
+         Assert.assertEquals(d.getClassName(), "MapPoint");
+         Assert.assertEquals(d.getRecordType(), ODocument.RECORD_TYPE);
+     }
+     database.close();
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/7023d862d585366b324f1351b95e43a7066ab094 b/f872dc690eda8b5ebf0882365374a0b7edadea96
+index 7023d862d5..f872dc690e 100644
+--- a/7023d862d585366b324f1351b95e43a7066ab094
++++ b/f872dc690eda8b5ebf0882365374a0b7edadea96
+@@ -1,6 +1,6 @@
+ public void notifyLocalChangesAreNotRestored() {
+     if (wereChangesSaved()) {
+         LOG.info("Update is incomplete, changes are not restored");
+-        GitVcs.IMPORTANT_ERROR_NOTIFICATION.createNotification("Local changes were not restored", "Before update your uncommitted changes were saved to <a href='saver'>" + getSaverName() + "</a>.<br/>" + "Update is not complete, you have unresolved merges in your working tree<br/>" + "Resolve conflicts, complete update and restore changes manually.", NotificationType.WARNING, new ShowSavedChangesNotificationListener()).notify(myProject);
++        VcsNotifier.getInstance(myProject).notifyStrongWarning("Local changes were not restored", "Before update your uncommitted changes were saved to <a href='saver'>" + getSaverName() + "</a>.<br/>" + "Update is not complete, you have unresolved merges in your working tree<br/>" + "Resolve conflicts, complete update and restore changes manually.", new ShowSavedChangesNotificationListener());
+     }
+ }
+\ No newline at end of file

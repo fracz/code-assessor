@@ -1,0 +1,19 @@
+diff --git a/4bb90665ef7936f6ce0712ac3addbe70a9591dff b/fe3b0f3f734dfca32f309618808713f8c6fbae62
+index 4bb90665ef..fe3b0f3f73 100644
+--- a/4bb90665ef7936f6ce0712ac3addbe70a9591dff
++++ b/fe3b0f3f734dfca32f309618808713f8c6fbae62
+@@ -1,12 +1,10 @@
+ private static boolean isSoftReference(GenericDomValue value) {
+     final Resolve resolve = value.getAnnotation(Resolve.class);
+     if (resolve != null && resolve.soft())
+         return true;
+     final Convert convert = value.getAnnotation(Convert.class);
+     if (convert != null && convert.soft())
+         return true;
+     final Referencing referencing = value.getAnnotation(Referencing.class);
+-    if (referencing != null && referencing.soft())
+-        return true;
+-    return false;
++    return referencing != null && referencing.soft();
+ }
+\ No newline at end of file

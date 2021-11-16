@@ -1,0 +1,23 @@
+diff --git a/64b2b99d6af8b46138690bd3059bef43b7d1b7d3 b/7d67cd47dd3a9037e2c00a7a2741154eac96f003
+index 64b2b99d6a..7d67cd47dd 100644
+--- a/64b2b99d6af8b46138690bd3059bef43b7d1b7d3
++++ b/7d67cd47dd3a9037e2c00a7a2741154eac96f003
+@@ -1,7 +1,13 @@
+ @Override
+-protected List<Pair<String, ? extends ChannelHandler>> getFinalChannelHandlers(MessageInput input) {
+-    final List<Pair<String, ? extends ChannelHandler>> handlers = Lists.newArrayList();
+-    handlers.add(Pair.of("http-handler", new Handler(enableCors)));
+-    handlers.addAll(super.getFinalChannelHandlers(input));
++protected LinkedHashMap<String, Callable<? extends ChannelHandler>> getFinalChannelHandlers(MessageInput input) {
++    final LinkedHashMap<String, Callable<? extends ChannelHandler>> handlers = Maps.newLinkedHashMap();
++    handlers.put("http-handler", new Callable<ChannelHandler>() {
++
++        @Override
++        public ChannelHandler call() throws Exception {
++            return new Handler(enableCors);
++        }
++    });
++    handlers.putAll(super.getFinalChannelHandlers(input));
+     return handlers;
+ }
+\ No newline at end of file

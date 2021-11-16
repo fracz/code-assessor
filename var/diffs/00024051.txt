@@ -1,0 +1,18 @@
+diff --git a/ebd805c06f31df09e4688a1cefa942816050efdf b/915cdd3aa5b1755890715815f93567d6d709c9f3
+index ebd805c06f..915cdd3aa5 100644
+--- a/ebd805c06f31df09e4688a1cefa942816050efdf
++++ b/915cdd3aa5b1755890715815f93567d6d709c9f3
+@@ -1,7 +1,8 @@
+ public synchronized void add(SSTableReader sstable) {
+     assert sstable != null;
+-    assert sstable.getIndexPositions() != null;
+-    Set<SSTableReader> sstablesNew = new HashSet<SSTableReader>(sstables);
+-    sstablesNew.add(sstable);
+-    sstables = Collections.unmodifiableSet(sstablesNew);
++    try {
++        replace(Collections.<SSTableReader>emptyList(), Arrays.asList(sstable));
++    } catch (IOException e) {
++        throw new AssertionError(e);
++    }
+ }
+\ No newline at end of file

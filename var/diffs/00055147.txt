@@ -1,0 +1,30 @@
+diff --git a/3454579ce8b732af23c97dd7a8af731482c3a08a b/5b8326c2b2962dc85850f359d797752e5a2dcc00
+index 3454579ce8..5b8326c2b2 100644
+--- a/3454579ce8b732af23c97dd7a8af731482c3a08a
++++ b/5b8326c2b2962dc85850f359d797752e5a2dcc00
+@@ -1,15 +1,12 @@
+ static void processAndSave(JadxCLIArgs jadxArgs) throws JadxException {
+-    try {
+-        JadxDecompiler jadx = new JadxDecompiler(jadxArgs);
+-        jadx.loadFiles(jadxArgs.getInput());
+-        jadx.setOutputDir(jadxArgs.getOutDir());
+-        jadx.save();
+-    } catch (Throwable e) {
+-        throw new JadxException("jadx error: " + e.getMessage(), e);
++    JadxDecompiler jadx = new JadxDecompiler(jadxArgs);
++    jadx.setOutputDir(jadxArgs.getOutDir());
++    jadx.loadFiles(jadxArgs.getInput());
++    jadx.save();
++    if (jadx.getErrorsCount() != 0) {
++        jadx.printErrorsReport();
++        LOG.error("finished with errors");
++    } else {
++        LOG.info("done");
+     }
+-    if (ErrorsCounter.getErrorCount() != 0) {
+-        ErrorsCounter.printReport();
+-        throw new JadxException("finished with errors");
+-    }
+-    LOG.info("done");
+ }
+\ No newline at end of file

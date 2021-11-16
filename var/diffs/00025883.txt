@@ -1,0 +1,20 @@
+diff --git a/5d84a15834f5cea1831f5f69d782ccfe1d79a855 b/f852fb42a4f2bf40cbc1c8c7c30e8cc22505e171
+index 5d84a15834..f852fb42a4 100644
+--- a/5d84a15834f5cea1831f5f69d782ccfe1d79a855
++++ b/f852fb42a4f2bf40cbc1c8c7c30e8cc22505e171
+@@ -1,10 +1,10 @@
+-private boolean registerInterpreterFromPath(String interpreterDir, String interpreterJson) throws IOException, RepositoryException {
++private boolean registerInterpreterFromPath(String interpreterDir, String interpreterJson) throws IOException {
+     Path interpreterJsonPath = Paths.get(interpreterDir, interpreterJson);
+     if (Files.exists(interpreterJsonPath)) {
+-        logger.debug("Reading {}", interpreterJsonPath);
+-        List<RegisteredInterpreter> registeredInterpreterList = getInterpreterListFromJson(interpreterJsonPath);
+-        registerInterpreters(registeredInterpreterList, interpreterDir);
++        LOGGER.debug("Reading interpreter-setting.json from file {}", interpreterJsonPath);
++        List<RegisteredInterpreter> registeredInterpreterList = getInterpreterListFromJson(new FileInputStream(interpreterJsonPath.toFile()));
++        registerInterpreterSetting(registeredInterpreterList, interpreterDir);
+         return true;
+     }
+     return false;
+ }
+\ No newline at end of file

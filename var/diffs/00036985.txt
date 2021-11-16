@@ -1,0 +1,17 @@
+diff --git a/8c7ff10212495ecd02750a888be6f0fb3ebd5fcf b/5ec08e186e89b5469ed0187cfd57d7fa9805da07
+index 8c7ff10212..5ec08e186e 100644
+--- a/8c7ff10212495ecd02750a888be6f0fb3ebd5fcf
++++ b/5ec08e186e89b5469ed0187cfd57d7fa9805da07
+@@ -1,8 +1,10 @@
+ private static String getCloseMethodAfterInsertCode() {
+     StringBuilder sb = new StringBuilder();
+     sb.append("{");
+-    // sb.append("System.out.println(\"-----ConnectionImpl.close() method is ended\");");
++    if (logger.isDebugEnabled()) {
++        sb.append("System.out.println(\"-----ConnectionImpl.close() method is ended\");");
++    }
+     sb.append(TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".put(" + TomcatProfilerConstant.REQ_DATA_TYPE_DB_CLOSE_CONNECTION + ");");
+     sb.append("}");
+     return sb.toString();
+ }
+\ No newline at end of file

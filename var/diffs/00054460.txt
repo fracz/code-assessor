@@ -1,0 +1,13 @@
+diff --git a/42f92422f3cb597291fdc1a7791c0f6aed6a09a5 b/01cf8477d43dc1d62e1af78f463b69eafe527142
+index 42f92422f3..01cf8477d4 100644
+--- a/42f92422f3cb597291fdc1a7791c0f6aed6a09a5
++++ b/01cf8477d43dc1d62e1af78f463b69eafe527142
+@@ -1,4 +1,6 @@
+ @Test(expected = ParserUnsupportedException.class)
+ public void parseWithOr() {
+-    new MySqlStatementParser(createShardingRule(), Collections.emptyList(), "UPDATE TABLE_XXX SET field1=1 WHERE field1<1 AND (field1 >2 OR field2 =1)").parseStatement();
++    ShardingRule shardingRule = createShardingRule();
++    List<Object> parameters = Collections.emptyList();
++    new SQLStatementParser(DatabaseType.Oracle, shardingRule, parameters, new OracleExprParser(shardingRule, parameters, "UPDATE TABLE_XXX SET field1=1 WHERE field1<1 AND (field1 >2 OR field2 =1)")).parseStatement();
+ }
+\ No newline at end of file

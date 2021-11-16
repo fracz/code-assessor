@@ -1,0 +1,14 @@
+diff --git a/4a7bf2782f462c743ec5df25e9234b12634a484a b/698481d66f3af913ec195da0626004998030b371
+index 4a7bf2782f..698481d66f 100644
+--- a/4a7bf2782f462c743ec5df25e9234b12634a484a
++++ b/698481d66f3af913ec195da0626004998030b371
+@@ -1,7 +1,7 @@
+ @Override
+ public void update(final AnActionEvent e) {
+     super.update(e);
+-    final ModuleGroup[] moduleGroups = (ModuleGroup[]) e.getDataContext().getData(DataConstantsEx.MODULE_GROUP_ARRAY);
++    final ModuleGroup[] moduleGroups = ModuleGroup.ARRAY_DATA_KEY.getData(e.getDataContext());
+     final Module[] modules = e.getData(DataKeys.MODULE_CONTEXT_ARRAY);
+     e.getPresentation().setVisible((moduleGroups != null && moduleGroups.length > 0) || (modules != null && modules.length > 0));
+ }
+\ No newline at end of file

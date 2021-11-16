@@ -1,0 +1,13 @@
+diff --git a/752884d65e028a9da8f6a7fd293688938d0eadf6 b/b10210839a4bdfc04d3ec89abf50b2f878fabc67
+index 752884d65e..b10210839a 100644
+--- a/752884d65e028a9da8f6a7fd293688938d0eadf6
++++ b/b10210839a4bdfc04d3ec89abf50b2f878fabc67
+@@ -1,6 +1,6 @@
+ @Override
+ protected PyExpressionStatement createExpression(Project project, String name, PyAssignmentStatement declaration) {
+     final String text = declaration.getText();
+     final String self_name = text.substring(0, text.indexOf('.'));
+-    return PythonLanguage.getInstance().getElementGenerator().createFromText(project, PyExpressionStatement.class, self_name + "." + name);
++    return PyElementGenerator.getInstance(project).createFromText(PyExpressionStatement.class, self_name + "." + name);
+ }
+\ No newline at end of file

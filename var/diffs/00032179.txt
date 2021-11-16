@@ -1,0 +1,11 @@
+diff --git a/5ce1a402334e2a1e78441c9ebfe9713ba46c4a4e b/58dd81e4ae6d84e7de67e139793d11092024e691
+index 5ce1a40233..58dd81e4ae 100644
+--- a/5ce1a402334e2a1e78441c9ebfe9713ba46c4a4e
++++ b/58dd81e4ae6d84e7de67e139793d11092024e691
+@@ -1,4 +1,4 @@
+ public void runFindHighestTypeInChain() {
+     // Check that this doesn't go into an infinite loop.
+-    DisambiguateProperties.forJSTypeSystem(new Compiler(), new HashMap<String, CheckLevel>()).getTypeWithProperty("no", new JSTypeRegistry(new TestErrorReporter(null, null)).getNativeType(JSTypeNative.OBJECT_PROTOTYPE));
++    new DisambiguateProperties(new Compiler(), new HashMap<String, CheckLevel>()).getTypeWithProperty("no", new JSTypeRegistry(new TestErrorReporter(null, null)).getNativeType(JSTypeNative.OBJECT_PROTOTYPE));
+ }
+\ No newline at end of file

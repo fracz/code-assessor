@@ -1,0 +1,13 @@
+diff --git a/a620d7499b239de16ca86b295b195fc19e05ae92 b/62ba2c58b3b414d0b5bd3397aec192abe82a3953
+index a620d7499b..62ba2c58b3 100644
+--- a/a620d7499b239de16ca86b295b195fc19e05ae92
++++ b/62ba2c58b3b414d0b5bd3397aec192abe82a3953
+@@ -1,5 +1,5 @@
+ @Override
+ public String commit() {
+-    storageManager.commit(outputHandle);
+-    return Joiner.on(':').join(nodeId, outputHandle.getShardUuid());
++    UUID shardUuid = storageManager.commit(storageOutputHandle);
++    return Joiner.on(':').join(nodeId, shardUuid);
+ }
+\ No newline at end of file

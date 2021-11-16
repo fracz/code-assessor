@@ -1,0 +1,22 @@
+diff --git a/ef3071a3dd7d1b56f609593f0fa54837db514772 b/33c21d25d5fa5df4d96883650c93b979fbb3000a
+index ef3071a3dd..33c21d25d5 100644
+--- a/ef3071a3dd7d1b56f609593f0fa54837db514772
++++ b/33c21d25d5fa5df4d96883650c93b979fbb3000a
+@@ -1,15 +1,15 @@
+ /**
+  * Instructs stacktrace-based providers to skip the given class in the stack
+  * trace when determining the source. Use this to keep the binder from
+  * logging utility methods as the sources of bindings (i.e. it will skip to
+  * the utility methods' callers instead).
+  *
+  * <p>Skipping only takes place after this method is called.
+  */
+ public static synchronized void skip(Class<?> clazz) {
+     // Poor man's copy-on-write hash set.
+-    Set<String> copy = new HashSet<String>();
++    Set<String> copy = Sets.newHashSet();
+     copy.addAll(skippedClassNames);
+     copy.add(clazz.getName());
+     skippedClassNames = Collections.unmodifiableSet(copy);
+ }
+\ No newline at end of file

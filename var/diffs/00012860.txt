@@ -1,0 +1,13 @@
+diff --git a/fc17c8b6f49fcbcb0549bc85c1135fbb990e2c8e b/50c679c080ce789f56feb0ba30cc89d9c03d2461
+index fc17c8b6f4..50c679c080 100644
+--- a/fc17c8b6f49fcbcb0549bc85c1135fbb990e2c8e
++++ b/50c679c080ce789f56feb0ba30cc89d9c03d2461
+@@ -1,4 +1,6 @@
+ @Override
+ protected EmptyIcon createScaledInstance(float scale) {
+-    return new TwoColorsIcon(myColorSize, getIconColor(), mySecondColor).withJBUIScale(getJBUIScale());
++    TwoColorsIcon icon = new TwoColorsIcon(myColorSize, getIconColor(), mySecondColor);
++    icon.setPreScaled(isPreScaled());
++    return this;
+ }
+\ No newline at end of file

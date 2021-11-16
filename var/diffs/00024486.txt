@@ -1,0 +1,15 @@
+diff --git a/f820df43bc45e1525d1e005c4ca3f033ff8f4e9c b/c047bf9cfc5357bbeef7ec8643869c0f9f7dd488
+index f820df43bc..c047bf9cfc 100644
+--- a/f820df43bc45e1525d1e005c4ca3f033ff8f4e9c
++++ b/c047bf9cfc5357bbeef7ec8643869c0f9f7dd488
+@@ -1,6 +1,6 @@
+-public List<ByteBuffer> serializedValues(List<Cell> cells) {
++public List<ByteBuffer> serializedValues(Iterator<Cell> cells) {
+     assert isMultiCell;
+-    List<ByteBuffer> bbs = new ArrayList<ByteBuffer>(cells.size());
+-    for (Cell c : cells) bbs.add(c.value());
++    List<ByteBuffer> bbs = new ArrayList<ByteBuffer>();
++    while (cells.hasNext()) bbs.add(cells.next().value());
+     return bbs;
+ }
+\ No newline at end of file

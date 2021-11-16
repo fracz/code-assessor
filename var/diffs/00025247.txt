@@ -1,0 +1,27 @@
+diff --git a/c2bfef6fc7d81048264713f7d51c7d26dbeb130d b/9d94ed7f5cc62e767a49f4fc8c4d19dd22a34498
+index c2bfef6fc7..9d94ed7f5c 100644
+--- a/c2bfef6fc7d81048264713f7d51c7d26dbeb130d
++++ b/9d94ed7f5cc62e767a49f4fc8c4d19dd22a34498
+@@ -1,15 +1,13 @@
+ private static boolean retainsBufferReference(Schema schema) {
+-    final AtomicReference<Boolean> foundBufferReference = new AtomicReference<>(Boolean.FALSE);
+-    SchemaVisitor detector = new SchemaVisitorAdapter() {
++    final AtomicBoolean hasBuffer = new AtomicBoolean(false);
++    Schema.Visitor detector = new Schema.Visitor() {
+
+         @Override
+         public void visit(Type field) {
+-            if (field == BYTES || field == NULLABLE_BYTES || field == RECORDS) {
+-                foundBufferReference.set(Boolean.TRUE);
+-            }
++            if (field == BYTES || field == NULLABLE_BYTES || field == RECORDS)
++                hasBuffer.set(true);
+         }
+     };
+-    foundBufferReference.set(Boolean.FALSE);
+-    ProtoUtils.walk(schema, detector);
+-    return foundBufferReference.get();
++    schema.walk(detector);
++    return hasBuffer.get();
+ }
+\ No newline at end of file

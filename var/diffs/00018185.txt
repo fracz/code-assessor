@@ -1,0 +1,14 @@
+diff --git a/73954def40e7645d725fb2b29b9c870d0eaf8791 b/4012598fe5e64760581380a653926694b7bc080d
+index 73954def40..4012598fe5 100644
+--- a/73954def40e7645d725fb2b29b9c870d0eaf8791
++++ b/4012598fe5e64760581380a653926694b7bc080d
+@@ -1,7 +1,7 @@
+ protected HistoryEntry createHistoryEntry(Project project, long historyEntryID) throws Exception {
+     Engine engine = createEngine(project);
+     List<Change> changes = new ArrayList<Change>(project.rows.size());
+     FilteredRows filteredRows = engine.getAllFilteredRows();
+     filteredRows.accept(project, createRowVisitor(project, changes));
+-    return ProjectManager.singleton.createHistoryEntry(historyEntryID, project, (_flagged ? "Flag" : "Unflag") + " " + changes.size() + " rows", this, new MassChange(changes, false));
++    return new HistoryEntry(historyEntryID, project, (_flagged ? "Flag" : "Unflag") + " " + changes.size() + " rows", this, new MassChange(changes, false));
+ }
+\ No newline at end of file

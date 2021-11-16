@@ -1,0 +1,25 @@
+diff --git a/dea8f7696ef1e0b02e451de40ce8500844a64725 b/06d75bef574ecb15e192cf0d258b561f4858a777
+index dea8f7696e..06d75bef57 100644
+--- a/dea8f7696ef1e0b02e451de40ce8500844a64725
++++ b/06d75bef574ecb15e192cf0d258b561f4858a777
+@@ -1,16 +1,13 @@
+ @Override
+ public boolean isConnectionAutoCommit() {
+-    if (dataSource != null && dataSource.isConnected()) {
+-        // We read this one synchronously because this function invoked many times per second by UI
+-        DBCSession session = dataSource.openSession(VoidProgressMonitor.INSTANCE, DBCExecutionPurpose.UTIL, "Get '" + getName() + "' auto-commit mode");
++    DBCTransactionManager txnManager = DBUtils.getTransactionManager(dataSource);
++    if (txnManager != null) {
+         try {
+-            return session.getTransactionManager().isAutoCommit();
++            return txnManager.isAutoCommit();
+         } catch (DBCException e) {
+             log.debug("Can't check auto-commit flag", e);
+             return false;
+-        } finally {
+-            session.close();
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

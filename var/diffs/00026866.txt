@@ -1,0 +1,26 @@
+diff --git a/01a1e1b75f8c9544922d0d943890017bc2becea5 b/4ecd4321a20863938622ff5df9532c2f2044484e
+index 01a1e1b75f..4ecd4321a2 100644
+--- a/01a1e1b75f8c9544922d0d943890017bc2becea5
++++ b/4ecd4321a20863938622ff5df9532c2f2044484e
+@@ -1,16 +1,16 @@
+ /**
+  * Returns a 1 x m vector where the vector is composed of
+  * a flattened vector of all of the weights for the
+  * various layers and output layer
+  * @return the params for this neural net
+  */
+ public int numParams() {
+     int length = 0;
+     for (int i = 0; i < layers.length; i++) {
+-        length += layers[i].gethBias().length;
+-        length += layers[i].getW().length;
++        length += layers[i].gethBias().length();
++        length += layers[i].getW().length();
+     }
+-    length += outputLayer.getB().length;
+-    length += outputLayer.getW().length;
++    length += outputLayer.getB().length();
++    length += outputLayer.getW().length();
+     return length;
+ }
+\ No newline at end of file

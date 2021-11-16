@@ -1,0 +1,17 @@
+diff --git a/dcbacb5bacb31e34a424f52210ad1baf6c0e47d9 b/f84528c82b90676e317816d669e0687abda4a7cc
+index dcbacb5bac..f84528c82b 100644
+--- a/dcbacb5bacb31e34a424f52210ad1baf6c0e47d9
++++ b/f84528c82b90676e317816d669e0687abda4a7cc
+@@ -1,10 +1,10 @@
+ @Override
+ protected void okPressed() {
+     try {
+         editedValue = extractEditorValue();
+         super.okPressed();
+     } catch (Exception e) {
+-        UIUtils.showErrorDialog(getShell(), CoreMessages.dialog_value_view_dialog_error_updating_title, CoreMessages.dialog_value_view_dialog_error_updating_message, e);
++        DBUserInterface.getInstance().showError(CoreMessages.dialog_value_view_dialog_error_updating_title, CoreMessages.dialog_value_view_dialog_error_updating_message, e);
+         super.cancelPressed();
+     }
+ }
+\ No newline at end of file

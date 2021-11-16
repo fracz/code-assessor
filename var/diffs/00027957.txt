@@ -1,0 +1,16 @@
+diff --git a/8b061525cb2033bfb2d01f74c3222c35c07a4970 b/58890fe26e9d9d10da903d9a5517426048c604bb
+index 8b061525cb..58890fe26e 100644
+--- a/8b061525cb2033bfb2d01f74c3222c35c07a4970
++++ b/58890fe26e9d9d10da903d9a5517426048c604bb
+@@ -1,8 +1,8 @@
+ @Override
+-public void branchDelete(BranchDeleteRequest request) throws GitException {
++public void branchDelete(String name, boolean force) throws GitException {
+     try {
+-        getGit().branchDelete().setBranchNames(request.getName()).setForce(request.isForce()).call();
++        getGit().branchDelete().setBranchNames(name).setForce(force).call();
+     } catch (GitAPIException exception) {
+         throw new GitException(exception.getMessage(), exception);
+     }
+ }
+\ No newline at end of file

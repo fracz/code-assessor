@@ -1,0 +1,14 @@
+diff --git a/f28de11d8c08a92fc1331072f4b13fc703168b0f b/b29676f22b815c2bd72902cf2f3b34fd73198b65
+index f28de11d8c..b29676f22b 100644
+--- a/f28de11d8c08a92fc1331072f4b13fc703168b0f
++++ b/b29676f22b815c2bd72902cf2f3b34fd73198b65
+@@ -1,6 +1,6 @@
+ @Override
+ public Map<K, V> getAllPresent(Iterable<?> keys) {
+     requireNonNull(keys);
+-    Iterable<?> iterable = () -> StreamSupport.stream(keys.spliterator(), false).map(key -> requireNonNull((Object) key)).iterator();
+-    return cache.getAllPresent(iterable);
++    keys.forEach(Objects::requireNonNull);
++    return cache.getAllPresent(keys);
+ }
+\ No newline at end of file

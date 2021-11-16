@@ -1,0 +1,18 @@
+diff --git a/5bd9f33f1c53422be899cc3b8685a499f1425c66 b/df93013c1887c693e73ff1ca2e48d3da8b23de9c
+index 5bd9f33f1c..df93013c18 100644
+--- a/5bd9f33f1c53422be899cc3b8685a499f1425c66
++++ b/df93013c1887c693e73ff1ca2e48d3da8b23de9c
+@@ -1,10 +1,10 @@
+ @Test
+ public void shouldIterateAllStoredItems() throws Exception {
+     int items = addItemsToCache();
+-    final KeyValueIterator<String, String> all = store.all();
+-    final List<String> results = new ArrayList<>();
++    final KeyValueIterator<Bytes, byte[]> all = store.all();
++    final List<Bytes> results = new ArrayList<>();
+     while (all.hasNext()) {
+         results.add(all.next().key);
+     }
+     assertEquals(items, results.size());
+ }
+\ No newline at end of file

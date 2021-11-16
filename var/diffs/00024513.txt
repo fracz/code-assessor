@@ -1,0 +1,22 @@
+diff --git a/56ef26d4e0fb5fab08a6308287a4fe65386bb403 b/90942ca9bc3a837b49e9dc76de322220278ee764
+index 56ef26d4e0..90942ca9bc 100644
+--- a/56ef26d4e0fb5fab08a6308287a4fe65386bb403
++++ b/90942ca9bc3a837b49e9dc76de322220278ee764
+@@ -1,7 +1,13 @@
+ public void addOperation(Operation op) {
+-    if (op.column.isStatic())
++    updatedColumnsBuilder.add(op.column);
++    // the affected column as part of the read-for-conditions paxos phase (see #7499).
++    if (op.requiresRead())
++        conditionColumnsBuilder.add(op.column);
++    if (op.column.isStatic()) {
+         setsStaticColumns = true;
+-    else
++        staticOperations.add(op);
++    } else {
+         setsRegularColumns = true;
+-    columnOperations.add(op);
++        regularOperations.add(op);
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/cfaf00418ff85ac4f4683e8ec7f89de0f089a667 b/66d94923902d32891e9fa968aaa6be5420c4c3eb
+index cfaf00418f..66d9492390 100644
+--- a/cfaf00418ff85ac4f4683e8ec7f89de0f089a667
++++ b/66d94923902d32891e9fa968aaa6be5420c4c3eb
+@@ -1,14 +1,14 @@
+ public void onReceive(Context context, Intent intent) {
+     if (RefactoredBackupManagerService.RUN_INITIALIZE_ACTION.equals(intent.getAction())) {
+-        synchronized (backupManagerService.mQueueLock) {
++        synchronized (backupManagerService.getQueueLock()) {
+             if (RefactoredBackupManagerService.DEBUG) {
+                 Slog.v(RefactoredBackupManagerService.TAG, "Running a device init");
+             }
+             // Acquire the wakelock and pass it to the init thread.  it will
+             // be released once init concludes.
+-            backupManagerService.mWakelock.acquire();
+-            Message msg = backupManagerService.mBackupHandler.obtainMessage(RefactoredBackupManagerService.MSG_RUN_INITIALIZE);
+-            backupManagerService.mBackupHandler.sendMessage(msg);
++            backupManagerService.getWakelock().acquire();
++            Message msg = backupManagerService.getBackupHandler().obtainMessage(RefactoredBackupManagerService.MSG_RUN_INITIALIZE);
++            backupManagerService.getBackupHandler().sendMessage(msg);
+         }
+     }
+ }
+\ No newline at end of file

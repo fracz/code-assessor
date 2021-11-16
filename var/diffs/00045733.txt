@@ -1,0 +1,17 @@
+diff --git a/d8350cc2e87eb2b58f221419267be23c313fe224 b/f8155cff74c67c7b55b08e6116e82caf1c8d9e2c
+index d8350cc2e8..f8155cff74 100644
+--- a/d8350cc2e87eb2b58f221419267be23c313fe224
++++ b/f8155cff74c67c7b55b08e6116e82caf1c8d9e2c
+@@ -1,5 +1,7 @@
+-@Override
+-public boolean retainAll(Collection<?> c) {
+-    setDirty();
+-    return super.retainAll(c);
++public boolean retainAll(final Collection<?> c) {
++    if (super.removeAll(c)) {
++        setDirty();
++        return true;
++    }
++    return false;
+ }
+\ No newline at end of file

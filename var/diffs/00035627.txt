@@ -1,0 +1,31 @@
+diff --git a/e864091f527bafe18b19d17cae3d3e8bc41e1893 b/f6014bbe0a8934e175d5db99e9a463c26ca98fe5
+index e864091f52..f6014bbe0a 100644
+--- a/e864091f527bafe18b19d17cae3d3e8bc41e1893
++++ b/f6014bbe0a8934e175d5db99e9a463c26ca98fe5
+@@ -1,24 +1,23 @@
+ /**
+  * method to switch the drawer content to new elements
+  *
+  * @param onDrawerItemClickListener
+  * @param drawerItems
+  * @param drawerSelection
+  */
+ public void switchDrawerContent(OnDrawerItemClickListener onDrawerItemClickListener, ArrayList<IDrawerItem> drawerItems, int drawerSelection) {
+     // just allow a single switched drawer
+     if (!switchedDrawerContent()) {
+         // save out previous values
+         originalOnDrawerItemClickListener = getOnDrawerItemClickListener();
+         originalDrawerItems = getDrawerItems();
+         originalDrawerSelection = getCurrentSelection();
+         // set the new items
+         setOnDrawerItemClickListener(onDrawerItemClickListener);
+         setItems(drawerItems, true);
+-        setSelection(drawerSelection, false);
+-        mDrawerBuilder.mAdapter.resetAnimation();
++        setSelection(getAdapter().getHeaderItemCount() + drawerSelection, false);
+         if (getStickyFooter() != null) {
+             getStickyFooter().setVisibility(View.GONE);
+         }
+     }
+ }
+\ No newline at end of file

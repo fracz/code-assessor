@@ -1,0 +1,27 @@
+diff --git a/57fd656f1205dbeee3c85a1023ad46a2f773dc0d b/a0ce5312d70540f5cacbac61391223dbb678ceb6
+index 57fd656f12..a0ce5312d7 100644
+--- a/57fd656f1205dbeee3c85a1023ad46a2f773dc0d
++++ b/a0ce5312d70540f5cacbac61391223dbb678ceb6
+@@ -1,9 +1,16 @@
+ @Override
+ public void exhaustedPartition(int partitionID) {
+-    int index = ArraysUtil.indexOf(currentPartitions, partitionID);
+-    if (index < 0) {
+-        log.error("Non-existant partition exhausted {} in {}", partitionID, Arrays.toString(currentPartitions));
+-    } else {
+-        updateElement(index);
++    boolean found = false;
++    for (int i = 0; i < currentPartitions.length; i++) {
++        if (currentPartitions[i] == partitionID) {
++            updateElement(i);
++            found = true;
++        }
+     }
++// if (found) {
++// exhaustedPartitions.add(partitionID);
++// } else {
++// if (!exhaustedPartitions.contains(partitionID))
++// log.error("Non-existant partition exhausted {} in {}", partitionID, Arrays.toString(currentPartitions));
++// }
+ }
+\ No newline at end of file

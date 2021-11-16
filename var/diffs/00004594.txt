@@ -1,0 +1,14 @@
+diff --git a/ada9dc512a841f563449407959f760d395023fae b/00c1d0dd55bbf57c10e6e8f00dab20899badc121
+index ada9dc512a..00c1d0dd55 100644
+--- a/ada9dc512a841f563449407959f760d395023fae
++++ b/00c1d0dd55bbf57c10e6e8f00dab20899badc121
+@@ -1,4 +1,5 @@
+-private void setHierarchyBase(final PsiElement psiElement) {
+-    mySmartPsiElementPointer = SmartPointerManager.getInstance(myProject).createSmartPsiElementPointer(psiElement);
+-    myIsInterface = isInterface(psiElement);
++@Override
++protected void setHierarchyBase(PsiElement element) {
++    super.setHierarchyBase(element);
++    myIsInterface = isInterface(element);
+ }
+\ No newline at end of file

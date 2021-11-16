@@ -1,0 +1,16 @@
+diff --git a/da5413c7eaef4f7950c34a54db3e65e9f6a84d57 b/542c65b0504a3d2345616e6a080bad3eb1d209ff
+index da5413c7ea..542c65b050 100644
+--- a/da5413c7eaef4f7950c34a54db3e65e9f6a84d57
++++ b/542c65b0504a3d2345616e6a080bad3eb1d209ff
+@@ -1,9 +1,3 @@
+ protected BackendStatementWrapper generateStatement(final Connection connection, final String sql) throws SQLException {
+-    Statement result;
+-    if (0 == resultSetHoldability) {
+-        result = connection.createStatement(resultSetType, resultSetConcurrency);
+-    } else {
+-        result = connection.createStatement(resultSetType, resultSetConcurrency, resultSetHoldability);
+-    }
+-    return new BackendStatementWrapper(result);
++    return new BackendStatementWrapper(connection.createStatement(resultSetType, resultSetConcurrency, resultSetHoldability));
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/c5a850ed19a3b1bcd502995538e1cb233484f7de b/ef390f8983699051851ddae411faab1e4d3fcb40
+index c5a850ed19..ef390f8983 100644
+--- a/c5a850ed19a3b1bcd502995538e1cb233484f7de
++++ b/ef390f8983699051851ddae411faab1e4d3fcb40
+@@ -1,7 +1,4 @@
+ @Override
+ public JDBCStructDynamic cloneValue(DBRProgressMonitor monitor) throws DBCException {
+-    JDBCStructDynamic copyStruct = new JDBCStructDynamic();
+-    copyStruct.attributes = Arrays.copyOf(this.attributes, this.attributes.length);
+-    copyStruct.values = Arrays.copyOf(this.values, this.values.length);
+-    return copyStruct;
++    return new JDBCStructDynamic(this, monitor);
+ }
+\ No newline at end of file

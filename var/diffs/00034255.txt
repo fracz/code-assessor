@@ -1,0 +1,23 @@
+diff --git a/41dbffb9355c15982f6140264b02a041d8f02c1a b/27bc496333c9a79917e99041c7f5daffebe4fa81
+index 41dbffb935..27bc496333 100644
+--- a/41dbffb9355c15982f6140264b02a041d8f02c1a
++++ b/27bc496333c9a79917e99041c7f5daffebe4fa81
+@@ -1,14 +1,4 @@
+-private static boolean isMovePossible(MessagingController controller, Account account, String dstFolder, List<? extends Message> messages) {
+-    if (!controller.isMoveCapable(account)) {
+-        return false;
+-    }
+-    if (K9.FOLDER_NONE.equalsIgnoreCase(dstFolder)) {
+-        return false;
+-    }
+-    for (Message messageToMove : messages) {
+-        if (!controller.isMoveCapable(messageToMove)) {
+-            return false;
+-        }
+-    }
+-    return true;
++private static boolean isMovePossible(MessagingController controller, Account account, String destinationFolderName) {
++    boolean isSpecialFolderConfigured = !K9.FOLDER_NONE.equalsIgnoreCase(destinationFolderName);
++    return isSpecialFolderConfigured && controller.isMoveCapable(account);
+ }
+\ No newline at end of file

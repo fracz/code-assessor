@@ -1,0 +1,19 @@
+diff --git a/5a66255dc25c2111f2540744ac2cd2b74621e955 b/8240a8250e4b1899cd6b5070a938314860c952ea
+index 5a66255dc2..8240a8250e 100644
+--- a/5a66255dc25c2111f2540744ac2cd2b74621e955
++++ b/8240a8250e4b1899cd6b5070a938314860c952ea
+@@ -1,9 +1,10 @@
+ @Override
+-public void findExistingNameConflicts(PsiElement element, String newName, Collection<String> conflicts) {
++public void findExistingNameConflicts(PsiElement element, String newName, Map<PsiElement, String> conflicts) {
+     final PsiPackage aPackage = (PsiPackage) element;
+     final Project project = element.getProject();
+     final String qualifiedNameAfterRename = getPackageQualifiedNameAfterRename(aPackage, newName, true);
+-    if (JavaPsiFacade.getInstance(project).findClass(qualifiedNameAfterRename, GlobalSearchScope.allScope(project)) != null) {
+-        conflicts.add("Class with qualified name \'" + qualifiedNameAfterRename + "\'  already exist");
++    final PsiClass psiClass = JavaPsiFacade.getInstance(project).findClass(qualifiedNameAfterRename, GlobalSearchScope.allScope(project));
++    if (psiClass != null) {
++        conflicts.put(psiClass, "Class with qualified name \'" + qualifiedNameAfterRename + "\'  already exist");
+     }
+ }
+\ No newline at end of file

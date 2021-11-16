@@ -1,0 +1,15 @@
+diff --git a/a328dfa785b97cb4e599e64038469ac3c735a491 b/54fe20f7e16fc2ad26589e74f37e4833e48eb031
+index a328dfa785..54fe20f7e1 100644
+--- a/a328dfa785b97cb4e599e64038469ac3c735a491
++++ b/54fe20f7e16fc2ad26589e74f37e4833e48eb031
+@@ -1,8 +1,7 @@
+ public void unregisterActions() {
+     // unregister Tool actions
+     String[] oldIds = myActionManager.getActionIds(ActionMacro.MACRO_ACTION_PREFIX);
+-    for (int i = 0; i < oldIds.length; i++) {
+-        String oldId = oldIds[i];
++    for (final String oldId : oldIds) {
+         myActionManager.unregisterAction(oldId);
+     }
+ }
+\ No newline at end of file

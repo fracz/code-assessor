@@ -1,0 +1,21 @@
+diff --git a/63b6644c413b56e4f6fbab919ca8549501b27478 b/ffab3abbddf8f1c1582da8110c7e6757502b7ef6
+index 63b6644c41..ffab3abbdd 100644
+--- a/63b6644c413b56e4f6fbab919ca8549501b27478
++++ b/ffab3abbddf8f1c1582da8110c7e6757502b7ef6
+@@ -1,10 +1,11 @@
+-public void start(NeoServerWithEmbeddedWebServer neoServer, StringLogger logger) {
++@Override
++public void start(StringLogger logger) {
+     try {
+-        neoServer.getWebServer().addJAXRSPackages(listFrom(new String[] { Configurator.MANAGEMENT_API_PACKAGE }), managementApiUri(neoServer).toString());
+-        log.info("Mounted management API at [%s]", managementApiUri(neoServer).toString());
++        webServer.addJAXRSPackages(listFrom(new String[] { Configurator.MANAGEMENT_API_PACKAGE }), managementApiUri().toString());
++        log.info("Mounted management API at [%s]", managementApiUri().toString());
+         if (logger != null)
+-            logger.logMessage("Mounted management API at: " + managementApiUri(neoServer).toString());
++            logger.logMessage("Mounted management API at: " + managementApiUri().toString());
+     } catch (UnknownHostException e) {
+         log.warn(e);
+     }
+ }
+\ No newline at end of file

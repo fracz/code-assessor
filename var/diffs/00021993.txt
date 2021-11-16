@@ -1,0 +1,18 @@
+diff --git a/3e19b721918cfa841c5f142b0fa03525ec476fd8 b/e4a55aef5633b89abffd1a88230938269dbc8e06
+index 3e19b72191..e4a55aef56 100644
+--- a/3e19b721918cfa841c5f142b0fa03525ec476fd8
++++ b/e4a55aef5633b89abffd1a88230938269dbc8e06
+@@ -1,11 +1,10 @@
+ // ///////////////////////////////////
+ // Object "contract" methods. //
+ // ///////////////////////////////////
+ @Override
+ public String toString() {
+     if (!DEBUG)
+         return super.toString();
+-    final StringBuilder builder = new StringBuilder("FillResponse: [datasets=").append(mDatasets).append(", savableIds=").append(Arrays.toString(mSavableIds)).append(", extras=");
+-    append(builder, mExtras).append(", flags=").append(mFlags).append(", requiresAuth: ").append(mRequiresAuth).append(", hasCrypto: ").append(mHasCryptoObject);
++    final StringBuilder builder = new StringBuilder("FillResponse: [id=").append(mId).append(", datasets=").append(mDatasets).append(", savableIds=").append(mSavableIds).append(", hasExtras=").append(mExtras != null).append(", hasAuthentication=").append(mAuthentication != null);
+     return builder.append(']').toString();
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/215f4355d60db62ce19d464974eb23285fb63f57 b/dda0bb7499419f385dd6bc15dfcf9d60603af1dc
+index 215f4355d6..dda0bb7499 100644
+--- a/215f4355d60db62ce19d464974eb23285fb63f57
++++ b/dda0bb7499419f385dd6bc15dfcf9d60603af1dc
+@@ -1,6 +1,6 @@
+ @Override
+ public DfaInstructionState[] visitCheckReturnValue(CheckReturnValueInstruction instruction, DataFlowRunner runner, DfaMemoryState memState) {
+     final DfaValue retValue = memState.pop();
+-    checkNotNullable(memState, retValue, NullabilityProblem.nullableReturn, instruction.getReturn());
++    checkNotNullable(memState, retValue, NullabilityProblemKind.nullableReturn.problem(instruction.getReturn()));
+     return nextInstruction(instruction, runner, memState);
+ }
+\ No newline at end of file

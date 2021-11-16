@@ -1,0 +1,17 @@
+diff --git a/c6fb125b7822492500821a1ac50c3de10dfd8e26 b/b442d9d83b09ec229858a198393742729d30163e
+index c6fb125b78..b442d9d83b 100644
+--- a/c6fb125b7822492500821a1ac50c3de10dfd8e26
++++ b/b442d9d83b09ec229858a198393742729d30163e
+@@ -1,9 +1,9 @@
+ @NotNull
+-private static PsiClass findClass(String qualifiedName, Project project, KotlinCoreEnvironment environment) {
+-    ModuleDescriptor module = LazyResolveTestUtil.resolveProject(project, environment);
++private static PsiClass findClass(String qualifiedName, KotlinCoreEnvironment environment) {
++    ModuleDescriptor module = JvmResolveUtil.analyze(environment).getModuleDescriptor();
+     ClassDescriptor classDescriptor = DescriptorUtilsKt.resolveTopLevelClass(module, new FqName(qualifiedName), NoLookupLocation.FROM_TEST);
+     assertNotNull("Class descriptor wasn't resolved: " + qualifiedName, classDescriptor);
+     PsiClass psiClass = (PsiClass) DescriptorToSourceUtils.getSourceFromDescriptor(classDescriptor);
+     assertNotNull("Class declaration wasn't found: " + classDescriptor, psiClass);
+     return psiClass;
+ }
+\ No newline at end of file

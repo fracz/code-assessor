@@ -1,0 +1,21 @@
+diff --git a/631cddab096ca129433dc2f348980ca125215247 b/b3c2a6c6d95d10ab1eaf70d9deb442db454f0e1a
+index 631cddab09..b3c2a6c6d9 100644
+--- a/631cddab096ca129433dc2f348980ca125215247
++++ b/b3c2a6c6d95d10ab1eaf70d9deb442db454f0e1a
+@@ -1,12 +1,12 @@
+ private void prepareDeleteStatements() throws DBException {
+     // Make delete statements
++    DBDRowIdentifier rowIdentifier = getDefaultRowIdentifier();
+     for (RowData row : deletedRows) {
+-        DBSEntity table = columns[0].getRowIdentifier().getEntity();
+-        DataStatementInfo statement = new DataStatementInfo(DBSManipulationType.DELETE, row, table);
+-        List<DBDAttributeBinding> keyColumns = columns[0].getRowIdentifier().getEntityIdentifier().getAttributes();
++        DataStatementInfo statement = new DataStatementInfo(DBSManipulationType.DELETE, row, rowIdentifier.getEntity());
++        List<DBDAttributeBinding> keyColumns = rowIdentifier.getEntityIdentifier().getAttributes();
+         for (DBDAttributeBinding binding : keyColumns) {
+             statement.keyAttributes.add(new DBDAttributeValue(binding, row.values[binding.getOrdinalPosition()]));
+         }
+         deleteStatements.add(statement);
+     }
+ }
+\ No newline at end of file

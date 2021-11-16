@@ -1,0 +1,16 @@
+diff --git a/2c78c2d1727323ec09c227a4369faa179b017656 b/a2198b3d9a02b733e4d008aeb4f62cecdd5d1464
+index 2c78c2d172..a2198b3d9a 100644
+--- a/2c78c2d1727323ec09c227a4369faa179b017656
++++ b/a2198b3d9a02b733e4d008aeb4f62cecdd5d1464
+@@ -1,3 +1,8 @@
+-private GenericRequestBuilder buildDraftGlideRequest(Slide slide) {
+-    return Glide.with(getContext()).load(slide.getThumbnailUri()).asBitmap().fitCenter().listener(new PduThumbnailSetListener(slide.getPart()));
++private GenericRequestBuilder buildDraftGlideRequest(Slide slide, MasterSecret masterSecret) {
++    final DrawableTypeRequest<?> request;
++    if (masterSecret == null)
++        request = Glide.with(getContext()).load(slide.getThumbnailUri());
++    else
++        request = Glide.with(getContext()).load(new DecryptableUri(masterSecret, slide.getThumbnailUri()));
++    return request.asBitmap().fitCenter().listener(new PduThumbnailSetListener(slide.getPart()));
+ }
+\ No newline at end of file

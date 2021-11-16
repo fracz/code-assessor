@@ -1,0 +1,17 @@
+diff --git a/bf459835eae9fa3321da0c3adf1f809fa4e091e2 b/878c7dcec913266326493c334b15ccf800dbb85f
+index bf459835ea..878c7dcec9 100644
+--- a/bf459835eae9fa3321da0c3adf1f809fa4e091e2
++++ b/878c7dcec913266326493c334b15ccf800dbb85f
+@@ -1,10 +1,3 @@
+ public static IFolder getDiagramsFolder(IProject project, boolean forceCreate) throws CoreException {
+-    if (project == null) {
+-        return null;
+-    }
+-    final IFolder diagramsFolder = project.getFolder(ERD_DIR);
+-    if (!diagramsFolder.exists() && forceCreate) {
+-        diagramsFolder.create(true, true, new NullProgressMonitor());
+-    }
+-    return diagramsFolder;
++    return DBeaverCore.getInstance().getProjectRegistry().getResourceDefaultRoot(project, ERDResourceHandler.class, forceCreate);
+ }
+\ No newline at end of file

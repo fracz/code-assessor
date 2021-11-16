@@ -1,0 +1,23 @@
+diff --git a/aeaa32281ca45e6bb6b47a3be736a6c977bb842a b/8c3f22800771d06f52603e4c82314468987dcbc6
+index aeaa32281c..8c3f228007 100644
+--- a/aeaa32281ca45e6bb6b47a3be736a6c977bb842a
++++ b/8c3f22800771d06f52603e4c82314468987dcbc6
+@@ -1,15 +1,16 @@
+ public static void onProfilesChanged() {
+     // cleanup caches blindly for all projects in case ide profile was modified
+     for (final Project project : ProjectManager.getInstance().getOpenProjects()) {
+-        HighlightingSettingsPerFile.getInstance(project).cleanProfileSettings();
++        synchronized (HighlightingSettingsPerFile.getInstance(project)) {
++        }
+         UIUtil.invokeLaterIfNeeded(new Runnable() {
+
+             @Override
+             public void run() {
+                 if (!project.isDisposed()) {
+                     DaemonListeners.getInstance(project).updateStatusBar();
+                 }
+             }
+         });
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/dc9cd42ce906e19579efc0ef40a658d81b7de9ba b/3b6ff1c123ccf40f84acf9d85242c2bc30856473
+index dc9cd42ce9..3b6ff1c123 100644
+--- a/dc9cd42ce906e19579efc0ef40a658d81b7de9ba
++++ b/3b6ff1c123ccf40f84acf9d85242c2bc30856473
+@@ -1,7 +1,4 @@
+ @Override
+ public String contentAsString() {
+-    UnicodeUtil.UTF16Result result = utf16Result.get();
+-    ChannelBuffer content = request.getContent();
+-    UTF8toUTF16(content, content.readerIndex(), content.readableBytes(), result);
+-    return new String(result.result, 0, result.length);
++    return request.getContent().toString("UTF-8");
+ }
+\ No newline at end of file

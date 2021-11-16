@@ -1,0 +1,21 @@
+diff --git a/5cfc8362c4765647c911e68d6ad9644c2b6012a7 b/acfcfe60b5eeff5fc4e1deeb24829e24e6bc2e25
+index 5cfc8362c4..acfcfe60b5 100644
+--- a/5cfc8362c4765647c911e68d6ad9644c2b6012a7
++++ b/acfcfe60b5eeff5fc4e1deeb24829e24e6bc2e25
+@@ -1,10 +1,10 @@
+ @Override
+ public Dimension preferredLayoutSize(Container container) {
+-    ArrayList<Component> components = getComponents(container, Breadcrumbs::toVisible);
+-    Dimension size = getPreferredSize(components);
+-    size.width += components.size() * getGap(container);
+-    if (size.height == 0)
+-        size.height = getPreferredHeight(container);
++    Dimension size = new Dimension();
++    if (container instanceof Breadcrumbs) {
++        Breadcrumbs breadcrumbs = (Breadcrumbs) container;
++        breadcrumbs.updatePreferredSize(size, breadcrumbs.getScale());
++    }
+     JBInsets.addTo(size, container.getInsets());
+     return size;
+ }
+\ No newline at end of file

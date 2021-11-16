@@ -1,0 +1,23 @@
+diff --git a/fe0471a6adb7ca2209b8eab759ca612042cb164e b/9f66cbf9436f2797238376c84b5119f9abfd9215
+index fe0471a6ad..9f66cbf943 100644
+--- a/fe0471a6adb7ca2209b8eab759ca612042cb164e
++++ b/9f66cbf9436f2797238376c84b5119f9abfd9215
+@@ -1,9 +1,12 @@
+ public WallProvider createWallProvider(String dbType) {
++    WallProvider provider;
+     if (JdbcUtils.MYSQL.equals(dbType)) {
+-        return new MySqlWallProvider(this.loadDefault, this.loadExtend);
++        provider = new MySqlWallProvider(this.loadDefault, this.loadExtend);
++    } else if (JdbcUtils.ORACLE.equals(dbType)) {
++        provider = new OracleWallProvider(this.loadDefault, this.loadExtend);
++    } else {
++        throw new IllegalStateException("dbType not support : " + dbType);
+     }
+-    if (JdbcUtils.ORACLE.equals(dbType)) {
+-        return new OracleWallProvider(this.loadDefault, this.loadExtend);
+-    }
+-    throw new IllegalStateException("dbType not support : " + dbType);
++    provider.setCheckSelectAlwayTrueCondition(this.checkSelectAlwayTrueCondition);
++    return provider;
+ }
+\ No newline at end of file

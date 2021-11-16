@@ -1,0 +1,17 @@
+diff --git a/e0d15f8188adedcfd02767b1ae039560d82242df b/a77bc1f73d9a04c160038bab31a3e0e55df6a8e8
+index e0d15f8188..a77bc1f73d 100644
+--- a/e0d15f8188adedcfd02767b1ae039560d82242df
++++ b/a77bc1f73d9a04c160038bab31a3e0e55df6a8e8
+@@ -1,9 +1,9 @@
+ @AfterClass
+-public void afterClass() {
++public void afterClass() throws Exception {
+     if (database.isClosed())
+         database.open("admin", "admin");
+     database.command(new OCommandSQL("delete from SQLSelectCompositeIndexDirectSearchTestClass")).execute();
+     database.command(new OCommandSQL("drop class SQLSelectCompositeIndexDirectSearchTestClass")).execute();
+     database.reload();
+-    database.close();
++    super.afterClass();
+ }
+\ No newline at end of file

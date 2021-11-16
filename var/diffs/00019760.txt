@@ -1,0 +1,13 @@
+diff --git a/3cd282c2d432bfdc6873bbaaa2ea88971b50d64a b/a208a16c453844724f0cbf6a3d6f0391ed163c0a
+index 3cd282c2d4..a208a16c45 100644
+--- a/3cd282c2d432bfdc6873bbaaa2ea88971b50d64a
++++ b/a208a16c453844724f0cbf6a3d6f0391ed163c0a
+@@ -1,4 +1,6 @@
+ public SQLUpdateStatement explainToUpdateSQLObject(MappingEngine engine, String sql) {
+     OracleStatementParser parser = new OracleStatementParser(sql);
+-    return parser.parseUpdateStatement();
++    SQLUpdateStatement stmt = parser.parseUpdateStatement();
++    MappingVisitorUtils.setDataSource(engine, stmt);
++    return stmt;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/d534f0979c702c7130d6fe1b11f4cd1e9c066b14 b/de25df9365906835b6b50d526e3178634b780ce4
+index d534f0979c..de25df9365 100644
+--- a/d534f0979c702c7130d6fe1b11f4cd1e9c066b14
++++ b/de25df9365906835b6b50d526e3178634b780ce4
+@@ -1,9 +1,9 @@
+ public static void pushDoubleIntMap(TDoubleIntHashMap map) {
+     Queue<TDoubleIntHashMap> ref = doubleIntHashMap.get();
+     if (ref == null) {
+-        ref = new LinkedTransferQueue<TDoubleIntHashMap>();
++        ref = ConcurrentCollections.newQueue();
+         doubleIntHashMap.set(ref);
+     }
+     map.clear();
+     ref.add(map);
+ }
+\ No newline at end of file

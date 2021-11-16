@@ -1,0 +1,24 @@
+diff --git a/749cec59fde2eb23ca06fb1e870e197c392c51fe b/355aff402cf8d1bce1ceec80a9fc4255650cecf3
+index 749cec59fd..355aff402c 100644
+--- a/749cec59fde2eb23ca06fb1e870e197c392c51fe
++++ b/355aff402cf8d1bce1ceec80a9fc4255650cecf3
+@@ -1,13 +1,13 @@
+ @Override
+-public long getTotal(final int downloadId) {
+-    long val = 0;
+-    if (getService() == null) {
+-        return val;
++public long getTotal(final int id) {
++    if (!isConnected()) {
++        return DownloadServiceNotConnectedHelper.getTotal(id);
+     }
++    long val = 0;
+     try {
+-        val = getService().getTotal(downloadId);
++        val = getService().getTotal(id);
+     } catch (RemoteException e) {
+         e.printStackTrace();
+     }
+     return val;
+ }
+\ No newline at end of file

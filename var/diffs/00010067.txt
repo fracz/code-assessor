@@ -1,0 +1,16 @@
+diff --git a/66893861095aa7350d246a39301f47bb92049a74 b/f15a4e65e1f10dd3d04ed5fa1d2b3926ffc0bb3e
+index 6689386109..f15a4e65e1 100644
+--- a/66893861095aa7350d246a39301f47bb92049a74
++++ b/f15a4e65e1f10dd3d04ed5fa1d2b3926ffc0bb3e
+@@ -1,9 +1,8 @@
+ private static HighlightInfo buildAccessProblem(@NotNull PsiJavaCodeReferenceElement classReference, JavaResolveResult result, PsiMember elementToFix) {
+     String description = HighlightUtil.buildProblemWithAccessDescription(classReference, result);
+-    HighlightInfo info = HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, classReference, description);
+-    info.navigationShift = +1;
++    HighlightInfo info = HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(classReference).descriptionAndTooltip(description).navigationShift(+1).create();
+     if (result.isStaticsScopeCorrect()) {
+         HighlightUtil.registerAccessQuickFixAction(elementToFix, classReference, info, result.getCurrentFileResolveScope());
+     }
+     return info;
+ }
+\ No newline at end of file

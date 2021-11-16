@@ -1,0 +1,17 @@
+diff --git a/1999cad470cdf4c05ee3b385b38786a0297f74d1 b/5875dfe730e4f024778143847b1808525fe53fcc
+index 1999cad470..5875dfe730 100644
+--- a/1999cad470cdf4c05ee3b385b38786a0297f74d1
++++ b/5875dfe730e4f024778143847b1808525fe53fcc
+@@ -1,9 +1,9 @@
+ @Override
+ public GeoPosition decode(List<Object> parts, State state) {
+     if (parts.isEmpty()) {
+         return null;
+     }
+-    Double longitude = Double.valueOf(parts.get(0).toString());
+-    Double latitude = Double.valueOf(parts.get(1).toString());
++    Double longitude = (Double) parts.get(0);
++    Double latitude = (Double) parts.get(1);
+     return new GeoPosition(longitude, latitude);
+ }
+\ No newline at end of file

@@ -1,0 +1,10 @@
+diff --git a/f74f7880a7b894fd57d67e839be5335afcf4d571 b/3983cd97a2a92811ddcb8225a8892a5425fec068
+index f74f7880a7..3983cd97a2 100644
+--- a/f74f7880a7b894fd57d67e839be5335afcf4d571
++++ b/3983cd97a2a92811ddcb8225a8892a5425fec068
+@@ -1,3 +1,3 @@
+ private static HighlightInfo thisNotFoundInInterfaceInfo(PsiExpression expr) {
+-    return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, expr, "Cannot find symbol variable this");
++    return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(expr).descriptionAndTooltip("Cannot find symbol variable this").create();
+ }
+\ No newline at end of file

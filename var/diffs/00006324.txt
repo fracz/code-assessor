@@ -1,0 +1,15 @@
+diff --git a/bf3184e6e5b94648452d0d3b8d49fc84755530ac b/20318bb680abad8b2c314a11e0fbaebde9031208
+index bf3184e6e5..20318bb680 100644
+--- a/bf3184e6e5b94648452d0d3b8d49fc84755530ac
++++ b/20318bb680abad8b2c314a11e0fbaebde9031208
+@@ -1,5 +1,7 @@
+ @Nullable
+ public static PsiNamedElement getElementToMove(@NotNull PsiElement element) {
+-    final ScopeOwner owner = (element instanceof ScopeOwner) ? (ScopeOwner) element : ScopeUtil.getScopeOwner(element);
+-    return (owner instanceof PsiNamedElement) ? (PsiNamedElement) owner : null;
++    if (element instanceof PsiNamedElement) {
++        return (PsiNamedElement) element;
++    }
++    return null;
+ }
+\ No newline at end of file

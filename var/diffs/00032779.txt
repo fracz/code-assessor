@@ -1,0 +1,18 @@
+diff --git a/68cfa0ff7c9c562a143ce6116bd7f5063b0eca83 b/72d76600b6c3bf0f2c8c045ff933f7755ece20aa
+index 68cfa0ff7c..72d76600b6 100644
+--- a/68cfa0ff7c9c562a143ce6116bd7f5063b0eca83
++++ b/72d76600b6c3bf0f2c8c045ff933f7755ece20aa
+@@ -1,8 +1,11 @@
+ public void processCommands(List<Command> commands) {
+     for (Iterator<Command> i = commands.iterator(); i.hasNext(); ) {
+-        Boolean allDone = i.next().acceptVisitor(this);
++        Command command = i.next();
++        errors.pushSource(command.getSource());
++        Boolean allDone = command.acceptVisitor(this);
+         if (allDone) {
+             i.remove();
+         }
++        errors.popSource(command.getSource());
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/75a801a67efc383baeb88531dbb178fb2a6ee778 b/d22039ce6aacfb2b33878b2179a1f9bf2f4f8724
+index 75a801a67e..d22039ce6a 100644
+--- a/75a801a67efc383baeb88531dbb178fb2a6ee778
++++ b/d22039ce6aacfb2b33878b2179a1f9bf2f4f8724
+@@ -1,9 +1,9 @@
+ @Override
+ public void close() throws ElasticsearchException {
+     try {
+-        searcher.getIndexReader().close();
++        this.reader().close();
+         rootDocMemoryIndex.reset();
+     } catch (IOException e) {
+         throw new ElasticsearchException("failed to close IndexReader in percolator with nested doc", e);
+     }
+ }
+\ No newline at end of file

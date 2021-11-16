@@ -1,0 +1,15 @@
+diff --git a/91c08d9766f20b1f14f33237e7c5fffc56c3e6b7 b/ef56d984c669ef26e9f802ca60bfa7b397017331
+index 91c08d9766..ef56d984c6 100644
+--- a/91c08d9766f20b1f14f33237e7c5fffc56c3e6b7
++++ b/ef56d984c669ef26e9f802ca60bfa7b397017331
+@@ -1,8 +1,7 @@
+ @Override
+ public void mouseMoved(final MouseEvent e) {
+     if (!myTabLabelActionsAutoHide)
+         return;
+-    final Point point = SwingUtilities.convertPoint(e.getComponent(), e.getX(), e.getY(), JBTabsImpl.this);
+-    myLastOverPoint = point;
++    myLastOverPoint = SwingUtilities.convertPoint(e.getComponent(), e.getX(), e.getY(), JBTabsImpl.this);
+     processMouseOver();
+ }
+\ No newline at end of file

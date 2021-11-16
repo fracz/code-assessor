@@ -1,0 +1,23 @@
+diff --git a/e294ab09ded7f0ee016cc381ef3091a69f48a015 b/94fe6c8689844330a478cf307dc316f15177fde2
+index e294ab09de..94fe6c8689 100644
+--- a/e294ab09ded7f0ee016cc381ef3091a69f48a015
++++ b/94fe6c8689844330a478cf307dc316f15177fde2
+@@ -1,9 +1,14 @@
++/*
++     * ------------------------------------ Type Handling ------------------------------------
++     */
+ public TitanKey makePropertyKey(PropertyKeyDefinition definition) {
+-    verifyTxState();
+-    TitanKeyVertex prop = new TitanKeyVertex(this, temporaryVertexID.decrementAndGet(), ElementLifeCycle.New);
++    verifyOpen();
++    TitanKeyVertex prop = new TitanKeyVertex(this, temporaryID.decrementAndGet(), ElementLifeCycle.New);
+     addProperty(prop, SystemKey.PropertyTypeDefinition, definition);
+     addProperty(prop, SystemKey.TypeName, definition.getName());
+     addProperty(prop, SystemKey.TypeClass, TitanTypeClass.KEY);
+-    // TODO: add to internal structures etc
++    graph.assignID(prop);
++    vertexCache.add(prop, prop.getID());
++    typeCache.put(definition.getName(), prop);
+     return prop;
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/60387ceaeae98b5a04de303daef12c57da7c4d75 b/efd6a2b8459f137509457cfc76a7425e2ee19bb2
+index 60387ceaea..efd6a2b845 100644
+--- a/60387ceaeae98b5a04de303daef12c57da7c4d75
++++ b/efd6a2b8459f137509457cfc76a7425e2ee19bb2
+@@ -1,12 +1,8 @@
+ /**
+  * Insert an entity into the table associated with a concrete DAO.
++ *
++ * @return row ID of newly inserted entity
+  */
+ public long insert(T entity) {
+-    SQLiteStatement stmt = statements.getInsertStatement();
+-    synchronized (stmt) {
+-        bindValues(stmt, entity);
+-        long rowId = stmt.executeInsert();
+-        updateKeyAfterInsertAndAttach(entity, rowId, true);
+-        return rowId;
+-    }
++    return executeInsert(entity, statements.getInsertStatement());
+ }
+\ No newline at end of file

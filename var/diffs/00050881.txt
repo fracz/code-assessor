@@ -1,0 +1,12 @@
+diff --git a/97319adceb4c7e4a2b57c2d6466176ee420b5b78 b/80c1f307bbc8b2d65fceb71d86c293b680b9727a
+index 97319adceb..80c1f307bb 100644
+--- a/97319adceb4c7e4a2b57c2d6466176ee420b5b78
++++ b/80c1f307bbc8b2d65fceb71d86c293b680b9727a
+@@ -1,5 +1,4 @@
+ @Override
+ public boolean supportsDocument() {
+-    DBDAttributeBinding[] attrs = model.getAttributes();
+-    return attrs.length == 1 && attrs[0].getDataKind() == DBPDataKind.DOCUMENT;
++    return model.getDocumentAttribute() != null;
+ }
+\ No newline at end of file

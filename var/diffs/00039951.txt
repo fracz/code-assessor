@@ -1,0 +1,22 @@
+diff --git a/d303b612ce7c77f7aae07f01390d64e187ae28ed b/bc866aa75eb72cf6a6634e516cf2aed4662bcde8
+index d303b612ce..bc866aa75e 100644
+--- a/d303b612ce7c77f7aae07f01390d64e187ae28ed
++++ b/bc866aa75eb72cf6a6634e516cf2aed4662bcde8
+@@ -1,12 +1,13 @@
+ @Test
+ public void shouldAcquireSchemaReadLockBeforeGettingConstraintsByLabelAndProperty() throws Exception {
+     // given
++    NodePropertyDescriptor descriptor = new NodePropertyDescriptor(123, 456);
+     Iterator<NodePropertyConstraint> constraints = Collections.emptyIterator();
+-    when(schemaReadOps.constraintsGetForLabelAndPropertyKey(state, 123, 456)).thenReturn(constraints);
++    when(schemaReadOps.constraintsGetForLabelAndPropertyKey(state, descriptor)).thenReturn(constraints);
+     // when
+-    Iterator<NodePropertyConstraint> result = lockingOps.constraintsGetForLabelAndPropertyKey(state, 123, 456);
++    Iterator<NodePropertyConstraint> result = lockingOps.constraintsGetForLabelAndPropertyKey(state, descriptor);
+     // then
+     assertSame(constraints, result);
+     order.verify(locks).acquireShared(LockTracer.NONE, ResourceTypes.SCHEMA, schemaResource());
+-    order.verify(schemaReadOps).constraintsGetForLabelAndPropertyKey(state, 123, 456);
++    order.verify(schemaReadOps).constraintsGetForLabelAndPropertyKey(state, descriptor);
+ }
+\ No newline at end of file

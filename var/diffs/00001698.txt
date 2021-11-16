@@ -1,0 +1,12 @@
+diff --git a/7290bf8a805778c63fbfae981988964ce2441ffb b/d50d9cf69b90173267f438dfb6aaccbd8be792a8
+index 7290bf8a80..d50d9cf69b 100644
+--- a/7290bf8a805778c63fbfae981988964ce2441ffb
++++ b/d50d9cf69b90173267f438dfb6aaccbd8be792a8
+@@ -1,5 +1,5 @@
+ private void updateTextFromRecents() {
+     LinkedList<TextWithImports> recents = DebuggerRecents.getInstance(getProject()).getRecents(getRecentsId());
+     LOG.assertTrue(myRecentIdx <= recents.size());
+-    setText(myRecentIdx < recents.size() ? recents.get(myRecentIdx) : EvaluationManager.getInstance().getEmptyExpressionFragment());
++    setText(myRecentIdx < recents.size() ? recents.get(myRecentIdx) : new TextWithImportsImpl(CodeFragmentKind.EXPRESSION, ""));
+ }
+\ No newline at end of file

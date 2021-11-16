@@ -1,0 +1,29 @@
+diff --git a/62259a054543899c4fd9cfb941d1be9bf4ca5daf b/ed125d386d7b49bbe5175d055efb434b33eddd9c
+index 62259a0545..ed125d386d 100644
+--- a/62259a054543899c4fd9cfb941d1be9bf4ca5daf
++++ b/ed125d386d7b49bbe5175d055efb434b33eddd9c
+@@ -1,19 +1,20 @@
+ /**
+  * Analyze storage directories. Recover from previous transitions if required.
+  *
+  * The block pool storages are either all analyzed or none of them is loaded.
+  * Therefore, a failure on loading any block pool storage results a faulty
+  * data volume.
+  *
+- * @param datanode Datanode to which this storage belongs to
+  * @param nsInfo namespace information
+  * @param dataDirs storage directories of block pool
+  * @param startOpt startup option
+  * @throws IOException on error
+  */
+-void recoverTransitionRead(DataNode datanode, NamespaceInfo nsInfo, Collection<File> dataDirs, StartupOption startOpt) throws IOException {
++List<StorageDirectory> recoverTransitionRead(NamespaceInfo nsInfo, Collection<File> dataDirs, StartupOption startOpt, Configuration conf) throws IOException {
+     LOG.info("Analyzing storage directories for bpid " + nsInfo.getBlockPoolID());
+-    for (StorageDirectory sd : loadBpStorageDirectories(datanode, nsInfo, dataDirs, startOpt)) {
++    final List<StorageDirectory> loaded = loadBpStorageDirectories(nsInfo, dataDirs, startOpt, conf);
++    for (StorageDirectory sd : loaded) {
+         addStorageDir(sd);
+     }
++    return loaded;
+ }
+\ No newline at end of file

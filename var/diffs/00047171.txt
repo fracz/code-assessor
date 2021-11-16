@@ -1,0 +1,18 @@
+diff --git a/801de7c3ca66641299c45a85cf59a09d238df352 b/04b0e4f556003a3d9d99b13f58941a3d4c2683bc
+index 801de7c3ca..04b0e4f556 100644
+--- a/801de7c3ca66641299c45a85cf59a09d238df352
++++ b/04b0e4f556003a3d9d99b13f58941a3d4c2683bc
+@@ -1,11 +1,10 @@
+ private void processConductorCommands(final Object obj) {
+     try {
+         if (obj instanceof RetransmitPublicationCmd) {
+             final RetransmitPublicationCmd cmd = (RetransmitPublicationCmd) obj;
+-            final DriverPublication driverPublication = cmd.driverPublication();
+-        // TODO: finish
++            cmd.driverPublication().onRetransmit(cmd.termId(), cmd.termOffset(), cmd.length());
+         }
+     } catch (final Exception ex) {
+         logger.logException(ex);
+     }
+ }
+\ No newline at end of file

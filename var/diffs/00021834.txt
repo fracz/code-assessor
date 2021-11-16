@@ -1,0 +1,16 @@
+diff --git a/e3d14b5799de85f2d39daf5cf8cf2e147caad4cc b/f092e54664da7a8da6ab21c57a318df1bfc8595c
+index e3d14b5799..f092e54664 100644
+--- a/e3d14b5799de85f2d39daf5cf8cf2e147caad4cc
++++ b/f092e54664da7a8da6ab21c57a318df1bfc8595c
+@@ -1,8 +1,9 @@
+-protected static void checkInvalidRuleDef(int gtype, String fileName, Token ruleID) {
++protected static void checkInvalidRuleDef(int gtype, Token ruleID) {
++    String fileName = ruleID.getInputStream().getSourceName();
+     if (gtype == ANTLRParser.LEXER_GRAMMAR && Character.isLowerCase(ruleID.getText().charAt(0))) {
+         ErrorManager.grammarError(ErrorType.PARSER_RULES_NOT_ALLOWED, fileName, ruleID, ruleID.getText());
+     }
+     if ((gtype == ANTLRParser.PARSER_GRAMMAR || gtype == ANTLRParser.TREE_GRAMMAR) && Character.isUpperCase(ruleID.getText().charAt(0))) {
+         ErrorManager.grammarError(ErrorType.LEXER_RULES_NOT_ALLOWED, fileName, ruleID, ruleID.getText());
+     }
+ }
+\ No newline at end of file

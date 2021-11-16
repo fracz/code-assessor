@@ -1,0 +1,17 @@
+diff --git a/623210e04edf2175d9f9dc4df0aad2d1379269a9 b/14e2270f1b9f30362efefaaa94e635390552306f
+index 623210e04e..14e2270f1b 100644
+--- a/623210e04edf2175d9f9dc4df0aad2d1379269a9
++++ b/14e2270f1b9f30362efefaaa94e635390552306f
+@@ -1,10 +1,9 @@
+ @Override
+ protected void doXContent(XContentBuilder builder, Params params) throws IOException {
+     builder.startObject(FQueryFilterBuilder.NAME);
+-    builder.field("query");
+-    queryBuilder.toXContent(builder, params);
++    doXContentInnerBuilder(builder, "query", queryBuilder, params);
+     if (queryName != null) {
+         builder.field("_name", queryName);
+     }
+     builder.endObject();
+ }
+\ No newline at end of file

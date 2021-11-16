@@ -1,0 +1,15 @@
+diff --git a/5369356be63adb67fe455ca3f9889aaa938170f4 b/a864f3cfa1c9df36a41097e344e5c7781121d0c6
+index 5369356be6..a864f3cfa1 100644
+--- a/5369356be63adb67fe455ca3f9889aaa938170f4
++++ b/a864f3cfa1c9df36a41097e344e5c7781121d0c6
+@@ -1,7 +1,6 @@
+ @NotNull
+ public static String getNamespacePartInternalName(@NotNull JetFile file) {
+     FqName fqName = JetPsiUtil.getFQName(file);
+-    JvmClassName namespaceJvmClassName = NamespaceCodegen.getJVMClassNameForKotlinNs(fqName);
+-    String namespaceInternalName = namespaceJvmClassName.getInternalName();
+-    return NamespaceCodegen.getMultiFileNamespaceInternalName(namespaceInternalName, file);
++    JvmClassName namespaceJvmClassName = getJVMClassNameForKotlinNs(fqName);
++    return getMultiFileNamespaceInternalName(namespaceJvmClassName.getFqName(), file).getInternalName();
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/3299bcb74fef4a18e72e35edd4a6001b6023a04c b/41e55211ed5448d5b5afdfdc91fe40651a1a9896
+index 3299bcb74f..41e55211ed 100644
+--- a/3299bcb74fef4a18e72e35edd4a6001b6023a04c
++++ b/41e55211ed5448d5b5afdfdc91fe40651a1a9896
+@@ -1,7 +1,7 @@
+ @Override
+ public void invoke(@NotNull Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
+-    final PsiElement[] createdElements = CreateResourceFileAction.createFileResource(myFacet, myResourceType, myResourceName + ".xml", myChooseResName);
+-    if (createdElements.length > 0) {
++    final XmlFile newFile = CreateResourceFileAction.createFileResource(myFacet, myResourceType, myResourceName + ".xml", myChooseResName);
++    if (newFile != null) {
+         UndoUtil.markPsiFileForUndo(myFile);
+     }
+ }
+\ No newline at end of file

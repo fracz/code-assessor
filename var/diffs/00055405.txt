@@ -1,0 +1,21 @@
+diff --git a/00b858d364326af3a1c62a93f3f360400577be60 b/227e01ad4641084c70611df54fb8756aec8864f0
+index 00b858d364..227e01ad46 100644
+--- a/00b858d364326af3a1c62a93f3f360400577be60
++++ b/227e01ad4641084c70611df54fb8756aec8864f0
+@@ -1,8 +1,14 @@
++/**
++ * Expect a header with the given name whose first value matches the
++ * provided regex pattern.
++ * @param headerName the header name
++ * @param pattern String pattern to pass to {@link Pattern#compile(String)}
++ */
+ public WebTestClient.ResponseSpec valueMatches(String headerName, String pattern) {
+-    List<String> values = this.headers.get(headerName);
++    List<String> values = getHeaders().get(headerName);
+     String value = CollectionUtils.isEmpty(values) ? "" : values.get(0);
+     boolean match = Pattern.compile(pattern).matcher(value).matches();
+     String message = "Response header " + headerName + "=\'" + value + "\' does not match " + pattern;
+     assertTrue(message, match);
+     return this.responseSpec;
+ }
+\ No newline at end of file

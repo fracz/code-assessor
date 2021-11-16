@@ -1,0 +1,19 @@
+diff --git a/526a76fcd38822662803478a85efb69638078856 b/116b6c68da0d0d3811122bd5d5fafa78e46c6654
+index 526a76fcd3..116b6c68da 100644
+--- a/526a76fcd38822662803478a85efb69638078856
++++ b/116b6c68da0d0d3811122bd5d5fafa78e46c6654
+@@ -1,12 +1,12 @@
+ @Override
+ public void setUp() throws Exception {
+     super.setUp();
+     initApplication();
+     setUpProject();
+     // adds listeners
+     EncodingManager.getInstance();
+     myEditorListenerTracker = new EditorListenerTracker();
+     myThreadTracker = new ThreadTracker();
+     InjectedLanguageManagerImpl.pushInjectors(getProject());
+-    myOldSdks = ProjectJdkTable.getInstance().getAllJdks();
++    myOldSdks = new SdkLeakTracker();
+ }
+\ No newline at end of file

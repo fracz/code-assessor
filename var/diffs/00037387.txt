@@ -1,0 +1,14 @@
+diff --git a/1c0737ac91f140bf582ccbabe46318877316dd37 b/686a9775cbb7abc5560a5a09f5da33c07322d680
+index 1c0737ac91..686a9775cb 100644
+--- a/1c0737ac91f140bf582ccbabe46318877316dd37
++++ b/686a9775cbb7abc5560a5a09f5da33c07322d680
+@@ -1,7 +1,7 @@
+ private static void mutate(TraceID traceId, SpanUpdater spanUpdater) {
+     Span span = spanMap.update(traceId, spanUpdater);
+-    if (span.isExistsAnnotationType("CR") || span.isExistsAnnotationType("SS")) {
++    if (span.isExistsAnnotationType(Annotation.ClientRecv.getCode()) || span.isExistsAnnotationType(Annotation.ServerSend.getCode())) {
+         spanMap.remove(traceId);
+         logSpan(span);
+     }
+ }
+\ No newline at end of file

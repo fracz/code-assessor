@@ -1,0 +1,20 @@
+diff --git a/b86e512e8968fc25cdae295cd691140f3921490e b/cab4caef17883917ad17a14cfdc7d5118a6941fe
+index b86e512e89..cab4caef17 100644
+--- a/b86e512e8968fc25cdae295cd691140f3921490e
++++ b/cab4caef17883917ad17a14cfdc7d5118a6941fe
+@@ -1,11 +1,10 @@
+-public void commit() {
++public void commit(IndexTxSnapshot snapshots) {
+     acquireSharedLock();
+     try {
+-        final IndexTxSnapshot indexTxSnapshot = txSnapshot.get();
+-        if (indexTxSnapshot.clear)
++        if (snapshots.clear)
+             clear();
+-        commitSnapshot(indexTxSnapshot.indexSnapshot);
++        commitSnapshot(snapshots.indexSnapshot);
+     } finally {
+         releaseSharedLock();
+     }
+ }
+\ No newline at end of file

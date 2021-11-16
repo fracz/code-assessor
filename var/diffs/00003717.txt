@@ -1,0 +1,27 @@
+diff --git a/43c55ade9e89c4783e4083cf403262e46814f4ac b/3683485ddd57304c05f4940caab595d55d14c072
+index 43c55ade9e..3683485ddd 100644
+--- a/43c55ade9e89c4783e4083cf403262e46814f4ac
++++ b/3683485ddd57304c05f4940caab595d55d14c072
+@@ -1,12 +1,16 @@
+ public boolean isMyContext(@NotNull PsiElement context) {
+-    if (!(context.getLanguage() instanceof XMLLanguage)) {
+-        return false;
+-    }
+-    if (PsiTreeUtil.getParentOfType(context, XmlAttributeValue.class) != null) {
++    if (!isMyLanguage(context.getLanguage())) {
+         return false;
+     }
+     if (PsiTreeUtil.getParentOfType(context, XmlComment.class) != null) {
+         return false;
+     }
+-    return true;
++    if (PsiTreeUtil.getParentOfType(context, XmlText.class) != null) {
++        return true;
++    }
++    PsiElement parent = context.getParent();
++    if (parent instanceof PsiErrorElement) {
++        parent = parent.getParent();
++    }
++    return parent instanceof XmlDocument;
+ }
+\ No newline at end of file

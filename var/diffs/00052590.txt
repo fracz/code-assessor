@@ -1,0 +1,19 @@
+diff --git a/955696842734168be558f55c1cb79232e28a3ecf b/c8acc629c69b04f38da1518088afb6ab1f02784c
+index 9556968427..c8acc629c6 100644
+--- a/955696842734168be558f55c1cb79232e28a3ecf
++++ b/c8acc629c69b04f38da1518088afb6ab1f02784c
+@@ -1,10 +1,11 @@
+ /**
+  * Build table rules.
+  *
+  * @param tableRules table rules
+  * @return this builder
+  */
+-public ShardingRuleBuilder tableRules(final Collection<TableRule> tableRules) {
+-    this.tableRules = tableRules;
++public ShardingRuleBuilder tableRules(final TableRule... tableRules) {
++    this.tableRules.clear();
++    this.tableRules.addAll(Arrays.asList(tableRules));
+     return this;
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/33cae99ad7e50f05430a7c8fd9c51b4f41fcdcb2 b/15605a9de6b579e50165f12d4c6d89ccfa4d1f4f
+index 33cae99ad7..15605a9de6 100644
+--- a/33cae99ad7e50f05430a7c8fd9c51b4f41fcdcb2
++++ b/15605a9de6b579e50165f12d4c6d89ccfa4d1f4f
+@@ -1,14 +1,13 @@
+ private void updatingDone() {
+-    for (int i = 0; i < myUpdaters.size(); i++) {
+-        CacheUpdater updater = myUpdaters.get(i);
++    for (CacheUpdater updater : myUpdaters) {
+         try {
+             if (updater != null)
+                 updater.updatingDone();
+         } catch (ProcessCanceledException e) {
+             throw e;
+         } catch (Exception e) {
+             LOG.error(e);
+         }
+     }
+     dropUpdaters();
+ }
+\ No newline at end of file

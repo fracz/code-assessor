@@ -1,0 +1,18 @@
+diff --git a/9df03ca1f67dc14717f5bf933874448ff6c01dd6 b/a095ce278afb201e8ceda2008edf1f0746fd5f93
+index 9df03ca1f6..a095ce278a 100644
+--- a/9df03ca1f67dc14717f5bf933874448ff6c01dd6
++++ b/a095ce278afb201e8ceda2008edf1f0746fd5f93
+@@ -1,11 +1,5 @@
+ public void test_mysql_2() throws Exception {
+     String sql = "select * from t where age > 100";
+     String result = PagerUtils.limit(sql, JdbcConstants.DB2, 20, 10);
+-    Assert.assertEquals(//
+-    "SELECT *" + //
+-    "\nFROM (SELECT *, ROW_NUMBER() OVER () AS ROWNUM" + //
+-    "\n\tFROM t" + //
+-    "\n\tWHERE age > 100" + //
+-    "\n\t) XX" + //
+-    "\nWHERE ROWNUM > 20" + "\n\tAND ROWNUM <= 30", result);
++    Assert.assertEquals("SELECT *\n" + "FROM (\n" + "\tSELECT *, ROW_NUMBER() OVER () AS ROWNUM\n" + "\tFROM t\n" + "\tWHERE age > 100\n" + ") XX\n" + "WHERE ROWNUM > 20\n" + "\tAND ROWNUM <= 30", result);
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/10d34aa8726f0768feb7cf9e76e11517de810549 b/ad7f9fc3f481396dc618e114a5d799b89f27f3fc
+index 10d34aa872..ad7f9fc3f4 100644
+--- a/10d34aa8726f0768feb7cf9e76e11517de810549
++++ b/ad7f9fc3f481396dc618e114a5d799b89f27f3fc
+@@ -1,7 +1,8 @@
+ @Override
+ public synchronized void stop() throws Throwable {
+     log.info("Stopping");
+-    this.databaseHealth = null;
++    databaseHealth = null;
++    localCommit = null;
+     dataSourceManager.stop();
+     started = false;
+ }
+\ No newline at end of file

@@ -1,0 +1,23 @@
+diff --git a/b95ae6f70189dcf76b9981a6cbdcff957fd82ce0 b/de6bc1009fe749c536e03172d4c9770bfcef9cba
+index b95ae6f701..de6bc1009f 100644
+--- a/b95ae6f70189dcf76b9981a6cbdcff957fd82ce0
++++ b/de6bc1009fe749c536e03172d4c9770bfcef9cba
+@@ -1,10 +1,10 @@
+-public ServerBootstrap channel(ServerChannel channel) {
+-    if (channel == null) {
+-        throw new NullPointerException("channel");
++@Override
++public ServerBootstrap channel(Class<? extends Channel> channelClass) {
++    if (channelClass == null) {
++        throw new NullPointerException("channelClass");
+     }
+-    if (this.channel != null) {
+-        throw new IllegalStateException("channel set already");
++    if (!ServerChannel.class.isAssignableFrom(channelClass)) {
++        throw new IllegalArgumentException();
+     }
+-    this.channel = channel;
+-    return this;
++    return super.channel(channelClass);
+ }
+\ No newline at end of file

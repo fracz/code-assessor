@@ -1,0 +1,14 @@
+diff --git a/69b7206c2f9edc03719e35259858825de240a89e b/652de05c2d6d9f08b382ccb94cd8abc2201bb937
+index 69b7206c2f..652de05c2d 100644
+--- a/69b7206c2f9edc03719e35259858825de240a89e
++++ b/652de05c2d6d9f08b382ccb94cd8abc2201bb937
+@@ -1,5 +1,7 @@
+ public void loadClasses() throws DecodeException {
+     for (ClassDef cls : dexBuf.classDefs()) {
+-        classes.add(new ClassNode(this, cls));
++        ClassNode clsNode = new ClassNode(this, cls);
++        classes.add(clsNode);
++        clsMap.put(clsNode.getClassInfo(), clsNode);
+     }
+ }
+\ No newline at end of file

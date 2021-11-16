@@ -1,0 +1,19 @@
+diff --git a/bfee698635788655290f945155f995011cf833b6 b/39bc739b13354e525b612641e837c4aec30e49d9
+index bfee698635..39bc739b13 100644
+--- a/bfee698635788655290f945155f995011cf833b6
++++ b/39bc739b13354e525b612641e837c4aec30e49d9
+@@ -1,10 +1,7 @@
+ @Override
+ public void visitElement(PsiElement element) {
+-    int temp = myParentOffset;
+-    myParentOffset = getTextOffset(element);
+-    super.visitElement(element);
+-    myParentOffset = temp;
+-    if (element instanceof LeafElement && !(element instanceof PsiWhiteSpace)) {
+-        visitLeafElement(element);
++    visitChildren(element);
++    if (element instanceof LeafPsiElement && !(element instanceof PsiWhiteSpace)) {
++        visitLeafElement((LeafPsiElement) element);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/ee3450cb1a8f58a031807acff1c5406123ae6553 b/92bce7112f276c9a711fce91d0b6858ef561389e
+index ee3450cb1a..92bce7112f 100644
+--- a/ee3450cb1a8f58a031807acff1c5406123ae6553
++++ b/92bce7112f276c9a711fce91d0b6858ef561389e
+@@ -1,12 +1,12 @@
+ @Override
+-public boolean refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
++public DBSObject refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
+     super.refreshObject(monitor);
+     getContainer().indexCache.clearObjectCache(this);
+     getContainer().constraintCache.clearObjectCache(this);
+     foreignKeys.clearCache();
+     partitionCache.clearCache();
+     synchronized (additionalInfo) {
+         additionalInfo.loaded = false;
+     }
+-    return true;
++    return this;
+ }
+\ No newline at end of file

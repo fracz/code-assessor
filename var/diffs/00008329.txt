@@ -1,0 +1,21 @@
+diff --git a/89b843dbf4f34cc1579ada69617803a0052ffc91 b/7f8402dc7b8b441339da19fc21143252647d19c9
+index 89b843dbf4..7f8402dc7b 100644
+--- a/89b843dbf4f34cc1579ada69617803a0052ffc91
++++ b/7f8402dc7b8b441339da19fc21143252647d19c9
+@@ -1,12 +1,12 @@
+ @Override
+-public void rollback(@NotNull Collection<GitRepository> repositories) {
++protected void rollback() {
+     GitCompoundResult compoundResult = new GitCompoundResult(myProject);
+-    for (GitRepository repository : repositories) {
++    for (GitRepository repository : getSuccessfulRepositories()) {
+         GitCommandResult result = Git.checkout(repository, myPreviousBranch, null);
+         compoundResult.append(repository, result);
+-        refreshRoot(repository);
++        refresh(repository);
+     }
+     if (!compoundResult.totalSuccess()) {
+         GitUIUtil.notify(GitVcs.IMPORTANT_ERROR_NOTIFICATION, myProject, "Error during rolling checkout back", compoundResult.getErrorOutputWithReposIndication(), NotificationType.ERROR, null);
+     }
+ }
+\ No newline at end of file

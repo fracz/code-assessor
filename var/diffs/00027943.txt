@@ -1,0 +1,20 @@
+diff --git a/fee428be0827f169f91871d6ba9cf03d99f7cea3 b/2f0331edbeb0ca0113640ce0eaeffe9684f6f4c9
+index fee428be08..2f0331edbe 100644
+--- a/fee428be0827f169f91871d6ba9cf03d99f7cea3
++++ b/2f0331edbeb0ca0113640ce0eaeffe9684f6f4c9
+@@ -1,12 +1,12 @@
+-@Path("tag-create")
+ @POST
++@Path("tag")
+ @Consumes(MediaType.APPLICATION_JSON)
+ @Produces(MediaType.APPLICATION_JSON)
+ public Tag tagCreate(TagCreateRequest request) throws ApiException {
+     GitConnection gitConnection = getGitConnection();
+     try {
+-        return gitConnection.tagCreate(request);
++        return gitConnection.tagCreate(TagCreateParams.create(request.getName()).withCommit(request.getCommit()).withMessage(request.getMessage()).withForce(request.isForce()));
+     } finally {
+         gitConnection.close();
+     }
+ }
+\ No newline at end of file

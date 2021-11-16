@@ -1,0 +1,12 @@
+diff --git a/e1c2b07eb243291cca1f15d947c2b591e15589cd b/57b638021102afe72dad0f0dbf69b42196644381
+index e1c2b07eb2..57b6380211 100644
+--- a/e1c2b07eb243291cca1f15d947c2b591e15589cd
++++ b/57b638021102afe72dad0f0dbf69b42196644381
+@@ -1,4 +1,5 @@
+ public void navigate(DomElement domElement, boolean requestFocus) {
+-    final OpenFileDescriptor fileDescriptor = new OpenFileDescriptor(myProject, domElement.getRoot().getFile().getVirtualFile(), domElement.getXmlTag().getTextOffset());
++    VirtualFile file = domElement.getRoot().getFile().getVirtualFile();
++    final OpenFileDescriptor fileDescriptor = domElement.getXmlTag() != null ? new OpenFileDescriptor(myProject, file, domElement.getXmlTag().getTextOffset()) : new OpenFileDescriptor(myProject, file);
+     FileEditorManagerEx.getInstanceEx(myProject).openTextEditor(fileDescriptor, requestFocus);
+ }
+\ No newline at end of file

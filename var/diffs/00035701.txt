@@ -1,0 +1,25 @@
+diff --git a/e287a06f475379bf480f85e2d39eb85a68c21154 b/a7faf824980308b61d06b91879c50e6418438364
+index e287a06f47..a7faf82498 100644
+--- a/e287a06f475379bf480f85e2d39eb85a68c21154
++++ b/a7faf824980308b61d06b91879c50e6418438364
+@@ -1,16 +1,16 @@
+ @Test
+ public void shouldLogUnstubbedMethodWarningWhenTestFails() throws Exception {
+-    runner = new VerboseMockitoJUnitRunner(this.getClass(), loggerStub) {
++    runner = new VerboseMockitoJUnitRunner(this.getClass(), loggerStub, new RunnerImplStub() {
+
+         @Override
+-        public void runTest(RunNotifier notifier) {
++        public void run(RunNotifier notifier) {
+             callUnstubbedMethodThatQualifiesForWarning();
+             notifier.fireTestFailure(null);
+             String loggedInfo = loggerStub.getLoggedInfo();
+             assertContains("[Mockito] Warning - this method was not stubbed", loggedInfo);
+             assertContains("mock.simpleMethod(456);", loggedInfo);
+             assertContains(".callUnstubbedMethodThatQualifiesForWarning(", loggedInfo);
+         }
+-    };
++    });
+     runner.run(notifier);
+ }
+\ No newline at end of file

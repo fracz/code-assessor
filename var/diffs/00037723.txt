@@ -1,0 +1,14 @@
+diff --git a/fc3fed6cca798dd290cce0c663d390ede78b55a7 b/de209a9447daed2467bb37588a2ee3e0dd79635d
+index fc3fed6cca..de209a9447 100644
+--- a/fc3fed6cca798dd290cce0c663d390ede78b55a7
++++ b/de209a9447daed2467bb37588a2ee3e0dd79635d
+@@ -1,7 +1,7 @@
+ public ChannelPipeline getPipeline() throws Exception {
+     ChannelPipeline pipeline = Channels.pipeline();
+     pipeline.addLast("frameDecoder", new LengthFieldBasedFrameDecoder(MAX_FRAME_LENGTH, 0, 4, 0, 4));
+     pipeline.addLast("frameEncoder", new LengthFieldPrepender(4));
+-    pipeline.addLast("blockingHandler", blockingReadHandler);
++    pipeline.addLast("blockingHandler", new BlockingReadHandler<ChannelBuffer>());
+     return pipeline;
+ }
+\ No newline at end of file

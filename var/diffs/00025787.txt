@@ -1,0 +1,18 @@
+diff --git a/f5477e94baa9753139e888786f828d2a29fe180b b/c5357dfbb60c1a39cd49181393ab615467731fbe
+index f5477e94ba..c5357dfbb6 100644
+--- a/f5477e94baa9753139e888786f828d2a29fe180b
++++ b/c5357dfbb60c1a39cd49181393ab615467731fbe
+@@ -1,8 +1,5 @@
+-void waitForParagraph(final int paragraphNo, final String state) {
+-    (new WebDriverWait(driver, 60)).until(new ExpectedCondition<Boolean>() {
+-
+-        public Boolean apply(WebDriver d) {
+-            return driver.findElement(By.xpath(getParagraphXPath(paragraphNo) + "//div[contains(@class, 'control')]//span[1][contains(.,'" + state + "')]")).isDisplayed();
+-        }
+-    });
++boolean waitForParagraph(final int paragraphNo, final String state) {
++    By locator = By.xpath(getParagraphXPath(paragraphNo) + "//div[contains(@class, 'control')]//span[1][contains(.,'" + state + "')]");
++    WebElement element = pollingWait(locator);
++    return element.isDisplayed();
+ }
+\ No newline at end of file

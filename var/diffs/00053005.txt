@@ -1,0 +1,23 @@
+diff --git a/02f37ec3cec298e4b97615b56dd9b81ce92d6258 b/d20708772f510bb44abb52192001cfebef24602e
+index 02f37ec3ce..d20708772f 100644
+--- a/02f37ec3cec298e4b97615b56dd9b81ce92d6258
++++ b/d20708772f510bb44abb52192001cfebef24602e
+@@ -1,15 +1,12 @@
+ @Override
+-protected SelectItem parseRowNumberSelectItem() {
++protected SelectItem parseRowNumberSelectItem(final SelectStatement selectStatement) {
+     getSqlParser().skipParentheses();
+     getSqlParser().accept(DefaultKeyword.OVER);
+     getSqlParser().accept(Symbol.LEFT_PAREN);
+     if (getSqlParser().equalAny(SQLServerKeyword.PARTITION)) {
+         throw new SQLParsingUnsupportedException(SQLServerKeyword.PARTITION);
+     }
+-    boolean containSubquery = isContainSubquery();
+-    setContainSubquery(false);
+-    parseOrderBy();
+-    setContainSubquery(containSubquery);
++    parseOrderBy(selectStatement);
+     getSqlParser().accept(Symbol.RIGHT_PAREN);
+     return new CommonSelectItem(SQLServerKeyword.ROW_NUMBER.name(), getSqlParser().parseAlias());
+ }
+\ No newline at end of file

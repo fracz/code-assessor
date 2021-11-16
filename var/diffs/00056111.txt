@@ -1,0 +1,18 @@
+diff --git a/a2d8b786a1237f9a9b5c01d6ac2e0a3c47458e4b b/35093c9acd57252ad3822d63f12d86a80acd3556
+index a2d8b786a1..35093c9acd 100644
+--- a/a2d8b786a1237f9a9b5c01d6ac2e0a3c47458e4b
++++ b/35093c9acd57252ad3822d63f12d86a80acd3556
+@@ -1,11 +1,11 @@
+ @Test
+ public void testSerializableSingletonProxyFactoryBean() throws Exception {
+-    BeanFactory bf = new XmlBeanFactory(new ClassPathResource("serializationTests.xml", getClass()));
++    BeanFactory bf = new XmlBeanFactory(new ClassPathResource(SERIALIZATION_CONTEXT, CLASS));
+     Person p = (Person) bf.getBean("serializableSingleton");
+     ProxyFactoryBean pfb = (ProxyFactoryBean) bf.getBean("&serializableSingleton");
+     ProxyFactoryBean pfb2 = (ProxyFactoryBean) SerializationTestUtils.serializeAndDeserialize(pfb);
+     Person p2 = (Person) pfb2.getObject();
+     assertEquals(p, p2);
+     assertNotSame(p, p2);
+     assertEquals("serializableSingleton", p2.getName());
+ }
+\ No newline at end of file

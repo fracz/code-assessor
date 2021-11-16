@@ -1,0 +1,17 @@
+diff --git a/21d52ce000eb2588fc36c4cf0647d83a2b693149 b/827cb13ad7ccca0483e198e3834cbc8b94e68931
+index 21d52ce000..827cb13ad7 100644
+--- a/21d52ce000eb2588fc36c4cf0647d83a2b693149
++++ b/827cb13ad7ccca0483e198e3834cbc8b94e68931
+@@ -1,9 +1,9 @@
+ public void cycle() throws UnsupportedEncodingException {
+-    result = database.query(new ONativeSynchQuery<ODocument, OQueryContextNativeSchema<ODocument>>("Animal", new OQueryContextNativeSchema<ODocument>()) {
++    new ONativeSynchQuery<ODocument, OQueryContextNativeSchema<ODocument>>(database, "Animal", new OQueryContextNativeSchema<ODocument>()) {
+
+         @Override
+         public boolean filter(OQueryContextNativeSchema<ODocument> iRecord) {
+             return iRecord.column("race").like("Euro%").and().column("race").like("%an").and().column("id").toInt().eq(10).go();
+         }
+-    }).execute();
++    }.execute();
+ }
+\ No newline at end of file

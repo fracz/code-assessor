@@ -1,0 +1,16 @@
+diff --git a/14f7bc75d1ecc37777953b240ce0dfb3f004d5ec b/e5dc5221c01fcbe6e886e7976948ee65d6d80172
+index 14f7bc75d1..e5dc5221c0 100644
+--- a/14f7bc75d1ecc37777953b240ce0dfb3f004d5ec
++++ b/e5dc5221c01fcbe6e886e7976948ee65d6d80172
+@@ -1,3 +1,9 @@
+ public Map<String, NodeResponse> getNodesMap() {
+-    return nodesMap();
++    if (nodesMap == null) {
++        nodesMap = Maps.newHashMap();
++        for (NodeResponse nodeResponse : nodes) {
++            nodesMap.put(nodeResponse.getNode().id(), nodeResponse);
++        }
++    }
++    return nodesMap;
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/a6bfe6c94a824b9b3e204cceebb91c1762d2479a b/735dbc20117da553cfda7eeba7ff9b678c2f3ea3
+index a6bfe6c94a..735dbc2011 100644
+--- a/a6bfe6c94a824b9b3e204cceebb91c1762d2479a
++++ b/735dbc20117da553cfda7eeba7ff9b678c2f3ea3
+@@ -1,6 +1,4 @@
+ public CommitList build() {
+-    if (!cache.isEmpty()) {
+-        throw new NotFinalise();
+-    }
++    cache.checkEmpty();
+     return new SimpleCommitList(commits);
+ }
+\ No newline at end of file

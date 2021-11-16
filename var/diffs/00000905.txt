@@ -1,0 +1,18 @@
+diff --git a/9ef0408a8d7fcec136863f2289cd6fdcadd9fbfb b/296df90a024c315b2151b4161b2216883e5ecee3
+index 9ef0408a8d..296df90a02 100644
+--- a/9ef0408a8d7fcec136863f2289cd6fdcadd9fbfb
++++ b/296df90a024c315b2151b4161b2216883e5ecee3
+@@ -1,8 +1,8 @@
+ private void copyUrl() {
+     String url = mWebView.getUrl();
+-    if (!TextUtils.isEmpty(url)) {
+-        ClipboardUtils.copyText(mWebView.getTitle(), url, this);
+-    } else {
+-        ToastUtils.show(R.string.webview_copy_url_empty, this);
++    if (TextUtils.isEmpty(url)) {
++        ToastUtils.show(R.string.webview_error_url_empty, this);
++        return;
+     }
++    ClipboardUtils.copyText(mWebView.getTitle(), url, this);
+ }
+\ No newline at end of file

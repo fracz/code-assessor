@@ -1,0 +1,19 @@
+diff --git a/002edbbeec913ebd08b43e0efaa37d8f7a03c954 b/4c4432cb8f18aba799086186e8ee56af2ee78ca2
+index 002edbbeec..4c4432cb8f 100644
+--- a/002edbbeec913ebd08b43e0efaa37d8f7a03c954
++++ b/4c4432cb8f18aba799086186e8ee56af2ee78ca2
+@@ -1,5 +1,12 @@
+ protected void validateButtons() {
+-    final boolean enabled = areButtonsValid();
++    boolean enabled = true;
++    try {
++        setErrorText(null);
++        canRun();
++    } catch (ConfigurationException e) {
++        enabled = false;
++        setErrorText(e.getMessage());
++    }
+     getPreviewAction().setEnabled(enabled);
+     getRefactorAction().setEnabled(enabled);
+ }
+\ No newline at end of file

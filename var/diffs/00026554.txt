@@ -1,0 +1,16 @@
+diff --git a/4bf5a8a287cdaa342900f1b6c35c9caa550a1ce2 b/c64816a115d0e94882cfaeb2b83314bf7cd14565
+index 4bf5a8a287..c64816a115 100644
+--- a/4bf5a8a287cdaa342900f1b6c35c9caa550a1ce2
++++ b/c64816a115d0e94882cfaeb2b83314bf7cd14565
+@@ -1,8 +1,8 @@
+ @Override
+ public List<Selectable> nodes() {
+-    List<Selectable> nodes = new ArrayList<Selectable>(strings.size());
+-    for (String string : strings) {
++    List<Selectable> nodes = new ArrayList<Selectable>(getSourceTexts().size());
++    for (String string : getSourceTexts()) {
+         nodes.add(PlainText.create(string));
+     }
+     return nodes;
+ }
+\ No newline at end of file

@@ -1,0 +1,30 @@
+diff --git a/c0b8fdf9bc6832a16ab78f272d8b945d092bf5b9 b/ba5328360fd1997517c9ac0110d64e09db6dabe2
+index c0b8fdf9bc..ba5328360f 100644
+--- a/c0b8fdf9bc6832a16ab78f272d8b945d092bf5b9
++++ b/ba5328360fd1997517c9ac0110d64e09db6dabe2
+@@ -1,12 +1,15 @@
+-public static void guessName(RegisterArg arg) {
++private String guessName(RegisterArg arg) {
+     SSAVar sVar = arg.getSVar();
+-    if (sVar == null || sVar.getName() != null) {
+-        return;
+-    }
+-    RegisterArg assignArg = sVar.getAssign();
+-    InsnNode assignInsn = assignArg.getParentInsn();
+-    String name = makeNameFromInsn(assignInsn);
+-    if (name != null && !NameMapper.isReserved(name)) {
+-        assignArg.setName(name);
++    if (sVar != null && sVar.getName() == null) {
++        RegisterArg assignArg = sVar.getAssign();
++        InsnNode assignInsn = assignArg.getParentInsn();
++        if (assignInsn != null) {
++            String name = makeNameFromInsn(assignInsn);
++            if (name != null && !NameMapper.isReserved(name)) {
++                assignArg.setName(name);
++                return name;
++            }
++        }
+     }
++    return makeNameForType(arg.getType());
+ }
+\ No newline at end of file

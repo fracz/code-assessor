@@ -1,0 +1,21 @@
+diff --git a/3f32234a21fb85f18fb533b6afea432b0d3e135c b/941c3aff31b818f10600095404328a9543eff53a
+index 3f32234a21..941c3aff31 100644
+--- a/3f32234a21fb85f18fb533b6afea432b0d3e135c
++++ b/941c3aff31b818f10600095404328a9543eff53a
+@@ -1,7 +1,11 @@
+ @Override
+-protected void processResourceXml(FsFile xmlFile, XmlNode xmlNode, XmlContext xmlContext) throws Exception {
+-    for (XmlNode node : xmlNode.selectByXpath(expression)) {
+-        String name = node.getAttrValue("name");
+-        processNode(name, node, xmlContext);
++protected void processResourceXml(FsFile xmlFile, XmlNode xmlNode, XmlContext xmlContext) {
++    try {
++        for (XmlNode node : xmlNode.selectByXpath(expression)) {
++            String name = node.getAttrValue("name");
++            processNode(name, node, xmlContext);
++        }
++    } catch (Exception e) {
++        throw new RuntimeException("Error processing " + xmlFile, e);
+     }
+ }
+\ No newline at end of file

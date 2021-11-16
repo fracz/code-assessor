@@ -1,0 +1,20 @@
+diff --git a/11c44bf52804f9a7296fd89933101a6600843e13 b/4b0d657794dd39eca245712bad1c161e6606fe91
+index 11c44bf528..4b0d657794 100644
+--- a/11c44bf52804f9a7296fd89933101a6600843e13
++++ b/4b0d657794dd39eca245712bad1c161e6606fe91
+@@ -1,11 +1,12 @@
+ @Test
+ public void closingAPublicationDoesNotRemoveOtherPublications() throws Exception {
+     Publication publication = conductor.addPublication(DESTINATION, CHANNEL_ID_1, SESSION_ID_1);
+     conductor.addPublication(DESTINATION, CHANNEL_ID_2, SESSION_ID_2);
+     willNotifyOperationSucceeded();
+     publication.release();
+-    verifyBuffersReleased(SESSION_ID_1);
++    // TODO: do these verifies as part of a publication test.
++    // verifyBuffersReleased(SESSION_ID_1);
+     verify(driverProxy).removePublication(DESTINATION, SESSION_ID_1, CHANNEL_ID_1);
+-    verifyBuffersNotReleased(SESSION_ID_2);
++    // verifyBuffersNotReleased(SESSION_ID_2);
+     verify(driverProxy, never()).removePublication(DESTINATION, SESSION_ID_2, CHANNEL_ID_2);
+ }
+\ No newline at end of file

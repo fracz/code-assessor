@@ -1,0 +1,21 @@
+diff --git a/6530c954d01eea882743ed9fe20b60662baf45d3 b/824a7697149bafd8a8aaa90f04c773fc36332619
+index 6530c954d0..824a769714 100644
+--- a/6530c954d01eea882743ed9fe20b60662baf45d3
++++ b/824a7697149bafd8a8aaa90f04c773fc36332619
+@@ -1,11 +1,11 @@
+ public void testComplexMap() throws Exception {
+     // Map<String, InnerType> test = new HashMap<String, InnerType>();
+     ModelResolver resolver = new ModelResolver(mapper());
+-    resolver.resolve(WrapperType.class);
+-    Map<String, Model> types = resolver.getDetectedTypes();
+-    for (String key : types.keySet()) {
+-        Model model = types.get(key);
++    ModelConverterContextMock context = new ModelConverterContextMock();
++    resolver.resolve(WrapperType.class, context);
++    for (String key : context.models.keySet()) {
++        Model model = context.models.get(key);
+         assertNotNull(model);
+     // !!! TODO: verify
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/af7fdc3c0ac861ca395ac2ed9d6f0ee1c79dd139 b/56dbe1e45afe38304e568b85ca35e1ce04b582b9
+index af7fdc3c0a..56dbe1e45a 100644
+--- a/af7fdc3c0ac861ca395ac2ed9d6f0ee1c79dd139
++++ b/56dbe1e45afe38304e568b85ca35e1ce04b582b9
+@@ -1,10 +1,4 @@
+-@NotNull
+ @Override
+-protected CreateFileFromTemplateDialog.Builder buildDialog(Project project, final PsiDirectory directory) {
+-    final CreateFileFromTemplateDialog.Builder builder = CreateFileFromTemplateDialog.createDialog(project, GroovyBundle.message("newclass.dlg.title"));
+-    builder.addKind("Class", GroovyIcons.CLASS, "GroovyClass.groovy");
+-    builder.addKind("Interface", GroovyIcons.INTERFACE, "GroovyInterface.groovy");
+-    builder.addKind("Enum", GroovyIcons.ENUM, "GroovyEnum.groovy");
+-    builder.addKind("Annotation", GroovyIcons.ANNOTATION_TYPE, "GroovyAnnotation.groovy");
+-    return builder;
++protected void buildDialog(Project project, PsiDirectory directory, CreateFileFromTemplateDialog.Builder builder) {
++    builder.setTitle(GroovyBundle.message("newclass.dlg.title")).addKind("Class", GroovyIcons.CLASS, "GroovyClass.groovy").addKind("Interface", GroovyIcons.INTERFACE, "GroovyInterface.groovy").addKind("Enum", GroovyIcons.ENUM, "GroovyEnum.groovy").addKind("Annotation", GroovyIcons.ANNOTATION_TYPE, "GroovyAnnotation.groovy");
+ }
+\ No newline at end of file

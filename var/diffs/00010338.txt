@@ -1,0 +1,19 @@
+diff --git a/8f29b6d46e216be2d0133ed1fd1d41fc8d647284 b/544c3404118112019b3cccbea23128579a465b76
+index 8f29b6d46e..544c340411 100644
+--- a/8f29b6d46e216be2d0133ed1fd1d41fc8d647284
++++ b/544c3404118112019b3cccbea23128579a465b76
+@@ -1,12 +1,12 @@
+ private int searchForCacheEntry(int key) {
+     myCache[0].key = key;
+     int current = myHashTable[((key & 0x7fffffff) % myHashTableSize)];
+-    for (; ; ) {
++    while (true) {
+         final CacheEntry<T> cacheEntry = myCache[current];
+         if (key == cacheEntry.key) {
+             break;
+         }
+         current = cacheEntry.hash_next;
+     }
+     return current;
+ }
+\ No newline at end of file

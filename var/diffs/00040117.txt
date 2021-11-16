@@ -1,0 +1,20 @@
+diff --git a/5160873f60130041c1367f00600204c49e135655 b/6357f2e29fb4b61370e75102a5f9133f8b1e7616
+index 5160873f60..6357f2e29f 100644
+--- a/5160873f60130041c1367f00600204c49e135655
++++ b/6357f2e29fb4b61370e75102a5f9133f8b1e7616
+@@ -1,12 +1,12 @@
+ @Test
+ public void shouldReturnIndexRuleForLabelAndProperty() {
+     // Given
+     createSchema(index(LABEL1, PROP1), index(LABEL1, PROP2), index(LABEL2, PROP1));
+     // When
+-    IndexRule rule = storage.indexRule(labelId(LABEL1), propId(PROP1));
++    IndexRule rule = storage.indexRule(nodeDescriptor(LABEL1, PROP1));
+     // Then
+     assertNotNull(rule);
+     assertEquals(labelId(LABEL1), rule.getLabel());
+-    assertEquals(propId(PROP1), rule.getPropertyKey());
++    assertEquals(propId(PROP1), rule.descriptor().getPropertyKeyId());
+     assertEquals(SchemaRule.Kind.INDEX_RULE, rule.getKind());
+ }
+\ No newline at end of file

@@ -1,0 +1,31 @@
+diff --git a/dfb6b88148dfd0f32c5a9c813791eb082d539c69 b/7b9f08dfc0df2eef8c4e6a0bf9fdba50f2543631
+index dfb6b88148..7b9f08dfc0 100644
+--- a/dfb6b88148dfd0f32c5a9c813791eb082d539c69
++++ b/7b9f08dfc0df2eef8c4e6a0bf9fdba50f2543631
+@@ -1,22 +1,9 @@
+-/**
+- * Set the content of a notification for a single message.
+- * @see #getMessagePreview(android.content.Context, com.fsck.k9.mail.Message)
+- * @param context
+- * @param message
+- * @param sender
+- * @param subject
+- * @param builder
+- * @param accountDescr
+- */
+-private NotificationCompat.Builder setNotificationContent(final Context context, final Message message, final CharSequence sender, final CharSequence subject, final NotificationCompat.Builder builder, final String accountDescr) {
++private NotificationCompat.Builder setNotificationContent(Message message, CharSequence sender, CharSequence subject, Builder builder, String accountName) {
+     NotificationCompat.BigTextStyle style = new NotificationCompat.BigTextStyle(builder);
+-    CharSequence preview = getMessagePreview(context, message);
++    CharSequence preview = getMessagePreview(message);
+     if (preview != null) {
+         style.bigText(preview);
+     }
+-    builder.setContentText(subject);
+-    builder.setSubText(accountDescr);
+-    builder.setContentTitle(sender);
+-    builder.setStyle(style);
++    builder.setStyle(style).setContentTitle(sender).setContentText(subject).setSubText(accountName);
+     return builder;
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/95f764263e563030de42b07f2b369c47b7312491 b/0e3b7f93131c583a811aa0f530bbe91dac4fd984
+index 95f764263e..0e3b7f9313 100644
+--- a/95f764263e563030de42b07f2b369c47b7312491
++++ b/0e3b7f93131c583a811aa0f530bbe91dac4fd984
+@@ -1,6 +1,6 @@
+ @NotNull
+ public static String getStableMangledNameForDescriptor(@NotNull ClassDescriptor descriptor, @NotNull String functionName) {
+     Collection<SimpleFunctionDescriptor> functions = descriptor.getDefaultType().getMemberScope().getContributedFunctions(Name.identifier(functionName), NoLookupLocation.FROM_BACKEND);
+     assert functions.size() == 1 : "Can't select a single function: " + functionName + " in " + descriptor;
+-    return getSuggestedName((DeclarationDescriptor) functions.iterator().next());
++    return new FQNGenerator().generate(functions.iterator().next()).getNames().get(0);
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/66dd9760f062699f346ed565243852efa3429bca b/85d03ec08426afb177b794be5cd2c44646a920eb
+index 66dd9760f0..85d03ec084 100644
+--- a/66dd9760f062699f346ed565243852efa3429bca
++++ b/85d03ec08426afb177b794be5cd2c44646a920eb
+@@ -1,11 +1,8 @@
+ public void close() {
+     cache.remove();
+     rootObjectMapper.close();
+     idFieldMapper.close();
+-    indexFieldMapper.close();
+-    typeFieldMapper.close();
+-    allFieldMapper.close();
+-    analyzerMapper.close();
+-    sourceFieldMapper.close();
+-    sizeFieldMapper.close();
++    for (RootMapper rootMapper : rootMappersOrdered) {
++        rootMapper.close();
++    }
+ }
+\ No newline at end of file

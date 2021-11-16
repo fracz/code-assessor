@@ -1,0 +1,15 @@
+diff --git a/8e2e4fabae2f822167d05f479d51cd6da6b0d3fa b/1e06c2d529b526aca3b7f04454a52748ae52da79
+index 8e2e4fabae..1e06c2d529 100644
+--- a/8e2e4fabae2f822167d05f479d51cd6da6b0d3fa
++++ b/1e06c2d529b526aca3b7f04454a52748ae52da79
+@@ -1,7 +1,8 @@
+ static HighlightInfo checkRecursiveConstructorInvocation(PsiMethod method) {
+     if (HighlightControlFlowUtil.isRecursivelyCalledConstructor(method)) {
+         TextRange textRange = HighlightNamesUtil.getMethodDeclarationTextRange(method);
+-        return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, textRange, JavaErrorMessages.message("recursive.constructor.invocation"));
++        String description = JavaErrorMessages.message("recursive.constructor.invocation");
++        return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(textRange).descriptionAndTooltip(description).create();
+     }
+     return null;
+ }
+\ No newline at end of file

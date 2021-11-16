@@ -1,0 +1,15 @@
+diff --git a/0255ac42f4d4a7c897074dcdef9818da62d7fec9 b/07af0688ee69cac324a08d340ca16d241130ef43
+index 0255ac42f4..07af0688ee 100644
+--- a/0255ac42f4d4a7c897074dcdef9818da62d7fec9
++++ b/07af0688ee69cac324a08d340ca16d241130ef43
+@@ -1,6 +1,7 @@
+ public String expand(DataContext dataContext) {
+-    VirtualFile file = (VirtualFile) dataContext.getData(DataConstants.VIRTUAL_FILE);
+-    if (file == null)
++    VirtualFile file = PlatformDataKeys.VIRTUAL_FILE.getData(dataContext);
++    if (file == null) {
+         return null;
++    }
+     return file.getNameWithoutExtension();
+ }
+\ No newline at end of file

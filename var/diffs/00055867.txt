@@ -1,0 +1,12 @@
+diff --git a/44f37bbcc3ecb6e5fee2eff1b3b46f6ac60cefcb b/23c7bfd37608b3878de66f5b21fdafec3f68e054
+index 44f37bbcc3..23c7bfd376 100644
+--- a/44f37bbcc3ecb6e5fee2eff1b3b46f6ac60cefcb
++++ b/23c7bfd37608b3878de66f5b21fdafec3f68e054
+@@ -1,5 +1,5 @@
+ @Test
+ public void notFound() throws Exception {
+     Mono<Object> mono = resolver.resolveArgument(this.paramNamedValueStringArray, this.bindingContext, this.exchange);
+-    TestSubscriber.subscribe(mono).assertError(ServerWebInputException.class);
++    ScriptedSubscriber.create().expectNextCount(0).expectError(ServerWebInputException.class).verify(mono);
+ }
+\ No newline at end of file

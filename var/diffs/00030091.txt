@@ -1,0 +1,14 @@
+diff --git a/782f7d7ba49b8caaa2aa8ffd31a48099ca35bff2 b/563d5fe5314940d3123cb08c8d2685f29374a9dd
+index 782f7d7ba4..563d5fe531 100644
+--- a/782f7d7ba49b8caaa2aa8ffd31a48099ca35bff2
++++ b/563d5fe5314940d3123cb08c8d2685f29374a9dd
+@@ -1,7 +1,7 @@
+ @Override
+ protected Fieldable parseCreateField(ParseContext context) throws IOException {
+     if (!enabled) {
+         return null;
+     }
+-    return new CustomIntegerNumericField(this, ((Number) context.externalValue()).intValue());
++    return new CustomIntegerNumericField(this, context.source().length);
+ }
+\ No newline at end of file

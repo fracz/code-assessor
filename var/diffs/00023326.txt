@@ -1,0 +1,16 @@
+diff --git a/818432d0db5241f2d0ab7f6d8e7ba6175ddf6ba0 b/a3fd1ff328b789514d06a9e25d0960504aa0a90a
+index 818432d0db..a3fd1ff328 100644
+--- a/818432d0db5241f2d0ab7f6d8e7ba6175ddf6ba0
++++ b/a3fd1ff328b789514d06a9e25d0960504aa0a90a
+@@ -1,8 +1,8 @@
+-private ShortcutInfo deleteShortcut(@NonNull ShortcutService s, @NonNull String id) {
++private ShortcutInfo deleteShortcut(@NonNull String id) {
+     final ShortcutInfo shortcut = mShortcuts.remove(id);
+     if (shortcut != null) {
+-        s.removeIcon(getPackageUserId(), shortcut);
++        mShortcutUser.mService.removeIcon(getPackageUserId(), shortcut);
+         shortcut.clearFlags(ShortcutInfo.FLAG_DYNAMIC | ShortcutInfo.FLAG_PINNED);
+     }
+     return shortcut;
+ }
+\ No newline at end of file

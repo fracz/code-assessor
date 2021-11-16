@@ -1,0 +1,15 @@
+diff --git a/610d871f30d76f413e276aeba9e7c48d058dd713 b/92818659dca289f4c29fd3ac3832a232b776f446
+index 610d871f30..92818659dc 100644
+--- a/610d871f30d76f413e276aeba9e7c48d058dd713
++++ b/92818659dca289f4c29fd3ac3832a232b776f446
+@@ -1,7 +1,8 @@
+ @Test
+ public void testNonCreational() {
+-    Entry e = r.createFile(1, "file", null, -1);
++    createFile(r, 1, "file", null, -1);
++    Entry e = r.getEntry("file");
+     cs = cs(new ChangeFileContentChange("file", null, -1));
+     cs.applyTo(r);
+     assertFalse(cs.isCreationalFor(e));
+ }
+\ No newline at end of file

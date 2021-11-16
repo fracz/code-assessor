@@ -1,0 +1,23 @@
+diff --git a/e787dd7ea934ee8a017942396fdf6ab1ee066267 b/67ab23d3990eac3200c74f6e5ac3c4c43563eb39
+index e787dd7ea9..67ab23d399 100644
+--- a/e787dd7ea934ee8a017942396fdf6ab1ee066267
++++ b/67ab23d3990eac3200c74f6e5ac3c4c43563eb39
+@@ -1,11 +1,11 @@
+ @Override
+-public void deployConfig(WebApplicationContext cxt, Filter... filters) {
++public void deployConfig(WebApplicationContext wac, Filter... filters) {
+     Assert.state(this.port != -1, "setup() was never called.");
+-    ServletContextHandler contextHandler = new ServletContextHandler();
+-    ServletHolder servletHolder = new ServletHolder(new DispatcherServlet(cxt));
+-    contextHandler.addServlet(servletHolder, "/");
++    ServletHolder servletHolder = new ServletHolder(new DispatcherServlet(wac));
++    this.contextHandler = new ServletContextHandler();
++    this.contextHandler.addServlet(servletHolder, "/");
+     for (Filter filter : filters) {
+-        contextHandler.addFilter(new FilterHolder(filter), "/*", getDispatcherTypes());
++        this.contextHandler.addFilter(new FilterHolder(filter), "/*", getDispatcherTypes());
+     }
+-    this.jettyServer.setHandler(contextHandler);
++    this.jettyServer.setHandler(this.contextHandler);
+ }
+\ No newline at end of file

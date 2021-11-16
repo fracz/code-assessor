@@ -1,0 +1,19 @@
+diff --git a/876669a982e00f42c34d94bedb8e4453a2058d04 b/5a3cf51940900a16b77e427eeb835de4db2ede30
+index 876669a982..5a3cf51940 100644
+--- a/876669a982e00f42c34d94bedb8e4453a2058d04
++++ b/5a3cf51940900a16b77e427eeb835de4db2ede30
+@@ -1,12 +1,12 @@
+ @Test
+ public void shouldPointToFourthMethodBecauseOfTooLittleActualInvocations() {
+     inOrder.verify(mock).simpleMethod(anyInt());
+     inOrder.verify(mockTwo).simpleMethod(anyInt());
+     inOrder.verify(mock).simpleMethod(anyInt());
+     try {
+         inOrder.verify(mockTwo, times(3)).simpleMethod(anyInt());
+         fail();
+     } catch (VerifcationInOrderFailure e) {
+-        assertThat(e.getCause(), hasFirstMethodInStackTrace("fourth"));
++        assertContains("fourth(", e.getMessage());
+     }
+ }
+\ No newline at end of file

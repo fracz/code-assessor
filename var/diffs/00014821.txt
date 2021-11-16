@@ -1,0 +1,25 @@
+diff --git a/cf00027c2175ee9423d7d26d272b70b609bcbb56 b/c0c659e5458e937c575aeb408b6a75df8b9b044a
+index cf00027c21..c0c659e545 100644
+--- a/cf00027c2175ee9423d7d26d272b70b609bcbb56
++++ b/c0c659e5458e937c575aeb408b6a75df8b9b044a
+@@ -1,17 +1,17 @@
+ public void visitNewExpression(@NotNull PsiNewExpression newExpression) {
+     super.visitNewExpression(newExpression);
+     final PsiType type = newExpression.getType();
+     if (type == null) {
+         return;
+     }
+     if (!(type instanceof PsiClassType)) {
+         return;
+     }
+     final PsiClassType classType = (PsiClassType) type;
+-    final String className = classType.getCanonicalText();
+-    if (className == null || !className.startsWith(prefix)) {
++    @NonNls final String className = classType.getCanonicalText();
++    if (className == null || !className.startsWith("sun.")) {
+         return;
+     }
+     final PsiJavaCodeReferenceElement classNameElement = newExpression.getClassReference();
+     registerError(classNameElement);
+ }
+\ No newline at end of file

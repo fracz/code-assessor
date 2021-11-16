@@ -1,0 +1,20 @@
+diff --git a/ca293dd2f34ace9ebb1da7a6720e6f852fd373a2 b/d3951ec469f3e6c7583ab6e48d156dc6dfd3f07f
+index ca293dd2f3..d3951ec469 100644
+--- a/ca293dd2f34ace9ebb1da7a6720e6f852fd373a2
++++ b/d3951ec469f3e6c7583ab6e48d156dc6dfd3f07f
+@@ -1,13 +1,11 @@
+ public int getInt(String key, final int defaultValue) {
+     if (mProperties.containsKey(key)) {
+         String rawValue = mProperties.getProperty(key);
+         try {
+             return Integer.parseInt(lookup(rawValue));
+         } catch (NumberFormatException e) {
+             LOG.warn("Configuration cannot evaluate key " + key + " as integer.");
+-            return defaultValue;
+         }
+-    } else {
+-        return defaultValue;
+     }
++    return defaultValue;
+ }
+\ No newline at end of file

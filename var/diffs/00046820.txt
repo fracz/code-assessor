@@ -1,0 +1,12 @@
+diff --git a/3b15e0ff10386e2a222e69b74b71ad5c08493e65 b/7b5e96b0a8cb6697a9c5329e9013c8cdda0c9d28
+index 3b15e0ff10..7b5e96b0a8 100644
+--- a/3b15e0ff10386e2a222e69b74b71ad5c08493e65
++++ b/7b5e96b0a8cb6697a9c5329e9013c8cdda0c9d28
+@@ -1,5 +1,5 @@
+ private void requestArchive(final Publication archiverServiceRequest, final String channel, final int streamId) {
+     new MessageHeaderEncoder().wrap(buffer, 0).templateId(ArchiveStartRequestEncoder.TEMPLATE_ID).blockLength(ArchiveStartRequestEncoder.BLOCK_LENGTH).schemaId(ArchiveStartRequestEncoder.SCHEMA_ID).version(ArchiveStartRequestEncoder.SCHEMA_VERSION);
+     final ArchiveStartRequestEncoder encoder = new ArchiveStartRequestEncoder().wrap(buffer, MessageHeaderEncoder.ENCODED_LENGTH).channel(channel).streamId(streamId);
+-    offer(archiverServiceRequest, buffer, 0, encoder.encodedLength() + MessageHeaderEncoder.ENCODED_LENGTH, 1000);
++    offer(archiverServiceRequest, buffer, 0, encoder.encodedLength() + MessageHeaderEncoder.ENCODED_LENGTH, TIMEOUT);
+ }
+\ No newline at end of file

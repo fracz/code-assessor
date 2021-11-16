@@ -1,0 +1,14 @@
+diff --git a/15298e55dd565d6e075679ebc3c2e2ed01fc2ac3 b/a949a0d6f247fbde5c39ebe749b70c4360ef0dbc
+index 15298e55dd..a949a0d6f2 100644
+--- a/15298e55dd565d6e075679ebc3c2e2ed01fc2ac3
++++ b/a949a0d6f247fbde5c39ebe749b70c4360ef0dbc
+@@ -1,7 +1,7 @@
+ public void readExternal(Element parentNode) throws InvalidDataException {
+     super.readExternal(parentNode);
+     String logMessage = JDOMExternalizerUtil.readField(parentNode, LOG_MESSAGE_OPTION_NAME);
+     if (logMessage != null) {
+-        setLogMessage(EvaluationManager.getInstance().createExpressionFragment(logMessage));
++        setLogMessage(new TextWithImportsImpl(CodeFragmentKind.EXPRESSION, logMessage));
+     }
+ }
+\ No newline at end of file

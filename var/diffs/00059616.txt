@@ -1,0 +1,14 @@
+diff --git a/26566e856993ae0e734a598d2c1fdc6914b63778 b/104818fcaf46a75dccfb0a09d2d3c85bad455ebc
+index 26566e8569..104818fcaf 100644
+--- a/26566e856993ae0e734a598d2c1fdc6914b63778
++++ b/104818fcaf46a75dccfb0a09d2d3c85bad455ebc
+@@ -1,6 +1,7 @@
+-private void addSchemaEdge(TitanVertex out, TitanVertex in, TypeDefinitionCategory def, Object modifier) {
++private TitanEdge addSchemaEdge(TitanVertex out, TitanVertex in, TypeDefinitionCategory def, Object modifier) {
+     assert def.isEdge();
+     TitanEdge edge = transaction.addEdge(out, in, SystemLabel.TypeDefinitionEdge);
+     TypeDefinitionDescription desc = new TypeDefinitionDescription(def, modifier);
+     edge.setProperty(SystemKey.TypeDefinitionDesc, def);
++    return edge;
+ }
+\ No newline at end of file

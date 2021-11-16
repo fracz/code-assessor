@@ -1,0 +1,31 @@
+diff --git a/592594cd7dee1ee75a3332b8c8038e1266d6444e b/53f74277208ef70bec68fe786f6216f92e0289eb
+index 592594cd7d..53f7427720 100644
+--- a/592594cd7dee1ee75a3332b8c8038e1266d6444e
++++ b/53f74277208ef70bec68fe786f6216f92e0289eb
+@@ -1,16 +1,17 @@
+ @Override
+-public void onRequestComplete(Bundle state, AsyncSocket socket, AsyncHttpRequest request, ResponseHeaders headers, Exception ex) {
+-    CachingSocket caching = (CachingSocket) com.koushikdutta.async.Util.getWrappedSocket(socket, CachingSocket.class);
+-    if (caching == null)
++public void onRequestComplete(OnRequestCompleteData data) {
++    // CachingSocket caching = (CachingSocket)com.koushikdutta.async.Util.getWrappedSocket(data.socket, CachingSocket.class);
++    // if (caching == null)
++    // return;
++    BodyCacher cacher = data.state.getParcelable("body-cacher");
++    if (cacher == null)
+         return;
+     // Log.i(LOGTAG, "Cache done: " + ex);
+     try {
+-        if (ex != null)
+-            caching.abort();
++        if (data.exception != null)
++            cacher.abort();
+         else
+-            caching.commit();
++            cacher.commit();
+     } catch (Exception e) {
+     }
+-    // reset for socket reuse
+-    caching.reset();
+ }
+\ No newline at end of file

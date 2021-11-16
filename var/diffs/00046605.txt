@@ -1,0 +1,27 @@
+diff --git a/cf529198d7ea010ee3db2a29d81335f5a35ed4c4 b/c226c227e32cb3942bb824a0f0564a97e31d7248
+index cf529198d7..c226c227e3 100644
+--- a/cf529198d7ea010ee3db2a29d81335f5a35ed4c4
++++ b/c226c227e32cb3942bb824a0f0564a97e31d7248
+@@ -1,17 +1,12 @@
+ @Override
+ protected void syncBackTexture() {
+-    if (usingFrontTex)
+-        needSepFrontTex = true;
+     if (USE_JOGL_FBOLAYER) {
++        if (usingFrontTex)
++            needSepFrontTex = true;
+         if (1 < numSamples) {
+             backFBO.syncSamplingSink(gl);
+             backFBO.bind(gl);
+         }
+-    } else {
+-        if (1 < numSamples) {
+-            bindFramebuffer(READ_FRAMEBUFFER, glMultiFbo.get(0));
+-            bindFramebuffer(DRAW_FRAMEBUFFER, glColorFbo.get(0));
+-            blitFramebuffer(0, 0, fboWidth, fboHeight, 0, 0, fboWidth, fboHeight, COLOR_BUFFER_BIT, NEAREST);
+-        }
+-    }
++    } else
++        super.syncBackTexture();
+ }
+\ No newline at end of file

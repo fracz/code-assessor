@@ -1,0 +1,20 @@
+diff --git a/fc673e3e935b8e9d334af52e98bbefff3f063a02 b/608988d8792a5770f4cd644ac549346b922056e8
+index fc673e3e93..608988d879 100644
+--- a/fc673e3e935b8e9d334af52e98bbefff3f063a02
++++ b/608988d8792a5770f4cd644ac549346b922056e8
+@@ -1,11 +1,12 @@
+ @Test
+ public void testCurrentFile() throws Exception {
+     Nd4j.dtype = DataBuffer.Type.FLOAT;
+     String url = "https://s3.amazonaws.com/dl4j-distribution/GoogleNews-vectors-negative300.bin.gz";
+     String path = "GoogleNews-vectors-negative300.bin.gz";
+     File toDl = new File(path);
+-    if (!toDl.exists())
++    if (!toDl.exists()) {
+         FileUtils.copyURLToFile(new URL(url), toDl);
+-    Word2Vec vec = WordVectorSerializer.loadGoogleModel(toDl.getAbsolutePath(), true);
++    }
++    Word2Vec vec = WordVectorSerializer.loadGoogleModel(toDl, true);
+     assertEquals(3000000, vec.vocab().numWords());
+ }
+\ No newline at end of file

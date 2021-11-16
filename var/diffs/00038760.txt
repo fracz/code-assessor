@@ -1,0 +1,16 @@
+diff --git a/870c06c59d841d948ca892b41198992c0b38f1e2 b/03d73b79a1a7f299b222c6b82d19567a3eb124e5
+index 870c06c59d..03d73b79a1 100644
+--- a/870c06c59d841d948ca892b41198992c0b38f1e2
++++ b/03d73b79a1a7f299b222c6b82d19567a3eb124e5
+@@ -1,8 +1,4 @@
+ public void dropConstraint(UniquenessConstraint constraint) {
+-    if (constraintsForLabel(constraint.label()).remove(constraint)) {
+-        UniquenessConstraintRule rule = constraintRules.get(constraint);
+-        if (rule != null) {
+-            persistenceManager.dropSchemaRule(rule.getId());
+-        }
+-    }
++    constraintsChanges.remove(constraint);
++    constraintsForLabel(constraint.label()).remove(constraint);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/5a216e3e30fef3b7d8c7520a318a43153b2623c8 b/0eab4e299062ab55ed50e824127f8de870db7e91
+index 5a216e3e30..0eab4e2990 100644
+--- a/5a216e3e30fef3b7d8c7520a318a43153b2623c8
++++ b/0eab4e299062ab55ed50e824127f8de870db7e91
+@@ -1,8 +1,9 @@
+ @Override
+ public void onResponse(DeleteIndexResponse result) {
+     try {
+-        channel.sendResponse(new JsonRestResponse(request, OK, jsonBuilder().startObject().field("ok", true).endObject()));
++        JsonBuilder builder = RestJsonBuilder.restJsonBuilder(request);
++        channel.sendResponse(new JsonRestResponse(request, OK, builder.startObject().field("ok", true).endObject()));
+     } catch (IOException e) {
+         onFailure(e);
+     }
+ }
+\ No newline at end of file

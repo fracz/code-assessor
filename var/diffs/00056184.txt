@@ -1,0 +1,21 @@
+diff --git a/9838eb31eb159b3dc6d591d43ec19ce32ed49fb5 b/9ef0980517ea7bc530b4084981896d32b3af6a0e
+index 9838eb31eb..9ef0980517 100644
+--- a/9838eb31eb159b3dc6d591d43ec19ce32ed49fb5
++++ b/9ef0980517ea7bc530b4084981896d32b3af6a0e
+@@ -1,11 +1,6 @@
+-public void testAfterThrowingWithTypeSpecified() {
++@Test(expected = Throwable.class)
++public void testAfterThrowingWithTypeSpecified() throws Throwable {
+     mockCollaborator.noArgsOnThrowableMatch();
+-    mockControl.replay();
+-    try {
+-        this.testBean.exceptional(new Throwable());
+-        fail("should throw exception");
+-    } catch (Throwable t) {
+-    // no-op
+-    }
+-    mockControl.verify();
++    replay(mockCollaborator);
++    this.testBean.exceptional(new Throwable());
+ }
+\ No newline at end of file

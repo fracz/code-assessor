@@ -1,0 +1,15 @@
+diff --git a/49aff36018169d59bcf9092f49f05124da9b7c06 b/4b7533490c52ca23ff3ac4b0ca37d0948059f1fb
+index 49aff36018..4b7533490c 100644
+--- a/49aff36018169d59bcf9092f49f05124da9b7c06
++++ b/4b7533490c52ca23ff3ac4b0ca37d0948059f1fb
+@@ -1,8 +1,7 @@
+ @Override
+ public String toString() {
+     if (!DEBUG)
+         return super.toString();
+-    final StringBuilder builder = new StringBuilder("Dataset [name=").append(mName).append(", fields=").append(mFields).append(", extras=");
+-    append(builder, mExtras).append(", flags=").append(mFlags).append(", requiresAuth: ").append(mRequiresAuth).append(", hasCrypto: ").append(mHasCryptoObject);
++    final StringBuilder builder = new StringBuilder("Dataset [id=").append(mId).append(", name=").append(mName).append(", fieldIds=").append(mFieldIds).append(", fieldValues=").append(mFieldValues).append(", hasAuthentication=").append(mAuthentication != null).append(", hasExtras=").append(mExtras != null);
+     return builder.append(']').toString();
+ }
+\ No newline at end of file

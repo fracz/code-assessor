@@ -1,0 +1,13 @@
+diff --git a/e574e3ba09510279cc948fe4c69b851b75ed2a25 b/f64920fe9232fb2a5f53e4e74582f3a4f05b1048
+index e574e3ba09..f64920fe92 100644
+--- a/e574e3ba09510279cc948fe4c69b851b75ed2a25
++++ b/f64920fe9232fb2a5f53e4e74582f3a4f05b1048
+@@ -1,4 +1,6 @@
+ @Override
+ public Future<Bitmap> intoImageView(ImageView imageView) {
+-    return null;
++    if (bitmapBuilder == null)
++        bitmapBuilder = new IonBitmapRequestBuilder(this);
++    return bitmapBuilder.intoImageView(imageView);
+ }
+\ No newline at end of file

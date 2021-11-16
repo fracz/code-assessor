@@ -1,0 +1,16 @@
+diff --git a/9f03ce35f13e3cd8496c0442e583e108a56a0622 b/9c3933f621fa1cac67dee37c1c232667aeadff14
+index 9f03ce35f1..9c3933f621 100644
+--- a/9f03ce35f13e3cd8496c0442e583e108a56a0622
++++ b/9c3933f621fa1cac67dee37c1c232667aeadff14
+@@ -1,7 +1,5 @@
+-@Nullable
+-public final PsiMethod getBaseMethod() {
+-    final HierarchyTreeBuilder builder = myBuilders.get(myCurrentViewName);
++public PsiMethod getBaseMethod() {
++    final HierarchyTreeBuilder builder = myBuilders.get(myCurrentViewType);
+     final MethodHierarchyTreeStructure treeStructure = (MethodHierarchyTreeStructure) builder.getTreeStructure();
+-    final PsiMethod baseMethod = treeStructure.getBaseMethod();
+-    return baseMethod;
++    return treeStructure.getBaseMethod();
+ }
+\ No newline at end of file

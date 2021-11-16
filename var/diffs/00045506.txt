@@ -1,0 +1,24 @@
+diff --git a/dac45ac7844e2a931bb685cb1e831ba85bebd775 b/9e18feecb64a70c4d190b7686da97edcf8cc793a
+index dac45ac784..9e18feecb6 100644
+--- a/dac45ac7844e2a931bb685cb1e831ba85bebd775
++++ b/9e18feecb64a70c4d190b7686da97edcf8cc793a
+@@ -1,16 +1,12 @@
+ /**
+  * Check if a remote node is really connected.
+  *
+  * @return true if it's connected, otherwise false
+  */
++@Override
+ public boolean checkConnection() {
+-    boolean connected = false;
+-    if (channel != null && channel.socket != null)
+-        try {
+-            connected = channel.socket.isConnected();
+-        } catch (Exception e) {
+-        }
++    final boolean connected = super.checkConnection();
+     if (!connected)
+         status = STATUS.DISCONNECTED;
+     return connected;
+ }
+\ No newline at end of file

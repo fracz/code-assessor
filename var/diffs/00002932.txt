@@ -1,0 +1,19 @@
+diff --git a/e430f264c201f53a980860b70ffb75ab8b6f13c5 b/783dc62ddbc9a0cf2c4d5a32494e99869e6137d1
+index e430f264c2..783dc62ddb 100644
+--- a/e430f264c201f53a980860b70ffb75ab8b6f13c5
++++ b/783dc62ddbc9a0cf2c4d5a32494e99869e6137d1
+@@ -1,8 +1,12 @@
+ public ActionCallback selectNextContent() {
+     int contentCount = getContentCount();
+     LOG.assertTrue(contentCount > 1);
+     Content selectedContent = getSelectedContent();
+     int index = getIndexOfContent(selectedContent);
+     index = (index + 1) % contentCount;
+-    return setSelectedContentCB(getContent(index), true);
++    final Content content = getContent(index);
++    if (content == null) {
++        return null;
++    }
++    return setSelectedContentCB(content, true);
+ }
+\ No newline at end of file

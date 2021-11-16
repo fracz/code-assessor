@@ -1,0 +1,15 @@
+diff --git a/54b24d883ceb8980fb3cfd33d7aaa916d3a9e4e1 b/6cd8afa2a37fdf6407032ccf5a9198d59d013926
+index 54b24d883c..6cd8afa2a3 100644
+--- a/54b24d883ceb8980fb3cfd33d7aaa916d3a9e4e1
++++ b/6cd8afa2a37fdf6407032ccf5a9198d59d013926
+@@ -1,8 +1,8 @@
+ @Override
+ public int hashCode() {
+     final int prime = 31;
+     int result = 1;
+     result = prime * result + (checked ? 1231 : 1237);
+-    result = prime * result + (int) (expireNS ^ (expireNS >>> 32));
++    result = prime * result + ((expire == null) ? 0 : expire.hashCode());
+     return result;
+ }
+\ No newline at end of file

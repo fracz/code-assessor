@@ -1,0 +1,14 @@
+diff --git a/3ce9ecf52df6b514dfd659caf0c179fd555f61e1 b/9fb24ea83b0ba13f4153dacbea45fb62e8dbfdc3
+index 3ce9ecf52d..9fb24ea83b 100644
+--- a/3ce9ecf52df6b514dfd659caf0c179fd555f61e1
++++ b/9fb24ea83b0ba13f4153dacbea45fb62e8dbfdc3
+@@ -1,7 +1,7 @@
+ @Test
+ public void shouldBuildStaticBoundStatement() {
+-    CQLStatementTupleMapper mapper = boundQuery("INSERT INTO weather.temperature(weather_station_id, event_time, temperature) VALUES(?, ?, ?)").bind(with(field("weather_station_id"), field("event_time").now(), field("temperature")));
++    CQLStatementTupleMapper mapper = async(boundQuery(QUERY_STRING).bind(field("weather_station_id"), field("event_time").now(), field("temperature")));
+     List<Statement> map = mapper.map(Maps.newHashMap(), cassandraCQLUnit.session, mockTuple);
+     Statement statement = map.get(0);
+     Assert.assertNotNull(statement);
+ }
+\ No newline at end of file

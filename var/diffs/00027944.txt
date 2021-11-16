@@ -1,0 +1,18 @@
+diff --git a/d60b35390aecc79e2d01958947a4de33dbfde965 b/eebaf35090696c337446968e2f1403c5a8bee0af
+index d60b35390a..eebaf35090 100644
+--- a/d60b35390aecc79e2d01958947a4de33dbfde965
++++ b/eebaf35090696c337446968e2f1403c5a8bee0af
+@@ -1,8 +1,7 @@
+-@Path("tag-delete")
+-@POST
+-@Consumes(MediaType.APPLICATION_JSON)
+-public void tagDelete(TagDeleteRequest request) throws ApiException {
++@DELETE
++@Path("tag/{name}")
++public void tagDelete(@PathParam("name") String name) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+-        gitConnection.tagDelete(request);
++        gitConnection.tagDelete(name);
+     }
+ }
+\ No newline at end of file

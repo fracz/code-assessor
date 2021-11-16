@@ -1,0 +1,18 @@
+diff --git a/89d19f567d4d1b1cbf6e1d5449d8a8df09560954 b/f3212bd779f2af089344e4ae18dff48a26589a99
+index 89d19f567d..f3212bd779 100644
+--- a/89d19f567d4d1b1cbf6e1d5449d8a8df09560954
++++ b/f3212bd779f2af089344e4ae18dff48a26589a99
+@@ -1,11 +1,11 @@
+ public boolean isIdentifying() {
+     if (identifying == null) {
+         identifying = false;
+         try {
+-            identifying = DBUtils.isIdentifyingAssociation(VoidProgressMonitor.INSTANCE, getObject());
++            identifying = DBUtils.isIdentifyingAssociation(new VoidProgressMonitor(), getObject());
+         } catch (DBException e) {
+             log.debug(e);
+         }
+     }
+     return identifying;
+ }
+\ No newline at end of file

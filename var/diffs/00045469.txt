@@ -1,0 +1,26 @@
+diff --git a/1d6b351b675b473578a98fdd4484fafc46c6cda1 b/8e945b26da1ac9f2f047386fb5dbebfb9611facf
+index 1d6b351b67..8e945b26da 100644
+--- a/1d6b351b675b473578a98fdd4484fafc46c6cda1
++++ b/8e945b26da1ac9f2f047386fb5dbebfb9611facf
+@@ -1,15 +1,17 @@
+ @Override
+ public final Object execute(final ODistributedRequestId requestId, final OServer iServer, final ODistributedServerManager iManager, final ODatabaseDocumentTx database) throws Exception {
+     final ODistributedDatabase ddb = iManager.getMessageService().getDatabase(database.getName());
+-    if (lockRecords)
++    if (lockRecords) {
+         // TRY LOCKING RECORD
+-        if (!ddb.lockRecord(rid, requestId))
+-            throw new ODistributedRecordLockedException(rid);
++        final ODistributedRequestId lockHolder = ddb.lockRecord(rid, requestId);
++        if (lockHolder != null)
++            throw new ODistributedRecordLockedException(rid, lockHolder);
++    }
+     try {
+         return executeRecordTask(requestId, iServer, iManager, database);
+     } finally {
+         if (lockRecords)
+             // UNLOCK THE SINGLE OPERATION. IN TX WAIT FOR THE 2-PHASE COMMIT/ROLLBACK/FIX MESSAGE
+             ddb.unlockRecord(rid, requestId);
+     }
+ }
+\ No newline at end of file

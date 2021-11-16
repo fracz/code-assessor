@@ -1,0 +1,12 @@
+diff --git a/0e5b9e00fd9218374e3c424ebdedd18c36aba6ac b/cceeb29d745a28af23599ea2bfd9fa819229d5e4
+index 0e5b9e00fd..cceeb29d74 100644
+--- a/0e5b9e00fd9218374e3c424ebdedd18c36aba6ac
++++ b/cceeb29d745a28af23599ea2bfd9fa819229d5e4
+@@ -1,4 +1,5 @@
+ @NotNull
+ public NamingScope getScopeForElement(@NotNull JetElement element) {
+-    return staticContext.getScopeForElement(element);
++    DeclarationDescriptor descriptorForElement = BindingUtils.getDescriptorForElement(bindingContext(), element);
++    return getScopeForDescriptor(descriptorForElement);
+ }
+\ No newline at end of file

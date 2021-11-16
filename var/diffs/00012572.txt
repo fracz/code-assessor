@@ -1,0 +1,27 @@
+diff --git a/807b5af16762e03c53494905c4de64b3ca5385bb b/3d16c410a776e3765e652e917cff459c19c5fb3c
+index 807b5af167..3d16c410a7 100644
+--- a/807b5af16762e03c53494905c4de64b3ca5385bb
++++ b/3d16c410a776e3765e652e917cff459c19c5fb3c
+@@ -1,17 +1,13 @@
+ @Override
+ @Nullable
+ public VcsInvalidated retrieveScopes() {
++    DirtBuilder dirtBuilder;
+     synchronized (LOCK) {
+         if (myDisposed)
+             return null;
+-        myProgressHolder.takeNext(new DirtBuilder(myDirtBuilder));
++        dirtBuilder = new DirtBuilder(myDirtBuilder);
++        myDirtInProgress = dirtBuilder;
+         myDirtBuilder.reset();
+     }
+-    VcsInvalidated invalidated = myProgressHolder.calculateInvalidated();
+-    synchronized (LOCK) {
+-        if (!myDisposed) {
+-            myProgressHolder.takeInvalidated(invalidated);
+-        }
+-    }
+-    return invalidated;
++    return calculateInvalidated(dirtBuilder);
+ }
+\ No newline at end of file

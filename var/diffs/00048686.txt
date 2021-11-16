@@ -1,0 +1,19 @@
+diff --git a/ac553e7e7b1db7d2156606814812c7255c913f87 b/fe50e7994dd164119bcc9ae59c9fec265f80c2a6
+index ac553e7e7b..fe50e7994d 100644
+--- a/ac553e7e7b1db7d2156606814812c7255c913f87
++++ b/fe50e7994dd164119bcc9ae59c9fec265f80c2a6
+@@ -1,11 +1,12 @@
+ @Override
+ protected void openNodeEditor(DBNNode node) {
+-    if (getRootNode() instanceof DBNContainer && node instanceof DBNLocalFolder) {
++    DBNNode rootNode = getRootNode();
++    if ((rootNode instanceof DBNContainer && node instanceof DBNLocalFolder) || (rootNode instanceof DBNResource && node instanceof DBNResource && ((DBNResource) node).getResource() instanceof IContainer)) {
+         setRootNode(node);
+         loadData();
+         setPartName(node.getNodeName());
+         setTitleImage(DBeaverIcons.getImage(node.getNodeIcon()));
+     } else {
+         super.openNodeEditor(node);
+     }
+ }
+\ No newline at end of file

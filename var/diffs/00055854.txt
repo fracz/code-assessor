@@ -1,0 +1,15 @@
+diff --git a/5968afcb0a852a39e038af2f4347fad43d78caa0 b/b69afac03ac2b1ffee71f73823525dabf45443f9
+index 5968afcb0a..b69afac03a 100644
+--- a/5968afcb0a852a39e038af2f4347fad43d78caa0
++++ b/b69afac03ac2b1ffee71f73823525dabf45443f9
+@@ -1,8 +1,8 @@
+ @Test
+ public void missingContentType() throws Exception {
+     this.request.setBody("{\"bar\":\"BARBAR\",\"foo\":\"FOOFOO\"}");
+     ResolvableType type = forClassWithGenerics(Mono.class, TestBean.class);
+     MethodParameter param = this.testMethod.resolveParam(type);
+     Mono<Object> result = this.resolver.readBody(param, true, this.bindingContext, this.exchange);
+-    TestSubscriber.subscribe(result).assertError(UnsupportedMediaTypeStatusException.class);
++    ScriptedSubscriber.create().expectError(UnsupportedMediaTypeStatusException.class).verify(result);
+ }
+\ No newline at end of file

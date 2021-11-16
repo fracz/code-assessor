@@ -1,0 +1,39 @@
+diff --git a/b257adfb4cff94e0204540feaea215c62214b19b b/0e2e0c17ed6bc98eb3aa08621b5d0754c20135c3
+index b257adfb4c..0e2e0c17ed 100644
+--- a/b257adfb4cff94e0204540feaea215c62214b19b
++++ b/0e2e0c17ed6bc98eb3aa08621b5d0754c20135c3
+@@ -1,32 +1,32 @@
+ /*
+     public GridColumn getColumn(int index)
+     {
+         return curColumns.get(index);
+     }
+
+     public int getColumnsNum()
+     {
+         return curColumns.size();
+     }
+
+     public GridColumn addColumn(String text, String toolTipText, Image image)
+     {
+         GridColumn column = new GridColumn(grid, SWT.NONE);
+         column.setText(text);
+         if (toolTipText != null) {
+             column.setHeaderTooltip(toolTipText);
+         }
+         if (image != null) {
+             column.setImage(image);
+         }
+
+         curColumns.add(column);
+         return column;
+     }
+ */
+ public void reinitState() {
+     cancelInlineEditor();
+     // Repack columns
+-    grid.refreshData();
++    super.refreshData();
+     setCursor(new GridPos(-1, -1), false);
+ }
+\ No newline at end of file

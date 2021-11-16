@@ -1,0 +1,11 @@
+diff --git a/2ec65c164927bcfec39e40f9867d8bae1ad6f93b b/37dc63de093876ff862a3f22bd83cd808f599ec6
+index 2ec65c1649..37dc63de09 100644
+--- a/2ec65c164927bcfec39e40f9867d8bae1ad6f93b
++++ b/37dc63de093876ff862a3f22bd83cd808f599ec6
+@@ -1,4 +1,4 @@
+ @Override
+ public Publisher<Collection<String>> findKeysByPattern(String pattern) {
+-    return commandExecutor.readAllReactive(RedisCommands.KEYS, pattern);
++    return commandExecutor.reactive(instance.findKeysByPatternAsync(pattern));
+ }
+\ No newline at end of file

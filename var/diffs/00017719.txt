@@ -1,0 +1,18 @@
+diff --git a/963d25d9e3208e85d7a921a8ed10f3acd941bc98 b/665630ef943ba5ccc2b3d100949a9ecb3b4812e4
+index 963d25d9e3..665630ef94 100644
+--- a/963d25d9e3208e85d7a921a8ed10f3acd941bc98
++++ b/665630ef943ba5ccc2b3d100949a9ecb3b4812e4
+@@ -1,9 +1,10 @@
+ public void testUnexpected() throws Exception {
+-    doTest(new TheTest("Unexpected TYPE_MISMATCH at 56 to 57") {
++    final DiagnosticData typeMismatch1 = diagnostics.get(1);
++    doTest(new TheTest(unexpected(typeMismatch1)) {
+
+         @Override
+         protected void makeTestData(List<Diagnostic> diagnostics, List<CheckerTestUtil.DiagnosedRange> diagnosedRanges) {
+-            diagnosedRanges.remove(1);
++            diagnosedRanges.remove(typeMismatch1.index);
+         }
+     });
+ }
+\ No newline at end of file

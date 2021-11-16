@@ -1,0 +1,13 @@
+diff --git a/9b2605d17a75b3b0e9a987423f2ba2c33b728647 b/813da083777f6bb24ae8405b027d961dbef15c9a
+index 9b2605d17a..813da08377 100644
+--- a/9b2605d17a75b3b0e9a987423f2ba2c33b728647
++++ b/813da083777f6bb24ae8405b027d961dbef15c9a
+@@ -1,6 +1,6 @@
+ @Test
+ public void emptyBodyWithFlux() throws Exception {
+     ResolvableType type = httpEntityType(forClassWithGenerics(Flux.class, String.class));
+     HttpEntity<Flux<String>> entity = resolveValueWithEmptyBody(type);
+-    TestSubscriber.subscribe(entity.getBody()).assertNoError().assertComplete().assertNoValues();
++    ScriptedSubscriber.create().expectNextCount(0).expectComplete().verify(entity.getBody());
+ }
+\ No newline at end of file

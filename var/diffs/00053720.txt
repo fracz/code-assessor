@@ -1,0 +1,30 @@
+diff --git a/2257a0de5224ee5cf4021ed8e679b4161a56b244 b/7f9839cf54d4f7fdb459d489698039aa86248360
+index 2257a0de52..7f9839cf54 100644
+--- a/2257a0de5224ee5cf4021ed8e679b4161a56b244
++++ b/7f9839cf54d4f7fdb459d489698039aa86248360
+@@ -1,15 +1,15 @@
+ @SuppressWarnings("unchecked")
+ @Override
+ public Collection<String> doSharding(final Collection<String> availableTargetNames, final Collection<ShardingValue> shardingValues) {
+     ShardingValue shardingValue = shardingValues.iterator().next();
+-    switch(shardingValue.getType()) {
+-        case SINGLE:
+-            return doEqualSharding(availableTargetNames, (SingleShardingValue<Integer>) shardingValue);
+-        case LIST:
+-            return doInSharding(availableTargetNames, (ListShardingValue<Integer>) shardingValue);
+-        case RANGE:
+-            return doBetweenSharding(availableTargetNames, (RangeShardingValue<Integer>) shardingValue);
+-        default:
+-            throw new UnsupportedOperationException();
++    if (shardingValue instanceof SingleShardingValue) {
++        return doEqualSharding(availableTargetNames, (SingleShardingValue<Integer>) shardingValue);
+     }
++    if (shardingValue instanceof ListShardingValue) {
++        return doInSharding(availableTargetNames, (ListShardingValue<Integer>) shardingValue);
++    }
++    if (shardingValue instanceof RangeShardingValue) {
++        return doBetweenSharding(availableTargetNames, (RangeShardingValue<Integer>) shardingValue);
++    }
++    throw new UnsupportedOperationException();
+ }
+\ No newline at end of file

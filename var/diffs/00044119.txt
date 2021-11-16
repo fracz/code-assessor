@@ -1,0 +1,20 @@
+diff --git a/0ab42ec35567de71130ce28de27d496602ef18c4 b/27820cccb6fbb666390fabe5f6351fe9450e1ec5
+index 0ab42ec355..27820cccb6 100644
+--- a/0ab42ec35567de71130ce28de27d496602ef18c4
++++ b/27820cccb6fbb666390fabe5f6351fe9450e1ec5
+@@ -1,12 +1,13 @@
+ protected void sizeDatabase(OClientConnection connection) throws IOException {
+     setDataCommandInfo(connection, "Database size");
+     if (!isConnectionAlive(connection))
+         return;
++    OGetSizeResponse response = new OGetSizeResponse(connection.getDatabase().getStorage().getSize());
+     beginResponse();
+     try {
+         sendOk(connection, clientTxId);
+-        channel.writeLong(connection.getDatabase().getStorage().getSize());
++        response.write(channel, connection.getData().protocolVersion, connection.getData().serializationImpl);
+     } finally {
+         endResponse(connection);
+     }
+ }
+\ No newline at end of file

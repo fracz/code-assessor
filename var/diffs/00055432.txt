@@ -1,0 +1,13 @@
+diff --git a/0f8684e2f466b4c38a5b1edcc27a2feeea5df413 b/4af0636b1bae936f4ae8e2dca0583b99dedf53b9
+index 0f8684e2f4..4af0636b1b 100644
+--- a/0f8684e2f466b4c38a5b1edcc27a2feeea5df413
++++ b/4af0636b1bae936f4ae8e2dca0583b99dedf53b9
+@@ -1,4 +1,6 @@
+ @Override
+ public void onAllPartsFinished() {
+-    emitter.complete();
++    if (this.terminated.getAndIncrement() == 0) {
++        this.sink.complete();
++    }
+ }
+\ No newline at end of file

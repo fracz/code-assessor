@@ -1,0 +1,20 @@
+diff --git a/3b72c6f5c9c9c3a1fdf027c6a741f43247e2c5b4 b/2d50196e002171635b0401952da80e96fb3c12eb
+index 3b72c6f5c9..2d50196e00 100644
+--- a/3b72c6f5c9c9c3a1fdf027c6a741f43247e2c5b4
++++ b/2d50196e002171635b0401952da80e96fb3c12eb
+@@ -1,13 +1,12 @@
+-@Override
+-public OSequence onSequenceUpdated(ODocument iDocument) {
++public OSequence onSequenceUpdated(ODatabaseDocumentInternal database, ODocument iDocument) {
+     String name = OSequence.getSequenceName(iDocument);
+     if (name == null) {
+         return null;
+     }
+     OSequence sequence = getSequence(name);
+     if (sequence == null) {
+         return null;
+     }
+     sequence.onUpdate(iDocument);
+     return sequence;
+ }
+\ No newline at end of file

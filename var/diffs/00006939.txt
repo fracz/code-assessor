@@ -1,0 +1,20 @@
+diff --git a/e5c628267f9c3761d7dd07dd098b260f93090973 b/4ce88f2c008285fc4c52c689f507c83410b1db64
+index e5c628267f..4ce88f2c00 100644
+--- a/e5c628267f9c3761d7dd07dd098b260f93090973
++++ b/4ce88f2c008285fc4c52c689f507c83410b1db64
+@@ -1,11 +1,11 @@
+ @Override
+-public boolean canDrop(final int componentCount) {
++public boolean canDrop(ComponentDragObject dragObject) {
+     final GridLayoutManager grid = ((GridLayoutManager) getContainer().getLayout());
+     if (isInsertInsideComponent()) {
+         return false;
+     }
+     if (isColumnInsert()) {
+-        return componentCount == 1;
++        return dragObject.getComponentCount() == 1;
+     }
+-    return getColumn() + componentCount - 1 < grid.getColumnCount();
++    return getColumn() + dragObject.getComponentCount() - 1 < grid.getColumnCount();
+ }
+\ No newline at end of file

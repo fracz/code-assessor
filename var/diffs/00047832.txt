@@ -1,0 +1,17 @@
+diff --git a/c49a33ee6034992a5bce038c470b85e51e0116fe b/e96a9f128f695ebf36ce90884cfe0b64646d6e2f
+index c49a33ee60..e96a9f128f 100644
+--- a/c49a33ee6034992a5bce038c470b85e51e0116fe
++++ b/e96a9f128f695ebf36ce90884cfe0b64646d6e2f
+@@ -1,4 +1,9 @@
+ private void setUpApplicationState(Config defaultConfig) {
+-    ResourceLoader sdkResourceLoader = new EmptyResourceLoader("android", new ResourceExtractor(new ResourcePath(android.R.class, "android", null, null)));
+-    pu.setUpApplicationState(null, new DefaultTestLifecycle(), sdkResourceLoader, RuntimeEnvironment.getSystemResourceLoader(), new EmptyResourceLoader("package", new ResourceExtractor(new ResourcePath(org.robolectric.R.class, "package", null, null))), new AndroidManifest(null, null, null, "package"), defaultConfig);
++    PackageResourceIndex androidResourceIndex = new PackageResourceIndex("android");
++    ResourceExtractor.populate(androidResourceIndex, android.R.class);
++    ResourceProvider sdkResourceProvider = new EmptyResourceProvider(androidResourceIndex);
++    PackageResourceIndex resourceIndex = new PackageResourceIndex("org.robolectric");
++    ResourceExtractor.populate(resourceIndex, R.class);
++    final RoutingResourceProvider routingResourceProvider = new RoutingResourceProvider(new ResourceTable(resourceIndex));
++    pu.setUpApplicationState(null, new DefaultTestLifecycle(), new AndroidManifest(null, null, null, "package"), defaultConfig, sdkResourceProvider, routingResourceProvider, RuntimeEnvironment.getSystemResourceProvider());
+ }
+\ No newline at end of file

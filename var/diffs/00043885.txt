@@ -1,0 +1,16 @@
+diff --git a/3e98bf94fb6975fb7b459ae7415f4883deff1073 b/288d88f6f14669676e427383e4489d1d9f1624d5
+index 3e98bf94fb..288d88f6f1 100644
+--- a/3e98bf94fb6975fb7b459ae7415f4883deff1073
++++ b/288d88f6f14669676e427383e4489d1d9f1624d5
+@@ -1,7 +1,8 @@
+ @BeforeMethod
+-public void beforeMethod() throws IOException {
+-    database.open("admin", "admin");
++public void beforeMethod() throws Exception {
++    super.beforeMethod();
+     final OSchema schema = database.getMetadata().getSchema();
+     schema.reload();
++    database.getStorage().reload();
+     schema.getClass("IndexTxTestClass").truncate();
+ }
+\ No newline at end of file

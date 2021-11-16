@@ -1,0 +1,16 @@
+diff --git a/ed1b8e8187da64e3081c8bfe4839e3d698857f52 b/b776d87885efa876e51f07c48d897e3c948988a6
+index ed1b8e8187..b776d87885 100644
+--- a/ed1b8e8187da64e3081c8bfe4839e3d698857f52
++++ b/b776d87885efa876e51f07c48d897e3c948988a6
+@@ -1,9 +1,9 @@
+ public void testParametrizedTupleLiteral() throws Exception {
+     loadText("fun <E,D> E.foo(extra: java.util.List<D>) = (1, \"foo\", this, extra)");
+     System.out.println(generateToText());
+     final Method main = generateFunction();
+-    Tuple4 tuple4 = (Tuple4) main.invoke(null, "aaa", Arrays.asList(10), TypeInfo.STRING_TYPE_INFO, TypeInfo.INT_TYPE_INFO);
++    Tuple4 tuple4 = (Tuple4) main.invoke(null, "aaa", TypeInfo.STRING_TYPE_INFO, TypeInfo.INT_TYPE_INFO, Arrays.asList(10));
+     assertEquals(1, tuple4._1);
+     assertEquals("foo", tuple4._2);
+     assertEquals("aaa", tuple4._3);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/b494ea31f79af99a0a36f45de8301c78ee769089 b/e59972c34e8dd57b30043d9ecd4573868fbed4e0
+index b494ea31f7..e59972c34e 100644
+--- a/b494ea31f79af99a0a36f45de8301c78ee769089
++++ b/e59972c34e8dd57b30043d9ecd4573868fbed4e0
+@@ -1,7 +1,7 @@
+ // retrieves encoding for the Project node
+ @Override
+ @NotNull
+ public Charset getDefaultCharset() {
+-    Charset charset = getEncoding(null, false);
++    Charset charset = myProjectCharset;
+     return charset == null ? Charset.defaultCharset() : charset;
+ }
+\ No newline at end of file

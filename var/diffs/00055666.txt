@@ -1,0 +1,20 @@
+diff --git a/fbef07345d592aa826ccdda127e89fade619a7aa b/bffc99810896c91269febd4be754dbe2ffa1fd1e
+index fbef07345d..bffc998108 100644
+--- a/fbef07345d592aa826ccdda127e89fade619a7aa
++++ b/bffc99810896c91269febd4be754dbe2ffa1fd1e
+@@ -1,13 +1,13 @@
+ @Test
+ public void testNoSuchInitMethod() throws Exception {
+-    XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("initializers.xml", getClass()));
++    XmlBeanFactory xbf = new XmlBeanFactory(INITIALIZERS_CONTEXT);
+     try {
+         xbf.getBean("init-method3");
+         fail();
+     } catch (FatalBeanException ex) {
+         // check message is helpful
+         assertTrue(ex.getMessage().indexOf("initializers.xml") != -1);
+         assertTrue(ex.getMessage().indexOf("init-method3") != -1);
+         assertTrue(ex.getMessage().indexOf("init") != -1);
+     }
+ }
+\ No newline at end of file

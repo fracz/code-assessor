@@ -1,0 +1,16 @@
+diff --git a/9b5a130a180c39340b5476f3d189e3fa3f0cfc18 b/12eb2fa581a012fe602c96559e36b11f12cc4bf9
+index 9b5a130a18..12eb2fa581 100644
+--- a/9b5a130a180c39340b5476f3d189e3fa3f0cfc18
++++ b/12eb2fa581a012fe602c96559e36b11f12cc4bf9
+@@ -1,8 +1,9 @@
+ @Override
+ public String getUrl() {
+-    if (getMethod() == Method.GET && !mParams.isEmpty()) {
++    int method = getMethod();
++    if ((method == Method.GET || method == Method.DELETE) && !mParams.isEmpty()) {
+         return getUrlWithParams();
+     } else {
+         return mUrl;
+     }
+ }
+\ No newline at end of file

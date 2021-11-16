@@ -1,0 +1,28 @@
+diff --git a/0850e83f7f30e8a7893cb99aead460e0667f862e b/e7051dec063416ba44702d60595a6d1fd45f386d
+index 0850e83f7f..e7051dec06 100644
+--- a/0850e83f7f30e8a7893cb99aead460e0667f862e
++++ b/e7051dec063416ba44702d60595a6d1fd45f386d
+@@ -1,19 +1,21 @@
+ @NotNull
+ private AntElement getNameElement() {
+     synchronized (PsiLock.LOCK) {
+         if (myNameElement == null) {
+             myNameElement = ourNull;
+             final XmlTag se = getSourceElement();
+             if (se.isValid()) {
+                 final XmlAttribute nameAttr = se.getAttribute(myNameElementAttribute, null);
+                 if (nameAttr != null) {
+                     final XmlAttributeValue valueElement = nameAttr.getValueElement();
+                     if (valueElement != null) {
+-                        myNameElement = new AntNameElementImpl(this, valueElement);
++                        final AntNameElementImpl element = new AntNameElementImpl(this, valueElement);
++                        element.setElementToRename(this);
++                        myNameElement = element;
+                     }
+                 }
+             }
+         }
+         return myNameElement;
+     }
+ }
+\ No newline at end of file

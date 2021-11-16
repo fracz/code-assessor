@@ -1,0 +1,19 @@
+diff --git a/58561c951c4b70c31fdbad46a40331bf0ea5c05b b/f4df4f23628151ac4b21d3a92d3fcd8e603edd19
+index 58561c951c..f4df4f2362 100644
+--- a/58561c951c4b70c31fdbad46a40331bf0ea5c05b
++++ b/f4df4f23628151ac4b21d3a92d3fcd8e603edd19
+@@ -1,12 +1,8 @@
+ private InetSocketAddress receiveFrame() {
+     readByteBuffer.clear();
+     try {
+-        final InetSocketAddress srcAddress = (InetSocketAddress) datagramChannel.receive(readByteBuffer);
+-        if (null != srcAddress) {
+-            logger.log(EventCode.FRAME_IN, readByteBuffer, 0, readByteBuffer.position(), srcAddress);
+-        }
+-        return srcAddress;
++        return (InetSocketAddress) datagramChannel.receive(readByteBuffer);
+     } catch (final Exception ex) {
+         throw new RuntimeException(ex);
+     }
+ }
+\ No newline at end of file

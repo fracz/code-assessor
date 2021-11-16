@@ -1,0 +1,17 @@
+diff --git a/fbd367f021d63122154f3d5229f00b0f0a944cb7 b/b9b8a415e6261f32b18e20640180deebacff8698
+index fbd367f021..b9b8a415e6 100644
+--- a/fbd367f021d63122154f3d5229f00b0f0a944cb7
++++ b/b9b8a415e6261f32b18e20640180deebacff8698
+@@ -1,8 +1,8 @@
+ @Override
+ public void run() {
+     engine.arrange(file, ranges);
+-    String info = engine.getUserNotificationInfo();
+-    if (info != null && getNotificationInfo() != null) {
+-        getNotificationInfo().setRearrangeCodeNotification(info);
++    if (getInfoCollector() != null) {
++        String info = engine.getUserNotificationInfo();
++        getInfoCollector().setRearrangeCodeNotification(info);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/1e40163a8a842b7fe11a711fe0fbaeae92b5c11f b/a1b55585c73401ba0d5847bf31af19e57005c96f
+index 1e40163a8a..a1b55585c7 100644
+--- a/1e40163a8a842b7fe11a711fe0fbaeae92b5c11f
++++ b/a1b55585c73401ba0d5847bf31af19e57005c96f
+@@ -1,7 +1,10 @@
+ @Override
+ public RoutingResult route() {
+     TableRule tableRule = shardingRule.getTableRule(logicTableName);
+     Collection<String> routedDataSources = routeDataSources(tableRule);
+-    Collection<String> routedTables = routeTables(tableRule, routedDataSources);
+-    return generateRoutingResult(tableRule, routedDataSources, routedTables);
++    Map<String, Collection<String>> routedMap = new LinkedHashMap<>(routedDataSources.size());
++    for (String each : routedDataSources) {
++        routedMap.put(each, routeTables(tableRule, each));
++    }
++    return generateRoutingResult(tableRule, routedMap);
+ }
+\ No newline at end of file

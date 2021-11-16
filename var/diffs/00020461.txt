@@ -1,0 +1,28 @@
+diff --git a/0c3d35d129b7945979e61700e18609d7f50bae69 b/de4423c0e749cdae2229e3b16b90728a40a94c68
+index 0c3d35d129..de4423c0e7 100644
+--- a/0c3d35d129b7945979e61700e18609d7f50bae69
++++ b/de4423c0e749cdae2229e3b16b90728a40a94c68
+@@ -1,15 +1,18 @@
+ public static Class<?> loadClass(String className) {
+     Class<?> clazz = null;
+     if (className == null) {
+         return null;
+     }
+     try {
+         clazz = Thread.currentThread().getContextClassLoader().loadClass(className);
+     } catch (ClassNotFoundException e) {
+-        LOG.error("load class error", e);
+     }
+-    if (clazz == null) {
+-        loadClass2(className);
++    if (clazz != null) {
++        return clazz;
++    }
++    try {
++        return Class.forName(className);
++    } catch (ClassNotFoundException e) {
++        return null;
+     }
+-    return clazz;
+ }
+\ No newline at end of file

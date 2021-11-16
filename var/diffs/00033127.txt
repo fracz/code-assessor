@@ -1,0 +1,15 @@
+diff --git a/ffad2546bfddb7829b2373adb4d96a4d816ed3cc b/37821e4f9b55e144807147a7fc2e586d0e96dc33
+index ffad2546bf..37821e4f9b 100644
+--- a/ffad2546bfddb7829b2373adb4d96a4d816ed3cc
++++ b/37821e4f9b55e144807147a7fc2e586d0e96dc33
+@@ -1,3 +1,8 @@
+ public String getDisplayName() {
+-    return String.format("%s '%s'", description, sourceFile != null ? sourceFile.getAbsolutePath() : sourceUri);
++    StringBuilder builder = new StringBuilder();
++    builder.append(description);
++    builder.append(" '");
++    builder.append(sourceFile != null ? sourceFile.getAbsolutePath() : sourceUri);
++    builder.append("'");
++    return builder.toString();
+ }
+\ No newline at end of file

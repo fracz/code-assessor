@@ -1,0 +1,14 @@
+diff --git a/a659394109930913e3ec160a3d0de433f974d3b3 b/16d31a6494b56a3ac1a68f935b614816f85bd282
+index a659394109..16d31a6494 100644
+--- a/a659394109930913e3ec160a3d0de433f974d3b3
++++ b/16d31a6494b56a3ac1a68f935b614816f85bd282
+@@ -1,7 +1,3 @@
+ public int removeUser() {
+-    int u = lock.removeUser();
+-    boolean keepOpen = OGlobalConfiguration.STORAGE_KEEP_OPEN.getValueAsBoolean();
+-    if (u == 0 && !keepOpen)
+-        close();
+-    return u;
++    return lock.removeUser();
+ }
+\ No newline at end of file

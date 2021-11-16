@@ -1,0 +1,23 @@
+diff --git a/88b0bd922f1dcdadebc04401bc0ca992d1e895e9 b/62fb1c3d0bc787352fb6be817cc1dd69cf99c46d
+index 88b0bd922f..62fb1c3d0b 100644
+--- a/88b0bd922f1dcdadebc04401bc0ca992d1e895e9
++++ b/62fb1c3d0bc787352fb6be817cc1dd69cf99c46d
+@@ -1,9 +1,14 @@
++/**
++ * Saves lesson state for serialization
++ *
++ * @return xml element with attributes and content typical for lesson
++ */
+ public Element saveState() {
+-    Element lessonElement = new Element("lessonElement");
+-    lessonElement.setAttribute("name", name);
+-    lessonElement.setAttribute("myIndex", String.valueOf(myIndex));
++    Element lessonElement = new Element(LESSON_ELEMENT_NAME);
++    lessonElement.setAttribute(NAME_ATTRIBUTE_NAME, name);
++    lessonElement.setAttribute(INDEX_ATTRIBUTE_NAME, String.valueOf(myIndex));
+     for (Task task : taskList) {
+         lessonElement.addContent(task.saveState());
+     }
+     return lessonElement;
+ }
+\ No newline at end of file

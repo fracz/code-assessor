@@ -1,0 +1,16 @@
+diff --git a/c4903e7e12a9efa46c41a2dc15c54c76884fb425 b/ace3fa46b337421a29cec53def150750c9611b81
+index c4903e7e12..ace3fa46b3 100644
+--- a/c4903e7e12a9efa46c41a2dc15c54c76884fb425
++++ b/ace3fa46b337421a29cec53def150750c9611b81
+@@ -1,6 +1,9 @@
+ public void setPassword(String password) {
++    if (StringUtils.equals(this.password, password)) {
++        return;
++    }
+     if (inited) {
+-        throw new UnsupportedOperationException();
++        LOG.info("password changed");
+     }
+     this.password = password;
+ }
+\ No newline at end of file

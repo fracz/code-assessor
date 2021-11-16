@@ -1,0 +1,18 @@
+diff --git a/ba2dd35117aab3f641c596a9d761dee164defc35 b/fe279ac3bceb2127f710dddf547abe9520088fb0
+index ba2dd35117..fe279ac3bc 100644
+--- a/ba2dd35117aab3f641c596a9d761dee164defc35
++++ b/fe279ac3bceb2127f710dddf547abe9520088fb0
+@@ -1,10 +1,10 @@
+ public Object getData(DataProvider dataProvider) {
+-    VirtualFile dir = (VirtualFile) dataProvider.getData(DataConstantsEx.PROJECT_FILE_DIRECTORY);
++    VirtualFile dir = PlatformDataKeys.PROJECT_FILE_DIRECTORY.getData(dataProvider);
+     if (dir == null) {
+-        final Project project = (Project) dataProvider.getData(DataConstants.PROJECT);
++        final Project project = PlatformDataKeys.PROJECT.getData(dataProvider);
+         if (project != null) {
+             dir = project.getBaseDir();
+         }
+     }
+     return dir;
+ }
+\ No newline at end of file

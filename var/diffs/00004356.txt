@@ -1,0 +1,19 @@
+diff --git a/5d9b39c57a7c3444c0f1e94fd41bfa26fc8da9e4 b/ab9b75a91df7805ec4e296db0446c817a18ea25d
+index 5d9b39c57a..ab9b75a91d 100644
+--- a/5d9b39c57a7c3444c0f1e94fd41bfa26fc8da9e4
++++ b/ab9b75a91df7805ec4e296db0446c817a18ea25d
+@@ -1,11 +1,8 @@
+ private void doRevert(boolean revertLastChange) {
+     try {
+-        List<Change> cc = myVcs.getPlainChangesAfter(myLastChange);
+         ChangeVisitor v = new GlobalChangesRevertionVisitor(myVcs, myGateway);
+-        for (Change c : cc) c.accept(v);
+-        if (revertLastChange)
+-            myLastChange.accept(v);
+-    } catch (Exception e) {
++        myVcs.accept(new SelectiveChangeVisitor(v, revertLastChange));
++    } catch (IOException e) {
+         throw new RuntimeException(e);
+     }
+ }
+\ No newline at end of file

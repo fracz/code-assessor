@@ -1,0 +1,17 @@
+diff --git a/a6a3758208c9d8586ec951da6c67f69aa03af62f b/6fe885092fdbb5b7becf9835aa7c06d3832f17d2
+index a6a3758208..6fe885092f 100644
+--- a/a6a3758208c9d8586ec951da6c67f69aa03af62f
++++ b/6fe885092fdbb5b7becf9835aa7c06d3832f17d2
+@@ -1,8 +1,8 @@
+-public ProjectVersion3 getModel(final Class<? extends ProjectVersion3> type, final BuildOperationParametersVersion1 operationParameters) {
+-    return withConnection(new ConnectionAction<ProjectVersion3>() {
++public <T> T getModel(final Class<T> type, final BuildOperationParametersVersion1 operationParameters) {
++    return withConnection(new ConnectionAction<T>() {
+
+-        public ProjectVersion3 run(ConnectionVersion4 connection) {
++        public T run(ConsumerConnection connection) {
+             return modelProvider.provide(connection, type, operationParameters);
+         }
+     });
+ }
+\ No newline at end of file

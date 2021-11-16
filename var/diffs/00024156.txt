@@ -1,0 +1,17 @@
+diff --git a/0e5f5d2e0c1d123f8fab301fd411c858ac6b48d7 b/74b3ff61b34bb0e3d6891165d01c8a7e24ce77a3
+index 0e5f5d2e0c..74b3ff61b3 100644
+--- a/0e5f5d2e0c1d123f8fab301fd411c858ac6b48d7
++++ b/74b3ff61b34bb0e3d6891165d01c8a7e24ce77a3
+@@ -1,10 +1,9 @@
+ /**
+  * @param in data input
+  * @return null
+  * @throws IOException if an I/O error occurs.
+  */
+-public static ByteBuffer skipShortLength(DataInput in) throws IOException {
++public static void skipShortLength(DataInput in) throws IOException {
+     int skip = readShortLength(in);
+     FileUtils.skipBytesFully(in, skip);
+-    return null;
+ }
+\ No newline at end of file

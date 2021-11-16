@@ -1,0 +1,17 @@
+diff --git a/73150abe04759c01c6e9fb6a971f98492d3d3e98 b/b561304306881a928c4aa0a2a905564d7ba1b9d3
+index 73150abe04..b561304306 100644
+--- a/73150abe04759c01c6e9fb6a971f98492d3d3e98
++++ b/b561304306881a928c4aa0a2a905564d7ba1b9d3
+@@ -1,6 +1,9 @@
+-@SuppressWarnings("unused")
+ private static String getGetInstanceMethodBeforeInsertCode() {
+     StringBuilder sb = new StringBuilder();
+-    // sb.append("}");
++    if (logger.isDebugEnabled()) {
++        sb.append("{");
++        sb.append("System.out.println(\"-----ConnectionImpl.getInstance() method is called\");");
++        sb.append("}");
++    }
+     return sb.toString();
+ }
+\ No newline at end of file

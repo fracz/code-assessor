@@ -1,0 +1,15 @@
+diff --git a/5321f87fed8c3cceaef5493657b98fcff9bc1869 b/9b262fa37a7cfc51162438fcb40843e3610b41e5
+index 5321f87fed..9b262fa37a 100644
+--- a/5321f87fed8c3cceaef5493657b98fcff9bc1869
++++ b/9b262fa37a7cfc51162438fcb40843e3610b41e5
+@@ -1,8 +1,8 @@
+ @Test
+ public void decode() {
+     DataBuffer fooBuffer = stringBuffer("foo");
+     DataBuffer barBuffer = stringBuffer("bar");
+     Flux<DataBuffer> source = Flux.just(fooBuffer, barBuffer);
+     Flux<ByteBuffer> output = this.decoder.decode(source, ResolvableType.forClassWithGenerics(Publisher.class, ByteBuffer.class), null, Collections.emptyMap());
+-    TestSubscriber.subscribe(output).assertNoError().assertComplete().assertValues(ByteBuffer.wrap("foo".getBytes()), ByteBuffer.wrap("bar".getBytes()));
++    ScriptedSubscriber.<ByteBuffer>create().expectNext(ByteBuffer.wrap("foo".getBytes()), ByteBuffer.wrap("bar".getBytes())).expectComplete().verify(output);
+ }
+\ No newline at end of file

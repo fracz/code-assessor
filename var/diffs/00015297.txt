@@ -1,0 +1,16 @@
+diff --git a/823d0670e67bce7c316f6e2a36c1d371c5b4abdd b/96e6287013e633116f759c6aba051b8423900c0b
+index 823d0670e6..96e6287013 100644
+--- a/823d0670e67bce7c316f6e2a36c1d371c5b4abdd
++++ b/96e6287013e633116f759c6aba051b8423900c0b
+@@ -1,9 +1,5 @@
+ @NotNull
+ @Override
+ public List<ResolvedValueArgument> getValueArgumentsByIndex() {
+-    List<ResolvedValueArgument> result = new ArrayList<ResolvedValueArgument>(fakeArguments.size());
+-    for (ValueArgument argument : fakeArguments) {
+-        result.add(new ExpressionValueArgument(argument));
+-    }
+-    return result;
++    return new ArrayList<ResolvedValueArgument>(argumentMap.values());
+ }
+\ No newline at end of file

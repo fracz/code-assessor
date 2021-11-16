@@ -1,0 +1,25 @@
+diff --git a/5bd06fd791a1673d6d94ba78d085433bfc676259 b/aa859021afe70aff3b4a2554cc1d94f705f46148
+index 5bd06fd791..aa859021af 100644
+--- a/5bd06fd791a1673d6d94ba78d085433bfc676259
++++ b/aa859021afe70aff3b4a2554cc1d94f705f46148
+@@ -1,14 +1,18 @@
+ /**
+  * 获取聚合列集合.
+  *
+  * @return 聚合列集合
+  */
+ public List<AggregationSelectItemContext> getAggregationSelectItemContexts() {
+     List<AggregationSelectItemContext> result = new LinkedList<>();
+     for (SelectItemContext each : itemContexts) {
+         if (each instanceof AggregationSelectItemContext) {
+-            result.add((AggregationSelectItemContext) each);
++            AggregationSelectItemContext aggregationSelectItemContext = (AggregationSelectItemContext) each;
++            result.add(aggregationSelectItemContext);
++            for (AggregationSelectItemContext derivedEach : aggregationSelectItemContext.getDerivedAggregationSelectItemContexts()) {
++                result.add(derivedEach);
++            }
+         }
+     }
+     return result;
+ }
+\ No newline at end of file

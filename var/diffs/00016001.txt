@@ -1,0 +1,14 @@
+diff --git a/512eacee49df4f360554c1d68c013768cf217035 b/6049a00abba443de01ceef3e7b3f7ee3ddb73086
+index 512eacee49..6049a00abb 100644
+--- a/512eacee49df4f360554c1d68c013768cf217035
++++ b/6049a00abba443de01ceef3e7b3f7ee3ddb73086
+@@ -1,3 +1,7 @@
+ private boolean isIntrinsic() {
+-    return context().intrinsics().isIntrinsic(descriptor);
++    if (descriptor instanceof FunctionDescriptor) {
++        FunctionIntrinsic intrinsic = context().intrinsics().getFunctionIntrinsics().getIntrinsic((FunctionDescriptor) descriptor);
++        return intrinsic.exists();
++    }
++    return false;
+ }
+\ No newline at end of file

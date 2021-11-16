@@ -1,0 +1,17 @@
+diff --git a/960cc440e335fc73b384768e9cc3c38d56db038e b/f7f0961cc4d8a97cd6467f39261828ba43a0c3d2
+index 960cc440e3..f7f0961cc4 100644
+--- a/960cc440e335fc73b384768e9cc3c38d56db038e
++++ b/f7f0961cc4d8a97cd6467f39261828ba43a0c3d2
+@@ -1,10 +1,5 @@
+ public Object remove(K key) {
+     synchronized (_lock) {
+-        for (HashMap<K, V> bucket : _buckets) {
+-            if (bucket.containsKey(key)) {
+-                return bucket.remove(key);
+-            }
+-        }
+-        return null;
++        return super.remove(key);
+     }
+ }
+\ No newline at end of file

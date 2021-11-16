@@ -1,0 +1,12 @@
+diff --git a/6771dee3e26b709cc02031ea4bc8effb6a65b3cb b/83da28e4faaa1ceff03514535e367098f7570137
+index 6771dee3e2..83da28e4fa 100644
+--- a/6771dee3e26b709cc02031ea4bc8effb6a65b3cb
++++ b/83da28e4faaa1ceff03514535e367098f7570137
+@@ -1,4 +1,4 @@
+ @Override
+-public Promise<MachineProcessDto> executeCommand(@NotNull final String machineId, @NotNull final Command command, @Nullable final String outputChannel) {
+-    return asyncRequestFactory.createPostRequest(baseHttpUrl + '/' + machineId + "/command?outputChannel=" + outputChannel, command).header(ACCEPT, APPLICATION_JSON).loader(loaderFactory.newLoader("Executing command...")).send(dtoUnmarshallerFactory.newUnmarshaller(MachineProcessDto.class));
++public Promise<MachineProcessDto> executeCommand(@NotNull final String workspaceId, @NotNull final String machineId, @NotNull final Command command, @Nullable final String outputChannel) {
++    return asyncRequestFactory.createPostRequest(baseHttpUrl + workspaceId + "/machine/" + machineId + "/command?outputChannel=" + outputChannel, command).header(ACCEPT, APPLICATION_JSON).loader(loaderFactory.newLoader("Executing command...")).send(dtoUnmarshallerFactory.newUnmarshaller(MachineProcessDto.class));
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/80da2b72080d43848189a22bdf86528477e93acf b/b9e0eff01e6cb125cac7ff900f3467488f2937a2
+index 80da2b7208..b9e0eff01e 100644
+--- a/80da2b72080d43848189a22bdf86528477e93acf
++++ b/b9e0eff01e6cb125cac7ff900f3467488f2937a2
+@@ -1,7 +1,7 @@
+ /**
+  * Should be used only by console commands
+  */
+ protected void checkForRemoteServer() {
+-    if (serverAdmin == null && (currentDatabase == null || !(currentDatabase.getStorage() instanceof OStorageProxy) || currentDatabase.isClosed()))
++    if (orientDB == null || OrientDBInternal.extract(orientDB).isEmbedded())
+         throw new OSystemException("Remote server is not connected. Use 'connect remote:<host>[:<port>][/<database-name>]' to connect");
+ }
+\ No newline at end of file

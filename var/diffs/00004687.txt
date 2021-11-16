@@ -1,0 +1,18 @@
+diff --git a/6f8a2a71b52908c74f3e59af2668536bd362215b b/a2c0cc6ab1d79864f856edc5e2b480ba8ad738a3
+index 6f8a2a71b5..a2c0cc6ab1 100644
+--- a/6f8a2a71b52908c74f3e59af2668536bd362215b
++++ b/a2c0cc6ab1d79864f856edc5e2b480ba8ad738a3
+@@ -1,5 +1,10 @@
+-protected boolean reportConflicts(final ArrayList<String> conflicts, final Project project) {
++protected boolean reportConflicts(final Map<PsiElement, String> conflicts, final Project project, IntroduceVariableSettings dialog) {
+     ConflictsDialog conflictsDialog = new ConflictsDialog(project, conflicts);
+     conflictsDialog.show();
+-    return conflictsDialog.isOK();
++    final boolean ok = conflictsDialog.isOK();
++    if (!ok && conflictsDialog.isShowConflicts()) {
++        if (dialog instanceof DialogWrapper)
++            ((DialogWrapper) dialog).close(DialogWrapper.CANCEL_EXIT_CODE);
++    }
++    return ok;
+ }
+\ No newline at end of file

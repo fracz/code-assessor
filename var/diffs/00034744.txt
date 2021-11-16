@@ -1,0 +1,19 @@
+diff --git a/673fdd44ed0458e647bc6921e9824db8bd0f67f7 b/9b062d0b0dfa343e12f99fc1855819f01c7fb1f4
+index 673fdd44ed..9b062d0b0d 100644
+--- a/673fdd44ed0458e647bc6921e9824db8bd0f67f7
++++ b/9b062d0b0dfa343e12f99fc1855819f01c7fb1f4
+@@ -1,10 +1,12 @@
+ @Override
+ public void end() {
+     if (null == mRawHeaders.get("Transfer-Encoding")) {
+         send("text/html", "");
+         onEnd();
+         return;
+     }
+-    writeInternal(ByteBuffer.wrap(new byte[0]));
++    initFirstWrite();
++    mChunker.setMaxBuffer(Integer.MAX_VALUE);
++    mChunker.write(new ByteBufferList());
+     onEnd();
+ }
+\ No newline at end of file

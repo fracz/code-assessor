@@ -1,0 +1,29 @@
+diff --git a/7bf104106c189c362b80a7f72e15146d0d322345 b/61ca632dea825fa7f529579cda5cb65930d13fef
+index 7bf104106c..61ca632dea 100644
+--- a/7bf104106c189c362b80a7f72e15146d0d322345
++++ b/61ca632dea825fa7f529579cda5cb65930d13fef
+@@ -1,20 +1,15 @@
+-/**
+- * 解析排序.
+- *
+- * @return 排序上下文
+- */
+-public final List<OrderItem> parseOrderBy() {
++protected final void parseOrderBy() {
+     if (!sqlParser.skipIfEqual(DefaultKeyword.ORDER)) {
+-        return Collections.emptyList();
++        return;
+     }
+     List<OrderItem> result = new LinkedList<>();
+     sqlParser.skipIfEqual(DefaultKeyword.SIBLINGS);
+     sqlParser.accept(DefaultKeyword.BY);
+     do {
+         Optional<OrderItem> orderItem = parseSelectOrderByItem();
+         if (orderItem.isPresent()) {
+             result.add(orderItem.get());
+         }
+     } while (sqlParser.skipIfEqual(Symbol.COMMA));
+-    return result;
++    selectStatement.getOrderByItems().addAll(result);
+ }
+\ No newline at end of file

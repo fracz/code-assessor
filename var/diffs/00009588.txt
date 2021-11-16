@@ -1,0 +1,23 @@
+diff --git a/c2af85e3a8729501ac52c090e017abcaef38af45 b/a2942d325153e2de4376654080360b777b5a3aba
+index c2af85e3a8..a2942d3251 100644
+--- a/c2af85e3a8729501ac52c090e017abcaef38af45
++++ b/a2942d325153e2de4376654080360b777b5a3aba
+@@ -1,14 +1,14 @@
+ private void clearSyntaxErrorFlag(@NotNull final PsiTreeChangeEvent event) {
+     PsiFile file = event.getFile();
+     if (file == null)
+         return;
+     VirtualFile virtualFile = file.getVirtualFile();
+     if (virtualFile == null)
+         return;
+     synchronized (myProblems) {
+         ProblemFileInfo info = myProblems.get(virtualFile);
+-        if (info == null)
+-            return;
+-        info.hasSyntaxErrors = false;
++        if (info != null) {
++            info.hasSyntaxErrors = false;
++        }
+     }
+ }
+\ No newline at end of file

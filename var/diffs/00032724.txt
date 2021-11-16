@@ -1,0 +1,18 @@
+diff --git a/c3d917314d849a7b0813a6b53bf66d1ce16e93dc b/9447c27c5b76cc29eb71bc663f193aa9791353bc
+index c3d917314d..9447c27c5b 100644
+--- a/c3d917314d849a7b0813a6b53bf66d1ce16e93dc
++++ b/9447c27c5b76cc29eb71bc663f193aa9791353bc
+@@ -1,8 +1,9 @@
+ ImmutableSet<InjectionPoint> getInjectionPoints() {
+-    InjectionPoint[] injectionPoints = new InjectionPoint[memberInjectors.length + 1];
++    InjectionPoint[] injectionPoints = new InjectionPoint[memberInjectors.size() + 1];
+     injectionPoints[0] = constructionProxy.getInjectionPoint();
+-    for (int i = 0; i < memberInjectors.length; i++) {
+-        injectionPoints[i + 1] = memberInjectors[i].getInjectionPoint();
++    int i = 1;
++    for (SingleMemberInjector memberInjector : memberInjectors) {
++        injectionPoints[i++] = memberInjector.getInjectionPoint();
+     }
+     return ImmutableSet.of(injectionPoints);
+ }
+\ No newline at end of file

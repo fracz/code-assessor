@@ -1,0 +1,19 @@
+diff --git a/c034b263ed85157648f0153f41e44e5eae321d3e b/bbbfd2e16bd2396096cd58f911cf399b3071b21d
+index c034b263ed..bbbfd2e16b 100644
+--- a/c034b263ed85157648f0153f41e44e5eae321d3e
++++ b/bbbfd2e16bd2396096cd58f911cf399b3071b21d
+@@ -1,10 +1,11 @@
+ public int computeHeaderHeight() {
+     int y = topMargin + parent.sizingGC.getFontMetrics().getHeight() + bottomMargin;
+     if (getImage() != null) {
+         y = Math.max(y, topMargin + getImage().getBounds().height + bottomMargin);
+     }
+-    if (getHeaderControl() != null) {
+-        y += getHeaderControl().computeSize(SWT.DEFAULT, SWT.DEFAULT).y;
++    Control headerControl = getHeaderControl();
++    if (headerControl != null) {
++        y += headerControl.computeSize(SWT.DEFAULT, SWT.DEFAULT).y;
+     }
+     return y;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/c22dc8d893c3cf7b480f89de4ef9797533a6dfda b/e603c059d1d7e7d4a1b729262126a9d3665b4214
+index c22dc8d893..e603c059d1 100644
+--- a/c22dc8d893c3cf7b480f89de4ef9797533a6dfda
++++ b/e603c059d1d7e7d4a1b729262126a9d3665b4214
+@@ -1,9 +1,5 @@
+ @Nullable
+ @Override
+ public DBPImage getObjectImage() {
+-    DBSTableColumn tableColumn = getAttribute();
+-    if (tableColumn instanceof DBPImageProvider) {
+-        return ((DBPImageProvider) tableColumn).getObjectImage();
+-    }
+-    return null;
++    return DBUtils.getObjectImage(getAttribute());
+ }
+\ No newline at end of file

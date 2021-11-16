@@ -1,0 +1,19 @@
+diff --git a/45e95e5793bccdec28ac1518ad8289e14e6c8890 b/65f0546c623268647b9019994d87b288e479f00a
+index 45e95e5793..65f0546c62 100644
+--- a/45e95e5793bccdec28ac1518ad8289e14e6c8890
++++ b/65f0546c623268647b9019994d87b288e479f00a
+@@ -1,10 +1,10 @@
+ // returns true iff we've converged based on absolute x difference
+-private boolean smallAbsDiff(DoubleMatrix x, DoubleMatrix xold) {
+-    for (int i = 0; i < x.length; i++) {
+-        double comp = Math.abs(x.get(i) - xold.get(i));
++private boolean smallAbsDiff(INDArray x, INDArray xold) {
++    for (int i = 0; i < x.length(); i++) {
++        double comp = Math.abs((double) x.getScalar(i).sub(xold.getScalar(i)).element());
+         if (comp > absTolx) {
+             return false;
+         }
+     }
+     return true;
+ }
+\ No newline at end of file

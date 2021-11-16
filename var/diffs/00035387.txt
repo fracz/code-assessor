@@ -1,0 +1,21 @@
+diff --git a/9fe4c68e77b9631f003fbd6c7879abe3bc1895fa b/a7c100c19ccd890f3a61ace535eb85cd36d7408b
+index 9fe4c68e77..a7c100c19c 100644
+--- a/9fe4c68e77b9631f003fbd6c7879abe3bc1895fa
++++ b/a7c100c19ccd890f3a61ace535eb85cd36d7408b
+@@ -1,10 +1,10 @@
+ private void onError(Throwable ex) {
+     if (FileDownloadLog.NEED_LOG) {
+-        FileDownloadLog.d(this, "On error %d %s", downloadTransfer.getDownloadId(), ex);
++        FileDownloadLog.d(this, "On error %d %s", getId(), ex);
+     }
+     ex = exFiltrate(ex);
+-    downloadTransfer.setStatus(FileDownloadStatus.error);
+-    downloadTransfer.setThrowable(ex);
+-    helper.updateError(downloadTransfer.getDownloadId(), ex.getMessage());
+-    FileDownloadProcessEventPool.getImpl().asyncPublishInNewThread(event.setTransfer(downloadTransfer));
++    helper.updateError(getId(), ex.getMessage());
++    transferModel.setStatus(FileDownloadStatus.error);
++    transferModel.setThrowable(ex);
++    onStatusChanged(model.getStatus());
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/a3d53cca8627fb6e36646c0366ea5273d0748079 b/03126a0580b467d03960a03a26c304a956d62628
+index a3d53cca86..03126a0580 100644
+--- a/a3d53cca8627fb6e36646c0366ea5273d0748079
++++ b/03126a0580b467d03960a03a26c304a956d62628
+@@ -1,13 +1,13 @@
+ void scanVariable() {
+-    int position = offset;
+     length = 1;
++    int position = offset;
+     if ('@' == charAt(position + 1)) {
+         position++;
+         length++;
+     }
+     while (isVariableChar(charAt(++position))) {
+         length++;
+     }
+     literals = input.substring(offset, offset + length);
+     token = GeneralLiterals.VARIANT;
+ }
+\ No newline at end of file

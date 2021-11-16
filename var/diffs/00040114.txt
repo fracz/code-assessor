@@ -1,0 +1,20 @@
+diff --git a/a83fc8adc0815d7037975920c6f99aaddcca976b b/95235c006954ea795223fed34cc92792a55b0668
+index a83fc8adc0..95235c0069 100644
+--- a/a83fc8adc0815d7037975920c6f99aaddcca976b
++++ b/95235c006954ea795223fed34cc92792a55b0668
+@@ -1,12 +1,12 @@
+ @Test
+ public void shouldListIndexRulesForLabelPropertyAndKind() {
+     // Given
+     createSchema(uniquenessConstraint(LABEL1, PROP1), index(LABEL1, PROP2));
+     // When
+-    IndexRule rule = storage.indexRule(labelId(LABEL1), propId(PROP1), IndexRuleKind.CONSTRAINT);
++    IndexRule rule = storage.indexRule(nodeDescriptor(LABEL1, PROP1), IndexRuleKind.CONSTRAINT);
+     // Then
+     assertNotNull(rule);
+     assertEquals(labelId(LABEL1), rule.getLabel());
+-    assertEquals(propId(PROP1), rule.getPropertyKey());
++    assertEquals(propId(PROP1), rule.descriptor().getPropertyKeyId());
+     assertEquals(SchemaRule.Kind.CONSTRAINT_INDEX_RULE, rule.getKind());
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/7e4ecf1c52aa48cde34489eb39eeb765c2faf84f b/16397f4afadb40da71b6a31a389e040f2c4f27bc
+index 7e4ecf1c52..16397f4afa 100644
+--- a/7e4ecf1c52aa48cde34489eb39eeb765c2faf84f
++++ b/16397f4afadb40da71b6a31a389e040f2c4f27bc
+@@ -1,8 +1,8 @@
+ @Override
+ protected OraclePackage runTask() {
+-    CreateEntityDialog dialog = new CreateEntityDialog(DBeaverUI.getActiveWorkbenchShell(), parent.getDataSource(), OracleMessages.edit_oracle_package_manager_dialog_title);
+-    if (dialog.open() != IDialogConstants.OK_ID) {
++    EntityEditPage page = new EntityEditPage(parent.getDataSource(), DBSEntityType.PACKAGE);
++    if (!EditObjectDialog.showDialog(page)) {
+         return null;
+     }
+-    return new OraclePackage(parent, dialog.getEntityName());
++    return new OraclePackage(parent, page.getEntityName());
+ }
+\ No newline at end of file

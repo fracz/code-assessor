@@ -1,0 +1,16 @@
+diff --git a/5dd982966cd4def623685224201a20ff4c018366 b/0a8f27324dbbaed3b61c28b8cffc8cafea7764ae
+index 5dd982966c..0a8f27324d 100644
+--- a/5dd982966cd4def623685224201a20ff4c018366
++++ b/0a8f27324dbbaed3b61c28b8cffc8cafea7764ae
+@@ -1,8 +1,7 @@
+ @Override
+ public DatabaseMetaData getMetaData() throws SQLException {
+     if (connectionMap.isEmpty()) {
+-        return getDatabaseMetaDataFromDataSource(context.getShardingRule().getDataSourceRule().getDataSources());
+-    } else {
+-        return getDatabaseMetaDataFromConnection(connectionMap.values());
++        return getDatabaseMetaDataFromDataSource(shardingContext.getShardingRule().getDataSourceRule().getDataSources());
+     }
++    return getDatabaseMetaDataFromConnection(connectionMap.values());
+ }
+\ No newline at end of file

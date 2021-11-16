@@ -1,0 +1,14 @@
+diff --git a/dfc697a9b4d3ede6150f466347607cdea87af141 b/3c3f3f6cc48a45f7d712ddcb065f7024e047edf8
+index dfc697a9b4..3c3f3f6cc4 100644
+--- a/dfc697a9b4d3ede6150f466347607cdea87af141
++++ b/3c3f3f6cc48a45f7d712ddcb065f7024e047edf8
+@@ -1,6 +1,6 @@
+ @Override
+ protected boolean doIsValid(MavenId id, MavenProjectIndicesManager manager, ConvertContext context) {
+-    if (StringUtil.isEmpty(id.groupId) || StringUtil.isEmpty(id.artifactId))
++    if (StringUtil.isEmpty(id.getGroupId()) || StringUtil.isEmpty(id.getArtifactId()))
+         return false;
+-    return manager.hasArtifactId(id.groupId, id.artifactId);
++    return manager.hasArtifactId(id.getGroupId(), id.getArtifactId());
+ }
+\ No newline at end of file

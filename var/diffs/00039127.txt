@@ -1,0 +1,21 @@
+diff --git a/3deb8d60b4f4cf3359246e92216d3bb9665f495f b/faff8724d9b2a33e14fac4e90e487ccf11c42bc8
+index 3deb8d60b4..faff8724d9 100644
+--- a/3deb8d60b4f4cf3359246e92216d3bb9665f495f
++++ b/faff8724d9b2a33e14fac4e90e487ccf11c42bc8
+@@ -1,14 +1,12 @@
+ @Test
+ public void shouldExcludeNodesWithRemovedProperty() throws Exception {
+     // Given
+     when(store.nodesGetFromIndexLookup(state, indexDescriptor, value)).then(answerAsPrimitiveLongIteratorFrom(asList(2l, 3l)));
+     when(store.nodeHasLabel(1l, labelId)).thenReturn(true);
+-    // when( oldTxState.getNodesWithChangedProperty( propertyKeyId, value ) ).thenReturn(
+-    // new DiffSets<>( Collections.<Long>emptySet(), asSet( 1l ) ) );
++    state.txState().nodeDoReplaceProperty(1l, Property.noNodeProperty(1l, propertyKeyId), Property.intProperty(propertyKeyId, 10));
+     txContext.nodeAddLabel(state, 1l, labelId);
+     // When
+     PrimitiveLongIterator result = txContext.nodesGetFromIndexLookup(state, indexDescriptor, value);
+     // Then
+     assertThat(asSet(result), equalTo(asSet(2l, 3l)));
+-    fail("Shouldn't work. Above is a commented piece of code that mocks a removal of something. " + "With that kept as commented code this test works, so it's a false green");
+ }
+\ No newline at end of file

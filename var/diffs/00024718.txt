@@ -1,0 +1,12 @@
+diff --git a/f31032353cae9f0aaa24fa11f9b8af49a67e3bcc b/7c12e025a97c72547506db99d6d4c7791dc480e7
+index f31032353c..7c12e025a9 100644
+--- a/f31032353cae9f0aaa24fa11f9b8af49a67e3bcc
++++ b/7c12e025a97c72547506db99d6d4c7791dc480e7
+@@ -1,5 +1,5 @@
+ @BeforeClass
+ public static void defineSchema() throws ConfigurationException {
+     SchemaLoader.loadSchema();
+-    SchemaLoader.createKeyspace(KEYSPACE, SimpleStrategy.class, KSMetaData.optsWithRF(1), SchemaLoader.standardCFMD(KEYSPACE, CF), SchemaLoader.standardCFMD(KEYSPACE, CF2), SchemaLoader.standardCFMD(KEYSPACE, CF3), SchemaLoader.standardCFMD(KEYSPACE, COUNTER_CF).defaultValidator(CounterColumnType.instance).compressionParameters(SchemaLoader.getCompressionParameters(COMPRESSION_CHUNK_LENGTH)), SchemaLoader.standardCFMD(KEYSPACE, CF_UUID).keyValidator(UUIDType.instance), SchemaLoader.indexCFMD(KEYSPACE, CF_INDEX1, true), SchemaLoader.compositeIndexCFMD(KEYSPACE, CF_INDEX2, true));
++    SchemaLoader.createKeyspace(KEYSPACE, SimpleStrategy.class, KSMetaData.optsWithRF(1), SchemaLoader.standardCFMD(KEYSPACE, CF), SchemaLoader.standardCFMD(KEYSPACE, CF2), SchemaLoader.standardCFMD(KEYSPACE, CF3), SchemaLoader.counterCFMD(KEYSPACE, COUNTER_CF).compressionParameters(SchemaLoader.getCompressionParameters(COMPRESSION_CHUNK_LENGTH)), SchemaLoader.standardCFMD(KEYSPACE, CF_UUID, 0, UUIDType.instance), SchemaLoader.keysIndexCFMD(KEYSPACE, CF_INDEX1, true), SchemaLoader.compositeIndexCFMD(KEYSPACE, CF_INDEX2, true));
+ }
+\ No newline at end of file

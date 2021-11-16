@@ -1,0 +1,14 @@
+diff --git a/e6278d7c445d58126b4b65f61d0a3e7cd2fb85bb b/121a28b9ae50161d3b8546728326db7a8e140bff
+index e6278d7c44..121a28b9ae 100644
+--- a/e6278d7c445d58126b4b65f61d0a3e7cd2fb85bb
++++ b/121a28b9ae50161d3b8546728326db7a8e140bff
+@@ -1,7 +1,4 @@
+ @Override
+ public void writeTo(DataOutput out) throws IOException {
+-    out.writeInt(indices.size());
+-    for (IndexRefreshResponse indexRefreshResponse : indices.values()) {
+-        indexRefreshResponse.writeTo(out);
+-    }
++    super.writeTo(out);
+ }
+\ No newline at end of file

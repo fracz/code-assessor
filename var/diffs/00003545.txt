@@ -1,0 +1,27 @@
+diff --git a/98611dad4e436b514e67852dde2f358694641250 b/f06fb699cd334e64756a1e9657d023e1a737f705
+index 98611dad4e..f06fb699cd 100644
+--- a/98611dad4e436b514e67852dde2f358694641250
++++ b/f06fb699cd334e64756a1e9657d023e1a737f705
+@@ -1,15 +1,15 @@
+ @Override
+-public void updateParameters(List<String> parameters) {
++public void updateParameters(@NotNull Command command) {
+     if (myAuthentication instanceof SVNSSLAuthentication) {
+         SVNSSLAuthentication auth = (SVNSSLAuthentication) myAuthentication;
+         // TODO: Seems that config option should be specified for concrete server and not for global group.
+         // as in that case it could be overriden by settings in config file
+-        parameters.add("--config-option");
+-        parameters.add("servers:global:ssl-client-cert-file=" + auth.getCertificatePath());
+-        parameters.add("--config-option");
+-        parameters.add("servers:global:ssl-client-cert-password=" + auth.getPassword());
++        command.put("--config-option");
++        command.put("servers:global:ssl-client-cert-file=" + auth.getCertificatePath());
++        command.put("--config-option");
++        command.put("servers:global:ssl-client-cert-password=" + auth.getPassword());
+         if (!auth.isStorageAllowed()) {
+-            parameters.add("--no-auth-cache");
++            command.put("--no-auth-cache");
+         }
+     }
+ }
+\ No newline at end of file

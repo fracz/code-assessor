@@ -1,0 +1,13 @@
+diff --git a/e7580473365ef93ab76ac22b6f910a5365a98f0c b/366ecb4caee003c2a964a336b4316174794f79c7
+index e758047336..366ecb4cae 100644
+--- a/e7580473365ef93ab76ac22b6f910a5365a98f0c
++++ b/366ecb4caee003c2a964a336b4316174794f79c7
+@@ -1,6 +1,5 @@
+ @Override
+ public void parse(BserValues values) throws IOException {
+     this.rid = values.getLong(1);
+-    this.contentType = values.getInt(2);
+-    this.content = values.getBytes(3);
++    this.content = Message.fromBytes(values.getBytes(3));
+ }
+\ No newline at end of file

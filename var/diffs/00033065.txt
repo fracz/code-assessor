@@ -1,0 +1,27 @@
+diff --git a/9cced8e2f727f96a1e8141252510ca715ccf6cee b/7822286fd4fab4a600ba34af9f2c42a9e9ff9874
+index 9cced8e2f7..7822286fd4 100644
+--- a/9cced8e2f727f96a1e8141252510ca715ccf6cee
++++ b/7822286fd4fab4a600ba34af9f2c42a9e9ff9874
+@@ -1,14 +1,17 @@
+ @Override
+ protected void checkAvailable(ToolChainAvailability availability) {
+     if (!operatingSystem.isWindows()) {
+         availability.unavailable("Not available on this operating system.");
+         return;
+     }
+-    if (install != null) {
++    if (installDir != null) {
++        VisualStudioInstall install = new VisualStudioInstall(installDir);
+         availability.mustExist("Visual Studio installation", install.getVisualStudioDir());
+         availability.mustExist("Windows SDK", install.getWindowsSdkDir());
+-    }
+-    for (ToolType key : ToolType.values()) {
+-        availability.mustExist(key.getToolName(), tools.locate(key));
++    } else {
++        // Locate tools in the path
++        for (ToolType key : ToolType.values()) {
++            availability.mustExist(key.getToolName(), tools.locate(key));
++        }
+     }
+ }
+\ No newline at end of file

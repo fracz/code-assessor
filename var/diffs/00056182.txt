@@ -1,0 +1,22 @@
+diff --git a/57a791f2b484dad3bbc7e021db21cf357f58d5ee b/94ed8349a15e854d0fea1d61b74156e66e3c982b
+index 57a791f2b4..94ed8349a1 100644
+--- a/57a791f2b484dad3bbc7e021db21cf357f58d5ee
++++ b/94ed8349a15e854d0fea1d61b74156e66e3c982b
+@@ -1,12 +1,7 @@
+-public void testAfterThrowingWithRuntimeExceptionBinding() {
++@Test(expected = Throwable.class)
++public void testAfterThrowingWithRuntimeExceptionBinding() throws Throwable {
+     RuntimeException ex = new RuntimeException();
+     mockCollaborator.oneRuntimeException(ex);
+-    mockControl.replay();
+-    try {
+-        this.testBean.exceptional(ex);
+-        fail("should throw exception");
+-    } catch (Throwable x) {
+-    // no-op
+-    }
+-    mockControl.verify();
++    replay(mockCollaborator);
++    this.testBean.exceptional(ex);
+ }
+\ No newline at end of file

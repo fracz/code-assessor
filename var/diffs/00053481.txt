@@ -1,0 +1,17 @@
+diff --git a/879b443e18ba37a5bd152fa4067499513a4efeee b/e1ffe4f32eb87cdf9bbfd0db5e0981ddd4c9f459
+index 879b443e18..e1ffe4f32e 100644
+--- a/879b443e18ba37a5bd152fa4067499513a4efeee
++++ b/e1ffe4f32eb87cdf9bbfd0db5e0981ddd4c9f459
+@@ -1,10 +1,7 @@
+ private TableRuleConfiguration createTableRuleConfigWithTableStrategies() {
+     TableRuleConfiguration result = new TableRuleConfiguration();
+     result.setLogicTable("logicTable");
+     result.setActualTables("table_0, table_1, table_2");
+-    StandardShardingStrategyConfiguration tableShardingStrategyConfig = new StandardShardingStrategyConfiguration();
+-    tableShardingStrategyConfig.setShardingColumn("column");
+-    tableShardingStrategyConfig.setPreciseAlgorithmClassName(TestPreciseShardingAlgorithm.class.getName());
+-    result.setTableShardingStrategyConfig(tableShardingStrategyConfig);
++    result.setTableShardingStrategyConfig(new StandardShardingStrategyConfiguration("column", TestPreciseShardingAlgorithm.class.getName()));
+     return result;
+ }
+\ No newline at end of file

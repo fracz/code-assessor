@@ -1,0 +1,14 @@
+diff --git a/cc5982e6d3ca4088bf775eec51355ab0b98dfc9c b/225bcf8617680a55ef1f058398a69b653d172c96
+index cc5982e6d3..225bcf8617 100644
+--- a/cc5982e6d3ca4088bf775eec51355ab0b98dfc9c
++++ b/225bcf8617680a55ef1f058398a69b653d172c96
+@@ -1,6 +1,7 @@
+ /**
+  * Close current splash screen
+  */
+ public void close() {
+-    close = true;
++    Logger.getRootLogger().removeAppender(splashOutputWriter);
++    dispose();
+ }
+\ No newline at end of file

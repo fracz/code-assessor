@@ -1,0 +1,30 @@
+diff --git a/8886456d067dc05d8317bf023d3d4dc5f776a6a8 b/c22f623883a1075779bc301a0e7d4e27f908b3df
+index 8886456d06..c22f623883 100644
+--- a/8886456d067dc05d8317bf023d3d4dc5f776a6a8
++++ b/c22f623883a1075779bc301a0e7d4e27f908b3df
+@@ -1,14 +1,20 @@
+-public RecordIterator<StaticBuffer> edgeStoreKeys() {
+-    return executeRead(new Callable<RecordIterator<StaticBuffer>>() {
++public KeyIterator edgeStoreKeys(final SliceQuery sliceQuery) {
++    if (!storeFeatures.supportsScan())
++        throw new UnsupportedOperationException("The configured storage backend does not support global graph operations - use Faunus instead");
++    return executeRead(new Callable<KeyIterator>() {
+
+         @Override
+-        public RecordIterator<StaticBuffer> call() throws Exception {
+-            return edgeStore.getKeys(storeTx);
++        public KeyIterator call() throws Exception {
++            if (storeFeatures.isKeyOrdered()) {
++                return edgeStore.getKeys(new KeyRangeQuery(EDGESTORE_MIN_KEY, EDGESTORE_MAX_KEY, sliceQuery), storeTx);
++            } else {
++                return edgeStore.getKeys(sliceQuery, storeTx);
++            }
+         }
+
+         @Override
+         public String toString() {
+             return "EdgeStoreKeys";
+         }
+     });
+ }
+\ No newline at end of file

@@ -1,0 +1,31 @@
+diff --git a/ecf506363be6b055012c8cafe7f212acac9f3e8c b/b1ba5e2c77658f61249095e6d3e612c8c2fade5a
+index ecf506363b..b1ba5e2c77 100644
+--- a/ecf506363be6b055012c8cafe7f212acac9f3e8c
++++ b/b1ba5e2c77658f61249095e6d3e612c8c2fade5a
+@@ -1,22 +1,21 @@
+ public void visitMethodCallExpression(@NotNull PsiMethodCallExpression expression) {
+-    super.visitMethodCallExpression(expression);
+-    if (!m_inSynchronizedContext) {
+-        return;
+-    }
+     final PsiMethod method = expression.resolveMethod();
+     if (method == null) {
+         return;
+     }
+     if (!method.hasModifierProperty(PsiModifier.NATIVE)) {
+         return;
+     }
+     final PsiClass containingClass = method.getContainingClass();
+     if (containingClass == null) {
+         return;
+     }
+     final String className = containingClass.getQualifiedName();
+     if ("java.lang.Object".equals(className)) {
+         return;
+     }
++    if (!isInSynchronizedContext(expression)) {
++        return;
++    }
+     registerMethodCallError(expression);
+ }
+\ No newline at end of file

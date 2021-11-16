@@ -1,0 +1,11 @@
+diff --git a/20d36c798b177d3d67a1122d361f0624b8585750 b/b2ba379333b2db63447b6b24915a87b6b1d16e7e
+index 20d36c798b..b2ba379333 100644
+--- a/20d36c798b177d3d67a1122d361f0624b8585750
++++ b/b2ba379333b2db63447b6b24915a87b6b1d16e7e
+@@ -1,4 +1,4 @@
+ @Override
+ public void readFields(final DataInput in) throws IOException {
+-    throw new UnsupportedOperationException();
++    new FaunusSerializer(this.getConf()).readProperty(this, in);
+ }
+\ No newline at end of file

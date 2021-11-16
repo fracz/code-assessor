@@ -1,0 +1,12 @@
+diff --git a/b40f85af7fa7369366cca316f34b602e39828526 b/3592f4311d91441c478ac01596ae3e9357443163
+index b40f85af7f..3592f4311d 100644
+--- a/b40f85af7fa7369366cca316f34b602e39828526
++++ b/3592f4311d91441c478ac01596ae3e9357443163
+@@ -1,5 +1,3 @@
+ public OClass createEdgeType(final String iClassName) {
+-    OClass cls = getMetadata().getSchema().createClass(iClassName).setSuperClass(getMetadata().getSchema().getClass(EDGE_CLASS_NAME));
+-    getMetadata().getSchema().save();
+-    return cls;
++    return getMetadata().getSchema().createClass(iClassName, getMetadata().getSchema().getClass(EDGE_CLASS_NAME));
+ }
+\ No newline at end of file

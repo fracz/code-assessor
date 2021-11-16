@@ -1,0 +1,16 @@
+diff --git a/3b241dd0c50b6a458dd4287ec2808a0b1109a940 b/1b691fcce8f47e2e9a18b91c84efcac1f28e38ad
+index 3b241dd0c5..1b691fcce8 100644
+--- a/3b241dd0c50b6a458dd4287ec2808a0b1109a940
++++ b/1b691fcce8f47e2e9a18b91c84efcac1f28e38ad
+@@ -1,8 +1,8 @@
+ public void testFixedVsVarargs1() throws Exception {
+     PsiReference ref = configureByFile("fixedVsVarargs1/A.groovy");
+-    PsiElement resolved = ref.resolve();
+-    assertTrue(resolved instanceof GrMethod);
++    PsiMethod resolved = ((GrNewExpression) ref.getElement().getParent()).resolveConstructor();
++    assertNotNull(resolved);
+     final GrParameter[] parameters = ((GrMethod) resolved).getParameters();
+     assertEquals(parameters.length, 1);
+     assertEquals(parameters[0].getType().getCanonicalText(), "int");
+ }
+\ No newline at end of file

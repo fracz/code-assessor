@@ -1,0 +1,19 @@
+diff --git a/1ab2b91ae76460d9cb94809bab72ced58f4b2987 b/1c8343777b1bc86dd17050807fcf5b20bc044bf2
+index 1ab2b91ae7..1c8343777b 100644
+--- a/1ab2b91ae76460d9cb94809bab72ced58f4b2987
++++ b/1c8343777b1bc86dd17050807fcf5b20bc044bf2
+@@ -1,7 +1,11 @@
+ @Override
+ public boolean equals(Object o) {
+-    if (o == null || getClass() != o.getClass())
++    if (this == o) {
++        return true;
++    }
++    if (super.equals(o) == false) {
+         return false;
++    }
+     FunctionScoreQuery other = (FunctionScoreQuery) o;
+-    return this.getBoost() == other.getBoost() && this.subQuery.equals(other.subQuery) && (this.function != null ? this.function.equals(other.function) : other.function == null) && this.maxBoost == other.maxBoost;
++    return Objects.equals(this.subQuery, other.subQuery) && Objects.equals(this.function, other.function) && Objects.equals(this.combineFunction, other.combineFunction) && Objects.equals(this.minScore, other.minScore) && this.maxBoost == other.maxBoost;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/936f97a8926e1a3651aebab22ff78a72a260ea90 b/56e26a5f7671c4e44aeaa5be4cebcbed6c1e6f0b
+index 936f97a892..56e26a5f76 100644
+--- a/936f97a8926e1a3651aebab22ff78a72a260ea90
++++ b/56e26a5f7671c4e44aeaa5be4cebcbed6c1e6f0b
+@@ -1,8 +1,9 @@
+ private void ignore(@NotNull Set<PsiElement> ignoredElements, @NotNull CommonProblemDescriptor descriptor, @Nullable QuickFix fix) {
+     if (fix != null) {
+-        ((DescriptorProviderInspection) myTool).ignoreProblem(descriptor, fix);
++        InspectionToolPresentation presentation = ((GlobalInspectionContextImpl) myToolWrapper.getContext()).getPresentation(myToolWrapper);
++        presentation.ignoreProblem(descriptor, fix);
+     }
+     if (descriptor instanceof ProblemDescriptor) {
+         ignoredElements.add(((ProblemDescriptor) descriptor).getPsiElement());
+     }
+ }
+\ No newline at end of file

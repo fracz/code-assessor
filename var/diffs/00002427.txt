@@ -1,0 +1,12 @@
+diff --git a/baf13c27069b74999781f0ab6ec858059d009609 b/12d407cb552ccb4f4c1c8e4077ed92bde95f3fae
+index baf13c2706..12d407cb55 100644
+--- a/baf13c27069b74999781f0ab6ec858059d009609
++++ b/12d407cb552ccb4f4c1c8e4077ed92bde95f3fae
+@@ -1,4 +1,5 @@
+ private void updateHelpText() {
+     boolean useSockets = !myRbShmem.isSelected();
+-    myHelpArea.updateText(new RemoteConnection(useSockets, myHostName, useSockets ? myPortField.getText().trim() : myAddressField.getText().trim(), myRbListen.isSelected()));
++    final RemoteConnection connection = new RemoteConnection(useSockets, myHostName, useSockets ? myPortField.getText().trim() : myAddressField.getText().trim(), myRbListen.isSelected());
++    myHelpArea.updateText(connection.getLaunchCommandLine());
+ }
+\ No newline at end of file

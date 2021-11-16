@@ -1,0 +1,19 @@
+diff --git a/1f792d1369684ea6166fe4726121a31885909d06 b/821f375d0ddabae8c25eea661c1ba4869a852d87
+index 1f792d1369..821f375d0d 100644
+--- a/1f792d1369684ea6166fe4726121a31885909d06
++++ b/821f375d0ddabae8c25eea661c1ba4869a852d87
+@@ -1,7 +1,8 @@
+ @Override
+-public void readFrom(StreamInput in) throws IOException {
+-    this.types = in.readStringList();
+-    this.ids = in.readStringList();
+-    queryName = in.readOptionalString();
+-    boost = in.readFloat();
++public IdsQueryBuilder readFrom(StreamInput in) throws IOException {
++    IdsQueryBuilder idsQueryBuilder = new IdsQueryBuilder(in.readStringArray());
++    idsQueryBuilder.addIds(in.readStringArray());
++    idsQueryBuilder.queryName = in.readOptionalString();
++    idsQueryBuilder.boost = in.readFloat();
++    return idsQueryBuilder;
+ }
+\ No newline at end of file

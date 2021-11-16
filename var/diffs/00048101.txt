@@ -1,0 +1,19 @@
+diff --git a/3131e8ec8a9ceb4b8f44f864344000273b37847a b/58b9e3debaf7f95bec2c9be12ebb32cce718d78d
+index 3131e8ec8a..58b9e3deba 100644
+--- a/3131e8ec8a9ceb4b8f44f864344000273b37847a
++++ b/58b9e3debaf7f95bec2c9be12ebb32cce718d78d
+@@ -1,9 +1,10 @@
+-private DBEPersistAction[] createOrReplaceViewQuery(OracleMaterializedView view) {
++private void createOrReplaceViewQuery(List<DBEPersistAction> actions, OracleMaterializedView view) {
+     StringBuilder decl = new StringBuilder(200);
+     final String lineSeparator = GeneralUtils.getDefaultLineSeparator();
+     // $NON-NLS-1$
+     decl.append("CREATE MATERIALIZED VIEW ").append(view.getFullQualifiedName()).append(lineSeparator).append("AS ").append(// $NON-NLS-1$
+     view.getObjectDefinitionText(null));
+-    return new DBEPersistAction[] { // $NON-NLS-2$
+-    new SQLDatabasePersistAction("Drop view", "DROP MATERIALIZED VIEW " + view.getFullQualifiedName()), new SQLDatabasePersistAction("Create view", decl.toString()) };
++    actions.add(// $NON-NLS-2$
++    new SQLDatabasePersistAction("Drop view", "DROP MATERIALIZED VIEW " + view.getFullQualifiedName()));
++    actions.add(new SQLDatabasePersistAction("Create view", decl.toString()));
+ }
+\ No newline at end of file

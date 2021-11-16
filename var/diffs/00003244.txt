@@ -1,0 +1,19 @@
+diff --git a/ecc945c5e2c52fd62ec75b8456eef6ad6b987525 b/e9db35e4235e45649ce7be5f13f040d8ec6d2f9e
+index ecc945c5e2..e9db35e423 100644
+--- a/ecc945c5e2c52fd62ec75b8456eef6ad6b987525
++++ b/e9db35e4235e45649ce7be5f13f040d8ec6d2f9e
+@@ -1,12 +1,12 @@
+ public Result applyFilter(final String line, final int entireLength) {
+     final boolean dumb = DumbService.getInstance(myProject).isDumb();
+     for (final Filter filter : myFilters) {
+-        if (!dumb || filter instanceof DumbAware) {
++        if (!dumb || DumbService.isDumbAware(filter)) {
+             final Result info = filter.applyFilter(line, entireLength);
+             if (info != null) {
+                 return info;
+             }
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

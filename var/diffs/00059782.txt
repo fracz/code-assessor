@@ -1,0 +1,19 @@
+diff --git a/1cd9dd4cdaf26cd956e0ee4fb2df190adb7798ac b/42671f94e2fee7f93660b52e7c06957f1fc5d325
+index 1cd9dd4cda..42671f94e2 100644
+--- a/1cd9dd4cdaf26cd956e0ee4fb2df190adb7798ac
++++ b/42671f94e2fee7f93660b52e7c06957f1fc5d325
+@@ -1,11 +1,11 @@
+ /**
+  * ###################################
+  * Message Serialization & Utility
+  * ###################################
+  */
+-private static int getTimeSlice(long timestamp) {
+-    long value = timestamp / TIMESLICE_INTERVAL;
++private int getTimeSlice(Timepoint timestamp) {
++    long value = timestamp.getTime(times.getUnit()) / TIMESLICE_INTERVAL;
+     if (value > Integer.MAX_VALUE || value < 0)
+         throw new IllegalArgumentException("Timestamp overflow detected: " + timestamp);
+     return (int) value;
+ }
+\ No newline at end of file

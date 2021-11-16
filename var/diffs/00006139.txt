@@ -1,0 +1,20 @@
+diff --git a/a81f45be42305a28ede922a6323767196bac7b0d b/67e2cc720898784dd13b04a5022b1e1037075399
+index a81f45be42..67e2cc7208 100644
+--- a/a81f45be42305a28ede922a6323767196bac7b0d
++++ b/67e2cc720898784dd13b04a5022b1e1037075399
+@@ -1,13 +1,12 @@
+ @Override
+ public void initComponent() {
+-    if (ApplicationManager.getApplication().isUnitTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
++    if (!isNormalProject())
+         return;
+-    }
+     MavenProjectsManager.getInstance(myProject).addProjectsTreeListener(new MavenProjectsTree.ListenerAdapter() {
+
+         @Override
+         public void projectsRead(List<MavenProject> projects) {
+             updateTabName(projects);
+         }
+     });
+ }
+\ No newline at end of file

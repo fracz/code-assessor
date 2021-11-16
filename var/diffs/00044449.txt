@@ -1,0 +1,16 @@
+diff --git a/7cb3c084bb7c7eb8a5d3fb8cf0554c16b3c2d914 b/fa42d0a674900a117bf04c47aa8917bb8e821f69
+index 7cb3c084bb..fa42d0a674 100644
+--- a/7cb3c084bb7c7eb8a5d3fb8cf0554c16b3c2d914
++++ b/fa42d0a674900a117bf04c47aa8917bb8e821f69
+@@ -1,9 +1,8 @@
+ @Override
+-public Long read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
++public void read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
+     short clusterId = network.readShort();
+     long posistion = network.readLong();
+     identity = new ORecordId(clusterId, posistion);
+     version = network.readVersion();
+     changedIds = OBinaryProtocolHelper.readCollectionChanges(network);
+-    return posistion;
+ }
+\ No newline at end of file

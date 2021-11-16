@@ -1,0 +1,19 @@
+diff --git a/77fe06130388d98f2f90a39348d92ddfb5a06242 b/8f4836e11ec44fee6ffac6f8b666d6c6bedc82f5
+index 77fe061303..8f4836e11e 100644
+--- a/77fe06130388d98f2f90a39348d92ddfb5a06242
++++ b/8f4836e11ec44fee6ffac6f8b666d6c6bedc82f5
+@@ -1,10 +1,6 @@
+ @Test
+ public void shouldBeAbleToGetCurrentUser() throws Exception {
+-    final User user = createUser();
+-    final ContainerResponse response = makeRequest(HttpMethod.GET, SERVICE_PATH, null);
+-    assertEquals(response.getStatus(), OK.getStatusCode());
+-    final UserDescriptor descriptor = (UserDescriptor) response.getEntity();
+-    assertEquals(descriptor.getId(), user.getId());
+-    assertEquals(descriptor.getEmail(), user.getEmail());
+-    assertEquals(descriptor.getAliases(), user.getAliases());
++    when(userManager.getById(SUBJECT.getUserId())).thenReturn(copySubject());
++    final Response response = given().auth().basic(ADMIN_USER_NAME, ADMIN_USER_PASSWORD).when().get(SECURE_PATH + "/user");
++    assertEquals(response.getStatusCode(), 200);
+ }
+\ No newline at end of file

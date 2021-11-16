@@ -1,0 +1,17 @@
+diff --git a/1df2ed415c0bdd497a0a2f2ac7033382cc37ba37 b/289789b31625ec6d041e28a5b033df241897b303
+index 1df2ed415c..289789b316 100644
+--- a/1df2ed415c0bdd497a0a2f2ac7033382cc37ba37
++++ b/289789b31625ec6d041e28a5b033df241897b303
+@@ -1,10 +1,10 @@
+ @Test(dataProvider = "GitConnectionFactory", dataProviderClass = org.eclipse.che.git.impl.GitConnectionFactoryProvider.class)
+ public void testDiffNameOnlyNotMatchingWithFileFilter(GitConnectionFactory connectionFactory) throws GitException, IOException {
+     // given
+     GitConnection connection = connectToInitializedGitRepository(connectionFactory, repository);
+     makeCommitInMaster(connection);
+     // when
+-    List<String> diff = readDiff(newDto(DiffRequest.class).withFileFilter(Arrays.asList("anotherFile")).withType(DiffType.NAME_ONLY).withNoRenames(false).withRenameLimit(0), connection);
++    List<String> diff = readDiff(DiffParams.create().withFileFilter(singletonList("anotherFile")).withType(DiffType.NAME_ONLY).withNoRenames(false).withRenameLimit(0), connection);
+     // then
+     assertEquals(diff.size(), 0);
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/061f684801ea1a83f4b336898985d098afe21e26 b/7881d822b200ba79cb21ccfdb0db8eed82fffece
+index 061f684801..7881d822b2 100644
+--- a/061f684801ea1a83f4b336898985d098afe21e26
++++ b/7881d822b200ba79cb21ccfdb0db8eed82fffece
+@@ -1,8 +1,8 @@
+ @Override
+-public Iterator<RelationshipPropertyConstraint> constraintsGetForRelationshipTypeAndPropertyKey(KernelStatement state, int relTypeId, int propertyKeyId) {
+-    Iterator<RelationshipPropertyConstraint> constraints = storeLayer.constraintsGetForRelationshipTypeAndPropertyKey(relTypeId, propertyKeyId);
++public Iterator<RelationshipPropertyConstraint> constraintsGetForRelationshipTypeAndPropertyKey(KernelStatement state, RelationshipPropertyDescriptor descriptor) {
++    Iterator<RelationshipPropertyConstraint> constraints = storeLayer.constraintsGetForRelationshipTypeAndPropertyKey(descriptor);
+     if (state.hasTxStateWithChanges()) {
+-        return state.txState().constraintsChangesForRelationshipTypeAndProperty(relTypeId, propertyKeyId).apply(constraints);
++        return state.txState().constraintsChangesForRelationshipTypeAndProperty(descriptor).apply(constraints);
+     }
+     return constraints;
+ }
+\ No newline at end of file

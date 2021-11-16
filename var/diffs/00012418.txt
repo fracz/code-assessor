@@ -1,0 +1,25 @@
+diff --git a/d4de09409988a9bcaf10c36d5ab462f0b50e44cc b/6cf014b651dd790b67bbeadc521d50f6c03491da
+index d4de094099..6cf014b651 100644
+--- a/d4de09409988a9bcaf10c36d5ab462f0b50e44cc
++++ b/6cf014b651dd790b67bbeadc521d50f6c03491da
+@@ -1,16 +1,12 @@
+ private static boolean isNotAliasedInImportElement(@NotNull PsiReference reference) {
+-    boolean include = true;
+     if (reference instanceof PsiPolyVariantReference) {
+         final ResolveResult[] results = ((PsiPolyVariantReference) reference).multiResolve(false);
+         for (ResolveResult result : results) {
+             final PsiElement resolved = result.getElement();
+-            if (resolved instanceof PyImportElement) {
+-                if (((PyImportElement) resolved).getAsName() != null) {
+-                    include = false;
+-                    break;
+-                }
++            if (resolved instanceof PyImportElement && ((PyImportElement) resolved).getAsName() != null) {
++                return false;
+             }
+         }
+     }
+-    return include;
++    return true;
+ }
+\ No newline at end of file

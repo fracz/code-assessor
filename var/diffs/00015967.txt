@@ -1,0 +1,17 @@
+diff --git a/ddfc2dece3a157e2018f5455cdb52040d102b603 b/c73e7495e9f603dcb9298f622ada8e24e800dfbd
+index ddfc2dece3..c73e7495e9 100644
+--- a/ddfc2dece3a157e2018f5455cdb52040d102b603
++++ b/c73e7495e9f603dcb9298f622ada8e24e800dfbd
+@@ -1,9 +1,9 @@
+ private void checkConstructorDescriptor(@NotNull JetExpression expression, @NotNull DeclarationDescriptor target) {
+     // Deprecated for Class and for Constructor
+     DeclarationDescriptor containingDeclaration = target.getContainingDeclaration();
+     if (containingDeclaration != null) {
+-        if (KotlinBuiltIns.getInstance().isDeprecated(containingDeclaration) || KotlinBuiltIns.getInstance().isDeprecated(target)) {
+-            reportAnnotation(expression, containingDeclaration);
++        if (!reportAnnotationIfNeeded(expression, containingDeclaration)) {
++            reportAnnotationIfNeeded(expression, target);
+         }
+     }
+ }
+\ No newline at end of file

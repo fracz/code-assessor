@@ -1,0 +1,16 @@
+diff --git a/58a9b951d1cc3bb422f4f99410a31fe437178f1a b/a137679bab0bc0e4179ba762027ac904d1cc64b0
+index 58a9b951d1..a137679bab 100644
+--- a/58a9b951d1cc3bb422f4f99410a31fe437178f1a
++++ b/a137679bab0bc0e4179ba762027ac904d1cc64b0
+@@ -1,9 +1,9 @@
+ @NotNull
+ public Collection<VcsRootError> find() {
+     List<VcsDirectoryMapping> mappings = myVcsManager.getDirectoryMappings();
+-    Collection<VcsRoot> vcsRoots = new VcsRootDetector(myProject).detect().getRoots();
++    Collection<VcsRoot> vcsRoots = ServiceManager.getService(myProject, VcsRootDetectorI.class).detect();
+     Collection<VcsRootError> errors = new ArrayList<VcsRootError>();
+     errors.addAll(findExtraMappings(mappings));
+     errors.addAll(findUnregisteredRoots(mappings, vcsRoots));
+     return errors;
+ }
+\ No newline at end of file

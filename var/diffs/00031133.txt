@@ -1,0 +1,21 @@
+diff --git a/5cf83fd8a929bf8468151db3c1de71b2c70f66ec b/211a594efe37f8d4960901913e73751c55209536
+index 5cf83fd8a9..211a594efe 100644
+--- a/5cf83fd8a929bf8468151db3c1de71b2c70f66ec
++++ b/211a594efe37f8d4960901913e73751c55209536
+@@ -1,14 +1,13 @@
+ /**
+  * Creates the aggregator
+  *
+  * @param context               The aggregation context
+  * @param parent                The parent aggregator (if this is a top level factory, the parent will be {@code null})
+  * @param collectsFromSingleBucket  If true then the created aggregator will only be collected with <tt>0</tt> as a bucket ordinal.
+  * Some factories can take advantage of this in order to return more optimized implementations.
+  *
+  * @return                      The created aggregator
+  */
+ public final Aggregator create(AggregationContext context, Aggregator parent, boolean collectsFromSingleBucket) throws IOException {
+-    Aggregator aggregator = createInternal(context, parent, collectsFromSingleBucket, this.metaData);
+-    return aggregator;
++    return createInternal(context, parent, collectsFromSingleBucket, this.metaData);
+ }
+\ No newline at end of file

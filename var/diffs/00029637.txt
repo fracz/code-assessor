@@ -1,0 +1,17 @@
+diff --git a/8a26d2dc8232ba1814b58ffb4d634e81ccbad2fc b/1f2ccab5f2bee4245cd3559fa592724507fc7d51
+index 8a26d2dc82..1f2ccab5f2 100644
+--- a/8a26d2dc8232ba1814b58ffb4d634e81ccbad2fc
++++ b/1f2ccab5f2bee4245cd3559fa592724507fc7d51
+@@ -1,10 +1,10 @@
+ public byte asByte() {
+-    if (this == AUTO) {
++    if (this.equals(AUTO)) {
+         return 1;
+     }
+     try {
+         return Byte.parseByte(fuzziness.toString());
+     } catch (NumberFormatException ex) {
+         return (byte) Float.parseFloat(fuzziness.toString());
+     }
+ }
+\ No newline at end of file

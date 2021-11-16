@@ -1,0 +1,22 @@
+diff --git a/0fcd6dd7a0306006729b05b37be00e4637164efd b/f4234bdbf940f4debcd2ed7934500d694ce9d2da
+index 0fcd6dd7a0..f4234bdbf9 100644
+--- a/0fcd6dd7a0306006729b05b37be00e4637164efd
++++ b/f4234bdbf940f4debcd2ed7934500d694ce9d2da
+@@ -1,10 +1,8 @@
+-public Result calculateResult(@NotNull Expression[] params, ExpressionContext context) {
+-    if (params.length != 1) {
+-        return null;
++@Override
++protected Result calculateResult(@NotNull Expression[] params, ExpressionContext context, boolean quick) {
++    final String text = getTextResult(params, context);
++    if (text != null) {
++        return new TextResult(text.replace('_', ' '));
+     }
+-    Result param_result = params[0].calculateResult(context);
+-    if (param_result == null) {
+-        return null;
+-    }
+-    return execute(param_result);
++    return null;
+ }
+\ No newline at end of file

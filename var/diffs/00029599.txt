@@ -1,0 +1,21 @@
+diff --git a/aeef82a26002cd9ea8d2750f6104848fbc6305ec b/aaedc7a7c4578f02ddbbd8ef64e41f72f408840c
+index aeef82a260..aaedc7a7c4 100644
+--- a/aeef82a26002cd9ea8d2750f6104848fbc6305ec
++++ b/aaedc7a7c4578f02ddbbd8ef64e41f72f408840c
+@@ -1,6 +1,14 @@
+ /*
+      * Returns true if this index can be supported by the current version of elasticsearch
+      */
+ private static boolean isSupportedVersion(IndexMetaData indexMetaData) {
+-    return indexMetaData.minimumCompatibleVersion() != null && indexMetaData.minimumCompatibleVersion().luceneVersion.onOrAfter(Version.V_0_90_0_Beta1.luceneVersion);
++    if (indexMetaData.creationVersion().onOrAfter(Version.V_0_90_0_Beta1)) {
++        // The index was created with elasticsearch that was using Lucene 4.0
++        return true;
++    }
++    if (indexMetaData.getMinimumCompatibleVersion() != null && indexMetaData.getMinimumCompatibleVersion().onOrAfter(org.apache.lucene.util.Version.LUCENE_4_0_0)) {
++        // The index was upgraded we can work with it
++        return true;
++    }
++    return false;
+ }
+\ No newline at end of file

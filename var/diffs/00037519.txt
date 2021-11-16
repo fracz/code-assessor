@@ -1,0 +1,18 @@
+diff --git a/dba8fdec7a097580d19d1778888bfbdf7e2a17f9 b/2fa5e1fd563778a66a3db4fcd8854d08fe440bcb
+index dba8fdec7a..2fa5e1fd56 100644
+--- a/dba8fdec7a097580d19d1778888bfbdf7e2a17f9
++++ b/2fa5e1fd563778a66a3db4fcd8854d08fe440bcb
+@@ -1,9 +1,10 @@
+ public void addServiceType(ServiceType serviceType) {
+     if (serviceType == null) {
+         throw new NullPointerException("serviceType must not be null");
+     }
+-    final ServiceType exist = this.buildMap.put(serviceType.getCode(), serviceType);
++    int code = serviceType.getCode();
++    final ServiceType exist = this.buildMap.put(code, serviceType);
+     if (exist != null) {
+-        throw new IllegalStateException("already exist.");
++        throw new IllegalStateException("already exist. serviceType:" + serviceType + ", exist:" + exist);
+     }
+ }
+\ No newline at end of file

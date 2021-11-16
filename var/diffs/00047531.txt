@@ -1,0 +1,18 @@
+diff --git a/1e53a0e13dac12e47826c0567f144a0063b602ad b/3f7056784e8610af5a5fb0902650c1df223fd800
+index 1e53a0e13d..3f7056784e 100644
+--- a/1e53a0e13dac12e47826c0567f144a0063b602ad
++++ b/3f7056784e8610af5a5fb0902650c1df223fd800
+@@ -1,11 +1,11 @@
+ @Test
+ public void testKeysIterablePattern() {
+     redisson.getBucket("test1").set("someValue");
+     redisson.getBucket("test2").set("someValue");
+     redisson.getBucket("test12").set("someValue");
+     Iterator<String> iterator = redisson.getKeys().getKeysByPattern("test?").iterator();
+     for (; iterator.hasNext(); ) {
+         String key = iterator.next();
+-        MatcherAssert.assertThat(key, Matchers.isOneOf("test1", "test2"));
++        assertThat(key).isIn("test1", "test2");
+     }
+ }
+\ No newline at end of file

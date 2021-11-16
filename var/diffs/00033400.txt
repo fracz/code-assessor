@@ -1,0 +1,10 @@
+diff --git a/cbf70bda84b857705f8920c8ea595a5bc5a93d12 b/602bc6dbbc3dc38021db5a8e9245477a4efe29b0
+index cbf70bda84..602bc6dbbc 100644
+--- a/cbf70bda84b857705f8920c8ea595a5bc5a93d12
++++ b/602bc6dbbc3dc38021db5a8e9245477a4efe29b0
+@@ -1,3 +1,3 @@
+ protected Daemon createDaemon() {
+-    return new Daemon(new DaemonTcpServerConnector(get(ExecutorFactory.class), get(MessagingServices.class).get(InetAddressFactory.class)), get(DaemonRegistry.class), get(DaemonContext.class), "password", new StopHandlingCommandExecuter(new DefaultDaemonCommandExecuter(new InProcessBuildActionExecuter(get(GradleLauncherFactory.class)), get(ProcessEnvironment.class), loggingManager, getDaemonLogFile(), new DaemonHygieneAction())), get(ExecutorFactory.class));
++    return new Daemon(new DaemonTcpServerConnector(get(ExecutorFactory.class), get(MessagingServices.class).get(InetAddressFactory.class)), get(DaemonRegistry.class), get(DaemonContext.class), "password", new StopHandlingCommandExecuter(new DefaultDaemonCommandExecuter(new InProcessBuildActionExecuter(get(GradleLauncherFactory.class)), get(ProcessEnvironment.class), loggingManager, getDaemonLogFile(), get(DaemonHygieneAction.class))), get(ExecutorFactory.class));
+ }
+\ No newline at end of file

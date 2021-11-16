@@ -1,0 +1,16 @@
+diff --git a/16534785230e8f8aaafc12b18a3cc2a67d84d3e3 b/22474e9f6fbc97e1ef67ecd89a4181e2336ee4bc
+index 1653478523..22474e9f6f 100644
+--- a/16534785230e8f8aaafc12b18a3cc2a67d84d3e3
++++ b/22474e9f6fbc97e1ef67ecd89a4181e2336ee4bc
+@@ -1,9 +1,9 @@
+ @Override
+ public void begin(ChangeSet c) throws StopVisitingException {
+     if (isBeforeMyChange(c, false))
+         stop();
+     if (!isInTheChain(c))
+         return;
+-    result[0] = LocalHistoryBundle.message("revert.message.should.revert.sequential.changes");
++    result.add(LocalHistoryBundle.message("revert.message.have.sequential.changes"));
+     stop();
+ }
+\ No newline at end of file

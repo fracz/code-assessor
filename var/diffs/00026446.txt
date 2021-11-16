@@ -1,0 +1,21 @@
+diff --git a/2a6bfe9aa998e52f13f7f3c0819c9d8f9d586edb b/4e613e19f76e10942187d2aee92bdf7019af349c
+index 2a6bfe9aa9..4e613e19f7 100644
+--- a/2a6bfe9aa998e52f13f7f3c0819c9d8f9d586edb
++++ b/4e613e19f76e10942187d2aee92bdf7019af349c
+@@ -1,13 +1,12 @@
+ /**
+  * Add a new object to the bag for others to borrow.
+  *
+  * @param bagEntry an object to add to the bag
+  */
+ public void add(final T bagEntry) {
+     if (closed) {
+         throw new IllegalStateException("ConcurrentBag has been closed, ignoring add()");
+-    } else {
+-        sharedList.add(bagEntry);
+-        synchronizer.releaseShared(sequence.incrementAndGet());
+     }
++    sharedList.add(bagEntry);
++    synchronizer.releaseShared(sequence.incrementAndGet());
+ }
+\ No newline at end of file

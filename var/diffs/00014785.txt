@@ -1,0 +1,19 @@
+diff --git a/40ee622456f8f8629c15e7ec32dbe28adbef7b1d b/9fd217ca75c6db5c3aef43042e7ef90cd408634a
+index 40ee622456..9fd217ca75 100644
+--- a/40ee622456f8f8629c15e7ec32dbe28adbef7b1d
++++ b/9fd217ca75c6db5c3aef43042e7ef90cd408634a
+@@ -1,9 +1,9 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiMethod method = PsiTreeUtil.getParentOfType(location, PsiMethod.class);
+-    assert method != null;
+-    if (method.isConstructor()) {
++@NotNull
++public String buildErrorString(Object... infos) {
++    final boolean isConstructor = ((Boolean) infos[0]).booleanValue();
++    if (isConstructor) {
+         return InspectionGadgetsBundle.message("unnecessary.return.problem.descriptor");
+     } else {
+         return InspectionGadgetsBundle.message("unnecessary.return.problem.descriptor1");
+     }
+ }
+\ No newline at end of file

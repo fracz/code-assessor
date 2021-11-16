@@ -1,0 +1,22 @@
+diff --git a/065fad3ac0aad46c1daaaa9e84faaa56ca98a78b b/11c275bdf1770dee9d77a56f6a2c9da0ce46a6e9
+index 065fad3ac0..11c275bdf1 100644
+--- a/065fad3ac0aad46c1daaaa9e84faaa56ca98a78b
++++ b/11c275bdf1770dee9d77a56f6a2c9da0ce46a6e9
+@@ -1,15 +1,14 @@
+ @Override
+ public void onDataAvailable(DataEmitter emitter, ByteBufferList bb) {
+     while (bb.remaining() > 0) {
+         byte b = bb.get();
+         if (b == '\n') {
+             Assert.assertNotNull(mLineCallback);
+             mLineCallback.onStringAvailable(data.toString());
+-            if (emitter.getDataCallback() != this)
+-                return;
+             data = new StringBuilder();
++            return;
+         } else {
+             data.append((char) b);
+         }
+     }
+ }
+\ No newline at end of file

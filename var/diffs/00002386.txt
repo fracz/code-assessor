@@ -1,0 +1,18 @@
+diff --git a/bba567b1610d8118901b6b618aaecaf8e36d77c9 b/6ddb365911544b7158477f887fe9fbc845071efb
+index bba567b161..6ddb365911 100644
+--- a/bba567b1610d8118901b6b618aaecaf8e36d77c9
++++ b/6ddb365911544b7158477f887fe9fbc845071efb
+@@ -1,8 +1,8 @@
+ @Nullable
+ public VirtualFile getVf() {
+-    if (myVf != null) {
+-        return myVf;
++    if (myVf == null) {
++        final VirtualFile file = VfsUtil.findFileByIoFile(new File(myPath), true);
++        myVf = (file != null) && (!file.isDirectory()) ? file : null;
+     }
+-    final VirtualFile file = LocalFileSystem.getInstance().refreshAndFindFileByPath(myPath);
+-    return (file != null) && (!file.isDirectory()) ? file : null;
++    return myVf;
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/7eeef514bcb8ed995af932b010e95b7d91269fec b/8b3f304dffa00a59b054d770fd25c59d6bdf8fc9
+index 7eeef514bc..8b3f304dff 100644
+--- a/7eeef514bcb8ed995af932b010e95b7d91269fec
++++ b/8b3f304dffa00a59b054d770fd25c59d6bdf8fc9
+@@ -1,14 +1,14 @@
+ @Override
+ protected ActionGroup getActionGroup(boolean inToolbar) {
+     DefaultActionGroup actionGroup = new DefaultActionGroup();
+     actionGroup.add(new RefreshAction());
+     if (inToolbar) {
+         actionGroup.add(new MyFilterRepositoryAction());
+         actionGroup.add(new MyFilterCategoryAction());
+     } else {
+-        actionGroup.add(new SortByStatusAction("Sort Installed First"));
++        actionGroup.add(createSortersGroup());
+         actionGroup.add(Separator.getInstance());
+         actionGroup.add(new ActionInstallPlugin(getAvailable(), getInstalled()));
+     }
+     return actionGroup;
+ }
+\ No newline at end of file

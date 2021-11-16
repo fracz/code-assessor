@@ -1,0 +1,18 @@
+diff --git a/1e36dad5d4ee0d2d906698117b560178743a4cce b/f08a9a8ec46cf579e46ba5b3f412250ad6056111
+index 1e36dad5d4..f08a9a8ec4 100644
+--- a/1e36dad5d4ee0d2d906698117b560178743a4cce
++++ b/f08a9a8ec46cf579e46ba5b3f412250ad6056111
+@@ -1,11 +1,9 @@
+ @Before
+ public void setRouteRuleContext() throws SQLException {
+     ShardingRuleConfiguration shardingRuleConfig = new ShardingRuleConfiguration();
+-    HintShardingStrategyConfiguration databaseShardingStrategyConfig = new HintShardingStrategyConfiguration();
+-    databaseShardingStrategyConfig.setAlgorithmClassName(OrderDatabaseHintShardingAlgorithm.class.getName());
+-    shardingRuleConfig.setDefaultDatabaseShardingStrategyConfig(databaseShardingStrategyConfig);
++    shardingRuleConfig.setDefaultDatabaseShardingStrategyConfig(new HintShardingStrategyConfiguration(OrderDatabaseHintShardingAlgorithm.class.getName()));
+     Map<String, DataSource> dataSourceMap = new HashMap<>();
+     dataSourceMap.put("ds_0", null);
+     dataSourceMap.put("ds_1", null);
+     shardingRule = shardingRuleConfig.build(dataSourceMap);
+ }
+\ No newline at end of file

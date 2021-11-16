@@ -1,0 +1,13 @@
+diff --git a/4c34df86b142a0d5c0ce0c0996bc02a2343ecd03 b/f429aaf37c52f8c5ce09c19c026f07538be4f6c4
+index 4c34df86b1..f429aaf37c 100644
+--- a/4c34df86b142a0d5c0ce0c0996bc02a2343ecd03
++++ b/f429aaf37c52f8c5ce09c19c026f07538be4f6c4
+@@ -1,3 +1,6 @@
+ public synchronized <T> T removeResource(final String iName) {
+-    return (T) sharedResources.remove(iName);
++    T resource = (T) sharedResources.remove(iName);
++    if (resource instanceof OSharedResource)
++        ((OSharedResource) resource).releaseExclusiveLock();
++    return resource;
+ }
+\ No newline at end of file

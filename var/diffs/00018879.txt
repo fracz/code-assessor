@@ -1,0 +1,23 @@
+diff --git a/3090983893e1d215a1118bc041e0ceaeefaf1149 b/c1c92b9cdeb786bfd0a481368b5bdb21915bd7cf
+index 3090983893..c1c92b9cde 100644
+--- a/3090983893e1d215a1118bc041e0ceaeefaf1149
++++ b/c1c92b9cdeb786bfd0a481368b5bdb21915bd7cf
+@@ -1,12 +1,8 @@
+-private String assembleMessageFragments(TextMessage[] messages) {
+-    StringBuilder body = new StringBuilder();
+-    for (TextMessage message : messages) {
+-        body.append(message.getMessage());
+-    }
+-    String messageBody = body.toString();
+-    if (WirePrefix.isEncryptedMessage(messageBody) || WirePrefix.isKeyExchange(messageBody)) {
+-        return assembleSecureMessageFragments(messages[0].getSender(), messageBody);
++private IncomingTextMessage assembleMessageFragments(List<IncomingTextMessage> messages) {
++    IncomingTextMessage message = new IncomingTextMessage(messages);
++    if (WirePrefix.isEncryptedMessage(message.getMessageBody()) || WirePrefix.isKeyExchange(message.getMessageBody())) {
++        return multipartMessageHandler.processPotentialMultipartMessage(message);
+     } else {
+-        return messageBody;
++        return message;
+     }
+ }
+\ No newline at end of file

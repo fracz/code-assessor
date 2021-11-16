@@ -1,0 +1,22 @@
+diff --git a/1f36c55d84bdfc918051806f905808cf8f5bc8f5 b/a473b0daf915678d6507f03624faf7fcea28b937
+index 1f36c55d84..a473b0daf9 100644
+--- a/1f36c55d84bdfc918051806f905808cf8f5bc8f5
++++ b/a473b0daf915678d6507f03624faf7fcea28b937
+@@ -1,15 +1,15 @@
+ public EurekaClient getClient() {
+     if (client == null) {
+         try {
+-            ApplicationInfoManager applicationInfoManager = createApplicationManager();
++            applicationInfoManager = createApplicationManager();
+             EurekaClientConfig clientConfig = createEurekaClientConfig();
+             DiscoveryClientOptionalArgs optionalArgs = new DiscoveryClientOptionalArgs();
+             eventBus = new EventBusImpl();
+             optionalArgs.setEventBus(eventBus);
+             client = new DiscoveryClient(applicationInfoManager, clientConfig, optionalArgs);
+         } catch (Exception e) {
+             throw new RuntimeException(e);
+         }
+     }
+     return client;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/addb9f6412d4f0f99d01dc6a12c3680bdfe76b58 b/e05002bd1c62cc85b96792a7597199ff7514f330
+index addb9f6412..e05002bd1c 100644
+--- a/addb9f6412d4f0f99d01dc6a12c3680bdfe76b58
++++ b/e05002bd1c62cc85b96792a7597199ff7514f330
+@@ -1,5 +1,9 @@
+ @Override
+ public void propertyChange(PropertyChangeEvent evt) {
++    // when user starts edit we need to force disable ok actions, because tree.isEditing() still false;
++    // after editing completed okActions will be enabled automatically by dialog validation
+     Boolean isEditMode = (Boolean) evt.getNewValue();
+-    myDialog.enableOkActions(!isEditMode && isPushAllowed());
++    if (isEditMode) {
++        myDialog.disableOkActions();
++    }
+ }
+\ No newline at end of file

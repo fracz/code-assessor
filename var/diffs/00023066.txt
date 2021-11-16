@@ -1,0 +1,17 @@
+diff --git a/cf2bd685af997e4d492e4bc56a54cbe3d784e63e b/b83ca2b6117329f2b858ae37d37772f45524c08f
+index cf2bd685af..b83ca2b611 100644
+--- a/cf2bd685af997e4d492e4bc56a54cbe3d784e63e
++++ b/b83ca2b6117329f2b858ae37d37772f45524c08f
+@@ -1,9 +1,3 @@
+-/* package */
+-synchronized boolean updateRemoteDevicePropertiesCache(String address) {
+-    String[] propValues = getRemoteDeviceProperties(address);
+-    if (propValues != null) {
+-        addRemoteDeviceProperties(address, propValues);
+-        return true;
+-    }
+-    return false;
++void updateRemoteDevicePropertiesCache(String address) {
++    mDeviceProperties.updateCache(address);
+ }
+\ No newline at end of file

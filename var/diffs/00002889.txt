@@ -1,0 +1,11 @@
+diff --git a/276586b0efe5b80855888f62cecc30112f80e32c b/4c6c1745269acc1faac4e4e65cae9950cdfbb296
+index 276586b0ef..4c6c174526 100644
+--- a/276586b0efe5b80855888f62cecc30112f80e32c
++++ b/4c6c1745269acc1faac4e4e65cae9950cdfbb296
+@@ -1,4 +1,4 @@
+ public void update(AnActionEvent e) {
+     super.update(e);
+-    e.getPresentation().setEnabled(!ActionMacroManager.getInstance().isPlaying() && e.getDataContext().getData(DataConstants.EDITOR) != null);
++    e.getPresentation().setEnabled(!getInstance().isPlaying() && PlatformDataKeys.EDITOR.getData(e.getDataContext()) != null);
+ }
+\ No newline at end of file

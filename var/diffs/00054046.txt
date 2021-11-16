@@ -1,0 +1,23 @@
+diff --git a/9d0e72f4b35313b5e0603ee9f34d3ee03730a97c b/6c60b6282400e9c4f48c9f62595127b68e50242d
+index 9d0e72f4b3..6c60b62824 100644
+--- a/9d0e72f4b35313b5e0603ee9f34d3ee03730a97c
++++ b/6c60b6282400e9c4f48c9f62595127b68e50242d
+@@ -1,16 +1,14 @@
+ @Override
+ protected void parseJoinTable() {
+-    if (getLexer().equalToken(Token.HINT)) {
+-        getLexer().nextToken();
+-    }
++    getLexer().skipIfEqual(Token.HINT);
+     if (parseJoinType()) {
+         parseTableSource();
+         if (getLexer().equalToken(Token.ON)) {
+             getLexer().nextToken();
+             getExprParser().expr();
+         } else if (getLexer().skipIfEqual(Token.USING)) {
+             getLexer().skipParentheses();
+         }
+         parseJoinTable();
+     }
+ }
+\ No newline at end of file

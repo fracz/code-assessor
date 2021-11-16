@@ -1,0 +1,14 @@
+diff --git a/6e32e882b3af042d1947b22abd55af6098fbbcc0 b/f1a60c1c17ce8b3fdc6b97e572a77d60b055fda6
+index 6e32e882b3..f1a60c1c17 100644
+--- a/6e32e882b3af042d1947b22abd55af6098fbbcc0
++++ b/f1a60c1c17ce8b3fdc6b97e572a77d60b055fda6
+@@ -1,3 +1,7 @@
+ public FlushStats getFlushStats() {
+-    return flushStats();
++    FlushStats flushStats = new FlushStats();
++    for (IndexShardStatus shard : this) {
++        flushStats.add(shard.getFlushStats());
++    }
++    return flushStats;
+ }
+\ No newline at end of file

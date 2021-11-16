@@ -1,0 +1,17 @@
+diff --git a/37eab7628c6aae3b5e4207e34d1e21d62736fcf1 b/cde34d0cc46a7d99e5146891b7aae9d403726a51
+index 37eab7628c..cde34d0cc4 100644
+--- a/37eab7628c6aae3b5e4207e34d1e21d62736fcf1
++++ b/cde34d0cc46a7d99e5146891b7aae9d403726a51
+@@ -1,9 +1,9 @@
+ @AfterMethod
+ public void TearDown() {
++    // remove mock to clean command container
++    SUT.removeCommand(TEST_COMMAND_NAME);
+     SUT = null;
+     request = null;
+     response = null;
+     command = null;
+-    // remove mock to clean command container
+-    GridworksServletStub.RemoveCommand(TEST_COMMAND_NAME);
+ }
+\ No newline at end of file

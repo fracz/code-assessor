@@ -1,0 +1,25 @@
+diff --git a/a01a7978a6799512c4940fd9b64ab007a60cc923 b/be002dee4ac600d9c17eea61f6daf4dde58868a1
+index a01a7978a6..be002dee4a 100644
+--- a/a01a7978a6799512c4940fd9b64ab007a60cc923
++++ b/be002dee4ac600d9c17eea61f6daf4dde58868a1
+@@ -1,17 +1,17 @@
+ private void showCatalogTables() {
+     LoadingJob.createService(new DatabaseLoadService<Collection<MySQLTableBase>>(MySQLMessages.editors_user_editor_privileges_service_load_tables, getExecutionContext()) {
+
+         @Override
+-        public Collection<MySQLTableBase> evaluate() throws InvocationTargetException, InterruptedException {
++        public Collection<MySQLTableBase> evaluate(DBRProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+             if (selectedCatalog == null) {
+                 return Collections.emptyList();
+             }
+             try {
+-                return selectedCatalog.getTableCache().getAllObjects(getProgressMonitor(), selectedCatalog);
++                return selectedCatalog.getTableCache().getAllObjects(monitor, selectedCatalog);
+             } catch (DBException e) {
+                 log.error(e);
+             }
+             return null;
+         }
+     }, pageControl.createTablesLoadVisualizer()).schedule();
+ }
+\ No newline at end of file

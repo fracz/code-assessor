@@ -1,0 +1,13 @@
+diff --git a/0dbb17155851a01358a28c98004c5fd2b2dca20c b/ab96475441e44f845b6217c31fe8b99d0d36ee96
+index 0dbb171558..ab96475441 100644
+--- a/0dbb17155851a01358a28c98004c5fd2b2dca20c
++++ b/ab96475441e44f845b6217c31fe8b99d0d36ee96
+@@ -1,4 +1,6 @@
+ public void setTextInField(final String text) {
+     mySearchField.setText(text);
+-    updateResults(true);
++    if (!StringUtil.isEmpty(text)) {
++        myFindModel.setStringToFind(text);
++    }
+ }
+\ No newline at end of file

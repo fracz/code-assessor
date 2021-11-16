@@ -1,0 +1,16 @@
+diff --git a/4fdb7d067fad5ac83e9ac66fbb5851216d906cdd b/726495db767ed5648878118833ccc8de5b1872f3
+index 4fdb7d067f..726495db76 100644
+--- a/4fdb7d067fad5ac83e9ac66fbb5851216d906cdd
++++ b/726495db767ed5648878118833ccc8de5b1872f3
+@@ -1,9 +1,9 @@
+ public static void pushLongLongMap(TLongLongHashMap map) {
+     Queue<TLongLongHashMap> ref = longLongHashMap.get();
+     if (ref == null) {
+-        ref = new LinkedTransferQueue<TLongLongHashMap>();
++        ref = ConcurrentCollections.newQueue();
+         longLongHashMap.set(ref);
+     }
+     map.clear();
+     ref.add(map);
+ }
+\ No newline at end of file

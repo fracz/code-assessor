@@ -1,0 +1,20 @@
+diff --git a/145762fae2859b11b5fd1e3e7230618bff415dfb b/9edb6d981cf803e66f9672329aa0fee1665990bb
+index 145762fae2..9edb6d981c 100644
+--- a/145762fae2859b11b5fd1e3e7230618bff415dfb
++++ b/9edb6d981cf803e66f9672329aa0fee1665990bb
+@@ -1,11 +1,11 @@
+ /**
+  * Removes all {@link Crouton}s from the queue.
+  */
+ void clearCroutonQueue() {
+-    if (croutonQueue != null) {
+-        croutonQueue.clear();
+-    }
+     removeMessages(MESSAGE_DISPLAY_CROUTON);
+     removeMessages(MESSAGE_ADD_CROUTON_TO_VIEW);
+     removeMessages(MESSAGE_REMOVE_CROUTON);
++    if (croutonQueue != null) {
++        croutonQueue.clear();
++    }
+ }
+\ No newline at end of file

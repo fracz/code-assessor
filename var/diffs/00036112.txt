@@ -1,0 +1,24 @@
+diff --git a/749fceb8ea0e6c903e278a848de785bd944f6e4b b/0f21ae5a38e1f04cb3af0d03c917b548e79b3919
+index 749fceb8ea..0f21ae5a38 100644
+--- a/749fceb8ea0e6c903e278a848de785bd944f6e4b
++++ b/0f21ae5a38e1f04cb3af0d03c917b548e79b3919
+@@ -1,12 +1,8 @@
+ public void verify(InvocationMatcher wanted, OngoingVerifyingMode mode) {
+-    // get unverified invocation chunk and run following verifiers:
+-    // chunks can be empty, can have invocations from different mocks or
+-    // have invocations only from one mock (not strict verification
+-    // scenario)
+-    // new MissingInvocationVerifier(),
+-    // new NumberOfInvocationsVerifier()
+-    new OrderOfInvocationsVerifier().verify(registeredInvocations, wanted, mode);
+-    new MissingInvocationVerifier().verify(registeredInvocations, wanted, mode);
+-    new NumberOfInvocationsVerifier().verify(registeredInvocations, wanted, mode);
+-    registeredInvocations.markInvocationsAsVerified(wanted, mode);
++    List<Invocation> invocations = getInvocationsForEvaluation(mode);
++    InvocationsCalculator calculator = new InvocationsCalculatorImpl(invocations);
++    for (Verifier verifier : verifiers) {
++        verifier.verify(calculator, wanted, mode);
++    }
++    marker.markInvocationsAsVerified(invocations, wanted, mode);
+ }
+\ No newline at end of file

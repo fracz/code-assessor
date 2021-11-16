@@ -1,0 +1,12 @@
+diff --git a/9115539b486e51801c0fbea8de8183176622eea3 b/c144c17ecb533bdf272a6bc74dbc84caf6a99125
+index 9115539b48..c144c17ecb 100644
+--- a/9115539b486e51801c0fbea8de8183176622eea3
++++ b/c144c17ecb533bdf272a6bc74dbc84caf6a99125
+@@ -1,5 +1,4 @@
+ @Nullable
+ public ClassDescriptor getDeprecationLevelEnumEntry(@NotNull DeprecationLevel level) {
+-    ClassifierDescriptor result = getDeprecationLevelEnum().getUnsubstitutedInnerClassesScope().getContributedClassifier(Name.identifier(level.name()), NoLookupLocation.FROM_BUILTINS);
+-    return result instanceof ClassDescriptor ? (ClassDescriptor) result : null;
++    return getEnumEntry(getDeprecationLevelEnum(), level.name());
+ }
+\ No newline at end of file

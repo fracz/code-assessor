@@ -1,0 +1,12 @@
+diff --git a/6f02df283c0fecfe6cb4b82122d8432185149a48 b/480cd5de3e04ae996171ddc1f6839a863c1075c9
+index 6f02df283c..480cd5de3e 100644
+--- a/6f02df283c0fecfe6cb4b82122d8432185149a48
++++ b/480cd5de3e04ae996171ddc1f6839a863c1075c9
+@@ -1,5 +1,5 @@
+ public PropertyKey makeVertexIndexedUniqueKey(String name, Class datatype) {
+     PropertyKey key = mgmt.makePropertyKey(name).dataType(datatype).cardinality(Cardinality.SINGLE).make();
+-    mgmt.createInternalIndex(name, Vertex.class, true, key);
++    mgmt.buildIndex(name, Vertex.class).indexKey(key).unique().buildInternalIndex();
+     return key;
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/3943bb173300e27f1b671348ba789d9b291db2e2 b/f0721ac3e04fc17b7ea6ccdc806da41461d10a7a
+index 3943bb1733..f0721ac3e0 100644
+--- a/3943bb173300e27f1b671348ba789d9b291db2e2
++++ b/f0721ac3e04fc17b7ea6ccdc806da41461d10a7a
+@@ -1,7 +1,8 @@
+ @Test
+ public void shouldCreateProfileAndPreferencesOnUserCreation() throws Exception {
+-    final User user = new User().withEmail("test@email.com").withName("testName");
++    final UserImpl user = new UserImpl(null, "test@email.com", "testName", null, null);
+     manager.create(user, false);
+-    verify(profileDao).create(any(Profile.class));
+-    verify(preferenceDao).setPreferences(anyString(), anyMapOf(String.class, String.class));
++    verify(userDao).create(any(UserImpl.class));
++    verify(profileDao).create(any(ProfileImpl.class));
++    verify(preferencesDao).setPreferences(anyString(), anyMapOf(String.class, String.class));
+ }
+\ No newline at end of file

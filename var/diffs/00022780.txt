@@ -1,0 +1,34 @@
+diff --git a/5065b6f45947dd3700dd6216b621727c0f53e3e9 b/2cc0ae5711cc42e8c75997a4db229d8c3ca8635d
+index 5065b6f459..2cc0ae5711 100644
+--- a/5065b6f45947dd3700dd6216b621727c0f53e3e9
++++ b/2cc0ae5711cc42e8c75997a4db229d8c3ca8635d
+@@ -1,22 +1,16 @@
+ @Override
+ public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent event) {
+-    boolean populated = false;
+     // events so we change the event type here.
+     if (event.getEventType() == AccessibilityEvent.TYPE_VIEW_FOCUSED) {
+         event.setEventType(AccessibilityEvent.TYPE_VIEW_SELECTED);
+     }
+-    // we send selection events only from AdapterView to avoid
+-    // generation of such event for each child
++    // We first get a chance to populate the event.
++    onPopulateAccessibilityEvent(event);
++    // We send selection events only from AdapterView to avoid
++    // generation of such event for each child.
+     View selectedView = getSelectedView();
+     if (selectedView != null) {
+-        populated = selectedView.dispatchPopulateAccessibilityEvent(event);
++        return selectedView.dispatchPopulateAccessibilityEvent(event);
+     }
+-    if (!populated) {
+-        if (selectedView != null) {
+-            event.setEnabled(selectedView.isEnabled());
+-        }
+-        event.setItemCount(getCount());
+-        event.setCurrentItemIndex(getSelectedItemPosition());
+-    }
+-    return populated;
++    return false;
+ }
+\ No newline at end of file

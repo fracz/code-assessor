@@ -1,0 +1,20 @@
+diff --git a/8e16a8bca21ae09c16be53dde11ca4c0dd5ab34e b/75f393b97a876715490c10fa49a3eaee8aaeb9fd
+index 8e16a8bca2..75f393b97a 100644
+--- a/8e16a8bca21ae09c16be53dde11ca4c0dd5ab34e
++++ b/75f393b97a876715490c10fa49a3eaee8aaeb9fd
+@@ -1,11 +1,11 @@
+ @Override
+-protected void doAction(@NotNull String text, boolean actionShouldBeAvailable, String testFullPath, String testName) throws Exception {
++protected void doAction(@NotNull ActionHint actionHint, String testFullPath, String testName) throws Exception {
+     TemplateManagerImpl.setTemplateTesting(getProject(), getTestRootDisposable());
+-    super.doAction(text, actionShouldBeAvailable, testFullPath, testName);
+-    if (actionShouldBeAvailable) {
++    super.doAction(actionHint, testFullPath, testName);
++    if (actionHint.shouldPresent()) {
+         TemplateState state = TemplateManagerImpl.getTemplateState(getEditor());
+         if (state != null) {
+             state.gotoEnd(false);
+         }
+     }
+ }
+\ No newline at end of file

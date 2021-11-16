@@ -1,0 +1,17 @@
+diff --git a/b85064c0e2db0f926c8a1b771071f3910dfae6d3 b/5f4bf498296ed3afb78470981812c2452c5bd4e6
+index b85064c0e2..5f4bf49829 100644
+--- a/b85064c0e2db0f926c8a1b771071f3910dfae6d3
++++ b/5f4bf498296ed3afb78470981812c2452c5bd4e6
+@@ -1,5 +1,5 @@
+-/**
+- * Creates the expected lucene query given the current {@link QueryBuilder} and {@link QueryParseContext}.
+- * The returned query will be compared with the result of {@link QueryBuilder#toQuery(QueryParseContext)} to test its behaviour.
+- */
+-protected abstract Query createExpectedQuery(QB queryBuilder, QueryParseContext context) throws IOException;
+\ No newline at end of file
++protected final Query createExpectedQuery(QB queryBuilder, QueryParseContext context) throws IOException {
++    Query expectedQuery = doCreateExpectedQuery(queryBuilder, context);
++    expectedQuery.setBoost(queryBuilder.boost());
++    return expectedQuery;
++}
+\ No newline at end of file

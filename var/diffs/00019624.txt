@@ -1,0 +1,16 @@
+diff --git a/22a05630a5aa601156f3d5b30b40e6839e433809 b/18610e9b7d97031bc141bec34ba06e640b9e8acb
+index 22a05630a5..18610e9b7d 100644
+--- a/22a05630a5aa601156f3d5b30b40e6839e433809
++++ b/18610e9b7d97031bc141bec34ba06e640b9e8acb
+@@ -1,6 +1,9 @@
+-private void readEofPacket() throws IOException {
++private boolean readEofPacket() throws IOException {
+     byte[] eofBody = readNextPacket();
++    EOFPacket packet = new EOFPacket();
++    packet.fromBytes(eofBody);
+     if (eofBody[0] != -2) {
+         throw new IOException("EOF Packet is expected, but packet with field_count=" + eofBody[0] + " is found.");
+     }
++    return (packet.statusFlag & 0x0008) != 0;
+ }
+\ No newline at end of file

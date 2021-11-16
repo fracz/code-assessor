@@ -1,0 +1,12 @@
+diff --git a/84570d51e0d795407c531a8cf9ecb07d0b300c3f b/22e02d464306582797fea5c7771469dc16d40634
+index 84570d51e0..22e02d4643 100644
+--- a/84570d51e0d795407c531a8cf9ecb07d0b300c3f
++++ b/22e02d464306582797fea5c7771469dc16d40634
+@@ -1,4 +1,4 @@
+ @Override
+-public void visitIndexStatistics(int labelId, int propertyKeyId, long updates, long size) {
+-    records.add(Pair.of(CountsKeyFactory.indexStatisticsKey(labelId, propertyKeyId), size));
++public void visitIndexStatistics(IndexDescriptor index, long updates, long size) {
++    records.add(Pair.of(CountsKeyFactory.indexStatisticsKey(index), size));
+ }
+\ No newline at end of file

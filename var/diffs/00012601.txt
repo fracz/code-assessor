@@ -1,0 +1,21 @@
+diff --git a/89ebe38b91fbce2a6b50a117e33d7bc65f861e33 b/5bb7e10b255b4dcb1ec6de2f211ec266431a54f1
+index 89ebe38b91..5bb7e10b25 100644
+--- a/89ebe38b91fbce2a6b50a117e33d7bc65f861e33
++++ b/5bb7e10b255b4dcb1ec6de2f211ec266431a54f1
+@@ -1,11 +1,7 @@
+ public boolean isReferenceTo(PsiElement element) {
+-    if (!isTargetAccepted(element))
++    if (!(element instanceof PsiFileSystemItem))
+         return false;
+-    final PsiElement resolveResult = resolve();
+-    for (final FileReferenceHelper helper : FileReferenceHelperRegistrar.getHelpers()) {
+-        if (helper.isReferenceTo(element, resolveResult)) {
+-            return true;
+-        }
+-    }
+-    return false;
++    final PsiFileSystemItem resolveResult = resolve();
++    final PsiManager manager = element.getManager();
++    return element instanceof PsiDirectory && manager.areElementsEquivalent(element, getPsiDirectory(resolveResult)) || manager.areElementsEquivalent(element, resolveResult);
+ }
+\ No newline at end of file

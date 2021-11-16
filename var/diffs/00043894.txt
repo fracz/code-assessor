@@ -1,0 +1,13 @@
+diff --git a/d0b924a5627ac5a2b17443d768bcc091acad958c b/771861461c2f39e1b0ff05749e5114b613f9fc5a
+index d0b924a562..771861461c 100644
+--- a/d0b924a5627ac5a2b17443d768bcc091acad958c
++++ b/771861461c2f39e1b0ff05749e5114b613f9fc5a
+@@ -1,6 +1,6 @@
+ @AfterMethod
+ public void afterMethod() throws Exception {
+     database.command(new OCommandSQL("delete from Mapper")).execute();
+     database.command(new OCommandSQL("delete from MapIndexTestMovie")).execute();
+-    database.close();
++    super.afterMethod();
+ }
+\ No newline at end of file

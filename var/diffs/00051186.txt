@@ -1,0 +1,27 @@
+diff --git a/f98f5fe56dc67013b989716a62c9c061242b4cbd b/7d12b2b1e273c910fe27bb67c7d3c7e38a9aafba
+index f98f5fe56d..7d12b2b1e2 100644
+--- a/f98f5fe56dc67013b989716a62c9c061242b4cbd
++++ b/7d12b2b1e273c910fe27bb67c7d3c7e38a9aafba
+@@ -1,16 +1,13 @@
+ @Override
+ public void refresh() {
+-    Tree table = attributeList.getTree();
++    if (attributeList.isLoading()) {
++        return;
++    }
++    Control table = attributeList.getControl();
+     table.setRedraw(false);
+     try {
+-        attributeList.setInput(presentation.getController().getModel().getVisibleAttributes());
+-        attributeList.expandAll();
+-        for (TreeColumn column : table.getColumns()) {
+-            column.pack();
+-        }
+-    // UIUtils.packColumns(table, false);
+-    // this.attrController.repackColumns();
++        attributeList.loadData();
+     } finally {
+         table.setRedraw(true);
+     }
+ }
+\ No newline at end of file

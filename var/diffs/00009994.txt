@@ -1,0 +1,18 @@
+diff --git a/cc35b6ffdf166714d9e818b451bbc08f600daa50 b/ff3083a48453eb1fdbea4a8d5c99c3659213028c
+index cc35b6ffdf..ff3083a484 100644
+--- a/cc35b6ffdf166714d9e818b451bbc08f600daa50
++++ b/ff3083a48453eb1fdbea4a8d5c99c3659213028c
+@@ -1,9 +1,11 @@
+ public static HighlightInfo checkEnumMustNotBeLocal(final PsiClass aClass) {
+     if (!aClass.isEnum())
+         return null;
+     PsiElement parent = aClass.getParent();
+     if (!(parent instanceof PsiClass || parent instanceof PsiFile)) {
+-        return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, HighlightNamesUtil.getClassDeclarationTextRange(aClass), JavaErrorMessages.message("local.enum"));
++        String description = JavaErrorMessages.message("local.enum");
++        TextRange textRange = HighlightNamesUtil.getClassDeclarationTextRange(aClass);
++        return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(textRange).descriptionAndTooltip(description).create();
+     }
+     return null;
+ }
+\ No newline at end of file

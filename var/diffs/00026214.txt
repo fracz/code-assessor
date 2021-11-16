@@ -1,0 +1,14 @@
+diff --git a/96508e4da48adc144dc3a3a0492a7fa50d39fe2c b/0e1f4db61118241f6eefc24609ed15fa2acd2d2f
+index 96508e4da4..0e1f4db611 100644
+--- a/96508e4da48adc144dc3a3a0492a7fa50d39fe2c
++++ b/0e1f4db61118241f6eefc24609ed15fa2acd2d2f
+@@ -1,7 +1,7 @@
+ @Test
+ public void configFeatureFlagProvider_skylarkConstructor() throws Exception {
+     scratch.file("test/wrapper.bzl", "def _flag_reading_wrapper_impl(ctx):", "  pass", "flag_reading_wrapper = rule(", "  implementation = _flag_reading_wrapper_impl,", "  attrs = {'flag': attr.label()},", ")", "def _flag_propagating_wrapper_impl(ctx):", "  return struct(providers = [config_common.FeatureFlagInfo(value='hello')])", "flag_propagating_wrapper = rule(", "  implementation = _flag_propagating_wrapper_impl,", ")");
+     scratch.file("test/BUILD", "load(':wrapper.bzl', 'flag_propagating_wrapper')", "flag_propagating_wrapper(", "    name = 'propagator',", ")", "config_setting(name = 'hello_setting',", "    flag_values = {':propagator': 'hello'})", "genrule(", "    name = 'gen',", "    srcs = [],", "    outs = ['out'],", "    cmd = select({", "       ':hello_setting': 'hello',", "       '//conditions:default': 'error'", "    }))");
+-    ConfiguredAttributeMapper attributeMapper = ConfiguredAttributeMapper.of((RuleConfiguredTarget) getConfiguredTarget("//test:gen"));
++    ConfiguredAttributeMapper attributeMapper = ((RuleConfiguredTarget) getConfiguredTarget("//test:gen")).getAttributeMapper();
+     assertThat(attributeMapper.get("cmd", Type.STRING)).isEqualTo("hello");
+ }
+\ No newline at end of file

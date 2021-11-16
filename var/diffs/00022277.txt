@@ -1,0 +1,33 @@
+diff --git a/9f61016281ad1c6394134effb7244942560adae8 b/2410bb85857f3bda2992c77444e6aed6c168cb69
+index 9f61016281..2410bb8585 100644
+--- a/9f61016281ad1c6394134effb7244942560adae8
++++ b/2410bb85857f3bda2992c77444e6aed6c168cb69
+@@ -1,22 +1,23 @@
+-private void handleCreatePrinterDiscoverySession(final IPrinterDiscoverySessionObserver observer) {
++private void handleCreatePrinterDiscoverySession() {
+     throwIfDestroyed();
+     if (!isBound()) {
+         ensureBound();
+         mPendingCommands.add(new Runnable() {
+
+             @Override
+             public void run() {
+-                handleCreatePrinterDiscoverySession(observer);
++                handleCreatePrinterDiscoverySession();
+             }
+         });
+     } else {
+         if (DEBUG) {
+             Slog.i(LOG_TAG, "[user: " + mUserId + "] createPrinterDiscoverySession()");
+         }
+         try {
+-            mPrintService.createPrinterDiscoverySession(observer);
++            mPrintService.createPrinterDiscoverySession();
+         } catch (RemoteException re) {
+-            Slog.e(LOG_TAG, "Error announcing start printer dicovery.", re);
++            Slog.e(LOG_TAG, "Error creating printer dicovery session.", re);
+         }
++        mHasPrinterDiscoverySession = true;
+     }
+ }
+\ No newline at end of file

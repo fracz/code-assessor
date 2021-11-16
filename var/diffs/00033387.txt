@@ -1,0 +1,17 @@
+diff --git a/eda9434f8524b4dd54ec228206bd947241c80622 b/587710107ade2f6f37b2ba05d5dfe6ee6367759e
+index eda9434f85..587710107a 100644
+--- a/eda9434f8524b4dd54ec228206bd947241c80622
++++ b/587710107ade2f6f37b2ba05d5dfe6ee6367759e
+@@ -1,10 +1,10 @@
+ public static void create(File outputJar, final Iterable<? extends File> files) {
+     IoActions.withResource(openJarOutputStream(outputJar), new ErroringAction<ZipOutputStream>() {
+
+         @Override
+         protected void doExecute(ZipOutputStream jarOutputStream) throws Exception {
+-            processFiles(jarOutputStream, files, new byte[8192], new HashSet<String>());
++            processFiles(jarOutputStream, files, new byte[BUFFER_SIZE], new HashSet<String>());
+             jarOutputStream.finish();
+         }
+     });
+ }
+\ No newline at end of file

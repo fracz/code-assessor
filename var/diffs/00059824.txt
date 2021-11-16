@@ -1,0 +1,14 @@
+diff --git a/a082f4ce98186b5a6b735a4a07edbb9fe0442e3b b/c64bad3384b3759b5e24178634cdafa5ae62539d
+index a082f4ce98..c64bad3384 100644
+--- a/a082f4ce98186b5a6b735a4a07edbb9fe0442e3b
++++ b/c64bad3384b3759b5e24178634cdafa5ae62539d
+@@ -1,7 +1,7 @@
+ private static TitanGraph getInMemoryGraph() {
+     ModifiableConfiguration config = GraphDatabaseConfiguration.buildConfiguration();
+     config.set(GraphDatabaseConfiguration.STORAGE_BACKEND, InMemoryStoreManager.class.getCanonicalName());
+     config.set(GraphDatabaseConfiguration.IDS_FLUSH, false);
+-    config.set(GraphDatabaseConfiguration.IDAUTHORITY_WAIT_MS, 1);
++    config.set(GraphDatabaseConfiguration.IDAUTHORITY_WAIT_MS, new SimpleDuration(1L, TimeUnit.MILLISECONDS));
+     return TitanFactory.open(config);
+ }
+\ No newline at end of file

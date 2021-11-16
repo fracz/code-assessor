@@ -1,0 +1,18 @@
+diff --git a/d1de299afa523a5e7f34a8fd20fc9bdb988ebe12 b/66c1c878f5b603f927a79e077cb4b033edce2221
+index d1de299afa..66c1c878f5 100644
+--- a/d1de299afa523a5e7f34a8fd20fc9bdb988ebe12
++++ b/66c1c878f5b603f927a79e077cb4b033edce2221
+@@ -1,10 +1,9 @@
+-@Override
+-protected Map<String, String> getBucket(final String dbName, final String iBucketName) {
++public Map<String, String> getBucket(final String dbName, final String iAuthorization, final String iBucketName) {
+     ODatabaseBinary db = null;
+     // CHECK FOR IN-MEMORY DB
+     db = (ODatabaseBinary) OServerMain.server().getMemoryDatabases().get(dbName);
+     if (db != null)
+         return getBucketFromMemory(dbName, iBucketName);
+     else
+-        return getBucketFromDatabase(dbName, iBucketName);
++        return getBucketFromDatabase(dbName, iAuthorization, iBucketName);
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/7da6135d29e69d892d986b60f0a5f466e244a4ef b/0b209c098d5f9178d165f21f19f220705ed4a4a7
+index 7da6135d29..0b209c098d 100644
+--- a/7da6135d29e69d892d986b60f0a5f466e244a4ef
++++ b/0b209c098d5f9178d165f21f19f220705ed4a4a7
+@@ -1,9 +1,4 @@
+ private VirtualFile[] prepare(VirtualFile[] roots) {
+-    List<VirtualFile> found = new ArrayList<>();
+-    for (VirtualFile root : roots) {
+-        if (containsDescriptionDir(root)) {
+-            found.add(root);
+-        }
+-    }
+-    return found.size() > 0 ? VfsUtilCore.toVirtualFileArray(found) : roots;
++    VirtualFile[] found = Arrays.stream(roots).filter(this::containsDescriptionDir).toArray(VirtualFile[]::new);
++    return found.length > 0 ? found : roots;
+ }
+\ No newline at end of file

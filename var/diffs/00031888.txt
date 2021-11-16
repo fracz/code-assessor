@@ -1,0 +1,19 @@
+diff --git a/ef6fbd7c5c9ac2d4a5d903d856510a3073de0474 b/a4a7a1f69f8f3c3994b2406ea8cd3cbcae3224cf
+index ef6fbd7c5c..a4a7a1f69f 100644
+--- a/ef6fbd7c5c9ac2d4a5d903d856510a3073de0474
++++ b/a4a7a1f69f8f3c3994b2406ea8cd3cbcae3224cf
+@@ -1,8 +1,10 @@
+ // DemoPlayer.MetadataListener implementation
+ @Override
+-public void onMetadata(List<Metadata> metadata) {
++public void onMetadata(Map<String, Object> metadata) {
+     for (int i = 0; i < metadata.size(); i++) {
+-        Metadata next = metadata.get(i);
+-        Log.i(TAG, "ID3 TimedMetadata: key=" + next.key + ", value=" + next.value);
++        if (metadata.containsKey(TxxxMetadata.TYPE)) {
++            TxxxMetadata txxxMetadata = (TxxxMetadata) metadata.get(TxxxMetadata.TYPE);
++            Log.i(TAG, String.format("ID3 TimedMetadata: description=%s, value=%s", txxxMetadata.description, txxxMetadata.value));
++        }
+     }
+ }
+\ No newline at end of file

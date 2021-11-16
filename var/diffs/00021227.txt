@@ -1,0 +1,38 @@
+diff --git a/cdfa3cf91bc817a013fb733c9388035924365e16 b/cd509b138f8d01cb34b1c351eea6bc2bca5b4a06
+index cdfa3cf91b..cd509b138f 100644
+--- a/cdfa3cf91bc817a013fb733c9388035924365e16
++++ b/cd509b138f8d01cb34b1c351eea6bc2bca5b4a06
+@@ -1,25 +1,25 @@
+ private void readAfter() {
+-    JSONStreamState state = context.getState();
+-    JSONStreamState newStat = null;
++    int state = context.getState();
++    int newStat = -1;
+     switch(state) {
+         case StartObject:
+-            newStat = JSONStreamState.PropertyKey;
++            newStat = PropertyKey;
+             break;
+         case PropertyKey:
+-            newStat = JSONStreamState.PropertyValue;
++            newStat = PropertyValue;
+             break;
+         case PropertyValue:
+-            newStat = JSONStreamState.PropertyKey;
++            newStat = PropertyKey;
+             break;
+         case ArrayValue:
+             break;
+         case StartArray:
+-            newStat = JSONStreamState.ArrayValue;
++            newStat = ArrayValue;
+             break;
+         default:
+             throw new JSONException("illegal state : " + state);
+     }
+-    if (newStat != null) {
++    if (newStat != -1) {
+         context.setState(newStat);
+     }
+ }
+\ No newline at end of file

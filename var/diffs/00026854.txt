@@ -1,0 +1,22 @@
+diff --git a/c4e376264faefb27acea88974da4dd8f64931330 b/420a5145c85d55b24a5e98031fe66336c8507bec
+index c4e376264f..420a5145c8 100644
+--- a/c4e376264faefb27acea88974da4dd8f64931330
++++ b/420a5145c85d55b24a5e98031fe66336c8507bec
+@@ -1,14 +1,14 @@
+ /**
+  * Applies drop connect relative to connections.
+  * This should be used on the activation of a neural net. (Post sigmoid layer)
+  * @param input the input to apply drop connect to
+  */
+-protected void applyDropConnectIfNecessary(DoubleMatrix input) {
++protected void applyDropConnectIfNecessary(INDArray input) {
+     if (useDropConnect) {
+-        DoubleMatrix mask = binomial(valueMatrixOf(0.5, input.rows, input.columns), 1, rng);
++        INDArray mask = Sampling.binomial(NDArrays.valueArrayOf(input.rows(), input.columns(), 0.5), 1, rng);
+         input.muli(mask);
+         // apply l2 for drop connect
+         if (l2 > 0)
+             input.muli(l2);
+     }
+ }
+\ No newline at end of file

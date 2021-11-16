@@ -1,0 +1,19 @@
+diff --git a/0f750aa766c77c84c75a792642856ba8d898653e b/2cdeb7a02b68887b7c2363c1e368564603268be8
+index 0f750aa766..2cdeb7a02b 100644
+--- a/0f750aa766c77c84c75a792642856ba8d898653e
++++ b/2cdeb7a02b68887b7c2363c1e368564603268be8
+@@ -1,6 +1,9 @@
+ private void showMenu() {
+-    menu = new ItemsList(itemsProvider.getItems(), itemsProvider, RESOURCES, null);
+-    getActionHandler().ifPresent(actionHandler -> menu.setActionHandler(actionHandler));
+-    menu.setPopupPosition(getAbsoluteLeft(), getAbsoluteTop() + getOffsetHeight());
+-    menu.show();
++    final List<MenuItem> menuItems = itemsProvider.getItems();
++    if (!menuItems.isEmpty()) {
++        menu = new ItemsList(menuItems, itemsProvider, RESOURCES, null);
++        getActionHandler().ifPresent(actionHandler -> menu.setActionHandler(actionHandler));
++        menu.setPopupPosition(getAbsoluteLeft(), getAbsoluteTop() + getOffsetHeight());
++        menu.show();
++    }
+ }
+\ No newline at end of file

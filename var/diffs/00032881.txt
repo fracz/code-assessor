@@ -1,0 +1,22 @@
+diff --git a/5ddd73980325fff2c9a5d50be635f71f2f83cfff b/9481752250b5bf490da4a7da90776bc71e092a03
+index 5ddd739803..9481752250 100644
+--- a/5ddd73980325fff2c9a5d50be635f71f2f83cfff
++++ b/9481752250b5bf490da4a7da90776bc71e092a03
+@@ -1,14 +1,14 @@
+ private void putBinding(BindingImpl<?> binding) {
+     Key<?> key = binding.getKey();
+     Binding<?> original = bindings.get(key);
+     Class<?> rawType = key.getRawType();
+     if (FORBIDDEN_TYPES.contains(rawType)) {
+-        addError(binding.getSource(), ErrorMessage.cannotBindToGuiceType(rawType.getSimpleName()));
++        errors.at(binding.getSource()).cannotBindToGuiceType(rawType.getSimpleName());
+         return;
+     }
+     if (bindings.containsKey(key)) {
+-        addError(binding.getSource(), ErrorMessage.bindingAlreadySet(key, original.getSource()));
++        errors.at(binding.getSource()).bindingAlreadySet(key, original.getSource());
+     } else {
+         bindings.put(key, binding);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/d5cd2693220e819469f475e8a570fe3b8645d0e9 b/ba8923b573f737d3a33e963c440b362bc54e76a4
+index d5cd269322..ba8923b573 100644
+--- a/d5cd2693220e819469f475e8a570fe3b8645d0e9
++++ b/ba8923b573f737d3a33e963c440b362bc54e76a4
+@@ -1,4 +1,5 @@
+ @Override
+ public void copy(int slot, int doc) {
+-    values[slot] = script.execute(doc).toString();
++    script.setNextDocId(doc);
++    values[slot] = script.run().toString();
+ }
+\ No newline at end of file

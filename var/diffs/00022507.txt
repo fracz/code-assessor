@@ -1,0 +1,19 @@
+diff --git a/4ad7b29d9f964ddc93ddd974db41e26b6b12a5c6 b/f23d4896d1575efce609b11d561bb98308522f57
+index 4ad7b29d9f..f23d4896d1 100644
+--- a/4ad7b29d9f964ddc93ddd974db41e26b6b12a5c6
++++ b/f23d4896d1575efce609b11d561bb98308522f57
+@@ -1,10 +1,5 @@
+ public void selectPrinter(PrinterId printerId) {
+-    final int printerCount = mDestinationSpinnerAdapter.getCount();
+-    for (int i = 0; i < printerCount; i++) {
+-        PrinterInfo printer = (PrinterInfo) mDestinationSpinnerAdapter.getItem(i);
+-        if (printer.getId().equals(printerId)) {
+-            mDestinationSpinner.setSelection(i);
+-            return;
+-        }
+-    }
++    mDestinationSpinnerAdapter.ensurePrinterShownPrinterShown(printerId);
++    final int position = mDestinationSpinnerAdapter.getPrinterIndex(printerId);
++    mDestinationSpinner.setSelection(position);
+ }
+\ No newline at end of file

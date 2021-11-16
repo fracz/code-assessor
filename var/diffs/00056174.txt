@@ -1,0 +1,15 @@
+diff --git a/24cac99ed978f00dc0e47eb5f7a6d11ed91c11e5 b/d4244b15a78eb3975a21118b372100ed7e3fdd2d
+index 24cac99ed9..d4244b15a7 100644
+--- a/24cac99ed978f00dc0e47eb5f7a6d11ed91c11e5
++++ b/d4244b15a78eb3975a21118b372100ed7e3fdd2d
+@@ -1,6 +1,7 @@
++@Test
+ public void testReturningBean() {
+     mockCollaborator.oneTestBeanArg(this.testBeanTarget);
+-    mockControl.replay();
++    replay(mockCollaborator);
+     testBeanProxy.returnsThis();
+-    mockControl.verify();
++    verify(mockCollaborator);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/dffa7eb670cb32735bc23713065d1c1a5cfb7534 b/5a6cd482cd4db96a4cc38a8a1002479b1b7e52b3
+index dffa7eb670..5a6cd482cd 100644
+--- a/dffa7eb670cb32735bc23713065d1c1a5cfb7534
++++ b/5a6cd482cd4db96a4cc38a8a1002479b1b7e52b3
+@@ -1,7 +1,7 @@
+ /**
+  * Get a list of the profiling containers for all projects
+  * @return list
+  */
+ public List<ProjectProfile> getProjects() {
+-    return new ArrayList<ProjectProfile>(projects.values());
++    return CollectionUtils.sort(projects.values(), Operation.comparator());
+ }
+\ No newline at end of file

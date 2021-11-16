@@ -1,0 +1,14 @@
+diff --git a/517018e2432eaa119f3c38067bcfb1705f26a8a3 b/b4bc0bc486ce18bf113a96f3edda6012df4a4ae1
+index 517018e243..b4bc0bc486 100644
+--- a/517018e2432eaa119f3c38067bcfb1705f26a8a3
++++ b/b4bc0bc486ce18bf113a96f3edda6012df4a4ae1
+@@ -1,6 +1,5 @@
+ public static CFMetaData perRowIndexedCFMD(String ksName, String cfName) {
+     final Map<String, String> indexOptions = Collections.singletonMap(SecondaryIndex.CUSTOM_INDEX_OPTION_NAME, PerRowSecondaryIndexTest.TestIndex.class.getName());
+-    CFMetaData cfm = CFMetaData.sparseCFMetaData(ksName, cfName, AsciiType.instance).keyValidator(AsciiType.instance);
+-    ByteBuffer cName = ByteBufferUtil.bytes("indexed");
+-    return cfm.addOrReplaceColumnDefinition(ColumnDefinition.regularDef(cfm, cName, AsciiType.instance, null).setIndex("indexe1", IndexType.CUSTOM, indexOptions));
++    CFMetaData cfm = CFMetaData.Builder.create(ksName, cfName).addPartitionKey("key", AsciiType.instance).build();
++    return cfm.addOrReplaceColumnDefinition(ColumnDefinition.regularDef(ksName, cfName, "indexed", AsciiType.instance, null).setIndex("indexe1", IndexType.CUSTOM, indexOptions));
+ }
+\ No newline at end of file

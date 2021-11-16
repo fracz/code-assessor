@@ -1,0 +1,24 @@
+diff --git a/2b5fff084a30abbeba5fd9ba6aeb147a0f9ace05 b/d7f444100bf84be1ff4ad823eba17e5e307c15d3
+index 2b5fff084a..d7f444100b 100644
+--- a/2b5fff084a30abbeba5fd9ba6aeb147a0f9ace05
++++ b/d7f444100bf84be1ff4ad823eba17e5e307c15d3
+@@ -1,17 +1,17 @@
+ @Override
+ boolean performFinish() {
+     try {
+         getContainer().run(true, true, new IRunnableWithProgress() {
+
+             @Override
+             public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+                 downloadLibraryFiles(new DefaultProgressMonitor(monitor));
+             }
+         });
+     } catch (InvocationTargetException e) {
+-        UIUtils.showErrorDialog(getShell(), "Driver download", "Error downloading driver files", e.getTargetException());
++        DBUserInterface.getInstance().showError("Driver download", "Error downloading driver files", e.getTargetException());
+     } catch (InterruptedException e) {
+     // ignore
+     }
+     return true;
+ }
+\ No newline at end of file

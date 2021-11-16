@@ -1,0 +1,26 @@
+diff --git a/9b9e6d732a13d089947e65e442c6042dbed3dcc0 b/9793b4b9783eb687580041c2dd6d7c325eca0594
+index 9b9e6d732a..9793b4b978 100644
+--- a/9b9e6d732a13d089947e65e442c6042dbed3dcc0
++++ b/9793b4b9783eb687580041c2dd6d7c325eca0594
+@@ -1,15 +1,13 @@
+ @Override
+ public StaticBuffer[] getLocalKeyPartition() throws StorageException {
+-    boolean ok = false;
+     getLocalKeyPartitionInvocationCounter.inc();
+-    final Timer.Context tc = getLocalKeyPartitionTimer.time();
++    Timer.Context tc = getLocalKeyPartitionTimer.time();
+     try {
+-        final StaticBuffer[] result = backend.getLocalKeyPartition();
+-        ok = true;
+-        return result;
++        return backend.getLocalKeyPartition();
++    } catch (StorageException e) {
++        getLocalKeyPartitionFailureCounter.inc();
++        throw e;
+     } finally {
+         tc.stop();
+-        if (!ok)
+-            getLocalKeyPartitionFailureCounter.inc();
+     }
+ }
+\ No newline at end of file

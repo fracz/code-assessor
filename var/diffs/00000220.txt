@@ -1,0 +1,20 @@
+diff --git a/5c645b7474f5ff072b543ddd84e47cb196f0894f b/c86eb1f0cb9a49e763fcb042f99e94f203c60c68
+index 5c645b7474..c86eb1f0cb 100644
+--- a/5c645b7474f5ff072b543ddd84e47cb196f0894f
++++ b/c86eb1f0cb9a49e763fcb042f99e94f203c60c68
+@@ -1,11 +1,5 @@
+-/**
+- * Builds a read request.
+- *
+- * @param offset the offset
+- * @param len the length to read
+- * @return the proto message
+- */
+-private RPCProtoMessage buildReadRequest(long offset, long len) {
+-    Protocol.ReadRequest readRequest = Protocol.ReadRequest.newBuilder().setId(mBlockId).setOffset(offset).setSessionId(1L).setLength(len).setLockId(1L).setType(Protocol.RequestType.UFS_FILE).build();
++@Override
++protected RPCProtoMessage buildReadRequest(long offset, long len) {
++    Protocol.ReadRequest readRequest = Protocol.ReadRequest.newBuilder().setId(1L).setOffset(offset).setSessionId(1L).setLength(len).setLockId(1L).setType(Protocol.RequestType.UFS_FILE).build();
+     return new RPCProtoMessage(readRequest, null);
+ }
+\ No newline at end of file

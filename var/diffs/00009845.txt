@@ -1,0 +1,14 @@
+diff --git a/51dfb5cf82eb0679866c9df8ebf7a012c979e416 b/c6d35193a9adcfc4d69ef18d4326c90f35bdb65f
+index 51dfb5cf82..c6d35193a9 100644
+--- a/51dfb5cf82eb0679866c9df8ebf7a012c979e416
++++ b/c6d35193a9adcfc4d69ef18d4326c90f35bdb65f
+@@ -1,7 +1,7 @@
+ public static String removePasswordIfNeeded(@NotNull String path) {
+     Matcher matcher = URL_WITH_PASSWORD.matcher(path);
+     if (matcher.matches()) {
+-        return matcher.group(1) + "@" + matcher.group(3);
++        return path.substring(0, matcher.start(1)) + path.substring(matcher.end(1), path.length());
+     }
+     return path;
+ }
+\ No newline at end of file

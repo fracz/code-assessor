@@ -1,0 +1,17 @@
+diff --git a/0b1be790ed282b2abd1a94c0d975573e8b8c5067 b/53fa5f62173553929c4e944f9002fd49e49c4dc8
+index 0b1be790ed..53fa5f6217 100644
+--- a/0b1be790ed282b2abd1a94c0d975573e8b8c5067
++++ b/53fa5f62173553929c4e944f9002fd49e49c4dc8
+@@ -1,10 +1,5 @@
+ private static void declareArray(@NotNull StandardClasses standardClasses, @NotNull JetStandardLibrary standardLibrary) {
+-    ClassDescriptor arrayClass = standardLibrary.getArray();
+-    standardClasses.declareTopLevel(arrayClass, "Array");
++    standardClasses.declare().forFQ("jet.Array").kotlinName("Array").properties("size", "indices");
+     FunctionDescriptor nullConstructorFunction = getFunctionByName(standardLibrary.getLibraryScope(), "Array");
+     standardClasses.declareTopLevel(nullConstructorFunction, "array");
+-    PropertyDescriptor sizeProperty = getPropertyByName(arrayClass.getDefaultType().getMemberScope(), "size");
+-    standardClasses.declareInner(sizeProperty, "size");
+-    PropertyDescriptor indices = getPropertyByName(arrayClass.getDefaultType().getMemberScope(), "indices");
+-    standardClasses.declareInner(indices, "indices");
+ }
+\ No newline at end of file

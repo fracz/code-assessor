@@ -1,0 +1,13 @@
+diff --git a/5e521a9ddaaa823dedf42f7f4f54cf7371dd9bb8 b/6f7464a2847c38742ecdd8eddc201e502d9f742a
+index 5e521a9dda..6f7464a284 100644
+--- a/5e521a9ddaaa823dedf42f7f4f54cf7371dd9bb8
++++ b/6f7464a2847c38742ecdd8eddc201e502d9f742a
+@@ -1,6 +1,5 @@
+ @Override
+ protected boolean hasDataSourceSpecificOptions(DataSourceDescriptor dataSourceDescriptor) {
+     AbstractPreferenceStore store = dataSourceDescriptor.getPreferenceStore();
+-    return store.contains(PrefConstants.QUERY_ROLLBACK_ON_ERROR) || // store.contains(PrefConstants.DEFAULT_AUTO_COMMIT) ||
+-    store.contains(PrefConstants.KEEP_STATEMENT_OPEN) || store.contains(PrefConstants.MEMORY_CONTENT_MAX_SIZE) || store.contains(PrefConstants.READ_EXPENSIVE_PROPERTIES) || store.contains(PrefConstants.META_CASE_SENSITIVE);
++    return store.contains(PrefConstants.AGENT_ENABLED) || store.contains(PrefConstants.AGENT_LONG_OPERATION_NOTIFY) || store.contains(PrefConstants.AGENT_LONG_OPERATION_TIMEOUT) || store.contains(PrefConstants.QUERY_ROLLBACK_ON_ERROR) || store.contains(PrefConstants.KEEP_STATEMENT_OPEN) || store.contains(PrefConstants.MEMORY_CONTENT_MAX_SIZE) || store.contains(PrefConstants.READ_EXPENSIVE_PROPERTIES) || store.contains(PrefConstants.META_CASE_SENSITIVE);
+ }
+\ No newline at end of file

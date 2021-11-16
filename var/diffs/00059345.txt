@@ -1,0 +1,12 @@
+diff --git a/b84cb9ac436e8dd5f04db872d7716d2169cafed4 b/3092973014f002e076fab7bc86c17436ae721541
+index b84cb9ac43..3092973014 100644
+--- a/b84cb9ac436e8dd5f04db872d7716d2169cafed4
++++ b/3092973014f002e076fab7bc86c17436ae721541
+@@ -1,4 +1,5 @@
+ public static CassandraTransaction getTx(StoreTransaction txh) {
+-    Preconditions.checkArgument(txh != null && (txh instanceof CassandraTransaction));
++    Preconditions.checkArgument(txh != null);
++    Preconditions.checkArgument(txh instanceof CassandraTransaction, "Unexpected transaction type %s", txh.getClass().getName());
+     return (CassandraTransaction) txh;
+ }
+\ No newline at end of file

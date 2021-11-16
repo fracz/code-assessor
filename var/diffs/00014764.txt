@@ -1,0 +1,24 @@
+diff --git a/169bce6347dd4fbfd8a6d237fb94678946e7aac6 b/41c306f59091ccf2d24598db3d34d93179f6bea7
+index 169bce6347..41c306f590 100644
+--- a/169bce6347dd4fbfd8a6d237fb94678946e7aac6
++++ b/41c306f59091ccf2d24598db3d34d93179f6bea7
+@@ -1,15 +1,9 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiModifierList modifierList;
+-    if (location instanceof PsiModifierList) {
+-        modifierList = (PsiModifierList) location;
+-    } else {
+-        modifierList = (PsiModifierList) location.getParent();
+-    }
+-    assert modifierList != null;
+-    final PsiElement parent = modifierList.getParent();
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiElement parent = (PsiElement) infos[0];
+     if (parent instanceof PsiMethod) {
+         return InspectionGadgetsBundle.message("unnecessary.enum.modifier.problem.descriptor");
+     } else {
+         return InspectionGadgetsBundle.message("unnecessary.enum.modifier.problem.descriptor1");
+     }
+ }
+\ No newline at end of file

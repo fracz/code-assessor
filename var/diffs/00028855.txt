@@ -1,0 +1,17 @@
+diff --git a/1d7b5c19a7ff69a8855c5e0b7f4ef6a86aa52c26 b/e7787ee1e0369146c17c99bbea6609e9a3bea22a
+index 1d7b5c19a7..e7787ee1e0 100644
+--- a/1d7b5c19a7ff69a8855c5e0b7f4ef6a86aa52c26
++++ b/e7787ee1e0369146c17c99bbea6609e9a3bea22a
+@@ -1,10 +1,9 @@
+ public GeoQueryContext build() {
+     if (geoPoint == null) {
+         if (Double.isNaN(lat) == false && Double.isNaN(lon) == false) {
+             geoPoint = new GeoPoint(lat, lon);
+-        } else {
+-            throw new IllegalArgumentException("no geohash or geo point provided");
+         }
+     }
++    Objects.requireNonNull(geoPoint, "geoPoint must not be null");
+     return new GeoQueryContext(geoPoint, boost, precision, neighbours);
+ }
+\ No newline at end of file

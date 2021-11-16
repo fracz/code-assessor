@@ -1,0 +1,11 @@
+diff --git a/33ff4e1cab662ad74b431923a2afc54c8c336527 b/144601b493db012feeb9596488d220cb1f55f9c8
+index 33ff4e1cab..144601b493 100644
+--- a/33ff4e1cab662ad74b431923a2afc54c8c336527
++++ b/144601b493db012feeb9596488d220cb1f55f9c8
+@@ -1,4 +1,4 @@
+ @Override
+ public Future<Boolean> removeAllAsync(Collection<?> c) {
+-    return commandExecutor.evalWriteAsync(getName(), codec, new RedisCommand<Boolean>("EVAL", new BooleanReplayConvertor(), 4), "local v = false " + "for i = 0, table.getn(ARGV), 1 do " + "if redis.call('lrem', KEYS[1], 0, ARGV[i]) == 1 " + "then v = true end " + "end " + "return v ", Collections.<Object>singletonList(getName()), c.toArray());
++    return commandExecutor.evalWriteAsync(getName(), codec, EVAL_BOOLEAN_ARGS1, "local v = false " + "for i = 0, table.getn(ARGV), 1 do " + "if redis.call('lrem', KEYS[1], 0, ARGV[i]) == 1 " + "then v = true end " + "end " + "return v ", Collections.<Object>singletonList(getName()), c.toArray());
+ }
+\ No newline at end of file

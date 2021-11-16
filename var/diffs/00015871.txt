@@ -1,0 +1,22 @@
+diff --git a/75d4e50731f85a8403f6497f1a5de398482b64ea b/f286057bbea0d53e21e65c94c1f4a4ab0366b9ee
+index 75d4e50731..f286057bbe 100644
+--- a/75d4e50731f85a8403f6497f1a5de398482b64ea
++++ b/f286057bbea0d53e21e65c94c1f4a4ab0366b9ee
+@@ -1,8 +1,13 @@
+ @Override
+ protected void doOKAction() {
+     MultiMap<PsiElement, String> conflicts = ExtractFunctionPackage.validate(currentDescriptor).getConflicts();
+     conflicts.values().removeAll(originalDescriptor.getConflicts().values());
+-    if (RefactoringPackage.checkConflictsInteractively(project, conflicts)) {
+-        super.doOKAction();
+-    }
++    RefactoringPackage.checkConflictsInteractively(project, conflicts, new Function0<Unit>() {
++
++        @Override
++        public Unit invoke() {
++            KotlinExtractFunctionDialog.super.doOKAction();
++            return onAccept.invoke(KotlinExtractFunctionDialog.this);
++        }
++    });
+ }
+\ No newline at end of file

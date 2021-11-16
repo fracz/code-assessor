@@ -1,0 +1,25 @@
+diff --git a/a51942e3a9203b0dc55587c274d0aaa02987b28d b/a0dbae58a5baafc194fc0e5208eea258a9429c99
+index a51942e3a9..a0dbae58a5 100644
+--- a/a51942e3a9203b0dc55587c274d0aaa02987b28d
++++ b/a0dbae58a5baafc194fc0e5208eea258a9429c99
+@@ -1,12 +1,15 @@
+ /**
+  * Returns the matrix inverse. For pseudo inverse, use QRDecomposition.
+  */
+-public double[][] inverse() {
++public DenseMatrix inverse() {
+     int m = LU.nrows();
+     int n = LU.ncols();
+     if (m != n)
+         throw new IllegalArgumentException(String.format("Matrix is not square: %d x %d", m, n));
+-    double[][] I = Math.eye(n);
+-    solve(I);
+-    return I;
++    DenseMatrix inv = new ColumnMajorMatrix(n, n);
++    for (int i = 0; i < n; i++) {
++        inv.set(i, piv[i], 1.0);
++    }
++    solve(inv);
++    return inv;
+ }
+\ No newline at end of file

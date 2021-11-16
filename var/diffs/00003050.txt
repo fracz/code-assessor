@@ -1,0 +1,18 @@
+diff --git a/515b424b61721105638c4aaddd933470e2ddc5dd b/d208285c6c69316b1641b7dc9e889cc84101c1d0
+index 515b424b61..d208285c6c 100644
+--- a/515b424b61721105638c4aaddd933470e2ddc5dd
++++ b/d208285c6c69316b1641b7dc9e889cc84101c1d0
+@@ -1,11 +1,11 @@
+ public void update(AnActionEvent e) {
+     final Presentation presentation = e.getPresentation();
+     final DataContext dataContext = e.getDataContext();
+     final VirtualFile vFile = PlatformDataKeys.VIRTUAL_FILE.getData(dataContext);
+-    final EditorWindow window = (EditorWindow) dataContext.getData(DataConstantsEx.EDITOR_WINDOW);
++    final EditorWindow window = EditorWindow.DATA_KEY.getData(dataContext);
+     if (ActionPlaces.isPopupPlace(e.getPlace())) {
+         presentation.setVisible(isEnabled(vFile, window));
+     } else {
+         presentation.setEnabled(isEnabled(vFile, window));
+     }
+ }
+\ No newline at end of file

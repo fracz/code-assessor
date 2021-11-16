@@ -1,0 +1,23 @@
+diff --git a/d87f464087461ce5354a5e96990c9f233919a2b3 b/f9b741775b99b156c113e4219a608c8d6d21b7d3
+index d87f464087..f9b741775b 100644
+--- a/d87f464087461ce5354a5e96990c9f233919a2b3
++++ b/f9b741775b99b156c113e4219a608c8d6d21b7d3
+@@ -1,13 +1,8 @@
+ private static void copyPublicFields(Object from, Object to) {
+     assert from != to;
+-    Field[] fields = to.getClass().getDeclaredFields();
+-    for (Field field : fields) {
+-        if (isPublic(field) && !isFinal(field)) {
+-            try {
+-                copyFieldValue(from, to, field);
+-            } catch (Exception e) {
+-                throw new RuntimeException(e);
+-            }
+-        }
++    copyFields(to.getClass().getDeclaredFields(), from, to);
++    Class superClass = to.getClass().getSuperclass();
++    if (superClass != null) {
++        copyFields(superClass.getDeclaredFields(), from, to);
+     }
+ }
+\ No newline at end of file

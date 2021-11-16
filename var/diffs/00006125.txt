@@ -1,0 +1,21 @@
+diff --git a/3e9f1e192fe22e9e6d2f73ef5c27e6fd3b466ae8 b/deb5d804ba78aaea2eb460a26abe5e1a5a57abd4
+index 3e9f1e192f..deb5d804ba 100644
+--- a/3e9f1e192fe22e9e6d2f73ef5c27e6fd3b466ae8
++++ b/deb5d804ba78aaea2eb460a26abe5e1a5a57abd4
+@@ -1,13 +1,9 @@
+ public void reset() {
+-    myUsePerProjectSettings = getProjectSettings().USE_PER_PROJECT_SETTINGS;
+     mySettingsToClone.clear();
+     mySchemes.clear();
+     ContainerUtil.addAll(mySchemes, CodeStyleSchemesImpl.getSchemeManager().getAllSchemes());
+-    myGlobalSelected = CodeStyleSchemes.getInstance().findPreferredScheme(getProjectSettings().PREFERRED_PROJECT_CODE_STYLE);
+-    CodeStyleSettings perProjectSettings = getProjectSettings().PER_PROJECT_SETTINGS;
+-    if (perProjectSettings != null) {
+-        myProjectScheme.setCodeStyleSettings(perProjectSettings);
+-    }
++    mySchemes.add(myProjectScheme);
++    mySelectedScheme = getProjectSettings().USE_PER_PROJECT_SETTINGS ? myProjectScheme : CodeStyleSchemes.getInstance().findPreferredScheme(getProjectSettings().PREFERRED_PROJECT_CODE_STYLE);
+     myDispatcher.getMulticaster().schemeListChanged();
+     myDispatcher.getMulticaster().currentSchemeChanged(this);
+ }
+\ No newline at end of file

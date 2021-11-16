@@ -1,0 +1,19 @@
+diff --git a/a310090b6e180542c66b54a7093db57aa55f2e62 b/6869b1e4b63da3be61dfcde100d6b815f605312c
+index a310090b6e..6869b1e4b6 100644
+--- a/a310090b6e180542c66b54a7093db57aa55f2e62
++++ b/6869b1e4b63da3be61dfcde100d6b815f605312c
+@@ -1,12 +1,6 @@
+ /**
+  * This is only used during Injector building.
+  */
+ void withDefaultSource(Object defaultSource, Runnable runnable) {
+-    Object previous = this.defaultSource;
+-    this.defaultSource = defaultSource;
+-    try {
+-        runnable.run();
+-    } finally {
+-        this.defaultSource = previous;
+-    }
++    SourceProviders.withDefault(defaultSource, runnable);
+ }
+\ No newline at end of file

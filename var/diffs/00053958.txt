@@ -1,0 +1,18 @@
+diff --git a/c39e9481d7c2592ada9547b0a0f6f608ae2d7587 b/49cd4da81fab333fe5e2a1b4f3404117653e867c
+index c39e9481d7..49cd4da81f 100644
+--- a/c39e9481d7c2592ada9547b0a0f6f608ae2d7587
++++ b/49cd4da81fab333fe5e2a1b4f3404117653e867c
+@@ -1,9 +1,10 @@
+ @Test
+ public void parseWithoutCondition() throws SQLException {
++    String sql = "DELETE FROM TABLE_XXX";
+     ShardingRule shardingRule = createShardingRule();
+-    SQLParsingEngine statementParser = new SQLParsingEngine(DatabaseType.MySQL, "DELETE FROM TABLE_XXX", shardingRule);
++    SQLParsingEngine statementParser = new SQLParsingEngine(DatabaseType.MySQL, sql, shardingRule);
+     DeleteSQLContext sqlContext = (DeleteSQLContext) statementParser.parseStatement();
+     assertThat(sqlContext.getTables().get(0).getName(), is("TABLE_XXX"));
+     // TODO 放入rewrite模块断言
+-    assertThat(new SQLRewriteEngine(sqlContext.getSqlBuilderContext()).rewrite().toString(), is("DELETE FROM [Token(TABLE_XXX)]"));
++    assertThat(new SQLRewriteEngine(sql, sqlContext).rewrite().toString(), is("DELETE FROM [Token(TABLE_XXX)]"));
+ }
+\ No newline at end of file

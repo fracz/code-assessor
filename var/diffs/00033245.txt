@@ -1,0 +1,30 @@
+diff --git a/35492bef834fb77235fc926c9cb3486731dc9e50 b/0ec0d2cf92b991f6cada75e59ebf86cb0e421fc5
+index 35492bef83..0ec0d2cf92 100644
+--- a/35492bef834fb77235fc926c9cb3486731dc9e50
++++ b/0ec0d2cf92b991f6cada75e59ebf86cb0e421fc5
+@@ -1,19 +1,16 @@
+ public static TaskUpToDateState create(final TaskInternal task, final TaskExecution previousExecution, final TaskExecution currentExecution) {
+     final String taskClass = task.getClass().getName();
+     currentExecution.setTaskClass(taskClass);
+-    return new TaskUpToDateState() {
++    return new SimpleUpToDateState() {
+
+-        public void findChanges(Action<? super TaskUpToDateStateChange> failures) {
+-            if (!isUpToDate()) {
+-                failures.execute(new DescriptiveChange("%s has changed type from '%s' to '%s'.", StringUtils.capitalize(task.toString()), previousExecution.getTaskClass(), task.getClass().getName()));
++        @Override
++        protected void addAllChanges(List<TaskUpToDateChange> changes) {
++            if (!taskClass.equals(previousExecution.getTaskClass())) {
++                changes.add(new DescriptiveChange("%s has changed type from '%s' to '%s'.", StringUtils.capitalize(task.toString()), previousExecution.getTaskClass(), task.getClass().getName()));
+             }
+         }
+
+-        public boolean isUpToDate() {
+-            return taskClass.equals(previousExecution.getTaskClass());
+-        }
+-
+         public void snapshotAfterTask() {
+         }
+     };
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/bfb04451e863c20f85ce99dbdb7595211e130572 b/30345804734b868f38ca8f97ae7a97232770d65d
+index bfb04451e8..3034580473 100644
+--- a/bfb04451e863c20f85ce99dbdb7595211e130572
++++ b/30345804734b868f38ca8f97ae7a97232770d65d
+@@ -1,9 +1,9 @@
+ @Override
+ public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent event) {
+-    onPopulateAccessibilityEvent(event);
+-    // Dispatch only to the selected tab.
++    event.setItemCount(getTabCount());
++    event.setCurrentItemIndex(mSelectedTab);
+     if (mSelectedTab != -1) {
+-        return getChildTabViewAt(mSelectedTab).dispatchPopulateAccessibilityEvent(event);
++        getChildTabViewAt(mSelectedTab).dispatchPopulateAccessibilityEvent(event);
+     }
+-    return false;
++    return true;
+ }
+\ No newline at end of file

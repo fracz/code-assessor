@@ -1,0 +1,29 @@
+diff --git a/488aeaf5874b92d037f1086dc3295d51c82457e8 b/8b5fd2392a861131b45028b13ef17ae5601158a2
+index 488aeaf587..8b5fd2392a 100644
+--- a/488aeaf5874b92d037f1086dc3295d51c82457e8
++++ b/8b5fd2392a861131b45028b13ef17ae5601158a2
+@@ -1,17 +1,16 @@
+ private void readIndexedHeader(int index) {
+     if (isStaticHeader(index)) {
+-        if (maxHeaderTableSize == 0) {
+-            staticReferenceSet.set(index - headerTable.size());
++        if (maxHeaderTableByteCount == 0) {
++            // Set bit designating this static entry is referenced.
++            referencedStaticHeaders |= (1L << (index - headerCount));
+         } else {
+-            HeaderEntry staticEntry = STATIC_HEADER_TABLE[index - headerTable.size()];
++            HeaderEntry staticEntry = STATIC_HEADER_TABLE[index - headerCount];
+             insertIntoHeaderTable(-1, staticEntry);
+         }
+-    } else if (!headerTable.get(index).referenced) {
+-        HeaderEntry existing = headerTable.get(index);
+-        existing.referenced = true;
+-        insertIntoHeaderTable(index, existing);
++    } else if (!bitPositionSet(referencedHeaders, headerTableIndex(index))) {
++        referencedHeaders |= (1L << headerTableIndex(index));
+     } else {
+         // TODO: we should throw something that we can coerce to a PROTOCOL_ERROR
+         throw new AssertionError("invalid index " + index);
+     }
+ }
+\ No newline at end of file

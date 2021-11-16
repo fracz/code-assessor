@@ -1,0 +1,14 @@
+diff --git a/a1c92dfd72299c6f3b6707d8726952d0a45f0d3a b/17d68ea8c0368bcac4108588202185ac20c8c5a0
+index a1c92dfd72..17d68ea8c0 100644
+--- a/a1c92dfd72299c6f3b6707d8726952d0a45f0d3a
++++ b/17d68ea8c0368bcac4108588202185ac20c8c5a0
+@@ -1,7 +1,7 @@
+ public String getViewDDL(DBRProgressMonitor monitor, GenericTable sourceObject) throws DBException {
+-    try (JDBCSession session = sourceObject.getDataSource().getDefaultContext(true).openSession(monitor, DBCExecutionPurpose.META, "Read view definition")) {
++    try (JDBCSession session = DBUtils.openMetaSession(monitor, sourceObject.getDataSource(), "Read view definition")) {
+         return JDBCUtils.queryString(session, "SELECT definition FROM PG_CATALOG.PG_VIEWS WHERE SchemaName=? and ViewName=?", sourceObject.getContainer().getName(), sourceObject.getName());
+     } catch (SQLException e) {
+         throw new DBException(e, sourceObject.getDataSource());
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,28 @@
+diff --git a/c937edaf3a9775ce9b0c72e8c14cb0db019c4da9 b/1295e023427cecc38095d8e5d2dc9c587b85e7e1
+index c937edaf3a..1295e02342 100644
+--- a/c937edaf3a9775ce9b0c72e8c14cb0db019c4da9
++++ b/1295e023427cecc38095d8e5d2dc9c587b85e7e1
+@@ -1,11 +1,13 @@
+-private InputStream safeStandardInput(BuildOperationParametersVersion1 operationParameters) {
+-    if (!new CompatibilityChecker(operationParameters).supports("getStandardInput")) {
+-        return null;
++private DaemonStandardInput safeStandardInput(BuildOperationParametersVersion1 operationParameters) {
++    if (new CompatibilityChecker(operationParameters).supports("getStandardInput")) {
++        InputStream is = operationParameters.getStandardInput();
++        if (is != null) {
++            return new DaemonStandardInput(is);
++        }
+     }
+-    InputStream is = operationParameters.getStandardInput();
+-    if (is == null) {
+-        // Hence we use a dummy input stream by default
+-        return new ByteArrayInputStream(new byte[0]);
+-    }
+-    return is;
++    // TODO SF make sure it is correct
++    // Tooling api means embedded use. We don't want to consume standard input if we don't own the process.
++    // Hence we use a dummy input stream by default
++    InputStream dummy = new ByteArrayInputStream(new byte[0]);
++    return new DaemonStandardInput(dummy);
+ }
+\ No newline at end of file

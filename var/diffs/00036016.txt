@@ -1,0 +1,18 @@
+diff --git a/fb2ca1b365e11836a7266f2c71859fda7f5e5d50 b/c0efc07e744d01cfd54612d49f316e631e96b6d9
+index fb2ca1b365..c0efc07e74 100644
+--- a/fb2ca1b365e11836a7266f2c71859fda7f5e5d50
++++ b/c0efc07e744d01cfd54612d49f316e631e96b6d9
+@@ -1,7 +1,8 @@
+ public Object resultFor(MockitoInvocation invocation) throws Throwable {
+-    if (results.get(invocation) == null) {
+-        return ToTypeMappings.emptyReturnValueFor(invocation.getMethod().getReturnType());
+-    } else {
+-        return results.get(invocation).answer();
++    for (InvocationWithMatchers invocationWithMatchers : results.keySet()) {
++        if (invocationWithMatchers.matches(invocation)) {
++            return results.get(invocationWithMatchers).answer();
++        }
+     }
++    return ToTypeMappings.emptyReturnValueFor(invocation.getMethod().getReturnType());
+ }
+\ No newline at end of file

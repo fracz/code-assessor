@@ -1,0 +1,12 @@
+diff --git a/9acc576f7c67544e7f9cecf502b882887b11943e b/7d4072d3f123981ec8a2b2a34e75244a364ffbad
+index 9acc576f7c..7d4072d3f1 100644
+--- a/9acc576f7c67544e7f9cecf502b882887b11943e
++++ b/7d4072d3f123981ec8a2b2a34e75244a364ffbad
+@@ -1,4 +1,4 @@
+ @Override
+-public VcsLogFilter fun(String name) {
+-    return name == ME ? new Me(myDataHolder.getCurrentUser()) : new ByName(name);
++public String fun(String user) {
++    return ME.equals(user) ? myData.get(root).getName() : user;
+ }
+\ No newline at end of file

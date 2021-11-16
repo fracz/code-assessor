@@ -1,0 +1,14 @@
+diff --git a/e51598930c9148c79a0ba116525836daee74c207 b/b98a2a6715824ed99aa52ea4fcaf78e7973fcc5b
+index e51598930c..b98a2a6715 100644
+--- a/e51598930c9148c79a0ba116525836daee74c207
++++ b/b98a2a6715824ed99aa52ea4fcaf78e7973fcc5b
+@@ -1,6 +1,6 @@
+ @Override
+-public NodePropertyExistenceConstraint nodePropertyExistenceConstraintCreate(KernelStatement state, int labelId, int propertyKeyId) throws CreateConstraintFailureException {
+-    NodePropertyExistenceConstraint constraint = new NodePropertyExistenceConstraint(labelId, propertyKeyId);
++public NodePropertyExistenceConstraint nodePropertyExistenceConstraintCreate(KernelStatement state, NodePropertyDescriptor descriptor) throws CreateConstraintFailureException {
++    NodePropertyExistenceConstraint constraint = new NodePropertyExistenceConstraint(descriptor);
+     state.txState().constraintDoAdd(constraint);
+     return constraint;
+ }
+\ No newline at end of file

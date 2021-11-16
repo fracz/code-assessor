@@ -1,0 +1,15 @@
+diff --git a/d6588a3cff4c4ef5fb4a51c62cc8d990f8434433 b/723085a1846412edc3dfc625b212a72433fee111
+index d6588a3cff..723085a184 100644
+--- a/d6588a3cff4c4ef5fb4a51c62cc8d990f8434433
++++ b/723085a1846412edc3dfc625b212a72433fee111
+@@ -1,4 +1,8 @@
+ @Override
+ protected GenericTableType fetchObject(JDBCExecutionContext context, GenericDataSource owner, ResultSet resultSet) throws SQLException, DBException {
+-    return new GenericTableType(GenericDataSource.this, JDBCUtils.safeGetString(resultSet, JDBCConstants.TABLE_TYPE));
++    String tableType = getMetadataReader().fetchTableType(resultSet);
++    if (CommonUtils.isEmpty(tableType)) {
++        return null;
++    }
++    return new GenericTableType(GenericDataSource.this, tableType);
+ }
+\ No newline at end of file

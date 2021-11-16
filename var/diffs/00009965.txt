@@ -1,0 +1,14 @@
+diff --git a/9a2ee63f4a41046bb4917736527a9deeaf9b436f b/5ae6631974b47e5857511122b08a16edb9d7b6b2
+index 9a2ee63f4a..5ae6631974 100644
+--- a/9a2ee63f4a41046bb4917736527a9deeaf9b436f
++++ b/5ae6631974b47e5857511122b08a16edb9d7b6b2
+@@ -1,7 +1,7 @@
+ public static HighlightInfo checkFunctionalInterface(PsiAnnotation annotation) {
+     final String errorMessage = LambdaUtil.checkFunctionalInterface(annotation);
+     if (errorMessage != null) {
+-        return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, annotation, errorMessage);
++        return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(annotation).descriptionAndTooltip(errorMessage).create();
+     }
+     return null;
+ }
+\ No newline at end of file

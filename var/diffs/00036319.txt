@@ -1,0 +1,30 @@
+diff --git a/fa760dadc3ad890ae8d3c48e6019a20f3f8a77fc b/9e0591a07f2a48ae4a05077eb921aae6f985052c
+index fa760dadc3..9e0591a07f 100644
+--- a/fa760dadc3ad890ae8d3c48e6019a20f3f8a77fc
++++ b/9e0591a07f2a48ae4a05077eb921aae6f985052c
+@@ -1,19 +1,21 @@
+ @Test
+ public void shouldLogStubCalledWithDifferentArgumentsWhenTestFails() throws Exception {
+-    runner.run(notifier, new JunitTestBody() {
++    runner = new VerboseMockitoJUnitRunner(this.getClass(), loggerStub) {
+
+-        public void run(RunNotifier notifier) {
++        @Override
++        public void runTest(RunNotifier notifier) {
+             someStubbing();
+             callStubbedMethodWithDifferentArgs();
+             notifier.fireTestFailure(null);
+             String loggedInfo = loggerStub.getLoggedInfo();
+             assertContains("[Mockito] Warning - stubbed method called with different arguments", loggedInfo);
+             assertContains("Stubbed this way:", loggedInfo);
+             assertContains("mock.simpleMethod(789);", loggedInfo);
+             assertContains(".someStubbing(", loggedInfo);
+             assertContains("But called with different arguments:", loggedInfo);
+             assertContains("mock.simpleMethod(10);", loggedInfo);
+             assertContains(".callStubbedMethodWithDifferentArgs(", loggedInfo);
+         }
+-    });
++    };
++    runner.run(notifier);
+ }
+\ No newline at end of file

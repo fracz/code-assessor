@@ -1,0 +1,13 @@
+diff --git a/43e002d886e6be7fcf5aa9c06cf0665a0b1f12cc b/36a95c34dc8cd9157b5faf4b2c92aa0a41bc92e6
+index 43e002d886..36a95c34dc 100644
+--- a/43e002d886e6be7fcf5aa9c06cf0665a0b1f12cc
++++ b/36a95c34dc8cd9157b5faf4b2c92aa0a41bc92e6
+@@ -1,4 +1,6 @@
+ @Override
+ public int hashCode() {
+-    return requested.hashCode();
++    int result = requested.hashCode();
++    result = 31 * result + from.hashCode();
++    return result;
+ }
+\ No newline at end of file

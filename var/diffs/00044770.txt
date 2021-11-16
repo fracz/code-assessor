@@ -1,0 +1,19 @@
+diff --git a/2e61ef14b80e4ae40e20dde6362aacc669f16ecd b/3bd95273fe27be260993441da559c7eaf65b8fe7
+index 2e61ef14b8..3bd95273fe 100644
+--- a/2e61ef14b80e4ae40e20dde6362aacc669f16ecd
++++ b/3bd95273fe27be260993441da559c7eaf65b8fe7
+@@ -1,10 +1,6 @@
+ public Document buildDocument(final Object key) {
+-    return storage.callIndexEngine(false, false, indexId, new OIndexEngineCallback<Document>() {
+-
+-        @Override
+-        public Document callEngine(OIndexEngine engine) {
+-            OLuceneIndexEngine indexEngine = (OLuceneIndexEngine) engine;
+-            return indexEngine.buildDocument(key, null);
+-        }
++    return storage.callIndexEngine(false, false, indexId, engine -> {
++        OLuceneIndexEngine indexEngine = (OLuceneIndexEngine) engine;
++        return indexEngine.buildDocument(key, null);
+     });
+ }
+\ No newline at end of file

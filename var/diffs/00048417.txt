@@ -1,0 +1,17 @@
+diff --git a/4eb97b99b2f3d362e27a584e0491fc5bc1300907 b/a12696f0d9959625f58adf2b65da958817a06874
+index 4eb97b99b2..a12696f0d9 100644
+--- a/4eb97b99b2f3d362e27a584e0491fc5bc1300907
++++ b/a12696f0d9959625f58adf2b65da958817a06874
+@@ -1,10 +1,10 @@
+ public List<DB2Parameter> getDbmParameters(DBRProgressMonitor monitor) throws DBException {
+     if (listDBMParameters == null) {
+-        try (JDBCSession session = getDefaultContext(true).openSession(monitor, DBCExecutionPurpose.META, "Load Instance Parameters")) {
++        try (JDBCSession session = DBUtils.openMetaSession(monitor, this, "Load Instance Parameters")) {
+             listDBMParameters = DB2Utils.readDBMCfg(monitor, session);
+         } catch (SQLException e) {
+             LOG.warn(e);
+         }
+     }
+     return listDBMParameters;
+ }
+\ No newline at end of file

@@ -1,0 +1,28 @@
+diff --git a/e10e8f437c886ea89d46546dd07c8dec9cece097 b/07375db5afb8b3a42dd5205769569c6222bb9e2c
+index e10e8f437c..07375db5af 100644
+--- a/e10e8f437c886ea89d46546dd07c8dec9cece097
++++ b/07375db5afb8b3a42dd5205769569c6222bb9e2c
+@@ -1,15 +1,17 @@
+ public void close() {
+-    boolean locked = acquireExclusiveLock();
++    boolean locked = lock.acquireExclusiveLock();
+     try {
+-        writeCommand(OChannelBinaryProtocol.REQUEST_DB_CLOSE);
+-        network.out.flush();
+-        network.socket.close();
++        beginRequest(OChannelBinaryProtocol.REQUEST_DB_CLOSE);
++        endRequest();
++        network.flush();
++        network.close();
++        serviceThread.sendShutdown();
+         cache.removeUser();
+         cache.clear();
+         open = false;
+         Orient.instance().unregisterStorage(this);
+     } catch (Exception e) {
+     } finally {
+-        releaseExclusiveLock(locked);
++        lock.releaseExclusiveLock(locked);
+     }
+ }
+\ No newline at end of file

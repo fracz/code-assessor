@@ -1,0 +1,13 @@
+diff --git a/07501381c0b00ef7094560bcd60d54c9b90a7bad b/2409062f375f21439511da9cbfe5313bb9b0bda7
+index 07501381c0..2409062f37 100644
+--- a/07501381c0b00ef7094560bcd60d54c9b90a7bad
++++ b/2409062f375f21439511da9cbfe5313bb9b0bda7
+@@ -1,6 +1,6 @@
+ @Override
+ public void config(final OServerNetworkListener iListener, final OServer iServer, final Socket iSocket, final OContextConfiguration iConfig) throws IOException {
+     server = iServer;
+     channel = new OChannelBinaryServer(iSocket, iConfig);
+-    tokenHandler = server.getPlugin("JwtTokenHandler");
++    tokenHandler = server.getPlugin(OTokenHandler.TOKEN_HANDLER_NAME);
+ }
+\ No newline at end of file

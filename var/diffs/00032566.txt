@@ -1,0 +1,17 @@
+diff --git a/3a953c6b1acf3e5c04f38dbb32ad942ab637a5c4 b/24bb5b76b042ead49177dd534ce43b607e3f1aa2
+index 3a953c6b1a..24bb5b76b0 100644
+--- a/3a953c6b1acf3e5c04f38dbb32ad942ab637a5c4
++++ b/24bb5b76b042ead49177dd534ce43b607e3f1aa2
+@@ -1,10 +1,8 @@
+-@SuppressWarnings("unchecked")
+-@Override
+ public Description describe(MethodTree methodTree, VisitorState state) {
+     for (AnnotationTree annotation : methodTree.getModifiers().getAnnotations()) {
+         if (JAVAX_INJECT_MATCHER.matches(annotation, state) || GUICE_INJECT_MATCHER.matches(annotation, state)) {
+-            return new Description(annotation, getDiagnosticMessage(), new SuggestedFix().delete(annotation));
++            return describeMatch(annotation, new SuggestedFix().delete(annotation));
+         }
+     }
+     throw new IllegalStateException("Expected to find more than once constructor annotated with @Inject");
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/c809a52330a2239635724462e626779c3d92e1c4 b/d0ac5841f95a8ef87916760fb904319aad26ce58
+index c809a52330..d0ac5841f9 100644
+--- a/c809a52330a2239635724462e626779c3d92e1c4
++++ b/d0ac5841f95a8ef87916760fb904319aad26ce58
+@@ -1,6 +1,4 @@
+-public String buildErrorString(PsiElement location) {
+-    final String text = location.getText();
+-    final int length = text.length();
+-    final String transformedText = '\'' + text.substring(1, length - 1) + '\'';
+-    return InspectionGadgetsBundle.message("length.one.strings.in.concatenation.problem.descriptor", transformedText);
++@NotNull
++public String buildErrorString(Object... infos) {
++    return InspectionGadgetsBundle.message("length.one.strings.in.concatenation.problem.descriptor", infos[0]);
+ }
+\ No newline at end of file

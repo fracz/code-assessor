@@ -1,0 +1,20 @@
+diff --git a/837eb70e5d5456916ce377c021f43aae8f8aac11 b/d41f824d44e1a2f83061be8116f95a9888abc9c4
+index 837eb70e5d..d41f824d44 100644
+--- a/837eb70e5d5456916ce377c021f43aae8f8aac11
++++ b/d41f824d44e1a2f83061be8116f95a9888abc9c4
+@@ -1,10 +1,13 @@
+ @Override
+ public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+     validateRequestType(request);
+     validateResponseType(response);
+-    if (rule.isAuthorized((HttpServletRequest) request)) {
++    HttpServletRequest httpReq = (HttpServletRequest) request;
++    String path = httpReq.getContextPath() + (httpReq.getPathInfo() == null ? "" : httpReq.getPathInfo());
++    pathMatcher.matches(path);
++    if (!pathMatcher.matches(path) || rule.isAuthorized(httpReq)) {
+         chain.doFilter(request, response);
+     } else {
+         createUnauthorizedChallenge(response);
+     }
+ }
+\ No newline at end of file

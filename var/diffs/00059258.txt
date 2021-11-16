@@ -1,0 +1,17 @@
+diff --git a/0eed84d1a95045b40af899d7082aa1eea1bcdda0 b/74f89c8801c52e0d22d1f807c67ea983974e4c53
+index 0eed84d1a9..74f89c8801 100644
+--- a/0eed84d1a95045b40af899d7082aa1eea1bcdda0
++++ b/74f89c8801c52e0d22d1f807c67ea983974e4c53
+@@ -1,9 +1,9 @@
+-private List<Entry> getSuperResultSet(final SliceQuery query) {
++private Map.Entry<SliceQuery, List<Entry>> getSuperResultSet(final SliceQuery query) {
+     if (queryCache.size() > 0) {
+         for (Map.Entry<SliceQuery, List<Entry>> entry : queryCache.asMap().entrySet()) {
+             if (entry.getKey().subsumes(query))
+-                return entry.getValue();
++                return entry;
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

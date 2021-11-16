@@ -1,0 +1,15 @@
+diff --git a/b1a2deadb2a7c90640bc5b892896f2e5f5f33d0e b/0ba29df0d1c557ea11f1d19bf3d0290da25ae153
+index b1a2deadb2..0ba29df0d1 100644
+--- a/b1a2deadb2a7c90640bc5b892896f2e5f5f33d0e
++++ b/0ba29df0d1c557ea11f1d19bf3d0290da25ae153
+@@ -1,8 +1,8 @@
+ @Override
+ public void setLayoutManager(LayoutManager layout) {
+     if (layout instanceof DiscreteScrollLayoutManager) {
+         super.setLayoutManager(layout);
+     } else {
+-        throw new IllegalArgumentException("You should not set LayoutManager on DiscreteScrollView.class" + "instance. Library uses a special one. Just don't call the method.");
++        throw new IllegalArgumentException(getContext().getString(R.string.dsv_ex_msg_dont_set_lm));
+     }
+ }
+\ No newline at end of file

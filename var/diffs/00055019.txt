@@ -1,0 +1,17 @@
+diff --git a/ce4416d069edc9370ad3121d65a0b9b46e898c4c b/e6e2b8cb6f5f9d8de47d6ad7b145a57db3e0cc3d
+index ce4416d069..e6e2b8cb6f 100644
+--- a/ce4416d069edc9370ad3121d65a0b9b46e898c4c
++++ b/e6e2b8cb6f5f9d8de47d6ad7b145a57db3e0cc3d
+@@ -1,8 +1,8 @@
+-public String assignVar(InsnNode insn) throws CodegenException {
++public void assignVar(CodeWriter code, InsnNode insn) throws CodegenException {
+     RegisterArg arg = insn.getResult();
+     if (insn.getAttributes().contains(AttributeFlag.DECLARE_VAR)) {
+-        return declareVar(arg);
++        declareVar(code, arg);
+     } else {
+-        return arg(arg).toString();
++        addArg(code, arg, false);
+     }
+ }
+\ No newline at end of file

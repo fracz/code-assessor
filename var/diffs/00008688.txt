@@ -1,0 +1,16 @@
+diff --git a/efd622bc9918de7f10921175ef534cb8b38108d4 b/ae97143b68bfee59c46b0d906fcbb900fe4f1b27
+index efd622bc99..ae97143b68 100644
+--- a/efd622bc9918de7f10921175ef534cb8b38108d4
++++ b/ae97143b68bfee59c46b0d906fcbb900fe4f1b27
+@@ -1,9 +1,9 @@
+ private boolean superMethodExists(MethodSignature methodSignature) {
+     LOG.assertTrue(myClass.isValid());
+     PsiMethod superEquals = MethodSignatureUtil.findMethodBySignature(myClass, methodSignature, true);
+     if (superEquals == null)
+         return true;
+     if (superEquals.hasModifierProperty(PsiModifier.ABSTRACT))
+         return false;
+-    return !"java.lang.Object".equals(superEquals.getContainingClass().getQualifiedName());
++    return !CommonClassNames.JAVA_LANG_OBJECT.equals(superEquals.getContainingClass().getQualifiedName());
+ }
+\ No newline at end of file

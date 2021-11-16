@@ -1,0 +1,20 @@
+diff --git a/80f33bdc9ac3816b1db54cc2213f063426ee4083 b/adab7bf217fb2e1588d5d5e4a784c70e5ed2b5f9
+index 80f33bdc9a..adab7bf217 100644
+--- a/80f33bdc9ac3816b1db54cc2213f063426ee4083
++++ b/adab7bf217fb2e1588d5d5e4a784c70e5ed2b5f9
+@@ -1,13 +1,11 @@
+ public float getFloat(String key, final float defaultValue) {
+     if (mProperties.containsKey(key)) {
+         String rawValue = mProperties.getProperty(key);
+         try {
+             return Float.parseFloat(lookup(rawValue));
+         } catch (NumberFormatException e) {
+             LOG.warn("Configuration cannot evaluate key " + key + " as float.");
+-            return defaultValue;
+         }
+-    } else {
+-        return defaultValue;
+     }
++    return defaultValue;
+ }
+\ No newline at end of file

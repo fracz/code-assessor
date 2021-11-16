@@ -1,0 +1,10 @@
+diff --git a/deee0be2561af9b3daa8000516f1566bd6a59949 b/d43edae88e820578a42279841a0dba987b2d620c
+index deee0be256..d43edae88e 100644
+--- a/deee0be2561af9b3daa8000516f1566bd6a59949
++++ b/d43edae88e820578a42279841a0dba987b2d620c
+@@ -1,3 +1,3 @@
+ private void notifyCommandsLoaded() {
+-    commandLoadedListeners.forEach(CommandLoadedListener::onCommandsLoaded);
++    eventBus.fireEvent(new CommandsLoadedEvent());
+ }
+\ No newline at end of file

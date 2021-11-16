@@ -1,0 +1,13 @@
+diff --git a/26d61381c5cb36ff488bcf0fb43246395d6160b1 b/1a69b16eeda24dfe63422136d6c6049a54bdef54
+index 26d61381c5..1a69b16eed 100644
+--- a/26d61381c5cb36ff488bcf0fb43246395d6160b1
++++ b/1a69b16eeda24dfe63422136d6c6049a54bdef54
+@@ -1,4 +1,5 @@
+-protected void appendAttributeValue(ResultSetViewer rsv, StringBuilder sql, DBDAttributeBinding binding, RowData row) {
++protected void appendAttributeValue(IResultSetController rsv, StringBuilder sql, DBDAttributeBinding binding, ResultSetRow row) {
++    DBPDataSource dataSource = rsv.getDataContainer().getDataSource();
+     Object value = rsv.getModel().getCellValue(binding, row);
+-    sql.append(SQLUtils.convertValueToSQL(rsv.getDataSource(), binding.getAttribute(), value));
++    sql.append(SQLUtils.convertValueToSQL(dataSource, binding.getAttribute(), value));
+ }
+\ No newline at end of file

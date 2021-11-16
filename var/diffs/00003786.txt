@@ -1,0 +1,12 @@
+diff --git a/ec18aa290aa92088eb4b536db6b4d67c93b9d3d9 b/83b39b709ef836d5fdf2605e0689d234493d4eb8
+index ec18aa290a..83b39b709e 100644
+--- a/ec18aa290aa92088eb4b536db6b4d67c93b9d3d9
++++ b/83b39b709ef836d5fdf2605e0689d234493d4eb8
+@@ -1,3 +1,5 @@
+ private boolean isToYieldUpdateFor(final DefaultMutableTreeNode node) {
+-    return canYield() && getBuilder().isToYieldUpdateFor(node);
++    if (!canYield())
++        return false;
++    return getBuilder().isToYieldUpdateFor(node);
+ }
+\ No newline at end of file

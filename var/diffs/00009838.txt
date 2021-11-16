@@ -1,0 +1,14 @@
+diff --git a/0669f2a6f96ca36dd9653fca0da020a4cdae8f4c b/8738f9a91d366ce0bb600af9aad6d353241b3803
+index 0669f2a6f9..8738f9a91d 100644
+--- a/0669f2a6f96ca36dd9653fca0da020a4cdae8f4c
++++ b/8738f9a91d366ce0bb600af9aad6d353241b3803
+@@ -1,6 +1,4 @@
++@Override
+ public void setSelected(AnActionEvent e, boolean state) {
+-    Project project = e.getData(PlatformDataKeys.PROJECT);
+-    if (project != null) {
+-        MavenRunner.getInstance(project).getState().setSkipTests(state);
+-    }
++    MavenRunner.getInstance(getProject(e)).getState().setSkipTests(state);
+ }
+\ No newline at end of file

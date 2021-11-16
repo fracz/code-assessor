@@ -1,0 +1,21 @@
+diff --git a/0965ade2a8d05deb07aa1b8de777549a5e6f9971 b/202c86fceadb60802b24c21dd1f5d66f91a061f7
+index 0965ade2a8..202c86fcea 100644
+--- a/0965ade2a8d05deb07aa1b8de777549a5e6f9971
++++ b/202c86fceadb60802b24c21dd1f5d66f91a061f7
+@@ -1,13 +1,6 @@
+ public void getLocalDependency(DependencyMetaData dependency, BuildableModuleVersionMetaData result) {
+-    CachedModuleVersionResult fromCache = cache.localDescriptors.get(dependency.getRequested());
+-    if (fromCache == null) {
++    if (!cache.supplyLocalMetaData(dependency.getRequested(), result)) {
+         delegate.getLocalDependency(dependency, result);
+-        CachedModuleVersionResult cachedResult = new CachedModuleVersionResult(result);
+-        if (cachedResult.isCacheable()) {
+-            cache.localDescriptors.put(dependency.getRequested(), cachedResult);
+-        }
+-    } else {
+-        stats.localMetadataCached++;
+-        fromCache.supply(result);
++        cache.newLocalDependencyResult(dependency.getRequested(), result);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/472ee8fe868ac3c4078915300cb2fe105cfdbecd b/44fc9dfda8e481bf880653b2aec3821e678d31fa
+index 472ee8fe86..44fc9dfda8 100644
+--- a/472ee8fe868ac3c4078915300cb2fe105cfdbecd
++++ b/44fc9dfda8e481bf880653b2aec3821e678d31fa
+@@ -1,9 +1,9 @@
+-VcsRootDetectInfo given(@NotNull Collection<String> roots, boolean below) {
+-    return new VcsRootDetectInfo(ContainerUtil.map(roots, new Function<String, VcsRoot>() {
++Collection<VcsRoot> given(@NotNull Collection<String> roots) {
++    return ContainerUtil.map(roots, new Function<String, VcsRoot>() {
+
+         @Override
+         public VcsRoot fun(String s) {
+             return new VcsRoot(myVcs, new MockVirtualFile(VcsTestUtil.toAbsolute(s, myProject)));
+         }
+-    }), below);
++    });
+ }
+\ No newline at end of file

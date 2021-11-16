@@ -1,0 +1,18 @@
+diff --git a/d0044a75fdb939908cbed7b740f6699294ab9413 b/991c229bf56e4d95f04d38d400a49b2c0cb4920c
+index d0044a75fd..991c229bf5 100644
+--- a/d0044a75fdb939908cbed7b740f6699294ab9413
++++ b/991c229bf56e4d95f04d38d400a49b2c0cb4920c
+@@ -1,4 +1,11 @@
+ @Override
+ public void close() throws IOException {
+-    Closeables.close(closeable, false);
++    if (closeable != null) {
++        try {
++            closeable.close();
++        } catch (Exception e) {
++            Throwables.propagateIfInstanceOf(e, IOException.class);
++            throw Throwables.propagate(e);
++        }
++    }
+ }
+\ No newline at end of file

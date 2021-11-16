@@ -1,0 +1,19 @@
+diff --git a/a6a769a5c60f03ba11e93a397317950ac2ab22fc b/f8f59791264f621d78ad908b1b9bff3f37fb841e
+index a6a769a5c6..f8f5979126 100644
+--- a/a6a769a5c60f03ba11e93a397317950ac2ab22fc
++++ b/f8f59791264f621d78ad908b1b9bff3f37fb841e
+@@ -1,10 +1,8 @@
+ private void maybeMaterializePlaceholder(String name) {
+-    if (!placeholders.isEmpty()) {
++    if (placeholders.containsKey(name)) {
+         if (super.findByName(name) == null) {
+-            if (placeholders.containsKey(name)) {
+-                final Action<Project> placeholderAction = placeholders.remove(name);
+-                placeholderAction.execute(project);
+-            }
++            final Runnable placeholderAction = placeholders.remove(name);
++            placeholderAction.run();
+         }
+     }
+ }
+\ No newline at end of file

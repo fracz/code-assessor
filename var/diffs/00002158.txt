@@ -1,0 +1,17 @@
+diff --git a/cf9615909226732256c7d70e0f5e6bea621fe1ef b/937d7da9c606a96bacf0ad7cbfa6d09abb25818f
+index cf96159092..937d7da9c6 100644
+--- a/cf9615909226732256c7d70e0f5e6bea621fe1ef
++++ b/937d7da9c606a96bacf0ad7cbfa6d09abb25818f
+@@ -1,10 +1,10 @@
+ @Override
+ public TextRange surroundExpression(@NotNull Project project, @NotNull Editor editor, @NotNull PyExpression element) throws IncorrectOperationException {
+-    PyParenthesizedExpression parenthesesExpression = (PyParenthesizedExpression) PythonLanguage.getInstance().getElementGenerator().createFromText(project, PyExpressionStatement.class, "(a)").getExpression();
++    PyParenthesizedExpression parenthesesExpression = (PyParenthesizedExpression) PyElementGenerator.getInstance(project).createFromText(PyExpressionStatement.class, "(a)").getExpression();
+     PyExpression expression = parenthesesExpression.getContainedExpression();
+     assert expression != null;
+     expression.replace(element);
+     element = (PyExpression) element.replace(parenthesesExpression);
+     element = CodeInsightUtilBase.forcePsiPostprocessAndRestoreElement(element);
+     return element.getTextRange();
+ }
+\ No newline at end of file

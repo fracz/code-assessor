@@ -1,0 +1,27 @@
+diff --git a/19800bd39570dfd596346bf0ed9140fea19958a1 b/feb9adda5b7e27026ad6c96218ac2393661aae63
+index 19800bd395..feb9adda5b 100644
+--- a/19800bd39570dfd596346bf0ed9140fea19958a1
++++ b/feb9adda5b7e27026ad6c96218ac2393661aae63
+@@ -1,20 +1,20 @@
+ /**
+  * Retrieves the value for the specified column and key under the given transaction
+  * from the store if such exists, otherwise returns NULL
+  *
+  * @param store Store
+  * @param key    Key
+  * @param column Column
+  * @param txh    Transaction
+  * @return Value for key and column or NULL if such does not exist
+  */
+ public static StaticBuffer get(KeyColumnValueStore store, StaticBuffer key, StaticBuffer column, StoreTransaction txh) throws StorageException {
+-    KeySliceQuery query = new KeySliceQuery(key, column, ByteBufferUtil.nextBiggerBuffer(column), 2);
++    KeySliceQuery query = new KeySliceQuery(key, column, ByteBufferUtil.nextBiggerBuffer(column)).setLimit(2);
+     List<Entry> result = store.getSlice(query, txh);
+     if (result.size() > 1)
+         log.warn("GET query returned more than 1 result: store {} | key {} | column {}", new Object[] { store.getName(), key, column });
+     if (result.isEmpty())
+         return null;
+     else
+         return result.get(0).getValue();
+ }
+\ No newline at end of file

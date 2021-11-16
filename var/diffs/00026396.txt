@@ -1,0 +1,17 @@
+diff --git a/f076095cce52a89d1320fd8cafc347bbb9f62bf8 b/17dbd83f453db48643a348fe5234e460715eb7eb
+index f076095cce..17dbd83f45 100644
+--- a/f076095cce52a89d1320fd8cafc347bbb9f62bf8
++++ b/17dbd83f453db48643a348fe5234e460715eb7eb
+@@ -1,10 +1,10 @@
+ @Setup
+ public void setupThreadLocal() {
+     threadLocal = ThreadLocal.withInitial(() -> {
+         for (int i = 0; i < ARENA_SIZE; i++) {
+             // Populates the internal hashmap to emulate other thread local usages
+-            ThreadLocal.withInitial(() -> Thread.currentThread().getId());
++            ThreadLocal.withInitial(Thread.currentThread()::getId);
+         }
+         return selectSlot(ThreadLocalRandom.current().nextInt());
+     });
+ }
+\ No newline at end of file

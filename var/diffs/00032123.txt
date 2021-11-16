@@ -1,0 +1,20 @@
+diff --git a/c33f996ab4a9e9c460afe9112ea65d19db1eb416 b/f044fa12de975de623f7e3de25ee5836a95dc64d
+index c33f996ab4..f044fa12de 100644
+--- a/c33f996ab4a9e9c460afe9112ea65d19db1eb416
++++ b/f044fa12de975de623f7e3de25ee5836a95dc64d
+@@ -1,8 +1,11 @@
+ /**
+  * Evaluates the type expression into a {@code JSType} object.
+  */
+ public JSType evaluate(StaticTypedScope<JSType> scope, TypeIRegistry registry) {
+-    JSType type = (JSType) registry.createTypeFromCommentNode(root, sourceName, scope);
+-    root.setJSType(type);
+-    return type;
++    if (registry instanceof JSTypeRegistry) {
++        JSType type = ((JSTypeRegistry) registry).createTypeFromCommentNode(root, sourceName, scope);
++        root.setJSType(type);
++        return type;
++    }
++    return null;
+ }
+\ No newline at end of file

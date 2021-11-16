@@ -1,0 +1,16 @@
+diff --git a/19b63ff2e7ca077bff2df44f798daa172e21bf81 b/e62e8abb338d4e28c19cd2c7078e1adfc1cdd4dc
+index 19b63ff2e7..e62e8abb33 100644
+--- a/19b63ff2e7ca077bff2df44f798daa172e21bf81
++++ b/e62e8abb338d4e28c19cd2c7078e1adfc1cdd4dc
+@@ -1,9 +1,3 @@
+ public void testAddOneFirst() throws Exception {
+-    doTest(new GenParams() {
+-
+-        @Override
+-        public TypeParameterInfo[] gen(PsiClass aClass) throws IncorrectOperationException {
+-            return new TypeParameterInfo[] { new TypeParameterInfo(aClass, "T", "java.lang.String") };
+-        }
+-    }, "Zero.java", "OneString.java");
++    doTest(aClass -> new TypeParameterInfo[] { new TypeParameterInfo(aClass, "T", "java.lang.String") }, "Zero.java", "OneString.java");
+ }
+\ No newline at end of file

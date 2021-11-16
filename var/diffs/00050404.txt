@@ -1,0 +1,19 @@
+diff --git a/f1a7bdd72a6aa8aac9953f37d6c1eefd15ae7c8d b/dfe09f5aa23c8179c6d2d183246561c1ffb4656f
+index f1a7bdd72a..dfe09f5aa2 100644
+--- a/f1a7bdd72a6aa8aac9953f37d6c1eefd15ae7c8d
++++ b/dfe09f5aa23c8179c6d2d183246561c1ffb4656f
+@@ -1,12 +1,12 @@
+ public DBNProjectDatabases getDatabases() {
+     try {
+-        for (DBNNode db : getChildren(VoidProgressMonitor.INSTANCE)) {
++        for (DBNNode db : getChildren(new VoidProgressMonitor())) {
+             if (db instanceof DBNProjectDatabases) {
+                 return (DBNProjectDatabases) db;
+             }
+         }
+     } catch (DBException e) {
+         throw new IllegalStateException("Can't read project contents", e);
+     }
+     throw new IllegalStateException("No databases resource in project");
+ }
+\ No newline at end of file

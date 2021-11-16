@@ -1,0 +1,21 @@
+diff --git a/edaa023c36a2e923631be2eff0aa9ff10a1ff3d1 b/623fab17433b18fd64fb5c88694ad4905e96082d
+index edaa023c36..623fab1743 100644
+--- a/edaa023c36a2e923631be2eff0aa9ff10a1ff3d1
++++ b/623fab17433b18fd64fb5c88694ad4905e96082d
+@@ -1,14 +1,11 @@
+ private int computeStringWidth(int fragmentIndex, Font font) {
+     String text = myFragments.get(fragmentIndex);
+     if (StringUtil.isEmpty(text))
+         return 0;
+-    TextLayout layout = getCachedTextLayout(fragmentIndex);
+-    if (layout == null && needFontFallback(font, text)) {
+-        layout = createAndCacheTextLayout(fragmentIndex, font, getFontMetrics(font).getFontRenderContext());
+-    }
++    TextLayout layout = getTextLayout(fragmentIndex, font, getFontMetrics(font).getFontRenderContext());
+     if (layout != null) {
+         return (int) layout.getAdvance();
+     } else {
+         return getFontMetrics(font).stringWidth(text);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/2181d9dfd88e5d00d727c3840e15af962342f3af b/544b13485af6d67932fa36a4099d94350f36461b
+index 2181d9dfd8..544b13485a 100644
+--- a/2181d9dfd88e5d00d727c3840e15af962342f3af
++++ b/544b13485af6d67932fa36a4099d94350f36461b
+@@ -1,12 +1,12 @@
+ public void run() {
+     ProgressIndicator progress = ProgressManager.getInstance().getProgressIndicator();
+     if (progress != null) {
+         progress.setText(SvnBundle.message("progress.text.loading.contents", myURL));
+         progress.setText2(SvnBundle.message("progress.text2.revision.information", myRevision));
+     }
+     try {
+-        myContents = SvnUtil.getFileContents(myVCS, myURL, true, myRevision, myPegRevision);
++        myContents = SvnUtil.getFileContents(myVCS, SvnTarget.fromURL(SvnUtil.parseUrl(myURL)), myRevision, myPegRevision);
+     } catch (VcsException e) {
+         myException = e;
+     }
+ }
+\ No newline at end of file

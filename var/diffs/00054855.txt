@@ -1,0 +1,20 @@
+diff --git a/6e88bb229f2c131f2feb3ce0311af51b428bd245 b/29d73f6566630b844457ed6097c52725017737a5
+index 6e88bb229f..29d73f6566 100644
+--- a/6e88bb229f2c131f2feb3ce0311af51b428bd245
++++ b/29d73f6566630b844457ed6097c52725017737a5
+@@ -1,9 +1,10 @@
+ private static void registerLoops(MethodNode mth) {
+     for (BlockNode block : mth.getBasicBlocks()) {
+-        AttributesList attributes = block.getAttributes();
+-        IAttribute loop = attributes.get(AttributeType.LOOP);
+-        if (loop != null && attributes.contains(AttributeFlag.LOOP_START)) {
+-            mth.registerLoop((LoopAttr) loop);
++        List<LoopInfo> loops = block.getAll(AType.LOOP);
++        if (block.contains(AFlag.LOOP_START)) {
++            for (LoopInfo loop : loops) {
++                mth.registerLoop(loop);
++            }
+         }
+     }
+ }
+\ No newline at end of file

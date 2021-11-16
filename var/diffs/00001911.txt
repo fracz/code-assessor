@@ -1,0 +1,15 @@
+diff --git a/3ddfa88d60fa878f014995d7757cd0890935d8f1 b/d12f1056d2b0d04ce642847796c86b5ed399998c
+index 3ddfa88d60..d12f1056d2 100644
+--- a/3ddfa88d60fa878f014995d7757cd0890935d8f1
++++ b/d12f1056d2b0d04ce642847796c86b5ed399998c
+@@ -1,7 +1,8 @@
+ @Override
+ public void visitPyReferenceExpression(PyReferenceExpression node) {
+     super.visitPyReferenceExpression(node);
+-    if (ControlFlowCache.getScope(scopeOwner).containsDeclaration(node.getName())) {
++    final String name = node.getName();
++    if (name != null && ControlFlowCache.getScope(scopeOwner).containsDeclaration(name)) {
+         isValid[0] = false;
+     }
+ }
+\ No newline at end of file

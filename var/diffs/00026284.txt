@@ -1,0 +1,17 @@
+diff --git a/840aff107510d1ef0a9cc26fd2922bcfc4c6eeac b/6c3f6567518dbe79e371a6af6c866ad575119457
+index 840aff1075..6c3f656751 100644
+--- a/840aff107510d1ef0a9cc26fd2922bcfc4c6eeac
++++ b/6c3f6567518dbe79e371a6af6c866ad575119457
+@@ -1,10 +1,10 @@
+ /**
+  * Must be called before the {@link SkyframeExecutor} can be used (should only be called in
+  * factory methods and as an implementation detail of {@link #resetEvaluator}).
+  */
+ protected void init() {
+-    progressReceiver = new SkyframeProgressReceiver();
++    progressReceiver = newSkyframeProgressReceiver();
+     Map<SkyFunctionName, SkyFunction> skyFunctions = skyFunctions(directories.getBuildDataDirectory(), pkgFactory, allowedMissingInputs);
+     memoizingEvaluator = evaluatorSupplier.create(skyFunctions, evaluatorDiffer(), progressReceiver, emittedEventState, hasIncrementalState());
+     buildDriver = newBuildDriver();
+ }
+\ No newline at end of file

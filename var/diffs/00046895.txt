@@ -1,0 +1,22 @@
+diff --git a/2b67b7dd927aea0f78692cc32b2a863c4142c022 b/b7f7bafc5cf2263913781360c798c2d2160f0568
+index 2b67b7dd92..b7f7bafc5c 100644
+--- a/2b67b7dd927aea0f78692cc32b2a863c4142c022
++++ b/b7f7bafc5cf2263913781360c798c2d2160f0568
+@@ -1,14 +1,14 @@
+ @Before
+ public void setupClientAndMediaDriver() throws Exception {
+     System.setProperty(DIRS_DELETE_ON_EXIT_PROP_NAME, "true");
++    executorService = Executors.newFixedThreadPool(2);
+     receiverChannel = DatagramChannel.open();
+     receiverChannel.configureBlocking(false);
+     receiverChannel.bind(new InetSocketAddress(HOST, PORT));
+     driver = new MediaDriver();
+     producingClient = Aeron.newSingleMediaDriver(newAeronContext());
+-    publication = producingClient.newPublication(DESTINATION, CHANNEL_ID, SESSION_ID);
+     payload.putBytes(0, PAYLOAD);
+-    executorService = Executors.newSingleThreadExecutor();
+     driver.invokeEmbedded();
+     producingClient.invoke(executorService);
++    publication = producingClient.newPublication(DESTINATION, CHANNEL_ID, SESSION_ID);
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/79e0220e4b36d79bde6f433ce6dae4bed62ae214 b/07fdab4c0775bc8d3c17411984105c1229039821
+index 79e0220e4b..07fdab4c07 100644
+--- a/79e0220e4b36d79bde6f433ce6dae4bed62ae214
++++ b/07fdab4c0775bc8d3c17411984105c1229039821
+@@ -1,17 +1,14 @@
+ // ////// FILTERS
+ /**
+  * Emit or deny the current element based upon the provided boolean-based closure.
+  *
+  * @param closure return true to emit and false to remove.
+  * @return the extended FaunusPipeline
+  */
+ public FaunusPipeline filter(final String closure) {
+     this.state.checkLocked();
+     this.state.checkProperty();
+-    final Configuration configuration = new Configuration();
+-    configuration.setClass(FilterMap.CLASS, this.state.getElementType(), Element.class);
+-    configuration.set(FilterMap.CLOSURE, this.validateClosure(closure));
+-    this.compiler.addMap(FilterMap.Map.class, NullWritable.class, FaunusVertex.class, configuration);
++    this.compiler.addMap(FilterMap.Map.class, NullWritable.class, FaunusVertex.class, FilterMap.createConfiguration(this.state.getElementType(), this.validateClosure(closure)));
+     makeMapReduceString(FilterMap.class);
+     return this;
+ }
+\ No newline at end of file

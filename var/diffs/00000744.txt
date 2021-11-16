@@ -1,0 +1,22 @@
+diff --git a/e744583846b105ff67343770e19bd70ada053b46 b/d75d0309e3ae3feda782d13c3b12bc22d75ea72f
+index e744583846..d75d0309e3 100644
+--- a/e744583846b105ff67343770e19bd70ada053b46
++++ b/d75d0309e3ae3feda782d13c3b12bc22d75ea72f
+@@ -1,14 +1,14 @@
+ private void startDrawingWhenReady(final Runnable runnable) {
+     if (drawTask == null) {
+-        drawTask = new CachingDrawTask(timer, getContext(), getWidth(), getHeight(), new IDrawTask.TaskListener() {
++        drawTask = createTask(mEnableMultiThread, timer, getContext(), getWidth(), getHeight(), new IDrawTask.TaskListener() {
+
+             @Override
+             public void ready() {
+-                Log.i(TAG, "start drawing");
++                Log.i(TAG, "start drawing multiThread enabled:" + mEnableMultiThread);
+                 runnable.run();
+             }
+         });
+     } else {
+         runnable.run();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/71d847a1ee7aba1d1946206fd6b12753bcd942aa b/9679e175914db1e6fe233c83f87d325923ede3e5
+index 71d847a1ee..9679e17591 100644
+--- a/71d847a1ee7aba1d1946206fd6b12753bcd942aa
++++ b/9679e175914db1e6fe233c83f87d325923ede3e5
+@@ -1,11 +1,4 @@
+ @NotNull
+ public Collection<ClassDescriptorWithResolutionScopes> getAllClasses() {
+-    Collection<ClassDescriptorWithResolutionScopes> scriptClasses = CollectionsKt.map(getScripts().values(), new Function1<ScriptDescriptor, ClassDescriptorWithResolutionScopes>() {
+-
+-        @Override
+-        public ClassDescriptorWithResolutionScopes invoke(ScriptDescriptor scriptDescriptor) {
+-            return (ClassDescriptorWithResolutionScopes) scriptDescriptor.getClassDescriptor();
+-        }
+-    });
+-    return CollectionsKt.plus(getDeclaredClasses().values(), scriptClasses);
++    return CollectionsKt.plus(getDeclaredClasses().values(), getScripts().values());
+ }
+\ No newline at end of file

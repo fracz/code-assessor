@@ -1,0 +1,14 @@
+diff --git a/317c139a3b5923f59abdee65b69ae94cfaa93a53 b/c370373156705bae9cfe750af8f81cdb00c6cb8e
+index 317c139a3b..c370373156 100644
+--- a/317c139a3b5923f59abdee65b69ae94cfaa93a53
++++ b/c370373156705bae9cfe750af8f81cdb00c6cb8e
+@@ -1,4 +1,7 @@
+ @Override
+ public void onAvatarClick(int uid) {
+-    ActorSDKLauncher.startProfileActivity(getActivity(), uid);
++    Fragment fragment = getParentFragment();
++    if (fragment instanceof MessagesFragmentCallback) {
++        ((MessagesFragmentCallback) fragment).onAvatarClick(uid);
++    }
+ }
+\ No newline at end of file

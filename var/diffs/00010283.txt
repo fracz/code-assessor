@@ -1,0 +1,13 @@
+diff --git a/9306d987418c59660f018523bca35e5d7588692e b/8d21265b61be207840fdb894cf0a1d88d94ed180
+index 9306d98741..8d21265b61 100644
+--- a/9306d987418c59660f018523bca35e5d7588692e
++++ b/8d21265b61be207840fdb894cf0a1d88d94ed180
+@@ -1,5 +1,6 @@
+ @Override
+ public void visitParameter(String name, int access) {
+-    parameterNames.add(name);
++    parameters[myParameterIndex].name = name;
++    myParameterIndex++;
+     super.visitParameter(name, access);
+ }
+\ No newline at end of file

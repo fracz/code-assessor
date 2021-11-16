@@ -1,0 +1,19 @@
+diff --git a/873c25cee30fbc17afb90431f1b93902710a13d2 b/4d222214d10eec7d143c064a8100c6419893a179
+index 873c25cee3..4d222214d1 100644
+--- a/873c25cee30fbc17afb90431f1b93902710a13d2
++++ b/4d222214d10eec7d143c064a8100c6419893a179
+@@ -1,9 +1,7 @@
+-private static void checkCoveringBlocksInvariant(List<TryCatchBlockNodeInfo> coveringTryCatchBlocks) {
++private static void checkCoveringBlocksInvariant(@ReadOnly @NotNull List<TryCatchBlockNodeInfo> currentCoveringNodesFromOuterMost) {
+     boolean isWasOnlyLocal = false;
+-    for (TryCatchBlockNodeInfo info : Lists.reverse(coveringTryCatchBlocks)) {
+-        assert !isWasOnlyLocal || info.getOnlyCopyNotProcess();
+-        if (info.getOnlyCopyNotProcess()) {
+-            isWasOnlyLocal = true;
+-        }
++    for (TryCatchBlockNodeInfo info : currentCoveringNodesFromOuterMost) {
++        assert !isWasOnlyLocal || info.getOnlyCopyNotProcess() : "There are some problems with try-catch structure";
++        isWasOnlyLocal = info.getOnlyCopyNotProcess();
+     }
+ }
+\ No newline at end of file

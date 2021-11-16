@@ -1,0 +1,20 @@
+diff --git a/50654a6dd7fc8a651b589ee9084214528c4faa2b b/618b3439668d0fac6c58c44c9c4bdc34828aad4f
+index 50654a6dd7..618b343966 100644
+--- a/50654a6dd7fc8a651b589ee9084214528c4faa2b
++++ b/618b3439668d0fac6c58c44c9c4bdc34828aad4f
+@@ -1,9 +1,12 @@
+ @Override
+-public void saveProperties(@NotNull JpsSimpleElement<JavaSourceRootProperties> properties, @NotNull Element sourceRootTag) {
++public void saveProperties(@NotNull JavaSourceRootProperties properties, @NotNull Element sourceRootTag) {
+     String isTestSource = Boolean.toString(getType().equals(JavaSourceRootType.TEST_SOURCE));
+     sourceRootTag.setAttribute(JpsModuleRootModelSerializer.IS_TEST_SOURCE_ATTRIBUTE, isTestSource);
+-    String packagePrefix = properties.getData().getPackagePrefix();
++    String packagePrefix = properties.getPackagePrefix();
+     if (!packagePrefix.isEmpty()) {
+         sourceRootTag.setAttribute(JpsModuleRootModelSerializer.PACKAGE_PREFIX_ATTRIBUTE, packagePrefix);
+     }
++    if (properties.isForGeneratedSources()) {
++        sourceRootTag.setAttribute(IS_GENERATED_ATTRIBUTE, Boolean.TRUE.toString());
++    }
+ }
+\ No newline at end of file

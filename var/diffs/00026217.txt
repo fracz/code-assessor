@@ -1,0 +1,16 @@
+diff --git a/d4c3c751ca4b84570cf1c0dc0fe9b3c799a84a80 b/473fcf1f81d397e731a369270dcf43fa40585634
+index d4c3c751ca..473fcf1f81 100644
+--- a/d4c3c751ca4b84570cf1c0dc0fe9b3c799a84a80
++++ b/473fcf1f81d397e731a369270dcf43fa40585634
+@@ -1,9 +1,9 @@
+ @Test
+ public void selectableDefaultValueWithTypeDefault() throws Exception {
+     writeConfigRules();
+     scratch.file("srctest/BUILD", "genrule(", "    name = 'gen',", "    cmd = '',", "    outs = ['gen.out'],", "    srcs = select({", "        '//conditions:a': None,", "    }))");
+     useConfiguration("--test_arg=a");
+     ConfiguredTarget binary = getConfiguredTarget("//srctest:gen");
+-    AttributeMap attributes = ConfiguredAttributeMapper.of((RuleConfiguredTarget) binary);
++    AttributeMap attributes = ((RuleConfiguredTarget) binary).getAttributeMapper();
+     assertThat(attributes.get("srcs", BuildType.LABEL_LIST)).isEmpty();
+ }
+\ No newline at end of file

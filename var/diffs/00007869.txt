@@ -1,0 +1,23 @@
+diff --git a/4c99300a9a018442b222ea5269eb04e75470d01f b/a5eaa5358fed9c9f0c2be9428bc596194bf001af
+index 4c99300a9a..a5eaa5358f 100644
+--- a/4c99300a9a018442b222ea5269eb04e75470d01f
++++ b/a5eaa5358fed9c9f0c2be9428bc596194bf001af
+@@ -1,13 +1,14 @@
+ private static String getString(Configurable configurable, String key) {
+     try {
+         if (configurable instanceof ConfigurableWrapper) {
+             ConfigurableWrapper wrapper = (ConfigurableWrapper) configurable;
+-            ConfigurableEP ep = wrapper.getExtensionPoint();
+-            ResourceBundle bundle = AbstractBundle.getResourceBundle(ep.bundle, ep.getPluginDescriptor().getPluginClassLoader());
+-            return CommonBundle.message(bundle, key);
++            ResourceBundle bundle = wrapper.getExtensionPoint().findBundle();
++            if (bundle != null) {
++                return CommonBundle.message(bundle, key);
++            }
+         }
+         return OptionsBundle.message(key);
+     } catch (AssertionError error) {
+         return null;
+     }
+ }
+\ No newline at end of file

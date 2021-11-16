@@ -1,0 +1,14 @@
+diff --git a/80e8bab62345ed0e7f7b9fced21acde5c0f45f8f b/1969c2f7a1c3a8a9a7f9348d4f16d1f2cfecc628
+index 80e8bab623..1969c2f7a1 100644
+--- a/80e8bab62345ed0e7f7b9fced21acde5c0f45f8f
++++ b/1969c2f7a1c3a8a9a7f9348d4f16d1f2cfecc628
+@@ -1,7 +1,3 @@
+ public int getDialogsDividerColor() {
+-    if (dialogsDividerColor != 0) {
+-        return dialogsDividerColor;
+-    } else {
+-        return getDividerColor();
+-    }
++    return getColorWithFallback(dialogsDividerColor, getDividerColor());
+ }
+\ No newline at end of file

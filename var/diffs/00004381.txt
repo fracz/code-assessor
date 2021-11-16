@@ -1,0 +1,18 @@
+diff --git a/ab4a14502d83f77a6d00e033062e30729e0d6eef b/6a3d866546a97d3f7f796ad982edc702564c9232
+index ab4a14502d..6a3d866546 100644
+--- a/ab4a14502d83f77a6d00e033062e30729e0d6eef
++++ b/6a3d866546a97d3f7f796ad982edc702564c9232
+@@ -1,10 +1,8 @@
+ public boolean isSelected(AnActionEvent e) {
+     VcsContext context = PeerFactory.getInstance().getVcsContextFactory().createContextOn(e);
+     Editor editor = context.getEditor();
+     if (editor == null)
+         return false;
+-    Collection annotations = editor.getUserData(AnnotateAction.KEY_IN_EDITOR);
+-    if (annotations == null)
+-        return false;
+-    return !annotations.isEmpty();
++    Collection annotations = editor.getUserData(KEY_IN_EDITOR);
++    return annotations != null && !annotations.isEmpty();
+ }
+\ No newline at end of file

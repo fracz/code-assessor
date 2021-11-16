@@ -1,0 +1,29 @@
+diff --git a/98a83fe6690802d233684115cc127f73ed2c23a2 b/1c4625746b9118e351185eadffb9e5d01dbd56d4
+index 98a83fe669..1c4625746b 100644
+--- a/98a83fe6690802d233684115cc127f73ed2c23a2
++++ b/1c4625746b9118e351185eadffb9e5d01dbd56d4
+@@ -1,22 +1,22 @@
+ /**
+  * Output the node as a string
+  *
+  * @return Node as a string
+  */
+ @Override
+ public String toString() {
+     StringBuilder out = new StringBuilder();
+     out.append(name);
+-    if (prototypeNames.size() > 0) {
++    if (!prototypeNames.isEmpty()) {
+         out.append(" (CLASS)\n");
+         out.append(" - FUNCTIONS: ");
+         Iterator<String> pIter = prototypeNames.iterator();
+         while (pIter.hasNext()) {
+             out.append(pIter.next());
+             if (pIter.hasNext()) {
+                 out.append(", ");
+             }
+         }
+     }
+     return out.toString();
+ }
+\ No newline at end of file

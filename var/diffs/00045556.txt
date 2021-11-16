@@ -1,0 +1,17 @@
+diff --git a/61397c83c053382e6fb2eaa4ed3682951fe82957 b/8783c81bb2ca20605aed1602ed0b7c3f9e0a2709
+index 61397c83c0..8783c81bb2 100644
+--- a/61397c83c053382e6fb2eaa4ed3682951fe82957
++++ b/8783c81bb2ca20605aed1602ed0b7c3f9e0a2709
+@@ -1,8 +1,10 @@
+ public void remove(Object key, OIdentifiable value) throws IOException {
+     if (value.getIdentity().isTemporary()) {
+         writer.deleteDocuments(engine.deleteQuery(key, value));
+     } else {
+         deleted.add(value.getIdentity().toString());
+-        deletedDocs.add(engine.buildDocument(key, value));
++        Document doc = engine.buildDocument(key, value);
++        deletedDocs.add(doc);
++        deletedIdx.addDocument(doc);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/1408d449077c3ce399d1f54840b280f005928d8e b/2c20d2c9edaeaf2cafaee6ff30a44d3bda493af6
+index 1408d44907..2c20d2c9ed 100644
+--- a/1408d449077c3ce399d1f54840b280f005928d8e
++++ b/2c20d2c9edaeaf2cafaee6ff30a44d3bda493af6
+@@ -1,8 +1,7 @@
+ @NotNull
+ private JetType computeUpperBoundsAsType() {
+     Set<JetType> upperBounds = getUpperBounds();
+     assert !upperBounds.isEmpty() : "Upper bound list is empty in " + getName();
+-    KotlinBuiltIns builtIns = getBuiltIns(this);
+-    JetType upperBoundsAsType = TypeIntersector.intersectTypes(builtIns, JetTypeChecker.DEFAULT, upperBounds);
+-    return upperBoundsAsType != null ? upperBoundsAsType : builtIns.getNothingType();
++    JetType upperBoundsAsType = TypeIntersector.intersectTypes(JetTypeChecker.DEFAULT, upperBounds);
++    return upperBoundsAsType != null ? upperBoundsAsType : getBuiltIns(this).getNothingType();
+ }
+\ No newline at end of file

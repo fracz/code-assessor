@@ -1,0 +1,13 @@
+diff --git a/5af4c0fbf84828bbd0eb33bfbfdfa9bf68609709 b/7ae75e83e04d2ac6ca60d473e95cc406b790785d
+index 5af4c0fbf8..7ae75e83e0 100644
+--- a/5af4c0fbf84828bbd0eb33bfbfdfa9bf68609709
++++ b/7ae75e83e04d2ac6ca60d473e95cc406b790785d
+@@ -1,4 +1,6 @@
+ public SQLInsertStatement explainToInsertSQLObject(MappingEngine engine, String sql) {
+     OracleStatementParser parser = new OracleStatementParser(sql);
+-    return (SQLInsertStatement) parser.parseInsert();
++    SQLInsertStatement stmt = (SQLInsertStatement) parser.parseInsert();
++    MappingVisitorUtils.setDataSource(engine, stmt);
++    return stmt;
+ }
+\ No newline at end of file

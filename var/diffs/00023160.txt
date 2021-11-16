@@ -1,0 +1,15 @@
+diff --git a/42ce3f4708e71ed2332b1ac5f30a7040ff3c498c b/129578cf4e320defd1370a2ccdd866f6f73c9070
+index 42ce3f4708..129578cf4e 100644
+--- a/42ce3f4708e71ed2332b1ac5f30a7040ff3c498c
++++ b/129578cf4e320defd1370a2ccdd866f6f73c9070
+@@ -1,7 +1,7 @@
+-private long getLowStorageThreshold() {
+-    @SuppressWarnings("deprecation") final long lowThreshold = StorageManager.from(this).getStorageLowBytes(mDataDir);
++private long getLowStorageThreshold(Context context) {
++    @SuppressWarnings("deprecation") final long lowThreshold = StorageManager.from(context).getStorageLowBytes(mDataDir);
+     if (lowThreshold == 0) {
+         Log.e(TAG, "Invalid low storage threshold");
+     }
+     return lowThreshold;
+ }
+\ No newline at end of file

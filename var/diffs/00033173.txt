@@ -1,0 +1,21 @@
+diff --git a/8207c17acd9e6bd9e13d6564bd64ddcf931dc096 b/3e8bebbb47f1b0bfe4e12c98f55f9d643ccb7eeb
+index 8207c17acd..3e8bebbb47 100644
+--- a/8207c17acd9e6bd9e13d6564bd64ddcf931dc096
++++ b/3e8bebbb47f1b0bfe4e12c98f55f9d643ccb7eeb
+@@ -1,5 +1,13 @@
+-private void assertBothExistsAndOneIsBeforeOther(List<Configuration> hierarchy, Configuration beforeConf, Configuration afterConf) {
++private void assertBothExistsAndOneIsBeforeOther(Set<Configuration> hierarchy, Configuration beforeConf, Configuration afterConf) {
+     assertThat(hierarchy, hasItem(beforeConf));
+     assertThat(hierarchy, hasItem(afterConf));
+-    assertThat(hierarchy.indexOf(beforeConf), lessThan(hierarchy.indexOf(afterConf)));
++    boolean foundBeforeConf = false;
++    for (Configuration configuration : hierarchy) {
++        if (configuration.equals(beforeConf)) {
++            foundBeforeConf = true;
++        }
++        if (configuration.equals(afterConf)) {
++            assertThat(foundBeforeConf, equalTo(true));
++        }
++    }
+ }
+\ No newline at end of file

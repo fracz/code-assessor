@@ -1,0 +1,19 @@
+diff --git a/1e1607a300c32f4694f1bd0d9d2ebf0c82a0df4e b/01fc8256fbe866a0807b772f4361f69299514543
+index 1e1607a300..01fc8256fb 100644
+--- a/1e1607a300c32f4694f1bd0d9d2ebf0c82a0df4e
++++ b/01fc8256fbe866a0807b772f4361f69299514543
+@@ -1,10 +1,7 @@
+ @Override
+ protected int getStencilBits() {
+-    if (USE_JOGL_FBOLAYER) {
++    if (USE_JOGL_FBOLAYER)
+         return capabilities.getStencilBits();
+-    } else {
+-        intBuffer.rewind();
+-        getIntegerv(STENCIL_BITS, intBuffer);
+-        return intBuffer.get(0);
+-    }
++    else
++        return super.getStencilBits();
+ }
+\ No newline at end of file

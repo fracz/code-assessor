@@ -1,0 +1,13 @@
+diff --git a/0d2c198863212dcef596b3d92d671b92903d28f2 b/2dbbc1e39bb1eb1158fe44b72d055136c14bfa29
+index 0d2c198863..2dbbc1e39b 100644
+--- a/0d2c198863212dcef596b3d92d671b92903d28f2
++++ b/2dbbc1e39bb1eb1158fe44b72d055136c14bfa29
+@@ -1,4 +1,6 @@
+ private boolean isLineDelimiter(IDocument document, String text) {
+-    String[] delimiters = document.getLegalLineDelimiters();
++    if (delimiters == null) {
++        delimiters = document.getLegalLineDelimiters();
++    }
+     return delimiters != null && TextUtilities.equals(delimiters, text) > -1;
+ }
+\ No newline at end of file

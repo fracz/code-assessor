@@ -1,0 +1,15 @@
+diff --git a/09909c6a74846eeafa5ff607d2f87e8309c5e16a b/833dcb7b18f5b9f491377ffbc6622a23b94e4811
+index 09909c6a74..833dcb7b18 100644
+--- a/09909c6a74846eeafa5ff607d2f87e8309c5e16a
++++ b/833dcb7b18f5b9f491377ffbc6622a23b94e4811
+@@ -1,8 +1,8 @@
+ @Test
+ public void testAddExpire() throws InterruptedException, ExecutionException {
+     RSetCacheReactive<String> set = redisson.getSetCache("simple3");
+     sync(set.add("123", 1, TimeUnit.SECONDS));
+-    Assert.assertThat(sync(set), Matchers.contains("123"));
++    assertThat(sync(set)).containsOnly("123");
+     Thread.sleep(1000);
+     Assert.assertFalse(sync(set.contains("123")));
+ }
+\ No newline at end of file

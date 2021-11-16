@@ -1,0 +1,16 @@
+diff --git a/8e6eb1f339684d063260354a9f2d284b1e147b02 b/64ecc51faa96c6c7347b78b6c026871a98d6e08e
+index 8e6eb1f339..64ecc51faa 100644
+--- a/8e6eb1f339684d063260354a9f2d284b1e147b02
++++ b/64ecc51faa96c6c7347b78b6c026871a98d6e08e
+@@ -1,8 +1,8 @@
++@Override
+ public void checkCreateFile(@NotNull final String name) throws IncorrectOperationException {
+-    FileTypeManager fileTypeManager = FileTypeManager.getInstance();
+-    FileType type = fileTypeManager.getFileTypeByFileName(name);
++    final FileType type = FileTypeManager.getInstance().getFileTypeByFileName(name);
+     if (type == StdFileTypes.CLASS) {
+         throw new IncorrectOperationException("Cannot create class-file");
+     }
+     super.checkCreateFile(name);
+ }
+\ No newline at end of file

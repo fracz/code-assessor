@@ -1,0 +1,20 @@
+diff --git a/d3ffef94d719854bf0ebe9bf811b546a2f20bad7 b/4a8bf3ffef766278324ddb10fa7c72265a456bdb
+index d3ffef94d7..4a8bf3ffef 100644
+--- a/d3ffef94d719854bf0ebe9bf811b546a2f20bad7
++++ b/4a8bf3ffef766278324ddb10fa7c72265a456bdb
+@@ -1,13 +1,13 @@
+ public synchronized void cleanScope(final VcsDirtyScope scope) {
+     ApplicationManager.getApplication().runReadAction(new Runnable() {
+
+         public void run() {
+             final List<VirtualFile> currentFiles = new ArrayList<VirtualFile>(myFiles);
+             for (VirtualFile file : currentFiles) {
+-                if (!file.isValid() || scope.belongsTo(PeerFactory.getInstance().getVcsContextFactory().createFilePathOn(file))) {
++                if (fileDropped(file) || scope.belongsTo(PeerFactory.getInstance().getVcsContextFactory().createFilePathOn(file))) {
+                     myFiles.remove(file);
+                 }
+             }
+         }
+     });
+ }
+\ No newline at end of file

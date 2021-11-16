@@ -1,0 +1,16 @@
+diff --git a/d0fb115694f5db88c0817f6b7adb69688c3822cc b/e7e402bb5d7e9314841c4cb80240e36ee068c564
+index d0fb115694..e7e402bb5d 100644
+--- a/d0fb115694f5db88c0817f6b7adb69688c3822cc
++++ b/e7e402bb5d7e9314841c4cb80240e36ee068c564
+@@ -1,8 +1,9 @@
+ public static boolean isNewLine(PsiElement element) {
+     if (element == null)
+         return false;
+     ASTNode node = element.getNode();
+     if (node == null)
+         return false;
+-    return node.getElementType() == GroovyTokenTypes.mNLS;
++    IElementType elementType = node.getElementType();
++    return elementType == GroovyTokenTypes.mNLS || elementType == TokenType.WHITE_SPACE && element.getText().contains("\n");
+ }
+\ No newline at end of file

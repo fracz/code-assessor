@@ -1,0 +1,23 @@
+diff --git a/5f6bf06b92eb1fcae1dc9e40692360696e935045 b/60c4b8eede6beeda4889e8bda82eeee14c789b51
+index 5f6bf06b92..60c4b8eede 100644
+--- a/5f6bf06b92eb1fcae1dc9e40692360696e935045
++++ b/60c4b8eede6beeda4889e8bda82eeee14c789b51
+@@ -1,14 +1,8 @@
+ @NotNull
+ private JsExpression extensionFunctionLiteralCall() {
+-    List<JsExpression> callArguments = new ArrayList<JsExpression>();
+-    assert receiver != null;
+-    callArguments.add(thisObject());
+-    callArguments.addAll(arguments);
+-    receiver = null;
+-    JsNameRef callMethodNameRef = AstUtil.newQualifiedNameRef("call");
+-    JsInvocation callMethodInvocation = new JsInvocation();
+-    callMethodInvocation.setQualifier(callMethodNameRef);
+-    AstUtil.setQualifier(callMethodInvocation, calleeReference());
++    receiver = getExtensionFunctionCallReceiver();
++    List<JsExpression> callArguments = generateExtensionCallArgumentList();
++    JsInvocation callMethodInvocation = generateCallMethodInvocation();
+     callMethodInvocation.setArguments(callArguments);
+     return callMethodInvocation;
+ }
+\ No newline at end of file

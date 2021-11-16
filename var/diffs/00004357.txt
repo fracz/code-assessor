@@ -1,0 +1,23 @@
+diff --git a/ceb931ce85e75ef752aaf7853b635dae3cd9c5b9 b/5d9ba9cef5d46acd9f3bf5119a063dec217fd5aa
+index ceb931ce85..5d9ba9cef5 100644
+--- a/ceb931ce85e75ef752aaf7853b635dae3cd9c5b9
++++ b/5d9ba9cef5d46acd9f3bf5119a063dec217fd5aa
+@@ -1,16 +1,16 @@
+ /**
+  * Get file to the script service
+  *
+  * @return path to the script
+  * @throws IOException if script cannot be generated
+  */
+ @NotNull
+ public synchronized File getScriptPath() throws IOException {
+     if (myScriptPath == null || !myScriptPath.exists()) {
+-        ScriptGenerator generator = new ScriptGenerator(getScriptTempFilePrefix(), getScriptMainClass());
++        ScriptGenerator generator = new ScriptGenerator(myScriptTempFilePrefix, myScriptMainClass);
+         generator.addClasses(XmlRpcClientLite.class, DecoderException.class, FileUtilRt.class);
+         customizeScriptGenerator(generator);
+         myScriptPath = generator.generate();
+     }
+     return myScriptPath;
+ }
+\ No newline at end of file

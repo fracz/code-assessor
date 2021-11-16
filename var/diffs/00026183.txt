@@ -1,0 +1,20 @@
+diff --git a/f77fbb2e54272466bcc068b74221804f0b0ad87c b/f642a121092fb0fd4483b7f0d42cee0f42de157d
+index f77fbb2e54..f642a12109 100644
+--- a/f77fbb2e54272466bcc068b74221804f0b0ad87c
++++ b/f642a121092fb0fd4483b7f0d42cee0f42de157d
+@@ -1,13 +1,13 @@
+ Digest uploadBlob(byte[] blob) throws InterruptedException {
+     Digest digest = Digests.computeDigest(blob);
+     ImmutableSet<Digest> missing = getMissingDigests(ImmutableList.of(digest));
+     try {
+         if (!missing.isEmpty()) {
+-            uploadChunks(1, Chunker.from(blob));
++            uploadChunks(1, new Chunker.Builder().addInput(blob));
+         }
+         return digest;
+     } catch (IOException e) {
+         // This will never happen.
+         throw new RuntimeException();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/9fe4c4467ef3240da83c9ab9eef513993dc5ed7b b/2a2c896618ad67d5f6f802855825ab2427615529
+index 9fe4c4467e..2a2c896618 100644
+--- a/9fe4c4467ef3240da83c9ab9eef513993dc5ed7b
++++ b/2a2c896618ad67d5f6f802855825ab2427615529
+@@ -1,15 +1,15 @@
+ public void saveValue() {
+     if (valueEditor == null) {
+         return;
+     }
+     try {
+         valueSaving = true;
+         Object newValue = valueEditor.extractEditorValue();
+         previewController.updateValue(newValue, true);
+         presentation.updateValueView();
+     } catch (Exception e) {
+-        UIUtils.showErrorDialog(null, "Value save", "Can't save edited value", e);
++        DBUserInterface.getInstance().showError("Value save", "Can't save edited value", e);
+     } finally {
+         valueSaving = false;
+     }
+ }
+\ No newline at end of file

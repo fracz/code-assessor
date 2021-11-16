@@ -1,0 +1,22 @@
+diff --git a/054af941f2e054463df8ce7c344602c5023673df b/918d2eae2dcfaab317fa8a54fb40611081b0e79c
+index 054af941f2..918d2eae2d 100644
+--- a/054af941f2e054463df8ce7c344602c5023673df
++++ b/918d2eae2dcfaab317fa8a54fb40611081b0e79c
+@@ -1,14 +1,14 @@
+ private void notifyAboutSyncedBranches() {
+-    GitVcs.IMPORTANT_ERROR_NOTIFICATION.createNotification("Synchronous branch control enabled", "You have several Git roots in the project and they all are checked out at the same branch. " + "We've enabled synchronous branch control for the project. <br/>" + "If you wish to control branches in different roots separately, you may <a href='settings'>disable</a> the setting.", NotificationType.INFORMATION, new NotificationListener() {
++    VcsNotifier.getInstance(myProject).notifyImportantInfo("Synchronous branch control enabled", "You have several Git roots in the project and they all are checked out at the same branch. " + "We've enabled synchronous branch control for the project. <br/>" + "If you wish to control branches in different roots separately, you may <a href='settings'>disable</a> the setting.", new NotificationListener() {
+
+         @Override
+         public void hyperlinkUpdate(@NotNull Notification notification, @NotNull HyperlinkEvent event) {
+             if (event.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+                 ShowSettingsUtil.getInstance().showSettingsDialog(myProject, myVcs.getConfigurable().getDisplayName());
+                 if (myVcsSettings.getSyncSetting() == GitBranchSyncSetting.DONT) {
+                     notification.expire();
+                 }
+             }
+         }
+-    }).notify(myProject);
++    });
+ }
+\ No newline at end of file

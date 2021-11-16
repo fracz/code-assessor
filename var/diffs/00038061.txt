@@ -1,0 +1,22 @@
+diff --git a/efe64c1f0c37bd938ff824dec6be5cbc791428cd b/349d9cb911c6c30db96dfb8f82bb22718de0a739
+index efe64c1f0c..349d9cb911 100644
+--- a/efe64c1f0c37bd938ff824dec6be5cbc791428cd
++++ b/349d9cb911c6c30db96dfb8f82bb22718de0a739
+@@ -1,12 +1,12 @@
+ @Override
+ protected void pullUpdates(int... slaves) throws Exception {
+     if (slaves.length == 0) {
+-        for (StandaloneDbCom db : slaveJvms) {
+-            db.pullUpdates();
++        for (int i = 1; i < jvms.size(); i++) {
++            jvms.get(i).pullUpdates();
+         }
+     } else {
+-        for (StandaloneDbCom db : slaveJvms) {
+-            db.pullUpdates();
++        for (int slave : slaves) {
++            jvms.get(slave + 1).pullUpdates();
+         }
+     }
+ }
+\ No newline at end of file

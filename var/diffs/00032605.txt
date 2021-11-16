@@ -1,0 +1,17 @@
+diff --git a/c4be33e51c18fad4dc27f3ba16e660be1dd521ce b/7c970c021877657253bd3c8645a0818d1a62afb2
+index c4be33e51c..7c970c0218 100644
+--- a/c4be33e51c18fad4dc27f3ba16e660be1dd521ce
++++ b/7c970c021877657253bd3c8645a0818d1a62afb2
+@@ -1,10 +1,10 @@
+ /**
+  * Return a matcher for method invocations in which the method being called is on an instance of
+  * a type in the typesToCheck set and returns the same type (e.g. String.trim() returns a
+  * String).
+  */
+ @SuppressWarnings("unchecked")
+ @Override
+ public Matcher<MethodInvocationTree> specializedMatcher() {
+-    return methodSelect(allOf(ExpressionTree.class, methodReceiverHasType(typesToCheck), methodReturnsSameTypeAsReceiver()));
++    return methodSelect(Matchers.<ExpressionTree>allOf(methodReceiverHasType(typesToCheck), methodReturnsSameTypeAsReceiver()));
+ }
+\ No newline at end of file

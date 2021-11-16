@@ -1,0 +1,18 @@
+diff --git a/21d589d6c65862e6adcef82aba0a817365d7d1fa b/4b27aa4b9483136aa508d354671efe77efca9b76
+index 21d589d6c6..4b27aa4b94 100644
+--- a/21d589d6c65862e6adcef82aba0a817365d7d1fa
++++ b/4b27aa4b9483136aa508d354671efe77efca9b76
+@@ -1,9 +1,8 @@
+-public static String[] getExcludeRoots() {
++public static List<File> getExcludeRoots() {
+     try {
+         final String classPathFilePath = System.getProperty("exclude.tests.roots.file");
+-        return classPathFilePath != null ? parseUrls(classPathFilePath) : null;
++        return classPathFilePath != null ? loadFilesPaths(classPathFilePath) : null;
+     } catch (Exception e) {
+-        // noinspection SSBasedInspection
+-        return new String[0];
++        return Collections.emptyList();
+     }
+ }
+\ No newline at end of file

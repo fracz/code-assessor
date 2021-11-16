@@ -1,0 +1,19 @@
+diff --git a/e8d261c57122326b9b1f18adab768c43fc95dec8 b/bcda3c331da7ae7b90ce9490df89722cbac2de84
+index e8d261c571..bcda3c331d 100644
+--- a/e8d261c57122326b9b1f18adab768c43fc95dec8
++++ b/bcda3c331da7ae7b90ce9490df89722cbac2de84
+@@ -1,12 +1,12 @@
+ @Override
+ public <T> T removeProperty(final String key) {
+     if (properties.isEmpty())
+         return null;
+-    Collection<Object> removed = this.properties.removeAll(FaunusGraph.getCurrent().getTypes().get(key));
++    Collection<Object> removed = this.properties.removeAll(FaunusType.DEFAULT_MANAGER.get(key));
+     if (removed.isEmpty())
+         return null;
+     else if (removed.size() == 1)
+         return (T) removed.iterator().next();
+     else
+         return (T) removed;
+ }
+\ No newline at end of file

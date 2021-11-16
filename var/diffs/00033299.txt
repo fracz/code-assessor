@@ -1,0 +1,17 @@
+diff --git a/7b4537d17118e7772ae5d95f0f7e12fdca5e1a2a b/155ca3f0a14889ff6319671729a0b3a1adb0d460
+index 7b4537d171..155ca3f0a1 100644
+--- a/7b4537d17118e7772ae5d95f0f7e12fdca5e1a2a
++++ b/155ca3f0a14889ff6319671729a0b3a1adb0d460
+@@ -1,8 +1,8 @@
+-public void getModel(final Class<? extends ProjectVersion3> type, final BuildOperationParametersVersion1 operationParameters, ResultHandlerVersion1<? super ProjectVersion3> handler) throws UnsupportedOperationException, IllegalStateException {
+-    runLater(handler, new ConnectionAction<ProjectVersion3>() {
++public <T> void getModel(final Class<T> type, final BuildOperationParametersVersion1 operationParameters, ResultHandlerVersion1<T> handler) throws UnsupportedOperationException, IllegalStateException {
++    runLater(handler, new ConnectionAction<T>() {
+
+-        public ProjectVersion3 run() {
++        public T run() {
+             return connection.getModel(type, operationParameters);
+         }
+     });
+ }
+\ No newline at end of file

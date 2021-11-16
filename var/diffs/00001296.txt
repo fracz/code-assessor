@@ -1,0 +1,20 @@
+diff --git a/d3fcc2e0a1bcd7294021fb08724a0a47ed0ed090 b/3cfa787afd4b04b6f7c17376d460f6435c56e7cc
+index d3fcc2e0a1..3cfa787afd 100644
+--- a/d3fcc2e0a1bcd7294021fb08724a0a47ed0ed090
++++ b/3cfa787afd4b04b6f7c17376d460f6435c56e7cc
+@@ -1,5 +1,11 @@
+ @Override
+-public boolean addRule(String ruleSource) {
+-    rules.add(ruleSource);
+-    return deployRules(increaseRulesVersion());
++public synchronized boolean addRule(String ruleSource) {
++    log.debug("Adding rule {}", ruleSource);
++    liveRules.add(ruleSource);
++    if (!commitRules()) {
++        // adding rule failed, remove the ruleSource from our list of liveRules again.
++        liveRules.remove(ruleSource);
++        return false;
++    }
++    return true;
+ }
+\ No newline at end of file

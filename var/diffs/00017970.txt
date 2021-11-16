@@ -1,0 +1,22 @@
+diff --git a/cac3c1444d8885ef127160303a03d2358bb6dcfe b/7cb9967c766df68b4973e8e671e17d9fd2dde2ed
+index cac3c1444d..7cb9967c76 100644
+--- a/cac3c1444d8885ef127160303a03d2358bb6dcfe
++++ b/7cb9967c766df68b4973e8e671e17d9fd2dde2ed
+@@ -1,14 +1,14 @@
+-public static EurekaHttpClientFactory createFactory(final ClusterResolver clusterResolver, final EurekaHttpClientFactory delegateFactory, final ServerStatusEvaluator serverStatusEvaluator) {
++public static EurekaHttpClientFactory createFactory(final ClusterResolver<EurekaEndpoint> clusterResolver, final TransportClientFactory delegateFactory, final ServerStatusEvaluator serverStatusEvaluator) {
+     return new EurekaHttpClientFactory() {
+
+         @Override
+-        public EurekaHttpClient create(String... serviceUrls) {
++        public EurekaHttpClient newClient() {
+             return new RetryableEurekaHttpClient(clusterResolver, delegateFactory, serverStatusEvaluator, DEFAULT_NUMBER_OF_RETRIES);
+         }
+
+         @Override
+         public void shutdown() {
+             delegateFactory.shutdown();
+         }
+     };
+ }
+\ No newline at end of file

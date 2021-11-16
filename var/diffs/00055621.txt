@@ -1,0 +1,18 @@
+diff --git a/6275f8ed7da1e55ed5966f2ff2f5f1cc2706ca3a b/eaae88b3e8cc6dca472b675a70fda34a0b5383d0
+index 6275f8ed7d..eaae88b3e8 100644
+--- a/6275f8ed7da1e55ed5966f2ff2f5f1cc2706ca3a
++++ b/eaae88b3e8cc6dca472b675a70fda34a0b5383d0
+@@ -1,11 +1,11 @@
+ @Test
+ public void testCircularReferenceWithTwoFactoryBeans() {
+     DefaultListableBeanFactory xbf = new DefaultListableBeanFactory();
+     XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(xbf);
+     reader.setValidationMode(XmlBeanDefinitionReader.VALIDATION_NONE);
+-    reader.loadBeanDefinitions(new ClassPathResource("reftypes.xml", getClass()));
++    reader.loadBeanDefinitions(REFTYPES_CONTEXT);
+     TestBean ego1 = (TestBean) xbf.getBean("ego1");
+     assertTrue("Correct circular reference", ego1.getSpouse().getSpouse() == ego1);
+     TestBean ego3 = (TestBean) xbf.getBean("ego3");
+     assertTrue("Correct circular reference", ego3.getSpouse().getSpouse() == ego3);
+ }
+\ No newline at end of file

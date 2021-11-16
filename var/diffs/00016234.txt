@@ -1,0 +1,18 @@
+diff --git a/de801946a19d63628d82a4a98ec36084c42317b8 b/e7d116f57c534ebe07cb856d7fd2e7f3d43963c9
+index de801946a1..e7d116f57c 100644
+--- a/de801946a19d63628d82a4a98ec36084c42317b8
++++ b/e7d116f57c534ebe07cb856d7fd2e7f3d43963c9
+@@ -1,10 +1,9 @@
+ @NotNull
+-private JsExpression overloadedMethodInvocation() {
++private JsExpression overloadedMethodInvocation(AccessTranslator accessTranslator) {
+     JsBlock innerBlock = new JsBlock();
+     TranslationContext innerContext = context().innerBlock(innerBlock);
+-    JsExpression oldValue = createAccessTranslator(expression.getLeft(), false).translateAsGet();
++    JsExpression oldValue = accessTranslator.translateAsGet();
+     JsExpression result = CallTranslator.translate(innerContext, resolvedCall, oldValue);
+-    forceOrderOfEvaluation = !innerBlock.isEmpty();
+     context().addStatementsToCurrentBlockFrom(innerBlock);
+     return result;
+ }
+\ No newline at end of file

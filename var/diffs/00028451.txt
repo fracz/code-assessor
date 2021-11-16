@@ -1,0 +1,23 @@
+diff --git a/d725e265c89fb315aff0127aa86d93d6757e7cad b/a8e71c8a1c4a8f0a629a5c619a74403b7a42fdee
+index d725e265c8..a8e71c8a1c 100644
+--- a/d725e265c89fb315aff0127aa86d93d6757e7cad
++++ b/a8e71c8a1c4a8f0a629a5c619a74403b7a42fdee
+@@ -1,13 +1,9 @@
+ @Override
+-public HttpClientRequest exceptionHandler(final Handler<Throwable> handler) {
++public HttpClientRequest exceptionHandler(Handler<Throwable> handler) {
+     check();
+-    this.exceptionHandler = new Handler<Throwable>() {
+-
+-        @Override
+-        public void handle(Throwable event) {
+-            cancelOutstandingTimeoutTimer();
+-            handler.handle(event);
+-        }
++    this.exceptionHandler = t -> {
++        cancelOutstandingTimeoutTimer();
++        handler.handle(t);
+     };
+     return this;
+ }
+\ No newline at end of file

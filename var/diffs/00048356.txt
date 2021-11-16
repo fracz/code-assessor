@@ -1,0 +1,24 @@
+diff --git a/9db208a8db07ee250e84692b2c397d6c92efb320 b/b7be58ffe1ccea91dcfe8ae5a0c8d3b29a8ee29b
+index 9db208a8db..b7be58ffe1 100644
+--- a/9db208a8db07ee250e84692b2c397d6c92efb320
++++ b/b7be58ffe1ccea91dcfe8ae5a0c8d3b29a8ee29b
+@@ -1,17 +1,12 @@
+ @Override
+ public Object execute(ExecutionEvent event) throws ExecutionException {
+     final NavigatorViewBase navigatorView = NavigatorUtils.getActiveNavigatorView(event);
+     if (navigatorView == null) {
+         return null;
+     }
+-    final DBPDataSourceContainer ds = navigatorView.getDataSourceContainer();
+-    if (ds == null) {
+-        return null;
+-    }
+     IEditorPart activeEditor = HandlerUtil.getActiveEditor(event);
+-    if (activeEditor instanceof IDataSourceContainerProviderEx) {
+-        ((IDataSourceContainerProviderEx) activeEditor).setDataSourceContainer(ds);
++    if (NavigatorUtils.syncEditorWithNavigator(navigatorView, activeEditor)) {
+         HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().activate(activeEditor);
+     }
+     return null;
+ }
+\ No newline at end of file

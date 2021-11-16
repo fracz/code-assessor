@@ -1,0 +1,19 @@
+diff --git a/fab9830459ba01e9f0caaa8450a4100785faa476 b/9ff05a1bb2815489be794c7ce034da8424e8cb6a
+index fab9830459..9ff05a1bb2 100644
+--- a/fab9830459ba01e9f0caaa8450a4100785faa476
++++ b/9ff05a1bb2815489be794c7ce034da8424e8cb6a
+@@ -1,8 +1,8 @@
+-private static void checkRootObject(@NotNull AnnotationHolder holder, @NotNull JsonValueAdapter adapter, JsonLikePsiWalker walker, @NotNull JsonSchemaObject rootSchema) {
++private void checkRootObject(@NotNull JsonValueAdapter adapter, @NotNull JsonSchemaObject rootSchema) {
+     if (!adapter.isObject() && !adapter.isArray())
+         return;
+-    final BySchemaChecker rootChecker = new BySchemaChecker(walker);
+-    final Set<String> validatedProperties = new HashSet<>();
+-    rootChecker.checkByScheme(adapter, rootSchema, validatedProperties);
+-    processCheckerResults(holder, rootChecker);
++    final MatchResult matchResult = JsonSchemaVariantsTreeBuilder.simplify(rootSchema, rootSchema);
++    final BySchemaChecker checker = checkByMatchResult(adapter, matchResult, myWalker, rootSchema);
++    if (checker != null)
++        processCheckerResults(checker);
+ }
+\ No newline at end of file

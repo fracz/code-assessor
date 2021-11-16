@@ -1,0 +1,12 @@
+diff --git a/dd66ecde3d3326985e8659b7a05d653cfe4dac08 b/3d2cce69bca053dbb6f0e683578eea7a55bdcf16
+index dd66ecde3d..3d2cce69bc 100644
+--- a/dd66ecde3d3326985e8659b7a05d653cfe4dac08
++++ b/3d2cce69bca053dbb6f0e683578eea7a55bdcf16
+@@ -1,5 +1,5 @@
+ @Test
+ public void testMain() throws Exception {
+-    final OETLProcessor processor = OETLProcessor.parseConfigAndParameters(new String[] { "-dburl=local:/tmp/db", "./src/test/resources/comment.json" });
++    final OETLProcessor processor = new OETLProcessorConfigurator().parseConfigAndParameters(new String[] { "-dburl=local:/tmp/db", "./src/test/resources/comment.json" });
+     assertThat(processor.getContext().getVariable("dburl")).isEqualTo("local:/tmp/db");
+ }
+\ No newline at end of file

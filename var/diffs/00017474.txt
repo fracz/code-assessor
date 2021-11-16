@@ -1,0 +1,17 @@
+diff --git a/6f453293afb40ab3717620f550efec2e1d9174a0 b/a66f4a154e85af2775a169c87267493cceaa9048
+index 6f453293af..a66f4a154e 100644
+--- a/6f453293afb40ab3717620f550efec2e1d9174a0
++++ b/a66f4a154e85af2775a169c87267493cceaa9048
+@@ -1,10 +1,10 @@
+ private Node mulExpr(TokenStream ts) throws IOException, JavaScriptException {
+-    CodePosition position = getNextTokenPosition(ts);
+     int tt;
+     Node pn = unaryExpr(ts);
+     while ((tt = ts.peekToken()) == TokenStream.MUL || tt == TokenStream.DIV || tt == TokenStream.MOD) {
+         tt = ts.getToken();
++        CodePosition position = ts.tokenPosition;
+         pn = nf.createBinary(tt, pn, unaryExpr(ts), position);
+     }
+     return pn;
+ }
+\ No newline at end of file

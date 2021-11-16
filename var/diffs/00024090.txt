@@ -1,0 +1,24 @@
+diff --git a/1985c754abadb80ece64f3ba6ff56a7af6e02b13 b/455a92f73f58879d90df4479bf2500af120752c9
+index 1985c754ab..455a92f73f 100644
+--- a/1985c754abadb80ece64f3ba6ff56a7af6e02b13
++++ b/455a92f73f58879d90df4479bf2500af120752c9
+@@ -1,17 +1,17 @@
+ private void checkThresholdAndRollLog() throws IOException {
+     if (logWriter_.getFileSize() >= SEGMENT_SIZE) {
+         /* Rolls the current log file over to a new one. */
+         setNextFileName();
+         String oldLogFile = logWriter_.getFileName();
+         logWriter_.close();
+         /* point reader/writer to a new commit log file. */
+         logWriter_ = CommitLog.createWriter(logFile_);
+         /* squirrel away the old commit log header */
+         clHeaders_.put(oldLogFile, new CommitLogHeader(clHeader_));
+         // we leave the old 'dirty' bits alone, so we can test for
+         // whether it's safe to remove a given log segment by and-ing its dirty
+         // with the current one.
+         clHeader_.zeroPositions();
+-        writeCommitLogHeader(clHeader_.toByteArray(), false);
++        writeCommitLogHeader(logWriter_, clHeader_.toByteArray());
+     }
+ }
+\ No newline at end of file

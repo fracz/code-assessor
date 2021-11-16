@@ -1,0 +1,14 @@
+diff --git a/29cc0d545ea2bdeec35c4074b9c94d5e98ce2808 b/534c1e83c64014ce4751a7f1aa4b61ac2beb9452
+index 29cc0d545e..534c1e83c6 100644
+--- a/29cc0d545ea2bdeec35c4074b9c94d5e98ce2808
++++ b/534c1e83c64014ce4751a7f1aa4b61ac2beb9452
+@@ -1,7 +1,4 @@
+ protected Font getColumnFont() {
+-    Font font = null;
+-    if (grid.getColumnLabelProvider() instanceof IFontProvider) {
+-        font = ((IFontProvider) grid.getColumnLabelProvider()).getFont(getColumn());
+-    }
++    Font font = grid.getColumnLabelProvider().getFont(element);
+     return font != null ? font : grid.getFont();
+ }
+\ No newline at end of file

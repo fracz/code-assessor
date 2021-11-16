@@ -1,0 +1,17 @@
+diff --git a/3c3f35ceb870f916f1ed35bbc7d7f639b962f861 b/e9c48c03cc45ae195f126c3dbc76dd69a78da931
+index 3c3f35ceb8..e9c48c03cc 100644
+--- a/3c3f35ceb870f916f1ed35bbc7d7f639b962f861
++++ b/e9c48c03cc45ae195f126c3dbc76dd69a78da931
+@@ -1,6 +1,9 @@
+-@SuppressWarnings("unused")
+ private static String getCreateStatementMethodBeforeInsertCode() {
+     StringBuilder sb = new StringBuilder();
+-    // sb.append("}");
++    if (logger.isDebugEnabled()) {
++        sb.append("{");
++        sb.append("System.out.println(\"-----ConnectionJDBC2.createStatement() method is called\");");
++        sb.append("}");
++    }
+     return sb.toString();
+ }
+\ No newline at end of file

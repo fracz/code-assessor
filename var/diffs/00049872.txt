@@ -1,0 +1,23 @@
+diff --git a/b5f4f06e6d65440d94a2b43bd5b9187dc7ca7766 b/fbaf041016ab1aab894e9a2b55151fd349f18d26
+index b5f4f06e6d..fbaf041016 100644
+--- a/b5f4f06e6d65440d94a2b43bd5b9187dc7ca7766
++++ b/fbaf041016ab1aab894e9a2b55151fd349f18d26
+@@ -1,9 +1,15 @@
+ @Override
+ public void execute(IWorkbenchWindow window, IWorkbenchPart activePart, Collection<DBSObject> objects) throws DBException {
+     for (DBSObject object : objects) {
++        PostgreDatabase database;
+         if (object instanceof PostgreSchema) {
+-            ToolWizardDialog dialog = new ToolWizardDialog(window, new PostgreScriptExecuteWizard((PostgreSchema) object, true));
+-            dialog.open();
++            database = ((PostgreSchema) object).getDatabase();
++        } else if (object instanceof PostgreDatabase) {
++            database = (PostgreDatabase) object;
++        } else {
++            continue;
+         }
++        ToolWizardDialog dialog = new ToolWizardDialog(window, new PostgreRestoreWizard(database));
++        dialog.open();
+     }
+ }
+\ No newline at end of file

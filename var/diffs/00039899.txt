@@ -1,0 +1,18 @@
+diff --git a/d5cc589c54468888a163470a2c07913e71b94019 b/f5d322aa43785b081a80fffffc9d93df211836d7
+index d5cc589c54..f5d322aa43 100644
+--- a/d5cc589c54468888a163470a2c07913e71b94019
++++ b/f5d322aa43785b081a80fffffc9d93df211836d7
+@@ -1,10 +1,11 @@
+ private IndexDescriptor createIndex(String labelName, String propertyKeyName) throws KernelException {
+     try (Transaction tx = db.beginTx()) {
+         Statement statement = bridge.get();
+         int labelId = statement.tokenWriteOperations().labelGetOrCreateForName(labelName);
+         int propertyKeyId = statement.tokenWriteOperations().propertyKeyGetOrCreateForName(propertyKeyName);
+-        IndexDescriptor index = statement.schemaWriteOperations().indexCreate(labelId, propertyKeyId);
++        NodePropertyDescriptor descriptor = new NodePropertyDescriptor(labelId, propertyKeyId);
++        IndexDescriptor index = statement.schemaWriteOperations().indexCreate(descriptor);
+         tx.success();
+         return index;
+     }
+ }
+\ No newline at end of file

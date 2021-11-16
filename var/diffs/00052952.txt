@@ -1,0 +1,16 @@
+diff --git a/7db127aaff228f2950ef68156cd7cb9e014f96a6 b/a8af5452865497d092f197d046a9bb07c954fc53
+index 7db127aaff..a8af545286 100644
+--- a/7db127aaff228f2950ef68156cd7cb9e014f96a6
++++ b/a8af5452865497d092f197d046a9bb07c954fc53
+@@ -1,6 +1,6 @@
+-private void appendDerivedOrderBy() {
+-    if (!getSelectStatement().getGroupByItems().isEmpty() && getSelectStatement().getOrderByItems().isEmpty()) {
+-        getSelectStatement().getOrderByItems().addAll(getSelectStatement().getGroupByItems());
+-        getSelectStatement().getSqlTokens().add(new OrderByToken(getSelectStatement().getGroupByLastPosition()));
++private void appendDerivedOrderBy(final SelectStatement selectStatement) {
++    if (!selectStatement.getGroupByItems().isEmpty() && selectStatement.getOrderByItems().isEmpty()) {
++        selectStatement.getOrderByItems().addAll(selectStatement.getGroupByItems());
++        selectStatement.getSqlTokens().add(new OrderByToken(selectStatement.getGroupByLastPosition()));
+     }
+ }
+\ No newline at end of file

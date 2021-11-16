@@ -1,0 +1,16 @@
+diff --git a/95e6fde5e3ff5b08c8b697884a2aca28583514d4 b/f98c1ef30bd1b4ab304275c1ff2a6f627e70f2d5
+index 95e6fde5e3..f98c1ef30b 100644
+--- a/95e6fde5e3ff5b08c8b697884a2aca28583514d4
++++ b/f98c1ef30bd1b4ab304275c1ff2a6f627e70f2d5
+@@ -1,7 +1,7 @@
+-protected SSTableWriter createWriter(ColumnFamilyStore cfs, long totalSize, long repairedAt) throws IOException {
++protected SSTableWriter createWriter(ColumnFamilyStore cfs, long totalSize, long repairedAt, SSTableFormat.Type format) throws IOException {
+     Directories.DataDirectory localDir = cfs.directories.getWriteableLocation();
+     if (localDir == null)
+         throw new IOException("Insufficient disk space to store " + totalSize + " bytes");
+-    desc = Descriptor.fromFilename(cfs.getTempSSTablePath(cfs.directories.getLocationForDisk(localDir)));
+-    return new SSTableWriter(desc.filenameFor(Component.DATA), estimatedKeys, repairedAt, sstableLevel);
++    desc = Descriptor.fromFilename(cfs.getTempSSTablePath(cfs.directories.getLocationForDisk(localDir), format));
++    return SSTableWriter.create(desc, estimatedKeys, repairedAt, sstableLevel);
+ }
+\ No newline at end of file

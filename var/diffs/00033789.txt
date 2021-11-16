@@ -1,0 +1,21 @@
+diff --git a/1b4f431528b475df90e527542423efc32a6b7267 b/28c0782dd8dc76ea7ce268da0081b8056ed303f2
+index 1b4f431528..28c0782dd8 100644
+--- a/1b4f431528b475df90e527542423efc32a6b7267
++++ b/28c0782dd8dc76ea7ce268da0081b8056ed303f2
+@@ -1,13 +1,7 @@
+ public void resolve(Artifact artifact, BuildableArtifactResolveResult result, ModuleSource moduleSource) {
+     ArtifactIdentifier id = new DefaultArtifactIdentifier(artifact);
+-    File fromCache = cache.artifacts.get(id);
+-    if (fromCache == null) {
++    if (!cache.supplyArtifact(id, result)) {
+         delegate.resolve(artifact, result, moduleSource);
+-        if (result.getFailure() == null) {
+-            cache.artifacts.put(id, result.getFile());
+-        }
+-    } else {
+-        stats.artifactsCached++;
+-        result.resolved(fromCache);
++        cache.newArtifact(id, result);
+     }
+ }
+\ No newline at end of file

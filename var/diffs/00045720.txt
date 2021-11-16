@@ -1,0 +1,27 @@
+diff --git a/37f8d5b7fc481199b82ab89ea748ba7ecda38fc4 b/22b577856c6770791b0ad9bf9f9617cbeb881450
+index 37f8d5b7fc..22b577856c 100644
+--- a/37f8d5b7fc481199b82ab89ea748ba7ecda38fc4
++++ b/22b577856c6770791b0ad9bf9f9617cbeb881450
+@@ -1,15 +1,19 @@
+ @Override
+ public boolean equals(final Object obj) {
+     if (this == obj)
+         return true;
+     if (obj == null)
+         return false;
+-    if (getClass() != obj.getClass())
++    final ORecordId other;
++    if (obj instanceof ORecordId)
++        other = (ORecordId) obj;
++    else if (obj instanceof ORecord<?>)
++        other = (ORecordId) ((ORecord<?>) obj).getIdentity();
++    else
+         return false;
+-    final ORecordId other = (ORecordId) obj;
+     if (clusterId != other.clusterId)
+         return false;
+     if (clusterPosition != other.clusterPosition)
+         return false;
+     return true;
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/501b5055fd732b11721484cfe135742987921677 b/6e2d6ba7d25b0a7a08d345335777d374acb60ea9
+index 501b5055fd..6e2d6ba7d2 100644
+--- a/501b5055fd732b11721484cfe135742987921677
++++ b/6e2d6ba7d25b0a7a08d345335777d374acb60ea9
+@@ -1,8 +1,7 @@
+-public void prepare(Topologies topologies, Cluster cluster, Map<String, User> userMap, RAS_Nodes nodes) {
+-    _topologies = topologies;
+-    _cluster = cluster;
+-    _nodes = RAS_Nodes.getAllNodesFrom(cluster, _topologies);
++public void prepare(ClusterStateData clusterStateData) {
++    _clusterStateData = clusterStateData;
++    _nodes = clusterStateData.nodes;
+     _availNodes = this.getAvailNodes();
+-    _clusterInfo = cluster.getNetworkTopography();
++    _clusterInfo = _clusterStateData.getNetworkTopography();
+     LOG.debug(this.getClusterInfo());
+ }
+\ No newline at end of file

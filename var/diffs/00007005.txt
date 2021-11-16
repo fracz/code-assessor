@@ -1,0 +1,34 @@
+diff --git a/4435d7124683fda222f60030bf39ff7cec40d730 b/be8a8c4d311dfd016f21dbe74dd17bdbc29a13b2
+index 4435d71246..be8a8c4d31 100644
+--- a/4435d7124683fda222f60030bf39ff7cec40d730
++++ b/be8a8c4d311dfd016f21dbe74dd17bdbc29a13b2
+@@ -1,19 +1,17 @@
+ public String getContent() {
+     if (myContent == null) {
+-        try {
+-            final Document doc = FileDocumentManager.getInstance().getDocument(myVf);
+-            if (doc == null) {
+-                myPatchApplyFailed = true;
+-                return null;
+-            }
+-            final String baseContent = doc.getText();
+-            final StringBuilder newText = new StringBuilder();
+-            ApplyFilePatchBase.applyModifications(myPatch, baseContent, newText);
+-            myContent = newText.toString();
+-        } catch (ApplyPatchException e) {
++        final Document doc = FileDocumentManager.getInstance().getDocument(myVf);
++        if (doc == null) {
+             myPatchApplyFailed = true;
+             return null;
+         }
++        final String localContext = doc.getText();
++        final GenericPatchApplier applier = new GenericPatchApplier(localContext, myPatch.getHunks());
++        if (applier.execute()) {
++            myContent = applier.getAfter();
++        } else {
++            myPatchApplyFailed = true;
++        }
+     }
+     return myContent;
+ }
+\ No newline at end of file

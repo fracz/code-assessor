@@ -1,0 +1,12 @@
+diff --git a/96c544ae98b6eb266180e990a2af9614d6dc0b80 b/298ee0b67a4ee5af76a2e4a40a0c8dd7c7e56f6a
+index 96c544ae98..298ee0b67a 100644
+--- a/96c544ae98b6eb266180e990a2af9614d6dc0b80
++++ b/298ee0b67a4ee5af76a2e4a40a0c8dd7c7e56f6a
+@@ -1,5 +1,4 @@
+ public static byte[] modify(ClassPool classPool, ClassLoader classLoader, String javassistClassName, byte[] classFileBuffer) {
+-    log("OracleResultSetImpl modifing");
+-    // printClassInfo(javassistClassName);
++    logger.info("OracleResultSetImpl modifing. %s", javassistClassName);
+     return changeMethod(classPool, classLoader, javassistClassName, classFileBuffer);
+ }
+\ No newline at end of file

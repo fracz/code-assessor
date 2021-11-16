@@ -1,0 +1,20 @@
+diff --git a/e5b8777a773acbc132304ad32a2b1bb2e6c86f0c b/06eaf06d69e915c371d4029e5f1469fcdad4ffa3
+index e5b8777a77..06eaf06d69 100644
+--- a/e5b8777a773acbc132304ad32a2b1bb2e6c86f0c
++++ b/06eaf06d69e915c371d4029e5f1469fcdad4ffa3
+@@ -1,13 +1,13 @@
+ private long getCurrentID(StaticBuffer partitionKey, StoreTransaction txh) throws StorageException {
+-    List<Entry> blocks = idStore.getSlice(new KeySliceQuery(partitionKey, LOWER_SLICE, UPPER_SLICE, 5), txh);
++    List<Entry> blocks = idStore.getSlice(new KeySliceQuery(partitionKey, LOWER_SLICE, UPPER_SLICE).setLimit(5), txh);
+     if (blocks == null)
+         throw new TemporaryStorageException("Could not read from storage");
+     long latest = BASE_ID;
+     for (Entry e : blocks) {
+         long counterVal = getBlockValue(e.getReadColumn());
+         if (latest < counterVal) {
+             latest = counterVal;
+         }
+     }
+     return latest;
+ }
+\ No newline at end of file

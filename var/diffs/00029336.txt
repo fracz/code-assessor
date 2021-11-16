@@ -1,0 +1,17 @@
+diff --git a/63c8da13fa3536b03091fa1f4cd18ebb933fdfcd b/e5c24b3869692769c8bf11fa212c64596ec99e8c
+index 63c8da13fa..e5c24b3869 100644
+--- a/63c8da13fa3536b03091fa1f4cd18ebb933fdfcd
++++ b/e5c24b3869692769c8bf11fa212c64596ec99e8c
+@@ -1,4 +1,10 @@
+ @Override
+ public String toString() {
+-    return "[" + Arrays.toString(indices) + "]" + Arrays.toString(types) + ", querySource[" + Unicode.fromBytes(querySource, querySourceOffset, querySourceLength) + "], explain:" + explain;
++    String sSource = "_na_";
++    try {
++        sSource = XContentHelper.convertToJson(querySource, false);
++    } catch (Exception e) {
++    // ignore
++    }
++    return "[" + Arrays.toString(indices) + "]" + Arrays.toString(types) + ", querySource[" + sSource + "], explain:" + explain;
+ }
+\ No newline at end of file

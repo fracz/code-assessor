@@ -1,0 +1,19 @@
+diff --git a/6e3fe50fc8bbd20092d8358fad26074a149407ef b/7362989ec7dd6f6c6c27e2546ca5e4cc71b595da
+index 6e3fe50fc8..7362989ec7 100644
+--- a/6e3fe50fc8bbd20092d8358fad26074a149407ef
++++ b/7362989ec7dd6f6c6c27e2546ca5e4cc71b595da
+@@ -1,10 +1,10 @@
+ @Override
+-public void config(final Socket iSocket, final OClientConnection iConnection, final OContextConfiguration iConfiguration) throws IOException {
++public void config(final OServer iServer, final Socket iSocket, final OClientConnection iConnection, final OContextConfiguration iConfiguration) throws IOException {
++    server = iServer;
+     requestMaxContentLength = iConfiguration.getValueAsInteger(OGlobalConfiguration.NETWORK_HTTP_MAX_CONTENT_LENGTH);
+     socketTimeout = iConfiguration.getValueAsInteger(OGlobalConfiguration.NETWORK_SOCKET_TIMEOUT);
+     channel = new OChannelTextServer(iSocket, iConfiguration);
+     connection = iConnection;
+-    configuration = new OServerConfiguration();
+-    request = new OHttpRequest(this, channel, data);
++    request = new OHttpRequest(this, channel, data, iConfiguration);
+     start();
+ }
+\ No newline at end of file

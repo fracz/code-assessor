@@ -1,0 +1,15 @@
+diff --git a/527ae1dcb4272b34a49199eafa08cf1c414ae596 b/c2d0b43393afcca4d4c7ed44aca11372fe81b5b1
+index 527ae1dcb4..c2d0b43393 100644
+--- a/527ae1dcb4272b34a49199eafa08cf1c414ae596
++++ b/c2d0b43393afcca4d4c7ed44aca11372fe81b5b1
+@@ -1,4 +1,8 @@
+ public Invocation findPreviousVerifiedInOrder(List<Invocation> invocations) {
+     LinkedList<Invocation> verifiedOnly = ListUtil.filter(invocations, new RemoveUnverifiedInOrder());
+-    return verifiedOnly.isEmpty() ? null : verifiedOnly.getLast();
++    if (verifiedOnly.isEmpty()) {
++        return null;
++    } else {
++        return verifiedOnly.getLast();
++    }
+ }
+\ No newline at end of file

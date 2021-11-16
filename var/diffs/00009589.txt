@@ -1,0 +1,22 @@
+diff --git a/95da76858f292e26e2ece66f069e227794c966d5 b/b1b8979c8dc7d5086188af9b8865e6aecc19de97
+index 95da76858f..b1b8979c8d 100644
+--- a/95da76858f292e26e2ece66f069e227794c966d5
++++ b/b1b8979c8dc7d5086188af9b8865e6aecc19de97
+@@ -1,13 +1,15 @@
+ @Override
+ protected HighlightInfoHolder createInfoHolder(@NotNull final PsiFile file) {
+     return new HighlightInfoHolder(file) {
+
+         @Override
+         public boolean add(@Nullable HighlightInfo info) {
+             if (info != null && info.getSeverity() == HighlightSeverity.ERROR) {
+-                throw new HaveGotErrorException(info, myHasErrorElement);
++                error.set(info);
++                hasErrorElement.set(myHasErrorElement);
++                throw new ProcessCanceledException();
+             }
+             return super.add(info);
+         }
+     };
+ }
+\ No newline at end of file

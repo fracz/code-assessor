@@ -1,0 +1,19 @@
+diff --git a/5b026ff33fc9c8ff3f16bcc176e009754809f7df b/e0a2b576131bf0fab37e1a80f77e1dd6a40fed5f
+index 5b026ff33f..e0a2b57613 100644
+--- a/5b026ff33fc9c8ff3f16bcc176e009754809f7df
++++ b/e0a2b576131bf0fab37e1a80f77e1dd6a40fed5f
+@@ -1,11 +1,11 @@
+ @Override
+ public final SelectStatement parse() {
+     SelectStatement result = parseInternal();
+-    if (null != result.getSubStatement()) {
+-        result = processSubQuery(result);
++    if (result.containsSubQuery()) {
++        result = result.getSubQueryStatement();
+     }
+     // TODO move to rewrite
+     appendDerivedColumns(result);
+     appendDerivedOrderBy(result);
+     return result;
+ }
+\ No newline at end of file

@@ -1,0 +1,27 @@
+diff --git a/533882e23851b60c91988cc1a572884d009f67b7 b/a447ac76b4071227c5a3a06f9fc3e2f6af7a6b24
+index 533882e238..a447ac76b4 100644
+--- a/533882e23851b60c91988cc1a572884d009f67b7
++++ b/a447ac76b4071227c5a3a06f9fc3e2f6af7a6b24
+@@ -1,18 +1,18 @@
+ /**
+  * Set the extra input data of the text, which is the
+  * {@link EditorInfo#extras TextBoxAttribute.extras}
+  * Bundle that will be filled in when creating an input connection.  The
+  * given integer is the resource ID of an XML resource holding an
+  * {@link android.R.styleable#InputExtras &lt;input-extras&gt;} XML tree.
+  *
+  * @see #getInputExtras(boolean)
+  * @see EditorInfo#extras
+  * @attr ref android.R.styleable#TextView_editorExtras
+  */
+ public void setInputExtras(int xmlResId) throws XmlPullParserException, IOException {
+     createEditorIfNeeded("Input extra set");
+     XmlResourceParser parser = getResources().getXml(xmlResId);
+-    getEditor().createInputContentTypeIfNeeded();
+-    getEditor().mInputContentType.extras = new Bundle();
+-    getResources().parseBundleExtras(parser, getEditor().mInputContentType.extras);
++    mEditor.createInputContentTypeIfNeeded();
++    mEditor.mInputContentType.extras = new Bundle();
++    getResources().parseBundleExtras(parser, mEditor.mInputContentType.extras);
+ }
+\ No newline at end of file

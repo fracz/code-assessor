@@ -1,0 +1,12 @@
+diff --git a/3f131d0ca1975608480c76b5afac03a9ea5a57c6 b/d6750fa5d778bb7759527aa14f566b1b2221b6c7
+index 3f131d0ca1..d6750fa5d7 100644
+--- a/3f131d0ca1975608480c76b5afac03a9ea5a57c6
++++ b/d6750fa5d778bb7759527aa14f566b1b2221b6c7
+@@ -1,4 +1,4 @@
+ @Override
+-public IndexDescriptor indexGetForLabelAndPropertyKey(int labelId, int propertyKey) {
+-    return descriptor(schemaStorage.indexRule(labelId, propertyKey));
++public IndexDescriptor indexGetForLabelAndPropertyKey(NodePropertyDescriptor descriptor) {
++    return descriptor(schemaStorage.indexRule(descriptor));
+ }
+\ No newline at end of file

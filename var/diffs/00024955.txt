@@ -1,0 +1,22 @@
+diff --git a/6ebd9e55941cb7cfe9db42c0ea13a9fef85710ea b/3fa0f0169a945ab4388f351d4f34b92adafa38eb
+index 6ebd9e5594..3fa0f0169a 100644
+--- a/6ebd9e55941cb7cfe9db42c0ea13a9fef85710ea
++++ b/3fa0f0169a945ab4388f351d4f34b92adafa38eb
+@@ -1,11 +1,11 @@
+-private void doInsert(ConsistencyLevel consistency_level, RowMutation rm) throws UnavailableException, TimedOutException {
+-    if (consistency_level != ConsistencyLevel.ZERO) {
++private void doInsert(ConsistencyLevel consistency_level, List<RowMutation> mutations) throws UnavailableException, TimedOutException {
++    if (consistency_level == ConsistencyLevel.ZERO) {
++        StorageProxy.mutate(mutations);
++    } else {
+         try {
+-            StorageProxy.mutateBlocking(Arrays.asList(rm), consistency_level);
++            StorageProxy.mutateBlocking(mutations, consistency_level);
+         } catch (TimeoutException e) {
+             throw new TimedOutException();
+         }
+-    } else {
+-        StorageProxy.mutate(Arrays.asList(rm));
+     }
+ }
+\ No newline at end of file

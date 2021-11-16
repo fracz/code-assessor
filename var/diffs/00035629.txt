@@ -1,0 +1,22 @@
+diff --git a/491342fa5743ac39dcc6d7e6c6291aea8d988341 b/7ef498d8b2550f7ab8d279767d878b92284505b5
+index 491342fa57..7ef498d8b2 100644
+--- a/491342fa5743ac39dcc6d7e6c6291aea8d988341
++++ b/7ef498d8b2550f7ab8d279767d878b92284505b5
+@@ -1,15 +1,10 @@
+ /**
+  * Add a initial DrawerItem or a DrawerItem Array  for the Drawer
+  *
+  * @param drawerItems
+  * @return
+  */
+ public DrawerBuilder addDrawerItems(IDrawerItem... drawerItems) {
+-    if (this.mDrawerItems == null) {
+-        this.mDrawerItems = new ArrayList<>();
+-    }
+-    if (drawerItems != null) {
+-        Collections.addAll(this.mDrawerItems, drawerItems);
+-    }
++    this.getAdapter().addDrawerItems(drawerItems);
+     return this;
+ }
+\ No newline at end of file

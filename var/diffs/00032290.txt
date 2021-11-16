@@ -1,0 +1,19 @@
+diff --git a/95450bc59018b514c2b5961455184d117bd972df b/0001b5577db18ee1ec0c19c435c6f0aff9d838ce
+index 95450bc590..0001b5577d 100644
+--- a/95450bc59018b514c2b5961455184d117bd972df
++++ b/0001b5577db18ee1ec0c19c435c6f0aff9d838ce
+@@ -1,12 +1,12 @@
+ public FunctionTypeBuilder addOptFormal(JSType t) throws WrongParameterOrderException {
+     if (restFormals != null) {
+         throw new WrongParameterOrderException("Cannot add optional formal after rest args");
+     }
+     if (t == null) {
+         optionalFormals.add(null);
+     } else {
+         Preconditions.checkArgument(!t.isBottom());
+-        optionalFormals.add(JSType.join(t, JSType.UNDEFINED));
++        optionalFormals.add(JSType.join(t, this.commonTypes.UNDEFINED));
+     }
+     return this;
+ }
+\ No newline at end of file

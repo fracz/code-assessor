@@ -1,0 +1,12 @@
+diff --git a/28868e5b8340554877cebcc5b4e0f5283a4f6eb9 b/2f810dfb8de8d4ab8b40bd8d181317bffa0d3848
+index 28868e5b83..2f810dfb8d 100644
+--- a/28868e5b8340554877cebcc5b4e0f5283a4f6eb9
++++ b/2f810dfb8de8d4ab8b40bd8d181317bffa0d3848
+@@ -1,4 +1,4 @@
+-private void success(@NonNull final AccessTokenEnvelope envelope, @NonNull final TwoFactorActivity view) {
++private void success(@NonNull final AccessTokenEnvelope envelope) {
+     currentUser.login(envelope.user(), envelope.accessToken());
+-    view.onSuccess();
++    tfaSuccess.onNext(null);
+ }
+\ No newline at end of file

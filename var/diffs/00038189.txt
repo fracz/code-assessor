@@ -1,0 +1,20 @@
+diff --git a/3cc75a57a901f0c5d17a95ebf386ca5f6b725d42 b/c9afdc458b41803b5149c134458e593243d3810a
+index 3cc75a57a9..c9afdc458b 100644
+--- a/3cc75a57a901f0c5d17a95ebf386ca5f6b725d42
++++ b/c9afdc458b41803b5149c134458e593243d3810a
+@@ -1,13 +1,11 @@
+ @Test
+ public void shouldApplyToLogFromCache() throws Throwable {
+-    // given n things to apply in the cache, check that they are actually applied.
+     // given
+-    applicationProcess.start();
+     inFlightMap.put(0L, new RaftLogEntry(1, operation(nullTx)));
+     // when
+     applicationProcess.notifyCommitted(0);
+-    applier.sync(false);
++    applicationProcess.start();
+     // then the cache should have had it's get method called.
+     verify(inFlightMap, times(1)).get(0L);
+     verifyZeroInteractions(raftLog);
+ }
+\ No newline at end of file

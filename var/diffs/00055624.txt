@@ -1,0 +1,21 @@
+diff --git a/3a42a6144130ec9ebd7a420cd381d4a2bc2368de b/45b8ca4bc2a36fbc71a92f1fbde442a3f456a67a
+index 3a42a61441..45b8ca4bc2 100644
+--- a/3a42a6144130ec9ebd7a420cd381d4a2bc2368de
++++ b/45b8ca4bc2a36fbc71a92f1fbde442a3f456a67a
+@@ -1,14 +1,14 @@
+ @Test
+ public void testCircularReferencesWithWrapping() {
+     DefaultListableBeanFactory xbf = new DefaultListableBeanFactory();
+     XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(xbf);
+     reader.setValidationMode(XmlBeanDefinitionReader.VALIDATION_NONE);
+-    reader.loadBeanDefinitions(new ClassPathResource("reftypes.xml", getClass()));
++    reader.loadBeanDefinitions(REFTYPES_CONTEXT);
+     xbf.addBeanPostProcessor(new WrappingPostProcessor());
+     try {
+         xbf.getBean("jenny");
+         fail("Should have thrown BeanCreationException");
+     } catch (BeanCreationException ex) {
+         assertTrue(ex.contains(BeanCurrentlyInCreationException.class));
+     }
+ }
+\ No newline at end of file

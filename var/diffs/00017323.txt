@@ -1,0 +1,16 @@
+diff --git a/ffb9120d28bcec8359f9d77c96853dea0c4b921d b/7806af5fab66c8b5f0b9ba979e1df320cb9e814f
+index ffb9120d28..7806af5fab 100644
+--- a/ffb9120d28bcec8359f9d77c96853dea0c4b921d
++++ b/7806af5fab66c8b5f0b9ba979e1df320cb9e814f
+@@ -1,8 +1,8 @@
+ @NotNull
+-private JsBlock translateBody() {
++private JsBlock translateBody(@NotNull TranslationContext functionBodyContext) {
+     JetExpression jetBodyExpression = functionDeclaration.getBodyExpression();
+     // TODO decide if there are cases where this assert is illegal
+     assert jetBodyExpression != null : "Function without body not supported";
+-    JsNode body = Translation.translateExpression(jetBodyExpression, functionBodyContext());
++    JsNode body = Translation.translateExpression(jetBodyExpression, functionBodyContext);
+     return wrapWithReturnIfNeeded(body, !functionDeclaration.hasBlockBody());
+ }
+\ No newline at end of file

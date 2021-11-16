@@ -1,0 +1,16 @@
+diff --git a/fbb6c747e5387dd1384491cac2358cd2725f06eb b/7ac1d3df7e723a39698da57ecd8f9dd6f892018b
+index fbb6c747e5..7ac1d3df7e 100644
+--- a/fbb6c747e5387dd1384491cac2358cd2725f06eb
++++ b/7ac1d3df7e723a39698da57ecd8f9dd6f892018b
+@@ -1,8 +1,8 @@
+-protected long createRecord(final ODatabaseRecord iDatabase, final ORecordId rid, final byte[] buffer, final byte recordType, int dataSegmentId) {
++protected ORecordInternal<?> createRecord(final ODatabaseRecord iDatabase, final ORecordId rid, final byte[] buffer, final byte recordType, int dataSegmentId) {
+     final ORecordInternal<?> record = Orient.instance().getRecordFactoryManager().newInstance(recordType);
+     record.fill(rid, 0, buffer, true);
+     if (dataSegmentId > 0)
+         record.setDataSegmentName(iDatabase.getDataSegmentNameById(dataSegmentId));
+     iDatabase.save(record);
+-    return record.getIdentity().getClusterPosition();
++    return record;
+ }
+\ No newline at end of file

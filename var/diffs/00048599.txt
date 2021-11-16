@@ -1,0 +1,21 @@
+diff --git a/c14ab0243f7fa8fadb2dd42678628a5b9747b565 b/264a43d2ac78aa0de15281bff74604f5d8b8f43a
+index c14ab0243f..264a43d2ac 100644
+--- a/c14ab0243f7fa8fadb2dd42678628a5b9747b565
++++ b/264a43d2ac78aa0de15281bff74604f5d8b8f43a
+@@ -1,13 +1,12 @@
+ protected void clearChildren(boolean reflect) {
+-    List<DBNDatabaseNode> childrenCopy;
++    DBNDatabaseNode[] childrenCopy;
+     synchronized (this) {
+-        childrenCopy = childNodes;
++        childrenCopy = childNodes == null ? null : Arrays.copyOf(childNodes, childNodes.length);
+         childNodes = null;
+     }
+     if (childrenCopy != null) {
+         for (DBNNode child : childrenCopy) {
+             child.dispose(reflect);
+         }
+-        childrenCopy.clear();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/203642aed7c286604eae31133b9138020d771a66 b/6dedf8beac2ac99e1be458c2d0cc937329c59444
+index 203642aed7..6dedf8beac 100644
+--- a/203642aed7c286604eae31133b9138020d771a66
++++ b/6dedf8beac2ac99e1be458c2d0cc937329c59444
+@@ -1,11 +1,9 @@
+ @Before
+ public void cassandraSetUp() {
+     ch.startCassandra();
+-    CassandraStorageConfiguration sc = new CassandraStorageConfiguration();
+-    sc.setHostname("127.0.0.1");
+-    sc.getStorageManager(false).dropKeyspace(keyspace);
+-    sc.setThriftTimeoutMS(10 * 1000);
+-    manager = sc.getStorageManager(false);
++    CassandraThriftStorageManager cmanager = new CassandraThriftStorageManager(CassandraLocalhostHelper.getLocalStorageConfiguration());
++    cmanager.dropKeyspace(keyspace);
++    manager = cmanager;
+     store = manager.openDatabase(columnFamily);
+     tx = manager.beginTransaction();
+ }
+\ No newline at end of file

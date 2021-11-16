@@ -1,0 +1,15 @@
+diff --git a/5df4cfd2b4b10477f2413e987eb448ffec84e693 b/ee80f83bfe00fb0a7a013a9cbc9c68c3a6305106
+index 5df4cfd2b4..ee80f83bfe 100644
+--- a/5df4cfd2b4b10477f2413e987eb448ffec84e693
++++ b/ee80f83bfe00fb0a7a013a9cbc9c68c3a6305106
+@@ -1,7 +1,6 @@
+ @Test(expected = AssertionError.class)
+-public void testNonNullLastVersionCausesAssertionError() throws Exception {
++public void testNonNullLastVersionCausesAssertionError() {
+     final StaticMapExtractionNamespaceCacheFactory factory = new StaticMapExtractionNamespaceCacheFactory();
+     final StaticMapExtractionNamespace namespace = new StaticMapExtractionNamespace(MAP);
+-    final Map<String, String> cache = new HashMap<>();
+-    Assert.assertNull(factory.populateCache(null, namespace, factory.getVersion(), cache));
++    factory.populateCache(namespace, null, factory.getVersion(), scheduler);
+ }
+\ No newline at end of file

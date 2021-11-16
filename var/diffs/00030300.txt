@@ -1,0 +1,12 @@
+diff --git a/7125262f5151121d4ca5ee887a7bfdc67cdee435 b/f3e50ed1c754d03df8d054859db7b3312d023433
+index 7125262f51..f3e50ed1c7 100644
+--- a/7125262f5151121d4ca5ee887a7bfdc67cdee435
++++ b/f3e50ed1c754d03df8d054859db7b3312d023433
+@@ -1,4 +1,5 @@
+ public Builder put(RootMapper.Builder mapper) {
+-    rootMappers.put(mapper.name(), (RootMapper) mapper.build(builderContext));
++    RootMapper rootMapper = (RootMapper) mapper.build(builderContext);
++    rootMappers.put(rootMapper.getClass(), rootMapper);
+     return this;
+ }
+\ No newline at end of file

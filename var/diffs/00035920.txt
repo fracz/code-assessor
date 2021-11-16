@@ -1,0 +1,11 @@
+diff --git a/eb9eb055409efc7bed67251c6570d3878c5fe42c b/711a6cb8f7ebd4bd4a3e9db2be863db7b874eeca
+index eb9eb05540..711a6cb8f7 100644
+--- a/eb9eb055409efc7bed67251c6570d3878c5fe42c
++++ b/711a6cb8f7ebd4bd4a3e9db2be863db7b874eeca
+@@ -1,4 +1,3 @@
+ public void neverWantedButInvoked(PrintableInvocation wanted, HasStackTrace firstUndesired) {
+-    UndesiredInvocation cause = createUndesiredInvocationCause(firstUndesired);
+-    throw new NeverWantedButInvoked(join(wanted.toString(), "Never wanted but invoked!"), cause);
++    throw new NeverWantedButInvoked(join(wanted.toString(), "Never wanted here:", "-> at " + new Location(), "But invoked here:", "-> at " + firstUndesired.getStackTrace()[0], ""));
+ }
+\ No newline at end of file

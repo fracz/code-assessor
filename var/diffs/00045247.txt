@@ -1,0 +1,14 @@
+diff --git a/8c41ae6b1fc7bea356f3ffcfde77b3838b522b1b b/10a3548ebd806184dca18e8476052bdc78d140f0
+index 8c41ae6b1f..10a3548ebd 100644
+--- a/8c41ae6b1fc7bea356f3ffcfde77b3838b522b1b
++++ b/10a3548ebd806184dca18e8476052bdc78d140f0
+@@ -1,7 +1,7 @@
+ @Test
+ public void shouldParseSplittedConfiguration() throws Exception {
+-    final OETLProcessor processor = OETLProcessor.parseConfigAndParameters(new String[] { "-dburl=local:/tmp/db", "./src/test/resources/comment_split_1.json", "./src/test/resources/comment_split_2.json" });
++    final OETLProcessor processor = new OETLProcessorConfigurator().parseConfigAndParameters(new String[] { "-dburl=local:/tmp/db", "./src/test/resources/comment_split_1.json", "./src/test/resources/comment_split_2.json" });
+     assertThat(processor.getContext().getVariable("dburl")).isEqualTo("local:/tmp/db");
+     assertThat(processor.getTransformers().get(0)).isInstanceOf(OVertexTransformer.class);
+     assertThat(processor.getExtractor().getName()).isEqualTo("csv");
+ }
+\ No newline at end of file

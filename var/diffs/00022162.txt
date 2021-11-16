@@ -1,0 +1,18 @@
+diff --git a/8617bf7688cb9a459f75e26606b1fa27093d19f1 b/a3e3bb9aefe26e9ecdb4fd45fa73006bd63c285e
+index 8617bf7688..a3e3bb9aef 100644
+--- a/8617bf7688cb9a459f75e26606b1fa27093d19f1
++++ b/a3e3bb9aefe26e9ecdb4fd45fa73006bd63c285e
+@@ -1,7 +1,7 @@
+ public void testFindIndex() throws Exception {
+-    final NetworkStats stats = new NetworkStats(TEST_START, 3).addEntry(TEST_IFACE, 100, 1024, 0).addEntry(TEST_IFACE, 101, 0, 1024).addEntry(TEST_IFACE, 102, 1024, 1024);
+-    assertEquals(2, stats.findIndex(TEST_IFACE, 102));
+-    assertEquals(2, stats.findIndex(TEST_IFACE, 102));
+-    assertEquals(0, stats.findIndex(TEST_IFACE, 100));
+-    assertEquals(-1, stats.findIndex(TEST_IFACE, 6));
++    final NetworkStats stats = new NetworkStats(TEST_START, 3).addEntry(TEST_IFACE, 100, TAG_NONE, 1024L, 0L).addEntry(TEST_IFACE, 101, TAG_NONE, 0L, 1024L).addEntry(TEST_IFACE, 102, TAG_NONE, 1024L, 1024L);
++    assertEquals(2, stats.findIndex(TEST_IFACE, 102, TAG_NONE));
++    assertEquals(2, stats.findIndex(TEST_IFACE, 102, TAG_NONE));
++    assertEquals(0, stats.findIndex(TEST_IFACE, 100, TAG_NONE));
++    assertEquals(-1, stats.findIndex(TEST_IFACE, 6, TAG_NONE));
+ }
+\ No newline at end of file

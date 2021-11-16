@@ -1,0 +1,15 @@
+diff --git a/750dc6702b3369cac879b40c9c682922b8cbb86e b/9e7df9dcd4f1ab7dad6ed6b23ba94c038d41f585
+index 750dc6702b..9e7df9dcd4 100644
+--- a/750dc6702b3369cac879b40c9c682922b8cbb86e
++++ b/9e7df9dcd4f1ab7dad6ed6b23ba94c038d41f585
+@@ -1,6 +1,7 @@
+ public boolean canDeleteElement(DataContext dataContext) {
+-    if (dataContext.getData(DataConstants.PROJECT) == null)
++    if (PlatformDataKeys.PROJECT.getData(dataContext) == null) {
+         return false;
++    }
+     final PsiElement[] elements = getPsiElements(dataContext);
+-    return elements != null && DeleteHandler.shouldEnableDeleteAction(elements);
++    return elements != null && shouldEnableDeleteAction(elements);
+ }
+\ No newline at end of file

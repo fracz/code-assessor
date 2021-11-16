@@ -1,0 +1,17 @@
+diff --git a/a8a3c7538e9a1cbf1eeb9afba9e320248af29623 b/b272d2ee118304e139979b65034cf1f18efbf0e1
+index a8a3c7538e..b272d2ee11 100644
+--- a/a8a3c7538e9a1cbf1eeb9afba9e320248af29623
++++ b/b272d2ee118304e139979b65034cf1f18efbf0e1
+@@ -1,9 +1,7 @@
+-/**
+- * Sets the style of this widget.
+- * @param style
+- */
+ public void setStyle(WindowStyle style) {
++    if (style == null)
++        throw new IllegalArgumentException("style cannot be null.");
+     this.style = style;
+     setBackground(style.background);
+     invalidateHierarchy();
+ }
+\ No newline at end of file

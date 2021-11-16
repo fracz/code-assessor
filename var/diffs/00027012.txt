@@ -1,0 +1,20 @@
+diff --git a/991b606dae66f691832aa1dfedf9b687948b3cad b/c03b1c7f6dca47ad8e0dd3655b10e4810a13e945
+index 991b606dae..c03b1c7f6d 100644
+--- a/991b606dae66f691832aa1dfedf9b687948b3cad
++++ b/c03b1c7f6dca47ad8e0dd3655b10e4810a13e945
+@@ -1,8 +1,8 @@
+-FloatMatrix randomTransformMatrix() {
+-    FloatMatrix binary = new FloatMatrix(numHidden, numHidden * 2 + 1);
++INDArray randomTransformMatrix() {
++    INDArray binary = NDArrays.create(numHidden, numHidden * 2 + 1);
+     // bias column values are initialized zero
+-    FloatMatrix block = randomTransformBlock();
+-    binary.put(interval(0, block.rows), interval(0, block.columns), block);
+-    binary.put(interval(0, block.rows), interval(numHidden, numHidden + block.columns), randomTransformBlock());
+-    return SimpleBlas.scal(scalingForInit, binary);
++    INDArray block = randomTransformBlock();
++    binary.put(new NDArrayIndex[] { interval(0, block.rows()), interval(0, block.columns()) }, block);
++    binary.put(new NDArrayIndex[] { interval(0, block.rows()), interval(numHidden, numHidden + block.columns()) }, randomTransformBlock());
++    return NDArrays.getBlasWrapper().scal(scalingForInit, binary);
+ }
+\ No newline at end of file

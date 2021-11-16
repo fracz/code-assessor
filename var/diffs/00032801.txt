@@ -1,0 +1,13 @@
+diff --git a/a9344393035b0b8218dd3f13c3bf699f48744b36 b/4c6740144953bbab00de15ad4ac0ae0a518f37ee
+index a934439303..4c67401449 100644
+--- a/a9344393035b0b8218dd3f13c3bf699f48744b36
++++ b/4c6740144953bbab00de15ad4ac0ae0a518f37ee
+@@ -1,4 +1,4 @@
+-private <T> InternalFactory<T> handleConstantConversionError(Member member, Binding<String> stringBinding, Class<?> rawType, Exception e) {
+-    errorHandler.handle(StackTraceElements.forMember(member), ErrorMessages.CONSTANT_CONVERSION_ERROR, stringBinding.getSource(), rawType, e.getMessage());
+-    return invalidFactory();
++private <T> BindingImpl<T> handleConstantConversionError(Binding<String> stringBinding, Key<T> key, Exception e) {
++    errorHandler.handle(SourceProviders.defaultSource(), ErrorMessages.CONSTANT_CONVERSION_ERROR, stringBinding.getSource(), key.getRawType(), e.getMessage());
++    return invalidBinding(key);
+ }
+\ No newline at end of file

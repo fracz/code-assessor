@@ -1,0 +1,18 @@
+diff --git a/b700e40dd97104c4dbbacc9f7047100c5cfa783e b/31da0d1acd220ef2c6c8df029a9796e9a9076933
+index b700e40dd9..31da0d1acd 100644
+--- a/b700e40dd97104c4dbbacc9f7047100c5cfa783e
++++ b/31da0d1acd220ef2c6c8df029a9796e9a9076933
+@@ -1,11 +1,11 @@
+ static HighlightInfo checkAbstractMethodDirectCall(PsiSuperExpression expr) {
+     if (expr.getParent() instanceof PsiReferenceExpression && expr.getParent().getParent() instanceof PsiMethodCallExpression) {
+         PsiMethodCallExpression methodCallExpression = (PsiMethodCallExpression) expr.getParent().getParent();
+         PsiMethod method = methodCallExpression.resolveMethod();
+         if (method != null && method.hasModifierProperty(PsiModifier.ABSTRACT)) {
+             String message = JavaErrorMessages.message("direct.abstract.method.access", HighlightUtil.formatMethod(method));
+-            return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, methodCallExpression, message);
++            return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(methodCallExpression).descriptionAndTooltip(message).create();
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

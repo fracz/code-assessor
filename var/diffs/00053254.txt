@@ -1,0 +1,23 @@
+diff --git a/a3aaca04694c7af206d0a07b029c0c8cb7822cf1 b/142a5630a6e4fa3ee7cb21ba89f6731c3361c110
+index a3aaca0469..142a5630a6 100644
+--- a/a3aaca04694c7af206d0a07b029c0c8cb7822cf1
++++ b/142a5630a6e4fa3ee7cb21ba89f6731c3361c110
+@@ -1,14 +1,12 @@
+ protected final void parseSelectList() {
+     int index = 1;
+     do {
+         SelectItemContext selectItemContext = exprParser.parseSelectItem(index, sqlContext);
+-        index++;
+         sqlContext.getItemContexts().add(selectItemContext);
+-        if (selectItemContext instanceof CommonSelectItemContext) {
+-            if (((CommonSelectItemContext) selectItemContext).isStar()) {
+-                sqlContext.setContainStar(true);
+-            }
++        if (selectItemContext instanceof CommonSelectItemContext && ((CommonSelectItemContext) selectItemContext).isStar()) {
++            sqlContext.setContainStar(true);
+         }
++        index++;
+     } while (getExprParser().getLexer().skipIfEqual(Token.COMMA));
+     sqlContext.setSelectListLastPosition(getExprParser().getLexer().getCurrentPosition() - getExprParser().getLexer().getLiterals().length());
+ }
+\ No newline at end of file

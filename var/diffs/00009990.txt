@@ -1,0 +1,20 @@
+diff --git a/7143fa717989df7b7d3d1078295dc7cf5c4159cd b/23968393a02db0ba69ed2ee92bd782b6b2c09532
+index 7143fa7179..23968393a0 100644
+--- a/7143fa717989df7b7d3d1078295dc7cf5c4159cd
++++ b/23968393a02db0ba69ed2ee92bd782b6b2c09532
+@@ -1,12 +1,13 @@
+ public static HighlightInfo checkClassObjectAccessExpression(PsiClassObjectAccessExpression expression) {
+     PsiType type = expression.getOperand().getType();
+     if (type instanceof PsiClassType) {
+         return canSelectFrom((PsiClassType) type, expression.getOperand());
+-    } else if (type instanceof PsiArrayType) {
++    }
++    if (type instanceof PsiArrayType) {
+         final PsiType arrayComponentType = type.getDeepComponentType();
+         if (arrayComponentType instanceof PsiClassType) {
+             return canSelectFrom((PsiClassType) arrayComponentType, expression.getOperand());
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

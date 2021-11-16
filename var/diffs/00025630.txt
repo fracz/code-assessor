@@ -1,0 +1,15 @@
+diff --git a/3566b914fe343b88f3570cf613e98abcbae3a6b7 b/5e850edadce603c00b7c481d353597501f8b483d
+index 3566b914fe..5e850edadc 100644
+--- a/3566b914fe343b88f3570cf613e98abcbae3a6b7
++++ b/5e850edadce603c00b7c481d353597501f8b483d
+@@ -1,4 +1,8 @@
+ @Test
+ public void shouldBuildMultipleStaticInsertStatementGivenKeyspaceAndAllMapper() {
+-    executeStatementAndAssert(async(insertInto("weather", "temperature").values(all()), insertInto("weather", "temperature").values(all())), "INSERT INTO weather.temperature(weather_station_id,event_time,temperature) VALUES ('1'," + NOW.getTime() + ",'0°C');", "INSERT INTO weather.temperature(weather_station_id,event_time,temperature) VALUES ('1'," + NOW.getTime() + ",'0°C');");
++    CQLStatementTupleMapper mapper = async(simpleQuery(QUERY_STRING).with(all()), simpleQuery(QUERY_STRING).with(all()));
++    List<Statement> stmts = mapper.map(Maps.newHashMap(), cassandraCQLUnit.session, mockTuple);
++    Assert.assertEquals(2, stmts.size());
++    makeAssertSimpleStatement(QUERY_STRING, stmts.get(0));
++    makeAssertSimpleStatement(QUERY_STRING, stmts.get(1));
+ }
+\ No newline at end of file

@@ -1,0 +1,39 @@
+diff --git a/b2c28192b5557d5f1eb4359af4b61b281f19ee60 b/a75150ea71cde1bc40ed060889f27cf368d220c0
+index b2c28192b5..a75150ea71 100644
+--- a/b2c28192b5557d5f1eb4359af4b61b281f19ee60
++++ b/a75150ea71cde1bc40ed060889f27cf368d220c0
+@@ -1,25 +1,22 @@
+ /**
+  * Check whether Keras weight regularization is of unknown type. Currently prints a warning
+  * since main use case for model import is inference, not further training. Unlikely since
+  * standard Keras weight regularizers are L1 and L2.
+  *
+  * @param regularizerConfig     Map containing Keras weight reguarlization configuration
+  * @return                      L1 regularization strength (0.0 if none)
+  *
+  * TODO: should this throw an error instead?
+  */
+-private static void checkForUnknownRegularizer(Map<String, Object> regularizerConfig, boolean train) throws UnsupportedKerasConfigurationException {
++private static void checkForUnknownRegularizer(Map<String, Object> regularizerConfig, boolean enforceTrainingConfig) throws UnsupportedKerasConfigurationException {
+     if (regularizerConfig != null) {
+-        Set<String> regularizerFields = regularizerConfig.keySet();
+-        regularizerFields.remove(REGULARIZATION_TYPE_L1);
+-        regularizerFields.remove(REGULARIZATION_TYPE_L2);
+-        regularizerFields.remove(LAYER_FIELD_NAME);
+-        if (regularizerFields.size() > 0) {
+-            String unknownField = (String) regularizerFields.toArray()[0];
+-            if (train)
+-                throw new UnsupportedKerasConfigurationException("Unknown regularization field " + unknownField);
+-            else
+-                log.warn("Ignoring unknown regularization field " + unknownField);
++        for (String field : regularizerConfig.keySet()) {
++            if (!field.equals(REGULARIZATION_TYPE_L1) && !field.equals(REGULARIZATION_TYPE_L2) && !field.equals(LAYER_FIELD_NAME)) {
++                if (enforceTrainingConfig)
++                    throw new UnsupportedKerasConfigurationException("Unknown regularization field " + field);
++                else
++                    log.warn("Ignoring unknown regularization field " + field);
++            }
+         }
+     }
+ }
+\ No newline at end of file

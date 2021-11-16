@@ -1,0 +1,19 @@
+diff --git a/fc246258cb5040b2975fb7e8f3d27a632f7f7117 b/347403e573dd70987e99381c69c7d1dab344f3fc
+index fc246258cb..347403e573 100644
+--- a/fc246258cb5040b2975fb7e8f3d27a632f7f7117
++++ b/347403e573dd70987e99381c69c7d1dab344f3fc
+@@ -1,11 +1,9 @@
+ public void push(IRegion region) {
+     stack.push(curState);
+     if (stack.size() > 1000)
+         throw new StackOverflowError("Deep code hierarchy");
+     curState = curState.copy();
+     curState.region = region;
+-    if (DEBUG) {
+-        LOG.debug("Stack push: {} = {}", region, curState);
+-        LOG.debug("Stack size: {}", size());
+-    }
++    if (DEBUG)
++        LOG.debug("Stack push: {}: {}", size(), curState);
+ }
+\ No newline at end of file

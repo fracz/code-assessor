@@ -1,0 +1,19 @@
+diff --git a/4835eefdc30c7680ebf17b6689398ff69a1b28b6 b/4b7bcaef5b3fd5a2269595a1d45f492021591fdc
+index 4835eefdc3..4b7bcaef5b 100644
+--- a/4835eefdc30c7680ebf17b6689398ff69a1b28b6
++++ b/4b7bcaef5b3fd5a2269595a1d45f492021591fdc
+@@ -1,12 +1,12 @@
+ public static boolean isArrayOfObjects(PsiType aType) {
+     if (!(aType instanceof PsiArrayType))
+         return false;
+     final PsiType componentType = ((PsiArrayType) aType).getComponentType();
+     if (componentType == null)
+         return false;
+     final PsiClass psiClass = PsiUtil.resolveClassInType(componentType);
+     if (psiClass == null)
+         return false;
+     final String qName = psiClass.getQualifiedName();
+-    return "java.lang.Object".equals(qName);
++    return CommonClassNames.JAVA_LANG_OBJECT.equals(qName);
+ }
+\ No newline at end of file

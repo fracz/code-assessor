@@ -1,0 +1,13 @@
+diff --git a/46a8ac36746e1a2ba2a8d21cd06d69e0a8ff0dfa b/bf5353e9301feba680509fe6e1743d868d4cf2d8
+index 46a8ac3674..bf5353e930 100644
+--- a/46a8ac36746e1a2ba2a8d21cd06d69e0a8ff0dfa
++++ b/bf5353e9301feba680509fe6e1743d868d4cf2d8
+@@ -1,6 +1,6 @@
+ @Override
+ public boolean isSelected(AnActionEvent e) {
+     Project project = e.getData(PlatformDataKeys.PROJECT);
+     RunContentDescriptor descriptor = e.getData(RunContentManager.RUN_CONTENT_DESCRIPTOR);
+-    return project == null || descriptor == null ? false : AutoTestManager.getInstance(project).isAutoTestEnabled(descriptor);
++    return !(project == null || descriptor == null) && AutoTestManager.getInstance(project).isAutoTestEnabled(descriptor);
+ }
+\ No newline at end of file

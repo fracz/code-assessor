@@ -1,0 +1,19 @@
+diff --git a/ed92934d3fcb4975e51ea9d808c7a48e12d2fea1 b/250e7e47b78c35e16dce90202551c3511d7d159b
+index ed92934d3f..250e7e47b7 100644
+--- a/ed92934d3fcb4975e51ea9d808c7a48e12d2fea1
++++ b/250e7e47b78c35e16dce90202551c3511d7d159b
+@@ -1,9 +1,11 @@
+ @Override
+ public void visitNameValuePair(PsiNameValuePair pair) {
+     myHolder.add(AnnotationsHighlightUtil.checkNameValuePair(pair));
+     if (!myHolder.hasErrorResults()) {
+         PsiIdentifier nameId = pair.getNameIdentifier();
+-        if (nameId != null)
+-            myHolder.add(HighlightInfo.createHighlightInfo(HighlightInfoType.ANNOTATION_ATTRIBUTE_NAME, nameId, null));
++        if (nameId != null) {
++            HighlightInfo result = HighlightInfo.newHighlightInfo(HighlightInfoType.ANNOTATION_ATTRIBUTE_NAME).range(nameId).create();
++            myHolder.add(result);
++        }
+     }
+ }
+\ No newline at end of file

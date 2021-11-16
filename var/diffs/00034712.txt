@@ -1,0 +1,18 @@
+diff --git a/ecc44cceaa855e1e2bcfb0d347fe762e62f13f15 b/9a90c4faea63002d279dbd793a8ec0148ed45f21
+index ecc44cceaa..9a90c4faea 100644
+--- a/ecc44cceaa855e1e2bcfb0d347fe762e62f13f15
++++ b/9a90c4faea63002d279dbd793a8ec0148ed45f21
+@@ -1,9 +1,11 @@
+ public void close() {
+     try {
+         zop.close();
+     } catch (IOException e) {
+         report(e);
+         return;
+     }
+-    write(new ByteBufferList(), true);
++    setMaxBuffer(Integer.MAX_VALUE);
++    write(new ByteBufferList());
++    super.close();
+ }
+\ No newline at end of file

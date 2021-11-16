@@ -1,0 +1,14 @@
+diff --git a/fa349c0d3b0e203967d9b20b4171eddc8cd82196 b/29e2d869624632092f2af514fecd5675c563464d
+index fa349c0d3b..29e2d86962 100644
+--- a/fa349c0d3b0e203967d9b20b4171eddc8cd82196
++++ b/29e2d869624632092f2af514fecd5675c563464d
+@@ -1,6 +1,5 @@
+ @NotNull
+ @Override
+-public JetExpression getCalleeExpression() {
+-    // TODO
+-    throw new UnsupportedOperationException();
++public JetConstructorCalleeExpression getCalleeExpression() {
++    return (JetConstructorCalleeExpression) findChildByType(JetNodeTypes.CONSTRUCTOR_CALLEE);
+ }
+\ No newline at end of file

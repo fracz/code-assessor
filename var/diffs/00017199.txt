@@ -1,0 +1,17 @@
+diff --git a/115e433c2db4d0dc186c19fb76c8d7984b56853d b/bde4082f60af49710e2511a1fb5852d45322cbd2
+index 115e433c2d..bde4082f60 100644
+--- a/115e433c2db4d0dc186c19fb76c8d7984b56853d
++++ b/bde4082f60af49710e2511a1fb5852d45322cbd2
+@@ -1,9 +1,9 @@
+ private void genCallToDelegatorByExpressionSpecifier(InstructionAdapter iv, ExpressionCodegen codegen, JetDelegatorByExpressionSpecifier specifier, DelegationFieldsInfo fieldsInfo) {
+     JetExpression expression = specifier.getDelegateExpression();
+     DelegationFieldsInfo.Field fieldInfo = fieldsInfo.getInfo(specifier);
+     if (fieldInfo.generateField) {
+         iv.load(0, classAsmType);
+-        codegen.genToJVMStack(expression);
+-        fieldInfo.getStackValue().store(fieldInfo.type, iv);
++        StackValue rightSide = codegen.genLazy(expression, codegen.expressionType(expression));
++        fieldInfo.getStackValue().store(rightSide, iv);
+     }
+ }
+\ No newline at end of file

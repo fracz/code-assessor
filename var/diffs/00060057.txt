@@ -1,0 +1,19 @@
+diff --git a/1087bb4d22e5fe389ac098bff1b65251c2010ff4 b/055ac3444b67d43ac4b07ceacda3d25cb506a8f2
+index 1087bb4d22..055ac3444b 100644
+--- a/1087bb4d22e5fe389ac098bff1b65251c2010ff4
++++ b/055ac3444b67d43ac4b07ceacda3d25cb506a8f2
+@@ -1,11 +1,11 @@
+ @Override
+-public void lock(long maxTime) {
++public void lock(long timeMillisecond) {
+     boolean success = false;
+     try {
+-        success = super.tryLock(maxTime, Timestamps.SYSTEM().getUnit());
++        success = super.tryLock(timeMillisecond, TimeUnit.MILLISECONDS);
+     } catch (InterruptedException e) {
+         log.warn("Interrupted waiting for lock: {}", e);
+     }
+     if (!success)
+         throw new TitanException("Possible dead lock detected. Waited for transaction lock without success");
+ }
+\ No newline at end of file

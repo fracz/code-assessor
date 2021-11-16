@@ -1,0 +1,20 @@
+diff --git a/da3cbccab6e8b1f519db51ed0ec09446c34d815d b/4373a1918e3ccfeecda963b71c8080b6ccc2f4de
+index da3cbccab6..4373a1918e 100644
+--- a/da3cbccab6e8b1f519db51ed0ec09446c34d815d
++++ b/4373a1918e3ccfeecda963b71c8080b6ccc2f4de
+@@ -1,12 +1,13 @@
+ @Override
+ public void removeNotify() {
+     super.removeNotify();
++    myLivePreviewController.setLivePreview(null);
+     myLivePreview.cleanUp();
+     myLivePreview.dispose();
+     setTrackingSelection(false);
+     addTextToRecent(mySearchField);
+     if (myReplaceField != null) {
+         addTextToRecent(myReplaceField);
+     }
+-    myAdded = false;
++    myLivePreviewController.setAdded(false);
+ }
+\ No newline at end of file

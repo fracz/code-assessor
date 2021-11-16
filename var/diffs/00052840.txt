@@ -1,0 +1,11 @@
+diff --git a/c59e19fdb4a9f14099786ab368b82a33ebf67b82 b/d5a479f97cba303a699acc1ced49c4aa2e19b833
+index c59e19fdb4..d5a479f97c 100644
+--- a/c59e19fdb4a9f14099786ab368b82a33ebf67b82
++++ b/d5a479f97cba303a699acc1ced49c4aa2e19b833
+@@ -1,4 +1,4 @@
+ @Test(expected = ParserUnsupportedException.class)
+ public void assertTruncate() throws SQLParserException {
+-    SQLParserFactory.create(DatabaseType.MySQL, "TRUNCATE `order`", Collections.emptyList(), new ShardingRuleMockBuilder().build());
++    new SQLParserEngine(DatabaseType.MySQL, "TRUNCATE `order`", new ShardingRuleMockBuilder().build(), Collections.emptyList()).parseStatement();
+ }
+\ No newline at end of file

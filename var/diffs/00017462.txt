@@ -1,0 +1,18 @@
+diff --git a/b05724e7c3903d8e307db5fb3f3f3697abd1991d b/172e43ad50058c56fd9497490d8eb6521e64c3fc
+index b05724e7c3..172e43ad50 100644
+--- a/b05724e7c3903d8e307db5fb3f3f3697abd1991d
++++ b/172e43ad50058c56fd9497490d8eb6521e64c3fc
+@@ -1,11 +1,10 @@
+ private Node addExpr(TokenStream ts) throws IOException, JavaScriptException {
+-    CodePosition position = getNextTokenPosition(ts);
+     int tt;
+     Node pn = mulExpr(ts);
+     while ((tt = ts.getToken()) == TokenStream.ADD || tt == TokenStream.SUB) {
+-        // flushNewLines
++        CodePosition position = ts.tokenPosition;
+         pn = nf.createBinary(tt, pn, mulExpr(ts), position);
+     }
+     ts.ungetToken(tt);
+     return pn;
+ }
+\ No newline at end of file

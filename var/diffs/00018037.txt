@@ -1,0 +1,31 @@
+diff --git a/3daf733cc55c0971e929603dc82437b49f3e4c66 b/0ff0efe586f3cd8bf6ab8a5649638b9439b6e3f3
+index 3daf733cc5..0ff0efe586 100644
+--- a/3daf733cc55c0971e929603dc82437b49f3e4c66
++++ b/0ff0efe586f3cd8bf6ab8a5649638b9439b6e3f3
+@@ -1,12 +1,17 @@
+-public FilteredRows getFilteredRows(Facet except, boolean includeContextual) {
+-    ConjunctiveFilteredRows cfr = new ConjunctiveFilteredRows(includeContextual, _includeDependent);
+-    for (Facet facet : _facets) {
+-        if (facet != except) {
+-            RowFilter rowFilter = facet.getRowFilter();
+-            if (rowFilter != null) {
+-                cfr.add(rowFilter);
++public FilteredRows getFilteredRows(Facet except) {
++    if (_mode == Mode.RecordBased) {
++        return new FilteredRecordsAsFilteredRows(getFilteredRecords(except));
++    } else if (_mode == Mode.RowBased) {
++        ConjunctiveFilteredRows cfr = new ConjunctiveFilteredRows();
++        for (Facet facet : _facets) {
++            if (facet != except) {
++                RowFilter rowFilter = facet.getRowFilter();
++                if (rowFilter != null) {
++                    cfr.add(rowFilter);
++                }
+             }
+         }
++        return cfr;
+     }
+-    return cfr;
++    throw new InternalError("Unknown mode.");
+ }
+\ No newline at end of file

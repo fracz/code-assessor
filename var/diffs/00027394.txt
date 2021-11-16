@@ -1,0 +1,19 @@
+diff --git a/01daa397497696036779aed055e140d39e9efd2b b/a8f92d83cd0e27ca5507de7635cbb958f2f98302
+index 01daa39749..a8f92d83cd 100644
+--- a/01daa397497696036779aed055e140d39e9efd2b
++++ b/a8f92d83cd0e27ca5507de7635cbb958f2f98302
+@@ -1,12 +1,10 @@
+ @Test
+ public final void histogram() throws Exception {
+     assertReporterOutput(new Callable<HistogramMetric>() {
+
+         @Override
+         public HistogramMetric call() throws Exception {
+-            final HistogramMetric histogram = new HistogramMetric(SampleType.UNIFORM);
+-            histogram.update(1);
+-            return histogram;
++            return createHistogram();
+         }
+     }, expectedHistogramResult());
+ }
+\ No newline at end of file

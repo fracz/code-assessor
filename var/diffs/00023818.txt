@@ -1,0 +1,15 @@
+diff --git a/9af17d901c302525f1605863f8b89ddd0b65bdbd b/467345723e562d32331daa48c4efa94720d98c5d
+index 9af17d901c..467345723e 100644
+--- a/9af17d901c302525f1605863f8b89ddd0b65bdbd
++++ b/467345723e562d32331daa48c4efa94720d98c5d
+@@ -1,5 +1,7 @@
+-private void notifyAppTransitionStartingLocked(IBinder openToken, IBinder closeToken, Animation openAnimation, Animation closeAnimation) {
++private int notifyAppTransitionStartingLocked(int transit, IBinder openToken, IBinder closeToken, Animation openAnimation, Animation closeAnimation) {
++    int redoLayout = 0;
+     for (int i = 0; i < mListeners.size(); i++) {
+-        mListeners.get(i).onAppTransitionStartingLocked(openToken, closeToken, openAnimation, closeAnimation);
++        redoLayout |= mListeners.get(i).onAppTransitionStartingLocked(transit, openToken, closeToken, openAnimation, closeAnimation);
+     }
++    return redoLayout;
+ }
+\ No newline at end of file

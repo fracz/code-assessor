@@ -1,0 +1,28 @@
+diff --git a/bf5b3ab5bc86a0c02dc715392d779f6bab3b168b b/20e76d0a46dbc5bbb32a81aade5110b92b4a9015
+index bf5b3ab5bc..20e76d0a46 100644
+--- a/bf5b3ab5bc86a0c02dc715392d779f6bab3b168b
++++ b/20e76d0a46dbc5bbb32a81aade5110b92b4a9015
+@@ -1,19 +1,18 @@
+ public static Byte castToByte(Object value) {
+     if (value == null) {
+         return null;
+     }
+     if (value instanceof Number) {
+         return ((Number) value).byteValue();
+     }
+     if (value instanceof String) {
+         String strVal = (String) value;
+-        if (strVal.length() == 0) {
+-            return null;
+-        }
+-        if ("null".equals(strVal) || "NULL".equals(strVal)) {
++        if (//
++        strVal.length() == 0 || //
++        "null".equals(strVal) || "NULL".equals(strVal)) {
+             return null;
+         }
+         return Byte.parseByte(strVal);
+     }
+     throw new JSONException("can not cast to byte, value : " + value);
+ }
+\ No newline at end of file

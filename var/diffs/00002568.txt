@@ -1,0 +1,12 @@
+diff --git a/7c7d1f164bd7ce77d553a4893a5b32dc0e348667 b/a95f5d7f47d6d5c8eabc885d89e2073a4b53e9ab
+index 7c7d1f164b..a95f5d7f47 100644
+--- a/7c7d1f164bd7ce77d553a4893a5b32dc0e348667
++++ b/a95f5d7f47d6d5c8eabc885d89e2073a4b53e9ab
+@@ -1,4 +1,4 @@
+-protected void addSchema(@NotNull final JsonSchemaMappingsConfigurationBase.SchemaInfo schema) {
+-    JsonSchemaMappingsProjectConfiguration.getInstance(getProject()).addSchema(schema);
++protected void addSchema(@NotNull final UserDefinedJsonSchemaConfiguration schema) {
++    JsonSchemaMappingsProjectConfiguration.getInstance(getProject()).setState(myProject, Collections.singletonMap(schema.getName(), schema));
+     mySchemas.add(schema);
+ }
+\ No newline at end of file

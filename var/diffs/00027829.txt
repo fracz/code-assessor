@@ -1,0 +1,25 @@
+diff --git a/ffda3ccf2aa26ca292d5b3799acb0ee6e8e55201 b/7a70c0420479f5eaad7453a86b1ba252fe949939
+index ffda3ccf2a..7a70c04204 100644
+--- a/ffda3ccf2aa26ca292d5b3799acb0ee6e8e55201
++++ b/7a70c0420479f5eaad7453a86b1ba252fe949939
+@@ -1,16 +1,18 @@
+ /**
+  * Asynchronously stops the workspace.
+  *
+  * @param workspaceId
+  * the id of the workspace to stop
+  * @throws ServerException
+  * when any server error occurs
+  * @throws NullPointerException
+  * when {@code workspaceId} is null
+  * @throws NotFoundException
+  * when workspace {@code workspaceId} doesn't have runtime
+  */
+ public void stopWorkspace(String workspaceId) throws ServerException, NotFoundException, ConflictException {
+     requireNonNull(workspaceId, "Required non-null workspace id");
+-    performAsyncStop(normalizeState(workspaceDao.get(workspaceId)));
++    final WorkspaceImpl workspace = normalizeState(workspaceDao.get(workspaceId));
++    checkWorkspaceIsRunning(workspace, "stop");
++    performAsyncStop(workspace);
+ }
+\ No newline at end of file

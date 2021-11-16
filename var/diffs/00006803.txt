@@ -1,0 +1,16 @@
+diff --git a/40e9bd819a51bbb2de75478eed559e13e8ae5e7c b/76a889f8ba2f4412a0088a8a0612096de8f00938
+index 40e9bd819a..76a889f8ba 100644
+--- a/40e9bd819a51bbb2de75478eed559e13e8ae5e7c
++++ b/76a889f8ba2f4412a0088a8a0612096de8f00938
+@@ -1,3 +1,9 @@
+ public boolean login(ModalityContext executor) throws Exception {
+-    return mySelectedConfiguration.login(executor, myProject);
++    final LoginPerformer.MyProjectKnown performer = new LoginPerformer.MyProjectKnown(myProject, Collections.<CvsEnvironment>singletonList(mySelectedConfiguration), new Consumer<VcsException>() {
++
++        public void consume(VcsException e) {
++            myErrors.add(e);
++        }
++    });
++    return performer.loginAll(executor);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/5d50a13849289aa8666d530a16dff9f544c7d6be b/df2ffcea0ee15e07fd0da603126761b5cd5de91f
+index 5d50a13849..df2ffcea0e 100644
+--- a/5d50a13849289aa8666d530a16dff9f544c7d6be
++++ b/df2ffcea0ee15e07fd0da603126761b5cd5de91f
+@@ -1,7 +1,5 @@
+ public ORecordAbstract<T> delete() {
+-    if (_database == null)
+-        throw new ODatabaseException("No database assigned to current record");
+-    _database.delete(this);
++    getDatabase().delete(this);
+     setDirty();
+     return this;
+ }
+\ No newline at end of file

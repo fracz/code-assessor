@@ -1,0 +1,12 @@
+diff --git a/d4e91a2b5a22589d28022fca27bea0bd9318a7c5 b/4670b0d7668dd8dd7ca96fa5b67e192e29a7d23c
+index d4e91a2b5a..4670b0d766 100644
+--- a/d4e91a2b5a22589d28022fca27bea0bd9318a7c5
++++ b/4670b0d7668dd8dd7ca96fa5b67e192e29a7d23c
+@@ -1,5 +1,5 @@
+ public ProgressIndicator getProgressIndicator() {
+-    synchronized (this) {
++    synchronized (myThreadToIndicatorMap) {
+         return myThreadToIndicatorMap.get(Thread.currentThread());
+     }
+ }
+\ No newline at end of file

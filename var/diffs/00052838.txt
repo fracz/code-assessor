@@ -1,0 +1,11 @@
+diff --git a/8c3fc968ae28acac5b3b4959f11ed70ce2c235c1 b/115ff04030371848431365bb153f9b5d55777433
+index 8c3fc968ae..115ff04030 100644
+--- a/8c3fc968ae28acac5b3b4959f11ed70ce2c235c1
++++ b/115ff04030371848431365bb153f9b5d55777433
+@@ -1,4 +1,4 @@
+ @Test(expected = ParserUnsupportedException.class)
+ public void assertDrop() throws SQLParserException {
+-    SQLParserFactory.create(DatabaseType.MySQL, "DROP TABLE `order`", Collections.emptyList(), new ShardingRuleMockBuilder().build());
++    new SQLParserEngine(DatabaseType.MySQL, "DROP TABLE `order`", new ShardingRuleMockBuilder().build(), Collections.emptyList()).parseStatement();
+ }
+\ No newline at end of file

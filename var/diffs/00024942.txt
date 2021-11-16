@@ -1,0 +1,28 @@
+diff --git a/22a916e439db44897001813590d3a70b458fed8e b/07cabe5160f01390517ca1a12d6aa2af3b5e0545
+index 22a916e439..07cabe5160 100644
+--- a/22a916e439db44897001813590d3a70b458fed8e
++++ b/07cabe5160f01390517ca1a12d6aa2af3b5e0545
+@@ -1,13 +1,12 @@
+ public void update(MessageDigest digest) {
+-    if (compactedCf != null) {
+-        DataOutputBuffer buffer = new DataOutputBuffer();
+-        try {
+-            ColumnFamily.serializer().serializeCFInfo(compactedCf, buffer);
+-            buffer.writeInt(compactedCf.getColumnCount());
+-            digest.update(buffer.getData(), 0, buffer.getLength());
+-        } catch (IOException e) {
+-            throw new RuntimeException(e);
+-        }
+-        compactedCf.updateDigest(digest);
++    assert compactedCf != null;
++    DataOutputBuffer buffer = new DataOutputBuffer();
++    try {
++        ColumnFamily.serializer().serializeCFInfo(compactedCf, buffer);
++        buffer.writeInt(compactedCf.getColumnCount());
++        digest.update(buffer.getData(), 0, buffer.getLength());
++    } catch (IOException e) {
++        throw new RuntimeException(e);
+     }
++    compactedCf.updateDigest(digest);
+ }
+\ No newline at end of file

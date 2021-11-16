@@ -1,0 +1,20 @@
+diff --git a/05f0fadc37448cf744f386ec3db360e5ee388f5e b/8e56ed4cf4b5ce9cd448b158a47be748570c038f
+index 05f0fadc37..8e56ed4cf4 100644
+--- a/05f0fadc37448cf744f386ec3db360e5ee388f5e
++++ b/8e56ed4cf4b5ce9cd448b158a47be748570c038f
+@@ -1,7 +1,10 @@
+-private void addRunConfiguration(AndroidFacet facet) {
++private void addRunConfiguration(@NotNull AndroidFacet facet, @NotNull TargetSelectionMode targetSelectionMode, @Nullable String targetAvd) {
++    String activityClass;
+     if (isHelloAndroid()) {
+-        String activityClass = myPackageName + '.' + myActivityName;
+-        Module module = facet.getModule();
+-        AndroidUtils.addRunConfiguration(module.getProject(), facet, activityClass, !isFirstModule(module));
++        activityClass = myPackageName + '.' + myActivityName;
++    } else {
++        activityClass = null;
+     }
++    Module module = facet.getModule();
++    AndroidUtils.addRunConfiguration(module.getProject(), facet, activityClass, false, targetSelectionMode, targetAvd);
+ }
+\ No newline at end of file

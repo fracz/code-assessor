@@ -1,0 +1,17 @@
+diff --git a/7a159fd066939c7b3808293a0314bc3c0d2a2341 b/30dac0866f0fc0fe5d6c8d7db287563c75c86d8f
+index 7a159fd066..30dac0866f 100644
+--- a/7a159fd066939c7b3808293a0314bc3c0d2a2341
++++ b/30dac0866f0fc0fe5d6c8d7db287563c75c86d8f
+@@ -1,8 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiMethod method = (PsiMethod) location.getParent();
+-    assert method != null;
+-    final CouplingVisitor visitor = new CouplingVisitor(method, m_includeJavaClasses, m_includeLibraryClasses);
+-    method.accept(visitor);
+-    final int coupling = visitor.getNumDependencies();
++@NotNull
++public String buildErrorString(Object... infos) {
++    final Integer coupling = (Integer) infos[0];
+     return InspectionGadgetsBundle.message("method.coupling.problem.descriptor", coupling);
+ }
+\ No newline at end of file

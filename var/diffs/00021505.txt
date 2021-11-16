@@ -1,0 +1,16 @@
+diff --git a/26a37c325fc2d8e8f188c003a260b7dd8ff73683 b/803c252fba924be45ed315acfd38601df067843b
+index 26a37c325f..803c252fba 100644
+--- a/26a37c325fc2d8e8f188c003a260b7dd8ff73683
++++ b/803c252fba924be45ed315acfd38601df067843b
+@@ -1,7 +1,7 @@
+ // todo:  cause we don't support cgroup yet,now vcores is useless
+ private int getSlotCount(int memory, int vcores) {
+-    int cpuports = (int) Math.ceil(vcores / 1.2);
+-    int memoryports = (int) Math.floor(memory / 4096.0);
+-    // doesn't support cgroup yet
++    int cpuports = (int) Math.ceil(vcores / JOYConstants.JSTORM_VCORE_WEIGHT);
++    int memoryports = (int) Math.floor(memory / JOYConstants.JSTORM_MEMORY_WEIGHT);
++    // return cpuports > memoryports ? memoryports : cpuports;
+     return memoryports;
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/030eff9f2ae633c94e42304deaca9a48ce73600a b/76714f7e3e60220b9942d8a1eabb503731b87d9d
+index 030eff9f2a..76714f7e3e 100644
+--- a/030eff9f2ae633c94e42304deaca9a48ce73600a
++++ b/76714f7e3e60220b9942d8a1eabb503731b87d9d
+@@ -1,4 +1,4 @@
+ @Override
+-public ReadableDiffSets<NodePropertyConstraint> constraintsChangesForLabelAndProperty(int labelId, final int propertyKey) {
+-    return LABEL_STATE.get(this, labelId).nodeConstraintsChanges().filterAdded(item -> item.propertyKey() == propertyKey);
++public ReadableDiffSets<NodePropertyConstraint> constraintsChangesForLabelAndProperty(NodePropertyDescriptor descriptor) {
++    return LABEL_STATE.get(this, descriptor.getLabelId()).nodeConstraintsChanges().filterAdded(item -> item.descriptor().equals(descriptor));
+ }
+\ No newline at end of file

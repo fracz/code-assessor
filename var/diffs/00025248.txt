@@ -1,0 +1,14 @@
+diff --git a/865de36c3abbb44dd5b702f3271c902aa592678a b/61dc74ac948a82a7a3b9559c4acc56d5a3081f9d
+index 865de36c3a..61dc74ac94 100644
+--- a/865de36c3abbb44dd5b702f3271c902aa592678a
++++ b/61dc74ac948a82a7a3b9559c4acc56d5a3081f9d
+@@ -1,6 +1,5 @@
+ @Override
+ public void visit(Type field) {
+-    if (field == BYTES || field == NULLABLE_BYTES || field == RECORDS) {
+-        foundBufferReference.set(Boolean.TRUE);
+-    }
++    if (field == BYTES || field == NULLABLE_BYTES || field == RECORDS)
++        hasBuffer.set(true);
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/67dcc38afa4361ce03666ab0e445354121c88b1b b/8faad11cff1ea8a99ba8c16110e4df99b47cd040
+index 67dcc38afa..8faad11cff 100644
+--- a/67dcc38afa4361ce03666ab0e445354121c88b1b
++++ b/8faad11cff1ea8a99ba8c16110e4df99b47cd040
+@@ -1,3 +1,8 @@
+ public void invoke(@NotNull Project project, Editor editor, PsiFile file, DataContext dataContext) {
+-    performAction(new IntroduceOperation(project, editor, file, null, true, isTestClass(file, editor)));
++    final IntroduceOperation operation = new IntroduceOperation(project, editor, file, null);
++    operation.addAvailableInitPlace(InitPlace.CONSTRUCTOR);
++    if (isTestClass(file, editor)) {
++        operation.addAvailableInitPlace(InitPlace.SET_UP);
++    }
++    performAction(operation);
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/46467a3409973a27e79195c5805dc6db824aa516 b/9950c6044f8006b0617c5b45d2ec4885acb9b862
+index 46467a3409..9950c6044f 100644
+--- a/46467a3409973a27e79195c5805dc6db824aa516
++++ b/9950c6044f8006b0617c5b45d2ec4885acb9b862
+@@ -1,17 +1,17 @@
+ @Override
+ protected MySQLTrigger createDatabaseObject(DBRProgressMonitor monitor, DBECommandContext context, final MySQLTable parent, Object copyFrom) {
+     return new UITask<MySQLTrigger>() {
+
+         @Override
+         protected MySQLTrigger runTask() {
+-            CreateEntityDialog dialog = new CreateEntityDialog(DBeaverUI.getActiveWorkbenchShell(), parent.getDataSource(), "Create trigger");
+-            if (dialog.open() != IDialogConstants.OK_ID) {
++            EntityEditPage page = new EntityEditPage(parent.getDataSource(), DBSEntityType.TRIGGER);
++            if (!EditObjectDialog.showDialog(page)) {
+                 return null;
+             }
+-            MySQLTrigger newTrigger = new MySQLTrigger(parent.getContainer(), parent, dialog.getEntityName());
++            MySQLTrigger newTrigger = new MySQLTrigger(parent.getContainer(), parent, page.getEntityName());
+             // $NON-NLS-1$
+             newTrigger.setObjectDefinitionText("");
+             return newTrigger;
+         }
+     }.execute();
+ }
+\ No newline at end of file

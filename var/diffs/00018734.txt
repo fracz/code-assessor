@@ -1,0 +1,23 @@
+diff --git a/27400ed2d7803004304a20a63b0057a534716a24 b/6aa27764189f6a8d58ef169395c0b153149a350d
+index 27400ed2d7..6aa2776418 100644
+--- a/27400ed2d7803004304a20a63b0057a534716a24
++++ b/6aa27764189f6a8d58ef169395c0b153149a350d
+@@ -1,14 +1,13 @@
+ @Override
+ protected void onPostExecute(Integer result) {
+-    if (dialog != null)
+-        dialog.dismiss();
++    super.onPostExecute(result);
+     switch(result) {
+         case NETWORK_ERROR:
+-            Toast.makeText(getActivity(), getString(R.string.ApplicationPreferencesActivity_error_connecting_to_server), Toast.LENGTH_LONG).show();
++            Toast.makeText(getActivity(), R.string.ApplicationPreferencesActivity_error_connecting_to_server, Toast.LENGTH_LONG).show();
+             break;
+         case SUCCESS:
+-            ((CheckBoxPreference) preference).setChecked(false);
++            checkBoxPreference.setChecked(false);
+             TextSecurePreferences.setPushRegistered(getActivity(), false);
+             break;
+     }
+ }
+\ No newline at end of file

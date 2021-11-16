@@ -1,0 +1,20 @@
+diff --git a/76f62c16494010a443743e645861732255ca25d9 b/94a8211397cb7de1914e26010ac41c7d45ada663
+index 76f62c1649..94a8211397 100644
+--- a/76f62c16494010a443743e645861732255ca25d9
++++ b/94a8211397cb7de1914e26010ac41c7d45ada663
+@@ -1,12 +1,11 @@
+ @Override
+ public Boolean autoUpdate(String itemName) {
+-    // Cancel auto update functionality for items, which are handled on this binding
+     if (providesBindingFor(itemName)) {
+-        if (!isOutBindingOnly(itemName)) {
++        if (isOutBindingOnly(itemName) == false) {
+             // Cancel auto update functionality only if item is not 'out binding only'
+             logger.debug("AutoUpdate for item {} canceled", itemName);
+-            return Boolean.FALSE;
++            return false;
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

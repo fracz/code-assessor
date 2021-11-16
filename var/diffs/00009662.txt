@@ -1,0 +1,16 @@
+diff --git a/cdb6e8b83202a31e38e6e492304b33047cd53c5f b/27df81a1e8799de0f428befba306e36e7964d6c2
+index cdb6e8b832..27df81a1e8 100644
+--- a/cdb6e8b83202a31e38e6e492304b33047cd53c5f
++++ b/27df81a1e8799de0f428befba306e36e7964d6c2
+@@ -1,8 +1,9 @@
+ protected int getUIIndent() {
++    final String indentText = myIndentField.getText();
+     try {
+-        return Math.max(Integer.parseInt(myIndentField.getText()), 1);
++        return Math.max(Integer.parseInt(indentText), 1);
+     } catch (NumberFormatException e) {
+     // stay with default
+     }
+     return 4;
+ }
+\ No newline at end of file

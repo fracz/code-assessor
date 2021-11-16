@@ -1,0 +1,16 @@
+diff --git a/5f1184376e0dbdb9194fddbce6efa577cbb55fa8 b/48e8629da1c303a47702d127cb70e50937d68e03
+index 5f1184376e..48e8629da1 100644
+--- a/5f1184376e0dbdb9194fddbce6efa577cbb55fa8
++++ b/48e8629da1c303a47702d127cb70e50937d68e03
+@@ -1,8 +1,8 @@
+-public OPhysicalPosition getPhysicalPosition(final long iPosition, final OPhysicalPosition iPPosition) {
++public OPhysicalPosition getPhysicalPosition(final OPhysicalPosition iPPosition) {
+     acquireSharedLock();
+     try {
+-        return entries.get((int) iPosition);
++        return entries.get((int) iPPosition.clusterPosition);
+     } finally {
+         releaseSharedLock();
+     }
+ }
+\ No newline at end of file

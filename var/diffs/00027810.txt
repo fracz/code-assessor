@@ -1,0 +1,12 @@
+diff --git a/6fe2c62d5b5fec23e7e00d282bfeedaa371934d1 b/df157535594436bd512714f03950533e19b250f4
+index 6fe2c62d5b..df15753559 100644
+--- a/6fe2c62d5b5fec23e7e00d282bfeedaa371934d1
++++ b/df157535594436bd512714f03950533e19b250f4
+@@ -1,4 +1,4 @@
+ @Override
+-public Promise<Void> stopProcess(@NotNull final String machineId, final int processId) {
+-    return asyncRequestFactory.createDeleteRequest(baseHttpUrl + '/' + machineId + "/process/" + processId).loader(loaderFactory.newLoader("Stopping process...")).send();
++public Promise<Void> stopProcess(@NotNull final String workspaceId, @NotNull final String machineId, final int processId) {
++    return asyncRequestFactory.createDeleteRequest(baseHttpUrl + workspaceId + "/machine/" + machineId + "/process/" + processId).loader(loaderFactory.newLoader("Stopping process...")).send();
+ }
+\ No newline at end of file

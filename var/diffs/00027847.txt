@@ -1,0 +1,10 @@
+diff --git a/a9ef07f60872f52d315cbb1efc53053da398ff42 b/4bbd7b46e5d98ec5c0e96befb68685df90892456
+index a9ef07f608..4bbd7b46e5 100644
+--- a/a9ef07f60872f52d315cbb1efc53053da398ff42
++++ b/4bbd7b46e5d98ec5c0e96befb68685df90892456
+@@ -1,3 +1,3 @@
+ private static MachineConfigImpl createConfig(boolean isDev) {
+-    return MachineConfigImpl.builder().setDev(isDev).setType("docker").setLimits(new LimitsImpl(1024)).setSource(new MachineSourceImpl("git").setLocation("location")).setName("dev-machine").build();
++    return MachineConfigImpl.builder().setDev(isDev).setType("docker").setLimits(new LimitsImpl(1024)).setSource(new MachineSourceImpl("git").setLocation("location")).setName(UUID.randomUUID().toString()).build();
+ }
+\ No newline at end of file

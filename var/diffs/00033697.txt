@@ -1,0 +1,23 @@
+diff --git a/7083982bdece9521c18eacbfb71d88c2a48ac030 b/97ac71b238b7417c8a4b1cdafc94b22922dd77dd
+index 7083982bde..97ac71b238 100644
+--- a/7083982bdece9521c18eacbfb71d88c2a48ac030
++++ b/97ac71b238b7417c8a4b1cdafc94b22922dd77dd
+@@ -1,13 +1,12 @@
+-private T configureDomainObject() {
+-    File inputFile = getInputFile();
++public void configureDomainObject() {
+     T object;
+-    if (inputFile.exists()) {
+-        object = generator.read(inputFile);
++    if (getInputFile().exists()) {
++        object = generator.read(getInputFile());
+     } else {
+         object = generator.defaultInstance();
+     }
+     beforeConfigured.execute(object);
+     generator.configure(object);
+     afterConfigured.execute(object);
+-    return object;
++    domainObject = object;
+ }
+\ No newline at end of file

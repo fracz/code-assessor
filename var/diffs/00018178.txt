@@ -1,0 +1,15 @@
+diff --git a/eabc88adc872353c88e0554f12e8b2e5b957595f b/9eebb23f9f90ddfab574384a78753e4d36a7dfa1
+index eabc88adc8..9eebb23f9f 100644
+--- a/eabc88adc872353c88e0554f12e8b2e5b957595f
++++ b/9eebb23f9f90ddfab574384a78753e4d36a7dfa1
+@@ -1,8 +1,8 @@
+ public static HistoryEntry load(Project project, String s) throws Exception {
+     JSONObject obj = ParsingUtilities.evaluateJsonStringToObject(s);
+     AbstractOperation operation = null;
+     if (obj.has(OPERATION) && !obj.isNull(OPERATION)) {
+         operation = OperationRegistry.reconstruct(project, obj.getJSONObject(OPERATION));
+     }
+-    return ProjectManager.singleton.createHistoryEntry(obj.getLong("id"), project.id, obj.getString("description"), operation, ParsingUtilities.stringToDate(obj.getString("time")));
++    return new HistoryEntry(obj.getLong("id"), project.id, obj.getString("description"), operation, ParsingUtilities.stringToDate(obj.getString("time")));
+ }
+\ No newline at end of file

@@ -1,0 +1,34 @@
+diff --git a/1eea901e0c32ca125cd9678659c0a4cfbc9366bb b/62b6819db896ce90bf683cfa79417619b80bfcbd
+index 1eea901e0c..62b6819db8 100644
+--- a/1eea901e0c32ca125cd9678659c0a4cfbc9366bb
++++ b/62b6819db896ce90bf683cfa79417619b80bfcbd
+@@ -1,20 +1,17 @@
+-@Override
+-public synchronized void start() throws IOException, InterruptedException {
++public synchronized void start() throws Exception {
+     if (lastFlushed == NOTHING) {
+-        lastFlushed = lastFlushedStorage.getInitialState();
++        lastFlushed = coreState.getLastFlushed();
+     }
+-    lastApplied = lastFlushed;
+-    log.info(format("Restoring last applied index to %d", lastApplied));
++    applierState.lastApplied = lastFlushed;
++    log.info(format("Restoring last applied index to %d", lastFlushed));
+     sessionTracker.start();
+     /* Considering the order in which state is flushed, the state machines will
+          * always be furthest ahead and indicate the furthest possible state to
+          * which we must replay to reach a consistent state. */
+-    long lastPossiblyApplying = max(coreStateMachines.getLastAppliedIndex(), sessionTracker.getLastAppliedIndex());
+-    lastPossiblyApplying = max(lastPossiblyApplying, lastSeenCommitIndex);
+-    if (lastPossiblyApplying > lastApplied) {
++    long lastPossiblyApplying = max(coreState.getLastAppliedIndex(), applierState.getLastSeenCommitIndex());
++    if (lastPossiblyApplying > applierState.lastApplied) {
+         log.info("Applying up to: " + lastPossiblyApplying);
+-        submitApplyJob(lastPossiblyApplying);
+-        applier.sync(false);
++        applyUpTo(lastPossiblyApplying);
+     }
+-    started = true;
++    resumeApplier();
+ }
+\ No newline at end of file

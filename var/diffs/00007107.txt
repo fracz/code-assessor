@@ -1,0 +1,24 @@
+diff --git a/bde2f82819235fd0a2286987dfc9a6ee6ecd6c3a b/8eec17978db4aec789feb75928f0172822c904f7
+index bde2f82819..8eec17978d 100644
+--- a/bde2f82819235fd0a2286987dfc9a6ee6ecd6c3a
++++ b/8eec17978db4aec789feb75928f0172822c904f7
+@@ -1,15 +1,14 @@
+ public void visitReferenceExpression(@NotNull PsiReferenceExpression expression) {
+-    super.visitReferenceExpression(expression);
+-    if (!m_inSynchronizedContext) {
+-        return;
+-    }
+     final PsiElement element = expression.resolve();
+     if (!(element instanceof PsiField)) {
+         return;
+     }
+     final PsiField field = (PsiField) element;
+     if (field.hasModifierProperty(PsiModifier.PRIVATE) || field.hasModifierProperty(PsiModifier.FINAL)) {
+         return;
+     }
++    if (!isInSynchronizedContext(expression)) {
++        return;
++    }
+     registerError(expression);
+ }
+\ No newline at end of file

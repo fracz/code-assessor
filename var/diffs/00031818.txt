@@ -1,0 +1,19 @@
+diff --git a/b73ad0498fa7857c2c9bb686de589cb4e56eee87 b/e29b0dd0ecc442f90788272d127e31b2a6169c5b
+index b73ad0498f..e29b0dd0ec 100644
+--- a/b73ad0498fa7857c2c9bb686de589cb4e56eee87
++++ b/e29b0dd0ecc442f90788272d127e31b2a6169c5b
+@@ -1,5 +1,10 @@
+ public void apply(ValueStreamMap valueStreamMap) {
+-    Node currentPipeline = valueStreamMap.getCurrentPipeline();
+-    Set<Revision> visitedRevisions = new HashSet<Revision>();
+-    populateRevisionsForAllChildrenOf(currentPipeline, visitedRevisions);
++    if (valueStreamMap.getCurrentPipeline() != null) {
++        Node currentPipeline = valueStreamMap.getCurrentPipeline();
++        populateRevisionsForAllChildrenOf(currentPipeline, new HashSet<Revision>());
++    } else {
++        Node currentMaterial = valueStreamMap.getCurrentMaterial();
++        MaterialInstance currentMaterialInstance = valueStreamMap.getCurrentMaterialInstance();
++        populateRevisionsFor(currentMaterial, currentMaterialInstance, new HashSet<Revision>());
++    }
+ }
+\ No newline at end of file

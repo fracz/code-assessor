@@ -1,0 +1,20 @@
+diff --git a/1693c20d0dd998784055f0b7011dcd0044d5c4d7 b/2b9591fde926a8acf3046625948548140b1a3c6a
+index 1693c20d0d..2b9591fde9 100644
+--- a/1693c20d0dd998784055f0b7011dcd0044d5c4d7
++++ b/2b9591fde926a8acf3046625948548140b1a3c6a
+@@ -1,10 +1,10 @@
+ @Nullable
+ public static Icon getRawIcon(final LookupElement item, boolean real) {
+     Icon icon = _getRawIcon(item, real);
+-    // align SAMPLE_ICON.getIconHeight() with the 'icon' scale
+-    int sampleIconHeight = ScalableJBIcon.scaleVal(icon, SAMPLE_ICON.getIconHeight(), Scale.ARBITRARY);
+-    if (icon != null && icon.getIconHeight() > sampleIconHeight) {
+-        return new SizedIcon(icon, icon.getIconWidth(), sampleIconHeight, true);
++    if (icon instanceof ScalableIcon)
++        icon = ((ScalableIcon) icon).scale(1f);
++    if (icon != null && icon.getIconHeight() > SAMPLE_ICON.getIconHeight()) {
++        return new SizedIcon(icon, icon.getIconWidth(), SAMPLE_ICON.getIconHeight());
+     }
+     return icon;
+ }
+\ No newline at end of file

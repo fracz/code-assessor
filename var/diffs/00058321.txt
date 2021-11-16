@@ -1,0 +1,19 @@
+diff --git a/c0713a2afef745b61ec26ddb2748876d1a03c369 b/a9b5b8fa2ca9e64f527ed4a582682fe07810adf2
+index c0713a2afe..a9b5b8fa2c 100644
+--- a/c0713a2afef745b61ec26ddb2748876d1a03c369
++++ b/a9b5b8fa2ca9e64f527ed4a582682fe07810adf2
+@@ -1,11 +1,10 @@
+ @GET
+ @Produces({ MediaType.APPLICATION_JSON, "application/yaml" })
+ @ApiOperation(value = "The swagger definition in either JSON or YAML", hidden = true)
+-@Path("/swagger.{type:json|yaml}")
+ public Response getListing(@Context Application app, @Context ServletConfig sc, @Context HttpHeaders headers, @Context UriInfo uriInfo, @PathParam("type") String type) {
+     if (StringUtils.isNotBlank(type) && type.trim().equalsIgnoreCase("yaml")) {
+-        return getListingYaml(app, sc, headers, uriInfo);
++        return getListingYamlResponse(app, context, sc, headers, uriInfo);
+     } else {
+-        return getListingJson(app, sc, headers, uriInfo);
++        return getListingJsonResponse(app, context, sc, headers, uriInfo);
+     }
+ }
+\ No newline at end of file

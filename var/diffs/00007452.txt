@@ -1,0 +1,12 @@
+diff --git a/1ee06ae1c882f4a69a0e310c9a3f3410753a9dea b/008e47126cd42fe87c25bcedc238f745d52a3765
+index 1ee06ae1c8..008e47126c 100644
+--- a/1ee06ae1c882f4a69a0e310c9a3f3410753a9dea
++++ b/008e47126cd42fe87c25bcedc238f745d52a3765
+@@ -1,5 +1,5 @@
+ @Nullable
+ String getPropertyDescription(@NotNull final PsiElement element, @Nullable final String name) {
+     final RegExpLanguageHost host = findRegExpHost(element);
+-    return host == null ? null : host.getPropertyDescription(name);
++    return host != null ? host.getPropertyDescription(name) : myDefaultProvider.getPropertyDescription(name);
+ }
+\ No newline at end of file

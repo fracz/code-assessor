@@ -1,0 +1,25 @@
+diff --git a/9a3bf72f565a8c41cbce121eee15da2d91ee8414 b/7e456dd06a245e2ee10aa761add1f70f8011af84
+index 9a3bf72f56..7e456dd06a 100644
+--- a/9a3bf72f565a8c41cbce121eee15da2d91ee8414
++++ b/7e456dd06a245e2ee10aa761add1f70f8011af84
+@@ -1,12 +1,12 @@
+-public static JetIntentionActionFactory<JetPropertyAccessor> createFactory() {
+-    return new JetIntentionActionFactory<JetPropertyAccessor>() {
++public static JetIntentionActionFactory createFactory() {
++    return new JetIntentionActionFactory() {
+
+         @Override
+-        public JetIntentionAction<JetPropertyAccessor> createAction(DiagnosticWithPsiElement diagnostic) {
+-            assert diagnostic.getPsiElement() instanceof JetPropertyAccessor;
+-            DiagnosticWithParameters<PsiElement> diagnosticWithParameters = assertAndCastToDiagnosticWithParameters(diagnostic, DiagnosticParameters.TYPE);
+-            JetType type = diagnosticWithParameters.getParameter(DiagnosticParameters.TYPE);
+-            return new ChangeAccessorTypeFix((JetPropertyAccessor) diagnostic.getPsiElement(), type);
++        public JetIntentionAction<JetPropertyAccessor> createAction(Diagnostic diagnostic) {
++            JetPropertyAccessor accessor = QuickFixUtil.getParentElementOfType(diagnostic, JetPropertyAccessor.class);
++            if (accessor == null)
++                return null;
++            return new ChangeAccessorTypeFix(accessor);
+         }
+     };
+ }
+\ No newline at end of file

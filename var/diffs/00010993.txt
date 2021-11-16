@@ -1,0 +1,14 @@
+diff --git a/0ee97972a8dfeb2f236d36222eeeef05076b65c9 b/c2585382b78f0a4b55706280529207164acfd1e3
+index 0ee97972a8..c2585382b7 100644
+--- a/0ee97972a8dfeb2f236d36222eeeef05076b65c9
++++ b/c2585382b78f0a4b55706280529207164acfd1e3
+@@ -1,7 +1,7 @@
+ public Cursor processMouseMoveEvent(final int x, final int y, final boolean copyOnDrop, final int componentCount, final int dragColumnDelta) {
+     GridLocation location = processDragEvent(x, y, componentCount, dragColumnDelta);
+-    if (location.getMode() == GridInsertMode.NoDrop) {
++    if (!location.canDrop(componentCount)) {
+         return FormEditingUtil.getMoveNoDropCursor();
+     }
+     return copyOnDrop ? FormEditingUtil.getCopyDropCursor() : FormEditingUtil.getMoveDropCursor();
+ }
+\ No newline at end of file

@@ -1,0 +1,29 @@
+diff --git a/57481415ddd6d8b311000872567c678fd5489221 b/83f93a90f277f1f4d9b58267c8d67b37851268b7
+index 57481415dd..83f93a90f2 100644
+--- a/57481415ddd6d8b311000872567c678fd5489221
++++ b/83f93a90f277f1f4d9b58267c8d67b37851268b7
+@@ -1,20 +1,21 @@
+ /**
+  * 使用索引记录方法调用.
+  *
+  * @param index 索引
+  * @param methodName 方法名称
+  * @param argumentTypes 参数类型
+  * @param arguments 参数
++ * @param isPostEvent 是否发生SQL执行事件
+  */
+-public void recordMethodInvocation(final int index, final String methodName, final Class<?>[] argumentTypes, final Object[] arguments) {
+-    jdbcMethodInvocations.ensureCapacity(index);
++public void recordMethodInvocation(final boolean isPostEvent, final int index, final String methodName, final Class<?>[] argumentTypes, final Object[] arguments) {
++    this.isPostExecuteEvent = isPostEvent;
+     int max = jdbcMethodInvocations.size();
+     while (max++ <= index - 1) {
+         jdbcMethodInvocations.add(null);
+     }
+     try {
+         jdbcMethodInvocations.set(index - 1, new JdbcMethodInvocation(PreparedStatement.class.getMethod(methodName, argumentTypes), arguments));
+     } catch (final NoSuchMethodException ex) {
+         throw new ShardingJdbcException(ex);
+     }
+ }
+\ No newline at end of file

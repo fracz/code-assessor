@@ -1,0 +1,19 @@
+diff --git a/9413f444b092e96e2b77146fba218cc3e00a32cf b/530068f97d6bbc2a9b8383fb562c9b8f1facc23d
+index 9413f444b0..530068f97d 100644
+--- a/9413f444b092e96e2b77146fba218cc3e00a32cf
++++ b/530068f97d6bbc2a9b8383fb562c9b8f1facc23d
+@@ -1,9 +1,8 @@
+ /**
+- * Returns {@link CommandType} with the specified ID or {@code null} if none.
++ * Returns {@code Optional} {@link CommandType} with the specified ID or {@code Optional.absent()} if none.
+  *
+  * @param id
+  * the ID of the command type
+- * @return command type or {@code null}
++ * @return {@link CommandType} or {@code Optional.absent()}
+  */
+-@Nullable
+-CommandType getCommandTypeById(String id);
+\ No newline at end of file
++Optional<CommandType> getCommandTypeById(String id);
+\ No newline at end of file

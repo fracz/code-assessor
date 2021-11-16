@@ -1,0 +1,17 @@
+diff --git a/c79d88e5f9e1bc0bc4be2a5d407791373d74bb1a b/cf19208146e6457a47fca4486362731f98146589
+index c79d88e5f9..cf19208146 100644
+--- a/c79d88e5f9e1bc0bc4be2a5d407791373d74bb1a
++++ b/cf19208146e6457a47fca4486362731f98146589
+@@ -1,10 +1,10 @@
+ @Override
+ public final void setEscapeProcessing(final boolean enable) throws SQLException {
+     if (getRoutedStatements().isEmpty()) {
+-        recordMethodInvocation(Statement.class, "setEscapeProcessing", new Class[] { boolean.class }, new Object[] { enable });
++        recordMethodInvocation(targetClass, "setEscapeProcessing", new Class[] { boolean.class }, new Object[] { enable });
+         return;
+     }
+     for (Statement each : getRoutedStatements()) {
+         each.setEscapeProcessing(enable);
+     }
+ }
+\ No newline at end of file

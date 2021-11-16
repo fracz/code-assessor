@@ -1,0 +1,17 @@
+diff --git a/516f59bf7e87503e36bf8aacf23214a792be3aa4 b/e1bb4934d2b7701ea22928cfcdc3ec59c9141bab
+index 516f59bf7e..e1bb4934d2 100644
+--- a/516f59bf7e87503e36bf8aacf23214a792be3aa4
++++ b/e1bb4934d2b7701ea22928cfcdc3ec59c9141bab
+@@ -1,9 +1,6 @@
+ @Override
+ public VirtualFile getFile() {
+-    Pair<VirtualFile, String> result = update();
+-    if (result == null) {
+-        checkDisposed();
+-        return null;
+-    }
++    checkDisposed();
++    Pair<VirtualFile, String> result = myNode.update();
+     return result.first;
+ }
+\ No newline at end of file

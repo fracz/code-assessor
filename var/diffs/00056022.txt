@@ -1,0 +1,13 @@
+diff --git a/2a3fa23f2d36702f0cd07a191de5a9a393846b53 b/8cae04596f6a6ab31c27a27a1dae699e6b31e80a
+index 2a3fa23f2d..8cae04596f 100644
+--- a/2a3fa23f2d36702f0cd07a191de5a9a393846b53
++++ b/8cae04596f6a6ab31c27a27a1dae699e6b31e80a
+@@ -1,5 +1,5 @@
+ @Override
+ public void complete(WebSocketChannel channel, Void context) {
+-    webSocketMessageProcessor.setReady(true);
+-    webSocketMessageProcessor.onWritePossible();
++    getSendProcessor().setReady(true);
++    getSendProcessor().onWritePossible();
+ }
+\ No newline at end of file

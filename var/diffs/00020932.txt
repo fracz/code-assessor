@@ -1,0 +1,28 @@
+diff --git a/d565ddc71e83a5118c7b830f9b89ba310ed47fb5 b/ae994651b4adfaa74edd1792d0ba2c5b8690d521
+index d565ddc71e..ae994651b4 100644
+--- a/d565ddc71e83a5118c7b830f9b89ba310ed47fb5
++++ b/ae994651b4adfaa74edd1792d0ba2c5b8690d521
+@@ -1,19 +1,19 @@
+ @Test
+ public void testInitInvalidDecrypt() throws SQLException {
+     DruidDataSource dataSource = new DruidDataSource();
+     dataSource.setDriver(MockDriver.instance);
+     dataSource.setUrl("");
+     dataSource.setUsername("test");
+     dataSource.setPassword(encryptedString);
+     dataSource.setFilters("config");
+     dataSource.setConnectionProperties("config.decrypt=ABCDEF");
++    Exception error = null;
+     try {
+         dataSource.init();
+-        Assert.assertTrue("It is here", false);
+     } catch (IllegalArgumentException e) {
+-        e.printStackTrace();
+-        Assert.assertTrue(true);
++        error = e;
+     } finally {
+         JdbcUtils.close(dataSource);
+     }
++    Assert.assertNotNull(error);
+ }
+\ No newline at end of file

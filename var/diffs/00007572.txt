@@ -1,0 +1,11 @@
+diff --git a/03ff37e0fa7f109634109bd9cbdb452e1cc029f5 b/007912c7b9c348efd960844a9a80dc467b7c3f24
+index 03ff37e0fa..007912c7b9 100644
+--- a/03ff37e0fa7f109634109bd9cbdb452e1cc029f5
++++ b/007912c7b9c348efd960844a9a80dc467b7c3f24
+@@ -1,4 +1,4 @@
+ public static boolean canStartAnotherRefactoring(Editor editor, Project project, RefactoringActionHandler handler, PsiElement... element) {
+     final InplaceRefactoring inplaceRefactoring = getActiveInplaceRenamer(editor);
+-    return StartMarkAction.canStart(project) == null || (inplaceRefactoring != null && element.length == 1 && inplaceRefactoring.startsOnTheSameElement(handler, element[0]));
++    return StartMarkAction.canStart(project) == null || (inplaceRefactoring != null && inplaceRefactoring.startsOnTheSameElements(editor, handler, element));
+ }
+\ No newline at end of file

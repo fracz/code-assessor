@@ -1,0 +1,25 @@
+diff --git a/6be32097633ae8fddc545e7060f303b2886df2b2 b/75267de4834d826c340d303f8e8442437b0fb8b9
+index 6be3209763..75267de483 100644
+--- a/6be32097633ae8fddc545e7060f303b2886df2b2
++++ b/75267de4834d826c340d303f8e8442437b0fb8b9
+@@ -1,10 +1,13 @@
+ private TraceFactory createTraceFactory(StorageFactory storageFactory, Sampler sampler, boolean recordActiveThread) {
+-    // TODO extract chain TraceFactory??
+-    final TraceFactory threadLocalTraceFactory = new ThreadLocalTraceFactory(this, storageFactory, sampler, this.idGenerator);
++    // TODO extract TraceFactory builder?
++    BaseTraceFactory baseTraceFactory = new DefaultBaseTraceFactory(this, storageFactory, sampler, this.idGenerator);
++    Logger baseTraceFactoryLogger = LoggerFactory.getLogger(DefaultBaseTraceFactory.class);
++    if (baseTraceFactoryLogger.isDebugEnabled()) {
++        baseTraceFactory = LoggingBaseTraceFactory.wrap(baseTraceFactory);
++    }
++    TraceFactory traceFactory = new ThreadLocalTraceFactory(baseTraceFactory);
+     if (recordActiveThread) {
+-        ActiveTraceFactory activeTraceFactory = (ActiveTraceFactory) ActiveTraceFactory.wrap(threadLocalTraceFactory);
+-        return activeTraceFactory;
+-    } else {
+-        return threadLocalTraceFactory;
++        traceFactory = ActiveTraceFactory.wrap(traceFactory);
+     }
++    return traceFactory;
+ }
+\ No newline at end of file

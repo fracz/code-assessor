@@ -1,0 +1,17 @@
+diff --git a/84ef48e8f26084aec0e41059ed83c3a88fa0e7c7 b/6c21dc4296128df3608303f13a8b4bc131f7a0a8
+index 84ef48e8f2..6c21dc4296 100644
+--- a/84ef48e8f26084aec0e41059ed83c3a88fa0e7c7
++++ b/6c21dc4296128df3608303f13a8b4bc131f7a0a8
+@@ -1,4 +1,8 @@
+-private static String serializeKind(ColumnDefinition.Kind kind) {
+-    // For backward compatibility we need to special case CLUSTERING_COLUMN
+-    return kind == ColumnDefinition.Kind.CLUSTERING_COLUMN ? "clustering_key" : kind.toString().toLowerCase();
++private static String serializeKind(ColumnDefinition.Kind kind, boolean isDense) {
++    // For backward compatibility, we special case CLUSTERING_COLUMN and the case where the table is dense.
++    if (kind == ColumnDefinition.Kind.CLUSTERING_COLUMN)
++        return "clustering_key";
++    if (kind == ColumnDefinition.Kind.REGULAR && isDense)
++        return "compact_value";
++    return kind.toString().toLowerCase();
+ }
+\ No newline at end of file

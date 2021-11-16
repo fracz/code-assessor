@@ -1,0 +1,22 @@
+diff --git a/6f0403711396ac5e2b316e1aa4e51442a24572bf b/c6adf08d0e509e5a951e9d8a5e095800ca696233
+index 6f04037113..c6adf08d0e 100644
+--- a/6f0403711396ac5e2b316e1aa4e51442a24572bf
++++ b/c6adf08d0e509e5a951e9d8a5e095800ca696233
+@@ -1,11 +1,6 @@
+ /**
+- * Determine if any mappings need to be updated, and update them on the
+- * master node if necessary. Returnes a failed {@code Engine.IndexResult}
+- * in the event updating the mappings fails or null if successful.
+- * Throws a {@code ReplicationOperation.RetryOnPrimaryException} if the
+- * operation needs to be retried on the primary due to the mappings not
+- * being present yet, or a different exception if updating the mappings
+- * on the master failed.
++ * Determine if any mappings need to be updated, and update them on the master node if
++ * necessary. Returnes a failure Exception in the event updating the mappings fails or null if
++ * successful.
+  */
+-@Nullable
+-MappingUpdateResult updateMappingsIfNeeded(IndexShard primary, IndexRequest request) throws Exception;
+\ No newline at end of file
++void updateMappingsIfNeeded(Engine.Index operation, ShardId shardId, String type) throws Exception;
+\ No newline at end of file

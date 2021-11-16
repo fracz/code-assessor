@@ -1,0 +1,18 @@
+diff --git a/a898d808fb1f7999ac926f969841c90900811f26 b/5847122791873fadbb4a8ab563f24f1585f84361
+index a898d808fb..5847122791 100644
+--- a/a898d808fb1f7999ac926f969841c90900811f26
++++ b/5847122791873fadbb4a8ab563f24f1585f84361
+@@ -1,9 +1,8 @@
+ private static boolean isSatisfiedBy(ColumnCondition.Bound bound, ByteBuffer conditionValue, ByteBuffer columnValue) throws InvalidRequestException {
+     Cell cell = null;
+     if (columnValue != null) {
+-        CompoundSparseCellNameType nameType = new CompoundSparseCellNameType(Collections.EMPTY_LIST);
+-        ColumnDefinition definition = new ColumnDefinition("ks", "cf", new ColumnIdentifier("c", true), Int32Type.instance, null, null, null, null, null);
+-        cell = new BufferCell(nameType.create(Composites.EMPTY, definition), columnValue);
++        ColumnDefinition definition = ColumnDefinition.regularDef("ks", "cf", "c", ListType.getInstance(Int32Type.instance, true), null);
++        cell = new TestCell(definition, null, columnValue, LivenessInfo.NONE);
+     }
+-    return bound.isSatisfiedByValue(conditionValue, cell, Int32Type.instance, bound.operator, 1234);
++    return bound.isSatisfiedByValue(conditionValue, cell, Int32Type.instance, bound.operator);
+ }
+\ No newline at end of file

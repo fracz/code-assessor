@@ -1,0 +1,14 @@
+diff --git a/55965a26ff920da8d4c63d9b3f9ba35bafb7545d b/321ea93669a3635c77e099f1c4cd8bc8e426e4d1
+index 55965a26ff..321ea93669 100644
+--- a/55965a26ff920da8d4c63d9b3f9ba35bafb7545d
++++ b/321ea93669a3635c77e099f1c4cd8bc8e426e4d1
+@@ -1,6 +1,4 @@
+ @Override
+-public Stoppable watch(FileWatchInputs inputs, Runnable callback) throws IOException {
+-    AtomicBoolean runningFlag = new AtomicBoolean(true);
+-    Future<?> taskCompletion = executor.submit(new FileWatcherTask(createWatchStrategy(), inputs, runningFlag, callback));
+-    return new FileWatcherStopper(runningFlag, taskCompletion);
++public void watch(String sourceKey, FileWatchInputs inputs) throws IOException {
++    fileWatcherTask.registerWatches(inputs);
+ }
+\ No newline at end of file

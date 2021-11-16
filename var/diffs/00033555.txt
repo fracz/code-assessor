@@ -1,0 +1,13 @@
+diff --git a/7a2a5dc7c4865126cc9193aedd66da9cb70b21e0 b/9b233a1020dff05a9367cce5712b9671281f54b2
+index 7a2a5dc7c4..9b233a1020 100644
+--- a/7a2a5dc7c4865126cc9193aedd66da9cb70b21e0
++++ b/9b233a1020dff05a9367cce5712b9671281f54b2
+@@ -1,6 +1,5 @@
+ public <T extends BinaryToolSpec> Compiler<T> createCCompiler() {
+     CommandLineTool<CCompileSpec> commandLineTool = commandLineTool(ToolType.C_COMPILER);
+-    commandLineTool.withSpecTransformer(withSystemArgs(CCompileSpec.class, platformConfiguration.getCCompilerArgs()));
+-    CCompiler cCompiler = new CCompiler(commandLineTool, tools.getArgTransformer(ToolType.C_COMPILER), useCommandFile);
++    CCompiler cCompiler = new CCompiler(commandLineTool, toolRegistry.getTool(ToolType.C_COMPILER).getArgAction(), useCommandFile);
+     return (Compiler<T>) new OutputCleaningCompiler<CCompileSpec>(cCompiler, getOutputFileSuffix());
+ }
+\ No newline at end of file

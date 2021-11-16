@@ -1,0 +1,14 @@
+diff --git a/9421072f271dcf9dbb712a251e0dc95515d30913 b/d02b13d8240984ec50b5417fab9379490e87234e
+index 9421072f27..d02b13d824 100644
+--- a/9421072f271dcf9dbb712a251e0dc95515d30913
++++ b/d02b13d8240984ec50b5417fab9379490e87234e
+@@ -1,7 +1,7 @@
+ private File save(InputStream is) throws IOException {
+-    File temp = Gridworks.getTempFile(Long.toString(System.currentTimeMillis()));
++    File temp = this.servlet.getTempFile(Long.toString(System.currentTimeMillis()));
+     temp.deleteOnExit();
+     IOUtils.copy(is, temp);
+     is.close();
+     return temp;
+ }
+\ No newline at end of file

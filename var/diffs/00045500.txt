@@ -1,0 +1,18 @@
+diff --git a/520489d3f29886b1e506d6db478a1cccf3e7059a b/329a3a022c4253def24474f1a3ebb19c6d0f0ef5
+index 520489d3f2..329a3a022c 100644
+--- a/520489d3f29886b1e506d6db478a1cccf3e7059a
++++ b/329a3a022c4253def24474f1a3ebb19c6d0f0ef5
+@@ -1,11 +1,10 @@
+ @Override
+ public void shutdown() {
+-    sendShutdown();
+-    channel.close();
++    super.shutdown();
+     if (connection == null)
+         return;
+     OServerHandlerHelper.invokeHandlerCallbackOnClientDisconnection(connection);
+     if (connection.database != null)
+         connection.database.close();
+     OClientConnectionManager.instance().disconnect(connection);
+ }
+\ No newline at end of file

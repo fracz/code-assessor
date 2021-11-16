@@ -1,0 +1,29 @@
+diff --git a/23cf2a7b298a67172cc2dca1d41e644d1192f560 b/3fceacf9759d721764b1a95642463810d61b5a24
+index 23cf2a7b29..3fceacf975 100644
+--- a/23cf2a7b298a67172cc2dca1d41e644d1192f560
++++ b/3fceacf9759d721764b1a95642463810d61b5a24
+@@ -1,15 +1,14 @@
+ /**
+  * Waits for a response.
+  *
+  * @return the response
+  */
+-private Object waitForResponse() {
+-    Object writeResponse = null;
+-    int timeRemaining = Constants.MINUTE_MS;
+-    while (writeResponse == null && timeRemaining > 0) {
+-        writeResponse = mEmbeddedChannel.readOutbound();
+-        CommonUtils.sleepMs(10);
+-        timeRemaining -= 10;
+-    }
+-    return writeResponse;
++private Object waitForResponse(final EmbeddedChannel channel) {
++    return CommonUtils.waitFor("", new Function<Void, Object>() {
++
++        @Override
++        public Object apply(Void v) {
++            return channel.readOutbound();
++        }
++    }, Constants.MINUTE_MS);
+ }
+\ No newline at end of file

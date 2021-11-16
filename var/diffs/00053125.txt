@@ -1,0 +1,23 @@
+diff --git a/4f3642bf60f13ccef19468491f06e563d1562a6f b/26481d152dbba03fd57d6af8f19dca38156c283f
+index 4f3642bf60..26481d152d 100644
+--- a/4f3642bf60f13ccef19468491f06e563d1562a6f
++++ b/26481d152dbba03fd57d6af8f19dca38156c283f
+@@ -1,15 +1,15 @@
+ private void parserParameters(List<PGParameter> parameters) {
+     while (true) {
+         PGParameter parameter = new PGParameter();
+-        parameter.setName(this.exprParser.name());
+-        parameter.setDataType(this.exprParser.parseDataType());
++        parameter.setName(getExprParser().name());
++        parameter.setDataType(getExprParser().parseDataType());
+         parameters.add(parameter);
+         if (getLexer().equalToken(Token.COMMA) || getLexer().equalToken(Token.SEMI)) {
+             getLexer().nextToken();
+         }
+         if (!getLexer().equalToken(Token.BEGIN) && !getLexer().equalToken(Token.RIGHT_PAREN)) {
+             continue;
+         }
+         break;
+     }
+ }
+\ No newline at end of file

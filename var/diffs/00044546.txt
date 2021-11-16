@@ -1,0 +1,15 @@
+diff --git a/27d36d00690e3259d657481564837ff39969bc49 b/c95f0150df26fe0721a5f307f519e748a222f39e
+index 27d36d0069..c95f0150df 100644
+--- a/27d36d00690e3259d657481564837ff39969bc49
++++ b/c95f0150df26fe0721a5f307f519e748a222f39e
+@@ -1,6 +1,6 @@
+ @Override
+ public OPhysicalPosition[] higherPhysicalPositions(final int iClusterId, final OPhysicalPosition iClusterPosition) {
+-    OBinaryRequest request = new OHigherPhysicalPositionsRequest(iClusterId, iClusterPosition);
+-    OBinaryResponse<OPhysicalPosition[]> response = new OHigherPhysicalPositionsResponse();
+-    return networkOperation(request, response, "Error on retrieving higher positions after " + iClusterPosition.clusterPosition);
++    OHigherPhysicalPositionsRequest request = new OHigherPhysicalPositionsRequest(iClusterId, iClusterPosition);
++    OHigherPhysicalPositionsResponse response = networkOperation(request, "Error on retrieving higher positions after " + iClusterPosition.clusterPosition);
++    return response.getNextPositions();
+ }
+\ No newline at end of file

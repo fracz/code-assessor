@@ -1,0 +1,19 @@
+diff --git a/74d45ed25d04f598f6e8736f8060c2372596ba91 b/78ce53562488e0b261254b38e3c1059793c2cfb5
+index 74d45ed25d..78ce535624 100644
+--- a/74d45ed25d04f598f6e8736f8060c2372596ba91
++++ b/78ce53562488e0b261254b38e3c1059793c2cfb5
+@@ -1,11 +1,10 @@
+ private void showUpdaterDialog(final VersionDescriptor versionDescriptor) {
+-    final Shell shell = DBeaverUI.getActiveWorkbenchShell();
+-    shell.getDisplay().asyncExec(new Runnable() {
++    DBeaverUI.asyncExec(new Runnable() {
+
+         @Override
+         public void run() {
+-            VersionUpdateDialog dialog = new VersionUpdateDialog(shell, versionDescriptor);
++            VersionUpdateDialog dialog = new VersionUpdateDialog(DBeaverUI.getActiveWorkbenchShell(), versionDescriptor);
+             dialog.open();
+         }
+     });
+ }
+\ No newline at end of file

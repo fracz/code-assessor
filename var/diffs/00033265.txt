@@ -1,0 +1,12 @@
+diff --git a/61ab30f661105e146ca59b6c8d198ab61645926e b/beb5286877d178427792d043794e8c1218ec898e
+index 61ab30f661..beb5286877 100644
+--- a/61ab30f661105e146ca59b6c8d198ab61645926e
++++ b/beb5286877d178427792d043794e8c1218ec898e
+@@ -1,5 +1,5 @@
+ private DefaultResolvedModuleVersionResult buildGraph() {
+     Map<DefaultResolvedDependencyResult, DefaultResolvedModuleVersionResult> visited = new HashMap<DefaultResolvedDependencyResult, DefaultResolvedModuleVersionResult>();
+-    DefaultResolvedDependencyResult id = new DefaultResolvedDependencyResult(root.getId(), root.getId(), Sets.newHashSet(root.getConfiguration()));
++    DefaultResolvedDependencyResult id = new DefaultResolvedDependencyResult(newSelector(root.getId()), root.getId(), newHashSet(root.getConfiguration()));
+     return buildNode(id, visited);
+ }
+\ No newline at end of file

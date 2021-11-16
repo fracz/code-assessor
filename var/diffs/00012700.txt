@@ -1,0 +1,21 @@
+diff --git a/7cfde60f595f36f914c429edf3647cc446be2739 b/dcde7e92b83ca91b099dec5ad135e645b3c1cb19
+index 7cfde60f59..dcde7e92b8 100644
+--- a/7cfde60f595f36f914c429edf3647cc446be2739
++++ b/dcde7e92b83ca91b099dec5ad135e645b3c1cb19
+@@ -1,13 +1,8 @@
+ public void select() {
+     if (!myList.isEmpty()) {
+         myModel.setSelectedIndex(myList.size() - 1);
+-        paintComponent();
++        rebuildComponent();
+         scrollSelectionToVisible(1);
+-        SwingUtilities.invokeLater(new Runnable() {
+-
+-            public void run() {
+-                requestFocusInWindow();
+-            }
+-        });
++        IdeFocusManager.getInstance(myProject).requestFocus(this, true);
+     }
+ }
+\ No newline at end of file

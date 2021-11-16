@@ -1,0 +1,22 @@
+diff --git a/0c31bc4c8df66c1dcea6c263e712bc4bedd0b844 b/693aff0eb34adce6c9c4698d22a987fdbccf452d
+index 0c31bc4c8d..693aff0eb3 100644
+--- a/0c31bc4c8df66c1dcea6c263e712bc4bedd0b844
++++ b/693aff0eb34adce6c9c4698d22a987fdbccf452d
+@@ -1,13 +1,7 @@
+-/**
+- * Calculate static sharding info.
+- *
+- * @param availableTargetNames available data sources or tables's names
+- * @param shardingValue sharding value
+- * @return sharding results for data sources or tables's names
+- */
+-public Collection<String> doSharding(final Collection<String> availableTargetNames, final ShardingValue shardingValue) {
+-    Collection<String> shardingResult = shardingAlgorithm.doSharding(availableTargetNames, shardingValue);
++@Override
++public Collection<String> doSharding(final Collection<String> availableTargetNames, final Collection<ShardingValue> shardingValues) {
++    Collection<String> shardingResult = shardingAlgorithm.doSharding(availableTargetNames, shardingValues.iterator().next());
+     Collection<String> result = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+     result.addAll(shardingResult);
+     return result;
+ }
+\ No newline at end of file

@@ -1,0 +1,28 @@
+diff --git a/4cf563f0dc83d75f4c750d1eb261e059394a57be b/616063daac104c13f71d0c7d7be2e233ef3126c8
+index 4cf563f0dc..616063daac 100644
+--- a/4cf563f0dc83d75f4c750d1eb261e059394a57be
++++ b/616063daac104c13f71d0c7d7be2e233ef3126c8
+@@ -1,14 +1,14 @@
++// the first column is a dummy column representing K=0.
+ /**
+- * Given the number of bits that can be used per element, return the optimal
++ * Given the number of buckets that can be used per element, return the optimal
+  * number of hash functions in order to minimize the false positive rate.
+  *
+- * @param bitsPerElement
++ * @param bucketsPerElement
+  * @return The number of hash functions that minimize the false positive rate.
+  */
+-public static int computeBestK(int bitsPerElement) {
+-    if (bitsPerElement < 0)
+-        return optKPerBits[0];
+-    if (bitsPerElement >= optKPerBits.length)
+-        return optKPerBits[optKPerBits.length - 1];
+-    return optKPerBits[bitsPerElement];
++public static int computeBestK(int bucketsPerElement) {
++    assert bucketsPerElement >= 0;
++    if (bucketsPerElement >= optKPerBuckets.length)
++        return optKPerBuckets[optKPerBuckets.length - 1];
++    return optKPerBuckets[bucketsPerElement];
+ }
+\ No newline at end of file

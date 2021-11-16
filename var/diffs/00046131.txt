@@ -1,0 +1,14 @@
+diff --git a/3de9a3644139145d7bc731d5a4dc31dea83c9148 b/5cca94f9164a78df13c3146ef98d37c098117bdd
+index 3de9a36441..5cca94f916 100644
+--- a/3de9a3644139145d7bc731d5a4dc31dea83c9148
++++ b/5cca94f9164a78df13c3146ef98d37c098117bdd
+@@ -1,7 +1,7 @@
+ @Test
+ public void testCountAll() {
+     List<Tuple> expected = computeExpected("SELECT COUNT(*) FROM orders", FIXED_INT_64);
+-    BlockStream orders = createBlockStream(ordersData, 1, FIXED_INT_64);
++    BlockStream orders = createBlockStream(ordersData, Column.ORDER_ORDERKEY, FIXED_INT_64);
+     AggregationOperator aggregation = new AggregationOperator(orders, CountAggregation.PROVIDER);
+     assertEqualsIgnoreOrder(tuples(aggregation), expected);
+ }
+\ No newline at end of file

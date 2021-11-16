@@ -1,0 +1,24 @@
+diff --git a/1dc988b026f7e5036deb530385bc77718f5a2e08 b/d6ed52b5d1e1ef60347740a8f782aedbc7749861
+index 1dc988b026..d6ed52b5d1 100644
+--- a/1dc988b026f7e5036deb530385bc77718f5a2e08
++++ b/d6ed52b5d1e1ef60347740a8f782aedbc7749861
+@@ -1,16 +1,15 @@
+-private static void addLibraries(List classPath, File fromDir, final URL selfRootUrl) throws MalformedURLException {
++private static void addLibraries(List<URL> classPath, File fromDir, final URL selfRootUrl) throws MalformedURLException {
+     final File[] files = fromDir.listFiles();
+     if (files != null) {
+-        for (int idx = 0; idx < files.length; idx++) {
+-            final File file = files[idx];
++        for (final File file : files) {
+             if (!isJarOrZip(file)) {
+                 continue;
+             }
+             final URL url = file.toURL();
+             if (selfRootUrl.equals(url)) {
+                 continue;
+             }
+             classPath.add(url);
+         }
+     }
+ }
+\ No newline at end of file

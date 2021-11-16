@@ -1,0 +1,17 @@
+diff --git a/62c4db7d48ba21a448c4cdbb4625e881666259a2 b/afc135a251fdea9f326d6d784c710b6709c037d1
+index 62c4db7d48..afc135a251 100644
+--- a/62c4db7d48ba21a448c4cdbb4625e881666259a2
++++ b/afc135a251fdea9f326d6d784c710b6709c037d1
+@@ -1,9 +1,5 @@
+ public void testAddRuntimeException() {
+-    doTest(null, null, null, new SimpleParameterGen(new ParameterInfoImpl[0]), new GenExceptions() {
+-
+-        @Override
+-        public ThrownExceptionInfo[] genExceptions(PsiMethod method) {
+-            return new ThrownExceptionInfo[] { new JavaThrownExceptionInfo(-1, myFactory.createTypeByFQClassName("java.lang.RuntimeException", method.getResolveScope())) };
+-        }
++    doTest(null, null, null, new SimpleParameterGen(new ParameterInfoImpl[0]), method -> {
++        return new ThrownExceptionInfo[] { new JavaThrownExceptionInfo(-1, myFactory.createTypeByFQClassName("java.lang.RuntimeException", method.getResolveScope())) };
+     }, false);
+ }
+\ No newline at end of file

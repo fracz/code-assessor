@@ -1,0 +1,17 @@
+diff --git a/4322a5cda58df6cc6b8e2f8c2b96dbc1a56ae871 b/699db1295f85ccc83b6aec0749be8c8da280dbaa
+index 4322a5cda5..699db1295f 100644
+--- a/4322a5cda58df6cc6b8e2f8c2b96dbc1a56ae871
++++ b/699db1295f85ccc83b6aec0749be8c8da280dbaa
+@@ -1,9 +1,9 @@
+ @JRubyMethod
+ public IRubyObject remove_attribute(ThreadContext context, IRubyObject name) {
+     String key = name.convertToString().asJavaString();
+-    if (node instanceof Element) {
+-        Element element = (Element) node;
++    if (node() instanceof Element) {
++        Element element = (Element) node();
+         element.removeAttribute(key);
+     }
+     return context.getRuntime().getNil();
+ }
+\ No newline at end of file

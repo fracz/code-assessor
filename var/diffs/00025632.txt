@@ -1,0 +1,14 @@
+diff --git a/f6f065638247bd5b50b67aec81e00440db38f872 b/9281dd3af2b1bd9c6e786880907a1e22a275154b
+index f6f0656382..9281dd3af2 100644
+--- a/f6f065638247bd5b50b67aec81e00440db38f872
++++ b/9281dd3af2b1bd9c6e786880907a1e22a275154b
+@@ -1,4 +1,7 @@
+ @Test
+ public void shouldBuildStaticInsertStatementGivenKeyspaceAndAllMapper() {
+-    executeStatementAndAssert(insertInto("weather", "temperature").values(all()).build(), "INSERT INTO weather.temperature(weather_station_id,event_time,temperature) VALUES ('1'," + NOW.getTime() + ",'0°C');");
++    SimpleCQLStatementMapper mapper = simpleQuery(QUERY_STRING).with(all()).build();
++    List<Statement> stmts = mapper.map(Maps.newHashMap(), cassandraCQLUnit.session, mockTuple);
++    Assert.assertEquals(1, stmts.size());
++    makeAssertSimpleStatement(QUERY_STRING, stmts.get(0));
+ }
+\ No newline at end of file

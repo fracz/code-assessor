@@ -1,0 +1,15 @@
+diff --git a/cf42c2e1f6b5648407260f0e79a0fc6aba80df61 b/9b4c9c2b82faaea0513fa622d0a706c24efa7bff
+index cf42c2e1f6..9b4c9c2b82 100644
+--- a/cf42c2e1f6b5648407260f0e79a0fc6aba80df61
++++ b/9b4c9c2b82faaea0513fa622d0a706c24efa7bff
+@@ -1,8 +1,8 @@
+ @Override
+ public String getProcedureDDL(DBRProgressMonitor monitor, GenericProcedure sourceObject) throws DBException {
+-    try (JDBCSession session = sourceObject.getDataSource().getDefaultContext(true).openSession(monitor, DBCExecutionPurpose.META, "Read procedure definition")) {
++    try (JDBCSession session = DBUtils.openMetaSession(monitor, sourceObject.getDataSource(), "Read procedure definition")) {
+         return JDBCUtils.queryString(session, "SELECT pg_get_functiondef(p.oid) FROM PG_CATALOG.PG_PROC P, PG_CATALOG.PG_NAMESPACE NS\n" + "WHERE ns.oid=p.pronamespace and ns.nspname=? AND p.proname=?", sourceObject.getContainer().getName(), sourceObject.getName());
+     } catch (SQLException e) {
+         throw new DBException(e, sourceObject.getDataSource());
+     }
+ }
+\ No newline at end of file

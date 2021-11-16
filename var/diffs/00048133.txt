@@ -1,0 +1,15 @@
+diff --git a/2f8b1e52c8f1ab07d34968bec292515c91bf8071 b/47711560a6c8feb070e2192a2ca6fe6eb3585fff
+index 2f8b1e52c8..47711560a6 100644
+--- a/2f8b1e52c8f1ab07d34968bec292515c91bf8071
++++ b/47711560a6c8feb070e2192a2ca6fe6eb3585fff
+@@ -1,7 +1,5 @@
+ @Override
+ public Integer getDefaultTransactionsIsolation() {
+-    if (preferenceStore.contains(DBeaverPreferences.DEFAULT_ISOLATION)) {
+-        return preferenceStore.getInt(DBeaverPreferences.DEFAULT_ISOLATION);
+-    }
+-    return null;
++    // }
++    return connectionInfo.getBootstrap().getDefaultTransactionIsolation();
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/d4ffd6270901ab8aadd772ee34ab271fd65602b5 b/980149ba554d534dd1e742d2d9d29fcdabee6ee1
+index d4ffd62709..980149ba55 100644
+--- a/d4ffd6270901ab8aadd772ee34ab271fd65602b5
++++ b/980149ba554d534dd1e742d2d9d29fcdabee6ee1
+@@ -1,11 +1,10 @@
+ public static void saveWhitespacesInfo(final ASTNode first) {
+     if (first == null || isNodeGenerated(first) || getOldIndentation(first) >= 0)
+         return;
+     PsiElement psiElement = first.getPsi();
+     if (psiElement == null) {
+         return;
+     }
+     final PsiFile containingFile = psiElement.getContainingFile();
+-    final IndentHelper indentHelper = HelperFactory.createHelper(containingFile.getFileType(), containingFile.getProject());
+-    setOldIndentation((TreeElement) first, indentHelper.getIndent(first));
++    setOldIndentation((TreeElement) first, IndentHelper.getInstance().getIndent(containingFile.getProject(), containingFile.getFileType(), first));
+ }
+\ No newline at end of file

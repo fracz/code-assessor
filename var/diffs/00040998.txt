@@ -1,0 +1,11 @@
+diff --git a/05352965883e29581ced94ad7a7618b0878c927d b/76a7c1e761d02a3c5551231f87c316d8340a0ea1
+index 0535296588..76a7c1e761 100644
+--- a/05352965883e29581ced94ad7a7618b0878c927d
++++ b/76a7c1e761d02a3c5551231f87c316d8340a0ea1
+@@ -1,4 +1,4 @@
+ @Override
+ public List<Span> readSpans(byte[] bytes) {
+-    return read(SPANS_ADAPTER, ByteBuffer.wrap(bytes));
++    return readList(new SpanReader(), ByteBuffer.wrap(bytes));
+ }
+\ No newline at end of file

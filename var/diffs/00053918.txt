@@ -1,0 +1,34 @@
+diff --git a/d7a13154720ad0bdd8db996c41625283889aa843 b/b5ad31d6bb88bca6a26309ee58851328ecea56a6
+index d7a1315472..b5ad31d6bb 100644
+--- a/d7a13154720ad0bdd8db996c41625283889aa843
++++ b/b5ad31d6bb88bca6a26309ee58851328ecea56a6
+@@ -1,16 +1,16 @@
+ private void skipFor() {
+-    if (getSqlParser().skipIfEqual(DefaultKeyword.FOR)) {
++    if (!getSqlParser().skipIfEqual(DefaultKeyword.FOR)) {
++        return;
++    }
++    getSqlParser().accept(DefaultKeyword.UPDATE);
++    if (getSqlParser().skipIfEqual(DefaultKeyword.OF)) {
++        do {
++            getSqlParser().parseExpression();
++        } while (getSqlParser().skipIfEqual(Symbol.COMMA));
++    }
++    if (getSqlParser().equalAny(OracleKeyword.NOWAIT, OracleKeyword.WAIT)) {
+         getSqlParser().getLexer().nextToken();
+-        getSqlParser().accept(DefaultKeyword.UPDATE);
+-        if (getSqlParser().skipIfEqual(DefaultKeyword.OF)) {
+-            do {
+-                getSqlParser().parseExpression();
+-            } while (getSqlParser().skipIfEqual(Symbol.COMMA));
+-        }
+-        if (getSqlParser().equalAny(OracleKeyword.NOWAIT, OracleKeyword.WAIT)) {
+-            getSqlParser().getLexer().nextToken();
+-        } else if (getSqlParser().skipIfEqual(OracleKeyword.SKIP)) {
+-            getSqlParser().accept(OracleKeyword.LOCKED);
+-        }
++    } else if (getSqlParser().skipIfEqual(OracleKeyword.SKIP)) {
++        getSqlParser().accept(OracleKeyword.LOCKED);
+     }
+ }
+\ No newline at end of file

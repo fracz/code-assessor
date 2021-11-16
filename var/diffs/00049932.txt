@@ -1,0 +1,17 @@
+diff --git a/7de06d6b615fd70f1d00f17a09978db0418d656e b/b7bf41944e88465a28b4989a97ff43de970ef245
+index 7de06d6b61..b7bf41944e 100644
+--- a/7de06d6b615fd70f1d00f17a09978db0418d656e
++++ b/b7bf41944e88465a28b4989a97ff43de970ef245
+@@ -1,8 +1,9 @@
+ @Override
+-public void run(DBRProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
++protected IStatus run(DBRProgressMonitor monitor) {
+     try {
+         nodeToLoad.getChildren(monitor);
+     } catch (Exception e) {
+-        throw new InvocationTargetException(e);
++        return GeneralUtils.makeExceptionStatus(e);
+     }
++    return Status.OK_STATUS;
+ }
+\ No newline at end of file

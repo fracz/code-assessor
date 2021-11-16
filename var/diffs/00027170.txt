@@ -1,0 +1,18 @@
+diff --git a/fdc4e0d76f1403399a0e3be8b28f57383dc0b655 b/b7f2496eb4bad268f563a672d59e2c10f9272566
+index fdc4e0d76f..b7f2496eb4 100644
+--- a/fdc4e0d76f1403399a0e3be8b28f57383dc0b655
++++ b/b7f2496eb4bad268f563a672d59e2c10f9272566
+@@ -1,11 +1,11 @@
+ /**
+  * Get the word vector for a given matrix
+  * @param word the word to get the matrix for
+  * @return the ndarray for this word
+  */
+ public double[] getWordVector(String word) {
+     int i = vocab().indexOf(word);
+     if (i < 0)
+-        return lookupTable.vector(UNK).dup().data().asDouble();
++        return null;
+     return lookupTable.vector(word).dup().data().asDouble();
+ }
+\ No newline at end of file

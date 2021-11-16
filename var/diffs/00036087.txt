@@ -1,0 +1,22 @@
+diff --git a/5dd04071e3dbebff623d0e73ad369242b4077893 b/2a38ed25481b47ee5e60ec4c0de3264b92f4c71e
+index 5dd04071e3..2a38ed2548 100644
+--- a/5dd04071e3dbebff623d0e73ad369242b4077893
++++ b/2a38ed25481b47ee5e60ec4c0de3264b92f4c71e
+@@ -1,11 +1,8 @@
+ @Test
+ public void shouldSwitchVerifyingMode() throws Exception {
+-    mockitoState.verifyingStarted(VerifyingMode.anyTimes());
+-    assertTrue(mockitoState.mockVerificationScenario());
+-    mockitoState.verifyingStarted(null);
+-    assertFalse(mockitoState.mockVerificationScenario());
+-    mockitoState.verifyingStarted(VerifyingMode.times(100));
+-    assertTrue(mockitoState.mockVerificationScenario());
+-    assertEquals(100, mockitoState.verifyingCompleted().getExactNumberOfInvocations());
+-    assertFalse(mockitoState.mockVerificationScenario());
++    assertFalse(mockitoState.verificationScenario());
++    VerifyingMode mode = VerifyingMode.times(19);
++    mockitoState.verifyingStarted(mode);
++    assertTrue(mockitoState.verificationScenario());
++    assertSame(mode, mockitoState.verifyingCompleted());
+ }
+\ No newline at end of file

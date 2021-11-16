@@ -1,0 +1,23 @@
+diff --git a/7b12a05e98bb9f19567f662ae8cae884d462a79d b/4c927cd023f074c11d386f90a98cc3f423f949ec
+index 7b12a05e98..4c927cd023 100644
+--- a/7b12a05e98bb9f19567f662ae8cae884d462a79d
++++ b/4c927cd023f074c11d386f90a98cc3f423f949ec
+@@ -1,14 +1,12 @@
+-private static void ignoreElementRecursively(@NotNull InspectionToolWrapper toolWrapper, final RefEntity refElement) {
++private void ignoreElementRecursively(@NotNull InspectionToolWrapper toolWrapper, final RefEntity refElement) {
+     if (refElement != null) {
+-        InspectionProfileEntry tool = toolWrapper.getTool();
+-        if (tool instanceof InspectionTool) {
+-            ((InspectionTool) tool).ignoreCurrentElement(refElement);
+-        }
++        InspectionToolPresentation presentation = getPresentation(toolWrapper);
++        presentation.ignoreCurrentElement(refElement);
+         final List<RefEntity> children = refElement.getChildren();
+         if (children != null) {
+             for (RefEntity child : children) {
+                 ignoreElementRecursively(toolWrapper, child);
+             }
+         }
+     }
+ }
+\ No newline at end of file

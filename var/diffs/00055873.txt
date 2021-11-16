@@ -1,0 +1,14 @@
+diff --git a/978603bd89521c0304dc7e5fc967d6a67c3094f4 b/1a13814eddc014f435524207e5c58d3f9306b362
+index 978603bd89..1a13814edd 100644
+--- a/978603bd89521c0304dc7e5fc967d6a67c3094f4
++++ b/1a13814eddc014f435524207e5c58d3f9306b362
+@@ -1,7 +1,7 @@
+ @Test
+ public void mapPathToLocation() throws Exception {
+     this.exchange.getAttributes().put(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE, "/testStylesheet.css");
+     ResourceWebHandler handler = getHandler("/resources/**");
+     handler.handle(this.exchange).blockMillis(5000);
+-    TestSubscriber.subscribe(this.response.getBody()).assertValuesWith(buf -> assertEquals("test stylesheet content", DataBufferTestUtils.dumpString(buf, StandardCharsets.UTF_8)));
++    ScriptedSubscriber.<DataBuffer>create().consumeNextWith(buf -> assertEquals("test stylesheet content", DataBufferTestUtils.dumpString(buf, StandardCharsets.UTF_8))).expectComplete().verify(this.response.getBody());
+ }
+\ No newline at end of file

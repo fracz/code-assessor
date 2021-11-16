@@ -1,0 +1,18 @@
+diff --git a/5092b7839d238d43d65c1fb3817f857fe66baafe b/24a7908f32f3525bc86cb6d359bf2ae692e9ccfa
+index 5092b7839d..24a7908f32 100644
+--- a/5092b7839d238d43d65c1fb3817f857fe66baafe
++++ b/24a7908f32f3525bc86cb6d359bf2ae692e9ccfa
+@@ -1,4 +1,10 @@
+ @Override
+-public Publisher<Boolean> compareAndSet(long expect, long update) {
+-    return commandExecutor.evalWriteReactive(getName(), StringCodec.INSTANCE, RedisCommands.EVAL_BOOLEAN, "if redis.call('get', KEYS[1]) == ARGV[1] then " + "redis.call('set', KEYS[1], ARGV[2]); " + "return 1 " + "else " + "return 0 end", Collections.<Object>singletonList(getName()), expect, update);
++public Publisher<Boolean> compareAndSet(final long expect, final long update) {
++    return reactive(new Supplier<RFuture<Boolean>>() {
++
++        @Override
++        public RFuture<Boolean> get() {
++            return instance.compareAndSetAsync(expect, update);
++        }
++    });
+ }
+\ No newline at end of file

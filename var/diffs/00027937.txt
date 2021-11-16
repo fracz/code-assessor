@@ -1,0 +1,15 @@
+diff --git a/4386a70c6c1a8c405e87be6fbae7ad9c208d3d17 b/a364e9e70259b9d7f51074404d1129b93deb1c39
+index 4386a70c6c..a364e9e702 100644
+--- a/4386a70c6c1a8c405e87be6fbae7ad9c208d3d17
++++ b/a364e9e70259b9d7f51074404d1129b93deb1c39
+@@ -1,7 +1,7 @@
+-@Path("remote-delete/{name}")
+-@POST
++@DELETE
++@Path("remote/{name}")
+ public void remoteDelete(@PathParam("name") String name) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+         gitConnection.remoteDelete(name);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/8529a745acb010cdfb70f0ea6e87f4adcd7617bb b/279edb3e36c56ad55cf8308a96eefd3f35ff722d
+index 8529a745ac..279edb3e36 100644
+--- a/8529a745acb010cdfb70f0ea6e87f4adcd7617bb
++++ b/279edb3e36c56ad55cf8308a96eefd3f35ff722d
+@@ -1,12 +1,8 @@
+-private MerkleTree.RowHash rowHash(AbstractCompactedRow row) {
++private MerkleTree.RowHash rowHash(UnfilteredRowIterator partition) {
+     validated++;
+     // MerkleTree uses XOR internally, so we want lots of output bits here
+     CountingDigest digest = new CountingDigest(FBUtilities.newMessageDigest("SHA-256"));
+-    row.update(digest);
++    UnfilteredRowIterators.digest(partition, digest);
+     // only return new hash for merkle tree in case digest was updated - see CASSANDRA-8979
+-    if (digest.count > 0) {
+-        return new MerkleTree.RowHash(row.key.getToken(), digest.digest(), digest.count);
+-    } else {
+-        return null;
+-    }
++    return digest.count > 0 ? new MerkleTree.RowHash(partition.partitionKey().getToken(), digest.digest(), digest.count) : null;
+ }
+\ No newline at end of file

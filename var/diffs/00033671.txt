@@ -1,0 +1,19 @@
+diff --git a/b10299fa35c7761d355198119de21ecfec73e888 b/ffae963f9b01a5ffc7e97eecd7e144efba3227cb
+index b10299fa35..ffae963f9b 100644
+--- a/b10299fa35c7761d355198119de21ecfec73e888
++++ b/ffae963f9b01a5ffc7e97eecd7e144efba3227cb
+@@ -1,5 +1,9 @@
+-// TODO SF refactor / cover
+-public synchronized ListenerManager getListenerManager() {
+-    assertInitialized();
+-    return listenerManager.get();
++public ListenerManager getListenerManager() {
++    return synchronizer.synchronize(new Factory<ListenerManager>() {
++
++        public ListenerManager create() {
++            assertInitialized();
++            return listenerManager.get();
++        }
++    });
+ }
+\ No newline at end of file

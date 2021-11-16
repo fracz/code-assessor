@@ -1,0 +1,22 @@
+diff --git a/0ac6ae885100b6f19eb46b9ab0ccd6a0289a19e9 b/058c48b496480941ab2959ea32e0855c99b0150a
+index 0ac6ae8851..058c48b496 100644
+--- a/0ac6ae885100b6f19eb46b9ab0ccd6a0289a19e9
++++ b/058c48b496480941ab2959ea32e0855c99b0150a
+@@ -1,10 +1,10 @@
+ private void onComplete(final long total) {
+     if (FileDownloadLog.NEED_LOG) {
+-        FileDownloadLog.d(this, "On completed %d %d %B", downloadTransfer.getDownloadId(), total, isCancelled());
++        FileDownloadLog.d(this, "On completed %d %d %B", getId(), total, isCancelled());
+     }
+-    downloadTransfer.setStatus(FileDownloadStatus.completed);
+-    helper.updateComplete(downloadTransfer.getDownloadId(), total);
+-    downloadTransfer.setSoFarBytes(total);
+-    downloadTransfer.setTotalBytes(total);
+-    FileDownloadProcessEventPool.getImpl().asyncPublishInNewThread(event.setTransfer(downloadTransfer));
++    helper.updateComplete(getId(), total);
++    transferModel.setStatus(FileDownloadStatus.completed);
++    transferModel.setSoFarBytes(total);
++    transferModel.setTotalBytes(total);
++    onStatusChanged(model.getStatus());
+ }
+\ No newline at end of file

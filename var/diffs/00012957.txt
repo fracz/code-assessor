@@ -1,0 +1,12 @@
+diff --git a/3c99e2d0eb2e7dacb95c34ecedbb9a0fb41febbb b/4b1b94bdbdca68c2fa188698e5fd0c9bec5e6d95
+index 3c99e2d0eb..4b1b94bdbd 100644
+--- a/3c99e2d0eb2e7dacb95c34ecedbb9a0fb41febbb
++++ b/4b1b94bdbdca68c2fa188698e5fd0c9bec5e6d95
+@@ -1,4 +1,4 @@
+-private void scheduleCreation(@NotNull VirtualFile parent, @NotNull String childName, boolean isDirectory) {
++private void scheduleCreation(@NotNull VirtualFile parent, @NotNull String childName, boolean isDirectory, boolean isReCreation) {
+     debug(LOG, "create parent=%s name=%s dir=%b", parent, childName, isDirectory);
+-    myEvents.add(new VFileCreateEvent(null, parent, childName, isDirectory, true, false));
++    myEvents.add(new VFileCreateEvent(null, parent, childName, isDirectory, true, isReCreation));
+ }
+\ No newline at end of file

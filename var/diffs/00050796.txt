@@ -1,0 +1,22 @@
+diff --git a/150114b4d5dae95e55f1bcec596db9193a376d48 b/6c0f31308f7f0a1b5f53bdbe6df99a46e3179c89
+index 150114b4d5..6c0f31308f 100644
+--- a/150114b4d5dae95e55f1bcec596db9193a376d48
++++ b/6c0f31308f7f0a1b5f53bdbe6df99a46e3179c89
+@@ -1,9 +1,14 @@
+ @Override
+ protected JDBCStatement prepareObjectsStatement(JDBCSession session, OracleDataTypeMethod owner) throws SQLException {
+     final JDBCPreparedStatement dbStat = session.prepareStatement("SELECT PARAM_NAME,PARAM_NO,PARAM_MODE,PARAM_TYPE_OWNER,PARAM_TYPE_NAME,PARAM_TYPE_MOD " + "FROM ALL_METHOD_PARAMS " + "WHERE OWNER=? AND TYPE_NAME=? AND METHOD_NAME=? AND METHOD_NO=?");
+-    dbStat.setString(1, getDataType().getSchema().getName());
+-    dbStat.setString(2, getDataType().getName());
++    OracleDataType dataType = getDataType();
++    if (dataType.getSchema() == null) {
++        dbStat.setNull(1, Types.VARCHAR);
++    } else {
++        dbStat.setString(1, dataType.getSchema().getName());
++    }
++    dbStat.setString(2, dataType.getName());
+     dbStat.setString(3, getName());
+     dbStat.setInt(4, getNumber());
+     return dbStat;
+ }
+\ No newline at end of file

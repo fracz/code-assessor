@@ -1,0 +1,19 @@
+diff --git a/3ea60a4e78c12cd5becc6f05fdf79fc0ca2de710 b/1558cba63e16f89772df3711deef452a647ca148
+index 3ea60a4e78..1558cba63e 100644
+--- a/3ea60a4e78c12cd5becc6f05fdf79fc0ca2de710
++++ b/1558cba63e16f89772df3711deef452a647ca148
+@@ -1,11 +1,12 @@
+ private void loadCountriesLists(String file) {
+     try {
+         BufferedReader reader = IOUtils.readerFromString(file);
+-        for (String line; (line = reader.readLine()) != null; ) {
++        while (reader.ready()) {
++            String line = reader.readLine();
+             countries.add(line.split("\t")[1].toLowerCase());
+         }
+         reader.close();
+     } catch (IOException e) {
+         throw new RuntimeIOException(e);
+     }
+ }
+\ No newline at end of file

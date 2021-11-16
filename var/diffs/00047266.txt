@@ -1,0 +1,12 @@
+diff --git a/1e5856a10921ba82f4bfd2c5830c9a21ef761198 b/64158876b5c50ae5daab0a8e7e1c6df66e64b87d
+index 1e5856a109..64158876b5 100644
+--- a/1e5856a10921ba82f4bfd2c5830c9a21ef761198
++++ b/64158876b5c50ae5daab0a8e7e1c6df66e64b87d
+@@ -1,5 +1,5 @@
+ @Test
+ public void shouldMatchOnCriteriaHavingGroupInMiddle() {
+-    EmployeeView niko = employees.salary.is(30000).group().lastName.contains("vski").or().firstName.is("John").endGroup().firstName.startsWith("Nik").findAll();
++    EmployeeView niko = employees.where().firstName.startsWith("Nik").group().lastName.contains("vski").or().firstName.is("John").endGroup().salary.is(30000).findAll();
+     assertEquals(1, niko.size());
+ }
+\ No newline at end of file

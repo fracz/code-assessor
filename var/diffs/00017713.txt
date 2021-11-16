@@ -1,0 +1,24 @@
+diff --git a/10ed0d94f993f1d64e31ad5d5187cf781094bf0c b/2198072bc2d2d97debb3ae6dd5512bb76270d765
+index 10ed0d94f9..2198072bc2 100644
+--- a/10ed0d94f993f1d64e31ad5d5187cf781094bf0c
++++ b/2198072bc2d2d97debb3ae6dd5512bb76270d765
+@@ -1,14 +1,14 @@
+ @Nullable
+-private ClassDescriptor getAutoTypeAnalogWithinBuiltins(String qualifiedName) {
+-    Type javaAnalog = KotlinToJavaTypesMap.getInstance().getJavaAnalog(originalType);
+-    if (javaAnalog == null || javaAnalog.getSort() != Type.OBJECT)
++private static ClassDescriptor getAutoTypeAnalogWithinBuiltins(@NotNull FqName originalClassFqName, @NotNull String qualifiedName) {
++    FqName javaFqName = KotlinToJavaTypesMap.getInstance().getKotlinToJavaFqName(originalClassFqName);
++    if (javaFqName == null)
+         return null;
+-    Collection<ClassDescriptor> descriptors = JavaToKotlinClassMap.getInstance().mapPlatformClass(JvmClassName.byInternalName(javaAnalog.getInternalName()).getFqName());
++    Collection<ClassDescriptor> descriptors = JavaToKotlinClassMap.getInstance().mapPlatformClass(javaFqName);
+     for (ClassDescriptor descriptor : descriptors) {
+         String fqName = DescriptorUtils.getFQName(descriptor).asString();
+         if (isSameName(qualifiedName, fqName)) {
+             return descriptor;
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

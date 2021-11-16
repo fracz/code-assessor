@@ -1,0 +1,21 @@
+diff --git a/757cdde4f8cd6bec0497278d48fa8f52930a9c12 b/b173892d8ebba6ee701da97dae25ee6610b120d4
+index 757cdde4f8..b173892d8e 100644
+--- a/757cdde4f8cd6bec0497278d48fa8f52930a9c12
++++ b/b173892d8ebba6ee701da97dae25ee6610b120d4
+@@ -1,13 +1,13 @@
+ @Test
+ public void closingASourceRemovesItsAssociatedChannels() throws Exception {
+     final Aeron aeron = newAeron();
+     final Source.Context sourceContext = new Source.Context().sessionId(SESSION_ID).destination(new Destination(DESTINATION));
+     final Source source = aeron.newSource(sourceContext);
+     source.newChannel(CHANNEL_ID);
+     final ClientConductor adminThread = aeron.conductor();
+     adminThread.doWork();
+-    skip(toMediaDriver(), 1);
++    skip(toDriverBuffer, 1);
+     source.close();
+     adminThread.doWork();
+-    assertChannelMessage(toMediaDriver(), REMOVE_PUBLICATION);
++    assertChannelMessage(toDriverBuffer, REMOVE_PUBLICATION);
+ }
+\ No newline at end of file

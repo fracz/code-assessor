@@ -1,0 +1,18 @@
+diff --git a/bdbc599bf836a4d6dc332c7c3adffa6e44c514ba b/4a4efdeb70009b16abd0a80f24f5019593613bb7
+index bdbc599bf8..4a4efdeb70 100644
+--- a/bdbc599bf836a4d6dc332c7c3adffa6e44c514ba
++++ b/4a4efdeb70009b16abd0a80f24f5019593613bb7
+@@ -1,8 +1,11 @@
+ @Override
+ public int size() throws IOException, TachyonException {
+     int totalSize = 0;
++    // TODO(cc): Put size into PartitionInfo.
+     for (PartitionInfo partition : mPartitions) {
+-        totalSize += KeyValuePartitionReader.Factory.create(partition.getBlockId()).size();
++        KeyValuePartitionReader partitionReader = KeyValuePartitionReader.Factory.create(partition.getBlockId());
++        totalSize += partitionReader.size();
++        partitionReader.close();
+     }
+     return totalSize;
+ }
+\ No newline at end of file

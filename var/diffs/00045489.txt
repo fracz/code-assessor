@@ -1,0 +1,16 @@
+diff --git a/41d840ca286a4fd1e0a9203740caec7fc5ade9e4 b/b950899862a0ad8e183066f054410607461fdadf
+index 41d840ca28..b950899862 100644
+--- a/41d840ca286a4fd1e0a9203740caec7fc5ade9e4
++++ b/b950899862a0ad8e183066f054410607461fdadf
+@@ -1,9 +1,3 @@
+ protected ODistributedDatabaseInfo createDatabaseEntry(final String dbName, SYNCH_TYPE iSynchType, final String iUserName, final String iUserPasswd) throws IOException {
+-    final ODistributedDatabaseInfo dbInfo = new ODistributedDatabaseInfo();
+-    dbInfo.databaseName = dbName;
+-    dbInfo.userName = iUserName;
+-    dbInfo.userPassword = iUserPasswd;
+-    dbInfo.synchType = iSynchType;
+-    dbInfo.log = new OOperationLog(id, dbName);
+-    return dbInfo;
++    return new ODistributedDatabaseInfo(id, dbName, iUserName, iUserPasswd, iSynchType);
+ }
+\ No newline at end of file

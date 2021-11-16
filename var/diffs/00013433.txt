@@ -1,0 +1,22 @@
+diff --git a/6ca72889b82101fc2559de9952e4bc727fcb1e3e b/41761bd6f635b96dbe5161776d927c3521ed25de
+index 6ca72889b8..41761bd6f6 100644
+--- a/6ca72889b82101fc2559de9952e4bc727fcb1e3e
++++ b/41761bd6f635b96dbe5161776d927c3521ed25de
+@@ -1,13 +1,15 @@
+ protected <T> RunResult<T> executeCommand(RunResult<T> result) {
+     // this is needed to prevent memory leak, since command
+     // is put into undo queue
+     final RunResult[] results = { result };
+-    CommandProcessor.getInstance().executeCommand(getProject(), new Runnable() {
++    CommandProcessor.getInstance().executeCommand(myProject, new Runnable() {
+
+         public void run() {
++            if (isGlobalUndoAction())
++                CommandProcessor.getInstance().markCurrentCommandAsGlobal(myProject);
+             results[0].run();
+             results[0] = null;
+         }
+     }, getCommandName(), getGroupID(), getUndoConfirmationPolicy());
+     return result;
+ }
+\ No newline at end of file

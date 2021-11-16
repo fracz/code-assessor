@@ -1,0 +1,19 @@
+diff --git a/eca16ec69f5e9b1e2f955c8b7ce146c7d5c54cd8 b/eb173ef6eb521807f98a464e60b1f43391b97532
+index eca16ec69f..eb173ef6eb 100644
+--- a/eca16ec69f5e9b1e2f955c8b7ce146c7d5c54cd8
++++ b/eb173ef6eb521807f98a464e60b1f43391b97532
+@@ -1,6 +1,11 @@
++/**
++ * Start Media Driver as a stand-alone process.
++ *
++ * @param args command line arguments
++ * @throws Exception
++ */
+ public static void main(final String[] args) throws Exception {
+     try (final MediaDriver mediaDriver = new MediaDriver()) {
+-        final Executor executor = Executors.newFixedThreadPool(3);
+-        mediaDriver.invoke(executor);
++        mediaDriver.invokeDaemonized();
+     }
+ }
+\ No newline at end of file

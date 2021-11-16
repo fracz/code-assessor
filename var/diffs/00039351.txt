@@ -1,0 +1,23 @@
+diff --git a/ba51ad8eec9014b376b8c622df746f8ac7b54d3b b/b4db5739294900884f230689c5578950f2b68ddf
+index ba51ad8eec..b4db573929 100644
+--- a/ba51ad8eec9014b376b8c622df746f8ac7b54d3b
++++ b/b4db5739294900884f230689c5578950f2b68ddf
+@@ -1,14 +1,13 @@
+ @Test
+ public void shouldApplyRelationshipCommandToTheStoreAndInvalidateTheCache() throws Exception {
+     // given
+-    final CommandHandler applier = newApplier(false);
++    final BatchTransactionApplier applier = newApplier(false);
+     final RelationshipRecord record = new RelationshipRecord(12, 3, 4, 5);
+     record.setInUse(false);
++    final Command command = new Command.RelationshipCommand().init(record);
+     // when
+-    boolean result = apply(applier, (handler, tx) -> {
+-        return handler.visitRelationshipCommand(new Command.RelationshipCommand().init(record));
+-    }, transactionToApply);
++    boolean result = apply(applier, command::handle, transactionToApply);
+     // then
+     assertFalse(result);
+     verify(relationshipStore, times(1)).updateRecord(record);
+ }
+\ No newline at end of file

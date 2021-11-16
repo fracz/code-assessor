@@ -1,0 +1,12 @@
+diff --git a/494514960eaaee9176fa4f24b0e3452267c02d9d b/13357c8e27b320a32f577975a4c42b1da74a2e23
+index 494514960e..13357c8e27 100644
+--- a/494514960eaaee9176fa4f24b0e3452267c02d9d
++++ b/13357c8e27b320a32f577975a4c42b1da74a2e23
+@@ -1,5 +1,5 @@
+ static JsonLikePsiWalker getWalker(@NotNull final PsiElement element, JsonSchemaObject schemaObject) {
+     if (JSON_ORIGINAL_PSI_WALKER.handles(element))
+         return JSON_ORIGINAL_PSI_WALKER;
+-    return Arrays.stream(Extensions.getExtensions(JsonLikePsiWalkerFactory.EXTENSION_POINT_NAME)).map(extension -> extension.create(schemaObject)).filter(walker -> walker.handles(element)).findFirst().orElse(null);
++    return Arrays.stream(Extensions.getExtensions(JsonLikePsiWalkerFactory.EXTENSION_POINT_NAME)).filter(extension -> extension.handles(element)).findFirst().map(extension -> extension.create(schemaObject)).orElse(null);
+ }
+\ No newline at end of file

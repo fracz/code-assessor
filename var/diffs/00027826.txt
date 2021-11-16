@@ -1,0 +1,29 @@
+diff --git a/37af4c134226467169308a4ccb69a1a90ddb25a6 b/dd0cf21372c80a93674a302023927e4d34b3b236
+index 37af4c1342..dd0cf21372 100644
+--- a/37af4c134226467169308a4ccb69a1a90ddb25a6
++++ b/dd0cf21372c80a93674a302023927e4d34b3b236
+@@ -1,20 +1,22 @@
+ /**
+  * Gets list of workspaces which user can read
+  *
+  * <p>Returned workspaces have either {@link WorkspaceStatus#STOPPED} status
+  * or status defined by their runtime instances(if those exist).
+  *
+  * @param user
+  * the id of the user
+  * @return the list of workspaces or empty list if user can't read any workspace
+  * @throws NullPointerException
+  * when {@code user} is null
+  * @throws ServerException
+  * when any server error occurs while getting workspaces with {@link WorkspaceDao#getWorkspaces(String)}
+  */
+ public List<WorkspaceImpl> getWorkspaces(String user) throws ServerException {
+     requireNonNull(user, "Required non-null user id");
+     final List<WorkspaceImpl> workspaces = workspaceDao.getWorkspaces(user);
+-    workspaces.forEach(this::normalizeState);
++    for (WorkspaceImpl workspace : workspaces) {
++        normalizeState(workspace);
++    }
+     return workspaces;
+ }
+\ No newline at end of file

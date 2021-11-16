@@ -1,0 +1,23 @@
+diff --git a/d59aab06b1598d2bceb42aab223fade656a731b6 b/7fdc261d2da8d4d1ee6ab24e9ebb25c85f344a9f
+index d59aab06b1..7fdc261d2d 100644
+--- a/d59aab06b1598d2bceb42aab223fade656a731b6
++++ b/7fdc261d2da8d4d1ee6ab24e9ebb25c85f344a9f
+@@ -1,13 +1,8 @@
+ @Override
+ public void revert(@NotNull File[] paths, @Nullable SVNDepth depth, @Nullable ISVNEventHandler handler) throws VcsException {
+     List<String> parameters = prepareParameters(paths, depth);
+-    try {
+-        SvnLineCommand command = CommandUtil.runSimple(SvnCommandName.revert, myVcs, null, null, parameters);
+-        // TODO: handler should be called in parallel with command execution, but this will be in other thread
+-        // TODO: check if that is ok for current handler implementation
+-        // TODO: add possibility to invoke "handler.checkCancelled" - process should be killed
+-        parseOutput(command, handler);
+-    } catch (SVNException e) {
+-        throw new VcsException(e);
+-    }
++    // TODO: handler should be called in parallel with command execution, but this will be in other thread
++    // TODO: check if that is ok for current handler implementation
++    // TODO: add possibility to invoke "handler.checkCancelled" - process should be killed
++    CommandUtil.execute(myVcs, SvnCommandName.revert, parameters, new FileStatusResultParser(CHANGED_PATH, handler, new RevertStatusConvertor()));
+ }
+\ No newline at end of file

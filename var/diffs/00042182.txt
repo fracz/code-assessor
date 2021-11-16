@@ -1,0 +1,20 @@
+diff --git a/0f6e3df6f96c28f7f0281c8763285e141b7bb75f b/ffee26f69d52fe7bf915763da811e952f0d66a01
+index 0f6e3df6f9..ffee26f69d 100644
+--- a/0f6e3df6f96c28f7f0281c8763285e141b7bb75f
++++ b/ffee26f69d52fe7bf915763da811e952f0d66a01
+@@ -1,13 +1,13 @@
+ @Override
+ public void restore(InputStream in, Map<String, Object> options, final Callable<Object> callable, final OCommandOutputListener iListener) throws IOException {
+     if (!isClosed())
+         close(true, false);
+     OZIPCompressionUtil.uncompressDirectory(in, getStoragePath(), iListener);
+     if (callable != null)
+         try {
+             callable.call();
+         } catch (Exception e) {
+             OLogManager.instance().error(this, "Error on calling callback on database restore");
+         }
+-    open(null, null, null);
++    open(null, null, new OContextConfiguration());
+ }
+\ No newline at end of file

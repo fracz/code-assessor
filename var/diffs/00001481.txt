@@ -1,0 +1,21 @@
+diff --git a/eb2a4d0db2f2464aafe062053864e09486d02531 b/c393184496d17af534050056bc6ed5e889d9c7ba
+index eb2a4d0db2..c393184496 100644
+--- a/eb2a4d0db2f2464aafe062053864e09486d02531
++++ b/c393184496d17af534050056bc6ed5e889d9c7ba
+@@ -1,11 +1,12 @@
+ @Override
+ public void visitFile(PsiFile file) {
+     final VirtualFile virtualFile = file.getVirtualFile();
+     if (virtualFile != null) {
+         myContext.incrementJobDoneAmount(GlobalInspectionContextImpl.BUILD_GRAPH, virtualFile.getPresentableUrl());
+     }
+-    final PsiElement[] roots = file.getPsiRoots();
+-    for (PsiElement root : roots) {
+-        visitElement(root);
++    final FileViewProvider viewProvider = file.getViewProvider();
++    final Set<Language> relevantLanguages = viewProvider.getRelevantLanguages();
++    for (Language language : relevantLanguages) {
++        visitElement(viewProvider.getPsi(language));
+     }
+ }
+\ No newline at end of file

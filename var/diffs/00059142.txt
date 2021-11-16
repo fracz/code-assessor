@@ -1,0 +1,15 @@
+diff --git a/e3b12537e5c7855d429e4d127f18f568a7e2c822 b/bf969a175a358a5fa53423dfee419e50b2199b1a
+index e3b12537e5..bf969a175a 100644
+--- a/e3b12537e5c7855d429e4d127f18f568a7e2c822
++++ b/bf969a175a358a5fa53423dfee419e50b2199b1a
+@@ -1,6 +1,7 @@
+ @Override
+ public void clearStorage() throws StorageException {
+-    for (String storeName : stores.keySet()) {
+-        clear(storeName);
++    for (HazelcastKeyColumnValueStore store : stores.values()) {
++        store.clearStore();
+     }
++    close();
+ }
+\ No newline at end of file

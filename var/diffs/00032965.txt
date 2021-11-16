@@ -1,0 +1,21 @@
+diff --git a/bb4b5a8ca0167f8a67472af5d8b838c768065963 b/6a98595fa77b1359ef669b323df3c3a2585ab641
+index bb4b5a8ca0..6a98595fa7 100644
+--- a/bb4b5a8ca0167f8a67472af5d8b838c768065963
++++ b/6a98595fa77b1359ef669b323df3c3a2585ab641
+@@ -1,13 +1,13 @@
+-Annotation findBindingAnnotation(Annotation[] annotations) {
++Annotation findBindingAnnotation(Member member, Annotation[] annotations) {
+     Annotation found = null;
+     for (Annotation annotation : annotations) {
+         if (annotation.annotationType().isAnnotationPresent(BindingAnnotation.class)) {
+             if (found != null) {
+-                addError(ErrorMessage.duplicateBindingAnnotations(found.annotationType(), annotation.annotationType()).toString());
++                addError(new Errors().duplicateBindingAnnotations(member, found.annotationType(), annotation.annotationType()).toString());
+             } else {
+                 found = annotation;
+             }
+         }
+     }
+     return found;
+ }
+\ No newline at end of file

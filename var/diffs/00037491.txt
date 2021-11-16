@@ -1,0 +1,16 @@
+diff --git a/d10322d4cf6c73ad952cf50d243f11d6d005cbe6 b/a64d0cd7b0f35bded35cc1b80dfb62af6ef624ab
+index d10322d4cf..a64d0cd7b0 100644
+--- a/d10322d4cf6c73ad952cf50d243f11d6d005cbe6
++++ b/a64d0cd7b0f35bded35cc1b80dfb62af6ef624ab
+@@ -1,8 +1,8 @@
+-private boolean includeServiceType(List<ServiceType> serviceTypeList, ServiceType targetServiceType) {
++private boolean includeServiceType(List<ServiceType> serviceTypeList, short targetServiceType) {
+     for (ServiceType serviceType : serviceTypeList) {
+-        if (serviceType == targetServiceType) {
++        if (serviceType.getCode() == targetServiceType) {
+             return true;
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

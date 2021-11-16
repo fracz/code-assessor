@@ -1,0 +1,16 @@
+diff --git a/8e209beaf8167b834fdb575aaa3a35d348107294 b/77a3809adcdbec174250e692165233f759cb9881
+index 8e209beaf8..77a3809adc 100644
+--- a/8e209beaf8167b834fdb575aaa3a35d348107294
++++ b/77a3809adcdbec174250e692165233f759cb9881
+@@ -1,8 +1,8 @@
+ @Override
+-public boolean refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
++public DBSObject refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
+     authCache.clearCache();
+     roleCache.clearCache();
+     databaseAuthCache.clearCache();
+     cachePerObject.clear();
+-    return true;
++    return this;
+ }
+\ No newline at end of file

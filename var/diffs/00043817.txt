@@ -1,0 +1,16 @@
+diff --git a/a3ac0adfa8dc675072893a3769894698ce1858d5 b/a23f715b62cd18d5b8c0ee091c2aeb90ffa2c104
+index a3ac0adfa8..a23f715b62 100644
+--- a/a3ac0adfa8dc675072893a3769894698ce1858d5
++++ b/a23f715b62cd18d5b8c0ee091c2aeb90ffa2c104
+@@ -1,9 +1,8 @@
+ @BeforeClass
+ public void setupSchema() {
+-    database.open("admin", "admin");
++    database.getEntityManager().registerEntityClasses("com.orientechnologies.orient.test.domain.whiz");
+     final OClass collector = database.getMetadata().getSchema().getClass("Collector");
+     collector.createProperty("id", OType.STRING);
+     collector.createProperty("stringCollection", OType.EMBEDDEDLIST, OType.STRING).createIndex(OClass.INDEX_TYPE.NOTUNIQUE);
+     database.getMetadata().getSchema().save();
+-    database.close();
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/d58775aa7ae622be6eddace268355dda03e326eb b/d8b29e5ed17f676803849eb23318802d0d383013
+index d58775aa7a..d8b29e5ed1 100644
+--- a/d58775aa7ae622be6eddace268355dda03e326eb
++++ b/d8b29e5ed17f676803849eb23318802d0d383013
+@@ -1,11 +1,14 @@
+ public void visitField(@NotNull PsiField field) {
+     super.visitField(field);
+     if (field.hasModifierProperty(PsiModifier.STATIC) && field.hasModifierProperty(PsiModifier.FINAL)) {
+         return;
+     }
+     final String fieldName = field.getName();
+-    if (!fieldName.toUpperCase().equals(fieldName)) {
++    if (fieldName == null) {
++        return;
++    }
++    if (!fieldName.equals(fieldName.toUpperCase())) {
+         return;
+     }
+     registerFieldError(field);
+ }
+\ No newline at end of file

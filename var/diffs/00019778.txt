@@ -1,0 +1,16 @@
+diff --git a/e1cdd411518b55c7bbc0aa94b0ee878abe9a0e52 b/14b8b9d364c3920c69dc8e6588df92b33b9283c5
+index e1cdd41151..14b8b9d364 100644
+--- a/e1cdd411518b55c7bbc0aa94b0ee878abe9a0e52
++++ b/14b8b9d364c3920c69dc8e6588df92b33b9283c5
+@@ -1,7 +1,7 @@
+ @Override
+ public boolean isValid(int timeout) throws SQLException {
+-    if (conn != null) {
+-        return conn.isValid(timeout);
++    if (conn == null) {
++        throw new SQLException("connection not init");
+     }
+-    return true;
++    return conn.isValid(timeout);
+ }
+\ No newline at end of file

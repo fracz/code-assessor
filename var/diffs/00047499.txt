@@ -1,0 +1,11 @@
+diff --git a/ebcf57323249b97b49f983c35ee86b698c8a8f88 b/28baf6bd43117efd20efc08c592b177662fcca48
+index ebcf573232..28baf6bd43 100644
+--- a/ebcf57323249b97b49f983c35ee86b698c8a8f88
++++ b/28baf6bd43117efd20efc08c592b177662fcca48
+@@ -1,4 +1,4 @@
+ @Override
+ public Publisher<Boolean> fastPut(K key, V value) {
+-    return commandExecutor.writeReactive(getName(), codec, RedisCommands.HSET, getName(), key, value);
++    return reactive(instance.fastPutAsync(key, value));
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/aecb6c346d488dd2f5472a617653978f02f4a80f b/2b7c63ba9da62953d6c3faadc5fd6135b5794963
+index aecb6c346d..2b7c63ba9d 100644
+--- a/aecb6c346d488dd2f5472a617653978f02f4a80f
++++ b/2b7c63ba9da62953d6c3faadc5fd6135b5794963
+@@ -1,11 +1,9 @@
+ private List<Pattern> collectPatternsFor(String groupName) {
+     if (isAllExcludeDefinedGroup(groupName)) {
+         return myAllPatterns;
++    } else if (myPatterns.containsKey(groupName)) {
++        return myPatterns.get(groupName);
+     } else {
+-        if (!myPatterns.containsKey(groupName)) {
+-            return EMPTY_LIST;
+-        } else {
+-            return myPatterns.get(groupName);
+-        }
++        return Collections.emptyList();
+     }
+ }
+\ No newline at end of file

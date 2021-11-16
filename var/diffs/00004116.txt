@@ -1,0 +1,17 @@
+diff --git a/b7b7939163b8c761925591d589256b1133a18938 b/2b79c062d48d952607b8d5c97da134b31976fcf1
+index b7b7939163..2b79c062d4 100644
+--- a/b7b7939163b8c761925591d589256b1133a18938
++++ b/2b79c062d48d952607b8d5c97da134b31976fcf1
+@@ -1,8 +1,9 @@
+ public static MavenId getId(ConvertContext context) {
+     MavenDomShortMavenArtifactCoordinates coords = (MavenDomShortMavenArtifactCoordinates) context.getInvocationElement().getParent();
+-    MavenId result = new MavenId(resolveProperties(coords.getGroupId()), resolveProperties(coords.getArtifactId()), "");
++    String version = "";
+     if (coords instanceof MavenDomArtifactCoordinates) {
+-        result.version = resolveProperties(((MavenDomArtifactCoordinates) coords).getVersion());
++        version = resolveProperties(((MavenDomArtifactCoordinates) coords).getVersion());
+     }
++    MavenId result = new MavenId(resolveProperties(coords.getGroupId()), resolveProperties(coords.getArtifactId()), version);
+     return result;
+ }
+\ No newline at end of file

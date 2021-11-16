@@ -1,0 +1,34 @@
+diff --git a/a85238f5ee6b651855761d8c8c87e07d7ee10443 b/98a6355fc8cd9e7d72d615f3d11bea0ec071ce7c
+index a85238f5ee..98a6355fc8 100644
+--- a/a85238f5ee6b651855761d8c8c87e07d7ee10443
++++ b/98a6355fc8cd9e7d72d615f3d11bea0ec071ce7c
+@@ -1,26 +1,25 @@
+ /**
+  * Starts machine in running workspace
+  *
+  * @param machineConfig configuration of machine to start
+  * @param workspaceId id of workspace in which machine should be started
+- * @return starting machine instance
+  * @throws NotFoundException
+  * if machine type from recipe is unsupported
+  * @throws NotFoundException
+  * if no instance provider implementation found for provided machine type
+  * @throws ConflictException
+  * if machine with given name already exists
+  * @throws ConflictException
+  * if workspace is not in RUNNING state
+  * @throws BadRequestException
+  * if machine name is invalid
+  * @throws ServerException
+  * if any other exception occurs during starting
+  */
+-public MachineImpl startMachine(MachineConfig machineConfig, String workspaceId) throws ServerException, ConflictException, BadRequestException, NotFoundException {
++public void startMachine(MachineConfig machineConfig, String workspaceId) throws ServerException, ConflictException, BadRequestException, NotFoundException {
+     final WorkspaceImpl workspace = getWorkspace(workspaceId);
+     if (RUNNING != workspace.getStatus()) {
+         throw new ConflictException(format("Workspace '%s' is not running, new machine can't be started", workspaceId));
+     }
+-    return machineManager.createMachineAsync(machineConfig, workspaceId, workspace.getRuntime().getActiveEnv(), runtimes.getMachineLogger(workspaceId, machineConfig.getName()));
++    performAsyncStart(machineConfig, workspaceId);
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/676f3888d2165b8d8be9d95cd713a9bb38ba14ff b/82d9e2eb4a837e86231cab6f3392f5084f9ec543
+index 676f3888d2..82d9e2eb4a 100644
+--- a/676f3888d2165b8d8be9d95cd713a9bb38ba14ff
++++ b/82d9e2eb4a837e86231cab6f3392f5084f9ec543
+@@ -1,11 +1,12 @@
+ @Nullable
+ public static HighlightInfo checkAnnotationType(PsiAnnotation annotation) {
+     PsiJavaCodeReferenceElement nameReferenceElement = annotation.getNameReferenceElement();
+     if (nameReferenceElement != null) {
+         PsiElement resolved = nameReferenceElement.resolve();
+         if (!(resolved instanceof PsiClass) || !((PsiClass) resolved).isAnnotationType()) {
+-            return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, nameReferenceElement, JavaErrorMessages.message("annotation.annotation.type.expected"));
++            String description = JavaErrorMessages.message("annotation.annotation.type.expected");
++            return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(nameReferenceElement).descriptionAndTooltip(description).create();
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

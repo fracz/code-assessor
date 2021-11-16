@@ -1,0 +1,12 @@
+diff --git a/8ac580fd33bf7eeeac90022e19b587955decb3b1 b/bf7e4479071a03e679ac20a4bee5c6f1ad7122c7
+index 8ac580fd33..bf7e447907 100644
+--- a/8ac580fd33bf7eeeac90022e19b587955decb3b1
++++ b/bf7e4479071a03e679ac20a4bee5c6f1ad7122c7
+@@ -1,5 +1,5 @@
+ @Override
+ protected RequestMappingInfo getMappingForMethod(Method method, Class<?> handlerType) {
+     RequestMapping annotation = AnnotationUtils.findAnnotation(method, RequestMapping.class);
+-    return new RequestMappingInfo(Arrays.asList(annotation.value()), RequestConditionFactory.parseMethods(annotation.method()), RequestConditionFactory.parseParams(annotation.params()), RequestConditionFactory.parseHeaders(annotation.headers()), RequestConditionFactory.parseConsumes(annotation.consumes(), annotation.headers()), RequestConditionFactory.parseProduces(annotation.produces(), annotation.headers()));
++    return new RequestMappingInfo(new PatternsRequestCondition(annotation.value(), getUrlPathHelper(), getPathMatcher()), new RequestMethodsRequestCondition(annotation.method()), new ParamsRequestCondition(annotation.params()), new HeadersRequestCondition(annotation.headers()), new ConsumesRequestCondition(annotation.consumes(), annotation.headers()), new ProducesRequestCondition(annotation.produces(), annotation.headers()));
+ }
+\ No newline at end of file

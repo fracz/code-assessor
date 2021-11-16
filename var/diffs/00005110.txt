@@ -1,0 +1,19 @@
+diff --git a/7e49dd302742c1d59696b9f85a02dec7f4a0a48a b/9037bd6820eb8c57c7122d4322670a6096f8cebb
+index 7e49dd3027..9037bd6820 100644
+--- a/7e49dd302742c1d59696b9f85a02dec7f4a0a48a
++++ b/9037bd6820eb8c57c7122d4322670a6096f8cebb
+@@ -1,10 +1,10 @@
+-public static BreakpointFactory getInstance(String category) {
++@Nullable
++public static BreakpointFactory getInstance(Key<? extends Breakpoint> category) {
+     final BreakpointFactory[] allFactories = ApplicationManager.getApplication().getComponents(BreakpointFactory.class);
+-    for (int idx = 0; idx < allFactories.length; idx++) {
+-        final BreakpointFactory factory = allFactories[idx];
++    for (final BreakpointFactory factory : allFactories) {
+         if (category.equals(factory.getBreakpointCategory())) {
+             return factory;
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

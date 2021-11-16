@@ -1,0 +1,21 @@
+diff --git a/e2c1073a7456d4843303974c8f60a4cd5875bb9c b/d69a7da0144eea4a5ad6f044ccfe4c67253bbe13
+index e2c1073a74..d69a7da014 100644
+--- a/e2c1073a7456d4843303974c8f60a4cd5875bb9c
++++ b/d69a7da0144eea4a5ad6f044ccfe4c67253bbe13
+@@ -1,11 +1,8 @@
+ @VisibleForTesting
+ void clear() {
+-    try (Cluster cluster = clusterProvider.get();
+-        Session session = cluster.connect()) {
+-        List<ListenableFuture<?>> futures = new LinkedList<>();
+-        for (String cf : ImmutableList.of("traces", "dependencies", "service_names", "span_names", "service_name_index", "service_span_name_index", "annotations_index", "span_duration_index")) {
+-            futures.add(session.executeAsync(format("TRUNCATE %s.%s", keyspace, cf)));
+-        }
+-        Futures.getUnchecked(Futures.allAsList(futures));
++    List<ListenableFuture<?>> futures = new LinkedList<>();
++    for (String cf : ImmutableList.of("traces", "dependencies", "service_names", "span_names", "service_name_index", "service_span_name_index", "annotations_index", "span_duration_index")) {
++        futures.add(session.get().executeAsync(format("TRUNCATE %s.%s", keyspace, cf)));
+     }
++    Futures.getUnchecked(Futures.allAsList(futures));
+ }
+\ No newline at end of file

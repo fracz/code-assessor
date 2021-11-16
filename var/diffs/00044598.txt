@@ -1,0 +1,35 @@
+diff --git a/75cde6629b05edd4d64241aaa33902e30ddb1ad3 b/452dcccc82ef81cb43228b5bc1b5b89a62b99277
+index 75cde6629b..452dcccc82 100644
+--- a/75cde6629b05edd4d64241aaa33902e30ddb1ad3
++++ b/452dcccc82ef81cb43228b5bc1b5b89a62b99277
+@@ -1,21 +1,18 @@
+ @Override
+-public void restoreFromIncrementalBackup(String filePath) {
+-    OChannelBinaryAsynchClient network = null;
+-    do {
+-        try {
+-            network = beginRequest(OChannelBinaryProtocol.REQUEST_INCREMENTAL_RESTORE);
++public void restoreFromIncrementalBackup(final String filePath) {
++    networkOperation(new OStorageRemoteOperation<Void>() {
++
++        @Override
++        public Void execute(OChannelBinaryAsynchClient network) throws IOException {
+             try {
++                beginRequest(network, OChannelBinaryProtocol.REQUEST_INCREMENTAL_RESTORE);
+                 network.writeString(filePath);
+             } finally {
+                 endRequest(network);
+             }
+             beginResponse(network);
+             endResponse(network);
+-            return;
+-        } catch (OModificationOperationProhibitedException mope) {
+-            handleDBFreeze();
+-        } catch (Exception e) {
+-            handleException(network, "Error on restore from incremental backup", e);
++            return null;
+         }
+-    } while (true);
++    }, "Error on restore from incremental backup");
+ }
+\ No newline at end of file

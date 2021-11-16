@@ -1,0 +1,21 @@
+diff --git a/01e10b710be8a1b19b1a75b582d3a5cfa04bb685 b/db58f915178264d605606c28343e0242b575f63f
+index 01e10b710b..db58f91517 100644
+--- a/01e10b710be8a1b19b1a75b582d3a5cfa04bb685
++++ b/db58f915178264d605606c28343e0242b575f63f
+@@ -1,12 +1,7 @@
+ public Window getNext() {
+-    boolean shouldReturn = false;
+-    for (Window window : myTaskFile.getWindows()) {
+-        if (shouldReturn) {
+-            return window;
+-        }
+-        if (window == this) {
+-            shouldReturn = true;
+-        }
++    List<Window> windows = myTaskFile.getWindows();
++    if (myIndex + 1 < windows.size()) {
++        return windows.get(myIndex + 1);
+     }
+     return null;
+ }
+\ No newline at end of file

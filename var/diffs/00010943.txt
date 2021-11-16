@@ -1,0 +1,11 @@
+diff --git a/0994d9862ab3f077373018d4ed110af7a6cdf3ae b/7f1ce2b3a571461e782ea35d54319eb9b00215a4
+index 0994d9862a..7f1ce2b3a5 100644
+--- a/0994d9862ab3f077373018d4ed110af7a6cdf3ae
++++ b/7f1ce2b3a571461e782ea35d54319eb9b00215a4
+@@ -1,4 +1,4 @@
+ private void assertKeymapContains(VirtualFile pomFile, String goal) {
+     String id = myEventsManager.getActionId(pomFile.getPath(), goal);
+-    assertTrue(getProjectActions().toString(), getProjectActions().contains(id));
++    assertTrue("Action " + id + " not found among: \n" + StringUtil.join(getProjectActions(), "\n"), getProjectActions().contains(id));
+ }
+\ No newline at end of file

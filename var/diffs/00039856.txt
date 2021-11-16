@@ -1,0 +1,21 @@
+diff --git a/98facb36c783add5d7adea0c1869bfc77cf5654e b/cab2836b04deab71614da8ff32c7495f67270c6f
+index 98facb36c7..cab2836b04 100644
+--- a/98facb36c783add5d7adea0c1869bfc77cf5654e
++++ b/cab2836b04deab71614da8ff32c7495f67270c6f
+@@ -1,14 +1,14 @@
+ @Test
+ public void shouldRemoveAConstraintIndexWithoutOwnerInRecovery() throws Exception {
+     // given
+     ConstraintIndexCreator creator = new ConstraintIndexCreator(() -> kernel, indexingService);
+-    creator.createConstraintIndex(labelId, propertyKeyId);
++    creator.createConstraintIndex(new UniquenessConstraint(descriptor));
+     // when
+     restartDb();
+     // then
+     {
+         SchemaWriteOperations statement = schemaWriteOperationsInNewTransaction();
+         assertEquals(emptySetOf(IndexDescriptor.class), asSet(statement.indexesGetForLabel(labelId)));
+         commit();
+     }
+ }
+\ No newline at end of file

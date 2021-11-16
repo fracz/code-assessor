@@ -1,0 +1,36 @@
+diff --git a/7d791a2887a5b57e5340c96fbcfc65764f6eb39a b/9b6a41f243a52c35df572d1b9f74743771a08670
+index 7d791a2887..9b6a41f243 100644
+--- a/7d791a2887a5b57e5340c96fbcfc65764f6eb39a
++++ b/9b6a41f243a52c35df572d1b9f74743771a08670
+@@ -1,17 +1,25 @@
+ public boolean exists() {
+     checkConnection();
+     do {
+-        boolean locked = acquireExclusiveLock();
++        boolean locked = lock.acquireExclusiveLock();
+         try {
+-            writeCommand(OChannelBinaryProtocol.REQUEST_DB_EXIST);
+-            network.readStatus();
+-            return network.readByte() == 1;
++            try {
++                beginRequest(OChannelBinaryProtocol.REQUEST_DB_EXIST);
++            } finally {
++                endRequest();
++            }
++            try {
++                beginResponse();
++                return network.readByte() == 1;
++            } finally {
++                endResponse();
++            }
+         } catch (Exception e) {
+             if (handleException("Error on checking if the database exists", e))
+                 break;
+         } finally {
+-            releaseExclusiveLock(locked);
++            lock.releaseExclusiveLock(locked);
+         }
+     } while (true);
+     return false;
+ }
+\ No newline at end of file

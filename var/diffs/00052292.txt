@@ -1,0 +1,21 @@
+diff --git a/01a645a3a5cfe85f69d13519fcd92bf28feb3dee b/5e05ee35a2be4949b694c3fff3e3119656f936ec
+index 01a645a3a5..5e05ee35a2 100644
+--- a/01a645a3a5cfe85f69d13519fcd92bf28feb3dee
++++ b/5e05ee35a2be4949b694c3fff3e3119656f936ec
+@@ -1,11 +1,10 @@
+-private List<PreparedStatementExecutorWrapper> routeSQLForBatch() throws SQLException {
+-    List<PreparedStatementExecutorWrapper> result = new ArrayList<>();
+-    SQLRouteResult sqlRouteResult = routingEngine.route(getParameters());
+-    setRouteResult(sqlRouteResult);
+-    for (SQLExecutionUnit each : sqlRouteResult.getExecutionUnits()) {
++private List<PreparedBatchStatement> routeSQLForBatch() throws SQLException {
++    List<PreparedBatchStatement> result = new ArrayList<>();
++    setRouteResult(routingEngine.route(getParameters()));
++    for (SQLExecutionUnit each : getRouteResult().getExecutionUnits()) {
+         PreparedStatement preparedStatement = getStatementForBatch(each);
+         replaySetParameter(preparedStatement);
+         result.add(wrap(preparedStatement, each));
+     }
+     return result;
+ }
+\ No newline at end of file

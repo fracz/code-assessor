@@ -1,0 +1,17 @@
+diff --git a/736ab586261fff3de292f209152195b2b8ce378b b/4b81346e5ea6141840cf1e3401be6f338ea8729a
+index 736ab58626..4b81346e5e 100644
+--- a/736ab586261fff3de292f209152195b2b8ce378b
++++ b/4b81346e5ea6141840cf1e3401be6f338ea8729a
+@@ -1,10 +1,6 @@
+ @Override
+ protected Node fetchNextOrNull() {
+     assert ids != null : "ids null";
+     assert nodeManager != null : "nodeManager null";
+-    if (ids.hasNext())
+-        return nodeManager.newNodeProxyById(ids.next());
+-    else
+-        return null;
+-// return ids.hasNext() ?  : null;
++    return ids.hasNext() ? nodeManager.newNodeProxyById(ids.next()) : null;
+ }
+\ No newline at end of file

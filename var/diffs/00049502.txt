@@ -1,0 +1,16 @@
+diff --git a/8e6cada5e57ab77e33ca8dd7bd8ec9397512922e b/92664b77ded0a8d134c253e9277cb74f74363087
+index 8e6cada5e5..92664b77de 100644
+--- a/8e6cada5e57ab77e33ca8dd7bd8ec9397512922e
++++ b/92664b77ded0a8d134c253e9277cb74f74363087
+@@ -1,9 +1,9 @@
+ public static void showDialog(Shell shell) {
+     IWorkbenchPart activePart = DBeaverUI.getActiveWorkbenchWindow().getActivePage().getActivePart();
+     if (activePart == null) {
+-        UIUtils.showErrorDialog(shell, "No active part", "No active part.");
++        DBUserInterface.getInstance().showError("No active part", "No active part.");
+     } else {
+         final PendingTransactionsDialog dialog = new PendingTransactionsDialog(shell, activePart);
+         dialog.open();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/dd06656c65d4192d83c91517e015f3600f97d1ee b/3ac3bd12fcec2127e1929c683bcf0065a5f6f418
+index dd06656c65..3ac3bd12fc 100644
+--- a/dd06656c65d4192d83c91517e015f3600f97d1ee
++++ b/3ac3bd12fcec2127e1929c683bcf0065a5f6f418
+@@ -1,5 +1,5 @@
+ // safe because we only put matching entries into the map
+ @SuppressWarnings("unchecked")
+ <T> List<Binding<T>> getAll(TypeLiteral<T> type) {
+-    return (List<Binding<T>>) (List) multimap.get(type);
++    return Collections.<Binding<T>>unmodifiableList((List) multimap.get(type));
+ }
+\ No newline at end of file

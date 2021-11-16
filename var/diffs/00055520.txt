@@ -1,0 +1,17 @@
+diff --git a/172f18a2f6e57eb22f2596bdf9e965ac470e22bb b/3d15ef442e07b1f4e9afd74171bdd28e456677a8
+index 172f18a2f6..3d15ef442e 100644
+--- a/172f18a2f6e57eb22f2596bdf9e965ac470e22bb
++++ b/3d15ef442e07b1f4e9afd74171bdd28e456677a8
+@@ -1,5 +1,8 @@
+ public Object call() throws Exception {
+-    mavContainer.setRequestHandled(false);
+-    new CallableHandlerMethod(getNext()).invokeAndHandle(webRequest, mavContainer, providedArgs);
+-    return null;
++    if (result instanceof Exception) {
++        throw (Exception) result;
++    } else if (result instanceof Throwable) {
++        throw new NestedServletException("Async processing failed", (Throwable) result);
++    }
++    return result;
+ }
+\ No newline at end of file

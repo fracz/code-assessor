@@ -1,0 +1,12 @@
+diff --git a/91f8fcae8932e6a3da286aa43da334cf8976d62d b/dcf1a40a33eae3271014ab5fa06ed1f6ca42e913
+index 91f8fcae89..dcf1a40a33 100644
+--- a/91f8fcae8932e6a3da286aa43da334cf8976d62d
++++ b/dcf1a40a33eae3271014ab5fa06ed1f6ca42e913
+@@ -1,4 +1,5 @@
+ @NotNull
+ public JsName getNameForElement(@NotNull JetElement element) {
+-    return staticContext.getNameForElement(element);
++    DeclarationDescriptor descriptor = BindingUtils.getDescriptorForElement(bindingContext(), element);
++    return getNameForDescriptor(descriptor);
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/824db4a28bd2ada1b617c29f1bac55db6a13b7c9 b/659a52de276db118baaa1527a0d8c922b1791bda
+index 824db4a28b..659a52de27 100644
+--- a/824db4a28bd2ada1b617c29f1bac55db6a13b7c9
++++ b/659a52de276db118baaa1527a0d8c922b1791bda
+@@ -1,8 +1,10 @@
++// TODO: util method
+ @NotNull
+ List<JsParameter> translatePrimaryConstructorParameters() {
++    List<JetParameter> parameterList = classDeclaration.getPrimaryConstructorParameters();
+     List<JsParameter> result = new ArrayList<JsParameter>();
+-    for (JetParameter jetParameter : classDeclaration.getPrimaryConstructorParameters()) {
++    for (JetParameter jetParameter : parameterList) {
+         result.add(translateParameter(jetParameter));
+     }
+     return result;
+ }
+\ No newline at end of file

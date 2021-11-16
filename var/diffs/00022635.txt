@@ -1,0 +1,28 @@
+diff --git a/a0de589d13cdf8b3d4ce48036a4305942b9e3c89 b/83e6b01ade9d25f5934d7dd7fc9b753bd99f8b6e
+index a0de589d13..83e6b01ade 100644
+--- a/a0de589d13cdf8b3d4ce48036a4305942b9e3c89
++++ b/83e6b01ade9d25f5934d7dd7fc9b753bd99f8b6e
+@@ -1,18 +1,18 @@
+ @Override
+ protected void onExpandingFinished() {
+     super.onExpandingFinished();
+     mNotificationStackScroller.onExpansionStopped();
+     mHeadsUpManager.onExpandingFinished();
+     mIsExpanding = false;
+     mScrollYOverride = -1;
+-    if (isShadeCollapsed()) {
++    if (isFullyCollapsed()) {
+         setListening(false);
+     } else {
+         setListening(true);
+     }
+     mQsExpandImmediate = false;
+     mTwoFingerQsExpandPossible = false;
+-    mExpansionIsFromHeadsUp = false;
+-    mNotificationStackScroller.setTrackingHeadsUp(mHeadsUpTouchHelper.isTrackingHeadsUp());
+-    mExpandingFromHeadsUp = mHeadsUpTouchHelper.isTrackingHeadsUp();
++    mIsExpansionFromHeadsUp = false;
++    mNotificationStackScroller.setTrackingHeadsUp(false);
++    mExpandingFromHeadsUp = false;
+ }
+\ No newline at end of file

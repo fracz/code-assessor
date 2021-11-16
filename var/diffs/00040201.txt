@@ -1,0 +1,14 @@
+diff --git a/e84b13b588bc8360a7c59776730c30e4580aa381 b/17b5645c25e04f130dfc744f11b71652f3310d6c
+index e84b13b588..17b5645c25 100644
+--- a/e84b13b588bc8360a7c59776730c30e4580aa381
++++ b/17b5645c25e04f130dfc744f11b71652f3310d6c
+@@ -1,6 +1,3 @@
+-/**
+- * We currently only support uniqueness constraints on a single property.
+- */
+-public static UniquePropertyConstraintRule uniquenessConstraintRule(long id, int labelId, int propertyKeyId, long ownedIndexRule) {
+-    return new UniquePropertyConstraintRule(id, labelId, new int[] { propertyKeyId }, ownedIndexRule);
++public static UniquePropertyConstraintRule uniquenessConstraintRule(long id, NodePropertyDescriptor descriptor, long ownedIndexRule) {
++    return new UniquePropertyConstraintRule(id, descriptor, ownedIndexRule);
+ }
+\ No newline at end of file

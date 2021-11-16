@@ -1,0 +1,14 @@
+diff --git a/5c707f49f955de621a97b0da6870f1c3cb99d461 b/67d3b2a276f2202851c6e81422640c47eeedb522
+index 5c707f49f9..67d3b2a276 100644
+--- a/5c707f49f955de621a97b0da6870f1c3cb99d461
++++ b/67d3b2a276f2202851c6e81422640c47eeedb522
+@@ -1,7 +1,7 @@
+ public void test_11() throws Exception {
+     String sql = "SELECT s1 FROM t1 WHERE s1 > ALL (SELECT s1 FROM t2);";
+     SQLStatementParser parser = new MySqlStatementParser(sql);
+     List<SQLStatement> stmtList = parser.parseStatementList();
+     String text = output(stmtList);
+-    Assert.assertEquals("SELECT s1\nFROM t1\nWHERE s1 > ALL (SELECT s1\n\tFROM t2);", text);
++    assertEquals("SELECT s1\n" + "FROM t1\n" + "WHERE s1 > ALL (\n" + "\tSELECT s1\n" + "\tFROM t2\n" + ");", text);
+ }
+\ No newline at end of file

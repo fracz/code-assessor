@@ -1,0 +1,18 @@
+diff --git a/7745717a52445f679d52352376a727698ce686ed b/b9190f677232a2cd4c40c11ac2b9c795f1f6e0fd
+index 7745717a52..b9190f6772 100644
+--- a/7745717a52445f679d52352376a727698ce686ed
++++ b/b9190f677232a2cd4c40c11ac2b9c795f1f6e0fd
+@@ -1,11 +1,5 @@
+ public void test_db2_union() throws Exception {
+     String sql = "select * from t1 union select * from t2";
+     String result = PagerUtils.limit(sql, JdbcConstants.SQL_SERVER, 0, 10);
+-    Assert.assertEquals(//
+-    "SELECT TOP 10 XX.*" + //
+-    "\nFROM (SELECT *" + //
+-    "\n\tFROM t1" + //
+-    "\n\tUNION" + //
+-    "\n\tSELECT *" + //
+-    "\n\tFROM t2" + "\n\t) XX", result);
++    Assert.assertEquals("SELECT TOP 10 XX.*\n" + "FROM (\n" + "\tSELECT *\n" + "\tFROM t1\n" + "\tUNION\n" + "\tSELECT *\n" + "\tFROM t2\n" + ") XX", result);
+ }
+\ No newline at end of file

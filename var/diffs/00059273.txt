@@ -1,0 +1,13 @@
+diff --git a/ea317d532ea7d2f8b5f517e7c6338a7dca9aee76 b/c2cb7e2676bd4f4b98e784aec980e63c7b8bc1cb
+index ea317d532e..c2cb7e2676 100644
+--- a/ea317d532ea7d2f8b5f517e7c6338a7dca9aee76
++++ b/c2cb7e2676bd4f4b98e784aec980e63c7b8bc1cb
+@@ -1,5 +1,5 @@
+-// TODO: IT DOES! @Override
++@Override
+ public void cleanUp() throws StorageException {
+-    CassandraEmbeddedStoreManager s = new CassandraEmbeddedStoreManager(StorageSetup.getEmbeddedCassandraGraphConfiguration().subset(GraphDatabaseConfiguration.STORAGE_NAMESPACE));
++    CassandraEmbeddedStoreManager s = new CassandraEmbeddedStoreManager(CassandraStorageSetup.getEmbeddedCassandraGraphConfiguration().subset(GraphDatabaseConfiguration.STORAGE_NAMESPACE));
+     s.clearStorage();
+ }
+\ No newline at end of file

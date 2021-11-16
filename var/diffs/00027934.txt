@@ -1,0 +1,16 @@
+diff --git a/29ed38cde4af894eba40d4b17a697c38244f0f10 b/32673922b33938d7be83b2cb5dd4ceceb6619721
+index 29ed38cde4..32673922b3 100644
+--- a/29ed38cde4af894eba40d4b17a697c38244f0f10
++++ b/32673922b33938d7be83b2cb5dd4ceceb6619721
+@@ -1,8 +1,8 @@
+-@Path("push")
+ @POST
++@Path("push")
+ @Consumes(MediaType.APPLICATION_JSON)
+ public PushResponse push(PushRequest request) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+-        return gitConnection.push(request);
++        return gitConnection.push(PushParams.create(request.getRemote()).withRefSpec(request.getRefSpec()).withForce(request.isForce()).withTimeout(request.getTimeout()).withUsername(request.getUsername()).withPassword(request.getPassword()));
+     }
+ }
+\ No newline at end of file

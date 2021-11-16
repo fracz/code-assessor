@@ -1,0 +1,39 @@
+diff --git a/65d079bb76902188b9f169dbcd6d2b358caf9567 b/c097f57c180f989a2697233b224684a336fdf02d
+index 65d079bb76..c097f57c18 100644
+--- a/65d079bb76902188b9f169dbcd6d2b358caf9567
++++ b/c097f57c180f989a2697233b224684a336fdf02d
+@@ -1,19 +1,20 @@
+ public synchronized DataTransferPipe acquireDataPipe() {
+-    if (curPipeNum >= dataPipes.size()) {
+-        if (!folderOpened && openFolderOnFinish) {
+-            // Last one
+-            folderOpened = true;
+-            DBeaverUI.getDisplay().asyncExec(new Runnable() {
+-
+-                @Override
+-                public void run() {
+-                    RuntimeUtils.launchProgram(outputFolder);
+-                }
+-            });
++    /*
++        if (curPipeNum >= dataPipes.size()) {
++            if (!folderOpened && openFolderOnFinish) {
++                // Last one
++                folderOpened = true;
++                DBeaverUI.getDisplay().asyncExec(new Runnable() {
++                    @Override
++                    public void run() {
++                        RuntimeUtils.launchProgram(outputFolder);
++                    }
++                });
++            }
++            return null;
+         }
+-        return null;
+-    }
++*/
+     DataTransferPipe result = dataPipes.get(curPipeNum);
+     curPipeNum++;
+     return result;
+ }
+\ No newline at end of file

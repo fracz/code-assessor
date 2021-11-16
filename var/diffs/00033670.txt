@@ -1,0 +1,26 @@
+diff --git a/12e4f8b1bc5797a1063e7801c96583af425347c2 b/f9c15eecb5ab06129d36145e72408a5cbeb223d5
+index 12e4f8b1bc..f9c15eecb5 100644
+--- a/12e4f8b1bc5797a1063e7801c96583af425347c2
++++ b/f9c15eecb5ab06129d36145e72408a5cbeb223d5
+@@ -1,14 +1,11 @@
+-private boolean hashClassBytes(Hasher hasher, byte[] classBytes) {
++private void hashClassBytes(Hasher hasher, byte[] classBytes) {
+     // Use the ABI as the hash
+     ApiClassExtractor extractor = new ApiClassExtractor(Collections.<String>emptySet());
+     Java9ClassReader reader = new Java9ClassReader(classBytes);
+-    if (!extractor.shouldExtractApiClassFrom(reader)) {
+-        return false;
++    if (extractor.shouldExtractApiClassFrom(reader)) {
++        byte[] signature = extractor.extractApiClassFrom(reader);
++        if (signature != null) {
++            hasher.putBytes(signature);
++        }
+     }
+-    byte[] signature = extractor.extractApiClassFrom(reader);
+-    if (signature == null) {
+-        return false;
+-    }
+-    hasher.putBytes(signature);
+-    return true;
+ }
+\ No newline at end of file

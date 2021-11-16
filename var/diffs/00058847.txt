@@ -1,0 +1,29 @@
+diff --git a/2b2032b5d78a4820735af0998b351f992c3b697f b/6c3ab267043725d8cdbfd601ed6889ffb1a9d91c
+index 2b2032b5d7..6c3ab26704 100644
+--- a/2b2032b5d78a4820735af0998b351f992c3b697f
++++ b/6c3ab267043725d8cdbfd601ed6889ffb1a9d91c
+@@ -1,22 +1,20 @@
+ /*public FaunusPipeline back(final int numberOfSteps) throws IOException {
+         this.state.checkLocked();
+         this.compiler.backFilterMapReduce(this.state.getElementType(), this.state.getStep() - numberOfSteps);
+         this.compiler.setPathEnabled(true);
+         makeMapReduceString(BackFilterMapReduce.class, numberOfSteps);
+         return this;
+     }*/
+ /**
+  * Emit the element only if it was arrived at via a path that does not have cycles in it.
+  *
+  * @return the extended FaunusPipeline
+  */
+ public FaunusPipeline simplePath() {
+     this.state.checkLocked();
+     this.state.checkProperty();
+-    final Configuration configuration = new Configuration();
+-    configuration.setClass(CyclicPathFilterMap.CLASS, this.state.getElementType(), Element.class);
+-    this.compiler.addMap(CyclicPathFilterMap.Map.class, NullWritable.class, FaunusVertex.class, configuration);
++    this.compiler.addMap(CyclicPathFilterMap.Map.class, NullWritable.class, FaunusVertex.class, CyclicPathFilterMap.createConfiguration(this.state.getElementType()));
+     this.compiler.setPathEnabled(true);
+     makeMapReduceString(CyclicPathFilterMap.class);
+     return this;
+ }
+\ No newline at end of file

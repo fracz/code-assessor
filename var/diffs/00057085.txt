@@ -1,0 +1,18 @@
+diff --git a/f57381b658a04be51a0c0cd87196d6efb46e9e68 b/a6452cf29eb3245df6246af6143f85ebcb334b95
+index f57381b658..a6452cf29e 100644
+--- a/f57381b658a04be51a0c0cd87196d6efb46e9e68
++++ b/a6452cf29eb3245df6246af6143f85ebcb334b95
+@@ -1,10 +1,10 @@
+ /**
+  * I made this all one test or else you get problems in memory use if the
+  * JUnit stuff tries to run tests in parallel....
+  */
+ public void testCRF() {
+-    CRFClassifier<CoreLabel> crf = CRFClassifier.getClassifierNoExceptions(System.getProperty("ner.model", nerPath));
++    CRFClassifier crf = CRFClassifier.getClassifierNoExceptions(System.getProperty("ner.model", nerPath));
+     runCRFTest(crf);
+-    crf = CRFClassifier.getDefaultClassifier();
++    crf = CRFClassifier.getJarClassifier(nerJarPath, null);
+     runCRFTest(crf);
+ }
+\ No newline at end of file

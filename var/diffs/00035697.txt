@@ -1,0 +1,15 @@
+diff --git a/4cb946e7e200cb06189076657678e71e751b3a82 b/c766f3a8d0cfdec7eabf295d5b999531b89ccc35
+index 4cb946e7e2..c766f3a8d0 100644
+--- a/4cb946e7e200cb06189076657678e71e751b3a82
++++ b/c766f3a8d0cfdec7eabf295d5b999531b89ccc35
+@@ -1,8 +1,8 @@
+ @Override
+ public void run(RunNotifier notifier) {
+     MockingProgress progress = new ThreadSafeMockingProgress();
+     DebuggingInfo debuggingInfo = progress.getDebuggingInfo();
+     beforeRun(notifier, debuggingInfo);
+-    this.runTest(notifier);
++    runner.run(notifier);
+     afterRun(debuggingInfo);
+ }
+\ No newline at end of file

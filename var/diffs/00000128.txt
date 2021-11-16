@@ -1,0 +1,30 @@
+diff --git a/465599608d1409dfb961a798215577c35f0933bf b/a9fa3f807ca372769757110d4ce94e6e8928df5a
+index 465599608d..a9fa3f807c 100644
+--- a/465599608d1409dfb961a798215577c35f0933bf
++++ b/a9fa3f807ca372769757110d4ce94e6e8928df5a
+@@ -1,20 +1,19 @@
+ /**
+  * Removes the file or directory specified by argv. Will remove all files and directories in the
+  * directory if a directory is specified.
+  *
+  * @param path The TachyonURI path as the input of the command
+  * @return 0 if command is successful, -1 if an error occurred.
+  */
+ public int rmr(TachyonURI path) {
+     try {
+-        mTfs.delete(mTfs.open(path), TachyonFileSystem.RECURSIVE);
++        DeleteOptions options = new DeleteOptions.Builder(mTachyonConf).setRecursive(true).build();
++        mTfs.delete(mTfs.open(path), options);
+         System.out.println(path + " has been removed");
+         return 0;
+-    } catch (IOException ioe) {
++    } catch (IOException e) {
+         return -1;
+-    } catch (InvalidPathException e) {
+-        return -1;
+-    } catch (FileDoesNotExistException e) {
++    } catch (TachyonException e) {
+         return -1;
+     }
+ }
+\ No newline at end of file

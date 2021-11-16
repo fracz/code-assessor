@@ -1,0 +1,20 @@
+diff --git a/e015ab801d1763509d2f029551d29e750d70aa76 b/e8d9ad00e5000ed7159765be799aedec12657d24
+index e015ab801d..e8d9ad00e5 100644
+--- a/e015ab801d1763509d2f029551d29e750d70aa76
++++ b/e8d9ad00e5000ed7159765be799aedec12657d24
+@@ -1,7 +1,10 @@
+ public int getChildWidth(int i) {
+-    if (i <= 0) {
+-        return getBehindWidth();
+-    } else {
+-        return getChildAt(i).getWidth();
++    switch(i) {
++        case 0:
++            return getBehindWidth();
++        case 1:
++            return mContent.getWidth();
++        default:
++            return 0;
+     }
+ }
+\ No newline at end of file

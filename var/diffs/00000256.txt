@@ -1,0 +1,21 @@
+diff --git a/bc63ad19285ae6bf28c5fc52643919e3ca48195a b/c097826fb5da8f55127cc99227dd2ba518635582
+index bc63ad1928..c097826fb5 100644
+--- a/bc63ad19285ae6bf28c5fc52643919e3ca48195a
++++ b/c097826fb5da8f55127cc99227dd2ba518635582
+@@ -1,14 +1,14 @@
+ /**
+  * Tests for default {@link MkdirsOptions}.
+  */
+ @Test
+ public void defaults() throws IOException {
+-    MkdirsOptions options = new MkdirsOptions();
++    MkdirsOptions options = MkdirsOptions.defaults();
+     Permission expectedPs = Permission.defaults().applyDirectoryUMask();
+     // Verify the default createParent is true.
+     Assert.assertTrue(options.getCreateParent());
+     // Verify that the owner and group are not set.
+     Assert.assertEquals("", options.getPermission().getOwner());
+     Assert.assertEquals("", options.getPermission().getGroup());
+     Assert.assertEquals(expectedPs.getMode().toShort(), options.getPermission().getMode().toShort());
+ }
+\ No newline at end of file

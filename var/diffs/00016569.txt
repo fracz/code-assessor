@@ -1,0 +1,15 @@
+diff --git a/1fad9efda0b4377ecef4f5452835adc62e7ba199 b/711e9244a875d7c007dd941d37eb9cd405f04c9e
+index 1fad9efda0..711e9244a8 100644
+--- a/1fad9efda0b4377ecef4f5452835adc62e7ba199
++++ b/711e9244a875d7c007dd941d37eb9cd405f04c9e
+@@ -1,6 +1,5 @@
+ private static void findAllMethodUsages(JetChangeInfo changeInfo, Set<UsageInfo> result) {
+-    PsiElement method = changeInfo.getMethod();
+-    if (method != null)
+-        findOneMethodUsages(method, changeInfo, result, false);
+-// TODO overridden methods, tests for different parameter names in overridden methods
++    for (PsiElement affectedFunction : changeInfo.getAffectedFunctions()) {
++        findOneMethodUsages(affectedFunction, changeInfo, result, false);
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/6d31041179e65873051bb582b3c19c0ea3b9e29b b/7f6b52ffda02729a79dc9df8b22530e2b23fbae6
+index 6d31041179..7f6b52ffda 100644
+--- a/6d31041179e65873051bb582b3c19c0ea3b9e29b
++++ b/7f6b52ffda02729a79dc9df8b22530e2b23fbae6
+@@ -1,9 +1,10 @@
+ @Override
+ public void initialize(boolean createTraceObject) {
+     if (createTraceObject) {
+-        getTraceContext().newTraceObject();
++        final TraceContext traceContext = getTraceContext();
++        traceContext.newTraceObject();
+     }
+     getRecorder().clear();
+     getTestTcpDataSender().clear();
+     ignoredServiceTypes.clear();
+ }
+\ No newline at end of file

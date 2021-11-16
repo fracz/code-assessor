@@ -1,0 +1,19 @@
+diff --git a/2d66aad249ed0abd522c725e5de2c293dde9000a b/7fed5070d025355df7913da4d228717f6552e75b
+index 2d66aad249..7fed5070d0 100644
+--- a/2d66aad249ed0abd522c725e5de2c293dde9000a
++++ b/7fed5070d025355df7913da4d228717f6552e75b
+@@ -1,11 +1,11 @@
+ private synchronized Map<String, OBJECT> getObjectMap() {
+-    if (objectMap == null) {
++    if (this.objectMap == null) {
+         this.objectMap = new HashMap<>();
+         for (OBJECT object : objectList) {
+             String name = getObjectName(object);
+             checkDuplicateName(name, object);
+             this.objectMap.put(name, object);
+         }
+     }
+-    return objectMap;
++    return this.objectMap;
+ }
+\ No newline at end of file

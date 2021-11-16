@@ -1,0 +1,14 @@
+diff --git a/4ac9daf9211aec4755f89daf8e9eb87354c6a741 b/0bf3fb0632665efd3b67d4b3f7c76a415402d196
+index 4ac9daf921..0bf3fb0632 100644
+--- a/4ac9daf9211aec4755f89daf8e9eb87354c6a741
++++ b/0bf3fb0632665efd3b67d4b3f7c76a415402d196
+@@ -1,4 +1,5 @@
+-private PsiElement replace(String newElementName, String fqn, String pckg, PsiElement container) {
+-    String newValue = "\"" + fqn.substring(pckg.length()) + "." + newElementName + "\"";
+-    return getElement().replace(JavaPsiFacade.getElementFactory(container.getProject()).createExpressionFromText(newValue, container.getParent()));
++private PsiElement replace(String fqn, String newName, String pckg) {
++    XmlAttribute parent = (XmlAttribute) getElement().getParent();
++    parent.setValue(fqn.substring(pckg.length()) + "." + newName);
++    return parent.getValueElement();
+ }
+\ No newline at end of file

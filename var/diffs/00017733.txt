@@ -1,0 +1,19 @@
+diff --git a/f2897ef022d8dcb625ab25b8e64399ba9f59cadd b/9fc800dfe1a9dadf6dd981cd00cbc6b11b6ec1e0
+index f2897ef022..9fc800dfe1 100644
+--- a/f2897ef022d8dcb625ab25b8e64399ba9f59cadd
++++ b/9fc800dfe1a9dadf6dd981cd00cbc6b11b6ec1e0
+@@ -1,11 +1,11 @@
+ @NotNull
+-private List<JsPropertyInitializer> translatePropertiesAsConstructorParameters() {
++private List<JsPropertyInitializer> translatePropertiesAsConstructorParameters(@NotNull TranslationContext classDeclarationContext) {
+     List<JsPropertyInitializer> result = new ArrayList<JsPropertyInitializer>();
+     for (JetParameter parameter : getPrimaryConstructorParameters(classDeclaration)) {
+         PropertyDescriptor descriptor = getPropertyDescriptorForConstructorParameter(bindingContext(), parameter);
+         if (descriptor != null) {
+-            result.addAll(PropertyTranslator.translateAccessors(descriptor, context()));
++            result.addAll(PropertyTranslator.translateAccessors(descriptor, classDeclarationContext));
+         }
+     }
+     return result;
+ }
+\ No newline at end of file

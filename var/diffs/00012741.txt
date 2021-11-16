@@ -1,0 +1,18 @@
+diff --git a/c878822d8da15086a8b49107310e34bf741b0102 b/10411381905c0cbff126e393f4dde1f0db73d3d6
+index c878822d8d..1041138190 100644
+--- a/c878822d8da15086a8b49107310e34bf741b0102
++++ b/10411381905c0cbff126e393f4dde1f0db73d3d6
+@@ -1,10 +1,8 @@
+ @Override
+ public void show() {
+-    DumbService.allowStartingDumbModeInside(DumbModePermission.MAY_START_MODAL, new Runnable() {
+-
+-        @Override
+-        public void run() {
++    DumbService.allowStartingDumbModeInside(DumbModePermission.MAY_START_MODAL, () -> {
++        try (AccessToken ignored = TransactionGuard.getInstance().acceptNestedTransactions(TransactionKind.TEXT_EDITING)) {
+             RefactoringDialog.super.show();
+         }
+     });
+ }
+\ No newline at end of file

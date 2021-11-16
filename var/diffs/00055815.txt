@@ -1,0 +1,16 @@
+diff --git a/d3dd18dcacf6ef21a740e3736cbb54d0b9902a61 b/e5a4c1023658a18e2f8e0f7593b7a4ad0d6bd25b
+index d3dd18dcac..e5a4c10236 100644
+--- a/d3dd18dcacf6ef21a740e3736cbb54d0b9902a61
++++ b/e5a4c1023658a18e2f8e0f7593b7a4ad0d6bd25b
+@@ -1,6 +1,9 @@
+ @Test
+ public void unknownMethodArgumentType() throws Exception {
+     this.request.setUri("/unknown-argument-type");
+     Mono<Void> publisher = this.dispatcherHandler.handle(this.exchange);
+-    TestSubscriber.subscribe(publisher).assertError(IllegalStateException.class).assertErrorWith(ex -> assertThat(ex.getMessage(), startsWith("No resolver for argument [0]")));
++    ScriptedSubscriber.<Void>create().consumeErrorWith(error -> {
++        assertThat(error, instanceOf(IllegalStateException.class));
++        assertThat(error.getMessage(), startsWith("No resolver for argument [0]"));
++    }).verify(publisher);
+ }
+\ No newline at end of file

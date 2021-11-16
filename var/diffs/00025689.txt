@@ -1,0 +1,20 @@
+diff --git a/4d20c47176f226e79cca4fd4cd56075f71c43acc b/209efd2a09419e0351ca25c44d8d3e646b695244
+index 4d20c47176..209efd2a09 100644
+--- a/4d20c47176f226e79cca4fd4cd56075f71c43acc
++++ b/209efd2a09419e0351ca25c44d8d3e646b695244
+@@ -1,9 +1,7 @@
+-public void closeSession(Map<String, Integer> userSessionMap) {
+-    for (Map.Entry<String, Integer> entry : userSessionMap.entrySet()) {
+-        try {
+-            executeHTTP(property.getProperty("zeppelin.livy.url") + "/sessions/" + entry.getValue(), "DELETE", null, null);
+-        } catch (Exception e) {
+-            LOGGER.error(String.format("Error closing session for user with session ID: %s", entry.getValue()), e);
+-        }
++public void closeSession(int sessionId) {
++    try {
++        executeHTTP(property.getProperty("zeppelin.livy.url") + "/sessions/" + sessionId, "DELETE", null, null);
++    } catch (Exception e) {
++        LOGGER.error(String.format("Error closing session for user with session ID: %s", sessionId), e);
+     }
+ }
+\ No newline at end of file

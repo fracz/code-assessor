@@ -1,0 +1,15 @@
+diff --git a/20c906984ad1f14cdc860b63ba98a4145ee0a00e b/abdd65e7b2c2197fce59e4e78adc208ebe64008a
+index 20c906984a..abdd65e7b2 100644
+--- a/20c906984ad1f14cdc860b63ba98a4145ee0a00e
++++ b/abdd65e7b2c2197fce59e4e78adc208ebe64008a
+@@ -1,6 +1,8 @@
+ // underlying ifftn
+ public static ComplexNDArray rawifftn(ComplexNDArray transform, int[] shape, int[] axes) {
+     ComplexNDArray result = transform.dup();
+-    for (int i = transform.shape().length - 1; i >= 0; i--) result.iterateOverDimension(axes[i], new IFFTSliceOp(shape[i]), true);
++    for (int i = transform.shape().length - 1; i >= 0; i--) {
++        result = FFT.rawifft(result, shape[i], axes[i]);
++    }
+     return result;
+ }
+\ No newline at end of file

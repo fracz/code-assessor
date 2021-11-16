@@ -1,0 +1,20 @@
+diff --git a/1e11e54bddf7ac60403e33691aa8f8491819ade8 b/2c4cc084588bc940b1a40cb5bc96c3af7862382d
+index 1e11e54bdd..2c4cc08458 100644
+--- a/1e11e54bddf7ac60403e33691aa8f8491819ade8
++++ b/2c4cc084588bc940b1a40cb5bc96c3af7862382d
+@@ -1,13 +1,13 @@
+ @Override
+ protected ScriptQueryBuilder doCreateTestQueryBuilder() {
+     String script;
+     Map<String, Object> params = null;
+     if (randomBoolean()) {
+         script = "5 * 2 > param";
+         params = new HashMap<>();
+         params.put("param", 1);
+     } else {
+         script = "5 * 2 > 2";
+     }
+-    return new ScriptQueryBuilder(new Script(script, ScriptType.INLINE, "expression", params));
++    return new ScriptQueryBuilder(new Script(script, ScriptType.INLINE, ExpressionScriptEngineService.NAME, params));
+ }
+\ No newline at end of file

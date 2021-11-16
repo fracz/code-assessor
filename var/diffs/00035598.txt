@@ -1,0 +1,13 @@
+diff --git a/8d221570bbe72f2c5246164d846779475140437c b/800bd276fe25216f77d9c0fa8732a5cfc66a0475
+index 8d221570bb..800bd276fe 100644
+--- a/8d221570bbe72f2c5246164d846779475140437c
++++ b/800bd276fe25216f77d9c0fa8732a5cfc66a0475
+@@ -1,6 +1,4 @@
+ public void setRoundedCornersDp(int cornerRadiusDp) {
+-    if (getDrawable() instanceof IconicsDrawable) {
+-        ((IconicsDrawable) getDrawable()).roundedCornersDp(cornerRadiusDp);
+-    }
+     mIconBundle.mCornerRadius = Utils.convertDpToPx(getContext(), cornerRadiusDp);
++    mIconBundle.applyProperties();
+ }
+\ No newline at end of file

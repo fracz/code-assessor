@@ -1,0 +1,16 @@
+diff --git a/f11557d38feb287fe49c64ec45ae3af71685fc44 b/e3d6051373498e32896bf513e34fc11d3e921e42
+index f11557d38f..e3d6051373 100644
+--- a/f11557d38feb287fe49c64ec45ae3af71685fc44
++++ b/e3d6051373498e32896bf513e34fc11d3e921e42
+@@ -1,9 +1,9 @@
+ @Override
+ public Object getAdapter(Class adapter) {
+     if (adapter == DBSStructureAssistant.class) {
+         return new MySQLStructureAssistant(this);
+     } else if (adapter == DBAServerSessionManager.class) {
+         return new MySQLSessionManager(this);
+     }
+-    return null;
++    return super.getAdapter(adapter);
+ }
+\ No newline at end of file

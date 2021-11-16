@@ -1,0 +1,13 @@
+diff --git a/95b65550cb4234d26821434a82caeb27e90a4fd0 b/092868478046994aca379e3f04e123b81fdb1c0b
+index 95b65550cb..0928684780 100644
+--- a/95b65550cb4234d26821434a82caeb27e90a4fd0
++++ b/092868478046994aca379e3f04e123b81fdb1c0b
+@@ -1,6 +1,4 @@
+ public void setContourWidthDp(int contourWidthDp) {
+-    if (getDrawable() instanceof IconicsDrawable) {
+-        ((IconicsDrawable) getDrawable()).contourWidthDp(contourWidthDp);
+-    }
+     mIconBundle.mContourWidth = Utils.convertDpToPx(getContext(), contourWidthDp);
++    mIconBundle.applyProperties();
+ }
+\ No newline at end of file

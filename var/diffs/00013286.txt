@@ -1,0 +1,17 @@
+diff --git a/53376966e357f35ef6dfdac10ed8fbe6590f381d b/99980a59161e2b68a2b523f7639ed5b61f34b2f0
+index 53376966e3..99980a5916 100644
+--- a/53376966e357f35ef6dfdac10ed8fbe6590f381d
++++ b/99980a59161e2b68a2b523f7639ed5b61f34b2f0
+@@ -1,9 +1,7 @@
+ @Override
+ public boolean visitFile(@NotNull VirtualFile file) {
+-    if (!fileIndex.isIgnored(file) && file.findChild(PyNames.INIT_DOT_PY) != null) {
+-        final String name = prefix + file.getName();
+-        results.add(name);
+-        collectPackageNames(project, file, name + ".", results);
++    if (!fileIndex.isIgnored(file) && file.isDirectory() && file.findChild(PyNames.INIT_DOT_PY) != null) {
++        results.add(VfsUtilCore.getRelativePath(file, root, '.'));
+     }
+     return true;
+ }
+\ No newline at end of file

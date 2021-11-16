@@ -1,0 +1,23 @@
+diff --git a/df4fd08ba3367bcf2d418c413a8cd7ec41868d55 b/cd5f479445c41d965ba03edbc2530aa2a8defd3b
+index df4fd08ba3..cd5f479445 100644
+--- a/df4fd08ba3367bcf2d418c413a8cd7ec41868d55
++++ b/cd5f479445c41d965ba03edbc2530aa2a8defd3b
+@@ -1,13 +1,13 @@
+ // Package-private method used by AudioStream.join().
+-synchronized void add(AudioStream stream, AudioCodec codec, int dtmfType) {
++synchronized void add(AudioStream stream) {
+     if (!mStreams.containsKey(stream)) {
+         try {
+-            int socket = stream.dup();
++            AudioCodec codec = stream.getCodec();
+             String codecSpec = String.format("%d %s %s", codec.type, codec.rtpmap, codec.fmtp);
+-            nativeAdd(stream.getMode(), socket, stream.getRemoteAddress().getHostAddress(), stream.getRemotePort(), codecSpec, dtmfType);
+-            mStreams.put(stream, socket);
++            int id = nativeAdd(stream.getMode(), stream.getSocket(), stream.getRemoteAddress().getHostAddress(), stream.getRemotePort(), codecSpec, stream.getDtmfType());
++            mStreams.put(stream, id);
+         } catch (NullPointerException e) {
+             throw new IllegalStateException(e);
+         }
+     }
+ }
+\ No newline at end of file

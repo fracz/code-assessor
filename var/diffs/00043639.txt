@@ -1,0 +1,15 @@
+diff --git a/cd3bffca85a69c15aa45d8edd96b674ae4139f22 b/ffd889ffe1518409bf010a0794cd6077ce774967
+index cd3bffca85..ffd889ffe1 100644
+--- a/cd3bffca85a69c15aa45d8edd96b674ae4139f22
++++ b/ffd889ffe1518409bf010a0794cd6077ce774967
+@@ -1,8 +1,8 @@
+ /**
+  * Opens all the available server's databases.
+  */
+ protected void loadDatabases() {
+-    if (!OGlobalConfiguration.SERVER_OPEN_ALL_DATABASES_AT_STARTUP.getValueAsBoolean())
++    if (!getContextConfiguration().getValueAsBoolean(OGlobalConfiguration.SERVER_OPEN_ALL_DATABASES_AT_STARTUP))
+         return;
+     getDatabases().loadAllDatabases();
+ }
+\ No newline at end of file

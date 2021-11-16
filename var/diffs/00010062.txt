@@ -1,0 +1,24 @@
+diff --git a/c4c419e59b1d270ad1e88133773f389e730971f7 b/83b5bd99a1faaae3fb06e198c0fe5b3e28045fa7
+index c4c419e59b..83b5bd99a1 100644
+--- a/c4c419e59b1d270ad1e88133773f389e730971f7
++++ b/83b5bd99a1faaae3fb06e198c0fe5b3e28045fa7
+@@ -1,16 +1,17 @@
+ public static HighlightInfo checkUnreachableStatement(PsiCodeBlock codeBlock) {
+     if (codeBlock == null)
+         return null;
+     // see JLS 14.20 Unreachable Statements
+     try {
+         final ControlFlow controlFlow = getControlFlowNoConstantEvaluate(codeBlock);
+         final PsiElement unreachableStatement = ControlFlowUtil.getUnreachableStatement(controlFlow);
+         if (unreachableStatement != null) {
+-            return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, unreachableStatement, JavaErrorMessages.message("unreachable.statement"));
++            String description = JavaErrorMessages.message("unreachable.statement");
++            return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(unreachableStatement).descriptionAndTooltip(description).create();
+         }
+     } catch (AnalysisCanceledException e) {
+     // incomplete code
+     } catch (IndexNotReadyException ignored) {
+     }
+     return null;
+ }
+\ No newline at end of file

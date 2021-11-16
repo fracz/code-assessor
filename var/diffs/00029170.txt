@@ -1,0 +1,16 @@
+diff --git a/f28a49580fa686985673d4f1bfc6bbcfa539d0bc b/a29d91894657a7752ad90b18f82e98be4dae01e7
+index f28a49580f..a29d918946 100644
+--- a/f28a49580fa686985673d4f1bfc6bbcfa539d0bc
++++ b/a29d91894657a7752ad90b18f82e98be4dae01e7
+@@ -1,8 +1,8 @@
+-private int findNextMarker(byte marker, int from, byte[] data, int length) {
++private int findNextMarker(byte marker, int from, BytesReference data, int length) {
+     for (int i = from; i < length; i++) {
+-        if (data[i] == marker) {
++        if (data.get(i) == marker) {
+             return i;
+         }
+     }
+     return -1;
+ }
+\ No newline at end of file

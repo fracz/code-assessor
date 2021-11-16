@@ -1,0 +1,29 @@
+diff --git a/0b4e4ec5b2e4dc80a00d2b9793e4d7c878c58147 b/cb735546a8e786880f47b335f75453b52de38804
+index 0b4e4ec5b2..cb735546a8 100644
+--- a/0b4e4ec5b2e4dc80a00d2b9793e4d7c878c58147
++++ b/cb735546a8e786880f47b335f75453b52de38804
+@@ -1,18 +1,20 @@
+ @Override
+ public void prepareViewToEnterPool(TaskView tv) {
+     final Task task = tv.getTask();
+     // Report that this tasks's data is no longer being used
+     Recents.getTaskLoader().unloadTaskData(task);
+     // Detach the view from the hierarchy
+     detachViewFromParent(tv);
+     // Update the task views list after removing the task view
+     updateTaskViewsList();
+     // Reset the view properties and view state
+     tv.resetViewProperties();
+-    tv.setFocusedState(false, false, /* animated */
+-    false);
++    tv.setFocusedState(false, false);
+     tv.setClipViewInStack(false);
+     if (mScreenPinningEnabled) {
+-        tv.hideActionButton();
++        tv.hideActionButton(false, /* fadeOut */
++        0, /* duration */
++        false, /* scaleDown */
++        null);
+     }
+ }
+\ No newline at end of file

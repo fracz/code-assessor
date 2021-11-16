@@ -1,0 +1,26 @@
+diff --git a/069531787a95fab6168bad142d578d237c7b4928 b/a671ff53aac4dda853b6f5557fb1c04abd815e8e
+index 069531787a..a671ff53aa 100644
+--- a/069531787a95fab6168bad142d578d237c7b4928
++++ b/a671ff53aac4dda853b6f5557fb1c04abd815e8e
+@@ -1,15 +1,15 @@
+ @Nullable
+-public LowLevelRevisionDetails acceptLine(String s) {
+-    final boolean lineEnd = s.startsWith(ourLineEndMark);
++public GitLogRecord acceptLine(String s) {
++    final boolean lineEnd = s.startsWith(GitLogParser.RECORD_START);
+     if (lineEnd && (!myNotStarted)) {
+         final String line = myBuffer.toString();
+         myBuffer.setLength(0);
+-        myBuffer.append(s.substring(ourLineEndMark.length()));
++        myBuffer.append(s.substring(GitLogParser.RECORD_START.length()));
+         return processResult(line);
+     } else {
+-        myBuffer.append(lineEnd ? s.substring(ourLineEndMark.length()) : s);
+-        myBuffer.append(LINE_DELIMITER);
++        myBuffer.append(lineEnd ? s.substring(GitLogParser.RECORD_START.length()) : s);
++        myBuffer.append("\n");
+     }
+     myNotStarted = false;
+     return null;
+ }
+\ No newline at end of file

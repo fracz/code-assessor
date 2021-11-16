@@ -1,0 +1,19 @@
+diff --git a/e7f9e7eef464738cfa5f17a5d4c931cdb8ecc610 b/7f4bcb5fbb71b875312077e934ba1b420e98c24d
+index e7f9e7eef4..7f4bcb5fbb 100644
+--- a/e7f9e7eef464738cfa5f17a5d4c931cdb8ecc610
++++ b/7f4bcb5fbb71b875312077e934ba1b420e98c24d
+@@ -1,11 +1,7 @@
+ private void detachTrace(Trace trace) {
+-    if (!trace.canSampled()) {
+-        // TODO fix
++    if (trace == null) {
+         return;
+     }
+-    // if (activeTraceTracking) {
+-    // TODO incomplete state checking.
+-    // }
+-    long spanId = trace.getTraceId().getSpanId();
++    long spanId = trace.getId();
+     this.activeTraceRepository.removeActiveTrace(spanId);
+ }
+\ No newline at end of file

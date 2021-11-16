@@ -1,0 +1,31 @@
+diff --git a/bb6bf0f42c8395ea6c8ad9cc270144440b8dfd1f b/ef314f824eb14689088ebb8e07456d9dcecaef5b
+index bb6bf0f42c..ef314f824e 100644
+--- a/bb6bf0f42c8395ea6c8ad9cc270144440b8dfd1f
++++ b/ef314f824eb14689088ebb8e07456d9dcecaef5b
+@@ -1,21 +1,21 @@
+ /**
+- * <!-- begin-user-doc -->
+- * <!-- end-user-doc -->
++ * <!-- begin-user-doc --> <!-- end-user-doc -->
++ *
+  * @generated NOT
+  */
+-public OnOffValue fetchSwitchState() {
++public void fetchSwitchState() {
+     OnOffValue value = OnOffValue.UNDEF;
+     try {
+         int deviceValue = getMbrick().getTinkerforgeDevice().getValue();
+         if ((deviceValue & mask) == mask) {
+             value = OnOffValue.ON;
+         } else {
+             value = OnOffValue.OFF;
+         }
++        setSwitchState(value);
+     } catch (TimeoutException e) {
+         TinkerforgeErrorHandler.handleError(this, TinkerforgeErrorHandler.TF_TIMEOUT_EXCEPTION, e);
+     } catch (NotConnectedException e) {
+         TinkerforgeErrorHandler.handleError(this, TinkerforgeErrorHandler.TF_NOT_CONNECTION_EXCEPTION, e);
+     }
+-    return value;
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/6966f7e9d2416be871089b4c8d179852be5d3484 b/ab9b446620df6d8035d0a75c42a7cf7b2fc19f47
+index 6966f7e9d2..ab9b446620 100644
+--- a/6966f7e9d2416be871089b4c8d179852be5d3484
++++ b/ab9b446620df6d8035d0a75c42a7cf7b2fc19f47
+@@ -1,10 +1,12 @@
+ public void testMissingInTheMiddle() throws Exception {
+-    doTest(new TheTest("Unexpected NONE_APPLICABLE at 120 to 121", "Missing TYPE_MISMATCH at 159 to 167") {
++    final DiagnosticData noneApplicable = diagnostics.get(4);
++    final DiagnosticData typeMismatch3 = diagnostics.get(5);
++    doTest(new TheTest(unexpected(noneApplicable), missing(typeMismatch3)) {
+
+         @Override
+         protected void makeTestData(List<Diagnostic> diagnostics, List<CheckerTestUtil.DiagnosedRange> diagnosedRanges) {
+-            diagnosedRanges.remove(4);
+-            diagnostics.remove(diagnostics.size() - 3);
++            diagnosedRanges.remove(noneApplicable.rangeIndex);
++            diagnostics.remove(typeMismatch3.index);
+         }
+     });
+ }
+\ No newline at end of file

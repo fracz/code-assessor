@@ -1,0 +1,12 @@
+diff --git a/024f942cc059d5b68227e4a9dea8bea8c0c229d8 b/0e73597edf347f891bf5815c89978af4f0a62763
+index 024f942cc0..0e73597edf 100644
+--- a/024f942cc059d5b68227e4a9dea8bea8c0c229d8
++++ b/0e73597edf347f891bf5815c89978af4f0a62763
+@@ -1,5 +1,5 @@
+ @Test
+ public void missingRequestParam() throws Exception {
+     Mono<Object> mono = this.resolver.resolveArgument(this.paramNamedStringArray, this.bindingContext, this.exchange);
+-    TestSubscriber.subscribe(mono).assertError(ServerWebInputException.class);
++    ScriptedSubscriber.create().expectNextCount(0).expectError(ServerWebInputException.class).verify(mono);
+ }
+\ No newline at end of file

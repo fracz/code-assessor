@@ -1,0 +1,22 @@
+diff --git a/c0317954a4873490210df88041f219d89f0082bb b/f361e2a49b4864a6853559dc5fb59f81c397ef68
+index c0317954a4..f361e2a49b 100644
+--- a/c0317954a4873490210df88041f219d89f0082bb
++++ b/f361e2a49b4864a6853559dc5fb59f81c397ef68
+@@ -1,15 +1,15 @@
+ /**
+  * Test that if a custom initializer throws an exception, it's handled correctly
+  */
+ @Test
+ public void testInitMethodThrowsException() {
+-    XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("initializers.xml", getClass()));
++    XmlBeanFactory xbf = new XmlBeanFactory(INITIALIZERS_CONTEXT);
+     try {
+         xbf.getBean("init-method2");
+         fail();
+     } catch (BeanCreationException ex) {
+         assertTrue(ex.getResourceDescription().indexOf("initializers.xml") != -1);
+         assertEquals("init-method2", ex.getBeanName());
+         assertTrue(ex.getCause() instanceof ServletException);
+     }
+ }
+\ No newline at end of file

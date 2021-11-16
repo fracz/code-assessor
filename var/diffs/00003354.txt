@@ -1,0 +1,24 @@
+diff --git a/64b61950a8af0dcdcab4434fc0a77a148412e64d b/a0e515809037a84db0c75b97f6b595265270bd94
+index 64b61950a8..a0e5158090 100644
+--- a/64b61950a8af0dcdcab4434fc0a77a148412e64d
++++ b/a0e515809037a84db0c75b97f6b595265270bd94
+@@ -1,11 +1,11 @@
+ public static void highlightOccurrences(Project project, Editor editor, PsiElement[] elements) {
++    if (editor == null)
++        return;
+     ArrayList<RangeHighlighter> highlighters = new ArrayList<RangeHighlighter>();
+-    if (editor != null) {
+-        HighlightManager highlightManager = HighlightManager.getInstance(project);
+-        EditorColorsManager colorsManager = EditorColorsManager.getInstance();
+-        TextAttributes attributes = colorsManager.getGlobalScheme().getAttributes(EditorColors.SEARCH_RESULT_ATTRIBUTES);
+-        if (elements.length > 0) {
+-            highlightManager.addOccurrenceHighlights(editor, elements, attributes, false, highlighters);
+-        }
++    HighlightManager highlightManager = HighlightManager.getInstance(project);
++    EditorColorsManager colorsManager = EditorColorsManager.getInstance();
++    TextAttributes attributes = colorsManager.getGlobalScheme().getAttributes(EditorColors.SEARCH_RESULT_ATTRIBUTES);
++    if (elements.length > 0) {
++        highlightManager.addOccurrenceHighlights(editor, elements, attributes, false, highlighters);
+     }
+ }
+\ No newline at end of file

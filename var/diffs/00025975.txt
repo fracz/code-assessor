@@ -1,0 +1,27 @@
+diff --git a/5d24bc2cc6b3df3a2026c267943ac447874303e1 b/5e769e29ebea8b71cb0939890dd6cbe0aaefe4ca
+index 5d24bc2cc6..5e769e29eb 100644
+--- a/5d24bc2cc6b3df3a2026c267943ac447874303e1
++++ b/5e769e29ebea8b71cb0939890dd6cbe0aaefe4ca
+@@ -1,16 +1,18 @@
+ public static void runStandalone(Factory factory) {
+     try {
+         // Note that this thread isn't going to be doing anything else,
+         // so rather than spawning another thread, we will just call
+         // run() in this thread.
+-        ZooKeeperServer zk = factory.create();
++        ServerStats.registerAsConcrete();
++        ZooKeeperServer zk = factory.createServer();
+         zk.startup();
+-        NIOServerCnxn.Factory t = new NIOServerCnxn.Factory(ServerConfig.getClientPort());
++        NIOServerCnxn.Factory t = factory.createConnectionFactory();
+         t.setZooKeeperServer(zk);
+         t.join();
+-        zk.shutdown();
++        if (zk.isRunning())
++            zk.shutdown();
+     } catch (Exception e) {
+         ZooLog.logException(e);
+     }
+     System.exit(0);
+ }
+\ No newline at end of file

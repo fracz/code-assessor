@@ -1,0 +1,17 @@
+diff --git a/d821764f02af7a75b63451286b4b0cbfdcef4fe3 b/1b8240c5aa8e0194cec0ea28fd734bf7f75eb4c6
+index d821764f02..1b8240c5aa 100644
+--- a/d821764f02af7a75b63451286b4b0cbfdcef4fe3
++++ b/1b8240c5aa8e0194cec0ea28fd734bf7f75eb4c6
+@@ -1,6 +1,10 @@
+ /**
+  * All the validation failures, including index level validation failures.
+  */
+ public List<String> getAllValidationFailures() {
+-    return allValidationFailures();
++    List<String> allFailures = newArrayList(getValidationFailures());
++    for (ClusterIndexHealth indexHealth : indices.values()) {
++        allFailures.addAll(indexHealth.getValidationFailures());
++    }
++    return allFailures;
+ }
+\ No newline at end of file

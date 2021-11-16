@@ -1,0 +1,13 @@
+diff --git a/afc2822e41cd65cec6a7419382eb13cb00ffb4d1 b/e38d5cc583286710ed91e87f3b227b2b67df3277
+index afc2822e41..e38d5cc583 100644
+--- a/afc2822e41cd65cec6a7419382eb13cb00ffb4d1
++++ b/e38d5cc583286710ed91e87f3b227b2b67df3277
+@@ -1,4 +1,5 @@
++@Test
+ public void testIntroductionDelegation() {
+-    ((Counter) noMethodsBean).increment();
+-    assertEquals("Delegate's counter should be updated", 1, counter.count);
++    ((ICounter) noMethodsBean).increment();
++    assertEquals("Delegate's counter should be updated", 1, counter.getCount());
+ }
+\ No newline at end of file

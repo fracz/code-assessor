@@ -1,0 +1,17 @@
+diff --git a/2989e3fd35a31811d2db075a83e6b1a5dc8d7362 b/06d9eb0bc18df93ce90f9220c5771ca6aea86da0
+index 2989e3fd35..06d9eb0bc1 100644
+--- a/2989e3fd35a31811d2db075a83e6b1a5dc8d7362
++++ b/06d9eb0bc18df93ce90f9220c5771ca6aea86da0
+@@ -1,9 +1,10 @@
+ @Nullable
+ public static HighlightInfo checkCyclicMemberType(PsiTypeElement typeElement, PsiClass aClass) {
+     LOG.assertTrue(aClass.isAnnotationType());
+     PsiType type = typeElement.getType();
+     if (type instanceof PsiClassType && ((PsiClassType) type).resolve() == aClass) {
+-        return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, typeElement, JavaErrorMessages.message("annotation.cyclic.element.type"));
++        String description = JavaErrorMessages.message("annotation.cyclic.element.type");
++        return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(typeElement).descriptionAndTooltip(description).create();
+     }
+     return null;
+ }
+\ No newline at end of file

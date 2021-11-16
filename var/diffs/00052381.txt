@@ -1,0 +1,18 @@
+diff --git a/8607b555f32cea4b3054f159ed844575fd323f6f b/7114c497f46c5f1fb11632ac103f748910dcf8d7
+index 8607b555f3..7114c497f4 100644
+--- a/8607b555f32cea4b3054f159ed844575fd323f6f
++++ b/7114c497f46c5f1fb11632ac103f748910dcf8d7
+@@ -1,11 +1,11 @@
+ @Override
+ public final void setPoolable(final boolean poolable) throws SQLException {
+     this.poolable = poolable;
+     if (getRoutedStatements().isEmpty()) {
+-        recordMethodInvocation(Statement.class, "setPoolable", new Class[] { boolean.class }, new Object[] { poolable });
++        recordMethodInvocation(targetClass, "setPoolable", new Class[] { boolean.class }, new Object[] { poolable });
+         return;
+     }
+     for (Statement each : getRoutedStatements()) {
+         each.setPoolable(poolable);
+     }
+ }
+\ No newline at end of file

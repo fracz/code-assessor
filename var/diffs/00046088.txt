@@ -1,0 +1,13 @@
+diff --git a/7901e9748a9963d34b649154ea300315354ce3f8 b/9da63e67b0407ea4cd29997c1fd9bc014e71876e
+index 7901e9748a..9da63e67b0 100644
+--- a/7901e9748a9963d34b649154ea300315354ce3f8
++++ b/9da63e67b0407ea4cd29997c1fd9bc014e71876e
+@@ -1,5 +1,6 @@
+ @Test
+ public void testBindDifferentLiteralParameters() throws Exception {
+-    Signature function = functionSignature().returnType("boolean").argumentTypes("decimal(p,s)", "decimal(p,s)").literalParameters("p", "s").build();
++    TypeSignature argType = parseTypeSignature("decimal(p,s)", ImmutableSet.of("p", "s"));
++    Signature function = functionSignature().returnType(parseTypeSignature(StandardTypes.BOOLEAN)).argumentTypes(argType, argType).build();
+     assertThat(function).boundTo("decimal(2,1)", "decimal(3,1)").fails();
+ }
+\ No newline at end of file

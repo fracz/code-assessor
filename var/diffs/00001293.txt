@@ -1,0 +1,12 @@
+diff --git a/595ab06fde342bcbece92ea780d51154542893f6 b/3a33f2dcd56c7ef7bea5d37a4df4e63bec324765
+index 595ab06fde..3a33f2dcd5 100644
+--- a/595ab06fde342bcbece92ea780d51154542893f6
++++ b/3a33f2dcd56c7ef7bea5d37a4df4e63bec324765
+@@ -1,4 +1,4 @@
+ @JsonCreator
+-public static RestPermission create(@JsonProperty("value") String value, @JsonProperty("description") String description) {
+-    return builder().value(value).description(description).build();
++public static RestPermission create(@JsonProperty("permission") @NotBlank String permission, @JsonProperty("description") String description) {
++    return new AutoValue_RestPermission(permission, description);
+ }
+\ No newline at end of file

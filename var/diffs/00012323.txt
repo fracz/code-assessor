@@ -1,0 +1,12 @@
+diff --git a/eb497dc02ac8f47276181c2cad673117cc382171 b/8481fe482fd9a08b35794d801587b193b4b460e6
+index eb497dc02a..8481fe482f 100644
+--- a/eb497dc02ac8f47276181c2cad673117cc382171
++++ b/8481fe482fd9a08b35794d801587b193b4b460e6
+@@ -1,3 +1,4 @@
+-public InspectionGadgetsFix buildFix(PsiElement location) {
+-    return new StringConstructorFix((PsiNewExpression) location);
++public InspectionGadgetsFix buildFix(Object... infos) {
++    final Boolean noArguments = (Boolean) infos[0];
++    return new StringConstructorFix(noArguments.booleanValue());
+ }
+\ No newline at end of file

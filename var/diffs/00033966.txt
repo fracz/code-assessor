@@ -1,0 +1,19 @@
+diff --git a/cd1b44c4d392b3d9170d600df4031aea1e3183ac b/b97fd55b2463acbee8986d556e414d331d814acf
+index cd1b44c4d3..b97fd55b24 100644
+--- a/cd1b44c4d392b3d9170d600df4031aea1e3183ac
++++ b/b97fd55b2463acbee8986d556e414d331d814acf
+@@ -1,11 +1,11 @@
+ /**
+  * Initialize the object.
+  */
+ private void init() {
+     dim = mu.length;
+-    CholeskyDecomposition cholesky = new CholeskyDecomposition(sigma);
+-    sigmaInv = cholesky.inverse().array();
++    Cholesky cholesky = sigma.cholesky(false);
++    sigmaInv = cholesky.inverse();
+     sigmaDet = cholesky.det();
+     sigmaL = cholesky.getL();
+     pdfConstant = (dim * Math.log(2 * Math.PI) + Math.log(sigmaDet)) / 2.0;
+ }
+\ No newline at end of file

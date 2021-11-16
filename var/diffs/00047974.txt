@@ -1,0 +1,19 @@
+diff --git a/71c9beee263525b0190106436c078dc9367db86d b/f0c9827de9fcf351e3b67c2cb17cbcdd8279b482
+index 71c9beee26..f0c9827de9 100644
+--- a/71c9beee263525b0190106436c078dc9367db86d
++++ b/f0c9827de9fcf351e3b67c2cb17cbcdd8279b482
+@@ -1,11 +1,8 @@
+ /**
+  * {@inheritDoc}
+  */
+ @Override
+ public String getAuthorizationUrl(OAuth1RequestToken requestToken) {
+-    String authUrl = String.format(AUTHORIZE_URL, requestToken.getToken());
+-    if (permString != null) {
+-        authUrl += "&perms=" + permString;
+-    }
+-    return authUrl;
++    final String authUrl = String.format(AUTHORIZE_URL, requestToken.getToken());
++    return permString == null ? authUrl : authUrl + "&perms=" + permString;
+ }
+\ No newline at end of file

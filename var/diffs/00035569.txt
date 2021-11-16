@@ -1,0 +1,26 @@
+diff --git a/bf46585033ef1a937a496da9165dd2fb23a09d2f b/05fc72e9748a0e43af6d8009c43b03de703e9cd2
+index bf46585033..05fc72e974 100644
+--- a/bf46585033ef1a937a496da9165dd2fb23a09d2f
++++ b/05fc72e9748a0e43af6d8009c43b03de703e9cd2
+@@ -1,14 +1,14 @@
+ @Override
+ public void onPageFinished(WebView view, String url) {
+     super.onPageFinished(view, url);
+-    if (toLoadJs != null) {
+-        BridgeUtil.webViewLoadLocalJs(view, toLoadJs);
++    if (BridgeWebView.toLoadJs != null) {
++        BridgeUtil.webViewLoadLocalJs(view, BridgeWebView.toLoadJs);
+     }
+     //
+-    if (startupMessage != null) {
+-        for (Message m : startupMessage) {
+-            dispatchMessage(m);
++    if (webView.getStartupMessage() != null) {
++        for (Message m : webView.getStartupMessage()) {
++            webView.dispatchMessage(m);
+         }
+-        startupMessage = null;
++        webView.setStartupMessage(null);
+     }
+ }
+\ No newline at end of file

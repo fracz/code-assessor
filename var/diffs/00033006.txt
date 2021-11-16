@@ -1,0 +1,15 @@
+diff --git a/6d0afe9af106d3b2aa31fe7698050cb819e66067 b/92a11ded100c310b581dda4c7af2ebac9df40950
+index 6d0afe9af1..92a11ded10 100644
+--- a/6d0afe9af106d3b2aa31fe7698050cb819e66067
++++ b/92a11ded100c310b581dda4c7af2ebac9df40950
+@@ -1,6 +1,8 @@
+ /**
+  * Initialize this service using the AST returned by the parser.
+  */
+ public static void initialize() {
+-    instance = new NameTable(Options.getPackagePrefixes(), Options.getMethodMappings(), new PathClassLoader(Options.getClassPathEntries()));
++    List<String> paths = Options.getBootClasspath();
++    paths.addAll(Options.getClassPathEntries());
++    instance = new NameTable(Options.getPackagePrefixes(), Options.getMethodMappings(), new PathClassLoader(paths));
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/b215fc8e79ca39aa2184aaf8b37bbe12ae6572aa b/b8ef948969be024a4aae871dba22cb50348c4f21
+index b215fc8e79..b8ef948969 100644
+--- a/b215fc8e79ca39aa2184aaf8b37bbe12ae6572aa
++++ b/b8ef948969be024a4aae871dba22cb50348c4f21
+@@ -1,4 +1,10 @@
+ @Override
+-public Publisher<Long> rank(V o) {
+-    return commandExecutor.readReactive(getName(), codec, RedisCommands.ZRANK, getName(), o);
++public Publisher<Integer> rank(final V o) {
++    return reactive(new Supplier<RFuture<Integer>>() {
++
++        @Override
++        public RFuture<Integer> get() {
++            return instance.rankAsync(o);
++        }
++    });
+ }
+\ No newline at end of file

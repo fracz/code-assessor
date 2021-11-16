@@ -1,0 +1,16 @@
+diff --git a/58da620152ebcd9b6bdd60643d7c89e96c2d0f16 b/30febae513a0950ea21454da66b47f840622ad3c
+index 58da620152..30febae513 100644
+--- a/58da620152ebcd9b6bdd60643d7c89e96c2d0f16
++++ b/30febae513a0950ea21454da66b47f840622ad3c
+@@ -1,8 +1,8 @@
+ @Test
+ public void emptyBodyWithSingle() throws Exception {
+     ResolvableType type = forClassWithGenerics(Single.class, String.class);
+     Single<String> single = resolveValueWithEmptyBody(type, true);
+-    TestSubscriber.subscribe(RxReactiveStreams.toPublisher(single)).assertNoValues().assertError(ServerWebInputException.class);
++    ScriptedSubscriber.<String>create().expectNextCount(0).expectError(ServerWebInputException.class).verify(RxReactiveStreams.toPublisher(single));
+     single = resolveValueWithEmptyBody(type, false);
+-    TestSubscriber.subscribe(RxReactiveStreams.toPublisher(single)).assertNoValues().assertError(ServerWebInputException.class);
++    ScriptedSubscriber.<String>create().expectNextCount(0).expectError(ServerWebInputException.class).verify(RxReactiveStreams.toPublisher(single));
+ }
+\ No newline at end of file

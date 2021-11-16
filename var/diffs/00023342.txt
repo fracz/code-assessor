@@ -1,0 +1,16 @@
+diff --git a/b0bd18e47c7bf71dc2cc959bb6946b7b38812e02 b/1bcb719f8a81dd4d8b06b34979bea952888165f3
+index b0bd18e47c..1bcb719f8a 100644
+--- a/b0bd18e47c7bf71dc2cc959bb6946b7b38812e02
++++ b/1bcb719f8a81dd4d8b06b34979bea952888165f3
+@@ -1,8 +1,9 @@
+-public void refreshPackageInfoAndSave(ShortcutService s) {
++public void refreshPackageInfoAndSave() {
+     if (mPackageInfo.isShadow()) {
+         // Don't refresh for shadow user.
+         return;
+     }
++    final ShortcutService s = mShortcutUser.mService;
+     mPackageInfo.refresh(s, this);
+     s.scheduleSaveUser(getOwnerUserId());
+ }
+\ No newline at end of file

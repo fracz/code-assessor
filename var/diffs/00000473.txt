@@ -1,0 +1,16 @@
+diff --git a/024d0fd944902b0f5a6fc34d952d3ac60c382059 b/3c96d066b9a069908cad5c30882c875e1b1e67af
+index 024d0fd944..3c96d066b9 100644
+--- a/024d0fd944902b0f5a6fc34d952d3ac60c382059
++++ b/3c96d066b9a069908cad5c30882c875e1b1e67af
+@@ -1,8 +1,9 @@
+ @Override
+ protected void initChannel(SocketChannel ch) throws Exception {
+     ChannelPipeline pipeline = ch.pipeline();
+     pipeline.addLast("nioChunkedWriter", new ChunkedWriteHandler());
+-    pipeline.addLast("blockRequestDecoder", new BlockRequest.Decoder());
++    pipeline.addLast("frameDecoder", RPCMessage.createFrameDecoder());
++    pipeline.addLast("RPCMessageDecoder", new RPCMessageDecoder());
+     pipeline.addLast("blockResponseEncoder", new BlockResponse.Encoder(mTachyonConf));
+     pipeline.addLast("dataServerHandler", new DataServerHandler(mLocker));
+ }
+\ No newline at end of file

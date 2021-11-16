@@ -1,0 +1,22 @@
+diff --git a/938468cd792dd1d9d8db65df1872725a23b20f4c b/9997caed1ce3fabb9dfa60b5f6854c70a090ab30
+index 938468cd79..9997caed1c 100644
+--- a/938468cd792dd1d9d8db65df1872725a23b20f4c
++++ b/9997caed1ce3fabb9dfa60b5f6854c70a090ab30
+@@ -1,9 +1,12 @@
+ /**
+- * Sub-classes can use this method to look up a MediaType by key.
+- * @param key the key converted to lower case
+- * @return a MediaType or {@code null}
++ * Get the MediaType for the given key.
+  */
+ @Nullable
+ protected MediaType getMediaType(String key) {
+-    return this.mediaTypeLookup.get(key.toLowerCase(Locale.ENGLISH));
++    key = key.toLowerCase(Locale.ENGLISH);
++    MediaType mediaType = this.mediaTypeLookup.get(key);
++    if (mediaType == null) {
++        mediaType = MediaTypeFactory.getMediaType("filename." + key).orElse(null);
++    }
++    return mediaType;
+ }
+\ No newline at end of file

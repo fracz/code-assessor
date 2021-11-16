@@ -1,0 +1,13 @@
+diff --git a/fdaaa3b2385798278b582a7ced11cff7af4ca742 b/46c891793f17b3dc8750bd1bf3f86e0cd95f45d3
+index fdaaa3b238..46c891793f 100644
+--- a/fdaaa3b2385798278b582a7ced11cff7af4ca742
++++ b/46c891793f17b3dc8750bd1bf3f86e0cd95f45d3
+@@ -1,5 +1,4 @@
+ @Nullable
+-public static VirtualFile getLibsDir(@NotNull Module module) {
+-    AndroidFacet facet = AndroidFacet.getInstance(module);
+-    return facet == null ? null : getFileByRelativeModulePath(module, facet.getConfiguration().LIBS_FOLDER_RELATIVE_PATH, false);
++public static VirtualFile getLibsDir(@NotNull AndroidFacet facet) {
++    return getFileByRelativeModulePath(facet.getModule(), facet.getConfiguration().LIBS_FOLDER_RELATIVE_PATH, false);
+ }
+\ No newline at end of file

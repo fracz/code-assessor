@@ -1,0 +1,40 @@
+diff --git a/27c5b1ef6f53e7ee4400752597413fd3d5166fbc b/8e40361dbcba4996fd3f29235cd7c403dfa1507f
+index 27c5b1ef6f..8e40361dbc 100644
+--- a/27c5b1ef6f53e7ee4400752597413fd3d5166fbc
++++ b/8e40361dbcba4996fd3f29235cd7c403dfa1507f
+@@ -1,24 +1,19 @@
+ private MeasuredNode negate() {
+     this.change();
+-    int complementOperator;
+     switch(node.getType()) {
+-        default:
+-            return this.addNot();
+-        // Otherwise a binary operator with a complement.
+         case Token.EQ:
+-            complementOperator = Token.NE;
+-            break;
++            node.setType(Token.NE);
++            return this;
+         case Token.NE:
+-            complementOperator = Token.EQ;
+-            break;
++            node.setType(Token.EQ);
++            return this;
+         case Token.SHEQ:
+-            complementOperator = Token.SHNE;
+-            break;
++            node.setType(Token.SHNE);
++            return this;
+         case Token.SHNE:
+-            complementOperator = Token.SHEQ;
+-            break;
++            node.setType(Token.SHEQ);
++            return this;
++        default:
++            return this.addNot();
+     }
+-    // Clone entire tree and just change operator.
+-    node.setType(complementOperator);
+-    return this;
+ }
+\ No newline at end of file

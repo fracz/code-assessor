@@ -1,0 +1,24 @@
+diff --git a/3235258b53544419be4c6a8ac91bebc74db44f31 b/ac86361dd64a1a017aea7abaefcf88bd86db4a6a
+index 3235258b53..ac86361dd6 100644
+--- a/3235258b53544419be4c6a8ac91bebc74db44f31
++++ b/ac86361dd64a1a017aea7abaefcf88bd86db4a6a
+@@ -1,17 +1,17 @@
+ public static void pushEntry(Entry entry) {
+     entry.reset();
+     if (entry.bytes().bytes().length() > BYTES_LIMIT) {
+         return;
+     }
+     Queue<Entry> ref = cache.get();
+     if (ref == null) {
+-        ref = new LinkedTransferQueue<Entry>();
++        ref = ConcurrentCollections.newQueue();
+         counter.set(0);
+         cache.set(ref);
+     }
+     if (counter.incrementAndGet() > COUNT_LIMIT) {
+         counter.decrementAndGet();
+     } else {
+         ref.add(entry);
+     }
+ }
+\ No newline at end of file

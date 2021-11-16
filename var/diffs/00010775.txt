@@ -1,0 +1,16 @@
+diff --git a/2d1e84e482396302603f5b95b75355f1341a8988 b/345403c7b36f4ce3c654cae27d45e3e5c5ccb49e
+index 2d1e84e482..345403c7b3 100644
+--- a/2d1e84e482396302603f5b95b75355f1341a8988
++++ b/345403c7b36f4ce3c654cae27d45e3e5c5ccb49e
+@@ -1,9 +1,9 @@
+ @Override
+-public void apply(Editor editor, GroovySmartEnterProcessor processor, PsiElement psiElement) throws IncorrectOperationException {
++public void apply(@NotNull Editor editor, @NotNull GroovySmartEnterProcessor processor, @NotNull PsiElement psiElement) {
+     if (psiElement.getParent() instanceof GrListOrMap) {
+         final PsiElement next = PsiUtil.skipWhitespacesAndComments(psiElement.getNextSibling(), true);
+         if (next != null && !GroovyTokenTypes.mCOMMA.equals(next.getNode().getElementType())) {
+             editor.getDocument().insertString(psiElement.getTextRange().getEndOffset(), ",");
+         }
+     }
+ }
+\ No newline at end of file

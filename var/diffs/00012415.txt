@@ -1,0 +1,20 @@
+diff --git a/47378ca24a024a371f02612206ccb242db1b673e b/d3efa776876e173e3ed1ebb9ad494a2bccdfe552
+index 47378ca24a..d3efa77687 100644
+--- a/47378ca24a024a371f02612206ccb242db1b673e
++++ b/d3efa776876e173e3ed1ebb9ad494a2bccdfe552
+@@ -1,12 +1,12 @@
+ @Override
+-public boolean ensureRunnerConfigured(@Nullable Module module, String confName, final Project project) throws ExecutionException {
++public boolean ensureRunnerConfigured(@Nullable Module module, RunProfile profile, final Project project) throws ExecutionException {
+     if (module == null) {
+         throw new ExecutionException("Module is not specified");
+     }
+     if (LibrariesUtil.getGroovyHomePath(module) == null) {
+-        Messages.showErrorDialog(module.getProject(), ExecutionBundle.message("error.running.configuration.with.error.error.message", confName, "Groovy is not configured"), ExecutionBundle.message("run.error.message.title"));
++        ExecutionUtil.handleExecutionError(project, profile, new ExecutionException("Groovy is not configured"));
+         ModulesConfigurator.showDialog(module.getProject(), module.getName(), ClasspathEditor.NAME, false);
+         return false;
+     }
+     return true;
+ }
+\ No newline at end of file

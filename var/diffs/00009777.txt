@@ -1,0 +1,15 @@
+diff --git a/9eae62f142cd2efed0eb412681f96fbb5beeae55 b/13875f712779c350adda446aeb9f79f1db82fe8a
+index 9eae62f142..13875f7127 100644
+--- a/9eae62f142cd2efed0eb412681f96fbb5beeae55
++++ b/13875f712779c350adda446aeb9f79f1db82fe8a
+@@ -1,7 +1,6 @@
+ public void actionPerformed(AnActionEvent e) {
+-    Project project = e.getData(PlatformDataKeys.PROJECT);
+-    String actionId = getGoalActionId(e, project);
++    String actionId = getGoalActionId(e);
+     if (actionId != null) {
+-        new EditKeymapsDialog(project, actionId).show();
++        new EditKeymapsDialog(getProject(e), actionId).show();
+     }
+ }
+\ No newline at end of file

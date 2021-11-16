@@ -1,0 +1,16 @@
+diff --git a/f2e783e485c0874b1769d9e4ba0d931fe774c7c7 b/dce63d9c9a3ec80ec9c54a39f296d0bc3ddc722b
+index f2e783e485..dce63d9c9a 100644
+--- a/f2e783e485c0874b1769d9e4ba0d931fe774c7c7
++++ b/dce63d9c9a3ec80ec9c54a39f296d0bc3ddc722b
+@@ -1,9 +1,9 @@
+ @Test
+ public void testNonRedirectedRequestsAreServedByFirstClient() throws Exception {
+     when(factory.create(Matchers.<String>anyVararg())).thenReturn(sourceClient);
+-    when(sourceClient.getApplications()).thenReturn(EurekaHttpResponse.responseWith(200, new Applications()));
++    when(sourceClient.getApplications()).thenReturn(anEurekaHttpResponse(200, new Applications()).type(MediaType.APPLICATION_JSON_TYPE).build());
+     RedirectingEurekaHttpClient httpClient = new RedirectingEurekaHttpClient(SERVICE_URL, factory, dnsService);
+     httpClient.getApplications();
+     verify(factory, times(1)).create(Matchers.<String>anyVararg());
+     verify(sourceClient, times(1)).getApplications();
+ }
+\ No newline at end of file

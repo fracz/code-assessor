@@ -1,0 +1,14 @@
+diff --git a/1db168ee7efd914386a938b1d874b85c709f346a b/b4e22856d898a0ac8cb506bce60a370c66d6de4e
+index 1db168ee7e..b4e22856d8 100644
+--- a/1db168ee7efd914386a938b1d874b85c709f346a
++++ b/b4e22856d898a0ac8cb506bce60a370c66d6de4e
+@@ -1,6 +1,5 @@
+ @Override
+ public void clearBatch() throws SQLException {
+-    for (PreparedStatement each : routedStatements) {
+-        each.clearBatch();
+-    }
++    Preconditions.checkArgument(1 == routedStatements.size(), "Cannot support clearBatch for DDL");
++    routedStatements.iterator().next().clearBatch();
+ }
+\ No newline at end of file

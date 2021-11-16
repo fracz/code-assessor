@@ -1,0 +1,36 @@
+diff --git a/085008c6fd075d6f82b586590837160fa2299fc5 b/407024d2637ae8c2b1eda7012489ef23dc54c967
+index 085008c6fd..407024d263 100644
+--- a/085008c6fd075d6f82b586590837160fa2299fc5
++++ b/407024d2637ae8c2b1eda7012489ef23dc54c967
+@@ -1,8 +1,27 @@
+ @Nullable
+ @Override
+ public Object[] getChildren(Object element) {
+-    if (element instanceof DBDAttributeBinding) {
+-        ((DBDAttributeBinding) element).getEntityAttribute();
+-    }
++    /*
++            if (!(element instanceof DBDAttributeBinding)) {
++                final DBSAttributeBase attribute = ((DBDAttributeBinding) element).getAttribute();
++                try {
++                    DBeaverUI.runInProgressService(new DBRRunnableWithProgress() {
++                        @Override
++                        public void run(DBRProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
++                            try {
++                                DBSDataType dataType = DBUtils.resolveDataType(monitor, getDataSource(), attribute.getTypeName());
++                                System.out.println(dataType);
++                            } catch (DBException e) {
++                                throw new InvocationTargetException(e);
++                            }
++                        }
++                    });
++                } catch (InvocationTargetException e) {
++                    e.printStackTrace();
++                } catch (InterruptedException e) {
++                    e.printStackTrace();
++                }
++            }
++*/
+     return null;
+ }
+\ No newline at end of file

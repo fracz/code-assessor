@@ -1,0 +1,13 @@
+diff --git a/9f678ed80c01f4186e1e5f2bd39ee3c099de15a0 b/06bf96b687bd95c716bc43412bf6c34c47cb5c28
+index 9f678ed80c..06bf96b687 100644
+--- a/9f678ed80c01f4186e1e5f2bd39ee3c099de15a0
++++ b/06bf96b687bd95c716bc43412bf6c34c47cb5c28
+@@ -1,6 +1,6 @@
+ @Test
+ public void testProxyNotSerializableBecauseOfAdvice() throws Exception {
+-    BeanFactory bf = new XmlBeanFactory(new ClassPathResource("serializationTests.xml", getClass()));
++    BeanFactory bf = new XmlBeanFactory(new ClassPathResource(SERIALIZATION_CONTEXT, CLASS));
+     Person p = (Person) bf.getBean("interceptorNotSerializableSingleton");
+     assertFalse("Not serializable because an interceptor isn't serializable", SerializationTestUtils.isSerializable(p));
+ }
+\ No newline at end of file

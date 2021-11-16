@@ -1,0 +1,16 @@
+diff --git a/05f13f8ae4321128da85dfdc37404a722d1002b3 b/a40639acebde7dfc1d73715b5eabba1a34178c87
+index 05f13f8ae4..a40639aceb 100644
+--- a/05f13f8ae4321128da85dfdc37404a722d1002b3
++++ b/a40639acebde7dfc1d73715b5eabba1a34178c87
+@@ -1,6 +1,9 @@
+ /**
+  * a Unix command to get the current user's groups list
+  */
+ public static String[] getGroupsCommand() {
+-    return (WINDOWS) ? new String[] { "cmd", "/c", "groups" } : new String[] { "bash", "-c", "groups" };
++    if (WINDOWS) {
++        throw new UnsupportedOperationException("Getting user groups is not supported on Windows");
++    }
++    return new String[] { "bash", "-c", "groups" };
+ }
+\ No newline at end of file

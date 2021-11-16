@@ -1,0 +1,18 @@
+diff --git a/6047d5fe80e3dc9e3022c29adc3cb1148b708446 b/c059ea05e7a72596a056ff2f74e717f5e76d98f8
+index 6047d5fe80..c059ea05e7 100644
+--- a/6047d5fe80e3dc9e3022c29adc3cb1148b708446
++++ b/c059ea05e7a72596a056ff2f74e717f5e76d98f8
+@@ -1,10 +1,10 @@
+ @Contract("null, _ -> false")
+-static boolean isOptionalGetCall(PsiElement element, PsiVariable variable) {
++static boolean isOptionalGetCall(PsiElement element, @NotNull PsiReferenceExpression optionalRef) {
+     if (!(element instanceof PsiMethodCallExpression))
+         return false;
+     PsiMethodCallExpression call = (PsiMethodCallExpression) element;
+     if (call.getArgumentList().getExpressions().length != 0)
+         return false;
+     PsiReferenceExpression methodExpression = call.getMethodExpression();
+-    return "get".equals(methodExpression.getReferenceName()) && ExpressionUtils.isReferenceTo(methodExpression.getQualifierExpression(), variable);
++    return "get".equals(methodExpression.getReferenceName()) && areElementsEquivalent(ExpressionUtils.getQualifierOrThis(methodExpression), optionalRef);
+ }
+\ No newline at end of file

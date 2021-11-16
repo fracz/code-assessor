@@ -1,0 +1,25 @@
+diff --git a/556081af62a6067537a49b19c3487c7050ed70d6 b/ab278a382e8c111aa046c4aabcebf2d230d95d12
+index 556081af62..ab278a382e 100644
+--- a/556081af62a6067537a49b19c3487c7050ed70d6
++++ b/ab278a382e8c111aa046c4aabcebf2d230d95d12
+@@ -1,17 +1,17 @@
+ @Override
+ public SkyValue compute(SkyKey skyKey, Environment env) throws FileStateFunctionException, InterruptedException {
+     RootedPath rootedPath = (RootedPath) skyKey.argument();
+     try {
+         externalFilesHelper.maybeHandleExternalFile(rootedPath, env);
+         if (env.valuesMissing()) {
+             return null;
+         }
+         return FileStateValue.create(rootedPath, tsgm.get());
+-    } catch (FileOutsidePackageRootsException e) {
+-        throw new FileStateFunctionException(e);
++    } catch (ExternalFilesHelper.NonexistentImmutableExternalFileException e) {
++        return FileStateValue.NONEXISTENT_FILE_STATE_NODE;
+     } catch (IOException e) {
+         throw new FileStateFunctionException(e);
+     } catch (InconsistentFilesystemException e) {
+         throw new FileStateFunctionException(e);
+     }
+ }
+\ No newline at end of file

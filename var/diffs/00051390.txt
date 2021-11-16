@@ -1,0 +1,17 @@
+diff --git a/1c106ee499c5522db28f1780ff59bd6163f5a644 b/19557787d65e97aa6db57be8cdec9b9e57f0b756
+index 1c106ee499..19557787d6 100644
+--- a/1c106ee499c5522db28f1780ff59bd6163f5a644
++++ b/19557787d65e97aa6db57be8cdec9b9e57f0b756
+@@ -1,9 +1,10 @@
+ public static IFile createTempContentFile(DBRProgressMonitor monitor, String fileName) throws IOException {
+     IFile file = makeTempFile(monitor, DBeaverCore.getInstance().getLobFolder(monitor.getNestedMonitor()), fileName, "data");
+     try {
+-        file.setCharset(GeneralUtils.getDefaultBinaryFileEncoding(null), monitor.getNestedMonitor());
++        String charset = DBeaverCore.getGlobalPreferenceStore().getString(DBeaverPreferences.CONTENT_HEX_ENCODING);
++        file.setCharset(charset, monitor.getNestedMonitor());
+     } catch (CoreException e) {
+         log.error("Can't set file charset", e);
+     }
+     return file;
+ }
+\ No newline at end of file

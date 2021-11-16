@@ -1,0 +1,17 @@
+diff --git a/b1b8f680173b0c843cd15a151837984505660e65 b/bafec4b284aa2fce52b77f27cbdbbe3b467fc15f
+index b1b8f68017..bafec4b284 100644
+--- a/b1b8f680173b0c843cd15a151837984505660e65
++++ b/bafec4b284aa2fce52b77f27cbdbbe3b467fc15f
+@@ -1,6 +1,9 @@
+ protected <T> Handler<AsyncResult<T>> onSuccess(Consumer<T> consumer) {
+     return result -> {
+-        assertTrue(result.succeeded());
+-        consumer.accept(result.result());
++        if (result.failed()) {
++            fail(result.cause().getMessage());
++        } else {
++            consumer.accept(result.result());
++        }
+     };
+ }
+\ No newline at end of file

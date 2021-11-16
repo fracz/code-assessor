@@ -1,0 +1,14 @@
+diff --git a/5d65c182b168edb0f6b0525cf54f95bc151d3e8d b/c796e5ce0c8e5bf4a2e4a4bafb007dc7b5c3b36c
+index 5d65c182b1..c796e5ce0c 100644
+--- a/5d65c182b168edb0f6b0525cf54f95bc151d3e8d
++++ b/c796e5ce0c8e5bf4a2e4a4bafb007dc7b5c3b36c
+@@ -1,7 +1,7 @@
+ public void update(AnActionEvent e) {
+     Presentation presentation = getTemplatePresentation();
+     final DataContext dataContext = e.getDataContext();
+-    final Module[] modules = (Module[]) dataContext.getData(DataConstants.MODULE_CONTEXT_ARRAY);
++    final Module[] modules = LangDataKeys.MODULE_CONTEXT_ARRAY.getData(dataContext);
+     String description = IdeBundle.message("message.move.modules.to.group", whatToMove(modules), myModuleGroup.presentableText());
+     presentation.setDescription(description);
+ }
+\ No newline at end of file

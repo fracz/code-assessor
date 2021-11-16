@@ -1,0 +1,31 @@
+diff --git a/2b2e56d19454c6f693bd0b17dfbcac10dfd8c015 b/015f0edcb3d52ca732df5aaa5a7856d58ff2e8ae
+index 2b2e56d194..015f0edcb3 100644
+--- a/2b2e56d19454c6f693bd0b17dfbcac10dfd8c015
++++ b/015f0edcb3d52ca732df5aaa5a7856d58ff2e8ae
+@@ -1,21 +1,18 @@
+ @Override
+ public long countRecords() {
+     checkConnection();
+     do {
+         try {
++            final OChannelBinaryClient network = beginRequest(OChannelBinaryProtocol.REQUEST_DB_COUNTRECORDS);
++            endRequest(network);
+             try {
+-                beginRequest(OChannelBinaryProtocol.REQUEST_DB_COUNTRECORDS);
+-            } finally {
+-                endRequest();
+-            }
+-            try {
+-                beginResponse();
++                beginResponse(network);
+                 return network.readLong();
+             } finally {
+-                endResponse();
++                endResponse(network);
+             }
+         } catch (Exception e) {
+             handleException("Error on read database record count", e);
+         }
+     } while (true);
+ }
+\ No newline at end of file

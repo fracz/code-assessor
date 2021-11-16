@@ -1,0 +1,19 @@
+diff --git a/d98608f8e7aa5d8ccedbdfd76f73abea5465320a b/49e1e03f845f75d61063dfac38ee72d8d95b7369
+index d98608f8e7..49e1e03f84 100644
+--- a/d98608f8e7aa5d8ccedbdfd76f73abea5465320a
++++ b/49e1e03f845f75d61063dfac38ee72d8d95b7369
+@@ -1,12 +1,12 @@
+ @Test
+ public void testAutowireModeNotInherited() {
+     DefaultListableBeanFactory xbf = new DefaultListableBeanFactory();
+     XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(xbf);
+-    reader.loadBeanDefinitions(new ClassPathResource("overrides.xml", getClass()));
++    reader.loadBeanDefinitions(OVERRIDES_CONTEXT);
+     TestBean david = (TestBean) xbf.getBean("magicDavid");
+     // the parent bean is autowiring
+     assertNotNull(david.getSpouse());
+     TestBean derivedDavid = (TestBean) xbf.getBean("magicDavidDerived");
+     // this fails while it inherits from the child bean
+     assertNull("autowiring not propagated along child relationships", derivedDavid.getSpouse());
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/25704f19783726b012487cfabbb649bd75be4e58 b/cfe2ec9fdedf30a8584f6cbaf19dcc8b3a72ab88
+index 25704f1978..cfe2ec9fde 100644
+--- a/25704f19783726b012487cfabbb649bd75be4e58
++++ b/cfe2ec9fdedf30a8584f6cbaf19dcc8b3a72ab88
+@@ -1,6 +1,6 @@
+ @Override
+ protected GroupShardsIterator shards(ClusterState clusterState, ValidateQueryRequest request, String[] concreteIndices) {
+     // Hard-code routing to limit request to a single shard, but still, randomize it...
+-    Map<String, Set<String>> routingMap = clusterState.metaData().resolveSearchRouting(Integer.toString(ThreadLocalRandom.current().nextInt(1000)), request.indices());
+-    return clusterService.operationRouting().searchShards(clusterState, request.indices(), concreteIndices, routingMap, "_local");
++    Map<String, Set<String>> routingMap = indexNameExpressionResolver.resolveSearchRouting(clusterState, Integer.toString(ThreadLocalRandom.current().nextInt(1000)), request.indices());
++    return clusterService.operationRouting().searchShards(clusterState, concreteIndices, routingMap, "_local");
+ }
+\ No newline at end of file

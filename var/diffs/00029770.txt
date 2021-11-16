@@ -1,0 +1,19 @@
+diff --git a/7c46a5f0a2820c75f2e4eeec3fbf29877cd55f73 b/1aaae5f186a25e233c847795fd35d6357f88ced7
+index 7c46a5f0a2..1aaae5f186 100644
+--- a/7c46a5f0a2820c75f2e4eeec3fbf29877cd55f73
++++ b/1aaae5f186a25e233c847795fd35d6357f88ced7
+@@ -1,7 +1,12 @@
+ public AggregatorFactories build() {
+     if (factories.isEmpty() && pipelineAggregatorFactories.isEmpty()) {
+         return EMPTY;
+     }
+-    List<PipelineAggregatorFactory> orderedpipelineAggregators = resolvePipelineAggregatorOrder(this.pipelineAggregatorFactories, this.factories);
++    List<PipelineAggregatorFactory> orderedpipelineAggregators = null;
++    if (skipResolveOrder) {
++        orderedpipelineAggregators = new ArrayList<>(pipelineAggregatorFactories);
++    } else {
++        orderedpipelineAggregators = resolvePipelineAggregatorOrder(this.pipelineAggregatorFactories, this.factories);
++    }
+     return new AggregatorFactories(factories.toArray(new AggregatorFactory[factories.size()]), orderedpipelineAggregators);
+ }
+\ No newline at end of file

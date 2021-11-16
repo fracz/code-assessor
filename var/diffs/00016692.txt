@@ -1,0 +1,14 @@
+diff --git a/7a248ee97372f6909835bb8ef8860414971cbcc3 b/f1e1a610f72d6ea891ef2ccb608963f77fd7ce76
+index 7a248ee973..f1e1a610f7 100644
+--- a/7a248ee97372f6909835bb8ef8860414971cbcc3
++++ b/f1e1a610f72d6ea891ef2ccb608963f77fd7ce76
+@@ -1,7 +1,7 @@
+ private static boolean areTypesEquivalent(@NotNull JetType typeInSuper, @NotNull JetType typeInSub, @NotNull JetTypeChecker.TypeConstructorEquality axioms) {
+     boolean bothErrors = typeInSuper.isError() && typeInSub.isError();
+-    if (!bothErrors && !JetTypeChecker.DEFAULT.equalTypes(typeInSuper, typeInSub, axioms)) {
++    if (!bothErrors && !JetTypeChecker.withAxioms(axioms).equalTypes(typeInSuper, typeInSub)) {
+         return false;
+     }
+     return true;
+ }
+\ No newline at end of file

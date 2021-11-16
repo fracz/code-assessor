@@ -1,0 +1,21 @@
+diff --git a/7cadd26e03937fe556f8e38ebd7f17b6f65f492f b/abe6522f3b602dab802ce696b534a763867948c5
+index 7cadd26e03..abe6522f3b 100644
+--- a/7cadd26e03937fe556f8e38ebd7f17b6f65f492f
++++ b/abe6522f3b602dab802ce696b534a763867948c5
+@@ -1,12 +1,11 @@
+-private void checkFirstPropValue(@NotNull PsiElement element, @NotNull JsonPropertyAdapter firstProp, @NotNull JsonValueAdapter firstPropValue) {
++private void checkFirstPropValue(@NotNull JsonPropertyAdapter firstProp, @NotNull JsonValueAdapter firstPropValue) {
+     // todo move it somewhere
+     final List<JsonSchemaVariantsTreeBuilder.Step> position = myWalker.findPosition(firstProp.getDelegate(), false, true);
+     if (position == null || position.isEmpty())
+         return;
+-    if (isInsideSchemaDefinitions(element, position))
+-        return;
+-    final MatchResult result = new JsonSchemaResolver(myRootSchema, false, position).detailedResolve();
++    final JsonSchemaResolver resolver = new JsonSchemaResolver(myRootSchema, false, position);
++    final MatchResult result = resolver.detailedResolve();
+     final BySchemaChecker checker = checkByMatchResult(firstPropValue, result, myWalker, myRootSchema);
+     if (checker != null)
+         processCheckerResults(checker);
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/7cdd55754c3a975bb469621b556eb7737e68fd78 b/cf8aa6edac2beba0ee4c682514c2536bc6b362f3
+index 7cdd55754c..cf8aa6edac 100644
+--- a/7cdd55754c3a975bb469621b556eb7737e68fd78
++++ b/cf8aa6edac2beba0ee4c682514c2536bc6b362f3
+@@ -1,10 +1,12 @@
+ @Override
+-public void debug() {
+-    System.out.println("=== H_Message === ");
+-    System.out.println("\tRAW:" + this.getPayload());
+-    System.out.println("\tReading Time: " + cal.getTime());
+-    System.out.println("\tSerial number:  " + rawSerialNumber);
+-    System.out.println("\tRF address (HEX):" + rawRfHexAddress);
+-    System.out.println("\tFirmware version:" + rawFirmwareVersion);
+-    System.out.println("\tConnection ID: " + rawConnectionId);
++public String debug() {
++    StringBuilder sb = new StringBuilder();
++    sb.append("=== H_Message === ");
++    sb.append("\tRAW:" + this.getPayload());
++    sb.append("\tReading Time: " + cal.getTime());
++    sb.append("\tSerial number:  " + rawSerialNumber);
++    sb.append("\tRF address (HEX):" + rawRfHexAddress);
++    sb.append("\tFirmware version:" + rawFirmwareVersion);
++    sb.append("\tConnection ID: " + rawConnectionId);
++    return sb.toString();
+ }
+\ No newline at end of file

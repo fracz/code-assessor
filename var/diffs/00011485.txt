@@ -1,0 +1,15 @@
+diff --git a/9e0f2ca7d701354918a6942cd4525867df589d20 b/b551f68b2ba5e6d4ba3e446537875cf3ccbf37b9
+index 9e0f2ca7d7..b551f68b2b 100644
+--- a/9e0f2ca7d701354918a6942cd4525867df589d20
++++ b/b551f68b2ba5e6d4ba3e446537875cf3ccbf37b9
+@@ -1,6 +1,4 @@
+-public int getTailType() {
+-    final Integer tailType = (Integer) getAttribute(CompletionUtil.TAIL_TYPE_ATTR);
+-    if (tailType != null)
+-        return tailType.intValue();
+-    return -1;
++public TailType getTailType() {
++    final TailType tailType = (TailType) getAttribute(CompletionUtil.TAIL_TYPE_ATTR);
++    return tailType != null ? tailType : TailType.UNKNOWN;
+ }
+\ No newline at end of file

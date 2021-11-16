@@ -1,0 +1,28 @@
+diff --git a/2653f79dcefed9f6c77abd0c63d74172cbf3c8bf b/9f788474c16c059f9006513fd5afcb7405834f70
+index 2653f79dce..9f788474c1 100644
+--- a/2653f79dcefed9f6c77abd0c63d74172cbf3c8bf
++++ b/9f788474c16c059f9006513fd5afcb7405834f70
+@@ -1,14 +1,12 @@
+ @Override
+ public String getCodeSample(@NotNull SettingsType settingsType) {
+-    switch(settingsType) {
+-        case BLANK_LINE_SETTINGS:
+-            return BLANK_LINE_SAMPLE;
+-        case INDENT_AND_BRACES_SETTINGS:
+-            return INDENT_AND_BRACES_SAMPLE;
+-        case SPACING_SETTINGS:
+-            return SPACING_SAMPLE;
+-        case WRAPPING_SETTINGS:
+-            return WRAPPING_CODE_SAMPLE;
+-    }
++    if (settingsType == SettingsType.SPACING_SETTINGS)
++        return SPACING_SAMPLE;
++    if (settingsType == SettingsType.INDENTS_AND_BRACES_SETTINGS)
++        return INDENT_AND_BRACES_SAMPLE;
++    if (settingsType == SettingsType.BLANK_LINES_SETTINGS)
++        return BLANK_LINE_SAMPLE;
++    if (settingsType == SettingsType.WRAPPING_SETTINGS)
++        return WRAPPING_CODE_SAMPLE;
+     return GENERAL_CODE_SAMPLE;
+ }
+\ No newline at end of file

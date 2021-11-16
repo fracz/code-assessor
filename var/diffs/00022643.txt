@@ -1,0 +1,21 @@
+diff --git a/cb1810b265c267adbfe55bca9e0e1c8ccbf280f8 b/3b5d36ed9d601259d06bd7c222c078892d3f1814
+index cb1810b265..3b5d36ed9d 100644
+--- a/cb1810b265c267adbfe55bca9e0e1c8ccbf280f8
++++ b/3b5d36ed9d601259d06bd7c222c078892d3f1814
+@@ -1,13 +1,14 @@
+ protected void updateHeadsUp(String key, Entry entry, boolean shouldInterrupt, boolean alertAgain) {
+     final boolean wasHeadsUp = isHeadsUp(key);
+     if (wasHeadsUp) {
+-        mHeadsUpManager.updateNotification(entry, alertAgain);
+         if (!shouldInterrupt) {
+             // We don't want this to be interrupting anymore, lets remove it
+             mHeadsUpManager.removeNotification(key);
++        } else {
++            mHeadsUpManager.updateNotification(entry, alertAgain);
+         }
+     } else if (shouldInterrupt && alertAgain) {
+         // This notification was updated to be a heads-up, show it!
+         mHeadsUpManager.showNotification(entry);
+     }
+ }
+\ No newline at end of file

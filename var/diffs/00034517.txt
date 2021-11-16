@@ -1,0 +1,12 @@
+diff --git a/0d2c77f5848d74793d1a17ff855b6ffcbfd40ed0 b/ab3876a8b3ba55c9f79281a17060fe83ec2c46b5
+index 0d2c77f584..ab3876a8b3 100644
+--- a/0d2c77f5848d74793d1a17ff855b6ffcbfd40ed0
++++ b/ab3876a8b3ba55c9f79281a17060fe83ec2c46b5
+@@ -1,4 +1,5 @@
+ @Override
+ public void bindData(@Nullable final Object data) throws Exception {
+-    project = requireNonNull((Project) data, Project.class);
++    final Project project = ObjectUtils.requireNonNull((Project) data);
++    this.viewModel.inputs.configureWith(project);
+ }
+\ No newline at end of file

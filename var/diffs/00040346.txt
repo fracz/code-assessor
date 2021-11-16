@@ -1,0 +1,12 @@
+diff --git a/f0b144ea12cd28515864b15a87d5018c5e7b1b31 b/e0d61bb2d586af2621bf650835ce1cbf49a27bb1
+index f0b144ea12..e0d61bb2d5 100644
+--- a/f0b144ea12cd28515864b15a87d5018c5e7b1b31
++++ b/e0d61bb2d586af2621bf650835ce1cbf49a27bb1
+@@ -1,5 +1,6 @@
+ @Override
+ public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) {
+     // Send back the received message to the remote peer.
++    logger.log(Level.INFO, "Received " + counter.incrementAndGet() + "th message from client.");
+     e.getChannel().write(e.getMessage());
+ }
+\ No newline at end of file

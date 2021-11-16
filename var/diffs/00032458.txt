@@ -1,0 +1,16 @@
+diff --git a/95dd449273f0864a1490f65ff89396783da517dc b/06940c13dc4a85508437716c89571ee67e9a574c
+index 95dd449273..06940c13dc 100644
+--- a/95dd449273f0864a1490f65ff89396783da517dc
++++ b/06940c13dc4a85508437716c89571ee67e9a574c
+@@ -1,9 +1,9 @@
+ public void addPropertyWhichMayNotBeOnAllInstances(String pname, JSType type) {
+     Preconditions.checkState(!this.isFinalized);
+     if (this.classProps.containsKey(pname) || this.protoProps.containsKey(pname)) {
+         return;
+     }
+     if (this.objectKind == ObjectKind.UNRESTRICTED) {
+-        this.randomProps = this.randomProps.with(pname, Property.make(type == null ? JSType.UNKNOWN : type, type));
++        this.randomProps = this.randomProps.with(pname, Property.make(type == null ? this.commonTypes.UNKNOWN : type, type));
+     }
+ }
+\ No newline at end of file

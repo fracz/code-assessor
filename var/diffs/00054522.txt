@@ -1,0 +1,22 @@
+diff --git a/8f5b67b4fc5abc75171dde06ac7672fc31554905 b/a72b3f9025ca3ac57fafaccfb3ccb6059ac2b1d6
+index 8f5b67b4fc..a72b3f9025 100644
+--- a/8f5b67b4fc5abc75171dde06ac7672fc31554905
++++ b/a72b3f9025ca3ac57fafaccfb3ccb6059ac2b1d6
+@@ -1,15 +1,15 @@
+ public SQLName name() {
+     SQLName name = super.name();
+     if (getLexer().equalToken(Token.MONKEYS_AT)) {
+         getLexer().nextToken();
+         if (!getLexer().equalToken(Token.IDENTIFIER)) {
+-            throw new ParserException("syntax error, expect identifier, but " + getLexer().getToken());
++            throw new ParserException(getLexer(), Token.IDENTIFIER);
+         }
+         OracleDbLinkExpr dbLink = new OracleDbLinkExpr();
+         dbLink.setExpr(name);
+         dbLink.setDbLink(getLexer().getLiterals());
+         getLexer().nextToken();
+         return dbLink;
+     }
+     return name;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/05ceb8eb67ff51539e9372400b460b7559b8d106 b/3c28638e2b472b8603f45f101515f19ffe8d1889
+index 05ceb8eb67..3c28638e2b 100644
+--- a/05ceb8eb67ff51539e9372400b460b7559b8d106
++++ b/3c28638e2b472b8603f45f101515f19ffe8d1889
+@@ -1,7 +1,6 @@
+ @Test
+ public void supportsReturnType() throws Exception {
+-    assertTrue(this.handler.supportsReturnType(returnType("handleDeferredResult")));
+-    assertTrue(this.handler.supportsReturnType(returnType("handleListenableFuture")));
+-    assertTrue(this.handler.supportsReturnType(returnType("handleCompletableFuture")));
+-    assertFalse(this.handler.supportsReturnType(returnType("handleString")));
++    assertTrue(this.handler.supportsReturnType(on(TestController.class).resolveReturnType(DeferredResult.class, String.class)));
++    assertTrue(this.handler.supportsReturnType(on(TestController.class).resolveReturnType(ListenableFuture.class, String.class)));
++    assertTrue(this.handler.supportsReturnType(on(TestController.class).resolveReturnType(CompletableFuture.class, String.class)));
+ }
+\ No newline at end of file

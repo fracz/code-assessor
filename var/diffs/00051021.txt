@@ -1,0 +1,15 @@
+diff --git a/56db59f579733b04899bc78f20bdf7cb77eb0401 b/58d9017baf57fb93e0f021cd8ae0f6b2b4e6541b
+index 56db59f579..58d9017baf 100644
+--- a/56db59f579733b04899bc78f20bdf7cb77eb0401
++++ b/58d9017baf57fb93e0f021cd8ae0f6b2b4e6541b
+@@ -1,8 +1,4 @@
+ @Override
+ public boolean generatedKeyAlwaysReturned() throws SQLException {
+-    try {
+-        return getOriginal().generatedKeyAlwaysReturned();
+-    } catch (IncompatibleClassChangeError e) {
+-        throw new SQLFeatureNotSupportedException(JDBCConstants.ERROR_API_NOT_SUPPORTED_17);
+-    }
++    return JDBCUtils.callMethod17(getOriginal(), "generatedKeyAlwaysReturned", Boolean.TYPE, null);
+ }
+\ No newline at end of file

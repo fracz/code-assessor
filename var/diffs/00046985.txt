@@ -1,0 +1,17 @@
+diff --git a/49452a06875434de7a90a2383bfac35f3649456d b/a11393e3647bbd18f63169fcb816dadccdb1c78c
+index 49452a0687..a11393e364 100644
+--- a/49452a06875434de7a90a2383bfac35f3649456d
++++ b/a11393e3647bbd18f63169fcb816dadccdb1c78c
+@@ -1,10 +1,8 @@
+ public MappedByteBuffer mapTerm(final File rootDir, final long sessionId, final long channelId, final long termId) throws IOException {
+     final File termIdFile = FileMappingConvention.termIdFile(rootDir, sessionId, channelId, termId, false);
+-    if (!termIdFile.exists()) {
+-        throw new IllegalStateException("Missing term buffer: " + termIdFile);
+-    }
++    IoUtil.ensureFileExists(termIdFile, "Term Buffer");
+     try (final RandomAccessFile randomAccessFile = new RandomAccessFile(termIdFile, "rw")) {
+         long size = randomAccessFile.length();
+         return randomAccessFile.getChannel().map(READ_WRITE, 0, size);
+     }
+ }
+\ No newline at end of file

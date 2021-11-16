@@ -1,0 +1,17 @@
+diff --git a/53c6c7613a6f57d8fd09694e54455044a1a62ea1 b/3670c57e00d50bf33846d675c8c8f8c823930927
+index 53c6c7613a..3670c57e00 100644
+--- a/53c6c7613a6f57d8fd09694e54455044a1a62ea1
++++ b/3670c57e00d50bf33846d675c8c8f8c823930927
+@@ -1,9 +1,9 @@
+ public void startProcessing(TestResultProcessor testResultProcessor) {
+-    resultProcessor = new AttachParentTestResultProcessor(testResultProcessor);
+-    resultProcessor.started(suiteDescriptor, new TestStartEvent(timeProvider.getCurrentTime()));
+     try {
++        resultProcessor = new AttachParentTestResultProcessor(testResultProcessor);
++        resultProcessor.started(suiteDescriptor, new TestStartEvent(timeProvider.getCurrentTime()));
+         processor.startProcessing(resultProcessor);
+     } catch (Throwable t) {
+         resultProcessor.failure(suiteDescriptor.getId(), new TestSuiteExecutionException(String.format("Could not start %s.", suiteDescriptor), t));
+     }
+ }
+\ No newline at end of file

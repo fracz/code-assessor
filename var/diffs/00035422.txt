@@ -1,0 +1,23 @@
+diff --git a/de53a236c094e258ab51f84026eafaa1044ddfd3 b/28c3b8876899b9bb2b99e3773d4b5fc0a3f38da0
+index de53a236c0..28c3b88768 100644
+--- a/de53a236c094e258ab51f84026eafaa1044ddfd3
++++ b/28c3b8876899b9bb2b99e3773d4b5fc0a3f38da0
+@@ -1,11 +1,8 @@
+ @Override
+-public void updatePending(int id) {
+-    final FileDownloadModel downloadModel = find(id);
+-    if (downloadModel != null) {
+-        downloadModel.setStatus(FileDownloadStatus.pending);
+-        // db
+-        ContentValues cv = new ContentValues();
+-        cv.put(FileDownloadModel.STATUS, FileDownloadStatus.pending);
+-        db.update(TABLE_NAME, cv, FileDownloadModel.ID + " = ? ", new String[] { String.valueOf(id) });
+-    }
++public void updatePending(FileDownloadModel model) {
++    model.setStatus(FileDownloadStatus.pending);
++    // db
++    ContentValues cv = new ContentValues();
++    cv.put(FileDownloadModel.STATUS, FileDownloadStatus.pending);
++    update(model.getId(), cv);
+ }
+\ No newline at end of file

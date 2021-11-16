@@ -1,0 +1,17 @@
+diff --git a/b94f6cdd38261b06320f605ad9c53dc14996eeb1 b/d02cc2d754315de636c83ea815af44f302e9659c
+index b94f6cdd38..d02cc2d754 100644
+--- a/b94f6cdd38261b06320f605ad9c53dc14996eeb1
++++ b/d02cc2d754315de636c83ea815af44f302e9659c
+@@ -1,8 +1,7 @@
+ void assertUpgradeWorks(String indexName, boolean alreadyLatest) throws Exception {
+-    HttpRequestBuilder httpClient = httpClient();
+     if (alreadyLatest == false) {
+-        UpgradeTest.assertNotUpgraded(httpClient, indexName);
++        UpgradeTest.assertNotUpgraded(client(), indexName);
+     }
+-    UpgradeTest.runUpgrade(httpClient, indexName);
+-    UpgradeTest.assertUpgraded(httpClient, indexName);
++    assertNoFailures(client().admin().indices().prepareUpgrade(indexName).get());
++    UpgradeTest.assertUpgraded(client(), indexName);
+ }
+\ No newline at end of file

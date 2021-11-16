@@ -1,0 +1,12 @@
+diff --git a/38aebb8a7c17f00c2a53716d7e8e97ae5b1a62ec b/45e976efafe971647b91d880978d9ddce9904f10
+index 38aebb8a7c..45e976efaf 100644
+--- a/38aebb8a7c17f00c2a53716d7e8e97ae5b1a62ec
++++ b/45e976efafe971647b91d880978d9ddce9904f10
+@@ -1,5 +1,4 @@
+ @Override
+ public boolean isHeldByCurrentThread() {
+-    Boolean opStatus = commandExecutor.evalRead(getName(), LongCodec.INSTANCE, RedisCommands.EVAL_BOOLEAN, "local v = redis.call('get', KEYS[1]); " + "if (v == false) then " + "  return 0; " + "else " + "  local o = cjson.decode(v); " + "  if (o['o'] == ARGV[1]) then " + "    return 1; " + "  else" + "    return 0; " + "  end;" + "end", Collections.<Object>singletonList(getName()), getLockName());
+-    return opStatus;
++    return commandExecutor.read(getName(), LongCodec.INSTANCE, RedisCommands.HEXISTS, getName(), getLockName());
+ }
+\ No newline at end of file

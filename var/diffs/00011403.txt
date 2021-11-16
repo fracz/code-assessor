@@ -1,0 +1,13 @@
+diff --git a/51c5c8604a96104bc1753953281d7960dd9c94ac b/f409a63a45e452c5812e70624926e338fd437333
+index 51c5c8604a..f409a63a45 100644
+--- a/51c5c8604a96104bc1753953281d7960dd9c94ac
++++ b/f409a63a45e452c5812e70624926e338fd437333
+@@ -1,6 +1,4 @@
+ private static boolean isInjectedHtmlTagForWhichNoProblemsReporting(HtmlTag tag) {
+     PsiElement context = tag.getContainingFile().getContext();
+-    if (context != null && skipValidation(context))
+-        return true;
+-    return false;
++    return context != null && skipValidation(context);
+ }
+\ No newline at end of file

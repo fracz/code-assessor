@@ -1,0 +1,13 @@
+diff --git a/cf7df9c17f0c0f6d56f67c4b3c73927bc3f85ecc b/6f63ac89201d03374ebc1ffe8ba6e18fd421a97b
+index cf7df9c17f..6f63ac8920 100644
+--- a/cf7df9c17f0c0f6d56f67c4b3c73927bc3f85ecc
++++ b/6f63ac89201d03374ebc1ffe8ba6e18fd421a97b
+@@ -1,5 +1,4 @@
+-public PushParser readInt() {
+-    mNeeded += 4;
+-    mWaiting.add(int.class);
++public PushParser readInt(TapCallback<Integer> callback) {
++    mWaiting.add(new IntWaiter(callback));
+     return this;
+ }
+\ No newline at end of file

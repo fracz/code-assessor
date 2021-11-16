@@ -1,0 +1,12 @@
+diff --git a/ca7828f5dd5ff6ca5abfc4c64fb587d32eac64a1 b/447d1c1e9b95ea8483bf1e0e6a0fb822b2dee204
+index ca7828f5dd..447d1c1e9b 100644
+--- a/ca7828f5dd5ff6ca5abfc4c64fb587d32eac64a1
++++ b/447d1c1e9b95ea8483bf1e0e6a0fb822b2dee204
+@@ -1,5 +1,4 @@
+ @Override
+ public StackValue visitDotQualifiedExpression(JetDotQualifiedExpression expression, StackValue receiver) {
+-    StackValue receiverValue = resolvesToClassOrPackage(expression.getReceiverExpression()) ? StackValue.none() : genQualified(receiver, expression.getReceiverExpression());
+-    return genQualified(receiverValue, expression.getSelectorExpression());
++    return genQualified(StackValue.none(), expression.getSelectorExpression());
+ }
+\ No newline at end of file

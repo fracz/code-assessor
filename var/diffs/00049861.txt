@@ -1,0 +1,20 @@
+diff --git a/0dd509e1eb6e9343dd78078d5a170ebcba7c7509 b/a4d25422d0b271ebebdc9f7f0a45c8e5efc32125
+index 0dd509e1eb..a4d25422d0 100644
+--- a/0dd509e1eb6e9343dd78078d5a170ebcba7c7509
++++ b/a4d25422d0b271ebebdc9f7f0a45c8e5efc32125
+@@ -1,13 +1,13 @@
+ @Override
+ public Object getAdapter(Class adapter) {
+     if (adapter == DBSStructureAssistant.class) {
+         return new GenericStructureAssistant(this);
+     } else if (adapter == DBCQueryPlanner.class) {
+         if (queryPlanner == null) {
+             queryPlanner = metaModel.getQueryPlanner(this);
+         }
+         return queryPlanner;
+     } else {
+-        return null;
++        return super.getAdapter(adapter);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/93df895c45491a3855ac905d2146bdf52bb40a3c b/bac8902616b86fdfcf3eb3dffea4ab5183ca17ed
+index 93df895c45..bac8902616 100644
+--- a/93df895c45491a3855ac905d2146bdf52bb40a3c
++++ b/bac8902616b86fdfcf3eb3dffea4ab5183ca17ed
+@@ -1,14 +1,11 @@
+ @Test
+ public void shouldExcludeChangedNodesWithMissingLabelFromIndexQuery() throws Exception {
+     // Given
+     when(store.nodesGetFromIndexLookup(state, indexDescriptor, value)).then(answerAsPrimitiveLongIteratorFrom(asList(2l, 3l)));
+     when(store.nodeHasLabel(1l, labelId)).thenReturn(false);
+-    // when( oldTxState.getNodesWithChangedProperty( propertyKeyId, value ) ).thenReturn(
+-    // new DiffSets<>( asSet( 1l ), Collections.<Long>emptySet() ) );
+-    // when( oldTxState.hasChanges() ).thenReturn( true );
++    state.txState().nodeDoReplaceProperty(1l, Property.noNodeProperty(1l, propertyKeyId), Property.intProperty(propertyKeyId, 10));
+     // When
+     PrimitiveLongIterator result = txContext.nodesGetFromIndexLookup(state, indexDescriptor, value);
+     // Then
+     assertThat(asSet(result), equalTo(asSet(2l, 3l)));
+-    fail("Shouldn't work. Above is a commented piece of code that mocks a removal of something. " + "With that kept as commented code this test works, so it's a false green");
+ }
+\ No newline at end of file

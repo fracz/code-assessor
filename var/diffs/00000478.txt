@@ -1,0 +1,18 @@
+diff --git a/eac13512d70f343e57782e83b26c72381b74d1ed b/87501140c354c2d3ef91a325be74da63657979c1
+index eac13512d7..87501140c3 100644
+--- a/eac13512d70f343e57782e83b26c72381b74d1ed
++++ b/87501140c354c2d3ef91a325be74da63657979c1
+@@ -1,9 +1,8 @@
+ @Test
+ public void writeInvalidOffset() throws Exception {
+-    final EmbeddedChannel channel = new EmbeddedChannelNoException(new DataServerBlockWriteHandler(NettyExecutors.BLOCK_WRITER_EXECUTOR, mBlockWorker));
+-    channel.writeInbound(buildWriteRequest(0, 1024));
+-    channel.writeInbound(buildWriteRequest(1025, 1024));
+-    Object writeResponse = waitForResponse(channel);
++    mChannelNoException.writeInbound(buildWriteRequest(0, PACKET_SIZE));
++    mChannelNoException.writeInbound(buildWriteRequest(PACKET_SIZE + 1, PACKET_SIZE));
++    Object writeResponse = waitForResponse(mChannelNoException);
+     Assert.assertTrue(writeResponse instanceof RPCProtoMessage);
+     checkWriteResponse(writeResponse, Protocol.Status.Code.INVALID_ARGUMENT);
+ }
+\ No newline at end of file

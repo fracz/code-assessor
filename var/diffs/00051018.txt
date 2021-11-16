@@ -1,0 +1,15 @@
+diff --git a/1f81c75625ae4cdeb299dbab3184f9cb9182da34 b/28d1d80d974c121dad6cd19e82353c26fa036313
+index 1f81c75625..28d1d80d97 100644
+--- a/1f81c75625ae4cdeb299dbab3184f9cb9182da34
++++ b/28d1d80d974c121dad6cd19e82353c26fa036313
+@@ -1,8 +1,4 @@
+ @Override
+ public String getSchema() throws SQLException {
+-    try {
+-        return getConnection().getSchema();
+-    } catch (IncompatibleClassChangeError e) {
+-        throw new SQLFeatureNotSupportedException(JDBCConstants.ERROR_API_NOT_SUPPORTED_17);
+-    }
++    return JDBCUtils.callMethod17(getConnection(), "getSchema", String.class, null);
+ }
+\ No newline at end of file

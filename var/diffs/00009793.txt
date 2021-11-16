@@ -1,0 +1,20 @@
+diff --git a/b98aeb83d9060a9e1f077a12b4d136a1318b8737 b/d8ec74ccab9c78bcaba6f78ec2bbf59686447550
+index b98aeb83d9..d8ec74ccab 100644
+--- a/b98aeb83d9060a9e1f077a12b4d136a1318b8737
++++ b/d8ec74ccab9c78bcaba6f78ec2bbf59686447550
+@@ -1,7 +1,9 @@
+ public void activated() {
+-    for (MavenProject each : myProjectsManager.getProjects()) {
+-        myFileToNode.put(each.getFile(), new PomNode(each));
+-    }
+-    updateFromRoot(true, true);
+-    isActivated = true;
++    scheduleStructureUpdate(new Runnable() {
++
++        public void run() {
++            myStructure.buildTree();
++        }
++    });
++    listenForProjectsChanges();
+ }
+\ No newline at end of file

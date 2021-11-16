@@ -1,0 +1,15 @@
+diff --git a/bd1c7a8fa5cfccbf9c65f9bcf00fa5d61de0074a b/0a91588d64f8d0d7bd242128b253fde663ed6bf4
+index bd1c7a8fa5..0a91588d64 100644
+--- a/bd1c7a8fa5cfccbf9c65f9bcf00fa5d61de0074a
++++ b/0a91588d64f8d0d7bd242128b253fde663ed6bf4
+@@ -1,7 +1,8 @@
+ /**
+  * Returns the target string for swift compiler. For example, "x86_64-apple-ios8.2"
+  */
+ @VisibleForTesting
+ static String swiftTarget(AppleConfiguration configuration) {
+-    return configuration.getSingleArchitecture(PlatformType.IOS) + "-apple-ios" + configuration.getIosSdkVersion();
++    // other platform types.
++    return configuration.getSingleArchitecture() + "-apple-ios" + configuration.getIosSdkVersion();
+ }
+\ No newline at end of file

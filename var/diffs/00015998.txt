@@ -1,0 +1,15 @@
+diff --git a/e90cd0cf6c2fd2a3149e7ee3b67a5121a903fad0 b/995539c2dddd28ec4d34cfa84d4a70ef68d94223
+index e90cd0cf6c..995539c2dd 100644
+--- a/e90cd0cf6c2fd2a3149e7ee3b67a5121a903fad0
++++ b/995539c2dddd28ec4d34cfa84d4a70ef68d94223
+@@ -1,8 +1,8 @@
+ @Override
+ public boolean visitFile(@NotNull VirtualFile file) {
+     if (file.getName().endsWith(".kt")) {
+-        addJetFile(jetFiles, currentModuleName, psiManager, file);
++        jetFiles.add(getJetFileByVirtualFile(file, moduleName, psiManager));
+         return false;
+     }
+     return true;
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/7f995056d42ad800926d6c88ae150a39881ec808 b/0057054f3eedcf9c2d4aaf067d0e07414de99f9a
+index 7f995056d4..0057054f3e 100644
+--- a/7f995056d42ad800926d6c88ae150a39881ec808
++++ b/0057054f3eedcf9c2d4aaf067d0e07414de99f9a
+@@ -1,5 +1,5 @@
+ @BeforeClass
+ public static void defineSchema() throws ConfigurationException {
+     SchemaLoader.prepareServer();
+-    SchemaLoader.createKeyspace(KEYSPACE_CACHED, SimpleStrategy.class, KSMetaData.optsWithRF(1), SchemaLoader.standardCFMD(KEYSPACE_CACHED, CF_CACHED).caching(CachingOptions.ALL), SchemaLoader.standardCFMD(KEYSPACE_CACHED, CF_CACHEDINT).defaultValidator(IntegerType.instance).caching(new CachingOptions(new CachingOptions.KeyCache(CachingOptions.KeyCache.Type.ALL), new CachingOptions.RowCache(CachingOptions.RowCache.Type.HEAD, 100))));
++    SchemaLoader.createKeyspace(KEYSPACE_CACHED, SimpleStrategy.class, KSMetaData.optsWithRF(1), SchemaLoader.standardCFMD(KEYSPACE_CACHED, CF_CACHED).caching(CachingOptions.ALL), SchemaLoader.standardCFMD(KEYSPACE_CACHED, CF_CACHEDINT, 1, IntegerType.instance).caching(new CachingOptions(new CachingOptions.KeyCache(CachingOptions.KeyCache.Type.ALL), new CachingOptions.RowCache(CachingOptions.RowCache.Type.HEAD, 100))));
+ }
+\ No newline at end of file

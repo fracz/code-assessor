@@ -1,0 +1,21 @@
+diff --git a/1df34b04b8344e4629319fe676c0381ad5da1a20 b/6760ef5288a51053ddb6317cdcc2537d81c10dcc
+index 1df34b04b8..6760ef5288 100644
+--- a/1df34b04b8344e4629319fe676c0381ad5da1a20
++++ b/6760ef5288a51053ddb6317cdcc2537d81c10dcc
+@@ -1,11 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiExpression expression = (PsiExpression) location;
+-    final PsiType type = expression.getType();
+-    final String text;
+-    if (type == null) {
+-        text = "";
+-    } else {
+-        text = type.getPresentableText();
+-    }
+-    return InspectionGadgetsBundle.message("hibernate.resource.opened.not.closed.problem.descriptor", text);
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiType type = (PsiType) infos[0];
++    return InspectionGadgetsBundle.message("hibernate.resource.opened.not.closed.problem.descriptor", type.getPresentableText());
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/ff9f3a26367d6f533318d9e5e5cfb42d58104158 b/4e9fe354283d0a6bbb4c00491d6dde58899fa298
+index ff9f3a2636..4e9fe35428 100644
+--- a/ff9f3a26367d6f533318d9e5e5cfb42d58104158
++++ b/4e9fe354283d0a6bbb4c00491d6dde58899fa298
+@@ -1,10 +1,10 @@
+ @Test
+ public void shouldThrowNullPointerExceptionOnPutAllWithNullKey() {
+-    List<KeyValue<String, String>> entries = new ArrayList<>();
+-    entries.add(new KeyValue<String, String>(null, "a"));
++    List<KeyValue<Bytes, byte[]>> entries = new ArrayList<>();
++    entries.add(new KeyValue<Bytes, byte[]>(null, bytesValue("a")));
+     try {
+         store.putAll(entries);
+         fail("Should have thrown NullPointerException while putAll null key");
+     } catch (NullPointerException e) {
+     }
+ }
+\ No newline at end of file

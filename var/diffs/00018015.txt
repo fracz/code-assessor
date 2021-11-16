@@ -1,0 +1,20 @@
+diff --git a/c7238c371094452f71c3dcad0eb5a39fc1d6314d b/edded1ae8ad88584f78477371fbfa6a058070d4a
+index c7238c3710..edded1ae8a 100644
+--- a/c7238c371094452f71c3dcad0eb5a39fc1d6314d
++++ b/edded1ae8ad88584f78477371fbfa6a058070d4a
+@@ -1,10 +1,10 @@
+-private static boolean isOverloaded(Target target) {
+-    int maxInWindow = config().getRateLimiterBurstSize();
+-    int fetchWindowSize = config().getRateLimiterRegistryFetchAverageRate();
++private boolean isOverloaded(Target target) {
++    int maxInWindow = serverConfig.getRateLimiterBurstSize();
++    int fetchWindowSize = serverConfig.getRateLimiterRegistryFetchAverageRate();
+     boolean overloaded = !registryFetchRateLimiter.acquire(maxInWindow, fetchWindowSize);
+     if (target == Target.FullFetch) {
+-        int fullFetchWindowSize = config().getRateLimiterFullFetchAverageRate();
++        int fullFetchWindowSize = serverConfig.getRateLimiterFullFetchAverageRate();
+         overloaded |= !registryFullFetchRateLimiter.acquire(maxInWindow, fullFetchWindowSize);
+     }
+     return overloaded;
+ }
+\ No newline at end of file

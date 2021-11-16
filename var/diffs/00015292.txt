@@ -1,0 +1,16 @@
+diff --git a/b9fc289401285f98bf4d18669ec995f207ac6c29 b/77fa724c70054af8c2dd136b182df0e5c59c8d97
+index b9fc289401..77fa724c70 100644
+--- a/b9fc289401285f98bf4d18669ec995f207ac6c29
++++ b/77fa724c70054af8c2dd136b182df0e5c59c8d97
+@@ -1,7 +1,4 @@
+-public static TypeVariableResolver classTypeVariableResolver(ClassOrNamespaceDescriptor clazz) {
+-    if (clazz instanceof ClassDescriptor) {
+-        return new TypeVariableResolverFromTypeDescriptors(((ClassDescriptor) clazz).getTypeConstructor().getParameters(), new TypeVariableResolverFromOuters(clazz.getContainingDeclaration()));
+-    } else {
+-        return new TypeVariableResolverFromTypeDescriptors(new ArrayList<TypeParameterDescriptor>(0), null);
+-    }
++@NotNull
++public static TypeVariableResolver classTypeVariableResolver(@NotNull ClassOrNamespaceDescriptor clazz, @NotNull String context) {
++    return typeVariableResolverFromTypeParameters(getTypeParameterDescriptors(clazz), clazz, context);
+ }
+\ No newline at end of file

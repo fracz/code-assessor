@@ -1,0 +1,13 @@
+diff --git a/694b305a389332c9bfebcef4f930ba24143be758 b/f20a9bd9fa96dac96962d4acd20f9389301e8c4c
+index 694b305a38..f20a9bd9fa 100644
+--- a/694b305a389332c9bfebcef4f930ba24143be758
++++ b/f20a9bd9fa96dac96962d4acd20f9389301e8c4c
+@@ -1,6 +1,5 @@
+ private byte[] nodeMessagePayload() throws IOException {
+-    ByteArrayDataOutputStream os = new ByteArrayDataOutputStream();
++    BytesStreamOutput os = BytesStreamOutput.Cached.cached();
+     localNode.writeTo(os);
+-    os.close();
+     return os.copiedByteArray();
+ }
+\ No newline at end of file

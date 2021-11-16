@@ -1,0 +1,14 @@
+diff --git a/40b5fe8947a9d7b2f461e8a8c73ea9cb5c2840f3 b/f09ab29e33d37d46d03d797d2692227900ab748a
+index 40b5fe8947..f09ab29e33 100644
+--- a/40b5fe8947a9d7b2f461e8a8c73ea9cb5c2840f3
++++ b/f09ab29e33d37d46d03d797d2692227900ab748a
+@@ -1,5 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiClass aClass = (PsiClass) location.getParent();
+-    final int count = calculateTotalMethodCount(aClass);
++@NotNull
++public String buildErrorString(Object... infos) {
++    final Integer count = (Integer) infos[0];
+     return InspectionGadgetsBundle.message("too.many.methods.problem.descriptor", count);
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/df001614336a9f41f4584a7bd8c81efe7e8a572f b/e4f31451b89c15f68507816e489bcf9780da1830
+index df00161433..e4f31451b8 100644
+--- a/df001614336a9f41f4584a7bd8c81efe7e8a572f
++++ b/e4f31451b89c15f68507816e489bcf9780da1830
+@@ -1,4 +1,6 @@
+ @Test(expected = RuntimeException.class)
+ public void testDuplicatedWithDefault() {
+-    new TypeProviderLoader().load(Arrays.<TypeProvider>asList(new TestProvider(DUPLICATED_CODE_WITH_DEFAULT_TYPE, TEST_KEYS)));
++    List<TypeProvider> providers = Arrays.<TypeProvider>asList(new TestProvider(DUPLICATED_CODE_WITH_DEFAULT_TYPE, TEST_KEYS));
++    TypeLoaderService loaderService = new DefaultTypeLoaderService(providers);
++    ServiceTypeRegistryService serviceTypeRegistryService = new DefaultServiceTypeRegistryService(loaderService);
+ }
+\ No newline at end of file

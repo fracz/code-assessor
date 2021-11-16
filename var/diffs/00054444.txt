@@ -1,0 +1,13 @@
+diff --git a/e71c98f54c5beba81bfe804459c4d00d2b584623 b/f413c3c9275bc83b238057fd1b8000b32f51f78c
+index e71c98f54c..f413c3c927 100644
+--- a/e71c98f54c5beba81bfe804459c4d00d2b584623
++++ b/f413c3c9275bc83b238057fd1b8000b32f51f78c
+@@ -1,4 +1,6 @@
+ @Test(expected = UnsupportedOperationException.class)
+ public void parseStatementWithDeleteMultipleTableWithUsing() {
+-    new MySqlStatementParser(null, Collections.emptyList(), "DELETE FROM TABLE_XXX1, TABLE_xxx2 USING TABLE_XXX1 JOIN TABLE_XXX2").parseStatement();
++    ShardingRule shardingRule = createShardingRule();
++    List<Object> parameters = Collections.emptyList();
++    new SQLStatementParser(DatabaseType.MySQL, shardingRule, parameters, new MySqlExprParser(shardingRule, parameters, "DELETE FROM TABLE_XXX1, TABLE_xxx2 USING TABLE_XXX1 JOIN TABLE_XXX2")).parseStatement();
+ }
+\ No newline at end of file

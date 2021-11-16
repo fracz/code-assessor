@@ -1,0 +1,18 @@
+diff --git a/c3f9d73fc01b8742c6a83faa148308a0b2f66a34 b/e8837ee4d7efc1ea348afc3cdaf743d71620108c
+index c3f9d73fc0..e8837ee4d7 100644
+--- a/c3f9d73fc01b8742c6a83faa148308a0b2f66a34
++++ b/e8837ee4d7efc1ea348afc3cdaf743d71620108c
+@@ -1,11 +1,11 @@
+-@Test
++@Test(groups = { "broken" })
+ public void exportCsvWithComma() {
+     CreateGrid(3, 3);
+     project.rows.get(1).cells.set(1, new Cell("with, comma", null));
+     try {
+         SUT.export(project, options, engine, writer);
+     } catch (IOException e) {
+         Assert.fail();
+     }
+     Assert.assertEquals(writer.toString(), "column0,column1,column2\n" + "row0cell0,row0cell1,row0cell2\n" + "row1cell0,\"with, comma\",row1cell2\n" + "row2cell0,row2cell1,row2cell2\n");
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/34e79ca968e23818261c51c5f512c5f0886d93d9 b/6ec8fccf9781cecb56e2d80f892677d049fdb7ae
+index 34e79ca968..6ec8fccf97 100644
+--- a/34e79ca968e23818261c51c5f512c5f0886d93d9
++++ b/6ec8fccf9781cecb56e2d80f892677d049fdb7ae
+@@ -1,4 +1,8 @@
+ @Override
+ public long getOtherCount() {
+-    return otherCount();
++    long other = total;
++    for (Entry entry : entries) {
++        other -= entry.getCount();
++    }
++    return other;
+ }
+\ No newline at end of file

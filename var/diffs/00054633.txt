@@ -1,0 +1,21 @@
+diff --git a/bccc7b3f4245887c7cbf3e356954bef58065740b b/8f3dfc7ce48e74d3d5ccd4e1761d58988f2f3e30
+index bccc7b3f42..8f3dfc7ce4 100644
+--- a/bccc7b3f4245887c7cbf3e356954bef58065740b
++++ b/8f3dfc7ce48e74d3d5ccd4e1761d58988f2f3e30
+@@ -1,14 +1,13 @@
+ private int getLengthUntilTerminatedChar(final char terminatedChar) {
+     int length = 1;
+     while (terminatedChar != charAt(offset + length) || hasEscapeChar(terminatedChar, offset + length)) {
+         if (offset + length >= input.length()) {
+             throw new UnterminatedCharException(terminatedChar);
+         }
+         if (hasEscapeChar(terminatedChar, offset + length)) {
+             length++;
+         }
+         length++;
+     }
+-    length++;
+-    return length;
++    return length + 1;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/98d423fe77bf15930259e772f4be496048638b9a b/815ee321b19571357d21ea32ebbe223e54d2a171
+index 98d423fe77..815ee321b1 100644
+--- a/98d423fe77bf15930259e772f4be496048638b9a
++++ b/815ee321b19571357d21ea32ebbe223e54d2a171
+@@ -1,9 +1,8 @@
+-public Scheduler removeScheduler(String name) {
++public void removeScheduler(String name) {
+     synchronized (schedulers) {
+         Scheduler s = schedulers.remove(name);
+         if (s != null) {
+             s.stop();
+         }
+     }
+-    return null;
+ }
+\ No newline at end of file

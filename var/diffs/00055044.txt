@@ -1,0 +1,22 @@
+diff --git a/a70023a1fd358d784d222fd49284695d2d6eada5 b/e4c634cee2c7cbfdc6e99f42898b1ae8afe893b4
+index a70023a1fd..e4c634cee2 100644
+--- a/a70023a1fd358d784d222fd49284695d2d6eada5
++++ b/e4c634cee2c7cbfdc6e99f42898b1ae8afe893b4
+@@ -1,10 +1,12 @@
+ private void makeCaseBlock(IContainer c, CodeWriter code) throws CodegenException {
++    boolean addBreak = true;
+     if (RegionUtils.notEmpty(c)) {
+         makeRegionIndent(code, c);
+-        if (RegionUtils.hasExitEdge(c)) {
+-            code.startLine(1, "break;");
++        if (!RegionUtils.hasExitEdge(c)) {
++            addBreak = false;
+         }
+-    } else {
+-        code.startLine(1, "break;");
++    }
++    if (addBreak) {
++        code.startLine().addIndent().add("break;");
+     }
+ }
+\ No newline at end of file

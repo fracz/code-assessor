@@ -1,0 +1,18 @@
+diff --git a/549b14b03875ec1f49e0bf5802d166fb8674c19a b/63f2c5f04449fe73427da8cb974ca2f4fa9dca2d
+index 549b14b038..63f2c5f044 100644
+--- a/549b14b03875ec1f49e0bf5802d166fb8674c19a
++++ b/63f2c5f04449fe73427da8cb974ca2f4fa9dca2d
+@@ -1,6 +1,10 @@
+ public boolean isChildPopupFocused(@Nullable Component parent) {
+     if (parent == null)
+         return false;
+-    final JBPopup child = getChildPopup(parent);
+-    return child != null && child.isFocused();
++    List<JBPopup> popups = getChildPopups(parent);
++    for (JBPopup each : popups) {
++        if (each.isFocused())
++            return true;
++    }
++    return false;
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/dd34dc414194dc26b7410f4f9df8b690aca7753b b/df95873d026c76de4920f3e7eb73604c0042f38d
+index dd34dc4141..df95873d02 100644
+--- a/dd34dc414194dc26b7410f4f9df8b690aca7753b
++++ b/df95873d026c76de4920f3e7eb73604c0042f38d
+@@ -1,6 +1,11 @@
+-public synchronized void create() {
+-    save(OStorage.CLUSTER_INTERNAL_NAME);
+-    getDatabase().getStorage().getConfiguration().indexMgrRecordId = document.getIdentity().toString();
+-    getDatabase().getStorage().getConfiguration().update();
+-    createIndex(DICTIONARY_NAME, OProperty.INDEX_TYPE.DICTIONARY.toString(), OType.STRING, null, null, null, false);
++public void create() {
++    acquireExclusiveLock();
++    try {
++        save(OStorage.CLUSTER_INTERNAL_NAME);
++        getDatabase().getStorage().getConfiguration().indexMgrRecordId = document.getIdentity().toString();
++        getDatabase().getStorage().getConfiguration().update();
++        createIndex(DICTIONARY_NAME, OClass.INDEX_TYPE.DICTIONARY.toString(), new OSimpleKeyIndexDefinition(OType.STRING), null, null);
++    } finally {
++        releaseExclusiveLock();
++    }
+ }
+\ No newline at end of file

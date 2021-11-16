@@ -1,0 +1,14 @@
+diff --git a/a9dc7c3c45dd5af2ccc08ca21ce68df13488598e b/64cde028475b7bdf3e7d865cbb9f72b181353fa7
+index a9dc7c3c45..64cde02847 100644
+--- a/a9dc7c3c45dd5af2ccc08ca21ce68df13488598e
++++ b/64cde028475b7bdf3e7d865cbb9f72b181353fa7
+@@ -1,7 +1,6 @@
+ protected Collection getDependencies(final ModuleDescriptor entry) {
+-    final ProjectLayout layout = getBuilder().getProjectLayout();
+     final List deps = new ArrayList();
+     deps.addAll(entry.getDependencies());
+-    deps.add(layout.getLibraryDependencies(entry));
++    deps.addAll(getInsight().getLibraryDependencies(entry));
+     return deps;
+ }
+\ No newline at end of file

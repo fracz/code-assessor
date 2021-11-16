@@ -1,0 +1,16 @@
+diff --git a/228a6127dd4e58798b9162f09ccb274a9d102d65 b/04391f0b20c414c98568322ebac8092e50ebef98
+index 228a6127dd..04391f0b20 100644
+--- a/228a6127dd4e58798b9162f09ccb274a9d102d65
++++ b/04391f0b20c414c98568322ebac8092e50ebef98
+@@ -1,7 +1,6 @@
+ @Before
+ public void setup() {
+-    finderStub = new InvocationsFinderStub();
+-    checker = new NumberOfInvocationsInOrderChecker(finderStub);
+-    wanted = new InvocationBuilder().toInvocationMatcher();
+-    invocations = new LinkedList<Invocation>(asList(new InvocationBuilder().toInvocation()));
++    checker = new NumberOfInvocationsInOrderChecker();
++    context = new InOrderContextImpl();
++    mock = mock(IMethods.class, "mock");
+ }
+\ No newline at end of file

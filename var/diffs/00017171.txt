@@ -1,0 +1,22 @@
+diff --git a/02d3eb2ce88ed15f91fe8f1ac44ba472283821e4 b/5f37a12ec6fdffd530f4bcff2278bdcb95f7cee4
+index 02d3eb2ce8..5f37a12ec6 100644
+--- a/02d3eb2ce88ed15f91fe8f1ac44ba472283821e4
++++ b/5f37a12ec6fdffd530f4bcff2278bdcb95f7cee4
+@@ -1,13 +1,14 @@
+ public void generateFinallyBlocksIfNeeded(Type returnType) {
+     if (hasFinallyBlocks()) {
+         if (!Type.VOID_TYPE.equals(returnType)) {
+             int returnValIndex = myFrameMap.enterTemp(returnType);
+-            StackValue.local(returnValIndex, returnType).store(returnType, v);
++            StackValue.Local localForReturnValue = StackValue.local(returnValIndex, returnType);
++            localForReturnValue.store(StackValue.onStack(returnType), v);
+             doFinallyOnReturn();
+-            StackValue.local(returnValIndex, returnType).put(returnType, v);
++            localForReturnValue.put(returnType, v);
+             myFrameMap.leaveTemp(returnType);
+         } else {
+             doFinallyOnReturn();
+         }
+     }
+ }
+\ No newline at end of file

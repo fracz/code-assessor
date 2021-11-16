@@ -1,0 +1,19 @@
+diff --git a/2d370c1a3252af26247445a9e7515a387b6070e0 b/3da2d57f18913410fd586f38e8ae2a02bd3a8e31
+index 2d370c1a32..3da2d57f18 100644
+--- a/2d370c1a3252af26247445a9e7515a387b6070e0
++++ b/3da2d57f18913410fd586f38e8ae2a02bd3a8e31
+@@ -1,11 +1,6 @@
+ private static boolean isIterableOrArray(final PsiType type) {
+     if (type instanceof PsiClassType) {
+-        final PsiClass resolvedClass = ((PsiClassType) type).resolve();
+-        if (resolvedClass != null) {
+-            return InheritanceUtil.isInheritor(resolvedClass, CommonClassNames.JAVA_LANG_ITERABLE);
+-        }
+-    } else if (type instanceof PsiArrayType) {
+-        return true;
++        return InheritanceUtil.isInheritor(type, CommonClassNames.JAVA_LANG_ITERABLE);
+     }
+-    return false;
++    return type instanceof PsiArrayType;
+ }
+\ No newline at end of file

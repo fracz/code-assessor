@@ -1,0 +1,16 @@
+diff --git a/7a7cc19570d90c486b599f7236a42f8257f3e317 b/6795bf8a86b68cf58d983b706963e5a184cbad3a
+index 7a7cc19570..6795bf8a86 100644
+--- a/7a7cc19570d90c486b599f7236a42f8257f3e317
++++ b/6795bf8a86b68cf58d983b706963e5a184cbad3a
+@@ -1,9 +1,6 @@
+ private void addColumn(Put put, SpanEventBo spanEventBo) {
+     if (!spanEventFilter.filter(spanEventBo)) {
+         return;
+     }
+-    byte[] rowId = BytesUtils.add(spanEventBo.getSpanId(), spanEventBo.getSequence(), spanEventBo.getAsyncId(), spanEventBo.getAsyncSequence());
+-    byte[] value = spanEventBo.writeValue();
+-    final long acceptedTime = acceptedTimeService.getAcceptedTime();
+-    put.addColumn(TRACES_CF_TERMINALSPAN, rowId, acceptedTime, value);
++    this.spanEventSerializer.serialize(spanEventBo, put, null);
+ }
+\ No newline at end of file

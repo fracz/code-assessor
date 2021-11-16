@@ -1,0 +1,13 @@
+diff --git a/983bb081cf8e2d8a1a7bd985f084120c99c8a72b b/587a67ed02cbdb12f1c4f280f82f7463eaf7e112
+index 983bb081cf..587a67ed02 100644
+--- a/983bb081cf8e2d8a1a7bd985f084120c99c8a72b
++++ b/587a67ed02cbdb12f1c4f280f82f7463eaf7e112
+@@ -1,5 +1,5 @@
+-private int requestAutoFill() throws RemoteException {
++private int requestAutoFill(int flags) throws RemoteException {
+     final int userId = getUserIdFromArgs();
+-    mService.requestAutoFill(userId, null);
++    mService.requestAutoFill(null, userId, flags);
+     return 0;
+ }
+\ No newline at end of file

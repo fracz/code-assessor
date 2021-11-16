@@ -1,0 +1,19 @@
+diff --git a/f852f22b2f3950eeb2f0ccbe749c04f0f8fb65b5 b/b8d1fd91527cd3b41eefd22a217f6a016d07d79d
+index f852f22b2f..b8d1fd9152 100644
+--- a/f852f22b2f3950eeb2f0ccbe749c04f0f8fb65b5
++++ b/b8d1fd91527cd3b41eefd22a217f6a016d07d79d
+@@ -1,9 +1,6 @@
+-private void addNodeAction(Object element, NodeAction action) {
+-    maybeSetBusyAndScheduleWaiterForReady(true);
+-    List<NodeAction> list = myNodeActions.get(element);
+-    if (list == null) {
+-        list = new ArrayList<NodeAction>();
+-        myNodeActions.put(element, list);
++private void addNodeAction(Object element, NodeAction action, boolean shouldChildrenBeReady) {
++    _addNodeAction(element, action, myNodeActions);
++    if (shouldChildrenBeReady) {
++        _addNodeAction(element, action, myNodeChildrenActions);
+     }
+-    list.add(action);
+ }
+\ No newline at end of file

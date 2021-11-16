@@ -1,0 +1,10 @@
+diff --git a/bc8ef66e89411009b2f89d2c7b2f5f43ff1a7154 b/ed7290ec3394adb23c741da5111ce464743aed8a
+index bc8ef66e89..ed7290ec33 100644
+--- a/bc8ef66e89411009b2f89d2c7b2f5f43ff1a7154
++++ b/ed7290ec3394adb23c741da5111ce464743aed8a
+@@ -1,3 +1,3 @@
+ public static LocalChangeList createEmptyChangeList(String description) {
+-    return new LocalChangeList(description);
++    return PeerFactory.getInstance().getVcsContextFactory().createLocalChangeList(description);
+ }
+\ No newline at end of file

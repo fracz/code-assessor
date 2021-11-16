@@ -1,0 +1,19 @@
+diff --git a/282adf011464a774bd5096cda440bd8c078464fe b/6d2af9d687b524fd5e9af27df847cac887a71dc9
+index 282adf0114..6d2af9d687 100644
+--- a/282adf011464a774bd5096cda440bd8c078464fe
++++ b/6d2af9d687b524fd5e9af27df847cac887a71dc9
+@@ -1,12 +1,11 @@
+ @Override
+ public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) throws Exception {
+     try {
+         ChannelBuffer message = (ChannelBuffer) e.getMessage();
+-        Pair<ChannelBuffer, SlaveContext> result = handleRequest(realMaster, message);
+-        rememberChannel(e.getChannel(), result.other());
++        Pair<ChannelBuffer, SlaveContext> result = handleRequest(realMaster, message, e.getChannel(), MasterServer.this);
+         e.getChannel().write(result.first());
+     } catch (Exception e1) {
+         e1.printStackTrace();
+         throw e1;
+     }
+ }
+\ No newline at end of file

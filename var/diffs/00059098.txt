@@ -1,0 +1,15 @@
+diff --git a/a333ad78816a570a3c3c51a4cf433934edfdfdf4 b/1a5634d005d8354a1a5b32b28f32cb2c86d15f42
+index a333ad7881..1a5634d005 100644
+--- a/a333ad78816a570a3c3c51a4cf433934edfdfdf4
++++ b/1a5634d005d8354a1a5b32b28f32cb2c86d15f42
+@@ -1,4 +1,7 @@
+ @Override
+-public StorageManager openStorageManager() {
+-    return new CassandraThriftStorageManager(CassandraLocalhostHelper.getLocalStorageConfiguration());
++public StorageManager openStorageManager(short idx) {
++    Configuration sc = CassandraLocalhostHelper.getLocalStorageConfiguration();
++    sc.addProperty(CassandraThriftStorageManager.LOCAL_LOCK_MEDIATOR_PREFIX_KEY, "cassandra-" + idx);
++    sc.addProperty(GraphDatabaseConfiguration.INSTANCE_RID_SHORT_KEY, idx);
++    return new CassandraThriftStorageManager(sc);
+ }
+\ No newline at end of file

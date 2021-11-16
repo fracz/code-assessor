@@ -1,0 +1,15 @@
+diff --git a/d45e27d62a4449b376d436b6a6851fb660aa49a1 b/a9646cdbcfdb818179129c8d22e62e484ecd1cb7
+index d45e27d62a..a9646cdbcf 100644
+--- a/d45e27d62a4449b376d436b6a6851fb660aa49a1
++++ b/a9646cdbcfdb818179129c8d22e62e484ecd1cb7
+@@ -1,3 +1,7 @@
+-private ORecordId readOptimizedLink(final BytesContainer bytes) {
+-    return new ORecordId(OVarIntSerializer.readAsInteger(bytes), OVarIntSerializer.readAsLong(bytes));
++private OIdentifiable readOptimizedLink(final BytesContainer bytes) {
++    ORecordId id = new ORecordId(OVarIntSerializer.readAsInteger(bytes), OVarIntSerializer.readAsLong(bytes));
++    if (id.isTemporary()) {
++        return id.getRecord();
++    }
++    return id;
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/f72550c429687c5e700a3296805fe9469b8db746 b/827226ff4282bfde0eb5cd030279390b02b9e5a6
+index f72550c429..827226ff42 100644
+--- a/f72550c429687c5e700a3296805fe9469b8db746
++++ b/827226ff4282bfde0eb5cd030279390b02b9e5a6
+@@ -1,11 +1,3 @@
+-public Ansi.Color getColourFor(StyledTextOutput.Style style) {
+-    if (!useColor) {
+-        return DEFAULT;
+-    }
+-    Ansi.Color color = colours.get(style);
+-    if (color == null) {
+-        color = getColor(style);
+-        colours.put(style, color);
+-    }
+-    return color;
++public Color getColourFor(StyledTextOutput.Style style) {
++    return getColor(style.name().toLowerCase());
+ }
+\ No newline at end of file

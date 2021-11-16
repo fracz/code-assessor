@@ -1,0 +1,19 @@
+diff --git a/70cfc03ed07b1a86bbd6c69670888dc5dd309a7f b/e2b9aa7b5717c2de8d87943b312f2ce24f9b66bb
+index 70cfc03ed0..e2b9aa7b57 100644
+--- a/70cfc03ed07b1a86bbd6c69670888dc5dd309a7f
++++ b/e2b9aa7b5717c2de8d87943b312f2ce24f9b66bb
+@@ -1,9 +1,11 @@
++@SuppressWarnings("unchecked")
+ public <T> T getMapper(Class<T> type, SqlSession sqlSession) {
+-    if (!knownMappers.containsKey(type))
++    final MapperProxyFactory<T> mapperProxyFactory = (MapperProxyFactory<T>) knownMappers.get(type);
++    if (mapperProxyFactory == null)
+         throw new BindingException("Type " + type + " is not known to the MapperRegistry.");
+     try {
+-        return newMapperProxy(type, sqlSession);
++        return mapperProxyFactory.newInstance(sqlSession);
+     } catch (Exception e) {
+         throw new BindingException("Error getting mapper instance. Cause: " + e, e);
+     }
+ }
+\ No newline at end of file

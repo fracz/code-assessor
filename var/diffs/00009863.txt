@@ -1,0 +1,22 @@
+diff --git a/71e05e3b7fbb2d237dcb3e9cb58c1d0ec33eee83 b/baa8013b2c3e263efcb4f77c069dc86929eab5c8
+index 71e05e3b7f..baa8013b2c 100644
+--- a/71e05e3b7fbb2d237dcb3e9cb58c1d0ec33eee83
++++ b/baa8013b2c3e263efcb4f77c069dc86929eab5c8
+@@ -1,13 +1,14 @@
+-private boolean inProcessedState(Component focusOwner, final KeyEvent e, boolean isModalContext, DataContext dataContext) {
++private boolean inProcessedState() {
++    KeyEvent e = (KeyEvent) myContext.getInputEvent();
+     // ignore typed events which come after processed pressed event
+     if (KeyEvent.KEY_TYPED == e.getID() && myPressedWasProcessed) {
+         return true;
+     }
+     if (KeyEvent.KEY_RELEASED == e.getID() && KeyEvent.VK_ALT == e.getKeyCode() && myPressedWasProcessed) {
+         // see IDEADEV-8615
+         return true;
+     }
+     myState = STATE_INIT;
+     myPressedWasProcessed = false;
+-    return inInitState(focusOwner, e, isModalContext, dataContext);
++    return inInitState();
+ }
+\ No newline at end of file

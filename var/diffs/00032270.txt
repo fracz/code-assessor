@@ -1,0 +1,21 @@
+diff --git a/060413e52a7d16e55fc9b4673f80e49692cd6a23 b/18731247687e28935651ee25f536e41c27a0f51a
+index 060413e52a..1873124768 100644
+--- a/060413e52a7d16e55fc9b4673f80e49692cd6a23
++++ b/18731247687e28935651ee25f536e41c27a0f51a
+@@ -1,13 +1,13 @@
+ private JSType fromReceiverToFirstFormal() {
+     if (this.receiverType == null) {
+-        return JSType.UNKNOWN;
++        return this.commonTypes.UNKNOWN;
+     }
+     NominalType nt = this.receiverType.getNominalTypeIfSingletonObj();
+     if (nt == null || nt.isBuiltinObject()) {
+         return this.receiverType;
+     }
+     if (nt.isGeneric()) {
+-        return nt.instantiateGenerics(JSType.MAP_TO_UNKNOWN).getInstanceAsJSType();
++        return nt.instantiateGenerics(this.commonTypes.MAP_TO_UNKNOWN).getInstanceAsJSType();
+     }
+     return nt.getInstanceAsJSType();
+ }
+\ No newline at end of file

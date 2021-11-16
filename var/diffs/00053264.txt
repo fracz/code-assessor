@@ -1,0 +1,19 @@
+diff --git a/a8e77d6c92d4d3cae48d518544171bb7a858158d b/0135ef171d666d9e3105dffe804d2d13990dc1c3
+index a8e77d6c92..0135ef171d 100644
+--- a/a8e77d6c92d4d3cae48d518544171bb7a858158d
++++ b/0135ef171d666d9e3105dffe804d2d13990dc1c3
+@@ -1,11 +1,11 @@
+ private void setIndexForOrderItem(final Map<String, Integer> columnLabelIndexMap, final List<OrderItem> orderItems) {
+     for (OrderItem each : orderItems) {
+-        if (each.getColumnIndex() > 0) {
++        if (-1 != each.getIndex()) {
+             continue;
+         }
+         Preconditions.checkState(columnLabelIndexMap.containsKey(each.getColumnLabel()), String.format("%s has not index", each));
+         if (columnLabelIndexMap.containsKey(each.getColumnLabel())) {
+-            each.setColumnIndex(columnLabelIndexMap.get(each.getColumnLabel()));
++            each.setIndex(columnLabelIndexMap.get(each.getColumnLabel()));
+         }
+     }
+ }
+\ No newline at end of file

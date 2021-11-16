@@ -1,0 +1,17 @@
+diff --git a/c9e9d3fa57d7b7191706dbbc8f5636a68296fd56 b/1b833700ca86b45263128b881b22640d19af05df
+index c9e9d3fa57..1b833700ca 100644
+--- a/c9e9d3fa57d7b7191706dbbc8f5636a68296fd56
++++ b/1b833700ca86b45263128b881b22640d19af05df
+@@ -1,9 +1,10 @@
+ /**
+  * Returns a string representation of the builder (only applicable for text based xcontent).
+  * <p/>
+  * <p>Only applicable when the builder is constructed with {@link FastByteArrayOutputStream}.
+  */
+ public String string() throws IOException {
+     close();
+-    return Unicode.fromBytes(underlyingBytes(), 0, underlyingBytesLength());
++    BytesArray bytesArray = bytes().toBytesArray();
++    return new String(bytesArray.array(), bytesArray.arrayOffset(), bytesArray.length(), Charsets.UTF_8);
+ }
+\ No newline at end of file

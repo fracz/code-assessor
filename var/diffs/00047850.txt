@@ -1,0 +1,11 @@
+diff --git a/07b5e1ddb16abd681a0327443b40a1f43dec1cda b/555c176cddb96d2f13dff8cc8ca19967e3133418
+index 07b5e1ddb1..555c176cdd 100644
+--- a/07b5e1ddb16abd681a0327443b40a1f43dec1cda
++++ b/555c176cddb96d2f13dff8cc8ca19967e3133418
+@@ -1,4 +1,4 @@
+ @Test
+ public void shouldMatchQualifiersPerAndroidSpec() throws Exception {
+-    assertEquals("en-port", ResBundle.pick(asValues("", "en", "fr-rCA", "en-port", "en-notouch-12key", "port-ldpi", "port-notouch-12key"), "en-GB-port-hdpi-notouch-12key").asString());
++    assertEquals("en-port", asResMap("", "en", "fr-rCA", "en-port", "en-notouch-12key", "port-ldpi", "port-notouch-12key").pick(resName, "en-GB-port-hdpi-notouch-12key").asString());
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/39cc904d1a08c083101fa98b2c9af507ed96f4f6 b/783734e5cd5b515caff56f98ffb1c048d665bcc3
+index 39cc904d1a..783734e5cd 100644
+--- a/39cc904d1a08c083101fa98b2c9af507ed96f4f6
++++ b/783734e5cd5b515caff56f98ffb1c048d665bcc3
+@@ -1,5 +1,7 @@
+ @Override
+-public JetIntentionAction<JetDelegatorToSuperClass> createAction(DiagnosticWithPsiElement diagnostic) {
+-    assert diagnostic.getPsiElement() instanceof JetDelegatorToSuperClass;
+-    return new ChangeToInvocationFix((JetDelegatorToSuperClass) diagnostic.getPsiElement());
++public JetIntentionAction<JetDelegatorToSuperClass> createAction(Diagnostic diagnostic) {
++    if (diagnostic.getPsiElement() instanceof JetDelegatorToSuperClass) {
++        return new ChangeToInvocationFix((JetDelegatorToSuperClass) diagnostic.getPsiElement());
++    }
++    return null;
+ }
+\ No newline at end of file

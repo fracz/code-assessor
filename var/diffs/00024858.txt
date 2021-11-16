@@ -1,0 +1,14 @@
+diff --git a/02b8bf30b226a4ae0ec48a0c6ca12031ef3997f8 b/3c8c9199d5e58973c773c75b5b5f8c00421b6d1b
+index 02b8bf30b2..3c8c9199d5 100644
+--- a/02b8bf30b226a4ae0ec48a0c6ca12031ef3997f8
++++ b/3c8c9199d5e58973c773c75b5b5f8c00421b6d1b
+@@ -1,7 +1,7 @@
+ private org.apache.cassandra.thrift.Column getColumnForInsert(String columnName, int value) {
+     org.apache.cassandra.thrift.Column column = new org.apache.cassandra.thrift.Column();
+-    column.setName(Schema.instance.getCFMetaData(ksName, cfName).comparator.asAbstractType().fromString(columnName));
++    column.setName(LegacyLayout.makeLegacyComparator(Schema.instance.getCFMetaData(ksName, cfName)).fromString(columnName));
+     column.setValue(bytes(value));
+     column.setTimestamp(System.currentTimeMillis());
+     return column;
+ }
+\ No newline at end of file

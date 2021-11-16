@@ -1,0 +1,14 @@
+diff --git a/30afb22e7bfa2fdeeca3323278a2a08eb915162f b/f3128353b50cba92360408c13a82f1e85d517c57
+index 30afb22e7b..f3128353b5 100644
+--- a/30afb22e7bfa2fdeeca3323278a2a08eb915162f
++++ b/f3128353b50cba92360408c13a82f1e85d517c57
+@@ -1,7 +1,7 @@
+ public static ModifiableConfiguration getBasicConfig() {
+     ModifiableConfiguration c = GraphDatabaseConfiguration.buildConfiguration();
+     c.set(IDAUTHORITY_UNIQUEID_RETRY_COUNT, 50);
+-    c.set(IDAUTHORITY_WAIT_MS, 100);
++    c.set(IDAUTHORITY_WAIT_MS, new SimpleDuration(100L, TimeUnit.MILLISECONDS));
+     c.set(IDS_BLOCK_SIZE, 400);
+     return c;
+ }
+\ No newline at end of file

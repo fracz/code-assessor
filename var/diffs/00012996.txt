@@ -1,0 +1,19 @@
+diff --git a/ae0ae0e00b15b7923d8cccc316584acf0f8619ee b/8ecbf7ca57c6a658ff782d078f65a80660618956
+index ae0ae0e00b..8ecbf7ca57 100644
+--- a/ae0ae0e00b15b7923d8cccc316584acf0f8619ee
++++ b/8ecbf7ca57c6a658ff782d078f65a80660618956
+@@ -1,11 +1,11 @@
+ @Override
+ public void hyperlinkUpdate(@NotNull Notification notification, @NotNull HyperlinkEvent event) {
+     if (event.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+         if (event.getDescription().equals("saver")) {
+             // we don't use #showSavedChanges to specify unmerged root first
+-            GitUnstashDialog.showUnstashDialog(myProject, new ArrayList<VirtualFile>(myStashedRoots), roots.iterator().next(), new HashSet<VirtualFile>());
++            GitUnstashDialog.showUnstashDialog(myProject, new ArrayList<VirtualFile>(myStashedRoots), myRoot, new HashSet<VirtualFile>());
+         } else if (event.getDescription().equals("resolve")) {
+-            new UnstashConflictResolver().justMerge(roots);
++            new UnstashConflictResolver(myProject, myRoot, myStashedRoots).mergeNoProceed();
+         }
+     }
+ }
+\ No newline at end of file

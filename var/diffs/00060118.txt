@@ -1,0 +1,15 @@
+diff --git a/82aef51ea58df3678399fbf2bc6b7ac520715e2a b/88caec41776d08f37ec9a20472f8172f29029119
+index 82aef51ea5..88caec4177 100644
+--- a/82aef51ea58df3678399fbf2bc6b7ac520715e2a
++++ b/88caec41776d08f37ec9a20472f8172f29029119
+@@ -1,8 +1,8 @@
+ /*
+     ========= Type Definition Helpers ============
+      */
+ public PropertyKey makeVertexIndexedKey(String name, Class datatype) {
+     PropertyKey key = mgmt.makePropertyKey(name).dataType(datatype).cardinality(Cardinality.SINGLE).make();
+-    mgmt.createInternalIndex(name, Vertex.class, key);
++    mgmt.buildIndex(name, Vertex.class).indexKey(key).buildInternalIndex();
+     return key;
+ }
+\ No newline at end of file

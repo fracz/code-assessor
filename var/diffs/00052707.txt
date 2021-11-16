@@ -1,0 +1,15 @@
+diff --git a/dcc08e2f3aaef14aace41de1f9cea1a5fe9f7a5c b/4ac33d2689fd7ca00c0e8c63a9069a0d8169f3d2
+index dcc08e2f3a..4ac33d2689 100644
+--- a/dcc08e2f3aaef14aace41de1f9cea1a5fe9f7a5c
++++ b/4ac33d2689fd7ca00c0e8c63a9069a0d8169f3d2
+@@ -1,8 +1,7 @@
+ private SQLParsedResult getSQLParsedResult(final SQLContext sqlContext) {
+-    SQLParsedResult result = new SQLParsedResult(sqlContext.getConditionContext());
++    SQLParsedResult result = new SQLParsedResult(sqlContext.getType(), sqlContext.getConditionContext());
+     for (TableContext each : sqlContext.getTables()) {
+         result.getTables().add(each);
+     }
+-    result.setSqlType(sqlContext.getType());
+     return result;
+ }
+\ No newline at end of file

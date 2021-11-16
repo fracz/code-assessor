@@ -1,0 +1,19 @@
+diff --git a/44d6ebc45f99524c715624e751d52b3a0adf3042 b/305a25a050d82778f92ba9eeada40b8ccd7a1701
+index 44d6ebc45f..305a25a050 100644
+--- a/44d6ebc45f99524c715624e751d52b3a0adf3042
++++ b/305a25a050d82778f92ba9eeada40b8ccd7a1701
+@@ -1,9 +1,10 @@
+-public void zoomToOverview() {
+-    mInZoomOverview = true;
++private void zoomToOverview() {
++    if (!willScaleTriggerZoom(getZoomOverviewScale()))
++        return;
+     // Force the titlebar fully reveal in overview mode
+     int scrollY = mWebView.getScrollY();
+     if (scrollY < mWebView.getTitleHeight()) {
+         mWebView.updateScrollCoordinates(mWebView.getScrollX(), 0);
+     }
+-    startZoomAnimation((float) mWebView.getViewWidth() / mZoomOverviewWidth, true);
++    startZoomAnimation(getZoomOverviewScale(), true);
+ }
+\ No newline at end of file

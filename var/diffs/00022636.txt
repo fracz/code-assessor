@@ -1,0 +1,12 @@
+diff --git a/26f400fa67e8903e7c9c72c5e1d42aa2f189dba9 b/04d46895ae2f7c32491cc998986412a4c2b9e83c
+index 26f400fa67..04d46895ae 100644
+--- a/26f400fa67e8903e7c9c72c5e1d42aa2f189dba9
++++ b/04d46895ae2f7c32491cc998986412a4c2b9e83c
+@@ -1,5 +1,5 @@
+ @Override
+ public void setHeadsUpManager(HeadsUpManager headsUpManager) {
+     super.setHeadsUpManager(headsUpManager);
+-    mHeadsUpTouchHelper.bind(headsUpManager, mNotificationStackScroller, this);
++    mHeadsUpTouchHelper = new HeadsUpTouchHelper(headsUpManager, mNotificationStackScroller, this);
+ }
+\ No newline at end of file

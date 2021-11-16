@@ -1,0 +1,20 @@
+diff --git a/4955ec7e0922342daef2935e3edd254ae16864db b/03de430affa3d509e9a7c72577c0e359c7f79afe
+index 4955ec7e09..03de430aff 100644
+--- a/4955ec7e0922342daef2935e3edd254ae16864db
++++ b/03de430affa3d509e9a7c72577c0e359c7f79afe
+@@ -1,13 +1,9 @@
+ @Override
+ public void process() {
+     Account account = AccountAggregate.getAccount(accountNo);
+     if (account != null) {
+         throw new RuntimeException("Account already exists");
+     }
+     account = new Account(accountNo, owner);
+-    AccountAggregate.putAccount(account);
+-    // check if this event is replicated from journal before calling an external gateway function
+-    if (!isReplica()) {
+-        Gateways.getAccountCreateContractSender().sendContractInfo(account);
+-    }
++    account.handleEvent(this);
+ }
+\ No newline at end of file

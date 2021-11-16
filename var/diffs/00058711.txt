@@ -1,0 +1,18 @@
+diff --git a/1d56ae9f6e7a4e5a0df6e9bc41d8258ee869118f b/b8f41462e9c1e285db6d6d0dae7812f835c66125
+index 1d56ae9f6e..b8f41462e9 100644
+--- a/1d56ae9f6e7a4e5a0df6e9bc41d8258ee869118f
++++ b/b8f41462e9c1e285db6d6d0dae7812f835c66125
+@@ -1,11 +1,10 @@
+ /**
+  * Returns a transaction handle for a new transaction.
+  *
+  * @return New Transaction Handle
+  */
+ @Override
+ public PersistitTransaction beginTransaction(ConsistencyLevel level) throws StorageException {
+     // all Exchanges created by a thread share the same transaction context
+-    Transaction tx = db.getTransaction();
+-    return new PersistitTransaction(db, tx, level);
++    return new PersistitTransaction(db, level);
+ }
+\ No newline at end of file

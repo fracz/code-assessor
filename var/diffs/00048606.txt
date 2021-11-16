@@ -1,0 +1,28 @@
+diff --git a/54473ff09e5fcd6bf695be395521ca47dcdb33ed b/b3bb5d170e2c880edbb87722551eaa0cf6fc0000
+index 54473ff09e..b3bb5d170e 100644
+--- a/54473ff09e5fcd6bf695be395521ca47dcdb33ed
++++ b/b3bb5d170e2c880edbb87722551eaa0cf6fc0000
+@@ -1,18 +1,18 @@
+ void removeChildItem(DBSObject object) {
+     DBNNode childNode = null;
+     synchronized (this) {
+-        if (!CommonUtils.isEmpty(childNodes)) {
+-            for (Iterator<DBNDatabaseNode> iter = childNodes.iterator(); iter.hasNext(); ) {
+-                final DBNDatabaseNode child = iter.next();
++        if (!ArrayUtils.isEmpty(childNodes)) {
++            for (int i = 0; i < childNodes.length; i++) {
++                final DBNDatabaseNode child = childNodes[i];
+                 if (child.getObject() == object) {
+                     childNode = child;
+-                    iter.remove();
++                    childNodes = ArrayUtils.remove(DBNDatabaseNode.class, childNodes, i);
+                     break;
+                 }
+             }
+         }
+     }
+     if (childNode != null) {
+         childNode.dispose(true);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/35aaca9d1b63b1557d8f9dc1215335a6cd963a05 b/f76e27bc9435aa9a594f90b2c491aaf8555ca2bb
+index 35aaca9d1b..f76e27bc94 100644
+--- a/35aaca9d1b63b1557d8f9dc1215335a6cd963a05
++++ b/f76e27bc9435aa9a594f90b2c491aaf8555ca2bb
+@@ -1,7 +1,7 @@
+ @Test
+ public void server() throws InterruptedException {
+-    TCPReceiver tcpReceiver = new TCPReceiver(new UdpDispatchHandler(), "0.0.0.0", 9099);
++    TCPReceiver tcpReceiver = new TCPReceiver(createConfiguration(), new UdpDispatchHandler());
+     tcpReceiver.start();
+     Thread.sleep(1000);
+     tcpReceiver.stop();
+ }
+\ No newline at end of file

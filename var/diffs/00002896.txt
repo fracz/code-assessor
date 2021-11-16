@@ -1,0 +1,12 @@
+diff --git a/027243bd5afe59cdb8152f83b6e854831332cbae b/15a8c8c578660116dc5150a8a57e59b41ec6d4cd
+index 027243bd5a..15a8c8c578 100644
+--- a/027243bd5afe59cdb8152f83b6e854831332cbae
++++ b/15a8c8c578660116dc5150a8a57e59b41ec6d4cd
+@@ -1,5 +1,5 @@
+ protected DomModelTreeView getTreeView(AnActionEvent e) {
+     if (myTreeView != null)
+         return myTreeView;
+-    return (DomModelTreeView) e.getDataContext().getData(DomModelTreeView.DOM_MODEL_TREE_VIEW_KEY);
++    return DomModelTreeView.DATA_KEY.getData(e.getDataContext());
+ }
+\ No newline at end of file

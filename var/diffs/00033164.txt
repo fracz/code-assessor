@@ -1,0 +1,13 @@
+diff --git a/f13e54651c4620205ac077bd41f574f1e84bbbab b/ed9238bd024ae693c0e0875a1fc4726e3cfe374e
+index f13e54651c..ed9238bd02 100644
+--- a/f13e54651c4620205ac077bd41f574f1e84bbbab
++++ b/ed9238bd024ae693c0e0875a1fc4726e3cfe374e
+@@ -1,5 +1,6 @@
+ protected DependencyFactory createDependencyFactory() {
+     Instantiator instantiator = get(Instantiator.class);
+     DefaultProjectDependencyFactory projectDependencyFactory = new DefaultProjectDependencyFactory(get(StartParameter.class).getProjectDependenciesBuildInstruction(), instantiator);
+-    return new DefaultDependencyFactory(WrapUtil.<IDependencyImplementationFactory>toSet(new ModuleDependencyFactory(instantiator), new SelfResolvingDependencyFactory(instantiator), new ClassPathDependencyFactory(instantiator, get(ClassPathRegistry.class), new IdentityFileResolver()), projectDependencyFactory), new DefaultClientModuleFactory(instantiator), projectDependencyFactory);
++    Set<IDependencyImplementationFactory> dependencyFactories = WrapUtil.toSet(new ModuleDependencyFactory(instantiator), new SelfResolvingDependencyFactory(instantiator), new ClassPathDependencyFactory(instantiator, get(ClassPathRegistry.class), new IdentityFileResolver()), projectDependencyFactory);
++    return new DefaultDependencyFactory(new DependencyNotationParser(dependencyFactories), new DefaultClientModuleFactory(instantiator), projectDependencyFactory);
+ }
+\ No newline at end of file

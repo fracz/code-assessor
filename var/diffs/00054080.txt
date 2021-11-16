@@ -1,0 +1,14 @@
+diff --git a/cb52b9529599940703c6b912854ef6f24d3527dc b/6e4c1040722e577225d143952f32983eedefffe2
+index cb52b95295..6e4c104072 100644
+--- a/cb52b9529599940703c6b912854ef6f24d3527dc
++++ b/6e4c1040722e577225d143952f32983eedefffe2
+@@ -1,7 +1,5 @@
+-private ShardingDataSource createShardingDataSource(final DataSource dataSource) {
+-    Map<String, DataSource> dataSourceMap = new HashMap<>(1);
+-    dataSourceMap.put("ds", dataSource);
++private ShardingDataSource createShardingDataSource(final Map<String, DataSource> dataSourceMap) {
+     DataSourceRule dataSourceRule = new DataSourceRule(dataSourceMap);
+     TableRule tableRule = TableRule.builder("logicTable").actualTables(Arrays.asList("table_0", "table_1", "table_2")).dataSourceRule(dataSourceRule).build();
+     return new ShardingDataSource(ShardingRule.builder().dataSourceRule(dataSourceRule).tableRules(Collections.singletonList(tableRule)).build());
+ }
+\ No newline at end of file

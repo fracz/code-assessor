@@ -1,0 +1,13 @@
+diff --git a/02d011f3d9f4ffae90a1b45e50190670bb69b79a b/b9e0d3c5f3459c5292cd7744a953f0358e079390
+index 02d011f3d9..b9e0d3c5f3 100644
+--- a/02d011f3d9f4ffae90a1b45e50190670bb69b79a
++++ b/b9e0d3c5f3459c5292cd7744a953f0358e079390
+@@ -1,6 +1,6 @@
+ /**
+  * Returns a ConfiguredAttributeMapper bound to the given rule with the target configuration.
+  */
+ private ConfiguredAttributeMapper getMapper(String label) throws Exception {
+-    return ConfiguredAttributeMapper.of((RuleConfiguredTarget) getConfiguredTarget(label));
++    return ((RuleConfiguredTarget) getConfiguredTarget(label)).getAttributeMapper();
+ }
+\ No newline at end of file

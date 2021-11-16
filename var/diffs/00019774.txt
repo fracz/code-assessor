@@ -1,0 +1,16 @@
+diff --git a/7d2d1518831eaed03ca2b015956d7789deaae2c7 b/9f3a6151fcaa57eea58fc2001dd6c9d8e946ee46
+index 7d2d151883..9f3a6151fc 100644
+--- a/7d2d1518831eaed03ca2b015956d7789deaae2c7
++++ b/9f3a6151fcaa57eea58fc2001dd6c9d8e946ee46
+@@ -1,7 +1,7 @@
+ @Override
+ public NClob createNClob() throws SQLException {
+-    if (conn != null) {
+-        return conn.createNClob();
++    if (conn == null) {
++        throw new SQLException("connection not init");
+     }
+-    throw new SQLException("connection not init");
++    return conn.createNClob();
+ }
+\ No newline at end of file

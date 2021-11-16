@@ -1,0 +1,21 @@
+diff --git a/ab1b16500822b350401931ce5133af28a565d54a b/0d33e230dae55c82801cf27decb5f4acce736f1f
+index ab1b165008..0d33e230da 100644
+--- a/ab1b16500822b350401931ce5133af28a565d54a
++++ b/0d33e230dae55c82801cf27decb5f4acce736f1f
+@@ -1,14 +1,14 @@
+-private void setBoldTabs(@NotNull final MTConfig config, final VirtualFile file, final EditorWindow editorWindow) {
++private void setBoldTabs(@NotNull final VirtualFile file, @NotNull final EditorWindow editorWindow) {
+     final EditorWithProviderComposite fileComposite = editorWindow.findFileComposite(file);
+     // Find the tab of the selected file
+     final int editorIndex = getEditorIndex(editorWindow, fileComposite);
+     if (editorIndex >= 0) {
+         final EditorTabbedContainer tabbedPane = editorWindow.getTabbedPane();
+         if (tabbedPane != null) {
+             try {
+                 tabbedPane.getTabs().getTabAt(editorIndex).setDefaultStyle(SimpleTextAttributes.STYLE_BOLD);
+             } catch (IndexOutOfBoundsException ignored) {
+             }
+         }
+     }
+ }
+\ No newline at end of file

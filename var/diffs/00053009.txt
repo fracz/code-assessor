@@ -1,0 +1,13 @@
+diff --git a/751dd965c134badca89db9a3f9a18ca87c54a77f b/7d84327b041ab651127c118695b9fc0f9c758fb3
+index 751dd965c1..7d84327b04 100644
+--- a/751dd965c134badca89db9a3f9a18ca87c54a77f
++++ b/7d84327b041ab651127c118695b9fc0f9c758fb3
+@@ -1,4 +1,6 @@
+ @Override
+ protected OracleInsertStatement createSQLInsertStatement() {
+-    return new OracleInsertStatement();
++    OracleInsertStatement result = new OracleInsertStatement();
++    result.getHints().addAll(getExprParser().parseHints());
++    return result;
+ }
+\ No newline at end of file

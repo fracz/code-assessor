@@ -1,0 +1,18 @@
+diff --git a/68246a3b432502a0520ae7d895a378ac35c1edb5 b/1e3cfd197a6e0941ac625bac7ce23b544dda39fe
+index 68246a3b43..1e3cfd197a 100644
+--- a/68246a3b432502a0520ae7d895a378ac35c1edb5
++++ b/1e3cfd197a6e0941ac625bac7ce23b544dda39fe
+@@ -1,11 +1,11 @@
+ private void processNode(DBRProgressMonitor monitor, DBNNode node) throws DBException {
+     if (!node.allowsChildren()) {
+         return;
+     }
+-    final List<? extends DBNNode> children = node.getChildren(monitor);
++    final DBNNode[] children = node.getChildren(monitor);
+     if (children != null) {
+         for (DBNNode child : children) {
+             processNode(monitor, child);
+         }
+     }
+ }
+\ No newline at end of file

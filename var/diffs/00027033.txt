@@ -1,0 +1,19 @@
+diff --git a/1b3bef1efaadb05b37ad12e6decb016a471d9e8a b/bdfafc90477634580323cc8b1e43bb040d72e6e7
+index 1b3bef1efa..bdfafc9047 100644
+--- a/1b3bef1efaadb05b37ad12e6decb016a471d9e8a
++++ b/bdfafc90477634580323cc8b1e43bb040d72e6e7
+@@ -1,9 +1,9 @@
+-public FloatMatrix getWordVectorMatrixNormalized(String word) {
++public INDArray getWordVectorMatrixNormalized(String word) {
+     int i = this.wordIndex.indexOf(word);
+     if (oob == null)
+         oob = new float[layerSize];
+     if (i < 0)
+-        return FloatMatrix.zeros(syn0.getRow(0).columns);
+-    FloatMatrix r = syn0.getRow(i);
+-    return r.div((SimpleBlas.nrm2(r)));
++        return NDArrays.zeros(syn0.getRow(0).columns());
++    INDArray r = syn0.getRow(i);
++    return r.div((NDArrays.getBlasWrapper().nrm2(r)));
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/f94e177d3cbd85d939f1c96c44df67918785a639 b/04a6e17dcde751797a2ae5c977db55cded19efa2
+index f94e177d3c..04a6e17dcd 100644
+--- a/f94e177d3cbd85d939f1c96c44df67918785a639
++++ b/04a6e17dcde751797a2ae5c977db55cded19efa2
+@@ -1,8 +1,4 @@
+-@Test
++@Test(expected = VerifcationInOrderFailed.class)
+ public void shouldFailWhenMockTwoWantedZeroTimes() {
+-    try {
+-        inOrder.verify(mockTwo, times(0)).simpleMethod(2);
+-        fail();
+-    } catch (TooManyActualInvocations e) {
+-    }
++    inOrder.verify(mockTwo, times(0)).simpleMethod(2);
+ }
+\ No newline at end of file

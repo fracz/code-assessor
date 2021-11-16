@@ -1,0 +1,12 @@
+diff --git a/05aeea6ee9cfbf720ff4560cf9279f82c89ad4e4 b/c912209d681fef7fedac26169be9178999bbea05
+index 05aeea6ee9..c912209d68 100644
+--- a/05aeea6ee9cfbf720ff4560cf9279f82c89ad4e4
++++ b/c912209d681fef7fedac26169be9178999bbea05
+@@ -1,5 +1,5 @@
+ public void verify(VerificationData data) {
+-    List<Invocation> invocations = new VerifiableInvocationsFinder().find(inOrder.getMocksToBeVerifiedInOrder());
++    List<Invocation> invocations = VerifiableInvocationsFinder.find(inOrder.getMocksToBeVerifiedInOrder());
+     VerificationDataInOrderImpl dataInOrder = new VerificationDataInOrderImpl(inOrder, invocations, data.getWanted());
+     mode.verifyInOrder(dataInOrder);
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/b8f18b7b09bdf86ec6b012923d60b61340ee7b38 b/8cc5f9a98c39a4429e9108fdefe8fea931d6751b
+index b8f18b7b09..8cc5f9a98c 100644
+--- a/b8f18b7b09bdf86ec6b012923d60b61340ee7b38
++++ b/8cc5f9a98c39a4429e9108fdefe8fea931d6751b
+@@ -1,11 +1,13 @@
+ protected void resetAutoCommit() {
+     try {
+         if (!connection.getAutoCommit()) {
+-            // for compatibility we always use true, as some drivers don't like being left in "false" mode.
++            // MyBatis does not call commit/rollback on a connection if just selects were performed.
++            // Some databases start transactions with select statements
++            // and they mandate a commit/rollback before closing the connection.
++            // A workaround is setting the autocommit to true before closing the connection.
+             connection.setAutoCommit(true);
+         }
+     } catch (SQLException e) {
+-        // and there's not much we can do about that.
+-        throw new TransactionException("Error configuring AutoCommit.  " + "Your driver may not support getAutoCommit() or setAutoCommit(). Cause: " + e, e);
++        log.debug("Error resetting autocommit to true " + "before closing the connection.  Cause: " + e);
+     }
+ }
+\ No newline at end of file

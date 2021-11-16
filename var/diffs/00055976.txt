@@ -1,0 +1,20 @@
+diff --git a/aa26839a219749cea2b52406a6c47151e508ee73 b/b7bc0d27629d9de414bb3ffd9d432df01abdd76e
+index aa26839a21..b7bc0d2762 100644
+--- a/aa26839a219749cea2b52406a6c47151e508ee73
++++ b/b7bc0d27629d9de414bb3ffd9d432df01abdd76e
+@@ -1,13 +1,13 @@
+ /**
+  * Process the path pattern data, a character at a time, breaking it into
+  * path elements around separator boundaries and verifying the structure at each
+  * stage. Produces a PathPattern object that can be used for fast matching
+  * against paths. Each invocation of this method delegates to a new instance of
+  * the {@link InternalPathPatternParser} because that class is not thread-safe.
+  * @param pathPattern the input path pattern, e.g. /foo/{bar}
+  * @return a PathPattern for quickly matching paths against request paths
+  * @throws PatternParseException in case of parse errors
+  */
+ public PathPattern parse(String pathPattern) throws PatternParseException {
+-    return createDelegate().parse(pathPattern);
++    return new InternalPathPatternParser(this).parse(pathPattern);
+ }
+\ No newline at end of file

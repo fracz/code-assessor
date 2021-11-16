@@ -1,0 +1,14 @@
+diff --git a/ed4f964ce97a240f669a05264325be84cdf14116 b/c6e841095b71a47c65ef0bd8dbe7e731114ecadb
+index ed4f964ce9..c6e841095b 100644
+--- a/ed4f964ce97a240f669a05264325be84cdf14116
++++ b/c6e841095b71a47c65ef0bd8dbe7e731114ecadb
+@@ -1,3 +1,6 @@
+-protected ModuleFixtureImpl instantiateFixture() {
+-    return new ModuleFixtureImpl(this);
++protected synchronized ModuleFixtureImpl instantiateFixture() {
++    if (myModuleFixture == null) {
++        myModuleFixture = new ModuleFixtureImpl(this);
++    }
++    return myModuleFixture;
+ }
+\ No newline at end of file

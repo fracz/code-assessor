@@ -1,0 +1,21 @@
+diff --git a/7e88cd93e41c0b1b33ec331891733747bdd9054f b/aaf89c5821b8ec3f2b947bfb10b20ce5a66dd2b2
+index 7e88cd93e4..aaf89c5821 100644
+--- a/7e88cd93e41c0b1b33ec331891733747bdd9054f
++++ b/aaf89c5821b8ec3f2b947bfb10b20ce5a66dd2b2
+@@ -1,13 +1,9 @@
+ public IEditorPart createEditor() {
+-    Class<? extends IEditorPart> clazz = getEditorClass();
+-    if (clazz == null) {
+-        return null;
+-    }
+     try {
+-        return clazz.newInstance();
++        return editorType.createInstance(IEditorPart.class);
+     } catch (Exception ex) {
+         // $NON-NLS-1$ //$NON-NLS-2$
+-        log.error("Error instantiating entity editor '" + className + "'", ex);
++        log.error("Error instantiating entity editor '" + editorType.getImplName() + "'", ex);
+         return null;
+     }
+ }
+\ No newline at end of file

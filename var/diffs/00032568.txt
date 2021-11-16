@@ -1,0 +1,14 @@
+diff --git a/409ee74f317a6efd0d69018eab38801e6dafd016 b/81a693b8c58c5b04f4d0a8c10b1357f92f0484e9
+index 409ee74f31..81a693b8c5 100644
+--- a/409ee74f317a6efd0d69018eab38801e6dafd016
++++ b/81a693b8c58c5b04f4d0a8c10b1357f92f0484e9
+@@ -1,5 +1,6 @@
+ @Before
+ public void setUp() {
+-    diagnosticHelper = new DiagnosticTestHelper();
+-    compiler = new ErrorProneCompiler.Builder().report(new ArrayEquals.Scanner()).listenToDiagnostics(diagnosticHelper.collector).build();
++    DiagnosticTestHelper diagnosticHelper = new DiagnosticTestHelper();
++    ErrorProneCompiler compiler = new ErrorProneCompiler.Builder().report(new ArrayEquals.Scanner()).listenToDiagnostics(diagnosticHelper.collector).build();
++    compilationHelper = new CompilationHelper(diagnosticHelper, compiler);
+ }
+\ No newline at end of file

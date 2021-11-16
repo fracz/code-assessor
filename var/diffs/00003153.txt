@@ -1,0 +1,16 @@
+diff --git a/4ae31ca666a9e3914792b8fd3d87aed308903338 b/0e50ec5a17c475df020a2fe5bde8905eedab2e21
+index 4ae31ca666..0e50ec5a17 100644
+--- a/4ae31ca666a9e3914792b8fd3d87aed308903338
++++ b/0e50ec5a17c475df020a2fe5bde8905eedab2e21
+@@ -1,9 +1,7 @@
+ public static Icon loadIcon(@NonNls final String iconName) {
+     final Application application = ApplicationManager.getApplication();
+     if (application == null || application.isUnitTestMode())
+         return new ImageIcon(new BufferedImage(1, 1, BufferedImage.TYPE_3BYTE_BGR));
+     @NonNls final String fullIconName = ICONS_ROOT + iconName + ".png";
+-    final Icon icon = IconLoader.getIcon(fullIconName);
+-    LOG.assertTrue(icon != null, fullIconName);
+-    return icon;
++    return IconLoader.getIcon(fullIconName);
+ }
+\ No newline at end of file

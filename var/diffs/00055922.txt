@@ -1,0 +1,18 @@
+diff --git a/3c6d9f772d4032972bbb82240372f5d5d843fbc6 b/79501c153ca4f8f6cabc2c5a49553cfbcc32f0e9
+index 3c6d9f772d..79501c153c 100644
+--- a/3c6d9f772d4032972bbb82240372f5d5d843fbc6
++++ b/79501c153ca4f8f6cabc2c5a49553cfbcc32f0e9
+@@ -1,9 +1,9 @@
+ @Test
+-public void testNumberToNumberNotSupportedNumber() {
+-    NumberToNumber n = new NumberToNumber();
++public void testNumberToNumberNotSupportedNumber() throws Exception {
++    Converter<Number, CustomNumber> c = new NumberToNumberFactory().getConverter(CustomNumber.class);
+     try {
+-        n.convert(Integer.valueOf(1), CustomNumber.class);
++        c.convert(Integer.valueOf(1));
+         fail("Should have failed");
+     } catch (IllegalArgumentException e) {
+     }
+ }
+\ No newline at end of file

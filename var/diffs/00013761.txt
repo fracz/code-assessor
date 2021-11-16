@@ -1,0 +1,14 @@
+diff --git a/06da0b76313704369f1122e4b99013af2f90a391 b/888bab3b54f0a7cf8d610c30d57915140ac746ad
+index 06da0b7631..888bab3b54 100644
+--- a/06da0b76313704369f1122e4b99013af2f90a391
++++ b/888bab3b54f0a7cf8d610c30d57915140ac746ad
+@@ -1,6 +1,3 @@
+-public synchronized <T> CachedValue<T> createCachedValue(CachedValueProvider<T> provider, boolean trackValue) {
+-    final CachedValue<T> value = new CachedValueImpl<T>(myManager, provider, trackValue);
+-    myValues.add(value);
+-    myValuesMaxSize = Math.max(myValuesMaxSize, myValues.size());
+-    return value;
++public <T> CachedValue<T> createCachedValue(CachedValueProvider<T> provider, boolean trackValue) {
++    return new CachedValueImpl<T>(myManager, provider, trackValue);
+ }
+\ No newline at end of file

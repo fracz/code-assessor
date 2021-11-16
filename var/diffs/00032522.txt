@@ -1,0 +1,23 @@
+diff --git a/4d91e9035961982399215726ad72c6a85a927839 b/5b66d09318da58ba5219d2ccd592fa2a5ff1fe1a
+index 4d91e90359..5b66d09318 100644
+--- a/4d91e9035961982399215726ad72c6a85a927839
++++ b/5b66d09318da58ba5219d2ccd592fa2a5ff1fe1a
+@@ -1,10 +1,10 @@
+ @Override
+-public Void visitAssignment(AssignmentTree assignmentTree, VisitorState visitorState) {
+-    for (DescribingMatcher<AssignmentTree> matcher : assignmentMatchers) {
+-        evaluateMatch(assignmentTree, visitorState, matcher);
++public Void visitAssignment(AssignmentTree tree, VisitorState visitorState) {
++    VisitorState state = visitorState.withPath(getCurrentPath());
++    for (AssignmentTreeMatcher matcher : assignmentMatchers) {
++        if (isSuppressed(matcher))
++            continue;
++        reportMatch(matcher.matchAssignment(tree, state), tree, state);
+     }
+-    for (DescribingMatcher<Tree> selfAssignmentMatcher : selfAssignmentMatchers) {
+-        evaluateMatch(assignmentTree, visitorState, selfAssignmentMatcher);
+-    }
+-    return super.visitAssignment(assignmentTree, visitorState);
++    return super.visitAssignment(tree, visitorState);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/d34df98836bb1573e4e6d1a1e2aa7db4467edab1 b/1d0f9e516d067f25389441fc7c525a922bc6ec43
+index d34df98836..1d0f9e516d 100644
+--- a/d34df98836bb1573e4e6d1a1e2aa7db4467edab1
++++ b/1d0f9e516d067f25389441fc7c525a922bc6ec43
+@@ -1,9 +1,9 @@
+ public static void pushHashMap(ExtTHashMap map) {
+     Queue<ExtTHashMap> ref = hashMap.get();
+     if (ref == null) {
+-        ref = new LinkedTransferQueue<ExtTHashMap>();
++        ref = ConcurrentCollections.newQueue();
+         hashMap.set(ref);
+     }
+     map.clear();
+     ref.add(map);
+ }
+\ No newline at end of file

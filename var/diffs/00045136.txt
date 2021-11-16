@@ -1,0 +1,20 @@
+diff --git a/4089be9216be9574c60ddbf5650bf293549446f2 b/704446b9d1999d7eb5379e8db0a33cf812255cfc
+index 4089be9216..704446b9d1 100644
+--- a/4089be9216be9574c60ddbf5650bf293549446f2
++++ b/704446b9d1999d7eb5379e8db0a33cf812255cfc
+@@ -1,9 +1,12 @@
+ @Override
+ public Shape fromMapGeoJson(Map geoJsonMap) {
+     OShapeBuilder oShapeBuilder = factories.get(geoJsonMap.get("type"));
++    if (oShapeBuilder == null) {
++        oShapeBuilder = factories.get(geoJsonMap.get("@class"));
++    }
+     if (oShapeBuilder != null) {
+         return oShapeBuilder.fromMapGeoJson(geoJsonMap);
+     }
+-    // TODO handle exception shape not found
+-    return null;
++    throw new IllegalArgumentException("Invalid map");
++// TODO handle exception shape not found
+ }
+\ No newline at end of file

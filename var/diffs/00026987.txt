@@ -1,0 +1,15 @@
+diff --git a/c32bcbd8a2fc314c9ae452162b927f652b79de95 b/cbadbab5a6b872a1d512f502a7e8fbef302a51dc
+index c32bcbd8a2..cbadbab5a6 100644
+--- a/c32bcbd8a2fc314c9ae452162b927f652b79de95
++++ b/cbadbab5a6b872a1d512f502a7e8fbef302a51dc
+@@ -1,6 +1,6 @@
+ @Override
+-public void setParameters(DoubleMatrix params) {
++public void setParameters(INDArray params) {
+     if (network.isConstrainGradientToUnitNorm())
+-        params.divi(params.normmax());
+-    for (int i = 0; i < params.length; i++) setParameter(i, params.get(i));
++        params.divi(params.normmax(Integer.MAX_VALUE));
++    for (int i = 0; i < params.length(); i++) setParameter(i, (double) params.getScalar(i).element());
+ }
+\ No newline at end of file

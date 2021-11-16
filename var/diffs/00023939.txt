@@ -1,0 +1,18 @@
+diff --git a/410f0120e92989b0cef5a35cfe0b2a074a96ee72 b/4887792680e058b9374f701a6b014dc630a6fdbe
+index 410f0120e9..4887792680 100644
+--- a/410f0120e92989b0cef5a35cfe0b2a074a96ee72
++++ b/4887792680e058b9374f701a6b014dc630a6fdbe
+@@ -1,11 +1,11 @@
+ @Test
+ public void testVersions() throws Throwable {
+     boolean notSkipped = false;
+     for (File version : LEGACY_SSTABLE_ROOT.listFiles()) {
+-        if (Descriptor.Version.validate(version.getName()) && new Descriptor.Version(version.getName()).isCompatible()) {
++        if (Version.validate(version.getName()) && SSTableFormat.Type.LEGACY.info.getVersion(version.getName()).isCompatible()) {
+             notSkipped = true;
+             testVersion(version.getName());
+         }
+     }
+     assert notSkipped;
+ }
+\ No newline at end of file

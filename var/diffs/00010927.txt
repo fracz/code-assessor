@@ -1,0 +1,21 @@
+diff --git a/00574c0e057bdb2523ef488ca1e1a25da235ebc7 b/2c681f02b93b9a7ac2807d32806b49859f5e46ec
+index 00574c0e05..2c681f02b9 100644
+--- a/00574c0e057bdb2523ef488ca1e1a25da235ebc7
++++ b/2c681f02b93b9a7ac2807d32806b49859f5e46ec
+@@ -1,10 +1,9 @@
+-private static List<MavenGoalAction> collectActions(MavenProject eachProject, MavenProjectsManager projectsManager, MavenTasksManager eventsHandler) {
++private static List<MavenGoalAction> collectActions(Project project, MavenProject mavenProject) {
++    MavenProjectsManager projectsManager = MavenProjectsManager.getInstance(project);
++    File localRepository = projectsManager.getLocalRepository();
+     List<MavenGoalAction> result = new ArrayList<MavenGoalAction>();
+-    String projectName = eachProject.getDisplayName();
+-    String pomPath = eachProject.getPath();
+-    String actionIdPrefix = eventsHandler.getActionId(pomPath, null);
+-    for (String eachGoal : collectGoals(eachProject, projectsManager.getLocalRepository())) {
+-        result.add(new MavenGoalAction(projectName, actionIdPrefix, pomPath, eachGoal));
++    for (String eachGoal : collectGoals(mavenProject, localRepository)) {
++        result.add(new MavenGoalAction(mavenProject, eachGoal));
+     }
+     return result;
+ }
+\ No newline at end of file

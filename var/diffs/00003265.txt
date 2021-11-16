@@ -1,0 +1,20 @@
+diff --git a/642122dfc1dc6faeb56b1b08db5f1476c3632be5 b/3b24c695b9e40d76032337988ab0a9afc0c87b19
+index 642122dfc1..3b24c695b9 100644
+--- a/642122dfc1dc6faeb56b1b08db5f1476c3632be5
++++ b/3b24c695b9e40d76032337988ab0a9afc0c87b19
+@@ -1,13 +1,13 @@
+ public static <T extends PsiReference> void registerReferenceFixes(T ref, QuickFixActionRegistrar registrar) {
+     final boolean dumb = DumbService.getInstance(ref.getElement().getProject()).isDumb();
+     UnresolvedReferenceQuickFixProvider[] fixProviders = Extensions.getExtensions(EXTENSION_NAME);
+     Class<? extends PsiReference> referenceClass = ref.getClass();
+     for (UnresolvedReferenceQuickFixProvider each : fixProviders) {
+-        if (dumb && !(each instanceof DumbAware)) {
++        if (dumb && !DumbService.isDumbAware(each)) {
+             continue;
+         }
+         if (ReflectionCache.isAssignable(each.getReferenceClass(), referenceClass)) {
+             each.registerFixes(ref, registrar);
+         }
+     }
+ }
+\ No newline at end of file

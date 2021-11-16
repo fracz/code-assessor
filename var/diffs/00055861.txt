@@ -1,0 +1,17 @@
+diff --git a/274197862dedeca0a02bb4fbaf116759b60539d4 b/0c1df517a17af18e857a762b2bd173571c50f54a
+index 274197862d..0c1df517a1 100644
+--- a/274197862dedeca0a02bb4fbaf116759b60539d4
++++ b/0c1df517a17af18e857a762b2bd173571c50f54a
+@@ -1,7 +1,9 @@
+ @Test
+ public void wrapEmptyWithOptional() throws Exception {
+     BindingContext bindingContext = new BindingContext();
+     Mono<Object> mono = this.resolver.resolveArgument(this.paramOptional, bindingContext, this.exchange);
+-    Object result = mono.block();
+-    TestSubscriber.subscribe(mono).assertValues(Optional.empty());
++    ScriptedSubscriber.create().consumeNextWith(value -> {
++        assertTrue(value instanceof Optional);
++        assertFalse(((Optional) value).isPresent());
++    }).expectComplete().verify(mono);
+ }
+\ No newline at end of file

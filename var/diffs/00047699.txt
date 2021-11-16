@@ -1,0 +1,13 @@
+diff --git a/aad8809134c52819559adb5165f2b4d93a7afa25 b/184f9463a13aa6d7753120d6005315723e4e0150
+index aad8809134..184f9463a1 100644
+--- a/aad8809134c52819559adb5165f2b4d93a7afa25
++++ b/184f9463a13aa6d7753120d6005315723e4e0150
+@@ -1,6 +1,6 @@
+ @Test
+ public void testEval() {
+     RScript script = redisson.getScript();
+     List<Object> res = script.eval(RScript.Mode.READ_ONLY, "return {1,2,3.3333,'\"foo\"',nil,'bar'}", RScript.ReturnType.MULTI, Collections.emptyList());
+-    MatcherAssert.assertThat(res, Matchers.<Object>contains(1L, 2L, 3L, "foo"));
++    assertThat(res).containsExactly(1L, 2L, 3L, "foo");
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/a8542d4e1596eafce51be79dc03574939b05f2b7 b/84c34c99f54c33e7c66603b4b27b3c687a1c1d36
+index a8542d4e15..84c34c99f5 100644
+--- a/a8542d4e1596eafce51be79dc03574939b05f2b7
++++ b/84c34c99f54c33e7c66603b4b27b3c687a1c1d36
+@@ -1,9 +1,10 @@
+ @Test
+ public void parseWithParameter() {
++    String sql = "UPDATE TABLE_XXX AS xxx SET field1=field1+? WHERE field4<? AND xxx.field1=? AND field5>? AND xxx.field2 IN (?, ?) AND field6<=? AND xxx.field3 BETWEEN ? AND ? AND field7>=?";
+     ShardingRule shardingRule = createShardingRule();
+-    SQLParsingEngine statementParser = new SQLParsingEngine(DatabaseType.MySQL, "UPDATE TABLE_XXX AS xxx SET field1=field1+? WHERE field4<? AND xxx.field1=? AND field5>? AND xxx.field2 IN (?, ?) AND field6<=? AND xxx.field3 BETWEEN ? AND ? AND field7>=?", shardingRule);
++    SQLParsingEngine statementParser = new SQLParsingEngine(DatabaseType.MySQL, sql, shardingRule);
+     UpdateSQLContext sqlContext = (UpdateSQLContext) statementParser.parseStatement();
+     assertUpdateStatementWitParameter(sqlContext);
+     // TODO 放入rewrite模块断言
+-    assertThat(new SQLRewriteEngine(sqlContext.getSqlBuilderContext()).rewrite().toString(), is("UPDATE [Token(TABLE_XXX)] AS xxx SET field1=field1+? " + "WHERE field4<? AND xxx.field1=? AND field5>? AND xxx.field2 IN (?, ?) AND field6<=? AND xxx.field3 BETWEEN ? AND ? AND field7>=?"));
++    assertThat(new SQLRewriteEngine(sql, sqlContext).rewrite().toString(), is("UPDATE [Token(TABLE_XXX)] AS xxx SET field1=field1+? " + "WHERE field4<? AND xxx.field1=? AND field5>? AND xxx.field2 IN (?, ?) AND field6<=? AND xxx.field3 BETWEEN ? AND ? AND field7>=?"));
+ }
+\ No newline at end of file

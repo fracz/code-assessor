@@ -1,0 +1,22 @@
+diff --git a/1f246b83d34689c53d04c9fc6ad49853890d18d3 b/c921018bdf4ae3ed5622f1b666ca7bb02cf9f10a
+index 1f246b83d3..c921018bdf 100644
+--- a/1f246b83d34689c53d04c9fc6ad49853890d18d3
++++ b/c921018bdf4ae3ed5622f1b666ca7bb02cf9f10a
+@@ -1,9 +1,10 @@
+ @Override
+ public Set<K> keySet() {
+-    RedisConnection<Object, Object> connection = connectionManager.connectionReadOp();
+-    try {
+-        return (Set<K>) connection.hkeys(getName());
+-    } finally {
+-        connectionManager.releaseRead(connection);
+-    }
++    return (Set<K>) connectionManager.read(new ResultOperation<Set<Object>, V>() {
++
++        @Override
++        public Future<Set<Object>> execute(RedisAsyncConnection<Object, V> async) {
++            return async.hkeys(getName());
++        }
++    });
+ }
+\ No newline at end of file

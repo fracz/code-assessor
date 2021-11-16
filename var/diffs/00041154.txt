@@ -1,0 +1,12 @@
+diff --git a/b49c651ce1a7d88d2e53595542075cf15f93578f b/e8ae2815465e71cb7e16c4c957be028892df1f25
+index b49c651ce1..e8ae281546 100644
+--- a/b49c651ce1a7d88d2e53595542075cf15f93578f
++++ b/e8ae2815465e71cb7e16c4c957be028892df1f25
+@@ -1,4 +1,3 @@
+-private OSequenceLibrary getSequenceLibrary() {
+-    final ODatabaseDocument db = ODatabaseRecordThreadLocal.INSTANCE.get();
+-    return db.getMetadata().getSequenceLibrary();
++private OSequenceLibraryImpl getSequenceLibrary() {
++    return ((OSequenceLibraryProxy) getDatabase().getMetadata().getSequenceLibrary()).getDelegate();
+ }
+\ No newline at end of file

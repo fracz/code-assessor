@@ -1,0 +1,18 @@
+diff --git a/116a43c40b98dbd087b6cf0b02e3276353b0019a b/3870efa4e1f5828628a1f4a90b22f5e187306185
+index 116a43c40b..3870efa4e1 100644
+--- a/116a43c40b98dbd087b6cf0b02e3276353b0019a
++++ b/3870efa4e1f5828628a1f4a90b22f5e187306185
+@@ -1,3 +1,11 @@
+ private boolean isAccurateSharding(final List<ShardingValue<?>> shardingValues) {
+-    return 1 == shardingValues.size() && (ShardingValue.ShardingValueType.SINGLE == shardingValues.get(0).getType() || ShardingValue.ShardingValueType.LIST == shardingValues.get(0).getType());
++    if (shardingValues.isEmpty()) {
++        return false;
++    }
++    for (ShardingValue<?> each : shardingValues) {
++        if (ShardingValue.ShardingValueType.RANGE == each.getType()) {
++            return false;
++        }
++    }
++    return true;
+ }
+\ No newline at end of file

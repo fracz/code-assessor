@@ -1,0 +1,14 @@
+diff --git a/1eb550f4ca4b4dab7fb98b0175cd40d8624aae2a b/a53bc6452b61c625fcfa94705f42dcccae878971
+index 1eb550f4ca..a53bc6452b 100644
+--- a/1eb550f4ca4b4dab7fb98b0175cd40d8624aae2a
++++ b/a53bc6452b61c625fcfa94705f42dcccae878971
+@@ -1,4 +1,5 @@
+-public void markBusy() {
+-    assertHasStatus();
+-    status.setIdle(false);
++public void markBusy(Address address) {
++    synchronized (statuses) {
++        statuses.get(address).setIdle(false);
++    }
+ }
+\ No newline at end of file

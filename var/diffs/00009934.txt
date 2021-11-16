@@ -1,0 +1,41 @@
+diff --git a/37c51a6fd3c3ef8cacd526d3099ef5563c4b7ebb b/9a18ec6080ad8b948adb99772011ac4c35c6ff83
+index 37c51a6fd3..9a18ec6080 100644
+--- a/37c51a6fd3c3ef8cacd526d3099ef5563c4b7ebb
++++ b/9a18ec6080ad8b948adb99772011ac4c35c6ff83
+@@ -1,22 +1,28 @@
+ @Override
+ protected DefaultSchemeActions<CodeStyleScheme> createSchemeActions() {
+-    return new CodeStyleSchemesActions() {
+-
+-        @NotNull
+-        @Override
+-        protected JComponent getParentComponent() {
+-            return getToolbarPanel();
+-        }
++    return new CodeStyleSchemesActions(this) {
+
+         @Override
+         protected CodeStyleSchemesModel getSchemesModel() {
+             return myModel;
+         }
+
+         @Nullable
+         @Override
+         protected CodeStyleScheme getCurrentScheme() {
+             return getSelectedScheme();
+         }
++
++        @Override
++        public SchemeLevel getSchemeLevel(@NotNull CodeStyleScheme scheme) {
++            return myModel.isProjectScheme(scheme) ? SchemeLevel.Project : SchemeLevel.IDE;
++        }
++
++        @Override
++        protected void onSchemeChanged(@Nullable CodeStyleScheme scheme) {
++            if (!myIsReset) {
++                ApplicationManager.getApplication().invokeLater(() -> onCombo());
++            }
++        }
+     };
+ }
+\ No newline at end of file

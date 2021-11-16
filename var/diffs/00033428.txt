@@ -1,0 +1,17 @@
+diff --git a/27746a50c2945872e6db8fec75aa5377220c0fd9 b/0acc22cd53b788da2a3bd2020d9098c86554017a
+index 27746a50c2..0acc22cd53 100644
+--- a/27746a50c2945872e6db8fec75aa5377220c0fd9
++++ b/0acc22cd53b788da2a3bd2020d9098c86554017a
+@@ -1,9 +1,5 @@
+ public Set<ModuleIdentifier> parseNotation(Object notation) {
+     assert notation != null : "notation cannot be null";
+-    Set<ModuleIdentifier> out = new LinkedHashSet<ModuleIdentifier>();
+-    Collection notations = GUtil.normalize(notation);
+-    for (Object n : notations) {
+-        out.add(parseSingleNotation(n));
+-    }
+-    return out;
++    Collection<ModuleIdentifier> parsed = delegate.parseNotation(notation);
++    return new LinkedHashSet<ModuleIdentifier>(parsed);
+ }
+\ No newline at end of file

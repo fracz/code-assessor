@@ -1,0 +1,27 @@
+diff --git a/010bc90d208b27f45053cca42c4d743fabbe1d7d b/2d5323cc45edc3851089d0a6d09eeec2fa8bb538
+index 010bc90d20..2d5323cc45 100644
+--- a/010bc90d208b27f45053cca42c4d743fabbe1d7d
++++ b/2d5323cc45edc3851089d0a6d09eeec2fa8bb538
+@@ -1,19 +1,9 @@
+ @Override
+ public StoreTransaction beginTransaction(ConsistencyLevel consistencyLevel) throws StorageException {
+     if (transactional) {
+         TransactionOptions options = TransactionOptions.getDefault().setTransactionType(TransactionOptions.TransactionType.LOCAL);
+         return new HazelCastTransaction(manager.newTransactionContext(options), consistencyLevel);
++    } else {
++        return new NoOpStoreTransaction(consistencyLevel);
+     }
+-    // No-op transaction
+-    return new AbstractStoreTransaction(consistencyLevel) {
+-
+-        @Override
+-        public void commit() throws StorageException {
+-        // no op
+-        }
+-
+-        public void rollback() throws StorageException {
+-        // no op
+-        }
+-    };
+ }
+\ No newline at end of file

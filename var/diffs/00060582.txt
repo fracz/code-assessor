@@ -1,0 +1,29 @@
+diff --git a/b0b30ab02e2d7a2dcdf363cf75ecb8a4a0a74f91 b/8679f25671b74d218b179b2d3d974279dc2bf9fc
+index b0b30ab02e..8679f25671 100644
+--- a/b0b30ab02e2d7a2dcdf363cf75ecb8a4a0a74f91
++++ b/8679f25671b74d218b179b2d3d974279dc2bf9fc
+@@ -1,20 +1,22 @@
+ /**
+  * This method initializes btnAccept
+  *
+  * @return javax.swing.JButton
+  */
+ private JButton getBtnAccept() {
+     if (btnAccept == null) {
+         btnAccept = new JButton();
+         btnAccept.setText("Accept");
+         btnAccept.addActionListener(new java.awt.event.ActionListener() {
+
+             @Override
+             public void actionPerformed(java.awt.event.ActionEvent e) {
+                 accepted = true;
+-                LicenseFrame.this.dispose();
++                if (postTask != null) {
++                    postTask.run();
++                }
+             }
+         });
+     }
+     return btnAccept;
+ }
+\ No newline at end of file

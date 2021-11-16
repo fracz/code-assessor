@@ -1,0 +1,28 @@
+diff --git a/845215113a7b3d775b91f86cb400817f29cb2054 b/59d94a759b88c071530dfa1d81df3cdd0d0a40f3
+index 845215113a..59d94a759b 100644
+--- a/845215113a7b3d775b91f86cb400817f29cb2054
++++ b/59d94a759b88c071530dfa1d81df3cdd0d0a40f3
+@@ -1,19 +1,18 @@
+ public static Short castToShort(Object value) {
+     if (value == null) {
+         return null;
+     }
+     if (value instanceof Number) {
+         return ((Number) value).shortValue();
+     }
+     if (value instanceof String) {
+         String strVal = (String) value;
+-        if (strVal.length() == 0) {
+-            return null;
+-        }
+-        if ("null".equals(strVal) || "NULL".equals(strVal)) {
++        if (//
++        strVal.length() == 0 || //
++        "null".equals(strVal) || "NULL".equals(strVal)) {
+             return null;
+         }
+         return Short.parseShort(strVal);
+     }
+     throw new JSONException("can not cast to short, value : " + value);
+ }
+\ No newline at end of file

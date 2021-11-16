@@ -1,0 +1,15 @@
+diff --git a/8cd5566678e0cefe7e18e4daaef4f069b8c01fa2 b/e2aa7894d5f0451500c0d61909321edbb1496478
+index 8cd5566678..e2aa7894d5 100644
+--- a/8cd5566678e0cefe7e18e4daaef4f069b8c01fa2
++++ b/e2aa7894d5f0451500c0d61909321edbb1496478
+@@ -1,8 +1,7 @@
+ private static void updateConstructor(ClassPool classPool, CtClass cc) throws Exception {
+     CtConstructor[] constructorList = cc.getConstructors();
+     if (constructorList.length == 1) {
+-        logger.info("Changing Constructor ");
+         CtConstructor constructor = constructorList[0];
+-        constructor.insertAfter(getConstructorAfterInsertCode());
++        constructor.insertAfter("{" + TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".putSqlQuery(" + TomcatProfilerConstant.REQ_DATA_TYPE_DB_QUERY + ",$2); }");
+     }
+ }
+\ No newline at end of file

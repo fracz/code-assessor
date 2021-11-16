@@ -1,0 +1,13 @@
+diff --git a/d019b1e695a1fffd3515984f89f3ade05efd2122 b/90b2ea6b89f112629128eab00fd0616b81de77cd
+index d019b1e695..90b2ea6b89 100644
+--- a/d019b1e695a1fffd3515984f89f3ade05efd2122
++++ b/90b2ea6b89f112629128eab00fd0616b81de77cd
+@@ -1,6 +1,6 @@
+ public DependencyDescriptor createFromProjectDependency(ModuleDescriptor parent, ProjectDependency dependency) {
+-    DefaultDependencyDescriptor dependencyDescriptor = new DefaultDependencyDescriptor(parent, dependency.getDependencyProject().getDependencies().createModuleRevisionId(), false, true, dependency.isTransitive());
++    DefaultDependencyDescriptor dependencyDescriptor = new DefaultDependencyDescriptor(parent, createModuleRevisionIdFromDependency(dependency), false, true, dependency.isTransitive());
+     addExcludes(dependency.getExcludeRules(), dependencyDescriptor, IvyUtil.getAllMasterConfs(parent.getConfigurations()));
+     addDependencyConfigurations(dependency.getDependencyConfigurationMappings(), dependencyDescriptor);
+     return dependencyDescriptor;
+ }
+\ No newline at end of file

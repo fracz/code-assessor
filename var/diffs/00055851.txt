@@ -1,0 +1,14 @@
+diff --git a/389ff5edadf9e79abc0aafc5c1eed41ac69a7a89 b/984a42e51bcb8ce3efa4bec2e0d289f282287f7f
+index 389ff5edad..984a42e51b 100644
+--- a/389ff5edadf9e79abc0aafc5c1eed41ac69a7a89
++++ b/984a42e51bcb8ce3efa4bec2e0d289f282287f7f
+@@ -1,7 +1,7 @@
+ @Test
+ public void decodeSingleChunkToArray() throws InterruptedException {
+     JsonObjectDecoder decoder = new JsonObjectDecoder();
+     Flux<DataBuffer> source = Flux.just(stringBuffer("[{\"foo\": \"foofoo\", \"bar\": \"barbar\"},{\"foo\": \"foofoofoo\", \"bar\": \"barbarbar\"}]"));
+     Flux<String> output = decoder.decode(source, null, null, Collections.emptyMap()).map(JsonObjectDecoderTests::toString);
+-    TestSubscriber.subscribe(output).assertValues("{\"foo\": \"foofoo\", \"bar\": \"barbar\"}", "{\"foo\": \"foofoofoo\", \"bar\": \"barbarbar\"}");
++    ScriptedSubscriber.<String>create().expectNext("{\"foo\": \"foofoo\", \"bar\": \"barbar\"}").expectNext("{\"foo\": \"foofoofoo\", \"bar\": \"barbarbar\"}").expectComplete().verify(output);
+ }
+\ No newline at end of file

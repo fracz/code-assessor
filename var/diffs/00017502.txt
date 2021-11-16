@@ -1,0 +1,22 @@
+diff --git a/b07ee603cd7b31ad4778b500f265a23f9be81214 b/c4c822b7001d1c26752d1a16ad75ab769e207ff9
+index b07ee603cd..c4c822b700 100644
+--- a/b07ee603cd7b31ad4778b500f265a23f9be81214
++++ b/c4c822b7001d1c26752d1a16ad75ab769e207ff9
+@@ -1,10 +1,10 @@
+-private List<TypeParameterDescriptor> resolveMethodTypeParameters(@NotNull PsiMethodWrapper method, @NotNull DeclarationDescriptor functionDescriptor, @NotNull TypeVariableResolver classTypeVariableResolver) {
++private List<TypeParameterDescriptorInitialization> resolveMethodTypeParameters(@NotNull PsiMethodWrapper method, @NotNull DeclarationDescriptor functionDescriptor, @NotNull TypeVariableResolver classTypeVariableResolver) {
++    List<TypeParameterDescriptorInitialization> typeParameters;
+     if (method.getJetMethod().typeParameters().length() > 0) {
+-        List<TypeParameterDescriptor> r = resolveMethodTypeParametersFromJetSignature(method.getJetMethod().typeParameters(), method.getPsiMethod(), functionDescriptor, classTypeVariableResolver);
+-        initializeTypeParameters(method.getPsiMethod());
+-        return r;
++        typeParameters = resolveMethodTypeParametersFromJetSignature(method.getJetMethod().typeParameters(), method.getPsiMethod(), functionDescriptor, classTypeVariableResolver);
++    } else {
++        typeParameters = makeUninitializedTypeParameters(functionDescriptor, method.getPsiMethod().getTypeParameters());
+     }
+-    List<TypeParameterDescriptor> typeParameters = makeUninitializedTypeParameters(functionDescriptor, method.getPsiMethod().getTypeParameters());
+-    initializeTypeParameters(method.getPsiMethod());
++    initializeTypeParameters(typeParameters, classTypeVariableResolver);
+     return typeParameters;
+ }
+\ No newline at end of file

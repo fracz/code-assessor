@@ -1,0 +1,27 @@
+diff --git a/4abfcb705e2959c14a492adfce4457328cdf5b0d b/92329c451aad26586defaf3907e16ee778e4b137
+index 4abfcb705e..92329c451a 100644
+--- a/4abfcb705e2959c14a492adfce4457328cdf5b0d
++++ b/92329c451aad26586defaf3907e16ee778e4b137
+@@ -1,20 +1,20 @@
+ /**
+  * 解析Update语句.
+  *
+  * @return 解析结果
+  */
+ public SQLUpdateStatement parse() {
+-    UpdateSQLContext result = new UpdateSQLContext();
+     getLexer().nextToken();
+     parseBetweenUpdateAndTable();
++    UpdateSQLContext result = new UpdateSQLContext();
+     result.appendBeforeTable(getLexer());
+     Table table = parseTable(result);
+     result.appendAfterTable(getLexer());
+     parseSetItems();
+     parseBetweenSetAndWhere();
+     Optional<ConditionContext> conditionContext = new ParserUtil(shardingRule, parameters, exprParser, parametersIndex).parseWhere(table);
+     if (conditionContext.isPresent()) {
+         result.getConditionContexts().add(conditionContext.get());
+     }
+     return new SQLUpdateStatement(result);
+ }
+\ No newline at end of file

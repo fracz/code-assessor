@@ -1,0 +1,14 @@
+diff --git a/921b4932db5f811943e6072e02a1b15631ef678b b/626adfec53420c56f6f86d91f7acbbd8346f050c
+index 921b4932db..626adfec53 100644
+--- a/921b4932db5f811943e6072e02a1b15631ef678b
++++ b/626adfec53420c56f6f86d91f7acbbd8346f050c
+@@ -1,7 +1,3 @@
+ public int getDialogsCounterTextColor() {
+-    if (dialogsCounterTextColor != 0) {
+-        return dialogsCounterTextColor;
+-    } else {
+-        return getTextPrimaryInvColor();
+-    }
++    return getColorWithFallback(dialogsCounterTextColor, getTextPrimaryInvColor());
+ }
+\ No newline at end of file

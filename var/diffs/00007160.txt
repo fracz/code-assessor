@@ -1,0 +1,16 @@
+diff --git a/ec80cb0cb760dbe66ff61bb0e19de7a6874fbd77 b/8d113666c31689334fe73e695266175639b745ea
+index ec80cb0cb7..8d113666c3 100644
+--- a/ec80cb0cb760dbe66ff61bb0e19de7a6874fbd77
++++ b/8d113666c31689334fe73e695266175639b745ea
+@@ -1,4 +1,9 @@
+ @Override
+ protected JavaMethodNode createTreeNode(PsiMethod nodeMethod, com.intellij.util.containers.HashSet<PsiMethod> called, Runnable cancelCallback) {
+-    return new SafeDeleteJavaMethodNode(nodeMethod, called, cancelCallback, getParameterIdx(), nodeMethod != null ? nodeMethod.getProject() : myProject);
++    final SafeDeleteJavaMethodNode node = new SafeDeleteJavaMethodNode(nodeMethod, called, cancelCallback, getParameterIdx(), nodeMethod != null ? nodeMethod.getProject() : myProject);
++    if (getTopMethod().equals(nodeMethod)) {
++        node.setEnabled(false);
++        node.setChecked(true);
++    }
++    return node;
+ }
+\ No newline at end of file

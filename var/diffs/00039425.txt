@@ -1,0 +1,11 @@
+diff --git a/699bd2ad1c43752d060c4027c59e6ebb2104b5e4 b/04d87c71733a0c5f9a181d1284bb58702d9088a8
+index 699bd2ad1c..04d87c7173 100644
+--- a/699bd2ad1c43752d060c4027c59e6ebb2104b5e4
++++ b/04d87c71733a0c5f9a181d1284bb58702d9088a8
+@@ -1,3 +1,4 @@
+ public static String createGraphVizDeletingReferenceNode(String title, GraphDatabaseService graph, String identifier) {
+-    return createGraphOutput(title, graph, identifier, true, false);
++    removeReferenceNode(graph);
++    return createGraphViz(title, graph, identifier, AsciiDocSimpleStyle.withAutomaticRelationshipTypeColors());
+ }
+\ No newline at end of file

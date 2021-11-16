@@ -1,0 +1,14 @@
+diff --git a/6dbff01f2c9472f34e76d268b4529e0bf16601eb b/3682574d330f5993d7e7bc8f1eae4240c2639ef5
+index 6dbff01f2c..3682574d33 100644
+--- a/6dbff01f2c9472f34e76d268b4529e0bf16601eb
++++ b/3682574d330f5993d7e7bc8f1eae4240c2639ef5
+@@ -1,5 +1,4 @@
+-private void assertDataPresent(ColumnFamilyStore cfs, DecoratedKey key, CellName name, ByteBuffer value) {
+-    ColumnFamily cf = cfs.getColumnFamily(QueryFilter.getIdentityFilter(key, cfs.name, System.currentTimeMillis()));
+-    assertFalse(cf.isEmpty());
+-    assertEquals(0, ByteBufferUtil.compareUnsigned(value, cf.getColumn(name).value()));
++private void assertDataPresent(ColumnFamilyStore cfs, DecoratedKey key, String name, ByteBuffer value) {
++    Row row = Util.getOnlyRowUnfiltered(Util.cmd(cfs, key).build());
++    assertEquals(0, ByteBufferUtil.compareUnsigned(value, row.getCell(cfs.metadata.getColumnDefinition(ByteBufferUtil.bytes(name))).value()));
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/a4da7d343c118394e0fe420f3a71a0499f7de6f7 b/126da05beef4bb1dabe7f9faf7e161b47b720daf
+index a4da7d343c..126da05bee 100644
+--- a/a4da7d343c118394e0fe420f3a71a0499f7de6f7
++++ b/126da05beef4bb1dabe7f9faf7e161b47b720daf
+@@ -1,13 +1,5 @@
+ public void test_oracle_3() throws Exception {
+     String sql = "select id, name, salary from t order by id, name";
+     String result = PagerUtils.limit(sql, JdbcConstants.ORACLE, 20, 10);
+-    Assert.assertEquals(//
+-    "SELECT *" + //
+-    "\nFROM (SELECT XX.*, ROWNUM AS RN" + //
+-    "\n\tFROM (SELECT id, name, salary" + //
+-    "\n\t\tFROM t" + //
+-    "\n\t\tORDER BY id, name" + //
+-    "\n\t\t) XX" + //
+-    "\n\tWHERE ROWNUM <= 30" + //
+-    "\n\t) XXX" + "\nWHERE RN > 20", result);
++    Assert.assertEquals("SELECT *\n" + "FROM (\n" + "\tSELECT XX.*, ROWNUM AS RN\n" + "\tFROM (\n" + "\t\tSELECT id, name, salary\n" + "\t\tFROM t\n" + "\t\tORDER BY id, name\n" + "\t) XX\n" + "\tWHERE ROWNUM <= 30\n" + ") XXX\n" + "WHERE RN > 20", result);
+ }
+\ No newline at end of file

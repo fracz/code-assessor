@@ -1,0 +1,16 @@
+diff --git a/714e32cfcccabc58f7f6c8253275b0915b1c16dd b/dd317c29cdd6b65f913cdb0ae52a4d5da66b8e82
+index 714e32cfcc..dd317c29cd 100644
+--- a/714e32cfcccabc58f7f6c8253275b0915b1c16dd
++++ b/dd317c29cdd6b65f913cdb0ae52a4d5da66b8e82
+@@ -1,7 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiModifierList fieldModifierList = (PsiModifierList) location.getParent();
+-    assert fieldModifierList != null;
+-    final PsiField field = (PsiField) fieldModifierList.getParent();
+-    assert field != null;
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiField field = (PsiField) infos[0];
+     return InspectionGadgetsBundle.message("transient.field.in.non.serializable.class.problem.descriptor", field.getName());
+ }
+\ No newline at end of file

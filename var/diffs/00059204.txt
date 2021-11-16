@@ -1,0 +1,26 @@
+diff --git a/2e9258b45e8530d02bb9a17480b23fe5154d3000 b/b079b70f6d3f0830dd046943eab097905b27f74e
+index 2e9258b45e..b079b70f6d 100644
+--- a/2e9258b45e8530d02bb9a17480b23fe5154d3000
++++ b/b079b70f6d3f0830dd046943eab097905b27f74e
+@@ -1,13 +1,10 @@
+ @Override
+ public void close() throws IOException {
+-    closeInvocationCounter.inc();
+-    Timer.Context tc = closeTimer.time();
+-    try {
+-        iterator.close();
+-    } catch (RuntimeException e) {
+-        closeFailureCounter.inc();
+-        throw e;
+-    } finally {
+-        tc.stop();
+-    }
++    MetricInstrumentedStore.runWithMetrics(p, null, M_CLOSE, new IOCallable<Void>() {
++
++        public Void call() throws IOException {
++            iterator.close();
++            return null;
++        }
++    });
+ }
+\ No newline at end of file

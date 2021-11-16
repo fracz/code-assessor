@@ -1,0 +1,53 @@
+diff --git a/64a4e8503efc66a550ebbd7bc3b6c63959e2ad7c b/f4a8c9ea2b29a368ef1d25d13332b7026ee994c0
+index 64a4e8503e..f4a8c9ea2b 100644
+--- a/64a4e8503efc66a550ebbd7bc3b6c63959e2ad7c
++++ b/f4a8c9ea2b29a368ef1d25d13332b7026ee994c0
+@@ -1,32 +1,38 @@
+ /**
+  * Reconfigures the database configuration of the connection pool and all of its
+  * connections.
+  * <p>
+  * Configuration changes are propagated down to connections immediately if
+  * they are available or as soon as they are released.  This includes changes
+  * that affect the size of the pool.
+  * </p>
+  *
+  * @param configuration The new configuration.
+  *
+  * @throws IllegalStateException if the pool has been closed.
+  */
+ public void reconfigure(SQLiteDatabaseConfiguration configuration) {
+     if (configuration == null) {
+         throw new IllegalArgumentException("configuration must not be null.");
+     }
+     synchronized (mLock) {
+         throwIfClosedLocked();
+-        final boolean poolSizeChanged = mConfiguration.maxConnectionPoolSize != configuration.maxConnectionPoolSize;
+-        mConfiguration.updateParametersFrom(configuration);
+-        if (poolSizeChanged) {
+-            int availableCount = mAvailableNonPrimaryConnections.size();
+-            while (availableCount-- > mConfiguration.maxConnectionPoolSize - 1) {
+-                SQLiteConnection connection = mAvailableNonPrimaryConnections.remove(availableCount);
+-                closeConnectionAndLogExceptionsLocked(connection);
+-            }
++        if (mConfiguration.openFlags != configuration.openFlags) {
++            // Try to reopen the primary connection using the new open flags then
++            // close and discard all existing connections.
++            // This might throw if the database is corrupt or cannot be opened in
++            // the new mode in which case existing connections will remain untouched.
++            SQLiteConnection newPrimaryConnection = openConnectionLocked(configuration, true);
++            closeAvailableConnectionsAndLogExceptionsLocked();
++            discardAcquiredConnectionsLocked();
++            mAvailablePrimaryConnection = newPrimaryConnection;
++            mConfiguration.updateParametersFrom(configuration);
++        } else {
++            // Reconfigure the database connections in place.
++            mConfiguration.updateParametersFrom(configuration);
++            closeExcessConnectionsAndLogExceptionsLocked();
++            reconfigureAllConnectionsLocked();
+         }
+-        reconfigureAllConnectionsLocked();
+         wakeConnectionWaitersLocked();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/361afa866a3f1104287efeabc0ea1d03cfa541ae b/07ef8c9f11a021811c8bec4cd6c3a6fb885a447e
+index 361afa866a..07ef8c9f11 100644
+--- a/361afa866a3f1104287efeabc0ea1d03cfa541ae
++++ b/07ef8c9f11a021811c8bec4cd6c3a6fb885a447e
+@@ -1,15 +1,17 @@
+ public boolean cancel() {
++    List<Runnable> listenersToNotify;
+     // transition to canceled state, only if not already finished
+     synchronized (this) {
+         // transition to failed state, only if not already finished
+         if (queryState.isDone()) {
+             return false;
+         }
+         queryState = QueryState.CANCELED;
+         failureCause = new RuntimeException("Query was canceled");
++        listenersToNotify = ImmutableList.copyOf(listeners);
+     }
+     log.debug("Canceled query %s", queryId);
+     queryStats.recordEnd();
+-    queryMonitor.completionEvent(getQueryInfo());
++    notifyListeners(listenersToNotify);
+     return true;
+ }
+\ No newline at end of file

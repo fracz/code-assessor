@@ -1,0 +1,23 @@
+diff --git a/e11d69d9a6fb86ee4907a6e1de3fc8bb0a931d9d b/5b11b835828bb55f5ebc577e309016a0e7c92061
+index e11d69d9a6..5b11b83582 100644
+--- a/e11d69d9a6fb86ee4907a6e1de3fc8bb0a931d9d
++++ b/5b11b835828bb55f5ebc577e309016a0e7c92061
+@@ -1,14 +1,14 @@
+ @Override
+ public List<MaxCulBindingConfig> getConfigsForRadioAddr(String addr) {
+     List<MaxCulBindingConfig> configs = new ArrayList<MaxCulBindingConfig>();
+     for (BindingConfig c : super.bindingConfigs.values()) {
+         MaxCulBindingConfig config = (MaxCulBindingConfig) c;
+-        if (config.serialNumber != null) /* could be PairMode/ListenMode device which has no serial */
++        if (config.getSerialNumber() != null) /* could be PairMode/ListenMode device which has no serial */
+         {
+-            logger.debug("Comparing '" + config.devAddr + "' with '" + addr + "'");
+-            if (config.devAddr.equalsIgnoreCase(addr))
++            logger.debug("Comparing '" + config.getDevAddr() + "' with '" + addr + "'");
++            if (config.getDevAddr().equalsIgnoreCase(addr))
+                 configs.add(config);
+         }
+     }
+     return configs;
+ }
+\ No newline at end of file

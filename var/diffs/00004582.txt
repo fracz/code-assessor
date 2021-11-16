@@ -1,0 +1,26 @@
+diff --git a/cdd03bca5a17f61c9d6323a9ee55eaeeb4e09293 b/2601b74d89356415f6b49b7b83339d33ac2a1c99
+index cdd03bca5a..2601b74d89 100644
+--- a/cdd03bca5a17f61c9d6323a9ee55eaeeb4e09293
++++ b/2601b74d89356415f6b49b7b83339d33ac2a1c99
+@@ -1,13 +1,13 @@
+-@Nullable
+-protected Navigatable[] getNavigatables() {
+-    final PsiElement[] objects = getSelectedElements();
+-    if (objects == null || objects.length == 0)
++private Navigatable[] getNavigatables() {
++    final HierarchyNodeDescriptor[] selectedDescriptors = getSelectedDescriptors();
++    if (selectedDescriptors == null || selectedDescriptors.length == 0)
+         return null;
+     final ArrayList<Navigatable> result = new ArrayList<Navigatable>();
+-    for (final PsiElement element : objects) {
+-        if (element.isValid() && element instanceof NavigatablePsiElement) {
+-            result.add((NavigatablePsiElement) element);
++    for (HierarchyNodeDescriptor descriptor : selectedDescriptors) {
++        Navigatable navigatable = getNavigatable(descriptor);
++        if (navigatable != null) {
++            result.add(navigatable);
+         }
+     }
+     return result.toArray(new Navigatable[result.size()]);
+ }
+\ No newline at end of file

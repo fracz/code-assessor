@@ -1,0 +1,24 @@
+diff --git a/1039d24f8d3e86f1d96867a1c4c7146a5afe8ff5 b/99e335ff54d0b112e83eb9ddfc153b5fb6b35c53
+index 1039d24f8d..99e335ff54 100644
+--- a/1039d24f8d3e86f1d96867a1c4c7146a5afe8ff5
++++ b/99e335ff54d0b112e83eb9ddfc153b5fb6b35c53
+@@ -1,16 +1,16 @@
+-public REC load(final int iClusterId, final long iPosition, final REC iRecord, final String iFetchPlan) {
++public ORecordInternal<?> load(final int iClusterId, final long iPosition, final ORecordInternal<?> iRecord, final String iFetchPlan) {
+     checkTransaction();
+-    OTransactionEntry<REC> txEntry = getRecord(iClusterId, iPosition);
++    OTransactionEntry txEntry = getRecord(iClusterId, iPosition);
+     if (txEntry != null) {
+         switch(txEntry.status) {
+             case OTransactionEntry.LOADED:
+             case OTransactionEntry.UPDATED:
+             case OTransactionEntry.CREATED:
+                 return txEntry.getRecord();
+             case OTransactionEntry.DELETED:
+                 return null;
+         }
+     }
+     // DELEGATE TO THE STORAGE
+     return database.executeReadRecord(iClusterId, iPosition, iRecord, iFetchPlan);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/4d3e8b7e590a56cffda781c185bc4176aaae4b7c b/e8e75a2ac23a5bd4bb35e9e6708d36764576e112
+index 4d3e8b7e59..e8e75a2ac2 100644
+--- a/4d3e8b7e590a56cffda781c185bc4176aaae4b7c
++++ b/e8e75a2ac23a5bd4bb35e9e6708d36764576e112
+@@ -1,6 +1,7 @@
+ public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
+     if (Invocation.isToString(method)) {
+         return "SmartNull returned by unstubbed " + invocation.getMethod().getName() + "() method on mock";
+     }
+-    throw new SmartNullPointerException("\nYou have a NullPointerException here:", whenCreated);
++    new Reporter().smartNullPointerException(location);
++    return null;
+ }
+\ No newline at end of file

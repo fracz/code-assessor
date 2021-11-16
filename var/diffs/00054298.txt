@@ -1,0 +1,26 @@
+diff --git a/0a4ad91a8a7903ae4c362dd4bc8242c1b4384a3f b/62ee7dace7900b80f37d7b42d696cf267bea1b96
+index 0a4ad91a8a..62ee7dace7 100644
+--- a/0a4ad91a8a7903ae4c362dd4bc8242c1b4384a3f
++++ b/62ee7dace7900b80f37d7b42d696cf267bea1b96
+@@ -1,14 +1,18 @@
+ /**
+  * Calculate accurate static sharding info.
+  *
+  * <p>Accurate means {@code =}.</p>
+  *
+  * @param availableTargetNames available data sources or tables's names
+  * @param shardingValue sharding value
+  * @return sharding results for data sources or tables's names
+  */
+ @SuppressWarnings({ "unchecked", "rawtypes" })
+ public String doStaticAccurateSharding(final Collection<String> availableTargetNames, final ShardingValue shardingValue) {
+-    SingleKeyShardingAlgorithm<?> singleKeyShardingAlgorithm = (SingleKeyShardingAlgorithm<?>) shardingAlgorithm;
+-    return singleKeyShardingAlgorithm.doEqualSharding(availableTargetNames, shardingValue);
++    if (shardingAlgorithm instanceof SingleKeyShardingAlgorithm) {
++        return ((SingleKeyShardingAlgorithm<?>) shardingAlgorithm).doEqualSharding(availableTargetNames, shardingValue);
++    } else if (shardingAlgorithm instanceof MultipleKeysShardingAlgorithm) {
++        return ((MultipleKeysShardingAlgorithm) shardingAlgorithm).doSharding(availableTargetNames, Collections.<ShardingValue<?>>singletonList(shardingValue)).iterator().next();
++    }
++    throw new UnsupportedOperationException(shardingAlgorithm.getClass().getName());
+ }
+\ No newline at end of file

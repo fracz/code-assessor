@@ -1,0 +1,20 @@
+diff --git a/c35bd191dd64f56db9b9cb4cf45acf9277e14411 b/95dc6e0b569bc136b57a1aaa630cfc6809316398
+index c35bd191dd..95dc6e0b56 100644
+--- a/c35bd191dd64f56db9b9cb4cf45acf9277e14411
++++ b/95dc6e0b569bc136b57a1aaa630cfc6809316398
+@@ -1,13 +1,11 @@
+ /**
+  * Sets the list of choices for the combo box
+  *
+  * @param items the list of choices for the combo box
+  */
+ public void setItems(String[] items) {
+-    Assert.isNotNull(items);
+-    this.items = items;
+-    populateComboBoxItems();
++    super.setItems(items);
+     if (proposalProvider != null) {
+         proposalProvider.setProposals(items);
+     }
+ }
+\ No newline at end of file

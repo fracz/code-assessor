@@ -1,0 +1,17 @@
+diff --git a/ee2467ee51e5f87f9718f38f1f19508d4daf3449 b/3a22dae29bc44a4971e9a195f9a93ed92fe82dd0
+index ee2467ee51..3a22dae29b 100644
+--- a/ee2467ee51e5f87f9718f38f1f19508d4daf3449
++++ b/3a22dae29bc44a4971e9a195f9a93ed92fe82dd0
+@@ -1,10 +1,10 @@
+ /**
+  * Checks that the text context is in responsibility of the handler.
+  *
+  * @param file        target PSI file
+  * @param caretOffset target caret offset
+  * @return true, if handler is in charge
+  */
+ public boolean isApplicable(@NotNull PsiFile file, int caretOffset) {
+-    return true;
++    return !LANGUAGE_OVERRIDE.getValue(file).contains(PsiUtilCore.getLanguageAtOffset(file, caretOffset));
+ }
+\ No newline at end of file

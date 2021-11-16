@@ -1,0 +1,17 @@
+diff --git a/e2e7406cf2f7eb094e52ab2a9aceb2a80175d7d5 b/21aefacc001a880d93404e754d0590846e601f0d
+index e2e7406cf2..21aefacc00 100644
+--- a/e2e7406cf2f7eb094e52ab2a9aceb2a80175d7d5
++++ b/21aefacc001a880d93404e754d0590846e601f0d
+@@ -1,9 +1,9 @@
+ @Override
+ public boolean apply(Module module, File file, String sourceRoot) throws Exception {
+     final String path = file.getPath();
+-    if (isGroovyFile(path) && isFileDirty(file, context, tsStorage)) {
++    if (isGroovyFile(path)) {
+         // todo file type check
+-        toCompile.add(file);
++        toCompile.put(file, module);
+     }
+     return true;
+ }
+\ No newline at end of file

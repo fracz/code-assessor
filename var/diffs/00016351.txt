@@ -1,0 +1,17 @@
+diff --git a/ca817c368a3784e0aa4bca6c2ccc8c4d10d9c43f b/1a90ff359dda2294adfeda2966a5530b72cd34e9
+index ca817c368a..1a90ff359d 100644
+--- a/ca817c368a3784e0aa4bca6c2ccc8c4d10d9c43f
++++ b/1a90ff359dda2294adfeda2966a5530b72cd34e9
+@@ -1,9 +1,9 @@
+ @Override
+ @NotNull
+ public Trinity<List<JsPropertyInitializer>, LabelGenerator, JsExpression> compute() {
+-    List<JsExpression> defineInvocation = descriptorToDefineInvocation.get(descriptor);
++    DefineInvocation defineInvocation = descriptorToDefineInvocation.get(descriptor);
+     if (defineInvocation == null) {
+         defineInvocation = createDefinitionPlace(null, descriptorToDefineInvocation);
+     }
+-    return createPlace(getListFromPlace(defineInvocation), context().getQualifiedReference(descriptor));
++    return createPlace(defineInvocation.getMembers(), context().getQualifiedReference(descriptor));
+ }
+\ No newline at end of file

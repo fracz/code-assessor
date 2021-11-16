@@ -1,0 +1,17 @@
+diff --git a/f9d6327ded0d6609f945383e967a24ee0763f645 b/7cfc1e323a0b1b17d7387b5d29417da65c35bedb
+index f9d6327ded..7cfc1e323a 100644
+--- a/f9d6327ded0d6609f945383e967a24ee0763f645
++++ b/7cfc1e323a0b1b17d7387b5d29417da65c35bedb
+@@ -1,5 +1,9 @@
+ @Override
+ public QueryValidationException validate() {
+-    // nothing to validate, clauses are optional, see hasClauses(), other parameters have defaults
+-    return null;
++    QueryValidationException validationException = null;
++    validationException = validateInnerQueries(mustClauses, validationException);
++    validationException = validateInnerQueries(shouldClauses, validationException);
++    validationException = validateInnerQueries(mustNotClauses, validationException);
++    validationException = validateInnerQueries(filterClauses, validationException);
++    return validationException;
+ }
+\ No newline at end of file

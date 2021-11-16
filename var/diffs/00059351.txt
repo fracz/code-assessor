@@ -1,0 +1,13 @@
+diff --git a/acea03369e74761f6f5229bea9d8a8dfdc666f9d b/be9700d5bc7d881b7e1f9a9caf94a0f6598e7951
+index acea03369e..be9700d5bc 100644
+--- a/acea03369e74761f6f5229bea9d8a8dfdc666f9d
++++ b/be9700d5bc7d881b7e1f9a9caf94a0f6598e7951
+@@ -1,5 +1,4 @@
+ @Override
+-public AbstractCassandraStoreManager openStorageManager() throws StorageException {
+-    Configuration sc = CassandraStorageSetup.getGenericCassandraStorageConfiguration(getClass().getSimpleName());
+-    return new CassandraThriftStoreManager(sc);
++public AbstractCassandraStoreManager openStorageManager(Configuration c) throws StorageException {
++    return new CassandraThriftStoreManager(c);
+ }
+\ No newline at end of file

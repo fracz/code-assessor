@@ -1,0 +1,21 @@
+diff --git a/bb51a1a65448a216b6a59cb2f27479cd55cf2620 b/560b03e360ce2db28ef03ea27306366dd18f237c
+index bb51a1a654..560b03e360 100644
+--- a/bb51a1a65448a216b6a59cb2f27479cd55cf2620
++++ b/560b03e360ce2db28ef03ea27306366dd18f237c
+@@ -1,14 +1,14 @@
+ @Test
+ public void testRequestRecommendationAsync_requestSucceeds() throws Exception {
+     injectProvider();
+     final Bundle bundle = new Bundle();
+     doAnswer(invocation -> {
+-        invocation.getArgumentAt(1, IRemoteCallback.class).sendResult(bundle);
++        invocation.<IRemoteCallback>getArgument(1).sendResult(bundle);
+         return null;
+     }).when(mRecommendationProvider).requestRecommendation(eq(mRecommendationRequest), isA(IRemoteCallback.class), anyInt());
+     mNetworkScoreService.requestRecommendationAsync(mRecommendationRequest, mRemoteCallback);
+     boolean callbackRan = mOnResultListener.countDownLatch.await(3, TimeUnit.SECONDS);
+     assertTrue(callbackRan);
+     // If it's not the same instance then something else ran the callback.
+     assertSame(bundle, mOnResultListener.receivedBundle);
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/f2823aeb4d7bca1d1f0a2ef4a111ea08920cbdc7 b/4b9aa9fdf6b4d1b21b1250273a053faa9ebd8369
+index f2823aeb4d..4b9aa9fdf6 100644
+--- a/f2823aeb4d7bca1d1f0a2ef4a111ea08920cbdc7
++++ b/4b9aa9fdf6b4d1b21b1250273a053faa9ebd8369
+@@ -1,4 +1,4 @@
+ public void globalSchemeChange(EditorColorsScheme scheme) {
+     EditorColorsManager.getInstance().removeEditorColorsListener(myListener);
+-    ((ProjectLevelVcsManagerImpl) ProjectLevelVcsManager.getInstance(getProject())).resetTracker(this);
++    LineStatusTrackerManager.getInstance(myProject).resetTracker(this);
+ }
+\ No newline at end of file

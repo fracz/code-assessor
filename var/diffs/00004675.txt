@@ -1,0 +1,15 @@
+diff --git a/6b60329ca024edc5f1c13b8e67fb8b04276df0d7 b/d515e99fe437e0f64e00441201c97ad8fadfd359
+index 6b60329ca0..d515e99fe4 100644
+--- a/6b60329ca024edc5f1c13b8e67fb8b04276df0d7
++++ b/d515e99fe437e0f64e00441201c97ad8fadfd359
+@@ -1,7 +1,7 @@
+ public void testConflictInaccessibleOuterField() throws Exception {
+     InlineToAnonymousClassProcessor processor = prepareProcessor();
+     UsageInfo[] usages = processor.findUsages();
+-    ArrayList<String> conflicts = processor.getConflicts(usages);
++    Map<PsiElement, String> conflicts = processor.getConflicts(usages);
+     assertEquals(1, conflicts.size());
+-    assertEquals("Field <b><code>C2.a</code></b> that is used in inlined method is not accessible from call site(s) in method <b><code>C2User.test()</code></b>", conflicts.get(0));
++    assertEquals("Field <b><code>C2.a</code></b> that is used in inlined method is not accessible from call site(s) in method <b><code>C2User.test()</code></b>", conflicts.values().iterator().next());
+ }
+\ No newline at end of file

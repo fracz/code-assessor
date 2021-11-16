@@ -1,0 +1,13 @@
+diff --git a/9db59350b17b6e8858644e9a21cc46ead336df98 b/d6cb8806ce8a8e29e309d88914d4c759de6db96d
+index 9db59350b1..d6cb8806ce 100644
+--- a/9db59350b17b6e8858644e9a21cc46ead336df98
++++ b/d6cb8806ce8a8e29e309d88914d4c759de6db96d
+@@ -1,6 +1,4 @@
+ @Override
+ public void contentsChanged(@NotNull VirtualFileEvent event) {
+-    if (myRecentPathFileChange.get() != null && myRecentPathFileChange.get().getVf() != null && event.getFile().equals(myRecentPathFileChange.get().getVf())) {
+-        queueRequest();
+-    }
++    syncUpdatePatchFileAndScheduleReloadIfNeeded(event.getFile());
+ }
+\ No newline at end of file

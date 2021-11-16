@@ -1,0 +1,22 @@
+diff --git a/dc9839bcf42212a98e66fb8d13426d9bc927a126 b/1aa035c0ae79b01ac8e80a6583275c485138d880
+index dc9839bcf4..1aa035c0ae 100644
+--- a/dc9839bcf42212a98e66fb8d13426d9bc927a126
++++ b/1aa035c0ae79b01ac8e80a6583275c485138d880
+@@ -1,13 +1,13 @@
+ /**
+  * Adds or remove the EditorInfo.TYPE_TEXT_FLAG_MULTI_LINE on the mInputType.
+  * @param singleLine
+  */
+ private void setInputTypeSingleLine(boolean singleLine) {
+-    if (mEditor != null && (getEditor().mInputType & EditorInfo.TYPE_MASK_CLASS) == EditorInfo.TYPE_CLASS_TEXT) {
++    if (mEditor != null && (mEditor.mInputType & EditorInfo.TYPE_MASK_CLASS) == EditorInfo.TYPE_CLASS_TEXT) {
+         if (singleLine) {
+-            getEditor().mInputType &= ~EditorInfo.TYPE_TEXT_FLAG_MULTI_LINE;
++            mEditor.mInputType &= ~EditorInfo.TYPE_TEXT_FLAG_MULTI_LINE;
+         } else {
+-            getEditor().mInputType |= EditorInfo.TYPE_TEXT_FLAG_MULTI_LINE;
++            mEditor.mInputType |= EditorInfo.TYPE_TEXT_FLAG_MULTI_LINE;
+         }
+     }
+ }
+\ No newline at end of file

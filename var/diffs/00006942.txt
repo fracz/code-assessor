@@ -1,0 +1,19 @@
+diff --git a/8711682cdc7c5253b72eabaedf117c6da457ef30 b/5ab3133aa3b431bdd16c8a6d724eedee187f07da
+index 8711682cdc..5ab3133aa3 100644
+--- a/8711682cdc7c5253b72eabaedf117c6da457ef30
++++ b/5ab3133aa3b431bdd16c8a6d724eedee187f07da
+@@ -1,9 +1,9 @@
+-public GridLocation processDragEvent(int x, int y, int componentCount, int dragColumnDelta) {
+-    final GridLocation insertLocation = getGridInsertLocation(myEditor, x, y, dragColumnDelta, componentCount);
+-    if (insertLocation.canDrop(componentCount)) {
+-        insertLocation.placeFeedback(myEditor, componentCount);
++public GridLocation processDragEvent(Point pnt, ComponentDragObject dragObject) {
++    final GridLocation insertLocation = getGridInsertLocation(myEditor, pnt, dragObject);
++    if (insertLocation.canDrop(dragObject)) {
++        insertLocation.placeFeedback(myEditor, dragObject);
+     } else {
+         myEditor.getActiveDecorationLayer().removeFeedback();
+     }
+     return insertLocation;
+ }
+\ No newline at end of file

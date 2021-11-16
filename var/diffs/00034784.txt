@@ -1,0 +1,30 @@
+diff --git a/c5760e0cb49d7c11b255697ed5e32ad7bf6a9246 b/361456c831fa301ae7057d21c6af9d518031ab43
+index c5760e0cb4..361456c831 100644
+--- a/c5760e0cb49d7c11b255697ed5e32ad7bf6a9246
++++ b/361456c831fa301ae7057d21c6af9d518031ab43
+@@ -1,15 +1,22 @@
+ @Override
+ protected void onBoundaryStart() {
+     final RawHeaders headers = new RawHeaders();
+-    new LineEmitter(boundaryEmitter).setLineCallback(new StringCallback() {
++    liner = new LineEmitter();
++    liner.setLineCallback(new StringCallback() {
+
+         @Override
+         public void onStringAvailable(String s) {
+             if (!"\r".equals(s)) {
+                 headers.addLine(s);
+             } else {
+-                boundaryEmitter.setDataCallback(onPart(new Part(headers)));
++                liner = null;
++                setDataCallback(null);
++                if (mCallback != null)
++                    mCallback.onPart(new Part(headers));
++                if (getDataCallback() == null)
++                    setDataCallback(new NullDataCallback());
+             }
+         }
+     });
++    setDataCallback(liner);
+ }
+\ No newline at end of file

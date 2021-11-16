@@ -1,0 +1,15 @@
+diff --git a/e9a79710eab367ad8604e3a65b5b3e98d2ad34d6 b/732c720d2eb134ab8c97fe9ad822b4b8182e698e
+index e9a79710ea..732c720d2e 100644
+--- a/e9a79710eab367ad8604e3a65b5b3e98d2ad34d6
++++ b/732c720d2eb134ab8c97fe9ad822b4b8182e698e
+@@ -1,6 +1,7 @@
+ public Lesson next() {
+-    if (myIndex + 1 >= myCourse.getLessons().size()) {
++    List<Lesson> lessons = myCourse.getLessons();
++    if (myIndex + 1 >= lessons.size()) {
+         return null;
+     }
+-    return myCourse.getLessons().get(myIndex + 1);
++    return lessons.get(myIndex + 1);
+ }
+\ No newline at end of file

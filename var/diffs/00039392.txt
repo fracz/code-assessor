@@ -1,0 +1,23 @@
+diff --git a/0bb232c4e20f84f6af8b9526d1c8f393e5a720c8 b/732b585d8e42c452a7bc4ca0655ec7882252de1e
+index 0bb232c4e2..732b585d8e 100644
+--- a/0bb232c4e20f84f6af8b9526d1c8f393e5a720c8
++++ b/732b585d8e42c452a7bc4ca0655ec7882252de1e
+@@ -1,12 +1,8 @@
+ @Override
+-public void editFile(File file) throws IOException {
+-    if (isPortableEditFileSupported()) {
+-        try {
+-            portableEditFile(file);
+-            return;
+-        } catch (IOException e) {
+-            e.printStackTrace(System.out);
+-        }
++public void editFile(File file) throws IOException, SecurityException {
++    try {
++        super.editFile(file);
++    } catch (IOException | UnsupportedOperationException ex) {
++        getRuntime().exec(new String[] { "notepad", file.getAbsolutePath() });
+     }
+-    windowsEditFile(file);
+ }
+\ No newline at end of file

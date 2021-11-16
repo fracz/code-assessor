@@ -1,0 +1,25 @@
+diff --git a/a54b929c411f96f3c9f3728fea99d95563a78ce9 b/dbdda84885c9db0b48dab1164098fcc2e111078f
+index a54b929c41..dbdda84885 100644
+--- a/a54b929c411f96f3c9f3728fea99d95563a78ce9
++++ b/dbdda84885c9db0b48dab1164098fcc2e111078f
+@@ -1,17 +1,17 @@
+ /**
+  * Get the XmlNode associated with the underlying
+  * <code>node</code>. Creates a new XmlNode (or appropriate
+  * subclass) wrapping <code>node</code> if there is no cached
+  * value.
+  */
+ public static IRubyObject fromNodeOrCreate(ThreadContext context, Node node) {
+     Ruby ruby = context.getRuntime();
+     if (node == null)
+         return ruby.getNil();
+-    XmlNode xmlNode = (XmlNode) node.getUserData(NokogiriUserDataHandler.CACHED_NODE);
++    XmlNode xmlNode = (XmlNode) node.getUserData(NokogiriHelpers.CACHED_NODE);
+     if (xmlNode == null) {
+         xmlNode = (XmlNode) XmlNode.constructNode(ruby, node);
+-        node.setUserData(NokogiriUserDataHandler.CACHED_NODE, xmlNode, new NokogiriUserDataHandler(ruby));
++        node.setUserData(NokogiriHelpers.CACHED_NODE, xmlNode, null);
+     }
+     return xmlNode;
+ }
+\ No newline at end of file

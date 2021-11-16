@@ -1,0 +1,21 @@
+diff --git a/14ca85bd7f0cf0e225e1692a5822d952dbeb4c69 b/65df048412e12ea17cc9fa4bead1bb34edf58570
+index 14ca85bd7f..65df048412 100644
+--- a/14ca85bd7f0cf0e225e1692a5822d952dbeb4c69
++++ b/65df048412e12ea17cc9fa4bead1bb34edf58570
+@@ -1,12 +1,12 @@
+ @Override
+ public Icon getCustomIcon(@NotNull Library library, StructureConfigurableContext context) {
+-    final LibraryType<?> type = ((LibraryEx) library).getType();
+-    if (type != null) {
+-        return type.getIcon();
++    final LibraryKind kind = ((LibraryEx) library).getKind();
++    if (kind != null) {
++        return LibraryType.findByKind(kind).getIcon();
+     }
+     final List<Icon> icons = getCustomIcons(library, context);
+     if (icons.size() == 1) {
+         return icons.get(0);
+     }
+     return null;
+ }
+\ No newline at end of file

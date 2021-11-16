@@ -1,0 +1,23 @@
+diff --git a/c5acebb34d6f6179ae96111aa20d253f6ca95e55 b/d76f93c7b83f7fd5fb1b7ab0cadfcca570a5fdf7
+index c5acebb34d..d76f93c7b8 100644
+--- a/c5acebb34d6f6179ae96111aa20d253f6ca95e55
++++ b/d76f93c7b83f7fd5fb1b7ab0cadfcca570a5fdf7
+@@ -1,15 +1,12 @@
+-protected final void parseOrderBy() {
++protected final void parseOrderBy(final SelectStatement selectStatement) {
+     if (!sqlParser.skipIfEqual(DefaultKeyword.ORDER)) {
+         return;
+     }
+     List<OrderItem> result = new LinkedList<>();
+     sqlParser.skipIfEqual(DefaultKeyword.SIBLINGS);
+     sqlParser.accept(DefaultKeyword.BY);
+     do {
+-        OrderItem orderItem = parseSelectOrderByItem();
+-        if (!containSubquery || containStarForOutQuery) {
+-            result.add(orderItem);
+-        }
++        result.add(parseSelectOrderByItem(selectStatement));
+     } while (sqlParser.skipIfEqual(Symbol.COMMA));
+     selectStatement.getOrderByItems().addAll(result);
+ }
+\ No newline at end of file

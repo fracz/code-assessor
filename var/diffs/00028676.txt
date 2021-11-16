@@ -1,0 +1,24 @@
+diff --git a/fdcba51d21a83b11757ac6f7673382566688ad18 b/3ccbbf39ac6569826bfd2eddc4027d8220e91c44
+index fdcba51d21..3ccbbf39ac 100644
+--- a/fdcba51d21a83b11757ac6f7673382566688ad18
++++ b/3ccbbf39ac6569826bfd2eddc4027d8220e91c44
+@@ -1,14 +1,10 @@
+-protected Analyzer getAnalyzer(MappedFieldType fieldType) {
+-    if (this.analyzer == null) {
++protected Analyzer getAnalyzer(MappedFieldType fieldType, boolean quoted) {
++    if (analyzer == null) {
+         if (fieldType != null) {
+-            return context.getSearchAnalyzer(fieldType);
++            return quoted ? context.getSearchQuoteAnalyzer(fieldType) : context.getSearchAnalyzer(fieldType);
+         }
+-        return context.getMapperService().searchAnalyzer();
++        return quoted ? context.getMapperService().searchQuoteAnalyzer() : context.getMapperService().searchAnalyzer();
+     } else {
+-        Analyzer analyzer = context.getMapperService().getIndexAnalyzers().get(this.analyzer);
+-        if (analyzer == null) {
+-            throw new IllegalArgumentException("No analyzer found for [" + this.analyzer + "]");
+-        }
+         return analyzer;
+     }
+ }
+\ No newline at end of file

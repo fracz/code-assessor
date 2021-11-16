@@ -1,0 +1,27 @@
+diff --git a/fa02ce57a2dadf7ecd1162fd7ab3bfe3e22c5a98 b/67e1a4b3cee5cabd07d6da2f1511a9a72d1b08aa
+index fa02ce57a2..67e1a4b3ce 100644
+--- a/fa02ce57a2dadf7ecd1162fd7ab3bfe3e22c5a98
++++ b/67e1a4b3cee5cabd07d6da2f1511a9a72d1b08aa
+@@ -1,12 +1,12 @@
++@Override
+ public Dimension getPreferredSize() {
+-    final String text = myLabel.getText();
+-    if (text == null || text.trim().length() == 0) {
+-        return new Dimension(0, 0);
++    Dimension contentSize;
++    if (myContentComponent == null) {
++        contentSize = new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE);
++    } else {
++        contentSize = myContentComponent.getPreferredSize();
+     }
+-    final Dimension preferredSize = super.getPreferredSize();
+-    if (preferredSize.width > 100) {
+-        // do not allow caption to extend parent container
+-        return new Dimension(100, preferredSize.height);
+-    }
+-    return preferredSize;
++    myPane.setText(getText());
++    myPane.setBounds(new Rectangle(0, 0, contentSize.width, Integer.MAX_VALUE));
++    return new Dimension(contentSize.width, myPane.getPreferredSize().height);
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/abf473a21d39b57ef55f2f5154659958b058e817 b/d8194e7ef7160523a49bea95cf3eebfab08df39d
+index abf473a21d..d8194e7ef7 100644
+--- a/abf473a21d39b57ef55f2f5154659958b058e817
++++ b/d8194e7ef7160523a49bea95cf3eebfab08df39d
+@@ -1,6 +1,6 @@
+ @NotNull
+ public static TranslationContext rootContext(@NotNull StaticContext staticContext) {
+-    JsScope rootScope = staticContext.getProgram().getRootScope();
+-    Scopes scopes = new Scopes(rootScope, rootScope, rootScope);
+-    return new TranslationContext(staticContext, scopes);
++    JsProgram program = staticContext.getProgram();
++    JsBlock globalBlock = program.getGlobalBlock();
++    return new TranslationContext(staticContext, DynamicContext.rootContext(staticContext.getRootScope(), globalBlock));
+ }
+\ No newline at end of file

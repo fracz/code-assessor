@@ -1,0 +1,19 @@
+diff --git a/21cca4c1d661ed1f6fb3a5cabe1015ca0e9d7f82 b/d89b0350330e580777380f411b6218299f8101d6
+index 21cca4c1d6..d89b035033 100644
+--- a/21cca4c1d661ed1f6fb3a5cabe1015ca0e9d7f82
++++ b/d89b0350330e580777380f411b6218299f8101d6
+@@ -1,10 +1,6 @@
+ public void disconnect() {
+-    webSocket.setStringCallback(null);
+-    webSocket.setDataCallback(null);
+-    webSocket.setClosedCallback(null);
+-    webSocket.close();
+-    webSocket = null;
+-    if (closedCallback != null) {
+-        closedCallback.onCompleted(null);
++    connection.disconnect(this);
++    if (disconnectCallback != null) {
++        disconnectCallback.onDisconnect(null);
+     }
+ }
+\ No newline at end of file

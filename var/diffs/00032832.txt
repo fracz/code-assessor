@@ -1,0 +1,12 @@
+diff --git a/6373cc6487335c10a67999135fa1715d342d2a81 b/adac3d4290333f1ef2ffe42395162dc64afb03f2
+index 6373cc6487..adac3d4290 100644
+--- a/6373cc6487335c10a67999135fa1715d342d2a81
++++ b/adac3d4290333f1ef2ffe42395162dc64afb03f2
+@@ -1,5 +1,3 @@
+ public AnnotatedConstantBindingBuilder bindConstant() {
+-    ModuleBinding<Object> moduleBindingCommand = new ModuleBinding<Object>(getSource());
+-    elements.add(moduleBindingCommand);
+-    return moduleBindingCommand.constantBuilder(RecordingBinder.this);
++    return new ConstantBindingBuilderImpl<Void>(this, elements, getSource());
+ }
+\ No newline at end of file

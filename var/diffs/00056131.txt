@@ -1,0 +1,17 @@
+diff --git a/1c5d7c54eae7ed43d4c49330f18d196719910584 b/67dbd65307bce7e3dc1f12132b09451e5446e07d
+index 1c5d7c54ea..67dbd65307 100644
+--- a/1c5d7c54eae7ed43d4c49330f18d196719910584
++++ b/67dbd65307bce7e3dc1f12132b09451e5446e07d
+@@ -1,9 +1,9 @@
+ /**
+  * Abstract template method that reads the actual object. Invoked from {@link #read}.
+  * @param clazz the type of object to return
+  * @param contentType
+  * @param payload the content to convert from
+  * @return the converted object
+  * @throws IOException in case of I/O errors
+  */
+-protected abstract T convertFromPayloadInternal(Class<? extends T> clazz, MediaType contentType, byte[] payload) throws IOException;
+\ No newline at end of file
++protected abstract Object convertFromPayloadInternal(Class<?> clazz, MediaType contentType, byte[] payload) throws IOException, ContentTypeNotSupportedException;
+\ No newline at end of file

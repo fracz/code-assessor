@@ -1,0 +1,19 @@
+diff --git a/16b27a898e03ff3ef533a18414930130047c9dec b/eb381b1d86745de6d6bc24ff6500358c0e3f7b60
+index 16b27a898e..eb381b1d86 100644
+--- a/16b27a898e03ff3ef533a18414930130047c9dec
++++ b/eb381b1d86745de6d6bc24ff6500358c0e3f7b60
+@@ -1,12 +1,12 @@
+ @Override
+ public void process(Node externs, Node js) {
+     Map<String, CheckLevel> propertiesToErrorFor = new HashMap<>();
+     propertiesToErrorFor.put("foobar", CheckLevel.ERROR);
+     new CollapseProperties(compiler).process(externs, js);
+     if (runDisambiguateProperties) {
+         SourceInformationAnnotator sia = new SourceInformationAnnotator("test", false);
+         NodeTraversal.traverseEs6(compiler, js, sia);
+-        DisambiguateProperties.forJSTypeSystem(compiler, propertiesToErrorFor).process(externs, js);
++        new DisambiguateProperties(compiler, propertiesToErrorFor).process(externs, js);
+     }
+     pass.process(externs, js);
+ }
+\ No newline at end of file

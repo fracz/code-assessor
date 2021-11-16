@@ -1,0 +1,18 @@
+diff --git a/d136c11e8d7ad9a2bc03597ecca3bb2f9d0dcfae b/ece375d51d916e63cd973748804734ac93190978
+index d136c11e8d..ece375d51d 100644
+--- a/d136c11e8d7ad9a2bc03597ecca3bb2f9d0dcfae
++++ b/ece375d51d916e63cd973748804734ac93190978
+@@ -1,7 +1,11 @@
+ @Override
+ public boolean isValidInContext(PsiElement element) {
+     if (element != null && PsiUtil.getLanguageLevel(element).compareTo(myLanguageLevel) < 0) {
+         return false;
+     }
+-    return myContext.isInstance(element) || (myAdditionalContext != null && myAdditionalContext.isInstance(element));
++    for (Class context : myContexts) {
++        if (context.isInstance(element))
++            return true;
++    }
++    return false;
+ }
+\ No newline at end of file

@@ -1,0 +1,32 @@
+diff --git a/97b3139bec55788ba4161c07b4a2549972feebf8 b/6f40e51789462956d2f2a1ad8d2bc5f837d9f5f2
+index 97b3139bec..6f40e51789 100644
+--- a/97b3139bec55788ba4161c07b4a2549972feebf8
++++ b/6f40e51789462956d2f2a1ad8d2bc5f837d9f5f2
+@@ -1,17 +1,18 @@
+ @Override
+ public void run() {
+-    MyScheduleActivity activity = weakRefToParent.get();
+-    if (activity == null || activity.hasBeenDestroyed()) {
+-        LOGD(TAG, "Ativity is not valid anymore. Stopping UI Updater");
++    MyScheduleActivity activity = MyScheduleActivity.this;
++    if (activity.hasBeenDestroyed()) {
++        LOGD(TAG, "Activity is not valid anymore. Stopping UI Updater");
+         return;
+     }
+-    LOGD(TAG, "Running MySchedule UI updater (now=" + new Date(UIUtils.getCurrentTime(activity)) + ")");
+-    if (activity.mScheduleAdapters != null && activity.mScheduleAdapters.length > today && activity.mScheduleAdapters[today] != null) {
++    LOGD(TAG, "Running MySchedule UI updater (now=" + new Date(TimeUtils.getCurrentTime(activity)) + ")");
++    if (activity.mScheduleAdapters != null && activity.mScheduleAdapters.length > mToday && activity.mScheduleAdapters[mToday] != null) {
+         try {
+-            activity.mScheduleAdapters[today].forceUpdate();
++            activity.mScheduleAdapters[mToday].forceUpdate();
+         } finally {
+-            // schedule again
+-            this.scheduleNextRun();
++            if (mConferenceInProgress) {
++                scheduleNextUIUpdate();
++            }
+         }
+     }
+ }
+\ No newline at end of file

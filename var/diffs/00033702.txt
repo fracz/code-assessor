@@ -1,0 +1,11 @@
+diff --git a/10292fe695caee4489e2e3468e272599970c44b7 b/d4693873bfef137830629b3a3bea6bc31efca4d4
+index 10292fe695..d4693873bf 100644
+--- a/10292fe695caee4489e2e3468e272599970c44b7
++++ b/d4693873bfef137830629b3a3bea6bc31efca4d4
+@@ -1,3 +1,3 @@
+-protected ProgressLoggerFactory createProgressLoggerFactory() {
+-    return new DefaultProgressLoggerFactory(get(ListenerManager.class).getBroadcaster(ProgressListener.class), new TrueTimeProvider());
++private ProgressLoggerFactory createProgressLoggerFactory(ListenerManager listenerManager) {
++    return new DefaultProgressLoggerFactory(listenerManager.getBroadcaster(ProgressListener.class), new TrueTimeProvider());
+ }
+\ No newline at end of file

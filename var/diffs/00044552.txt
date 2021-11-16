@@ -1,0 +1,16 @@
+diff --git a/2d3d78b905f52201fc2410c686124a41fb80d33b b/5de790aa9c9c870a56b1946642a5a541457198b8
+index 2d3d78b905..5de790aa9c 100644
+--- a/2d3d78b905f52201fc2410c686124a41fb80d33b
++++ b/5de790aa9c9c870a56b1946642a5a541457198b8
+@@ -1,8 +1,8 @@
+ public OStorageOperationResult<ORawBuffer> readRecord(final ORecordId iRid, final String iFetchPlan, final boolean iIgnoreCache, boolean prefetchRecords, final ORecordCallback<ORawBuffer> iCallback) {
+     if (getCurrentSession().commandExecuting)
+         // PENDING NETWORK OPERATION, CAN'T EXECUTE IT NOW
+         return new OStorageOperationResult<ORawBuffer>(null);
+     OReadRecordRequest request = new OReadRecordRequest(iIgnoreCache, iRid, iFetchPlan, false);
+-    OReadRecordResponse response = new OReadRecordResponse();
+-    return networkOperation(request, response, "Error on read record " + iRid);
++    OReadRecordResponse response = networkOperation(request, "Error on read record " + iRid);
++    return new OStorageOperationResult<ORawBuffer>(response.getResult());
+ }
+\ No newline at end of file

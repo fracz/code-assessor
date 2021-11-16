@@ -1,0 +1,14 @@
+diff --git a/5aedf72278825b115887a90318ef8632fcc96e85 b/c0968acc1b02d618654e7e34575ef9b6d647737a
+index 5aedf72278..c0968acc1b 100644
+--- a/5aedf72278825b115887a90318ef8632fcc96e85
++++ b/c0968acc1b02d618654e7e34575ef9b6d647737a
+@@ -1,6 +1,6 @@
+ @NotNull
+-private CallTranslator buildFromCallExpression(@NotNull JetCallExpression callExpression) {
++private CallTranslator buildFromCallExpression(@NotNull JetCallExpression callExpression, @Nullable JsExpression receiver) {
+     ResolvedCall<?> resolvedCall = getResolvedCallForCallExpression(context.bindingContext(), callExpression);
+     List<JsExpression> arguments = translateArgumentsForCallExpression(callExpression, context);
+-    return new CallTranslator(null, arguments, resolvedCall, null, context);
++    return new CallTranslator(receiver, arguments, resolvedCall, null, context);
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/127cbd4dd880e499a47a4d4890e4b2633403205f b/714a922f766d82b05637f786919dce5cd467027b
+index 127cbd4dd8..714a922f76 100644
+--- a/127cbd4dd880e499a47a4d4890e4b2633403205f
++++ b/714a922f766d82b05637f786919dce5cd467027b
+@@ -1,18 +1,9 @@
+ private Set<String> getWindowedParentStreams(ProcessorNode processorNode) {
+     Set<String> res = new HashSet<>();
+     for (Node parent : parentNodes(processorNode)) {
+-        if (parent instanceof ProcessorNode) {
+-            ProcessorNode pn = (ProcessorNode) parent;
+-            if (pn.isWindowed()) {
+-                res.addAll(Collections2.filter(pn.getOutputStreams(), new Predicate<String>() {
+-
+-                    @Override
+-                    public boolean apply(String input) {
+-                        return !StreamUtil.isSinkStream(input);
+-                    }
+-                }));
+-            }
++        if (parent instanceof ProcessorNode && parent.isWindowed()) {
++            res.addAll(parent.getOutputStreams());
+         }
+     }
+     return res;
+ }
+\ No newline at end of file

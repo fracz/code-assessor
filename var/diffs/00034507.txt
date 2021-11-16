@@ -1,0 +1,16 @@
+diff --git a/896429f863c9cd96b0661c6c978674dc1b876433 b/0e58d521a56b152ff93eb78eac22d67737b34f80
+index 896429f863..0e58d521a5 100644
+--- a/896429f863c9cd96b0661c6c978674dc1b876433
++++ b/0e58d521a56b152ff93eb78eac22d67737b34f80
+@@ -1,8 +1,8 @@
+ @Override
+ public void onCreate(@NonNull final Context context, @Nullable Bundle savedInstanceState) {
+     super.onCreate(context, savedInstanceState);
+     ((KSApplication) context.getApplicationContext()).component().inject(this);
+-    addSubscription(resetError.subscribe(__ -> koala.trackResetPasswordError()));
+-    addSubscription(resetSuccess.subscribe(__ -> koala.trackResetPasswordSuccess()));
++    resetError.compose(bindToLifecycle()).subscribe(__ -> koala.trackResetPasswordError());
++    resetSuccess.compose(bindToLifecycle()).subscribe(__ -> koala.trackResetPasswordSuccess());
+     koala.trackResetPasswordFormView();
+ }
+\ No newline at end of file

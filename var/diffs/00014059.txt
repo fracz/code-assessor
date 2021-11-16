@@ -1,0 +1,14 @@
+diff --git a/5c55816756ec781384e6d64a3b5204e8a351a3b6 b/7221603836e84dd6f6ab58d28933b929aa379493
+index 5c55816756..7221603836 100644
+--- a/5c55816756ec781384e6d64a3b5204e8a351a3b6
++++ b/7221603836e84dd6f6ab58d28933b929aa379493
+@@ -1,5 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiClass aClass = (PsiClass) location.getParent();
+-    final int count = calculateTotalMethodCount(aClass);
++@NotNull
++public String buildErrorString(Object... infos) {
++    final Integer count = (Integer) infos[0];
+     return InspectionGadgetsBundle.message("anonymous.inner.class.with.too.many.methods.problem.descriptor", count);
+ }
+\ No newline at end of file

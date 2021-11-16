@@ -1,0 +1,13 @@
+diff --git a/ba1f48520638990a41385e511c1eb3a4cf2c63d0 b/1269ffd54cfd0bc2fdf99ec93c2f9d975bd69c8f
+index ba1f485206..1269ffd54c 100644
+--- a/ba1f48520638990a41385e511c1eb3a4cf2c63d0
++++ b/1269ffd54cfd0bc2fdf99ec93c2f9d975bd69c8f
+@@ -1,6 +1,6 @@
+ @Override
+ public StackValue generate(ExpressionCodegen codegen, InstructionAdapter v, Type expectedType, PsiElement element, List<JetExpression> arguments, StackValue receiver) {
+-    final CallableMethod callableMethod = codegen.getTypeMapper().mapToCallableMethod(myMethod, null);
++    final CallableMethod callableMethod = codegen.getTypeMapper().mapToCallableMethod(myMethod, false, OwnerKind.IMPLEMENTATION);
+     codegen.invokeMethodWithArguments(callableMethod, (JetCallExpression) element, receiver);
+     return StackValue.onStack(callableMethod.getSignature().getReturnType());
+ }
+\ No newline at end of file

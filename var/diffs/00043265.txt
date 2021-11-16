@@ -1,0 +1,22 @@
+diff --git a/e7b5ac6f36cbbb9420cfb64582712071b12f03ac b/4675b7594d1db4d374d55fdcc6dcedf6e6881137
+index e7b5ac6f36..4675b7594d 100644
+--- a/e7b5ac6f36cbbb9420cfb64582712071b12f03ac
++++ b/4675b7594d1db4d374d55fdcc6dcedf6e6881137
+@@ -1,14 +1,9 @@
+ public Object next() {
+     final Object value = underlying.next();
+     if (value == null)
+         return null;
+     if (sourceDatabase != null)
+-        if (value instanceof ORecordId && convertToRecord) {
+-            ORecordInternal<?> record = ORecordFactory.newInstance(recordType);
+-            record.setDatabase(sourceDatabase);
+-            record.setIdentity((ORecordId) value);
+-            record.load();
+-            return record;
+-        }
++        if (value instanceof ORecordId && convertToRecord)
++            return sourceDatabase.load((ORecordId) value);
+     return value;
+ }
+\ No newline at end of file

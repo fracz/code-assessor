@@ -1,0 +1,17 @@
+diff --git a/3972d07b4470961947f1a860010d6de41ca3da63 b/f2952c7e26b1a908259e930992babc8294b54327
+index 3972d07b44..f2952c7e26 100644
+--- a/3972d07b4470961947f1a860010d6de41ca3da63
++++ b/f2952c7e26b1a908259e930992babc8294b54327
+@@ -1,9 +1,9 @@
+ public void testDoNotPopulateSameRootEntriesOnEveryImportForSystemLibraries() throws Exception {
+     importProject("<groupId>test</groupId>" + "<artifactId>project</artifactId>" + "<version>1</version>" + "<dependencies>" + "  <dependency>" + "    <groupId>xxx</groupId>" + "    <artifactId>yyy</artifactId>" + "    <version>1</version>" + "    <scope>system</scope>" + "    <systemPath>c:/foo/bar.jar</systemPath>" + "  </dependency>" + "</dependencies>");
+-    assertModuleLibDep("project", "Maven: xxx:yyy:1", Arrays.asList("jar://c:/foo/bar.jar!/"), Arrays.asList("jar://c:/foo/bar-sources.jar!/"), Arrays.asList("jar://c:/foo/bar-javadoc.jar!/"));
++    assertModuleLibDep("project", "Maven: xxx:yyy:1", Arrays.asList("jar://c:/foo/bar.jar!/"), Collections.<String>emptyList(), Collections.<String>emptyList());
+     scheduleResolveAll();
+     resolveDependenciesAndImport();
+     scheduleResolveAll();
+     resolveDependenciesAndImport();
+-    assertModuleLibDep("project", "Maven: xxx:yyy:1", Arrays.asList("jar://c:/foo/bar.jar!/"), Arrays.asList("jar://c:/foo/bar-sources.jar!/"), Arrays.asList("jar://c:/foo/bar-javadoc.jar!/"));
++    assertModuleLibDep("project", "Maven: xxx:yyy:1", Arrays.asList("jar://c:/foo/bar.jar!/"), Collections.<String>emptyList(), Collections.<String>emptyList());
+ }
+\ No newline at end of file

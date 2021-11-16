@@ -1,0 +1,12 @@
+diff --git a/4662fdcfef1e839ab16f519ea62803ebe018a0f1 b/6cc4d920cbb477f6ba65ef0ad254a694fb798d19
+index 4662fdcfef..6cc4d920cb 100644
+--- a/4662fdcfef1e839ab16f519ea62803ebe018a0f1
++++ b/6cc4d920cbb477f6ba65ef0ad254a694fb798d19
+@@ -1,4 +1,4 @@
+ @Override
+-public DoubleMatrix getParameters() {
+-    return new DoubleMatrix(ArrayUtil.combine(network.getW().data, network.getvBias().data, network.gethBias().data));
++public INDArray getParameters() {
++    return NDArrays.create(Doubles.concat(network.getW().data(), network.getvBias().data(), network.gethBias().data()));
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/c0978a925ac923af29a5b4eebf604c42295f8cda b/390977698c031e4fc911be4e68a7a1c80c0cfaa7
+index c0978a925a..390977698c 100644
+--- a/c0978a925ac923af29a5b4eebf604c42295f8cda
++++ b/390977698c031e4fc911be4e68a7a1c80c0cfaa7
+@@ -1,3 +1,4 @@
+ public File getGradleHomeDir() {
+-    return getDistributionLocator().getGradleHome();
++    GradleInstallation gradleInstallation = getCurrentGradleInstallation().getInstallation();
++    return gradleInstallation == null ? null : gradleInstallation.getGradleHome();
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/91acc5790fe0b663d89eea12714208528b23c708 b/7c0ba5d55669b294332d9b6ba8846c30a0297dd0
+index 91acc5790f..7c0ba5d556 100644
+--- a/91acc5790fe0b663d89eea12714208528b23c708
++++ b/7c0ba5d55669b294332d9b6ba8846c30a0297dd0
+@@ -1,8 +1,8 @@
+-private void buildPythonPath(GeneralCommandLine commandLine, boolean passParentEnvs) {
+-    Sdk pythonSdk = PythonSdkType.findSdkByPath(myConfig.getInterpreterPath());
++private static void buildPythonPath(Project project, GeneralCommandLine commandLine, PythonRunParams config) {
++    Sdk pythonSdk = PythonSdkType.findSdkByPath(config.getSdkHome());
+     if (pythonSdk != null) {
+         List<String> pathList = Lists.newArrayList(getAddedPaths(pythonSdk));
+-        pathList.addAll(collectPythonPath());
+-        initPythonPath(commandLine, passParentEnvs, pathList, myConfig.getInterpreterPath());
++        pathList.addAll(collectPythonPath(project, config));
++        initPythonPath(commandLine, config.isPassParentEnvs(), pathList, config.getSdkHome());
+     }
+ }
+\ No newline at end of file

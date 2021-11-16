@@ -1,0 +1,23 @@
+diff --git a/114b95274fec88c84b9ec7f40db974b5803984a2 b/c022784744654fd182e39c1f08f51ac4f5c40f32
+index 114b95274f..c022784744 100644
+--- a/114b95274fec88c84b9ec7f40db974b5803984a2
++++ b/c022784744654fd182e39c1f08f51ac4f5c40f32
+@@ -1,12 +1,8 @@
+ @Override
+ public void writeToParcel(Parcel parcel, int flags) {
+-    parcel.writeList(mDatasets);
+-    parcel.writeParcelableArray(mSavableIds, 0);
+-    parcel.writeBundle(mExtras);
+-    parcel.writeInt(mFlags);
+-    parcel.writeInt(mRequiresAuth ? 1 : 0);
+-    parcel.writeInt(mHasCryptoObject ? 1 : 0);
+-    if (mHasCryptoObject) {
+-        parcel.writeLong(mCryptoOpId);
+-    }
++    parcel.writeString(mId);
++    parcel.writeTypedArraySet(mDatasets, 0);
++    parcel.writeTypedArraySet(mSavableIds, 0);
++    parcel.writeParcelable(mExtras, 0);
++    parcel.writeParcelable(mAuthentication, 0);
+ }
+\ No newline at end of file

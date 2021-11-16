@@ -1,0 +1,24 @@
+diff --git a/8e1e80f70eb9813df35af5752e0470b4cb10ae93 b/267af83e8395b192bb53bdbbf26fb3895d5ef830
+index 8e1e80f70e..267af83e83 100644
+--- a/8e1e80f70eb9813df35af5752e0470b4cb10ae93
++++ b/267af83e8395b192bb53bdbbf26fb3895d5ef830
+@@ -1,14 +1,16 @@
+ @Override
+ public void resume() {
+     boolean previouslyPaused = mPaused;
+     super.resume();
+     if (previouslyPaused && !mPaused) {
+         if (mDelayAnim != null) {
+             mDelayAnim.resume();
+         } else {
+-            for (Node node : mNodes) {
+-                node.animation.resume();
++            int size = mNodes.size();
++            for (int i = 0; i < size; i++) {
++                Node node = mNodes.get(i);
++                node.mAnimation.resume();
+             }
+         }
+     }
+ }
+\ No newline at end of file

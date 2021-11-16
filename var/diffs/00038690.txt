@@ -1,0 +1,11 @@
+diff --git a/4e16b4935c3646886cfa3d1207cade145484ff00 b/0badd2cebe56cec598da0186da647665199cbf9c
+index 4e16b4935c..0badd2cebe 100644
+--- a/4e16b4935c3646886cfa3d1207cade145484ff00
++++ b/0badd2cebe56cec598da0186da647665199cbf9c
+@@ -1,3 +1,4 @@
+ private boolean canUseFixedReferences(PropertyRecord record) {
+-    return (((record.getNextProp() == NULL_REFERENCE.intValue()) || ((record.getNextProp() & 0xFFFF_FFFC_0000_0000L) == 0)) && ((record.getPrevProp() == NULL_REFERENCE.intValue()) || ((record.getPrevProp() & 0xFFFF_FFFE_0000_0000L) == 0)));
++    // TODO: wrong masks? should be unsigned short that potentially should be allowed?
++    return (((record.getNextProp() == NULL_REFERENCE.intValue()) || ((record.getNextProp() & THREE_BITS_OVERFLOW_BIT_MASK) == 0)) && ((record.getPrevProp() == NULL_REFERENCE.intValue()) || ((record.getPrevProp() & ONE_BIT_OVERFLOW_BIT_MASK) == 0)));
+ }
+\ No newline at end of file

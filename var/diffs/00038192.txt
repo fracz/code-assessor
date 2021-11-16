@@ -1,0 +1,21 @@
+diff --git a/0f8f74577d26f5550671cbb2d3e1dc824165a16e b/2d9259793d3b3d6e11f3ad80106672cf09a1efbc
+index 0f8f74577d..2d9259793d 100644
+--- a/0f8f74577d26f5550671cbb2d3e1dc824165a16e
++++ b/2d9259793d3b3d6e11f3ad80106672cf09a1efbc
+@@ -1,13 +1,12 @@
+ @Test
+ public void shouldIncreaseLastAppliedForOtherCommands() throws Exception {
+     // given
+-    applicationProcess.start();
+-    // when
+     raftLog.append(new RaftLogEntry(0, new NewLeaderBarrier()));
+     raftLog.append(new RaftLogEntry(0, new NewLeaderBarrier()));
+     raftLog.append(new RaftLogEntry(0, new NewLeaderBarrier()));
++    // when
+     applicationProcess.notifyCommitted(2);
+-    applier.sync(false);
++    applicationProcess.start();
+     // then
+     assertEquals(2, applicationProcess.lastApplied());
+ }
+\ No newline at end of file

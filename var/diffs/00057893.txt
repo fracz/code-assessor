@@ -1,0 +1,31 @@
+diff --git a/c65b853aab20b064ad347bafe2fa21b683345b3a b/d6ccde25d7d85f086f77a452cd7c0a2f52042809
+index c65b853aab..d6ccde25d7 100644
+--- a/c65b853aab20b064ad347bafe2fa21b683345b3a
++++ b/d6ccde25d7d85f086f77a452cd7c0a2f52042809
+@@ -1,22 +1,21 @@
+ /**
+- * Returns number of features with weight above a certain threshold.
+- *
++ * Returns number of features with weight above a certain threshold
+  * @param iLabels Set of label indices we care about when counting features
+  * Use null to get counts across all labels
+  * @param threshold  Threshold above which we will count the feature
+  * @param useMagnitude Whether the notion of "large" should ignore
+  * the sign of the feature weight.
+  * @return number of features satisfying the specified conditions
+  */
+ protected int getFeatureCountLabelIndices(Set<Integer> iLabels, double threshold, boolean useMagnitude) {
+     int n = 0;
+-    for (double[] weightArray : weights) {
++    for (int feat = 0; feat < weights.length; feat++) {
+         for (int labIndex : iLabels) {
+-            double thisWeight = (useMagnitude) ? Math.abs(weightArray[labIndex]) : weightArray[labIndex];
++            double thisWeight = (useMagnitude) ? Math.abs(weights[feat][labIndex]) : weights[feat][labIndex];
+             if (thisWeight > threshold) {
+                 n++;
+             }
+         }
+     }
+     return n;
+ }
+\ No newline at end of file

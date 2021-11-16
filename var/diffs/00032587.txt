@@ -1,0 +1,24 @@
+diff --git a/4f468b4f89a2aca4a29129d5983accda1a1f9d5b b/57ada88a73b3125c5acf4f23d04f0ffdc1b8c2fc
+index 4f468b4f89..57ada88a73 100644
+--- a/4f468b4f89a2aca4a29129d5983accda1a1f9d5b
++++ b/57ada88a73b3125c5acf4f23d04f0ffdc1b8c2fc
+@@ -1,12 +1,12 @@
+ @Override
+-public List<AstError> visitEmptyStatement(EmptyStatementTree emptyStatementTree, VisitorState visitorState) {
+-    List<AstError> result = new ArrayList<AstError>();
+-    for (ErrorChecker<EmptyStatementTree> emptyStatementChecker : emptyStatementCheckers) {
+-        AstError error = emptyStatementChecker.check(emptyStatementTree, visitorState.withPath(getCurrentPath()));
+-        if (error != null) {
+-            result.add(error);
++public List<MatchDescription> visitEmptyStatement(EmptyStatementTree emptyStatementTree, VisitorState visitorState) {
++    List<MatchDescription> result = new ArrayList<MatchDescription>();
++    for (DescribingMatcher<EmptyStatementTree> emptyStatementChecker : emptyStatementCheckers) {
++        VisitorState state = visitorState.withPath(getCurrentPath());
++        if (emptyStatementChecker.matches(emptyStatementTree, state)) {
++            result.add(emptyStatementChecker.describe(emptyStatementTree, state));
+         }
+     }
+     super.visitEmptyStatement(emptyStatementTree, visitorState);
+     return result;
+ }
+\ No newline at end of file

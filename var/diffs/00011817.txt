@@ -1,0 +1,27 @@
+diff --git a/5bad80d46f41fb4204d9c70c168ab5bbe7230f06 b/13eea3a0af1ce8e066391d56a32006dd5c29c899
+index 5bad80d46f..13eea3a0af 100644
+--- a/5bad80d46f41fb4204d9c70c168ab5bbe7230f06
++++ b/13eea3a0af1ce8e066391d56a32006dd5c29c899
+@@ -1,16 +1,14 @@
+ public void delete() throws IncorrectOperationException {
+     PsiElement parent = getParent();
+     if (parent instanceof GroovyFileImpl) {
+         GroovyFileImpl file = (GroovyFileImpl) parent;
+         if (file.getTypeDefinitions().length == 1 && !file.isScript()) {
+             file.delete();
+-        } else {
+-            ASTNode astNode = file.getNode();
+-            if (astNode != null) {
+-                astNode.removeChild(getNode());
+-            }
++            return;
+         }
+-        return;
+     }
+-    throw new IncorrectOperationException("Invalid type definition");
++    ASTNode astNode = parent.getNode();
++    if (astNode != null) {
++        astNode.removeChild(getNode());
++    }
+ }
+\ No newline at end of file

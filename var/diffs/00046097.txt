@@ -1,0 +1,12 @@
+diff --git a/7f1b6d328163bb11431b6cc1382c2038d9d4c8b2 b/7af9288f02f5256d02b72a01a4e569288df8e08d
+index 7f1b6d3281..7af9288f02 100644
+--- a/7f1b6d328163bb11431b6cc1382c2038d9d4c8b2
++++ b/7af9288f02f5256d02b72a01a4e569288df8e08d
+@@ -1,5 +1,5 @@
+ @Test
+ public void testBindUnknownToDecimal() throws Exception {
+-    Signature function = functionSignature().returnType("boolean").argumentTypes("decimal(p,s)").literalParameters("p", "s").build();
++    Signature function = functionSignature().returnType(parseTypeSignature("boolean")).argumentTypes(parseTypeSignature("decimal(p,s)", ImmutableSet.of("p", "s"))).build();
+     assertThat(function).boundTo("unknown").withCoercion().produces(new BoundVariables(ImmutableMap.of(), ImmutableMap.of("p", 1L, "s", 0L)));
+ }
+\ No newline at end of file

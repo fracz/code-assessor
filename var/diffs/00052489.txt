@@ -1,0 +1,22 @@
+diff --git a/99723db886a2f980b9c7d5c3dda3ae1453dfe854 b/5482b5d71ac60d5d4f26cde02efaabb320403cf5
+index 99723db886..5482b5d71a 100644
+--- a/99723db886a2f980b9c7d5c3dda3ae1453dfe854
++++ b/5482b5d71ac60d5d4f26cde02efaabb320403cf5
+@@ -1,13 +1,13 @@
+ private ResultSetMerger build() throws SQLException {
+     if (!selectStatement.getGroupByItems().isEmpty() || !selectStatement.getAggregationSelectItems().isEmpty()) {
+         if (selectStatement.isSameGroupByAndOrderByItems()) {
+-            return new GroupByStreamResultSetMerger(columnLabelIndexMap, resultSets, selectStatement);
++            return new GroupByStreamResultSetMerger(columnLabelIndexMap, resultSets, selectStatement, getNullOrderType());
+         } else {
+-            return new GroupByMemoryResultSetMerger(columnLabelIndexMap, resultSets, selectStatement);
++            return new GroupByMemoryResultSetMerger(columnLabelIndexMap, resultSets, selectStatement, getNullOrderType());
+         }
+     }
+     if (!selectStatement.getOrderByItems().isEmpty()) {
+-        return new OrderByStreamResultSetMerger(resultSets, selectStatement.getOrderByItems(), selectStatement.getNullOrderType());
++        return new OrderByStreamResultSetMerger(resultSets, selectStatement.getOrderByItems(), getNullOrderType());
+     }
+     return new IteratorStreamResultSetMerger(resultSets);
+ }
+\ No newline at end of file

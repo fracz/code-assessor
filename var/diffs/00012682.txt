@@ -1,0 +1,24 @@
+diff --git a/1b469198b1222eedd8636d9031cc31518618fc6a b/061bc6a7c1ebbd04d3ac4cc560cf9bf904e315f7
+index 1b469198b1..061bc6a7c1 100644
+--- a/1b469198b1222eedd8636d9031cc31518618fc6a
++++ b/061bc6a7c1ebbd04d3ac4cc560cf9bf904e315f7
+@@ -1,13 +1,8 @@
+ private void startEvalNextRow(XDebuggerEvaluator.XEvaluationCallback callback) {
+-    // String evalRowCommand = "map(lambda l: " + evalTypeFunc() + ", list(" + getUpperSlice(getPresentation());
+-    // String evalRowCommand = "list(" + getUpperSlice(getChunkPresentation());
+-    // if (!isOneDimensional()) {
+-    // evalRowCommand += "[" + nextRow + "]";
+-    // }
+-    // evalRowCommand +=
+-    // "[" + (40 - getRows() + nextRow) + ", " + cOffset + ":" + (cOffset + columns) + "])";
+-    String evalRowCommand = "list(" + getChunkPresentation() + "[" + nextRow + ", 0:" + columns + "])";
+-    System.out.println(rOffset + " " + getRows() + " " + nextRow);
+-    System.out.println(evalRowCommand);
++    String evalRowCommand = "map(lambda l: " + myValueProvider.evalTypeFunc(myFormat) + ", list(" + getPresentation();
++    if (!isOneRow()) {
++        evalRowCommand += "[" + nextRow + ", 0:" + columns + "]";
++    }
++    evalRowCommand += "))";
+     myValueProvider.getEvaluator().evaluate(evalRowCommand, callback, null);
+ }
+\ No newline at end of file

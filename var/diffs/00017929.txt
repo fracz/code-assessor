@@ -1,0 +1,15 @@
+diff --git a/5105fb4f91ec3938bb677023938b87c16bb077f9 b/299132bbb6c9b3f04ee5659f735b9ea89f5e43a1
+index 5105fb4f91..299132bbb6 100644
+--- a/5105fb4f91ec3938bb677023938b87c16bb077f9
++++ b/299132bbb6c9b3f04ee5659f735b9ea89f5e43a1
+@@ -1,7 +1,8 @@
++@Override
+ @After
+ public void tearDown() throws Exception {
+-    reset(requestHandler);
+     if (jersey2HttpClient != null) {
+         jersey2HttpClient.shutdown();
+     }
++    super.tearDown();
+ }
+\ No newline at end of file

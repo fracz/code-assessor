@@ -1,0 +1,15 @@
+diff --git a/d6c7e0bb1207c0aa39a5f8a49b735654f279da5e b/0d9a8f4f552b8dab11b58102f2fde9dd355cd6fc
+index d6c7e0bb12..0d9a8f4f55 100644
+--- a/d6c7e0bb1207c0aa39a5f8a49b735654f279da5e
++++ b/0d9a8f4f552b8dab11b58102f2fde9dd355cd6fc
+@@ -1,6 +1,7 @@
+ private void givenUniqueConstraint(String label, String propKey) {
+     int labelId = token(label, labels);
+     int propId = token(propKey, propKeys);
+-    uniqueIndexes.add(new IndexDescriptor(labelId, propId));
+-    constraints.add(new UniquenessConstraint(labelId, propId));
++    IndexDescriptor index = IndexDescriptorFactory.from(new NodePropertyDescriptor(labelId, propId));
++    uniqueIndexes.add(index);
++    constraints.add(new UniquenessConstraint(index.descriptor()));
+ }
+\ No newline at end of file

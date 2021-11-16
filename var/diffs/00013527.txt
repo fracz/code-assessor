@@ -1,0 +1,22 @@
+diff --git a/b17d2ada64f3b21e092477904604ba391c508737 b/b9dd408104e2d1cdd7f23c05fa8b12b379b0a14f
+index b17d2ada64..b9dd408104 100644
+--- a/b17d2ada64f3b21e092477904604ba391c508737
++++ b/b9dd408104e2d1cdd7f23c05fa8b12b379b0a14f
+@@ -1,13 +1,15 @@
+-public void init(final XDebugProcess process) {
++public XDebugSessionTab init(final XDebugProcess process, @Nullable final XDebugSessionImpl oldSession) {
+     LOG.assertTrue(myDebugProcess == null);
+     myDebugProcess = process;
+     XBreakpointManagerImpl breakpointManager = myDebuggerManager.getBreakpointManager();
+     XDependentBreakpointManager dependentBreakpointManager = breakpointManager.getDependentBreakpointManager();
+     disableSlaveBreakpoints(dependentBreakpointManager);
+     processAllBreakpoints(true, false);
+     myBreakpointListener = new MyBreakpointListener();
+     breakpointManager.addBreakpointListener(myBreakpointListener);
+     myDependentBreakpointListener = new MyDependentBreakpointListener();
+     dependentBreakpointManager.addListener(myDependentBreakpointListener);
+     process.sessionInitialized();
++    mySessionTab = initSessionTab(oldSession);
++    return mySessionTab;
+ }
+\ No newline at end of file

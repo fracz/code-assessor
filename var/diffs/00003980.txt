@@ -1,0 +1,17 @@
+diff --git a/17b2997d0e7013fcfa60ff072f14747182f4c09d b/71c525e315525ba78bac61b7f0b8cb5e6399199d
+index 17b2997d0e..71c525e315 100644
+--- a/17b2997d0e7013fcfa60ff072f14747182f4c09d
++++ b/71c525e315525ba78bac61b7f0b8cb5e6399199d
+@@ -1,9 +1,5 @@
+ @Nullable
+-public static VirtualFile getResourceDir(@NotNull Module module) {
+-    AndroidFacet facet = AndroidFacet.getInstance(module);
+-    if (facet == null) {
+-        return null;
+-    }
++public static VirtualFile getResourceDir(@NotNull AndroidFacet facet) {
+     String resRelPath = facet.getConfiguration().RES_FOLDER_RELATIVE_PATH;
+-    return getFileByRelativeModulePath(module, resRelPath, true);
++    return getFileByRelativeModulePath(facet.getModule(), resRelPath, true);
+ }
+\ No newline at end of file

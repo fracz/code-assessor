@@ -1,0 +1,12 @@
+diff --git a/845dd888e32bab9d07d58847d5cdd080df5819e6 b/5664fe8c19fc60a77f90fa72909964b2ca1d55d4
+index 845dd888e3..5664fe8c19 100644
+--- a/845dd888e32bab9d07d58847d5cdd080df5819e6
++++ b/5664fe8c19fc60a77f90fa72909964b2ca1d55d4
+@@ -1,4 +1,4 @@
+ @Override
+-public Promise<MachineDto> getMachine(@NotNull final String machineId) {
+-    return asyncRequestFactory.createGetRequest(baseHttpUrl + '/' + machineId).header(ACCEPT, APPLICATION_JSON).loader(loaderFactory.newLoader("Getting info about machine...")).send(dtoUnmarshallerFactory.newUnmarshaller(MachineDto.class));
++public Promise<MachineDto> getMachine(@NotNull final String workspaceId, @NotNull final String machineId) {
++    return asyncRequestFactory.createGetRequest(baseHttpUrl + workspaceId + "/machine/" + machineId).header(ACCEPT, APPLICATION_JSON).loader(loaderFactory.newLoader("Getting info about machine...")).send(dtoUnmarshallerFactory.newUnmarshaller(MachineDto.class));
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/63bafc6d17bfb985cd93f6e4e1f1ca91cd4772f0 b/09dfadde50c972d15ce4bf1f152c57d913859268
+index 63bafc6d17..09dfadde50 100644
+--- a/63bafc6d17bfb985cd93f6e4e1f1ca91cd4772f0
++++ b/09dfadde50c972d15ce4bf1f152c57d913859268
+@@ -1,11 +1,11 @@
+ @Nullable
+ public ReplacementData transform(GrMethodCallExpression callExpression, OptionsData optionsData) {
+     GrExpression element = getExpandedElement(callExpression);
+     MethodCallData methodInfo = MethodCallData.create(element);
+     if (methodInfo == null)
+         return null;
+     String replacement = getReplacement(methodInfo, optionsData);
+     if (replacement == null)
+         return null;
+-    return new ReplacementData(element, replacement);
++    return new ReplacementData(replacement, this::getExpandedElement);
+ }
+\ No newline at end of file

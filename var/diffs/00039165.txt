@@ -1,0 +1,16 @@
+diff --git a/8ecc2f8c75dd7e9f8c32e453f7561b4c6b9ab967 b/d3d2a563e41388878eed0fe8ffe16a988e9ec677
+index 8ecc2f8c75..d3d2a563e4 100644
+--- a/8ecc2f8c75dd7e9f8c32e453f7561b4c6b9ab967
++++ b/d3d2a563e41388878eed0fe8ffe16a988e9ec677
+@@ -1,9 +1,8 @@
+-protected Response removeFromIndex(String indexName, String key, String value, long id, Renderer renderer) {
++protected Response removeFromIndex(IndexType indexType, String indexName, String key, String value, long id, Renderer renderer) {
+     try {
+-        IndexType indexType = getIndexType(indexName);
+         boolean removed = indexType.remove(this, indexName, key, value, id, renderer);
+         return removed ? Response.noContent().build() : Response.status(Status.NOT_FOUND).build();
+     } catch (NotFoundException e) {
+         return Response.status(Status.NOT_FOUND).build();
+     }
+ }
+\ No newline at end of file

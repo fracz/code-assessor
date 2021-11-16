@@ -1,0 +1,16 @@
+diff --git a/8269e1e9001fc1fc63a889df9abb6dcb820ed104 b/23afee0d14d3b849c83877274f04c637fe483b6d
+index 8269e1e900..23afee0d14 100644
+--- a/8269e1e9001fc1fc63a889df9abb6dcb820ed104
++++ b/23afee0d14d3b849c83877274f04c637fe483b6d
+@@ -1,9 +1,3 @@
+ public void testSubstituteParamInsideClass() throws Exception {
+-    doTest(new GenParams() {
+-
+-        @Override
+-        public TypeParameterInfo[] gen(PsiClass aClass) throws IncorrectOperationException {
+-            return new TypeParameterInfo[0];
+-        }
+-    });
++    doTest(aClass -> new TypeParameterInfo[0]);
+ }
+\ No newline at end of file

@@ -1,0 +1,25 @@
+diff --git a/9762f4065c8782c9c1166d37a98e327de7b9c26a b/2f68c13e840849425e2d8c010ca742ef258660ff
+index 9762f4065c..2f68c13e84 100644
+--- a/9762f4065c8782c9c1166d37a98e327de7b9c26a
++++ b/2f68c13e840849425e2d8c010ca742ef258660ff
+@@ -1,15 +1,18 @@
+ @Override
+ public void rollback(DBRProgressMonitor monitor, DBCSavepoint savepoint) throws DBCException {
+     try {
+         if (savepoint != null) {
+             if (savepoint instanceof Savepoint) {
+                 getConnection().rollback((Savepoint) savepoint);
+             } else {
+                 throw new SQLFeatureNotSupportedException(CoreMessages.model_jdbc_exception_bad_savepoint_object);
+             }
++        } else {
++            getConnection().rollback();
+         }
+-        getConnection().rollback();
+     } catch (SQLException e) {
+         throw new JDBCException(e, dataSource);
++    } finally {
++        QMUtils.getDefaultHandler().handleTransactionRollback(this, savepoint);
+     }
+ }
+\ No newline at end of file

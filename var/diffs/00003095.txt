@@ -1,0 +1,17 @@
+diff --git a/6d2c4faed689e98330596c02663d148ea4e7490b b/6d9056df76eed1a554511b5f4aeb0ffaf076500e
+index 6d2c4faed6..6d9056df76 100644
+--- a/6d2c4faed689e98330596c02663d148ea4e7490b
++++ b/6d9056df76eed1a554511b5f4aeb0ffaf076500e
+@@ -1,9 +1,9 @@
+ public Object getData(String dataId) {
+-    if (dataId.equals(DataConstants.VIRTUAL_FILE)) {
++    if (PlatformDataKeys.VIRTUAL_FILE.is(dataId)) {
+         return myPropertiesFile.getVirtualFile();
+     }
+-    if (dataId.equals(DataConstants.PSI_ELEMENT)) {
++    if (LangDataKeys.PSI_ELEMENT.is(dataId)) {
+         return myPropertiesFile;
+     }
+     return super.getData(dataId);
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/b931d957fd9d33b3244512d89690614c3d79627b b/7bd3b4ca68aef2383ea4f747bbea0a42b3f363b2
+index b931d957fd..7bd3b4ca68 100644
+--- a/b931d957fd9d33b3244512d89690614c3d79627b
++++ b/7bd3b4ca68aef2383ea4f747bbea0a42b3f363b2
+@@ -1,11 +1,13 @@
+ /**
+  * Gets a configuration for the given target.
+  *
+  * <p>If {@link BuildConfiguration.Options#trimConfigurations()} is true, the configuration only
+  * includes the fragments needed by the fragment and its transitive closure. Else unconditionally
+  * includes all fragments.
+  */
+ @VisibleForTesting
+ public BuildConfiguration getConfigurationForTesting(Target target, BuildConfiguration config, ExtendedEventHandler eventHandler) throws InterruptedException {
+-    return Iterables.getOnlyElement(getConfigurations(ImmutableList.<TargetAndConfiguration>of(new TargetAndConfiguration(target, config)), eventHandler)).getConfiguration();
++    List<TargetAndConfiguration> node = ImmutableList.<TargetAndConfiguration>of(new TargetAndConfiguration(target, config));
++    LinkedHashSet<TargetAndConfiguration> configs = ConfigurationResolver.getConfigurationsFromExecutor(node, AnalysisUtils.targetsToDeps(new LinkedHashSet<TargetAndConfiguration>(node), ruleClassProvider), eventHandler, skyframeExecutor);
++    return configs.iterator().next().getConfiguration();
+ }
+\ No newline at end of file

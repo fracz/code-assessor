@@ -1,0 +1,14 @@
+diff --git a/f22fca26746f91e6244c444ec0ef962b49546687 b/c9f44bca7726d8b5be3aaeda4922e639a7f34f52
+index f22fca2674..c9f44bca77 100644
+--- a/f22fca26746f91e6244c444ec0ef962b49546687
++++ b/c9f44bca7726d8b5be3aaeda4922e639a7f34f52
+@@ -1,5 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiExpression expression = (PsiExpression) location;
+-    final int numElements = calculateNumElements(expression);
++@NotNull
++public String buildErrorString(Object... infos) {
++    final Integer numElements = (Integer) infos[0];
+     return InspectionGadgetsBundle.message("large.initializer.primitive.type.array.problem.descriptor", numElements);
+ }
+\ No newline at end of file

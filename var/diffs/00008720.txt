@@ -1,0 +1,23 @@
+diff --git a/4d76923b531fa7c98f9915c97e2376f0c333e7e0 b/e15cb027b2273fd548d550a81ada4c7497c4a48e
+index 4d76923b53..e15cb027b2 100644
+--- a/4d76923b531fa7c98f9915c97e2376f0c333e7e0
++++ b/e15cb027b2273fd548d550a81ada4c7497c4a48e
+@@ -1,16 +1,16 @@
+ @Override
+ @NotNull
+ protected JComponent createCustomComponent() {
+-    new MnemonicHelper().register(getComponent());
++    MnemonicHelper.init(getComponent());
+     myComponent = myComponentFactory.create();
+     DomUIFactory.getDomUIFactory().setupErrorOutdatingUserActivityWatcher(this, getDomElement());
+     DomManager.getDomManager(getProject()).addDomEventListener(new DomEventListener() {
+
+         @Override
+         public void eventOccured(DomEvent event) {
+             checkIsValid();
+         }
+     }, this);
+     Disposer.register(this, myComponent);
+     return myComponent.getComponent();
+ }
+\ No newline at end of file

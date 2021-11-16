@@ -1,0 +1,14 @@
+diff --git a/0589722b6c0b25bfc0e05b224220d1a2a922438b b/ab4bbafc6751a21ea7badd20c52f53a6fa9900a7
+index 0589722b6c..ab4bbafc67 100644
+--- a/0589722b6c0b25bfc0e05b224220d1a2a922438b
++++ b/ab4bbafc6751a21ea7badd20c52f53a6fa9900a7
+@@ -1,7 +1,3 @@
+ public int getProfileSubtitleColor() {
+-    if (profileSubtitleColor != 0) {
+-        return profileSubtitleColor;
+-    } else {
+-        return getTextSecondaryInvColor();
+-    }
++    return getColorWithFallback(profileSubtitleColor, getTextSecondaryInvColor());
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/fb7bde9e717bb4a33b43501d55cbe1e9d8afae9f b/d96ba4aee75aea89674c9e0d5e9a18463aeeebde
+index fb7bde9e71..d96ba4aee7 100644
+--- a/fb7bde9e717bb4a33b43501d55cbe1e9d8afae9f
++++ b/d96ba4aee75aea89674c9e0d5e9a18463aeeebde
+@@ -1,6 +1,5 @@
+ @Test
+ public void assertToJsonForHintStrategy() {
+-    HintShardingStrategyConfiguration actual = new HintShardingStrategyConfiguration();
+-    actual.setAlgorithmClassName("xxx.XXXAlgorithm");
++    HintShardingStrategyConfiguration actual = new HintShardingStrategyConfiguration("xxx.XXXAlgorithm");
+     assertThat(ShardingRuleConfigurationConverter.toJson(getCommonShardingRuleConfig(actual)), is(getJsonForHintStrategy()));
+ }
+\ No newline at end of file

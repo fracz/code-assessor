@@ -1,0 +1,19 @@
+diff --git a/f958c3f556c0215ab3b12fda2fdadad1ce29a8c5 b/35538d7c0a3d4c1767f9224e89ad305308ef93b2
+index f958c3f556..35538d7c0a 100644
+--- a/f958c3f556c0215ab3b12fda2fdadad1ce29a8c5
++++ b/35538d7c0a3d4c1767f9224e89ad305308ef93b2
+@@ -1,7 +1,10 @@
+-private RoutingResult generateRoutingResult(final TableRule tableRule, final Collection<String> routedDataSources, final Collection<String> routedTables) {
++private RoutingResult generateRoutingResult(final TableRule tableRule, final Map<String, Collection<String>> routedMap) {
+     RoutingResult result = new RoutingResult();
+-    for (DataNode each : tableRule.getActualDataNodes(routedDataSources, routedTables)) {
+-        result.getTableUnits().getTableUnits().add(new TableUnit(each.getDataSourceName(), logicTableName, each.getTableName()));
++    for (Entry<String, Collection<String>> entry : routedMap.entrySet()) {
++        Collection<DataNode> dataNodes = tableRule.getActualDataNodes(entry.getKey(), entry.getValue());
++        for (DataNode each : dataNodes) {
++            result.getTableUnits().getTableUnits().add(new TableUnit(each.getDataSourceName(), logicTableName, each.getTableName()));
++        }
+     }
+     return result;
+ }
+\ No newline at end of file

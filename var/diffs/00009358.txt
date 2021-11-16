@@ -1,0 +1,20 @@
+diff --git a/caefb0d9b72c07f1da4eae1f57c6fbb8e9120b26 b/5b9c4a32ceb7e03c5f1ada9d684b5be4776b54cf
+index caefb0d9b7..5b9c4a32ce 100644
+--- a/caefb0d9b72c07f1da4eae1f57c6fbb8e9120b26
++++ b/5b9c4a32ceb7e03c5f1ada9d684b5be4776b54cf
+@@ -1,11 +1,9 @@
+ @Nullable
+ @Override
+ public String getLineIndent(@NotNull Project project, @NotNull Editor editor, int offset) {
+-    Indent.Type indent = getIndent(editor, offset);
+-    if (indent == Indent.Type.NONE)
+-        return null;
+-    else if (indent == Indent.Type.CONTINUATION) {
+-        return getContinuationIndent(editor, offset);
++    Type indent = getIndent(editor, offset);
++    if (indent != null) {
++        return getIndentString(editor, offset, indent);
+     }
+     return super.getLineIndent(project, editor, offset);
+ }
+\ No newline at end of file

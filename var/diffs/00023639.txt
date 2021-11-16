@@ -1,0 +1,17 @@
+diff --git a/74e4b18ceb9110f5733cf005718949a1d6cd101d b/18a19751bef05f612a07ea29000c17e233ca5f4b
+index 74e4b18ceb..18a19751be 100644
+--- a/74e4b18ceb9110f5733cf005718949a1d6cd101d
++++ b/18a19751bef05f612a07ea29000c17e233ca5f4b
+@@ -1,10 +1,10 @@
+ /**
+  * Updates this stack when a scroll happens.
+  */
+ public void updateFocusStateOnScroll(int yMovement) {
+     Utilities.cancelAnimationWithoutCallbacks(mFocusStateAnimator);
+     if (mFocusState > STATE_UNFOCUSED) {
+         float delta = (float) yMovement / (UNFOCUS_MULTIPLIER * mStackRect.height());
+-        mFocusState -= Math.min(mFocusState, Math.abs(delta));
++        setFocusState(mFocusState - Math.min(mFocusState, Math.abs(delta)));
+     }
+ }
+\ No newline at end of file

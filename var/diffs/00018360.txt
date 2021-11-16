@@ -1,0 +1,25 @@
+diff --git a/1fcfe847206ad6939e33c143ac93f8e848a78951 b/bc306cb36523acfeff6642acb4735836939833e1
+index 1fcfe84720..bc306cb365 100644
+--- a/1fcfe847206ad6939e33c143ac93f8e848a78951
++++ b/bc306cb36523acfeff6642acb4735836939833e1
+@@ -1,16 +1,16 @@
+ /**
+  * The optional columns to specify. If specified, the values length must correspond to these columns, and
+  * each column has a 1-1 relationship to the values.
+  *
+  * @param columns The columns to use
+  * @return This INSERT statement
+  */
+ public Insert<ModelClass> columns(String... columns) {
+-    this.mColumns = new IProperty[columns.length];
+-    ModelAdapter<ModelClass> modelClassModelAdapter = FlowManager.getModelAdapter(mTable);
++    this.columns = new IProperty[columns.length];
++    ModelAdapter<ModelClass> modelClassModelAdapter = FlowManager.getModelAdapter(table);
+     for (int i = 0; i < columns.length; i++) {
+         String column = columns[i];
+-        mColumns[i] = modelClassModelAdapter.getProperty(column);
++        this.columns[i] = modelClassModelAdapter.getProperty(column);
+     }
+     return this;
+ }
+\ No newline at end of file

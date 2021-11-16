@@ -1,0 +1,17 @@
+diff --git a/20547ead0157efa9796183473ee9738f8e42afc1 b/7f3814b541c4570ca91d3de7bca187606aa5ea13
+index 20547ead01..7f3814b541 100644
+--- a/20547ead0157efa9796183473ee9738f8e42afc1
++++ b/7f3814b541c4570ca91d3de7bca187606aa5ea13
+@@ -1,9 +1,9 @@
+ public void createRaw() {
+-    database.open("admin", "admin");
++    if (database.getClusterIdByName(CLUSTER_NAME) < 0)
++        database.addCluster(CLUSTER_NAME, OStorage.CLUSTER_TYPE.PHYSICAL);
+     startRecordNumber = database.countClusterElements(CLUSTER_NAME);
+     for (long i = startRecordNumber; i < startRecordNumber + TOT_RECORDS; ++i) {
+         record.reset();
+         record.value(i + "-binary test").save(CLUSTER_NAME);
+     }
+-    database.close();
+ }
+\ No newline at end of file

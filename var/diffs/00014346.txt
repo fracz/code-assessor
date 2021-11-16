@@ -1,0 +1,30 @@
+diff --git a/5d9ff43671380bd12119088579e9fe56cea06eb8 b/da2b9d0cefbe40ab9b4645d8d292b4b5d263ac98
+index 5d9ff43671..da2b9d0cef 100644
+--- a/5d9ff43671380bd12119088579e9fe56cea06eb8
++++ b/da2b9d0cefbe40ab9b4645d8d292b4b5d263ac98
+@@ -1,22 +1,22 @@
+ public void visitClass(@NotNull PsiClass aClass) {
+     if (aClass.isInterface() || aClass.isEnum() || aClass.isAnnotationType()) {
+         return;
+     }
+-    if (aClass instanceof PsiTypeParameter || aClass instanceof PsiAnonymousClass) {
++    if (aClass instanceof PsiTypeParameter) {
+         return;
+     }
+     if (!aClass.hasModifierProperty(PsiModifier.ABSTRACT)) {
+         return;
+     }
+     if (!ClassUtils.isSubclass(aClass, "junit.framework.TestCase")) {
+         return;
+     }
+     final String name = aClass.getName();
+     if (name == null) {
+         return;
+     }
+     if (isValid(name)) {
+         return;
+     }
+-    registerClassError(aClass);
++    registerClassError(aClass, name);
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/169cf931cea3193f6e984177bae473907907f778 b/90591174075db3a760454c44c7a974d0b4f1fb9a
+index 169cf931ce..9059117407 100644
+--- a/169cf931cea3193f6e984177bae473907907f778
++++ b/90591174075db3a760454c44c7a974d0b4f1fb9a
+@@ -1,6 +1,6 @@
+ @Test
+ public void assertAutoIncrementColumn() {
+-    TableRule actual = TableRule.builder("logicTable").dataSourceRule(createDataSourceRule()).autoIncrementColumns("col_1", IncrementIdGenerator.class).autoIncrementColumns("col_2").tableIdGenerator(Mockito.mock(IdGenerator.class).getClass()).build();
+-    assertThat(actual.getAutoIncrementColumnMap().get("col_1"), instanceOf(IncrementIdGenerator.class));
+-    assertThat(actual.getAutoIncrementColumnMap().get("col_2"), instanceOf(Mockito.mock(IdGenerator.class).getClass()));
++    TableRule actual = TableRule.builder("logicTable").dataSourceRule(createDataSourceRule()).autoIncrementColumns("col_1", IncrementIdGenerator.class).build();
++    assertThat(actual.getAutoIncrementColumn(), is("col_1"));
++    assertThat(actual.getIdGenerator(), instanceOf(IncrementIdGenerator.class));
+ }
+\ No newline at end of file

@@ -1,0 +1,25 @@
+diff --git a/43503ae642b7b304c31b69218ee23c8114e81940 b/4b8647eafc34db0f9b6ee79b34f09a7daa6157ed
+index 43503ae642..4b8647eafc 100644
+--- a/43503ae642b7b304c31b69218ee23c8114e81940
++++ b/4b8647eafc34db0f9b6ee79b34f09a7daa6157ed
+@@ -1,12 +1,15 @@
+ /**
+  * Create sharding data source.
+  *
+- * @param config orchestration master slave configuration
++ * @param dataSourceMap data source map
++ * @param masterSlaveRuleConfig master-slave rule configuration
++ * @param orchestrationConfig orchestration master slave configuration
++ *
+  * @return sharding data source
+  * @throws SQLException SQL exception
+  */
+-public static DataSource createDataSource(final OrchestrationMasterSlaveConfiguration config) throws SQLException {
+-    MasterSlaveDataSource result = (MasterSlaveDataSource) MasterSlaveDataSourceFactory.createDataSource(config.getDataSourceMap(), config.getMasterSlaveRuleConfiguration());
+-    new OrchestrationFacade(config.getName(), config.getRegistryCenter()).initMasterSlaveOrchestration(config, result);
++public static DataSource createDataSource(final Map<String, DataSource> dataSourceMap, final MasterSlaveRuleConfiguration masterSlaveRuleConfig, final OrchestrationConfiguration orchestrationConfig) throws SQLException {
++    MasterSlaveDataSource result = (MasterSlaveDataSource) MasterSlaveDataSourceFactory.createDataSource(dataSourceMap, masterSlaveRuleConfig);
++    new OrchestrationFacade(orchestrationConfig).initMasterSlaveOrchestration(dataSourceMap, masterSlaveRuleConfig, result);
+     return result;
+ }
+\ No newline at end of file

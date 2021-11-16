@@ -1,0 +1,11 @@
+diff --git a/f825103ee5a059ce5bdc1041d3a0beb21d0cdd55 b/0fba43b56e2f47564cfdee80869e0d76d8c57fed
+index f825103ee5..0fba43b56e 100644
+--- a/f825103ee5a059ce5bdc1041d3a0beb21d0cdd55
++++ b/0fba43b56e2f47564cfdee80869e0d76d8c57fed
+@@ -1,3 +1,4 @@
+ private void addServerInterceptor(ProfilerPluginSetupContext context, JettyConfiguration config) {
+-    context.addClassFileTransformer("org.eclipse.jetty.server.Server", PinpointClassFileTransformers.addInterceptor("com.navercorp.pinpoint.plugin.jetty.interceptor.ServerHandleInterceptor", va(config.getJettyExcludeUrlFilter())));
++    final TransformCallback transformCallback = PinpointClassFileTransformers.addInterceptor("com.navercorp.pinpoint.plugin.jetty.interceptor.ServerHandleInterceptor", va(config.getJettyExcludeUrlFilter()));
++    context.addClassFileTransformer("org.eclipse.jetty.server.Server", transformCallback);
+ }
+\ No newline at end of file

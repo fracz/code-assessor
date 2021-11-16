@@ -1,0 +1,14 @@
+diff --git a/afb0e82e4c895e8ce4046cc73d052dd9af7f6bf9 b/58bd5dac9a1dc2d262167c1b2a5858b581f21367
+index afb0e82e4c..58bd5dac9a 100644
+--- a/afb0e82e4c895e8ce4046cc73d052dd9af7f6bf9
++++ b/58bd5dac9a1dc2d262167c1b2a5858b581f21367
+@@ -1,7 +1,7 @@
+ @Override
+ public Boolean answer(InvocationOnMock invocation) throws Throwable {
+     IBinder mockBinder = mock(IBinder.class);
+     when(mockBinder.queryLocalInterface(anyString())).thenReturn(mRecommendationProvider);
+-    invocation.getArgumentAt(1, ServiceConnection.class).onServiceConnected(NEW_SCORER.getRecommendationServiceComponent(), mockBinder);
++    invocation.<ServiceConnection>getArgument(1).onServiceConnected(NEW_SCORER.getRecommendationServiceComponent(), mockBinder);
+     return true;
+ }
+\ No newline at end of file

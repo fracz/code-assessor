@@ -1,0 +1,23 @@
+diff --git a/db322ad07beec91c7828c4f4615c94b9a6481ef5 b/2680ac6c22dacf459b45046b2ab9104095e99e11
+index db322ad07b..2680ac6c22 100644
+--- a/db322ad07beec91c7828c4f4615c94b9a6481ef5
++++ b/2680ac6c22dacf459b45046b2ab9104095e99e11
+@@ -1,11 +1,9 @@
+ public void reset() {
+-    if (myConfigurator != null) {
+-        if (isModified()) {
+-            myConfigurator.reset();
+-        }
+-        final String moduleNameToSelect = getModuleNameToSelect();
+-        if (moduleNameToSelect == null || !myConfigurator.selectModule(moduleNameToSelect, getTabNameToSelect())) {
+-            myConfigurator.selectFirstModule();
+-        }
++    myProjectJdkConfigurable.reset();
++    final String compilerOutput = ProjectRootManagerEx.getInstance(myProject).getCompilerOutputUrl();
++    if (compilerOutput != null) {
++        myProjectCompilerOutput.setText(VfsUtil.urlToPath(compilerOutput));
+     }
++    myLanguageLevelCombo.reset(myProject);
++    updateCircularDependencyWarning();
+ }
+\ No newline at end of file

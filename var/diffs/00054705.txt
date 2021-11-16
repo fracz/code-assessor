@@ -1,0 +1,17 @@
+diff --git a/3a46e9462068fe2caca1e0639fc7c816a122f579 b/8c0d8806f355160d39c7baec404fcf8c8e65af80
+index 3a46e94620..8c0d8806f3 100644
+--- a/3a46e9462068fe2caca1e0639fc7c816a122f579
++++ b/8c0d8806f355160d39c7baec404fcf8c8e65af80
+@@ -1,8 +1,8 @@
+ @Override
+ public int findColumn(final String columnLabel) throws SQLException {
+-    String formattedColumnLabel = getColumnLabelIndexMap().containsKey(columnLabel) ? columnLabel : SQLUtil.getExactlyValue(columnLabel);
+-    if (!getColumnLabelIndexMap().containsKey(formattedColumnLabel)) {
++    String formattedColumnLabel = ResultSetUtil.getColumnLabelIndexMap(getResultSets().get(0)).containsKey(columnLabel) ? columnLabel : SQLUtil.getExactlyValue(columnLabel);
++    if (!columnLabelIndexMap.containsKey(formattedColumnLabel)) {
+         throw new SQLException(String.format("Column label %s does not exist", formattedColumnLabel));
+     }
+-    return getColumnLabelIndexMap().get(formattedColumnLabel);
++    return columnLabelIndexMap.get(formattedColumnLabel);
+ }
+\ No newline at end of file

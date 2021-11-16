@@ -1,0 +1,15 @@
+diff --git a/ef04571b1f585df7ec25a75070a5829fb776e987 b/9877b4455f8cda4f47f74f85d0de7c0f4daf6f33
+index ef04571b1f..9877b4455f 100644
+--- a/ef04571b1f585df7ec25a75070a5829fb776e987
++++ b/9877b4455f8cda4f47f74f85d0de7c0f4daf6f33
+@@ -1,8 +1,8 @@
+ /**
+  * Forces silent ruleclass filtering on the label type attribute.
+  * This flag is introduced to handle plugins, do not use it in other cases.
+  */
+ public Builder<TYPE> silentRuleClassFilter() {
+-    Preconditions.checkState((type == BuildType.LABEL) || (type == BuildType.LABEL_LIST), "must be a label-valued type");
++    Preconditions.checkState(type.getLabelClass() == LabelClass.DEPENDENCY, "must be a label-valued type");
+     return setPropertyFlag(PropertyFlag.SILENT_RULECLASS_FILTER, "silent_ruleclass_filter");
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/1c0ac8cb5a6228e0e37714cdc3eefd1ad0ec76a8 b/2d311a9c83b9f46abb6f467400a97ec4a036d34f
+index 1c0ac8cb5a..2d311a9c83 100644
+--- a/1c0ac8cb5a6228e0e37714cdc3eefd1ad0ec76a8
++++ b/2d311a9c83b9f46abb6f467400a97ec4a036d34f
+@@ -1,5 +1,5 @@
+ private LogReader newReader(final int index, final long sessionId, final long channelId, final long termId) throws IOException {
+-    final AtomicBuffer logBuffer = bufferUsage.newBuffer(newBufferMessage, index);
+-    final AtomicBuffer stateBuffer = bufferUsage.newBuffer(newBufferMessage, index + BUFFER_COUNT);
++    final AtomicBuffer logBuffer = newBuffer(newBufferMessage, index);
++    final AtomicBuffer stateBuffer = newBuffer(newBufferMessage, index + BufferRotationDescriptor.BUFFER_COUNT);
+     return new LogReader(logBuffer, stateBuffer);
+ }
+\ No newline at end of file

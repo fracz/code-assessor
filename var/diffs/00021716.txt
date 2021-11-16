@@ -1,0 +1,18 @@
+diff --git a/74a9b690295f75c21d9e944f357d3a90c7eab5b8 b/1837ae3f40d7557d0388f2073aff2333248dc0c8
+index 74a9b69029..1837ae3f40 100644
+--- a/74a9b690295f75c21d9e944f357d3a90c7eab5b8
++++ b/1837ae3f40d7557d0388f2073aff2333248dc0c8
+@@ -1,5 +1,9 @@
+ // LISTENER METHODS
+-public void setQualifiedAttr(Token x, Token y, Token expr) {
+-    System.out.println(x + "." + y + "=" + expr);
+-    new AttributeChecks(g, r, alt, node, expr.getText()).examine();
++public void setQualifiedAttr(String expr, Token x, Token y, Token rhs) {
++    if (!node.space.resolves(x.getText(), y.getText(), node)) {
++        // TODO; not right error
++        ErrorManager.grammarError(// TODO; not right error
++        ErrorType.UNKNOWN_SIMPLE_ATTRIBUTE, g.fileName, x, x.getText(), expr);
++    }
++    new AttributeChecks(g, r, alt, node, rhs.getText()).examineAction();
+ }
+\ No newline at end of file

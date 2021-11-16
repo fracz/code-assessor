@@ -1,0 +1,18 @@
+diff --git a/a39c221e9dc246485063ad2f5ded01a2ece06aec b/849edb60915af0e6c196d4b6803ed92f6b5dfafd
+index a39c221e9d..849edb6091 100644
+--- a/a39c221e9dc246485063ad2f5ded01a2ece06aec
++++ b/849edb60915af0e6c196d4b6803ed92f6b5dfafd
+@@ -1,10 +1,10 @@
+ @Test
+ public void test() {
+-    TraceContext mockTraceContext = new MockTraceContextFactory().create();
+-    GarbageCollector collector = new AgentStatCollectorFactory(mockTraceContext).getGarbageCollector();
++    AgentStatCollectorFactory agentStatCollectorFactory = newAgentStatCollectorFactory(false);
++    GarbageCollector collector = agentStatCollectorFactory.getGarbageCollector();
+     logger.debug("collector.getType():{}", collector);
+     TJvmGc collect1 = collector.collect();
+     logger.debug("collector.collect():{}", collect1);
+     TJvmGc collect2 = collector.collect();
+     logger.debug("collector.collect():{}", collect2);
+ }
+\ No newline at end of file

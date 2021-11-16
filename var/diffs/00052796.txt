@@ -1,0 +1,21 @@
+diff --git a/059b20bafbf5ecd48e9b41d555b95c1f08bb2288 b/efdb734095c7ed16a726680551c7d050b0181319
+index 059b20bafb..efdb734095 100644
+--- a/059b20bafbf5ecd48e9b41d555b95c1f08bb2288
++++ b/efdb734095c7ed16a726680551c7d050b0181319
+@@ -1,7 +1,11 @@
++/**
++ * 断言当前标记类型与传入值相等并跳过.
++ *
++ * @param tokenType 待判断的标记类型
++ */
+ public final void accept(final TokenType tokenType) {
+-    if (this.token.getType() == tokenType) {
+-        nextToken();
+-        return;
++    if (token.getType() != tokenType) {
++        throw new ParserException(this, tokenType);
+     }
+-    throw new ParserException(this, tokenType);
++    nextToken();
+ }
+\ No newline at end of file

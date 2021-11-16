@@ -1,0 +1,13 @@
+diff --git a/66a8e3fc289379ad7bcf3681fe97bff6e91b0453 b/4099b1f94047c8a03a7f242154dab81808d16900
+index 66a8e3fc28..4099b1f940 100644
+--- a/66a8e3fc289379ad7bcf3681fe97bff6e91b0453
++++ b/4099b1f94047c8a03a7f242154dab81808d16900
+@@ -1,5 +1,5 @@
+ public Cursor getDecryptInProgressMessages() {
+-    String where = TYPE + " = " + Types.DECRYPT_IN_PROGRESS_TYPE;
++    String where = TYPE + " & " + (Types.ENCRYPTION_REMOTE_BIT | Types.ENCRYPTION_ASYMMETRIC_BIT) + " != 0";
+     SQLiteDatabase db = databaseHelper.getReadableDatabase();
+-    return db.query(TABLE_NAME, null, where, null, null, null, null);
++    return db.query(TABLE_NAME, MESSAGE_PROJECTION, where, null, null, null, null);
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/33bc8d5f20c0f989231cc9829bce941dc7a298d0 b/3a635753d565df7bb6bfd375087704fcd7dc386c
+index 33bc8d5f20..3a635753d5 100644
+--- a/33bc8d5f20c0f989231cc9829bce941dc7a298d0
++++ b/3a635753d565df7bb6bfd375087704fcd7dc386c
+@@ -1,5 +1,4 @@
+ @Override
+ public Bundle confirmCredentials(AccountAuthenticatorResponse response, Account account, Bundle options) throws NetworkErrorException {
+-    Intent intent = new Intent(mContext, AuthenticatorActivity.class).putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, response).putExtra(AuthenticatorActivity.EXTRA_AUTH_MODE, AuthenticatorActivity.AUTH_MODE_CONFIRM).putExtra(AuthenticatorActivity.EXTRA_USERNAME, account.name);
+-    return makeIntentBundle(intent);
++    return makeIntentBundle(AuthenticatorActivity.makeIntent(response, AuthenticatorActivity.AUTH_MODE_CONFIRM, account.name, mContext));
+ }
+\ No newline at end of file

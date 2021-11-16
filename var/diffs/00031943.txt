@@ -1,0 +1,21 @@
+diff --git a/c0cbedf1e1fedb1c6f1233bd8f1b30c3aa33c31f b/d47a801be3413ead6bbcde72d3c5c1be85482616
+index c0cbedf1e1..d47a801be3 100644
+--- a/c0cbedf1e1fedb1c6f1233bd8f1b30c3aa33c31f
++++ b/d47a801be3413ead6bbcde72d3c5c1be85482616
+@@ -1,14 +1,14 @@
+ /**
+  * Users of this class call {@link #process(Node, Node)} on it. That method executes a {@link
+  * ReferenceCollectingCallback}. At the end of every scope, this method is executed and causes
+  * another traversal of the scope, which does the hoisting.
+  */
+ @Override
+ public void afterExitScope(NodeTraversal t, ReferenceMap refMap) {
+     // don't need to.
+-    if (t.getScope() != t.getClosestHoistScope()) {
++    if (!t.getScope().isHoistScope()) {
+         return;
+     }
+     this.refMap = refMap;
+     (new NodeTraversal(compiler, this, scopeCreator)).traverseAtScope(t.getScope());
+ }
+\ No newline at end of file

@@ -1,0 +1,25 @@
+diff --git a/43b25cceebfc261e267cb3375a5ddad18b8fd97c b/e3d948166d41ef7d0376578375a6d0f9faca7a26
+index 43b25cceeb..e3d948166d 100644
+--- a/43b25cceebfc261e267cb3375a5ddad18b8fd97c
++++ b/e3d948166d41ef7d0376578375a6d0f9faca7a26
+@@ -1,13 +1,16 @@
+ /**
+  * Called when MT Config settings are changeds
++ *
++ * @param mtConfig
+  */
+-private void onSettingsChanged() {
+-    // Force restart if material design is switched
+-    restartIdeIfNecessary();
++private void onSettingsChanged(MTConfig mtConfig) {
+     // Trigger file icons and statuses update
+     ApplicationManager.getApplication().runWriteAction(() -> {
+         FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
+         instanceEx.fireFileTypesChanged();
+         ActionToolbarImpl.updateAllToolbarsImmediately();
+     });
++    if (this.willRestartIde) {
++        this.restartIde();
++    }
+ }
+\ No newline at end of file

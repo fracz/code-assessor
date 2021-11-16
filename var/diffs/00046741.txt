@@ -1,0 +1,15 @@
+diff --git a/c243705ad2bca898d70d320f2c922437443f3139 b/805b2d3a427cd9212474fd6dc1d75aa54659bccc
+index c243705ad2..805b2d3a42 100644
+--- a/c243705ad2bca898d70d320f2c922437443f3139
++++ b/805b2d3a427cd9212474fd6dc1d75aa54659bccc
+@@ -1,8 +1,8 @@
+ @Test
+ public void registeringSubscriberNotifiesMediaDriver() throws Exception {
+-    final Subscriber.Context context = new Subscriber.Context().destination(new Destination(DESTINATION)).channel(CHANNEL_ID, emptyDataHandler()).channel(CHANNEL_ID_2, emptyDataHandler());
++    final Subscriber.Context context = new Subscriber.Context().destination(new Destination(DESTINATION)).channel(CHANNEL_ID_1, EMPTY_DATA_HANDLER).channel(CHANNEL_ID_2, EMPTY_DATA_HANDLER);
+     final Subscriber subscriber = aeron.newSubscriber(context);
+     aeron.conductor().doWork();
+     assertMsgRead(toDriverBuffer, assertSubscriberMessageOfType(ADD_SUBSCRIPTION));
+     assertThat(subscriber.read(), is(0));
+ }
+\ No newline at end of file

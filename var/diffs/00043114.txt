@@ -1,0 +1,14 @@
+diff --git a/6085cbfc360e23f814fe514d51cf4fb639f77d78 b/75bcc9a593036cf0f38dcca816104ac60d23d69d
+index 6085cbfc36..75bcc9a593 100644
+--- a/6085cbfc360e23f814fe514d51cf4fb639f77d78
++++ b/75bcc9a593036cf0f38dcca816104ac60d23d69d
+@@ -1,6 +1,6 @@
+ /**
+  * Starts listening the response.
+  */
+-protected void beginResponse() throws IOException {
+-    network.beginResponse(sessionId);
++protected void beginResponse(final OChannelBinaryClient iNetwork) throws IOException {
++    iNetwork.beginResponse(getSessionId());
+ }
+\ No newline at end of file

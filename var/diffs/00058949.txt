@@ -1,0 +1,12 @@
+diff --git a/57009ba7602ab57672246f3a2e171c0f620587cf b/098c8eda663f5e70eff38a7c56a00cb9d95193a2
+index 57009ba760..098c8eda66 100644
+--- a/57009ba7602ab57672246f3a2e171c0f620587cf
++++ b/098c8eda663f5e70eff38a7c56a00cb9d95193a2
+@@ -1,5 +1,5 @@
+ public void newTx() throws StorageException {
+     if (tx != null)
+         tx.commit();
+-    tx = new BufferTransaction(manager.beginTransaction(new StoreTxConfig()), manager, bufferSize, 1, 0);
++    tx = new BufferTransaction(manager.beginTransaction(StandardTransactionConfig.of()), manager, bufferSize, 1, 0);
+ }
+\ No newline at end of file

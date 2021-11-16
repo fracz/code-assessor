@@ -1,0 +1,22 @@
+diff --git a/8a39d437988cee390720df22d023a9bb5a529842 b/bdac38a140980b673ff8f7fc0334a075ae86e043
+index 8a39d43798..bdac38a140 100644
+--- a/8a39d437988cee390720df22d023a9bb5a529842
++++ b/bdac38a140980b673ff8f7fc0334a075ae86e043
+@@ -1,11 +1,13 @@
+ @Test
+ public void shouldNotLogWhenTestPasses() throws Exception {
+-    runner.run(notifier, new JunitTestBody() {
++    runner = new VerboseMockitoJUnitRunner(this.getClass(), loggerStub) {
+
+-        public void run(RunNotifier notifier) {
++        @Override
++        public void runTest(RunNotifier notifier) {
+             when(mock.simpleMethod()).thenReturn("foo");
+             notifier.fireTestFinished(null);
+             assertEquals("", loggerStub.getLoggedInfo());
+         }
+-    });
++    };
++    runner.run(notifier);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/0548174cdf1fbae48e6f87e63ac32e19c794851b b/0c704dcb2efdd9363a9f072be54dedb2dfe9a269
+index 0548174cdf..0c704dcb2e 100644
+--- a/0548174cdf1fbae48e6f87e63ac32e19c794851b
++++ b/0c704dcb2efdd9363a9f072be54dedb2dfe9a269
+@@ -1,4 +1,7 @@
+ @Override
+ public List<LongEntry> getEntries() {
+-    return entries();
++    if (!(entries instanceof List)) {
++        entries = ImmutableList.copyOf(entries);
++    }
++    return (List<LongEntry>) entries;
+ }
+\ No newline at end of file

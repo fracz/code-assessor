@@ -1,0 +1,24 @@
+diff --git a/29b319c2405185bd1e3f22b930590fc20c8d0667 b/a64841c35da2e496169851249ef8f17b682e4f5c
+index 29b319c240..a64841c35d 100644
+--- a/29b319c2405185bd1e3f22b930590fc20c8d0667
++++ b/a64841c35da2e496169851249ef8f17b682e4f5c
+@@ -1,6 +1,15 @@
+ public void computeFacets() throws JSONException {
+-    for (Facet facet : _facets) {
+-        FilteredRows filteredRows = getFilteredRows(facet, false);
+-        facet.computeChoices(_project, filteredRows);
++    if (_mode == Mode.RowBased) {
++        for (Facet facet : _facets) {
++            FilteredRows filteredRows = getFilteredRows(facet);
++            facet.computeChoices(_project, filteredRows);
++        }
++    } else if (_mode == Mode.RecordBased) {
++        for (Facet facet : _facets) {
++            FilteredRecords filteredRecords = getFilteredRecords(facet);
++            facet.computeChoices(_project, filteredRecords);
++        }
++    } else {
++        throw new InternalError("Unknown mode.");
+     }
+ }
+\ No newline at end of file

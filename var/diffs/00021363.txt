@@ -1,0 +1,19 @@
+diff --git a/f9629efb5c10b5259a55c2aef387e1afa840834f b/e42e2d0265cc58ff4d849e01c537c82abb69441c
+index f9629efb5c..e42e2d0265 100644
+--- a/f9629efb5c10b5259a55c2aef387e1afa840834f
++++ b/e42e2d0265cc58ff4d849e01c537c82abb69441c
+@@ -1,10 +1,10 @@
+ public void test_oom() throws Exception {
+     for (int i = 0; i < 1000 * 1000; ++i) {
+         String text = "{\"" + i + "\":0}";
+         JSON.parse(text);
+     }
+-    Field field = SymbolTable.class.getDeclaredField("size");
++    Field field = SymbolTable.class.getDeclaredField("symbols");
+     field.setAccessible(true);
+-    int size = field.getInt(ParserConfig.getGlobalInstance().getSymbolTable());
+-    Assert.assertEquals(4096, size);
++    Object[] symbols = (Object[]) field.get(ParserConfig.getGlobalInstance().symbolTable);
++    Assert.assertEquals(4096, symbols.length);
+ }
+\ No newline at end of file

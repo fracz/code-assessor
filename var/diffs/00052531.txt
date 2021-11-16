@@ -1,0 +1,15 @@
+diff --git a/79593964cd712409632d89529aca4f3427ea18d2 b/82ab32e603574dfc07d5b1b3c7b5d18de1f46292
+index 79593964cd..82ab32e603 100644
+--- a/79593964cd712409632d89529aca4f3427ea18d2
++++ b/82ab32e603574dfc07d5b1b3c7b5d18de1f46292
+@@ -1,8 +1,8 @@
+ private void skipBetweenTableAndValues() {
+-    while (getSkippedKeywordsBetweenTableAndValues().contains(sqlParser.getLexer().getCurrentToken().getType())) {
++    while (sqlParser.skipIfEqual(getSkippedKeywordsBetweenTableAndValues())) {
+         sqlParser.getLexer().nextToken();
+         if (sqlParser.equalAny(Symbol.LEFT_PAREN)) {
+             sqlParser.skipParentheses();
+         }
+     }
+ }
+\ No newline at end of file

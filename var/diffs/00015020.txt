@@ -1,0 +1,16 @@
+diff --git a/ae5fa886d208daf908a9ef3f6a2806307140c33b b/260005fd9811ff48227c23b7e5cbfcc69572f287
+index ae5fa886d2..260005fd98 100644
+--- a/ae5fa886d208daf908a9ef3f6a2806307140c33b
++++ b/260005fd9811ff48227c23b7e5cbfcc69572f287
+@@ -1,9 +1,8 @@
+ @NotNull
+ private Parameters getMethodParametersWithCaptured(@NotNull ParametersBuilder capturedBuilder, @NotNull MethodNode sourceNode) {
+-    ParametersBuilder builder = ParametersBuilder.newBuilder();
+-    buildInvokeParamsFor(builder, sourceNode);
++    ParametersBuilder builder = ParametersBuilder.initializeBuilderFrom(oldObjectType, sourceNode.desc);
+     for (CapturedParamInfo param : capturedBuilder.listCaptured()) {
+         builder.addCapturedParamCopy(param);
+     }
+     return builder.buildParameters();
+ }
+\ No newline at end of file

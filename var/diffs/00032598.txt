@@ -1,0 +1,16 @@
+diff --git a/4b972d482127985fa18e63097681d9c4a33e245e b/f64e661dc4bcc0edd341c186e66634e4de8589ec
+index 4b972d4821..f64e661dc4 100644
+--- a/4b972d482127985fa18e63097681d9c4a33e245e
++++ b/f64e661dc4bcc0edd341c186e66634e4de8589ec
+@@ -1,8 +1,7 @@
+-@Override
+-public String toString() {
++public String toString(JCCompilationUnit compilationUnit) {
+     StringBuilder result = new StringBuilder("replace ");
+-    for (Replacement replacement : replacements) {
++    for (Replacement replacement : getReplacements(compilationUnit.endPositions)) {
+         result.append("position " + replacement.startPosition + ":" + replacement.endPosition).append(" with \"" + replacement.replaceWith + "\" ");
+     }
+     return result.toString();
+ }
+\ No newline at end of file

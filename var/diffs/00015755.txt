@@ -1,0 +1,16 @@
+diff --git a/2d8df037235d034f2c32efa5a35b018fa2f74ba8 b/66df250dcfd1535fc6bee63b46fc33813dc7a15e
+index 2d8df03723..66df250dcf 100644
+--- a/2d8df037235d034f2c32efa5a35b018fa2f74ba8
++++ b/66df250dcfd1535fc6bee63b46fc33813dc7a15e
+@@ -1,7 +1,5 @@
+-public void writeFormalTypeParameters(List<TypeParameterDescriptor> typeParameters, BothSignatureWriter signatureVisitor) {
+-    if (signatureVisitor == null)
+-        return;
+-    for (TypeParameterDescriptor typeParameterDescriptor : typeParameters) {
+-        writeFormalTypeParameter(typeParameterDescriptor, signatureVisitor);
++public void writeFormalTypeParameters(@NotNull List<TypeParameterDescriptor> typeParameters, @NotNull BothSignatureWriter sw) {
++    for (TypeParameterDescriptor typeParameter : typeParameters) {
++        writeFormalTypeParameter(typeParameter, sw);
+     }
+ }
+\ No newline at end of file

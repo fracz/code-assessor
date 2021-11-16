@@ -1,0 +1,20 @@
+diff --git a/f3cf3bb52f8564b8512ba12eca4b64258a4f79d2 b/dc8c4b3d44bab5d4173c251b6aeae01e8958e850
+index f3cf3bb52f..dc8c4b3d44 100644
+--- a/f3cf3bb52f8564b8512ba12eca4b64258a4f79d2
++++ b/dc8c4b3d44bab5d4173c251b6aeae01e8958e850
+@@ -1,12 +1,12 @@
+ @Override
+ public void doXContent(XContentBuilder builder, Params params) throws IOException {
+     builder.startObject(NAME);
+-    builder.startObject(name);
+-    builder.field("prefix", prefix);
++    builder.startObject(fieldName);
++    builder.field("prefix", this.value);
+     if (rewrite != null) {
+         builder.field("rewrite", rewrite);
+     }
+     printBoostAndQueryName(builder);
+     builder.endObject();
+     builder.endObject();
+ }
+\ No newline at end of file

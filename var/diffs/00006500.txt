@@ -1,0 +1,25 @@
+diff --git a/dd098834349b4e3cd8f73f6302db9b8a27a749da b/513902a75ff1039b79cd07f470f9cb781a83562e
+index dd09883434..513902a75f 100644
+--- a/dd098834349b4e3cd8f73f6302db9b8a27a749da
++++ b/513902a75ff1039b79cd07f470f9cb781a83562e
+@@ -1,13 +1,12 @@
+ public void removeAllKeymapsExceptUnmodifiable() {
+-    Iterator<Keymap> it = myKeymaps.iterator();
+-    while (it.hasNext()) {
+-        Keymap keymap = it.next();
++    for (Keymap keymap : mySchemesManager.getAllSchemes()) {
+         if (keymap.canModify()) {
+-            it.remove();
++            mySchemesManager.removeScheme(keymap);
+         }
+     }
+-    myActiveKeymap = null;
+-    if (myKeymaps.size() > 0) {
+-        myActiveKeymap = (KeymapImpl) myKeymaps.get(0);
++    mySchemesManager.setCurrentScheme(null);
++    Collection<Keymap> keymaps = mySchemesManager.getAllSchemes();
++    if (keymaps.size() > 0) {
++        mySchemesManager.setCurrentScheme(keymaps.iterator().next());
+     }
+ }
+\ No newline at end of file

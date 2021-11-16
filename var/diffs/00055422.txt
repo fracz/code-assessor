@@ -1,0 +1,14 @@
+diff --git a/08235616dff4382b1d70a7c0b8105d75176536f2 b/b7e30e1e9f9b1554f165b7c70236d559db44ed0a
+index 08235616df..b7e30e1e9f 100644
+--- a/08235616dff4382b1d70a7c0b8105d75176536f2
++++ b/b7e30e1e9f9b1554f165b7c70236d559db44ed0a
+@@ -1,7 +1,7 @@
+ /**
+  * Assert the response error message.
+  */
+ public WebTestClient.ResponseSpec reasonEquals(String reason) {
+-    assertEquals("Response status reason", reason, this.httpStatus.getReasonPhrase());
++    assertEquals("Response status reason", reason, getStatus().getReasonPhrase());
+     return this.responseSpec;
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/f7338ace7d3fe0addf977891216065b9dea1d7b1 b/ed25b89782e393e0b682bdf7689a033bb785bee3
+index f7338ace7d..ed25b89782 100644
+--- a/f7338ace7d3fe0addf977891216065b9dea1d7b1
++++ b/ed25b89782e393e0b682bdf7689a033bb785bee3
+@@ -1,11 +1,11 @@
+-// Private stuff
+ @Override
+ protected void sendRequest(DefaultHttpClient client, HttpContext httpContext, HttpUriRequest uriRequest, String contentType, AsyncHttpResponseHandler responseHandler, Context context) {
+     if (contentType != null) {
+         uriRequest.addHeader("Content-Type", contentType);
+     }
++    responseHandler.setForceSynchronous(true);
+     /*
+          * will execute the request directly
+-		 */
++		*/
+     new AsyncHttpRequest(client, httpContext, uriRequest, responseHandler).run();
+ }
+\ No newline at end of file

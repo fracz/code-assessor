@@ -1,0 +1,15 @@
+diff --git a/c98b24ca3d9fefde4d5a90e152276610fe8d83d5 b/8b4943f5435f0d52d5807b7ab2f97407c0d724ac
+index c98b24ca3d..8b4943f543 100644
+--- a/c98b24ca3d9fefde4d5a90e152276610fe8d83d5
++++ b/8b4943f5435f0d52d5807b7ab2f97407c0d724ac
+@@ -1,7 +1,7 @@
+ public final SQLSelect select() {
+     SQLSelect result = createSQLSelect();
+-    result.setQuery(query());
+-    result.setOrderBy(exprParser.parseOrderBy());
++    query();
++    sqlContext.getOrderByContexts().addAll(exprParser.parseOrderBy());
+     customizedSelect(result);
+     return result;
+ }
+\ No newline at end of file

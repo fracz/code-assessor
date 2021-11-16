@@ -1,0 +1,19 @@
+diff --git a/c7fd7b67ba139027687e339c9d9952fe57ec3e11 b/9631c786c33f315cbfe84c50a6b3d71c8db924f4
+index c7fd7b67ba..9631c786c3 100644
+--- a/c7fd7b67ba139027687e339c9d9952fe57ec3e11
++++ b/9631c786c33f315cbfe84c50a6b3d71c8db924f4
+@@ -1,11 +1,11 @@
+ public void makeClassBody(CodeWriter clsCode) throws CodegenException {
+-    clsCode.add("{");
++    clsCode.add('{');
+     CodeWriter mthsCode = makeMethods(clsCode, cls.getMethods());
+     clsCode.add(makeFields(clsCode, cls, cls.getFields()));
+     // insert inner classes code
+     if (cls.getInnerClasses().size() != 0) {
+         clsCode.add(makeInnerClasses(cls, clsCode.getIndent()));
+     }
+     clsCode.add(mthsCode);
+-    clsCode.startLine("}");
++    clsCode.startLine('}');
+ }
+\ No newline at end of file

@@ -1,0 +1,28 @@
+diff --git a/147eb40dafb11c8979afc47e9f7687d26ebafc14 b/d8f01e91702bafbb518df7c58d41fea697012724
+index 147eb40daf..d8f01e9170 100644
+--- a/147eb40dafb11c8979afc47e9f7687d26ebafc14
++++ b/d8f01e91702bafbb518df7c58d41fea697012724
+@@ -1,15 +1,13 @@
+ static MeasuredText recycle(MeasuredText mt) {
+-    mt.mText = null;
+-    if (mt.mLen < 1000) {
+-        synchronized (sLock) {
+-            for (int i = 0; i < sCached.length; ++i) {
+-                if (sCached[i] == null) {
+-                    sCached[i] = mt;
+-                    mt.mText = null;
+-                    break;
+-                }
++    mt.finish();
++    synchronized (sLock) {
++        for (int i = 0; i < sCached.length; ++i) {
++            if (sCached[i] == null) {
++                sCached[i] = mt;
++                mt.mText = null;
++                break;
+             }
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/115b834db72eb41109b815c26211220b726bee6a b/f975513c1ff481d817c8b36afc771e68d33ba3f8
+index 115b834db7..f975513c1f 100644
+--- a/115b834db72eb41109b815c26211220b726bee6a
++++ b/f975513c1ff481d817c8b36afc771e68d33ba3f8
+@@ -1,9 +1,9 @@
+ @Override
+ public void visitJetFile(JetFile file) {
+-    NamespaceDescriptorImpl namespaceDescriptor = namespaceFactory.createNamespaceDescriptorPathIfNeeded(file, outerScope);
++    NamespaceDescriptorImpl namespaceDescriptor = namespaceFactory.createNamespaceDescriptorPathIfNeeded(file, outerScope, RedeclarationHandler.DO_NOTHING);
+     context.getNamespaceDescriptors().put(file, namespaceDescriptor);
+     WriteThroughScope namespaceScope = new WriteThroughScope(outerScope, namespaceDescriptor.getMemberScope(), new TraceBasedRedeclarationHandler(trace));
+     namespaceScope.changeLockLevel(WritableScope.LockLevel.BOTH);
+     context.getNamespaceScopes().put(file, namespaceScope);
+-    collectNamespacesAndClassifiers(namespaceScope, namespaceScope, namespaceDescriptor, file.getDeclarations());
++    prepareForDeferredCall(namespaceScope, namespaceDescriptor, file);
+ }
+\ No newline at end of file

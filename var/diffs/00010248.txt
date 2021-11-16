@@ -1,0 +1,16 @@
+diff --git a/981a49428afc430c8b0acc4cde393155172c854f b/54d301ff2280ae3042b160b64bccb52c7e561da7
+index 981a49428a..54d301ff22 100644
+--- a/981a49428afc430c8b0acc4cde393155172c854f
++++ b/54d301ff2280ae3042b160b64bccb52c7e561da7
+@@ -1,5 +1,8 @@
+ @Override
+ protected void tearDown() throws Exception {
+-    removeLibs();
+-    super.tearDown();
++    try {
++        removeLibs();
++    } finally {
++        super.tearDown();
++    }
+ }
+\ No newline at end of file

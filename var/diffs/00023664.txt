@@ -1,0 +1,26 @@
+diff --git a/b1cd06516f82e2f888cfa1939b3e92058c034224 b/0059863853181a4c1a4513a5cb0966b391b78a19
+index b1cd06516f..0059863853 100644
+--- a/b1cd06516f82e2f888cfa1939b3e92058c034224
++++ b/0059863853181a4c1a4513a5cb0966b391b78a19
+@@ -1,15 +1,14 @@
+ /**
+  * Resets this view's properties
+  */
+ void resetViewProperties() {
++    Utilities.cancelAnimation(mTransformAnimation);
+     setDim(0);
+     setVisibility(View.VISIBLE);
+     getViewBounds().reset();
+     TaskViewTransform.reset(this);
+-    if (mActionButtonView != null) {
+-        mActionButtonView.setScaleX(1f);
+-        mActionButtonView.setScaleY(1f);
+-        mActionButtonView.setAlpha(1f);
+-        mActionButtonView.setTranslationZ(mActionButtonTranslationZ);
+-    }
++    mActionButtonView.setScaleX(1f);
++    mActionButtonView.setScaleY(1f);
++    mActionButtonView.setAlpha(1f);
++    mActionButtonView.setTranslationZ(mActionButtonTranslationZ);
+ }
+\ No newline at end of file

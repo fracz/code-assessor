@@ -1,0 +1,18 @@
+diff --git a/8e5309a0506ceccf625c2ee70cc213d02c12c320 b/2261ff6d72744e73fb648900b4c798a4da23842f
+index 8e5309a050..2261ff6d72 100644
+--- a/8e5309a0506ceccf625c2ee70cc213d02c12c320
++++ b/2261ff6d72744e73fb648900b4c798a4da23842f
+@@ -1,10 +1,8 @@
+ public void emitString(Token t, boolean not) {
+     String chars = CharSupport.getStringFromGrammarStringLiteral(t.getText());
+-    if (not && chars.length() == 1) {
+-        emitNotChar(t, chars);
+-        return;
+-    }
++    if (not && chars.length() == 1)
++        emit(new NotInstr());
+     for (char c : chars.toCharArray()) {
+         emit(new MatchInstr(t, c));
+     }
+ }
+\ No newline at end of file

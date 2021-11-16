@@ -1,0 +1,21 @@
+diff --git a/be4faae77e73c207db8dd96655749241076d476b b/b28bc7a5fb5d7a1d9e6fb531a1687b83851bceea
+index be4faae77e..b28bc7a5fb 100644
+--- a/be4faae77e73c207db8dd96655749241076d476b
++++ b/b28bc7a5fb5d7a1d9e6fb531a1687b83851bceea
+@@ -1,13 +1,10 @@
+ private CharSequence renderCommits(List<Node> commitsBeingDragged) {
+     if (commitsBeingDragged.size() == 1) {
+         Node node = commitsBeingDragged.get(0);
+         String message = null;
+-        try {
+-            message = myUiController.getDataPack().getCommitDataGetter().getCommitData(node).getFullMessage();
+-        } catch (VcsException e) {
+-            throw new RuntimeException(e);
+-        }
++        // myUiController.getDataPack().getCommitDataGetter().getCommitData(node).getFullMessage();
++        message = "some message";
+         return "\"" + message + "\"";
+     }
+     return commitsBeingDragged.size() + " commits";
+ }
+\ No newline at end of file

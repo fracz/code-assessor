@@ -1,0 +1,24 @@
+diff --git a/6029ab4a76221f38ddd9fb8e5a211df852845745 b/d5e360c2392afa4fa708e43b0d2d016e97555c37
+index 6029ab4a76..d5e360c239 100644
+--- a/6029ab4a76221f38ddd9fb8e5a211df852845745
++++ b/d5e360c2392afa4fa708e43b0d2d016e97555c37
+@@ -1,16 +1,16 @@
+ private Icon getOrScale(int i) {
+-    if (myScale == 1f) {
++    if (getScale() == 1f) {
+         return myIcons[i];
+     }
+     if (myScaledIcons == null) {
+         myScaledIcons = new Icon[myIcons.length];
+     }
+     Icon icon = myScaledIcons[i];
+     if (icon == null && myIcons[i] != null) {
+         icon = myIcons[i];
+         if (icon instanceof ScalableIcon) {
+-            icon = myScaledIcons[i] = ((ScalableIcon) icon).scale(myScale);
++            icon = myScaledIcons[i] = ((ScalableIcon) icon).scale(getScale());
+         }
+     }
+     return icon;
+ }
+\ No newline at end of file

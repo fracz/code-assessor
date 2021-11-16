@@ -1,0 +1,20 @@
+diff --git a/32387db12f483a29f46251c14507cd827508e3e0 b/30c4d1f82cdafc5aea79b95b7a163c300d6dc393
+index 32387db12f..30c4d1f82c 100644
+--- a/32387db12f483a29f46251c14507cd827508e3e0
++++ b/30c4d1f82cdafc5aea79b95b7a163c300d6dc393
+@@ -1,11 +1,11 @@
+ private void scrollToLast() {
+     SwingUtilities.invokeLater(new Runnable() {
+
+         public void run() {
+-            if (myMessage.size() == 0)
++            if (myLog.getDocument().getLength() == 0)
+                 return;
+-            final Rectangle rec = myList.getCellBounds(myMessage.getSize() - 1, myMessage.getSize() - 1);
+-            myList.scrollRectToVisible(rec);
++            Rectangle bounds = myLog.getBounds();
++            myLog.scrollRectToVisible(new Rectangle(0, (int) bounds.getMaxY(), (int) bounds.getWidth(), 1));
+         }
+     });
+ }
+\ No newline at end of file

@@ -1,0 +1,27 @@
+diff --git a/8cf5126bb151d7e36e4e6a2bc9ff9540d05f97c8 b/e798302ed3114efc53c2561168612c307a26def5
+index 8cf5126bb1..e798302ed3 100644
+--- a/8cf5126bb151d7e36e4e6a2bc9ff9540d05f97c8
++++ b/e798302ed3114efc53c2561168612c307a26def5
+@@ -1,12 +1,10 @@
+-public void graphPopulated(TaskExecutionGraph graph) {
+-    if (graph == gradle.getTaskGraph()) {
+-        configurationProgress.completed();
+-        configurationProgress = null;
+-        buildProgress.completed("Task graph ready");
+-        buildProgress = progressLoggerFactory.newOperation(BuildProgressLogger.class);
+-        buildProgressFormatter = new PercentageProgressFormatter("Building", graph.getAllTasks().size());
+-        buildProgress.setDescription("Execute tasks");
+-        buildProgress.setShortDescription(buildProgressFormatter.getProgress());
+-        buildProgress.started();
+-    }
++public void graphPopulated(int totalTasks) {
++    configurationProgress.completed();
++    configurationProgress = null;
++    buildProgress.completed("Task graph ready");
++    buildProgress = progressLoggerFactory.newOperation(BuildProgressLogger.class);
++    buildProgressFormatter = new PercentageProgressFormatter("Building", totalTasks);
++    buildProgress.setDescription("Execute tasks");
++    buildProgress.setShortDescription(buildProgressFormatter.getProgress());
++    buildProgress.started();
+ }
+\ No newline at end of file

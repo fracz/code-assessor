@@ -1,0 +1,23 @@
+diff --git a/2c710a4da531a2d1834c3b3dbb79e1261f2a67e5 b/a4d50e165ce89a0d31db79d760a6c8b83f1a225d
+index 2c710a4da5..a4d50e165c 100644
+--- a/2c710a4da531a2d1834c3b3dbb79e1261f2a67e5
++++ b/a4d50e165ce89a0d31db79d760a6c8b83f1a225d
+@@ -1,11 +1,9 @@
+ public Set<VariableDescriptor> resolveFieldGroupByName(@NotNull DeclarationDescriptor owner, PsiClass psiClass, String fieldName, boolean staticMembers) {
+-    Set<VariableDescriptor> r = Sets.newHashSet();
+-    // TODO: slow
+-    Set<VariableDescriptor> variables = resolveFieldGroup(owner, psiClass, staticMembers);
+-    for (VariableDescriptor variable : variables) {
+-        if (variable.getName().equals(fieldName)) {
+-            r.add(variable);
+-        }
++    ResolverScopeData scopeData = getResolverScopeData(owner, new PsiClassWrapper(psiClass));
++    NamedMembers namedMembers = scopeData.namedMembersMap.get(fieldName);
++    if (namedMembers == null) {
++        return Collections.emptySet();
+     }
+-    return r;
++    resolveNamedGroupProperties(owner, staticMembers, namedMembers, fieldName);
++    return namedMembers.propertyDescriptors;
+ }
+\ No newline at end of file

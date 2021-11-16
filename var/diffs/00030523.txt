@@ -1,0 +1,21 @@
+diff --git a/e08dbeb9b247e4f492ca224404f4cdfc774d8e00 b/a4a740cac5de8e076e4a9c49399b6568bb54a6b8
+index e08dbeb9b2..a4a740cac5 100644
+--- a/e08dbeb9b247e4f492ca224404f4cdfc774d8e00
++++ b/a4a740cac5de8e076e4a9c49399b6568bb54a6b8
+@@ -1,12 +1,12 @@
+ @Override
+ public void writeTo(DataOutput out) throws IOException {
+     out.writeUTF(index);
+     out.writeUTF(type);
+     out.writeUTF(id);
+     if (source == null) {
+-        out.writeBoolean(false);
++        out.writeInt(0);
+     } else {
+-        out.writeBoolean(true);
+-        out.writeUTF(source);
++        out.writeInt(source.length);
++        out.write(source);
+     }
+ }
+\ No newline at end of file

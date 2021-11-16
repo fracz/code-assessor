@@ -1,0 +1,19 @@
+diff --git a/4afb8c594691e5d2be9d706dc8de8388e99a16da b/17f0cc55548aebfee77787d48fe741c80345bf15
+index 4afb8c5946..17f0cc5554 100644
+--- a/4afb8c594691e5d2be9d706dc8de8388e99a16da
++++ b/17f0cc55548aebfee77787d48fe741c80345bf15
+@@ -1,9 +1,9 @@
+ public void readExternal(Element element) throws InvalidDataException {
+-    myName = element.getAttributeValue("NAME");
+-    if (myName == null) {
+-        myName = "<unknown>";
++    super.readExternal(element);
++    if (getName() == null) {
++        setName("<unknown>");
+     }
+-    List<Element> children = element.getChildren();
++    List<Element> children = element.getChildren(NodeRendererExternalizer.RENDERER_TAG);
+     myLabelRenderer = (ValueLabelRenderer) NodeRendererExternalizer.readRenderer(children.get(0));
+     myChildrenRenderer = (ChildrenRenderer) NodeRendererExternalizer.readRenderer(children.get(1));
+ }
+\ No newline at end of file

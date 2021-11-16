@@ -1,0 +1,11 @@
+diff --git a/4480c0e6e3b8dfa5334c65fa558eecfeaedb1a0e b/46950bda171126587dc88aebf6dea0df97b1b339
+index 4480c0e6e3..46950bda17 100644
+--- a/4480c0e6e3b8dfa5334c65fa558eecfeaedb1a0e
++++ b/46950bda171126587dc88aebf6dea0df97b1b339
+@@ -1,3 +1,3 @@
+-public static List<Parameter<?>> forMethod(ErrorHandler errorHandler, Method method) {
+-    return forMember(errorHandler, method, method.getGenericParameterTypes(), method.getParameterAnnotations());
++public static List<Parameter<?>> forMethod(Method method, Errors errors) throws ResolveFailedException {
++    return forMember(method, method.getGenericParameterTypes(), method.getParameterAnnotations(), errors);
+ }
+\ No newline at end of file

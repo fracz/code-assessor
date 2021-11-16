@@ -1,0 +1,17 @@
+diff --git a/669f551bf306605fcb6dd5403444b66f93c8ebd0 b/0eb240a922fa4ee7fa8ac2df2d26baf4ab24ca8a
+index 669f551bf3..0eb240a922 100644
+--- a/669f551bf306605fcb6dd5403444b66f93c8ebd0
++++ b/0eb240a922fa4ee7fa8ac2df2d26baf4ab24ca8a
+@@ -1,10 +1,10 @@
+ /**
+  * Sets the state as if we are going idle.
+  */
+ private void setIdleState(boolean forceIdleState) {
+     // Setting idle state does not kick us out of sleep unless the forceIdleState is set
+     if (forceIdleState || (mState != WatchdogState.SLEEP)) {
+         mState = WatchdogState.IDLE;
+     }
+-    mNumApsChecked = 0;
++    resetBssidCheckCount();
+ }
+\ No newline at end of file

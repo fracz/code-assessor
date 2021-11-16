@@ -1,0 +1,22 @@
+diff --git a/ebe3293f031e24e74f3041d53ef149ca8734f5b1 b/7ced6556c54f25e1cdbfe362872d2a2cb4ed515b
+index ebe3293f03..7ced6556c5 100644
+--- a/ebe3293f031e24e74f3041d53ef149ca8734f5b1
++++ b/7ced6556c54f25e1cdbfe362872d2a2cb4ed515b
+@@ -1,14 +1,4 @@
+ public void create() throws IOException {
+-    init(false);
+-    schema.create();
+-    // schema.addBlobCluster("blob");
+-    indexManager.create();
+-    security.create();
+-    functionLibrary.create();
+-    sequenceLibrary.create();
+-    security.createClassTrigger();
+-    scheduler.create();
+-    // CREATE BASE VERTEX AND EDGE CLASSES
+-    schema.createClass("V");
+-    schema.createClass("E");
++    OSharedContext shared = init();
++    shared.create();
+ }
+\ No newline at end of file

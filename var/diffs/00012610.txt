@@ -1,0 +1,17 @@
+diff --git a/3a46f890f27a87ad3bf271d6010ad87da41c73c1 b/34a88cc2cdec01d0cbba347d22a2d033931e63e6
+index 3a46f890f2..34a88cc2cd 100644
+--- a/3a46f890f27a87ad3bf271d6010ad87da41c73c1
++++ b/34a88cc2cdec01d0cbba347d22a2d033931e63e6
+@@ -1,7 +1,9 @@
+-public void doFix(Project project, ProblemDescriptor descriptor) {
++public void doFix(@NotNull Project project, ProblemDescriptor descriptor) {
+     final PsiElement nameElement = descriptor.getPsiElement();
+     final PsiLocalVariable variable = (PsiLocalVariable) nameElement.getParent();
+     final RefactoringActionHandlerFactory factory = RefactoringActionHandlerFactory.getInstance();
+     final RefactoringActionHandler inlineHandler = factory.createInlineHandler();
+-    inlineHandler.invoke(project, new PsiElement[] { variable }, null);
++    final DataManager dataManager = DataManager.getInstance();
++    final DataContext dataContext = dataManager.getDataContext();
++    inlineHandler.invoke(project, new PsiElement[] { variable }, dataContext);
+ }
+\ No newline at end of file

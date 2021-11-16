@@ -1,0 +1,17 @@
+diff --git a/ebbd4803ab2a080728a0deccadcb477a77f507f8 b/cd6335a8088840a9abd9e2d6c71cfd8b9e2e6741
+index ebbd4803ab..cd6335a808 100644
+--- a/ebbd4803ab2a080728a0deccadcb477a77f507f8
++++ b/cd6335a8088840a9abd9e2d6c71cfd8b9e2e6741
+@@ -1,10 +1,5 @@
+ public boolean containsKey(K key) {
+     synchronized (_lock) {
+-        for (HashMap<K, V> bucket : _buckets) {
+-            if (bucket.containsKey(key)) {
+-                return true;
+-            }
+-        }
+-        return false;
++        return super.containsKey(key);
+     }
+ }
+\ No newline at end of file

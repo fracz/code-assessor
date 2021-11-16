@@ -1,0 +1,28 @@
+diff --git a/52e7ba08c60c92ad81a144dc59ddb086fa7d7ca5 b/229f9271c4236428513ad205acdb6362e55c5e17
+index 52e7ba08c6..229f9271c4 100644
+--- a/52e7ba08c60c92ad81a144dc59ddb086fa7d7ca5
++++ b/229f9271c4236428513ad205acdb6362e55c5e17
+@@ -1,20 +1,20 @@
+ /**
+  * @throws TransactionFailureException if unable to start transaction
+  */
+ public Transaction beginTx() {
+     if (graphDbInstance.transactionRunning()) {
+         if (placeboTransaction == null) {
+-            placeboTransaction = new PlaceboTransaction(graphDbInstance.getTransactionManager());
++            placeboTransaction = txFactory.getPlaceboTx(graphDbInstance.getTransactionManager());
+         }
+         return placeboTransaction;
+     }
+     TransactionManager txManager = graphDbInstance.getTransactionManager();
+     Transaction result = null;
+     try {
+         txManager.begin();
+-        result = new TopLevelTransaction(txManager);
++        result = txFactory.beginTx(txManager);
+     } catch (Exception e) {
+         throw new TransactionFailureException("Unable to begin transaction", e);
+     }
+     return result;
+ }
+\ No newline at end of file

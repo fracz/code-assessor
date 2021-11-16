@@ -1,0 +1,12 @@
+diff --git a/1ed705646b02f1a62114f0d76ad297fd4f51ef9f b/93fe7fdd31d8a4c39d18e6d04a6f5624dd4b2989
+index 1ed705646b..93fe7fdd31 100644
+--- a/1ed705646b02f1a62114f0d76ad297fd4f51ef9f
++++ b/93fe7fdd31d8a4c39d18e6d04a6f5624dd4b2989
+@@ -1,3 +1,4 @@
+-public void addMapReduceJobs(final FaunusCompiler compiler) throws IOException {
+-    compiler.addMapReduce(EdgeListInputMapReduce.Map.class, EdgeListInputMapReduce.Combiner.class, EdgeListInputMapReduce.Reduce.class, LongWritable.class, FaunusVertex.class, NullWritable.class, FaunusVertex.class, null);
++@Override
++public void addMapReduceJobs(final FaunusCompiler compiler) {
++    compiler.addMapReduce(EdgeListInputMapReduce.Map.class, EdgeListInputMapReduce.Combiner.class, EdgeListInputMapReduce.Reduce.class, LongWritable.class, FaunusVertex.class, NullWritable.class, FaunusVertex.class, new Configuration());
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/7be7c1f5f9171b1e63a930a42f885b5eff021a7f b/041699edbfa56575f6d66c8bfd3a0978b1c5c706
+index 7be7c1f5f9..041699edbf 100644
+--- a/7be7c1f5f9171b1e63a930a42f885b5eff021a7f
++++ b/041699edbfa56575f6d66c8bfd3a0978b1c5c706
+@@ -1,14 +1,14 @@
+ @Override
+ public Object getInTx(Object key, OLuceneTxChanges changes) {
+     Query q = null;
+     try {
+         q = queryBuilder.query(index, key, mgrWriter.getIndexWriter().getAnalyzer());
+         OCommandContext context = null;
+         if (key instanceof OFullTextCompositeKey) {
+             context = ((OFullTextCompositeKey) key).getContext();
+         }
+         return getResults(q, context, key, changes);
+     } catch (ParseException e) {
+-        throw new OIndexEngineException("Error parsing lucene query ", e);
++        throw OException.wrapException(new OIndexEngineException("Error parsing lucene query"), e);
+     }
+ }
+\ No newline at end of file

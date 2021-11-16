@@ -1,0 +1,15 @@
+diff --git a/a3b1ffe221e817547825bbb5f6eca4a92f93f49f b/d47373ca6383584c3cfe955e596cd200557e027f
+index a3b1ffe221..d47373ca63 100644
+--- a/a3b1ffe221e817547825bbb5f6eca4a92f93f49f
++++ b/d47373ca6383584c3cfe955e596cd200557e027f
+@@ -1,8 +1,8 @@
+ /**
+  * Sets default serializer. The default serializer is common for all database instances.
+  *
+  * @param iDefaultSerializer new default serializer value
+  */
+ public static void setDefaultSerializer(ORecordSerializer iDefaultSerializer) {
+-    defaultSerializer = iDefaultSerializer;
++    ORecordSerializerFactory.instance().setDefaultRecordSerializer(iDefaultSerializer);
+ }
+\ No newline at end of file

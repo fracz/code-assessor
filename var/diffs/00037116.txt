@@ -1,0 +1,21 @@
+diff --git a/8e859ec08f85fb1ab934373019314c87c1aab52c b/0adb1531e2f1bbe82795768f764a121d47db308f
+index 8e859ec08f..0adb1531e2 100644
+--- a/8e859ec08f85fb1ab934373019314c87c1aab52c
++++ b/0adb1531e2f1bbe82795768f764a121d47db308f
+@@ -1,12 +1,9 @@
+-private DefaultTraceContext createTraceContext() {
++private TraceContext createTraceContext(IdGenerator idGenerator, ActiveTraceRepository activeTraceRepository, PluginMonitorContext pluginMonitorContext) {
+     final StorageFactory storageFactory = createStorageFactory();
+     logger.info("StorageFactoryType:{}", storageFactory);
+     final Sampler sampler = createSampler();
+     logger.info("SamplerType:{}", sampler);
+-    final int jdbcSqlCacheSize = profilerConfig.getJdbcSqlCacheSize();
+-    final boolean traceActiveThread = profilerConfig.isTraceAgentActiveThread();
+-    final boolean traceDataSource = profilerConfig.isTraceAgentDataSource();
+-    final DefaultTraceContext traceContext = new DefaultTraceContext(jdbcSqlCacheSize, this.agentInformation, storageFactory, sampler, this.serverMetaDataHolder, traceActiveThread, traceDataSource);
+-    traceContext.setProfilerConfig(profilerConfig);
++    TraceFactoryBuilder traceFactoryBuilder = createTraceFactory(storageFactory, sampler, idGenerator, activeTraceRepository);
++    final TraceContext traceContext = new DefaultTraceContext(this.profilerConfig, idGenerator, this.agentInformation, traceFactoryBuilder, pluginMonitorContext, this.serverMetaDataHolder);
+     return traceContext;
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/16770c8f2c3ce193412cfb46c1fc8119837e967e b/702210ccf28f9662cb544e7aaf4b9c704ab92fd6
+index 16770c8f2c..702210ccf2 100644
+--- a/16770c8f2c3ce193412cfb46c1fc8119837e967e
++++ b/702210ccf28f9662cb544e7aaf4b9c704ab92fd6
+@@ -1,9 +1,10 @@
+ @Test
+ public void search_withFullTextSearchDisabled_shouldIssueRespectiveCommand() throws Exception {
+     ImapFolder folder = createFolder("Folder");
+     prepareImapFolderForOpen(OPEN_MODE_RO);
+     when(storeConfig.allowRemoteSearch()).thenReturn(true);
+     when(storeConfig.isRemoteSearchFullText()).thenReturn(false);
++    setupSearchResponse("1 OK SEARCH completed");
+     folder.search("query", Collections.<Flag>emptySet(), Collections.<Flag>emptySet());
+-    verify(imapConnection).executeSimpleCommand("UID SEARCH OR SUBJECT \"query\" FROM \"query\"");
++    assertCommandIssued("UID SEARCH OR SUBJECT \"query\" FROM \"query\"");
+ }
+\ No newline at end of file

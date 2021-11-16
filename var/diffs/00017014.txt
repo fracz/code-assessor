@@ -1,0 +1,19 @@
+diff --git a/0957828ec9db512f80ff8efed1d82fd80bbbcade b/e97aca2a516b7e869d0ab52e407c40c2bd30f44c
+index 0957828ec9..e97aca2a51 100644
+--- a/0957828ec9db512f80ff8efed1d82fd80bbbcade
++++ b/e97aca2a516b7e869d0ab52e407c40c2bd30f44c
+@@ -1,10 +1,12 @@
+ protected void putAsBoolean(InstructionAdapter v) {
+     Label ifTrue = new Label();
++    Label ifFalse = new Label();
+     Label end = new Label();
+-    condJump(ifTrue, false, v);
++    condJump(ifTrue, ifFalse, v);
++    v.mark(ifFalse);
+     v.iconst(0);
+     v.goTo(end);
+     v.mark(ifTrue);
+     v.iconst(1);
+     v.mark(end);
+ }
+\ No newline at end of file

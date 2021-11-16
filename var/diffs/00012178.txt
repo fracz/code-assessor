@@ -1,0 +1,20 @@
+diff --git a/7a5ae8af4aab559e4a0514689bc22990a01bce37 b/5af053c05c8ca2562e07cc60c399d970ba167c6d
+index 7a5ae8af4a..5af053c05c 100644
+--- a/7a5ae8af4aab559e4a0514689bc22990a01bce37
++++ b/5af053c05c8ca2562e07cc60c399d970ba167c6d
+@@ -1,12 +1,11 @@
+ public void testFileDeletion() throws Exception {
+     VirtualFile f = createChildData(myRoot, "foo.txt");
+     setBinaryContent(f, new byte[] { 123 }, -1, 4000, this);
+-    final LocalHistory localHistory = LocalHistory.getInstance();
+-    final Label testLabel = localHistory.putSystemLabel(myProject, "testLabel");
++    final Label testLabel = LocalHistory.getInstance().putSystemLabel(myProject, "testLabel");
+     delete(f);
+-    localHistory.revertToLabel(myProject, myRoot, testLabel);
++    revertToLabel(testLabel, myRoot);
+     f = myRoot.findChild("foo.txt");
+     assertNotNull(f);
+     assertEquals(123, f.contentsToByteArray()[0]);
+     assertEquals(4000, f.getTimeStamp());
+ }
+\ No newline at end of file

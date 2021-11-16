@@ -1,0 +1,17 @@
+diff --git a/a03f1c57edcebd2f92794b593585a88cc80352d1 b/24d3006942d94312e6500b8de597933a06b59d44
+index a03f1c57ed..24d3006942 100644
+--- a/a03f1c57edcebd2f92794b593585a88cc80352d1
++++ b/24d3006942d94312e6500b8de597933a06b59d44
+@@ -1,9 +1,10 @@
+ @Override
+ public void cleanUp(boolean detachTraceObject) {
+     if (detachTraceObject) {
+-        getTraceContext().removeTraceObject();
++        final TraceContext traceContext = getTraceContext();
++        traceContext.removeTraceObject();
+     }
+     getRecorder().clear();
+     getTestTcpDataSender().clear();
+     ignoredServiceTypes.clear();
+ }
+\ No newline at end of file

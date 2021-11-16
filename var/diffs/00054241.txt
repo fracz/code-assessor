@@ -1,0 +1,17 @@
+diff --git a/9a47f0147dfe9f9aefdfa370502d0efb3663406b b/ae0e18540d756b1a0aad01eeec557b8c0a489512
+index 9a47f0147d..ae0e18540d 100644
+--- a/9a47f0147dfe9f9aefdfa370502d0efb3663406b
++++ b/ae0e18540d756b1a0aad01eeec557b8c0a489512
+@@ -1,10 +1,10 @@
+ @Test
+ public void parseWithoutCondition() throws SQLException {
+     ShardingRule shardingRule = createShardingRule();
+     List<Object> parameters = Collections.emptyList();
+-    SQLStatementParser statementParser = new SQLStatementParser(DatabaseType.MySQL, shardingRule, parameters, new MySQLParser("UPDATE TABLE_XXX SET field1=field1+1", shardingRule, parameters));
++    SQLParserEngine statementParser = new SQLParserEngine(DatabaseType.MySQL, new MySQLParser("UPDATE TABLE_XXX SET field1=field1+1", shardingRule, parameters), shardingRule, parameters);
+     UpdateSQLContext sqlContext = (UpdateSQLContext) statementParser.parseStatement();
+     assertThat(sqlContext.getTables().get(0).getName(), is("TABLE_XXX"));
+     assertTrue(sqlContext.getConditionContexts().isEmpty());
+     assertThat(sqlContext.toSqlBuilder().toString(), is("UPDATE [Token(TABLE_XXX)] SET field1=field1+1"));
+ }
+\ No newline at end of file

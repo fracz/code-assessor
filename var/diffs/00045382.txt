@@ -1,0 +1,20 @@
+diff --git a/9f246b216fbca2fbb1a7b72f27ba195377f1b90f b/9f0408d9dd06a689e4db72a56776eee19e7067b7
+index 9f246b216f..9f0408d9dd 100644
+--- a/9f246b216fbca2fbb1a7b72f27ba195377f1b90f
++++ b/9f0408d9dd06a689e4db72a56776eee19e7067b7
+@@ -1,12 +1,11 @@
+ @ConsoleCommand(description = "Displays the status of the cluster nodes")
+ public void clusterStatus() throws IOException {
+-    if (serverAdmin == null)
+-        throw new IllegalStateException("You must be connected to a remote server to get the cluster status");
+     checkForRemoteServer();
+     try {
+         message("\nCluster status:");
+-        out.println(serverAdmin.clusterStatus().toJSON("attribSameRow,alwaysFetchEmbedded,fetchPlan:*:0"));
++        ODocument clusterStatus = ((OrientDBRemote) OrientDBInternal.extract(orientDB)).getClusterStatus(currentDatabaseUserName, currentDatabaseUserPassword);
++        out.println(clusterStatus.toJSON("attribSameRow,alwaysFetchEmbedded,fetchPlan:*:0"));
+     } catch (Exception e) {
+         printError(e);
+     }
+ }
+\ No newline at end of file

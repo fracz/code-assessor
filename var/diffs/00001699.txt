@@ -1,0 +1,19 @@
+diff --git a/e41df686ee6b507d42ce1b953c0a68e41cb04d15 b/189a266af378a04889107dad76d4fea5f06f2ab6
+index e41df686ee..189a266af3 100644
+--- a/e41df686ee6b507d42ce1b953c0a68e41cb04d15
++++ b/189a266af378a04889107dad76d4fea5f06f2ab6
+@@ -1,12 +1,12 @@
+ public TextWithImports compute() {
+     PsiExpression expressionText = null;
+     try {
+         expressionText = getEvaluationExpression(node, context);
+     } catch (EvaluateException e) {
+         LOG.error(e.getMessage());
+         return null;
+     }
+     if (expressionText == null)
+         return null;
+-    return EvaluationManager.getInstance().createExpressionFragment(expressionText);
++    return new TextWithImportsImpl(expressionText);
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/3bfa7475d08d55103acfb8c22281b5d6299f14ee b/e334c41f4832cae9f20e51fd63ca1231012ef0fd
+index 3bfa7475d0..e334c41f48 100644
+--- a/3bfa7475d08d55103acfb8c22281b5d6299f14ee
++++ b/e334c41f4832cae9f20e51fd63ca1231012ef0fd
+@@ -1,10 +1,6 @@
+ public static ClassInfo fromDex(DexNode dex, int clsIndex) {
+     if (clsIndex == DexNode.NO_INDEX) {
+         return null;
+     }
+-    ArgType type = dex.getType(clsIndex);
+-    if (type.isArray()) {
+-        type = ArgType.OBJECT;
+-    }
+-    return fromType(dex, type);
++    return fromType(dex, dex.getType(clsIndex));
+ }
+\ No newline at end of file

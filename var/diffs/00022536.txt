@@ -1,0 +1,14 @@
+diff --git a/883a1d5721a66777aa1162de9434e0f93d457a7c b/5a52b97810f882cce5e6bf0251528b10bd9b6d94
+index 883a1d5721..5a52b97810 100644
+--- a/883a1d5721a66777aa1162de9434e0f93d457a7c
++++ b/5a52b97810f882cce5e6bf0251528b10bd9b6d94
+@@ -1,6 +1,6 @@
+ @Override
+ protected Void doInBackground(Void... params) {
+-    File zippedFile = zipBugreport(bugreportFile);
+-    sendBugreportNotification(context, pid, zippedFile, screenshotFile);
++    info.bugreportFile = zipBugreport(info.bugreportFile);
++    sendBugreportNotification(context, info);
+     return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/54521a7402c738282704d558b2ce0d74f35d06ef b/c2eba82a06b2251055931fe4ebfa54a83d1bc92a
+index 54521a7402..c2eba82a06 100644
+--- a/54521a7402c738282704d558b2ce0d74f35d06ef
++++ b/c2eba82a06b2251055931fe4ebfa54a83d1bc92a
+@@ -1,6 +1,8 @@
+ @Override
+-public void addIndexRule(long labelId, long propertyKey) throws ConstraintViolationKernelException {
++public IndexRule addIndexRule(long labelId, long propertyKey) throws ConstraintViolationKernelException {
+     SchemaStore schemaStore = neoStore.getSchemaStore();
+     long id = schemaStore.nextId();
+-    persistenceManager.createSchemaRule(new IndexRule(id, labelId, IndexRule.State.POPULATING, new long[] { propertyKey }));
++    IndexRule rule = new IndexRule(id, labelId, IndexRule.State.POPULATING, propertyKey);
++    persistenceManager.createSchemaRule(rule);
++    return rule;
+ }
+\ No newline at end of file

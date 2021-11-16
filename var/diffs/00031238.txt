@@ -1,0 +1,19 @@
+diff --git a/8e3ad6d0d3a3565bd79a05237aea51b4b80a7f5d b/2d05b8cc6fb5ff84a7507e7dcdca7388e235b947
+index 8e3ad6d0d3..2d05b8cc6f 100644
+--- a/8e3ad6d0d3a3565bd79a05237aea51b4b80a7f5d
++++ b/2d05b8cc6fb5ff84a7507e7dcdca7388e235b947
+@@ -1,9 +1,8 @@
+ @Override
+ public void close(boolean delete) {
+-    synchronized (mutex) {
+-        if (raf != null) {
+-            raf.decreaseRefCount(delete);
+-            raf = null;
+-        }
++    FsTranslogFile current1 = this.current;
++    if (current1 == null) {
++        return;
+     }
++    current1.close(delete);
+ }
+\ No newline at end of file

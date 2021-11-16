@@ -1,0 +1,24 @@
+diff --git a/6d6f007f7815a8873d59383dc5b6920a3a0efe3e b/88dafe5d107d2c3a583e17f88eee0bd8ea0fa792
+index 6d6f007f78..88dafe5d10 100644
+--- a/6d6f007f7815a8873d59383dc5b6920a3a0efe3e
++++ b/88dafe5d107d2c3a583e17f88eee0bd8ea0fa792
+@@ -1,12 +1,15 @@
+ /**
+  * Returns the exponential of a complex ndarray
+  *
+  * @param toExp the ndarray to convert
+  * @return the exponential of the specified
+  * ndarray
+  */
+-public static ComplexNDArray expi(ComplexNDArray toExp) {
+-    ComplexNDArray flattened = toExp.ravel();
+-    for (int i = 0; i < flattened.length; i++) flattened.put(i, ComplexUtil.exp(flattened.get(i)));
++public static IComplexNDArray expi(IComplexNDArray toExp) {
++    IComplexNDArray flattened = toExp.ravel();
++    for (int i = 0; i < flattened.length(); i++) {
++        IComplexNumber n = (IComplexNumber) flattened.getScalar(i).element();
++        flattened.put(i, NDArrays.scalar(ComplexUtil.exp(n)));
++    }
+     return flattened.reshape(toExp.shape());
+ }
+\ No newline at end of file

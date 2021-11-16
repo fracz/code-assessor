@@ -1,0 +1,13 @@
+diff --git a/b6728f445645e6f63a759c3f493156a9c6744a90 b/4a4fdbbd461bb5d1e9740fab43eb943154145e64
+index b6728f4456..4a4fdbbd46 100644
+--- a/b6728f445645e6f63a759c3f493156a9c6744a90
++++ b/4a4fdbbd461bb5d1e9740fab43eb943154145e64
+@@ -1,5 +1,5 @@
+ @Override
+ public IndexSearcher searcher() throws IOException {
+-    // return ((OLuceneIndexEngine) indexEngine).searcher();
+-    return null;
++    OLuceneIndexEngine indexEngine = (OLuceneIndexEngine) storage.getIndexEngine(indexId);
++    return indexEngine.searcher();
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/59880a45ac5eee8493b76bb7cec2818592407d5a b/2a36b4d9c916b5422092a895980375283df3a7d0
+index 59880a45ac..2a36b4d9c9 100644
+--- a/59880a45ac5eee8493b76bb7cec2818592407d5a
++++ b/2a36b4d9c916b5422092a895980375283df3a7d0
+@@ -1,3 +1,3 @@
+-private SSTableWriter createCompactionWriter(File sstableDirectory, long keysPerSSTable, long repairedAt) {
+-    return new SSTableWriter(cfs.getTempSSTablePath(sstableDirectory), keysPerSSTable, repairedAt, cfs.metadata, cfs.partitioner, new MetadataCollector(sstables, cfs.metadata.comparator, getLevel()));
++private SSTableWriter createCompactionWriter(File sstableDirectory, long keysPerSSTable, long repairedAt, SSTableFormat.Type type) {
++    return SSTableWriter.create(Descriptor.fromFilename(cfs.getTempSSTablePath(sstableDirectory), type), keysPerSSTable, repairedAt, cfs.metadata, cfs.partitioner, new MetadataCollector(sstables, cfs.metadata.comparator, getLevel()));
+ }
+\ No newline at end of file

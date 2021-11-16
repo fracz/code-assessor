@@ -1,0 +1,12 @@
+diff --git a/700d81b04bd8e51aa38e167a85e60361453320ee b/7165ded6d403657f48c49f3cc0479e794cb36f5e
+index 700d81b04b..7165ded6d4 100644
+--- a/700d81b04bd8e51aa38e167a85e60361453320ee
++++ b/7165ded6d403657f48c49f3cc0479e794cb36f5e
+@@ -1,3 +1,5 @@
+ private boolean isLoadingParent(Object node) {
+-    return node instanceof DefaultMutableTreeNode && isLoadedInBackground(getElementFor((DefaultMutableTreeNode) node));
++    if (!(node instanceof DefaultMutableTreeNode))
++        return false;
++    return isLoadedInBackground(getElementFor((DefaultMutableTreeNode) node));
+ }
+\ No newline at end of file

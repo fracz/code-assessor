@@ -1,0 +1,22 @@
+diff --git a/5df4281b88e05104df5807737fa5d280f3e960ba b/4af870d5aa8ab6ef13766cf814e1d9e7bce38c62
+index 5df4281b88..4af870d5aa 100644
+--- a/5df4281b88e05104df5807737fa5d280f3e960ba
++++ b/4af870d5aa8ab6ef13766cf814e1d9e7bce38c62
+@@ -1,10 +1,9 @@
++@NotNull
+ public static FragmentSide fromIndex(int index) {
+-    switch(index) {
+-        case 0:
+-            return SIDE1;
+-        case 1:
+-            return SIDE2;
+-        default:
+-            throw new InvalidParameterException(String.valueOf(index));
++    for (FragmentSide side : FragmentSide.values()) {
++        if (side.getIndex() == index) {
++            return side;
++        }
+     }
++    throw new IllegalArgumentException(String.valueOf(index));
+ }
+\ No newline at end of file

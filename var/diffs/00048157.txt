@@ -1,0 +1,30 @@
+diff --git a/5577be2c9064633b299281dfaef41bef1729d472 b/9fd5e044894a0d2f3adb9239a752a4dc1ea05813
+index 5577be2c90..9fd5e04489 100644
+--- a/5577be2c9064633b299281dfaef41bef1729d472
++++ b/9fd5e044894a0d2f3adb9239a752a4dc1ea05813
+@@ -1,13 +1,15 @@
+ @Override
+ public boolean editValue(final DBDValueController controller) throws DBException {
+-    if (controller.isInlineEdit()) {
+-        return false;
++    switch(controller.getEditType()) {
++        case EDITOR:
++            final Object value = controller.getValue();
++            if (value instanceof DBDCursor) {
++                CursorViewDialog dialog = new CursorViewDialog(controller);
++                dialog.open();
++                return true;
++            }
++            return false;
++        default:
++            return false;
+     }
+-    final Object value = controller.getValue();
+-    if (value instanceof DBDCursor) {
+-        CursorViewDialog dialog = new CursorViewDialog(controller);
+-        dialog.open();
+-        return true;
+-    }
+-    return false;
+ }
+\ No newline at end of file

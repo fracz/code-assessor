@@ -1,0 +1,18 @@
+diff --git a/f16290f9a31578642ba412155ae2cb5a85536557 b/c418b60ecc91b519db5e42e1c89a9f36af01292e
+index f16290f9a3..c418b60ecc 100644
+--- a/f16290f9a31578642ba412155ae2cb5a85536557
++++ b/c418b60ecc91b519db5e42e1c89a9f36af01292e
+@@ -1,11 +1,11 @@
+ @Test(timeout = 1000)
+ public void shouldHandleBasicSetupAndTeardown() throws Exception {
+-    final ReceiverThread receiverThread = new ReceiverThread(null, null);
++    final ReceiverThread receiverThread = new ReceiverThread(new MediaDriver.TopologyBuilder());
+     final RcvFrameHandler rcv = new RcvFrameHandler(UdpDestination.parse(RCV_UDP_URI), receiverThread, channelIds);
+     final SrcFrameHandler src = new SrcFrameHandler(UdpDestination.parse(SRC_UDP_URI), receiverThread, null, null);
+     processLoop(receiverThread, 5);
+     rcv.close();
+     src.close();
+     processLoop(receiverThread, 5);
+     receiverThread.close();
+ }
+\ No newline at end of file

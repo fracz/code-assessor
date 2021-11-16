@@ -1,0 +1,17 @@
+diff --git a/4a74f645e7ba776026203df2d045042bf0e282b0 b/0ea6bac3ad5728ad080313da4ccf7e09395d34b5
+index 4a74f645e7..0ea6bac3ad 100644
+--- a/4a74f645e7ba776026203df2d045042bf0e282b0
++++ b/0ea6bac3ad5728ad080313da4ccf7e09395d34b5
+@@ -1,6 +1,10 @@
+ /**
+  * Total merges of this index.
+  */
+ public MergeStats getMergeStats() {
+-    return this.mergeStats();
++    MergeStats mergeStats = new MergeStats();
++    for (IndexShardStatus shard : this) {
++        mergeStats.add(shard.getMergeStats());
++    }
++    return mergeStats;
+ }
+\ No newline at end of file

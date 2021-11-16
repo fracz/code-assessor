@@ -1,0 +1,29 @@
+diff --git a/2bc7a345a52230a91a3506be7dcbbc9dbf7f5f86 b/a0d23ab4dbe8273752088a27f7c0d91040c5ce30
+index 2bc7a345a5..a0d23ab4db 100644
+--- a/2bc7a345a52230a91a3506be7dcbbc9dbf7f5f86
++++ b/a0d23ab4dbe8273752088a27f7c0d91040c5ce30
+@@ -1,13 +1,13 @@
+ @Before
+ public void setUp() {
+-    list = mock(LinkedList.class);
+-    map = mock(HashMap.class);
+-    set = mock(HashSet.class);
+-    list.add("one");
+-    map.put("two", "two");
+-    list.add("three and four");
+-    list.add("three and four");
+-    map.put("five", "five");
+-    set.add("six");
+-    strictly = strictOrderVerifier(list, map, set);
++    mockOne = mock(IMethods.class);
++    mockTwo = mock(IMethods.class);
++    mockThree = mock(IMethods.class);
++    strictly = strictOrderVerifier(mockOne, mockTwo, mockThree);
++    mockOne.simpleMethod(1);
++    mockTwo.simpleMethod(2);
++    mockTwo.simpleMethod(2);
++    mockThree.simpleMethod(3);
++    mockTwo.simpleMethod(2);
++    mockOne.simpleMethod(4);
+ }
+\ No newline at end of file

@@ -1,0 +1,25 @@
+diff --git a/04de7c4ef36bc0bfeda5abe8fd6378669b2f64ac b/e878e8e2bf3e2bd3e3d741645375aeb6a0ccb157
+index 04de7c4ef3..e878e8e2bf 100644
+--- a/04de7c4ef36bc0bfeda5abe8fd6378669b2f64ac
++++ b/e878e8e2bf3e2bd3e3d741645375aeb6a0ccb157
+@@ -1,13 +1,11 @@
+-private CommandDispatcher createCommandService(TraceContext traceContext) {
++private CommandDispatcher createCommandService(ProfilerConfig profilerConfig, ActiveTraceRepository activeTraceRepository) {
+     ProfilerCommandLocatorBuilder builder = new ProfilerCommandLocatorBuilder();
+     builder.addService(new EchoService());
+-    if (traceContext instanceof DefaultTraceContext) {
+-        ActiveTraceLocator activeTraceLocator = ((DefaultTraceContext) traceContext).getActiveTraceLocator();
+-        if (activeTraceLocator != null) {
+-            ActiveThreadService activeThreadService = new ActiveThreadService(activeTraceLocator, traceContext.getProfilerConfig());
+-            builder.addService(activeThreadService);
+-        }
++    if (activeTraceRepository != null) {
++        ActiveThreadService activeThreadService = new ActiveThreadService(profilerConfig, activeTraceRepository);
++        builder.addService(activeThreadService);
+     }
+-    CommandDispatcher commandDispatcher = new CommandDispatcher(builder.build());
++    ProfilerCommandServiceLocator commandServiceLocator = builder.build();
++    CommandDispatcher commandDispatcher = new CommandDispatcher(commandServiceLocator);
+     return commandDispatcher;
+ }
+\ No newline at end of file

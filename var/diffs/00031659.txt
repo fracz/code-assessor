@@ -1,0 +1,14 @@
+diff --git a/1f930b1e88904ab561d200971b045ff835ace412 b/15967fb84409c08b49cee48feb9e4e037291b9f9
+index 1f930b1e88..15967fb844 100644
+--- a/1f930b1e88904ab561d200971b045ff835ace412
++++ b/15967fb84409c08b49cee48feb9e4e037291b9f9
+@@ -1,3 +1,6 @@
+-private PlatformBitmapFactory getPlatformBitmapFactory() {
+-    return PlatformBitmapFactory.getInstance(mConfig.getPoolFactory());
++public PlatformBitmapFactory getPlatformBitmapFactory() {
++    if (mPlatformBitmapFactory == null) {
++        mPlatformBitmapFactory = buildPlatformBitmapFactory(mConfig.getPoolFactory(), getPlatformDecoder());
++    }
++    return mPlatformBitmapFactory;
+ }
+\ No newline at end of file

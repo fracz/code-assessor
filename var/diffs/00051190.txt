@@ -1,0 +1,22 @@
+diff --git a/96ba98faeb800b4f93cfb5155387953790b37119 b/f77798a065e687db98f10971a5d6d80b4365a2be
+index 96ba98faeb..f77798a065 100644
+--- a/96ba98faeb800b4f93cfb5155387953790b37119
++++ b/f77798a065e687db98f10971a5d6d80b4365a2be
+@@ -1,13 +1,14 @@
+ @Override
+ public void completeLoading(RESULT result) {
+     completed = true;
+     if (ProgressPageControl.this.isDisposed()) {
+         return;
+     }
+     visualizeLoading();
+     loadCount = 0;
+-    if (!getProgressControl().progressBar.isDisposed()) {
+-        getProgressControl().progressBar.setState(SWT.PAUSED);
++    ProgressBar progressBar = getProgressControl().progressBar;
++    if (progressBar != null && !progressBar.isDisposed()) {
++        progressBar.setState(SWT.PAUSED);
+         getProgressControl().hideControls(true);
+     }
+ }
+\ No newline at end of file

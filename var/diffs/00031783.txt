@@ -1,0 +1,13 @@
+diff --git a/4e95d588b69d898d7c5c3be92b46cde99124f30e b/f462160f9ffd7ccaafcfae1e4bc1484453ebdc43
+index 4e95d588b6..f462160f9f 100644
+--- a/4e95d588b69d898d7c5c3be92b46cde99124f30e
++++ b/f462160f9ffd7ccaafcfae1e4bc1484453ebdc43
+@@ -1,4 +1,6 @@
+ private String assertLabelGroupsMatchingAndReplace(String labelTemplate, String[][] expectedGroups) throws Exception {
+     assertLabelGroupsMatching(labelTemplate, expectedGroups);
+-    return PipelineLabel.replaceRevisionsInLabel(labelTemplate, MATERIAL_REVISIONS);
++    PipelineLabel label = new PipelineLabel(labelTemplate);
++    label.updateLabel(MATERIAL_REVISIONS);
++    return label.toString();
+ }
+\ No newline at end of file

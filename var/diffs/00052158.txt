@@ -1,0 +1,18 @@
+diff --git a/e7617af45ddd94eb0fc9939112b5fbf2b5f4c1d9 b/213ca2e224e6e4141ee1e58a9a9e03d17459ce56
+index e7617af45d..213ca2e224 100644
+--- a/e7617af45ddd94eb0fc9939112b5fbf2b5f4c1d9
++++ b/213ca2e224e6e4141ee1e58a9a9e03d17459ce56
+@@ -1,8 +1,9 @@
+ @Override
+ public boolean next() throws SQLException {
+-    if (isClosed()) {
++    if (closed || !generatedKeys.hasNext()) {
++        currentGeneratedKey = null;
+         return false;
+     }
+-    rowIndex++;
+-    return rowIndex + 1 <= valueTable.rowKeySet().size();
++    currentGeneratedKey = generatedKeys.next();
++    return true;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/2b97906b3e4c39a4fd268a52a7fce84e0aec37b0 b/eda77f841f749a3ef7b64a191d1c49bd04c45eea
+index 2b97906b3e..eda77f841f 100644
+--- a/2b97906b3e4c39a4fd268a52a7fce84e0aec37b0
++++ b/eda77f841f749a3ef7b64a191d1c49bd04c45eea
+@@ -1,8 +1,8 @@
+ @NotNull
+ private static Keymap createKeymapCopyIfNeededAndPossible(Component parent, Keymap keymap) {
+     if (parent instanceof KeymapPanel) {
+         KeymapPanel panel = (KeymapPanel) parent;
+-        keymap = panel.createKeymapCopyIfNeeded();
++        return panel.myKeymapSelector.getMutableKeymap(keymap);
+     }
+     return keymap;
+ }
+\ No newline at end of file

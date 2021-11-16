@@ -1,0 +1,15 @@
+diff --git a/55f47a5e97ad82f0a853ea0f89d9127b937d1f5e b/6df5f02910fdf26de3b4b842ca984b5240c89c2e
+index 55f47a5e97..6df5f02910 100644
+--- a/55f47a5e97ad82f0a853ea0f89d9127b937d1f5e
++++ b/6df5f02910fdf26de3b4b842ca984b5240c89c2e
+@@ -1,6 +1,7 @@
++@Test
+ public void testBothBeansAreProxies() {
+-    Object tb = getApplicationContext().getBean("testBean");
++    Object tb = ctx.getBean("testBean");
+     assertTrue(AopUtils.isAopProxy(tb));
+-    Object tb2 = getApplicationContext().getBean("testBean2");
++    Object tb2 = ctx.getBean("testBean2");
+     assertTrue(AopUtils.isAopProxy(tb2));
+ }
+\ No newline at end of file

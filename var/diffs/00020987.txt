@@ -1,0 +1,12 @@
+diff --git a/07b8a2d3a3baf93e979b8cd0f3f3904729f45b84 b/d82d3ecf8806ad3345a46526a165116f23311bed
+index 07b8a2d3a3..d82d3ecf88 100644
+--- a/07b8a2d3a3baf93e979b8cd0f3f3904729f45b84
++++ b/d82d3ecf8806ad3345a46526a165116f23311bed
+@@ -1,5 +1,5 @@
+ @Override
+ public void setNString(int parameterIndex, String x) throws SQLException {
+-    setParameter(parameterIndex, new JdbcParameterImpl(Types.NVARCHAR, x));
++    setParameter(parameterIndex, createParameter(Types.NVARCHAR, x));
+     createChain().preparedStatement_setNString(this, parameterIndex, x);
+ }
+\ No newline at end of file

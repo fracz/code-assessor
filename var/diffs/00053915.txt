@@ -1,0 +1,21 @@
+diff --git a/354d7dd5ac71e2306dd278379af47fe4439a3957 b/e322755b6f05cee79f63ff0c56307840801b49d8
+index 354d7dd5ac..e322755b6f 100644
+--- a/354d7dd5ac71e2306dd278379af47fe4439a3957
++++ b/e322755b6f05cee79f63ff0c56307840801b49d8
+@@ -1,9 +1,10 @@
+ private void parseSample() {
+-    if (getSqlParser().skipIfEqual(OracleKeyword.SAMPLE)) {
+-        getSqlParser().skipIfEqual(OracleKeyword.BLOCK);
++    if (!getSqlParser().skipIfEqual(OracleKeyword.SAMPLE)) {
++        return;
++    }
++    getSqlParser().skipIfEqual(OracleKeyword.BLOCK);
++    getSqlParser().skipParentheses();
++    if (getSqlParser().skipIfEqual(OracleKeyword.SEED)) {
+         getSqlParser().skipParentheses();
+-        if (getSqlParser().skipIfEqual(OracleKeyword.SEED)) {
+-            getSqlParser().skipParentheses();
+-        }
+     }
+ }
+\ No newline at end of file

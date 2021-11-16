@@ -1,0 +1,14 @@
+diff --git a/1bdcdf85e7ca61acf26ea318c940e455af1a6a3b b/03cc4b40eee7e9d1d87b4a09f1bcf43da1f5b8bc
+index 1bdcdf85e7..03cc4b40ee 100644
+--- a/1bdcdf85e7ca61acf26ea318c940e455af1a6a3b
++++ b/03cc4b40eee7e9d1d87b4a09f1bcf43da1f5b8bc
+@@ -1,5 +1,4 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiClass aClass = (PsiClass) location.getParent();
+-    final int count = countFields(aClass);
+-    return InspectionGadgetsBundle.message("too.many.fields.problem.descriptor", count);
++@NotNull
++public String buildErrorString(Object... infos) {
++    return InspectionGadgetsBundle.message("too.many.fields.problem.descriptor", infos[0]);
+ }
+\ No newline at end of file

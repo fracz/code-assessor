@@ -1,0 +1,16 @@
+diff --git a/1a907428bac38c8a885bacb1c70b36060d80e009 b/2b17ac8dd4a5a58f28d34a15ea8f89b61f496d9b
+index 1a907428ba..2b17ac8dd4 100644
+--- a/1a907428bac38c8a885bacb1c70b36060d80e009
++++ b/2b17ac8dd4a5a58f28d34a15ea8f89b61f496d9b
+@@ -1,5 +1,7 @@
+ @Override
+-public JetIntentionAction<JetModifierListOwner> createAction(DiagnosticWithPsiElement diagnostic) {
+-    assert diagnostic.getPsiElement() instanceof JetModifierListOwner;
+-    return new AddModifierFix((JetModifierListOwner) diagnostic.getPsiElement(), modifier, modifiersThatCanBeReplaced);
++public JetIntentionAction<JetModifierListOwner> createAction(Diagnostic diagnostic) {
++    JetModifierListOwner modifierListOwner = QuickFixUtil.getParentElementOfType(diagnostic, JetModifierListOwner.class);
++    if (modifierListOwner == null)
++        return null;
++    return new AddModifierFix(modifierListOwner, modifier, modifiersThatCanBeReplaced);
+ }
+\ No newline at end of file

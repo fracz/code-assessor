@@ -1,0 +1,26 @@
+diff --git a/9fac46a5720684cdfdb5db893356912190870ddc b/0477179db3228c89f2d44ba5c0fa6cb642822814
+index 9fac46a572..0477179db3 100644
+--- a/9fac46a5720684cdfdb5db893356912190870ddc
++++ b/0477179db3228c89f2d44ba5c0fa6cb642822814
+@@ -1,16 +1,18 @@
+ private void solveSimpleSession() throws IOException {
+     connection = server.getClientConnectionManager().getConnection(clientTxId, this);
+     if (clientTxId < 0) {
+         short protocolId = 0;
+         if (connection != null)
+             protocolId = connection.data.protocolVersion;
+         connection = server.getClientConnectionManager().connect(this);
+         if (connection != null) {
+             connection.data.protocolVersion = protocolId;
+             connection.data.sessionId = clientTxId;
+         }
+     }
+-    this.tokenBytes = null;
+-    if (connection != null)
++    if (connection != null) {
++        // This should not be needed
++        connection.tokenBytes = null;
+         connection.acquire();
++    }
+ }
+\ No newline at end of file

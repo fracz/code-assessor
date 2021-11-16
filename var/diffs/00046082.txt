@@ -1,0 +1,13 @@
+diff --git a/3a648e791c8e4ffd1fcdb08d27993dd71b12afe2 b/8687f301d60d9e4e04732c104e59c5f2cc6fa714
+index 3a648e791c..8687f301d6 100644
+--- a/3a648e791c8e4ffd1fcdb08d27993dd71b12afe2
++++ b/8687f301d60d9e4e04732c104e59c5f2cc6fa714
+@@ -1,6 +1,6 @@
+ @Test
+ public void testSetsHiddenToTrueForOperators() {
+-    Signature signature = Signature.builder().operatorType(ADD).kind(SCALAR).returnType("varchar(x)").argumentTypes("varchar(x)").literalParameters("x").build();
++    Signature signature = Signature.builder().operatorType(ADD).kind(SCALAR).returnType(parseTypeSignature("varchar(x)", ImmutableSet.of("x"))).argumentTypes(parseTypeSignature("varchar(x)", ImmutableSet.of("x"))).build();
+     SqlScalarFunction function = SqlScalarFunction.builder(TestMethods.class).signature(signature).implementation(b -> b.methods("varcharToVarchar")).build();
+     ScalarFunctionImplementation functionImplementation = function.specialize(BOUND_VARIABLES, 1, TYPE_REGISTRY, REGISTRY);
+ }
+\ No newline at end of file

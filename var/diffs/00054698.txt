@@ -1,0 +1,31 @@
+diff --git a/13aac1a26048d86dc17d1d97962503df2c53dfb9 b/01f0462ae5d8bde08d6aede1b788e9e6ee897bac
+index 13aac1a260..01f0462ae5 100644
+--- a/13aac1a26048d86dc17d1d97962503df2c53dfb9
++++ b/01f0462ae5d8bde08d6aede1b788e9e6ee897bac
+@@ -1,13 +1,19 @@
+ @Override
+ public boolean next() throws SQLException {
+     if (orderByValuesQueue.isEmpty()) {
+         return false;
+     }
+-    OrderByValue firstResultSet = orderByValuesQueue.poll();
+-    setCurrentResultSet(firstResultSet.getResultSet());
+-    if (firstResultSet.next(isFirstNext)) {
+-        orderByValuesQueue.offer(firstResultSet);
++    if (isFirstNext) {
++        isFirstNext = false;
++        return true;
+     }
+-    isFirstNext = false;
+-    return hasNext();
++    OrderByValue firstOrderByValue = orderByValuesQueue.poll();
++    if (firstOrderByValue.next()) {
++        orderByValuesQueue.offer(firstOrderByValue);
++    }
++    if (orderByValuesQueue.isEmpty()) {
++        return false;
++    }
++    setCurrentResultSet(orderByValuesQueue.peek().getResultSet());
++    return true;
+ }
+\ No newline at end of file

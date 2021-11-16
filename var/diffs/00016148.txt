@@ -1,0 +1,21 @@
+diff --git a/bb067bfd8062419fd8ac0e704f1c088b6ee5c7b1 b/bb83a4f7b60dcc639e8a707712087a4d67ec5680
+index bb067bfd80..bb83a4f7b6 100644
+--- a/bb067bfd8062419fd8ac0e704f1c088b6ee5c7b1
++++ b/bb83a4f7b60dcc639e8a707712087a4d67ec5680
+@@ -1,12 +1,6 @@
+-@Nullable
++@NotNull
+ private PropertySetterDescriptor getSetterDescriptor() {
+-    PropertyDescriptor property = getNullablePropertyDescriptor();
+-    if (property == null) {
+-        return null;
+-    }
+-    PropertySetterDescriptor setter = property.getSetter();
+-    if (setter == null) {
+-        return null;
+-    }
++    PropertySetterDescriptor setter = propertyDescriptor.getSetter();
++    assert setter != null;
+     return setter;
+ }
+\ No newline at end of file

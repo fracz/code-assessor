@@ -1,0 +1,11 @@
+diff --git a/95bf5378742e4dc58ee6a1fa3a8b4c4f86777786 b/2734e6162c547928fd9471bbd229696c087d25e0
+index 95bf537874..2734e6162c 100644
+--- a/95bf5378742e4dc58ee6a1fa3a8b4c4f86777786
++++ b/2734e6162c547928fd9471bbd229696c087d25e0
+@@ -1,4 +1,4 @@
+ public static FieldInfo fromDex(DexNode dex, int index) {
+     FieldId field = dex.getFieldId(index);
+-    return new FieldInfo(ClassInfo.fromDex(dex, field.getDeclaringClassIndex()), dex.getString(field.getNameIndex()), dex.getType(field.getTypeIndex()));
++    return from(dex, ClassInfo.fromDex(dex, field.getDeclaringClassIndex()), dex.getString(field.getNameIndex()), dex.getType(field.getTypeIndex()));
+ }
+\ No newline at end of file

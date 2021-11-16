@@ -1,0 +1,15 @@
+diff --git a/a842fcd528d166224ff35f20903240fe4a758219 b/2f9532ec31e954c1b905d6bd29615ddd9cb9f0db
+index a842fcd528..2f9532ec31 100644
+--- a/a842fcd528d166224ff35f20903240fe4a758219
++++ b/2f9532ec31e954c1b905d6bd29615ddd9cb9f0db
+@@ -1,8 +1,8 @@
+ private Node eqExpr(TokenStream ts, boolean inForInit) throws IOException, JavaScriptException {
+-    CodePosition position = getNextTokenPosition(ts);
+     Node pn = relExpr(ts, inForInit);
+     while (ts.matchToken(TokenStream.EQOP)) {
++        CodePosition position = ts.tokenPosition;
+         pn = nf.createBinary(TokenStream.EQOP, ts.getOp(), pn, relExpr(ts, inForInit), position);
+     }
+     return pn;
+ }
+\ No newline at end of file

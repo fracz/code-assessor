@@ -1,0 +1,18 @@
+diff --git a/27fd40be4be60c3c212b2aa615f36fa07c02cffc b/1ea090d56871c65ae0cf4f8768653716ff7e208b
+index 27fd40be4b..1ea090d568 100644
+--- a/27fd40be4be60c3c212b2aa615f36fa07c02cffc
++++ b/1ea090d56871c65ae0cf4f8768653716ff7e208b
+@@ -1,10 +1,11 @@
+ @Override
+ public void setImageDrawable(Drawable drawable) {
+-    if (drawable == null || (mFixedWidth > 0 && mFixedHeight > 0)) {
++    boolean isNullBitmapDrawable = (drawable instanceof BitmapDrawable) && (((BitmapDrawable) drawable).getBitmap() == null);
++    if (drawable == null || isNullBitmapDrawable) {
+         mAllowRelayout = false;
+         mAllowInvalidate = false;
+     }
+     super.setImageDrawable(drawable);
+     mAllowRelayout = true;
+     mAllowInvalidate = true;
+ }
+\ No newline at end of file

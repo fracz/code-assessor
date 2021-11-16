@@ -1,0 +1,23 @@
+diff --git a/7507f9051b1296025922080160aaf2c40555c6b8 b/4292bdf1c7a2a2e055e0552039ed1f14371cfc0e
+index 7507f9051b..4292bdf1c7 100644
+--- a/7507f9051b1296025922080160aaf2c40555c6b8
++++ b/4292bdf1c7a2a2e055e0552039ed1f14371cfc0e
+@@ -1,12 +1,11 @@
+ public void setSessionId(final String iServerURL, final int iSessionId, byte[] token) {
+-    final OStorageRemoteThreadLocal instance = OStorageRemoteThreadLocal.INSTANCE;
+-    if (instance != null) {
+-        final OStorageRemoteSession tl = instance.get();
+-        tl.serverURL = iServerURL;
+-        tl.sessionId = iSessionId;
+-        tl.clear();
++    final OStorageRemoteSession session = getCurrentSession();
++    if (session != null) {
++        session.serverURL = iServerURL;
++        session.sessionId = iSessionId;
++        session.clear();
+     }
+     if (token != null && iServerURL != null) {
+         this.tokens.put(iServerURL, token);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,28 @@
+diff --git a/52aa6d5995b9891bc2c003f07191a1cdc2494ae7 b/ee0be15e0c70c97fe6275431c94033dcfe2112f9
+index 52aa6d5995..ee0be15e0c 100644
+--- a/52aa6d5995b9891bc2c003f07191a1cdc2494ae7
++++ b/ee0be15e0c70c97fe6275431c94033dcfe2112f9
+@@ -1,16 +1,20 @@
+ @Override
+ protected void doOutOfDate(final Action<? super InputFileChange> outOfDateAction) {
+-    inputFilesState.findChanges(new Action<TaskUpToDateStateChange>() {
++    inputFilesState.findChanges(new UpToDateChangeListener() {
+
+-        public void execute(TaskUpToDateStateChange change) {
++        public void accept(TaskUpToDateChange change) {
+             // TODO:DAZ Generify properly to avoid this check & cast
+             assert change instanceof InputFileChange;
+             InputFileChange fileChange = (InputFileChange) change;
+             if (fileChange.isRemoved()) {
+                 removedFiles.add(fileChange);
+             } else {
+                 outOfDateAction.execute(fileChange);
+             }
+         }
++
++        public boolean isAccepting() {
++            return true;
++        }
+     });
+ }
+\ No newline at end of file

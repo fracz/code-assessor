@@ -1,0 +1,16 @@
+diff --git a/f8d5b3c4a5025fb718dd5f178098ec42e03f703e b/1bcf5e986fe0fbdc10edf0d6cce575ba5ef30f5c
+index f8d5b3c4a5..1bcf5e986f 100644
+--- a/f8d5b3c4a5025fb718dd5f178098ec42e03f703e
++++ b/1bcf5e986fe0fbdc10edf0d6cce575ba5ef30f5c
+@@ -1,9 +1,8 @@
+ @Override
+ public List<Object> batchRetrieve(State state, List<TridentTuple> args) {
+     List<Object> ret = new ArrayList<Object>(args.size());
+-    Iterator<List<Object>> tuplesIterator = ((ITupleCollection) state).getTuples();
+     for (int i = 0; i < args.size(); i++) {
+-        ret.add(tuplesIterator);
++        ret.add(((ITupleCollection) state).getTuples());
+     }
+     return ret;
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/b3473685cddefdfc9580266e80c8ef9324e24d1a b/ef1b69bed1aae2dfea38aeb3cba41748c9172778
+index b3473685cd..ef1b69bed1 100644
+--- a/b3473685cddefdfc9580266e80c8ef9324e24d1a
++++ b/ef1b69bed1aae2dfea38aeb3cba41748c9172778
+@@ -1,5 +1,5 @@
+ @Override
+ protected GroupShardsIterator shards(ClusterState clusterState, DfsOnlyRequest request, String[] concreteIndices) {
+-    Map<String, Set<String>> routingMap = clusterState.metaData().resolveSearchRouting(request.routing(), request.indices());
+-    return clusterService.operationRouting().searchShards(clusterState, request.indices(), concreteIndices, routingMap, request.preference());
++    Map<String, Set<String>> routingMap = indexNameExpressionResolver.resolveSearchRouting(clusterState, request.routing(), request.indices());
++    return clusterService.operationRouting().searchShards(clusterState, concreteIndices, routingMap, request.preference());
+ }
+\ No newline at end of file

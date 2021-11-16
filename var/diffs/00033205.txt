@@ -1,0 +1,11 @@
+diff --git a/d0b379ce0d0a80063f0c365fbb7017569728654a b/4abbe4801f1dad9f81b501df1442ed3241364b58
+index d0b379ce0d..4abbe4801f 100644
+--- a/d0b379ce0d0a80063f0c365fbb7017569728654a
++++ b/4abbe4801f1dad9f81b501df1442ed3241364b58
+@@ -1,3 +1,4 @@
+ public CompositeOperation<DependencyResolveProfile> getDependencySets() {
+-    return new CompositeOperation<DependencyResolveProfile>(dependencySets.values());
++    final List<DependencyResolveProfile> profiles = CollectionUtils.sort(dependencySets.values(), Operation.comparator());
++    return new CompositeOperation<DependencyResolveProfile>(profiles);
+ }
+\ No newline at end of file

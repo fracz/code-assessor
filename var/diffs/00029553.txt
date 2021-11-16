@@ -1,0 +1,15 @@
+diff --git a/dfb52329f5eefb6b087aa9d1091df6fafec71ba6 b/8cbc6f13c0fb25406395ab7fb490b3d0c65965b3
+index dfb52329f5..8cbc6f13c0 100644
+--- a/dfb52329f5eefb6b087aa9d1091df6fafec71ba6
++++ b/8cbc6f13c0fb25406395ab7fb490b3d0c65965b3
+@@ -1,8 +1,8 @@
+ @Override
+ protected void resolveRequest(ClusterState state, InternalRequest request) {
+-    request.request().filteringAlias(state.metaData().filteringAliases(request.concreteIndex(), request.request().index()));
++    request.request().filteringAlias(indexNameExpressionResolver.filteringAliases(state, request.concreteIndex(), request.request().index()));
+     // Fail fast on the node that received the request.
+     if (request.request().routing() == null && state.getMetaData().routingRequired(request.concreteIndex(), request.request().type())) {
+         throw new RoutingMissingException(request.concreteIndex(), request.request().type(), request.request().id());
+     }
+ }
+\ No newline at end of file

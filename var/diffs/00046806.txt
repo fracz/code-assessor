@@ -1,0 +1,30 @@
+diff --git a/ba24e1b782feb52f0d56a00f98bc283f753f3948 b/4bf9521dd535d16eac5251e9c217cd87bdc2fc5d
+index ba24e1b782..4bf9521dd5 100644
+--- a/ba24e1b782feb52f0d56a00f98bc283f753f3948
++++ b/4bf9521dd535d16eac5251e9c217cd87bdc2fc5d
+@@ -1,17 +1,10 @@
+ public void close() {
+-    try {
+-        if (recordingWriter != null) {
+-            recordingWriter.stop();
+-            catalog.updateCatalogFromMeta(recordingId, recordingWriter.metaDataBuffer());
+-        }
+-    } catch (final IOException ex) {
+-        LangUtil.rethrowUnchecked(ex);
+-    } finally {
+-        catalog.removeRecordingSession(recordingId);
+-        CloseHelper.quietClose(recordingWriter);
+-        // this reflects the single local recording assumption
+-        CloseHelper.quietClose(image.subscription());
+-        notificationsProxy.recordingStopped(recordingId, recordingWriter.lastPosition());
+-        this.state = State.CLOSED;
++    if (recordingWriter != null) {
++        recordingWriter.stop();
+     }
++    CloseHelper.quietClose(recordingWriter);
++    // this reflects the single local recording assumption
++    CloseHelper.quietClose(image.subscription());
++    notificationsProxy.recordingStopped(recordingId, recordingWriter.lastPosition());
++    this.state = State.CLOSED;
+ }
+\ No newline at end of file

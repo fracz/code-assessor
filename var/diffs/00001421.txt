@@ -1,0 +1,21 @@
+diff --git a/d7bb080d71da9135c3591c3d144da91ac9cac9b3 b/f7342719b986b306d0c7670d89442f2068e2a91e
+index d7bb080d71..f7342719b9 100644
+--- a/d7bb080d71da9135c3591c3d144da91ac9cac9b3
++++ b/f7342719b986b306d0c7670d89442f2068e2a91e
+@@ -1,6 +1,13 @@
+ public void testOnFinishTesting_twice() {
+     myEventsProcessor.onFinishTesting();
+-    final long time = myEventsProcessor.getEndTime();
++    final Marker finishedMarker = new Marker();
++    myEventsProcessor.addEventsListener(new RTestUnitEventsAdapter() {
++
++        @Override
++        public void onTestingFinished() {
++            finishedMarker.set();
++        }
++    });
+     myEventsProcessor.onFinishTesting();
+-    assertEquals(time, myEventsProcessor.getEndTime());
++    assertFalse(finishedMarker.isSet());
+ }
+\ No newline at end of file

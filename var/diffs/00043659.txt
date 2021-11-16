@@ -1,0 +1,20 @@
+diff --git a/d890d5008044450ccd4f2f9a861a8c614f33bcc1 b/ca471ec5e4efba2cfd4ea4de74c6fd2ab537adad
+index d890d50080..ca471ec5e4 100644
+--- a/d890d5008044450ccd4f2f9a861a8c614f33bcc1
++++ b/ca471ec5e4efba2cfd4ea4de74c6fd2ab537adad
+@@ -1,12 +1,12 @@
+ @BeforeMethod
+-public void beforeMethod() {
+-    database.open("admin", "admin");
++public void beforeMethod() throws Exception {
++    super.beforeMethod();
+     OIndex<?> index = getManualIndex();
+     if (index == null) {
+         index = database.getMetadata().getIndexManager().createIndex("byte-array-manualIndex", "UNIQUE", new OSimpleKeyIndexDefinition(OType.BINARY), null, null, null);
+         this.manualIndex = index;
+     } else {
+         index = database.getMetadata().getIndexManager().getIndex("byte-array-manualIndex");
+         this.manualIndex = index;
+     }
+ }
+\ No newline at end of file

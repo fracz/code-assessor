@@ -1,0 +1,21 @@
+diff --git a/bc769ac49254a05fd47d74c670112bba9a98e827 b/a7a1435b00ff812ff21e3bc01f8e3168df6f9fbe
+index bc769ac492..a7a1435b00 100644
+--- a/bc769ac49254a05fd47d74c670112bba9a98e827
++++ b/a7a1435b00ff812ff21e3bc01f8e3168df6f9fbe
+@@ -1,11 +1,8 @@
+ /**
+- * Combines this collection of request condition with another by combining all parameter request conditions into a
+- * logical AND.
+- *
+- * @param other the condition to combine with
++ * Returns a new instance with the union of the param expressions from "this" and the "other" instance.
+  */
+ public ParamsRequestCondition combine(ParamsRequestCondition other) {
+-    Set<ParamRequestCondition> conditions = new LinkedHashSet<ParamRequestCondition>(getConditions());
+-    conditions.addAll(other.getConditions());
+-    return new ParamsRequestCondition(conditions);
++    Set<ParamExpression> set = new LinkedHashSet<ParamExpression>(this.expressions);
++    set.addAll(other.expressions);
++    return new ParamsRequestCondition(set);
+ }
+\ No newline at end of file

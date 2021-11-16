@@ -1,0 +1,21 @@
+diff --git a/18008d197298e9fad414d72a6f3931fc73675d85 b/f46bf4d683557659e975c7c79edae879b9150b9a
+index 18008d1972..f46bf4d683 100644
+--- a/18008d197298e9fad414d72a6f3931fc73675d85
++++ b/f46bf4d683557659e975c7c79edae879b9150b9a
+@@ -1,13 +1,14 @@
+ @Nullable
+ static Collection<HighlightInfo> checkExceptionThrownInTry(@NotNull final PsiParameter parameter, @NotNull final Set<PsiClassType> thrownTypes) {
+     final PsiElement declarationScope = parameter.getDeclarationScope();
+     if (!(declarationScope instanceof PsiCatchSection))
+         return null;
+     final PsiType caughtType = parameter.getType();
+     if (caughtType instanceof PsiClassType) {
+         return checkSimpleCatchParameter(parameter, thrownTypes, (PsiClassType) caughtType);
+-    } else if (caughtType instanceof PsiDisjunctionType) {
++    }
++    if (caughtType instanceof PsiDisjunctionType) {
+         return checkMultiCatchParameter(parameter, thrownTypes);
+     }
+     return null;
+ }
+\ No newline at end of file

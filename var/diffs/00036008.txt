@@ -1,0 +1,14 @@
+diff --git a/6462bf1295e0773a42ed7667e77fe2bd7b36b34d b/b39368c914a571f2494492dd7c546db11623219b
+index 6462bf1295..b39368c914 100644
+--- a/6462bf1295e0773a42ed7667e77fe2bd7b36b34d
++++ b/b39368c914a571f2494492dd7c546db11623219b
+@@ -1,4 +1,6 @@
+ public void verifyZeroInteractions() {
+-    // TODO move message to exceptions
+-    verifyNoMoreInteractions("Zero interactions wanted");
++    Invocation unverified = registeredInvocations.getFirstUnverified();
++    if (unverified != null) {
++        Exceptions.zeroInteractionsWanted(unverified.toString(), unverified.getStackTrace());
++    }
+ }
+\ No newline at end of file

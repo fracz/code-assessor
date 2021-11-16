@@ -1,0 +1,26 @@
+diff --git a/3cc11b24487aa6329ed2066fc74536e8aa41712f b/41b296db993298a41c7dad058c75936e6d612785
+index 3cc11b2448..41b296db99 100644
+--- a/3cc11b24487aa6329ed2066fc74536e8aa41712f
++++ b/41b296db993298a41c7dad058c75936e6d612785
+@@ -1,17 +1,18 @@
+ protected ODistributedRequestId acquireRecordLock(final ORecordId rid) {
+     if (!rid.isPersistent())
+         return null;
+     // ACQUIRE ALL THE LOCKS ON RECORDS ON LOCAL NODE BEFORE TO PROCEED
+     final ODistributedRequestId localReqId = new ODistributedRequestId(dManager.getLocalNodeId(), dManager.getNextMessageIdCounter());
+-    if (!(localDistributedDatabase.lockRecord(rid, localReqId)))
+-        throw new ODistributedRecordLockedException(rid);
++    final ODistributedRequestId lockHolder = localDistributedDatabase.lockRecord(rid, localReqId);
++    if (lockHolder != null)
++        throw new ODistributedRecordLockedException(rid, lockHolder);
+     if (eventListener != null) {
+         try {
+             eventListener.onAfterRecordLock(rid);
+         } catch (Throwable t) {
+             // IGNORE IT
+             ODistributedServerLog.error(this, dManager.getLocalNodeName(), null, ODistributedServerLog.DIRECTION.NONE, "Caught exception during ODistributedStorageEventListener.onAfterRecordLock", t);
+         }
+     }
+     return localReqId;
+ }
+\ No newline at end of file

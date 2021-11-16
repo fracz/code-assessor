@@ -1,0 +1,26 @@
+diff --git a/39d4bc1a61a19dc6a5f263e2b471c0b3db5ac6fe b/08b40884918906db71a0b1e288cc8a5565cabd34
+index 39d4bc1a61..08b4088491 100644
+--- a/39d4bc1a61a19dc6a5f263e2b471c0b3db5ac6fe
++++ b/08b40884918906db71a0b1e288cc8a5565cabd34
+@@ -1,18 +1,14 @@
+-private static boolean byStateType(@NotNull final StateType type, @NotNull final JsonSchemaObject schema) {
+-    if (StateType._unknown.equals(type))
+-        return true;
+-    final JsonSchemaType requiredType = type.getCorrespondingJsonType();
+-    if (requiredType == null)
+-        return true;
++private static boolean byStateType(final boolean isObject, @NotNull final JsonSchemaObject schema) {
++    final JsonSchemaType requiredType = isObject ? JsonSchemaType._object : JsonSchemaType._array;
+     if (schema.getType() != null) {
+         return requiredType.equals(schema.getType());
+     }
+     if (schema.getTypeVariants() != null) {
+         for (JsonSchemaType schemaType : schema.getTypeVariants()) {
+             if (requiredType.equals(schemaType))
+                 return true;
+         }
+         return false;
+     }
+     return true;
+ }
+\ No newline at end of file

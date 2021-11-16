@@ -1,0 +1,12 @@
+diff --git a/42f5af2862a7488d3672373018e45aa560fc54e6 b/483279b63cea39e2816cb361e07dd0b89def843e
+index 42f5af2862..483279b63c 100644
+--- a/42f5af2862a7488d3672373018e45aa560fc54e6
++++ b/483279b63cea39e2816cb361e07dd0b89def843e
+@@ -1,4 +1,4 @@
+ @Override
+-public DBSDataType getLocalDataType(String typeName) {
+-    return internalTypes.get(typeName);
++public PostgreDataType getLocalDataType(String typeName) {
++    return getDefaultInstance().dataTypeCache.getCachedObject(typeName);
+ }
+\ No newline at end of file

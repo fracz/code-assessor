@@ -1,0 +1,20 @@
+diff --git a/f52c6f99414d12b11556c4ede41678b718eedec4 b/3fccaaa76da8caa00304c41a0ea9c313c39f6866
+index f52c6f9941..3fccaaa76d 100644
+--- a/f52c6f99414d12b11556c4ede41678b718eedec4
++++ b/3fccaaa76da8caa00304c41a0ea9c313c39f6866
+@@ -1,9 +1,9 @@
+ private PsiSubstitutor inferFromContext(PsiTypeParameter typeParameter, PsiType lType, PsiSubstitutor substitutor, PsiResolveHelper helper) {
+-    if (myPlace != null) {
+-        final PsiType inferred = helper.getSubstitutionForTypeParameter(typeParameter, lType, getContextType(), false, LanguageLevel.HIGHEST);
+-        if (inferred != PsiType.NULL) {
+-            return substitutor.put(typeParameter, inferred);
+-        }
++    if (myPlace == null)
++        return substitutor;
++    final PsiType inferred = helper.getSubstitutionForTypeParameter(typeParameter, lType, inferContextType(), false, LanguageLevel.HIGHEST);
++    if (inferred != PsiType.NULL) {
++        return substitutor.put(typeParameter, inferred);
+     }
+     return substitutor;
+ }
+\ No newline at end of file

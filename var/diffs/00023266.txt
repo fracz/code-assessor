@@ -1,0 +1,22 @@
+diff --git a/bd6ee45863302729d74a59b5ea9d5be9f6fa1bb4 b/5dd05f9d0c26f73d6851adb3313255c3ce9d978a
+index bd6ee45863..5dd05f9d0c 100644
+--- a/bd6ee45863302729d74a59b5ea9d5be9f6fa1bb4
++++ b/5dd05f9d0c26f73d6851adb3313255c3ce9d978a
+@@ -1,14 +1,12 @@
+ /**
+  * Apply an expansion state to the layout.
+  *
+  * @param expand should the layout be in the expanded state
+  */
+ public void applyExpansionToLayout(boolean expand) {
+-    ViewGroup.LayoutParams lp = getLayoutParams();
+     if (expand && mExpandable) {
+-        lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
++        setActualHeight(mMaxExpandHeight);
+     } else {
+-        lp.height = mRowMinHeight;
++        setActualHeight(mRowMinHeight);
+     }
+-    setLayoutParams(lp);
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/8dc406809122f49e3f1bf7ed13d081028dff15a4 b/40e356be1ffa74624f4701093bca75b99ac1e9b1
+index 8dc4068091..40e356be1f 100644
+--- a/8dc406809122f49e3f1bf7ed13d081028dff15a4
++++ b/40e356be1ffa74624f4701093bca75b99ac1e9b1
+@@ -1,13 +1,11 @@
+ @Override
+ public List<DBEPersistAction> generateChangesScript(@NotNull DBRProgressMonitor monitor) {
+-    ResultSetPersister persister = createDataPersister();
+-    if (persister != null) {
+-        try {
+-            persister.applyChanges(monitor, true, null);
+-            return persister.getScript();
+-        } catch (DBException e) {
+-            UIUtils.showErrorDialog(null, "Apply changes error", "Error saving changes in database", e);
+-        }
++    try {
++        ResultSetPersister persister = createDataPersister();
++        persister.applyChanges(monitor, true, null);
++        return persister.getScript();
++    } catch (DBException e) {
++        UIUtils.showErrorDialog(null, "SQL script generate error", "Error saving changes in database", e);
++        return Collections.emptyList();
+     }
+-    return null;
+ }
+\ No newline at end of file

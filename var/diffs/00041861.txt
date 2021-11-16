@@ -1,0 +1,17 @@
+diff --git a/21536cdeb390fefb79872a203796202984a2e075 b/7eaa22a2a104885bd0c57122bbe252eb5df4f80a
+index 21536cdeb3..7eaa22a2a1 100644
+--- a/21536cdeb390fefb79872a203796202984a2e075
++++ b/7eaa22a2a104885bd0c57122bbe252eb5df4f80a
+@@ -1,6 +1,8 @@
+ public String getAsString() {
+-    final int size = getVariableSize();
+-    if (size < 0)
++    if (position >= buffer.length)
+         return null;
+-    return OBinaryProtocol.bytes2string(this, size);
++    final int size = getVariableSize();
++    String str = new String(buffer, position, size, charset);
++    position += size;
++    return str;
+ }
+\ No newline at end of file

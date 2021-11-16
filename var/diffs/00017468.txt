@@ -1,0 +1,18 @@
+diff --git a/17269b83ab5e5c4d8f5bc60328f2a301f8007092 b/86876bb3038be3f6c50260d72a553754d7b6c8a0
+index 17269b83ab..86876bb303 100644
+--- a/17269b83ab5e5c4d8f5bc60328f2a301f8007092
++++ b/86876bb3038be3f6c50260d72a553754d7b6c8a0
+@@ -1,11 +1,11 @@
+ private Node condExpr(TokenStream ts, boolean inForInit) throws IOException, JavaScriptException {
+-    CodePosition position = getNextTokenPosition(ts);
+     Node pn = orExpr(ts, inForInit);
+     if (ts.matchToken(TokenStream.HOOK)) {
++        CodePosition position = ts.tokenPosition;
+         Node ifTrue = assignExpr(ts, false);
+         mustMatchToken(ts, TokenStream.COLON, "msg.no.colon.cond");
+         Node ifFalse = assignExpr(ts, inForInit);
+         return nf.createTernary(pn, ifTrue, ifFalse, position);
+     }
+     return pn;
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/2663f40b2abdc210665a227991ede03f5c57d201 b/2d866d0ddd188b4f1fd52a5125e73810afbcfdd8
+index 2663f40b2a..2d866d0ddd 100644
+--- a/2663f40b2abdc210665a227991ede03f5c57d201
++++ b/2d866d0ddd188b4f1fd52a5125e73810afbcfdd8
+@@ -1,8 +1,9 @@
+ @Override
+ public int length() {
++    int propertyCount = descriptor.isComposite() ? descriptor.getPropertyKeyIds().length : 1;
+     return 4 + /* label id */
+     1 + /* kind id */
+-    UTF8.computeRequiredByteBufferSize(providerDescriptor.getKey()) + UTF8.computeRequiredByteBufferSize(providerDescriptor.getVersion()) + 2 * 1 + /* number of property keys, for now always 1 */
+-    8 + /* the property keys */
++    UTF8.computeRequiredByteBufferSize(providerDescriptor.getKey()) + UTF8.computeRequiredByteBufferSize(providerDescriptor.getVersion()) + 2 + /* number of property keys (short) */
++    8 * propertyCount + /* the property keys, each 8 bytes (long) */
+     (isConstraintIndex() ? 8 : 0);
+ }
+\ No newline at end of file

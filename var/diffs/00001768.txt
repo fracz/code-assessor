@@ -1,0 +1,16 @@
+diff --git a/2290b3a1543d95fb3de5fe28d18096a558671244 b/0fee300a1220ddf50823248204432389dd6df3c7
+index 2290b3a154..0fee300a12 100644
+--- a/2290b3a1543d95fb3de5fe28d18096a558671244
++++ b/0fee300a1220ddf50823248204432389dd6df3c7
+@@ -1,9 +1,3 @@
+ private void doTypingNoBorderTest(final String param) {
+-    doTest(new Runnable() {
+-
+-        @Override
+-        public void run() {
+-            myFixture.type(param);
+-        }
+-    }, false, ChangeSignatureDetectorAction.CHANGE_SIGNATURE);
++    doTest(() -> myFixture.type(param), false, ChangeSignatureDetectorAction.CHANGE_SIGNATURE);
+ }
+\ No newline at end of file

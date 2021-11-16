@@ -1,0 +1,24 @@
+diff --git a/2464420057f6aaf9dde8b79b21611327823b9105 b/48ae2711b3f8675f5a3b8fcc809f59d0dd03db11
+index 2464420057..48ae2711b3 100644
+--- a/2464420057f6aaf9dde8b79b21611327823b9105
++++ b/48ae2711b3f8675f5a3b8fcc809f59d0dd03db11
+@@ -1,13 +1,10 @@
+ public static boolean hasInferredReturnType(ResolvedCallWithTrace<?> call) {
+-    boolean isKnownReturnType = true;
+     ResolvedCallImpl<?> callToComplete = call.getCallToCompleteTypeArgumentInference();
+-    if (hasReturnTypeDependentOnNotInferredParams(callToComplete)) {
+-        isKnownReturnType = false;
+-    }
++    if (hasReturnTypeDependentOnNotInferredParams(callToComplete))
++        return false;
+     // Expected type mismatch was reported before as 'TYPE_INFERENCE_EXPECTED_TYPE_MISMATCH'
+     ConstraintSystem constraintSystem = callToComplete.getConstraintSystem();
+-    if (constraintSystem != null && constraintSystem.hasOnlyExpectedTypeMismatch()) {
+-        isKnownReturnType = false;
+-    }
+-    return isKnownReturnType;
++    if (constraintSystem != null && constraintSystem.hasOnlyExpectedTypeMismatch())
++        return false;
++    return true;
+ }
+\ No newline at end of file

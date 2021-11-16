@@ -1,0 +1,26 @@
+diff --git a/f403692b010cf7ad88141ddc03ff1fb70bcfc1d4 b/4bbb84fe831511a1cc0106961ba95791afcb6ef5
+index f403692b01..4bbb84fe83 100644
+--- a/f403692b010cf7ad88141ddc03ff1fb70bcfc1d4
++++ b/4bbb84fe831511a1cc0106961ba95791afcb6ef5
+@@ -1,15 +1,13 @@
+ @Override
+ public String getName() {
+-    boolean ok = false;
+     getNameInvocationCounter.inc();
+-    final Timer.Context tc = getNameTimer.time();
++    Timer.Context tc = getNameTimer.time();
+     try {
+-        final String result = backend.getName();
+-        ok = true;
+-        return result;
++        return backend.getName();
++    } catch (RuntimeException e) {
++        getNameFailureCounter.inc();
++        throw e;
+     } finally {
+         tc.stop();
+-        if (!ok)
+-            getNameFailureCounter.inc();
+     }
+ }
+\ No newline at end of file

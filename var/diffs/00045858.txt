@@ -1,0 +1,20 @@
+diff --git a/85cf4e2647443e3d6ce0008f6a6c55f9eb96458f b/943395a80a5ed6d40c27cdfa9b5cd3672abbfe71
+index 85cf4e2647..943395a80a 100644
+--- a/85cf4e2647443e3d6ce0008f6a6c55f9eb96458f
++++ b/943395a80a5ed6d40c27cdfa9b5cd3672abbfe71
+@@ -1,12 +1,12 @@
+ protected OIndex searchForIndex() {
+     // TODO Check if target is a class otherwise exception
+     Collection<? extends OIndex<?>> indexes = getDb().getMetadata().getIndexManager().getIndexes();
+-    OLogManager.instance().info(this, "iindexes:: " + indexes.size());
+     for (OIndex<?> index : indexes) {
+         if (index.getInternal() instanceof OLuceneFullTextIndex) {
+-            if (index.getAlgorithm().equalsIgnoreCase(OLuceneIndexFactory.LUCENE_ALL_ALGORITHM))
++            if (index.getAlgorithm().equalsIgnoreCase(OLuceneIndexFactory.LUCENE_ALL_ALGORITHM)) {
+                 return index;
++            }
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

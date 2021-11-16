@@ -1,0 +1,18 @@
+diff --git a/c0972bccfff7f66ec4eed057ed9a8e3e1f1dbd47 b/ee5c7fa4d0a812ea82e5fb5a9366ebfb8dba132d
+index c0972bccff..ee5c7fa4d0 100644
+--- a/c0972bccfff7f66ec4eed057ed9a8e3e1f1dbd47
++++ b/ee5c7fa4d0a812ea82e5fb5a9366ebfb8dba132d
+@@ -1,11 +1,11 @@
+ private void testDoubleTargetSourceIsRejected(String name) {
+     try {
+-        BeanFactory bf = new XmlBeanFactory(new ClassPathResource("proxyFactoryDoubleTargetSourceTests.xml", getClass()));
++        BeanFactory bf = new XmlBeanFactory(new ClassPathResource(DBL_TARGETSOURCE_CONTEXT, CLASS));
+         bf.getBean(name);
+         fail("Should not allow TargetSource to be specified in interceptorNames as well as targetSource property");
+     } catch (BeanCreationException ex) {
+         // Root cause of the problem must be an AOP exception
+         AopConfigException aex = (AopConfigException) ex.getCause();
+         assertTrue(aex.getMessage().indexOf("TargetSource") != -1);
+     }
+ }
+\ No newline at end of file

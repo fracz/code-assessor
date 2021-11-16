@@ -1,0 +1,60 @@
+diff --git a/f279220eb9e622a5a362f44f7b289bc7fed8fb51 b/0c3ccb7cf62ed28c8c8e59e40612bc9f54f5a2b4
+index f279220eb9..0c3ccb7cf6 100644
+--- a/f279220eb9e622a5a362f44f7b289bc7fed8fb51
++++ b/0c3ccb7cf62ed28c8c8e59e40612bc9f54f5a2b4
+@@ -1,26 +1,41 @@
++/**
++ * Resuming notifications.
++ * Checking all pending notification peers and play notifications if it is required.
++ * WARRING: Implementation contains modified copy of code of onNewMessage method
++ */
+ public void onNotificationsResumed() {
+     isNotificationsPaused = false;
++    // If there are notifications during pause
+     if (notificationsDuringPause.size() > 0) {
+         if (isAppVisible) {
+-            if (visiblePeer != null && notificationsDuringPause.contains(visiblePeer)) {
+-                if (config().getDeviceCategory() == DeviceCategory.DESKTOP) {
+-                // Don't play sounds in chat on desktop
++            if (visiblePeer != null && notificationsDuringPause.containsKey(visiblePeer)) {
++                // If there was message from visible chat
++                if (isMobilePlatform) {
++                    // Playing sound effects for mobile platforms
++                    playEffectIfEnabled();
+                 } else {
+-                    // Play sound effect if available
+-                    if (isEffectsEnabled()) {
+-                        playEffect();
+-                    }
++                // Don't play sounds in chat on non-mobile platforms
+                 }
+             } else {
+-            // if (isDialogsVisible) {
+-            // if (isEffectsEnabled()) {
+-            // playEffect();
+-            // }
+-            // }
++                // If there are no messages from visible peer
++                if (isMobilePlatform) {
++                // Don't play sounds not from current chat on mobile platforms
++                } else {
++                    // Find any suitable peer and if found play sound effect
++                    for (Peer p : notificationsDuringPause.keySet()) {
++                        if (isNotificationsEnabled(p, notificationsDuringPause.get(p))) {
++                            playEffectIfEnabled();
++                            // Can't do return because we need to make more work later
++                            break;
++                        }
++                    }
++                }
+             }
+         } else {
++            // Just show out-app notification
+             showNotification();
+         }
++        // Clearing of notifications
++        notificationsDuringPause.clear();
+     }
+-    notificationsDuringPause.clear();
+ }
+\ No newline at end of file

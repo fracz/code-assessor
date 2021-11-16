@@ -1,0 +1,17 @@
+diff --git a/390b06c92fdd4f95bc5bd8bf7b00f85d9810bea5 b/c53b45d9d70632ab73c304b0e398898a11098317
+index 390b06c92f..c53b45d9d7 100644
+--- a/390b06c92fdd4f95bc5bd8bf7b00f85d9810bea5
++++ b/c53b45d9d70632ab73c304b0e398898a11098317
+@@ -1,10 +1,10 @@
+ public void setStringInstance(JSType t) {
+     Preconditions.checkState(stringInstance == null);
+     Preconditions.checkNotNull(t);
+     stringInstance = t;
+-    stringOrString = JSType.join(JSType.STRING, stringInstance);
++    stringOrString = JSType.join(this.STRING, stringInstance);
+     stringInstanceObjtype = Iterables.getOnlyElement(t.getObjs());
+     if (numberInstance != null) {
+         anyNumOrStr = JSType.join(numberOrNumber, stringOrString);
+     }
+ }
+\ No newline at end of file

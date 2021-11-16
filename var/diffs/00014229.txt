@@ -1,0 +1,32 @@
+diff --git a/96e622a2c768f4debce99128a23a44235194f8d6 b/ec98732393bec413ee82b2d27e26947e6ecb2752
+index 96e622a2c7..ec98732393 100644
+--- a/96e622a2c768f4debce99128a23a44235194f8d6
++++ b/ec98732393bec413ee82b2d27e26947e6ecb2752
+@@ -1,20 +1,16 @@
+ public void visitIfStatement(@NotNull PsiIfStatement statement) {
+     super.visitIfStatement(statement);
+     if (PsiUtil.isInJspFile(statement.getContainingFile())) {
+         return;
+     }
+     final PsiStatement thenBranch = statement.getThenBranch();
+-    if (thenBranch != null) {
+-        if (isEmpty(thenBranch)) {
+-            registerStatementError(statement);
+-            return;
+-        }
++    if (thenBranch != null && isEmpty(thenBranch)) {
++        registerStatementError(statement);
++        return;
+     }
+     final PsiStatement elseBranch = statement.getElseBranch();
+-    if (elseBranch != null) {
+-        if (isEmpty(elseBranch)) {
+-            final PsiElement elseToken = statement.getElseElement();
+-            registerError(elseToken);
+-        }
++    if (elseBranch != null && isEmpty(elseBranch)) {
++        final PsiElement elseToken = statement.getElseElement();
++        registerError(elseToken);
+     }
+ }
+\ No newline at end of file

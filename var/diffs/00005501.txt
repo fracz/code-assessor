@@ -1,0 +1,20 @@
+diff --git a/88bb7d92c639aea5fe139a649a99596cc43fe3b7 b/a18689d2d74bb74078bbb78207597aab50a86440
+index 88bb7d92c6..a18689d2d7 100644
+--- a/88bb7d92c639aea5fe139a649a99596cc43fe3b7
++++ b/a18689d2d74bb74078bbb78207597aab50a86440
+@@ -1,11 +1,12 @@
+ @Override
+ protected void setUp() throws Exception {
+     super.setUp();
+     final TestConsoleProperties consoleProperties = createConsoleProperties();
+-    myResultsViewer = createResultsViewer(consoleProperties);
++    final ExecutionEnvironment environment = new ExecutionEnvironment();
+     myMockResetablePrinter = new MockPrinter(true);
++    myConsole = new MyConsoleView(consoleProperties, environment.getRunnerSettings(), environment.getConfigurationSettings());
++    myResultsViewer = myConsole.getResultsViewer();
+     myRootSuite = myResultsViewer.getTestsRootNode();
+-    myConsole = new MyConsoleView(consoleProperties, myResultsViewer);
+     myEventsProcessor = new GeneralToSMTRunnerEventsConvertor(myResultsViewer.getTestsRootNode());
+     myEventsProcessor.onStartTesting();
+ }
+\ No newline at end of file

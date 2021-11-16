@@ -1,0 +1,19 @@
+diff --git a/4e306030b7d3d737e51979b170e988908902025a b/60a1db0c6352df72ba4f22dad8e500e5cb127df9
+index 4e306030b7..60a1db0c63 100644
+--- a/4e306030b7d3d737e51979b170e988908902025a
++++ b/60a1db0c6352df72ba4f22dad8e500e5cb127df9
+@@ -1,12 +1,11 @@
+ @Override
+ public Collection<DBCPlanNode> evaluate() throws InvocationTargetException, InterruptedException {
+     try {
+-        DBCExecutionContext context = planner.getDataSource().getDefaultContext(false);
+-        try (DBCSession session = context.openSession(getProgressMonitor(), DBCExecutionPurpose.UTIL, "Explain '" + query + "'")) {
++        try (DBCSession session = DBUtils.openUtilSession(getProgressMonitor(), planner.getDataSource(), "Explain '" + query + "'")) {
+             DBCPlan plan = planner.planQueryExecution(session, query);
+             return (Collection<DBCPlanNode>) plan.getPlanNodes();
+         }
+     } catch (Throwable ex) {
+         throw new InvocationTargetException(ex);
+     }
+ }
+\ No newline at end of file

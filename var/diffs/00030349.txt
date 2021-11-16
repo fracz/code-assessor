@@ -1,0 +1,26 @@
+diff --git a/1a2b6a55d01c9cb55a4e17b926b298c6e97f143d b/df17844c50fb24e34292f7cb0ed16487df5bf985
+index 1a2b6a55d0..df17844c50 100644
+--- a/1a2b6a55d01c9cb55a4e17b926b298c6e97f143d
++++ b/df17844c50fb24e34292f7cb0ed16487df5bf985
+@@ -1,18 +1,18 @@
+ /**
+  * Parses an inner filter, returning null if the filter should be ignored.
+  */
+ @Nullable
+-public // norelease
+-ParsedQuery parseInnerFilter(XContentParser parser) throws IOException {
++public ParsedQuery parseInnerFilter(XContentParser parser) throws IOException {
+     QueryShardContext context = cache.get();
+     context.reset(parser);
+     try {
++        context.parseFieldMatcher(parseFieldMatcher);
+         Query filter = context.parseContext().parseInnerQueryBuilder().toFilter(context);
+         if (filter == null) {
+             return null;
+         }
+         return new ParsedQuery(filter, context.copyNamedQueries());
+     } finally {
+         context.reset(null);
+     }
+ }
+\ No newline at end of file

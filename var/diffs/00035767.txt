@@ -1,0 +1,20 @@
+diff --git a/bb21a01efa1c840de7747fe138d60f5796f9f0ed b/ce7bde792a10882a64683a9135a049c0ba6779b2
+index bb21a01efa..ce7bde792a 100644
+--- a/bb21a01efa1c840de7747fe138d60f5796f9f0ed
++++ b/ce7bde792a10882a64683a9135a049c0ba6779b2
+@@ -1,13 +1,10 @@
+ private int numberOfActualInvocations(InvocationWithMatchers expectedInvocation) {
+     int verifiedInvocations = 0;
+     for (InvocationWithMatchers registeredInvocation : registeredInvocations) {
+         Invocation invocation = registeredInvocation.getInvocation();
+         if (expectedInvocation.matches(invocation)) {
+-            verifiedInvocations += 1;
+-            invocation.markVerified();
+-        } else {
+-            verifiedInvocations += 0;
++            verifiedInvocations++;
+         }
+     }
+     return verifiedInvocations;
+ }
+\ No newline at end of file

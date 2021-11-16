@@ -1,0 +1,24 @@
+diff --git a/66fa58e05ce381b1776ea8986f4fcabc2f5be211 b/1eb2be7f30ecdced586b39dade36342b7341cd00
+index 66fa58e05c..1eb2be7f30 100644
+--- a/66fa58e05ce381b1776ea8986f4fcabc2f5be211
++++ b/1eb2be7f30ecdced586b39dade36342b7341cd00
+@@ -1,14 +1,13 @@
+ @JRubyMethod
+ public IRubyObject namespace(ThreadContext context) {
++    XmlDocument xmlDocument = (XmlDocument) doc;
++    NokogiriNamespaceCache nsCache = xmlDocument.getNamespaceCache();
+     if (namespace == null) {
+         String prefix = node.getPrefix();
+-        namespace = nsCache.get(context, this, prefix == null ? "" : prefix, node.lookupNamespaceURI(prefix));
+-        if (namespace == null) {
+-            namespace = new XmlNamespace(context.getRuntime(), node.getPrefix(), node.lookupNamespaceURI(node.getPrefix()));
+-        }
+-        if (((XmlNamespace) namespace).isEmpty()) {
++        namespace = nsCache.get(context, prefix == null ? "" : prefix, node.getNamespaceURI());
++        if (namespace == null || ((XmlNamespace) namespace).isEmpty()) {
+             namespace = context.getRuntime().getNil();
+         }
+     }
+     return namespace;
+ }
+\ No newline at end of file

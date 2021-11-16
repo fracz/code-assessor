@@ -1,0 +1,22 @@
+diff --git a/9003bb445baee7df67dfef88c392d7ac0e5b0b01 b/38379a6870492a11ec0548844fa91f8ec21a69fe
+index 9003bb445b..38379a6870 100644
+--- a/9003bb445baee7df67dfef88c392d7ac0e5b0b01
++++ b/38379a6870492a11ec0548844fa91f8ec21a69fe
+@@ -1,13 +1,12 @@
+-void scanVariable() {
+-    length = 1;
++Token scanVariable() {
++    int length = 1;
+     int position = offset;
+     if ('@' == charAt(position + 1)) {
+         position++;
+         length++;
+     }
+     while (isVariableChar(charAt(++position))) {
+         length++;
+     }
+-    literals = input.substring(offset, offset + length);
+-    tokenType = Literals.VARIABLE;
++    return new Token(Literals.VARIABLE, input.substring(offset, offset + length), offset + length);
+ }
+\ No newline at end of file

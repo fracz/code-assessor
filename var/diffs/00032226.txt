@@ -1,0 +1,24 @@
+diff --git a/b6b8449afbe92eedbcddcadbd70f25006b3e16ee b/05358cafa8b8b645b7f979b3ae65acce4a828100
+index b6b8449afb..05358cafa8 100644
+--- a/b6b8449afbe92eedbcddcadbd70f25006b3e16ee
++++ b/05358cafa8b8b645b7f979b3ae65acce4a828100
+@@ -1,17 +1,17 @@
+ /**
+  * Returns the transitive closure of dependencies starting from the
+  * dependencies of this module.
+  */
+ public Set<JSModule> getAllDependencies() {
+     Set<JSModule> allDeps = Sets.newHashSet(deps);
+     List<JSModule> workList = Lists.newArrayList(deps);
+-    while (workList.size() > 0) {
++    while (!workList.isEmpty()) {
+         JSModule module = workList.remove(workList.size() - 1);
+         for (JSModule dep : module.getDependencies()) {
+             if (allDeps.add(dep)) {
+                 workList.add(dep);
+             }
+         }
+     }
+     return allDeps;
+ }
+\ No newline at end of file

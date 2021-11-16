@@ -1,0 +1,21 @@
+diff --git a/35b152ec5f0eddcd105eb054f3acb8b70f938e5e b/702a27408cd67e21417d458e2710305f28c2c9a8
+index 35b152ec5f..702a27408c 100644
+--- a/35b152ec5f0eddcd105eb054f3acb8b70f938e5e
++++ b/702a27408cd67e21417d458e2710305f28c2c9a8
+@@ -1,7 +1,9 @@
+-public int getLocalPort() {
+-    // impls a blocking wait until the port shows up
+-    while (port.get() == 0) {
+-        CommonUtils.sleepMs(null, 10);
+-    }
+-    return port.get();
++/**
++ * Get the port used by the master thrift service.  This method implements a busy wait until
++ * the port has been updated.
++ * @return
++ */
++@VisibleForTesting
++int getLocalPort() {
++    return port;
+ }
+\ No newline at end of file

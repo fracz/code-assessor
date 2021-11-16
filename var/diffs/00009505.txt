@@ -1,0 +1,18 @@
+diff --git a/f44ac6f9fe99fbae70be6e70fb0797732bd44053 b/528dfdc23ba23244378ebcdf57bd34d214e2021a
+index f44ac6f9fe..528dfdc23b 100644
+--- a/f44ac6f9fe99fbae70be6e70fb0797732bd44053
++++ b/528dfdc23ba23244378ebcdf57bd34d214e2021a
+@@ -1,9 +1,9 @@
+ protected void refreshElements(PsiElement[] elements) {
+-    LOG.assertTrue(elements.length == myFields.length);
++    LOG.assertTrue(elements.length == myFieldDescriptors.length);
+     for (int idx = 0; idx < elements.length; idx++) {
+         PsiElement element = elements[idx];
+         LOG.assertTrue(element instanceof PsiField);
+-        myFields[idx] = (PsiField) element;
++        myFieldDescriptors[idx].refreshField((PsiField) element);
+     }
+-    myClass = myFields[0].getContainingClass();
++    myClass = myFieldDescriptors[0].getField().getContainingClass();
+ }
+\ No newline at end of file

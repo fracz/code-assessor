@@ -1,0 +1,18 @@
+diff --git a/5e7fd9d60b58d9a86f12cad6677d9f8b244e3a03 b/84d19750ef91a263f028e46e412b98f3eb16862e
+index 5e7fd9d60b..84d19750ef 100644
+--- a/5e7fd9d60b58d9a86f12cad6677d9f8b244e3a03
++++ b/84d19750ef91a263f028e46e412b98f3eb16862e
+@@ -1,11 +1,11 @@
+ @Test
+ public void nonRecursiveDelete() throws IOException {
+     String dirpath = PathUtils.concatPath(mLocalUfsRoot, getUniqueFileName());
+     mLocalUfs.mkdirs(dirpath, true);
+     String filepath = PathUtils.concatPath(dirpath, getUniqueFileName());
+     mLocalUfs.create(filepath).close();
+-    mLocalUfs.deleteDirectory(dirpath, new DeleteOptions().setRecursive(false));
++    mLocalUfs.deleteDirectory(dirpath, DeleteOptions.defaults().setRecursive(false));
+     Assert.assertTrue(mLocalUfs.isDirectory(dirpath));
+     File file = new File(filepath);
+     Assert.assertTrue(file.exists());
+ }
+\ No newline at end of file

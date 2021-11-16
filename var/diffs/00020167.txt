@@ -1,0 +1,20 @@
+diff --git a/dfedac126d6d0805a14277b958a1daac7469139e b/eed984ce0e507493a6c2fffe43b09c6b8f96a494
+index dfedac126d..eed984ce0e 100644
+--- a/dfedac126d6d0805a14277b958a1daac7469139e
++++ b/eed984ce0e507493a6c2fffe43b09c6b8f96a494
+@@ -1,12 +1,12 @@
+ public void test_isEmpty_2() throws Exception {
+     String sql = "SELECT * FROM (" + //
+     "   SELECT ROW_NUMBER() OVER (ORDER BY FAlertDate Desc, FAlertLevel, FAlertType)  AS RowNumber, *" + //
+     "        from monitor_business" + //
+     "   where FRemoveAlert = ?" + //
+     " ) AS temp_table" + //
+     "   WHERE RowNumber NOT BETWEEN ? AND ?";
+     SQLServerStatementParser parser = new SQLServerStatementParser(sql);
+     SQLStatement stmt = parser.parseStatementList().get(0);
+-    Assert.assertEquals("SELECT *" + "\nFROM (SELECT ROW_NUMBER() OVER (ORDER BY FAlertDate DESC, FAlertLevel, FAlertType) AS RowNumber, *" + "\n\tFROM monitor_business" + "\n\tWHERE FRemoveAlert = ?" + "\n\t) temp_table" + "\nWHERE RowNumber NOT BETWEEN ? AND ?", SQLUtils.toSQLServerString(stmt));
+-    Assert.assertEquals("select *" + "\nfrom (select row_number() over (order by FAlertDate desc, FAlertLevel, FAlertType) as RowNumber, *" + "\n\tfrom monitor_business" + "\n\twhere FRemoveAlert = ?" + "\n\t) temp_table" + "\nwhere RowNumber not between ? and ?", SQLUtils.toSQLServerString(stmt, SQLUtils.DEFAULT_LCASE_FORMAT_OPTION));
++    Assert.assertEquals("SELECT *\n" + "FROM (\n" + "\tSELECT ROW_NUMBER() OVER (ORDER BY FAlertDate DESC, FAlertLevel, FAlertType) AS RowNumber, *\n" + "\tFROM monitor_business\n" + "\tWHERE FRemoveAlert = ?\n" + ") temp_table\n" + "WHERE RowNumber NOT BETWEEN ? AND ?", SQLUtils.toSQLServerString(stmt));
++    assertEquals("select *\n" + "from (\n" + "\tselect row_number() over (order by FAlertDate desc, FAlertLevel, FAlertType) as RowNumber, *\n" + "\tfrom monitor_business\n" + "\twhere FRemoveAlert = ?\n" + ") temp_table\n" + "where RowNumber not between ? and ?", SQLUtils.toSQLServerString(stmt, SQLUtils.DEFAULT_LCASE_FORMAT_OPTION));
+ }
+\ No newline at end of file

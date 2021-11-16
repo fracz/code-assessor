@@ -1,0 +1,21 @@
+diff --git a/fcd863635a5210a9f13c9244c1a7e8523d6ecd71 b/df71b13405c52269bdc0b09f981b36139a86e2ef
+index fcd863635a..df71b13405 100644
+--- a/fcd863635a5210a9f13c9244c1a7e8523d6ecd71
++++ b/df71b13405c52269bdc0b09f981b36139a86e2ef
+@@ -1,13 +1,13 @@
+ /**
+  * Indicates whether this layer a valid inbound layer. Currently, only
+  * (known) DL4J Layers and inputs are valid inbound layers. "Preprocessor"
+  * layers (reshaping, merging, etc.) are replaced by their own inbound layers.
+  *
+  * TODO: revisit this once "preprocessor" layers are handled explicitly
+  *
+  * @return      boolean indicating whether layer is valid inbound layer
+  * @see org.deeplearning4j.nn.api.Layer
+  */
+-public boolean isValidInboundLayer() {
+-    return this.dl4jLayer != null || this.className.equals(LAYER_CLASS_NAME_INPUT);
++public boolean isValidInboundLayer() throws InvalidKerasConfigurationException {
++    return (getLayer() != null || getVertex() != null || getInputPreprocessor() != null || this.className.equals(LAYER_CLASS_NAME_INPUT));
+ }
+\ No newline at end of file

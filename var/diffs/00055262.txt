@@ -1,0 +1,13 @@
+diff --git a/1611508ec969ef90fa7a4de9ff2077f13c9e8e7a b/1508e326a4d424cfec4cf8de3a8c914fe0f6b24c
+index 1611508ec9..1508e326a4 100644
+--- a/1611508ec969ef90fa7a4de9ff2077f13c9e8e7a
++++ b/1508e326a4d424cfec4cf8de3a8c914fe0f6b24c
+@@ -1,6 +1,3 @@
+ public IRubyObject getUri() {
+-    if (node().uri == null) {
+-        node().uri = node().ruby.getNil();
+-    }
+-    return node().uri;
++    return stringOrNil(ruby, uri);
+ }
+\ No newline at end of file

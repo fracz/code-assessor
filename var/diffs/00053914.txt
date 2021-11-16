@@ -1,0 +1,31 @@
+diff --git a/61264e85b8d82f36ab5e9f94a6d1c818141336b8 b/303d2c88a245bc56e754bafe0d17b374edb9e264
+index 61264e85b8..303d2c88a2 100644
+--- a/61264e85b8d82f36ab5e9f94a6d1c818141336b8
++++ b/303d2c88a245bc56e754bafe0d17b374edb9e264
+@@ -1,14 +1,15 @@
+ protected final void parseGroupBy(final SelectStatement selectStatement) {
+-    if (sqlParser.skipIfEqual(DefaultKeyword.GROUP)) {
+-        sqlParser.accept(DefaultKeyword.BY);
+-        while (true) {
+-            addGroupByItem(sqlParser.parseExpression(), selectStatement);
+-            if (!sqlParser.equalAny(Symbol.COMMA)) {
+-                break;
+-            }
+-            sqlParser.getLexer().nextToken();
++    if (!sqlParser.skipIfEqual(DefaultKeyword.GROUP)) {
++        return;
++    }
++    sqlParser.accept(DefaultKeyword.BY);
++    while (true) {
++        addGroupByItem(sqlParser.parseExpression(), selectStatement);
++        if (!sqlParser.equalAny(Symbol.COMMA)) {
++            break;
+         }
+-        sqlParser.skipAll(getSkippedKeywordAfterGroupBy());
+-        selectStatement.setGroupByLastPosition(sqlParser.getLexer().getCurrentToken().getEndPosition() - sqlParser.getLexer().getCurrentToken().getLiterals().length());
++        sqlParser.getLexer().nextToken();
+     }
++    sqlParser.skipAll(getSkippedKeywordAfterGroupBy());
++    selectStatement.setGroupByLastPosition(sqlParser.getLexer().getCurrentToken().getEndPosition() - sqlParser.getLexer().getCurrentToken().getLiterals().length());
+ }
+\ No newline at end of file

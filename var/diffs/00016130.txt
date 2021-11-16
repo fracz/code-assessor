@@ -1,0 +1,20 @@
+diff --git a/9ba25153bb054e44cd21ee8d1c7870817d837583 b/a2c9bc2f620c7eddb56d55e52d9221ab5d94a4cc
+index 9ba25153bb..a2c9bc2f62 100644
+--- a/9ba25153bb054e44cd21ee8d1c7870817d837583
++++ b/a2c9bc2f620c7eddb56d55e52d9221ab5d94a4cc
+@@ -1,6 +1,13 @@
+ @Nullable
+ public Type getJavaAnalog(@NotNull JetType jetType) {
+     ClassifierDescriptor classifier = jetType.getConstructor().getDeclarationDescriptor();
+     assert classifier != null;
+-    return asmTypes.get(new SpecialTypeKey(DescriptorUtils.getFQName(classifier), jetType.isNullable()));
++    FqNameUnsafe className = DescriptorUtils.getFQName(classifier);
++    if (jetType.isNullable()) {
++        Type nullableType = asmNullableTypes.get(className);
++        if (nullableType != null) {
++            return nullableType;
++        }
++    }
++    return asmTypes.get(className);
+ }
+\ No newline at end of file

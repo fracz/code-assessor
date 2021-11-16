@@ -1,0 +1,15 @@
+diff --git a/1003a9aae8cd9e4205d013e2360f308bc23794d0 b/fe36ec6e35a8d4658894be4093b345dda05f38a6
+index 1003a9aae8..fe36ec6e35 100644
+--- a/1003a9aae8cd9e4205d013e2360f308bc23794d0
++++ b/fe36ec6e35a8d4658894be4093b345dda05f38a6
+@@ -1,8 +1,8 @@
+ private IndexDescriptor createIndex() throws KernelException {
+     try (KernelTransaction transaction = kernel.newTransaction(KernelTransaction.Type.implicit, AUTH_DISABLED);
+         Statement statement = transaction.acquireStatement()) {
+-        IndexDescriptor descriptor = statement.schemaWriteOperations().indexCreate(1, 1);
++        IndexDescriptor descriptor = statement.schemaWriteOperations().indexCreate(descriptor1);
+         transaction.success();
+         return descriptor;
+     }
+ }
+\ No newline at end of file

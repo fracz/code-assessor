@@ -1,0 +1,17 @@
+diff --git a/90770463fa6c1406036fe08ddd7a460a9aa456ba b/8ff5aa2e7ba1399830f42cf8c7f2ffb223c50cf4
+index 90770463fa..8ff5aa2e7b 100644
+--- a/90770463fa6c1406036fe08ddd7a460a9aa456ba
++++ b/8ff5aa2e7ba1399830f42cf8c7f2ffb223c50cf4
+@@ -1,9 +1,9 @@
+ // Over state, from FileDownloadList, to user -----------------------------
+ @Override
+-public void notifyWarn() {
++public void notifyWarn(MessageSnapshot snapshot) {
+     if (FileDownloadLog.NEED_LOG) {
+         FileDownloadLog.d(this, "notify warn %s", task);
+     }
+     task.over();
+-    process(FileDownloadStatus.warn);
++    process(snapshot);
+ }
+\ No newline at end of file

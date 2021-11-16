@@ -1,0 +1,20 @@
+diff --git a/da4683fc23ae1b075ea19c9337efd0cfbf4c0438 b/e0c2d0501a8bdf6098cd5008e68d58430ace81e1
+index da4683fc23..e0c2d0501a 100644
+--- a/da4683fc23ae1b075ea19c9337efd0cfbf4c0438
++++ b/e0c2d0501a8bdf6098cd5008e68d58430ace81e1
+@@ -1,9 +1,13 @@
+ @Override
+ public int hashCode() {
++    // if the hashcode is needed frequently, we should store it
++    if (0 != cachedHashCode)
++        return cachedHashCode;
+     final int prime = 31;
+     int result = 1;
+     result = prime * result + col.hashCode();
+     result = prime * result + key.hashCode();
+-    // TODO: if the hashcode is needed frequently, we should store it
++    // This is only thread-safe because cachedHashCode is an int and not a long
++    cachedHashCode = result;
+     return result;
+ }
+\ No newline at end of file

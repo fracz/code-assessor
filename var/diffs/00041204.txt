@@ -1,0 +1,20 @@
+diff --git a/04fa72b5d8c8cb22363ed1056e8959f28422830c b/b711420f5ce23ccfd9c12759feed0057c23aeed1
+index 04fa72b5d8..b711420f5c 100644
+--- a/04fa72b5d8c8cb22363ed1056e8959f28422830c
++++ b/b711420f5ce23ccfd9c12759feed0057c23aeed1
+@@ -1,13 +1,4 @@
+ @Override
+ public Object get(Object key) {
+-    try {
+-        if (key instanceof Map) {
+-            return newGeoSearch((Map<String, Object>) key);
+-        } else {
+-            return legacySearch(key);
+-        }
+-    } catch (Exception e) {
+-        OLogManager.instance().error(this, "Error on getting entry against Lucene index", e);
+-    }
+-    return null;
++    return getInTx(key, null);
+ }
+\ No newline at end of file

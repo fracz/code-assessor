@@ -1,0 +1,15 @@
+diff --git a/3d8360891ccdc29f88c96ab8861963991cbdc803 b/7d072ff05de10ac16e5aac753f3e781438365900
+index 3d8360891c..7d072ff05d 100644
+--- a/3d8360891ccdc29f88c96ab8861963991cbdc803
++++ b/7d072ff05de10ac16e5aac753f3e781438365900
+@@ -1,7 +1,7 @@
+ // Computes a type from a jsdoc that includes a function type, rather than
+ // one that includes @param, @return, etc.
+ private JSType getFunTypeHelper(Node jsdocNode, DeclaredTypeRegistry registry, ImmutableList<String> typeParameters) throws UnknownTypeException {
+-    FunctionTypeBuilder builder = new FunctionTypeBuilder();
++    FunctionTypeBuilder builder = new FunctionTypeBuilder(this.commonTypes);
+     fillInFunTypeBuilder(jsdocNode, null, registry, typeParameters, builder);
+-    return registry.getCommonTypes().fromFunctionType(builder.buildFunction());
++    return this.commonTypes.fromFunctionType(builder.buildFunction());
+ }
+\ No newline at end of file

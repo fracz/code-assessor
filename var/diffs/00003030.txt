@@ -1,0 +1,19 @@
+diff --git a/7d531bd788c3e321840089a42cd3fcb2ec4cc650 b/a56e7a5fa79765302fecdcf4fc9f5219355c72d4
+index 7d531bd788..a56e7a5fa7 100644
+--- a/7d531bd788c3e321840089a42cd3fcb2ec4cc650
++++ b/a56e7a5fa79765302fecdcf4fc9f5219355c72d4
+@@ -1,10 +1,10 @@
+ @Nullable
+ public Object getData(String id) {
+-    if (id.equals(PlatformDataKeys.VIRTUAL_FILE_ARRAY.getName()))
++    if (PlatformDataKeys.VIRTUAL_FILE_ARRAY.is(id))
+         return files;
+-    if (id.equals(PlatformDataKeys.EDITOR.getName()))
++    if (PlatformDataKeys.EDITOR.is(id))
+         return editor;
+-    if (id.equals(PlatformDataKeys.PROJECT.getName()))
++    if (PlatformDataKeys.PROJECT.is(id))
+         return p;
+     return null;
+ }
+\ No newline at end of file

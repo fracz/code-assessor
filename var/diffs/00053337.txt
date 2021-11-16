@@ -1,0 +1,15 @@
+diff --git a/dff6407b41d96daa016168a38c65cbbe72f54ae2 b/fc0e32f65d914940e3278165ee904c53ca339250
+index dff6407b41..fc0e32f65d 100644
+--- a/dff6407b41d96daa016168a38c65cbbe72f54ae2
++++ b/fc0e32f65d914940e3278165ee904c53ca339250
+@@ -1,8 +1,7 @@
+-public Optional<ConditionContext> parseWhere() {
++public Optional<ConditionContext> parseWhere(final ParseContext parseContext) {
+     if (exprParser.getLexer().skipIfEqual(Token.WHERE)) {
+-        ParseContext parseContext = getParseContext();
+         parseConditions(parseContext);
+         return Optional.of(parseContext.getCurrentConditionContext());
+     }
+     return Optional.absent();
+ }
+\ No newline at end of file

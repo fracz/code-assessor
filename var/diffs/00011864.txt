@@ -1,0 +1,18 @@
+diff --git a/e5356a215dd45ee741ba814e7c7692652495ca1b b/483967747cea4b51a5aa8bd8acf4bd5289581107
+index e5356a215d..483967747c 100644
+--- a/e5356a215dd45ee741ba814e7c7692652495ca1b
++++ b/483967747cea4b51a5aa8bd8acf4bd5289581107
+@@ -1,9 +1,9 @@
+-public void set(@NotNull CommitData data, @NotNull ReadOnlyList<Commit> parents, boolean hasChildren, int countNewUniqueCommitsAmongParents, int index) {
++public void set(@NotNull CommitData data, @NotNull ReadOnlyList<Commit> parents, int index) {
++    assert !wasRead : "double set commit data";
++    wasRead = true;
+     this.parents = parents;
+-    this.hasChildren = hasChildren;
+-    this.countNewUniqueCommitsAmongParents = countNewUniqueCommitsAmongParents;
+     this.author = data.getAuthor();
+     this.message = data.getCommitMessage();
+     this.timeStamp = data.getTimeStamp();
+     this.index = index;
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/fff3fdb96df5435ae94474bbddde9ea3e3d6577b b/ef2eb14b3cf824b5d0ca72b6db50a2c81da41ff0
+index fff3fdb96d..ef2eb14b3c 100644
+--- a/fff3fdb96df5435ae94474bbddde9ea3e3d6577b
++++ b/ef2eb14b3cf824b5d0ca72b6db50a2c81da41ff0
+@@ -1,10 +1,10 @@
+ protected void afterSaveToFile(File saveFile) {
+     try {
+         IFileStore fileStore = EFS.getStore(saveFile.toURI());
+         IEditorInput input = new FileStoreEditorInput(fileStore);
+         EditorUtils.setInputDataSource(input, getDataSourceContainer(), false);
+         init(getEditorSite(), input);
+     } catch (CoreException e) {
+-        UIUtils.showErrorDialog(getSite().getShell(), "File save", "Can't open SQL editor from external file", e);
++        DBUserInterface.getInstance().showError("File save", "Can't open SQL editor from external file", e);
+     }
+ }
+\ No newline at end of file

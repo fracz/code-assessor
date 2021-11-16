@@ -1,0 +1,14 @@
+diff --git a/7f46bf36846e981709788db18c27e61c95007e0c b/17477cce9ccfe3d0ec419a65ee82f3fe3b09d57e
+index 7f46bf3684..17477cce9c 100644
+--- a/7f46bf36846e981709788db18c27e61c95007e0c
++++ b/17477cce9ccfe3d0ec419a65ee82f3fe3b09d57e
+@@ -1,6 +1,6 @@
+ private static void updateExecuteQueryMethod(ClassPool classPool, CtClass cc) throws Exception {
+     CtMethod serviceMethod = cc.getDeclaredMethod("executeQuery", null);
+-    log("*** Changing executeQuery method ");
+-    // serviceMethod.insertBefore(getExecuteQueryMethodBeforeInsertCode());
++    logger.info("*** Changing executeQuery method ");
++    serviceMethod.insertBefore(getExecuteQueryMethodBeforeInsertCode());
+     serviceMethod.insertAfter(getExecuteQueryMethodAfterInsertCode());
+ }
+\ No newline at end of file

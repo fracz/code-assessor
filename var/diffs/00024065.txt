@@ -1,0 +1,27 @@
+diff --git a/0b7b7e496d31bd2c6ca2676991026f6ea0b702b6 b/67ab544ee5170bc910f95e17472d0fcaab1c6cc2
+index 0b7b7e496d..67ab544ee5 100644
+--- a/0b7b7e496d31bd2c6ca2676991026f6ea0b702b6
++++ b/67ab544ee5170bc910f95e17472d0fcaab1c6cc2
+@@ -1,17 +1,16 @@
+ /**
+  * This function goes over each file and removes the keys that the node is not responsible for
+  * and only keeps keys that this node is responsible for.
+  * @throws IOException
+  */
+ void doCleanupCompaction() {
+     isCompacting_.set(true);
+     List<String> files = new ArrayList<String>(ssTables_);
+-    for (String file : files) {
+-        try {
++    try {
++        for (String file : files) {
+             doCleanup(file);
+-        } catch (Exception ex) {
+-            ex.printStackTrace();
+         }
++    } finally {
++        isCompacting_.set(false);
+     }
+-    isCompacting_.set(false);
+ }
+\ No newline at end of file

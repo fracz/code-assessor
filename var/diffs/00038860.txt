@@ -1,0 +1,15 @@
+diff --git a/82e4846b68a961f25347be441960d200f26c9c38 b/4efacbfef24e8f973df1f89232a9940bb5e6f359
+index 82e4846b68..4efacbfef2 100644
+--- a/82e4846b68a961f25347be441960d200f26c9c38
++++ b/4efacbfef24e8f973df1f89232a9940bb5e6f359
+@@ -1,7 +1,7 @@
+ @Override
+ public void serialize(ByteBuffer target) {
+     super.serialize(target);
+     target.put(state.toByte());
+-    target.putShort((short) propertyKeys.length);
+-    for (long key : propertyKeys) target.putLong(key);
++    target.putShort((short) 1);
++    target.putLong(propertyKey);
+ }
+\ No newline at end of file

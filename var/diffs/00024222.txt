@@ -1,0 +1,19 @@
+diff --git a/8dd8ba25a9bc1b97894876d1949a86d0d31331c1 b/e948e174c38e3b6eabd57ac92cf9cc4f51e9158e
+index 8dd8ba25a9..e948e174c3 100644
+--- a/8dd8ba25a9bc1b97894876d1949a86d0d31331c1
++++ b/e948e174c38e3b6eabd57ac92cf9cc4f51e9158e
+@@ -1,7 +1,8 @@
+-public List<Cell> enforceLimit(ColumnDefinition def, List<Cell> cells, int version) {
++protected int enforceLimit(ColumnDefinition def, List<ByteBuffer> values, int version) {
+     assert isMultiCell();
+-    if (version >= Server.VERSION_3 || cells.size() <= MAX_ELEMENTS)
+-        return cells;
+-    logger.error("Detected collection for table {}.{} with {} elements, more than the {} limit. Only the first {}" + " elements will be returned to the client. Please see " + "http://cassandra.apache.org/doc/cql3/CQL.html#collections for more details.", def.ksName, def.cfName, cells.size(), MAX_ELEMENTS, MAX_ELEMENTS);
+-    return cells.subList(0, MAX_ELEMENTS);
++    int size = collectionSize(values);
++    if (version >= Server.VERSION_3 || size <= MAX_ELEMENTS)
++        return size;
++    logger.error("Detected collection for table {}.{} with {} elements, more than the {} limit. Only the first {}" + " elements will be returned to the client. Please see " + "http://cassandra.apache.org/doc/cql3/CQL.html#collections for more details.", def.ksName, def.cfName, values.size(), MAX_ELEMENTS, MAX_ELEMENTS);
++    return MAX_ELEMENTS;
+ }
+\ No newline at end of file

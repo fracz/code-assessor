@@ -1,0 +1,11 @@
+diff --git a/a7c41c65c5184fe25c57590eb89d7b1341da43e2 b/b049e2bb878cbb8f56deaa6720f35d5fa1d95dd6
+index a7c41c65c5..b049e2bb87 100644
+--- a/a7c41c65c5184fe25c57590eb89d7b1341da43e2
++++ b/b049e2bb878cbb8f56deaa6720f35d5fa1d95dd6
+@@ -1,3 +1,3 @@
+-public NativeLibraryDependency getStatic() {
+-    return new DirectLibraryDependency(this, StaticLibraryBinary.class);
++public NativeLibraryRequirement getStatic() {
++    return new ProjectNativeLibraryRequirement(getProjectPath(), this.getName(), "static");
+ }
+\ No newline at end of file

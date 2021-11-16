@@ -1,0 +1,21 @@
+diff --git a/eec62ab93b3cd1bc1555859cad8845e3d68b78bb b/2d1b248c7b050ae22fa80f3a547c3b6d1cf8a51e
+index eec62ab93b..2d1b248c7b 100644
+--- a/eec62ab93b3cd1bc1555859cad8845e3d68b78bb
++++ b/2d1b248c7b050ae22fa80f3a547c3b6d1cf8a51e
+@@ -1,14 +1,11 @@
+ protected void done() {
+     if (clInit != null) {
+         clInit.v.visitInsn(RETURN);
+         FunctionCodegen.endVisit(clInit.v, "static initializer", element);
+     }
+     writeInnerClasses();
+     if (sourceMapper != null) {
+-        List<RawFileMapping> mapping = sourceMapper.getFileMapping();
+-        for (RawFileMapping fileMapping : mapping) {
+-            v.addSMAP(fileMapping.toFileMapping());
+-        }
++        SourceMapper.Default.flushToClassBuilder(sourceMapper, v);
+     }
+     v.done();
+ }
+\ No newline at end of file

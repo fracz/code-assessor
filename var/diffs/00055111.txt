@@ -1,0 +1,24 @@
+diff --git a/e19a11a6774aa1585f88f195343b9950ef0f0395 b/90bdecc0ee0398ef9a1ce1555e359b1e70d577e7
+index e19a11a677..90bdecc0ee 100644
+--- a/e19a11a6774aa1585f88f195343b9950ef0f0395
++++ b/90bdecc0ee0398ef9a1ce1555e359b1e70d577e7
+@@ -1,17 +1,17 @@
+ @Override
+ public void visit(MethodNode mth) throws JadxException {
+     if (mth.isNoCode()) {
+         return;
+     }
+     RegionMaker rm = new RegionMaker(mth);
+     RegionStack state = new RegionStack(mth);
+     // fill region structure
+     mth.setRegion(rm.makeRegion(mth.getEnterBlock(), state));
+-    if (mth.getExceptionHandlers() != null) {
++    if (!mth.getExceptionHandlers().isEmpty()) {
+         state = new RegionStack(mth);
+         for (ExceptionHandler handler : mth.getExceptionHandlers()) {
+             rm.processExcHandler(handler, state);
+         }
+     }
+     postProcessRegions(mth);
+ }
+\ No newline at end of file

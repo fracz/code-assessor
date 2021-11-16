@@ -1,0 +1,25 @@
+diff --git a/63e90d9983dfa66bfefbc61fb2f5f124cba1380e b/6d872b49fce28262232efee74a911be05af9adef
+index 63e90d9983..6d872b49fc 100644
+--- a/63e90d9983dfa66bfefbc61fb2f5f124cba1380e
++++ b/6d872b49fce28262232efee74a911be05af9adef
+@@ -1,18 +1,16 @@
+ private void initOrderEntries() {
+     for (OrderEntry e : myRootModel.getOrderEntries()) {
+         if (e instanceof ModuleSourceOrderEntry || e instanceof JdkOrderEntry)
+             continue;
+         if (e instanceof LibraryOrderEntry) {
+             if (!isMavenLibrary(((LibraryOrderEntry) e).getLibrary()))
+                 continue;
+         }
+         if (e instanceof ModuleOrderEntry) {
+             Module m = ((ModuleOrderEntry) e).getModule();
+-            if (m == null)
+-                continue;
+-            if (!MavenProjectsManager.getInstance(myRootModel.getProject()).isMavenizedModule(m))
++            if (m != null && !MavenProjectsManager.getInstance(myRootModel.getProject()).isMavenizedModule(m))
+                 continue;
+         }
+         myRootModel.removeOrderEntry(e);
+     }
+ }
+\ No newline at end of file

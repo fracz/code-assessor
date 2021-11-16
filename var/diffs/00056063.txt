@@ -1,0 +1,14 @@
+diff --git a/eed9d1aec95375d3b864a187c0f7fe8c748ac166 b/84da3b9a517ad06d05c3c4342f413d4327719d4e
+index eed9d1aec9..84da3b9a51 100644
+--- a/eed9d1aec95375d3b864a187c0f7fe8c748ac166
++++ b/84da3b9a517ad06d05c3c4342f413d4327719d4e
+@@ -1,7 +1,7 @@
+ @Test
+ public void testIncludeMechanism() {
+-    ClassPathXmlApplicationContext bf = new ClassPathXmlApplicationContext("/org/springframework/aop/aspectj/autoproxy/usesInclude.xml");
++    ClassPathXmlApplicationContext bf = newContext("usesInclude.xml");
+     ITestBean adrian = (ITestBean) bf.getBean("adrian");
+     assertTrue(AopUtils.isAopProxy(adrian));
+     assertEquals(68, adrian.getAge());
+ }
+\ No newline at end of file

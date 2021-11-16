@@ -1,0 +1,13 @@
+diff --git a/75b83bc7d1ed7f9caae839bdb099b083b851f93e b/7848b110a1369eab04a36e6649a9f16c7ec3b950
+index 75b83bc7d1..7848b110a1 100644
+--- a/75b83bc7d1ed7f9caae839bdb099b083b851f93e
++++ b/7848b110a1369eab04a36e6649a9f16c7ec3b950
+@@ -1,4 +1,6 @@
+ @Override
+ public Set<Class<? extends Authentication>> getSupportedAuthentication() {
+-    return Collections.emptySet();
++    Set<Class<? extends Authentication>> supported = new HashSet<Class<? extends Authentication>>();
++    supported.add(AllSchemesAuthentication.class);
++    return supported;
+ }
+\ No newline at end of file

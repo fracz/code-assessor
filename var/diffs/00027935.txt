@@ -1,0 +1,17 @@
+diff --git a/84f384164576f483977341568d59edb09bc3e11c b/fdca926cb3d05460013eb3d774d3d9e2e6fe55c4
+index 84f3841645..fdca926cb3 100644
+--- a/84f384164576f483977341568d59edb09bc3e11c
++++ b/fdca926cb3d05460013eb3d774d3d9e2e6fe55c4
+@@ -1,9 +1,9 @@
+-@Path("rebase")
+ @POST
++@Path("rebase")
+ @Consumes(MediaType.APPLICATION_JSON)
+ @Produces(MediaType.APPLICATION_JSON)
+ public RebaseResponse rebase(RebaseRequest request) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+-        return gitConnection.rebase(request);
++        return gitConnection.rebase(request.getOperation(), request.getBranch());
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,23 @@
+diff --git a/9d987c980645d03a36539d1eac06da9523457fe9 b/f2c4c51feb96163b9466e0bd4ac35ec113cd8d1f
+index 9d987c9806..f2c4c51feb 100644
+--- a/9d987c980645d03a36539d1eac06da9523457fe9
++++ b/f2c4c51feb96163b9466e0bd4ac35ec113cd8d1f
+@@ -1,10 +1,12 @@
+ int doWork() {
++    int workDone = 0;
+     if (state == State.REPLAY) {
+-        return replay();
++        workDone += replay();
+     } else if (state == State.INIT) {
+-        return init();
+-    } else if (state == State.CLOSE) {
+-        return close();
++        workDone += init();
+     }
+-    return 0;
++    if (state == State.CLOSE) {
++        workDone += close();
++    }
++    return workDone;
+ }
+\ No newline at end of file

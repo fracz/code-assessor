@@ -1,0 +1,15 @@
+diff --git a/880f15c46fe7a1d0616882d09a6263c2e131733f b/efd69642bdf1de466afd2f551ea9b26f1f1b185e
+index 880f15c46f..efd69642bd 100644
+--- a/880f15c46fe7a1d0616882d09a6263c2e131733f
++++ b/efd69642bdf1de466afd2f551ea9b26f1f1b185e
+@@ -1,6 +1,4 @@
+-public void removeChanges(Change[] changes) {
+-    for (int i = 0; i < changes.length; i++) {
+-        Change change = changes[i];
+-        myChanges[i].remove(change);
+-    }
++public void removeChanges(@NotNull Change leftChange, @NotNull Change rightChange) {
++    myBaseToLeftChangeList.remove(leftChange);
++    myBaseToRightChangeList.remove(rightChange);
+ }
+\ No newline at end of file

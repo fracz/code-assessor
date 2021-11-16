@@ -1,0 +1,12 @@
+diff --git a/a87665471c357d644d6dde0a1cd953722a0e95d5 b/8733b74a41a07e0f6504e8a41a4b91f5b957357c
+index a87665471c..8733b74a41 100644
+--- a/a87665471c357d644d6dde0a1cd953722a0e95d5
++++ b/8733b74a41a07e0f6504e8a41a4b91f5b957357c
+@@ -1,5 +1,5 @@
+ @Override
+ public void setByte(int parameterIndex, byte x) throws SQLException {
+-    setParameter(parameterIndex, new JdbcParameterImpl(Types.TINYINT, x));
++    setParameter(parameterIndex, createParameter(Types.TINYINT, x));
+     createChain().preparedStatement_setByte(this, parameterIndex, x);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/a5f165a5c2bcd5f6ba1d99cf3904614757eabc42 b/053f3e90d4a17fc908a0d7f17173775750eb8989
+index a5f165a5c2..053f3e90d4 100644
+--- a/a5f165a5c2bcd5f6ba1d99cf3904614757eabc42
++++ b/053f3e90d4a17fc908a0d7f17173775750eb8989
+@@ -1,7 +1,5 @@
+ private void configureMetricsConsoleReporter() {
+     if (configuration.has(METRICS_CONSOLE_INTERVAL)) {
+-        Long ms = configuration.get(METRICS_CONSOLE_INTERVAL);
+-        System.err.println("Console metrics on");
+-        MetricManager.INSTANCE.addConsoleReporter(ms);
++        MetricManager.INSTANCE.addConsoleReporter(configuration.get(METRICS_CONSOLE_INTERVAL));
+     }
+ }
+\ No newline at end of file

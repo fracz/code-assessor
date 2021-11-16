@@ -1,0 +1,14 @@
+diff --git a/b7a9cd7a56aa4bf5092ff7ed94148fa9537c13e9 b/1a158034a154c8c7fa7eaba81ccd9b3d8436868a
+index b7a9cd7a56..1a158034a1 100644
+--- a/b7a9cd7a56aa4bf5092ff7ed94148fa9537c13e9
++++ b/1a158034a154c8c7fa7eaba81ccd9b3d8436868a
+@@ -1,7 +1,3 @@
+ public int getProfilleIconColor() {
+-    if (profileIconColor != 0) {
+-        return profileIconColor;
+-    } else {
+-        return getSectionIconLargeColor();
+-    }
++    return getColorWithFallback(profileIconColor, getSectionIconLargeColor());
+ }
+\ No newline at end of file

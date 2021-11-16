@@ -1,0 +1,17 @@
+diff --git a/721a958ed04c308d2b24464f07c4d62a9badd0c8 b/aa2c97e07a47b9f0e4f369cd13f2112770b9e0f2
+index 721a958ed0..aa2c97e07a 100644
+--- a/721a958ed04c308d2b24464f07c4d62a9badd0c8
++++ b/aa2c97e07a47b9f0e4f369cd13f2112770b9e0f2
+@@ -1,9 +1,9 @@
+ private Set<String> getProjectVersions(String groupId, String artifactId) {
+     Set<String> result = new THashSet<String>();
+     for (MavenId each : getProjectsIds()) {
+-        if (groupId.equals(each.groupId) && artifactId.equals(each.artifactId)) {
+-            result.add(each.version);
++        if (groupId.equals(each.getGroupId()) && artifactId.equals(each.getArtifactId())) {
++            result.add(each.getVersion());
+         }
+     }
+     return result;
+ }
+\ No newline at end of file

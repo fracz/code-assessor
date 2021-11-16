@@ -1,0 +1,15 @@
+diff --git a/1c506a89b6be51c540b7784886790cfb275bc2d1 b/b22155fae136ebf41f14a3f4ae28d0f23840dcb6
+index 1c506a89b6..b22155fae1 100644
+--- a/1c506a89b6be51c540b7784886790cfb275bc2d1
++++ b/b22155fae136ebf41f14a3f4ae28d0f23840dcb6
+@@ -1,6 +1,8 @@
+ @Override
+ public void close() throws IOException {
++    Closer closer = Closer.create();
+     while (!pQueue.isEmpty()) {
+-        pQueue.remove().close();
++        closer.register(pQueue.remove());
+     }
++    closer.close();
+ }
+\ No newline at end of file

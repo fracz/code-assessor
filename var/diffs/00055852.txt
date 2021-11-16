@@ -1,0 +1,15 @@
+diff --git a/a2b53f0a513f2f18a6b500836cf05b51f1930101 b/bf89dfced2d20ebcbf791c645fcda9d54a6ab288
+index a2b53f0a51..bf89dfced2 100644
+--- a/a2b53f0a513f2f18a6b500836cf05b51f1930101
++++ b/bf89dfced2d20ebcbf791c645fcda9d54a6ab288
+@@ -1,7 +1,7 @@
+ @Test
+-public void decodeSingleChunkToJsonObject() {
++public void decodeSingleChunkToJsonObject() throws Exception {
+     JsonObjectDecoder decoder = new JsonObjectDecoder();
+     Flux<DataBuffer> source = Flux.just(stringBuffer("{\"foo\": \"foofoo\", \"bar\": \"barbar\"}"));
+     Flux<String> output = decoder.decode(source, null, null, Collections.emptyMap()).map(JsonObjectDecoderTests::toString);
+-    TestSubscriber.subscribe(output).assertValues("{\"foo\": \"foofoo\", \"bar\": \"barbar\"}");
++    ScriptedSubscriber.<String>create().expectNext("{\"foo\": \"foofoo\", \"bar\": \"barbar\"}").expectComplete().verify(output);
+ }
+\ No newline at end of file

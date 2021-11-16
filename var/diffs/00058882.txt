@@ -1,0 +1,16 @@
+diff --git a/1d0fdb3c7abfe4fbafd0f152cd4d3c5c313c2318 b/51209b28a01d0180a396b7e271f0702fd53e6c7c
+index 1d0fdb3c7a..51209b28a0 100644
+--- a/1d0fdb3c7abfe4fbafd0f152cd4d3c5c313c2318
++++ b/51209b28a01d0180a396b7e271f0702fd53e6c7c
+@@ -1,9 +1,4 @@
+ @Override
+ public KeyColumnValueStore openDatabase(String name) throws StorageException {
+-    int keyLength = KeyValueStoreAdapter.variableKeyLength;
+-    if (keyLengths.containsKey(name))
+-        keyLength = keyLengths.get(name).intValue();
+-    log.debug("Used key length {} for database {}", keyLength, name);
+-    KeyValueStore store = manager.openDatabase(name);
+-    return new KeyValueStoreAdapter(store, keyLength);
++    return wrapKeyValueStore(manager.openDatabase(name), keyLengths);
+ }
+\ No newline at end of file

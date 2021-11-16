@@ -1,0 +1,11 @@
+diff --git a/836be6a5e828ee23827ebda19a67559417abed8f b/c4afea77333877f7ad45f59ee7b9590b1c54f3f3
+index 836be6a5e8..c4afea7733 100644
+--- a/836be6a5e828ee23827ebda19a67559417abed8f
++++ b/c4afea77333877f7ad45f59ee7b9590b1c54f3f3
+@@ -1,4 +1,4 @@
+ @Override
+ public boolean hasChildren(Object parent) {
+-    return getChildren(parent).length > 0;
++    return parent instanceof DBDStructure || parent instanceof DBDArray || parent instanceof DBDReference || (parent instanceof FieldInfo && hasChildren(((FieldInfo) parent).value)) || (parent instanceof ArrayItem && hasChildren(((ArrayItem) parent).value));
+ }
+\ No newline at end of file

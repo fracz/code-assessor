@@ -1,0 +1,14 @@
+diff --git a/6cd88b87091096603d6ee59adaa5e374bdb14060 b/16231f93aa3c1ccbb4a2cc2253ea9aca46616490
+index 6cd88b8709..16231f93aa 100644
+--- a/6cd88b87091096603d6ee59adaa5e374bdb14060
++++ b/16231f93aa3c1ccbb4a2cc2253ea9aca46616490
+@@ -1,7 +1,6 @@
+ /**
+  * Returns whether this DeletionTime is live, that is deletes no columns.
+  */
+-@JsonIgnore
+ public boolean isLive() {
+-    return markedForDeleteAt == Long.MIN_VALUE && localDeletionTime == Integer.MAX_VALUE;
++    return markedForDeleteAt() == Long.MIN_VALUE && localDeletionTime() == Integer.MAX_VALUE;
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/982cee0ed1429e15aaad6fddfdcabe177e95fa57 b/6becd638bd57836691cb6fa7204367eed6627a57
+index 982cee0ed1..6becd638bd 100644
+--- a/982cee0ed1429e15aaad6fddfdcabe177e95fa57
++++ b/6becd638bd57836691cb6fa7204367eed6627a57
+@@ -1,11 +1,11 @@
+ public void fireBeforeActionPerformed(AnAction action, DataContext dataContext) {
+     if (action != null) {
+         myPrevPerformedActionId = myLastPreformedActionId;
+         myLastPreformedActionId = getId(action);
+         IdeaLogger.ourLastActionId = myLastPreformedActionId;
+     }
+     AnActionListener[] listeners = getActionListeners();
+-    for (int i = 0; i < listeners.length; i++) {
+-        listeners[i].beforeActionPerformed(action, dataContext);
++    for (AnActionListener listener : listeners) {
++        listener.beforeActionPerformed(action, dataContext);
+     }
+ }
+\ No newline at end of file

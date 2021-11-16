@@ -1,0 +1,21 @@
+diff --git a/20b8234b3f502a8a2a7813909e451733c6ebdfb0 b/7654ed2bdd057f678d9d91a3e362a1c43f4729f6
+index 20b8234b3f..7654ed2bdd 100644
+--- a/20b8234b3f502a8a2a7813909e451733c6ebdfb0
++++ b/7654ed2bdd057f678d9d91a3e362a1c43f4729f6
+@@ -1,10 +1,7 @@
+-void setObserver(IPrinterDiscoverySessionObserver observer) {
+-    synchronized (mLock) {
+-        mObserver = observer;
+-        try {
+-            mObserver.setController(mController);
+-        } catch (RemoteException re) {
+-            Log.e(LOG_TAG, "Error setting session controller", re);
+-        }
++void setObserver(IPrintServiceClient observer) {
++    mObserver = observer;
++    // created the session, send them over.
++    if (!mPrinters.isEmpty()) {
++        sendAddedPrinters(mObserver, getPrinters());
+     }
+ }
+\ No newline at end of file

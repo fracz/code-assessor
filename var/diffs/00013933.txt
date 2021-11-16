@@ -1,0 +1,15 @@
+diff --git a/0be155c6e98945db26db920b8aa6ef3cfe7e4ea4 b/4246fe49d00485ac53482d4d0566f88cc322f78e
+index 0be155c6e9..4246fe49d0 100644
+--- a/0be155c6e98945db26db920b8aa6ef3cfe7e4ea4
++++ b/4246fe49d00485ac53482d4d0566f88cc322f78e
+@@ -1,8 +1,8 @@
+ protected boolean isAvailableOnElementInEditorAndFile(final PsiElement element, final Editor editor, PsiFile file, DataContext context) {
+     final PsiElement psiElement = file.findElementAt(editor.getCaretModel().getOffset());
+     final PsiReferenceParameterList referenceParameterList = PsiTreeUtil.getParentOfType(psiElement, PsiReferenceParameterList.class);
+     if (referenceParameterList != null) {
+         return referenceParameterList.getTypeArguments().length > 0;
+     }
+-    return true;
++    return PsiTreeUtil.getParentOfType(psiElement, PsiTypeElement.class) != null;
+ }
+\ No newline at end of file

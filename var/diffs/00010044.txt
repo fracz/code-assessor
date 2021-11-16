@@ -1,0 +1,17 @@
+diff --git a/9c8fd3536b1ebff7d6cead7b18935a5f63410cd2 b/81944e5f33a284a8158a3cf2e2d457f7c8383375
+index 9c8fd3536b..81944e5f33 100644
+--- a/9c8fd3536b1ebff7d6cead7b18935a5f63410cd2
++++ b/81944e5f33a284a8158a3cf2e2d457f7c8383375
+@@ -1,8 +1,9 @@
+ @Nullable
+ static HighlightInfo checkInterfaceCannotBeLocal(PsiClass aClass) {
+     if (PsiUtil.isLocalClass(aClass)) {
+-        TextRange textRange = HighlightNamesUtil.getClassDeclarationTextRange(aClass);
+-        return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, textRange, JavaErrorMessages.message("interface.cannot.be.local"));
++        TextRange range = HighlightNamesUtil.getClassDeclarationTextRange(aClass);
++        String description = JavaErrorMessages.message("interface.cannot.be.local");
++        return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(range).descriptionAndTooltip(description).create();
+     }
+     return null;
+ }
+\ No newline at end of file

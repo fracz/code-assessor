@@ -1,0 +1,29 @@
+diff --git a/018003c6c29553d20ae540934f035a448be4026b b/700c275e16544ed0a0d731101e4e9dd2855fb280
+index 018003c6c2..700c275e16 100644
+--- a/018003c6c29553d20ae540934f035a448be4026b
++++ b/700c275e16544ed0a0d731101e4e9dd2855fb280
+@@ -1,17 +1,18 @@
+ @Test
+ public void testSharedServersRoundRobinWithOtherServerRunningOnDifferentPort() throws Exception {
+-    // Have a server running on a different port to make sure it doesn't interact
+     CountDownLatch latch = new CountDownLatch(1);
+-    NetServer theServer = vertx.createNetServer();
+-    theServer.connectHandler(sock -> {
++    // Have a server running on a different port to make sure it doesn't interact
++    server.close();
++    server = vertx.createNetServer(new NetServerOptions().setPort(4321));
++    server.connectHandler(sock -> {
+         fail("Should not connect");
+-    }).listen(4321, "localhost", ar -> {
+-        if (ar.succeeded()) {
++    }).listen(ar2 -> {
++        if (ar2.succeeded()) {
+             latch.countDown();
+         } else {
+             fail("Failed to bind server");
+         }
+     });
+     awaitLatch(latch);
+     testSharedServersRoundRobin();
+ }
+\ No newline at end of file

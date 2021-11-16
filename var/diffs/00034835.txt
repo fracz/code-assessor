@@ -1,0 +1,16 @@
+diff --git a/9348871203cf801ea0bde96393984fa6cb669b8c b/9958fdd99dff414fb46b6c7731123265a4785ac9
+index 9348871203..9958fdd99d 100644
+--- a/9348871203cf801ea0bde96393984fa6cb669b8c
++++ b/9958fdd99dff414fb46b6c7731123265a4785ac9
+@@ -1,8 +1,8 @@
+ @Override
+ public void onSocket(OnSocketData data) {
+     try {
+-        Map<String, List<String>> cookies = manager.get(URI.create(data.request.getUri().toString()), data.request.getHeaders().getHeaders().toMultimap());
+-        data.request.getHeaders().addCookies(cookies);
++        Map<String, List<String>> cookies = manager.get(URI.create(data.request.getUri().toString()), data.request.getHeaders().toMultimap());
++        addCookies(cookies, data.request.getHeaders());
+     } catch (Exception e) {
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/a911eaaa0668d253208d88420015bb5d732607af b/f16b7a353da2f509db8849cc3560c33d9da78a57
+index a911eaaa06..f16b7a353d 100644
+--- a/a911eaaa0668d253208d88420015bb5d732607af
++++ b/f16b7a353da2f509db8849cc3560c33d9da78a57
+@@ -1,16 +1,6 @@
+ @Override
+ public void start() {
+-    try {
+-        server = vertx.createHttpServer(HttpServerOptions.options());
+-        fail("Should throw exception");
+-    } catch (IllegalStateException e) {
+-    // OK
+-    }
+-    try {
+-        client = vertx.createHttpClient(HttpClientOptions.options());
+-        fail("Should throw exception");
+-    } catch (IllegalStateException e) {
+-    // OK
+-    }
++    assertIllegalStateException(() -> server = vertx.createHttpServer(HttpServerOptions.options()));
++    assertIllegalStateException(() -> client = vertx.createHttpClient(HttpClientOptions.options()));
+     testComplete();
+ }
+\ No newline at end of file

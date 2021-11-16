@@ -1,0 +1,23 @@
+diff --git a/6e9fdbb60bad73f54e442fa323dbd38302bdce43 b/d55c2e617fbee0ea55ef1d00efa33027a0fba81b
+index 6e9fdbb60b..d55c2e617f 100644
+--- a/6e9fdbb60bad73f54e442fa323dbd38302bdce43
++++ b/d55c2e617fbee0ea55ef1d00efa33027a0fba81b
+@@ -1,15 +1,15 @@
+ /**
+  * <!-- begin-user-doc -->
+  * <!-- end-user-doc -->
+  * @generated NOT
+  */
+-public Double fetchSensorValue() {
++public DecimalValue fetchSensorValue() {
+     try {
+-        return (double) tinkerforgeDevice.getDistance();
++        return new DecimalValue(tinkerforgeDevice.getDistance());
+     } catch (TimeoutException e) {
+         TinkerforgeErrorHandler.handleError(this, TinkerforgeErrorHandler.TF_TIMEOUT_EXCEPTION, e);
+     } catch (NotConnectedException e) {
+         TinkerforgeErrorHandler.handleError(this, TinkerforgeErrorHandler.TF_NOT_CONNECTION_EXCEPTION, e);
+     }
+     return null;
+ }
+\ No newline at end of file

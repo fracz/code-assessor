@@ -1,0 +1,17 @@
+diff --git a/efa0e649a53765339d2fe6f03da318549bf11e23 b/57ab65ff79cc81a31a8df6d360ab34c6fa1b489b
+index efa0e649a5..57ab65ff79 100644
+--- a/efa0e649a53765339d2fe6f03da318549bf11e23
++++ b/57ab65ff79cc81a31a8df6d360ab34c6fa1b489b
+@@ -1,8 +1,10 @@
+ private static String getCreateStatementMethodAfterInsertCode() {
+     StringBuilder sb = new StringBuilder();
+     sb.append("{");
+-    // sb.append("System.out.println(\"-----ConnectionImpl.createStatement() method is ended\");");
++    if (logger.isDebugEnabled()) {
++        sb.append("System.out.println(\"-----ConnectionImpl.createStatement() method is ended\");");
++    }
+     sb.append(TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".put(" + TomcatProfilerConstant.REQ_DATA_TYPE_DB_CREATE_STATEMENT + ");");
+     sb.append("}");
+     return sb.toString();
+ }
+\ No newline at end of file

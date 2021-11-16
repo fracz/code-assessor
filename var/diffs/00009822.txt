@@ -1,0 +1,17 @@
+diff --git a/8fd74f744b7b26e0218e288cb2b0e8abc3abda29 b/17abe4999cf7df97244d2bcfd64bdfcc325e8032
+index 8fd74f744b..17abe4999c 100644
+--- a/8fd74f744b7b26e0218e288cb2b0e8abc3abda29
++++ b/17abe4999cf7df97244d2bcfd64bdfcc325e8032
+@@ -1,9 +1,9 @@
+ public void testReimportingWhenModuleHaveRootOfTheParent() throws Exception {
+     createProjectSubDir("m1/res");
+     createProjectPom("<groupId>test</groupId>" + "<artifactId>project</artifactId>" + "<packaging>pom</packaging>" + "<version>1</version>" + "<modules>" + "  <module>m1</module>" + "  <module>m2</module>" + "</modules>");
+     createModulePom("m2", "<groupId>test</groupId>" + "<artifactId>m2</artifactId>" + "<version>1</version>" + "<build>" + "  <resources>" + "    <resource><directory>../m1</directory></resource>" + "  </resources>" + "</build>");
+-    // shouldn't throw Dialog.show exception
++    AtomicInteger counter = configConfirmationForNoAnswer();
+     importProject();
+     resolveDependenciesAndImport();
+-    assertEquals(0, questionsCount);
++    assertEquals(0, counter.get());
+ }
+\ No newline at end of file

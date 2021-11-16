@@ -1,0 +1,23 @@
+diff --git a/359a2a7434163c42ba0dee849639aee425662d95 b/09d5e65c06625ef059debc9f347d2249143dddbb
+index 359a2a7434..09d5e65c06 100644
+--- a/359a2a7434163c42ba0dee849639aee425662d95
++++ b/09d5e65c06625ef059debc9f347d2249143dddbb
+@@ -1,12 +1,13 @@
+ @Test
+ public void testProtocolSwitcher() {
+     String protocolSwitcher = MotanConstants.PROTOCOL_SWITCHER_PREFIX + "motan";
+-    LocalSwitcherService.putSwitcher(new Switcher(protocolSwitcher, false));
+-    Switcher switcher = LocalSwitcherService.getSwitcherStatic(protocolSwitcher);
++    LocalSwitcherService localSwitcherService = new LocalSwitcherService();
++    localSwitcherService.setValue(protocolSwitcher, false);
++    Switcher switcher = localSwitcherService.getSwitcher(protocolSwitcher);
+     Assert.assertNotNull(switcher);
+     Assert.assertFalse(switcher.isOn());
+-    LocalSwitcherService.putSwitcher(new Switcher(protocolSwitcher, true));
+-    switcher = LocalSwitcherService.getSwitcherStatic(protocolSwitcher);
++    localSwitcherService.setValue(protocolSwitcher, true);
++    switcher = localSwitcherService.getSwitcher(protocolSwitcher);
+     Assert.assertNotNull(switcher);
+     Assert.assertTrue(switcher.isOn());
+ }
+\ No newline at end of file

@@ -1,0 +1,27 @@
+diff --git a/92bb7a1107c4fcf2109ee0c478b552736409d8d2 b/1ac9acb1196eb6fb03cdcfa96b4d41efa31c2ab7
+index 92bb7a1107..1ac9acb119 100644
+--- a/92bb7a1107c4fcf2109ee0c478b552736409d8d2
++++ b/1ac9acb1196eb6fb03cdcfa96b4d41efa31c2ab7
+@@ -1,8 +1,16 @@
+ public FileStoreEntry add(String key, Action<File> addAction) {
+-    final File tempFile = getTempFile();
++    File destination = getFile(key);
+     // revisit this. found issue when running PathKeyFileStoreTest#can add to filestore
+-    tempFile.getParentFile().mkdirs();
+-    addAction.execute(tempFile);
+-    final FileStoreEntry fileStoreEntry = move(key, tempFile);
+-    return fileStoreEntry;
++    destination.getParentFile().mkdirs();
++    File markerFile = getMarkerFile(destination);
++    try {
++        markerFile.createNewFile();
++        destination.delete();
++        addAction.execute(destination);
++    } catch (IOException e) {
++        throw new GradleException(String.format("Failed to add file with key '%s' into filestore at '%s' ", key, getBaseDir().getAbsolutePath()), e);
++    } finally {
++        markerFile.delete();
++    }
++    return entryAt(destination);
+ }
+\ No newline at end of file

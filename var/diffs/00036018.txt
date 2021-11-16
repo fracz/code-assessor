@@ -1,0 +1,22 @@
+diff --git a/5773981899061b229e90d738a90f4c70712c05aa b/1edae93c877c78089cddc5f11f1283ce3c8e66d5
+index 5773981899..1edae93c87 100644
+--- a/5773981899061b229e90d738a90f4c70712c05aa
++++ b/1edae93c877c78089cddc5f11f1283ce3c8e66d5
+@@ -1,13 +1,12 @@
+ private Object returnFake(InvocationOnMock invocation) {
+     Class<?> returnType = invocation.getMethod().getReturnType();
+     if (returnType == String.class) {
+         return "";
+     } else if (returnType == Boolean.TYPE) {
+         return true;
+-    } else if (isFinalClass(returnType)) {
+-        // cannot mock final class :(
+-        return null;
+-    } else {
++    } else if (!isMockable(returnType)) {
+         return mock(returnType);
++    } else {
++        return defaultValueFor(invocation);
+     }
+ }
+\ No newline at end of file

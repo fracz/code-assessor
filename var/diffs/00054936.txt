@@ -1,0 +1,18 @@
+diff --git a/b250259f7c85298c6bfbf91b664f76607a5dfc13 b/dfab56e16ee68ab3df840389f6dbbd0e5ecaf4b0
+index b250259f7c..dfab56e16e 100644
+--- a/b250259f7c85298c6bfbf91b664f76607a5dfc13
++++ b/dfab56e16ee68ab3df840389f6dbbd0e5ecaf4b0
+@@ -1,10 +1,9 @@
+ private void makeSimpleBlock(IBlock block, CodeWriter code) throws CodegenException {
+     for (InsnNode insn : block.getInstructions()) {
+         makeInsn(insn, code);
+     }
+-    IAttribute attr;
+-    if ((attr = block.getAttributes().get(AttributeType.FORCE_RETURN)) != null) {
+-        ForceReturnAttr retAttr = (ForceReturnAttr) attr;
++    ForceReturnAttr retAttr = block.get(AType.FORCE_RETURN);
++    if (retAttr != null) {
+         makeInsn(retAttr.getReturnInsn(), code);
+     }
+ }
+\ No newline at end of file

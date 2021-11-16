@@ -1,0 +1,16 @@
+diff --git a/bd3dc33b87286f8717adeafebf19b70bc52bb045 b/36fca3839168b1a4cd9979d18ea2a4f5052b6953
+index bd3dc33b87..36fca38391 100644
+--- a/bd3dc33b87286f8717adeafebf19b70bc52bb045
++++ b/36fca3839168b1a4cd9979d18ea2a4f5052b6953
+@@ -1,6 +1,9 @@
+ @Test
+ public void requestBodyError() throws Exception {
+     this.request.setUri("/request-body").setBody(Mono.error(EXCEPTION));
+     Mono<Void> publisher = this.dispatcherHandler.handle(this.exchange);
+-    TestSubscriber.subscribe(publisher).assertError(ServerWebInputException.class).assertErrorWith(ex -> assertSame(EXCEPTION, ex.getCause()));
++    ScriptedSubscriber.<Void>create().consumeErrorWith(error -> {
++        assertThat(error, instanceOf(ServerWebInputException.class));
++        assertSame(EXCEPTION, error.getCause());
++    }).verify(publisher);
+ }
+\ No newline at end of file

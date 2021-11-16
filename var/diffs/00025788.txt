@@ -1,0 +1,23 @@
+diff --git a/c5c0ded1aa10eb9bfd5919be10bc518ca1603110 b/03c4b69803b59812d07b9ac842a62893686b339e
+index c5c0ded1aa..03c4b69803 100644
+--- a/c5c0ded1aa10eb9bfd5919be10bc518ca1603110
++++ b/03c4b69803b59812d07b9ac842a62893686b339e
+@@ -1,14 +1,8 @@
+-boolean waitForText(final String txt, final By by) {
++boolean waitForText(final String txt, final By locator) {
+     try {
+-        new WebDriverWait(driver, 5).until(new ExpectedCondition<Boolean>() {
+-
+-            @Override
+-            public Boolean apply(WebDriver d) {
+-                return txt.equals(driver.findElement(by).getText());
+-            }
+-        });
+-        return true;
++        WebElement element = pollingWait(locator);
++        return txt.equals(element.getText());
+     } catch (TimeoutException e) {
+         return false;
+     }
+ }
+\ No newline at end of file

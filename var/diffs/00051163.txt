@@ -1,0 +1,16 @@
+diff --git a/554946d073dcf86495ae3cb46852e6e2194ddb07 b/7f9a3eda86b9393938f5c571ac0c6efb50c643df
+index 554946d073..7f9a3eda86 100644
+--- a/554946d073dcf86495ae3cb46852e6e2194ddb07
++++ b/7f9a3eda86b9393938f5c571ac0c6efb50c643df
+@@ -1,8 +1,9 @@
+ private QueryProcessor createQueryProcessor(boolean setSelection) {
+     final QueryProcessor queryProcessor = new QueryProcessor();
+     curQueryProcessor = queryProcessor;
++    curResultsProvider = queryProcessor.getFirstResults();
+     if (setSelection) {
+-        resultTabs.setSelection(queryProcessor.getFirstResults().tabItem);
++        resultTabs.setSelection(curResultsProvider.tabItem);
+     }
+     return queryProcessor;
+ }
+\ No newline at end of file

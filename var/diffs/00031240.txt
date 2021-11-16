@@ -1,0 +1,22 @@
+diff --git a/168a1faa042ae563fa0154b3d7d24593bc4ee06b b/41018cf21334a6031b7fbf5ddec39c255b42b50e
+index 168a1faa04..41018cf213 100644
+--- a/168a1faa042ae563fa0154b3d7d24593bc4ee06b
++++ b/41018cf21334a6031b7fbf5ddec39c255b42b50e
+@@ -1,12 +1,8 @@
+ @Override
+ public void sync() {
+-    synchronized (mutex) {
+-        if (raf != null) {
+-            try {
+-                raf.channel().force(true);
+-            } catch (Exception e) {
+-            // ignore
+-            }
+-        }
++    FsTranslogFile current1 = this.current;
++    if (current1 == null) {
++        return;
+     }
++    current1.sync();
+ }
+\ No newline at end of file

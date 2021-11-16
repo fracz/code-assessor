@@ -1,0 +1,22 @@
+diff --git a/5161ef1a1c955df352848adda2baedd2449f0b07 b/653d39279424db7dc3b9ff2c8139594c082a4906
+index 5161ef1a1c..653d392794 100644
+--- a/5161ef1a1c955df352848adda2baedd2449f0b07
++++ b/653d39279424db7dc3b9ff2c8139594c082a4906
+@@ -1,8 +1,13 @@
+ @Override
+ public boolean isGapCell(RadContainer grid, boolean isRow, int cellIndex) {
+-    // noinspection SimplifiableIfStatement
+-    if (cellIndex < 0 || cellIndex >= (isRow ? getGridRowCount(grid) : getGridColumnCount(grid))) {
++    if (cellIndex < 0 || cellIndex >= getGridCellCount(grid, isRow)) {
+         return false;
+     }
+-    return cellIndex % 2 == 1 && GridChangeUtil.canDeleteCell(grid, cellIndex, isRow, false);
++    if (cellIndex % 2 == 1) {
++        final GridChangeUtil.CellStatus status = GridChangeUtil.canDeleteCell(grid, cellIndex, isRow);
++        if (status == GridChangeUtil.CellStatus.Empty || status == GridChangeUtil.CellStatus.Redundant) {
++            return true;
++        }
++    }
++    return false;
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/b758fdde8d0e9e7be64d29410b436bc12493456c b/eeb0df5da74e455b171f1653cf4d35ae88bcec59
+index b758fdde8d..eeb0df5da7 100644
+--- a/b758fdde8d0e9e7be64d29410b436bc12493456c
++++ b/eeb0df5da74e455b171f1653cf4d35ae88bcec59
+@@ -1,14 +1,13 @@
+ @Test
+ public void testExtendedVerifyCounterCorrect() throws IOException {
+     CompactionManager.instance.disableAutoCompaction();
+     Keyspace keyspace = Keyspace.open(KEYSPACE);
+     ColumnFamilyStore cfs = keyspace.getColumnFamilyStore(COUNTER_CF2);
+-    fillCounterCF(cfs, KEYSPACE, COUNTER_CF2, 2);
++    fillCounterCF(cfs, 2);
+     SSTableReader sstable = cfs.getSSTables().iterator().next();
+-    Verifier verifier = new Verifier(cfs, sstable, false);
+-    try {
++    try (Verifier verifier = new Verifier(cfs, sstable, false)) {
+         verifier.verify(true);
+     } catch (CorruptSSTableException err) {
+         fail("Unexpected CorruptSSTableException");
+     }
+ }
+\ No newline at end of file

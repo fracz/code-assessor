@@ -1,0 +1,16 @@
+diff --git a/942c897ebb7b1820bdef12089309783bfd1601aa b/e7da686a6fd6a427ffb2b008a4392dd4a83ed73e
+index 942c897ebb..e7da686a6f 100644
+--- a/942c897ebb7b1820bdef12089309783bfd1601aa
++++ b/e7da686a6fd6a427ffb2b008a4392dd4a83ed73e
+@@ -1,9 +1,5 @@
+ @Override
+ public synchronized boolean writeQueueFull() {
+     checkComplete();
+-    if (conn != null) {
+-        return conn.isNotWritable();
+-    } else {
+-        return false;
+-    }
++    return conn != null && conn.isNotWritable();
+ }
+\ No newline at end of file

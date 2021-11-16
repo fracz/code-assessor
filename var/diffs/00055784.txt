@@ -1,0 +1,20 @@
+diff --git a/d82a4698a41bc507e088ec380b82b3b329803aac b/dce0701090740e88bab260d48e2bbfea079aa67b
+index d82a4698a4..dce0701090 100644
+--- a/d82a4698a41bc507e088ec380b82b3b329803aac
++++ b/dce0701090740e88bab260d48e2bbfea079aa67b
+@@ -1,10 +1,8 @@
+ /**
+- * Combines this collection of request method conditions with another by combining all methods into a logical OR.
+- *
+- * @param other the condition to combine with
++ * Returns a new instance with a union of the HTTP request methods from "this" and the "other" instance.
+  */
+ public RequestMethodsRequestCondition combine(RequestMethodsRequestCondition other) {
+-    Set<RequestMethodRequestCondition> conditions = new LinkedHashSet<RequestMethodRequestCondition>(getConditions());
+-    conditions.addAll(other.getConditions());
+-    return new RequestMethodsRequestCondition(conditions);
++    Set<RequestMethod> set = new LinkedHashSet<RequestMethod>(this.methods);
++    set.addAll(other.methods);
++    return new RequestMethodsRequestCondition(set);
+ }
+\ No newline at end of file

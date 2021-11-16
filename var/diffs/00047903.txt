@@ -1,0 +1,13 @@
+diff --git a/d2b31f6fdabc0a40b5cb5a7cc8aa83cc5ba06897 b/bb39ba873ceb6b7cc11f8be0a0c9595563e34e5b
+index d2b31f6fda..bb39ba873c 100644
+--- a/d2b31f6fdabc0a40b5cb5a7cc8aa83cc5ba06897
++++ b/bb39ba873ceb6b7cc11f8be0a0c9595563e34e5b
+@@ -1,5 +1,5 @@
+ @Override
+-protected void processResourceXml(FsFile xmlFile, XpathResourceXmlLoader.XmlNode xmlNode, XmlContext xmlContext) throws Exception {
+-    XmlBlock block = XmlBlock.create(parse(xmlFile), xmlFile.getPath(), xmlContext.packageName);
++protected void processResourceXml(FsFile xmlFile, XpathResourceXmlLoader.XmlNode xmlNode, XmlContext xmlContext) {
++    XmlBlock block = XmlBlock.create(parse(xmlFile), xmlFile.getPath(), xmlContext.getPackageName());
+     resBundle.put(attrType, xmlFile.getBaseName(), new TypedResource<>(block, null, xmlContext));
+ }
+\ No newline at end of file

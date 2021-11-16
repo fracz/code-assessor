@@ -1,0 +1,17 @@
+diff --git a/7a05b8826b728cb04ca9b9cbebcfda8ff55e8a56 b/e63080f1dbe04cfbd3636712f53111c0981ba0c4
+index 7a05b8826b..e63080f1db 100644
+--- a/7a05b8826b728cb04ca9b9cbebcfda8ff55e8a56
++++ b/e63080f1dbe04cfbd3636712f53111c0981ba0c4
+@@ -1,7 +1,8 @@
+ @Override
+ @NotNull
+ public JsExpression translateAsSet(@NotNull JsExpression expression) {
+-    JsInvocation setCall = translateAsArrayAccessWithIndices();
+-    setCall.getArguments().add(expression);
+-    return setCall;
++    if (intrinsicCall()) {
++        return intrinsicSet(expression);
++    }
++    return overloadedSet(expression);
+ }
+\ No newline at end of file

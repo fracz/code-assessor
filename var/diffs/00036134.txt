@@ -1,0 +1,21 @@
+diff --git a/fa22fe608e51df62d6f9c15a639badb19b8001dc b/61205b654ba32d88960da9a8527eea5801d11b04
+index fa22fe608e..61205b654b 100644
+--- a/fa22fe608e51df62d6f9c15a639badb19b8001dc
++++ b/61205b654ba32d88960da9a8527eea5801d11b04
+@@ -1,12 +1,12 @@
+ @Test
+ public void shouldPrintTheParametersOnSmartNullPointerExceptionMessage() throws Throwable {
+     Answer<Object> answer = new ReturnsSmartNulls();
+     Foo smartNull = (Foo) answer.answer(invocationOf(Foo.class, "withArgs", "oompa", "lumpa"));
+     try {
+         smartNull.get();
+         fail();
+-    } catch (SmartNullPointerException ex) {
+-        String message = ex.getMessage();
+-        assertTrue("Exception message should include oompa and lumpa, but was: " + message, message.contains("oompa, lumpa"));
++    } catch (SmartNullPointerException e) {
++        assertContains("oompa", e.getMessage());
++        assertContains("lumpa", e.getMessage());
+     }
+ }
+\ No newline at end of file

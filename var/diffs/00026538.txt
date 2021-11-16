@@ -1,0 +1,12 @@
+diff --git a/8946030d22d39be1dfd604db84754f8b4340b1da b/7cdf66b8f4a3de3c2fc21e38722591d899eea04a
+index 8946030d22..7cdf66b8f4 100644
+--- a/8946030d22d39be1dfd604db84754f8b4340b1da
++++ b/7cdf66b8f4a3de3c2fc21e38722591d899eea04a
+@@ -1,4 +1,5 @@
+ public Spider setExecutorService(ExecutorService executorService) {
+-    this.threadPool.setExecutorService(executorService);
++    checkIfRunning();
++    this.executorService = executorService;
+     return this;
+ }
+\ No newline at end of file

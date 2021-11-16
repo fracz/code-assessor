@@ -1,0 +1,16 @@
+diff --git a/ddd44196341ceda556a5014cddee7a12d1491cda b/3b709f53a938dd8e029a23a7eb9cd5c43428fc12
+index ddd4419634..3b709f53a9 100644
+--- a/ddd44196341ceda556a5014cddee7a12d1491cda
++++ b/3b709f53a938dd8e029a23a7eb9cd5c43428fc12
+@@ -1,8 +1,8 @@
+ private StackValue generateAssignmentExpression(JetBinaryExpression expression) {
+     StackValue stackValue = gen(expression.getLeft());
+     JetExpression right = expression.getRight();
+     assert right != null : expression.getText();
+-    gen(right, stackValue.type);
+-    stackValue.store(stackValue.type, v);
++    StackValue rightSide = genLazy(right, stackValue.type);
++    stackValue.store(rightSide, v);
+     return StackValue.none();
+ }
+\ No newline at end of file

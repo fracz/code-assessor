@@ -1,0 +1,23 @@
+diff --git a/29f7ed9970733e87564db41448afd211aac5f5f4 b/69a513393eaf3b458cbb1f4b7606a3247e1943ea
+index 29f7ed9970..69a513393e 100644
+--- a/29f7ed9970733e87564db41448afd211aac5f5f4
++++ b/69a513393eaf3b458cbb1f4b7606a3247e1943ea
+@@ -1,7 +1,14 @@
+ public void visitForStatement(@NotNull PsiForStatement statement) {
+     super.visitForStatement(statement);
+-    if (conditionUsesInitializer(statement) && updateUsesInitializer(statement)) {
+-        return;
++    if (conditionUsesInitializer(statement)) {
++        if (!updateUsesInitializer(statement)) {
++            registerStatementError(statement, Boolean.FALSE, Boolean.TRUE);
++        }
++    } else {
++        if (updateUsesInitializer(statement)) {
++            registerStatementError(statement, Boolean.TRUE, Boolean.FALSE);
++        } else {
++            registerStatementError(statement, Boolean.TRUE, Boolean.TRUE);
++        }
+     }
+-    registerStatementError(statement);
+ }
+\ No newline at end of file

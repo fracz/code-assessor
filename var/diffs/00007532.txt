@@ -1,0 +1,20 @@
+diff --git a/78dfee5ebfd488c0c0016ca798be066fc3e73697 b/b0ae55955f496056aebeff7ae80a7c1bc2e995d3
+index 78dfee5ebf..b0ae55955f 100644
+--- a/78dfee5ebfd488c0c0016ca798be066fc3e73697
++++ b/b0ae55955f496056aebeff7ae80a7c1bc2e995d3
+@@ -1,10 +1,10 @@
+ public void enableView(boolean primary) {
+-    if (primary == myPrimary)
+-        return;
+-    CardLayout cl = (CardLayout) (getLayout());
+-    cl.show(this, primary ? PRIMARY_PANEL : SECONDARY_PANEL);
++    if (primary != myPrimary) {
++        CardLayout cl = (CardLayout) (getLayout());
++        cl.show(this, primary ? PRIMARY_PANEL : SECONDARY_PANEL);
++    }
+     IdeFocusManager.getGlobalInstance().doWhenFocusSettlesDown(() -> {
+         IdeFocusManager.getGlobalInstance().requestFocus(getView(primary).getPreferredFocusableComponent(), true);
+     });
+     myPrimary = primary;
+ }
+\ No newline at end of file

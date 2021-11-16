@@ -1,0 +1,13 @@
+diff --git a/899dc3aa869862d418fea26d1fd9f281316205ee b/ef2c43bb3ee30a57fb25e8708efef34527667348
+index 899dc3aa86..ef2c43bb3e 100644
+--- a/899dc3aa869862d418fea26d1fd9f281316205ee
++++ b/ef2c43bb3ee30a57fb25e8708efef34527667348
+@@ -1,6 +1,6 @@
+ @Override
+ public void cleanup() throws IOException {
+     UnderFileSystem ufs = UnderFileSystem.get(mBaseDir);
+-    ufs.deleteDirectory(mBaseDir, new DeleteOptions().setRecursive(true));
++    ufs.deleteDirectory(mBaseDir, DeleteOptions.defaults().setRecursive(true));
+     mBaseDir = PathUtils.concatPath(mOSSBucket, UUID.randomUUID());
+ }
+\ No newline at end of file

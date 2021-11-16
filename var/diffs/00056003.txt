@@ -1,0 +1,15 @@
+diff --git a/29ac4a6c0e5466cf8a5f1e001b99b4428bc14e50 b/016ac11d0cb42d6ff57862b9929dee400e675009
+index 29ac4a6c0e..016ac11d0c 100644
+--- a/29ac4a6c0e5466cf8a5f1e001b99b4428bc14e50
++++ b/016ac11d0cb42d6ff57862b9929dee400e675009
+@@ -1,7 +1,8 @@
++@Test
+ public void testMultipleConfigLocationsWithClass() {
+-    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] { "test/contextB.xml", "test/contextC.xml", "test/contextA.xml" }, getClass());
++    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] { CONTEXT_B, CONTEXT_C, CONTEXT_A }, getClass());
+     assertTrue(ctx.containsBean("service"));
+     assertTrue(ctx.containsBean("logicOne"));
+     assertTrue(ctx.containsBean("logicTwo"));
+     ctx.close();
+ }
+\ No newline at end of file

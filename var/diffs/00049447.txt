@@ -1,0 +1,17 @@
+diff --git a/e79bb58e72970bd02d00740857658d4220d72632 b/bcb7e600e47e03a624c62bada89e79f5334d7403
+index e79bb58e72..bcb7e600e4 100644
+--- a/e79bb58e72970bd02d00740857658d4220d72632
++++ b/bcb7e600e47e03a624c62bada89e79f5334d7403
+@@ -1,10 +1,10 @@
+ @Override
+ public void run() {
+     try {
+         dataSource.getContainer().setDefaultTransactionsIsolation(level);
+     } catch (DBException e) {
+-        UIUtils.showErrorDialog(null, "Transactions Isolation", "Can't set transaction isolation level to '" + level + "'", e);
++        DBUserInterface.getInstance().showError("Transactions Isolation", "Can't set transaction isolation level to '" + level + "'", e);
+         return;
+     }
+     dataSource.getContainer().persistConfiguration();
+ }
+\ No newline at end of file

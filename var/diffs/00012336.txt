@@ -1,0 +1,18 @@
+diff --git a/a4e3e4865651eb622b96e0c3d67fbd8aa3366106 b/ddc4bd7250fd45c792c695491e580cae02813988
+index a4e3e48656..ddc4bd7250 100644
+--- a/a4e3e4865651eb622b96e0c3d67fbd8aa3366106
++++ b/ddc4bd7250fd45c792c695491e580cae02813988
+@@ -1,9 +1,9 @@
+ @Nullable
+-protected InspectionGadgetsFix buildFix(PsiElement location) {
+-    final PsiElement parent = location.getParent().getParent();
+-    final String replacementText = ToArrayCallWithZeroLengthArrayArgumentFix.getReplacementText(parent);
++protected InspectionGadgetsFix buildFix(Object... infos) {
++    final PsiMethodCallExpression methodCallExpression = (PsiMethodCallExpression) infos[0];
++    final String replacementText = ToArrayCallWithZeroLengthArrayArgumentFix.getReplacementText(methodCallExpression);
+     if (replacementText == null) {
+         return null;
+     }
+     return new ToArrayCallWithZeroLengthArrayArgumentFix(replacementText);
+ }
+\ No newline at end of file

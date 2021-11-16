@@ -1,0 +1,17 @@
+diff --git a/62f1ca0bf100b32b51bf851acdf69fedb0611a87 b/76e546c87af3f36dfe3e5c0c76451c814bfc383b
+index 62f1ca0bf1..76e546c87a 100644
+--- a/62f1ca0bf100b32b51bf851acdf69fedb0611a87
++++ b/76e546c87af3f36dfe3e5c0c76451c814bfc383b
+@@ -1,7 +1,8 @@
+ @Override
+ public void rejectChanges() {
+-    ResultSetPersister persister = createDataPersister();
+-    if (persister != null) {
+-        persister.rejectChanges();
++    try {
++        createDataPersister().rejectChanges();
++    } catch (DBException e) {
++        log.debug(e);
+     }
+ }
+\ No newline at end of file

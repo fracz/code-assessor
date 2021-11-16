@@ -1,0 +1,19 @@
+diff --git a/852061f3ddd427d1e94302097d8e6bf9c3c9be8f b/f4be06fd55e974f2b205d9d319a852c16dad6193
+index 852061f3dd..f4be06fd55 100644
+--- a/852061f3ddd427d1e94302097d8e6bf9c3c9be8f
++++ b/f4be06fd55e974f2b205d9d319a852c16dad6193
+@@ -1,12 +1,5 @@
+ void setCompilingTests(boolean compilingTests) {
+     myCompilingTests = compilingTests;
++    // todo: do we really need this?
+     myFilesCache.clear();
+-    for (Collection<File> roots : myTempSourceRoots.values()) {
+-        if (roots != null) {
+-            for (File root : roots) {
+-                FileUtil.delete(root);
+-            }
+-        }
+-    }
+-    myTempSourceRoots.clear();
+ }
+\ No newline at end of file

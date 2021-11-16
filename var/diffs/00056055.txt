@@ -1,0 +1,17 @@
+diff --git a/362de551b52d39b19c6a4fca80d202642c7f986e b/d0badde77b2654a505a19c850295747ea9486b98
+index 362de551b5..d0badde77b 100644
+--- a/362de551b52d39b19c6a4fca80d202642c7f986e
++++ b/d0badde77b2654a505a19c850295747ea9486b98
+@@ -1,10 +1,10 @@
+ @Test
+ public void testAdviceUsingJoinPoint() {
+-    ClassPathXmlApplicationContext bf = new ClassPathXmlApplicationContext("/org/springframework/aop/aspectj/autoproxy/usesJoinPointAspect.xml");
++    ClassPathXmlApplicationContext bf = newContext("usesJoinPointAspect.xml");
+     ITestBean adrian1 = (ITestBean) bf.getBean("adrian");
+     adrian1.getAge();
+     AdviceUsingThisJoinPoint aspectInstance = (AdviceUsingThisJoinPoint) bf.getBean("aspect");
+     // (AdviceUsingThisJoinPoint) Aspects.aspectOf(AdviceUsingThisJoinPoint.class);
+     // assertEquals("method-execution(int TestBean.getAge())",aspectInstance.getLastMethodEntered());
+     assertTrue(aspectInstance.getLastMethodEntered().indexOf("TestBean.getAge())") != 0);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/160e15dcb4907c81dbaa905e58a232ca118eafd0 b/355502d675e4308f2603a47d3124de5a667295f9
+index 160e15dcb4..355502d675 100644
+--- a/160e15dcb4907c81dbaa905e58a232ca118eafd0
++++ b/355502d675e4308f2603a47d3124de5a667295f9
+@@ -1,7 +1,3 @@
+ public void visitReferenceExpression(PsiReferenceExpression expression) {
+-    JavaResolveResult result = expression.advancedResolve(false);
+-    final ProblemDescriptor problemDescriptor = checkAccessStaticMemberViaInstanceReference(expression, result, manager);
+-    if (problemDescriptor != null) {
+-        problems.add(problemDescriptor);
+-    }
++    checkAccessStaticMemberViaInstanceReference(expression, expression.advancedResolve(false), holder);
+ }
+\ No newline at end of file

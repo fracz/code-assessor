@@ -1,0 +1,20 @@
+diff --git a/3da889207f06534f574de9437395fc0596fe6fe6 b/e4d86339075e3bd9e1877b82aa4d1167ae8678a9
+index 3da889207f..e4d8633907 100644
+--- a/3da889207f06534f574de9437395fc0596fe6fe6
++++ b/e4d86339075e3bd9e1877b82aa4d1167ae8678a9
+@@ -1,10 +1,10 @@
+ @Test
+ public void shouldPutGetToFromCache() throws Exception {
+-    store.put("key", "value");
+-    store.put("key2", "value2");
+-    assertEquals("value", store.get("key"));
+-    assertEquals("value2", store.get("key2"));
++    store.put(bytesKey("key"), bytesValue("value"));
++    store.put(bytesKey("key2"), bytesValue("value2"));
++    assertThat(store.get(bytesKey("key")), equalTo(bytesValue("value")));
++    assertThat(store.get(bytesKey("key2")), equalTo(bytesValue("value2")));
+     // nothing evicted so underlying store should be empty
+     assertEquals(2, cache.size());
+     assertEquals(0, underlyingStore.approximateNumEntries());
+ }
+\ No newline at end of file

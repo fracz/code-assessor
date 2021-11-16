@@ -1,0 +1,13 @@
+diff --git a/5a8bdd8b8b7e75af3aec739e87695f528ecdc5cc b/1dea1d0ece42161880adb7ba01fb4562d707fc52
+index 5a8bdd8b8b..1dea1d0ece 100644
+--- a/5a8bdd8b8b7e75af3aec739e87695f528ecdc5cc
++++ b/1dea1d0ece42161880adb7ba01fb4562d707fc52
+@@ -1,6 +1,6 @@
+ @Test
+ public void noTriggerMutations() throws ConfigurationException, InvalidRequestException {
+     CFMetaData metadata = makeCfMetaData("ks1", "cf1", TriggerDefinition.create("test", NoOpTrigger.class.getName()));
+-    Mutation rm = new Mutation(bytes("k1"), makeCf(metadata, "v1", null));
++    Mutation rm = new Mutation(makeCf(metadata, "k1", "v1", null));
+     assertNull(TriggerExecutor.instance.execute(Collections.singletonList(rm)));
+ }
+\ No newline at end of file

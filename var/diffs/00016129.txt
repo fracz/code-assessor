@@ -1,0 +1,19 @@
+diff --git a/c3d9ffa0d592c8960edd4d2bc9f5c04509cc79c0 b/43c0faed71ee3f4e4a6930de1630e4318fe11125
+index c3d9ffa0d5..43c0faed71 100644
+--- a/c3d9ffa0d592c8960edd4d2bc9f5c04509cc79c0
++++ b/43c0faed71ee3f4e4a6930de1630e4318fe11125
+@@ -1,11 +1,11 @@
+ @NotNull
+-public static String getOuterClassName(@NotNull ClassDescriptor classDescriptor, @NotNull JetTypeMapper typeMapper, @NotNull BindingContext bindingContext) {
++private static String getOuterClassName(@NotNull ClassDescriptor classDescriptor, @NotNull JetTypeMapper typeMapper) {
+     ClassDescriptor container = DescriptorUtils.getParentOfType(classDescriptor, ClassDescriptor.class);
+     if (container != null) {
+         return typeMapper.mapType(container.getDefaultType(), JetTypeMapperMode.IMPL).getInternalName();
+     } else {
+-        JetFile containingFile = BindingContextUtils.getContainingFile(bindingContext, classDescriptor);
++        JetFile containingFile = BindingContextUtils.getContainingFile(typeMapper.getBindingContext(), classDescriptor);
+         assert containingFile != null : "Containing file should be present for " + classDescriptor;
+         return NamespaceCodegen.getNamespacePartInternalName(containingFile);
+     }
+ }
+\ No newline at end of file

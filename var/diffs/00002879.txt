@@ -1,0 +1,17 @@
+diff --git a/5e4dff55bc0a478a07fbf3cddeb593357dc45395 b/d22d55033fff205332cfd82453522b1e0aad2ae0
+index 5e4dff55bc..d22d55033f 100644
+--- a/5e4dff55bc0a478a07fbf3cddeb593357dc45395
++++ b/d22d55033fff205332cfd82453522b1e0aad2ae0
+@@ -1,8 +1,9 @@
+ public static LocalQuickFix[] createFixes(LocalQuickFix... fixes) {
+-    return ContainerUtil.findAll(fixes, new Condition<LocalQuickFix>() {
++    final List<LocalQuickFix> result = ContainerUtil.findAll(fixes, new Condition<LocalQuickFix>() {
+
+         public boolean value(LocalQuickFix localQuickFix) {
+             return localQuickFix != null;
+         }
+-    }).toArray(LocalQuickFix.EMPTY_ARRAY);
++    });
++    return result.toArray(new LocalQuickFix[result.size()]);
+ }
+\ No newline at end of file

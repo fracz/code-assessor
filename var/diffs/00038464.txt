@@ -1,0 +1,15 @@
+diff --git a/dc5b9d4bbe47b0ae578595e19aed69ce17d57c47 b/4ef240877d1906617f8f11e633225366b75442a9
+index dc5b9d4bbe..4ef240877d 100644
+--- a/dc5b9d4bbe47b0ae578595e19aed69ce17d57c47
++++ b/4ef240877d1906617f8f11e633225366b75442a9
+@@ -1,6 +1,7 @@
+-public void start(NeoServerWithEmbeddedWebServer neoServer, StringLogger logger) {
+-    neoServer.getWebServer().addJAXRSPackages(listFrom(new String[] { Configurator.DISCOVERY_API_PACKAGE }), ROOT_PATH);
++@Override
++public void start(StringLogger logger) {
++    webServer.addJAXRSPackages(listFrom(new String[] { Configurator.DISCOVERY_API_PACKAGE }), ROOT_PATH);
+     log.info("Mounted discovery module at [%s]", ROOT_PATH);
+     if (logger != null)
+         logger.logMessage("Mounted discovery module (" + Configurator.DISCOVERY_API_PACKAGE + ") at: " + ROOT_PATH);
+ }
+\ No newline at end of file

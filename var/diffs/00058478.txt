@@ -1,0 +1,20 @@
+diff --git a/d34dc3f67ce3c61725dff82253820436fd34d468 b/a8464a5096ec5ed9cb7f916109378c6e412075b2
+index d34dc3f67c..a8464a5096 100644
+--- a/d34dc3f67ce3c61725dff82253820436fd34d468
++++ b/a8464a5096ec5ed9cb7f916109378c6e412075b2
+@@ -1,13 +1,13 @@
+ // ////// TRANSFORMS
+ /**
+  * The identity step does not alter the graph in anyway.
+  * It has the benefit of emitting various useful graph statistic counters.
+  *
+  * @return the extended FaunusPipeline
+  */
+ public FaunusPipeline _() {
+     this.state.checkLocked();
+-    this.compiler.addMap(IdentityMap.Map.class, NullWritable.class, FaunusVertex.class, null);
++    this.compiler.addMap(IdentityMap.Map.class, NullWritable.class, FaunusVertex.class, IdentityMap.createConfiguration());
+     makeMapReduceString(IdentityMap.class);
+     return this;
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/3d6ddfa15f4c06ed2b905115dae10d603958f55a b/80c5ab6c30ca1e71b2b74df80f06f093c29041ac
+index 3d6ddfa15f..80c5ab6c30 100644
+--- a/3d6ddfa15f4c06ed2b905115dae10d603958f55a
++++ b/80c5ab6c30ca1e71b2b74df80f06f093c29041ac
+@@ -1,13 +1,4 @@
+ @Override
+ public boolean retainAll(final Collection<?> collection) {
+-    checkNotNull(collection);
+-    Predicate<E> combinedPredicate = new Predicate<E>() {
+-
+-        @Override
+-        public boolean apply(E input) {
+-            // See comment in contains() concerning predicate.apply(e)
+-            return predicate.apply(input) && !collection.contains(input);
+-        }
+-    };
+-    return Iterables.removeIf(unfiltered, combinedPredicate);
++    return Iterables.removeIf(unfiltered, and(predicate, not(in(collection))));
+ }
+\ No newline at end of file

@@ -1,0 +1,25 @@
+diff --git a/265cc620bb35f0ac3d3080c059490e349f292076 b/96b783febb9ef2ae44b4af44bdad76edd13afedb
+index 265cc620bb..96b783febb 100644
+--- a/265cc620bb35f0ac3d3080c059490e349f292076
++++ b/96b783febb9ef2ae44b4af44bdad76edd13afedb
+@@ -1,13 +1,11 @@
+-/**
+- * Returns an array of durations at the given percentiles.
+- *
+- * @param percentiles one or more percentiles ({@code 0..1})
+- * @return an array of durations at the given percentiles
+- */
+-public double[] percentiles(double... percentiles) {
+-    final double[] scores = histogram.percentiles(percentiles);
++/* (non-Javadoc)
++     * @see com.yammer.metrics.core.Percentiled#percentiles(double)
++     */
++@Override
++public Double[] percentiles(Double... percentiles) {
++    final Double[] scores = histogram.percentiles(percentiles);
+     for (int i = 0; i < scores.length; i++) {
+         scores[i] = convertFromNS(scores[i]);
+     }
+     return scores;
+ }
+\ No newline at end of file

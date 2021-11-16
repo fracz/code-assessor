@@ -1,0 +1,12 @@
+diff --git a/6792c7f644d57290ba0eb617d592b885e54d67a9 b/e946b1ceb5663cc64b3e217adf4f9679a38c2301
+index 6792c7f644..e946b1ceb5 100644
+--- a/6792c7f644d57290ba0eb617d592b885e54d67a9
++++ b/e946b1ceb5663cc64b3e217adf4f9679a38c2301
+@@ -1,4 +1,4 @@
+ @Nls
+-public String getLibraryVersion(@NotNull Library library, LibrariesContainer librariesContainer) {
+-    return GantUtils.getGantVersion(GantUtils.getGantLibraryHome(librariesContainer.getLibraryFiles(library, OrderRootType.CLASSES)));
++public String getLibraryVersion(final VirtualFile[] libraryFiles) {
++    return GantUtils.getGantVersion(GantUtils.getGantLibraryHome(libraryFiles));
+ }
+\ No newline at end of file

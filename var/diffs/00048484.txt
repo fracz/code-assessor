@@ -1,0 +1,19 @@
+diff --git a/946ad5ffc3f2caf10940c9f49c6b4b00b4381f5f b/746590e93b97e8945ab45dba2742044a162645de
+index 946ad5ffc3..746590e93b 100644
+--- a/946ad5ffc3f2caf10940c9f49c6b4b00b4381f5f
++++ b/746590e93b97e8945ab45dba2742044a162645de
+@@ -1,12 +1,12 @@
+ public boolean isAttributeReadOnly(@NotNull DBDAttributeBinding attribute) {
+     if (attribute.getMetaAttribute().isReadOnly()) {
+         return true;
+     }
+     DBDRowIdentifier rowIdentifier = attribute.getRowIdentifier();
+     if (rowIdentifier == null || // rowIdentifier.getAttributes().isEmpty() ||
+-    !(rowIdentifier.getEntity() instanceof DBSDataManipulator) || (attribute.getValueHandler().getFeatures() & DBDValueHandler.FEATURE_COMPOSITE) != 0) {
++    !(rowIdentifier.getEntity() instanceof DBSDataManipulator) || attribute.getValueHandler() instanceof DBDValueHandlerComposite) {
+         return true;
+     }
+     DBSDataManipulator dataContainer = (DBSDataManipulator) rowIdentifier.getEntity();
+     return (dataContainer.getSupportedFeatures() & DBSDataManipulator.DATA_UPDATE) == 0;
+ }
+\ No newline at end of file

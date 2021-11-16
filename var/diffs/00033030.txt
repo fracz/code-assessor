@@ -1,0 +1,17 @@
+diff --git a/29f9fe55cbad2c03439f08426c6cb86f4c91ae76 b/da08d232800b24d64a980e82c96e2b9046d8ca94
+index 29f9fe55cb..da08d23280 100644
+--- a/29f9fe55cbad2c03439f08426c6cb86f4c91ae76
++++ b/da08d232800b24d64a980e82c96e2b9046d8ca94
+@@ -1,9 +1,4 @@
+ private static String getPrimitiveTypeParameterKeyword(String javaName) {
+-    // TODO(user): These can be changed to "Long" and "Short".
+-    if (javaName.equals("long")) {
+-        return "LongInt";
+-    } else if (javaName.equals("short")) {
+-        return "ShortInt";
+-    }
+-    return primitiveTypeToObjC(javaName);
++    String result = PRIMITIVE_TYPE_KEYWORD_MAP.get(javaName);
++    return result != null ? result : javaName;
+ }
+\ No newline at end of file

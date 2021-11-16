@@ -1,0 +1,16 @@
+diff --git a/0509e5b7f652a3b8b92595e1c104f8e3b66d9a6b b/8142f55a9b0cd82a74b1c61929c18cde86d1651f
+index 0509e5b7f6..8142f55a9b 100644
+--- a/0509e5b7f652a3b8b92595e1c104f8e3b66d9a6b
++++ b/8142f55a9b0cd82a74b1c61929c18cde86d1651f
+@@ -1,9 +1,9 @@
+ private void validateNode(Shell shell, DBNNode element) {
+     try {
+         DBeaverUI.runInProgressService(new NodeValidator(element));
+     } catch (InterruptedException e) {
+     // skip
+     } catch (InvocationTargetException e) {
+-        UIUtils.showErrorDialog(shell, "Validation failed", null, e.getTargetException());
++        DBUserInterface.getInstance().showError("Validation failed", null, e.getTargetException());
+     }
+ }
+\ No newline at end of file

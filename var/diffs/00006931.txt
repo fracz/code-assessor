@@ -1,0 +1,19 @@
+diff --git a/97bba2f9faee6bd4628694d59983471981ba4db0 b/b6443c9bb1752a310f14e69ee6afb1d28d145501
+index 97bba2f9fa..b6443c9bb1 100644
+--- a/97bba2f9faee6bd4628694d59983471981ba4db0
++++ b/b6443c9bb1752a310f14e69ee6afb1d28d145501
+@@ -1,12 +1,12 @@
+ public void computeUsages(final List<PsiElement> targets) {
+-    FeatureUsageTracker.getInstance().triggerFeatureUsed("codeassists.highlight.return");
++    FeatureUsageTracker.getInstance().triggerFeatureUsed(ProductivityFeatureNames.CODEASSISTS_HIGHLIGHT_RETURN);
+     final PsiElement parent = myTarget.getParent();
+     if (!(parent instanceof PyReturnStatement)) {
+         return;
+     }
+     final PyFunction function = PsiTreeUtil.getParentOfType(myTarget, PyFunction.class);
+     if (function == null) {
+         return;
+     }
+     highlightExitPoints((PyReturnStatement) parent, function);
+ }
+\ No newline at end of file

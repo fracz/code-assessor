@@ -1,0 +1,12 @@
+diff --git a/a5f248136766eb567073223dcb1a71e5c5b73699 b/7c623ece8ac3db9a6d43c3516c5b78e327d6a8cc
+index a5f2481367..7c623ece8a 100644
+--- a/a5f248136766eb567073223dcb1a71e5c5b73699
++++ b/7c623ece8ac3db9a6d43c3516c5b78e327d6a8cc
+@@ -1,3 +1,5 @@
+ protected void actionPerformed(final AnActionEvent e, final ViewContext context, final Content[] content) {
+-    context.findCellFor(content[0]).minimize(content);
++    for (Content each : content) {
++        context.findCellFor(each).detach();
++    }
+ }
+\ No newline at end of file

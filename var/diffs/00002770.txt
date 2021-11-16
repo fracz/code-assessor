@@ -1,0 +1,19 @@
+diff --git a/e9803b4be7ce0fbd0be04c76168990378750dbc5 b/66f2c3f08260c788cb35efcc57d569d7ab6e38af
+index e9803b4be7..66f2c3f082 100644
+--- a/e9803b4be7ce0fbd0be04c76168990378750dbc5
++++ b/66f2c3f08260c788cb35efcc57d569d7ab6e38af
+@@ -1,11 +1,11 @@
+ public boolean ensureModel() {
+-    if (myLibTableModel == null) {
++    if (myLibTable == null) {
+         LibraryTable libTable = getLibraryTable();
+         if (libTable != null) {
+-            myLibTableModel = (LibraryTableBase.ModifiableModelEx) libTable.getModifiableModel();
++            myLibTable = new ScriptingLibraryTable(libTable, myLibraryType);
+             return true;
+         }
+         return false;
+     }
+     return true;
+ }
+\ No newline at end of file

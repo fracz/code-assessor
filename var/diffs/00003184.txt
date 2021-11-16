@@ -1,0 +1,29 @@
+diff --git a/532c75a21bf39e53d17b7e673683f77f46a74f21 b/a0416ac5796bca39ecb3bd9a9ad41672adec1a50
+index 532c75a21b..a0416ac579 100644
+--- a/532c75a21bf39e53d17b7e673683f77f46a74f21
++++ b/a0416ac5796bca39ecb3bd9a9ad41672adec1a50
+@@ -1,21 +1,22 @@
+ /**
+  * @return active window for specified <code>project</code>. There is only one window
+  * for project can be at any point of time.
+  */
+ private Window getFocusedWindowForProject(final Project project) {
+     // todo[anton,vova]: it is possible that returned wnd is not contained in myFocusedWindows; investigate
+     outer: for (Iterator i = myFocusedWindows.iterator(); i.hasNext(); ) {
+         Window window = (Window) i.next();
+         while (!window.isDisplayable() || !window.isShowing()) {
+             // if window isn't visible then gets its first visible ancestor
+             window = window.getOwner();
+             if (window == null) {
+                 continue outer;
+             }
+         }
+-        if (project == DataManager.getInstance().getDataContext(window).getData(DataConstants.PROJECT)) {
++        final DataContext dataContext = DataManager.getInstance().getDataContext(window);
++        if (project == PlatformDataKeys.PROJECT.getData(dataContext)) {
+             return window;
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

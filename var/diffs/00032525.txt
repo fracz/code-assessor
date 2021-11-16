@@ -1,0 +1,20 @@
+diff --git a/23a7beb963b736949a6d8a4223aad4f0286b9d24 b/812a7701a13abcf71032b951f380d0761fd1d281
+index 23a7beb963..812a7701a1 100644
+--- a/23a7beb963b736949a6d8a4223aad4f0286b9d24
++++ b/812a7701a13abcf71032b951f380d0761fd1d281
+@@ -1,7 +1,10 @@
+ @Override
+-public Void visitCompoundAssignment(CompoundAssignmentTree node, VisitorState visitorState) {
+-    for (DescribingMatcher<CompoundAssignmentTree> compoundAssignmentMatcher : compoundAssignmentMatchers) {
+-        evaluateMatch(node, visitorState, compoundAssignmentMatcher);
++public Void visitCompoundAssignment(CompoundAssignmentTree tree, VisitorState visitorState) {
++    VisitorState state = visitorState.withPath(getCurrentPath());
++    for (CompoundAssignmentTreeMatcher matcher : compoundAssignmentMatchers) {
++        if (isSuppressed(matcher))
++            continue;
++        reportMatch(matcher.matchCompoundAssignment(tree, state), tree, state);
+     }
+-    return super.visitCompoundAssignment(node, visitorState);
++    return super.visitCompoundAssignment(tree, visitorState);
+ }
+\ No newline at end of file

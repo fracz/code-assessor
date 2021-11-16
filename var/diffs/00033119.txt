@@ -1,0 +1,14 @@
+diff --git a/ac0923feea5de1d0387d41c48a70ba948c8c69d3 b/028118b12357fdc1717d93027ac08bcc08c23755
+index ac0923feea..028118b123 100644
+--- a/ac0923feea5de1d0387d41c48a70ba948c8c69d3
++++ b/028118b12357fdc1717d93027ac08bcc08c23755
+@@ -1,7 +1,4 @@
+ @TaskAction
+ void generate() {
+-    if (domainObject == null) {
+-        throw new IllegalStateException("Domain object was not configured for this task. See configureDomainObject() method.");
+-    }
+-    generator.write(domainObject, getOutputFile());
++    generator.write(getDomainObject(), getOutputFile());
+ }
+\ No newline at end of file

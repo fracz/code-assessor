@@ -1,0 +1,22 @@
+diff --git a/f09038ae70f6fc549471c4783fb7f4a42194bf71 b/532b3103e857220bc1898f701617d5e645e1cb4c
+index f09038ae70..532b3103e8 100644
+--- a/f09038ae70f6fc549471c4783fb7f4a42194bf71
++++ b/532b3103e857220bc1898f701617d5e645e1cb4c
+@@ -1,15 +1,14 @@
+ public void init(ProcessorContext context, StateStore root) {
+     // open the DB dir
+     openDB(context);
+-    this.changeLogger = this.loggingEnabled ? new StoreChangeLogger<>(name, context, WindowStoreUtils.INNER_SERDES) : null;
+     // value getter should always read directly from rocksDB
+     // since it is only for values that are already flushed
+-    context.register(root, loggingEnabled, new StateRestoreCallback() {
++    context.register(root, false, new StateRestoreCallback() {
+
+         @Override
+         public void restore(byte[] key, byte[] value) {
+             putInternal(key, value);
+         }
+     });
+     open = true;
+ }
+\ No newline at end of file

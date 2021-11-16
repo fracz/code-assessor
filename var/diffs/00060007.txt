@@ -1,0 +1,12 @@
+diff --git a/1918fb102de554e4b20fc7e86953fb84764b2ad9 b/d14dd5d90d93ea368b4f180677ef03de44d5439b
+index 1918fb102d..d14dd5d90d 100644
+--- a/1918fb102de554e4b20fc7e86953fb84764b2ad9
++++ b/d14dd5d90d93ea368b4f180677ef03de44d5439b
+@@ -1,4 +1,5 @@
+ public B lockExpire(long exp, TimeUnit unit) {
+-    this.lockExpire = Timestamps.SYSTEM().convert(exp, unit);
++    this.lockExpire = exp;
++    this.lockExpireUnit = unit;
+     return self();
+ }
+\ No newline at end of file

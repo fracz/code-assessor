@@ -1,0 +1,20 @@
+diff --git a/e63ff1d70bf1a4bc1c2611963ac99d56e3885c40 b/9f77f591933a135db10b03e277463d52e22b2739
+index e63ff1d70b..9f77f59193 100644
+--- a/e63ff1d70bf1a4bc1c2611963ac99d56e3885c40
++++ b/9f77f591933a135db10b03e277463d52e22b2739
+@@ -1,6 +1,10 @@
+ @Override
+-public Publisher<Integer> removeRangeByScore(double startScore, boolean startScoreInclusive, double endScore, boolean endScoreInclusive) {
+-    String startValue = value(BigDecimal.valueOf(startScore).toPlainString(), startScoreInclusive);
+-    String endValue = value(BigDecimal.valueOf(endScore).toPlainString(), endScoreInclusive);
+-    return commandExecutor.writeReactive(getName(), codec, RedisCommands.ZREMRANGEBYSCORE, getName(), startValue, endValue);
++public Publisher<Integer> removeRangeByScore(final double startScore, final boolean startScoreInclusive, final double endScore, final boolean endScoreInclusive) {
++    return reactive(new Supplier<RFuture<Integer>>() {
++
++        @Override
++        public RFuture<Integer> get() {
++            return instance.removeRangeByScoreAsync(startScore, startScoreInclusive, endScore, endScoreInclusive);
++        }
++    });
+ }
+\ No newline at end of file

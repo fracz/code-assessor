@@ -1,0 +1,19 @@
+diff --git a/846b585ee80ccc6c5aecf0c06a434f4c4491312d b/64631cb04c1139a1062e2d476e7764415d0dc05d
+index 846b585ee8..64631cb04c 100644
+--- a/846b585ee80ccc6c5aecf0c06a434f4c4491312d
++++ b/64631cb04c1139a1062e2d476e7764415d0dc05d
+@@ -1,10 +1,10 @@
+-private static void refreshViews(final Project project, final RefElement[] selectedElements, final InspectionTool tool) {
++private static void refreshViews(final Project project, final Set<PsiElement> selectedElements, final InspectionTool tool) {
+     InspectionManagerEx managerEx = (InspectionManagerEx) InspectionManager.getInstance(project);
+     final Set<GlobalInspectionContextImpl> runningContexts = managerEx.getRunningContexts();
+     for (GlobalInspectionContextImpl context : runningContexts) {
+-        for (RefElement element : selectedElements) {
+-            context.ignoreElement(tool, element.getElement());
++        for (PsiElement element : selectedElements) {
++            context.ignoreElement(tool, element);
+         }
+         context.refreshViews();
+     }
+ }
+\ No newline at end of file

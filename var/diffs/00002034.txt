@@ -1,0 +1,32 @@
+diff --git a/ee703b5b53b1bed269031311c30c9791ced7b2ce b/cf0ddb8b2610ea9b856ff5c3934866a4c3196794
+index ee703b5b53..cf0ddb8b26 100644
+--- a/ee703b5b53b1bed269031311c30c9791ced7b2ce
++++ b/cf0ddb8b2610ea9b856ff5c3934866a4c3196794
+@@ -1,21 +1,24 @@
+ public void clean() throws IOException {
+     try {
+         synchronized (mySourceToOutputLock) {
+-            closeOutputToSourceStorages();
+-            FileUtil.delete(getSourceToOutputsRoot());
++            try {
++                closeOutputToSourceStorages();
++            } finally {
++                FileUtil.delete(getSourceToOutputsRoot());
++            }
+         }
+     } finally {
+         try {
+             wipeStorage(getSourceToFormsRoot(), mySrcToFormMap);
+         } finally {
+             final Mappings mappings = myMappings;
+             if (mappings != null) {
+                 synchronized (mappings) {
+                     mappings.clean();
+                 }
+             } else {
+                 FileUtil.delete(getMappingsRoot());
+             }
+         }
+     }
+ }
+\ No newline at end of file

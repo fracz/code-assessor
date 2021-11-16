@@ -1,0 +1,41 @@
+diff --git a/e89264ab51f91a602953782d411dbb9b3992ff5f b/138a1dac1095201cdada075056291682972693a5
+index e89264ab51..138a1dac10 100644
+--- a/e89264ab51f91a602953782d411dbb9b3992ff5f
++++ b/138a1dac1095201cdada075056291682972693a5
+@@ -1,33 +1,33 @@
+ /**
+  * Generates a definition of the original function that can be added as
+  * a fixup in the modules that directly depend on the specialized module.
+  *
+  * <PRE>
+  * The trick here is that even if the original function is declared as:
+  *
+  * function foo() {
+  * // stuff
+  * }
+  *
+  * the fixup will have to be of the form
+  *
+  * foo = function() {
+  * // stuff
+  * }
+  * </PRE>
+  */
+ private Node generateFixupDefinition() {
+     Node functionCopy = copiedOriginalFunction();
+     Node nameNode;
+     if (isAssignFunction) {
+-        nameNode = compiler.newQualifiedNameNode(name, functionCopy, name);
++        nameNode = NodeUtil.newQName(compiler, name, functionCopy, name);
+     } else {
+         // Grab the name node from the original function and make that
+         // function anonymous.
+         nameNode = functionCopy.getFirstChild();
+-        functionCopy.replaceChild(nameNode, compiler.newName("", nameNode, ""));
++        functionCopy.replaceChild(nameNode, NodeUtil.newName(compiler, "", nameNode));
+     }
+     Node assignment = IR.assign(nameNode, functionCopy);
+     assignment.copyInformationFrom(functionCopy);
+     return NodeUtil.newExpr(assignment);
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/7a3c020a60460cf13c3ca73ae05ba27f4386fbcf b/33733207d68dcb26d3529ed4c729ab9f0674e8bc
+index 7a3c020a60..33733207d6 100644
+--- a/7a3c020a60460cf13c3ca73ae05ba27f4386fbcf
++++ b/33733207d68dcb26d3529ed4c729ab9f0674e8bc
+@@ -1,14 +1,14 @@
+ @Test
+ public void shouldPrintFirstUnexpectedInvocationWhenVerifyingZeroInteractions() {
+     mock.twoArgumentMethod(1, 2);
+     mock.threeArgumentMethod(1, "2", "3");
+     try {
+         verifyZeroInteractions(mock);
+         fail();
+     } catch (NoInteractionsWanted e) {
+-        String expected = "\n" + "No interactions wanted";
+-        assertEquals(e.getMessage(), expected);
+-        String expectedCause = "\n" + "Undesired invocation:" + "\n" + "iMethods.twoArgumentMethod(1, 2);";
+-        assertEquals(e.getCause().getMessage(), expectedCause);
++        String expected = "\n" + "No interactions wanted here:" + "\n" + "-> at";
++        assertContains(expected, e.getMessage());
++        String expectedCause = "\n" + "But found this interaction:" + "\n" + "-> at";
++        assertContains(expectedCause, e.getMessage());
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/1c107d1ff686679514bb097dbcec694333447e56 b/13de0a6dc3665adf2673139ab6cdfc96155cfc5d
+index 1c107d1ff6..13de0a6dc3 100644
+--- a/1c107d1ff686679514bb097dbcec694333447e56
++++ b/13de0a6dc3665adf2673139ab6cdfc96155cfc5d
+@@ -1,7 +1,7 @@
+ public Collection<Class<? extends LifecycleComponent>> services() {
+-    List<Class<? extends LifecycleComponent>> services = Lists.newArrayList();
++    List<Class<? extends LifecycleComponent>> services = new ArrayList<>();
+     for (Tuple<PluginInfo, Plugin> plugin : plugins) {
+         services.addAll(plugin.v2().services());
+     }
+     return services;
+ }
+\ No newline at end of file

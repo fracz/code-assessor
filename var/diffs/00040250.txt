@@ -1,0 +1,28 @@
+diff --git a/d3272409927e54022bc312bc6fe4681cd5417ad7 b/69dcfcb04a6cb0e634563be70d7b651be1081d9c
+index d327240992..69dcfcb04a 100644
+--- a/d3272409927e54022bc312bc6fe4681cd5417ad7
++++ b/69dcfcb04a6cb0e634563be70d7b651be1081d9c
+@@ -1,19 +1,21 @@
+ /**
+  * Waits until the thread of this watcher has no threads to watch and terminates itself.
+  * Because a new watcher thread will be started again on {@link #watch(Thread, Runnable)},
+  * this operation is only useful when you want to ensure that the watcher thread is terminated
+  * <strong>after</strong> your application is shut down and there's no chance of calling
+  * {@link #watch(Thread, Runnable)} afterwards.
+  *
+  * @return {@code true} if and only if the watcher thread has been terminated
+  */
+ public static boolean awaitInactivity(long timeout, TimeUnit unit) throws InterruptedException {
+     if (unit == null) {
+         throw new NullPointerException("unit");
+     }
+     Thread watcherThread = ThreadDeathWatcher.watcherThread;
+     if (watcherThread != null) {
+         watcherThread.join(unit.toMillis(timeout));
++        return !watcherThread.isAlive();
++    } else {
++        return true;
+     }
+-    return !watcherThread.isAlive();
+ }
+\ No newline at end of file

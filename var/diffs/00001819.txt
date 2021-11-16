@@ -1,0 +1,16 @@
+diff --git a/27be15339d00ddbbee5bd16c06fd6e920f96741b b/083275481a81668337d9f891aeb66279d185799e
+index 27be15339d..083275481a 100644
+--- a/27be15339d00ddbbee5bd16c06fd6e920f96741b
++++ b/083275481a81668337d9f891aeb66279d185799e
+@@ -1,9 +1,3 @@
+ private void doTest(@NonNls final String qClassName, @NonNls final String newName) throws Exception {
+-    doTest(new PerformAction() {
+-
+-        @Override
+-        public void performAction(VirtualFile rootDir, VirtualFile rootAfter) throws Exception {
+-            RenameClassTest.this.performAction(qClassName, newName);
+-        }
+-    });
++    doTest((rootDir, rootAfter) -> RenameClassTest.this.performAction(qClassName, newName));
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/78b8920300e84e4374313bec7751adfda9c16128 b/91790b2afb504d2a2020acc3a2278053e7331a92
+index 78b8920300..91790b2afb 100644
+--- a/78b8920300e84e4374313bec7751adfda9c16128
++++ b/91790b2afb504d2a2020acc3a2278053e7331a92
+@@ -1,13 +1,13 @@
+ @PostConstruct
+ private void start() {
+-    profiles.putAll(profileStorage.loadMap(new TypeToken<Map<String, Profile>>() {
++    profiles.putAll(profileStorage.loadMap(new TypeToken<Map<String, ProfileImpl>>() {
+     }));
+     // Add default entry if file doesn't exist or invalid or empty.
+     if (profiles.isEmpty()) {
+         final Map<String, String> attributes = new HashMap<>(2);
+         attributes.put("firstName", "Che");
+         attributes.put("lastName", "Codenvy");
+-        Profile profile = new Profile().withId("che").withUserId("che").withAttributes(attributes);
+-        profiles.put(profile.getId(), profile);
++        ProfileImpl profile = new ProfileImpl("che", attributes);
++        profiles.put(profile.getUserId(), profile);
+     }
+ }
+\ No newline at end of file

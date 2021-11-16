@@ -1,0 +1,14 @@
+diff --git a/78d791923c661980ff702fc938982db56b5e032a b/1f9db96d5e00c5a8a99738e737dcf8537813e8dd
+index 78d791923c..1f9db96d5e 100644
+--- a/78d791923c661980ff702fc938982db56b5e032a
++++ b/1f9db96d5e00c5a8a99738e737dcf8537813e8dd
+@@ -1,6 +1,5 @@
+ private void onCryptoFailed(OpenPgpError error) {
+-    OpenPgpResultAnnotation errorPart = new OpenPgpResultAnnotation();
+-    errorPart.setError(error);
+-    addOpenPgpResultPartToMessage(errorPart);
++    CryptoResultAnnotation errorPart = CryptoResultAnnotation.createOpenPgpErrorAnnotation(error);
++    addCryptoResultAnnotationToMessage(errorPart);
+     onCryptoFinished();
+ }
+\ No newline at end of file

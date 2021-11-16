@@ -1,0 +1,23 @@
+diff --git a/6aa334e94a2e14433d2a2148f41e38d5519b062f b/ccf95c32795750a90e702919f8fd1c4ca7d868c6
+index 6aa334e94a..ccf95c3279 100644
+--- a/6aa334e94a2e14433d2a2148f41e38d5519b062f
++++ b/ccf95c32795750a90e702919f8fd1c4ca7d868c6
+@@ -1,8 +1,12 @@
++@Override
+ public LogPosition getLatestIndexBy(String destination) {
+-    LogPosition logPostion = super.getLatestIndexBy(destination);
+-    if (logPostion == nullPosition) {
+-        return null;
+-    } else {
+-        return logPostion;
++    LogPosition logPosition = memoryLogPositionManager.getLatestIndexBy(destination);
++    if (logPosition != null) {
++        return logPosition;
+     }
++    logPosition = loadDataFromFile(dataFileCaches.get(destination));
++    if (logPosition == null) {
++        return nullPosition;
++    }
++    return logPosition;
+ }
+\ No newline at end of file

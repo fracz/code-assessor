@@ -1,0 +1,13 @@
+diff --git a/d9d455b2d4c1f84cb90b034acf253dec8a851836 b/c97253dd9e12d082611e20e34adb88d3db9fb78f
+index d9d455b2d4..c97253dd9e 100644
+--- a/d9d455b2d4c1f84cb90b034acf253dec8a851836
++++ b/c97253dd9e12d082611e20e34adb88d3db9fb78f
+@@ -1,5 +1,5 @@
+ protected void queryRest() {
+-    if (getSqlParser().equalAny(DefaultKeyword.UNION, DefaultKeyword.EXCEPT, DefaultKeyword.INTERSECT, DefaultKeyword.MINUS)) {
+-        throw new SQLParsingUnsupportedException(getSqlParser().getLexer().getCurrentToken().getType());
++    if (sqlParser.equalAny(DefaultKeyword.UNION, DefaultKeyword.EXCEPT, DefaultKeyword.INTERSECT, DefaultKeyword.MINUS)) {
++        throw new SQLParsingUnsupportedException(sqlParser.getLexer().getCurrentToken().getType());
+     }
+ }
+\ No newline at end of file

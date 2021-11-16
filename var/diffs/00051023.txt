@@ -1,0 +1,15 @@
+diff --git a/756caa6239ce6d8341f7c40199969c664c56158f b/aea971f30d42983b8c89b432bfa8e3d922e7e6fa
+index 756caa6239..aea971f30d 100644
+--- a/756caa6239ce6d8341f7c40199969c664c56158f
++++ b/aea971f30d42983b8c89b432bfa8e3d922e7e6fa
+@@ -1,8 +1,4 @@
+ @Override
+ public void closeOnCompletion() throws SQLException {
+-    try {
+-        getOriginal().closeOnCompletion();
+-    } catch (IncompatibleClassChangeError e) {
+-        throw new SQLFeatureNotSupportedException(JDBCConstants.ERROR_API_NOT_SUPPORTED_17);
+-    }
++    JDBCUtils.callMethod17(getOriginal(), "closeOnCompletion", null, null);
+ }
+\ No newline at end of file

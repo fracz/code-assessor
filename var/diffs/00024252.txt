@@ -1,0 +1,30 @@
+diff --git a/7c8afb568c8881ee515687a01f5145f2d72e520e b/3ab60178176ac3c4f01bdabe875d6c6539e69bbc
+index 7c8afb568c..3ab6017817 100644
+--- a/7c8afb568c8881ee515687a01f5145f2d72e520e
++++ b/3ab60178176ac3c4f01bdabe875d6c6539e69bbc
+@@ -1,14 +1,15 @@
+ public ColumnIdentifier prepare(CFMetaData cfm) {
+-    AbstractType<?> comparator = cfm.comparator.asAbstractType();
+-    if (cfm.getIsDense() || comparator instanceof CompositeType || comparator instanceof UTF8Type)
+-        return new ColumnIdentifier(text, true);
+-    // We have a Thrift-created table with a non-text comparator.  We need to parse column names with the comparator
+-    // to get the correct ByteBuffer representation.  However, this doesn't apply to key aliases, so we need to
+-    // make a special check for those and treat them normally.  See CASSANDRA-8178.
++    if (!cfm.isStaticCompactTable())
++        return getInterned(text, true);
++    AbstractType<?> thriftColumnNameType = cfm.thriftColumnNameType();
++    if (thriftColumnNameType instanceof UTF8Type)
++        return getInterned(text, true);
++    // We have a Thrift-created table with a non-text comparator. Check if we have a match column, otherwise assume we should use
++    // thriftColumnNameType
+     ByteBuffer bufferName = ByteBufferUtil.bytes(text);
+-    for (ColumnDefinition def : cfm.partitionKeyColumns()) {
++    for (ColumnDefinition def : cfm.allColumns()) {
+         if (def.name.bytes.equals(bufferName))
+-            return new ColumnIdentifier(text, true);
++            return def.name;
+     }
+-    return new ColumnIdentifier(comparator.fromString(rawText), text);
++    return getInterned(thriftColumnNameType.fromString(rawText), text);
+ }
+\ No newline at end of file

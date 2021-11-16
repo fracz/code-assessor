@@ -1,0 +1,18 @@
+diff --git a/e30885dd1e4aaec0a11776bb31c531a7897c21e7 b/a14f6296604c7298895bb3e1b8f1914edaac4065
+index e30885dd1e..a14f629660 100644
+--- a/e30885dd1e4aaec0a11776bb31c531a7897c21e7
++++ b/a14f6296604c7298895bb3e1b8f1914edaac4065
+@@ -1,10 +1,3 @@
+-@Override
+-public void update(AnActionEvent e) {
+-    GuiEditor editor = GuiEditorUtil.getEditorFromContext(e.getDataContext());
+-    if (editor != null) {
+-        final ArrayList<RadComponent> selectedComponents = FormEditingUtil.getSelectedComponents(editor);
+-        e.getPresentation().setEnabled(canGroup(selectedComponents) && !UngroupButtonsAction.isSameGroup(editor, selectedComponents));
+-    } else {
+-        e.getPresentation().setVisible(false);
+-    }
++protected void update(@NotNull GuiEditor editor, final ArrayList<RadComponent> selection, final AnActionEvent e) {
++    e.getPresentation().setEnabled(canGroup(selection) && !UngroupButtonsAction.isSameGroup(editor, selection));
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/e36fb3900a4c9324856cc52c40b0f7dd79fd6da9 b/2ead80c6e0d47a5a24e30f2974400445fa32c457
+index e36fb3900a..2ead80c6e0 100644
+--- a/e36fb3900a4c9324856cc52c40b0f7dd79fd6da9
++++ b/2ead80c6e0d47a5a24e30f2974400445fa32c457
+@@ -1,8 +1,4 @@
+ @Override
+ public long getSize() {
+-    return storage.callIndexEngine(false, false, indexId, engine -> {
+-        OTransaction transaction = getDatabase().getTransaction();
+-        OLuceneIndexEngine indexEngine = (OLuceneIndexEngine) engine;
+-        return indexEngine.sizeInTx(getTransactionChanges(transaction));
+-    });
++    return storage.callIndexEngine(false, false, indexId, engine -> ((OLuceneIndexEngine) engine).sizeInTx(getTransactionChanges(getDatabase().getTransaction())));
+ }
+\ No newline at end of file

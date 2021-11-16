@@ -1,0 +1,20 @@
+diff --git a/8cbf280e54cf4bbeeeea9e41fa2694cc1fef5369 b/90d9d0c4efdf1ec2c6c435b14de61961c568bc87
+index 8cbf280e54..90d9d0c4ef 100644
+--- a/8cbf280e54cf4bbeeeea9e41fa2694cc1fef5369
++++ b/90d9d0c4efdf1ec2c6c435b14de61961c568bc87
+@@ -1,13 +1,13 @@
+ protected final void advanceTodoItemCountsInToken() {
+     if (myOccurrenceConsumer.canConsumeTodoOccurrences()) {
+         int start = getTokenStart();
+         int end = getTokenEnd();
+         start = Math.max(start, myTodoScannedBound);
+         // this prevents scanning of the same comment twice
+         if (start >= end)
+             return;
+-        CharSequence input = new CharSequenceSubSequence(myBuffer, start, end);
++        CharSequence input = getBufferSequence().subSequence(start, end);
+         myTodoScanningData = advanceTodoItemsCount(input, myOccurrenceConsumer, myTodoScanningData);
+         myTodoScannedBound = end;
+     }
+ }
+\ No newline at end of file

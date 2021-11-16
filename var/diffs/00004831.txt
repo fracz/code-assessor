@@ -1,0 +1,26 @@
+diff --git a/99abfc82844b06b10a35e88e7804af3f3e37f3f0 b/0dd4bb0ef589fb9fcba50c99af48a4fb7f7d9679
+index 99abfc8284..0dd4bb0ef5 100644
+--- a/99abfc82844b06b10a35e88e7804af3f3e37f3f0
++++ b/0dd4bb0ef589fb9fcba50c99af48a4fb7f7d9679
+@@ -1,12 +1,16 @@
+ void compile(PsiElement element, CompileContext context) {
+     myCodeBlockLevel = 0;
+     this.context = context;
+-    if (element instanceof XmlElement) {
+-        element.accept(myXmlVisitor);
+-    } else {
+-        element.accept(myJavaVisitor);
++    /*if (element instanceof XmlElement) {
++      element.accept(myXmlVisitor);
+     }
++    else {
++      element.accept(myJavaVisitor);
++    }*/
++    StructuralSearchProfile profile = StructuralSearchUtil.getProfileByPsiElement(element);
++    assert profile != null;
++    element.accept(profile.createCompilingVisitor(this));
+     if (context.getPattern().getStrategy() == null) {
+         context.getPattern().setStrategy(ExprMatchingStrategy.getInstance());
+     }
+ }
+\ No newline at end of file

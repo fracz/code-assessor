@@ -1,0 +1,12 @@
+diff --git a/a369cad93b4e9c1a061c69981c7dffa53c89170f b/a55e1c9492494b99c682b5d6a2d1d25b3fc40fe6
+index a369cad93b..a55e1c9492 100644
+--- a/a369cad93b4e9c1a061c69981c7dffa53c89170f
++++ b/a55e1c9492494b99c682b5d6a2d1d25b3fc40fe6
+@@ -1,4 +1,5 @@
+ @NotNull
+ private static HighlightInfo createHighlightInfo(Color color, @NotNull TextRange range) {
+-    return new HighlightInfo(new TextAttributes(null, color, null, null, Font.PLAIN), null, TYPE, range.getStartOffset(), range.getEndOffset(), null, null, HighlightSeverity.INFORMATION, false, null, false);
++    TextAttributes attributes = new TextAttributes(null, color, null, null, Font.PLAIN);
++    return HighlightInfo.newHighlightInfo(TYPE).range(range).textAttributes(attributes).severity(HighlightSeverity.INFORMATION).createUnconditionally();
+ }
+\ No newline at end of file

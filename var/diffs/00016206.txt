@@ -1,0 +1,21 @@
+diff --git a/b33949f7839b9315b454390f9578a1cfdfd5bb90 b/11d6d391dc99ad35abfb68d72aba490194a1f21e
+index b33949f783..11d6d391dc 100644
+--- a/b33949f7839b9315b454390f9578a1cfdfd5bb90
++++ b/11d6d391dc99ad35abfb68d72aba490194a1f21e
+@@ -1,14 +1,14 @@
+ private boolean lookupExactSignature(Set<FunctionDescriptor> candidates, List<JetType> parameterTypes, List<FunctionDescriptor> result) {
+     boolean found = false;
+     for (FunctionDescriptor functionDescriptor : candidates) {
+-        if (functionDescriptor.getReceiver() != NO_RECEIVER)
++        if (functionDescriptor.getReceiver().exists())
+             continue;
+         if (!functionDescriptor.getTypeParameters().isEmpty())
+             continue;
+         if (!checkValueParameters(functionDescriptor, parameterTypes))
+             continue;
+         result.add(functionDescriptor);
+         found = true;
+     }
+     return found;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/620f330569b678ca0a4317e53f51f6b862c6cd7c b/e259a502506c361b671345f7c3362eb861205df5
+index 620f330569..e259a50250 100644
+--- a/620f330569b678ca0a4317e53f51f6b862c6cd7c
++++ b/e259a502506c361b671345f7c3362eb861205df5
+@@ -1,3 +1,8 @@
+ public Commit deserialize(DataInput in, int version) throws IOException {
+-    return new Commit(ByteBufferUtil.readWithShortLength(in), UUIDSerializer.serializer.deserialize(in, version), ColumnFamily.serializer.deserialize(in, ArrayBackedSortedColumns.factory, ColumnSerializer.Flag.LOCAL, version));
++    DecoratedKey key = null;
++    if (version < MessagingService.VERSION_30)
++        key = StorageService.getPartitioner().decorateKey(ByteBufferUtil.readWithShortLength(in));
++    UUID ballot = UUIDSerializer.serializer.deserialize(in, version);
++    PartitionUpdate update = PartitionUpdate.serializer.deserialize(in, version, SerializationHelper.Flag.LOCAL, key);
++    return new Commit(ballot, update);
+ }
+\ No newline at end of file

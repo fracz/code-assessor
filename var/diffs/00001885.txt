@@ -1,0 +1,15 @@
+diff --git a/45cfb48c1c99cd25c4baf39f2a1ecd12399a9055 b/d84c10cc48bb077ec2beb22991e21c177662fd18
+index 45cfb48c1c..d84c10cc48 100644
+--- a/45cfb48c1c99cd25c4baf39f2a1ecd12399a9055
++++ b/d84c10cc48bb077ec2beb22991e21c177662fd18
+@@ -1,8 +1,7 @@
+ /**
+  * {@inheritDoc}
+  */
+ @Override
+ public boolean isVersionedDirectory(VirtualFile dir) {
+-    final VirtualFile versionFile = dir.findChild(".git");
+-    return versionFile != null && versionFile.isDirectory();
++    return dir.isDirectory() && GitUtil.gitRootOrNull(dir) != null;
+ }
+\ No newline at end of file

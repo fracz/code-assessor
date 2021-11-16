@@ -1,0 +1,21 @@
+diff --git a/4e7231244e346410a112d701f711cc8e2b58e7c8 b/ce8292352b7bc213f138fc07c9ac5d903834526e
+index 4e7231244e..ce8292352b 100644
+--- a/4e7231244e346410a112d701f711cc8e2b58e7c8
++++ b/ce8292352b7bc213f138fc07c9ac5d903834526e
+@@ -1,14 +1,14 @@
+ public static String getJadxVersion() {
+     try {
+-        Enumeration<URL> resources = new Utils().getClass().getClassLoader().getResources("META-INF/MANIFEST.MF");
++        Enumeration<URL> resources = Utils.class.getClassLoader().getResources("META-INF/MANIFEST.MF");
+         while (resources.hasMoreElements()) {
+             Manifest manifest = new Manifest(resources.nextElement().openStream());
+             String ver = manifest.getMainAttributes().getValue("jadx-version");
+             if (ver != null)
+                 return ver;
+         }
+     } catch (IOException e) {
+         LOG.error("Can't get manifest file", e);
+     }
+     return "dev";
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/2497b14107d5adc41dd539fb6821b6a3035839eb b/7302374b64cb0efb81224050db32d85681f691ac
+index 2497b14107..7302374b64 100644
+--- a/2497b14107d5adc41dd539fb6821b6a3035839eb
++++ b/7302374b64cb0efb81224050db32d85681f691ac
+@@ -1,6 +1,3 @@
+ public boolean post2UI(final Runnable runnable) {
+-    if (handler == null) {
+-        return false;
+-    }
+-    return handler.post(runnable);
++    return handler != null && handler.post(runnable);
+ }
+\ No newline at end of file

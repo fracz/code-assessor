@@ -1,0 +1,20 @@
+diff --git a/e118459cb438dceab3116f7d323d56d22d848eca b/9bd9b978561a093efbf01b7ce4df82b9d2f25a2c
+index e118459cb4..9bd9b97856 100644
+--- a/e118459cb438dceab3116f7d323d56d22d848eca
++++ b/9bd9b978561a093efbf01b7ce4df82b9d2f25a2c
+@@ -1,11 +1,11 @@
+ public static String parametersToString(Object... objs) {
+     StringBuilder sb = new StringBuilder("(");
+-    for (int k = 0; k < objs.length; k++) {
+-        if (k != 0) {
++    for (Object obj : objs) {
++        if (sb.length() != 1) {
+             sb.append(", ");
+         }
+-        sb.append(objs[k].toString());
++        sb.append(obj.toString());
+     }
+     sb.append(")");
+     return sb.toString();
+ }
+\ No newline at end of file

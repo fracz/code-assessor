@@ -1,0 +1,15 @@
+diff --git a/ca98dd3bb5b99d2f85c20eea3d277ab90c8c5116 b/c1767981a4cf3052ef6b80bd7d1cb7006ed5c215
+index ca98dd3bb5..c1767981a4 100644
+--- a/ca98dd3bb5b99d2f85c20eea3d277ab90c8c5116
++++ b/c1767981a4cf3052ef6b80bd7d1cb7006ed5c215
+@@ -1,7 +1,7 @@
+ @Test
+ public void resolveMediaTypesHandleNoMatch() throws Exception {
+-    TestMappingContentTypeResolver resolver = new TestMappingContentTypeResolver("xml", null);
+-    List<MediaType> mediaTypes = resolver.resolveMediaTypes((ServerWebExchange) null);
++    TestMappingContentTypeResolver resolver = new TestMappingContentTypeResolver("xml", Collections.emptyMap());
++    List<MediaType> mediaTypes = resolver.resolve();
+     assertEquals(1, mediaTypes.size());
+     assertEquals("application/xml", mediaTypes.get(0).toString());
+ }
+\ No newline at end of file

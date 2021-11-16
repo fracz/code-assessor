@@ -1,0 +1,16 @@
+diff --git a/7f51dfaccfff73532a417e39e4b309bd2f9ae1c0 b/1326881e1215ac32b95bbdb5bcad79f3fa8d8e68
+index 7f51dfaccf..1326881e12 100644
+--- a/7f51dfaccfff73532a417e39e4b309bd2f9ae1c0
++++ b/1326881e1215ac32b95bbdb5bcad79f3fa8d8e68
+@@ -1,7 +1,7 @@
+ @Override
+ public void actionPerformed(final AnActionEvent e) {
+-    final Frame frame = getFrame();
+-    if (frame instanceof IdeFrameImpl) {
+-        WindowManagerEx.getInstanceEx().setFullScreen((IdeFrameImpl) frame, !((IdeFrameImpl) frame).isInFullScreen());
++    IdeFrameEx frame = getFrame();
++    if (frame != null) {
++        frame.toggleFullScreen(!frame.isInFullScreen());
+     }
+ }
+\ No newline at end of file

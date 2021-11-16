@@ -1,0 +1,29 @@
+diff --git a/0ff350c275a84980c4edfe9eadbbcd7c812191ed b/a3965b45f4bde75781984c9c9813c1e4f0302ea2
+index 0ff350c275..a3965b45f4 100644
+--- a/0ff350c275a84980c4edfe9eadbbcd7c812191ed
++++ b/a3965b45f4bde75781984c9c9813c1e4f0302ea2
+@@ -1,18 +1,20 @@
+ @Test
+ public void shouldLogUnusedStubbingWarningWhenTestFails() throws Exception {
+-    runner.run(notifier, new JunitTestBody() {
++    runner = new VerboseMockitoJUnitRunner(this.getClass(), loggerStub) {
+
+-        public void run(RunNotifier notifier) {
++        @Override
++        public void runTest(RunNotifier notifier) {
+             // this is what happens when the test runs:
+             // first, unused stubbing:
+             unusedStubbingThatQualifiesForWarning();
+             // then, let's make the test fail so that warnings are printed
+             notifier.fireTestFailure(null);
+             // assert
+             String loggedInfo = loggerStub.getLoggedInfo();
+             assertContains("[Mockito] Warning - this stub was not used", loggedInfo);
+             assertContains("mock.simpleMethod(123);", loggedInfo);
+             assertContains(".unusedStubbingThatQualifiesForWarning(", loggedInfo);
+         }
+-    });
++    };
++    runner.run(notifier);
+ }
+\ No newline at end of file

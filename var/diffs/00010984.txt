@@ -1,0 +1,20 @@
+diff --git a/cef734cb30c5ca9a344a218eefff29a2231a4441 b/0dd0fe19b2ada98c2e01ea2a590806e70043bc0f
+index cef734cb30..0dd0fe19b2 100644
+--- a/cef734cb30c5ca9a344a218eefff29a2231a4441
++++ b/0dd0fe19b2ada98c2e01ea2a590806e70043bc0f
+@@ -1,12 +1,12 @@
+-private void selectKeymap(KeymapScheme scheme, boolean reset) {
++void selectKeymap(KeymapScheme scheme, boolean reset) {
+     try {
+         internal = true;
+         if (reset)
+-            resetSchemes(manager.getSchemes(true));
++            resetSchemes(getManager().getSchemes());
+         if (scheme != null)
+             selectScheme(scheme);
+     } finally {
+         internal = false;
+         notifyConsumer(getSelectedScheme());
+     }
+ }
+\ No newline at end of file

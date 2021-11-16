@@ -1,0 +1,16 @@
+diff --git a/d907744f9b1405084ed9b955d9f2617dcbd28248 b/de6ec212926e523afc31a4a682a2034bfc3b8276
+index d907744f9b..de6ec21292 100644
+--- a/d907744f9b1405084ed9b955d9f2617dcbd28248
++++ b/de6ec212926e523afc31a4a682a2034bfc3b8276
+@@ -1,9 +1,6 @@
+ /*
+      * Trigger metadata serialization/deserialization.
+      */
+ private static void addTriggerToSchemaMutation(CFMetaData table, TriggerDefinition trigger, long timestamp, Mutation mutation) {
+-    ColumnFamily cells = mutation.addOrGet(Triggers);
+-    Composite prefix = Triggers.comparator.make(table.cfName, trigger.name);
+-    CFRowAdder adder = new CFRowAdder(cells, prefix, timestamp);
+-    adder.addMapEntry("trigger_options", "class", trigger.classOption);
++    new RowUpdateBuilder(Triggers, timestamp, mutation).clustering(table.cfName, trigger.name).addMapEntry("trigger_options", "class", trigger.classOption).build();
+ }
+\ No newline at end of file

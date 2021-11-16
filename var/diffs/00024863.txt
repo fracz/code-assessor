@@ -1,0 +1,13 @@
+diff --git a/1d2ee05bc57380d02fe00506b611e441f2651239 b/d45dfc53f1130d029fe490e137fbb8c8366f551c
+index 1d2ee05bc5..d45dfc53f1 100644
+--- a/1d2ee05bc57380d02fe00506b611e441f2651239
++++ b/d45dfc53f1130d029fe490e137fbb8c8366f551c
+@@ -1,5 +1,3 @@
+-public RangeTombstone makeRangeTombstone(ColumnSlice slice) throws InvalidRequestException {
+-    QueryProcessor.validateComposite(slice.start, metadata.comparator);
+-    QueryProcessor.validateComposite(slice.finish, metadata.comparator);
+-    return new RangeTombstone(slice.start, slice.finish, timestamp, localDeletionTime);
++public RangeTombstone makeRangeTombstone(CBuilder cbuilder) {
++    return new RangeTombstone(cbuilder.buildSlice(), deletionTime);
+ }
+\ No newline at end of file

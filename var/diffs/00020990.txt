@@ -1,0 +1,12 @@
+diff --git a/b7599fd6289f59a4a4737c166fafbf48f3bdd4f2 b/f121b71341fb32cf3a658b52f47d2796cb911b4c
+index b7599fd628..f121b71341 100644
+--- a/b7599fd6289f59a4a4737c166fafbf48f3bdd4f2
++++ b/f121b71341fb32cf3a658b52f47d2796cb911b4c
+@@ -1,5 +1,5 @@
+ @Override
+ public void setRowId(int parameterIndex, RowId x) throws SQLException {
+-    setParameter(parameterIndex, new JdbcParameterImpl(Types.ROWID, x));
++    setParameter(parameterIndex, createParameter(Types.ROWID, x));
+     createChain().preparedStatement_setRowId(this, parameterIndex, x);
+ }
+\ No newline at end of file

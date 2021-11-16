@@ -1,0 +1,22 @@
+diff --git a/07a14202821a8851ee9ebbda7418d67d5074d5cf b/55965a26ff920da8d4c63d9b3f9ba35bafb7545d
+index 07a1420282..55965a26ff 100644
+--- a/07a14202821a8851ee9ebbda7418d67d5074d5cf
++++ b/55965a26ff920da8d4c63d9b3f9ba35bafb7545d
+@@ -1,13 +1,6 @@
+ @Override
+-public Stoppable watch(FileWatchInputs inputs, Runnable callback) {
+-    CountDownLatch latch = createLatch();
++public Stoppable watch(FileWatchInputs inputs, Runnable callback) throws IOException {
+     AtomicBoolean runningFlag = new AtomicBoolean(true);
+-    Future<?> execution = executor.submit(new FileWatcherExecutor(runningFlag, callback, new ArrayList(inputs.getDirectoryTrees()), new ArrayList(inputs.getFiles()), latch));
+-    try {
+-        // wait until watching is active
+-        latch.await();
+-    } catch (InterruptedException e) {
+-    // ignore
+-    }
+-    return new FileWatcherStopper(runningFlag, execution);
++    Future<?> taskCompletion = executor.submit(new FileWatcherTask(createWatchStrategy(), inputs, runningFlag, callback));
++    return new FileWatcherStopper(runningFlag, taskCompletion);
+ }
+\ No newline at end of file

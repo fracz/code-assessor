@@ -1,0 +1,22 @@
+diff --git a/b3e0a5be643286ac16fab444862ec1052f0178f6 b/45abd7aa456594f61565fff5f157213fae94d316
+index b3e0a5be64..45abd7aa45 100644
+--- a/b3e0a5be643286ac16fab444862ec1052f0178f6
++++ b/45abd7aa456594f61565fff5f157213fae94d316
+@@ -1,13 +1,13 @@
+ @Override
+ protected OracleDataType runTask() {
+-    CreateEntityDialog dialog = new CreateEntityDialog(DBeaverUI.getActiveWorkbenchShell(), parent.getDataSource(), OracleMessages.edit_oracle_data_type_manager_dialog_title);
+-    if (dialog.open() != IDialogConstants.OK_ID) {
++    EntityEditPage page = new EntityEditPage(parent.getDataSource(), DBSEntityType.TYPE);
++    if (!EditObjectDialog.showDialog(page)) {
+         return null;
+     }
+-    OracleDataType dataType = new OracleDataType(parent, dialog.getEntityName(), false);
++    OracleDataType dataType = new OracleDataType(parent, page.getEntityName(), false);
+     dataType.setObjectDefinitionText(// $NON-NLS-1$ //$NON-NLS-2$
+     "TYPE " + dataType.getName() + " AS OBJECT\n" + // $NON-NLS-1$
+     "(\n" + // $NON-NLS-1$
+     ")");
+     return dataType;
+ }
+\ No newline at end of file

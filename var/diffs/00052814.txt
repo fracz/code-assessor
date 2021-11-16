@@ -1,0 +1,20 @@
+diff --git a/5fac2f44e6f980bff5d2007eeb63f29ffa4fa7aa b/6c39ab3027e30cc0cc26d226b251b8284e7ee06f
+index 5fac2f44e6..6c39ab3027 100644
+--- a/5fac2f44e6f980bff5d2007eeb63f29ffa4fa7aa
++++ b/6c39ab3027e30cc0cc26d226b251b8284e7ee06f
+@@ -1,12 +1,11 @@
+ private void generateDataNodes(final List<String> actualTables, final DataSourceRule dataSourceRule) {
+     for (String actualTable : actualTables) {
+-        if (actualTable.contains(".")) {
+-            List<String> actualDatabaseTable = Splitter.on(".").splitToList(actualTable);
+-            this.actualTables.add(new DataNode(actualDatabaseTable.get(0), actualDatabaseTable.get(1)));
++        if (DataNode.isValidDataNode(actualTable)) {
++            this.actualTables.add(new DataNode(actualTable));
+         } else {
+             for (String dataSourceName : dataSourceRule.getDataSourceNames()) {
+                 this.actualTables.add(new DataNode(dataSourceName, actualTable));
+             }
+         }
+     }
+ }
+\ No newline at end of file

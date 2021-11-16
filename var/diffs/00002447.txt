@@ -1,0 +1,18 @@
+diff --git a/a40ecb0c957a502a6c2d0584820c4b8f575c82f1 b/8dc5c6391178243a3f41055559956bf56993f803
+index a40ecb0c95..8dc5c63911 100644
+--- a/a40ecb0c957a502a6c2d0584820c4b8f575c82f1
++++ b/8dc5c6391178243a3f41055559956bf56993f803
+@@ -1,9 +1,7 @@
+-public static ArrayList<IdeaPluginDescriptor> loadPluginsFromDescription(InputStream inputStream, ProgressIndicator indicator) throws SAXException, IOException, ParserConfigurationException {
++public static List<IdeaPluginDescriptor> loadPluginsFromDescription(InputStream is, ProgressIndicator indicator) throws Exception {
+     try {
+-        RepositoryContentHandler handler = new RepositoryContentHandler();
+-        readPluginsStream(inputStream, handler, indicator, "host.xml");
+-        return handler.getPluginsList();
++        return readPluginsStream(is, indicator, "host.xml");
+     } finally {
+-        inputStream.close();
++        is.close();
+     }
+ }
+\ No newline at end of file

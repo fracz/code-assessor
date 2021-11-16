@@ -1,0 +1,14 @@
+diff --git a/037dc0184ff29e0e55b8821b96f5bd4056cac61c b/66459db94801e28cce49f180e76f99c9280db5b6
+index 037dc0184f..66459db948 100644
+--- a/037dc0184ff29e0e55b8821b96f5bd4056cac61c
++++ b/66459db94801e28cce49f180e76f99c9280db5b6
+@@ -1,6 +1,6 @@
+ @Override
+-protected void addObjectExtraActions(List<DBEPersistAction> actions, org.jkiss.dbeaver.model.impl.sql.edit.SQLObjectEditor.NestedObjectCommand<ExasolFunction, SQLObjectEditor<ExasolFunction, ExasolSchema>.PropertyHandler<ExasolFunction, ExasolSchema>> command) {
++protected void addObjectExtraActions(List<DBEPersistAction> actions, SQLObjectEditor.NestedObjectCommand<ExasolFunction, SQLObjectEditor<ExasolFunction, ExasolSchema>.PropertyHandler<ExasolFunction, ExasolSchema>> command) {
+     if (command.getProperty("description") != null) {
+-        actions.add(new SQLDatabasePersistAction("Comment on Script", "COMMENT ON FUNCTION " + command.getObject().getFullyQualifiedName(DBPEvaluationContext.DDL) + " IS " + SQLUtils.quoteString(command.getObject().getDescription())));
++        actions.add(new SQLDatabasePersistAction("Comment on Script", "COMMENT ON FUNCTION " + command.getObject().getFullyQualifiedName(DBPEvaluationContext.DDL) + " IS " + SQLUtils.quoteString(command.getObject(), command.getObject().getDescription())));
+     }
+ }
+\ No newline at end of file

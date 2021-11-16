@@ -1,0 +1,32 @@
+diff --git a/a4e3047094c97a541a024fc48a5ca0011aa58285 b/86cb9d2b1e1a67b61d66a40a0f0b8766577f6385
+index a4e3047094..86cb9d2b1e 100644
+--- a/a4e3047094c97a541a024fc48a5ca0011aa58285
++++ b/86cb9d2b1e1a67b61d66a40a0f0b8766577f6385
+@@ -1,21 +1,21 @@
+ public <REC extends ORecordInternal<?>> REC dictionaryRemove(ODatabaseRecord iDatabase, Object iKey) {
+     checkConnection();
+     do {
+         try {
++            final OChannelBinaryClient network = beginRequest(OChannelBinaryProtocol.REQUEST_INDEX_REMOVE);
+             try {
+-                beginRequest(OChannelBinaryProtocol.REQUEST_INDEX_REMOVE);
+                 network.writeString(iKey.toString());
+             } finally {
+-                endRequest();
++                endRequest(network);
+             }
+             try {
+-                beginResponse();
+-                return (REC) readRecordFromNetwork(iDatabase);
++                beginResponse(network);
++                return (REC) readRecordFromNetwork(network, iDatabase);
+             } finally {
+-                endResponse();
++                endResponse(network);
+             }
+         } catch (Exception e) {
+             handleException("Error on lookup record with key: " + iKey, e);
+         }
+     } while (true);
+ }
+\ No newline at end of file

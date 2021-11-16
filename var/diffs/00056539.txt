@@ -1,0 +1,17 @@
+diff --git a/6293adb029199b49d7d75c122c37be42c97f34ad b/2f87554e9bf75ad9159fc74ea5daa181be746d77
+index 6293adb029..2f87554e9b 100644
+--- a/6293adb029199b49d7d75c122c37be42c97f34ad
++++ b/2f87554e9bf75ad9159fc74ea5daa181be746d77
+@@ -1,10 +1,10 @@
+ public SemanticGraph makeGraph() {
+     Tree tree;
+     try {
+         tree = new PennTreeReader(new StringReader("(S1 (S (S (S (NP (DT The) (NN CD14) (NN LPS) (NN receptor)) (VP (VBZ is) (, ,) (ADVP (RB however)) (, ,) (ADVP (RB up)) (VP (VBN regulated) (PRN (-LRB- -LRB-) (FRAG (RB not) (ADJP (RB down) (VBN regulated))) (-RRB- -RRB-)) (PP (IN in) (NP (JJ tolerant) (NNS cells)))))) (, ,) (CC and) (S (NP (NN LPS)) (VP (MD can) (, ,) (PP (IN in) (NP (NN fact))) (, ,) (ADVP (RB still)) (VP (VB lead) (PP (TO to) (NP (NP (NN activation)) (PP (IN of) (NP (JJ tolerant) (NNS cells))))) (SBAR (IN as) (S (VP (VBN evidenced) (PP (IN by) (NP (NP (NN mobilization)) (PP (IN of) (NP (DT the) (NN transcription) (NN factor) (NP (NP (JJ nuclear) (NN factor) (NN kappa) (NN B)) (PRN (-LRB- -LRB-) (NP (NN NF-kappa) (NN B)) (-RRB- -RRB-)))))))))))))) (. .)))"), new LabeledScoredTreeFactory()).readTree();
+     } catch (IOException e) {
+         // the tree should parse correctly
+         throw new RuntimeException(e);
+     }
+-    return SemanticGraphFactory.makeFromTree(tree, false, false, true, false, true);
++    return SemanticGraphFactory.makeFromTree(tree, SemanticGraphFactory.Mode.BASIC, true, false, true);
+ }
+\ No newline at end of file

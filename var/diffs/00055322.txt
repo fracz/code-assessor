@@ -1,0 +1,16 @@
+diff --git a/8c1398e7bd248917a6022f34141c52c139486d60 b/b03f2b02b313d4aebc6d0ab93f1ba0e69c503057
+index 8c1398e7bd..b03f2b02b3 100644
+--- a/8c1398e7bd248917a6022f34141c52c139486d60
++++ b/b03f2b02b313d4aebc6d0ab93f1ba0e69c503057
+@@ -1,9 +1,9 @@
+ @JRubyMethod
+ public IRubyObject add_previous_sibling(ThreadContext context, IRubyObject node) {
+     IRubyObject previousSibling = this.previous_sibling(context);
+     XmlNode otherNode = asXmlNode(context, node);
+-    this.node.getParentNode().insertBefore(otherNode.node, this.node);
++    this.node().getParentNode().insertBefore(otherNode.node(), this.node());
+     RuntimeHelpers.invoke(context, otherNode, "decorate!");
+     coalesceTextNodesInteligently(context, previousSibling, otherNode, this);
+     return node;
+ }
+\ No newline at end of file

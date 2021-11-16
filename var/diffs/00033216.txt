@@ -1,0 +1,13 @@
+diff --git a/6ff112ff3e24cdb6d39b451c015c19acff2c39eb b/0c3a1e8184c25f4ce642e56b31166f10d900040f
+index 6ff112ff3e..0c3a1e8184 100644
+--- a/6ff112ff3e24cdb6d39b451c015c19acff2c39eb
++++ b/0c3a1e8184c25f4ce642e56b31166f10d900040f
+@@ -1,6 +1,3 @@
+ private boolean isChanging(ResolvedModuleRevision resolvedModuleRevision) {
+-    if (resolver instanceof IvyDependencyResolver) {
+-        return ((IvyDependencyResolver) resolver).isChangingModule(resolvedModuleRevision.getDescriptor());
+-    }
+-    return false;
++    return new ChangingModuleDetector(resolver).isChangingModule(resolvedModuleRevision.getDescriptor());
+ }
+\ No newline at end of file

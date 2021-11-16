@@ -1,0 +1,28 @@
+diff --git a/bf91a2d2829ca75e242fbd0a1b397de0abf8a83b b/97faad73ccb8ff5c77ff82a25296bf22966127e7
+index bf91a2d282..97faad73cc 100644
+--- a/bf91a2d2829ca75e242fbd0a1b397de0abf8a83b
++++ b/97faad73ccb8ff5c77ff82a25296bf22966127e7
+@@ -1,20 +1,20 @@
+-protected MethodVisitor visitMethod(final MethodNode node, final Key key) {
++protected MethodVisitor visitMethod(final MethodNode node, Method method, final EKey key) {
+     return new MethodVisitor(Opcodes.API_VERSION, node) {
+
+         private boolean jsr;
+
+         @Override
+         public void visitJumpInsn(int opcode, Label label) {
+             if (opcode == Opcodes.JSR) {
+                 jsr = true;
+             }
+             super.visitJumpInsn(opcode, label);
+         }
+
+         @Override
+         public void visitEnd() {
+             super.visitEnd();
+-            equations.put(key, processMethod(node, jsr, key.method, key.stable));
++            equations.put(key, processMethod(node, jsr, method, key.stable));
+         }
+     };
+ }
+\ No newline at end of file

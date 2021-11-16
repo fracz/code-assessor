@@ -1,0 +1,14 @@
+diff --git a/8bd50329a3cbeb3647b0665d9259c65c2ddce274 b/2ab2a755cbb3d40d890227cef20c829dbbfd1a03
+index 8bd50329a3..2ab2a755cb 100644
+--- a/8bd50329a3cbeb3647b0665d9259c65c2ddce274
++++ b/2ab2a755cbb3d40d890227cef20c829dbbfd1a03
+@@ -1,7 +1,4 @@
+ @Override
+ public boolean isCellEditable(int row, int column) {
+-    if (getValueAt(row, column).equals(EMPTY_CELL_VALUE)) {
+-        return false;
+-    }
+-    return true;
++    return !getValueAt(row, column).equals(EMPTY_CELL_VALUE);
+ }
+\ No newline at end of file

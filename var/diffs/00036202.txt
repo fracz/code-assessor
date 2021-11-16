@@ -1,0 +1,19 @@
+diff --git a/2ea5cd019be02a1d44e95ee5b2c7184f1adea8b9 b/135b1caabed9a7fc068c62ee6615d4b133fc7af9
+index 2ea5cd019b..135b1caabe 100644
+--- a/2ea5cd019be02a1d44e95ee5b2c7184f1adea8b9
++++ b/135b1caabed9a7fc068c62ee6615d4b133fc7af9
+@@ -1,11 +1,10 @@
+ /* (non-Javadoc)
+      * @see org.mockito.configuration.ReturnValues#valueFor(org.mockito.invocation.InvocationOnMock)
+      */
+ public Object valueFor(InvocationOnMock invocation) {
+-    Object returnByDefault = defaultReturnValues.valueFor(invocation);
+     Class<?> returnType = invocation.getMethod().getReturnType();
+-    if (returnByDefault != null || returnType == Void.TYPE) {
+-        return returnByDefault;
++    if (isVoid(returnType)) {
++        return null;
+     }
+     return returnValueFor(invocation);
+ }
+\ No newline at end of file

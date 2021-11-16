@@ -1,0 +1,19 @@
+diff --git a/a3a55e506dfc13918918f988534b5eadf0128a63 b/24349465d72ed32cf61580aa7b2f2f2052586951
+index a3a55e506d..24349465d7 100644
+--- a/a3a55e506dfc13918918f988534b5eadf0128a63
++++ b/24349465d72ed32cf61580aa7b2f2f2052586951
+@@ -1,11 +1,12 @@
+ @Override
+ public int compareBottom(int doc) {
+-    final double v2 = ((Number) script.execute(doc)).doubleValue();
++    script.setNextDocId(doc);
++    final double v2 = script.runAsDouble();
+     if (bottom > v2) {
+         return 1;
+     } else if (bottom < v2) {
+         return -1;
+     } else {
+         return 0;
+     }
+ }
+\ No newline at end of file

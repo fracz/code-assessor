@@ -1,0 +1,17 @@
+diff --git a/e3ef539783f57462f393ef927df9c3c15c8a74ef b/91b73c43635ae3d9e4850f6ca46c40769f258a61
+index e3ef539783..91b73c4363 100644
+--- a/e3ef539783f57462f393ef927df9c3c15c8a74ef
++++ b/91b73c43635ae3d9e4850f6ca46c40769f258a61
+@@ -1,8 +1,10 @@
+ @NotNull
+ private static Config getConfig(@NotNull K2JSCompilerArguments arguments, @NotNull Project project) {
+     EcmaVersion ecmaVersion = EcmaVersion.fromString(arguments.target);
+     if (arguments.libzip == null) {
+-        return Config.getEmptyConfig(project, ecmaVersion);
++        // lets discover the JS library source on the classpath
++        return new ClassPathLibrarySourcesConfig(project, ecmaVersion);
++    // return Config.getEmptyConfig(project, ecmaVersion);
+     }
+     return new ZippedLibrarySourcesConfig(project, arguments.libzip, ecmaVersion);
+ }
+\ No newline at end of file

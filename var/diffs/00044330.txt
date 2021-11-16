@@ -1,0 +1,17 @@
+diff --git a/fbaee8805c661cf50e7bc94804d030863bc80060 b/f37946d3c4c1a2a44d929ae18de7926bcd217aae
+index fbaee8805c..f37946d3c4 100644
+--- a/fbaee8805c661cf50e7bc94804d030863bc80060
++++ b/f37946d3c4c1a2a44d929ae18de7926bcd217aae
+@@ -1,10 +1,10 @@
+ @Test
+ public void testCompositeSearchHasChainOperatorsEquals() {
+     long oldIndexUsage = profiler.getCounter("db.demo.query.indexUsed");
+     final List<ODocument> result = database.command(new OSQLSynchQuery<ODocument>("select * from sqlSelectHashIndexReuseTestClass where prop1.asInteger() = 1 and prop2 = 2")).execute();
+     Assert.assertEquals(result.size(), 1);
+     final ODocument document = result.get(0);
+     Assert.assertEquals(document.<Integer>field("prop1").intValue(), 1);
+     Assert.assertEquals(document.<Integer>field("prop2").intValue(), 2);
+-    Assert.assertEquals(profiler.getCounter("db.demo.query.indexUsed"), oldIndexUsage);
++    assertProfileCount(profiler.getCounter("db.demo.query.indexUsed"), oldIndexUsage, 0);
+ }
+\ No newline at end of file

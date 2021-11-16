@@ -1,0 +1,22 @@
+diff --git a/339152e77db40461e51c4773c7aeec46f55809f0 b/6af464bc030bcb7e1902a02e0afcaaa3675379bf
+index 339152e77d..6af464bc03 100644
+--- a/339152e77db40461e51c4773c7aeec46f55809f0
++++ b/6af464bc030bcb7e1902a02e0afcaaa3675379bf
+@@ -1,11 +1,9 @@
+ @Override
+ public void act(float delta) {
+-    taken += delta;
+-    if (taken >= duration) {
+-        taken = duration;
+-        done = true;
+-        return;
++    float alpha = createInterpolatedAlpha(delta);
++    if (done) {
++        target.rotation = rotation;
++    } else {
++        target.rotation = startRotation + deltaRotation * alpha;
+     }
+-    float alpha = taken * invDuration;
+-    target.rotation = startRotation + deltaRotation * alpha;
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/5da35c1feec45647383e4dae1b3026db4dc21491 b/a3217b6e1a28f63a741284be1924bdcb7ac7d2e7
+index 5da35c1fee..a3217b6e1a 100644
+--- a/5da35c1feec45647383e4dae1b3026db4dc21491
++++ b/a3217b6e1a28f63a741284be1924bdcb7ac7d2e7
+@@ -1,4 +1,3 @@
+-private void addRemote(GitConnection git, String name, String url, DtoFactory dtoFactory) throws GitException {
+-    final RemoteAddRequest request = dtoFactory.createDto(RemoteAddRequest.class).withName(name).withUrl(url);
+-    git.remoteAdd(request);
++private void addRemote(GitConnection git, String name, String url) throws GitException {
++    git.remoteAdd(RemoteAddParams.create(name, url));
+ }
+\ No newline at end of file

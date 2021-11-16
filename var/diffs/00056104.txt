@@ -1,0 +1,16 @@
+diff --git a/d104a46c43b95dc0f4f7856d2da7b8a4b1e64b5c b/89ee5b86bc82360e0721e8110d89d885f40aa406
+index d104a46c43..89ee5b86bc 100644
+--- a/d104a46c43b95dc0f4f7856d2da7b8a4b1e64b5c
++++ b/89ee5b86bc82360e0721e8110d89d885f40aa406
+@@ -1,9 +1,9 @@
+ /**
+  * Simple test of a ProxyFactoryBean that has an inner bean as target that specifies autowiring.
+  * Checks for correct use of getType() by bean factory.
+  */
+ @Test
+ public void testInnerBeanTargetUsingAutowiring() {
+-    BeanFactory bf = new XmlBeanFactory(new ClassPathResource("proxyFactoryBeanAutowiringTests.xml", getClass()));
++    BeanFactory bf = new XmlBeanFactory(new ClassPathResource(AUTOWIRING_CONTEXT, CLASS));
+     bf.getBean("testBean");
+ }
+\ No newline at end of file

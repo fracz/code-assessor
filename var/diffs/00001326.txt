@@ -1,0 +1,17 @@
+diff --git a/52ceeb82284ec50a2b1d64f6fb154b199f359311 b/d6665441372ca40f63580359bdfbb4b316efc1ff
+index 52ceeb8228..d666544137 100644
+--- a/52ceeb82284ec50a2b1d64f6fb154b199f359311
++++ b/d6665441372ca40f63580359bdfbb4b316efc1ff
+@@ -1,9 +1,8 @@
+ @Override
+ public void initViews(Bundle savedInstanceState) {
+     Intent intent = getIntent();
+     if (intent != null) {
+-        Bundle bundle = intent.getExtras();
+-        mBangumiInfo = bundle.getParcelable(ConstantUtils.EXTRA_BANGUMI_KEY);
++        seasonId = intent.getIntExtra(ConstantUtils.EXTRA_BANGUMI_KEY, 0);
+     }
+-    getBangumiDetails();
++    loadData();
+ }
+\ No newline at end of file

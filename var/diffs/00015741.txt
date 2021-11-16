@@ -1,0 +1,23 @@
+diff --git a/5695216cf578be08cdd31bf6be161da90f8bf56d b/b97aa5c0c312e1e40dea786852c5cffb85a16f70
+index 5695216cf5..b97aa5c0c3 100644
+--- a/5695216cf578be08cdd31bf6be161da90f8bf56d
++++ b/b97aa5c0c312e1e40dea786852c5cffb85a16f70
+@@ -1,8 +1,13 @@
+ @Override
+-protected void configureCompilerArguments(K2JVMCompilerArguments arguments) throws MojoExecutionException {
++protected void configureCompilerArguments(CompilerArguments arguments) throws MojoExecutionException {
+     super.configureCompilerArguments(arguments);
+-    K2JSCompilerPlugin plugin = new K2JSCompilerPlugin();
+-    plugin.setOutFile(outFile);
+-    arguments.getCompilerPlugins().add(plugin);
++    if (arguments instanceof K2JSCompilerArguments) {
++        K2JSCompilerArguments k2jsArgs = (K2JSCompilerArguments) arguments;
++        k2jsArgs.outputFile = outFile;
++        if (sources.size() > 0) {
++            // TODO K2JSCompilerArguments should allow more than one path/file
++            k2jsArgs.srcdir = sources.get(0);
++        }
++    }
+     getLog().info("Compiling Kotlin src from " + arguments.getSrc() + " to JavaScript at: " + outFile);
+ }
+\ No newline at end of file

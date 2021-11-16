@@ -1,0 +1,23 @@
+diff --git a/c58706fab37827143fc533bc6c08676adda43098 b/d8d7cc76885710fd37725178a6915b4197761b68
+index c58706fab3..d8d7cc7688 100644
+--- a/c58706fab37827143fc533bc6c08676adda43098
++++ b/d8d7cc76885710fd37725178a6915b4197761b68
+@@ -1,16 +1,16 @@
+ public void applyFix(@NotNull final Project project, @NotNull final ProblemDescriptor descriptor) {
+     final PsiElement elt = descriptor.getPsiElement();
+     if (elt != null && elt instanceof PyNamedParameter && elt.isWritable()) {
+         ApplicationManager.getApplication().runWriteAction(new Runnable() {
+
+             public void run() {
+-                final PyNamedParameter the_self = PythonLanguage.getInstance().getElementGenerator().createParameter(project, myNewName);
++                final PyNamedParameter the_self = PyElementGenerator.getInstance(project).createParameter(myNewName);
+                 try {
+                     elt.replace(the_self);
+                 } catch (IncorrectOperationException e) {
+                     LOG.error(e);
+                 }
+             }
+         });
+     }
+ }
+\ No newline at end of file

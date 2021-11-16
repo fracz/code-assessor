@@ -1,0 +1,16 @@
+diff --git a/71c0c615459f6ad34ce5bc3a4f831f4a023d2b1e b/29468180767ab2f1f9964849305e61aa57f87452
+index 71c0c61545..2946818076 100644
+--- a/71c0c615459f6ad34ce5bc3a4f831f4a023d2b1e
++++ b/29468180767ab2f1f9964849305e61aa57f87452
+@@ -1,5 +1,8 @@
+ @Override
+ public void override(int i, NeuralNetConfiguration.Builder builder) {
+-    if (i == 3)
+-        builder.iterations(1000);
++    if (i == 3) {
++        builder.weightInit(WeightInit.ZERO);
++        builder.activationFunction(Activations.softMaxRows());
++        builder.lossFunction(LossFunctions.LossFunction.MCXENT);
++    }
+ }
+\ No newline at end of file

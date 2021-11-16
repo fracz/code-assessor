@@ -1,0 +1,26 @@
+diff --git a/3eb17001b2cf685ecdd16637915f8ed4417befbb b/9707913f3fe1f97bdf17b7f0682cd3e819416b67
+index 3eb17001b2..9707913f3f 100644
+--- a/3eb17001b2cf685ecdd16637915f8ed4417befbb
++++ b/9707913f3fe1f97bdf17b7f0682cd3e819416b67
+@@ -1,17 +1,11 @@
+ public void initialize() {
+     if (this.root != null) {
+         throw new IllegalStateException("Can't initialize navigator model more than once");
+     }
+-    this.root = new DBNRoot();
++    this.root = new DBNRoot(this);
+     // Add all existing projects to root node
+-    final DBeaverCore core = DBeaverCore.getInstance();
+-    for (IProject project : core.getLiveProjects()) {
++    for (IProject project : application.getLiveProjects()) {
+         root.addProject(project, false);
+     }
+-    /*
+-        for (DataSourceDescriptor dataSource : registry.getDataSources()) {
+-            root.addProject(dataSource);
+-        }
+-*/
+-    core.getWorkspace().addResourceChangeListener(this);
++    application.getWorkspace().addResourceChangeListener(this);
+ }
+\ No newline at end of file

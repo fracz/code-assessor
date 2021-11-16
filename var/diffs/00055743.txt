@@ -1,0 +1,22 @@
+diff --git a/b280eae42e198ec088a40ff9db84badf38dedc9d b/72b52b2d905a7f5da3f01b5478865e5a887ad44b
+index b280eae42e..72b52b2d90 100644
+--- a/b280eae42e198ec088a40ff9db84badf38dedc9d
++++ b/72b52b2d905a7f5da3f01b5478865e5a887ad44b
+@@ -1,3 +1,14 @@
+-public int compareTo(ParamsRequestCondition other) {
+-    return other.getConditions().size() - this.getConditions().size();
++/**
++ * Returns:
++ * <ul>
++ * <li>0 if the two conditions have the same number of parameter expressions
++ * <li>Less than 1 if "this" instance has more parameter expressions
++ * <li>Greater than 1 if the "other" instance has more parameter expressions
++ * </ul>
++ *
++ * <p>It is assumed that both instances have been obtained via {@link #getMatchingCondition(HttpServletRequest)}
++ * and each instance contains the matching parameter expressions only or is otherwise empty.
++ */
++public int compareTo(ParamsRequestCondition other, HttpServletRequest request) {
++    return other.expressions.size() - this.expressions.size();
+ }
+\ No newline at end of file

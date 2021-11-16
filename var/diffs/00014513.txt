@@ -1,0 +1,13 @@
+diff --git a/e8d23e4c9d75035d6da525e589ca8254bbe77a8f b/5e11914ea3057d750aca870ddf27c7e6e1cf71fe
+index e8d23e4c9d..5e11914ea3 100644
+--- a/e8d23e4c9d75035d6da525e589ca8254bbe77a8f
++++ b/5e11914ea3057d750aca870ddf27c7e6e1cf71fe
+@@ -1,3 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    return InspectionGadgetsBundle.message("pointless.bitwise.expression.problem.descriptor", calculateReplacementExpression((PsiExpression) location));
++@NotNull
++public String buildErrorString(Object... infos) {
++    final String replacementExpression = calculateReplacementExpression((PsiExpression) infos[0]);
++    return InspectionGadgetsBundle.message("pointless.bitwise.expression.problem.descriptor", replacementExpression);
+ }
+\ No newline at end of file

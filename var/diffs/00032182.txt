@@ -1,0 +1,22 @@
+diff --git a/e0502e264d2c8a9bc0a78310cca2cccecc48c1ae b/b8205c248a85a58f3267f210343d14bb5ae1ff21
+index e0502e264d..b8205c248a 100644
+--- a/e0502e264d2c8a9bc0a78310cca2cccecc48c1ae
++++ b/b8205c248a85a58f3267f210343d14bb5ae1ff21
+@@ -1,13 +1,9 @@
+ @Override
+ public void process(Node externs, Node root) {
+-    Traverser traverser = new Traverser();
+-    NodeTraversal.traverseEs6(compiler, root, traverser);
+-    boolean changed = false;
+-    for (Node node : traverser.removableNodes()) {
++    CollectUnusedPolyfills collector = new CollectUnusedPolyfills();
++    NodeTraversal.traverseEs6(compiler, root, collector);
++    for (Node node : collector.removableNodes()) {
+         NodeUtil.removeChild(node.getParent(), node);
+-        changed = true;
+-    }
+-    if (changed) {
+         compiler.reportCodeChange();
+     }
+ }
+\ No newline at end of file

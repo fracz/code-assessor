@@ -1,0 +1,17 @@
+diff --git a/b474f8c20e01d1c3150ccf3bfc3d0966ad8147c6 b/e3ce8b86ce1580256b5916ddcfc59c0be5df5ad1
+index b474f8c20e..e3ce8b86ce 100644
+--- a/b474f8c20e01d1c3150ccf3bfc3d0966ad8147c6
++++ b/e3ce8b86ce1580256b5916ddcfc59c0be5df5ad1
+@@ -1,9 +1,9 @@
+ @Override
+-public String getFieldReferenceName(Class entityClass, Class idFieldClass, String idFieldName, Object idValue, Class cls, String fieldName, Object fieldValue) {
++public String getFieldReferenceName(Class<?> entityClass, Object idValue, Class<?> fieldClass, String fieldName, Object fieldValue) {
+     try {
+         String encode = bytesToHex(codec.getMapKeyEncoder().encode(idValue));
+-        return "redisson_live_object_field:{" + encode + "}:" + entityClass.getName() + ":" + fieldName + ":" + cls.getName();
++        return "redisson_live_object_field:{" + encode + "}:" + entityClass.getName() + ":" + fieldName + ":" + fieldClass.getName();
+     } catch (IOException ex) {
+         throw new IllegalArgumentException("Unable to encode \"" + fieldName + "\" [" + fieldValue + "] into byte[]", ex);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/c591629efcd769d305af5cbde89430018a77f6db b/c257777414e13024178feba05a4f5495bec00629
+index c591629efc..c257777414 100644
+--- a/c591629efcd769d305af5cbde89430018a77f6db
++++ b/c257777414e13024178feba05a4f5495bec00629
+@@ -1,4 +1,4 @@
+ public void tooManyActualInvocationsInOrder(int wantedCount, int actualCount, PrintableInvocation wanted, HasStackTrace firstUndesired) {
+-    UndesiredInvocation cause = createUndesiredInvocationCause(firstUndesired);
+-    throw new VerifcationInOrderFailure(join("Verification in order failure", wanted.toString(), "Wanted " + pluralize(wantedCount) + " but was " + actualCount), cause);
++    String message = createTooManyInvocationsMessage(wantedCount, actualCount, wanted, firstUndesired);
++    throw new VerifcationInOrderFailure(join("Verification in order failure:" + message));
+ }
+\ No newline at end of file

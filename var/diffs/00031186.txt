@@ -1,0 +1,18 @@
+diff --git a/a01cf2fefcb0c256cb223ee398cc74eea7965cba b/47f74c262b6a5d660c369c30857ee9137029540c
+index a01cf2fefc..47f74c262b 100644
+--- a/a01cf2fefcb0c256cb223ee398cc74eea7965cba
++++ b/47f74c262b6a5d660c369c30857ee9137029540c
+@@ -1,8 +1,7 @@
+ @Override
+-public InternalAggregation buildAggregation(long owningBucketOrdinal) {
+-    if (valuesSource == null) {
+-        return new InternalValueCount(name, 0, formatter, metaData());
++public InternalAggregation buildAggregation(long bucket) {
++    if (valuesSource == null || bucket >= counts.size()) {
++        return buildEmptyAggregation();
+     }
+-    assert owningBucketOrdinal < counts.size();
+-    return new InternalValueCount(name, counts.get(owningBucketOrdinal), formatter, metaData());
++    return new InternalValueCount(name, counts.get(bucket), formatter, metaData());
+ }
+\ No newline at end of file

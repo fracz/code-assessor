@@ -1,0 +1,16 @@
+diff --git a/e9b1cec19234bd85249c726393db4b74e88e335f b/f526f2560950d086ad0877325f5b9e86b6563c58
+index e9b1cec192..f526f25609 100644
+--- a/e9b1cec19234bd85249c726393db4b74e88e335f
++++ b/f526f2560950d086ad0877325f5b9e86b6563c58
+@@ -1,9 +1,9 @@
+ @Override
+ public Collection<DB2DataType> getLocalDataTypes() {
+     try {
+-        return getDataTypes(VoidProgressMonitor.INSTANCE);
++        return getDataTypes(new VoidProgressMonitor());
+     } catch (DBException e) {
+         LOG.error("DBException occurred when reading system dataTypes: ", e);
+         return null;
+     }
+ }
+\ No newline at end of file

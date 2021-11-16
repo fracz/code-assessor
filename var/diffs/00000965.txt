@@ -1,0 +1,22 @@
+diff --git a/4c2d84686a2a48ad842f8ecd1391f3a329404b37 b/549f36aafdedbcb93510a6b86a4bc2298982fcbd
+index 4c2d84686a..549f36aafd 100644
+--- a/4c2d84686a2a48ad842f8ecd1391f3a329404b37
++++ b/549f36aafdedbcb93510a6b86a4bc2298982fcbd
+@@ -1,11 +1,7 @@
+ public Result nodeThroughput(String nodeId) {
+-    try {
+-        Map<String, Object> result = Maps.newHashMap();
+-        result.put("throughput", Throughput.get(nodeService.loadNode(nodeId)));
+-        return ok(new Gson().toJson(result)).as("application/json");
+-    } catch (IOException e) {
+-        return internalServerError("io exception");
+-    } catch (APIException e) {
+-        return internalServerError("api exception " + e);
+-    }
++    Map<String, Object> result = Maps.newHashMap();
++    final Node node = nodeService.loadNode(nodeId);
++    int throughput = node.getThroughput();
++    result.put("throughput", throughput);
++    return ok(new Gson().toJson(result)).as("application/json");
+ }
+\ No newline at end of file

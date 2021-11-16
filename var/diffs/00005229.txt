@@ -1,0 +1,28 @@
+diff --git a/e1858db0df090bb3922d8c1bf9a0011bdc341150 b/8e315b0f3b6660a9f66e0c777f9e8b3c35f1cb60
+index e1858db0df..8e315b0f3b 100644
+--- a/e1858db0df090bb3922d8c1bf9a0011bdc341150
++++ b/8e315b0f3b6660a9f66e0c777f9e8b3c35f1cb60
+@@ -1,12 +1,20 @@
+-// convert VcsVirtualFile to simple VirtualFile
+-public static VirtualFile convertToLocalVirtualFile(VirtualFile file) {
++/**
++ * Convert VcsVirtualFile to "local" Virtual File if needed.
++ * If a file instanceof VcsVirtualFile, then his path is not the path to a local file and the VCS can not find his real location.
++ * This method is called in {@link org.zmlx.hg4idea.provider.HgCachingCommitedChangesProvider} class to work correctly getLocation().
++ *
++ * @param file file to convert
++ * @return local virtual file
++ */
++@Nullable
++public static VirtualFile convertToLocalVirtualFile(@Nullable VirtualFile file) {
+     if (!(file instanceof VcsVirtualFile)) {
+         return file;
+     }
+     LocalFileSystem lfs = LocalFileSystem.getInstance();
+     VirtualFile resultFile = lfs.findFileByPath(file.getPath());
+     if (resultFile == null) {
+         resultFile = lfs.refreshAndFindFileByPath(file.getPath());
+     }
+     return resultFile;
+ }
+\ No newline at end of file

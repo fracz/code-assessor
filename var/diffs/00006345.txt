@@ -1,0 +1,26 @@
+diff --git a/dad950aa39091615e7df4febad0b697e43cb0178 b/dccb495c321d1523a19ef4e370c392982cd3bab0
+index dad950aa39..dccb495c32 100644
+--- a/dad950aa39091615e7df4febad0b697e43cb0178
++++ b/dccb495c321d1523a19ef4e370c392982cd3bab0
+@@ -1,7 +1,17 @@
+-private boolean replaceAloneExpression(@NotNull GrExpression expr, @NotNull PsiElement context, @NotNull GrVariableDeclaration definition, @NotNull PsiElement[] positionElement) throws IncorrectOperationException {
+-    if (context.equals(expr.getParent()) && !GroovyRefactoringUtil.isResultExpression(expr) && !GroovyRefactoringUtil.isLoopOrForkStatement(context) && positionElement.length > 0) {
+-        positionElement[0] = expr.replaceWithStatement(definition);
++/**
++ * Replaces an expression occurence by appropriate variable declaration
++ */
++private boolean replaceAloneExpression(@NotNull GrExpression expr, GrExpression selectedExpr, @NotNull PsiElement context, @NotNull GrVariableDeclaration definition) throws IncorrectOperationException {
++    if (expr instanceof GrMethodCall || expr instanceof GrApplicationExpression) {
++        return false;
++    }
++    if (context.equals(expr.getParent()) && !GroovyRefactoringUtil.isResultExpression(expr) && !GroovyRefactoringUtil.isLoopOrForkStatement(context)) {
++        if (expr.equals(selectedExpr)) {
++            refreshPositionMarker(expr.replaceWithStatement(definition));
++        } else {
++            expr.replaceWithStatement(definition);
++        }
+         return true;
+     }
+     return false;
+ }
+\ No newline at end of file

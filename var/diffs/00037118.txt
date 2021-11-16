@@ -1,0 +1,21 @@
+diff --git a/bcf3053a4c65034492a5e6f8cf757d63b2619671 b/ab2ae8211035f0800d8df22c1d84f1b9e2dec704
+index bcf3053a4c..ab2ae82110 100644
+--- a/bcf3053a4c65034492a5e6f8cf757d63b2619671
++++ b/ab2ae8211035f0800d8df22c1d84f1b9e2dec704
+@@ -1,14 +1,14 @@
+ @Override
+ public void start() {
+-    synchronized (this) {
++    synchronized (agentStatusLock) {
+         if (this.agentStatus == AgentStatus.INITIALIZING) {
+             changeStatus(AgentStatus.RUNNING);
+         } else {
+             logger.warn("Agent already started.");
+             return;
+         }
+     }
+     logger.info("Starting {} Agent.", ProductInfo.NAME);
+     this.agentInfoSender.start();
+     this.agentStatMonitor.start();
+ }
+\ No newline at end of file

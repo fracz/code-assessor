@@ -1,0 +1,11 @@
+diff --git a/9b1ecce1024c3a26462ee873a0f1b3f04119f0b1 b/0c5d003c1b0e18816cf6dfa6156420b87c3d9f6d
+index 9b1ecce102..0c5d003c1b 100644
+--- a/9b1ecce1024c3a26462ee873a0f1b3f04119f0b1
++++ b/0c5d003c1b0e18816cf6dfa6156420b87c3d9f6d
+@@ -1,4 +1,3 @@
+ protected SSTableWriter getWriter() {
+-    return new SSTableWriter(makeFilename(directory, metadata.ksName, metadata.cfName), // We don't care about the bloom filter
+-    0, ActiveRepairService.UNREPAIRED_SSTABLE, metadata, DatabaseDescriptor.getPartitioner(), new MetadataCollector(metadata.comparator));
++    return SSTableWriter.create(Descriptor.fromFilename(makeFilename(directory, metadata.ksName, metadata.cfName, formatType)), 0, ActiveRepairService.UNREPAIRED_SSTABLE);
+ }
+\ No newline at end of file

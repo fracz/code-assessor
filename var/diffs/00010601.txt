@@ -1,0 +1,17 @@
+diff --git a/710f0bee1ae6398b56e79b9e2347a68a75708ff4 b/2a87eeb061e94a044986d559fcb156cdbdcd6003
+index 710f0bee1a..2a87eeb061 100644
+--- a/710f0bee1ae6398b56e79b9e2347a68a75708ff4
++++ b/2a87eeb061e94a044986d559fcb156cdbdcd6003
+@@ -1,10 +1,5 @@
+ private boolean containsDescriptionDir(VirtualFile root) {
+     if (!root.isDirectory())
+         return false;
+-    for (VirtualFile file : root.getChildren()) {
+-        if (file.isDirectory() && getDescriptionFolderName().equals(file.getName())) {
+-            return true;
+-        }
+-    }
+-    return false;
++    return Arrays.stream(root.getChildren()).anyMatch(file -> file.isDirectory() && getDescriptionFolderName().equals(file.getName()));
+ }
+\ No newline at end of file

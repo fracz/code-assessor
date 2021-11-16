@@ -1,0 +1,24 @@
+diff --git a/fa17b1ee1dd0c48d5f6d5995ad4e9e6b8c625df9 b/8105f510e2c6ab32e10633f1c3ed4f7b6b7a87ed
+index fa17b1ee1d..8105f510e2 100644
+--- a/fa17b1ee1dd0c48d5f6d5995ad4e9e6b8c625df9
++++ b/8105f510e2c6ab32e10633f1c3ed4f7b6b7a87ed
+@@ -1,16 +1,16 @@
+ public void run() {
+     FileDocumentManager.getInstance().saveAllDocuments();
+     // Use user-provided console if exist. Create new otherwise
+-    ConsoleView view = (myUserProvidedConsole != null ? myUserProvidedConsole : createConsole(myProject));
++    ConsoleView view = (myUserProvidedConsole != null ? myUserProvidedConsole : createConsole());
+     view.attachToProcess(myProcess);
+     if (myAfterCompletion != null) {
+         myProcess.addProcessListener(new ProcessAdapter() {
+
+             @Override
+             public void processTerminated(ProcessEvent event) {
+-                SwingUtilities.invokeLater(myAfterCompletion);
++                ApplicationManager.getApplication().invokeLater(myAfterCompletion);
+             }
+         });
+     }
+     myProcess.startNotify();
+ }
+\ No newline at end of file

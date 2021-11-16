@@ -1,0 +1,16 @@
+diff --git a/6465cc180491558fb2cce98409ea067146b55b27 b/9b2e83cb3e1ea374716fdb089fe399ff49b49f0f
+index 6465cc1804..9b2e83cb3e 100644
+--- a/6465cc180491558fb2cce98409ea067146b55b27
++++ b/9b2e83cb3e1ea374716fdb089fe399ff49b49f0f
+@@ -1,3 +1,9 @@
+ public boolean hasTable(String name) {
+-    return lookupTables.get(name) != null;
++    // Do a quick check in the live tables first
++    if (liveTables.containsKey(name)) {
++        return true;
++    } else {
++        // Do a more expensive DB lookup as fallback (live tables might not be populated yet)
++        return dbTables.get(name).isPresent();
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/cd2d1d36d9b03208539128c996fa2ef6820afdd0 b/3a47878d0a7f495001dab4779a96f0ac62fec8cf
+index cd2d1d36d9..3a47878d0a 100644
+--- a/cd2d1d36d9b03208539128c996fa2ef6820afdd0
++++ b/3a47878d0a7f495001dab4779a96f0ac62fec8cf
+@@ -1,4 +1,4 @@
+ static boolean shouldCleanupOldValue(Cell oldCell, Cell newCell) {
+-    // to the oldCell.equals(newColumn) in StandardUpdater.update
+-    return !oldCell.name().equals(newCell.name()) || !oldCell.value().equals(newCell.value()) || oldCell.timestamp() != newCell.timestamp();
++    // to the oldCell.equals(newCell) in StandardUpdater.update
++    return !oldCell.value().equals(newCell.value()) || oldCell.livenessInfo().timestamp() != newCell.livenessInfo().timestamp();
+ }
+\ No newline at end of file

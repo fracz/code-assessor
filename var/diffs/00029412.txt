@@ -1,0 +1,15 @@
+diff --git a/e5172f5458cfd6a930b523117d009fc5385e75b4 b/d6909e1ec647299581397ea1bbe7d1693b6e82c6
+index e5172f5458..d6909e1ec6 100644
+--- a/e5172f5458cfd6a930b523117d009fc5385e75b4
++++ b/d6909e1ec647299581397ea1bbe7d1693b6e82c6
+@@ -1,8 +1,3 @@
+-@Nullable
+ public Query parseInnerQuery(QueryShardContext context) throws IOException {
+-    Query query = context.parseContext().parseInnerQueryBuilder().toQuery(context);
+-    if (query == null) {
+-        query = Queries.newMatchNoDocsQuery();
+-    }
+-    return query;
++    return toQuery(context.parseContext().parseInnerQueryBuilder(), context);
+ }
+\ No newline at end of file

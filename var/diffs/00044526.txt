@@ -1,0 +1,14 @@
+diff --git a/aa68d90996ece2bafa2864aceebe9fef11182a18 b/338a13353b5f7931d9b6b964796d6dd6b584d791
+index aa68d90996..338a13353b 100644
+--- a/aa68d90996ece2bafa2864aceebe9fef11182a18
++++ b/338a13353b5f7931d9b6b964796d6dd6b584d791
+@@ -1,6 +1,5 @@
+ public synchronized OServerAdmin setGlobalConfiguration(final OGlobalConfiguration config, final Object iValue) throws IOException {
+-    OBinaryRequest request = new OSetGlobalConfigurationRequest(config.getKey(), iValue != null ? iValue.toString() : "");
+-    OBinaryResponse<Void> response = new OSetGlobalConfigurationResponse();
+-    networkAdminOperation(request, response, "Cannot set the configuration value: " + config.getKey());
++    OSetGlobalConfigurationRequest request = new OSetGlobalConfigurationRequest(config.getKey(), iValue != null ? iValue.toString() : "");
++    OSetGlobalConfigurationResponse response = networkAdminOperation(request, "Cannot set the configuration value: " + config.getKey());
+     return this;
+ }
+\ No newline at end of file

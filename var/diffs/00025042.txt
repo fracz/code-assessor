@@ -1,0 +1,22 @@
+diff --git a/9dbe520ab61bdcba450a86050dd7ecadac006160 b/749a716389280a33a13821a56ad3b16fdd0c9fe4
+index 9dbe520ab6..749a716389 100644
+--- a/9dbe520ab61bdcba450a86050dd7ecadac006160
++++ b/749a716389280a33a13821a56ad3b16fdd0c9fe4
+@@ -1,13 +1,13 @@
+-private void fetchBlockByteRange(long blockStartOffset, long start, long end, byte[] buf, int offset, Map<ExtendedBlock, Set<DatanodeInfo>> corruptedBlockMap) throws IOException {
+-    LocatedBlock block = getBlockAt(blockStartOffset);
++protected void fetchBlockByteRange(LocatedBlock block, long start, long end, byte[] buf, int offset, Map<ExtendedBlock, Set<DatanodeInfo>> corruptedBlockMap) throws IOException {
++    block = refreshLocatedBlock(block);
+     while (true) {
+         DNAddrPair addressPair = chooseDataNode(block, null);
+         try {
+-            actualGetFromOneDataNode(addressPair, blockStartOffset, start, end, buf, offset, corruptedBlockMap);
++            actualGetFromOneDataNode(addressPair, block, start, end, buf, offset, corruptedBlockMap);
+             return;
+         } catch (IOException e) {
+         // Ignore. Already processed inside the function.
+         // Loop through to try the next node.
+         }
+     }
+ }
+\ No newline at end of file

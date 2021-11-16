@@ -1,0 +1,12 @@
+diff --git a/283bfe869d32a6463ba7508b43bf2d31a855a37d b/ea5d60ab6a80b58b4e594e9957a9df212891e0ef
+index 283bfe869d..ea5d60ab6a 100644
+--- a/283bfe869d32a6463ba7508b43bf2d31a855a37d
++++ b/ea5d60ab6a80b58b4e594e9957a9df212891e0ef
+@@ -1,5 +1,5 @@
+ @Override
+ @NotNull
+ public JsNode visitFunctionLiteralExpression(@NotNull JetFunctionLiteralExpression expression, @NotNull TranslationContext context) {
+-    return context.literalFunctionTranslator().translate(expression.getFunctionLiteral(), context);
++    return new LiteralFunctionTranslator(context).translate(expression.getFunctionLiteral(), context);
+ }
+\ No newline at end of file

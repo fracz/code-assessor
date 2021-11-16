@@ -1,0 +1,27 @@
+diff --git a/89aec70a8f0d6e478e3f957988367fd024914913 b/a4614e2afda4d3e26c0fca48a72b1414836ea2b0
+index 89aec70a8f..a4614e2afd 100644
+--- a/89aec70a8f0d6e478e3f957988367fd024914913
++++ b/a4614e2afda4d3e26c0fca48a72b1414836ea2b0
+@@ -1,16 +1,16 @@
+ @Override
+ public void setParameter(int index, double value) {
+     // beyond weight matrix
+-    if (index >= network.getW().length) {
++    if (index >= network.getW().length()) {
+         // beyond visible bias
+-        if (index >= network.getvBias().length + network.getW().length) {
++        if (index >= network.getvBias().length() + network.getW().length()) {
+             int i = getAdjustedIndex(index);
+-            network.gethBias().put(i, value);
++            network.gethBias().putScalar(i, value);
+         } else {
+             int i = getAdjustedIndex(index);
+-            network.getvBias().put(i, value);
++            network.getvBias().putScalar(i, value);
+         }
+     } else {
+-        network.getW().put(index, value);
++        network.getW().putScalar(index, value);
+     }
+ }
+\ No newline at end of file

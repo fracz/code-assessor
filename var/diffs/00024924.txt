@@ -1,0 +1,17 @@
+diff --git a/c867ce49d19af776bc064e29504a55d7204ac52f b/3790a3bf6495c47b9228e04d8d84da4b058941bd
+index c867ce49d1..3790a3bf64 100644
+--- a/c867ce49d19af776bc064e29504a55d7204ac52f
++++ b/3790a3bf6495c47b9228e04d8d84da4b058941bd
+@@ -1,10 +1,9 @@
+ /**
+  * Confirms that the client thread has the given Permission for the Keyspace list.
+  */
+ public void hasKeyspaceListAccess(Permission perm) throws InvalidRequestException {
+-    if (user == null)
+-        throw new InvalidRequestException("You have not logged in");
++    validateLogin();
+     List<Object> resource = Arrays.<Object>asList(Resources.ROOT, Resources.KEYSPACES);
+     Set<Permission> perms = DatabaseDescriptor.getAuthority().authorize(user, resource);
+     hasAccess(user, perms, perm, resource);
+ }
+\ No newline at end of file

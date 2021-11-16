@@ -1,0 +1,26 @@
+diff --git a/9b6590c5c2f9bd9a7956c8c3143f31c668ce8fb8 b/70bcdac8e3eeb5e4647c1cec275e462afb274d81
+index 9b6590c5c2..70bcdac8e3 100644
+--- a/9b6590c5c2f9bd9a7956c8c3143f31c668ce8fb8
++++ b/70bcdac8e3eeb5e4647c1cec275e462afb274d81
+@@ -1,16 +1,16 @@
+ public void remove(final OChannelBinaryAsynchClient conn) {
++    final ORemoteConnectionPool pool = connections.get(conn.getServerURL());
++    if (pool == null)
++        throw new IllegalStateException("Connection cannot be released because the pool doesn't exist anymore");
++    pool.getPool().remove(conn);
+     try {
+         conn.unlock();
+     } catch (Exception e) {
+         OLogManager.instance().debug(this, "Cannot unlock connection lock", e);
+     }
+     try {
+         conn.close();
+     } catch (Exception e) {
+         OLogManager.instance().debug(this, "Cannot close connection", e);
+     }
+-    final ORemoteConnectionPool pool = connections.get(conn.getServerURL());
+-    if (pool == null)
+-        throw new IllegalStateException("Connection cannot be released because the pool doesn't exist anymore");
+-    pool.getPool().remove(conn);
+ }
+\ No newline at end of file

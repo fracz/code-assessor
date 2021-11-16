@@ -1,0 +1,19 @@
+diff --git a/4fb4cac913a75d9b57fa2f705803f1b7269f0d3b b/b55ef0ccfdca4f017e205dde5dc9d9ca21908ce4
+index 4fb4cac913..b55ef0ccfd 100644
+--- a/4fb4cac913a75d9b57fa2f705803f1b7269f0d3b
++++ b/b55ef0ccfdca4f017e205dde5dc9d9ca21908ce4
+@@ -1,11 +1,10 @@
+ @Override
+ protected ExpectedResolveData getExpectedResolveData() {
+-    final Project project = getProject();
+-    return new ExpectedResolveData(ExpectedResolveDataUtil.prepareDefaultNameToDescriptors(project, getEnvironment()), ExpectedResolveDataUtil.prepareDefaultNameToDeclaration(project, getEnvironment())) {
++    return new ExpectedResolveData(ExpectedResolveDataUtil.prepareDefaultNameToDescriptors(getEnvironment()), ExpectedResolveDataUtil.prepareDefaultNameToDeclaration(getEnvironment())) {
+
+         @Override
+         protected KtFile createKtFile(String fileName, String text) {
+-            return TestCheckerUtil.createCheckAndReturnPsiFile(fileName, text, project);
++            return TestCheckerUtil.createCheckAndReturnPsiFile(fileName, text, getProject());
+         }
+     };
+ }
+\ No newline at end of file

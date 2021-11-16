@@ -1,0 +1,29 @@
+diff --git a/5032af1d019a642a92e6993492e5b79af0250327 b/2121e1f1c1b8dc13f0ca2e98a1b688c4454d7b13
+index 5032af1d01..2121e1f1c1 100644
+--- a/5032af1d019a642a92e6993492e5b79af0250327
++++ b/2121e1f1c1b8dc13f0ca2e98a1b688c4454d7b13
+@@ -1,10 +1,15 @@
+-private void addCroutonToView(Crouton currentCrouton) {
+-    currentCrouton.setView(ViewHolder.viewForCrouton(currentCrouton));
+-    if (currentCrouton.getView().getParent() == null) {
+-        currentCrouton.getActivity().addContentView(currentCrouton.getView(), currentCrouton.getView().getLayoutParams());
++/**
++ * Adds a {@link Crouton} to the {@link ViewParent} of it's {@link Activity}
++ * .
++ *
++ * @param crouton
++ * The {@link Crouton} that should be added.
++ */
++private void addCroutonToView(Crouton crouton) {
++    crouton.setView(ViewHolder.viewForCrouton(crouton));
++    if (crouton.getView().getParent() == null) {
++        crouton.getActivity().addContentView(crouton.getView(), crouton.getView().getLayoutParams());
+     }
+-    currentCrouton.getView().startAnimation(inAnimation);
+-    final Message msg = obtainMessage(MESSAGE_REMOVE_CROUTON);
+-    msg.obj = currentCrouton;
+-    sendMessageDelayed(msg, currentCrouton.getStyle().duration);
++    crouton.getView().startAnimation(inAnimation);
++    sendMessageDelayed(crouton, MESSAGE_REMOVE_CROUTON, crouton.getStyle().duration);
+ }
+\ No newline at end of file

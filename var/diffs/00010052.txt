@@ -1,0 +1,14 @@
+diff --git a/38e5bcca4e3c5fefc8a997770d231d88c7b144c3 b/ef2b2f685650791a0ce1a5cf62651ab1a4a7adee
+index 38e5bcca4e..ef2b2f6856 100644
+--- a/38e5bcca4e3c5fefc8a997770d231d88c7b144c3
++++ b/ef2b2f685650791a0ce1a5cf62651ab1a4a7adee
+@@ -1,6 +1,7 @@
+ @Nullable
+ public static HighlightInfo checkThingNotAllowedInInterface(PsiElement element, PsiClass aClass) {
+     if (aClass == null || !aClass.isInterface())
+         return null;
+-    return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, element, JavaErrorMessages.message("not.allowed.in.interface"));
++    String description = JavaErrorMessages.message("not.allowed.in.interface");
++    return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(element).descriptionAndTooltip(description).create();
+ }
+\ No newline at end of file

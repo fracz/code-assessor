@@ -1,0 +1,28 @@
+diff --git a/ae8a6b44c47daa1182cacf9ba99b85045ce614d0 b/2bb83e009c675f5b0b7f5bcbfc71ea7d2ca11d01
+index ae8a6b44c4..2bb83e009c 100644
+--- a/ae8a6b44c47daa1182cacf9ba99b85045ce614d0
++++ b/2bb83e009c675f5b0b7f5bcbfc71ea7d2ca11d01
+@@ -1,16 +1,11 @@
+ @Override
+-public boolean equals(Object obj) {
+-    if (this == obj)
++public boolean equals(Object o) {
++    if (this == o)
+         return true;
+-    if (obj == null)
++    if (o == null || getClass() != o.getClass())
+         return false;
+-    if (getClass() != obj.getClass())
++    SQLExprTableSource that = (SQLExprTableSource) o;
++    if (expr != null ? !expr.equals(that.expr) : that.expr != null)
+         return false;
+-    SQLExprTableSource other = (SQLExprTableSource) obj;
+-    if (expr == null) {
+-        if (other.expr != null)
+-            return false;
+-    } else if (!expr.equals(other.expr))
+-        return false;
+-    return true;
++    return partitions != null ? partitions.equals(that.partitions) : that.partitions == null;
+ }
+\ No newline at end of file

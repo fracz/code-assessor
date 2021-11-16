@@ -1,0 +1,21 @@
+diff --git a/4ce358b0f567de2b92a7d19f942a1b464a38dd75 b/0d8113a09ebc40273729a99205785f1b60e224f0
+index 4ce358b0f5..0d8113a09e 100644
+--- a/4ce358b0f567de2b92a7d19f942a1b464a38dd75
++++ b/0d8113a09ebc40273729a99205785f1b60e224f0
+@@ -1,11 +1,6 @@
+ @Override
+-public BytesHolder readBytesReference() throws IOException {
+-    // so: we can actually return a reference if this is an array backed buffer
+-    if (!buffer.hasArray()) {
+-        return super.readBytesReference();
+-    }
+-    int size = readVInt();
+-    BytesHolder bytes = new BytesHolder(buffer.array(), buffer.arrayOffset() + buffer.readerIndex(), size);
+-    buffer.skipBytes(size);
+-    return bytes;
++public BytesReference readBytesReference(int length) throws IOException {
++    ChannelBufferBytesReference ref = new ChannelBufferBytesReference(buffer.slice(buffer.readerIndex(), length));
++    buffer.skipBytes(length);
++    return ref;
+ }
+\ No newline at end of file

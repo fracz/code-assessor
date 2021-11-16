@@ -1,0 +1,24 @@
+diff --git a/2309c18340c19f1beaae95a6b3e4bec38a6481a0 b/100496386f6634288c26e52af4a52a81bd34df1e
+index 2309c18340..100496386f 100644
+--- a/2309c18340c19f1beaae95a6b3e4bec38a6481a0
++++ b/100496386f6634288c26e52af4a52a81bd34df1e
+@@ -1,17 +1,12 @@
+ public void createLibrary(final String name, final VirtualFile[] files) {
+     ApplicationManager.getApplication().runWriteAction(new Runnable() {
+
+         @Override
+         public void run() {
+-            Library lib = myLibraryManager.createLibrary(name);
++            ScriptingLibraryTable.LibraryModel lib = myLibraryManager.createLibrary(name, files);
+             if (lib != null) {
+-                Library.ModifiableModel libModel = lib.getModifiableModel();
+-                for (VirtualFile file : files) {
+-                    libModel.addRoot(file, OrderRootType.SOURCES);
+-                }
+-                libModel.commit();
+                 fireLibTableChanged();
+             }
+         }
+     });
+ }
+\ No newline at end of file

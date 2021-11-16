@@ -1,0 +1,25 @@
+diff --git a/9fa90cdb733992bd1c94590239875e4a9991edef b/a277eadaac5df09642ddf6b39cbd95130ae6a049
+index 9fa90cdb73..a277eadaac 100644
+--- a/9fa90cdb733992bd1c94590239875e4a9991edef
++++ b/a277eadaac5df09642ddf6b39cbd95130ae6a049
+@@ -1,15 +1,6 @@
+-public int getGELFType() {
+-    if (Arrays.equals(getMagicBytes(), HEADER_ZLIB_COMPRESSION)) {
+-        return TYPE_ZLIB;
++public Type getGELFType() {
++    if (payload.length < Type.HEADER_SIZE) {
++        throw new IllegalStateException("GELF message is too short. Not even the type header would fit.");
+     }
+-    if (Arrays.equals(getMagicBytes(), HEADER_GZIP_COMPRESSION)) {
+-        return TYPE_GZIP;
+-    }
+-    if (Arrays.equals(getMagicBytes(), HEADER_CHUNKED_GELF)) {
+-        return TYPE_CHUNKED;
+-    }
+-    if (Arrays.equals(getMagicBytes(), HEADER_UNCOMPRESSED_GELF)) {
+-        return TYPE_UNCOMPRESSED;
+-    }
+-    throw new IllegalStateException("Unknown GELF type.");
++    return Type.determineType(payload[0], payload[1]);
+ }
+\ No newline at end of file

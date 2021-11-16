@@ -1,0 +1,18 @@
+diff --git a/4ed0d5d4af325458d4505d9b008a765181749578 b/f1414f25df9c0d162d5875fb7c874d7888932d84
+index 4ed0d5d4af..f1414f25df 100644
+--- a/4ed0d5d4af325458d4505d9b008a765181749578
++++ b/f1414f25df9c0d162d5875fb7c874d7888932d84
+@@ -1,12 +1,11 @@
+ @Test
+ public void removeAddedLabelShouldRemoveFromAdded() throws Exception {
+     // GIVEN
+-    TxState state = new TxState();
+     state.addLabelToNode(1, 0);
+     state.addLabelToNode(1, 1);
+     state.addLabelToNode(2, 1);
+     // WHEN
+     state.removeLabelFromNode(1, 1);
+     // THEN
+     assertEquals(asSet(2L), state.getNodeStateLabelDiffSets(1).getAdded());
+ }
+\ No newline at end of file

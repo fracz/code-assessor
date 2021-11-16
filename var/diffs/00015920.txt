@@ -1,0 +1,12 @@
+diff --git a/a8e2d5d8d94bbda1e16b9e8a93c148218d3ba602 b/4a059c03764a4e751dc981024a524c2ecf7ea973
+index a8e2d5d8d9..4a059c0376 100644
+--- a/a8e2d5d8d94bbda1e16b9e8a93c148218d3ba602
++++ b/4a059c03764a4e751dc981024a524c2ecf7ea973
+@@ -1,5 +1,5 @@
+ @Override
+ @NotNull
+ public JsNode visitTryExpression(@NotNull JetTryExpression expression, @NotNull TranslationContext context) {
+-    return TryTranslatorPackage.translateTryExpression(expression, context);
++    return new TryTranslator(expression, context).translate();
+ }
+\ No newline at end of file

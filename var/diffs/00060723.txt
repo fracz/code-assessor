@@ -1,0 +1,25 @@
+diff --git a/c56dc33aad184b34f937aa5057641c9440789f11 b/356290c8cd4193034b352d716c987de0d65a66db
+index c56dc33aad..356290c8cd 100644
+--- a/c56dc33aad184b34f937aa5057641c9440789f11
++++ b/356290c8cd4193034b352d716c987de0d65a66db
+@@ -1,15 +1,17 @@
+ public BitArray getBlackColumn(int x, BitArray column, int startY, int getHeight) {
+     if (column == null || column.getSize() < getHeight) {
+         column = new BitArray(getHeight);
+     } else {
+         column.clear();
+     }
+-    cacheColumnForLuminance(x);
++    // Reuse the same int array each time
++    initLuminances();
++    luminances = getLuminanceColumn(x, luminances);
+     // We don't handle "row sampling" specially here
+     for (int y = 0; y < getHeight; y++) {
+-        if (getLuminance(x, startY + y) < blackPoint) {
++        if (luminances[startY + y] < blackPoint) {
+             column.set(y);
+         }
+     }
+     return column;
+ }
+\ No newline at end of file

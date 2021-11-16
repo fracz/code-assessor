@@ -1,0 +1,17 @@
+diff --git a/fb53a7529c5f8a0d4f677e48d880dd4122571e8f b/027a4e07bfcf1330b8b60933eb404eb22b77684f
+index fb53a7529c..027a4e07bf 100644
+--- a/fb53a7529c5f8a0d4f677e48d880dd4122571e8f
++++ b/027a4e07bfcf1330b8b60933eb404eb22b77684f
+@@ -1,6 +1,10 @@
+ @Override
+ public void initComponent() {
+     installMaterialComponents();
++    // Patch UI
++    UIReplacer.patchUI();
+     // Listen for changes on the settings
+-    ApplicationManager.getApplication().getMessageBus().connect().subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> this.onSettingsChanged());
++    MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
++    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
++    connect.subscribe(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC, (this::onBeforeSettingsChanged));
+ }
+\ No newline at end of file

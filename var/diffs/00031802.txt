@@ -1,0 +1,21 @@
+diff --git a/6dcc0dd2c6ba181be40f70cfae40c89f051e12f0 b/9e0e71a9dbb3a68f2462526f901c8fdc2d33a0e7
+index 6dcc0dd2c6..9e0e71a9db 100644
+--- a/6dcc0dd2c6ba181be40f70cfae40c89f051e12f0
++++ b/9e0e71a9dbb3a68f2462526f901c8fdc2d33a0e7
+@@ -1,12 +1,9 @@
+ @Test
+ public void shouldReportWhenAVariableIsOverridden() {
+     EnvironmentVariableContext context = new EnvironmentVariableContext();
+     context.setProperty(PROPERTY_NAME, PROPERTY_VALUE, false);
+     context.setProperty(PROPERTY_NAME, NEW_VALUE, false);
+-    InMemoryStreamConsumer consumer = ProcessOutputStreamConsumer.inMemoryConsumer();
+-    Map<String, String> map = new HashMap<String, String>();
+-    context.setupRuntimeEnvironment(map, consumer);
+-    assertThat(map.get(PROPERTY_NAME), is(NEW_VALUE));
+-    assertThat(consumer.getAllOutput(), containsString("[go] setting environment variable 'PROPERTY_NAME' to value 'property value'"));
+-    assertThat(consumer.getAllOutput(), containsString("[go] overriding environment variable 'PROPERTY_NAME' with value 'new value'"));
++    assertThat(context.report().size(), is(2));
++    assertThat(context.report().get(0), is("[go] setting environment variable 'PROPERTY_NAME' to value 'property value'"));
++    assertThat(context.report().get(1), is("[go] overriding environment variable 'PROPERTY_NAME' with value 'new value'"));
+ }
+\ No newline at end of file

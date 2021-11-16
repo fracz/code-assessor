@@ -1,0 +1,17 @@
+diff --git a/2b6c72d26e560131b282d8c90ce7caf5871644b4 b/65a23d23fcdc5537043f45ef0d4b96f7cf0b7784
+index 2b6c72d26e..65a23d23fc 100644
+--- a/2b6c72d26e560131b282d8c90ce7caf5871644b4
++++ b/65a23d23fcdc5537043f45ef0d4b96f7cf0b7784
+@@ -1,10 +1,10 @@
+ /**
+  * Returns the column specification corresponding to the output value of the selector instances created by
+  * this factory.
+  *
+  * @param cfm the column family meta data
+  * @return a column specification
+  */
+ public final ColumnSpecification getColumnSpecification(CFMetaData cfm) {
+-    return new ColumnSpecification(cfm.ksName, cfm.cfName, new ColumnIdentifier(getColumnName(), true), getReturnType());
++    return new ColumnSpecification(cfm.ksName, cfm.cfName, ColumnIdentifier.getInterned(getColumnName(), true), getReturnType());
+ }
+\ No newline at end of file

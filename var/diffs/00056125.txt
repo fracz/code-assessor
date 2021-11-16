@@ -1,0 +1,12 @@
+diff --git a/123c5d4022df96e4bd6e13c83314c48eba74077a b/d03a34d9dd1bd79920e18abac9d56c8ecd26c0bf
+index 123c5d4022..d03a34d9dd 100644
+--- a/123c5d4022df96e4bd6e13c83314c48eba74077a
++++ b/d03a34d9dd1bd79920e18abac9d56c8ecd26c0bf
+@@ -1,5 +1,3 @@
+ public void defaultConfiguration() {
+-    ClientCodecConfigurer configurer = new ClientCodecConfigurer();
+-    configurer.getReaders().forEach(this::messageReader);
+-    configurer.getWriters().forEach(this::messageWriter);
++    this.codecConfigurer.registerDefaults(true);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/9143538d1768e0bd1bf5589f433f8d04f7dc8706 b/f8cb952ab3d0b9ffbbfcc8ac62a5d65b261a2301
+index 9143538d17..f8cb952ab3 100644
+--- a/9143538d1768e0bd1bf5589f433f8d04f7dc8706
++++ b/f8cb952ab3d0b9ffbbfcc8ac62a5d65b261a2301
+@@ -1,9 +1,3 @@
+ public void testAddParamDiamond() throws Exception {
+-    doTest(new GenParams() {
+-
+-        @Override
+-        public TypeParameterInfo[] gen(PsiClass aClass) throws IncorrectOperationException {
+-            return new TypeParameterInfo[] { new TypeParameterInfo(0), new TypeParameterInfo(aClass, "I", "Integer") };
+-        }
+-    });
++    doTest(aClass -> new TypeParameterInfo[] { new TypeParameterInfo(0), new TypeParameterInfo(aClass, "I", "Integer") });
+ }
+\ No newline at end of file

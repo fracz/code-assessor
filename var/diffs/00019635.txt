@@ -1,0 +1,14 @@
+diff --git a/507becd0cf82c270340ddc88ba511ed86a52ab91 b/62ef3497d9d677013607bfd0d7edbcc9457bc54f
+index 507becd0cf..62ef3497d9 100644
+--- a/507becd0cf82c270340ddc88ba511ed86a52ab91
++++ b/62ef3497d9d677013607bfd0d7edbcc9457bc54f
+@@ -1,5 +1,5 @@
+-public void persistLogPosition(String destination, LogPosition logPosition) {
+-    // 添加到任务队列中进行触发
++@Override
++public void persistLogPosition(String destination, LogPosition logPosition) throws CanalParseException {
+     persistTasks.add(destination);
+-    super.persistLogPosition(destination, logPosition);
++    memoryLogPositionManager.persistLogPosition(destination, logPosition);
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/eacb541eb43399547212ead21f67bcad8d97d343 b/fa7c46f31271ccc958a654e0a58b1266ea60c340
+index eacb541eb4..fa7c46f312 100644
+--- a/eacb541eb43399547212ead21f67bcad8d97d343
++++ b/fa7c46f31271ccc958a654e0a58b1266ea60c340
+@@ -1,12 +1,13 @@
+ @Test
+ public void testDefaultRequestHeaders() {
++    client = vertx.createHttpClient(new ClientOptions());
+     server.requestHandler(req -> {
+         assertEquals(1, req.headers().size());
+-        assertEquals("localhost:" + port, req.headers().get("host"));
++        assertEquals("localhost:" + DEFAULT_HTTP_PORT, req.headers().get("host"));
+         req.response().end();
+     });
+-    server.listen(port, onSuccess(server -> {
+-        client.getNow("some-uri", resp -> testComplete());
++    server.listen(DEFAULT_HTTP_PORT, onSuccess(server -> {
++        client.getNow(new RequestOptions().setPort(DEFAULT_HTTP_PORT).setPort(DEFAULT_HTTP_PORT).setRequestURI(DEFAULT_TEST_URI), resp -> testComplete());
+     }));
+     await();
+ }
+\ No newline at end of file

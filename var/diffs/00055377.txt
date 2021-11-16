@@ -1,0 +1,20 @@
+diff --git a/99959bd48cc2417aa20498156cb38ed085876507 b/a576d3447060f5b60d844bf1a97f4ea3b16b6421
+index 99959bd48c..a576d34470 100644
+--- a/99959bd48cc2417aa20498156cb38ed085876507
++++ b/a576d3447060f5b60d844bf1a97f4ea3b16b6421
+@@ -1,12 +1,12 @@
+ @Test
+ public void specificResource() throws Exception {
+     String location = "classpath:specificlocation.properties";
+     EnvironmentTestUtils.addEnvironment(this.environment, "spring.config.location:" + location);
+     this.initializer.onApplicationEvent(this.event);
+     String property = this.environment.getProperty("my.property");
+     assertThat(property, equalTo("fromspecificlocation"));
+-    assertThat(this.environment, containsProperySource(location));
++    assertThat(this.environment, containsProperySource("applicationConfig: " + "class path resource [specificlocation.properties]"));
+     // The default property source is still there
+-    assertThat(this.environment, containsProperySource("classpath:" + "/application.properties"));
++    assertThat(this.environment, containsProperySource("applicationConfig: " + "class path resource [application.properties]"));
+     assertThat(this.environment.getProperty("foo"), equalTo("bucket"));
+ }
+\ No newline at end of file

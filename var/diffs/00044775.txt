@@ -1,0 +1,28 @@
+diff --git a/cdf537fa0959e32794a0dad40e7f049f66a5bff7 b/90a7235918789166d51a4c1ecc9f1b0d5b3ad6fa
+index cdf537fa09..90a7235918 100644
+--- a/cdf537fa0959e32794a0dad40e7f049f66a5bff7
++++ b/90a7235918789166d51a4c1ecc9f1b0d5b3ad6fa
+@@ -1,16 +1,14 @@
+ @Override
+-public void onDrop(final ODatabaseInternal iDatabase) {
++public void onDrop(final ODatabaseInternal database) {
+     try {
+-        if (iDatabase.isClosed())
++        if (database.isClosed())
+             return;
+         OLogManager.instance().debug(this, "Dropping Lucene indexes...");
+-        for (OIndex idx : iDatabase.getMetadata().getIndexManager().getIndexes()) {
+-            if (idx.getInternal() instanceof OLuceneFullTextIndex) {
+-                OLogManager.instance().debug(this, "- index '%s'", idx.getName());
+-                idx.delete();
+-            }
+-        }
++        database.getMetadata().getIndexManager().getIndexes().stream().filter(idx -> idx.getInternal() instanceof OLuceneFullTextIndex).forEach(idx -> {
++            OLogManager.instance().debug(this, "- index '%s'", idx.getName());
++            idx.delete();
++        });
+     } catch (Exception e) {
+         OLogManager.instance().warn(this, "Error on dropping Lucene indexes", e);
+     }
+ }
+\ No newline at end of file

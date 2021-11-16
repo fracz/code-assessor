@@ -1,0 +1,14 @@
+diff --git a/011da3d5c6c51b096ccf3020472a8038168d8f0f b/9ba62afe6ae252582d51e746f60a4c4b1de8e6f6
+index 011da3d5c6..9ba62afe6a 100644
+--- a/011da3d5c6c51b096ccf3020472a8038168d8f0f
++++ b/9ba62afe6ae252582d51e746f60a4c4b1de8e6f6
+@@ -1,7 +1,3 @@
+ public int getAvatarBackgroundColor() {
+-    if (avatarBackgroundColor != 0) {
+-        return avatarBackgroundColor;
+-    } else {
+-        return getMainColor();
+-    }
++    return getColorWithFallback(avatarBackgroundColor, getMainColor());
+ }
+\ No newline at end of file

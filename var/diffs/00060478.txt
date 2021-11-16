@@ -1,0 +1,20 @@
+diff --git a/02e33ddf3c7e040d254feaf1db178a1df9c0d2ff b/735da9178c19480d3701aeb40453ce8b0dbff5b2
+index 02e33ddf3c..735da9178c 100644
+--- a/02e33ddf3c7e040d254feaf1db178a1df9c0d2ff
++++ b/735da9178c19480d3701aeb40453ce8b0dbff5b2
+@@ -1,12 +1,7 @@
+-// ZAP: Removed the method setExtension(Extension), not used anymore.
+ @Override
+ public void setVisible(boolean show) {
+-    // ZAP: Changed to call the method cleanup on the MessageSender.
+-    if (!show && mapMessageSenders != null) {
+-        for (Iterator<MessageSender> it = mapMessageSenders.values().iterator(); it.hasNext(); ) {
+-            it.next().cleanup();
+-        }
++    if (!show && getMessageSender() != null) {
++        getMessageSender().cleanup();
+     }
+-    switchToTab(0);
+     super.setVisible(show);
+ }
+\ No newline at end of file

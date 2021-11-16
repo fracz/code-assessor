@@ -1,0 +1,19 @@
+diff --git a/ba888958d45cc9ffb4fd9c95d27204d6cd6af6fa b/111b64d9cf7fa98d2400a2ece74f87c1a50732f0
+index ba888958d4..111b64d9cf 100644
+--- a/ba888958d45cc9ffb4fd9c95d27204d6cd6af6fa
++++ b/111b64d9cf7fa98d2400a2ece74f87c1a50732f0
+@@ -1,12 +1,12 @@
+ private Set<OIdentifiable> getResults(Query query, OCommandContext context, Object key, OLuceneTxChanges changes) {
+     try {
+         IndexSearcher searcher = searcher();
+         QueryContext queryContext = new QueryContext(context, searcher, query).setChanges(changes);
+         if (facetManager.supportsFacets()) {
+             facetManager.addFacetContext(queryContext, key);
+         }
+         return LuceneResultSetFactory.INSTANCE.create(this, queryContext);
+     } catch (IOException e) {
+-        throw new OIndexException("Error reading from Lucene index", e);
++        throw OIOException.wrapException(new OIndexException("Error reading from Lucene index"), e);
+     }
+ }
+\ No newline at end of file

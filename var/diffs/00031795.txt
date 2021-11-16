@@ -1,0 +1,17 @@
+diff --git a/60ebe3859624d8939751f84e21253b73a220101f b/205307fbd7c88d6138785c9d32baa6c68874c7e2
+index 60ebe38596..205307fbd7 100644
+--- a/60ebe3859624d8939751f84e21253b73a220101f
++++ b/205307fbd7c88d6138785c9d32baa6c68874c7e2
+@@ -1,8 +1,8 @@
+-private HashMap<String, String> getNamedRevision(final Integer counter) {
+-    return new HashMap<String, String>() {
++private HashMap<CaseInsensitiveString, String> getNamedRevision(final Integer counter) {
++    return new HashMap<CaseInsensitiveString, String>() {
+
+         {
+-            put("COUNT".toLowerCase(), counter.toString());
++            put(new CaseInsensitiveString("COUNT"), counter.toString());
+         }
+     };
+ }
+\ No newline at end of file

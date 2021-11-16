@@ -1,0 +1,15 @@
+diff --git a/802460312352c2ca4af6ade876b83ae523b6cc72 b/0eb02e803f479869b38ae71720532d85a5accd1b
+index 8024603123..0eb02e803f 100644
+--- a/802460312352c2ca4af6ade876b83ae523b6cc72
++++ b/0eb02e803f479869b38ae71720532d85a5accd1b
+@@ -1,7 +1,7 @@
+ private void defineVarLexer(Context context, MethodVisitor mw) {
+     mw.visitVarInsn(ALOAD, 1);
+-    mw.visitMethodInsn(INVOKEVIRTUAL, getType(DefaultJSONParser.class), "getLexer", "()" + getDesc(JSONLexer.class));
++    mw.visitMethodInsn(INVOKEVIRTUAL, "com/alibaba/fastjson/parser/DefaultJSONParser", "getLexer", "()Lcom/alibaba/fastjson/parser/JSONLexer;");
+     // cast
+-    mw.visitTypeInsn(CHECKCAST, getType(JSONLexerBase.class));
++    mw.visitTypeInsn(CHECKCAST, "com/alibaba/fastjson/parser/JSONLexerBase");
+     mw.visitVarInsn(ASTORE, context.var("lexer"));
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/ce7bcc3a0085cfc4c5b81efd57c546d98d841523 b/72057fc40343095cf9f7e8cf7be73b0c8d666091
+index ce7bcc3a00..72057fc403 100644
+--- a/ce7bcc3a0085cfc4c5b81efd57c546d98d841523
++++ b/72057fc40343095cf9f7e8cf7be73b0c8d666091
+@@ -1,5 +1,7 @@
+ @Override
+ public DfaInstructionState[] visitCheckNotNull(CheckNotNullInstruction instruction, DataFlowRunner runner, DfaMemoryState memState) {
+-    checkNotNullable(memState, memState.peek(), NullabilityProblem.passingNullableToNotNullParameter, instruction.getExpression());
++    if (!checkNotNullable(memState, memState.peek(), instruction.getProblem(), instruction.getExpression())) {
++        forceNotNull(runner, memState, memState.peek());
++    }
+     return super.visitCheckNotNull(instruction, runner, memState);
+ }
+\ No newline at end of file

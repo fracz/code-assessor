@@ -1,0 +1,27 @@
+diff --git a/4ab506ef675cf812f3eab3fb5c883057cfd48821 b/98df898d581bc851027d2ae2237078bdfccc9c7f
+index 4ab506ef67..98df898d58 100644
+--- a/4ab506ef675cf812f3eab3fb5c883057cfd48821
++++ b/98df898d581bc851027d2ae2237078bdfccc9c7f
+@@ -1,20 +1,20 @@
+ @Override
+ public void initToolBar() {
+     mToolbar.setLogo(R.drawable.ic_bili_logo_white);
+     setSupportActionBar(mToolbar);
+-    mActionBar = getSupportActionBar();
++    ActionBar mActionBar = getSupportActionBar();
+     if (mActionBar != null) {
+         mActionBar.setDisplayHomeAsUpEnabled(true);
+         mActionBar.setDisplayUseLogoEnabled(true);
+         mActionBar.setDisplayShowTitleEnabled(false);
+     }
+     mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.app_name, R.string.app_name);
+     mDrawerLayout.post(new Runnable() {
+
+         @Override
+         public void run() {
+             mDrawerToggle.syncState();
+         }
+     });
+     mDrawerLayout.addDrawerListener(mDrawerToggle);
+ }
+\ No newline at end of file

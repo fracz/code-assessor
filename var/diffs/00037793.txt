@@ -1,0 +1,28 @@
+diff --git a/cb9861088f3e23f80d2950d8605f63318daaab31 b/d14f0b5d905f685e91f1b5cba4c16c7ed0a6c288
+index cb9861088f..d14f0b5d90 100644
+--- a/cb9861088f3e23f80d2950d8605f63318daaab31
++++ b/d14f0b5d905f685e91f1b5cba4c16c7ed0a6c288
+@@ -1,14 +1,14 @@
+ @Test
+ public void shouldFailNicelyWhenOutOfOrderRollback() throws Throwable {
+     // Given
+-    RecordingCallback<StatementMetadata, ?> runResponse = new RecordingCallback<>();
+-    RecordingCallback<RecordStream, Object> pullResponse = new RecordingCallback<>();
+-    Session session = env.newSession("<test>");
+-    session.init("TestClient", emptyMap(), -1, null);
++    BoltResponseRecorder runRecorder = new BoltResponseRecorder();
++    BoltResponseRecorder pullAllRecorder = new BoltResponseRecorder();
++    BoltStateMachine machine = env.newMachine("<test>");
++    machine.init("TestClient", emptyMap(), null);
+     // When
+-    session.run("ROLLBACK", emptyMap(), runResponse);
+-    session.pullAll(pullResponse);
++    machine.run("ROLLBACK", emptyMap(), runRecorder);
++    machine.pullAll(pullAllRecorder);
+     // Then
+-    assertThat(runResponse.next(), SessionMatchers.failedWith("rollback cannot be done when there is no open transaction in the session."));
+-    assertThat(pullResponse.next(), SessionMatchers.ignored());
++    assertThat(runRecorder.nextResponse(), failedWithStatus(Status.Statement.SemanticError));
++    assertThat(pullAllRecorder.nextResponse(), wasIgnored());
+ }
+\ No newline at end of file

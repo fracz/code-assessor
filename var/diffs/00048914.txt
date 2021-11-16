@@ -1,0 +1,12 @@
+diff --git a/d3a98b3c9c42cf05092bf8cc80bcd4e43dea0cf0 b/a47f7662d4e88461d7e2e8da578df752065c1d68
+index d3a98b3c9c..a47f7662d4 100644
+--- a/d3a98b3c9c42cf05092bf8cc80bcd4e43dea0cf0
++++ b/a47f7662d4e88461d7e2e8da578df752065c1d68
+@@ -1,5 +1,4 @@
+ public Color getCellForeground(int column, int row) {
+-    IGridLabelProvider contentLabelProvider = getContentLabelProvider();
+-    Color color = contentLabelProvider.getForeground(column, row);
++    Color color = getContentProvider().getCellForeground(column, row);
+     return color != null ? color : getForeground();
+ }
+\ No newline at end of file

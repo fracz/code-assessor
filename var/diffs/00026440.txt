@@ -1,0 +1,20 @@
+diff --git a/37f5e1abbd41474879e61a117baf02bdd3add072 b/3af7b4d10eac86d931225ca8c1322c48f5dad296
+index 37f5e1abbd..3af7b4d10e 100644
+--- a/37f5e1abbd41474879e61a117baf02bdd3add072
++++ b/3af7b4d10eac86d931225ca8c1322c48f5dad296
+@@ -1,12 +1,9 @@
+ /**
+  * {@inheritDoc}
+  */
+ @Override
+ public void softEvictConnections() {
+-    for (PoolBagEntry bagEntry : connectionBag.values()) {
+-        bagEntry.evict = true;
+-        if (connectionBag.reserve(bagEntry)) {
+-            closeConnection(bagEntry, "(connection evicted by user)");
+-        }
++    for (PoolEntry poolEntry : connectionBag.values()) {
++        softEvictConnection(poolEntry, "(connection evicted by user)", false);
+     }
+ }
+\ No newline at end of file

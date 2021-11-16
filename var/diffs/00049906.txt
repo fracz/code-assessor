@@ -1,0 +1,16 @@
+diff --git a/3d322b077f9ec966d2a24d9dc8f03730c513be16 b/d39e5ea5a41bc31e701a05b028e8afa5aca8067b
+index 3d322b077f..d39e5ea5a4 100644
+--- a/3d322b077f9ec966d2a24d9dc8f03730c513be16
++++ b/d39e5ea5a41bc31e701a05b028e8afa5aca8067b
+@@ -1,5 +1,8 @@
+ @Override
+ @NotNull
+-public ResultSetSelection getSelection() {
+-    return new ResultSetSelectionImpl();
++public IResultSetSelection getSelection() {
++    if (activePresentation instanceof ISelectionProvider) {
++        return (IResultSetSelection) ((ISelectionProvider) activePresentation).getSelection();
++    }
++    return null;
+ }
+\ No newline at end of file

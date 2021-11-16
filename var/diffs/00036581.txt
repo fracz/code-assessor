@@ -1,0 +1,25 @@
+diff --git a/c71dbf5eaa5e464558cc7dc1ac22539630217c07 b/8827862b3744d232091f25f6acc4043d58459490
+index c71dbf5eaa..8827862b37 100644
+--- a/c71dbf5eaa5e464558cc7dc1ac22539630217c07
++++ b/8827862b3744d232091f25f6acc4043d58459490
+@@ -1,15 +1,15 @@
+ @RequestMapping(value = "/arcustimeout")
+ @ResponseBody
+-public String arcustimeout(Model model) {
++public String arcustimeout() {
+     Future<Boolean> future = null;
+     try {
+         future = arcus.set("pinpoint:expect-timeout", 10, "Hello, Timeout.");
+         future.get(10L, TimeUnit.MICROSECONDS);
+     } catch (Exception e) {
+-        if (future != null)
++        if (future != null) {
+             future.cancel(true);
+-        e.printStackTrace();
+-        return e.getMessage();
++        }
++        throw new RuntimeException(e);
+     }
+     return "OK";
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/35e999a23a47aff7197e14ebaa1efd3a0709b93f b/e37815e81fe93d3dce872c53117d1673e19e60da
+index 35e999a23a..e37815e81f 100644
+--- a/35e999a23a47aff7197e14ebaa1efd3a0709b93f
++++ b/e37815e81fe93d3dce872c53117d1673e19e60da
+@@ -1,5 +1,8 @@
+ // -------------------------------------------------- Methods from SSLFilter
+ @Override
+ protected void notifyHandshakeFailed(Connection connection, Throwable t) {
+-    throw new RuntimeException(t);
++    if (GrizzlyAsyncHttpProvider.LOGGER.isErrorEnabled()) {
++        GrizzlyAsyncHttpProvider.LOGGER.error("Unable to complete handshake with peer.", t);
++    }
++    HANDSHAKE_ERROR.set(connection, t);
+ }
+\ No newline at end of file

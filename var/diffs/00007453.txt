@@ -1,0 +1,14 @@
+diff --git a/111a3571d4ef060354d32e01c2706f7ab34e50f8 b/bbc86835f81616d6b0b825cb12189726a362e115
+index 111a3571d4..bbc86835f8 100644
+--- a/111a3571d4ef060354d32e01c2706f7ab34e50f8
++++ b/bbc86835f81616d6b0b825cb12189726a362e115
+@@ -1,7 +1,4 @@
+ public boolean isValidCategory(@NotNull final PsiElement element, @NotNull String category) {
+     final RegExpLanguageHost host = findRegExpHost(element);
+-    if (host == null) {
+-        return false;
+-    }
+-    return host.isValidCategory(category);
++    return host != null ? host.isValidCategory(category) : myDefaultProvider.isValidCategory(category);
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/32bfc49133b44462b7de1fbba85cb6c9323709ce b/1734bf2fc567e3ce092a88a3fd24d574d4c8b524
+index 32bfc49133..1734bf2fc5 100644
+--- a/32bfc49133b44462b7de1fbba85cb6c9323709ce
++++ b/1734bf2fc567e3ce092a88a3fd24d574d4c8b524
+@@ -1,8 +1,8 @@
+-public int getMasterIdForCommittedTx(long txId) {
++public Response<Integer> getMasterIdForCommittedTx(long txId) {
+     try {
+         XaDataSource nioneoDataSource = graphDbConfig.getTxModule().getXaDataSourceManager().getXaDataSource(Config.DEFAULT_DATA_SOURCE_NAME);
+-        return nioneoDataSource.getMasterForCommittedTx(txId);
++        return MasterUtil.packResponseWithoutTransactionStream(graphDb, SlaveContext.EMPTY, nioneoDataSource.getMasterForCommittedTx(txId));
+     } catch (IOException e) {
+-        return XaLogicalLog.MASTER_ID_REPRESENTING_NO_MASTER;
++        return MasterUtil.packResponseWithoutTransactionStream(graphDb, SlaveContext.EMPTY, XaLogicalLog.MASTER_ID_REPRESENTING_NO_MASTER);
+     }
+ }
+\ No newline at end of file

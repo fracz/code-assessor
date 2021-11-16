@@ -1,0 +1,24 @@
+diff --git a/df7613ecc6f2804522995d86e76748db04c4c622 b/1da3484748eac9c826a6a70d5711e3b9a8efcba7
+index df7613ecc6..1da3484748 100644
+--- a/df7613ecc6f2804522995d86e76748db04c4c622
++++ b/1da3484748eac9c826a6a70d5711e3b9a8efcba7
+@@ -1,16 +1,15 @@
+ /**
+  * SQL路由.
+  * 当第一次路由时进行SQL解析,之后的路由复用第一次的解析结果.
+  *
+  * @param parameters SQL中的参数
+  * @return 路由结果
+  */
+ public SQLRouteResult route(final List<Object> parameters) {
+     if (null == sqlContext) {
+         sqlContext = routeEngine.parse(logicSQL, parameters);
+-    } else {
+-        List<Number> generatedIds = generateId();
+-        parameters.addAll(generatedIds);
++    } else if (sqlContext instanceof InsertSQLContext) {
++        parameters.addAll(GenerateKeysUtils.generateKeys(shardingRule, (InsertSQLContext) sqlContext));
+     }
+     return routeEngine.route(logicSQL, sqlContext, parameters);
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/935994ec93c814acc62512ba3b4d9d35379b7cd8 b/cd381ff417a1594bf6b5dea2355252f189ba3990
+index 935994ec93..cd381ff417 100644
+--- a/935994ec93c814acc62512ba3b4d9d35379b7cd8
++++ b/cd381ff417a1594bf6b5dea2355252f189ba3990
+@@ -1,12 +1,11 @@
+ private void addDriverTransformer(ProfilerPluginSetupContext setupContext) {
+     setupContext.addClassFileTransformer("net.sourceforge.jtds.jdbc.Driver", new PinpointClassFileTransformer() {
+
+         @Override
+         public byte[] transform(Instrumentor instrumentContext, ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) throws InstrumentException {
+             InstrumentClass target = instrumentContext.getInstrumentClass(loader, className, classfileBuffer);
+-            InterceptorGroup group = instrumentContext.getInterceptorGroup(JtdsConstants.GROUP_JTDS);
+-            target.addGroupedInterceptor("com.navercorp.pinpoint.bootstrap.plugin.jdbc.interceptor.DriverConnectInterceptor", va(new JtdsJdbcUrlParser()), group, ExecutionPolicy.ALWAYS);
++            target.addGroupedInterceptor("com.navercorp.pinpoint.bootstrap.plugin.jdbc.interceptor.DriverConnectInterceptor", va(new JtdsJdbcUrlParser()), JtdsConstants.GROUP_JTDS, ExecutionPolicy.ALWAYS);
+             return target.toBytecode();
+         }
+     });
+ }
+\ No newline at end of file

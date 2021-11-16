@@ -1,0 +1,21 @@
+diff --git a/0656d7bc08c13711d286c3e837a2efda01580fa1 b/7c1ec2eba9ad896d56578c0239056a686452b683
+index 0656d7bc08..7c1ec2eba9 100644
+--- a/0656d7bc08c13711d286c3e837a2efda01580fa1
++++ b/7c1ec2eba9ad896d56578c0239056a686452b683
+@@ -1,14 +1,11 @@
+ public void visitForeachStatement(@NotNull PsiForeachStatement statement) {
+     super.visitForeachStatement(statement);
+     if (PsiUtil.isInJspFile(statement.getContainingFile())) {
+         return;
+     }
+     final PsiStatement body = statement.getBody();
+-    if (body == null) {
+-        return;
+-    }
+-    if (!isEmpty(body)) {
++    if (body == null || !isEmpty(body)) {
+         return;
+     }
+     registerStatementError(statement);
+ }
+\ No newline at end of file

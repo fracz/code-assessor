@@ -1,0 +1,16 @@
+diff --git a/0b7cbece752799914302c0dfc11e3e52dd03b670 b/3f59b8a18ba9b924b5e51e5b3716c33bd7408ca7
+index 0b7cbece75..3f59b8a18b 100644
+--- a/0b7cbece752799914302c0dfc11e3e52dd03b670
++++ b/3f59b8a18ba9b924b5e51e5b3716c33bd7408ca7
+@@ -1,5 +1,9 @@
+ @Override
+ protected void okPressed() {
+-    getDialogBoundsSettings().put("format", curFormat.getId());
++    if (curFormat != null) {
++        saveOptions();
++        IDialogSettings dialogSettings = getDialogBoundsSettings();
++        dialogSettings.put("format", curFormat.getId());
++    }
+     super.okPressed();
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/2b67bbb210a0ae550b6bb54d3bfdb1700caad486 b/96cd7babebfb222ce1a6116e1c63270729547165
+index 2b67bbb210..96cd7babeb 100644
+--- a/2b67bbb210a0ae550b6bb54d3bfdb1700caad486
++++ b/96cd7babebfb222ce1a6116e1c63270729547165
+@@ -1,4 +1,11 @@
+-public final void generate(@NotNull ExpressionCodegen codegen, @NotNull InstructionAdapter v, @NotNull Type returnType, @Nullable PsiElement element, @Nullable List<JetExpression> arguments, @Nullable StackValue receiver) {
+-    Type actualType = generateImpl(codegen, v, returnType, element, arguments, receiver);
+-    StackValue.coerce(actualType, returnType, v);
++public final StackValue generate(@NotNull final ExpressionCodegen codegen, @NotNull final InstructionAdapter v, @NotNull final Type returnType, @Nullable final PsiElement element, @Nullable final List<JetExpression> arguments, @Nullable final StackValue receiver) {
++    return StackValue.operation(returnType, new Function1<InstructionAdapter, Unit>() {
++
++        @Override
++        public Unit invoke(InstructionAdapter adapter) {
++            Type actualType = generateImpl(codegen, v, returnType, element, arguments, receiver);
++            StackValue.coerce(actualType, returnType, v);
++            return Unit.INSTANCE$;
++        }
++    });
+ }
+\ No newline at end of file

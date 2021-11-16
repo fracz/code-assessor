@@ -1,0 +1,15 @@
+diff --git a/191d96902e94ee7511ebc6f2023507d14dca1279 b/c623772b18b7cc428a65fb537255e521b3230162
+index 191d96902e..c623772b18 100644
+--- a/191d96902e94ee7511ebc6f2023507d14dca1279
++++ b/c623772b18b7cc428a65fb537255e521b3230162
+@@ -1,8 +1,7 @@
+ @NotNull
+ @Override
+ public VcsLogHighlighter.VcsCommitStyle getStyle(@NotNull VcsShortCommitDetails commitDetails, boolean isSelected) {
+     if (myNonPickedCommits == null)
+         return VcsCommitStyle.DEFAULT;
+-    boolean inNonPicked = myNonPickedCommits.contains(new CommitId(commitDetails.getId(), commitDetails.getRoot()));
+-    return VcsCommitStyleFactory.foreground(inNonPicked ? null : EditorColorsUtil.getGlobalOrDefaultColor(VcsLogColors.MERGED_COMMIT));
++    return VcsCommitStyleFactory.foreground(!myNonPickedCommits.contains(new CommitId(commitDetails.getId(), commitDetails.getRoot())) ? MergeCommitsHighlighter.MERGE_COMMIT_FOREGROUND : null);
+ }
+\ No newline at end of file

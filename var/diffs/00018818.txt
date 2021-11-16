@@ -1,0 +1,29 @@
+diff --git a/3c7f82de6a0363d646f491c3bf1871cdee1749b7 b/ae17d7c406f2568390157da0f14ba3833f40adb2
+index 3c7f82de6a..ae17d7c406 100644
+--- a/3c7f82de6a0363d646f491c3bf1871cdee1749b7
++++ b/ae17d7c406f2568390157da0f14ba3833f40adb2
+@@ -1,15 +1,14 @@
+ public static void schedulePendingDecrypts(Context context, MasterSecret masterSecret) {
+-    Cursor cursor = null;
+     Log.w("DecryptingQueue", "Processing pending decrypts...");
++    EncryptingSmsDatabase.Reader reader = null;
++    SmsMessageRecord record;
+     try {
+-        cursor = DatabaseFactory.getSmsDatabase(context).getDecryptInProgressMessages();
+-        if (cursor == null || cursor.getCount() == 0 || !cursor.moveToFirst())
+-            return;
+-        do {
+-            scheduleDecryptFromCursor(context, masterSecret, cursor);
+-        } while (cursor.moveToNext());
++        reader = DatabaseFactory.getEncryptingSmsDatabase(context).getDecryptInProgressMessages(masterSecret);
++        while ((record = reader.getNext()) != null) {
++            scheduleDecryptFromCursor(context, masterSecret, record);
++        }
+     } finally {
+-        if (cursor != null)
+-            cursor.close();
++        if (reader != null)
++            reader.close();
+     }
+ }
+\ No newline at end of file

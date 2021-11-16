@@ -1,0 +1,14 @@
+diff --git a/1bb34484f04078b5d57325497675b47d8ceb3057 b/061cb0198c103ef8d49e9faea5999693071c34db
+index 1bb34484f0..061cb0198c 100644
+--- a/1bb34484f04078b5d57325497675b47d8ceb3057
++++ b/061cb0198c103ef8d49e9faea5999693071c34db
+@@ -1,7 +1,6 @@
+ private void onNewSenderBuffer(final String destination, final long sessionId, final long channelId, final long termId) {
+     onNewBuffer(sessionId, channelId, termId, sendNotifiers.get(destination, sessionId, channelId), this::newAppender, LogAppender[]::new, (chan, buffers) -> {
+         // TODO: get the counter id
+-        final PositionIndicator indicator = statusCounters.indicator(0);
+-        chan.onBuffersMapped(termId, buffers, indicator);
++        chan.onBuffersMapped(termId, buffers, new BufferPositionIndicator(counterValuesBuffer, 0));
+     });
+ }
+\ No newline at end of file

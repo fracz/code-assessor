@@ -1,0 +1,25 @@
+diff --git a/2b85f545c860d14b5f8d767f7c9b17011592b38c b/58d2b695ce1e11332f0d5acba304ecfce6cc9b6a
+index 2b85f545c8..58d2b695ce 100644
+--- a/2b85f545c860d14b5f8d767f7c9b17011592b38c
++++ b/58d2b695ce1e11332f0d5acba304ecfce6cc9b6a
+@@ -1,13 +1,9 @@
+ private void updatePlugins(boolean showConfirmation) {
+-    try {
+-        final UpdateChannel newVersion = UpdateChecker.checkForUpdates();
+-        final List<PluginDownloader> updatedPlugins = UpdateChecker.updatePlugins(false, null);
+-        if (newVersion != null) {
+-            UpdateChecker.showUpdateInfoDialog(true, newVersion, updatedPlugins);
+-        } else if (updatedPlugins != null) {
+-            UpdateChecker.showNoUpdatesDialog(true, updatedPlugins, showConfirmation);
+-        }
+-    } catch (ConnectionException e) {
+-    // It's not a problem on automatic check
++    final CheckForUpdateResult checkForUpdateResult = UpdateChecker.checkForUpdates();
++    final List<PluginDownloader> updatedPlugins = UpdateChecker.updatePlugins(false, null);
++    if (checkForUpdateResult.hasNewBuildInSelectedChannel()) {
++        UpdateChecker.showUpdateInfoDialog(true, checkForUpdateResult.getSelected(), updatedPlugins);
++    } else if (updatedPlugins != null) {
++        UpdateChecker.showNoUpdatesDialog(true, updatedPlugins, showConfirmation);
+     }
+ }
+\ No newline at end of file

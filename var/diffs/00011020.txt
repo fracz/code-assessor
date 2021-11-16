@@ -1,0 +1,16 @@
+diff --git a/ee9084c3b46206d248875b885a48c4359a4d8983 b/442a4d3a4ce35b84e0af4ea65d5860482faa75f8
+index ee9084c3b4..442a4d3a4c 100644
+--- a/ee9084c3b46206d248875b885a48c4359a4d8983
++++ b/442a4d3a4ce35b84e0af4ea65d5860482faa75f8
+@@ -1,9 +1,5 @@
+ @Override
+ @NotNull
+ public AttributesDescriptor[] getAttributeDescriptors() {
+-    List<AttributesDescriptor> descriptors = new ArrayList<>();
+-    for (VcsColorsProvider provider : Extensions.getExtensions(VcsColorsProvider.EP_NAME)) {
+-        descriptors.addAll(provider.getAttributeDescriptors());
+-    }
+-    return ArrayUtil.toObjectArray(descriptors, AttributesDescriptor.class);
++    return new AttributesDescriptor[0];
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/741bac07b41a83f5b75146d6f8bdb583495f4a76 b/d1ffe7323937b3bd06aa3493d2b6726854c6c5b3
+index 741bac07b4..d1ffe73239 100644
+--- a/741bac07b41a83f5b75146d6f8bdb583495f4a76
++++ b/d1ffe7323937b3bd06aa3493d2b6726854c6c5b3
+@@ -1,12 +1,12 @@
+ @Override
+ public IndexSchemaRule indexRule(IndexDescriptor index, Predicate<SchemaRule.Kind> filter) {
+     for (SchemaRule rule : schemaCache.schemaRulesForLabel(index.getLabelId())) {
+         if (rule instanceof IndexSchemaRule) {
+             IndexSchemaRule indexRule = (IndexSchemaRule) rule;
+-            if (filter.test(indexRule.getKind()) && indexRule.getPropertyKey() == index.getPropertyKeyId()) {
++            if (filter.test(indexRule.getKind()) && indexRule.matches(index.descriptor())) {
+                 return indexRule;
+             }
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

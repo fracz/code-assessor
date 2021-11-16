@@ -1,0 +1,11 @@
+diff --git a/f34dd782ec9482ca807efbef762272bf8e7142db b/043d27814ce974bdda18a4129afba3e0293d5bb1
+index f34dd782ec..043d27814c 100644
+--- a/f34dd782ec9482ca807efbef762272bf8e7142db
++++ b/043d27814ce974bdda18a4129afba3e0293d5bb1
+@@ -1,3 +1,4 @@
+ public List<T> list() {
+-    return null;
++    Cursor cursor = dao.db.rawQuery(sql, parameters);
++    return dao.loadAllAndCloseCursor(cursor);
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/16d24e93aa0caf6cb5caed59d4617067fc404f50 b/b943b5346ee3a5895e4d0b2bdeb39a70b33a1302
+index 16d24e93aa..b943b5346e 100644
+--- a/16d24e93aa0caf6cb5caed59d4617067fc404f50
++++ b/b943b5346ee3a5895e4d0b2bdeb39a70b33a1302
+@@ -1,11 +1,6 @@
+-public <K, V> RedisConnection<K, V> acquireConnection() {
+-    activeConnections.acquireUninterruptibly();
+-    RedisConnection<K, V> conn = connections.poll();
+-    if (conn == null) {
+-        conn = redisClient.connect(codec);
+-        if (config.getPassword() != null) {
+-            conn.auth(config.getPassword());
+-        }
++private void acquireConnection() {
++    if (!activeConnections.tryAcquire()) {
++        log.warn("Connection pool gets exhausted!");
++        activeConnections.acquireUninterruptibly();
+     }
+-    return conn;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/f4819a41cd9dcf80f20e04e63b95f841b6b53ee9 b/e42085bf3ac521df78268f5c00786d101e25db75
+index f4819a41cd..e42085bf3a 100644
+--- a/f4819a41cd9dcf80f20e04e63b95f841b6b53ee9
++++ b/e42085bf3ac521df78268f5c00786d101e25db75
+@@ -1,7 +1,8 @@
++@Test
+ public void testChildWithProxy() throws Exception {
+-    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("/org/springframework/context/support/test/context*.xml");
+-    ClassPathXmlApplicationContext child = new ClassPathXmlApplicationContext(new String[] { "/org/springframework/context/support/childWithProxy.xml" }, ctx);
++    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(CONTEXT_WILDCARD);
++    ClassPathXmlApplicationContext child = new ClassPathXmlApplicationContext(new String[] { CHILD_WITH_PROXY_CONTEXT }, ctx);
+     assertTrue(AopUtils.isAopProxy(child.getBean("assemblerOne")));
+     assertTrue(AopUtils.isAopProxy(child.getBean("assemblerTwo")));
+     ctx.close();
+ }
+\ No newline at end of file

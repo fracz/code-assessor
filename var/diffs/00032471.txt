@@ -1,0 +1,13 @@
+diff --git a/2c3055e6c08e8fcabd2d01d164d0ae4a0cdcb58c b/8195e7e2e04503112217b335627abe937175f1e9
+index 2c3055e6c0..8195e7e2e0 100644
+--- a/2c3055e6c08e8fcabd2d01d164d0ae4a0cdcb58c
++++ b/8195e7e2e04503112217b335627abe937175f1e9
+@@ -1,6 +1,4 @@
+ @Override
+ public void process(Node externs, Node root) {
+-    NodeTraversal.traverseEs6(compiler, externs, this);
+-    NodeTraversal.traverseEs6(compiler, root, this);
+-    seenNames.clear();
++    NodeTraversal.traverseRootsEs6(compiler, new RemoveCode(compiler), externs, root);
+ }
+\ No newline at end of file

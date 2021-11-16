@@ -1,0 +1,17 @@
+diff --git a/fcb69243bd44c82c5255b4436d347cdc38e9191b b/d9a709505384572e09e1b3bce09cc95c07066d4a
+index fcb69243bd..d9a7095053 100644
+--- a/fcb69243bd44c82c5255b4436d347cdc38e9191b
++++ b/d9a709505384572e09e1b3bce09cc95c07066d4a
+@@ -1,6 +1,7 @@
+-public void visitConditionalExpression(PsiConditionalExpression exp) {
+-    super.visitConditionalExpression(exp);
+-    if (PsiTreeUtil.getParentOfType(exp, PsiConditionalExpression.class) != null) {
+-        registerError(exp);
++public void visitConditionalExpression(PsiConditionalExpression expression) {
++    super.visitConditionalExpression(expression);
++    if (PsiTreeUtil.getParentOfType(expression, PsiConditionalExpression.class) == null) {
++        return;
+     }
++    registerError(expression);
+ }
+\ No newline at end of file

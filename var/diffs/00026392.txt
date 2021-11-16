@@ -1,0 +1,14 @@
+diff --git a/939c520a4960896dd560201278d307a2ba1613c7 b/134f1a760cf925771c001f79212c8d45c465a096
+index 939c520a49..134f1a760c 100644
+--- a/939c520a4960896dd560201278d307a2ba1613c7
++++ b/134f1a760cf925771c001f79212c8d45c465a096
+@@ -1,7 +1,7 @@
+ @Test
+ public void readBinaryLog() throws Exception {
+     List<TraceEvent> events = makeEvents();
+-    Path filePath = eventsAsLogFile(events, path -> new BinaryLogEventHandler(path));
++    Path filePath = eventsAsLogFile(events, BinaryLogEventHandler::new);
+     List<TraceEvent> read = LogReader.binaryLogStream(filePath).collect(Collectors.toList());
+     assertThat(read, is(equalTo(events)));
+ }
+\ No newline at end of file

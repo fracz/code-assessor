@@ -1,0 +1,16 @@
+diff --git a/7fe223bc6abe0f857e1b8e0d8015f38a5acac3c2 b/f6a55f0215de8b51b4572b8904ba242fccfc10ca
+index 7fe223bc6a..f6a55f0215 100644
+--- a/7fe223bc6abe0f857e1b8e0d8015f38a5acac3c2
++++ b/f6a55f0215de8b51b4572b8904ba242fccfc10ca
+@@ -1,5 +1,7 @@
++/*
++   * Download the file at DEFAULT_URL and when that promise is fulfilled,
++   * then promise to apply function to calculate character frequency.
++   */
+ private Promise<Map<Character, Integer>> characterFrequency() {
+-    return download(URL).then(fileLocation -> {
+-        return Utility.characterFrequency(fileLocation);
+-    });
++    return download(DEFAULT_URL).thenApply(Utility::characterFrequency);
+ }
+\ No newline at end of file

@@ -1,0 +1,23 @@
+diff --git a/c732bc1077099b1470daad2ecda01278283ff4ba b/d34124c692269a16a57d22262479bc89cc96d5b3
+index c732bc1077..d34124c692 100644
+--- a/c732bc1077099b1470daad2ecda01278283ff4ba
++++ b/d34124c692269a16a57d22262479bc89cc96d5b3
+@@ -1,14 +1,15 @@
+ @Override
+ public void run() {
++    final NotificationService notificationService = new NotificationServiceImpl(core.getMongoConnection());
+     try {
+         if (core.inputs().runningCount() == 0) {
+             LOG.debug("No input running in cluster!");
+-            getNotification().publishIfFirst();
++            notificationService.publishIfFirst(getNotification());
+         } else {
+             LOG.debug("Running inputs found, disabling notification");
+-            getNotification().fixed();
++            notificationService.fixed(getNotification());
+         }
+     } catch (NodeNotFoundException e) {
+         LOG.error("Unable to find own node: ", e.getMessage(), e);
+     }
+ }
+\ No newline at end of file

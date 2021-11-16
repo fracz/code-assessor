@@ -1,0 +1,25 @@
+diff --git a/ecf177872dd45729046ee5289ad5f80ce43b1bf9 b/e09598382f6da6c727a0dab2cc627f62a2d1d9d3
+index ecf177872d..e09598382f 100644
+--- a/ecf177872dd45729046ee5289ad5f80ce43b1bf9
++++ b/e09598382f6da6c727a0dab2cc627f62a2d1d9d3
+@@ -1,18 +1,18 @@
+ public IfOp invert() {
+     switch(this) {
+         case EQ:
+             return IfOp.NE;
+         case NE:
+             return IfOp.EQ;
+         case LT:
+             return IfOp.GE;
+         case LE:
+             return IfOp.GT;
+         case GT:
+             return IfOp.LE;
+         case GE:
+             return IfOp.LT;
+         default:
+-            return null;
++            throw new JadxRuntimeException("Unknown if operations type: " + this);
+     }
+ }
+\ No newline at end of file

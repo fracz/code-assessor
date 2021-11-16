@@ -1,0 +1,13 @@
+diff --git a/6aac34b54db0e4a645f55606553b77178d3d2c0f b/fc1403ed600bb1b6100991804ca751785e789fe0
+index 6aac34b54d..fc1403ed60 100644
+--- a/6aac34b54db0e4a645f55606553b77178d3d2c0f
++++ b/fc1403ed600bb1b6100991804ca751785e789fe0
+@@ -1,5 +1,6 @@
+ void setSocket(AsyncSocket socket) {
+     mSocket = socket;
+-    LineEmitter liner = new LineEmitter(mSocket);
++    LineEmitter liner = new LineEmitter();
++    mSocket.setDataCallback(liner);
+     liner.setLineCallback(mHeaderCallback);
+ }
+\ No newline at end of file

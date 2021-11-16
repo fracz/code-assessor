@@ -1,0 +1,14 @@
+diff --git a/befb378992655fa5f4fc2972337a5e1a43c3e9b3 b/aecfdb8607975a8bb3ab8d284ec07252768ebf82
+index befb378992..aecfdb8607 100644
+--- a/befb378992655fa5f4fc2972337a5e1a43c3e9b3
++++ b/aecfdb8607975a8bb3ab8d284ec07252768ebf82
+@@ -1,6 +1,6 @@
+ public void sendEvent(String eventId, String navigatorEventId) {
+-    if (navigationReactInstance == null) {
++    if (!isReactContextInitialized()) {
+         return;
+     }
+-    navigationReactInstance.getReactEventEmitter().sendEvent(eventId, navigatorEventId);
++    reactGateway.getReactEventEmitter().sendEvent(eventId, navigatorEventId);
+ }
+\ No newline at end of file

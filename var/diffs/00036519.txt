@@ -1,0 +1,25 @@
+diff --git a/7e08fc5a49be046f37eb1ed68afb1a4de3525363 b/2fda216d20625417c9377e42a368d599ee93dff9
+index 7e08fc5a49..2fda216d20 100644
+--- a/7e08fc5a49be046f37eb1ed68afb1a4de3525363
++++ b/2fda216d20625417c9377e42a368d599ee93dff9
+@@ -1,16 +1,16 @@
+ private void sendAgentStopInfo() {
+     try {
+         connectToServer();
+         ObjectOutputStream stream = new ObjectOutputStream(requestSocket.getOutputStream());
+         AgentInfoDTO dto = new AgentInfoDTO();
+         dto.setIsDead();
+-        log(dto.toString());
++        logger.info("send agent stop info. %s", dto.toString());
+         stream.writeObject(dto);
+         stream.close();
+-        log("Agent Stopped message is sent");
++        logger.info("Agent Stopped message is sent. %s", dto.toString());
+     } catch (Exception e) {
+-        log("AgentInfoSender Exception occured:" + e.getMessage());
++        logger.error("AgentInfoSender Exception occured : %s", e.getMessage());
+     } finally {
+         closeSocket();
+     }
+ }
+\ No newline at end of file

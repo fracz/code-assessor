@@ -1,0 +1,12 @@
+diff --git a/be7bd723d5362e11a91b38d944d4857b9e90b348 b/2b3bb7080b1731a44177c4395aa71f682988c5e6
+index be7bd723d5..2b3bb7080b 100644
+--- a/be7bd723d5362e11a91b38d944d4857b9e90b348
++++ b/2b3bb7080b1731a44177c4395aa71f682988c5e6
+@@ -1,5 +1,5 @@
+ @Override
+ public void setBigDecimal(int parameterIndex, BigDecimal x) throws SQLException {
+-    setParameter(parameterIndex, new JdbcParameterDecimal(x));
++    setParameter(parameterIndex, createParameter(x));
+     createChain().preparedStatement_setBigDecimal(this, parameterIndex, x);
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/7f44a63a164e70885f821d539ab87666a28d3320 b/24fae786f9a15437a2e8227b77963f6816983530
+index 7f44a63a16..24fae786f9 100644
+--- a/7f44a63a164e70885f821d539ab87666a28d3320
++++ b/24fae786f9a15437a2e8227b77963f6816983530
+@@ -1,12 +1,12 @@
+ @Test
+ public void testValidatorAdd() throws Throwable {
+     Validator validator = new Validator(request);
+     IPartitioner part = validator.tree.partitioner();
+     Token mid = part.midpoint(local_range.left, local_range.right);
+     validator.prepare(store);
+     // add a row
+-    validator.add(new PrecompactedRow(new DecoratedKey(mid, ByteBufferUtil.bytes("inconceivable!")), null));
++    validator.add(new PrecompactedRow(new DecoratedKey(mid, ByteBufferUtil.bytes("inconceivable!")), new ColumnFamily(DatabaseDescriptor.getCFMetaData(tablename, cfname))));
+     validator.completeTree();
+     // confirm that the tree was validated
+     assert null != validator.tree.hash(local_range);
+ }
+\ No newline at end of file

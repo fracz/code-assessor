@@ -1,0 +1,23 @@
+diff --git a/52b6c6d14f42de24759cefba347c4c6343921ec8 b/1534b1b923af9e3dab8b7bc4a899a9c5cd4deb26
+index 52b6c6d14f..1534b1b923 100644
+--- a/52b6c6d14f42de24759cefba347c4c6343921ec8
++++ b/1534b1b923af9e3dab8b7bc4a899a9c5cd4deb26
+@@ -1,10 +1,11 @@
+ private void skipConnect(final SelectStatement selectStatement) {
+-    if (getSqlParser().skipIfEqual(OracleKeyword.CONNECT)) {
+-        getSqlParser().accept(DefaultKeyword.BY);
++    if (!getSqlParser().skipIfEqual(OracleKeyword.CONNECT)) {
++        return;
++    }
++    getSqlParser().accept(DefaultKeyword.BY);
++    getSqlParser().skipIfEqual(OracleKeyword.PRIOR);
++    if (getSqlParser().skipIfEqual(OracleKeyword.NOCYCLE)) {
+         getSqlParser().skipIfEqual(OracleKeyword.PRIOR);
+-        if (getSqlParser().skipIfEqual(OracleKeyword.NOCYCLE)) {
+-            getSqlParser().skipIfEqual(OracleKeyword.PRIOR);
+-        }
+-        getSqlParser().parseComparisonCondition(getShardingRule(), selectStatement, Collections.<SelectItem>emptyList());
+     }
++    getSqlParser().parseComparisonCondition(getShardingRule(), selectStatement, Collections.<SelectItem>emptyList());
+ }
+\ No newline at end of file

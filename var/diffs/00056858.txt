@@ -1,0 +1,16 @@
+diff --git a/11a260f0f32196f3c321421c480d376ac04bc867 b/53d656bacd6d72ae92ac947882f077cd18b5462c
+index 11a260f0f3..53d656bacd 100644
+--- a/11a260f0f32196f3c321421c480d376ac04bc867
++++ b/53d656bacd6d72ae92ac947882f077cd18b5462c
+@@ -1,9 +1,6 @@
+ public Tree moveRB(Tree t) {
+     if (t == null) {
+         return null;
+     }
+-    for (TregexPattern pattern : moveRBTregex) {
+-        t = Tsurgeon.processPattern(pattern, moveRBTsurgeon, t);
+-    }
+-    return t;
++    return Tsurgeon.processPattern(moveRBTregex, moveRBTsurgeon, t);
+ }
+\ No newline at end of file

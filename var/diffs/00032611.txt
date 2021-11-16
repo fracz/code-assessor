@@ -1,0 +1,22 @@
+diff --git a/c9845ea40e1dc53e1ef3b22d7380a4458e11e602 b/97b27897997631d3af45e30b134fbb3d37c43fbb
+index c9845ea40e..97b2789799 100644
+--- a/c9845ea40e1dc53e1ef3b22d7380a4458e11e602
++++ b/97b27897997631d3af45e30b134fbb3d37c43fbb
+@@ -1,11 +1,13 @@
+ /**
+  * Performs routine cleanup prior to executing a write. This should be
+  * called every time a write thread acquires the segment lock, immediately
+  * after acquiring the lock.
+  */
+ @GuardedBy("Segment.this")
+ void preWriteCleanup() {
+-    expireEntries();
+-    // perform inline cleanup while under lock
+-    scheduleCleanup();
++    if (isInlineCleanup()) {
++        runLockedCleanup();
++    } else {
++        expireEntries();
++    }
+ }
+\ No newline at end of file

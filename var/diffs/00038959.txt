@@ -1,0 +1,23 @@
+diff --git a/8c3ce7eaf5bba07bc0ce0a700691acadf7ec3ab5 b/b37c1334bfc5d8942fcbef55884404cfc13edb35
+index 8c3ce7eaf5..b37c1334bf 100644
+--- a/8c3ce7eaf5bba07bc0ce0a700691acadf7ec3ab5
++++ b/b37c1334bfc5d8942fcbef55884404cfc13edb35
+@@ -1,14 +1,4 @@
+-public void waitForTextToChangeFrom(String currentValue) {
+-    long end = System.currentTimeMillis() + 10000;
+-    while (System.currentTimeMillis() < end) {
+-        if (!this.getText().matches(currentValue)) {
+-            return;
+-        }
+-        try {
+-            Thread.sleep(13);
+-        } catch (Exception e) {
+-            throw new RuntimeException(e);
+-        }
+-    }
+-    throw new RuntimeException("Element attribute did not change within a reasonable time.");
++public void waitForTextToChangeFrom(String value) {
++    Condition<ElementReference> cond = new Condition<ElementReference>(not(elementTextIs(value)), this);
++    cond.waitUntilFulfilled(10000, "Element text did not change from " + value + " within a reasonable time.");
+ }
+\ No newline at end of file

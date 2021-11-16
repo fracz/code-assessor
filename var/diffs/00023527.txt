@@ -1,0 +1,21 @@
+diff --git a/d0e5de8a42715b3c9be78f0f593b4f1215f83b05 b/86a2aff1aeddb811963f6a68485f9334c543bb2a
+index d0e5de8a42..86a2aff1ae 100644
+--- a/d0e5de8a42715b3c9be78f0f593b4f1215f83b05
++++ b/86a2aff1aeddb811963f6a68485f9334c543bb2a
+@@ -1,13 +1,8 @@
+ @Override
+ protected void onFinishInflate() {
+-    mMaxDim = mConfig.taskStackMaxDim;
+-    // By default, all views are clipped to other views in their stack
+-    mClipViewInStack = true;
+     // Bind the views
+     mBarView = (TaskBarView) findViewById(R.id.task_view_bar);
+     mThumbnailView = (TaskThumbnailView) findViewById(R.id.task_view_thumbnail);
+-    mLockToAppButtonView = findViewById(R.id.lock_to_app);
+-    if (mTaskDataLoaded) {
+-        onTaskDataLoaded();
+-    }
++    mFooterView = (TaskFooterView) findViewById(R.id.lock_to_app);
++    mFooterView.setCallbacks(this);
+ }
+\ No newline at end of file

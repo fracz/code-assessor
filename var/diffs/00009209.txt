@@ -1,0 +1,20 @@
+diff --git a/dd343c179a1ba725b07df188034be0210713d91c b/305831b2fc27fa69401a94a106114aa006785957
+index dd343c179a..305831b2fc 100644
+--- a/dd343c179a1ba725b07df188034be0210713d91c
++++ b/305831b2fc27fa69401a94a106114aa006785957
+@@ -1,9 +1,12 @@
+-public JComponent getComponent(final RadComponent ignored, final V value, final boolean inplace) {
++public JComponent getComponent(final RadComponent ignored, final V value, final InplaceContext inplaceContext) {
+     setValueFromComponent(ignored, value);
+-    if (inplace) {
++    if (inplaceContext != null) {
+         myTf.setBorder(UIUtil.getTextFieldBorder());
++        if (inplaceContext.isStartedByTyping()) {
++            myTf.setText(Character.toString(inplaceContext.getStartChar()));
++        }
+     } else {
+         myTf.setBorder(null);
+     }
+     return myTf;
+ }
+\ No newline at end of file

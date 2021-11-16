@@ -1,0 +1,22 @@
+diff --git a/063aef3bff28c2d9a515ee847369d2d41b4b6df4 b/242ded21584f5fd3d958f9b08beb9ebc3aa2a03b
+index 063aef3bff..242ded2158 100644
+--- a/063aef3bff28c2d9a515ee847369d2d41b4b6df4
++++ b/242ded21584f5fd3d958f9b08beb9ebc3aa2a03b
+@@ -1,13 +1,15 @@
+ public OEmbeddedRidBag copy() {
+     final OEmbeddedRidBag copy = new OEmbeddedRidBag();
+     copy.serializedContent = serializedContent;
+     copy.contentWasChanged = contentWasChanged;
+     copy.deserialized = deserialized;
+     copy.entries = entries;
+     copy.entriesLength = entriesLength;
+     copy.convertToRecord = convertToRecord;
+     copy.size = size;
+     copy.owner = owner;
+-    copy.changeListeners.addAll(changeListeners);
++    if (changeListeners != null) {
++        copy.changeListeners = new LinkedList<OMultiValueChangeListener<OIdentifiable, OIdentifiable>>(changeListeners);
++    }
+     return copy;
+ }
+\ No newline at end of file

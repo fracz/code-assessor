@@ -1,0 +1,12 @@
+diff --git a/0407dcdc9bdb452d44ba500b26916dcfa2f2e71a b/4382d34456d7a17ab521f0ae6eef5916b2eb7edc
+index 0407dcdc9b..4382d34456 100644
+--- a/0407dcdc9bdb452d44ba500b26916dcfa2f2e71a
++++ b/4382d34456d7a17ab521f0ae6eef5916b2eb7edc
+@@ -1,5 +1,4 @@
+ @Override
+ protected ClientTransportFactory buildTransportFactory() {
+-    return new NettyTransportFactory(channelType, channelOptions, negotiationType, null, /* protocolNegotiator */
+-    sslContext, eventLoopGroup, flowControlWindow, maxInboundMessageSize(), maxHeaderListSize, enableKeepAlive, keepAliveDelayNanos, keepAliveTimeoutNanos);
++    return new NettyTransportFactory(dynamicParamsFactory, channelType, channelOptions, negotiationType, sslContext, eventLoopGroup, flowControlWindow, maxInboundMessageSize(), maxHeaderListSize, enableKeepAlive, keepAliveDelayNanos, keepAliveTimeoutNanos);
+ }
+\ No newline at end of file

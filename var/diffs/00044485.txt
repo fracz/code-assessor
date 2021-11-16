@@ -1,0 +1,14 @@
+diff --git a/e876245ce37353a6f28bed2b79b1421a4eda844c b/912488e7dc7086cfb214eeba2ec89163e65f9b90
+index e876245ce3..912488e7dc 100644
+--- a/e876245ce37353a6f28bed2b79b1421a4eda844c
++++ b/912488e7dc7086cfb214eeba2ec89163e65f9b90
+@@ -1,7 +1,6 @@
+ @Override
+-public Map<String, String> read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
++public void read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
+     final ODocument result = new ODocument();
+     result.fromStream(network.readBytes());
+     databases = result.field("databases");
+-    return databases;
+ }
+\ No newline at end of file

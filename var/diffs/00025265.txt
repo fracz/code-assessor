@@ -1,0 +1,17 @@
+diff --git a/ed06e7c32406041570275ae1f984f2bf857e07ef b/3f8bcbb5d6a249efc55a8c6b8ed4fb6da1f860ff
+index ed06e7c324..3f8bcbb5d6 100644
+--- a/ed06e7c32406041570275ae1f984f2bf857e07ef
++++ b/3f8bcbb5d6a249efc55a8c6b8ed4fb6da1f860ff
+@@ -1,7 +1,7 @@
+ @Test
+ public void shouldPutIfAbsent() {
+-    store.putIfAbsent("b", "2");
+-    assertTrue(store.get("b").equals("2"));
+-    store.putIfAbsent("b", "3");
+-    assertTrue(store.get("b").equals("2"));
++    store.putIfAbsent(bytesKey("b"), bytesValue("2"));
++    assertThat(store.get(bytesKey("b")), equalTo(bytesValue("2")));
++    store.putIfAbsent(bytesKey("b"), bytesValue("3"));
++    assertThat(store.get(bytesKey("b")), equalTo(bytesValue("2")));
+ }
+\ No newline at end of file

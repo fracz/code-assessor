@@ -1,0 +1,18 @@
+diff --git a/03de25aa94fc9df1c2fa7e9310eb36b690a32276 b/434076d4a65dae76704d1ff30da1210f88f42be1
+index 03de25aa94..434076d4a6 100644
+--- a/03de25aa94fc9df1c2fa7e9310eb36b690a32276
++++ b/434076d4a65dae76704d1ff30da1210f88f42be1
+@@ -1,7 +1,11 @@
+ /**
+  * Cast <code>node</code> to an XmlNode, or null if RubyNil, or
+  * raise a type error in <code>context</code>.
+  */
+ protected static XmlNode asXmlNodeOrNull(ThreadContext context, IRubyObject node) {
+-    return _asXmlNode(context, node, true);
++    if (node == null || node.isNil()) {
++        return null;
++    } else {
++        return asXmlNode(context, node);
++    }
+ }
+\ No newline at end of file

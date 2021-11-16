@@ -1,0 +1,15 @@
+diff --git a/dcbce42d76593bb6e3fb3aa739440eada01da7c4 b/e41ebd352ff036b24a2d4838504f6a8c945266cd
+index dcbce42d76..e41ebd352f 100644
+--- a/dcbce42d76593bb6e3fb3aa739440eada01da7c4
++++ b/e41ebd352ff036b24a2d4838504f6a8c945266cd
+@@ -1,8 +1,8 @@
+ /**
+  * Checkout the given branch.
+  */
+ public void checkout(String branchName) throws IOException {
+-    execute(true, "checkout", branchName);
++    myRunEnv.run("checkout", branchName);
+     // need to refresh the root directory, because checkouting a branch changes files on disk, but VFS is unaware of it.
+     refresh();
+ }
+\ No newline at end of file

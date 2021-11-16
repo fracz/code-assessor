@@ -1,0 +1,16 @@
+diff --git a/8fa3531a93c312200a20bbdc1834d8ae8f63a0f1 b/c8861d152dfe87d30c28dd2b5af0792923e4be0b
+index 8fa3531a93..c8861d152d 100644
+--- a/8fa3531a93c312200a20bbdc1834d8ae8f63a0f1
++++ b/c8861d152dfe87d30c28dd2b5af0792923e4be0b
+@@ -1,9 +1,4 @@
+ private void initSessionTab() {
+-    mySessionTab = new XDebugSessionTab(myProject, mySessionName, myIcon);
+-    if (myEnvironment != null) {
+-        mySessionTab.setEnvironment(myEnvironment);
+-    }
+-    Disposer.register(myProject, mySessionTab);
+-    mySessionTab.attachToSession(this, myRunner, myEnvironment, mySessionData, myConsoleView);
++    mySessionTab = new XDebugSessionTab(myProject, this, myIcon, myEnvironment, myRunner);
+     myDebugProcess.sessionInitialized();
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/fcab5e7ae6d705b3e9152e6b2e9ba1c7ec2cee43 b/ecdce73871904f67cae0867c0616142cca1d058f
+index fcab5e7ae6..ecdce73871 100644
+--- a/fcab5e7ae6d705b3e9152e6b2e9ba1c7ec2cee43
++++ b/ecdce73871904f67cae0867c0616142cca1d058f
+@@ -1,8 +1,4 @@
+ @Override
+ public Object getProperty(final String s) {
+-    final Optional<MongoDbProperty> p = list.stream().filter(prop -> prop.getName().equals(s)).findFirst();
+-    if (p.isPresent()) {
+-        return p.get().getValue();
+-    }
+-    return null;
++    return list.stream().filter(prop -> prop.getName().equals(s)).findFirst().map(MongoDbProperty::getValue).orElse(null);
+ }
+\ No newline at end of file

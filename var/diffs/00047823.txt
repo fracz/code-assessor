@@ -1,0 +1,21 @@
+diff --git a/1dd5e2bae7a276e6da4f9ba8bc2410c0980ba818 b/1af9670f79abaaf1f99c58e2701119d6b61a3908
+index 1dd5e2bae7..1af9670f79 100644
+--- a/1dd5e2bae7a276e6da4f9ba8bc2410c0980ba818
++++ b/1af9670f79abaaf1f99c58e2701119d6b61a3908
+@@ -1,6 +1,10 @@
+-private VTDNav parse(FsFile xmlFile) throws Exception {
+-    byte[] bytes = xmlFile.getBytes();
+-    vtdGen.setDoc(bytes);
+-    vtdGen.parse(true);
+-    return vtdGen.getNav();
++private VTDNav parse(FsFile xmlFile) {
++    try {
++        byte[] bytes = xmlFile.getBytes();
++        vtdGen.setDoc(bytes);
++        vtdGen.parse(true);
++        return vtdGen.getNav();
++    } catch (Exception e) {
++        throw new RuntimeException("Error parsing " + xmlFile, e);
++    }
+ }
+\ No newline at end of file

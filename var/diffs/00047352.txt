@@ -1,0 +1,11 @@
+diff --git a/81689f41c689cc2c81a1c35da57e23af707149c6 b/47a5cbcab215d258e3405e9eb78daf0b6618dfff
+index 81689f41c6..47a5cbcab2 100644
+--- a/81689f41c689cc2c81a1c35da57e23af707149c6
++++ b/47a5cbcab215d258e3405e9eb78daf0b6618dfff
+@@ -1,3 +1,3 @@
+-private <T, R> void async(MultiDecoder<Object> messageDecoder, RedisCommand<T> command, Object... params) {
+-    channel.writeAndFlush(new CommandData<T, R>(null, messageDecoder, null, command, params));
++private <T, R> ChannelFuture async(MultiDecoder<Object> messageDecoder, RedisCommand<T> command, Object... params) {
++    return channel.writeAndFlush(new CommandData<T, R>(null, messageDecoder, null, command, params));
+ }
+\ No newline at end of file

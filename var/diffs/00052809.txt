@@ -1,0 +1,16 @@
+diff --git a/01c1fd6bf8306470163284acd25005b70a9f6459 b/9148ff8dc71acb4c1a8ce66b3c11c4d7fd4bc09b
+index 01c1fd6bf8..9148ff8dc7 100644
+--- a/01c1fd6bf8306470163284acd25005b70a9f6459
++++ b/9148ff8dc71acb4c1a8ce66b3c11c4d7fd4bc09b
+@@ -1,9 +1,9 @@
+ private int skipSingleLineComment(final int commentFlagLength) {
+     int position = offset + commentFlagLength;
+     int length = commentFlagLength;
+-    while (CharTypes.EOI != charAt(position) && '\n' != charAt(position)) {
++    while (!CharType.isEndOfInput(charAt(position)) && '\n' != charAt(position)) {
+         position++;
+         length++;
+     }
+     return offset + length + 1;
+ }
+\ No newline at end of file

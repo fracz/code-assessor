@@ -1,0 +1,15 @@
+diff --git a/7e5b7ddae2a62aceee348f7f50cb8a96ae944be0 b/947b3640801903bed6dc517754a4551320155a31
+index 7e5b7ddae2..947b364080 100644
+--- a/7e5b7ddae2a62aceee348f7f50cb8a96ae944be0
++++ b/947b3640801903bed6dc517754a4551320155a31
+@@ -1,8 +1,8 @@
+ private Node expr(TokenStream ts, boolean inForInit) throws IOException, JavaScriptException {
+-    CodePosition position = getNextTokenPosition(ts);
+     Node pn = assignExpr(ts, inForInit);
+     while (ts.matchToken(TokenStream.COMMA)) {
++        CodePosition position = ts.tokenPosition;
+         pn = nf.createBinary(TokenStream.COMMA, pn, assignExpr(ts, inForInit), position);
+     }
+     return pn;
+ }
+\ No newline at end of file

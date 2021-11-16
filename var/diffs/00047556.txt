@@ -1,0 +1,16 @@
+diff --git a/8c9d23f6fe798f6cc514ca4b4c081238a8a78b1d b/f665b07ddf03b6f1f06f13373590d41c071523e2
+index 8c9d23f6fe..f665b07ddf 100644
+--- a/8c9d23f6fe798f6cc514ca4b4c081238a8a78b1d
++++ b/f665b07ddf03b6f1f06f13373590d41c071523e2
+@@ -1,7 +1,7 @@
+ @Override
+ public Decoder<Object> getDecoder(int paramNum, State state) {
+-    if (paramNum % 2 == 0) {
+-        return codec.getValueDecoder();
++    if (paramNum % 2 != 0) {
++        return DoubleCodec.INSTANCE.getValueDecoder();
+     }
+-    return DoubleCodec.INSTANCE.getValueDecoder();
++    return null;
+ }
+\ No newline at end of file

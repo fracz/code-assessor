@@ -1,0 +1,13 @@
+diff --git a/2b362784d96053f50d820ca8a6d35fe32e431fae b/ab4c5ed3139c83121513ea56f46a04c585d34972
+index 2b362784d9..ab4c5ed313 100644
+--- a/2b362784d96053f50d820ca8a6d35fe32e431fae
++++ b/ab4c5ed3139c83121513ea56f46a04c585d34972
+@@ -1,6 +1,6 @@
+ @Override
+ public void shutdown() throws IOException {
+     LOG.info("Shutting down GCS testing cluster, deleting bucket contents in: " + mGCSBucket);
+     UnderFileSystem ufs = UnderFileSystem.get(mGCSBucket);
+-    ufs.deleteDirectory(mGCSBucket, new DeleteOptions().setRecursive(true));
++    ufs.deleteDirectory(mGCSBucket, DeleteOptions.defaults().setRecursive(true));
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/bc5835c888901d55cb43258d8bc2b2c490ff2dea b/e5f384b538598ccace4a5338c228e0db9566cd17
+index bc5835c888..e5f384b538 100644
+--- a/bc5835c888901d55cb43258d8bc2b2c490ff2dea
++++ b/e5f384b538598ccace4a5338c228e0db9566cd17
+@@ -1,11 +1,11 @@
+ @Nullable
+ public static HighlightInfo checkFinalVariableInitializedInLoop(PsiReferenceExpression expression, PsiElement resolved) {
+     if (ControlFlowUtil.isVariableAssignedInLoop(expression, resolved)) {
+         String description = JavaErrorMessages.message("variable.assigned.in.loop", ((PsiVariable) resolved).getName());
+-        final HighlightInfo highlightInfo = HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, expression, description);
++        final HighlightInfo highlightInfo = HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(expression).descriptionAndTooltip(description).create();
+         IntentionAction fix = QUICK_FIX_FACTORY.createModifierListFix((PsiVariable) resolved, PsiModifier.FINAL, false, false);
+         QuickFixAction.registerQuickFixAction(highlightInfo, fix);
+         return highlightInfo;
+     }
+     return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/28161ec0f1399351392a085fba9c1aa472e02422 b/3b3cbae3f026fca2969b2d7993adb5a191739099
+index 28161ec0f1..3b3cbae3f0 100644
+--- a/28161ec0f1399351392a085fba9c1aa472e02422
++++ b/3b3cbae3f026fca2969b2d7993adb5a191739099
+@@ -1,4 +1,4 @@
+-private StoreTransaction overrideTimestamp(final StoreTransaction tx, final long ts) throws StorageException {
+-    StandardTransactionConfig newCfg = new StandardTransactionConfig.Builder(tx.getConfiguration(), ts).build();
++private StoreTransaction overrideTimestamp(final StoreTransaction tx, final Timepoint t) throws StorageException {
++    StandardTransactionConfig newCfg = new StandardTransactionConfig.Builder(tx.getConfiguration()).timestamp(t).build();
+     return manager.beginTransaction(newCfg);
+ }
+\ No newline at end of file

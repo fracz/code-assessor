@@ -1,0 +1,18 @@
+diff --git a/8b894cda8fc84c04fe74b4a749325eddb20a166b b/3e53028e33781b28b0ba8320a237af1e22e59d2d
+index 8b894cda8f..3e53028e33 100644
+--- a/8b894cda8fc84c04fe74b4a749325eddb20a166b
++++ b/3e53028e33781b28b0ba8320a237af1e22e59d2d
+@@ -1,10 +1,10 @@
+ public void tearDown() throws Exception {
+-    FileEditorManager editorManager = FileEditorManager.getInstance(getProject());
++    FileEditorManager editorManager = FileEditorManager.getInstance(myProjectFixture.getProject());
+     VirtualFile[] openFiles = editorManager.getOpenFiles();
+     for (VirtualFile openFile : openFiles) {
+         editorManager.closeFile(openFile);
+     }
+     myEditor = null;
+     myTempDirFixture.tearDown();
+-    super.tearDown();
++    myProjectFixture.tearDown();
+ }
+\ No newline at end of file

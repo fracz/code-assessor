@@ -1,0 +1,18 @@
+diff --git a/d0064729266804513c89d22dfd0bccf88d5f0ca3 b/516cdb9aade0404634036c4707bd6ce0044d216a
+index d006472926..516cdb9aad 100644
+--- a/d0064729266804513c89d22dfd0bccf88d5f0ca3
++++ b/516cdb9aade0404634036c4707bd6ce0044d216a
+@@ -1,9 +1,8 @@
+ @Nullable
+ public String getEnteredName() {
+-    // todo add validator!
+-    if (myNameSelector.getSelectedItem() instanceof String && ((String) myNameSelector.getSelectedItem()).length() > 0) {
+-        return (String) myNameSelector.getSelectedItem();
++    if (myNameComboBox.getEditor().getItem() instanceof String && ((String) myNameComboBox.getEditor().getItem()).length() > 0) {
++        return (String) myNameComboBox.getEditor().getItem();
+     } else {
+-        return "preved";
++        return null;
+     }
+ }
+\ No newline at end of file

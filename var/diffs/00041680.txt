@@ -1,0 +1,24 @@
+diff --git a/dbbb179e05d1a452bc78f93f412985c85692a41a b/599c8d6c0a5d98cc24d1c779b72e2a02a63271fc
+index dbbb179e05..599c8d6c0a 100644
+--- a/dbbb179e05d1a452bc78f93f412985c85692a41a
++++ b/599c8d6c0a5d98cc24d1c779b72e2a02a63271fc
+@@ -1,11 +1,17 @@
+ @Override
+ public void run() {
+     try {
+-        T inRes = read.execute(network, session);
++        T inRes;
++        try {
++            beginResponse(network, session);
++            inRes = response.read(network, session);
++        } finally {
++            endResponse(network);
++        }
+         callback.call(recordId, inRes);
+         connectionManager.release(network);
+     } catch (Throwable e) {
+         connectionManager.remove(network);
+         OLogManager.instance().error(this, "Exception on async query", e);
+     }
+ }
+\ No newline at end of file

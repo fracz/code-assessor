@@ -1,0 +1,18 @@
+diff --git a/14fd975b1cf9e755e38fec809a55b37f1bbfdc3b b/2c25667f0e5e6b3e123989b6df3523c6b11582f8
+index 14fd975b1c..2c25667f0e 100644
+--- a/14fd975b1cf9e755e38fec809a55b37f1bbfdc3b
++++ b/2c25667f0e5e6b3e123989b6df3523c6b11582f8
+@@ -1,11 +1,5 @@
+ public void put(K key, V value) {
+     synchronized (_lock) {
+-        Iterator<HashMap<K, V>> it = _buckets.iterator();
+-        HashMap<K, V> bucket = it.next();
+-        bucket.put(key, value);
+-        while (it.hasNext()) {
+-            bucket = it.next();
+-            bucket.remove(key);
+-        }
++        super.put(key, value);
+     }
+ }
+\ No newline at end of file

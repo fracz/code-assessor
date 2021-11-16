@@ -1,0 +1,22 @@
+diff --git a/9f7da9a08ed8b826362345effa146bbe4cf8c484 b/d767dbc9b1dcf802bcda073f7138a7434ab3dde5
+index 9f7da9a08e..d767dbc9b1 100644
+--- a/9f7da9a08ed8b826362345effa146bbe4cf8c484
++++ b/d767dbc9b1dcf802bcda073f7138a7434ab3dde5
+@@ -1,12 +1,6 @@
+-public void setProcessorProperties(IWizardPage page, Map<Object, Object> properties) {
+-    for (NodeSettings nodeSettings : this.nodeSettings.values()) {
+-        if (nodeSettings.pages != null) {
+-            for (IWizardPage nodePage : nodeSettings.pages) {
+-                if (nodePage == page) {
+-                    nodeSettings.processorProperties.putAll(properties);
+-                    break;
+-                }
+-            }
+-        }
++public void setProcessorProperties(Map<Object, Object> properties) {
++    if (processor == null) {
++        throw new IllegalStateException("No processor selected");
+     }
++    processorPropsHistory.put(processor, properties);
+ }
+\ No newline at end of file

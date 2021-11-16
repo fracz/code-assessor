@@ -1,0 +1,17 @@
+diff --git a/37d173949a59a28cc2f08586e04fcb5d9397a225 b/c8ba38e2934a8a884db320dcb5acc7ff749ebb49
+index 37d173949a..c8ba38e293 100644
+--- a/37d173949a59a28cc2f08586e04fcb5d9397a225
++++ b/c8ba38e2934a8a884db320dcb5acc7ff749ebb49
+@@ -1,7 +1,6 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiExpression expression = (PsiExpression) location;
+-    final PsiType type = expression.getType();
+-    final PsiType expectedType = ExpectedTypeUtils.findExpectedType(expression, true);
+-    assert expectedType != null;
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiType type = (PsiType) infos[0];
++    final PsiType expectedType = (PsiType) infos[1];
+     return InspectionGadgetsBundle.message("implicit.numeric.conversion.problem.descriptor", type.getPresentableText(), expectedType.getPresentableText());
+ }
+\ No newline at end of file

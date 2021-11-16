@@ -1,0 +1,21 @@
+diff --git a/221f0ab9181db06cd2f2f15a2375dee4bd8f5505 b/351ad883eb76491da7833b69323a8cb5ed15fa12
+index 221f0ab918..351ad883eb 100644
+--- a/221f0ab9181db06cd2f2f15a2375dee4bd8f5505
++++ b/351ad883eb76491da7833b69323a8cb5ed15fa12
+@@ -1,12 +1,12 @@
+ @Test
+ public void mustRollback() {
+-    writeOneTransaction(1);
++    SharedGroup db = new SharedGroup(createDBFileName(), SharedGroup.Durability.ASYNC);
++    writeOneTransaction(db, 1);
+     WriteTransaction trans = db.beginWrite();
+     Table tbl = trans.getTable("EmployeeTable");
+     tbl.add("Hello", 1);
+     assertEquals(2, tbl.size());
+     trans.rollback();
+     // Only 1 row now.
+-    checkRead(1);
+-    clear();
++    checkRead(db, 1);
+ }
+\ No newline at end of file

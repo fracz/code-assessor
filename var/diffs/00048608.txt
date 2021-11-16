@@ -1,0 +1,13 @@
+diff --git a/1ca39510f5ac061fadd4c82c3cb1f4c4ad757d76 b/b652889abc44432f3d8995da9ffbe6149f8da6d6
+index 1ca39510f5..b652889abc 100644
+--- a/1ca39510f5ac061fadd4c82c3cb1f4c4ad757d76
++++ b/b652889abc44432f3d8995da9ffbe6149f8da6d6
+@@ -1,4 +1,5 @@
+ @Override
+-public List<DBNDataSource> getChildren(DBRProgressMonitor monitor) throws DBException {
+-    return getDataSources();
++public DBNDataSource[] getChildren(DBRProgressMonitor monitor) throws DBException {
++    final List<DBNDataSource> dataSources = getDataSources();
++    return dataSources.toArray(new DBNDataSource[dataSources.size()]);
+ }
+\ No newline at end of file

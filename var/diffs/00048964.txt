@@ -1,0 +1,23 @@
+diff --git a/e750c0369d8fba6f107b3a17efe03679a5629187 b/900d0b3bff11a7addbb3b130408ef8480c0ebdb8
+index e750c0369d..900d0b3bff 100644
+--- a/e750c0369d8fba6f107b3a17efe03679a5629187
++++ b/900d0b3bff11a7addbb3b130408ef8480c0ebdb8
+@@ -1,12 +1,16 @@
+ @Override
+ public CellEditor createPropertyEditor(Composite parent) {
+-    final Object object = getSource().getEditableValue();
++    IPropertySource source = getSource();
++    if (source == null) {
++        return null;
++    }
++    final Object object = source.getEditableValue();
+     if (!isEditable(object)) {
+         return null;
+     }
+     if (valueEditor != null) {
+         return valueEditor.createCellEditor(parent, object, propInfo);
+     } else {
+         return createCellEditor(parent, object, this);
+     }
+ }
+\ No newline at end of file

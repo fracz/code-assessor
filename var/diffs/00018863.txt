@@ -1,0 +1,18 @@
+diff --git a/c86c2e12d08c0a45a7ad024808e4eb72912dd0ea b/b41091910ea253cefc9cfb6df7112768774b256a
+index c86c2e12d0..b41091910e 100644
+--- a/c86c2e12d08c0a45a7ad024808e4eb72912dd0ea
++++ b/b41091910ea253cefc9cfb6df7112768774b256a
+@@ -1,5 +1,9 @@
+-private String processSinglePartMessage(String prefix, byte[] decodedMessage) {
++private IncomingTextMessage processSinglePartMessage(MultipartTransportMessage message) {
+     Log.w("MultipartMessageHandler", "Processing single part message...");
+-    decodedMessage[MULTIPART_OFFSET] = decodedMessage[VERSION_OFFSET];
+-    return prefix + Base64.encodeBytesWithoutPadding(decodedMessage, 1, decodedMessage.length - 1);
++    String strippedMessage = Base64.encodeBytesWithoutPadding(message.getStrippedMessage());
++    if (message.getWireType() == MultipartTransportMessage.WIRETYPE_KEY) {
++        return new IncomingKeyExchangeMessage(message.getBaseMessage(), strippedMessage);
++    } else {
++        return new IncomingEncryptedMessage(message.getBaseMessage(), strippedMessage);
++    }
+ }
+\ No newline at end of file

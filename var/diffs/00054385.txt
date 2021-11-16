@@ -1,0 +1,19 @@
+diff --git a/7ff23e8a1edb7f024450f8f1938864470f415e6b b/f0dc6347aa18bab1d36bcced8954d99cc21dd109
+index 7ff23e8a1e..f0dc6347aa 100644
+--- a/7ff23e8a1edb7f024450f8f1938864470f415e6b
++++ b/f0dc6347aa18bab1d36bcced8954d99cc21dd109
+@@ -1,11 +1,10 @@
+ /**
+  * 开始计时.
+  *
+  * @param name 度量目标名称
+  *
+  * @return 计时上下文
+  */
+-public static Context start(final String... name) {
+-    MetricsContext context = ThreadLocalObjectContainer.getItem(MetricsContext.class);
+-    return null == context ? null : context.metricRegistry.timer(MetricRegistry.name(Joiner.on("-").join(name))).time();
++public static Timer.Context start(final String name) {
++    return null == HOLDER.get() ? null : HOLDER.get().timer(MetricRegistry.name(name)).time();
+ }
+\ No newline at end of file

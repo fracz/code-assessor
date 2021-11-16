@@ -1,0 +1,31 @@
+diff --git a/a74e2be8c047c60c76e1fb741c46920b1072f630 b/3ff5071d6a58b96c1783224f8990b2041c316b64
+index a74e2be8c0..3ff5071d6a 100644
+--- a/a74e2be8c047c60c76e1fb741c46920b1072f630
++++ b/3ff5071d6a58b96c1783224f8990b2041c316b64
+@@ -1,20 +1,20 @@
+ private void _deserialize_endCheck(Context context, MethodVisitor mw, Label reset_) {
+     // Label nextToken_ = new Label();
+     // mw.visitFieldInsn(GETSTATIC, getType(System.class), "out", "Ljava/io/PrintStream;");
+     // mw.visitIntInsn(ILOAD, context.var("matchedCount"));
+     // mw.visitMethodInsn(INVOKEVIRTUAL, getType(java.io.PrintStream.class), "println", "(I)V");
+     mw.visitIntInsn(ILOAD, context.var("matchedCount"));
+     mw.visitJumpInsn(IFLE, reset_);
+     // mw.visitFieldInsn(GETSTATIC, getType(System.class), "out", "Ljava/io/PrintStream;");
+     // mw.visitVarInsn(ALOAD, context.var("lexer"));
+-    // mw.visitMethodInsn(INVOKEVIRTUAL, "com/alibaba/fastjson/parser/JSONLexerBase", "token", "()I");
++    // mw.visitMethodInsn(INVOKEVIRTUAL, JSONLexerBase, "token", "()I");
+     // mw.visitMethodInsn(INVOKEVIRTUAL, getType(java.io.PrintStream.class), "println", "(I)V");
+     mw.visitVarInsn(ALOAD, context.var("lexer"));
+-    mw.visitMethodInsn(INVOKEVIRTUAL, "com/alibaba/fastjson/parser/JSONLexerBase", "token", "()I");
+-    mw.visitFieldInsn(GETSTATIC, "com/alibaba/fastjson/parser/JSONToken", "RBRACE", "I");
++    mw.visitMethodInsn(INVOKEVIRTUAL, JSONLexerBase, "token", "()I");
++    mw.visitFieldInsn(GETSTATIC, JSONToken, "RBRACE", "I");
+     mw.visitJumpInsn(IF_ICMPNE, reset_);
+     // mw.visitLabel(nextToken_);
+     mw.visitVarInsn(ALOAD, context.var("lexer"));
+-    mw.visitFieldInsn(GETSTATIC, "com/alibaba/fastjson/parser/JSONToken", "COMMA", "I");
+-    mw.visitMethodInsn(INVOKEVIRTUAL, "com/alibaba/fastjson/parser/JSONLexerBase", "nextToken", "(I)V");
++    mw.visitFieldInsn(GETSTATIC, JSONToken, "COMMA", "I");
++    mw.visitMethodInsn(INVOKEVIRTUAL, JSONLexerBase, "nextToken", "(I)V");
+ }
+\ No newline at end of file

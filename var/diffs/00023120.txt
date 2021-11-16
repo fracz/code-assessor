@@ -1,0 +1,18 @@
+diff --git a/057e15928b2ad449d3bb34db092908e4ac967ed0 b/26eca23e98807937a68dbcb6ac97053d87efddcc
+index 057e15928b..26eca23e98 100644
+--- a/057e15928b2ad449d3bb34db092908e4ac967ed0
++++ b/26eca23e98807937a68dbcb6ac97053d87efddcc
+@@ -1,10 +1,9 @@
+ @Override
+ public void onChange(boolean selfChange, Uri uri) {
+     if (enabledPrintServicesUri.equals(uri)) {
+         synchronized (mLock) {
+-            if (readEnabledPrintServicesChangedLocked()) {
+-                onUserStateChangedLocked();
+-            }
++            UserState userState = getCurrentUserStateLocked();
++            userState.updateIfNeededLocked();
+         }
+     }
+ }
+\ No newline at end of file

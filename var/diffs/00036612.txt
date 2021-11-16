@@ -1,0 +1,19 @@
+diff --git a/1ccf836aab0855b5b992e0ed0888cea7ca2f6b5c b/04e34f8a178a8de104826901c76c7546233ce7e0
+index 1ccf836aab..04e34f8a17 100644
+--- a/1ccf836aab0855b5b992e0ed0888cea7ca2f6b5c
++++ b/04e34f8a178a8de104826901c76c7546233ce7e0
+@@ -1,11 +1,10 @@
+ @RequestMapping(value = "/nimm/1")
+ @ResponseBody
+-public String npc(Model model) {
++public String npc() {
+     try {
+         nimm.testInvoke();
+     } catch (Exception e) {
+-        e.printStackTrace();
+-        return e.getMessage();
++        throw new RuntimeException(e);
+     }
+     return "OK";
+ }
+\ No newline at end of file

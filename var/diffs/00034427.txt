@@ -1,0 +1,22 @@
+diff --git a/3a6aec370217cbe610c7974c2b8fdf21b7dff1b5 b/0105fea4d3e551266b17c621a701923ca62b4e67
+index 3a6aec3702..0105fea4d3 100644
+--- a/3a6aec370217cbe610c7974c2b8fdf21b7dff1b5
++++ b/0105fea4d3e551266b17c621a701923ca62b4e67
+@@ -1,14 +1,14 @@
+ /**
+  * Collect attachment parts of a message.
+  * @return A list of parts regarded as attachments.
+  * @throws MessagingException In case of an error.
+  */
+ public static List<Part> collectAttachments(Message message) throws MessagingException {
+     try {
+-        List<Part> attachments = new ArrayList<Part>();
+-        getViewables(message, attachments);
++        List<Part> attachments = new ArrayList<>();
++        findViewablesAndAttachments(message, new ArrayList<Viewable>(), attachments);
+         return attachments;
+     } catch (Exception e) {
+         throw new MessagingException("Couldn't collect attachment parts", e);
+     }
+ }
+\ No newline at end of file

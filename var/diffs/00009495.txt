@@ -1,0 +1,22 @@
+diff --git a/eded698545aeb341a49b4f0f1d9bc57fc166da7b b/4eddd8d3eb34aeba8a01847e931ba5c11ce49e62
+index eded698545..4eddd8d3eb 100644
+--- a/eded698545aeb341a49b4f0f1d9bc57fc166da7b
++++ b/4eddd8d3eb34aeba8a01847e931ba5c11ce49e62
+@@ -1,12 +1,13 @@
+-private PsiMethod generateMethodPrototype(PsiField field, String methodName, boolean isGetter) {
++private static PsiMethod generateMethodPrototype(PsiField field, String methodName, boolean isGetter) {
+     PsiMethod prototype = isGetter ? GenerateMembersUtil.generateGetterPrototype(field) : GenerateMembersUtil.generateSetterPrototype(field);
+     try {
+         PsiElementFactory factory = JavaPsiFacade.getInstance(field.getProject()).getElementFactory();
+         PsiIdentifier identifier = factory.createIdentifier(methodName);
+-        prototype.getNameIdentifier().replace(identifier);
+-        // prototype.getModifierList().setModifierProperty(getAccessorsVisibility(), true);
++        final PsiIdentifier originalIdentifier = prototype.getNameIdentifier();
++        assert originalIdentifier != null;
++        originalIdentifier.replace(identifier);
+         return prototype;
+     } catch (IncorrectOperationException e) {
+         return null;
+     }
+ }
+\ No newline at end of file

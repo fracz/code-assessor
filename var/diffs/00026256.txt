@@ -1,0 +1,18 @@
+diff --git a/6341c60c4c0b0832d2a7e35902f7276baaf7f3ba b/048e94e955b4e087eff004eaa480cb0faf806032
+index 6341c60c4c..048e94e955 100644
+--- a/6341c60c4c0b0832d2a7e35902f7276baaf7f3ba
++++ b/048e94e955b4e087eff004eaa480cb0faf806032
+@@ -1,9 +1,9 @@
+ protected void checkComputesConsistentKeys() throws Exception {
+-    ActionTester.runTest(4, new ActionTester.ActionCombinationFactory() {
++    ActionTester.runTest(KeyAttributes.class, new ActionTester.ActionCombinationFactory<KeyAttributes>() {
+
+         @Override
+-        public Action generate(int i) {
+-            return createAction(NULL_ACTION_OWNER, outputArtifact, (i & 1) == 0 ? "0" : "1", (i & 2) == 0);
++        public Action generate(ImmutableSet<KeyAttributes> attributesToFlip) {
++            return createAction(NULL_ACTION_OWNER, outputArtifact, attributesToFlip.contains(KeyAttributes.DATA) ? "0" : "1", attributesToFlip.contains(KeyAttributes.MAKE_EXECUTABLE));
+         }
+     });
+ }
+\ No newline at end of file

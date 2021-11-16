@@ -1,0 +1,19 @@
+diff --git a/baafb4617182c7f2ddcdc55d3e7b0ffc08f193bf b/8261bb5b46fa25bfe739492ad8587d26981ef977
+index baafb46171..8261bb5b46 100644
+--- a/baafb4617182c7f2ddcdc55d3e7b0ffc08f193bf
++++ b/8261bb5b46fa25bfe739492ad8587d26981ef977
+@@ -1,11 +1,12 @@
+ @Override
+ public void stopForeground(boolean removeNotification) {
+-    if (getService() == null) {
++    if (!isConnected()) {
++        DownloadServiceNotConnectedHelper.stopForeground(removeNotification);
+         return;
+     }
+     try {
+         getService().stopForeground(removeNotification);
+     } catch (RemoteException e) {
+         e.printStackTrace();
+     }
+ }
+\ No newline at end of file

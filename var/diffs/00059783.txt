@@ -1,0 +1,17 @@
+diff --git a/23560e725b9338fb2e9578cd951e199a133f1d5f b/fb1bfb17bf96143982e2199570c5470f9d74393a
+index 23560e725b..fb1bfb17bf 100644
+--- a/23560e725b9338fb2e9578cd951e199a133f1d5f
++++ b/fb1bfb17bf96143982e2199570c5470f9d74393a
+@@ -1,6 +1,6 @@
+-private long maxWaitTime() {
+-    if (!toSend.isEmpty())
+-        return Math.max(0, maxSendDelay - timeSinceFirstMsg());
+-    else
+-        return Long.MAX_VALUE;
++private Duration maxWaitTime() {
++    if (!toSend.isEmpty()) {
++        return maxSendDelay.sub(timeSinceFirstMsg());
++    }
++    return FOREVER;
+ }
+\ No newline at end of file

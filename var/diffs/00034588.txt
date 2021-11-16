@@ -1,0 +1,13 @@
+diff --git a/61261ed837a071cd950af47cf753aed7a4be7a7b b/be9e17bec593faea7cd481dfff05bba2afa4d480
+index 61261ed837..be9e17bec5 100644
+--- a/61261ed837a071cd950af47cf753aed7a4be7a7b
++++ b/be9e17bec593faea7cd481dfff05bba2afa4d480
+@@ -1,3 +1,5 @@
+-private void startSignup(@NonNull final LoginReason loginReason) {
+-    startActivityForLoginFlow(SignupActivity.class, loginReason);
++private void startSignup() {
++    final Intent intent = new Intent(this, SignupActivity.class);
++    startActivityForResult(intent, ActivityRequestCodes.LOGIN_FLOW);
++    TransitionUtils.slideInFromRight(this);
+ }
+\ No newline at end of file

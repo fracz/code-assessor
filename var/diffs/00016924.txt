@@ -1,0 +1,16 @@
+diff --git a/481c2ecb41301c191aecab134a2940edb4280e3a b/33b5d51bd5f2b3d6c7c966a6de3d06e488dabfaf
+index 481c2ecb41..33b5d51bd5 100644
+--- a/481c2ecb41301c191aecab134a2940edb4280e3a
++++ b/33b5d51bd5f2b3d6c7c966a6de3d06e488dabfaf
+@@ -1,9 +1,9 @@
+ @Nullable
+ private static PsiClass getClassObjectPsiClass(@NotNull PsiClass ownerClass) {
+     for (PsiClass inner : ownerClass.getInnerClasses()) {
+-        if (inner.getName().equals(JvmAbi.CLASS_OBJECT_CLASS_NAME)) {
++        if (JetClassObjectAnnotation.get(inner).isDefined()) {
+             return inner;
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

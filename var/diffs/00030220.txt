@@ -1,0 +1,16 @@
+diff --git a/75f7f50cb9a9cfee36362a42e8a3bcd9886ab820 b/5f0daea8ddd45201645a6ac0af7cf580ddfc2f07
+index 75f7f50cb9..5f0daea8dd 100644
+--- a/75f7f50cb9a9cfee36362a42e8a3bcd9886ab820
++++ b/5f0daea8ddd45201645a6ac0af7cf580ddfc2f07
+@@ -1,9 +1,8 @@
+ @Override
+ protected Query doToQuery(QueryShardContext context) throws IOException {
+     Query includeQuery = this.include.toQuery(context);
+     assert includeQuery instanceof SpanQuery;
+     Query excludeQuery = this.exclude.toQuery(context);
+     assert excludeQuery instanceof SpanQuery;
+-    SpanNotQuery query = new SpanNotQuery((SpanQuery) includeQuery, (SpanQuery) excludeQuery, pre, post);
+-    return query;
++    return new SpanNotQuery((SpanQuery) includeQuery, (SpanQuery) excludeQuery, pre, post);
+ }
+\ No newline at end of file

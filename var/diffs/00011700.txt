@@ -1,0 +1,16 @@
+diff --git a/9298a383204fb2237294912eae1a6e01455e4915 b/c461977eb924168c64170cf23f89f7cc5e4da56d
+index 9298a38320..c461977eb9 100644
+--- a/9298a383204fb2237294912eae1a6e01455e4915
++++ b/c461977eb924168c64170cf23f89f7cc5e4da56d
+@@ -1,8 +1,8 @@
+-private static int getProjectId(Project project) {
++private int getProjectId(Project project) {
+     try {
+-        return FSRecords.getNames().enumerate(project.getLocationHash());
++        return myProjectIdTable.enumerate(CompilerPaths.getCompilerSystemDirectoryName(project));
+     } catch (IOException e) {
+         LOG.info(e);
+     }
+     return -1;
+ }
+\ No newline at end of file

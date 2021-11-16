@@ -1,0 +1,23 @@
+diff --git a/032c74cf3c9ff723c0073f87488e9c3aff2f17fe b/60a18115ac7dfa5ac018a8677f12639717121656
+index 032c74cf3c..60a18115ac 100644
+--- a/032c74cf3c9ff723c0073f87488e9c3aff2f17fe
++++ b/60a18115ac7dfa5ac018a8677f12639717121656
+@@ -1,16 +1,9 @@
+ @Override
+ public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
+     Spreadsheet spreadsheet = (Spreadsheet) receiver;
+     if (spreadsheet == null) {
+         return false;
+     }
+     ResultSetViewer rsv = (ResultSetViewer) spreadsheet.getController();
+-    if (rsv != null) {
+-        return checkResultSetProperty(rsv, property, expectedValue);
+-    // boolean res = checkResultSetProperty(rsv, property, expectedValue);
+-    // System.out.println(property + " [" + expectedValue + "]=" + res);
+-    // return res;
+-    } else {
+-        return false;
+-    }
++    return rsv != null && checkResultSetProperty(rsv, property, expectedValue);
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/04be00a1314a00bf30d6b58e002132f53d44a0c0 b/7e14d701c404c73fcf0e2c286d4ed640fd7c0289
+index 04be00a131..7e14d701c4 100644
+--- a/04be00a1314a00bf30d6b58e002132f53d44a0c0
++++ b/7e14d701c404c73fcf0e2c286d4ed640fd7c0289
+@@ -1,8 +1,11 @@
+-void saveConfigurations() {
++void saveConfigurations(DataSourceDescriptor dataSource) {
+     java.util.List<DBWHandlerConfiguration> handlers = new ArrayList<DBWHandlerConfiguration>();
+     for (HandlerBlock handlerBlock : configurations.values()) {
+-        handlerBlock.configurator.saveSettings(handlerBlock.configuration);
+-        handlers.add(handlerBlock.configuration);
++        DBWHandlerConfiguration configuration = handlerBlock.loadedConfigs.get(dataSource.getId());
++        if (configuration != null) {
++            handlerBlock.configurator.saveSettings(configuration);
++            handlers.add(configuration);
++        }
+     }
+-    connectionInfo.setHandlers(handlers);
++    dataSource.getConnectionInfo().setHandlers(handlers);
+ }
+\ No newline at end of file

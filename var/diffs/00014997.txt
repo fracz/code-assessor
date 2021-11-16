@@ -1,0 +1,17 @@
+diff --git a/db03eca1c8de9836275b358e302060b0601fa6b6 b/5153746c4a22a3b960e982a81d466ed745feb31c
+index db03eca1c8..5153746c4a 100644
+--- a/db03eca1c8de9836275b358e302060b0601fa6b6
++++ b/5153746c4a22a3b960e982a81d466ed745feb31c
+@@ -1,9 +1,7 @@
+ @NotNull
+ private JsExpression constructExtensionFunctionCall(@NotNull JsExpression receiver) {
+     List<JsExpression> argumentList = generateExtensionCallArgumentList(receiver);
+-    CallParameters callParameters = callParameters(resolveThisObject(/*just get qualifier if null*/
+-    true));
+-    JsExpression functionReference = callParameters.functionReference;
+-    setQualifier(functionReference, callParameters.receiver);
++    JsExpression functionReference = callParameters.getFunctionReference();
++    setQualifier(functionReference, getThisObjectOrQualifier());
+     return newInvocation(functionReference, argumentList);
+ }
+\ No newline at end of file

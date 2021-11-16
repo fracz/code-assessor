@@ -1,0 +1,14 @@
+diff --git a/113f4849ad684763eaf634b37746785043af17bf b/1ef475e7597fa6be6ee0c6ccfe4451337100b838
+index 113f4849ad..1ef475e759 100644
+--- a/113f4849ad684763eaf634b37746785043af17bf
++++ b/1ef475e7597fa6be6ee0c6ccfe4451337100b838
+@@ -1,7 +1,7 @@
+ @Override
+ protected Settings nodeSettings(int nodeOrdinal) {
+-    Settings.Builder builder = Settings.settingsBuilder().put(PluginsService.LOAD_PLUGIN_FROM_CLASSPATH, true).put(Storage.API_IMPLEMENTATION, mock).put(Storage.CONTAINER, "snapshots");
++    Settings.Builder builder = Settings.settingsBuilder().put("plugin.types", CloudAzurePlugin.class.getName()).put(Storage.API_IMPLEMENTATION, mock).put(Storage.CONTAINER, "snapshots");
+     // We use sometime deprecated settings in tests
+     builder.put(Storage.ACCOUNT, "mock_azure_account").put(Storage.KEY, "mock_azure_key");
+     return builder.build();
+ }
+\ No newline at end of file

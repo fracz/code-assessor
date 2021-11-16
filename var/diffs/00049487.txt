@@ -1,0 +1,18 @@
+diff --git a/3f38570af924b90450cc6d457b8bf133e857cd3b b/7191cf62be07e30017a812f8d374db89ac2acd39
+index 3f38570af9..7191cf62be 100644
+--- a/3f38570af924b90450cc6d457b8bf133e857cd3b
++++ b/7191cf62be07e30017a812f8d374db89ac2acd39
+@@ -1,11 +1,11 @@
+ public static void openResource(IResource resource, IWorkbenchWindow window) {
+     try {
+         DBPResourceHandler handler = DBeaverCore.getInstance().getProjectRegistry().getResourceHandler(resource);
+         if (handler != null) {
+             handler.openResource(resource);
+         }
+     } catch (Exception e) {
+         // $NON-NLS-3$
+-        UIUtils.showErrorDialog(window.getShell(), CoreMessages.actions_navigator_error_dialog_open_resource_title, "Can't open resource '" + resource.getName() + "'", e);
++        DBUserInterface.getInstance().showError(CoreMessages.actions_navigator_error_dialog_open_resource_title, "Can't open resource '" + resource.getName() + "'", e);
+     }
+ }
+\ No newline at end of file

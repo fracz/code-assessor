@@ -1,0 +1,27 @@
+diff --git a/010b4fa7ed0fc334d2f35f5ecaeca12ab0e2a5ab b/aa82e01bdb51e47c76e5dbfef7e46c15408fa6b7
+index 010b4fa7ed..aa82e01bdb 100644
+--- a/010b4fa7ed0fc334d2f35f5ecaeca12ab0e2a5ab
++++ b/aa82e01bdb51e47c76e5dbfef7e46c15408fa6b7
+@@ -1,11 +1,20 @@
+ /**
+  * Returns the remote network address in the format <ip>:<port>.
+  */
+ public String getRemoteAddress() {
+-    final Socket socket = getProtocol().getChannel().socket;
++    Socket socket = null;
++    if (getProtocol() != null) {
++        socket = getProtocol().getChannel().socket;
++    } else {
++        for (ONetworkProtocol protocol : this.protocols) {
++            socket = protocol.getChannel().socket;
++            if (socket != null)
++                break;
++        }
++    }
+     if (socket != null) {
+         final InetSocketAddress remoteAddress = (InetSocketAddress) socket.getRemoteSocketAddress();
+         return remoteAddress.getAddress().getHostAddress() + ":" + remoteAddress.getPort();
+     }
+     return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/dfa057197664a75ff48de50fbe7adbeb73f283da b/79eca24d14bd3015d90fed9af0493639a772fbcf
+index dfa0571976..79eca24d14 100644
+--- a/dfa057197664a75ff48de50fbe7adbeb73f283da
++++ b/79eca24d14bd3015d90fed9af0493639a772fbcf
+@@ -1,7 +1,7 @@
+-protected void showErrorMessage(String message, final Project project) {
++protected void showErrorMessage(String message, final Project project, Editor editor) {
+     Application application = ApplicationManager.getApplication();
+     myInvokeResult = message;
+     if (!application.isUnitTestMode()) {
+-        CommonRefactoringUtil.showErrorMessage(REFACTORING_NAME, message, HelpID.EXTRACT_METHOD, project);
++        CommonRefactoringUtil.showErrorHint(project, editor, message, REFACTORING_NAME, HelpID.EXTRACT_METHOD);
+     }
+ }
+\ No newline at end of file

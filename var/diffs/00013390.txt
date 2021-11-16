@@ -1,0 +1,17 @@
+diff --git a/48133d8138056c7854d44c980ce89d43849c33bb b/43e3733bf615058d122ad0658cecbf2798e3d504
+index 48133d8138..43e3733bf6 100644
+--- a/48133d8138056c7854d44c980ce89d43849c33bb
++++ b/43e3733bf615058d122ad0658cecbf2798e3d504
+@@ -1,10 +1,10 @@
+ public boolean hasModalProgressIndicator() {
+-    synchronized (this) {
++    synchronized (myThreadToIndicatorMap) {
+         for (ProgressIndicator indicator : myThreadToIndicatorMap.values()) {
+             if (indicator.isModal()) {
+                 return true;
+             }
+         }
+         return false;
+     }
+ }
+\ No newline at end of file

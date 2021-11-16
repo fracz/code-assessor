@@ -1,0 +1,23 @@
+diff --git a/0892a2463617099fbfe5d1268af565a3d2338bc3 b/47dd96498d1d2d608f28d2bfb90a2505243f2c14
+index 0892a24636..47dd96498d 100644
+--- a/0892a2463617099fbfe5d1268af565a3d2338bc3
++++ b/47dd96498d1d2d608f28d2bfb90a2505243f2c14
+@@ -1,3 +1,15 @@
+-public List<ContactTokenDetails> getContacts(Set<String> contactTokens) throws IOException {
+-    return this.pushServiceSocket.retrieveDirectory(contactTokens);
++/**
++ * Checks which contacts in a set are registered with the server.
++ *
++ * @param e164numbers The contacts to check.
++ * @return A list of ContactTokenDetails for the registered users.
++ * @throws IOException
++ */
++public List<ContactTokenDetails> getContacts(Set<String> e164numbers) throws IOException {
++    Map<String, String> contactTokensMap = createDirectoryServerTokenMap(e164numbers);
++    List<ContactTokenDetails> activeTokens = this.pushServiceSocket.retrieveDirectory(contactTokensMap.keySet());
++    for (ContactTokenDetails activeToken : activeTokens) {
++        activeToken.setNumber(contactTokensMap.get(activeToken.getToken()));
++    }
++    return activeTokens;
+ }
+\ No newline at end of file

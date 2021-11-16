@@ -1,0 +1,19 @@
+diff --git a/190edad1735ccc5a29c08bf7f3e0e720806f5b4f b/27df97de019da76fa095fb497cc30ccefbcf792b
+index 190edad173..27df97de01 100644
+--- a/190edad1735ccc5a29c08bf7f3e0e720806f5b4f
++++ b/27df97de019da76fa095fb497cc30ccefbcf792b
+@@ -1,7 +1,10 @@
+ @Test
+ public void testGetByVipInRemoteRegion() throws Exception {
+-    List<InstanceInfo> instancesByVipAddress = client.getInstancesByVipAddress(ALL_REGIONS_VIP1_ADDR, false, REMOTE_REGION);
+-    Assert.assertEquals("Unexpected number of instances found for remote region.", 1, instancesByVipAddress.size());
++    prepareRemoteRegionRegistry();
++    EurekaClient client = discoveryClientResource.getClient();
++    String vipAddress = takeFirst(client.getApplicationsForARegion(TEST_REMOTE_REGION)).getVIPAddress();
++    List<InstanceInfo> instancesByVipAddress = client.getInstancesByVipAddress(vipAddress, false, TEST_REMOTE_REGION);
++    assertThat(instancesByVipAddress.size(), is(equalTo(2)));
+     InstanceInfo instance = instancesByVipAddress.iterator().next();
+-    Assert.assertEquals("Remote instance not returned for remote region vip address", REMOTE_REGION_APP1_INSTANCE1_HOSTNAME, instance.getHostName());
++    assertThat(instance.getVIPAddress(), is(equalTo(vipAddress)));
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/4086a29e5fbab68636de71b27ba3a6d7289a91c0 b/58088356a9a268b37d3e05b632aa7b0e71f0746e
+index 4086a29e5f..58088356a9 100644
+--- a/4086a29e5fbab68636de71b27ba3a6d7289a91c0
++++ b/58088356a9a268b37d3e05b632aa7b0e71f0746e
+@@ -1,6 +1,9 @@
++/**
++ * Returns the set of options filtered if a specific type is specified.
++ */
+ private static <T> Set<T> filterTypes(Optional<T> type, T[] options) {
+     if (type.isPresent()) {
+-        return type.filter(Arrays.asList(options)::contains).isPresent() ? new LinkedHashSet<>(Arrays.asList(type.get())) : new LinkedHashSet<>();
++        return type.filter(Arrays.asList(options)::contains).isPresent() ? ImmutableSet.of(type.get()) : ImmutableSet.of();
+     }
+-    return new LinkedHashSet<>(Arrays.asList(options));
++    return ImmutableSet.copyOf(Arrays.asList(options));
+ }
+\ No newline at end of file

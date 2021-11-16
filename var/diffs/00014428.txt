@@ -1,0 +1,15 @@
+diff --git a/75219389b64dedfce969ecf656c781a058404db7 b/0a9d4f27fcbd771aff53fbadefc1410cdd9063ae
+index 75219389b6..0a9d4f27fc 100644
+--- a/75219389b64dedfce969ecf656c781a058404db7
++++ b/0a9d4f27fcbd771aff53fbadefc1410cdd9063ae
+@@ -1,5 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiMethod parent = (PsiMethod) location.getParent();
+-    final int numReturnPoints = calculateNumReturnPoints(parent);
+-    return InspectionGadgetsBundle.message("multiple.return.points.per.method.problem.descriptor", numReturnPoints);
++@NotNull
++public String buildErrorString(Object... infos) {
++    final Integer returnPointCount = (Integer) infos[0];
++    return InspectionGadgetsBundle.message("multiple.return.points.per.method.problem.descriptor", returnPointCount);
+ }
+\ No newline at end of file

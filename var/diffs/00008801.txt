@@ -1,0 +1,14 @@
+diff --git a/610997b5e72b02416fbc3d55789d9a7cd00ce92d b/aa541e7d754670a2f93f9ead7e1950c75c66ce16
+index 610997b5e7..aa541e7d75 100644
+--- a/610997b5e72b02416fbc3d55789d9a7cd00ce92d
++++ b/aa541e7d754670a2f93f9ead7e1950c75c66ce16
+@@ -1,7 +1,7 @@
+ @Override
+ public Integer fun(VcsRef ref) {
+-    if (ref.getName().equals(selectedBranchName)) {
++    if (branchNames.contains(ref.getName())) {
+         return ref.getCommitIndex();
+     }
+     return null;
+ }
+\ No newline at end of file

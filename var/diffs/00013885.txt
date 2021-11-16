@@ -1,0 +1,28 @@
+diff --git a/49f3c0327b1c9dccac5b35f049bd69b9db2e0eb0 b/967cd0d19076ebcc2922a74234df39b9f31b1b8d
+index 49f3c0327b..967cd0d190 100644
+--- a/49f3c0327b1c9dccac5b35f049bd69b9db2e0eb0
++++ b/967cd0d19076ebcc2922a74234df39b9f31b1b8d
+@@ -1,9 +1,17 @@
++/**
++ * Adds the specified border to the specified component.
++ * If the component already has a border it will be preserved.
++ * If component or border is not specified nothing happens.
++ *
++ * @param component the component to which border added
++ * @param border    the border to add to the component
++ */
+ public static void addBorder(JComponent component, Border border) {
+-    if (component == null)
+-        return;
+-    if (component.getBorder() != null) {
+-        component.setBorder(new CompoundBorder(border, component.getBorder()));
+-    } else {
++    if (component != null && border != null) {
++        Border old = component.getBorder();
++        if (old != null) {
++            border = BorderFactory.createCompoundBorder(border, old);
++        }
+         component.setBorder(border);
+     }
+ }
+\ No newline at end of file

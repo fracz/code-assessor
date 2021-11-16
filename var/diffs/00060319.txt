@@ -1,0 +1,22 @@
+diff --git a/5cbc1fd858ca7220deef260b6d21c4c7402f0194 b/0b8cfe5ce2804cd65c6f5e6150628bb27cc8d016
+index 5cbc1fd858..0b8cfe5ce2 100644
+--- a/5cbc1fd858ca7220deef260b6d21c4c7402f0194
++++ b/0b8cfe5ce2804cd65c6f5e6150628bb27cc8d016
+@@ -1,13 +1,11 @@
+ private Screen findScreenByScreenInstanceId(String screenInstanceId) {
+     if (stack.isEmpty()) {
+         return null;
+     }
+-    Iterator<Screen> iterator = stack.iterator();
+-    while (iterator.hasNext()) {
+-        Screen next = iterator.next();
+-        if (next.getScreenInstanceId().equals(screenInstanceId)) {
+-            return next;
++    for (Screen screen : stack) {
++        if (screen.getScreenInstanceId().equals(screenInstanceId)) {
++            return screen;
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

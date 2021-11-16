@@ -1,0 +1,20 @@
+diff --git a/3dee0128042372004df9ce68df44bbd676c94979 b/156e74da590041b14b3a7ffdeebe11a48f0d0fe6
+index 3dee012804..156e74da59 100644
+--- a/3dee0128042372004df9ce68df44bbd676c94979
++++ b/156e74da590041b14b3a7ffdeebe11a48f0d0fe6
+@@ -1,13 +1,6 @@
+ private void doRefresh() {
+-    newsList.clear();
+-    Observable<List<DailyNews>> observable;
+-    if (shouldSubscribeToZhihu()) {
+-        observable = DailyNewsFromZhihuObservable.ofDate(date);
+-    } else {
+-        observable = DailyNewsFromAccelerateServerObservable.ofDate(date);
+-    }
+-    observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(this);
++    getNewsListObservable().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(this);
+     if (mSwipeRefreshLayout != null) {
+         mSwipeRefreshLayout.setRefreshing(true);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/1b6c5492c4c0e74d9c735a3a1eff4081245f73af b/7c709b99b7bf8fcc08a7ba2213fe054aa1b7c47d
+index 1b6c5492c4..7c709b99b7 100644
+--- a/1b6c5492c4c0e74d9c735a3a1eff4081245f73af
++++ b/7c709b99b7bf8fcc08a7ba2213fe054aa1b7c47d
+@@ -1,2 +1,5 @@
+-public void close() throws IOException {
++public void close() {
++    indexHits.close();
++    if (next != null)
++        next.close();
+ }
+\ No newline at end of file

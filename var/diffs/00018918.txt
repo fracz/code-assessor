@@ -1,0 +1,13 @@
+diff --git a/6c4311fb1303f544b500b97083c66eee820f9083 b/17bcaaabcd27bbcd7ad92c8c6ab32e527022c589
+index 6c4311fb13..17bcaaabcd 100644
+--- a/6c4311fb1303f544b500b97083c66eee820f9083
++++ b/17bcaaabcd27bbcd7ad92c8c6ab32e527022c589
+@@ -1,5 +1,5 @@
+ private boolean isInconsistentResponse(SendReq message, SendConf response) {
+-    Log.w("MmsTransport", "Comparing: " + Hex.toString(message.getTransactionId()));
+-    Log.w("MmsTransport", "With:      " + Hex.toString(response.getTransactionId()));
++    Log.w(TAG, "Comparing: " + Hex.toString(message.getTransactionId()));
++    Log.w(TAG, "With:      " + Hex.toString(response.getTransactionId()));
+     return !Arrays.equals(message.getTransactionId(), response.getTransactionId());
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/1f2b79068521d5bd859b02ef4c1c15d3db14b815 b/0e0b137c60105f1019c370ecad9ace22dbcaccb9
+index 1f2b790685..0e0b137c60 100644
+--- a/1f2b79068521d5bd859b02ef4c1c15d3db14b815
++++ b/0e0b137c60105f1019c370ecad9ace22dbcaccb9
+@@ -1,9 +1,9 @@
+ @Test
+ public void shouldLookUpTheIndexByLabelIdAndPropertyKeyId() throws ProcedureException, SchemaRuleNotFoundException, IndexNotFoundKernelException {
+-    when(operations.labelGetForName(anyString())).thenReturn(123);
+-    when(operations.propertyKeyGetForName(anyString())).thenReturn(456);
+-    when(operations.indexGetForLabelAndPropertyKey(anyInt(), anyInt())).thenReturn(new IndexDescriptor(0, 0));
++    when(operations.labelGetForName(anyString())).thenReturn(descriptor.getLabelId());
++    when(operations.propertyKeyGetForName(anyString())).thenReturn(descriptor.getPropertyKeyId());
++    when(operations.indexGetForLabelAndPropertyKey(anyObject())).thenReturn(anyIndex);
+     when(operations.indexGetState(any(IndexDescriptor.class))).thenReturn(ONLINE);
+     procedure.awaitIndex(":Person(name)", timeout, timeoutUnits);
+-    verify(operations).indexGetForLabelAndPropertyKey(123, 456);
++    verify(operations).indexGetForLabelAndPropertyKey(descriptor);
+ }
+\ No newline at end of file

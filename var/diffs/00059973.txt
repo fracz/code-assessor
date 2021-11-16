@@ -1,0 +1,16 @@
+diff --git a/e67c3ddc365d3d34a699f5e85cd2e3cfe003cb9f b/9b685404c588198c1d1e46a70572150f63cf9bba
+index e67c3ddc36..9b685404c5 100644
+--- a/e67c3ddc365d3d34a699f5e85cd2e3cfe003cb9f
++++ b/9b685404c588198c1d1e46a70572150f63cf9bba
+@@ -1,5 +1,8 @@
+ @Override
+ public TitanType getType(String name) {
+-    // To change body of implemented methods use File | Settings | File Templates.
+-    return null;
++    verifyOpen();
++    TitanType type = typeCache.get(name);
++    if (type == null)
++        type = (TitanType) Iterables.getOnlyElement(getVertices(SystemKey.TypeName, name), null);
++    return type;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/895d617bb0079e7cff0c82bb00bf2f75f69676ad b/e782e9b4f3efef23c5918372079edb5c0010cfd0
+index 895d617bb0..e782e9b4f3 100644
+--- a/895d617bb0079e7cff0c82bb00bf2f75f69676ad
++++ b/e782e9b4f3efef23c5918372079edb5c0010cfd0
+@@ -1,8 +1,3 @@
+ private ValuesSource.Bytes bytesScript(ValuesSourceConfig<?> config) throws IOException {
+-    setScorerIfNeeded(config.script);
+-    setReaderIfNeeded(config.script);
+-    scorerAwares.add(config.script);
+-    readerAwares.add(config.script);
+-    ValuesSource.Bytes source = new ValuesSource.Bytes.Script(config.script);
+-    return source;
++    return new ValuesSource.Bytes.Script(config.script);
+ }
+\ No newline at end of file

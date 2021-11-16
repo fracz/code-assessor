@@ -1,0 +1,16 @@
+diff --git a/0a4357851753f7f220fdb92ef1e668b8514c3872 b/f56d19b61e481bc445c4e691ebe7e75687657372
+index 0a43578517..f56d19b61e 100644
+--- a/0a4357851753f7f220fdb92ef1e668b8514c3872
++++ b/f56d19b61e481bc445c4e691ebe7e75687657372
+@@ -1,5 +1,6 @@
+-protected boolean recordLast(Row last) {
+-    lastReturnedKey = last.key;
+-    lastReturnedName = (isReversed() ? firstNonStaticCell(last.cf) : lastCell(last.cf)).name();
+-    return true;
++protected void recordLast(DecoratedKey key, Row last) {
++    if (last != null) {
++        lastReturnedKey = key;
++        lastReturnedClustering = last.clustering().takeAlias();
++    }
+ }
+\ No newline at end of file

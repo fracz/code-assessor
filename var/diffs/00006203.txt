@@ -1,0 +1,20 @@
+diff --git a/ea14007e37c5f00a49d851b0000d620962f39e2e b/53d0fc16d789adc2f4953b4809a70051819ba6dd
+index ea14007e37..53d0fc16d7 100644
+--- a/ea14007e37c5f00a49d851b0000d620962f39e2e
++++ b/53d0fc16d789adc2f4953b4809a70051819ba6dd
+@@ -1,11 +1,11 @@
+ public Object getValue(RadComponent component) {
+     RadContainer container = ((RadContainer) component);
+     while (container != null) {
+-        final String layoutManager = container.getLayoutManager();
+-        if (layoutManager != null && layoutManager.length() > 0) {
+-            return layoutManager;
++        final RadLayoutManager layoutManager = container.getLayoutManager();
++        if (layoutManager != null) {
++            return layoutManager.getName();
+         }
+         container = container.getParent();
+     }
+     return UIFormXmlConstants.LAYOUT_INTELLIJ;
+ }
+\ No newline at end of file

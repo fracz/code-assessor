@@ -1,0 +1,14 @@
+diff --git a/4a7c6f0938e0dbbc4ab259a269281bcc39285594 b/a68214982d2fc44df2c9af0f77cf1399eb0cb5fa
+index 4a7c6f0938..a68214982d 100644
+--- a/4a7c6f0938e0dbbc4ab259a269281bcc39285594
++++ b/a68214982d2fc44df2c9af0f77cf1399eb0cb5fa
+@@ -1,7 +1,7 @@
+ @Override
+ protected void configureSpecificCompilerArguments(@NotNull K2JVMCompilerArguments arguments, @NotNull List<File> sourceRoots) throws MojoExecutionException {
+     classpath = testClasspath;
+-    arguments.friendPaths = new String[] { output };
++    arguments.setFriendPaths(new String[] { output });
+     output = testOutput;
+     super.configureSpecificCompilerArguments(arguments, sourceRoots);
+ }
+\ No newline at end of file

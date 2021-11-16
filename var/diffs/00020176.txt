@@ -1,0 +1,15 @@
+diff --git a/a1e5ab9b9397d5059bdeb9051bd559226f3e3bf1 b/82f5b4e783ca33a3d645fb4d53feca56021babb8
+index a1e5ab9b93..82f5b4e783 100644
+--- a/a1e5ab9b9397d5059bdeb9051bd559226f3e3bf1
++++ b/82f5b4e783ca33a3d645fb4d53feca56021babb8
+@@ -1,7 +1,7 @@
+ public void test_10() throws Exception {
+     String sql = "SELECT a + (b + c);";
+     SQLStatementParser parser = new MySqlStatementParser(sql);
+     List<SQLStatement> stmtList = parser.parseStatementList();
+-    String text = output(stmtList);
+-    Assert.assertEquals("SELECT a + (b + c);", text);
++    String text = SQLUtils.toSQLString(stmtList, JdbcConstants.ORACLE);
++    assertEquals("SELECT a + (b + c);", text);
+ }
+\ No newline at end of file

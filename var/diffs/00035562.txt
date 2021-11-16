@@ -1,0 +1,13 @@
+diff --git a/4e2d7f4581ee15265329a0ef1c234b3ccc55dbec b/47bce6d17092de4880503cd009fb31cc75e35156
+index 4e2d7f4581..47bce6d170 100644
+--- a/4e2d7f4581ee15265329a0ef1c234b3ccc55dbec
++++ b/47bce6d17092de4880503cd009fb31cc75e35156
+@@ -1,3 +1,6 @@
+-protected void sendSuccessMessage(int statusCode, Header[] headers, String responseBody) {
++//
++// Pre-processing of messages (executes in background threadpool thread)
++//
++protected void sendSuccessMessage(int statusCode, Header[] headers, byte[] responseBody) {
+     sendMessage(obtainMessage(SUCCESS_MESSAGE, new Object[] { statusCode, headers, responseBody }));
+ }
+\ No newline at end of file

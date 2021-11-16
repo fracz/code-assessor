@@ -1,0 +1,13 @@
+diff --git a/f06f36c8b35cb1537966f857542d9253dc4152f7 b/3d57ba81c67414d6ff26b4b4836f591fad0764f5
+index f06f36c8b3..3d57ba81c6 100644
+--- a/f06f36c8b35cb1537966f857542d9253dc4152f7
++++ b/3d57ba81c67414d6ff26b4b4836f591fad0764f5
+@@ -1,6 +1,6 @@
+ @Test
+ public void emptyBodyWithRxJava2Observable() throws Exception {
+     ResolvableType type = httpEntityType(forClassWithGenerics(io.reactivex.Observable.class, String.class));
+     HttpEntity<io.reactivex.Observable<String>> entity = resolveValueWithEmptyBody(type);
+-    TestSubscriber.subscribe(entity.getBody().toFlowable(BackpressureStrategy.BUFFER)).assertNoError().assertComplete().assertNoValues();
++    ScriptedSubscriber.create().expectNextCount(0).expectComplete().verify(entity.getBody().toFlowable(BackpressureStrategy.BUFFER));
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/f80a5c520d1e0c78d6b7758729c20cf5dc87304d b/620aaee3efb3a3ad9473e21288df0ce56eea1de5
+index f80a5c520d..620aaee3ef 100644
+--- a/f80a5c520d1e0c78d6b7758729c20cf5dc87304d
++++ b/620aaee3efb3a3ad9473e21288df0ce56eea1de5
+@@ -1,3 +1,5 @@
+ protected AbstractTreeUpdater createUpdater() {
+-    return new AbstractTreeUpdater(this);
++    AbstractTreeUpdater updater = new AbstractTreeUpdater(this);
++    updater.setModalityStateComponent(MergingUpdateQueue.ANY_COMPONENT);
++    return updater;
+ }
+\ No newline at end of file

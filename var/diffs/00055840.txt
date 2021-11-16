@@ -1,0 +1,15 @@
+diff --git a/5a1cac664379b3860d4e00c5f9972a026cd2fe29 b/14df4e276117cd33399e6c48d1d82240006565dd
+index 5a1cac6643..14df4e2761 100644
+--- a/5a1cac664379b3860d4e00c5f9972a026cd2fe29
++++ b/14df4e276117cd33399e6c48d1d82240006565dd
+@@ -1,7 +1,7 @@
+ @Test
+-public void encodeWithType() {
++public void encodeWithType() throws Exception {
+     Flux<ParentClass> source = Flux.just(new Foo(), new Bar());
+     ResolvableType type = ResolvableType.forClass(ParentClass.class);
+     Flux<DataBuffer> output = this.encoder.encode(source, this.bufferFactory, type, null, Collections.emptyMap());
+-    TestSubscriber.subscribe(output).assertComplete().assertNoError().assertValuesWith(stringConsumer("["), stringConsumer("{\"type\":\"foo\"}"), stringConsumer(","), stringConsumer("{\"type\":\"bar\"}"), stringConsumer("]"));
++    ScriptedSubscriber.<DataBuffer>create().consumeNextWith(stringConsumer("[")).consumeNextWith(stringConsumer("{\"type\":\"foo\"}")).consumeNextWith(stringConsumer(",")).consumeNextWith(stringConsumer("{\"type\":\"bar\"}")).consumeNextWith(stringConsumer("]")).expectComplete().verify(output);
+ }
+\ No newline at end of file

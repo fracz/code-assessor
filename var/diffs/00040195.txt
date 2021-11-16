@@ -1,0 +1,17 @@
+diff --git a/21bbbb4eb04f975a16224c2f5c0273b7f41c4db8 b/c793f0b088dd70f746db2b6b296e679cd60d705d
+index 21bbbb4eb0..c793f0b088 100644
+--- a/21bbbb4eb04f975a16224c2f5c0273b7f41c4db8
++++ b/c793f0b088dd70f746db2b6b296e679cd60d705d
+@@ -1,10 +1,10 @@
+ @Test
+ public void shouldDropRelationshipPropertyExistenceConstraint() {
+     // Given
+-    RelationshipPropertyExistenceConstraint constraint = new RelationshipPropertyExistenceConstraint(1, 42);
++    RelationshipPropertyExistenceConstraint constraint = new RelationshipPropertyExistenceConstraint(relDescriptor1);
+     state.constraintDoAdd(constraint);
+     // When
+     state.constraintDoDrop(constraint);
+     // Then
+     assertTrue(state.constraintsChangesForRelationshipType(1).isEmpty());
+ }
+\ No newline at end of file

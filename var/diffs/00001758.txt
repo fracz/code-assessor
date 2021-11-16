@@ -1,0 +1,16 @@
+diff --git a/d512695a63669b5986811cfb963a8bf000ac614c b/0d554a25b37f647018a1c17bf2ea4f873b2164e3
+index d512695a63..0d554a25b3 100644
+--- a/d512695a63669b5986811cfb963a8bf000ac614c
++++ b/0d554a25b37f647018a1c17bf2ea4f873b2164e3
+@@ -1,9 +1,3 @@
+ public void testAddParam() throws Exception {
+-    doTest(new GenParams() {
+-
+-        @Override
+-        public TypeParameterInfo[] gen(PsiClass aClass) throws IncorrectOperationException {
+-            return new TypeParameterInfo[] { new TypeParameterInfo(0), new TypeParameterInfo(aClass, "E", "L<T>") };
+-        }
+-    });
++    doTest(aClass -> new TypeParameterInfo[] { new TypeParameterInfo(0), new TypeParameterInfo(aClass, "E", "L<T>") });
+ }
+\ No newline at end of file

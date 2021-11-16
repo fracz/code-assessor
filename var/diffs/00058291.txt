@@ -1,0 +1,27 @@
+diff --git a/e1026551382085ff3b9b97d35ef142b5c6f40765 b/a5695ce476eb5d061d8e22f459e3d1d8bb0d7b5d
+index e102655138..a5695ce476 100644
+--- a/e1026551382085ff3b9b97d35ef142b5c6f40765
++++ b/a5695ce476eb5d061d8e22f459e3d1d8bb0d7b5d
+@@ -1,10 +1,13 @@
+-public static Map<String, Model> read(Class<?> cls) {
+-    Map<String, Model> output = new HashMap<String, Model>();
+-    if (shouldProcess(cls)) {
+-        ModelResolver resolver = new ModelResolver(mapper);
+-        Model model = resolver.resolve(cls);
+-        if (model instanceof ModelImpl)
+-            output.put(((ModelImpl) model).getName(), model);
++public Map<String, Model> read(Type type) {
++    Map<String, Model> modelMap = new HashMap<String, Model>();
++    if (shouldProcess(type)) {
++        ModelConverterContextImpl context = new ModelConverterContextImpl(converters);
++        Model resolve = context.resolve(type);
++        for (Entry<String, Model> entry : context.getDefinedModels().entrySet()) {
++            if (entry.getValue().equals(resolve)) {
++                modelMap.put(entry.getKey(), entry.getValue());
++            }
++        }
+     }
+-    return output;
++    return modelMap;
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/cc0fd45178d5b034b88e3206ada08f5195c670e4 b/5b90832698b062944c4e24173ea2c2d9140dcd09
+index cc0fd45178..5b90832698 100644
+--- a/cc0fd45178d5b034b88e3206ada08f5195c670e4
++++ b/5b90832698b062944c4e24173ea2c2d9140dcd09
+@@ -1,8 +1,12 @@
+ private static PsiFile getPsiFile(Editor e, VirtualFile file) {
+     if (!file.isValid()) {
+         // fix for SCR 40329
+         return null;
+     }
+-    PsiFile psiFile = PsiManager.getInstance(e.getProject()).findFile(file);
++    final Project project = e.getProject();
++    if (project == null) {
++        return null;
++    }
++    PsiFile psiFile = PsiManager.getInstance(project).findFile(file);
+     return psiFile != null && psiFile.isValid() ? psiFile : null;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/0e929991415eec829d27f0d6e5a2f3e7bf8b7576 b/d81fc38ad23d31e8d99fcc0e016c0efdea3006cd
+index 0e92999141..d81fc38ad2 100644
+--- a/0e929991415eec829d27f0d6e5a2f3e7bf8b7576
++++ b/d81fc38ad23d31e8d99fcc0e016c0efdea3006cd
+@@ -1,9 +1,9 @@
+ @Test
+ public void testUnsatisfiedObjectDependencyCheck() throws Exception {
+     try {
+-        XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("unsatisfiedObjectDependencyCheck.xml", getClass()));
++        XmlBeanFactory xbf = new XmlBeanFactory(UNSATISFIED_OBJECT_DEP_CONTEXT);
+         xbf.getBean("a", DependenciesBean.class);
+         fail("Must have thrown an UnsatisfiedDependencyException");
+     } catch (UnsatisfiedDependencyException ex) {
+     }
+ }
+\ No newline at end of file

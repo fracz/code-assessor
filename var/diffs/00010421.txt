@@ -1,0 +1,21 @@
+diff --git a/7c83b47e9971c53ef4e07bbcd643ef8ccb5ccc41 b/e396555452d32b55ebf71fc92705da5e596b3123
+index 7c83b47e99..e396555452 100644
+--- a/7c83b47e9971c53ef4e07bbcd643ef8ccb5ccc41
++++ b/e396555452d32b55ebf71fc92705da5e596b3123
+@@ -1,12 +1,8 @@
+ private boolean isEnabled() {
+-    if (myModule == null)
++    if (myModule == null || myModule.isDisposed())
+         return false;
+-    if (myModule.isDisposed())
+-        return false;
+-    ProcessHandler processHandler = myContentDescriptor.getProcessHandler();
+-    if (processHandler == null)
+-        return false;
+-    if (processHandler.isProcessTerminated())
++    final ProcessHandler processHandler = myContentDescriptor.getProcessHandler();
++    if (processHandler == null || processHandler.isProcessTerminated())
+         return false;
+     return true;
+ }
+\ No newline at end of file

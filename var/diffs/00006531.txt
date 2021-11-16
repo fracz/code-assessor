@@ -1,0 +1,13 @@
+diff --git a/e931968b9666415ba504ef80ce7a1a8c23514acc b/76c9414773479fde6074173ccab5984c4e214b7f
+index e931968b96..76c9414773 100644
+--- a/e931968b9666415ba504ef80ce7a1a8c23514acc
++++ b/76c9414773479fde6074173ccab5984c4e214b7f
+@@ -1,4 +1,4 @@
+-public TemplateGroup readScheme(final Document schemeContent, final File file) throws InvalidDataException, IOException, JDOMException {
+-    String defGroupName = FileUtil.getNameWithoutExtension(file);
+-    return readTemplateFile(JDOMUtil.loadDocument(file), defGroupName, false);
++public TemplateGroup readScheme(final Document schemeContent) throws InvalidDataException, IOException, JDOMException {
++    String defGroupName = schemeContent.getRootElement().getAttributeValue("group");
++    return readTemplateFile(schemeContent, defGroupName, false);
+ }
+\ No newline at end of file

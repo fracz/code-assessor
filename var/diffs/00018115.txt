@@ -1,0 +1,19 @@
+diff --git a/28fc950b875a1a0f7d7d0aa23fdf28cc05ae2a4b b/7d1ebe9c2881719c666eb7df30bb67035b47479b
+index 28fc950b87..7d1ebe9c28 100644
+--- a/28fc950b875a1a0f7d7d0aa23fdf28cc05ae2a4b
++++ b/7d1ebe9c2881719c666eb7df30bb67035b47479b
+@@ -1,10 +1,11 @@
+ protected void redo(int times) {
+     Project project = ProjectManager.singleton.getProject(_projectID);
+     while (times > 0 && _futureEntries.size() > 0) {
+-        HistoryEntry entry = _futureEntries.remove(0);
+-        times--;
++        HistoryEntry entry = _futureEntries.get(0);
+         entry.apply(project);
++        times--;
+         _pastEntries.add(entry);
++        _futureEntries.remove(0);
+     }
+     setModified();
+ }
+\ No newline at end of file

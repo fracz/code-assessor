@@ -1,0 +1,16 @@
+diff --git a/b072a76edb7cbcbb395c5c4191d0dcb2f0e8b442 b/f7ce192e829430e79bff9c4ad622dcbfe2c4dec8
+index b072a76edb..f7ce192e82 100644
+--- a/b072a76edb7cbcbb395c5c4191d0dcb2f0e8b442
++++ b/f7ce192e829430e79bff9c4ad622dcbfe2c4dec8
+@@ -1,4 +1,9 @@
+ public SQLUpdateStatement explainToUpdateSQLObject(MappingEngine engine, String sql) {
+     MySqlStatementParser parser = new MySqlStatementParser(sql);
+-    return parser.parseUpdateStatement();
++    SQLUpdateStatement stmt = parser.parseUpdateStatement();
++    if (stmt.getTableSource() == null) {
++        Entity entity = engine.getFirstEntity();
++        stmt.setTableSource(new SQLIdentifierExpr(entity.getName()));
++    }
++    return stmt;
+ }
+\ No newline at end of file

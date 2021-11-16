@@ -1,0 +1,22 @@
+diff --git a/29e96588cff19c78754f2e54f42b14dfd322ef07 b/df0a763616d7129cdcdd6c9ea6b51772b31d6b38
+index 29e96588cf..df0a763616 100644
+--- a/29e96588cff19c78754f2e54f42b14dfd322ef07
++++ b/df0a763616d7129cdcdd6c9ea6b51772b31d6b38
+@@ -1,15 +1,15 @@
+ /**
+  * gets all invocations from mocks. Invocations are ordered earlier first.
+  *
+  * @param mocks mocks
+  * @return invocations
+  */
+ public List<Invocation> find(List<?> mocks) {
+     Set<Invocation> invocationsInOrder = new TreeSet<Invocation>(new SequenceNumberComparator());
+     for (Object mock : mocks) {
+-        InternalMockHandler<Object> handler = new MockUtil().getMockHandler(mock);
++        InternalMockHandler<Object> handler = MockUtil.getMockHandler(mock);
+         List<Invocation> fromSingleMock = handler.getInvocationContainer().getInvocations();
+         invocationsInOrder.addAll(fromSingleMock);
+     }
+     return new LinkedList<Invocation>(invocationsInOrder);
+ }
+\ No newline at end of file

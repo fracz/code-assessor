@@ -1,0 +1,17 @@
+diff --git a/7d5dab0124e17d5b980cb72f7ed742beb0cc5210 b/3326a347d1cba654bdc13c957f53aaedba56b0b5
+index 7d5dab0124..3326a347d1 100644
+--- a/7d5dab0124e17d5b980cb72f7ed742beb0cc5210
++++ b/3326a347d1cba654bdc13c957f53aaedba56b0b5
+@@ -1,8 +1,10 @@
+ public void testStringDateMap() throws Exception {
+     final ObjectMapper M = new ObjectMapper();
+-    Model model = new ModelResolver(M).resolve(StringDateMapBean.class, new ModelConverterContextMock());
++    ModelResolver modelResolver = new ModelResolver(M);
++    ModelConverterContextImpl context = new ModelConverterContextImpl(modelResolver);
++    Model model = context.resolve(StringDateMapBean.class);
+     Map<String, Property> props = model.getProperties();
+     assertEquals(1, props.size());
+     Property prop = props.values().iterator().next();
+     assertEquals("stuff", prop.getName());
+ }
+\ No newline at end of file

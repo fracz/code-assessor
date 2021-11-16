@@ -1,0 +1,27 @@
+diff --git a/8f40306e0a0a712245068b6652096542c746fabc b/250ccb0f8b14f7e85461163f8214b88920ac77e9
+index 8f40306e0a..250ccb0f8b 100644
+--- a/8f40306e0a0a712245068b6652096542c746fabc
++++ b/250ccb0f8b14f7e85461163f8214b88920ac77e9
+@@ -1,17 +1,17 @@
+ /**
+  * Tests the {@code DeletePathOps} and {@code PathsDeleted} counters when deleting a path.
+  *
+  * @throws Exception if a {@link FileSystemMaster} operation fails
+  */
+ @Test
+ public void deletePathTest() throws Exception {
+     // cannot delete root
+     Assert.assertFalse(mFileSystemMaster.deleteFile(ROOT_URI, true));
+-    Assert.assertEquals(1, mCounters.get("DeletePathOps").getCount());
+-    Assert.assertEquals(0, mCounters.get("PathsDeleted").getCount());
++    Assert.assertEquals(1, mCounters.get(MasterSource.DELETE_PATH_OPS).getCount());
++    Assert.assertEquals(0, mCounters.get(MasterSource.PATHS_DELETED).getCount());
+     // delete the file
+     createCompleteFileWithSingleBlock(NESTED_FILE_URI);
+     mFileSystemMaster.deleteFile(NESTED_FILE_URI, false);
+-    Assert.assertEquals(2, mCounters.get("DeletePathOps").getCount());
+-    Assert.assertEquals(1, mCounters.get("PathsDeleted").getCount());
++    Assert.assertEquals(2, mCounters.get(MasterSource.DELETE_PATH_OPS).getCount());
++    Assert.assertEquals(1, mCounters.get(MasterSource.PATHS_DELETED).getCount());
+ }
+\ No newline at end of file

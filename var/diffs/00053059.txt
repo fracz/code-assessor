@@ -1,0 +1,12 @@
+diff --git a/cdcedb0f2886801afa9a9ac8d536e3849929430d b/dfa222547560c8402cde50b94c6346458246b661
+index cdcedb0f28..dfa2225475 100644
+--- a/cdcedb0f2886801afa9a9ac8d536e3849929430d
++++ b/dfa222547560c8402cde50b94c6346458246b661
+@@ -1,5 +1,5 @@
+ @Test
+ public void assertRewriteWithoutChange() {
+-    SQLRewriteEngine rewriteEngine = new SQLRewriteEngine(shardingRule, "SELECT table_y.id FROM table_y WHERE table_y.id=?", new SelectStatement());
++    SQLRewriteEngine rewriteEngine = new SQLRewriteEngine(shardingRule, "SELECT table_y.id FROM table_y WHERE table_y.id=?", selectStatement);
+     assertThat(rewriteEngine.rewrite(true).toSQL(tableTokens), is("SELECT table_y.id FROM table_y WHERE table_y.id=?"));
+ }
+\ No newline at end of file

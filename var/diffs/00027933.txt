@@ -1,0 +1,16 @@
+diff --git a/67a6d5a5ef7542ede031aed4fae144f3070a5c30 b/bd48e65eb0c10e7df6144eb89f4605edea9fc0ea
+index 67a6d5a5ef..bd48e65eb0 100644
+--- a/67a6d5a5ef7542ede031aed4fae144f3070a5c30
++++ b/bd48e65eb0c10e7df6144eb89f4605edea9fc0ea
+@@ -1,8 +1,8 @@
+-@Path("pull")
+ @POST
++@Path("pull")
+ @Consumes(MediaType.APPLICATION_JSON)
+ public PullResponse pull(PullRequest request) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+-        return gitConnection.pull(request);
++        return gitConnection.pull(PullParams.create(request.getRemote()).withRefSpec(request.getRefSpec()).withTimeout(request.getTimeout()).withUsername(request.getUsername()).withPassword(request.getPassword()));
+     }
+ }
+\ No newline at end of file

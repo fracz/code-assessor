@@ -1,0 +1,24 @@
+diff --git a/eef10e27348b6be54ec082a4edc72100f0f686c1 b/ea25393dcec7359d4474fca405b0a8ed01d93558
+index eef10e2734..ea25393dce 100644
+--- a/eef10e27348b6be54ec082a4edc72100f0f686c1
++++ b/ea25393dcec7359d4474fca405b0a8ed01d93558
+@@ -1,17 +1,17 @@
+ /**
+  * OServerLifecycleListener Interface
+  * *
+  */
+ public void onBeforeActivate() {
+     createSuperUser();
+     // Default
+     String configFile = OSystemVariableResolver.resolveSystemVariables("${ORIENTDB_HOME}/config/security.json");
+     // The default "security.json" file can be overridden in the server config file.
+     String securityFile = getConfigProperty("server.security.file");
+     if (securityFile != null)
+         configFile = securityFile;
+-    String ssf = OGlobalConfiguration.SERVER_SECURITY_FILE.getValueAsString();
++    String ssf = server.getContextConfiguration().getValueAsString(OGlobalConfiguration.SERVER_SECURITY_FILE);
+     if (ssf != null)
+         configFile = ssf;
+     configDoc = loadConfig(configFile);
+ }
+\ No newline at end of file

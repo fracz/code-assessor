@@ -1,0 +1,12 @@
+diff --git a/903492707213bd670b684c780daa89ad1a892def b/ce6cef24ba219c44f23dd2d430a3b29b48064fd3
+index 9034927072..ce6cef24ba 100644
+--- a/903492707213bd670b684c780daa89ad1a892def
++++ b/ce6cef24ba219c44f23dd2d430a3b29b48064fd3
+@@ -1,5 +1,4 @@
+ static void buildStreamCFG(CFGBuilder builder, Step firstStep, PsiExpression originalQualifier) {
+-    PsiReferenceExpression firstCall = firstStep.myCall.getMethodExpression();
+     PsiType inType = StreamApiUtil.getStreamElementType(originalQualifier.getType());
+-    builder.pushExpression(originalQualifier).dereferenceCheck(firstCall).pop().chain(firstStep::before).doWhile().pushVariable(builder.createTempVariable(inType)).push(builder.getFactory().createTypeValue(inType, DfaPsiUtil.getTypeNullability(inType))).assign().chain(firstStep::iteration).endWhileUnknown();
++    builder.pushExpression(originalQualifier).checkNotNull(firstStep.myCall, NullabilityProblem.callNPE).pop().chain(firstStep::before).doWhile().pushVariable(builder.createTempVariable(inType)).push(builder.getFactory().createTypeValue(inType, DfaPsiUtil.getTypeNullability(inType))).assign().chain(firstStep::iteration).endWhileUnknown();
+ }
+\ No newline at end of file

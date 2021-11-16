@@ -1,0 +1,14 @@
+diff --git a/29690df072c678ee32c3d47f6dedb65342e5a1d6 b/f28ecb2d27d81a8e23563fd132ae5ca5904b2c09
+index 29690df072..f28ecb2d27 100644
+--- a/29690df072c678ee32c3d47f6dedb65342e5a1d6
++++ b/f28ecb2d27d81a8e23563fd132ae5ca5904b2c09
+@@ -1,6 +1,6 @@
+ @Override
+-public IndexDescriptor indexCreate(KernelStatement state, int labelId, int propertyKey) throws AlreadyIndexedException, AlreadyConstrainedException {
++public IndexDescriptor indexCreate(KernelStatement state, NodePropertyDescriptor descriptor) throws AlreadyIndexedException, AlreadyConstrainedException {
+     acquireExclusiveSchemaLock(state);
+     state.assertOpen();
+-    return schemaWriteDelegate.indexCreate(state, labelId, propertyKey);
++    return schemaWriteDelegate.indexCreate(state, descriptor);
+ }
+\ No newline at end of file

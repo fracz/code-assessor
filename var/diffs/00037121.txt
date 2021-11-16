@@ -1,0 +1,16 @@
+diff --git a/8acb0977f550c7542232ac7f414f83376bd100f0 b/59f6a0f16c14746a09000725ed9dd39e469189b3
+index 8acb0977f5..59f6a0f16c 100644
+--- a/8acb0977f550c7542232ac7f414f83376bd100f0
++++ b/59f6a0f16c14746a09000725ed9dd39e469189b3
+@@ -1,8 +1,9 @@
+ @Test
+ public void disableTrace() {
+-    DefaultTraceContext traceContext = new DefaultTraceContext(new TestAgentInformation());
++    ProfilerConfig profilerConfig = new DefaultProfilerConfig();
++    TraceContext traceContext = MockTraceContextFactory.newTestTraceContext(profilerConfig);
+     Trace trace = traceContext.disableSampling();
+     Assert.assertNotNull(trace);
+     Assert.assertFalse(trace.canSampled());
+     traceContext.removeTraceObject();
+ }
+\ No newline at end of file

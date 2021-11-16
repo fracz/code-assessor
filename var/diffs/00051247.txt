@@ -1,0 +1,12 @@
+diff --git a/ff966aab5e5b15b76ff12c49e371b3494276458f b/9061adbb9bb1a6f1430c1328ecc49c647543f886
+index ff966aab5e..9061adbb9b 100644
+--- a/ff966aab5e5b15b76ff12c49e371b3494276458f
++++ b/9061adbb9bb1a6f1430c1328ecc49c647543f886
+@@ -1,4 +1,5 @@
+ @Override
+ public void checkStateChanged(CheckStateChangedEvent event) {
+-    ((DBDAttributeConstraint) event.getElement()).setVisible(event.getChecked());
++    DBDAttributeConstraint constraint = getBindingConstraint((DBDAttributeBinding) event.getElement());
++    constraint.setVisible(event.getChecked());
+ }
+\ No newline at end of file

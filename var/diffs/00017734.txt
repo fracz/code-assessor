@@ -1,0 +1,21 @@
+diff --git a/a5cf1d18469f47968c8d46df8392abdc3fc94670 b/d9dd515e69e47adec890058d5f1ae9d1178c1c90
+index a5cf1d1846..d9dd515e69 100644
+--- a/a5cf1d18469f47968c8d46df8392abdc3fc94670
++++ b/d9dd515e69e47adec890058d5f1ae9d1178c1c90
+@@ -1,10 +1,11 @@
+ @NotNull
+ private JsExpression doTranslateAsLiteral() {
+     assert getExpectedThisDescriptor(descriptor) == null;
+-    ClassDescriptor containingClass = getContainingClass(descriptor);
+-    if (containingClass == null) {
+-        generateFunctionObject();
++    generateFunctionObject(getFunctionBodyContext());
++    boolean shouldAliasThisObject = shouldAliasThisObject();
++    if (!shouldAliasThisObject) {
+         return functionObject;
+     }
+-    return generateFunctionObjectWithAliasedThisReference(containingClass);
++    assert aliasForContaingClassThis != null;
++    return AstUtil.newSequence(aliasForContaingClassThis.assignmentExpression(), functionObject);
+ }
+\ No newline at end of file

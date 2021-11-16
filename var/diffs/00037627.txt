@@ -1,0 +1,26 @@
+diff --git a/21ae4f6729865df0a246e3df88f7ed96bc5c8fe0 b/33e4f5ef4b96c6a1da3864805b29f902c3c88738
+index 21ae4f6729..33e4f5ef4b 100644
+--- a/21ae4f6729865df0a246e3df88f7ed96bc5c8fe0
++++ b/33e4f5ef4b96c6a1da3864805b29f902c3c88738
+@@ -1,16 +1,14 @@
+ void populate(CallTreeNode node) {
+     nodes.add(node);
+     index++;
+-    final SpanAlign spanAlign = node.getValue();
+-    final long gap = getGap(node);
+-    spanAlign.setGap(gap);
+-    spanAlign.setDepth(node.getDepth());
+-    final long executionTime = getExecutionTime(node);
+-    spanAlign.setExecutionTime(executionTime);
++    final SpanAlign align = node.getValue();
++    align.setGap(getGap());
++    align.setDepth(node.getDepth());
++    align.setExecutionMilliseconds(getExecutionTime());
+     if (node.hasChild()) {
+         populate(node.getChild());
+     }
+     if (node.hasSibling()) {
+         populate(node.getSibling());
+     }
+ }
+\ No newline at end of file

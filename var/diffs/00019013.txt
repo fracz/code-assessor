@@ -1,0 +1,30 @@
+diff --git a/e7b722d3a7b9e2b2d1043e18cd6c9a0a29e2786c b/c0e351e643235927fcf35d7bb3369f40eea1b1ab
+index e7b722d3a7..c0e351e643 100644
+--- a/e7b722d3a7b9e2b2d1043e18cd6c9a0a29e2786c
++++ b/c0e351e643235927fcf35d7bb3369f40eea1b1ab
+@@ -1,19 +1,19 @@
+ @Override
+ @Nullable
+ protected Throwable doInBackground(Void... params) {
+-    if (mViewBitmap == null || mViewBitmap.isRecycled()) {
+-        return new NullPointerException("ViewBitmap is null or already recycled");
+-    }
+-    if (mCurrentImageRect.isEmpty()) {
++    if (mViewBitmap == null) {
++        return new NullPointerException("ViewBitmap is null");
++    } else if (mViewBitmap.isRecycled()) {
++        return new NullPointerException("ViewBitmap is recycled");
++    } else if (mCurrentImageRect.isEmpty()) {
+         return new NullPointerException("CurrentImageRect is empty");
+     }
+     float resizeScale = resize();
+     try {
+         crop(resizeScale);
+-        mViewBitmap.recycle();
+         mViewBitmap = null;
+     } catch (Throwable throwable) {
+         return throwable;
+     }
+     return null;
+ }
+\ No newline at end of file

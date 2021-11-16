@@ -1,0 +1,32 @@
+diff --git a/456c69acda11cfd6cdd4f3675b945d0f035e9bfb b/471769e8bccc7ecc1de99751d006574a0cb0fed9
+index 456c69acda..471769e8bc 100644
+--- a/456c69acda11cfd6cdd4f3675b945d0f035e9bfb
++++ b/471769e8bccc7ecc1de99751d006574a0cb0fed9
+@@ -1,10 +1,18 @@
+-private void processSmartExpand(final DefaultMutableTreeNode node) {
+-    if (getBuilder().isSmartExpand() && node.getChildCount() == 1) {
+-        // "smart" expand
+-        TreeNode childNode = node.getChildAt(0);
+-        if (isLoadingNode(childNode))
+-            return;
+-        final TreePath childPath = new TreePath(node.getPath()).pathByAddingChild(childNode);
+-        expand(childPath);
++private void processSmartExpand(final DefaultMutableTreeNode node, final boolean canSmartExpand) {
++    if (!getBuilder().isSmartExpand() || !canSmartExpand(node, canSmartExpand))
++        return;
++    if (isNodeBeingBuilt(node)) {
++        addNodeAction(getElementFor(node), new NodeAction() {
++
++            public void onReady(DefaultMutableTreeNode node) {
++                processSmartExpand(node, canSmartExpand);
++            }
++        }, true);
++    } else {
++        TreeNode child = getChildForSmartExpand(node);
++        if (child != null) {
++            final TreePath childPath = new TreePath(node.getPath()).pathByAddingChild(child);
++            myTree.expandPath(childPath);
++        }
+     }
+ }
+\ No newline at end of file

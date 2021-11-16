@@ -1,0 +1,18 @@
+diff --git a/78bfb3e3e5a24babefc2d3ccf650df2f41847b8b b/82fda2b8d164faffd7a3e6fd4c2d5af9b5095096
+index 78bfb3e3e5..82fda2b8d1 100644
+--- a/78bfb3e3e5a24babefc2d3ccf650df2f41847b8b
++++ b/82fda2b8d164faffd7a3e6fd4c2d5af9b5095096
+@@ -1,9 +1,9 @@
+ @Override
+-public void onUIPositionChange(PtrFrameLayout frame, boolean isUnderTouch, byte status, int oldPosition, int currentPosition, float oldPercent, float currentPercent) {
+-    float percent = Math.min(1f, currentPercent);
++public void onUIPositionChange(PtrFrameLayout frame, boolean isUnderTouch, byte status, PtrIndicator ptrIndicator) {
++    float percent = Math.min(1f, ptrIndicator.getCurrentPercent());
+     if (status == PtrFrameLayout.PTR_STATUS_PREPARE) {
+-        mDrawable.offsetTopAndBottom(currentPosition);
++        mDrawable.offsetTopAndBottom(ptrIndicator.getCurrentPosY());
+         mDrawable.setPercent(percent);
+         invalidate();
+     }
+ }
+\ No newline at end of file

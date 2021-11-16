@@ -1,0 +1,22 @@
+diff --git a/4b38f16ebf5c793a29bafc5769cc14ad71dd6549 b/89b4c40d5e2151261ebe078a864124b2d64df8f3
+index 4b38f16ebf..89b4c40d5e 100644
+--- a/4b38f16ebf5c793a29bafc5769cc14ad71dd6549
++++ b/89b4c40d5e2151261ebe078a864124b2d64df8f3
+@@ -1,14 +1,14 @@
+ /**
+  * Set the private content type of the text, which is the
+  * {@link EditorInfo#privateImeOptions EditorInfo.privateImeOptions}
+  * field that will be filled in when creating an input connection.
+  *
+  * @see #getPrivateImeOptions()
+  * @see EditorInfo#privateImeOptions
+  * @attr ref android.R.styleable#TextView_privateImeOptions
+  */
+ public void setPrivateImeOptions(String type) {
+     createEditorIfNeeded("Private IME option set");
+-    getEditor().createInputContentTypeIfNeeded();
+-    getEditor().mInputContentType.privateImeOptions = type;
++    mEditor.createInputContentTypeIfNeeded();
++    mEditor.mInputContentType.privateImeOptions = type;
+ }
+\ No newline at end of file

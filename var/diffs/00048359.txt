@@ -1,0 +1,19 @@
+diff --git a/c414d12f68c4144ee633ec86725c0958f5cebfb8 b/5107963dabe6572ef80d9c72b999a3851cf2b7d8
+index c414d12f68..5107963dab 100644
+--- a/c414d12f68c4144ee633ec86725c0958f5cebfb8
++++ b/5107963dabe6572ef80d9c72b999a3851cf2b7d8
+@@ -1,4 +1,11 @@
+ @Override
+-public void accumulate(Number value) {
+-    result += value.doubleValue();
++public boolean accumulate(Object value) {
++    if (value instanceof Number) {
++        if (Double.isNaN(result)) {
++            result = 0.0;
++        }
++        result += ((Number) value).doubleValue();
++        return true;
++    }
++    return false;
+ }
+\ No newline at end of file

@@ -1,0 +1,27 @@
+diff --git a/a76cee221045da17770fa1e206a6a919f8e041df b/8834de53bfd831a9fc9314739a25c7e3cef0d8a4
+index a76cee2210..8834de53bf 100644
+--- a/a76cee221045da17770fa1e206a6a919f8e041df
++++ b/8834de53bfd831a9fc9314739a25c7e3cef0d8a4
+@@ -1,9 +1,15 @@
+ @Override
+-public KeyColumnValueStore openDatabase(String name) throws StorageException {
+-    if (openStores.containsKey(name))
+-        return openStores.get(name);
+-    ensureColumnFamilyExists(tableName, name);
+-    HBaseKeyColumnValueStore store = new HBaseKeyColumnValueStore(connectionPool, tableName, name, this);
+-    openStores.put(name, store);
++public KeyColumnValueStore openDatabase(String dbName) throws StorageException {
++    HBaseKeyColumnValueStore store = openStores.get(dbName);
++    if (store == null) {
++        HBaseKeyColumnValueStore newStore = new HBaseKeyColumnValueStore(connectionPool, tableName, dbName);
++        // nothing bad happens if we loose to other thread
++        store = openStores.putIfAbsent(dbName, newStore);
++        if (store == null) {
++            // ensure that CF exists only first time somebody tries to open it
++            ensureColumnFamilyExists(tableName, dbName);
++            store = newStore;
++        }
++    }
+     return store;
+ }
+\ No newline at end of file

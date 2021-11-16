@@ -1,0 +1,16 @@
+diff --git a/6a1361ddb5d8d7409d13ca1a010461f2b4dd6703 b/6f6e592351e7066167615e910c46be6db6c270a9
+index 6a1361ddb5..6f6e592351 100644
+--- a/6a1361ddb5d8d7409d13ca1a010461f2b4dd6703
++++ b/6f6e592351e7066167615e910c46be6db6c270a9
+@@ -1,8 +1,8 @@
+ @Test
+ public void assertGetActualDatasourceNames() {
+     TableRuleConfiguration tableRuleConfig = new TableRuleConfiguration();
+     tableRuleConfig.setLogicTable("logicTable");
+-    tableRuleConfig.setActualTables("ds0.table_0, ds0.table_1, ds0.table_2, ds1.table_0, ds1.table_1, ds1.table_2");
+-    TableRule actual = tableRuleConfig.build(null);
++    tableRuleConfig.setActualTables("ds${0..1}.table_${0..2}");
++    TableRule actual = tableRuleConfig.build(createDataSourceMap());
+     assertThat(actual.getActualDatasourceNames(), is((Collection<String>) Sets.newLinkedHashSet(Arrays.asList("ds0", "ds1"))));
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/f6a91cbf8efe712f1fe4fecf23160ef16c64545a b/cdc4f56e2c39b87f7af2939ef7cdf2dd24cb3d2f
+index f6a91cbf8e..cdc4f56e2c 100644
+--- a/f6a91cbf8efe712f1fe4fecf23160ef16c64545a
++++ b/cdc4f56e2c39b87f7af2939ef7cdf2dd24cb3d2f
+@@ -1,8 +1,6 @@
+ public void deactivate() {
+     // execute all scripts that were registered for system shutdown
+-    executeScripts(systemShutdownTriggeredRules);
+-    updateEventTriggeredRules.clear();
+-    commandEventTriggeredRules.clear();
+-    systemShutdownTriggeredRules.clear();
+-    systemStartupTriggeredRules.clear();
++    executeScripts(triggerManager.getRules(SHUTDOWN));
++    triggerManager.clearAll();
++    triggerManager = null;
+ }
+\ No newline at end of file

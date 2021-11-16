@@ -1,0 +1,13 @@
+diff --git a/455c8de91c892d9f6f7d20db90c6cb29713301eb b/8ff46f14cd73c60952e6e5242a654e30a1657be6
+index 455c8de91c..8ff46f14cd 100644
+--- a/455c8de91c892d9f6f7d20db90c6cb29713301eb
++++ b/8ff46f14cd73c60952e6e5242a654e30a1657be6
+@@ -1,4 +1,4 @@
+-public void onBind(@NonNull final Object datum) {
+-    project = (Project) datum;
+-    currentUser.observable().subscribe(this::toggleLoginButtonVisibility);
++public void onBind(@Nullable final Object user) {
++    final int visibility = (user == null) ? View.VISIBLE : View.GONE;
++    commentFeedLoginButton.setVisibility(visibility);
+ }
+\ No newline at end of file

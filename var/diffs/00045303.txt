@@ -1,0 +1,20 @@
+diff --git a/57e8320002a4baf2e4ca631c21423c2e3e60958a b/105488bef3ba1594b3b25bdd326ee98aa0fb7336
+index 57e8320002..105488bef3 100644
+--- a/57e8320002a4baf2e4ca631c21423c2e3e60958a
++++ b/105488bef3ba1594b3b25bdd326ee98aa0fb7336
+@@ -1,10 +1,8 @@
+ @Override
+ public void release(long fileId, long pageIndex) {
+     LRUEntry lruEntry = get(fileId, pageIndex);
+-    if (lruEntry != null) {
+-        lruEntry.usageCounter.decrementAndGet();
+-    } else {
+-        // TODO replace with correct exception
+-        throw new RuntimeException("record should be released is already free!");
+-    }
++    if (lruEntry != null)
++        lruEntry.usageCounter--;
++    else
++        throw new IllegalStateException("record should be released is already free!");
+ }
+\ No newline at end of file

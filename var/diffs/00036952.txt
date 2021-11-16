@@ -1,0 +1,22 @@
+diff --git a/e7db5e9c3a9eb50d838668304515297d596a960e b/f9de26b41736462321b88c06d1ab52dfcff609d3
+index e7db5e9c3a..f9de26b417 100644
+--- a/e7db5e9c3a9eb50d838668304515297d596a960e
++++ b/f9de26b41736462321b88c06d1ab52dfcff609d3
+@@ -1,13 +1,15 @@
+ private static String getInvokeMethodBeforeInsertCode() {
+     StringBuilder insertCode = new StringBuilder();
+     insertCode.append("{");
+     insertCode.append("long requestTime=System.currentTimeMillis();");
+     insertCode.append("javax.servlet.http.HttpServletRequest tempRequest=(javax.servlet.http.HttpServletRequest)$1;");
+     insertCode.append("String requestURL=tempRequest.getRequestURI();");
+     insertCode.append("String clientIP=tempRequest.getRemoteAddr();");
+     insertCode.append(getParameterValues());
+     insertCode.append(CLASS_NAME_REQUEST_TRACER).append(".startTransaction(requestURL,clientIP,requestTime,params);");
+-    // insertCode.append("System.out.println(\"--- ApplicationFilterChain.doFilter() is started.\");");
++    if (logger.isDebugEnabled()) {
++        insertCode.append("System.out.println(\"--- ApplicationFilterChain.doFilter() is started.\");");
++    }
+     insertCode.append("}");
+     return insertCode.toString();
+ }
+\ No newline at end of file

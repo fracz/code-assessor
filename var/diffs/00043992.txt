@@ -1,0 +1,24 @@
+diff --git a/a0714e4b918b6b3344791e0480324af763c972de b/dd7f8b408f7d7cb993daae1ac617315aed3c3652
+index a0714e4b91..dd7f8b408f 100644
+--- a/a0714e4b918b6b3344791e0480324af763c972de
++++ b/dd7f8b408f7d7cb993daae1ac617315aed3c3652
+@@ -1,16 +1,16 @@
+ @BeforeClass
+ public void beforeClass() throws Exception {
+     database = createDatabaseInstance(url);
+     this.url = database.getURL();
+     String remoteStorageType = storageType;
+     if (dropDb) {
+         if (storageType.equals("remote"))
+             remoteStorageType = "plocal";
+         if (ODatabaseHelper.existsDatabase(database, remoteStorageType)) {
+-            database.open("admin", "admin");
++            ODatabaseHelper.openDatabase(database);
+             ODatabaseHelper.dropDatabase(database, remoteStorageType);
+         }
+         createDatabase();
+     }
+-    database.open("admin", "admin");
++    ODatabaseHelper.openDatabase(database);
+ }
+\ No newline at end of file

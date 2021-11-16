@@ -1,0 +1,14 @@
+diff --git a/740377d9e566792ae300edb6b46ba9ad98673ce7 b/91711681067c9fd1262d1449abeb0512a28e8068
+index 740377d9e5..9171168106 100644
+--- a/740377d9e566792ae300edb6b46ba9ad98673ce7
++++ b/91711681067c9fd1262d1449abeb0512a28e8068
+@@ -1,5 +1,5 @@
+-public List<ByteBuffer> serializedValues(List<Cell> cells) {
+-    List<ByteBuffer> bbs = new ArrayList<ByteBuffer>(cells.size());
+-    for (Cell c : cells) bbs.add(c.name().collectionElement());
++public List<ByteBuffer> serializedValues(Iterator<Cell> cells) {
++    List<ByteBuffer> bbs = new ArrayList<ByteBuffer>();
++    while (cells.hasNext()) bbs.add(cells.next().path().get(0));
+     return bbs;
+ }
+\ No newline at end of file

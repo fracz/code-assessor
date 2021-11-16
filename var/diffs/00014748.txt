@@ -1,0 +1,18 @@
+diff --git a/f7a1421e9bd96deaaf3c7a301a15bf228f8317a7 b/02d0c1e67773fde01e3ebef0b443ed130964a0ed
+index f7a1421e9b..02d0c1e677 100644
+--- a/f7a1421e9bd96deaaf3c7a301a15bf228f8317a7
++++ b/02d0c1e67773fde01e3ebef0b443ed130964a0ed
+@@ -1,8 +1,9 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiElement parent = location.getParent();
+-    if (parent instanceof PsiMethodCallExpression) {
++@NotNull
++public String buildErrorString(Object... infos) {
++    final boolean methodCall = ((Boolean) infos[0]).booleanValue();
++    if (methodCall) {
+         return InspectionGadgetsBundle.message("unnecessarily.qualified.static.usage.problem.descriptor");
+     } else {
+         return InspectionGadgetsBundle.message("unnecessarily.qualified.static.usage.problem.descriptor1");
+     }
+ }
+\ No newline at end of file

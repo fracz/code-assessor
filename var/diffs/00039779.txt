@@ -1,0 +1,12 @@
+diff --git a/9e06932321138f3b1ed666274f7e9e64a16c0bf2 b/9ae87fda3e1e18f2ac6d71165c463a0c43d1d435
+index 9e06932321..9ae87fda3e 100644
+--- a/9e06932321138f3b1ed666274f7e9e64a16c0bf2
++++ b/9ae87fda3e1e18f2ac6d71165c463a0c43d1d435
+@@ -1,4 +1,4 @@
+ @Override
+-public Iterator<RelationshipPropertyConstraint> constraintsGetForRelationshipTypeAndPropertyKey(int typeId, final int propertyKeyId) {
+-    return schemaStorage.schemaRulesForRelationships(REL_RULE_TO_CONSTRAINT, RelationshipPropertyConstraintRule.class, typeId, rule -> rule.containsPropertyKeyId(propertyKeyId));
++public Iterator<RelationshipPropertyConstraint> constraintsGetForRelationshipTypeAndPropertyKey(RelationshipPropertyDescriptor descriptor) {
++    return schemaStorage.schemaRulesForRelationships(REL_RULE_TO_CONSTRAINT, RelationshipPropertyConstraintRule.class, descriptor.getRelationshipTypeId(), rule -> rule.containsPropertyKeyId(descriptor.getPropertyKeyId()));
+ }
+\ No newline at end of file

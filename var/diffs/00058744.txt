@@ -1,0 +1,22 @@
+diff --git a/f388c4839d08196bc11075bdf676c560e3c7709b b/a8e1ef926bf6199c092d2ace1664f2e9f07f0df3
+index f388c4839d..a8e1ef926b 100644
+--- a/f388c4839d08196bc11075bdf676c560e3c7709b
++++ b/a8e1ef926bf6199c092d2ace1664f2e9f07f0df3
+@@ -1,11 +1,13 @@
+ @Override
+-public int getTTL(final TitanSchemaType type) {
++public Duration getTTL(final TitanSchemaType type) {
+     Preconditions.checkArgument(type != null);
++    int ttl;
+     if (type instanceof VertexLabelVertex) {
+-        return ((VertexLabelVertex) type).getTTL();
++        ttl = ((VertexLabelVertex) type).getTTL();
+     } else if (type instanceof RelationTypeVertex) {
+-        return ((RelationTypeVertex) type).getTTL();
++        ttl = ((RelationTypeVertex) type).getTTL();
+     } else {
+         throw new IllegalArgumentException("given type does not support TTL: " + type.getClass());
+     }
++    return new StandardDuration(ttl, TimeUnit.SECONDS);
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/9d2cc85ba5b97667ae752df5c3a8dd8fd61e17e5 b/37630f664953f11e3f20b08a0c978c5b01d62b71
+index 9d2cc85ba5..37630f6649 100644
+--- a/9d2cc85ba5b97667ae752df5c3a8dd8fd61e17e5
++++ b/37630f664953f11e3f20b08a0c978c5b01d62b71
+@@ -1,13 +1,6 @@
++@SuppressWarnings("deprecation")
+ public void test_error_4() throws Exception {
+     DruidPooledConnection conn = dataSource.getConnection().unwrap(DruidPooledConnection.class);
+     conn.close();
+-    {
+-        Exception error = null;
+-        try {
+-            dataSource.setMaxIdle(1);
+-        } catch (Exception ex) {
+-            error = ex;
+-        }
+-        Assert.assertNotNull(error);
+-    }
++    dataSource.setMaxIdle(1);
+ }
+\ No newline at end of file

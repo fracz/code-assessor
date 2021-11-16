@@ -1,0 +1,15 @@
+diff --git a/18f525914945148f2c4c390a333bc7a23109c4f9 b/4345b7731401704fdd6562e7a5adf5464e1250cf
+index 18f5259149..4345b77314 100644
+--- a/18f525914945148f2c4c390a333bc7a23109c4f9
++++ b/4345b7731401704fdd6562e7a5adf5464e1250cf
+@@ -1,7 +1,8 @@
+ @Nullable
+ static HighlightInfo checkNotAStatement(@NotNull PsiStatement statement) {
+     if (!PsiUtil.isStatement(statement) && !PsiUtilCore.hasErrorElementChild(statement)) {
+-        return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, statement, JavaErrorMessages.message("not.a.statement"));
++        String description = JavaErrorMessages.message("not.a.statement");
++        return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(statement).descriptionAndTooltip(description).create();
+     }
+     return null;
+ }
+\ No newline at end of file

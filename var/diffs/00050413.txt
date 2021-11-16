@@ -1,0 +1,16 @@
+diff --git a/67834d55c7de8e4c435e87c80a21a716cf338684 b/dead64f96ae87e519291f916dc6571a9812f8ce7
+index 67834d55c7..dead64f96a 100644
+--- a/67834d55c7de8e4c435e87c80a21a716cf338684
++++ b/dead64f96ae87e519291f916dc6571a9812f8ce7
+@@ -1,9 +1,9 @@
+ void refreshMappingType(IRunnableContext context, DatabaseMappingType mappingType) throws DBException {
+     this.mappingType = mappingType;
+     final Collection<DatabaseMappingAttribute> mappings = getAttributeMappings(context);
+     if (!CommonUtils.isEmpty(mappings)) {
+         for (DatabaseMappingAttribute attr : mappings) {
+-            attr.updateMappingType(VoidProgressMonitor.INSTANCE);
++            attr.updateMappingType(new VoidProgressMonitor());
+         }
+     }
+ }
+\ No newline at end of file

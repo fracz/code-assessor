@@ -1,0 +1,15 @@
+diff --git a/03bf398cbbe56d4283b22a089a18847e1dfbf3ca b/3d706a1ba927f2db98e1a8e977c259f644dbbb9d
+index 03bf398cbb..3d706a1ba9 100644
+--- a/03bf398cbbe56d4283b22a089a18847e1dfbf3ca
++++ b/3d706a1ba927f2db98e1a8e977c259f644dbbb9d
+@@ -1,5 +1,6 @@
+ public TextChunk[] extractChunks() {
+-    int lineStartOffset = myDocument.getLineStartOffset(myLineNumber);
+-    int lineEndOffset = myDocument.getLineEndOffset(myLineNumber);
+-    return createTextChunks(myDocument.getCharsSequence(), myPsiFile.getFileType().getHighlighter(myPsiFile.getProject()), lineStartOffset, lineEndOffset);
++    final int lineStartOffset = myDocument.getLineStartOffset(myLineNumber);
++    final int lineEndOffset = myDocument.getLineEndOffset(myLineNumber);
++    final FileType fileType = myElement.getContainingFile().getFileType();
++    return createTextChunks(myDocument.getCharsSequence(), fileType.getHighlighter(myElement.getProject()), lineStartOffset, lineEndOffset);
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/cf775eb9da113888d2e485eb97e00b491ceb48d5 b/016c6d18e39ac268439e84261d924844ae2fb728
+index cf775eb9da..016c6d18e3 100644
+--- a/cf775eb9da113888d2e485eb97e00b491ceb48d5
++++ b/016c6d18e39ac268439e84261d924844ae2fb728
+@@ -1,12 +1,12 @@
+ /**
+  * Returns the word vector divided by the norm2 of the array
+  * @param word the word to get the matrix for
+  * @return the looked up matrix
+  */
+ public INDArray getWordVectorMatrixNormalized(String word) {
+     int i = vocab().indexOf(word);
+     if (i < 0)
+-        return lookupTable().vector(UNK);
++        return null;
+     INDArray r = lookupTable().vector(word);
+     return r.div(Nd4j.getBlasWrapper().nrm2(r));
+ }
+\ No newline at end of file

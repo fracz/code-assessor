@@ -1,0 +1,15 @@
+diff --git a/9f308bb08a6ee2f22ca5eb9ec4d5123f185086bf b/207cf133c1586824ce440ce7229afbfcbd558962
+index 9f308bb08a..207cf133c1 100644
+--- a/9f308bb08a6ee2f22ca5eb9ec4d5123f185086bf
++++ b/207cf133c1586824ce440ce7229afbfcbd558962
+@@ -1,5 +1,6 @@
+-@BeforeMethod
++@AfterClass
+ public void init() {
+-    deleteFile(testFile);
+-    db = new SharedGroup(testFile, SharedGroup.Durability.ASYNC);
++    for (String filename : fileNameList) {
++        deleteFile(filename);
++    }
+ }
+\ No newline at end of file

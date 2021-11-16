@@ -1,0 +1,26 @@
+diff --git a/03b418609786feb9a1977d1d5a2fa9937194e977 b/0ee0f1de1998ada49cea452df5a86ff34ac6affa
+index 03b4186097..0ee0f1de19 100644
+--- a/03b418609786feb9a1977d1d5a2fa9937194e977
++++ b/0ee0f1de1998ada49cea452df5a86ff34ac6affa
+@@ -1,18 +1,18 @@
+ protected PomTreeStructure.RootNode createMavenTree() {
+-    PomTreeStructure s = new PomTreeStructure(myProject, myProject.getComponent(MavenProjectsManager.class), myProject.getComponent(MavenRepository.class), myProject.getComponent(MavenEventsHandler.class)) {
++    PomTreeStructure s = new PomTreeStructure(myProject, MavenProjectsManager.getInstance(myProject), MavenPluginsRepository.getInstance(myProject), myProject.getComponent(MavenEventsHandler.class)) {
+
+         {
+             for (VirtualFile pom : myAllPoms) {
+-                this.root.addUnder(new PomNode(pom));
++                this.root.addUnder(new PomTreeStructure.PomNode(pom));
+             }
+         }
+
+         protected PomTreeViewSettings getTreeViewSettings() {
+             return new PomTreeViewSettings();
+         }
+
+         protected void updateTreeFrom(@Nullable SimpleNode node) {
+         }
+     };
+     return (PomTreeStructure.RootNode) s.getRootElement();
+ }
+\ No newline at end of file

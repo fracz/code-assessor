@@ -1,0 +1,16 @@
+diff --git a/710f151ab9212379b3314bdc7cd8bfcd6f5cf675 b/d344bf181bdf9b623d3554a99de52e9613f4d158
+index 710f151ab9..d344bf181b 100644
+--- a/710f151ab9212379b3314bdc7cd8bfcd6f5cf675
++++ b/d344bf181bdf9b623d3554a99de52e9613f4d158
+@@ -1,9 +1,9 @@
+ // SPR-13135
+ @Test
+ public void unsupportedReturnType() throws Exception {
+     ByteArrayOutputStream body = new ByteArrayOutputStream();
+     ResolvableType type = ResolvableType.forType(OutputStream.class);
+     HttpMessageWriter<?> writer = new EncoderHttpMessageWriter<>(new ByteBufferEncoder());
+     Mono<Void> mono = createResultHandler(writer).writeBody(body, returnType(type), this.exchange);
+-    TestSubscriber.subscribe(mono).assertError(IllegalStateException.class);
++    ScriptedSubscriber.create().expectError(IllegalStateException.class).verify(mono);
+ }
+\ No newline at end of file

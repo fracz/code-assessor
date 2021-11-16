@@ -1,0 +1,16 @@
+diff --git a/07f7c5a4d1edc99fece387b47bb2c924d417e225 b/fccff5b0221aa3728cb34aaaa7028d1cfc7cc625
+index 07f7c5a4d1..fccff5b022 100644
+--- a/07f7c5a4d1edc99fece387b47bb2c924d417e225
++++ b/fccff5b0221aa3728cb34aaaa7028d1cfc7cc625
+@@ -1,8 +1,7 @@
+ @Test
+ public void testConnectInvalidHost() {
+-    client.setConnectTimeout(1000);
++    client = vertx.createHttpClient(new ClientOptions().setConnectTimeout(1000));
+     client.exceptionHandler(t -> testComplete());
+-    client.setHost("127.0.0.2");
+-    client.getNow("someurl", resp -> fail("Connect should not be called"));
++    client.getNow(new RequestOptions().setPort(DEFAULT_HTTP_PORT).setHost("127.0.0.2").setRequestURI(DEFAULT_TEST_URI), resp -> fail("Connect should not be called"));
+     await();
+ }
+\ No newline at end of file

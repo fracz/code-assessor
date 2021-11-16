@@ -1,0 +1,27 @@
+diff --git a/16ff8b12e0b24a197c5c83dc19978db52b60cae2 b/55882c913f681bee4532980f84371fbe64d83eb7
+index 16ff8b12e0..55882c913f 100644
+--- a/16ff8b12e0b24a197c5c83dc19978db52b60cae2
++++ b/55882c913f681bee4532980f84371fbe64d83eb7
+@@ -1,18 +1,19 @@
+ @Override
+ public boolean remove(KafkaSpoutMessageId msgId) {
+     boolean removed = false;
+-    if (toRetryMsgs.contains(msgId)) {
++    if (isScheduled(msgId)) {
++        toRetryMsgs.remove(msgId);
+         for (Iterator<RetrySchedule> iterator = retrySchedules.iterator(); iterator.hasNext(); ) {
+             final RetrySchedule retrySchedule = iterator.next();
+             if (retrySchedule.msgId().equals(msgId)) {
+                 iterator.remove();
+-                toRetryMsgs.remove(msgId);
+                 removed = true;
++                // There is at most one schedule per message id
+                 break;
+             }
+         }
+     }
+     LOG.debug(removed ? "Removed {} " : "Not removed {}", msgId);
+     LOG.trace("Current state {}", retrySchedules);
+     return removed;
+ }
+\ No newline at end of file

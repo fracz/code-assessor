@@ -1,0 +1,13 @@
+diff --git a/8a283315040650d524edaca179cdef3ef3a86a36 b/57236397c11ca66adb2e4cb8080961f19161b00f
+index 8a28331504..57236397c1 100644
+--- a/8a283315040650d524edaca179cdef3ef3a86a36
++++ b/57236397c11ca66adb2e4cb8080961f19161b00f
+@@ -1,6 +1,5 @@
+ public <T extends BinaryToolSpec> Compiler<T> createObjectiveCCompiler() {
+     CommandLineTool<ObjectiveCCompileSpec> commandLineTool = commandLineTool(ToolType.OBJECTIVEC_COMPILER);
+-    commandLineTool.withSpecTransformer(withSystemArgs(ObjectiveCCompileSpec.class, platformConfiguration.getObjectiveCCompilerArgs()));
+-    ObjectiveCCompiler objectiveCCompiler = new ObjectiveCCompiler(commandLineTool, tools.getArgTransformer(ToolType.OBJECTIVEC_COMPILER), useCommandFile);
++    ObjectiveCCompiler objectiveCCompiler = new ObjectiveCCompiler(commandLineTool, toolRegistry.getTool(ToolType.OBJECTIVEC_COMPILER).getArgAction(), useCommandFile);
+     return (Compiler<T>) new OutputCleaningCompiler<ObjectiveCCompileSpec>(objectiveCCompiler, getOutputFileSuffix());
+ }
+\ No newline at end of file

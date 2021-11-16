@@ -1,0 +1,17 @@
+diff --git a/3b034489e17c78162f08a9a87b9fbbd6c5794e0c b/00a4b15533f88fa99839911f0a0fe06e364add80
+index 3b034489e1..00a4b15533 100644
+--- a/3b034489e17c78162f08a9a87b9fbbd6c5794e0c
++++ b/00a4b15533f88fa99839911f0a0fe06e364add80
+@@ -1,10 +1,10 @@
+ @Test
+ public void testRecursiveImport() {
+     try {
+-        new XmlBeanFactory(new ClassPathResource("org/springframework/beans/factory/xml/recursiveImport.xml"));
++        new XmlBeanFactory(RECURSIVE_IMPORT_CONTEXT);
+         fail("Should have thrown BeanDefinitionStoreException");
+     } catch (BeanDefinitionStoreException ex) {
+         // expected
+         ex.printStackTrace();
+     }
+ }
+\ No newline at end of file

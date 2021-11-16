@@ -1,0 +1,18 @@
+diff --git a/79984f44b69b62d01d98a89af7f295ce286ef74d b/c2898543fc86c4a5d8d8b6f22a35adcc0b92cb8b
+index 79984f44b6..c2898543fc 100644
+--- a/79984f44b69b62d01d98a89af7f295ce286ef74d
++++ b/c2898543fc86c4a5d8d8b6f22a35adcc0b92cb8b
+@@ -1,11 +1,9 @@
+ private boolean currentWhiteSpaceIsReadOnly() {
+     if (myCurrentSpaceProperty != null && myCurrentSpaceProperty.isReadOnly()) {
+         return true;
+     } else {
+         if (myAffectedRanges == null)
+             return false;
+-        final boolean readOnly = myAffectedRanges.isWhitespaceReadOnly(myCurrentWhiteSpace.getTextRange());
+-        // System.out.println("whitespace at " + myCurrentWhiteSpace.getTextRange() + (readOnly ? " is read-only" : " is not read-only"));
+-        return readOnly;
++        return myAffectedRanges.isWhitespaceReadOnly(myCurrentWhiteSpace.getTextRange());
+     }
+ }
+\ No newline at end of file

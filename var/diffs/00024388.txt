@@ -1,0 +1,10 @@
+diff --git a/6d129978016852ee6b656023c512c437a4226dab b/6bb070b8316a01e33d89a0aeadea782dd0db182b
+index 6d12997801..6bb070b831 100644
+--- a/6d129978016852ee6b656023c512c437a4226dab
++++ b/6bb070b8316a01e33d89a0aeadea782dd0db182b
+@@ -1,3 +1,3 @@
+ public boolean supersedes(DeletionTime dt) {
+-    return this.markedForDeleteAt > dt.markedForDeleteAt;
++    return markedForDeleteAt() > dt.markedForDeleteAt() || (markedForDeleteAt() == dt.markedForDeleteAt() && localDeletionTime() > dt.localDeletionTime());
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/780833bb0389f77a0b89f0d388463ebc99e5d7ad b/b786c23659a2d9ac51b5c19bf3aa1f76ba3e4624
+index 780833bb03..b786c23659 100644
+--- a/780833bb0389f77a0b89f0d388463ebc99e5d7ad
++++ b/b786c23659a2d9ac51b5c19bf3aa1f76ba3e4624
+@@ -1,13 +1,14 @@
+ public static void main(String[] args) {
+     ClusterManager clusterManager = new ClusterManager("localhost");
+     System.out.println("Master is " + clusterManager.getMaster());
+     System.out.println("Connected slaves");
+     for (Machine info : clusterManager.getConnectedSlaves()) {
+         System.out.println("\t" + info);
+     }
+-    System.out.println("Disconnected slaves");
+-    for (Machine info : clusterManager.getDisconnectedSlaves()) {
+-        System.out.println("\t" + info);
+-    }
++    // System.out.println( "Disconnected slaves" );
++    // for ( Machine info : clusterManager.getDisconnectedSlaves() )
++    // {
++    // System.out.println( "\t" + info );
++    // }
+     clusterManager.shutdown();
+ }
+\ No newline at end of file

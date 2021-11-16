@@ -1,0 +1,25 @@
+diff --git a/3e57602abd6a33f98a75241b3fc7eadb70a2732c b/1f81b42bb54688581a4ff8d7e6c3965d382be581
+index 3e57602abd..1f81b42bb5 100644
+--- a/3e57602abd6a33f98a75241b3fc7eadb70a2732c
++++ b/1f81b42bb54688581a4ff8d7e6c3965d382be581
+@@ -1,17 +1,15 @@
+ /**
+  * Seperated this out from Setup() so the tester could set a property before using the properties in setup
+  */
+ private void LoadPropertiesFile() {
+     this.props = new Properties();
+     try {
+         FileInputStream fis = new FileInputStream(this.app_properties_file);
+         props.load(fis);
+         fis.close();
+     } catch (FileNotFoundException ex) {
+-        // throw ex; // TODO: be nice
+-        System.out.println(ex);
++        log.error("Error with file", ex);
+     } catch (IOException ex) {
+-        // throw ex; // TODO: be nice
+-        System.out.println(ex);
++        log.error("Error with file", ex);
+     }
+ }
+\ No newline at end of file

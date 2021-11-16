@@ -1,0 +1,27 @@
+diff --git a/5c4b1d5427271ec4026dc72d2ecb0f58b790eebc b/ffd3f54d3a4abae6acba4cf6377495d14fbe69de
+index 5c4b1d5427..ffd3f54d3a 100644
+--- a/5c4b1d5427271ec4026dc72d2ecb0f58b790eebc
++++ b/ffd3f54d3a4abae6acba4cf6377495d14fbe69de
+@@ -1,17 +1,16 @@
+ @Override
+ public void onPackageRemoved(String packageName, int uid) {
+     synchronized (mLock) {
+-        if (getChangingUserId() != mCurrentUserId) {
+-            return;
+-        }
+-        Iterator<ComponentName> iterator = mEnabledServiceNames.iterator();
++        UserState userState = getOrCreateUserStateLocked(getChangingUserId());
++        Iterator<ComponentName> iterator = userState.getEnabledServices().iterator();
+         while (iterator.hasNext()) {
+             ComponentName componentName = iterator.next();
+             if (packageName.equals(componentName.getPackageName())) {
+                 iterator.remove();
+-                onEnabledServiceNamesChangedLocked();
++                persistComponentNamesToSettingLocked(Settings.Secure.ENABLED_PRINT_SERVICES, userState.getEnabledServices(), getChangingUserId());
++                userState.updateIfNeededLocked();
+                 return;
+             }
+         }
+     }
+ }
+\ No newline at end of file

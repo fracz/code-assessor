@@ -1,0 +1,21 @@
+diff --git a/967a5d701cd5a97e7c61278ab432a519004d4720 b/7e4b004ab305e1e7968cac9595f91e64870c5232
+index 967a5d701c..7e4b004ab3 100644
+--- a/967a5d701cd5a97e7c61278ab432a519004d4720
++++ b/7e4b004ab305e1e7968cac9595f91e64870c5232
+@@ -1,14 +1,14 @@
+ private OracleTableBase getJobLogView() {
+-    DBRProgressMonitor monitor = VoidProgressMonitor.INSTANCE;
++    DBRProgressMonitor monitor = new VoidProgressMonitor();
+     try {
+         OracleDataSource dataSource = getDatabaseObject().getDataSource();
+         OracleSchema systemSchema = dataSource.getSchema(monitor, OracleConstants.SCHEMA_SYS);
+         if (systemSchema != null) {
+             return systemSchema.getView(monitor, LOG_VIEW_NAME);
+         }
+         return null;
+     } catch (DBException e) {
+         log.error("Can't find log table", e);
+         return null;
+     }
+ }
+\ No newline at end of file

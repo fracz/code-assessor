@@ -1,0 +1,16 @@
+diff --git a/c912b4a40eddd35460e83c285a098d85fff4b4f2 b/a7196315ad64f390bac971661a0bc1ebd46edcc4
+index c912b4a40e..a7196315ad 100644
+--- a/c912b4a40eddd35460e83c285a098d85fff4b4f2
++++ b/a7196315ad64f390bac971661a0bc1ebd46edcc4
+@@ -1,8 +1,5 @@
+ @NotNull
+ private JsExpression translateAsObjectCreationExpressionWithEnclosingThisSaved(@NotNull ClassDescriptor containingClass) {
+-    TemporaryVariable thisAlias = context().declareTemporary(getThisObject(context(), containingClass));
+-    aliaser().setAliasForThis(containingClass, thisAlias.name());
+-    JsBinaryOperation result = newSequence(thisAlias.assignmentExpression(), translateClassOrObjectCreation());
+-    aliaser().removeAliasForThis(containingClass);
+-    return result;
++    aliasForContainingClassThis = context().declareTemporary(getThisObject(context(), containingClass));
++    return newSequence(aliasForContainingClassThis.assignmentExpression(), translateClassOrObjectCreation());
+ }
+\ No newline at end of file

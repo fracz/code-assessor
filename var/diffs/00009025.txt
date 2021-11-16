@@ -1,0 +1,23 @@
+diff --git a/89dd541197037474b921b651dca1bfca2b32a7f3 b/1cffc56f5071eef7dfd7ac2ce75e5a50158a2f64
+index 89dd541197..1cffc56f50 100644
+--- a/89dd541197037474b921b651dca1bfca2b32a7f3
++++ b/1cffc56f5071eef7dfd7ac2ce75e5a50158a2f64
+@@ -1,15 +1,15 @@
+ @Override
+ public void quickListRenamed(final QuickList oldQuickList, final QuickList newQuickList) {
+-    for (Keymap keymap : myEditor.getModel().getItems()) {
++    myKeymapSelector.visitMutableKeymaps(keymap -> {
+         String actionId = oldQuickList.getActionId();
+         Shortcut[] shortcuts = keymap.getShortcuts(actionId);
+         if (shortcuts.length != 0) {
+             String newActionId = newQuickList.getActionId();
+             for (Shortcut shortcut : shortcuts) {
+                 keymap.removeShortcut(actionId, shortcut);
+                 keymap.addShortcut(newActionId, shortcut);
+             }
+         }
+-    }
++    });
+     myQuickListsModified = true;
+ }
+\ No newline at end of file

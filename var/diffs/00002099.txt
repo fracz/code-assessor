@@ -1,0 +1,13 @@
+diff --git a/a60b84c232a49d589831d7d3b2351ad743f44622 b/c8a81d90ca5b35ff66b108ba84ae2b9d460b8b0e
+index a60b84c232..c8a81d90ca 100644
+--- a/a60b84c232a49d589831d7d3b2351ad743f44622
++++ b/c8a81d90ca5b35ff66b108ba84ae2b9d460b8b0e
+@@ -1,6 +1,6 @@
+ public static void insertPassIfNeeded(PyClass clazz) {
+     final PyStatementList statements = clazz.getStatementList();
+     if (statements.getStatements().length == 0) {
+-        statements.add(PythonLanguage.getInstance().getElementGenerator().createFromText(clazz.getProject(), PyPassStatement.class, "pass"));
++        statements.add(PyElementGenerator.getInstance(clazz.getProject()).createFromText(PyPassStatement.class, "pass"));
+     }
+ }
+\ No newline at end of file

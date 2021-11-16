@@ -1,0 +1,14 @@
+diff --git a/1c528fa44e8cf3e40765f8a9d256c208bc9323d7 b/f860b69939b62293e0acb60d8cfa0c37dd2231e2
+index 1c528fa44e..f860b69939 100644
+--- a/1c528fa44e8cf3e40765f8a9d256c208bc9323d7
++++ b/f860b69939b62293e0acb60d8cfa0c37dd2231e2
+@@ -1,5 +1,6 @@
+ @NotNull
+ private JsExpression reassignment() {
+-    JsExpression newValue = overloadedMethodInvocation();
+-    return createAccessTranslator(expression.getLeft(), forceOrderOfEvaluation).translateAsSet(newValue);
++    AccessTranslator accessTranslator = createAccessTranslator(expression.getLeft(), false).getCached();
++    JsExpression newValue = overloadedMethodInvocation(accessTranslator);
++    return accessTranslator.translateAsSet(newValue);
+ }
+\ No newline at end of file

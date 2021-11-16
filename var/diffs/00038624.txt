@@ -1,0 +1,16 @@
+diff --git a/31ea0f0f66745b0b3aaee5d52726f44b3b99bd69 b/7b36171202ecb3f0df2ca0f2641aad3117c64b5d
+index 31ea0f0f66..7b36171202 100644
+--- a/31ea0f0f66745b0b3aaee5d52726f44b3b99bd69
++++ b/7b36171202ecb3f0df2ca0f2641aad3117c64b5d
+@@ -1,6 +1,5 @@
+-private void startRoundRobinDB(NeoServerWithEmbeddedWebServer neoServer) {
+-    Database db = neoServer.getDatabase();
+-    RrdFactory rrdFactory = new RrdFactory(neoServer.getConfiguration());
+-    RrdDb rrdDb = rrdFactory.createRrdDbAndSampler(db, jobScheduler);
+-    db.setRrdDb(rrdDb);
++private void startRoundRobinDB() {
++    RrdFactory rrdFactory = new RrdFactory(config);
++    this.rrdDb = rrdFactory.createRrdDbAndSampler(database, jobScheduler);
++    database.setRrdDb(rrdDb);
+ }
+\ No newline at end of file

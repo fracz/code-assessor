@@ -1,0 +1,19 @@
+diff --git a/204fcc467ae071a8900779f48f7c485013674544 b/1faa0f89d0d3ef99432e96efd5c8f3795f12b12e
+index 204fcc467a..1faa0f89d0 100644
+--- a/204fcc467ae071a8900779f48f7c485013674544
++++ b/1faa0f89d0d3ef99432e96efd5c8f3795f12b12e
+@@ -1,11 +1,11 @@
+ @Override
+-public boolean refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
++public DBSObject refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
+     authIdCache.clearCache();
+     accessMethodCache.clearCache();
+     languageCache.clearCache();
+     encodingCache.clearCache();
+     tablespaceCache.clearCache();
+     schemaCache.clearCache();
+     cacheDataTypes(monitor);
+-    return true;
++    return this;
+ }
+\ No newline at end of file

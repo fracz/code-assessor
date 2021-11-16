@@ -1,0 +1,16 @@
+diff --git a/33b88e12f10be1d4c547444cd5539505a0fe53fc b/defcb06ecd3389c6816fbb21fb0f55d19168ccfb
+index 33b88e12f1..defcb06ecd 100644
+--- a/33b88e12f10be1d4c547444cd5539505a0fe53fc
++++ b/defcb06ecd3389c6816fbb21fb0f55d19168ccfb
+@@ -1,6 +1,9 @@
+ /**
+  * The mean of this facet interval.
+  */
+ public double getMean() {
+-    return mean();
++    if (totalCount == 0) {
++        return 0;
++    }
++    return total / totalCount;
+ }
+\ No newline at end of file

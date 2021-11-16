@@ -1,0 +1,21 @@
+diff --git a/f401c42812a320bb45e768561accf6e742747eea b/0e2d2cf334f9aaf93c00ff3f8e50c779a7066b53
+index f401c42812..0e2d2cf334 100644
+--- a/f401c42812a320bb45e768561accf6e742747eea
++++ b/0e2d2cf334f9aaf93c00ff3f8e50c779a7066b53
+@@ -1,11 +1,11 @@
+-public void testSimpleCase() throws NoSuchMethodException, InvocationTargetException {
++public void testSimpleCase() throws NoSuchMethodException, InvocationTargetException, ResolveFailedException {
+     SimpleInterceptor interceptor = new SimpleInterceptor();
+-    ProxyFactoryBuilder builder = new ProxyFactoryBuilder(new InvalidErrorHandler());
++    ProxyFactoryBuilder builder = new ProxyFactoryBuilder();
+     builder.intercept(any(), any(), interceptor);
+     ProxyFactory factory = builder.create();
+-    Provider<Simple> creator = factory.getFactory(Simple.class);
+-    Simple simple = creator.get();
++    ConstructionProxy<Simple> constructionProxy = factory.createConstructionProxy(new Errors(), Simple.class.getDeclaredConstructor());
++    Simple simple = constructionProxy.newInstance();
+     simple.invoke();
+     assertTrue(simple.invoked);
+     assertTrue(interceptor.invoked);
+ }
+\ No newline at end of file

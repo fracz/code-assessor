@@ -1,0 +1,14 @@
+diff --git a/c92de60cb072ddfdda6d4f6a1d6351659a983f92 b/fda4cba3f1e23c58ec74bcc1c9b041b9acfc5a87
+index c92de60cb0..fda4cba3f1 100644
+--- a/c92de60cb072ddfdda6d4f6a1d6351659a983f92
++++ b/fda4cba3f1e23c58ec74bcc1c9b041b9acfc5a87
+@@ -1,5 +1,5 @@
+ protected static GrVariable resolveLocalVar(GrIntroduceContext context) {
+-    if (context.var != null)
+-        return context.var;
+-    return (GrVariable) ((GrReferenceExpression) context.expression).resolve();
++    if (context.getVar() != null)
++        return context.getVar();
++    return (GrVariable) ((GrReferenceExpression) context.getExpression()).resolve();
+ }
+\ No newline at end of file

@@ -1,0 +1,25 @@
+diff --git a/1705e9c3a8cd31a43c8afca36f37f854fd32ff23 b/3e610f5243c2eca3de07f0beac80ffb40d0b5d8d
+index 1705e9c3a8..3e610f5243 100644
+--- a/1705e9c3a8cd31a43c8afca36f37f854fd32ff23
++++ b/3e610f5243c2eca3de07f0beac80ffb40d0b5d8d
+@@ -1,15 +1,17 @@
+ private static Matcher<? super ConfigurableEnvironment> containsProperySource(final String sourceName) {
+     return new TypeSafeDiagnosingMatcher<ConfigurableEnvironment>() {
+
+         @Override
+         public void describeTo(Description description) {
+             description.appendText("environment containing property source ").appendValue(sourceName);
+         }
+
+         @Override
+         protected boolean matchesSafely(ConfigurableEnvironment item, Description mismatchDescription) {
+-            mismatchDescription.appendText("Not matched against: ").appendValue(item.getPropertySources());
+-            return item.getPropertySources().contains(sourceName);
++            MutablePropertySources sources = new MutablePropertySources(item.getPropertySources());
++            ConfigurationPropertySources.finishAndRelocate(sources);
++            mismatchDescription.appendText("Not matched against: ").appendValue(sources);
++            return sources.contains(sourceName);
+         }
+     };
+ }
+\ No newline at end of file

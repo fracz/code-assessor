@@ -1,0 +1,16 @@
+diff --git a/4c18c3b7871f45cad1453e7411ff0dff1b0af2ee b/ec69ad8da86054efa1300b798c8dc74025ae8d9c
+index 4c18c3b787..ec69ad8da8 100644
+--- a/4c18c3b7871f45cad1453e7411ff0dff1b0af2ee
++++ b/ec69ad8da86054efa1300b798c8dc74025ae8d9c
+@@ -1,8 +1,8 @@
+ /**
+  * Assert the response status code is in the 1xx range.
+  */
+ public WebTestClient.ResponseSpec is1xxInformational() {
+-    String message = "Range for response status value " + this.httpStatus;
+-    assertEquals(message, HttpStatus.Series.INFORMATIONAL, this.httpStatus.series());
++    String message = "Range for response status value " + getStatus();
++    assertEquals(message, HttpStatus.Series.INFORMATIONAL, getStatus().series());
+     return this.responseSpec;
+ }
+\ No newline at end of file

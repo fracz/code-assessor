@@ -1,0 +1,23 @@
+diff --git a/e7b8acd0b5302ce5246f091e34d1da2778119800 b/d60340070f3d9bb2c10c8a3fb585007434e0bfb6
+index e7b8acd0b5..d60340070f 100644
+--- a/e7b8acd0b5302ce5246f091e34d1da2778119800
++++ b/d60340070f3d9bb2c10c8a3fb585007434e0bfb6
+@@ -1,10 +1,12 @@
+ @Override
+-protected void customizeCellRenderer(@NotNull JList<? extends SchemeListItem<T>> list, SchemeListItem<T> value, int index, boolean selected, boolean hasFocus) {
+-    if (value.getScheme() != null) {
++protected void customizeCellRenderer(@NotNull JList<? extends MySchemeListItem<T>> list, MySchemeListItem<T> value, int index, boolean selected, boolean hasFocus) {
++    T scheme = value.getScheme();
++    if (scheme != null) {
+         append(value.getPresentableText(), getSchemeAttributes(value));
+-        SchemeListItem.SchemeLevel schemeLevel = value.getSchemeLevel();
+-        if (index == -1 && !SchemeListItem.SchemeLevel.IDE_Only.equals(schemeLevel)) {
+-            append("  " + schemeLevel.toString(), SimpleTextAttributes.GRAY_ATTRIBUTES);
++        if (mySchemesPanel.getModel().supportsProjectSchemes()) {
++            if (index == -1) {
++                append("  " + (mySchemesPanel.getModel().isProjectScheme(scheme) ? PROJECT_LEVEL : IDE_LEVEL), SimpleTextAttributes.GRAY_ATTRIBUTES);
++            }
+         }
+     }
+ }
+\ No newline at end of file

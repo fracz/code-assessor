@@ -1,0 +1,12 @@
+diff --git a/c2e76ce64ada3482a7aece65b7e77529b527f326 b/8eb84adfca4601c53805f122765c409103574897
+index c2e76ce64a..8eb84adfca 100644
+--- a/c2e76ce64ada3482a7aece65b7e77529b527f326
++++ b/8eb84adfca4601c53805f122765c409103574897
+@@ -1,4 +1,4 @@
+-private Future<Boolean> forceUnlockAsync() {
++Future<Boolean> forceUnlockAsync() {
+     stopRefreshTask();
+-    return commandExecutor.evalWriteAsync(getName(), LongCodec.INSTANCE, RedisCommands.EVAL_BOOLEAN_R1, "if (redis.call('del', KEYS[1]) == 1) then " + "redis.call('publish', ARGV[2], ARGV[1]); " + "return true " + "else " + "return false " + "end", Collections.<Object>singletonList(getName()), unlockMessage, getChannelName());
++    return commandExecutor.evalWriteAsync(getName(), LongCodec.INSTANCE, RedisCommands.EVAL_BOOLEAN, "if (redis.call('del', KEYS[1]) == 1) then " + "redis.call('publish', KEYS[2], ARGV[1]); " + "return true " + "else " + "return false " + "end", Arrays.<Object>asList(getName(), getChannelName()), unlockMessage);
+ }
+\ No newline at end of file

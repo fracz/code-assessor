@@ -1,0 +1,19 @@
+diff --git a/e23c25a20ee7e9399c099153bad055a78af4ead9 b/c86f1de0d7254933728d86ce04b164607947e961
+index e23c25a20e..c86f1de0d7 100644
+--- a/e23c25a20ee7e9399c099153bad055a78af4ead9
++++ b/c86f1de0d7254933728d86ce04b164607947e961
+@@ -1,12 +1,11 @@
+ @Test
+ public void testPostfix() throws Exception {
+-    ByteArrayOutputStream output = new ByteArrayOutputStream();
+-    System.setOut(new PrintStream(output, true));
++    ByteArrayOutputStream output = getByteArrayOutputStream();
+     String cfgJson = "{source: { content: { value: 'id,text\n1,Hello\n2,Bye'} }, extractor : { row : {} }, transformers : [{ csv : {} },{ log : {postfix:'-> '}}], loader : { test: {} } }";
+     process(cfgJson);
+     List<ODocument> res = getResult();
+     ODocument doc = res.get(0);
+     String[] stringList = output.toString().split("\n");
+     assertEquals("[1:log] INFO {id:1,text:Hello}-> ", stringList[1]);
+     assertEquals("[2:log] INFO {id:2,text:Bye}-> ", stringList[2]);
+ }
+\ No newline at end of file

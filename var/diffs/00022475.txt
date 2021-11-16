@@ -1,0 +1,18 @@
+diff --git a/42026278fa65277c60303994f4e6f8a4ae5ee6ce b/9202ef262cacb4cd6cd770b3ec8c5a0c1320d35c
+index 42026278fa..9202ef262c 100644
+--- a/42026278fa65277c60303994f4e6f8a4ae5ee6ce
++++ b/9202ef262cacb4cd6cd770b3ec8c5a0c1320d35c
+@@ -1,11 +1,8 @@
+ @Override
+ public void hideRecents(boolean triggeredFromAltTab, boolean triggeredFromHomeKey) {
+     if (mBootCompleted) {
+         // Defer to the activity to handle hiding recents, if it handles it, then it must still
+         // be visible
+-        Intent intent = createLocalBroadcastIntent(mContext, ACTION_HIDE_RECENTS_ACTIVITY);
+-        intent.putExtra(EXTRA_TRIGGERED_FROM_ALT_TAB, triggeredFromAltTab);
+-        intent.putExtra(EXTRA_TRIGGERED_FROM_HOME_KEY, triggeredFromHomeKey);
+-        mContext.sendBroadcastAsUser(intent, UserHandle.CURRENT);
++        EventBus.getDefault().send(new HideRecentsEvent(triggeredFromAltTab, triggeredFromHomeKey));
+     }
+ }
+\ No newline at end of file

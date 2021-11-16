@@ -1,0 +1,21 @@
+diff --git a/69c71f0b5a841daa2f561daddb625377316b9d4f b/7fc4b3d65ca08c23d63a1f65aa1ae58b238883c1
+index 69c71f0b5a..7fc4b3d65c 100644
+--- a/69c71f0b5a841daa2f561daddb625377316b9d4f
++++ b/7fc4b3d65ca08c23d63a1f65aa1ae58b238883c1
+@@ -1,8 +1,11 @@
+ private void processStatementError(DataStatementInfo statement, DBCSession session) {
+     statement.executed = false;
+-    try {
+-        session.getTransactionManager().rollback(savepoint);
+-    } catch (Throwable e) {
+-        log.debug("Error during transaction rollback", e);
++    DBCTransactionManager txnManager = DBUtils.getTransactionManager(getDataSource());
++    if (txnManager != null) {
++        try {
++            txnManager.rollback(savepoint);
++        } catch (Throwable e) {
++            log.debug("Error during transaction rollback", e);
++        }
+     }
+ }
+\ No newline at end of file

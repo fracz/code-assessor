@@ -1,0 +1,12 @@
+diff --git a/67d411390b416658c262d7646fcf969df8ccdeaa b/8149df60f489ce2d7c9457e3d6a40f4936c30444
+index 67d411390b..8149df60f4 100644
+--- a/67d411390b416658c262d7646fcf969df8ccdeaa
++++ b/8149df60f489ce2d7c9457e3d6a40f4936c30444
+@@ -1,5 +1,5 @@
+ @Override
+ public void setRef(int parameterIndex, Ref x) throws SQLException {
+-    setParameter(parameterIndex, new JdbcParameterImpl(Types.REF, x));
++    setParameter(parameterIndex, createParameter(Types.REF, x));
+     createChain().preparedStatement_setRef(this, parameterIndex, x);
+ }
+\ No newline at end of file

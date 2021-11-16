@@ -1,0 +1,19 @@
+diff --git a/586308a5d87305acfffd4c9886d8ecf5ec42be2d b/007391cc0277bcf9b10aff3a182e5172714bab63
+index 586308a5d8..007391cc02 100644
+--- a/586308a5d87305acfffd4c9886d8ecf5ec42be2d
++++ b/007391cc0277bcf9b10aff3a182e5172714bab63
+@@ -1,8 +1,9 @@
+ @Test
+ public void shouldMarkAsVerifiedInOrder() throws Exception {
+-    Invocation invocation = new InvocationBuilder().toInvocation();
+-    assertFalse(context.isVerified(invocation));
+-    finderStub.validMatchingChunkToReturn.addAll(asList(invocation));
++    Invocation invocation = buildSimpleMethod().toInvocation();
++    invocations = asList(invocation);
++    wanted = buildSimpleMethod().toInvocationMatcher();
++    assertThat(context.isVerified(invocation)).isFalse();
+     checker.check(invocations, wanted, 1, context);
+-    assertTrue(context.isVerified(invocation));
++    assertThat(context.isVerified(invocation)).isTrue();
+ }
+\ No newline at end of file

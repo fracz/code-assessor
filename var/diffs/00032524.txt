@@ -1,0 +1,20 @@
+diff --git a/297bea9c80ce840c68126353475a4aba2549afe1 b/e2dba0c9a8669385db509d5d421fa5a8ead281dc
+index 297bea9c80..e2dba0c9a8 100644
+--- a/297bea9c80ce840c68126353475a4aba2549afe1
++++ b/e2dba0c9a8669385db509d5d421fa5a8ead281dc
+@@ -1,7 +1,10 @@
+ @Override
+-public Void visitClass(ClassTree node, VisitorState visitorState) {
+-    for (DescribingMatcher<ClassTree> classMatcher : classMatchers) {
+-        evaluateMatch(node, visitorState, classMatcher);
++public Void visitClass(ClassTree tree, VisitorState visitorState) {
++    VisitorState state = visitorState.withPath(getCurrentPath());
++    for (ClassTreeMatcher matcher : classMatchers) {
++        if (isSuppressed(matcher))
++            continue;
++        reportMatch(matcher.matchClass(tree, state), tree, state);
+     }
+-    return super.visitClass(node, visitorState);
++    return super.visitClass(tree, visitorState);
+ }
+\ No newline at end of file

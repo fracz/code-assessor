@@ -1,0 +1,19 @@
+diff --git a/0db34f0739aefabc3f66d8edf2cdd1cbd7b0d9b0 b/16b79889f24659a9b9bf7f1cf031cdd7785a8db5
+index 0db34f0739..16b79889f2 100644
+--- a/0db34f0739aefabc3f66d8edf2cdd1cbd7b0d9b0
++++ b/16b79889f24659a9b9bf7f1cf031cdd7785a8db5
+@@ -1,9 +1,11 @@
+ @NotNull
+ @Override
+ public TextRange process(@NotNull final ASTNode element, @NotNull final TextRange range) {
+-    final Project project = SourceTreeToPsiMap.treeElementToPsi(element).getProject();
+-    if (!CodeStyleSettingsManager.getSettings(project).ENABLE_JAVADOC_FORMATTING || element.getPsi().getContainingFile().getLanguage() != StdLanguages.JAVA) {
++    PsiElement e = SourceTreeToPsiMap.treeElementToPsi(element);
++    assert e != null;
++    final Project project = e.getProject();
++    if (!CodeStyleSettingsManager.getSettings(project).ENABLE_JAVADOC_FORMATTING || element.getPsi().getContainingFile().getLanguage() != JavaLanguage.INSTANCE) {
+         return range;
+     }
+     return formatCommentsInner(project, element, range);
+ }
+\ No newline at end of file

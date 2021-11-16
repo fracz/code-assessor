@@ -1,0 +1,16 @@
+diff --git a/b44d1c5b1311d302547425c67471fc30d36a67f5 b/8a7792d15ab58a4d8747e2c9c775e603bad3ea1c
+index b44d1c5b13..8a7792d15a 100644
+--- a/b44d1c5b1311d302547425c67471fc30d36a67f5
++++ b/8a7792d15ab58a4d8747e2c9c775e603bad3ea1c
+@@ -1,6 +1,7 @@
+ @Test
+ public void getStaticResourceUrl() {
+-    PathContainer path = PathContainer.parsePath("/resources/foo.css");
+-    String url = this.urlProvider.getForLookupPath(path).block(Duration.ofSeconds(5));
+-    assertEquals("/resources/foo.css", url);
++    ServerWebExchange exchange = MockServerHttpRequest.get("/").toExchange();
++    String uriString = "/resources/foo.css";
++    String actual = this.urlProvider.getForUriString(uriString, exchange).block(Duration.ofSeconds(5));
++    assertEquals(uriString, actual);
+ }
+\ No newline at end of file

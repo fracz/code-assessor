@@ -1,0 +1,12 @@
+diff --git a/66a867e41354eafc16ae3d69b065638f9a74249a b/940ea8084e29babddc9805fe125a1c4eec76c8dc
+index 66a867e413..940ea8084e 100644
+--- a/66a867e41354eafc16ae3d69b065638f9a74249a
++++ b/940ea8084e29babddc9805fe125a1c4eec76c8dc
+@@ -1,4 +1,4 @@
+-private PsiElement findPackage(Project project, String qualifiedName) {
+-    JavaPsiFacade javaFacade = JavaPsiFacade.getInstance(project);
++private PsiElement findPackage(String qualifiedName) {
++    JavaPsiFacade javaFacade = JavaPsiFacade.getInstance(getProject());
+     return javaFacade.findPackage(qualifiedName);
+ }
+\ No newline at end of file

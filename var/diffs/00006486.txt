@@ -1,0 +1,22 @@
+diff --git a/5a282add1ce529956d23601471e8cc15fce8bdea b/2a85ed2b1762bb7e89032bd02c8a86b1c060df0a
+index 5a282add1c..2a85ed2b17 100644
+--- a/5a282add1ce529956d23601471e8cc15fce8bdea
++++ b/2a85ed2b1762bb7e89032bd02c8a86b1c060df0a
+@@ -1,14 +1,15 @@
+ public void initProfiles() {
+     if (!myProfilesAreInitialized.getAndSet(true)) {
+         if (ApplicationManager.getApplication().isUnitTestMode())
+             return;
+-        final Collection<Profile> profiles = mySchemesManager.loadSchemes(FILE_SPEC, myProcessor, RoamingType.PER_USER);
++        mySchemesManager.clearAllSchemes();
++        final Collection<Profile> profiles = mySchemesManager.loadSchemes();
+         if (profiles.isEmpty()) {
+             createDefaultProfile();
+         } else {
+             for (Profile profile : profiles) {
+                 addProfile(profile);
+             }
+         }
+     }
+ }
+\ No newline at end of file

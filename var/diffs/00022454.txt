@@ -1,0 +1,23 @@
+diff --git a/886124f519d17e542afd572e13b6388e648aabc7 b/72e21fed58e34e6f82ed76e65d25a22075109c35
+index 886124f519..72e21fed58 100644
+--- a/886124f519d17e542afd572e13b6388e648aabc7
++++ b/72e21fed58e34e6f82ed76e65d25a22075109c35
+@@ -1,16 +1,16 @@
+ /**
+  * Requests interruption of the accessibility feedback from all accessibility services.
+  */
+ public void interrupt() {
+     if (!mIsEnabled) {
+         throw new IllegalStateException("Accessibility off. Did you forget to check that?");
+     }
+     try {
+         mService.interrupt();
+-        if (DEBUG) {
++        if (false) {
+             Log.i(LOG_TAG, "Requested interrupt from all services");
+         }
+     } catch (RemoteException re) {
+         Log.e(LOG_TAG, "Error while requesting interrupt from all services. ", re);
+     }
+ }
+\ No newline at end of file

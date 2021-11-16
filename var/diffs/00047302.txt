@@ -1,0 +1,11 @@
+diff --git a/9d1a47fddad986484410cbdd6b212b8d02536ece b/54935716ee1ef25bfa943d268f23bb1ed6e4eb4c
+index 9d1a47fdda..54935716ee 100644
+--- a/9d1a47fddad986484410cbdd6b212b8d02536ece
++++ b/54935716ee1ef25bfa943d268f23bb1ed6e4eb4c
+@@ -1,4 +1,4 @@
+ @Override
+ public Publisher<Boolean> retainAll(Collection<?> c) {
+-    return commandExecutor.evalWriteReactive(getName(), codec, new RedisCommand<Boolean>("EVAL", new BooleanReplayConvertor(), 4), "local changed = false " + "local items = redis.call('lrange', KEYS[1], 0, -1) " + "local i = 1 " + "local s = table.getn(items) " + "while i <= s do " + "local element = items[i] " + "local isInAgrs = false " + "for j = 0, table.getn(ARGV), 1 do " + "if ARGV[j] == element then " + "isInAgrs = true " + "break " + "end " + "end " + "if isInAgrs == false then " + "redis.call('LREM', KEYS[1], 0, element) " + "changed = true " + "end " + "i = i + 1 " + "end " + "return changed ", Collections.<Object>singletonList(getName()), c.toArray());
++    return commandExecutor.evalWriteReactive(getName(), codec, RedissonList.EVAL_BOOLEAN_ARGS1, "local changed = false " + "local items = redis.call('lrange', KEYS[1], 0, -1) " + "local i = 1 " + "local s = table.getn(items) " + "while i <= s do " + "local element = items[i] " + "local isInAgrs = false " + "for j = 0, table.getn(ARGV), 1 do " + "if ARGV[j] == element then " + "isInAgrs = true " + "break " + "end " + "end " + "if isInAgrs == false then " + "redis.call('LREM', KEYS[1], 0, element) " + "changed = true " + "end " + "i = i + 1 " + "end " + "return changed ", Collections.<Object>singletonList(getName()), c.toArray());
+ }
+\ No newline at end of file

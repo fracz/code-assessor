@@ -1,0 +1,18 @@
+diff --git a/0076ae813c1605dec235c4cc63db82f1d5d36e59 b/73997ad0dd939f922631f88f4f03464fe7f9d25f
+index 0076ae813c..73997ad0dd 100644
+--- a/0076ae813c1605dec235c4cc63db82f1d5d36e59
++++ b/73997ad0dd939f922631f88f4f03464fe7f9d25f
+@@ -1,10 +1,10 @@
+ @Before
+ public void setUp() throws IOException {
+     when(clientConfig.getEurekaServerTotalConnectionsPerHost()).thenReturn(10);
+     when(clientConfig.getEurekaServerTotalConnections()).thenReturn(10);
+     writeServer = new SimpleEurekaHttpServer(writeRequestHandler);
+-    clusterResolver = new StaticClusterResolver("regionA", new EurekaEndpoint("localhost", writeServer.getServerPort(), false, "/v2/", null));
++    clusterResolver = new StaticClusterResolver<EurekaEndpoint>("regionA", new DefaultEndpoint("localhost", writeServer.getServerPort(), false, "/v2/"));
+     readServer = new SimpleEurekaHttpServer(readRequestHandler);
+     readServerURI = "http://localhost:" + readServer.getServerPort();
+-    clientFactory = EurekaHttpClients.createStandardClientFactory(clientConfig, applicationInfoManager, clusterResolver);
++    clientFactory = EurekaHttpClients.createStandardClientFactory(clientConfig, applicationInfoManager.getInfo(), clusterResolver);
+ }
+\ No newline at end of file

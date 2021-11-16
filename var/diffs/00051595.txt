@@ -1,0 +1,15 @@
+diff --git a/d40e9cdbe5ed1e35302630d330bd4a58a87b6f60 b/c7a96e291269d59047f2991575eb6adae6e99642
+index d40e9cdbe5..c7a96e2912 100644
+--- a/d40e9cdbe5ed1e35302630d330bd4a58a87b6f60
++++ b/c7a96e291269d59047f2991575eb6adae6e99642
+@@ -1,7 +1,7 @@
+ @Nullable
+ @Override
+-public OBJECT getCachedObject(String name) {
++public OBJECT getCachedObject(@NotNull String name) {
+     synchronized (this) {
+-        return objectList == null || name == null ? null : getObjectMap().get(caseSensitive ? name : name.toUpperCase());
++        return objectList == null ? null : getObjectMap().get(caseSensitive ? name : name.toUpperCase());
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/b8342dc70736990442e8113df340c96705fabd58 b/1669b8e4241b86fedc456841763f76e51c290f2d
+index b8342dc707..1669b8e424 100644
+--- a/b8342dc70736990442e8113df340c96705fabd58
++++ b/1669b8e4241b86fedc456841763f76e51c290f2d
+@@ -1,9 +1,10 @@
+ @Test
+ public void shouldReportError() throws Exception {
++    Invocation firstUnverified = new InvocationBuilder().toInvocation();
++    calculator.invocationToReturn = firstUnverified;
+     List<Invocation> invocations = asList(new InvocationBuilder().toInvocation());
+-    returnedByCalculator = new InvocationBuilder().toInvocation();
+     verifier.verify(invocations, null, VerificationMode.noMoreInteractions());
+     assertSame(invocations, calculator.invocations);
+-    assertEquals(returnedByCalculator.toString(), reporterStub.undesired);
+-    assertSame(returnedByCalculator.getStackTrace(), reporterStub.actualInvocationStackTrace);
++    assertEquals(firstUnverified.toString(), reporterStub.undesired);
++    assertSame(firstUnverified.getStackTrace(), reporterStub.actualInvocationStackTrace);
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/84a67dc983937cbe109e78bfb82fba1e20d63e9d b/b11f51a268e72dbac390843678d110a6ecf77c3f
+index 84a67dc983..b11f51a268 100644
+--- a/84a67dc983937cbe109e78bfb82fba1e20d63e9d
++++ b/b11f51a268e72dbac390843678d110a6ecf77c3f
+@@ -1,3 +1,4 @@
+ protected void openNodeEditor(DBNNode node) {
+-    NavigatorHandlerObjectOpen.openEntityEditor(node, null, workbenchSite != null ? workbenchSite.getWorkbenchWindow() : DBeaverUI.getActiveWorkbenchWindow());
++    IWorkbenchWindow workbenchWindow = workbenchSite != null ? workbenchSite.getWorkbenchWindow() : DBeaverUI.getActiveWorkbenchWindow();
++    NavigatorUtils.openNavigatorNode(node, workbenchWindow);
+ }
+\ No newline at end of file

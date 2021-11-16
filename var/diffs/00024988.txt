@@ -1,0 +1,26 @@
+diff --git a/057158b52955b7179a59215c837728d051f07878 b/21ea5a117569947a9d8407e4b72727d8f8039b5b
+index 057158b529..21ea5a1175 100644
+--- a/057158b52955b7179a59215c837728d051f07878
++++ b/21ea5a117569947a9d8407e4b72727d8f8039b5b
+@@ -1,15 +1,19 @@
+ @Override
+ public void run() {
++    int numSuccessiveFailures = 0;
+     while (fsRunning && shouldRun) {
+         try {
+-            if (!saveNextReplica()) {
++            numSuccessiveFailures = saveNextReplica() ? 0 : (numSuccessiveFailures + 1);
++            // operations are failing we don't keep retrying them in a tight loop.
++            if (numSuccessiveFailures == lazyWriteReplicaTracker.numReplicasNotPersisted()) {
+                 Thread.sleep(checkpointerInterval * 1000);
++                numSuccessiveFailures = 0;
+             }
+         } catch (InterruptedException e) {
+             LOG.info("LazyWriter was interrupted, exiting");
+             break;
+         } catch (Exception e) {
+             LOG.error("Ignoring exception in LazyWriter:", e);
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/043e5304bb7e4766cfe90ffa78526432af293970 b/c6a121edc4cd3abd12f5009cad5106bf6abce451
+index 043e5304bb..c6a121edc4 100644
+--- a/043e5304bb7e4766cfe90ffa78526432af293970
++++ b/c6a121edc4cd3abd12f5009cad5106bf6abce451
+@@ -1,10 +1,4 @@
+ @Override
+ public String getMessage() {
+-    StringBuilder result = new StringBuilder();
+-    result.append(super.getMessage());
+-    for (int i = contexts.size() - 1; i >= 0; i--) {
+-        result.append(String.format("%n"));
+-        result.append(contexts.get(i));
+-    }
+-    return result.toString();
++    return errors != null ? Errors.format("Guice provision errors", errors.getMessages()) : super.getMessage();
+ }
+\ No newline at end of file

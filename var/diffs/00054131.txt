@@ -1,0 +1,17 @@
+diff --git a/38ad13a9816b0fcbf34002fd2670cd5ea2a8f33e b/0b7b81596e9ee4cb63f460dba2360a75fa2d4d47
+index 38ad13a981..0b7b81596e 100644
+--- a/38ad13a9816b0fcbf34002fd2670cd5ea2a8f33e
++++ b/0b7b81596e9ee4cb63f460dba2360a75fa2d4d47
+@@ -1,7 +1,8 @@
+ @Override
+-protected Row nextRow() throws SQLException {
++protected Optional<? extends ResultSetRow> nextRow() throws SQLException {
+     if (resultSet.next()) {
+-        return new Row(resultSet);
++        return Optional.of(new AbstractResultSetRow(resultSet) {
++        });
+     }
+-    return null;
++    return Optional.absent();
+ }
+\ No newline at end of file

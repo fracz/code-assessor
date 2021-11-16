@@ -1,0 +1,21 @@
+diff --git a/15d00a94ed6924fcc9c1d1a9f0cafe8a9c9def71 b/950689c45924735bc8a375ca630a127e7248ae8a
+index 15d00a94ed..950689c459 100644
+--- a/15d00a94ed6924fcc9c1d1a9f0cafe8a9c9def71
++++ b/950689c45924735bc8a375ca630a127e7248ae8a
+@@ -1,13 +1,5 @@
+ private static ResultSet buildResultSet(final ShardingResultSets shardingResultSets, final SQLStatement sqlStatement) throws SQLException {
+     ResultSetMergeContext resultSetMergeContext = new ResultSetMergeContext(shardingResultSets, sqlStatement);
+-    ResultSet result;
+-    if (resultSetMergeContext.getSqlStatement().isGroupByAndOrderByDifferent()) {
+-        result = buildMemoryResultSet(resultSetMergeContext);
+-    } else {
+-        result = buildStreamResultSet(resultSetMergeContext);
+-    }
+-    if (null != resultSetMergeContext.getSqlStatement().getLimit()) {
+-        result = new LimitResultSet(result, resultSetMergeContext.getSqlStatement());
+-    }
+-    return result;
++    ResultSet resultSet = resultSetMergeContext.getSqlStatement().isGroupByAndOrderByDifferent() ? buildMemoryResultSet(resultSetMergeContext) : buildStreamResultSet(resultSetMergeContext);
++    return decorateResultSet(resultSetMergeContext, resultSet);
+ }
+\ No newline at end of file

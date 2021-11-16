@@ -1,0 +1,15 @@
+diff --git a/4a2e295d981d253915a02b035dff21d8da1f2e50 b/ca462e90e58ff9f0d2e7e44544f78b3d293a9751
+index 4a2e295d98..ca462e90e5 100644
+--- a/4a2e295d981d253915a02b035dff21d8da1f2e50
++++ b/ca462e90e58ff9f0d2e7e44544f78b3d293a9751
+@@ -1,7 +1,7 @@
+ @Override
+ protected void searchInClasses() {
+     final OClass cls = parsedTarget.getTargetClasses().keySet().iterator().next();
+-    if (searchForIndexes(cls)) {
+-    } else
++    if (!searchForIndexes(cls)) {
+         super.searchInClasses();
++    }
+ }
+\ No newline at end of file

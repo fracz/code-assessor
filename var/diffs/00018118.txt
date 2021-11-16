@@ -1,0 +1,21 @@
+diff --git a/654117707a948adb9eb48d3d6dd326c27f1cc185 b/38f288efed241a9e645b7c61afd25cd42ae0dcf9
+index 654117707a..38f288efed 100644
+--- a/654117707a948adb9eb48d3d6dd326c27f1cc185
++++ b/38f288efed241a9e645b7c61afd25cd42ae0dcf9
+@@ -1,14 +1,14 @@
+ public boolean deleteProject(Project project) {
+     if (_projectsMetadata.containsKey(project.id)) {
+         _projects.remove(project.id);
+         _projectsMetadata.remove(project.id);
+-        File file = new File(_dir, project.id + ".project");
++        File file = new File(getProjectDir(project.id), "raw-data");
+         if (file.exists()) {
+             file.delete();
+         }
+         save();
+         return true;
+     } else {
+         return false;
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/ed33c32678bec0b3e848f4b694fcb9416fed02f8 b/dafabe855141599e5a6ebc77dcfb3f16405ab5d6
+index ed33c32678..dafabe8551 100644
+--- a/ed33c32678bec0b3e848f4b694fcb9416fed02f8
++++ b/dafabe855141599e5a6ebc77dcfb3f16405ab5d6
+@@ -1,7 +1,7 @@
+ @Override
+-public KeyValueIterator<K, V> all() {
++public KeyValueIterator<Bytes, byte[]> all() {
+     validateStoreOpen();
+     final KeyValueIterator<Bytes, byte[]> storeIterator = new DelegatingPeekingKeyValueIterator<>(this.name(), underlying.all());
+     final ThreadCache.MemoryLRUCacheBytesIterator cacheIterator = cache.all(cacheName);
+-    return new MergedSortedCacheKeyValueStoreIterator<>(cacheIterator, storeIterator, serdes);
++    return new MergedSortedCacheKeyValueBytesStoreIterator(cacheIterator, storeIterator);
+ }
+\ No newline at end of file

@@ -1,0 +1,37 @@
+diff --git a/9a15c4bbff2cbf911aff688be585855699768e7c b/779772bfe1f1115b5566af5af1430b7ea06a826e
+index 9a15c4bbff..779772bfe1 100644
+--- a/9a15c4bbff2cbf911aff688be585855699768e7c
++++ b/779772bfe1f1115b5566af5af1430b7ea06a826e
+@@ -1,26 +1,26 @@
+ /**
+  * Retrieve the input extras currently associated with the text view, which
+  * can be viewed as well as modified.
+  *
+  * @param create If true, the extras will be created if they don't already
+  * exist.  Otherwise, null will be returned if none have been created.
+  * @see #setInputExtras(int)
+  * @see EditorInfo#extras
+  * @attr ref android.R.styleable#TextView_editorExtras
+  */
+ public Bundle getInputExtras(boolean create) {
+     if (mEditor == null && !create)
+         return null;
+     createEditorIfNeeded("get Input extra");
+-    if (getEditor().mInputContentType == null) {
++    if (mEditor.mInputContentType == null) {
+         if (!create)
+             return null;
+-        getEditor().createInputContentTypeIfNeeded();
++        mEditor.createInputContentTypeIfNeeded();
+     }
+-    if (getEditor().mInputContentType.extras == null) {
++    if (mEditor.mInputContentType.extras == null) {
+         if (!create)
+             return null;
+-        getEditor().mInputContentType.extras = new Bundle();
++        mEditor.mInputContentType.extras = new Bundle();
+     }
+-    return getEditor().mInputContentType.extras;
++    return mEditor.mInputContentType.extras;
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/d1ec6f9a529f9a3eae4d336d9418acfaf70cd2ed b/10ce4f7d287f878d1002b496e4317bb886451403
+index d1ec6f9a52..10ce4f7d28 100644
+--- a/d1ec6f9a529f9a3eae4d336d9418acfaf70cd2ed
++++ b/10ce4f7d287f878d1002b496e4317bb886451403
+@@ -1,5 +1,5 @@
+-public Cursor getOutgoingMessages() {
+-    String outgoingSelection = "(" + TYPE + " = " + Types.ENCRYPTING_TYPE + " OR " + TYPE + " = " + Types.ENCRYPTED_OUTBOX_TYPE + ")";
++Cursor getOutgoingMessages() {
++    String outgoingSelection = TYPE + " & " + Types.BASE_TYPE_MASK + " = " + Types.BASE_OUTBOX_TYPE;
+     SQLiteDatabase db = databaseHelper.getReadableDatabase();
+-    return db.query(TABLE_NAME, null, outgoingSelection, null, null, null, null);
++    return db.query(TABLE_NAME, MESSAGE_PROJECTION, outgoingSelection, null, null, null, null);
+ }
+\ No newline at end of file

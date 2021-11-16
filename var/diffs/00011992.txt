@@ -1,0 +1,18 @@
+diff --git a/91236e6248d8c633e6e6bc89e9d47204265adcec b/586a9978f270dd7d668090e12d24db3fac5229ed
+index 91236e6248..586a9978f2 100644
+--- a/91236e6248d8c633e6e6bc89e9d47204265adcec
++++ b/586a9978f270dd7d668090e12d24db3fac5229ed
+@@ -1,9 +1,9 @@
+ public void updateHint(PsiElement element) {
+     if (myHint == null || !myHint.isVisible())
+         return;
+-    final Condition<PsiElement> popupUpdater = ((JBPopupImpl) myHint).getPopupUpdater();
+-    if (popupUpdater != null) {
++    final PopupUpdateProcessor updateProcessor = myHint.getUserData(PopupUpdateProcessor.class);
++    if (updateProcessor != null) {
+         myHint.cancel();
+-        popupUpdater.value(element);
++        updateProcessor.getUpdater().value(element);
+     }
+ }
+\ No newline at end of file

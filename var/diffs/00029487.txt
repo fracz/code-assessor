@@ -1,0 +1,15 @@
+diff --git a/7a1d2ab2f0e68196e97972c61c0d936343a58ee9 b/6f4a06ef75a6eb6d0d39383d6b0d0227e36e13a2
+index 7a1d2ab2f0..6f4a06ef75 100644
+--- a/7a1d2ab2f0e68196e97972c61c0d936343a58ee9
++++ b/6f4a06ef75a6eb6d0d39383d6b0d0227e36e13a2
+@@ -1,6 +1,6 @@
+ private void applyBoost(String field, Query q) {
+-    if (settings.boosts() != null) {
+-        float boost = settings.boosts().getOrDefault(field, 1f);
+-        q.setBoost(boost);
++    Float fieldBoost = settings.fieldsAndWeights().get(field);
++    if (fieldBoost != null) {
++        q.setBoost(fieldBoost);
+     }
+ }
+\ No newline at end of file

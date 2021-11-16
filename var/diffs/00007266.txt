@@ -1,0 +1,11 @@
+diff --git a/1a188280c3d9524cbc7068ff547790abfb7a09d8 b/40a470c7cf41d497546c05d987705fe161796d82
+index 1a188280c3..40a470c7cf 100644
+--- a/1a188280c3d9524cbc7068ff547790abfb7a09d8
++++ b/40a470c7cf41d497546c05d987705fe161796d82
+@@ -1,4 +1,4 @@
+ private void restartIdleAlarm() {
+     myIdleAlarm.cancelAllRequests();
+-    myIdleAlarm.addRequest(myIdleRunnable, Registry.intValue("actionSystem.focusIdleTimeout"));
++    myIdleAlarm.addRequest(new IdleRunnable(), Registry.intValue("actionSystem.focusIdleTimeout"));
+ }
+\ No newline at end of file

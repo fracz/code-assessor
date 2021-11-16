@@ -1,0 +1,13 @@
+diff --git a/d24c0f1bde54ad6d581e04efac3c0b5381170575 b/dcd40e7fcb7e09de11208d55b1a3493a35124128
+index d24c0f1bde..dcd40e7fcb 100644
+--- a/d24c0f1bde54ad6d581e04efac3c0b5381170575
++++ b/dcd40e7fcb7e09de11208d55b1a3493a35124128
+@@ -1,5 +1,5 @@
+ @Override
+-public byte[] getStaticInfo(String sessionID, String workerID) {
+-    SessionTypeWorkerId id = new SessionTypeWorkerId(sessionID, workerID);
++public Persistable getStaticInfo(String sessionID, String typeID, String workerID) {
++    SessionTypeWorkerId id = new SessionTypeWorkerId(sessionID, typeID, workerID);
+     return staticInfo.get(id);
+ }
+\ No newline at end of file

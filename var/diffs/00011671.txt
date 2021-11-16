@@ -1,0 +1,18 @@
+diff --git a/3b3cadd50bdceb19e7e11494626fd5d275470607 b/5d406af28558095d1e0ac76dbe52245d10ea1f01
+index 3b3cadd50b..5d406af285 100644
+--- a/3b3cadd50bdceb19e7e11494626fd5d275470607
++++ b/5d406af28558095d1e0ac76dbe52245d10ea1f01
+@@ -1,8 +1,7 @@
+ public void testRemoving() throws Exception {
+     MavenRepositoryInfo i = new MavenRepositoryInfo("remote", "file:///" + myDataTestFixture.getTestDataPath("remote"), true);
+-    index.add(i);
+-    index.update(i, new EmptyProgressIndicator());
+-    index.remove(i);
+-    List<ArtifactInfo> result = index.findByArtifactId("junit*");
+-    assertEquals(0, result.size());
++    myIndex.add(i);
++    myIndex.update(i, new EmptyProgressIndicator());
++    myIndex.remove(i);
++    assertEquals(0, myIndex.findByArtifactId("junit*").size());
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/083f21189a2911a2530f780e97b335d0f942bd31 b/d389387d42a08907d4ac125789bba1a117038f40
+index 083f21189a..d389387d42 100644
+--- a/083f21189a2911a2530f780e97b335d0f942bd31
++++ b/d389387d42a08907d4ac125789bba1a117038f40
+@@ -1,4 +1,4 @@
+ @Override
+ public void visitIincInsn(int var, int increment) {
+-    super.visitIincInsn(remapper.remap(var), increment);
++    remapper.visitIincInsn(var, increment, mv);
+ }
+\ No newline at end of file

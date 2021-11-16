@@ -1,0 +1,19 @@
+diff --git a/8c85e3af5a75d40727ab9c31be1b90159bfef18d b/267da477e1f70633d07fedbf6c0200fce095cca1
+index 8c85e3af5a..267da477e1 100644
+--- a/8c85e3af5a75d40727ab9c31be1b90159bfef18d
++++ b/267da477e1f70633d07fedbf6c0200fce095cca1
+@@ -1,11 +1,10 @@
+-public int open(final String iUserName, final String iUserPassword, final Map<String, Object> iOptions) {
++public void open(final String iUserName, final String iUserPassword, final Map<String, Object> iOptions) {
+     addUser();
+     level2cache.startup();
+     if (open)
+         // REUSED
+-        return 0;
++        return;
+     if (!exists())
+         throw new OStorageException("Can't open the storage '" + name + "' because it not exists in path: " + url);
+     open = true;
+-    return 0;
+ }
+\ No newline at end of file

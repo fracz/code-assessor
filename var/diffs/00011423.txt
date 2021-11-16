@@ -1,0 +1,31 @@
+diff --git a/b00a91966f0e42bb5c9ac136ff7be7a13a4b9c47 b/cf410e4552497ba09ac9929ec1d6e32d3b85ba96
+index b00a91966f..cf410e4552 100644
+--- a/b00a91966f0e42bb5c9ac136ff7be7a13a4b9c47
++++ b/cf410e4552497ba09ac9929ec1d6e32d3b85ba96
+@@ -1,16 +1,17 @@
+-public void createLibrary(final String name, final LibraryType libType, final VirtualFile[] files) {
++public void createLibrary(final String name, final VirtualFile[] files) {
+     ApplicationManager.getApplication().runWriteAction(new Runnable() {
+
+         @Override
+         public void run() {
+-            Library lib = myLibTableModel.createLibrary(name, libType);
+-            Library.ModifiableModel libModel = lib.getModifiableModel();
+-            for (VirtualFile file : files) {
+-                libModel.addRoot(file, OrderRootType.CLASSES);
++            Library lib = myLibraryManager.createLibrary(name);
++            if (lib != null) {
++                Library.ModifiableModel libModel = lib.getModifiableModel();
++                for (VirtualFile file : files) {
++                    libModel.addRoot(file, OrderRootType.CLASSES);
++                }
++                libModel.commit();
++                fireLibTableChanged();
+             }
+-            libModel.commit();
+-            myLibTableModel.commit();
+-            fireLibTableChanged();
+         }
+     });
+ }
+\ No newline at end of file

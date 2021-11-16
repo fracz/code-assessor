@@ -1,0 +1,11 @@
+diff --git a/c55b9633306caf4e73df847063da34c37b13c6fc b/4c9521474359637589fc9619c3aa17a5d58de28c
+index c55b963330..4c95214743 100644
+--- a/c55b9633306caf4e73df847063da34c37b13c6fc
++++ b/4c9521474359637589fc9619c3aa17a5d58de28c
+@@ -1,3 +1,3 @@
+-public Iterator<RelationshipPropertyConstraint> constraintsForRelationshipTypeAndProperty(final int typeId, final int propertyKeyId) {
+-    return Iterators.filter(constraint -> constraint.relationshipType() == typeId && constraint.propertyKey() == propertyKeyId, relationshipConstraints.iterator());
++public Iterator<RelationshipPropertyConstraint> constraintsForRelationshipTypeAndProperty(RelationshipPropertyDescriptor descriptor) {
++    return Iterators.filter(constraint -> constraint.matches(descriptor), relationshipConstraints.iterator());
+ }
+\ No newline at end of file

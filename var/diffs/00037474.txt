@@ -1,0 +1,16 @@
+diff --git a/6ae2ccabf7509858d0f8415c42ea414f5de94847 b/dcd22c55d20d1faab696aa94a04918bb3ac16778
+index 6ae2ccabf7..dcd22c55d2 100644
+--- a/6ae2ccabf7509858d0f8415c42ea414f5de94847
++++ b/dcd22c55d20d1faab696aa94a04918bb3ac16778
+@@ -1,5 +1,8 @@
+-private static short findResponseHistogramSlotNo(short serviceType, int elapsed) {
+-    final HistogramSchema histogramSchema = ServiceType.findServiceType(serviceType).getHistogramSchema();
++private static short findResponseHistogramSlotNo(ServiceType serviceType, int elapsed) {
++    if (serviceType == null) {
++        throw new NullPointerException("serviceType must not be null");
++    }
++    final HistogramSchema histogramSchema = serviceType.getHistogramSchema();
+     final HistogramSlot histogramSlot = histogramSchema.findHistogramSlot(elapsed);
+     return histogramSlot.getSlotTime();
+ }
+\ No newline at end of file

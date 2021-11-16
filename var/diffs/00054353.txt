@@ -1,0 +1,13 @@
+diff --git a/1534f4d6a45eba2d778d03d813626ab80606ed06 b/5d16e41b797471c7bfcf8901705f9c25bdef581a
+index 1534f4d6a4..5d16e41b79 100644
+--- a/1534f4d6a45eba2d778d03d813626ab80606ed06
++++ b/5d16e41b797471c7bfcf8901705f9c25bdef581a
+@@ -1,4 +1,5 @@
+ protected boolean isCommentBegin() {
+-    String chars = String.valueOf(new char[] { currentChar(), currentCharAt(1) });
+-    return "--".equals(chars) || "//".equals(chars) || "/*".equals(chars);
++    char current = currentChar();
++    char next = currentCharAt(1);
++    return '/' == current && '/' == next || '-' == current && '-' == next || '/' == current && '*' == next;
+ }
+\ No newline at end of file

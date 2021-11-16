@@ -1,0 +1,13 @@
+diff --git a/9183fe4b63d56579095615d16592d4c4b4d62739 b/38e4a89616914ce37d51fa7950b3fa185000500f
+index 9183fe4b63..38e4a89616 100644
+--- a/9183fe4b63d56579095615d16592d4c4b4d62739
++++ b/38e4a89616914ce37d51fa7950b3fa185000500f
+@@ -1,5 +1,5 @@
+ private void startLoginToutActivity() {
+     final Intent intent = new Intent(this, LoginToutActivity.class).putExtra(IntentKey.LOGIN_REASON, LoginReason.DEFAULT);
+-    startActivity(intent);
+-    overridePendingTransition(R.anim.slide_in_right, R.anim.fade_out_slide_out_left);
++    startActivityForResult(intent, ActivityRequestCodes.LOGIN_FLOW);
++    TransitionUtils.slideInFromRight(this);
+ }
+\ No newline at end of file

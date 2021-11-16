@@ -1,0 +1,19 @@
+diff --git a/07cda7edebfaaf53f36f4720c4c28f512260858c b/42f342b3d817efba457b7d5a61aa3352c8eac947
+index 07cda7edeb..42f342b3d8 100644
+--- a/07cda7edebfaaf53f36f4720c4c28f512260858c
++++ b/42f342b3d817efba457b7d5a61aa3352c8eac947
+@@ -1,11 +1,11 @@
+ @Test
+ public void testReconnectAttemptsNotEnough() {
+-    client.setReconnectAttempts(100);
+-    client.setReconnectInterval(10);
++    client.close();
++    client = vertx.createNetClient(new NetClientOptions().setReconnectAttempts(100).setReconnectInterval(10));
+     client.connect(1234, (res) -> {
+         assertFalse(res.succeeded());
+         assertTrue(res.failed());
+         testComplete();
+     });
+     await();
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/8e3c689eb3e3bcb7dfc901f7ee1272678918ec64 b/8e36f7a7ca1c580ee21b25b5a45da2cf0aeca439
+index 8e3c689eb3..8e36f7a7ca 100644
+--- a/8e3c689eb3e3bcb7dfc901f7ee1272678918ec64
++++ b/8e36f7a7ca1c580ee21b25b5a45da2cf0aeca439
+@@ -1,6 +1,6 @@
+-public void publish(Set<Configuration> configurationsToPublish, PublishInstruction publishInstruction, List<DependencyResolver> publishResolvers) {
+-    assert configurationsToPublish.size() > 0;
++public void publish(Set<Configuration> configurationsToPublish, File descriptorDestination, List<DependencyResolver> publishResolvers) {
+     Ivy ivy = ivyForPublish(publishResolvers, metaDataProvider.getGradleUserHomeDir());
+     Set<String> confs = Configurations.getNames(configurationsToPublish, false);
+-    dependencyPublisher.publish(confs, publishInstruction, publishResolvers, moduleDescriptorConverter.convertForPublish(configurationsToPublish, publishInstruction.isUploadDescriptor(), metaDataProvider.getModule(), ivy.getSettings()), ivy.getPublishEngine());
++    writeDescriptorFile(descriptorDestination, configurationsToPublish, ivy.getSettings());
++    dependencyPublisher.publish(confs, publishResolvers, publishModuleDescriptorConverter.convert(configurationsToPublish, metaDataProvider.getModule(), ivy.getSettings()), descriptorDestination, ivy.getPublishEngine());
+ }
+\ No newline at end of file

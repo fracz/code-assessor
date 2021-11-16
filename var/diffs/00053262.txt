@@ -1,0 +1,24 @@
+diff --git a/1598ba7e653fdb23412e917719f64fd9c436e962 b/21bf8bab44f33a92c29e02ae3ec3b6f8d34a2bb5
+index 1598ba7e65..21bf8bab44 100644
+--- a/1598ba7e653fdb23412e917719f64fd9c436e962
++++ b/21bf8bab44f33a92c29e02ae3ec3b6f8d34a2bb5
+@@ -1,17 +1,17 @@
+ private boolean isContainsItem(final OrderItem orderItem) {
+     if (selectStatement.isContainStar()) {
+         return true;
+     }
+     for (SelectItem each : selectStatement.getItems()) {
+-        if (orderItem.getIndex().isPresent()) {
++        if (-1 != orderItem.getIndex()) {
+             return true;
+         }
+         if (each.getAlias().isPresent() && orderItem.getAlias().isPresent() && each.getAlias().get().equalsIgnoreCase(orderItem.getAlias().get())) {
+             return true;
+         }
+         if (orderItem.getQualifiedName().isPresent() && each.getExpression().equalsIgnoreCase(orderItem.getQualifiedName().get())) {
+             return true;
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/488b91ac7d4279a1db64e14fdfc2c83ed88b3a73 b/d2ef9eb80bcc3f8d612173330d0a2c20cee1bc23
+index 488b91ac7d..d2ef9eb80b 100644
+--- a/488b91ac7d4279a1db64e14fdfc2c83ed88b3a73
++++ b/d2ef9eb80bcc3f8d612173330d0a2c20cee1bc23
+@@ -1,7 +1,6 @@
+ @Override
+ public void remove() {
+-    NodeUtil.checkAvailability(this);
+-    if (Iterables.size(getRelations(AtomicTitanQuery.queryAll(this), true)) > 0)
+-        throw new IllegalStateException("Cannot remove node since it is still connected!");
++    VertexUtil.checkAvailability(this);
++    VertexUtil.prepareForRemoval(this);
+     tx.deleteVertex(this);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/7796b9459d94c777d1d9df3aa0d8f73e51adac9c b/39393a64ea422b37c431fc76d2e025e7a4d16f42
+index 7796b9459d..39393a64ea 100644
+--- a/7796b9459d94c777d1d9df3aa0d8f73e51adac9c
++++ b/39393a64ea422b37c431fc76d2e025e7a4d16f42
+@@ -1,8 +1,8 @@
+ public void actionPerformed(AnActionEvent e) {
+     final DataContext dataContext = e.getDataContext();
+     Project project = PlatformDataKeys.PROJECT.getData(dataContext);
+     final FavoritesManager favoritesManager = FavoritesManager.getInstance(project);
+-    FavoritesTreeNodeDescriptor[] roots = (FavoritesTreeNodeDescriptor[]) dataContext.getData(FavoritesTreeViewPanel.CONTEXT_FAVORITES_ROOTS);
+-    String listName = (String) dataContext.getData(FavoritesTreeViewPanel.FAVORITES_LIST_NAME);
++    FavoritesTreeNodeDescriptor[] roots = FavoritesTreeViewPanel.CONTEXT_FAVORITES_ROOTS_DATA_KEY.getData(dataContext);
++    String listName = FavoritesTreeViewPanel.FAVORITES_LIST_NAME_DATA_KEY.getData(dataContext);
+     doSend(favoritesManager, roots, listName);
+ }
+\ No newline at end of file

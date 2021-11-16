@@ -1,0 +1,21 @@
+diff --git a/4926b761b8c20e1eb3097fa9f4f9fd240953f5b3 b/6122d5ecde3e08a52e53beb13e5a6f00e4414c8c
+index 4926b761b8..6122d5ecde 100644
+--- a/4926b761b8c20e1eb3097fa9f4f9fd240953f5b3
++++ b/6122d5ecde3e08a52e53beb13e5a6f00e4414c8c
+@@ -1,13 +1,11 @@
+ @Test
+ public final void counter() throws Exception {
+-    final int count = new Random().nextInt(Integer.MAX_VALUE);
++    final long count = new Random().nextInt(Integer.MAX_VALUE);
+     assertReporterOutput(new Callable<CounterMetric>() {
+
+         @Override
+         public CounterMetric call() throws Exception {
+-            final CounterMetric metric = new CounterMetric();
+-            metric.inc(count);
+-            return metric;
++            return createCounter(count);
+         }
+     }, expectedCounterResult(count));
+ }
+\ No newline at end of file

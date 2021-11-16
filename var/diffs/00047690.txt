@@ -1,0 +1,18 @@
+diff --git a/15324f841ac5b0ec0d988af7c06f7ed98189219d b/26a8b8b5fc967af219ab26edcc6883f6e4af1b91
+index 15324f841a..26a8b8b5fc 100644
+--- a/15324f841ac5b0ec0d988af7c06f7ed98189219d
++++ b/26a8b8b5fc967af219ab26edcc6883f6e4af1b91
+@@ -1,11 +1,11 @@
+ @Test
+ public void testDrainToCollection() throws Exception {
+     RBlockingQueueReactive<Object> queue1 = redisson.getBlockingQueue("queue1");
+     sync(queue1.put(1));
+     sync(queue1.put(2L));
+     sync(queue1.put("e"));
+     ArrayList<Object> dst = new ArrayList<Object>();
+     sync(queue1.drainTo(dst));
+-    MatcherAssert.assertThat(dst, Matchers.<Object>contains(1, 2L, "e"));
++    assertThat(dst).containsExactly(1, 2L, "e");
+     Assert.assertEquals(0, sync(queue1.size()).intValue());
+ }
+\ No newline at end of file

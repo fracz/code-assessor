@@ -1,0 +1,20 @@
+diff --git a/3de854bc75b28ebd296e110fd8a2e6670aaa562f b/e4051c943ce2dc70d3c5829bfb9ab37d82e22fb4
+index 3de854bc75..e4051c943c 100644
+--- a/3de854bc75b28ebd296e110fd8a2e6670aaa562f
++++ b/e4051c943ce2dc70d3c5829bfb9ab37d82e22fb4
+@@ -1,13 +1,13 @@
+ @Test
+ public void testGetObjectTypeWithNoTargetOrTargetSource() {
+-    BeanFactory bf = new XmlBeanFactory(new ClassPathResource("proxyFactoryTargetSourceTests.xml", getClass()));
++    BeanFactory bf = new XmlBeanFactory(new ClassPathResource(TARGETSOURCE_CONTEXT, CLASS));
+     ITestBean tb = (ITestBean) bf.getBean("noTarget");
+     try {
+         tb.getName();
+         fail();
+     } catch (UnsupportedOperationException ex) {
+         assertEquals("getName", ex.getMessage());
+     }
+     FactoryBean<?> pfb = (ProxyFactoryBean) bf.getBean("&noTarget");
+     assertTrue("Has correct object type", ITestBean.class.isAssignableFrom(pfb.getObjectType()));
+ }
+\ No newline at end of file

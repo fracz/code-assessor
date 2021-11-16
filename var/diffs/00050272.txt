@@ -1,0 +1,34 @@
+diff --git a/343c014d915b991bd5d9d01cbdec959f8f14d277 b/190654b1d503887e01788246606c3bd7cf9e1304
+index 343c014d91..190654b1d5 100644
+--- a/343c014d915b991bd5d9d01cbdec959f8f14d277
++++ b/190654b1d503887e01788246606c3bd7cf9e1304
+@@ -1,17 +1,25 @@
+ @Override
+-public void contributeActions(@NotNull IContributionManager manager, @NotNull IValueController controller) throws DBCException {
++public void contributeActions(@NotNull IContributionManager manager, @NotNull final IValueController controller, @Nullable IValueEditor activeEditor) throws DBCException {
+     manager.add(new Action("Add element", DBeaverIcons.getImageDescriptor(UIIcon.ROW_ADD)) {
+
++        @Override
++        public boolean isEnabled() {
++            return true;
++        }
++
+         @Override
+         public void run() {
+-            super.run();
+         }
+     });
+     manager.add(new Action("Remove element", DBeaverIcons.getImageDescriptor(UIIcon.ROW_DELETE)) {
+
++        @Override
++        public boolean isEnabled() {
++            return false;
++        }
++
+         @Override
+         public void run() {
+-            super.run();
+         }
+     });
+ }
+\ No newline at end of file

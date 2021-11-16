@@ -1,0 +1,22 @@
+diff --git a/e72e65d2e5c36b6586ceefc11fc76bfc01f2f71f b/34f5bbd1c76c5371f74a65159b22a38e7daaf911
+index e72e65d2e5..34f5bbd1c7 100644
+--- a/e72e65d2e5c36b6586ceefc11fc76bfc01f2f71f
++++ b/34f5bbd1c76c5371f74a65159b22a38e7daaf911
+@@ -1,7 +1,11 @@
+-public static void createDatabase(String dbName, OMode mode, String password) throws Exception {
+-    if (mode == OMode.PLOCAL || mode == OMode.MEMORY) {
+-        new ODatabaseDocumentTx(getDatabaseUrl(dbName, mode)).create();
+-    } else if (mode == OMode.REMOTE) {
+-        new OServerAdmin(getDatabaseUrl(dbName, mode)).connect("root", password).createDatabase(dbName, "document", "plocal");
++public static void createDatabase(ODatabaseIdentifier databaseIdentifier) throws Exception {
++    switch(databaseIdentifier.getMode()) {
++        case PLOCAL:
++        case MEMORY:
++            new ODatabaseDocumentTx(databaseIdentifier.getUrl()).create();
++            break;
++        case REMOTE:
++            new OServerAdmin(databaseIdentifier.getUrl()).connect("root", databaseIdentifier.getPassword()).createDatabase(databaseIdentifier.getName(), "document", "plocal");
++            break;
+     }
+ }
+\ No newline at end of file

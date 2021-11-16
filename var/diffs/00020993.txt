@@ -1,0 +1,12 @@
+diff --git a/692708b3e9c8cdc33978845ed703b9919189f7a6 b/5deeb1603d5f0586da11ae7ebe88ad07b89d979d
+index 692708b3e9..5deeb1603d 100644
+--- a/692708b3e9c8cdc33978845ed703b9919189f7a6
++++ b/5deeb1603d5f0586da11ae7ebe88ad07b89d979d
+@@ -1,5 +1,5 @@
+ @Override
+ public void setString(int parameterIndex, String x) throws SQLException {
+-    setParameter(parameterIndex, new JdbcParameterString(x));
++    setParameter(parameterIndex, createParameter(x));
+     createChain().preparedStatement_setString(this, parameterIndex, x);
+ }
+\ No newline at end of file

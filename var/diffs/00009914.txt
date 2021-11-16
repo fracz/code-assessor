@@ -1,0 +1,15 @@
+diff --git a/85b2b1af3cc7ee49c74173ffeb42e5eacc04dff8 b/f33e156f2815b418e23de0e6d7dfb8780310096d
+index 85b2b1af3c..f33e156f28 100644
+--- a/85b2b1af3cc7ee49c74173ffeb42e5eacc04dff8
++++ b/f33e156f2815b418e23de0e6d7dfb8780310096d
+@@ -1,4 +1,8 @@
+ protected Module createModule(String name) throws IOException {
+     VirtualFile f = createProjectSubFile(name + "/" + name + ".iml");
+-    return ModuleManager.getInstance(myProject).newModule(f.getPath(), StdModuleTypes.JAVA);
++    Module module = ModuleManager.getInstance(myProject).newModule(f.getPath(), StdModuleTypes.JAVA);
++    ModifiableRootModel model = ModuleRootManager.getInstance(module).getModifiableModel();
++    model.addContentEntry(f.getParent());
++    model.commit();
++    return module;
+ }
+\ No newline at end of file

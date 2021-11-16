@@ -1,0 +1,23 @@
+diff --git a/1e28b1f401043f6ec92937532a80786e3820fc4a b/c07ad7bb1bf65cc7cc3a9b4fd1cfbbb366273000
+index 1e28b1f401..c07ad7bb1b 100644
+--- a/1e28b1f401043f6ec92937532a80786e3820fc4a
++++ b/c07ad7bb1bf65cc7cc3a9b4fd1cfbbb366273000
+@@ -1,12 +1,16 @@
+ @Nullable
+ private static URL createVersionsUrl(@NotNull String id) {
+     final String serviceUrl = LibrariesDownloadConnectionService.getInstance().getServiceUrl();
+     if (StringUtil.isNotEmpty(serviceUrl)) {
+         try {
+-            return new URL(serviceUrl + "/" + id + "/");
++            final String url = serviceUrl + "/" + id + "/";
++            HttpConfigurable.getInstance().prepareURL(url);
++            return new URL(url);
+         } catch (MalformedURLException e) {
+             LOG.error(e);
++        } catch (IOException e) {
++            LOG.error(e);
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

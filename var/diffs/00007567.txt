@@ -1,0 +1,25 @@
+diff --git a/9d5c4ba0910f18ead6ba7917a9b249b69b57b26a b/34138e32a0cba7ceb6c886fb07527ca60642af7e
+index 9d5c4ba091..34138e32a0 100644
+--- a/9d5c4ba0910f18ead6ba7917a9b249b69b57b26a
++++ b/34138e32a0cba7ceb6c886fb07527ca60642af7e
+@@ -1,15 +1,13 @@
+ @Override
+ protected void doOKAction() {
+     if (!validateLoginAndPasswordFields())
+         return;
+-    final StepicUser user = EduStepicConnector.login(myLoginPanel.getLogin(), myLoginPanel.getPassword());
+-    if (user != null) {
++    final Project project = ProjectUtil.guessCurrentProject(myLoginPanel.getContentPanel());
++    final StepicUser stepicUser = EduStepicAuthorizedClient.login(myLoginPanel.getLogin(), myLoginPanel.getPassword());
++    if (stepicUser != null) {
++        StudyTaskManager.getInstance(project).setUser(stepicUser);
+         doJustOkAction();
+-        final Project project = ProjectUtil.guessCurrentProject(myLoginPanel.getContentPanel());
+-        user.setEmail(myLoginPanel.getLogin());
+-        user.setPassword(myLoginPanel.getPassword());
+-        StudyTaskManager.getInstance(project).setUser(user);
+     } else {
+         setErrorText("Login failed");
+     }
+ }
+\ No newline at end of file

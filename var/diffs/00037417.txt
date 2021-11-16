@@ -1,0 +1,14 @@
+diff --git a/4e97d74d51f1a953fcbc9280b578afc791d8d2e3 b/03d48cd1a3a05e03383065eb8fd3d40ae75461ce
+index 4e97d74d51..03d48cd1a3 100644
+--- a/4e97d74d51f1a953fcbc9280b578afc791d8d2e3
++++ b/03d48cd1a3a05e03383065eb8fd3d40ae75461ce
+@@ -1,6 +1,7 @@
+ @Override
+ public void afterJob(JobExecution jobExecution) {
+     if (!jobExecution.getExitStatus().equals(ExitStatus.COMPLETED)) {
+-        sendSMS(jobExecution.getJobInstance().getJobName(), jobExecution.getStartTime(), jobExecution.getEndTime());
++        jobFailMessageSender.sendSMS(jobExecution);
++        jobFailMessageSender.sendEmail(jobExecution);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,23 @@
+diff --git a/210fed401e6ab9d4b461e3ba6aa482fa5b0e9a59 b/9a14679d5087f2134b61dd67889f1e3978741551
+index 210fed401e..9a14679d50 100644
+--- a/210fed401e6ab9d4b461e3ba6aa482fa5b0e9a59
++++ b/9a14679d5087f2134b61dd67889f1e3978741551
+@@ -1,12 +1,15 @@
+ /**
+  * Called when the new package can't receive the backup, due to signature or version mismatch.
+  */
+ @Override
+-protected void onRestoreBlocked(ShortcutService s) {
++protected void onRestoreBlocked() {
+     final ArrayList<PackageWithUser> pinnedPackages = new ArrayList<>(mPinnedShortcuts.keySet());
+     mPinnedShortcuts.clear();
+     for (int i = pinnedPackages.size() - 1; i >= 0; i--) {
+         final PackageWithUser pu = pinnedPackages.get(i);
+-        s.getPackageShortcutsLocked(pu.packageName, pu.userId).refreshPinnedFlags(s);
++        final ShortcutPackage p = mShortcutUser.getPackageShortcutsIfExists(pu.packageName);
++        if (p != null) {
++            p.refreshPinnedFlags();
++        }
+     }
+ }
+\ No newline at end of file

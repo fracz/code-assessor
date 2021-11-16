@@ -1,0 +1,20 @@
+diff --git a/db4740eb7bc32178afac6ae1d6eac62cac003bff b/9b33a9ed564a6e5236ad43aa1651625da708c870
+index db4740eb7b..9b33a9ed56 100644
+--- a/db4740eb7bc32178afac6ae1d6eac62cac003bff
++++ b/9b33a9ed564a6e5236ad43aa1651625da708c870
+@@ -1,11 +1,13 @@
+ private CommandComplete doRunWithLogging(Stoppable serverControl, Command command) {
+     try {
+         return doRunWithExceptionHandling(command, serverControl);
+     } catch (ReportedException e) {
+         throw e;
+     } catch (Throwable throwable) {
+-        BuildExceptionReporter exceptionReporter = new BuildExceptionReporter(loggingServices.get(StyledTextOutputFactory.class), new StartParameter(), command.getClientMetaData());
++        StyledTextOutputFactory outputFactory = loggingServices.get(StyledTextOutputFactory.class);
++        BuildClientMetaData clientMetaData = command.getClientMetaData();
++        BuildExceptionReporter exceptionReporter = new BuildExceptionReporter(outputFactory, new StartParameter(), clientMetaData);
+         exceptionReporter.reportException(throwable);
+         throw new ReportedException(throwable);
+     }
+ }
+\ No newline at end of file

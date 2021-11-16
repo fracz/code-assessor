@@ -1,0 +1,16 @@
+diff --git a/43586e9953be62c39fdf733e37051c939bc5a3da b/708f2214d87065fac1898daf6e6f97ffe676e825
+index 43586e9953..708f2214d8 100644
+--- a/43586e9953be62c39fdf733e37051c939bc5a3da
++++ b/708f2214d87065fac1898daf6e6f97ffe676e825
+@@ -1,9 +1,8 @@
+ public void testReloadProfileWithUnknownScopes() throws Exception {
+     final Element element = JdomKt.loadElement("<profile version=\"1.0\">\n" + "  <option name=\"myName\" value=\"" + PROFILE + "\" />\n" + "  <inspection_tool class=\"ArgNamesErrorsInspection\" enabled=\"true\" level=\"ERROR\" enabled_by_default=\"false\" />\n" + "  <inspection_tool class=\"ArgNamesWarningsInspection\" enabled=\"true\" level=\"WARNING\" enabled_by_default=\"false\" />\n" + "  <inspection_tool class=\"AroundAdviceStyleInspection\" enabled=\"true\" level=\"WARNING\" enabled_by_default=\"false\" />\n" + "  <inspection_tool class=\"DeclareParentsInspection\" enabled=\"true\" level=\"ERROR\" enabled_by_default=\"false\" />\n" + /*"  <inspection_tool class=\"ManifestDomInspection\" enabled=\"true\" level=\"ERROR\" enabled_by_default=\"false\" />\n" +*/
+     "  <inspection_tool class=\"MissingAspectjAutoproxyInspection\" enabled=\"true\" level=\"WARNING\" enabled_by_default=\"false\" />\n" + "  <inspection_tool class=\"UNUSED_IMPORT\" enabled=\"true\" level=\"WARNING\" enabled_by_default=\"true\">\n" + "    <scope name=\"Unknown scope name\" level=\"WARNING\" enabled=\"true\" />\n" + "  </inspection_tool>\n" + "</profile>");
+     final InspectionProfileImpl profile = createProfile();
+     profile.readExternal(element);
+-    final ModifiableModel model = profile.getModifiableModel();
+-    model.commit();
++    profile.getModifiableModel().commit();
+     assertThat(profile.writeScheme()).isEqualTo(element);
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/99fc1d6fca1df1ac77a8999878b4d50b85525375 b/8c75fbe5c24eb7cf2b9746ca885352c19ef46e66
+index 99fc1d6fca..8c75fbe5c2 100644
+--- a/99fc1d6fca1df1ac77a8999878b4d50b85525375
++++ b/8c75fbe5c24eb7cf2b9746ca885352c19ef46e66
+@@ -1,14 +1,11 @@
+ public void placeFeedback(FeedbackLayer feedbackLayer, ComponentDragObject dragObject) {
+-    int componentCount = dragObject.getComponentCount();
+-    Rectangle feedbackRect;
++    Rectangle feedbackRect = null;
+     if (getContainer().isGrid()) {
+         feedbackRect = getGridFeedbackRect(dragObject);
+-    } else {
+-        feedbackRect = getContainer().getDropFeedbackRectangle(myTargetPoint, componentCount);
+     }
+     if (feedbackRect != null) {
+         feedbackLayer.putFeedback(getContainer().getDelegee(), feedbackRect);
+     } else {
+         feedbackLayer.removeFeedback();
+     }
+ }
+\ No newline at end of file

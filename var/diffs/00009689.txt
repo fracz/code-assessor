@@ -1,0 +1,15 @@
+diff --git a/5057604107814dc6f24c9faabd608d2f255c1984 b/f69f4b853f2d67c744f997a085b8e76204cd9bd1
+index 5057604107..f69f4b853f 100644
+--- a/5057604107814dc6f24c9faabd608d2f255c1984
++++ b/f69f4b853f2d67c744f997a085b8e76204cd9bd1
+@@ -1,8 +1,8 @@
+ public void run() {
+     final List<VirtualFile> currentFiles = new ArrayList<VirtualFile>(myFiles);
+     for (VirtualFile file : currentFiles) {
+-        if (!file.isValid() || scope.belongsTo(PeerFactory.getInstance().getVcsContextFactory().createFilePathOn(file))) {
++        if (fileDropped(file) || scope.belongsTo(PeerFactory.getInstance().getVcsContextFactory().createFilePathOn(file))) {
+             myFiles.remove(file);
+         }
+     }
+ }
+\ No newline at end of file

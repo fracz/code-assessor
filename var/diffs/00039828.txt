@@ -1,0 +1,21 @@
+diff --git a/3a193dffc261e4430f822bff2248d2869548adda b/9e839722b8554e9f40490bb37cb5a1b138bbdba7
+index 3a193dffc2..9e839722b8 100644
+--- a/3a193dffc261e4430f822bff2248d2869548adda
++++ b/9e839722b8554e9f40490bb37cb5a1b138bbdba7
+@@ -1,12 +1,13 @@
+ @Test
+ public void shouldReportNothingForUniquenessAndPropertyExistenceConstraintOnSameLabelAndProperty() throws Exception {
+     // Given
+     int labelId = createLabel();
+     int propertyKeyId = createPropertyKey();
+-    createUniquenessConstraintRule(labelId, propertyKeyId);
+-    createNodePropertyExistenceConstraint(labelId, propertyKeyId);
++    NodePropertyDescriptor descriptor = new NodePropertyDescriptor(labelId, propertyKeyId);
++    createUniquenessConstraintRule(descriptor);
++    createNodePropertyExistenceConstraint(descriptor);
+     // When
+     ConsistencySummaryStatistics stats = check();
+     // Then
+     assertTrue(stats.isConsistent());
+ }
+\ No newline at end of file

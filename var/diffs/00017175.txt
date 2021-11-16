@@ -1,0 +1,14 @@
+diff --git a/e1a7afa3cd096c392c5e6a6787dabe04530e7398 b/da79eb761b83605a9a22d3c05a616ed85b496d24
+index e1a7afa3cd..da79eb761b 100644
+--- a/e1a7afa3cd096c392c5e6a6787dabe04530e7398
++++ b/da79eb761b83605a9a22d3c05a616ed85b496d24
+@@ -1,7 +1,6 @@
+ private StackValue generateIsCheck(StackValue expressionToMatch, JetTypeReference typeReference, boolean negated) {
+     JetType jetType = bindingContext.get(TYPE, typeReference);
+     markStartLineNumber(typeReference);
+-    generateInstanceOf(expressionToMatch, jetType, false);
+-    StackValue value = StackValue.onStack(Type.BOOLEAN_TYPE);
++    StackValue value = generateInstanceOf(expressionToMatch, jetType, false);
+     return negated ? StackValue.not(value) : value;
+ }
+\ No newline at end of file

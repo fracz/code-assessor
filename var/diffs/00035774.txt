@@ -1,0 +1,16 @@
+diff --git a/c04b89cf7181c5237c05c32372ee28524963d797 b/5186d0ff9f533bbf2290a6a8c960cc3d93f9f8e0
+index c04b89cf71..5186d0ff9f 100644
+--- a/c04b89cf7181c5237c05c32372ee28524963d797
++++ b/5186d0ff9f533bbf2290a6a8c960cc3d93f9f8e0
+@@ -1,9 +1,9 @@
+ @Test
+ public void shouldVerifyStrictly() {
+     recorder.recordInvocation(simpleMethod);
+-    VerificationMode mode = VerificationMode.strict(10, Arrays.<Object>asList("mock"));
++    VerificationMode mode = new VerificationModeBuilder().strict();
+     recorder.verify(differentMethod, mode);
+     assertEquals(verifier.mode, mode);
+     assertEquals(verifier.wanted, differentMethod);
+     assertThat(verifier.calculator.getInvocations(), collectionHasExactlyInOrder(differentMethod.getInvocation()));
+ }
+\ No newline at end of file

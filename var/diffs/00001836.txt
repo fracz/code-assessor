@@ -1,0 +1,13 @@
+diff --git a/ae91b074bb5f5624d5297806e8cc81d92563ec89 b/dab9228a9548b1e2234f52700252528e716a626f
+index ae91b074bb..dab9228a95 100644
+--- a/ae91b074bb5f5624d5297806e8cc81d92563ec89
++++ b/dab9228a9548b1e2234f52700252528e716a626f
+@@ -1,5 +1,5 @@
+ @NotNull
+ @Override
+-public List<? extends VcsCommitMetadata> readFirstBlock(@NotNull VirtualFile root, boolean ordered, int commitCount) throws VcsException {
+-    return HgHistoryUtil.loadMetadata(myProject, root, commitCount, ordered ? Collections.<String>emptyList() : Arrays.asList("-r", "0:tip"));
++public List<? extends VcsCommitMetadata> readFirstBlock(@NotNull VirtualFile root, @NotNull Requirements requirements) throws VcsException {
++    return HgHistoryUtil.loadMetadata(myProject, root, requirements.getCommitCount(), requirements.isOrdered() ? Collections.<String>emptyList() : Arrays.asList("-r", "0:tip"));
+ }
+\ No newline at end of file

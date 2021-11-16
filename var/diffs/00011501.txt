@@ -1,0 +1,16 @@
+diff --git a/690b22cd9c32afab851d3e122be040cdf860c0f2 b/fe563f8b96601437e3e2f11d9e2268f01e56cdff
+index 690b22cd9c..fe563f8b96 100644
+--- a/690b22cd9c32afab851d3e122be040cdf860c0f2
++++ b/fe563f8b96601437e3e2f11d9e2268f01e56cdff
+@@ -1,4 +1,7 @@
+-private static CompositeElement replaceReferenceWithShort(CompositeElement reference) {
+-    ((SourceJavaCodeReference) reference).dequalify();
+-    return reference;
++@NotNull
++private static ASTNode replaceReferenceWithShort(PsiQualifiedReference reference) {
++    final ASTNode node = reference.getNode();
++    assert node != null;
++    SourceUtil.dequalifyImpl((CompositeElement) node);
++    return node;
+ }
+\ No newline at end of file

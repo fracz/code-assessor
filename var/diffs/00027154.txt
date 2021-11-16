@@ -1,0 +1,22 @@
+diff --git a/6e597360ffeb05abb15ce4c1d64522912fce0d08 b/22f465f92b934b466a426b29846bfcd26b520b41
+index 6e597360ff..22f465f92b 100644
+--- a/6e597360ffeb05abb15ce4c1d64522912fce0d08
++++ b/22f465f92b934b466a426b29846bfcd26b520b41
+@@ -1,12 +1,12 @@
+ // ----- Store new info -----
+ @Override
+-public void putStaticInfo(String sessionID, String workerID, byte[] staticInfo) {
+-    logIDs(sessionID, workerID);
+-    SessionTypeWorkerId id = new SessionTypeWorkerId(sessionID, workerID);
++public void putStaticInfo(Persistable staticInfo) {
++    logIDs(staticInfo.getSessionID(), staticInfo.getTypeID(), staticInfo.getWorkerID());
++    SessionTypeWorkerId id = new SessionTypeWorkerId(staticInfo.getSessionID(), staticInfo.getTypeID(), staticInfo.getWorkerID());
+     this.staticInfo.put(id, staticInfo);
+     // For write ahead log: need to ensure that we persist all data to disk...
+     db.commit();
+     for (StatsStorageListener l : listeners) {
+-        l.notifyStaticInfo(sessionID, workerID);
++        l.notifyStaticInfo(staticInfo.getSessionID(), staticInfo.getTypeID(), staticInfo.getWorkerID());
+     }
+ }
+\ No newline at end of file

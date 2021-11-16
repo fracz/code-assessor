@@ -1,0 +1,20 @@
+diff --git a/cbf65b8a07eb732d3b02fe42ec53c43546d4c51d b/206e6af45ec46dfe872648980f6fd6d6d5460c15
+index cbf65b8a07..206e6af45e 100644
+--- a/cbf65b8a07eb732d3b02fe42ec53c43546d4c51d
++++ b/206e6af45ec46dfe872648980f6fd6d6d5460c15
+@@ -1,8 +1,12 @@
+ public List<File> getLogs() {
+-    return asList(file.listFiles(new FilenameFilter() {
++    File[] files = file.listFiles(new FilenameFilter() {
+
+         public boolean accept(File file, String s) {
+             return s.startsWith("daemon-") && s.endsWith("out.log");
+         }
+-    }));
++    });
++    if (files != null) {
++        return asList(files);
++    }
++    return emptyList();
+ }
+\ No newline at end of file

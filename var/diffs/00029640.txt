@@ -1,0 +1,17 @@
+diff --git a/b7a636b1fc09683e8553a8e900c82099592a2cb8 b/4eff10a55bb3e0f9f9a3bd9f306d9eb4b7667200
+index b7a636b1fc..4eff10a55b 100644
+--- a/b7a636b1fc09683e8553a8e900c82099592a2cb8
++++ b/4eff10a55bb3e0f9f9a3bd9f306d9eb4b7667200
+@@ -1,10 +1,10 @@
+ public int asInt() {
+-    if (this == AUTO) {
++    if (this.equals(AUTO)) {
+         return 1;
+     }
+     try {
+         return Integer.parseInt(fuzziness.toString());
+     } catch (NumberFormatException ex) {
+         return (int) Float.parseFloat(fuzziness.toString());
+     }
+ }
+\ No newline at end of file

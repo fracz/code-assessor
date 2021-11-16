@@ -1,0 +1,17 @@
+diff --git a/38fc4776217e25c9468c85a6e1f4d23c5de185e0 b/1549475cfaa5b35854f39dbea68841ab902713f1
+index 38fc477621..1549475cfa 100644
+--- a/38fc4776217e25c9468c85a6e1f4d23c5de185e0
++++ b/1549475cfaa5b35854f39dbea68841ab902713f1
+@@ -1,9 +1,8 @@
+ public void test_3() throws Exception {
+     String sql = "DELETE FROM a1, a2 USING t1 AS a1 INNER JOIN t2 AS a2 WHERE a1.id=a2.id";
+     SQLStatementParser parser = new MySqlStatementParser(sql);
+     List<SQLStatement> stmtList = parser.parseStatementList();
+     SQLStatement stmt = stmtList.get(0);
+-    Assert.assertEquals("DELETE FROM (a1, a2 USING (t1) AS a1)\n" + "\tINNER JOIN t2 a2\n" + "WHERE a1.id = a2.id", SQLUtils.toMySqlString(stmt));
+-    Assert.assertEquals(//
+-    "delete from (a1, a2 using (t1) as a1)" + "\n\tinner join t2 a2\nwhere a1.id = a2.id", SQLUtils.toMySqlString(stmt, SQLUtils.DEFAULT_LCASE_FORMAT_OPTION));
++    Assert.assertEquals("DELETE FROM a1, a2\n" + "USING t1 a1\n" + "\tINNER JOIN t2 a2\n" + "WHERE a1.id = a2.id", SQLUtils.toMySqlString(stmt));
++    Assert.assertEquals("delete from a1, a2\n" + "using t1 a1\n" + "\tinner join t2 a2\n" + "where a1.id = a2.id", SQLUtils.toMySqlString(stmt, SQLUtils.DEFAULT_LCASE_FORMAT_OPTION));
+ }
+\ No newline at end of file

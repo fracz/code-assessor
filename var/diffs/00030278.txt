@@ -1,0 +1,20 @@
+diff --git a/76304dd6993523411a8dbfe7f7f426564f67bf90 b/5b11522813ce6f916fdc8867cea6f80c7dce9dc6
+index 76304dd699..5b11522813 100644
+--- a/76304dd6993523411a8dbfe7f7f426564f67bf90
++++ b/5b11522813ce6f916fdc8867cea6f80c7dce9dc6
+@@ -1,11 +1,11 @@
+ /**
+  * Pass condition: lat=52.3738007, lng=4.8909347 should be encoded and then
+  * decoded within 0.00001 of the original value
+  */
+ @Test
+ public void testDecodePreciseLongitudeLatitude() {
+     String hash = GeoHashUtils.encode(52.3738007, 4.8909347);
+-    double[] latitudeLongitude = GeoHashUtils.decode(hash);
+-    assertEquals(52.3738007, latitudeLongitude[0], 0.00001D);
+-    assertEquals(4.8909347, latitudeLongitude[1], 0.00001D);
++    GeoPoint point = GeoHashUtils.decode(hash);
++    assertEquals(52.3738007, point.lat(), 0.00001D);
++    assertEquals(4.8909347, point.lon(), 0.00001D);
+ }
+\ No newline at end of file

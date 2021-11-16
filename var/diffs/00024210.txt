@@ -1,0 +1,16 @@
+diff --git a/98125eeee84eeb0740c0af438ee70642269173f3 b/954eab37da7ae9f2e3f44f6162967fd66e4107ea
+index 98125eeee8..954eab37da 100644
+--- a/98125eeee84eeb0740c0af438ee70642269173f3
++++ b/954eab37da7ae9f2e3f44f6162967fd66e4107ea
+@@ -1,6 +1,6 @@
+-private ColumnOrSuperColumn thriftifyColumnWithName(Cell cell, ByteBuffer newName) {
+-    if (cell instanceof CounterCell)
+-        return new ColumnOrSuperColumn().setCounter_column(thriftifySubCounter(cell).setName(newName));
++private ColumnOrSuperColumn thriftifyColumnWithName(CFMetaData metadata, LegacyLayout.LegacyCell cell, ByteBuffer newName) {
++    if (cell.isCounter())
++        return new ColumnOrSuperColumn().setCounter_column(thriftifySubCounter(metadata, cell).setName(newName));
+     else
+-        return new ColumnOrSuperColumn().setColumn(thriftifySubColumn(cell).setName(newName));
++        return new ColumnOrSuperColumn().setColumn(thriftifySubColumn(cell, newName));
+ }
+\ No newline at end of file

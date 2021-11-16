@@ -1,0 +1,15 @@
+diff --git a/3ffa9bcddb4883353c36d4aeb3a91b47998b50fb b/eece66118336860f524083d135033c0094e4012a
+index 3ffa9bcddb..eece661183 100644
+--- a/3ffa9bcddb4883353c36d4aeb3a91b47998b50fb
++++ b/eece66118336860f524083d135033c0094e4012a
+@@ -1,6 +1,7 @@
++@Test
+ public void testJustJoinPoint() {
+     mockCollaborator.justJoinPoint("getAge");
+-    mockControl.replay();
++    replay(mockCollaborator);
+     testBeanProxy.getAge();
+-    mockControl.verify();
++    verify(mockCollaborator);
+ }
+\ No newline at end of file

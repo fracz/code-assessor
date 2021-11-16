@@ -1,0 +1,20 @@
+diff --git a/163a4ba6dd2c442e06a84a86bbf1c86e780c1a4c b/c23b06b9531cff80dc96809969c0f4db929a868d
+index 163a4ba6dd..c23b06b953 100644
+--- a/163a4ba6dd2c442e06a84a86bbf1c86e780c1a4c
++++ b/c23b06b9531cff80dc96809969c0f4db929a868d
+@@ -1,10 +1,12 @@
+ @Nullable
+ @Override
+ public LocalTask getAssociatedTask(LocalChangeList list) {
+     for (LocalTaskImpl task : getLocalTasks()) {
+-        if (list.getId().equals(task.getAssociatedChangelistId())) {
+-            return task;
++        for (ChangeListInfo changeListInfo : task.getChangeLists()) {
++            if (changeListInfo.id.equals(list.getId())) {
++                return task;
++            }
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

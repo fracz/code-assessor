@@ -1,0 +1,21 @@
+diff --git a/855c2be75e07ba292494c75e03c856eeb43770a4 b/ff639762aad497dbf6b2d50c715430980dcf1580
+index 855c2be75e..ff639762aa 100644
+--- a/855c2be75e07ba292494c75e03c856eeb43770a4
++++ b/ff639762aad497dbf6b2d50c715430980dcf1580
+@@ -1,11 +1,11 @@
+ @Override
+ protected void onNewIntent(Intent intent) {
+     super.onNewIntent(intent);
+     setIntent(intent);
++    // Clear any debug rects
++    if (mDebugOverlay != null) {
++        mDebugOverlay.clear();
++    }
+     // Update the recent tasks
+     updateRecentsTasks(intent);
+-    // Prepare the screenshot transition if necessary
+-    if (Constants.DebugFlags.App.EnableScreenshotAppTransition) {
+-        mFullScreenOverlayView.prepareAnimateOnEnterRecents(AlternateRecentsComponent.getLastScreenshot());
+-    }
+ }
+\ No newline at end of file

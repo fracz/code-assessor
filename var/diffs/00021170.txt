@@ -1,0 +1,22 @@
+diff --git a/daca03178ea427db0e2f7480ef2948bf8ca0ac0b b/3891446de56bf7aa99ebc768b950655475c24063
+index daca03178e..3891446de5 100644
+--- a/daca03178ea427db0e2f7480ef2948bf8ca0ac0b
++++ b/3891446de56bf7aa99ebc768b950655475c24063
+@@ -1,15 +1,15 @@
+ public final boolean isWriteClassName(Type fieldType, Object obj) {
+     boolean result = out.isEnabled(SerializerFeature.WriteClassName);
+     if (!result) {
+         return false;
+     }
+     if (fieldType == null) {
+-        if (this.isEnabled(SerializerFeature.NotWriteRootClassName)) {
++        if (out.isEnabled(SerializerFeature.NotWriteRootClassName)) {
+             boolean isRoot = context.parent == null;
+             if (isRoot) {
+                 return false;
+             }
+         }
+     }
+     return true;
+ }
+\ No newline at end of file

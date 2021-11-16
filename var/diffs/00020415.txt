@@ -1,0 +1,26 @@
+diff --git a/991a7c0ab7f5dea8548e5b00da3aa3a579e4bfc6 b/c0b6b50d5abb8a902c51dd45118c600cdc70d860
+index 991a7c0ab7..c0b6b50d5a 100644
+--- a/991a7c0ab7f5dea8548e5b00da3aa3a579e4bfc6
++++ b/c0b6b50d5abb8a902c51dd45118c600cdc70d860
+@@ -1,12 +1,15 @@
+-public SQLTableSource findTableSource(String alias) {
+-    if (alias == null) {
++public SQLTableSource findTableSource(long alias_hash) {
++    if (alias_hash == 0) {
+         return null;
+     }
+-    if (SQLUtils.nameEquals(alias, computeAlias())) {
++    if (alias_hash() == alias_hash) {
+         return this;
+     }
+-    if (containsAlias(alias)) {
+-        return this;
++    if (expr instanceof SQLName) {
++        long exprNameHash = ((SQLName) expr).name_hash_lower();
++        if (exprNameHash == alias_hash) {
++            return this;
++        }
+     }
+     return null;
+ }
+\ No newline at end of file

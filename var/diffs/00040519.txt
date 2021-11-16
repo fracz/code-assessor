@@ -1,0 +1,26 @@
+diff --git a/a65a3869fba50d65102243a102702e50e539e9e9 b/14261542a858e40b3ae00c47836e4a52cfdb15b5
+index a65a3869fb..14261542a8 100644
+--- a/a65a3869fba50d65102243a102702e50e539e9e9
++++ b/14261542a858e40b3ae00c47836e4a52cfdb15b5
+@@ -1,18 +1,18 @@
+ /**
+  * Discovers one Samsung Air Conditioners in the network, and returns a Map
+  * with all the details about it. We will use the IP-address and the MAC-address later
+  *
+  * @return A Map of all values from the air conditioner
+  * @throws Exception
+  */
+ public static Map<String, String> discover() {
+     Map<String, String> response = new HashMap<String, String>();
+     try {
+         sendNotify(DISCOVER_MESSAGE);
+         response.putAll(parseResponse(retrieveResponse()));
+     } catch (Exception e) {
+-        logger.warn("Failed while trying to discover Samsung Air Conditioner", e);
++        e.printStackTrace();
+     }
+-    logger.debug("Got the following response from Samsung Air Conditioner: " + response);
++    System.out.println("Got the following response from Samsung Air Conditioner: " + response);
+     return response;
+ }
+\ No newline at end of file

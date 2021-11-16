@@ -1,0 +1,16 @@
+diff --git a/a0bf5404c319d07cc4fba5b9c7b2965c553802c4 b/78d26f2dda8e902bb2ec28a159ff13a94f8dadca
+index a0bf5404c3..78d26f2dda 100644
+--- a/a0bf5404c319d07cc4fba5b9c7b2965c553802c4
++++ b/78d26f2dda8e902bb2ec28a159ff13a94f8dadca
+@@ -1,8 +1,8 @@
+-@Path("add")
+ @POST
++@Path("add")
+ @Consumes(MediaType.APPLICATION_JSON)
+ public void add(AddRequest request) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+-        gitConnection.add(request);
++        gitConnection.add(AddParams.create(request.getFilePattern()).withUpdate(request.isUpdate()));
+     }
+ }
+\ No newline at end of file

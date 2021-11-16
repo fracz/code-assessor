@@ -1,0 +1,21 @@
+diff --git a/5c3b5cf3470257ee42fc33722813d8718a4150c3 b/55ccfcdd37781b875ea3fb2340281f2dfb531eac
+index 5c3b5cf347..55ccfcdd37 100644
+--- a/5c3b5cf3470257ee42fc33722813d8718a4150c3
++++ b/55ccfcdd37781b875ea3fb2340281f2dfb531eac
+@@ -1,11 +1,12 @@
+ @Override
+ public ResultSet executeQuery() throws SQLException {
+     checkOpen();
+-    if (getConnection() != null && getConnection().getDriver() != null) {
++    MockConnection conn = getConnection();
++    if (conn != null && conn.getDriver() != null) {
+         return getConnection().getDriver().createResultSet(this);
+     }
+-    if (getConnection() != null) {
+-        getConnection().handleSleep();
++    if (conn != null) {
++        conn.handleSleep();
+     }
+     return new MockResultSet(this);
+ }
+\ No newline at end of file

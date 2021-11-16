@@ -1,0 +1,32 @@
+diff --git a/a38f4b8c19c03cebab4a3aa39c0e28efa6e09611 b/0ad659c6859ad7f8568f699d8b3b897a004fbd89
+index a38f4b8c19..0ad659c685 100644
+--- a/a38f4b8c19c03cebab4a3aa39c0e28efa6e09611
++++ b/0ad659c6859ad7f8568f699d8b3b897a004fbd89
+@@ -1,13 +1,17 @@
+ @Override
+-public boolean addResponseTime(String parentApplicationName, short serviceType, int millis) {
+-    final boolean staticResult = this.staticAcceptHistogram.addResponseTime(parentApplicationName, serviceType, millis);
+-    if (staticResult) {
+-        return true;
++public boolean addResponseTime(String parentApplicationName, short serviceTypeCode, int millis) {
++    if (parentApplicationName == null) {
++        throw new NullPointerException("parentApplicationName must not be null");
+     }
+-    final boolean dynamicResult = this.dynamicAcceptHistogram.addResponseTime(parentApplicationName, serviceType, millis);
+-    if (!dynamicResult) {
+-        logger.info("response data add fail. parentApplicationName:{} serviceType:{} millis:{}", parentApplicationName, serviceType, millis);
+-        return true;
++    // Cannot compare by ServiceType value because it could be incompatible if new service type is added.
++    if (!ServiceType.isWas(serviceTypeCode)) {
++        return false;
+     }
+-    return false;
++    // TODO As already explained, ServiceType.UNDEFINED is returned if serviceTypeCode is of new service type which is added to newer version.
++    // How to handle this situation?
++    // We can infer if we know the type of histogramSchema. Server can determine the server type with code + schemaType.
++    final ResponseKey responseKey = new ResponseKey(parentApplicationName, serviceTypeCode);
++    final Histogram histogram = getHistogram(responseKey);
++    histogram.addResponseTime(millis);
++    return true;
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/9520ceda311efbf9e6b6eb9117c0d59e4a57887a b/d8d9e07f1378a4da5edf203f1337e79486740e4f
+index 9520ceda31..d8d9e07f13 100644
+--- a/9520ceda311efbf9e6b6eb9117c0d59e4a57887a
++++ b/d8d9e07f1378a4da5edf203f1337e79486740e4f
+@@ -1,3 +1,3 @@
+-public NativeLibraryDependency getShared() {
+-    return new DirectLibraryDependency(this, SharedLibraryBinary.class);
++public NativeLibraryRequirement getShared() {
++    return new ProjectNativeLibraryRequirement(getProjectPath(), this.getName(), "shared");
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/88c73a330dd18a06163991b06b8629fd4b8b8079 b/9eb3f883d201d54e38b6fe3c50a2ce9398084382
+index 88c73a330d..9eb3f883d2 100644
+--- a/88c73a330dd18a06163991b06b8629fd4b8b8079
++++ b/9eb3f883d201d54e38b6fe3c50a2ce9398084382
+@@ -1,4 +1,4 @@
+ @Override
+ public boolean isInsertable() {
+-    return !isReadOnly() && singleSourceCells && !CommonUtils.isEmpty(visibleColumns);
++    return !isReadOnly() && model.isSingleSource() && model.getVisualColumnCount() > 0;
+ }
+\ No newline at end of file

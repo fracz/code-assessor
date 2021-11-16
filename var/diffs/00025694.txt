@@ -1,0 +1,16 @@
+diff --git a/89f4da727930964cda3f3ba1a012b1fe7d2f8d2c b/93dae53a38820aec8f904b573d6a38951371cc39
+index 89f4da7279..93dae53a38 100644
+--- a/89f4da727930964cda3f3ba1a012b1fe7d2f8d2c
++++ b/93dae53a38820aec8f904b573d6a38951371cc39
+@@ -1,9 +1,9 @@
+ @Test
+ public void checkInterpret() {
+     try {
+-        InterpreterResult result = livyHelper.interpret("print(1)", interpreterContext, interpreter.userSessionMap);
++        InterpreterResult result = livyHelper.interpret("print(1)", interpreterContext, 1);
+         collector.checkThat("check sessionId", InterpreterResult.Code.SUCCESS, CoreMatchers.equalTo(result.code()));
+     } catch (Exception e) {
+         collector.addError(e);
+     }
+ }
+\ No newline at end of file

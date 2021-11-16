@@ -1,0 +1,15 @@
+diff --git a/99fb7239c63f0ae47820f859e7d237b29a2f5c34 b/983d77fc8ce050fee1e70e7e3df0720b2682e4ea
+index 99fb7239c6..983d77fc8c 100644
+--- a/99fb7239c63f0ae47820f859e7d237b29a2f5c34
++++ b/983d77fc8ce050fee1e70e7e3df0720b2682e4ea
+@@ -1,8 +1,8 @@
+ @Override
+ void dispose(boolean reflect) {
+     for (DBNProject project : projects) {
+         project.dispose(reflect);
+     }
+-    projects.clear();
++    projects = new DBNProject[0];
+     model.getApplication().getProjectManager().removeProjectListener(this);
+ }
+\ No newline at end of file

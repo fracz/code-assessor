@@ -1,0 +1,18 @@
+diff --git a/aa7e0a941ee350dc31700ae6ed3dead1fbedf423 b/4c258fc10276e0db70e348039b175a9c5d3aada9
+index aa7e0a941e..4c258fc102 100644
+--- a/aa7e0a941ee350dc31700ae6ed3dead1fbedf423
++++ b/4c258fc10276e0db70e348039b175a9c5d3aada9
+@@ -1,3 +1,11 @@
+ public boolean hasConditions() {
+-    return !CommonUtils.isEmpty(getFilters()) || !CommonUtils.isEmpty(where);
++    if (!CommonUtils.isEmpty(where)) {
++        return true;
++    }
++    for (DBQAttributeConstraint constraint : constraints) {
++        if (!CommonUtils.isEmpty(constraint.getCriteria())) {
++            return true;
++        }
++    }
++    return false;
+ }
+\ No newline at end of file

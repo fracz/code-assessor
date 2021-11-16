@@ -1,0 +1,19 @@
+diff --git a/b0dc0d20a5a5ae6d2bf122def1c657e054f643a5 b/feae036a7850e69aa6d704e47834153e7365ac22
+index b0dc0d20a5..feae036a78 100644
+--- a/b0dc0d20a5a5ae6d2bf122def1c657e054f643a5
++++ b/feae036a7850e69aa6d704e47834153e7365ac22
+@@ -1,9 +1,9 @@
+-private void synchronizeDelta(final ODocument iNodes) throws IOException {
+-    if (log.isEmpty())
++private void synchronizeDelta(final ODistributedDatabaseInfo iDatabase) throws IOException {
++    if (iDatabase.log.isEmpty())
+         return;
+-    OLogManager.instance().info(this, "Started realignment of remote node '%s' after a reconnection. Found %d updates", id, log.totalEntries());
++    OLogManager.instance().info(this, "Started synchronization of database '%s' against remote node '%s'", iDatabase.databaseName, id);
+     status = STATUS.SYNCHRONIZING;
+     final long time = System.currentTimeMillis();
+-    OLogManager.instance().info(this, "Realignment of remote node '%s' completed in %d ms", id, System.currentTimeMillis() - time);
++    OLogManager.instance().info(this, "Synchronization of database '%s' against remote node '%s' completed in %dms", iDatabase.databaseName, id, (System.currentTimeMillis() - time));
+     status = STATUS.ONLINE;
+ }
+\ No newline at end of file

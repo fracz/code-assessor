@@ -1,0 +1,24 @@
+diff --git a/a16ed8f75c053d671b0e70e8520d3554b92c3b21 b/cf2cd7761d9c95eebeac7039547466fd464f12f8
+index a16ed8f75c..cf2cd7761d 100644
+--- a/a16ed8f75c053d671b0e70e8520d3554b92c3b21
++++ b/cf2cd7761d9c95eebeac7039547466fd464f12f8
+@@ -1,8 +1,11 @@
+-private long storeStandardMessage(MasterSecret masterSecret, TextMessage message, String messageBody) {
+-    if (masterSecret != null)
+-        return DatabaseFactory.getEncryptingSmsDatabase(context).insertMessageReceived(masterSecret, message, messageBody);
+-    else if (MasterSecretUtil.hasAsymmericMasterSecret(context))
+-        return DatabaseFactory.getEncryptingSmsDatabase(context).insertMessageReceived(MasterSecretUtil.getAsymmetricMasterSecret(context, null), message, messageBody);
+-    else
+-        return DatabaseFactory.getSmsDatabase(context).insertMessageReceived(message, messageBody);
++private Pair<Long, Long> storeStandardMessage(MasterSecret masterSecret, IncomingTextMessage message) {
++    EncryptingSmsDatabase encryptingDatabase = DatabaseFactory.getEncryptingSmsDatabase(context);
++    SmsDatabase plaintextDatabase = DatabaseFactory.getSmsDatabase(context);
++    if (masterSecret != null) {
++        return encryptingDatabase.insertMessageInbox(masterSecret, message);
++    } else if (MasterSecretUtil.hasAsymmericMasterSecret(context)) {
++        return encryptingDatabase.insertMessageInbox(MasterSecretUtil.getAsymmetricMasterSecret(context, null), message);
++    } else {
++        return plaintextDatabase.insertMessageInbox(message);
++    }
+ }
+\ No newline at end of file

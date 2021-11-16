@@ -1,0 +1,15 @@
+diff --git a/3d0fecc4fce068e246869d7d511387c280086e75 b/34bea64dbb7f6d97a710bdf02babd0f80ded6dae
+index 3d0fecc4fc..34bea64dbb 100644
+--- a/3d0fecc4fce068e246869d7d511387c280086e75
++++ b/34bea64dbb7f6d97a710bdf02babd0f80ded6dae
+@@ -1,4 +1,7 @@
+-public TableItem getItem(int index) {
++public ITEM_TYPE getItem(int index) {
+     checkWidget();
+-    return this.table.getItem(index);
++    if (index < 0 || index >= table.getItemCount()) {
++        SWT.error(SWT.ERROR_INVALID_ARGUMENT);
++    }
++    return (ITEM_TYPE) table.getItem(index).getData();
+ }
+\ No newline at end of file

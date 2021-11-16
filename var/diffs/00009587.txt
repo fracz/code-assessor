@@ -1,0 +1,16 @@
+diff --git a/706fcf0ef5943723e5206715c5c509d1cfa3cff8 b/07ce18156960e8c0e96b3275a105170ffaf7ef62
+index 706fcf0ef5..07ce181569 100644
+--- a/706fcf0ef5943723e5206715c5c509d1cfa3cff8
++++ b/07ce18156960e8c0e96b3275a105170ffaf7ef62
+@@ -1,7 +1,9 @@
+ @Override
+ public boolean add(@Nullable HighlightInfo info) {
+     if (info != null && info.getSeverity() == HighlightSeverity.ERROR) {
+-        throw new HaveGotErrorException(info, myHasErrorElement);
++        error.set(info);
++        hasErrorElement.set(myHasErrorElement);
++        throw new ProcessCanceledException();
+     }
+     return super.add(info);
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/e50bfb6d83f77416b96c6f4643a178a774bc5a2b b/d5c84ab72b587d70342f36985befcd6cdb4d9f56
+index e50bfb6d83..d5c84ab72b 100644
+--- a/e50bfb6d83f77416b96c6f4643a178a774bc5a2b
++++ b/d5c84ab72b587d70342f36985befcd6cdb4d9f56
+@@ -1,11 +1,12 @@
+ @Override
+ public void doSave(IProgressMonitor progressMonitor) {
+     for (QueryProcessor queryProcessor : queryProcessors) {
+-        for (QueryResultsProvider resultsProvider : queryProcessor.getResultProviders()) {
+-            if (resultsProvider.getResultSetViewer().isDirty()) {
+-                resultsProvider.getResultSetViewer().doSave(progressMonitor);
++        for (QueryResultsContainer resultsProvider : queryProcessor.getResultProviders()) {
++            ResultSetViewer rsv = resultsProvider.getResultSetViewer();
++            if (rsv != null && rsv.isDirty()) {
++                rsv.doSave(progressMonitor);
+             }
+         }
+     }
+     super.doSave(progressMonitor);
+ }
+\ No newline at end of file

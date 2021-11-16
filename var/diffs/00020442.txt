@@ -1,0 +1,21 @@
+diff --git a/20cbc9a90ad51cb72ff7cb488ef69e91b63957ef b/90c1c462413c523f0097e8c091c9b6c84f91efac
+index 20cbc9a90a..90c1c46241 100644
+--- a/20cbc9a90ad51cb72ff7cb488ef69e91b63957ef
++++ b/90c1c462413c523f0097e8c091c9b6c84f91efac
+@@ -1,14 +1,12 @@
+ public static byte[] readByteArrayFromResource(String resource) throws IOException {
+     InputStream in = null;
+     try {
+         in = Thread.currentThread().getContextClassLoader().getResourceAsStream(resource);
+         if (in == null) {
+             return null;
+         }
+-        ByteArrayOutputStream output = new ByteArrayOutputStream();
+-        copy(in, output);
+-        return output.toByteArray();
++        return readByteArray(in);
+     } finally {
+         JdbcUtils.close(in);
+     }
+ }
+\ No newline at end of file

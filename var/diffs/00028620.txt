@@ -1,0 +1,16 @@
+diff --git a/ebdb7502373b21483dc60f48853a10f78c1c6ca8 b/fc170f54be323e4fa85551b3dd78079a9b0bd2d1
+index ebdb750237..fc170f54be 100644
+--- a/ebdb7502373b21483dc60f48853a10f78c1c6ca8
++++ b/fc170f54be323e4fa85551b3dd78079a9b0bd2d1
+@@ -1,9 +1,9 @@
+ public static void pushObjectArray(Object[] objects) {
+     Queue<Object[]> ref = objectArray.get();
+     if (ref == null) {
+-        ref = new LinkedTransferQueue<Object[]>();
++        ref = ConcurrentCollections.newQueue();
+         objectArray.set(ref);
+     }
+     Arrays.fill(objects, null);
+     ref.add(objects);
+ }
+\ No newline at end of file

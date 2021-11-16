@@ -1,0 +1,15 @@
+diff --git a/8fe778e815bffaf0e682b4dd0b391e7b02209b51 b/35c27153b820946deb0b2e484d1ba86fbfdad959
+index 8fe778e815..35c27153b8 100644
+--- a/8fe778e815bffaf0e682b4dd0b391e7b02209b51
++++ b/35c27153b820946deb0b2e484d1ba86fbfdad959
+@@ -1,6 +1,8 @@
+ @Override
+ protected void skipBetweenDeleteAndTable() {
+-    ((SQLServerParser) getSqlParser()).parseTop(getDeleteStatement());
++    if (getSqlParser().equalAny(SQLServerKeyword.TOP)) {
++        throw new SQLParsingUnsupportedException(getSqlParser().getLexer().getCurrentToken().getType());
++    }
+     ((SQLServerParser) getSqlParser()).skipOutput();
+     getSqlParser().skipIfEqual(DefaultKeyword.FROM);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/bd604f8b6356d1e0b7bcad2e1eaf32201bd3a317 b/bf93e7efeb2417e62b2c1bd6355a05183b9038c6
+index bd604f8b63..bf93e7efeb 100644
+--- a/bd604f8b6356d1e0b7bcad2e1eaf32201bd3a317
++++ b/bf93e7efeb2417e62b2c1bd6355a05183b9038c6
+@@ -1,7 +1,7 @@
+ public boolean process(Annotator annotator) {
+-    if (dumb && !(annotator instanceof DumbAware)) {
++    if (dumb && !DumbService.isDumbAware(annotator)) {
+         return true;
+     }
+     annotator.annotate(element, annotationHolder);
+     return true;
+ }
+\ No newline at end of file

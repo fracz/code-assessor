@@ -1,0 +1,30 @@
+diff --git a/054a4378d1c8b1b234398a9b6066372147cdd24c b/c5f91e23428e85ad9a8711ba1c645d1664518642
+index 054a4378d1..c5f91e2342 100644
+--- a/054a4378d1c8b1b234398a9b6066372147cdd24c
++++ b/c5f91e23428e85ad9a8711ba1c645d1664518642
+@@ -1,17 +1,15 @@
+ public void onTestIgnored(@NotNull final TestIgnoredEvent testIgnoredEvent) {
+     addToInvokeLater(new Runnable() {
+
+         public void run() {
+-            Node node = findNode(testIgnoredEvent);
+-            if (node == null) {
+-                logProblem("Test wasn't started! " + testIgnoredEvent + ".");
+-                return;
++            Node node = findNodeToTerminate(testIgnoredEvent);
++            if (node != null) {
++                SMTestProxy testProxy = node.getProxy();
++                testProxy.setTestIgnored(testIgnoredEvent.getIgnoreComment(), testIgnoredEvent.getStacktrace());
++                // fire event
++                fireOnTestIgnored(testProxy);
++                terminateNode(node, State.IGNORED);
+             }
+-            stopRunningNode(node, State.IGNORED, testIgnoredEvent);
+-            SMTestProxy testProxy = node.getProxy();
+-            testProxy.setTestIgnored(testIgnoredEvent.getIgnoreComment(), testIgnoredEvent.getStacktrace());
+-            // fire event
+-            fireOnTestIgnored(testProxy);
+         }
+     });
+ }
+\ No newline at end of file

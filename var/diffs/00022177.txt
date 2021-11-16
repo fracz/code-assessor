@@ -1,0 +1,20 @@
+diff --git a/04ac4ff205580ba47146643544dca27db059ded8 b/d0fd618d2da746de8ab1c47527d8d86bd92dd202
+index 04ac4ff205..d0fd618d2d 100644
+--- a/04ac4ff205580ba47146643544dca27db059ded8
++++ b/d0fd618d2da746de8ab1c47527d8d86bd92dd202
+@@ -1,10 +1,12 @@
+ @Override
+-public void requestAutoFill(int userId, IBinder activityToken) {
++public void requestAutoFill(IBinder activityToken, int userId, int flags) {
++    if (DEBUG)
++        Slog.d(TAG, "requestAutoFill: flags=" + flags + ", userId=" + userId);
+     mContext.enforceCallingPermission(MANAGE_AUTO_FILL, TAG);
+     synchronized (mLock) {
+         final AutoFillManagerServiceImpl service = getServiceForUserLocked(userId);
+         if (service != null) {
+-            service.requestAutoFill(activityToken);
++            service.requestAutoFill(activityToken, flags);
+         }
+     }
+ }
+\ No newline at end of file

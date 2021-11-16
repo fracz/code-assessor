@@ -1,0 +1,27 @@
+diff --git a/593ae68d15c0a7f14bb5c67b658607f9bc3efa12 b/c5d7ab07663fa5fbe55bb58e1d921ef39f1150a8
+index 593ae68d15..c5d7ab0766 100644
+--- a/593ae68d15c0a7f14bb5c67b658607f9bc3efa12
++++ b/c5d7ab07663fa5fbe55bb58e1d921ef39f1150a8
+@@ -1,19 +1,19 @@
+ /**
+  * Returns an Iterator<Object> object to browse the multi-value instance (array, collection or map)
+  *
+  * @param iObject
+  * Multi-value object (array, collection or map)
+  */
+-public static Iterator<?> getMultiValueIterator(final Object iObject) {
++public static Iterator<Object> getMultiValueIterator(final Object iObject) {
+     if (iObject == null)
+         return null;
+     if (!isMultiValue(iObject))
+         return null;
+     if (iObject instanceof Collection<?>)
+         return ((Collection<Object>) iObject).iterator();
+     if (iObject instanceof Map<?, ?>)
+         return ((Map<?, Object>) iObject).values().iterator();
+     if (iObject.getClass().isArray())
+-        return new OIterableObject(iObject).iterator();
++        return new OIterableObjectArray<Object>(iObject).iterator();
+     return null;
+ }
+\ No newline at end of file

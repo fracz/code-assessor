@@ -1,0 +1,12 @@
+diff --git a/912021d286d187c4b1010735556fd2b42c85ed0c b/a546f71be571b642564bab2e835f3fa9419a7141
+index 912021d286..a546f71be5 100644
+--- a/912021d286d187c4b1010735556fd2b42c85ed0c
++++ b/a546f71be571b642564bab2e835f3fa9419a7141
+@@ -1,5 +1,5 @@
+ @Parameterized.Parameters(name = "{0}")
+ public static Iterable<WriteTest> data() {
+     return Arrays.asList(// scalar properties
+-    shouldWrite(VirtualValues.list(Values.booleanValue(false), Values.byteArray(new byte[] { 3, 4, 5 }), Values.stringValue("yo")), beginList(3), false, new byte[] { 3, 4, 5 }, "yo", endList()));
++    shouldWrite(VirtualValues.list(Values.booleanValue(false), Values.byteArray(new byte[] { 3, 4, 5 }), Values.stringValue("yo")), beginList(3), false, beginArray(3, BYTE), (byte) 3, (byte) 4, (byte) 5, endArray(), "yo", endList()));
+ }
+\ No newline at end of file

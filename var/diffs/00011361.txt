@@ -1,0 +1,26 @@
+diff --git a/9c6cf0f64c8f5f9429e3f848d6bedd71443398e9 b/29662041e59d57819e67be06335bf2c0f77bd9e1
+index 9c6cf0f64c..29662041e5 100644
+--- a/9c6cf0f64c8f5f9429e3f848d6bedd71443398e9
++++ b/29662041e59d57819e67be06335bf2c0f77bd9e1
+@@ -1,14 +1,15 @@
+ public void testGenerator() {
+-    runPythonTest(new PyUnitTestTask("", "test_generator.py") {
++    runPythonTest(new PyProcessWithConsoleTestTask<PyUnitTestProcessRunner>(SdkCreationType.EMPTY_SDK) {
+
++        @NotNull
+         @Override
+-        protected String getTestDataPath() {
+-            return PythonHelpersLocator.getPythonCommunityPath() + "/helpers";
++        protected PyUnitTestProcessRunner createProcessRunner() throws Exception {
++            return new PyUnitTestProcessRunner(PythonHelpersLocator.getPythonCommunityPath() + "/helpers", "test_generator.py");
+         }
+
+         @Override
+-        public void after() {
+-            allTestsPassed();
++        protected void checkTestResults(@NotNull final PyUnitTestProcessRunner runner, @NotNull final String stdout, @NotNull final String stderr, @NotNull final String all) {
++            runner.assertAllTestsPassed();
+         }
+     });
+ }
+\ No newline at end of file

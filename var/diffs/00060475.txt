@@ -1,0 +1,23 @@
+diff --git a/5eb012a3eaec4e677ce15b84809d3b8b738b4681 b/490d2fe241ae431ac3cef982bb990520a6491dd9
+index 5eb012a3ea..490d2fe241 100644
+--- a/5eb012a3eaec4e677ce15b84809d3b8b738b4681
++++ b/490d2fe241ae431ac3cef982bb990520a6491dd9
+@@ -1,13 +1,12 @@
+ @Override
+ public void run() {
+     try {
+-        sender.handleSendMessage(aMessage);
+-        // FIXME change to the HttpPanelSender
+-        switchToTab(1);
+-        setFooterStatus((HttpMessage) getResponsePanel().getMessage());
++        getMessageSender().handleSendMessage(aMessage);
++        postSend();
+     } catch (Exception e) {
+-        extension.getView().showWarningDialog(e.getMessage());
++        logger.warn(e.getMessage(), e);
++        View.getSingleton().showWarningDialog(e.getMessage());
+     } finally {
+         btnSend.setEnabled(true);
+     }
+ }
+\ No newline at end of file

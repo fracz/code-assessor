@@ -1,0 +1,13 @@
+diff --git a/91ca9c3f7ebff313456cf2cb60a0b625f5bb3fcf b/a69615e6e00c62b98133b1bd31e023a7de9d0af2
+index 91ca9c3f7e..a69615e6e0 100644
+--- a/91ca9c3f7ebff313456cf2cb60a0b625f5bb3fcf
++++ b/a69615e6e00c62b98133b1bd31e023a7de9d0af2
+@@ -1,5 +1,5 @@
+-private void onConnected(final boolean resuming, final long soFar, final long total) {
+-    helper.update(getId(), FileDownloadStatus.connected, soFar, total);
++private void onConnected(final boolean resuming, final long total, final String etag) {
++    helper.updateConnected(getId(), total, etag);
+     transferModel.setResuming(resuming);
+     onStatusChanged(model.getStatus());
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/b8e669df88e9ab6d997f36218e7438b19071f9ad b/e06ba45b1147b251f701dabd94c4f4e7f32f0011
+index b8e669df88..e06ba45b11 100644
+--- a/b8e669df88e9ab6d997f36218e7438b19071f9ad
++++ b/e06ba45b1147b251f701dabd94c4f4e7f32f0011
+@@ -1,11 +1,11 @@
+ @Test
+ public void write() throws Exception {
+-    TBaseStream stream = new TBaseStream(1024);
++    TBaseStream stream = new TBaseStream(DEFAULT_PROTOCOL_FACTORY);
+     // single span event
+     TSpanEvent spanEvent = newSpanEvent();
+     stream.write(spanEvent);
+     int size = stream.size();
+     // append
+     stream.write(spanEvent);
+     assertEquals(size * 2, stream.size());
+ }
+\ No newline at end of file

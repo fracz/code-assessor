@@ -1,0 +1,18 @@
+diff --git a/7be89e7bf5ba864c6f6f1ff936a4f9da1d3fea5e b/d54df24528a5d5dba304571f52b889561afdda6e
+index 7be89e7bf5..d54df24528 100644
+--- a/7be89e7bf5ba864c6f6f1ff936a4f9da1d3fea5e
++++ b/d54df24528a5d5dba304571f52b889561afdda6e
+@@ -1,7 +1,6 @@
+-public boolean setSelectedIndex(final int selectedIndex) {
+-    if (mySelectedIndex == selectedIndex)
+-        return false;
+-    mySelectedIndex = selectedIndex;
+-    myObservable.fireChange();
+-    return true;
++public void setSelectedIndex(final int selectedIndex) {
++    if (mySelectedIndex != selectedIndex) {
++        mySelectedIndex = selectedIndex;
++        myNotificator.selectionChanged();
++    }
+ }
+\ No newline at end of file

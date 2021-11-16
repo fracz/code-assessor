@@ -1,0 +1,15 @@
+diff --git a/d86b2761e8fbfda27d36a446f3b76814a37dbe3d b/e826ffe3b215771fef9fb63fa4358000e799ad9f
+index d86b2761e8..e826ffe3b2 100644
+--- a/d86b2761e8fbfda27d36a446f3b76814a37dbe3d
++++ b/e826ffe3b215771fef9fb63fa4358000e799ad9f
+@@ -1,8 +1,8 @@
+ /**
+  * Returns a handle to the child with the specified name.
+  * @throw GdxRuntimeException if this file handle is a {@link FileType#Classpath} or {@link FileType#Internal} and the child
+  * doesn't exist.
+  */
+ public FileHandle child(String name) {
+-    return new GwtFileHandle(preloader, file.isEmpty() ? "" : (file + (file.endsWith("/") ? "" : "/")) + name, FileType.Internal);
++    return new GwtFileHandle(preloader, (file.isEmpty() ? "" : (file + (file.endsWith("/") ? "" : "/"))) + name, FileType.Internal);
+ }
+\ No newline at end of file

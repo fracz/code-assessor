@@ -1,0 +1,18 @@
+diff --git a/f2e99d09aff01a9cdea7927ca6dbc56bf10fec5a b/20d1edffc2993ad44b68bae5417b0db5bfbc091d
+index f2e99d09af..20d1edffc2 100644
+--- a/f2e99d09aff01a9cdea7927ca6dbc56bf10fec5a
++++ b/20d1edffc2993ad44b68bae5417b0db5bfbc091d
+@@ -1,10 +1,10 @@
+ private void initializeFireDepartments() {
+     if (fireDepartments == null) {
+         try {
+-            fireDepartments = getJsonMapper().readValue(new File(PropUtils.getProperty(getProps(), "druid.realtime.specFile")), new TypeReference<List<FireDepartment>>() {
+-            });
++            setFireDepartments(getJsonMapper().<List<FireDepartment>>readValue(new File(PropUtils.getProperty(getProps(), "druid.realtime.specFile")), new TypeReference<List<FireDepartment>>() {
++            }));
+         } catch (IOException e) {
+             throw Throwables.propagate(e);
+         }
+     }
+ }
+\ No newline at end of file

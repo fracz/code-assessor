@@ -1,0 +1,18 @@
+diff --git a/cf3334785d95d402efa51d2809664d76930ed797 b/932c15aa460353cd1a47ff154a00173ae53c1bd8
+index cf3334785d..932c15aa46 100644
+--- a/cf3334785d95d402efa51d2809664d76930ed797
++++ b/932c15aa460353cd1a47ff154a00173ae53c1bd8
+@@ -1,8 +1,7 @@
+-public List<CheckArea> split(@Nullable String text, @NotNull TextRange range) {
++@Override
++public void split(@Nullable String text, @NotNull TextRange range, Consumer<TextRange> consumer) {
+     if (text == null || StringUtil.isEmpty(text)) {
+-        return null;
++        return;
+     }
+-    List<CheckArea> results = new ArrayList<CheckArea>();
+-    doSplit(text, range, results);
+-    return (results.size() == 0) ? null : results;
++    doSplit(text, range, consumer);
+ }
+\ No newline at end of file

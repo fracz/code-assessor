@@ -1,0 +1,17 @@
+diff --git a/9606ab6009801567f33b0725bfd5ab03740fb745 b/0349bbdd4c0eabdd64fa2b09e261e0051a248905
+index 9606ab6009..0349bbdd4c 100644
+--- a/9606ab6009801567f33b0725bfd5ab03740fb745
++++ b/0349bbdd4c0eabdd64fa2b09e261e0051a248905
+@@ -1,7 +1,7 @@
+-protected void parseTableSourceQueryTableExpr(SQLExprTableSource tableReference) {
++protected void parseTableSourceQueryTableExpr(final SQLExprTableSource tableReference) {
+     if (getLexer().equalToken(Token.LITERAL_ALIAS) || getLexer().equalToken(Token.IDENTIFIED) || getLexer().equalToken(Token.LITERAL_CHARS)) {
+-        tableReference.setExpr(this.exprParser.name());
+-        return;
++        tableReference.setExpr(exprParser.name());
++    } else {
++        tableReference.setExpr(exprParser.expr());
+     }
+-    tableReference.setExpr(getExprParser().expr());
+ }
+\ No newline at end of file

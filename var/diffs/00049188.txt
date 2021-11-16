@@ -1,0 +1,24 @@
+diff --git a/a83616b417373fc3ddf245a763551620ad691f2b b/392633e6e28f8455e30eee415d761113f5818620
+index a83616b417..392633e6e2 100644
+--- a/a83616b417373fc3ddf245a763551620ad691f2b
++++ b/392633e6e28f8455e30eee415d761113f5818620
+@@ -1,14 +1,16 @@
++// //////////////////////////////////////////////////////////
++// Filters
+ public void setDataFilter(final DBDDataFilter dataFilter) {
+-    if (CommonUtils.equalObjects(this.dataFilter, dataFilter)) {
++    if (CommonUtils.equalObjects(model.getDataFilter(), dataFilter)) {
+         return;
+     }
+-    this.dataFilter = dataFilter;
++    model.setDataFilter(dataFilter);
+     reorderResultSet(true, new Runnable() {
+
+         @Override
+         public void run() {
+             resetColumnOrdering();
+         }
+     });
+     this.updateFiltersText();
+ }
+\ No newline at end of file

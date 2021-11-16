@@ -1,0 +1,17 @@
+diff --git a/dd07ff221c676564fbd2491dd23a54a3ef1429a8 b/4b948b3d85e7e010ce9ede8b8256795a35cf677e
+index dd07ff221c..4b948b3d85 100644
+--- a/dd07ff221c676564fbd2491dd23a54a3ef1429a8
++++ b/4b948b3d85e7e010ce9ede8b8256795a35cf677e
+@@ -1,9 +1,9 @@
+-@Path("merge")
+ @POST
++@Path("merge")
+ @Consumes(MediaType.APPLICATION_JSON)
+ @Produces({ MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN })
+ public MergeResult merge(MergeRequest request) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+-        return gitConnection.merge(request);
++        return gitConnection.merge(request.getCommit());
+     }
+ }
+\ No newline at end of file

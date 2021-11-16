@@ -1,0 +1,22 @@
+diff --git a/d681aa19c8ac38cb93c5114cb451225f58f363a7 b/61502c0032f836508bcbd57a36c3f62635fdc4fb
+index d681aa19c8..61502c0032 100644
+--- a/d681aa19c8ac38cb93c5114cb451225f58f363a7
++++ b/61502c0032f836508bcbd57a36c3f62635fdc4fb
+@@ -1,15 +1,15 @@
+ @Override
+ public StyledText createControl(IValueController valueController) {
+     this.valueController = valueController;
+     this.subSite = new SubEditorSite(valueController.getValueSite());
+     editor = new XMLEditor();
+     try {
+         editor.init(subSite, StringEditorInput.EMPTY_INPUT);
+     } catch (PartInitException e) {
+-        valueController.showMessage(e.getMessage(), true);
++        valueController.showMessage(e.getMessage(), DBPMessageType.ERROR);
+         return new StyledText(valueController.getEditPlaceholder(), SWT.NONE);
+     }
+     editor.createPartControl(valueController.getEditPlaceholder());
+     ContentPanelEditor.setEditorSettings(editor.getEditorControl());
+     return editor.getEditorControl();
+ }
+\ No newline at end of file

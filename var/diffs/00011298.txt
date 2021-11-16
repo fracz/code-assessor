@@ -1,0 +1,22 @@
+diff --git a/5f414858d9d542ab4f7b08017fd23b4c6c74111c b/105263e5485814a34fa4966111d0152f60e9dd10
+index 5f414858d9..105263e548 100644
+--- a/5f414858d9d542ab4f7b08017fd23b4c6c74111c
++++ b/105263e5485814a34fa4966111d0152f60e9dd10
+@@ -1,15 +1,13 @@
+ @NotNull
+ public Set<String> getFileResourcesNames(@NotNull String resourceType) {
+     Set<String> result = new HashSet<String>();
+     List<VirtualFile> dirs = getResourceSubdirs(resourceType);
+     for (VirtualFile dir : dirs) {
+         for (VirtualFile resourceFile : dir.getChildren()) {
+             if (resourceFile.isDirectory())
+                 continue;
+-            String resName = getResourceName(resourceType, resourceFile.getName());
+-            if (resName != null)
+-                result.add(resName);
++            result.add(AndroidResourceUtil.getResourceName(resourceType, resourceFile.getName()));
+         }
+     }
+     return result;
+ }
+\ No newline at end of file

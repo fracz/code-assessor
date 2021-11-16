@@ -1,0 +1,23 @@
+diff --git a/5c48d21cb988a22658c75f3a78b2ceef174bcbfc b/e0c1b9cd1aa2917d07429e2c9462f6539aa11e23
+index 5c48d21cb9..e0c1b9cd1a 100644
+--- a/5c48d21cb988a22658c75f3a78b2ceef174bcbfc
++++ b/e0c1b9cd1aa2917d07429e2c9462f6539aa11e23
+@@ -1,13 +1,14 @@
+ @Test
+ public void testRecalculateSlotsWhenMoved() throws InterruptedException {
+     Set<HostAndPort> jedisClusterNode = new HashSet<HostAndPort>();
+     jedisClusterNode.add(new HostAndPort("127.0.0.1", 7379));
+     JedisCluster jc = new JedisCluster(jedisClusterNode);
+-    node2.clusterDelSlots(JedisClusterCRC16.getSlot("51"));
++    int slot51 = JedisClusterCRC16.getSlot("51");
++    node2.clusterDelSlots(slot51);
+     // TODO: We shouldn't need to issue DELSLOTS in node3, but due to redis-cluster bug we need to.
+-    node3.clusterDelSlots(JedisClusterCRC16.getSlot("51"));
+-    node3.clusterAddSlots(JedisClusterCRC16.getSlot("51"));
++    node3.clusterDelSlots(slot51);
++    node3.clusterAddSlots(slot51);
+     waitForClusterReady();
+     jc.set("51", "foo");
+     assertEquals("foo", jc.get("51"));
+ }
+\ No newline at end of file

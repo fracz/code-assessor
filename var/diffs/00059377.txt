@@ -1,0 +1,12 @@
+diff --git a/feaad6d9f71a2686992b716bb9ecd4e33bce575b b/946fc0b79b25bbf33465e50f3e917402730baf79
+index feaad6d9f7..946fc0b79b 100644
+--- a/feaad6d9f71a2686992b716bb9ecd4e33bce575b
++++ b/946fc0b79b25bbf33465e50f3e917402730baf79
+@@ -1,4 +1,5 @@
+ @Override
+ public void cleanUp() {
+-    HBaseHelper.deleteAll(StorageSetup.getHBaseGraphConfiguration().subset(GraphDatabaseConfiguration.STORAGE_NAMESPACE));
++    HBaseStorageManager s = new HBaseStorageManager(StorageSetup.getHBaseGraphConfiguration().subset(GraphDatabaseConfiguration.STORAGE_NAMESPACE));
++    s.clearStorage();
+ }
+\ No newline at end of file

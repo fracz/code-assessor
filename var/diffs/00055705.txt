@@ -1,0 +1,24 @@
+diff --git a/ddae3a00c011d24670c2a63c0d91e2c6970181e5 b/c92873328be417f8902771b5ed89308e357078b3
+index ddae3a00c0..c92873328b 100644
+--- a/ddae3a00c011d24670c2a63c0d91e2c6970181e5
++++ b/c92873328be417f8902771b5ed89308e357078b3
+@@ -1,9 +1,13 @@
+-private Set<MediaType> getProducibleMediaTypes(HttpServletRequest request, Set<RequestMappingInfo> partialMatches) {
+-    Set<MediaType> result = new HashSet<MediaType>();
+-    for (RequestMappingInfo partialMatch : partialMatches) {
+-        if (partialMatch.getProducesCondition().getMatchingCondition(request) == null) {
+-            result.addAll(partialMatch.getProducesCondition().getProducibleMediaTypes());
++/**
++ * Return declared "producible" types but only among those that also
++ * match the "methods" and "consumes" conditions.
++ */
++public Set<MediaType> getProducibleMediaTypes() {
++    Set<MediaType> result = new LinkedHashSet<MediaType>();
++    for (PartialMatch match : this.partialMatches) {
++        if (match.hasConsumesMatch()) {
++            result.addAll(match.getInfo().getProducesCondition().getProducibleMediaTypes());
+         }
+     }
+     return result;
+ }
+\ No newline at end of file

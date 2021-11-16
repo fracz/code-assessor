@@ -1,0 +1,16 @@
+diff --git a/8fc36ee09a6248e1663f71cd0dff6432de4a5761 b/85ef8e4aaa1c3d8fc6590c7d0be981e092530a4e
+index 8fc36ee09a..85ef8e4aaa 100644
+--- a/8fc36ee09a6248e1663f71cd0dff6432de4a5761
++++ b/85ef8e4aaa1c3d8fc6590c7d0be981e092530a4e
+@@ -1,7 +1,5 @@
+ private PreparedStatementExecutorWrapper createPreparedStatementExecutorWrapper(final PreparedStatement preparedStatement, final String dataSource, final String sql) {
+-    try {
+-        return new PreparedStatementExecutorWrapper(preparedStatement, Collections.emptyList(), new SQLExecutionUnit(dataSource, (SQLBuilder) new SQLBuilder().append(sql)));
+-    } catch (final IOException ex) {
+-        throw new RuntimeException(ex);
+-    }
++    SQLBuilder sqlBuilder = new SQLBuilder();
++    sqlBuilder.append(sql);
++    return new PreparedStatementExecutorWrapper(preparedStatement, Collections.emptyList(), new SQLExecutionUnit(dataSource, sqlBuilder));
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/ab7e71b5bb27d7086b394ce37c55060751f5cf19 b/d9b4bfa1eab531c5d097cd889be8a564aeb0db26
+index ab7e71b5bb..d9b4bfa1ea 100644
+--- a/ab7e71b5bb27d7086b394ce37c55060751f5cf19
++++ b/d9b4bfa1eab531c5d097cd889be8a564aeb0db26
+@@ -1,11 +1,11 @@
+ @Test
+ public void testRetainAll() {
+     RSetCacheReactive<Integer> set = redisson.getSetCache("set");
+     for (int i = 0; i < 10000; i++) {
+         sync(set.add(i));
+         sync(set.add(i * 10, 10, TimeUnit.SECONDS));
+     }
+     Assert.assertTrue(sync(set.retainAll(Arrays.asList(1, 2))));
+-    Assert.assertThat(sync(set), Matchers.containsInAnyOrder(1, 2));
++    assertThat(sync(set)).contains(1, 2);
+     Assert.assertEquals(2, sync(set.size()).intValue());
+ }
+\ No newline at end of file

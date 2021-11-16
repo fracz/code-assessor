@@ -1,0 +1,47 @@
+diff --git a/b0706a47e1c42447b8f97047faabdbb568d912f0 b/17f7f5a419057b4c70ffe12bf5468cc35c57072e
+index b0706a47e1..17f7f5a419 100644
+--- a/b0706a47e1c42447b8f97047faabdbb568d912f0
++++ b/17f7f5a419057b4c70ffe12bf5468cc35c57072e
+@@ -1,29 +1,27 @@
+ /**
+  * Checkpoint a pending replica to persistent storage now.
++ * If we fail then move the replica to the end of the queue.
+  * @return true if there is more work to be done, false otherwise.
+  */
+ private boolean saveNextReplica() {
+-    BlockIdPair blockIdPair = null;
+-    int moreWorkThreshold = 0;
++    LazyWriteReplicaTracker.ReplicaState replicaState = null;
++    boolean succeeded = false;
+     try {
+         synchronized (this) {
+-            // Dequeue the next replica waiting to be checkpointed.
+-            blockIdPair = blocksPendingCheckpoint.poll();
+-            if (blockIdPair == null) {
+-                LOG.info("LazyWriter has no blocks to persist. " + "Thread going to sleep.");
++            replicaState = lazyWriteReplicaTracker.dequeueNextReplicaToPersist();
++            if (replicaState == null) {
+                 return false;
+             }
+         }
+         // Move the replica outside the lock.
+-        moveReplicaToNewVolume(blockIdPair.bpid, blockIdPair.blockId);
++        moveReplicaToNewVolume(replicaState.bpid, replicaState.blockId);
++        succeeded = true;
+     } catch (IOException ioe) {
+-        // checkpointing the same block in a tight loop.
+-        synchronized (this) {
+-            blocksPendingCheckpoint.add(blockIdPair);
+-            ++moreWorkThreshold;
++        LOG.warn("Exception saving replica " + replicaState, ioe);
++    } finally {
++        if (!succeeded && replicaState != null) {
++            lazyWriteReplicaTracker.reenqueueReplica(replicaState);
+         }
+     }
+-    synchronized (this) {
+-        return blocksPendingCheckpoint.size() > moreWorkThreshold;
+-    }
++    return succeeded;
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/a855826d44154d3ee2594d86bd3eceea8176bb4b b/4e9d730e68d7d6ab6e8bd154aaf89041522a5984
+index a855826d44..4e9d730e68 100644
+--- a/a855826d44154d3ee2594d86bd3eceea8176bb4b
++++ b/4e9d730e68d7d6ab6e8bd154aaf89041522a5984
+@@ -1,3 +1,5 @@
+-public void fillContextMenu(@Nullable Object col, @Nullable Object row, @NotNull IMenuManager manager) {
+-    ((ResultSetViewer) controller).fillContextMenu(col, row, manager);
++public void fillContextMenu(@Nullable Object colObject, @Nullable Object rowObject, @NotNull IMenuManager manager) {
++    final DBDAttributeBinding attr = (DBDAttributeBinding) (controller.isRecordMode() ? rowObject : colObject);
++    final ResultSetRow row = (ResultSetRow) (controller.isRecordMode() ? colObject : rowObject);
++    controller.fillContextMenu(manager, attr, row);
+ }
+\ No newline at end of file

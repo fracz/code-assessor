@@ -1,0 +1,20 @@
+diff --git a/92f9946248fb2447d6cb23af6981a1f91449a532 b/3f2ae885fafa3fec9ae2c0f710d0935bdbda826e
+index 92f9946248..3f2ae885fa 100644
+--- a/92f9946248fb2447d6cb23af6981a1f91449a532
++++ b/3f2ae885fafa3fec9ae2c0f710d0935bdbda826e
+@@ -1,11 +1,11 @@
+-private JetElement resolveNamedLabel(@NotNull Name labelName, @NotNull JetSimpleNameExpression labelExpression, ExpressionTypingContext context) {
++private JetElement resolveNamedLabel(@NotNull Name labelName, @NotNull JetSimpleNameExpression labelExpression, @NotNull BindingTrace trace) {
+     List<JetElement> list = getElementsByLabelName(labelName, labelExpression);
+     if (list.isEmpty())
+         return null;
+     if (list.size() > 1) {
+-        context.trace.report(LABEL_NAME_CLASH.on(labelExpression));
++        trace.report(LABEL_NAME_CLASH.on(labelExpression));
+     }
+     JetElement result = list.get(0);
+-    context.trace.record(LABEL_TARGET, labelExpression, result);
++    trace.record(LABEL_TARGET, labelExpression, result);
+     return result;
+ }
+\ No newline at end of file

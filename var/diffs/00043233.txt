@@ -1,0 +1,15 @@
+diff --git a/c0ce515fc76c7b66e10db3843cfcfdb93b8e08df b/da7553a0d359d0767491f2b24d0edf4bfe7fb62b
+index c0ce515fc7..da7553a0d3 100644
+--- a/c0ce515fc76c7b66e10db3843cfcfdb93b8e08df
++++ b/da7553a0d359d0767491f2b24d0edf4bfe7fb62b
+@@ -1,8 +1,7 @@
+ @Test(dependsOnMethods = "testBasicCreate")
+ public void testBasicRead() {
+     database.open("admin", "admin");
+-    ORecordBytes record = new ORecordBytes(database, rid);
+-    record.load();
++    ORecordBytes record = database.load(rid);
+     Assert.assertEquals("This is a test", new String(record.toStream()));
+     database.close();
+ }
+\ No newline at end of file

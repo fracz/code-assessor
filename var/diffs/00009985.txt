@@ -1,0 +1,21 @@
+diff --git a/b258ece612ef8f588d2718bdc94ba6f302dc3a8b b/d2ca170ee1ac03dc7cad772007205d4904f5fe2e
+index b258ece612..d2ca170ee1 100644
+--- a/b258ece612ef8f588d2718bdc94ba6f302dc3a8b
++++ b/d2ca170ee1ac03dc7cad772007205d4904f5fe2e
+@@ -1,10 +1,12 @@
+ @Nullable
+ private static HighlightInfo canSelectFrom(PsiClassType type, PsiTypeElement operand) {
+     PsiClass aClass = type.resolve();
+     if (aClass instanceof PsiTypeParameter) {
+-        return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, operand, JavaErrorMessages.message("cannot.select.dot.class.from.type.variable"));
+-    } else if (type.getParameters().length > 0) {
+-        return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, operand, "Cannot select from parameterized type");
++        String description = JavaErrorMessages.message("cannot.select.dot.class.from.type.variable");
++        return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(operand).descriptionAndTooltip(description).create();
++    }
++    if (type.getParameters().length > 0) {
++        return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(operand).descriptionAndTooltip("Cannot select from parameterized type").create();
+     }
+     return null;
+ }
+\ No newline at end of file

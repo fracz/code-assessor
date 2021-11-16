@@ -1,0 +1,12 @@
+diff --git a/7cc0a29598a433d6addea6dc3b36395191ed3da8 b/2bdda9df0f4642bc9bf7b75f5aab486aac2cee69
+index 7cc0a29598..2bdda9df0f 100644
+--- a/7cc0a29598a433d6addea6dc3b36395191ed3da8
++++ b/2bdda9df0f4642bc9bf7b75f5aab486aac2cee69
+@@ -1,4 +1,5 @@
+ @Override
+ public void generateBody(@NotNull Printer p, @NotNull String generatorClassFqName) {
+-    p.println("JetTestUtils.assertAllTestsPresentByMetadata(" + "this.getClass(), " + "\"", generatorClassFqName, "\", " + "new File(\"", JetTestUtils.getFilePath(rootFile) + "\"), \"", extension, "\", ", recursive, ");");
++    String assertTestsPresentStr = String.format("JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), \"%s\", new File(\"%s\"), \"%s\", %s);", generatorClassFqName, JetTestUtils.getFilePath(rootFile), extension, recursive);
++    p.println(assertTestsPresentStr);
+ }
+\ No newline at end of file

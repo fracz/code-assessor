@@ -1,0 +1,20 @@
+diff --git a/336d1d58945a12b10f163131642b1dbc4d58eea8 b/7340a8f766fd6caa327c6e0df9cee602317b2bc8
+index 336d1d5894..7340a8f766 100644
+--- a/336d1d58945a12b10f163131642b1dbc4d58eea8
++++ b/7340a8f766fd6caa327c6e0df9cee602317b2bc8
+@@ -1,10 +1,10 @@
+ private void shiftRows(@NotNull RowData relative, int delta) {
+     for (RowData row : curRows) {
+-        if (row.visualNumber >= relative.visualNumber) {
+-            row.visualNumber += delta;
++        if (row.getVisualNumber() >= relative.getVisualNumber()) {
++            row.setVisualNumber(row.getVisualNumber() + delta);
+         }
+-        if (row.rowNumber >= relative.rowNumber) {
+-            row.rowNumber += delta;
++        if (row.getRowNumber() >= relative.getRowNumber()) {
++            row.setRowNumber(row.getRowNumber() + delta);
+         }
+     }
+ }
+\ No newline at end of file

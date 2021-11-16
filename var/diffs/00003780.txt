@@ -1,0 +1,26 @@
+diff --git a/280ac5a91cacc1ae5ea158b87503d290f43197ad b/f3d566d416b9f0ff0a3dc2f63d1b1aa4eb536a9c
+index 280ac5a91c..f3d566d416 100644
+--- a/280ac5a91cacc1ae5ea158b87503d290f43197ad
++++ b/f3d566d416b9f0ff0a3dc2f63d1b1aa4eb536a9c
+@@ -1,18 +1,7 @@
+ protected final void initRootNode() {
+-    final Activatable activatable = new Activatable() {
+-
+-        public void showNotify() {
+-            if (!myRootNodeWasInitialized) {
+-                initRootNodeNowIfNeeded(new TreeUpdatePass(getRootNode()));
+-            }
+-        }
+-
+-        public void hideNotify() {
+-        }
+-    };
+     if (myUpdateIfInactive || ApplicationManager.getApplication().isUnitTestMode()) {
+-        activatable.showNotify();
++        activate(false);
+     } else {
+-        new UiNotifyConnector.Once(myTree, activatable);
++        myUpdateFromRootRequested = true;
+     }
+ }
+\ No newline at end of file

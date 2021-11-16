@@ -1,0 +1,29 @@
+diff --git a/fcbadce8632550b2b8abc3765051a344eaae23db b/275b836bfaf9e89681b8ce6476116e2b1dc6ebc5
+index fcbadce863..275b836bfa 100644
+--- a/fcbadce8632550b2b8abc3765051a344eaae23db
++++ b/275b836bfaf9e89681b8ce6476116e2b1dc6ebc5
+@@ -1,15 +1,12 @@
+ /**
+- * Sets a {@link Bundle} that will be passed to subsequent calls to
+- * {@link android.service.autofill.AutoFillService} methods such as
+- * {@link android.service.autofill.AutoFillService#onSaveRequest(android.app.assist.AssistStructure,
+- * Bundle, android.service.autofill.SaveCallback)}, using
+- * {@link android.service.autofill.AutoFillService#EXTRA_DATASET_EXTRAS} as the key.
+- *
+- * <p>It can be used to keep service state in between calls.
++ * Sets a {@link Bundle} that will be passed to subsequent APIs that
++ * manipulate this dataset. For example, they are passed in as {@link
++ * android.content.Intent#EXTRA_AUTO_FILL_EXTRAS extras} to your
++ * authentication flow.
+  */
+-public Builder setExtras(Bundle extras) {
+-    // TODO(b/33197203): make sure that either this method or the requires-Authentication
+-    // ones are called, but not both
+-    mExtras = Objects.requireNonNull(extras, "extras cannot be null");
++@NonNull
++public Builder setExtras(@Nullable Bundle extras) {
++    throwIfDestroyed();
++    mExtras = extras;
+     return this;
+ }
+\ No newline at end of file

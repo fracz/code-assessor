@@ -1,0 +1,14 @@
+diff --git a/c9a9d7a3824658331fb3f5fa0b2c9ac662bfb416 b/bdbb8b7ebe150b08e1f06fbd6b46d9dfb9b41195
+index c9a9d7a382..bdbb8b7ebe 100644
+--- a/c9a9d7a3824658331fb3f5fa0b2c9ac662bfb416
++++ b/bdbb8b7ebe150b08e1f06fbd6b46d9dfb9b41195
+@@ -1,6 +1,6 @@
+-private static List<ColumnDef> columnDefinitionsToThrift(Collection<ColumnDefinition> columns) {
++private static List<ColumnDef> columnDefinitionsToThrift(CFMetaData metadata, Collection<ColumnDefinition> columns) {
+     List<ColumnDef> thriftDefs = new ArrayList<>(columns.size());
+-    for (ColumnDefinition def : columns) if (def.kind == ColumnDefinition.Kind.REGULAR)
++    for (ColumnDefinition def : columns) if (def.isPartOfCellName(metadata.isCQLTable(), metadata.isSuper()))
+         thriftDefs.add(ThriftConversion.toThrift(def));
+     return thriftDefs;
+ }
+\ No newline at end of file

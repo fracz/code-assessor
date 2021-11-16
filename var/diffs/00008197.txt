@@ -1,0 +1,18 @@
+diff --git a/eed99e8b7775e37405a4a7bba2909a2f50170d05 b/8414e259ef566ceb81e69a4be3dc56e602b013b3
+index eed99e8b77..8414e259ef 100644
+--- a/eed99e8b7775e37405a4a7bba2909a2f50170d05
++++ b/8414e259ef566ceb81e69a4be3dc56e602b013b3
+@@ -1,11 +1,6 @@
+ @NotNull
+ public static File getTempDirectory() {
+     File dir = new File(FileUtil.getTempDirectory());
+-    if (SystemInfo.isWindows && dir.getPath().contains("~")) {
+-        try {
+-            dir = dir.getCanonicalFile();
+-        } catch (IOException ignored) {
+-        }
+-    }
++    dir = expandWindowsPath(dir);
+     return dir;
+ }
+\ No newline at end of file

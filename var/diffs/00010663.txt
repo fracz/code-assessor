@@ -1,0 +1,13 @@
+diff --git a/715b127fe527cc65f06d5d169daa1a56a9888721 b/600fa1d85831619d7f2ee9aec6ae930d8ca72a1c
+index 715b127fe5..600fa1d858 100644
+--- a/715b127fe527cc65f06d5d169daa1a56a9888721
++++ b/600fa1d85831619d7f2ee9aec6ae930d8ca72a1c
+@@ -1,5 +1,4 @@
+-protected void createClickMenu(@NotNull Point point, @NotNull DefaultActionGroup group) {
++protected ListPopup createClickMenu(@NotNull DefaultActionGroup group) {
+     final DataContext context = DataManager.getInstance().getDataContext(this);
+-    final ListPopup popup = JBPopupFactory.getInstance().createActionGroupPopup(null, group, context, JBPopupFactory.ActionSelectionAid.MNEMONICS, true);
+-    popup.show(RelativePoint.fromScreen(point));
++    return JBPopupFactory.getInstance().createActionGroupPopup(null, group, context, JBPopupFactory.ActionSelectionAid.MNEMONICS, true);
+ }
+\ No newline at end of file

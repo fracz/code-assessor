@@ -1,0 +1,15 @@
+diff --git a/3baf1ee33ed8dbc210b248a6a1384a03fe219373 b/f28670e1f1450471a7b9eec9162418b1d16dc0c8
+index 3baf1ee33e..f28670e1f1 100644
+--- a/3baf1ee33ed8dbc210b248a6a1384a03fe219373
++++ b/f28670e1f1450471a7b9eec9162418b1d16dc0c8
+@@ -1,7 +1,7 @@
+ @Test
+ public void testAffectedEntryForRenameChange() {
+-    root.createFile(42, "name", null, -1);
++    createFile(root, 42, "name", null, -1);
+     StructuralChange c = new RenameChange("name", "new name");
+     c.applyTo(root);
+-    assertEquals(list(idp(42)), c.getAffectedIdPaths());
++    assertEquals(list(idp(-1, 42)), c.getAffectedIdPaths());
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/a6d0e31cf4b0a55648882cd0fbf5babea9d50bac b/7ccc0d093afdc6b9625037d6321e61824bba65e5
+index a6d0e31cf4..7ccc0d093a 100644
+--- a/a6d0e31cf4b0a55648882cd0fbf5babea9d50bac
++++ b/7ccc0d093afdc6b9625037d6321e61824bba65e5
+@@ -1,8 +1,8 @@
+-String resolveIfAbsent(String indexOrAlias, IndicesOptions indicesOptions) {
+-    String concreteIndex = indices.get(indexOrAlias);
++String resolveIfAbsent(DocumentRequest request) {
++    String concreteIndex = indices.get(request.index());
+     if (concreteIndex == null) {
+-        concreteIndex = metaData.concreteSingleIndex(indexOrAlias, indicesOptions);
+-        indices.put(indexOrAlias, concreteIndex);
++        concreteIndex = indexNameExpressionResolver.concreteSingleIndex(state, request);
++        indices.put(request.index(), concreteIndex);
+     }
+     return concreteIndex;
+ }
+\ No newline at end of file

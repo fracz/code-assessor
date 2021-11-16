@@ -1,0 +1,26 @@
+diff --git a/d63a3298357f1b0e0a43daf0fe80cd971255bc51 b/db35449af4f0f4049b3ee27e8cd03c61f3c8ec85
+index d63a329835..db35449af4 100644
+--- a/d63a3298357f1b0e0a43daf0fe80cd971255bc51
++++ b/db35449af4f0f4049b3ee27e8cd03c61f3c8ec85
+@@ -1,15 +1,16 @@
+ /**
+  * Emit the path taken from start to current element.
+  *
+- * @return
+- * @throws IOException
++ * @return the extended FaunusPipeline
+  */
+-public FaunusPipeline path() throws IOException {
++public FaunusPipeline path() {
+     this.state.checkLocked();
+     this.state.checkProperty();
+-    this.compiler.pathMap(this.state.getElementType());
++    final Configuration configuration = new Configuration();
++    configuration.setClass(PathMap.CLASS, this.state.getElementType(), Element.class);
++    this.compiler.addMap(PathMap.Map.class, NullWritable.class, Text.class, configuration);
+     this.compiler.setPathEnabled(true);
+     this.state.lock();
+     makeMapReduceString(PathMap.class);
+     return this;
+ }
+\ No newline at end of file

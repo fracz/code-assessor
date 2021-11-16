@@ -1,0 +1,13 @@
+diff --git a/84c2fdd4833dfaccdd27438d2b65fc09701e4753 b/7084633bb416531b99bfc63c7227e9e663ad6d53
+index 84c2fdd483..7084633bb4 100644
+--- a/84c2fdd4833dfaccdd27438d2b65fc09701e4753
++++ b/7084633bb416531b99bfc63c7227e9e663ad6d53
+@@ -1,3 +1,5 @@
+-Collection<Pair<MethodRepr, ClassRepr>> findOverriddenMethods(final MethodRepr m, final ClassRepr c) {
+-    return findOverridenMethods(m, c, false);
++private Collection<Pair<MethodRepr, ClassRepr>> findOverriddenMethods(final MethodRepr m, final ClassRepr c) {
++    final Collection<Pair<MethodRepr, ClassRepr>> result = new HashSet<Pair<MethodRepr, ClassRepr>>();
++    addOverridenMethods(c, MethodRepr.equalByJavaRules(m), result);
++    return result;
+ }
+\ No newline at end of file

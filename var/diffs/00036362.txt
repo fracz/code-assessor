@@ -1,0 +1,14 @@
+diff --git a/ed14237d16eb5d474c9bf180614195c799bda3b0 b/b561de3b2c771608ff62af32e87a18ca205cd313
+index ed14237d16..b561de3b2c 100644
+--- a/ed14237d16eb5d474c9bf180614195c799bda3b0
++++ b/b561de3b2c771608ff62af32e87a18ca205cd313
+@@ -1,7 +1,4 @@
+ protected Set<String> stringSetValueOf(String value, String defaultValue) {
+     value = (value == null ? defaultValue : value);
+-    StringTokenizer stringTokenizer = new StringTokenizer(value, ",");
+-    Set<String> result = new HashSet<String>();
+-    while (stringTokenizer.hasMoreElements()) result.add(stringTokenizer.nextToken().trim());
+-    return result;
++    return new HashSet<String>(Arrays.asList(value.split(",")));
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/fa61f874355df01846e09f3ddc8e5dfbb08517dc b/fc2cb37571369343fd20b4ae22a3a5268bc7f06a
+index fa61f87435..fc2cb37571 100644
+--- a/fa61f874355df01846e09f3ddc8e5dfbb08517dc
++++ b/fc2cb37571369343fd20b4ae22a3a5268bc7f06a
+@@ -1,9 +1,9 @@
+ @Test
+ public void shouldIterateAcrossWindows() throws Exception {
+-    cachingStore.put("1", "a", DEFAULT_TIMESTAMP);
+-    cachingStore.put("1", "b", DEFAULT_TIMESTAMP + WINDOW_SIZE);
+-    final WindowStoreIterator<String> fetch = cachingStore.fetch("1", DEFAULT_TIMESTAMP, DEFAULT_TIMESTAMP + WINDOW_SIZE);
+-    assertEquals(KeyValue.pair(DEFAULT_TIMESTAMP, "a"), fetch.next());
+-    assertEquals(KeyValue.pair(DEFAULT_TIMESTAMP + WINDOW_SIZE, "b"), fetch.next());
++    cachingStore.put(bytesKey("1"), bytesValue("a"), DEFAULT_TIMESTAMP);
++    cachingStore.put(bytesKey("1"), bytesValue("b"), DEFAULT_TIMESTAMP + WINDOW_SIZE);
++    final WindowStoreIterator<byte[]> fetch = cachingStore.fetch(bytesKey("1"), DEFAULT_TIMESTAMP, DEFAULT_TIMESTAMP + WINDOW_SIZE);
++    verifyKeyValue(fetch.next(), DEFAULT_TIMESTAMP, "a");
++    verifyKeyValue(fetch.next(), DEFAULT_TIMESTAMP + WINDOW_SIZE, "b");
+     assertFalse(fetch.hasNext());
+ }
+\ No newline at end of file

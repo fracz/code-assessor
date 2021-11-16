@@ -1,0 +1,16 @@
+diff --git a/c44056a354d0f7f45279ac623a299e21a1d40118 b/04798271e2869903e520eb29efcd893c8cfbc114
+index c44056a354..04798271e2 100644
+--- a/c44056a354d0f7f45279ac623a299e21a1d40118
++++ b/04798271e2869903e520eb29efcd893c8cfbc114
+@@ -1,9 +1,4 @@
+ @Override
+ public boolean containsAll(Collection<?> collection) {
+-    for (Object element : collection) {
+-        if (!contains(element)) {
+-            return false;
+-        }
+-    }
+-    return true;
++    return containsAllImpl(this, collection);
+ }
+\ No newline at end of file

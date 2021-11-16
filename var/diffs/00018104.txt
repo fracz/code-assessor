@@ -1,0 +1,22 @@
+diff --git a/7165ab5f7eb74b17d618b9c5930d71424ba687ed b/b31312aac3f78eca8409da6041a11bdbf2af4b7f
+index 7165ab5f7e..b31312aac3 100644
+--- a/7165ab5f7eb74b17d618b9c5930d71424ba687ed
++++ b/b31312aac3f78eca8409da6041a11bdbf2af4b7f
+@@ -1,11 +1,14 @@
+ public void write(JSONWriter writer, Properties options) throws JSONException {
+-    SimpleDateFormat sdf = (SimpleDateFormat) SimpleDateFormat.getDateTimeInstance();
+     writer.object();
+     writer.key("id");
+     writer.value(id);
+     writer.key("description");
+     writer.value(description);
+     writer.key("time");
+-    writer.value(sdf.format(time));
++    writer.value(ParsingUtilities.dateToString(time));
++    if ("save".equals(options.getProperty("mode")) && operation != null) {
++        writer.key("operation");
++        operation.write(writer, options);
++    }
+     writer.endObject();
+ }
+\ No newline at end of file

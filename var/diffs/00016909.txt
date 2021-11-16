@@ -1,0 +1,22 @@
+diff --git a/888d9028075d215ac8c7ffc4b217fd27ad6ecf75 b/1f85ba4aa42d91bda6a996893dc78fe56ca6b79f
+index 888d902807..1f85ba4aa4 100644
+--- a/888d9028075d215ac8c7ffc4b217fd27ad6ecf75
++++ b/1f85ba4aa42d91bda6a996893dc78fe56ca6b79f
+@@ -1,13 +1,13 @@
+ @Override
+ protected void configureSpecificCompilerArguments(@NotNull K2MetadataCompilerArguments arguments, @NotNull List<File> sourceRoots) throws MojoExecutionException {
+     String productionOutput = output;
+     classpath = testClasspath;
+     // arguments.friendPaths = new String[] { productionOutput };
+     output = testOutput;
+     super.configureSpecificCompilerArguments(arguments, sourceRoots);
+-    if (arguments.classpath == null) {
+-        arguments.classpath = productionOutput;
++    if (arguments.getClasspath() == null) {
++        arguments.setClasspath(productionOutput);
+     } else {
+-        arguments.classpath = arguments.classpath + File.pathSeparator + productionOutput;
++        arguments.setClasspath(arguments.getClasspath() + File.pathSeparator + productionOutput);
+     }
+ }
+\ No newline at end of file

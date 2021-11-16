@@ -1,0 +1,20 @@
+diff --git a/6fbaeff27bb982e385f11b46b7e1d012357a4b96 b/b9cec6e444ed3996430747b842ec6c2c91e46134
+index 6fbaeff27b..b9cec6e444 100644
+--- a/6fbaeff27bb982e385f11b46b7e1d012357a4b96
++++ b/b9cec6e444ed3996430747b842ec6c2c91e46134
+@@ -1,13 +1,3 @@
+ public void mousePressed(MouseEvent e) {
+-    if (selectedPanel != ContributionPanel.this) {
+-        ContributionPanel lastSelected = selectedPanel;
+-        selectedPanel = ContributionPanel.this;
+-        if (lastSelected != null)
+-            lastSelected.updateInteractiveComponents();
+-        updateInteractiveComponents();
+-        updateColors();
+-        getParent().requestFocusInWindow();
+-    } else {
+-        doOpenHyperLink = true;
+-    }
++    setSelectedPanel(ContributionPanel.this);
+ }
+\ No newline at end of file

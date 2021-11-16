@@ -1,0 +1,11 @@
+diff --git a/7b05398ccb2a93c46df8326184fce91a8ce746f1 b/f7bcda1427862c0e48bb47c125ef8d95911f3d2d
+index 7b05398ccb..f7bcda1427 100644
+--- a/7b05398ccb2a93c46df8326184fce91a8ce746f1
++++ b/f7bcda1427862c0e48bb47c125ef8d95911f3d2d
+@@ -1,3 +1,3 @@
+-private boolean isSuccess(ClientResponse response) {
+-    return response.getStatus() < 200 || response.getStatus() >= 300;
++private boolean isSuccess(int statusCode) {
++    return statusCode >= 200 && statusCode < 300;
+ }
+\ No newline at end of file

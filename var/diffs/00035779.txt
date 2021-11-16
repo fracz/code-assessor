@@ -1,0 +1,13 @@
+diff --git a/9ece44c183910579d868bbce4d2acdd13d6e4d58 b/4394edbabb280c1f02f597411eb7ab1df7c689eb
+index 9ece44c183..4394edbabb 100644
+--- a/9ece44c183910579d868bbce4d2acdd13d6e4d58
++++ b/4394edbabb280c1f02f597411eb7ab1df7c689eb
+@@ -1,4 +1,5 @@
+ public <T> T mock(Class<T> classToMock, MockSettings mockSettings) {
+-    mockingProgress.validateState();
+-    return mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings);
++    T mock = mockUtil.createMock(classToMock, (MockSettingsImpl) mockSettings);
++    mockingProgress.mockingStarted(mock, classToMock, mockSettings);
++    return mock;
+ }
+\ No newline at end of file

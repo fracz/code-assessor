@@ -1,0 +1,20 @@
+diff --git a/8d597687febe948e87c4f878f48fbedd89f8c17f b/04fb0592329db354a8e6f8b96334a65303cab9e1
+index 8d597687fe..04fb059232 100644
+--- a/8d597687febe948e87c4f878f48fbedd89f8c17f
++++ b/04fb0592329db354a8e6f8b96334a65303cab9e1
+@@ -1,12 +1,11 @@
+ protected long getHighestUid() throws MessagingException {
+     try {
+-        String command = "UID SEARCH *:*";
+-        List<ImapResponse> responses = executeSimpleCommand(command);
+-        SearchResponse searchResponse = SearchResponse.parse(responses);
++        UidSearchCommand searchCommand = new UidSearchCommand.Builder().onlyHighestId(true).build();
++        UidSearchResponse searchResponse = connection.executeSelectedStateCommand(searchCommand);
+         return extractHighestUid(searchResponse);
+     } catch (NegativeImapResponseException e) {
+         return -1L;
+     } catch (IOException ioe) {
+         throw ioExceptionHandler(connection, ioe);
+     }
+ }
+\ No newline at end of file

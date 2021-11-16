@@ -1,0 +1,12 @@
+diff --git a/50ad0490a0b808377769007ee38edc9f63bf3800 b/d09b633ffcaaebf066d41ea07fc1b2b0d5559e84
+index 50ad0490a0..d09b633ffc 100644
+--- a/50ad0490a0b808377769007ee38edc9f63bf3800
++++ b/d09b633ffcaaebf066d41ea07fc1b2b0d5559e84
+@@ -1,5 +1,5 @@
+ @Nullable
+ public static DiffPanelImpl fromDataContext(DataContext dataContext) {
+-    DiffViewer viewer = (DiffViewer) dataContext.getData(DataConstants.DIFF_VIEWER);
++    DiffViewer viewer = PlatformDataKeys.DIFF_VIEWER.getData(dataContext);
+     return viewer instanceof DiffPanelImpl ? (DiffPanelImpl) viewer : null;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/158c7bc9b0ba497b97ab7c2f5379f5319968bd64 b/b332bfc3fdeb70261484df88bcb7c76f04836ec6
+index 158c7bc9b0..b332bfc3fd 100644
+--- a/158c7bc9b0ba497b97ab7c2f5379f5319968bd64
++++ b/b332bfc3fdeb70261484df88bcb7c76f04836ec6
+@@ -1,8 +1,8 @@
+ /**
+  * Return whether this window is wanting to have a translation
+  * animation applied to it for an in-progress move.  (Only makes
+  * sense to call from performLayoutAndPlaceSurfacesLockedInner().)
+  */
+ boolean shouldAnimateMove() {
+-    return mContentChanged && !mExiting && !mLastHidden && !mService.mDisplayFrozen && (mFrame.top != mLastFrame.top || mFrame.left != mLastFrame.left) && (mAttachedWindow == null || !mAttachedWindow.shouldAnimateMove()) && mService.mPolicy.isScreenOnFully();
++    return mContentChanged && !mExiting && !mLastHidden && mService.okToDisplay() && (mFrame.top != mLastFrame.top || mFrame.left != mLastFrame.left) && (mAttachedWindow == null || !mAttachedWindow.shouldAnimateMove());
+ }
+\ No newline at end of file

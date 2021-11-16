@@ -1,0 +1,17 @@
+diff --git a/35aa1bb310fa2030fe781e6a199927155dc26e7d b/8f806c678fbfd897c1607aa95ca0133865309292
+index 35aa1bb310..8f806c678f 100644
+--- a/35aa1bb310fa2030fe781e6a199927155dc26e7d
++++ b/8f806c678fbfd897c1607aa95ca0133865309292
+@@ -1,9 +1,6 @@
+ @Override
+ public void run() {
+-    INDArray features = initFeatures.get(i2);
+-    int nearestCentroidIndex = nearestCentroid(features);
+-    INDArray nearestCentroid = centroids.getRow(nearestCentroidIndex);
+-    sum.getAndAdd((int) Math.pow(getDistance(features, nearestCentroid), 2));
+-    dxs.putScalar(i2, sum.get());
++    INDArray point = points.get(i2);
++    dxs.putScalar(i2, (int) Math.pow(clusterSet.getDistanceFromNearestCluster(point), 2));
+     latch.countDown();
+ }
+\ No newline at end of file

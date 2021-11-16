@@ -1,0 +1,19 @@
+diff --git a/3b67fbbd44592481335d01dd6f8f40b6ee35c571 b/86537ef2e59a917061933b327dea91ab89b8498b
+index 3b67fbbd44..86537ef2e5 100644
+--- a/3b67fbbd44592481335d01dd6f8f40b6ee35c571
++++ b/86537ef2e59a917061933b327dea91ab89b8498b
+@@ -1,12 +1,11 @@
+ @Override
+-public INDArray preProcess(INDArray input, Layer layer) {
++public INDArray preProcess(INDArray input, int miniBatchSize) {
+     if (input.rank() != 4)
+         throw new IllegalArgumentException("Invalid input: expect CNN activations with rank 4 (received input with shape " + Arrays.toString(input.shape()) + ")");
+     // Input: 4d activations (CNN)
+     // Output: 3d activations (RNN)
+     // [timeSeriesLength*miniBatchSize, numChannels, inputHeight, inputWidth]
+     int[] shape = input.shape();
+-    int miniBatchSize = layer.getInputMiniBatchSize();
+     INDArray reshaped = input.reshape(miniBatchSize, shape[0] / miniBatchSize, product);
+     return reshaped.permute(0, 2, 1);
+ }
+\ No newline at end of file

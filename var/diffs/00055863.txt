@@ -1,0 +1,14 @@
+diff --git a/3a6d6689237f66ef940133cfde5363cd0ded39cc b/092d0d36c3beeee787d55702a3738ab68cc878f9
+index 3a6d668923..092d0d36c3 100644
+--- a/3a6d6689237f66ef940133cfde5363cd0ded39cc
++++ b/092d0d36c3beeee787d55702a3738ab68cc878f9
+@@ -1,6 +1,6 @@
+ @Test
+ public void emptyBodyWithFlux() throws Exception {
+     ResolvableType type = forClassWithGenerics(Flux.class, String.class);
+-    TestSubscriber.subscribe(resolveValueWithEmptyBody(type, true)).assertNoValues().assertError(ServerWebInputException.class);
+-    TestSubscriber.subscribe(resolveValueWithEmptyBody(type, false)).assertNoValues().assertComplete();
++    ScriptedSubscriber.<Void>create().expectNextCount(0).expectError(ServerWebInputException.class).verify((Flux<Void>) resolveValueWithEmptyBody(type, true));
++    ScriptedSubscriber.<Void>create().expectNextCount(0).expectComplete().verify((Flux<Void>) resolveValueWithEmptyBody(type, false));
+ }
+\ No newline at end of file

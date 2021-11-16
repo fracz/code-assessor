@@ -1,0 +1,19 @@
+diff --git a/802822fdda1dcc16e426a788a8f6d64c0062dd66 b/8b26c705c4307a8740605219e7f6a1841d7f6c6c
+index 802822fdda..8b26c705c4 100644
+--- a/802822fdda1dcc16e426a788a8f6d64c0062dd66
++++ b/8b26c705c4307a8740605219e7f6a1841d7f6c6c
+@@ -1,11 +1,11 @@
+ private void addLibraryDependencyIfNeeded(MavenDomProjectModel domModel) {
+     for (MavenDomDependency dependency : domModel.getDependencies().getDependencies()) {
+-        if (getLibraryId().equals(dependency.getArtifactId().getStringValue())) {
++        if (libraryId.equals(dependency.getArtifactId().getStringValue())) {
+             return;
+         }
+     }
+     MavenDomDependency dependency = MavenDomUtil.createDomDependency(domModel, null);
+     dependency.getGroupId().setStringValue("org.jetbrains.kotlin");
+-    dependency.getArtifactId().setStringValue(getLibraryId());
++    dependency.getArtifactId().setStringValue(libraryId);
+     dependency.getVersion().setStringValue("${" + KOTLIN_VERSION_PROPERTY + "}");
+ }
+\ No newline at end of file

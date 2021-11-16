@@ -1,0 +1,23 @@
+diff --git a/ea16bec1d87a5870357acf6eb34b2f189e6c4316 b/9af71f6492e0220179b95fc62c093390dacd2b28
+index ea16bec1d8..9af71f6492 100644
+--- a/ea16bec1d87a5870357acf6eb34b2f189e6c4316
++++ b/9af71f6492e0220179b95fc62c093390dacd2b28
+@@ -1,9 +1,12 @@
+ public boolean apply(Mutation mutation) {
+-    for (ColumnFamily cf : mutation.getColumnFamilies()) {
+-        if (cf.getColumn(Util.cellname("commit1")) != null)
+-            commitLogMessageFound = true;
+-        if (cf.getColumn(Util.cellname("commit2")) != null)
+-            noCommitLogMessageFound = true;
++    for (PartitionUpdate upd : mutation.getPartitionUpdates()) {
++        Row r = upd.getRow(new SimpleClustering(ByteBufferUtil.bytes("c")));
++        if (r != null) {
++            if (r.getCell(withCommit) != null)
++                commitLogMessageFound = true;
++            if (r.getCell(withoutCommit) != null)
++                noCommitLogMessageFound = true;
++        }
+     }
+     return true;
+ }
+\ No newline at end of file

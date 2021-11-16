@@ -1,0 +1,22 @@
+diff --git a/9dc87fd93626ca3bace6814baec6cc717a4668b1 b/66c791df286cc59d93914354e13cb33a14cd0b8b
+index 9dc87fd936..66c791df28 100644
+--- a/9dc87fd93626ca3bace6814baec6cc717a4668b1
++++ b/66c791df286cc59d93914354e13cb33a14cd0b8b
+@@ -1,14 +1,14 @@
+ @Override
+-public RenderingState draw(AbsDisplayer<?> displayer) {
++public RenderingState draw(AbsDisplayer displayer) {
+     RenderingState result = super.draw(displayer);
+     synchronized (mDrawingNotify) {
+         mDrawingNotify.notify();
+     }
+     if (result != null && mCacheManager != null) {
+         if (result.incrementCount < -20) {
+             mCacheManager.requestClearTimeout();
+-            mCacheManager.requestBuild(-DanmakuFactory.MAX_DANMAKU_DURATION);
++            mCacheManager.requestBuild(-mContext.mDanmakuFactory.MAX_DANMAKU_DURATION);
+         }
+     }
+     return result;
+ }
+\ No newline at end of file

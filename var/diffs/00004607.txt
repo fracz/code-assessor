@@ -1,0 +1,17 @@
+diff --git a/9dc926f703ddb311fc4d064abfb1e32536628938 b/313f9816a223b7a9629fafc3209c645df28f6c21
+index 9dc926f703..313f9816a2 100644
+--- a/9dc926f703ddb311fc4d064abfb1e32536628938
++++ b/313f9816a223b7a9629fafc3209c645df28f6c21
+@@ -1,10 +1,9 @@
+-public static void create(IdeaGateway gw, Revision left, Revision right, String filePath, boolean isReverse) throws IOException, VcsException {
+-    List<Change> changes = getChangesBetween(left, right);
++public static void create(IdeaGateway gw, List<Change> changes, String filePath, boolean isReverse) throws IOException, VcsException {
+     Writer writer = new OutputStreamWriter(new FileOutputStream(filePath));
+     try {
+         List<FilePatch> patches = PatchBuilder.buildPatch(changes, gw.getBaseDir(), false, isReverse);
+         UnifiedDiffWriter.write(patches, writer);
+     } finally {
+         writer.close();
+     }
+ }
+\ No newline at end of file

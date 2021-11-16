@@ -1,0 +1,29 @@
+diff --git a/6d0b54fcd4dcf9265115e4afce9fa9d07db3affd b/0f5869b169d058e984aa726a7f03b65a3e0d18dc
+index 6d0b54fcd4..0f5869b169 100644
+--- a/6d0b54fcd4dcf9265115e4afce9fa9d07db3affd
++++ b/0f5869b169d058e984aa726a7f03b65a3e0d18dc
+@@ -1,18 +1,18 @@
+ protected void resetData() {
+-    mySelectedNodes = new ArrayList();
+-    myNodeToParentMap = new HashMap<DefaultMutableTreeNode, DefaultMutableTreeNode>();
+-    myElementToNodeMap = new HashMap();
+-    myClassNodes = new ArrayList<ElementNode>();
++    mySelectedNodes.clear();
++    myNodeToParentMap.clear();
++    myElementToNodeMap.clear();
++    myClassNodes.clear();
+     ApplicationManager.getApplication().runReadAction(new Runnable() {
+
+         public void run() {
+             myTreeModel = buildModel();
+         }
+     });
+     myTree.setModel(myTreeModel);
+-    expandAll();
++    TreeUtil.expandAll(myTree);
+     myCopyJavadocCheckbox = new JCheckBox(IdeBundle.message("checkbox.copy.javadoc"));
+     if (myIsInsertOverrideVisible) {
+         myInsertOverrideAnnotationCheckbox = new JCheckBox(IdeBundle.message("checkbox.insert.at.override"));
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/6dec5202006eb2c15b547a08ae66d896ebdc217f b/fc1a75f87209a609c4fda90521668938eeccfc67
+index 6dec520200..fc1a75f872 100644
+--- a/6dec5202006eb2c15b547a08ae66d896ebdc217f
++++ b/fc1a75f87209a609c4fda90521668938eeccfc67
+@@ -1,6 +1,5 @@
+-private Cell deleted(String name, int localDeletionTime, long timestamp, boolean nativeCell) {
+-    DeletedCell cell = new BufferDeletedCell(Util.cellname(name), localDeletionTime, timestamp);
+-    if (nativeCell)
+-        cell = new NativeDeletedCell(allocator, order.getCurrent(), cell);
+-    return cell;
++private Cell deleted(CFMetaData cfm, String columnName, String value, int localDeletionTime, long timestamp) {
++    ColumnDefinition cdef = cfm.getColumnDefinition(ByteBufferUtil.bytes(columnName));
++    LivenessInfo info = SimpleLivenessInfo.forDeletion(timestamp, localDeletionTime);
++    return new TestCell(cdef, ByteBufferUtil.bytes(value), info);
+ }
+\ No newline at end of file

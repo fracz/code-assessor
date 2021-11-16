@@ -1,0 +1,25 @@
+diff --git a/41502a1c9093f25a1d316bcb1beaed90f6ff3a4e b/c30c47d9be1b865b9403dc6f5992ec6967ad4f80
+index 41502a1c90..c30c47d9be 100644
+--- a/41502a1c9093f25a1d316bcb1beaed90f6ff3a4e
++++ b/c30c47d9be1b865b9403dc6f5992ec6967ad4f80
+@@ -1,11 +1,15 @@
+ private void close() {
+-    LOG.assertTrue(!myIsClosed);
+-    myIsClosed = true;
++    synchronized (this) {
++        if (isClosed()) {
++            return;
++        }
++        myIsClosed = true;
++    }
++    // the thread will try to read from the closed (and nulled) stream
+     try {
+         myReader.close();
+     } catch (IOException e1) {
+     // supressed
+-    } finally {
+-        myNotificationQueue.offer("");
+     }
++    checkTextAvailable();
+ }
+\ No newline at end of file

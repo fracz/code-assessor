@@ -1,0 +1,13 @@
+diff --git a/b32715fa8b300095ceb92916370dd18bd05b45e3 b/386940024f9d3031c4594e08d25aca033a598164
+index b32715fa8b..386940024f 100644
+--- a/b32715fa8b300095ceb92916370dd18bd05b45e3
++++ b/386940024f9d3031c4594e08d25aca033a598164
+@@ -1,6 +1,6 @@
+ public IndexRule withOwningConstraint(long constraintId) {
+     if (!isConstraintIndex()) {
+         throw new IllegalStateException(this + " is not a constraint index");
+     }
+-    return constraintIndexRule(getId(), getLabel(), getPropertyKey(), getProviderDescriptor(), constraintId);
++    return constraintIndexRule(getId(), descriptor, getProviderDescriptor(), constraintId);
+ }
+\ No newline at end of file

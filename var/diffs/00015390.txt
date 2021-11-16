@@ -1,0 +1,12 @@
+diff --git a/8f8d9d20c316feb59e6127503c4fb43209cf06b3 b/9fff8f97206d9d335fd4ac1a60a2e8bce7895776
+index 8f8d9d20c3..9fff8f9720 100644
+--- a/8f8d9d20c316feb59e6127503c4fb43209cf06b3
++++ b/9fff8f97206d9d335fd4ac1a60a2e8bce7895776
+@@ -1,4 +1,4 @@
+ @Override
+-public boolean canProcess(String owner, String currentLambdaType) {
+-    return super.canProcess(owner, currentLambdaType) || isRecapturedLambdaType(owner);
++public boolean canProcess(@NotNull String fieldOwner) {
++    return super.canProcess(fieldOwner) || isRecapturedLambdaType(fieldOwner);
+ }
+\ No newline at end of file

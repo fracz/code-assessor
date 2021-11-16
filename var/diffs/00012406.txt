@@ -1,0 +1,25 @@
+diff --git a/0fb647d731505552ec3c91983d55c2703d2377c2 b/da994c384c7fb41cad9af1eafb5ad50b5b0fde5d
+index 0fb647d731..da994c384c 100644
+--- a/0fb647d731505552ec3c91983d55c2703d2377c2
++++ b/da994c384c7fb41cad9af1eafb5ad50b5b0fde5d
+@@ -1,15 +1,17 @@
+ @Override
+ public void run(@NotNull ProgressIndicator indicator) {
+     try {
+         new HgHeadMerger(myProject, hgMergeCommand).merge(mySelectedRepository.getRoot());
+         new HgConflictResolver(myProject, updatedFiles).resolve(mySelectedRepository.getRoot());
+     } catch (VcsException exception) {
++        // myProject couldn't be null, see annotation for Merge action
++        assert myProject != null;
+         if (exception.isWarning()) {
+-            notifier.notifyWarning("Warning during merge", exception.getMessage());
++            VcsNotifier.getInstance(myProject).notifyWarning("Warning during merge", exception.getMessage());
+         } else {
+-            notifier.notifyError(null, "Exception during merge", exception.getMessage());
++            VcsNotifier.getInstance(myProject).notifyError("Exception during merge", exception.getMessage());
+         }
+     } catch (Exception e1) {
+         HgAbstractGlobalAction.handleException(myProject, e1);
+     }
+ }
+\ No newline at end of file

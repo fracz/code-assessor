@@ -1,0 +1,20 @@
+diff --git a/87fbdcb65de03002f291e94258a9575d7e98c68f b/759199abdfb2d5889c6a5ede52cd674f4957f201
+index 87fbdcb65d..759199abdf 100644
+--- a/87fbdcb65de03002f291e94258a9575d7e98c68f
++++ b/759199abdfb2d5889c6a5ede52cd674f4957f201
+@@ -1,12 +1,12 @@
+ public void reset(VirtualFile[] files) {
+     keepSelectionState();
+     clearList();
+     myEnabled = files != null;
+     if (myEnabled) {
+-        for (int i = 0; i < files.length; i++) {
+-            addElement(files[i]);
++        for (VirtualFile file : files) {
++            addElement(file);
+         }
+     }
+     setModified(false);
+     updateButtons();
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/a8847aaff12f44af30acdd5222697064eb427d73 b/02cd4780586fcbf58369e8751e2f84ca5ccaee22
+index a8847aaff1..02cd478058 100644
+--- a/a8847aaff12f44af30acdd5222697064eb427d73
++++ b/02cd4780586fcbf58369e8751e2f84ca5ccaee22
+@@ -1,5 +1,5 @@
+ @Test
+ public void testStart() {
+-    Settings nodeSettings = settingsBuilder().put("plugins." + PluginsService.LOAD_PLUGIN_FROM_CLASSPATH, true).put("cloud.enabled", true).put("discovery.type", "ec2").build();
++    Settings nodeSettings = settingsBuilder().put("plugin.types", CloudAwsPlugin.class.getName()).put("cloud.enabled", true).put("discovery.type", "ec2").build();
+     internalCluster().startNode(nodeSettings);
+ }
+\ No newline at end of file

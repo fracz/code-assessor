@@ -1,0 +1,16 @@
+diff --git a/05884b6f7720796a23f4f6dafb1bb0cf18178eb1 b/681104f92f8a4f50d89e9882002aeefaf27501cc
+index 05884b6f77..681104f92f 100644
+--- a/05884b6f7720796a23f4f6dafb1bb0cf18178eb1
++++ b/681104f92f8a4f50d89e9882002aeefaf27501cc
+@@ -1,8 +1,8 @@
+ public void initialize(OutputStream processIn, InputStream processOut) {
+-    this.processIn = new DataOutputStream(processIn);
+     try {
+-        this.processOut = new BufferedReader(new InputStreamReader(processOut, "UTF-8"));
++        this.processIn = new BufferedWriter(new OutputStreamWriter(processIn, DEFAULT_CHARSET));
++        this.processOut = new BufferedReader(new InputStreamReader(processOut, DEFAULT_CHARSET));
+     } catch (UnsupportedEncodingException e) {
+         throw new RuntimeException(e);
+     }
+ }
+\ No newline at end of file

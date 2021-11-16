@@ -1,0 +1,16 @@
+diff --git a/c4655bebe792dae00315ed4b6a8bd9dffb20a599 b/a60d11280689b55c5a12fdad2a84b10540b112cd
+index c4655bebe7..a60d112806 100644
+--- a/c4655bebe792dae00315ed4b6a8bd9dffb20a599
++++ b/a60d11280689b55c5a12fdad2a84b10540b112cd
+@@ -1,9 +1,9 @@
+ @Override
+ public boolean equals(Object other) {
+     if (this == other)
+         return true;
+     else if (other == null || !getClass().isInstance(other))
+         return false;
+     AbstractMessage msg = (AbstractMessage) other;
+-    return timestampMicro == msg.timestampMicro && senderId.equals(msg.senderId) && content.equals(msg.content);
++    return timestamp.equals(msg.timestamp) && senderId.equals(msg.senderId) && content.equals(msg.content);
+ }
+\ No newline at end of file

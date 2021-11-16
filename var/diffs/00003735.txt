@@ -1,0 +1,17 @@
+diff --git a/52f198641186e50db8b65db7b52da1096c55811d b/7e979f671357bfa0be3924bce19254ee43232472
+index 52f1986411..7e979f6713 100644
+--- a/52f198641186e50db8b65db7b52da1096c55811d
++++ b/7e979f671357bfa0be3924bce19254ee43232472
+@@ -1,9 +1,5 @@
+ @NotNull
+-public List<? extends PsiElement> resolveMember(String name, PyExpression location, AccessDirection direction, PyResolveContext resolveContext) {
++public List<? extends RatedResolveResult> resolveMember(String name, PyExpression location, AccessDirection direction, PyResolveContext resolveContext) {
+     final PsiElement element = myImportedModule.getElementNamed(name);
+-    if (element != null) {
+-        return new SmartList<PsiElement>(element);
+-    } else {
+-        return Collections.emptyList();
+-    }
++    return ResolveResultList.to(element);
+ }
+\ No newline at end of file

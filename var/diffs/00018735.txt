@@ -1,0 +1,19 @@
+diff --git a/dfb0c35da5b2d4680f71622c9caf5ea3fcf25137 b/44200ba531e8c4e498b4667ba33ff60262ef6ee1
+index dfb0c35da5..44200ba531 100644
+--- a/dfb0c35da5b2d4680f71622c9caf5ea3fcf25137
++++ b/44200ba531e8c4e498b4667ba33ff60262ef6ee1
+@@ -1,11 +1,9 @@
+ /* http://code.google.com/p/android/issues/detail?id=4611#c35 */
+ @SuppressWarnings("deprecation")
+ @Override
+ public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+     super.onPreferenceTreeClick(preferenceScreen, preference);
+-    if (preference != null)
+-        if (preference instanceof PreferenceScreen)
+-            if (((PreferenceScreen) preference).getDialog() != null)
+-                ((PreferenceScreen) preference).getDialog().getWindow().getDecorView().setBackgroundDrawable(getActivity().getWindow().getDecorView().getBackground().getConstantState().newDrawable());
++    if (preference != null && preference instanceof PreferenceScreen && ((PreferenceScreen) preference).getDialog() != null)
++        ((PreferenceScreen) preference).getDialog().getWindow().getDecorView().setBackgroundDrawable(getActivity().getWindow().getDecorView().getBackground().getConstantState().newDrawable());
+     return false;
+ }
+\ No newline at end of file

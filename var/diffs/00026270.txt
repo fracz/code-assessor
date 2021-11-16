@@ -1,0 +1,14 @@
+diff --git a/8cd19173f1a4a0a088d692a681383ba54080af64 b/3a22df8da63b015792bc2fb868d3a34766a165a4
+index 8cd19173f1..3a22df8da6 100644
+--- a/8cd19173f1a4a0a088d692a681383ba54080af64
++++ b/3a22df8da63b015792bc2fb868d3a34766a165a4
+@@ -1,7 +1,7 @@
+ /**
+  * Skip analysis time filetype check. Don't use it if avoidable.
+  */
+ public Builder<TYPE> skipAnalysisTimeFileTypeCheck() {
+-    Preconditions.checkState((type == BuildType.LABEL) || (type == BuildType.LABEL_LIST), "must be a label-valued type");
++    Preconditions.checkState(type.getLabelClass() == LabelClass.DEPENDENCY, "must be a label-valued type");
+     return setPropertyFlag(PropertyFlag.SKIP_ANALYSIS_TIME_FILETYPE_CHECK, "skip_analysis_time_filetype_check");
+ }
+\ No newline at end of file

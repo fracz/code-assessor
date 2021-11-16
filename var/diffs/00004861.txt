@@ -1,0 +1,13 @@
+diff --git a/1541920ca1aefcbb8600c2c091db72e2c50b8e44 b/b070d11d409e17d5c0279dd99f8fb274f322fbc3
+index 1541920ca1..b070d11d40 100644
+--- a/1541920ca1aefcbb8600c2c091db72e2c50b8e44
++++ b/b070d11d409e17d5c0279dd99f8fb274f322fbc3
+@@ -1,3 +1,6 @@
+ public void onTextAvailable(final ProcessEvent event, final Key outputType) {
+-    buffer.append(event.getText());
++    if (processor != null) {
++        final String message = event.getText();
++        processor.onTextAvailable(message);
++    }
+ }
+\ No newline at end of file

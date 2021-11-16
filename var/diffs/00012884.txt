@@ -1,0 +1,16 @@
+diff --git a/a847f0c64e7451b6223811b7d93ed757810d447b b/72d80ee3c3293c6ed5c62be5d46112dea30ee4b0
+index a847f0c64e..72d80ee3c3 100644
+--- a/a847f0c64e7451b6223811b7d93ed757810d447b
++++ b/72d80ee3c3293c6ed5c62be5d46112dea30ee4b0
+@@ -1,6 +1,8 @@
+ public void actionPerformed(ActionEvent e) {
+-    final PsiClass psiClass = showClassChooserDialog(project, resolveScope);
++    TreeClassChooser chooser = TreeClassChooserFactory.getInstance(control.getProject()).createInheritanceClassChooser(UIBundle.message("choose.class"), resolveScope, null, true, true, Condition.TRUE);
++    chooser.showDialog();
++    final PsiClass psiClass = chooser.getSelectedClass();
+     if (psiClass != null) {
+-        setValue(getComponent(), psiClass.getQualifiedName());
++        control.setValue(psiClass.getQualifiedName());
+     }
+ }
+\ No newline at end of file

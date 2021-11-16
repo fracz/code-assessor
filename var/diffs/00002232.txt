@@ -1,0 +1,19 @@
+diff --git a/58693948f1f6416b175b54a0aa25a8ac88d77497 b/a63af0ef537120d2212002f8a4114a6a83bafd29
+index 58693948f1..a63af0ef53 100644
+--- a/58693948f1f6416b175b54a0aa25a8ac88d77497
++++ b/a63af0ef537120d2212002f8a4114a6a83bafd29
+@@ -1,12 +1,10 @@
+ protected void doOKAction() {
+     if (!myValidator.isOK(this)) {
+         return;
+     }
+-    if (myCbTypeSpec.isEnabled()) {
+-        GroovyApplicationSettings.getInstance().SPECIFY_VAR_TYPE_EXPLICITLY = myCbTypeSpec.isSelected();
+-    }
++    GroovyApplicationSettings.getInstance().SPECIFY_VAR_TYPE_EXPLICITLY = getSelectedType() != null;
+     if (myCbIsFinal.isEnabled()) {
+         GroovyApplicationSettings.getInstance().INTRODUCE_LOCAL_CREATE_FINALS = myCbIsFinal.isSelected();
+     }
+     super.doOKAction();
+ }
+\ No newline at end of file

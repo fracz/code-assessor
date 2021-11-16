@@ -1,0 +1,11 @@
+diff --git a/815121f44b282fcaa8555f0cec8be50854486b58 b/a9a9a4292e7bb33bdfdc2845ddedda5fb11fcded
+index 815121f44b..a9a9a4292e 100644
+--- a/815121f44b282fcaa8555f0cec8be50854486b58
++++ b/a9a9a4292e7bb33bdfdc2845ddedda5fb11fcded
+@@ -1,4 +1,4 @@
+ public void checkReplacementPattern(Project project, ReplaceOptions options) {
+-    String fileType = options.getMatchOptions().getFileType().getName().toLowerCase();
++    String fileType = getTypeName(options.getMatchOptions().getFileType());
+     throw new UnsupportedPatternException(SSRBundle.message("replacement.not.supported.for.filetype", fileType));
+ }
+\ No newline at end of file

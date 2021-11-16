@@ -1,0 +1,19 @@
+diff --git a/8ae57e40854d56053d12022e9237b912d03025ea b/7f4b01dee7f29ba6418aad3794e0ba2fc6150d48
+index 8ae57e4085..7f4b01dee7 100644
+--- a/8ae57e40854d56053d12022e9237b912d03025ea
++++ b/7f4b01dee7f29ba6418aad3794e0ba2fc6150d48
+@@ -1,10 +1,11 @@
+ @Override
+ public void enterRegion(MethodNode mth, IRegion region) {
+     if (region instanceof LoopRegion) {
+         LoopRegion loop = (LoopRegion) region;
+-        if (loop.getConditionBlock() != null && loop.getConditionBlock().getInstructions().size() != 1) {
+-            ErrorsCounter.methodError(mth, "Incorrect condition in loop: " + loop.getConditionBlock());
++        BlockNode loopHeader = loop.getHeader();
++        if (loopHeader != null && loopHeader.getInstructions().size() != 1) {
++            ErrorsCounter.methodError(mth, "Incorrect condition in loop: " + loopHeader);
+             mth.getAttributes().add(AttributeFlag.INCONSISTENT_CODE);
+         }
+     }
+ }
+\ No newline at end of file

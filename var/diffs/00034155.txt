@@ -1,0 +1,17 @@
+diff --git a/29de2ccc9dd0f3f8d0180bfd800d5c6c13e44924 b/57f16d54552d5f71a4d3062a1e72c844f9699121
+index 29de2ccc9d..57f16d5455 100644
+--- a/29de2ccc9dd0f3f8d0180bfd800d5c6c13e44924
++++ b/57f16d54552d5f71a4d3062a1e72c844f9699121
+@@ -1,10 +1,10 @@
+ /**
+  * Call the native function being represented by this object
+  *
+  * @param	args
+  * Arguments to pass to the native function
+  * @return	The value returned by the target function
+  */
+ public boolean invokeBoolean(Object[] args) {
+-    return invokeInt(callingConvention, args) != 0;
++    return Boolean.TRUE.equals(invoke(Boolean.class, args));
+ }
+\ No newline at end of file

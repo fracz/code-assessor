@@ -1,0 +1,17 @@
+diff --git a/6dbb21132cff4ca5107648c505ce8d5b8d48e8d6 b/861818683be0d85f5192f90f3f36ce642f93e5ca
+index 6dbb21132c..861818683b 100644
+--- a/6dbb21132cff4ca5107648c505ce8d5b8d48e8d6
++++ b/861818683be0d85f5192f90f3f36ce642f93e5ca
+@@ -1,6 +1,10 @@
+ /**
+  * Total merges of this shard replication group.
+  */
+ public MergeStats getMergeStats() {
+-    return this.mergeStats();
++    MergeStats mergeStats = new MergeStats();
++    for (ShardStatus shard : shards) {
++        mergeStats.add(shard.getMergeStats());
++    }
++    return mergeStats;
+ }
+\ No newline at end of file

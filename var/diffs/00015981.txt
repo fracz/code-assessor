@@ -1,0 +1,13 @@
+diff --git a/e5f613c43fb33c5e89415e54826f219748f73890 b/6acae26e804064de1bbfbe1867a70b9f124105ee
+index e5f613c43f..6acae26e80 100644
+--- a/e5f613c43fb33c5e89415e54826f219748f73890
++++ b/6acae26e804064de1bbfbe1867a70b9f124105ee
+@@ -1,5 +1,5 @@
+ @NotNull
+ public OverloadResolutionResults<FunctionDescriptor> resolveCallWithGivenName(@NotNull BasicResolutionContext context, @NotNull final JetReferenceExpression functionReference, @NotNull String name) {
+-    List<ResolutionTask<FunctionDescriptor>> tasks = TaskPrioritizers.FUNCTION_TASK_PRIORITIZER.computePrioritizedTasks(context, name, functionReference);
+-    return doResolveCall(context, tasks, functionReference);
++    List<ResolutionTask<FunctionDescriptor>> tasks = TaskPrioritizer.computePrioritizedTasks(context, name, functionReference, Collections.singletonList(MemberPrioritizers.FUNCTION_TASK_PRIORITIZER));
++    return doResolveCall(context, tasks, CallTransformationStrategy.FUNCTION_CALL_TRANSFORMATION_STRATEGY, functionReference);
+ }
+\ No newline at end of file

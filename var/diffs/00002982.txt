@@ -1,0 +1,13 @@
+diff --git a/7e40e734be0326e505cb381cd76d7d9cd456ba91 b/a97d7d18907056108ce3eaf659fedc10fcd8bd08
+index 7e40e734be..a97d7d1890 100644
+--- a/7e40e734be0326e505cb381cd76d7d9cd456ba91
++++ b/a97d7d18907056108ce3eaf659fedc10fcd8bd08
+@@ -1,6 +1,6 @@
+ @Override
+ public void update(AnActionEvent e) {
+     Project project = PlatformDataKeys.PROJECT.getData(e.getDataContext());
+-    GroupItem groupItem = (GroupItem) e.getDataContext().getData(GroupItem.class.getName());
++    GroupItem groupItem = GroupItem.DATA_KEY.getData(e.getDataContext());
+     e.getPresentation().setEnabled(project != null && groupItem != null && !groupItem.isReadOnly());
+ }
+\ No newline at end of file

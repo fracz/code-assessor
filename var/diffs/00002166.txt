@@ -1,0 +1,15 @@
+diff --git a/e45e79227aa420fc05cb1d19ed4fada54e988fbf b/de07b6366d5f6a5aaf3454911c6c836e965d5a8e
+index e45e79227a..de07b6366d 100644
+--- a/e45e79227aa420fc05cb1d19ed4fada54e988fbf
++++ b/de07b6366d5f6a5aaf3454911c6c836e965d5a8e
+@@ -1,8 +1,8 @@
+ public void run() {
+-    final PyNamedParameter the_self = PythonLanguage.getInstance().getElementGenerator().createParameter(project, myNewName);
++    final PyNamedParameter the_self = PyElementGenerator.getInstance(project).createParameter(myNewName);
+     try {
+         elt.replace(the_self);
+     } catch (IncorrectOperationException e) {
+         LOG.error(e);
+     }
+ }
+\ No newline at end of file

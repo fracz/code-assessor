@@ -1,0 +1,16 @@
+diff --git a/095f43e7e785ee30d31fd5e786a3ed1a5d7f9d47 b/0bea97c5025fab1d32fc52e135b5b4d44ab98497
+index 095f43e7e7..0bea97c502 100644
+--- a/095f43e7e785ee30d31fd5e786a3ed1a5d7f9d47
++++ b/0bea97c5025fab1d32fc52e135b5b4d44ab98497
+@@ -1,6 +1,8 @@
+ @Test
+ public void testGetAllKnownRegions() throws Exception {
++    prepareRemoteRegionRegistry();
++    EurekaClient client = discoveryClientResource.getClient();
+     Set<String> allKnownRegions = client.getAllKnownRegions();
+-    Assert.assertEquals("Unexpected number of known regions." + allKnownRegions, 2, allKnownRegions.size());
+-    Assert.assertTrue("Remote region not found in set of known regions." + allKnownRegions, allKnownRegions.contains(REMOTE_REGION));
++    assertThat(allKnownRegions.size(), is(equalTo(2)));
++    assertThat(allKnownRegions, hasItem(TEST_REMOTE_REGION));
+ }
+\ No newline at end of file

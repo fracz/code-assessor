@@ -1,0 +1,21 @@
+diff --git a/5bc6d9e1ba0bde6c0218553022942506803795b9 b/6f4390b17f2fcc2b9c332f8d198a31402ccc150e
+index 5bc6d9e1ba..6f4390b17f 100644
+--- a/5bc6d9e1ba0bde6c0218553022942506803795b9
++++ b/6f4390b17f2fcc2b9c332f8d198a31402ccc150e
+@@ -1,9 +1,14 @@
++// ////////////////////////////////////////////////////////////
++// SHAPES
+ public void beginShape(int kind) {
+-    super.beginShape(kind);
++    // super.beginShape(kind);
++    shape = kind;
++    vertexCount = 0;
++    splineVertexCount = 0;
+     // set gpath to null, because when mixing curves and straight
+     // lines, vertexCount will be set back to zero, so vertexCount == 1
+     // is no longer a good indicator of whether the shape is new.
+     // this way, just check to see if gpath is null, and if it isn't
+     // then just use it to continue the shape.
+     gpath = null;
+ }
+\ No newline at end of file

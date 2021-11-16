@@ -1,0 +1,16 @@
+diff --git a/781466802a94396aa672ee0ae94655f16958a0d4 b/2e802602aed610d9518aa84635885e866784290b
+index 781466802a..2e802602ae 100644
+--- a/781466802a94396aa672ee0ae94655f16958a0d4
++++ b/2e802602aed610d9518aa84635885e866784290b
+@@ -1,8 +1,8 @@
+ protected void sleepAfterWrite(StoreTransaction txh, Timestamp mustPass) throws StorageException {
+-    assert mustPass.deletionTime < mustPass.additionTime;
++    assert mustPass.getDeletionTime(times.getUnit()) < mustPass.getAdditionTime(times.getUnit());
+     try {
+-        times.sleepPast(mustPass.additionTime, times.getUnit());
++        times.sleepPast(mustPass.getAdditionTime());
+     } catch (InterruptedException e) {
+         throw new PermanentStorageException("Unexpected interrupt", e);
+     }
+ }
+\ No newline at end of file

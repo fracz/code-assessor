@@ -1,0 +1,16 @@
+diff --git a/e20063f720c0d5f6702857de2cf54b1f13257de2 b/f29b6e62cbf38695eb4aa0d884d32b89a2b30a13
+index e20063f720..f29b6e62cb 100644
+--- a/e20063f720c0d5f6702857de2cf54b1f13257de2
++++ b/f29b6e62cbf38695eb4aa0d884d32b89a2b30a13
+@@ -1,9 +1,9 @@
+ @Test
+ public void isCyclic_multipleCycles() {
+-    DirectedGraph<Integer, String> directedGraph = Graphs.createDirected(config().multigraph());
++    Graph<Integer, String> directedGraph = GraphBuilder.directed().allowsParallelEdges(true).build();
+     directedGraph.addEdge(E12, N1, N2);
+     directedGraph.addEdge(E21, N2, N1);
+     directedGraph.addEdge(E23, N2, N3);
+     directedGraph.addEdge(E31, N3, N1);
+     assertThat(isCyclic(directedGraph)).isTrue();
+ }
+\ No newline at end of file

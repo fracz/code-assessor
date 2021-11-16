@@ -1,0 +1,22 @@
+diff --git a/5b5b83abdb682577128b059ffe4b1d0a80fb864f b/17d3f0630878590537f09a06989d22901ff87325
+index 5b5b83abdb..17d3f06308 100644
+--- a/5b5b83abdb682577128b059ffe4b1d0a80fb864f
++++ b/17d3f0630878590537f09a06989d22901ff87325
+@@ -1,8 +1,13 @@
+ @Override
+ public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent event) {
+-    boolean populated = false;
++    // We first get a chance to populate the event.
++    onPopulateAccessibilityEvent(event);
++    // Let our children have a shot in populating the event.
+     for (int i = 0, count = getChildCount(); i < count; i++) {
+-        populated |= getChildAt(i).dispatchPopulateAccessibilityEvent(event);
++        boolean handled = getChildAt(i).dispatchPopulateAccessibilityEvent(event);
++        if (handled) {
++            return handled;
++        }
+     }
+-    return populated;
++    return false;
+ }
+\ No newline at end of file

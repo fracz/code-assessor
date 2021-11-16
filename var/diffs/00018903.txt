@@ -1,0 +1,16 @@
+diff --git a/a50f88127a8bd35e533cc476d251604632a27446 b/8c78b749b6c3970f93935651ad5d845faf92a6c0
+index a50f88127a..8c78b749b6 100644
+--- a/a50f88127a8bd35e533cc476d251604632a27446
++++ b/8c78b749b6c3970f93935651ad5d845faf92a6c0
+@@ -1,8 +1,9 @@
+ @Override
+ protected void onPostExecute(Void result) {
+     VersionTracker.updateLastSeenVersion(DatabaseUpgradeActivity.this);
+-    DecryptingQueue.schedulePendingDecrypts(DatabaseUpgradeActivity.this, masterSecret);
++    // DecryptingQueue.schedulePendingDecrypts(DatabaseUpgradeActivity.this, masterSecret);
++    ApplicationContext.getInstance(DatabaseUpgradeActivity.this).getJobManager().setEncryptionKeys(new EncryptionKeys(ParcelUtil.serialize(masterSecret)));
+     MessageNotifier.updateNotification(DatabaseUpgradeActivity.this, masterSecret);
+     startActivity((Intent) getIntent().getParcelableExtra("next_intent"));
+     finish();
+ }
+\ No newline at end of file

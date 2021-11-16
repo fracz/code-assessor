@@ -1,0 +1,22 @@
+diff --git a/43648f6fcccc602f6080fca2b205a474d8286f8e b/1806f334662fec4a9dc5bbf34e9bb0f4505e3631
+index 43648f6fcc..1806f33466 100644
+--- a/43648f6fcccc602f6080fca2b205a474d8286f8e
++++ b/1806f334662fec4a9dc5bbf34e9bb0f4505e3631
+@@ -1,15 +1,15 @@
+ /**
+  * Compute input linear transformation (z) from previous layer
+  * Apply pre processing transformation where necessary
+  *
+  * @param curr  the current layer
+  * @param input the input
+  * @param training training or test mode
+  * @return the activation from the previous layer
+  */
+ public INDArray zFromPrevLayer(int curr, INDArray input, boolean training) {
+     if (getLayerWiseConfigurations().getInputPreProcess(curr) != null)
+-        input = getLayerWiseConfigurations().getInputPreProcess(curr).preProcess(input, layers[curr]);
++        input = getLayerWiseConfigurations().getInputPreProcess(curr).preProcess(input, input.size(0));
+     INDArray ret = layers[curr].preOutput(input, training);
+     return ret;
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/a05fe37a9607dcccf2dca74ad9b9a2f55596a7dd b/04473f69fbba3405933887f7bb3721be6e8e7a21
+index a05fe37a96..04473f69fb 100644
+--- a/a05fe37a9607dcccf2dca74ad9b9a2f55596a7dd
++++ b/04473f69fbba3405933887f7bb3721be6e8e7a21
+@@ -1,6 +1,6 @@
+ public double valueForADoc(double[][] weights, int docIndex) {
+-    if (multiThreadGrad == 0)
++    if (prior == DROPOUT_PRIOR)
+         return expectedCountsAndValueForADoc(weights, null, docIndex, true, false);
+     else
+         return expectedCountsAndValueForADoc(weights, docIndex, true, false).second();
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/321841c300de4fb280c2d51541ddd6745c375e1b b/9c13ee61bebe49fab27210a946a4c9661ea64a37
+index 321841c300..9c13ee61be 100644
+--- a/321841c300de4fb280c2d51541ddd6745c375e1b
++++ b/9c13ee61bebe49fab27210a946a4c9661ea64a37
+@@ -1,8 +1,8 @@
+ @Test
+ public void testConstructorArgWithSingleSimpleTypeMatch() {
+-    XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("constructor-arg.xml", getClass()));
++    XmlBeanFactory xbf = new XmlBeanFactory(CONSTRUCTOR_ARG_CONTEXT);
+     SingleSimpleTypeConstructorBean bean = (SingleSimpleTypeConstructorBean) xbf.getBean("beanWithBoolean");
+     assertTrue(bean.isSingleBoolean());
+     SingleSimpleTypeConstructorBean bean2 = (SingleSimpleTypeConstructorBean) xbf.getBean("beanWithBoolean2");
+     assertTrue(bean2.isSingleBoolean());
+ }
+\ No newline at end of file

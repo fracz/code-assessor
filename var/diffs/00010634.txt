@@ -1,0 +1,24 @@
+diff --git a/21fd14f0a87a672298dcbb67f5c5a652828f3b20 b/dd86e138c70ffccde573394163408406b7a34eee
+index 21fd14f0a8..dd86e138c7 100644
+--- a/21fd14f0a87a672298dcbb67f5c5a652828f3b20
++++ b/dd86e138c70ffccde573394163408406b7a34eee
+@@ -1,12 +1,13 @@
++@Override
+ protected JComponent createNorthPanel() {
+     JLabel label = new JLabel(myMessage);
+     label.setUI(new MultiLineLabelUI());
+-    JPanel panel = new JPanel(new BorderLayout());
+-    panel.add(label, BorderLayout.CENTER);
++    JPanel panel = new JPanel(new BorderLayout(10, 0));
+     if (myIcon != null) {
+-        label.setIcon(myIcon);
+-        label.setIconTextGap(10);
++        panel.add(new JLabel(myIcon), BorderLayout.WEST);
++        panel.add(label, BorderLayout.CENTER);
++    } else {
++        panel.add(label, BorderLayout.WEST);
+     }
+-    panel.add(Box.createVerticalStrut(7), BorderLayout.SOUTH);
+     return panel;
+ }
+\ No newline at end of file

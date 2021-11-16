@@ -1,0 +1,23 @@
+diff --git a/4022e2f68ef158c1720901625f8ef59e08149124 b/1818200512c454b19c8674cac2e93230afa15921
+index 4022e2f68e..1818200512 100644
+--- a/4022e2f68ef158c1720901625f8ef59e08149124
++++ b/1818200512c454b19c8674cac2e93230afa15921
+@@ -1,12 +1,14 @@
+ @Override
+-public JetIntentionAction<JetBinaryExpressionWithTypeRHS> createAction(DiagnosticWithPsiElement diagnostic) {
+-    assert diagnostic.getPsiElement() instanceof JetBinaryExpressionWithTypeRHS;
+-    return new ReplaceOperationInBinaryExpressionFix<JetBinaryExpressionWithTypeRHS>((JetBinaryExpressionWithTypeRHS) diagnostic.getPsiElement(), " : ") {
++public JetIntentionAction<JetBinaryExpressionWithTypeRHS> createAction(Diagnostic diagnostic) {
++    JetBinaryExpressionWithTypeRHS expression = QuickFixUtil.getParentElementOfType(diagnostic, JetBinaryExpressionWithTypeRHS.class);
++    if (expression == null)
++        return null;
++    return new ReplaceOperationInBinaryExpressionFix<JetBinaryExpressionWithTypeRHS>(expression, " : ") {
+
+         @NotNull
+         @Override
+         public String getText() {
+             return JetBundle.message("replace.cast.with.static.assert");
+         }
+     };
+ }
+\ No newline at end of file

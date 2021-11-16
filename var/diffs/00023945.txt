@@ -1,0 +1,11 @@
+diff --git a/0c0ccc102519a34155dd09dc99e71d7fd0a38529 b/0635f922ca8e79b064b320a0758793476737c6d7
+index 0c0ccc1025..0635f922ca 100644
+--- a/0c0ccc102519a34155dd09dc99e71d7fd0a38529
++++ b/0635f922ca8e79b064b320a0758793476737c6d7
+@@ -1,4 +1,4 @@
+ public SSTableWriter createFlushWriter(String filename) {
+     MetadataCollector sstableMetadataCollector = new MetadataCollector(cfs.metadata.comparator).replayPosition(context);
+-    return new SSTableWriter(filename, rows.size(), ActiveRepairService.UNREPAIRED_SSTABLE, cfs.metadata, cfs.partitioner, sstableMetadataCollector);
++    return SSTableWriter.create(Descriptor.fromFilename(filename), (long) rows.size(), ActiveRepairService.UNREPAIRED_SSTABLE, cfs.metadata, cfs.partitioner, sstableMetadataCollector);
+ }
+\ No newline at end of file

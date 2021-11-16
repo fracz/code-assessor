@@ -1,0 +1,11 @@
+diff --git a/fb0a15d8eb8adedb24b3e84b8a5424c810595153 b/28b8c27fd9239283cf4fe3ebf0c69a01488fe323
+index fb0a15d8eb..28b8c27fd9 100644
+--- a/fb0a15d8eb8adedb24b3e84b8a5424c810595153
++++ b/28b8c27fd9239283cf4fe3ebf0c69a01488fe323
+@@ -1,4 +1,4 @@
+ public void out(final boolean iDebug, final String iText, final Object... iArgs) {
+-    if (!iDebug || stats.verbose)
++    if (!iDebug || (Boolean) context.getVariable("verbose"))
+         System.out.println(String.format(iText, iArgs));
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/9677b83f42cd012afbbd401ed3264c0411427d5d b/b29733fe3d4a82d820357ce4c510c4aed56ec791
+index 9677b83f42..b29733fe3d 100644
+--- a/9677b83f42cd012afbbd401ed3264c0411427d5d
++++ b/b29733fe3d4a82d820357ce4c510c4aed56ec791
+@@ -1,9 +1,9 @@
+-private List<DaemonStatus> statusesOfEntriesMatching(Spec<EmbeddedDaemonEntry> spec) {
++private List<DaemonStatus> statusesOfEntriesMatching(Spec<DaemonStatus> spec) {
+     List<DaemonStatus> matches = new ArrayList<DaemonStatus>();
+-    for (EmbeddedDaemonEntry entry : entries) {
+-        if (spec.isSatisfiedBy(entry)) {
+-            matches.add(entry.status);
++    for (DaemonStatus status : statuses.values()) {
++        if (spec.isSatisfiedBy(status)) {
++            matches.add(status);
+         }
+     }
+     return matches;
+ }
+\ No newline at end of file

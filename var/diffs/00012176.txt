@@ -1,0 +1,17 @@
+diff --git a/251cac24185abc6828443024f9df8d2b38725e7b b/d87a83f91a4c972714789593342576b2d688198b
+index 251cac2418..d87a83f91a 100644
+--- a/251cac24185abc6828443024f9df8d2b38725e7b
++++ b/d87a83f91a4c972714789593342576b2d688198b
+@@ -1,9 +1,8 @@
+ public void testFileCreation() throws Exception {
+     createChildData(myRoot, "first.txt");
+-    final LocalHistory localHistory = LocalHistory.getInstance();
+-    final Label testLabel = localHistory.putSystemLabel(myProject, "testLabel");
++    final Label testLabel = LocalHistory.getInstance().putSystemLabel(myProject, "testLabel");
+     createChildData(myRoot, "foo.txt");
+-    localHistory.revertToLabel(myProject, myRoot, testLabel);
++    revertToLabel(testLabel, myRoot);
+     assertNull(myRoot.findChild("foo.txt"));
+     assertNotNull(myRoot.findChild("first.txt"));
+ }
+\ No newline at end of file

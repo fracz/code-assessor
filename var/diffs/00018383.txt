@@ -1,0 +1,26 @@
+diff --git a/2a0b21d6e3e8d2d50874bc671bb9165b09442ff7 b/9978006138c52cca97c9eb0214d9c49bbc4700a5
+index 2a0b21d6e3..9978006138 100644
+--- a/2a0b21d6e3e8d2d50874bc671bb9165b09442ff7
++++ b/9978006138c52cca97c9eb0214d9c49bbc4700a5
+@@ -1,16 +1,14 @@
+ @Override
+ public void subscribe(Subscriber<? super T> s) {
+-    s.onSubscribe(EmptySubscription.INSTANCE);
+     Throwable error;
+     try {
+         error = errorSupplier.get();
+     } catch (Throwable t) {
+-        s.onError(t);
++        error = t;
+         return;
+     }
+-    if (error != null) {
+-        s.onError(error);
+-    } else {
+-        s.onError(new NullPointerException());
++    if (error == null) {
++        error = new NullPointerException();
+     }
++    EmptySubscription.error(error, s);
+ }
+\ No newline at end of file

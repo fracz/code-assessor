@@ -1,0 +1,24 @@
+diff --git a/4a52bccefd22deb3c4fd95208713a8efd1015b60 b/ce85e5f80ee7f410688a46a42e34a9b0924245cf
+index 4a52bccefd..ce85e5f80e 100644
+--- a/4a52bccefd22deb3c4fd95208713a8efd1015b60
++++ b/ce85e5f80ee7f410688a46a42e34a9b0924245cf
+@@ -1,9 +1,13 @@
+-public void verify(List<Invocation> invocations, InvocationMatcher wanted) {
+-    MissingInvocationVerifier missingInvocation = new MissingInvocationVerifier();
+-    NumberOfInvocationsVerifier numberOfInvocations = new NumberOfInvocationsVerifier();
++public void verify(VerificationData data) {
++    if (mocksToBeVerifiedInOrder != null) {
++        verifyInOrder(data);
++        return;
++    }
++    MissingInvocationChecker missingInvocation = new MissingInvocationChecker();
++    NumberOfInvocationsChecker numberOfInvocations = new NumberOfInvocationsChecker();
+     // TODO duplicated
+     if (wantedInvocationCount > 0 || (verification == Verification.AT_LEAST && wantedInvocationCount == 1)) {
+-        missingInvocation.verify(invocations, wanted, this);
++        missingInvocation.verify(data.getAllInvocations(), data.getWanted(), this);
+     }
+-    numberOfInvocations.verify(invocations, wanted, this);
++    numberOfInvocations.verify(data.getAllInvocations(), data.getWanted(), this);
+ }
+\ No newline at end of file

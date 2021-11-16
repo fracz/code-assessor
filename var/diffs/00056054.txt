@@ -1,0 +1,16 @@
+diff --git a/084dcff96ea43cc4ab5f62a59b92a463acb26676 b/c9895f524fcfd54288fa465af8f9e4fc88dd8702
+index 084dcff96e..c9895f524f 100644
+--- a/084dcff96ea43cc4ab5f62a59b92a463acb26676
++++ b/c9895f524fcfd54288fa465af8f9e4fc88dd8702
+@@ -1,9 +1,9 @@
+ private void doTestTwoAdviceAspectWith(String location) {
+-    ClassPathXmlApplicationContext bf = new ClassPathXmlApplicationContext("/org/springframework/aop/aspectj/autoproxy/" + location);
++    ClassPathXmlApplicationContext bf = newContext(location);
+     boolean aspectSingleton = bf.isSingleton("aspect");
+     ITestBean adrian1 = (ITestBean) bf.getBean("adrian");
+     testPrototype(adrian1, 0);
+     ITestBean adrian2 = (ITestBean) bf.getBean("adrian");
+     assertNotSame(adrian1, adrian2);
+     testPrototype(adrian2, aspectSingleton ? 2 : 0);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/05d49e1dabca84b7de67e44fa338c38f16bfadd5 b/ac042feeb246db89ab2dd84428c5285a72b6dc53
+index 05d49e1dab..ac042feeb2 100644
+--- a/05d49e1dabca84b7de67e44fa338c38f16bfadd5
++++ b/ac042feeb246db89ab2dd84428c5285a72b6dc53
+@@ -1,6 +1,6 @@
+-private static void onExceptionInstantiatingIndex(int version, File versionFile, File indexRootDir, Exception e) throws IOException {
++private static <K> void onExceptionInstantiatingIndex(StubIndexKey<K, ?> indexKey, int version, File indexRootDir, Exception e) throws IOException {
+     LOG.info(e);
+     FileUtil.deleteWithRenaming(indexRootDir);
+     // todo snapshots indices
+-    IndexingStamp.rewriteVersion(versionFile, version);
++    IndexingStamp.rewriteVersion(indexKey, version);
+ }
+\ No newline at end of file

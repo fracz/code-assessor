@@ -1,0 +1,27 @@
+diff --git a/5f16c8d9e03fbc2ae94f88bad407674b46515917 b/c93d5c2ba849d616f4ee009ae0ef35166eba332a
+index 5f16c8d9e0..c93d5c2ba8 100644
+--- a/5f16c8d9e03fbc2ae94f88bad407674b46515917
++++ b/c93d5c2ba849d616f4ee009ae0ef35166eba332a
+@@ -1,17 +1,17 @@
+ /**
+- * <!-- begin-user-doc -->
+- * <!-- end-user-doc -->
++ * <!-- begin-user-doc --> <!-- end-user-doc -->
++ *
+  * @generated NOT
+  */
+-public OnOffValue fetchSwitchState() {
++public void fetchSwitchState() {
+     OnOffValue switchValue = OnOffValue.UNDEF;
+     try {
+         switchValue = brickletLCD20x4.isBacklightOn() ? OnOffValue.ON : OnOffValue.OFF;
++        setSwitchState(switchValue);
+     } catch (TimeoutException e) {
+         TinkerforgeErrorHandler.handleError(this, TinkerforgeErrorHandler.TF_TIMEOUT_EXCEPTION, e);
+     } catch (NotConnectedException e) {
+         TinkerforgeErrorHandler.handleError(this, TinkerforgeErrorHandler.TF_NOT_CONNECTION_EXCEPTION, e);
+     }
+     setSwitchState(switchValue);
+-    return switchValue;
+ }
+\ No newline at end of file

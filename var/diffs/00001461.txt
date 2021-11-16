@@ -1,0 +1,28 @@
+diff --git a/e6e642f9e76c9d16f345ecf60dfb0d37bb370cdd b/075e23caa55800b7be1fc3f8b1f6fa2e6552c61d
+index e6e642f9e7..075e23caa5 100644
+--- a/e6e642f9e76c9d16f345ecf60dfb0d37bb370cdd
++++ b/075e23caa55800b7be1fc3f8b1f6fa2e6552c61d
+@@ -1,20 +1,20 @@
+-private void doCollect() {
++private void doCollect(@NotNull GitPushSpecs pushSpecs) {
+     // TODO Later we will persist it (providing in the Outgoing view) and update on push and other operations
+     synchronized (STATE_LOCK) {
+         myCommits.clear();
+         myError = null;
+     }
+     try {
+-        GitCommitsByRepoAndBranch commits = collectOutgoingCommits(GitPushUtil.getSpecsToPushForAllRepositories(myPlatformFacade, myProject));
++        GitCommitsByRepoAndBranch commits = collectOutgoingCommits(pushSpecs);
+         synchronized (STATE_LOCK) {
+             myCommits = commits;
+             myError = null;
+         }
+     } catch (VcsException e) {
+         LOG.info("Collecting outgoing commits failed: " + e.getMessage(), e);
+         synchronized (STATE_LOCK) {
+             // todo maybe should have more descriptive message here, need to check
+             myError = e.getMessage();
+         }
+     }
+ }
+\ No newline at end of file

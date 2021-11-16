@@ -1,0 +1,12 @@
+diff --git a/f8388c3f188de861a05b0040b101c155c75a88f3 b/03fb17e76af75c0c53b5de4928d21fa6782cf537
+index f8388c3f18..03fb17e76a 100644
+--- a/f8388c3f188de861a05b0040b101c155c75a88f3
++++ b/03fb17e76af75c0c53b5de4928d21fa6782cf537
+@@ -1,4 +1,4 @@
+-public List<Invocation> find(List<?> mocks) {
+-    List<Invocation> invocations = new AllInvocationsFinder().find(mocks);
++public static List<Invocation> find(List<?> mocks) {
++    List<Invocation> invocations = AllInvocationsFinder.find(mocks);
+     return ListUtil.filter(invocations, new RemoveIgnoredForVerification());
+ }
+\ No newline at end of file

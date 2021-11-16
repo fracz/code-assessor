@@ -1,0 +1,14 @@
+diff --git a/27f6d7eabfe1d8507d8944bf85dd50e0dd4f05bd b/97996b5431756a4f94bc69cafb773624aae20d57
+index 27f6d7eabf..97996b5431 100644
+--- a/27f6d7eabfe1d8507d8944bf85dd50e0dd4f05bd
++++ b/97996b5431756a4f94bc69cafb773624aae20d57
+@@ -1,6 +1,4 @@
+ private long determineNakDelay() {
+-    /*
+-         * TODO: This should be 0 for unicast and use FeedbackDelayGenerator for multicast situations.
+-         */
+-    return TimeUnit.MILLISECONDS.toNanos(20);
++    // this should be 0 for unicast and use OptimalMcastDelayGenerator for multicast situations.
++    return delayGenerator.generateDelay();
+ }
+\ No newline at end of file

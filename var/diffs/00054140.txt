@@ -1,0 +1,14 @@
+diff --git a/e441c8a40911959c494aaecc047fe071faff3979 b/61aa3cd820a943e3229313955b775424b1433dca
+index e441c8a409..61aa3cd820 100644
+--- a/e441c8a40911959c494aaecc047fe071faff3979
++++ b/61aa3cd820a943e3229313955b775424b1433dca
+@@ -1,7 +1,6 @@
+ @Before
+ public void init() throws SQLException {
+-    shardingDataSource = getShardingDataSource();
+-    shardingConnection = shardingDataSource.getConnection();
++    shardingConnection = getShardingDataSource().getConnection();
+     shardingConnection.setReadOnly(false);
+     actual = shardingConnection.createStatement();
+ }
+\ No newline at end of file

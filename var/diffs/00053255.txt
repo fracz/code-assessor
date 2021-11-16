@@ -1,0 +1,23 @@
+diff --git a/668fdc24b374f918249b8b6d9b6cd735c18904b5 b/7d026a7d545db5eebbfba97aee8c469219a8788d
+index 668fdc24b3..7d026a7d54 100644
+--- a/668fdc24b374f918249b8b6d9b6cd735c18904b5
++++ b/7d026a7d545db5eebbfba97aee8c469219a8788d
+@@ -1,15 +1,15 @@
+ private Optional<String> getAlias(final String name) {
+     if (hasAllColumn) {
+         return Optional.absent();
+     }
+     String rawName = SQLUtil.getExactlyValue(name);
+     for (SelectItemContext each : selectItems) {
+         if (rawName.equalsIgnoreCase(SQLUtil.getExactlyValue(each.getExpression()))) {
+-            return Optional.fromNullable(SQLUtil.getExactlyValue(each.getAlias()));
++            return each.getAlias();
+         }
+-        if (rawName.equalsIgnoreCase(SQLUtil.getExactlyValue(each.getAlias()))) {
++        if (rawName.equalsIgnoreCase(each.getAlias().orNull())) {
+             return Optional.of(rawName);
+         }
+     }
+     return Optional.of(generateDerivedColumnAlias());
+ }
+\ No newline at end of file

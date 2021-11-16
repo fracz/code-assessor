@@ -1,0 +1,26 @@
+diff --git a/0518acad2698fc7d607ff305161eee5c548c4f16 b/426bd85d2e2a2c583eacd9187020435de075cd19
+index 0518acad26..426bd85d2e 100644
+--- a/0518acad2698fc7d607ff305161eee5c548c4f16
++++ b/426bd85d2e2a2c583eacd9187020435de075cd19
+@@ -1,17 +1,19 @@
+ /**
+  * Checks if one of destination classes already has members that should be moved, so conflict would take place.
++ *
+  * @return map of conflicts (if any)
+  * @see #getDestClassesToCheckConflicts()
+  */
+ @NotNull
+ protected final MultiMap<PyClass, PyMemberInfo<?>> getConflicts() {
+     final MultiMap<PyClass, PyMemberInfo<?>> result = new MultiMap<PyClass, PyMemberInfo<?>>();
++    final Collection<PyMemberInfo<PyElement>> memberInfos = myView.getSelectedMemberInfos();
+     for (final PyClass destinationClass : getDestClassesToCheckConflicts()) {
+-        for (final PyMemberInfo<PyElement> pyMemberInfo : myView.getSelectedMemberInfos()) {
++        for (final PyMemberInfo<PyElement> pyMemberInfo : memberInfos) {
+             if (pyMemberInfo.hasConflict(destinationClass)) {
+                 result.putValue(destinationClass, pyMemberInfo);
+             }
+         }
+     }
+     return result;
+ }
+\ No newline at end of file

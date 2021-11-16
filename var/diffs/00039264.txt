@@ -1,0 +1,16 @@
+diff --git a/b22453d04964662de945b64a52d62f5858c04807 b/89b1bcb095ad530ebac67f153741334f61c8c382
+index b22453d049..89b1bcb095 100644
+--- a/b22453d04964662de945b64a52d62f5858c04807
++++ b/89b1bcb095ad530ebac67f153741334f61c8c382
+@@ -1,8 +1,8 @@
+-public int getMasterIdForCommittedTx(final long txId) {
++public Response<Integer> getMasterIdForCommittedTx(final long txId) {
+     return sendRequest(HaRequestType.GET_MASTER_ID_FOR_TX, SlaveContext.EMPTY, new Serializer() {
+
+         public void write(ChannelBuffer buffer, ByteBuffer readBuffer) throws IOException {
+             buffer.writeLong(txId);
+         }
+-    }, INTEGER_DESERIALIZER).response();
++    }, INTEGER_DESERIALIZER);
+ }
+\ No newline at end of file

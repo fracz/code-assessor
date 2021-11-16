@@ -1,0 +1,25 @@
+diff --git a/f9804c05787384ad37160d6a9f4fb1be90be7d05 b/61ef14ba6ecd45c0a137f923249a030bd90a7d5e
+index f9804c0578..61ef14ba6e 100644
+--- a/f9804c05787384ad37160d6a9f4fb1be90be7d05
++++ b/61ef14ba6ecd45c0a137f923249a030bd90a7d5e
+@@ -1,6 +1,18 @@
+ @Override
+ public String loadAsset(String name) {
+     InputStream stream = getClass().getClassLoader().getResourceAsStream(name);
+-    // TODO: Read all
++    try {
++        return readFully(stream, "UTF-8");
++    } catch (IOException e) {
++        e.printStackTrace();
++    } finally {
++        if (stream != null) {
++            try {
++                stream.close();
++            } catch (IOException e) {
++                e.printStackTrace();
++            }
++        }
++    }
+     return null;
+ }
+\ No newline at end of file

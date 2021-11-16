@@ -1,0 +1,18 @@
+diff --git a/d6aa28051b0b9545e731cefd418062033ba223db b/dbb39b4da01c7ca66655ba4f31d0ad7271a304e5
+index d6aa28051b..dbb39b4da0 100644
+--- a/d6aa28051b0b9545e731cefd418062033ba223db
++++ b/dbb39b4da01c7ca66655ba4f31d0ad7271a304e5
+@@ -1,10 +1,7 @@
+-protected InspectionGadgetsFix buildFix(PsiElement location) {
+-    final PsiElement modifierList = location.getParent();
+-    assert modifierList != null;
+-    final PsiMethod method = (PsiMethod) modifierList.getParent();
+-    assert method != null;
++protected InspectionGadgetsFix buildFix(Object... infos) {
++    final PsiMethod method = (PsiMethod) infos[0];
+     if (method.getBody() == null) {
+         return null;
+     }
+     return new SynchronizedMethodFix();
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/f2dec08f412b217c5367486f78fbc87dbc295430 b/e2d4d3684758a0144f0d624d81ba3c9f7a788949
+index f2dec08f41..e2d4d36847 100644
+--- a/f2dec08f412b217c5367486f78fbc87dbc295430
++++ b/e2d4d3684758a0144f0d624d81ba3c9f7a788949
+@@ -1,9 +1,9 @@
+ @Override
+ public void onCreate(Bundle savedInstanceState) {
+     super.onCreate(savedInstanceState);
+     final ComponentContext context = new ComponentContext(this);
+     final RecyclerBinder recyclerBinder = new RecyclerBinder(context, 4.0f, new LinearLayoutInfo(this, OrientationHelper.VERTICAL, false));
++    final Component component = Recycler.create(context).binder(recyclerBinder).build();
+     addContent(recyclerBinder, context);
+-    final ComponentView componentView = ComponentView.create(context, Recycler.create(context).binder(recyclerBinder).build());
+-    setContentView(componentView);
++    setContentView(ComponentView.create(context, component));
+ }
+\ No newline at end of file

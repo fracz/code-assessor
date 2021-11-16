@@ -1,0 +1,22 @@
+diff --git a/ef26546a491b4bb8acf962d9bee7ad62752141fd b/69264204ab10f58b8ff3bb3dd952f53a8a528e7a
+index ef26546a49..69264204ab 100644
+--- a/ef26546a491b4bb8acf962d9bee7ad62752141fd
++++ b/69264204ab10f58b8ff3bb3dd952f53a8a528e7a
+@@ -1,5 +1,14 @@
+ void maybeReady() {
+-    if (!isReleased() && isReady() && myTree.isShowing() && getBuilder().isToEnsureSelectionOnFocusGained() && Registry.is("ide.tree.ensureSelectionOnFocusGained")) {
+-        TreeUtil.ensureSelection(myTree);
++    if (isReleased())
++        return;
++    if (isReady()) {
++        if (myTree.isShowing()) {
++            myInitialized.setDone();
++            if (isReady()) {
++                if (getBuilder().isToEnsureSelectionOnFocusGained() && Registry.is("ide.tree.ensureSelectionOnFocusGained")) {
++                    TreeUtil.ensureSelection(myTree);
++                }
++            }
++        }
+     }
+ }
+\ No newline at end of file

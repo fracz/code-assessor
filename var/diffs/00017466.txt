@@ -1,0 +1,15 @@
+diff --git a/8a876f27e95152878d7766ed82ce05afcd10feb9 b/7fd20d127b4daef35403de11654a91887bd78786
+index 8a876f27e9..7fd20d127b 100644
+--- a/8a876f27e95152878d7766ed82ce05afcd10feb9
++++ b/7fd20d127b4daef35403de11654a91887bd78786
+@@ -1,8 +1,8 @@
+ private Node bitOrExpr(TokenStream ts, boolean inForInit) throws IOException, JavaScriptException {
+-    CodePosition position = getNextTokenPosition(ts);
+     Node pn = bitXorExpr(ts, inForInit);
+     while (ts.matchToken(TokenStream.BITOR)) {
++        CodePosition position = ts.tokenPosition;
+         pn = nf.createBinary(TokenStream.BITOR, pn, bitXorExpr(ts, inForInit), position);
+     }
+     return pn;
+ }
+\ No newline at end of file

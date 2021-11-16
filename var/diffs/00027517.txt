@@ -1,0 +1,14 @@
+diff --git a/c642fa768f93e2c5dd0eda333ee7571b5bc95f6f b/328db152f186a710bbf421e0ee9aa9e50a2aa61d
+index c642fa768f..328db152f1 100644
+--- a/c642fa768f93e2c5dd0eda333ee7571b5bc95f6f
++++ b/328db152f186a710bbf421e0ee9aa9e50a2aa61d
+@@ -1,6 +1,6 @@
+ public void writeFloats(OutputStream out, float[] floats) throws IOException {
+     writeInt(out, floats.length);
+-    for (int i = 0; i < floats.length; i++) {
+-        writeFloat(out, floats[i]);
++    for (float value : floats) {
++        writeFloat(out, value);
+     }
+ }
+\ No newline at end of file

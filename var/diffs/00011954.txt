@@ -1,0 +1,21 @@
+diff --git a/0ef52833899badc064944a37b597a88d092dfa55 b/b38564534907824432a30c8be2860fb1c2af41ca
+index 0ef5283389..b385645349 100644
+--- a/0ef52833899badc064944a37b597a88d092dfa55
++++ b/b38564534907824432a30c8be2860fb1c2af41ca
+@@ -1,6 +1,10 @@
+-protected static List<String> buildRunCommandLine(AbstractPythonRunConfiguration configuration) throws ExecutionException {
+-    final Executor executor = DefaultRunExecutor.getRunExecutorInstance();
+-    final PythonCommandLineState state = (PythonCommandLineState) configuration.getState(executor, new ExecutionEnvironment());
+-    final GeneralCommandLine generalCommandLine = state.generateCommandLine();
+-    return generalCommandLine.getParametersList().getList();
++protected static List<String> buildRunCommandLine(AbstractPythonRunConfiguration configuration) {
++    try {
++        final Executor executor = DefaultRunExecutor.getRunExecutorInstance();
++        final PythonCommandLineState state = (PythonCommandLineState) configuration.getState(executor, new ExecutionEnvironment());
++        final GeneralCommandLine generalCommandLine = state.generateCommandLine();
++        return generalCommandLine.getParametersList().getList();
++    } catch (ExecutionException e) {
++        throw new RuntimeException(e);
++    }
+ }
+\ No newline at end of file

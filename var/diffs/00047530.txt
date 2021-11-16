@@ -1,0 +1,19 @@
+diff --git a/87424fe3b108a867a07873e3d51f1f10751534b0 b/491569f9c60133c97fe630f17b42c7fe212a2a0c
+index 87424fe3b1..491569f9c6 100644
+--- a/87424fe3b108a867a07873e3d51f1f10751534b0
++++ b/491569f9c60133c97fe630f17b42c7fe212a2a0c
+@@ -1,11 +1,11 @@
+ @Test
+ public void testFindKeys() {
+     RBucket<String> bucket = redisson.getBucket("test1");
+     bucket.set("someValue");
+     RMap<String, String> map = redisson.getMap("test2");
+     map.fastPut("1", "2");
+     Collection<String> keys = redisson.getKeys().findKeysByPattern("test?");
+-    MatcherAssert.assertThat(keys, Matchers.containsInAnyOrder("test1", "test2"));
++    assertThat(keys).containsOnly("test1", "test2");
+     Collection<String> keys2 = redisson.getKeys().findKeysByPattern("test");
+-    MatcherAssert.assertThat(keys2, Matchers.empty());
++    assertThat(keys2).isEmpty();
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/2c7da285985c88526aee64160432a294e3a91ee5 b/e7b74c0d22e3815a07eaf8020a2b3407c29a6ce3
+index 2c7da28598..e7b74c0d22 100644
+--- a/2c7da285985c88526aee64160432a294e3a91ee5
++++ b/e7b74c0d22e3815a07eaf8020a2b3407c29a6ce3
+@@ -1,10 +1,10 @@
+ @Nullable
+ public Object getData(@NonNls String dataId) {
+-    if (dataId.equals(DataConstants.PROJECT)) {
++    if (PlatformDataKeys.PROJECT.is(dataId)) {
+         return myProject;
+-    } else if (dataId.equals(DataConstants.EDITOR) || OpenFileDescriptor.NAVIGATE_IN_EDITOR.is(dataId)) {
++    } else if (PlatformDataKeys.EDITOR.is(dataId) || OpenFileDescriptor.NAVIGATE_IN_EDITOR.is(dataId)) {
+         return FileEditorManager.getInstance(myProject).getSelectedTextEditor();
+     } else {
+         return null;
+     }
+ }
+\ No newline at end of file

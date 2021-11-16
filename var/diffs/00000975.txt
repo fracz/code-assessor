@@ -1,0 +1,26 @@
+diff --git a/1e125065066331e081b10b8124806e8772bf98ca b/4b3f4bbb46f091b30a7d30215d357bdef9e8ed7c
+index 1e12506506..4b3f4bbb46 100644
+--- a/1e125065066331e081b10b8124806e8772bf98ca
++++ b/4b3f4bbb46f091b30a7d30215d357bdef9e8ed7c
+@@ -1,18 +1,18 @@
+ @Override
+-protected void doRefresh() throws Exception {
++protected void doRefresh(LookupCachePurge cachePurge) throws Exception {
+     try {
+         clearError();
+         final FileInfo.Change fileChanged = fileInfo.checkForChange();
+         if (!fileChanged.isChanged()) {
+             // Nothing to do, file did not change
+             return;
+         }
+         LOG.debug("CSV file {} has changed, updating data", config.path());
+         lookupRef.set(parseCSVFile());
+-        getLookupTable().cache().purge();
++        cachePurge.purgeAll();
+         fileInfo = fileChanged.fileInfo();
+     } catch (IOException e) {
+         LOG.error("Couldn't check CSV file {} for updates", config.path(), e);
+         setError(e);
+     }
+ }
+\ No newline at end of file

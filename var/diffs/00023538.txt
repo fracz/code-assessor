@@ -1,0 +1,24 @@
+diff --git a/f17d37603e12f7d6927f60ee7bd57af1820d16da b/7e3d90dcf71dbc91605ead1631ca1a2fd421a26e
+index f17d37603e..7e3d90dcf7 100644
+--- a/f17d37603e12f7d6927f60ee7bd57af1820d16da
++++ b/7e3d90dcf71dbc91605ead1631ca1a2fd421a26e
+@@ -1,16 +1,10 @@
+ /*
+      * Clear the highlighting surrounding text matches created by findAll.
+      */
+ public void clearMatches() {
++    mLastFind = "";
+     if (mNativeClass == 0)
+         return;
+-    if (mFindIsUp) {
+-        recordNewContentSize(mContentWidth, mContentHeight - mFindHeight, false);
+-        mFindIsUp = false;
+-    }
+-    nativeSetFindIsUp();
+-    // Now that the dialog has been removed, ensure that we scroll to a
+-    // location that is not beyond the end of the page.
+-    pinScrollTo(mScrollX, mScrollY, false, 0);
++    nativeSetFindIsEmpty();
+     invalidate();
+ }
+\ No newline at end of file

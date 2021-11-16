@@ -1,0 +1,18 @@
+diff --git a/ccce1abca1f9d4280b13bd3af1b8bcd0b2f63fd6 b/5afd52cad315f109dd0919452c3968c7baf929de
+index ccce1abca1..5afd52cad3 100644
+--- a/ccce1abca1f9d4280b13bd3af1b8bcd0b2f63fd6
++++ b/5afd52cad315f109dd0919452c3968c7baf929de
+@@ -1,11 +1,10 @@
+ @Override
+-public Void read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
++public void read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
+     messages = new HashMap<>();
+     while (network.readByte() == 1) {
+         String key = network.readString();
+         String value = network.readString();
+         messages.put(key, value);
+     }
+     result = network.readBytes();
+-    return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/f35485a43e7c4da559a97d0fc4d990372e16d636 b/12f7b85ebe9dbece34a4377c75fa36f02884f391
+index f35485a43e..12f7b85ebe 100644
+--- a/f35485a43e7c4da559a97d0fc4d990372e16d636
++++ b/12f7b85ebe9dbece34a4377c75fa36f02884f391
+@@ -1,11 +1,11 @@
+ /**
+  * Execute the command remotely and get the results back.
+  */
+ public Object command(final OCommandRequestText iCommand) {
+     final boolean live = iCommand instanceof OLiveQuery;
+-    final ODatabaseDocument database = ODatabaseRecordThreadLocal.INSTANCE.get();
++    final ODatabaseDocumentInternal database = ODatabaseRecordThreadLocal.INSTANCE.get();
+     final boolean asynch = iCommand instanceof OCommandRequestAsynch && ((OCommandRequestAsynch) iCommand).isAsynchronous();
+-    OBinaryRequest request = new OCommandRequest(asynch, iCommand, live);
+-    OBinaryResponse<Object> response = new OCommandResponse(this, asynch, iCommand.getResultListener(), database, live);
+-    return networkOperation(request, response, "Error on executing command: " + iCommand);
++    OCommandRequest request = new OCommandRequest(database, asynch, iCommand, live);
++    OCommandResponse response = networkOperation(request, "Error on executing command: " + iCommand);
++    return response.getResult();
+ }
+\ No newline at end of file

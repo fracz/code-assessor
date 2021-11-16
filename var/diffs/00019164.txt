@@ -1,0 +1,14 @@
+diff --git a/f1132723ef31fd1991802ce9db4a6cadf57f25cf b/b231349adb5ba5d229c0760c448b2993d9a8e55b
+index f1132723ef..b231349adb 100644
+--- a/f1132723ef31fd1991802ce9db4a6cadf57f25cf
++++ b/b231349adb5ba5d229c0760c448b2993d9a8e55b
+@@ -1,7 +1,3 @@
+ public int getSettingsIconColor() {
+-    if (settingsIconColor != 0) {
+-        return settingsIconColor;
+-    } else {
+-        return getSectonIconSmallColor();
+-    }
++    return getColorWithFallback(settingsIconColor, getSectonIconSmallColor());
+ }
+\ No newline at end of file

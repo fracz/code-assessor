@@ -1,0 +1,20 @@
+diff --git a/3e11164e856ca98004ae2f63b57a4989141a1584 b/d3ce1bf76214203479656499875f7719260a6471
+index 3e11164e85..d3ce1bf762 100644
+--- a/3e11164e856ca98004ae2f63b57a4989141a1584
++++ b/d3ce1bf76214203479656499875f7719260a6471
+@@ -1,12 +1,12 @@
+ @Override
+-public boolean refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
++public DBSObject refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
+     if (attributeCache != null) {
+         attributeCache.clearCache();
+     }
+     if (typeCategory == PostgreTypeCategory.E) {
+         try (JDBCSession session = DBUtils.openMetaSession(monitor, getDataSource(), "Refresh enum values")) {
+             readEnumValues(session);
+         }
+     }
+-    return true;
++    return this;
+ }
+\ No newline at end of file

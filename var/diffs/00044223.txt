@@ -1,0 +1,28 @@
+diff --git a/c1819e2d4569da25fddf35ffa1889107959c1836 b/fabca7a4ae90cf27fb038fedb636946964bf4b95
+index c1819e2d45..fabca7a4ae 100644
+--- a/c1819e2d4569da25fddf35ffa1889107959c1836
++++ b/fabca7a4ae90cf27fb038fedb636946964bf4b95
+@@ -1,11 +1,14 @@
+ @Override
+ public byte[] toStream(final ORecord iSource, final boolean iOnlyDelta) {
+-    checkTypeODocument(iSource);
+-    final BytesContainer container = new BytesContainer();
+-    // WRITE SERIALIZER VERSION
+-    int pos = container.alloc(1);
+-    container.bytes[pos] = CURRENT_RECORD_VERSION;
+-    // SERIALIZE RECORD
+-    serializerByVersion[CURRENT_RECORD_VERSION].serialize((ODocument) iSource, container, false);
+-    return container.fitBytes();
++    if (iSource instanceof OBlob) {
++        return iSource.toStream();
++    } else {
++        final BytesContainer container = new BytesContainer();
++        // WRITE SERIALIZER VERSION
++        int pos = container.alloc(1);
++        container.bytes[pos] = CURRENT_RECORD_VERSION;
++        // SERIALIZE RECORD
++        serializerByVersion[CURRENT_RECORD_VERSION].serialize((ODocument) iSource, container, false);
++        return container.fitBytes();
++    }
+ }
+\ No newline at end of file

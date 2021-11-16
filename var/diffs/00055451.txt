@@ -1,0 +1,20 @@
+diff --git a/b162da5602630ed9f0344e2cb5f49ac6ec79558d b/1525568b17dcab723acef1773bb8deb8b7935b29
+index b162da5602..1525568b17 100644
+--- a/b162da5602630ed9f0344e2cb5f49ac6ec79558d
++++ b/1525568b17dcab723acef1773bb8deb8b7935b29
+@@ -1,12 +1,9 @@
+ @Override
+ public void onApplicationEvent(ContextRefreshedEvent event) {
+-    if (isAutodetect()) {
+-        this.handlerMap.clear();
++    if (this.handlerMap.isEmpty()) {
+         detectResourceHandlers(event.getApplicationContext());
+-        if (!this.handlerMap.isEmpty()) {
+-            this.autodetect = false;
+-        } else if (logger.isDebugEnabled()) {
++        if (logger.isDebugEnabled()) {
+             logger.debug("No resource handling mappings found");
+         }
+     }
+ }
+\ No newline at end of file

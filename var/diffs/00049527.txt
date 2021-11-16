@@ -1,0 +1,19 @@
+diff --git a/159b1b2a82b436c96c549c6fd92fc688a294a890 b/5af1f54108ab8d822bdb6c16c132a28fa66ebb43
+index 159b1b2a82..5af1f54108 100644
+--- a/159b1b2a82b436c96c549c6fd92fc688a294a890
++++ b/5af1f54108ab8d822bdb6c16c132a28fa66ebb43
+@@ -1,12 +1,12 @@
+ protected void updateSQL() {
+     try {
+         String text = curSession == null ? "" : CommonUtils.notEmpty(curSession.getActiveQuery());
+         StringEditorInput sqlInput = new StringEditorInput(sessionTable.getShell().getText(), text, true, GeneralUtils.getDefaultFileEncoding());
+         sqlViewer.init(subSite, sqlInput);
+         if (sqlViewer.getTextViewer() != null) {
+             sqlViewer.reloadSyntaxRules();
+         }
+     } catch (PartInitException e) {
+-        UIUtils.showErrorDialog(sessionTable.getShell(), sessionTable.getShell().getText(), null, e);
++        DBUserInterface.getInstance().showError(sessionTable.getShell().getText(), null, e);
+     }
+ }
+\ No newline at end of file

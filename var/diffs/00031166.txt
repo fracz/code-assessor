@@ -1,0 +1,18 @@
+diff --git a/e22120d5a979376272d8339dfa2b23f3de71902c b/44b10c0b39eeddc09694b8bfbacdb38cc09c607b
+index e22120d5a9..44b10c0b39 100644
+--- a/e22120d5a979376272d8339dfa2b23f3de71902c
++++ b/44b10c0b39eeddc09694b8bfbacdb38cc09c607b
+@@ -1,8 +1,7 @@
+ @Override
+-public InternalAggregation buildAggregation(long owningBucketOrdinal) {
+-    if (valuesSource == null) {
+-        return new InternalMin(name, Double.POSITIVE_INFINITY, formatter, metaData());
++public InternalAggregation buildAggregation(long bucket) {
++    if (valuesSource == null || bucket >= mins.size()) {
++        return buildEmptyAggregation();
+     }
+-    assert owningBucketOrdinal < mins.size();
+-    return new InternalMin(name, mins.get(owningBucketOrdinal), formatter, metaData());
++    return new InternalMin(name, mins.get(bucket), formatter, metaData());
+ }
+\ No newline at end of file

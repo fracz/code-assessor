@@ -1,0 +1,19 @@
+diff --git a/0f68e26da1edd70fc50e5978236732cf8bd651a5 b/5591e0e90b8b8a3c45be50b67d91a7a21d9a2788
+index 0f68e26da1..5591e0e90b 100644
+--- a/0f68e26da1edd70fc50e5978236732cf8bd651a5
++++ b/5591e0e90b8b8a3c45be50b67d91a7a21d9a2788
+@@ -1,11 +1,12 @@
+ private void ensure() {
+     synchronized (myLock) {
+         if (!initialized) {
+             mySchemaProviderMap.clear();
+-            mySchemaProviderMap.putAll(myFactory.create().stream().filter(provider -> provider.getSchemaFile() != null).collect(Collectors.toMap(JsonSchemaFileProvider::getSchemaFile, Function.identity())));
++            mySchemaProviderMap.putAll(myApplicationProviders);
++            mySchemaProviderMap.putAll(createFileProviderMap(myFactory.create()));
+             myUnmodifiableFiles = Collections.unmodifiableSet(mySchemaProviderMap.keySet());
+             myUnmodifiableProviders = Collections.unmodifiableCollection(mySchemaProviderMap.values());
+             initialized = true;
+         }
+     }
+ }
+\ No newline at end of file

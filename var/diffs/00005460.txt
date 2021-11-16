@@ -1,0 +1,17 @@
+diff --git a/fed08517be39ab3f5c8b29055726c3e234e1f99e b/b0ab0d77e25baae742f99fdb1b1526a6277b843b
+index fed08517be..b0ab0d77e2 100644
+--- a/fed08517be39ab3f5c8b29055726c3e234e1f99e
++++ b/b0ab0d77e25baae742f99fdb1b1526a6277b843b
+@@ -1,10 +1,10 @@
+ public static List<CustomLiveTemplate> getApplicableCustomTemplates(Editor editor, PsiFile file) {
+     List<CustomLiveTemplate> result = new ArrayList<CustomLiveTemplate>();
+     int offset = editor.getCaretModel().getOffset();
+     for (CustomLiveTemplate template : CustomLiveTemplate.EP_NAME.getExtensions()) {
+-        if (template.isApplicable(file, offset, true)) {
++        if (template.supportsWrapping() && template.isApplicable(file, offset)) {
+             result.add(template);
+         }
+     }
+     return result;
+ }
+\ No newline at end of file

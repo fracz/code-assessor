@@ -1,0 +1,23 @@
+diff --git a/2f6751fec90f0c3aa304fb24bb44f8219313ac4b b/42d7e97d319590ed4023461efc34096745daacd7
+index 2f6751fec9..42d7e97d31 100644
+--- a/2f6751fec90f0c3aa304fb24bb44f8219313ac4b
++++ b/42d7e97d319590ed4023461efc34096745daacd7
+@@ -1,11 +1,11 @@
+ private void checkClassDescriptor(@NotNull JetExpression expression, @NotNull ClassDescriptor target) {
+     // Deprecated for Class, for ClassObject (if reference isn't in UserType or in ModifierList (trait))
+-    if (KotlinBuiltIns.getInstance().isDeprecated(target)) {
+-        reportAnnotation(expression, target);
+-    } else if (PsiTreeUtil.getParentOfType(expression, JetUserType.class) == null && PsiTreeUtil.getParentOfType(expression, JetModifierList.class) == null) {
+-        ClassDescriptor classObjectDescriptor = target.getClassObjectDescriptor();
+-        if (classObjectDescriptor != null && KotlinBuiltIns.getInstance().isDeprecated(classObjectDescriptor)) {
+-            reportAnnotation(expression, classObjectDescriptor);
++    if (!reportAnnotationIfNeeded(expression, target)) {
++        if (PsiTreeUtil.getParentOfType(expression, JetUserType.class) == null && PsiTreeUtil.getParentOfType(expression, JetModifierList.class) == null) {
++            ClassDescriptor classObjectDescriptor = target.getClassObjectDescriptor();
++            if (classObjectDescriptor != null) {
++                reportAnnotationIfNeeded(expression, classObjectDescriptor);
++            }
+         }
+     }
+ }
+\ No newline at end of file

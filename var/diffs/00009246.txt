@@ -1,0 +1,18 @@
+diff --git a/113a43831a2656e8af4bf50170baa5e90b91da49 b/2e2fc18753516887bebb1079d1f7f48b4f0e5945
+index 113a43831a..2e2fc18753 100644
+--- a/113a43831a2656e8af4bf50170baa5e90b91da49
++++ b/2e2fc18753516887bebb1079d1f7f48b4f0e5945
+@@ -1,9 +1,9 @@
+ private void closeOpenIndices() throws IOException {
+     try {
+-        for (IndexData data : myIndicesData.values()) {
+-            closeIndexData(data);
++        for (MavenIndex data : myIndices) {
++            data.close();
+         }
+     } finally {
+-        myIndicesData.clear();
++        myIndices.clear();
+     }
+ }
+\ No newline at end of file

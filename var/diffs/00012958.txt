@@ -1,0 +1,16 @@
+diff --git a/7ec520c6f3e51ff23513941f0a433f359401dbc8 b/68d2db1fd9ab0d8fad2e1e24c13440fd040e18b3
+index 7ec520c6f3..68d2db1fd9 100644
+--- a/7ec520c6f3e51ff23513941f0a433f359401dbc8
++++ b/68d2db1fd9ab0d8fad2e1e24c13440fd040e18b3
+@@ -1,6 +1,6 @@
+ private void scheduleDeletion(@Nullable VirtualFile file) {
+-    if (file == null)
+-        return;
+-    debug(LOG, "delete file=%s", file);
+-    myEvents.add(new VFileDeleteEvent(null, file, true));
++    if (file != null) {
++        debug(LOG, "delete file=%s", file);
++        myEvents.add(new VFileDeleteEvent(null, file, true));
++    }
+ }
+\ No newline at end of file

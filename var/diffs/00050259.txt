@@ -1,0 +1,15 @@
+diff --git a/eb2209229356050eb4deada85076cfb3052f1a28 b/bbddb84e26290f991e449223c860987d9c03f008
+index eb22092293..bbddb84e26 100644
+--- a/eb2209229356050eb4deada85076cfb3052f1a28
++++ b/bbddb84e26290f991e449223c860987d9c03f008
+@@ -1,8 +1,8 @@
+ @Override
+ public void setContents(IProgressMonitor monitor, InputStream stream) throws CoreException {
+     try (OutputStream os = new FileOutputStream(file)) {
+-        ContentUtils.copyStreams(stream, 0, os, new DefaultProgressMonitor(monitor));
++        ContentUtils.copyStreams(stream, 0, os, RuntimeUtils.makeMonitor(monitor));
+     } catch (IOException e) {
+         throw new CoreException(GeneralUtils.makeExceptionStatus(e));
+     }
+ }
+\ No newline at end of file

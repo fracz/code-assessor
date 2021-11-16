@@ -1,0 +1,25 @@
+diff --git a/ac0979b2fa06fd8bafff55775e935d2dc90bcc6f b/918dd7bbeb345983cf7309ba4cdbd8f05c362bfd
+index ac0979b2fa..918dd7bbeb 100644
+--- a/ac0979b2fa06fd8bafff55775e935d2dc90bcc6f
++++ b/918dd7bbeb345983cf7309ba4cdbd8f05c362bfd
+@@ -1,15 +1,16 @@
+ /**
+  * Checks to see if the given instance group is enabled.
+  * @param group
+  * @return boolean
+  */
+ protected boolean isGroupEnabled(InstanceGroup group) {
+-    String prop = NS + group.type() + "." + group.name() + ".enabled";
+-    String defaultProp = NS + group.type() + ".enabled";
+-    if (cfg.getBoolOrElse(prop, cfg.getBool(defaultProp))) {
++    boolean enabled = getBoolFromCfgOrDefault(group, "enabled", false);
++    if (enabled) {
+         return true;
+     } else {
++        String prop = NS + group.type() + "." + group.name() + ".enabled";
++        String defaultProp = NS + group.type() + ".enabled";
+         LOGGER.info("Group {} [type {}] disabled, set {}=true or {}=true", new Object[] { group.name(), group.type(), prop, defaultProp });
+         return false;
+     }
+ }
+\ No newline at end of file

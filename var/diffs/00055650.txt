@@ -1,0 +1,12 @@
+diff --git a/cc0e70de78ba9a658e6a72ecccbc25112f2df0f3 b/b9710bff86465bcd3ba1ee77064a31ce8534cb88
+index cc0e70de78..b9710bff86 100644
+--- a/cc0e70de78ba9a658e6a72ecccbc25112f2df0f3
++++ b/b9710bff86465bcd3ba1ee77064a31ce8534cb88
+@@ -1,5 +1,5 @@
+ @Test
+ public void testFactoryReferenceWithDoublePrefix() {
+-    XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("factoryCircle.xml", getClass()));
++    XmlBeanFactory xbf = new XmlBeanFactory(FACTORY_CIRCLE_CONTEXT);
+     assertThat(xbf.getBean("&&singletonFactory"), instanceOf(DummyFactory.class));
+ }
+\ No newline at end of file

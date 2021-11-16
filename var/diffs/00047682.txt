@@ -1,0 +1,14 @@
+diff --git a/53434de2d56499d0f355c561637f2e3d3a3108d0 b/b1fbbc2463b876020ae875b8f2b860ddac52c48f
+index 53434de2d5..b1fbbc2463 100644
+--- a/53434de2d56499d0f355c561637f2e3d3a3108d0
++++ b/b1fbbc2463b876020ae875b8f2b860ddac52c48f
+@@ -1,4 +1,7 @@
+ @Override
+ public Future<Boolean> containsAllAsync(Collection<?> c) {
+-    return commandExecutor.evalReadAsync(getName(), codec, RedisCommands.EVAL_BOOLEAN_WITH_VALUES, "local s = redis.call('smembers', KEYS[1]);" + "for i = 1, #s, 1 do " + "for j = 1, #ARGV, 1 do " + "if ARGV[j] == s[i] " + "then table.remove(ARGV, j) end " + "end; " + "end;" + "return #ARGV == 0 and 1 or 0; ", Collections.<Object>singletonList(getName()), c.toArray());
++    if (c.isEmpty()) {
++        return newSucceededFuture(true);
++    }
++    return commandExecutor.evalWriteAsync(getName(), codec, new RedisCommand<Boolean>("EVAL", new BooleanReplayConvertor(), 5, ValueType.OBJECTS), "redis.call('sadd', KEYS[2], unpack(ARGV)); " + "local size = redis.call('sdiff', KEYS[2], KEYS[1]);" + "redis.call('del', KEYS[2]); " + "return #size == 0 and 1 or 0; ", Arrays.asList(getName(), "redisson_temp__{" + getName() + "}"), c.toArray());
+ }
+\ No newline at end of file

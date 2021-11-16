@@ -1,0 +1,28 @@
+diff --git a/b080f6605816f9a6341ea5573c09069bd7bd0fea b/daf53c6a250c6eadab28faa181f2388b1a25b4f4
+index b080f66058..daf53c6a25 100644
+--- a/b080f6605816f9a6341ea5573c09069bd7bd0fea
++++ b/daf53c6a250c6eadab28faa181f2388b1a25b4f4
+@@ -1,18 +1,19 @@
+ /**
+  * Unfilters any filtered stacks
+  */
+ public boolean unfilterFilteredStacks() {
+-    if (mBSP != null) {
++    if (mStacks != null) {
+         // Check if there are any filtered stacks and unfilter them before we back out of Recents
+         boolean stacksUnfiltered = false;
+-        ArrayList<TaskStack> stacks = mBSP.getStacks();
+-        for (TaskStack stack : stacks) {
++        int numStacks = mStacks.size();
++        for (int i = 0; i < numStacks; i++) {
++            TaskStack stack = mStacks.get(i);
+             if (stack.hasFilteredTasks()) {
+                 stack.unfilterTasks();
+                 stacksUnfiltered = true;
+             }
+         }
+         return stacksUnfiltered;
+     }
+     return false;
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/18bcb78ea7da4cb5394e4a10d0ca07a1880765ef b/687e19a4146381d7382b09480507f3dab47f3549
+index 18bcb78ea7..687e19a414 100644
+--- a/18bcb78ea7da4cb5394e4a10d0ca07a1880765ef
++++ b/687e19a4146381d7382b09480507f3dab47f3549
+@@ -1,8 +1,9 @@
+ public void requestRelease() {
+-    if (isReleaseRequested())
+-        return;
+-    assertIsDispatchThread();
+     myReleaseRequested = true;
+-    getUpdater().requestRelease();
+-    maybeReady();
++    cancelUpdate().doWhenDone(new Runnable() {
++
++        public void run() {
++            releaseNow();
++        }
++    });
+ }
+\ No newline at end of file

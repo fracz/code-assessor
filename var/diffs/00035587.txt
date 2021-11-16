@@ -1,0 +1,13 @@
+diff --git a/9d6e76821f9abde810f2ddb2b5f16083425db6c1 b/d83a1fef134802a5d8c50fba98fe56bafc57dcee
+index 9d6e76821f..d83a1fef13 100644
+--- a/9d6e76821f9abde810f2ddb2b5f16083425db6c1
++++ b/d83a1fef134802a5d8c50fba98fe56bafc57dcee
+@@ -1,6 +1,4 @@
+ public void setBackgroundColorRes(@ColorRes int colorRes) {
+-    if (getDrawable() instanceof IconicsDrawable) {
+-        ((IconicsDrawable) getDrawable()).backgroundColorRes(colorRes);
+-    }
+     mIconBundle.mBackgroundColor = ContextCompat.getColor(getContext(), colorRes);
++    mIconBundle.applyProperties();
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/6311797fd303e4b9cb7ecc1e464e6dfb21eaf7f6 b/b59b10559a736538add1b79fc7d87124a1c22f0a
+index 6311797fd3..b59b10559a 100644
+--- a/6311797fd303e4b9cb7ecc1e464e6dfb21eaf7f6
++++ b/b59b10559a736538add1b79fc7d87124a1c22f0a
+@@ -1,12 +1,8 @@
+ @Override
+ public void clear() {
+-    lock.lock();
+-    try {
+-        int size = item2Index.size();
+-        item2Index.clear();
+-        Object[] arr = new Object[size];
+-        index2Item.set(arr);
+-    } finally {
+-        lock.unlock();
++    synchronized (this) {
++        item2Index = new ConcurrentHashMap<E, Integer>();
++        index2Item = new ConcurrentHashMap<Integer, E>();
++        index = new AtomicInteger();
+     }
+ }
+\ No newline at end of file

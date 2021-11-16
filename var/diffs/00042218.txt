@@ -1,0 +1,19 @@
+diff --git a/01cc2faf1060163900e4f154b40492c03afacc59 b/3719a1b535709a26e0f97b1f7f2db60664379cec
+index 01cc2faf10..3719a1b535 100644
+--- a/01cc2faf1060163900e4f154b40492c03afacc59
++++ b/3719a1b535709a26e0f97b1f7f2db60664379cec
+@@ -1,11 +1,11 @@
+ @Test(dependsOnMethods = "read")
+ public void update() {
+     database.open("admin", "admin");
+     record.reset();
+-    record = (ODocument) database.browseClass("Animal").last().previous();
++    record = database.browseClass("Animal").last().previous();
+     List<ODocument> races = record.field("races");
+-    races.add(database.newInstance("AnimalRace").field("name", "Egyptian"));
++    races.add(((ODocument) database.newInstance("AnimalRace")).field("name", "Egyptian"));
+     record.setDirty();
+     record.save();
+     database.close();
+ }
+\ No newline at end of file

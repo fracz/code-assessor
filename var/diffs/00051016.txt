@@ -1,0 +1,15 @@
+diff --git a/f712b473f6dcaa5cd86a2bd41316eaf3627f41d1 b/177fc9728e30aa90a66db801fffaf9dd420978e2
+index f712b473f6..177fc9728e 100644
+--- a/f712b473f6dcaa5cd86a2bd41316eaf3627f41d1
++++ b/177fc9728e30aa90a66db801fffaf9dd420978e2
+@@ -1,8 +1,4 @@
+ @Override
+ public void abort(Executor executor) throws SQLException {
+-    try {
+-        getConnection().abort(executor);
+-    } catch (IncompatibleClassChangeError e) {
+-        throw new SQLFeatureNotSupportedException(JDBCConstants.ERROR_API_NOT_SUPPORTED_17);
+-    }
++    JDBCUtils.callMethod17(getConnection(), "abort", null, new Class[] { Executor.class }, executor);
+ }
+\ No newline at end of file

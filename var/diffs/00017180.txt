@@ -1,0 +1,22 @@
+diff --git a/de60c1b1cec3643d2b6058829fe5cb003140a9ff b/96b0bece2085d8b0f9b4d3f0b96d93f1a7e71d16
+index de60c1b1ce..96b0bece20 100644
+--- a/de60c1b1cec3643d2b6058829fe5cb003140a9ff
++++ b/96b0bece2085d8b0f9b4d3f0b96d93f1a7e71d16
+@@ -1,12 +1,8 @@
+-private StackValue generateSafeQualifiedExpression(@NotNull JetSafeQualifiedExpression expression, @NotNull Label ifnull) {
++private StackValue generateSafeQualifiedExpression(@NotNull JetSafeQualifiedExpression expression, @NotNull Label ifNull) {
+     JetExpression receiver = expression.getReceiverExpression();
+     JetExpression selector = expression.getSelectorExpression();
+     Type receiverType = expressionType(receiver);
+-    generateExpressionWithNullFallback(receiver, ifnull);
+-    if (isPrimitive(receiverType)) {
+-        return genQualified(StackValue.onStack(receiverType), selector);
+-    }
+-    v.dup();
+-    v.ifnull(ifnull);
+-    return genQualified(StackValue.onStack(receiverType), selector);
++    StackValue receiverValue = generateExpressionWithNullFallback(receiver, ifNull);
++    StackValue newReceiver = new StackValue.Safe(receiverType, receiverValue, isPrimitive(receiverType) ? null : ifNull);
++    return genQualified(newReceiver, selector);
+ }
+\ No newline at end of file

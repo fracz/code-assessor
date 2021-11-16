@@ -1,0 +1,15 @@
+diff --git a/dbca1d9242da7ecd9c71352da49bbded43f3e37c b/f2aec32aefc8f79ecb340f63a71a43fe6a270ebd
+index dbca1d9242..f2aec32aef 100644
+--- a/dbca1d9242da7ecd9c71352da49bbded43f3e37c
++++ b/f2aec32aefc8f79ecb340f63a71a43fe6a270ebd
+@@ -1,8 +1,8 @@
+ @Override
+ public <O> O get(ConfigOption<O> option, String... umbrellaElements) {
+     if (first.has(option, umbrellaElements))
+         return first.get(option, umbrellaElements);
+     if (second.has(option, umbrellaElements))
+         return second.get(option, umbrellaElements);
+-    return null;
++    return option.getDefaultValue();
+ }
+\ No newline at end of file

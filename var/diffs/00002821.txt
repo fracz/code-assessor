@@ -1,0 +1,20 @@
+diff --git a/f848007b3e90bd30f9ea25f75097b464fad75419 b/2308fee0725aa00dbaccb71f87645b74baf4816f
+index f848007b3e..2308fee072 100644
+--- a/f848007b3e90bd30f9ea25f75097b464fad75419
++++ b/2308fee0725aa00dbaccb71f87645b74baf4816f
+@@ -1,12 +1,13 @@
+ static boolean isTagTreeHighlightingActive(PsiFile file) {
+     if (ApplicationManager.getApplication().isUnitTestMode()) {
+         return false;
+     }
+-    if (!(file instanceof XmlFile) || !HtmlUtil.hasHtml(file)) {
++    if (!(file instanceof XmlFile)) /* || !HtmlUtil.hasHtml(file)*/
++    {
+         return false;
+     }
+     if (!WebEditorOptions.getInstance().isTagTreeHighlightingEnabled()) {
+         return false;
+     }
+     return true;
+ }
+\ No newline at end of file

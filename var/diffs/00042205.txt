@@ -1,0 +1,21 @@
+diff --git a/ba62cb5797dc14f9dd965033b99c6a847bb55d45 b/cbc45cace156565a3d6ac17b7a2e247bfa5af693
+index ba62cb5797..cbc45cace1 100644
+--- a/ba62cb5797dc14f9dd965033b99c6a847bb55d45
++++ b/cbc45cace156565a3d6ac17b7a2e247bfa5af693
+@@ -1,6 +1,10 @@
+-public Query buildQuery(Object query) throws ParseException {
+-    // OLuceneIndexEngine luceneIndexEngine = (OLuceneIndexEngine) indexEngine;
+-    // return luceneIndexEngine.buildQuery(query);
+-    OLuceneIndexEngine oIndexEngine = (OLuceneIndexEngine) storage.getIndexEngine(indexId);
+-    return oIndexEngine.buildQuery(query);
++public Query buildQuery(final Object query) throws ParseException {
++    return storage.callIndexEngine(false, false, indexId, new OIndexEngineCallback<Query>() {
++
++        @Override
++        public Query callEngine(OIndexEngine engine) {
++            OLuceneIndexEngine indexEngine = (OLuceneIndexEngine) engine;
++            return indexEngine.buildQuery(query);
++        }
++    });
+ }
+\ No newline at end of file

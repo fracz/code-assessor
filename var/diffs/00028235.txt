@@ -1,0 +1,22 @@
+diff --git a/9ca9445ac85527194a1c8ff4e559b14203363fa2 b/fb002a30f0bb30b5e0c66dd4b7ebbedd19e13850
+index 9ca9445ac8..fb002a30f0 100644
+--- a/9ca9445ac85527194a1c8ff4e559b14203363fa2
++++ b/fb002a30f0bb30b5e0c66dd4b7ebbedd19e13850
+@@ -1,15 +1,10 @@
+ @Test
+ public void testListenTwice2() throws Exception {
+     server.requestHandler(noOpHandler());
+     server.listen(ar -> {
+         assertTrue(ar.succeeded());
+-        try {
+-            server.listen();
+-            fail("Should throw exception");
+-        } catch (IllegalStateException e) {
+-        // Ok
+-        }
++        assertIllegalStateException(() -> server.listen());
+         testComplete();
+     });
+     await();
+ }
+\ No newline at end of file

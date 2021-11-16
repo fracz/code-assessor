@@ -1,0 +1,22 @@
+diff --git a/47da7bb4c809c2efc66713dade5e19fbc0106d61 b/45792a586b8b1a556162d0ed9eeff4aaaeafb8f1
+index 47da7bb4c8..45792a586b 100644
+--- a/47da7bb4c809c2efc66713dade5e19fbc0106d61
++++ b/45792a586b8b1a556162d0ed9eeff4aaaeafb8f1
+@@ -1,13 +1,13 @@
+ @Override
+-public void changeEvent(@NotNull DebuggerContextImpl newContext, int event) {
+-    if (event == DebuggerSession.EVENT_ATTACHED) {
++public void changeEvent(@NotNull DebuggerContextImpl newContext, DebuggerSession.Event event) {
++    if (event == DebuggerSession.Event.ATTACHED) {
+         for (XBreakpoint breakpoint : getXBreakpointManager().getAllBreakpoints()) {
+             if (checkAndNotifyPossiblySlowBreakpoint(breakpoint))
+                 break;
+         }
+     }
+-    if (newContext.getDebuggerSession() != myPreviousSession || event == DebuggerSession.EVENT_DETACHED) {
++    if (newContext.getDebuggerSession() != myPreviousSession || event == DebuggerSession.Event.DETACHED) {
+         updateBreakpointsUI();
+         myPreviousSession = newContext.getDebuggerSession();
+     }
+ }
+\ No newline at end of file

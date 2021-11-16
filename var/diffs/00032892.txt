@@ -1,0 +1,21 @@
+diff --git a/0461ee16e07e6796279da6d733a95fd957914782 b/84d75204cc9180c3eb1e882a04001db66e6d3e93
+index 0461ee16e0..84d75204cc 100644
+--- a/0461ee16e07e6796279da6d733a95fd957914782
++++ b/84d75204cc9180c3eb1e882a04001db66e6d3e93
+@@ -1,10 +1,8 @@
+-public T get(InternalContext context, InjectionPoint<?> injectionPoint) {
+-    Provider<? extends T> provider = providerFactory.get(context, injectionPoint);
++public T get(Errors errors, InternalContext context, InjectionPoint<?> injectionPoint) throws ResolveFailedException {
++    Provider<? extends T> provider = providerFactory.get(errors, context, injectionPoint);
+     try {
+-        return injectionPoint.checkForNull(provider.get(), source);
+-    } catch (ProvisionException e) {
+-        throw e;
+-    } catch (RuntimeException e) {
+-        throw new ProvisionException(ErrorMessage.errorInProvider().toString(), e);
++        return injectionPoint.checkForNull(errors, provider.get(), source);
++    } catch (RuntimeException userCodeFailed) {
++        throw errors.errorInProvider(userCodeFailed).toException();
+     }
+ }
+\ No newline at end of file

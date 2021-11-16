@@ -1,0 +1,26 @@
+diff --git a/59822f40b82970de5450e0cac5f47fc57e97d1f6 b/a74a3fb2c1f11bbbefd2bbf5a983f1772d24aba5
+index 59822f40b8..a74a3fb2c1 100644
+--- a/59822f40b82970de5450e0cac5f47fc57e97d1f6
++++ b/a74a3fb2c1f11bbbefd2bbf5a983f1772d24aba5
+@@ -1,19 +1,17 @@
+ /**
+  * <!-- begin-user-doc --> <!-- end-user-doc -->
+  *
+  * @generated NOT
+  */
+ @Override
+-public DecimalValue fetchSensorValue() {
++public void fetchSensorValue() {
+     try {
+         short temperature = tinkerforgeDevice.getTemperature();
+         DecimalValue value = Tools.calculate100(temperature);
+         setSensorValue(value);
+-        return value;
+     } catch (TimeoutException e) {
+         TinkerforgeErrorHandler.handleError(this, TinkerforgeErrorHandler.TF_TIMEOUT_EXCEPTION, e);
+     } catch (NotConnectedException e) {
+         TinkerforgeErrorHandler.handleError(this, TinkerforgeErrorHandler.TF_NOT_CONNECTION_EXCEPTION, e);
+     }
+-    return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/c068703d3db66e0ad7cca8219f74cbbe7d11fabc b/3d849431dc44172f06d290afa9e75b5d9a68a0ed
+index c068703d3d..3d849431dc 100644
+--- a/c068703d3db66e0ad7cca8219f74cbbe7d11fabc
++++ b/3d849431dc44172f06d290afa9e75b5d9a68a0ed
+@@ -1,9 +1,8 @@
+ @Test
+-@Ignore
+-public // We can't fail on duplicate keys because the Map is created by the YAML library
+-void testLoadResourcesWithInternalOverride() throws Exception {
++@Ignore("We can't fail on duplicate keys because the Map is created by the YAML library")
++public void testLoadResourcesWithInternalOverride() throws Exception {
+     YamlPropertiesFactoryBean factory = new YamlPropertiesFactoryBean();
+     factory.setResources(new Resource[] { new ByteArrayResource("foo: bar\nspam:\n  foo: baz\nfoo: bucket".getBytes()) });
+     Properties properties = factory.getObject();
+-    assertEquals("bar", properties.get("foo"));
++    assertThat(properties.getProperty("foo"), equalTo("bar"));
+ }
+\ No newline at end of file

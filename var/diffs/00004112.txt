@@ -1,0 +1,18 @@
+diff --git a/b54eaa40f4aeac00e229beb673a3a2a5385e7662 b/f4a2389a71e72827d7865582270f60e70621f7a4
+index b54eaa40f4..f4a2389a71 100644
+--- a/b54eaa40f4aeac00e229beb673a3a2a5385e7662
++++ b/f4a2389a71e72827d7865582270f60e70621f7a4
+@@ -1,10 +1,6 @@
+ private boolean isIgnoredProject(AnActionEvent e) {
+-    VirtualFile file = getMavenProjectFile(e);
+-    if (file == null)
+-        return false;
+-    MavenProjectsManager manager = getProjectsManager(e);
+-    MavenProject project = manager.findProject(file);
++    MavenProject project = MavenActionUtils.getMavenProject(e);
+     if (project == null)
+         return false;
+-    return manager.isIgnored(project);
++    return MavenActionUtils.getProjectsManager(e).isIgnored(project);
+ }
+\ No newline at end of file

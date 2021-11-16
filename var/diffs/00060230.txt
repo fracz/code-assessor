@@ -1,0 +1,12 @@
+diff --git a/6be5b141cb481d8a09932033a7c133d46562917e b/90a6b827158490ed2277b390a8f64887ef65be23
+index 6be5b141cb..90a6b82715 100644
+--- a/6be5b141cb481d8a09932033a7c133d46562917e
++++ b/90a6b827158490ed2277b390a8f64887ef65be23
+@@ -1,5 +1,5 @@
+ @Override
+ public void handleChildChange(String parentPath, List<String> currentChilds) {
+-    ZookeeperRegistry.this.notify(url, notifyListener, nodeChildsToUrls(parentPath, currentChilds));
++    serviceListener.notifyService(url, getUrl(), nodeChildsToUrls(parentPath, currentChilds));
+     LoggerUtil.info(String.format("[ZookeeperRegistry] service list change: path=%s, currentChilds=%s", parentPath, currentChilds.toString()));
+ }
+\ No newline at end of file

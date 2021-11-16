@@ -1,0 +1,17 @@
+diff --git a/ec2d8c9fcc47f929f5b2ad006c61ee9a9d2056ae b/82b17d308f31cbf5af527bc9f0dde65244030449
+index ec2d8c9fcc..82b17d308f 100644
+--- a/ec2d8c9fcc47f929f5b2ad006c61ee9a9d2056ae
++++ b/82b17d308f31cbf5af527bc9f0dde65244030449
+@@ -1,9 +1,9 @@
+ public void addScheme(CodeStyleScheme scheme) {
+     CodeStyleSettings settings = scheme.getCodeStyleSettings();
+-    if (scheme.isDefault()) {
+-        settings = (CodeStyleSettings) settings.clone();
++    if (cannotBeModified(scheme)) {
++        settings = settings.clone();
+     }
+     final CodeStyleSettingsPanel settingsPanel = new CodeStyleSettingsPanel(settings);
+     add(scheme.getName(), settingsPanel);
+     mySchemes.put(scheme.getName(), settingsPanel);
+ }
+\ No newline at end of file

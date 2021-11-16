@@ -1,0 +1,23 @@
+diff --git a/46bb1e31655d8f9389782a7814c2a4338b7c5aea b/665d76e4d4b527434d99c93cfc0d1df0b8efd8af
+index 46bb1e3165..665d76e4d4 100644
+--- a/46bb1e31655d8f9389782a7814c2a4338b7c5aea
++++ b/665d76e4d4b527434d99c93cfc0d1df0b8efd8af
+@@ -1,16 +1,4 @@
+ @Override
+ protected void doRevert() throws IOException {
+-    myVcs.accept(new ChangeRevertionVisitor(myVcs, myGateway) {
+-
+-        @Override
+-        public void visit(ChangeSet c) throws StopVisitingException {
+-            if (!myVcs.isBefore(myChange, c, true))
+-                stop();
+-        }
+-
+-        @Override
+-        protected boolean shouldProcess(StructuralChange c) {
+-            return myVcs.isInTheChain(myChange, c);
+-        }
+-    });
++    myVcs.accept(selective(new ChangeRevertionVisitor(myVcs, myGateway)));
+ }
+\ No newline at end of file

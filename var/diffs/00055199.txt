@@ -1,0 +1,14 @@
+diff --git a/c8de0ad8a183ef8364be18f58053973452d1478b b/02338e8fc18871ff145c476c5af9737407e7a6c1
+index c8de0ad8a1..02338e8fc1 100644
+--- a/c8de0ad8a183ef8364be18f58053973452d1478b
++++ b/02338e8fc18871ff145c476c5af9737407e7a6c1
+@@ -1,7 +1,7 @@
+ @Override
+ protected ViewGroupMvpDelegate<V, P> getMvpDelegate() {
+     if (mvpDelegate == null) {
+-        mvpDelegate = new ViewGroupMvpViewStateDelegateImpl<V, P>(this);
++        mvpDelegate = new ViewGroupMvpViewStateDelegateImpl<>(this, true);
+     }
+     return mvpDelegate;
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/57b0515877e2225810495f5b7069288b2a72b8a2 b/5820da9a549837c368eaf1f7a1e41a48c85624ed
+index 57b0515877..5820da9a54 100644
+--- a/57b0515877e2225810495f5b7069288b2a72b8a2
++++ b/5820da9a549837c368eaf1f7a1e41a48c85624ed
+@@ -1,7 +1,4 @@
+ public void markAsDecryptFailed(long messageId, long threadId) {
+-    SQLiteDatabase database = databaseHelper.getWritableDatabase();
+-    ContentValues contentValues = new ContentValues();
+-    contentValues.put(MESSAGE_BOX, Types.MESSAGE_BOX_DECRYPT_FAILED_INBOX);
+-    database.update(TABLE_NAME, contentValues, ID_WHERE, new String[] { messageId + "" });
++    updateMailboxBitmask(messageId, Types.ENCRYPTION_MASK, Types.ENCRYPTION_REMOTE_FAILED_BIT);
+     notifyConversationListeners(threadId);
+ }
+\ No newline at end of file

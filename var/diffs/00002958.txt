@@ -1,0 +1,15 @@
+diff --git a/5e855e6d42fcc7f273edae1cb47161b01ea2e3cb b/eb181eedb0473191fb290a04b1e5ff70965b65b1
+index 5e855e6d42..eb181eedb0 100644
+--- a/5e855e6d42fcc7f273edae1cb47161b01ea2e3cb
++++ b/eb181eedb0473191fb290a04b1e5ff70965b65b1
+@@ -1,3 +1,7 @@
+-private AnalysisScope getModuleScope(DataContext dataContext) {
+-    return new AnalysisScope(LangDataKeys.MODULE.getData(dataContext));
++private static AnalysisScope getModuleScope(DataContext dataContext) {
++    final Module data = LangDataKeys.MODULE.getData(dataContext);
++    if (data == null) {
++        return null;
++    }
++    return new AnalysisScope(data);
+ }
+\ No newline at end of file

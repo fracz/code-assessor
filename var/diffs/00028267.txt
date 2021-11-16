@@ -1,0 +1,22 @@
+diff --git a/5b9ad30541c20de24e32d34320efea72cec5d5c8 b/f9e256a34b989185419d7c2b8fd2e6022ba8058e
+index 5b9ad30541..f9e256a34b 100644
+--- a/5b9ad30541c20de24e32d34320efea72cec5d5c8
++++ b/f9e256a34b989185419d7c2b8fd2e6022ba8058e
+@@ -1,14 +1,10 @@
+ @Override
+ public WebSocketConnectOptions addHeader(CharSequence name, CharSequence value) {
+-    if (name == null) {
+-        throw new NullPointerException("name");
+-    }
+-    if (value == null) {
+-        throw new NullPointerException("value");
+-    }
++    Objects.requireNonNull(name, "name");
++    Objects.requireNonNull(value, "value");
+     if (headers == null) {
+         headers = new CaseInsensitiveHeaders();
+     }
+     headers.add(name, value);
+     return this;
+ }
+\ No newline at end of file

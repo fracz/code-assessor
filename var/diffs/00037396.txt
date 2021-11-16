@@ -1,0 +1,17 @@
+diff --git a/f00003f2845e1413c6c976c736375a913f56a3e0 b/71df87d1f2b54882c777d0ff1857c2f74e1b5965
+index f00003f284..71df87d1f2 100644
+--- a/f00003f2845e1413c6c976c736375a913f56a3e0
++++ b/71df87d1f2b54882c777d0ff1857c2f74e1b5965
+@@ -1,8 +1,8 @@
+-private boolean initUserGroup(UserGroupParam userGroup) {
+-    if (StringUtils.isEmpty(userGroup.getUserId())) {
++private boolean initUserGroup(UserGroup userGroup, String userId) {
++    if (StringUtils.isEmpty(userId)) {
+         userGroupService.deleteUserGroup(userGroup);
+         return false;
+     }
+-    userGroupService.insertMember(new UserGroupMember(userGroup.getId(), userGroup.getUserId()));
++    userGroupService.insertMember(new UserGroupMember(userGroup.getId(), userId));
+     return true;
+ }
+\ No newline at end of file

@@ -1,0 +1,39 @@
+diff --git a/a2ffa94e284520c0f959e3be103b5db22f63f97b b/910d803281d6c0a465dfbf9cd8aca4529b9fe501
+index a2ffa94e28..910d803281 100644
+--- a/a2ffa94e284520c0f959e3be103b5db22f63f97b
++++ b/910d803281d6c0a465dfbf9cd8aca4529b9fe501
+@@ -1,30 +1,30 @@
+ /**
+  * Sets whether or not (default) the content of this view is selectable by the user.
+  *
+  * Note that this methods affect the {@link #setFocusable(boolean)},
+  * {@link #setFocusableInTouchMode(boolean)} {@link #setClickable(boolean)} and
+  * {@link #setLongClickable(boolean)} states and you may want to restore these if they were
+  * customized.
+  *
+  * See {@link #isTextSelectable} for details.
+  *
+  * @param selectable Whether or not the content of this TextView should be selectable.
+  */
+ public void setTextIsSelectable(boolean selectable) {
+     // false is default value with no edit data
+     if (!selectable && mEditor == null)
+         return;
+     createEditorIfNeeded("setTextIsSelectable");
+-    if (getEditor().mTextIsSelectable == selectable)
++    if (mEditor.mTextIsSelectable == selectable)
+         return;
+-    getEditor().mTextIsSelectable = selectable;
++    mEditor.mTextIsSelectable = selectable;
+     setFocusableInTouchMode(selectable);
+     setFocusable(selectable);
+     setClickable(selectable);
+     setLongClickable(selectable);
+     // mInputType should already be EditorInfo.TYPE_NULL and mInput should be null
+     setMovementMethod(selectable ? ArrowKeyMovementMethod.getInstance() : null);
+     setText(getText(), selectable ? BufferType.SPANNABLE : BufferType.NORMAL);
+     // Called by setText above, but safer in case of future code changes
+-    getEditor().prepareCursorControllers();
++    mEditor.prepareCursorControllers();
+ }
+\ No newline at end of file

@@ -1,0 +1,25 @@
+diff --git a/3af174a94c674cb2fb54e902f82254e764b56ad7 b/b18d608b8908b22ccdd7a6c36da984aeb9d355ad
+index 3af174a94c..b18d608b89 100644
+--- a/3af174a94c674cb2fb54e902f82254e764b56ad7
++++ b/b18d608b8908b22ccdd7a6c36da984aeb9d355ad
+@@ -1,15 +1,16 @@
+ /**
+  * Creates lesson directory in its course folder in project user created
+  *
+  * @param courseDir    project directory of course
+  * @param resourceRoot directory where original lesson stored
+  * @throws IOException
+  */
+-public void create(VirtualFile courseDir, File resourceRoot) throws IOException {
++public void create(@NotNull final VirtualFile courseDir, @NotNull final File resourceRoot) throws IOException {
+     String lessonDirName = LESSON_DIR + Integer.toString(myIndex + 1);
+     VirtualFile lessonDir = courseDir.createChildDirectory(this, lessonDirName);
+     for (int i = 0; i < taskList.size(); i++) {
+-        taskList.get(i).setIndex(i);
+-        taskList.get(i).create(lessonDir, new File(resourceRoot, lessonDir.getName()));
++        Task task = taskList.get(i);
++        task.setIndex(i);
++        task.create(lessonDir, new File(resourceRoot, lessonDir.getName()));
+     }
+ }
+\ No newline at end of file

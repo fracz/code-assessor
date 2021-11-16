@@ -1,0 +1,16 @@
+diff --git a/d4a8ea9da6f351baea5444e2639a3cf2cf9e9b9c b/7e40a8c6cce75f464e8a57aad58a672e267777ec
+index d4a8ea9da6..7e40a8c6cc 100644
+--- a/d4a8ea9da6f351baea5444e2639a3cf2cf9e9b9c
++++ b/7e40a8c6cce75f464e8a57aad58a672e267777ec
+@@ -1,6 +1,8 @@
+ @Before
+ public void setUp() {
+     System.out.println("setUp");
+-    LUDecomposition lu = new LUDecomposition(A);
+-    lu.solve(b, x);
++    DenseMatrix a = Matrix.newInstance(A);
++    LU lu = a.lu();
++    x = b.clone();
++    lu.solve(x);
+ }
+\ No newline at end of file

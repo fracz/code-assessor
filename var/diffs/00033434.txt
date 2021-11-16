@@ -1,0 +1,26 @@
+diff --git a/85a3e38c82a2729c952953544f51845d45900e08 b/029bf62465a9f9265476c7ca0807d3500a39983f
+index 85a3e38c82..029bf62465 100644
+--- a/85a3e38c82a2729c952953544f51845d45900e08
++++ b/029bf62465a9f9265476c7ca0807d3500a39983f
+@@ -1,18 +1,14 @@
+-public DependencyDescriptor maybeResolveDynamicRevision(DependencyResolver resolver, DependencyDescriptor original) {
+-    assert cachePolicy != null : "dynamicRevisionExpiryPolicy was not configured";
++private DependencyDescriptor maybeResolveDynamicRevision(DependencyResolver resolver, DependencyDescriptor original) {
+     ModuleRevisionId originalId = original.getDependencyRevisionId();
+     ModuleResolutionCache.CachedModuleResolution cachedModuleResolution = moduleResolutionCache.getCachedModuleResolution(resolver, originalId);
+-    if (cachedModuleResolution == null) {
+-        return original;
+-    }
+-    if (cachedModuleResolution.isDynamicVersion()) {
++    if (cachedModuleResolution != null && cachedModuleResolution.isDynamicVersion()) {
+         if (cachePolicy.mustRefreshDynamicVersion(cachedModuleResolution.getResolvedModule(), cachedModuleResolution.getAgeMillis())) {
+             LOGGER.debug("Resolved revision in dynamic revision cache is expired: will perform fresh resolve of '{}'", originalId);
+             return original;
+         } else {
+             LOGGER.debug("Found resolved revision in dynamic revision cache: Using '{}' for '{}'", cachedModuleResolution.getResolvedVersion(), originalId);
+             return original.clone(cachedModuleResolution.getResolvedVersion());
+         }
+     }
+     return original;
+ }
+\ No newline at end of file

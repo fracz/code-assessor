@@ -1,0 +1,16 @@
+diff --git a/b18bdeacc47c6a041f0e7d99b336482a3ea9ff1e b/a8a243ba97bc023630734ad268c6be1b0b20e6f8
+index b18bdeacc4..a8a243ba97 100644
+--- a/b18bdeacc47c6a041f0e7d99b336482a3ea9ff1e
++++ b/a8a243ba97bc023630734ad268c6be1b0b20e6f8
+@@ -1,9 +1,9 @@
+ @Test
+ public void testUnsatisfiedSimpleDependencyCheck() throws Exception {
+     try {
+-        XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("unsatisfiedSimpleDependencyCheck.xml", getClass()));
++        XmlBeanFactory xbf = new XmlBeanFactory(UNSATISFIED_SIMPLE_DEP_CONTEXT);
+         xbf.getBean("a", DependenciesBean.class);
+         fail("Must have thrown an UnsatisfiedDependencyException");
+     } catch (UnsatisfiedDependencyException expected) {
+     }
+ }
+\ No newline at end of file

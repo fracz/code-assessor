@@ -1,0 +1,10 @@
+diff --git a/737b760a2e0079ee662d873d9725e0f654f33382 b/b28d4d85b3eb52fc1fb884aa7b009cde22e5dd29
+index 737b760a2e..b28d4d85b3 100644
+--- a/737b760a2e0079ee662d873d9725e0f654f33382
++++ b/b28d4d85b3eb52fc1fb884aa7b009cde22e5dd29
+@@ -1,3 +1,3 @@
+ public void invoke(@NotNull Project project, Editor editor, PsiFile file, DataContext dataContext) {
+-    performAction(project, editor, file, null, InitPlace.SAME_METHOD, false, true, isTestClass(file, editor));
++    performAction(new IntroduceOperation(project, editor, file, null, false, true, isTestClass(file, editor)));
+ }
+\ No newline at end of file

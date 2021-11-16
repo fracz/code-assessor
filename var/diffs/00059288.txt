@@ -1,0 +1,29 @@
+diff --git a/ed929dac05596a750ea0b650551cd24dc469245d b/0fefcf9f148271e33b0089ff93d5786224386935
+index ed929dac05..0fefcf9f14 100644
+--- a/ed929dac05596a750ea0b650551cd24dc469245d
++++ b/0fefcf9f148271e33b0089ff93d5786224386935
+@@ -1,18 +1,21 @@
+ /**
+  * {@inheritDoc}
+  *
+  * <p/>
+  *
+  * This implementation supports locking when {@code lockStore} is non-null.
+  */
+ @Override
+ public void acquireLock(StaticBuffer key, StaticBuffer column, StaticBuffer expectedValue, StoreTransaction txh) throws StorageException {
+-    if (lockStore != null) {
++    if (locker != null) {
+         ConsistentKeyLockTransaction tx = (ConsistentKeyLockTransaction) txh;
+         if (tx.isMutationStarted())
+             throw new PermanentLockingException("Attempted to obtain a lock after mutations had been persisted");
+-        tx.writeBlindLockClaim(this, key, column, expectedValue);
++        KeyColumn lockID = new KeyColumn(key, column);
++        locker.writeLock(lockID, tx);
++        // TODO store expected value
++        throw new UnsupportedOperationException("storing expected values unimplemented");
+     } else {
+         dataStore.acquireLock(key, column, expectedValue, getTx(txh));
+     }
+ }
+\ No newline at end of file

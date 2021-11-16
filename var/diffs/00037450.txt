@@ -1,0 +1,16 @@
+diff --git a/ed5085506f4221a5704bee64c8cb57d5286e8f6f b/80f8ec75c5475f23b42f618a59f6e9bd7f278ab0
+index ed5085506f..80f8ec75c5 100644
+--- a/ed5085506f4221a5704bee64c8cb57d5286e8f6f
++++ b/80f8ec75c5475f23b42f618a59f6e9bd7f278ab0
+@@ -1,8 +1,6 @@
+ @Override
+ public int hashCode() {
+-    final int prime = 31;
+-    int result = 1;
+-    result = prime * result + ((agentId == null) ? 0 : agentId.hashCode());
+-    result = prime * result + ((serviceType == null) ? 0 : serviceType.hashCode());
++    int result = agentId != null ? agentId.hashCode() : 0;
++    result = 31 * result + (int) serviceTypeCode;
+     return result;
+ }
+\ No newline at end of file

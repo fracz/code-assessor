@@ -1,0 +1,21 @@
+diff --git a/2812e3f412e0da5b6bd0b21fd722498ba94446a1 b/6a81288f80bd962782d4ca0cbae8fa45f9686b89
+index 2812e3f412..6a81288f80 100644
+--- a/2812e3f412e0da5b6bd0b21fd722498ba94446a1
++++ b/6a81288f80bd962782d4ca0cbae8fa45f9686b89
+@@ -1,12 +1,12 @@
+-@Test(dependsOnMethods = "testDuplicatedIndexOnNotUnique")
++@Test(dependsOnMethods = "testQueryIndex")
+ public void testChangeOfIndexToUnique() {
+     database.open("admin", "admin");
+     try {
+-        database.getMetadata().getSchema().getClass("Profile").getProperty("nick").removeIndex();
+-        database.getMetadata().getSchema().save();
++        database.getMetadata().getSchema().getClass("Profile").getProperty("nick").dropIndex();
+         database.getMetadata().getSchema().getClass("Profile").getProperty("nick").createIndex(INDEX_TYPE.UNIQUE);
+         Assert.assertTrue(false);
+     } catch (OIndexException e) {
++        Assert.assertTrue(true);
+     }
+     database.close();
+ }
+\ No newline at end of file

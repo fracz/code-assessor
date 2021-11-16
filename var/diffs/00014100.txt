@@ -1,0 +1,17 @@
+diff --git a/01662f8e35c698065ef5b77687d161176184bfd1 b/f06f835f3757d05ffb89850a1d15dc2749cb9ea6
+index 01662f8e35..f06f835f37 100644
+--- a/01662f8e35c698065ef5b77687d161176184bfd1
++++ b/f06f835f3757d05ffb89850a1d15dc2749cb9ea6
+@@ -1,8 +1,6 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiThrowStatement throwStatement = (PsiThrowStatement) location.getParent();
+-    assert throwStatement != null;
+-    final PsiExpression exception = throwStatement.getException();
+-    final PsiType type = exception.getType();
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiType type = (PsiType) infos[0];
+     final String exceptionName = type.getPresentableText();
+     return InspectionGadgetsBundle.message("bad.exception.thrown.problem.descriptor", exceptionName);
+ }
+\ No newline at end of file

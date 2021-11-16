@@ -1,0 +1,25 @@
+diff --git a/bca87bb745e821eef64f1c7754e21a29d948bc6e b/2b953d6a3bd55291879b88bf58090f9dd8d76098
+index bca87bb745..2b953d6a3b 100644
+--- a/bca87bb745e821eef64f1c7754e21a29d948bc6e
++++ b/2b953d6a3bd55291879b88bf58090f9dd8d76098
+@@ -1,13 +1,13 @@
+ // Decode
+-public DoubleMatrix getReconstructedInput(DoubleMatrix y) {
++public INDArray getReconstructedInput(INDArray y) {
+     if (concatBiases) {
+         // row already accounted for earlier
+-        DoubleMatrix preAct = y.mmul(W.transpose());
+-        preAct = DoubleMatrix.concatHorizontally(preAct, DoubleMatrix.ones(preAct.rows, 1));
+-        return sigmoid(preAct);
++        INDArray preAct = y.mmul(W.transpose());
++        preAct = NDArrays.concatHorizontally(preAct, NDArrays.ones(preAct.rows(), 1));
++        return Transforms.sigmoid(preAct);
+     } else {
+-        DoubleMatrix preAct = y.mmul(W.transpose());
++        INDArray preAct = y.mmul(W.transpose());
+         preAct.addiRowVector(vBias);
+-        return sigmoid(preAct);
++        return Transforms.sigmoid(preAct);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/fec3c59a9a1709823f331f849ce3bd8e998a763e b/e6914348c24439d573391213a1ae5d91319b74df
+index fec3c59a9a..e6914348c2 100644
+--- a/fec3c59a9a1709823f331f849ce3bd8e998a763e
++++ b/e6914348c24439d573391213a1ae5d91319b74df
+@@ -1,3 +1,4 @@
+ protected String getRepositoryPath() {
+-    return FileUtil.toSystemIndependentName(repoDir.getPath());
++    String path = getMavenCoreState().getEffectiveLocalRepository().getPath();
++    return FileUtil.toSystemIndependentName(path);
+ }
+\ No newline at end of file

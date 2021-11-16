@@ -1,0 +1,21 @@
+diff --git a/d3af87313f4423c25e9e3184c3f5e4165ce9695c b/684b42b4c2494a69c412aad1b619577a966ba016
+index d3af87313f..684b42b4c2 100644
+--- a/d3af87313f4423c25e9e3184c3f5e4165ce9695c
++++ b/684b42b4c2494a69c412aad1b619577a966ba016
+@@ -1,12 +1,10 @@
+-protected SQLAggregateExpr parseAggregateExprRest(SQLAggregateExpr aggregateExpr) {
++protected SQLAggregateExpr parseAggregateExprRest(final SQLAggregateExpr aggregateExpr) {
+     if (getLexer().equalToken(Token.ORDER)) {
+-        SQLOrderBy orderBy = this.parseOrderBy();
+-        aggregateExpr.putAttribute("ORDER BY", orderBy);
++        aggregateExpr.putAttribute("ORDER BY", parseOrderBy());
+     }
+     if (getLexer().identifierEquals("SEPARATOR")) {
+         getLexer().nextToken();
+-        SQLExpr seperator = this.primary();
+-        aggregateExpr.putAttribute("SEPARATOR", seperator);
++        aggregateExpr.putAttribute("SEPARATOR", primary());
+     }
+     return aggregateExpr;
+ }
+\ No newline at end of file

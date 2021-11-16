@@ -1,0 +1,24 @@
+diff --git a/7fcd84196e321aa9e87c97f0b79da06342e31fce b/1b7d139552ac3f22cd35026ea246f8c1e29658f8
+index 7fcd84196e..1b7d139552 100644
+--- a/7fcd84196e321aa9e87c97f0b79da06342e31fce
++++ b/1b7d139552ac3f22cd35026ea246f8c1e29658f8
+@@ -1,12 +1,12 @@
+ @Override
+-public List<AstError> visitMethodInvocation(MethodInvocationTree methodInvocationTree, VisitorState state) {
+-    List<AstError> result = new ArrayList<AstError>();
+-    for (ErrorChecker<MethodInvocationTree> checker : methodInvocationCheckers) {
+-        AstError error = checker.check(methodInvocationTree, state.withPath(getCurrentPath()));
+-        if (error != null) {
+-            result.add(error);
++public List<MatchDescription> visitMethodInvocation(MethodInvocationTree methodInvocationTree, VisitorState state) {
++    List<MatchDescription> result = new ArrayList<MatchDescription>();
++    for (DescribingMatcher<MethodInvocationTree> checker : methodInvocationCheckers) {
++        VisitorState newState = state.withPath(getCurrentPath());
++        if (checker.matches(methodInvocationTree, newState)) {
++            result.add(checker.describe(methodInvocationTree, newState));
+         }
+     }
+     super.visitMethodInvocation(methodInvocationTree, state);
+     return result;
+ }
+\ No newline at end of file

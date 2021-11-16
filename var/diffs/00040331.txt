@@ -1,0 +1,15 @@
+diff --git a/aeef213cc46ae7b61d6df610d0777db6dd96948d b/f62d973f8e9f4cbdbc80de110139baac74116514
+index aeef213cc4..f62d973f8e 100644
+--- a/aeef213cc46ae7b61d6df610d0777db6dd96948d
++++ b/f62d973f8e9f4cbdbc80de110139baac74116514
+@@ -1,7 +1,7 @@
+ private static void assertDataFrame(Object msg, int streamId, boolean last) {
+     assertNotNull(msg);
+     assertTrue(msg instanceof SpdyDataFrame);
+     SpdyDataFrame spdyDataFrame = (SpdyDataFrame) msg;
+-    assertEquals(spdyDataFrame.getStreamId(), streamId);
+-    assertEquals(spdyDataFrame.isLast(), last);
++    assertEquals(streamId, spdyDataFrame.getStreamId());
++    assertEquals(last, spdyDataFrame.isLast());
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/97ab4459b408dd251f54d47b7735a303467a327e b/f65a3477db7153ca2c4da56a45aa107129d09373
+index 97ab4459b4..f65a3477db 100644
+--- a/97ab4459b408dd251f54d47b7735a303467a327e
++++ b/f65a3477db7153ca2c4da56a45aa107129d09373
+@@ -1,12 +1,13 @@
++@NotNull
+ public static IWorkbenchWindow getActiveWorkbenchWindow() {
+     IWorkbench workbench = PlatformUI.getWorkbench();
+     IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+     if (window != null) {
+         return window;
+     }
+     IWorkbenchWindow[] windows = workbench.getWorkbenchWindows();
+     if (windows.length > 0) {
+         return windows[0];
+     }
+-    return null;
++    throw new IllegalStateException("No workbench window");
+ }
+\ No newline at end of file

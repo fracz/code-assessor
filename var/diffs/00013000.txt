@@ -1,0 +1,22 @@
+diff --git a/a89d23f9fe2a1832c2e9b1a5dde289cb689de3b9 b/48518c1c83e43383565a537701b8196ef23a3f0d
+index a89d23f9fe..48518c1c83 100644
+--- a/a89d23f9fe2a1832c2e9b1a5dde289cb689de3b9
++++ b/48518c1c83e43383565a537701b8196ef23a3f0d
+@@ -1,14 +1,14 @@
+ @Override
+-protected void notifyUnresolvedRemain(final Collection<VirtualFile> roots) {
++protected void notifyUnresolvedRemain() {
+     GitVcs.IMPORTANT_ERROR_NOTIFICATION.createNotification("Conflicts were not resolved during unstash", "Unstash is not complete, you have unresolved merges in your working tree<br/>" + "<a href='resolve'>Resolve</a> conflicts.", NotificationType.WARNING, new NotificationListener() {
+
+         @Override
+         public void hyperlinkUpdate(@NotNull Notification notification, @NotNull HyperlinkEvent event) {
+             if (event.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+                 if (event.getDescription().equals("resolve")) {
+-                    new UnstashConflictResolver(myProject, myStashInfo).justMerge(roots);
++                    new UnstashConflictResolver(myProject, myRoot, myStashInfo).mergeNoProceed();
+                 }
+             }
+         }
+     }).notify(myProject);
+ }
+\ No newline at end of file

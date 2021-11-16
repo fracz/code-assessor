@@ -1,0 +1,16 @@
+diff --git a/5ee60d1dca7aef61f429cc4eccd86b706c6bcba3 b/1c2e3083b6bb64ec31aa031a68e53ef7e25063a0
+index 5ee60d1dca..1c2e3083b6 100644
+--- a/5ee60d1dca7aef61f429cc4eccd86b706c6bcba3
++++ b/1c2e3083b6bb64ec31aa031a68e53ef7e25063a0
+@@ -1,7 +1,5 @@
+ private StatementExecutorWrapper createStatementExecutorWrapperForDQL(final Statement statement, final String dataSource) {
+-    try {
+-        return new StatementExecutorWrapper(statement, new SQLExecutionUnit(dataSource, (SQLBuilder) new SQLBuilder().append(SELECT_FROM_DUAL)));
+-    } catch (final IOException ex) {
+-        throw new RuntimeException(ex);
+-    }
++    SQLBuilder sqlBuilder = new SQLBuilder();
++    sqlBuilder.append(SELECT_FROM_DUAL);
++    return new StatementExecutorWrapper(statement, new SQLExecutionUnit(dataSource, sqlBuilder));
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/c53e33d85a23ec47896bba5983d60366aeebfd7c b/2aaec10580e326b73e6fdc4cd3b30e5fbf9f41db
+index c53e33d85a..2aaec10580 100644
+--- a/c53e33d85a23ec47896bba5983d60366aeebfd7c
++++ b/2aaec10580e326b73e6fdc4cd3b30e5fbf9f41db
+@@ -1,8 +1,7 @@
+ @Override
+ public void open() {
+-    BerkeleyJEStorageManager sm = new BerkeleyJEStorageManager(DiskgraphTest.homeDirFile, readOnly, transactional, false);
+-    sm.initialize(cachePercent);
++    BerkeleyJEStorageManager sm = new BerkeleyJEStorageManager(DiskgraphTest.getDirectoryStorageConfiguration());
+     tx = sm.beginTransaction();
+     manager = new KeyValueStorageManagerAdapter(sm);
+     store = ((KeyValueStorageManagerAdapter) manager).openDatabase(storeName, 8);
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/7a345247ea47f000106a0ed474e07829f9b7a5ce b/21a0f15829dca972531929acb3b932e0ace2810b
+index 7a345247ea..21a0f15829 100644
+--- a/7a345247ea47f000106a0ed474e07829f9b7a5ce
++++ b/21a0f15829dca972531929acb3b932e0ace2810b
+@@ -1,14 +1,13 @@
+ public void visitRegExpProperty(RegExpProperty property) {
+     final ASTNode category = property.getCategoryNode();
+     if (category == null) {
+         return;
+     }
+-    final RegExpPropertiesProvider provider = RegExpPropertiesProviders.forNode(category);
+-    if (!provider.isValidCategory(category.getText())) {
++    if (!myLanguageHosts.isValidCategory(category.getPsi(), category.getText())) {
+         final Annotation a = myHolder.createErrorAnnotation(category, "Unknown character category");
+         if (a != null) {
+             // IDEA-9381
+             a.setHighlightType(ProblemHighlightType.LIKE_UNKNOWN_SYMBOL);
+         }
+     }
+ }
+\ No newline at end of file

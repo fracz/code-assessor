@@ -1,0 +1,18 @@
+diff --git a/c6bd3ebd25dbac63c917926895822c97fce25194 b/cfc1f4604e30ccd61a0d6bc5f4c81acd5c05a10b
+index c6bd3ebd25..cfc1f4604e 100644
+--- a/c6bd3ebd25dbac63c917926895822c97fce25194
++++ b/cfc1f4604e30ccd61a0d6bc5f4c81acd5c05a10b
+@@ -1,10 +1,10 @@
+-public void scheduleFoldersResolving() {
++public void scheduleFoldersResolving(final List<MavenProject> projects) {
+     runWhenFullyOpen(new Runnable() {
+
+         public void run() {
+-            for (MavenProject each : getProjects()) {
++            for (MavenProject each : projects) {
+                 myFoldersResolvingProcessor.scheduleTask(new MavenProjectsProcessorFoldersResolvingTask(each, getImportingSettings(), myProjectsTree));
+             }
+         }
+     });
+ }
+\ No newline at end of file

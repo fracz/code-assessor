@@ -1,0 +1,14 @@
+diff --git a/b82a1bc8f3b0c26cbc5e739ddd09c4430b7a7524 b/58a86974a6caf64e83352d7d0df3a6b7f424d7d5
+index b82a1bc8f3..58a86974a6 100644
+--- a/b82a1bc8f3b0c26cbc5e739ddd09c4430b7a7524
++++ b/58a86974a6caf64e83352d7d0df3a6b7f424d7d5
+@@ -1,7 +1,7 @@
+ @NotNull
+ public List<Block> getSubBlocks() {
+     if (mySubBlocks == null) {
+-        mySubBlocks = GroovyBlockGenerator.generateSubBlocks(myNode, myAlignment, myWrap, mySettings, myGroovySettings, this);
++        mySubBlocks = new GroovyBlockGenerator(this).generateSubBlocks();
+     }
+     return mySubBlocks;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/e03606672ca3ef6b115559e62029881811f251fd b/5504b976823c8f68b063ef81ab20991e2e21b9d2
+index e03606672c..5504b97682 100644
+--- a/e03606672ca3ef6b115559e62029881811f251fd
++++ b/5504b976823c8f68b063ef81ab20991e2e21b9d2
+@@ -1,7 +1,8 @@
+-@SuppressWarnings("HardCodedStringLiteral")
+ private void createFileStructure() {
+     if (myProject == null) {
+         final FileViewProvider viewProvider = getViewProvider();
+-        myProject = new AntProjectImpl((XmlFile) viewProvider.getPsi(viewProvider.getBaseLanguage()), this);
++        final XmlFile baseFile = (XmlFile) viewProvider.getPsi(viewProvider.getBaseLanguage());
++        final XmlTag tag = baseFile.getDocument().getRootTag();
++        myProject = new AntProjectImpl(tag);
+     }
+ }
+\ No newline at end of file

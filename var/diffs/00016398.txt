@@ -1,0 +1,19 @@
+diff --git a/a7c7054a27d7b24944932c0068000ab2e4fe808d b/adee294be1d57dfeb7892349fc3553544ba9d4f6
+index a7c7054a27..adee294be1 100644
+--- a/a7c7054a27d7b24944932c0068000ab2e4fe808d
++++ b/adee294be1d57dfeb7892349fc3553544ba9d4f6
+@@ -1,11 +1,11 @@
+ @NotNull
+ public static FqNameUnsafe naiveKotlinFqName(@NotNull ClassDescriptor descriptor) {
+     DeclarationDescriptor containing = descriptor.getContainingDeclaration();
+     if (containing instanceof ClassDescriptor) {
+         return naiveKotlinFqName((ClassDescriptor) containing).child(descriptor.getName());
+-    } else if (containing instanceof NamespaceDescriptor) {
+-        return DescriptorUtils.getFQName(containing).child(descriptor.getName());
++    } else if (containing instanceof PackageFragmentDescriptor) {
++        return ((PackageFragmentDescriptor) containing).getFqName().child(descriptor.getName()).toUnsafe();
+     } else {
+         throw new IllegalArgumentException("Class doesn't have a FQ name: " + descriptor);
+     }
+ }
+\ No newline at end of file

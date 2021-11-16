@@ -1,0 +1,22 @@
+diff --git a/fb7b2101a9978d22417dcd9ce7ea7c5c501fb0ab b/9c7c20b6252135258e6707a550ce48487cd78b0e
+index fb7b2101a9..9c7c20b625 100644
+--- a/fb7b2101a9978d22417dcd9ce7ea7c5c501fb0ab
++++ b/9c7c20b6252135258e6707a550ce48487cd78b0e
+@@ -1,13 +1,7 @@
+-private int getParallelism() {
+-    Set<Integer> parallelisms = new HashSet<>(Collections2.transform(curGroup, new Function<ProcessorNode, Integer>() {
+-
+-        @Override
+-        public Integer apply(ProcessorNode input) {
+-            return input.getParallelism();
+-        }
+-    }));
++private int getParallelism(List<ProcessorNode> group) {
++    Set<Integer> parallelisms = group.stream().map(Node::getParallelism).collect(Collectors.toSet());
+     if (parallelisms.size() > 1) {
+-        throw new IllegalStateException("Current group does not have same parallelism " + curGroup);
++        throw new IllegalStateException("Current group does not have same parallelism " + group);
+     }
+     return parallelisms.isEmpty() ? 1 : parallelisms.iterator().next();
+ }
+\ No newline at end of file

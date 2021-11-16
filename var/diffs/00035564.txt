@@ -1,0 +1,22 @@
+diff --git a/be09c7aa7f1f5f3f1d9c978614743b7c9951f493 b/4bb7227fb3b9be388a6562edc8f24670a0837316
+index be09c7aa7f..4bb7227fb3 100644
+--- a/be09c7aa7f1f5f3f1d9c978614743b7c9951f493
++++ b/4bb7227fb3b9be388a6562edc8f24670a0837316
+@@ -1,14 +1,15 @@
+ //
+ // Pre-processing of messages (in original calling thread, typically the UI thread)
+ //
+ @Override
+ protected void handleMessage(Message msg) {
++    Object[] response;
+     switch(msg.what) {
+         case SUCCESS_JSON_MESSAGE:
+-            Object[] response = (Object[]) msg.obj;
++            response = (Object[]) msg.obj;
+             handleSuccessJsonMessage((Integer) response[0], (Header[]) response[1], response[2]);
+             break;
+         default:
+             super.handleMessage(msg);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/b7b37ea8ff6f4bcc154cfcbd87bd6058d0e8cd2a b/3a528227cb5f7a81e8ae009a3dd7384578f30839
+index b7b37ea8ff..3a528227cb 100644
+--- a/b7b37ea8ff6f4bcc154cfcbd87bd6058d0e8cd2a
++++ b/3a528227cb5f7a81e8ae009a3dd7384578f30839
+@@ -1,5 +1,4 @@
+ @Override
+ protected ShardingRule getShardingRule(final Map.Entry<DatabaseType, Map<String, DataSource>> dataSourceEntry) {
+-    DataSourceRule dataSourceRule = new DataSourceRule(dataSourceEntry.getValue());
+-    return ShardingRule.builder().dataSourceRule(dataSourceRule).databaseShardingStrategy(new HintShardingStrategy(new HintModuloDatabaseShardingAlgorithm())).build();
++    return ShardingRule.builder(new DataSourceRule(dataSourceEntry.getValue())).databaseShardingStrategy(new HintShardingStrategy(new HintModuloDatabaseShardingAlgorithm())).build();
+ }
+\ No newline at end of file

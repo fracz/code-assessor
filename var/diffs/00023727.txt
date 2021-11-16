@@ -1,0 +1,14 @@
+diff --git a/5013498710efec1dc79db0d2127f1d55192132b1 b/80730b18126f94f1666f692fdc51133afd9fb149
+index 5013498710..80730b1812 100644
+--- a/5013498710efec1dc79db0d2127f1d55192132b1
++++ b/80730b18126f94f1666f692fdc51133afd9fb149
+@@ -1,7 +1,6 @@
+ @Override
+ public void onReceive(Context context, Intent intent) {
+     if (Intent.ACTION_SHOW_KEYBOARD_SHORTCUTS.equals(intent.getAction())) {
+-        final KeyboardShortcuts keyboardShortcuts = new KeyboardShortcuts(context);
+-        keyboardShortcuts.toggleKeyboardShortcuts(-1);
++        KeyboardShortcuts.show(context, -1);
+     }
+ }
+\ No newline at end of file

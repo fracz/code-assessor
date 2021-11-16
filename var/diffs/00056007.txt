@@ -1,0 +1,13 @@
+diff --git a/2b755dec29c6922edf45a63dcc5fe9f76ae8be4a b/9c62f6df9067befeddb5851c69f20ab1dc68d038
+index 2b755dec29..9c62f6df90 100644
+--- a/2b755dec29c6922edf45a63dcc5fe9f76ae8be4a
++++ b/9c62f6df9067befeddb5851c69f20ab1dc68d038
+@@ -1,5 +1,6 @@
++@Test
+ public void testSingleConfigLocationWithClass() {
+-    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("simpleContext.xml", getClass());
++    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(SIMPLE_CONTEXT, getClass());
+     assertTrue(ctx.containsBean("someMessageSource"));
+     ctx.close();
+ }
+\ No newline at end of file

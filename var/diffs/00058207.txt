@@ -1,0 +1,24 @@
+diff --git a/d988bad7ae42ad81e8c5617f2d44b483403745bc b/2c329fb89d6fa244f7e2f72ef8d9c98e702b05cf
+index d988bad7ae..2c329fb89d 100644
+--- a/d988bad7ae42ad81e8c5617f2d44b483403745bc
++++ b/2c329fb89d6fa244f7e2f72ef8d9c98e702b05cf
+@@ -1,12 +1,14 @@
+ /**
+- * Solves the problem using conjugate gradient (CG).  The solution
+- * is stored in the {@code lambda} array of {@code prob}.
++ * Solves the problem using CG.  The solution is stored in the
++ * <code>lambda</code> array of <code>prob</code>.
+  */
+ public void solveCG() {
+     LikelihoodFunction df = new LikelihoodFunction(prob, tol, useGaussianPrior, priorSigmaS, sigmaSquareds);
+     MonitorFunction monitor = new MonitorFunction(prob, df, filename);
+     Minimizer<DiffFunction> cgm = new CGMinimizer(monitor);
+     // all parameters are started at 0.0
+-    prob.lambda = cgm.minimize(df, tol, new double[df.domainDimension()]);
+-    printOptimizationResults(df, monitor);
++    double[] result = cgm.minimize(df, tol, new double[df.domainDimension()]);
++    prob.lambda = result;
++    monitor.reportMonitoring(df.valueAt(result));
++    System.err.println("after optimization value is " + df.valueAt(result));
+ }
+\ No newline at end of file

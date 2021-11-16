@@ -1,0 +1,29 @@
+diff --git a/af4be9db5458097d7f972d9c362fd21a215a2182 b/ef7dcab8be31a446d06a668c552cdfa808fc0b6a
+index af4be9db54..ef7dcab8be 100644
+--- a/af4be9db5458097d7f972d9c362fd21a215a2182
++++ b/ef7dcab8be31a446d06a668c552cdfa808fc0b6a
+@@ -1,13 +1,13 @@
+ @Override
+-public void stopTransaction(final Conclusion conclusion) {
+-    TitanTransaction tx = txs.get();
+-    if (tx != null) {
+-        assert tx.isOpen();
+-        try {
+-            tx.stopTransaction(conclusion);
+-        } finally {
+-            txs.remove();
+-            openTx.remove(tx);
+-        }
++public void stopTransaction(Conclusion conclusion) {
++    switch(conclusion) {
++        case SUCCESS:
++            commit();
++            break;
++        case FAILURE:
++            rollback();
++            break;
++        default:
++            throw new IllegalArgumentException("Unrecognized conclusion: " + conclusion);
+     }
+ }
+\ No newline at end of file

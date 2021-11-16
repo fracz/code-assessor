@@ -1,0 +1,30 @@
+diff --git a/35e546bac70cf4802fd7fca71df59d911761fbde b/14ad83271667a0e6c2fca2216aca36cca3b5ac5f
+index 35e546bac7..14ad832716 100644
+--- a/35e546bac70cf4802fd7fca71df59d911761fbde
++++ b/14ad83271667a0e6c2fca2216aca36cca3b5ac5f
+@@ -1,20 +1,20 @@
+-private void showPageFromHistory(RefEntity newEntity) {
+-    InspectionTool tool = getTool(newEntity);
++private void showPageFromHistory(@NotNull RefEntity newEntity) {
++    InspectionToolWrapper toolWrapper = getToolWrapper(newEntity);
+     try {
+-        if (tool instanceof DescriptorProviderInspection && !(tool instanceof CommonInspectionToolWrapper)) {
++        if (!(toolWrapper instanceof CommonInspectionToolWrapper)) {
+             showEmpty();
+         } else {
+             try {
+-                String html = generateHTML(newEntity, tool);
++                String html = generateHTML(newEntity, toolWrapper);
+                 myHTMLViewer.read(new StringReader(html), null);
+                 setupStyle();
+                 myHTMLViewer.setCaretPosition(0);
+             } catch (Exception e) {
+                 showEmpty();
+             }
+         }
+     } finally {
+         myCurrentEntity = newEntity;
+         myCurrentDescriptor = null;
+     }
+ }
+\ No newline at end of file

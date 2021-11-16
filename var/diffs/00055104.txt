@@ -1,0 +1,18 @@
+diff --git a/8b5cd9bfc5b2feac317b938d64653c716c48fc93 b/eb84be824ea6853176ed986d89d8849d1988769a
+index 8b5cd9bfc5..eb84be824e 100644
+--- a/8b5cd9bfc5b2feac317b938d64653c716c48fc93
++++ b/eb84be824ea6853176ed986d89d8849d1988769a
+@@ -1,8 +1,8 @@
+-public void processFields(List<FieldNode> fields) throws DecodeException {
+-    int size = Leb128Utils.readUnsignedLeb128(in);
+-    visitArray(size);
+-    for (int i = 0; i < size; i++) {
++public int processFields(List<FieldNode> fields) throws DecodeException {
++    int count = Leb128Utils.readUnsignedLeb128(in);
++    for (int i = 0; i < count; i++) {
+         Object value = parseValue();
+         fields.get(i).getAttributes().add(new FieldValueAttr(value));
+     }
++    return count;
+ }
+\ No newline at end of file

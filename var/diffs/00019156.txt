@@ -1,0 +1,14 @@
+diff --git a/d13231430c6f767c18bcc8edc98f518d5c81061a b/6f4ed5b86424fb946c4d7c420ffd9c9c2191d161
+index d13231430c..6f4ed5b864 100644
+--- a/d13231430c6f767c18bcc8edc98f518d5c81061a
++++ b/6f4ed5b86424fb946c4d7c420ffd9c9c2191d161
+@@ -1,7 +1,3 @@
+ public int getGroupAdminColor() {
+-    if (groupAdminColor != 0) {
+-        return groupAdminColor;
+-    } else {
+-        return getAccentColor();
+-    }
++    return getColorWithFallback(groupAdminColor, getAccentColor());
+ }
+\ No newline at end of file

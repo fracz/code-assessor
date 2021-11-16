@@ -1,0 +1,17 @@
+diff --git a/5841767fb611e07a12f0cda28ddbd3ac76fd001e b/f8095d19f552d78e1a0ecf8945827c411289b2f7
+index 5841767fb6..f8095d19f5 100644
+--- a/5841767fb611e07a12f0cda28ddbd3ac76fd001e
++++ b/f8095d19f552d78e1a0ecf8945827c411289b2f7
+@@ -1,9 +1,10 @@
+ @Nullable
+ private static HighlightInfo checkArrayInitializerCompatibleTypes(@NotNull PsiExpression initializer, final PsiType componentType) {
+     PsiType initializerType = initializer.getType();
+     if (initializerType == null) {
+-        return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, initializer, JavaErrorMessages.message("illegal.initializer", formatType(componentType)));
++        String description = JavaErrorMessages.message("illegal.initializer", formatType(componentType));
++        return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(initializer).descriptionAndTooltip(description).create();
+     }
+     PsiExpression expression = initializer instanceof PsiArrayInitializerExpression ? null : initializer;
+     return checkAssignability(componentType, initializerType, expression, initializer);
+ }
+\ No newline at end of file

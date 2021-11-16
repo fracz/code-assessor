@@ -1,0 +1,15 @@
+diff --git a/ea9e19dde09de74fe558a9c63703aca37ede82d2 b/d1d863e3c7437b3f7ff3b1931fbf5eb7a7dbe52c
+index ea9e19dde0..d1d863e3c7 100644
+--- a/ea9e19dde09de74fe558a9c63703aca37ede82d2
++++ b/d1d863e3c7437b3f7ff3b1931fbf5eb7a7dbe52c
+@@ -1,8 +1,8 @@
+ @Test
+ public void decodeNewLine() throws InterruptedException {
+     DataBuffer fooBar = stringBuffer("\nfoo\r\nbar\r");
+     DataBuffer baz = stringBuffer("\nbaz");
+     Flux<DataBuffer> source = Flux.just(fooBar, baz);
+     Flux<String> output = decoder.decode(source, ResolvableType.forClass(String.class), null, Collections.emptyMap());
+-    TestSubscriber.subscribe(output).assertNoError().assertComplete().assertValues("\n", "foo\r", "\n", "bar\r", "\n", "baz");
++    ScriptedSubscriber.<String>create().expectNext("\n", "foo\r", "\n", "bar\r", "\n", "baz").expectComplete().verify(output);
+ }
+\ No newline at end of file

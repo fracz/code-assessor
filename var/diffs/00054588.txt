@@ -1,0 +1,28 @@
+diff --git a/9dc09f79633742764db9b36e31966b49514e3f85 b/19bba94de29b3db2e7e82b33d0c7c05f5ae24a71
+index 9dc09f7963..19bba94de2 100644
+--- a/9dc09f79633742764db9b36e31966b49514e3f85
++++ b/19bba94de29b3db2e7e82b33d0c7c05f5ae24a71
+@@ -1,16 +1,16 @@
+ /**
+  * Initial all orchestration actions for sharding data source.
+  *
+- * @param config orchestration sharding configuration
++ * @param dataSourceMap data source map
++ * @param shardingRuleConfig sharding rule configuration
+  * @param props sharding properties
+  * @param shardingDataSource sharding datasource
+  */
+-public void initShardingOrchestration(final OrchestrationShardingConfiguration config, final Properties props, final ShardingDataSource shardingDataSource) {
++public void initShardingOrchestration(final Map<String, DataSource> dataSourceMap, final ShardingRuleConfiguration shardingRuleConfig, final Properties props, final ShardingDataSource shardingDataSource) {
+     config.getRegistryCenter().init();
+-    if (config.getShardingRuleConfig().getMasterSlaveRuleConfigs().isEmpty()) {
+-        reviseShardingRuleConfigurationForMasterSlave(config.getDataSourceMap(), config.getShardingRuleConfig());
++    if (shardingRuleConfig.getMasterSlaveRuleConfigs().isEmpty()) {
++        reviseShardingRuleConfigurationForMasterSlave(dataSourceMap, shardingRuleConfig);
+     }
+-    OrchestrationShardingConfiguration actualConfig = new OrchestrationShardingConfiguration(config.getName(), config.isOverwrite(), config.getRegistryCenter(), getActualDataSourceMapForMasterSlave(config.getDataSourceMap()), config.getShardingRuleConfig());
+-    configurationService.persistShardingConfiguration(actualConfig, props, shardingDataSource);
++    configurationService.persistShardingConfiguration(getActualDataSourceMapForMasterSlave(dataSourceMap), shardingRuleConfig, props, shardingDataSource);
+     instanceStateService.persistShardingInstanceOnline(shardingDataSource);
+ }
+\ No newline at end of file

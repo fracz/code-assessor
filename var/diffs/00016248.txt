@@ -1,0 +1,19 @@
+diff --git a/4a3e458a0ac9a2558b1f5d1292d32c764bb8d873 b/3c4f91ebf6839107e7b6a1855cdadc184c59cdf8
+index 4a3e458a0a..3c4f91ebf6 100644
+--- a/4a3e458a0ac9a2558b1f5d1292d32c764bb8d873
++++ b/3c4f91ebf6839107e7b6a1855cdadc184c59cdf8
+@@ -1,11 +1,11 @@
+ @NotNull
+-public static String[] findListWithPrefix(String prefix, String fileText) {
++public static List<String> findListWithPrefix(String prefix, String fileText) {
+     ArrayList<String> result = new ArrayList<String>();
+     for (String line : findLinesWithPrefixRemoved(prefix, fileText)) {
+         String[] variants = line.split(",");
+         for (String variant : variants) {
+             result.add(StringUtil.unquoteString(variant.trim()));
+         }
+     }
+-    return ArrayUtil.toStringArray(result);
++    return result;
+ }
+\ No newline at end of file

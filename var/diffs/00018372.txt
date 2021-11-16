@@ -1,0 +1,13 @@
+diff --git a/08e3afc5dc8d851a337ecf47b5dc0c7514a05b40 b/0949e027101876a278a4a2fc22cfa61940bc4f54
+index 08e3afc5dc..0949e02710 100644
+--- a/08e3afc5dc8d851a337ecf47b5dc0c7514a05b40
++++ b/0949e027101876a278a4a2fc22cfa61940bc4f54
+@@ -1,6 +1,4 @@
+ @Override
+ public void request(long n) {
+-    if (n <= 0) {
+-        RxJavaPlugins.onError(new IllegalArgumentException("n > 0 required"));
+-    }
++    SubscriptionHelper.validateRequest(n);
+ }
+\ No newline at end of file

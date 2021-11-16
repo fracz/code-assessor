@@ -1,0 +1,13 @@
+diff --git a/cc10a957e8a38389f96cccbae4f9df437224cad2 b/c2530f5d97166330848073bdddf425b1d9882c5a
+index cc10a957e8..c2530f5d97 100644
+--- a/cc10a957e8a38389f96cccbae4f9df437224cad2
++++ b/c2530f5d97166330848073bdddf425b1d9882c5a
+@@ -1,5 +1,5 @@
+ @Override
+ public Icon getIcon() {
+-    NullableFunction<DomElement, Icon> iconProvider = myIconProvider.getValue();
+-    return iconProvider == null ? myIcon.getValue() : iconProvider.fun(element);
++    PresentationIconProvider iconProvider = myIconProvider.getValue();
++    return iconProvider == null ? myIcon.getValue() : iconProvider.getIcon(element, 0);
+ }
+\ No newline at end of file

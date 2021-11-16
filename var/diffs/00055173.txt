@@ -1,0 +1,27 @@
+diff --git a/94e8adb8468d866178d147da767d785e69672d83 b/6d00167a770aaa85f6e6ecfdf2dc359f8b569bc0
+index 94e8adb846..6d00167a77 100644
+--- a/94e8adb8468d866178d147da767d785e69672d83
++++ b/6d00167a770aaa85f6e6ecfdf2dc359f8b569bc0
+@@ -1,19 +1,19 @@
+-private static boolean isAllRegionsAfter(IRegion region, Integer pos, Set<IRegion> regions, Map<IContainer, Integer> regionsOrder) {
++private static boolean isAllRegionsAfter(IRegion region, int pos, Set<IRegion> regions, Map<IContainer, Integer> regionsOrder) {
+     for (IRegion r : regions) {
+         if (r == region) {
+             continue;
+         }
+         Integer rPos = regionsOrder.get(r);
+         if (rPos == null) {
+             LOG.debug("TODO: Not found order for region {} in {}", r, regionsOrder);
+             return false;
+         }
+         if (pos > rPos) {
+             return false;
+         }
+-        if (pos.equals(rPos)) {
++        if (pos == rPos) {
+             return isAllRegionsAfterRecursive(region, regions);
+         }
+     }
+     return true;
+ }
+\ No newline at end of file

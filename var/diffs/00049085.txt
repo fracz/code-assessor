@@ -1,0 +1,21 @@
+diff --git a/13d1f3c34fcb6be0f0cddf793be603c23053f7ab b/31f7d722d158dd686d2d2dd7973b2812e367071a
+index 13d1f3c34f..31f7d722d1 100644
+--- a/13d1f3c34fcb6be0f0cddf793be603c23053f7ab
++++ b/31f7d722d158dd686d2d2dd7973b2812e367071a
+@@ -1,14 +1,14 @@
+ // //////////////////////////////////////////////////////////////////
+ // Statement overrides
+ // //////////////////////////////////////////////////////////////////
+ @Override
+ public JDBCResultSet executeQuery() throws SQLException {
+     this.beforeExecute();
+     try {
+-        return new JDBCResultSetImpl(this, getOriginal().executeQuery());
++        return createResultSet(getOriginal().executeQuery());
+     } catch (Throwable e) {
+         throw super.handleExecuteError(e);
+     } finally {
+         super.afterExecute();
+     }
+ }
+\ No newline at end of file

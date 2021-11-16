@@ -1,0 +1,14 @@
+diff --git a/65d4508ce13987ba1f1711b1190b5765a3d543f3 b/03fa7e0d26a12efeef7982b0cd7f0ce3e6b4572a
+index 65d4508ce1..03fa7e0d26 100644
+--- a/65d4508ce13987ba1f1711b1190b5765a3d543f3
++++ b/03fa7e0d26a12efeef7982b0cd7f0ce3e6b4572a
+@@ -1,7 +1,5 @@
+-private void initializeTxIfFirst() {
+-    // The main point of initializing transaction (for HA) is in TransactionImpl, so this is
++private void initializeTxIfFirst(Transaction tx) {
+     // for that extra point where grabbing a lock
+-    Transaction tx = tm.getTransaction();
+     if (!txHook.hasAnyLocks(tx))
+         txHook.initializeTransaction(tm.getEventIdentifier());
+ }
+\ No newline at end of file

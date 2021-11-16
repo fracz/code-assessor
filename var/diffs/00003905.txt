@@ -1,0 +1,22 @@
+diff --git a/51d41f3cae60093bb83863a4e9dd6407cf512913 b/3500271e5f25741179fb7840b472625ad3712994
+index 51d41f3cae..3500271e5f 100644
+--- a/51d41f3cae60093bb83863a4e9dd6407cf512913
++++ b/3500271e5f25741179fb7840b472625ad3712994
+@@ -1,12 +1,11 @@
+ @Override
+ public void update(final AnActionEvent e) {
+-    final Presentation p = e.getPresentation();
+-    final boolean isApplicable = WindowManager.getInstance().isFullScreenSupportedInCurrentOS();
++    Presentation p = e.getPresentation();
++    IdeFrameEx frame = null;
++    boolean isApplicable = WindowManager.getInstance().isFullScreenSupportedInCurrentOS() && (frame = getFrame()) != null;
+     p.setVisible(isApplicable);
+     p.setEnabled(isApplicable);
+     if (isApplicable) {
+-        final Frame frame = getFrame();
+-        final boolean isInFullScreen = frame != null && WindowManagerEx.getInstanceEx().isFullScreen(frame);
+-        p.setText(isInFullScreen ? TEXT_EXIT_FULL_SCREEN : TEXT_ENTER_FULLSCREEN);
++        p.setText(frame.isInFullScreen() ? TEXT_EXIT_FULL_SCREEN : TEXT_ENTER_FULL_SCREEN);
+     }
+ }
+\ No newline at end of file

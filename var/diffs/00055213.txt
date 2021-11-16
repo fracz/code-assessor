@@ -1,0 +1,15 @@
+diff --git a/5e7bea01fed28a619cfa329a28bb9f40c80a7067 b/e5741aa7477123ecaf5f1acce86004c19afe1845
+index 5e7bea01fe..e5741aa747 100644
+--- a/5e7bea01fed28a619cfa329a28bb9f40c80a7067
++++ b/e5741aa7477123ecaf5f1acce86004c19afe1845
+@@ -1,6 +1,6 @@
+ public void relink_namespace(ThreadContext context) {
+-    List<IRubyObject> n = this.nodes.getList();
+-    for (IRubyObject node : n) {
+-        ((XmlNode) node).relink_namespace(context);
++    List n = this.nodes.getList();
++    for (int i = 0; i < n.size(); i++) {
++        ((XmlNode) n.get(i)).relink_namespace(context);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/0431aab82b608429d36ad693fffae2c3619e6a3e b/e6ef04b281c9102340c2151d2ea693af28aeff5d
+index 0431aab82b..e6ef04b281 100644
+--- a/0431aab82b608429d36ad693fffae2c3619e6a3e
++++ b/e6ef04b281c9102340c2151d2ea693af28aeff5d
+@@ -1,8 +1,8 @@
+ private RefactoringActionHandler getActionHandler(final DataContext dataContext) {
+-    final MoveAction.MoveProvider moveProvider = (MoveAction.MoveProvider) dataContext.getData(MoveAction.MOVE_PROVIDER);
++    final MoveAction.MoveProvider moveProvider = MoveAction.MoveProvider.DATA_KEY.getData(dataContext);
+     if (moveProvider != null) {
+         return moveProvider.getHandler(dataContext);
+     } else {
+         return RefactoringActionHandlerFactory.getInstance().createMoveHandler();
+     }
+ }
+\ No newline at end of file

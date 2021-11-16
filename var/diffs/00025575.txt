@@ -1,0 +1,19 @@
+diff --git a/e97006157c0fc7e854cef4ee4caa4bc5da05f854 b/c758dab55c31fcad8e96f8fb9236ddf4a3e124d0
+index e97006157c..c758dab55c 100644
+--- a/e97006157c0fc7e854cef4ee4caa4bc5da05f854
++++ b/c758dab55c31fcad8e96f8fb9236ddf4a3e124d0
+@@ -1,12 +1,12 @@
+ /**
+  * {@inheritDoc}
+  */
+ @Override
+ public void declareOutputFields(OutputFieldsDeclarer declarer) {
+-    Fields fields = this.outputsFields.remove(null);
++    Fields fields = this.outputsFields.remove(Utils.DEFAULT_STREAM_ID);
+     if (fields != null)
+         declarer.declare(fields);
+     for (Map.Entry<String, Fields> entry : this.outputsFields.entrySet()) {
+         declarer.declareStream(entry.getKey(), entry.getValue());
+     }
+ }
+\ No newline at end of file

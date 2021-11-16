@@ -1,0 +1,32 @@
+diff --git a/e3bc4934f32f5e3ccbbb0d4aca295136ddb3f2c0 b/f91791b7c0faa6dc02208aee0270008c9f19b122
+index e3bc4934f3..f91791b7c0 100644
+--- a/e3bc4934f32f5e3ccbbb0d4aca295136ddb3f2c0
++++ b/f91791b7c0faa6dc02208aee0270008c9f19b122
+@@ -1,20 +1,19 @@
+ public long getSize() {
+-    OChannelBinaryAsynchClient network = null;
+-    do {
+-        try {
++    return networkOperation(new OStorageRemoteOperation<Long>() {
++
++        @Override
++        public Long execute(final OChannelBinaryAsynchClient network) throws IOException {
+             try {
+-                network = beginRequest(OChannelBinaryProtocol.REQUEST_DB_SIZE);
++                beginRequest(network, OChannelBinaryProtocol.REQUEST_DB_SIZE);
+             } finally {
+                 endRequest(network);
+             }
+             try {
+                 beginResponse(network);
+                 return network.readLong();
+             } finally {
+                 endResponse(network);
+             }
+-        } catch (Exception e) {
+-            handleException(network, "Error on read database size", e);
+         }
+-    } while (true);
++    }, "Error on read database size");
+ }
+\ No newline at end of file

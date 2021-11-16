@@ -1,0 +1,14 @@
+diff --git a/2d9c6602ab096fd8a9818553bb947501655cf47d b/700b228397579be8c5e85f566dc73509dca32e1e
+index 2d9c6602ab..700b228397 100644
+--- a/2d9c6602ab096fd8a9818553bb947501655cf47d
++++ b/700b228397579be8c5e85f566dc73509dca32e1e
+@@ -1,7 +1,7 @@
+ @Override
+ public void applicationDeactivated(IdeFrame ideFrame) {
+     if (myStopOnAppDeactivation) {
+-        myCallback.message(PlaybackRunner.this, "App lost focus, stopping...", 0);
++        myCallback.message(null, "App lost focus, stopping...", 0, StatusCallback.Type.message);
+         stop();
+     }
+ }
+\ No newline at end of file

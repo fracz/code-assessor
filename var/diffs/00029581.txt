@@ -1,0 +1,13 @@
+diff --git a/61b3b383728efa16ff0f614ac3e19db36bee224c b/d78670fe99284ad17c330fd2a77ca920d9c30148
+index 61b3b38372..d78670fe99 100644
+--- a/61b3b383728efa16ff0f614ac3e19db36bee224c
++++ b/d78670fe99284ad17c330fd2a77ca920d9c30148
+@@ -1,5 +1,5 @@
+ @Override
+ protected GroupShardsIterator shards(ClusterState clusterState, SuggestRequest request, String[] concreteIndices) {
+-    Map<String, Set<String>> routingMap = clusterState.metaData().resolveSearchRouting(request.routing(), request.indices());
+-    return clusterService.operationRouting().searchShards(clusterState, request.indices(), concreteIndices, routingMap, request.preference());
++    Map<String, Set<String>> routingMap = indexNameExpressionResolver.resolveSearchRouting(clusterState, request.routing(), request.indices());
++    return clusterService.operationRouting().searchShards(clusterState, concreteIndices, routingMap, request.preference());
+ }
+\ No newline at end of file

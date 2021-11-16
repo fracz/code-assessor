@@ -1,0 +1,21 @@
+diff --git a/4e1be439b47878608653de95fcaa427c638635d7 b/76922b9eefc730836b5e1eaa729ffebde3501b72
+index 4e1be439b4..76922b9eef 100644
+--- a/4e1be439b47878608653de95fcaa427c638635d7
++++ b/76922b9eefc730836b5e1eaa729ffebde3501b72
+@@ -1,10 +1,9 @@
+ private void testClassifier(String testFile) {
+-    if (globalFlags.printFeatures != null) {
+-        newFeaturePrinter(globalFlags.printFeatures, "test");
++    System.err.print("Output format: ");
++    if (globalFlags.displayedColumn >= 0) {
++        System.err.printf("dataColumn%d ", globalFlags.displayedColumn);
+     }
+-    Pair<GeneralDataset<String, String>, List<String[]>> testInfo = readTestExamples(testFile);
+-    GeneralDataset<String, String> test = testInfo.first();
+-    List<String[]> lineInfos = testInfo.second();
+-    testExamples(classifier, test, lineInfos);
++    System.err.println("goldAnswer classifierAnswer P(clAnswer) P(goldAnswer)");
++    readAndTestExamples(classifier, testFile);
+ // ((LinearClassifier) classifier).dumpSorted();
+ }
+\ No newline at end of file

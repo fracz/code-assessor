@@ -1,0 +1,16 @@
+diff --git a/f4b912efc35c87659541bf58b7533678971bb5ee b/b71d6b6387be0f4bbb7f2d7f56caefead071b272
+index f4b912efc3..b71d6b6387 100644
+--- a/f4b912efc35c87659541bf58b7533678971bb5ee
++++ b/b71d6b6387be0f4bbb7f2d7f56caefead071b272
+@@ -1,6 +1,6 @@
+ @Override
+-public void sendWeeklyNewsletter(@NonNull final SwitchCompat switchCompat) {
+-    userInput.onNext(userOutput.getValue().toBuilder().weeklyNewsletter(switchCompat.isChecked()).build());
+-    newsletterInput.onNext(switchCompat);
+-    koala.trackNewsletterToggle(switchCompat.isChecked());
++public void sendWeeklyNewsletter(final boolean checked, @NonNull final String name) {
++    userInput.onNext(userOutput.getValue().toBuilder().weeklyNewsletter(checked).build());
++    newsletterInput.onNext(new Pair<>(checked, name));
++    koala.trackNewsletterToggle(checked);
+ }
+\ No newline at end of file

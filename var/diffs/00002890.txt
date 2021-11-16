@@ -1,0 +1,15 @@
+diff --git a/6938f6e9dc9af598bb913d5ddcac67d86d712e5d b/ae69298f6c85529b0ad1198d52f37506d4895717
+index 6938f6e9dc..ae69298f6c 100644
+--- a/6938f6e9dc9af598bb913d5ddcac67d86d712e5d
++++ b/ae69298f6c85529b0ad1198d52f37506d4895717
+@@ -1,8 +1,7 @@
+ public void writeExternal(Element element) throws WriteExternalException {
+-    for (int i = 0; i < myMacros.size(); i++) {
+-        ActionMacro macro = myMacros.get(i);
++    for (ActionMacro macro : myMacros) {
+         Element macroElement = new Element(ELEMENT_MACRO);
+         macro.writeExternal(macroElement);
+         element.addContent(macroElement);
+     }
+ }
+\ No newline at end of file

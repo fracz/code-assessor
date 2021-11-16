@@ -1,0 +1,19 @@
+diff --git a/4e3f4a5784702ddc58cc1b9fbd76334964b694b4 b/571f7d7bece2c33710dfafd7d03967b6a6cf612d
+index 4e3f4a5784..571f7d7bec 100644
+--- a/4e3f4a5784702ddc58cc1b9fbd76334964b694b4
++++ b/571f7d7bece2c33710dfafd7d03967b6a6cf612d
+@@ -1,10 +1,9 @@
+-public static PluginDescriptor getPlugin(String name) {
++public static PluginDescriptor getPlugin(PluginId id) {
+     final PluginDescriptor[] plugins = getPlugins();
+-    for (int i = 0; i < plugins.length; i++) {
+-        final PluginDescriptor plugin = plugins[i];
+-        if (Comparing.equal(name, plugin.getName())) {
++    for (final PluginDescriptor plugin : plugins) {
++        if (Comparing.equal(id, plugin.getPluginId())) {
+             return plugin;
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

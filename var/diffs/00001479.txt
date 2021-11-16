@@ -1,0 +1,19 @@
+diff --git a/a44f8c2efe09ba3ecf14b7bbf6aa9cccf23102d3 b/497e5d75b1d209fee0d6d0cb2daa783f1a511ad8
+index a44f8c2efe..497e5d75b1 100644
+--- a/a44f8c2efe09ba3ecf14b7bbf6aa9cccf23102d3
++++ b/497e5d75b1d209fee0d6d0cb2daa783f1a511ad8
+@@ -1,9 +1,11 @@
+ public void doCollectInformation(ProgressIndicator progress) {
+-    PsiElement[] psiRoots = myFile.getPsiRoots();
+-    for (final PsiElement psiRoot : psiRoots) {
++    final FileViewProvider viewProvider = myFile.getViewProvider();
++    final Set<Language> relevantLanguages = viewProvider.getRelevantLanguages();
++    for (Language language : relevantLanguages) {
++        PsiElement psiRoot = viewProvider.getPsi(language);
+         if (!HighlightUtil.isRootHighlighted(psiRoot))
+             continue;
+         List<PsiElement> elements = CodeInsightUtil.getElementsInRange(psiRoot, myStartOffset, myEndOffset);
+         myMarkers = collectLineMarkers(elements);
+     }
+ }
+\ No newline at end of file

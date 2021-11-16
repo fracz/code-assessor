@@ -1,0 +1,22 @@
+diff --git a/9a253c964cf16daf0c05c6cfea518acf429d29b9 b/837272e0e3e387a9e5601e78cbfed14be669880e
+index 9a253c964c..837272e0e3 100644
+--- a/9a253c964cf16daf0c05c6cfea518acf429d29b9
++++ b/837272e0e3e387a9e5601e78cbfed14be669880e
+@@ -1,14 +1,13 @@
+ /**
+  * Freezes the database by locking it in exclusive mode.
+  *
+  * @param storageType Storage type between "plocal" or "memory".
+  * @return
+  * @throws IOException
+  * @see #releaseDatabase(String)
+  */
+ public synchronized OServerAdmin freezeDatabase(final String storageType) throws IOException {
+-    OBinaryRequest request = new OFreezeDatabaseRequest(storage.getName(), storageType);
+-    OBinaryResponse<Void> response = new OFreezeDatabaseResponse();
+-    networkAdminOperation(request, response, "Cannot freeze the remote storage: " + storage.getName());
++    OFreezeDatabaseRequest request = new OFreezeDatabaseRequest(storage.getName(), storageType);
++    OFreezeDatabaseResponse response = networkAdminOperation(request, "Cannot freeze the remote storage: " + storage.getName());
+     return this;
+ }
+\ No newline at end of file

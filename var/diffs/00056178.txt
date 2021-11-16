@@ -1,0 +1,16 @@
+diff --git a/9aefbfb38a2a7bd0b1f7208b85169dfde256c057 b/3403d2f7a69fcdef34bc1ce205b05f2cfff26be3
+index 9aefbfb38a..3403d2f7a6 100644
+--- a/9aefbfb38a2a7bd0b1f7208b85169dfde256c057
++++ b/3403d2f7a69fcdef34bc1ce205b05f2cfff26be3
+@@ -1,7 +1,8 @@
++@Test
+ public void testReturningPrimitive() {
+     mockCollaborator.oneInt(20);
+-    mockControl.replay();
++    replay(mockCollaborator);
+     testBeanProxy.setAge(20);
+     testBeanProxy.haveBirthday();
+-    mockControl.verify();
++    verify(mockCollaborator);
+ }
+\ No newline at end of file

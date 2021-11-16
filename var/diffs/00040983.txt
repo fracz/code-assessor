@@ -1,0 +1,16 @@
+diff --git a/b5dbc7bae75a888dc77844ee80e36575010c8975 b/9aa2708b38547300685e05c1defdcfca9b131d03
+index b5dbc7bae7..9aa2708b38 100644
+--- a/b5dbc7bae75a888dc77844ee80e36575010c8975
++++ b/9aa2708b38547300685e05c1defdcfca9b131d03
+@@ -1,9 +1,4 @@
+ @Override
+ public DependencyLink readDependencyLink(byte[] bytes) {
+-    checkArgument(bytes.length > 0, "Empty input reading DependencyLink");
+-    try {
+-        return DEPENDENCY_LINK_ADAPTER.fromJson(jsonReader(bytes));
+-    } catch (Exception e) {
+-        throw exceptionReading("Span", bytes, e);
+-    }
++    return read(DEPENDENCY_LINK_READER, bytes);
+ }
+\ No newline at end of file

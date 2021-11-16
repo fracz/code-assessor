@@ -1,0 +1,15 @@
+diff --git a/123c491f1400e2903c35f689c50eab1d117ddf38 b/f85a0f038eee42a195e768264029adbb1dc07642
+index 123c491f14..f85a0f038e 100644
+--- a/123c491f1400e2903c35f689c50eab1d117ddf38
++++ b/f85a0f038eee42a195e768264029adbb1dc07642
+@@ -1,7 +1,7 @@
+ /**
+  * Shows notification that not all conflicts were resolved.
+  * @param roots Roots that were merged.
+  */
+-protected void notifyUnresolvedRemain(Collection<VirtualFile> roots) {
+-    GitVcs.IMPORTANT_ERROR_NOTIFICATION.createNotification(myErrorNotificationTitle, "You have to <a href='resolve'>resolve</a> all conflicts first." + myErrorNotificationAdditionalDescription, NotificationType.WARNING, new ResolveNotificationListener(roots)).notify(myProject);
++protected void notifyUnresolvedRemain() {
++    notifyWarning(myParams.myErrorNotificationTitle, "You have to <a href='resolve'>resolve</a> all conflicts first." + myParams.myErrorNotificationAdditionalDescription);
+ }
+\ No newline at end of file

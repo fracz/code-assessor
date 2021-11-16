@@ -1,0 +1,22 @@
+diff --git a/b7dc8d342c4014ed026b9e692ee0047b330b730c b/e5c9cde115a8c7fb7e52f6abc1f5c164ee454fd1
+index b7dc8d342c..e5c9cde115 100644
+--- a/b7dc8d342c4014ed026b9e692ee0047b330b730c
++++ b/e5c9cde115a8c7fb7e52f6abc1f5c164ee454fd1
+@@ -1,12 +1,13 @@
+ @Override
+ protected void runChild(FrameworkMethod method, RunNotifier notifier) {
+     beginTracing(method);
+-    ClassLoader originalClassLoader = Thread.currentThread().getContextClassLoader();
++    final Thread thread = Thread.currentThread();
++    final ClassLoader originalClassLoader = thread.getContextClassLoader();
+     try {
+-        Thread.currentThread().setContextClassLoader(this.testClassLoader);
++        thread.setContextClassLoader(this.testClassLoader);
+         super.runChild(method, notifier);
+     } finally {
+-        Thread.currentThread().setContextClassLoader(originalClassLoader);
++        thread.setContextClassLoader(originalClassLoader);
+         endTracing(method, notifier);
+     }
+ }
+\ No newline at end of file

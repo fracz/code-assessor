@@ -1,0 +1,19 @@
+diff --git a/1dd0796f9f96dea6ff8f0ce6db00ed3e4c0988e5 b/b4edb6a7eae1914ed94cdcec6e24a18a15b2908c
+index 1dd0796f9f..b4edb6a7ea 100644
+--- a/1dd0796f9f96dea6ff8f0ce6db00ed3e4c0988e5
++++ b/b4edb6a7eae1914ed94cdcec6e24a18a15b2908c
+@@ -1,11 +1,10 @@
+ private static Set<VirtualFile> getReadOnlyFiles(final RefElement[] refElements) {
+     Set<VirtualFile> readOnlyFiles = new THashSet<VirtualFile>();
+     for (RefElement refElement : refElements) {
+         PsiElement psiElement = refElement.getElement();
+-        if (psiElement == null)
++        if (psiElement == null || psiElement.getContainingFile() == null)
+             continue;
+-        if (!psiElement.isWritable())
+-            readOnlyFiles.add(psiElement.getContainingFile().getVirtualFile());
++        readOnlyFiles.add(psiElement.getContainingFile().getVirtualFile());
+     }
+     return readOnlyFiles;
+ }
+\ No newline at end of file

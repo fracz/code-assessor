@@ -1,0 +1,26 @@
+diff --git a/7088fc12c379570cb54662129912139555a4b865 b/d350ea6fded7b6caf3f94c7b2d9eb08948bcebe9
+index 7088fc12c3..d350ea6fde 100644
+--- a/7088fc12c379570cb54662129912139555a4b865
++++ b/d350ea6fded7b6caf3f94c7b2d9eb08948bcebe9
+@@ -1,17 +1,16 @@
+ private void registerContentObservers() {
+     final Uri enabledPrintServicesUri = Settings.Secure.getUriFor(Settings.Secure.ENABLED_PRINT_SERVICES);
+-    ContentObserver observer = new ContentObserver(new Handler(mContext.getMainLooper())) {
++    ContentObserver observer = new ContentObserver(BackgroundThread.getHandler()) {
+
+         @Override
+         public void onChange(boolean selfChange, Uri uri) {
+             if (enabledPrintServicesUri.equals(uri)) {
+                 synchronized (mLock) {
+-                    if (readEnabledPrintServicesChangedLocked()) {
+-                        onUserStateChangedLocked();
+-                    }
++                    UserState userState = getCurrentUserStateLocked();
++                    userState.updateIfNeededLocked();
+                 }
+             }
+         }
+     };
+     mContext.getContentResolver().registerContentObserver(enabledPrintServicesUri, false, observer, UserHandle.USER_ALL);
+ }
+\ No newline at end of file

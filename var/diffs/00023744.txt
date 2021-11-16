@@ -1,0 +1,18 @@
+diff --git a/c21b978adfae1da51c309bc198503dbb7432e980 b/63eaa80de4773ea901bf8d1ad6f05f5a56f51bb5
+index c21b978adf..63eaa80de4 100644
+--- a/c21b978adfae1da51c309bc198503dbb7432e980
++++ b/63eaa80de4773ea901bf8d1ad6f05f5a56f51bb5
+@@ -1,10 +1,5 @@
+ @Override
+ public String getApplicationRestrictionsManagingPackage(ComponentName admin) {
+-    Preconditions.checkNotNull(admin, "ComponentName is null");
+-    final int userHandle = mInjector.userHandleGetCallingUserId();
+-    synchronized (this) {
+-        getActiveAdminForCallerLocked(admin, DeviceAdminInfo.USES_POLICY_PROFILE_OWNER);
+-        DevicePolicyData policy = getUserData(userHandle);
+-        return policy.mApplicationRestrictionsManagingPackage;
+-    }
++    final List<String> delegatePackages = getDelegatePackages(admin, DELEGATION_APP_RESTRICTIONS);
++    return delegatePackages.size() > 0 ? delegatePackages.get(0) : null;
+ }
+\ No newline at end of file

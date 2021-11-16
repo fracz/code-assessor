@@ -1,0 +1,13 @@
+diff --git a/414ad0d8e7a71435f59ed1dcaad2b532873dbcfd b/40d8a749179ef6d30646395d21f66d938d8748db
+index 414ad0d8e7..40d8a74917 100644
+--- a/414ad0d8e7a71435f59ed1dcaad2b532873dbcfd
++++ b/40d8a749179ef6d30646395d21f66d938d8748db
+@@ -1,5 +1,4 @@
+ @Override
+-public void dropIndexRule(long labelId, long propertyKey) throws ConstraintViolationKernelException {
+-    assertOperationsAllowed();
+-    delegate.dropIndexRule(labelId, propertyKey);
++public void dropIndexRule(IndexRule indexRule) throws ConstraintViolationKernelException {
++    delegate.dropIndexRule(indexRule);
+ }
+\ No newline at end of file

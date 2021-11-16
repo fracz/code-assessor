@@ -1,0 +1,14 @@
+diff --git a/17bf670849a77317e00126e74b9959f38815afcf b/5f1507e3c3442867cfa1063c12a9894468451e42
+index 17bf670849..5f1507e3c3 100644
+--- a/17bf670849a77317e00126e74b9959f38815afcf
++++ b/5f1507e3c3442867cfa1063c12a9894468451e42
+@@ -1,7 +1,3 @@
+ public int getDialogsTypingColor() {
+-    if (dialogsTypingColor != 0) {
+-        return dialogsTypingColor;
+-    } else {
+-        return getMainColor();
+-    }
++    return getColorWithFallback(dialogsTypingColor, getMainColor());
+ }
+\ No newline at end of file

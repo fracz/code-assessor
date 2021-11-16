@@ -1,0 +1,25 @@
+diff --git a/0c8aace0ffcfe73d66cf6a189b63aa3a6c1b1b6a b/998aef9e328457180a282d40ad5126a05f665066
+index 0c8aace0ff..998aef9e32 100644
+--- a/0c8aace0ffcfe73d66cf6a189b63aa3a6c1b1b6a
++++ b/998aef9e328457180a282d40ad5126a05f665066
+@@ -1,9 +1,14 @@
+-public final void executeAll(Object object, boolean disposeTree, ObjectTreeAction action) {
++public final boolean executeAll(T object, boolean disposeTree, ObjectTreeAction<T> action, boolean processUnregistered) {
+     assert object != null : "Unable execute action for null object";
+-    final ObjectNode node = getObject2NodeMap().get(object);
+-    if (node != null) {
+-        node.execute(disposeTree, action);
++    ObjectNode<T> node = getObject2NodeMap().get(object);
++    if (node == null) {
++        if (processUnregistered) {
++            executeUnregistered(object, action);
++            return true;
++        } else {
++            return false;
++        }
+     } else {
+-        action.execute(object);
++        return node.execute(disposeTree, action);
+     }
+ }
+\ No newline at end of file

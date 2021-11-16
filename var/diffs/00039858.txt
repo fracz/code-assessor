@@ -1,0 +1,14 @@
+diff --git a/f9ddb2d07827ec2c9e7f0b8ce46f3c16d6d737ba b/0197b70c050f21b9ff93313da83855712ada19ef
+index f9ddb2d078..0197b70c05 100644
+--- a/f9ddb2d07827ec2c9e7f0b8ce46f3c16d6d737ba
++++ b/0197b70c050f21b9ff93313da83855712ada19ef
+@@ -1,7 +1,4 @@
+ @Override
+ public int hashCode() {
+-    int result = labelId;
+-    result = 31 * result + propertyKeyId;
+-    result = 31 * result + type.hashCode();
+-    return result;
++    return 31 * descriptor.hashCode() + type.hashCode();
+ }
+\ No newline at end of file

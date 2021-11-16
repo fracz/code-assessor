@@ -1,0 +1,13 @@
+diff --git a/ae71a1ca2b02fb4fc68d602578f39a3bdccfa356 b/1ea1dc563330b8886af0748c1f4a5e794f82018b
+index ae71a1ca2b..1ea1dc5633 100644
+--- a/ae71a1ca2b02fb4fc68d602578f39a3bdccfa356
++++ b/1ea1dc563330b8886af0748c1f4a5e794f82018b
+@@ -1,4 +1,4 @@
+-public synchronized void installSnapshot(CoreSnapshot coreSnapshot) throws Throwable {
+-    applicationProcess.installSnapshot(coreSnapshot, raftMachine);
+-    notifyAll();
++synchronized void installSnapshot(CoreSnapshot coreSnapshot) throws IOException {
++    coreStateMachines.installSnapshots(coreSnapshot);
++    sessionTracker.installSnapshot(coreSnapshot.get(CoreStateType.SESSION_TRACKER));
+ }
+\ No newline at end of file

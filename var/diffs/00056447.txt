@@ -1,0 +1,36 @@
+diff --git a/7fd8015ad8b3653238323749473c9cc777ce2a0b b/3cf61f2e6103beed7b4c3f9b4878e9c0e8e624db
+index 7fd8015ad8..3cf61f2e61 100644
+--- a/7fd8015ad8b3653238323749473c9cc777ce2a0b
++++ b/3cf61f2e6103beed7b4c3f9b4878e9c0e8e624db
+@@ -1,28 +1,28 @@
+ /**
+  * Assign sequential integer indices to the leaves of the subtree
+  * rooted at this <code>TreeGraphNode</code>, beginning with
+  * <code>startIndex</code>, and traversing the leaves from left
+  * to right. If node is already indexed, then it uses the existing index.
+  *
+  * @param startIndex index for this node
+  * @return the next index still unassigned
+  */
+ private int indexLeaves(int startIndex) {
+     if (isLeaf()) {
+         int oldIndex = index();
+         if (oldIndex >= 0) {
+             startIndex = oldIndex;
+         } else {
+             setIndex(startIndex);
+         }
+         if (tg != null) {
+             tg.addNodeToIndexMap(startIndex, this);
+         }
+         startIndex++;
+     } else {
+-        for (TreeGraphNode child : children) {
+-            startIndex = child.indexLeaves(startIndex);
++        for (int i = 0; i < children.length; i++) {
++            startIndex = children[i].indexLeaves(startIndex);
+         }
+     }
+     return startIndex;
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/c815b012f8d5737693be0f1b1460a574e091a6bc b/08847583b35de661f3e6369b45f1486ffc2bedaf
+index c815b012f8..08847583b3 100644
+--- a/c815b012f8d5737693be0f1b1460a574e091a6bc
++++ b/08847583b35de661f3e6369b45f1486ffc2bedaf
+@@ -1,8 +1,10 @@
+ @Test
+ public void usesSharedRegistries() throws Exception {
+-    SharedMetricRegistries.add("reg", registry);
+-    final InstrumentedAppender shared = new InstrumentedAppender("reg");
++    String registryName = "registry";
++    SharedMetricRegistries.add(registryName, registry);
++    final InstrumentedAppender shared = new InstrumentedAppender(registryName);
+     shared.start();
++    when(event.getLevel()).thenReturn(Level.INFO);
+     shared.doAppend(event);
+-    assertThat(registry.meter("ch.qos.logback.core.Appender.info").getCount()).isEqualTo(1);
++    assertThat(registry.meter(METRIC_NAME_PREFIX + ".info").getCount()).isEqualTo(1);
+ }
+\ No newline at end of file

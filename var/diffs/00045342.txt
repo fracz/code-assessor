@@ -1,0 +1,24 @@
+diff --git a/e433b3990f84b3a2e35c2d0d91982936ec59ac0e b/ba32b46a5b09c4e4123c321c3abb6026b5a86ede
+index e433b3990f..ba32b46a5b 100644
+--- a/e433b3990f84b3a2e35c2d0d91982936ec59ac0e
++++ b/ba32b46a5b09c4e4123c321c3abb6026b5a86ede
+@@ -1,17 +1,17 @@
+ @Override
+ public OSQLFunction createFunction(String name) throws OCommandExecutionException {
+     final Object obj = FUNCTIONS.get(name);
+     if (obj == null)
+         throw new OCommandExecutionException("Unknown function name :" + name);
+     if (obj instanceof OSQLFunction)
+         return (OSQLFunction) obj;
+     else {
+         // it's a class
+         final Class<?> clazz = (Class<?>) obj;
+         try {
+             return (OSQLFunction) clazz.newInstance();
+         } catch (Exception e) {
+-            throw new OCommandExecutionException("Error in creation of function " + name + "(). Probably there is not an empty constructor or the constructor generates errors", e);
++            throw OException.wrapException(new OCommandExecutionException("Error in creation of function " + name + "(). Probably there is not an empty constructor or the constructor generates errors"), e);
+         }
+     }
+ }
+\ No newline at end of file

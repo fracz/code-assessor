@@ -1,0 +1,19 @@
+diff --git a/19f230a1028a37759ae33383e83c3aa8e3cf6e0c b/1612b83f21de3a5fee3920b95d16e1266569cd6b
+index 19f230a102..1612b83f21 100644
+--- a/19f230a1028a37759ae33383e83c3aa8e3cf6e0c
++++ b/1612b83f21de3a5fee3920b95d16e1266569cd6b
+@@ -1,10 +1,10 @@
+-private int untilCommentAndHintTerminateSign(final int beginSignLength) {
+-    int length = beginSignLength;
++private int untilCommentAndHintTerminateSign(final int beginSymbolLength) {
++    int length = beginSymbolLength;
+     while (!isMultipleLineCommentEnd(charAt(offset + length), charAt(offset + length + 1))) {
+         if (CharType.isEndOfInput(charAt(offset + length))) {
+             throw new UnterminatedCharException("*/");
+         }
+         length++;
+     }
+-    return offset + length + 2;
++    return offset + length + COMMENT_AND_HINT_END_SYMBOL_LENGTH;
+ }
+\ No newline at end of file

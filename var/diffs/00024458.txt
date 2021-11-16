@@ -1,0 +1,27 @@
+diff --git a/007cbdbb74fec106104497501f812b748ed94005 b/13e9b236c4f6ccf09cdb2a2fca30fafd4809aed2
+index 007cbdbb74..13e9b236c4 100644
+--- a/007cbdbb74fec106104497501f812b748ed94005
++++ b/13e9b236c4f6ccf09cdb2a2fca30fafd4809aed2
+@@ -1,16 +1,13 @@
+ /**
+  * Deserialize tables from low-level schema representation, all of them belong to the same keyspace
+  *
+  * @return map containing name of the table and its metadata for faster lookup
+  */
+-private static Map<String, CFMetaData> createTablesFromTablesPartition(Row partition) {
+-    if (partition.cf == null)
+-        return Collections.emptyMap();
++private static Collection<CFMetaData> createTablesFromTablesPartition(RowIterator partition) {
++    if (partition.isEmpty())
++        return Collections.emptyList();
+     String query = String.format("SELECT * FROM %s.%s", SystemKeyspace.NAME, COLUMNFAMILIES);
+-    Map<String, CFMetaData> tables = new HashMap<>();
+-    for (UntypedResultSet.Row row : QueryProcessor.resultify(query, partition)) {
+-        CFMetaData cfm = createTableFromTableRow(row);
+-        tables.put(cfm.cfName, cfm);
+-    }
++    List<CFMetaData> tables = new ArrayList<>();
++    for (UntypedResultSet.Row row : QueryProcessor.resultify(query, partition)) tables.add(createTableFromTableRow(row));
+     return tables;
+ }
+\ No newline at end of file

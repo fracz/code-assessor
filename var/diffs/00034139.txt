@@ -1,0 +1,13 @@
+diff --git a/e97a10b4d7286e6316f491d6a2057a88cc611513 b/ccd3bc1bdb24e2ed1ad0d872ebaff59866e42f64
+index e97a10b4d7..ccd3bc1bdb 100644
+--- a/e97a10b4d7286e6316f491d6a2057a88cc611513
++++ b/ccd3bc1bdb24e2ed1ad0d872ebaff59866e42f64
+@@ -1,5 +1,5 @@
+ private static void readStuff(Connection connection) throws SQLException {
+-    if (connection != null) {
+-        connection.createStatement();
++    try (Statement statement = connection.createStatement()) {
++        System.out.println("Read data from statement");
+     }
+ }
+\ No newline at end of file

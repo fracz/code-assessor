@@ -1,0 +1,11 @@
+diff --git a/e6e5fbb42d7dd53936894f1e2885e2621ef2e8e4 b/96a4e56df05e4e2e2027a74bb513c80678f81716
+index e6e5fbb42d..96a4e56df0 100644
+--- a/e6e5fbb42d7dd53936894f1e2885e2621ef2e8e4
++++ b/96a4e56df05e4e2e2027a74bb513c80678f81716
+@@ -1,4 +1,4 @@
+ @Test
+ public void shouldNeverVerifyWhenNotModeIsInOrder() throws Exception {
+-    verifier.verify(null, null, new VerificationModeBuilder().inOrder());
++    assertFalse(verifier.appliesTo(new VerificationModeBuilder().inOrder()));
+ }
+\ No newline at end of file

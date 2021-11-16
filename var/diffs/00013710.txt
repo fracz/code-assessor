@@ -1,0 +1,21 @@
+diff --git a/ea868c8ae554d41c89e1e78116f3cd31e88d7624 b/db2f66b481f6656f95ce25d781cf56aaf239b115
+index ea868c8ae5..db2f66b481 100644
+--- a/ea868c8ae554d41c89e1e78116f3cd31e88d7624
++++ b/db2f66b481f6656f95ce25d781cf56aaf239b115
+@@ -1,9 +1,8 @@
+-@Nullable
+-public FragmentSide getSideOf(ChangeList source) {
+-    for (int i = 0; i < myChanges.length; i++) {
+-        ChangeList changeList = myChanges[i];
+-        if (changeList == source)
+-            return FragmentSide.fromIndex(i);
++@NotNull
++public FragmentSide getSideOf(@NotNull ChangeList source) {
++    if (myBaseToLeftChangeList == source) {
++        return FragmentSide.SIDE1;
++    } else {
++        return FragmentSide.SIDE2;
+     }
+-    return null;
+ }
+\ No newline at end of file

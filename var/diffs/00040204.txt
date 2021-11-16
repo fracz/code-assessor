@@ -1,0 +1,12 @@
+diff --git a/e70318687281eb7834752e0687414829b48979b5 b/dac8611b5f1ecd7438683d8751ab2986f7623b31
+index e703186872..dac8611b5f 100644
+--- a/e70318687281eb7834752e0687414829b48979b5
++++ b/dac8611b5f1ecd7438683d8751ab2986f7623b31
+@@ -1,4 +1,4 @@
+ @Override
+-UniquenessConstraint createConstraint(SchemaWriteOperations writeOps, int type, int property) throws Exception {
+-    return writeOps.uniquePropertyConstraintCreate(type, property);
++UniquenessConstraint createConstraint(SchemaWriteOperations writeOps, NodePropertyDescriptor descriptor) throws Exception {
++    return writeOps.uniquePropertyConstraintCreate(descriptor);
+ }
+\ No newline at end of file

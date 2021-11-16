@@ -1,0 +1,15 @@
+diff --git a/2ab97626bcf0518611d92fe8eb8039ee875d0a61 b/b812338221c52ba800786d708227d11820cf8510
+index 2ab97626bc..b812338221 100644
+--- a/2ab97626bcf0518611d92fe8eb8039ee875d0a61
++++ b/b812338221c52ba800786d708227d11820cf8510
+@@ -1,6 +1,6 @@
+ @Override
+ public double getParameter(int index) {
+-    if (index >= logReg.getW().length)
+-        return logReg.getB().get(index - logReg.getW().length);
+-    return logReg.getW().get(index);
++    if (index >= logReg.getW().length())
++        return (double) logReg.getB().getScalar(index - logReg.getW().length()).element();
++    return (double) logReg.getW().getScalar(index).element();
+ }
+\ No newline at end of file

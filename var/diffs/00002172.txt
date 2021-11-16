@@ -1,0 +1,19 @@
+diff --git a/49bac4d4e3932059b7b7def662ad8befbffe03c1 b/ad5e405796e91e29aca2f8f556891d4de1c9a253
+index 49bac4d4e3..ad5e405796 100644
+--- a/49bac4d4e3932059b7b7def662ad8befbffe03c1
++++ b/ad5e405796e91e29aca2f8f556891d4de1c9a253
+@@ -1,11 +1,11 @@
+ public void invoke(@NotNull Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
+     PyBinaryExpression binaryExpression = PsiTreeUtil.getParentOfType(file.findElementAt(editor.getCaretModel().getOffset()), PyBinaryExpression.class);
+     if (binaryExpression == null) {
+         return;
+     }
+     PsiElement operator = binaryExpression.getPsiOperator();
+     if (operator != null) {
+-        PyElementGenerator elementGenerator = PythonLanguage.getInstance().getElementGenerator();
+-        operator.replace(elementGenerator.createFromText(project, LeafPsiElement.class, "!="));
++        PyElementGenerator elementGenerator = PyElementGenerator.getInstance(project);
++        operator.replace(elementGenerator.createFromText(LeafPsiElement.class, "!="));
+     }
+ }
+\ No newline at end of file

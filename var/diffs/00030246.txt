@@ -1,0 +1,11 @@
+diff --git a/bc69935ca68285339eb36316b3d20175c3898e9b b/dd9f80f0f66063fbc53bec2e7ad6c589cc0f04be
+index bc69935ca6..dd9f80f0f6 100644
+--- a/bc69935ca68285339eb36316b3d20175c3898e9b
++++ b/dd9f80f0f66063fbc53bec2e7ad6c589cc0f04be
+@@ -1,3 +1,3 @@
+-private static SequenceNumbersService sequenceNumberService(final ShardId shardId, final String allocationId, final IndexSettings indexSettings, final SeqNoStats seqNoStats) {
+-    return new SequenceNumbersService(shardId, allocationId, indexSettings, seqNoStats.getMaxSeqNo(), seqNoStats.getLocalCheckpoint(), seqNoStats.getGlobalCheckpoint());
++static SequenceNumbersService sequenceNumberService(final EngineConfig engineConfig, final SeqNoStats seqNoStats) {
++    return new SequenceNumbersService(engineConfig.getShardId(), engineConfig.getAllocationId(), engineConfig.getIndexSettings(), seqNoStats.getMaxSeqNo(), seqNoStats.getLocalCheckpoint(), seqNoStats.getGlobalCheckpoint());
+ }
+\ No newline at end of file

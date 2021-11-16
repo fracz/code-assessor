@@ -1,0 +1,15 @@
+diff --git a/6015bf4561b00b73f519b6514813640c2f33d2f9 b/e8859022ee387ac6c9b4da60fe92d9335cf6ef0d
+index 6015bf4561..e8859022ee 100644
+--- a/6015bf4561b00b73f519b6514813640c2f33d2f9
++++ b/e8859022ee387ac6c9b4da60fe92d9335cf6ef0d
+@@ -1,6 +1,6 @@
+ public void revert(Project project) {
+-    if (_change == null) {
+-        loadChange();
++    if (getChange() == null) {
++        _manager.loadChange(this);
+     }
+-    _change.revert(project);
++    getChange().revert(project);
+ }
+\ No newline at end of file

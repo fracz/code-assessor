@@ -1,0 +1,57 @@
+diff --git a/3115ec1701b576a57181458398107c64068d87c0 b/fb51b5a8c50f4ff2b0225514ff90c356799ac9eb
+index 3115ec1701..fb51b5a8c5 100644
+--- a/3115ec1701b576a57181458398107c64068d87c0
++++ b/fb51b5a8c50f4ff2b0225514ff90c356799ac9eb
+@@ -1,48 +1,16 @@
+ private void hookContextMenu() {
+     MenuManager menuMgr = new MenuManager();
+-    Menu menu = menuMgr.createContextMenu(grid);
++    Menu menu = menuMgr.createContextMenu(this);
+     menuMgr.addMenuListener(new IMenuListener() {
+
+         @Override
+         public void menuAboutToShow(IMenuManager manager) {
+-            /*
+-                IAction copyAction = new Action("Copy selection") {
+-                    public void run()
+-                    {
+-                        copySelectionToClipboard(false);
+-                    }
+-                };
+-                copyAction.setEnabled(grid.getCellSelectionCount() > 0);
+-                copyAction.setActionDefinitionId(IWorkbenchCommandConstants.EDIT_COPY);
+-
+-                IAction copySpecialAction = new Action("Copy selection with header") {
+-                    public void run()
+-                    {
+-                        copySelectionToClipboard(true);
+-                    }
+-                };
+-                copySpecialAction.setEnabled(grid.getCellSelectionCount() > 0);
+-                copySpecialAction.setActionDefinitionId(ICommandIds.CMD_COPY_SPECIAL);
+-
+-                IAction selectAllAction = new Action("Select All") {
+-                    public void run()
+-                    {
+-                        grid.selectAll();
+-                    }
+-                };
+-                selectAllAction.setEnabled(grid.getCellSelectionCount() > 0);
+-                selectAllAction.setActionDefinitionId(IWorkbenchCommandConstants.EDIT_SELECT_ALL);
+-
+-                manager.add(copyAction);
+-                manager.add(copySpecialAction);
+-                manager.add(selectAllAction);
+-*/
+             manager.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+             // Let controlles to provide it's own menu items
+-            spreadsheetController.fillContextMenu(grid.getFocusCell(), manager);
++            spreadsheetController.fillContextMenu(getFocusCell(), manager);
+         }
+     });
+     menuMgr.setRemoveAllWhenShown(true);
+-    grid.setMenu(menu);
++    super.setMenu(menu);
+     site.registerContextMenu(menuMgr, selectionProvider);
+ }
+\ No newline at end of file

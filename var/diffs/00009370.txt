@@ -1,0 +1,23 @@
+diff --git a/1660d8a7c267a5005ebb0ef8aeeb1b7a183f8b49 b/dfe5cad1a9c6eaf10d864655307b145302e1e7b7
+index 1660d8a7c2..dfe5cad1a9 100644
+--- a/1660d8a7c267a5005ebb0ef8aeeb1b7a183f8b49
++++ b/dfe5cad1a9c6eaf10d864655307b145302e1e7b7
+@@ -1,12 +1,8 @@
+ @Override
+ public String getCodeSample(@NotNull SettingsType settingsType) {
+-    // noinspection EnumSwitchStatementWhichMissesCases
+-    switch(settingsType) {
+-        case SPACING_SETTINGS:
+-            return SPACING_SETTINGS_PREVIEW;
+-        case BLANK_LINE_SETTINGS:
+-            return BLANK_LINES_SETTINGS_PREVIEW;
+-        default:
+-            return "";
+-    }
++    if (settingsType == SettingsType.SPACING_SETTINGS)
++        return SPACING_SETTINGS_PREVIEW;
++    if (settingsType == SettingsType.BLANK_LINES_SETTINGS)
++        return BLANK_LINES_SETTINGS_PREVIEW;
++    return "";
+ }
+\ No newline at end of file

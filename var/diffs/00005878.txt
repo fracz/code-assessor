@@ -1,0 +1,21 @@
+diff --git a/bc27b5bd1027e61b843716e6e8df512ea5457197 b/73a1126e0b43a5c0dd401e57a110a9c511e82ab3
+index bc27b5bd10..73a1126e0b 100644
+--- a/bc27b5bd1027e61b843716e6e8df512ea5457197
++++ b/73a1126e0b43a5c0dd401e57a110a9c511e82ab3
+@@ -1,10 +1,6 @@
+-private CompileContext createContext(CompileScope scope, boolean isMake) {
+-    return new CompileContext(scope, myProjectName, isMake, myMappings, myProductionChunks, myTestChunks, new MessageHandler() {
+-
+-        public void processMessage(BuildMessage msg) {
+-            for (MessageHandler h : myMessageHandlers) {
+-                h.processMessage(msg);
+-            }
+-        }
+-    });
++private CompileContext createContext(CompileScope scope, boolean isMake, final boolean isProjectRebuild) throws ProjectBuildException {
++    final String projectName = myProjectDescriptor.projectName;
++    final TimestampStorage tsStorage = myProjectDescriptor.timestamps.getStorage();
++    final FSState fsState = myProjectDescriptor.fsState;
++    return new CompileContext(projectName, scope, isMake, isProjectRebuild, myProductionChunks, myTestChunks, fsState, tsStorage, myMessageDispatcher);
+ }
+\ No newline at end of file

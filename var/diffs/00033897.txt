@@ -1,0 +1,23 @@
+diff --git a/9485ae0e1c1301cde1b58c39c6b55a3c67cb8f69 b/12818fa3e9a092c3fac6d79d92d27c3375a264c0
+index 9485ae0e1c..12818fa3e9 100644
+--- a/9485ae0e1c1301cde1b58c39c6b55a3c67cb8f69
++++ b/12818fa3e9a092c3fac6d79d92d27c3375a264c0
+@@ -1,15 +1,10 @@
+ @Override
+ public void handleSubchannelState(Subchannel subchannel, ConnectivityStateInfo newState) {
+     if (delegate != null) {
+         delegate.handleSubchannelState(subchannel, newState);
+         return;
+     }
+-    if (newState.getState() == SHUTDOWN || !(subchannels.values().contains(subchannel))) {
+-        return;
+-    }
+-    if (newState.getState() == IDLE) {
+-        subchannel.requestConnection();
++    if (grpclbState != null) {
++        grpclbState.handleSubchannelState(subchannel, newState);
+     }
+-    subchannel.getAttributes().get(STATE_INFO).set(newState);
+-    maybeUpdatePicker();
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/c55b70d8580ba011fb3bf51d37fd91ffdc48c295 b/a40482bfae732b39a9f6693482772b6264d3307f
+index c55b70d858..a40482bfae 100644
+--- a/c55b70d8580ba011fb3bf51d37fd91ffdc48c295
++++ b/a40482bfae732b39a9f6693482772b6264d3307f
+@@ -1,10 +1,10 @@
+-public void scheduleArtifactsDownloading() {
++public void scheduleArtifactsDownloading(final List<MavenProject> projects) {
+     runWhenFullyOpen(new Runnable() {
+
+         public void run() {
+-            for (MavenProject each : getProjects()) {
+-                myArtifactsDownloadingProcessor.scheduleTask(new MavenProjectsProcessorArtifactsDownloadingTask(each, myProjectsTree, getDownloadingSettings()));
++            for (MavenProject each : projects) {
++                myArtifactsDownloadingProcessor.scheduleTask(new MavenProjectsProcessorArtifactsDownloadingTask(each, myProjectsTree));
+             }
+         }
+     });
+ }
+\ No newline at end of file

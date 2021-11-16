@@ -1,0 +1,11 @@
+diff --git a/d028d0f947845b1a0823cc30a26b6575b2714587 b/d62ca4c1df57ee2dab7833cda83c4a27c8d3d94f
+index d028d0f947..d62ca4c1df 100644
+--- a/d028d0f947845b1a0823cc30a26b6575b2714587
++++ b/d62ca4c1df57ee2dab7833cda83c4a27c8d3d94f
+@@ -1,4 +1,4 @@
+ private JSType getThisOrNewType(Node n, DeclaredTypeRegistry registry, ImmutableList<String> typeParameters) {
+     JSType t = getTypeFromComment(n, registry, typeParameters);
+-    return t.isSingletonObjWithNull() ? t.removeType(JSType.NULL) : t;
++    return t.isSingletonObjWithNull() ? t.removeType(this.commonTypes.NULL) : t;
+ }
+\ No newline at end of file

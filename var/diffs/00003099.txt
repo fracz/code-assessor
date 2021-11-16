@@ -1,0 +1,23 @@
+diff --git a/6f58c11f3e28f57487e70196574bb643c056c17c b/b6f4de7276c1c498b789a3a9e190988bfc5f0a8f
+index 6f58c11f3e..b6f4de7276 100644
+--- a/6f58c11f3e28f57487e70196574bb643c056c17c
++++ b/b6f4de7276c1c498b789a3a9e190988bfc5f0a8f
+@@ -1,14 +1,14 @@
+ public Object getData(DataProvider dataProvider) {
+-    final PsiElement element = (PsiElement) dataProvider.getData(DataConstants.PSI_ELEMENT);
++    final PsiElement element = LangDataKeys.PSI_ELEMENT.getData(dataProvider);
+     if (element != null) {
+         return element.getContainingFile();
+     }
+-    Project project = (Project) dataProvider.getData(DataConstants.PROJECT);
++    Project project = PlatformDataKeys.PROJECT.getData(dataProvider);
+     if (project != null) {
+-        VirtualFile vFile = (VirtualFile) dataProvider.getData(DataConstants.VIRTUAL_FILE);
++        VirtualFile vFile = PlatformDataKeys.VIRTUAL_FILE.getData(dataProvider);
+         if (vFile != null) {
+             return PsiManager.getInstance(project).findFile(vFile);
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

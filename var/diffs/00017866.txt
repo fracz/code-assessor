@@ -1,0 +1,29 @@
+diff --git a/5e2b35a240d0e942f63aceae37741b430076ee28 b/d376df781ead2818f63f13e7a5f721a0036fab59
+index 5e2b35a240..d376df781e 100644
+--- a/5e2b35a240d0e942f63aceae37741b430076ee28
++++ b/d376df781ead2818f63f13e7a5f721a0036fab59
+@@ -1,22 +1,22 @@
+ @Test
+ public void testNonBlockingCommandQueueFiresTimeout() {
+     // see https://github.com/Netflix/Hystrix/issues/514
+-    final TestHystrixCommand<Boolean> cmd = new TestCommandWithTimeout(50, TestCommandWithTimeout.FALLBACK_SUCCESS);
++    final TestHystrixCommand<?> cmd = getCommand(ExecutionIsolationStrategy.THREAD, AbstractTestHystrixCommand.ExecutionResult.SUCCESS, 200, AbstractTestHystrixCommand.FallbackResult.SUCCESS, 50);
+     new Thread() {
+
+         @Override
+         public void run() {
+             cmd.queue();
+         }
+     }.start();
+     try {
+         Thread.sleep(200);
+     // timeout should occur in 50ms, and underlying thread should run for 500ms
+     // therefore, after 200ms, the command should have finished with a fallback on timeout
+     } catch (InterruptedException ie) {
+         throw new RuntimeException(ie);
+     }
+     assertTrue(cmd.isExecutionComplete());
+     assertTrue(cmd.isResponseTimedOut());
+     assertEquals(0, cmd.metrics.getCurrentConcurrentExecutionCount());
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/13043780236a358532bd52126c2315c3db047a91 b/07260bee4bab4af4e82acc9ca8cf53819d05a540
+index 1304378023..07260bee4b 100644
+--- a/13043780236a358532bd52126c2315c3db047a91
++++ b/07260bee4bab4af4e82acc9ca8cf53819d05a540
+@@ -1,10 +1,3 @@
+ public void update(MavenIndex i, Project project, ProgressIndicator progress) throws MavenIndexException, ProcessCanceledException {
+-    try {
+-        updateIndexContext(i, progress);
+-        updateIndexCache(i, project, progress);
+-    } catch (IOException e) {
+-        throw new MavenIndexException(e);
+-    } catch (UnsupportedExistingLuceneIndexException e) {
+-        throw new MavenIndexException(e);
+-    }
++    i.update(project, myEmbedder, myIndexer, myUpdater, progress);
+ }
+\ No newline at end of file

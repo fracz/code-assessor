@@ -1,0 +1,20 @@
+diff --git a/f4fcd02978100398493b1e715e0401eef33bc5c4 b/bfa1bfd3ea30808c5011f132b1f65b9b474cff98
+index f4fcd02978..bfa1bfd3ea 100644
+--- a/f4fcd02978100398493b1e715e0401eef33bc5c4
++++ b/bfa1bfd3ea30808c5011f132b1f65b9b474cff98
+@@ -1,13 +1,13 @@
+ public void finish() {
+     if (end > 0)
+         return;
+-    this.end = System.currentTimeMillis();
++    end = System.currentTimeMillis();
+     animator.stop();
+     updateLabel(statusLabel);
+     rootNode.setInProgress(false);
+     if (TestNGConsoleProperties.SELECT_FIRST_DEFECT.value(consoleProperties)) {
+         selectTest(rootNode.getFirstDefect());
+     } else {
+         tree.getSelectionModel().setSelectionPath(new TreePath(treeBuilder.getNodeForElement(rootNode)));
+     }
+ }
+\ No newline at end of file

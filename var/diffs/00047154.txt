@@ -1,0 +1,14 @@
+diff --git a/4e2b0a2c1f2e99ecb346dcf31a49e665eb423a16 b/626acad4df957227bf43ffe34f9842c1f370039c
+index 4e2b0a2c1f..626acad4df 100644
+--- a/4e2b0a2c1f2e99ecb346dcf31a49e665eb423a16
++++ b/626acad4df957227bf43ffe34f9842c1f370039c
+@@ -1,7 +1,3 @@
+ private void perform(final RetransmitAction retransmitAction) {
+-    scanner.seek(retransmitAction.termOffset);
+-    int remainingBytes = retransmitAction.length;
+-    do {
+-        remainingBytes -= scanner.scanNext(sendRetransmitHandler, Math.min(remainingBytes, mtuLength));
+-    } while (remainingBytes > 0);
++    retransmitSender.send(retransmitAction.termId, retransmitAction.termOffset, retransmitAction.length);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/78c234fb071be90ac14e1e29d11742565b281078 b/541cee6aad24b7451b9187702f22f8b1480e2256
+index 78c234fb07..541cee6aad 100644
+--- a/78c234fb071be90ac14e1e29d11742565b281078
++++ b/541cee6aad24b7451b9187702f22f8b1480e2256
+@@ -1,9 +1,7 @@
+ @Override
+ public String setValue(String value) {
+-    if (value == null) {
+-        throw new NullPointerException("value");
+-    }
++    Objects.requireNonNull(value, "value");
+     String oldValue = this.value;
+     this.value = value;
+     return oldValue;
+ }
+\ No newline at end of file

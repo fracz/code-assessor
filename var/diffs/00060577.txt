@@ -1,0 +1,26 @@
+diff --git a/04efa5901ca86a6f5b52a08ca7039beba5231ff3 b/1aa3b9f4ac0ef39f4f235852dba65a389f3bc477
+index 04efa5901c..1aa3b9f4ac 100644
+--- a/04efa5901ca86a6f5b52a08ca7039beba5231ff3
++++ b/1aa3b9f4ac0ef39f4f235852dba65a389f3bc477
+@@ -1,19 +1,15 @@
+ @Override
+ protected ActionListener getActionListenerSubmit() {
+     if (actionListenerSubmit == null) {
+         actionListenerSubmit = new ActionListener() {
+
+             @Override
+             public void actionPerformed(ActionEvent e) {
+-                String opcode = getSelectedOpcode();
+-                Integer channelId = getSelectedChannelId();
+-                String payloadPattern = getPayloadPattern();
+-                Direction direction = getDirection();
+-                breakPointsManager.editBreakpoint(breakpoint, new WebSocketBreakpointMessage(opcode, channelId, payloadPattern, direction));
++                breakPointsManager.editBreakpoint(breakpoint, getWebSocketBreakpointMessage());
+                 breakpoint = null;
+                 breakPointsManager.hideEditDialog();
+             }
+         };
+     }
+     return actionListenerSubmit;
+ }
+\ No newline at end of file

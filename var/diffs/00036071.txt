@@ -1,0 +1,18 @@
+diff --git a/79fade18174d4a4c1aa369b68af9cfd17f2e433f b/492ae2e39df62f65c3adac66cc21d79b0eb19937
+index 79fade1817..492ae2e39d 100644
+--- a/79fade18174d4a4c1aa369b68af9cfd17f2e433f
++++ b/492ae2e39df62f65c3adac66cc21d79b0eb19937
+@@ -1,10 +1,10 @@
+ @Test
+ public void shouldPointToActualInvocation() {
+-    Strictly strictly = createStrictOrderVerifier(mock, mockTwo);
++    strictly.verify(mock, atLeastOnce()).simpleMethod(anyInt());
+     try {
+         strictly.verify(mockTwo).simpleMethod(999);
+         fail();
+-    } catch (InvocationDiffersFromActual e) {
++    } catch (StrictVerificationFailure e) {
+         assertThat(e.getCause(), hasFirstMethodInStackTrace("second"));
+     }
+ }
+\ No newline at end of file

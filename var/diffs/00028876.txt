@@ -1,0 +1,18 @@
+diff --git a/51005aecd1d9e0e4dcf285369bc07254147a265d b/abf2db3c5b6c83ced0aa86816985c0376b9543e7
+index 51005aecd1..abf2db3c5b 100644
+--- a/51005aecd1d9e0e4dcf285369bc07254147a265d
++++ b/abf2db3c5b6c83ced0aa86816985c0376b9543e7
+@@ -1,7 +1,7 @@
++/**
++ * remove and {@link org.apache.lucene.store.IndexOutput} for a given file. It is the caller's responsibility to close it
++ */
+ public IndexOutput removeOpenIndexOutputs(String name) {
+-    final ConcurrentMap<String, IndexOutput> outputs = openIndexOutputs;
+-    if (outputs == null) {
+-        return null;
+-    }
+-    return outputs.remove(name);
++    ensureNotFinished();
++    return openIndexOutputs.remove(name);
+ }
+\ No newline at end of file

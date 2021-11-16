@@ -1,0 +1,15 @@
+diff --git a/a8c94270a58af344bef08c61c67449c7fb41380e b/7bdcccf7bbcea47e754635292f725464289f8e51
+index a8c94270a5..7bdcccf7bb 100644
+--- a/a8c94270a58af344bef08c61c67449c7fb41380e
++++ b/7bdcccf7bbcea47e754635292f725464289f8e51
+@@ -1,7 +1,7 @@
+-private void addDeletedChildrenDifferences(DirectoryEntry e, Difference d) {
++private void addDeletedChildrenDifferences(DirectoryEntry e, List<Difference> result) {
+     for (Entry child : myChildren) {
+         if (e.findDirectChild(child.getId()) == null) {
+-            d.addChild(child.asDeletedDifference());
++            child.collectDeletedDifferences(result);
+         }
+     }
+ }
+\ No newline at end of file

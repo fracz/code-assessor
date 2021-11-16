@@ -1,0 +1,14 @@
+diff --git a/d82f674e035fd65220411e5d7a8ce53d7c3b64ce b/268d30ae128354e6ba46c0c7b8a7866fdde80fe8
+index d82f674e03..268d30ae12 100644
+--- a/d82f674e035fd65220411e5d7a8ce53d7c3b64ce
++++ b/268d30ae128354e6ba46c0c7b8a7866fdde80fe8
+@@ -1,5 +1,5 @@
+-public void executeBuild(final BuildParametersVersion1 buildParameters, BuildOperationParametersVersion1 parameters) {
++public void executeBuild(final BuildParametersVersion1 buildParameters, BuildOperationParametersVersion1 operationParameters) {
+     logTargetVersion();
+-    AdaptedOperationParameters adapterdParams = new AdaptedOperationParameters(parameters);
+-    run(new ExecuteBuildAction(buildParameters.getTasks()), adapterdParams);
++    AdaptedOperationParameters adapterdParams = new AdaptedOperationParameters(operationParameters, buildParameters);
++    run(new ExecuteBuildAction(), adapterdParams);
+ }
+\ No newline at end of file

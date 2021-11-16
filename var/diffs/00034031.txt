@@ -1,0 +1,19 @@
+diff --git a/e9ef6673453565a9b23b11986157713c11d9209c b/02a3816dafa04f419f64c120553f465cf6f9a603
+index e9ef667345..02a3816daf 100644
+--- a/e9ef6673453565a9b23b11986157713c11d9209c
++++ b/02a3816dafa04f419f64c120553f465cf6f9a603
+@@ -1,10 +1,10 @@
+ /**
+  * Returns the diagonal matrix of singular values
+  */
+-public double[][] getS() {
+-    double[][] S = new double[V.length][V.length];
++public DenseMatrix getS() {
++    DenseMatrix S = new ColumnMajorMatrix(U.nrows(), V.nrows());
+     for (int i = 0; i < s.length; i++) {
+-        S[i][i] = s[i];
++        S.set(i, i, s[i]);
+     }
+     return S;
+ }
+\ No newline at end of file

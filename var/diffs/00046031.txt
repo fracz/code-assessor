@@ -1,0 +1,12 @@
+diff --git a/fa8d960422e41e2ca0b3ca78c58af058b5bac11a b/ada2b754fd75862c1381a7cac37c9657e4a61f53
+index fa8d960422..ada2b754fd 100644
+--- a/fa8d960422e41e2ca0b3ca78c58af058b5bac11a
++++ b/ada2b754fd75862c1381a7cac37c9657e4a61f53
+@@ -1,5 +1,5 @@
+ @Test
+ public void testDate() throws Exception {
+-    InternalAggregationFunction varcharAgg = metadata.getFunctionRegistry().getAggregateFunctionImplementation(new Signature("array_agg", AGGREGATE, "array(date)", "date"));
++    InternalAggregationFunction varcharAgg = metadata.getFunctionRegistry().getAggregateFunctionImplementation(new Signature("array_agg", AGGREGATE, parseTypeSignature("array(date)"), parseTypeSignature(StandardTypes.DATE)));
+     assertAggregation(varcharAgg, 1.0, Arrays.asList(new SqlDate(1), new SqlDate(2), new SqlDate(4)), createLongsBlock(new Long[] { 1L, 2L, 4L }));
+ }
+\ No newline at end of file

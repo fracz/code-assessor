@@ -1,0 +1,20 @@
+diff --git a/8d21a801087ae5cd1d65c7067412b3a851f22c81 b/37540c70eafd9b2c657352e8a4aa781f65896d73
+index 8d21a80108..37540c70ea 100644
+--- a/8d21a801087ae5cd1d65c7067412b3a851f22c81
++++ b/37540c70eafd9b2c657352e8a4aa781f65896d73
+@@ -1,13 +1,12 @@
+ @NotNull
+ private JsExpression extensionFunctionCall() {
+-    JsExpression realReceiver = getExtensionFunctionCallReceiver();
+-    return callType.constructCall(realReceiver, new CallType.CallConstructor() {
++    return callType.constructCall(callParameters.getReceiver(), new CallType.CallConstructor() {
+
+         @NotNull
+         @Override
+         public JsExpression construct(@Nullable JsExpression receiver) {
+             assert receiver != null : "Could not be null for extensions";
+             return constructExtensionFunctionCall(receiver);
+         }
+     }, context());
+ }
+\ No newline at end of file

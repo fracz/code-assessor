@@ -1,0 +1,16 @@
+diff --git a/76488796456af4c8595c2fce4491752b733f718e b/f90f8d3038e9bea343bd8f82f107bff7daed2500
+index 7648879645..f90f8d3038 100644
+--- a/76488796456af4c8595c2fce4491752b733f718e
++++ b/f90f8d3038e9bea343bd8f82f107bff7daed2500
+@@ -1,7 +1,8 @@
+-public List<String> getImportedQName() {
++public PyQualifiedName getImportedQName() {
+     final PyImportElementStub stub = getStub();
+     if (stub != null) {
+         return stub.getImportedQName();
+     }
+-    return ResolveImportUtil.getQualifiedName(getImportReference());
++    final PyReferenceExpression importReference = getImportReference();
++    return importReference != null ? importReference.asQualifiedName() : null;
+ }
+\ No newline at end of file

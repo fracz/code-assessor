@@ -1,0 +1,19 @@
+diff --git a/ba4781ce43898735711fb9dc17c4e3610f1ac101 b/619f6cd6c8c9a43b26788ba92362fecc1f10f439
+index ba4781ce43..619f6cd6c8 100644
+--- a/ba4781ce43898735711fb9dc17c4e3610f1ac101
++++ b/619f6cd6c8c9a43b26788ba92362fecc1f10f439
+@@ -1,12 +1,12 @@
+ @Override
+ public boolean supports(HandlerResult result) {
+     ResolvableType type = result.getReturnValueType();
+     if (Void.TYPE.equals(type.getRawClass())) {
+         return true;
+     }
+-    if (this.conversionService.canConvert(type.getRawClass(), Publisher.class)) {
++    if (getConversionService().canConvert(type.getRawClass(), Mono.class) || getConversionService().canConvert(type.getRawClass(), Flux.class)) {
+         Class<?> clazz = result.getReturnValueType().getGeneric(0).getRawClass();
+         return Void.class.equals(clazz);
+     }
+     return false;
+ }
+\ No newline at end of file

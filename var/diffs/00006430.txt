@@ -1,0 +1,18 @@
+diff --git a/fcf43f9702ec109f2c57a408ff8603198a50b025 b/1d5c9a7514df7e8e2d3367ef088765769ac99bbd
+index fcf43f9702..1d5c9a7514 100644
+--- a/fcf43f9702ec109f2c57a408ff8603198a50b025
++++ b/1d5c9a7514df7e8e2d3367ef088765769ac99bbd
+@@ -1,11 +1,11 @@
+-public void saveContent(final String fileSpec, final Document content, final RoamingType roamingType) {
++public void saveContent(final String fileSpec, final byte[] content, final RoamingType roamingType) {
+     for (StreamProvider streamProvider : getStreamProviders(roamingType)) {
+         try {
+             streamProvider.saveContent(fileSpec, content, roamingType);
+         } catch (ConnectException e) {
+             LOG.debug("Cannot send user profile to server: " + e.getLocalizedMessage());
+         } catch (Exception e) {
+             LOG.debug(e);
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/8808401330873044a7fadd44ab78b7615c65c7bf b/eacb4b957cb4e462e8c4022b380b81576fd179a2
+index 8808401330..eacb4b957c 100644
+--- a/8808401330873044a7fadd44ab78b7615c65c7bf
++++ b/eacb4b957cb4e462e8c4022b380b81576fd179a2
+@@ -1,14 +1,13 @@
+ @Override
+ public boolean equals(Object o) {
+     if (this == o) {
+         return true;
+     }
+     if (o == null || getClass() != o.getClass()) {
+         return false;
+     }
+     if (!super.equals(o)) {
+         return false;
+     }
+-    IndexRule indexRule = (IndexRule) o;
+-    return label == indexRule.label && propertyKey == indexRule.propertyKey;
++    return descriptor.equals(((IndexRule) o).descriptor);
+ }
+\ No newline at end of file

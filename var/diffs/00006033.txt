@@ -1,0 +1,16 @@
+diff --git a/b691c68f29af68eb339138fc1fc1e2c78325018e b/dd200e5d8a1fe7358462eb42e7418394bc4aa996
+index b691c68f29..dd200e5d8a 100644
+--- a/b691c68f29af68eb339138fc1fc1e2c78325018e
++++ b/dd200e5d8a1fe7358462eb42e7418394bc4aa996
+@@ -1,7 +1,8 @@
+ @NotNull
+ public UpdateSession updateDirectories(@NotNull FilePath[] filePaths, UpdatedFiles updatedFiles, ProgressIndicator progressIndicator, @NotNull Ref<SequentialUpdatesContext> sequentialUpdatesContextRef) throws ProcessCanceledException {
+-    Set<VirtualFile> roots = GitUtil.gitRoots(Arrays.asList(filePaths));
+-    final GitUpdateProcess gitUpdateProcess = new GitUpdateProcess(myProject, progressIndicator, roots, updatedFiles);
++    Set<VirtualFile> roots = gitRoots(Arrays.asList(filePaths));
++    GitRepositoryManager repositoryManager = getRepositoryManager(myProject);
++    final GitUpdateProcess gitUpdateProcess = new GitUpdateProcess(myProject, progressIndicator, getRepositoriesFromRoots(repositoryManager, roots), updatedFiles);
+     boolean result = gitUpdateProcess.update(GitUpdateProcess.UpdateMethod.READ_FROM_SETTINGS);
+     return new GitUpdateSession(result);
+ }
+\ No newline at end of file

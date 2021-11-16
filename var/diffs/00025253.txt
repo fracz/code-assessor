@@ -1,0 +1,19 @@
+diff --git a/c9ee6a199f840cd2975eda2ce4efd8fd49797f2b b/55852d86b469c01ad57388fa1d8f22d34d51f249
+index c9ee6a199f..55852d86b4 100644
+--- a/c9ee6a199f840cd2975eda2ce4efd8fd49797f2b
++++ b/55852d86b469c01ad57388fa1d8f22d34d51f249
+@@ -1,9 +1,7 @@
+ @Override
+-public KeyValueIterator<K, V> range(final K from, final K to) {
++public KeyValueIterator<Bytes, byte[]> range(final Bytes from, final Bytes to) {
+     validateStoreOpen();
+-    final Bytes origFrom = Bytes.wrap(serdes.rawKey(from));
+-    final Bytes origTo = Bytes.wrap(serdes.rawKey(to));
+-    final KeyValueIterator<Bytes, byte[]> storeIterator = underlying.range(origFrom, origTo);
+-    final ThreadCache.MemoryLRUCacheBytesIterator cacheIterator = cache.range(cacheName, origFrom, origTo);
+-    return new MergedSortedCacheKeyValueStoreIterator<>(cacheIterator, storeIterator, serdes);
++    final KeyValueIterator<Bytes, byte[]> storeIterator = underlying.range(from, to);
++    final ThreadCache.MemoryLRUCacheBytesIterator cacheIterator = cache.range(cacheName, from, to);
++    return new MergedSortedCacheKeyValueBytesStoreIterator(cacheIterator, storeIterator);
+ }
+\ No newline at end of file

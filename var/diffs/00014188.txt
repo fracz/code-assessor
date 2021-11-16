@@ -1,0 +1,15 @@
+diff --git a/45156b066ad4fce8705f6095f5f5886a5638bf52 b/64aae450ec56d9551f2ef4e49143bbbf0a25966b
+index 45156b066a..64aae450ec 100644
+--- a/45156b066ad4fce8705f6095f5f5886a5638bf52
++++ b/64aae450ec56d9551f2ef4e49143bbbf0a25966b
+@@ -1,6 +1,6 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiExpression expression = (PsiExpression) location;
+-    final PsiType type = expression.getType();
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiType type = (PsiType) infos[0];
+     final String text = type.getPresentableText();
+     return InspectionGadgetsBundle.message("resource.opened.not.closed.problem.descriptor", text);
+ }
+\ No newline at end of file

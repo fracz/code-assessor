@@ -1,0 +1,20 @@
+diff --git a/734ba605bfd3ae95ecb2756b5ce7ff80d4a9a00a b/d1e8e872b4089d4226152d10fc573fd042e6367b
+index 734ba605bf..d1e8e872b4 100644
+--- a/734ba605bfd3ae95ecb2756b5ce7ff80d4a9a00a
++++ b/d1e8e872b4089d4226152d10fc573fd042e6367b
+@@ -1,13 +1,10 @@
+ @Test(dataProvider = "GitConnectionFactory", dataProviderClass = GitConnectionFactoryProvider.class)
+ public void testAddPushUrl(GitConnectionFactory connectionFactory) throws GitException, IOException {
+     // given
+     GitConnection connection = connectToGitRepositoryWithContent(connectionFactory, repository);
+     addInitialRemote(connection);
+     // when
+-    RemoteUpdateRequest request = newDto(RemoteUpdateRequest.class);
+-    request.setName("newRemote");
+-    request.setAddPushUrl(Arrays.asList("pushurl1"));
+-    connection.remoteUpdate(request);
++    connection.remoteUpdate(RemoteUpdateParams.create("newRemote").withAddPushUrl(singletonList("pushurl1")));
+     // then
+     assertTrue(parseAllConfig(connection).get("remote.newRemote.pushurl").contains("pushurl1"));
+ }
+\ No newline at end of file

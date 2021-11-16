@@ -1,0 +1,13 @@
+diff --git a/00d6b19dbe6a535bcf7348b0df09ddeb34f8e6d1 b/6faba6d34da82f5f5729cbb39ba3b7e9473af13e
+index 00d6b19dbe..6faba6d34d 100644
+--- a/00d6b19dbe6a535bcf7348b0df09ddeb34f8e6d1
++++ b/6faba6d34da82f5f5729cbb39ba3b7e9473af13e
+@@ -1,5 +1,5 @@
+-protected void unmapSlave(Channel channel, RequestContext slave) {
++protected Pair<RequestContext, AtomicLong> unmapSlave(Channel channel) {
+     synchronized (connectedSlaveChannels) {
+-        connectedSlaveChannels.remove(channel);
++        return connectedSlaveChannels.remove(channel);
+     }
+ }
+\ No newline at end of file

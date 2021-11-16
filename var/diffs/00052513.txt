@@ -1,0 +1,25 @@
+diff --git a/ee8aa0246edabb72a788aee562f63ba0fd12c8a9 b/38d7393b5a058ac7b17ca39ef133119c4aa9b1a0
+index ee8aa0246e..38d7393b5a 100644
+--- a/ee8aa0246edabb72a788aee562f63ba0fd12c8a9
++++ b/38d7393b5a058ac7b17ca39ef133119c4aa9b1a0
+@@ -1,18 +1,18 @@
+ void scanChars() {
+-    int position = offset + 1;
+     length = 1;
++    int position = offset + length;
+     while ('\'' != charAt(position) || hasEscapeChar(position)) {
+         if (position >= input.length()) {
+             throw new UnterminatedSignException('\'');
+         }
+         if (hasEscapeChar(position)) {
+             length++;
+             position++;
+         }
+         length++;
+         position++;
+     }
+     length++;
+     literals = input.substring(offset + 1, offset + length - 1);
+     token = GeneralLiterals.CHARS;
+ }
+\ No newline at end of file

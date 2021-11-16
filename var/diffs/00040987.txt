@@ -1,0 +1,12 @@
+diff --git a/e78e59428b3ee42e87e9f0d6e45cb94c8038f903 b/21e1a3d476b92bf082a83e4001565031b40022df
+index e78e59428b..21e1a3d476 100644
+--- a/e78e59428b3ee42e87e9f0d6e45cb94c8038f903
++++ b/21e1a3d476b92bf082a83e4001565031b40022df
+@@ -1,5 +1,4 @@
+ @Override
+ public List<Span> readSpans(byte[] bytes) {
+-    checkArgument(bytes.length > 0, "Empty input reading List<Span>");
+-    return readList(SPAN_ADAPTER, bytes);
++    return readList(new SpanReader(), bytes);
+ }
+\ No newline at end of file

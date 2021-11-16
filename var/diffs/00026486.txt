@@ -1,0 +1,38 @@
+diff --git a/712d643d4c1d1646083260f06b00e837440e6b02 b/d5f2bfedcf4172d424b7cba4f1f7a42499925063
+index 712d643d4c..d5f2bfedcf 100644
+--- a/712d643d4c1d1646083260f06b00e837440e6b02
++++ b/d5f2bfedcf4172d424b7cba4f1f7a42499925063
+@@ -1,26 +1,18 @@
+-/**
+- * {@inheritDoc}
+- */
+-@Override
+-public final void resetConnectionState() throws SQLException {
++private final void resetConnectionState() throws SQLException {
+     if (!delegate.getAutoCommit()) {
+         delegate.rollback();
+     }
+     if (isReadOnlyDirty) {
+-        delegate.setReadOnly(defaultReadOnly);
+-        isReadOnlyDirty = false;
++        delegate.setReadOnly(parentPool.isReadOnly);
+     }
+     if (isAutoCommitDirty) {
+-        delegate.setAutoCommit(defaultAutoCommit);
+-        isAutoCommitDirty = false;
++        delegate.setAutoCommit(parentPool.isAutoCommit);
+     }
+     if (isTransactionIsolationDirty) {
+-        delegate.setTransactionIsolation(defaultIsolationLevel);
+-        isTransactionIsolationDirty = false;
++        delegate.setTransactionIsolation(parentPool.transactionIsolation);
+     }
+-    if (isCatalogDirty && defaultCatalog != null) {
+-        delegate.setCatalog(defaultCatalog);
+-        isCatalogDirty = false;
++    if (isCatalogDirty && parentPool.catalog != null) {
++        delegate.setCatalog(parentPool.catalog);
+     }
+     delegate.clearWarnings();
+ }
+\ No newline at end of file

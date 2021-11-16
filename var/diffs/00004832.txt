@@ -1,0 +1,45 @@
+diff --git a/b21f7f283b010e101669e4bcad896776fe4fc8d7 b/4b2ea4f7d2db256b444f4ce1ac9c5d50f1eba6c1
+index b21f7f283b..4b2ea4f7d2 100644
+--- a/b21f7f283b010e101669e4bcad896776fe4fc8d7
++++ b/4b2ea4f7d2db256b444f4ce1ac9c5d50f1eba6c1
+@@ -1,31 +1,34 @@
+ /**
+  * Identifies the match between given element of program tree and pattern element
+  *
+  * @param el1 the pattern for matching
+  * @param el2 the tree element for matching
+  * @return true if equal and false otherwise
+  */
+ public boolean match(final PsiElement el1, final PsiElement el2) {
+     // null
+     if (el1 == el2)
+         return true;
+     if (el2 == null || el1 == null) {
+         // this a bug!
+         return false;
+     }
+     // copy changed data to local stack
+     PsiElement prevElement = myElement;
+     myElement = el2;
+     try {
+-        if (el1 instanceof XmlElement) {
+-            el1.accept(myXmlVisitor);
+-        } else {
+-            el1.accept(myJavaVisitor);
+-        }
++        /*if (el1 instanceof XmlElement) {
++        el1.accept(myXmlVisitor);
++      }
++      else {
++        el1.accept(myJavaVisitor);
++      }*/
++        PsiElementVisitor visitor = getVisitorForElement(el1);
++        el1.accept(visitor);
+     } catch (ClassCastException ex) {
+         myResult = false;
+     } finally {
+         myElement = prevElement;
+     }
+     return myResult;
+ }
+\ No newline at end of file

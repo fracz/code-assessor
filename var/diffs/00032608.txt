@@ -1,0 +1,17 @@
+diff --git a/9e12275b0d7202b0d53118d159d245cf9290c81e b/4ba880b7b977e3abef6f4577655f12b8decb4653
+index 9e12275b0d..4ba880b7b9 100644
+--- a/9e12275b0d7202b0d53118d159d245cf9290c81e
++++ b/4ba880b7b977e3abef6f4577655f12b8decb4653
+@@ -1,7 +1,9 @@
+ @Override
+ public Description matchAnnotation(AnnotationTree annotationTree, VisitorState state) {
+-    if (IS_APPLICATION_OF_JAVAX_INJECT.matches(annotationTree, state) && FINAL_FIELD_MATCHER.matches(getAnnotatedNode(state), state)) {
+-        return describeMatch(annotationTree, SuggestedFix.delete(annotationTree));
++    if (IS_APPLICATION_OF_JAVAX_INJECT.matches(annotationTree, state)) {
++        if (isFinalField(getSymbol(state.getPath().getParentPath().getParentPath().getLeaf()))) {
++            return describeMatch(annotationTree, SuggestedFix.delete(annotationTree));
++        }
+     }
+     return Description.NO_MATCH;
+ }
+\ No newline at end of file

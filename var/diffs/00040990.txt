@@ -1,0 +1,13 @@
+diff --git a/031f81044365bc669e6ee3c4b0039ae215fde55f b/025fc5adc932e5add8cd1c0c71e2ce26c9af7134
+index 031f810443..025fc5adc9 100644
+--- a/031f81044365bc669e6ee3c4b0039ae215fde55f
++++ b/025fc5adc932e5add8cd1c0c71e2ce26c9af7134
+@@ -1,6 +1,4 @@
+ @Override
+ public byte[] writeDependencyLinks(List<DependencyLink> value) {
+-    Buffer result = new Buffer(sizeInBytes(DEPENDENCY_LINK_ADAPTER, value));
+-    writeList(DEPENDENCY_LINK_ADAPTER, value, result);
+-    return result.toByteArray();
++    return writeList(DEPENDENCY_LINK_WRITER, value);
+ }
+\ No newline at end of file

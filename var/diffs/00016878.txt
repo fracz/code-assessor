@@ -1,0 +1,16 @@
+diff --git a/818016542e876d0c77ad3aa57312d78a16d05f9e b/e6d1fe28fb1f6cfd01691a6b7592e8976ad5cbcb
+index 818016542e..e6d1fe28fb 100644
+--- a/818016542e876d0c77ad3aa57312d78a16d05f9e
++++ b/e6d1fe28fb1f6cfd01691a6b7592e8976ad5cbcb
+@@ -1,6 +1,7 @@
+ @NotNull
+ private PropertyDescriptor getPropertyDescriptor(@NotNull JetSimpleNameExpression expression) {
+-    PropertyDescriptor propertyDescriptor = BindingUtils.getPropertyDescriptorForSimpleName(context().bindingContext(), expression);
+-    assert propertyDescriptor != null;
+-    return propertyDescriptor;
++    DeclarationDescriptor descriptor = getDescriptorForReferenceExpression(context().bindingContext(), expression);
++    // TODO
++    assert descriptor instanceof PropertyDescriptor;
++    return (PropertyDescriptor) descriptor;
+ }
+\ No newline at end of file

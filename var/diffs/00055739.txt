@@ -1,0 +1,22 @@
+diff --git a/1b12790dd113d5bd06e05ff549ae84867d82b88e b/6b09c5d6f37390cf9e923664dc18d643f1b43219
+index 1b12790dd1..6b09c5d6f3 100644
+--- a/1b12790dd113d5bd06e05ff549ae84867d82b88e
++++ b/6b09c5d6f37390cf9e923664dc18d643f1b43219
+@@ -1,9 +1,11 @@
+ /**
+- * Returns a new {@code RequestCondition} that contains all conditions that match the request.
+- *
+- * @param request the request
+- * @return a new request condition that contains all matching attributes, or {@code null} if not all conditions match
++ * Returns "this" instance if the request matches to all header expressions; or {@code null} otherwise.
+  */
+ public HeadersRequestCondition getMatchingCondition(HttpServletRequest request) {
+-    return match(request) ? this : null;
++    for (HeaderExpression expression : expressions) {
++        if (!expression.match(request)) {
++            return null;
++        }
++    }
++    return this;
+ }
+\ No newline at end of file

@@ -1,0 +1,29 @@
+diff --git a/443ab60d0ca1fa05e4af5bf79cc122816dc90055 b/ecf1dbd3215904621264f4ce15666ddcdf527210
+index 443ab60d0c..ecf1dbd321 100644
+--- a/443ab60d0ca1fa05e4af5bf79cc122816dc90055
++++ b/ecf1dbd3215904621264f4ce15666ddcdf527210
+@@ -1,21 +1,16 @@
+ public void testAlwaysEnforcedChecks() {
+     final BootstrapCheck check = new BootstrapCheck() {
+
+         @Override
+-        public boolean check(BootstrapContext context) {
+-            return true;
+-        }
+-
+-        @Override
+-        public String errorMessage() {
+-            return "error";
++        public BootstrapCheckResult check(BootstrapContext context) {
++            return BootstrapCheckResult.failure("error");
+         }
+
+         @Override
+         public boolean alwaysEnforce() {
+             return true;
+         }
+     };
+     final NodeValidationException alwaysEnforced = expectThrows(NodeValidationException.class, () -> BootstrapChecks.check(defaultContext, randomBoolean(), Collections.singletonList(check), "testAlwaysEnforcedChecks"));
+     assertThat(alwaysEnforced, hasToString(containsString("error")));
+ }
+\ No newline at end of file

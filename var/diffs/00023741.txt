@@ -1,0 +1,27 @@
+diff --git a/b72e8365b2ac69b70837e87c4b096ab7cf6754ab b/80678c07707b5cab2762a8485ecfbda2b3fa9a52
+index b72e8365b2..80678c0770 100644
+--- a/b72e8365b2ac69b70837e87c4b096ab7cf6754ab
++++ b/80678c07707b5cab2762a8485ecfbda2b3fa9a52
+@@ -1,17 +1,17 @@
+ private void clearUserPoliciesLocked(int userId) {
+-    // Reset some of the user-specific policies
+-    DevicePolicyData policy = getUserData(userId);
++    // Reset some of the user-specific policies.
++    final DevicePolicyData policy = getUserData(userId);
+     policy.mPermissionPolicy = DevicePolicyManager.PERMISSION_POLICY_PROMPT;
+-    policy.mDelegatedCertInstallerPackage = null;
+-    policy.mApplicationRestrictionsManagingPackage = null;
++    // Clear delegations.
++    policy.mDelegationMap.clear();
+     policy.mStatusBarDisabled = false;
+     policy.mUserProvisioningState = DevicePolicyManager.STATE_USER_UNMANAGED;
+     saveSettingsLocked(userId);
+     try {
+         mIPackageManager.updatePermissionFlagsForAllApps(PackageManager.FLAG_PERMISSION_POLICY_FIXED, 0, /* flagValues */
+         userId);
+         pushUserRestrictions(userId);
+     } catch (RemoteException re) {
+     // Shouldn't happen.
+     }
+ }
+\ No newline at end of file

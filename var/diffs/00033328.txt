@@ -1,0 +1,13 @@
+diff --git a/438cd28d80d0f9396cb0235c18548039a7b5cda7 b/41b6ad385cdd044f476130d3e352f111c460b5c5
+index 438cd28d80..41b6ad385c 100644
+--- a/438cd28d80d0f9396cb0235c18548039a7b5cda7
++++ b/41b6ad385cdd044f476130d3e352f111c460b5c5
+@@ -1,6 +1,4 @@
+ private TestStartEvent testStartedEvent(InternalTestStartedProgressEvent event) {
+-    long eventTime = event.getEventTime();
+-    String displayName = event.getDisplayName();
+     TestOperationDescriptor testDescriptor = addTestDescriptor(event.getDescriptor());
+-    return new DefaultTestStartEvent(eventTime, displayName, testDescriptor);
++    return new DefaultTestStartEvent(event.getEventTime(), event.getDisplayName(), testDescriptor);
+ }
+\ No newline at end of file

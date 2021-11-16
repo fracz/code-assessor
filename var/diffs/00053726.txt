@@ -1,0 +1,30 @@
+diff --git a/038c11a281adc26dbf132c33cec534da862921b4 b/ff0d85ccc1f95e9a809bda9e28daf791c12c34c4
+index 038c11a281..ff0d85ccc1 100644
+--- a/038c11a281adc26dbf132c33cec534da862921b4
++++ b/ff0d85ccc1f95e9a809bda9e28daf791c12c34c4
+@@ -1,14 +1,16 @@
+-public SQLUpdateStatement parseUpdateStatement() {
+-    SQLUpdateStatement udpateStatement = createUpdateStatement();
+-    if (getLexer().equalToken(Token.UPDATE)) {
++protected SQLUpdateStatement parseUpdateStatement() {
++    getLexer().nextToken();
++    SQLUpdateStatement updateStatement = createUpdateStatement();
++    while (getIdentifiersBetweenUpdateAndTable().contains(getLexer().getLiterals())) {
++        updateStatement.getIdentifiersBetweenUpdateAndTable().add(getLexer().getLiterals());
+         getLexer().nextToken();
+-        SQLTableSource tableSource = this.exprParser.createSelectParser().parseTableSource();
+-        udpateStatement.setTableSource(tableSource);
+     }
+-    parseUpdateSet(udpateStatement);
++    updateStatement.setTableSource(exprParser.createSelectParser().parseTableSource());
++    parseUpdateSet(updateStatement);
+     if (getLexer().equalToken(Token.WHERE)) {
+         getLexer().nextToken();
+-        udpateStatement.setWhere(this.exprParser.expr());
++        updateStatement.setWhere(exprParser.expr());
+     }
+-    return udpateStatement;
++    parseCustomizedParser(updateStatement);
++    return updateStatement;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/ca5b949d68244c42bf14374353b7730d01e0a8f0 b/5cd1267aaf6b12516f4fa5d2af063494da5b97de
+index ca5b949d68..5cd1267aaf 100644
+--- a/ca5b949d68244c42bf14374353b7730d01e0a8f0
++++ b/5cd1267aaf6b12516f4fa5d2af063494da5b97de
+@@ -1,4 +1,9 @@
+ public SQLInsertStatement explainToInsertSQLObject(MappingEngine engine, String sql) {
+     MySqlStatementParser parser = new MySqlStatementParser(sql);
+-    return (SQLInsertStatement) parser.parseInsert();
++    SQLInsertStatement stmt = (SQLInsertStatement) parser.parseInsert();
++    if (stmt.getTableSource() == null) {
++        Entity entity = engine.getFirstEntity();
++        stmt.setTableSource(new SQLIdentifierExpr(entity.getName()));
++    }
++    return stmt;
+ }
+\ No newline at end of file

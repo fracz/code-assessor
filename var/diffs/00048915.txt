@@ -1,0 +1,15 @@
+diff --git a/8c08e39629a8b286a5e00a8e92d335e6589bf7bf b/274b35d49d518980fd0f1734b112cc1d90239958
+index 8c08e39629..274b35d49d 100644
+--- a/8c08e39629a8b286a5e00a8e92d335e6589bf7bf
++++ b/274b35d49d518980fd0f1734b112cc1d90239958
+@@ -1,7 +1,4 @@
++@Nullable
+ public Image getCellImage(int column, int row) {
+-    IGridLabelProvider contentLabelProvider = getContentLabelProvider();
+-    if (contentLabelProvider != null) {
+-        return contentLabelProvider.getImage(column, row);
+-    }
+-    return null;
++    return getContentProvider().getCellImage(column, row);
+ }
+\ No newline at end of file

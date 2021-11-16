@@ -1,0 +1,20 @@
+diff --git a/1781bbb24a8bdeebb7aed02c423ed5f091ccf9cc b/3bc53af0e7eea4d78924a91f656afc58edb109db
+index 1781bbb24a..3bc53af0e7 100644
+--- a/1781bbb24a8bdeebb7aed02c423ed5f091ccf9cc
++++ b/3bc53af0e7eea4d78924a91f656afc58edb109db
+@@ -1,11 +1,6 @@
+ @Nullable
+ public static String checkNewBuild() {
+-    BuildInfo newVersion = null;
+-    try {
+-        UpdateChannel channel = UpdateChecker.checkForUpdates();
+-        newVersion = channel != null ? channel.getLatestBuild() : null;
+-    } catch (ConnectionException e) {
+-    // ignore
+-    }
+-    return newVersion != null ? newVersion.getNumber().asString() : null;
++    final CheckForUpdateResult result = UpdateChecker.checkForUpdates();
++    final BuildInfo newBuild = result.getNewBuildInSelectedChannel();
++    return (newBuild != null && newBuild.getNumber() != null ? newBuild.getNumber().asString() : null);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/79515500d2ac17a663e0848f03530ed31a55b995 b/c864b344a9fa02832e48319ee5b8200d47019cbc
+index 79515500d2..c864b344a9 100644
+--- a/79515500d2ac17a663e0848f03530ed31a55b995
++++ b/c864b344a9fa02832e48319ee5b8200d47019cbc
+@@ -1,9 +1,9 @@
+ @Test
+ public void shouldAskForConsistencyCheckIfSpecifiedIncremental() throws Exception {
+     File dir = testDirectory.directory("ccInc");
+     assertTrue(new File(dir, "afile").createNewFile());
+     execute("--check-consistency=true", backupDir(dir.getParent()), "--name=" + dir.getName());
+     verify(backupService).doIncrementalBackup(any(), anyInt(), any(), anyLong(), any());
+     verifyNoMoreInteractions(backupService);
+-    verify(consistencyCheckService).runFullConsistencyCheck(any(), any(), any(), any(), any(), anyBoolean(), eq(new File(".").getCanonicalFile()), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean());
++    verify(consistencyCheckService).runFullConsistencyCheck(any(), any(), any(), any(), any(), anyBoolean(), eq(new File(".").getCanonicalFile()), any(CheckConsistencyConfig.class));
+ }
+\ No newline at end of file

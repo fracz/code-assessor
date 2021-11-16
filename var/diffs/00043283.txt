@@ -1,0 +1,13 @@
+diff --git a/c1217fef44d5860598f3d5f05402729b71879159 b/1bf22059b845327c938e21ea580c87f171b87a4a
+index c1217fef44..1bf22059b8 100644
+--- a/c1217fef44d5860598f3d5f05402729b71879159
++++ b/1bf22059b845327c938e21ea580c87f171b87a4a
+@@ -1,4 +1,6 @@
+ @Override
+ public byte[] toStream() {
+-    return _source != null ? _source : OBinaryProtocol.string2bytes(value());
++    if (_source == null && value != null)
++        _source = OBinaryProtocol.string2bytes(value);
++    return _source;
+ }
+\ No newline at end of file

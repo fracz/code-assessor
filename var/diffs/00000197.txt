@@ -1,0 +1,31 @@
+diff --git a/461b8f738b3a1e4b4e220623cc25357cfb95fef0 b/e8accff21a8e0391202445deed253e3f429418fc
+index 461b8f738b..e8accff21a 100644
+--- a/461b8f738b3a1e4b4e220623cc25357cfb95fef0
++++ b/e8accff21a8e0391202445deed253e3f429418fc
+@@ -1,24 +1,24 @@
+ /**
+  * Cleans up the locks currently hold by a specific user
+  *
+  * @param userId the ID of the user to cleanup
+  */
+ public void cleanupUser(long userId) {
+     synchronized (mSharedMapsLock) {
+         Set<Long> userLockIds = mUserIdToLockIdsMap.get(userId);
+         if (null == userLockIds) {
+             return;
+         }
+         for (long lockId : userLockIds) {
+             LockRecord record = mLockIdToRecordMap.get(lockId);
+             if (null == record) {
+-                LOG.error("Failed to cleanup userId {}: no lock record for lockId {}", userId, lockId);
++                LOG.error(ExceptionMessage.LOCK_RECORD_NOT_FOUND.getMessage(lockId));
+                 continue;
+             }
+             Lock lock = record.lock();
+             lock.unlock();
+             mLockIdToRecordMap.remove(lockId);
+         }
+         mUserIdToLockIdsMap.remove(userId);
+     }
+ }
+\ No newline at end of file

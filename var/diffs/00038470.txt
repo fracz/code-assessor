@@ -1,0 +1,19 @@
+diff --git a/8520c3a2060607ae7c0594e4861b7e2bea69848a b/32d2adade9b0e3a40f41b0c8df490c4d633ad9b1
+index 8520c3a206..32d2adade9 100644
+--- a/8520c3a2060607ae7c0594e4861b7e2bea69848a
++++ b/32d2adade9b0e3a40f41b0c8df490c4d633ad9b1
+@@ -1,10 +1,10 @@
+-public void addNodeToIndex(String indexName, String key, Object value, long id) throws DatabaseBlockedException {
++public void addNodeToIndex(String indexName, String key, Object value, long id) {
+     Index<Node> index = database.getNodeIndex(indexName);
+-    Transaction tx = database.graph.beginTx();
++    Transaction tx = database.getGraph().beginTx();
+     try {
+-        index.add(database.graph.getNodeById(id), key, value);
++        index.add(database.getGraph().getNodeById(id), key, value);
+         tx.success();
+     } finally {
+         tx.finish();
+     }
+ }
+\ No newline at end of file

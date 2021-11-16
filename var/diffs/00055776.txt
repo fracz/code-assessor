@@ -1,0 +1,15 @@
+diff --git a/a5490df4ef26e2221aeaf79ae3e3d8e378034280 b/405a914dc30921daaacdbe1f061f98ca32e67e1f
+index a5490df4ef..405a914dc3 100644
+--- a/a5490df4ef26e2221aeaf79ae3e3d8e378034280
++++ b/405a914dc30921daaacdbe1f061f98ca32e67e1f
+@@ -1,7 +1,7 @@
+ @Test
+ public void equals() {
+-    RequestMappingInfo key1 = new RequestMappingInfo(singleton("/foo"), methods(GET));
+-    RequestMappingInfo key2 = new RequestMappingInfo(singleton("/foo"), methods(GET));
++    RequestMappingInfo key1 = new RequestMappingInfo(new String[] { "/foo" }, GET);
++    RequestMappingInfo key2 = new RequestMappingInfo(new String[] { "/foo" }, GET);
+     assertEquals(key1, key2);
+     assertEquals(key1.hashCode(), key2.hashCode());
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/0fe4aa4de1eab09197e58faf2db1780bc123eeff b/1518b3443aaad3a99a67a238d140f5f060801511
+index 0fe4aa4de1..1518b3443a 100644
+--- a/0fe4aa4de1eab09197e58faf2db1780bc123eeff
++++ b/1518b3443aaad3a99a67a238d140f5f060801511
+@@ -1,7 +1,7 @@
+ @Override
+-public boolean refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
++public DBSObject refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
+     rowCount = null;
+     triggerCache.clearCache();
+     super.refreshObject(monitor);
+-    return true;
++    return this;
+ }
+\ No newline at end of file

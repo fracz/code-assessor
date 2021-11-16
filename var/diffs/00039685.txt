@@ -1,0 +1,12 @@
+diff --git a/2528e387c2f564fe24d08a3ea6afe3bd67f3e681 b/8a7a12164790d78196b1d634a83709fd14d05a28
+index 2528e387c2..8a7a121647 100644
+--- a/2528e387c2f564fe24d08a3ea6afe3bd67f3e681
++++ b/8a7a12164790d78196b1d634a83709fd14d05a28
+@@ -1,4 +1,4 @@
+ @Override
+-public Iterator<NodePropertyConstraint> constraintsGetForLabelAndPropertyKey(int labelId, int propertyKeyId) {
+-    return schemaCache.constraintsForLabelAndProperty(labelId, propertyKeyId);
++public Iterator<NodePropertyConstraint> constraintsGetForLabelAndPropertyKey(NodePropertyDescriptor descriptor) {
++    return schemaCache.constraintsForLabelAndProperty(descriptor);
+ }
+\ No newline at end of file

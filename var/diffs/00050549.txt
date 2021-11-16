@@ -1,0 +1,18 @@
+diff --git a/b3406c85df7d0584cd23ad955b0ff51fd55e1b64 b/0f5dc15a6932996770f3336ad4a93f3377c7b0bb
+index b3406c85df..0f5dc15a69 100644
+--- a/b3406c85df7d0584cd23ad955b0ff51fd55e1b64
++++ b/0f5dc15a6932996770f3336ad4a93f3377c7b0bb
+@@ -1,10 +1,10 @@
+-@Nullable
++@NotNull
+ public static SQLDialect getDialectFromObject(DBPObject object) {
+     if (object instanceof DBSObject) {
+         DBPDataSource dataSource = ((DBSObject) object).getDataSource();
+         if (dataSource instanceof SQLDataSource) {
+             return ((SQLDataSource) dataSource).getSQLDialect();
+         }
+     }
+-    return null;
++    return BasicSQLDialect.INSTANCE;
+ }
+\ No newline at end of file

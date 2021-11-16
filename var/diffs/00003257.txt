@@ -1,0 +1,20 @@
+diff --git a/e1dc6dabe2e2bb03c1ed084654430e2c4fc04fe1 b/47e6cf2c4504861ec982d192b02064bf2af2b685
+index e1dc6dabe2..47e6cf2c45 100644
+--- a/e1dc6dabe2e2bb03c1ed084654430e2c4fc04fe1
++++ b/47e6cf2c4504861ec982d192b02064bf2af2b685
+@@ -1,13 +1,13 @@
+ public static FoldingDescriptor[] buildFoldingDescriptors(FoldingBuilder builder, PsiElement root, Document document, boolean quick) {
+-    if (!(builder instanceof DumbAware) && DumbService.getInstance(root.getProject()).isDumb()) {
++    if (!DumbService.isDumbAware(builder) && DumbService.getInstance(root.getProject()).isDumb()) {
+         return FoldingDescriptor.EMPTY;
+     }
+     if (builder instanceof FoldingBuilderEx) {
+         return ((FoldingBuilderEx) builder).buildFoldRegions(root, document, quick);
+     }
+     final ASTNode astNode = root.getNode();
+     if (astNode == null || builder == null) {
+         return FoldingDescriptor.EMPTY;
+     }
+     return builder.buildFoldRegions(astNode, document);
+ }
+\ No newline at end of file

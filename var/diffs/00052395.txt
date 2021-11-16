@@ -1,0 +1,17 @@
+diff --git a/0c5852a085a2990bf740c895e0a0ff82d354d544 b/60e889ac150212634d847c68c5bec3dd2b5ee7c4
+index 0c5852a085..60e889ac15 100644
+--- a/0c5852a085a2990bf740c895e0a0ff82d354d544
++++ b/60e889ac150212634d847c68c5bec3dd2b5ee7c4
+@@ -1,9 +1,9 @@
+ protected final void parseDistinct() {
+     sqlParser.skipAll(DefaultKeyword.ALL);
+     Collection<Keyword> distinctKeywords = new LinkedList<>();
+     distinctKeywords.add(DefaultKeyword.DISTINCT);
+     distinctKeywords.addAll(Arrays.asList(getSynonymousKeywordsForDistinct()));
+-    if (getSqlParser().equalAny(distinctKeywords.toArray(new Keyword[distinctKeywords.size()]))) {
+-        throw new SQLParsingUnsupportedException(getSqlParser().getLexer().getCurrentToken().getType());
++    if (sqlParser.equalAny(distinctKeywords.toArray(new Keyword[distinctKeywords.size()]))) {
++        throw new SQLParsingUnsupportedException(sqlParser.getLexer().getCurrentToken().getType());
+     }
+ }
+\ No newline at end of file

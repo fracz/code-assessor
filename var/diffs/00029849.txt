@@ -1,0 +1,21 @@
+diff --git a/e599059a5eb2083c938a734c7ec5ee6b5cfafdd0 b/b4813ab702ee7b6659c1e38600f5df3e4703d374
+index e599059a5e..b4813ab702 100644
+--- a/e599059a5eb2083c938a734c7ec5ee6b5cfafdd0
++++ b/b4813ab702ee7b6659c1e38600f5df3e4703d374
+@@ -1,13 +1,11 @@
+ @Override
+ public Facet reduce(List<Facet> facets) {
+     if (facets.size() == 1) {
+         return facets.get(0);
+     }
+     int count = 0;
+     for (Facet facet : facets) {
+-        if (facet.name().equals(name)) {
+-            count += ((QueryFacet) facet).count();
+-        }
++        count += ((QueryFacet) facet).getCount();
+     }
+-    return new InternalQueryFacet(name, count);
++    return new InternalQueryFacet(getName(), count);
+ }
+\ No newline at end of file

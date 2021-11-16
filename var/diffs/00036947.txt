@@ -1,0 +1,12 @@
+diff --git a/14f3e0174349f27d3ae3f0c5d74a47183d93856b b/3134b6cc9b8128659784920a350c46af68316bd0
+index 14f3e01743..3134b6cc9b 100644
+--- a/14f3e0174349f27d3ae3f0c5d74a47183d93856b
++++ b/3134b6cc9b8128659784920a350c46af68316bd0
+@@ -1,5 +1,4 @@
+ public static byte[] modify(ClassPool classPool, ClassLoader classLoader, String javassistClassName, byte[] classFileBuffer) {
+-    log("DBCPPoolModifier(PoolingDataSource$PoolGuardConnectionWrapper) modifing");
+-    // printClassInfo(javassistClassName);
++    logger.info("DBCPPoolModifier(PoolingDataSource$PoolGuardConnectionWrapper) modifing. %s", javassistClassName);
+     return changeMethod(classPool, classLoader, javassistClassName, classFileBuffer);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/2fb5746d9bf8275bca5c8d3fe6cfa20c0be91227 b/a1839ff3ec4e0243247f7ffd09041f72237c6232
+index 2fb5746d9b..a1839ff3ec 100644
+--- a/2fb5746d9bf8275bca5c8d3fe6cfa20c0be91227
++++ b/a1839ff3ec4e0243247f7ffd09041f72237c6232
+@@ -1,9 +1,9 @@
+ @Test
+ public void selectableDefaultValueWithRuleDefault() throws Exception {
+     writeConfigRules();
+     scratch.file("foo/BUILD", "rule_with_label_default(", "    name = 'rule',", "    dep = select({", "        '//conditions:a': None,", "    }))", "rule_with_boolean_attr(", "    name = 'default',", "    boolean_attr = 1)");
+     useConfiguration("--test_arg=a");
+     ConfiguredTarget binary = getConfiguredTarget("//foo:rule");
+-    AttributeMap attributes = ConfiguredAttributeMapper.of((RuleConfiguredTarget) binary);
++    AttributeMap attributes = ((RuleConfiguredTarget) binary).getAttributeMapper();
+     assertThat(attributes.get("dep", BuildType.LABEL)).isEqualTo(Label.parseAbsolute("//foo:default"));
+ }
+\ No newline at end of file

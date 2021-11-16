@@ -1,0 +1,22 @@
+diff --git a/53a592a96629b479447d14350f6cc190efb78ccf b/45afbef01c1a2a6e42a291780a79151dd1d0c52c
+index 53a592a966..45afbef01c 100644
+--- a/53a592a96629b479447d14350f6cc190efb78ccf
++++ b/45afbef01c1a2a6e42a291780a79151dd1d0c52c
+@@ -1,14 +1,14 @@
+ @Test
+ public void shouldCreateAnIndexToGoAlongWithAUniquePropertyConstraint() throws Exception {
+     // when
+     {
+         SchemaWriteOperations statement = schemaWriteOperationsInNewTransaction();
+-        statement.uniquePropertyConstraintCreate(typeId, propertyKeyId);
++        statement.uniquePropertyConstraintCreate(descriptor);
+         commit();
+     }
+     // then
+     {
+         ReadOperations statement = readOperationsInNewTransaction();
+-        assertEquals(asSet(new IndexDescriptor(typeId, propertyKeyId)), asSet(statement.uniqueIndexesGetAll()));
++        assertEquals(asSet(IndexDescriptorFactory.from(descriptor)), asSet(statement.uniqueIndexesGetAll()));
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/9c4c10b6f5b924103a7d4d13f1ea0660ab0fb608 b/b0535f7d290aa768c844ae8fafbe2911ff518e97
+index 9c4c10b6f5..b0535f7d29 100644
+--- a/9c4c10b6f5b924103a7d4d13f1ea0660ab0fb608
++++ b/b0535f7d290aa768c844ae8fafbe2911ff518e97
+@@ -1,10 +1,8 @@
+ public void setTemplates(TemplateImpl[] newTemplates) {
+     myTemplates.clear();
++    mySchemesManager.clearAllSchemes();
+     myMaxKeyLength = 0;
+     for (TemplateImpl template : newTemplates) {
+-        myTemplates.put(template.getKey(), template);
+-        myMaxKeyLength = Math.max(myMaxKeyLength, template.getKey().length());
+-        addTemplateWithId(template);
++        addTemplate(template);
+     }
+-    saveTemplates(newTemplates);
+ }
+\ No newline at end of file

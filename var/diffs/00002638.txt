@@ -1,0 +1,22 @@
+diff --git a/6f8372158c72cbac85934f333ffda29eb10d5385 b/78c69107bc594067f4f02d92694983b80a99ca95
+index 6f8372158c..78c69107bc 100644
+--- a/6f8372158c72cbac85934f333ffda29eb10d5385
++++ b/78c69107bc594067f4f02d92694983b80a99ca95
+@@ -1,14 +1,14 @@
+ private void notifyStartProcessingChanges(final VcsDirtyScope scope) {
+     ApplicationManager.getApplication().runReadAction(new Runnable() {
+
+         public void run() {
+             synchronized (myChangeLists) {
+-                for (LocalChangeList list : getChangeLists()) {
++                for (LocalChangeList list : myChangeLists) {
+                     if (myDisposed)
+                         throw new DisposedException();
+-                    list.startProcessingChanges(myProject, scope);
++                    ((LocalChangeListImpl) list).startProcessingChanges(myProject, scope);
+                 }
+             }
+         }
+     });
+ }
+\ No newline at end of file

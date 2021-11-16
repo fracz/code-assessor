@@ -1,0 +1,12 @@
+diff --git a/a6980f1b8f0da463ba726078f5f613ea0be076b9 b/46cb9e5a54cda7c5f35d2c6a2e11d16a948fff18
+index a6980f1b8f..46cb9e5a54 100644
+--- a/a6980f1b8f0da463ba726078f5f613ea0be076b9
++++ b/46cb9e5a54cda7c5f35d2c6a2e11d16a948fff18
+@@ -1,3 +1,4 @@
+-public static SuggestedFix swap(Position pos1, Position pos2) {
+-    return new SuggestedFix().replace(pos1.start, pos1.end, pos2.getSource()).replace(pos2.start, pos2.end, pos1.getSource());
++public SuggestedFix swap(Tree node1, Tree node2) {
++    nodeSwaps.add(new Pair<Tree, Tree>(node1, node2));
++    return this;
+ }
+\ No newline at end of file

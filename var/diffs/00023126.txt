@@ -1,0 +1,30 @@
+diff --git a/9bc6b0a3780a80e392fb153f07c498f8a3b84628 b/1e6320c94cb70eade5d0490707f37226ff264e20
+index 9bc6b0a378..1e6320c94c 100644
+--- a/9bc6b0a3780a80e392fb153f07c498f8a3b84628
++++ b/1e6320c94cb70eade5d0490707f37226ff264e20
+@@ -1,18 +1,11 @@
+ private void switchUser(int newUserId) {
+     synchronized (mLock) {
+-        // Disconnect services for the old user.
+-        mEnabledServiceNames.clear();
+-        onUserStateChangedLocked();
+-        // The user changed.
++        if (newUserId == mCurrentUserId) {
++            return;
++        }
+         mCurrentUserId = newUserId;
+-        // Update the user state based on current settings.
+-        readConfigurationForUserStateLocked();
+-        onUserStateChangedLocked();
+-    }
+-    // Unbind the spooler for the old user).
+-    mSpooler.unbind();
+-    // not need the spooler for now.
+-    if (notifyQueuedPrintJobs()) {
+-        mSpooler.unbind();
++        UserState userState = getCurrentUserStateLocked();
++        userState.updateIfNeededLocked();
++        userState.getSpoolerLocked().notifyClientForActivteJobs();
+     }
+ }
+\ No newline at end of file

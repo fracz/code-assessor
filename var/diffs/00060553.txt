@@ -1,0 +1,20 @@
+diff --git a/e1a31088e4fe2c3e978a141386d5276c9f39699d b/be03a3fe815fe75237069cc4d2cad7401c937691
+index e1a31088e4..be03a3fe81 100644
+--- a/e1a31088e4fe2c3e978a141386d5276c9f39699d
++++ b/be03a3fe815fe75237069cc4d2cad7401c937691
+@@ -1,9 +1,11 @@
+ /**
+  * Filter specific messages.
+  *
+- * @param selectedOpcodes
++ * @param list
+  */
+-public void setOpcodes(Object[] selectedOpcodes) {
++public void setOpcodes(List<String> list) {
+     opcodeList.clear();
+-    opcodeList.addAll(getAsList(selectedOpcodes));
++    if (list != null) {
++        opcodeList.addAll(list);
++    }
+ }
+\ No newline at end of file

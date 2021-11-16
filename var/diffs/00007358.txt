@@ -1,0 +1,13 @@
+diff --git a/d250a7527df008b298986bf360792f3e011556eb b/b76608a88a1a6a1c7617f45d6a1edc782e7479fc
+index d250a7527d..b76608a88a 100644
+--- a/d250a7527df008b298986bf360792f3e011556eb
++++ b/b76608a88a1a6a1c7617f45d6a1edc782e7479fc
+@@ -1,6 +1,6 @@
+ public void testMultilineTag() {
+-    EpydocString docString = new EpydocString("    @param b: The y intercept of the line.  The X{y intercept} of a\n" + "              line is the point at which it crosses the y axis (M{x=0}).");
++    EpydocString docString = createEpydocDocString("    @param b: The y intercept of the line.  The X{y intercept} of a\n" + "              line is the point at which it crosses the y axis (M{x=0}).");
+     final Substring s = docString.getTagValue("param", "b");
+     assertNotNull(s);
+     assertEquals("The y intercept of the line.  The X{y intercept} of a line is the point at which it crosses the y axis (M{x=0}).", s.concatTrimmedLines(" "));
+ }
+\ No newline at end of file

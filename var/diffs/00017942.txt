@@ -1,0 +1,13 @@
+diff --git a/15b6ee22c786f5288a6236747e946416bb762150 b/c31bb1551c3cbdbd0c384ad7f518dfbd2069ebb3
+index 15b6ee22c7..c31bb1551c 100644
+--- a/15b6ee22c786f5288a6236747e946416bb762150
++++ b/c31bb1551c3cbdbd0c384ad7f518dfbd2069ebb3
+@@ -1,5 +1,6 @@
+ @Override
+ public EurekaHttpResponse<InstanceInfo> sendHeartBeat(String appName, String id, InstanceInfo info, InstanceStatus overriddenStatus) {
+     handledRequests.add(new HandledRequest(RequestType.Heartbeat, instanceInfoFromPeer));
+-    return EurekaHttpResponse.responseWith(networkStatusCodes[callCounter.getAndIncrement()], instanceInfoFromPeer);
++    int statusCode = networkStatusCodes[callCounter.getAndIncrement()];
++    return anEurekaHttpResponse(statusCode, instanceInfoFromPeer).type(MediaType.APPLICATION_JSON_TYPE).build();
+ }
+\ No newline at end of file

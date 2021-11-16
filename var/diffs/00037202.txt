@@ -1,0 +1,13 @@
+diff --git a/b1540df02d58dd1e6e3ca11d9ad4163b68e4a6f9 b/4a2704d82d44eb33810b654e5a117a5ada85c31a
+index b1540df02d..4a2704d82d 100644
+--- a/b1540df02d58dd1e6e3ca11d9ad4163b68e4a6f9
++++ b/4a2704d82d44eb33810b654e5a117a5ada85c31a
+@@ -1,5 +1,4 @@
+ private static void updateNextMethod(ClassPool classPool, CtClass cc) throws Exception {
+-    CtMethod serviceMethod1 = cc.getDeclaredMethod("next", null);
+-    logger.info("*** Changing next() method");
+-    serviceMethod1.insertBefore(getNextMethodBeforeInsertCode());
++    CtMethod method = cc.getDeclaredMethod("next", null);
++    method.insertBefore("{" + TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".updateFetchCount(); }");
+ }
+\ No newline at end of file

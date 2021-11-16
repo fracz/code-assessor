@@ -1,0 +1,26 @@
+diff --git a/c00024f86a3575a5dabee0482030ef2bd777529f b/707e612e77b4dcf35478ada1e871777f33cf12e8
+index c00024f86a..707e612e77 100644
+--- a/c00024f86a3575a5dabee0482030ef2bd777529f
++++ b/707e612e77b4dcf35478ada1e871777f33cf12e8
+@@ -1,18 +1,18 @@
+ /**
+  * Return the net address of all the location hosts
+  *
+  * @return the list of those net address, in String
+  * @throws IOException
+  */
+ public List<String> getLocationHosts() throws IOException {
+     List<String> ret = new ArrayList<String>();
+     if (getNumberOfBlocks() > 0) {
+         List<NetAddress> locations = getClientBlockInfo(0).getLocations();
+         if (locations != null) {
+-            for (int k = 0; k < locations.size(); k++) {
+-                ret.add(locations.get(k).mHost);
++            for (NetAddress location : locations) {
++                ret.add(location.mHost);
+             }
+         }
+     }
+     return ret;
+ }
+\ No newline at end of file

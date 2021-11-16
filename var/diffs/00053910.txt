@@ -1,0 +1,23 @@
+diff --git a/f95703ed84e6bfd3fde76f51c2e389b3e75b0fc5 b/7863d75cdb09745ecd9ed957905263d726d20cdc
+index f95703ed84..7863d75cdb 100644
+--- a/f95703ed84e6bfd3fde76f51c2e389b3e75b0fc5
++++ b/7863d75cdb09745ecd9ed957905263d726d20cdc
+@@ -1,16 +1,16 @@
+ @Override
+ public void output(final StringBuffer buffer) {
+     buffer.append("UPDATE ");
+     tableSource.output(buffer);
+     buffer.append(" SET ");
+-    for (int i = 0, size = items.size(); i < size; ++i) {
++    for (int i = 0; i < items.size(); i++) {
+         if (i != 0) {
+             buffer.append(", ");
+         }
+         items.get(i).output(buffer);
+     }
+     if (null != where) {
+         buffer.append(" WHERE ");
+         where.output(buffer);
+     }
+ }
+\ No newline at end of file

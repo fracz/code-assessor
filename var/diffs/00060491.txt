@@ -1,0 +1,45 @@
+diff --git a/93dc3585acd04a48b0e3fba41e217d7b3f55c899 b/ead296658874c0ccb8a773e7f4bd4b5756b505b7
+index 93dc3585ac..ead2966588 100644
+--- a/93dc3585acd04a48b0e3fba41e217d7b3f55c899
++++ b/ead296658874c0ccb8a773e7f4bd4b5756b505b7
+@@ -1,34 +1,34 @@
+ @Override
+ public void run() {
+     Thread.currentThread().setName(name);
+     try {
+         byte[] buffer = new byte[1];
+         while (in.read(buffer) != -1) {
+             // there is something to read => process in WebSockets version specific message
+             wsProxy.processRead(in, out, buffer[0]);
+         }
+     } catch (InterruptedIOException e) {
+     // ignore this interruption, as it indicates a valid shutdown
+     // } catch (Exception e) {
+     // if (Thread.currentThread().isInterrupted()) {
+     // // this thread has been interrupted -> it was an intentional shutdown
+     // // does not work as intended
+     // } else {
+     // // shutdown was not intended
+     // // error has to be taken seriously
+     // }
+     } catch (SocketException e) {
+     // no more reading possible
+     } catch (IOException e) {
+     // no more reading possible
+     } finally {
+-        // mark as finished
+-        isFinished = true;
+-        // close input stream, as no more bytes can be read
++        // no more bytes can be read
+         closeReaderStream();
+-        // no more output can be written
++        // no more bytes can be written
+         closeWriterStream();
+-        // close the other side too
++        // mark as finished
++        isFinished = true;
++        // close the other listener too
+         wsProxy.shutdown();
+     }
+ }
+\ No newline at end of file

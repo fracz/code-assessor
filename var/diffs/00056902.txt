@@ -1,0 +1,23 @@
+diff --git a/2ed65a80ee23a2ad1b3c331e4a910fed3ec37c2d b/57bbb3ef9e944fe6783989f599b42f3778fac826
+index 2ed65a80ee..57bbb3ef9e 100644
+--- a/2ed65a80ee23a2ad1b3c331e4a910fed3ec37c2d
++++ b/57bbb3ef9e944fe6783989f599b42f3778fac826
+@@ -1,16 +1,15 @@
+ /**
+  * Deletes nodes with zero incoming and zero outgoing edges
+  */
+-@Override
+ public void removeZeroDegreeNodes() {
+     List<V> toDelete = new ArrayList<V>();
+     for (V vertex : outgoingEdges.keySet()) {
+-        if (outgoingEdges.get(vertex).isEmpty() && incomingEdges.get(vertex).isEmpty()) {
++        if (outgoingEdges.get(vertex).size() == 0 && incomingEdges.get(vertex).size() == 0) {
+             toDelete.add(vertex);
+         }
+     }
+     for (V vertex : toDelete) {
+         outgoingEdges.remove(vertex);
+         incomingEdges.remove(vertex);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/0641ba04ab8e3ff0eac790c04efb620c18cda05a b/0056230d4740a24bb7f89d08de13ec2d62ada7ce
+index 0641ba04ab..0056230d47 100644
+--- a/0641ba04ab8e3ff0eac790c04efb620c18cda05a
++++ b/0056230d4740a24bb7f89d08de13ec2d62ada7ce
+@@ -1,9 +1,9 @@
+ // Very similar to JSTypeRegistry#createFromTypeNodesInternal
+ // n is a jsdoc node, not an AST node; the same class (Node) is used for both
+ private JSType getTypeFromComment(Node n, DeclaredTypeRegistry registry, ImmutableList<String> typeParameters) {
+     try {
+         return getTypeFromCommentHelper(n, registry, typeParameters);
+     } catch (UnknownTypeException e) {
+-        return JSType.UNKNOWN;
++        return this.commonTypes.UNKNOWN;
+     }
+ }
+\ No newline at end of file

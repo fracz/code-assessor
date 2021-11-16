@@ -1,0 +1,15 @@
+diff --git a/37c11bb1b67fa35b82cb86888504ec91dc483c3e b/24002d9e71df4c859caffc228c30cbe1f65b154a
+index 37c11bb1b6..24002d9e71 100644
+--- a/37c11bb1b67fa35b82cb86888504ec91dc483c3e
++++ b/24002d9e71df4c859caffc228c30cbe1f65b154a
+@@ -1,7 +1,8 @@
+ @Nullable
+ public static HighlightInfo checkLabelWithoutStatement(@NotNull PsiLabeledStatement statement) {
+     if (statement.getStatement() == null) {
+-        return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, statement, JavaErrorMessages.message("label.without.statement"));
++        String description = JavaErrorMessages.message("label.without.statement");
++        return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(statement).descriptionAndTooltip(description).create();
+     }
+     return null;
+ }
+\ No newline at end of file

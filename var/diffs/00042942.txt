@@ -1,0 +1,16 @@
+diff --git a/5258daedfc882e7ba91c47358b6af0c70e203123 b/8ce8be9c0741b1b7d0f9aa31967b78c24aa1b3ba
+index 5258daedfc..8ce8be9c07 100644
+--- a/5258daedfc882e7ba91c47358b6af0c70e203123
++++ b/8ce8be9c0741b1b7d0f9aa31967b78c24aa1b3ba
+@@ -1,9 +1,6 @@
+ public Object fromStream(final ODatabaseRecord iDatabase, final byte[] iStream) throws IOException {
+     if (iStream == null)
+         return null;
+     final String s = OBinaryProtocol.bytes2string(iStream);
+-    final Object coll = FORMAT.embeddedCollectionFromStream(iDatabase, null, OType.EMBEDDEDLIST, null, OType.LINK, s);
+-    if (coll instanceof ORecordLazyList)
+-        ((ORecordLazyList) coll).setConvertToRecord(false);
+-    return coll;
++    return FORMAT.embeddedCollectionFromStream(iDatabase, null, OType.EMBEDDEDLIST, null, OType.LINK, s);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/47411bda898b039847d16405cfcaa0c98e4460da b/1c2fcb6251d36cc96a4e5b1dc339faa2d4024a07
+index 47411bda89..1c2fcb6251 100644
+--- a/47411bda898b039847d16405cfcaa0c98e4460da
++++ b/1c2fcb6251d36cc96a4e5b1dc339faa2d4024a07
+@@ -1,5 +1,9 @@
+ @Nullable
+ @IfNotParsed
+ public JetTypeReference getTypeReference() {
+-    return (JetTypeReference) findChildByType(JetNodeTypes.TYPE_REFERENCE);
++    JetConstructorCalleeExpression calleeExpression = getCalleeExpression();
++    if (calleeExpression == null) {
++        return null;
++    }
++    return calleeExpression.getTypeReference();
+ }
+\ No newline at end of file

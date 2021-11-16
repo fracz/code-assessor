@@ -1,0 +1,13 @@
+diff --git a/3ebcc6ac4395ee4e0d1d2154a29791fe477f46f2 b/2841676aec84d6d3e55b23538513f807f92f1d6c
+index 3ebcc6ac43..2841676aec 100644
+--- a/3ebcc6ac4395ee4e0d1d2154a29791fe477f46f2
++++ b/2841676aec84d6d3e55b23538513f807f92f1d6c
+@@ -1,6 +1,4 @@
+ @Override
+ public void onStart() {
+-    if (DEBUG)
+-        Slog.d(TAG, "onStart(): binding as " + AUTO_FILL_MANAGER_SERVICE);
+-    publishBinderService(AUTO_FILL_MANAGER_SERVICE, mServiceStub);
++    publishBinderService(AUTO_FILL_MANAGER_SERVICE, new AutoFillManagerServiceStub());
+ }
+\ No newline at end of file

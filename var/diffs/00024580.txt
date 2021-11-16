@@ -1,0 +1,20 @@
+diff --git a/fc448cf72acbacae13ea953ba047f65cc88e731f b/0b3e690975c10bf87c684136dd6b339337f01578
+index fc448cf72a..0b3e690975 100644
+--- a/fc448cf72acbacae13ea953ba047f65cc88e731f
++++ b/0b3e690975c10bf87c684136dd6b339337f01578
+@@ -1,10 +1,10 @@
+-private AbstractBounds<RowPosition> makeExcludingKeyBounds(RowPosition lastReturnedKey) {
++private AbstractBounds<PartitionPosition> makeExcludingKeyBounds(PartitionPosition lastReturnedKey) {
+     // We return a range that always exclude lastReturnedKey, since we've already
+     // returned it.
+-    AbstractBounds<RowPosition> bounds = command.keyRange;
++    AbstractBounds<PartitionPosition> bounds = ((PartitionRangeReadCommand) command).dataRange().keyRange();
+     if (bounds instanceof Range || bounds instanceof Bounds) {
+-        return new Range<RowPosition>(lastReturnedKey, bounds.right);
++        return new Range<PartitionPosition>(lastReturnedKey, bounds.right);
+     } else {
+-        return new ExcludingBounds<RowPosition>(lastReturnedKey, bounds.right);
++        return new ExcludingBounds<PartitionPosition>(lastReturnedKey, bounds.right);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/bc618d7e3a7f2e1eb747f26b6c81cf77cd6927ea b/23c7ad6e6686241820e00a5011703226b8fd5ed0
+index bc618d7e3a..23c7ad6e66 100644
+--- a/bc618d7e3a7f2e1eb747f26b6c81cf77cd6927ea
++++ b/23c7ad6e6686241820e00a5011703226b8fd5ed0
+@@ -1,8 +1,10 @@
+ private void addUnaryIntrinsics(@NotNull FunctionDescriptor descriptor) {
+     String functionName = descriptor.getName();
+     JetToken token = OperatorConventions.UNARY_OPERATION_NAMES.inverse().get(functionName);
++    if (token == null)
++        return;
+     boolean isUnary = !DescriptorUtils.hasParameters(descriptor);
+-    if (isUnary && (token != null)) {
+-        descriptorToIntrinsicMap.put(descriptor, UnaryOperationIntrinsic.newInstance(token));
+-    }
++    if (!isUnary)
++        return;
++    functionIntrinsics.put(descriptor, UnaryOperationIntrinsic.newInstance(token));
+ }
+\ No newline at end of file

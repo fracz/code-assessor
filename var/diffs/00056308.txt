@@ -1,0 +1,20 @@
+diff --git a/bbcb40c52726d4385fbe6aa5d325036a6cddfd20 b/c6d99a598d98f5a1b7db6c4ab9a31220b1d6bf2b
+index bbcb40c527..c6d99a598d 100644
+--- a/bbcb40c52726d4385fbe6aa5d325036a6cddfd20
++++ b/c6d99a598d98f5a1b7db6c4ab9a31220b1d6bf2b
+@@ -1,11 +1,11 @@
+ void submit(Request request) {
+-    ImageView target = request.getTarget();
++    ImageView target = request.target.get();
+     if (target == null)
+         return;
+     Request existing = targetsToRequests.remove(target);
+     if (existing != null) {
+-        existing.getFuture().cancel(true);
++        existing.future.cancel(true);
+     }
+     targetsToRequests.put(target, request);
+-    request.setFuture(service.submit(request));
++    request.future = service.submit(request);
+ }
+\ No newline at end of file

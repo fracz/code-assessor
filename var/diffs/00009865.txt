@@ -1,0 +1,18 @@
+diff --git a/6e08d47e0bc132b61e6eb058837dee6df1e4a4e9 b/b9fc4a0b77950fb5423a0f82d673fa676f6eb411
+index 6e08d47e0b..b9fc4a0b77 100644
+--- a/6e08d47e0bc132b61e6eb058837dee6df1e4a4e9
++++ b/b9fc4a0b77950fb5423a0f82d673fa676f6eb411
+@@ -1,9 +1,9 @@
+-private boolean inWaitForSecondStrokeState(KeyEvent e, boolean isModalContext, DataContext dataContext) {
++private boolean inWaitForSecondStrokeState() {
+     // a key pressed means that the user starts to enter the second stroke...
+-    if (KeyEvent.KEY_PRESSED == e.getID()) {
++    if (KeyEvent.KEY_PRESSED == myContext.getInputEvent().getID()) {
+         myState = STATE_SECOND_STROKE_IN_PROGRESS;
+-        return inSecondStrokeInProgressState(e, isModalContext, dataContext);
++        return inSecondStrokeInProgressState();
+     }
+     // looks like RELEASEs (from the first stroke) go here...  skip them
+     return true;
+ }
+\ No newline at end of file

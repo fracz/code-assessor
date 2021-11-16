@@ -1,0 +1,16 @@
+diff --git a/a4c3ae272cc309485a49d8e417dcd1f0f9726406 b/cbb3928dc6b66cdee02de3a3ae136c6c94d4affd
+index a4c3ae272c..cbb3928dc6 100644
+--- a/a4c3ae272cc309485a49d8e417dcd1f0f9726406
++++ b/cbb3928dc6b66cdee02de3a3ae136c6c94d4affd
+@@ -1,9 +1,9 @@
+ @Test
+ public void shouldFindAllRecordsByColumnValue() throws IllegalAccessException {
+-    EmployeeView view1 = employees.firstName.findAll(EmployeesFixture.FIRST_NAMES[1]);
++    EmployeeView view1 = employees.firstName.findAll(EmployeesFixture.EMPLOYEE1.firstName);
+     assertEquals(1, view1.size());
+     EmployeeView view2 = employees.salary.findAll(10000);
+     assertEquals(2, view2.size());
+     EmployeeView view3 = employees.salary.findAll(12345);
+     assertEquals(0, view3.size());
+ }
+\ No newline at end of file

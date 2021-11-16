@@ -1,0 +1,15 @@
+diff --git a/d73ceac12d5c502d92ea9549765434b4f556692f b/9a62b24981ef248627ef206e70132f670f5c05fc
+index d73ceac12d..9a62b24981 100644
+--- a/d73ceac12d5c502d92ea9549765434b4f556692f
++++ b/9a62b24981ef248627ef206e70132f670f5c05fc
+@@ -1,8 +1,8 @@
+ public void initDefaultPreferences(IPreferenceStore store) {
+     RuntimeUtils.setDefaultPreferenceValue(store, QMConstants.PROP_HISTORY_DAYS, 90);
+     RuntimeUtils.setDefaultPreferenceValue(store, QMConstants.PROP_ENTRIES_PER_PAGE, 200);
+-    RuntimeUtils.setDefaultPreferenceValue(store, QMConstants.PROP_OBJECT_TYPES, QMConstants.OBJECT_TYPE_TRANSACTION + "," + QMConstants.OBJECT_TYPE_QUERY + "," + QMConstants.OBJECT_TYPE_SCRIPT);
++    RuntimeUtils.setDefaultPreferenceValue(store, QMConstants.PROP_OBJECT_TYPES, QMObjectType.toString(Arrays.asList(QMObjectType.txn, QMObjectType.query)));
+     RuntimeUtils.setDefaultPreferenceValue(store, QMConstants.PROP_QUERY_TYPES, DBCExecutionPurpose.USER + "," + DBCExecutionPurpose.USER_SCRIPT);
+     RuntimeUtils.setDefaultPreferenceValue(store, QMConstants.PROP_STORE_LOG_FILE, false);
+     RuntimeUtils.setDefaultPreferenceValue(store, QMConstants.PROP_LOG_DIRECTORY, Platform.getLogFileLocation().toFile().getParent());
+ }
+\ No newline at end of file

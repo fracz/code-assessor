@@ -1,0 +1,20 @@
+diff --git a/7c9aead42210546537a783133f8c2222107580af b/7625b10aa36fd68068dda481eaea690e982576ae
+index 7c9aead422..7625b10aa3 100644
+--- a/7c9aead42210546537a783133f8c2222107580af
++++ b/7625b10aa36fd68068dda481eaea690e982576ae
+@@ -1,13 +1,12 @@
+ @Nullable
+ protected VcsRevisionNumber calcCurrentRevisionNumber() {
+-    GitCommand command = new GitCommand(project, settings, GitUtil.getVcsRoot(project, path));
+     try {
+-        return command.getCurrenFileRevision(path);
++        return GitHistoryUtils.getCurrentRevision(project, filePath);
+     } catch (VcsException e) {
+         // likely the file is not under VCS anymore.
+         if (log.isDebugEnabled()) {
+             log.debug("Unable to retrieve the current revision number", e);
+         }
+         return null;
+     }
+ }
+\ No newline at end of file

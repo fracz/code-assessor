@@ -1,0 +1,12 @@
+diff --git a/92c7308f57d6184eab9859545c1f7e2dcc21b4d8 b/c08be4aece36b82c556fdf634e92bfdc8cf6d224
+index 92c7308f57..c08be4aece 100644
+--- a/92c7308f57d6184eab9859545c1f7e2dcc21b4d8
++++ b/c08be4aece36b82c556fdf634e92bfdc8cf6d224
+@@ -1,5 +1,5 @@
+ @SuppressWarnings("unchecked")
+ @Override
+ public boolean matches(MethodInvocationTree methodInvocationTree, VisitorState state) {
+-    return allOf(parentNode(kindIs(Kind.EXPRESSION_STATEMENT, MethodInvocationTree.class)), specializedMatcher()).matches(methodInvocationTree, state);
++    return allOf(parentNode(Matchers.<MethodInvocationTree>kindIs(Kind.EXPRESSION_STATEMENT)), specializedMatcher()).matches(methodInvocationTree, state);
+ }
+\ No newline at end of file

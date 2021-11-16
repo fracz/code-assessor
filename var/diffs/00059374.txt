@@ -1,0 +1,13 @@
+diff --git a/56bfce35ffc70462d654ba65c4b5c5453b81389b b/2385fb7aa7de721237bb5d22e38a8890f7c486e2
+index 56bfce35ff..2385fb7aa7 100644
+--- a/56bfce35ffc70462d654ba65c4b5c5453b81389b
++++ b/2385fb7aa7de721237bb5d22e38a8890f7c486e2
+@@ -1,5 +1,6 @@
+ private AstyanaxContext.Builder getContextBuilder(Configuration config) {
+     // TODO actual configuration
+-    AstyanaxContext.Builder builder = new AstyanaxContext.Builder().forCluster(clusterName).forKeyspace(ksName).withAstyanaxConfiguration(new AstyanaxConfigurationImpl().setDiscoveryType(NodeDiscoveryType.NONE)).withConnectionPoolConfiguration(new ConnectionPoolConfigurationImpl("MyConnectionPool").setPort(9160).setMaxConnsPerHost(16).setSeeds("127.0.0.1:9160")).withConnectionPoolMonitor(new CountingConnectionPoolMonitor());
++    AstyanaxContext.Builder builder = new AstyanaxContext.Builder().forCluster(clusterName).forKeyspace(ksName).withAstyanaxConfiguration(new AstyanaxConfigurationImpl().setDiscoveryType(NodeDiscoveryType.NONE)).withConnectionPoolConfiguration(new ConnectionPoolConfigurationImpl("MyConnectionPool").setPort(config.getInt(PORT_KEY, PORT_DEFAULT)).setMaxConnsPerHost(16).setConnectTimeout(config.getInt(THRIFT_TIMEOUT_KEY, THRIFT_TIMEOUT_DEFAULT)).setSeeds(// "127.0.0.1:9160"
++    config.getString(HOSTNAME_KEY, HOSTNAME_DEFAULT))).withConnectionPoolMonitor(new CountingConnectionPoolMonitor());
+     return builder;
+ }
+\ No newline at end of file

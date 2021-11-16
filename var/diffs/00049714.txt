@@ -1,0 +1,16 @@
+diff --git a/a7dfda514e8a0e10d29c4d68cf07038529037993 b/11321f38d78fe82bb69cc150ae501e32be01dce5
+index a7dfda514e..11321f38d7 100644
+--- a/a7dfda514e8a0e10d29c4d68cf07038529037993
++++ b/11321f38d78fe82bb69cc150ae501e32be01dce5
+@@ -1,6 +1,7 @@
++@NotNull
+ @Override
+-public DBCPlan planQueryExecution(DBCSession session, String query) throws DBCException {
+-    OraclePlanAnalyser plan = new OraclePlanAnalyser(this, query);
+-    plan.explain((JDBCSession) session);
++public DBCPlan planQueryExecution(@NotNull DBCSession session, @NotNull String query) throws DBException {
++    OraclePlanAnalyser plan = new OraclePlanAnalyser(this, (JDBCSession) session, query);
++    plan.explain();
+     return plan;
+ }
+\ No newline at end of file

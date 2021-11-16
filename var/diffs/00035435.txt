@@ -1,0 +1,16 @@
+diff --git a/0500abba0b208091ba25c85cb57dcf1a906e602f b/0a9083ac7d74897d2ee4b4e0ed453628128a674a
+index 0500abba0b..0a9083ac7d 100644
+--- a/0500abba0b208091ba25c85cb57dcf1a906e602f
++++ b/0a9083ac7d74897d2ee4b4e0ed453628128a674a
+@@ -1,8 +1,8 @@
+ @Override
+-public void notifyPending() {
++public void notifyPending(MessageSnapshot snapshot) {
+     if (FileDownloadLog.NEED_LOG) {
+         FileDownloadLog.d(this, "notify pending %s", task);
+     }
+     task.ing();
+-    process(FileDownloadStatus.pending);
++    process(snapshot);
+ }
+\ No newline at end of file

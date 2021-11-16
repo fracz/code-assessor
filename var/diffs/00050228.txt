@@ -1,0 +1,19 @@
+diff --git a/2686bddf4687e761f2385044b672bbf1b61e7fc8 b/ab3ad8a46146ce5156d8375656e97c1cb9a5341f
+index 2686bddf46..ab3ad8a461 100644
+--- a/2686bddf4687e761f2385044b672bbf1b61e7fc8
++++ b/ab3ad8a46146ce5156d8375656e97c1cb9a5341f
+@@ -1,10 +1,10 @@
+ @Override
+ protected PostgreProcedure runTask() {
+-    CreateProcedureDialog dialog = new CreateProcedureDialog(DBeaverUI.getActiveWorkbenchShell(), parent.getDataSource());
+-    if (dialog.open() != IDialogConstants.OK_ID) {
++    CreateProcedurePage editPage = new CreateProcedurePage(parent);
++    if (!editPage.edit()) {
+         return null;
+     }
+     PostgreProcedure newProcedure = new PostgreProcedure(parent);
+-    newProcedure.setName(dialog.getProcedureName());
++    newProcedure.setName(editPage.getProcedureName());
+     return newProcedure;
+ }
+\ No newline at end of file

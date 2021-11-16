@@ -1,0 +1,11 @@
+diff --git a/dfaf494bebb29bc6c9e2f2b5b15f394b4eec0031 b/ffa126b9d66da4dcd1aee9766b7f187e8f18e70e
+index dfaf494beb..ffa126b9d6 100644
+--- a/dfaf494bebb29bc6c9e2f2b5b15f394b4eec0031
++++ b/ffa126b9d66da4dcd1aee9766b7f187e8f18e70e
+@@ -1,4 +1,4 @@
+ @NotNull
+ public static List<RangeHighlighter> createBorderLineMarker(@NotNull final Editor editor, int line, @NotNull final SeparatorPlacement placement) {
+-    return createLineMarker(editor, line, placement, null, BORDER_LINE_RENDERER, false);
++    return new LineMarkerBuilder(editor, line, placement).withRenderer(BORDER_LINE_RENDERER).done();
+ }
+\ No newline at end of file

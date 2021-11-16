@@ -1,0 +1,14 @@
+diff --git a/2dae7f7c06f70f3c65243ba224d08b73d2c74979 b/378ed24c1f6073d4b2a3a723f013aad81ca7725f
+index 2dae7f7c06..378ed24c1f 100644
+--- a/2dae7f7c06f70f3c65243ba224d08b73d2c74979
++++ b/378ed24c1f6073d4b2a3a723f013aad81ca7725f
+@@ -1,7 +1,7 @@
+ public IntervalSet getExpectedTokens() {
+     // TODO: do we really need this type check?
+     if (recognizer != null && recognizer instanceof BaseRecognizer<?>) {
+-        return recognizer.getInterpreter().atn.nextTokens(ctx);
++        return ((BaseRecognizer) recognizer).getExpectedTokens();
+     }
+     return null;
+ }
+\ No newline at end of file

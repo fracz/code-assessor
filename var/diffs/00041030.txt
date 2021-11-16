@@ -1,0 +1,11 @@
+diff --git a/f3ad90b718b3b1dfe05aa17cd72d1b592f81af2a b/106fc46219052e65fc312ccd3eb1bc0a664260f2
+index f3ad90b718..106fc46219 100644
+--- a/f3ad90b718b3b1dfe05aa17cd72d1b592f81af2a
++++ b/106fc46219052e65fc312ccd3eb1bc0a664260f2
+@@ -1,4 +1,4 @@
+ private void showNoFooterDialog(Holder holder, int gravity, BaseAdapter adapter, OnClickListener clickListener, OnItemClickListener itemClickListener, OnDismissListener dismissListener, OnCancelListener cancelListener, boolean expanded) {
+-    final DialogPlus dialog = new DialogPlus.Builder(this).setContentHolder(holder).setHeader(R.layout.header).setCancelable(true).setGravity(gravity).setAdapter(adapter).setOnClickListener(clickListener).setOnItemClickListener(itemClickListener).setOnDismissListener(dismissListener).setOnCancelListener(cancelListener).setExpanded(expanded).create();
++    final DialogPlus dialog = DialogPlus.newDialog(this).setContentHolder(holder).setHeader(R.layout.header).setCancelable(true).setGravity(gravity).setAdapter(adapter).setOnClickListener(clickListener).setOnItemClickListener(itemClickListener).setOnDismissListener(dismissListener).setOnCancelListener(cancelListener).setExpanded(expanded).create();
+     dialog.show();
+ }
+\ No newline at end of file

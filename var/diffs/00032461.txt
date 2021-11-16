@@ -1,0 +1,19 @@
+diff --git a/f59eb87a93aebc36410980bd58dea947dd393134 b/b3c23e6b3929f32adf39b30d54bb5ba70729559b
+index f59eb87a93..b3c23e6b39 100644
+--- a/f59eb87a93aebc36410980bd58dea947dd393134
++++ b/b3c23e6b3929f32adf39b30d54bb5ba70729559b
+@@ -1,12 +1,12 @@
+ /**
+  * Add a new undeclared prototype property to this class
+  */
+ public void addUndeclaredProtoProperty(String pname, Node defSite) {
+     Preconditions.checkState(!this.isFinalized);
+     if (!this.protoProps.containsKey(pname) || this.protoProps.get(pname).getDeclaredType() == null) {
+-        this.protoProps = this.protoProps.with(pname, Property.makeWithDefsite(defSite, JSType.UNKNOWN, null));
++        this.protoProps = this.protoProps.with(pname, Property.makeWithDefsite(defSite, this.commonTypes.UNKNOWN, null));
+         if (this.randomProps.containsKey(pname)) {
+             this.randomProps = this.randomProps.without(pname);
+         }
+     }
+ }
+\ No newline at end of file

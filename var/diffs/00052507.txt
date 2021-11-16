@@ -1,0 +1,15 @@
+diff --git a/da3ff36b0e0c67e2e84c0bd8d6011d1189685997 b/6b338926caf69f2a14699e14d4b99309c3b6531b
+index da3ff36b0e..6b338926ca 100644
+--- a/da3ff36b0e0c67e2e84c0bd8d6011d1189685997
++++ b/6b338926caf69f2a14699e14d4b99309c3b6531b
+@@ -1,7 +1,5 @@
+-private Collection<String> routeDataSources(final TableRule tableRule) {
+-    DatabaseShardingStrategy strategy = shardingRule.getDatabaseShardingStrategy(tableRule);
+-    List<ShardingValue<?>> shardingValues = HintManagerHolder.isUseShardingHint() ? getDatabaseShardingValuesFromHint(strategy.getShardingColumns()) : getShardingValues(strategy.getShardingColumns());
+-    Collection<String> result = strategy.doStaticSharding(tableRule.getActualDatasourceNames(), shardingValues);
++private Collection<String> routeDataSources(final TableRule tableRule, final List<ShardingValue<?>> databaseShardingValues) {
++    Collection<String> result = shardingRule.getDatabaseShardingStrategy(tableRule).doStaticSharding(tableRule.getActualDatasourceNames(), databaseShardingValues);
+     Preconditions.checkState(!result.isEmpty(), "no database route info");
+     return result;
+ }
+\ No newline at end of file

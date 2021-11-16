@@ -1,0 +1,20 @@
+diff --git a/ee84b763e67507efe876d5ea5f25ec6d3727cb04 b/6170958c3b3a0ec0b682904f5398d5892f991cb7
+index ee84b763e6..6170958c3b 100644
+--- a/ee84b763e67507efe876d5ea5f25ec6d3727cb04
++++ b/6170958c3b3a0ec0b682904f5398d5892f991cb7
+@@ -1,13 +1,13 @@
+ @Override
+ public boolean equals(Object o) {
+     if (this == o) {
+         return true;
+     }
+     if (o == null || getClass() != o.getClass()) {
+         return false;
+     }
+     if (!super.equals(o)) {
+         return false;
+     }
+-    return propertyKeyId == ((RelationshipPropertyExistenceConstraintRule) o).propertyKeyId;
++    return descriptor.equals(((RelationshipPropertyExistenceConstraintRule) o).descriptor);
+ }
+\ No newline at end of file

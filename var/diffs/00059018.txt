@@ -1,0 +1,24 @@
+diff --git a/c97943dea09988e9053cc8c44f68b4bde6fac49a b/2d08a8ecb6354dfe5e29c7ef41be8f57882242ad
+index c97943dea0..2d08a8ecb6 100644
+--- a/c97943dea09988e9053cc8c44f68b4bde6fac49a
++++ b/2d08a8ecb6354dfe5e29c7ef41be8f57882242ad
+@@ -1,14 +1,13 @@
+ @Override
+ public void mutate(StaticBuffer key, List<Entry> additions, List<StaticBuffer> deletions, StoreTransaction txh) throws StorageException {
+-    boolean ok = false;
+     mutateInvocationCounter.inc();
+-    final Timer.Context tc = mutateTimer.time();
++    Timer.Context tc = mutateTimer.time();
+     try {
+         backend.mutate(key, additions, deletions, txh);
+-        ok = true;
++    } catch (StorageException e) {
++        mutateFailureCounter.inc();
++        throw e;
+     } finally {
+         tc.stop();
+-        if (!ok)
+-            mutateFailureCounter.inc();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/0459982a0bfa27d8e97ffe5faee6c1ae049f7ffe b/caf06e910cc663ef4dbe38019c569e60db891e16
+index 0459982a0b..caf06e910c 100644
+--- a/0459982a0bfa27d8e97ffe5faee6c1ae049f7ffe
++++ b/caf06e910cc663ef4dbe38019c569e60db891e16
+@@ -1,4 +1,4 @@
+ @Test(dependsOnMethods = { "testDbCreationDefault" })
+ public void testDbExists() throws IOException {
+-    Assert.assertTrue(ODatabaseHelper.existsDatabase(new ODatabaseDocumentTx(url), "plocal"));
++    Assert.assertTrue(ODatabaseHelper.existsDatabase(new ODatabaseDocumentTx(url), getStorageType()));
+ }
+\ No newline at end of file

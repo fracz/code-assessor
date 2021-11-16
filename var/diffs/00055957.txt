@@ -1,0 +1,20 @@
+diff --git a/0e65f079edd4b9e09f8b090f4e094ab626bbf610 b/4e7cafb6c424b97e25e268a290bf9fd497e67b1d
+index 0e65f079ed..4e7cafb6c4 100644
+--- a/0e65f079edd4b9e09f8b090f4e094ab626bbf610
++++ b/4e7cafb6c424b97e25e268a290bf9fd497e67b1d
+@@ -1,11 +1,6 @@
+ @Test
+ public void deferredResult() throws Exception {
+-    MethodParameter returnType = returnType("handleDeferredResult");
+-    DeferredResult<String> deferredResult = new DeferredResult<>();
+-    handleReturnValue(deferredResult, returnType);
+-    assertTrue(this.request.isAsyncStarted());
+-    assertFalse(WebAsyncUtils.getAsyncManager(this.webRequest).hasConcurrentResult());
+-    deferredResult.setResult("foo");
+-    assertTrue(WebAsyncUtils.getAsyncManager(this.webRequest).hasConcurrentResult());
+-    assertEquals("foo", WebAsyncUtils.getAsyncManager(this.webRequest).getConcurrentResult());
++    DeferredResult<String> result = new DeferredResult<>();
++    IllegalStateException ex = new IllegalStateException();
++    testHandle(result, DeferredResult.class, () -> result.setErrorResult(ex), ex);
+ }
+\ No newline at end of file

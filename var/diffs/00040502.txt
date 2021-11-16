@@ -1,0 +1,19 @@
+diff --git a/fc8e3c98fc672931b8a9182ff6652ffe70bc9ba3 b/de8e83c328f368ecef0276be33924b8ee739efa4
+index fc8e3c98fc..de8e83c328 100644
+--- a/fc8e3c98fc672931b8a9182ff6652ffe70bc9ba3
++++ b/de8e83c328f368ecef0276be33924b8ee739efa4
+@@ -1,11 +1,8 @@
+ /**
+  * <!-- begin-user-doc -->
+  * <!-- end-user-doc -->
+  * @generated
+  */
+-public SwitchState createSwitchStateFromString(EDataType eDataType, String initialValue) {
+-    SwitchState result = SwitchState.get(initialValue);
+-    if (result == null)
+-        throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+-    return result;
++public OnOffValue createSwitchStateFromString(EDataType eDataType, String initialValue) {
++    return (OnOffValue) super.createFromString(eDataType, initialValue);
+ }
+\ No newline at end of file

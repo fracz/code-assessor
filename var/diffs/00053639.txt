@@ -1,0 +1,20 @@
+diff --git a/105e23b90573c59ec2d288e4d8a937f02b4df815 b/6bb12b056a3f79386d27a0d6792154a59464b441
+index 105e23b905..6bb12b056a 100644
+--- a/105e23b90573c59ec2d288e4d8a937f02b4df815
++++ b/6bb12b056a3f79386d27a0d6792154a59464b441
+@@ -1,8 +1,10 @@
+-protected void printAndAccept(List<? extends SQLObject> nodes, String seperator) {
+-    for (int i = 0, size = nodes.size(); i < size; ++i) {
+-        if (i != 0) {
++protected void printAndAccept(final List<? extends SQLObject> nodes, final String seperator) {
++    int count = 0;
++    for (SQLObject each : nodes) {
++        if (0 != count) {
+             print(seperator);
+         }
+-        nodes.get(i).accept(this);
++        each.accept(this);
++        count++;
+     }
+ }
+\ No newline at end of file

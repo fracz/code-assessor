@@ -1,0 +1,21 @@
+diff --git a/b575f1e53aa1e141484f9d76aedeb3bfb0968006 b/fc8ddbfb0d53944179c267218e2b9d466545c40a
+index b575f1e53a..fc8ddbfb0d 100644
+--- a/b575f1e53aa1e141484f9d76aedeb3bfb0968006
++++ b/fc8ddbfb0d53944179c267218e2b9d466545c40a
+@@ -1,7 +1,10 @@
+ public KeyColumnValueStoreManager openStorageManager() throws StorageException {
+-    BerkeleyJEStoreManager sm = new BerkeleyJEStoreManager(BerkeleyJeStorageSetup.getBerkeleyJEConfiguration());
+-    // prefixed store doesn't support scan, because prefix is hash of a key which makes it un-ordered
+-    sm.features.supportsUnorderedScan = false;
+-    sm.features.supportsOrderedScan = false;
+-    return new OrderedKeyValueStoreManagerAdapter(sm);
++    return new OrderedKeyValueStoreManagerAdapter(new BerkeleyJEStoreManager(BerkeleyJeStorageSetup.getBerkeleyJEConfiguration()));
++// BerkeleyJEStoreManager sm = new BerkeleyJEStoreManager(BerkeleyJeStorageSetup.getBerkeleyJEConfiguration());
++//
++// // prefixed store doesn't support scan, because prefix is hash of a key which makes it un-ordered
++// sm.features.supportsUnorderedScan = false;
++// sm.features.supportsOrderedScan = false;
++//
++// return new OrderedKeyValueStoreManagerAdapter(sm);
+ }
+\ No newline at end of file

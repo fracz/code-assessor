@@ -1,0 +1,28 @@
+diff --git a/33b564b1b8e15326c5b6caa33c12bd447b0b9772 b/3ad07832111b6cb3bc5980f80f8e582549908039
+index 33b564b1b8..3ad0783211 100644
+--- a/33b564b1b8e15326c5b6caa33c12bd447b0b9772
++++ b/3ad07832111b6cb3bc5980f80f8e582549908039
+@@ -1,16 +1,17 @@
++// ////////////////////////////////////////////////////////////////////////////////////
++// OVERRIDEN METHODS
++// ////////////////////////////////////////////////////////////////////////////////////
+ @Override
+ public void onCreate(SQLiteDatabase db) {
+-    if (FOREIGN_KEYS_SUPPORTED) {
++    if (SQLiteUtils.FOREIGN_KEYS_SUPPORTED) {
+         db.execSQL("PRAGMA foreign_keys=ON;");
+         Log.i("Foreign Keys supported. Enabling foreign key features.");
+     }
+-    final ArrayList<Class<? extends Model>> tables = ReflectionUtils.getModelClasses();
+-    Log.i("Creating " + tables.size() + " tables");
+     db.beginTransaction();
+-    for (Class<? extends Model> table : tables) {
+-        createTable(db, table);
++    for (Class<? extends Model> table : ReflectionUtils.getModelClasses(Cache.getContext())) {
++        db.execSQL(SQLiteUtils.createTableDefinition(table));
+     }
+     db.setTransactionSuccessful();
+     db.endTransaction();
+     executeMigrations(db, -1, db.getVersion());
+ }
+\ No newline at end of file

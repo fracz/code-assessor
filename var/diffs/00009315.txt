@@ -1,0 +1,17 @@
+diff --git a/c4edac54b672977785394b47e6b4b4b5d505791f b/e69a7d51cfdd2a90d8375e74239f57fefe53712d
+index c4edac54b6..e69a7d51cf 100644
+--- a/c4edac54b672977785394b47e6b4b4b5d505791f
++++ b/e69a7d51cfdd2a90d8375e74239f57fefe53712d
+@@ -1,10 +1,10 @@
+ public static void invoke(final Project project, final Editor editor, final PsiClass psiClass) {
+     PsiCall callToInline = findCallToInline(editor);
+     String errorMessage = getCannotInlineMessage(psiClass);
+     if (errorMessage != null) {
+-        CommonRefactoringUtil.showErrorMessage(RefactoringBundle.message("inline.to.anonymous.refactoring"), errorMessage, null, project);
++        CommonRefactoringUtil.showErrorHint(project, editor, errorMessage, RefactoringBundle.message("inline.to.anonymous.refactoring"), null);
+         return;
+     }
+     InlineToAnonymousClassDialog dlg = new InlineToAnonymousClassDialog(project, psiClass, callToInline);
+     dlg.show();
+ }
+\ No newline at end of file

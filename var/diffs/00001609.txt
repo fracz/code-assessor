@@ -1,0 +1,20 @@
+diff --git a/fd7eb5974ed15f39eca1fad9864f709c36379e9b b/570bd2287ad6b681793ef59f60e9b96e3c895202
+index fd7eb5974e..570bd2287a 100644
+--- a/fd7eb5974ed15f39eca1fad9864f709c36379e9b
++++ b/570bd2287ad6b681793ef59f60e9b96e3c895202
+@@ -1,6 +1,9 @@
+-private void showErrorMessage(GitLineHandler h, String message) {
+-    if (h.errors().isEmpty()) {
+-        h.addError(new VcsException(h.getLastOutput()));
+-    }
+-    Messages.showErrorDialog(myProject, GitUIUtil.stringifyErrors(h.errors()), message);
++private void showErrorMessage(@NotNull final String message, @NotNull final List<String> errorOutput) {
++    UIUtil.invokeAndWaitIfNeeded(new Runnable() {
++
++        @Override
++        public void run() {
++            Messages.showErrorDialog(myProject, StringUtil.join(errorOutput, "\n"), message);
++        }
++    });
+ }
+\ No newline at end of file

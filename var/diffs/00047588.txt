@@ -1,0 +1,17 @@
+diff --git a/a23e421522df1e448f96035c51c1981c35724d46 b/88cf5df60e685f1dbe56f0140a8944832c77db11
+index a23e421522..88cf5df60e 100644
+--- a/a23e421522df1e448f96035c51c1981c35724d46
++++ b/88cf5df60e685f1dbe56f0140a8944832c77db11
+@@ -1,4 +1,10 @@
+ @Override
+ public Publisher<V> pollLast() {
+-    return poll(-1);
++    return reactive(new Supplier<RFuture<V>>() {
++
++        @Override
++        public RFuture<V> get() {
++            return instance.pollLastAsync();
++        }
++    });
+ }
+\ No newline at end of file

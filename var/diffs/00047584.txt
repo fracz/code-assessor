@@ -1,0 +1,17 @@
+diff --git a/e43f4fe64148e7dfbefbeeeb0ce38b891770289e b/d872ea523235cc807a7d9df073f812c2bfcc6de3
+index e43f4fe641..d872ea5232 100644
+--- a/e43f4fe64148e7dfbefbeeeb0ce38b891770289e
++++ b/d872ea523235cc807a7d9df073f812c2bfcc6de3
+@@ -1,4 +1,10 @@
+ @Override
+ public Publisher<V> first() {
+-    return commandExecutor.readReactive(getName(), codec, RedisCommands.ZRANGE_SINGLE, getName(), 0, 0);
++    return reactive(new Supplier<RFuture<V>>() {
++
++        @Override
++        public RFuture<V> get() {
++            return instance.firstAsync();
++        }
++    });
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/37cb193ac13ca7e9aa8667d530732c476653d7c6 b/eafb34c8236d6feaa51ca5e0efaad688f0e56ce5
+index 37cb193ac1..eafb34c823 100644
+--- a/37cb193ac13ca7e9aa8667d530732c476653d7c6
++++ b/eafb34c8236d6feaa51ca5e0efaad688f0e56ce5
+@@ -1,4 +1,13 @@
+-public void store(Address address) {
+-    this.address = address;
+-    openRegistry(file).set(new DaemonStatus(this.address));
++public synchronized void store(final Address address) {
++    cache.update(new PersistentStateCache.UpdateAction<DaemonRegistryFile>() {
++
++        public DaemonRegistryFile update(DaemonRegistryFile oldValue) {
++            if (oldValue == null) {
++                oldValue = new DaemonRegistryFile();
++            }
++            DaemonStatus status = new DaemonStatus(address).setIdle(true);
++            oldValue.getStatusesMap().put(address, status);
++            return oldValue;
++        }
++    });
+ }
+\ No newline at end of file

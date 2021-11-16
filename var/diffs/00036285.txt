@@ -1,0 +1,17 @@
+diff --git a/1c3b0197b7ef5564bf0d51a8bc3743edd10c649f b/a2726a5682461dc88ca5b4a2df75ce2f945dd27b
+index 1c3b0197b7..a2726a5682 100644
+--- a/1c3b0197b7ef5564bf0d51a8bc3743edd10c649f
++++ b/a2726a5682461dc88ca5b4a2df75ce2f945dd27b
+@@ -1,10 +1,10 @@
+ public StubbedInvocationMatcher findAnswerFor(Invocation invocation) {
+     for (StubbedInvocationMatcher s : stubbed) {
+         if (s.matches(invocation)) {
+-            invocation.markStubbed(new StubInfo(s.getInvocation()));
+             s.markStubUsed(invocation);
++            invocation.markStubbed(new StubInfo(s));
+             return s;
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

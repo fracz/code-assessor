@@ -1,0 +1,15 @@
+diff --git a/2704af9dc9d4546d94c960bfb50abe5cc29f2746 b/a79dd949c912c729ce67bc1dc8e3030bfe056618
+index 2704af9dc9..a79dd949c9 100644
+--- a/2704af9dc9d4546d94c960bfb50abe5cc29f2746
++++ b/a79dd949c912c729ce67bc1dc8e3030bfe056618
+@@ -1,7 +1,5 @@
+ public List<ScalingEvent> toList() {
+-    List<ScalingEvent> retVal = Lists.newArrayList();
+-    while (!recentNodes.isEmpty()) {
+-        retVal.add(recentNodes.poll());
+-    }
++    List<ScalingEvent> retVal = Lists.newArrayList(recentNodes);
++    Collections.sort(retVal, comparator);
+     return retVal;
+ }
+\ No newline at end of file

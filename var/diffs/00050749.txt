@@ -1,0 +1,26 @@
+diff --git a/a56c3a38034514f5a4f37606869ea5219517445c b/d47393e0279352f52f0ccededf5d9fa23c8d6407
+index a56c3a3803..d47393e027 100644
+--- a/a56c3a38034514f5a4f37606869ea5219517445c
++++ b/d47393e0279352f52f0ccededf5d9fa23c8d6407
+@@ -1,16 +1,10 @@
+ @Override
+ public SearchDataQuery createQuery() throws DBException {
+-    List<DBSObject> selectedSources = getCheckedSources();
+-    String dataSearchString = searchString;
++    params.sources = getCheckedSources();
+     // Save search query
+-    if (!searchHistory.contains(dataSearchString)) {
+-        searchHistory.add(dataSearchString);
+-        searchText.add(dataSearchString);
++    if (!searchHistory.contains(params.searchString)) {
++        searchHistory.add(params.searchString);
++        searchText.add(params.searchString);
+     }
+-    SearchDataParams params = new SearchDataParams();
+-    params.setSources(selectedSources);
+-    params.setSearchString(dataSearchString);
+-    params.setCaseSensitive(caseSensitive);
+-    params.setMaxResults(maxResults);
+     return SearchDataQuery.createQuery(params);
+ }
+\ No newline at end of file

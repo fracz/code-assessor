@@ -1,0 +1,17 @@
+diff --git a/d5234dcb377d58cc9e3c09dc9aab0a7dca269aa2 b/bdfd393ccc6d515fe1cf0264871995a064f180c7
+index d5234dcb37..bdfd393ccc 100644
+--- a/d5234dcb377d58cc9e3c09dc9aab0a7dca269aa2
++++ b/bdfd393ccc6d515fe1cf0264871995a064f180c7
+@@ -1,10 +1,10 @@
+ public Scheduler createOrGetFIFOScheduler(String name) {
+     synchronized (schedulers) {
+-        if (!schedulers.containsKey(name)) {
++        if (schedulers.containsKey(name) == false) {
+             Scheduler s = new FIFOScheduler(name, executor, this);
+             schedulers.put(name, s);
+             executor.execute(s);
+         }
+         return schedulers.get(name);
+     }
+ }
+\ No newline at end of file

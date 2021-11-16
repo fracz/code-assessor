@@ -1,0 +1,16 @@
+diff --git a/fe4e93718fc64ada321f8fc80af6730300a69912 b/19a195ff53bcf1e6aa116c042f201cb5e0db3ee3
+index fe4e93718f..19a195ff53 100644
+--- a/fe4e93718fc64ada321f8fc80af6730300a69912
++++ b/19a195ff53bcf1e6aa116c042f201cb5e0db3ee3
+@@ -1,8 +1,8 @@
+-private void compareExpressionsOnStack(IElementType opToken, Type operandType) {
++private StackValue compareExpressionsOnStack(IElementType opToken, Type operandType) {
+     if (operandType.getSort() == Type.OBJECT) {
+         v.invokeinterface(CLASS_COMPARABLE, "compareTo", "(Ljava/lang/Object;)I");
+         v.aconst(0);
+         operandType = Type.INT_TYPE;
+     }
+-    myStack.push(StackValue.cmp(opToken, operandType));
++    return StackValue.cmp(opToken, operandType);
+ }
+\ No newline at end of file

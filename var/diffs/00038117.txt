@@ -1,0 +1,13 @@
+diff --git a/2cbbb73c348286c5be4bcb7108c9f11c33f2db64 b/10e4466a9898afa1eb9ba65cc1513a411d5ec6f1
+index 2cbbb73c34..10e4466a98 100644
+--- a/2cbbb73c348286c5be4bcb7108c9f11c33f2db64
++++ b/10e4466a9898afa1eb9ba65cc1513a411d5ec6f1
+@@ -1,5 +1,6 @@
+ @Before
+ public void startZooKeeperCluster() throws Exception {
+     FileUtils.deleteDirectory(BASE_ZOO_KEEPER_DATA_DIR);
+-    zooKeeperCluster = new LocalZooKeeperCluster(ZOO_KEEPER_CLUSTER_SIZE, BASE_ZOO_KEEPER_DATA_DIR);
++    zooKeeperCluster = new LocalhostZooKeeperCluster(getClass(), /*ports:*/
++    2181, 2182, 2183);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/b238a834fd64cfcaa9effa8a8e126b37265048b0 b/e4dadcbd29d9bc9e29e8e5c07dd5e1b62cf53473
+index b238a834fd..e4dadcbd29 100644
+--- a/b238a834fd64cfcaa9effa8a8e126b37265048b0
++++ b/e4dadcbd29d9bc9e29e8e5c07dd5e1b62cf53473
+@@ -1,7 +1,5 @@
+ @Override
+ public JFrame findVisibleFrame() {
+     IdeFrameImpl[] frames = getAllProjectFrames();
+-    if (frames.length > 0)
+-        return frames[0];
+-    return (JFrame) WelcomeFrame.getInstance();
++    return frames.length > 0 ? frames[0] : (JFrame) WelcomeFrame.getInstance();
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/35a26f6363c1bf313004c0da1c29a584f5bb67c6 b/f433f18ca1ceb4e2f1b76d0de481069d58db36ad
+index 35a26f6363..f433f18ca1 100644
+--- a/35a26f6363c1bf313004c0da1c29a584f5bb67c6
++++ b/f433f18ca1ceb4e2f1b76d0de481069d58db36ad
+@@ -1,8 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiMethod method = (PsiMethod) location.getParent();
+-    assert method != null;
+-    final NCSSVisitor visitor = new NCSSVisitor();
+-    method.accept(visitor);
+-    final int statementCount = visitor.getStatementCount();
++@NotNull
++public String buildErrorString(Object... infos) {
++    final Integer statementCount = (Integer) infos[0];
+     return InspectionGadgetsBundle.message("non.comment.source.statements.problem.descriptor", statementCount);
+ }
+\ No newline at end of file

@@ -1,0 +1,10 @@
+diff --git a/014367b4901d2f1b3abbc5aaa71b66851c500bcb b/1e4250643b8ff1b590334cf3e1a95a2c94c7a55a
+index 014367b490..1e4250643b 100644
+--- a/014367b4901d2f1b3abbc5aaa71b66851c500bcb
++++ b/1e4250643b8ff1b590334cf3e1a95a2c94c7a55a
+@@ -1,3 +1,3 @@
+ protected PyAssignmentStatement createDeclaration(Project project, String assignmentText) {
+-    return PythonLanguage.getInstance().getElementGenerator().createFromText(project, PyAssignmentStatement.class, assignmentText);
++    return PyElementGenerator.getInstance(project).createFromText(PyAssignmentStatement.class, assignmentText);
+ }
+\ No newline at end of file

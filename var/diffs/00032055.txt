@@ -1,0 +1,20 @@
+diff --git a/9dd8db959159ed9a37cfc97d201a2b2602f68617 b/41a8aeb0219a860559a3336bed5169b4ead34f0e
+index 9dd8db9591..41a8aeb021 100644
+--- a/9dd8db959159ed9a37cfc97d201a2b2602f68617
++++ b/41a8aeb0219a860559a3336bed5169b4ead34f0e
+@@ -1,11 +1,10 @@
+ @Override
+ public void process(Node externs, Node root) {
+     if (!root.hasChildren() || (root.hasOneChild() && !root.getFirstChild().hasChildren())) {
+         unhoistExternsToCode(externs, root);
+         return;
+     }
+-    NodeTraversal.traverseEs6(compiler, root, new RemoveNonDeclarations(compiler));
+-    NodeTraversal.traverseEs6(compiler, root, new PropagateConstJsdoc());
+-    SimplifyDeclarations simplify = new SimplifyDeclarations(compiler);
+-    NodeTraversal.traverseEs6(compiler, root, simplify);
++    for (Node script = root.getFirstChild(); script != null; script = script.getNext()) {
++        processFile(script);
++    }
+ }
+\ No newline at end of file

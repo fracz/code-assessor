@@ -1,0 +1,25 @@
+diff --git a/4ad90a8d9feb2893b7b7652cd97a5a1d490b0083 b/5b409cea17ed5b5d6777af4c9f2bed16ffebee69
+index 4ad90a8d9f..5b409cea17 100644
+--- a/4ad90a8d9feb2893b7b7652cd97a5a1d490b0083
++++ b/5b409cea17ed5b5d6777af4c9f2bed16ffebee69
+@@ -1,15 +1,9 @@
+ @Override
+ public void draw(@NonNull Canvas canvas) {
+-    if (composition == null) {
++    if (compositionLayer == null) {
+         return;
+     }
+-    // TODO: is this save necessary?
+-    int saveCount = canvas.save();
+-    canvas.clipRect(0, 0, getIntrinsicWidth(), getIntrinsicHeight());
+-    for (AnimatableLayer layer : layers) {
+-        if (layer.isVisible()) {
+-            layer.draw(canvas);
+-        }
+-    }
+-    canvas.restoreToCount(saveCount);
++    matrix.reset();
++    matrix.preScale(scale, scale);
++    compositionLayer.draw(canvas, matrix, alpha);
+ }
+\ No newline at end of file

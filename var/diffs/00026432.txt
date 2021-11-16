@@ -1,0 +1,17 @@
+diff --git a/2d3ab6d570edeef59412eab97ec0af65fecebdc2 b/2e8f874c40db3aaaf044612a80e569a035b2504b
+index 2d3ab6d570..2e8f874c40 100644
+--- a/2d3ab6d570edeef59412eab97ec0af65fecebdc2
++++ b/2e8f874c40db3aaaf044612a80e569a035b2504b
+@@ -1,9 +1,9 @@
+ /**
+  * {@inheritDoc}
+  */
+ @Override
+ public void setNetworkTimeout(Executor executor, int milliseconds) throws SQLException {
+     delegate.setNetworkTimeout(executor, milliseconds);
+-    poolEntry.setNetworkTimeout(milliseconds);
+-    isConnectionStateDirty = true;
++    networkTimeout = milliseconds;
++    dirtyBits |= 0b10000;
+ }
+\ No newline at end of file

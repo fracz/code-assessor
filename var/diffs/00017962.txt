@@ -1,0 +1,25 @@
+diff --git a/c53262c806b4e5780545cce5a84627f4c2bbb5e6 b/f3f71b7a5c7f72337b5c9cd3b379e96401cda385
+index c53262c806..f3f71b7a5c 100644
+--- a/c53262c806b4e5780545cce5a84627f4c2bbb5e6
++++ b/f3f71b7a5c7f72337b5c9cd3b379e96401cda385
+@@ -1,15 +1,15 @@
+-public static EurekaHttpClientFactory createFactory(final EurekaHttpClientFactory delegateFactory) {
++public static TransportClientFactory createFactory(final TransportClientFactory delegateFactory) {
+     final DnsServiceImpl dnsService = new DnsServiceImpl();
+-    return new EurekaHttpClientFactory() {
++    return new TransportClientFactory() {
+
+         @Override
+-        public EurekaHttpClient create(String... serviceUrls) {
+-            return new RedirectingEurekaHttpClient(serviceUrls[0], delegateFactory, dnsService);
++        public EurekaHttpClient newClient(EurekaEndpoint endpoint) {
++            return new RedirectingEurekaHttpClient(endpoint.getServiceUrl(), delegateFactory, dnsService);
+         }
+
+         @Override
+         public void shutdown() {
+             delegateFactory.shutdown();
+         }
+     };
+ }
+\ No newline at end of file

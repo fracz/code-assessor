@@ -1,0 +1,14 @@
+diff --git a/5ae9d5c7224f82e035ee73f41b0bf80dde9454a4 b/5556c4e225e4746f35f761f45664ce56db3bbace
+index 5ae9d5c722..5556c4e225 100644
+--- a/5ae9d5c7224f82e035ee73f41b0bf80dde9454a4
++++ b/5556c4e225e4746f35f761f45664ce56db3bbace
+@@ -1,7 +1,7 @@
+ @JRubyMethod(name = "replace_with_node", visibility = Visibility.PROTECTED)
+ public IRubyObject replace(ThreadContext context, IRubyObject newNode) {
+     Node otherNode = getNodeFromXmlNode(context, newNode);
+-    node.getParentNode().replaceChild(otherNode, node);
++    node().getParentNode().replaceChild(otherNode, node());
+     ((XmlNode) newNode).relink_namespace(context);
+     return this;
+ }
+\ No newline at end of file

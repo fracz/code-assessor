@@ -1,0 +1,19 @@
+diff --git a/9f8c2cebdcfe7f17c8e25abf4de5cf18bee71d44 b/a7a5922b4c34bcfad844c4809cb681411f81a4f7
+index 9f8c2cebdc..a7a5922b4c 100644
+--- a/9f8c2cebdcfe7f17c8e25abf4de5cf18bee71d44
++++ b/a7a5922b4c34bcfad844c4809cb681411f81a4f7
+@@ -1,8 +1,9 @@
+ /**
+  * Returns the matrix inverse.
+  */
+-public double[][] inverse() {
+-    double[][] I = Math.eye(L.length);
+-    solve(I);
+-    return I;
++public DenseMatrix inverse() {
++    int n = L.length;
++    DenseMatrix inv = ColumnMajorMatrix.eye(n);
++    solve(inv);
++    return inv;
+ }
+\ No newline at end of file

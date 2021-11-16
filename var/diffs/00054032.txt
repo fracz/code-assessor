@@ -1,0 +1,17 @@
+diff --git a/87f53e458850732df2399393f4b3f552d1976d8a b/1176b5a6a6fc96bfb8dbb5518fee21186b4ecedc
+index 87f53e4588..1176b5a6a6 100644
+--- a/87f53e458850732df2399393f4b3f552d1976d8a
++++ b/1176b5a6a6fc96bfb8dbb5518fee21186b4ecedc
+@@ -1,10 +1,10 @@
+ /**
+  * Add sharding state.
+  *
+  * @param shardingDataSource sharding datasource
+  */
+ public void addShardingState(final ShardingDataSource shardingDataSource) {
+-    String instanceNodePath = "/" + name + InstanceStateNode.ROOT + new InstanceStateNode().getInstanceId();
++    String instanceNodePath = instanceStateNode.getFullPath();
+     persistState(instanceNodePath);
+     addShardingInstancesStateChangeListener(instanceNodePath, shardingDataSource);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/cc108776683c44711bce3b2752650947eb4f02ce b/0b6160ecb7600539084a4bd1b60a6ab1be099461
+index cc10877668..0b6160ecb7 100644
+--- a/cc108776683c44711bce3b2752650947eb4f02ce
++++ b/0b6160ecb7600539084a4bd1b60a6ab1be099461
+@@ -1,4 +1,7 @@
+ @Test
+ public void shouldBuildStaticUnloggedBatchStatementGivenNoKeyspaceAndWithFieldsMapper() {
+-    executeBatchStatementAndAssert(unLoggedBatch(insertInto("temperature").values(with(fields("weather_station_id", "event_time", "temperature")))), "INSERT INTO temperature(weather_station_id,event_time,temperature) VALUES ('1'," + NOW.getTime() + ",'0°C');");
++    BatchCQLStatementTupleMapper mapper = unLoggedBatch(simpleQuery(QUERY_STRING).with(fields("weather_station_id", "event_time", "temperature")));
++    List<Statement> stmts = mapper.map(Maps.newHashMap(), cassandraCQLUnit.session, mockTuple);
++    Assert.assertEquals(1, stmts.size());
++    makeAssertBatchStatement(QUERY_STRING, stmts.get(0));
+ }
+\ No newline at end of file

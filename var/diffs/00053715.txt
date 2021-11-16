@@ -1,0 +1,10 @@
+diff --git a/945b368eac067421f0fba4b3ff3ec6e8acbcc467 b/f25439bbfcf097ec66ffa9bdd38a991272773e2a
+index 945b368eac..f25439bbfc 100644
+--- a/945b368eac067421f0fba4b3ff3ec6e8acbcc467
++++ b/f25439bbfcf097ec66ffa9bdd38a991272773e2a
+@@ -1,3 +1,3 @@
+ private boolean isAccurateSharding(final ShardingValue shardingValue, final ShardingStrategy shardingStrategy) {
+-    return shardingStrategy.getShardingAlgorithm() instanceof SingleKeyShardingAlgorithm && ShardingValueType.RANGE != shardingValue.getType();
++    return shardingStrategy.getShardingAlgorithm() instanceof SingleKeyShardingAlgorithm && !(shardingValue instanceof RangeShardingValue);
+ }
+\ No newline at end of file

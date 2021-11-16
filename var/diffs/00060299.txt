@@ -1,0 +1,25 @@
+diff --git a/fcdafd6aa6da2ac409eddb16584dc5043f6bff48 b/e96ac86b207fe8336f2bc33532c89ca7de93ae2b
+index fcdafd6aa6..e96ac86b20 100644
+--- a/fcdafd6aa6da2ac409eddb16584dc5043f6bff48
++++ b/e96ac86b207fe8336f2bc33532c89ca7de93ae2b
+@@ -1,9 +1,15 @@
+ @Override
+ protected void onDestroy() {
+-    modalController.destroy();
+-    layout.destroy();
+-    super.onDestroy();
++    if (modalController != null) {
++        modalController.destroy();
++    }
++    if (layout != null) {
++        layout.destroy();
++    }
+     if (currentActivity == null || currentActivity.isFinishing()) {
+-        getNavigationReactInstance().onHostDestroy();
++        if (NavigationApplication.instance.isReactContextInitialized()) {
++            NavigationApplication.instance.getReactGateway().onDestroyApp();
++        }
+     }
++    super.onDestroy();
+ }
+\ No newline at end of file

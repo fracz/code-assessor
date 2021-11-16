@@ -1,0 +1,19 @@
+diff --git a/a3edd9eece89390d29abef13d8fc777969377c6c b/d6770432cd64165bd7c5c5b63c08da6b6f4a6016
+index a3edd9eece..d6770432cd 100644
+--- a/a3edd9eece89390d29abef13d8fc777969377c6c
++++ b/d6770432cd64165bd7c5c5b63c08da6b6f4a6016
+@@ -1,12 +1,12 @@
+ public static HighlightInfo checkTypeParameterInstantiation(PsiNewExpression expression) {
+     PsiJavaCodeReferenceElement classReference = expression.getClassOrAnonymousClassReference();
+     if (classReference == null)
+         return null;
+     final JavaResolveResult result = classReference.advancedResolve(false);
+     final PsiElement element = result.getElement();
+     if (element instanceof PsiTypeParameter) {
+         String description = JavaErrorMessages.message("generics.type.parameter.cannot.be.instantiated", HighlightUtil.formatClass((PsiTypeParameter) element));
+-        return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, classReference, description);
++        return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(classReference).descriptionAndTooltip(description).create();
+     }
+     return null;
+ }
+\ No newline at end of file

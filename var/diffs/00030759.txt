@@ -1,0 +1,12 @@
+diff --git a/366a00e2a9d7a3177d56f2ff80449c6f0bd850ef b/358398de27772d0345d52c67dcd07f018cbedb4e
+index 366a00e2a9..358398de27 100644
+--- a/366a00e2a9d7a3177d56f2ff80449c6f0bd850ef
++++ b/358398de27772d0345d52c67dcd07f018cbedb4e
+@@ -1,5 +1,5 @@
+ @Test(expected = IllegalArgumentException.class)
+ public void testFieldCannotBeEmptyAndWeighted() {
+     SimpleQueryStringBuilder qb = createTestQueryBuilder();
+-    qb.field("", 1.0f);
++    qb.field("", AbstractQueryBuilder.DEFAULT_BOOST);
+ }
+\ No newline at end of file

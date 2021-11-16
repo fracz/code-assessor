@@ -1,0 +1,19 @@
+diff --git a/236dbe00e0ba27b6b95653dba657f830da96bd9e b/087f4fe0a1fc1044b41d20b932fb31e16529f728
+index 236dbe00e0..087f4fe0a1 100644
+--- a/236dbe00e0ba27b6b95653dba657f830da96bd9e
++++ b/087f4fe0a1fc1044b41d20b932fb31e16529f728
+@@ -1,12 +1,6 @@
+ @Override
+ public void actionPerformed(AnActionEvent e) {
+     final Project project = e.getData(CommonDataKeys.PROJECT);
+     assert project != null;
+-    selectModule(project, new Consumer<Module>() {
+-
+-        @Override
+-        public void consume(final Module module) {
+-            doRunShell(module);
+-        }
+-    });
++    ModuleChooserUtil.selectModule(project, APPLICABLE_MODULE, TITLE_PROVIDER, RUNNER);
+ }
+\ No newline at end of file

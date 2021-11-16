@@ -1,0 +1,19 @@
+diff --git a/0b0f2cdedb038af27ed15859b5c7ae1b18989409 b/788cb18f22cc687ba705e8b94b6105e374b1dd0c
+index 0b0f2cdedb..788cb18f22 100644
+--- a/0b0f2cdedb038af27ed15859b5c7ae1b18989409
++++ b/788cb18f22cc687ba705e8b94b6105e374b1dd0c
+@@ -1,6 +1,10 @@
++@Nullable
+ private static String filter(XmlTag tag, CustomTemplateCallback callback) {
+-    if (XmlZenCodingTemplate.isTrueXml(callback)) {
+-        closeUnclosingTags(tag);
++    PsiElement context = callback.getContext();
++    for (ZenCodingFilter filter : ZenCodingFilter.EP_NAME.getExtensions()) {
++        if (filter.isMyContext(context)) {
++            return filter.toString(tag, context);
++        }
+     }
+-    return tag.getContainingFile().getText();
++    return new ZenCodingFilterImpl().toString(tag, context);
+ }
+\ No newline at end of file

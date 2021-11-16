@@ -1,0 +1,18 @@
+diff --git a/c5fe8fd513af3d9766f1a74703d8b41984cc73d5 b/28dd2553750aa28ea05005bc4dc25d7a3417c4d9
+index c5fe8fd513..28dd255375 100644
+--- a/c5fe8fd513af3d9766f1a74703d8b41984cc73d5
++++ b/28dd2553750aa28ea05005bc4dc25d7a3417c4d9
+@@ -1,9 +1,10 @@
+ public void visitMethod(@NotNull PsiMethod method) {
+     // note: no call to super
+     final PsiReferenceList throwList = method.getThrowsList();
+     final PsiJavaCodeReferenceElement[] thrownExceptions = throwList.getReferenceElements();
+-    if (thrownExceptions.length <= getLimit()) {
++    final int exceptionCount = thrownExceptions.length;
++    if (exceptionCount <= getLimit()) {
+         return;
+     }
+-    registerMethodError(method);
++    registerMethodError(method, Integer.valueOf(exceptionCount));
+ }
+\ No newline at end of file

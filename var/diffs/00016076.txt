@@ -1,0 +1,16 @@
+diff --git a/905fec0e319f73642d2b561d4003d1110704b1d1 b/b230e24ed15b7c82716017c206f9d87a9d161760
+index 905fec0e31..b230e24ed1 100644
+--- a/905fec0e319f73642d2b561d4003d1110704b1d1
++++ b/b230e24ed15b7c82716017c206f9d87a9d161760
+@@ -1,5 +1,7 @@
+ @Override
+-public JetIntentionAction<JetFunction> createAction(DiagnosticWithPsiElement diagnostic) {
+-    assert diagnostic.getPsiElement() instanceof JetFunction;
+-    return new RemoveFunctionBodyFix((JetFunction) diagnostic.getPsiElement());
++public JetIntentionAction<JetFunction> createAction(Diagnostic diagnostic) {
++    JetFunction function = QuickFixUtil.getParentElementOfType(diagnostic, JetFunction.class);
++    if (function == null)
++        return null;
++    return new RemoveFunctionBodyFix(function);
+ }
+\ No newline at end of file

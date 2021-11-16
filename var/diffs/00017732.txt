@@ -1,0 +1,20 @@
+diff --git a/4200da797b2fbb4dac4b3b7752222d2a86186f33 b/b712392fae9a64ad68819c1db40cb87173731f51
+index 4200da797b..b712392fae 100644
+--- a/4200da797b2fbb4dac4b3b7752222d2a86186f33
++++ b/b712392fae9a64ad68819c1db40cb87173731f51
+@@ -1,10 +1,11 @@
+ @NotNull
+ private JsObjectLiteral translateClassDeclarations() {
++    TranslationContext classDeclarationContext = getClassDeclarationContext();
+     List<JsPropertyInitializer> propertyList = new ArrayList<JsPropertyInitializer>();
+     if (!isTrait()) {
+-        propertyList.add(Translation.generateClassInitializerMethod(classDeclaration, context()));
++        propertyList.add(Translation.generateClassInitializerMethod(classDeclaration, classDeclarationContext));
+     }
+-    propertyList.addAll(translatePropertiesAsConstructorParameters());
+-    propertyList.addAll(declarationBodyVisitor.traverseClass(classDeclaration, context()));
++    propertyList.addAll(translatePropertiesAsConstructorParameters(classDeclarationContext));
++    propertyList.addAll(declarationBodyVisitor.traverseClass(classDeclaration, classDeclarationContext));
+     return JsAstUtils.newObjectLiteral(propertyList);
+ }
+\ No newline at end of file

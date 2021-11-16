@@ -1,0 +1,22 @@
+diff --git a/2c9ac4388d4f1e242a9cdf6263ecb1636d16681b b/ff47bc7da7d1f15e5d9447ffdcaee7b10d9c1d76
+index 2c9ac4388d..ff47bc7da7 100644
+--- a/2c9ac4388d4f1e242a9cdf6263ecb1636d16681b
++++ b/ff47bc7da7d1f15e5d9447ffdcaee7b10d9c1d76
+@@ -1,14 +1,8 @@
+-public static void invokeLaterIfProjectAlive(@NotNull final Project project, @NotNull final Runnable runnable) {
++public static void invokeLaterIfProjectAlive(@NotNull Project project, @NotNull Runnable runnable) {
+     final Application application = ApplicationManager.getApplication();
+     if (application.isDispatchThread()) {
+         runnable.run();
+     } else {
+-        application.invokeLater(runnable, new Condition() {
+-
+-            @Override
+-            public boolean value(Object o) {
+-                return !project.isOpen() || project.isDisposed();
+-            }
+-        });
++        application.invokeLater(runnable, o -> !project.isOpen() || project.isDisposed());
+     }
+ }
+\ No newline at end of file

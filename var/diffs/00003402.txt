@@ -1,0 +1,19 @@
+diff --git a/8ef223c5d07c5907a8b4f4cc46be064b701fc96f b/7c3c79e53d850537f322071e2e30be115f1b0977
+index 8ef223c5d0..7c3c79e53d 100644
+--- a/8ef223c5d07c5907a8b4f4cc46be064b701fc96f
++++ b/7c3c79e53d850537f322071e2e30be115f1b0977
+@@ -1,12 +1,12 @@
+ @Nullable
+ private String toRelativePath(String absPath) {
+     absPath = FileUtil.toSystemIndependentName(absPath);
+-    String moduleDirPath = new File(myContext.getModule().getModuleFilePath()).getParent();
++    String moduleDirPath = AndroidRootUtil.getModuleDirPath(myContext.getModule());
+     if (moduleDirPath != null) {
+         moduleDirPath = FileUtil.toSystemIndependentName(moduleDirPath);
+         // if (VfsUtil.isAncestor(new File(moduleDirPath), new File(absPath), true)) {
+         return FileUtil.getRelativePath(moduleDirPath, absPath, '/');
+     // }
+     }
+     return null;
+ }
+\ No newline at end of file

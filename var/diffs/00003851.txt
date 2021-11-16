@@ -1,0 +1,17 @@
+diff --git a/553aadc728608c0be272a4ad5405b23fe69cd8fa b/509d29dca1c189c75fbad74a2af7f2aaf7d28588
+index 553aadc728..509d29dca1 100644
+--- a/553aadc728608c0be272a4ad5405b23fe69cd8fa
++++ b/509d29dca1c189c75fbad74a2af7f2aaf7d28588
+@@ -1,9 +1,9 @@
+ public void testWrappedStaticMethod() {
+     final PyFileImpl file = (PyFileImpl) getTestFile();
+     final PyClass pyClass = file.getTopLevelClasses().get(0);
+     final PyFunction[] methods = pyClass.getMethods();
+     assertEquals(1, methods.length);
+-    final Set<PyFunction.Flag> flags = PyUtil.detectDecorationsAndWrappersOf(methods[0]);
+-    assertEquals(EnumSet.of(PyFunction.Flag.STATICMETHOD), flags);
++    final PyFunction.Modifier modifier = methods[0].getModifier();
++    assertEquals(PyFunction.Modifier.STATICMETHOD, modifier);
+     assertNotParsed(file);
+ }
+\ No newline at end of file

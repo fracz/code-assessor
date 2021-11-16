@@ -1,0 +1,19 @@
+diff --git a/db6f9d98a28c477bce916cd75ac8db0bdbbb3d93 b/be487b05b980646701f0025f0c1499724bd7f8a9
+index db6f9d98a2..be487b05b9 100644
+--- a/db6f9d98a28c477bce916cd75ac8db0bdbbb3d93
++++ b/be487b05b980646701f0025f0c1499724bd7f8a9
+@@ -1,11 +1,11 @@
+ @Test
+ public void assertGetObjectForColumnIndexWithMap() throws SQLException {
+     if (DatabaseType.H2 == AbstractDBUnitTest.CURRENT_DB_TYPE) {
+         try {
+-            actual.getObject("1", Collections.<String, Class<?>>emptyMap());
++            actual.getObject(1, Collections.<String, Class<?>>emptyMap());
+         } catch (final SQLException ignore) {
+         }
+     } else {
+-        assertThat(actual.getObject("uid", Collections.<String, Class<?>>emptyMap()).toString(), is("10"));
++        assertThat(actual.getObject(1, Collections.<String, Class<?>>emptyMap()).toString(), is("10"));
+     }
+ }
+\ No newline at end of file

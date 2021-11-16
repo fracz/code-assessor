@@ -1,0 +1,16 @@
+diff --git a/b9447fa250a4de84fd5bd9bea150e4f9d25bea38 b/42ea54b861adfa231bb68253447edcc2edb8cb7b
+index b9447fa250..42ea54b861 100644
+--- a/b9447fa250a4de84fd5bd9bea150e4f9d25bea38
++++ b/42ea54b861adfa231bb68253447edcc2edb8cb7b
+@@ -1,7 +1,8 @@
+-void createHandles() {
+-    checkCudnn(cudnnCreate(this));
++@Override
++protected void createHandles() {
++    super.createHandles();
+     checkCudnn(cudnnCreateTensorDescriptor(srcTensorDesc));
+     checkCudnn(cudnnCreateTensorDescriptor(dstTensorDesc));
+     checkCudnn(cudnnCreateTensorDescriptor(deltaTensorDesc));
+     checkCudnn(cudnnCreateLRNDescriptor(lrnDesc));
+ }
+\ No newline at end of file

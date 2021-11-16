@@ -1,0 +1,15 @@
+diff --git a/95b42e95fff503665d40116eea1d8826368190e5 b/8f58b168d20a30b6ab69d673d958310ed07b0213
+index 95b42e95ff..8f58b168d2 100644
+--- a/95b42e95fff503665d40116eea1d8826368190e5
++++ b/8f58b168d20a30b6ab69d673d958310ed07b0213
+@@ -1,7 +1,6 @@
+-protected void parseWhere(SQLSelectQueryBlock queryBlock) {
++protected void parseWhere(final SQLSelectQueryBlock queryBlock) {
+     if (getLexer().equalToken(Token.WHERE)) {
+         getLexer().nextToken();
+-        SQLExpr where = getExprParser().expr();
+-        queryBlock.setWhere(where);
++        queryBlock.setWhere(exprParser.expr());
+     }
+ }
+\ No newline at end of file

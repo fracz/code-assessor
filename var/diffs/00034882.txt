@@ -1,0 +1,17 @@
+diff --git a/17078d0889870151eda28ed69dfba0ee83f8d0d9 b/cf612389a6bf043c6b05087eaaf19e6df54b74ca
+index 17078d0889..cf612389a6 100644
+--- a/17078d0889870151eda28ed69dfba0ee83f8d0d9
++++ b/cf612389a6bf043c6b05087eaaf19e6df54b74ca
+@@ -1,10 +1,10 @@
+ private boolean tryToPerformRefresh() {
+     if (mStatus != PTR_STATUS_PREPARE) {
+         return false;
+     }
+-    if ((mCurrentPos >= mHeaderHeight && mAutoScrollRefreshTag > 0) || mCurrentPos >= mOffsetToRefresh) {
++    if ((mPtrIndicator.isOverHeaderHeight() && mAutoScrollRefreshTag > 0) || mPtrIndicator.isOverRefreshHeight()) {
+         mStatus = PTR_STATUS_LOADING;
+         performRefresh();
+     }
+     return false;
+ }
+\ No newline at end of file

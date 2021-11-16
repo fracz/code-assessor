@@ -1,0 +1,26 @@
+diff --git a/041ffd4bf8a741f7480bfdf09a71d2cbd898a6df b/a7271483e14280978b402257104e4e35db14fff0
+index 041ffd4bf8..a7271483e1 100644
+--- a/041ffd4bf8a741f7480bfdf09a71d2cbd898a6df
++++ b/a7271483e14280978b402257104e4e35db14fff0
+@@ -1,18 +1,14 @@
+-private float getHeaderTranslation() {
++protected float getHeaderTranslation() {
+     if (mStatusBar.getBarState() == StatusBarState.KEYGUARD) {
+         return 0;
+     }
+     if (mNotificationStackScroller.getNotGoneChildCount() == 0) {
+-        if (mExpandedHeight / HEADER_RUBBERBAND_FACTOR >= mQsMinExpansionHeight) {
+-            return 0;
+-        } else {
+-            return mExpandedHeight / HEADER_RUBBERBAND_FACTOR - mQsMinExpansionHeight;
+-        }
++        return Math.min(0, mExpandedHeight / HEADER_RUBBERBAND_FACTOR - mQsMinExpansionHeight);
+     }
+     float stackTranslation = mNotificationStackScroller.getStackTranslation();
+     float translation = stackTranslation / HEADER_RUBBERBAND_FACTOR;
+     if (mHeadsUpManager.hasPinnedHeadsUp() || mIsExpansionFromHeadsUp) {
+         translation = mNotificationStackScroller.getTopPadding() + stackTranslation - mQsMinExpansionHeight;
+     }
+     return Math.min(0, translation);
+ }
+\ No newline at end of file

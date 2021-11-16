@@ -1,0 +1,28 @@
+diff --git a/9b858d6b12781c6b9c465fb77ded3f7d1e6f376f b/4d04c575b56e7eda6c8c66a4e2a7a56b362892f1
+index 9b858d6b12..4d04c575b5 100644
+--- a/9b858d6b12781c6b9c465fb77ded3f7d1e6f376f
++++ b/4d04c575b56e7eda6c8c66a4e2a7a56b362892f1
+@@ -1,19 +1,19 @@
+ @Override
+-public Map<ObjectPropertyDescriptor, Object> evaluate() throws InvocationTargetException, InterruptedException {
++public Map<ObjectPropertyDescriptor, Object> evaluate(DBRProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+     try {
+         Map<ObjectPropertyDescriptor, Object> result = new IdentityHashMap<>();
+         for (ObjectPropertyDescriptor prop : obtainLazyProperties()) {
+-            if (getProgressMonitor().isCanceled()) {
++            if (monitor.isCanceled()) {
+                 break;
+             }
+-            result.put(prop, prop.readValue(getEditableValue(), getProgressMonitor()));
++            result.put(prop, prop.readValue(getEditableValue(), monitor));
+         }
+         return result;
+     } catch (Throwable ex) {
+         if (ex instanceof InvocationTargetException) {
+             throw (InvocationTargetException) ex;
+         } else {
+             throw new InvocationTargetException(ex);
+         }
+     }
+ }
+\ No newline at end of file

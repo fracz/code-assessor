@@ -1,0 +1,18 @@
+diff --git a/d2f6c82edf37c6624a975cd4d88a2ba3af40ec51 b/9972b996ed257585a9b41b3fb0c5ca9c7e0cd73d
+index d2f6c82edf..9972b996ed 100644
+--- a/d2f6c82edf37c6624a975cd4d88a2ba3af40ec51
++++ b/9972b996ed257585a9b41b3fb0c5ca9c7e0cd73d
+@@ -1,11 +1,9 @@
+ @Override
+ public boolean onCreateOptionsMenu(Menu menu) {
+-    getMenuInflater().inflate(R.menu.menu_main, menu);
+-    inboxMenuItem = menu.findItem(R.id.action_inbox);
+-    inboxMenuItem.setActionView(R.layout.menu_item_view);
++    super.onCreateOptionsMenu(menu);
+     if (pendingIntroAnimation) {
+         pendingIntroAnimation = false;
+         startIntroAnimation();
+     }
+     return true;
+ }
+\ No newline at end of file

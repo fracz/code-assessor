@@ -1,0 +1,21 @@
+diff --git a/4d525b57720723968da616b90c6af7d40d2e1749 b/23d12e2658ff93c80364ef623534fad2dd5a4436
+index 4d525b5772..23d12e2658 100644
+--- a/4d525b57720723968da616b90c6af7d40d2e1749
++++ b/23d12e2658ff93c80364ef623534fad2dd5a4436
+@@ -1,9 +1,13 @@
+ private void tryResolveAsReference() {
+     if (alreadyResolved())
+         return;
+     if (!context().isDeclared(referencedDescriptor))
+         return;
+     JsName referencedName = context().getNameForDescriptor(referencedDescriptor);
+-    JsExpression implicitReceiver = getImplicitReceiver(referencedDescriptor, context());
+-    generateReference(referencedName, implicitReceiver);
++    JsExpression implicitReceiver = getImplicitReceiver(context(), referencedDescriptor);
++    if (shouldQualify && implicitReceiver != null) {
++        result = AstUtil.qualified(referencedName, implicitReceiver);
++    } else {
++        result = referencedName.makeRef();
++    }
+ }
+\ No newline at end of file

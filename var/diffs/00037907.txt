@@ -1,0 +1,20 @@
+diff --git a/b7ce9842ee5850f15777dae0f716e8eb22fb964b b/28d6a1e7672d43705d302d395a2afae05e4d11e3
+index b7ce9842ee..28d6a1e767 100644
+--- a/b7ce9842ee5850f15777dae0f716e8eb22fb964b
++++ b/28d6a1e7672d43705d302d395a2afae05e4d11e3
+@@ -1,7 +1,9 @@
+ protected Response getIndexedObjects(String indexName, String key, String value, Renderer renderer) {
+-    IndexType indexType = getIndexType(indexName);
+-    if (indexType == null) {
+-        return Response.status(Status.BAD_REQUEST).build();
+-    }
+-    return indexType.get(this, indexName, key, value, renderer);
++    throw new UnsupportedOperationException("use getIndexedNodes() or getIndexedRelelationships() instead");
++// IndexType indexType = getIndexType( indexName );
++// if ( indexType == null )
++// {
++// return Response.status( Status.BAD_REQUEST ).build();
++// }
++// return indexType.get( this, indexName, key, value, renderer );
+ }
+\ No newline at end of file

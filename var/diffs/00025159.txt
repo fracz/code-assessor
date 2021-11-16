@@ -1,0 +1,36 @@
+diff --git a/4a43a1f0b7c682ddef487f1e92990e4f94147ea9 b/47114f96c7d1bdc257397a8caa0d378f3b3bf914
+index 4a43a1f0b7..47114f96c7 100644
+--- a/4a43a1f0b7c682ddef487f1e92990e4f94147ea9
++++ b/47114f96c7d1bdc257397a8caa0d378f3b3bf914
+@@ -1,23 +1,25 @@
+ /**
+  * Commit the states of all its tasks
+  */
+ private void commitAll() {
+-    final RuntimeException e = performOnStreamTasks(new StreamTaskAction() {
++    final TaskManager.TaskAction commitAction = new TaskManager.TaskAction() {
+
+         @Override
+         public String name() {
+             return "commit";
+         }
+
+         @Override
+-        public void apply(final StreamTask task) {
++        public void apply(final Task task) {
+             commitOne(task);
+         }
+-    });
++    };
++    final RuntimeException e = taskManager.performOnActiveTasks(commitAction);
+     if (e != null) {
+         throw e;
+     }
+-    for (final StandbyTask task : standbyTasks.values()) {
+-        commitOne(task);
++    final RuntimeException standbyTaskCommitException = taskManager.performOnStandbyTasks(commitAction);
++    if (standbyTaskCommitException != null) {
++        throw standbyTaskCommitException;
+     }
+ }
+\ No newline at end of file

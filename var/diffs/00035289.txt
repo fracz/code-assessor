@@ -1,0 +1,15 @@
+diff --git a/f30556e7206162eb41ea6b0712f23eb6a2db8a0e b/446acfb796af0be24106848b6d4c13b3d9b7d557
+index f30556e720..446acfb796 100644
+--- a/f30556e7206162eb41ea6b0712f23eb6a2db8a0e
++++ b/446acfb796af0be24106848b6d4c13b3d9b7d557
+@@ -1,5 +1,7 @@
+ public float getMaxWidth() {
+-    float width = 0;
+-    for (int i = 0, n = children.size(); i < n; i++) width = Math.max(width, LibgdxToolkit.instance.getMaxWidth(children.get(i)));
++    if (children.isEmpty())
++        return 0;
++    float width = Float.MAX_VALUE;
++    for (int i = 0, n = children.size(); i < n; i++) width = Math.min(width, LibgdxToolkit.instance.getMaxWidth(children.get(i)));
+     return width * scaleX;
+ }
+\ No newline at end of file

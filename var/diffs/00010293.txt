@@ -1,0 +1,12 @@
+diff --git a/c926f0c67e9765de350473522bea3b84dfd2e7ac b/17a544b504650617786ed0ccd6fcdad940f1f407
+index c926f0c67e..17a544b504 100644
+--- a/c926f0c67e9765de350473522bea3b84dfd2e7ac
++++ b/17a544b504650617786ed0ccd6fcdad940f1f407
+@@ -1,4 +1,5 @@
+ @Override
+ public void visitJSExpression(JSExpression expression) {
+-    myTokens.add(new AnonymToken(EXPRESSION_TYPE, getTextOffset(expression)));
++    int offset = getTextOffset(expression);
++    myTokens.add(new AnonymToken(EXPRESSION_TYPE, offset));
+ }
+\ No newline at end of file

@@ -1,0 +1,25 @@
+diff --git a/8ba24586c98b0d11b7a02aee0353caf696bf567c b/a868b90b6f71628ba06d28bd0cc909a53d5d6a29
+index 8ba24586c9..a868b90b6f 100644
+--- a/8ba24586c98b0d11b7a02aee0353caf696bf567c
++++ b/a868b90b6f71628ba06d28bd0cc909a53d5d6a29
+@@ -1,15 +1,8 @@
+ private void showWarningDialog(final RefactoringSession session, ChangeCreationResult changeCreationResult) {
+     List<RefactoringStatusEntry> entries = changeCreationResult.getStatus().getEntries();
+-    dialogFactory.createConfirmDialog(locale.warningOperationTitle(), entries.isEmpty() ? locale.warningOperationContent() : entries.get(0).getMessage(), locale.renameRename(), locale.buttonCancel(), new ConfirmCallback() {
+-
+-        @Override
+-        public void accepted() {
+-            applyRefactoring(session);
+-        }
+-    }, new CancelCallback() {
+-
+-        @Override
+-        public void cancelled() {
+-        }
++    ConfirmCallback confirmCallback = () -> clientServerEventService.sendFileTrackingSuspendEvent().then(success -> {
++        applyRefactoring(session);
++    });
++    dialogFactory.createConfirmDialog(locale.warningOperationTitle(), entries.isEmpty() ? locale.warningOperationContent() : entries.get(0).getMessage(), locale.renameRename(), locale.buttonCancel(), confirmCallback, () -> {
+     }).show();
+ }
+\ No newline at end of file

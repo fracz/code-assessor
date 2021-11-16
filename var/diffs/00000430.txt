@@ -1,0 +1,33 @@
+diff --git a/25c969414ee640fbb33eee5f2506364f4af864f5 b/27254805107bb80ae1a65e70b721547fe12a254a
+index 25c969414e..2725480510 100644
+--- a/25c969414ee640fbb33eee5f2506364f4af864f5
++++ b/27254805107bb80ae1a65e70b721547fe12a254a
+@@ -1,23 +1,17 @@
+ /**
+  * Deletes a completed key-value store.
+  *
+  * @param uri {@link TachyonURI} to the store
+  * @throws IOException if non-Tachyon error occurs
+- * @throws IsNotKeyValueStoreException if the uri exists but is not a key-value store
++ * @throws InvalidPathException if the uri exists but is not a key-value store
+  * @throws FileDoesNotExistException if the uri does not exist
+  * @throws TachyonException if other Tachyon error occurs
+  */
+-public synchronized void deleteStore(TachyonURI uri) throws IOException, IsNotKeyValueStoreException, FileDoesNotExistException, TachyonException {
+-    long fileId = mFileSystemMaster.getFileId(uri);
+-    if (fileId == IdUtils.INVALID_FILE_ID) {
+-        throw new FileDoesNotExistException(String.format("Failed to deleteStore: path %s does not exist", uri));
+-    }
+-    if (!mCompleteStoreToPartitions.containsKey(fileId)) {
+-        // TODO(cc): If it is an incomplete store, throw a better exception.
+-        throw new IsNotKeyValueStoreException(String.format("Failed to deleteStore: path %s is not a completed key-value store", uri));
+-    }
++public synchronized void deleteStore(TachyonURI uri) throws IOException, InvalidPathException, FileDoesNotExistException, TachyonException {
++    long fileId = getFileId(uri);
++    checkIsCompletePartition(fileId, uri);
+     mFileSystemMaster.deleteFile(uri, true);
+     deleteStoreInternal(fileId);
+     writeJournalEntry(newDeleteStoreEntry(fileId));
+     flushJournal();
+ }
+\ No newline at end of file

@@ -1,0 +1,10 @@
+diff --git a/243bdc8370aeb86b183222643b1e218ff480e7f6 b/b42a341640b3f17993a4cb6f6878c19333478220
+index 243bdc8370..b42a341640 100644
+--- a/243bdc8370aeb86b183222643b1e218ff480e7f6
++++ b/b42a341640b3f17993a4cb6f6878c19333478220
+@@ -1,3 +1,3 @@
+ public boolean isEnabled(SerializerFeature feature) {
+-    return SerializerFeature.isEnabled(this.features, feature);
++    return (this.features & feature.mask) != 0;
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/09d404d0baffb6f0e50e428a44f973542f553bed b/cfe495a473226f4c5da723da062298b013fb40b6
+index 09d404d0ba..cfe495a473 100644
+--- a/09d404d0baffb6f0e50e428a44f973542f553bed
++++ b/cfe495a473226f4c5da723da062298b013fb40b6
+@@ -1,10 +1,9 @@
+ /**
+  * Execute the DROP CLASS.
+  */
+ public Object execute(final Map<Object, Object> iArgs) {
+     if (className == null)
+         throw new OCommandExecutionException("Can't execute the command because it hasn't been parsed yet");
+-    database.getMetadata().getSchema().removeClass(className);
+-    database.getMetadata().getSchema().save();
++    ((OSchemaProxy) database.getMetadata().getSchema()).dropClassInternal(className);
+     return null;
+ }
+\ No newline at end of file

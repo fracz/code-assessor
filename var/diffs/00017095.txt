@@ -1,0 +1,15 @@
+diff --git a/a975b5359a859e60d87bdba4271167f0fa20429f b/0395c4bd29d40bee0212296ec28b67b559494f07
+index a975b5359a..0395c4bd29 100644
+--- a/a975b5359a859e60d87bdba4271167f0fa20429f
++++ b/0395c4bd29d40bee0212296ec28b67b559494f07
+@@ -1,4 +1,7 @@
+ @NotNull
+-public static String generateProgramToString(@NotNull JsProgram program, @Nullable List<String> rawStatements) {
+-    return (new CodeGenerator()).generateToString(program, rawStatements);
++public static String generateProgramToString(@NotNull JsProgram program) {
++    DefaultTextOutput output = new DefaultTextOutput(false);
++    JsSourceGenerationVisitor sourceGenerator = new JsSourceGenerationVisitor(output);
++    program.traverse(sourceGenerator, null);
++    return output.toString();
+ }
+\ No newline at end of file

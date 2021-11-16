@@ -1,0 +1,20 @@
+diff --git a/da479089cb687aecf8b0ca9691ebcd940b598c1b b/d1dbfc8ba71517ef4db49910e0b5877198cf84db
+index da479089cb..d1dbfc8ba7 100644
+--- a/da479089cb687aecf8b0ca9691ebcd940b598c1b
++++ b/d1dbfc8ba71517ef4db49910e0b5877198cf84db
+@@ -1,12 +1,13 @@
+ @Nullable
+ public AntBuildTargetBase findTarget(final String name) {
+-    final AntTarget antTarget = getAntProject().getTarget(name);
++    final AntProject project = getAntProject();
++    final AntTarget antTarget = (project == null) ? null : project.getTarget(name);
+     if (antTarget != null) {
+         for (final AntBuildTargetBase buildTarget : getTargetsList()) {
+             if (buildTarget.getAntTarget() == antTarget) {
+                 return buildTarget;
+             }
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/9ff05a1bb2815489be794c7ce034da8424e8cb6a b/a6160531905cf8265097c95eb84646c16788b151
+index 9ff05a1bb2..a616053190 100644
+--- a/9ff05a1bb2815489be794c7ce034da8424e8cb6a
++++ b/a6160531905cf8265097c95eb84646c16788b151
+@@ -1,8 +1,8 @@
+ private void checkRootObject(@NotNull JsonValueAdapter adapter, @NotNull JsonSchemaObject rootSchema) {
+     if (!adapter.isObject() && !adapter.isArray())
+         return;
+-    final MatchResult matchResult = JsonSchemaVariantsTreeBuilder.simplify(rootSchema, rootSchema);
++    final MatchResult matchResult = new JsonSchemaResolver(rootSchema, rootSchema).detailedResolve();
+     final BySchemaChecker checker = checkByMatchResult(adapter, matchResult, myWalker, rootSchema);
+     if (checker != null)
+         processCheckerResults(checker);
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/81fa4c51190cfcce807ce6009bdb84c6f2d9c4ac b/42d61cac3ea5ca973b1e0221c48692a9bd26262e
+index 81fa4c5119..42d61cac3e 100644
+--- a/81fa4c51190cfcce807ce6009bdb84c6f2d9c4ac
++++ b/42d61cac3ea5ca973b1e0221c48692a9bd26262e
+@@ -1,6 +1,6 @@
+ private void checkNoMoreRunning() throws InterruptedException {
+-    final long pre = numRuns.get();
++    Assert.assertEquals(0, scheduler.getActiveEntries());
++    final long pre = scheduler.updatesStarted();
+     Thread.sleep(100L);
+-    // since we don't synchronize here we might have an extra increment
+-    Assert.assertEquals(pre, numRuns.get(), 1);
++    Assert.assertEquals(pre, scheduler.updatesStarted());
+ }
+\ No newline at end of file

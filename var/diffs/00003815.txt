@@ -1,0 +1,14 @@
+diff --git a/7295db2e5cb5e2c8440b629f5c3e4ed3af46b88a b/693fd0a724d575384795ef392e27de1866dda7a0
+index 7295db2e5c..693fd0a724 100644
+--- a/7295db2e5cb5e2c8440b629f5c3e4ed3af46b88a
++++ b/693fd0a724d575384795ef392e27de1866dda7a0
+@@ -1,7 +1,6 @@
+ @Test
+ public void testDeletionWithoutParent() {
+     vcs.createFile("file", null, -1);
+-    VirtualFile f = new TestVirtualFile("file", null, -1);
+-    fireDeleted(f, null);
++    fireDeletion(new TestVirtualFile("file", null, -1));
+     assertFalse(vcs.hasEntry("file"));
+ }
+\ No newline at end of file

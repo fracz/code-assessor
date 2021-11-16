@@ -1,0 +1,12 @@
+diff --git a/d8403f31c1780c7f83a0e64dbba46da37c419df2 b/1641b58e6800732a966e9e496a76144ca3c00414
+index d8403f31c1..1641b58e68 100644
+--- a/d8403f31c1780c7f83a0e64dbba46da37c419df2
++++ b/1641b58e6800732a966e9e496a76144ca3c00414
+@@ -1,5 +1,5 @@
+ @Override
+ public void preparedStatement_setDouble(FilterChain chain, PreparedStatementProxy statement, int parameterIndex, double x) throws SQLException {
+     preparedStatement_setParameterBefore(statement, parameterIndex, Types.DOUBLE, x);
+-    super.preparedStatement_setDouble(chain, statement, parameterIndex, x);
++    chain.preparedStatement_setDouble(statement, parameterIndex, x);
+ }
+\ No newline at end of file

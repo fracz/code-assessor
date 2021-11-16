@@ -1,0 +1,25 @@
+diff --git a/0c083a0dd57d12b704b30721c299fbf4f43dc8f9 b/28ee1a0b2ff4154e457005286278c227f2cca12a
+index 0c083a0dd5..28ee1a0b2f 100644
+--- a/0c083a0dd57d12b704b30721c299fbf4f43dc8f9
++++ b/28ee1a0b2ff4154e457005286278c227f2cca12a
+@@ -1,16 +1,15 @@
+ /**
+  * Start a traversal at all edges in the graph.
+  *
+  * @return the extended FaunusPipeline
+  */
+ public FaunusPipeline E() {
+     this.state.checkLocked();
+     this.state.checkProperty();
+     this.state.set(Edge.class);
+-    if (this.state.incrStep() == 0)
+-        this.compiler.edgesMap(false);
+-    else
+-        this.compiler.edgesMap(true);
++    final Configuration configuration = new Configuration();
++    configuration.setBoolean(EdgesMap.PROCESS_VERTICES, this.state.incrStep() != 0);
++    this.compiler.addMap(EdgesMap.Map.class, NullWritable.class, FaunusVertex.class, configuration);
+     makeMapReduceString(EdgesMap.class);
+     return this;
+ }
+\ No newline at end of file

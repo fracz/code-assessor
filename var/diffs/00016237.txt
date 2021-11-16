@@ -1,0 +1,15 @@
+diff --git a/44b57509dd0768b457927a44cb54f1db5e5253d1 b/41437b55775bd0f7da508ef608ec9abd0876f734
+index 44b57509dd..41437b5577 100644
+--- a/44b57509dd0768b457927a44cb54f1db5e5253d1
++++ b/41437b55775bd0f7da508ef608ec9abd0876f734
+@@ -1,5 +1,6 @@
+-private JetType assignmentIsNotAnExpressionError(JetBinaryExpression expression, ExpressionTypingContext context) {
+-    facade.checkStatementType(expression, context.replaceExpectedType(NO_EXPECTED_TYPE).replaceContextDependency(INDEPENDENT));
++@NotNull
++private JetTypeInfo assignmentIsNotAnExpressionError(JetBinaryExpression expression, ExpressionTypingContext context) {
++    facade.checkStatementType(expression, context);
+     context.trace.report(ASSIGNMENT_IN_EXPRESSION_CONTEXT.on(expression));
+-    return null;
++    return JetTypeInfo.create(null, context.dataFlowInfo);
+ }
+\ No newline at end of file

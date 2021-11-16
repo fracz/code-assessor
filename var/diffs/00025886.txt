@@ -1,0 +1,20 @@
+diff --git a/d76549e287a3307d72f9083b9f32cdfb196a13b1 b/605a8bbb6316305f59a73804a8115db27235b5f1
+index d76549e287..605a8bbb63 100644
+--- a/d76549e287a3307d72f9083b9f32cdfb196a13b1
++++ b/605a8bbb6316305f59a73804a8115db27235b5f1
+@@ -1,12 +1,4 @@
+ public void removeNoteInterpreterSettingBinding(String user, String noteId) throws IOException {
+-    List<String> settingIds = interpreterBindings.remove(noteId);
+-    if (settingIds != null) {
+-        for (String settingId : settingIds) {
+-            InterpreterSetting setting = get(settingId);
+-            if (setting != null) {
+-                this.removeInterpretersForNote(setting, user, noteId);
+-            }
+-        }
+-    }
+-    saveToFile();
++    setInterpreterBinding(user, noteId, new ArrayList<String>());
++    interpreterBindings.remove(noteId);
+ }
+\ No newline at end of file

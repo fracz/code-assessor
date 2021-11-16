@@ -1,0 +1,24 @@
+diff --git a/ae58e888e1ea2eb89c2b411f830c251ae76d2a8f b/17c55ee1f5b03ad38ff6ce86d93b3590c6e6dfff
+index ae58e888e1..17c55ee1f5 100644
+--- a/ae58e888e1ea2eb89c2b411f830c251ae76d2a8f
++++ b/17c55ee1f5b03ad38ff6ce86d93b3590c6e6dfff
+@@ -1,15 +1,13 @@
+ private void processFields() {
+     if (!kotlin) {
+-        for (PsiFieldWrapper field : psiClass.getFields()) {
+-            if (field.isStatic() != staticMembers) {
+-                continue;
+-            }
+-            if (field.isPrivate()) {
++        for (PsiField field0 : psiClass.getPsiClass().getFields()) {
++            PsiFieldWrapper field = new PsiFieldWrapper(field0);
++            if (!includeMember(field)) {
+                 continue;
+             }
+             NamedMembers namedMembers = getNamedMembers(field.getName());
+             TypeSource type = new TypeSource("", field.getType());
+             namedMembers.addPropertyAccessor(new PropertyAccessorData(field, type, null));
+         }
+     }
+ }
+\ No newline at end of file

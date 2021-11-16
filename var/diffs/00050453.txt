@@ -1,0 +1,20 @@
+diff --git a/27c29aa353dfc99b5305348ecca0da2286fa11a4 b/d226cfc78860a43123f8062b2fef782b4df8a7ef
+index 27c29aa353..d226cfc788 100644
+--- a/27c29aa353dfc99b5305348ecca0da2286fa11a4
++++ b/d226cfc78860a43123f8062b2fef782b4df8a7ef
+@@ -1,13 +1,13 @@
+ @Override
+ public Object[] getPossibleValues(OracleTablePhysical object) {
+     final List<OracleTablespace> tablespaces = new ArrayList<>();
+     try {
+-        for (OracleTablespace ts : object.getDataSource().getTablespaces(VoidProgressMonitor.INSTANCE)) {
++        for (OracleTablespace ts : object.getDataSource().getTablespaces(new VoidProgressMonitor())) {
+             tablespaces.add(ts);
+         }
+     } catch (DBException e) {
+         log.error(e);
+     }
+     Collections.sort(tablespaces, DBUtils.<OracleTablespace>nameComparator());
+     return tablespaces.toArray(new OracleTablespace[tablespaces.size()]);
+ }
+\ No newline at end of file

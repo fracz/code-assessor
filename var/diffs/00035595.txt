@@ -1,0 +1,13 @@
+diff --git a/d60413ab07fd6693120d0a0897ab2a2dae92387a b/05bf085d3fcd339a34dbe355701b2ee447458e00
+index d60413ab07..05bf085d3f 100644
+--- a/d60413ab07fd6693120d0a0897ab2a2dae92387a
++++ b/05bf085d3fcd339a34dbe355701b2ee447458e00
+@@ -1,6 +1,4 @@
+ public void setPaddingDp(int paddingDp) {
+-    if (getDrawable() instanceof IconicsDrawable) {
+-        ((IconicsDrawable) getDrawable()).paddingDp(paddingDp);
+-    }
+     mIconBundle.mPadding = Utils.convertDpToPx(getContext(), paddingDp);
++    mIconBundle.applyProperties();
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/78b3b7d86987792f9b42dfdedbfaf0a51f3f900b b/6c398f5f2eca9ebe9bc903465f42b3d4fb3ef88a
+index 78b3b7d869..6c398f5f2e 100644
+--- a/78b3b7d86987792f9b42dfdedbfaf0a51f3f900b
++++ b/6c398f5f2eca9ebe9bc903465f42b3d4fb3ef88a
+@@ -1,4 +1,5 @@
+ @Override
+-public void watchFileTree(Path path) throws IOException {
+-    path.register(watchService, WATCH_KINDS, EXTENDED_WATCH_MODIFIERS);
++public Stoppable watchFileTree(Path path) throws IOException {
++    WatchKey watchKey = path.register(watchService, WATCH_KINDS, EXTENDED_WATCH_MODIFIERS);
++    return new WatchKeyStoppable(watchKey);
+ }
+\ No newline at end of file

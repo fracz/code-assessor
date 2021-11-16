@@ -1,0 +1,23 @@
+diff --git a/bcadce951a3528c13c2824ad2c027b97bda9f30f b/59e6e26be43df5d0d23301576554c3b1215788ad
+index bcadce951a..59e6e26be4 100644
+--- a/bcadce951a3528c13c2824ad2c027b97bda9f30f
++++ b/59e6e26be43df5d0d23301576554c3b1215788ad
+@@ -1,12 +1,10 @@
+ private Icon scaleIcon(Icon icon) {
+-    if (Registry.is("editor.scale.gutter.icons") && icon instanceof ScalableIcon) {
+-        float scale = myEditor.getScale();
+-        if (Math.abs(1f - scale) > 0.10f) {
+-            if (icon instanceof JBUIScaleTrackable) {
+-                ((JBUIScaleTrackable) icon).updateJBUIScale(getGraphicsConfiguration());
+-            }
+-            return ((ScalableIcon) icon).scale(scale);
++    float scale = getEditorScaleFactor();
++    if (icon instanceof ScalableIcon && scale != 1f) {
++        if (icon instanceof JBUIScaleTrackable) {
++            ((JBUIScaleTrackable) icon).updateJBUIScale(getGraphicsConfiguration());
+         }
++        return ((ScalableIcon) icon).scale(scale);
+     }
+     return icon;
+ }
+\ No newline at end of file

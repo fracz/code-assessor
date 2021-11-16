@@ -1,0 +1,23 @@
+diff --git a/b3ab030ed682ea77b5f7abcfac8eda5915980b3c b/9dfd51f10ede7a3b9c59b99d7757972e27591399
+index b3ab030ed6..9dfd51f10e 100644
+--- a/b3ab030ed682ea77b5f7abcfac8eda5915980b3c
++++ b/9dfd51f10ede7a3b9c59b99d7757972e27591399
+@@ -1,10 +1,13 @@
+ public void testRemovingAndCreatingModulesForAggregativeProjects() throws Exception {
++    createModulePom("m1", "<groupId>test</groupId>" + "<artifactId>m1</artifactId>" + "<version>1</version>" + "<packaging>pom</packaging>");
++    importProject();
+     assertModules("project", "m1", "m2");
+-    getMavenImporterSettings().setCreateModulesForAggregators(false);
+     configMessagesForYesAnswer();
+-    importProject();
+-    assertModules("m1", "m2");
++    getMavenImporterSettings().setCreateModulesForAggregators(false);
++    // using raw call to ignore emulation of project file change
++    myMavenProjectsManager.importProjects();
++    assertModules("m2");
+     getMavenImporterSettings().setCreateModulesForAggregators(true);
+-    importProject();
++    myMavenProjectsManager.importProjects();
+     assertModules("project", "m1", "m2");
+ }
+\ No newline at end of file

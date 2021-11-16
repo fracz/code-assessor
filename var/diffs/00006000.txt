@@ -1,0 +1,16 @@
+diff --git a/7a7cec1f6c345d5bfd3b43b21ebccf6597b74239 b/70915dfb2221688552c2eb6574c618d333947073
+index 7a7cec1f6c..70915dfb22 100644
+--- a/7a7cec1f6c345d5bfd3b43b21ebccf6597b74239
++++ b/70915dfb2221688552c2eb6574c618d333947073
+@@ -1,8 +1,7 @@
+-public void actionPerformed(AnActionEvent e) {
+-    final GuiEditor editor = GuiEditorUtil.getEditorFromContext(e.getDataContext());
+-    RadContainer container = getContainerToPack(editor);
++protected void actionPerformed(final GuiEditor editor, final ArrayList<RadComponent> selection, final AnActionEvent e) {
++    RadContainer container = getContainerToPack(selection);
+     if (container != null) {
+         container.getDelegee().setSize(container.getMinimumSize());
+         container.getDelegee().revalidate();
+     }
+ }
+\ No newline at end of file

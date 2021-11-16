@@ -1,0 +1,20 @@
+diff --git a/0bdc894d95d962773b224c066cc87aa5d57f4828 b/6c55528be4f0f27b7f9dea4b0f5383fda1d899e1
+index 0bdc894d95..6c55528be4 100644
+--- a/0bdc894d95d962773b224c066cc87aa5d57f4828
++++ b/6c55528be4f0f27b7f9dea4b0f5383fda1d899e1
+@@ -1,11 +1,6 @@
+-@Test
++@Test(expected = IllegalArgumentException.class)
+ public void testNoRelation() throws IOException {
+     ShapeBuilder shape = RandomShapeGenerator.createShapeWithin(getRandom(), null);
+-    try {
+-        GeoShapeQueryBuilder builder = new GeoShapeQueryBuilder(GEO_SHAPE_FIELD_NAME, shape);
+-        builder.relation(null);
+-        fail("relation cannot be null");
+-    } catch (IllegalArgumentException e) {
+-    // expected
+-    }
++    GeoShapeQueryBuilder builder = new GeoShapeQueryBuilder(GEO_SHAPE_FIELD_NAME, shape);
++    builder.relation(null);
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/287fd7227f153c40dfe06b449dd2a68e85a026fc b/0bd7d0c139369db535b7155842db73130eec0526
+index 287fd7227f..0bd7d0c139 100644
+--- a/287fd7227f153c40dfe06b449dd2a68e85a026fc
++++ b/0bd7d0c139369db535b7155842db73130eec0526
+@@ -1,6 +1,6 @@
+ private void skipComment() {
+     while (isCommentBegin()) {
+-        position = scanComment().getEndPosition();
++        position = new Tokenizer(input, dictionary, position).skipComment();
+         skipWhitespace();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/417c7de549334fe681196e990a6f403fd9e0da7c b/51948b50d25c2592d37570a9267b77854b7f719c
+index 417c7de549..51948b50d2 100644
+--- a/417c7de549334fe681196e990a6f403fd9e0da7c
++++ b/51948b50d25c2592d37570a9267b77854b7f719c
+@@ -1,11 +1,8 @@
+ /**
+- * Combines this collection of request condition with another by combining all header request conditions into a
+- * logical AND.
+- *
+- * @param other the condition to combine with
++ * Returns a new instance with the union of the header expressions from "this" and the "other" instance.
+  */
+ public HeadersRequestCondition combine(HeadersRequestCondition other) {
+-    Set<HeaderRequestCondition> conditions = new LinkedHashSet<HeaderRequestCondition>(getConditions());
+-    conditions.addAll(other.getConditions());
+-    return new HeadersRequestCondition(conditions);
++    Set<HeaderExpression> set = new LinkedHashSet<HeaderExpression>(this.expressions);
++    set.addAll(other.expressions);
++    return new HeadersRequestCondition(set);
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/77b081d0fc857a3c05505f552864a96d37ef34b6 b/ed83be664c490e770686a89c341010989339ed70
+index 77b081d0fc..ed83be664c 100644
+--- a/77b081d0fc857a3c05505f552864a96d37ef34b6
++++ b/ed83be664c490e770686a89c341010989339ed70
+@@ -1,19 +1,19 @@
+ @Override
+ public void onModelUpdate(Model model) {
+     if (model.info != null || model.error != null) {
+         mMessageBar.setInfo(model.info);
+         mMessageBar.setError(model.error);
+         mMessageBar.show();
+     }
+     mProgressBar.setVisibility(model.isLoading() ? View.VISIBLE : View.GONE);
+     if (model.isEmpty()) {
+-        if (getDisplayState().currentSearch != null) {
++        if (mSearchMode) {
+             showNoResults(getDisplayState().stack.root);
+         } else {
+             showEmptyDirectory();
+         }
+     } else {
+         showDirectory();
+         mAdapter.notifyDataSetChanged();
+     }
+ }
+\ No newline at end of file

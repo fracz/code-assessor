@@ -1,0 +1,33 @@
+diff --git a/2bbb28e619f03a2a8ec4458de0298fa9895df552 b/746162ec26c2d79bad26e7c31854f7ce2e8e7eb7
+index 2bbb28e619..746162ec26 100644
+--- a/2bbb28e619f03a2a8ec4458de0298fa9895df552
++++ b/746162ec26c2d79bad26e7c31854f7ce2e8e7eb7
+@@ -1,21 +1,20 @@
+ public long[] getClusterDataRange(final int iClusterId) {
+-    OChannelBinaryAsynchClient network = null;
+-    do {
+-        try {
++    return networkOperation(new OStorageRemoteOperation<long[]>() {
++
++        @Override
++        public long[] execute(final OChannelBinaryAsynchClient network) throws IOException {
+             try {
+-                network = beginRequest(OChannelBinaryProtocol.REQUEST_DATACLUSTER_DATARANGE);
++                beginRequest(network, OChannelBinaryProtocol.REQUEST_DATACLUSTER_DATARANGE);
+                 network.writeShort((short) iClusterId);
+             } finally {
+                 endRequest(network);
+             }
+             try {
+                 beginResponse(network);
+                 return new long[] { network.readLong(), network.readLong() };
+             } finally {
+                 endResponse(network);
+             }
+-        } catch (Exception e) {
+-            handleException(network, "Error on getting last entry position count in cluster: " + iClusterId, e);
+         }
+-    } while (true);
++    }, "Error on getting last entry position count in cluster: " + iClusterId);
+ }
+\ No newline at end of file

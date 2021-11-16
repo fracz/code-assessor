@@ -1,0 +1,11 @@
+diff --git a/2116604a0b707749144297ea881549b238cf4420 b/bda2a4119ae9fe747bb944563e66aa17bf9aec8e
+index 2116604a0b..bda2a4119a 100644
+--- a/2116604a0b707749144297ea881549b238cf4420
++++ b/bda2a4119ae9fe747bb944563e66aa17bf9aec8e
+@@ -1,3 +1,3 @@
+-public void facebookAuthorizationException(@NonNull final FacebookException e) {
+-    facebookAuthorizationException.onNext(e);
++public final Observable<String> facebookAuthorizationException() {
++    return facebookAuthorizationException.map(FacebookException::getLocalizedMessage);
+ }
+\ No newline at end of file

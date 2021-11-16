@@ -1,0 +1,17 @@
+diff --git a/0987a9e492ba6b4a2c2a72a5fcc86850b1160e40 b/6fd4df0cd6a3382a92647a5f8b0a09794664a30b
+index 0987a9e492..6fd4df0cd6 100644
+--- a/0987a9e492ba6b4a2c2a72a5fcc86850b1160e40
++++ b/6fd4df0cd6a3382a92647a5f8b0a09794664a30b
+@@ -1,10 +1,10 @@
+ @Test
+ public void parseWithoutCondition() throws SQLException {
+     ShardingRule shardingRule = createShardingRule();
+     List<Object> parameters = Collections.emptyList();
+-    SQLStatementParser statementParser = new SQLStatementParser(DatabaseType.MySQL, shardingRule, parameters, new MySQLParser("DELETE FROM TABLE_XXX", shardingRule, parameters));
++    SQLParserEngine statementParser = new SQLParserEngine(DatabaseType.MySQL, new MySQLParser("DELETE FROM TABLE_XXX", shardingRule, parameters), shardingRule, parameters);
+     DeleteSQLContext sqlContext = (DeleteSQLContext) statementParser.parseStatement();
+     assertThat(sqlContext.getTables().get(0).getName(), is("TABLE_XXX"));
+     assertTrue(sqlContext.getConditionContexts().isEmpty());
+     assertThat(sqlContext.toSqlBuilder().toString(), is("DELETE FROM [Token(TABLE_XXX)]"));
+ }
+\ No newline at end of file

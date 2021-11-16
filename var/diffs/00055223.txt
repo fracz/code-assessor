@@ -1,0 +1,16 @@
+diff --git a/54c437dabd3439cf3d87e32efd5546f15ba9eb85 b/6bc7602512c1e3a83c239b4dd90c19a6e5263aed
+index 54c437dabd..6bc7602512 100644
+--- a/54c437dabd3439cf3d87e32efd5546f15ba9eb85
++++ b/6bc7602512c1e3a83c239b4dd90c19a6e5263aed
+@@ -1,9 +1,9 @@
+ @JRubyMethod(name = { "attribute", "attr" })
+ public IRubyObject attribute(ThreadContext context, IRubyObject name) {
+     NamedNodeMap attrs = this.node.getAttributes();
+-    Node attr = attrs.getNamedItem(name.convertToString().asJavaString());
++    Node attr = attrs.getNamedItem((String) name.toJava(String.class));
+     if (attr == null) {
+         return context.getRuntime().newString(ERR_INSECURE_SET_INST_VAR);
+     }
+     return getCachedNodeOrCreate(context.getRuntime(), attr);
+ }
+\ No newline at end of file

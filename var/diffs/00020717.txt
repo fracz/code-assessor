@@ -1,0 +1,12 @@
+diff --git a/2b13086d5ab389d06546ed299033424be95635f2 b/a7cdb5eacd40b535ea1f27319a0a3207c87f8c42
+index 2b13086d5a..a7cdb5eacd 100644
+--- a/2b13086d5ab389d06546ed299033424be95635f2
++++ b/a7cdb5eacd40b535ea1f27319a0a3207c87f8c42
+@@ -1,5 +1,5 @@
+ @Override
+ public void preparedStatement_setSQLXML(FilterChain chain, PreparedStatementProxy statement, int parameterIndex, SQLXML x) throws SQLException {
+     preparedStatement_setParameterBefore(statement, parameterIndex, Types.SQLXML, x);
+-    super.preparedStatement_setSQLXML(chain, statement, parameterIndex, x);
++    chain.preparedStatement_setSQLXML(statement, parameterIndex, x);
+ }
+\ No newline at end of file

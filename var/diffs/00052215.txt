@@ -1,0 +1,13 @@
+diff --git a/75599aff9de08694a1e29cb904051a1b5db6087b b/9517b4289aaa013f6d06548ad086ca7583eb7944
+index 75599aff9d..9517b4289a 100644
+--- a/75599aff9de08694a1e29cb904051a1b5db6087b
++++ b/9517b4289aaa013f6d06548ad086ca7583eb7944
+@@ -1,4 +1,5 @@
+ private void scanNumber() {
+-    term.scanNumber(position);
+-    setTermResult();
++    Tokenizer tokenizer = new Tokenizer(input, dictionary, position);
++    tokenizer.scanNumber();
++    setTokenizerResult(tokenizer);
+ }
+\ No newline at end of file

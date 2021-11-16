@@ -1,0 +1,14 @@
+diff --git a/987ae13e997d6f3fce4d55d31783293e407d36af b/a7620b41adb9c0c50d7f5c88e635caf2fe1d9a21
+index 987ae13e99..a7620b41ad 100644
+--- a/987ae13e997d6f3fce4d55d31783293e407d36af
++++ b/a7620b41adb9c0c50d7f5c88e635caf2fe1d9a21
+@@ -1,6 +1,7 @@
+ public static final boolean webSocketMessage(AtmosphereResource r) {
+-    if (r.transport().equals(AtmosphereResource.TRANSPORT.WEBSOCKET) && AtmosphereResourceImpl.class.cast(r).getRequest(false).getAttribute(FrameworkConfig.INJECTED_ATMOSPHERE_RESOURCE) == null) {
++    AtmosphereRequest request = AtmosphereResourceImpl.class.cast(r).getRequest(false);
++    if (request.getAttribute(FrameworkConfig.WEBSOCKET_MESSAGE) != null) {
+         return true;
+     }
+     return false;
+ }
+\ No newline at end of file

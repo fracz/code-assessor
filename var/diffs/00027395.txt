@@ -1,0 +1,19 @@
+diff --git a/387f7c9c2f33b42e0df75263ab4959fbc83f0623 b/e41b6410b933e36f5fa39b09c610a9d7a28d9d3c
+index 387f7c9c2f..e41b6410b9 100644
+--- a/387f7c9c2f33b42e0df75263ab4959fbc83f0623
++++ b/e41b6410b933e36f5fa39b09c610a9d7a28d9d3c
+@@ -1,12 +1,10 @@
+ @Test
+ public final void meter() throws Exception {
+     assertReporterOutput(new Callable<MeterMetric>() {
+
+         @Override
+         public MeterMetric call() throws Exception {
+-            final MeterMetric meter = new MeterMetric(registry.newMeterTickThreadPool(), "mock", TimeUnit.MILLISECONDS, clock);
+-            meter.mark();
+-            return meter;
++            return createMeter();
+         }
+     }, expectedMeterResult());
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/88a1773c795f00207d6bdf42dc638d007d9234fb b/e7a184a585e550e5af9beeb49819d99a15449f50
+index 88a1773c79..e7a184a585 100644
+--- a/88a1773c795f00207d6bdf42dc638d007d9234fb
++++ b/e7a184a585e550e5af9beeb49819d99a15449f50
+@@ -1,10 +1,11 @@
+ @Override
+ public <T> Boolean visitGetProvider(GetProviderCommand<T> command) {
++    // ensure the provider can be created
+     try {
+-        // ensure the provider can be created
+-        injector.getProvider(command.getKey());
+-    } catch (CreationException e) {
+-        injector.handleMissingBinding(command.getSource(), command.getKey());
++        injector.getProviderOrThrow(command.getKey(), errors);
++    } catch (ResolveFailedException e) {
++        // TODO: source
++        errors.merge(e.getErrors());
+     }
+     return true;
+ }
+\ No newline at end of file

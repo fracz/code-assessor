@@ -1,0 +1,15 @@
+diff --git a/e58c750e54212dd3153bec97347a20cf0f517de6 b/8c14b029ecd01790648282942f98f825cfcf218d
+index e58c750e54..8c14b029ec 100644
+--- a/e58c750e54212dd3153bec97347a20cf0f517de6
++++ b/8c14b029ecd01790648282942f98f825cfcf218d
+@@ -1,6 +1,7 @@
+-private JLabel createViewPanel(@NotNull final String text) {
+-    JBLabel label = new JBLabel(text);
++@Override
++protected JBLabel createViewPanel() {
++    final JBLabel label = new JBLabel(renderCellText());
+     label.setBackground(IpnbEditorUtil.getBackground());
+     label.setOpaque(true);
+     return label;
+ }
+\ No newline at end of file

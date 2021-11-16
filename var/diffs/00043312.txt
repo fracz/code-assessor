@@ -1,0 +1,16 @@
+diff --git a/42127baf3c4e44ef249fb80377bdb0c2700e0a86 b/5e5619a2f31d3a2862f4f56da6f18fa9adb02f8d
+index 42127baf3c..5e5619a2f3 100644
+--- a/42127baf3c4e44ef249fb80377bdb0c2700e0a86
++++ b/5e5619a2f31d3a2862f4f56da6f18fa9adb02f8d
+@@ -1,2 +1,9 @@
+-public void setDatabase(final ODatabaseRecord iDatabase) {
++public boolean setDatabase(final ODatabaseRecord iDatabase) {
++    boolean changed = false;
++    for (Object o : map.keySet()) {
++        if (o instanceof ORecordElement)
++            if (((ORecordElement) o).setDatabase(iDatabase))
++                changed = true;
++    }
++    return changed;
+ }
+\ No newline at end of file

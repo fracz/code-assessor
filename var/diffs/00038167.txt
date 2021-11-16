@@ -1,0 +1,15 @@
+diff --git a/d588bcd3fe050caf66653c91e50cd15624a7cd0d b/b8d2332a959e435aa250251449dca56f7f86c468
+index d588bcd3fe..b8d2332a95 100644
+--- a/d588bcd3fe050caf66653c91e50cd15624a7cd0d
++++ b/b8d2332a959e435aa250251449dca56f7f86c468
+@@ -1,8 +1,8 @@
+ @Test
+ public void failedCCIsReported() throws Exception {
+     final Path path = Paths.get("/foo/bar");
+-    when(consistencyCheckService.runFullConsistencyCheck(any(), any(), any(), any(), any(), anyBoolean(), eq(new File(".").getCanonicalFile()), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean())).thenReturn(ConsistencyCheckService.Result.failure(path.toFile()));
++    when(consistencyCheckService.runFullConsistencyCheck(any(), any(), any(), any(), any(), anyBoolean(), eq(new File(".").getCanonicalFile()), any(CheckConsistencyConfig.class))).thenReturn(ConsistencyCheckService.Result.failure(path.toFile()));
+     expected.expect(CommandFailed.class);
+     expected.expectMessage("Inconsistencies found. See '" + path + "' for details.");
+     execute("--check-consistency=true", backupDir(), "--name=mybackup");
+ }
+\ No newline at end of file

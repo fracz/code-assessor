@@ -1,0 +1,15 @@
+diff --git a/1b3cbb8fb9ddb98f02cb7219b7cd995ecd001ce1 b/cd534a020aac743d06d26f4009eb5292c4ab6dee
+index 1b3cbb8fb9..cd534a020a 100644
+--- a/1b3cbb8fb9ddb98f02cb7219b7cd995ecd001ce1
++++ b/cd534a020aac743d06d26f4009eb5292c4ab6dee
+@@ -1,7 +1,8 @@
+-protected final void setValue(final JComboBox component, final String value) {
++protected final void setValue(final String value) {
++    final JComboBox component = getComponent();
+     if (!isValidValue(value)) {
+         component.setEditable(true);
+     }
+     component.setSelectedItem(value);
+     component.setEditable(false);
+ }
+\ No newline at end of file

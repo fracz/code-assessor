@@ -1,0 +1,12 @@
+diff --git a/ed324638e9734d5ffbd1e3dbc24b1b7d3daaf0f4 b/dc0ca6eec7351e6225f4cd28e4a4df5f9571061e
+index ed324638e9..dc0ca6eec7 100644
+--- a/ed324638e9734d5ffbd1e3dbc24b1b7d3daaf0f4
++++ b/dc0ca6eec7351e6225f4cd28e4a4df5f9571061e
+@@ -1,5 +1,4 @@
+ public void newWatch() {
+-    final TextWithImports empty = EvaluationManager.getInstance().getEmptyExpressionFragment();
+-    final DebuggerTreeNodeImpl node = getWatchTree().addWatch(empty);
++    final DebuggerTreeNodeImpl node = getWatchTree().addWatch(new TextWithImportsImpl(CodeFragmentKind.EXPRESSION, ""));
+     editNode(node);
+ }
+\ No newline at end of file

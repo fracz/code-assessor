@@ -1,0 +1,13 @@
+diff --git a/bb5801bdc15fee7d7de18b73cab04a10b813ac2d b/d031a00d2f6f7b8728800979b6955e732495cd75
+index bb5801bdc1..d031a00d2f 100644
+--- a/bb5801bdc15fee7d7de18b73cab04a10b813ac2d
++++ b/d031a00d2f6f7b8728800979b6955e732495cd75
+@@ -1,5 +1,5 @@
+ private void persistShardingProperties(final Properties props, final boolean isOverwrite) {
+-    if (!dataNodeStorage.isNodeExisted(ConfigurationNode.PROPS_NODE_PATH) || isOverwrite) {
+-        dataNodeStorage.fillNode(ConfigurationNode.PROPS_NODE_PATH, GsonFactory.getGson().toJson(props));
++    if (isOverwrite || !regCenter.isExisted(configNode.getFullPath(ConfigurationNode.PROPS_NODE_PATH))) {
++        regCenter.persist(configNode.getFullPath(ConfigurationNode.PROPS_NODE_PATH), GsonFactory.getGson().toJson(props));
+     }
+ }
+\ No newline at end of file

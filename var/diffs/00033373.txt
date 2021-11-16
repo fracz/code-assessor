@@ -1,0 +1,27 @@
+diff --git a/b0242e2a8b9b15466e9b16ebfae2849234440d32 b/0b50b50a0f6ab12d4bf570683f7cf0929d6ce65f
+index b0242e2a8b..0b50b50a0f 100644
+--- a/b0242e2a8b9b15466e9b16ebfae2849234440d32
++++ b/0b50b50a0f6ab12d4bf570683f7cf0929d6ce65f
+@@ -1,20 +1,17 @@
+ private ConsumerConnection onStartAction() {
+     lock.lock();
+     try {
+         if (stopped) {
+             throw new IllegalStateException("This connection has been stopped.");
+         }
+         executing.add(Thread.currentThread());
+         if (connection == null) {
+             // Hold the lock while creating the connection. Not generally good form.
+             // In this instance, blocks other threads from creating the connection at the same time
+-            // ConnectionVersion4 is a part of the protocol so this is what loader (provider part) creates.
+-            ConnectionVersion4 connectionVersion4 = implementationLoader.create(distribution, loggingProvider.getProgressLoggerFactory());
+-            // Adopting the connection to a refactoring friendly type that the consumer owns
+-            connection = new AdaptedConnection(connectionVersion4);
++            connection = implementationLoader.create(distribution, loggingProvider.getProgressLoggerFactory());
+         }
+         return connection;
+     } finally {
+         lock.unlock();
+     }
+ }
+\ No newline at end of file

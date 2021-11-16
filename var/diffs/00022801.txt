@@ -1,0 +1,30 @@
+diff --git a/e11fd3d6c9330b2023761807ba766ec2a43d4c75 b/d6ba75032fd0dbb493c466ef33e04c22f3ef4522
+index e11fd3d6c9..d6ba75032f 100644
+--- a/e11fd3d6c9330b2023761807ba766ec2a43d4c75
++++ b/d6ba75032fd0dbb493c466ef33e04c22f3ef4522
+@@ -1,22 +1,16 @@
+ /**
+  * Execute this SQL statement, if it is not a query. For example,
+  * CREATE TABLE, DELTE, INSERT, etc.
+  *
+  * @throws android.database.SQLException If the SQL string is invalid for
+  * some reason
+  */
+ public void execute() {
+-    mDatabase.verifyDbIsOpen();
+-    BlockGuard.getThreadPolicy().onWriteToDisk();
+-    long timeStart = SystemClock.uptimeMillis();
+-    mDatabase.lock();
+-    acquireReference();
++    long timeStart = acquireAndLock(WRITE);
+     try {
+-        mDatabase.closePendingStatements();
+         native_execute();
+         mDatabase.logTimeStat(mSql, timeStart);
+     } finally {
+-        releaseReference();
+-        mDatabase.unlock();
++        releaseAndUnlock();
+     }
+ }
+\ No newline at end of file

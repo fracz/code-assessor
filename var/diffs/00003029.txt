@@ -1,0 +1,25 @@
+diff --git a/0f54f3b0f1d4e986ab8b748c16749cf944777a8d b/7ebce6a9932759acca9e1e807e79c7d672e52547
+index 0f54f3b0f1..7ebce6a993 100644
+--- a/0f54f3b0f1d4e986ab8b748c16749cf944777a8d
++++ b/7ebce6a9932759acca9e1e807e79c7d672e52547
+@@ -1,16 +1,16 @@
+ private AnActionEvent createEventFor(AnAction a, final VirtualFile[] files, final Project p) {
+     DataContext dc = new DataContext() {
+
+         @Nullable
+         public Object getData(String id) {
+-            if (id.equals(PlatformDataKeys.VIRTUAL_FILE_ARRAY.getName()))
++            if (PlatformDataKeys.VIRTUAL_FILE_ARRAY.is(id))
+                 return files;
+-            if (id.equals(PlatformDataKeys.EDITOR.getName()))
++            if (PlatformDataKeys.EDITOR.is(id))
+                 return editor;
+-            if (id.equals(PlatformDataKeys.PROJECT.getName()))
++            if (PlatformDataKeys.PROJECT.is(id))
+                 return p;
+             return null;
+         }
+     };
+     return new AnActionEvent(null, dc, "", a.getTemplatePresentation(), null, -1);
+ }
+\ No newline at end of file

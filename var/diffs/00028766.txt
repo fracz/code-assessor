@@ -1,0 +1,12 @@
+diff --git a/821114e12327516121f1a4652ba02f80998b1f2c b/22d6d75618f47da617ceeb58db87938a231f62a3
+index 821114e123..22d6d75618 100644
+--- a/821114e12327516121f1a4652ba02f80998b1f2c
++++ b/22d6d75618f47da617ceeb58db87938a231f62a3
+@@ -1,4 +1,5 @@
+ @Override
+ public void onFailure(Throwable t) {
+-    logger.error("failed to create index [{}]", indexMetaData.index(), t);
++    markMetaDataAsReadFromGateway("failure [" + t.getMessage() + "]");
++    latch.countDown();
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/3b6310b3791119d2a6a6ec36e3e62315b4fff1f3 b/8939db8f5ea7a0a8362919550c045aa933037baf
+index 3b6310b379..8939db8f5e 100644
+--- a/3b6310b3791119d2a6a6ec36e3e62315b4fff1f3
++++ b/8939db8f5ea7a0a8362919550c045aa933037baf
+@@ -1,4 +1,8 @@
+ @Override
+ protected void accept0(SQLASTVisitor visitor) {
+-    throw new UnsupportedOperationException(this.getClass().getName());
++    if (visitor.visit(this)) {
++        acceptChild(visitor, object);
++        acceptChild(visitor, column);
++    }
++    visitor.endVisit(this);
+ }
+\ No newline at end of file

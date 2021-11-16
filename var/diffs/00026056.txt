@@ -1,0 +1,16 @@
+diff --git a/7d27c546f9e8b74f96af85b7adf0d213a49d6cbb b/a07850361e344e1e96a74b9f9ff25a61a8db78b1
+index 7d27c546f9..a07850361e 100644
+--- a/7d27c546f9e8b74f96af85b7adf0d213a49d6cbb
++++ b/a07850361e344e1e96a74b9f9ff25a61a8db78b1
+@@ -1,8 +1,9 @@
+ private IMap<String, Ticket> getTicketMapInstance(final String mapName) {
+     try {
+-        return hazelcastInstance.getMap(mapName);
++        final IMap<String, Ticket> inst = hazelcastInstance.getMap(mapName);
++        LOGGER.debug("Located Hazelcast map instance [{}] for [{}]", inst, mapName);
+     } catch (final Exception e) {
+         LOGGER.error(e.getMessage(), e);
+     }
+     return null;
+ }
+\ No newline at end of file

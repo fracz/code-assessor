@@ -1,0 +1,14 @@
+diff --git a/4d91d8f15ad73c6c892e854d6e5101dd79ed255c b/f519b47353a0e28fe451a1f64d2dd9c81d4294b6
+index 4d91d8f15a..f519b47353 100644
+--- a/4d91d8f15ad73c6c892e854d6e5101dd79ed255c
++++ b/f519b47353a0e28fe451a1f64d2dd9c81d4294b6
+@@ -1,7 +1,5 @@
+ protected UsageViewDescriptor createUsageViewDescriptor(UsageInfo[] usages) {
+     PsiField[] fields = new PsiField[myFields.length];
+-    for (int idx = 0; idx < myFields.length; idx++) {
+-        fields[idx] = myFields[idx];
+-    }
++    System.arraycopy(myFields, 0, fields, 0, myFields.length);
+     return new EncapsulateFieldsViewDescriptor(fields);
+ }
+\ No newline at end of file

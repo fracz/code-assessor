@@ -1,0 +1,22 @@
+diff --git a/7144404b62a6240e3b4f13d4a8660020c42f3c5b b/b13bcb557d2482109d50e1b5592569bf5661ddeb
+index 7144404b62..b13bcb557d 100644
+--- a/7144404b62a6240e3b4f13d4a8660020c42f3c5b
++++ b/b13bcb557d2482109d50e1b5592569bf5661ddeb
+@@ -1,15 +1,15 @@
+ @Override
+ public CompilerPass getProcessor(final Compiler compiler) {
+     return new CompilerPass() {
+
+         @Override
+         public void process(Node externs, Node root) {
+             Map<String, CheckLevel> propertiesToErrorFor = new HashMap<>();
+             propertiesToErrorFor.put("foobar", CheckLevel.ERROR);
+             // This must be created after type checking is run as it depends on
+             // any mismatches found during checking.
+-            lastPass = DisambiguateProperties.forJSTypeSystem(compiler, propertiesToErrorFor);
++            lastPass = new DisambiguateProperties(compiler, propertiesToErrorFor);
+             lastPass.process(externs, root);
+         }
+     };
+ }
+\ No newline at end of file

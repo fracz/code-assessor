@@ -1,0 +1,17 @@
+diff --git a/8ceabb489932b1abc8d4c24edd599a1bec65e621 b/5bbaed2c0379cf927b6aafc00715d61125d2e933
+index 8ceabb4899..5bbaed2c03 100644
+--- a/8ceabb489932b1abc8d4c24edd599a1bec65e621
++++ b/5bbaed2c0379cf927b6aafc00715d61125d2e933
+@@ -1,10 +1,5 @@
+ public V get(K key) {
+     synchronized (_lock) {
+-        for (HashMap<K, V> bucket : _buckets) {
+-            if (bucket.containsKey(key)) {
+-                return bucket.get(key);
+-            }
+-        }
+-        return null;
++        return super.get(key);
+     }
+ }
+\ No newline at end of file

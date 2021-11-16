@@ -1,0 +1,20 @@
+diff --git a/a50809f124e811a2cc635cbba2878caa9c8d9aa4 b/55c2f9f40abff8bc26189863dbc9b0cf9b6e11b6
+index a50809f124..55c2f9f40a 100644
+--- a/a50809f124e811a2cc635cbba2878caa9c8d9aa4
++++ b/55c2f9f40abff8bc26189863dbc9b0cf9b6e11b6
+@@ -1,11 +1,11 @@
+-private static void addNotifications(final List<PyExternalProcessException> exceptions, final String packageName, final PyPackagesNotificationPanel... areas) {
++private static void addNotifications(final String errorDescription, final String packageName, final PyPackagesNotificationPanel... areas) {
+     for (PyPackagesNotificationPanel pane : areas) {
+-        if (exceptions.isEmpty()) {
++        if (StringUtil.isEmpty(errorDescription)) {
+             pane.showSuccess("Package successfully installed.");
+         } else {
+             String title = "Install packages failed";
+             final String firstLine = title + ": Error occurred when installing package " + packageName + ". ";
+-            pane.showError(firstLine + "<a href=\"xxx\">Details...</a>", title, PyPackageManagerImpl.UI.createDescription(exceptions, firstLine));
++            pane.showError(firstLine + "<a href=\"xxx\">Details...</a>", title, firstLine + errorDescription);
+         }
+     }
+ }
+\ No newline at end of file

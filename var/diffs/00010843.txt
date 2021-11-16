@@ -1,0 +1,25 @@
+diff --git a/f0bcb7638f216aac365616d0d60a07cb7295fbd4 b/850b9a4dfe2b6e69ad3b3e04b7800896b2580e0e
+index f0bcb7638f..850b9a4dfe 100644
+--- a/f0bcb7638f216aac365616d0d60a07cb7295fbd4
++++ b/850b9a4dfe2b6e69ad3b3e04b7800896b2580e0e
+@@ -1,15 +1,14 @@
+-public List<MavenProjectsProcessorPostConfigurationTask> config(final ModifiableModuleModel model, final ModulesProvider modulesProvider) {
++public List<MavenProjectsProcessorPostConfigurationTask> config(MavenModuleModelsProvider moduleModelsProvider) {
+     List<MavenProjectsProcessorPostConfigurationTask> postTasks = new ArrayList<MavenProjectsProcessorPostConfigurationTask>();
+-    myModuleModel = model != null ? model : ModuleManager.getInstance(myProject).getModifiableModel();
++    myModuleModel = moduleModelsProvider.getModuleModel();
+     myLibrariesProvider = new ProjectLibrariesProvider(myProject);
+     mapModulesToMavenProjects();
+     deleteObsoleteModules();
+-    configModules(postTasks, modulesProvider);
++    configModules(postTasks, moduleModelsProvider);
+     configModuleGroups();
+     refreshResolvedArtifacts();
+     configSettings();
+     removeUnusedProjectLibraries();
+-    if (model == null)
+-        commit();
++    moduleModelsProvider.commit(myModuleModel, myRootModelsToCommit.toArray(new ModifiableRootModel[myRootModelsToCommit.size()]));
+     return postTasks;
+ }
+\ No newline at end of file

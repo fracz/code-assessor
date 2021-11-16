@@ -1,0 +1,17 @@
+diff --git a/68fbc9419accfcac20816d49a52a135e856b8d42 b/568706358987cdc4bca555d80754a71f11fb6d80
+index 68fbc9419a..5687063589 100644
+--- a/68fbc9419accfcac20816d49a52a135e856b8d42
++++ b/568706358987cdc4bca555d80754a71f11fb6d80
+@@ -1,9 +1,9 @@
+-private void createIndexRule(int labelId, int propertyKeyId) {
+-    IndexRule schemaRule = IndexRule.indexRule(schemaStore.nextId(), labelId, propertyKeyId, this.schemaIndexProviders.getDefaultProvider().getProviderDescriptor());
++private void createIndexRule(NodePropertyDescriptor descriptor) {
++    IndexRule schemaRule = IndexRule.indexRule(schemaStore.nextId(), descriptor, this.schemaIndexProviders.getDefaultProvider().getProviderDescriptor());
+     for (DynamicRecord record : schemaStore.allocateFrom(schemaRule)) {
+         schemaStore.updateRecord(record);
+     }
+     schemaCache.addSchemaRule(schemaRule);
+     labelsTouched = true;
+     flushStrategy.forceFlush();
+ }
+\ No newline at end of file

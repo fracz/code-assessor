@@ -1,0 +1,23 @@
+diff --git a/b4ac39bb64c77c84fc82ba803cdee229cc81cabd b/c114278cbd48880fc70da4de1480a841a46ada15
+index b4ac39bb64..c114278cbd 100644
+--- a/b4ac39bb64c77c84fc82ba803cdee229cc81cabd
++++ b/c114278cbd48880fc70da4de1480a841a46ada15
+@@ -1,15 +1,15 @@
+ @Override
+ protected int getNextStep(int step) {
+-    if (step + 1 == myTestBoxedStep) {
++    if (step + 1 == getNonNullStepCode()) {
+         for (MemberInfo classField : myClassFields) {
+             if (classField.isChecked()) {
+                 PsiField field = (PsiField) classField.getMember();
+                 if (!(field.getType() instanceof PsiPrimitiveType)) {
+-                    return myTestBoxedStep;
++                    return getNonNullStepCode();
+                 }
+             }
+         }
+         return step;
+     }
+     return super.getNextStep(step);
+ }
+\ No newline at end of file

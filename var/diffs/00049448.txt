@@ -1,0 +1,12 @@
+diff --git a/e1db54c6c44da9518ca1db0dd9ea22cf7e21335d b/eec6c3475a4788f197ea517efb2c06e77fa5a087
+index e1db54c6c4..eec6c3475a 100644
+--- a/e1db54c6c44da9518ca1db0dd9ea22cf7e21335d
++++ b/eec6c3475a4788f197ea517efb2c06e77fa5a087
+@@ -1,5 +1,5 @@
+ @Override
+ public IStatus runInUIThread(DBRProgressMonitor monitor) {
+-    UIUtils.showErrorDialog(getDisplay().getActiveShell(), "Data export error", error.getMessage(), error);
++    DBUserInterface.getInstance().showError("Data export error", error.getMessage(), error);
+     return Status.OK_STATUS;
+ }
+\ No newline at end of file

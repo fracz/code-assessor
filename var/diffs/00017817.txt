@@ -1,0 +1,21 @@
+diff --git a/a0ae2bd367317bc650e45423a689c8d97d69e6bd b/66b2d9608913d0661904a92db75ead0a688fee0c
+index a0ae2bd367..66b2d96089 100644
+--- a/a0ae2bd367317bc650e45423a689c8d97d69e6bd
++++ b/66b2d9608913d0661904a92db75ead0a688fee0c
+@@ -1,14 +1,9 @@
+ /**
+  * Retrieve (or create) an interned HystrixCommandGroup instance for a given name.
+  *
+  * @param name command group name
+  * @return HystrixCommandGroup instance that is interned (cached) so a given name will always retrieve the same instance.
+  */
+ public static HystrixCommandGroupKey asKey(String name) {
+-    HystrixCommandGroupKey k = intern.get(name);
+-    if (k == null) {
+-        k = new HystrixCommandGroupDefault(name);
+-        intern.putIfAbsent(name, k);
+-    }
+-    return k;
++    return intern.interned(name);
+ }
+\ No newline at end of file

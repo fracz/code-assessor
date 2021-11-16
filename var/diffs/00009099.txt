@@ -1,0 +1,22 @@
+diff --git a/41389aa9e1686e241d3193219390fa3e13674ca5 b/145351269b0d7343423bd433e8edfc69bf7903a6
+index 41389aa9e1..145351269b 100644
+--- a/41389aa9e1686e241d3193219390fa3e13674ca5
++++ b/145351269b0d7343423bd433e8edfc69bf7903a6
+@@ -1,15 +1,16 @@
+ public static BaseTestsOutputConsoleView createConsole(@NotNull final String testFrameworkName, @NotNull final TestConsoleProperties consoleProperties, final RunnerSettings runnerSettings, final ConfigurationPerRunnerSettings configurationSettings) {
+     // Console
+     final String splitterPropertyName = testFrameworkName + ".Splitter.Proportion";
+     final SMTRunnerConsoleView console = new SMTRunnerConsoleView(consoleProperties, runnerSettings, configurationSettings, splitterPropertyName) {
+
+         @Override
+         public void attachToProcess(final ProcessHandler processHandler) {
+             // attach listeners
++            super.attachToProcess(processHandler);
+             attachEventsProcessors(consoleProperties, getResultsViewer(), getResultsViewer().getStatisticsPane(), processHandler, testFrameworkName);
+         }
+     };
+     console.setHelpId("reference.runToolWindow.testResultsTab");
+     console.initUI();
+     return console;
+ }
+\ No newline at end of file

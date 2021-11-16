@@ -1,0 +1,14 @@
+diff --git a/7c91fc1cce975828faf0ba206df99883f404af5a b/04a5814ff20c65db33385637b6a95f3a2e52729b
+index 7c91fc1cce..04a5814ff2 100644
+--- a/7c91fc1cce975828faf0ba206df99883f404af5a
++++ b/04a5814ff20c65db33385637b6a95f3a2e52729b
+@@ -1,5 +1,6 @@
+ public ResultMessage executeInternalWithCondition(QueryState state, QueryOptions options) throws RequestValidationException, RequestExecutionException {
+     CQL3CasRequest request = makeCasRequest(state, options);
+-    ColumnFamily result = casInternal(request, state);
+-    return new ResultMessage.Rows(buildCasResultSet(request.key, result, options));
++    try (RowIterator result = casInternal(request, state)) {
++        return new ResultMessage.Rows(buildCasResultSet(result, options));
++    }
+ }
+\ No newline at end of file

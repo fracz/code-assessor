@@ -1,0 +1,15 @@
+diff --git a/28d7f7865d42a892e53db89b74c97c29de9f9ac5 b/caeb8cfc7d86b97a458bbe8f1b98cebb41b474f9
+index 28d7f7865d..caeb8cfc7d 100644
+--- a/28d7f7865d42a892e53db89b74c97c29de9f9ac5
++++ b/caeb8cfc7d86b97a458bbe8f1b98cebb41b474f9
+@@ -1,6 +1,5 @@
+ @NotNull
+-private static String getMethodDeclarationText(@NotNull String name, @NotNull List<String> methodSignature) {
+-    final String argumentTypes = methodSignature.stream().skip(1).collect(Collectors.joining(", "));
+-    final String returnType = !methodSignature.isEmpty() ? methodSignature.get(0) : "";
+-    return returnType + " " + name + "(" + argumentTypes + ")";
++private static String getMethodDeclarationText(@NotNull String methodName, @NotNull ReflectiveSignature methodSignature) {
++    final String returnType = methodSignature.getShortReturnType();
++    return returnType + " " + methodName + methodSignature.getShortArgumentTypes();
+ }
+\ No newline at end of file

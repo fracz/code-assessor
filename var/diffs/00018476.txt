@@ -1,0 +1,12 @@
+diff --git a/0025592d702af48621a91deaa1023905459078e4 b/cb6acd7b20b2d430c1a4008506074a87ee577fc6
+index 0025592d70..cb6acd7b20 100644
+--- a/0025592d702af48621a91deaa1023905459078e4
++++ b/cb6acd7b20b2d430c1a4008506074a87ee577fc6
+@@ -1,5 +1,4 @@
+ @Override
+ public boolean hasComplete() {
+-    Object o = state.get();
+-    return state.subscribers() == State.TERMINATED && !NotificationLite.isError(o);
++    return state.subscribers.get() == State.TERMINATED && !NotificationLite.isError(state.get());
+ }
+\ No newline at end of file

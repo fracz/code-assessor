@@ -1,0 +1,26 @@
+diff --git a/aae89d662f7d3baa047d81ab0ba1fb325e247944 b/d29f22124a9568979f4c0bd26e18438b8b9fe239
+index aae89d662f..d29f22124a 100644
+--- a/aae89d662f7d3baa047d81ab0ba1fb325e247944
++++ b/d29f22124a9568979f4c0bd26e18438b8b9fe239
+@@ -1,18 +1,18 @@
+ @Test
+ public void shouldFailWhenTryingToOpenWithDifferentFormatVersion() throws Exception {
+     // GIVEN
+-    int pageSize = 256;
++    int pageSize = DEFAULT_PAGE_SIZE;
+     PageCache pageCache = createPageCache(pageSize);
+-    GBPTreeBuilder<MutableLong, MutableLong> builder = new GBPTreeBuilder<>(pageCache, indexFile, layout);
++    GBPTreeBuilder<MutableLong, MutableLong> builder = index(pageCache);
+     try (GBPTree<MutableLong, MutableLong> ignored = builder.build()) {
+     // Open/close is enough
+     }
+     setFormatVersion(pageCache, pageSize, GBPTree.FORMAT_VERSION - 1);
+     try {
+         // WHEN
+         builder.build();
+         fail("Should have failed");
+     } catch (MetadataMismatchException e) {
+     // THEN good
+     }
+ }
+\ No newline at end of file

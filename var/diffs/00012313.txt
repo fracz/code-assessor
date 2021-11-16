@@ -1,0 +1,17 @@
+diff --git a/717262f91a5f77e295446a26b55004f62ae8aed6 b/f3316f81ab0643981aa10c6cd023f89c462b6afc
+index 717262f91a..f3316f81ab 100644
+--- a/717262f91a5f77e295446a26b55004f62ae8aed6
++++ b/f3316f81ab0643981aa10c6cd023f89c462b6afc
+@@ -1,8 +1,7 @@
+ @Nullable
+-protected InspectionGadgetsFix buildFix(PsiElement location) {
+-    if (AnnotationUtil.isAnnotatingApplicable(location)) {
+-        return new DelegatingFix(new AnnotateMethodFix(AnnotationUtil.NULLABLE, AnnotationUtil.NOT_NULL));
+-    } else {
++protected InspectionGadgetsFix buildFix(Object... infos) {
++    if (!AnnotationUtil.isAnnotatingApplicable((PsiElement) infos[0])) {
+         return null;
+     }
++    return new DelegatingFix(new AnnotateMethodFix(AnnotationUtil.NULLABLE, AnnotationUtil.NOT_NULL));
+ }
+\ No newline at end of file

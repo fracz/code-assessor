@@ -1,0 +1,21 @@
+diff --git a/6df8a4373df16323de725ea93b93fcccefc8f9a0 b/43f9f7b7fa3b955e511014653ad37bbd5fab34df
+index 6df8a4373d..43f9f7b7fa 100644
+--- a/6df8a4373df16323de725ea93b93fcccefc8f9a0
++++ b/43f9f7b7fa3b955e511014653ad37bbd5fab34df
+@@ -1,11 +1,10 @@
+-@Nullable
+ @Override
+-public Token[] tokenize(@NotNull XmlText element) {
++public void tokenize(@NotNull XmlText element, TokenConsumer consumer) {
+     // outer element should care of spell checking
+     if (element.getContainingFile().getContext() != null)
+-        return null;
++        return;
+     List<Pair<PsiElement, TextRange>> list = InjectedLanguageUtil.getInjectedPsiFiles(element);
+     if (list != null && list.size() > 0)
+-        return null;
+-    return new Token[] { new Token<XmlText>(element, element.getText(), false, SplitterFactory.getInstance().getPlainTextSplitter()) };
++        return;
++    consumer.consumeToken(element, SplitterFactory.getInstance().getPlainTextSplitter());
+ }
+\ No newline at end of file

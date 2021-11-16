@@ -1,0 +1,24 @@
+diff --git a/c57974dc527b23f7797ba8638bf3953167cdf28f b/bc08aad0d413d73dd4111778e44b8c7286842932
+index c57974dc52..bc08aad0d4 100644
+--- a/c57974dc527b23f7797ba8638bf3953167cdf28f
++++ b/bc08aad0d413d73dd4111778e44b8c7286842932
+@@ -1,9 +1,11 @@
+ public TitanLabel makeEdgeLabel(EdgeLabelDefinition definition) {
+-    verifyTxState();
+-    TitanLabelVertex prop = new TitanLabelVertex(this, temporaryVertexID.decrementAndGet(), ElementLifeCycle.New);
+-    addProperty(prop, SystemKey.EdgeTypeDefinition, definition);
+-    addProperty(prop, SystemKey.TypeName, definition.getName());
+-    addProperty(prop, SystemKey.TypeClass, TitanTypeClass.LABEL);
+-    // TODO: add to internal structures etc
+-    return prop;
++    verifyOpen();
++    TitanLabelVertex label = new TitanLabelVertex(this, temporaryID.decrementAndGet(), ElementLifeCycle.New);
++    addProperty(label, SystemKey.EdgeTypeDefinition, definition);
++    addProperty(label, SystemKey.TypeName, definition.getName());
++    addProperty(label, SystemKey.TypeClass, TitanTypeClass.LABEL);
++    graph.assignID(label);
++    vertexCache.add(label, label.getID());
++    typeCache.put(definition.getName(), label);
++    return label;
+ }
+\ No newline at end of file

@@ -1,0 +1,29 @@
+diff --git a/7617c3199782333b9357cb861dfc7512b44af3b3 b/cd716351662880994f75c9c508706de5a3c969f7
+index 7617c31997..cd71635166 100644
+--- a/7617c3199782333b9357cb861dfc7512b44af3b3
++++ b/cd716351662880994f75c9c508706de5a3c969f7
+@@ -1,8 +1,17 @@
+ public View build(Context ctx) {
+-    mScrollView = new ScrollView(ctx);
+-    mLinearLayout = new LinearLayout(ctx);
+-    mLinearLayout.setOrientation(LinearLayout.VERTICAL);
+-    mScrollView.addView(mLinearLayout, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+-    update();
+-    return mScrollView;
++    mRecyclerView = new RecyclerView(ctx);
++    // set the itemAnimator
++    mRecyclerView.setItemAnimator(new DefaultItemAnimator());
++    // some style improvements on older devices
++    mRecyclerView.setFadingEdgeLength(0);
++    // set the drawing cache background to the same color as the slider to improve performance
++    // mRecyclerView.setDrawingCacheBackgroundColor(UIUtils.getThemeColorFromAttrOrRes(mActivity, R.attr.material_drawer_background, R.color.material_drawer_background));
++    mRecyclerView.setClipToPadding(false);
++    // additional stuff
++    mRecyclerView.setLayoutManager(new LinearLayoutManager(ctx));
++    // adapter
++    mDrawerAdapter = new DrawerAdapter();
++    mRecyclerView.setAdapter(mDrawerAdapter);
++    createItems();
++    return mRecyclerView;
+ }
+\ No newline at end of file

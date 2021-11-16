@@ -1,0 +1,18 @@
+diff --git a/32d492d9b045aaf9da391040889c04e2ace219a1 b/8af43fd0b074acc06848a7fca4beec84415b215e
+index 32d492d9b0..8af43fd0b0 100644
+--- a/32d492d9b045aaf9da391040889c04e2ace219a1
++++ b/8af43fd0b074acc06848a7fca4beec84415b215e
+@@ -1,8 +1,9 @@
+-private void addRegistration(String sessionId, Registration<?> registration) {
+-    List<Registration<?>> list = this.registrationsBySession.get(sessionId);
++private void addRegistration(StompSession session, EventRegistration registration) {
++    String sessionId = session.getId();
++    List<EventRegistration> list = this.registrationsBySession.get(sessionId);
+     if (list == null) {
+-        list = new ArrayList<Registration<?>>();
++        list = new ArrayList<EventRegistration>();
+         this.registrationsBySession.put(sessionId, list);
+     }
+     list.add(registration);
+ }
+\ No newline at end of file

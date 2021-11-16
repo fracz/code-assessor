@@ -1,0 +1,24 @@
+diff --git a/7a6c05cb5eb10fa31977a4f83df2ca5593b61834 b/911dcfa3a0a897df2158ff95100dede3f586b034
+index 7a6c05cb5e..911dcfa3a0 100644
+--- a/7a6c05cb5eb10fa31977a4f83df2ca5593b61834
++++ b/911dcfa3a0a897df2158ff95100dede3f586b034
+@@ -1,15 +1,15 @@
+ @Nullable
+-private MavenArtifact findInRepositories(@NotNull MavenArtifactReference ref, boolean resolve) {
++private MavenArtifactVersion findInRepositories(@NotNull DBRProgressMonitor monitor, @NotNull MavenArtifactReference ref) {
+     // Try all available repositories (without resolve)
+     for (MavenRepository repository : repositories) {
+-        MavenArtifact artifact = repository.findArtifact(ref, resolve);
++        MavenArtifactVersion artifact = repository.findArtifact(monitor, ref);
+         if (artifact != null) {
+             return artifact;
+         }
+     }
+-    MavenArtifact artifact = localRepository.findArtifact(ref, resolve);
++    MavenArtifactVersion artifact = localRepository.findArtifact(monitor, ref);
+     if (artifact != null) {
+         return artifact;
+     }
+     return null;
+ }
+\ No newline at end of file

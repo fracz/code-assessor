@@ -1,0 +1,15 @@
+diff --git a/c4a52fcf00b09932313f8067b13a82b49049c3f5 b/ac1c14501f02e3b75802c9ecddfccac785037d2b
+index c4a52fcf00..ac1c14501f 100644
+--- a/c4a52fcf00b09932313f8067b13a82b49049c3f5
++++ b/ac1c14501f02e3b75802c9ecddfccac785037d2b
+@@ -1,5 +1,8 @@
+-public JComponent getComponent(final RadComponent component, final StringDescriptor value, final boolean inplace) {
++public JComponent getComponent(final RadComponent component, final StringDescriptor value, final InplaceContext inplaceContext) {
+     setValue(value);
+     myTfWithButton.getTextField().setBorder(null);
++    if (inplaceContext != null && inplaceContext.isStartedByTyping()) {
++        myTfWithButton.setText(Character.toString(inplaceContext.getStartChar()));
++    }
+     return myTfWithButton;
+ }
+\ No newline at end of file

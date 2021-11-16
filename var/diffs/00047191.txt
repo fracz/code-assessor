@@ -1,0 +1,26 @@
+diff --git a/47edd1e80727ad53ca1f11aa10ce5d2ea3a58eac b/898fa6dad3bd55bcf80c12380b79cbf9fcac9b45
+index 47edd1e807..898fa6dad3 100644
+--- a/47edd1e80727ad53ca1f11aa10ce5d2ea3a58eac
++++ b/898fa6dad3bd55bcf80c12380b79cbf9fcac9b45
+@@ -1,15 +1,17 @@
+ /**
+  * Create a blank, zeroed out file of the correct size.
+  * This lets us just use transferTo to initialize the buffers.
+  *
+  * @param dataDir in which template file will be created.
++ * @param name
++ * @param size
+  */
+-private FileChannel createTemplateFile(final String dataDir) {
+-    final File templateFile = new File(dataDir, "templateFile");
++private FileChannel createTemplateFile(final String dataDir, final String name, final long size) {
++    final File templateFile = new File(dataDir, name);
+     templateFile.deleteOnExit();
+     try {
+-        return IoUtil.createEmptyFile(templateFile, BUFFER_SIZE);
++        return IoUtil.createEmptyFile(templateFile, size);
+     } catch (IOException e) {
+         throw new IllegalStateException("Cannot create template file", e);
+     }
+ }
+\ No newline at end of file

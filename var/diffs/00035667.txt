@@ -1,0 +1,33 @@
+diff --git a/81928ff2fcc468ec22ddde24bd9542471e7a01d4 b/a61c55c94e3b7adcf65a9f787f2534c005c69b86
+index 81928ff2fc..a61c55c94e 100644
+--- a/81928ff2fcc468ec22ddde24bd9542471e7a01d4
++++ b/a61c55c94e3b7adcf65a9f787f2534c005c69b86
+@@ -1,26 +1,26 @@
+ /**
+  * Hack the <code>name</code> field of the given <code>ObjectStreamClass</code> with
+  * the <code>newProxyClass</code>.
+  * <p/>
+  * The parent ObjectInputStream will check the name of the class in the stream matches the name of the one
+  * that is created in this method.
+  * <p/>
+  * The CGLIB classes uses a hash of the classloader and/or maybe some other data that allow them to be
+  * relatively unique in a JVM.
+  * <p/>
+  * When names differ, which happens when the mock is deserialized in another ClassLoader, a
+  * <code>java.io.InvalidObjectException</code> is thrown, so this part of the code is hacking through
+  * the given <code>ObjectStreamClass</code> to change the name with the newly created class.
+  *
+  * @param descInstance The <code>ObjectStreamClass</code> that will be hacked.
+  * @param proxyClass   The proxy class whose name will be applied.
+  * @throws java.io.InvalidObjectException
+  */
+ private void hackClassNameToMatchNewlyCreatedClass(ObjectStreamClass descInstance, Class<?> proxyClass) throws ObjectStreamException {
+     try {
+         Field classNameField = descInstance.getClass().getDeclaredField("name");
+-        new FieldSetter(descInstance, classNameField).set(proxyClass.getCanonicalName());
++        setField(descInstance, classNameField, proxyClass.getCanonicalName());
+     } catch (NoSuchFieldException nsfe) {
+         throw new MockitoSerializationIssue(join("Wow, the class 'ObjectStreamClass' in the JDK don't have the field 'name',", "this is definitely a bug in our code as it means the JDK team changed a few internal things.", "", "Please report an issue with the JDK used, a code sample and a link to download the JDK would be welcome."), nsfe);
+     }
+ }
+\ No newline at end of file

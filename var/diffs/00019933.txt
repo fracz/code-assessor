@@ -1,0 +1,16 @@
+diff --git a/77243d5768f758f399a7efc31cea64c0a5ccb431 b/b7c733067771c9e8b218235a07d8579b18d0901b
+index 77243d5768..b7c7330677 100644
+--- a/77243d5768f758f399a7efc31cea64c0a5ccb431
++++ b/b7c733067771c9e8b218235a07d8579b18d0901b
+@@ -1,9 +1,9 @@
+ public static Class<?> getClassFromCurrentClassLoader(String className) {
+-    Class<?> result = null;
++    Class<?> result = loadClass(Thread.currentThread().getContextClassLoader(), className);
+     try {
+         result = Thread.currentThread().getContextClassLoader().loadClass(className);
+     } catch (ClassNotFoundException e) {
+         LOG.error("can'r find class in current thread context classLoader ", e);
+     }
+     return result;
+ }
+\ No newline at end of file

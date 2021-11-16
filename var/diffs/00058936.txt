@@ -1,0 +1,14 @@
+diff --git a/8038a102c45fb5c7600bf96c782642c7ba04d44c b/28161ec0f1399351392a085fba9c1aa472e02422
+index 8038a102c4..28161ec0f1 100644
+--- a/8038a102c45fb5c7600bf96c782642c7ba04d44c
++++ b/28161ec0f1399351392a085fba9c1aa472e02422
+@@ -1,5 +1,4 @@
+-private static StoreTransaction overrideTimestamp(final StoreTransaction tx, final long nanoTimestamp) {
+-    // TODO: need to figure out how to do this with separate transactions!
+-    tx.getConfiguration().setTimestamp(nanoTimestamp);
+-    return tx;
++private StoreTransaction overrideTimestamp(final StoreTransaction tx, final long ts) throws StorageException {
++    StandardTransactionConfig newCfg = new StandardTransactionConfig.Builder(tx.getConfiguration(), ts).build();
++    return manager.beginTransaction(newCfg);
+ }
+\ No newline at end of file

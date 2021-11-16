@@ -1,0 +1,18 @@
+diff --git a/059005a791efe7deafa324d01776c98a16578881 b/be886ed5d58d2423d18ed8853e9923431fa30407
+index 059005a791..be886ed5d5 100644
+--- a/059005a791efe7deafa324d01776c98a16578881
++++ b/be886ed5d58d2423d18ed8853e9923431fa30407
+@@ -1,11 +1,11 @@
+ @Test
+ public void testStandardIDPool1() throws InterruptedException {
+     final MockIDAuthority idauth = new MockIDAuthority(200);
+     testIDPoolWith(new IDPoolFactory() {
+
+         @Override
+         public StandardIDPool get(long partitionID) {
+-            return new StandardIDPool(idauth, partitionID, Integer.MAX_VALUE, 2000, TimeUnit.MILLISECONDS, 0.2);
++            return new StandardIDPool(idauth, partitionID, Integer.MAX_VALUE, new SimpleDuration(2000L, TimeUnit.MILLISECONDS), 0.2);
+         }
+     }, 1000, 6, 100000);
+ }
+\ No newline at end of file

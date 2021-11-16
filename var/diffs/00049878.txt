@@ -1,0 +1,14 @@
+diff --git a/a5c5aa2d6abaac98b13c536e5abeb538db26b0ee b/b7a429c436cb14db527017def7c574a3b618720c
+index a5c5aa2d6a..b7a429c436 100644
+--- a/a5c5aa2d6abaac98b13c536e5abeb538db26b0ee
++++ b/b7a429c436cb14db527017def7c574a3b618720c
+@@ -1,4 +1,6 @@
+ private boolean belongsToEditor(QMMSessionInfo session) {
+-    DBCExecutionContext executionContext = session.getReference();
+-    return executionContext != null && executionContext == editor.getExecutionContext();
++    String containerId = session.getContainerId();
++    String contextName = session.getContextName();
++    DBCExecutionContext executionContext = editor.getExecutionContext();
++    return executionContext != null && Objects.equals(executionContext.getDataSource().getContainer().getId(), containerId) && Objects.equals(executionContext.getContextName(), contextName);
+ }
+\ No newline at end of file

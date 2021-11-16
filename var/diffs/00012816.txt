@@ -1,0 +1,22 @@
+diff --git a/849ce52d3e54b756afdae30da636c0251cd5ee98 b/797b4dc056ffc0de26ebec1b57d6be9e447da8ab
+index 849ce52d3e..797b4dc056 100644
+--- a/849ce52d3e54b756afdae30da636c0251cd5ee98
++++ b/797b4dc056ffc0de26ebec1b57d6be9e447da8ab
+@@ -1,11 +1,10 @@
+ @Override
+ @SuppressWarnings("unchecked")
+ public void onDispose() {
+-    ViewerAnnotator annotator = getAnnotator(myViewer);
+-    if (annotator == null)
++    if (myViewer.getProject() == null)
+         return;
+-    boolean[] annotationsShown = new boolean[2];
+-    annotationsShown[0] = annotator.isAnnotationShown(myViewer, Side.LEFT);
+-    annotationsShown[1] = annotator.isAnnotationShown(myViewer, Side.RIGHT);
+-    myViewer.getRequest().putUserData(ANNOTATIONS_SHOWN_KEY, annotationsShown);
++    for (ViewerAnnotatorFactory annotator : ANNOTATORS) {
++        if (annotator.getViewerClass().isInstance(myViewer))
++            annotator.rememberShownAnnotations(myViewer);
++    }
+ }
+\ No newline at end of file

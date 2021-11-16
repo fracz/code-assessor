@@ -1,0 +1,20 @@
+diff --git a/766b431efe1fb5530d08cf215840bf822da79c42 b/b0387e347660ed1f1f43c0a4e309d94ee0e181c6
+index 766b431efe..b0387e3476 100644
+--- a/766b431efe1fb5530d08cf215840bf822da79c42
++++ b/b0387e347660ed1f1f43c0a4e309d94ee0e181c6
+@@ -1,10 +1,12 @@
+ @Override
+ public void visitMethod(PsiMethod psiMethod) {
+     super.visitMethod(psiMethod);
+-    final MatchingHandler handler = myCompilingVisitor.getContext().getPattern().getHandler(psiMethod);
++    CompiledPattern pattern = myCompilingVisitor.getContext().getPattern();
++    final MatchingHandler handler = pattern.getHandler(psiMethod);
+     if (needsSupers(psiMethod, handler)) {
+-        myCompilingVisitor.getContext().getPattern().setRequestsSuperMethods(true);
++        assert pattern instanceof JavaCompiledPattern;
++        ((JavaCompiledPattern) pattern).setRequestsSuperMethods(true);
+     }
+     GlobalCompilingVisitor.setFilter(handler, MethodFilter.getInstance());
+     handleReferenceText(psiMethod.getName());
+ }
+\ No newline at end of file

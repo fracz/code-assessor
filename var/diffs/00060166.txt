@@ -1,0 +1,12 @@
+diff --git a/de8a90d47ff384b47a5790afd4de6cf638236b05 b/ec929457007ccb6aa5c7e7063b3d65f3a7525408
+index de8a90d47f..ec92945700 100644
+--- a/de8a90d47ff384b47a5790afd4de6cf638236b05
++++ b/ec929457007ccb6aa5c7e7063b3d65f3a7525408
+@@ -1,5 +1,5 @@
+ public static final TitanProperty queryHiddenUniqueProperty(InternalVertex vertex, TitanKey key) {
+     assert ((InternalType) key).isHidden() : "Expected hidden property key";
+     assert key.isUnique(Direction.OUT) : "Expected functional property  type";
+-    return Iterables.getOnlyElement(new VertexCentricQueryBuilder(vertex).includeHidden().type(key).properties(), null);
++    return Iterables.getOnlyElement(vertex.query().includeHidden().type(key).properties(), null);
+ }
+\ No newline at end of file

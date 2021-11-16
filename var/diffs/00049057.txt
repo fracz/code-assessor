@@ -1,0 +1,17 @@
+diff --git a/931f6c85f0c4c0ff63a203988d034850a71115a5 b/5750e2ecf3654e5746dd246d157ee00b2fedbb33
+index 931f6c85f0..5750e2ecf3 100644
+--- a/931f6c85f0c4c0ff63a203988d034850a71115a5
++++ b/5750e2ecf3654e5746dd246d157ee00b2fedbb33
+@@ -1,8 +1,6 @@
+ @Override
+-protected void saveSettings(DBPConnectionInfo connectionInfo) {
+-    if (connectionInfo != null) {
+-        if (propertySource != null) {
+-            connectionInfo.getProperties().putAll(propertySource.getProperties());
+-        }
++public void saveSettings(DataSourceDescriptor dataSource) {
++    if (propertySource != null) {
++        dataSource.getConnectionInfo().getProperties().putAll(propertySource.getProperties());
+     }
+ }
+\ No newline at end of file

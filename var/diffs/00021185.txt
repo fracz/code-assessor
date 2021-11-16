@@ -1,0 +1,15 @@
+diff --git a/12abff0e0dbd8f6bec8ab09fdc528b8b4f2995a9 b/7985331bf225c832caac9011425c95175c84bcfd
+index 12abff0e0d..7985331bf2 100644
+--- a/12abff0e0dbd8f6bec8ab09fdc528b8b4f2995a9
++++ b/7985331bf225c832caac9011425c95175c84bcfd
+@@ -1,6 +1,7 @@
+ @Test
+ public void test4() throws Exception {
+     FastJsonHttpMessageConverter4 converter = new FastJsonHttpMessageConverter4();
+-    converter.addSerializerFeature(SerializerFeature.WriteMapNullValue);
+-    converter.addSerializerFeature(SerializerFeature.WriteNullStringAsEmpty);
++    FastJsonConfig fastJsonConfig = new FastJsonConfig();
++    fastJsonConfig.setSerializerFeatures(SerializerFeature.WriteMapNullValue, SerializerFeature.WriteNullStringAsEmpty);
++    converter.setFastJsonConfig(fastJsonConfig);
+ }
+\ No newline at end of file

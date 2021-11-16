@@ -1,0 +1,19 @@
+diff --git a/f110d150d699676ec0b10556902afa17469fa400 b/4e17206fb654691d9c38eff5ee38b3a293e0232d
+index f110d150d6..4e17206fb6 100644
+--- a/f110d150d699676ec0b10556902afa17469fa400
++++ b/4e17206fb654691d9c38eff5ee38b3a293e0232d
+@@ -1,12 +1,5 @@
+ @NotNull
+ @Override
+ public Set<VariableDescriptor> getProperties(@NotNull String name) {
+-    Set<VariableDescriptor> variableDescriptor = variables.get(name);
+-    if (variableDescriptor == null) {
+-        variableDescriptor = doGetVariable(name);
+-        if (variableDescriptor != null) {
+-            variables.put(name, variableDescriptor);
+-        }
+-    }
+-    return variableDescriptor != null ? variableDescriptor : Collections.<VariableDescriptor>emptySet();
++    return semanticServices.getDescriptorResolver().resolveFieldGroupByName(containingDeclaration, psiClass, name, staticMembers);
+ }
+\ No newline at end of file

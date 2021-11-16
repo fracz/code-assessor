@@ -1,0 +1,13 @@
+diff --git a/6a64f168789131be4e5c1322f509fd0c54fa1229 b/2ac7a9995a2cee9d275915caadbd2f429f5f9e85
+index 6a64f16878..2ac7a9995a 100644
+--- a/6a64f168789131be4e5c1322f509fd0c54fa1229
++++ b/2ac7a9995a2cee9d275915caadbd2f429f5f9e85
+@@ -1,4 +1,6 @@
+ // Internals
+ private void addSchema(Collection<DynamicRecord> beforeRecords, Collection<DynamicRecord> afterRecords) throws IOException {
+-    write(new Command.SchemaRuleCommand(null, null, null, beforeRecords, afterRecords, null, Long.MAX_VALUE));
++    Command.SchemaRuleCommand command = new Command.SchemaRuleCommand();
++    command.init(beforeRecords, afterRecords, null, Long.MAX_VALUE);
++    write(command);
+ }
+\ No newline at end of file

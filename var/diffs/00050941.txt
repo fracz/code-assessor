@@ -1,0 +1,19 @@
+diff --git a/086318f2bcb99febf20dcb0119ea4ec436b77339 b/65de0d10fdce705c54ae9e76b13bae9c3aa50471
+index 086318f2bc..65de0d10fd 100644
+--- a/086318f2bcb99febf20dcb0119ea4ec436b77339
++++ b/65de0d10fdce705c54ae9e76b13bae9c3aa50471
+@@ -1,11 +1,3 @@
+-public <T extends DBWNetworkHandler> T createHandler(Class<T> handlerType) throws DBException {
+-    Class<T> toolClass = getObjectClass(handlerClassName, handlerType);
+-    if (toolClass == null) {
+-        throw new DBException("Handler class '" + toolClass + "' not found");
+-    }
+-    try {
+-        return toolClass.newInstance();
+-    } catch (Throwable ex) {
+-        throw new DBException("Can't create network handler '" + handlerClassName + "'", ex);
+-    }
++public <T extends DBWNetworkHandler> T createHandler(Class<T> impl) throws DBException {
++    return handlerType.createInstance(impl);
+ }
+\ No newline at end of file

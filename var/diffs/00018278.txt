@@ -1,0 +1,25 @@
+diff --git a/79f44565598f074698befab267a232020007abb5 b/e75f59c99d1bc194549d8042155bb1db880dd52d
+index 79f4456559..e75f59c99d 100644
+--- a/79f44565598f074698befab267a232020007abb5
++++ b/e75f59c99d1bc194549d8042155bb1db880dd52d
+@@ -1,15 +1,16 @@
+ /**
+  * Call this method to create a new drawing DataSet
+  *
+  * @param type
+  * the type of the new DataSet
+  */
+-public void createNewDrawingDataSet(ChartData chartData) {
++public void createNewDrawingDataSet(LineData chartData) {
+     if (mCurrentDrawingDataSet != null && mCurrentDrawingEntries != null) {
+         // if an old one exist, finish the other one first
+         finishNewDrawingEntry(chartData);
+     }
+     mCurrentDrawingEntries = new ArrayList<Entry>();
+-    this.mCurrentDrawingDataSet = new DataSet(mCurrentDrawingEntries, "DS " + mLastDrawnDataSetIndex);
+-    chartData.getDataSets().add(mCurrentDrawingDataSet);
++    this.mCurrentDrawingDataSet = new LineDataSet(mCurrentDrawingEntries, "DS " + mLastDrawnDataSetIndex);
++    ArrayList<LineDataSet> dataSets = (ArrayList<LineDataSet>) chartData.getDataSets();
++    dataSets.add(mCurrentDrawingDataSet);
+ }
+\ No newline at end of file

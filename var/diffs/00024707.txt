@@ -1,0 +1,20 @@
+diff --git a/69d62be9738934d6f08577b78d4a300cbbe45c67 b/52c84311a958674ee4d07aabfe612c2905241f16
+index 69d62be973..52c84311a9 100644
+--- a/69d62be9738934d6f08577b78d4a300cbbe45c67
++++ b/52c84311a958674ee4d07aabfe612c2905241f16
+@@ -1,9 +1,10 @@
+ public void close() {
+     try {
+-        if (currentKey != null)
+-            writeRow(currentKey, columnFamily);
+-        writer.finish(false);
++        if (update != null)
++            writePartition(update);
++        if (writer != null)
++            writer.finish(false);
+     } catch (Throwable t) {
+-        throw Throwables.propagate(writer.abort(t));
++        throw Throwables.propagate(writer == null ? t : writer.abort(t));
+     }
+ }
+\ No newline at end of file

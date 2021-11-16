@@ -1,0 +1,19 @@
+diff --git a/e6d1257ad0d9e501e3c60db75facf278519bbee3 b/0b730a7748a0d28106816f955384f5f6827edcdf
+index e6d1257ad0..0b730a7748 100644
+--- a/e6d1257ad0d9e501e3c60db75facf278519bbee3
++++ b/0b730a7748a0d28106816f955384f5f6827edcdf
+@@ -1,9 +1,11 @@
+-private ObjectFormatter initFormatter(Class<? extends ObjectFormatter> formatterClazz) {
++private ObjectFormatter initFormatter(Class<? extends ObjectFormatter> formatterClazz, String[] params) {
+     try {
+-        return formatterClazz.newInstance();
++        ObjectFormatter objectFormatter = formatterClazz.newInstance();
++        objectFormatter.initParam(params);
++        return objectFormatter;
+     } catch (InstantiationException e) {
+         throw new RuntimeException(e);
+     } catch (IllegalAccessException e) {
+         throw new RuntimeException(e);
+     }
+ }
+\ No newline at end of file

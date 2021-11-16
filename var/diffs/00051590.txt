@@ -1,0 +1,11 @@
+diff --git a/d79ce9b6f939a8207dcafa6c961037c4b87d6068 b/ee2270e4d41a738d47fa41ed48c68d3e1d28d238
+index d79ce9b6f9..ee2270e4d4 100644
+--- a/d79ce9b6f939a8207dcafa6c961037c4b87d6068
++++ b/ee2270e4d41a738d47fa41ed48c68d3e1d28d238
+@@ -1,4 +1,4 @@
+ @Override
+ public void setAttributeValue(@NotNull DBSAttributeBase attribute, @Nullable Object value) throws DBCException {
+-    values.put(attribute, value);
++    values[attribute.getOrdinalPosition() - 1] = value;
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/fa2cd7454d0faf1e46f68298b7744f3a169b5522 b/45902c734e5c5ccad106219f4de1431fa9fffb90
+index fa2cd7454d..45902c734e 100644
+--- a/fa2cd7454d0faf1e46f68298b7744f3a169b5522
++++ b/45902c734e5c5ccad106219f4de1431fa9fffb90
+@@ -1,4 +1,5 @@
+ @Override
+ public String toString() {
+-    return "Target: " + resultSet.getDataContainer().getName();
++    DBSDataContainer dataContainer = resultSet.getDataContainer();
++    return "Target: " + (dataContainer == null ? null : dataContainer.getName());
+ }
+\ No newline at end of file

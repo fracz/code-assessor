@@ -1,0 +1,12 @@
+diff --git a/0484380d266b352cbf95ab0d6bcc936828ef350c b/99fa1cdefb227405eda3686fc347f469c94e4f74
+index 0484380d26..99fa1cdefb 100644
+--- a/0484380d266b352cbf95ab0d6bcc936828ef350c
++++ b/99fa1cdefb227405eda3686fc347f469c94e4f74
+@@ -1,4 +1,4 @@
+ private void updateWith(VirtualFile... roots) {
+-    Updater u = new Updater(vcs, gw, roots);
+-    CacheUpdaterHelper.performUpdate(u, myPhysicalContent);
++    gw.setContentRoots(roots);
++    doUpdate();
+ }
+\ No newline at end of file

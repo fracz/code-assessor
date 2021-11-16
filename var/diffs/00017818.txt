@@ -1,0 +1,21 @@
+diff --git a/fc48af37c0a36a3f74abfd058071e705abe86a91 b/bfaf2ac08f795818547f57a060a3f0226655fa99
+index fc48af37c0..bfaf2ac08f 100644
+--- a/fc48af37c0a36a3f74abfd058071e705abe86a91
++++ b/bfaf2ac08f795818547f57a060a3f0226655fa99
+@@ -1,14 +1,9 @@
+ /**
+  * Retrieve (or create) an interned HystrixCommandKey instance for a given name.
+  *
+  * @param name command name
+  * @return HystrixCommandKey instance that is interned (cached) so a given name will always retrieve the same instance.
+  */
+ public static HystrixCommandKey asKey(String name) {
+-    HystrixCommandKey k = intern.get(name);
+-    if (k == null) {
+-        k = new HystrixCommandKeyDefault(name);
+-        intern.putIfAbsent(name, k);
+-    }
+-    return k;
++    return intern.interned(name);
+ }
+\ No newline at end of file

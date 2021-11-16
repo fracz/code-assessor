@@ -1,0 +1,14 @@
+diff --git a/306c456093c9f7af2b8ce03406d763addb3c36ce b/b60a1e14b496e9774d8596ec8f672233fe74ce9d
+index 306c456093..b60a1e14b4 100644
+--- a/306c456093c9f7af2b8ce03406d763addb3c36ce
++++ b/b60a1e14b496e9774d8596ec8f672233fe74ce9d
+@@ -1,4 +1,6 @@
+ @Override
+-public void readFrom(StreamInput in) throws IOException {
+-    this.boost = in.readFloat();
++public MatchAllQueryBuilder readFrom(StreamInput in) throws IOException {
++    MatchAllQueryBuilder matchAllQueryBuilder = new MatchAllQueryBuilder();
++    matchAllQueryBuilder.boost = in.readFloat();
++    return matchAllQueryBuilder;
+ }
+\ No newline at end of file

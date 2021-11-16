@@ -1,0 +1,20 @@
+diff --git a/ddf6c7d3e4de7828d859103eae43169c34158ef2 b/c9adb1064179e9f255b0ff8b34e8ff2706c42bda
+index ddf6c7d3e4..c9adb10641 100644
+--- a/ddf6c7d3e4de7828d859103eae43169c34158ef2
++++ b/c9adb1064179e9f255b0ff8b34e8ff2706c42bda
+@@ -1,13 +1,7 @@
+ // -------------------------------------------------------------------------
+ // Helper methods
+ // -------------------------------------------------------------------------
+ @Nullable
+ private FileType getFileTypeByName(String name) {
+-    Iterator<FileType> itr = myFileTypes.iterator();
+-    while (itr.hasNext()) {
+-        FileType fileType = itr.next();
+-        if (fileType.getName().equals(name))
+-            return fileType;
+-    }
+-    return null;
++    return mySchemesManager.findSchemeByName(name);
+ }
+\ No newline at end of file

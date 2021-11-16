@@ -1,0 +1,20 @@
+diff --git a/a1522982b83e1fb2d6917a8fa0516851bdc3d2be b/b97ee44a6a78eef8bdb19630d41a046364cf4d43
+index a1522982b8..b97ee44a6a 100644
+--- a/a1522982b83e1fb2d6917a8fa0516851bdc3d2be
++++ b/b97ee44a6a78eef8bdb19630d41a046364cf4d43
+@@ -1,9 +1,11 @@
+ @Override
+-@SuppressWarnings("unchecked")
+ public T getValue() {
+     Object o = state.get();
+-    if (o != null && !NotificationLite.isError(o)) {
+-        return (T) o;
++    if (o != null) {
++        if (NotificationLite.isComplete(o) || NotificationLite.isError(o)) {
++            return null;
++        }
++        return NotificationLite.getValue(o);
+     }
+     return null;
+ }
+\ No newline at end of file

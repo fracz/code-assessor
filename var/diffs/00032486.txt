@@ -1,0 +1,28 @@
+diff --git a/2403655a47716e7d718d53347285dc0c0e9d6a69 b/526cf80f9c12f6f83b1690ec4ab94f4a1e671fef
+index 2403655a47..526cf80f9c 100644
+--- a/2403655a47716e7d718d53347285dc0c0e9d6a69
++++ b/526cf80f9c12f6f83b1690ec4ab94f4a1e671fef
+@@ -1,20 +1,15 @@
+ /**
+  * A raw type expression must be of the form rawTypeOf(TemplateType)
+  */
+ private boolean validRawTypeOfTypeExpression(Node expr) {
+     // parameter
+-    if (expr.getChildCount() < 1 + RAWTYPEOF_PARAM_COUNT) {
+-        warnMissingParam("rawTypeOf", expr);
+-        return false;
+-    }
+-    if (expr.getChildCount() > 1 + RAWTYPEOF_PARAM_COUNT) {
+-        warnExtraParam("rawTypeOf", expr);
++    if (!checkParameterCount(expr, Keywords.RAWTYPEOF)) {
+         return false;
+     }
+     // The parameter must be a valid type expression
+-    if (!validTTLTypeExpression(expr.getChildAtIndex(1))) {
++    if (!validTypeExpression(getCallArgument(expr, 0))) {
+         warnInvalidInside("rawTypeOf", expr);
+         return false;
+     }
+     return true;
+ }
+\ No newline at end of file

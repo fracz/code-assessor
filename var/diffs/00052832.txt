@@ -1,0 +1,14 @@
+diff --git a/3e4ef9cb64ff13fd4bfbae796fac8c71522cf082 b/45746bfc104e62b1acd96e0a4cffae297826a356
+index 3e4ef9cb64..45746bfc10 100644
+--- a/3e4ef9cb64ff13fd4bfbae796fac8c71522cf082
++++ b/45746bfc104e62b1acd96e0a4cffae297826a356
+@@ -1,7 +1,7 @@
+ // TODO 归并字段，整合进mySQL测试
+ // TODO 暂时不支持or
+ @Test
+ @Ignore
+ public void assertParse() {
+-    assertSQLParsedResult(SQLParserFactory.create(DatabaseType.MySQL, getSql(), Collections.emptyList(), new ShardingRuleMockBuilder().addShardingColumns("id").addShardingColumns("user_id").addShardingColumns("name").addShardingColumns("age").addShardingColumns("days").addShardingColumns("fee").addShardingColumns("travel_date").addShardingColumns("long").build()).parse());
++    new SQLParserEngine(DatabaseType.MySQL, getSql(), new ShardingRuleMockBuilder().addShardingColumns("id").addShardingColumns("user_id").addShardingColumns("name").addShardingColumns("age").addShardingColumns("days").addShardingColumns("fee").addShardingColumns("travel_date").addShardingColumns("long").build(), Collections.emptyList()).parseStatement();
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/51a43c8f6f9518ceb9f4f8f326929da27005d837 b/5f68e229ecc0519f1cf55b1c12a39bda529757d7
+index 51a43c8f6f..5f68e229ec 100644
+--- a/51a43c8f6f9518ceb9f4f8f326929da27005d837
++++ b/5f68e229ecc0519f1cf55b1c12a39bda529757d7
+@@ -1,8 +1,7 @@
+-public boolean applyMethod(PsiClass clazz, PsiMethod existingMethod, PsiMethod newMethod, Editor editor) throws IncorrectOperationException {
++public PsiMethod applyMethod(PsiClass clazz, PsiMethod existingMethod, PsiMethod newMethod, Editor editor) throws IncorrectOperationException {
+     if (existingMethod != null) {
+-        existingMethod.replace(newMethod);
+-        return true;
++        return (PsiMethod) existingMethod.replace(newMethod);
+     } else {
+         return DuplicatePolicy.getInstance().applyMethod(clazz, existingMethod, newMethod, editor);
+     }
+ }
+\ No newline at end of file

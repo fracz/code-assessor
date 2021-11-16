@@ -1,0 +1,20 @@
+diff --git a/32d8632c22a22e24bb8183960ffe70c3c3cd9eda b/cc7487e880f5101d5423b4971ee9773077afccb9
+index 32d8632c22..cc7487e880 100644
+--- a/32d8632c22a22e24bb8183960ffe70c3c3cd9eda
++++ b/cc7487e880f5101d5423b4971ee9773077afccb9
+@@ -1,13 +1,12 @@
+ @Test
+ public void shouldRemoveVerificationModeEvenWhenInvalidMatchers() throws Throwable {
+-    LastArguments.instance().reportMatcher(new Equals("test"));
+     MockitoStateImpl state = new MockitoStateImpl();
+     state.verifyingStarted(VerifyingMode.atLeastOnce());
+-    MockControl control = new MockControl(state);
++    MockControl control = new MockControl(state, new ExceptionThrowingBinder());
+     try {
+         control.invoke(null, String.class.getDeclaredMethod("toString"), new Object[] {});
+         fail();
+     } catch (InvalidUseOfMatchersException e) {
+     }
+     assertNull(state.pullVerifyingMode());
+ }
+\ No newline at end of file

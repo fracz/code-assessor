@@ -1,0 +1,29 @@
+diff --git a/dfac3ced78011f62ce987d11a21eeea1a8941ed0 b/5e67fc01f163b2ddf1b202eb7bf160b0bb74fbf4
+index dfac3ced78..5e67fc01f1 100644
+--- a/dfac3ced78011f62ce987d11a21eeea1a8941ed0
++++ b/5e67fc01f163b2ddf1b202eb7bf160b0bb74fbf4
+@@ -1,13 +1,13 @@
+ @NotNull
+-public static PsiField[] findResourceFieldsForFileResource(PsiFile file, boolean onlyInOwnPackages) {
+-    AndroidFacet facet = AndroidFacet.getInstance(file);
+-    if (facet != null) {
+-        LocalResourceManager manager = facet.getLocalResourceManager();
+-        String resourceType = manager.getFileResourceType(file);
+-        if (resourceType != null) {
+-            String resourceName = ResourceManager.getResourceName(resourceType, file.getName());
+-            return findResourceFields(facet, resourceType, resourceName, onlyInOwnPackages);
+-        }
++public static PsiField[] findResourceFieldsForFileResource(@NotNull PsiFile file, boolean onlyInOwnPackages) {
++    final AndroidFacet facet = AndroidFacet.getInstance(file);
++    if (facet == null) {
++        return PsiField.EMPTY_ARRAY;
+     }
+-    return PsiField.EMPTY_ARRAY;
++    final String resourceType = facet.getLocalResourceManager().getFileResourceType(file);
++    if (resourceType == null) {
++        return PsiField.EMPTY_ARRAY;
++    }
++    final String resourceName = getResourceName(resourceType, file.getName());
++    return findResourceFields(facet, resourceType, resourceName, onlyInOwnPackages);
+ }
+\ No newline at end of file

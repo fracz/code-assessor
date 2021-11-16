@@ -1,0 +1,24 @@
+diff --git a/ae72ef516df3ec3b348f7d5e74b9cbc12d78ca50 b/0e371a4e37351128482a844f68ab8c17891902d9
+index ae72ef516d..0e371a4e37 100644
+--- a/ae72ef516df3ec3b348f7d5e74b9cbc12d78ca50
++++ b/0e371a4e37351128482a844f68ab8c17891902d9
+@@ -1,16 +1,11 @@
+-private ConditionContext parseConditions(final Table table) {
+-    ConditionContext result = new ConditionContext();
++private void parseConditions(final ParseContext parseContext) {
+     do {
+         if (getLexer().equalToken(Token.AND)) {
+             getLexer().nextToken();
+         }
+-        Optional<Condition> condition = parseCondition(table);
+-        if (condition.isPresent()) {
+-            result.add(condition.get());
+-        }
++        parseCondition(parseContext);
+     } while (getLexer().equalToken(Token.AND));
+     if (getLexer().equalToken(Token.OR)) {
+         throw new ParserUnsupportedException(getLexer().getToken());
+     }
+-    return result;
+ }
+\ No newline at end of file

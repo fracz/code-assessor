@@ -1,0 +1,20 @@
+diff --git a/f2d2bd12d2a7e519e369e2ceba482019f054932e b/547a17c99b65e2cedf90fa122fbe4f2ed8381262
+index f2d2bd12d2..547a17c99b 100644
+--- a/f2d2bd12d2a7e519e369e2ceba482019f054932e
++++ b/547a17c99b65e2cedf90fa122fbe4f2ed8381262
+@@ -1,11 +1,11 @@
+ @Override
+ protected void setUp() throws Exception {
+     super.setUp();
+     myDataTestFixture = new MavenWithDataTestFixture(myDir);
+     myDataTestFixture.setUp();
+-    myRepositoryManager = MavenRepositoryManager.getInstance(myProject);
++    myRepositoryManager = MavenIndicesManager.getInstance(myProject);
+     myRepositoryManager.initIndex();
+-    myRepositoryManager.add(new MavenRepositoryInfo("local1", myDataTestFixture.getTestDataPath("local1"), false));
+-    myRepositoryManager.add(new MavenRepositoryInfo("local2", myDataTestFixture.getTestDataPath("local2"), false));
++    myRepositoryManager.add(new MavenIndex("local1", myDataTestFixture.getTestDataPath("local1"), MavenIndex.Kind.LOCAL));
++    myRepositoryManager.add(new MavenIndex("local2", myDataTestFixture.getTestDataPath("local2"), MavenIndex.Kind.LOCAL));
+     myRepositoryManager.startUpdateAll();
+ }
+\ No newline at end of file

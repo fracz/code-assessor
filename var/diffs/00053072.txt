@@ -1,0 +1,12 @@
+diff --git a/ab36ae4d47c8b2dbf1ed1ef1ce693df0ebf046c8 b/fccb84e0e6081cb89f79a2c2e7f2f636e780c80d
+index ab36ae4d47..fccb84e0e6 100644
+--- a/ab36ae4d47c8b2dbf1ed1ef1ce693df0ebf046c8
++++ b/fccb84e0e6081cb89f79a2c2e7f2f636e780c80d
+@@ -1,4 +1,4 @@
+ private DataSourceRule buildDataSourceRule() {
+-    Preconditions.checkArgument(config.getDataSource().size() > 0 || null != externalDataSourceMap && externalDataSourceMap.size() > 0, "Sharding JDBC: No data source config");
+-    return config.getDataSource().size() > 0 ? new DataSourceRule(config.getDataSource()) : new DataSourceRule(externalDataSourceMap);
++    Preconditions.checkArgument(!shardingRuleConfig.getDataSource().isEmpty() || MapUtils.isNotEmpty(externalDataSourceMap), "Sharding JDBC: No data source config");
++    return !shardingRuleConfig.getDataSource().isEmpty() ? new DataSourceRule(shardingRuleConfig.getDataSource()) : new DataSourceRule(externalDataSourceMap);
+ }
+\ No newline at end of file

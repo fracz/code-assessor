@@ -1,0 +1,19 @@
+diff --git a/bd3b621e604b49fbc3c52b04a5817a1f160ec384 b/a605e6e417cedc4e14b9176532a3319cd52fbcd8
+index bd3b621e60..a605e6e417 100644
+--- a/bd3b621e604b49fbc3c52b04a5817a1f160ec384
++++ b/a605e6e417cedc4e14b9176532a3319cd52fbcd8
+@@ -1,8 +1,12 @@
+ @NonNls
+ public String getHelpTopic() {
+     NewCodeStyleSettingsPanel selectedPanel = ensureCurrentPanel();
+     if (selectedPanel == null) {
+         return "reference.settingsdialog.IDE.globalcodestyle";
+     }
+-    return selectedPanel.getHelpTopic();
++    String helpTopic = selectedPanel.getHelpTopic();
++    if (helpTopic != null) {
++        return helpTopic;
++    }
++    return "";
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/549e177eb610400bc2e69422bffc1a4a102c5a9e b/44b4407a8178333819cd1bb2ac6f5be106869bbc
+index 549e177eb6..44b4407a81 100644
+--- a/549e177eb610400bc2e69422bffc1a4a102c5a9e
++++ b/44b4407a8178333819cd1bb2ac6f5be106869bbc
+@@ -1,15 +1,15 @@
+ @Override
+ public void done(IJobChangeEvent event) {
+     if (job.error != null) {
+         releaseExecutionContext();
+-        UIUtils.showErrorDialog(getSite().getShell(), "Open context", "Can't open editor connection", job.error);
++        DBUserInterface.getInstance().showError("Open context", "Can't open editor connection", job.error);
+     } else {
+         DBeaverUI.syncExec(new Runnable() {
+
+             @Override
+             public void run() {
+                 onDataSourceChange();
+             }
+         });
+     }
+ }
+\ No newline at end of file

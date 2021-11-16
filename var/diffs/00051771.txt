@@ -1,0 +1,32 @@
+diff --git a/13cc5b3e20f8df9ad8cd21d24fd09fbfa67706d5 b/f2ad81cafd19efb129ee0d21eb95c8a47b9e2dc4
+index 13cc5b3e20..f2ad81cafd 100644
+--- a/13cc5b3e20f8df9ad8cd21d24fd09fbfa67706d5
++++ b/f2ad81cafd19efb129ee0d21eb95c8a47b9e2dc4
+@@ -1,21 +1,13 @@
+-protected Image iconToImage(String icon) {
++protected DBPImage iconToImage(String icon) {
+     if (CommonUtils.isEmpty(icon)) {
+         return null;
+     } else if (icon.startsWith("#")) {
+         // Predefined image
+-        return DBeaverIcons.getImageById(icon.substring(1));
++        return DBIcon.getImageById(icon.substring(1));
+     } else {
+-        URL iconPath = getContributorBundle().getEntry(icon);
+-        if (iconPath != null) {
+-            try {
+-                iconPath = FileLocator.toFileURL(iconPath);
+-            } catch (IOException ex) {
+-                log.error(ex);
+-                return null;
+-            }
+-            ImageDescriptor descriptor = ImageDescriptor.createFromURL(iconPath);
+-            return descriptor.createImage();
++        if (!icon.startsWith("platform:")) {
++            icon = "platform:/plugin/" + pluginId + "/" + icon;
+         }
++        return new DBIcon(icon);
+     }
+-    return null;
+ }
+\ No newline at end of file

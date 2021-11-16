@@ -1,0 +1,20 @@
+diff --git a/a27341c58db507fdd460bedf62cba714c6e1458b b/e44a70acc867e9c1c56817ae19aaf6bb3b80cabb
+index a27341c58d..e44a70acc8 100644
+--- a/a27341c58db507fdd460bedf62cba714c6e1458b
++++ b/e44a70acc867e9c1c56817ae19aaf6bb3b80cabb
+@@ -1,4 +1,13 @@
+ private static ResultSet buildResultSet(final ShardingResultSets shardingResultSets, final SQLStatement sqlStatement) throws SQLException {
+     ResultSetMergeContext resultSetMergeContext = new ResultSetMergeContext(shardingResultSets, sqlStatement);
+-    return buildCoupling(buildReducer(resultSetMergeContext), resultSetMergeContext);
++    ResultSet result;
++    if (resultSetMergeContext.getSqlStatement().isGroupByAndOrderByDifferent()) {
++        result = buildMemoryResultSet(resultSetMergeContext);
++    } else {
++        result = buildStreamResultSet(resultSetMergeContext);
++    }
++    if (null != resultSetMergeContext.getSqlStatement().getLimit()) {
++        result = new LimitCouplingResultSet(result, resultSetMergeContext.getSqlStatement());
++    }
++    return result;
+ }
+\ No newline at end of file

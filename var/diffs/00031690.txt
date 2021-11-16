@@ -1,0 +1,32 @@
+diff --git a/537234706c99bbebfae22baceaac3f102be1cb89 b/c1fbc1b94280dc0a3b8d5cf5e70d5179b77e67d5
+index 537234706c..c1fbc1b942 100644
+--- a/537234706c99bbebfae22baceaac3f102be1cb89
++++ b/c1fbc1b94280dc0a3b8d5cf5e70d5179b77e67d5
+@@ -1,17 +1,15 @@
+ @Override
+ protected void onGetStyleRuleNames(DebugComponent element, StyleRuleNameAccumulator accumulator) {
+-    if (!element.node.getComponents().isEmpty()) {
+-        // We currently have no way of overriding props / state of non-root components
+-        accumulator.store("state", element.componentIndex == 0);
+-        accumulator.store("props", element.componentIndex == 0);
+-        // Only the root component has actual layout info
+-        if (element.componentIndex == 0) {
+-            accumulator.store("layout", true);
+-        }
+-    } else {
+-        accumulator.store("layout", true);
++    if (!element.getState().isEmpty()) {
++        accumulator.store("state", element.isLayoutNode());
++    }
++    if (!element.getProps().isEmpty()) {
++        accumulator.store("props", element.isLayoutNode());
++    }
++    if (!element.getStyles().isEmpty()) {
++        accumulator.store("layout", element.isLayoutNode());
+     }
+     // This method is called once a node is inspected and not during tree creation like many of the
+     // other lifecycle methods.
+-    logInspected(element.node.getContext());
++    logInspected(element.getContext());
+ }
+\ No newline at end of file

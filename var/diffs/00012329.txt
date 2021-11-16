@@ -1,0 +1,17 @@
+diff --git a/d8dea4aac28d748270fda11e24071908734c0190 b/ac461c5b67d40d65905bc2401f18076e9e9d5680
+index d8dea4aac2..ac461c5b67 100644
+--- a/d8dea4aac28d748270fda11e24071908734c0190
++++ b/ac461c5b67d40d65905bc2401f18076e9e9d5680
+@@ -1,9 +1,9 @@
+ @Nullable
+-protected InspectionGadgetsFix buildFix(PsiElement location) {
+-    final PsiReferenceExpression methodExpression = (PsiReferenceExpression) location.getParent();
++protected InspectionGadgetsFix buildFix(Object... infos) {
++    final PsiReferenceExpression methodExpression = (PsiReferenceExpression) infos[0];
+     final PsiModifierListOwner annotatableQualifier = NonNlsUtils.getAnnotatableQualifier(methodExpression);
+     if (annotatableQualifier == null) {
+         return null;
+     }
+     return new DelegatingFix(new AddAnnotationFix(AnnotationUtil.NON_NLS, annotatableQualifier));
+ }
+\ No newline at end of file

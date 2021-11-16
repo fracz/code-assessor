@@ -1,0 +1,16 @@
+diff --git a/af921addcd46e6ab940ef2d1139d539a7564536c b/c5b7b66f9f4bade4813258c57fd2a12b9bed8a89
+index af921addcd..c5b7b66f9f 100644
+--- a/af921addcd46e6ab940ef2d1139d539a7564536c
++++ b/c5b7b66f9f4bade4813258c57fd2a12b9bed8a89
+@@ -1,9 +1,9 @@
+ private static boolean isTrivial(PsiStatement body, PsiParameter parameter) {
+     // method reference
+-    final PsiExpression candidate = LambdaCanBeMethodReferenceInspection.canBeMethodReferenceProblem(body instanceof PsiBlockStatement ? ((PsiBlockStatement) body).getCodeBlock() : body, new PsiParameter[] { parameter }, createDefaultConsumerType(parameter.getProject(), parameter));
++    final PsiExpression candidate = new LambdaCanBeMethodReferenceInspection().canBeMethodReferenceProblem(body instanceof PsiBlockStatement ? ((PsiBlockStatement) body).getCodeBlock() : body, new PsiParameter[] { parameter }, createDefaultConsumerType(parameter.getProject(), parameter), null);
+     if (!(candidate instanceof PsiCallExpression)) {
+         return true;
+     }
+     final PsiMethod method = ((PsiCallExpression) candidate).resolveMethod();
+     return method != null && isThrowsCompatible(method);
+ }
+\ No newline at end of file

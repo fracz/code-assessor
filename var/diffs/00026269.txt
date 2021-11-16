@@ -1,0 +1,14 @@
+diff --git a/a90d2fd5a06208702a46bd2763e61ab139eab48a b/e86234ef34b1ba473feeab2b89974634963168e6
+index a90d2fd5a0..e86234ef34 100644
+--- a/a90d2fd5a06208702a46bd2763e61ab139eab48a
++++ b/e86234ef34b1ba473feeab2b89974634963168e6
+@@ -1,7 +1,7 @@
+ /**
+  * Makes the built attribute producing a single artifact.
+  */
+ public Builder<TYPE> singleArtifact() {
+-    Preconditions.checkState((type == BuildType.LABEL) || (type == BuildType.LABEL_LIST), "attribute '%s' must be a label-valued type", name);
++    Preconditions.checkState(type.getLabelClass() == LabelClass.DEPENDENCY, "attribute '%s' must be a label-valued type", name);
+     return setPropertyFlag(PropertyFlag.SINGLE_ARTIFACT, "single_artifact");
+ }
+\ No newline at end of file

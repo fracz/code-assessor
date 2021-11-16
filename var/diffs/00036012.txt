@@ -1,0 +1,22 @@
+diff --git a/b67c22949d87c94584197ce9d27780d8a999a583 b/fb206344eb5f7ef7b47da944e525fffc33e69e62
+index b67c22949d..fb206344eb 100644
+--- a/b67c22949d87c94584197ce9d27780d8a999a583
++++ b/fb206344eb5f7ef7b47da944e525fffc33e69e62
+@@ -1,10 +1,14 @@
+ public Invocation toInvocation() {
+     Method method;
++    List<Class> argTypes = new LinkedList<Class>();
++    for (Object arg : args) {
++        argTypes.add(arg.getClass());
++    }
+     try {
+-        method = IMethods.class.getMethod(methodName, new Class[] {});
++        method = IMethods.class.getMethod(methodName, argTypes.toArray(new Class[argTypes.size()]));
+     } catch (Exception e) {
+         throw new RuntimeException(e);
+     }
+-    Invocation i = new Invocation("mock", method, new Object[] {}, sequenceNumber);
++    Invocation i = new Invocation("mock", method, args, sequenceNumber);
+     return i;
+ }
+\ No newline at end of file

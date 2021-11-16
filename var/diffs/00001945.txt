@@ -1,0 +1,24 @@
+diff --git a/4bb9811998e34faa4f5c62270aef52afd17bfdc4 b/023080481b0a84317242dd14b5977f9a345b20f3
+index 4bb9811998..023080481b 100644
+--- a/4bb9811998e34faa4f5c62270aef52afd17bfdc4
++++ b/023080481b0a84317242dd14b5977f9a345b20f3
+@@ -1,11 +1,16 @@
+ @Override
+ public void activate() {
+     super.activate();
+     activationDisposable = new Disposable() {
+
+         public void dispose() {
+-        // TODO what should be done here?
+         }
+     };
+-    VirtualFileManager.getInstance().addVirtualFileListener(new GitVirtualFileAdaptor(this, myProject), activationDisposable);
++    gitFileAdapter = new GitVirtualFileAdapter(this, myProject);
++    VirtualFileManager.getInstance().addVirtualFileListener(gitFileAdapter, activationDisposable);
++    LocalFileSystem.getInstance().registerAuxiliaryFileOperationsHandler(gitFileAdapter);
++    RefactoringListenerManager.getInstance(myProject).addListenerProvider(renameListenerProvider);
++    ChangeMonitor mon = ChangeMonitor.getInstance(myProject);
++    mon.setGitVcsSettings(settings);
++    mon.start();
+ }
+\ No newline at end of file

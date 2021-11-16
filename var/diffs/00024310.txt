@@ -1,0 +1,23 @@
+diff --git a/fc9605caa1db391791b72ecdac266a2886163c09 b/8af3bfb5316e482553f91878627bf4c27b99e030
+index fc9605caa1..8af3bfb531 100644
+--- a/fc9605caa1db391791b72ecdac266a2886163c09
++++ b/8af3bfb5316e482553f91878627bf4c27b99e030
+@@ -1,13 +1,15 @@
+ @Test
+ public void testEmptyParametersNotallowed() {
+     try {
+         TypeParser.parse("CompositeType");
+         fail("Shouldn't work");
+-    } catch (ConfigurationException | SyntaxException e) {
++    } catch (ConfigurationException e) {
++    } catch (SyntaxException e) {
+     }
+     try {
+         TypeParser.parse("CompositeType()");
+         fail("Shouldn't work");
+-    } catch (ConfigurationException | SyntaxException e) {
++    } catch (ConfigurationException e) {
++    } catch (SyntaxException e) {
+     }
+ }
+\ No newline at end of file

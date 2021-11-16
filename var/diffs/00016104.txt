@@ -1,0 +1,12 @@
+diff --git a/2f72c37348b5ca4484618f3501cf4b8201cf03b4 b/136fcd08b956be685cf4e7aec1397296a8c275ee
+index 2f72c37348..136fcd08b9 100644
+--- a/2f72c37348b5ca4484618f3501cf4b8201cf03b4
++++ b/136fcd08b956be685cf4e7aec1397296a8c275ee
+@@ -1,5 +1,3 @@
+ protected static String getKotlinRuntimePath() {
+-    File file = new File(getCompilerLib(), "kotlin-runtime.jar");
+-    assertTrue("no kotlin runtime at " + file, file.isFile());
+-    return file.getAbsolutePath();
++    return ForTestCompileRuntime.runtimeJarForTests().getAbsolutePath();
+ }
+\ No newline at end of file

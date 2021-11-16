@@ -1,0 +1,24 @@
+diff --git a/20e730d66f67663d9e6708b38264c6f0bd298856 b/08356e1fb4e98abcafed7a9f8ce989c21ce4da65
+index 20e730d66f..08356e1fb4 100644
+--- a/20e730d66f67663d9e6708b38264c6f0bd298856
++++ b/08356e1fb4e98abcafed7a9f8ce989c21ce4da65
+@@ -1,17 +1,14 @@
+ private void initProfileState() {
+     String[] bonds = null;
+-    String val = getPropertyInternal("Devices");
++    String val = mAdapterProperties.getProperty("Devices");
+     if (val != null) {
+         bonds = val.split(",");
+     }
+     if (bonds == null) {
+         return;
+     }
+     for (String path : bonds) {
+         String address = getAddressFromObjectPath(path);
+         BluetoothDeviceProfileState state = addProfileState(address);
+-        Message msg = new Message();
+-        msg.what = BluetoothDeviceProfileState.AUTO_CONNECT_PROFILES;
+-        state.sendMessage(msg);
+     }
+ }
+\ No newline at end of file

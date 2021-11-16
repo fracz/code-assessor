@@ -1,0 +1,25 @@
+diff --git a/b3192b54bda380612fede49be692b34091fc6271 b/0ed34f58696644cbf16cfbfe17f292c568ff8f70
+index b3192b54bd..0ed34f5869 100644
+--- a/b3192b54bda380612fede49be692b34091fc6271
++++ b/0ed34f58696644cbf16cfbfe17f292c568ff8f70
+@@ -1,18 +1,18 @@
+ public OracleTruncateStatement parseTruncate() {
+     accept(Token.TRUNCATE);
+     accept(Token.TABLE);
+     OracleTruncateStatement stmt = new OracleTruncateStatement();
+     SQLName name = this.exprParser.name();
+     stmt.addTableSource(name);
+     if (identifierEquals("PURGE")) {
+         lexer.nextToken();
+         if (identifierEquals("SNAPSHOT")) {
+             lexer.nextToken();
+-            accept(Token.LOG);
++            acceptIdentifier("LOG");
+             stmt.setPurgeSnapshotLog(true);
+         } else {
+             throw new ParserException("TODO : " + lexer.token() + " " + lexer.stringVal());
+         }
+     }
+     return stmt;
+ }
+\ No newline at end of file

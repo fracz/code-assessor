@@ -1,0 +1,16 @@
+diff --git a/4e7fe855ed731bbe3c934c08640b98d8c39723c8 b/56e11acc7ba21d2870150c0a6c64f8dc9907d31e
+index 4e7fe855ed..56e11acc7b 100644
+--- a/4e7fe855ed731bbe3c934c08640b98d8c39723c8
++++ b/56e11acc7ba21d2870150c0a6c64f8dc9907d31e
+@@ -1,8 +1,8 @@
+ @Override
+ public void visitFormalTypeParameterEnd() {
+     TypeParameterDescriptor typeParameter = TypeParameterDescriptor.createForFurtherModification(containingDeclaration, // TODO: wrong
+     Collections.<AnnotationDescriptor>emptyList(), reified, JetSignatureUtils.translateVariance(variance), name, index);
+     PsiTypeParameter psiTypeParameter = getPsiTypeParameterByName(psiOwner, name);
+-    typeParameterDescriptorCache.put(psiTypeParameter, new TypeParameterDescriptorInitialization(typeParameter, upperBounds, lowerBounds));
+-    done(typeParameter);
++    TypeParameterDescriptorInitialization typeParameterDescriptorInitialization = new TypeParameterDescriptorInitialization(typeParameter, psiTypeParameter, upperBounds, lowerBounds);
++    done(typeParameterDescriptorInitialization);
+ }
+\ No newline at end of file

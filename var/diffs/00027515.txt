@@ -1,0 +1,13 @@
+diff --git a/f66c0e353ccfdd3875694718217e23f34bd540d8 b/f18895acace2d1adc1086fa091a85dfa60acaba2
+index f66c0e353c..f18895acac 100644
+--- a/f66c0e353ccfdd3875694718217e23f34bd540d8
++++ b/f18895acace2d1adc1086fa091a85dfa60acaba2
+@@ -1,5 +1,5 @@
+ public int readInt(InputStream in) throws IOException {
+-    byte[] intBytes = new byte[4];
++    byte[] intBytes = new byte[Ints.BYTES];
+     ByteStreams.readFully(in, intBytes);
+-    return ByteBuffer.wrap(intBytes).getInt();
++    return Ints.fromByteArray(intBytes);
+ }
+\ No newline at end of file

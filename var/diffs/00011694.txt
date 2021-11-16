@@ -1,0 +1,17 @@
+diff --git a/96a4811dd0711149524f89bf42b877c46539a3f4 b/472ccb69f9036d38c9385dce1f8b87e529c789b0
+index 96a4811dd0..472ccb69f9 100644
+--- a/96a4811dd0711149524f89bf42b877c46539a3f4
++++ b/472ccb69f9036d38c9385dce1f8b87e529c789b0
+@@ -1,9 +1,5 @@
+ @NotNull
+ private PsiElement addElementToFile(@NotNull PsiElement element) {
+-    final PsiElement firstUsage = findFirstTopLevelWithUsageAtDestination();
+-    if (firstUsage != null) {
+-        return myDestinationFile.addBefore(element, firstUsage);
+-    } else {
+-        return myDestinationFile.add(element);
+-    }
++    final PsiElement anchor = PyMoveRefactoringUtil.findLowestPossibleTopLevelInsertionPosition(myUsages, myDestinationFile);
++    return myDestinationFile.addBefore(element, anchor);
+ }
+\ No newline at end of file

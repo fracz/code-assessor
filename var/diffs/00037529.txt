@@ -1,0 +1,21 @@
+diff --git a/37b374dd304688357c32c888c6f07d7ffb90e99f b/0330d57dd2516d3b87e8be3a30a46248c869b2ef
+index 37b374dd30..0330d57dd2 100644
+--- a/37b374dd304688357c32c888c6f07d7ffb90e99f
++++ b/0330d57dd2516d3b87e8be3a30a46248c869b2ef
+@@ -1,13 +1,13 @@
+ private Histogram getHistogram(ConcurrentMap<String, Histogram> histogramMap, String parentApplicationName, short serviceTypeCode) {
+     final Histogram hit = histogramMap.get(parentApplicationName);
+     if (hit != null) {
+         return hit;
+     }
+-    final ServiceType serviceType = ServiceType.findServiceType(serviceTypeCode);
+-    final Histogram histogram = new LongAdderHistogram(serviceType);
++    // serverType must be NORMAL_SCHEMA
++    final Histogram histogram = new LongAdderHistogram(serviceTypeCode, HistogramSchema.NORMAL_SCHEMA);
+     final Histogram old = histogramMap.putIfAbsent(parentApplicationName, histogram);
+     if (old != null) {
+         return old;
+     }
+     return histogram;
+ }
+\ No newline at end of file

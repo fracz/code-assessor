@@ -1,0 +1,14 @@
+diff --git a/cc2853cc56132f93dbd10025a5a29ec9315449df b/6f380687b2286f3ff7a14a1c4d6007abfa505584
+index cc2853cc56..6f380687b2 100644
+--- a/cc2853cc56132f93dbd10025a5a29ec9315449df
++++ b/6f380687b2286f3ff7a14a1c4d6007abfa505584
+@@ -1,7 +1,5 @@
+ private void processUpdate(NodePropertyUpdate update, IndexUpdaterMap updaterMap, int labelId, int propertyKeyId) throws IOException, IndexEntryConflictException {
+-    IndexDescriptor descriptor = new IndexDescriptor(labelId, propertyKeyId);
+-    IndexUpdater updater = updaterMap.getUpdater(descriptor);
+-    if (updater != null) {
++    for (IndexUpdater updater : updaterMap.getUpdaters(labelId, propertyKeyId)) {
+         updater.process(update);
+     }
+ }
+\ No newline at end of file

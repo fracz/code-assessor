@@ -1,0 +1,17 @@
+diff --git a/dcb95c41b5d30ce58b4aa96cc18d7c816d4cc25d b/a660fdedb8365db1de9a804844941418a936f5c8
+index dcb95c41b5..a660fdedb8 100644
+--- a/dcb95c41b5d30ce58b4aa96cc18d7c816d4cc25d
++++ b/a660fdedb8365db1de9a804844941418a936f5c8
+@@ -1,7 +1,8 @@
+-public static RestResponse buildResponse(Table table, RestRequest request, RestChannel channel) throws Exception {
++public static RestResponse buildResponse(Table table, RestChannel channel) throws Exception {
++    RestRequest request = channel.request();
+     XContentType xContentType = XContentType.fromRestContentType(request.param("format", request.header("Content-Type")));
+     if (xContentType != null) {
+-        return buildXContentBuilder(table, request, channel);
++        return buildXContentBuilder(table, channel);
+     }
+-    return buildTextPlainResponse(table, request, channel);
++    return buildTextPlainResponse(table, channel);
+ }
+\ No newline at end of file

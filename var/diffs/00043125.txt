@@ -1,0 +1,30 @@
+diff --git a/fd1f036deaa86495936322492aaa4085b603018b b/50ff90e89f144a56dd09bd74187462104231e6d8
+index fd1f036dea..50ff90e89f 100644
+--- a/fd1f036deaa86495936322492aaa4085b603018b
++++ b/50ff90e89f144a56dd09bd74187462104231e6d8
+@@ -1,20 +1,17 @@
+ public Set<String> dictionaryKeys(final ODatabaseRecord iDatabase) {
+     checkConnection();
+     do {
+         try {
++            final OChannelBinaryClient network = beginRequest(OChannelBinaryProtocol.REQUEST_INDEX_KEYS);
++            endRequest(network);
+             try {
+-                beginRequest(OChannelBinaryProtocol.REQUEST_INDEX_KEYS);
+-            } finally {
+-                endRequest();
+-            }
+-            try {
+-                beginResponse();
++                beginResponse(network);
+                 return network.readStringSet();
+             } finally {
+-                endResponse();
++                endResponse(network);
+             }
+         } catch (Exception e) {
+             handleException("Error on getting keys of database's dictionary", e);
+         }
+     } while (true);
+ }
+\ No newline at end of file

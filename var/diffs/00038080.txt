@@ -1,0 +1,17 @@
+diff --git a/a3dcd3e783dd81ee33a96f40989d51d15937772b b/8f04f2b8683bc7db7f525a5bd36422e489ff3525
+index a3dcd3e783..8f04f2b868 100644
+--- a/a3dcd3e783dd81ee33a96f40989d51d15937772b
++++ b/8f04f2b8683bc7db7f525a5bd36422e489ff3525
+@@ -1,10 +1,9 @@
+ @Test
+ public void shouldLookUpTheIndexByLabelIdAndPropertyKeyId() throws ProcedureException, SchemaRuleNotFoundException, IndexNotFoundKernelException {
+     NewIndexDescriptor index = NewIndexDescriptorFactory.forLabel(0, 0);
+     when(operations.labelGetForName(anyString())).thenReturn(123);
+     when(operations.propertyKeyGetForName(anyString())).thenReturn(456);
+     when(operations.indexGetForLabelAndPropertyKey(anyObject())).thenReturn(index);
+     procedure.resampleIndex(":Person(name)");
+-    final int[] propertyKeyIds = new int[] { 456 };
+-    verify(operations).indexGetForLabelAndPropertyKey(SchemaDescriptorFactory.forLabel(123, propertyKeyIds));
++    verify(operations).indexGetForLabelAndPropertyKey(SchemaDescriptorFactory.forLabel(123, 456));
+ }
+\ No newline at end of file

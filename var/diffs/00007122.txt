@@ -1,0 +1,18 @@
+diff --git a/2f7379bcaec5b2b261be024edfd10d20b1a278a0 b/ebce67cdfea52aa5ec50707280ccd522a1a64010
+index 2f7379bcae..ebce67cdfe 100644
+--- a/2f7379bcaec5b2b261be024edfd10d20b1a278a0
++++ b/ebce67cdfea52aa5ec50707280ccd522a1a64010
+@@ -1,11 +1,11 @@
+ public void ignoreConflict(@NotNull VirtualFile file, boolean ignore) {
+     String path = file.getPath();
+     Conflict conflict = myConflicts.get(path);
+     if (conflict == null) {
+         conflict = new Conflict();
+         myConflicts.put(path, conflict);
+     }
+     conflict.ignored = ignore;
+-    addNotification(file, !ignore);
++    myEditorNotifications.updateNotifications(file);
+     myFileStatusManager.fileStatusChanged(file);
+ }
+\ No newline at end of file

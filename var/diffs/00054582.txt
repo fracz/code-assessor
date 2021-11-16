@@ -1,0 +1,22 @@
+diff --git a/d97184e7b297318fff0ee963f20329eec97b09b3 b/0a5cae7213ddf1fb30c15a8b0ae9c1321b0a6d3b
+index d97184e7b2..0a5cae7213 100644
+--- a/d97184e7b297318fff0ee963f20329eec97b09b3
++++ b/0a5cae7213ddf1fb30c15a8b0ae9c1321b0a6d3b
+@@ -1,11 +1,12 @@
+ /**
+  * Persist master-slave configuration.
+  *
+- * @param config orchestration master-slave configuration
++ * @param dataSourceMap data source map
++ * @param masterSlaveRuleConfig master-slave rule configuration
+  * @param masterSlaveDataSource master-slave datasource
+  */
+-public void persistMasterSlaveConfiguration(final OrchestrationMasterSlaveConfiguration config, final MasterSlaveDataSource masterSlaveDataSource) {
+-    persistDataSourceConfiguration(config.getDataSourceMap(), config.isOverwrite());
+-    persistMasterSlaveRuleConfiguration(config.getMasterSlaveRuleConfiguration(), config.isOverwrite());
++public void persistMasterSlaveConfiguration(final Map<String, DataSource> dataSourceMap, final MasterSlaveRuleConfiguration masterSlaveRuleConfig, final MasterSlaveDataSource masterSlaveDataSource) {
++    persistDataSourceConfiguration(dataSourceMap);
++    persistMasterSlaveRuleConfiguration(masterSlaveRuleConfig);
+     addMasterSlaveConfigurationChangeListener(masterSlaveDataSource);
+ }
+\ No newline at end of file

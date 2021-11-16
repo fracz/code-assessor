@@ -1,0 +1,14 @@
+diff --git a/c7e8b98edbfd0ccbe8fcf7a6e746bf5654b73df3 b/f5795dbed95fad02777f3e5cc8b5a84a207b5cbc
+index c7e8b98edb..f5795dbed9 100644
+--- a/c7e8b98edbfd0ccbe8fcf7a6e746bf5654b73df3
++++ b/f5795dbed95fad02777f3e5cc8b5a84a207b5cbc
+@@ -1,6 +1,6 @@
+ private void initExcludeFolders(@NotNull Element e) throws InvalidDataException {
+-    myExcludeFolders.clear();
+     for (Object child : e.getChildren(ExcludeFolderImpl.ELEMENT_NAME)) {
+-        myExcludeFolders.add(new ExcludeFolderImpl((Element) child, this));
++        ExcludeFolderImpl excludeFolder = new ExcludeFolderImpl((Element) child, this);
++        addExcludeFolder(excludeFolder);
+     }
+ }
+\ No newline at end of file

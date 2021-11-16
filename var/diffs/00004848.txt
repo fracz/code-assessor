@@ -1,0 +1,10 @@
+diff --git a/3061e767bcb3a4d2ffc5161f3a5a32d8a01e2b18 b/cafefe4acbfa9adec2de88c03ce198a9dd88625e
+index 3061e767bc..cafefe4acb 100644
+--- a/3061e767bcb3a4d2ffc5161f3a5a32d8a01e2b18
++++ b/cafefe4acbfa9adec2de88c03ce198a9dd88625e
+@@ -1,3 +1,3 @@
+ protected boolean isValidForFile(Project project, Editor editor, PsiFile file) {
+-    return file instanceof PsiJavaFile;
++    return !LanguageUnwrappers.INSTANCE.allForLanguage(file.getLanguage()).isEmpty();
+ }
+\ No newline at end of file

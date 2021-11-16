@@ -1,0 +1,17 @@
+diff --git a/5c7a83fc463f4e2874a303db4a112373fd32e52f b/32f02b11e7f87a80ee01b335de6b6d811737550c
+index 5c7a83fc46..32f02b11e7 100644
+--- a/5c7a83fc463f4e2874a303db4a112373fd32e52f
++++ b/32f02b11e7f87a80ee01b335de6b6d811737550c
+@@ -1,10 +1,10 @@
+ @Override
+ public void addPropertyDescriptor(@NotNull PropertyDescriptor propertyDescriptor) {
+-    super.addPropertyDescriptor(propertyDescriptor);
++    superBuilder.addPropertyDescriptor(propertyDescriptor);
+     properties.add(propertyDescriptor);
+     if (propertyDescriptor.getKind() != CallableMemberDescriptor.Kind.FAKE_OVERRIDE) {
+         declaredCallableMembers.add(propertyDescriptor);
+     }
+     allCallableMembers.add(propertyDescriptor);
+     scopeForMemberResolution.addPropertyDescriptor(propertyDescriptor);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/e1314ff107a9e4baf8fc8ea7843bd6ac15c3e410 b/e1a44cce6e7ffdf82c364cf96be852458ec68591
+index e1314ff107..e1a44cce6e 100644
+--- a/e1314ff107a9e4baf8fc8ea7843bd6ac15c3e410
++++ b/e1a44cce6e7ffdf82c364cf96be852458ec68591
+@@ -1,7 +1,7 @@
+ @BeforeMethod
+ public void setUp() throws ParseException, NotFoundException, ServerException {
+     factory = newDto(Factory.class).withV("4.0").withCreator(newDto(Author.class).withUserId("userid"));
+-    User user = new User().withId("userid");
++    UserImpl user = new UserImpl("userid");
+     when(userDao.getById("userid")).thenReturn(user);
+     validator = new TesterFactoryBaseValidator(preferenceDao);
+ }
+\ No newline at end of file

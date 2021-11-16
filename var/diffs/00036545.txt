@@ -1,0 +1,26 @@
+diff --git a/e961111a51fc11a3a269137eb64e3c8ffaebf82e b/46c3780f94780cdb5c98e60fa7e0c37e7c35929f
+index e961111a51..46c3780f94 100644
+--- a/e961111a51fc11a3a269137eb64e3c8ffaebf82e
++++ b/46c3780f94780cdb5c98e60fa7e0c37e7c35929f
+@@ -1,5 +1,16 @@
+-private Runnable wrapDispatchTask(PooledObject<DatagramPacket> pooledPacket) {
+-    PacketHandler<DatagramPacket> dispatchPacket = packetHandlerFactory.createPacketHandler();
+-    PooledPacketWrap pooledPacketWrap = new PooledPacketWrap(dispatchPacket, pooledPacket);
+-    return new TimingWrap(this.timer, pooledPacketWrap);
++private Runnable wrapDispatchTask(final PooledObject<DatagramPacket> pooledPacket) {
++    final Runnable lazyExecution = new Runnable() {
++
++        @Override
++        public void run() {
++            PacketHandler<DatagramPacket> dispatchPacket = packetHandlerFactory.createPacketHandler();
++            PooledPacketWrap pooledPacketWrap = new PooledPacketWrap(dispatchPacket, pooledPacket);
++            Runnable execution = pooledPacketWrap;
++            if (enableCollectorMetric) {
++                execution = new TimingWrap(timer, execution);
++            }
++            execution.run();
++        }
++    };
++    return lazyExecution;
+ }
+\ No newline at end of file

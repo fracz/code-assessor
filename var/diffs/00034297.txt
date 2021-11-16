@@ -1,0 +1,17 @@
+diff --git a/409d2e2a15471bb51a5dddf2d9c3035004f5e4b8 b/6b6a6572d8dcaf980e2a044c3954e01ae18fb335
+index 409d2e2a15..6b6a6572d8 100644
+--- a/409d2e2a15471bb51a5dddf2d9c3035004f5e4b8
++++ b/6b6a6572d8dcaf980e2a044c3954e01ae18fb335
+@@ -1,8 +1,7 @@
+ private void onToggleSortAscending() {
+-    mController.setSortAscending(sortType, !sortAscending);
+-    sortAscending = mController.isSortAscending(sortType);
+-    sortDateAscending = mController.isSortAscending(SortType.SORT_DATE);
+-    mAccount.setSortAscending(sortAscending);
++    mSortAscending = !mSortAscending;
++    mAccount.setSortAscending(mSortType, mSortAscending);
++    mSortDateAscending = mAccount.isSortAscending(SortType.SORT_DATE);
+     mAccount.save(Preferences.getPreferences(this));
+     reSort();
+ }
+\ No newline at end of file

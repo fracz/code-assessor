@@ -1,0 +1,17 @@
+diff --git a/f6f75cb8ac42a6e36ad8000201142ec9cc68232a b/89f30c51cfd5e5f7a60ed9043207a415775df14d
+index f6f75cb8ac..89f30c51cf 100644
+--- a/f6f75cb8ac42a6e36ad8000201142ec9cc68232a
++++ b/89f30c51cfd5e5f7a60ed9043207a415775df14d
+@@ -1,5 +1,10 @@
+ @Override
+ public int compareTo(@NotNull TemplatesGroup o) {
+     int i = o.myWeight - myWeight;
+-    return i == 0 ? o.getName().compareTo(getName()) : i;
++    if (i != 0)
++        return i;
++    int i1 = Comparing.compare(o.getParentGroup(), getParentGroup());
++    if (i1 != 0)
++        return i1;
++    return o.getName().compareTo(getName());
+ }
+\ No newline at end of file

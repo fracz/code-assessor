@@ -1,0 +1,26 @@
+diff --git a/7d04b41f6a3e1f441cee7a7b7dff9e0778a94fce b/c3bc9cd656d0358acc6d73e237b476a8295da36c
+index 7d04b41f6a..c3bc9cd656 100644
+--- a/7d04b41f6a3e1f441cee7a7b7dff9e0778a94fce
++++ b/c3bc9cd656d0358acc6d73e237b476a8295da36c
+@@ -1,16 +1,16 @@
+ private void updateStatusMessage() {
+-    if (curRows.isEmpty()) {
+-        if (CommonUtils.isEmpty(visibleColumns)) {
++    if (model.getRowCount() == 0) {
++        if (model.getVisualColumnCount() == 0) {
+             setStatus("Empty");
+         } else {
+             setStatus(CoreMessages.controls_resultset_viewer_status_no_data);
+         }
+     } else {
+         if (mode == ResultSetMode.RECORD) {
+             this.resetRecordHeaderWidth();
+-            setStatus(CoreMessages.controls_resultset_viewer_status_row + (curRowNum + 1) + "/" + curRows.size());
++            setStatus(CoreMessages.controls_resultset_viewer_status_row + (curRowNum + 1) + "/" + model.getRowCount());
+         } else {
+-            setStatus(String.valueOf(curRows.size()) + CoreMessages.controls_resultset_viewer_status_rows_fetched);
++            setStatus(String.valueOf(model.getRowCount()) + CoreMessages.controls_resultset_viewer_status_rows_fetched);
+         }
+     }
+ }
+\ No newline at end of file

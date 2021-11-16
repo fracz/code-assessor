@@ -1,0 +1,20 @@
+diff --git a/a6630db6a4e1f2241b6118f040318a82c87030bb b/75ba32a78f311647e441f4e315db6b28548f216b
+index a6630db6a4..75ba32a78f 100644
+--- a/a6630db6a4e1f2241b6118f040318a82c87030bb
++++ b/75ba32a78f311647e441f4e315db6b28548f216b
+@@ -1,10 +1,10 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiField field = (PsiField) ((PsiReference) location).resolve();
+-    assert field != null;
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiField field = (PsiField) infos[0];
+     final PsiType type = field.getType();
+-    if (type.getArrayDimensions() > 0) {
++    if (type instanceof PsiArrayType) {
+         return InspectionGadgetsBundle.message("return.of.collection.array.field.problem.descriptor.array");
+     } else {
+         return InspectionGadgetsBundle.message("return.of.collection.array.field.problem.descriptor.collection");
+     }
+ }
+\ No newline at end of file

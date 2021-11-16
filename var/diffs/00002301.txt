@@ -1,0 +1,13 @@
+diff --git a/c96f9683c50a9a9fb22c2da73f9baea201facbd6 b/ef8e4b7fc141608cc13365fd07b74699767d1f1f
+index c96f9683c5..ef8e4b7fc1 100644
+--- a/c96f9683c50a9a9fb22c2da73f9baea201facbd6
++++ b/ef8e4b7fc141608cc13365fd07b74699767d1f1f
+@@ -1,5 +1,5 @@
+ /* Stepping */
+-private void resumeAction(final DebugProcessImpl.ResumeCommand command, int event) {
+-    getContextManager().setState(SESSION_EMPTY_CONTEXT, STATE_WAIT_EVALUATION, event, null);
++private void resumeAction(final DebugProcessImpl.ResumeCommand command, Event event) {
++    getContextManager().setState(SESSION_EMPTY_CONTEXT, State.WAIT_EVALUATION, event, null);
+     myDebugProcess.getManagerThread().schedule(command);
+ }
+\ No newline at end of file

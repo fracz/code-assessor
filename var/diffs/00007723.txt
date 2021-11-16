@@ -1,0 +1,22 @@
+diff --git a/476e05a048c83ec8b98124cc6c62963e1a33b499 b/54e6a4944e18f86e5e6ec0e4ba1ba80c6ff06b9b
+index 476e05a048..54e6a4944e 100644
+--- a/476e05a048c83ec8b98124cc6c62963e1a33b499
++++ b/54e6a4944e18f86e5e6ec0e4ba1ba80c6ff06b9b
+@@ -1,14 +1,14 @@
+ /**
+  * Fills readOnlyFiles with VirtualFiles
+  */
+ private static void getReadOnlyVirtualFiles(VirtualFile file, ArrayList<VirtualFile> readOnlyFiles) {
+     if (!file.isWritable()) {
+         readOnlyFiles.add(file);
+     }
+     if (file.isDirectory()) {
+         VirtualFile[] children = file.getChildren();
+-        for (int i = 0; i < children.length; i++) {
+-            getReadOnlyVirtualFiles(children[i], readOnlyFiles);
++        for (VirtualFile child : children) {
++            getReadOnlyVirtualFiles(child, readOnlyFiles);
+         }
+     }
+ }
+\ No newline at end of file

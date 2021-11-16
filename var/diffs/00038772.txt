@@ -1,0 +1,26 @@
+diff --git a/9f9ca034def9ea384f82d39a678499c3485c24dd b/f6f2c72cfbde40e3e436d63b137f79113b5acd1e
+index 9f9ca034de..f6f2c72cfb 100644
+--- a/9f9ca034def9ea384f82d39a678499c3485c24dd
++++ b/f6f2c72cfbde40e3e436d63b137f79113b5acd1e
+@@ -1,18 +1,17 @@
+ @Test
+ public void shouldNotRemoveConstraintThatGetsReAdded() throws Exception {
+-    // TODO: this could pass even if the constraint gets removed and re-added.
+     // given
+     newTransaction();
+-    long label = statement.getOrCreateLabelId("Foo");
+-    long propertyKey = statement.getOrCreatePropertyKeyId("bar");
+     UniquenessConstraint constraint = statement.addUniquenessConstraint(label, propertyKey);
+     commit();
++    SchemaStateCheck schemaState = new SchemaStateCheck().setUp();
+     newTransaction();
+     // when
+     statement.dropConstraint(constraint);
+     statement.addUniquenessConstraint(label, propertyKey);
+     commit();
+     newTransaction();
+     // then
+     assertEquals(singletonList(constraint), asCollection(statement.getConstraints(label, propertyKey)));
++    schemaState.assertNotCleared();
+ }
+\ No newline at end of file

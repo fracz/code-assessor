@@ -1,0 +1,21 @@
+diff --git a/fc593968c53dfb49d0ba30c76e659091bc9afb90 b/f5075e7a33ba905b940a66117da94f7615bcc33b
+index fc593968c5..f5075e7a33 100644
+--- a/fc593968c53dfb49d0ba30c76e659091bc9afb90
++++ b/f5075e7a33ba905b940a66117da94f7615bcc33b
+@@ -1,14 +1,11 @@
+ public void visitWhileStatement(@NotNull PsiWhileStatement statement) {
+     super.visitWhileStatement(statement);
+     if (PsiUtil.isInJspFile(statement.getContainingFile())) {
+         return;
+     }
+     final PsiStatement body = statement.getBody();
+-    if (body == null) {
+-        return;
+-    }
+-    if (!isEmpty(body)) {
++    if (body == null || !isEmpty(body)) {
+         return;
+     }
+     registerStatementError(statement);
+ }
+\ No newline at end of file

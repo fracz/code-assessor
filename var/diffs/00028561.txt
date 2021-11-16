@@ -1,0 +1,24 @@
+diff --git a/95152fddef3308647834ca8611023ece97314853 b/aa672e36e6e225d98749c2d2ac23bcb314256e20
+index 95152fddef..aa672e36e6 100644
+--- a/95152fddef3308647834ca8611023ece97314853
++++ b/aa672e36e6e225d98749c2d2ac23bcb314256e20
+@@ -1,17 +1,17 @@
+ @Test
+ public void testSharedServersRoundRobinWithOtherServerRunningOnDifferentPort() throws Exception {
+     // Have a server running on a different port to make sure it doesn't interact
+     CountDownLatch latch = new CountDownLatch(1);
+     HttpServer theServer = vertx.createHttpServer();
+     theServer.websocketHandler(ws -> {
+         fail("Should not connect");
+-    }).listen(4321, "localhost", ar -> {
++    }).listen(4321, HttpTestBase.DEFAULT_HTTP_HOST, ar -> {
+         if (ar.succeeded()) {
+             latch.countDown();
+         } else {
+             fail("Failed to bind server");
+         }
+     });
+     awaitLatch(latch);
+     testSharedServersRoundRobin();
+ }
+\ No newline at end of file

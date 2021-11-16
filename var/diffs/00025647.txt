@@ -1,0 +1,21 @@
+diff --git a/f378988f8fcd77c2908359920fb49043fcc66066 b/45d13a438538aa73239815793dbeb9007bfdc1fa
+index f378988f8f..45d13a4385 100644
+--- a/f378988f8fcd77c2908359920fb49043fcc66066
++++ b/45d13a438538aa73239815793dbeb9007bfdc1fa
+@@ -1,12 +1,12 @@
+ @Override
+-public KafkaSpoutMessageId getMessageId(ConsumerRecord<?, ?> record) {
+-    KafkaSpoutMessageId msgId = new KafkaSpoutMessageId(record);
+-    if (toRetryMsgs.contains(msgId)) {
++public KafkaSpoutMessageId getMessageId(TopicPartition tp, long offset) {
++    KafkaSpoutMessageId msgId = new KafkaSpoutMessageId(tp, offset);
++    if (isScheduled(msgId)) {
+         for (KafkaSpoutMessageId originalMsgId : toRetryMsgs) {
+             if (originalMsgId.equals(msgId)) {
+                 return originalMsgId;
+             }
+         }
+     }
+     return msgId;
+ }
+\ No newline at end of file

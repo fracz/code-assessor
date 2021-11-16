@@ -1,0 +1,12 @@
+diff --git a/29de8b5fc1ffa946ab49d38b6aa407c93e340d9f b/750abb0012bad6465501ed3ddc9a2ad80c82c138
+index 29de8b5fc1..750abb0012 100644
+--- a/29de8b5fc1ffa946ab49d38b6aa407c93e340d9f
++++ b/750abb0012bad6465501ed3ddc9a2ad80c82c138
+@@ -1,3 +1,4 @@
+-private void notifyOnState(final KeyboardGestureAction.State state) {
+-    final boolean actions = myDispatcher.fillActionsList(myCurrentEvent.focusOwner, getCurrentShortcut(), myCurrentEvent.isModal);
++private void notifyOnState(final StateProcessor processor) {
++    final KeyProcessorContext context = myDispatcher.updateCurrentContext(myCurrentEvent.focusOwner, getCurrentShortcut(), myCurrentEvent.isModal);
++    myDispatcher.processAction(myCurrentEvent.key, myActionProcessor);
+ }
+\ No newline at end of file

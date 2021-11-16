@@ -1,0 +1,15 @@
+diff --git a/2da74af92489aeee2293e0d292d3e27ff98bdd17 b/73139eb7adaba8e675a2af2aaab6e0d5f64adc47
+index 2da74af924..73139eb7ad 100644
+--- a/2da74af92489aeee2293e0d292d3e27ff98bdd17
++++ b/73139eb7adaba8e675a2af2aaab6e0d5f64adc47
+@@ -1,8 +1,6 @@
+ @NotNull
+ private JsExpression intrinsicInvocation() {
+     assert descriptor instanceof FunctionDescriptor;
+     Intrinsic intrinsic = context().intrinsics().getFunctionIntrinsic((FunctionDescriptor) descriptor);
+-    JsExpression receiverExpression = resolveThisObject(/*do not get qualifier*/
+-    false);
+-    return intrinsic.apply(receiverExpression, arguments, context());
++    return intrinsic.apply(callParameters.getThisObject(), arguments, context());
+ }
+\ No newline at end of file

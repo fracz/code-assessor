@@ -1,0 +1,22 @@
+diff --git a/4da6ac9a476107601c5180e851c681a83eed8273 b/94c9a12dcc3a0e0c012298c93057a8c10d6ae437
+index 4da6ac9a47..94c9a12dcc 100644
+--- a/4da6ac9a476107601c5180e851c681a83eed8273
++++ b/94c9a12dcc3a0e0c012298c93057a8c10d6ae437
+@@ -1,15 +1,15 @@
+ @Test
+ public void parallelEdges_unmodifiableView() {
+-    UndirectedGraph<Integer, String> undirectedGraph = Graphs.createUndirected(MULTIGRAPH);
++    Graph<Integer, String> undirectedGraph = GraphBuilder.undirected().allowsParallelEdges(true).build();
+     undirectedGraph.addEdge(E12, N1, N2);
+     undirectedGraph.addEdge(E12_A, N1, N2);
+     Set<String> parallelEdges = Graphs.parallelEdges(undirectedGraph, E12);
+     assertThat(parallelEdges).containsExactly(E12_A);
+     undirectedGraph.addEdge(E12_B, N1, N2);
+     assertThat(parallelEdges).containsExactly(E12_A, E12_B);
+     try {
+         parallelEdges.add(E21);
+         fail("Set returned by parallelEdges() should be unmodifiable");
+     } catch (UnsupportedOperationException expected) {
+     }
+ }
+\ No newline at end of file

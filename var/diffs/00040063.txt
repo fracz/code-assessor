@@ -1,0 +1,19 @@
+diff --git a/e8fb68eed8f035a6045d0e88bc52963a0509e1e0 b/cfa0f6a03607ff40cb279d5dded2b71a541b07e3
+index e8fb68eed8..cfa0f6a036 100644
+--- a/e8fb68eed8f035a6045d0e88bc52963a0509e1e0
++++ b/cfa0f6a03607ff40cb279d5dded2b71a541b07e3
+@@ -1,10 +1,4 @@
+-public IndexDescriptor indexDescriptor(int labelId, int propertyKey) {
+-    Map<Integer, CommittedIndexDescriptor> byLabel = indexDescriptors.get(labelId);
+-    if (byLabel != null) {
+-        CommittedIndexDescriptor committed = byLabel.get(propertyKey);
+-        if (committed != null) {
+-            return committed.getDescriptor();
+-        }
+-    }
+-    return null;
++public IndexDescriptor indexDescriptor(NodePropertyDescriptor descriptor) {
++    IndexDescriptor indexDescriptor = IndexDescriptorFactory.from(descriptor);
++    return indexDescriptors.containsKey(indexDescriptor) ? indexDescriptor : null;
+ }
+\ No newline at end of file

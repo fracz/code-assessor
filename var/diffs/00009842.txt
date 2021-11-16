@@ -1,0 +1,18 @@
+diff --git a/8395fa4388fae8cbe8ddc0425d5a25401cb0d61b b/7e703bd02c9dbf486d5bdeb4c6e349aaa402bbaf
+index 8395fa4388..7e703bd02c 100644
+--- a/8395fa4388fae8cbe8ddc0425d5a25401cb0d61b
++++ b/7e703bd02c9dbf486d5bdeb4c6e349aaa402bbaf
+@@ -1,10 +1,11 @@
+ public GrNamedArgument addNamedArgument(final GrNamedArgument namedArgument) throws IncorrectOperationException {
+     GrArgumentList list = getArgumentList();
+     assert list != null;
+     if (list.getText().trim().length() == 0) {
+         final GroovyPsiElementFactory factory = GroovyPsiElementFactory.getInstance(getProject());
+         final GrArgumentList newList = factory.createExpressionArgumentList();
+-        list = ((GrArgumentList) list.replace(newList));
++        getNode().replaceChild(list.getNode(), newList.getNode());
++        list = newList;
+     }
+     return list.addNamedArgument(namedArgument);
+ }
+\ No newline at end of file

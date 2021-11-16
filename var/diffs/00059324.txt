@@ -1,0 +1,19 @@
+diff --git a/3aae9678c4d07f63a8d6d01dcea86fb3f9c8be99 b/7d8f8313ec70d09f4cc39164f899a6c2eb349d2a
+index 3aae9678c4..7d8f8313ec 100644
+--- a/3aae9678c4d07f63a8d6d01dcea86fb3f9c8be99
++++ b/7d8f8313ec70d09f4cc39164f899a6c2eb349d2a
+@@ -1,11 +1,11 @@
+ @Override
+-public ByteBuffer next() throws StorageException {
++public StaticBuffer next() throws StorageException {
+     if (!hasNext())
+         throw new NoSuchElementException();
+     Row row = keys.next();
+     try {
+-        return row.key.key.duplicate();
++        return new StaticByteBuffer(row.key.key);
+     } finally {
+         lastSeenKey = row.key.key;
+     }
+ }
+\ No newline at end of file

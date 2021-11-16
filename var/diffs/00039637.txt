@@ -1,0 +1,12 @@
+diff --git a/de6d6d4ce12b8b449a711c735819335b41913800 b/fd3f0e61f95297f66547e46aaac68d9cde0b6cf3
+index de6d6d4ce1..fd3f0e61f9 100644
+--- a/de6d6d4ce12b8b449a711c735819335b41913800
++++ b/fd3f0e61f95297f66547e46aaac68d9cde0b6cf3
+@@ -1,3 +1,5 @@
+ public void relationshipType(int id, String label, int... dynamicIds) throws IOException {
+-    write(new Command.RelationshipTypeTokenCommand(null, withName(new RelationshipTypeTokenRecord(id), dynamicIds, label)));
++    Command.RelationshipTypeTokenCommand command = new Command.RelationshipTypeTokenCommand();
++    command.init(withName(new RelationshipTypeTokenRecord(id), dynamicIds, label));
++    write(command);
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/0dcfe868414dd9520bef6c9588e2743b6b2cdf5f b/778395170a83277e7603b88dee7f993e92607cfa
+index 0dcfe86841..778395170a 100644
+--- a/0dcfe868414dd9520bef6c9588e2743b6b2cdf5f
++++ b/778395170a83277e7603b88dee7f993e92607cfa
+@@ -1,13 +1,13 @@
+-public IdAllocation allocateIds(final IdType idType) {
++public Response<IdAllocation> allocateIds(final IdType idType) {
+     return sendRequest(HaRequestType.ALLOCATE_IDS, SlaveContext.EMPTY, new Serializer() {
+
+         public void write(ChannelBuffer buffer, ByteBuffer readBuffer) throws IOException {
+             buffer.writeByte(idType.ordinal());
+         }
+     }, new Deserializer<IdAllocation>() {
+
+         public IdAllocation read(ChannelBuffer buffer, ByteBuffer temporaryBuffer) throws IOException {
+             return readIdAllocation(buffer);
+         }
+-    }).response();
++    });
+ }
+\ No newline at end of file

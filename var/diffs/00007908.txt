@@ -1,0 +1,26 @@
+diff --git a/28b6bfdcc8c23528287ee501c0c193bdbd599dbf b/e51586ed96d24d52e837479f776647ddf7466dc4
+index 28b6bfdcc8..e51586ed96 100644
+--- a/28b6bfdcc8c23528287ee501c0c193bdbd599dbf
++++ b/e51586ed96d24d52e837479f776647ddf7466dc4
+@@ -1,13 +1,16 @@
+-private static void removeParametersFromCall(final GrArgumentList argList, TIntArrayList parametersToRemove) {
+-    final GrExpression[] exprs = argList.getExpressionArguments();
+-    parametersToRemove.forEachDescending(new TIntProcedure() {
++private static void removeParametersFromCall(final GrClosureSignatureUtil.ArgInfo<PsiElement>[] actualArgs, final TIntArrayList parametersToRemove) {
++    parametersToRemove.forEach(new TIntProcedure() {
+
+         public boolean execute(final int paramNum) {
+             try {
+-                exprs[paramNum].delete();
++                final GrClosureSignatureUtil.ArgInfo<PsiElement> actualArg = actualArgs[paramNum];
++                for (PsiElement arg : actualArg.args) {
++                    arg.delete();
++                }
+             } catch (IncorrectOperationException e) {
++                LOG.error(e);
+             }
+             return true;
+         }
+     });
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/2246d2c52ca89be5c39d909bbd0b6cda67643055 b/13045343be48e4255e089e502dc1ba4a1200dce4
+index 2246d2c52c..13045343be 100644
+--- a/2246d2c52ca89be5c39d909bbd0b6cda67643055
++++ b/13045343be48e4255e089e502dc1ba4a1200dce4
+@@ -1,9 +1,9 @@
+-public void onSuccess(final boolean forward) {
+-    if (forward) {
++public void onSuccess() {
++    if (forward()) {
+         setResult(Activity.RESULT_OK);
+         finish();
+     } else {
+         final Intent intent = new Intent(this, DiscoveryActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+         startActivity(intent);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,32 @@
+diff --git a/c57a1b22081b26dc5d101af8f84600a84f25ae83 b/d00e063cbdcda3add0aa4edc55abcb58f1c7722c
+index c57a1b2208..d00e063cbd 100644
+--- a/c57a1b22081b26dc5d101af8f84600a84f25ae83
++++ b/d00e063cbdcda3add0aa4edc55abcb58f1c7722c
+@@ -1,20 +1,22 @@
+ public final SequenceMatchRules.Rule AssignmentRule(Env env) throws ParseException {
+     AssignableExpression var;
+     Expression result;
+     var = AssignableExpression(env);
+     jj_consume_token(29);
+     result = Expression(env);
+-    switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
++    switch((jj_ntk == -1) ? jj_ntk_f() : jj_ntk) {
+         case 30:
+-            jj_consume_token(30);
+-            break;
++            {
++                jj_consume_token(30);
++                break;
++            }
+         default:
+             jj_la1[1] = jj_gen;
+             ;
+     }
+     {
+-        if (true)
++        if ("" != null)
+             return SequenceMatchRules.createAssignmentRule(env, var, result);
+     }
+     throw new Error("Missing return statement in function");
+ }
+\ No newline at end of file

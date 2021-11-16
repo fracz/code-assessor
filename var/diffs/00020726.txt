@@ -1,0 +1,12 @@
+diff --git a/39d6dfb649788d1e5d32fd14bb0794e76c0744c5 b/fdb8b8f329b7eb23c35a3115e6601c462bcde896
+index 39d6dfb649..fdb8b8f329 100644
+--- a/39d6dfb649788d1e5d32fd14bb0794e76c0744c5
++++ b/fdb8b8f329b7eb23c35a3115e6601c462bcde896
+@@ -1,5 +1,5 @@
+ @Override
+ public void statement_close(FilterChain chain, StatementProxy statement) throws SQLException {
+-    super.statement_close(chain, statement);
++    chain.statement_close(statement);
+     dataSourceStat.getStatementStat().incrementStatementCloseCounter();
+ }
+\ No newline at end of file

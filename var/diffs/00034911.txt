@@ -1,0 +1,18 @@
+diff --git a/601b12c5876f869f006d67aa0e7d43c22abd7288 b/483cdef8813d0ee74ca01fc97e8828c140bfbef7
+index 601b12c587..483cdef881 100644
+--- a/601b12c5876f869f006d67aa0e7d43c22abd7288
++++ b/483cdef8813d0ee74ca01fc97e8828c140bfbef7
+@@ -1,10 +1,11 @@
+-public boolean setWindowedMode(int width, int height, boolean fullscreen) {
++public boolean setWindowedMode(int width, int height) {
++    boolean fullscreen = false;
+     if (fullscreen || this.fullscreen) {
+         boolean success = createWindow(width, height, fullscreen);
+         if (success && fullscreen)
+             sizeChanged(width, height);
+         return success;
+     }
+     glfwSetWindowSize(window, width, height);
+     return true;
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/496fdc3ff9b5c7ff2b676ee08d7edf69f06c622a b/635569d62442d98a86d0d93924c699307afb1ede
+index 496fdc3ff9..635569d624 100644
+--- a/496fdc3ff9b5c7ff2b676ee08d7edf69f06c622a
++++ b/635569d62442d98a86d0d93924c699307afb1ede
+@@ -1,12 +1,12 @@
+ @Override
+ protected boolean _checkCanReuse() {
+     if (isForceReDownload()) {
+         return false;
+     }
+-    final MessageSnapshot snapshot = FileDownloadServiceProxy.getImpl().isDownloaded(getId());
+-    if (snapshot != null) {
+-        MessageSnapshotFlow.getImpl().inflow(snapshot);
++    final File file = new File(getPath());
++    if (file.exists()) {
++        MessageSnapshotFlow.getImpl().inflow(MessageSnapshotTaker.catchCanReusedOldFile(getId(), file));
+         return true;
+     }
+     return super._checkCanReuse();
+ }
+\ No newline at end of file

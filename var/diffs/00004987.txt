@@ -1,0 +1,13 @@
+diff --git a/4800771a5da6657aa7bf03558dca937ff318a1a8 b/d1e771d3666d9962da0905415278edd995fb75d5
+index 4800771a5d..d1e771d366 100644
+--- a/4800771a5da6657aa7bf03558dca937ff318a1a8
++++ b/d1e771d3666d9962da0905415278edd995fb75d5
+@@ -1,5 +1,5 @@
+ @Nls
+ @Override
+-public String getLibraryVersion(@NotNull Library library, LibrariesContainer librariesContainer) {
+-    return getGppVersion(librariesContainer.getLibraryFiles(library, OrderRootType.CLASSES));
++public String getLibraryVersion(final VirtualFile[] libraryFiles) {
++    return getGppVersion(libraryFiles);
+ }
+\ No newline at end of file

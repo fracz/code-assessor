@@ -1,0 +1,29 @@
+diff --git a/d4f198c22f2bbb9f6ffd60797ed85d16bb29886e b/9feb2e91985804a5acc4c2c6fec5250641bc6b86
+index d4f198c22f..9feb2e9198 100644
+--- a/d4f198c22f2bbb9f6ffd60797ed85d16bb29886e
++++ b/9feb2e91985804a5acc4c2c6fec5250641bc6b86
+@@ -1,10 +1,14 @@
+-public void contributionChanged(Contribution oldInfo, Contribution newInfo) {
+-    synchronized (contributionPanelsByInfo) {
+-        ContributionPanel panel = contributionPanelsByInfo.get(oldInfo);
+-        contributionPanelsByInfo.remove(oldInfo);
+-        panel.setContribution(newInfo);
+-        contributionPanelsByInfo.put(newInfo, panel);
+-        add(panel);
+-    }
+-    updatePanelOrdering();
++public void contributionChanged(final Contribution oldContrib, final Contribution newContrib) {
++    SwingUtilities.invokeLater(new Runnable() {
++
++        public void run() {
++            synchronized (panelByContribution) {
++                ContributionPanel panel = panelByContribution.get(oldContrib);
++                panelByContribution.remove(oldContrib);
++                panel.setContribution(newContrib);
++                panelByContribution.put(newContrib, panel);
++                updatePanelOrdering();
++            }
++        }
++    });
+ }
+\ No newline at end of file

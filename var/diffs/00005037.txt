@@ -1,0 +1,17 @@
+diff --git a/721d2702ceee99269a9679edf06315b9b48010b7 b/8b82393f30edd849dc8e4685bc1660981c72338f
+index 721d2702ce..8b82393f30 100644
+--- a/721d2702ceee99269a9679edf06315b9b48010b7
++++ b/8b82393f30edd849dc8e4685bc1660981c72338f
+@@ -1,10 +1,9 @@
+-private void setItemTextLabel(final LookupItem item, final Color background, final String text, final Icon icon, final StrikeoutLabel label, final Color fg) {
++private void setItemTextLabel(final LookupItem item, final Color background, final String text, final Icon icon, final StrikeoutLabel label, final Color fg, final boolean strikeout) {
+     boolean bold = item.getAttribute(LookupItem.HIGHLIGHTED_ATTR) != null;
+-    boolean strikeout = isToStrikeout(item);
+     label.setText(text);
+     label.setIcon(icon);
+     label.setFont(bold ? BOLD_FONT : NORMAL_FONT);
+     label.setStrikeout(strikeout);
+     label.setBackground(background);
+     label.setForeground(fg);
+ }
+\ No newline at end of file

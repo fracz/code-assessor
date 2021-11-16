@@ -1,0 +1,11 @@
+diff --git a/65393e1376ac4ba0b1f6df472e1e0beefcc7d789 b/9d3182f89f1fb1b7eb3250c4160208ca6fcdf164
+index 65393e1376..9d3182f89f 100644
+--- a/65393e1376ac4ba0b1f6df472e1e0beefcc7d789
++++ b/9d3182f89f1fb1b7eb3250c4160208ca6fcdf164
+@@ -1,4 +1,4 @@
+ @NotNull
+-private static <D> String dumpEdgesData(String prefix, @NotNull Edges<Map<VariableDescriptor, D>> edges) {
++private static <S, I extends ControlFlowInfo<S>> String dumpEdgesData(String prefix, @NotNull Edges<I> edges) {
+     return prefix + " in: " + renderVariableMap(edges.getIncoming()) + " out: " + renderVariableMap(edges.getOutgoing());
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/0766165a863c14c7fe650a7747dc84b79ac0d070 b/fe292b365ba3e094993b188d1f30920056dc4c04
+index 0766165a86..fe292b365b 100644
+--- a/0766165a863c14c7fe650a7747dc84b79ac0d070
++++ b/fe292b365ba3e094993b188d1f30920056dc4c04
+@@ -1,18 +1,18 @@
+ @Override
+-public void init(InitRequest request) throws GitException {
++public void init(boolean isBare) throws GitException {
+     File workDir = repository.getWorkTree();
+     if (!workDir.exists()) {
+         throw new GitException(format(ERROR_INIT_FOLDER_MISSING, workDir));
+     }
+     // If create fails and the .git folder didn't exist we want to remove it.
+     // We have to do this here because the create command doesn't revert its own changes in case of failure.
+     boolean removeIfFailed = !repository.getDirectory().exists();
+     try {
+-        repository.create(request.isBare());
++        repository.create(isBare);
+     } catch (IOException exception) {
+         if (removeIfFailed) {
+             deleteRepositoryFolder();
+         }
+         throw new GitException(exception.getMessage(), exception);
+     }
+ }
+\ No newline at end of file

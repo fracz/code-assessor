@@ -1,0 +1,16 @@
+diff --git a/2fd92723a04eaf713703ec2bdf37321739989623 b/9d01478e70c69c96aa1d64f18709617b61af7ea6
+index 2fd92723a0..9d01478e70 100644
+--- a/2fd92723a04eaf713703ec2bdf37321739989623
++++ b/9d01478e70c69c96aa1d64f18709617b61af7ea6
+@@ -1,5 +1,9 @@
+ private void scheduleRecentlyAddedMaterialsForUpdate() {
+-    for (Object material : newDependencyMaterials()) {
++    Collection<Material> materialsBeforeConfigChange = dependencyMaterials.values();
++    this.dependencyMaterials = dependencyMaterials();
++    Collection<Material> materialsAfterConfigChange = dependencyMaterials.values();
++    Collection newMaterials = CollectionUtils.subtract(materialsAfterConfigChange, materialsBeforeConfigChange);
++    for (Object material : newMaterials) {
+         updateMaterial((Material) material);
+     }
+ }
+\ No newline at end of file

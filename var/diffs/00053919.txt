@@ -1,0 +1,23 @@
+diff --git a/ac6cdfefd58710439c7385d2b9d8f0bf8d553782 b/0dc38d49abf0cae413b8e299c7cc2a5a2d235f98
+index ac6cdfefd5..0dc38d49ab 100644
+--- a/ac6cdfefd58710439c7385d2b9d8f0bf8d553782
++++ b/0dc38d49abf0cae413b8e299c7cc2a5a2d235f98
+@@ -1,10 +1,10 @@
+ private void skipQueryPartitionClause() {
+-    if (getSqlParser().skipIfEqual(OracleKeyword.PARTITION)) {
+-        getSqlParser().accept(DefaultKeyword.BY);
+-        if (getSqlParser().equalAny(Symbol.LEFT_PAREN)) {
+-            getSqlParser().skipParentheses();
+-        } else {
+-            throw new UnsupportedOperationException("Cannot support PARTITION BY without ()");
+-        }
++    if (!getSqlParser().skipIfEqual(OracleKeyword.PARTITION)) {
++        return;
+     }
++    getSqlParser().accept(DefaultKeyword.BY);
++    if (!getSqlParser().equalAny(Symbol.LEFT_PAREN)) {
++        throw new UnsupportedOperationException("Cannot support PARTITION BY without ()");
++    }
++    getSqlParser().skipParentheses();
+ }
+\ No newline at end of file

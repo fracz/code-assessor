@@ -1,0 +1,21 @@
+diff --git a/0ecde3b03ac33e4df677833d4eba29792d511e2d b/8cbe458b337304827afac2f75cf6e7e21341a900
+index 0ecde3b03a..8cbe458b33 100644
+--- a/0ecde3b03ac33e4df677833d4eba29792d511e2d
++++ b/8cbe458b337304827afac2f75cf6e7e21341a900
+@@ -1,12 +1,10 @@
+ @PUT
+ @Path("adapters")
+ @AuditEvent(type = AuditEventTypes.LOOKUP_ADAPTER_UPDATE)
+ @ApiOperation(value = "Update the given data adapter settings")
+ public DataAdapterApi updateAdapter(@Valid @ApiParam DataAdapterApi toUpdate) {
+-    DataAdapterDto saved = adapterService.save(toUpdate.toDto());
+-    Collection<LookupTableDto> adapterUsages = lookupTableService.findByDataAdapterIds(singleton(saved.id()));
+-    if (!adapterUsages.isEmpty()) {
+-        clusterBus.post(LookupTablesUpdated.create(adapterUsages));
+-    }
++    DataAdapterDto saved = dbDataAdapterService.save(toUpdate.toDto());
++    // the linked lookup tables will be updated by the service
++    clusterBus.post(DataAdaptersUpdated.create(saved.id()));
+     return DataAdapterApi.fromDto(saved);
+ }
+\ No newline at end of file

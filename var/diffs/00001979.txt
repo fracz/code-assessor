@@ -1,0 +1,34 @@
+diff --git a/579019fd410ede95ab191d8287eddf97aecabedb b/ca867f6c24f1ecf0a467af692aa01f2752c0a4f2
+index 579019fd41..ca867f6c24 100644
+--- a/579019fd410ede95ab191d8287eddf97aecabedb
++++ b/ca867f6c24f1ecf0a467af692aa01f2752c0a4f2
+@@ -1,19 +1,12 @@
+ private void processBlocksBefore(final int offset) {
+-    while (true) {
+-        myAlignAgain.clear();
+-        myCurrentBlock = myFirstTokenBlock;
+-        while (myCurrentBlock != null && myCurrentBlock.getStartOffset() < offset) {
+-            processToken();
+-            if (myCurrentBlock == null) {
+-                myCurrentBlock = myLastTokenBlock;
+-                if (myCurrentBlock != null) {
+-                    myProgressCallback.afterProcessingBlock(myCurrentBlock);
+-                }
+-                break;
+-            }
+-        }
+-        if (myAlignAgain.isEmpty())
+-            return;
+-        reset();
++    AdjustWhiteSpacesState state = new AdjustWhiteSpacesState();
++    myCurrentBlock = myFirstTokenBlock;
++    LeafBlockWrapper last = null;
++    while (!state.isDone() && myCurrentBlock.getStartOffset() < offset) {
++        last = myCurrentBlock;
++        state.doIteration();
++    }
++    if (myCurrentBlock == null) {
++        myCurrentBlock = last;
+     }
+ }
+\ No newline at end of file

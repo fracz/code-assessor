@@ -1,0 +1,18 @@
+diff --git a/595340f8eab406f75b79501ac98c4d8fba96ead8 b/efcc51a2e9db2a515f5e97d2221d408ae9e556c5
+index 595340f8ea..efcc51a2e9 100644
+--- a/595340f8eab406f75b79501ac98c4d8fba96ead8
++++ b/efcc51a2e9db2a515f5e97d2221d408ae9e556c5
+@@ -1,9 +1,9 @@
+ @Override
+ public void execute(Pair<K, V> input) {
+     K key = input.getFirst();
+     V val = input.getSecond();
+     V agg = state.get(key);
+-    agg = (agg == null) ? val : reducer.apply(agg, val);
+-    state.put(key, agg);
+-    mayBeForwardAggUpdate(Pair.of(key, agg));
++    final V res = (agg == null) ? val : reducer.apply(agg, val);
++    state.put(key, res);
++    mayBeForwardAggUpdate(() -> Pair.of(key, res));
+ }
+\ No newline at end of file

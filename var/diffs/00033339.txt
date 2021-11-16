@@ -1,0 +1,18 @@
+diff --git a/56d51d7f619505281b68582f1652456b56a486c9 b/5c2cadd6dab3820d41aa2be33c30802c6a12a437
+index 56d51d7f61..5c2cadd6da 100644
+--- a/56d51d7f619505281b68582f1652456b56a486c9
++++ b/5c2cadd6dab3820d41aa2be33c30802c6a12a437
+@@ -1,8 +1,11 @@
+ public void abortProcess() {
+-    synchronized (lock) {
++    lock.lock();
++    try {
+         aborted = true;
+         if (process != null) {
+             process.destroy();
+         }
++    } finally {
++        lock.unlock();
+     }
+ }
+\ No newline at end of file

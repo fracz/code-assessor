@@ -1,0 +1,16 @@
+diff --git a/5d44f141b6155fe36ee0fbd548d5279583511ed8 b/d293acc86341cdc14dbd479a2f8b08b5c3b25173
+index 5d44f141b6..d293acc863 100644
+--- a/5d44f141b6155fe36ee0fbd548d5279583511ed8
++++ b/d293acc86341cdc14dbd479a2f8b08b5c3b25173
+@@ -1,6 +1,7 @@
+-public void dropDatabase(String databaseName, String serverUser, String serverPassword) {
+-    OServerUserConfiguration user = serverLogin(serverUser, serverPassword, "database.passthrough");
+-    if (user != null) {
++public void dropDatabase(String databaseName) {
++    if (databases.exists(databaseName, null, null)) {
+         databases.drop(databaseName, null, null);
++    } else {
++        throw new OStorageException("Database with name '" + databaseName + "' does not exist");
+     }
+ }
+\ No newline at end of file

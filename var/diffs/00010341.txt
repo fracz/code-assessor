@@ -1,0 +1,20 @@
+diff --git a/c81491a0c3e80bb02b19d0f65b8349587a79d30e b/060447a22f3578c6da93e4ed6d9568184bca8f2c
+index c81491a0c3..060447a22f 100644
+--- a/c81491a0c3e80bb02b19d0f65b8349587a79d30e
++++ b/060447a22f3578c6da93e4ed6d9568184bca8f2c
+@@ -1,12 +1,13 @@
+ public void removeAll() {
+     final ArrayList<K> keys = new ArrayList<K>(count());
+-    for (int current = myTop; current > 0; ) {
++    int current = myTop;
++    while (current > 0) {
+         if (myCache[current].value != null) {
+             keys.add(myCache[current].key);
+         }
+         current = myCache[current].next;
+     }
+     for (K key : keys) {
+         remove(key);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/94b319840d1b8c02a8d216a85fb4b5a6194f68e2 b/05efd8cd2142b038d3e3326010b6ef9e124db92d
+index 94b319840d..05efd8cd21 100644
+--- a/94b319840d1b8c02a8d216a85fb4b5a6194f68e2
++++ b/05efd8cd2142b038d3e3326010b6ef9e124db92d
+@@ -1,14 +1,9 @@
+-private static DataSource getDataSource() {
++private static DataSource getDataSource() throws SQLException {
+     DataSource result = Mockito.mock(DataSource.class);
+     Connection connection = Mockito.mock(Connection.class);
+     DatabaseMetaData metaData = Mockito.mock(DatabaseMetaData.class);
+-    try {
+-        when(metaData.getDatabaseProductName()).thenReturn("H2");
+-        when(connection.getMetaData()).thenReturn(metaData);
+-        when(result.getConnection()).thenReturn(connection);
+-    // TODO throw
+-    } catch (SQLException e) {
+-        e.printStackTrace();
+-    }
++    when(metaData.getDatabaseProductName()).thenReturn("H2");
++    when(connection.getMetaData()).thenReturn(metaData);
++    when(result.getConnection()).thenReturn(connection);
+     return result;
+ }
+\ No newline at end of file

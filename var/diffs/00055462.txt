@@ -1,0 +1,15 @@
+diff --git a/83e66888687b79daa3dfc6239420adfaf0f39903 b/059424f55533fe74ebf8745c628084bc5f1cece1
+index 83e6688868..059424f555 100644
+--- a/83e66888687b79daa3dfc6239420adfaf0f39903
++++ b/059424f55533fe74ebf8745c628084bc5f1cece1
+@@ -1,6 +1,7 @@
+ @Override
+ public void onError(Throwable ex) {
+-    if (session != null) {
+-        session.close(new CloseStatus(CloseStatus.SERVER_ERROR.getCode(), ex.getMessage()));
++    if (delegateSession != null) {
++        int code = CloseStatus.SERVER_ERROR.getCode();
++        delegateSession.close(new CloseStatus(code, ex.getMessage()));
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/26f89383e8cba5698621a67b1638902b8a041faf b/5f03fd7670caa27f272fc5e6238170c36f9f4993
+index 26f89383e8..5f03fd7670 100644
+--- a/26f89383e8cba5698621a67b1638902b8a041faf
++++ b/5f03fd7670caa27f272fc5e6238170c36f9f4993
+@@ -1,8 +1,8 @@
+ private ExpressionChildrenRenderer createExpressionChildrenRenderer(String expressionText, String childrenExpandableText) {
+     final ExpressionChildrenRenderer childrenRenderer = new ExpressionChildrenRenderer();
+-    childrenRenderer.setChildrenExpression(EvaluationManager.getInstance().createExpressionFragment(expressionText));
++    childrenRenderer.setChildrenExpression(new TextWithImportsImpl(CodeFragmentKind.EXPRESSION, expressionText));
+     if (childrenExpandableText != null) {
+-        childrenRenderer.setChildrenExpandable(EvaluationManager.getInstance().createExpressionFragment(childrenExpandableText));
++        childrenRenderer.setChildrenExpandable(new TextWithImportsImpl(CodeFragmentKind.EXPRESSION, childrenExpandableText));
+     }
+     return childrenRenderer;
+ }
+\ No newline at end of file

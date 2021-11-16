@@ -1,0 +1,23 @@
+diff --git a/4d231ec3ba2145a8031b33490caa5c18440bea86 b/ee154a105e08b44fecb7cdc39d69fa2c41fe8bf5
+index 4d231ec3ba..ee154a105e 100644
+--- a/4d231ec3ba2145a8031b33490caa5c18440bea86
++++ b/ee154a105e08b44fecb7cdc39d69fa2c41fe8bf5
+@@ -1,3 +1,16 @@
+ public static ModuleComponentRepository wrap(ModuleComponentRepository delegate) {
+-    return new BaseModuleComponentRepository(delegate, new IvyDynamicResolveModuleComponentRepositoryAccess(delegate.getLocalAccess()), new IvyDynamicResolveModuleComponentRepositoryAccess(delegate.getRemoteAccess()));
++    final ModuleComponentRepositoryAccess localAccess = new IvyDynamicResolveModuleComponentRepositoryAccess(delegate.getLocalAccess());
++    final ModuleComponentRepositoryAccess remoteAccess = new IvyDynamicResolveModuleComponentRepositoryAccess(delegate.getRemoteAccess());
++    return new BaseModuleComponentRepository(delegate) {
++
++        @Override
++        public ModuleComponentRepositoryAccess getLocalAccess() {
++            return localAccess;
++        }
++
++        @Override
++        public ModuleComponentRepositoryAccess getRemoteAccess() {
++            return remoteAccess;
++        }
++    };
+ }
+\ No newline at end of file

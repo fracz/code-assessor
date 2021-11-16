@@ -1,0 +1,27 @@
+diff --git a/f8f256201d937006e779e663ec0bd819284bb9f5 b/08211751461a8f16983a861e0e83b181cc07d195
+index f8f256201d..0821175146 100644
+--- a/f8f256201d937006e779e663ec0bd819284bb9f5
++++ b/08211751461a8f16983a861e0e83b181cc07d195
+@@ -1,17 +1,17 @@
+ @Override
+ protected MySQLProcedure createDatabaseObject(DBRProgressMonitor monitor, DBECommandContext context, final MySQLCatalog parent, Object copyFrom) {
+     return new UITask<MySQLProcedure>() {
+
+         @Override
+         protected MySQLProcedure runTask() {
+-            CreateProcedureDialog dialog = new CreateProcedureDialog(DBeaverUI.getActiveWorkbenchShell(), parent.getDataSource());
+-            if (dialog.open() != IDialogConstants.OK_ID) {
++            CreateProcedurePage editPage = new CreateProcedurePage(parent);
++            if (!editPage.edit()) {
+                 return null;
+             }
+             MySQLProcedure newProcedure = new MySQLProcedure(parent);
+-            newProcedure.setProcedureType(dialog.getProcedureType());
+-            newProcedure.setName(dialog.getProcedureName());
++            newProcedure.setProcedureType(editPage.getProcedureType());
++            newProcedure.setName(editPage.getProcedureName());
+             return newProcedure;
+         }
+     }.execute();
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/1014ecb0ac56c1490339cbc6517e2470064c17eb b/6bb9d8fd5c5098d540a06b85bb85143f27f989f3
+index 1014ecb0ac..6bb9d8fd5c 100644
+--- a/1014ecb0ac56c1490339cbc6517e2470064c17eb
++++ b/6bb9d8fd5c5098d540a06b85bb85143f27f989f3
+@@ -1,4 +1,4 @@
+ @Override
+-public Drawable getThumbnail(Context context, int maxWidth, int maxHeight) {
+-    return ThemeUtil.resolveIcon(context, R.attr.conversation_icon_attach_audio);
++public ListenableFutureTask<Pair<Drawable, Boolean>> getThumbnail(Context context) {
++    return new ListenableFutureTask<>(new Pair<>(ResUtil.getDrawable(context, R.attr.conversation_icon_attach_audio), true));
+ }
+\ No newline at end of file

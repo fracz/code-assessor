@@ -1,0 +1,13 @@
+diff --git a/b1f0fb767e3468330aa745ffb96f1b912ede8e96 b/a2f9aa2b74ee583e6869cb431ce8d543c0018f44
+index b1f0fb767e..a2f9aa2b74 100644
+--- a/b1f0fb767e3468330aa745ffb96f1b912ede8e96
++++ b/a2f9aa2b74ee583e6869cb431ce8d543c0018f44
+@@ -1,6 +1,6 @@
+ @Test
+ public void unresolvedException() throws Exception {
+     Throwable expected = new IllegalStateException();
+     Mono<Void> mono = this.handler.handle(this.exchange, expected);
+-    TestSubscriber.subscribe(mono).assertErrorWith(actual -> assertSame(expected, actual));
++    ScriptedSubscriber.<Void>create().consumeErrorWith(actual -> assertSame(expected, actual)).verify(mono);
+ }
+\ No newline at end of file

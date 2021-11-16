@@ -1,0 +1,40 @@
+diff --git a/262002e28630875c80bb417d1dd49fbad41d5f39 b/eca796cfc1a467dfc886f0f726520e41cc50b5f4
+index 262002e286..eca796cfc1 100644
+--- a/262002e28630875c80bb417d1dd49fbad41d5f39
++++ b/eca796cfc1a467dfc886f0f726520e41cc50b5f4
+@@ -1,23 +1,22 @@
+ /**
+- * Returns a new {@code RequestCondition} that contains all conditions of this key that match the request.
++ * Checks if any of the consumable media type expressions match the given request and returns an instance that
++ * is guaranteed to contain matching media type expressions only.
+  *
+- * @param request the request
+- * @return a new request condition that contains all matching attributes, or {@code null} if not all conditions match
++ * @param request the current request
++ *
++ * @return the same instance if the condition contains no expressions;
++ * or a new condition with matching expressions; or {@code null} if no expressions match.
+  */
+ public ConsumesRequestCondition getMatchingCondition(HttpServletRequest request) {
+     if (isEmpty()) {
+         return this;
+     }
+-    Set<ConsumeRequestCondition> matchingConditions = new LinkedHashSet<ConsumeRequestCondition>(getConditions());
+-    for (Iterator<ConsumeRequestCondition> iterator = matchingConditions.iterator(); iterator.hasNext(); ) {
+-        ConsumeRequestCondition condition = iterator.next();
+-        if (!condition.match(request)) {
++    Set<ConsumeMediaTypeExpression> result = new LinkedHashSet<ConsumeMediaTypeExpression>(expressions);
++    for (Iterator<ConsumeMediaTypeExpression> iterator = result.iterator(); iterator.hasNext(); ) {
++        ConsumeMediaTypeExpression expression = iterator.next();
++        if (!expression.match(request)) {
+             iterator.remove();
+         }
+     }
+-    if (matchingConditions.isEmpty()) {
+-        return null;
+-    } else {
+-        return new ConsumesRequestCondition(matchingConditions);
+-    }
++    return (result.isEmpty()) ? null : new ConsumesRequestCondition(result);
+ }
+\ No newline at end of file

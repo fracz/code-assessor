@@ -1,0 +1,15 @@
+diff --git a/21aee105548ea62dcd4605c96c0737247406a2c1 b/76f5abc9ef9190c9f6105df063aa273c1577ea33
+index 21aee10554..76f5abc9ef 100644
+--- a/21aee105548ea62dcd4605c96c0737247406a2c1
++++ b/76f5abc9ef9190c9f6105df063aa273c1577ea33
+@@ -1,7 +1,8 @@
+ public static RemoteBlockReader createRemoteBlockReader(TachyonConf conf) {
+     try {
+-        return CommonUtils.createNewClassInstance(conf.getClass(Constants.USER_REMOTE_BLOCK_READER, Constants.USER_REMOTE_BLOCK_READER_CLASS), null, null);
++        return CommonUtils.createNewClassInstance(conf.getClass(Constants.USER_REMOTE_BLOCK_READER, // Constants.USER_REMOTE_BLOCK_READER_CLASS), null, null);
++        tachyon.client.tcp.TCPRemoteBlockReader.class), null, null);
+     } catch (Exception e) {
+         throw Throwables.propagate(e);
+     }
+ }
+\ No newline at end of file

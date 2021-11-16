@@ -1,0 +1,23 @@
+diff --git a/84d3b3d91fc92e91d5a840c7b858936c22e6839c b/0f1a68432650bdb16590ab9d6da348c5305ed9a0
+index 84d3b3d91f..0f1a684326 100644
+--- a/84d3b3d91fc92e91d5a840c7b858936c22e6839c
++++ b/0f1a68432650bdb16590ab9d6da348c5305ed9a0
+@@ -1,14 +1,15 @@
+ @NotNull
+ @Override
+ public final NonCancelableSection startNonCancelableSection() {
+     final ProgressIndicator myOld = ProgressManager.getInstance().getProgressIndicator();
++    final Thread currentThread = Thread.currentThread();
+     NonCancelableIndicator nonCancelor = new NonCancelableIndicator() {
+
+         @Override
+         public void done() {
+-            setCurrentIndicator(Thread.currentThread(), myOld);
++            setCurrentIndicator(currentThread, myOld);
+         }
+     };
+-    setCurrentIndicator(Thread.currentThread(), nonCancelor);
++    setCurrentIndicator(currentThread, nonCancelor);
+     return nonCancelor;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/d2c322ecf23d44c68457321107905047e7644f7f b/b7ba7acce91cf678a8f3ed7dd260e117384e50fc
+index d2c322ecf2..b7ba7acce9 100644
+--- a/d2c322ecf23d44c68457321107905047e7644f7f
++++ b/b7ba7acce91cf678a8f3ed7dd260e117384e50fc
+@@ -1,4 +1,8 @@
+ @Override
+ protected List<ReactPackage> getPackages() {
+-    return createReactPackages();
++    List<ReactPackage> list = new ArrayList<>();
++    list.add(new MainReactPackage());
++    list.add(new NavigationReactPackage());
++    addAdditionalReactPackagesIfNeeded(list);
++    return list;
+ }
+\ No newline at end of file

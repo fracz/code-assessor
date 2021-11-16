@@ -1,0 +1,11 @@
+diff --git a/5a715395828e2eef02a840f9afe3a418e0a649cf b/35dd7598e5a4a7839fff6df06d36628552c977cb
+index 5a71539582..35dd7598e5 100644
+--- a/5a715395828e2eef02a840f9afe3a418e0a649cf
++++ b/35dd7598e5a4a7839fff6df06d36628552c977cb
+@@ -1,4 +1,3 @@
+ public SQLSelectStatement parseSelect() {
+-    OdpsSelectParser selectParser = new OdpsSelectParser(this.exprParser);
+-    return new SQLSelectStatement(selectParser.select(), JdbcConstants.ODPS);
++    return new SQLSelectStatement(new OdpsSelectParser(this.exprParser).select(), JdbcConstants.ODPS);
+ }
+\ No newline at end of file

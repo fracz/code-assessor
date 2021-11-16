@@ -1,0 +1,15 @@
+diff --git a/ec46ae4a820c54432ab22a480d2fc567fdb69639 b/5424dd17c7e6b44480f5390e1fc8113d31ff1de9
+index ec46ae4a82..5424dd17c7 100644
+--- a/ec46ae4a820c54432ab22a480d2fc567fdb69639
++++ b/5424dd17c7e6b44480f5390e1fc8113d31ff1de9
+@@ -1,8 +1,8 @@
+ // we do our best to return the shard failures, but its ok if its not fully concurrently safe
+ // we simply try and return as much as possible
+ protected final void addShardFailure(ShardSearchFailure failure) {
+     if (shardFailures == null) {
+-        shardFailures = new LinkedTransferQueue<ShardSearchFailure>();
++        shardFailures = ConcurrentCollections.newQueue();
+     }
+     shardFailures.add(failure);
+ }
+\ No newline at end of file

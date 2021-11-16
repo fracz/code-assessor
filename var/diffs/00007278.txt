@@ -1,0 +1,12 @@
+diff --git a/da772528589e1d9fba33d88245cc1059701e3300 b/adec156a49fb987594943acde9b87ef745cf6347
+index da77252858..adec156a49 100644
+--- a/da772528589e1d9fba33d88245cc1059701e3300
++++ b/adec156a49fb987594943acde9b87ef745cf6347
+@@ -1,4 +1,3 @@
+-private boolean isJDKChanged() {
+-    ProjectJdk jdk = getProjectJDK();
+-    return ourJDK == null || !Comparing.equal(ourJDK.getVersionString(), jdk.getVersionString());
++private static boolean isJDKChanged(final ProjectJdk newJDK) {
++    return ourJDK == null || !Comparing.equal(ourJDK.getVersionString(), newJDK.getVersionString());
+ }
+\ No newline at end of file

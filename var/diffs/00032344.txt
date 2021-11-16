@@ -1,0 +1,22 @@
+diff --git a/b0e0859223bdee1fda8e97f099430c234eb91635 b/22527ae8be68f99db948b2c9170482626d268b6a
+index b0e0859223..22527ae8be 100644
+--- a/b0e0859223bdee1fda8e97f099430c234eb91635
++++ b/22527ae8be68f99db948b2c9170482626d268b6a
+@@ -1,15 +1,15 @@
+ public void resolveTypedef(Typedef td, DeclaredTypeRegistry registry) {
+     Preconditions.checkState(td != null, "getTypedef should only be " + "called when we know that the typedef is defined");
+     if (td.isResolved()) {
+         return;
+     }
+     JSTypeExpression texp = td.getTypeExpr();
+     JSType tdType;
+     if (texp == null) {
+         warnings.add(JSError.make(td.getTypeExprForErrorReporting().getRoot(), CIRCULAR_TYPEDEF_ENUM));
+-        tdType = JSType.UNKNOWN;
++        tdType = this.commonTypes.UNKNOWN;
+     } else {
+         tdType = getTypeFromJSTypeExpression(texp, registry, null);
+     }
+     td.resolveTypedef(tdType);
+ }
+\ No newline at end of file

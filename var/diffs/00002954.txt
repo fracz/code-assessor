@@ -1,0 +1,18 @@
+diff --git a/32d774b97a0575cab64d26e36e1343454cce88d8 b/a97a19efe82d83a53491589285b9468f99e4d187
+index 32d774b97a..a97a19efe8 100644
+--- a/32d774b97a0575cab64d26e36e1343454cce88d8
++++ b/a97a19efe82d83a53491589285b9468f99e4d187
+@@ -1,11 +1,11 @@
+ public CvsLightweightFile[] getSelectedLightweightFiles() {
+-    CvsLightweightFile[] files = (CvsLightweightFile[]) myContext.getData(CvsDataConstants.CVS_LIGHT_FILES);
++    CvsLightweightFile[] files = CvsDataKeys.CVS_LIGHT_FILES.getData(myContext);
+     if (files != null && files.length > 0)
+         return files;
+     CvsLightweightFile file = getCvsLightweightFile();
+     if (file != null) {
+         return new CvsLightweightFile[] { file };
+     } else {
+         return null;
+     }
+ }
+\ No newline at end of file

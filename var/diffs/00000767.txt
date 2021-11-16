@@ -1,0 +1,17 @@
+diff --git a/81d742de411023e5f8ae74c033052c5243a44d7c b/e9a858dc458ca2bb82e433f67ecf77fdd09736c6
+index 81d742de41..e9a858dc45 100644
+--- a/81d742de411023e5f8ae74c033052c5243a44d7c
++++ b/e9a858dc458ca2bb82e433f67ecf77fdd09736c6
+@@ -1,10 +1,9 @@
+ @Override
+ public void resetSlopPixel(float factor) {
+-    float d = Math.max(density, scaledDensity);
+     // correct for low density and high resolution
+-    d = Math.max(factor, getWidth() / (float) DanmakuFactory.BILI_PLAYER_WIDTH);
++    float d = Math.max(factor, getWidth() / DanmakuFactory.BILI_PLAYER_WIDTH);
+     float slop = d * DanmakuFactory.DANMAKU_MEDIUM_TEXTSIZE;
+     mSlopPixel = (int) slop;
+     if (factor > 1f)
+         mSlopPixel = (int) (slop * factor);
+ }
+\ No newline at end of file

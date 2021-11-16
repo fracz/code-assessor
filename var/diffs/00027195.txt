@@ -1,0 +1,15 @@
+diff --git a/4e21d4fb741ba70d304b4097f87a63d8c9436b3f b/bd01a3601d297b1919002eb33a6001de25f6b51d
+index 4e21d4fb74..bd01a3601d 100644
+--- a/4e21d4fb741ba70d304b4097f87a63d8c9436b3f
++++ b/bd01a3601d297b1919002eb33a6001de25f6b51d
+@@ -1,6 +1,5 @@
+-protected INDArray createGamma(NeuralNetConfiguration conf) {
++protected INDArray createGamma(NeuralNetConfiguration conf, INDArray gammaView) {
+     BatchNormalization layer = (BatchNormalization) conf.getLayer();
+-    INDArray ret = Nd4j.valueArrayOf(layer.getNOut(), layer.getGamma());
+-    ret.data().persist();
+-    return ret;
++    gammaView.assign(layer.getGamma());
++    return gammaView;
+ }
+\ No newline at end of file

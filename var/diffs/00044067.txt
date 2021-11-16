@@ -1,0 +1,14 @@
+diff --git a/d105d1cb5b81de4d2e426f87d3102802a3daffb7 b/a8a90aa85f47f96c2a2f2cc69c5ec89a34599edf
+index d105d1cb5b..a8a90aa85f 100644
+--- a/d105d1cb5b81de4d2e426f87d3102802a3daffb7
++++ b/a8a90aa85f47f96c2a2f2cc69c5ec89a34599edf
+@@ -1,5 +1,4 @@
+-public void unregisterFunction(final String iName) {
+-    final String name = iName.toUpperCase(Locale.ENGLISH);
+-    if (inlineFunctions.remove(name) == null)
+-        aggregationFunctions.remove(name);
++public void unregisterFunction(String iName) {
++    iName = iName.toUpperCase(Locale.ENGLISH);
++    ODynamicFunctionFactory.FUNCTIONS.remove(iName);
+ }
+\ No newline at end of file

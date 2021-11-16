@@ -1,0 +1,23 @@
+diff --git a/bfaa68ed25de2167ba5e05f213c44d54e03282e4 b/1fd22ee5ce3bea659d7ac82f5ec883e5c2d12c3c
+index bfaa68ed25..1fd22ee5ce 100644
+--- a/bfaa68ed25de2167ba5e05f213c44d54e03282e4
++++ b/1fd22ee5ce3bea659d7ac82f5ec883e5c2d12c3c
+@@ -1,14 +1,15 @@
+ public void visitClassInitializer(PsiClassInitializer initializer) {
+     if (initializer.hasModifierProperty(PsiModifier.STATIC)) {
+         return;
+     }
+-    if (initializer.getParent() instanceof PsiClass && !TestUtils.isJUnitTestClass((PsiClass) initializer.getParent())) {
++    final PsiElement parent = initializer.getParent();
++    if (parent instanceof PsiClass && !TestUtils.isJUnitTestClass((PsiClass) parent)) {
+         return;
+     }
+     final PsiCodeBlock body = initializer.getBody();
+     if (isTrivial(body)) {
+         return;
+     }
+     final PsiJavaToken leftBrace = body.getLBrace();
+-    registerError(leftBrace);
++    registerError(leftBrace, Boolean.TRUE);
+ }
+\ No newline at end of file

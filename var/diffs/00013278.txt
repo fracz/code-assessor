@@ -1,0 +1,31 @@
+diff --git a/5ccfcb4313ac17329d97e30319cb3496c430f313 b/f9e309a137b094cc53c451a674f0fe7f4c9fbbcf
+index 5ccfcb4313..f9e309a137 100644
+--- a/5ccfcb4313ac17329d97e30319cb3496c430f313
++++ b/f9e309a137b094cc53c451a674f0fe7f4c9fbbcf
+@@ -1,17 +1,17 @@
+ @Nullable
+-private static JsonSchemaType getType(JsonValue value) {
+-    if (value instanceof JsonNullLiteral)
++private static JsonSchemaType getType(JsonValueAdapter value) {
++    if (value.isNull())
+         return JsonSchemaType._null;
+-    if (value instanceof JsonBooleanLiteral)
++    if (value.isBooleanLiteral())
+         return JsonSchemaType._boolean;
+-    if (value instanceof JsonStringLiteral)
++    if (value.isStringLiteral())
+         return JsonSchemaType._string;
+-    if (value instanceof JsonArray)
++    if (value.isArray())
+         return JsonSchemaType._array;
+-    if (value instanceof JsonObject)
++    if (value.isObject())
+         return JsonSchemaType._object;
+-    if (value instanceof JsonNumberLiteral) {
+-        return isInteger(value.getText()) ? JsonSchemaType._integer : JsonSchemaType._number;
++    if (value.isNumberLiteral()) {
++        return isInteger(value.getDelegate().getText()) ? JsonSchemaType._integer : JsonSchemaType._number;
+     }
+     return null;
+ }
+\ No newline at end of file

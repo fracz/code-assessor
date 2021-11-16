@@ -1,0 +1,15 @@
+diff --git a/f832532d439c65e195b4ef4c8e90c8f4a223637b b/3612ccb32c64c2eebaff3b7cd60c02a799dbfa3c
+index f832532d43..3612ccb32c 100644
+--- a/f832532d439c65e195b4ef4c8e90c8f4a223637b
++++ b/3612ccb32c64c2eebaff3b7cd60c02a799dbfa3c
+@@ -1,4 +1,8 @@
+ @Override
+ public long currentId() {
+-    return this.id;
++    FsTranslogFile current1 = this.current;
++    if (current1 == null) {
++        return -1;
++    }
++    return current1.id();
+ }
+\ No newline at end of file

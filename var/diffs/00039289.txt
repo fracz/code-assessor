@@ -1,0 +1,18 @@
+diff --git a/db67628cbebba53384aef53700dec0dfe25dfd8f b/15579956cf050d9da12c34d8c6c10fc15c0b9314
+index db67628cbe..15579956cf 100644
+--- a/db67628cbebba53384aef53700dec0dfe25dfd8f
++++ b/15579956cf050d9da12c34d8c6c10fc15c0b9314
+@@ -1,11 +1,11 @@
+ @Test
+ public void readHeaderMustThrowIfFileDoesNotExist() throws Exception {
+     // given
+     File doesNotExist = new File("Does not exist");
+     try {
+-        GBPTree.readHeader(createPageCache(256), doesNotExist, layout, NO_HEADER_READER);
++        GBPTree.readHeader(createPageCache(DEFAULT_PAGE_SIZE), doesNotExist, layout, NO_HEADER_READER);
+         fail("Should have failed");
+     } catch (NoSuchFileException e) {
+     // good
+     }
+ }
+\ No newline at end of file

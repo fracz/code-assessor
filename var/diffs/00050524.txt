@@ -1,0 +1,24 @@
+diff --git a/70d517661f9cd81ac41ae4576b9e65c665a4e550 b/a00b7c8f653909232c731de99b4d3aa43ae4230d
+index 70d517661f..a00b7c8f65 100644
+--- a/70d517661f9cd81ac41ae4576b9e65c665a4e550
++++ b/a00b7c8f653909232c731de99b4d3aa43ae4230d
+@@ -1,17 +1,17 @@
+ public void setActiveProject(IProject project) {
+     final IProject oldValue = this.activeProject;
+     this.activeProject = project;
+-    DBeaverCore.getInstance().getGlobalPreferenceStore().setValue("project.active", project == null ? "" : project.getName());
++    DBeaverCore.getGlobalPreferenceStore().setValue(PROP_PROJECT_ACTIVE, project == null ? "" : project.getName());
+     GlobalPropertyTester.firePropertyChange(GlobalPropertyTester.PROP_HAS_ACTIVE_PROJECT);
+     Display.getDefault().asyncExec(new Runnable() {
+
+         @Override
+         public void run() {
+             synchronized (projectListeners) {
+                 for (DBPProjectListener listener : projectListeners) {
+                     listener.handleActiveProjectChange(oldValue, activeProject);
+                 }
+             }
+         }
+     });
+ }
+\ No newline at end of file

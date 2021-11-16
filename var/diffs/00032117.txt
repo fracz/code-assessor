@@ -1,0 +1,14 @@
+diff --git a/f283a12e9be0ccc203ad37cb74f4a57db24bf88c b/ad193206d08ae4c6d419d1e285d7b92a59beb3e4
+index f283a12e9b..ad193206d0 100644
+--- a/f283a12e9be0ccc203ad37cb74f4a57db24bf88c
++++ b/ad193206d08ae4c6d419d1e285d7b92a59beb3e4
+@@ -1,5 +1,5 @@
+ public void testExposeYieldExpression1() {
+-    helperMoveExpression("function *f() { return { a: yield 1, c: foo(yield 2, yield 3) }; }", "yield", "function *f() {" + "  var result$jscomp$0 = yield 1;" + "  return { a: result$jscomp$0, c: foo(yield 2, yield 3) };" + "}");
+-    helperMoveExpression("function *f() {" + "  return { a: 0, c: foo(yield 2, yield 3) };" + "}", "yield", "function *f() {" + "  var result$jscomp$0 = yield 2;" + "  return { a: 0, c: foo(result$jscomp$0, yield 3) };" + "}");
+-    helperMoveExpression("function *f() {" + "  return { a: 0, c: foo(1, yield 3) };" + "}", "yield", "function *f() {" + "  var result$jscomp$0 = yield 3;" + "  return { a: 0, c: foo(1, result$jscomp$0) };" + "}");
++    helperMoveExpression("function *f() { return { a: yield 1, c: foo(yield 2, yield 3) }; }", "yield", LINE_JOINER.join("function *f() {", "  var result$jscomp$0 = yield 1;", "  return { a: result$jscomp$0, c: foo(yield 2, yield 3) };", "}"));
++    helperMoveExpression("function *f() { return { a: 0, c: foo(yield 2, yield 3) }; }", "yield", LINE_JOINER.join("function *f() {", "  var result$jscomp$0 = yield 2;", "  return { a: 0, c: foo(result$jscomp$0, yield 3) };", "}"));
++    helperMoveExpression("function *f() { return { a: 0, c: foo(1, yield 3) }; }", "yield", LINE_JOINER.join("function *f() {", "  var result$jscomp$0 = yield 3;", "  return { a: 0, c: foo(1, result$jscomp$0) };", "}"));
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/172e83e48090ef4b5a89ab3ea47c951177773622 b/12fb6841c1fb9728e5f3993b3c8e150609df398c
+index 172e83e480..12fb6841c1 100644
+--- a/172e83e48090ef4b5a89ab3ea47c951177773622
++++ b/12fb6841c1fb9728e5f3993b3c8e150609df398c
+@@ -1,7 +1,7 @@
+ @Test
+ public void testSanitizeName_noBadCharacters() throws IOException {
+-    String metricName = "thisIsACleanMetricName";
++    MetricName metricName = new MetricName("thisIs", "AClean", "MetricName");
+     GangliaReporter gangliaReporter = new GangliaReporter("localhost", 5555);
+     String cleanMetricName = gangliaReporter.sanitizeName(metricName);
+-    assertEquals("clean metric name was changed unexpectedly", metricName, cleanMetricName);
++    assertEquals("clean metric name was changed unexpectedly", "thisIs.AClean.MetricName", cleanMetricName);
+ }
+\ No newline at end of file

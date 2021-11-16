@@ -1,0 +1,15 @@
+diff --git a/930a21c61e242e73f086f4b4e39f9a0d1fab41fc b/ac244898ba95af3c8513ec9239dcdf0ce3dc1ae8
+index 930a21c61e..ac244898ba 100644
+--- a/930a21c61e242e73f086f4b4e39f9a0d1fab41fc
++++ b/ac244898ba95af3c8513ec9239dcdf0ce3dc1ae8
+@@ -1,6 +1,6 @@
+ @Override
+ public OPhysicalPosition[] floorPhysicalPositions(final int clusterId, final OPhysicalPosition physicalPosition) {
+-    OBinaryRequest request = new OFloorPhysicalPositionsRequest(physicalPosition, clusterId);
+-    OBinaryResponse<OPhysicalPosition[]> response = new OFloorPhysicalPositionsResponse();
+-    return networkOperation(request, response, "Error on retrieving floor positions after " + physicalPosition.clusterPosition);
++    OFloorPhysicalPositionsRequest request = new OFloorPhysicalPositionsRequest(physicalPosition, clusterId);
++    OFloorPhysicalPositionsResponse response = networkOperation(request, "Error on retrieving floor positions after " + physicalPosition.clusterPosition);
++    return response.getPositions();
+ }
+\ No newline at end of file

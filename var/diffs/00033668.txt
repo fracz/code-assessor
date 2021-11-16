@@ -1,0 +1,31 @@
+diff --git a/3487cf574472d4b540199e0e7885b684a00d14f4 b/d9fb2bac430b02b9b3b53a14a4883be944ec78fe
+index 3487cf5744..d9fb2bac43 100644
+--- a/3487cf574472d4b540199e0e7885b684a00d14f4
++++ b/d9fb2bac430b02b9b3b53a14a4883be944ec78fe
+@@ -1,17 +1,14 @@
+ private Object getPropertySafely(Project project, String qualifiedProperty, boolean required) {
+-    if (project.hasProperty(qualifiedProperty)) {
++    final boolean propertyFound = project.hasProperty(qualifiedProperty);
++    if (!propertyFound && required) {
++        throw new InvalidUserDataException("property \'" + qualifiedProperty + "\' could not be found on project and is needed for signing");
++    }
++    if (propertyFound) {
+         Object prop = project.property(qualifiedProperty);
+-        if (prop != null) {
+-            return prop;
+-        } else {
+-            if (required) {
+-                throw new InvalidUserDataException("property \'" + qualifiedProperty + "\' was null. A valid value is needed for signing");
+-            }
+-        }
+-    } else {
+-        if (required) {
+-            throw new InvalidUserDataException("property \'" + qualifiedProperty + "\' could not be found on project and is needed for signing");
++        if (prop == null && required) {
++            throw new InvalidUserDataException("property \'" + qualifiedProperty + "\' was null. A valid value is needed for signing");
+         }
++        return prop;
+     }
+     return null;
+ }
+\ No newline at end of file

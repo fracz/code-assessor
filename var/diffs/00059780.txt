@@ -1,0 +1,13 @@
+diff --git a/018be4fc0424785c485e38101839397b648b8f1d b/bb1449e94dfcdf2aaf86abe55c2e3deea7fc0567
+index 018be4fc04..bb1449e94d 100644
+--- a/018be4fc0424785c485e38101839397b648b8f1d
++++ b/bb1449e94dfcdf2aaf86abe55c2e3deea7fc0567
+@@ -1,4 +1,4 @@
+-public void setMaxOperationWaitTime(long waitTimeMS) {
+-    Preconditions.checkArgument(waitTimeMS > 0, "Invalid wait time: %s", waitTimeMS);
+-    this.maxOperationWaitTime = waitTimeMS;
++public void setMaxOperationWaitTime(Duration waitTime) {
++    Preconditions.checkArgument(ZeroDuration.INSTANCE.compareTo(waitTime) < 0, "Wait time must be nonnegative: %s", waitTime);
++    this.maxOperationWaitTime = waitTime;
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/1a28828e1cf728ca6ae1f84483fcef24a5181325 b/c62f0294811a15c2b4539def339c2024bcdf0c14
+index 1a28828e1c..c62f029481 100644
+--- a/1a28828e1cf728ca6ae1f84483fcef24a5181325
++++ b/c62f0294811a15c2b4539def339c2024bcdf0c14
+@@ -1,9 +1,9 @@
+ private void onError(Throwable ex) {
+     if (FileDownloadLog.NEED_LOG) {
+         FileDownloadLog.d(this, "On error %d %s", getId(), ex);
+     }
+     ex = exFiltrate(ex);
+-    helper.updateError(getId(), ex.getMessage(), model.getSoFar());
+-    transferModel.setThrowable(ex);
++    helper.updateError(model, ex.getMessage(), model.getSoFar());
++    this.throwable = ex;
+     onStatusChanged(model.getStatus());
+ }
+\ No newline at end of file

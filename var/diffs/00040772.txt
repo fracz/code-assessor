@@ -1,0 +1,18 @@
+diff --git a/26500b73cfe7fe0eb83c27923ca80217b8cd384b b/ef6144d94febe31d98946d0ec9dd8e733c83c75f
+index 26500b73cf..ef6144d94f 100644
+--- a/26500b73cfe7fe0eb83c27923ca80217b8cd384b
++++ b/ef6144d94febe31d98946d0ec9dd8e733c83c75f
+@@ -1,10 +1,10 @@
+ /**
+  * {@inheritDoc}
+  */
+ public void bindingChanged(BindingProvider provider, String itemName) {
+     if (bindingsExist()) {
+-        super.start();
++        activeService.activate();
+     } else {
+-        super.interrupt();
++        activeService.deactivate();
+     }
+ }
+\ No newline at end of file

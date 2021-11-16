@@ -1,0 +1,11 @@
+diff --git a/15ad569b0b4b1b4a3dca9f528b92e920bd400de7 b/1924e629381476de6dd3feaeb3dd460607c7d612
+index 15ad569b0b..1924e62938 100644
+--- a/15ad569b0b4b1b4a3dca9f528b92e920bd400de7
++++ b/1924e629381476de6dd3feaeb3dd460607c7d612
+@@ -1,3 +1,3 @@
+-public static AssertHint createAssertEqualsHint(PsiMethodCallExpression expression) {
+-    return create(expression, methodName -> "assertEquals".equals(methodName), 2);
++public static AssertHint createAssertEqualsHint(PsiMethodCallExpression expression, boolean checkTestNG) {
++    return create(expression, methodName -> "assertEquals".equals(methodName) ? 2 : null, checkTestNG);
+ }
+\ No newline at end of file

@@ -1,0 +1,29 @@
+diff --git a/dae048dba4fd0d709bd36d9b348b4404d948e0ab b/4c1f8add556e5336347ddae5c9bad3ebbcb9b301
+index dae048dba4..4c1f8add55 100644
+--- a/dae048dba4fd0d709bd36d9b348b4404d948e0ab
++++ b/4c1f8add556e5336347ddae5c9bad3ebbcb9b301
+@@ -1,22 +1,22 @@
+ private PageCache pageCacheThatBlockWhenToldTo(final Barrier barrier, final AtomicBoolean blockOnNextIO) {
+-    return new DelegatingPageCache(createPageCache(256)) {
++    return new DelegatingPageCache(createPageCache(DEFAULT_PAGE_SIZE)) {
+
+         @Override
+         public PagedFile map(File file, int pageSize, OpenOption... openOptions) throws IOException {
+             return new DelegatingPagedFile(super.map(file, pageSize, openOptions)) {
+
+                 @Override
+                 public PageCursor io(long pageId, int pf_flags) throws IOException {
+                     maybeBlock();
+                     return super.io(pageId, pf_flags);
+                 }
+
+                 private void maybeBlock() throws IOException {
+                     if (blockOnNextIO.get()) {
+                         barrier.reached();
+                     }
+                 }
+             };
+         }
+     };
+ }
+\ No newline at end of file

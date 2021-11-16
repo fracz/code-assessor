@@ -1,0 +1,21 @@
+diff --git a/a5f05176b1639531118f9c1e311629cb703297ee b/582f0b5c307a9001bef2a1e85bf6ed20e8306d9c
+index a5f05176b1..582f0b5c30 100644
+--- a/a5f05176b1639531118f9c1e311629cb703297ee
++++ b/582f0b5c307a9001bef2a1e85bf6ed20e8306d9c
+@@ -1,10 +1,12 @@
+ private static String getCloseMethodBeforeInsertCode() {
+     StringBuilder sb = new StringBuilder();
+     sb.append("{");
+-    // sb.append("System.out.println(\"PreparedStatement.setInternal(int,String) method is called\");");
+-    // sb.append("System.out.println(\"-----Position=\"+$1+\" Value=\"+$2);");
+-    // sb.append(TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER+".put("+TomcatProfilerConstant.REQ_DATA_TYPE_DB_RESULTSET_CLOSE+");");
++    if (logger.isDebugEnabled()) {
++        sb.append("System.out.println(\"PreparedStatement.setInternal(int,String) method is called\");");
++        sb.append("System.out.println(\"-----Position=\"+$1+\" Value=\"+$2);");
++        sb.append(TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".put(" + TomcatProfilerConstant.REQ_DATA_TYPE_DB_RESULTSET_CLOSE + ");");
++    }
+     sb.append(TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".addResultSetData();");
+     sb.append("}");
+     return sb.toString();
+ }
+\ No newline at end of file

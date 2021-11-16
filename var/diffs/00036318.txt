@@ -1,0 +1,26 @@
+diff --git a/9c1723b8899f2b27dff022a27e225d50f2c8e0c2 b/9379540fcc38a386f596a25335b210ebee37ab09
+index 9c1723b889..9379540fcc 100644
+--- a/9c1723b8899f2b27dff022a27e225d50f2c8e0c2
++++ b/9379540fcc38a386f596a25335b210ebee37ab09
+@@ -1,12 +1,17 @@
+ public void shouldClearDebuggingDataAfterwards() throws Exception {
++    // given
+     final DebuggingInfo debuggingInfo = new ThreadSafeMockingProgress().getDebuggingInfo();
+-    runner.run(notifier, new JunitTestBody() {
++    runner = new VerboseMockitoJUnitRunner(this.getClass(), loggerStub) {
+
+-        public void run(RunNotifier notifier) {
++        @Override
++        public void runTest(RunNotifier notifier) {
+             unusedStubbingThatQualifiesForWarning();
+             notifier.fireTestFailure(null);
+             assertTrue(debuggingInfo.hasData());
+         }
+-    });
++    };
++    // when
++    runner.run(notifier);
++    // then
+     assertFalse(debuggingInfo.hasData());
+ }
+\ No newline at end of file

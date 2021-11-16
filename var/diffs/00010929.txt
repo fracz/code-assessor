@@ -1,0 +1,22 @@
+diff --git a/7e7e5d5c3f8ad38f820103c9294bbec2b90cef87 b/a6ae7964c21edb59da858c5b34945a5ef103982b
+index 7e7e5d5c3f..a6ae7964c2 100644
+--- a/7e7e5d5c3f8ad38f820103c9294bbec2b90cef87
++++ b/a6ae7964c21edb59da858c5b34945a5ef103982b
+@@ -1,9 +1,9 @@
+-private static void doUpdateActions(String actionIdPrefix, Collection<MavenGoalAction> actionList) {
+-    ActionManager actionManager = ActionManager.getInstance();
+-    for (String oldId : actionManager.getActionIds(actionIdPrefix)) {
+-        actionManager.unregisterAction(oldId);
+-    }
+-    for (MavenGoalAction action : actionList) {
+-        actionManager.registerAction(action.myId, action);
++private static void doUpdateActions(Project project, List<MavenProject> mavenProjects) {
++    ActionManager manager = ActionManager.getInstance();
++    for (MavenProject eachProject : mavenProjects) {
++        String actionIdPrefix = getActionPrefix(project, eachProject);
++        for (MavenGoalAction eachAction : collectActions(project, eachProject)) {
++            manager.registerAction(actionIdPrefix + eachAction.getGoal(), eachAction);
++        }
+     }
+ }
+\ No newline at end of file

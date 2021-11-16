@@ -1,0 +1,19 @@
+diff --git a/691cb63cca4e2dafc73fba1624d75bccefab4286 b/dab8f51875013cb126ac0607daa50355bd611117
+index 691cb63cca..dab8f51875 100644
+--- a/691cb63cca4e2dafc73fba1624d75bccefab4286
++++ b/dab8f51875013cb126ac0607daa50355bd611117
+@@ -1,12 +1,12 @@
+ @Override
+ @Property(id = "reference", viewable = true, order = 4)
+ public OracleTableColumn getReferencedColumn() {
+     OracleTableConstraint referencedConstraint = ((OracleTableForeignKey) getParentObject()).getReferencedConstraint();
+     if (referencedConstraint != null) {
+-        List<OracleTableConstraintColumn> ar = referencedConstraint.getAttributeReferences(VoidProgressMonitor.INSTANCE);
++        List<OracleTableConstraintColumn> ar = referencedConstraint.getAttributeReferences(new VoidProgressMonitor());
+         if (ar != null) {
+             return ar.get(getOrdinalPosition() - 1).getAttribute();
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

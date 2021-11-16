@@ -1,0 +1,19 @@
+diff --git a/05501c4db743b79dbcc9e566c31c231cd7307b2e b/79037b3a8648dff870f7a2f6161c942b94073e2b
+index 05501c4db7..79037b3a86 100644
+--- a/05501c4db743b79dbcc9e566c31c231cd7307b2e
++++ b/79037b3a8648dff870f7a2f6161c942b94073e2b
+@@ -1,11 +1,9 @@
+-private DBEPersistAction[] createOrReplaceViewQuery(OracleTrigger trigger) {
++private void createOrReplaceViewQuery(List<DBEPersistAction> actions, OracleTrigger trigger) {
+     String source = OracleUtils.normalizeSourceName(trigger, false);
+     if (source == null) {
+-        return null;
++        return;
+     }
+-    List<DBEPersistAction> actions = new ArrayList<>();
+     // $NON-NLS-2$
+     actions.add(new SQLDatabasePersistAction("Create trigger", "CREATE OR REPLACE " + source));
+     OracleUtils.addSchemaChangeActions(actions, trigger);
+-    return actions.toArray(new DBEPersistAction[actions.size()]);
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/71d7dc7316061ad5fa741b39be3259c4c1f29c08 b/788e0977308ac6a7ee3c4a53838fa8330568619c
+index 71d7dc7316..788e097730 100644
+--- a/71d7dc7316061ad5fa741b39be3259c4c1f29c08
++++ b/788e0977308ac6a7ee3c4a53838fa8330568619c
+@@ -1,4 +1,4 @@
+ @Override
+-public Iterator<Long> exactIndexLookup(long indexId, Object value) throws IndexNotFoundKernelException {
+-    return indexReaderFactory.newReader(indexId).lookup(value);
++public Iterator<Long> exactIndexLookup(IndexDescriptor index, Object value) throws IndexNotFoundKernelException {
++    return indexReaderFactory.newReader(indexId(index)).lookup(value);
+ }
+\ No newline at end of file

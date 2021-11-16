@@ -1,0 +1,19 @@
+diff --git a/3e2783a81d0362e28e75be1b9215bea61d913bed b/dcc0803ee36f6a18576309f27cf32d1a8ec2f1c0
+index 3e2783a81d..dcc0803ee3 100644
+--- a/3e2783a81d0362e28e75be1b9215bea61d913bed
++++ b/dcc0803ee36f6a18576309f27cf32d1a8ec2f1c0
+@@ -1,12 +1,10 @@
+ @Override
+ public long drawDanmakus() {
+     if (!isSurfaceCreated)
+         return 0;
+     if (!isShown())
+         return -1;
+     long stime = System.currentTimeMillis();
+-    long dtime = 0;
+     lockCanvas();
+-    dtime = System.currentTimeMillis() - stime;
+-    return dtime;
++    return System.currentTimeMillis() - stime;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/2f0f796c04012fa761009e60d98b2f51b98a66d6 b/2efb3e75a757fb2cf6d9c3d3aa2dcd7ec7a4a136
+index 2f0f796c04..2efb3e75a7 100644
+--- a/2f0f796c04012fa761009e60d98b2f51b98a66d6
++++ b/2efb3e75a757fb2cf6d9c3d3aa2dcd7ec7a4a136
+@@ -1,6 +1,8 @@
+ @NotNull
+ private static PsiFile createFile(@NotNull String name, @NotNull String text) {
+     LightVirtualFile virtualFile = new LightVirtualFile(name, JetLanguage.INSTANCE, text);
+     virtualFile.setCharset(CharsetToolkit.UTF8_CHARSET);
+-    return ((PsiFileFactoryImpl) PsiFileFactory.getInstance(environment.getProject())).trySetupPsiForFile(virtualFile, JetLanguage.INSTANCE, true, false);
++    PsiFile result = ((PsiFileFactoryImpl) PsiFileFactory.getInstance(environment.getProject())).trySetupPsiForFile(virtualFile, JetLanguage.INSTANCE, true, false);
++    assert result != null;
++    return result;
+ }
+\ No newline at end of file

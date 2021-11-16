@@ -1,0 +1,18 @@
+diff --git a/4598126cbabed87fab9f51768cd55d101ebca179 b/da08585668994703e8938531c8c1a91f9d21f0f8
+index 4598126cba..da08585668 100644
+--- a/4598126cbabed87fab9f51768cd55d101ebca179
++++ b/da08585668994703e8938531c8c1a91f9d21f0f8
+@@ -1,10 +1,11 @@
+ @Nullable
+ public static HighlightInfo checkConstantExpression(PsiExpression expression) {
+     final PsiElement parent = expression.getParent();
+     if (PsiUtil.isAnnotationMethod(parent) || parent instanceof PsiNameValuePair || parent instanceof PsiArrayInitializerMemberValue) {
+         if (!PsiUtil.isConstantExpression(expression)) {
+-            return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, expression, JavaErrorMessages.message("annotation.non.constant.attribute.value"));
++            String description = JavaErrorMessages.message("annotation.non.constant.attribute.value");
++            return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(expression).descriptionAndTooltip(description).create();
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

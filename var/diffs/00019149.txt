@@ -1,0 +1,14 @@
+diff --git a/442b623ef0552f9d4d9c28ebef273aa1cf9e7df7 b/fcc580fe86d4a5c1690685fd0c8598fd25ebb37c
+index 442b623ef0..fcc580fe86 100644
+--- a/442b623ef0552f9d4d9c28ebef273aa1cf9e7df7
++++ b/fcc580fe86d4a5c1690685fd0c8598fd25ebb37c
+@@ -1,7 +1,3 @@
+ public int getDialogsTimeColor() {
+-    if (dialogsTimeColor != 0) {
+-        return dialogsTimeColor;
+-    } else {
+-        return getTextSecondaryColor();
+-    }
++    return getColorWithFallback(dialogsTimeColor, getTextSecondaryColor());
+ }
+\ No newline at end of file

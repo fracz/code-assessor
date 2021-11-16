@@ -1,0 +1,14 @@
+diff --git a/5b7479b7c21d4c6daa6a0a412ba3e9feeb9d2cb3 b/720e1ff5448da7fe7400df6558745396f837a60a
+index 5b7479b7c2..720e1ff544 100644
+--- a/5b7479b7c21d4c6daa6a0a412ba3e9feeb9d2cb3
++++ b/720e1ff5448da7fe7400df6558745396f837a60a
+@@ -1,7 +1,7 @@
+ @Test
+ public void useLongIntegersParameterCausesPrimitiveIntsToBecomeLongs() throws ClassNotFoundException, NoSuchMethodException, SecurityException {
+-    File generatedTypesDirectory = generate("/schema/type/integerAsLong.json", "com.example", true, true, true);
++    File generatedTypesDirectory = generate("/schema/type/integerAsLong.json", "com.example", config("useLongIntegers", true, "usePrimitives", true));
+     Class<?> classWithLongProperty = compile(generatedTypesDirectory).loadClass("com.example.IntegerAsLong");
+     Method getterMethod = classWithLongProperty.getMethod("getLongProperty");
+     assertThat(getterMethod.getReturnType().getName(), is("long"));
+ }
+\ No newline at end of file

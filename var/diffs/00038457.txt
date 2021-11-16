@@ -1,0 +1,24 @@
+diff --git a/0ae20b59f8a9d05f0a1f8044c12f85b217b16558 b/ff54187708cd41647aa86d1a4c8f7f4c006fb8b8
+index 0ae20b59f8..ff54187708 100644
+--- a/0ae20b59f8a9d05f0a1f8044c12f85b217b16558
++++ b/ff54187708cd41647aa86d1a4c8f7f4c006fb8b8
+@@ -1,15 +1,15 @@
+ @Test
+-public void shouldRemoveNodeWithNoRelationsFromDBOnDelete() throws DatabaseBlockedException, NodeNotFoundException, OperationFailureException {
++public void shouldRemoveNodeWithNoRelationsFromDBOnDelete() throws NodeNotFoundException, OperationFailureException {
+     long nodeId;
+-    Transaction tx = database.graph.beginTx();
++    Transaction tx = database.getGraph().beginTx();
+     try {
+-        Node node = database.graph.createNode();
++        Node node = database.getGraph().createNode();
+         nodeId = node.getId();
+         tx.success();
+     } finally {
+         tx.finish();
+     }
+     int nodeCount = graphdbHelper.getNumberOfNodes();
+     actions.deleteNode(nodeId);
+     assertEquals(nodeCount - 1, graphdbHelper.getNumberOfNodes());
+ }
+\ No newline at end of file

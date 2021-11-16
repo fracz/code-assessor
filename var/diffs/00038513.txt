@@ -1,0 +1,14 @@
+diff --git a/51c043d4e16591fcf1639b9b4fe5e214c18ac676 b/495b3bcdaba19baa363ccc8d4ca2b88c6f60ff9f
+index 51c043d4e1..495b3bcdab 100644
+--- a/51c043d4e16591fcf1639b9b4fe5e214c18ac676
++++ b/495b3bcdaba19baa363ccc8d4ca2b88c6f60ff9f
+@@ -1,5 +1,6 @@
+ @Before
+-public void clearDb() throws IOException {
+-    database = new Database(ServerTestUtils.EPHEMERAL_GRAPH_DATABASE_FACTORY, null);
++public void clearDb() throws Throwable {
++    database = new EphemeralDatabase();
++    database.start();
+     createLinkedList(LIST_LENGTH, database);
+ }
+\ No newline at end of file

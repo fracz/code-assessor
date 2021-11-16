@@ -1,0 +1,22 @@
+diff --git a/6093100395ccd9d6dc4bcab0279b17a7bba4ffa2 b/14131aa91f479b1709a24f8441a880d14faed807
+index 6093100395..14131aa91f 100644
+--- a/6093100395ccd9d6dc4bcab0279b17a7bba4ffa2
++++ b/14131aa91f479b1709a24f8441a880d14faed807
+@@ -1,14 +1,14 @@
+ @Override
+-public void notifyProgress() {
++public void notifyProgress(MessageSnapshot snapshot) {
+     if (FileDownloadLog.NEED_LOG) {
+         FileDownloadLog.d(this, "notify progress %s %d %d", task, task.getLargeFileSoFarBytes(), task.getLargeFileTotalBytes());
+     }
+     if (task.getCallbackProgressTimes() <= 0) {
+         if (FileDownloadLog.NEED_LOG) {
+             FileDownloadLog.d(this, "notify progress but client not request notify %s", task);
+         }
+         return;
+     }
+     task.ing();
+-    process(FileDownloadStatus.progress);
++    process(snapshot);
+ }
+\ No newline at end of file

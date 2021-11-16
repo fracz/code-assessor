@@ -1,0 +1,16 @@
+diff --git a/6e5d238fbebbf6a4d58d486dc9f39415217c850f b/30a9623c89d2ac34009a697ff0949462c91b3056
+index 6e5d238fbe..30a9623c89 100644
+--- a/6e5d238fbebbf6a4d58d486dc9f39415217c850f
++++ b/30a9623c89d2ac34009a697ff0949462c91b3056
+@@ -1,8 +1,8 @@
+ @Override
+-public void notifyConnected() {
++public void notifyConnected(MessageSnapshot snapshot) {
+     if (FileDownloadLog.NEED_LOG) {
+         FileDownloadLog.d(this, "notify connected %s", task);
+     }
+     task.ing();
+-    process(FileDownloadStatus.connected);
++    process(snapshot);
+ }
+\ No newline at end of file

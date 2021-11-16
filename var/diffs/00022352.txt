@@ -1,0 +1,21 @@
+diff --git a/071f74b253cc9c53e0d86ea0028bd2ee1a76d7e2 b/02be651951d5f8a5227ac2cc03d1dfb70c21816c
+index 071f74b253..02be651951 100644
+--- a/071f74b253cc9c53e0d86ea0028bd2ee1a76d7e2
++++ b/02be651951d5f8a5227ac2cc03d1dfb70c21816c
+@@ -1,13 +1,13 @@
+ /**
+  * Change the editor type integer associated with the text view, which
+  * will be reported to an IME with {@link EditorInfo#imeOptions} when it
+  * has focus.
+  * @see #getImeOptions
+  * @see android.view.inputmethod.EditorInfo
+  * @attr ref android.R.styleable#TextView_imeOptions
+  */
+ public void setImeOptions(int imeOptions) {
+     createEditorIfNeeded("IME options specified");
+-    getEditor().createInputContentTypeIfNeeded();
+-    getEditor().mInputContentType.imeOptions = imeOptions;
++    mEditor.createInputContentTypeIfNeeded();
++    mEditor.mInputContentType.imeOptions = imeOptions;
+ }
+\ No newline at end of file

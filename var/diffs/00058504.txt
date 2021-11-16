@@ -1,0 +1,16 @@
+diff --git a/74593c6aeddf9a3bd1ab117ef35983337f435c57 b/47989729d2f3eb62765ace026f175540dcd99bf7
+index 74593c6aed..47989729d2 100644
+--- a/74593c6aeddf9a3bd1ab117ef35983337f435c57
++++ b/47989729d2f3eb62765ace026f175540dcd99bf7
+@@ -1,6 +1,7 @@
+-public void addMapReduceJobs(final FaunusCompiler compiler) throws IOException {
++@Override
++public void addMapReduceJobs(final FaunusCompiler compiler) {
+     if (compiler.getConf().getBoolean(FAUNUS_GRAPH_OUTPUT_TITAN_INFER_SCHEMA, true)) {
+-        compiler.addMapReduce(SchemaInferencerMapReduce.Map.class, null, SchemaInferencerMapReduce.Reduce.class, LongWritable.class, FaunusVertex.class, NullWritable.class, FaunusVertex.class, null);
++        compiler.addMapReduce(SchemaInferencerMapReduce.Map.class, null, SchemaInferencerMapReduce.Reduce.class, LongWritable.class, FaunusVertex.class, NullWritable.class, FaunusVertex.class, new Configuration());
+     }
+-    compiler.addMapReduce(BlueprintsGraphOutputMapReduce.Map.class, null, BlueprintsGraphOutputMapReduce.Reduce.class, LongWritable.class, Holder.class, NullWritable.class, FaunusVertex.class, null);
++    compiler.addMapReduce(BlueprintsGraphOutputMapReduce.Map.class, null, BlueprintsGraphOutputMapReduce.Reduce.class, LongWritable.class, Holder.class, NullWritable.class, FaunusVertex.class, new Configuration());
+ }
+\ No newline at end of file

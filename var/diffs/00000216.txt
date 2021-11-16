@@ -1,0 +1,20 @@
+diff --git a/6025bd8e92e119827a39da509c134ff35ead372e b/d7d6a8babea49c35cf15665bf67f750ca83e2acf
+index 6025bd8e92..d7d6a8babe 100644
+--- a/6025bd8e92e119827a39da509c134ff35ead372e
++++ b/d7d6a8babea49c35cf15665bf67f750ca83e2acf
+@@ -1,11 +1,5 @@
+-/**
+- * Builds a read request.
+- *
+- * @param offset the offset
+- * @param len the length to read
+- * @return the proto message
+- */
+-private RPCProtoMessage buildReadRequest(long offset, long len) {
+-    Protocol.ReadRequest readRequest = Protocol.ReadRequest.newBuilder().setId(mBlockId).setOffset(offset).setLength(len).setLockId(1L).setType(Protocol.RequestType.ALLUXIO_BLOCK).build();
++@Override
++protected RPCProtoMessage buildReadRequest(long offset, long len) {
++    Protocol.ReadRequest readRequest = Protocol.ReadRequest.newBuilder().setId(1L).setOffset(offset).setLength(len).setLockId(1L).setType(Protocol.RequestType.ALLUXIO_BLOCK).build();
+     return new RPCProtoMessage(readRequest, null);
+ }
+\ No newline at end of file

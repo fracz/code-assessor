@@ -1,0 +1,20 @@
+diff --git a/b7c08fb5c67d00ab4ddd8877716bfd22e1e8b4d3 b/1b8332752237a98043598829074bd4a492674647
+index b7c08fb5c6..1b83327522 100644
+--- a/b7c08fb5c67d00ab4ddd8877716bfd22e1e8b4d3
++++ b/1b8332752237a98043598829074bd4a492674647
+@@ -1,10 +1,9 @@
+ @Override
+-public Icon scale(float scaleFactor) {
+-    if (scaleFactor == 1f) {
++public Icon scale(float scale) {
++    if (scale == 1f) {
+         myScaledDelegate = myDelegate;
+     } else if (myDelegate instanceof ScalableIcon) {
+-        myScaledDelegate = ((ScalableIcon) myDelegate).scale(scaleFactor);
++        myScaledDelegate = ((ScalableIcon) myDelegate).scale(scale);
+     }
+-    myScale = scaleFactor;
+-    return this;
++    return super.scale(scale);
+ }
+\ No newline at end of file

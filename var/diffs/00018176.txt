@@ -1,0 +1,26 @@
+diff --git a/2d1303eb1e8b9f3d7726ded5b3f88c64445cff5f b/3ca1a5e167f396015b095019ade804077f97f4aa
+index 2d1303eb1e..3ca1a5e167 100644
+--- a/2d1303eb1e8b9f3d7726ded5b3f88c64445cff5f
++++ b/3ca1a5e167f396015b095019ade804077f97f4aa
+@@ -1,15 +1,15 @@
+ public void apply(Project project) {
+-    if (_change == null) {
+-        loadChange();
++    if (getChange() == null) {
++        ProjectManager.singleton.getHistoryEntryManager().loadChange(this);
+     }
+     synchronized (project) {
+-        _change.apply(project);
++        getChange().apply(project);
+         try {
+-            saveChange();
++            _manager.saveChange(this);
+         } catch (Exception e) {
+             e.printStackTrace();
+-            _change.revert(project);
++            getChange().revert(project);
+             throw new RuntimeException("Failed to apply change", e);
+         }
+     }
+ }
+\ No newline at end of file

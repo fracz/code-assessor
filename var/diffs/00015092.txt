@@ -1,0 +1,21 @@
+diff --git a/a31a21299225724db7c9a17b86cd9af445ff7e14 b/1cedf296522a624bd4c3d8aaa1c87e1a2b535cf4
+index a31a212992..1cedf29652 100644
+--- a/a31a21299225724db7c9a17b86cd9af445ff7e14
++++ b/1cedf296522a624bd4c3d8aaa1c87e1a2b535cf4
+@@ -1,9 +1,11 @@
+ @Override
+ public void invoke(@NotNull Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
+     if (element instanceof JetBinaryExpressionWithTypeRHS) {
+-        JetBinaryExpressionWithTypeRHS expression = (JetBinaryExpressionWithTypeRHS) JetPsiFactory.createExpression(project, expressionWithNecessaryOperation);
+-        JetBinaryExpressionWithTypeRHS newElement = (JetBinaryExpressionWithTypeRHS) element.copy();
+-        CodeEditUtil.replaceChild(newElement.getNode(), newElement.getOperationSign().getNode(), expression.getOperationSign().getNode());
+-        element.replace(newElement);
++        JetExpression left = ((JetBinaryExpressionWithTypeRHS) element).getLeft();
++        JetTypeReference right = ((JetBinaryExpressionWithTypeRHS) element).getRight();
++        if (right != null) {
++            JetExpression expression = JetPsiFactory.createExpression(project, left.getText() + operation + right.getText());
++            element.replace(expression);
++        }
+     }
+ }
+\ No newline at end of file

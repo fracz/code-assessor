@@ -1,0 +1,17 @@
+diff --git a/bc660c6546f07040a1cac066ccbbdc1755135050 b/78ec886d9bf4cc50b36cecf0e5e583d6b06a9c2f
+index bc660c6546..78ec886d9b 100644
+--- a/bc660c6546f07040a1cac066ccbbdc1755135050
++++ b/78ec886d9bf4cc50b36cecf0e5e583d6b06a9c2f
+@@ -1,9 +1,9 @@
+ private boolean canRefactor() {
+-    final String[] conflicts = analyzeMoveConflicts(myMembersToMove, myTargetClass, myNewVisibility);
+-    if (conflicts.length > 0) {
++    final Map<PsiElement, String> conflicts = analyzeMoveConflicts(myMembersToMove, myTargetClass, myNewVisibility);
++    if (!conflicts.isEmpty()) {
+         ConflictsDialog dialog = new ConflictsDialog(myProject, conflicts);
+         dialog.show();
+         return dialog.isOK();
+     }
+     return true;
+ }
+\ No newline at end of file

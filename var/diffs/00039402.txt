@@ -1,0 +1,17 @@
+diff --git a/94a33cc9f0941a844cf7c340942c61b50cfb60c5 b/6532235b545daf9a93c1ef8a2f0757b90ba462df
+index 94a33cc9f0..6532235b54 100644
+--- a/94a33cc9f0941a844cf7c340942c61b50cfb60c5
++++ b/6532235b545daf9a93c1ef8a2f0757b90ba462df
+@@ -1,9 +1,9 @@
+-private static Map<Integer, String> getHaServersFromConfig(Map<String, String> config) {
+-    String value = config.get(CONFIG_KEY_HA_SERVERS);
++private static Map<Integer, String> getHaServersFromConfig(Map<?, ?> config) {
++    String value = config.get(CONFIG_KEY_HA_SERVERS).toString();
+     Map<Integer, String> result = new HashMap<Integer, String>();
+     for (String part : value.split(Pattern.quote(","))) {
+         String[] tokens = part.trim().split(Pattern.quote("="));
+         result.put(new Integer(tokens[0]), tokens[1]);
+     }
+     return result;
+ }
+\ No newline at end of file

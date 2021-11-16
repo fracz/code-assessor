@@ -1,0 +1,18 @@
+diff --git a/1a3ebb5b21c6cf9ce9932738dba6f241ae2538d4 b/3a74910d1d9ce63e65c99cbd23e6532b0eb97068
+index 1a3ebb5b21..3a74910d1d 100644
+--- a/1a3ebb5b21c6cf9ce9932738dba6f241ae2538d4
++++ b/3a74910d1d9ce63e65c99cbd23e6532b0eb97068
+@@ -1,11 +1,11 @@
+ @Test
+ public void testRelatedCausesFromConstructorResolution() {
+-    XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("constructor-arg.xml", getClass()));
++    XmlBeanFactory xbf = new XmlBeanFactory(CONSTRUCTOR_ARG_CONTEXT);
+     try {
+         xbf.getBean("rod2Accessor");
+     } catch (BeanCreationException ex) {
+         assertTrue(ex.toString().indexOf("touchy") != -1);
+         ex.printStackTrace();
+         assertNull(ex.getRelatedCauses());
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/76c1934edc1d8032f1831d95f3791f4189f1893b b/d7fed255e71aa8482d01d82dffa70b2b8808cb15
+index 76c1934edc..d7fed255e7 100644
+--- a/76c1934edc1d8032f1831d95f3791f4189f1893b
++++ b/d7fed255e71aa8482d01d82dffa70b2b8808cb15
+@@ -1,13 +1,10 @@
+ public void actionPerformed(AnActionEvent e) {
+-    Project project = e.getData(PlatformDataKeys.PROJECT);
+-    if (project == null)
+-        return;
+-    MavenRunnerParameters params = new MavenTask(myPomPath, myGoal).createRunnerParameters(MavenProjectsManager.getInstance(project));
++    MavenRunnerParameters params = new MavenGoalTask(myMavenProject.getPath(), myGoal).createRunnerParameters(getProjectsManager(e));
+     if (params == null)
+         return;
+     try {
+-        MavenRunConfigurationType.runConfiguration(project, params, e.getDataContext());
++        MavenRunConfigurationType.runConfiguration(getProject(e), params, e.getDataContext());
+     } catch (ExecutionException ex) {
+         MavenLog.LOG.warn(ex);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/2e3270b038097b07806e3ac39ad349fd7fc7e07a b/3eda62aff56f12918630af64daa04549178a3a23
+index 2e3270b038..3eda62aff5 100644
+--- a/2e3270b038097b07806e3ac39ad349fd7fc7e07a
++++ b/3eda62aff56f12918630af64daa04549178a3a23
+@@ -1,5 +1,6 @@
+ @Override
+ public float score(int docId, float subQueryScore) {
+-    vars.put("_score", subQueryScore);
+-    return ((Number) script.execute(docId, vars)).floatValue();
++    script.setNextDocId(docId);
++    script.setNextScore(subQueryScore);
++    return script.runAsFloat();
+ }
+\ No newline at end of file

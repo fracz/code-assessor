@@ -1,0 +1,20 @@
+diff --git a/d791aa8a3b93c5f62a7a3cd74d7b997cd9f2a7f8 b/2874aa04371ebfb9259f61b2c5cd101f63c2a565
+index d791aa8a3b..2874aa0437 100644
+--- a/d791aa8a3b93c5f62a7a3cd74d7b997cd9f2a7f8
++++ b/2874aa04371ebfb9259f61b2c5cd101f63c2a565
+@@ -1,9 +1,9 @@
+ public void close() {
+-    if (database != null) {
+-        if (!database.isClosed()) {
+-            database.activateOnCurrentThread();
+-            database.close();
++    if (getDatabase() != null) {
++        if (!getDatabase().isClosed()) {
++            getDatabase().activateOnCurrentThread();
++            getDatabase().close();
+         }
+-        database = null;
++        setDatabase(null);
+     }
+ }
+\ No newline at end of file

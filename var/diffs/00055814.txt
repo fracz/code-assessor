@@ -1,0 +1,15 @@
+diff --git a/3d83d7562624b571f86c09bd85972137f61c72de b/c071d1a8ad52c53aa28cad948fe8cd6ceb94925e
+index 3d83d75626..c071d1a8ad 100644
+--- a/3d83d7562624b571f86c09bd85972137f61c72de
++++ b/c071d1a8ad52c53aa28cad948fe8cd6ceb94925e
+@@ -1,6 +1,8 @@
+ @Test
+ public void responseBodyMessageConversionError() throws Exception {
+     this.request.setUri("/request-body").setHeader("Accept", "application/json").setBody("body");
+     Mono<Void> publisher = this.dispatcherHandler.handle(this.exchange);
+-    TestSubscriber.subscribe(publisher).assertError(NotAcceptableStatusException.class);
++    ScriptedSubscriber.<Void>create().consumeErrorWith(error -> {
++        assertThat(error, instanceOf(NotAcceptableStatusException.class));
++    }).verify(publisher);
+ }
+\ No newline at end of file

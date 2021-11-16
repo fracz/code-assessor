@@ -1,0 +1,24 @@
+diff --git a/09f6e792bb2334301227b96019df8d0de31c2932 b/a705ec0b0e30020757c2dd9737c7cd417ad08cba
+index 09f6e792bb..a705ec0b0e 100644
+--- a/09f6e792bb2334301227b96019df8d0de31c2932
++++ b/a705ec0b0e30020757c2dd9737c7cd417ad08cba
+@@ -1,9 +1,10 @@
+-// TODO 提炼MySQL
+-protected void parseValues(final AbstractSQLInsertStatement sqlInsertStatement) {
+-    getLexer().nextToken();
+-    accept(Token.LEFT_PAREN);
+-    AbstractSQLInsertStatement.ValuesClause values = new AbstractSQLInsertStatement.ValuesClause();
+-    values.getValues().addAll(exprParser.exprList(values));
+-    sqlInsertStatement.setValues(values);
+-    accept(Token.RIGHT_PAREN);
++private void parseValues(final AbstractSQLInsertStatement sqlInsertStatement) {
++    do {
++        getLexer().nextToken();
++        accept(Token.LEFT_PAREN);
++        AbstractSQLInsertStatement.ValuesClause values = new AbstractSQLInsertStatement.ValuesClause();
++        values.getValues().addAll(getExprParser().exprList(values));
++        sqlInsertStatement.getValuesList().add(values);
++        accept(Token.RIGHT_PAREN);
++    } while (getLexer().equalToken(Token.COMMA));
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/e721b41faf3ee0ebf3de067aa6e8e28bee10509e b/88e0109553aef77425589c2e25d6007b5a3f0f0e
+index e721b41faf..88e0109553 100644
+--- a/e721b41faf3ee0ebf3de067aa6e8e28bee10509e
++++ b/88e0109553aef77425589c2e25d6007b5a3f0f0e
+@@ -1,9 +1,9 @@
+ @Test
+ public void parseWithoutParameter() throws SQLException {
+     ShardingRule shardingRule = createShardingRule();
+     List<Object> parameters = Collections.emptyList();
+-    SQLStatementParser statementParser = new SQLStatementParser(DatabaseType.MySQL, shardingRule, parameters, new MySQLParser("INSERT INTO `TABLE_XXX` (`field1`, `field2`) VALUES (10, 1)", shardingRule, parameters));
++    SQLParserEngine statementParser = new SQLParserEngine(DatabaseType.MySQL, new MySQLParser("INSERT INTO `TABLE_XXX` (`field1`, `field2`) VALUES (10, 1)", shardingRule, parameters), shardingRule, parameters);
+     InsertSQLContext sqlContext = (InsertSQLContext) statementParser.parseStatement();
+     assertInsertStatement(sqlContext);
+     assertThat(sqlContext.toSqlBuilder().toString(), is("INSERT INTO [Token(TABLE_XXX)] (`field1`, `field2`) VALUES (10, 1)"));
+ }
+\ No newline at end of file

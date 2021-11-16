@@ -1,0 +1,20 @@
+diff --git a/60a47d563961656782cda53fffa0384ef2723c62 b/95dd28384051b91e1f6ca5eaef1c034542e3d6cf
+index 60a47d5639..95dd283840 100644
+--- a/60a47d563961656782cda53fffa0384ef2723c62
++++ b/95dd28384051b91e1f6ca5eaef1c034542e3d6cf
+@@ -1,11 +1,10 @@
+ public void testCopyToIde() throws Exception {
+     CodeStyleScheme projectScheme = myModel.getProjectScheme();
+-    myModel.setUsePerProjectSettings(true);
+-    assertEquals(CodeStyleSchemesModel.PROJECT_SCHEME_NAME, myModel.getSelectedScheme().getName());
++    myModel.selectScheme(projectScheme, null);
++    assertEquals(CodeStyleScheme.PROJECT_SCHEME_NAME, myModel.getSelectedScheme().getName());
+     CodeStyleSettings settings = projectScheme.getCodeStyleSettings();
+     settings.setRightMargin(null, 66);
+     CodeStyleScheme newScheme = myModel.exportProjectScheme("New Scheme");
+     assertEquals(66, newScheme.getCodeStyleSettings().getRightMargin(null));
+-    // Check that code style settings instance is not the same as in the original
+-    assertFalse(projectScheme.getCodeStyleSettings() == newScheme.getCodeStyleSettings());
++    assertNotSame(projectScheme.getCodeStyleSettings(), newScheme.getCodeStyleSettings());
+ }
+\ No newline at end of file

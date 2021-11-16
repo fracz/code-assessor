@@ -1,0 +1,17 @@
+diff --git a/dd8c95b2f7065e7e34203672c84a4d807a6e32ac b/c1bd7c8d0d33b507b7c29e9bdf5f8827d629f97d
+index dd8c95b2f7..c1bd7c8d0d 100644
+--- a/dd8c95b2f7065e7e34203672c84a4d807a6e32ac
++++ b/c1bd7c8d0d33b507b7c29e9bdf5f8827d629f97d
+@@ -1,10 +1,7 @@
+ @Override
+ public void visitSchemaObject(@NotNull final VirtualFile schemaFile, @NotNull Processor<JsonSchemaObject> consumer) {
+-    final JsonSchemaObjectCodeInsightWrapper wrapper;
+-    synchronized (myLock) {
+-        wrapper = myWrappers.get(schemaFile);
+-    }
++    final JsonSchemaObjectCodeInsightWrapper wrapper = getWrapperBySchemaFile(schemaFile);
+     if (wrapper == null)
+         return;
+     wrapper.iterateSchemaObjects(consumer);
+ }
+\ No newline at end of file

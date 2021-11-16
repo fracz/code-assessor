@@ -1,0 +1,19 @@
+diff --git a/6076eeb23713630bf2fd0ba0a0c7674e376fd48c b/704f7228b50cf71ed75fd01c46d098a72d0a59f7
+index 6076eeb237..704f7228b5 100644
+--- a/6076eeb23713630bf2fd0ba0a0c7674e376fd48c
++++ b/704f7228b50cf71ed75fd01c46d098a72d0a59f7
+@@ -1,8 +1,8 @@
+ @Override
+-public void onPanelFullyOpened(PanelView openPanel) {
+-    super.onPanelFullyOpened(openPanel);
+-    if (openPanel != mLastFullyOpenedPanel) {
+-        openPanel.sendAccessibilityEvent(AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED);
++public void onPanelFullyOpened() {
++    super.onPanelFullyOpened();
++    if (!mIsFullyOpenedPanel) {
++        mPanel.sendAccessibilityEvent(AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED);
+     }
+-    mLastFullyOpenedPanel = openPanel;
++    mIsFullyOpenedPanel = true;
+ }
+\ No newline at end of file

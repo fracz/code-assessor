@@ -1,0 +1,16 @@
+diff --git a/45e67f8bbffb9f1540090e798c2c110b18e54077 b/ca4f476c997818f7d787e0cfba043a1f4f17bb78
+index 45e67f8bbf..ca4f476c99 100644
+--- a/45e67f8bbffb9f1540090e798c2c110b18e54077
++++ b/ca4f476c997818f7d787e0cfba043a1f4f17bb78
+@@ -1,9 +1,4 @@
+ @Override
+ public void readFrom(DataInput in) throws IOException, ClassNotFoundException {
+-    int size = in.readInt();
+-    for (int i = 0; i < size; i++) {
+-        IndexRefreshResponse response = new IndexRefreshResponse();
+-        response.readFrom(in);
+-        indices.put(response.index(), response);
+-    }
++    super.readFrom(in);
+ }
+\ No newline at end of file

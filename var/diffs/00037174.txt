@@ -1,0 +1,17 @@
+diff --git a/c00aa0434f594abd6fbb2356fcc3ce405ccc3349 b/0638478dbc1c62c5bac6ba176f87e4c36583b006
+index c00aa0434f..0638478dbc 100644
+--- a/c00aa0434f594abd6fbb2356fcc3ce405ccc3349
++++ b/0638478dbc1c62c5bac6ba176f87e4c36583b006
+@@ -1,9 +1,8 @@
+ private static void updateBindValueMethod(ClassPool classPool, CtClass cc) throws Exception {
+     CtClass[] params1 = new CtClass[3];
+     params1[0] = classPool.getCtClass("int");
+     params1[1] = classPool.getCtClass("byte");
+     params1[2] = classPool.getCtClass("java.lang.Object");
+-    CtMethod serviceMethod1 = cc.getDeclaredMethod("bindValue", params1);
+-    logger.info("Changing bindValue(int, byte, String) method ");
+-    serviceMethod1.insertBefore(getBindValueMethodBeforeInsertCode());
++    CtMethod method = cc.getDeclaredMethod("bindValue", params1);
++    method.insertBefore("{" + TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".putSqlParam($1,$3); }");
+ }
+\ No newline at end of file

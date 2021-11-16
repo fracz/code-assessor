@@ -1,0 +1,21 @@
+diff --git a/f96f6b3e42e1e28c4c3df906ff3a81246c478448 b/88b8cb295515fae219314a638770b391ac2c305b
+index f96f6b3e42..88b8cb2955 100644
+--- a/f96f6b3e42e1e28c4c3df906ff3a81246c478448
++++ b/88b8cb295515fae219314a638770b391ac2c305b
+@@ -1,14 +1,11 @@
+ public void visitMethod(@NotNull PsiMethod method) {
+     super.visitMethod(method);
+     if (!method.hasModifierProperty(PsiModifier.STATIC)) {
+         return;
+     }
+     final String name = method.getName();
+-    if (name == null) {
+-        return;
+-    }
+     if (isValid(name)) {
+         return;
+     }
+-    registerMethodError(method);
++    registerMethodError(method, name);
+ }
+\ No newline at end of file

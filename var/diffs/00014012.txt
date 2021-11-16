@@ -1,0 +1,19 @@
+diff --git a/7ca46f9c628871d508333f5271977e15d80d29b7 b/42720f43cd5147e61ba6d01322ee7236023e8828
+index 7ca46f9c62..42720f43cd 100644
+--- a/7ca46f9c628871d508333f5271977e15d80d29b7
++++ b/42720f43cd5147e61ba6d01322ee7236023e8828
+@@ -1,10 +1,10 @@
+ @Nullable
+-private static JsonSchemaObject findDefinition(@Nullable VirtualFile key, @NotNull String ref, @NotNull final JsonSchemaObject root, @Nullable JsonSchemaExportedDefinitions definitions) {
++private static JsonSchemaObject findDefinition(@NotNull String ref, @NotNull final JsonSchemaObject root) {
+     if ("#".equals(ref)) {
+         return root;
+     }
+-    if (!ref.startsWith("#/")) {
+-        return findAbsoluteDefinition(key, ref, definitions);
++    if (isAbsoluteReference(ref)) {
++        return null;
+     }
+     return findRelativeDefinition(ref, root);
+ }
+\ No newline at end of file

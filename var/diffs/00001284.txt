@@ -1,0 +1,23 @@
+diff --git a/05e90165a9f82ee1e248e190d01c5ad7bf9e9cd7 b/b1c3648eac11fd60249ea6faf2ed3a99d865a70f
+index 05e90165a9..b1c3648eac 100644
+--- a/05e90165a9f82ee1e248e190d01c5ad7bf9e9cd7
++++ b/b1c3648eac11fd60249ea6faf2ed3a99d865a70f
+@@ -1,13 +1,6 @@
+-/**
+- * Test of humanReadableChunkMap method, of class GELFChunkManager.
+- */
+ @Test
+-public void testHumanReadableChunkMap() {
+-    System.out.println("humanReadableChunkMap");
+-    GELFChunkManager instance = new GELFChunkManager();
+-    String expResult = "";
+-    String result = instance.humanReadableChunkMap();
+-    assertEquals(expResult, result);
+-    // TODO review the generated test code and remove the default call to fail.
+-    fail("The test case is a prototype.");
++public void testHumanReadableChunkMap() throws Exception {
++    GELFChunkManager mgr = new GELFChunkManager();
++    mgr.insert(new GELFMessageChunk(TestHelper.buildGELFMessageChunk("ohaithar", 0, 3, new byte[1])));
++    mgr.humanReadableChunkMap();
+ }
+\ No newline at end of file

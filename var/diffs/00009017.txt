@@ -1,0 +1,16 @@
+diff --git a/118a9a96e3b2d4c7f3a7a208d639906570e8b50e b/9b65c91e76de1af62b0543e67037a2e1ea81f66e
+index 118a9a96e3..9b65c91e76 100644
+--- a/118a9a96e3b2d4c7f3a7a208d639906570e8b50e
++++ b/9b65c91e76de1af62b0543e67037a2e1ea81f66e
+@@ -1,7 +1,6 @@
+ @Override
+ public void apply() throws ConfigurationException {
+-    myEditor.ensureNonEmptyNames(KeyMapBundle.message("configuration.all.keymaps.should.have.non.empty.names.error.message"));
+-    ensureUniqueKeymapNames();
+-    Keymaps.apply(myEditor.apply(), myEditor.getModel().getSelected());
+-    ActionToolbarImpl.updateAllToolbarsImmediately();
++    String error = myKeymapSelector.apply();
++    if (error != null)
++        throw new ConfigurationException(error);
+ }
+\ No newline at end of file

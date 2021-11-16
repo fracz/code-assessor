@@ -1,0 +1,18 @@
+diff --git a/2a193c1a1288b8b6d94a8bd37e98d1f11d7cd4f7 b/e6d1257ad0d9e501e3c60db75facf278519bbee3
+index 2a193c1a12..e6d1257ad0 100644
+--- a/2a193c1a1288b8b6d94a8bd37e98d1f11d7cd4f7
++++ b/e6d1257ad0d9e501e3c60db75facf278519bbee3
+@@ -1,10 +1,9 @@
+ private ObjectFormatter initFormatter(Class<? extends ObjectFormatter> formatterClazz) {
+     try {
+         return formatterClazz.newInstance();
+     } catch (InstantiationException e) {
+-        logger.error("init ObjectFormatter fail", e);
++        throw new RuntimeException(e);
+     } catch (IllegalAccessException e) {
+-        logger.error("init ObjectFormatter fail", e);
++        throw new RuntimeException(e);
+     }
+-    return null;
+ }
+\ No newline at end of file

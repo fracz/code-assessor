@@ -1,0 +1,19 @@
+diff --git a/b35ab2018151bfa8053d779f2f67b462ac840ca8 b/a2e0725257314c7a3a501e16e8e271f438abd6b6
+index b35ab20181..a2e0725257 100644
+--- a/b35ab2018151bfa8053d779f2f67b462ac840ca8
++++ b/a2e0725257314c7a3a501e16e8e271f438abd6b6
+@@ -1,6 +1,12 @@
+ private static void buildAndShowClassySharkFrame(List<String> cmdLineArgs) {
+-    TabsFrame frame = new TabsFrame("ClassyShark Browser", cmdLineArgs);
++    JFrame frame;
++    if (cmdLineArgs.size() >= 2) {
++        frame = new ClassySharkTabsFrame("ClassyShark Browser", cmdLineArgs);
++    } else {
++        frame = new JFrame();
++        frame.getContentPane().add(new ClassySharkPanel(null, 1));
++    }
+     frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+     frame.pack();
+     frame.setVisible(true);
+ }
+\ No newline at end of file

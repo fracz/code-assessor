@@ -1,0 +1,18 @@
+diff --git a/31f0a496163f9fd5cb450eb5cf2fc730293bd034 b/4533083ef4ef42c79520146aeec491a6cd60415c
+index 31f0a49616..4533083ef4 100644
+--- a/31f0a496163f9fd5cb450eb5cf2fc730293bd034
++++ b/4533083ef4ef42c79520146aeec491a6cd60415c
+@@ -1,7 +1,8 @@
+ private AGG fetchPrevious(final Bytes key) {
+-    final byte[] bytes = bytesStore.get(key);
+-    if (bytes == null) {
+-        return null;
++    try (final KeyValueIterator<Windowed<Bytes>, byte[]> iterator = bytesStore.fetch(key)) {
++        if (!iterator.hasNext()) {
++            return null;
++        }
++        return serdes.valueFrom(iterator.next().value);
+     }
+-    return serdes.valueFrom(bytes);
+ }
+\ No newline at end of file

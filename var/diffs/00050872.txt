@@ -1,0 +1,22 @@
+diff --git a/d67c507c73f3a9bf6c123d633a58ac9882836af5 b/a9a610ecd448d1e4a7a01e729b595e0814202bae
+index d67c507c73..a9a610ecd4 100644
+--- a/d67c507c73f3a9bf6c123d633a58ac9882836af5
++++ b/a9a610ecd448d1e4a7a01e729b595e0814202bae
+@@ -1,12 +1,13 @@
+ public void undoChanges() {
+-    if (getCommandContext() != null && getCommandContext().getUndoCommand() != null) {
+-        if (!getDatabaseObject().isPersisted() && getCommandContext().getUndoCommands().size() == 1) {
++    DBECommandContext commandContext = getCommandContext();
++    if (commandContext != null && commandContext.getUndoCommand() != null) {
++        if (!getDatabaseObject().isPersisted() && commandContext.getUndoCommands().size() == 1) {
+             // Let's ask user about it
+             if (ConfirmationDialog.showConfirmDialog(null, DBeaverPreferences.CONFIRM_ENTITY_REJECT, ConfirmationDialog.QUESTION, getDatabaseObject().getName()) != IDialogConstants.YES_ID) {
+                 return;
+             }
+         }
+-        getCommandContext().undoCommand();
++        commandContext.undoCommand();
+         firePropertyChange(IEditorPart.PROP_DIRTY);
+     }
+ }
+\ No newline at end of file

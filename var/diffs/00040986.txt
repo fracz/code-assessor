@@ -1,0 +1,16 @@
+diff --git a/802af30ceabed65985ff2a17e1a14756cf6f5184 b/04b03812e75e6ac6005c30d445f2e86232b1cbfa
+index 802af30cea..04b03812e7 100644
+--- a/802af30ceabed65985ff2a17e1a14756cf6f5184
++++ b/04b03812e75e6ac6005c30d445f2e86232b1cbfa
+@@ -1,9 +1,4 @@
+ @Override
+ public Span readSpan(byte[] bytes) {
+-    checkArgument(bytes.length > 0, "Empty input reading Span");
+-    try {
+-        return SPAN_ADAPTER.fromJson(jsonReader(bytes));
+-    } catch (Exception e) {
+-        throw exceptionReading("Span", bytes, e);
+-    }
++    return read(new SpanReader(), bytes);
+ }
+\ No newline at end of file

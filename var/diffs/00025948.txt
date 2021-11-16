@@ -1,0 +1,15 @@
+diff --git a/c50f58cfb49d8d048074d2270d24d25281f930a4 b/c12f56d3587b042f41753def30c737642e0b1faf
+index c50f58cfb4..c12f56d358 100644
+--- a/c50f58cfb49d8d048074d2270d24d25281f930a4
++++ b/c12f56d3587b042f41753def30c737642e0b1faf
+@@ -1,5 +1,6 @@
+ private void logTraceTouchSession(long sessionId, int timeout, String sessionStatus) {
+-    if (LOG.isTraceEnabled()) {
+-        ZooTrace.logTraceMessage(LOG, ZooTrace.CLIENT_PING_TRACE_MASK, "SessionTrackerImpl --- Touch " + sessionStatus + "session: 0x" + Long.toHexString(sessionId) + " with timeout " + timeout);
+-    }
++    if (!LOG.isTraceEnabled())
++        return;
++    String msg = MessageFormat.format("SessionTrackerImpl --- Touch {0}session: 0x{1} with timeout {2}", sessionStatus, Long.toHexString(sessionId), Integer.toString(timeout));
++    ZooTrace.logTraceMessage(LOG, ZooTrace.CLIENT_PING_TRACE_MASK, msg);
+ }
+\ No newline at end of file

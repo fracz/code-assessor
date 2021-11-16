@@ -1,0 +1,23 @@
+diff --git a/5b8f4924e615f1eb8d8d05317a6e5bc8f6253e20 b/899f367114ea74c6e4e3df3f228832672a3800fe
+index 5b8f4924e6..899f367114 100644
+--- a/5b8f4924e615f1eb8d8d05317a6e5bc8f6253e20
++++ b/899f367114ea74c6e4e3df3f228832672a3800fe
+@@ -1,14 +1,14 @@
+-public MockSettings extraInterfaces(Class<?>... extraInterfaces) {
++public MockSettings extraInterfaces(Class... extraInterfaces) {
+     if (extraInterfaces == null || extraInterfaces.length == 0) {
+         new Reporter().extraInterfacesRequiresAtLeastOneInterface();
+     }
+-    for (Class<?> i : extraInterfaces) {
++    for (Class i : extraInterfaces) {
+         if (i == null) {
+             new Reporter().extraInterfacesDoesNotAcceptNullParameters();
+         } else if (!i.isInterface()) {
+             new Reporter().extraInterfacesAcceptsOnlyInterfaces(i);
+         }
+     }
+-    this.extraInterfaces = extraInterfaces;
++    this.extraInterfaces = newSet(extraInterfaces);
+     return this;
+ }
+\ No newline at end of file

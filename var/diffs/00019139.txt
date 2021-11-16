@@ -1,0 +1,14 @@
+diff --git a/e0c5e26be46661a869051c91032e399230f1047e b/e280a48e68e1278f4fe3353c5a1c0e53e63f167e
+index e0c5e26be4..e280a48e68 100644
+--- a/e0c5e26be46661a869051c91032e399230f1047e
++++ b/e280a48e68e1278f4fe3353c5a1c0e53e63f167e
+@@ -1,7 +1,3 @@
+ public int getBackyardBackgroundColor() {
+-    if (backyardBackgroundColor != 0) {
+-        return backyardBackgroundColor;
+-    } else {
+-        return getDarkenArgb(getMainBackgroundColor(), 0.9375);
+-    }
++    return getColorWithFallback(backyardBackgroundColor, getDarkenArgb(getMainBackgroundColor(), 0.9375));
+ }
+\ No newline at end of file

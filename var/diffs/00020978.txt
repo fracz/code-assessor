@@ -1,0 +1,12 @@
+diff --git a/0216829740da44cfe98394b4cf39190b961c4cd9 b/1f5cf4b9a304684354f01111a132b5fe1b4119ba
+index 0216829740..1f5cf4b9a3 100644
+--- a/0216829740da44cfe98394b4cf39190b961c4cd9
++++ b/1f5cf4b9a304684354f01111a132b5fe1b4119ba
+@@ -1,5 +1,5 @@
+ @Override
+ public void setArray(int parameterIndex, Array x) throws SQLException {
+-    setParameter(parameterIndex, new JdbcParameterImpl(Types.ARRAY, x));
++    setParameter(parameterIndex, createParameter(Types.ARRAY, x));
+     createChain().preparedStatement_setArray(this, parameterIndex, x);
+ }
+\ No newline at end of file

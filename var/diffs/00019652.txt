@@ -1,0 +1,23 @@
+diff --git a/8045b7c2b9d66a9ba83f3add40241c9f8d51c5da b/b3939e7ff51c72f08ee45b7a851ee32057ee635f
+index 8045b7c2b9..b3939e7ff5 100644
+--- a/8045b7c2b9d66a9ba83f3add40241c9f8d51c5da
++++ b/b3939e7ff51c72f08ee45b7a851ee32057ee635f
+@@ -1,13 +1,14 @@
+-public void persistLogPosition(final String destination, final LogPosition logPosition) {
+-    super.persistLogPosition(destination, logPosition);
++@Override
++public void persistLogPosition(final String destination, final LogPosition logPosition) throws CanalParseException {
++    memoryLogPositionManager.persistLogPosition(destination, logPosition);
+     executor.submit(new Runnable() {
+
+         public void run() {
+             try {
+                 zooKeeperLogPositionManager.persistLogPosition(destination, logPosition);
+             } catch (Exception e) {
+-                logger.error("ERROR # persist to zookeepr has an error", e);
++                logger.error("ERROR # persist to zookeeper has an error", e);
+             }
+         }
+     });
+ }
+\ No newline at end of file

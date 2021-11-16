@@ -1,0 +1,25 @@
+diff --git a/0874483866ee5bf7146e8fc13254ecbcca5b5b21 b/ad7e33b85599c58d8b71bd14d0406134225e1bfb
+index 0874483866..ad7e33b855 100644
+--- a/0874483866ee5bf7146e8fc13254ecbcca5b5b21
++++ b/ad7e33b85599c58d8b71bd14d0406134225e1bfb
+@@ -1,18 +1,12 @@
+ @Override
+ public ResultSet executeQuery(final String sql) throws SQLException {
+     ResultSet result;
+     try {
+-        // TODO refactor
+         List<ResultSet> resultSets = generateExecutor(sql).executeQuery();
+-        Optional<ResultSetMerger> mergeResultSet = MergeEngine.getResultSet(resultSets, (SelectStatement) getRouteResult().getSqlStatement());
+-        if (mergeResultSet.isPresent()) {
+-            result = new ShardingResultSet(resultSets, mergeResultSet.get());
+-        } else {
+-            result = resultSets.get(0);
+-        }
++        result = new ShardingResultSet(resultSets, MergeEngine.getResultSet(resultSets, (SelectStatement) getRouteResult().getSqlStatement()));
+     } finally {
+         setCurrentResultSet(null);
+     }
+     setCurrentResultSet(result);
+     return result;
+ }
+\ No newline at end of file

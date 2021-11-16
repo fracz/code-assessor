@@ -1,0 +1,23 @@
+diff --git a/5fce7068c6add06c01c3ccb24f9d33567f68aac2 b/71eb1e70a88367fa43e8d7c21b798dcb9d80b8df
+index 5fce7068c6..71eb1e70a8 100644
+--- a/5fce7068c6add06c01c3ccb24f9d33567f68aac2
++++ b/71eb1e70a88367fa43e8d7c21b798dcb9d80b8df
+@@ -1,7 +1,12 @@
+-public IDataExporter createExporter() throws IllegalAccessException, InstantiationException {
+-    Class<IDataExporter> clazz = exporterType.getObjectClass(IDataExporter.class);
+-    if (clazz == null) {
+-        throw new InstantiationException("Cannot find exporter class " + exporterType.implName);
++@Override
++public IStreamDataExporter createExporter() throws DBException {
++    try {
++        Class<IStreamDataExporter> clazz = exporterType.getObjectClass(IStreamDataExporter.class);
++        if (clazz == null) {
++            throw new InstantiationException("Cannot find exporter class " + exporterType.implName);
++        }
++        return clazz.newInstance();
++    } catch (Exception e) {
++        throw new DBException("Can't instantiate data exporter", e);
+     }
+-    return clazz.newInstance();
+ }
+\ No newline at end of file

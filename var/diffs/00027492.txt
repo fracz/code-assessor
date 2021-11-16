@@ -1,0 +1,12 @@
+diff --git a/ceb79d0b16430520454e1d656b2fb772cd1c35a2 b/239d60790f928e92b64cd4e8c1bdb706e2cde68a
+index ceb79d0b16..239d60790f 100644
+--- a/ceb79d0b16430520454e1d656b2fb772cd1c35a2
++++ b/239d60790f928e92b64cd4e8c1bdb706e2cde68a
+@@ -1,5 +1,5 @@
+ public void write(T objectToWrite) throws IOException {
+     byte[] bytesToWrite = strategy.toBytes(objectToWrite);
+-    headerOut.write(Ints.toByteArray(bytesToWrite.length));
++    SerializerUtils.writeBigEndianIntToOutputStream(headerOut, bytesToWrite.length, helperBuffer);
+     valueOut.write(bytesToWrite);
+ }
+\ No newline at end of file

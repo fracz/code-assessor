@@ -1,0 +1,22 @@
+diff --git a/529211d6d1aed4f1bb72b5149a10167f581b535c b/d7eb2b00812fdd7a6d560f508c27b1a0fcd169c8
+index 529211d6d1..d7eb2b0081 100644
+--- a/529211d6d1aed4f1bb72b5149a10167f581b535c
++++ b/d7eb2b00812fdd7a6d560f508c27b1a0fcd169c8
+@@ -1,15 +1,15 @@
+ public void resetModuleEditors() {
+     myModuleModel = ModuleManager.getInstance(myProject).getModifiableModel();
+     for (final ModuleEditor moduleEditor : myModuleEditors) {
+         moduleEditor.removeChangeListener(this);
+     }
+     myModuleEditors.clear();
+     final Module[] modules = myModuleModel.getModules();
+     if (modules.length > 0) {
+         for (Module module : modules) {
+             createModuleEditor(module);
+         }
+         Collections.sort(myModuleEditors, myModuleEditorComparator);
+     }
+-    updateCircularDependencyWarning();
++    myModified = false;
+ }
+\ No newline at end of file

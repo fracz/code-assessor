@@ -1,0 +1,17 @@
+diff --git a/17ce756a146cebee968982ef92a775e48440201e b/3838f5f52e55e0abb670a801cb9b49b428739a0e
+index 17ce756a14..3838f5f52e 100644
+--- a/17ce756a146cebee968982ef92a775e48440201e
++++ b/3838f5f52e55e0abb670a801cb9b49b428739a0e
+@@ -1,7 +1,9 @@
+ public boolean showHint(final Editor editor) {
+-    if (!isAvailable())
++    final String referenceName = getRefName();
++    final PsiFile[] files = getRefFiles(referenceName);
++    if (!(files != null && files.length > 0))
+         return false;
+-    String hintText = ShowAutoImportPass.getMessage(false, ((PyReferenceExpression) myReference).getReferencedName());
++    String hintText = ShowAutoImportPass.getMessage(false, getRefName());
+     HintManager.getInstance().showQuestionHint(editor, hintText, myReference.getElement().getTextOffset(), myReference.getElement().getTextRange().getEndOffset(), this);
+     return true;
+ }
+\ No newline at end of file

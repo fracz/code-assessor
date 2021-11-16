@@ -1,0 +1,14 @@
+diff --git a/aefbf533df7e11234d7f617343bd07cd4cfc02a4 b/081513469ed9950593f66fc88ea2e48bd5bd3156
+index aefbf533df..081513469e 100644
+--- a/aefbf533df7e11234d7f617343bd07cd4cfc02a4
++++ b/081513469ed9950593f66fc88ea2e48bd5bd3156
+@@ -1,6 +1,6 @@
+ // We check classes at runtime
+ @SuppressWarnings({ "unchecked", "rawtypes" })
+-private static void moveSafely(@NotNull final PyClass from, @NotNull final PyClass to, @NotNull final MembersManager<?> manager, @NotNull final Collection<PyElement> elementsToMove) {
++private static void moveSafely(@NotNull final PyClass from, @NotNull final MembersManager<?> manager, @NotNull final Collection<PyElement> elementsToMove, @NotNull final PyClass... to) {
+     manager.checkElementTypes(elementsToMove);
+-    manager.moveMembers(from, to, (Collection) elementsToMove);
++    manager.moveMembers(from, (Collection) elementsToMove, to);
+ }
+\ No newline at end of file

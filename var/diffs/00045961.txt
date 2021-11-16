@@ -1,0 +1,16 @@
+diff --git a/f48464dfdb8f34ad630ac63e0e554e486445b238 b/12689cebe2f310a26ec9476c0f011e1e75477b9e
+index f48464dfdb..12689cebe2 100644
+--- a/f48464dfdb8f34ad630ac63e0e554e486445b238
++++ b/12689cebe2f310a26ec9476c0f011e1e75477b9e
+@@ -1,9 +1,8 @@
+ @Test
+ public void queryParamShouldBeParsedAsHashMap() {
+     Map<String, String[]> params = new HashMap<String, String[]>();
+     params.put("user[name]", new String[] { "Federico" });
+-    HttpServletRequest servletRequest = new MockedHttpServletRequest(params);
+-    Request request = new Request(match, servletRequest);
++    when(servletRequest.getParameterMap()).thenReturn(params);
+     String name = request.queryMap("user").value("name");
+     assertEquals("Invalid name in query string", "Federico", name);
+ }
+\ No newline at end of file

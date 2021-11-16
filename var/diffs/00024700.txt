@@ -1,0 +1,15 @@
+diff --git a/6a0dc274bbf98c453df860caaeba3f764f5648df b/73be5a7b439fa22c8459aa654a4da9906e9f11e7
+index 6a0dc274bb..73be5a7b43 100644
+--- a/6a0dc274bbf98c453df860caaeba3f764f5648df
++++ b/73be5a7b439fa22c8459aa654a4da9906e9f11e7
+@@ -1,7 +1,4 @@
+-private static void insertRowWithKey(int key) {
++private static void insertRowWithKey(CFMetaData metadata, int key) {
+     long timestamp = System.currentTimeMillis();
+-    DecoratedKey decoratedKey = Util.dk(toKey(key));
+-    Mutation rm = new Mutation(KEYSPACE, decoratedKey.getKey());
+-    rm.add(TABLE, Util.cellname("col"), ByteBufferUtil.EMPTY_BYTE_BUFFER, timestamp, 1000);
+-    rm.applyUnsafe();
++    new RowUpdateBuilder(metadata, timestamp, toKey(key)).clustering("col").add("val", ByteBufferUtil.EMPTY_BYTE_BUFFER).build().applyUnsafe();
+ }
+\ No newline at end of file

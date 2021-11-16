@@ -1,0 +1,25 @@
+diff --git a/a5c0d9b4d503bd686dea01bcca30e5b4f1c5b6b5 b/a2eac1235f16e6bf24a312c4ea6e304f836871bf
+index a5c0d9b4d5..a2eac1235f 100644
+--- a/a5c0d9b4d503bd686dea01bcca30e5b4f1c5b6b5
++++ b/a2eac1235f16e6bf24a312c4ea6e304f836871bf
+@@ -1,12 +1,16 @@
+ public OServerAdmin deleteDatabase() throws IOException {
+     storage.checkConnection();
+     try {
+-        storage.writeCommand(OChannelBinaryProtocol.REQUEST_DB_DELETE);
+-        storage.getNetwork().writeString(storage.getName());
+-        storage.getNetwork().readStatus();
++        try {
++            storage.beginRequest(OChannelBinaryProtocol.REQUEST_DB_DELETE);
++            storage.getNetwork().writeString(storage.getName());
++        } finally {
++            storage.endRequest();
++        }
++        storage.getResponse();
+     } catch (Exception e) {
+         OLogManager.instance().exception("Can't delete the remote storage: " + storage.getName(), e, OStorageException.class);
+         storage.close();
+     }
+     return this;
+ }
+\ No newline at end of file

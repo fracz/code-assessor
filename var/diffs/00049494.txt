@@ -1,0 +1,23 @@
+diff --git a/70a80fcf01a312dabed093c591e2d62209518416 b/f42db46b2e654c59a572456bfde30a1cc3937fe2
+index 70a80fcf01..f42db46b2e 100644
+--- a/70a80fcf01a312dabed093c591e2d62209518416
++++ b/f42db46b2e654c59a572456bfde30a1cc3937fe2
+@@ -1,16 +1,16 @@
+ @Override
+ public Object execute(ExecutionEvent event) throws ExecutionException {
+     final String viewId = event.getParameter("viewId");
+     final IWorkbenchWindow workbenchWindow = HandlerUtil.getActiveWorkbenchWindow(event);
+     final IViewPart view = UIUtils.findView(workbenchWindow, viewId);
+     if (view != null) {
+         workbenchWindow.getActivePage().hideView(view);
+     } else {
+         try {
+             workbenchWindow.getActivePage().showView(viewId);
+         } catch (PartInitException e) {
+-            UIUtils.showErrorDialog(HandlerUtil.getActiveShell(event), "Toggle view", "Cannot open view " + viewId, e);
++            DBUserInterface.getInstance().showError("Toggle view", "Cannot open view " + viewId, e);
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

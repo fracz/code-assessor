@@ -1,0 +1,25 @@
+diff --git a/c106710b7213f25b122e12469896f7afbe36210a b/e27acee2f6c35bc6aa57fd586e22e649f50ebfdd
+index c106710b72..e27acee2f6 100644
+--- a/c106710b7213f25b122e12469896f7afbe36210a
++++ b/e27acee2f6c35bc6aa57fd586e22e649f50ebfdd
+@@ -1,15 +1,16 @@
+-private void parseSelectItem(final SelectStatement selectStatement) {
++private SelectItem parseSelectItem(final SelectStatement selectStatement) {
+     sqlParser.skipIfEqual(getSkippedKeywordsBeforeSelectItem());
+     SelectItem result;
+     if (isRowNumberSelectItem()) {
+         result = parseRowNumberSelectItem(selectStatement);
+     } else if (isStarSelectItem()) {
+-        result = parseStarSelectItem(selectStatement);
++        selectStatement.setContainStar(true);
++        result = parseStarSelectItem();
+     } else if (isAggregationSelectItem()) {
+         result = parseAggregationSelectItem();
+         parseRestSelectItem(selectStatement);
+     } else {
+         result = new CommonSelectItem(SQLUtil.getExactlyValue(parseCommonSelectItem(selectStatement) + parseRestSelectItem(selectStatement)), sqlParser.parseAlias());
+     }
+-    selectStatement.getItems().add(result);
++    return result;
+ }
+\ No newline at end of file

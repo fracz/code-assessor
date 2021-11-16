@@ -1,0 +1,16 @@
+diff --git a/44f1f6c10fd681be13e387981b415a1df5806b64 b/64dcc58e9d13e7fe0fa03e4a7e59777e5a2457ac
+index 44f1f6c10f..64dcc58e9d 100644
+--- a/44f1f6c10fd681be13e387981b415a1df5806b64
++++ b/64dcc58e9d13e7fe0fa03e4a7e59777e5a2457ac
+@@ -1,8 +1,4 @@
+-public static void addArgument(PyCallExpression us, PythonLanguage language, PyExpression expression) {
++public static void addArgument(PyCallExpression us, PyExpression expression) {
+     PyExpression[] arguments = us.getArgumentList().getArguments();
+-    try {
+-        language.getElementGenerator().insertItemIntoList(us.getProject(), us, arguments.length == 0 ? null : arguments[arguments.length - 1], expression);
+-    } catch (IncorrectOperationException e1) {
+-        throw new IllegalArgumentException(e1);
+-    }
++    PyElementGenerator.getInstance(us.getProject()).insertItemIntoList(us, arguments.length == 0 ? null : arguments[arguments.length - 1], expression);
+ }
+\ No newline at end of file

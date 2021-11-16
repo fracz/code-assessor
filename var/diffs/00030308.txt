@@ -1,0 +1,22 @@
+diff --git a/a4b3d669fc4b9830acef41c6a6ecd436389270e4 b/f8547e11d8068687499385a851f159b66e07af14
+index a4b3d669fc..f8547e11d8 100644
+--- a/a4b3d669fc4b9830acef41c6a6ecd436389270e4
++++ b/f8547e11d8068687499385a851f159b66e07af14
+@@ -1,14 +1,14 @@
+ @Override
+ protected Field parseCreateField(ParseContext context) throws IOException {
+-    if (context.externalValueSet()) {
+-        String routing = (String) context.externalValue();
++    if (context.sourceToParse().routing() != null) {
++        String routing = context.sourceToParse().routing();
+         if (routing != null) {
+             if (!indexed() && !stored()) {
+                 context.ignoredValue(names.indexName(), routing);
+                 return null;
+             }
+             return new Field(names.indexName(), routing, store, index);
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

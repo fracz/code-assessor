@@ -1,0 +1,16 @@
+diff --git a/47a08f28fbad79779255fb84e8211c89437e8b0d b/7fc9f50609b6f636070c6cf576ebecd47ccda4c4
+index 47a08f28fb..7fc9f50609 100644
+--- a/47a08f28fbad79779255fb84e8211c89437e8b0d
++++ b/7fc9f50609b6f636070c6cf576ebecd47ccda4c4
+@@ -1,9 +1,3 @@
+ private AsyncWebRequest createAsyncWebRequest(HttpServletRequest request, HttpServletResponse response) {
+-    if (ClassUtils.hasMethod(ServletRequest.class, "startAsync")) {
+-        AsyncWebRequest asyncRequest = instantiateStandardServletAsyncWebRequest(request, response);
+-        asyncRequest.setTimeout(this.asyncRequestTimeout);
+-        return asyncRequest;
+-    } else {
+-        return new NoOpAsyncWebRequest(request, response);
+-    }
++    return ClassUtils.hasMethod(ServletRequest.class, "startAsync") ? createStandardServletAsyncWebRequest(request, response) : new NoSupportAsyncWebRequest(request, response);
+ }
+\ No newline at end of file

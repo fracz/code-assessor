@@ -1,0 +1,13 @@
+diff --git a/bb9760fd5ebfd5ec0221e0d76e7de52622dd1564 b/d7b56579bf0c915ddf2de7e11121ea5e267196f0
+index bb9760fd5e..d7b56579bf 100644
+--- a/bb9760fd5ebfd5ec0221e0d76e7de52622dd1564
++++ b/d7b56579bf0c915ddf2de7e11121ea5e267196f0
+@@ -1,5 +1,4 @@
+ @NotNull
+-public ClassContext intoAnonymousClass(@NotNull ClassDescriptor descriptor, @NotNull ExpressionCodegen expressionCodegen) {
+-    JetTypeMapper typeMapper = expressionCodegen.getState().getTypeMapper();
+-    return new AnonymousClassContext(typeMapper, descriptor, OwnerKind.IMPLEMENTATION, this, expressionCodegen);
++public ClassContext intoAnonymousClass(@NotNull ClassDescriptor descriptor, @NotNull ExpressionCodegen codegen) {
++    return new AnonymousClassContext(codegen.getState().getTypeMapper(), descriptor, OwnerKind.IMPLEMENTATION, this, codegen);
+ }
+\ No newline at end of file

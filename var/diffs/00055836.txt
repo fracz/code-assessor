@@ -1,0 +1,15 @@
+diff --git a/5ffe4c898fe4a549de9c4e1c42483488632d160d b/752368b6f910727bcb557db8e59ba5defbffdd34
+index 5ffe4c898f..752368b6f9 100644
+--- a/5ffe4c898fe4a549de9c4e1c42483488632d160d
++++ b/752368b6f910727bcb557db8e59ba5defbffdd34
+@@ -1,7 +1,7 @@
+ @Test
+-public void decodeToFlux() {
++public void decodeToFlux() throws Exception {
+     Flux<DataBuffer> source = Flux.just(stringBuffer("[{\"bar\":\"b1\",\"foo\":\"f1\"},{\"bar\":\"b2\",\"foo\":\"f2\"}]"));
+     ResolvableType elementType = ResolvableType.forClass(Pojo.class);
+     Flux<Object> flux = new Jackson2JsonDecoder().decode(source, elementType, null, Collections.emptyMap());
+-    TestSubscriber.subscribe(flux).assertNoError().assertComplete().assertValues(new Pojo("f1", "b1"), new Pojo("f2", "b2"));
++    ScriptedSubscriber.<Object>create().expectNext(new Pojo("f1", "b1")).expectNext(new Pojo("f2", "b2")).expectComplete().verify(flux);
+ }
+\ No newline at end of file

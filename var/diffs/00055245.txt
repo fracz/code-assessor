@@ -1,0 +1,23 @@
+diff --git a/05b35eb9b93236f36b66f34fde6ccdb2c7918955 b/1103f3726573d1bbc55132d657261d8a5da0277e
+index 05b35eb9b9..1103f37265 100644
+--- a/05b35eb9b93236f36b66f34fde6ccdb2c7918955
++++ b/1103f3726573d1bbc55132d657261d8a5da0277e
+@@ -1,14 +1,14 @@
+-@JRubyMethod(name = { "next", "next_element" })
++@JRubyMethod
+ public IRubyObject next_element(ThreadContext context) {
+     Node nextNode = node.getNextSibling();
+     Ruby ruby = context.getRuntime();
+     if (nextNode == null)
+         return ruby.getNil();
+     if (nextNode instanceof Element) {
+-        return new XmlElement(ruby, (RubyClass) ruby.getClassFromPath("Nokogiri::XML::Element"), nextNode);
++        return fromNodeOrCreate(context, nextNode);
+     }
+     Node deeper = nextNode.getNextSibling();
+     if (deeper == null)
+         return ruby.getNil();
+-    return new XmlElement(ruby, (RubyClass) ruby.getClassFromPath("Nokogiri::XML::Element"), deeper);
++    return fromNodeOrCreate(context, deeper);
+ }
+\ No newline at end of file

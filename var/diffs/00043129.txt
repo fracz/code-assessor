@@ -1,0 +1,30 @@
+diff --git a/904395ac307dd97e2508c792ab979241b84221b9 b/8b9afe47e354d393e47200617930984f9bfd46c8
+index 904395ac30..8b9afe47e3 100644
+--- a/904395ac307dd97e2508c792ab979241b84221b9
++++ b/8b9afe47e354d393e47200617930984f9bfd46c8
+@@ -1,20 +1,17 @@
+ public int dictionarySize(final ODatabaseRecord iDatabase) {
+     checkConnection();
+     do {
+         try {
++            final OChannelBinaryClient network = beginRequest(OChannelBinaryProtocol.REQUEST_INDEX_SIZE);
++            endRequest(network);
+             try {
+-                beginRequest(OChannelBinaryProtocol.REQUEST_INDEX_SIZE);
+-            } finally {
+-                endRequest();
+-            }
+-            try {
+-                beginResponse();
++                beginResponse(network);
+                 return network.readInt();
+             } finally {
+-                endResponse();
++                endResponse(network);
+             }
+         } catch (Exception e) {
+             handleException("Error on getting size of database's dictionary", e);
+         }
+     } while (true);
+ }
+\ No newline at end of file

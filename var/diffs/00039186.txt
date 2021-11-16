@@ -1,0 +1,20 @@
+diff --git a/5bc449b386295ca4f03e1f85002d7ad32f4bfe4b b/86b5633bdd94de576c46b3d4ed94213cdf34c148
+index 5bc449b386..86b5633bdd 100644
+--- a/5bc449b386295ca4f03e1f85002d7ad32f4bfe4b
++++ b/86b5633bdd94de576c46b3d4ed94213cdf34c148
+@@ -1,11 +1,11 @@
+ public boolean removeNodeFromIndex(String indexName, String key, Object value, long nodeId) throws DatabaseBlockedException {
+-    org.neo4j.server.database.NodeIndex index = (org.neo4j.server.database.NodeIndex) graphdb.getIndex(indexName);
++    Index<Node> index = graphdb.getNodeIndex(indexName);
+     Transaction tx = graphdb.graph.beginTx();
+     try {
+-        boolean removed = index.remove(graphdb.graph.getNodeById(nodeId), key, value);
++        index.remove(graphdb.graph.getNodeById(nodeId), key, value);
+         tx.success();
+-        return removed;
++        return true;
+     } finally {
+         tx.finish();
+     }
+ }
+\ No newline at end of file

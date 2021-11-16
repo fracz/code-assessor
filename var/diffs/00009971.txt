@@ -1,0 +1,16 @@
+diff --git a/7894b1fd7dc617445bb0d55951f90eb891c94830 b/0f5f1bebfa25d135b4a7df0640fdc5cac329a359
+index 7894b1fd7d..0f5f1bebfa 100644
+--- a/7894b1fd7dc617445bb0d55951f90eb891c94830
++++ b/0f5f1bebfa25d135b4a7df0640fdc5cac329a359
+@@ -1,8 +1,9 @@
+ @Nullable
+ public static HighlightInfo checkValidAnnotationType(final PsiTypeElement typeElement) {
+     PsiType type = typeElement.getType();
+     if (type.accept(AnnotationReturnTypeVisitor.INSTANCE).booleanValue()) {
+         return null;
+     }
+-    return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, typeElement, JavaErrorMessages.message("annotation.invalid.annotation.member.type"));
++    String description = JavaErrorMessages.message("annotation.invalid.annotation.member.type");
++    return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(typeElement).descriptionAndTooltip(description).create();
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/6b5ff036b08c4b5e40dccda53d21d5fb8153164e b/d6a734a132aad0acde137e3d6d037b90dfb5d5fd
+index 6b5ff036b0..d6a734a132 100644
+--- a/6b5ff036b08c4b5e40dccda53d21d5fb8153164e
++++ b/d6a734a132aad0acde137e3d6d037b90dfb5d5fd
+@@ -1,7 +1,7 @@
+ @JRubyMethod(name = { "value=", "content=" })
+ public IRubyObject value_set(ThreadContext context, IRubyObject content) {
+     Attr attr = (Attr) node;
+-    attr.setValue(XmlNode.encode_special_chars(context, content).convertToString().asJavaString());
++    attr.setValue((String) XmlNode.encode_special_chars(context, content).toJava(String.class));
+     setContent(content);
+     return content;
+ }
+\ No newline at end of file

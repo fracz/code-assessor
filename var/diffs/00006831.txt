@@ -1,0 +1,20 @@
+diff --git a/9db32c3f4d2232f9ef949b49192370028f4007f5 b/a945d6c55347301cfa191ab76f7200b5d6ada239
+index 9db32c3f4d..a945d6c553 100644
+--- a/9db32c3f4d2232f9ef949b49192370028f4007f5
++++ b/a945d6c55347301cfa191ab76f7200b5d6ada239
+@@ -1,8 +1,10 @@
+ @Nullable
+ public String getPPKPasswordForCvsRoot(String cvsRoot) {
+-    if (myCvsRootToStoringPPKPasswordMap.containsKey(cvsRoot))
+-        return myCvsRootToStoringPPKPasswordMap.get(cvsRoot);
+-    if (myCvsRootToPPKPasswordMap.containsKey(cvsRoot))
++    synchronized (myLock) {
++        String password = myCvsRootToStoringPPKPasswordMap.get(cvsRoot);
++        if (password != null) {
++            return password;
++        }
+         return myCvsRootToPPKPasswordMap.get(cvsRoot);
+-    return null;
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/0a3ef8c013e19ee209e3fccfa872822f09aebb62 b/3e425f97d5889761894129b70601bcce32270a0c
+index 0a3ef8c013..3e425f97d5 100644
+--- a/0a3ef8c013e19ee209e3fccfa872822f09aebb62
++++ b/3e425f97d5889761894129b70601bcce32270a0c
+@@ -1,13 +1,11 @@
+-private boolean processCaches(CacheProcessor<Boolean> p) throws MavenIndexException {
++private boolean processCaches(MavenIndex.DataProcessor<Boolean> p) throws MavenIndexException {
+     try {
+-        for (final IndexData data : myIndicesData.values()) {
+-            if (data.cache == null)
+-                continue;
+-            if (p.process(data.cache))
++        for (MavenIndex each : myIndices) {
++            if (each.process(p))
+                 return true;
+         }
+         return false;
+     } catch (Exception e) {
+         throw new MavenIndexException(e);
+     }
+ }
+\ No newline at end of file

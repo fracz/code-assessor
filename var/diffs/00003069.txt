@@ -1,0 +1,15 @@
+diff --git a/494eedb236c9615e170d4c30af4b52c844adb3ec b/ffb00bae07ed3ab822036fd6ce90472fa2cb6328
+index 494eedb236..ffb00bae07 100644
+--- a/494eedb236c9615e170d4c30af4b52c844adb3ec
++++ b/ffb00bae07ed3ab822036fd6ce90472fa2cb6328
+@@ -1,8 +1,8 @@
+ @Override
+ protected boolean isAvailable(DataContext dataContext) {
+     if (!super.isAvailable(dataContext)) {
+         return false;
+     }
+-    Module module = (Module) dataContext.getData(DataKeys.MODULE.getName());
++    Module module = LangDataKeys.MODULE.getData(dataContext);
+     return GroovyUtils.isSuitableModule(module) && LibrariesUtil.hasGroovySdk(module);
+ }
+\ No newline at end of file

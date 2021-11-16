@@ -1,0 +1,21 @@
+diff --git a/d581d3d0bb0458ee5cda4cc27d296d4dcb672670 b/f1d4b1b02af3e56cd8421814a4146923c90c4d9f
+index d581d3d0bb..f1d4b1b02a 100644
+--- a/d581d3d0bb0458ee5cda4cc27d296d4dcb672670
++++ b/f1d4b1b02af3e56cd8421814a4146923c90c4d9f
+@@ -1,12 +1,14 @@
+ protected void countDatabaseRecords(OClientConnection connection) throws IOException {
+     setDataCommandInfo(connection, "Database count records");
+     if (!isConnectionAlive(connection))
+         return;
++    // OCountRecordsRequest request = new OCountRecordsRequest();
++    OCountRecordsResponse response = new OCountRecordsResponse(connection.getDatabase().getStorage().countRecords());
+     beginResponse();
+     try {
+         sendOk(connection, clientTxId);
+-        channel.writeLong(connection.getDatabase().getStorage().countRecords());
++        response.write(channel, connection.getData().protocolVersion, connection.getData().serializationImpl);
+     } finally {
+         endResponse(connection);
+     }
+ }
+\ No newline at end of file

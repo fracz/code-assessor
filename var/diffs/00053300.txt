@@ -1,0 +1,17 @@
+diff --git a/a8ab59cbff24020dbfbf28eaf5081f23c0a2cdcc b/04ca683db31ba598c9a728d00f106b85c5c708e4
+index a8ab59cbff..04ca683db3 100644
+--- a/a8ab59cbff24020dbfbf28eaf5081f23c0a2cdcc
++++ b/04ca683db31ba598c9a728d00f106b85c5c708e4
+@@ -1,3 +1,9 @@
+-protected SQLStatement parseWith() {
+-    return null;
++private void parseWith() {
++    getLexer().nextToken();
++    do {
++        parseWithQuery();
++        if (getLexer().equalToken(Token.EOF)) {
++            return;
++        }
++    } while (getLexer().equalToken(Token.COMMA));
+ }
+\ No newline at end of file

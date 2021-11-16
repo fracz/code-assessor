@@ -1,0 +1,25 @@
+diff --git a/7a1c6a59c0765940052111d73b3732bceffd9cd7 b/45c1e3f516901d41534814c12a0d65a9c41aea66
+index 7a1c6a59c0..45c1e3f516 100644
+--- a/7a1c6a59c0765940052111d73b3732bceffd9cd7
++++ b/45c1e3f516901d41534814c12a0d65a9c41aea66
+@@ -1,17 +1,15 @@
+ @Override
+ public boolean equals(Object o) {
+     if (this == o)
+         return true;
+     if (!(o instanceof EmptyIcon))
+         return false;
+     final EmptyIcon icon = (EmptyIcon) o;
+-    if (height != icon.height)
++    if (scaleVal(height, Scale.JBUI) != icon.scaleVal(height, Scale.JBUI))
+         return false;
+-    if (width != icon.width)
++    if (scaleVal(width, Scale.JBUI) != icon.scaleVal(width, Scale.JBUI))
+         return false;
+     if (getScale() != icon.getScale())
+         return false;
+-    if (isPreScaled() != icon.isPreScaled())
+-        return false;
+     return true;
+ }
+\ No newline at end of file

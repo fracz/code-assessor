@@ -1,0 +1,29 @@
+diff --git a/84365a9cc0cae508601deb01f71cc9886ee5a7e7 b/5ba4449a6ee8c2ed438f63393a142335298999b9
+index 84365a9cc0..5ba4449a6e 100644
+--- a/84365a9cc0cae508601deb01f71cc9886ee5a7e7
++++ b/5ba4449a6ee8c2ed438f63393a142335298999b9
+@@ -1,12 +1,16 @@
+ @Override
+-public void visit(NodeTraversal traversal, Node node, Node parent) {
+-    if (NodeUtil.isExprCall(node)) {
+-        Node call = node.getFirstChild();
+-        Node name = call.getFirstChild();
+-        String originalName = name.getOriginalQualifiedName();
++public void visit(NodeTraversal traversal, Node n, Node parent) {
++    if (NodeUtil.isExprCall(n)) {
++        Node call = n.getFirstChild();
++        Node callee = call.getFirstChild();
++        String originalName = callee.getOriginalQualifiedName();
+         if ("$jscomp.polyfill".equals(originalName)) {
+-            visitPolyfillDefinition(node, name.getNext().getString());
++            // A polyfill definition looks like this:
++            // $jscomp.polyfill('Array.prototype.includes', ...);
++            String polyfillName = call.getSecondChild().getString();
++            visitPolyfillDefinition(n, polyfillName);
+         }
++    } else if (n.isGetProp() || n.isQualifiedName()) {
++        visitPossiblePolyfillUse(n);
+     }
+-    visitPossiblePolyfillUse(node);
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/4fdb08b915b525ee0c66cf6bdb42b3581c2a0227 b/4ab84da7860be7ed225e4eacca6bc604b831ceda
+index 4fdb08b915..4ab84da786 100644
+--- a/4fdb08b915b525ee0c66cf6bdb42b3581c2a0227
++++ b/4ab84da7860be7ed225e4eacca6bc604b831ceda
+@@ -1,9 +1,4 @@
+-@NotNull
+ @Override
+-protected CreateFileFromTemplateDialog.Builder buildDialog(Project project, PsiDirectory directory) {
+-    final CreateFileFromTemplateDialog.Builder builder = CreateFileFromTemplateDialog.createDialog(project, XmlBundle.message("new.html.file.action"));
+-    builder.addKind("HTML file", StdFileTypes.HTML.getIcon(), FileTemplateManager.INTERNAL_HTML_TEMPLATE_NAME);
+-    builder.addKind("HTML5 file", StdFileTypes.HTML.getIcon(), FileTemplateManager.INTERNAL_HTML5_TEMPLATE_NAME);
+-    builder.addKind("XHTML file", StdFileTypes.HTML.getIcon(), FileTemplateManager.INTERNAL_XHTML_TEMPLATE_NAME);
+-    return builder;
++protected void buildDialog(Project project, PsiDirectory directory, CreateFileFromTemplateDialog.Builder builder) {
++    builder.setTitle(XmlBundle.message("new.html.file.action")).addKind("HTML file", StdFileTypes.HTML.getIcon(), FileTemplateManager.INTERNAL_HTML_TEMPLATE_NAME).addKind("HTML5 file", StdFileTypes.HTML.getIcon(), FileTemplateManager.INTERNAL_HTML5_TEMPLATE_NAME).addKind("XHTML file", StdFileTypes.HTML.getIcon(), FileTemplateManager.INTERNAL_XHTML_TEMPLATE_NAME);
+ }
+\ No newline at end of file

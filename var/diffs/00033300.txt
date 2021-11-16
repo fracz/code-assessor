@@ -1,0 +1,13 @@
+diff --git a/6b085f6db03fa5a95ef667874d463905cf980c3b b/67a6651a61f7d4ee0ea057416739390ef91b2679
+index 6b085f6db0..67a6651a61 100644
+--- a/6b085f6db03fa5a95ef667874d463905cf980c3b
++++ b/67a6651a61f7d4ee0ea057416739390ef91b2679
+@@ -1,3 +1,5 @@
+-public ProjectVersion3 getModel(Class<? extends ProjectVersion3> type, BuildOperationParametersVersion1 operationParameters) {
+-    return getModelInternal(type, new AdaptedOperationParameters(operationParameters));
++// getTheModel method has much convenient interface, e.g. avoids locking to building only models of a specific type
++@Deprecated
++public ProjectVersion3 getModel(Class<? extends ProjectVersion3> type, BuildOperationParametersVersion1 parameters) {
++    return getTheModel(type, parameters);
+ }
+\ No newline at end of file

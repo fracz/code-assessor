@@ -1,0 +1,20 @@
+diff --git a/72ca759a6357072563670f4c92fd5d9defbed860 b/1f573c6f75e4deab7b2c116c26bc45ab1214a8df
+index 72ca759a63..1f573c6f75 100644
+--- a/72ca759a6357072563670f4c92fd5d9defbed860
++++ b/1f573c6f75e4deab7b2c116c26bc45ab1214a8df
+@@ -1,13 +1,13 @@
+ @Override
+ public Boolean visitBindConstant(BindConstantCommand command) {
+     BindTarget<?> target = command.getTarget();
+     if (target == null) {
+-        addError(command.getSource(), ErrorMessage.missingConstantValues());
++        errors.at(command.getSource()).missingConstantValues();
+         return true;
+     }
+     Object value = target.get();
+     validateKey(command.getSource(), command.getKey());
+     ConstantFactory<Object> factory = new ConstantFactory<Object>(value);
+     putBinding(new ConstantBindingImpl<Object>(injector, command.getKey(), command.getSource(), factory, value));
+     return true;
+ }
+\ No newline at end of file

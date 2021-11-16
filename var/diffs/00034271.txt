@@ -1,0 +1,31 @@
+diff --git a/c553d733873ab2f0888802540c81cdbdf962f148 b/f230ab51f7a8c8279b001dd77c948ab89dc652d9
+index c553d73387..f230ab51f7 100644
+--- a/c553d733873ab2f0888802540c81cdbdf962f148
++++ b/f230ab51f7a8c8279b001dd77c948ab89dc652d9
+@@ -1,22 +1,4 @@
+-/**
+- * Get the pending notification data for an account.
+- * See {@link NotificationData}.
+- *
+- * @param account The account to retrieve the pending data for
+- * @param previousUnreadMessageCount The number of currently pending messages, which will be used
+- * if there's no pending data yet. If passed as null, a new instance
+- * won't be created if currently not existent.
+- * @return A pending data instance, or null if one doesn't exist and
+- * previousUnreadMessageCount was passed as null.
+- */
+-private NotificationData getNotificationData(Account account, Integer previousUnreadMessageCount) {
+-    NotificationData data;
+-    synchronized (notificationData) {
+-        data = notificationData.get(account.getAccountNumber());
+-        if (data == null && previousUnreadMessageCount != null) {
+-            data = new NotificationData(previousUnreadMessageCount);
+-            notificationData.put(account.getAccountNumber(), data);
+-        }
+-    }
+-    return data;
++private NotificationsHolder getNotificationData(Account account) {
++    int accountNumber = account.getAccountNumber();
++    return notificationsHolders.get(accountNumber);
+ }
+\ No newline at end of file

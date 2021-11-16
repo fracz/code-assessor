@@ -1,0 +1,21 @@
+diff --git a/9551e0001068150f3682a6cff1c35ca2fe9734b7 b/8423202149f14bca1d9ba92c480b0361c3fbd7e4
+index 9551e00010..8423202149 100644
+--- a/9551e0001068150f3682a6cff1c35ca2fe9734b7
++++ b/8423202149f14bca1d9ba92c480b0361c3fbd7e4
+@@ -1,10 +1,11 @@
+-public void removePhysicalPosition(final long iPosition, OPhysicalPosition iPPosition) {
++public void removePhysicalPosition(final long iPosition) {
+     acquireExclusiveLock();
+     try {
+-        if (entries.set((int) iPosition, null) != null)
+-            // ADD A REMOVED
+-            removed.add(new Integer((int) iPosition));
++        final OPhysicalPosition ppos = entries.get((int) iPosition);
++        // ADD AS HOLE
++        removed.add(ppos);
++        entries.set((int) iPosition, null);
+     } finally {
+         releaseExclusiveLock();
+     }
+ }
+\ No newline at end of file

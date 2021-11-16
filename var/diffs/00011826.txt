@@ -1,0 +1,22 @@
+diff --git a/a11889ded1c76c5abe848a032f66d377d756cce9 b/7b3d938d51ba6b48acc19ae1b476e3b53ffc3d37
+index a11889ded1..7b3d938d51 100644
+--- a/a11889ded1c76c5abe848a032f66d377d756cce9
++++ b/7b3d938d51ba6b48acc19ae1b476e3b53ffc3d37
+@@ -1,7 +1,14 @@
+ @Override
+-public void addListener(final BreakpointsListener listener, Project project) {
+-    BreakpointManager breakpointManager = DebuggerManagerEx.getInstanceEx(getCurrentProject()).getBreakpointManager();
++public void addListener(final BreakpointsListener listener, Project project, Disposable disposable) {
++    BreakpointManager breakpointManager = DebuggerManagerEx.getInstanceEx(project).getBreakpointManager();
+     final MyBreakpointManagerListener listener1 = new MyBreakpointManagerListener(listener, breakpointManager);
+     breakpointManager.addBreakpointManagerListener(listener1);
+     myListeners.add(listener1);
++    Disposer.register(disposable, new Disposable() {
++
++        @Override
++        public void dispose() {
++            removeListener(listener);
++        }
++    });
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/c6ab788361d8a8297fed9b9d46fddb20f608a96e b/56b76c8ce2cb6eea5ea26852c7b67b63337900b4
+index c6ab788361..56b76c8ce2 100644
+--- a/c6ab788361d8a8297fed9b9d46fddb20f608a96e
++++ b/56b76c8ce2cb6eea5ea26852c7b67b63337900b4
+@@ -1,11 +1,11 @@
+ @Override
+ public boolean performAction() {
+     try {
+         saveState(DBeaverCore.getGlobalPreferenceStore());
+         NewSearchUI.runQueryInBackground(createQuery());
+     } catch (DBException e) {
+-        UIUtils.showErrorDialog(getShell(), "Search error", "Can't perform search", e);
++        DBUserInterface.getInstance().showError("Search error", "Can't perform search", e);
+         return false;
+     }
+     return true;
+ }
+\ No newline at end of file

@@ -1,0 +1,25 @@
+diff --git a/e7c07ac8b902ffa35ead5ace93580e4ede97971b b/4f5f9bb8f443e071d26fdf17360ea02d32d8c5f1
+index e7c07ac8b9..4f5f9bb8f4 100644
+--- a/e7c07ac8b902ffa35ead5ace93580e4ede97971b
++++ b/4f5f9bb8f443e071d26fdf17360ea02d32d8c5f1
+@@ -1,18 +1,17 @@
+ /**
+  * Opens the Facebook login dialog.
+  */
+ public void login() {
+     final Activity activity = LoginHandler.this.getActivity();
+     activity.runOnUiThread(new Runnable() {
+
+         public void run() {
+             // We need to temporarily remove the app's WebView
+             // instance because Android apparently doesn't support
+             // multiple WebView instances in the same app.
+             dispatcher.hideWebView();
+             final Facebook fb = new Facebook();
+-            fb.addLoginListener(new LoginListener(fb));
+-            fb.authorize(getActivity(), App.FB_APP_ID, PERMISSIONS);
++            fb.authorize(getActivity(), App.FB_APP_ID, PERMISSIONS, new AppLoginListener(fb));
+         }
+     });
+ }
+\ No newline at end of file

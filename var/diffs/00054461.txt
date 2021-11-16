@@ -1,0 +1,16 @@
+diff --git a/89636418122ca6f8d828afa1a9e547c05664c00f b/fe10b92e138f625a4dd508c982ef4f71ef35b5b5
+index 8963641812..fe10b92e13 100644
+--- a/89636418122ca6f8d828afa1a9e547c05664c00f
++++ b/fe10b92e138f625a4dd508c982ef4f71ef35b5b5
+@@ -1,7 +1,9 @@
+ @Test
+ public void parseWithParameter() {
+-    MySqlStatementParser statementParser = new MySqlStatementParser(createShardingRule(), Arrays.<Object>asList(2, 10, 1, 10, 1, 3, 10, 5, 20, 10), "UPDATE TABLE_XXX AS xxx SET field1=field1+? WHERE field4<? AND xxx.field1=? AND field5>? AND xxx.field2 IN (?, ?) AND field6<=? AND xxx.field3 BETWEEN ? AND ? AND field7>=?");
++    ShardingRule shardingRule = createShardingRule();
++    List<Object> parameters = Arrays.<Object>asList(2, 10, 1, 10, 1, 3, 10, 5, 20, 10);
++    SQLStatementParser statementParser = new SQLStatementParser(DatabaseType.MySQL, shardingRule, parameters, new MySqlExprParser(shardingRule, parameters, "UPDATE TABLE_XXX AS xxx SET field1=field1+? WHERE field4<? AND xxx.field1=? AND field5>? AND xxx.field2 IN (?, ?) AND field6<=? AND xxx.field3 BETWEEN ? AND ? AND field7>=?"));
+     UpdateSQLContext sqlContext = (UpdateSQLContext) statementParser.parseStatement();
+     assertUpdateStatement(sqlContext);
+     assertThat(sqlContext.toSqlBuilder().toString(), is("UPDATE [Token(TABLE_XXX)] AS xxx SET field1=field1+? " + "WHERE field4<? AND xxx.field1=? AND field5>? AND xxx.field2 IN (?, ?) AND field6<=? AND xxx.field3 BETWEEN ? AND ? AND field7>=?"));
+ }
+\ No newline at end of file

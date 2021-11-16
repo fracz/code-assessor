@@ -1,0 +1,13 @@
+diff --git a/7ec97b0d9b0ee2be92d9b5b9ffe4c67277fd3f23 b/053f1a5f17a8c54103bc10c4e08a8029ce8d9654
+index 7ec97b0d9b..053f1a5f17 100644
+--- a/7ec97b0d9b0ee2be92d9b5b9ffe4c67277fd3f23
++++ b/053f1a5f17a8c54103bc10c4e08a8029ce8d9654
+@@ -1,4 +1,6 @@
+ @Override
+ public InternalFacet buildFacet(String facetName) {
+-    return new InternalFullDateHistogramFacet(facetName, comparatorType, entries, cacheRecycler);
++    ArrayList<InternalFullDateHistogramFacet.FullEntry> entries1 = new ArrayList<InternalFullDateHistogramFacet.FullEntry>(entries.v().valueCollection());
++    entries.release();
++    return new InternalFullDateHistogramFacet(facetName, comparatorType, entries1);
+ }
+\ No newline at end of file

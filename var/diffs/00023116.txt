@@ -1,0 +1,16 @@
+diff --git a/c19b62c2ba5c41caf0f6eb321a3e8b983821692c b/a6aa386e13ec7902cb7c2cfb53491b77a99c6985
+index c19b62c2ba..a6aa386e13 100644
+--- a/c19b62c2ba5c41caf0f6eb321a3e8b983821692c
++++ b/a6aa386e13ec7902cb7c2cfb53491b77a99c6985
+@@ -1,8 +1,7 @@
+-ICancellationSignal cancelPrintJob(int printJobId) {
++void cancelPrintJob(int printJobId) {
+     try {
+         mService.cancelPrintJob(printJobId, mAppId, mUserId);
+     } catch (RemoteException re) {
+-        Log.e(LOG_TAG, "Error cancleing a print job:" + printJobId, re);
++        Log.e(LOG_TAG, "Error cancleing a print job: " + printJobId, re);
+     }
+-    return null;
+ }
+\ No newline at end of file

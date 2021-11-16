@@ -1,0 +1,18 @@
+diff --git a/2ede64d18e151383ed299533c7854c6461864dfb b/f643837f622361ba3486f947f5ff5f8233b6c35a
+index 2ede64d18e..f643837f62 100644
+--- a/2ede64d18e151383ed299533c7854c6461864dfb
++++ b/f643837f622361ba3486f947f5ff5f8233b6c35a
+@@ -1,11 +1,11 @@
+ @Override
+ public boolean containsArray() {
+-    ObjectType arrayType = commonTypes.getArrayInstance().getObjTypeIfSingletonObj();
++    ObjectType arrayType = this.commonTypes.getArrayInstance().getObjTypeIfSingletonObj();
+     Preconditions.checkNotNull(arrayType);
+     for (ObjectType objType : this.getObjs()) {
+         if (objType.isSubtypeOf(arrayType, SubtypeCache.create())) {
+             return true;
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

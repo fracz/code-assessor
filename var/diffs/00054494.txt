@@ -1,0 +1,16 @@
+diff --git a/5e34a9b42704f64dd94257e8cc5cb463d3e4a477 b/af32a6ee3d68df05cd04bb3791dbeedd9d6ee940
+index 5e34a9b427..af32a6ee3d 100644
+--- a/5e34a9b42704f64dd94257e8cc5cb463d3e4a477
++++ b/af32a6ee3d68df05cd04bb3791dbeedd9d6ee940
+@@ -1,9 +1,9 @@
+ private SelectItem parseStarSelectItem() {
++    containStar = true;
+     if (!containSubquery) {
+         containStarForOutQuery = true;
+     }
+     sqlParser.getLexer().nextToken();
+-    selectStatement.setContainStar(true);
+     sqlParser.parseAlias();
+     return new StarSelectItem(Optional.<String>absent());
+ }
+\ No newline at end of file

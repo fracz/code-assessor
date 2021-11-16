@@ -1,0 +1,12 @@
+diff --git a/c2bdbc73a4cf585b767e6c0279397e7278d3e437 b/48d61c6a45c704821127b3a90c8a1fbafbd1e266
+index c2bdbc73a4..48d61c6a45 100644
+--- a/c2bdbc73a4cf585b767e6c0279397e7278d3e437
++++ b/48d61c6a45c704821127b3a90c8a1fbafbd1e266
+@@ -1,4 +1,4 @@
+ @Override
+-protected Set<TokenType> getSkippedKeywordsBetweenTableAndValues() {
+-    return Sets.<TokenType>newHashSet(MySQLKeyword.PARTITION);
++protected Keyword[] getSkippedKeywordsBetweenTableAndValues() {
++    return new Keyword[] { MySQLKeyword.PARTITION };
+ }
+\ No newline at end of file

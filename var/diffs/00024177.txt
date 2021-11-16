@@ -1,0 +1,18 @@
+diff --git a/492934aae976a77668a2442e05aab1bcd4d74b10 b/62b32066280d8d3fd2fb23241fc89343e21cf242
+index 492934aae9..62b3206628 100644
+--- a/492934aae976a77668a2442e05aab1bcd4d74b10
++++ b/62b32066280d8d3fd2fb23241fc89343e21cf242
+@@ -1,7 +1,7 @@
+-public ColumnFamily makeUpdates(ColumnFamily current) throws InvalidRequestException {
+-    ColumnFamily cf = ArrayBackedSortedColumns.factory.create(cfm);
+-    for (RowUpdate upd : updates) upd.applyUpdates(current, cf);
++public PartitionUpdate makeUpdates(FilteredPartition current) throws InvalidRequestException {
++    PartitionUpdate update = new PartitionUpdate(cfm, key, updatedColumns(), conditions.size());
++    for (RowUpdate upd : updates) upd.applyUpdates(current, update);
+     if (isBatch)
+-        BatchStatement.verifyBatchSize(Collections.singleton(cf));
+-    return cf;
++        BatchStatement.verifyBatchSize(Collections.singleton(update));
++    return update;
+ }
+\ No newline at end of file

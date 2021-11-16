@@ -1,0 +1,13 @@
+diff --git a/0722d472fdf94c04e443911872b038b5fd15d6b4 b/1e88e6313395098b40a5d4bd894b448e4c225429
+index 0722d472fd..1e88e63133 100644
+--- a/0722d472fdf94c04e443911872b038b5fd15d6b4
++++ b/1e88e6313395098b40a5d4bd894b448e4c225429
+@@ -1,5 +1,5 @@
+ public FaunusGraph retainEdgeLabels(final String... labels) throws IOException {
+-    this.addMapSequenceClass(RetainEdgeLabels.Map.class.getName());
+-    this.mapSequenceConfiguration.setStrings(RetainEdgeLabels.LABELS + "-" + this.currentSequenceStep++, labels);
++    this.mapSequenceConfiguration.setStrings(RetainEdgeLabels.LABELS + "-" + this.mapSequenceClasses.size(), labels);
++    this.mapSequenceClasses.add(RetainEdgeLabels.Map.class);
+     return this;
+ }
+\ No newline at end of file

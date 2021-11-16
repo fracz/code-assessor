@@ -1,0 +1,20 @@
+diff --git a/295db064d8b5d82c321e13b5404b153751e77db5 b/9d689cb8f436b47761f598684db73c83b321d0b9
+index 295db064d8..9d689cb8f4 100644
+--- a/295db064d8b5d82c321e13b5404b153751e77db5
++++ b/9d689cb8f436b47761f598684db73c83b321d0b9
+@@ -1,13 +1,13 @@
+ /**
+  * Globals must be followed by a target.
+  */
+ @Test
+ public void testGlobalsWithoutTarget() {
+-    XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("invalidProxyFactory.xml", getClass()));
++    XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource(INVALID_CONTEXT, CLASS));
+     try {
+         factory.getBean("globalsWithoutTarget");
+         fail("Should require target name");
+     } catch (BeanCreationException ex) {
+         assertTrue(ex.getCause() instanceof AopConfigException);
+     }
+ }
+\ No newline at end of file

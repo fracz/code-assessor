@@ -1,0 +1,23 @@
+diff --git a/f23388443de0bd4d83fe2c7f7b9e65b1166bae6b b/8d0f9f2a34976d09f98928e08577084f1dd0ea21
+index f23388443d..8d0f9f2a34 100644
+--- a/f23388443de0bd4d83fe2c7f7b9e65b1166bae6b
++++ b/8d0f9f2a34976d09f98928e08577084f1dd0ea21
+@@ -1,10 +1,10 @@
+-public int findInVertex(final OGraphVertex iVertexDocument) {
+-    final List<ODocument> docs = document.field(OGraphDatabase.VERTEX_FIELD_IN_EDGES);
++public ODocument findInVertex(final OGraphVertex iVertexDocument) {
++    final Set<ODocument> docs = document.field(OGraphDatabase.VERTEX_FIELD_IN_EDGES);
+     if (docs == null || docs.size() == 0)
+-        return -1;
+-    for (int i = 0; i < docs.size(); ++i) {
+-        if (docs.get(i).field(OGraphDatabase.EDGE_FIELD_IN).equals(iVertexDocument.getDocument()))
+-            return i;
++        return null;
++    for (ODocument d : docs) {
++        if (d.field(OGraphDatabase.EDGE_FIELD_IN).equals(iVertexDocument.getDocument()))
++            return d;
+     }
+-    return -1;
++    return null;
+ }
+\ No newline at end of file

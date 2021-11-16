@@ -1,0 +1,24 @@
+diff --git a/37f1d51e19c3d42a795e4508890644af32837940 b/0d0cb8e9f71c032aecae92bcf1cf259ece774978
+index 37f1d51e19..0d0cb8e9f7 100644
+--- a/37f1d51e19c3d42a795e4508890644af32837940
++++ b/0d0cb8e9f71c032aecae92bcf1cf259ece774978
+@@ -1,16 +1,11 @@
+ @Test
+ public void testResponseBodyWriteStringNonChunked() {
+     server.requestHandler(req -> {
+-        try {
+-            req.response().write("foo");
+-            fail("Should throw exception");
+-        } catch (IllegalStateException e) {
+-            // OK
+-            testComplete();
+-        }
++        assertIllegalStateException(() -> req.response().write("foo"));
++        testComplete();
+     });
+     server.listen(onSuccess(s -> {
+         client.post(RequestOptions.options().setPort(DEFAULT_HTTP_PORT).setRequestURI(DEFAULT_TEST_URI), noOpHandler()).end();
+     }));
+     await();
+ }
+\ No newline at end of file

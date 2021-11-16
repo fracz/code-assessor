@@ -1,0 +1,18 @@
+diff --git a/a08173387355bf54d487d3583fcfb12d5ec6c536 b/6ee9c10968ce717b4b941f4d6d5bf4208aebec3c
+index a081733873..6ee9c10968 100644
+--- a/a08173387355bf54d487d3583fcfb12d5ec6c536
++++ b/6ee9c10968ce717b4b941f4d6d5bf4208aebec3c
+@@ -1,11 +1,8 @@
+ public void testInjectNullIntoNotNullableField() {
+     try {
+         createInjector().getInstance(FooField.class);
+         fail("Injecting null should fail with an error");
+     } catch (ProvisionException expected) {
+-        NullPointerException cause = (NullPointerException) expected.getCause();
+-        assertContains(cause.getMessage(), "null returned by binding at");
+-        assertContains(cause.getMessage(), "FooField.foo");
+-        assertContains(cause.getMessage(), "is not @Nullable");
++        assertContains(expected.getMessage(), "null returned by binding at " + getClass().getName(), " but field " + FooField.class.getName() + ".foo is not @Nullable");
+     }
+ }
+\ No newline at end of file

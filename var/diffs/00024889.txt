@@ -1,0 +1,14 @@
+diff --git a/6dbedacb1190c89e309087815c3038e9b73f900d b/1f12f9f88776c1f5595aaa8ba51f26e169ec69f6
+index 6dbedacb11..1f12f9f887 100644
+--- a/6dbedacb1190c89e309087815c3038e9b73f900d
++++ b/1f12f9f88776c1f5595aaa8ba51f26e169ec69f6
+@@ -1,7 +1,7 @@
+ private void addKeyToTuple(Tuple tuple, ByteBuffer key, CfDef cfDef, AbstractType comparator) throws IOException {
+     if (comparator instanceof AbstractCompositeType) {
+         setTupleValue(tuple, 0, composeComposite((AbstractCompositeType) comparator, key));
+     } else {
+-        setTupleValue(tuple, 0, getDefaultMarshallers(cfDef).get(2).compose(key));
++        setTupleValue(tuple, 0, getDefaultMarshallers(cfDef).get(MarshallerType.KEY_VALIDATOR).compose(key));
+     }
+ }
+\ No newline at end of file

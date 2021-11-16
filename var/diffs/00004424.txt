@@ -1,0 +1,34 @@
+diff --git a/428803f2302811c0f01398e6bb4d7b65e3433b84 b/6de98602923b97275252ad4dce7bfa0030315403
+index 428803f230..6de9860292 100644
+--- a/428803f2302811c0f01398e6bb4d7b65e3433b84
++++ b/6de98602923b97275252ad4dce7bfa0030315403
+@@ -1,21 +1,19 @@
+ public boolean doRunCycle() {
+     MavenProjectsProcessorTask task;
+     try {
+-        task = myQueue.poll(100, TimeUnit.MILLISECONDS);
++        task = myQueue.poll(QUEUE_POLL_INTERVAL, TimeUnit.MILLISECONDS);
+         fireQueueChanged(myQueue.size());
+     } catch (InterruptedException e) {
+         throw new RuntimeException(e);
+     }
+     if (isStopped)
+         return false;
+-    if (task == null || task == STOP_TASK)
+-        return true;
+-    try {
+-        doPerform(task);
+-    } catch (MavenProcessCanceledException e) {
+-        return false;
+-    } catch (Throwable e) {
+-        MavenLog.LOG.error(e);
++    if (task != null) {
++        try {
++            doPerform(task);
++        } catch (Throwable e) {
++            MavenLog.LOG.error(e);
++        }
+     }
+     return true;
+ }
+\ No newline at end of file

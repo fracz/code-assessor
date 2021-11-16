@@ -1,0 +1,31 @@
+diff --git a/df9a9018c2b9ddb8b90c15ff6fd4b443bb108182 b/7aa79b20c9a759af35ac82ad6806d595fa56da35
+index df9a9018c2..7aa79b20c9 100644
+--- a/df9a9018c2b9ddb8b90c15ff6fd4b443bb108182
++++ b/7aa79b20c9a759af35ac82ad6806d595fa56da35
+@@ -1,22 +1,13 @@
+ @Override
+ public void loadSettings() {
+-    DBPConnectionInfo connectionInfo = site.getConnectionInfo();
+-    if (tunnelButton != null) {
+-        tunnelButton.setFont(getFont());
+-        for (DBWHandlerConfiguration config : connectionInfo.getDeclaredHandlers()) {
+-            if (config.isEnabled()) {
+-                tunnelButton.setFont(boldFont);
+-                break;
+-            }
+-        }
+-    }
++    DataSourceDescriptor dataSource = site.getActiveDataSource();
+     if (eventsButton != null) {
+         eventsButton.setFont(getFont());
+-        for (DBPConnectionEventType eventType : connectionInfo.getDeclaredEvents()) {
+-            if (connectionInfo.getEvent(eventType).isEnabled()) {
++        for (DBPConnectionEventType eventType : dataSource.getConnectionInfo().getDeclaredEvents()) {
++            if (dataSource.getConnectionInfo().getEvent(eventType).isEnabled()) {
+                 eventsButton.setFont(boldFont);
+                 break;
+             }
+         }
+     }
+ }
+\ No newline at end of file

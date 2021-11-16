@@ -1,0 +1,14 @@
+diff --git a/ffd00934fd2d308e04a514161a766747ca8d24b1 b/a2233ad8afda0e026bbb64e0f76185adf23eb042
+index ffd00934fd..a2233ad8af 100644
+--- a/ffd00934fd2d308e04a514161a766747ca8d24b1
++++ b/a2233ad8afda0e026bbb64e0f76185adf23eb042
+@@ -1,7 +1,7 @@
+ public boolean subsumes(SliceQuery oth) {
+     Preconditions.checkNotNull(oth);
+     if (this == oth)
+         return true;
+     else
+-        return limit >= oth.limit && sliceStart.compareTo(oth.sliceStart) <= 0 && sliceEnd.compareTo(oth.sliceEnd) >= 0;
++        return getLimit() >= oth.getLimit() && sliceStart.compareTo(oth.sliceStart) <= 0 && sliceEnd.compareTo(oth.sliceEnd) >= 0;
+ }
+\ No newline at end of file

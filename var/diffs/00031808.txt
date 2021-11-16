@@ -1,0 +1,23 @@
+diff --git a/00f246416d51f0510ef10561e607d5260b2bc0b7 b/7ffada92d958f4a8eab6040ab591a80147259e00
+index 00f246416d..7ffada92d9 100644
+--- a/00f246416d51f0510ef10561e607d5260b2bc0b7
++++ b/7ffada92d958f4a8eab6040ab591a80147259e00
+@@ -1,3 +1,16 @@
+ private AgentController createAgentController() {
+-    return new AgentController(loopServer, artifactsManipulator, sslInfrastructureService, agentRegistry, agentUpgradeService, subprocessLogger, systemEnvironment, pluginManager, packageAsRepositoryExtension, scmExtension, taskExtension, agentWebsocketService, httpService);
++    return new AgentController(sslInfrastructureService, systemEnvironment, agentRegistry, pluginManager, subprocessLogger, agentUpgradeService) {
++
++        @Override
++        public void ping() {
++        }
++
++        @Override
++        public void execute() {
++        }
++
++        @Override
++        protected void work() throws Exception {
++        }
++    };
+ }
+\ No newline at end of file

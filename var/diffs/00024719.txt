@@ -1,0 +1,21 @@
+diff --git a/adef1cf42710fa33341ee57a60d80b8806964eac b/c874f27deac24863d0ffedbd44bc7fd96b784672
+index adef1cf427..c874f27dea 100644
+--- a/adef1cf42710fa33341ee57a60d80b8806964eac
++++ b/c874f27deac24863d0ffedbd44bc7fd96b784672
+@@ -1,11 +1,7 @@
+-protected void fillCF(ColumnFamilyStore cfs, int rowsPerSSTable) {
+-    for (int i = 0; i < rowsPerSSTable; i++) {
+-        String key = String.valueOf(i);
+-        ColumnFamily cf = ArrayBackedSortedColumns.factory.create(KEYSPACE, CF);
+-        cf.addColumn(column("c1", "1", 1L));
+-        cf.addColumn(column("c2", "2", 1L));
+-        Mutation rm = new Mutation(KEYSPACE, ByteBufferUtil.bytes(key), cf);
+-        rm.applyUnsafe();
++protected void fillCF(ColumnFamilyStore cfs, int partitionsPerSSTable) {
++    for (int i = 0; i < partitionsPerSSTable; i++) {
++        PartitionUpdate update = UpdateBuilder.create(cfs.metadata, String.valueOf(i)).newRow("r1").add("val", "1").newRow("r1").add("val", "1").build();
++        new Mutation(update).applyUnsafe();
+     }
+     cfs.forceBlockingFlush();
+ }
+\ No newline at end of file

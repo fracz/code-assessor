@@ -1,0 +1,13 @@
+diff --git a/be5484c2a2fd3ad84d94dd479880b400eb890dd0 b/3141fd139f832e7e95ce41ab2a343a16546f108c
+index be5484c2a2..3141fd139f 100644
+--- a/be5484c2a2fd3ad84d94dd479880b400eb890dd0
++++ b/3141fd139f832e7e95ce41ab2a343a16546f108c
+@@ -1,5 +1,5 @@
+ @Override
+-public UniquenessConstraint uniquePropertyConstraintCreate(int labelId, int propertyKeyId) throws CreateConstraintFailureException, AlreadyConstrainedException, AlreadyIndexedException {
++public UniquenessConstraint uniquePropertyConstraintCreate(NodePropertyDescriptor descriptor) throws CreateConstraintFailureException, AlreadyConstrainedException, AlreadyIndexedException {
+     statement.assertOpen();
+-    return schemaWrite().uniquePropertyConstraintCreate(statement, labelId, propertyKeyId);
++    return schemaWrite().uniquePropertyConstraintCreate(statement, descriptor);
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/42ff746fe3396022789fe19737b3e881fb2b4b06 b/a41cca5430a0eeded14697346d6b66fb40130aa6
+index 42ff746fe3..a41cca5430 100644
+--- a/42ff746fe3396022789fe19737b3e881fb2b4b06
++++ b/a41cca5430a0eeded14697346d6b66fb40130aa6
+@@ -1,11 +1,11 @@
+ public boolean isAfterSelected(Crumb crumb) {
+-    if (last == null || isSelected(last))
+-        return false;
+-    for (Crumb current : getCrumbs()) {
+-        if (current == crumb)
+-            return false;
+-        if (isSelected(current))
+-            break;
++    for (CrumbView view : views) {
++        if (view.crumb != null) {
++            if (view.crumb == crumb)
++                return false;
++            if (isSelected(view.crumb))
++                break;
++        }
+     }
+     return true;
+ }
+\ No newline at end of file

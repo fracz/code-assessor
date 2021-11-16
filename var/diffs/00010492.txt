@@ -1,0 +1,13 @@
+diff --git a/45954f7a7eb183915c7db97459cc862eea317d84 b/4ac0cdf2c5ccea6d7bdd93224c127d1a98f982e4
+index 45954f7a7e..4ac0cdf2c5 100644
+--- a/45954f7a7eb183915c7db97459cc862eea317d84
++++ b/4ac0cdf2c5ccea6d7bdd93224c127d1a98f982e4
+@@ -1,4 +1,5 @@
+ @Override
+-public void setBek(int bekSortType) {
+-    getState().BEK_SORT_TYPE = bekSortType;
++public void setBek(PermanentGraph.SortType bekSortType) {
++    getState().BEK_SORT_TYPE = bekSortType.ordinal();
++    myListeners.forEach(VcsLogUiPropertiesListener::onBekChanged);
+ }
+\ No newline at end of file

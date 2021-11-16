@@ -1,0 +1,21 @@
+diff --git a/f24550e2c5bb8a01f5e4bfaeaecaf271d2317b3b b/052f688cabfe377d1317945630be294d6c89e104
+index f24550e2c5..052f688cab 100644
+--- a/f24550e2c5bb8a01f5e4bfaeaecaf271d2317b3b
++++ b/052f688cabfe377d1317945630be294d6c89e104
+@@ -1,13 +1,13 @@
+ public void mouseDragged(MouseEvent e) {
+     if (myResizeLine != -1) {
+         final ActiveDecorationLayer layer = myEditor.getActiveDecorationLayer();
+-        Point pnt = SwingUtilities.convertPoint(GridCaptionPanel.this, e.getPoint(), layer);
++        Point pnt = e.getPoint();
+         Rectangle rc;
+         if (myIsRow) {
+             rc = new Rectangle(0, pnt.y, layer.getSize().width, 1);
+         } else {
+             rc = new Rectangle(pnt.x, 0, 1, layer.getSize().height);
+         }
+-        layer.putFeedback(rc, myFeedbackPainter);
++        layer.putFeedback(GridCaptionPanel.this, rc, myFeedbackPainter);
+     }
+ }
+\ No newline at end of file

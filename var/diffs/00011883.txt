@@ -1,0 +1,20 @@
+diff --git a/6527a9935b91483b22b6331b294031466137ac0d b/ac4595c02ea088981bf7bd520d6447d7704a70b3
+index 6527a9935b..ac4595c02e 100644
+--- a/6527a9935b91483b22b6331b294031466137ac0d
++++ b/ac4595c02ea088981bf7bd520d6447d7704a70b3
+@@ -1,8 +1,10 @@
+ public MyResult step(DiffChainContext context) {
+-    final DiffRequestPresentable request = initRequest();
+-    if (request == null) {
+-        return new MyResult(null, DiffPresentationReturnValue.removeFromList, "Can not find context for '" + getPathPresentation() + "'");
++    final DiffRequestPresentable request;
++    try {
++        request = initRequest();
++        myStepResult = request.step(context);
++    } catch (VcsException e) {
++        myStepResult = new MyResult(null, DiffPresentationReturnValue.quit);
+     }
+-    myStepResult = request.step(context);
+     return myStepResult;
+ }
+\ No newline at end of file

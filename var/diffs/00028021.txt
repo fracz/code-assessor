@@ -1,0 +1,20 @@
+diff --git a/abe8f39446e6b2919f3aaca49c9f1ced0e70b997 b/0a0f7d56ce704329c55dc3e06ab9632abd0348ad
+index abe8f39446..0a0f7d56ce 100644
+--- a/abe8f39446e6b2919f3aaca49c9f1ced0e70b997
++++ b/0a0f7d56ce704329c55dc3e06ab9632abd0348ad
+@@ -1,11 +1,11 @@
+ @Test(dataProvider = "GitConnectionFactory", dataProviderClass = GitConnectionFactoryProvider.class, expectedExceptions = GitException.class, expectedExceptionsMessageRegExp = "fatal: Path 'dummyFile' does not exist in 'HEAD'\n")
+ public void testShowContentOfNotExistFile(GitConnectionFactory connectionFactory) throws Exception {
+     // given
+     // create new repository
+     GitConnection connection = connectToInitializedGitRepository(connectionFactory, repository);
+     addFile(connection, "newfile", "new file content");
+-    connection.add(newDto(AddRequest.class).withFilepattern(Arrays.asList(".")));
+-    connection.commit(newDto(CommitRequest.class).withMessage("Test commit"));
++    connection.add(AddParams.create(singletonList(".")));
++    connection.commit(CommitParams.create("Test commit"));
+     // when
+-    connection.showFileContent(newDto(ShowFileContentRequest.class).withFile("dummyFile").withVersion("HEAD"));
++    connection.showFileContent("dummyFile", "HEAD");
+ }
+\ No newline at end of file

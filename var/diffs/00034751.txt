@@ -1,0 +1,17 @@
+diff --git a/17fb2bd437e0fd2ead8c59baa45890a3a5017100 b/ecc44cceaa855e1e2bcfb0d347fe762e62f13f15
+index 17fb2bd437..ecc44cceaa 100644
+--- a/17fb2bd437e0fd2ead8c59baa45890a3a5017100
++++ b/ecc44cceaa855e1e2bcfb0d347fe762e62f13f15
+@@ -1,10 +1,9 @@
+ public void close() {
+-    closed = true;
+     try {
+         zop.close();
+     } catch (IOException e) {
+         report(e);
+         return;
+     }
+-    write(new ByteBufferList());
++    write(new ByteBufferList(), true);
+ }
+\ No newline at end of file

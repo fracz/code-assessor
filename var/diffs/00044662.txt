@@ -1,0 +1,21 @@
+diff --git a/1131b43e1a6b18570fc6d46f62b0c48417c849d3 b/110ae67ecfb574541d28fc82c1b19bb968280cca
+index 1131b43e1a..110ae67ecf 100644
+--- a/1131b43e1a6b18570fc6d46f62b0c48417c849d3
++++ b/110ae67ecfb574541d28fc82c1b19bb968280cca
+@@ -1,14 +1,14 @@
+ @Test(dependsOnMethods = "update")
+ public void testUpdate() {
+     database.open("admin", "admin");
+     int i = 0;
+     for (ODocument rec : database.browseCluster("Account")) {
+         if (i % 2 == 0)
+             Assert.assertEquals(rec.field("location"), "Spain");
+         else
+             Assert.assertEquals(rec.field("location"), "Italy");
+-        Assert.assertEquals(Float.parseFloat((String) rec.field("price")), i + 100f);
++        Assert.assertEquals(((Integer) rec.field("price")).intValue(), i + 100);
+         i++;
+     }
+     database.close();
+ }
+\ No newline at end of file

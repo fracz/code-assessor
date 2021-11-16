@@ -1,0 +1,16 @@
+diff --git a/7a63e0d1af55bee01496fb4acbe538361a52993e b/6ad36b927c4d777e843ccbfda8aca509533316be
+index 7a63e0d1af..6ad36b927c 100644
+--- a/7a63e0d1af55bee01496fb4acbe538361a52993e
++++ b/6ad36b927c4d777e843ccbfda8aca509533316be
+@@ -1,9 +1,9 @@
+ public static <T> QueryRunner<T> makeClosingQueryRunner(final QueryRunner<T> runner, final Closeable closeable) {
+     return new QueryRunner<T>() {
+
+         @Override
+         public Sequence<T> run(Query<T> query, Map<String, Object> responseContext) {
+-            return new ResourceClosingSequence<>(runner.run(query, responseContext), closeable);
++            return Sequences.withBaggage(runner.run(query, responseContext), closeable);
+         }
+     };
+ }
+\ No newline at end of file

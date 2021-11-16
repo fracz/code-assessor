@@ -1,0 +1,16 @@
+diff --git a/e83f2505b603ee30dcbe1ac13ddaca7a3b9a4546 b/364b73de53b418b7705966340a1676fe7e455ad8
+index e83f2505b6..364b73de53 100644
+--- a/e83f2505b603ee30dcbe1ac13ddaca7a3b9a4546
++++ b/364b73de53b418b7705966340a1676fe7e455ad8
+@@ -1,8 +1,8 @@
+-public byte[] toStream(final ODatabaseRecord iDatabase, final ORecordInternal<?> iRecord, boolean iOnlyDelta) {
++public byte[] toStream(final ORecordInternal<?> iRecord, boolean iOnlyDelta) {
+     final long timer = OProfiler.getInstance().startChrono();
+     try {
+-        return OBinaryProtocol.string2bytes(toString(iRecord, new StringBuilder(), null, iDatabase, OSerializationThreadLocal.INSTANCE.get(), iOnlyDelta).toString());
++        return OBinaryProtocol.string2bytes(toString(iRecord, new StringBuilder(), null, null, OSerializationThreadLocal.INSTANCE.get(), iOnlyDelta).toString());
+     } finally {
+         OProfiler.getInstance().stopChrono("ORecordSerializerStringAbstract.toStream", timer);
+     }
+ }
+\ No newline at end of file

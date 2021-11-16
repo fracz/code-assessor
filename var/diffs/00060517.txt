@@ -1,0 +1,22 @@
+diff --git a/5bd0f77ff34b8b5b4b494781b74a8f3637778f71 b/2075bebb9887cf58231d21fb7efa927ef2c3941d
+index 5bd0f77ff3..2075bebb98 100644
+--- a/5bd0f77ff34b8b5b4b494781b74a8f3637778f71
++++ b/2075bebb9887cf58231d21fb7efa927ef2c3941d
+@@ -1,15 +1,13 @@
+ private BrowserLauncher getBrowserLauncher() {
+     if (!supported) {
+         return null;
+     }
+     if (launcher == null) {
+         try {
+             launcher = new BrowserLauncher();
+-        } catch (BrowserLaunchingInitializingException e) {
+-            supported = false;
+-        } catch (UnsupportedOperatingSystemException e) {
++        } catch (BrowserLaunchingInitializingException | UnsupportedOperatingSystemException e) {
+             supported = false;
+         }
+     }
+     return launcher;
+ }
+\ No newline at end of file

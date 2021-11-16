@@ -1,0 +1,23 @@
+diff --git a/4a4fdbbd461bb5d1e9740fab43eb943154145e64 b/a3d11f65828dcc07ca7910efc320c4b53bf0fd47
+index 4a4fdbbd46..a3d11f6582 100644
+--- a/4a4fdbbd461bb5d1e9740fab43eb943154145e64
++++ b/a3d11f65828dcc07ca7910efc320c4b53bf0fd47
+@@ -1,5 +1,15 @@
+ @Override
+ public IndexSearcher searcher() throws IOException {
+-    OLuceneIndexEngine indexEngine = (OLuceneIndexEngine) storage.getIndexEngine(indexId);
+-    return indexEngine.searcher();
++    return storage.callIndexEngine(false, false, indexId, new OIndexEngineCallback<IndexSearcher>() {
++
++        @Override
++        public IndexSearcher callEngine(OIndexEngine engine) {
++            OLuceneIndexEngine indexEngine = (OLuceneIndexEngine) engine;
++            try {
++                return indexEngine.searcher();
++            } catch (IOException e) {
++                throw new OIndexException("Cannot get searcher from index " + getName(), e);
++            }
++        }
++    });
+ }
+\ No newline at end of file

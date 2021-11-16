@@ -1,0 +1,28 @@
+diff --git a/6ce73393c044bfa670fa5c92bdc834ea33a5c795 b/6acfeefbfe521442901a5a9eb49b2d9adfc3d4d4
+index 6ce73393c0..6acfeefbfe 100644
+--- a/6ce73393c044bfa670fa5c92bdc834ea33a5c795
++++ b/6acfeefbfe521442901a5a9eb49b2d9adfc3d4d4
+@@ -1,18 +1,18 @@
+ @Override
+ public T execute(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
+     try {
+         network.beginRequest(request.getCommand(), session);
+-        request.write(network, session, 0);
++        request.write(network, session);
+     } finally {
+         network.endRequest();
+     }
+-    final T res;
++    T response = request.createResponse();
+     try {
+         storage.beginResponse(network, session);
+-        res = response.read(network, session);
++        response.read(network, session);
+     } finally {
+         storage.endResponse(network);
+     }
+     storage.connectionManager.release(network);
+-    return res;
++    return response;
+ }
+\ No newline at end of file

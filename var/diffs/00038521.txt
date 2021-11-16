@@ -1,0 +1,24 @@
+diff --git a/57a66b16c889d9f49a6d07c27fefa57e737c6341 b/e07b4bc40cbb7cbf556413fbe95adb5f194eedf9
+index 57a66b16c8..e07b4bc40c 100644
+--- a/57a66b16c889d9f49a6d07c27fefa57e737c6341
++++ b/e07b4bc40cbb7cbf556413fbe95adb5f194eedf9
+@@ -1,12 +1,14 @@
+-public void start(NeoServerWithEmbeddedWebServer neoServer, StringLogger logger) {
++@Override
++public void start(StringLogger logger) {
+     try {
+-        URI restApiUri = restApiUri(neoServer);
+-        neoServer.getWebServer().addJAXRSPackages(listFrom(new String[] { Configurator.REST_API_PACKAGE }), restApiUri.toString());
+-        loadPlugins(neoServer, logger);
++        URI restApiUri = restApiUri();
++        webServer.addJAXRSPackages(listFrom(new String[] { Configurator.REST_API_PACKAGE }), restApiUri.toString());
++        loadPlugins(logger);
++        setupRequestTimeLimit();
+         log.info("Mounted REST API at [%s]", restApiUri.toString());
+         if (logger != null)
+             logger.logMessage("Mounted REST API at: " + restApiUri.toString());
+     } catch (URISyntaxException e) {
+         log.warn(e);
+     }
+ }
+\ No newline at end of file

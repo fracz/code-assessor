@@ -1,0 +1,12 @@
+diff --git a/d7e2500e134ddaaf029cd0747ba9bcade188b50e b/09b51db3e26b7102a21096bced5bbab14911ac5d
+index d7e2500e13..09b51db3e2 100644
+--- a/d7e2500e134ddaaf029cd0747ba9bcade188b50e
++++ b/09b51db3e26b7102a21096bced5bbab14911ac5d
+@@ -1,3 +1,4 @@
+-private PsiFile createDummyFile(Project project, String contents) {
+-    return language.createDummyFile(project, contents);
++@Override
++public PsiFile createDummyFile(String contents) {
++    return PsiFileFactory.getInstance(myProject).createFileFromText("dummy." + PythonFileType.INSTANCE.getDefaultExtension(), contents);
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/847075e2b98cb0ea2b3c972cea9249e7950dcd49 b/d0814c81fd8adfa2b6d1b072a2644bb208a3ce84
+index 847075e2b9..d0814c81fd 100644
+--- a/847075e2b98cb0ea2b3c972cea9249e7950dcd49
++++ b/d0814c81fd8adfa2b6d1b072a2644bb208a3ce84
+@@ -1,16 +1,16 @@
+ public void visitClass(@NotNull PsiClass aClass) {
+     if (aClass.isInterface() || aClass.isAnnotationType() || aClass.isEnum()) {
+         return;
+     }
+-    if (aClass instanceof PsiTypeParameter || aClass instanceof PsiAnonymousClass) {
++    if (aClass instanceof PsiTypeParameter) {
+         return;
+     }
+     final String name = aClass.getName();
+     if (name == null) {
+         return;
+     }
+     if (isValid(name)) {
+         return;
+     }
+-    registerClassError(aClass);
++    registerClassError(aClass, name);
+ }
+\ No newline at end of file

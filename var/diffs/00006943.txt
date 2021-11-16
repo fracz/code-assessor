@@ -1,0 +1,16 @@
+diff --git a/c2585382b78f0a4b55706280529207164acfd1e3 b/1fef243ec7a435dcbe2ff3dae14572a805d61e4a
+index c2585382b7..1fef243ec7 100644
+--- a/c2585382b78f0a4b55706280529207164acfd1e3
++++ b/1fef243ec7a435dcbe2ff3dae14572a805d61e4a
+@@ -1,7 +1,7 @@
+-public Cursor processMouseMoveEvent(final int x, final int y, final boolean copyOnDrop, final int componentCount, final int dragColumnDelta) {
+-    GridLocation location = processDragEvent(x, y, componentCount, dragColumnDelta);
+-    if (!location.canDrop(componentCount)) {
++public Cursor processMouseMoveEvent(final Point pnt, final boolean copyOnDrop, final ComponentDragObject dragObject) {
++    GridLocation location = processDragEvent(pnt, dragObject);
++    if (!location.canDrop(dragObject)) {
+         return FormEditingUtil.getMoveNoDropCursor();
+     }
+     return copyOnDrop ? FormEditingUtil.getCopyDropCursor() : FormEditingUtil.getMoveDropCursor();
+ }
+\ No newline at end of file

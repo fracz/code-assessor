@@ -1,0 +1,15 @@
+diff --git a/cfcc7c8beb8eef17839166532072cbd75ab8cbbc b/db0f9a59e28c2fe71842254da8973873b524297e
+index cfcc7c8beb..db0f9a59e2 100644
+--- a/cfcc7c8beb8eef17839166532072cbd75ab8cbbc
++++ b/db0f9a59e28c2fe71842254da8973873b524297e
+@@ -1,7 +1,7 @@
+ /**
+  * Returns true if this attribute's value can be influenced by the build configuration.
+  */
+ public boolean isConfigurable() {
+-    return !(// Excluded because of Rule#populateExplicitOutputFiles.
+-    type == BuildType.OUTPUT || type == BuildType.OUTPUT_LIST || getPropertyFlag(PropertyFlag.NONCONFIGURABLE));
++    // Output types are excluded because of Rule#populateExplicitOutputFiles.
++    return !(type.getLabelClass() == LabelClass.OUTPUT || getPropertyFlag(PropertyFlag.NONCONFIGURABLE));
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/8267f73495e7f126ce43d2c6b2d75c3ddf34c2c5 b/99daae39f49775d546f76dbc98d1455c6fdaf34d
+index 8267f73495..99daae39f4 100644
+--- a/8267f73495e7f126ce43d2c6b2d75c3ddf34c2c5
++++ b/99daae39f49775d546f76dbc98d1455c6fdaf34d
+@@ -1,9 +1,4 @@
+ @Override
+-public boolean add(V e) {
+-    RedisConnection<Object, Object> connection = connectionManager.connectionWriteOp();
+-    try {
+-        return connection.sadd(getName(), e) > 0;
+-    } finally {
+-        connectionManager.releaseWrite(connection);
+-    }
++public boolean add(final V e) {
++    return addAsync(e).awaitUninterruptibly().getNow();
+ }
+\ No newline at end of file

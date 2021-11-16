@@ -1,0 +1,17 @@
+diff --git a/301f0dab9669fbd5873c36ce7b407eaffc27ea41 b/5319b64121f1e21cadb608559ddae24b56c94117
+index 301f0dab96..5319b64121 100644
+--- a/301f0dab9669fbd5873c36ce7b407eaffc27ea41
++++ b/5319b64121f1e21cadb608559ddae24b56c94117
+@@ -1,10 +1,10 @@
+ private void setupGuava() {
+-    com.google.common.cache.Cache<Integer, Boolean> cache = CacheBuilder.newBuilder().initialCapacity(SIZE).build();
++    com.google.common.cache.Cache<Integer, Boolean> cache = CacheBuilder.newBuilder().concurrencyLevel(64).build();
+     benchmarkFunction = key -> {
+         try {
+             return cache.get(key, () -> Boolean.TRUE);
+         } catch (Exception e) {
+             throw Throwables.propagate(e);
+         }
+     };
+ }
+\ No newline at end of file

@@ -1,0 +1,28 @@
+diff --git a/d8da0381c6b12ac42166b7c93c7a13f8d452098c b/c3c74390deb57470df405635ee8a28f0aa20870c
+index d8da0381c6..c3c74390de 100644
+--- a/d8da0381c6b12ac42166b7c93c7a13f8d452098c
++++ b/c3c74390deb57470df405635ee8a28f0aa20870c
+@@ -1,9 +1,14 @@
+-protected ODocument loadMultiPolygon() throws IOException {
+-    InputStream systemResourceAsStream = ClassLoader.getSystemResourceAsStream("italy.json");
+-    ODocument doc = new ODocument().fromJSON(systemResourceAsStream);
+-    Map geometry = doc.field("geometry");
+-    String type = (String) geometry.get("type");
+-    ODocument location = new ODocument(type);
+-    location.field("coordinates", geometry.get("coordinates"));
+-    return location;
++protected ODocument loadMultiPolygon() {
++    try {
++        InputStream systemResourceAsStream = ClassLoader.getSystemResourceAsStream("italy.json");
++        ODocument doc = new ODocument().fromJSON(systemResourceAsStream);
++        Map geometry = doc.field("geometry");
++        String type = (String) geometry.get("type");
++        ODocument location = new ODocument(type);
++        location.field("coordinates", geometry.get("coordinates"));
++        return location;
++    } catch (Exception e) {
++        e.printStackTrace();
++    }
++    return null;
+ }
+\ No newline at end of file

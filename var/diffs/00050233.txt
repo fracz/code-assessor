@@ -1,0 +1,16 @@
+diff --git a/0adbac64b42ed024def5605ec469e7409aa7b753 b/fa6ca8a848e93efc57ce0d1c952da9af6080b1b7
+index 0adbac64b4..fa6ca8a848 100644
+--- a/0adbac64b42ed024def5605ec469e7409aa7b753
++++ b/fa6ca8a848e93efc57ce0d1c952da9af6080b1b7
+@@ -1,9 +1,6 @@
+ @Override
+ public DBSObject refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
+-    super.refreshObject(monitor);
+     getContainer().getNicknameCache().clearChildrenCache(this);
+-    // DF: Clear base index/trigger cache. Not cheap but didn't found
+-    // another way..
+-    getContainer().getIndexCache().clearCache();
++    super.refreshObject(monitor);
+     return this;
+ }
+\ No newline at end of file

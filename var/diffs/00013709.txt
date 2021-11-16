@@ -1,0 +1,16 @@
+diff --git a/b703e1c9a59e13907c9aba911466a07fc5443282 b/c3462a03181e79c5aa6bc1f0421368fa3c539d6f
+index b703e1c9a5..c3462a0318 100644
+--- a/b703e1c9a59e13907c9aba911466a07fc5443282
++++ b/c3462a03181e79c5aa6bc1f0421368fa3c539d6f
+@@ -1,3 +1,8 @@
+-public ChangeList getChanges(final FragmentSide changesSide) {
+-    return myChanges[changesSide.getIndex()];
++@NotNull
++public ChangeList getChanges(@NotNull final FragmentSide changesSide) {
++    if (changesSide == FragmentSide.SIDE1) {
++        return myBaseToLeftChangeList;
++    } else {
++        return myBaseToRightChangeList;
++    }
+ }
+\ No newline at end of file

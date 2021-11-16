@@ -1,0 +1,17 @@
+diff --git a/3550b646e645428991c17245d899c5f8e707d2e2 b/064ad79bf02ab12416cb72846b990b05a0b5c3cd
+index 3550b646e6..064ad79bf0 100644
+--- a/3550b646e645428991c17245d899c5f8e707d2e2
++++ b/064ad79bf02ab12416cb72846b990b05a0b5c3cd
+@@ -1,8 +1,9 @@
+ private StackValue visitClassOrObject(JetClassOrObject declaration) {
+     ClassDescriptor descriptor = bindingContext.get(BindingContext.CLASS, declaration);
+     assert descriptor != null;
+-    Pair<JvmClassName, ClassBuilder> nameAndVisitor = state.forAnonymousSubclass(declaration);
++    JvmClassName className = classNameForAnonymousClass(state.getBindingContext(), declaration);
++    ClassBuilder classBuilder = state.getFactory().newVisitor(className.getInternalName() + ".class");
+     final CodegenContext objectContext = context.intoAnonymousClass(descriptor, this);
+-    new ImplementationBodyCodegen(declaration, objectContext, nameAndVisitor.getSecond(), state).generate();
++    new ImplementationBodyCodegen(declaration, objectContext, classBuilder, state).generate();
+     return StackValue.none();
+ }
+\ No newline at end of file

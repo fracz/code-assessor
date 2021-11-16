@@ -1,0 +1,12 @@
+diff --git a/e0706ecda2ea7aa0e702efad9f3e8103317028f1 b/db2cd0819ede861fa5dae638ccc1fbc4a7556027
+index e0706ecda2..db2cd0819e 100644
+--- a/e0706ecda2ea7aa0e702efad9f3e8103317028f1
++++ b/db2cd0819ede861fa5dae638ccc1fbc4a7556027
+@@ -1,5 +1,4 @@
+ @Override
+ public boolean hasThrowable() {
+-    Object o = state.get();
+-    return o != null && o != State.COMPLETE;
++    return NotificationLite.isError(state.get());
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/c9a24b6415eef2628107d960a31e7f6ee4b8bf74 b/954ad05b944b0d9e10f14363c8b2c67f44fb749f
+index c9a24b6415..954ad05b94 100644
+--- a/c9a24b6415eef2628107d960a31e7f6ee4b8bf74
++++ b/954ad05b944b0d9e10f14363c8b2c67f44fb749f
+@@ -1,10 +1,11 @@
+ /**
+  * For testing only.
+  */
+ public List<Double> getPathOutputs(List<List> pathList) {
+     List<Double> outputList = new ArrayList<Double>();
+-    for (List path : pathList) {
++    for (Iterator<List> iter = pathList.iterator(); iter.hasNext(); ) {
++        List path = iter.next();
+         outputList.add(new Double(getOutputOfPathInGraph(path)));
+     }
+     return outputList;
+ }
+\ No newline at end of file

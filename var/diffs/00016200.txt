@@ -1,0 +1,18 @@
+diff --git a/3a1d0ad32dce6233f9c3a62e00a15a31c23389df b/7b2a84ab21ab8b06d40e0d34071ca0d70b6026d9
+index 3a1d0ad32d..7b2a84ab21 100644
+--- a/3a1d0ad32dce6233f9c3a62e00a15a31c23389df
++++ b/7b2a84ab21ab8b06d40e0d34071ca0d70b6026d9
+@@ -1,11 +1,11 @@
+ private <D extends CallableDescriptor> boolean checkReceiver(ResolutionTask<D> task, TracingStrategy tracing, D candidate, TemporaryBindingTrace temporaryTrace) {
+     if (!checkReceiverAbsence(task, tracing, candidate, temporaryTrace))
+         return false;
+     ReceiverDescriptor receiver = task.getReceiver();
+     ReceiverDescriptor candidateReceiver = candidate.getReceiver();
+-    if (receiver != NO_RECEIVER && candidateReceiver != NO_RECEIVER && !semanticServices.getTypeChecker().isSubtypeOf(receiver.getType(), candidateReceiver.getType())) {
++    if (receiver.exists() && candidateReceiver.exists() && !semanticServices.getTypeChecker().isSubtypeOf(receiver.getType(), candidateReceiver.getType())) {
+         tracing.missingReceiver(temporaryTrace, candidateReceiver);
+         return false;
+     }
+     return true;
+ }
+\ No newline at end of file

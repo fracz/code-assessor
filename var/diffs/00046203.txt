@@ -1,0 +1,24 @@
+diff --git a/37af6e673d887846ed0816bee6eefa972a48c74b b/9598d300cdefced227591fb4533c90c191d3caa1
+index 37af6e673d..9598d300cd 100644
+--- a/37af6e673d887846ed0816bee6eefa972a48c74b
++++ b/9598d300cdefced227591fb4533c90c191d3caa1
+@@ -1,14 +1,18 @@
+ /**
+  * Event handler called when a class is loaded in the debugger. Causes the
+  * breakpoint to be attached, if its class was loaded.
+  *
+  * @param theClass the class that was just loaded.
+  */
+ @Override
+ public void classLoaded(ReferenceType theClass) {
+     // check if our class is being loaded
++    log("Class Loaded: " + theClass.name());
+     if (theClass.name().equals(className())) {
+         this.theClass = theClass;
+         attach();
+     }
++    for (ReferenceType ct : theClass.nestedTypes()) {
++        log("Nested " + ct.name());
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/37448047c0b46430d8d211e059777ed2ee1b7419 b/5d433591abfa02c911f57558fecc0c559d7fc150
+index 37448047c0..5d433591ab 100644
+--- a/37448047c0b46430d8d211e059777ed2ee1b7419
++++ b/5d433591abfa02c911f57558fecc0c559d7fc150
+@@ -1,4 +1,10 @@
+ @Override
+-public Publisher<Boolean> contains(Object o) {
+-    return commandExecutor.readReactive(getName(), codec, RedisCommands.ZSCORE_CONTAINS, getName(), o);
++public Publisher<Boolean> contains(final V o) {
++    return reactive(new Supplier<RFuture<Boolean>>() {
++
++        @Override
++        public RFuture<Boolean> get() {
++            return instance.containsAsync(o);
++        }
++    });
+ }
+\ No newline at end of file

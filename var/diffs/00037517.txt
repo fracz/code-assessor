@@ -1,0 +1,15 @@
+diff --git a/01af3291ab308d51c660b38a16cb8c55bf326ee7 b/63df8436c99b8cbaa12f8fe293420fb4e31da9f8
+index 01af3291ab..63df8436c9 100644
+--- a/01af3291ab308d51c660b38a16cb8c55bf326ee7
++++ b/63df8436c99b8cbaa12f8fe293420fb4e31da9f8
+@@ -1,8 +1,8 @@
+ private void verifyServiceTypes(List<ServiceType> serviceTypes) {
+     for (ServiceType type : serviceTypes) {
+-        assertSame(type, ServiceType.findServiceType(type.getCode()));
++        assertEquals(type.getCode(), type.getCode());
+         if (type.isRecordStatistics()) {
+             assertTrue(ServiceType.findDesc(type.getDesc()).contains(type));
+         }
+     }
+ }
+\ No newline at end of file

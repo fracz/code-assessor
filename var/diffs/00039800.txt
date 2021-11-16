@@ -1,0 +1,18 @@
+diff --git a/d0d5e3f85fd675ab39b083a21c4bf47a226b4dc7 b/4bbcaf364796a588575c5eb40bd958d076b17ba5
+index d0d5e3f85f..4bbcaf3647 100644
+--- a/d0d5e3f85fd675ab39b083a21c4bf47a226b4dc7
++++ b/4bbcaf364796a588575c5eb40bd958d076b17ba5
+@@ -1,9 +1,9 @@
+ @Override
+-public void validateRelationshipPropertyExistenceConstraint(Cursor<RelationshipItem> allRels, int type, int propertyKey) throws CreateConstraintFailureException {
++public void validateRelationshipPropertyExistenceConstraint(Cursor<RelationshipItem> allRels, RelationshipPropertyDescriptor descriptor) throws CreateConstraintFailureException {
+     while (allRels.next()) {
+         RelationshipItem relationship = allRels.get();
+-        if (relationship.type() == type && !relationship.hasProperty(propertyKey)) {
+-            throw createConstraintFailure(new RelationshipPropertyExistenceConstraintVerificationFailedKernelException(new RelationshipPropertyExistenceConstraint(type, propertyKey), relationship.id()));
++        if (relationship.type() == descriptor.getRelationshipTypeId() && !relationship.hasProperty(descriptor.getPropertyKeyId())) {
++            throw createConstraintFailure(new RelationshipPropertyExistenceConstraintVerificationFailedKernelException(new RelationshipPropertyExistenceConstraint(descriptor), relationship.id()));
+         }
+     }
+ }
+\ No newline at end of file

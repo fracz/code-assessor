@@ -1,0 +1,14 @@
+diff --git a/1c40f2818f5eebfdc0eef326c0a94220bfa8b0d5 b/fca76a29b4cc59165f45ce1e8e169213115549cb
+index 1c40f2818f..fca76a29b4 100644
+--- a/1c40f2818f5eebfdc0eef326c0a94220bfa8b0d5
++++ b/fca76a29b4cc59165f45ce1e8e169213115549cb
+@@ -1,7 +1,3 @@
+ public int getProfileTitleColor() {
+-    if (profileTitleColor != 0) {
+-        return profileTitleColor;
+-    } else {
+-        return getTextPrimaryInvColor();
+-    }
++    return getColorWithFallback(profileTitleColor, getTextPrimaryInvColor());
+ }
+\ No newline at end of file

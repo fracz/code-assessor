@@ -1,0 +1,18 @@
+diff --git a/d1d60ff93ce040afdd66501b1dec9937c48c2ae9 b/0619b22e02de317b888b5ac5d204d3e678b3f7a8
+index d1d60ff93c..0619b22e02 100644
+--- a/d1d60ff93ce040afdd66501b1dec9937c48c2ae9
++++ b/0619b22e02de317b888b5ac5d204d3e678b3f7a8
+@@ -1,10 +1,4 @@
+ private static MultiMap<VirtualFile, RequestWithProcessor> createMultiMap() {
+-    return new MultiMap<VirtualFile, RequestWithProcessor>() {
+-
+-        @Override
+-        protected Collection<RequestWithProcessor> createCollection() {
+-            // usually there is just one request
+-            return new SmartList<RequestWithProcessor>();
+-        }
+-    };
++    // usually there is just one request
++    return MultiMap.createSmartList();
+ }
+\ No newline at end of file

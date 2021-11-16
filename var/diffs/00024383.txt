@@ -1,0 +1,14 @@
+diff --git a/fd5ddc6623673c3212a4e723e1f8687a265764ff b/9698c488956a5e12c5f2ea54f41cb49a8cde0db1
+index fd5ddc6623..9698c48895 100644
+--- a/fd5ddc6623673c3212a4e723e1f8687a265764ff
++++ b/9698c488956a5e12c5f2ea54f41cb49a8cde0db1
+@@ -1,7 +1,7 @@
+ @Override
+ public boolean equals(Object o) {
+     if (!(o instanceof DeletionTime))
+         return false;
+     DeletionTime that = (DeletionTime) o;
+-    return markedForDeleteAt == that.markedForDeleteAt && localDeletionTime == that.localDeletionTime;
++    return markedForDeleteAt() == that.markedForDeleteAt() && localDeletionTime() == that.localDeletionTime();
+ }
+\ No newline at end of file

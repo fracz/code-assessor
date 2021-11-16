@@ -1,0 +1,19 @@
+diff --git a/d5e2d970a0a0d63b28c55386c920f47d96829484 b/bcf4b1b634e6b3bac06dfa7a84c4af2e3205e4f0
+index d5e2d970a0..bcf4b1b634 100644
+--- a/d5e2d970a0a0d63b28c55386c920f47d96829484
++++ b/bcf4b1b634e6b3bac06dfa7a84c4af2e3205e4f0
+@@ -1,12 +1,12 @@
+ @Test
+ public void threadSendsRequestTermBufferMessage() {
+     thread.sendRequestTerm(1L, 2L, 3L);
+     assertReadsOneMessage((eventTypeId, buffer, index, length) -> {
+         TripleMessageFlyweight requestTermBuffer = new TripleMessageFlyweight();
+         requestTermBuffer.reset(buffer, index);
+-        // assertThat(requestTermBuffer.headerType(), is(HDR_TYPE_REQUEST_TERM));
++        assertThat(eventTypeId, is(REQUEST_TERM));
+         assertThat(requestTermBuffer.sessionId(), is(1L));
+         assertThat(requestTermBuffer.channelId(), is(2L));
+         assertThat(requestTermBuffer.termId(), is(3L));
+     });
+ }
+\ No newline at end of file

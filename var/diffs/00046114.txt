@@ -1,0 +1,15 @@
+diff --git a/f8579e1f373bbfe794762b5ea57b5cd4c70e2e8a b/546a963a7eddbe4dc9db426fa2906e24b94b6eec
+index f8579e1f37..546a963a7e 100644
+--- a/f8579e1f373bbfe794762b5ea57b5cd4c70e2e8a
++++ b/546a963a7eddbe4dc9db426fa2906e24b94b6eec
+@@ -1,7 +1,8 @@
+ private void assertCastWithJsonParse(String json, String castSqlType, Type expectedType, Object expected) {
++    String query = "" + "SELECT CAST(JSON_PARSE(col) AS " + castSqlType + ") " + "FROM (VALUES('" + json + "')) AS t(col)";
+     // building queries with VALUES to avoid constant folding
+-    MaterializedResult result = runner.execute((new StringBuilder()).append("SELECT CAST(JSON_PARSE(col) AS ").append(castSqlType).append(") FROM (VALUES('").append(json).append("')) AS t(col)").toString());
++    MaterializedResult result = runner.execute(query);
+     assertEquals(result.getTypes().size(), 1);
+     assertEquals(result.getTypes().get(0), expectedType);
+     assertEquals(result.getOnlyValue(), expected);
+ }
+\ No newline at end of file

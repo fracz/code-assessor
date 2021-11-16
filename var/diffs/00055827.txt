@@ -1,0 +1,15 @@
+diff --git a/be58f8df0881e144673ba65a878509faba190394 b/9ee000475453bf8b66f8eccaba7251376c6d9477
+index be58f8df08..9ee0004754 100644
+--- a/be58f8df0881e144673ba65a878509faba190394
++++ b/9ee000475453bf8b66f8eccaba7251376c6d9477
+@@ -1,8 +1,8 @@
+ @Test
+ public void httpEntityWithFluxBody() throws Exception {
+     String body = "line1\nline2\nline3\n";
+     ResolvableType type = httpEntityType(forClassWithGenerics(Flux.class, String.class));
+     HttpEntity<Flux<String>> httpEntity = resolveValue(type, body);
+     assertEquals(this.request.getHeaders(), httpEntity.getHeaders());
+-    TestSubscriber.subscribe(httpEntity.getBody()).assertValues("line1\n", "line2\n", "line3\n");
++    ScriptedSubscriber.<String>create().expectNext("line1\n").expectNext("line2\n").expectNext("line3\n").expectComplete().verify(httpEntity.getBody());
+ }
+\ No newline at end of file

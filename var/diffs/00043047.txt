@@ -1,0 +1,21 @@
+diff --git a/07dcb52ae87aa8fa7c4674984f612c0e3a3e7590 b/2b205134760e893aa4f936bbbf4535f82e07d6ca
+index 07dcb52ae8..2b20513476 100644
+--- a/07dcb52ae87aa8fa7c4674984f612c0e3a3e7590
++++ b/2b205134760e893aa4f936bbbf4535f82e07d6ca
+@@ -1,11 +1,14 @@
+ protected <T> T networkAdminOperation(final OStorageRemoteOperation<T> operation, final String errorMessage) {
+     OChannelBinaryAsynchClient network = null;
+     try {
+         // TODO:replace this api with one that get connection for only the specified url.
+         network = storage.getNetwork(storage.getCurrentServerURL());
+-        return operation.execute(network, storage.getCurrentSession());
++        T res = operation.execute(network, storage.getCurrentSession());
++        storage.connectionManager.release(network);
++        return res;
+     } catch (Exception e) {
++        storage.connectionManager.release(network);
+         storage.close(true, false);
+         throw OException.wrapException(new OStorageException(errorMessage), e);
+     }
+ }
+\ No newline at end of file

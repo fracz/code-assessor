@@ -1,0 +1,22 @@
+diff --git a/c6b9310d05a5610648a3ca924891b0d5e8c2040a b/f009b71bd76147278c863acccad3d3b517004893
+index c6b9310d05..f009b71bd7 100644
+--- a/c6b9310d05a5610648a3ca924891b0d5e8c2040a
++++ b/f009b71bd76147278c863acccad3d3b517004893
+@@ -1,11 +1,10 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiClass aClass = (PsiClass) location.getParent();
+-    assert aClass != null;
+-    final String className = aClass.getName();
+-    if (className.length() < getMinLength()) {
++@NotNull
++public String buildErrorString(Object... infos) {
++    final String parameterName = (String) infos[0];
++    if (parameterName.length() < getMinLength()) {
+         return InspectionGadgetsBundle.message("type.parameter.naming.convention.problem.descriptor.short");
+-    } else if (className.length() > getMaxLength()) {
++    } else if (parameterName.length() > getMaxLength()) {
+         return InspectionGadgetsBundle.message("type.parameter.naming.convention.problem.descriptor.long");
+     }
+     return InspectionGadgetsBundle.message("enumerated.class.naming.convention.problem.descriptor.regex.mismatch", getRegex());
+ }
+\ No newline at end of file

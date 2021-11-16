@@ -1,0 +1,21 @@
+diff --git a/611b5d0a48e16174dc96fa0d9a7733f03ed4c0ba b/252dc1f98b360a3f385e62d546425261fccecc30
+index 611b5d0a48..252dc1f98b 100644
+--- a/611b5d0a48e16174dc96fa0d9a7733f03ed4c0ba
++++ b/252dc1f98b360a3f385e62d546425261fccecc30
+@@ -1,13 +1,11 @@
+ private void configureTransformers(Collection<ODocument> iTransformers, OCommandContext iContext) throws IllegalAccessException, InstantiationException {
+-    // TRANSFORMERS
+-    String name;
+     transformers = new ArrayList<OTransformer>();
+     if (iTransformers != null) {
+         for (ODocument t : iTransformers) {
+-            name = t.fieldNames()[0];
++            String name = t.fieldNames()[0];
+             final OTransformer tr = factory.getTransformer(name);
+             transformers.add(tr);
+-            configureComponent(tr, (ODocument) t.field(name), iContext);
++            configureComponent(tr, t.<ODocument>field(name), iContext);
+         }
+     }
+ }
+\ No newline at end of file

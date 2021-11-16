@@ -1,0 +1,17 @@
+diff --git a/1309d0e102f862f4f6a933e63fd7503494263e53 b/c31be545fa2e55111ec784344851e095624c37d3
+index 1309d0e102..c31be545fa 100644
+--- a/1309d0e102f862f4f6a933e63fd7503494263e53
++++ b/c31be545fa2e55111ec784344851e095624c37d3
+@@ -1,7 +1,10 @@
+ private static void addLineToHunk(final PatchHunk hunk, final String line, final PatchLine.Type type) {
+-    final PatchLine patchLine = new PatchLine(type, line);
++    final PatchLine patchLine;
+     if (!line.endsWith("\n")) {
++        patchLine = new PatchLine(type, line);
+         patchLine.setSuppressNewLine(true);
++    } else {
++        patchLine = new PatchLine(type, line.substring(0, line.length() - 1));
+     }
+     hunk.addLine(patchLine);
+ }
+\ No newline at end of file

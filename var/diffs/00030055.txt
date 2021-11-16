@@ -1,0 +1,15 @@
+diff --git a/4096c18df75ba496851a02d26bbd8f88217fbb43 b/6558f667bd0e4631c7d2536fdafcc7a8a6fbd5b3
+index 4096c18df7..6558f667bd 100644
+--- a/4096c18df75ba496851a02d26bbd8f88217fbb43
++++ b/6558f667bd0e4631c7d2536fdafcc7a8a6fbd5b3
+@@ -1,8 +1,3 @@
+ public static Operator fromString(String op) {
+-    for (Operator operator : Operator.values()) {
+-        if (operator.name().equalsIgnoreCase(op)) {
+-            return operator;
+-        }
+-    }
+-    throw Operator.newOperatorException(op);
++    return valueOf(op.toUpperCase(Locale.ROOT));
+ }
+\ No newline at end of file

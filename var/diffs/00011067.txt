@@ -1,0 +1,14 @@
+diff --git a/d40c19ae7954eef8c157f318597257ab09f0d83a b/9c51e8dd211269c77e8ab0313be0fa480af46188
+index d40c19ae79..9c51e8dd21 100644
+--- a/d40c19ae7954eef8c157f318597257ab09f0d83a
++++ b/9c51e8dd211269c77e8ab0313be0fa480af46188
+@@ -1,7 +1,6 @@
+ @Override
+ public void visitRegExpPyCondRef(RegExpPyCondRef condRef) {
+-    RegExpLanguageHost host = findRegExpHost(condRef);
+-    if (host == null || !host.supportsPythonConditionalRefs()) {
++    if (!myLanguageHosts.supportsPythonConditionalRefs(condRef)) {
+         myHolder.createErrorAnnotation(condRef, "Conditional references are not supported");
+     }
+ }
+\ No newline at end of file

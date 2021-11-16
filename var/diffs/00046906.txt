@@ -1,0 +1,23 @@
+diff --git a/57c1b21dc14acc89b48e4c1cecd1abcce8adc297 b/fc84288a8598408cca69ca0ae0eb9870789bf954
+index 57c1b21dc1..fc84288a85 100644
+--- a/57c1b21dc14acc89b48e4c1cecd1abcce8adc297
++++ b/fc84288a8598408cca69ca0ae0eb9870789bf954
+@@ -1,16 +1,15 @@
+ /**
+  * Main loop of the ReceiverThread
+  *
+  * Everything is done here and bubbles up via the handlers.
+  */
+ public void run() {
+     try {
+         while (!done) {
+-            select();
+-            handleSelectedKeys();
++            nioSelector.processKeys(MediaDriver.SELECT_TIMEOUT);
+         // TODO: check command buffer for commands
+         }
+     } catch (final Exception e) {
+         e.printStackTrace();
+     }
+ }
+\ No newline at end of file

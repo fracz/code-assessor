@@ -1,0 +1,13 @@
+diff --git a/4f151475c66b35daa41ec94429d826c29db379c7 b/714c43c9b935642868f3c4d5bdca2df084cb577c
+index 4f151475c6..714c43c9b9 100644
+--- a/4f151475c66b35daa41ec94429d826c29db379c7
++++ b/714c43c9b935642868f3c4d5bdca2df084cb577c
+@@ -1,5 +1,4 @@
+ @Override
+-public void onEvent(Event message) {
+-    UserUpdatedEvent userUpdatedEvent = (UserUpdatedEvent) message;
+-    System.out.printf("User with %s has been Updated!", userUpdatedEvent.getUser().getUsername());
++public void onEvent(UserUpdatedEvent event) {
++    System.out.println(String.format("User '%s' has been Updated!", event.getUser().getUsername()));
+ }
+\ No newline at end of file

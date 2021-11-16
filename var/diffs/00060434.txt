@@ -1,0 +1,22 @@
+diff --git a/98936e41bf885cd01f110e0455273eba09c63d0e b/d3837375f7cc9781cd86f4ab96b2cf5c536dd492
+index 98936e41bf..d3837375f7 100644
+--- a/98936e41bf885cd01f110e0455273eba09c63d0e
++++ b/d3837375f7cc9781cd86f4ab96b2cf5c536dd492
+@@ -1,13 +1,14 @@
+ /**
+  * Return all the fields in a hash.
+  * <p>
+  * <b>Time complexity:</b> O(N), where N is the total number of entries
+  *
+  * @param key
+  * @return All the fields names contained into a hash.
+  */
+-public List<String> hkeys(final String key) {
++public Set<String> hkeys(final String key) {
+     checkIsInMulti();
+     client.hkeys(key);
+-    return client.getMultiBulkReply();
++    final List<String> lresult = client.getMultiBulkReply();
++    return new HashSet<String>(lresult);
+ }
+\ No newline at end of file

@@ -1,0 +1,35 @@
+diff --git a/7a88e8c56632dda8da44427572d67e48276d2ed0 b/bfc2a7000809bb0828bbb58d8afdc61b4c8a30e2
+index 7a88e8c566..bfc2a70008 100644
+--- a/7a88e8c56632dda8da44427572d67e48276d2ed0
++++ b/bfc2a7000809bb0828bbb58d8afdc61b4c8a30e2
+@@ -1,25 +1,22 @@
+ /**
+  * This method deletes both the specified data file
+  * and the associated index file
+  *
+  * @param dataFile - data file associated with the SSTable
+  */
+ public static void delete(String dataFile) {
+     /* remove the cached index table from memory */
+     indexMetadataMap_.remove(dataFile);
+     /* Delete the checksum file associated with this data file */
+     try {
+         ChecksumManager.onFileDelete(dataFile);
+     } catch (IOException ex) {
+         logger_.info(LogUtil.throwableToString(ex));
+     }
+     File file = new File(dataFile);
+-    if (file.exists()) {
+-        /* delete the data file */
+-        if (file.delete()) {
+-            logger_.info("** Deleted " + file.getName() + " **");
+-        } else {
+-            logger_.error("Failed to delete " + file.getName());
+-        }
++    assert file.exists();
++    /* delete the data file */
++    if (!file.delete()) {
++        logger_.error("Failed to delete " + file.getName());
+     }
+ }
+\ No newline at end of file

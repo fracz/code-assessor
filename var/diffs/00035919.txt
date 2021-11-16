@@ -1,0 +1,16 @@
+diff --git a/8f9328ddf73d6ece65aaeb08665bbb6009bfb666 b/937ffdc3e497cb14968694b146c576a76ce2658b
+index 8f9328ddf7..937ffdc3e4 100644
+--- a/8f9328ddf73d6ece65aaeb08665bbb6009bfb666
++++ b/937ffdc3e497cb14968694b146c576a76ce2658b
+@@ -1,9 +1,9 @@
+ @Test
+ public void shouldPointToTooManyInvocationsChunkOnError() {
+     try {
+         verify(mock, times(0)).simpleMethod(1);
+         fail();
+     } catch (NeverWantedButInvoked e) {
+-        assertThat(e.getCause(), hasFirstMethodInStackTrace("first"));
++        assertContains("first(", e.getMessage());
+     }
+ }
+\ No newline at end of file

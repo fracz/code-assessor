@@ -1,0 +1,13 @@
+diff --git a/bf008023273d9e87257a43d2ea23ce95bab4f3b0 b/13e7107384ced9207fcb2382e5b0e6804e82847d
+index bf00802327..13e7107384 100644
+--- a/bf008023273d9e87257a43d2ea23ce95bab4f3b0
++++ b/13e7107384ced9207fcb2382e5b0e6804e82847d
+@@ -1,6 +1,6 @@
+ @Test
+ public void testFrozenFactoryBean() {
+-    BeanFactory bf = new XmlBeanFactory(new ClassPathResource("frozenProxyFactoryBean.xml", getClass()));
++    BeanFactory bf = new XmlBeanFactory(new ClassPathResource(FROZEN_CONTEXT, CLASS));
+     Advised advised = (Advised) bf.getBean("frozen");
+     assertTrue("The proxy should be frozen", advised.isFrozen());
+ }
+\ No newline at end of file

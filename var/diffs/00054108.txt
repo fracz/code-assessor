@@ -1,0 +1,17 @@
+diff --git a/35adc42b6d436e311b02f0fea9c50af6548eee95 b/a2b05eab22abd32dab44cf9fa5f0c88fa5680a82
+index 35adc42b6d..a2b05eab22 100644
+--- a/35adc42b6d436e311b02f0fea9c50af6548eee95
++++ b/a2b05eab22abd32dab44cf9fa5f0c88fa5680a82
+@@ -1,7 +1,7 @@
+ @Test
+ public void assertDelete() {
+-    assertSingleTarget("delete from `order` where order_id = 1", "ds_1", "delete from order_1 where order_id = 1");
+-    assertSingleTarget(Lists.newArrayList(new ShardingValuePair("order", 1)), "delete from `order`", "ds_1", "delete from order_1");
+-    assertSingleTarget("delete from `order` where order_id = ?", Collections.<Object>singletonList(2), "ds_0", "delete from order_0 where order_id = ?");
+-    assertSingleTarget(Lists.newArrayList(new ShardingValuePair("order", 2)), "delete from `order`", "ds_0", "delete from order_0");
++    assertSingleTargetWithoutParameter("delete from `order` where order_id = 1", "ds_1", "delete from order_1 where order_id = 1");
++    assertSingleTargetWithoutParameter(Lists.newArrayList(new ShardingValuePair("order", 1)), "delete from `order`", "ds_1", "delete from order_1");
++    assertSingleTargetWithoutParameter(Lists.newArrayList(new ShardingValuePair("order", 2)), "delete from `order`", "ds_0", "delete from order_0");
++    assertSingleTargetWithParameters("delete from `order` where order_id = ?", Collections.<Object>singletonList(2), "ds_0", "delete from order_0 where order_id = ?");
+ }
+\ No newline at end of file

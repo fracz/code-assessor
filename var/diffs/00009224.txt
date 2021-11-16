@@ -1,0 +1,17 @@
+diff --git a/32c303c4a1957a6735ce706076974f6162c5af84 b/2541dc24d887d62ab3b835e29af3b4c9487f77c5
+index 32c303c4a1..2541dc24d8 100644
+--- a/32c303c4a1957a6735ce706076974f6162c5af84
++++ b/2541dc24d887d62ab3b835e29af3b4c9487f77c5
+@@ -1,9 +1,9 @@
+-public JComponent getComponent(final RadComponent component, final String[] value, final boolean inplace) {
++public JComponent getComponent(final RadComponent component, final String[] value, final InplaceContext inplaceContext) {
+     myLastComponent = component;
+     myLastValue = value;
+     myTextField.setText(listValueToString(value));
+-    if (inplace) {
++    if (inplaceContext != null) {
+         openListEditorDialog();
+     }
+     return myTextField;
+ }
+\ No newline at end of file

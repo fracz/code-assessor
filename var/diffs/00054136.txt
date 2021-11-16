@@ -1,0 +1,37 @@
+diff --git a/607542911c5ffc7a8c46e2e7ba35db83e6977e96 b/8ea56f654fd7f6bb59e6791a20bd9e704ca31770
+index 607542911c..8ea56f654f 100644
+--- a/607542911c5ffc7a8c46e2e7ba35db83e6977e96
++++ b/8ea56f654fd7f6bb59e6791a20bd9e704ca31770
+@@ -1,20 +1,21 @@
+ /**
+  * 获取结果集.
+  *
+  * @param resultSets 结果集列表
+  * @param mergeContext 结果归并上下文
+  * @return 结果集包装
+  */
+ public static ResultSet getResultSet(final List<ResultSet> resultSets, final MergeContext mergeContext) throws SQLException {
+-    List<ResultSet> filteredResultSets = filterResultSets(resultSets);
+-    if (filteredResultSets.isEmpty()) {
+-        log.trace("Sharding-JDBC: No data found in origin result sets");
+-        return resultSets.get(0);
++    ShardingResultSets shardingResultSets = new ShardingResultSets(resultSets);
++    log.trace("Sharding-JDBC: Sharding result sets type is '{}'", shardingResultSets.getType().toString());
++    switch(shardingResultSets.getType()) {
++        case EMPTY:
++            return buildEmpty(resultSets);
++        case SINGLE:
++            return buildSingle(shardingResultSets, mergeContext);
++        case MULTIPLE:
++            return buildMultiple(shardingResultSets, mergeContext);
++        default:
++            throw new UnsupportedOperationException(shardingResultSets.getType().toString());
+     }
+-    if (1 == filteredResultSets.size()) {
+-        log.trace("Sharding-JDBC: Only one result set");
+-        return joinLimit(filteredResultSets.get(0), mergeContext);
+-    }
+-    mergeContext.buildContextWithResultSet((WrapperResultSet) filteredResultSets.get(0));
+-    return buildCoupling(buildReducer(filteredResultSets, mergeContext), mergeContext);
+ }
+\ No newline at end of file

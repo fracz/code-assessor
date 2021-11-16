@@ -1,0 +1,27 @@
+diff --git a/b366c1e554a00497a521eecc1f7dfc0b22c8df6e b/1447c71ea406a27faa2f88c450596b48aed872ba
+index b366c1e554..1447c71ea4 100644
+--- a/b366c1e554a00497a521eecc1f7dfc0b22c8df6e
++++ b/1447c71ea406a27faa2f88c450596b48aed872ba
+@@ -1,17 +1,10 @@
+-protected MavenLocalVersion resolveLocalVersion(DBRProgressMonitor monitor, boolean forceUpdate) throws IOException {
++protected MavenArtifactVersion resolveLocalVersion(DBRProgressMonitor monitor, boolean forceUpdate) throws IOException {
+     if (forceUpdate) {
+         MavenRegistry.getInstance().resetArtifactInfo(reference);
+     }
+-    MavenArtifact artifact = MavenRegistry.getInstance().findArtifact(reference);
+-    if (artifact == null) {
++    MavenArtifactVersion version = MavenRegistry.getInstance().findArtifact(monitor, reference);
++    if (version == null) {
+         throw new IOException("Maven artifact '" + path + "' not found");
+     }
+-    if (!forceUpdate) {
+-        MavenLocalVersion localVersion = artifact.getActiveLocalVersion();
+-        if (localVersion != null) {
+-            // Already cached
+-            return localVersion;
+-        }
+-    }
+-    return artifact.resolveVersion(monitor, reference.getVersion(), true);
++    return version;
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/0b77568d0da97edcdf86d3975db87810e0df353e b/d7accb8682f1e3158eb8d7ec9a78eab59c455851
+index 0b77568d0d..d7accb8682 100644
+--- a/0b77568d0da97edcdf86d3975db87810e0df353e
++++ b/d7accb8682f1e3158eb8d7ec9a78eab59c455851
+@@ -1,17 +1,17 @@
+ @Override
+ @Property(viewable = true, order = 80)
+ public boolean isInUniqueKey() {
+     ExasolTableBase table = (ExasolTable) getTable();
+     try {
+-        final Collection<ExasolTableUniqueKey> uniqueKeysCache = table.getConstraints(VoidProgressMonitor.INSTANCE);
++        final Collection<ExasolTableUniqueKey> uniqueKeysCache = table.getConstraints(new VoidProgressMonitor());
+         if (!CommonUtils.isEmpty(uniqueKeysCache)) {
+             for (ExasolTableUniqueKey key : uniqueKeysCache) {
+                 if (key.hasColumn(this))
+                     return true;
+             }
+         }
+     } catch (DBException e) {
+         return false;
+     }
+     return false;
+ }
+\ No newline at end of file

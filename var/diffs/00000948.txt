@@ -1,0 +1,19 @@
+diff --git a/aec9eea66fb12732b0ed7bf6d2152f89cd7a3c44 b/f3d34b06dbd321aea3fb9bef994bda347fc49de1
+index aec9eea66f..f3d34b06db 100644
+--- a/aec9eea66fb12732b0ed7bf6d2152f89cd7a3c44
++++ b/f3d34b06dbd321aea3fb9bef994bda347fc49de1
+@@ -1,11 +1,3 @@
+-public static int getThreadsAllowedToBlockMultiplier(Properties config) {
+-    String val = config.getProperty("mongodb_threads_allowed_to_block_multiplier");
+-    if (val != null) {
+-        int res = Integer.parseInt(val);
+-        if (res > 0) {
+-            return res;
+-        }
+-    }
+-    // Default value.
+-    return 5;
++public int getThreadsAllowedToBlockMultiplier() {
++    return getInteger("mongodb_threads_allowed_to_block_multiplier", 5);
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/ab02c757774254c4d4453490284acb7ea04df967 b/839e90023ae5372aa2bd547de11a4f18ae9d6475
+index ab02c75777..839e90023a 100644
+--- a/ab02c757774254c4d4453490284acb7ea04df967
++++ b/839e90023ae5372aa2bd547de11a4f18ae9d6475
+@@ -1,14 +1,14 @@
+ private void createRepository(final VirtualFile selectedRoot, final VirtualFile mapRoot) {
+     new HgInitCommand(myProject).execute(selectedRoot, new HgCommandResultHandler() {
+
+         @Override
+         public void process(@Nullable HgCommandResult result) {
+             if (!HgErrorUtil.hasErrorsInCommandExecution(result)) {
+                 updateDirectoryMappings(mapRoot);
+-                new HgCommandResultNotifier(myProject.isDefault() ? null : myProject).notifySuccess(HgVcsMessages.message("hg4idea.init.created.notification.title"), HgVcsMessages.message("hg4idea.init.created.notification.description", selectedRoot.getPresentableUrl()));
++                VcsNotifier.getInstance(myProject).notifySuccess(HgVcsMessages.message("hg4idea.init.created.notification.title"), HgVcsMessages.message("hg4idea.init.created.notification.description", selectedRoot.getPresentableUrl()));
+             } else {
+                 new HgCommandResultNotifier(myProject.isDefault() ? null : myProject).notifyError(result, HgVcsMessages.message("hg4idea.init.error.title"), HgVcsMessages.message("hg4idea.init.error.description", selectedRoot.getPresentableUrl()));
+             }
+         }
+     });
+ }
+\ No newline at end of file

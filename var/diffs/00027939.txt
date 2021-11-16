@@ -1,0 +1,16 @@
+diff --git a/347d3ab10caeb6646c1fc64ad9e87cad557d1679 b/1eae4bcfcb6963d7b2fd20b540b82280a9dacd73
+index 347d3ab10c..1eae4bcfcb 100644
+--- a/347d3ab10caeb6646c1fc64ad9e87cad557d1679
++++ b/1eae4bcfcb6963d7b2fd20b540b82280a9dacd73
+@@ -1,8 +1,8 @@
+-@Path("remote-update")
+ @POST
++@Path("remote")
+ @Consumes(MediaType.APPLICATION_JSON)
+ public void remoteUpdate(RemoteUpdateRequest request) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+-        gitConnection.remoteUpdate(request);
++        gitConnection.remoteUpdate(RemoteUpdateParams.create(request.getName()).withRemoveUrl(request.getRemoveUrl()).withRemovePushUrl(request.getRemovePushUrl()).withAddUrl(request.getAddUrl()).withAddPushUrl(request.getAddPushUrl()).withBranches(request.getBranches()).withAddBranches(request.isAddBranches()));
+     }
+ }
+\ No newline at end of file

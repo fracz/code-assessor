@@ -1,0 +1,25 @@
+diff --git a/5852d2ea46bf618c03f3501198812e6fd5d1229c b/d80a0a16fdd6e51b8fd44dc6b0da5abd21b79c16
+index 5852d2ea46..d80a0a16fd 100644
+--- a/5852d2ea46bf618c03f3501198812e6fd5d1229c
++++ b/d80a0a16fdd6e51b8fd44dc6b0da5abd21b79c16
+@@ -1,11 +1,18 @@
+ @Override
+ public boolean equals(Object obj) {
+     if (this == obj)
+         return true;
+     if (obj == null)
+         return false;
+     if (getClass() != obj.getClass())
+         return false;
+     SQLOrderBy other = (SQLOrderBy) obj;
+-    return items.equals(other.items);
++    if (items == null) {
++        if (other.items != null)
++            return false;
++    } else if (!items.equals(other.items))
++        return false;
++    if (sibings != other.sibings)
++        return false;
++    return true;
+ }
+\ No newline at end of file

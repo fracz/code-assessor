@@ -1,0 +1,18 @@
+diff --git a/c19b4107a4d2002b04133307a6f1af2b57878bdc b/625df6a96aae9b656264bc7f02a41961dd28324a
+index c19b4107a4..625df6a96a 100644
+--- a/c19b4107a4d2002b04133307a6f1af2b57878bdc
++++ b/625df6a96aae9b656264bc7f02a41961dd28324a
+@@ -1,9 +1,9 @@
+ protected void endResponse() throws IOException {
+     // otherwise reused connection (connections pool) may lead to unpredicted errors
+-    if (connection != null && connection.database != null && connection.database.activateOnCurrentThread().getTransaction() != null) {
+-        connection.database.activateOnCurrentThread();
+-        connection.database.getTransaction().rollback();
++    if (connection != null && connection.getDatabase() != null && connection.getDatabase().activateOnCurrentThread().getTransaction() != null) {
++        connection.getDatabase().activateOnCurrentThread();
++        connection.getDatabase().getTransaction().rollback();
+     }
+     channel.flush();
+     channel.releaseWriteLock();
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/78f652195dcddcf05dd6164f5faf1564c13cdace b/329720dd64df134eb2260e6f227a89dc72bf5881
+index 78f652195d..329720dd64 100644
+--- a/78f652195dcddcf05dd6164f5faf1564c13cdace
++++ b/329720dd64df134eb2260e6f227a89dc72bf5881
+@@ -1,14 +1,14 @@
+ /**
+  * Creates a dummy file with the given extension in the given package and returns a valid Blaze
+  * label referring to the file. Note, the created label depends on the package of the rule.
+  */
+ private String getDummyFileLabel(String rulePkg, String filePkg, String extension, Type<?> attrType) {
+-    boolean isInput = (attrType == BuildType.LABEL || attrType == BuildType.LABEL_LIST);
+-    String fileName = (isInput ? "dummy_input" : "dummy_output") + extension;
++    boolean isOutput = attrType.getLabelClass() == LabelClass.OUTPUT;
++    String fileName = (isOutput ? "dummy_output" : "dummy_input") + extension;
+     generateFiles.add(filePkg + "/" + fileName);
+     if (rulePkg.equals(filePkg)) {
+         return ":" + fileName;
+     } else {
+         return filePkg + ":" + fileName;
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,23 @@
+diff --git a/6990434505f3535cd8c9fec5725474f15fcefe09 b/b7d466af503f4dc097aaaf58eebb6ef9e3148535
+index 6990434505..b7d466af50 100644
+--- a/6990434505f3535cd8c9fec5725474f15fcefe09
++++ b/b7d466af503f4dc097aaaf58eebb6ef9e3148535
+@@ -1,14 +1,14 @@
+ public SimpleMatrix getDocumentEmbedding(Document document) {
+-    if (!conll) {
+-        return new SimpleMatrix(staticWordEmbeddings.getEmbeddingSize(), 1);
+-    }
++    /*if (!conll) {
++      return new SimpleMatrix(staticWordEmbeddings.getEmbeddingSize(), 1);
++    }*/
+     List<CoreLabel> words = new ArrayList<>();
+     Set<Integer> seenSentences = new HashSet<>();
+     for (Mention m : document.predictedMentionsByID.values()) {
+         if (!seenSentences.contains(m.sentNum)) {
+             seenSentences.add(m.sentNum);
+             words.addAll(m.sentenceWords);
+         }
+     }
+     return getAverageEmbedding(words);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/fcbdf868f17e2dd799d0b0e392df830b9f5ad110 b/adc70d4c1d8c939c441abdb84054dc3db99cb196
+index fcbdf868f1..adc70d4c1d 100644
+--- a/fcbdf868f17e2dd799d0b0e392df830b9f5ad110
++++ b/adc70d4c1d8c939c441abdb84054dc3db99cb196
+@@ -1,6 +1,9 @@
+ /**
+  * Disables logger, no logs will be passed to LogCat, all log methods will do nothing
++ *
++ * @deprecated Use {@link #writeLogs(boolean) writeLogs(false)} instead
+  */
++@Deprecated
+ public static void disableLogging() {
+-    DISABLED = true;
++    writeLogs(false);
+ }
+\ No newline at end of file

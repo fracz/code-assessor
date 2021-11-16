@@ -1,0 +1,22 @@
+diff --git a/47f9a252bf4934e0bf69b6125d21e167de706751 b/524d1b8752aba70c262c646472135cc8c7aa4302
+index 47f9a252bf..524d1b8752 100644
+--- a/47f9a252bf4934e0bf69b6125d21e167de706751
++++ b/524d1b8752aba70c262c646472135cc8c7aa4302
+@@ -1,13 +1,14 @@
+ @Test
+ public void shouldReportDuplicatedUniquenessConstraintRules() throws Exception {
+     // Given
+     int labelId = createLabel();
+     int propertyKeyId = createPropertyKey();
+-    createUniquenessConstraintRule(labelId, propertyKeyId);
+-    createUniquenessConstraintRule(labelId, propertyKeyId);
++    NodePropertyDescriptor descriptor = new NodePropertyDescriptor(labelId, propertyKeyId);
++    createUniquenessConstraintRule(descriptor);
++    createUniquenessConstraintRule(descriptor);
+     // When
+     ConsistencySummaryStatistics stats = check();
+     // Then
+     // pair of duplicated indexes & pair of duplicated constraints
+     on(stats).verify(RecordType.SCHEMA, 2).andThatsAllFolks();
+ }
+\ No newline at end of file

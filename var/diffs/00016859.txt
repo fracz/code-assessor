@@ -1,0 +1,15 @@
+diff --git a/9d03f445e744d029e7b1eab783cee563e9146ce8 b/2106658fb3a209bfed60b434ed740bd4344e9ffb
+index 9d03f445e7..2106658fb3 100644
+--- a/9d03f445e744d029e7b1eab783cee563e9146ce8
++++ b/2106658fb3a209bfed60b434ed740bd4344e9ffb
+@@ -1,4 +1,7 @@
+ public static Aliaser aliasesForStandardClasses(@NotNull JetStandardLibrary standardLibrary, @NotNull Namer namer) {
+-    // TODO: decide if this aliases are needed
+-    return new Aliaser();
++    Aliaser aliaser = new Aliaser();
++    aliaser.setAliasForDescriptor(standardLibrary.getArray(), namer.libraryObject("Array"));
++    FunctionDescriptor nullConstructorFunction = getFunctionByName(standardLibrary.getLibraryScope(), "Array");
++    aliaser.setAliasForDescriptor(nullConstructorFunction, namer.libraryObject("array"));
++    return aliaser;
+ }
+\ No newline at end of file

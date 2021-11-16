@@ -1,0 +1,20 @@
+diff --git a/db2e8fa91c086c7c0d2ac603f6b8929d76b993bd b/977a5d21087ecffdcf8f31c499b7c25cb103d991
+index db2e8fa91c..977a5d2108 100644
+--- a/db2e8fa91c086c7c0d2ac603f6b8929d76b993bd
++++ b/977a5d21087ecffdcf8f31c499b7c25cb103d991
+@@ -1,7 +1,10 @@
+ @Override
+-public Void visitMethod(MethodTree node, VisitorState visitorState) {
+-    for (DescribingMatcher<MethodTree> matcher : methodMatchers) {
+-        evaluateMatch(node, visitorState, matcher);
++public Void visitMethod(MethodTree tree, VisitorState visitorState) {
++    VisitorState state = visitorState.withPath(getCurrentPath());
++    for (MethodTreeMatcher matcher : methodMatchers) {
++        if (isSuppressed(matcher))
++            continue;
++        reportMatch(matcher.matchMethod(tree, state), tree, state);
+     }
+-    return super.visitMethod(node, visitorState);
++    return super.visitMethod(tree, visitorState);
+ }
+\ No newline at end of file

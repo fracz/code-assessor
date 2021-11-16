@@ -1,0 +1,27 @@
+diff --git a/07a1a0ad5bd35f96ac12733c019d55c1cfb73950 b/ddf8fd8d3c11ab8f5064d59684e2b500fdd81002
+index 07a1a0ad5b..ddf8fd8d3c 100644
+--- a/07a1a0ad5bd35f96ac12733c019d55c1cfb73950
++++ b/ddf8fd8d3c11ab8f5064d59684e2b500fdd81002
+@@ -1,14 +1,17 @@
+ @Override
+-public void loadMessageForViewBodyAvailable(Account account, String folder, String uid, final Message message) {
+-    if ((mMessageReference == null) || !mMessageReference.getUid().equals(uid)) {
++public void loadMessageForViewBodyAvailable(Account account, String folder, String uid, final LocalMessage message) {
++    if (mMessageReference == null || !mMessageReference.getUid().equals(uid)) {
+         return;
+     }
+-    mSourceMessage = message;
+     runOnUiThread(new Runnable() {
+
+         @Override
+         public void run() {
+-            loadLocalMessageForDisplay((LocalMessage) message);
++            // We check to see if we've previously processed the source message since this
++            // could be called when switching from HTML to text replies. If that happens, we
++            // only want to update the UI with quoted text (which picks the appropriate
++            // part).
++            loadLocalMessageForDisplay(message, mAction);
+         }
+     });
+ }
+\ No newline at end of file

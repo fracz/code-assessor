@@ -1,0 +1,25 @@
+diff --git a/c4c40c67b4e2bff96f76d8f068b7f01d15f7e90a b/e5a9b65262d1fb7a7659d523dbcc37dd9a8bc05a
+index c4c40c67b4..e5a9b65262 100644
+--- a/c4c40c67b4e2bff96f76d8f068b7f01d15f7e90a
++++ b/e5a9b65262d1fb7a7659d523dbcc37dd9a8bc05a
+@@ -1,12 +1,10 @@
+ @Override
+ public void onSaveInstanceState(Bundle outState) {
+-    State state = getDisplayState();
+-    if (mSelectionManager.hasSelection()) {
+-        mSelectionManager.getSelection(state.selectedDocuments);
+-        state.selectedDocuments.setDirectoryKey(mStateKey);
+-        if (!state.selectedDocuments.isEmpty()) {
+-            if (DEBUG)
+-                Log.d(TAG, "Persisted selection: " + state.selectedDocuments);
+-        }
+-    }
++    super.onSaveInstanceState(outState);
++    outState.putInt(Shared.EXTRA_TYPE, mType);
++    outState.putParcelable(Shared.EXTRA_ROOT, mRoot);
++    outState.putParcelable(Shared.EXTRA_DOC, mDocument);
++    outState.putString(Shared.EXTRA_QUERY, mQuery);
++    outState.putParcelable(Shared.EXTRA_SELECTION, mSelectionManager.getSelection());
++    outState.putBoolean(Shared.EXTRA_SEARCH_MODE, mSearchMode);
+ }
+\ No newline at end of file

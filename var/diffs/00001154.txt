@@ -1,0 +1,15 @@
+diff --git a/a4805e103cc7b67390d0bbe9ea51e55fb6f2299c b/481ac005f42dda0d1b53d0e4021fa50f229357a6
+index a4805e103c..481ac005f4 100644
+--- a/a4805e103cc7b67390d0bbe9ea51e55fb6f2299c
++++ b/481ac005f42dda0d1b53d0e4021fa50f229357a6
+@@ -1,6 +1,7 @@
+ private void updateCollection(List<Map<String, Object>> ranges) {
+-    IndexRange.destroyAll(core, IndexRange.COLLECTION);
++    indexRangeService.destroyAll();
+     for (Map<String, Object> range : ranges) {
+-        new IndexRange(core, range).saveWithoutValidation();
++        IndexRange indexRange = indexRangeService.create(range);
++        indexRangeService.saveWithoutValidation(indexRange);
+     }
+ }
+\ No newline at end of file

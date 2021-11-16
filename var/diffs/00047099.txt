@@ -1,0 +1,14 @@
+diff --git a/4a410e59aa1e6778f6fcf003db3074cd1eb07ec5 b/a30ecf791aead6a17179b67bbdc5546c990aeb82
+index 4a410e59aa..a30ecf791a 100644
+--- a/4a410e59aa1e6778f6fcf003db3074cd1eb07ec5
++++ b/a30ecf791aead6a17179b67bbdc5546c990aeb82
+@@ -1,7 +1,3 @@
+ public DriverPublication findPublication(final int sessionId, final int streamId) {
+-    final Int2ObjectHashMap<DriverPublication> publicationByStreamIdMap = publicationBySessionIdMap.get(sessionId);
+-    if (null == publicationByStreamIdMap) {
+-        return null;
+-    }
+-    return publicationByStreamIdMap.get(streamId);
++    return publicationByCompoundIdMap.get(sessionId, streamId);
+ }
+\ No newline at end of file

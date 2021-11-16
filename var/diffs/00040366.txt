@@ -1,0 +1,24 @@
+diff --git a/62d10a59f2eb138a933a16fd19acc256dd7c082c b/63787af0d89c8c64d2c522c195c742a503048eed
+index 62d10a59f2..63787af0d8 100644
+--- a/62d10a59f2eb138a933a16fd19acc256dd7c082c
++++ b/63787af0d89c8c64d2c522c195c742a503048eed
+@@ -1,16 +1,14 @@
+ @Override
+ public boolean setOption(String key, Object value) {
+     if (super.setOption(key, value)) {
+         return true;
+     }
+-    if (key.equals("receiveBufferSize")) {
+-        setReceiveBufferSize(ConversionUtil.toInt(value));
+-    } else if (key.equals("reuseAddress")) {
+-        setReuseAddress(ConversionUtil.toBoolean(value));
++    if (key.equals("sctpInitMaxStreams")) {
++        setInitMaxStreams((SctpStandardSocketOption.InitMaxStreams) value);
+     } else if (key.equals("backlog")) {
+         setBacklog(ConversionUtil.toInt(value));
+     } else {
+         return false;
+     }
+     return true;
+ }
+\ No newline at end of file

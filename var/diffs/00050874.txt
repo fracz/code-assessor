@@ -1,0 +1,22 @@
+diff --git a/fcb2a0a53f7bf627f37444ad4f96c8adb072db87 b/31d15664e51dae7a4fda0fd4f7165cbe0114b3f2
+index fcb2a0a53f..31d15664e5 100644
+--- a/fcb2a0a53f7bf627f37444ad4f96c8adb072db87
++++ b/31d15664e51dae7a4fda0fd4f7165cbe0114b3f2
+@@ -1,15 +1,15 @@
+ private int getTabWidth(ITabItem tabItem) {
+     int width = getTextDimension(tabItem.getText()).x;
+     /*
+ 		 * To anticipate for the icon placement we should always keep the
+ 		 * space available after the label. So when the active tab includes
+ 		 * an icon the width of the tab doesn't change.
+ 		 */
+     if (tabItem.getImage() != null) {
+-        width = width + 16 + 4;
++        width = width + tabItem.getImage().getBounds().x + 4;
+     }
+     if (tabItem.isIndented()) {
+         width = width + INDENT;
+     }
+     return width;
+ }
+\ No newline at end of file

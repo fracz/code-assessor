@@ -1,0 +1,26 @@
+diff --git a/79681725bcd6c9fa80474b1f7d6d87c8c789823b b/2ecbc7a4544e6be412f717bb980f7e73d2ef5e20
+index 79681725bc..2ecbc7a454 100644
+--- a/79681725bcd6c9fa80474b1f7d6d87c8c789823b
++++ b/2ecbc7a4544e6be412f717bb980f7e73d2ef5e20
+@@ -1,19 +1,13 @@
+ @Override
+ public OPhysicalPosition allocatePosition(byte recordType) throws IOException {
+     try {
+-        OAtomicOperation atomicOperation = startAtomicOperation(true);
+         acquireExclusiveLock();
+         try {
+-            OPhysicalPosition physicalPosition = createPhysicalPosition(recordType, clusterPositionMap.allocate(), -1);
+-            endAtomicOperation(false, null);
+-            return physicalPosition;
+-        } catch (Exception e) {
+-            endAtomicOperation(true, e);
+-            throw OException.wrapException(new OPaginatedClusterException("Error during record creation", this), e);
++            return createPhysicalPosition(recordType, clusterPositionMap.allocate(), -1);
+         } finally {
+             releaseExclusiveLock();
+         }
+     } finally {
+         completeOperation();
+     }
+ }
+\ No newline at end of file

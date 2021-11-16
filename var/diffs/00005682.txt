@@ -1,0 +1,22 @@
+diff --git a/2892a3276a6931d4d73294f94793b81555658c1a b/fb6d79c8a1a9e6af5c090c804589bae8f56c1b12
+index 2892a3276a..fb6d79c8a1 100644
+--- a/2892a3276a6931d4d73294f94793b81555658c1a
++++ b/fb6d79c8a1a9e6af5c090c804589bae8f56c1b12
+@@ -1,12 +1,12 @@
+ @Test
+ public void testAffectsOnlyMove() {
+-    root.createDirectory(1, "root");
+-    root.createDirectory(2, "root/dir1");
+-    root.createDirectory(3, "root/dir2");
+-    root.createFile(4, "root/dir1/file", null, -1);
++    createDirectory(root, 1, "root");
++    createDirectory(root, 2, "root/dir1");
++    createDirectory(root, 3, "root/dir2");
++    createFile(root, 4, "root/dir1/file", null, -1);
+     Change c = new MoveChange("root/dir1/file", "root/dir2");
+     c.applyTo(root);
+     assertTrue(c.affectsOnlyInside(root.getEntry("root")));
+     assertFalse(c.affectsOnlyInside(root.getEntry("root/dir1")));
+     assertFalse(c.affectsOnlyInside(root.getEntry("root/dir2")));
+ }
+\ No newline at end of file

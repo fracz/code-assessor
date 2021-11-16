@@ -1,0 +1,16 @@
+diff --git a/e9173e2971dee262ddc334c958a75b5d5aaba94a b/68a19a5f1f762fd90be765e5a634d600cbf7bb29
+index e9173e2971..68a19a5f1f 100644
+--- a/e9173e2971dee262ddc334c958a75b5d5aaba94a
++++ b/68a19a5f1f762fd90be765e5a634d600cbf7bb29
+@@ -1,9 +1,9 @@
+ @NotNull
+ @Override
+ public List<Tools> getAllEnabledInspectionTools(Project project) {
+     List<Tools> result = new ArrayList<Tools>();
+-    for (InspectionToolWrapper toolWrapper : getInspectionTools(null)) {
++    for (InspectionToolWrapper toolWrapper : getInspectionTools(getFile())) {
+         result.add(new ToolsImpl(toolWrapper, toolWrapper.getDefaultLevel(), true));
+     }
+     return result;
+ }
+\ No newline at end of file

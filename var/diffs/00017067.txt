@@ -1,0 +1,13 @@
+diff --git a/309e3f59b5ee8389a800d49391e6a34d51e0c5c1 b/3c97a3fc4a8a1da59bdef66536fa523302f256ce
+index 309e3f59b5..3c97a3fc4a 100644
+--- a/309e3f59b5ee8389a800d49391e6a34d51e0c5c1
++++ b/3c97a3fc4a8a1da59bdef66536fa523302f256ce
+@@ -1,6 +1,6 @@
+ public void startEmulator() {
+     startServer();
+     System.out.println("Starting emulator...");
+-    OutputUtils.checkResult(RunUtils.executeOnSeparateThread(getStartCommand(), false));
++    RunUtils.executeOnSeparateThread(new RunUtils.RunSettings(getStartCommand(), null, false, "START: ", true));
+     printLog();
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/605dbe516786e6e876c8de07b266ef35e45d8506 b/e1327b3107948223b782126d3f2702d772c46ff7
+index 605dbe5167..e1327b3107 100644
+--- a/605dbe516786e6e876c8de07b266ef35e45d8506
++++ b/e1327b3107948223b782126d3f2702d772c46ff7
+@@ -1,12 +1,10 @@
+ private Observable<Boolean> _getObservable() {
+-    return Observable.create(new Observable.OnSubscribe<Boolean>() {
++    return Observable.just(true).map(new Func1<Boolean, Boolean>() {
+
+         @Override
+-        public void call(Subscriber<? super Boolean> observer) {
+-            _log("Within Observable");
++        public Boolean call(Boolean aBoolean) {
+             _doSomeLongOperation_thatBlocksCurrentThread();
+-            observer.onNext(true);
+-            observer.onCompleted();
++            return aBoolean;
+         }
+     });
+ }
+\ No newline at end of file

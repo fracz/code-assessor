@@ -1,0 +1,17 @@
+diff --git a/9f08cd78f0c4114cd0af344f237d409d7dab32b2 b/dfa5ed3488a6e30769a9371e91ffbf1d79c75e73
+index 9f08cd78f0..dfa5ed3488 100644
+--- a/9f08cd78f0c4114cd0af344f237d409d7dab32b2
++++ b/dfa5ed3488a6e30769a9371e91ffbf1d79c75e73
+@@ -1,10 +1,10 @@
+ @Test
+ public void shouldAddUniquenessConstraint() throws Exception {
+     // when
+-    UniquenessConstraint constraint = new UniquenessConstraint(1, 17);
++    UniquenessConstraint constraint = new UniquenessConstraint(descriptor1);
+     state.constraintDoAdd(constraint, 7);
+     // then
+     ReadableDiffSets<NodePropertyConstraint> diff = state.constraintsChangesForLabel(1);
+     assertEquals(singleton(constraint), diff.getAdded());
+     assertTrue(diff.getRemoved().isEmpty());
+ }
+\ No newline at end of file

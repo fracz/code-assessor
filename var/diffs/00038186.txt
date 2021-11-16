@@ -1,0 +1,25 @@
+diff --git a/a629feb717c34981ad407fb5c7112213339a5e16 b/5cd864d6106558c9e4f6a0fdabdda2ea51146338
+index a629feb717..5cd864d610 100644
+--- a/a629feb717c34981ad407fb5c7112213339a5e16
++++ b/5cd864d6106558c9e4f6a0fdabdda2ea51146338
+@@ -1,15 +1,14 @@
+ @Test
+ public void entriesThatAreNotStateMachineCommandsShouldStillIncreaseCommandIndex() throws Throwable {
+     // given
+-    applicationProcess.start();
+-    // when
+     raftLog.append(new RaftLogEntry(0, new NewLeaderBarrier()));
+     raftLog.append(new RaftLogEntry(0, operation(nullTx)));
++    // when
+     applicationProcess.notifyCommitted(1);
+-    applier.sync(false);
+-    InOrder inOrder = inOrder(coreStateMachines, commandDispatcher);
++    applicationProcess.start();
+     // then
+-    inOrder.verify(coreStateMachines).commandDispatcher();
++    InOrder inOrder = inOrder(coreState, commandDispatcher);
++    inOrder.verify(coreState).commandDispatcher();
+     inOrder.verify(commandDispatcher).dispatch(eq(nullTx), eq(1L), anyCallback());
+     inOrder.verify(commandDispatcher).close();
+ }
+\ No newline at end of file

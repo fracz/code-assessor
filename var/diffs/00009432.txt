@@ -1,0 +1,15 @@
+diff --git a/385b75307360b88830793c306ae9b5dbafe5f288 b/fe0e9b5d3b4d6ec903bb42d1ea1ebd8c5d0d64d4
+index 385b753073..fe0e9b5d3b 100644
+--- a/385b75307360b88830793c306ae9b5dbafe5f288
++++ b/fe0e9b5d3b4d6ec903bb42d1ea1ebd8c5d0d64d4
+@@ -1,8 +1,4 @@
+ @Override
+ public void setUI(TreeUI ui) {
+-    TreeUI actualUI = ui;
+-    if (!(ui instanceof MyTreeUi)) {
+-        actualUI = new MyTreeUi();
+-    }
+-    super.setUI(actualUI);
++    super.setUI(ui instanceof MyTreeUi ? ui : new MyTreeUi());
+ }
+\ No newline at end of file

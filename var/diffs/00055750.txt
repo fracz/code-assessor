@@ -1,0 +1,18 @@
+diff --git a/5db930f995239a5a6385cea98ff6c99fd295de99 b/23c79d8ed4ae025c124be1954a2acac36b38775a
+index 5db930f995..23c79d8ed4 100644
+--- a/5db930f995239a5a6385cea98ff6c99fd295de99
++++ b/23c79d8ed4ae025c124be1954a2acac36b38775a
+@@ -1,10 +1,8 @@
+ private int indexOfMediaType(MediaType mediaType) {
+-    List<ProduceRequestCondition> sortedConditions = getSortedConditions();
+-    for (int i = 0; i < sortedConditions.size(); i++) {
+-        ProduceRequestCondition condition = sortedConditions.get(i);
+-        if (mediaType.includes(condition.getMediaType())) {
++    for (int i = 0; i < expressions.size(); i++) {
++        if (mediaType.includes(expressions.get(i).getMediaType())) {
+             return i;
+         }
+     }
+     return -1;
+ }
+\ No newline at end of file

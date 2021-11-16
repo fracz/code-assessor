@@ -1,0 +1,11 @@
+diff --git a/b0e77d226b1b90e788fbdc160bbd291d04d63155 b/ecb8f13ef334d26f8168d2beea94651316a58795
+index b0e77d226b..ecb8f13ef3 100644
+--- a/b0e77d226b1b90e788fbdc160bbd291d04d63155
++++ b/ecb8f13ef334d26f8168d2beea94651316a58795
+@@ -1,3 +1,3 @@
+-public static IndexRule constraintIndexRule(long id, int label, int propertyKeyId, SchemaIndexProvider.Descriptor providerDescriptor, Long owningConstraint) {
+-    return new IndexRule(id, label, propertyKeyId, providerDescriptor, owningConstraint == null ? NO_OWNING_CONSTRAINT : owningConstraint);
++public static IndexRule constraintIndexRule(long id, NodePropertyDescriptor descriptor, SchemaIndexProvider.Descriptor providerDescriptor, Long owningConstraint) {
++    return new IndexRule(id, descriptor, providerDescriptor, owningConstraint == null ? NO_OWNING_CONSTRAINT : owningConstraint);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/a1373caba0d7e37ab9dc92e43dfaa385ca86efd2 b/0c0de441e3d883f4a9793774aad8302c0655244e
+index a1373caba0..0c0de441e3 100644
+--- a/a1373caba0d7e37ab9dc92e43dfaa385ca86efd2
++++ b/0c0de441e3d883f4a9793774aad8302c0655244e
+@@ -1,5 +1,5 @@
+ public long[] getClusterDataRange(final int iClusterId) {
+-    OBinaryRequest request = new OGetClusterDataRangeRequest(iClusterId);
+-    OBinaryResponse<long[]> response = new OGetClusterDataRangeResponse();
+-    return networkOperation(request, response, "Error on getting last entry position count in cluster: " + iClusterId);
++    OGetClusterDataRangeRequest request = new OGetClusterDataRangeRequest(iClusterId);
++    OGetClusterDataRangeResponse response = networkOperation(request, "Error on getting last entry position count in cluster: " + iClusterId);
++    return response.getPos();
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/33bee7502bbadc18376a8ea383695751c2353d60 b/e84b07b51faca2a250439044a4831dcaab387fe5
+index 33bee7502b..e84b07b51f 100644
+--- a/33bee7502bbadc18376a8ea383695751c2353d60
++++ b/e84b07b51faca2a250439044a4831dcaab387fe5
+@@ -1,6 +1,7 @@
+ private Point computeControlSize(GridColumn column) {
+-    if (column.getHeaderControl() != null) {
+-        return column.getHeaderControl().computeSize(SWT.DEFAULT, SWT.DEFAULT);
++    Control headerControl = column.getHeaderControl();
++    if (headerControl != null) {
++        return headerControl.computeSize(SWT.DEFAULT, SWT.DEFAULT);
+     }
+     return new Point(0, 0);
+ }
+\ No newline at end of file

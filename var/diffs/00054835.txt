@@ -1,0 +1,17 @@
+diff --git a/a436572f3afad8c73a1ed293990862699f099dff b/d04e6d55a41a48ac8fc57b8a0201f563d6e93b21
+index a436572f3a..d04e6d55a4 100644
+--- a/a436572f3afad8c73a1ed293990862699f099dff
++++ b/d04e6d55a41a48ac8fc57b8a0201f563d6e93b21
+@@ -1,8 +1,6 @@
+ @Override
+-public boolean testRun() {
+-    String str = "test\tstr\n";
+-    assertTrue(str.length() == 9);
+-    str = "test\bunicode\u1234";
+-    assertTrue(str.charAt(4) == '\b');
++public boolean testRun() throws Exception {
++    testStringEscape();
++    testStringConcat();
+     return true;
+ }
+\ No newline at end of file

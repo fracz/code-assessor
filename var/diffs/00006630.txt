@@ -1,0 +1,18 @@
+diff --git a/40bb9b94440e68baceb839cf0ccff88af8567209 b/08f6926bbcf600173ceae10f4f1caf87133da3bc
+index 40bb9b9444..08f6926bbc 100644
+--- a/40bb9b94440e68baceb839cf0ccff88af8567209
++++ b/08f6926bbcf600173ceae10f4f1caf87133da3bc
+@@ -1,11 +1,10 @@
+ private boolean checkMethodConflicts() {
+-    P[] parameters = getParameters();
+-    for (P info : parameters) {
++    for (P info : getParameters()) {
+         if (!isResolvableType(info, myMethod)) {
+             final int ret = Messages.showOkCancelDialog(myProject, RefactoringBundle.message("changeSignature.cannot.resolve.type", info.getTypeText()), ChangeSignatureHandler.REFACTORING_NAME, Messages.getErrorIcon());
+             if (ret != 0)
+                 return false;
+         }
+     }
+     return true;
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/c10599f1fcb04fbaa89525b1e1146e37a03876cf b/bdc53714821b3cb5fc229693a6f1dd3c55eab02c
+index c10599f1fc..bdc5371482 100644
+--- a/c10599f1fcb04fbaa89525b1e1146e37a03876cf
++++ b/bdc53714821b3cb5fc229693a6f1dd3c55eab02c
+@@ -1,10 +1,10 @@
+ @Override
+ public void airPressure(int newAirPressure) {
+     if (newAirPressure > (airPressure + threshold) || newAirPressure < (airPressure - threshold)) {
+-        setSensorValue((double) (newAirPressure / 1000));
++        setSensorValue(new DecimalValue(newAirPressure / 1000));
+         setAirPressure(newAirPressure);
+     } else {
+         // TODO fix loggers for all devices
+         logger.trace(String.format("new airPressure: %s, old %s", newAirPressure, airPressure));
+     }
+ }
+\ No newline at end of file

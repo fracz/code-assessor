@@ -1,0 +1,22 @@
+diff --git a/41c07aa2aa4714a60837eb996315ef906bb14a8e b/a6dcb4385c6a2a49726a91abf8a839bca4564261
+index 41c07aa2aa..a6dcb4385c 100644
+--- a/41c07aa2aa4714a60837eb996315ef906bb14a8e
++++ b/a6dcb4385c6a2a49726a91abf8a839bca4564261
+@@ -1,14 +1,13 @@
+ /**
+  * Releases a frozen database.
+  *
+  * @param storageType Storage type between "plocal" or "memory".
+  * @return
+  * @throws IOException
+  * @see #freezeDatabase(String)
+  */
+ public synchronized OServerAdmin releaseDatabase(final String storageType) throws IOException {
+-    OBinaryRequest request = new OReleaseDatabaseRequest(storage.getName(), storageType);
+-    OBinaryResponse<Void> response = new OReleaseDatabaseResponse();
+-    networkAdminOperation(request, response, "Cannot release the remote storage: " + storage.getName());
++    OReleaseDatabaseRequest request = new OReleaseDatabaseRequest(storage.getName(), storageType);
++    OReleaseDatabaseResponse response = networkAdminOperation(request, "Cannot release the remote storage: " + storage.getName());
+     return this;
+ }
+\ No newline at end of file

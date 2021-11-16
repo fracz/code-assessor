@@ -1,0 +1,24 @@
+diff --git a/0b121e6f1f50b45de004e41e8886978491cc3fa8 b/0d0ed50e44ae401c132e2af43302d22d7f53a5dc
+index 0b121e6f1f..0d0ed50e44 100644
+--- a/0b121e6f1f50b45de004e41e8886978491cc3fa8
++++ b/0d0ed50e44ae401c132e2af43302d22d7f53a5dc
+@@ -1,9 +1,11 @@
+ @Override
+-public boolean addAll(Collection<? extends V> c) {
+-    RedisConnection<Object, Object> connection = connectionManager.connectionWriteOp();
+-    try {
+-        return connection.sadd(getName(), c.toArray()) > 0;
+-    } finally {
+-        connectionManager.releaseWrite(connection);
+-    }
++public boolean addAll(final Collection<? extends V> c) {
++    Long res = connectionManager.write(new ResultOperation<Long, Object>() {
++
++        @Override
++        public Future<Long> execute(RedisAsyncConnection<Object, Object> async) {
++            return async.sadd(getName(), c.toArray());
++        }
++    });
++    return res > 0;
+ }
+\ No newline at end of file

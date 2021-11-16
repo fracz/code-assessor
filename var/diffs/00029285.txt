@@ -1,0 +1,17 @@
+diff --git a/efd664331f7f78010b49dc41086c4ac75209086a b/748c107aa19b71df4dbf31747bd18edd66881722
+index efd664331f..748c107aa1 100644
+--- a/efd664331f7f78010b49dc41086c4ac75209086a
++++ b/748c107aa19b71df4dbf31747bd18edd66881722
+@@ -1,10 +1,10 @@
+ @Override
+ public String toString() {
+     String sSource = "_na_";
+     try {
+-        sSource = Unicode.fromBytes(querySource.bytes(), querySource.offset(), querySource.length());
++        sSource = XContentHelper.convertToJson(querySource, false);
+     } catch (Exception e) {
+     // ignore
+     }
+     return "delete_by_query {[" + index + "]" + Arrays.toString(types) + ", query [" + sSource + "]}";
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/01374c3802076f0ab2325b6eda69b8843acc011c b/08fed97e5e42ae6acb2de8c44ec7424400abcf4e
+index 01374c3802..08fed97e5e 100644
+--- a/01374c3802076f0ab2325b6eda69b8843acc011c
++++ b/08fed97e5e42ae6acb2de8c44ec7424400abcf4e
+@@ -1,11 +1,7 @@
+ private void handleCryptoOperationSuccess(MimeBodyPart outputPart) {
+     OpenPgpDecryptionResult decryptionResult = currentCryptoResult.getParcelableExtra(OpenPgpApi.RESULT_DECRYPTION);
+     OpenPgpSignatureResult signatureResult = currentCryptoResult.getParcelableExtra(OpenPgpApi.RESULT_SIGNATURE);
+     PendingIntent pendingIntent = currentCryptoResult.getParcelableExtra(OpenPgpApi.RESULT_INTENT);
+-    OpenPgpResultAnnotation resultAnnotation = new OpenPgpResultAnnotation();
+-    resultAnnotation.setOutputData(outputPart);
+-    resultAnnotation.setDecryptionResult(decryptionResult);
+-    resultAnnotation.setSignatureResult(signatureResult);
+-    resultAnnotation.setPendingIntent(pendingIntent);
++    CryptoResultAnnotation resultAnnotation = CryptoResultAnnotation.createOpenPgpResultAnnotation(decryptionResult, signatureResult, pendingIntent, outputPart);
+     onCryptoSuccess(resultAnnotation);
+ }
+\ No newline at end of file

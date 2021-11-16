@@ -1,0 +1,13 @@
+diff --git a/cd9673c4334f7db8f4395545db6bf6ee6f2486c8 b/d03cd138bcb08e0d4cfb028753d499b88defefca
+index cd9673c433..d03cd138bc 100644
+--- a/cd9673c4334f7db8f4395545db6bf6ee6f2486c8
++++ b/d03cd138bcb08e0d4cfb028753d499b88defefca
+@@ -1,6 +1,6 @@
+ private boolean belongsToThisRepository(VirtualFile file) {
+     // this check should be quick
+     // we shouldn't create a full instance repository here because it may lead to SOE while many unversioned files will be processed
+-    final GitRepository repository = myRepositoryManager.getRepositoryForFile(file, false);
++    final GitRepository repository = myRepositoryManager.getRepositoryForRootQuick(DvcsUtil.getVcsRoot(myProject, file));
+     return repository != null && repository.getRoot().equals(myRoot);
+ }
+\ No newline at end of file

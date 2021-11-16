@@ -1,0 +1,12 @@
+diff --git a/5097333acb661e4334539c7881a8d98478c221b9 b/459a41742b8033c7e3d5586a64f550dc61358627
+index 5097333acb..459a41742b 100644
+--- a/5097333acb661e4334539c7881a8d98478c221b9
++++ b/459a41742b8033c7e3d5586a64f550dc61358627
+@@ -1,3 +1,5 @@
+ protected ODistributedRequest nextMessage() throws InterruptedException {
+-    return localQueue.take();
++    final ODistributedRequest req = localQueue.take();
++    processedRequests.incrementAndGet();
++    return req;
+ }
+\ No newline at end of file

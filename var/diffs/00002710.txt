@@ -1,0 +1,20 @@
+diff --git a/116e4714c1b41b969b46bf7412cdc9a335b1cd59 b/c7eb67940d3b3caf6909eff15804036e23e1f106
+index 116e4714c1..c7eb67940d 100644
+--- a/116e4714c1b41b969b46bf7412cdc9a335b1cd59
++++ b/c7eb67940d3b3caf6909eff15804036e23e1f106
+@@ -1,12 +1,12 @@
+-private List<ShelvedChangeList> getLists(final DataContext dataContext) {
++private List<ShelvedChangeList> getLists(@NotNull final DataContext dataContext) {
+     final ShelvedChangeList[] shelved = SHELVED_CHANGELIST_KEY.getData(dataContext);
+     final ShelvedChangeList[] recycled = SHELVED_RECYCLED_CHANGELIST_KEY.getData(dataContext);
+-    final List<ShelvedChangeList> shelvedChangeLists = (shelved == null && recycled == null) ? Collections.<ShelvedChangeList>emptyList() : new ArrayList<ShelvedChangeList>();
++    final List<ShelvedChangeList> shelvedChangeLists = (shelved == null && recycled == null) ? Collections.emptyList() : new ArrayList<ShelvedChangeList>();
+     if (shelved != null) {
+         ContainerUtil.addAll(shelvedChangeLists, shelved);
+     }
+     if (recycled != null) {
+         ContainerUtil.addAll(shelvedChangeLists, recycled);
+     }
+     return shelvedChangeLists;
+ }
+\ No newline at end of file

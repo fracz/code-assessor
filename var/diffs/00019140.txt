@@ -1,0 +1,14 @@
+diff --git a/03924c8889533214283f3d84d0714e1d26cc71ec b/3ed902f4575339921ba2f856016a5772f26a1595
+index 03924c8889..3ed902f457 100644
+--- a/03924c8889533214283f3d84d0714e1d26cc71ec
++++ b/3ed902f4575339921ba2f856016a5772f26a1595
+@@ -1,7 +1,3 @@
+ public int getContactDividerColor() {
+-    if (contactDividerColor != 0) {
+-        return contactDividerColor;
+-    } else {
+-        return getDividerColor();
+-    }
++    return getColorWithFallback(contactDividerColor, getDividerColor());
+ }
+\ No newline at end of file

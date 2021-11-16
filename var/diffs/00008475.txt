@@ -1,0 +1,27 @@
+diff --git a/db21c7f208f0cee476d3d2fa1a148ff600f65e1a b/61450c772e487f17f8975f9cec198bdda8728922
+index db21c7f208..61450c772e 100644
+--- a/db21c7f208f0cee476d3d2fa1a148ff600f65e1a
++++ b/61450c772e487f17f8975f9cec198bdda8728922
+@@ -1,16 +1,16 @@
+ /**
+  * @param key a string to perform a query for
+  * @return an extended state stored for the specified {@code key},
+  * or {@code null} if there is no stored integer value
+  */
+ public int getExtendedState(String key) {
+     if (!Registry.is("ide.dimension.service.old")) {
+         String newKey = getKey(null, key);
+-        if (myKey2ExtendedState.containsKey(newKey)) {
+-            return myKey2ExtendedState.get(newKey);
++        Integer value = myService.getExtendedStateImpl(newKey);
++        if (value != null) {
++            return value;
+         }
+     }
+-    if (!myKey2ExtendedState.containsKey(key))
+-        return -1;
+-    return myKey2ExtendedState.get(key);
++    Integer value = myService.getExtendedStateImpl(key);
++    return value != null ? value : -1;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/03845430e669a5185b6fd5a2813acc02492d204b b/8fa4ef2483fca3607340432f87129ab4871a0b60
+index 03845430e6..8fa4ef2483 100644
+--- a/03845430e669a5185b6fd5a2813acc02492d204b
++++ b/8fa4ef2483fca3607340432f87129ab4871a0b60
+@@ -1,9 +1,4 @@
+ @NotNull
+ public String getText() {
+-    if (myItemElement instanceof DPropertyElement) {
+-        return GroovyBundle.message("add.dynamic.property");
+-    } else if (myItemElement instanceof DMethodElement) {
+-        return GroovyBundle.message("add.dynamic.method");
+-    }
+-    return "nothing";
++    return !myIsMethod ? GroovyBundle.message("add.dynamic.property") : GroovyBundle.message("add.dynamic.method");
+ }
+\ No newline at end of file

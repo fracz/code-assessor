@@ -1,0 +1,13 @@
+diff --git a/bf307f972c787002828355bfdd7001fb9fba3e34 b/18bc1932b7c1c3a547edc02ebe3cf48c74c28711
+index bf307f972c..18bc1932b7 100644
+--- a/bf307f972c787002828355bfdd7001fb9fba3e34
++++ b/18bc1932b7c1c3a547edc02ebe3cf48c74c28711
+@@ -1,3 +1,6 @@
+ public void merge(PomChangeSet blocked) {
+-    myChanges.addAll(((XmlAspectChangeSetImpl) blocked).myChanges);
++    final List<XmlChange> changes = ((XmlAspectChangeSetImpl) blocked).myChanges;
++    for (XmlChange xmlChange : changes) {
++        add(xmlChange);
++    }
+ }
+\ No newline at end of file

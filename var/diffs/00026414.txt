@@ -1,0 +1,16 @@
+diff --git a/2ac0eee0d411bb61019bf69488e146a4a08c4e03 b/b4d940eb45b103bff366d7c4bbaf71fd1a106b3e
+index 2ac0eee0d4..b4d940eb45 100644
+--- a/2ac0eee0d411bb61019bf69488e146a4a08c4e03
++++ b/b4d940eb45b103bff366d7c4bbaf71fd1a106b3e
+@@ -1,9 +1,9 @@
+ /**
+  * {@inheritDoc}
+  */
+ @Override
+ public void setReadOnly(boolean readOnly) throws SQLException {
+     delegate.setReadOnly(readOnly);
++    poolEntry.setReadOnly(readOnly);
+     isConnectionStateDirty = true;
+-    isReadOnlyDirty = (readOnly != bagEntry.parentPool.isReadOnly);
+ }
+\ No newline at end of file

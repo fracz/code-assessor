@@ -1,0 +1,15 @@
+diff --git a/95949c9e55440164068c40975ed6e906eb54083b b/a069dff34ecabb39f5643021e514570427cdad08
+index 95949c9e55..a069dff34e 100644
+--- a/95949c9e55440164068c40975ed6e906eb54083b
++++ b/a069dff34ecabb39f5643021e514570427cdad08
+@@ -1,8 +1,8 @@
+ @Override
+ public String getName() {
+     if (name == null) {
+-        name = Iterables.getOnlyElement(new VertexCentricQueryBuilder(this).includeHidden().type(SystemKey.TypeName).properties(), null).getValue(String.class);
++        name = Iterables.getOnlyElement(query().includeHidden().type(SystemKey.TypeName).properties(), null).getValue(String.class);
+     }
+     Preconditions.checkNotNull(name);
+     return name;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/c2148b1444408c9f1dbc2a149c9e8d28e417c3fb b/b00a668bc1d073428a5d62120b9ba074f350d433
+index c2148b1444..b00a668bc1 100644
+--- a/c2148b1444408c9f1dbc2a149c9e8d28e417c3fb
++++ b/b00a668bc1d073428a5d62120b9ba074f350d433
+@@ -1,6 +1,7 @@
+ @NotNull
+ private JsFunction generateFunctionObject() {
+-    functionObject.setParameters(translateParameters(functionDeclaration.getValueParameters(), functionObject.getScope()));
+-    functionObject.setBody(translateBody());
++    TranslationContext innerContext = functionBodyContext();
++    functionObject.setParameters(translateParameters(functionDeclaration.getValueParameters(), innerContext));
++    functionObject.setBody(translateBody(innerContext));
+     return functionObject;
+ }
+\ No newline at end of file

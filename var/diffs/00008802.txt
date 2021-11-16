@@ -1,0 +1,18 @@
+diff --git a/44ed3284df371de3dc7eced5c1c39a1113f91890 b/b9be1600f30c5ed0ffa97737f981258e6da52581
+index 44ed3284df..b9be1600f3 100644
+--- a/44ed3284df371de3dc7eced5c1c39a1113f91890
++++ b/b9be1600f30c5ed0ffa97737f981258e6da52581
+@@ -1,9 +1,6 @@
+ @NotNull
+ @Override
+-public Collection<VcsLogFilter> getFilters() {
+-    List<VcsLogFilter> filters = getPopupFilters();
+-    if (!myTextFilter.getText().isEmpty()) {
+-        filters.add(new VcsLogTextFilterImpl(myTextFilter.getText()));
+-    }
+-    return filters;
++public VcsLogFilterCollection getFilters() {
++    VcsLogTextFilter textFilter = !myTextFilter.getText().isEmpty() ? new VcsLogTextFilterImpl(myTextFilter.getText()) : null;
++    return new VcsLogFilterCollectionImpl(myBranchFilterComponent.getFilter(), myUserFilterComponent.getFilter(), myDateFilterComponent.getFilter(), textFilter, myStructureFilterComponent.getFilter());
+ }
+\ No newline at end of file

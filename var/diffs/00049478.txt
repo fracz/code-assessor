@@ -1,0 +1,15 @@
+diff --git a/a69db353474891b3b1c6aa3a778c463e2ddd98b0 b/50bb4fa4511e31acb0e0aeb1d6a928bf8c9c980c
+index a69db35347..50bb4fa451 100644
+--- a/a69db353474891b3b1c6aa3a778c463e2ddd98b0
++++ b/50bb4fa4511e31acb0e0aeb1d6a928bf8c9c980c
+@@ -1,8 +1,8 @@
+ private void executeTool(IWorkbenchPart part, Collection<DBSObject> objects) {
+     try {
+         IExternalTool toolInstance = tool.createTool();
+         toolInstance.execute(window, part, objects);
+     } catch (Throwable e) {
+-        UIUtils.showErrorDialog(window.getShell(), "Tool error", "Error executing tool '" + tool.getLabel() + "'", e);
++        DBUserInterface.getInstance().showError("Tool error", "Error executing tool '" + tool.getLabel() + "'", e);
+     }
+ }
+\ No newline at end of file

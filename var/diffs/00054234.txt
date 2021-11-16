@@ -1,0 +1,13 @@
+diff --git a/6d8d318740dd0951835327cc5634c0afdc9762f7 b/be7061ff9973c0bec65e44ca4739d4807c59d0c9
+index 6d8d318740..be7061ff99 100644
+--- a/6d8d318740dd0951835327cc5634c0afdc9762f7
++++ b/be7061ff9973c0bec65e44ca4739d4807c59d0c9
+@@ -1,6 +1,6 @@
+ @Test(expected = UnsupportedOperationException.class)
+ public void parseMultipleInsertForMySQL() {
+     ShardingRule shardingRule = createShardingRule();
+     List<Object> parameters = Collections.emptyList();
+-    new SQLStatementParser(DatabaseType.Oracle, shardingRule, parameters, new OracleParser("INSERT INTO TABLE_XXX (`field1`, `field2`) VALUES (1, 'value_char'), (2, 'value_char')", shardingRule, parameters)).parseStatement();
++    new SQLParserEngine(DatabaseType.Oracle, new OracleParser("INSERT INTO TABLE_XXX (`field1`, `field2`) VALUES (1, 'value_char'), (2, 'value_char')", shardingRule, parameters), shardingRule, parameters).parseStatement();
+ }
+\ No newline at end of file

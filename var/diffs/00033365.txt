@@ -1,0 +1,16 @@
+diff --git a/c7285a8dcb8ee0bf84b994c94b710d8a8cbfa0cf b/a2dd600efd6d703710ee5b0064aaead7603adef8
+index c7285a8dcb..a2dd600efd 100644
+--- a/c7285a8dcb8ee0bf84b994c94b710d8a8cbfa0cf
++++ b/a2dd600efd6d703710ee5b0064aaead7603adef8
+@@ -1,9 +1,4 @@
+ @Override
+ public String toString() {
+-    if (!DefaultModuleVersionIdentifier.newId(requested).equals(selected.getId())) {
+-        // TODO SF the report should not depend on the toString()
+-        return asked() + " -> " + selected.getId().getVersion();
+-    } else {
+-        return asked();
+-    }
++    return "ResolvedDependencyResult{" + "requested=" + requested + ", selected=" + selected + ", configurations=" + configurations + '}';
+ }
+\ No newline at end of file

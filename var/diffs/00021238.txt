@@ -1,0 +1,18 @@
+diff --git a/01ba85ea17055a3de93f0df3921ffbadd2110442 b/b06f07b4a476d5259e4c98e7298d39622a025882
+index 01ba85ea17..b06f07b4a4 100644
+--- a/01ba85ea17055a3de93f0df3921ffbadd2110442
++++ b/b06f07b4a476d5259e4c98e7298d39622a025882
+@@ -1,10 +1,10 @@
+ private void _after(MethodVisitor mw, Context context) {
+-    mw.visitVarInsn(ALOAD, Context.serializer);
+     // this
+     mw.visitVarInsn(ALOAD, 0);
++    mw.visitVarInsn(ALOAD, Context.serializer);
+     // obj
+     mw.visitVarInsn(ALOAD, 2);
+     mw.visitVarInsn(ILOAD, context.var("seperator"));
+-    mw.visitMethodInsn(INVOKEVIRTUAL, JSONSerializer, "writeAfter", "(" + SerializeFilterable_desc + "Ljava/lang/Object;C)C");
++    mw.visitMethodInsn(INVOKEVIRTUAL, JavaBeanSerializer, "writeAfter", "(L" + JSONSerializer + ";Ljava/lang/Object;C)C");
+     mw.visitVarInsn(ISTORE, context.var("seperator"));
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/635bdadac1ab06d3649b42bf4f71403efa0546d6 b/4e7ab22e6615168d955d569aedfb5efc6e1d3d01
+index 635bdadac1..4e7ab22e66 100644
+--- a/635bdadac1ab06d3649b42bf4f71403efa0546d6
++++ b/4e7ab22e6615168d955d569aedfb5efc6e1d3d01
+@@ -1,11 +1,10 @@
+ public List<String> getList(String key, String delimiter, List<String> defaultValue) {
+     if (delimiter == null) {
+         throw new IllegalArgumentException("Illegal separator for Tachyon properties as list");
+     }
+     if (mProperties.containsKey(key)) {
+         String rawValue = mProperties.getProperty(key);
+         return Lists.newLinkedList(Splitter.on(',').trimResults().omitEmptyStrings().split(rawValue));
+-    } else {
+-        return defaultValue;
+     }
++    return defaultValue;
+ }
+\ No newline at end of file

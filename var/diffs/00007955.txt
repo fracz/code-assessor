@@ -1,0 +1,20 @@
+diff --git a/3f830150b7d709594fbe2a4f938c3fee49e8d4d8 b/ef7fbb8beb91488b07181fd58f35430c39b8b46d
+index 3f830150b7..ef7fbb8beb 100644
+--- a/3f830150b7d709594fbe2a4f938c3fee49e8d4d8
++++ b/ef7fbb8beb91488b07181fd58f35430c39b8b46d
+@@ -1,12 +1,13 @@
++@SuppressWarnings({ "HardCodedStringLiteral" })
+ public static String getFormattedSize(String size) {
+     if (size.equals("-1")) {
+         return IdeBundle.message("plugin.info.unknown");
+     } else if (size.length() >= 4) {
+         if (size.length() < 7) {
+-            size = String.format("%.1f", (float) Integer.parseInt(size) / 1024.0f) + " K";
++            size = String.format("%.1f", (float) Integer.parseInt(size) / kByte) + " K";
+         } else {
+             size = String.format("%.1f", (float) Integer.parseInt(size) / mgByte) + " M";
+         }
+     }
+     return size;
+ }
+\ No newline at end of file

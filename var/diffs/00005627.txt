@@ -1,0 +1,21 @@
+diff --git a/fc8669d5167dd9d0e0be90099b8602781ac15cd3 b/3f550eb8d8e64aacf4a65c47714c58daccc0b446
+index fc8669d516..3f550eb8d8 100644
+--- a/fc8669d5167dd9d0e0be90099b8602781ac15cd3
++++ b/3f550eb8d8e64aacf4a65c47714c58daccc0b446
+@@ -1,9 +1,8 @@
+ @Override
+-protected IdPath doApplyTo(RootEntry root) {
+-    Entry affectedEntry = root.getEntry(myPath);
+-    myOldContent = affectedEntry.getContent();
+-    myOldTimestamp = affectedEntry.getTimestamp();
+-    IdPath idPath = affectedEntry.getIdPath();
+-    root.changeFileContent(idPath, myNewContent, myNewTimestamp);
+-    return idPath;
++protected IdPath doApplyTo(Entry root) {
++    Entry e = root.getEntry(myPath);
++    myOldContent = e.getContent();
++    myOldTimestamp = e.getTimestamp();
++    e.changeContent(myNewContent, myNewTimestamp);
++    return e.getIdPath();
+ }
+\ No newline at end of file

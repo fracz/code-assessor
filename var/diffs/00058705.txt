@@ -1,0 +1,19 @@
+diff --git a/e520493adf6b58e0abd7b4cd71a60c1c508cede4 b/e087783bc8a72f3aa3e21366c4fd9fddb38d976f
+index e520493adf..e087783bc8 100644
+--- a/e520493adf6b58e0abd7b4cd71a60c1c508cede4
++++ b/e087783bc8a72f3aa3e21366c4fd9fddb38d976f
+@@ -1,9 +1,11 @@
+ private void begin() throws StorageException {
+-    transaction.run(new PersistitJob() {
++    PersistitJob j = new PersistitJob() {
+
+         @Override
+         public void runTransaction() throws PersistitException, RollbackException {
+             exchange.getKey().to(Key.BEFORE);
+         }
+-    });
++    };
++    j.setExchange(exchange);
++    transaction.run(j);
+ }
+\ No newline at end of file

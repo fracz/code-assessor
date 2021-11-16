@@ -1,0 +1,15 @@
+diff --git a/bd367f9dffcc499371b5f1e3383480269857a57c b/2569e9a6d3e1839c31d8ba2124796468d8dd5705
+index bd367f9dff..2569e9a6d3 100644
+--- a/bd367f9dffcc499371b5f1e3383480269857a57c
++++ b/2569e9a6d3e1839c31d8ba2124796468d8dd5705
+@@ -1,4 +1,8 @@
+ @NotNull
+ public JsName getNameForDescriptor(@NotNull DeclarationDescriptor descriptor) {
+-    return getNameForFQNPart(fqnGenerator.generate(descriptor)).get(0);
++    FQNPart fqn = fqnGenerator.generate(descriptor);
++    if (fqn == null) {
++        throw new IllegalArgumentException("Can't generate name for root declarations: " + descriptor);
++    }
++    return getNameForFQNPart(fqn).get(0);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/ae0d35fc0b573907db9125c2c40574718df84aaa b/c5cdc85a03f6da8628d713569461a7785c8f23fa
+index ae0d35fc0b..c5cdc85a03 100644
+--- a/ae0d35fc0b573907db9125c2c40574718df84aaa
++++ b/c5cdc85a03f6da8628d713569461a7785c8f23fa
+@@ -1,7 +1,7 @@
+ @Test
+ public void testAutowire() throws Exception {
+-    XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("autowire.xml", getClass()));
++    XmlBeanFactory xbf = new XmlBeanFactory(AUTOWIRE_CONTEXT);
+     TestBean spouse = new TestBean("kerry", 0);
+     xbf.registerSingleton("spouse", spouse);
+     doTestAutowire(xbf);
+ }
+\ No newline at end of file

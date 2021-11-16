@@ -1,0 +1,14 @@
+diff --git a/be8fba01fc43b6cee8fb576a7ff95ba075ecda45 b/4bf5d00779d28f668777634731240ae75f9f4fbc
+index be8fba01fc..4bf5d00779 100644
+--- a/be8fba01fc43b6cee8fb576a7ff95ba075ecda45
++++ b/4bf5d00779d28f668777634731240ae75f9f4fbc
+@@ -1,5 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiClass aClass = (PsiClass) location.getParent();
+-    final int count = getInheritanceDepth(aClass, new HashSet<PsiClass>());
++@NotNull
++public String buildErrorString(Object... infos) {
++    final Integer count = (Integer) infos[0];
+     return InspectionGadgetsBundle.message("class.too.deep.problem.descriptor", count);
+ }
+\ No newline at end of file

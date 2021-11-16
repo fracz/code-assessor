@@ -1,0 +1,13 @@
+diff --git a/5f7a330552f9a8796c94cff78d05d7cad32d490b b/5fd56d570e1aec9bcd8f0e1815423c794471635c
+index 5f7a330552..5fd56d570e 100644
+--- a/5f7a330552f9a8796c94cff78d05d7cad32d490b
++++ b/5fd56d570e1aec9bcd8f0e1815423c794471635c
+@@ -1,3 +1,5 @@
+-private SelectItem parseAggregationSelectItem(final String literals) {
+-    return new AggregationSelectItem(AggregationType.valueOf(literals.toUpperCase()), sqlParser.skipParentheses(), sqlParser.parseAlias());
++private SelectItem parseAggregationSelectItem() {
++    AggregationType aggregationType = AggregationType.valueOf(sqlParser.getLexer().getCurrentToken().getLiterals().toUpperCase());
++    sqlParser.getLexer().nextToken();
++    return new AggregationSelectItem(aggregationType, sqlParser.skipParentheses(), sqlParser.parseAlias());
+ }
+\ No newline at end of file

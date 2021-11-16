@@ -1,0 +1,13 @@
+diff --git a/d1c0d811891b4ed694173da1bbaff44e1faced8a b/dc823e81458e00b2df53454791862242a3a73fa8
+index d1c0d81189..dc823e8145 100644
+--- a/d1c0d811891b4ed694173da1bbaff44e1faced8a
++++ b/dc823e81458e00b2df53454791862242a3a73fa8
+@@ -1,5 +1,6 @@
+ @Before
+ public void setup() {
+-    httpServletResponse = new HttpServletResponseMock();
++    httpServletResponse = mock(HttpServletResponse.class);
+     response = new Response(httpServletResponse);
++    cookieArgumentCaptor = ArgumentCaptor.forClass(Cookie.class);
+ }
+\ No newline at end of file

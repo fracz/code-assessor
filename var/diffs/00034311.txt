@@ -1,0 +1,25 @@
+diff --git a/0aa621603d72e2de5048c1a167382fe2087c4faa b/8fe3ed2728e623f86f20ea8ffebbad931cba88cb
+index 0aa621603d..8fe3ed2728 100644
+--- a/0aa621603d72e2de5048c1a167382fe2087c4faa
++++ b/8fe3ed2728e623f86f20ea8ffebbad931cba88cb
+@@ -1,18 +1,14 @@
+ @Test
+ public void open_withNoSecurityPlainAuth_connectsToServer() throws Exception {
+-    username = "user";
+-    password = "password";
+-    authenticationType = AuthType.PLAIN;
+-    connectionSecurity = ConnectionSecurity.NONE;
+     MockSmtpServer server = new MockSmtpServer();
+     server.output("220 localhost Simple Mail Transfer Service Ready");
+     server.expect("EHLO localhost");
+     server.output("250-localhost Hello client.localhost");
+     server.output("250 AUTH PLAIN LOGIN");
+     server.expect("AUTH PLAIN AHVzZXIAcGFzc3dvcmQ=");
+     server.output("235 2.7.0 Authentication successful");
+-    SmtpTransport transport = startServerAndCreateSmtpTransport(server);
++    SmtpTransport transport = startServerAndCreateSmtpTransport(server, AuthType.PLAIN, ConnectionSecurity.NONE);
+     transport.open();
+     server.verifyConnectionStillOpen();
+     server.verifyInteractionCompleted();
+ }
+\ No newline at end of file

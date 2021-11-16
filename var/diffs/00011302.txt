@@ -1,0 +1,21 @@
+diff --git a/a573f08f92b881f625f24267f899f4d80405e1c2 b/74d3273f198777ab1e46156fea56584b4516f6b6
+index a573f08f92..74d3273f19 100644
+--- a/a573f08f92b881f625f24267f899f4d80405e1c2
++++ b/74d3273f198777ab1e46156fea56584b4516f6b6
+@@ -1,14 +1,8 @@
+ @Override
+ protected void actionPerformed(@NotNull final HgRepository repository, @NotNull VcsFullCommitDetails commit) {
+     final Hash revisionHash = commit.getId();
+     final Project project = repository.getProject();
+     final VirtualFile root = repository.getRoot();
+     FileDocumentManager.getInstance().saveAllDocuments();
+-    new Task.Backgroundable(project, HgVcsMessages.message("hg4idea.progress.updatingTo", revisionHash.toShortString())) {
+-
+-        @Override
+-        public void run(@NotNull ProgressIndicator indicator) {
+-            HgUpdateToAction.updateTo(project, root, revisionHash.asString(), false);
+-        }
+-    }.queue();
++    HgUpdateCommand.updateRepoTo(project, root, revisionHash.asString(), null);
+ }
+\ No newline at end of file

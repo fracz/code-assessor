@@ -1,0 +1,21 @@
+diff --git a/5b167898206efe85f868bc1ae508234621434812 b/7aa992a0fdd0f9c34a9e5127167051069d63642d
+index 5b16789820..7aa992a0fd 100644
+--- a/5b167898206efe85f868bc1ae508234621434812
++++ b/7aa992a0fdd0f9c34a9e5127167051069d63642d
+@@ -1,11 +1,11 @@
+-void scanSymbol(final int charLength) {
++Token scanSymbol(final int charLength) {
+     int position = offset;
+-    length = 0;
++    int length = 0;
+     char[] symbolChars = new char[charLength];
+     for (int i = 0; i < charLength; i++) {
+         symbolChars[i] = charAt(position++);
+         length++;
+     }
+-    literals = String.valueOf(symbolChars);
+-    tokenType = Symbol.literalsOf(literals);
++    String literals = String.valueOf(symbolChars);
++    return new Token(Symbol.literalsOf(literals), literals, offset + length);
+ }
+\ No newline at end of file

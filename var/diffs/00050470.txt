@@ -1,0 +1,17 @@
+diff --git a/b5411b699a815990f0dff9fda67af27ab1b28dea b/15bab7fc9d2f3564b7474968e0fe655d6b71d848
+index b5411b699a..15bab7fc9d 100644
+--- a/b5411b699a815990f0dff9fda67af27ab1b28dea
++++ b/15bab7fc9d2f3564b7474968e0fe655d6b71d848
+@@ -1,10 +1,10 @@
+ private void editCustomKey() {
+     // Edit custom key
+     try {
+-        if (viewer.editEntityIdentifier(VoidProgressMonitor.INSTANCE)) {
++        if (viewer.editEntityIdentifier(new VoidProgressMonitor())) {
+             super.buttonPressed(IDialogConstants.OK_ID);
+         }
+     } catch (DBException e) {
+         UIUtils.showErrorDialog(getShell(), "Virtual key edit", "Error editing virtual key", e);
+     }
+ }
+\ No newline at end of file

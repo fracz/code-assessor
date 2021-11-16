@@ -1,0 +1,21 @@
+diff --git a/0fae48d23de7528abb425ccc77175c07aa2a3955 b/8db46f34bb28347bba4cb7d9f88d6fe5e655c000
+index 0fae48d23d..8db46f34bb 100644
+--- a/0fae48d23de7528abb425ccc77175c07aa2a3955
++++ b/8db46f34bb28347bba4cb7d9f88d6fe5e655c000
+@@ -1,14 +1,9 @@
+ private Cache createMapCache(String name, CacheConfig config) {
+-    RMapCache<Object, Object> map;
+-    if (codec != null) {
+-        map = redisson.getMapCache(name, codec);
+-    } else {
+-        map = redisson.getMapCache(name);
+-    }
++    RMapCache<Object, Object> map = getMapCache(name, config);
+     Cache cache = new RedissonCache(map, config, allowNullValues);
+     Cache oldCache = instanceMap.putIfAbsent(name, cache);
+     if (oldCache != null) {
+         cache = oldCache;
+     }
+     return cache;
+ }
+\ No newline at end of file

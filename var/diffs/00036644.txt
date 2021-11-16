@@ -1,0 +1,25 @@
+diff --git a/b1a4e01e39ea754b111e7f870b581fad02a73ed0 b/aa867d93add483f9890e50ab41e07659293f09aa
+index b1a4e01e39..aa867d93ad 100644
+--- a/b1a4e01e39ea754b111e7f870b581fad02a73ed0
++++ b/aa867d93add483f9890e50ab41e07659293f09aa
+@@ -1,17 +1,17 @@
+ @Override
+ public void retransform(Class<?> target, ClassFileTransformer transformer) {
+     if (this.logger.isDebugEnabled()) {
+         logger.debug("retransform request class:{}", target.getName());
+     }
+     assertClass(target);
+-    this.dynamicTransformRequestListener.onRetransformRequest(target, transformer);
++    final RequestHandle requestHandle = this.dynamicTransformRequestListener.onRetransformRequest(target, transformer);
+     boolean success = false;
+     try {
+         triggerRetransform(target);
+         success = true;
+     } finally {
+         if (!success) {
+-            this.dynamicTransformRequestListener.onRetransformFail(target);
++            requestHandle.cancel();
+         }
+     }
+ }
+\ No newline at end of file

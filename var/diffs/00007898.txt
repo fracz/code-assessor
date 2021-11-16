@@ -1,0 +1,20 @@
+diff --git a/2ac99590b536a27643ace19ee30552ee12155c2a b/8146611b5316b31b28ec311e0c9b15366e600327
+index 2ac99590b5..8146611b53 100644
+--- a/2ac99590b536a27643ace19ee30552ee12155c2a
++++ b/8146611b5316b31b28ec311e0c9b15366e600327
+@@ -1,13 +1,13 @@
+ private void applyExpandedTo(@NotNull TreeFacade tree, @NotNull TreePath rootPath, @NotNull ProgressIndicator indicator) {
+     indicator.checkCanceled();
+     if (rootPath.getPathCount() <= 0)
+         return;
+     for (List<PathElement> path : myExpandedPaths) {
+         if (path.isEmpty())
+             continue;
+         int index = rootPath.getPathCount() - 1;
+-        if (pathMatches(path.get(index), rootPath.getPathComponent(index)) == NOT_MATCHED)
++        if (!path.get(index).isMatchTo(rootPath.getPathComponent(index)))
+             continue;
+         expandImpl(0, path, rootPath, tree, indicator);
+     }
+ }
+\ No newline at end of file

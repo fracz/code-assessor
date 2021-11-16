@@ -1,0 +1,21 @@
+diff --git a/3263cb4aa224dd3f9184623eb92c50d8ead14514 b/bc32a1e5495003b585ee6552ca4fc1f64bad45e4
+index 3263cb4aa2..bc32a1e549 100644
+--- a/3263cb4aa224dd3f9184623eb92c50d8ead14514
++++ b/bc32a1e5495003b585ee6552ca4fc1f64bad45e4
+@@ -1,14 +1,12 @@
+ public <T> Class<T> getClass(String key, Class<T> defaultValue) {
+     if (mProperties.containsKey(key)) {
+         String rawValue = mProperties.getProperty(key);
+         try {
+             return (Class<T>) Class.forName(rawValue);
+         } catch (Exception e) {
+             String msg = "requested class could not be loaded";
+             LOG.error("{} : {} , {}", msg, rawValue, e);
+-            return defaultValue;
+         }
+-    } else {
+-        return defaultValue;
+     }
++    return defaultValue;
+ }
+\ No newline at end of file

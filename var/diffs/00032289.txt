@@ -1,0 +1,17 @@
+diff --git a/ca70671d88b1400732a10aa08156459ef084dc2a b/d3cdcccddc64dfc2986cd19d54c487434afaaaf6
+index ca70671d88..d3cdcccddc 100644
+--- a/ca70671d88b1400732a10aa08156459ef084dc2a
++++ b/d3cdcccddc64dfc2986cd19d54c487434afaaaf6
+@@ -1,9 +1,9 @@
+ FunctionType withLoose() {
+     if (isLoose()) {
+         return this;
+     }
+     if (isTopFunction()) {
+-        return LOOSE_TOP_FUNCTION;
++        return this.commonTypes.LOOSE_TOP_FUNCTION;
+     }
+-    return new FunctionType(requiredFormals, optionalFormals, restFormals, returnType, nominalType, receiverType, outerVarPreconditions, typeParameters, true);
++    return new FunctionType(this.commonTypes, requiredFormals, optionalFormals, restFormals, returnType, nominalType, receiverType, outerVarPreconditions, typeParameters, true);
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/c69402efee376f823bfe9260f00f87ed114303ff b/465c57941594bf99a04eef164fbc38db9e82ef4f
+index c69402efee..465c579415 100644
+--- a/c69402efee376f823bfe9260f00f87ed114303ff
++++ b/465c57941594bf99a04eef164fbc38db9e82ef4f
+@@ -1,16 +1,16 @@
+ /**
+  * Return the per-user state.
+  */
+ @GuardedBy("mLock")
+ @NonNull
+-private ArrayMap<String, PackageShortcuts> getUserShortcutsLocked(@UserIdInt int userId) {
+-    ArrayMap<String, PackageShortcuts> userPackages = mShortcuts.get(userId);
++private UserShortcuts getUserShortcutsLocked(@UserIdInt int userId) {
++    UserShortcuts userPackages = mUsers.get(userId);
+     if (userPackages == null) {
+         userPackages = loadUserLocked(userId);
+         if (userPackages == null) {
+-            userPackages = new ArrayMap<>();
++            userPackages = new UserShortcuts(userId);
+         }
+-        mShortcuts.put(userId, userPackages);
++        mUsers.put(userId, userPackages);
+     }
+     return userPackages;
+ }
+\ No newline at end of file

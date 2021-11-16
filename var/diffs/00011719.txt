@@ -1,0 +1,18 @@
+diff --git a/cad708f2f5586b34c09f5e38617c90645c9e6a07 b/66d8b333b1870dedfeb3a9e1463f19e8d3d3baa0
+index cad708f2f5..66d8b333b1 100644
+--- a/cad708f2f5586b34c09f5e38617c90645c9e6a07
++++ b/66d8b333b1870dedfeb3a9e1463f19e8d3d3baa0
+@@ -1,8 +1,10 @@
+ public static GrTypeComboBox createTypeComboBoxFromExpression(GrExpression expression) {
+     PsiType type = expression.getType();
+     if (GroovyRefactoringUtil.isDiamondNewOperator(expression)) {
+-        return createTypeComboboxWithoutDefType(type);
++        LOG.assertTrue(expression instanceof GrNewExpression);
++        PsiType expected = PsiImplUtil.inferExpectedTypeForDiamond((GrNewExpression) expression);
++        return createTypeComboboxFromBounds(type, expected, expression.getManager(), expression.getResolveScope());
+     } else {
+-        return createTypeComboBoxWithDefType(type, GroovyApplicationSettings.getInstance().SPECIFY_VAR_TYPE_EXPLICITLY);
++        return createTypeComboBoxWithDefType(type);
+     }
+ }
+\ No newline at end of file

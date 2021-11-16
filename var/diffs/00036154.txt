@@ -1,0 +1,13 @@
+diff --git a/74fcdeeb95345bf59e59d3a8b27d607119b252d4 b/507f8280993f37b707f565b1a180581f7e5524cb
+index 74fcdeeb95..507f828099 100644
+--- a/74fcdeeb95345bf59e59d3a8b27d607119b252d4
++++ b/507f8280993f37b707f565b1a180581f7e5524cb
+@@ -1,5 +1,6 @@
+ @Test
+ public void shouldPassIfChunkMatches() throws Exception {
+-    finderStub.validMatchingChunkToReturn.add(wanted.getInvocation());
++    wanted = buildSimpleMethod().toInvocationMatcher();
++    invocations = asList(buildSimpleMethod().toInvocation());
+     checker.check(invocations, wanted, 1, context);
+ }
+\ No newline at end of file

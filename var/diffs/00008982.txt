@@ -1,0 +1,25 @@
+diff --git a/66eff2d5414dee74ee52e0f8844ba2fee108e9fc b/b12614a04f58a9089037cbf7fbf2a7f078518b64
+index 66eff2d541..b12614a04f 100644
+--- a/66eff2d5414dee74ee52e0f8844ba2fee108e9fc
++++ b/b12614a04f58a9089037cbf7fbf2a7f078518b64
+@@ -1,14 +1,13 @@
+ private void findAndProcessChangedForVcs() {
+-    final ChangeListManager clm = PeriodicalTasksCloser.getInstance().safeGetComponent(myVcs.getProject(), ChangeListManager.class);
+-    clm.invokeAfterUpdate(new Runnable() {
++    myChangeListManager.invokeAfterUpdate(new Runnable() {
+
+         public void run() {
+-            moveToCorrectLists(clm);
++            moveToCorrectLists();
+         }
+-    }, InvokeAfterUpdateMode.SILENT, "", new Consumer<VcsDirtyScopeManager>() {
++    }, InvokeAfterUpdateMode.SYNCHRONOUS_CANCELLABLE, "", new Consumer<VcsDirtyScopeManager>() {
+
+         public void consume(VcsDirtyScopeManager vcsDirtyScopeManager) {
+-            vcsDirtyScopeManager.filePathsDirty(myDirtyFiles, null);
++            vcsDirtyScopeManager.filePathsDirty(getAllChangedFiles(), null);
+         }
+-    }, ModalityState.NON_MODAL);
++    }, ModalityState.defaultModalityState());
+ }
+\ No newline at end of file

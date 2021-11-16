@@ -1,0 +1,20 @@
+diff --git a/3b4b4317ee95c59a9a843f3e7b2c41f024243d6c b/a15d836264dd13cfcfe420bcaa71f60c31b0a108
+index 3b4b4317ee..a15d836264 100644
+--- a/3b4b4317ee95c59a9a843f3e7b2c41f024243d6c
++++ b/a15d836264dd13cfcfe420bcaa71f60c31b0a108
+@@ -1,11 +1,13 @@
+ @Test
+ public void testListenInvalidHost() {
++    server.close();
++    server = vertx.createNetServer(new NetServerOptions().setPort(1234).setHost("uhqwduhqwudhqwuidhqwiudhqwudqwiuhd"));
+     server.connectHandler(netSocket -> {
+-    }).listen(80, "uhqwduhqwudhqwuidhqwiudhqwudqwiuhd", ar -> {
++    }).listen(ar -> {
+         assertTrue(ar.failed());
+         assertFalse(ar.succeeded());
+         assertNotNull(ar.cause());
+         testComplete();
+     });
+     await();
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/86b275f73211eac14e605763fb156d3ce40b4a1e b/b496d91e06549039045ee5bcfcafc572e285aca3
+index 86b275f732..b496d91e06 100644
+--- a/86b275f73211eac14e605763fb156d3ce40b4a1e
++++ b/b496d91e06549039045ee5bcfcafc572e285aca3
+@@ -1,11 +1,10 @@
+-/**
+- * Returns the smallest recorded value.
+- *
+- * @return the smallest recorded value
+- */
++/* (non-Javadoc)
++     * @see com.yammer.metrics.core.Summarized#min()
++     */
++@Override
+ public double min() {
+     if (count() > 0) {
+         return _min.get();
+     }
+     return 0.0;
+ }
+\ No newline at end of file

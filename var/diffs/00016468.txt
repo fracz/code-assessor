@@ -1,0 +1,15 @@
+diff --git a/e64d887df079f258cb23372fa942b02d8061002b b/132378266d67f374aa7e58d7c2991c7de5271b77
+index e64d887df0..132378266d 100644
+--- a/e64d887df079f258cb23372fa942b02d8061002b
++++ b/132378266d67f374aa7e58d7c2991c7de5271b77
+@@ -1,8 +1,8 @@
+ public boolean compileBunchOfSourceDirectories(List<String> sources, String jar, String outputDir, boolean includeRuntime) {
+     CompileSession session = newCompileSession();
+-    session.setStubs(mode != CompilerSpecialMode.REGULAR);
++    session.setStubs(mode.isStubs());
+     for (String source : sources) {
+         session.addSources(source);
+     }
+     return compileBunchOfSources(jar, outputDir, includeRuntime, session);
+ }
+\ No newline at end of file

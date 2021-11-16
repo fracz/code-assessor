@@ -1,0 +1,26 @@
+diff --git a/f879fd79a0385c01e0b94b885edc30e05fc53d48 b/fa7cddcc3a99fda5cd4f300464ef1b526a415759
+index f879fd79a0..fa7cddcc3a 100644
+--- a/f879fd79a0385c01e0b94b885edc30e05fc53d48
++++ b/fa7cddcc3a99fda5cd4f300464ef1b526a415759
+@@ -1,13 +1,19 @@
+ public void grabPrompt() {
+     init();
+     Runnable ctrlcAction = getTerminateAction();
+     while (!end) {
+         String command = readLine(getPrompt());
+-        try (Closeable ignored = signalHandler.install(ctrlcAction)) {
++        Cancelable cancelable = null;
++        try {
++            cancelable = signalHandler.install(ctrlcAction);
+             evaluate(command);
+         } catch (Exception e) {
+             printStackTrace(e);
++        } finally {
++            if (cancelable != null) {
++                cancelable.cancel();
++            }
+         }
+     }
+     this.shutdown();
+ }
+\ No newline at end of file

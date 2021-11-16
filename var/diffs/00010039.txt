@@ -1,0 +1,21 @@
+diff --git a/7cac0d5834b521726440e318b0c64ed72c5559f5 b/82b1ff233e27fa762e4eb46f2da15401344e65bf
+index 7cac0d5834..82b1ff233e 100644
+--- a/7cac0d5834b521726440e318b0c64ed72c5559f5
++++ b/82b1ff233e27fa762e4eb46f2da15401344e65bf
+@@ -1,13 +1,14 @@
+ @Nullable
+ static HighlightInfo checkExtendsAllowed(PsiReferenceList list) {
+     if (list.getParent() instanceof PsiClass) {
+         PsiClass aClass = (PsiClass) list.getParent();
+         if (aClass.isEnum()) {
+             boolean isExtends = list.equals(aClass.getExtendsList());
+             if (isExtends) {
+-                return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, list, JavaErrorMessages.message("extends.after.enum"));
++                String description = JavaErrorMessages.message("extends.after.enum");
++                return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(list).descriptionAndTooltip(description).create();
+             }
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

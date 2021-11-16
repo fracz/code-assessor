@@ -1,0 +1,18 @@
+diff --git a/4768c0c454c31e729a939e1e8d1f11b0bcd75ea5 b/47b07801b59b25f47757ffa2f816e0b3233abe0f
+index 4768c0c454..47b07801b5 100644
+--- a/4768c0c454c31e729a939e1e8d1f11b0bcd75ea5
++++ b/47b07801b59b25f47757ffa2f816e0b3233abe0f
+@@ -1,7 +1,6 @@
+-private ActiveTrace createActiveTrace() {
+-    Storage storage = LogStorageFactory.DEFAULT_STORAGE;
+-    long localTransactionId = idGenerator.incrementAndGet();
+-    TraceId traceId = new DefaultTraceId("agentId", System.currentTimeMillis(), 0);
+-    DefaultTrace trace = new DefaultTrace(defaultTraceContext, storage, traceId, localTransactionId, true);
+-    return new ActiveTrace(trace);
++private ActiveTrace createActiveTrace(long executionTime) {
++    ActiveTrace activeTrace = Mockito.mock(ActiveTrace.class);
++    Mockito.when(activeTrace.getStartTime()).thenReturn(System.currentTimeMillis() - executionTime);
++    Mockito.when(activeTrace.getId()).thenReturn(nextLocalTransactionId());
++    return activeTrace;
+ }
+\ No newline at end of file

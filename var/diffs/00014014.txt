@@ -1,0 +1,23 @@
+diff --git a/6b0dd1ca83d6475bd7abf861326a05ea6b9f5b1a b/01ce8d12cc71495b6cd6972523c05df3965d352a
+index 6b0dd1ca83..01ce8d12cc 100644
+--- a/6b0dd1ca83d6475bd7abf861326a05ea6b9f5b1a
++++ b/01ce8d12cc71495b6cd6972523c05df3965d352a
+@@ -1,12 +1,13 @@
+-public static boolean isJsonSchema(@NotNull VirtualFile key, @NotNull final String string, Consumer<String> errorConsumer) throws IOException {
+-    final JsonSchemaReader reader = new JsonSchemaReader(key);
+-    java.io.StringReader stringReader = new java.io.StringReader(string);
++public static boolean isJsonSchema(@NotNull Project project, @NotNull VirtualFile key, Consumer<String> errorConsumer) throws IOException {
++    final JsonSchemaReader reader = create(project, key);
++    if (reader == null)
++        return false;
+     try {
+-        reader.read(stringReader, null);
++        reader.read();
+     } catch (Exception e) {
+         LOG.info(e);
+         errorConsumer.consume(e.getMessage());
+         return false;
+     }
+     return true;
+ }
+\ No newline at end of file

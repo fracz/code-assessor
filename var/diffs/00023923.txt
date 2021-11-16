@@ -1,0 +1,19 @@
+diff --git a/fc9db8a98a6ea397871d479104472c4f555c47fc b/8c1e3bfec77c1d387563d1a4c3c42a0349b5a07c
+index fc9db8a98a..8c1e3bfec7 100644
+--- a/fc9db8a98a6ea397871d479104472c4f555c47fc
++++ b/8c1e3bfec77c1d387563d1a4c3c42a0349b5a07c
+@@ -1,10 +1,12 @@
+ private void appendFileName(StringBuilder buff) {
+-    if (!version.newFileName) {
++    if (!version.hasNewFileName()) {
+         buff.append(ksname).append(separator);
+         buff.append(cfname).append(separator);
+     }
+     if (type.isTemporary)
+         buff.append(type.marker).append(separator);
+     buff.append(version).append(separator);
+     buff.append(generation);
++    if (formatType != SSTableFormat.Type.LEGACY)
++        buff.append(separator).append(formatType.name);
+ }
+\ No newline at end of file

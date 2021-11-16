@@ -1,0 +1,28 @@
+diff --git a/c79ca668308575c5782efa0554350db118580a4f b/174037a680037fd70b169104a1bb362af493b362
+index c79ca66830..174037a680 100644
+--- a/c79ca668308575c5782efa0554350db118580a4f
++++ b/174037a680037fd70b169104a1bb362af493b362
+@@ -1,15 +1,15 @@
+-protected Object[] getAllOriginalMembers(PsiClass aClass) {
+-    ArrayList<Object> array = new ArrayList<Object>();
++protected ClassMember[] getAllOriginalMembers(PsiClass aClass) {
++    ArrayList<ClassMember> array = new ArrayList<ClassMember>();
+     try {
+-        PsiField[] fields = aClass.getFields();
+-        for (PsiField field : fields) {
+-            if (generateMemberPrototypes(aClass, field).length > 0) {
+-                array.add(field);
++        for (PsiField field : aClass.getFields()) {
++            final PsiElementClassMember member = new PsiFieldMember(field);
++            if (generateMemberPrototypes(aClass, member).length > 0) {
++                array.add(member);
+             }
+         }
+         getCmpFields(array, aClass);
+     } catch (IncorrectOperationException e) {
+         LOG.error(e);
+     }
+-    return array.toArray(new Object[array.size()]);
++    return array.toArray(new ClassMember[array.size()]);
+ }
+\ No newline at end of file

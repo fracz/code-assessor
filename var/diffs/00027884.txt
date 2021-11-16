@@ -1,0 +1,19 @@
+diff --git a/c0eb91a97977ac86b15740b91bb6675372fffe8a b/6869b2b19292dbc433c95cfca27ba03601cbddd5
+index c0eb91a979..6869b2b192 100644
+--- a/c0eb91a97977ac86b15740b91bb6675372fffe8a
++++ b/6869b2b19292dbc433c95cfca27ba03601cbddd5
+@@ -1,10 +1,10 @@
+ private void makeCommitInMaster(GitConnection connection) throws GitException, IOException {
+     // create branch "master"
+     addFile(connection, "README.txt", org.eclipse.che.git.impl.GitTestUtil.CONTENT);
+-    connection.add(newDto(AddRequest.class).withFilepattern(ImmutableList.of("README.txt")));
+-    connection.commit(newDto(CommitRequest.class).withMessage("Initial addd"));
++    connection.add(AddParams.create(singletonList("README.txt")));
++    connection.commit(CommitParams.create("Initial addd"));
+     // make some changes
+     addFile(connection, "aaa", "AAA\n");
+-    connection.add(newDto(AddRequest.class).withFilepattern(Arrays.asList(".")));
++    connection.add(AddParams.create(singletonList(".")));
+     addFile(connection, "aaa", "BBB\n");
+ }
+\ No newline at end of file

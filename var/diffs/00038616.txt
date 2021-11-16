@@ -1,0 +1,19 @@
+diff --git a/cd1deee409978404147eb290175dd30c194b379f b/261a952633aa54b162970f7530bd92cf9714d132
+index cd1deee409..261a952633 100644
+--- a/cd1deee409978404147eb290175dd30c194b379f
++++ b/261a952633aa54b162970f7530bd92cf9714d132
+@@ -1,8 +1,10 @@
+-public void start(NeoServerWithEmbeddedWebServer neoServer, StringLogger logger) {
+-    for (ThirdPartyJaxRsPackage tpp : neoServer.getConfigurator().getThirdpartyJaxRsClasses()) {
+-        neoServer.getWebServer().addJAXRSPackages(listFrom(new String[] { tpp.getPackageName() }), tpp.getMountPoint());
++@Override
++public void start(StringLogger logger) {
++    this.packages = configurator.getThirdpartyJaxRsClasses();
++    for (ThirdPartyJaxRsPackage tpp : packages) {
++        webServer.addJAXRSPackages(listFrom(new String[] { tpp.getPackageName() }), tpp.getMountPoint());
+         log.info("Mounted third-party JAX-RS package [%s] at [%s]", tpp.getPackageName(), tpp.getMountPoint());
+         if (logger != null)
+             logger.logMessage(String.format("Mounted third-party JAX-RS package [%s] at [%s]", tpp.getPackageName(), tpp.getMountPoint()));
+     }
+ }
+\ No newline at end of file

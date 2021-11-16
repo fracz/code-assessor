@@ -1,0 +1,22 @@
+diff --git a/4857408fd8dd8b1212fae47d0e2b6b6a3570927b b/8980336049df1b659bf91968de211f22b3e6d92c
+index 4857408fd8..8980336049 100644
+--- a/4857408fd8dd8b1212fae47d0e2b6b6a3570927b
++++ b/8980336049df1b659bf91968de211f22b3e6d92c
+@@ -1,14 +1,14 @@
+ private Collection<VariableDescriptor> collectUsedVariables(Pseudocode pseudocode) {
+     final Set<VariableDescriptor> usedVariables = Sets.newHashSet();
+-    JetControlFlowGraphTraverser.traverseAndAnalyzeInstructionGraph(pseudocode, new JetControlFlowGraphTraverser.InstructionDataAnalyzeStrategy() {
++    JetControlFlowGraphTraverser.<Void>create(pseudocode).traverseAndAnalyzeInstructionGraph(new JetControlFlowGraphTraverser.InstructionDataAnalyzeStrategy<Void>() {
+
+         @Override
+-        public void execute(Instruction instruction) {
++        public void execute(Instruction instruction, Void enterData, Void exitData) {
+             VariableDescriptor variableDescriptor = extractVariableDescriptorIfAny(instruction);
+             if (variableDescriptor != null) {
+                 usedVariables.add(variableDescriptor);
+             }
+         }
+     });
+     return usedVariables;
+ }
+\ No newline at end of file

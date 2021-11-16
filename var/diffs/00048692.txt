@@ -1,0 +1,16 @@
+diff --git a/fac99b5a0e89ddb9ee455eb60acc5a508a13da17 b/9d39b3f12da1e59922c29bcca2d93baa5fc1179f
+index fac99b5a0e..9d39b3f12d 100644
+--- a/fac99b5a0e89ddb9ee455eb60acc5a508a13da17
++++ b/9d39b3f12da1e59922c29bcca2d93baa5fc1179f
+@@ -1,9 +1,9 @@
+ @Override
+ public void openResource(@NotNull IResource resource) throws CoreException, DBException {
+     if (resource instanceof IFile) {
+         FileEditorInput sqlInput = new FileEditorInput((IFile) resource);
+         DBeaverUI.getActiveWorkbenchWindow().getActivePage().openEditor(sqlInput, SQLEditor.class.getName());
+     } else {
+-        log.warn("Cannot open folder resource: " + resource.getName());
++        super.openResource(resource);
+     }
+ }
+\ No newline at end of file

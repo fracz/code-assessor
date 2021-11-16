@@ -1,0 +1,14 @@
+diff --git a/e3743d592f122077a92754df2a4ab559fb1d06cb b/aa158c71451dc53ac334736d560cd7d7ad518506
+index e3743d592f..aa158c7145 100644
+--- a/e3743d592f122077a92754df2a4ab559fb1d06cb
++++ b/aa158c71451dc53ac334736d560cd7d7ad518506
+@@ -1,7 +1,3 @@
+ public LogBuffer putLong(long l) throws IOException {
+-    if (byteBuffer == null || (BUFFER_SIZE - byteBuffer.position()) < 8) {
+-        getNewDirectBuffer();
+-    }
+-    byteBuffer.putLong(l);
+-    return this;
++    return putNumber(l, BufferNumberPutter.LONG);
+ }
+\ No newline at end of file

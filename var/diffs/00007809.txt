@@ -1,0 +1,12 @@
+diff --git a/e202fb43b7d5306174cd4875fe35e98bb9fa1b21 b/94076b0fed4fe131d53ed17c85cf462dac8d24ef
+index e202fb43b7..94076b0fed 100644
+--- a/e202fb43b7d5306174cd4875fe35e98bb9fa1b21
++++ b/94076b0fed4fe131d53ed17c85cf462dac8d24ef
+@@ -1,4 +1,4 @@
+ @NotNull
+-private VcsRootDetectInfo detect(@Nullable VirtualFile startDir) {
+-    return new VcsRootDetector(myProject).detect(startDir);
++private Collection<VcsRoot> detect(@Nullable VirtualFile startDir) {
++    return ServiceManager.getService(myProject, VcsRootDetectorI.class).detect(startDir);
+ }
+\ No newline at end of file

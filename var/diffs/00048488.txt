@@ -1,0 +1,21 @@
+diff --git a/073c5fe6cf8e610c497c3fa56c35b0f681c7b823 b/97e8327fec5f599deb854a2df3fbcd88fbc9b3ca
+index 073c5fe6cf..97e8327fec 100644
+--- a/073c5fe6cf8e610c497c3fa56c35b0f681c7b823
++++ b/97e8327fec5f599deb854a2df3fbcd88fbc9b3ca
+@@ -1,14 +1,11 @@
+-/*
+-      * (non-Javadoc)
+-      * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+-      */
+ @Override
+ public void stop(BundleContext context) throws Exception {
++    this.shutdownUI();
+     this.shutdownCore();
+     if (debugWriter != null) {
+         debugWriter.close();
+         debugWriter = null;
+     }
+     instance = null;
+     super.stop(context);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/2dffe08e63bbc7968218371a344f698821a497d9 b/47562e310ee152e00582196825db7a8e3595f80e
+index 2dffe08e63..47562e310e 100644
+--- a/2dffe08e63bbc7968218371a344f698821a497d9
++++ b/47562e310ee152e00582196825db7a8e3595f80e
+@@ -1,9 +1,5 @@
+ @Nullable
+ @Override
+ protected VcsShortCommitDetails getShortDetails(int rowIndex) {
+-    VcsFullCommitDetails commits = myCommits.get(rowIndex);
+-    if (commits == null) {
+-        LOG.error("Couldn't identify details for commit at " + rowIndex, new Attachment("loaded_commits", myCommits.toString()));
+-    }
+-    return commits;
++    return getFullCommitDetails(rowIndex);
+ }
+\ No newline at end of file

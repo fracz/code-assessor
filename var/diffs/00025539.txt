@@ -1,0 +1,28 @@
+diff --git a/afa31442d00c0ff25a30bc95ab2c23b4d297c0a4 b/07eaf05b129a03cf450006f1ea2f3537fd2f0e7d
+index afa31442d0..07eaf05b12 100644
+--- a/afa31442d00c0ff25a30bc95ab2c23b4d297c0a4
++++ b/07eaf05b129a03cf450006f1ea2f3537fd2f0e7d
+@@ -1,17 +1,13 @@
+ /**
+  * Free all slots on this node.  This will update the Cluster too.
+  */
+ public void freeAllSlots() {
+     if (!_isAlive) {
+         LOG.warn("Freeing all slots on a dead node {} ", _nodeId);
+     }
+-    for (Entry<String, Set<WorkerSlot>> entry : _topIdToUsedSlots.entrySet()) {
+-        _cluster.freeSlots(entry.getValue());
+-        _availCPU = getTotalCpuResources();
+-        _availMemory = getAvailableMemoryResources();
+-        if (_isAlive) {
+-            _freeSlots.addAll(entry.getValue());
+-        }
+-    }
+-    _topIdToUsedSlots = new HashMap<String, Set<WorkerSlot>>();
++    _cluster.freeSlots(_slots.values());
++    _availCPU = getTotalCpuResources();
++    _availMemory = getAvailableMemoryResources();
++    // clearing assignments
++    _topIdToUsedSlots.clear();
+ }
+\ No newline at end of file

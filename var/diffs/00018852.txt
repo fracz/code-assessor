@@ -1,0 +1,20 @@
+diff --git a/db09fad7aa5563ce615f4de98b3ce36803c70284 b/819449a5704ee2b679a24f549abc86fea17e4d20
+index db09fad7aa..819449a570 100644
+--- a/db09fad7aa5563ce615f4de98b3ce36803c70284
++++ b/819449a5704ee2b679a24f549abc86fea17e4d20
+@@ -1,11 +1,11 @@
+ private List<SendReq> getOutgoingMessages(MasterSecret masterSecret, long messageId) throws MmsException {
+-    MmsDatabase database = DatabaseFactory.getEncryptingMmsDatabase(context, masterSecret);
++    MmsDatabase database = DatabaseFactory.getMmsDatabase(context);
+     List<SendReq> sendRequests;
+     if (messageId == -1) {
+-        sendRequests = Arrays.asList(database.getOutgoingMessages());
++        sendRequests = Arrays.asList(database.getOutgoingMessages(masterSecret));
+     } else {
+         sendRequests = new ArrayList<SendReq>(1);
+-        sendRequests.add(database.getSendRequest(messageId));
++        sendRequests.add(database.getSendRequest(masterSecret, messageId));
+     }
+     return sendRequests;
+ }
+\ No newline at end of file

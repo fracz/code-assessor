@@ -1,0 +1,12 @@
+diff --git a/dbc5df13ac8c3af450f9a53ae92fb31001a8f5a5 b/2dbbfbcdc4476b23d11cebdcd5bd0006f796eb9e
+index dbc5df13ac..2dbbfbcdc4 100644
+--- a/dbc5df13ac8c3af450f9a53ae92fb31001a8f5a5
++++ b/2dbbfbcdc4476b23d11cebdcd5bd0006f796eb9e
+@@ -1,5 +1,5 @@
+ @Override
+ public void setLong(int parameterIndex, long x) throws SQLException {
+-    setParameter(parameterIndex, new JdbcParameterLong(x));
++    setParameter(parameterIndex, createParameter(x));
+     createChain().preparedStatement_setLong(this, parameterIndex, x);
+ }
+\ No newline at end of file

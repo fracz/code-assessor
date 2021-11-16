@@ -1,0 +1,15 @@
+diff --git a/2f8c246306a40741472a56377dba93aa4238d8b1 b/318ef6e553e179fd651c811ed8fbee350e005f23
+index 2f8c246306..318ef6e553 100644
+--- a/2f8c246306a40741472a56377dba93aa4238d8b1
++++ b/318ef6e553e179fd651c811ed8fbee350e005f23
+@@ -1,6 +1,8 @@
+ @Override
+ public int hashCode() {
+-    int result = 31 * super.hashCode() + width;
++    int result = width;
+     result = 31 * result + height;
++    result = 31 * result + (getScale() != +0.0f ? Float.floatToIntBits(getScale()) : 0);
++    result = 31 * result + Boolean.valueOf(isPreScaled()).hashCode();
+     return result;
+ }
+\ No newline at end of file

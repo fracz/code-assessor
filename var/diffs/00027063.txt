@@ -1,0 +1,16 @@
+diff --git a/d26240a1a0bbae99cba81394f2edf4b491ea5e79 b/c71ad21590894d446be8f412348c1ab5b53acadd
+index d26240a1a0..c71ad21590 100644
+--- a/d26240a1a0bbae99cba81394f2edf4b491ea5e79
++++ b/c71ad21590894d446be8f412348c1ab5b53acadd
+@@ -1,7 +1,7 @@
+ @Override
+-public void iterate(INDArray input, Object[] params) {
++public void iterate(INDArray input) {
+     if (conf.getVisibleUnit() == VisibleUnit.GAUSSIAN)
+         this.sigma = input.var(0).divi(input.rows());
+-    int k = (int) params[0];
+-    contrastiveDivergence(conf.getLr(), k, input);
++    this.input = input;
++    contrastiveDivergence();
+ }
+\ No newline at end of file

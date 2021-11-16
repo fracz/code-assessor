@@ -1,0 +1,21 @@
+diff --git a/91fd61b04f29cfe652bb54f436664bc51d27f6b1 b/4acc9834288723ab2612798470582f68399bd386
+index 91fd61b04f..4acc983428 100644
+--- a/91fd61b04f29cfe652bb54f436664bc51d27f6b1
++++ b/4acc9834288723ab2612798470582f68399bd386
+@@ -1,8 +1,13 @@
+-private void parseConditions(final SQLContext sqlContext, final ParseContext parseContext) {
++private void parseConditions(final SQLContext sqlContext) {
++    ConditionContext conditionContext = new ConditionContext();
+     do {
+-        parseComparisonCondition(sqlContext, parseContext);
++        Optional<Condition> conditionOptional = parseComparisonCondition(sqlContext);
++        if (conditionOptional.isPresent()) {
++            conditionContext.add(conditionOptional.get());
++        }
+     } while (skipIfEqual(DefaultKeyword.AND));
+     if (equalAny(DefaultKeyword.OR)) {
+         throw new ParserUnsupportedException(getLexer().getCurrentToken().getType());
+     }
++    sqlContext.getConditionContexts().add(conditionContext);
+ }
+\ No newline at end of file

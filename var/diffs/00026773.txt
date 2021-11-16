@@ -1,0 +1,16 @@
+diff --git a/95ed50bb1912c1296d61efff7f0b8ed834c46752 b/dcb58be5001b84c1e01a52d03766cfaadcd38e79
+index 95ed50bb19..dcb58be500 100644
+--- a/95ed50bb1912c1296d61efff7f0b8ed834c46752
++++ b/dcb58be5001b84c1e01a52d03766cfaadcd38e79
+@@ -1,9 +1,6 @@
+ private void initExpTable() {
+     for (int i = 0; i < expTable.length; i++) {
+-        // expTable[i] = exp((i / (real)EXP_TABLE_SIZE * 2 - 1) * MAX_EXP); // Precompute the exp() table
+-        float tmp = (float) Math.exp((2.0 * i / expTable.length - 1.0) * MAX_EXP);
+-        // expTable(i) = (tmp / (tmp + 1.0)).toFloat
+-        // Precompute f(x) = x / (x + 1)
++        float tmp = (float) Math.exp((i / (float) expTable.length * 2 - 1) * MAX_EXP);
+         expTable[i] = tmp / (tmp + 1);
+     }
+ }
+\ No newline at end of file

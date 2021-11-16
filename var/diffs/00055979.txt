@@ -1,0 +1,16 @@
+diff --git a/cfc4bbe76db5510b6528fcb417dda5f8f3fc6fbd b/20e1947de6f6b5cf76739ee1a4f1d8590090190d
+index cfc4bbe76d..20e1947de6 100644
+--- a/cfc4bbe76db5510b6528fcb417dda5f8f3fc6fbd
++++ b/20e1947de6f6b5cf76739ee1a4f1d8590090190d
+@@ -1,8 +1,9 @@
+ @Override
+ public boolean matches(TypeDescriptor sourceType, TypeDescriptor targetType) {
+     Class<?> sourceClass = sourceType.getObjectType();
+     if (String.class.equals(sourceClass)) {
++        // no conversion required
+         return false;
+     }
+-    return (CharSequence.class.isAssignableFrom(sourceClass) || StringWriter.class.isAssignableFrom(sourceClass) || ObjectToObjectConverter.getOfMethod(sourceClass, String.class) != null || ClassUtils.getConstructorIfAvailable(sourceClass, String.class) != null);
++    return (CharSequence.class.isAssignableFrom(sourceClass) || StringWriter.class.isAssignableFrom(sourceClass) || ObjectToObjectConverter.hasFactoryMethod(sourceClass, String.class) || ObjectToObjectConverter.hasFactoryConstructor(sourceClass, String.class));
+ }
+\ No newline at end of file

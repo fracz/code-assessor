@@ -1,0 +1,21 @@
+diff --git a/ba98f84e3b6a71c8114020e5660864bc44787f8d b/6f20f68a69c6b508fe9e6a1ac643733122d5bcc1
+index ba98f84e3b..6f20f68a69 100644
+--- a/ba98f84e3b6a71c8114020e5660864bc44787f8d
++++ b/6f20f68a69c6b508fe9e6a1ac643733122d5bcc1
+@@ -1,14 +1,12 @@
+ /**
+  * Remove any duplicate traversers at a single element.
+  *
+  * @return the extended FaunusPipeline
+  */
+ public FaunusPipeline dedup() {
+     this.state.checkLocked();
+     this.state.checkProperty();
+-    final Configuration configuration = new Configuration();
+-    configuration.setClass(DuplicateFilterMap.CLASS, this.state.getElementType(), Element.class);
+-    this.compiler.addMap(DuplicateFilterMap.Map.class, NullWritable.class, FaunusVertex.class, configuration);
++    this.compiler.addMap(DuplicateFilterMap.Map.class, NullWritable.class, FaunusVertex.class, DuplicateFilterMap.createConfiguration(this.state.getElementType()));
+     makeMapReduceString(DuplicateFilterMap.class);
+     return this;
+ }
+\ No newline at end of file

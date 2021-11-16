@@ -1,0 +1,21 @@
+diff --git a/e601d8297432860955761c08e58fc32403b7df22 b/2c3c85b8ad9daab967c813833b803f18002b0b50
+index e601d82974..2c3c85b8ad 100644
+--- a/e601d8297432860955761c08e58fc32403b7df22
++++ b/2c3c85b8ad9daab967c813833b803f18002b0b50
+@@ -1,12 +1,8 @@
+-public static synchronized Model getEntity(Class<? extends Model> entityType, long id) {
++public static synchronized Model getEntity(Class<? extends Model> type, long id) {
+     for (Model entity : sEntities) {
+-        if (entity != null) {
+-            if (entity.getClass() != null && entity.getClass() == entityType) {
+-                if (entity.getId() != null && entity.getId() == id) {
+-                    return entity;
+-                }
+-            }
++        if (entity != null && entity.getClass() != null && entity.getClass() == type && entity.getId() != null && entity.getId() == id) {
++            return entity;
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

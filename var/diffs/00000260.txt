@@ -1,0 +1,16 @@
+diff --git a/106e97bee41c7bd8861abe87c5410113b5c43ce9 b/e0cbbca7e4abcc598e0b743b5463fc998a5f5942
+index 106e97bee4..e0cbbca7e4 100644
+--- a/106e97bee41c7bd8861abe87c5410113b5c43ce9
++++ b/e0cbbca7e4abcc598e0b743b5463fc998a5f5942
+@@ -1,9 +1,9 @@
+ private void mkdir(String path) throws IOException {
+     UnderFileSystem ufs = UnderFileSystem.get(path);
+     if (ufs.isDirectory(path)) {
+-        ufs.deleteDirectory(path, new DeleteOptions().setRecursive(true));
++        ufs.deleteDirectory(path, DeleteOptions.defaults().setRecursive(true));
+     }
+     if (!ufs.mkdirs(path, true)) {
+         throw new IOException("Failed to make folder: " + path);
+     }
+ }
+\ No newline at end of file

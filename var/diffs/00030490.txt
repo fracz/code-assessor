@@ -1,0 +1,16 @@
+diff --git a/98f8140a3cd279872438e05ead3001d1ccd85e0b b/88300cfd96c0c1465fad3369deb65b53f8c8647e
+index 98f8140a3c..88300cfd96 100644
+--- a/98f8140a3cd279872438e05ead3001d1ccd85e0b
++++ b/88300cfd96c0c1465fad3369deb65b53f8c8647e
+@@ -1,5 +1,4 @@
+-/**
+- * Deletes the store completely. For example, in FS ones, also deletes the parent
+- * directory.
+- */
+-void fullDelete() throws IOException;
+\ No newline at end of file
++public void fullDelete() throws IOException {
++    deleteContent();
++    directoryService.fullDelete(directory.delegate());
++}
+\ No newline at end of file

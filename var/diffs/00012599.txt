@@ -1,0 +1,19 @@
+diff --git a/0a142fee358abcf980a5ea903da8d26fcec5d93e b/b8c860d4a0873bdd1587a8aa3e0e4c32797f55b3
+index 0a142fee35..b8c860d4a0 100644
+--- a/0a142fee358abcf980a5ea903da8d26fcec5d93e
++++ b/b8c860d4a0873bdd1587a8aa3e0e4c32797f55b3
+@@ -1,10 +1,5 @@
+ @Nullable
+-public static PsiDirectory getPsiDirectory(PsiElement element) {
+-    for (final FileReferenceHelper helper : FileReferenceHelperRegistrar.getHelpers()) {
+-        final PsiDirectory directory = helper.getPsiDirectory(element);
+-        if (directory != null) {
+-            return directory;
+-        }
+-    }
+-    return null;
++public static PsiDirectory getPsiDirectory(PsiFileSystemItem element) {
++    final FileReferenceHelper<PsiFileSystemItem> helper = FileReferenceHelperRegistrar.getHelper(element);
++    return helper != null ? helper.getPsiDirectory(element) : null;
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/3a81d82182df777568cf23907c090ca2a00fd15a b/25dbe933239b3e3d342eaf6dd404bc24248f0275
+index 3a81d82182..25dbe93323 100644
+--- a/3a81d82182df777568cf23907c090ca2a00fd15a
++++ b/25dbe933239b3e3d342eaf6dd404bc24248f0275
+@@ -1,10 +1,7 @@
+ @Test
+ public void shouldReportWhenAVariableIsSet() {
+     EnvironmentVariableContext context = new EnvironmentVariableContext();
+     context.setProperty(PROPERTY_NAME, PROPERTY_VALUE, false);
+-    InMemoryStreamConsumer consumer = ProcessOutputStreamConsumer.inMemoryConsumer();
+-    Map<String, String> map = new HashMap<String, String>();
+-    context.setupRuntimeEnvironment(map, consumer);
+-    assertThat(map.get(PROPERTY_NAME), is(PROPERTY_VALUE));
+-    assertThat(consumer.getAllOutput(), containsString("[go] setting environment variable 'PROPERTY_NAME' to value 'property value'"));
++    assertThat(context.report().size(), is(1));
++    assertThat(context.report().get(0), is("[go] setting environment variable 'PROPERTY_NAME' to value 'property value'"));
+ }
+\ No newline at end of file

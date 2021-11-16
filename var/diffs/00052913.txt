@@ -1,0 +1,25 @@
+diff --git a/b5afe5beaae03cf9d048d28dbda71388d73943e6 b/64635687656b1eae3bd6f9e16ab5e87c7e68376e
+index b5afe5beaa..6463568765 100644
+--- a/b5afe5beaae03cf9d048d28dbda71388d73943e6
++++ b/64635687656b1eae3bd6f9e16ab5e87c7e68376e
+@@ -1,13 +1,10 @@
+ private void parseInto(final InsertSQLContext sqlContext) {
+-    if (getLexer().equalToken(Token.HINT)) {
+-        getLexer().nextToken();
++    getLexer().skipIfEqual(Token.HINT);
++    if (getUnsupportedTokens().contains(getLexer().getToken())) {
++        throw new ParserUnsupportedException(getLexer().getToken());
+     }
+-    if (getUnsupportedIdentifiers().contains(getLexer().getLiterals())) {
+-        throw new UnsupportedOperationException(String.format("Cannot support %s.", getLexer().getLiterals()));
+-    }
+-    parseBetweenInsertAndInfo();
+-    getLexer().accept(Token.INTO);
+-    parseBetweenIntoAndTable();
+-    parseTable(sqlContext);
++    getLexer().skipUntil(Token.INTO);
++    getLexer().nextToken();
++    parseSingleTable(sqlContext);
+     parseBetweenTableAndValues();
+ }
+\ No newline at end of file

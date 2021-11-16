@@ -1,0 +1,15 @@
+diff --git a/35e855997d348558014321489a9a509acd91bc01 b/e682826c5572dbd1b10257baf6264ed463157a00
+index 35e855997d..e682826c55 100644
+--- a/35e855997d348558014321489a9a509acd91bc01
++++ b/e682826c5572dbd1b10257baf6264ed463157a00
+@@ -1,6 +1,8 @@
+ @Test
+ public void controllerReturnsMonoError() throws Exception {
+     this.request.setUri("/error-signal");
+     Mono<Void> publisher = this.dispatcherHandler.handle(this.exchange);
+-    TestSubscriber.subscribe(publisher).assertErrorWith(ex -> assertSame(EXCEPTION, ex));
++    ScriptedSubscriber.<Void>create().consumeErrorWith(error -> {
++        assertSame(EXCEPTION, error);
++    }).verify(publisher);
+ }
+\ No newline at end of file

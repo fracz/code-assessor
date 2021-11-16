@@ -1,0 +1,11 @@
+diff --git a/94bf906a7768d63644635b32b9920c9519816c0c b/10f1231001086c9500b934c6b5bc61df3747428d
+index 94bf906a77..10f1231001 100644
+--- a/94bf906a7768d63644635b32b9920c9519816c0c
++++ b/10f1231001086c9500b934c6b5bc61df3747428d
+@@ -1,4 +1,4 @@
+ @Override
+ protected boolean canUseFixedReferences(NodeRecord record) {
+-    return (((record.getNextProp() == NULL) || ((record.getNextProp() & 0xFFFF_FFFC_0000_0000L) == 0)) && ((record.getNextRel() == NULL) || ((record.getNextRel() & 0xFFFF_FFFE_0000_0000L) == 0)));
++    return (((record.getNextProp() == NULL) || ((record.getNextProp() & THREE_BITS_OVERFLOW_BIT_MASK) == 0)) && ((record.getNextRel() == NULL) || ((record.getNextRel() & ONE_BIT_OVERFLOW_BIT_MASK) == 0)));
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/c299bc9e0f4d423eaca6a042fad7f9df863051fa b/c7d3ee29558c59c2a7c432641e162b9d5562cf17
+index c299bc9e0f..c7d3ee2955 100644
+--- a/c299bc9e0f4d423eaca6a042fad7f9df863051fa
++++ b/c7d3ee29558c59c2a7c432641e162b9d5562cf17
+@@ -1,4 +1,6 @@
+ @Override
+ public JMatrix copy() {
+-    return new JMatrix(nrows, ncols, A.clone());
++    JMatrix a = new JMatrix(nrows, ncols, A.clone());
++    a.symmetric = symmetric;
++    return a;
+ }
+\ No newline at end of file

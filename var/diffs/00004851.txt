@@ -1,0 +1,19 @@
+diff --git a/8e2d19b81f8f4669063f03e4500a876b1a0d916f b/0d1cc10ef13747921fed21ae9cb21b271ac28b5c
+index 8e2d19b81f..0d1cc10ef1 100644
+--- a/8e2d19b81f8f4669063f03e4500a876b1a0d916f
++++ b/0d1cc10ef13747921fed21ae9cb21b271ac28b5c
+@@ -1,8 +1,7 @@
+ public void invoke(Project project, Editor editor, PsiFile file) {
+-    myProject = project;
+-    myEditor = editor;
+-    PsiElement el = getSelectedElement(editor, file);
+-    ArrayList<Action> options = new ArrayList<Action>();
+-    collectOptions(el, options);
+-    showOptions(options);
++    PsiElement e = findTargetElement(editor, file);
++    if (e == null)
++        return;
++    List<AnAction> options = collectOptions(e, editor, project);
++    showOptions(options, editor);
+ }
+\ No newline at end of file

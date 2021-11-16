@@ -1,0 +1,16 @@
+diff --git a/f5bcaa422d28a0bcec6f32997b7b17dd91d632bf b/44594c37fa1e1d55defcd907a4e85c5ea2a8e01a
+index f5bcaa422d..44594c37fa 100644
+--- a/f5bcaa422d28a0bcec6f32997b7b17dd91d632bf
++++ b/44594c37fa1e1d55defcd907a4e85c5ea2a8e01a
+@@ -1,8 +1,8 @@
+-private static boolean isCollectMapCall(PsiLoopStatement loop, TerminalBlock tb) {
++private static boolean isCollectMapCall(TerminalBlock tb) {
+     PsiMethodCallExpression call = tb.getSingleMethodCall();
+     if (!isCallOf(call, CommonClassNames.JAVA_UTIL_MAP, "merge", "put", "putIfAbsent"))
+         return false;
+     PsiReferenceExpression methodExpression = call.getMethodExpression();
+     PsiExpression qualifierExpression = methodExpression.getQualifierExpression();
+-    return extractQualifierClass(tb, call) != null && !tb.dependsOn(qualifierExpression) && canCollect(loop, call);
++    return extractQualifierClass(tb, call) != null && !tb.dependsOn(qualifierExpression) && canCollect(tb.getMainLoop(), call);
+ }
+\ No newline at end of file

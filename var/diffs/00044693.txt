@@ -1,0 +1,17 @@
+diff --git a/8bada983fb81d3742088de4c99a4a871d509de8c b/a03f7bbe2b959385edece0a0bb802732700e7ed6
+index 8bada983fb..a03f7bbe2b 100644
+--- a/8bada983fb81d3742088de4c99a4a871d509de8c
++++ b/a03f7bbe2b959385edece0a0bb802732700e7ed6
+@@ -1,8 +1,7 @@
+ public OClass getClassById(final int iClassId) {
+     if (iClassId == -1)
+         return null;
+-    OClass cls = classes.get(iClassId);
+-    if (cls == null)
+-        throw new OSchemaException("Class #" + iClassId + " was not found in current database");
+-    return cls;
++    for (OClass c : classes.values()) if (c.getId() == iClassId)
++        return c;
++    throw new OSchemaException("Class #" + iClassId + " was not found in current database");
+ }
+\ No newline at end of file

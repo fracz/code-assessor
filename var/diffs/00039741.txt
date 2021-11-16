@@ -1,0 +1,13 @@
+diff --git a/e005a98127b6f8acd795cba466f8331d187b2f67 b/c46f343587bb698a366504403ef03ae5effda8d2
+index e005a98127..c46f343587 100644
+--- a/e005a98127b6f8acd795cba466f8331d187b2f67
++++ b/c46f343587bb698a366504403ef03ae5effda8d2
+@@ -1,5 +1,6 @@
+ private static void addIndexSampleKeys(int num, Map<CountsKey, long[]> map) {
+     for (int i = 0; i < num; i++) {
+-        map.put(CountsKeyFactory.indexSampleKey(i, i), new long[] { i, i });
++        IndexDescriptor descriptor = IndexDescriptorFactory.from(new NodePropertyDescriptor(i, i));
++        map.put(CountsKeyFactory.indexSampleKey(descriptor), new long[] { i, i });
+     }
+ }
+\ No newline at end of file

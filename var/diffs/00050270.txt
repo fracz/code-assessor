@@ -1,0 +1,16 @@
+diff --git a/9b2ae65b96189f000bf16c694bb3d87ffabada33 b/90b52d558ce2e152a8d100970819f0b9ea06ca87
+index 9b2ae65b96..90b52d558c 100644
+--- a/9b2ae65b96189f000bf16c694bb3d87ffabada33
++++ b/90b52d558ce2e152a8d100970819f0b9ea06ca87
+@@ -1,9 +1,9 @@
+ @Override
+ public IStatus run(IProgressMonitor monitor) throws OperationCanceledException {
+     try {
+-        source.runQuery(new DefaultProgressMonitor(monitor), this);
++        source.runQuery(RuntimeUtils.makeMonitor(monitor), this);
+     } catch (DBException e) {
+         return GeneralUtils.makeExceptionStatus(e);
+     }
+     return Status.OK_STATUS;
+ }
+\ No newline at end of file

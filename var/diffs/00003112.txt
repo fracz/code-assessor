@@ -1,0 +1,14 @@
+diff --git a/bb5caed90967b6bc8ab366795205140ec25fb184 b/c4604e44cb1a89e3e7a3ba80385a76fc700bbcb0
+index bb5caed909..c4604e44cb 100644
+--- a/bb5caed90967b6bc8ab366795205140ec25fb184
++++ b/c4604e44cb1a89e3e7a3ba80385a76fc700bbcb0
+@@ -1,7 +1,7 @@
+ protected void actionPerformed(final GuiEditor editor, final List<RadComponent> selection, final AnActionEvent e) {
+-    final PropertyInspectorTable inspector = (PropertyInspectorTable) e.getDataContext().getData(PropertyInspectorTable.class.getName());
++    final PropertyInspectorTable inspector = PropertyInspectorTable.DATA_KEY.getData(e.getDataContext());
+     assert inspector != null;
+     final Property property = inspector.getSelectedProperty();
+     assert property != null;
+     doResetValue(selection, property, editor);
+ }
+\ No newline at end of file

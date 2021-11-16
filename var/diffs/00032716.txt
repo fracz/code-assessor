@@ -1,0 +1,20 @@
+diff --git a/aa21a61bc6ec969e722d948dca2e005c1ed16fc4 b/0eb752ed8be5993cf23eb3aabad7584b2d247fb3
+index aa21a61bc6..0eb752ed8b 100644
+--- a/aa21a61bc6ec969e722d948dca2e005c1ed16fc4
++++ b/0eb752ed8be5993cf23eb3aabad7584b2d247fb3
+@@ -1,13 +1,12 @@
+ /**
+  * An implementation of {@link Map#equals}.
+  */
+ static boolean equalsImpl(Map<?, ?> map, Object object) {
+     if (map == object) {
+         return true;
+-    }
+-    if (object instanceof Map) {
++    } else if (object instanceof Map) {
+         Map<?, ?> o = (Map<?, ?>) object;
+         return map.entrySet().equals(o.entrySet());
+     }
+     return false;
+ }
+\ No newline at end of file

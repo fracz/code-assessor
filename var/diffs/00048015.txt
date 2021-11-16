@@ -1,0 +1,17 @@
+diff --git a/e81cd71e46f01ed2345c551c2d9c79ad16032d55 b/8e3371fe499c54b9d45ac57577329b9b573b2f60
+index e81cd71e46..8e3371fe49 100644
+--- a/e81cd71e46f01ed2345c551c2d9c79ad16032d55
++++ b/8e3371fe499c54b9d45ac57577329b9b573b2f60
+@@ -1,9 +1,9 @@
+ @Override
+-public Object[] evaluate() throws InvocationTargetException, InterruptedException {
++public Object[] evaluate(DBRProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+     try {
+-        DBNNode[] children = NavigatorUtils.getNodeChildrenFiltered(getProgressMonitor(), parentNode);
++        DBNNode[] children = NavigatorUtils.getNodeChildrenFiltered(monitor, parentNode);
+         return children == null ? new Object[0] : children;
+     } catch (Throwable ex) {
+         throw new InvocationTargetException(ex);
+     }
+ }
+\ No newline at end of file

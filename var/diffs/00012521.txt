@@ -1,0 +1,15 @@
+diff --git a/c667d5c934c6978734e33a751860cfedfd2d0665 b/173247934f5ed0f6e5f89441d555d8e2ba592a75
+index c667d5c934..173247934f 100644
+--- a/c667d5c934c6978734e33a751860cfedfd2d0665
++++ b/173247934f5ed0f6e5f89441d555d8e2ba592a75
+@@ -1,8 +1,7 @@
+ public LibraryEditor getLibraryEditor(Library library) {
+     LibraryEditor libraryEditor = myLibrary2EditorMap.get(library);
+     if (libraryEditor == null) {
+-        libraryEditor = new LibraryEditor(library);
+-        myLibrary2EditorMap.put(library, libraryEditor);
++        libraryEditor = createLibraryEditor(library);
+     }
+     return libraryEditor;
+ }
+\ No newline at end of file

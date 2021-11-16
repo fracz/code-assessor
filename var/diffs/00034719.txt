@@ -1,0 +1,13 @@
+diff --git a/dbbdce6a6729d55a7245b93ea33adfb82d86bb5c b/8e566a523995f45be520d270e9534c4aace84469
+index dbbdce6a67..8e566a5239 100644
+--- a/dbbdce6a6729d55a7245b93ea33adfb82d86bb5c
++++ b/8e566a523995f45be520d270e9534c4aace84469
+@@ -1,6 +1,4 @@
+ private static ByteString readByteString(ByteBufferList source) {
+     int length = source.getInt();
+-    byte[] bytes = new byte[length];
+-    source.get(bytes);
+-    return ByteString.of(bytes);
++    return ByteString.of(source.getBytes(length));
+ }
+\ No newline at end of file

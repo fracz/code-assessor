@@ -1,0 +1,22 @@
+diff --git a/3d464f7edba2b63ac1a81d73007665f99709f91e b/de771b80a4ee2d8fd1757678c0056e7b19815088
+index 3d464f7edb..de771b80a4 100644
+--- a/3d464f7edba2b63ac1a81d73007665f99709f91e
++++ b/de771b80a4ee2d8fd1757678c0056e7b19815088
+@@ -1,8 +1,9 @@
+-private ScanResult<V> scanIterator(long startPos) {
+-    RedisConnection<Object, V> connection = connectionManager.connectionReadOp();
+-    try {
+-        return connection.sscan(getName(), startPos);
+-    } finally {
+-        connectionManager.releaseRead(connection);
+-    }
++private ScanResult<V> scanIterator(final long startPos) {
++    return connectionManager.read(new ResultOperation<ScanResult<V>, V>() {
++
++        @Override
++        public Future<ScanResult<V>> execute(RedisAsyncConnection<Object, V> async) {
++            return async.sscan(getName(), startPos);
++        }
++    });
+ }
+\ No newline at end of file

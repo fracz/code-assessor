@@ -1,0 +1,18 @@
+diff --git a/8023c8f91049b77c5a4b6168467f998ca5caaecc b/2750ad94fd8646d50d39c4886d383fd39096b14c
+index 8023c8f910..2750ad94fd 100644
+--- a/8023c8f91049b77c5a4b6168467f998ca5caaecc
++++ b/2750ad94fd8646d50d39c4886d383fd39096b14c
+@@ -1,9 +1,10 @@
+-public void depthFirstSearch(boolean forward, StringBuilder b) {
++public void depthFirstSearch(boolean forward, StringBuffer b) {
+     if (forward) {
+         depthFirstSearchHelper(getStartNode(), new HashSet(), 0, true, b);
+     } else {
+-        for (Object o : getEndNodes()) {
++        for (Iterator endIter = getEndNodes().iterator(); endIter.hasNext(); ) {
++            Object o = endIter.next();
+             depthFirstSearchHelper(o, new HashSet(), 0, false, b);
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/0a0a5efa6b96938a1cf1ecccbe79f59e3e14c6d5 b/413b14f4d91d7dab7733ff77afebb756f6e7b2cc
+index 0a0a5efa6b..413b14f4d9 100644
+--- a/0a0a5efa6b96938a1cf1ecccbe79f59e3e14c6d5
++++ b/413b14f4d91d7dab7733ff77afebb756f6e7b2cc
+@@ -1,11 +1,8 @@
+ @Override
+ public int compareTo(MapKey o) {
+     int compare = accessCount.compareTo(o.accessCount);
+     if (compare == 0) {
+-        if (!cachedValue.equals(o.cachedValue)) {
+-            return ((Integer) cachedValue.hashCode()).compareTo(o.cachedValue.hashCode());
+-        }
+-        return 0;
++        return cachedValue.id.compareTo(o.cachedValue.id);
+     }
+     return compare;
+ }
+\ No newline at end of file

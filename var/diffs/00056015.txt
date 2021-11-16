@@ -1,0 +1,13 @@
+diff --git a/2d73d21bcaf2e217e383d9e344d292ab6a0ea26a b/df224c85270de7e1185e16278ffbcea3faec6dd9
+index 2d73d21bca..df224c8527 100644
+--- a/2d73d21bcaf2e217e383d9e344d292ab6a0ea26a
++++ b/df224c85270de7e1185e16278ffbcea3faec6dd9
+@@ -1,5 +1,4 @@
+ @Override
+-public Mono<Object> decodeToMono(Publisher<DataBuffer> inputStream, ResolvableType elementType, MimeType mimeType, Map<String, Object> hints) {
+-    JsonObjectDecoder objectDecoder = this.monoObjectDecoder;
+-    return decodeInternal(objectDecoder, inputStream, elementType, mimeType, hints).singleOrEmpty();
++public Mono<Object> decodeToMono(Publisher<DataBuffer> input, ResolvableType elementType, MimeType mimeType, Map<String, Object> hints) {
++    return decodeInternal(this.monoDecoder, input, elementType, mimeType, hints).singleOrEmpty();
+ }
+\ No newline at end of file

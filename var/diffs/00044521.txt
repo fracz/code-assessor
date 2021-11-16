@@ -1,0 +1,14 @@
+diff --git a/e0f70e2f2345868fbc5cdfceb0e4cc0d612a0986 b/6b4053f721cb5feba4c8be208a3b5a3f351d9dea
+index e0f70e2f23..6b4053f721 100644
+--- a/e0f70e2f2345868fbc5cdfceb0e4cc0d612a0986
++++ b/6b4053f721cb5feba4c8be208a3b5a3f351d9dea
+@@ -1,5 +1,5 @@
+ public synchronized String getGlobalConfiguration(final OGlobalConfiguration config) throws IOException {
+-    OBinaryRequest request = new OGetGlobalConfigurationRequest(config.getKey());
+-    OBinaryResponse<String> response = new OGetGlobalConfigurationResponse();
+-    return networkAdminOperation(request, response, "Cannot retrieve the configuration value: " + config.getKey());
++    OGetGlobalConfigurationRequest request = new OGetGlobalConfigurationRequest(config.getKey());
++    OGetGlobalConfigurationResponse response = networkAdminOperation(request, "Cannot retrieve the configuration value: " + config.getKey());
++    return response.getValue();
+ }
+\ No newline at end of file

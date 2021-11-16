@@ -1,0 +1,18 @@
+diff --git a/05a39ab7a718c95b3a4be96f8b5b7b59635565c4 b/069ecca7b4f818d423505b4be72d2618979dd4d1
+index 05a39ab7a7..069ecca7b4 100644
+--- a/05a39ab7a718c95b3a4be96f8b5b7b59635565c4
++++ b/069ecca7b4f818d423505b4be72d2618979dd4d1
+@@ -1,8 +1,8 @@
+ /**
+  * Returns the matrix pseudo inverse.
+  */
+-public double[][] inverse() {
+-    double[][] I = Math.eye(QR.ncols(), QR.nrows());
+-    solve(I);
+-    return I;
++public DenseMatrix inverse() {
++    DenseMatrix inv = ColumnMajorMatrix.eye(QR.ncols(), QR.nrows());
++    solve(inv);
++    return inv;
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/f83084b1697b193f8300e214d324456d264b665d b/fa3338037d519f6fe3c1f0e1dca501e0c36aaee6
+index f83084b169..fa3338037d 100644
+--- a/f83084b1697b193f8300e214d324456d264b665d
++++ b/fa3338037d519f6fe3c1f0e1dca501e0c36aaee6
+@@ -1,6 +1,5 @@
+ @NotNull
+ public byte[] loadContent() throws IOException, VcsException {
+-    HgFile fileToCat = HgUtil.getFileNameInTargetRevision(myProject, myRevisionNumber, myFile);
+-    HgCommandResult result = new HgCatCommand(myProject).execute(fileToCat, myRevisionNumber, myFile.toFilePath().getCharset());
+-    return result != null && result.getExitValue() == 0 ? result.getBytesOutput() : new byte[0];
++    final HgFile fileToCat = HgUtil.getFileNameInTargetRevision(myProject, myRevisionNumber, myFile);
++    return HgUtil.loadContent(myProject, myRevisionNumber, fileToCat);
+ }
+\ No newline at end of file

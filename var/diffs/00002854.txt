@@ -1,0 +1,14 @@
+diff --git a/914ec148c0e9e308e765d09a6eb666987365fba3 b/82276587873320b147d352a8c69e79ddf5387d54
+index 914ec148c0..8227658787 100644
+--- a/914ec148c0e9e308e765d09a6eb666987365fba3
++++ b/82276587873320b147d352a8c69e79ddf5387d54
+@@ -1,6 +1,3 @@
+-public boolean isReadOnly(TextRange range) {
+-    if (myRange == null) {
+-        return false;
+-    }
+-    return range.getStartOffset() > myRange.getEndOffset() || range.getEndOffset() < myRange.getStartOffset();
++public boolean isReadOnly(@NotNull TextRange range) {
++    return range.getStartOffset() > formattingRange.getEndOffset() || range.getEndOffset() < formattingRange.getStartOffset();
+ }
+\ No newline at end of file

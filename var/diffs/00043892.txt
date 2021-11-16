@@ -1,0 +1,12 @@
+diff --git a/da78c9b1b69d397ee9df2ba0b8e1f9ee4bbc6536 b/2883160ec79a8ceb9edecec79dc8a9fa46cc0283
+index da78c9b1b6..2883160ec7 100644
+--- a/da78c9b1b69d397ee9df2ba0b8e1f9ee4bbc6536
++++ b/2883160ec79a8ceb9edecec79dc8a9fa46cc0283
+@@ -1,5 +1,5 @@
+ @AfterMethod
+ public void afterMethod() throws Exception {
+     database.command(new OCommandSQL("delete from LinkMapIndexTestClass")).execute();
+-    database.close();
++    super.afterMethod();
+ }
+\ No newline at end of file

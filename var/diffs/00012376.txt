@@ -1,0 +1,19 @@
+diff --git a/ffcc280fcb60070c6ed60dd64534a0f4e682419e b/7fb44932f11da56462acf738908b88eee2b89350
+index ffcc280fcb..7fb44932f1 100644
+--- a/ffcc280fcb60070c6ed60dd64534a0f4e682419e
++++ b/7fb44932f11da56462acf738908b88eee2b89350
+@@ -1,12 +1,12 @@
+ @Override
+ protected void rollback() {
+     GitCompoundResult result = new GitCompoundResult(myProject);
+     for (GitRepository repository : getSuccessfulRepositories()) {
+         GitCommandResult res = myGit.branchCreate(repository, myBranchName);
+         result.append(repository, res);
+         refresh(repository);
+     }
+     if (!result.totalSuccess()) {
+-        GitUIUtil.notify(GitVcs.IMPORTANT_ERROR_NOTIFICATION, myProject, "Error during rollback of branch deletion", result.getErrorOutputWithReposIndication(), NotificationType.ERROR, null);
++        VcsNotifier.getInstance(myProject).notifyError("Error during rollback of branch deletion", result.getErrorOutputWithReposIndication());
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/16d2c3f5dc422cf6ab22ce38f3b27e9f8aea48ce b/eac3e25dd3506acdc3b4c9ae48574b462ca4056b
+index 16d2c3f5dc..eac3e25dd3 100644
+--- a/16d2c3f5dc422cf6ab22ce38f3b27e9f8aea48ce
++++ b/eac3e25dd3506acdc3b4c9ae48574b462ca4056b
+@@ -1,6 +1,6 @@
+ private void createFile(TachyonFS tachyonClient) throws IOException {
+     LOG.debug("Creating file...");
+     long startTimeMs = CommonUtils.getCurrentMs();
+     int fileId = tachyonClient.createFile(mFilePath);
+-    FormatUtils.printTimeTakenMs(startTimeMs, LOG, "createFile with fileId " + fileId);
++    LOG.info(FormatUtils.formatTimeTakenMs(startTimeMs, "createFile with fileId " + fileId));
+ }
+\ No newline at end of file

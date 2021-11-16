@@ -1,0 +1,18 @@
+diff --git a/33ae0d6955e0ee1221586aad4cba80235b6d772c b/3a14ed620b653893d28c3b8b2b6bf541ff670067
+index 33ae0d6955..3a14ed620b 100644
+--- a/33ae0d6955e0ee1221586aad4cba80235b6d772c
++++ b/3a14ed620b653893d28c3b8b2b6bf541ff670067
+@@ -1,8 +1,8 @@
+ /**
+- * @param index Set to -1 for nothing selected.
++ * Sets the selection to only the selected index.
+  */
+ public void setSelectedIndex(int index) {
+-    if (index < -1 || index >= items.length)
+-        throw new GdxRuntimeException("index must be >= -1 and < " + items.length + ": " + index);
+-    selectedIndex = index;
++    if (index < -1 || index >= items.size)
++        throw new IllegalArgumentException("index must be >= -1 and < " + items.size + ": " + index);
++    selection.set(items.get(index));
+ }
+\ No newline at end of file

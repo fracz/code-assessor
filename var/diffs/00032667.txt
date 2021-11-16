@@ -1,0 +1,17 @@
+diff --git a/fa4bc4ff8bcb31e69a5017df79f4456c542272d3 b/d460f406baded7dfea65ee9fc69b721c97491005
+index fa4bc4ff8b..d460f406ba 100644
+--- a/fa4bc4ff8bcb31e69a5017df79f4456c542272d3
++++ b/d460f406baded7dfea65ee9fc69b721c97491005
+@@ -1,9 +1,9 @@
+-private static DirectedGraph<Integer, String> buildDirectedTestGraph() {
+-    DirectedGraph<Integer, String> directedGraph = Graphs.createDirected(MULTIGRAPH);
++private static Graph<Integer, String> buildDirectedTestGraph() {
++    Graph<Integer, String> directedGraph = GraphBuilder.directed().allowsParallelEdges(true).build();
+     directedGraph.addEdge(E11, N1, N1);
+     directedGraph.addEdge(E12, N1, N2);
+     directedGraph.addEdge(E11_A, N1, N1);
+     directedGraph.addEdge(E12_A, N1, N2);
+     directedGraph.addEdge(E21, N2, N1);
+     return directedGraph;
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/8b3ea2b854ec9910db677286f43dcf9d6afc8470 b/849a6d797d16bfc0cd11828af9077404a1e27aa2
+index 8b3ea2b854..849a6d797d 100644
+--- a/8b3ea2b854ec9910db677286f43dcf9d6afc8470
++++ b/849a6d797d16bfc0cd11828af9077404a1e27aa2
+@@ -1,8 +1,11 @@
+ @Override
+ public DBPTransactionIsolation getTransactionIsolation() throws DBCException {
+     try {
+-        return JDBCTransactionIsolation.getByCode(connectionHolder.getTransactionIsolation());
++        if (transactionIsolationLevel == null) {
++            transactionIsolationLevel = getConnection().getTransactionIsolation();
++        }
++        return JDBCTransactionIsolation.getByCode(transactionIsolationLevel);
+     } catch (SQLException e) {
+         throw new JDBCException(e, dataSource);
+     }
+ }
+\ No newline at end of file

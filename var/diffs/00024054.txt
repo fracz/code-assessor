@@ -1,0 +1,17 @@
+diff --git a/10318ae88273aa8f2a6156b8507e89f2361b683a b/77da87cf472bd1cc86e1352fd942b3eaa52be896
+index 10318ae882..77da87cf47 100644
+--- a/10318ae88273aa8f2a6156b8507e89f2361b683a
++++ b/77da87cf472bd1cc86e1352fd942b3eaa52be896
+@@ -1,8 +1,9 @@
+ @Override
+ public GenericArray<ColumnOrSuperColumn> get_slice(ByteBuffer key, ColumnParent columnParent, SlicePredicate predicate, ConsistencyLevel consistencyLevel) throws AvroRemoteException, InvalidRequestException, UnavailableException, TimedOutException {
+     if (logger.isDebugEnabled())
+         logger.debug("get_slice");
+-    GenericArray<ByteBuffer> keys = new GenericData.Array<ByteBuffer>(1, Schema.createArray(Schema.parse("{\"type\": \"bytes\"}")));
++    Schema bytesArray = Schema.createArray(Schema.parse("{\"type\": \"bytes\"}"));
++    GenericArray<ByteBuffer> keys = new GenericData.Array<ByteBuffer>(1, bytesArray);
+     keys.add(key);
+-    return multigetSliceInternal(curKeyspace.get(), keys, columnParent, predicate, consistencyLevel).get(key);
++    return multigetSliceInternal(curKeyspace.get(), keys, columnParent, predicate, consistencyLevel).iterator().next().columns;
+ }
+\ No newline at end of file

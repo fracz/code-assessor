@@ -1,0 +1,15 @@
+diff --git a/68af6c647448eb4580591836938a9816cc4f20c8 b/f942a86d92e2e561c685116af2de1865c91e5907
+index 68af6c6474..f942a86d92 100644
+--- a/68af6c647448eb4580591836938a9816cc4f20c8
++++ b/f942a86d92e2e561c685116af2de1865c91e5907
+@@ -1,7 +1,8 @@
+ @Before
+ public void setup() throws Exception {
+     simpleMethodInvocation = new InvocationBuilder().simpleMethod().seq(1).toInvocation();
+     simpleMethodInvocationTwo = new InvocationBuilder().simpleMethod().seq(2).toInvocation();
+     differentMethodInvocation = new InvocationBuilder().differentMethod().seq(3).toInvocation();
+-    calculator = new InvocationsCalculator(Arrays.asList(simpleMethodInvocation, simpleMethodInvocationTwo, differentMethodInvocation));
++    invocations.addAll(Arrays.asList(simpleMethodInvocation, simpleMethodInvocationTwo, differentMethodInvocation));
++    calculator = new InvocationsCalculator();
+ }
+\ No newline at end of file

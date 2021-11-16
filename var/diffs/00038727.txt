@@ -1,0 +1,18 @@
+diff --git a/2cd99a66b0f7ef95b19873e1b72b08de95739c57 b/66868d92fe983fa7aab903c553a46b542e0e06d6
+index 2cd99a66b0..66868d92fe 100644
+--- a/2cd99a66b0f7ef95b19873e1b72b08de95739c57
++++ b/66868d92fe983fa7aab903c553a46b542e0e06d6
+@@ -1,8 +1,10 @@
+ @Override
+-public IndexDefinition apply(IndexRule rule) {
++public IndexDefinition apply(IndexDescriptor rule) {
+     try {
+-        return new IndexDefinitionImpl(ctxProvider, label(context.getLabelName(rule.getLabel())), propertyKeyManager.getTokenByIdOrNull((int) rule.getPropertyKey()).getKey());
++        Label label = label(context.getLabelName(rule.getLabelId()));
++        String propertyKey = propertyKeyManager.getTokenByIdOrNull((int) rule.getPropertyKeyId()).getKey();
++        return new IndexDefinitionImpl(ctxProvider, label, propertyKey);
+     } catch (LabelNotFoundKernelException e) {
+         throw new RuntimeException(e);
+     }
+ }
+\ No newline at end of file

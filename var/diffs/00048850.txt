@@ -1,0 +1,19 @@
+diff --git a/705dbe80e5a2f8c699a6d91ffcac57f165073f90 b/87b25e5b154028d18deecdf5038f79cb296cc7ab
+index 705dbe80e5..87b25e5b15 100644
+--- a/705dbe80e5a2f8c699a6d91ffcac57f165073f90
++++ b/87b25e5b154028d18deecdf5038f79cb296cc7ab
+@@ -1,8 +1,7 @@
+ private void updateRecordMode() {
+-    DBDAttributeBinding oldAttr = this.curAttribute;
+-    this.initResultSet();
+-    this.curAttribute = oldAttr;
+-    if (curRow != null && oldAttr != null) {
+-        spreadsheet.setCursor(new GridCell(curRow, oldAttr), false);
+-    }
++    // Object state = savePresentationState();
++    // this.redrawData(false);
++    activePresentation.refreshData(true);
++    this.updateStatusMessage();
++// restorePresentationState(state);
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/0e2e0292ea3cd5135231ccbb656dc6ec290c7ad7 b/1fd3acebec2b7c15635ff08daed43473137ec0f9
+index 0e2e0292ea..1fd3acebec 100644
+--- a/0e2e0292ea3cd5135231ccbb656dc6ec290c7ad7
++++ b/1fd3acebec2b7c15635ff08daed43473137ec0f9
+@@ -1,3 +1,6 @@
+ private boolean hasErrors() {
+-    return mRangeEditText.getError() != null || mCopiesEditText.getError() != null;
++    if (mCopiesEditText.getError() != null) {
++        return true;
++    }
++    return mPageRangeEditText.getVisibility() == View.VISIBLE && mPageRangeEditText.getError() != null;
+ }
+\ No newline at end of file

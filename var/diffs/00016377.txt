@@ -1,0 +1,18 @@
+diff --git a/0c2d70a24da691f1e7d9b80a6f004b16f12d5f91 b/a8efe9d4a77bb8485ed553709c6c1732521f27d1
+index 0c2d70a24d..a8efe9d4a7 100644
+--- a/0c2d70a24da691f1e7d9b80a6f004b16f12d5f91
++++ b/a8efe9d4a77bb8485ed553709c6c1732521f27d1
+@@ -1,10 +1,10 @@
+ @Nullable
+ private KotlinJvmBinaryClass findKotlinClassByDescriptor(@NotNull ClassOrNamespaceDescriptor descriptor) {
+     if (descriptor instanceof ClassDescriptor) {
+         return kotlinClassFinder.find(kotlinFqNameToJavaFqName(naiveKotlinFqName((ClassDescriptor) descriptor)));
+-    } else if (descriptor instanceof NamespaceDescriptor) {
+-        return kotlinClassFinder.find(PackageClassUtils.getPackageClassFqName(DescriptorUtils.getFQName(descriptor).toSafe()));
++    } else if (descriptor instanceof PackageFragmentDescriptor) {
++        return kotlinClassFinder.find(PackageClassUtils.getPackageClassFqName(((PackageFragmentDescriptor) descriptor).getFqName()));
+     } else {
+         throw new IllegalStateException("Unrecognized descriptor: " + descriptor);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/cf6aac54e082ce5b95886b093ce17694332ae375 b/0bdc454d2eee9b4897f28d492def463cbfb8435a
+index cf6aac54e0..0bdc454d2e 100644
+--- a/cf6aac54e082ce5b95886b093ce17694332ae375
++++ b/0bdc454d2eee9b4897f28d492def463cbfb8435a
+@@ -1,17 +1,17 @@
+ @Override
+ public void widgetSelected(SelectionEvent e) {
+     Integer sqlIntegerCode = 0;
+     try {
+         sqlIntegerCode = Integer.valueOf(textSqlErrorCode.getText());
+     } catch (NumberFormatException nfe) {
+-        UIUtils.showErrorDialog(getShell(), DB2Messages.dialog_tools_mes_error_code_title, DB2Messages.dialog_tools_mes_error_code);
++        DBUserInterface.getInstance().showError(DB2Messages.dialog_tools_mes_error_code_title, DB2Messages.dialog_tools_mes_error_code);
+         return;
+     }
+     try {
+         String msg = DB2Utils.getMessageFromCode(db2DataSource, sqlIntegerCode);
+         resultMessage.setText(msg);
+     } catch (Exception e1) {
+         // Most propably, there is no message for this code. tell this to the user..
+         resultMessage.setText(e1.getMessage());
+     }
+ }
+\ No newline at end of file

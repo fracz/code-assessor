@@ -1,0 +1,21 @@
+diff --git a/bbe405953170f37c8809afc483cbb2f2c4cd6411 b/1aec4d2ddfa8ce7cccf3e6a512adc3bc9247cfd2
+index bbe4059531..1aec4d2ddf 100644
+--- a/bbe405953170f37c8809afc483cbb2f2c4cd6411
++++ b/1aec4d2ddfa8ce7cccf3e6a512adc3bc9247cfd2
+@@ -1,14 +1,13 @@
+ public void addPaths(VirtualFile... paths) {
+     boolean added = false;
+     keepSelectionState();
+-    for (int i = 0; i < paths.length; i++) {
+-        final VirtualFile path = paths[i];
++    for (final VirtualFile path : paths) {
+         if (addElement(path)) {
+             added = true;
+         }
+     }
+     if (added) {
+         setModified(true);
+         updateButtons();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/29afa1930ccec0e1e03b5d53e5812c27b936b33b b/3ed7e79723b9dc41c7762048843cfcebbe8317ba
+index 29afa1930c..3ed7e79723 100644
+--- a/29afa1930ccec0e1e03b5d53e5812c27b936b33b
++++ b/3ed7e79723b9dc41c7762048843cfcebbe8317ba
+@@ -1,5 +1,6 @@
+ @Override
+ public void invoke(@NotNull Project project, Editor editor, JetFile file) throws IncorrectOperationException {
+-    JetKeywordToken modifier = findVisibilityChangeTo(file);
+-    element.replace(AddModifierFix.addModifier(element, modifier, VISIBILITY_TOKENS, project, true));
++    JetModifierKeywordToken modifier = findVisibilityChangeTo(file);
++    assert modifier != null;
++    element.addModifier(modifier);
+ }
+\ No newline at end of file

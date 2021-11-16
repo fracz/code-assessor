@@ -1,0 +1,22 @@
+diff --git a/5be2dd9ca13694aecfc52bf6eaac421dc3f9da2e b/73505928cd63affebc61d65e9c930201dcc4610f
+index 5be2dd9ca1..73505928cd 100644
+--- a/5be2dd9ca13694aecfc52bf6eaac421dc3f9da2e
++++ b/73505928cd63affebc61d65e9c930201dcc4610f
+@@ -1,12 +1,15 @@
+ public SizeValue estimatedFlushableMemorySize() {
+     long bytes = -1;
+     for (ShardStatus shard : shards()) {
+-        if (shard.estimatedFlushableMemorySize().bytes() != SizeValue.UNKNOWN.bytes()) {
++        if (shard.estimatedFlushableMemorySize() != null) {
+             if (bytes == -1) {
+                 bytes = 0;
+             }
+             bytes += shard.estimatedFlushableMemorySize().bytes();
+         }
+     }
++    if (bytes == -1) {
++        return null;
++    }
+     return new SizeValue(bytes);
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/3e7107d2ae542d8c8debb09e382766fd7829eacd b/7925f981c97a007bf1e55134289f5fe723b1ab0a
+index 3e7107d2ae..7925f981c9 100644
+--- a/3e7107d2ae542d8c8debb09e382766fd7829eacd
++++ b/7925f981c97a007bf1e55134289f5fe723b1ab0a
+@@ -1,5 +1,5 @@
+ private IndexUpdatesValidator newIndexUpdatesValidatorWithMockedDependencies() {
+     when(neoStores.getNodeStore()).thenReturn(nodeStore);
+     when(neoStores.getPropertyStore()).thenReturn(propertyStore);
+-    return new OnlineIndexUpdatesValidator(neoStores, null, propertyLoader, indexingService, ONLINE);
++    return new OnlineIndexUpdatesValidator(neoStores, mock(DatabaseHealth.class), propertyLoader, indexingService, ONLINE);
+ }
+\ No newline at end of file

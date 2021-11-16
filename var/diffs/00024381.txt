@@ -1,0 +1,17 @@
+diff --git a/40efeded6e7264d28946bad8024d1797a55b1f66 b/f82bd83920691ce3d383db9bb7f14a35edcec16b
+index 40efeded6e..f82bd83920 100644
+--- a/40efeded6e7264d28946bad8024d1797a55b1f66
++++ b/f82bd83920691ce3d383db9bb7f14a35edcec16b
+@@ -1,7 +1,8 @@
+ // Updates all the timestamp of the deletion contained in this DeletionInfo to be {@code timestamp}.
+-public void updateAllTimestamp(long timestamp) {
+-    if (topLevel.markedForDeleteAt != Long.MIN_VALUE)
+-        topLevel = new DeletionTime(timestamp, topLevel.localDeletionTime);
++public DeletionInfo updateAllTimestamp(long timestamp) {
++    if (partitionDeletion.markedForDeleteAt() != Long.MIN_VALUE)
++        partitionDeletion = new SimpleDeletionTime(timestamp, partitionDeletion.localDeletionTime());
+     if (ranges != null)
+         ranges.updateAllTimestamp(timestamp);
++    return this;
+ }
+\ No newline at end of file

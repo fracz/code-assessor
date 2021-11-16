@@ -1,0 +1,10 @@
+diff --git a/92c65487a41390f22129d6f966c7ffb70a9df593 b/e0f3208989aef95621971239d0440f7da7abc391
+index 92c65487a4..e0f3208989 100644
+--- a/92c65487a41390f22129d6f966c7ffb70a9df593
++++ b/e0f3208989aef95621971239d0440f7da7abc391
+@@ -1,3 +1,3 @@
+ public static ColumnDefinition integerColumn(String ksName, String cfName) {
+-    return new ColumnDefinition(ksName, cfName, new ColumnIdentifier(IntegerType.instance.fromString("42"), IntegerType.instance), UTF8Type.instance, null, null, null, null, ColumnDefinition.Kind.REGULAR);
++    return new ColumnDefinition(ksName, cfName, ColumnIdentifier.getInterned(IntegerType.instance.fromString("42"), IntegerType.instance), UTF8Type.instance, null, null, null, null, ColumnDefinition.Kind.REGULAR);
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/f04af2eb020c7663229eadd74e0321951760edd9 b/bdd373418240dd4e608a0440124f0a0f39a6b637
+index f04af2eb02..bdd3734182 100644
+--- a/f04af2eb020c7663229eadd74e0321951760edd9
++++ b/bdd373418240dd4e608a0440124f0a0f39a6b637
+@@ -1,8 +1,8 @@
+ @Override
+ public int getRealBagSize(final Map<K, OSBTreeRidBag.Change> changes) {
+     final OStorageRemote storage = (OStorageRemote) ODatabaseRecordThreadLocal.INSTANCE.get().getStorage().getUnderlying();
+     final OBonsaiCollectionPointer collectionPointer = getCollectionPointer();
+-    OBinaryRequest request = new OSBTGetRealBagSizeRequest((OBinarySerializer<OIdentifiable>) keySerializer, collectionPointer, (Map<OIdentifiable, Change>) changes);
+-    OBinaryResponse<Integer> response = new OSBTGetRealBagSizeResponse();
+-    return storage.networkOperation(request, response, "Cannot get by real bag size sb-tree bonsai");
++    OSBTGetRealBagSizeRequest request = new OSBTGetRealBagSizeRequest((OBinarySerializer<OIdentifiable>) keySerializer, collectionPointer, (Map<OIdentifiable, Change>) changes);
++    OSBTGetRealBagSizeResponse response = storage.networkOperation(request, "Cannot get by real bag size sb-tree bonsai");
++    return response.getRealSize();
+ }
+\ No newline at end of file

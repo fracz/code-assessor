@@ -1,0 +1,30 @@
+diff --git a/b7f8441079b62296e7d252bacb8360c68f57a83c b/3b0480861742670847d1dc3e9290f1ccddb45b39
+index b7f8441079..3b04808617 100644
+--- a/b7f8441079b62296e7d252bacb8360c68f57a83c
++++ b/3b0480861742670847d1dc3e9290f1ccddb45b39
+@@ -1,12 +1,18 @@
+ private void initialize(@NotNull final Consumer<VcsLogDataHolder> onInitialized) {
+     myDataLoaderQueue.clear();
+-    loadFirstPart(new Consumer<DataPack>() {
++    runInBackground(new ThrowableConsumer<ProgressIndicator, VcsException>() {
+
+         @Override
+-        public void consume(DataPack dataPack) {
+-            onInitialized.consume(VcsLogDataHolder.this);
+-            // after first part is loaded and shown to the user, load the whole log in background
+-            loadAllLog();
++        public void consume(ProgressIndicator indicator) throws VcsException {
++            loadFromVcs(mySettings.getRecentCommitsCount(), indicator, new Consumer<DataPack>() {
++
++                @Override
++                public void consume(DataPack dataPack) {
++                    onInitialized.consume(VcsLogDataHolder.this);
++                    // after first part is loaded and shown to the user, start loading the whole log in background
++                    loadAllLog();
++                }
++            });
+         }
+-    }, true);
++    });
+ }
+\ No newline at end of file

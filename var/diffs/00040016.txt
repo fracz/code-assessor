@@ -1,0 +1,13 @@
+diff --git a/32f14de7f088977f0543a8ca4774a82080b701dd b/6882e1494cf0c94701b86ae6bf958e024b700ab5
+index 32f14de7f0..6882e1494c 100644
+--- a/32f14de7f088977f0543a8ca4774a82080b701dd
++++ b/6882e1494cf0c94701b86ae6bf958e024b700ab5
+@@ -1,5 +1,5 @@
+ @Override
+-public Iterator<NodePropertyConstraint> constraintsGetForLabelAndPropertyKey(int labelId, int propertyKeyId) {
++public Iterator<NodePropertyConstraint> constraintsGetForLabelAndPropertyKey(NodePropertyDescriptor descriptor) {
+     statement.assertOpen();
+-    return schemaRead().constraintsGetForLabelAndPropertyKey(statement, labelId, propertyKeyId);
++    return schemaRead().constraintsGetForLabelAndPropertyKey(statement, descriptor);
+ }
+\ No newline at end of file

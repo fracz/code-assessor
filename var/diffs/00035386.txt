@@ -1,0 +1,23 @@
+diff --git a/73065e65e07070a72ed1394aa6204a1057bd5764 b/2902696239c575721797ddfba88be03ff89330f8
+index 73065e65e0..2902696239 100644
+--- a/73065e65e07070a72ed1394aa6204a1057bd5764
++++ b/2902696239c575721797ddfba88be03ff89330f8
+@@ -1,9 +1,9 @@
+-private void onConnected(final boolean isContinue, final long soFar, final long total) {
+-    downloadTransfer.setSoFarBytes(soFar);
+-    downloadTransfer.setTotalBytes(total);
+-    downloadTransfer.setEtag(this.etag);
+-    downloadTransfer.setIsContinue(isContinue);
+-    downloadTransfer.setStatus(FileDownloadStatus.connected);
+-    helper.update(downloadTransfer.getDownloadId(), FileDownloadStatus.connected, soFar, total);
+-    FileDownloadProcessEventPool.getImpl().asyncPublishInNewThread(event.setTransfer(downloadTransfer.copy()));
++private void onConnected(final boolean resuming, final long soFar, final long total) {
++    helper.update(getId(), FileDownloadStatus.connected, soFar, total);
++    transferModel.setSoFarBytes(soFar);
++    transferModel.setTotalBytes(total);
++    transferModel.setEtag(model.getETag());
++    transferModel.setResuming(resuming);
++    transferModel.setStatus(FileDownloadStatus.connected);
++    onStatusChanged(model.getStatus());
+ }
+\ No newline at end of file

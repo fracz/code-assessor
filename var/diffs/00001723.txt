@@ -1,0 +1,17 @@
+diff --git a/289189246791b19f0a1f7646dba76faa1cb6538e b/00f34416c7b5a94b4574889ab8bf08cc22caf950
+index 2891892467..00f34416c7 100644
+--- a/289189246791b19f0a1f7646dba76faa1cb6538e
++++ b/00f34416c7b5a94b4574889ab8bf08cc22caf950
+@@ -1,10 +1,10 @@
+ public List<Module> getValidModules() {
+     final Module[] modules = ModuleManager.getInstance(getProject()).getModules();
+-    List<Module> result = new ArrayList<Module>();
++    List<Module> result = Lists.newArrayList();
+     for (Module module : modules) {
+         if (PythonSdkType.findPythonSdk(module) != null) {
+             result.add(module);
+         }
+     }
+     return result;
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/7a9379e36cc7cc5bac8952718b54132b5a565a7f b/7368458459e80670da8b69804027c16decb5d1d1
+index 7a9379e36c..7368458459 100644
+--- a/7a9379e36cc7cc5bac8952718b54132b5a565a7f
++++ b/7368458459e80670da8b69804027c16decb5d1d1
+@@ -1,4 +1,3 @@
+-/**
+- * The estimated size this store is using.
+- */
+-ByteSizeValue estimateSize() throws IOException;
+\ No newline at end of file
++public ByteSizeValue estimateSize() throws IOException {
++    return new ByteSizeValue(Directories.estimateSize(directory));
++}
+\ No newline at end of file

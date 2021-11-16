@@ -1,0 +1,33 @@
+diff --git a/66982f9b0e282138a473be5ef1c3183e06006f10 b/1ef9222286afb7682338f15c84dd3beaca29f21d
+index 66982f9b0e..1ef9222286 100644
+--- a/66982f9b0e282138a473be5ef1c3183e06006f10
++++ b/1ef9222286afb7682338f15c84dd3beaca29f21d
+@@ -1,21 +1,20 @@
+ @Override
+ public long countRecords() {
+-    OChannelBinaryAsynchClient network = null;
+-    do {
+-        try {
++    return networkOperation(new OStorageRemoteOperation<Long>() {
++
++        @Override
++        public Long execute(OChannelBinaryAsynchClient network) throws IOException {
+             try {
+-                network = beginRequest(OChannelBinaryProtocol.REQUEST_DB_COUNTRECORDS);
++                beginRequest(network, OChannelBinaryProtocol.REQUEST_DB_COUNTRECORDS);
+             } finally {
+                 endRequest(network);
+             }
+             try {
+                 beginResponse(network);
+                 return network.readLong();
+             } finally {
+                 endResponse(network);
+             }
+-        } catch (Exception e) {
+-            handleException(network, "Error on read database record count", e);
+         }
+-    } while (true);
++    }, "Error on read database record count");
+ }
+\ No newline at end of file

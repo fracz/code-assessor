@@ -1,0 +1,14 @@
+diff --git a/c9c117b34f6e6052af3b01f64b40aaf7f043d81f b/5ceb130195b4efbadf5cea088cdf68a958a847a0
+index c9c117b34f..5ceb130195 100644
+--- a/c9c117b34f6e6052af3b01f64b40aaf7f043d81f
++++ b/5ceb130195b4efbadf5cea088cdf68a958a847a0
+@@ -1,7 +1,3 @@
+ public int getSettingsMainTitleColor() {
+-    if (listActionColor != 0) {
+-        return listActionColor;
+-    } else {
+-        return getSettingsCategoryTextColor();
+-    }
++    return getColorWithFallback(settingsMainTitleColor, getListActionColor());
+ }
+\ No newline at end of file

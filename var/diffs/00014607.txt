@@ -1,0 +1,21 @@
+diff --git a/08a5efcc0f36758c642828b30f7e57604fbdd5db b/b422fb92941e3f15849bf2b11fde4b9c7ce7b3cb
+index 08a5efcc0f..b422fb9294 100644
+--- a/08a5efcc0f36758c642828b30f7e57604fbdd5db
++++ b/b422fb92941e3f15849bf2b11fde4b9c7ce7b3cb
+@@ -1,11 +1,13 @@
+ public void visitField(@NotNull PsiField field) {
+     if (!field.hasModifierProperty(PsiModifier.STATIC)) {
+         return;
+     }
+     final PsiType type = field.getType();
+     if (!CollectionUtils.isCollectionClassOrInterface(type)) {
+         return;
+     }
+-    if (m_ignoreWeakCollections && !CollectionUtils.isWeakCollectionClass(type))
+-        registerFieldError(field);
++    if (!m_ignoreWeakCollections || CollectionUtils.isWeakCollectionClass(type)) {
++        return;
++    }
++    registerFieldError(field);
+ }
+\ No newline at end of file

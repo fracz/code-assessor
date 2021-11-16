@@ -1,0 +1,22 @@
+diff --git a/4a41d474c5d865b7388e0fe479ca3a78a663e2a1 b/bc2ab7eeffa9b98fa14ec628354332533e79f71c
+index 4a41d474c5..bc2ab7eeff 100644
+--- a/4a41d474c5d865b7388e0fe479ca3a78a663e2a1
++++ b/bc2ab7eeffa9b98fa14ec628354332533e79f71c
+@@ -1,6 +1,12 @@
++// protected void setMenu(View v) {
++// if (mMenu.getChildCount() > 0) {
++// mMenu.removeAllViews();
++// }
++// mMenu.addView(v);
++// }
+ public void setContent(View v) {
+-    if (mContent.getChildCount() > 0) {
+-        mContent.removeAllViews();
+-    }
+-    mContent.addView(v);
++    if (mContent == null)
++        this.removeView(mContent);
++    mContent = v;
++    addView(mContent);
+ }
+\ No newline at end of file

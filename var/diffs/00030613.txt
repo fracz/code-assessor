@@ -1,0 +1,13 @@
+diff --git a/88300cfd96c0c1465fad3369deb65b53f8c8647e b/bdb080f72d6378d0df559d409e59162ad4070cd6
+index 88300cfd96..bdb080f72d 100644
+--- a/88300cfd96c0c1465fad3369deb65b53f8c8647e
++++ b/bdb080f72d6378d0df559d409e59162ad4070cd6
+@@ -1,4 +1,6 @@
+ public void fullDelete() throws IOException {
+     deleteContent();
+-    directoryService.fullDelete(directory.delegate());
++    for (Directory delegate : directory.delegates()) {
++        directoryService.fullDelete(delegate);
++    }
+ }
+\ No newline at end of file

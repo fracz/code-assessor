@@ -1,0 +1,23 @@
+diff --git a/cbe1459b19e6cb1fa5c439d9e00c4fddb5b0d0e9 b/d8648771f458d12d524a053de9dfdd10f0171605
+index cbe1459b19..d8648771f4 100644
+--- a/cbe1459b19e6cb1fa5c439d9e00c4fddb5b0d0e9
++++ b/d8648771f458d12d524a053de9dfdd10f0171605
+@@ -1,9 +1,13 @@
+ public boolean isModified() {
+-    if (ElementLifeCycle.isModified(lifecycle))
++    if (super.isModified())
+         return true;
+-    for (FaunusRelation r : adjacency.values()) {
+-        if (r.isModified())
+-            return true;
++    if (!(this instanceof FaunusVertex))
++        return false;
++    for (Direction dir : Direction.proper) {
++        for (FaunusRelation r : getAdjacency(dir).values()) {
++            if (r.isModified())
++                return true;
++        }
+     }
+     return false;
+ }
+\ No newline at end of file

@@ -1,0 +1,23 @@
+diff --git a/f65822cea30b2831c9fcdb7211345b580b39436c b/c1294b657489566e5b258a77f540baa28015e993
+index f65822cea3..c1294b6574 100644
+--- a/f65822cea30b2831c9fcdb7211345b580b39436c
++++ b/c1294b657489566e5b258a77f540baa28015e993
+@@ -1,15 +1,13 @@
+ protected LibraryDescriptor merge(final List<LibraryDescriptor> entries) {
+-    final ProjectLayout layout = getBuilder().getProjectLayout();
++    final ModuleInsight insight = getInsight();
+     LibraryDescriptor mainLib = null;
+     for (LibraryDescriptor entry : entries) {
+         if (mainLib == null) {
+             mainLib = entry;
+         } else {
+             final Collection<File> files = entry.getJars();
+-            for (File jar : files) {
+-                layout.moveJarToLibrary(jar, mainLib);
+-            }
++            insight.moveJarsToLibrary(entry, files, mainLib);
+         }
+     }
+     return mainLib;
+ }
+\ No newline at end of file

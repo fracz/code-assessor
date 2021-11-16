@@ -1,0 +1,18 @@
+diff --git a/6aa334e94a2e14433d2a2148f41e38d5519b062f b/876fc8b04fb030c264568bea4ad7a25e67f48084
+index 6aa334e94a..876fc8b04f 100644
+--- a/6aa334e94a2e14433d2a2148f41e38d5519b062f
++++ b/876fc8b04fb030c264568bea4ad7a25e67f48084
+@@ -1,8 +1,9 @@
++@Override
+ public LogPosition getLatestIndexBy(String destination) {
+-    LogPosition logPostion = super.getLatestIndexBy(destination);
+-    if (logPostion == nullPosition) {
++    LogPosition logPosition = memoryLogPositionManager.getLatestIndexBy(destination);
++    if (logPosition == nullPosition) {
+         return null;
+     } else {
+-        return logPostion;
++        return logPosition;
+     }
+ }
+\ No newline at end of file

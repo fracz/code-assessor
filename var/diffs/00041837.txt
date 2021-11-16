@@ -1,0 +1,23 @@
+diff --git a/98e11ae62e8d0a7f4b39caef16637d58f5631dea b/1fb62fb5d2591cea4324ba176c2dbb32a6fcd312
+index 98e11ae62e..1fb62fb5d2 100644
+--- a/98e11ae62e8d0a7f4b39caef16637d58f5631dea
++++ b/1fb62fb5d2591cea4324ba176c2dbb32a6fcd312
+@@ -1,16 +1,16 @@
+ protected static int trimCsvSerializedContent(OClientConnection connection, final byte[] stream) {
+     int realLength = stream.length;
+     final ODatabaseDocumentInternal db = ODatabaseRecordThreadLocal.INSTANCE.getIfDefined();
+     if (db != null && db instanceof ODatabaseDocument) {
+-        if (ORecordSerializerSchemaAware2CSV.NAME.equals(getRecordSerializerName(connection))) {
++        if (ORecordSerializerSchemaAware2CSV.NAME.equals(connection.getData().getSerializationImpl())) {
+             // TRIM TAILING SPACES (DUE TO OVERSIZE)
+             for (int i = stream.length - 1; i > -1; --i) {
+                 if (stream[i] == 32)
+                     --realLength;
+                 else
+                     break;
+             }
+         }
+     }
+     return realLength;
+ }
+\ No newline at end of file

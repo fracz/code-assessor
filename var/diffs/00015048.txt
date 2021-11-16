@@ -1,0 +1,17 @@
+diff --git a/e4be6a778747b2ef550289d3bd69a7fda32ad437 b/3797605c4195cc1592851ab48bae0147f7a4d544
+index e4be6a7787..3797605c41 100644
+--- a/e4be6a778747b2ef550289d3bd69a7fda32ad437
++++ b/3797605c4195cc1592851ab48bae0147f7a4d544
+@@ -1,8 +1,8 @@
+-private void computeAndSaveArguments(@NotNull FrameMap frameMap, @NotNull List<? extends ValueArgument> fakeArguments, @NotNull ExpressionCodegen codegen) {
+-    for (ValueParameterDescriptor parameter : functionDescriptor.getValueParameters()) {
++private void computeAndSaveArguments(@NotNull List<? extends ValueArgument> fakeArguments, @NotNull ExpressionCodegen codegen) {
++    for (ValueParameterDescriptor parameter : callableDescriptor.getValueParameters()) {
+         ValueArgument fakeArgument = fakeArguments.get(parameter.getIndex());
+         Type type = state.getTypeMapper().mapType(parameter);
+-        int localIndex = frameMap.getIndex(parameter);
++        int localIndex = codegen.myFrameMap.getIndex(parameter);
+         codegen.tempVariables.put(fakeArgument.getArgumentExpression(), StackValue.local(localIndex, type));
+     }
+ }
+\ No newline at end of file

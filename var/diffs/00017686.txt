@@ -1,0 +1,11 @@
+diff --git a/61d1cb546c2ef19c64ce70d5589a9a29036cc0c1 b/9be8578d422f76939ec059e938bfee9f5487ec8d
+index 61d1cb546c..9be8578d42 100644
+--- a/61d1cb546c2ef19c64ce70d5589a9a29036cc0c1
++++ b/9be8578d422f76939ec059e938bfee9f5487ec8d
+@@ -1,4 +1,3 @@
+ public static boolean isSubclass(@NotNull ClassDescriptor subClass, @NotNull ClassDescriptor superClass) {
+-    DeclarationDescriptor superOriginal = superClass.getOriginal();
+-    return hasEqualSuperType(subClass.getDefaultType(), superOriginal);
++    return isSubtypeOfClass(subClass.getDefaultType(), superClass.getOriginal());
+ }
+\ No newline at end of file

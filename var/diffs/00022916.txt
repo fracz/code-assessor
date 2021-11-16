@@ -1,0 +1,27 @@
+diff --git a/a169a91613bf359fa2c42d06ae097d7a47353f23 b/fe4546b440b7342340c923b2f068f322d51d0c95
+index a169a91613..fe4546b440 100644
+--- a/a169a91613bf359fa2c42d06ae097d7a47353f23
++++ b/fe4546b440b7342340c923b2f068f322d51d0c95
+@@ -1,17 +1,14 @@
+ @Override
+ void refreshDirectory(int anim) {
+     final FragmentManager fm = getFragmentManager();
+     final RootInfo root = getCurrentRoot();
+     final DocumentInfo cwd = getCurrentDirectory();
++    if (DEBUG)
++        checkState(!mSearchManager.isSearching());
+     if (cwd == null) {
+         DirectoryFragment.showRecentsOpen(fm, anim);
+     } else {
+-        if (mState.currentSearch != null) {
+-            // Ongoing search
+-            DirectoryFragment.showSearch(fm, root, mState.currentSearch, anim);
+-        } else {
+-            // Normal boring directory
+-            DirectoryFragment.showDirectory(fm, root, cwd, anim);
+-        }
++        // Normal boring directory
++        DirectoryFragment.showDirectory(fm, root, cwd, anim);
+     }
+ }
+\ No newline at end of file

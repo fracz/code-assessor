@@ -1,0 +1,20 @@
+diff --git a/87385111e9c8a45eaf3044f62cc9f72915cf6a8a b/9263dc23a25eb2f00880c6795f8262f0bfef89de
+index 87385111e9..9263dc23a2 100644
+--- a/87385111e9c8a45eaf3044f62cc9f72915cf6a8a
++++ b/9263dc23a25eb2f00880c6795f8262f0bfef89de
+@@ -1,11 +1,5 @@
++@Nullable
+ public String convert(TreePath path) {
+-    DefaultMutableTreeNode node = (DefaultMutableTreeNode) (path).getLastPathComponent();
+-    if (node instanceof ElementNode) {
+-        ElementNode elementNode = (ElementNode) node;
+-        PsiElement psiElement = elementNode.getElement();
+-        if (psiElement instanceof PsiClass)
+-            return null;
+-        return elementNode.getText();
+-    }
+-    return null;
++    final MemberChooserObject delegate = ((ElementNode) path.getLastPathComponent()).getDelegate();
++    return delegate instanceof ClassMember ? null : delegate.getText();
+ }
+\ No newline at end of file

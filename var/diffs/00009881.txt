@@ -1,0 +1,25 @@
+diff --git a/9501683094778853f914a45b702cc67327b43e0a b/e5cca6df68f311a420d7dced0ef4cbe9d627c866
+index 9501683094..e5cca6df68 100644
+--- a/9501683094778853f914a45b702cc67327b43e0a
++++ b/e5cca6df68f311a420d7dced0ef4cbe9d627c866
+@@ -1,10 +1,15 @@
+ private void initFormatFieldActions() {
+-    myComponent.getFormatTextField().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "strokeEnter");
+-    myComponent.getFormatTextField().getActionMap().put("strokeEnter", new AbstractAction() {
++    if (myComponent.getFormatTextField().getEditor() == null) {
++        LOG.error("Null editor in format field.");
++        return;
++    }
++    myComponent.getFormatTextField().getEditor().getContentComponent().addKeyListener(new KeyAdapter() {
+
+         @Override
+-        public void actionPerformed(ActionEvent e) {
+-            doApplyFormat();
++        public void keyPressed(KeyEvent e) {
++            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
++                doApplyFormat();
++            }
+         }
+     });
+ }
+\ No newline at end of file

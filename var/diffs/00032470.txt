@@ -1,0 +1,15 @@
+diff --git a/177c4c6de3155517c78c66c3b60707ef377623d8 b/bb052cbc1be94e5b1551fca13edd2c4e4c82759a
+index 177c4c6de3..bb052cbc1b 100644
+--- a/177c4c6de3155517c78c66c3b60707ef377623d8
++++ b/bb052cbc1be94e5b1551fca13edd2c4e4c82759a
+@@ -1,5 +1,6 @@
+ @Override
+-public FunctionTypeI withReturnType(TypeI returnType) {
+-    checkState(this.isFunctionType());
+-    return this.commonTypes.fromFunctionType(getFunTypeIfSingletonObj().withReturnType((JSType) returnType));
++public Builder withReturnType(TypeI type) {
++    checkArgument(type instanceof JSType);
++    function = function.withReturnType((JSType) type);
++    return this;
+ }
+\ No newline at end of file

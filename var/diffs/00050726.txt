@@ -1,0 +1,15 @@
+diff --git a/ef579b3ac33c7ce6486576401afada511f31ee44 b/d6cbd784f344465068ff2dfed226c48a16d9ecdb
+index ef579b3ac3..d6cbd784f3 100644
+--- a/ef579b3ac33c7ce6486576401afada511f31ee44
++++ b/d6cbd784f344465068ff2dfed226c48a16d9ecdb
+@@ -1,8 +1,8 @@
+ protected void updateSQL() {
+     try {
+-        sqlInput = new StringEditorInput(getShell().getText(), getSQLText(), true);
++        StringEditorInput sqlInput = new StringEditorInput(getShell().getText(), getSQLText(), true);
+         sqlViewer.init(subSite, sqlInput);
+     } catch (PartInitException e) {
+         UIUtils.showErrorDialog(getShell(), getShell().getText(), null, e);
+     }
+ }
+\ No newline at end of file

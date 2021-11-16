@@ -1,0 +1,16 @@
+diff --git a/412e11933a2c24c0092586e32f71c923bc93dddc b/ff21c5102e6bfdbd766b52ab7cfdb0db38aa1741
+index 412e11933a..ff21c5102e 100644
+--- a/412e11933a2c24c0092586e32f71c923bc93dddc
++++ b/ff21c5102e6bfdbd766b52ab7cfdb0db38aa1741
+@@ -1,8 +1,8 @@
+ @SuppressWarnings("unchecked")
+ @Test
+ public void testYaml() {
+     Yaml yaml = new Yaml();
+     Map<String, ?> map = yaml.loadAs("foo: bar\nspam:\n  foo: baz", Map.class);
+-    assertEquals("bar", map.get("foo"));
+-    assertEquals("baz", ((Map<String, Object>) map.get("spam")).get("foo"));
++    assertThat(map.get("foo"), equalTo((Object) "bar"));
++    assertThat(((Map<String, Object>) map.get("spam")).get("foo"), equalTo((Object) "baz"));
+ }
+\ No newline at end of file

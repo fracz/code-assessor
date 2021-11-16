@@ -1,0 +1,23 @@
+diff --git a/1bc0233f476b86581005c9f9ff171c779b75bf35 b/0f222460a5ffc98a06b85968f5214ce823a5bd2d
+index 1bc0233f47..0f222460a5 100644
+--- a/1bc0233f476b86581005c9f9ff171c779b75bf35
++++ b/0f222460a5ffc98a06b85968f5214ce823a5bd2d
+@@ -1,14 +1,15 @@
+-protected void onBeforeRequest() throws IOException {
+-    solveSession();
++protected OClientConnection onBeforeRequest() throws IOException {
++    OClientConnection connection = solveSession();
+     if (connection != null) {
+         connection.statsUpdate();
+     } else {
+         ODatabaseRecordThreadLocal.INSTANCE.remove();
+         if (requestType != OChannelBinaryProtocol.REQUEST_DB_CLOSE && requestType != OChannelBinaryProtocol.REQUEST_SHUTDOWN) {
+             OLogManager.instance().debug(this, "Found unknown session %d, shutdown current connection", clientTxId);
+             shutdown();
+             throw new OIOException("Found unknown session " + clientTxId);
+         }
+     }
+     OServerPluginHelper.invokeHandlerCallbackOnBeforeClientRequest(server, connection, (byte) requestType);
++    return connection;
+ }
+\ No newline at end of file

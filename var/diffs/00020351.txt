@@ -1,0 +1,15 @@
+diff --git a/2bbb080ebe02d3f1ab0cd9158dd15dabdeef4dc2 b/b1e1e7e7284249b30b8eace73532f2090f646c49
+index 2bbb080ebe..b1e1e7e728 100644
+--- a/2bbb080ebe02d3f1ab0cd9158dd15dabdeef4dc2
++++ b/b1e1e7e7284249b30b8eace73532f2090f646c49
+@@ -1,6 +1,6 @@
+ public void setFirst(SQLExpr first) {
+-    if (first != null) {
+-        first.setParent(this);
++    if (limit == null) {
++        limit = new SQLLimit();
+     }
+-    this.first = first;
++    this.limit.setRowCount(first);
+ }
+\ No newline at end of file

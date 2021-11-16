@@ -1,0 +1,14 @@
+diff --git a/d700fd49d5fc49ea63b8c412eab42066164f6d74 b/7d65b0ea56e551f38e8020c627d8d481dd0a55c1
+index d700fd49d5..7d65b0ea56 100644
+--- a/d700fd49d5fc49ea63b8c412eab42066164f6d74
++++ b/7d65b0ea56e551f38e8020c627d8d481dd0a55c1
+@@ -1,6 +1,6 @@
+-public void verify(List<Invocation> invocations, InvocationMatcher wanted) {
+-    Invocation unverified = new InvocationsFinder().findFirstUnverified(invocations);
++public void verify(VerificationData data) {
++    Invocation unverified = new InvocationsFinder().findFirstUnverified(data.getAllInvocations());
+     if (unverified != null) {
+         new Reporter().noMoreInteractionsWanted(unverified, unverified.getStackTrace());
+     }
+ }
+\ No newline at end of file

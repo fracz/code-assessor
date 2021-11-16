@@ -1,0 +1,22 @@
+diff --git a/0a9f6d8a6306af6f8682915d624905f708ac6a55 b/863498911db1657c8492da61870ce93e6ab3536d
+index 0a9f6d8a63..863498911d 100644
+--- a/0a9f6d8a6306af6f8682915d624905f708ac6a55
++++ b/863498911db1657c8492da61870ce93e6ab3536d
+@@ -1,15 +1,12 @@
+ public void parseAssignItems(List<SQLAssignItem> items) {
+     for (; ; ) {
+-        SQLAssignItem item = new SQLAssignItem();
+-        item.setTarget(exprParser.primary());
+-        accept(Token.EQ);
+-        item.setValue(exprParser.expr());
++        SQLAssignItem item = exprParser.parseAssignItem();
+         items.add(item);
+         if (lexer.token() == Token.COMMA) {
+             lexer.nextToken();
+             continue;
+         } else {
+             break;
+         }
+     }
+ }
+\ No newline at end of file

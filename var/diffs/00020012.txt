@@ -1,0 +1,26 @@
+diff --git a/9ffb5e08380e9a7f472c5a4b7771a4ec787d8a42 b/86290dc5629f9c8feb0d702f22b91016d56aba85
+index 9ffb5e0838..86290dc562 100644
+--- a/9ffb5e08380e9a7f472c5a4b7771a4ec787d8a42
++++ b/86290dc5629f9c8feb0d702f22b91016d56aba85
+@@ -1,16 +1,17 @@
+ /**
+  * parse cursor declare statement
+  *
+  * @return
+  */
+ public MySqlCursorDeclareStatement parseCursorDeclare() {
+     MySqlCursorDeclareStatement stmt = new MySqlCursorDeclareStatement();
+     accept(Token.DECLARE);
+-    stmt.setCursorName(exprParser.name().getSimpleName());
++    stmt.setCursorName(exprParser.name());
+     accept(Token.CURSOR);
+     accept(Token.FOR);
+-    SQLSelectStatement selelctStmt = (SQLSelectStatement) parseSelect();
+-    stmt.setSelect(selelctStmt);
++    // SQLSelectStatement selelctStmt = (SQLSelectStatement) parseSelect();
++    SQLSelect select = this.createSQLSelectParser().select();
++    stmt.setSelect(select);
+     accept(Token.SEMI);
+     return stmt;
+ }
+\ No newline at end of file

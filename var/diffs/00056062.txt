@@ -1,0 +1,13 @@
+diff --git a/c7abddbb5f76a3643361fe4e834d384f6d80c425 b/6c0f90f883864777eb4aecf25739392d78a3244d
+index c7abddbb5f..6c0f90f883 100644
+--- a/c7abddbb5f76a3643361fe4e834d384f6d80c425
++++ b/6c0f90f883864777eb4aecf25739392d78a3244d
+@@ -1,6 +1,6 @@
+ @Test
+ public void testForceProxyTargetClass() {
+-    ClassPathXmlApplicationContext bf = new ClassPathXmlApplicationContext("/org/springframework/aop/aspectj/autoproxy/aspectsWithCGLIB.xml");
++    ClassPathXmlApplicationContext bf = newContext("aspectsWithCGLIB.xml");
+     ProxyConfig pc = (ProxyConfig) bf.getBean(AopConfigUtils.AUTO_PROXY_CREATOR_BEAN_NAME);
+     assertTrue("should be proxying classes", pc.isProxyTargetClass());
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/fa87a25b45ce1aff1e0ad37af6511baee8b24cde b/3bffc820c3010d3b470315b0d68f1ee67170e77e
+index fa87a25b45..3bffc820c3 100644
+--- a/fa87a25b45ce1aff1e0ad37af6511baee8b24cde
++++ b/3bffc820c3010d3b470315b0d68f1ee67170e77e
+@@ -1,8 +1,8 @@
+ @Override
+ public void preStart() {
+     this.packs = context().getStickersModule().getPacksEngine();
+     this.stickers = context().getStickersModule().getStickersEngine();
+-    if (packs.getCount() == 0) {
++    if (!context().getPreferences().getBool("stickers_loaded", false)) {
+         loadStickers();
+     }
+ }
+\ No newline at end of file

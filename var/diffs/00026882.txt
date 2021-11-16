@@ -1,0 +1,17 @@
+diff --git a/bdc1f397e4a37d1ed6c1f334f057d884c6a6721c b/e1b53fa91833b33cfd1ceabd23a3219ace506eae
+index bdc1f397e4..e1b53fa918 100644
+--- a/bdc1f397e4a37d1ed6c1f334f057d884c6a6721c
++++ b/e1b53fa91833b33cfd1ceabd23a3219ace506eae
+@@ -1,9 +1,10 @@
+ /**
+  * RMSE for reconstruction entropy
+  *
+  * @return rmse for reconstruction entropy
+  */
+ @Override
+ public double mseRecon() {
+-    return sqrt(pow(reconstruct(input).sub(input), 2)).sum() / input.rows;
++    double recon = (double) sqrt(pow(reconstruct(input).subi(input), 2)).sum(Integer.MAX_VALUE).element();
++    return recon / input.rows();
+ }
+\ No newline at end of file

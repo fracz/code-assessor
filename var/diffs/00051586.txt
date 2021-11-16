@@ -1,0 +1,16 @@
+diff --git a/0aaff818c7aa8e305b3344b6731ec75f45e71555 b/abd3318f519605234e206620d40ba2dc6b63988c
+index 0aaff818c7..abd3318f51 100644
+--- a/0aaff818c7aa8e305b3344b6731ec75f45e71555
++++ b/abd3318f519605234e206620d40ba2dc6b63988c
+@@ -1,8 +1,9 @@
+ @Override
+ public JDBCStructStatic cloneValue(DBRProgressMonitor monitor) throws DBCException {
+     JDBCStructStatic copyStruct = new JDBCStructStatic();
+     copyStruct.type = this.type;
+     copyStruct.contents = null;
+-    copyStruct.values = new LinkedHashMap<DBSAttributeBase, Object>(this.values);
++    copyStruct.attributes = Arrays.copyOf(this.attributes, this.attributes.length);
++    copyStruct.values = Arrays.copyOf(this.values, this.values.length);
+     return copyStruct;
+ }
+\ No newline at end of file

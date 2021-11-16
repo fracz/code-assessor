@@ -1,0 +1,23 @@
+diff --git a/eb210abbbd55bbe38b475e57432e65304044cf81 b/c5f939837c8d843d4df9b7a20458f319dd10e09c
+index eb210abbbd..c5f939837c 100644
+--- a/eb210abbbd55bbe38b475e57432e65304044cf81
++++ b/c5f939837c8d843d4df9b7a20458f319dd10e09c
+@@ -1,13 +1,14 @@
+ @Nullable
+ private T getUpToDateOrNull() {
+-    if (myComputed) {
+-        T value = myValue == null ? null : myValue.get();
+-        if (isUpToDate()) {
++    final Data<T> data = myData.get();
++    if (data != null) {
++        T value = data.myValue;
++        if (isUpToDate(data)) {
+             return value;
+         }
+         if (value instanceof Disposable) {
+             Disposer.dispose((Disposable) value);
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

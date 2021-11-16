@@ -1,0 +1,18 @@
+diff --git a/e6b55e9048577005d9105a97c3163836d47aa92a b/dc90601d794e265e761ffa691bc83712cc58c837
+index e6b55e9048..dc90601d79 100644
+--- a/e6b55e9048577005d9105a97c3163836d47aa92a
++++ b/dc90601d794e265e761ffa691bc83712cc58c837
+@@ -1,10 +1,10 @@
+ @Override
+-public void merge(@NotNull final String branchName, @NotNull final DeleteOnMergeOption deleteOnMerge, @NotNull final List<GitRepository> repositories, @Nullable final Consumer<Boolean> resultHandler) {
++public void merge(@NotNull final String branchName, @NotNull final DeleteOnMergeOption deleteOnMerge, @NotNull final List<GitRepository> repositories) {
+     new CommonBackgroundTask(myProject, "Merging " + branchName, null) {
+
+         @Override
+         public void execute(@NotNull ProgressIndicator indicator) {
+-            doMerge(branchName, deleteOnMerge, repositories, resultHandler, indicator);
++            newWorker(indicator).merge(branchName, deleteOnMerge, repositories);
+         }
+     }.runInBackground();
+ }
+\ No newline at end of file

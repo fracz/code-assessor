@@ -1,0 +1,19 @@
+diff --git a/a55abaf1f2d75cfd0cd14aa9829e871669e8ec9f b/c4e93853a9d7f1bd1da05391f6de1b1b5856f26b
+index a55abaf1f2..c4e93853a9 100644
+--- a/a55abaf1f2d75cfd0cd14aa9829e871669e8ec9f
++++ b/c4e93853a9d7f1bd1da05391f6de1b1b5856f26b
+@@ -1,9 +1,9 @@
+-public void register(@NotNull VirtualFile key, @NotNull final String url, @NotNull final Map<String, JsonSchemaObject> map) {
++public void register(@NotNull VirtualFile key, @NotNull final String url) {
+     synchronized (myLock) {
+-        myMap.put(url, map);
+-        myId2Key.put(url, key);
+-        if (myMap.size() > 10000) {
++        myFilesToRefresh.remove(key);
++        myId2Key.put(normalizeId(url), key);
++        if (myId2Key.size() > 10000) {
+             LOG.info("Too many schema definitions registered. Something could go wrong.");
+         }
+     }
+ }
+\ No newline at end of file

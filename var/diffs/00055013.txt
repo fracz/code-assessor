@@ -1,0 +1,26 @@
+diff --git a/2e13c4225d4aba85a4f5bf4216ce51911035b646 b/dd3728b4170d2f5292ca4c7fbd33398dfe4ec680
+index 2e13c4225d..dd3728b417 100644
+--- a/2e13c4225d4aba85a4f5bf4216ce51911035b646
++++ b/dd3728b4170d2f5292ca4c7fbd33398dfe4ec680
+@@ -1,18 +1,19 @@
+ public void initAppResClass() {
+     ClassNode resCls = null;
+     if (appPackage != null) {
+         resCls = searchClassByName(appPackage + ".R");
+     } else {
+         for (ClassNode cls : names.values()) {
+             if (cls.getShortName().equals("R")) {
+                 resCls = cls;
+                 break;
+             }
+         }
+     }
+     if (resCls != null) {
+         appResClass = resCls;
+         return;
+     }
+-    appResClass = new ClassNode(dexNodes.get(0), ClassInfo.fromName("R"));
++    DexNode firstDex = dexNodes.get(0);
++    appResClass = new ClassNode(firstDex, ClassInfo.fromName(firstDex, "R"));
+ }
+\ No newline at end of file

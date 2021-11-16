@@ -1,0 +1,22 @@
+diff --git a/aa3f4929d587da2cc6741a41a89ea95ae2207d17 b/49a226a6f543829cb62e4247ba2aec0c7d5425c3
+index aa3f4929d5..49a226a6f5 100644
+--- a/aa3f4929d587da2cc6741a41a89ea95ae2207d17
++++ b/49a226a6f543829cb62e4247ba2aec0c7d5425c3
+@@ -1,15 +1,9 @@
+ /**
+  * Retrieve (or create) an interned HystrixThreadPoolKey instance for a given name.
+  *
+  * @param name thread pool name
+  * @return HystrixThreadPoolKey instance that is interned (cached) so a given name will always retrieve the same instance.
+  */
+ public static HystrixThreadPoolKey asKey(String name) {
+-    HystrixThreadPoolKey existingKey = intern.get(name);
+-    HystrixThreadPoolKey newKey = null;
+-    if (existingKey == null) {
+-        newKey = new HystrixThreadPoolKeyDefault(name);
+-        existingKey = intern.putIfAbsent(name, newKey);
+-    }
+-    return existingKey != null ? existingKey : newKey;
++    return intern.interned(name);
+ }
+\ No newline at end of file

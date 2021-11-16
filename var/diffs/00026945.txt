@@ -1,0 +1,14 @@
+diff --git a/23326e8818a7c25fab1b541b5a1e890f746ccd9b b/1023e3133466815e5754ddf083518af8266e1660
+index 23326e8818..1023e31334 100644
+--- a/23326e8818a7c25fab1b541b5a1e890f746ccd9b
++++ b/1023e3133466815e5754ddf083518af8266e1660
+@@ -1,5 +1,5 @@
+-private static int[] rasterData(DoubleMatrix matrix) {
+-    int[] ret = new int[matrix.length];
+-    for (int i = 0; i < ret.length; i++) ret[i] = (int) Math.round(matrix.get(i));
++private static int[] rasterData(INDArray matrix) {
++    int[] ret = new int[matrix.length()];
++    for (int i = 0; i < ret.length; i++) ret[i] = (int) Math.round((double) matrix.getScalar(i).element());
+     return ret;
+ }
+\ No newline at end of file

@@ -1,0 +1,38 @@
+diff --git a/1b43403bc1414fe9eb3aa5ba8e030cae6ee624c5 b/ac0219a28bad738550e73e62934a9ebe25943d6b
+index 1b43403bc1..ac0219a28b 100644
+--- a/1b43403bc1414fe9eb3aa5ba8e030cae6ee624c5
++++ b/ac0219a28bad738550e73e62934a9ebe25943d6b
+@@ -1,24 +1,18 @@
+ /**
+- * Reads a batch of messages from the queue. IMPORTANT: The messags are
++ * Reads a batch of messages from the queue.
++ *
++ * IMPORTANT: The messages are
+  * removed from the queue while reading. Make sure to actually handle them
+  * in some way.
+  *
+- * @param batchSize
+- * @return A list of messages.
++ * @param batchSize The number of messages to read from the queue
++ * @return A {@link List} of messages.
+  */
+ public List<GELFMessage> readBatch(int batchSize) {
+     List<GELFMessage> messages = new ArrayList<GELFMessage>();
+-    for (int i = 0; i < batchSize; i++) {
+-        GELFMessage msg = this.poll();
+-        if (msg == null) {
+-            LOG.info("Reached end of message queue at element #" + i + " - Not reading any further.");
+-            break;
+-        } else {
+-            messages.add(msg);
+-            if (i == batchSize - 1) {
+-                LOG.info("Read " + batchSize + " messages from queue.");
+-            }
+-        }
++    for (int i = 0; !queue.isEmpty() && i < batchSize; i++) {
++        messages.add(poll());
+     }
++    LOG.debug("Read " + messages.size() + " messages from queue.");
+     return messages;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/eb822d6c2d546c6ce5c754ddde12396f24665ad3 b/f22b6047032bf20adf3e6eafeb7b1b2e934e26af
+index eb822d6c2d..f22b604703 100644
+--- a/eb822d6c2d546c6ce5c754ddde12396f24665ad3
++++ b/f22b6047032bf20adf3e6eafeb7b1b2e934e26af
+@@ -1,9 +1,3 @@
+ public void testReplaceVarargWithArray() {
+-    doTest(null, null, null, new GenParams() {
+-
+-        @Override
+-        public ParameterInfoImpl[] genParams(PsiMethod method) throws IncorrectOperationException {
+-            return new ParameterInfoImpl[] { new ParameterInfoImpl(1, "l", myFactory.createTypeFromText("List<T>[]", method.getParameterList()), "null", false), new ParameterInfoImpl(0, "s", myFactory.createTypeFromText("String", method.getParameterList())) };
+-        }
+-    }, false);
++    doTest(null, null, null, method -> new ParameterInfoImpl[] { new ParameterInfoImpl(1, "l", myFactory.createTypeFromText("List<T>[]", method.getParameterList()), "null", false), new ParameterInfoImpl(0, "s", myFactory.createTypeFromText("String", method.getParameterList())) }, false);
+ }
+\ No newline at end of file

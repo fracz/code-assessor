@@ -1,0 +1,26 @@
+diff --git a/41f70466eefa0ab44498a783bfd2e4cf36aed459 b/1d14505ee9d5707fc8f5c5ccad34f2d4378848f7
+index 41f70466ee..1d14505ee9 100644
+--- a/41f70466eefa0ab44498a783bfd2e4cf36aed459
++++ b/1d14505ee9d5707fc8f5c5ccad34f2d4378848f7
+@@ -1,17 +1,17 @@
+ /**
+  * 根据数据源名称获取相应的数据库连接.
+  *
+  * @param dataSourceName 数据源名称
+  * @return 数据库连接
+  */
+ public Connection getConnection(final String dataSourceName) throws SQLException {
+     if (connectionMap.containsKey(dataSourceName)) {
+         return connectionMap.get(dataSourceName);
+     }
+-    Context context = MetricsContext.start("ShardingConnection-getConnection", dataSourceName);
+-    Connection connection = this.context.getShardingRule().getDataSourceRule().getDataSource(dataSourceName).getConnection();
+-    MetricsContext.stop(context);
++    Context metricsContext = MetricsContext.start("ShardingConnection-getConnection", dataSourceName);
++    Connection connection = shardingContext.getShardingRule().getDataSourceRule().getDataSource(dataSourceName).getConnection();
++    MetricsContext.stop(metricsContext);
+     replayMethodsInvovation(connection);
+     connectionMap.put(dataSourceName, connection);
+     return connection;
+ }
+\ No newline at end of file

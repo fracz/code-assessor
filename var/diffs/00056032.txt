@@ -1,0 +1,38 @@
+diff --git a/9d9b43981aa250b6415de338f14588f23817746d b/a46d90ac8037ca3fa0852dbf5e9518877685531b
+index 9d9b43981a..a46d90ac80 100644
+--- a/9d9b43981aa250b6415de338f14588f23817746d
++++ b/a46d90ac8037ca3fa0852dbf5e9518877685531b
+@@ -1,22 +1,17 @@
+ /**
+  * Reads and publishes data buffers from the input. Continues till either there is no
+  * more demand, or till there is no more data to be read.
+- * @return {@code true} if there is more data to be read; {@code false} otherwise
++ * @return {@code true} if there is more demand; {@code false} otherwise
+  */
+-private boolean readAndPublish() {
+-    try {
+-        while (hasDemand()) {
+-            DataBuffer dataBuffer = read();
+-            if (dataBuffer != null) {
+-                BackpressureUtils.getAndSub(this.demand, 1L);
+-                this.subscriber.onNext(dataBuffer);
+-            } else {
+-                return false;
+-            }
++private boolean readAndPublish() throws IOException {
++    while (hasDemand()) {
++        DataBuffer dataBuffer = read();
++        if (dataBuffer != null) {
++            BackpressureUtils.getAndSub(this.demand, 1L);
++            this.subscriber.onNext(dataBuffer);
++        } else {
++            return true;
+         }
+-        return true;
+-    } catch (IOException ex) {
+-        onError(ex);
+-        return false;
+     }
++    return false;
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/4e0aa337aa1ecba76ad34f19a0252a44e5be1d9d b/ecc51bf3d1abb6c0e5d4d7b3c227755acd42b969
+index 4e0aa337aa..ecc51bf3d1 100644
+--- a/4e0aa337aa1ecba76ad34f19a0252a44e5be1d9d
++++ b/ecc51bf3d1abb6c0e5d4d7b3c227755acd42b969
+@@ -1,13 +1,6 @@
+ public void getDependency(DependencyMetaData dependency, BuildableModuleVersionMetaData result) {
+-    CachedModuleVersionResult fromCache = cache.descriptors.get(dependency.getRequested());
+-    if (fromCache == null) {
++    if (!cache.supplyMetaData(dependency.getRequested(), result)) {
+         delegate.getDependency(dependency, result);
+-        CachedModuleVersionResult cachedResult = new CachedModuleVersionResult(result);
+-        if (cachedResult.isCacheable()) {
+-            cache.descriptors.put(dependency.getRequested(), cachedResult);
+-        }
+-    } else {
+-        stats.metadataCached++;
+-        fromCache.supply(result);
++        cache.newDependencyResult(dependency.getRequested(), result);
+     }
+ }
+\ No newline at end of file

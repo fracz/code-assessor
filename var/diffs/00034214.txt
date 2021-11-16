@@ -1,0 +1,14 @@
+diff --git a/e90e491b9d95e379b8932b6220042a22354393e6 b/ace0c85bdd5499e36b27397b31680a517f3710e5
+index e90e491b9d..ace0c85bdd 100644
+--- a/e90e491b9d95e379b8932b6220042a22354393e6
++++ b/ace0c85bdd5499e36b27397b31680a517f3710e5
+@@ -1,7 +1,7 @@
+ @Test
+ public void useLongIntegersParameterCausesIntegersToBecomeLongs() throws ClassNotFoundException, NoSuchMethodException, SecurityException {
+-    File generatedTypesDirectory = generate("/schema/type/integerAsLong.json", "com.example", true, false, true);
++    File generatedTypesDirectory = generate("/schema/type/integerAsLong.json", "com.example", config("useLongIntegers", true));
+     Class<?> classWithLongProperty = compile(generatedTypesDirectory).loadClass("com.example.IntegerAsLong");
+     Method getterMethod = classWithLongProperty.getMethod("getLongProperty");
+     assertThat(getterMethod.getReturnType().getName(), is("java.lang.Long"));
+ }
+\ No newline at end of file

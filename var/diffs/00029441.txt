@@ -1,0 +1,11 @@
+diff --git a/7963e068261476669ea63eeb2a8ab5987a7bc224 b/7a3e6c0d2452dc491e444835697f2b634aa64a42
+index 7963e06826..7a3e6c0d24 100644
+--- a/7963e068261476669ea63eeb2a8ab5987a7bc224
++++ b/7a3e6c0d2452dc491e444835697f2b634aa64a42
+@@ -1,4 +1,4 @@
+ @Override
+ protected Settings nodeSettings(int nodeOrdinal) {
+-    return Settings.builder().put(super.nodeSettings(nodeOrdinal)).put(PluginsService.LOAD_PLUGIN_FROM_CLASSPATH, true).put(readSettingsFromFile()).build();
++    return Settings.builder().put(super.nodeSettings(nodeOrdinal)).put("plugin.types", CloudAzurePlugin.class.getName()).put(readSettingsFromFile()).build();
+ }
+\ No newline at end of file

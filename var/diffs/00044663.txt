@@ -1,0 +1,23 @@
+diff --git a/77695362784c3b8c07ef3395ea25c86b87e479cc b/c76f79eb52cc5dbfaa960695a92e771a6f4c8810
+index 7769536278..c76f79eb52 100644
+--- a/77695362784c3b8c07ef3395ea25c86b87e479cc
++++ b/c76f79eb52cc5dbfaa960695a92e771a6f4c8810
+@@ -1,11 +1,7 @@
+-public void toStream(ORecordPositional<String> iRecord) {
+-    iRecord.add(name);
+-    iRecord.add(String.valueOf(defaultClusterId));
+-    // WRITE CLUSTER IDS
+-    iRecord.add(OStringSerializerHelper.joinIntArray(clusterIds));
+-    // WRITE PROPERTIES
+-    iRecord.add(String.valueOf(properties.size()));
+-    for (OProperty prop : properties.values()) {
+-        prop.toStream(iRecord);
+-    }
++public byte[] toStream() {
++    field("name", name);
++    field("defaultClusterId", defaultClusterId);
++    field("clusterIds", clusterIds);
++    field("properties", properties.values());
++    return super.toStream();
+ }
+\ No newline at end of file

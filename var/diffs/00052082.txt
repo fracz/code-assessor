@@ -1,0 +1,13 @@
+diff --git a/76e424a33a3849bcc246ea20a636c65ad662678a b/47706dab1e1710ce7cd8fda8b47fec51b1dd93eb
+index 76e424a33a..47706dab1e 100644
+--- a/76e424a33a3849bcc246ea20a636c65ad662678a
++++ b/47706dab1e1710ce7cd8fda8b47fec51b1dd93eb
+@@ -1,6 +1,4 @@
+ @Override
+ public DBCExecutionContext openIsolatedContext(DBRProgressMonitor monitor) throws DBCException {
+-    JDBCExecutionContext context = new JDBCExecutionContext(this);
+-    context.connect(monitor);
+-    return context;
++    return new JDBCExecutionContext(this, monitor);
+ }
+\ No newline at end of file

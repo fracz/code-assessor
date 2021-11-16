@@ -1,0 +1,15 @@
+diff --git a/2b6d41f0b924df6808de43c0daa1c4c26030ab72 b/2c6a9a3641ce4d95f442f49ac8661af57af16a9d
+index 2b6d41f0b9..2c6a9a3641 100644
+--- a/2b6d41f0b924df6808de43c0daa1c4c26030ab72
++++ b/2c6a9a3641ce4d95f442f49ac8661af57af16a9d
+@@ -1,5 +1,5 @@
+-public static void notifyDispSizeChanged(IDisplayer disp) {
+-    if (disp != null)
+-        sLastDisp = disp;
+-    createDanmaku(BaseDanmaku.TYPE_SCROLL_RL, disp);
++public void notifyDispSizeChanged(DanmakuContext context) {
++    sLastConfig = context;
++    sLastDisp = context.getDisplayer();
++    createDanmaku(BaseDanmaku.TYPE_SCROLL_RL, context);
+ }
+\ No newline at end of file

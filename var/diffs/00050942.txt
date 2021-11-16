@@ -1,0 +1,18 @@
+diff --git a/607ad22ffaa4f2ef768dc9cecdc619834f109ef1 b/c345d12c666ece2266d3a0ad765fa1cdbb1343b9
+index 607ad22ffa..c345d12c66 100644
+--- a/607ad22ffaa4f2ef768dc9cecdc619834f109ef1
++++ b/c345d12c666ece2266d3a0ad765fa1cdbb1343b9
+@@ -1,11 +1,3 @@
+ public IExternalTool createTool() throws DBException {
+-    Class<IExternalTool> toolClass = getObjectClass(toolClassName, IExternalTool.class);
+-    if (toolClass == null) {
+-        throw new DBException("Tool class '" + toolClassName + "' not found");
+-    }
+-    try {
+-        return toolClass.newInstance();
+-    } catch (Throwable ex) {
+-        throw new DBException("Can't create tool '" + toolClassName + "'", ex);
+-    }
++    return toolType.createInstance(IExternalTool.class);
+ }
+\ No newline at end of file

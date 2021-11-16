@@ -1,0 +1,19 @@
+diff --git a/d4111c7d16057f2762a2cf9c79fab0a3092dc461 b/7b0a5fc4eb13e10a25eaecb30d2897da27406b52
+index d4111c7d16..7b0a5fc4eb 100644
+--- a/d4111c7d16057f2762a2cf9c79fab0a3092dc461
++++ b/7b0a5fc4eb13e10a25eaecb30d2897da27406b52
+@@ -1,7 +1,12 @@
+ public String[] getHeader(String name) {
+-    ArrayList<String> values = findHeaders(name);
++    ArrayList<String> values = new ArrayList<String>();
++    for (Field field : mFields) {
++        if (field.name.equalsIgnoreCase(name)) {
++            values.add(field.value);
++        }
++    }
+     if (values.size() == 0) {
+         return null;
+     }
+     return values.toArray(EMPTY_STRING_ARRAY);
+ }
+\ No newline at end of file

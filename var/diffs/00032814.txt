@@ -1,0 +1,17 @@
+diff --git a/c21f2e27930591b87c012ad95dabc4b9501f1345 b/d23b7034949456f9e12552c6145817894b97bd8a
+index c21f2e2793..d23b703494 100644
+--- a/c21f2e27930591b87c012ad95dabc4b9501f1345
++++ b/d23b7034949456f9e12552c6145817894b97bd8a
+@@ -1,7 +1,8 @@
+-public Void visitProviderKey(Key<? extends Provider<? extends T>> providerKey) {
++public Void visitProviderKey(ProviderKeyBinding<T> binding) {
++    Key<? extends Provider<? extends T>> providerKey = binding.getProviderKey();
+     BoundProviderFactory<T> boundProviderFactory = new BoundProviderFactory<T>(injector, providerKey, source);
+     creationListeners.add(boundProviderFactory);
+-    InternalFactory<? extends T> scopedFactory = Scopes.scope(key, injector, (InternalFactory<? extends T>) boundProviderFactory, scope);
+-    putBinding(new LinkedProviderBindingImpl<T>(injector, key, source, scopedFactory, scope, providerKey, loadStrategy));
++    InternalFactory<? extends T> scopedFactory = Scopes.scope(key, injector, (InternalFactory<? extends T>) boundProviderFactory, scoping);
++    putBinding(new LinkedProviderBindingImpl<T>(injector, key, source, scopedFactory, scoping, providerKey));
+     return null;
+ }
+\ No newline at end of file

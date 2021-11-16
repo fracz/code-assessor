@@ -1,0 +1,32 @@
+diff --git a/0b86b98401ec29e2ecf5c3fc29e608f24b052cb7 b/1e1a10ff3c3dec9b53071b0077a1fac646d48fbe
+index 0b86b98401..1e1a10ff3c 100644
+--- a/0b86b98401ec29e2ecf5c3fc29e608f24b052cb7
++++ b/1e1a10ff3c3dec9b53071b0077a1fac646d48fbe
+@@ -1,13 +1,21 @@
+ private void initComponents() {
+     final ActionListener testTypeListener = new ActionListener() {
+
+         public void actionPerformed(final ActionEvent e) {
+             setTestType(getTestType());
+         }
+     };
+-    myAllInFolderRB.addActionListener(testTypeListener);
+-    myTestScriptRB.addActionListener(testTypeListener);
+-    myTestClassRB.addActionListener(testTypeListener);
+-    myTestMethodRB.addActionListener(testTypeListener);
+-    myTestFunctionRB.addActionListener(testTypeListener);
++    addTestTypeListener(testTypeListener);
++    myPatternCheckBox.addActionListener(new ActionListener() {
++
++        public void actionPerformed(final ActionEvent e) {
++            myPatternTextField.setEnabled(myPatternCheckBox.isSelected());
++        }
++    });
++    myParamCheckBox.addActionListener(new ActionListener() {
++
++        public void actionPerformed(final ActionEvent e) {
++            myParamTextField.setEnabled(myParamCheckBox.isSelected());
++        }
++    });
+ }
+\ No newline at end of file

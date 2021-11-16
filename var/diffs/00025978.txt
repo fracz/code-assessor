@@ -1,0 +1,28 @@
+diff --git a/d2fcc84114db8174127bef5e0a270861f2a1f1e5 b/5509e9ed8d2fc0608de41bb47f018b32a9b3c38f
+index d2fcc84114..5509e9ed8d 100644
+--- a/d2fcc84114db8174127bef5e0a270861f2a1f1e5
++++ b/5509e9ed8d2fc0608de41bb47f018b32a9b3c38f
+@@ -1,21 +1,20 @@
+ /**
+  * initialize to the zxid specified
+  * this is inclusive of the zxid
+  * @throws IOException
+  */
+ void init() throws IOException {
+     storedFiles = new ArrayList<File>();
+     List<File> files = Util.sortDataDir(FileTxnLog.getLogFiles(logDir.listFiles(), 0), "log", false);
+     for (File f : files) {
+         if (Util.getZxidFromName(f.getName(), "log") >= zxid) {
+             storedFiles.add(f);
+         } else // add the last logfile that is less than the zxid
+         if (Util.getZxidFromName(f.getName(), "log") < zxid) {
+             storedFiles.add(f);
+             break;
+         }
+     }
+     goToNextLog();
+-    if (!next())
+-        return;
++    next();
+ }
+\ No newline at end of file

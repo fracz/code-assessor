@@ -1,0 +1,16 @@
+diff --git a/0ab50ec4af2c5fc82d59381f2f87cdf36c9b2f43 b/74f9fe18183793ade27e7208f86de72a1bae5a7c
+index 0ab50ec4af..74f9fe1818 100644
+--- a/0ab50ec4af2c5fc82d59381f2f87cdf36c9b2f43
++++ b/74f9fe18183793ade27e7208f86de72a1bae5a7c
+@@ -1,9 +1,8 @@
+ public static String getObjectComment(DBRProgressMonitor monitor, GenericDataSource dataSource, String schema, String object) throws DBException {
+-    JDBCSession session = dataSource.getDefaultContext(true).openSession(monitor, DBCExecutionPurpose.META, "Load PostgreSQL description");
+-    try {
++    try (JDBCSession session = DBUtils.openMetaSession(monitor, dataSource, "Load PostgreSQL description")) {
+         return JDBCUtils.queryString(session, "select description from pg_description\n" + "join pg_class on pg_description.objoid = pg_class.oid\n" + "join pg_namespace on pg_class.relnamespace = pg_namespace.oid\n" + "where pg_class.relname = ? and pg_namespace.nspname=?", object, schema);
+     } catch (Exception e) {
+         log.debug(e);
+         return null;
+     }
+ }
+\ No newline at end of file

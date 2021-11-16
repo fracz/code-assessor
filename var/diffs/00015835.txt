@@ -1,0 +1,17 @@
+diff --git a/127e3945582348a7cfa979c67bf64cd93cf3a365 b/73b4b5aafbc02b2da3cd16f2ee0e2980ce62ade9
+index 127e394558..73b4b5aafb 100644
+--- a/127e3945582348a7cfa979c67bf64cd93cf3a365
++++ b/73b4b5aafbc02b2da3cd16f2ee0e2980ce62ade9
+@@ -1,10 +1,5 @@
+ @NotNull
+ @Override
+ public Set<FunctionDescriptor> getFunctions(@NotNull String name) {
+-    Set<FunctionDescriptor> functionGroup = functionGroups.get(name);
+-    if (functionGroup == null) {
+-        functionGroup = semanticServices.getDescriptorResolver().resolveFunctionGroup(containingDeclaration, psiClass, staticMembers ? null : (ClassDescriptor) containingDeclaration, name, staticMembers);
+-        functionGroups.put(name, functionGroup);
+-    }
+-    return functionGroup;
++    return semanticServices.getDescriptorResolver().resolveFunctionGroup(containingDeclaration, psiClass, staticMembers ? null : (ClassDescriptor) containingDeclaration, name, staticMembers);
+ }
+\ No newline at end of file

@@ -1,0 +1,10 @@
+diff --git a/864a7121419a382fd769c444d8297eea654ab583 b/ac312a2d1704141a123c4c4c2d1e76b4ed16a354
+index 864a712141..ac312a2d17 100644
+--- a/864a7121419a382fd769c444d8297eea654ab583
++++ b/ac312a2d1704141a123c4c4c2d1e76b4ed16a354
+@@ -1,3 +1,3 @@
+ public Observable<String> tfaCodeMismatchError() {
+-    return tfaError.filter(env -> env.ksrCode().equals(ErrorEnvelope.TFA_FAILED)).map(env -> env.errorMessages().get(0));
++    return tfaError.filter(ErrorEnvelope::isTfaFailedError).map(env -> env.errorMessages().get(0));
+ }
+\ No newline at end of file

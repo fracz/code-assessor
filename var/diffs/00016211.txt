@@ -1,0 +1,14 @@
+diff --git a/3bef0fad8b2e5547f9e697a412c905d767fcadf0 b/93b0a6eb13b1bfedf6b0434ef330464eedd4ee4c
+index 3bef0fad8b..93b0a6eb13 100644
+--- a/3bef0fad8b2e5547f9e697a412c905d767fcadf0
++++ b/93b0a6eb13b1bfedf6b0434ef330464eedd4ee4c
+@@ -1,7 +1,5 @@
+ @Nullable
+ public FunctionDescriptor resolveCallWithGivenName(@NotNull BindingTrace trace, @NotNull JetScope scope, @NotNull final Call call, @NotNull final JetReferenceExpression functionReference, @NotNull String name, @NotNull ReceiverDescriptor receiver, @NotNull JetType expectedType) {
+-    // TODO : autocasts
+-    // TODO : nullability
+-    List<ResolutionTask<FunctionDescriptor>> tasks = FUNCTION_TASK_PRIORITIZER.computePrioritizedTasks(scope, receiver, call, name);
++    List<ResolutionTask<FunctionDescriptor>> tasks = TaskPrioritizers.FUNCTION_TASK_PRIORITIZER.computePrioritizedTasks(scope, receiver, call, name, trace.getBindingContext(), dataFlowInfo);
+     return resolveCallToDescriptor(trace, scope, call, functionReference.getNode(), expectedType, tasks, functionReference);
+ }
+\ No newline at end of file

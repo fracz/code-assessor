@@ -1,0 +1,20 @@
+diff --git a/fcb6eaa678e8a31cf8712101e7ddb957a5231e9b b/0fe400c12cdea4a330d850b2aa9ad64ea81c3091
+index fcb6eaa678..0fe400c12c 100644
+--- a/fcb6eaa678e8a31cf8712101e7ddb957a5231e9b
++++ b/0fe400c12cdea4a330d850b2aa9ad64ea81c3091
+@@ -1,6 +1,11 @@
+ public String getPhysicalClusterNameById(final int iClusterId) {
+     checkOpeness();
+-    for (OCluster cluster : clusters) if (cluster != null && cluster.getId() == iClusterId)
+-        return cluster.getName();
+-    return null;
++    // @TEST: AVOID SEARCH
++    if (iClusterId >= clusters.length)
++        return null;
++    return clusters[iClusterId].getName();
++// for (OCluster cluster : clusters)
++// if (cluster != null && cluster.getId() == iClusterId)
++// return cluster.getName();
++// return null;
+ }
+\ No newline at end of file

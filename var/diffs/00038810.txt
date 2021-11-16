@@ -1,0 +1,14 @@
+diff --git a/8404c3b78a70f216a5033229757e12d1eab0e35b b/4e446140577a26a4f33179190ea279cf0df7eb88
+index 8404c3b78a..4e44614057 100644
+--- a/8404c3b78a70f216a5033229757e12d1eab0e35b
++++ b/4e446140577a26a4f33179190ea279cf0df7eb88
+@@ -1,7 +1,3 @@
+ private Consumer<String> errorLogger(String errorMessage) {
+-    if (!channel.hasAttr(CORRELATION_ATTRIBUTE_KEY)) {
+-        channel.attr(CORRELATION_ATTRIBUTE_KEY).set(randomCorrelationIdGenerator());
+-    }
+-    String boltCorrelationId = channel.attr(CORRELATION_ATTRIBUTE_KEY).get();
+-    return formatMessageWithEventName -> messageLog.error(remoteAddress, boltCorrelationId, formatMessageWithEventName, errorMessage);
++    return formatMessageWithEventName -> messageLog.error(remoteAddress, getCorrelationId(), formatMessageWithEventName, errorMessage);
+ }
+\ No newline at end of file

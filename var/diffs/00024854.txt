@@ -1,0 +1,18 @@
+diff --git a/843bce15ea3ccfaf99486d4ec553bd7b538e583b b/3dee746e20e26ff7e1a1bf3a00b8c54be770b28a
+index 843bce15ea..3dee746e20 100644
+--- a/843bce15ea3ccfaf99486d4ec553bd7b538e583b
++++ b/3dee746e20e26ff7e1a1bf3a00b8c54be770b28a
+@@ -1,7 +1,9 @@
+ @Test
+ public void sameKeySameCfColumnFamilies() throws ConfigurationException, InvalidRequestException {
+     CFMetaData metadata = makeCfMetaData("ks1", "cf1", TriggerDefinition.create("test", SameKeySameCfTrigger.class.getName()));
+-    ColumnFamily mutated = TriggerExecutor.instance.execute(bytes("k1"), makeCf(metadata, "v1", null));
+-    assertEquals(bytes("v1"), mutated.getColumn(getColumnName(metadata, "c1")).value());
+-    assertEquals(bytes("trigger"), mutated.getColumn(getColumnName(metadata, "c2")).value());
++    PartitionUpdate mutated = TriggerExecutor.instance.execute(makeCf(metadata, "k1", "v1", null));
++    RowIterator rowIterator = UnfilteredRowIterators.filter(mutated.unfilteredIterator(), FBUtilities.nowInSeconds());
++    Iterator<Cell> cells = rowIterator.next().iterator();
++    assertEquals(bytes("trigger"), cells.next().value());
++    assertTrue(!rowIterator.hasNext());
+ }
+\ No newline at end of file

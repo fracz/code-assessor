@@ -1,0 +1,12 @@
+diff --git a/f2c853b2fcbd36147149646ecea58b9d0b100528 b/7ea975a63169a03dbd15130928b57abcde2f54c4
+index f2c853b2fc..7ea975a631 100644
+--- a/f2c853b2fcbd36147149646ecea58b9d0b100528
++++ b/7ea975a63169a03dbd15130928b57abcde2f54c4
+@@ -1,3 +1,4 @@
+-public boolean canDrop(@Nullable Point location, final int componentCount) {
+-    return componentCount == 1;
++@Override
++public boolean canDrop(@Nullable Point location, final ComponentDragObject dragObject) {
++    return dragObject.getComponentCount() == 1;
+ }
+\ No newline at end of file

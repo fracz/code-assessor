@@ -1,0 +1,23 @@
+diff --git a/5d341ad6a02216a5ea4b43474992330888f1cfff b/b5c4324778cefbb92b6b1d6af79658e8c909e939
+index 5d341ad6a0..b5c4324778 100644
+--- a/5d341ad6a02216a5ea4b43474992330888f1cfff
++++ b/b5c4324778cefbb92b6b1d6af79658e8c909e939
+@@ -1,14 +1,15 @@
+-public void placeFeedback(GuiEditor editor, int componentCount) {
++public void placeFeedback(GuiEditor editor, ComponentDragObject dragObject) {
++    int componentCount = dragObject.getComponentCount();
+     Rectangle feedbackRect;
+     if (getContainer().isGrid()) {
+         feedbackRect = getGridFeedbackRect(componentCount);
+     } else {
+-        feedbackRect = getContainer().getDropFeedbackRectangle(myTargetPoint.x, myTargetPoint.y, componentCount);
++        feedbackRect = getContainer().getDropFeedbackRectangle(myTargetPoint, componentCount);
+     }
+     if (feedbackRect != null) {
+         final Rectangle rc = SwingUtilities.convertRectangle(getContainer().getDelegee(), feedbackRect, editor.getActiveDecorationLayer());
+         editor.getActiveDecorationLayer().putFeedback(rc);
+     } else {
+         editor.getActiveDecorationLayer().removeFeedback();
+     }
+ }
+\ No newline at end of file

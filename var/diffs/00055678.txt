@@ -1,0 +1,14 @@
+diff --git a/4ff65e71ed0a9b96054e0b3bfdf6267f5c43fcb0 b/22b32fcb411127be929bef10709c3833ed0b1f2f
+index 4ff65e71ed..22b32fcb41 100644
+--- a/4ff65e71ed0a9b96054e0b3bfdf6267f5c43fcb0
++++ b/22b32fcb411127be929bef10709c3833ed0b1f2f
+@@ -1,7 +1,7 @@
+ @Test
+ public void testSatisfiedObjectDependencyCheck() throws Exception {
+-    XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("satisfiedObjectDependencyCheck.xml", getClass()));
++    XmlBeanFactory xbf = new XmlBeanFactory(SATISFIED_OBJECT_DEP_CONTEXT);
+     DependenciesBean a = (DependenciesBean) xbf.getBean("a");
+     assertNotNull(a.getSpouse());
+     assertEquals(xbf, a.getBeanFactory());
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/7063cda207a54936dd917df3ca9b8da98f897cc6 b/8648d819e03d531c49ecdeeb63ae365787ade3ca
+index 7063cda207..8648d819e0 100644
+--- a/7063cda207a54936dd917df3ca9b8da98f897cc6
++++ b/8648d819e03d531c49ecdeeb63ae365787ade3ca
+@@ -1,15 +1,12 @@
+ @Test
+ public void testWithEmptyFunctions() throws IOException, ExecutionException, InterruptedException {
+     assertAcked(prepareCreate("test"));
+     ensureYellow();
+     index("test", "testtype", "1", jsonBuilder().startObject().field("text", "test text").endObject());
+     refresh();
+     // make sure that min_score works if functions is empty, see https://github.com/elastic/elasticsearch/issues/10253
+     float termQueryScore = 0.19178301f;
+-    testMinScoreApplied("sum", termQueryScore);
+-    testMinScoreApplied("avg", termQueryScore);
+-    testMinScoreApplied("max", termQueryScore);
+-    testMinScoreApplied("min", termQueryScore);
+-    testMinScoreApplied("multiply", termQueryScore);
+-    testMinScoreApplied("replace", termQueryScore);
++    for (CombineFunction combineFunction : CombineFunction.values()) {
++        testMinScoreApplied(combineFunction, termQueryScore);
++    }
+ }
+\ No newline at end of file

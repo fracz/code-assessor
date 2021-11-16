@@ -1,0 +1,19 @@
+diff --git a/f394e95c8b8646df85a5b96ad8a4e726620e62c6 b/7076771821c102adfce7b1ca33698504a1159de7
+index f394e95c8b..7076771821 100644
+--- a/f394e95c8b8646df85a5b96ad8a4e726620e62c6
++++ b/7076771821c102adfce7b1ca33698504a1159de7
+@@ -1,11 +1,7 @@
+-protected IntentionAction getIntentionAction(boolean withFxml) throws Exception {
+-    if (withFxml) {
+-        configureByFiles(null, getTestName(false) + ".java", "sample.fxml");
+-    } else {
+-        configureByFiles(null, getTestName(false) + ".java");
+-    }
++protected IntentionAction getIntentionAction(String... fileNames) throws Exception {
++    configureByFiles(null, fileNames);
+     final List<HighlightInfo> infos = doHighlighting();
+     final Editor editor = getEditor();
+     final PsiFile file = getFile();
+     return findIntentionAction(infos, actionName, editor, file);
+ }
+\ No newline at end of file

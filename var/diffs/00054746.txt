@@ -1,0 +1,12 @@
+diff --git a/ce26260951c33439de9addc7aaa095c37c7c2e54 b/c2ae97209d2e28bc1241c50b0b744905db850500
+index ce26260951..c2ae97209d 100644
+--- a/ce26260951c33439de9addc7aaa095c37c7c2e54
++++ b/c2ae97209d2e28bc1241c50b0b744905db850500
+@@ -1,4 +1,5 @@
+ @Test
+ public void assertDoEqualShardingForTargetsEmpty() {
+-    assertNull(noneTableShardingAlgorithm.doEqualSharding(Collections.<String>emptyList(), null));
++    PreciseShardingValue shardingValue = null;
++    assertNull(noneTableShardingAlgorithm.doSharding(Collections.<String>emptyList(), shardingValue));
+ }
+\ No newline at end of file

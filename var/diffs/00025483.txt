@@ -1,0 +1,18 @@
+diff --git a/c154662e9b8a4c32805149a8d3df90a3be2279c4 b/770f2a8bb0bcc0128e6b241c316f3b5d38e4ef6d
+index c154662e9b..770f2a8bb0 100644
+--- a/c154662e9b8a4c32805149a8d3df90a3be2279c4
++++ b/770f2a8bb0bcc0128e6b241c316f3b5d38e4ef6d
+@@ -1,9 +1,10 @@
+ /**
+  * Invoked once immediately after construction
+  * @param topoConf Storm configuration
+  */
+ @Override
+ public void prepare(Map<String, Object> topoConf) {
+-    int timeout = ObjectReader.getInt(topoConf.get(Config.STORM_GROUP_MAPPING_SERVICE_CACHE_DURATION_SECS));
+-    cachedGroups = new TimeCacheMap<>(timeout);
++    timeoutMs = TimeUnit.SECONDS.toMillis(ObjectReader.getInt(topoConf.get(Config.STORM_GROUP_MAPPING_SERVICE_CACHE_DURATION_SECS)));
++    lastRotationMs = Time.currentTimeMillis();
++    cachedGroups = new RotatingMap<>(2);
+ }
+\ No newline at end of file

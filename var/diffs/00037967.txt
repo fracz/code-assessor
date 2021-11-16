@@ -1,0 +1,28 @@
+diff --git a/00efb98f55aa48d579791f44ceb8b6e8f7e993db b/3585b3813fcddb560f78deba7d616686dae00113
+index 00efb98f55..3585b3813f 100644
+--- a/00efb98f55aa48d579791f44ceb8b6e8f7e993db
++++ b/3585b3813fcddb560f78deba7d616686dae00113
+@@ -1,13 +1,20 @@
+ @Override
+ public boolean accept(LogEntry logEntry) throws IOException {
+     if (startEntry == null) {
+-        if (logEntry == null || !(logEntry instanceof LogEntry.Start)) {
++        if (logEntry == null || logEntry.getType() != LogEntry.TX_START) {
+             throw new IOException("Unable to find start entry");
+         } else {
+             startEntry = (LogEntry.Start) logEntry;
+         }
+     }
+     logEntry.setIdentifier(xidIdentifier);
+-    logEntry.accept(handler);
++    if (logEntry.getVersion() != LogEntry.CURRENT_LOG_ENTRY_VERSION) {
++        if ((logEntry.getType() == LogEntry.TX_1P_COMMIT || logEntry.getType() == LogEntry.TX_2P_COMMIT)) {
++        // translate them
++        // DO NOT FORGET TO CALL THEM ON THE HANDLER
++        }
++    } else {
++        logEntry.accept(handler);
++    }
+     return true;
+ }
+\ No newline at end of file

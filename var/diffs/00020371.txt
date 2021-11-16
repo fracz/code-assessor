@@ -1,0 +1,23 @@
+diff --git a/c67da4589ba81d908e29d76a8f66826bb8abad5b b/87b3debc14506b4f5414d4527f3d55aa11bb8eab
+index c67da4589b..87b3debc14 100644
+--- a/c67da4589ba81d908e29d76a8f66826bb8abad5b
++++ b/87b3debc14506b4f5414d4527f3d55aa11bb8eab
+@@ -1,7 +1,13 @@
+ public static void printDataSourceData(List<Map<String, Object>> content, Option opt) {
+-    if (opt.getStyle() == Option.PrintStyle.HORIZONTAL) {
+-        System.out.println(getFormattedOutput(content, dsRowTitle, dsRowField));
+-    } else {
+-        System.out.println(getVerticalFormattedOutput(content, dsColField));
++    while (true) {
++        _printDataSourceData(content, opt);
++        if (opt.getInterval() == -1)
++            break;
++        try {
++            Thread.sleep(opt.getInterval() * 1000);
++        } catch (Exception e) {
++            e.printStackTrace();
++            break;
++        }
+     }
+ }
+\ No newline at end of file

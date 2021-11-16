@@ -1,0 +1,18 @@
+diff --git a/117e2a3721375c68569acef191a3f87e426a0faf b/eb00e48215032d4c5643eceab8d93e81245c3ba8
+index 117e2a3721..eb00e48215 100644
+--- a/117e2a3721375c68569acef191a3f87e426a0faf
++++ b/eb00e48215032d4c5643eceab8d93e81245c3ba8
+@@ -1,3 +1,8 @@
+-public void refactor(T t, VisitorState state) {
+-    state.getRefactorListener().onRefactor(createRefactor(t, state));
+-}
+\ No newline at end of file
++/**
++ * Additional description of a matched AST node, useful in reporting the error or performing an
++ * automated refactoring.
++ * @param t an AST node which matched this matcher
++ * @param state the shared state
++ * @return the description
++ */
++public abstract Refactor refactor(T t, VisitorState state);
+\ No newline at end of file

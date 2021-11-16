@@ -1,0 +1,18 @@
+diff --git a/2e90160ef1aff8e17a00f324b3d8413a02850571 b/57bc7a34107c5a8ee9e408a94a27a5cc5329d11f
+index 2e90160ef1..57bc7a3410 100644
+--- a/2e90160ef1aff8e17a00f324b3d8413a02850571
++++ b/57bc7a34107c5a8ee9e408a94a27a5cc5329d11f
+@@ -1,9 +1,8 @@
+ @Provides
+ @Named("codenvy.local.infrastructure.users")
+-Set<User> users() {
+-    final Set<User> users = new HashSet<>(1);
+-    final User user = new User().withId("che").withName("che").withEmail("che@eclipse.org").withPassword("secret");
+-    user.getAliases().add("che@eclipse.org");
++Set<UserImpl> users() {
++    final Set<UserImpl> users = new HashSet<>();
++    final UserImpl user = new UserImpl("che", "che@eclipse.org", "che", "secret", Collections.emptyList());
+     users.add(user);
+     return users;
+ }
+\ No newline at end of file

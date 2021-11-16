@@ -1,0 +1,13 @@
+diff --git a/9672230e60961fe6e9104849333cf247196899d8 b/6981af5edf302193ba635022a338a5451748903d
+index 9672230e60..6981af5edf 100644
+--- a/9672230e60961fe6e9104849333cf247196899d8
++++ b/6981af5edf302193ba635022a338a5451748903d
+@@ -1,5 +1,5 @@
+ private final void updateElement(int index) {
++    Preconditions.checkArgument(lowerPartitionID >= 0 && partitionWidth > 0 && idCeiling > 0);
+     Preconditions.checkArgument(index >= 0 && index < currentPartitions.length);
+-    Preconditions.checkArgument(upperPartitionID > 0, "SimpleBulkPlacementStrategy has not yet been initialized");
+-    currentPartitions[index] = random.nextInt(upperPartitionID - lowerPartitionID) + lowerPartitionID;
++    currentPartitions[index] = (random.nextInt(partitionWidth) + lowerPartitionID) % idCeiling;
+ }
+\ No newline at end of file

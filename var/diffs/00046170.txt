@@ -1,0 +1,27 @@
+diff --git a/89b29bd570972fd7922a896746448a7a495bc7ba b/05051eeec2bf724a90557c8e6178bb11c44df4bb
+index 89b29bd570..05051eeec2 100644
+--- a/89b29bd570972fd7922a896746448a7a495bc7ba
++++ b/05051eeec2bf724a90557c8e6178bb11c44df4bb
+@@ -1,16 +1,10 @@
+ /**
+  * Kickstart auto-complete suggestions
+  */
+ private void prepareSuggestions(final KeyEvent evt) {
+-    new SwingWorker<Object, Object>() {
+-
+-        protected Object doInBackground() throws Exception {
+-            // Provide completions only if it's enabled
+-            if (JavaMode.codeCompletionsEnabled && (JavaMode.ccTriggerEnabled || suggestion.isVisible())) {
+-                Messages.log("[KeyEvent]" + evt.getKeyChar() + "  |Prediction started");
+-                Messages.log("Typing: " + fetchPhrase(evt));
+-            }
+-            return null;
+-        }
+-    }.execute();
++    // Provide completions only if it's enabled
++    if (JavaMode.codeCompletionsEnabled && (JavaMode.ccTriggerEnabled || (suggestion != null && suggestion.isVisible()))) {
++        Messages.log("[KeyEvent]" + evt.getKeyChar() + "  |Prediction started");
++        fetchPhrase();
++    }
+ }
+\ No newline at end of file

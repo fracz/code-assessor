@@ -1,0 +1,21 @@
+diff --git a/acb520b9c2ec6cbffb02ed2daf0741c162ec65bd b/22030ac9fe5b96ff78e4fc1469d94d5774ccd955
+index acb520b9c2..22030ac9fe 100644
+--- a/acb520b9c2ec6cbffb02ed2daf0741c162ec65bd
++++ b/22030ac9fe5b96ff78e4fc1469d94d5774ccd955
+@@ -1,7 +1,12 @@
+ @Nullable
+ public ProblemDescriptor[] checkFile(@NotNull PsiFile file, @NotNull InspectionManager manager, boolean isOnTheFly) {
+-    if (isAcceptable(file)) {
+-        return findProblems(file, manager, isOnTheFly);
++    if (file instanceof XmlFile) {
++        for (Class<? extends T> domClass : myDomClasses) {
++            final DomFileElement<? extends T> fileElement = DomManager.getDomManager(file.getProject()).getFileElement((XmlFile) file, domClass);
++            if (fileElement != null) {
++                return checkDomFile((DomFileElement<T>) fileElement, manager, isOnTheFly);
++            }
++        }
+     }
+-    return super.checkFile(file, manager, isOnTheFly);
++    return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/cd65bd62eafbe52c36d17480a86e0699f0d05c31 b/286cf6174384b22df0e965e051f61bbe83bcdb15
+index cd65bd62ea..286cf61743 100644
+--- a/cd65bd62eafbe52c36d17480a86e0699f0d05c31
++++ b/286cf6174384b22df0e965e051f61bbe83bcdb15
+@@ -1,12 +1,11 @@
+ @Test
+ public void shouldGetRemovedLabels() throws Exception {
+     // GIVEN
+-    TxState state = new TxState();
+     state.removeLabelFromNode(1, 0);
+     state.removeLabelFromNode(1, 1);
+     state.removeLabelFromNode(2, 1);
+     // WHEN
+     Set<Long> removedLabels = state.getNodeStateLabelDiffSets(1).getRemoved();
+     // THEN
+     assertEquals(asSet(1L, 2L), removedLabels);
+ }
+\ No newline at end of file

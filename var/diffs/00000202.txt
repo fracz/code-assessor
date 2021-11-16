@@ -1,0 +1,16 @@
+diff --git a/b4bc68890b1e4377cb87928d4156414c353fc645 b/7ab8d224c90fdc6a3bbae991d226f4caa9912d41
+index b4bc68890b..7ab8d224c9 100644
+--- a/b4bc68890b1e4377cb87928d4156414c353fc645
++++ b/7ab8d224c90fdc6a3bbae991d226f4caa9912d41
+@@ -1,9 +1,9 @@
+ @Test
+ public void validateLockIdWithWrongBlockIdTest() throws Exception {
+     long lockId = mLockManager.lockBlock(TEST_USER_ID, TEST_BLOCK_ID, BlockLockType.READ);
+     long wrongBlockId = TEST_BLOCK_ID + 1;
+     mThrown.expect(InvalidStateException.class);
+-    mThrown.expectMessage("Failed to validateLock: lockId " + lockId + " is for blockId " + TEST_BLOCK_ID + ", not " + wrongBlockId);
++    mThrown.expectMessage(ExceptionMessage.LOCK_ID_FOR_DIFFERENT_BLOCK.getMessage(lockId, TEST_BLOCK_ID, wrongBlockId));
+     // Validate an existing lockId with wrong blockId, expect to see IOException
+     mLockManager.validateLock(TEST_USER_ID, wrongBlockId, lockId);
+ }
+\ No newline at end of file

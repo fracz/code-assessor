@@ -1,0 +1,14 @@
+diff --git a/d8f886dbc44582a1a735ea964b7daaa7c1785877 b/89bc4c4f490efb43161f4ee26d04605fe33fdd81
+index d8f886dbc4..89bc4c4f49 100644
+--- a/d8f886dbc44582a1a735ea964b7daaa7c1785877
++++ b/89bc4c4f490efb43161f4ee26d04605fe33fdd81
+@@ -1,5 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiClass aClass = (PsiClass) location.getParent();
+-    final int count = calculateTotalConstructorCount(aClass);
++@NotNull
++public String buildErrorString(Object... infos) {
++    final Integer count = (Integer) infos[0];
+     return InspectionGadgetsBundle.message("too.many.constructors.problem.descriptor", count);
+ }
+\ No newline at end of file

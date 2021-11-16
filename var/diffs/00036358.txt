@@ -1,0 +1,20 @@
+diff --git a/1941434ffc006bacaa23a4e94d3d2c2c789d96da b/69f26ee91333674a04922e4ab4c2be2a91f6f742
+index 1941434ffc..69f26ee913 100644
+--- a/1941434ffc006bacaa23a4e94d3d2c2c789d96da
++++ b/69f26ee91333674a04922e4ab4c2be2a91f6f742
+@@ -1,12 +1,12 @@
+ public void close(boolean forceRollback) {
+     try {
+-        if (dirty) {
+-            // issue #499. Unresolved session handling
++        // issue #573. Autocommit sessions should commit
++        if (dirty && !autoCommit) {
+             tcm.rollback();
+         } else {
+             tcm.commit();
+         }
+     } finally {
+         delegate.close(forceRollback);
+     }
+ }
+\ No newline at end of file

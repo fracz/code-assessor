@@ -1,0 +1,13 @@
+diff --git a/acbb09b2c56e002df948d6a94e6ab8cf3bfcb43e b/8db698524477590e9777c5b4117bb7f89379bbf9
+index acbb09b2c5..8db6985244 100644
+--- a/acbb09b2c56e002df948d6a94e6ab8cf3bfcb43e
++++ b/8db698524477590e9777c5b4117bb7f89379bbf9
+@@ -1,4 +1,4 @@
+-public ORecordAbstract<byte[]> load(int schemaClusterId) {
+-    setIdentity(schemaClusterId, SECURITY_RECORD_NUM);
+-    return super.load();
++public OSecurity load() {
++    recordId.fromString(database.getStorage().getConfiguration().securityRecordId);
++    return (OSecurity) super.load();
+ }
+\ No newline at end of file

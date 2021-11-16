@@ -1,0 +1,16 @@
+diff --git a/4cc89e15d71c692d043e5651128056c55afe58cc b/70cc9a6fecad3ebcb4f304c05d696c7348f68997
+index 4cc89e15d7..70cc9a6fec 100644
+--- a/4cc89e15d71c692d043e5651128056c55afe58cc
++++ b/70cc9a6fecad3ebcb4f304c05d696c7348f68997
+@@ -1,9 +1,9 @@
+ /**
+  * Get the IME action label previous set with {@link #setImeActionLabel}.
+  *
+  * @see #setImeActionLabel
+  * @see android.view.inputmethod.EditorInfo
+  */
+ public CharSequence getImeActionLabel() {
+-    return mEditor != null && getEditor().mInputContentType != null ? getEditor().mInputContentType.imeActionLabel : null;
++    return mEditor != null && mEditor.mInputContentType != null ? mEditor.mInputContentType.imeActionLabel : null;
+ }
+\ No newline at end of file

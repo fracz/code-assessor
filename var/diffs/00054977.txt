@@ -1,0 +1,19 @@
+diff --git a/29a21c941eb284ad2f55307cf95fe1b2dea715b7 b/9af0a6159664c92daafb54b57c905dda539deb78
+index 29a21c941e..9af0a61596 100644
+--- a/29a21c941eb284ad2f55307cf95fe1b2dea715b7
++++ b/9af0a6159664c92daafb54b57c905dda539deb78
+@@ -1,11 +1,11 @@
+ private void filledNewArray(InsnNode insn, CodeWriter code) throws CodegenException {
+     int c = insn.getArgsCount();
+     code.add("new ").add(useType(insn.getResult().getType()));
+-    code.add("{");
++    code.add('{');
+     for (int i = 0; i < c; i++) {
+         code.add(arg(insn, i));
+         if (i + 1 < c)
+             code.add(", ");
+     }
+-    code.add("}");
++    code.add('}');
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/446d3875cf71f766cb61eb5362cb9c6fa6de460b b/693db072421f2e664df3e785606efa33e8be0fc8
+index 446d3875cf..693db07242 100644
+--- a/446d3875cf71f766cb61eb5362cb9c6fa6de460b
++++ b/693db072421f2e664df3e785606efa33e8be0fc8
+@@ -1,6 +1,10 @@
++// public List<SQLSelectItem> getReturning() {
++// return returning;
++// }
+ public void addReturning(List<SQLSelectItem> returning) {
++    List<SQLExpr> thisReturning = this.getReturning();
+     for (SQLSelectItem item : returning) {
+         item.setParent(this);
+-        this.returning.add(item);
++        thisReturning.add(item.getExpr());
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/05f04040248fb9effb0dcf0a2a02f4dbc73212e7 b/6912f72f061d9e5b2bc727d37a2311c54d5b52f1
+index 05f0404024..6912f72f06 100644
+--- a/05f04040248fb9effb0dcf0a2a02f4dbc73212e7
++++ b/6912f72f061d9e5b2bc727d37a2311c54d5b52f1
+@@ -1,6 +1,7 @@
+-// /////////////////////////////////////////////////////////
+-// Texturing
++// activeTexture() and bindTexture() have some extra logic to keep track of
++// the bound textures, so the actual GL call should go in activeTextureImpl()
++// and bindTextureImpl().
+ public void activeTexture(int texture) {
+-    gl.glActiveTexture(texture);
+     activeTexUnit = texture - TEXTURE0;
++    activeTextureImpl(texture);
+ }
+\ No newline at end of file

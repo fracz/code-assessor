@@ -1,0 +1,22 @@
+diff --git a/1a2ff5d585acf515774480bccdaf6c07a368a56e b/10aeb95f9782a065f964d9b6502ba30965106ec9
+index 1a2ff5d585..10aeb95f97 100644
+--- a/1a2ff5d585acf515774480bccdaf6c07a368a56e
++++ b/10aeb95f9782a065f964d9b6502ba30965106ec9
+@@ -1,10 +1,13 @@
++/**
++ * Checks whether the Activity extends one of the ActionBarSherlock Activity
++ * types
++ */
+ public boolean usesSherlock(EBeanHolder holder) {
+-    // Check whether the Activity extends one of the ActionBarSherlock Activity types
+     TypeElement annotatedType = annotationHelper.typeElementFromQualifiedName(holder.eBean._extends().fullName());
+-    for (String sherlockClass : SHERLOCK_ACTIVITIES_LIST_CLASS) {
+-        if (annotationHelper.isSubtype(annotatedType, annotationHelper.typeElementFromQualifiedName(sherlockClass))) {
++    for (TypeElement sherlockActivityTypeElement : sherlockActivityTypeElements) {
++        if (annotationHelper.isSubtype(annotatedType, sherlockActivityTypeElement)) {
+             return true;
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/92723e8e535b2ded271b15f133964cc1fc9854fa b/1745e465bfacd6ad5708d3d7127bf79985ef12c5
+index 92723e8e53..1745e465bf 100644
+--- a/92723e8e535b2ded271b15f133964cc1fc9854fa
++++ b/1745e465bfacd6ad5708d3d7127bf79985ef12c5
+@@ -1,9 +1,9 @@
+ /**
+  * Test case for {@link S3UnderFileSystem#delete(String, boolean)}.
+  */
+ @Test
+ public void deleteRecursiveOnServiceException() throws IOException, ServiceException {
+     Mockito.when(mClient.listObjectsChunked(Matchers.anyString(), Matchers.anyString(), Matchers.anyString(), Matchers.anyLong(), Matchers.anyString())).thenThrow(ServiceException.class);
+-    boolean result = mS3UnderFileSystem.deleteDirectory(PATH, new DeleteOptions().setRecursive(true));
++    boolean result = mS3UnderFileSystem.deleteDirectory(PATH, DeleteOptions.defaults().setRecursive(true));
+     Assert.assertFalse(result);
+ }
+\ No newline at end of file

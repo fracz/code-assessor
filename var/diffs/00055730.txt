@@ -1,0 +1,35 @@
+diff --git a/a9e2a9da9b76f330f007979f8383fbb543768c22 b/70ff2afcc898087b447550bc057c8145a1703b2c
+index a9e2a9da9b..70ff2afcc8 100644
+--- a/a9e2a9da9b76f330f007979f8383fbb543768c22
++++ b/70ff2afcc898087b447550bc057c8145a1703b2c
+@@ -1,13 +1,22 @@
+-public int compareTo(ConsumesRequestCondition other) {
+-    MediaTypeRequestCondition thisMostSpecificCondition = this.getMostSpecificCondition();
+-    MediaTypeRequestCondition otherMostSpecificCondition = other.getMostSpecificCondition();
+-    if (thisMostSpecificCondition == null && otherMostSpecificCondition == null) {
++/**
++ * Returns:
++ * <ul>
++ * <li>0 if the two conditions have the same number of expressions
++ * <li>Less than 1 if "this" has more in number or more specific consumable media type expressions
++ * <li>Greater than 1 if "other" has more in number or more specific consumable media type expressions
++ * </ul>
++ *
++ * <p>It is assumed that both instances have been obtained via {@link #getMatchingCondition(HttpServletRequest)}
++ * and each instance contains the matching consumable media type expression only or is otherwise empty.
++ */
++public int compareTo(ConsumesRequestCondition other, HttpServletRequest request) {
++    if (expressions.isEmpty() && other.expressions.isEmpty()) {
+         return 0;
+-    } else if (thisMostSpecificCondition == null) {
++    } else if (expressions.isEmpty()) {
+         return 1;
+-    } else if (otherMostSpecificCondition == null) {
++    } else if (other.expressions.isEmpty()) {
+         return -1;
+     } else {
+-        return thisMostSpecificCondition.compareTo(otherMostSpecificCondition);
++        return expressions.get(0).compareTo(other.expressions.get(0));
+     }
+ }
+\ No newline at end of file

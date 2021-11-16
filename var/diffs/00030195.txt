@@ -1,0 +1,28 @@
+diff --git a/b3c65c559b9ea549923388e34a888720d1329ad7 b/5afe4fe682ea75253470aa111f7a6e237ff38918
+index b3c65c559b..5afe4fe682 100644
+--- a/b3c65c559b9ea549923388e34a888720d1329ad7
++++ b/5afe4fe682ea75253470aa111f7a6e237ff38918
+@@ -1,18 +1,14 @@
+ @Override
+ public void doXContent(XContentBuilder builder, Params params) throws IOException {
+     builder.startObject(NAME);
+-    builder.startObject(name);
+-    builder.field("value", regexp);
+-    if (flags != -1) {
+-        builder.field("flags_value", flags);
+-    }
+-    if (maxDetermizedStatesSet) {
+-        builder.field("max_determinized_states", maxDeterminizedStates);
+-    }
++    builder.startObject(fieldName);
++    builder.field("value", this.value);
++    builder.field("flags_value", flagsValue);
++    builder.field("max_determinized_states", maxDeterminizedStates);
+     if (rewrite != null) {
+         builder.field("rewrite", rewrite);
+     }
+     printBoostAndQueryName(builder);
+     builder.endObject();
+     builder.endObject();
+ }
+\ No newline at end of file

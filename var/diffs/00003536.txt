@@ -1,0 +1,15 @@
+diff --git a/57feaf2ba50aa84493c978b769c43082bb43d15a b/ebf0a29fc39f58aee543791f777fbfaf996d1a2a
+index 57feaf2ba5..ebf0a29fc3 100644
+--- a/57feaf2ba50aa84493c978b769c43082bb43d15a
++++ b/ebf0a29fc39f58aee543791f777fbfaf996d1a2a
+@@ -1,7 +1,5 @@
+ @Override
+ protected void textAvailable(final String text, final Key attributes) {
+-    final String string = processPrompts(getConsole(), StringUtil.convertLineSeparators(text));
+-    myConsoleView.print(text, PyConsoleHighlightingUtil.outputTypeForAttributes(attributes));
+-// PyConsoleHighlightingUtil.processOutput(myLanguageConsole, string, attributes);
+-// myLanguageConsole.queueUiUpdate(true);
++    final String string = PyPromptUtil.processPrompts(getConsole(), StringUtil.convertLineSeparators(text));
++    myConsoleView.printText(string, attributes);
+ }
+\ No newline at end of file

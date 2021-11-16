@@ -1,0 +1,16 @@
+diff --git a/eb8ffd1e9b6a06293dc131d9773e673e674176fd b/c0650c14035e25845e8b4d9df592886316a621ef
+index eb8ffd1e9b..c0650c1403 100644
+--- a/eb8ffd1e9b6a06293dc131d9773e673e674176fd
++++ b/c0650c14035e25845e8b4d9df592886316a621ef
+@@ -1,8 +1,8 @@
+ @Override
+ public void verifyServerType(ServiceType serviceType) {
+-    short actualType = getAgentInformation().getServerType();
+-    if (serviceType.getCode() != actualType) {
++    ServiceType actualType = getAgentInformation().getServerType();
++    if (serviceType.getCode() != actualType.getCode()) {
+         throw new AssertionError("Expected server type: " + serviceType.getName() + "[" + serviceType.getCode() + "] but was [" + actualType + "]");
+     }
+     ;
+ }
+\ No newline at end of file

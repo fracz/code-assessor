@@ -1,0 +1,19 @@
+diff --git a/b8102d434ea17ac2a7f2b390533ee239a9f7d447 b/4f35e085daea12e2a1b90897da09ff136a770b28
+index b8102d434e..4f35e085da 100644
+--- a/b8102d434ea17ac2a7f2b390533ee239a9f7d447
++++ b/4f35e085daea12e2a1b90897da09ff136a770b28
+@@ -1,9 +1,11 @@
+ /**
+  * Invalidates all meshes so the next time they are rendered new VBO handles are generated.
+  */
+ public static void invalidateAllMeshes() {
+     for (int i = 0; i < meshes.size(); i++) {
+-        meshes.get(i).invalidated = true;
+-        meshes.get(i).checkManagedAndDirty();
++        if (meshes.get(i).vertices instanceof VertexBufferObject) {
++            ((VertexBufferObject) meshes.get(i).vertices).invalidate();
++            meshes.get(i).indices.invalidate();
++        }
+     }
+ }
+\ No newline at end of file

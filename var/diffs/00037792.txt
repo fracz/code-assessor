@@ -1,0 +1,15 @@
+diff --git a/b2ec9061a81119c859b66cc4c0560d0e9f6cc4e6 b/a95befab01ee54f7ddd195829450a4acb8f4298e
+index b2ec9061a8..a95befab01 100644
+--- a/b2ec9061a81119c859b66cc4c0560d0e9f6cc4e6
++++ b/a95befab01ee54f7ddd195829450a4acb8f4298e
+@@ -1,5 +1,5 @@
+-private SocketTransportHandler.ProtocolChooser protocolChooser(final Session session) {
+-    PrimitiveLongObjectMap<BiFunction<Channel, Boolean, BoltProtocol>> availableVersions = longObjectMap();
+-    availableVersions.put(BoltProtocolV1.VERSION, (channel, isSecure) -> new BoltProtocolV1(session, channel, NullLogService.getInstance()));
+-    return new SocketTransportHandler.ProtocolChooser(availableVersions, true);
++private SocketTransportHandler.ProtocolChooser protocolChooser(final BoltStateMachine machine) {
++    Map<Long, BiFunction<Channel, Boolean, BoltProtocol>> availableVersions = new HashMap<>();
++    availableVersions.put((long) BoltProtocolV1.VERSION, (channel, isSecure) -> new BoltProtocolV1(new SynchronousBoltWorker(machine), channel, NullLogService.getInstance()));
++    return new SocketTransportHandler.ProtocolChooser(availableVersions, false, true);
+ }
+\ No newline at end of file

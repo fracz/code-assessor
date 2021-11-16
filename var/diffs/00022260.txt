@@ -1,0 +1,27 @@
+diff --git a/db550a593db905b1a189d60a46793bd26e62a59a b/74d623b17c3d4b17f01e1c225bd7e9d77eedd57f
+index db550a593d..74d623b17c 100644
+--- a/db550a593db905b1a189d60a46793bd26e62a59a
++++ b/74d623b17c3d4b17f01e1c225bd7e9d77eedd57f
+@@ -1,18 +1,18 @@
+ @Override
+ public void onLayoutFinished(PrintDocumentInfo info, boolean changed) {
++    if (info == null) {
++        throw new NullPointerException("document info cannot be null");
++    }
+     final ILayoutResultCallback callback;
+     synchronized (mLock) {
+         callback = mCallback;
+         clearLocked();
+     }
+-    if (info == null) {
+-        throw new IllegalArgumentException("info cannot be null");
+-    }
+     if (callback != null) {
+         try {
+             callback.onLayoutFinished(info, changed, mSequence);
+         } catch (RemoteException re) {
+             Log.e(LOG_TAG, "Error calling onLayoutFinished", re);
+         }
+     }
+ }
+\ No newline at end of file

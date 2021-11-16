@@ -1,0 +1,26 @@
+diff --git a/e375db7d87afd3fee0c006148c77668e9bea3177 b/f2e41ced71955b6bb23f9d2ab840dc370565a3fb
+index e375db7d87..f2e41ced71 100644
+--- a/e375db7d87afd3fee0c006148c77668e9bea3177
++++ b/f2e41ced71955b6bb23f9d2ab840dc370565a3fb
+@@ -1,16 +1,16 @@
+ /**
+- * <!-- begin-user-doc -->
+- * <!-- end-user-doc -->
++ * <!-- begin-user-doc --> <!-- end-user-doc -->
++ *
+  * @generated NOT
+  */
+-public HighLowValue fetchSensorValue() {
++public void fetchSensorValue() {
+     HighLowValue value = HighLowValue.UNDEF;
+     try {
+         value = extractValue(getMbrick().getTinkerforgeDevice().getValue());
++        setSensorValue(value);
+     } catch (TimeoutException e) {
+         TinkerforgeErrorHandler.handleError(this, TinkerforgeErrorHandler.TF_TIMEOUT_EXCEPTION, e);
+     } catch (NotConnectedException e) {
+         TinkerforgeErrorHandler.handleError(this, TinkerforgeErrorHandler.TF_NOT_CONNECTION_EXCEPTION, e);
+     }
+-    return value;
+ }
+\ No newline at end of file

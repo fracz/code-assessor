@@ -1,0 +1,21 @@
+diff --git a/e900a36bd6fff526fe0a241b3ca5004f8cb9deb8 b/45d9babe53d534c74151d1488bc86ce399170bb2
+index e900a36bd6..45d9babe53 100644
+--- a/e900a36bd6fff526fe0a241b3ca5004f8cb9deb8
++++ b/45d9babe53d534c74151d1488bc86ce399170bb2
+@@ -1,10 +1,10 @@
+ @Override
+-public List<AstError> visitEmptyStatement(EmptyStatementTree node, VisitorState visitorState) {
+-    List<AstError> result = new ArrayList<AstError>();
+-    AstError error = emptyIfChecker.check(node, visitorState.withPath(getCurrentPath()));
+-    if (error != null) {
+-        result.add(error);
++public List<MatchDescription> visitEmptyStatement(EmptyStatementTree node, VisitorState visitorState) {
++    List<MatchDescription> result = new ArrayList<MatchDescription>();
++    VisitorState state = visitorState.withPath(getCurrentPath());
++    if (emptyIfChecker.matches(node, state)) {
++        result.add(emptyIfChecker.describe(node, state));
+     }
+     super.visitEmptyStatement(node, visitorState);
+     return result;
+ }
+\ No newline at end of file

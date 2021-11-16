@@ -1,0 +1,21 @@
+diff --git a/9b6e3ef94ef228eccd7ee1107b9372413593d5d6 b/882f9ae2007231f8e362798ab375f5dea42e4752
+index 9b6e3ef94e..882f9ae200 100644
+--- a/9b6e3ef94ef228eccd7ee1107b9372413593d5d6
++++ b/882f9ae2007231f8e362798ab375f5dea42e4752
+@@ -1,12 +1,12 @@
+ private void checkForNewTopicAssignments(Assignment assignment) {
+-    if (streamThread.builder.sourceTopicPattern() != null) {
++    if (threadDataProvider.builder().sourceTopicPattern() != null) {
+         final Set<String> assignedTopics = new HashSet<>();
+         for (final TopicPartition topicPartition : assignment.partitions()) {
+             assignedTopics.add(topicPartition.topic());
+         }
+-        if (!streamThread.builder.subscriptionUpdates().getUpdates().containsAll(assignedTopics)) {
+-            assignedTopics.addAll(streamThread.builder.subscriptionUpdates().getUpdates());
++        if (!threadDataProvider.builder().subscriptionUpdates().getUpdates().containsAll(assignedTopics)) {
++            assignedTopics.addAll(threadDataProvider.builder().subscriptionUpdates().getUpdates());
+             updateSubscribedTopics(assignedTopics);
+         }
+     }
+ }
+\ No newline at end of file

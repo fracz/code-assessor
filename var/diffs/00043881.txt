@@ -1,0 +1,14 @@
+diff --git a/0816df848895a0edaf80d7d2b8dc46578cd77560 b/ad0ef12b14ff2c0c7a7636c2c0c7127792d5af91
+index 0816df8488..ad0ef12b14 100644
+--- a/0816df848895a0edaf80d7d2b8dc46578cd77560
++++ b/ad0ef12b14ff2c0c7a7636c2c0c7127792d5af91
+@@ -1,6 +1,5 @@
+ @BeforeClass
+-public void beforeClass() {
+-    database.open("admin", "admin");
++public void beforeClass() throws Exception {
++    super.beforeClass();
+     database.command(new OCommandSQL("create index idxTxAwareOneValueGetTest unique")).execute();
+-    database.close();
+ }
+\ No newline at end of file

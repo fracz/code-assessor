@@ -1,0 +1,21 @@
+diff --git a/fdd8237b3916d910e12d57638c691df99556053c b/e7783821eb9e9f9b14b73562131501cf1ed4fbd5
+index fdd8237b39..e7783821eb 100644
+--- a/fdd8237b3916d910e12d57638c691df99556053c
++++ b/e7783821eb9e9f9b14b73562131501cf1ed4fbd5
+@@ -1,8 +1,10 @@
+ /**
+  * Import a scheme from the given virtual file
+- * @param project
++ * @param project project
+  * @param selectedFile  The input file to import from.
+- * @param currentScheme
+- * @param schemeCreator Callback that provides the target scheme receiving data.
++ * @param currentScheme source scheme to be updated or to base import on
++ * @param schemeFactory
++ * @return created/updated scheme, or null if action was cancelled
+  */
+-boolean importScheme(@NotNull Project project, @NotNull VirtualFile selectedFile, T currentScheme, @NotNull PairConvertor<String, Boolean, T> schemeCreator) throws SchemeImportException;
+\ No newline at end of file
++@Nullable
++T importScheme(@NotNull Project project, @NotNull VirtualFile selectedFile, T currentScheme, SchemeFactory<T> schemeFactory) throws SchemeImportException;
+\ No newline at end of file

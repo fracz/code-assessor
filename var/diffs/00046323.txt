@@ -1,0 +1,23 @@
+diff --git a/79537653292893ac394e013e5d89da5b92010b91 b/b480701281b169219e0571046a3800ec8f32320d
+index 7953765329..b480701281 100644
+--- a/79537653292893ac394e013e5d89da5b92010b91
++++ b/b480701281b169219e0571046a3800ec8f32320d
+@@ -1,12 +1,12 @@
+ /**
+  * Save the language directly to a settings file. This is 'save' and not
+  * 'set' because a language change requires a restart of Processing.
+  */
+ public static void saveLanguage(String language) {
+-    try {
+-        Base.saveFile(language, prefFile);
+-    } catch (Exception e) {
+-        e.printStackTrace();
++    if (loadProps()) {
++        props.setProperty("language", language);
++        if (updateProps()) {
++            Base.getPlatform().saveLanguage(language);
++        }
+     }
+-    Base.getPlatform().saveLanguage(language);
+ }
+\ No newline at end of file

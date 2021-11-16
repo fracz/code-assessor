@@ -1,0 +1,15 @@
+diff --git a/7d5868569406e095f26bf2a0723511af17eb4ace b/5cdc278b2999991f4ac81408d4773a1edda7b04b
+index 7d58685694..5cdc278b29 100644
+--- a/7d5868569406e095f26bf2a0723511af17eb4ace
++++ b/5cdc278b2999991f4ac81408d4773a1edda7b04b
+@@ -1,5 +1,5 @@
+-private static RangeSliceCommand rangeNamesQuery(AbstractBounds<RowPosition> range, int count, String... names) {
+-    SortedSet<CellName> s = new TreeSet<CellName>(cfs().metadata.comparator);
+-    for (String name : names) s.add(CellNames.simpleDense(bytes(name)));
+-    return new RangeSliceCommand(KEYSPACE1, CF_STANDARD, System.currentTimeMillis(), new NamesQueryFilter(s, true), range, count);
++private static ReadCommand rangeNamesQuery(String keyStart, String keyEnd, int count, String... names) {
++    AbstractReadCommandBuilder builder = Util.cmd(cfs()).fromKeyExcl(keyStart).toKeyIncl(keyEnd).withPagingLimit(count);
++    for (String name : names) builder.includeRow(name);
++    return builder.build();
+ }
+\ No newline at end of file

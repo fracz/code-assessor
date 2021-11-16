@@ -1,0 +1,24 @@
+diff --git a/9c0b36c114d60a40e7753b5fcf4344b9e8b3cf87 b/179d8734243d747ee0f8db285724118a217980bf
+index 9c0b36c114..179d873424 100644
+--- a/9c0b36c114d60a40e7753b5fcf4344b9e8b3cf87
++++ b/179d8734243d747ee0f8db285724118a217980bf
+@@ -1,16 +1,17 @@
+ public synchronized Publication addPublication(final String destination, final long channelId, final long sessionId) {
+     Publication publication = publicationMap.get(destination, sessionId, channelId);
+     if (publication == null) {
+         activeCorrelationId = driverProxy.addPublication(destination, channelId, sessionId);
+         final long startTime = System.currentTimeMillis();
+         while (addedPublication == null) {
+             await(startTime);
+         }
+         publication = addedPublication;
+         publicationMap.put(destination, sessionId, channelId, publication);
+         addedPublication = null;
+         activeCorrelationId = NO_CORRELATION_ID;
++    } else {
++        publication.incRef();
+     }
+-    publication.incRef();
+     return publication;
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/6036aebc8edf470cd9665faa6573a75be80cd1e9 b/175d9e8374ea36782d50444f4d2db96bba09934e
+index 6036aebc8e..175d9e8374 100644
+--- a/6036aebc8edf470cd9665faa6573a75be80cd1e9
++++ b/175d9e8374ea36782d50444f4d2db96bba09934e
+@@ -1,5 +1,5 @@
+ @Test
+ public void testBindMixedLiteralAndTypeVariables() throws Exception {
+-    Signature function = functionSignature().returnType("boolean").typeVariableConstraints(ImmutableList.of(typeVariable("T"))).argumentTypes("array(T)", "array(decimal(p,s))").literalParameters("p", "s").build();
++    Signature function = functionSignature().returnType(parseTypeSignature(StandardTypes.BOOLEAN)).typeVariableConstraints(ImmutableList.of(typeVariable("T"))).argumentTypes(parseTypeSignature("array(T)"), parseTypeSignature("array(decimal(p,s))", ImmutableSet.of("p", "s"))).build();
+     assertThat(function).boundTo("array(decimal(2,1))", "array(decimal(3,1))").withCoercion().produces(new BoundVariables(ImmutableMap.of("T", type("decimal(2,1)")), ImmutableMap.of("p", 3L, "s", 1L)));
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/629c392683bb4005b0a40d0d4ec9b01da8fe44ee b/471e1bfca2e24fe7bddd2a6bf2acd3fdea00296d
+index 629c392683..471e1bfca2 100644
+--- a/629c392683bb4005b0a40d0d4ec9b01da8fe44ee
++++ b/471e1bfca2e24fe7bddd2a6bf2acd3fdea00296d
+@@ -1,6 +1,6 @@
+ @Test
+ public void emptyBodyWithFlowable() throws Exception {
+     ResolvableType type = httpEntityType(forClassWithGenerics(Flowable.class, String.class));
+     HttpEntity<Flowable<String>> entity = resolveValueWithEmptyBody(type);
+-    TestSubscriber.subscribe(entity.getBody()).assertNoError().assertComplete().assertNoValues();
++    ScriptedSubscriber.create().expectNextCount(0).expectComplete().verify(entity.getBody());
+ }
+\ No newline at end of file

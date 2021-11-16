@@ -1,0 +1,14 @@
+diff --git a/8de29eab8b7277286be43c218b26cf24e9c6e350 b/0f6d927bdcba3270dc7ad119d59da27751507d07
+index 8de29eab8b..0f6d927bdc 100644
+--- a/8de29eab8b7277286be43c218b26cf24e9c6e350
++++ b/0f6d927bdcba3270dc7ad119d59da27751507d07
+@@ -1,5 +1,5 @@
+ @After
+-public void tearDown() {
+-    if (null != manager)
+-        manager.close();
++public void tearDown() throws BackendException {
++    store.close();
++    manager.close();
+ }
+\ No newline at end of file

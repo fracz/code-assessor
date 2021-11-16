@@ -1,0 +1,31 @@
+diff --git a/8e0c945272529e978ca577fbc69a274dd437bd48 b/ad86cd49fb4e9a16b0b7ee798f8a24f08eec1cea
+index 8e0c945272..ad86cd49fb 100644
+--- a/8e0c945272529e978ca577fbc69a274dd437bd48
++++ b/ad86cd49fb4e9a16b0b7ee798f8a24f08eec1cea
+@@ -1,17 +1,17 @@
+-public Set<String> getRelevantDependents(String className) {
+-    Set<String> out = new HashSet<String>();
+-    ClassDependents deps = dependents.get(className);
++public DependentsSet getRelevantDependents(String className) {
++    DependentsSet deps = dependents.get(className);
+     if (deps == null) {
+-        return Collections.emptySet();
++        return ClassDependents.emptyDependents();
+     }
+-    if (deps.isDependentToAll()) {
+-        return null;
++    if (deps.isDependencyToAll()) {
++        return deps;
+     }
++    Set<String> out = new HashSet<String>();
+     for (String c : deps.getDependentClasses()) {
++        // filter out the inner classes and current class name
+         if (!c.contains("$") && !c.equals(className)) {
+-            // naive
+             out.add(c);
+         }
+     }
+-    return out;
++    return ClassDependents.dependentsSet(out);
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/67812cfe8750cc41df67a751dfd7a744b921ab85 b/5e1865cfe63e50627523d56c908a3abccb30f938
+index 67812cfe87..5e1865cfe6 100644
+--- a/67812cfe8750cc41df67a751dfd7a744b921ab85
++++ b/5e1865cfe63e50627523d56c908a3abccb30f938
+@@ -1,10 +1,11 @@
+ private void handleResult(@Nullable ResultHandler handler) {
+     if (handler == null) {
+         return;
+     }
+-    if (errorHappened()) {
+-        handler.onError(getError());
++    String error = getError();
++    if (error != null) {
++        handler.onError(error);
+     } else {
+         handler.onSuccess(getCommits());
+     }
+ }
+\ No newline at end of file

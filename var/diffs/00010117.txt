@@ -1,0 +1,20 @@
+diff --git a/d0aedf891a7e49f9f55a0f9f9d49cc189821b2f2 b/5dadfa4ad6fde42f144b68358bff5e8f99794dd9
+index d0aedf891a..5dadfa4ad6 100644
+--- a/d0aedf891a7e49f9f55a0f9f9d49cc189821b2f2
++++ b/5dadfa4ad6fde42f144b68358bff5e8f99794dd9
+@@ -1,13 +1,13 @@
+ @Nullable
+ static HighlightInfo checkLabelDefined(@Nullable PsiIdentifier labelIdentifier, @Nullable PsiStatement exitedStatement) {
+     if (labelIdentifier == null)
+         return null;
+     String label = labelIdentifier.getText();
+     if (label == null)
+         return null;
+     if (exitedStatement == null) {
+         String message = JavaErrorMessages.message("unresolved.label", label);
+-        return HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, labelIdentifier, message);
++        return HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(labelIdentifier).descriptionAndTooltip(message).create();
+     }
+     return null;
+ }
+\ No newline at end of file

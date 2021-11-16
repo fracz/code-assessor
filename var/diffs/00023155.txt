@@ -1,0 +1,16 @@
+diff --git a/f0c35bb6db058bc4e6fcb9d027c0e447e2c1943b b/b28202076002016798170d482c8941ebe3c918ed
+index f0c35bb6db..b282020760 100644
+--- a/f0c35bb6db058bc4e6fcb9d027c0e447e2c1943b
++++ b/b28202076002016798170d482c8941ebe3c918ed
+@@ -1,8 +1,8 @@
+ /**
+  * Dismiss the Keyboard Shortcuts screen.
+  */
+ public final void dismissKeyboardShortcutsHelper() {
+     Intent intent = new Intent(Intent.ACTION_DISMISS_KEYBOARD_SHORTCUTS);
+-    intent.setComponent(new ComponentName(KEYBOARD_SHORTCUTS_RECEIVER_PKG_NAME, KEYBOARD_SHORTCUTS_RECEIVER_CLASS_NAME));
+-    sendBroadcast(intent);
++    intent.setPackage(KEYBOARD_SHORTCUTS_RECEIVER_PKG_NAME);
++    sendBroadcastAsUser(intent, UserHandle.SYSTEM);
+ }
+\ No newline at end of file

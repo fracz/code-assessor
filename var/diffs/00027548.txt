@@ -1,0 +1,26 @@
+diff --git a/7c85df18023bfb9fc9f34aed220cde40a098d98b b/37cb7478b55e9d2416272d633c41e83af81dba7a
+index 7c85df1802..37cb7478b5 100644
+--- a/7c85df18023bfb9fc9f34aed220cde40a098d98b
++++ b/37cb7478b55e9d2416272d633c41e83af81dba7a
+@@ -1,15 +1,19 @@
+ @Override
+ public void run() {
+     try {
+         latch.countDown();
+         if (!latch.await(5, TimeUnit.SECONDS)) {
+             throw new RuntimeException(new TimeoutException("Took too long to wait for more tasks"));
+         }
+         for (int j = 0; j < deletesPerThread; ++j) {
+-            testDelete(String.format("ns-%d-%d", ii, j));
++            try {
++                testDelete();
++            } catch (Exception e) {
++                throw Throwables.propagate(e);
++            }
+         }
+     } catch (InterruptedException e) {
+         Thread.currentThread().interrupt();
+         throw Throwables.propagate(e);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/f52a6fd60b38ddee4ae0ad8108debe8ceb858b82 b/81a6d842dfc14824c9067adc13b5ea6b4c70eadf
+index f52a6fd60b..81a6d842df 100644
+--- a/f52a6fd60b38ddee4ae0ad8108debe8ceb858b82
++++ b/81a6d842dfc14824c9067adc13b5ea6b4c70eadf
+@@ -1,13 +1,13 @@
+ private SQLParsedResult parseNew() {
+     SQLParsedResult result = new SQLParsedResult();
+-    SQLUpdateStatement updateStatement = (SQLUpdateStatement) sqlStatement;
+-    if (updateStatement.getSqlContext().getConditionContexts().isEmpty()) {
++    SQLContext sqlContext = getSQLContext();
++    if (sqlContext.getConditionContexts().isEmpty()) {
+         result.getConditionContexts().add(new ConditionContext());
+     } else {
+-        result.getConditionContexts().addAll(updateStatement.getSqlContext().getConditionContexts());
++        result.getConditionContexts().addAll(sqlContext.getConditionContexts());
+     }
+-    result.getRouteContext().getTables().add(updateStatement.getSqlContext().getTable());
+-    result.getRouteContext().setSqlBuilder(updateStatement.getSqlContext().getSqlBuilder());
++    result.getRouteContext().getTables().add(sqlContext.getTable());
++    result.getRouteContext().setSqlBuilder(sqlContext.getSqlBuilder());
+     result.getRouteContext().setSqlStatementType(getType());
+     return result;
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/781f02036dba0e150670206ca79653c82d54b514 b/740875477ee78b0d6144eef685f44b487445df3c
+index 781f02036d..740875477e 100644
+--- a/781f02036dba0e150670206ca79653c82d54b514
++++ b/740875477ee78b0d6144eef685f44b487445df3c
+@@ -1,4 +1,6 @@
+ // Transaction data
+ public void propertyKey(int id, String key, int... dynamicIds) throws IOException {
+-    write(new Command.PropertyKeyTokenCommand(null, withName(new PropertyKeyTokenRecord(id), dynamicIds, key)));
++    Command.PropertyKeyTokenCommand command = new Command.PropertyKeyTokenCommand();
++    command.init(withName(new PropertyKeyTokenRecord(id), dynamicIds, key));
++    write(command);
+ }
+\ No newline at end of file

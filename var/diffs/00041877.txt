@@ -1,0 +1,29 @@
+diff --git a/ddd2a9152d52f4686534c98578e5e12f21b624f0 b/ce12dad40c9a12d2668babfc7e044119efcc3590
+index ddd2a9152d..ce12dad40c 100644
+--- a/ddd2a9152d52f4686534c98578e5e12f21b624f0
++++ b/ce12dad40c9a12d2668babfc7e044119efcc3590
+@@ -1,17 +1,20 @@
+ @Override
+ public Object transform(final Object input) {
+-    log(OETLProcessor.LOG_LEVELS.DEBUG, "Transformer input: %s", input);
++    log(DEBUG, "Transformer input: %s", input);
+     if (input == null)
+         return null;
+     if (!skip(input)) {
+         context.setVariable("input", input);
++        // to assure that db instance is on ThreadLocal
++        databaseProvider.getDocumentDatabase();
++        databaseProvider.getGraphDatabase();
+         final Object result = executeTransform(input);
+         if (output == null) {
+-            log(OETLProcessor.LOG_LEVELS.DEBUG, "Transformer output: %s", result);
++            log(DEBUG, "Transformer output: %s", result);
+             return result;
+         }
+         context.setVariable(output, result);
+     }
+-    log(OETLProcessor.LOG_LEVELS.DEBUG, "Transformer output (same as input): %s", input);
++    log(DEBUG, "Transformer output (same as input): %s", input);
+     return input;
+ }
+\ No newline at end of file

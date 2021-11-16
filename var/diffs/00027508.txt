@@ -1,0 +1,22 @@
+diff --git a/01eeba880cf5133e9fd01e9888656c9d44a769d3 b/a730b967b95ae65cc88ab603d1565174710898f5
+index 01eeba880c..a730b967b9 100644
+--- a/01eeba880cf5133e9fd01e9888656c9d44a769d3
++++ b/a730b967b95ae65cc88ab603d1565174710898f5
+@@ -1,12 +1,8 @@
+ private void makeColumn(final FileSmoosher v9Smoosher, final String columnName, final ColumnDescriptor serdeficator) throws IOException {
+-    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+-    serializerUtils.writeString(baos, mapper.writeValueAsString(serdeficator));
+-    byte[] specBytes = baos.toByteArray();
+-    final SmooshedWriter channel = v9Smoosher.addWithSmooshedWriter(columnName, serdeficator.numBytes() + specBytes.length);
+-    try {
+-        channel.write(ByteBuffer.wrap(specBytes));
++    ZeroCopyByteArrayOutputStream specBytes = new ZeroCopyByteArrayOutputStream();
++    serializerUtils.writeString(specBytes, mapper.writeValueAsString(serdeficator));
++    try (SmooshedWriter channel = v9Smoosher.addWithSmooshedWriter(columnName, serdeficator.numBytes() + specBytes.size())) {
++        specBytes.writeTo(channel);
+         serdeficator.write(channel, v9Smoosher);
+-    } finally {
+-        channel.close();
+     }
+ }
+\ No newline at end of file

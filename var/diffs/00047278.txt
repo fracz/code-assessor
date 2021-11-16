@@ -1,0 +1,21 @@
+diff --git a/9530434012d4cb2a6365d6ff540a5fa04704f3cb b/554d870857d1383f3373492623c18f185e2e1350
+index 9530434012..554d870857 100644
+--- a/9530434012d4cb2a6365d6ff540a5fa04704f3cb
++++ b/554d870857d1383f3373492623c18f185e2e1350
+@@ -1,14 +1,14 @@
+ @Test(expectedExceptions = IllegalStateException.class)
+ public void shouldThrowExceptionAfterClosedReadTransactionWhenWriting() {
++    SharedGroup db = new SharedGroup(createDBFileName(), SharedGroup.Durability.ASYNC);
+     ReadTransaction rt = db.beginRead();
+     try {
+         Table tbl = rt.getTable("EmployeeTable");
+         rt.endRead();
+         // Should throw exception, as adding a column is not allowed in read transaction
+         tbl.addColumn(ColumnType.STRING, "newString");
+         assert (false);
+     } finally {
+         rt.endRead();
+-        clear();
+     }
+ }
+\ No newline at end of file

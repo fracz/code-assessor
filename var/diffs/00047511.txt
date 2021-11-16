@@ -1,0 +1,21 @@
+diff --git a/32a317c9c1e153728abc36561053acbeff46be03 b/0e4a39e00f6a7df3813513a5f5de52ee458dd7b5
+index 32a317c9c1..0e4a39e00f 100644
+--- a/32a317c9c1e153728abc36561053acbeff46be03
++++ b/0e4a39e00f6a7df3813513a5f5de52ee458dd7b5
+@@ -1,12 +1,12 @@
+-private <T extends RedisConnection> void addReconnectListener(Promise<T> connectionFuture, final MasterSlaveServersConfig config, T conn) {
+-    connectionManager.getConnectListener().onConnect(connectionFuture, conn, nodeType, config);
++private <T extends RedisConnection> void addReconnectListener(Promise<T> connectionFuture, T conn) {
++    connectionManager.getConnectListener().onConnect(connectionFuture, conn, nodeType, connectionManager.getConfig());
+     addFireEventListener(connectionFuture);
+     conn.setReconnectListener(new ReconnectListener() {
+
+         @Override
+         public void onReconnect(RedisConnection conn, Promise<RedisConnection> connectionFuture) {
+-            connectionManager.getConnectListener().onConnect(connectionFuture, conn, nodeType, config);
++            connectionManager.getConnectListener().onConnect(connectionFuture, conn, nodeType, connectionManager.getConfig());
+             addFireEventListener(connectionFuture);
+         }
+     });
+ }
+\ No newline at end of file

@@ -1,0 +1,35 @@
+diff --git a/bb68add975b298742c8ae238ad4e906fe1dc4977 b/752966964dacf36c9d6b859d54ed0fca36b3b41a
+index bb68add975..752966964d 100644
+--- a/bb68add975b298742c8ae238ad4e906fe1dc4977
++++ b/752966964dacf36c9d6b859d54ed0fca36b3b41a
+@@ -1,13 +1,18 @@
+ @Override
+-protected DB2Schema createDatabaseObject(DBRProgressMonitor monitor, DBECommandContext context, DB2DataSource parent, Object copyFrom) {
+-    NewSchemaDialog dialog = new NewSchemaDialog(DBeaverUI.getActiveWorkbenchShell());
+-    if (dialog.open() != IDialogConstants.OK_ID) {
+-        return null;
+-    }
+-    String schemaName = dialog.getSchemaName();
+-    if (schemaName.length() == 0) {
+-        return null;
+-    }
+-    DB2Schema newSchema = new DB2Schema(parent, schemaName);
+-    return newSchema;
++protected DB2Schema createDatabaseObject(DBRProgressMonitor monitor, DBECommandContext context, final DB2DataSource parent, Object copyFrom) {
++    return new UITask<DB2Schema>() {
++
++        @Override
++        protected DB2Schema runTask() {
++            NewSchemaDialog dialog = new NewSchemaDialog(DBeaverUI.getActiveWorkbenchShell());
++            if (dialog.open() != IDialogConstants.OK_ID) {
++                return null;
++            }
++            String schemaName = dialog.getSchemaName();
++            if (schemaName.length() == 0) {
++                return null;
++            }
++            return new DB2Schema(parent, schemaName);
++        }
++    }.execute();
+ }
+\ No newline at end of file

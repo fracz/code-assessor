@@ -1,0 +1,31 @@
+diff --git a/4c01e770af4deb4034ba28abffc39901fe54b1ed b/45e9790be149ad87e00d3c6beaf7437f01771229
+index 4c01e770af..45e9790be1 100644
+--- a/4c01e770af4deb4034ba28abffc39901fe54b1ed
++++ b/45e9790be149ad87e00d3c6beaf7437f01771229
+@@ -1,17 +1,17 @@
+ void dump(String prefix, PrintWriter pw) {
+     pw.print(prefix);
+     pw.print("id:");
+-    pw.println(mId);
++    pw.println(this.id);
+     pw.print(prefix);
+-    pw.print("value:");
+-    pw.println(mAutofillValue);
++    pw.print("state:");
++    pw.println(getStateAsString());
+     pw.print(prefix);
+-    pw.print("updated:");
+-    pw.println(mValueUpdated);
++    pw.print("has response:");
++    pw.println(mResponse != null);
++    pw.print(prefix);
++    pw.print("currentValue:");
++    pw.println(mCurrentValue);
+     pw.print(prefix);
+     pw.print("virtualBounds:");
+     pw.println(mVirtualBounds);
+-    pw.print(prefix);
+-    pw.print("authIntent:");
+-    pw.println(mAuthIntent);
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/571749d194d00dd56e54e81e0b57242fa5f1f7ee b/4e57b1d4441cfc7562b248677ef33bced9af2e72
+index 571749d194..4e57b1d444 100644
+--- a/571749d194d00dd56e54e81e0b57242fa5f1f7ee
++++ b/4e57b1d4441cfc7562b248677ef33bced9af2e72
+@@ -1,10 +1,11 @@
+ /**
+  * Clean up any resources used by the given multipart request (if any).
+- * @param request current HTTP request
++ * @param servletRequest current HTTP request
+  * @see MultipartResolver#cleanupMultipart
+  */
+-protected void cleanupMultipart(HttpServletRequest request) {
+-    if (request instanceof MultipartHttpServletRequest) {
+-        this.multipartResolver.cleanupMultipart((MultipartHttpServletRequest) request);
++protected void cleanupMultipart(HttpServletRequest servletRequest) {
++    MultipartHttpServletRequest req = WebUtils.getNativeRequest(servletRequest, MultipartHttpServletRequest.class);
++    if (req != null) {
++        this.multipartResolver.cleanupMultipart(req);
+     }
+ }
+\ No newline at end of file

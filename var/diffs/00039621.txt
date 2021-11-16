@@ -1,0 +1,22 @@
+diff --git a/10090f08d8cb00831aaeff1e5a230ff18987bb5e b/ae305665298801780c6248134a3eaee570066c26
+index 10090f08d8..ae30566529 100644
+--- a/10090f08d8cb00831aaeff1e5a230ff18987bb5e
++++ b/ae305665298801780c6248134a3eaee570066c26
+@@ -1,12 +1,14 @@
+ @Test
+ public void shouldSetLatestConstraintRule() throws Exception {
+     // Given
+     Collection<DynamicRecord> beforeRecords = serialize(rule, id, true, true);
+     Collection<DynamicRecord> afterRecords = serialize(rule, id, true, false);
+-    SchemaRuleCommand command = new SchemaRuleCommand(neoStore, store, indexes, beforeRecords, afterRecords, uniquenessConstraintRule(id, labelId, propertyKey, 0), txId);
++    when(neoStore.getSchemaStore()).thenReturn(store);
++    SchemaRuleCommand command = new SchemaRuleCommand();
++    command.init(beforeRecords, afterRecords, uniquenessConstraintRule(id, labelId, propertyKey, 0), txId);
+     // WHEN
+-    command.execute();
++    executor.execute(command);
+     // THEN
+     verify(store).updateRecord(first(afterRecords));
+     verify(neoStore).setLatestConstraintIntroducingTx(txId);
+ }
+\ No newline at end of file

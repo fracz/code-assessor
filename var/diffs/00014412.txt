@@ -1,0 +1,17 @@
+diff --git a/3677b07cb7c381cb353da640ff7b49113f74197c b/6c774bc664cf2a9ea089305d43776f7cdec6c63e
+index 3677b07cb7..6c774bc664 100644
+--- a/3677b07cb7c381cb353da640ff7b49113f74197c
++++ b/6c774bc664cf2a9ea089305d43776f7cdec6c63e
+@@ -1,8 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiMethod method = (PsiMethod) location.getParent();
+-    assert method != null;
+-    final LoopCountVisitor visitor = new LoopCountVisitor();
+-    method.accept(visitor);
+-    final int negationCount = visitor.getCount();
++@NotNull
++public String buildErrorString(Object... infos) {
++    final Integer negationCount = (Integer) infos[0];
+     return InspectionGadgetsBundle.message("method.with.multiple.loops.problem.descriptor", negationCount);
+ }
+\ No newline at end of file

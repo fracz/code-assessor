@@ -1,0 +1,16 @@
+diff --git a/64e22ac706dc09ae10595990f756bd7812f13b37 b/4e65a1c43d8bbc20567d6f172de0c02e57f968ea
+index 64e22ac706..4e65a1c43d 100644
+--- a/64e22ac706dc09ae10595990f756bd7812f13b37
++++ b/4e65a1c43d8bbc20567d6f172de0c02e57f968ea
+@@ -1,6 +1,7 @@
+ @Override
+ public ORecordMetadata read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
+-    final ORID responseRid = network.readRID();
+-    final int responseVersion = network.readVersion();
+-    return new ORecordMetadata(responseRid, responseVersion);
++    ORecordId recordId = network.readRID();
++    int version = network.readVersion();
++    metadata = new ORecordMetadata(recordId, version);
++    return metadata;
+ }
+\ No newline at end of file

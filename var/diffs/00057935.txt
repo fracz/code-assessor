@@ -1,0 +1,25 @@
+diff --git a/adcc616f3e32b5ee4ede8d9881df2a992e02503a b/6f2b5fc917db2f9b79251986c1321f1bf1ca770e
+index adcc616f3e..6f2b5fc917 100644
+--- a/adcc616f3e32b5ee4ede8d9881df2a992e02503a
++++ b/6f2b5fc917db2f9b79251986c1321f1bf1ca770e
+@@ -1,9 +1,13 @@
+-private static void addConjToReln(List<TypedDependency> list, IndexedWord gov, IndexedWord conjDep, IndexedWord ccDep) {
+-    for (TypedDependency td : list) {
+-        if (!td.gov().equals(gov) || !td.dep().equals(conjDep)) {
+-            continue;
++private static void addConjToReln(List<TypedDependency> list, IndexedWord gov, List<IndexedWord> conjDeps, IndexedWord ccDep, SemanticGraph sg) {
++    for (IndexedWord conjDep : conjDeps) {
++        for (TypedDependency td : list) {
++            if (!td.gov().equals(gov) || !td.dep().equals(conjDep)) {
++                continue;
++            }
++            if (td.reln() == CONJUNCT || conjDep.index() > ccDep.index()) {
++                td.setReln(conjValue(ccDep, sg));
++            }
++            break;
+         }
+-        td.setReln(conjValue(ccDep.word()));
+-        break;
+     }
+ }
+\ No newline at end of file

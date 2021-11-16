@@ -1,0 +1,18 @@
+diff --git a/b9a3c03ba1cca8215a5ac90fb3f101da1346d0a5 b/0a2bfbc6a8427313b7d5a991ae759be996cf0f7f
+index b9a3c03ba1..0a2bfbc6a8 100644
+--- a/b9a3c03ba1cca8215a5ac90fb3f101da1346d0a5
++++ b/0a2bfbc6a8427313b7d5a991ae759be996cf0f7f
+@@ -1,4 +1,10 @@
+ @Override
+-public Publisher<Boolean> remove(Object object) {
+-    return commandExecutor.writeReactive(getName(), codec, RedisCommands.ZREM, getName(), object);
++public Publisher<Boolean> remove(final V object) {
++    return reactive(new Supplier<RFuture<Boolean>>() {
++
++        @Override
++        public RFuture<Boolean> get() {
++            return instance.removeAsync(object);
++        }
++    });
+ }
+\ No newline at end of file

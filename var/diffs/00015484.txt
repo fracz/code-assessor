@@ -1,0 +1,19 @@
+diff --git a/2f41b2b1ccef4316b4b7e17f171f72118d741d5a b/71cfc7ef386ebf28c5dbcf2c0645bd11c1b0399f
+index 2f41b2b1cc..71cfc7ef38 100644
+--- a/2f41b2b1ccef4316b4b7e17f171f72118d741d5a
++++ b/71cfc7ef386ebf28c5dbcf2c0645bd11c1b0399f
+@@ -1,12 +1,12 @@
+ @Override
+ public StackValue visitThisExpression(JetThisExpression expression, StackValue receiver) {
+     final DeclarationDescriptor descriptor = bindingContext.get(BindingContext.REFERENCE_TARGET, expression.getInstanceReference());
+     if (descriptor instanceof ClassDescriptor) {
+         return generateThisOrOuter((ClassDescriptor) descriptor);
+     } else {
+         if (descriptor instanceof FunctionDescriptor) {
+-            return generateReceiver((FunctionDescriptor) descriptor);
++            return generateReceiver(descriptor, null);
+         }
+         throw new UnsupportedOperationException();
+     }
+ }
+\ No newline at end of file

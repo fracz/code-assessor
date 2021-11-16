@@ -1,0 +1,12 @@
+diff --git a/afa7d01a56dc29820eac856333617bd782d14bb0 b/b0d1d5f95872b528e9057f8fa5e9ed45c6af3e12
+index afa7d01a56..b0d1d5f958 100644
+--- a/afa7d01a56dc29820eac856333617bd782d14bb0
++++ b/b0d1d5f95872b528e9057f8fa5e9ed45c6af3e12
+@@ -1,5 +1,4 @@
+-@Override
+ @NotNull
+ public ScriptDescriptor getScriptDescriptor(@NotNull KtScript script) {
+-    return scriptDescriptors.invoke(script);
++    return lazyDeclarationResolver.getScriptDescriptor(script, NoLookupLocation.FOR_SCRIPT);
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/54a2874738906afa6d7090ea5ed2dfbbf0bef69c b/31ed918881567a7db6ca184b093ce4edd30d5de8
+index 54a2874738..31ed918881 100644
+--- a/54a2874738906afa6d7090ea5ed2dfbbf0bef69c
++++ b/31ed918881567a7db6ca184b093ce4edd30d5de8
+@@ -1,15 +1,11 @@
+ @Override
+ protected SchemaRule fetchNextOrNull() {
+     while (currentId <= highestId) {
+         long id = currentId++;
+         DynamicRecord record = forceGetRecord(id);
+         if (!record.inUse() || !record.isStartRecord())
+             continue;
+-        Collection<DynamicRecord> records = getRecords(id);
+-        ByteBuffer scratchBuffer = concatData(records, scratchData);
+-        scratchData = scratchBuffer.array();
+-        SchemaRule schemaRule = deserialize(id, scratchBuffer);
+-        return schemaRule;
++        return getSchemaRule(id, scratchData);
+     }
+     return null;
+ }
+\ No newline at end of file

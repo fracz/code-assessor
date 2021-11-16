@@ -1,0 +1,19 @@
+diff --git a/9d54308ab4161eab511fec17680b6e17b7dfeed9 b/fe9a86e359cc97aefeeb88b10d2d4260de0ef889
+index 9d54308ab4..fe9a86e359 100644
+--- a/9d54308ab4161eab511fec17680b6e17b7dfeed9
++++ b/fe9a86e359cc97aefeeb88b10d2d4260de0ef889
+@@ -1,11 +1,11 @@
+ @Override
+ public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+     super.onActivityCreated(savedInstanceState);
+     _setupLogger();
+-    _searchTextEmitterSubject = PublishSubject.create();
++    Observable<OnTextChangeEvent> textChangeObservable = WidgetObservable.text(_inputSearchText);
+     _subscription = bindFragment(//
+     this, //
+-    _searchTextEmitterSubject.debounce(400, TimeUnit.MILLISECONDS, //
++    textChangeObservable.debounce(400, TimeUnit.MILLISECONDS, //
+     Schedulers.io()).observeOn(//
+     AndroidSchedulers.mainThread())).subscribe(_getSearchObserver());
+ }
+\ No newline at end of file

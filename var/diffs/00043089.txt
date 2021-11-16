@@ -1,0 +1,23 @@
+diff --git a/2ea4b98caf83d31837d4dcb91aab0bbc41cbccb5 b/479b8abdff30b8e359d27c21c855ec611442c3fc
+index 2ea4b98caf..479b8abdff 100644
+--- a/2ea4b98caf83d31837d4dcb91aab0bbc41cbccb5
++++ b/479b8abdff30b8e359d27c21c855ec611442c3fc
+@@ -1,13 +1,13 @@
+ public String getGlobalConfiguration(final OGlobalConfiguration iConfig) throws IOException {
+     storage.checkConnection();
+     try {
+-        storage.beginRequest(OChannelBinaryProtocol.REQUEST_CONFIG_GET);
+-        storage.getNetwork().writeString(iConfig.getKey());
+-        storage.beginResponse();
+-        return storage.getNetwork().readString();
++        final OChannelBinaryClient network = storage.beginRequest(OChannelBinaryProtocol.REQUEST_CONFIG_GET);
++        network.writeString(iConfig.getKey());
++        storage.beginResponse(network);
++        return network.readString();
+     } catch (Exception e) {
+         OLogManager.instance().exception("Can't retrieve the configuration value: " + iConfig.getKey(), e, OStorageException.class);
+         storage.close();
+     }
+     return null;
+ }
+\ No newline at end of file

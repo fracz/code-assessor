@@ -1,0 +1,18 @@
+diff --git a/4e3a9930dd6ee07f09403bff2533070a652c3f6a b/8a77300d91564bdd94fc414486530d1ef699f2a6
+index 4e3a9930dd..8a77300d91 100644
+--- a/4e3a9930dd6ee07f09403bff2533070a652c3f6a
++++ b/8a77300d91564bdd94fc414486530d1ef699f2a6
+@@ -1,9 +1,10 @@
+ /**
+  * Test creates the {@link Query} from the {@link QueryBuilder} under test and delegates the
+  * assertions being made on the result to the implementing subclass.
+  */
+ @Test
+ public void testToQuery() throws IOException {
+-    QueryParseContext context = new QueryParseContext(index, queryParserService);
+-    assertLuceneQuery(this.testQuery, this.testQuery.toQuery(context));
++    QueryParseContext context = createContext();
++    context.setMapUnmappedFieldAsString(true);
++    assertLuceneQuery(testQuery, testQuery.toQuery(context), context);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/023386e2f3c51abca74406b9489909dd44973e5e b/25eb91b6bf85c6970b44d1c160d31a941119597c
+index 023386e2f3..25eb91b6bf 100644
+--- a/023386e2f3c51abca74406b9489909dd44973e5e
++++ b/25eb91b6bf85c6970b44d1c160d31a941119597c
+@@ -1,8 +1,8 @@
+ private void initializeView() {
+     inflate(getContext(), R.layout.quick_attachment_drawer, this);
+-    quickCamera = (QuickCamera) findViewById(R.id.quick_camera);
++    cameraView = ViewUtil.findById(this, R.id.quick_camera);
+     updateControlsView();
+     coverViewPosition = getChildCount();
+     controls.setVisibility(GONE);
+-    quickCamera.setVisibility(GONE);
++    cameraView.setVisibility(GONE);
+ }
+\ No newline at end of file

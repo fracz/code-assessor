@@ -1,0 +1,14 @@
+diff --git a/aab96b1d8cd94e27d046b64ad014d2a4a67a1f0b b/b1e2fb9189dff5f3b02ca4b002643384613a90a0
+index aab96b1d8c..b1e2fb9189 100644
+--- a/aab96b1d8cd94e27d046b64ad014d2a4a67a1f0b
++++ b/b1e2fb9189dff5f3b02ca4b002643384613a90a0
+@@ -1,6 +1,6 @@
+ public int getMaxResources(final String url) {
+-    final OResourcePool<String, OChannelBinaryAsynchClient> pool = connections.get(url);
++    final ORemoteConnectionPool pool = connections.get(url);
+     if (pool == null)
+         return 0;
+-    return pool.getMaxResources();
++    return pool.getPool().getMaxResources();
+ }
+\ No newline at end of file

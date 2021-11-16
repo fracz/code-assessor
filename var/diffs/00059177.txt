@@ -1,0 +1,21 @@
+diff --git a/d4f450b0c2b84551fbf501b0bd74664f255cf47b b/0d28a574abc8a7207dfedc86b77d1377369b9952
+index d4f450b0c2..0d28a574ab 100644
+--- a/d4f450b0c2b84551fbf501b0bd74664f255cf47b
++++ b/0d28a574abc8a7207dfedc86b77d1377369b9952
+@@ -1,14 +1,14 @@
+ public void waitForClusterSize(int minSize) throws InterruptedException, StorageException {
+-    CTConnectionFactory f = CTConnectionPool.getFactory(address, port, GraphDatabaseConfiguration.CONNECTION_TIMEOUT_DEFAULT, AbstractCassandraStoreManager.THRIFT_DEFAULT_FRAME_SIZE);
++    CTConnectionFactory f = new CTConnectionFactory(address, port, GraphDatabaseConfiguration.CONNECTION_TIMEOUT_DEFAULT, AbstractCassandraStoreManager.THRIFT_DEFAULT_FRAME_SIZE);
+     CTConnection conn = null;
+     try {
+         conn = f.makeRawConnection();
+         CTConnectionFactory.waitForClusterSize(conn.getClient(), minSize);
+     } catch (TTransportException e) {
+         throw new TemporaryStorageException(e);
+     } finally {
+         if (null != conn)
+             if (conn.getTransport().isOpen())
+                 conn.getTransport().close();
+     }
+ }
+\ No newline at end of file

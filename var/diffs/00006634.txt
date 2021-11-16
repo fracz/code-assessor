@@ -1,0 +1,19 @@
+diff --git a/61db46d5b3a528e92858533c45ffe9f5c65e08b8 b/a2b62a8f41552d83c30463fc3100448c89b8bc1e
+index 61db46d5b3..a2b62a8f41 100644
+--- a/61db46d5b3a528e92858533c45ffe9f5c65e08b8
++++ b/a2b62a8f41552d83c30463fc3100448c89b8bc1e
+@@ -1,10 +1,10 @@
+ private boolean mayPropagateParameters() {
+-    final P[] infos = myParametersTableModel.getParameters();
+-    if (infos.length <= myMethod.getParametersCount())
++    final List<P> infos = getParameters();
++    if (infos.size() <= myMethod.getParametersCount())
+         return false;
+     for (int i = 0; i < myMethod.getParametersCount(); i++) {
+-        if (infos[i].getOldIndex() != i)
++        if (infos.get(i).getOldIndex() != i)
+             return false;
+     }
+     return true;
+ }
+\ No newline at end of file

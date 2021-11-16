@@ -1,0 +1,13 @@
+diff --git a/321965591000da3e7b7b2a719202d0b87e2f9c27 b/efc5516121bc763b8d85435d7e857bec3149d5ca
+index 3219655910..efc5516121 100644
+--- a/321965591000da3e7b7b2a719202d0b87e2f9c27
++++ b/efc5516121bc763b8d85435d7e857bec3149d5ca
+@@ -1,5 +1,4 @@
+ public C put(final D channel, final int sessionId, final int streamId, final C value) {
+-    final Int2ObjectHashMap<Int2ObjectHashMap<C>> endPointMap = getOrDefault(channelMap, channel, ignore -> new Int2ObjectHashMap<>());
+-    final Int2ObjectHashMap<C> channelMap = endPointMap.getOrDefault(sessionId, Int2ObjectHashMap::new);
+-    return channelMap.put(streamId, value);
++    final CompoundIdMap<C> idMap = getOrDefault(channelMap, channel, ignore -> new CompoundIdMap<>());
++    return idMap.put(sessionId, streamId, value);
+ }
+\ No newline at end of file

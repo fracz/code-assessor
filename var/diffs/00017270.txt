@@ -1,0 +1,16 @@
+diff --git a/0f9abe706b55aa0c5b23454f87c30e4ae2104b95 b/610115af3013a533cf15e724d7b190c030005210
+index 0f9abe706b..610115af30 100644
+--- a/0f9abe706b55aa0c5b23454f87c30e4ae2104b95
++++ b/610115af3013a533cf15e724d7b190c030005210
+@@ -1,9 +1,7 @@
+-@NotNull
+ @Override
+-protected Type generateDefault(int i, @NotNull DefaultValueArgument argument) {
++protected void generateDefault(int i, @NotNull DefaultValueArgument argument) {
+     ValueParameterDescriptor parameter = valueParameters.get(i);
+     Type type = valueParameterTypes.get(i);
+     pushDefaultValueOnStack(type, codegen.v);
+     callGenerator.afterParameterPut(type, null, parameter, i);
+-    return type;
+ }
+\ No newline at end of file

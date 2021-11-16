@@ -1,0 +1,24 @@
+diff --git a/a306c80bf417bdea785f5be3516de15dba172c59 b/b2bf15d09301c4b39f46f4c86f37c42009538f43
+index a306c80bf4..b2bf15d093 100644
+--- a/a306c80bf417bdea785f5be3516de15dba172c59
++++ b/b2bf15d09301c4b39f46f4c86f37c42009538f43
+@@ -1,14 +1,15 @@
+ @Override
+ public InetSocketAddress getLocalAddress() {
+     InetSocketAddress localAddress = this.localAddress;
+     if (localAddress == null) {
+         try {
+-            // TODO: fix this
+-            this.localAddress = localAddress = (InetSocketAddress) sctpChannel.getAllLocalAddresses().iterator().next();
++            final Iterator<SocketAddress> iterator = socket.getAllLocalAddresses().iterator();
++            if (iterator.hasNext()) {
++                this.localAddress = localAddress = (InetSocketAddress) iterator.next();
++            }
+         } catch (Throwable t) {
+-            // Sometimes fails on a closed socket in Windows.
+             return null;
+         }
+     }
+     return localAddress;
+ }
+\ No newline at end of file

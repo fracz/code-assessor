@@ -1,0 +1,18 @@
+diff --git a/c7d70766a96b5939ecec2e964c42e230e2e3da84 b/7ede190bc83b16aac731f5b00ea752c03de0d785
+index c7d70766a9..7ede190bc8 100644
+--- a/c7d70766a96b5939ecec2e964c42e230e2e3da84
++++ b/7ede190bc83b16aac731f5b00ea752c03de0d785
+@@ -1,4 +1,10 @@
+ @Override
+-public void accumulate(Number value) {
+-    result = Math.max(result, value.doubleValue());
++public boolean accumulate(Object value) {
++    if (value instanceof Comparable) {
++        if (result == null || AggregateUtils.compareValues((Comparable) value, result) > 0) {
++            result = (Comparable) value;
++        }
++        return true;
++    }
++    return false;
+ }
+\ No newline at end of file

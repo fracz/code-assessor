@@ -1,0 +1,25 @@
+diff --git a/e94ac0e2cba0efae642328d280fd2a52ca4c070b b/54779cfded7e43ceeb279bec00982ba0cc02e922
+index e94ac0e2cb..54779cfded 100644
+--- a/e94ac0e2cba0efae642328d280fd2a52ca4c070b
++++ b/54779cfded7e43ceeb279bec00982ba0cc02e922
+@@ -1,13 +1,17 @@
+ @Nullable
+ public Icon getIcon(boolean expanded) {
+-    final PsiElement element = getElement().getElement();
++    final RefElement refElement = getElement();
++    if (refElement == null) {
++        return null;
++    }
++    final PsiElement element = refElement.getElement();
+     if (element != null) {
+         final int flags = Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS;
+-        if (getElement().isSyntheticJSP()) {
++        if (refElement.isSyntheticJSP()) {
+             return IconUtil.getIcon(element.getContainingFile().getVirtualFile(), flags, element.getProject());
+         }
+         return element.getIcon(flags);
+     } else {
+         return null;
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/1d432a7fce196b08861882252e1870a6b1bef3c0 b/2f5669189b5d871c843fad7334c7cb61fd9ac5ae
+index 1d432a7fce..2f5669189b 100644
+--- a/1d432a7fce196b08861882252e1870a6b1bef3c0
++++ b/2f5669189b5d871c843fad7334c7cb61fd9ac5ae
+@@ -1,4 +1,4 @@
+ @Override
+ public void beforeFileDeletion(@NotNull final VirtualFileEvent event) {
+-    processEventFile("beforeFileDeletion", event.getFile(), (eventFile) -> collectPathsAndNotify(eventFile, NOTIFY_DELETED));
++    collectPathsAndNotify(event.getFile(), TranslatingCompilerFilesMonitor::notifyFilesDeleted);
+ }
+\ No newline at end of file

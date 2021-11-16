@@ -1,0 +1,16 @@
+diff --git a/697f096c512fe83098f0a4b2e321ab798fc5b296 b/40c203fdc0add25933888e64df9ecba014da1b4c
+index 697f096c51..40c203fdc0 100644
+--- a/697f096c512fe83098f0a4b2e321ab798fc5b296
++++ b/40c203fdc0add25933888e64df9ecba014da1b4c
+@@ -1,8 +1,8 @@
+-@Path("checkout")
+ @POST
++@Path("checkout")
+ @Consumes(MediaType.APPLICATION_JSON)
+ public void checkout(CheckoutRequest request) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+-        gitConnection.checkout(request);
++        gitConnection.checkout(CheckoutParams.create(request.getName()).withFiles(request.getFiles()).withCreateNew(request.isCreateNew()).withNoTrack(request.isNoTrack()).withTrackBranch(request.getTrackBranch()).withStartPoint(request.getStartPoint()));
+     }
+ }
+\ No newline at end of file

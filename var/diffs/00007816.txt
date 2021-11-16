@@ -1,0 +1,18 @@
+diff --git a/72204981ec5c6a94e63f48e4eb414fc9862338b3 b/94b11ea367a619fabb0e4e0c5da3e77526838a22
+index 72204981ec..94b11ea367 100644
+--- a/72204981ec5c6a94e63f48e4eb414fc9862338b3
++++ b/94b11ea367a619fabb0e4e0c5da3e77526838a22
+@@ -1,11 +1,11 @@
+ @Override
+ public void customizeCellRenderer(@NotNull JTree tree, Object value, boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus) {
++    super.customizeCellRenderer(tree, value, true, expanded, leaf, row, true);
+     if (value instanceof XValueNodeImpl) {
+         final XValueNodeImpl node = (XValueNodeImpl) value;
+         final TreePath path = node.getPath();
+-        append(value.toString());
+         if (myHighlighted.contains(path)) {
+             setIcon(AllIcons.Debugger.ThreadStates.Idle);
+         }
+     }
+ }
+\ No newline at end of file

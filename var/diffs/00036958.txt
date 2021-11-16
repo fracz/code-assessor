@@ -1,0 +1,17 @@
+diff --git a/e98e0ad7ea1b57fd2d48b321005f8d6ec77b931e b/44716cb6f1173dd38b9afbc6e24ab65046526071
+index e98e0ad7ea..44716cb6f1 100644
+--- a/e98e0ad7ea1b57fd2d48b321005f8d6ec77b931e
++++ b/44716cb6f1173dd38b9afbc6e24ab65046526071
+@@ -1,6 +1,9 @@
+-@SuppressWarnings("unused")
+ private static String getCloseMethodBeforeInsertCode() {
+     StringBuilder sb = new StringBuilder();
+-    // sb.append("}");
++    if (logger.isDebugEnabled()) {
++        sb.append("{");
++        sb.append("System.out.println(\"-----ConnectionJDBC2.close() method is called\");");
++        sb.append("}");
++    }
+     return sb.toString();
+ }
+\ No newline at end of file

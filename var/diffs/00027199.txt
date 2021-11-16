@@ -1,0 +1,15 @@
+diff --git a/230d1fe7f1518eea964d8e6bf97e137672a0ac7f b/fdffaa0cbd9c269adaf00959272fe3e20b13f44b
+index 230d1fe7f1..fdffaa0cbd 100644
+--- a/230d1fe7f1518eea964d8e6bf97e137672a0ac7f
++++ b/fdffaa0cbd9c269adaf00959272fe3e20b13f44b
+@@ -1,6 +1,6 @@
+-protected INDArray createBias(NeuralNetConfiguration conf) {
++protected INDArray createBias(NeuralNetConfiguration conf, INDArray biasParamView) {
+     org.deeplearning4j.nn.conf.layers.FeedForwardLayer layerConf = (org.deeplearning4j.nn.conf.layers.FeedForwardLayer) conf.getLayer();
+     INDArray ret = Nd4j.valueArrayOf(layerConf.getNOut(), layerConf.getBiasInit());
+-    ret.data().persist();
+-    return ret;
++    biasParamView.assign(ret);
++    return biasParamView;
+ }
+\ No newline at end of file

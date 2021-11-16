@@ -1,0 +1,26 @@
+diff --git a/fd7ea7a4fd3900dce75045cad9bf983c930bd9d1 b/0d6c5822476d86fcb265116854fc92c9cc606972
+index fd7ea7a4fd..0d6c582247 100644
+--- a/fd7ea7a4fd3900dce75045cad9bf983c930bd9d1
++++ b/0d6c5822476d86fcb265116854fc92c9cc606972
+@@ -1,10 +1,11 @@
+-@Nullable
+-private static List<String> wordsToCheck(List<CheckArea> toCheck, String text) {
+-    if (text == null || toCheck == null)
+-        return null;
+-    List<String> words = new ArrayList<String>();
+-    for (CheckArea area : toCheck) {
+-        words.add(area.getWord());
+-    }
+-    return (words.size() != 0) ? words : null;
++private static List<String> wordsToCheck(Splitter splitter, final String text) {
++    final List<String> words = new ArrayList<String>();
++    splitter.split(text, TextRange.allOf(text), new Consumer<TextRange>() {
++
++        @Override
++        public void consume(TextRange textRange) {
++            words.add(textRange.substring(text));
++        }
++    });
++    return words;
+ }
+\ No newline at end of file

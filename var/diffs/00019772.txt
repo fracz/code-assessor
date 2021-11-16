@@ -1,0 +1,16 @@
+diff --git a/0bb94f11c66de395d582776c0f0a589c1fd67b01 b/a7e7af70a890d01707cfdc2c4cc6b8825796d24c
+index 0bb94f11c6..a7e7af70a8 100644
+--- a/0bb94f11c66de395d582776c0f0a589c1fd67b01
++++ b/a7e7af70a890d01707cfdc2c4cc6b8825796d24c
+@@ -1,7 +1,7 @@
+ @Override
+ public Blob createBlob() throws SQLException {
+-    if (conn != null) {
+-        return conn.createBlob();
++    if (conn == null) {
++        throw new SQLException("connection not init");
+     }
+-    throw new SQLException("connection not init");
++    return conn.createBlob();
+ }
+\ No newline at end of file

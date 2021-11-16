@@ -1,0 +1,18 @@
+diff --git a/8b0310c454b2f61f783c01636b49e8ecfed1cf9e b/806fbd856850b750b066e86df64694882396901d
+index 8b0310c454..806fbd8568 100644
+--- a/8b0310c454b2f61f783c01636b49e8ecfed1cf9e
++++ b/806fbd856850b750b066e86df64694882396901d
+@@ -1,8 +1,7 @@
+-@Path("branch-delete")
+-@POST
+-@Consumes(MediaType.APPLICATION_JSON)
+-public void branchDelete(BranchDeleteRequest request) throws ApiException {
++@DELETE
++@Path("branch")
++public void branchDelete(@QueryParam("name") String name, @QueryParam("force") boolean force) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+-        gitConnection.branchDelete(request);
++        gitConnection.branchDelete(name, force);
+     }
+ }
+\ No newline at end of file

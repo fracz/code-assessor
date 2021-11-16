@@ -1,0 +1,22 @@
+diff --git a/4629072d54ce8b44532195f8dc069b72f995fdd6 b/ce3ebdf1fcb2f1502b74df95722688add5e8c623
+index 4629072d54..ce3ebdf1fc 100644
+--- a/4629072d54ce8b44532195f8dc069b72f995fdd6
++++ b/ce3ebdf1fcb2f1502b74df95722688add5e8c623
+@@ -1,13 +1,13 @@
+ @Nullable
+ public Object getData(String dataId) {
+-    if (dataId.equals(GuiEditor.class.getName())) {
++    if (GuiEditor.DATA_KEY.is(dataId)) {
+         return myEditor;
+     }
+-    if (dataId.equals(CaptionSelection.class.getName())) {
++    if (CaptionSelection.DATA_KEY.is(dataId)) {
+         return new CaptionSelection(mySelectedContainer, myIsRow, getSelectedCells(null), mySelectionModel.getLeadSelectionIndex());
+     }
+-    if (dataId.equals(DataConstants.DELETE_ELEMENT_PROVIDER)) {
++    if (PlatformDataKeys.DELETE_ELEMENT_PROVIDER.is(dataId)) {
+         return myDeleteProvider;
+     }
+     return myEditor.getData(dataId);
+ }
+\ No newline at end of file

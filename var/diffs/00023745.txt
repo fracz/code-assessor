@@ -1,0 +1,17 @@
+diff --git a/73da096d8cae1dac3d02b1a524a284558cc73b72 b/249b36194e970d925358c47a14d5e9ae33479fe1
+index 73da096d8c..249b36194e 100644
+--- a/73da096d8cae1dac3d02b1a524a284558cc73b72
++++ b/249b36194e970d925358c47a14d5e9ae33479fe1
+@@ -1,9 +1,5 @@
+ @Override
+ public String getCertInstallerPackage(ComponentName who) throws SecurityException {
+-    int userHandle = UserHandle.getCallingUserId();
+-    synchronized (this) {
+-        getActiveAdminForCallerLocked(who, DeviceAdminInfo.USES_POLICY_PROFILE_OWNER);
+-        DevicePolicyData policy = getUserData(userHandle);
+-        return policy.mDelegatedCertInstallerPackage;
+-    }
++    final List<String> delegatePackages = getDelegatePackages(who, DELEGATION_CERT_INSTALL);
++    return delegatePackages.size() > 0 ? delegatePackages.get(0) : null;
+ }
+\ No newline at end of file

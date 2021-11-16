@@ -1,0 +1,20 @@
+diff --git a/c96b8456b31a0bed0f4fced8ddd3e4192a33915b b/133c483f98c03a78d69976092d345059ff591f33
+index c96b8456b3..133c483f98 100644
+--- a/c96b8456b31a0bed0f4fced8ddd3e4192a33915b
++++ b/133c483f98c03a78d69976092d345059ff591f33
+@@ -1,9 +1,7 @@
+-private static void dumpResult(Path input, Result result) throws IOException {
+-    String name = input.getFileName().toString();
+-    int pos = name.lastIndexOf('.');
+-    if (pos > 0) {
+-        name = name.substring(0, pos) + ".txt";
++private static void dumpResult(URI input, Result... results) throws IOException {
++    Collection<String> resultTexts = new ArrayList<>();
++    for (Result result : results) {
++        resultTexts.add(result.getText());
+     }
+-    Path dumpFile = input.getParent().resolve(name);
+-    Files.write(dumpFile, Collections.singleton(result.getText()), StandardCharsets.UTF_8);
++    Files.write(buildOutputPath(input, ".txt"), resultTexts, StandardCharsets.UTF_8);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/c0478ef328a1dd7328fda6f27142f60d37812b10 b/65b1c02cb372633198895876debb610a4634a174
+index c0478ef328..65b1c02cb3 100644
+--- a/c0478ef328a1dd7328fda6f27142f60d37812b10
++++ b/65b1c02cb372633198895876debb610a4634a174
+@@ -1,6 +1,6 @@
+-public void memberInfoChanged(MemberInfoChange event) {
+-    final MemberInfo[] changedMembers = event.getChangedMembers();
++public void memberInfoChanged(MemberInfoChange<PsiMember, MemberInfo> event) {
++    final Collection<MemberInfo> changedMembers = event.getChangedMembers();
+     for (MemberInfo changedMember : changedMembers) {
+         getGraph().memberChanged(changedMember);
+     }
+ }
+\ No newline at end of file

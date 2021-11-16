@@ -1,0 +1,15 @@
+diff --git a/9e76969e27bb97aebb9aa1a1ee4c147012c53851 b/a334c5a815dcb655cc55985e05f9a2133216e78a
+index 9e76969e27..a334c5a815 100644
+--- a/9e76969e27bb97aebb9aa1a1ee4c147012c53851
++++ b/a334c5a815dcb655cc55985e05f9a2133216e78a
+@@ -1,6 +1,7 @@
++@Test
+ public void testOneObjectArgBindingTarget() {
+     mockCollaborator.oneObjectArg(this.testBeanTarget);
+-    mockControl.replay();
++    replay(mockCollaborator);
+     testBeanProxy.getDoctor();
+-    mockControl.verify();
++    verify(mockCollaborator);
+ }
+\ No newline at end of file

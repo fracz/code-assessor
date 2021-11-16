@@ -1,0 +1,15 @@
+diff --git a/fb7ecf328f70ecc2c7e913838fa6f85b412c9cbc b/8577c0fd3ba6f0cc62f1de8c579dc926d125b5f5
+index fb7ecf328f..8577c0fd3b 100644
+--- a/fb7ecf328f70ecc2c7e913838fa6f85b412c9cbc
++++ b/8577c0fd3ba6f0cc62f1de8c579dc926d125b5f5
+@@ -1,5 +1,5 @@
+-public void setPatternProperties(@NotNull final Map<String, JsonSchemaObject> patternProperties) {
+-    myPatternProperties = new HashMap<>();
+-    patternProperties.keySet().forEach(key -> myPatternProperties.put(StringUtil.unescapeBackSlashes(key), patternProperties.get(key)));
+-    myPatternCalculator.clear();
++public void setPatternProperties(Map<String, JsonSchemaObject> patternProperties) {
++    // todo correct
++    patternProperties.keySet().forEach(key -> patternProperties.put(StringUtil.unescapeBackSlashes(key), patternProperties.get(key)));
++    myPatternProperties = new PatternProperties(patternProperties);
+ }
+\ No newline at end of file

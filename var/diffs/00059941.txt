@@ -1,0 +1,11 @@
+diff --git a/2ea08e802ab324b64745584469f7cccf42ad0812 b/58f1d9e4ea55cfd9ed0bebd05fbfc34f1f494f87
+index 2ea08e802a..58f1d9e4ea 100644
+--- a/2ea08e802ab324b64745584469f7cccf42ad0812
++++ b/58f1d9e4ea55cfd9ed0bebd05fbfc34f1f494f87
+@@ -1,4 +1,4 @@
+ @Override
+ public TitanKey makeKey(String name, TypeMaker factory) {
+-    return factory.name(name).functional(false).dataType(Object.class).makePropertyKey();
++    return factory.name(name).unique(Direction.OUT, TypeMaker.UniquenessConsistency.NO_LOCK).dataType(Object.class).makePropertyKey();
+ }
+\ No newline at end of file

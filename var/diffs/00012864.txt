@@ -1,0 +1,20 @@
+diff --git a/4c499cac9dab0c5f081809ed2e510789ba0abfe8 b/f488c44976a71b35e794c0d2a82e0bbc3105d60d
+index 4c499cac9d..f488c44976 100644
+--- a/4c499cac9dab0c5f081809ed2e510789ba0abfe8
++++ b/f488c44976a71b35e794c0d2a82e0bbc3105d60d
+@@ -1,12 +1,12 @@
+ private void initCommonSettings() {
+-    myCommonSettingsMap = new LinkedHashMap<Language, CommonCodeStyleSettings>();
++    initCommonSettingsMap();
+     final LanguageCodeStyleSettingsProvider[] providers = Extensions.getExtensions(LanguageCodeStyleSettingsProvider.EP_NAME);
+     for (final LanguageCodeStyleSettingsProvider provider : providers) {
+         if (!myCommonSettingsMap.containsKey(provider.getLanguage())) {
+-            CommonCodeStyleSettings initialSettings = provider.getDefaultCommonSettings(myParentSettings);
++            CommonCodeStyleSettings initialSettings = provider.getDefaultCommonSettings();
+             if (initialSettings != null) {
+                 registerCommonSettings(provider.getLanguage(), initialSettings);
+             }
+         }
+     }
+ }
+\ No newline at end of file

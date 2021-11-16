@@ -1,0 +1,16 @@
+diff --git a/dedb2838e5b292a65cf4c6a67f4cff0f5da7dee6 b/7d953f3b8449d1465fad4ccf1a59fc448676594c
+index dedb2838e5..7d953f3b84 100644
+--- a/dedb2838e5b292a65cf4c6a67f4cff0f5da7dee6
++++ b/7d953f3b8449d1465fad4ccf1a59fc448676594c
+@@ -1,8 +1,8 @@
+ public void invoke(@NotNull Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
+     PyStringLiteralExpression stringLiteralExpression = PsiTreeUtil.getParentOfType(file.findElementAt(editor.getCaretModel().getOffset()), PyStringLiteralExpression.class);
+     if (stringLiteralExpression == null) {
+         return;
+     }
+-    PyElementGenerator elementGenerator = PythonLanguage.getInstance().getElementGenerator();
+-    stringLiteralExpression.replace(elementGenerator.createExpressionFromText(project, stringLiteralExpression.getText().substring(1)));
++    PyElementGenerator elementGenerator = PyElementGenerator.getInstance(project);
++    stringLiteralExpression.replace(elementGenerator.createExpressionFromText(stringLiteralExpression.getText().substring(1)));
+ }
+\ No newline at end of file

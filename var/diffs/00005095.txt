@@ -1,0 +1,14 @@
+diff --git a/38cc318df744215ffc6ecf3aa974fe9c22892a36 b/94047f2a7cc9994f0391806eab0052b242f9b017
+index 38cc318df7..94047f2a7c 100644
+--- a/38cc318df744215ffc6ecf3aa974fe9c22892a36
++++ b/94047f2a7cc9994f0391806eab0052b242f9b017
+@@ -1,7 +1,7 @@
+ @NotNull
+ private static String stripTrailingPathSeparator(@NotNull String path, @NotNull String protocol) {
+-    while (path.endsWith("/") && !(protocol.equals(JarFileSystem.PROTOCOL) && path.endsWith(JarFileSystem.JAR_SEPARATOR))) {
++    while (!path.isEmpty() && path.charAt(path.length() - 1) == '/' && !(protocol.equals(JarFileSystem.PROTOCOL) && path.endsWith(JarFileSystem.JAR_SEPARATOR))) {
+         path = StringUtil.trimEnd(path, "/");
+     }
+     return path;
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/c75c5ad5acab833c85843a176f45fe8e5cc40347 b/fdad8005a202fa047312da15e2d34d5dc513184e
+index c75c5ad5ac..fdad8005a2 100644
+--- a/c75c5ad5acab833c85843a176f45fe8e5cc40347
++++ b/fdad8005a202fa047312da15e2d34d5dc513184e
+@@ -1,4 +1,3 @@
+-protected boolean isSatisfiedByValue(ByteBuffer value, Cell c, AbstractType<?> type, Operator operator, long now) throws InvalidRequestException {
+-    ByteBuffer columnValue = (c == null || !c.isLive(now)) ? null : c.value();
+-    return compareWithOperator(operator, type, value, columnValue);
++protected boolean isSatisfiedByValue(ByteBuffer value, Cell c, AbstractType<?> type, Operator operator) throws InvalidRequestException {
++    return compareWithOperator(operator, type, value, c == null ? null : c.value());
+ }
+\ No newline at end of file

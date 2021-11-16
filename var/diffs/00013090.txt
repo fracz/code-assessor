@@ -1,0 +1,19 @@
+diff --git a/d6b066d7474fb183a1efa1b07b421370a6ad8594 b/67ca70d9f6373509ee7ec8d5a24c70f3811216d2
+index d6b066d747..67ca70d9f6 100644
+--- a/d6b066d7474fb183a1efa1b07b421370a6ad8594
++++ b/67ca70d9f6373509ee7ec8d5a24c70f3811216d2
+@@ -1,10 +1,10 @@
+-private static VirtualFile letUserSelectRepository(Collection<VirtualFile> repos, Project project, @Nullable VirtualFile selectedRepo) {
+-    HgRunConflictResolverDialog dialog = new HgRunConflictResolverDialog(project);
+-    dialog.setRoots(repos, selectedRepo);
++@Nullable
++private static HgRepository letUserSelectRepository(@NotNull Project project, @NotNull Collection<HgRepository> repositories, @Nullable HgRepository selectedRepo) {
++    HgRunConflictResolverDialog dialog = new HgRunConflictResolverDialog(project, repositories, selectedRepo);
+     dialog.show();
+     if (dialog.isOK()) {
+         return dialog.getRepository();
+     } else {
+         return null;
+     }
+ }
+\ No newline at end of file

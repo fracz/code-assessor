@@ -1,0 +1,20 @@
+diff --git a/4cceed23d6cd04f57fe4396702c4ea3a9e1be632 b/331b350d3ce1be7b3424fceef210c2fc580d4a7b
+index 4cceed23d6..331b350d3c 100644
+--- a/4cceed23d6cd04f57fe4396702c4ea3a9e1be632
++++ b/331b350d3ce1be7b3424fceef210c2fc580d4a7b
+@@ -1,7 +1,10 @@
+ @Override
+-protected IdPath doApplyTo(RootEntry r) {
+-    IdPath firstIdPath = r.getEntry(myPath).getIdPath();
+-    r.move(myPath, myNewParentPath);
+-    myTargetIdPath = r.getEntry(getNewPath()).getIdPath();
++protected IdPath doApplyTo(Entry r) {
++    Entry e = r.getEntry(myPath);
++    IdPath firstIdPath = e.getIdPath();
++    e.getParent().removeChild(e);
++    Entry newParent = r.getEntry(myNewParentPath);
++    newParent.addChild(e);
++    myTargetIdPath = e.getIdPath();
+     return firstIdPath;
+ }
+\ No newline at end of file

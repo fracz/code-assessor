@@ -1,0 +1,26 @@
+diff --git a/ece85d77fd6f0d445c484072a83339ba77169cf3 b/0d2ce88745cb670b1c5268e0dbff44e94356574e
+index ece85d77fd..0d2ce88745 100644
+--- a/ece85d77fd6f0d445c484072a83339ba77169cf3
++++ b/0d2ce88745cb670b1c5268e0dbff44e94356574e
+@@ -1,15 +1,18 @@
+ @NotNull
+ @Override
+ protected final FileType getFileType() {
+     if (myLanguage != null) {
+-        return myLanguage.getAssociatedFileType();
++        FileType assocType = myLanguage.getAssociatedFileType();
++        if (assocType != null) {
++            return assocType;
++        }
+     }
+     Language[] langs = LanguageCodeStyleSettingsProvider.getLanguagesWithCodeStyleSettings();
+     if (langs.length > 0) {
+-        myLanguage = langs[0];
++        setCurrLanguage(langs[0]);
+         FileType type = langs[0].getAssociatedFileType();
+         if (type != null)
+             return type;
+     }
+     return StdFileTypes.JAVA;
+ }
+\ No newline at end of file

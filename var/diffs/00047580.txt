@@ -1,0 +1,18 @@
+diff --git a/4ad137d6e01dd95e8d440183b68f773b21a6ca70 b/125e8df191192c24a8944aed418f26090ce08cbe
+index 4ad137d6e0..125e8df191 100644
+--- a/4ad137d6e01dd95e8d440183b68f773b21a6ca70
++++ b/125e8df191192c24a8944aed418f26090ce08cbe
+@@ -1,4 +1,10 @@
+ @Override
+-public Publisher<Boolean> add(double score, V object) {
+-    return commandExecutor.writeReactive(getName(), codec, RedisCommands.ZADD_BOOL, getName(), BigDecimal.valueOf(score).toPlainString(), object);
++public Publisher<Boolean> add(final double score, final V object) {
++    return reactive(new Supplier<RFuture<Boolean>>() {
++
++        @Override
++        public RFuture<Boolean> get() {
++            return instance.addAsync(score, object);
++        }
++    });
+ }
+\ No newline at end of file

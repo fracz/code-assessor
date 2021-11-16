@@ -1,0 +1,15 @@
+diff --git a/acbb18e471691ca60b97c62b64d916f16c9ef6f2 b/4d72f8a55f29bacb523334e0e247ede316e58c38
+index acbb18e471..4d72f8a55f 100644
+--- a/acbb18e471691ca60b97c62b64d916f16c9ef6f2
++++ b/4d72f8a55f29bacb523334e0e247ede316e58c38
+@@ -1,7 +1,5 @@
+ @Override
+-public void call(Subscriber<? super Boolean> observer) {
+-    _log("Within Observable");
++public Boolean call(Boolean aBoolean) {
+     _doSomeLongOperation_thatBlocksCurrentThread();
+-    observer.onNext(true);
+-    observer.onCompleted();
++    return aBoolean;
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/0b060424fefd261aa4d357c5e255e6cb5cf013f4 b/383ce52cb195eafd036fd919bcc75d3f980d0c0b
+index 0b060424fe..383ce52cb1 100644
+--- a/0b060424fefd261aa4d357c5e255e6cb5cf013f4
++++ b/383ce52cb195eafd036fd919bcc75d3f980d0c0b
+@@ -1,10 +1,9 @@
+ public long size(ValuesTransformer<V> transformer) {
+-    Directory d = indexWriter.getDirectory();
+     IndexReader reader = null;
+     try {
+-        reader = IndexReader.open(d);
++        reader = getSearcher().getIndexReader();
+     } catch (IOException e) {
+         e.printStackTrace();
+     }
+     return reader.numDocs();
+ }
+\ No newline at end of file

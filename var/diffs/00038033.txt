@@ -1,0 +1,14 @@
+diff --git a/58a8deade50427156c274964e1b1ca35aa160633 b/5ee316652b4dca3f84f6315eda9e6b45b0a1c077
+index 58a8deade5..5ee316652b 100644
+--- a/58a8deade50427156c274964e1b1ca35aa160633
++++ b/5ee316652b4dca3f84f6315eda9e6b45b0a1c077
+@@ -1,6 +1,6 @@
+ public Map<String, Object> serialize() {
+     Map<String, Object> map = new HashMap<String, Object>();
+-    map.put("template", baseUri.toString() + "index/" + name + "/{key}/{value}");
+-    map.put("type", type);
++    map.put("template", baseUri.toString() + "index/" + propertyContainerType() + "/" + name + "/{key}/{value}");
++    map.putAll(type);
+     return map;
+ }
+\ No newline at end of file

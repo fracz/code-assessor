@@ -1,0 +1,15 @@
+diff --git a/3800165ebf94d590e4b45809839b9c7852d37c29 b/9cb889a11f65807876ea1e545403f78fc36aac05
+index 3800165ebf..9cb889a11f 100644
+--- a/3800165ebf94d590e4b45809839b9c7852d37c29
++++ b/9cb889a11f65807876ea1e545403f78fc36aac05
+@@ -1,5 +1,7 @@
+ @Test
+ public void testGetInvalidVIPForRemoteRegion() throws Exception {
+-    List<InstanceInfo> instancesByVipAddress = client.getInstancesByVipAddress("XYZ", false, REMOTE_REGION);
+-    Assert.assertEquals("Unexpected number of instances found for local region.", 0, instancesByVipAddress.size());
++    prepareRemoteRegionRegistry();
++    EurekaClient client = discoveryClientResource.getClient();
++    List<InstanceInfo> instancesByVipAddress = client.getInstancesByVipAddress("XYZ", false, TEST_REMOTE_REGION);
++    assertThat(instancesByVipAddress.isEmpty(), is(true));
+ }
+\ No newline at end of file

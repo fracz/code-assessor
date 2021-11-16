@@ -1,0 +1,25 @@
+diff --git a/f5edf3488bceff62929d7c935cf5a913ddab0eb7 b/54416323d5a0f1b7b9dee8ce36672354ccbac068
+index f5edf3488b..54416323d5 100644
+--- a/f5edf3488bceff62929d7c935cf5a913ddab0eb7
++++ b/54416323d5a0f1b7b9dee8ce36672354ccbac068
+@@ -1,13 +1,13 @@
+ void previewValue() {
+-    GridCell currentPosition = getCurrentPosition();
+-    if (!isPreviewVisible() || currentPosition == null) {
++    DBDAttributeBinding attr = getFocusAttribute();
++    RowData row = getFocusRow();
++    if (!isPreviewVisible() || attr == null || row == null) {
+         return;
+     }
+-    GridCell cell = translateVisualPos(currentPosition);
+-    if (panelValueController == null || panelValueController.pos.col != cell.col) {
+-        panelValueController = new ResultSetValueController(this, cell, DBDValueController.EditType.PANEL, previewPane.getViewPlaceholder());
++    if (panelValueController == null || panelValueController.binding != attr) {
++        panelValueController = new ResultSetValueController(this, attr, row, DBDValueController.EditType.PANEL, previewPane.getViewPlaceholder());
+     } else {
+-        panelValueController.setCurRow((RowData) cell.row);
++        panelValueController.setCurRow(row);
+     }
+     previewPane.viewValue(panelValueController);
+ }
+\ No newline at end of file

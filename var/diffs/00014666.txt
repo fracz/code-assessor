@@ -1,0 +1,16 @@
+diff --git a/b375e10799dac37f2d3d7aea67024ad6d3c2ba1d b/22999bcc2b7b273117f6f7a411fe8f5f507e39d8
+index b375e10799..22999bcc2b 100644
+--- a/b375e10799dac37f2d3d7aea67024ad6d3c2ba1d
++++ b/22999bcc2b7b273117f6f7a411fe8f5f507e39d8
+@@ -1,6 +1,5 @@
+-protected String buildErrorString(PsiElement location) {
+-    final PsiSwitchStatement statement = (PsiSwitchStatement) location.getParent();
+-    assert statement != null;
+-    final int numBranches = SwitchUtils.calculateBranchCount(statement);
+-    return InspectionGadgetsBundle.message("switch.statement.with.too.few.branches.problem.descriptor", numBranches);
++@NotNull
++protected String buildErrorString(Object... infos) {
++    final Integer branchCount = (Integer) infos[0];
++    return InspectionGadgetsBundle.message("switch.statement.with.too.few.branches.problem.descriptor", branchCount);
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/ed82b74bf89a0d5b313d017742327f59e6ff9a2b b/3fb5ae08be465dcc5f3ca87bfed203abf42e4b10
+index ed82b74bf8..3fb5ae08be 100644
+--- a/ed82b74bf89a0d5b313d017742327f59e6ff9a2b
++++ b/3fb5ae08be465dcc5f3ca87bfed203abf42e4b10
+@@ -1,8 +1,3 @@
+ public static LanguageLevelProjectExtension getInstance(Project project) {
+-    final ProjectExtension[] extensions = Extensions.getExtensions(EP_NAME, project);
+-    for (ProjectExtension extension : extensions) {
+-        if (LanguageLevelProjectExtension.class.isAssignableFrom(extension.getClass()))
+-            return (LanguageLevelProjectExtension) extension;
+-    }
+-    return null;
++    return ServiceManager.getService(project, LanguageLevelProjectExtension.class);
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/48977c6eb6f2a6f946641c49dc3f8751c4d31119 b/5d00633e76a56de9987ea55c22f3779ca7d106d9
+index 48977c6eb6..5d00633e76 100644
+--- a/48977c6eb6f2a6f946641c49dc3f8751c4d31119
++++ b/5d00633e76a56de9987ea55c22f3779ca7d106d9
+@@ -1,6 +1,10 @@
+ @Override
+ public void applyFix(@NotNull Project project, @NotNull ProblemDescriptor descriptor) {
+-    PsiMethodCallExpression expression = PsiTreeUtil.getParentOfType(descriptor.getPsiElement(), PsiMethodCallExpression.class);
+-    LOG.assertTrue(expression != null);
+-    myHandler.getTemplate().convertToStream(expression, null, false);
++    PsiElement psiElement = descriptor.getPsiElement();
++    if (psiElement instanceof PsiReferenceExpression) {
++        PsiElement parent = psiElement.getParent();
++        if (parent instanceof PsiMethodCallExpression) {
++            myHandler.getTemplate().convertToStream((PsiMethodCallExpression) parent, null, false);
++        }
++    }
+ }
+\ No newline at end of file

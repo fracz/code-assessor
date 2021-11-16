@@ -1,0 +1,22 @@
+diff --git a/34ae68f5818a73b880eebe01b3822692c8f5acbc b/53afa41344ad2eb617929a0d808d01a4323cae49
+index 34ae68f581..53afa41344 100644
+--- a/34ae68f5818a73b880eebe01b3822692c8f5acbc
++++ b/53afa41344ad2eb617929a0d808d01a4323cae49
+@@ -1,13 +1,13 @@
+ @Override
+ public void indexObject(PsiJetObjectStub stub, IndexSink sink) {
+     String name = stub.getName();
+     assert name != null;
+-    sink.occurrence(JetIndexKeys.SHORT_NAME_KEY, name);
++    sink.occurrence(JetShortClassNameIndex.getInstance().getKey(), name);
+     if (stub.isTopLevel()) {
+-        sink.occurrence(JetIndexKeys.TOP_LEVEL_OBJECT_SHORT_NAME_KEY, name);
++        sink.occurrence(JetTopLevelShortObjectNameIndex.getInstance().getKey(), name);
+     }
+     FqName fqName = stub.getFQName();
+     if (fqName != null) {
+-        sink.occurrence(JetIndexKeys.CLASS_OR_OBJECT_FQN_KEY, fqName.toString());
++        sink.occurrence(JetFullClassNameIndex.getInstance().getKey(), fqName.toString());
+     }
+ }
+\ No newline at end of file

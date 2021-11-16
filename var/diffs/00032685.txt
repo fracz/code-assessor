@@ -1,0 +1,21 @@
+diff --git a/3e33e01bca8a2c1ba1fb45cadf50c022bb23220d b/d3dcad5ced890b597889d8d04e3fc137b2bba15e
+index 3e33e01bca..d3dcad5ced 100644
+--- a/3e33e01bca8a2c1ba1fb45cadf50c022bb23220d
++++ b/d3dcad5ced890b597889d8d04e3fc137b2bba15e
+@@ -1,12 +1,12 @@
+ @Test
+ public void mergeEdgesFrom_undirected() {
+-    UndirectedGraph<Integer, String> undirectedGraph = buildUndirectedTestGraph();
+-    UndirectedGraph<Integer, String> actualGraph = Graphs.createUndirected(MULTIGRAPH);
++    Graph<Integer, String> undirectedGraph = buildUndirectedTestGraph();
++    Graph<Integer, String> actualGraph = GraphBuilder.undirected().allowsParallelEdges(true).build();
+     // prepopulate actualGraph to make sure that existing elements don't interfere with the merging
+     actualGraph.addEdge(E11, N1, N1);
+     actualGraph.addEdge(E22, N2, N2);
+     mergeEdgesFrom(undirectedGraph, actualGraph);
+-    UndirectedGraph<Integer, String> expectedGraph = buildUndirectedTestGraph();
++    Graph<Integer, String> expectedGraph = buildUndirectedTestGraph();
+     expectedGraph.addEdge(E22, N2, N2);
+     assertThat(actualGraph).isEqualTo(expectedGraph);
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/a40664678c9d873ca598c4d1be0010f0ba8f43ff b/46ea6aa0c50b74ad59f9ee0c88e8835e0a036c8e
+index a40664678c..46ea6aa0c5 100644
+--- a/a40664678c9d873ca598c4d1be0010f0ba8f43ff
++++ b/46ea6aa0c50b74ad59f9ee0c88e8835e0a036c8e
+@@ -1,5 +1,5 @@
+ public long readLong(InputStream in) throws IOException {
+-    byte[] longBytes = new byte[8];
++    byte[] longBytes = new byte[Longs.BYTES];
+     ByteStreams.readFully(in, longBytes);
+-    return ByteBuffer.wrap(longBytes).getLong();
++    return Longs.fromByteArray(longBytes);
+ }
+\ No newline at end of file

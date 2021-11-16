@@ -1,0 +1,17 @@
+diff --git a/342d5f29cf42ddfd60203283b78246e4279e2a68 b/0a0ecfb59262cb950387e9f819f7d5ce140bd8e8
+index 342d5f29cf..0a0ecfb592 100644
+--- a/342d5f29cf42ddfd60203283b78246e4279e2a68
++++ b/0a0ecfb59262cb950387e9f819f7d5ce140bd8e8
+@@ -1,8 +1,8 @@
+ @Test
+ public void testAffectedEntryForDeleteChange() {
+-    root.createDirectory(99, "dir");
+-    root.createFile(7, "dir/file", null, -1);
++    createDirectory(root, 99, "dir");
++    createFile(root, 7, "dir/file", null, -1);
+     StructuralChange c = new DeleteChange("dir/file");
+     c.applyTo(root);
+-    assertEquals(list(idp(99, 7)), c.getAffectedIdPaths());
++    assertEquals(list(idp(-1, 99, 7)), c.getAffectedIdPaths());
+ }
+\ No newline at end of file

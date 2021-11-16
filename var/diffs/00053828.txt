@@ -1,0 +1,20 @@
+diff --git a/8516e1f5ad0a4f7c3ecdbc742afd536f599d50fd b/982caa64351a82e56de907e7e5e500156b386cde
+index 8516e1f5ad..982caa6435 100644
+--- a/8516e1f5ad0a4f7c3ecdbc742afd536f599d50fd
++++ b/982caa64351a82e56de907e7e5e500156b386cde
+@@ -1,12 +1,10 @@
+ @Override
+ public void accept0(final OracleASTVisitor visitor) {
+     if (visitor.visit(this)) {
+-        acceptChild(visitor, this.hints);
++        acceptChild(visitor, hints);
+         acceptChild(visitor, getTableSource());
+         acceptChild(visitor, getItems());
+-        acceptChild(visitor, where);
+-        acceptChild(visitor, returning);
+-        acceptChild(visitor, returningInto);
++        acceptChild(visitor, getWhere());
+     }
+     visitor.endVisit(this);
+ }
+\ No newline at end of file

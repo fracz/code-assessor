@@ -1,0 +1,26 @@
+diff --git a/288f5d938e9de162e1f591e1369721dc3279b43d b/2ef9a42fea8d21e09687617274ecc9dd038c45f1
+index 288f5d938e..2ef9a42fea 100644
+--- a/288f5d938e9de162e1f591e1369721dc3279b43d
++++ b/2ef9a42fea8d21e09687617274ecc9dd038c45f1
+@@ -1,18 +1,18 @@
+ protected void createDatabase() throws IOException {
+     setDataCommandInfo("Create database");
+     String dbName = channel.readString();
+     String dbType = ODatabaseDocument.TYPE;
+     // READ DB-TYPE FROM THE CLIENT
+     dbType = channel.readString();
+     String storageType = channel.readString();
+     checkServerAccess("database.create");
+     checkStorageExistence(dbName);
+-    connection.database = getDatabaseInstance(dbName, dbType, storageType);
+-    createDatabase(connection.database, null, null);
++    connection.setDatabase(getDatabaseInstance(dbName, dbType, storageType));
++    createDatabase(connection.getDatabase(), null, null);
+     beginResponse();
+     try {
+         sendOk(clientTxId);
+     } finally {
+         endResponse();
+     }
+ }
+\ No newline at end of file

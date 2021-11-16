@@ -1,0 +1,20 @@
+diff --git a/ca0c606124495727b093e7f1e74e8c6b1e339c9d b/8ac88c71911c67f098b37cf84168a5dc17b575bd
+index ca0c606124..8ac88c7191 100644
+--- a/ca0c606124495727b093e7f1e74e8c6b1e339c9d
++++ b/8ac88c71911c67f098b37cf84168a5dc17b575bd
+@@ -1,11 +1,11 @@
+ public void execute(final TestClassResult classResult) {
+     OverlayedIdProxyingTestClassResult newTestResult = aggregatedTestResults.get(classResult.getClassName());
+     if (newTestResult != null) {
+         newTestResult.addTestClassResult(classResult);
+-        classOutputProviders.put(newTestResult.getId(), new DelegateProvider(classResult.getId(), provider));
+     } else {
+         long newId = newIdCounter.incrementAndGet();
+-        classOutputProviders.put(newId, new DelegateProvider(classResult.getId(), provider));
+-        aggregatedTestResults.put(classResult.getClassName(), new OverlayedIdProxyingTestClassResult(newId, classResult));
++        newTestResult = new OverlayedIdProxyingTestClassResult(newId, classResult);
++        aggregatedTestResults.put(classResult.getClassName(), newTestResult);
+     }
++    classOutputProviders.put(newTestResult.getId(), new DelegateProvider(classResult.getId(), provider));
+ }
+\ No newline at end of file

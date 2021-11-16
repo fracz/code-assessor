@@ -1,0 +1,18 @@
+diff --git a/a1144b7fcada2cc2f24977f2dbdd6369c16f693f b/1ce30eb5580d88a530d3f1baf3918206bc8376fc
+index a1144b7fca..1ce30eb558 100644
+--- a/a1144b7fcada2cc2f24977f2dbdd6369c16f693f
++++ b/1ce30eb5580d88a530d3f1baf3918206bc8376fc
+@@ -1,9 +1,9 @@
+ public int getVisibleRowsCount() {
+-    Rectangle clientArea = grid.getClientArea();
+-    int itemHeight = grid.getItemHeight();
+-    int count = (clientArea.height - grid.getHeaderHeight() + itemHeight - 1) / itemHeight;
++    Rectangle clientArea = super.getClientArea();
++    int itemHeight = super.getItemHeight();
++    int count = (clientArea.height - super.getHeaderHeight() + itemHeight - 1) / itemHeight;
+     if (count == 0) {
+         count = 1;
+     }
+     return count;
+ }
+\ No newline at end of file

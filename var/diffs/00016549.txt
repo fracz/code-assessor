@@ -1,0 +1,29 @@
+diff --git a/e653c265bdc758966b9b4562078b7c7fafc08da4 b/29693ee9b508590b9a9a0cedc8240483589c7342
+index e653c265bd..29693ee9b5 100644
+--- a/e653c265bdc758966b9b4562078b7c7fafc08da4
++++ b/29693ee9b508590b9a9a0cedc8240483589c7342
+@@ -1,12 +1,16 @@
+ @Nullable
+ private JsExpression translateAsIntrinsicTypeCheck(@NotNull JsExpression expressionToMatch, @NotNull JetTypeReference typeReference) {
+-    JsExpression result = null;
+-    JsName className = getClassNameReference(typeReference).getName();
+-    if (className.getIdent().equals("String")) {
+-        result = typeof(expressionToMatch, program().getStringLiteral("string"));
++    Name typeName = getNameIfStandardType(getTypeByReference(bindingContext(), typeReference));
++    if (typeName == null) {
++        return null;
+     }
+-    if (className.getIdent().equals("Int")) {
+-        result = typeof(expressionToMatch, program().getStringLiteral("number"));
++    String jsSTypeName;
++    if (NamePredicate.STRING.apply(typeName)) {
++        jsSTypeName = "string";
++    } else if (NamePredicate.PRIMITIVE_NUMBERS.apply(typeName)) {
++        jsSTypeName = "number";
++    } else {
++        return null;
+     }
+-    return result;
++    return typeof(expressionToMatch, program().getStringLiteral(jsSTypeName));
+ }
+\ No newline at end of file

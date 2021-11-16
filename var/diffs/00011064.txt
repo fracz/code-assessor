@@ -1,0 +1,16 @@
+diff --git a/d6f18eb3d27c0ccd043a9eb7538cd41287f491ed b/b0840945abc98ef8f6c18a0a84cd1f87c84ace38
+index d6f18eb3d2..b0840945ab 100644
+--- a/d6f18eb3d27c0ccd043a9eb7538cd41287f491ed
++++ b/b0840945abc98ef8f6c18a0a84cd1f87c84ace38
+@@ -1,9 +1,8 @@
+ @Override
+ public void visitComment(PsiComment comment) {
+     if (comment.getText().startsWith("(?#")) {
+-        RegExpLanguageHost host = findRegExpHost(comment);
+-        if (host == null || !host.supportsPerl5EmbeddedComments()) {
++        if (!myLanguageHosts.supportsPerl5EmbeddedComments(comment)) {
+             myHolder.createErrorAnnotation(comment, "Embedded comments are not supported");
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/b80b2771e9ebb4187191c4cd739da2c5a38a3d78 b/7111a171cdbde9cfcf35a99cd6f73930598569ce
+index b80b2771e9..7111a171cd 100644
+--- a/b80b2771e9ebb4187191c4cd739da2c5a38a3d78
++++ b/7111a171cdbde9cfcf35a99cd6f73930598569ce
+@@ -1,13 +1,13 @@
+ public boolean canDeleteElement(DataContext dataContext) {
+     if (myEditor != null) {
+-        LwInspectionSuppression[] suppressions = (LwInspectionSuppression[]) dataContext.getData(LwInspectionSuppression.class.getName());
++        LwInspectionSuppression[] suppressions = LW_INSPECTION_SUPPRESSION_ARRAY_DATA_KEY.getData(dataContext);
+         if (suppressions != null) {
+             return true;
+         }
+-        DeleteProvider baseProvider = (DeleteProvider) myEditor.getData(DataConstants.DELETE_ELEMENT_PROVIDER);
++        DeleteProvider baseProvider = (DeleteProvider) myEditor.getData(PlatformDataKeys.DELETE_ELEMENT_PROVIDER.getName());
+         if (baseProvider != null) {
+             return baseProvider.canDeleteElement(dataContext);
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

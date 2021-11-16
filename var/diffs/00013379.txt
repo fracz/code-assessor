@@ -1,0 +1,24 @@
+diff --git a/aebae0f04556a50ca8cce052d4cba7571d7b2249 b/7149c8600a53f38dca06121114c6687715f808a5
+index aebae0f045..7149c8600a 100644
+--- a/aebae0f04556a50ca8cce052d4cba7571d7b2249
++++ b/7149c8600a53f38dca06121114c6687715f808a5
+@@ -1,15 +1,6 @@
+ public static boolean isSuperOrThisCall(GrStatement statement, boolean testForSuper, boolean testForThis) {
+-    if (!(statement instanceof GrMethodCallExpression))
++    if (!(statement instanceof GrConstructorInvocation))
+         return false;
+-    GrMethodCallExpression expr = (GrMethodCallExpression) statement;
+-    GrExpression invoked = expr.getInvokedExpression();
+-    if (testForSuper) {
+-        if ("super".equals(invoked.getText()))
+-            return true;
+-    }
+-    if (testForThis) {
+-        if ("this".equals(invoked.getText()))
+-            return true;
+-    }
+-    return false;
++    GrConstructorInvocation expr = (GrConstructorInvocation) statement;
++    return (testForSuper && expr.isSuperCall()) || (testForThis && expr.isThisCall());
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/5544d8613ca1bde9191c6f51c0c0248efba4bba9 b/47f6b5f60b42ca9ed4e7d74863e291f760500c79
+index 5544d8613c..47f6b5f60b 100644
+--- a/5544d8613ca1bde9191c6f51c0c0248efba4bba9
++++ b/47f6b5f60b42ca9ed4e7d74863e291f760500c79
+@@ -1,10 +1,10 @@
+ private void onPause() {
+     this.isRunning = false;
+     if (FileDownloadLog.NEED_LOG) {
+-        FileDownloadLog.d(this, "On paused %d %d %d", downloadTransfer.getDownloadId(), downloadTransfer.getSoFarBytes(), downloadTransfer.getTotalBytes());
++        FileDownloadLog.d(this, "On paused %d %d %d", getId(), model.getSoFar(), model.getTotal());
+     }
+-    downloadTransfer.setStatus(FileDownloadStatus.paused);
+-    helper.updatePause(downloadTransfer.getDownloadId());
++    helper.updatePause(getId());
++    transferModel.setStatus(FileDownloadStatus.paused);
+ // 这边没有必要从服务端再回调，由于直接调pause看是否已经成功
+-// FileEventPool.getImpl().asyncPublishInNewThread(new FileDownloadTransferEvent(downloadTransfer));
++// onStatusChanged(model.getStatus());
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/9d03d589c16c36ae9c650cc5a200056e5549202a b/154757efac10b3c62345a2f712280b3144faed3f
+index 9d03d589c1..154757efac 100644
+--- a/9d03d589c16c36ae9c650cc5a200056e5549202a
++++ b/154757efac10b3c62345a2f712280b3144faed3f
+@@ -1,9 +1,9 @@
+ /**
+  * Returns all currently lock shards
+  */
+ public Set<ShardId> lockedShards() {
+-    synchronized (this) {
++    synchronized (shardLocks) {
+         ImmutableSet.Builder<ShardId> builder = ImmutableSet.builder();
+         return builder.addAll(shardLocks.keySet()).build();
+     }
+ }
+\ No newline at end of file

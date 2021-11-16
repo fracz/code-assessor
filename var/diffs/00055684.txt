@@ -1,0 +1,16 @@
+diff --git a/67f73d99c0bfbcc4082afdb9efffc9a8f1464464 b/78a142970598028d81b21f36296380ecc6671fc1
+index 67f73d99c0..78a1429705 100644
+--- a/67f73d99c0bfbcc4082afdb9efffc9a8f1464464
++++ b/78a142970598028d81b21f36296380ecc6671fc1
+@@ -1,9 +1,9 @@
+ @Test
+ public void testThrowsExceptionOnTooManyArguments() throws Exception {
+-    XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("constructor-arg.xml", getClass()));
++    XmlBeanFactory xbf = new XmlBeanFactory(CONSTRUCTOR_ARG_CONTEXT);
+     try {
+         xbf.getBean("rod7", ConstructorDependenciesBean.class);
+         fail("Should have thrown BeanCreationException");
+     } catch (BeanCreationException expected) {
+     }
+ }
+\ No newline at end of file

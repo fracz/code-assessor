@@ -1,0 +1,16 @@
+diff --git a/4d44f1538a78e4dac3a8127cf6f1484605bce8c3 b/0f8e0003b01037fcc1387adb603a0a3922e12632
+index 4d44f1538a..0f8e0003b0 100644
+--- a/4d44f1538a78e4dac3a8127cf6f1484605bce8c3
++++ b/0f8e0003b01037fcc1387adb603a0a3922e12632
+@@ -1,7 +1,8 @@
+ @Override
+-public final InternalRelation it() {
+-    if (!getVertex(0).tx().isClosed())
++public InternalRelation it() {
++    InternalVertex v = getVertex(0);
++    if (v == v.it())
+         return this;
+     else
+         return (InternalRelation) getId().findRelation(tx());
+ }
+\ No newline at end of file

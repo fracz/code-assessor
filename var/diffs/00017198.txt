@@ -1,0 +1,16 @@
+diff --git a/97a429564009b9352a21b843e0cfc0be409c205a b/c4ff7d2cad0e8d0b71d256786d42ba6b7be4585f
+index 97a4295640..c4ff7d2cad 100644
+--- a/97a429564009b9352a21b843e0cfc0be409c205a
++++ b/c4ff7d2cad0e8d0b71d256786d42ba6b7be4585f
+@@ -1,7 +1,6 @@
+ private void copyFieldFromClassObject(PropertyDescriptor propertyDescriptor) {
+     ExpressionCodegen codegen = createOrGetClInitCodegen();
+-    StackValue property = codegen.intermediateValueForProperty(propertyDescriptor, false, null);
+-    property.put(property.type, codegen.v);
+-    StackValue.Field field = StackValue.field(property.type, classAsmType, propertyDescriptor.getName().asString(), true);
+-    field.store(field.type, codegen.v);
++    StackValue property = codegen.intermediateValueForProperty(propertyDescriptor, false, null, StackValue.none());
++    StackValue.Field field = StackValue.field(property.type, classAsmType, propertyDescriptor.getName().asString(), true, StackValue.none());
++    field.store(property, codegen.v);
+ }
+\ No newline at end of file

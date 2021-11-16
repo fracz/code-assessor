@@ -1,0 +1,21 @@
+diff --git a/2ab798a9bb7065a7e6ff21882b53140cabad8e7e b/9273e198f6acab79b38219b504aa4a7d39ad08d4
+index 2ab798a9bb..9273e198f6 100644
+--- a/2ab798a9bb7065a7e6ff21882b53140cabad8e7e
++++ b/9273e198f6acab79b38219b504aa4a7d39ad08d4
+@@ -1,11 +1,10 @@
+ @Override
+ public String toString() {
+     String returnVal = "AnimatorSet@" + Integer.toHexString(hashCode()) + "{";
+-    boolean prevNeedsSort = mNeedsSort;
+-    sortNodes();
+-    mNeedsSort = prevNeedsSort;
+-    for (Node node : mSortedNodes) {
+-        returnVal += "\n    " + node.animation.toString();
++    int size = mNodes.size();
++    for (int i = 0; i < size; i++) {
++        Node node = mNodes.get(i);
++        returnVal += "\n    " + node.mAnimation.toString();
+     }
+     return returnVal + "\n}";
+ }
+\ No newline at end of file

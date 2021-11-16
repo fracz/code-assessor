@@ -1,0 +1,20 @@
+diff --git a/043a85f2fc0999ae0ad9c14c0950dea5fc9143cf b/9b5b055663f9beedb41ae26792611d840233d250
+index 043a85f2fc..9b5b055663 100644
+--- a/043a85f2fc0999ae0ad9c14c0950dea5fc9143cf
++++ b/9b5b055663f9beedb41ae26792611d840233d250
+@@ -1,11 +1,11 @@
+ @Override
+ public PropertySource<?> locate(final Environment environment) {
+     if (environment instanceof ConfigurableEnvironment) {
+-        final CompositePropertySource composite = new CompositePropertySource(MongoDbPropertySource.class.getSimpleName());
+-        final MongoDbPropertySource source = new MongoDbPropertySource(MongoDbPropertySource.class.getSimpleName(), mongo);
+-        source.init();
++        final String sourceName = MongoDbPropertySource.class.getSimpleName();
++        final CompositePropertySource composite = new CompositePropertySource(sourceName);
++        final MongoDbPropertySource source = new MongoDbPropertySource(sourceName, mongo);
+         composite.addFirstPropertySource(source);
+         return composite;
+     }
+     return null;
+ }
+\ No newline at end of file

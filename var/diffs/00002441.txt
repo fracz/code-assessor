@@ -1,0 +1,44 @@
+diff --git a/c7a42b2350b6b7efda77f368c554a555f5bb9083 b/3e140d870edf01e2ca1fbd43991676f6b59ddb83
+index c7a42b2350..3e140d870e 100644
+--- a/c7a42b2350b6b7efda77f368c554a555f5bb9083
++++ b/3e140d870edf01e2ca1fbd43991676f6b59ddb83
+@@ -1,21 +1,25 @@
++/**
++ * @return courses from memory or from cash file or parses course directory
++ */
+ public Map<String, File> getCourses() {
+-    if (myDefaultCourseFiles.size() > 0) {
+-        return myDefaultCourseFiles;
++    if (!myCourses.isEmpty()) {
++        return myCourses;
+     }
+-    if (myDefaultCoursesBaseDir.exists()) {
+-        File cashFile = new File(myDefaultCoursesBaseDir, CASH_NAME);
++    if (myCoursesDir.exists()) {
++        File cashFile = new File(myCoursesDir, CASH_NAME);
+         if (cashFile.exists()) {
+-            myDefaultCourseFiles = getCoursesFromCash(cashFile);
+-            if (myDefaultCourseFiles.size() > 0) {
+-                return myDefaultCourseFiles;
++            myCourses = getCoursesFromCash(cashFile);
++            if (!myCourses.isEmpty()) {
++                return myCourses;
+             }
+         }
+-        myDefaultCourseFiles = getDefaultCourses();
+-        if (myDefaultCourseFiles.size() > 0) {
+-            return myDefaultCourseFiles;
++        myCourses = loadCourses();
++        if (!myCourses.isEmpty()) {
++            return myCourses;
+         }
+     }
+-    downloadAndUnzip();
+-    myDefaultCourseFiles = getDefaultCourses();
+-    return myDefaultCourseFiles;
++    downloadAndUnzip(false);
++    myCourses = loadCourses();
++    flushCash();
++    return myCourses;
+ }
+\ No newline at end of file

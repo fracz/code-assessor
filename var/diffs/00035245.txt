@@ -1,0 +1,19 @@
+diff --git a/74a9a29e62681cb8eb9ad01dd2eb83ed121effe9 b/9c6db05a9f4908d79847fe898142592b47963680
+index 74a9a29e62..9c6db05a9f 100644
+--- a/74a9a29e62681cb8eb9ad01dd2eb83ed121effe9
++++ b/9c6db05a9f4908d79847fe898142592b47963680
+@@ -1,9 +1,12 @@
+ /**
+  * Sets all buttons' {@link Button#isChecked()} to false, regardless of {@link #setMinCheckCount(int)}.
+  */
+ public void uncheckAll() {
+     int old = minCheckCount;
+     minCheckCount = 0;
+-    uncheckAllExcept(null);
++    for (int i = 0, n = buttons.size; i < n; i++) {
++        Button button = buttons.get(i);
++        button.setChecked(false);
++    }
+     minCheckCount = old;
+ }
+\ No newline at end of file

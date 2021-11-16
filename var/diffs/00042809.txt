@@ -1,0 +1,13 @@
+diff --git a/f96ad5f7cfd03406dc5781d11407889fde51035d b/81f55f935b8615c6de3d323671fe05e25b118d91
+index f96ad5f7cf..81f55f935b 100644
+--- a/f96ad5f7cfd03406dc5781d11407889fde51035d
++++ b/81f55f935b8615c6de3d323671fe05e25b118d91
+@@ -1,4 +1,6 @@
+ public ODictionary<ORecordInternal<?>> getDictionary() {
+     checkOpeness();
+-    return metadata.getIndexManager().getDictionary();
++    if (dictionary == null)
++        dictionary = metadata.getIndexManager().getDictionary();
++    return dictionary;
+ }
+\ No newline at end of file

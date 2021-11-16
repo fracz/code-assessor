@@ -1,0 +1,19 @@
+diff --git a/21aef805a8981bee6899e7223aaaa265f22f446a b/f0a49027fbd1047503644067fd70c27f105da1b2
+index 21aef805a8..f0a49027fb 100644
+--- a/21aef805a8981bee6899e7223aaaa265f22f446a
++++ b/f0a49027fbd1047503644067fd70c27f105da1b2
+@@ -1,9 +1,11 @@
+ private static String getConstructorBeforeInsertCode() {
+     StringBuilder sb = new StringBuilder();
+     sb.append("{");
+-    // sb.append("System.out.println(\"-----PreparedStatement's constructor is called\");");
+-    // sb.append("System.out.println(\"-----Query=[\"+$2+\"]\");");
++    if (logger.isDebugEnabled()) {
++        sb.append("System.out.println(\"-----PreparedStatement's constructor is called\");");
++        sb.append("System.out.println(\"-----Query=[\"+$2+\"]\");");
++    }
+     sb.append(TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".putSqlQuery(" + TomcatProfilerConstant.REQ_DATA_TYPE_DB_QUERY + ",$2);");
+     sb.append("}");
+     return sb.toString();
+ }
+\ No newline at end of file

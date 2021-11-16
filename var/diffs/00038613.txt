@@ -1,0 +1,15 @@
+diff --git a/c68a2b1869e64f8069ea458e62e565ab01252bff b/12126c10518afd4df60372fad502ee2731a98ac2
+index c68a2b1869..12126c1051 100644
+--- a/c68a2b1869e64f8069ea458e62e565ab01252bff
++++ b/12126c10518afd4df60372fad502ee2731a98ac2
+@@ -1,6 +1,4 @@
+-public void start(NeoServerWithEmbeddedWebServer neoServer, StringLogger logger) {
+-    Server jetty = neoServer.getWebServer().getJetty();
+-    StatisticCollector statisticCollector = neoServer.getDatabase().statisticCollector();
+-    listener = new StatisticStartupListener(jetty, new StatisticFilter(statisticCollector));
+-    jetty.addLifeCycleListener(listener);
++@Override
++public void start(StringLogger logger) {
++    webServer.addFilter(filter, "/*");
+ }
+\ No newline at end of file

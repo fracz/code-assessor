@@ -1,0 +1,17 @@
+diff --git a/ce9a855857cdcd733ef2d30947921ab1fab29893 b/65c5b913efab8fc5a73993c65fed57ab915ddd25
+index ce9a855857..65c5b913ef 100644
+--- a/ce9a855857cdcd733ef2d30947921ab1fab29893
++++ b/65c5b913efab8fc5a73993c65fed57ab915ddd25
+@@ -1,10 +1,10 @@
+ public void setPanelLanguage(Language language) {
+     myLanguage = language;
+-    updatePreviewEditor();
+     for (LanguageCodeStyleSettingsProvider provider : Extensions.getExtensions(LanguageCodeStyleSettingsProvider.EP_NAME)) {
+         if (provider.getLanguage().is(language)) {
+             provider.customizeSettings(this, getSettingsType());
+         }
+     }
+     onLanguageChange(language);
++    updatePreviewEditor();
+ }
+\ No newline at end of file

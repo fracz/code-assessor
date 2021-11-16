@@ -1,0 +1,16 @@
+diff --git a/4a9656851a3bd970bcdc33ac4e18ac74e91ae358 b/ccbd556b57097ccec6a3987492711530c7f8eaaa
+index 4a9656851a..ccbd556b57 100644
+--- a/4a9656851a3bd970bcdc33ac4e18ac74e91ae358
++++ b/ccbd556b57097ccec6a3987492711530c7f8eaaa
+@@ -1,6 +1,6 @@
+-private ScopeFactory createScopeFactory(String scopeName, boolean attachment) {
+-    if (attachment) {
+-        return new AttachmentSimpleScopeFactory<Object>(scopeName);
++private ScopeFactory createScopeFactory(ScopeDefinition scopeDefinition) {
++    if (scopeDefinition.getType() == ScopeDefinition.Type.ATTACHMENT) {
++        return new AttachmentSimpleScopeFactory<Object>(scopeDefinition.getName());
+     }
+-    return new SimpleScopeFactory(scopeName);
++    return new SimpleScopeFactory(scopeDefinition.getName());
+ }
+\ No newline at end of file

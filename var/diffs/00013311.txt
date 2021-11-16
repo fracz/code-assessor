@@ -1,0 +1,31 @@
+diff --git a/b7b0b5832637f4b5a126fa48ba4a85fd0955e3a2 b/955057bb50aa8d735d368fdd750f3591ac0b94b5
+index b7b0b58326..955057bb50 100644
+--- a/b7b0b5832637f4b5a126fa48ba4a85fd0955e3a2
++++ b/955057bb50aa8d735d368fdd750f3591ac0b94b5
+@@ -1,19 +1,20 @@
+ private void selectionChanged() {
+-    mySelectionSpeedometer.event();
++    if (myDataBeingAdded) {
++        mySelectionRequestsMerger.request();
++        return;
++    }
+     final int[] rows = myJBTable.getSelectedRows();
+-    myDetails.refresh(null, null);
++    selectionChangedForDetails(rows);
+     if (rows.length == 0) {
+         myRepoLayout.show(myRepoPanel, "empty");
+         myRepoPanel.repaint();
+-        myMissingSelectionData = false;
+         return;
+     } else if (rows.length >= 10) {
+         myRepoLayout.show(myRepoPanel, "tooMuch");
+         myRepoPanel.repaint();
+-        myMissingSelectionData = false;
+         return;
+     }
+     myRepoLayout.show(myRepoPanel, "loading");
+     myRepoPanel.repaint();
+-    updateDetailsFromSelection();
++    gatherNotLoadedData();
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/e28e5dc91c08053eadda139b9f4164ca7cef9fb4 b/624f46bfe3c28a809eb2711745d74d848bea37ac
+index e28e5dc91c..624f46bfe3 100644
+--- a/e28e5dc91c08053eadda139b9f4164ca7cef9fb4
++++ b/624f46bfe3c28a809eb2711745d74d848bea37ac
+@@ -1,8 +1,7 @@
+ @SuppressWarnings("unchecked")
+ public <T> T deserialze(DefaultJSONParser parser, Type type, Object fieldName) {
+     String text = (String) parser.parse();
+-    if (text == null || text.length() == 0) {
+-        return null;
+-    }
+-    return (T) Currency.getInstance(text);
++    return //
++    (text == null || text.length() == 0) ? //
++    null : (T) Currency.getInstance(text);
+ }
+\ No newline at end of file

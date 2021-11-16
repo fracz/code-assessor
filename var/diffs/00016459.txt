@@ -1,0 +1,14 @@
+diff --git a/4456cb7d5ffb63afe8829dd58ce1f0d53b03263a b/c367cb4dffa1276a2398d8dc7b0a8d8b4a3a7bdd
+index 4456cb7d5f..c367cb4dff 100644
+--- a/4456cb7d5ffb63afe8829dd58ce1f0d53b03263a
++++ b/c367cb4dffa1276a2398d8dc7b0a8d8b4a3a7bdd
+@@ -1,4 +1,6 @@
++@NotNull
+ @Override
+-public void configure(@NotNull JetChangeSignatureData changeSignatureData, @NotNull BindingContext bindingContext) {
+-// do nothing
++public JetMethodDescriptor configure(@NotNull JetMethodDescriptor originalDescriptor, @NotNull BindingContext bindingContext) {
++    // do nothing
++    return originalDescriptor;
+ }
+\ No newline at end of file

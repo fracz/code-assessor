@@ -1,0 +1,12 @@
+diff --git a/d0e8afa01161b3ba654e122c66919e2f98a7dc40 b/056886845f7099d52a8501c06aa2548d0334deef
+index d0e8afa011..056886845f 100644
+--- a/d0e8afa01161b3ba654e122c66919e2f98a7dc40
++++ b/056886845f7099d52a8501c06aa2548d0334deef
+@@ -1,4 +1,4 @@
+-protected ApplyPatchStatus applyChange(final VirtualFile fileToPatch) throws IOException, ApplyPatchException {
++protected Result applyChange(Project project, final VirtualFile fileToPatch, FilePath pathBeforeRename, Getter<CharSequence> baseContents) throws IOException {
+     fileToPatch.setBinaryContent(myPatch.getAfterContent());
+-    return ApplyPatchStatus.SUCCESS;
++    return SUCCESS;
+ }
+\ No newline at end of file

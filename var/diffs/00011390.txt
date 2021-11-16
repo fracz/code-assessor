@@ -1,0 +1,15 @@
+diff --git a/1b55e19832b340421567e755bcad79ec099d5f04 b/33b50c7a9d9c7112a57e7e3d6c8ebc1ec48ab8e6
+index 1b55e19832..33b50c7a9d 100644
+--- a/1b55e19832b340421567e755bcad79ec099d5f04
++++ b/33b50c7a9d9c7112a57e7e3d6c8ebc1ec48ab8e6
+@@ -1,7 +1,4 @@
+ public String getNodeName() {
+-    final DomElementPresentation presentation = myDomElement.getPresentation();
+-    if (presentation != null && presentation.getPresentationName() != null) {
+-        return presentation.getPresentationName();
+-    }
+-    return getPropertyName();
++    final String name = myDomElement.getPresentation().getElementName();
++    return name != null ? name : getPropertyName();
+ }
+\ No newline at end of file

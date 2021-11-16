@@ -1,0 +1,17 @@
+diff --git a/ee14a4203b54aa4be72483d8378f8ae55f6494b4 b/47e1602325ee03c127f7299631a33229915e7698
+index ee14a4203b..47e1602325 100644
+--- a/ee14a4203b54aa4be72483d8378f8ae55f6494b4
++++ b/47e1602325ee03c127f7299631a33229915e7698
+@@ -1,8 +1,7 @@
+ /**
+- * Returns the platform plist name (for example, iPhoneSimulator) for the platform corresponding
+- * to the value of {@code --ios_cpu} in the given configuration.
++ * Returns the platform plist name (for example, iPhoneSimulator) for the single-arch-context
++ * apple platform specified in the configuration.
+  */
+-// TODO(bazel-team): Support non-ios platforms.
+ public static String getPlatformPlistName(AppleConfiguration configuration) {
+-    return configuration.getPlatform(PlatformType.IOS).getNameInPlist();
++    return configuration.getSingleArchPlatform().getNameInPlist();
+ }
+\ No newline at end of file

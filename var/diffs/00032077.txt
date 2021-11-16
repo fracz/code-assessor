@@ -1,0 +1,13 @@
+diff --git a/6c54ac4bffb0e006aa1dcc99d5e844679bf4f764 b/80bbe42c0da27814504e9ddda022ccd767bb24c4
+index 6c54ac4bff..80bbe42c0d 100644
+--- a/6c54ac4bffb0e006aa1dcc99d5e844679bf4f764
++++ b/80bbe42c0da27814504e9ddda022ccd767bb24c4
+@@ -1,6 +1,6 @@
+ private void addExtern(String export) {
+-    Node propstmt = IR.exprResult(compiler.newQualifiedNameNode("Object.prototype." + export));
++    Node propstmt = IR.exprResult(IR.getprop(NodeUtil.newQName(compiler, "Object.prototype"), IR.string(export)));
+     NodeUtil.setDebugInformation(propstmt, getSynthesizedExternsRoot(), export);
+     getSynthesizedExternsRoot().addChildToBack(propstmt);
+     compiler.reportCodeChange();
+ }
+\ No newline at end of file

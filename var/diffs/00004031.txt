@@ -1,0 +1,20 @@
+diff --git a/547d7332f9edb1d013738ff4b8c85245385bf780 b/3739e5d274b0f2477f2c59da02abcb67b223b6ca
+index 547d7332f9..3739e5d274 100644
+--- a/547d7332f9edb1d013738ff4b8c85245385bf780
++++ b/3739e5d274b0f2477f2c59da02abcb67b223b6ca
+@@ -1,12 +1,13 @@
+-public void createActionLabel(final String text, @NonNls final String actionId) {
++public HyperlinkLabel createActionLabel(final String text, @NonNls final String actionId) {
+     HyperlinkLabel label = new HyperlinkLabel(text, Color.BLUE, LightColors.YELLOW, Color.BLUE);
+     label.addHyperlinkListener(new HyperlinkListener() {
+
+         public void hyperlinkUpdate(final HyperlinkEvent e) {
+             if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+                 executeAction(actionId);
+             }
+         }
+     });
+     myLinksPanel.add(label);
++    return label;
+ }
+\ No newline at end of file

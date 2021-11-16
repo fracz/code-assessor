@@ -1,0 +1,20 @@
+diff --git a/9f6c39eefa9965b9611fc0f5c89cf94cd58cc484 b/d5fe251a01aa5dfc1e7c2979243fe2feabf600bf
+index 9f6c39eefa..d5fe251a01 100644
+--- a/9f6c39eefa9965b9611fc0f5c89cf94cd58cc484
++++ b/d5fe251a01aa5dfc1e7c2979243fe2feabf600bf
+@@ -1,10 +1,13 @@
+ public void feedLineStartingAt(int startOffset) {
+     if (myIncorrectBracketsOrder)
+         return;
+-    for (int i = startOffset; i < getLineEndOffset(startOffset); i++) {
++    int lineEndOffset = CharArrayUtil.indexOf(myText, "\n", startOffset, myLength);
++    if (lineEndOffset < 0)
++        lineEndOffset = myLength;
++    for (int i = startOffset; i < lineEndOffset; i++) {
+         Bracket bracket = Bracket.forChar(myText.charAt(i));
+         if (bracket == null)
+             continue;
+         processBracket(bracket);
+     }
+ }
+\ No newline at end of file

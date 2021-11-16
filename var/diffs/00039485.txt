@@ -1,0 +1,23 @@
+diff --git a/b830a1c0cc95a44b9a7a32d1d77345f05c162c16 b/1240d2443c0996ef58c49bcbd17eba631f659ed5
+index b830a1c0cc..1240d2443c 100644
+--- a/b830a1c0cc95a44b9a7a32d1d77345f05c162c16
++++ b/1240d2443c0996ef58c49bcbd17eba631f659ed5
+@@ -1,14 +1,14 @@
+ @Test
+ public void shouldShutdownServer() throws Exception {
+     WebServer ws = new Jetty6WebServer();
+     int portNo = WebTestUtils.nextAvailablePortNumber();
+     ws.setPort(portNo);
+-    ws.setStaticContentDir(defaultStaticContentLocation());
++    ws.addStaticContent(defaultStaticContentLocation(), "/content");
+     ws.start();
+-    ws.shutdown();
++    ws.stop();
+     try {
+-        WebTestUtils.sendGetRequestTo(new URI("http://localhost:" + portNo + "/"));
++        WebTestUtils.sendGetRequestTo(new URI(String.format("http://localhost:%d/content/welcome.html", portNo)));
+     } catch (ClientHandlerException che) {
+         assertThat(che.getMessage(), containsString("Connection refused"));
+     }
+ }
+\ No newline at end of file

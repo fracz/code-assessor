@@ -1,0 +1,28 @@
+diff --git a/7cd80a2d10aec91fd33e9c79652a9619854f21a5 b/3d697c9fafba31f1a1573b4ce4c9f39851c21dae
+index 7cd80a2d10..3d697c9faf 100644
+--- a/7cd80a2d10aec91fd33e9c79652a9619854f21a5
++++ b/3d697c9fafba31f1a1573b4ce4c9f39851c21dae
+@@ -1,13 +1,12 @@
+ @Nullable
+ public static MavenGoalTask getMavenTask(DataContext dataContext) {
+-    if (dataContext != null) {
+-        final VirtualFile virtualFile = PlatformDataKeys.VIRTUAL_FILE.getData(dataContext);
+-        if (virtualFile != null && MavenConstants.POM_XML.equals(virtualFile.getName())) {
+-            final List<String> goals = MavenDataKeys.MAVEN_GOALS.getData(dataContext);
+-            if (goals != null && goals.size() == 1) {
+-                return new MavenGoalTask(virtualFile.getPath(), goals.get(0));
+-            }
+-        }
+-    }
+-    return null;
++    if (dataContext == null)
++        return null;
++    VirtualFile file = MavenUtil.getMavenProjectFileFromContext(dataContext);
++    if (file == null)
++        return null;
++    List<String> goals = MavenDataKeys.MAVEN_GOALS.getData(dataContext);
++    if (goals == null || goals.size() != 1)
++        return null;
++    return new MavenGoalTask(file.getPath(), goals.get(0));
+ }
+\ No newline at end of file

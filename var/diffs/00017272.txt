@@ -1,0 +1,16 @@
+diff --git a/109fbb8b02c576e7beb0e8154955bc1af1ab360e b/2129f5da1e5911e875e8aaafae3df7ee16043d53
+index 109fbb8b02..2129f5da1e 100644
+--- a/109fbb8b02c576e7beb0e8154955bc1af1ab360e
++++ b/2129f5da1e5911e875e8aaafae3df7ee16043d53
+@@ -1,9 +1,7 @@
+-@NotNull
+ @Override
+-protected Type generateVararg(int i, @NotNull VarargValueArgument argument) {
++protected void generateVararg(int i, @NotNull VarargValueArgument argument) {
+     ValueParameterDescriptor parameter = valueParameters.get(i);
+     Type type = valueParameterTypes.get(i);
+     codegen.genVarargs(argument, parameter.getType());
+     callGenerator.afterParameterPut(type, null, parameter, i);
+-    return type;
+ }
+\ No newline at end of file

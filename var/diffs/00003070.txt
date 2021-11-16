@@ -1,0 +1,15 @@
+diff --git a/85da9dbae5477f5cf67929eea16550a1f336d483 b/4eeab8b178583d577f32c19ff210ef6a1f694bfa
+index 85da9dbae5..4eeab8b178 100644
+--- a/85da9dbae5477f5cf67929eea16550a1f336d483
++++ b/4eeab8b178583d577f32c19ff210ef6a1f694bfa
+@@ -1,8 +1,8 @@
+ @Override
+ protected Object prepareDataFromContext(final AnActionEvent e) {
+-    final ModuleGroup[] moduleGroups = (ModuleGroup[]) e.getDataContext().getData(DataConstantsEx.MODULE_GROUP_ARRAY);
++    final ModuleGroup[] moduleGroups = ModuleGroup.ARRAY_DATA_KEY.getData(e.getDataContext());
+     if (moduleGroups != null && moduleGroups.length > 0) {
+         return moduleGroups[0];
+     }
+     return null;
+ }
+\ No newline at end of file

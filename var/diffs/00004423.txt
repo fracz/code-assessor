@@ -1,0 +1,15 @@
+diff --git a/d6de4a3bb4146a87022d263334903fd73e86ca48 b/ed8e9075b0a417eabcb6ab35775eabaa04cc9762
+index d6de4a3bb4..ed8e9075b0 100644
+--- a/d6de4a3bb4146a87022d263334903fd73e86ca48
++++ b/ed8e9075b0a417eabcb6ab35775eabaa04cc9762
+@@ -1,4 +1,7 @@
+-private void doPerform(final MavenProjectsProcessorTask task) throws MavenProcessCanceledException {
++private void doPerform(final MavenProjectsProcessorTask task) {
++    try {
++        task.perform(myProject, myEmbeddersManager, new SoutMavenConsole(), new MavenProcess(new EmptyProgressIndicator()));
++    } catch (MavenProcessCanceledException ignore) {
+     // todo console and cancelation
+-    task.perform(myProject, myEmbeddersManager, new SoutMavenConsole(), new MavenProcess(new EmptyProgressIndicator()));
++    }
+ }
+\ No newline at end of file

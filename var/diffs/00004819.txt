@@ -1,0 +1,12 @@
+diff --git a/4486096645b142c3f80192683154f0f6b3611d04 b/466d0a39ecc0d808e50b73b2cb08cdadf9825bae
+index 4486096645..466d0a39ec 100644
+--- a/4486096645b142c3f80192683154f0f6b3611d04
++++ b/466d0a39ecc0d808e50b73b2cb08cdadf9825bae
+@@ -1,4 +1,4 @@
+-private static void addBatchDescriptor(@NotNull TextRange textRange, @NotNull Token token, @NotNull ProblemsHolder holder) {
+-    final ProblemDescriptor problemDescriptor = createProblemDescriptor(token, holder, textRange, BATCH_FIXES, false);
++private static void addBatchDescriptor(PsiElement element, int offset, @NotNull TextRange textRange, @NotNull ProblemsHolder holder) {
++    final ProblemDescriptor problemDescriptor = createProblemDescriptor(element, offset, textRange, holder, BATCH_FIXES, false);
+     holder.registerProblem(problemDescriptor);
+ }
+\ No newline at end of file

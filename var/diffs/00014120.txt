@@ -1,0 +1,14 @@
+diff --git a/7dc445d8dfdb73c7fa89b15bda733d5ca4eae01f b/becec2fedd957c1b76acbb002b0c1e70738e049f
+index 7dc445d8df..becec2fedd 100644
+--- a/7dc445d8dfdb73c7fa89b15bda733d5ca4eae01f
++++ b/becec2fedd957c1b76acbb002b0c1e70738e049f
+@@ -1,5 +1,6 @@
+ public void visitElement(@NotNull PsiElement element) {
+-    if (!callToSuperCloneFound) {
+-        super.visitElement(element);
++    if (callToSuperCloneFound) {
++        return;
+     }
++    super.visitElement(element);
+ }
+\ No newline at end of file

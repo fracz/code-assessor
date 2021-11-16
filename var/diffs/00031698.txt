@@ -1,0 +1,18 @@
+diff --git a/768950b0a25662d852cf415747b38560d8423b20 b/61f1014257ce9ed69a601e490274243de1bf7793
+index 768950b0a2..61f1014257 100644
+--- a/768950b0a25662d852cf415747b38560d8423b20
++++ b/61f1014257ce9ed69a601e490274243de1bf7793
+@@ -1,9 +1,7 @@
+ @Override
+ public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+-    final CellFeedViewHolder holder = (CellFeedViewHolder) viewHolder;
+-    if (getItemViewType(position) == VIEW_TYPE_DEFAULT) {
+-        holder.bindView(feedItems.get(position));
+-    } else if (getItemViewType(position) == VIEW_TYPE_LOADER) {
+-        bindLoadingFeedItem(holder);
++    ((CellFeedViewHolder) viewHolder).bindView(feedItems.get(position));
++    if (getItemViewType(position) == VIEW_TYPE_LOADER) {
++        bindLoadingFeedItem((LoadingCellFeedViewHolder) viewHolder);
+     }
+ }
+\ No newline at end of file

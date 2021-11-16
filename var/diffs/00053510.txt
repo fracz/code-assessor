@@ -1,0 +1,25 @@
+diff --git a/69fd444e68216056384de5cd84cbe87cd6efbcb3 b/3f38596e4e4275d61cd1e5856ab3d43d91810ae7
+index 69fd444e68..3f38596e4e 100644
+--- a/69fd444e68216056384de5cd84cbe87cd6efbcb3
++++ b/3f38596e4e4275d61cd1e5856ab3d43d91810ae7
+@@ -1,12 +1,10 @@
+-protected void parseSelectList(final SQLSelectQueryBlock queryBlock) {
+-    List<SQLSelectItem> selectList = queryBlock.getSelectList();
+-    while (true) {
++protected final void parseSelectList(final SQLSelectQueryBlock queryBlock) {
++    do {
++        if (getLexer().equalToken(Token.COMMA)) {
++            getLexer().nextToken();
++        }
+         SQLSelectItem selectItem = exprParser.parseSelectItem();
+-        selectList.add(selectItem);
+         selectItem.setParent(queryBlock);
+-        if (!getLexer().equalToken(Token.COMMA)) {
+-            break;
+-        }
+-        getLexer().nextToken();
+-    }
++        queryBlock.getSelectList().add(selectItem);
++    } while (getLexer().equalToken(Token.COMMA));
+ }
+\ No newline at end of file

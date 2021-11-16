@@ -1,0 +1,20 @@
+diff --git a/4e7e02bb64b1f802b23eb2bc0d57221c7b1ca66c b/997ba4b2b194cff2ccc849578bd877839f21c196
+index 4e7e02bb64..997ba4b2b1 100644
+--- a/4e7e02bb64b1f802b23eb2bc0d57221c7b1ca66c
++++ b/997ba4b2b194cff2ccc849578bd877839f21c196
+@@ -1,9 +1,10 @@
+ @Deprecated
+ public static void startSimulating() {
+-    synchronized (Time.sleepTimesLock) {
+-        Time.simulating.set(true);
+-        Time.simulatedCurrTimeNanos = new AtomicLong(0);
+-        Time.threadSleepTimesNanos = new ConcurrentHashMap<>();
++    synchronized (Time.SLEEP_TIMES_LOCK) {
++        Time.SIMULATING.set(true);
++        Time.SIMULATED_CURR_TIME_NANOS.set(0);
++        Time.THREAD_SLEEP_TIMES_NANOS.clear();
++        Time.AUTO_ADVANCE_NANOS_ON_SLEEP.set(0);
+         LOG.warn("Simulated Time Starting...");
+     }
+ }
+\ No newline at end of file

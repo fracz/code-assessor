@@ -1,0 +1,12 @@
+diff --git a/31807d92ba8640bdf84448ddb6a1c43dbc5ec52b b/30a06abb4bf78f503c2cb507012172ba08c083dd
+index 31807d92ba..30a06abb4b 100644
+--- a/31807d92ba8640bdf84448ddb6a1c43dbc5ec52b
++++ b/30a06abb4bf78f503c2cb507012172ba08c083dd
+@@ -1,5 +1,5 @@
+ public void update(final AnActionEvent event) {
+     final Presentation presentation = event.getPresentation();
+     final DataContext dataContext = event.getDataContext();
+-    presentation.setEnabled(dataContext.getData(DataConstants.PROJECT) != null && dataContext.getData(DataConstants.EDITOR) != null);
++    presentation.setEnabled(PlatformDataKeys.PROJECT.getData(dataContext) != null && PlatformDataKeys.EDITOR.getData(dataContext) != null);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/b48fc44f9b949db08a787d46b89b04af6a65b5fb b/01ffcf9f0f079b64cf3fe7e6914574c01e05e747
+index b48fc44f9b..01ffcf9f0f 100644
+--- a/b48fc44f9b949db08a787d46b89b04af6a65b5fb
++++ b/01ffcf9f0f079b64cf3fe7e6914574c01e05e747
+@@ -1,4 +1,6 @@
+-@Override
+ public void setContent(View v) {
+-    super.setMenu(v);
++    if (mContent != null)
++        removeView(mContent);
++    mContent = v;
++    addView(mContent);
+ }
+\ No newline at end of file

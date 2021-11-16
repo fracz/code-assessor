@@ -1,0 +1,27 @@
+diff --git a/0a8ac3b4b783f4c101e3a79c885fea2697b87970 b/0be69d32d2566de3774e7b2bb5b173015a060118
+index 0a8ac3b4b7..0be69d32d2 100644
+--- a/0a8ac3b4b783f4c101e3a79c885fea2697b87970
++++ b/0be69d32d2566de3774e7b2bb5b173015a060118
+@@ -1,16 +1,11 @@
+ @Test
+ public void testTryLockWait() throws InterruptedException {
+-    Thread t = new Thread() {
+-
+-        public void run() {
+-            RLock lock = redisson.getLock("lock");
+-            lock.lock();
+-        }
+-    };
+-    t.start();
+-    t.join();
++    testSingleInstanceConcurrency(1, r -> {
++        RLock lock = r.getLock("lock");
++        lock.lock();
++    });
+     RLock lock = redisson.getLock("lock");
+     long startTime = System.currentTimeMillis();
+     lock.tryLock(3, TimeUnit.SECONDS);
+-    assertThat(System.currentTimeMillis() - startTime).isBetween(2990L, 3020L);
++    assertThat(System.currentTimeMillis() - startTime).isBetween(2990L, 3100L);
+ }
+\ No newline at end of file

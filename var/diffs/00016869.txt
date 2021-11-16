@@ -1,0 +1,14 @@
+diff --git a/4d7440243b7a0e108cffdf445ae3226fe16a1f9d b/5151843af286cd7e0f93fb96698edd59453fe975
+index 4d7440243b..5151843af2 100644
+--- a/4d7440243b7a0e108cffdf445ae3226fe16a1f9d
++++ b/5151843af286cd7e0f93fb96698edd59453fe975
+@@ -1,4 +1,6 @@
+-@Nullable
++@NotNull
+ public static ResolvedCall<?> getResolvedCall(@NotNull BindingContext context, @NotNull JetExpression expression) {
+-    return (context.get(BindingContext.RESOLVED_CALL, expression));
++    ResolvedCall<? extends CallableDescriptor> resolvedCall = context.get(BindingContext.RESOLVED_CALL, expression);
++    assert resolvedCall != null : "Must resolve to a call.";
++    return resolvedCall;
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/ad5cb5fa64bbf3ac03d86854e4b756314a9d6f2e b/60b4b63e66e35549197107350d2c18da56353993
+index ad5cb5fa64..60b4b63e66 100644
+--- a/ad5cb5fa64bbf3ac03d86854e4b756314a9d6f2e
++++ b/60b4b63e66e35549197107350d2c18da56353993
+@@ -1,14 +1,13 @@
+ /**
+  * Execute the CREATE PROPERTY.
+  */
+ public Object execute(final Map<Object, Object> iArgs) {
+     if (fieldName == null)
+         throw new OCommandExecutionException("Can't execute the command because it hasn't been parsed yet");
+-    OClass sourceClass = database.getMetadata().getSchema().getClass(className);
++    OClassImpl sourceClass = (OClassImpl) database.getMetadata().getSchema().getClass(className);
+     if (sourceClass == null)
+         throw new OCommandExecutionException("Source class '" + className + "' not found");
+     // REMOVE THE PROPERTY
+-    sourceClass.removeProperty(fieldName);
+-    database.getMetadata().getSchema().save();
++    sourceClass.dropPropertyInternal(fieldName);
+     return null;
+ }
+\ No newline at end of file

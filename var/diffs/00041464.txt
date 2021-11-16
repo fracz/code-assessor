@@ -1,0 +1,18 @@
+diff --git a/37e6347db4c1af4ac637826349dc7fff9fa6eba9 b/54a4132b5ed72e098a1e9a06d5e9e6404b856521
+index 37e6347db4..54a4132b5e 100644
+--- a/37e6347db4c1af4ac637826349dc7fff9fa6eba9
++++ b/54a4132b5ed72e098a1e9a06d5e9e6404b856521
+@@ -1,10 +1,9 @@
+ protected void moveData(int from, int to, int len) throws IOException {
+     if (len == 0)
+         return;
+-    if (changesTree != null) {
+-        byte[] content = changesTree.getBinaryValue(pagePointer, from + PAGE_PADDING, len);
+-        changesTree.add(content, to + PAGE_PADDING);
++    if (changes != null) {
++        changes.moveData(pagePointer, from + PAGE_PADDING, to + PAGE_PADDING, len);
+     } else
+         pagePointer.moveData(from + PAGE_PADDING, pagePointer, to + PAGE_PADDING, len);
+     cacheEntry.markDirty();
+ }
+\ No newline at end of file

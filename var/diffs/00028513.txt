@@ -1,0 +1,25 @@
+diff --git a/228ee7e63312f58048d6697b1c1081a7c609bb7e b/b4c340116c260b6e589b9284afd43b7b767d15d0
+index 228ee7e633..b4c340116c 100644
+--- a/228ee7e63312f58048d6697b1c1081a7c609bb7e
++++ b/b4c340116c260b6e589b9284afd43b7b767d15d0
+@@ -1,16 +1,17 @@
+ @Test
+ public void testResponseBodyWriteStringNonChunked() {
++    client = vertx.createHttpClient(new ClientOptions());
+     server.requestHandler(req -> {
+         try {
+             req.response().write("foo");
+             fail("Should throw exception");
+         } catch (IllegalStateException e) {
+             // OK
+             testComplete();
+         }
+     });
+-    server.listen(port, onSuccess(s -> {
+-        client.post("some-uri", noOpHandler()).end();
++    server.listen(DEFAULT_HTTP_PORT, onSuccess(s -> {
++        client.post(new RequestOptions().setPort(DEFAULT_HTTP_PORT).setRequestURI(DEFAULT_TEST_URI), noOpHandler()).end();
+     }));
+     await();
+ }
+\ No newline at end of file

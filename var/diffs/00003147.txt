@@ -1,0 +1,23 @@
+diff --git a/fcc2211b93f64d0a8973bb583e9c500a9d2bd308 b/3d4073e2b26dae50a70a73872caefebdc5222155
+index fcc2211b93..3d4073e2b2 100644
+--- a/fcc2211b93f64d0a8973bb583e9c500a9d2bd308
++++ b/3d4073e2b26dae50a70a73872caefebdc5222155
+@@ -1,16 +1,16 @@
+ public void actionPerformed(AnActionEvent e) {
+     DataContext dataContext = e.getDataContext();
+     Project project = PlatformDataKeys.PROJECT.getData(dataContext);
+     if (project == null) {
+         return;
+     }
+     ToolWindowManager windowManager = ToolWindowManager.getInstance(project);
+     if (windowManager.isEditorComponentActive()) {
+         doNavigate(dataContext, project);
+         return;
+     }
+-    ContentManager contentManager = (ContentManager) dataContext.getData(DataConstantsEx.NONEMPTY_CONTENT_MANAGER);
++    ContentManager contentManager = PlatformDataKeys.NONEMPTY_CONTENT_MANAGER.getData(dataContext);
+     if (contentManager == null)
+         return;
+     doNavigate(contentManager);
+ }
+\ No newline at end of file

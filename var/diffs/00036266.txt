@@ -1,0 +1,25 @@
+diff --git a/e141e34ce86b080dccb7708e4835a705ab8c99b3 b/ee461c6b11d449a87004cc40dee2d14f79d595dd
+index e141e34ce8..ee461c6b11 100644
+--- a/e141e34ce86b080dccb7708e4835a705ab8c99b3
++++ b/ee461c6b11d449a87004cc40dee2d14f79d595dd
+@@ -1,15 +1,18 @@
++/**
++ * fills first chunk based on wanted.matches()
++ */
+ public List<Invocation> findFirstUnverifiedChunk(List<Invocation> invocations, InvocationMatcher wanted) {
+-    List<Invocation> unverified = ListUtil.filter(invocations, new RemoveVerifiedInOrder());
++    List<Invocation> unverified = removeVerifiedInOrder(invocations);
+     List<Invocation> firstChunk = new LinkedList<Invocation>();
+     for (Invocation invocation : unverified) {
+         if (wanted.matches(invocation)) {
+             firstChunk.add(invocation);
+         } else if (firstChunk.isEmpty()) {
+             firstChunk.add(invocation);
+             break;
+         } else {
+             break;
+         }
+     }
+     return firstChunk;
+ }
+\ No newline at end of file

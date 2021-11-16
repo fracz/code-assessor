@@ -1,0 +1,15 @@
+diff --git a/482963bd6dc46810534e380958ca991ba3369ce1 b/1fab315755f68599d49b1536920824de6763f99b
+index 482963bd6d..1fab315755 100644
+--- a/482963bd6dc46810534e380958ca991ba3369ce1
++++ b/1fab315755f68599d49b1536920824de6763f99b
+@@ -1,8 +1,6 @@
+ private DefaultResolvedModuleVersionResult createOrGet(ModuleVersionIdentifier id, ModuleVersionSelectionReason selectionReason) {
+     if (!modules.containsKey(id)) {
+-        DefaultResolvedModuleVersionResult result = new DefaultResolvedModuleVersionResult(id, selectionReason);
+-        modules.put(id, result);
+-        listener.moduleResult(result);
++        modules.put(id, new DefaultResolvedModuleVersionResult(id, selectionReason));
+     }
+     return modules.get(id);
+ }
+\ No newline at end of file

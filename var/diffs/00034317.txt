@@ -1,0 +1,16 @@
+diff --git a/05579b16fe026318f5936f809bb8e6f017a02364 b/5cc95100221cac2f8d594dbaa9f80bcab2c45a56
+index 05579b16fe..5cc9510022 100644
+--- a/05579b16fe026318f5936f809bb8e6f017a02364
++++ b/5cc95100221cac2f8d594dbaa9f80bcab2c45a56
+@@ -1,9 +1,8 @@
+ @Test
+ public void sendMessage_withNoAddressToSendTo_doesntOpenConnection() throws Exception {
+     MimeMessage message = new MimeMessage();
+-    MockSmtpServer server = new MockSmtpServer();
+-    setupConnectAndPlainAuthentication(server);
++    MockSmtpServer server = createServerAndSetupForPlainAuthentication();
+     SmtpTransport transport = startServerAndCreateSmtpTransport(server);
+     transport.sendMessage(message);
+     server.verifyConnectionNeverCreated();
+ }
+\ No newline at end of file

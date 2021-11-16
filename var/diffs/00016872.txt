@@ -1,0 +1,14 @@
+diff --git a/b165b9c533134e29830eda8ff1537e98ab09fb69 b/da38b5ececcb1c122513d29c0bc76b9038f8acbc
+index b165b9c533..da38b5ecec 100644
+--- a/b165b9c533134e29830eda8ff1537e98ab09fb69
++++ b/da38b5ececcb1c122513d29c0bc76b9038f8acbc
+@@ -1,7 +1,6 @@
+ @NotNull
+ private JsExpression overloadedCompareTo() {
+-    JsNumberLiteral zeroLiteral = program().getNumberLiteral(0);
+     JsBinaryOperator correspondingOperator = OperatorTable.getBinaryOperator(operationToken);
+     JsExpression methodCall = CallTranslator.translate(expression, context());
+-    return new JsBinaryOperation(correspondingOperator, methodCall, zeroLiteral);
++    return new JsBinaryOperation(correspondingOperator, methodCall, TranslationUtils.zeroLiteral(context()));
+ }
+\ No newline at end of file

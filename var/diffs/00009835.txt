@@ -1,0 +1,14 @@
+diff --git a/46e35e64b7e2eb52f3f21e1680505e5375b94fe7 b/822d5e2b9b40c604601707298e05c23315f02d82
+index 46e35e64b7..822d5e2b9b 100644
+--- a/46e35e64b7e2eb52f3f21e1680505e5375b94fe7
++++ b/822d5e2b9b40c604601707298e05c23315f02d82
+@@ -1,6 +1,4 @@
++@Override
+ public void setSelected(AnActionEvent e, boolean state) {
+-    Project project = e.getData(PlatformDataKeys.PROJECT);
+-    if (project != null) {
+-        MavenProjectsManager.getInstance(project).getGeneralSettings().setWorkOffline(state);
+-    }
++    getProjectsManager(e).getGeneralSettings().setWorkOffline(state);
+ }
+\ No newline at end of file

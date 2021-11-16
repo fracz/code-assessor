@@ -1,0 +1,20 @@
+diff --git a/3615edf1a541c56955d1dd2c0c9a315a7d013046 b/3a9f1787809e875982a059c32ff163a47aaf17e4
+index 3615edf1a5..3a9f178780 100644
+--- a/3615edf1a541c56955d1dd2c0c9a315a7d013046
++++ b/3a9f1787809e875982a059c32ff163a47aaf17e4
+@@ -1,8 +1,10 @@
+ protected void checkForKeyType(final Object iKey) {
+-    if (keyType == null) {
++    if (indexDefinition == null) {
+         // RECOGNIZE THE KEY TYPE AT RUN-TIME
+-        keyType = OType.getTypeByClass(iKey.getClass());
+-        if (keyType != null)
+-            updateConfiguration();
++        final OType type = OType.getTypeByClass(iKey.getClass());
++        if (type == null)
++            return;
++        indexDefinition = new OSimpleKeyIndexDefinition(type);
++        updateConfiguration();
+     }
+ }
+\ No newline at end of file

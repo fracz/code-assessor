@@ -1,0 +1,18 @@
+diff --git a/3fea6d92160c36a96dfb810e9351ded3dfc876a2 b/dabc40264adba5b1f8f2fd635d4f64acbef996aa
+index 3fea6d9216..dabc40264a 100644
+--- a/3fea6d92160c36a96dfb810e9351ded3dfc876a2
++++ b/dabc40264adba5b1f8f2fd635d4f64acbef996aa
+@@ -1,9 +1,9 @@
+ @Override
+-public void mv(MoveRequest request) throws GitException {
++public void mv(String source, String target) throws GitException {
+     try {
+-        getGit().add().addFilepattern(request.getTarget()).call();
+-        getGit().rm().addFilepattern(request.getSource()).call();
++        getGit().add().addFilepattern(target).call();
++        getGit().rm().addFilepattern(source).call();
+     } catch (GitAPIException exception) {
+         throw new GitException(exception.getMessage(), exception);
+     }
+ }
+\ No newline at end of file

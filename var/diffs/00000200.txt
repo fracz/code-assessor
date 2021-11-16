@@ -1,0 +1,17 @@
+diff --git a/19da1a20b157186856dd49568c8c753ce0901d36 b/05681cae8cd9ee8fffaa3f3f95770a4ac48de2c2
+index 19da1a20b1..05681cae8c 100644
+--- a/19da1a20b157186856dd49568c8c753ce0901d36
++++ b/05681cae8cd9ee8fffaa3f3f95770a4ac48de2c2
+@@ -1,8 +1,8 @@
+ @Test
+ public void unlockNonExistingLockTest() throws Exception {
+-    long badBockId = 1;
++    long badLockId = 1;
+     mThrown.expect(NotFoundException.class);
+-    mThrown.expectMessage("Failed to unlockBlock: lockId " + badBockId + " has no lock record");
++    mThrown.expectMessage(ExceptionMessage.LOCK_RECORD_NOT_FOUND.getMessage(badLockId));
+     // Unlock a non-existing lockId, expect to see IOException
+-    mLockManager.unlockBlock(badBockId);
++    mLockManager.unlockBlock(badLockId);
+ }
+\ No newline at end of file

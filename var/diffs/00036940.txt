@@ -1,0 +1,19 @@
+diff --git a/73a98c02d117f8ccf3c4f108fe0c0c4f6db4bc85 b/0897c2f582ff870ab04a4860446eb5538eead46e
+index 73a98c02d1..0897c2f582 100644
+--- a/73a98c02d117f8ccf3c4f108fe0c0c4f6db4bc85
++++ b/0897c2f582ff870ab04a4860446eb5538eead46e
+@@ -1,9 +1,11 @@
+ private static String getGetConnectionMethodAfterInsertCode() {
+     StringBuilder sb = new StringBuilder();
+     sb.append("{");
+-    // sb.append("System.out.println(\"-----BasicDataSource.getConnection() method is ended\");");
+-    // sb.append("System.out.println(\"-----BasicDataSource.getConnection() \"+$0.getClass().getName());");
++    if (logger.isDebugEnabled()) {
++        sb.append("System.out.println(\"-----BasicDataSource.getConnection() method is ended\");");
++        sb.append("System.out.println(\"-----BasicDataSource.getConnection() \"+$0.getClass().getName());");
++    }
+     sb.append(TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".putConnection(" + TomcatProfilerConstant.REQ_DATA_TYPE_DB_GET_CONNECTION + ",$0.getUrl());");
+     sb.append("}");
+     return sb.toString();
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/bebc520ae90455a3b0a8db1101aecc50675e4c7a b/31aa0822212935ae8e06a4d8b3df95d40fdb816d
+index bebc520ae9..31aa082221 100644
+--- a/bebc520ae90455a3b0a8db1101aecc50675e4c7a
++++ b/31aa0822212935ae8e06a4d8b3df95d40fdb816d
+@@ -1,12 +1,12 @@
+-// TODO:handle exceptions
+-public static StudyEditor getSelectedStudyEditor(Project project) {
++@Nullable
++public static StudyEditor getSelectedStudyEditor(@NotNull final Project project) {
+     try {
+         FileEditor fileEditor = FileEditorManagerImpl.getInstanceEx(project).getSplitters().getCurrentWindow().getSelectedEditor().getSelectedEditorWithProvider().getFirst();
+         if (fileEditor instanceof StudyEditor) {
+             return (StudyEditor) fileEditor;
+         }
+     } catch (Exception e) {
+         return null;
+     }
+     return null;
+ }
+\ No newline at end of file

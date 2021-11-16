@@ -1,0 +1,15 @@
+diff --git a/3fc449e86aa7463fa9d967f1ad1e5424f8253d39 b/5c1c1057d83a221c80814151f63cb9291a86ffd3
+index 3fc449e86a..5c1c1057d8 100644
+--- a/3fc449e86aa7463fa9d967f1ad1e5424f8253d39
++++ b/5c1c1057d83a221c80814151f63cb9291a86ffd3
+@@ -1,7 +1,4 @@
+ public static VirtualFile createChildDirectoryIfNotExist(Project project, VirtualFile parent, String name) throws IOException {
+-    VirtualFile child = parent.findChild(name);
+-    if (child == null) {
+-        return parent.createChildDirectory(project, name);
+-    }
+-    return child;
++    final VirtualFile child = parent.findChild(name);
++    return child == null ? parent.createChildDirectory(project, name) : child;
+ }
+\ No newline at end of file

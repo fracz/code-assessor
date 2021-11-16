@@ -1,0 +1,12 @@
+diff --git a/50f180567e4dbc5f06214a5be754c5967c0ac836 b/2e8aa310480150021be11fc628429d8ace4c08ef
+index 50f180567e..2e8aa31048 100644
+--- a/50f180567e4dbc5f06214a5be754c5967c0ac836
++++ b/2e8aa310480150021be11fc628429d8ace4c08ef
+@@ -1,5 +1,4 @@
+ public static byte[] modify(ClassPool classPool, ClassLoader classLoader, String javassistClassName, byte[] classFileBuffer) {
+-    log("ResultSetImpl modifing");
+-    // printClassInfo(javassistClassName);
++    logger.info("ResultSetImpl modifing. %s", javassistClassName);
+     return changeMethod(classPool, classLoader, javassistClassName, classFileBuffer);
+ }
+\ No newline at end of file

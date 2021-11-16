@@ -1,0 +1,20 @@
+diff --git a/77babc8757a15c2d0ac2f35dd178fb614720b73d b/0e32585a834fbf7d751a33fe304247243e3a04f2
+index 77babc8757..0e32585a83 100644
+--- a/77babc8757a15c2d0ac2f35dd178fb614720b73d
++++ b/0e32585a834fbf7d751a33fe304247243e3a04f2
+@@ -1,11 +1,12 @@
+ protected void initBooleanField(@NonNls String fieldName, String cbName, String groupName) {
+     try {
+         Class styleSettingsClass = CodeStyleSettings.class;
+         Field field = styleSettingsClass.getField(fieldName);
+-        BooleanOptionKey key = new BooleanOptionKey(groupName, cbName);
+-        myKeyToFieldMap.put(key, field);
++        BooleanOptionKey key = new BooleanOptionKey(groupName, cbName, field);
+         myKeys.add(key);
+     } catch (NoSuchFieldException e) {
++        LOG.error(e);
+     } catch (SecurityException e) {
++        LOG.error(e);
+     }
+ }
+\ No newline at end of file

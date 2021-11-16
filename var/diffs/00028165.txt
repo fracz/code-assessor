@@ -1,0 +1,21 @@
+diff --git a/ef611c4f17e053171527a1c1c0a155d4bc13b450 b/5c8ce588f82c293c4d5e9038fd6f627644409f61
+index ef611c4f17..5c8ce588f8 100644
+--- a/ef611c4f17e053171527a1c1c0a155d4bc13b450
++++ b/5c8ce588f82c293c4d5e9038fd6f627644409f61
+@@ -1,12 +1,10 @@
+ @Override
+-public void remove(String id) throws NotFoundException {
++public void remove(String id) {
++    requireNonNull(id, "Required non-null id");
+     lock.writeLock().lock();
+     try {
+-        final Profile profile = profiles.remove(id);
+-        if (profile == null) {
+-            throw new NotFoundException(String.format("Profile not found %s", id));
+-        }
++        profiles.remove(id);
+     } finally {
+         lock.writeLock().unlock();
+     }
+ }
+\ No newline at end of file

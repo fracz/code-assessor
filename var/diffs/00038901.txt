@@ -1,0 +1,14 @@
+diff --git a/ff4748698c01f97a30df0a023724414d758f3a0f b/34371a975258adee84a7ac94559864b7d8ac334e
+index ff4748698c..34371a9752 100644
+--- a/ff4748698c01f97a30df0a023724414d758f3a0f
++++ b/34371a975258adee84a7ac94559864b7d8ac334e
+@@ -1,4 +1,5 @@
+-public void addIndexRule(long labelId, long propertyKey) {
+-    LabelState labelState = getState(labelStates, labelId, LABEL_STATE_CREATOR);
+-    labelState.getIndexRuleDiffSets().add(propertyKey);
++public void addIndexRule(IndexRule rule) {
++    ruleDiffSets.add(rule);
++    LabelState labelState = getState(labelStates, rule.getLabel(), LABEL_STATE_CREATOR);
++    labelState.getIndexRuleDiffSets().add(rule);
+ }
+\ No newline at end of file

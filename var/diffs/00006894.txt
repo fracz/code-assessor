@@ -1,0 +1,20 @@
+diff --git a/75af6de5915711e24762e3d861074c5f493afbde b/f66834dd917c1c55d4b5781aed7ab56265dcbe42
+index 75af6de591..f66834dd91 100644
+--- a/75af6de5915711e24762e3d861074c5f493afbde
++++ b/f66834dd917c1c55d4b5781aed7ab56265dcbe42
+@@ -1,11 +1,10 @@
+-public RunContentDescriptor getReuseContent(final ProgramRunner requestor, DataContext dataContext) {
++@Nullable
++public RunContentDescriptor getReuseContent(final Executor requestor, DataContext dataContext) {
+     if (ApplicationManager.getApplication().isUnitTestMode())
+         return null;
+     RunContentDescriptor runContentDescriptor = (RunContentDescriptor) dataContext.getData(GenericProgramRunner.CONTENT_TO_REUSE);
+     if (runContentDescriptor != null)
+         return runContentDescriptor;
+-    final RunnerInfo runnerInfo = requestor.getInfo();
+-    LOG.assertTrue(runnerInfo != null);
+-    final ContentManager contentManager = getContentManagerForRunner(runnerInfo);
++    final ContentManager contentManager = getContentManagerForRunner(requestor);
+     return chooseReuseContentForDescriptor(contentManager, runContentDescriptor);
+ }
+\ No newline at end of file

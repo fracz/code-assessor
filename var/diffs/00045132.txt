@@ -1,0 +1,14 @@
+diff --git a/c808f577c5b3ed523f1cf36cab95da1883f28a73 b/66429bbceef6e8d8279b51db5ed90632d5639c0b
+index c808f577c5..66429bbcee 100644
+--- a/c808f577c5b3ed523f1cf36cab95da1883f28a73
++++ b/66429bbceef6e8d8279b51db5ed90632d5639c0b
+@@ -1,7 +1,7 @@
+ @Override
+ public void initClazz(ODatabaseDocumentTx db) {
+     OSchemaProxy schema = db.getMetadata().getSchema();
+-    OClass multiPoint = schema.createClass("MultiPoint");
++    OClass multiPoint = schema.createClass(getName());
+     multiPoint.addSuperClass(superClass(db));
+     multiPoint.createProperty(COORDINATES, OType.EMBEDDEDLIST, OType.EMBEDDEDLIST);
+ }
+\ No newline at end of file

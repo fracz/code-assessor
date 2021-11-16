@@ -1,0 +1,20 @@
+diff --git a/110894886633bb8e1c9e6b2e5c8af23f204f8479 b/6cca2f2ac60168be41d4474a5cf0396b9fa99e0d
+index 1108948866..6cca2f2ac6 100644
+--- a/110894886633bb8e1c9e6b2e5c8af23f204f8479
++++ b/6cca2f2ac60168be41d4474a5cf0396b9fa99e0d
+@@ -1,9 +1,9 @@
+-public ByteBuffer addSenderTerm(final UdpDestination destination, final long sessionId, final long channelId, final long termId) throws Exception {
+-    SenderChannelBuffer channelBuffer = srcTermMap.get(destination, sessionId, channelId);
++public MappedBufferRotator addSenderTerm(final UdpDestination destination, final long sessionId, final long channelId) throws Exception {
++    MappedBufferRotator channelBuffer = srcTermMap.get(destination, sessionId, channelId);
+     if (channelBuffer == null) {
+-        final File file = termLocation(senderDir, sessionId, channelId, termId, true, destination.toString(), STATE);
+-        channelBuffer = new SenderChannelBuffer(templateFile, file, MediaDriver.COMMAND_BUFFER_SZ + BufferDescriptor.TRAILER_LENGTH);
++        final File dir = channelLocation(senderDir, sessionId, channelId, true, destination.toString());
++        channelBuffer = new MappedBufferRotator(dir, logTemplate, LOG_BUFFER_SIZE, stateTemplate, STATE_BUFFER_LENGTH);
+         srcTermMap.put(destination, sessionId, channelId, channelBuffer);
+     }
+-    return channelBuffer.newTermBuffer(termId);
++    return channelBuffer;
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/9b25cf515a0955da37e532106792404985292f19 b/44fd0648a2e37606d8609775b1eee2655760571d
+index 9b25cf515a..44fd0648a2 100644
+--- a/9b25cf515a0955da37e532106792404985292f19
++++ b/44fd0648a2e37606d8609775b1eee2655760571d
+@@ -1,5 +1,6 @@
+ @Nullable
+ public static JetType getDelegatedPropertyGetMethodReturnType(@NotNull PropertyDescriptor propertyDescriptor, @NotNull JetExpression delegateExpression, @NotNull JetType delegateType, @NotNull ExpressionTypingServices expressionTypingServices, @NotNull BindingTrace trace, @NotNull JetScope scope) {
+     resolveDelegatedPropertyConventionMethod(propertyDescriptor, delegateExpression, delegateType, expressionTypingServices, trace, scope, true);
+-    return getDelegateGetMethodReturnType(trace.getBindingContext(), propertyDescriptor);
++    ResolvedCall<FunctionDescriptor> resolvedCall = trace.getBindingContext().get(DELEGATED_PROPERTY_RESOLVED_CALL, propertyDescriptor.getGetter());
++    return resolvedCall != null ? resolvedCall.getResultingDescriptor().getReturnType() : null;
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/ad2b62dc3989bdc21ee909cf47d043f00d002f46 b/ea9d269ed9079737dce4cfaca52976beade2c15a
+index ad2b62dc39..ea9d269ed9 100644
+--- a/ad2b62dc3989bdc21ee909cf47d043f00d002f46
++++ b/ea9d269ed9079737dce4cfaca52976beade2c15a
+@@ -1,11 +1,10 @@
+-/**
+- * Returns the largest recorded value.
+- *
+- * @return the largest recorded value
+- */
++/* (non-Javadoc)
++     * @see com.yammer.metrics.core.Summarized#max()
++     */
++@Override
+ public double max() {
+     if (count() > 0) {
+         return _max.get();
+     }
+     return 0.0;
+ }
+\ No newline at end of file

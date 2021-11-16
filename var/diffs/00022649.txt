@@ -1,0 +1,22 @@
+diff --git a/d46790b40598a5a9a3aff78f7f75fb210b352bf2 b/4dead72bb504721a6ab4924e0f4c860ed275c40c
+index d46790b405..4dead72bb5 100644
+--- a/d46790b40598a5a9a3aff78f7f75fb210b352bf2
++++ b/4dead72bb504721a6ab4924e0f4c860ed275c40c
+@@ -1,9 +1,11 @@
+ @Override
+ public void cancel() {
+-    mTarget.removeAnimator(this);
+-    final ArrayList<AnimatorListener> listeners = getListeners();
+-    final int numListeners = listeners == null ? 0 : listeners.size();
+-    for (int i = 0; i < numListeners; i++) {
+-        listeners.get(i).onAnimationCancel(this);
++    if (!mFinished) {
++        nCancel(mNativePtr.get());
++        final ArrayList<AnimatorListener> listeners = getListeners();
++        final int numListeners = listeners == null ? 0 : listeners.size();
++        for (int i = 0; i < numListeners; i++) {
++            listeners.get(i).onAnimationCancel(this);
++        }
+     }
+ }
+\ No newline at end of file

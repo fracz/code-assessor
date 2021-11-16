@@ -1,0 +1,29 @@
+diff --git a/dcb6727ef3eee3b026762bf5a8ca1b6df965a2bf b/c7b8ebc65b2e1b77ed77cb5ea44500d88b31e9a4
+index dcb6727ef3..c7b8ebc65b 100644
+--- a/dcb6727ef3eee3b026762bf5a8ca1b6df965a2bf
++++ b/c7b8ebc65b2e1b77ed77cb5ea44500d88b31e9a4
+@@ -1,15 +1,22 @@
+ @Override
+ public int flush(/*out*/
+ LongParcelable lastFrameNumber) {
+     if (DEBUG) {
+         Log.d(TAG, "flush called.");
+     }
++    if (mLegacyDevice.isClosed()) {
++        Log.e(TAG, "Cannot flush, device has been closed.");
++        return CameraBinderDecorator.ENODEV;
++    }
+     synchronized (mConfigureLock) {
+         if (mConfiguring) {
+             Log.e(TAG, "Cannot flush, configuration change in progress.");
+             return CameraBinderDecorator.INVALID_OPERATION;
+         }
+     }
+-    // TODO: implement flush.
++    long lastFrame = mLegacyDevice.flush();
++    if (lastFrameNumber != null) {
++        lastFrameNumber.setNumber(lastFrame);
++    }
+     return CameraBinderDecorator.NO_ERROR;
+ }
+\ No newline at end of file

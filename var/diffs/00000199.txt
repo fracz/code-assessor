@@ -1,0 +1,21 @@
+diff --git a/2aea9de62144f98e4f9ec884510374136d1c1eee b/b0d3dc80eae414ea6756055b28ec6969cd206b37
+index 2aea9de621..b0d3dc80ea 100644
+--- a/2aea9de62144f98e4f9ec884510374136d1c1eee
++++ b/b0d3dc80eae414ea6756055b28ec6969cd206b37
+@@ -1,14 +1,14 @@
+ @Test
+ public void cleanupUserTest() throws Exception {
+     long userId1 = TEST_USER_ID;
+     long userId2 = TEST_USER_ID + 1;
+     long lockId1 = mLockManager.lockBlock(userId1, TEST_BLOCK_ID, BlockLockType.READ);
+     long lockId2 = mLockManager.lockBlock(userId2, TEST_BLOCK_ID, BlockLockType.READ);
+     mThrown.expect(NotFoundException.class);
+-    mThrown.expectMessage("Failed to validateLock: lockId " + lockId2 + " has no lock record");
++    mThrown.expectMessage(ExceptionMessage.LOCK_RECORD_NOT_FOUND.getMessage(lockId2));
+     mLockManager.cleanupUser(userId2);
+     // Expect validating userId1 to get through
+     mLockManager.validateLock(userId1, TEST_BLOCK_ID, lockId1);
+     // Because userId2 has been cleaned up, expect validating userId2 to throw IOException
+     mLockManager.validateLock(userId2, TEST_BLOCK_ID, lockId2);
+ }
+\ No newline at end of file

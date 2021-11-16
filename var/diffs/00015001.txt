@@ -1,0 +1,16 @@
+diff --git a/46a939eaea182955f1d99b78bde257ffc243cefe b/848f2e7af5a9ddbad64d647be164b7d062bc1e02
+index 46a939eaea..848f2e7af5 100644
+--- a/46a939eaea182955f1d99b78bde257ffc243cefe
++++ b/848f2e7af5a9ddbad64d647be164b7d062bc1e02
+@@ -1,9 +1,8 @@
+ @NotNull
+ private JsInvocation generateCallMethodInvocation() {
+     JsNameRef callMethodNameRef = AstUtil.newQualifiedNameRef("call");
+     JsInvocation callMethodInvocation = new JsInvocation();
+     callMethodInvocation.setQualifier(callMethodNameRef);
+-    setQualifier(callMethodInvocation, callParameters(resolveThisObject(/*just get qualifier if null*/
+-    true)).functionReference);
++    setQualifier(callMethodInvocation, callParameters.getFunctionReference());
+     return callMethodInvocation;
+ }
+\ No newline at end of file

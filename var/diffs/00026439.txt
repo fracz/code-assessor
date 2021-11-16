@@ -1,0 +1,36 @@
+diff --git a/657839ddf48306db84515af84c5f02df5a9b602c b/8394bc4208a02de0c5d4a486f8ca030bb45db8da
+index 657839ddf4..8394bc4208 100644
+--- a/657839ddf48306db84515af84c5f02df5a9b602c
++++ b/8394bc4208a02de0c5d4a486f8ca030bb45db8da
+@@ -1,23 +1,26 @@
+ /**
+  * Fill the pool up to the minimum size.
+  */
+ private void initializeConnections() {
+     if (config.isInitializationFailFast()) {
+         try {
+             if (!addConnection()) {
+-                throw lastConnectionFailure.getAndSet(null);
++                throw jdbcMediator.getLastConnectionFailure();
++            }
++            final PoolEntry poolEntry = connectionBag.borrow(connectionTimeout, TimeUnit.MILLISECONDS);
++            if (config.getMinimumIdle() == 0) {
++                closeConnection(poolEntry, "Initialization validation complete, closing test connection.");
++            } else {
++                connectionBag.requite(poolEntry);
+             }
+-            ConnectionProxy connection = (ConnectionProxy) getConnection();
+-            connection.getPoolBagEntry().evict = (config.getMinimumIdle() == 0);
+-            connection.close();
+         } catch (Throwable e) {
+             try {
+                 shutdown();
+             } catch (Throwable ex) {
+                 e.addSuppressed(ex);
+             }
+             throw new PoolInitializationException(e);
+         }
+     }
+     fillPool();
+ }
+\ No newline at end of file

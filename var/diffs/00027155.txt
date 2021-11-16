@@ -1,0 +1,22 @@
+diff --git a/d81212e99b4d632a33ad327ea195fbff3b3e68d3 b/fd87577f041535e6339618320269e247c93db7f6
+index d81212e99b..fd87577f04 100644
+--- a/d81212e99b4d632a33ad327ea195fbff3b3e68d3
++++ b/fd87577f041535e6339618320269e247c93db7f6
+@@ -1,11 +1,11 @@
+ @Override
+-public void putUpdate(String sessionID, String workerID, long timestamp, byte[] update) {
+-    logIDs(sessionID, workerID);
+-    Map<Long, byte[]> updateMap = getUpdateMap(sessionID, workerID, true);
+-    updateMap.put(timestamp, update);
++public void putUpdate(Persistable update) {
++    logIDs(update.getSessionID(), update.getWorkerID(), update.getTypeID());
++    Map<Long, Persistable> updateMap = getUpdateMap(update.getSessionID(), update.getWorkerID(), update.getTypeID(), true);
++    updateMap.put(update.getTimeStamp(), update);
+     // For write ahead log: need to ensure that we persist all data to disk...
+     db.commit();
+     for (StatsStorageListener l : listeners) {
+-        l.notifyStatusUpdate(sessionID, workerID, timestamp);
++        l.notifyStatusUpdate(update.getSessionID(), update.getWorkerID(), update.getTypeID(), update.getTimeStamp());
+     }
+ }
+\ No newline at end of file

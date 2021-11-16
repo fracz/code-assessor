@@ -1,0 +1,18 @@
+diff --git a/35d613a2bfc41fb704dfa9e7dbe3449b956c6894 b/3481a63b2ece88f4342a1ae1ff05fd4e5a5a0cde
+index 35d613a2bf..3481a63b2e 100644
+--- a/35d613a2bfc41fb704dfa9e7dbe3449b956c6894
++++ b/3481a63b2ece88f4342a1ae1ff05fd4e5a5a0cde
+@@ -1,10 +1,7 @@
+ private List<Invocation> getInvocationsForEvaluation(OngoingVerifyingMode mode) {
+-    List<Invocation> invocations;
+     if (mode.orderOfInvocationsMatters()) {
+-        InvocationsChunker chunker = new InvocationsChunker(new AllInvocationsFinder(mode));
+-        invocations = chunker.getFirstUnverifiedInvocationChunk();
++        return chunker.getFirstUnverifiedInvocationChunk(mode.getAllMocksToBeVerifiedInSequence());
+     } else {
+-        invocations = registeredInvocations;
++        return registeredInvocations;
+     }
+-    return invocations;
+ }
+\ No newline at end of file

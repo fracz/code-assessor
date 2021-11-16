@@ -1,0 +1,20 @@
+diff --git a/e6f33c897612e3be08f516118ebaa4122ea20bde b/33047cc08ec20c842fd08fcd70d4f0ca947ac82e
+index e6f33c8976..33047cc08e 100644
+--- a/e6f33c897612e3be08f516118ebaa4122ea20bde
++++ b/33047cc08ec20c842fd08fcd70d4f0ca947ac82e
+@@ -1,13 +1,11 @@
+ public static ResponseCacheMiddleware addCache(AsyncHttpClient client, File cacheDir, long size) throws IOException {
+     for (AsyncHttpClientMiddleware middleware : client.getMiddleware()) {
+         if (middleware instanceof ResponseCacheMiddleware)
+             throw new IOException("Response cache already added to http client");
+     }
+     ResponseCacheMiddleware ret = new ResponseCacheMiddleware();
+-    ret.size = size;
+     ret.server = client.getServer();
+-    ret.cacheDir = cacheDir;
+-    ret.open();
++    ret.cache = new FileCache(cacheDir, size, false);
+     client.insertMiddleware(ret);
+     return ret;
+ }
+\ No newline at end of file

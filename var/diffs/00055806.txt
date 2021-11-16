@@ -1,0 +1,15 @@
+diff --git a/223e6acebcc16071a3702970e854b2db29963a39 b/525c5b6156f5c4ea6b5b42a43f378df7b6505088
+index 223e6acebc..525c5b6156 100644
+--- a/223e6acebcc16071a3702970e854b2db29963a39
++++ b/525c5b6156f5c4ea6b5b42a43f378df7b6505088
+@@ -1,8 +1,8 @@
+ @Test
+ public void readUnalignedChannel() throws Exception {
+     URI uri = DataBufferUtilsTests.class.getResource("DataBufferUtilsTests.txt").toURI();
+     FileChannel channel = FileChannel.open(Paths.get(uri), StandardOpenOption.READ);
+     Flux<DataBuffer> flux = DataBufferUtils.read(channel, this.bufferFactory, 5);
+-    TestSubscriber.subscribe(flux).assertNoError().assertComplete().assertValuesWith(stringConsumer("fooba"), stringConsumer("rbazq"), stringConsumer("ux"));
++    ScriptedSubscriber.<DataBuffer>create().consumeNextWith(stringConsumer("fooba")).consumeNextWith(stringConsumer("rbazq")).consumeNextWith(stringConsumer("ux")).expectComplete().verify(flux);
+     assertFalse(channel.isOpen());
+ }
+\ No newline at end of file

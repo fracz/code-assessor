@@ -1,0 +1,14 @@
+diff --git a/5b212c1bc1ff9c357a271b98786adacd700ffae8 b/be95bfd32c9235d5b7afef0ebc178ea42848f812
+index 5b212c1bc1..be95bfd32c 100644
+--- a/5b212c1bc1ff9c357a271b98786adacd700ffae8
++++ b/be95bfd32c9235d5b7afef0ebc178ea42848f812
+@@ -1,5 +1,6 @@
+ @Test
+-public void shouldPassIfWantedIsZeroAndMatchingChunkIsEmpty() throws Exception {
+-    assertTrue(finderStub.validMatchingChunkToReturn.isEmpty());
++public void shouldPassIfWantedIsZeroAndMatchingChunkIsEmpty() {
++    wanted = buildSimpleMethod().toInvocationMatcher();
++    invocations = emptyList();
+     checker.check(invocations, wanted, 0, context);
+ }
+\ No newline at end of file

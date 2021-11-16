@@ -1,0 +1,20 @@
+diff --git a/c0f7a0dfebfadbd854dc5b1fd884b7e837ffe265 b/9c5d1ea69cc0e58285431218ab6acfb1a86c7aeb
+index c0f7a0dfeb..9c5d1ea69c 100644
+--- a/c0f7a0dfebfadbd854dc5b1fd884b7e837ffe265
++++ b/9c5d1ea69cc0e58285431218ab6acfb1a86c7aeb
+@@ -1,11 +1,7 @@
+ @Override
+-public void updateRetry(FileDownloadModel model, Throwable throwable) {
+-    final String errMsg = throwable.toString();
+-    model.setStatus(FileDownloadStatus.retry);
+-    model.setErrMsg(errMsg);
+-    // db
++public void updateRetry(int id, Throwable throwable) {
+     ContentValues cv = new ContentValues();
+-    cv.put(FileDownloadModel.ERR_MSG, errMsg);
++    cv.put(FileDownloadModel.ERR_MSG, throwable.toString());
+     cv.put(FileDownloadModel.STATUS, FileDownloadStatus.retry);
+-    update(model.getId(), cv);
++    update(id, cv);
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/4af21f9eb0b2aadb8d75731159cb561d70e93e67 b/cfe34742fc8e49e7d150a7592efa64392826e646
+index 4af21f9eb0..cfe34742fc 100644
+--- a/4af21f9eb0b2aadb8d75731159cb561d70e93e67
++++ b/cfe34742fc8e49e7d150a7592efa64392826e646
+@@ -1,5 +1,5 @@
+-private DBEPersistAction[] createOrReplaceProcedureQuery(MySQLProcedure procedure) {
+-    return new DBEPersistAction[] { // $NON-NLS-2$ //$NON-NLS-3$
+-    new SQLDatabasePersistAction("Drop procedure", "DROP " + procedure.getProcedureType() + " IF EXISTS " + procedure.getFullQualifiedName()), // $NON-NLS-2$
+-    new SQLDatabasePersistAction("Create procedure", procedure.getDeclaration()) };
++private void createOrReplaceProcedureQuery(List<DBEPersistAction> actions, MySQLProcedure procedure) {
++    actions.add(// $NON-NLS-2$ //$NON-NLS-3$
++    new SQLDatabasePersistAction("Drop procedure", "DROP " + procedure.getProcedureType() + " IF EXISTS " + procedure.getFullQualifiedName()));
++    actions.add(new SQLDatabasePersistAction("Create procedure", procedure.getDeclaration()));
+ }
+\ No newline at end of file

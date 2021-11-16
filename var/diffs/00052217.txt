@@ -1,0 +1,13 @@
+diff --git a/968b7f654132ad23000266f8cebcad71d178b25e b/c25b2dfe651afab6113048dc99f11d36795063af
+index 968b7f6541..c25b2dfe65 100644
+--- a/968b7f654132ad23000266f8cebcad71d178b25e
++++ b/c25b2dfe651afab6113048dc99f11d36795063af
+@@ -1,4 +1,5 @@
+ private void scanVariable() {
+-    term.scanVariable(position);
+-    setTermResult();
++    Tokenizer tokenizer = new Tokenizer(input, dictionary, position);
++    tokenizer.scanVariable();
++    setTokenizerResult(tokenizer);
+ }
+\ No newline at end of file

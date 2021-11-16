@@ -1,0 +1,28 @@
+diff --git a/255330a201da9d944d01cbdb04a87fbd0db2b3bc b/a8e32c2b8fb773cc12a9465904ab0c59f4fe8daa
+index 255330a201..a8e32c2b8f 100644
+--- a/255330a201da9d944d01cbdb04a87fbd0db2b3bc
++++ b/a8e32c2b8fb773cc12a9465904ab0c59f4fe8daa
+@@ -1,12 +1,17 @@
++@SuppressWarnings({ "HardCodedStringLiteral" })
+ private static boolean isObsoleteCollectionType(PsiType type) {
+     if (type == null) {
+         return false;
+     }
+-    for (Object s_obsoleteCollectionType : s_obsoleteCollectionTypes) {
+-        final String typeName = (String) s_obsoleteCollectionType;
+-        if (type.equalsToText(typeName)) {
+-            return true;
+-        }
++    type = type.getDeepComponentType();
++    if (!(type instanceof PsiClassType))
++        return false;
++    PsiClassType classType = (PsiClassType) type;
++    if ("Vector".equals(classType.getClassName()) && classType.equalsToText("java.util.Vector")) {
++        return true;
++    }
++    if ("Hashtable".equals(classType.getClassName()) && classType.equalsToText("java.util.Hashtable")) {
++        return true;
+     }
+     return false;
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/ed668f89126c4cdbecaa24673836bcca8bcdd022 b/329d75b761a0a5fe3fe239df8f36d5f44ea76978
+index ed668f8912..329d75b761 100644
+--- a/ed668f89126c4cdbecaa24673836bcca8bcdd022
++++ b/329d75b761a0a5fe3fe239df8f36d5f44ea76978
+@@ -1,6 +1,10 @@
+-@SuppressWarnings("unused")
+ private static String getExecuteQueryMethodBeforeInsertCode() {
+     StringBuilder sb = new StringBuilder();
+-    // sb.append("}");
++    if (logger.isDebugEnabled()) {
++        sb.append("{");
++        sb.append("System.out.println(\"-----StatementImpl.executeQuery(String) method is called\");");
++        sb.append("System.out.println(\"-----Query=[\"+com.profiler.util.QueryStringUtil.removeCarriageReturn($1)+\"]\");");
++        sb.append("}");
++    }
+     return sb.toString();
+ }
+\ No newline at end of file

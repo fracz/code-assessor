@@ -1,0 +1,17 @@
+diff --git a/6dbb6542629729fbc05fadd6a7885e7b3edbf267 b/a6b227de05a10311fa74da0045d4313872a265f2
+index 6dbb654262..a6b227de05 100644
+--- a/6dbb6542629729fbc05fadd6a7885e7b3edbf267
++++ b/a6b227de05a10311fa74da0045d4313872a265f2
+@@ -1,8 +1,9 @@
+-public static void checkVariableShadowing(@NotNull ExpressionTypingContext context, @NotNull VariableDescriptor variableDescriptor, @Nullable VariableDescriptor oldDescriptor) {
++public static void checkVariableShadowing(@NotNull LexicalScope scope, @NotNull BindingTrace trace, @NotNull VariableDescriptor variableDescriptor) {
++    VariableDescriptor oldDescriptor = ScopeUtilsKt.findLocalVariable(scope, variableDescriptor.getName());
+     if (oldDescriptor != null && isLocal(variableDescriptor.getContainingDeclaration(), oldDescriptor)) {
+         PsiElement declaration = DescriptorToSourceUtils.descriptorToDeclaration(variableDescriptor);
+         if (declaration != null) {
+-            context.trace.report(Errors.NAME_SHADOWING.on(declaration, variableDescriptor.getName().asString()));
++            trace.report(Errors.NAME_SHADOWING.on(declaration, variableDescriptor.getName().asString()));
+         }
+     }
+ }
+\ No newline at end of file

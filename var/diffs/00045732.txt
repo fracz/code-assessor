@@ -1,0 +1,20 @@
+diff --git a/a40aabd65a6908384686f9f234af908cc233e7d8 b/00220719d409d1cc97f13345bdf66149d1b68e34
+index a40aabd65a..00220719d4 100644
+--- a/a40aabd65a6908384686f9f234af908cc233e7d8
++++ b/00220719d409d1cc97f13345bdf66149d1b68e34
+@@ -1,5 +1,10 @@
+-@Override
+-public boolean removeAll(Collection<?> c) {
+-    setDirty();
+-    return super.removeAll(c);
++public boolean removeAll(final Collection<?> c) {
++    boolean changed = false;
++    for (Object item : c) {
++        if (map.remove(item) != null)
++            changed = true;
++    }
++    if (changed)
++        setDirty();
++    return changed;
+ }
+\ No newline at end of file

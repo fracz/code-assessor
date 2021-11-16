@@ -1,0 +1,18 @@
+diff --git a/3a76aab339b47b078ba39941f72eb9dfeb99d404 b/e6b471b67ae6f4b1a6abc92342118935a6cad629
+index 3a76aab339..e6b471b67a 100644
+--- a/3a76aab339b47b078ba39941f72eb9dfeb99d404
++++ b/e6b471b67ae6f4b1a6abc92342118935a6cad629
+@@ -1,11 +1,11 @@
+ public void update(AnActionEvent event) {
+     pkg = getSelectedPackage(event.getDataContext());
+     event.getPresentation().setVisible(pkg != null);
+     event.getPresentation().setEnabled(pkg != null);
+     if (pkg != null) {
+         event.getPresentation().setText("Create \"Tests in '" + pkg.getQualifiedName() + "'\"...");
+-        module = (Module) event.getDataContext().getData(LangDataKeys.MODULE.getName());
++        module = LangDataKeys.MODULE.getData(event.getDataContext());
+     } else {
+         module = null;
+     }
+ }
+\ No newline at end of file

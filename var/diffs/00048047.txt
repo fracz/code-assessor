@@ -1,0 +1,22 @@
+diff --git a/c71a3bfd6ba7cbe4257043e98cb3de75c0bda048 b/e7df050d4a0b8aca8a15829729593858c1f57609
+index c71a3bfd6b..e7df050d4a 100644
+--- a/c71a3bfd6ba7cbe4257043e98cb3de75c0bda048
++++ b/e7df050d4a0b8aca8a15829729593858c1f57609
+@@ -1,13 +1,14 @@
+ @Override
+ public void primeEditorValue(@Nullable Object value) throws DBException {
+-    IValueController valueController = getEditorInput().getValueController();
+-    LOBInitializer initializer = new LOBInitializer(valueController, getEditorInput().getEditors(), getEditorInput());
++    ContentEditorInput input = getEditorInput();
++    IValueController valueController = input.getValueController();
++    LOBInitializer initializer = new LOBInitializer(valueController, input.getEditors(), input.getDefaultEditor(), input);
+     try {
+         // valueController.getValueSite().getWorkbenchWindow().run(true, true, initializer);
+         DBeaverUI.runInProgressService(initializer);
+     } catch (InvocationTargetException e) {
+         UIUtils.showErrorDialog(valueController.getValueSite().getShell(), "Cannot refresh content editor", null, e);
+     } catch (InterruptedException e) {
+     // ignore
+     }
+ }
+\ No newline at end of file

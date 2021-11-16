@@ -1,0 +1,14 @@
+diff --git a/cd24730eb578a22177ea3d203a7bc9a22c186479 b/156a6603a237f2f6b7e5bb56bf7fa59651f6eb0e
+index cd24730eb5..156a6603a2 100644
+--- a/cd24730eb578a22177ea3d203a7bc9a22c186479
++++ b/156a6603a237f2f6b7e5bb56bf7fa59651f6eb0e
+@@ -1,6 +1,5 @@
+ public static void setIndexRemoved(String keyspaceName, String indexName) {
+-    Mutation mutation = new Mutation(NAME, ByteBufferUtil.bytes(keyspaceName));
+-    mutation.delete(BUILT_INDEXES, BuiltIndexes.comparator.makeCellName(indexName), FBUtilities.timestampMicros());
+-    mutation.apply();
++    String req = "DELETE FROM %s.\"%s\" WHERE table_name = ? AND index_name = ?";
++    executeInternal(String.format(req, NAME, BUILT_INDEXES), keyspaceName, indexName);
+     forceBlockingFlush(BUILT_INDEXES);
+ }
+\ No newline at end of file

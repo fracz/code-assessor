@@ -1,0 +1,19 @@
+diff --git a/5e86e9ec145503259724bec9bd25817e6ec93c68 b/75e1e9f460a8d9c0199c529db8c25ec537bd2072
+index 5e86e9ec14..75e1e9f460 100644
+--- a/5e86e9ec145503259724bec9bd25817e6ec93c68
++++ b/75e1e9f460a8d9c0199c529db8c25ec537bd2072
+@@ -1,10 +1,6 @@
+-private static PsiExpression addCollectToListIfNeed(PsiExpression expression, PsiType type, PsiElementFactory elementFactory) {
+-    if (type instanceof PsiClassType) {
+-        PsiClass resolvedParamClass = ((PsiClassType) type).resolve();
+-        if (resolvedParamClass != null && CommonClassNames.JAVA_LANG_ITERABLE.equals(resolvedParamClass.getQualifiedName())) {
+-            final PsiExpression newExpression = elementFactory.createExpressionFromText(expression.getText() + ".collect(java.util.stream.Collectors.toList())", null);
+-            return (PsiExpression) expression.replace(newExpression);
+-        }
++private PsiExpression addCollectToListIfNeed(PsiExpression expression, PsiType type) {
++    if (type instanceof PsiClassType && ((PsiClassType) type).rawType().equalsToText(CommonClassNames.JAVA_LANG_ITERABLE)) {
++        return (PsiExpression) addCollectionToList(expression);
+     }
+     return expression;
+ }
+\ No newline at end of file

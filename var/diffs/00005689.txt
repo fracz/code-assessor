@@ -1,0 +1,15 @@
+diff --git a/f1e0e126dca6ff0b0ced404c993e1c0324949b4d b/77d3e5763487dc2ffdac4b3e34508f6a25c22f31
+index f1e0e126dc..77d3e57634 100644
+--- a/f1e0e126dca6ff0b0ced404c993e1c0324949b4d
++++ b/77d3e5763487dc2ffdac4b3e34508f6a25c22f31
+@@ -1,6 +1,6 @@
+ @Test
+ public void testValid() {
+-    StringWriter outWriter = new StringWriter();
+-    outWriter.write(myOutput);
+-    assertEquals(" Wrong commits number for " + myOutput, myExpected, HgPusher.getNumberOfPushedCommits(new HgCommandResult(outWriter, new StringWriter(), 0)));
++    ProcessOutput processOutput = new ProcessOutput(0);
++    processOutput.appendStdout(myOutput);
++    assertEquals(" Wrong commits number for " + myOutput, myExpected, HgPusher.getNumberOfPushedCommits(new HgCommandResult(processOutput)));
+ }
+\ No newline at end of file

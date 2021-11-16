@@ -1,0 +1,28 @@
+diff --git a/b9016e838a7dd532941f05ac4c411dffe16be91c b/9042c490891db350014ee066b0008d10c91c3404
+index b9016e838a..9042c49089 100644
+--- a/b9016e838a7dd532941f05ac4c411dffe16be91c
++++ b/9042c490891db350014ee066b0008d10c91c3404
+@@ -1,19 +1,17 @@
+ /**
+  * Free the given file or folder from tachyon in-memory (recursively freeing all children
+  * if a folder)
+  *
+  * @param path The TachyonURI path as the input of the command
+  * @return 0 if command if successful, -1 if an error occurred.
+- * @throws IOException
+  */
+ public int free(TachyonURI path) throws IOException {
+     try {
+-        mTfs.free(mTfs.open(path), TachyonFileSystem.RECURSIVE);
++        FreeOptions options = new FreeOptions.Builder(mTachyonConf).setRecursive(true).build();
++        mTfs.free(mTfs.open(path), options);
+         System.out.println(path + " was successfully freed from memory.");
+         return 0;
+-    } catch (InvalidPathException ioe) {
++    } catch (TachyonException e) {
+         return -1;
+-    } catch (TException e) {
+-        throw new IOException(e.getMessage());
+     }
+ }
+\ No newline at end of file

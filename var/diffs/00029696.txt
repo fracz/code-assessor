@@ -1,0 +1,16 @@
+diff --git a/8ec0d92c2eb9eb4e6ddd0a5d60ba7f824ad8cf5b b/4b6b4ccfcefcdea913e595606c16a2e1a5621c83
+index 8ec0d92c2e..4b6b4ccfce 100644
+--- a/8ec0d92c2eb9eb4e6ddd0a5d60ba7f824ad8cf5b
++++ b/4b6b4ccfcefcdea913e595606c16a2e1a5621c83
+@@ -1,9 +1,9 @@
+ @Override
+ public void handleRequest(final RestRequest request, final RestChannel channel) {
+     DeleteWarmerRequest deleteWarmerRequest = new DeleteWarmerRequest(Strings.splitStringByCommaToArray(request.param("name"))).indices(Strings.splitStringByCommaToArray(request.param("index")));
+     deleteWarmerRequest.listenerThreaded(false);
+     deleteWarmerRequest.timeout(request.paramAsTime("timeout", deleteWarmerRequest.timeout()));
+     deleteWarmerRequest.masterNodeTimeout(request.paramAsTime("master_timeout", deleteWarmerRequest.masterNodeTimeout()));
+     deleteWarmerRequest.indicesOptions(IndicesOptions.fromRequest(request, deleteWarmerRequest.indicesOptions()));
+-    client.admin().indices().deleteWarmer(deleteWarmerRequest, new AcknowledgedRestResponseActionListener(request, channel, logger));
++    client.admin().indices().deleteWarmer(deleteWarmerRequest, new AcknowledgedRestListener<DeleteWarmerResponse>(channel));
+ }
+\ No newline at end of file

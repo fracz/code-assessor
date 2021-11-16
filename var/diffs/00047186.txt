@@ -1,0 +1,13 @@
+diff --git a/2f310d7acaf53c5b98cf05954a4a1ab1e1472795 b/c784cfda1fb9f9c608046b984561383a9c5f76c4
+index 2f310d7aca..c784cfda1f 100644
+--- a/2f310d7acaf53c5b98cf05954a4a1ab1e1472795
++++ b/c784cfda1fb9f9c608046b984561383a9c5f76c4
+@@ -1,5 +1,4 @@
+ public void createSenderTermFile(final String destination, final long sessionId, final long channelId, final long termId) throws IOException {
+-    final File termLocation = termLocation(mapping.senderDir(), sessionId, channelId, termId, true, destination);
+-    IoUtil.delete(termLocation, true);
+-    createEmptyFile(termLocation, LogBufferDescriptor.LOG_MIN_SIZE);
++    createTermFile(destination, sessionId, channelId, termId, STATE);
++    createTermFile(destination, sessionId, channelId, termId, LOG);
+ }
+\ No newline at end of file

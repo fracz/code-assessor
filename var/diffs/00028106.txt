@@ -1,0 +1,26 @@
+diff --git a/75f67699f367a3ee73612da744c96247e49e2314 b/1eb7493965ff0f9faabf0898f8b5d5e6f967a9c5
+index 75f67699f3..1eb7493965 100644
+--- a/75f67699f367a3ee73612da744c96247e49e2314
++++ b/1eb7493965ff0f9faabf0898f8b5d5e6f967a9c5
+@@ -1,17 +1,7 @@
+ @Override
+ public ImageInfo inspectImage(InspectImageParams params) throws IOException {
+-    String image = params.getImage();
+-    String imageStreamTagName = KubernetesStringUtils.getTagNameFromRepoString(image);
+-    if (imageStreamTagName.contains(":")) {
+-        // Image to inspect passed in with tag, which we don't support
+-        imageStreamTagName = imageStreamTagName.replaceAll(":.*", "");
+-    }
++    String image = KubernetesStringUtils.getImageStreamNameFromPullSpec(params.getImage());
++    String imageStreamTagName = KubernetesStringUtils.convertPullSpecToTagName(image);
+     ImageStreamTag imageStreamTag = getImageStreamTagFromRepo(imageStreamTagName);
+-    // The DockerImageConfig string here is the JSON that would be returned by a docker inspect,
+-    // except that the capitalization is inconsistent, breaking deserialization. Top level elements
+-    // are lowercased, while nested elements conform to FieldNamingPolicy.UPPER_CAMEL_CASE.
+-    // We're only converting the config field for brevity; this means that other fields are null.
+-    String dockerImageConfig = imageStreamTag.getImage().getDockerImageConfig();
+-    ImageInfo info = GSON.fromJson(dockerImageConfig.replaceFirst("config", "Config"), ImageInfo.class);
+-    return info;
++    return getImageInfoFromTag(imageStreamTag);
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/b7cc09e08fa3ebcad761fd956eee71855576a4ff b/cd8baac73527e287a50c1b23f74a7ffd20866455
+index b7cc09e08f..cd8baac735 100644
+--- a/b7cc09e08fa3ebcad761fd956eee71855576a4ff
++++ b/cd8baac73527e287a50c1b23f74a7ffd20866455
+@@ -1,8 +1,10 @@
+ private static String getCloseMethodAfterInsertCode() {
+     StringBuilder sb = new StringBuilder();
+     sb.append("{");
+-    // sb.append("System.out.println(\"-----PoolingDataSource$PoolGuardConnectionWrapper.close() method is ended\");");
++    if (logger.isDebugEnabled()) {
++        sb.append("System.out.println(\"-----PoolingDataSource$PoolGuardConnectionWrapper.close() method is ended\");");
++    }
+     sb.append(TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".put(" + TomcatProfilerConstant.REQ_DATA_TYPE_DB_CLOSE_CONNECTION + ");");
+     sb.append("}");
+     return sb.toString();
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/717b46ce258547a7f603377e84b7fb0c3ef875e9 b/1d3ca896370023e001bc33f97b1bcd9966c43084
+index 717b46ce25..1d3ca89637 100644
+--- a/717b46ce258547a7f603377e84b7fb0c3ef875e9
++++ b/1d3ca896370023e001bc33f97b1bcd9966c43084
+@@ -1,7 +1,10 @@
+-private static void addAsNextTask(@NotNull Project project, Course course, Task task, Lesson lesson) {
++private static void addAsNextTask(@NotNull Project project, @NotNull StudyEditor editor, @NotNull Task task) {
++    Course course = StudyTaskManager.getInstance(project).getCourse();
++    assert course != null;
++    final Lesson lesson = editor.getTaskFile().getTask().getLesson();
+     lesson.addTask(task);
+     task.setIndex(lesson.getTaskList().size());
+     lesson.initLesson(course, true);
+     final String lessonName = EduNames.LESSON + lesson.getIndex();
+     createFilesForNewTask(project, task, lessonName);
+ }
+\ No newline at end of file

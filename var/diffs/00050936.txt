@@ -1,0 +1,28 @@
+diff --git a/0442eb5011675c8814140a2365ee26bf51ca9693 b/6367879ac606cc6534956802039cee060e4a5c7a
+index 0442eb5011..6367879ac6 100644
+--- a/0442eb5011675c8814140a2365ee26bf51ca9693
++++ b/6367879ac606cc6534956802039cee060e4a5c7a
+@@ -1,17 +1,11 @@
+ public DBDValueHandlerProvider getInstance() {
+-    if (instance == null && className != null) {
+-        Class<?> providerClass = super.getObjectClass(className);
+-        if (providerClass == null) {
++    if (instance == null && implType != null) {
++        try {
++            this.instance = implType.createInstance(DBDValueHandlerProvider.class);
++        } catch (Exception e) {
+             // $NON-NLS-1$
+-            log.error("Could not find data type provider class '" + this.className + "'");
+-        } else {
+-            try {
+-                this.instance = (DBDValueHandlerProvider) providerClass.newInstance();
+-            } catch (Exception e) {
+-                // $NON-NLS-1$
+-                log.error("Can't instantiate data type provider '" + this.id + "'", e);
+-            }
++            log.error("Can't instantiate data type provider '" + this.id + "'", e);
+         }
+     }
+     return instance;
+ }
+\ No newline at end of file

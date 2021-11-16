@@ -1,0 +1,25 @@
+diff --git a/74262e381fc524299232747644f5886e6e5bb29c b/f4fcd844ea89f93e94141c5a6c3402b486bcbbb4
+index 74262e381f..f4fcd844ea 100644
+--- a/74262e381fc524299232747644f5886e6e5bb29c
++++ b/f4fcd844ea89f93e94141c5a6c3402b486bcbbb4
+@@ -1,17 +1,15 @@
+ private InternalVertex nextVertex() {
+     InternalVertex v = null;
+     try {
+         while (v == null && iterator.hasNext()) {
+             long nextId = iterator.next().longValue();
+-            if (tx.isDeletedVertex(nextId))
+-                continue;
+             v = tx.getExistingVertex(nextId);
+-            // Filter out types
+-            if (v instanceof TitanType)
++            // Filter out deleted vertices and types
++            if (v.isRemoved() || (v instanceof TitanType))
+                 v = null;
+         }
+     } catch (StorageException e) {
+         throw new TitanException("Read exception on open iterator", e);
+     }
+     return v;
+ }
+\ No newline at end of file

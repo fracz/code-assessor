@@ -1,0 +1,20 @@
+diff --git a/7bcd31430007d56498dbf4ad5d438ae59a407d8a b/c116f9e798443c7ed58a0f81cbf9b43f07a791eb
+index 7bcd314300..c116f9e798 100644
+--- a/7bcd31430007d56498dbf4ad5d438ae59a407d8a
++++ b/c116f9e798443c7ed58a0f81cbf9b43f07a791eb
+@@ -1,10 +1,11 @@
+ @Override
+-@Nullable
+-public Token[] tokenize(@NotNull PsiMethod element) {
++public void tokenize(@NotNull PsiMethod element, TokenConsumer consumer) {
+     final PsiMethod[] methods = (element).findDeepestSuperMethods();
+     boolean isInSource = true;
+     for (PsiMethod psiMethod : methods) {
+         isInSource &= isMethodDeclarationInSource(psiMethod);
+     }
+-    return isInSource ? super.tokenize(element) : null;
++    if (isInSource) {
++        super.tokenize(element, consumer);
++    }
+ }
+\ No newline at end of file

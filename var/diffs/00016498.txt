@@ -1,0 +1,18 @@
+diff --git a/57a4a70db031db60c92071b8707d86f8c23c7280 b/49f83560b26455ac4be54f23a2bd8e46c7d01fcd
+index 57a4a70db0..49f83560b2 100644
+--- a/57a4a70db031db60c92071b8707d86f8c23c7280
++++ b/49f83560b26455ac4be54f23a2bd8e46c7d01fcd
+@@ -1,9 +1,6 @@
+ /*package*/
+ public static BackingFieldAccessTranslator newInstance(@NotNull JetSimpleNameExpression expression, @NotNull TranslationContext context) {
+-    DeclarationDescriptor referencedProperty = getDescriptorForReferenceExpression(context.bindingContext(), expression);
+-    if (referencedProperty instanceof SyntheticFieldDescriptor) {
+-        referencedProperty = ((SyntheticFieldDescriptor) referencedProperty).getPropertyDescriptor();
+-    }
+-    assert referencedProperty instanceof PropertyDescriptor;
+-    return new BackingFieldAccessTranslator((PropertyDescriptor) referencedProperty, context);
++    PropertyDescriptor referencedProperty = SyntheticFieldDescriptorKt.getReferencedProperty(getDescriptorForReferenceExpression(context.bindingContext(), expression));
++    assert referencedProperty != null;
++    return new BackingFieldAccessTranslator(referencedProperty, context);
+ }
+\ No newline at end of file

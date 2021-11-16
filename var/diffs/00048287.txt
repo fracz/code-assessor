@@ -1,0 +1,28 @@
+diff --git a/b4a0bd99b8f22b6c0a2c74778e9da8f82108a5bc b/0f994b6fb3ef376e0155ef2dfddefa43d3e3a601
+index b4a0bd99b8..0f994b6fb3 100644
+--- a/b4a0bd99b8f22b6c0a2c74778e9da8f82108a5bc
++++ b/0f994b6fb3ef376e0155ef2dfddefa43d3e3a601
+@@ -1,10 +1,17 @@
+ private void fillVisibleAttributes() {
+     this.visibleAttributes.clear();
+-    for (DBDAttributeBinding binding : this.attributes) {
+-        DBDPseudoAttribute pseudoAttribute = binding.getMetaAttribute().getPseudoAttribute();
+-        if (pseudoAttribute == null) {
+-            // Make visible "real" attributes
+-            this.visibleAttributes.add(binding);
++    if (executionSource != null && executionSource.getDataContainer() instanceof DBSEntity) {
++        // Filter pseudo attributes if we query single entity
++        for (DBDAttributeBinding binding : this.attributes) {
++            if (binding instanceof DBDAttributeBindingMeta) {
++                DBDPseudoAttribute pseudoAttribute = ((DBDAttributeBindingMeta) binding).getPseudoAttribute();
++                if (pseudoAttribute == null) {
++                    // Make visible "real" attributes
++                    this.visibleAttributes.add(binding);
++                }
++            }
+         }
++    } else {
++        Collections.addAll(this.visibleAttributes, this.attributes);
+     }
+ }
+\ No newline at end of file

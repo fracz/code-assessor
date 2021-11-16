@@ -1,0 +1,14 @@
+diff --git a/a09348ef9ed6595175e4bbdfa1a6518c52086205 b/67509a8905200eb48855ea2be450f615a4e70430
+index a09348ef9e..67509a8905 100644
+--- a/a09348ef9ed6595175e4bbdfa1a6518c52086205
++++ b/67509a8905200eb48855ea2be450f615a4e70430
+@@ -1,6 +1,4 @@
+ private Optional<Connection> getCachedConnection(final String dataSourceName, final SQLType sqlType) {
+-    if (connectionMap.containsKey(dataSourceName)) {
+-        return Optional.of(connectionMap.get(dataSourceName));
+-    }
+-    return Optional.fromNullable(connectionMap.get(MasterSlaveDataSource.isMasterRoute(sqlType) ? getMasterDataSourceName(dataSourceName) : getSlaveDataSourceName(dataSourceName)));
++    String key = connectionMap.containsKey(dataSourceName) ? dataSourceName : MasterSlaveDataSource.getDataSourceName(dataSourceName, sqlType);
++    return Optional.fromNullable(connectionMap.get(key));
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/7651a7ab39718efe559d96559ad8de52098c747e b/906e2b36970d799c786a745033abb5b2e0d31cff
+index 7651a7ab39..906e2b3697 100644
+--- a/7651a7ab39718efe559d96559ad8de52098c747e
++++ b/906e2b36970d799c786a745033abb5b2e0d31cff
+@@ -1,5 +1,5 @@
+ @Override
+ public StandardTransactionBuilder setTimestamp(long timestampSinceEpoch, TimeUnit unit) {
+-    this.timestamp = graphTimeUnit.convert(timestampSinceEpoch, unit);
++    this.timestamp = new Timepoint(timestampSinceEpoch, unit);
+     return this;
+ }
+\ No newline at end of file

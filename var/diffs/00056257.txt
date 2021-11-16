@@ -1,0 +1,24 @@
+diff --git a/cefd33dd5f9948d438990484c28cf0a9a3c29521 b/28b9e7339ac794bb12a929f18ef883cdaf0bef75
+index cefd33dd5f..28b9e7339a 100644
+--- a/cefd33dd5f9948d438990484c28cf0a9a3c29521
++++ b/28b9e7339ac794bb12a929f18ef883cdaf0bef75
+@@ -1,12 +1,15 @@
+ /**
+  * Reads a UTF-8 encoded string. Since ASCII is a subset of UTF-8, this method
+  * may be used to read strings that are known to be ASCII-only.
+  */
+ public ByteString readString() throws IOException {
+     int firstByte = readByte();
+     int length = readInt(firstByte, PREFIX_8_BITS);
+-    byte[] encoded = new byte[length];
++    if ((length & 0x80) == 0x80) {
++        // 1NNNNNNN
++        length &= ~0x80;
++    // TODO: actually decode huffman!
++    }
+     bytesLeft -= length;
+-    in.readFully(encoded);
+-    return ByteString.of(encoded);
++    return ByteString.read(in, length);
+ }
+\ No newline at end of file

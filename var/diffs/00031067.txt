@@ -1,0 +1,24 @@
+diff --git a/5e1d06e5813d955f10ea5b7a96e37413a181a4a2 b/443f0b86af14e342dd32236a03bfb573b44866b6
+index 5e1d06e581..443f0b86af 100644
+--- a/5e1d06e5813d955f10ea5b7a96e37413a181a4a2
++++ b/443f0b86af14e342dd32236a03bfb573b44866b6
+@@ -1,13 +1,14 @@
+ @Override
+ protected void doCollect(int doc) throws IOException {
+-    Number keyValue = (Number) keyScript.execute(doc);
++    keyScript.setNextDocId(doc);
++    valueScript.setNextDocId(doc);
+     long bucket;
+     if (interval == 0) {
+-        bucket = keyValue.longValue();
++        bucket = keyScript.runAsLong();
+     } else {
+-        bucket = bucket(keyValue.doubleValue(), interval);
++        bucket = bucket(keyScript.runAsDouble(), interval);
+     }
+-    double value = ((Number) valueScript.execute(doc)).doubleValue();
++    double value = valueScript.runAsDouble();
+     counts.adjustOrPutValue(bucket, 1, 1);
+     totals.adjustOrPutValue(bucket, value, value);
+ }
+\ No newline at end of file

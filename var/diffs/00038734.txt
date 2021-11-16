@@ -1,0 +1,25 @@
+diff --git a/1c7e26e727d0e69e6583eb2491c2f8b244f41fe2 b/2a114d05e99e1cf2b4f83c260e1eb1ded78b66cf
+index 1c7e26e727..2a114d05e9 100644
+--- a/1c7e26e727d0e69e6583eb2491c2f8b244f41fe2
++++ b/2a114d05e99e1cf2b4f83c260e1eb1ded78b66cf
+@@ -1,11 +1,13 @@
+ @Override
+ public UniquenessConstraint addUniquenessConstraint(long labelId, long propertyKeyId) {
+-    boolean create = true;
+-    for (Iterator<UniquenessConstraint> it = delegate.getConstraints(labelId, propertyKeyId); it.hasNext(); ) {
+-        if (it.next().equals(labelId, propertyKeyId)) {
+-            create = false;
+-            break;
++    UniquenessConstraint constraint = new UniquenessConstraint(labelId, propertyKeyId);
++    if (!state.unRemoveConstraint(constraint)) {
++        for (Iterator<UniquenessConstraint> it = delegate.getConstraints(labelId, propertyKeyId); it.hasNext(); ) {
++            if (it.next().equals(labelId, propertyKeyId)) {
++                return constraint;
++            }
+         }
++        state.addConstraint(constraint);
+     }
+-    return state.addConstraint(new UniquenessConstraint(labelId, propertyKeyId), create);
++    return constraint;
+ }
+\ No newline at end of file

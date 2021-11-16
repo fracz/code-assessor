@@ -1,0 +1,20 @@
+diff --git a/bccb2d2617a7e0aa19984886bb4f6754b9ab567f b/8a344ec9077f8e93135eb04a39d2c078689878cc
+index bccb2d2617..8a344ec907 100644
+--- a/bccb2d2617a7e0aa19984886bb4f6754b9ab567f
++++ b/8a344ec9077f8e93135eb04a39d2c078689878cc
+@@ -1,12 +1,12 @@
+ private static void embedHorizontalSeparationPattern(int xStart, int yStart, ByteMatrix matrix) throws WriterException {
+     // We know the width and height.
+     if (HORIZONTAL_SEPARATION_PATTERN[0].length != 8 || HORIZONTAL_SEPARATION_PATTERN.length != 1) {
+         throw new WriterException("Bad horizontal separation pattern");
+     }
+     for (int x = 0; x < 8; ++x) {
+-        if (!isEmpty(matrix.get(yStart, xStart + x))) {
++        if (!isEmpty(matrix.get(xStart + x, yStart))) {
+             throw new WriterException();
+         }
+-        matrix.set(yStart, xStart + x, HORIZONTAL_SEPARATION_PATTERN[0][x]);
++        matrix.set(xStart + x, yStart, HORIZONTAL_SEPARATION_PATTERN[0][x]);
+     }
+ }
+\ No newline at end of file

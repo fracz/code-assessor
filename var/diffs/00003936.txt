@@ -1,0 +1,21 @@
+diff --git a/c5c81acc2b2245cf2ac80113b504411e106dbf03 b/4f57038971eb9a678d33cb3d7b006f06a4afb6eb
+index c5c81acc2b..4f57038971 100644
+--- a/c5c81acc2b2245cf2ac80113b504411e106dbf03
++++ b/4f57038971eb9a678d33cb3d7b006f06a4afb6eb
+@@ -1,12 +1,10 @@
+-@Nullable
+-private ProblemDescriptor[] analyzeCodeBlock(final PsiCodeBlock body, InspectionManager manager) {
++private void analyzeCodeBlock(final PsiCodeBlock body, ProblemsHolder holder) {
+     if (body == null)
+-        return null;
++        return;
+     DataFlowRunner dfaRunner = new DataFlowRunner(SUGGEST_NULLABLE_ANNOTATIONS);
+     if (dfaRunner.analyzeMethod(body)) {
+         if (dfaRunner.problemsDetected()) {
+-            return createDescription(dfaRunner, manager);
++            createDescription(dfaRunner, holder);
+         }
+     }
+-    return null;
+ }
+\ No newline at end of file

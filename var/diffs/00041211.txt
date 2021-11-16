@@ -1,0 +1,13 @@
+diff --git a/8812eb3ea418707a28f863e295b4a722e40b5708 b/d25c66f989f8c965a700de6dd9d3ec809c15f040
+index 8812eb3ea4..d25c66f989 100644
+--- a/8812eb3ea418707a28f863e295b4a722e40b5708
++++ b/d25c66f989f8c965a700de6dd9d3ec809c15f040
+@@ -1,5 +1,4 @@
+ @Override
+-public OIndexMultiValues create(String name, OIndexDefinition indexDefinition, String clusterIndexName, Set<String> clustersToIndex, boolean rebuild, OProgressListener progressListener) {
+-    OIndexMultiValues oIndexMultiValues = super.create(name, indexDefinition, clusterIndexName, clustersToIndex, rebuild, progressListener);
+-    return oIndexMultiValues;
++public OLuceneIndexNotUnique create(String name, OIndexDefinition indexDefinition, String clusterIndexName, Set<String> clustersToIndex, boolean rebuild, OProgressListener progressListener) {
++    return (OLuceneIndexNotUnique) super.create(indexDefinition, clusterIndexName, clustersToIndex, rebuild, progressListener, determineValueSerializer());
+ }
+\ No newline at end of file

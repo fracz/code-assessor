@@ -1,0 +1,12 @@
+diff --git a/0e34ea55dfb88f4ec5a33d3bc3caa87796508c20 b/c606f1fd33e515477250bdf79127209ba6f7dafe
+index 0e34ea55df..c606f1fd33 100644
+--- a/0e34ea55dfb88f4ec5a33d3bc3caa87796508c20
++++ b/c606f1fd33e515477250bdf79127209ba6f7dafe
+@@ -1,4 +1,5 @@
+ @Override
+ public Long read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
+-    return network.readLong();
++    countRecords = network.readLong();
++    return countRecords;
+ }
+\ No newline at end of file

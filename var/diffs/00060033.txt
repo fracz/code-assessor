@@ -1,0 +1,21 @@
+diff --git a/1d01691b8734ba5b4ac5258bd27c129a909b2748 b/9110e0fbf78a3d891a53cbbad4de14e818e4a052
+index 1d01691b87..9110e0fbf7 100644
+--- a/1d01691b8734ba5b4ac5258bd27c129a909b2748
++++ b/9110e0fbf78a3d891a53cbbad4de14e818e4a052
+@@ -1,12 +1,12 @@
+ private WriteResult tryDeleteLockOnce(StaticBuffer key, StaticBuffer col, StoreTransaction txh) {
+     Throwable t = null;
+-    final long before = Timestamps.SYSTEM().getTime();
++    final long before = times.getTime();
+     try {
+         StoreTransaction newTx = overrideTimestamp(txh, before);
+         store.mutate(key, ImmutableList.<Entry>of(), Arrays.asList(col), newTx);
+     } catch (StorageException e) {
+         t = e;
+     }
+-    final long after = Timestamps.SYSTEM().getTime();
+-    return new WriteResult(before, after, null, t);
++    final long after = times.getTime();
++    return new WriteResult(before, after, timeUnit, null, t);
+ }
+\ No newline at end of file

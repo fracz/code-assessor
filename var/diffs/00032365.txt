@@ -1,0 +1,17 @@
+diff --git a/bab06020407e6e8d2e0bccb23efc6e8ebc62a423 b/ebd075f1a840c2d8e272fa3b846cae1c3c60cf5f
+index bab0602040..ebd075f1a8 100644
+--- a/bab06020407e6e8d2e0bccb23efc6e8ebc62a423
++++ b/ebd075f1a840c2d8e272fa3b846cae1c3c60cf5f
+@@ -1,10 +1,10 @@
+ private Declaration maybeGetForwardDeclaration(String qname) {
+     NTIScope globalScope = this;
+     while (globalScope.parent != null) {
+         globalScope = globalScope.parent;
+     }
+     if (globalScope.unknownTypeNames.contains(qname)) {
+-        return new Declaration(JSType.UNKNOWN, null, null, null, false, false);
++        return new Declaration(this.commonTypes.UNKNOWN, null, null, null, false, false);
+     }
+     return null;
+ }
+\ No newline at end of file

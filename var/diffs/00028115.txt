@@ -1,0 +1,27 @@
+diff --git a/14e5945e0c77221a073dd2c48081c610bd3a5f88 b/c2f424b8cbd42df6506cc4991a33b9c6cab67f24
+index 14e5945e0c..c2f424b8cb 100644
+--- a/14e5945e0c77221a073dd2c48081c610bd3a5f88
++++ b/c2f424b8cbd42df6506cc4991a33b9c6cab67f24
+@@ -1,16 +1,7 @@
+ private void showWarningDialog() {
+-    dialogFactory.createConfirmDialog(locale.warningOperationTitle(), locale.renameWithWarnings(), locale.showRenameWizard(), locale.buttonCancel(), new ConfirmCallback() {
+-
+-        @Override
+-        public void accepted() {
+-            isActiveLinkedEditor = true;
+-            refactor(textEditor);
+-            isActiveLinkedEditor = false;
+-        }
+-    }, new CancelCallback() {
+-
+-        @Override
+-        public void cancelled() {
+-        }
+-    }).show();
++    dialogFactory.createConfirmDialog(locale.warningOperationTitle(), locale.renameWithWarnings(), locale.showRenameWizard(), locale.buttonCancel(), () -> {
++        isActiveLinkedEditor = true;
++        refactor(textEditor);
++        isActiveLinkedEditor = false;
++    }, clientServerEventService::sendFileTrackingResumeEvent).show();
+ }
+\ No newline at end of file

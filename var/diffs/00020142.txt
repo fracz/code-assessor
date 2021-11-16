@@ -1,0 +1,16 @@
+diff --git a/8168bb2463a636aa13127829398232b0f1d08030 b/107403e7854ff8788c6e8b02f1b28a3e78233e64
+index 8168bb2463..107403e785 100644
+--- a/8168bb2463a636aa13127829398232b0f1d08030
++++ b/107403e7854ff8788c6e8b02f1b28a3e78233e64
+@@ -1,9 +1,5 @@
+ public void test_oracle_group_0() throws Exception {
+     String sql = "select type, count(*) from t group by type";
+     String result = PagerUtils.count(sql, JdbcConstants.ORACLE);
+-    Assert.assertEquals(//
+-    "SELECT COUNT(*)" + //
+-    "\nFROM (SELECT type, COUNT(*)" + //
+-    "\n\tFROM t" + //
+-    "\n\tGROUP BY type" + "\n\t) ALIAS_COUNT", result);
++    Assert.assertEquals("SELECT COUNT(*)\n" + "FROM (\n" + "\tSELECT type, COUNT(*)\n" + "\tFROM t\n" + "\tGROUP BY type\n" + ") ALIAS_COUNT", result);
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/ffc312d93b4ef54ce66f7a0bc389b0bb1e8e8229 b/3465e2a55eea6490d5f7f18c78194941747a097e
+index ffc312d93b..3465e2a55e 100644
+--- a/ffc312d93b4ef54ce66f7a0bc389b0bb1e8e8229
++++ b/3465e2a55eea6490d5f7f18c78194941747a097e
+@@ -1,6 +1,6 @@
+ @Test
+ public void decodeEmptyFlux() throws InterruptedException {
+     Flux<DataBuffer> source = Flux.empty();
+     Flux<String> output = this.decoder.decode(source, ResolvableType.forClass(String.class), null, Collections.emptyMap());
+-    TestSubscriber.subscribe(output).assertNoError().assertComplete().assertNoValues();
++    ScriptedSubscriber.<String>create().expectNextCount(0).expectComplete().verify(output);
+ }
+\ No newline at end of file

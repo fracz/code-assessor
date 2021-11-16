@@ -1,0 +1,22 @@
+diff --git a/6e20e6d0a74850da0382559f7feb727def7e18db b/ee39ffaee4190d3fb641dc76afe4364d8dc91722
+index 6e20e6d0a7..ee39ffaee4 100644
+--- a/6e20e6d0a74850da0382559f7feb727def7e18db
++++ b/ee39ffaee4190d3fb641dc76afe4364d8dc91722
+@@ -1,12 +1,15 @@
+ private SQLContext getSQLContext() {
++    if (sqlStatement instanceof SQLSelectStatement) {
++        return ((SQLSelectStatement) sqlStatement).getSelect().getSqlContext();
++    }
+     if (sqlStatement instanceof SQLInsertStatement) {
+         return ((SQLInsertStatement) sqlStatement).getSqlContext();
+     }
+     if (sqlStatement instanceof SQLUpdateStatement) {
+         return ((SQLUpdateStatement) sqlStatement).getSqlContext();
+     }
+     if (sqlStatement instanceof SQLDeleteStatement) {
+         return ((SQLDeleteStatement) sqlStatement).getSqlContext();
+     }
+-    return null;
++    throw new UnsupportedOperationException(sqlStatement.getClass().getCanonicalName());
+ }
+\ No newline at end of file

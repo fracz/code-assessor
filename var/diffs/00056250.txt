@@ -1,0 +1,15 @@
+diff --git a/5c9b23139a69236aa3e09c042f32494e377f87f0 b/a9a734c25cb826b4ae9e2ec7937de3445b6190a4
+index 5c9b23139a..a9a734c25c 100644
+--- a/5c9b23139a69236aa3e09c042f32494e377f87f0
++++ b/a9a734c25cb826b4ae9e2ec7937de3445b6190a4
+@@ -1,7 +1,7 @@
+ private ByteString getName(int index) {
+     if (isStaticHeader(index)) {
+-        return STATIC_HEADER_TABLE[index - headerTable.size()].name;
++        return STATIC_HEADER_TABLE[index - headerCount].name;
+     } else {
+-        return headerTable.get(index).name;
++        return headerTable[headerTableIndex(index)].name;
+     }
+ }
+\ No newline at end of file

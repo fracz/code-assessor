@@ -1,0 +1,16 @@
+diff --git a/b4e8930b9b6ce8e36c63555094a9cb45ff91901d b/c251a4cbd7d3a2921ff1947b47d0f21731326918
+index b4e8930b9b..c251a4cbd7 100644
+--- a/b4e8930b9b6ce8e36c63555094a9cb45ff91901d
++++ b/c251a4cbd7d3a2921ff1947b47d0f21731326918
+@@ -1,8 +1,8 @@
+ public void processFile(Node scriptNode) {
+     checkArgument(scriptNode.isScript());
+-    NodeTraversal.traverseEs6(compiler, scriptNode, new RemoveNonDeclarations());
+-    NodeTraversal.traverseEs6(compiler, scriptNode, new PropagateConstJsdoc());
+     FileInfo currentFile = new FileInfo();
++    NodeTraversal.traverseEs6(compiler, scriptNode, new RemoveNonDeclarations());
++    NodeTraversal.traverseEs6(compiler, scriptNode, new PropagateConstJsdoc(currentFile));
+     SimplifyDeclarations simplify = new SimplifyDeclarations(compiler, currentFile);
+     NodeTraversal.traverseEs6(compiler, scriptNode, simplify);
+ }
+\ No newline at end of file

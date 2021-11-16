@@ -1,0 +1,16 @@
+diff --git a/52284fe66c6fb83697029fd4237e72741326fcaf b/9322008a74ed374c5d677f378ec34ab9764f179e
+index 52284fe66c..9322008a74 100644
+--- a/52284fe66c6fb83697029fd4237e72741326fcaf
++++ b/9322008a74ed374c5d677f378ec34ab9764f179e
+@@ -1,7 +1,7 @@
+-private void validateNodePropertyExistenceConstraintCanBeCreated(int labelId, int propertyKeyId) {
+-    for (SchemaRule rule : schemaCache.schemaRulesForLabel(labelId)) {
+-        if (rule.getKind() == SchemaRule.Kind.NODE_PROPERTY_EXISTENCE_CONSTRAINT && propertyKeyId == ((NodePropertyExistenceConstraintRule) rule).getPropertyKey()) {
++private void validateNodePropertyExistenceConstraintCanBeCreated(NodePropertyDescriptor descriptor) {
++    for (SchemaRule rule : schemaCache.schemaRulesForLabel(descriptor.getLabelId())) {
++        if (rule.getKind() == SchemaRule.Kind.NODE_PROPERTY_EXISTENCE_CONSTRAINT && descriptor.equals(((NodePropertyExistenceConstraintRule) rule).descriptor())) {
+             throw new ConstraintViolationException("Node property existence constraint for given {label;property} already exists");
+         }
+     }
+ }
+\ No newline at end of file

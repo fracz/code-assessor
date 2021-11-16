@@ -1,0 +1,15 @@
+diff --git a/00b8750fbf9655e878f9126405e2b866476ff229 b/07e48e09b8b4b035e1161975f26106e03c6e01b6
+index 00b8750fbf..07e48e09b8 100644
+--- a/00b8750fbf9655e878f9126405e2b866476ff229
++++ b/07e48e09b8b4b035e1161975f26106e03c6e01b6
+@@ -1,7 +1,7 @@
+ public void setClassName(final String iClassName) {
+-    if (_database == null || iClassName == null) {
++    if (iClassName == null) {
+         _clazz = null;
+         return;
+     }
+-    setClass(_database.getMetadata().getSchema().getOrCreateClass(iClassName));
++    setClass(getDatabase().getMetadata().getSchema().getOrCreateClass(iClassName));
+ }
+\ No newline at end of file

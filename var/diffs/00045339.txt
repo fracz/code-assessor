@@ -1,0 +1,15 @@
+diff --git a/5c87d8fd3cabecc54f92fbd9860965e5cdc2f12c b/4f389b0d1b2496ad03f4be9ccdfbf13ea7e6fe65
+index 5c87d8fd3c..4f389b0d1b 100644
+--- a/5c87d8fd3cabecc54f92fbd9860965e5cdc2f12c
++++ b/4f389b0d1b2496ad03f4be9ccdfbf13ea7e6fe65
+@@ -1,8 +1,8 @@
+ @Override
+ public Query buildQuery(Object query) {
+     try {
+         return queryBuilder.query(index, query, mgrWriter.getIndexWriter().getAnalyzer());
+     } catch (ParseException e) {
+-        throw new OIndexEngineException("Error parsing query", e);
++        throw OException.wrapException(new OIndexEngineException("Error parsing query"), e);
+     }
+ }
+\ No newline at end of file

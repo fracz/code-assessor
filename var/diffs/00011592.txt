@@ -1,0 +1,18 @@
+diff --git a/d4a61fa3d1b0b968a909133fec9b7434526a61e4 b/c7b545181a0662415d3a3beee3bfe77bd309189e
+index d4a61fa3d1..c7b545181a 100644
+--- a/d4a61fa3d1b0b968a909133fec9b7434526a61e4
++++ b/c7b545181a0662415d3a3beee3bfe77bd309189e
+@@ -1,11 +1,11 @@
+ private void initDescriptors() {
+     if (mySelectedProfile == null)
+         return;
+     myDescriptors.clear();
+     InspectionProfileEntry[] tools = mySelectedProfile.getInspectionTools();
+-    final InspectionProfile profile = getSavedProfile();
++    final InspectionProfile profile = (InspectionProfile) mySelectedProfile;
+     for (InspectionProfileEntry tool : tools) {
+         myDescriptors.add(new Descriptor(tool, profile != null ? profile : // fix for new profile - isModified == true by default
+         InspectionProfileImpl.getDefaultProfile()));
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,35 @@
+diff --git a/a95bb1c3c01eb4e09335be6e3b4d2715a6cbd65a b/edb24628d1eedad4be881122778014d72c635801
+index a95bb1c3c0..edb24628d1 100644
+--- a/a95bb1c3c01eb4e09335be6e3b4d2715a6cbd65a
++++ b/edb24628d1eedad4be881122778014d72c635801
+@@ -1,26 +1,26 @@
+ @Override
+ public void close() throws ElasticSearchException {
+     if (closed) {
+         return;
+     }
+     closed = true;
+     rwl.writeLock().lock();
+-    if (nrtResource != null) {
+-        this.nrtResource.forceClose();
+-    }
+     try {
++        if (nrtResource != null) {
++            this.nrtResource.forceClose();
++        }
+         // no need to commit in this case!, we snapshot before we close the shard, so translog and all sync'ed
+         if (indexWriter != null) {
+             try {
+                 indexWriter.rollback();
+             } catch (AlreadyClosedException e) {
+             // ignore
+             }
+         }
+     } catch (IOException e) {
+         logger.debug("failed to rollback writer on close", e);
+     } finally {
+         indexWriter = null;
+         rwl.writeLock().unlock();
+     }
+ }
+\ No newline at end of file

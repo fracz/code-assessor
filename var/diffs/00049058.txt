@@ -1,0 +1,15 @@
+diff --git a/5d1b7ecc7fe60fbd6282e9466cfdfd386071e704 b/3edeabc78a56375769dd557294274bf368711d68
+index 5d1b7ecc7f..3edeabc78a 100644
+--- a/5d1b7ecc7fe60fbd6282e9466cfdfd386071e704
++++ b/3edeabc78a56375769dd557294274bf368711d68
+@@ -1,6 +1,7 @@
+ @Override
+ protected Control createContents(Composite parent) {
+-    getShell().setText("Connection '" + getWizard().getDataSourceDescriptor().getName() + "' configuration");
+-    getShell().setImage(getWizard().getDataSourceDescriptor().getObjectImage());
++    DataSourceDescriptor activeDataSource = getWizard().getPageSettings().getActiveDataSource();
++    getShell().setText("Connection '" + activeDataSource.getName() + "' configuration");
++    getShell().setImage(activeDataSource.getObjectImage());
+     return super.createContents(parent);
+ }
+\ No newline at end of file

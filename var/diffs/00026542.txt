@@ -1,0 +1,12 @@
+diff --git a/b63733ad89340f8c5de5ee050617b14f8c630b84 b/58e1d6a5069f15414482a55d63ddd181585a5399
+index b63733ad89..58e1d6a506 100644
+--- a/b63733ad89340f8c5de5ee050617b14f8c630b84
++++ b/58e1d6a5069f15414482a55d63ddd181585a5399
+@@ -1,5 +1,5 @@
+ @Override
+ public Selectable replace(String regex, String replacement) {
+-    ReplaceSelector replaceSelector = SelectorFactory.getInstatnce().newReplaceSelector(regex, replacement);
++    ReplaceSelector replaceSelector = new ReplaceSelector(regex, replacement);
+     return select(replaceSelector, strings);
+ }
+\ No newline at end of file

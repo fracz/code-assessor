@@ -1,0 +1,13 @@
+diff --git a/161477746a9e8d881c94d7dc1fba1ecdd137b6f2 b/c390c8d14dff19cb0c490984435f682d0d9cb2b2
+index 161477746a..c390c8d14d 100644
+--- a/161477746a9e8d881c94d7dc1fba1ecdd137b6f2
++++ b/c390c8d14dff19cb0c490984435f682d0d9cb2b2
+@@ -1,5 +1,5 @@
++@Override
+ public void actionPerformed(AnActionEvent e) {
+-    Project p = e.getData(PlatformDataKeys.PROJECT);
+     VirtualFile[] files = e.getData(PlatformDataKeys.VIRTUAL_FILE_ARRAY);
+-    MavenProjectsManager.getInstance(p).removeManagedFiles(Arrays.asList(files));
++    getProjectsManager(e).removeManagedFiles(Arrays.asList(files));
+ }
+\ No newline at end of file

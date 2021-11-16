@@ -1,0 +1,20 @@
+diff --git a/89fc17420689a5b8329044e1f7c56bee540b1758 b/305c589ab9251b5aef5946486139de22c8360c61
+index 89fc174206..305c589ab9 100644
+--- a/89fc17420689a5b8329044e1f7c56bee540b1758
++++ b/305c589ab9251b5aef5946486139de22c8360c61
+@@ -1,9 +1,10 @@
+-private Type generateJavaConstructorCall(JetCallExpression expression, PsiMethod constructor) {
+-    PsiClass javaClass = constructor.getContainingClass();
+-    Type type = JetTypeMapper.psiClassType(javaClass);
++private Type generateJavaConstructorCall(JetCallExpression expression) {
++    FunctionDescriptor descriptor = (FunctionDescriptor) resolveCalleeDescriptor(expression);
++    ClassDescriptor javaClass = (ClassDescriptor) descriptor.getContainingDeclaration();
++    Type type = typeMapper.mapType(javaClass.getDefaultType());
+     v.anew(type);
+     v.dup();
+-    final CallableMethod callableMethod = JetTypeMapper.mapToCallableMethod(constructor);
++    final CallableMethod callableMethod = typeMapper.mapToCallableMethod(descriptor, false, OwnerKind.IMPLEMENTATION);
+     invokeMethodWithArguments(callableMethod, expression, StackValue.none());
+     return type;
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/c84ae66b5ec9657d4c926f4b28f88c5300f9d1c3 b/2dcdbcb854ce0fd194ba92934573a862a0c713f6
+index c84ae66b5e..2dcdbcb854 100644
+--- a/c84ae66b5ec9657d4c926f4b28f88c5300f9d1c3
++++ b/2dcdbcb854ce0fd194ba92934573a862a0c713f6
+@@ -1,5 +1,4 @@
+-@SuppressWarnings("unchecked")
+ @Override
+-protected void channelRead(final DatagramSocketImpl server, final ContextImpl context, ChannelHandlerContext chctx, final Object msg) throws Exception {
++protected void channelRead(final DatagramSocketImpl.Connection server, final ContextImpl context, ChannelHandlerContext chctx, final Object msg) throws Exception {
+     context.executeFromIO(() -> server.handlePacket((io.vertx.core.datagram.DatagramPacket) msg));
+ }
+\ No newline at end of file

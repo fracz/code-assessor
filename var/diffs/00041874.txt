@@ -1,0 +1,18 @@
+diff --git a/b5a9b1a26b6a3de3b460fd0577512297e678e4ba b/11d527c0bd43631215a0f065db7b72ff3c365274
+index b5a9b1a26b..11d527c0bd 100644
+--- a/b5a9b1a26b6a3de3b460fd0577512297e678e4ba
++++ b/11d527c0bd43631215a0f065db7b72ff3c365274
+@@ -1,9 +1,11 @@
+ private long getNextPageIndex(int fileNumber) {
+     long pageIndex;
+     if (continuousWrite.get()) {
+         pageIndex = pageCounters.getAndIncrement(fileNumber);
+     } else {
+-        pageIndex = pagesQueue.get(fileNumber).remove(new Random().nextInt(pagesQueue.get(fileNumber).size()));
++        int queueSize = pagesQueue.get(fileNumber).size();
++        int randomPageIndexFromQueue = new Random().nextInt(queueSize);
++        pageIndex = pagesQueue.get(fileNumber).remove(randomPageIndexFromQueue);
+     }
+     return pageIndex;
+ }
+\ No newline at end of file

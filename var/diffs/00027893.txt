@@ -1,0 +1,18 @@
+diff --git a/750d73f8d0c9ea63349d1521a96526d616dc082b b/001c60cf495343de5060c65dbcfaf85c5f24ece8
+index 750d73f8d0..001c60cf49 100644
+--- a/750d73f8d0c9ea63349d1521a96526d616dc082b
++++ b/001c60cf495343de5060c65dbcfaf85c5f24ece8
+@@ -1,11 +1,11 @@
+ @Test(dataProvider = "GitConnectionFactory", dataProviderClass = org.eclipse.che.git.impl.GitConnectionFactoryProvider.class)
+ public void testDiffNameStatus(GitConnectionFactory connectionFactory) throws GitException, IOException {
+     // given
+     GitConnection connection = connectToInitializedGitRepository(connectionFactory, repository);
+     makeCommitInMaster(connection);
+     // when
+-    List<String> diff = readDiff(newDto(DiffRequest.class).withType(DiffType.NAME_STATUS).withRenameLimit(0), connection);
++    List<String> diff = readDiff(DiffParams.create().withType(DiffType.NAME_STATUS).withRenameLimit(0), connection);
+     // then
+     assertEquals(diff.size(), 1);
+     assertTrue(diff.contains("M\taaa"));
+ }
+\ No newline at end of file

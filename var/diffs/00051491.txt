@@ -1,0 +1,19 @@
+diff --git a/e82d7b02d588029020be3c742862db0007ce2fe0 b/00a792cbdf5078556cab6754f65100debc424216
+index e82d7b02d5..00a792cbdf 100644
+--- a/e82d7b02d588029020be3c742862db0007ce2fe0
++++ b/00a792cbdf5078556cab6754f65100debc424216
+@@ -1,11 +1,11 @@
+ @Override
+-public synchronized boolean refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
++public synchronized DBSObject refreshObject(@NotNull DBRProgressMonitor monitor) throws DBException {
+     this.getContainer().getTableCache().clearChildrenCache(this);
+     this.getContainer().getIndexCache().clearObjectCache(this);
+     this.getContainer().getPrimaryKeysCache().clearObjectCache(this);
+     this.getContainer().getForeignKeysCache().clearObjectCache(this);
+     triggers = null;
+     rowCount = null;
+     ddl = null;
+-    return true;
++    return this;
+ }
+\ No newline at end of file

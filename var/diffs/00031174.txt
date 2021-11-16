@@ -1,0 +1,30 @@
+diff --git a/62b8f7e53f7ea2c27a3df7133da71595b226bebb b/7b5b6b1a21adec65ec563eebad0866c3b3d6dde8
+index 62b8f7e53f..7b5b6b1a21 100644
+--- a/62b8f7e53f7ea2c27a3df7133da71595b226bebb
++++ b/7b5b6b1a21adec65ec563eebad0866c3b3d6dde8
+@@ -1,19 +1,16 @@
+ @Override
+-public void collect(int childDoc, long bucketOrd) throws IOException {
+-    if (parentDocs == null) {
+-        return;
+-    }
++public void collect(int childDoc, long bucket) throws IOException {
+     // fast forward to retrieve the parentDoc this childDoc belongs to
+     final int parentDoc = parentDocs.nextSetBit(childDoc);
+     assert childDoc <= parentDoc && parentDoc != DocIdSetIterator.NO_MORE_DOCS;
+-    if (bucketOrdToLastCollectedParentDoc.containsKey(bucketOrd)) {
++    if (bucketOrdToLastCollectedParentDoc.containsKey(bucket)) {
+         int lastCollectedParentDoc = bucketOrdToLastCollectedParentDoc.lget();
+         if (parentDoc > lastCollectedParentDoc) {
+-            innerCollect(parentDoc, bucketOrd);
++            collectBucket(sub, parentDoc, bucket);
+             bucketOrdToLastCollectedParentDoc.lset(parentDoc);
+         }
+     } else {
+-        innerCollect(parentDoc, bucketOrd);
+-        bucketOrdToLastCollectedParentDoc.put(bucketOrd, parentDoc);
++        collectBucket(sub, parentDoc, bucket);
++        bucketOrdToLastCollectedParentDoc.put(bucket, parentDoc);
+     }
+ }
+\ No newline at end of file

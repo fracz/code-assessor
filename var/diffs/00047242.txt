@@ -1,0 +1,17 @@
+diff --git a/cc97bb5f0f13316daeb4ba07a0131944f1586813 b/e27873fc44b75b5cc588d9cf032293848043272e
+index cc97bb5f0f..e27873fc44 100644
+--- a/cc97bb5f0f13316daeb4ba07a0131944f1586813
++++ b/e27873fc44b75b5cc588d9cf032293848043272e
+@@ -1,9 +1,8 @@
+ /**
+  * Invoke Aeron {@link uk.co.real_logic.aeron.util.Agent}s from the executor.
+  *
+  * @param executor to execute from
+  */
+-public void invoke(final Executor executor) {
+-    executor.execute(clientConductor);
+-    this.executor = executor;
++public void invoke(final ExecutorService executor) {
++    conductorFuture = executor.submit(clientConductor);
+ }
+\ No newline at end of file

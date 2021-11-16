@@ -1,0 +1,16 @@
+diff --git a/133a2cc6caa68ff26529829c71d795bb07985c75 b/94552e0021bb7135e888a4e4b1c6b57acad86641
+index 133a2cc6ca..94552e0021 100644
+--- a/133a2cc6caa68ff26529829c71d795bb07985c75
++++ b/94552e0021bb7135e888a4e4b1c6b57acad86641
+@@ -1,5 +1,7 @@
+-// norelease remove this once all builders implement readFrom themselves
+ @Override
+-public QB readFrom(StreamInput in) throws IOException {
+-    return null;
++public final QB readFrom(StreamInput in) throws IOException {
++    QB queryBuilder = doReadFrom(in);
++    queryBuilder.boost = in.readFloat();
++    queryBuilder.queryName = in.readOptionalString();
++    return queryBuilder;
+ }
+\ No newline at end of file

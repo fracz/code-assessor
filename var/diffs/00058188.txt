@@ -1,0 +1,23 @@
+diff --git a/9394048ebe657a76b130d2ddf882f894861d5930 b/3754f23c2048c67a50ba5f649e389d24d99c418b
+index 9394048ebe..3754f23c20 100644
+--- a/9394048ebe657a76b130d2ddf882f894861d5930
++++ b/3754f23c2048c67a50ba5f649e389d24d99c418b
+@@ -1,15 +1,16 @@
+ /**
+  * Loads a classifier from a file.
+  * Simple convenience wrapper for IOUtils.readFromString.
+  */
+ public static <L, F> LinearClassifier<L, F> readClassifier(String loadPath) {
+     System.err.print("Deserializing classifier from " + loadPath + "...");
+     try {
+         ObjectInputStream ois = IOUtils.readStreamFromString(loadPath);
+         LinearClassifier<L, F> classifier = ErasureUtils.<LinearClassifier<L, F>>uncheckedCast(ois.readObject());
+         ois.close();
+         return classifier;
+     } catch (Exception e) {
+-        throw new RuntimeException("Deserialization failed: " + e.getMessage(), e);
++        e.printStackTrace();
++        throw new RuntimeException("Deserialization failed: " + e.getMessage());
+     }
+ }
+\ No newline at end of file

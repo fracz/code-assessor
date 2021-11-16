@@ -1,0 +1,16 @@
+diff --git a/faafacc809529fb424eea9f9bf287a71e2b5a0c5 b/68aa521f2cb48e7cda098ba97a8cb5657cbd2a2b
+index faafacc809..68aa521f2c 100644
+--- a/faafacc809529fb424eea9f9bf287a71e2b5a0c5
++++ b/68aa521f2cb48e7cda098ba97a8cb5657cbd2a2b
+@@ -1,9 +1,9 @@
+ @Test
+ public void testThrowsExceptionOnAmbiguousResolution() throws Exception {
+-    XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("constructor-arg.xml", getClass()));
++    XmlBeanFactory xbf = new XmlBeanFactory(CONSTRUCTOR_ARG_CONTEXT);
+     try {
+         xbf.getBean("rod8", ConstructorDependenciesBean.class);
+         fail("Must have thrown UnsatisfiedDependencyException");
+     } catch (UnsatisfiedDependencyException expected) {
+     }
+ }
+\ No newline at end of file

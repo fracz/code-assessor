@@ -1,0 +1,13 @@
+diff --git a/a6658a4e9f6a6865a4d62c484156e6920f507c59 b/e4363e8705ea54a4bfa0a9e6c49f0e4b3e04fa17
+index a6658a4e9f..e4363e8705 100644
+--- a/a6658a4e9f6a6865a4d62c484156e6920f507c59
++++ b/e4363e8705ea54a4bfa0a9e6c49f0e4b3e04fa17
+@@ -1,6 +1,6 @@
+ @Test
+ public void testAspectsAreAppliedInDefinedOrder() {
+-    ClassPathXmlApplicationContext bf = new ClassPathXmlApplicationContext("/org/springframework/aop/aspectj/autoproxy/aspectsWithOrdering.xml");
++    ClassPathXmlApplicationContext bf = newContext("aspectsWithOrdering.xml");
+     ITestBean tb = (ITestBean) bf.getBean("adrian");
+     assertEquals(71, tb.getAge());
+ }
+\ No newline at end of file

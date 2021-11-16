@@ -1,0 +1,12 @@
+diff --git a/f2771791ad5a2453a15739b3ce7058a9250163e4 b/cd17e8c92c30b7b2aa1c2087440d47952ea60963
+index f2771791ad..cd17e8c92c 100644
+--- a/f2771791ad5a2453a15739b3ce7058a9250163e4
++++ b/cd17e8c92c30b7b2aa1c2087440d47952ea60963
+@@ -1,4 +1,5 @@
+ @Override
+ public void cleanUp() {
+-    CassandraThriftStorageManager.dropKeyspace(CassandraThriftStorageManager.KEYSPACE_DEFAULT, "127.0.0.1", CassandraThriftStorageManager.PORT_DEFAULT);
++    CassandraThriftStorageManager s = new CassandraThriftStorageManager(StorageSetup.getCassandraGraphConfiguration().subset(GraphDatabaseConfiguration.STORAGE_NAMESPACE));
++    s.clearStorage();
+ }
+\ No newline at end of file

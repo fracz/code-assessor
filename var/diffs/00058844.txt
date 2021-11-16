@@ -1,0 +1,22 @@
+diff --git a/d7b9349a1ef4151caf4a7cf6948268b91f907682 b/001eeff609d65275c04ecaeee633348c9514fcb2
+index d7b9349a1e..001eeff609 100644
+--- a/d7b9349a1ef4151caf4a7cf6948268b91f907682
++++ b/001eeff609d65275c04ecaeee633348c9514fcb2
+@@ -1,15 +1,13 @@
+ /**
+  * Emit a string representation of the property map.
+  *
+  * @return the extended FaunusPipeline
+  */
+ public FaunusPipeline map() {
+     this.state.checkLocked();
+     this.state.checkProperty();
+-    final Configuration configuration = new Configuration();
+-    configuration.setClass(PropertyMapMap.CLASS, this.state.getElementType(), Element.class);
+-    this.compiler.addMap(PropertyMapMap.Map.class, LongWritable.class, Text.class, configuration);
++    this.compiler.addMap(PropertyMapMap.Map.class, LongWritable.class, Text.class, PropertyMapMap.createConfiguration(this.state.getElementType()));
+     makeMapReduceString(PropertyMap.class);
+     this.state.lock();
+     return this;
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/4518ba088e6455d917e65a45adbb8f4cb21dd451 b/14b2e8fe3144cb34f9db939e2dcff0364b656066
+index 4518ba088e..14b2e8fe31 100644
+--- a/4518ba088e6455d917e65a45adbb8f4cb21dd451
++++ b/14b2e8fe3144cb34f9db939e2dcff0364b656066
+@@ -1,12 +1,11 @@
+ private void loadBiliDanmakus(InputStream stream) {
+-    mLoader = (BiliDanmakuLoader) DanmakuLoaderFactory.create("bili");
++    mLoader = DanmakuLoaderFactory.create(DanmakuLoaderFactory.TAG_BILI);
+     try {
+         mLoader.load(stream);
+         dataSource = mLoader.getDataSource();
+         mParser = new BiliDanmukuParse(disp);
+         danmakuList = mParser.load(dataSource).setTimer(mTimer).parse();
+     } catch (IllegalDataException e) {
+-        // TODO Auto-generated catch block
+-        e.printStackTrace();
++        Log.e(TAG, "load error", e);
+     }
+ }
+\ No newline at end of file

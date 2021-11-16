@@ -1,0 +1,18 @@
+diff --git a/6de1e132dd67ccc0a94a01351a8115096fde48fe b/c76f89a6fe02c8bd68120eb074275c33b2a67ce0
+index 6de1e132dd..c76f89a6fe 100644
+--- a/6de1e132dd67ccc0a94a01351a8115096fde48fe
++++ b/c76f89a6fe02c8bd68120eb074275c33b2a67ce0
+@@ -1,10 +1,5 @@
+ @NotNull
+-public JsName declareTemporaryName(@NotNull String suggestedName) {
++public static JsName declareTemporaryName(@NotNull String suggestedName) {
+     assert !suggestedName.isEmpty();
+-    JsName name = new JsName(this, suggestedName, true);
+-    if (temporaryNames == null) {
+-        temporaryNames = new WeakHashMap<JsName, Object>();
+-    }
+-    temporaryNames.put(name, this);
+-    return name;
++    return new JsName(suggestedName, true);
+ }
+\ No newline at end of file

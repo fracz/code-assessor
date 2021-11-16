@@ -1,0 +1,24 @@
+diff --git a/9f495e26c9e9b418068690046ddd72672031af7b b/3dc61d9f51ba5ca2aa0a921e42b788e3e40a0147
+index 9f495e26c9..3dc61d9f51 100644
+--- a/9f495e26c9e9b418068690046ddd72672031af7b
++++ b/3dc61d9f51ba5ca2aa0a921e42b788e3e40a0147
+@@ -1,9 +1,15 @@
+ @Override
+ protected void dump(FileDescriptor fd, PrintWriter writer, String[] args) {
+-    writer.printf("Monitored dumpstate processes: \n");
+     synchronized (mProcesses) {
+-        for (int i = 0; i < mProcesses.size(); i++) {
+-            writer.printf("\t%s\n", mProcesses.valueAt(i));
++        final int size = mProcesses.size();
++        if (size == 0) {
++            writer.printf("No monitored processes");
++            return;
++        }
++        writer.printf("Monitored dumpstate processes\n");
++        writer.printf("-----------------------------\n");
++        for (int i = 0; i < size; i++) {
++            writer.printf("%s\n", mProcesses.valueAt(i));
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/40b5d6e791d3562db11c0e04692c9bba02007530 b/06f3a9f27dd7d07a1417c0b8231eb9dc7b752b78
+index 40b5d6e791..06f3a9f27d 100644
+--- a/40b5d6e791d3562db11c0e04692c9bba02007530
++++ b/06f3a9f27dd7d07a1417c0b8231eb9dc7b752b78
+@@ -1,11 +1,11 @@
+ @Override
+ public boolean isValidCell(GridPos pos) {
+     if (pos == null) {
+         return false;
+     }
+     if (mode == ResultSetMode.GRID) {
+-        return (pos.col >= 0 && pos.row >= 0);
++        return pos.row >= 0 && pos.row < model.getRowCount() && pos.col >= 0 && pos.col < model.getVisibleColumnCount();
+     } else {
+-        return curRowNum >= 0 && pos.row >= 0;
++        return curRowNum >= 0 && curRowNum < model.getRowCount() && pos.row >= 0;
+     }
+ }
+\ No newline at end of file

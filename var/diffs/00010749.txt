@@ -1,0 +1,31 @@
+diff --git a/a529d513fe3346c66f7283a2497d42cdf39b4a35 b/6844b739c1c2ca8f962b81c04171e92de8a42ce6
+index a529d513fe..6844b739c1 100644
+--- a/a529d513fe3346c66f7283a2497d42cdf39b4a35
++++ b/6844b739c1c2ca8f962b81c04171e92de8a42ce6
+@@ -1,19 +1,17 @@
+ /**
+  * @param  change "Change" description.
+  * @return Return true if the "Change" object is created for "Rename" operation:
+  * in this case name of files for "before" and "after" revisions must not
+  * coniside.
+  */
+ public static boolean isRenameChange(Change change) {
+     boolean isRenamed = false;
+-    try {
+-        if (change.getBeforeRevision() != null && change.getAfterRevision() != null) {
+-            String prevFile = change.getBeforeRevision().getFile().getPath();
+-            String newFile = change.getAfterRevision().getFile().getPath();
+-            isRenamed = !prevFile.equals(newFile);
+-        }
+-    } catch (NullPointerException e) {
+-    // Nothing to do - valid behavior for a revision file to be null.
++    ContentRevision before = change.getBeforeRevision();
++    ContentRevision after = change.getAfterRevision();
++    if (before != null && after != null) {
++        String prevFile = before.getFile().getPath();
++        String newFile = after.getFile().getPath();
++        isRenamed = !prevFile.equals(newFile);
+     }
+     return isRenamed;
+ }
+\ No newline at end of file

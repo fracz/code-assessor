@@ -1,0 +1,22 @@
+diff --git a/19e56fd8efd1983fc1696f5fadfd11604dbbf9a0 b/ff95741be54faf9ec36cae92413141353b5824b8
+index 19e56fd8ef..ff95741be5 100644
+--- a/19e56fd8efd1983fc1696f5fadfd11604dbbf9a0
++++ b/ff95741be54faf9ec36cae92413141353b5824b8
+@@ -1,12 +1,12 @@
+-public DoubleMatrix distribution(DoubleMatrix features) {
++public INDArray distribution(INDArray features) {
+     if (!this.isReady()) {
+         throw new IllegalStateException("KMeans is not ready yet");
+     }
+-    DoubleMatrix distribution = new DoubleMatrix(1, this.nbCluster);
+-    DoubleMatrix currentCentroid;
++    INDArray distribution = NDArrays.create(1, this.nbCluster);
++    INDArray currentCentroid;
+     for (int i = 0; i < this.nbCluster; i++) {
+         currentCentroid = this.centroids.getRow(i);
+-        distribution.put(i, getDistance(currentCentroid, features));
++        distribution.putScalar(i, getDistance(currentCentroid, features));
+     }
+     return distribution;
+ }
+\ No newline at end of file

@@ -1,0 +1,34 @@
+diff --git a/79aba8975ffae0996cd29d50f76c344efb096bf9 b/597365f9d8b5c0804410553baf85c0faf80e5db4
+index 79aba8975f..597365f9d8 100644
+--- a/79aba8975ffae0996cd29d50f76c344efb096bf9
++++ b/597365f9d8b5c0804410553baf85c0faf80e5db4
+@@ -1,25 +1,24 @@
+ @Override
+ public synchronized void commit() throws StorageException {
+-    if (tx == null)
++    if (!tx.isActive())
+         return;
+-    db.setSessionId(tx.getSessionId());
++    begin();
+     int retries = 3;
+     try {
+         int i = 0;
+         while (true) {
+             try {
+                 tx.commit();
+                 break;
+             } catch (RollbackException ex) {
+                 if (i++ >= retries) {
+                     throw ex;
+                 }
+             }
+         }
+     } catch (PersistitException ex) {
+-        throw new PermanentStorageException(ex.toString());
++        throw new PermanentStorageException(ex);
+     } finally {
+         tx.end();
+-        isOpen = false;
+     }
+ }
+\ No newline at end of file

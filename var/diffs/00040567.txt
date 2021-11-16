@@ -1,0 +1,21 @@
+diff --git a/ccffa224b7d0ed51bf44f2f1d38251e3fd339f4a b/92813e7718f10f39f9fdbe086f059de3bfee461c
+index ccffa224b7..92813e7718 100644
+--- a/ccffa224b7d0ed51bf44f2f1d38251e3fd339f4a
++++ b/92813e7718f10f39f9fdbe086f059de3bfee461c
+@@ -1,6 +1,12 @@
++/**
++ * {@inheritDoc}
++ */
+ @Override
+ public void bindingChanged(BindingProvider provider, String itemName) {
+-    touchLastConfigurationChangeTime();
+-    super.bindingChanged(provider, itemName);
+-    startIhcListener();
++    logger.trace("bindingChanged {}", itemName);
++    if (reminder != null) {
++        reminder.cancel();
++        reminder = null;
++    }
++    reminder = new NotificationsRequestReminder(NOTIFICATIONS_REORDER_WAIT_TIME);
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/0782ef1832599ecfd297abb17ea80dc7de886981 b/a18008b140ea45122f899edf1024e6c9542f636a
+index 0782ef1832..a18008b140 100644
+--- a/0782ef1832599ecfd297abb17ea80dc7de886981
++++ b/a18008b140ea45122f899edf1024e6c9542f636a
+@@ -1,12 +1,14 @@
+-public OStorageSynchronizer getDatabaseSynchronizer(final String iDatabaseName, final String iNodeId) {
++public OStorageSynchronizer getDatabaseSynchronizer(final String iDatabaseName) {
+     synchronized (synchronizers) {
+         OStorageSynchronizer sync = synchronizers.get(iDatabaseName);
+         if (sync == null) {
+-            sync = new OStorageSynchronizer(this, iDatabaseName);
++            try {
++                sync = new OStorageSynchronizer(this, iDatabaseName);
++            } catch (IOException e) {
++                throw new ODistributedException("Cannot get the storage synchronizer for database " + iDatabaseName, e);
++            }
+             synchronizers.put(iDatabaseName, sync);
+         }
+-        if (iNodeId != null && !iNodeId.equals(getLocalNodeId()))
+-            sync.getLog(iNodeId);
+         return sync;
+     }
+ }
+\ No newline at end of file

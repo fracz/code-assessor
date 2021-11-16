@@ -1,0 +1,17 @@
+diff --git a/736ea5cd57f81049f9796119f2e807af05253d18 b/b380b75cea5cd8a36600a0bdfa998089d951e7c7
+index 736ea5cd57..b380b75cea 100644
+--- a/736ea5cd57f81049f9796119f2e807af05253d18
++++ b/b380b75cea5cd8a36600a0bdfa998089d951e7c7
+@@ -1,9 +1,9 @@
+ @BeforeMethod
+ public void SetUp() {
+-    SUT = new GridworksServletStub();
+     request = mock(HttpServletRequest.class);
+     response = mock(HttpServletResponse.class);
+     command = mock(Command.class);
++    SUT = new GridworksServletStub();
+     // inject mock into command container
+-    GridworksServletStub.InsertCommand(TEST_COMMAND_NAME, command);
++    SUT.insertCommand(TEST_COMMAND_NAME, command);
+ }
+\ No newline at end of file

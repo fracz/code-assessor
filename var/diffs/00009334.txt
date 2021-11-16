@@ -1,0 +1,23 @@
+diff --git a/78130686e2fbef1fe69d4da3cf0438210c9226b7 b/5afa03bd90739738d74c19848d41d40342dc6fff
+index 78130686e2..5afa03bd90 100644
+--- a/78130686e2fbef1fe69d4da3cf0438210c9226b7
++++ b/5afa03bd90739738d74c19848d41d40342dc6fff
+@@ -1,15 +1,15 @@
+ @Nullable
+-public PsiElement substituteElementToRename(PsiElement element) {
++public PsiElement substituteElementToRename(PsiElement element, Editor editor) {
+     PsiMethod psiMethod = (PsiMethod) element;
+     if (psiMethod.isConstructor()) {
+         PsiClass containingClass = psiMethod.getContainingClass();
+         if (containingClass == null)
+             return null;
+         element = containingClass;
+-        if (!PsiElementRenameHandler.canRename(element, element.getProject())) {
++        if (!PsiElementRenameHandler.canRename(element.getProject(), editor, element)) {
+             return null;
+         }
+         return element;
+     }
+     return SuperMethodWarningUtil.checkSuperMethod(psiMethod, RefactoringBundle.message("to.rename"));
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/41a54bd4c0aaca2b0f8a8ef035e386fae78fa7ed b/105ca7dc30ac9e320c2d245a19771d5599155b1c
+index 41a54bd4c0..105ca7dc30 100644
+--- a/41a54bd4c0aaca2b0f8a8ef035e386fae78fa7ed
++++ b/105ca7dc30ac9e320c2d245a19771d5599155b1c
+@@ -1,8 +1,13 @@
+ public static String getRepositoryFromSettings(File file) {
+-    JDOMReader reader = new JDOMReader();
+     try {
+-        reader.init(new FileInputStream(file));
++        FileInputStream is = new FileInputStream(file);
++        try {
++            JDOMReader reader = new JDOMReader(is);
++            return reader.getChildText(reader.getRootElement(), LOCAL_REPOSITORY_TAG);
++        } finally {
++            is.close();
++        }
+     } catch (IOException ignore) {
++        return null;
+     }
+-    return reader.getChildText(reader.getRootElement(), LOCAL_REPOSITORY_TAG);
+ }
+\ No newline at end of file

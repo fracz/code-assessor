@@ -1,0 +1,16 @@
+diff --git a/f83d7c0c116279d24a85a1c4be8ea700a6423eba b/3a068ee3c60f65129bc372d98d43b58e5bd19042
+index f83d7c0c11..3a068ee3c6 100644
+--- a/f83d7c0c116279d24a85a1c4be8ea700a6423eba
++++ b/3a068ee3c60f65129bc372d98d43b58e5bd19042
+@@ -1,8 +1,9 @@
+ @Override
+ public InetSocketAddress getLocalAddress() {
+     try {
+-        return (InetSocketAddress) socket.getAllLocalAddresses().iterator().next();
++        final Iterator<SocketAddress> iterator = serverChannel.getAllLocalAddresses().iterator();
++        return iterator.hasNext() ? (InetSocketAddress) iterator.next() : null;
+     } catch (IOException e) {
+         return null;
+     }
+ }
+\ No newline at end of file

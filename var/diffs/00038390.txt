@@ -1,0 +1,13 @@
+diff --git a/5d02fc7fb078693bdd4c6408c4effab56851b9ee b/c11de1dc96ffbe48505b8831518826e8ddc096bc
+index 5d02fc7fb0..c11de1dc96 100644
+--- a/5d02fc7fb078693bdd4c6408c4effab56851b9ee
++++ b/c11de1dc96ffbe48505b8831518826e8ddc096bc
+@@ -1,4 +1,5 @@
+-public IdAllocation allocateIds(IdType idType) {
++public Response<IdAllocation> allocateIds(IdType idType) {
+     IdGenerator generator = graphDbConfig.getIdGeneratorFactory().get(idType);
+-    return new IdAllocation(generator.nextIdBatch(ID_GRAB_SIZE), generator.getHighId(), generator.getDefragCount());
++    IdAllocation result = new IdAllocation(generator.nextIdBatch(ID_GRAB_SIZE), generator.getHighId(), generator.getDefragCount());
++    return MasterUtil.packResponseWithoutTransactionStream(graphDb, SlaveContext.EMPTY, result);
+ }
+\ No newline at end of file

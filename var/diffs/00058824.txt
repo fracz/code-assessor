@@ -1,0 +1,13 @@
+diff --git a/4ddb63e3785a82b8c836dbd71be16a6ab237a562 b/637ca5b6ad256d4162209f5eb880cc9165fe7fab
+index 4ddb63e378..637ca5b6ad 100644
+--- a/4ddb63e3785a82b8c836dbd71be16a6ab237a562
++++ b/637ca5b6ad256d4162209f5eb880cc9165fe7fab
+@@ -1,5 +1,5 @@
+ public FaunusGraph self(final boolean allow) throws IOException {
+-    this.addMapSequenceClass(Self.Map.class.getName());
+-    this.mapSequenceConfiguration.setBoolean(Self.ALLOW + "-" + this.currentSequenceStep++, allow);
++    this.mapSequenceConfiguration.setBoolean(Self.ALLOW + "-" + this.mapSequenceClasses.size(), allow);
++    this.mapSequenceClasses.add(Self.Map.class);
+     return this;
+ }
+\ No newline at end of file

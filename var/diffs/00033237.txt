@@ -1,0 +1,22 @@
+diff --git a/a347fe3a5b415aae5d8638e192f0cd80f270159c b/6c202794e89c137232d2f2881ee4aa8fd3e7b858
+index a347fe3a5b..6c202794e8 100644
+--- a/a347fe3a5b415aae5d8638e192f0cd80f270159c
++++ b/6c202794e89c137232d2f2881ee4aa8fd3e7b858
+@@ -1,14 +1,10 @@
+ private void logUpToDateMessages(List<String> messages) {
+     if (LOGGER.isInfoEnabled()) {
+         Formatter formatter = new Formatter();
+         formatter.format("Executing %s due to:", task);
+-        for (int i = 0; i < messages.size() && i < MAX_OUT_OF_DATE_MESSAGES; i++) {
+-            String message = messages.get(i);
+-            formatter.format("%n%s", message);
+-        }
+-        if (messages.size() > MAX_OUT_OF_DATE_MESSAGES) {
+-            formatter.format("%n%d more ...", messages.size() - MAX_OUT_OF_DATE_MESSAGES);
++        for (String message : messages) {
++            formatter.format("%n  %s", message);
+         }
+         LOGGER.info(formatter.toString());
+     }
+ }
+\ No newline at end of file

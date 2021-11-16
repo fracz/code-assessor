@@ -1,0 +1,22 @@
+diff --git a/9f6d5a19048b123038c1830eef34f912837d27fa b/35de3fc996c776c0ac11265d7055cf36e5327f86
+index 9f6d5a1904..35de3fc996 100644
+--- a/9f6d5a19048b123038c1830eef34f912837d27fa
++++ b/35de3fc996c776c0ac11265d7055cf36e5327f86
+@@ -1,14 +1,12 @@
+ @NotNull
+ private static String getDefaultDescription(SearchableConfigurable configurable) {
+     String key = configurable.getId() + ".settings.description";
+     if (configurable instanceof ConfigurableWrapper) {
+         ConfigurableWrapper wrapper = (ConfigurableWrapper) configurable;
+-        ConfigurableEP ep = wrapper.getExtensionPoint();
+-        final String bundle = ep.bundle;
+-        if (StringUtil.isNotEmpty(bundle)) {
+-            ResourceBundle resourceBundle = AbstractBundle.getResourceBundle(bundle, ep.getPluginDescriptor().getPluginClassLoader());
++        ResourceBundle resourceBundle = wrapper.getExtensionPoint().findBundle();
++        if (resourceBundle != null) {
+             return CommonBundle.message(resourceBundle, key);
+         }
+     }
+     return OptionsBundle.message(key);
+ }
+\ No newline at end of file

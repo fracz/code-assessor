@@ -1,0 +1,26 @@
+diff --git a/7a20d96262ed8b215ee2ba2988f5d3eaf2e489cf b/ab577956dd466e0f91c97b393c8ee74b638628cc
+index 7a20d96262..ab577956dd 100644
+--- a/7a20d96262ed8b215ee2ba2988f5d3eaf2e489cf
++++ b/ab577956dd466e0f91c97b393c8ee74b638628cc
+@@ -1,15 +1,19 @@
+ @Override
+ public void visitClassObject(JetClassObject classObject) {
+     JetObjectDeclaration objectDeclaration = classObject.getObjectDeclaration();
+     if (objectDeclaration != null) {
+-        NamespaceLikeBuilder.ClassObjectStatus status = owner.setClassObjectDescriptor(createClassDescriptorForObject(objectDeclaration, owner, outerScopeForStatic, ClassKind.OBJECT));
++        MutableClassDescriptor classObjectDescriptor = createClassDescriptorForObject(objectDeclaration, owner, getStaticScope(classObject, owner));
++        NamespaceLikeBuilder.ClassObjectStatus status = owner.setClassObjectDescriptor(classObjectDescriptor);
+         switch(status) {
+             case DUPLICATE:
+                 trace.report(MANY_CLASS_OBJECTS.on(classObject));
+                 break;
+             case NOT_ALLOWED:
+                 trace.report(CLASS_OBJECT_NOT_ALLOWED.on(classObject));
+                 break;
++            case OK:
++                // Everything is OK so no errors to trace.
++                break;
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,27 @@
+diff --git a/8c2c69e812e85c5dd9828d68a51f719a8e18ffe2 b/0eab638df9fad18226ebdb7cc2445bc097f84686
+index 8c2c69e812..0eab638df9 100644
+--- a/8c2c69e812e85c5dd9828d68a51f719a8e18ffe2
++++ b/0eab638df9fad18226ebdb7cc2445bc097f84686
+@@ -1,12 +1,18 @@
+ @Override
+ public <OutType> OutType accumulate(OutType initValue, final Accumulator<OutType, T> fn) {
+     IterType iterator = maker.make();
+     try {
+         while (iterator.hasNext()) {
+             initValue = fn.accumulate(initValue, iterator.next());
+         }
+-        return initValue;
+-    } finally {
+-        maker.cleanup(iterator);
++    } catch (Throwable t) {
++        try {
++            maker.cleanup(iterator);
++        } catch (Exception e) {
++            t.addSuppressed(e);
++        }
++        throw t;
+     }
++    maker.cleanup(iterator);
++    return initValue;
+ }
+\ No newline at end of file

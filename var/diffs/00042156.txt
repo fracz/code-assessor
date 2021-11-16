@@ -1,0 +1,13 @@
+diff --git a/4508560bff320f2e52cefb049a0b97894060ef76 b/63a154a70c2321cab3b647c9ad62baf6032dca9d
+index 4508560bff..63a154a70c 100644
+--- a/4508560bff320f2e52cefb049a0b97894060ef76
++++ b/63a154a70c2321cab3b647c9ad62baf6032dca9d
+@@ -1,6 +1,3 @@
+ public Analyzer queryAnalyzer() {
+-    return storage.callIndexEngine(false, false, indexId, engine -> {
+-        OLuceneIndexEngine indexEngine = (OLuceneIndexEngine) engine;
+-        return indexEngine.queryAnalyzer();
+-    });
++    return storage.callIndexEngine(false, false, indexId, engine -> ((OLuceneIndexEngine) engine).queryAnalyzer());
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/fc616b27d690b1f9c4483947110e31bfdd82826c b/3acccf3e989e073d4ce1bdfb01d56dd8dda50958
+index fc616b27d6..3acccf3e98 100644
+--- a/fc616b27d690b1f9c4483947110e31bfdd82826c
++++ b/3acccf3e989e073d4ce1bdfb01d56dd8dda50958
+@@ -1,7 +1,4 @@
++@Override
+ public Iterator<OIdentifiable> rawIterator() {
+-    if (hasNewItems()) {
+-        lazyLoad(false);
+-        return new OLazyRecordMultiIterator(delegate.sourceRecord, new Object[] { delegate.rawIterator(), newItems.keySet().iterator() }, false);
+-    }
+-    return delegate.rawIterator();
++    return new OLazyRecordIterator(super.iterator(), false);
+ }
+\ No newline at end of file

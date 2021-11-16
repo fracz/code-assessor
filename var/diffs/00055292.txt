@@ -1,0 +1,17 @@
+diff --git a/5b69f543a789f606587fe9c68b7a7e70d2ef33e0 b/082f4954576c4a1504d28856491318c491262f7d
+index 5b69f543a7..082f495457 100644
+--- a/5b69f543a789f606587fe9c68b7a7e70d2ef33e0
++++ b/082f4954576c4a1504d28856491318c491262f7d
+@@ -1,5 +1,10 @@
+ @Override
+ public void startElement(String uri, String localName, String qName, Attributes attrs) {
+-    addToBoth(ReaderNode.createElementNode(ruby, uri, localName, qName, attrs, depth));
++    ReaderNode readerNode = new ReaderNode.ElementNode(ruby, uri, localName, qName, attrs, depth, langStack, xmlBaseStack);
++    nodeQueue.add(readerNode);
+     depth++;
++    if (readerNode.lang != null)
++        langStack.push(readerNode.lang);
++    if (readerNode.xmlBase != null)
++        xmlBaseStack.push(readerNode.xmlBase);
+ }
+\ No newline at end of file

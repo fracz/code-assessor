@@ -1,0 +1,25 @@
+diff --git a/80d214dbe4b30fb0bc50440ae79213d08608a90a b/afee0842694ff10b3a21ae6d261260f419151102
+index 80d214dbe4..afee084269 100644
+--- a/80d214dbe4b30fb0bc50440ae79213d08608a90a
++++ b/afee0842694ff10b3a21ae6d261260f419151102
+@@ -1,15 +1,13 @@
+ /**
+  * Returns true if pressing TAB in this field advances focus instead
+  * of inserting the character.  Insert tabs only in multi-line editors.
+  */
+ private boolean shouldAdvanceFocusOnTab() {
+-    if (getKeyListener() != null && !mSingleLine) {
+-        if (mEditor != null && (getEditor().mInputType & EditorInfo.TYPE_MASK_CLASS) == EditorInfo.TYPE_CLASS_TEXT) {
+-            int variation = getEditor().mInputType & EditorInfo.TYPE_MASK_VARIATION;
+-            if (variation == EditorInfo.TYPE_TEXT_FLAG_IME_MULTI_LINE || variation == EditorInfo.TYPE_TEXT_FLAG_MULTI_LINE) {
+-                return false;
+-            }
++    if (getKeyListener() != null && !mSingleLine && mEditor != null && (mEditor.mInputType & EditorInfo.TYPE_MASK_CLASS) == EditorInfo.TYPE_CLASS_TEXT) {
++        int variation = mEditor.mInputType & EditorInfo.TYPE_MASK_VARIATION;
++        if (variation == EditorInfo.TYPE_TEXT_FLAG_IME_MULTI_LINE || variation == EditorInfo.TYPE_TEXT_FLAG_MULTI_LINE) {
++            return false;
+         }
+     }
+     return true;
+ }
+\ No newline at end of file

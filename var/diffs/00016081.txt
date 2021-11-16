@@ -1,0 +1,30 @@
+diff --git a/ca2e90fb8d0006bde98bff64411ba8d67098bae9 b/e0fde37ea8f173335e05c372233d356f4c73eaf8
+index ca2e90fb8d..e0fde37ea8 100644
+--- a/ca2e90fb8d0006bde98bff64411ba8d67098bae9
++++ b/e0fde37ea8f173335e05c372233d356f4c73eaf8
+@@ -1,17 +1,12 @@
+-public static JetIntentionActionFactory<JetBinaryExpression> createRemoveElvisOperatorFactory() {
+-    return new JetIntentionActionFactory<JetBinaryExpression>() {
++public static JetIntentionActionFactory createRemoveElvisOperatorFactory() {
++    return new JetIntentionActionFactory() {
+
+         @Override
+-        public JetIntentionAction<JetBinaryExpression> createAction(DiagnosticWithPsiElement diagnostic) {
+-            assert diagnostic.getPsiElement() instanceof JetBinaryExpression;
+-            return new RemoveRightPartOfBinaryExpressionFix<JetBinaryExpression>((JetBinaryExpression) diagnostic.getPsiElement()) {
+-
+-                @NotNull
+-                @Override
+-                public String getText() {
+-                    return JetBundle.message("remove.elvis.operator");
+-                }
+-            };
++        public JetIntentionAction<JetBinaryExpression> createAction(Diagnostic diagnostic) {
++            JetBinaryExpression expression = QuickFixUtil.getParentElementOfType(diagnostic, JetBinaryExpression.class);
++            if (expression == null)
++                return null;
++            return new RemoveRightPartOfBinaryExpressionFix<JetBinaryExpression>(expression, JetBundle.message("remove.elvis.operator"));
+         }
+     };
+ }
+\ No newline at end of file

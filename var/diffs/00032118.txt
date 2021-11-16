@@ -1,0 +1,12 @@
+diff --git a/6cc9d6133256aec37b366c05735687f6b906502a b/a3547b8b0fccade6fe74a499ecac4948ffa024fa
+index 6cc9d61332..a3547b8b0f 100644
+--- a/6cc9d6133256aec37b366c05735687f6b906502a
++++ b/a3547b8b0fccade6fe74a499ecac4948ffa024fa
+@@ -1,4 +1,4 @@
+ public void testExposeYieldExpression2() {
+-    helperMoveExpression("function *f() { return (yield 1) || (yield 2); }", "yield", "function *f() {" + "  var result$jscomp$0 = yield 1;" + "  return result$jscomp$0 || (yield 2);" + "}");
+-    helperExposeExpression("function *f(x) {" + "  return x || (yield 2);" + "}", "yield", "function *f(x) {" + "  var temp$jscomp$0;" + "  if (temp$jscomp$0=x); else temp$jscomp$0 = yield 2;" + "  return temp$jscomp$0" + "}");
++    helperMoveExpression("function *f() { return (yield 1) || (yield 2); }", "yield", LINE_JOINER.join("function *f() {", "  var result$jscomp$0 = yield 1;", "  return result$jscomp$0 || (yield 2);", "}"));
++    helperExposeExpression("function *f(x) { return x || (yield 2); }", "yield", LINE_JOINER.join("function *f(x) {", "  var temp$jscomp$0;", "  if (temp$jscomp$0=x); else temp$jscomp$0 = yield 2;", "  return temp$jscomp$0", "}"));
+ }
+\ No newline at end of file

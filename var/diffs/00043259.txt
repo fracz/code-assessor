@@ -1,0 +1,26 @@
+diff --git a/880f590ccd660b15993ffdb3450dbe93362be3b9 b/0e5f068c8560c226ea648bba97a956810529f52b
+index 880f590ccd..0e5f068c85 100644
+--- a/880f590ccd660b15993ffdb3450dbe93362be3b9
++++ b/0e5f068c8560c226ea648bba97a956810529f52b
+@@ -1,19 +1,19 @@
+ /**
+  * Loads the record using a fetch plan. Example:
+  * <p>
+  * <code>doc.load( "*:3" ); // LOAD THE DOCUMENT BY EARLY FETCHING UP TO 3rd LEVEL OF CONNECTIONS</code>
+  * </p>
+  */
+ public ODocument load(final String iFetchPlan) {
+     if (_database == null)
+         throw new ODatabaseException("No database assigned to current record");
+     Object result = null;
+     try {
+         result = _database.load(this, iFetchPlan);
+     } catch (Exception e) {
+         throw new ORecordNotFoundException("The record with id '" + getIdentity() + "' was not found", e);
+     }
+     if (result == null)
+         throw new ORecordNotFoundException("The record with id '" + getIdentity() + "' was not found");
+-    return this;
++    return (ODocument) result;
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/ae9d42b5f3712f7fb4304bdd2497d787d9b01416 b/56588393c870109f76f3c7ab326d55e5d08a3613
+index ae9d42b5f3..56588393c8 100644
+--- a/ae9d42b5f3712f7fb4304bdd2497d787d9b01416
++++ b/56588393c870109f76f3c7ab326d55e5d08a3613
+@@ -1,11 +1,11 @@
+ @Nullable
+ public static Object getAttributeValueFromClipboard(DBDAttributeBinding attribute) throws DBCException {
+     DBPDataSource dataSource = attribute.getDataSource();
+     Clipboard clipboard = new Clipboard(Display.getCurrent());
+-    try (DBCSession session = DBUtils.openUtilSession(VoidProgressMonitor.INSTANCE, dataSource, "Copy from clipboard")) {
++    try (DBCSession session = DBUtils.openUtilSession(new VoidProgressMonitor(), dataSource, "Copy from clipboard")) {
+         String strValue = (String) clipboard.getContents(TextTransfer.getInstance());
+         return attribute.getValueHandler().getValueFromObject(session, attribute.getAttribute(), strValue, true);
+     } finally {
+         clipboard.dispose();
+     }
+ }
+\ No newline at end of file

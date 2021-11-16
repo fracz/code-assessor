@@ -1,0 +1,15 @@
+diff --git a/3714fc311425950addc7c376034b25dabb9721a0 b/ebfac0612e32d357f8ee031696728ce20a86362c
+index 3714fc3114..ebfac0612e 100644
+--- a/3714fc311425950addc7c376034b25dabb9721a0
++++ b/ebfac0612e32d357f8ee031696728ce20a86362c
+@@ -1,7 +1,8 @@
+ private HighlightInfo registerRedundantImport(@NotNull PsiImportStatementBase importStatement, @NotNull HighlightDisplayKey unusedImportKey) {
+-    HighlightInfo info = HighlightInfo.createHighlightInfo(JavaHighlightInfoTypes.UNUSED_IMPORT, importStatement, InspectionsBundle.message("unused.import.statement"));
++    String description = InspectionsBundle.message("unused.import.statement");
++    HighlightInfo info = HighlightInfo.newHighlightInfo(JavaHighlightInfoTypes.UNUSED_IMPORT).range(importStatement).descriptionAndTooltip(description).create();
+     QuickFixAction.registerQuickFixAction(info, new OptimizeImportsFix(), unusedImportKey);
+     QuickFixAction.registerQuickFixAction(info, new EnableOptimizeImportsOnTheFlyFix(), unusedImportKey);
+     myHasRedundantImports = true;
+     return info;
+ }
+\ No newline at end of file

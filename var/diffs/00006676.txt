@@ -1,0 +1,13 @@
+diff --git a/1f68eecd1fd7fbe238c895c2cbb64f1a71c0434b b/986d3c896f922faee10db63216bb7616d173668b
+index 1f68eecd1f..986d3c896f 100644
+--- a/1f68eecd1fd7fbe238c895c2cbb64f1a71c0434b
++++ b/986d3c896f922faee10db63216bb7616d173668b
+@@ -1,5 +1,6 @@
+ @Override
+ public String getContainerText(PsiElement element, String name) {
+-    PsiDirectory dir = getFileTarget(element).getContainingDirectory();
++    final PsiFile file = getContainingFile(element);
++    final PsiDirectory dir = file != null ? file.getContainingDirectory() : null;
+     return dir == null ? "" : '(' + dir.getName() + ')';
+ }
+\ No newline at end of file

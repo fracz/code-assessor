@@ -1,0 +1,17 @@
+diff --git a/d0f4da06fcc507b5ab6f0634cd3718c9beb4991a b/adc4557ebe9d4849ae66984175c1978906822fce
+index d0f4da06fc..adc4557ebe 100644
+--- a/d0f4da06fcc507b5ab6f0634cd3718c9beb4991a
++++ b/adc4557ebe9d4849ae66984175c1978906822fce
+@@ -1,9 +1,6 @@
+ @Nullable
+-protected InspectionGadgetsFix buildFix(PsiElement location) {
+-    final PsiTryStatement tryStatement = PsiTreeUtil.getParentOfType(location, PsiTryStatement.class);
+-    if (tryStatement == null) {
+-        return null;
+-    }
++protected InspectionGadgetsFix buildFix(Object... infos) {
++    final PsiTryStatement tryStatement = (PsiTryStatement) infos[0];
+     final boolean removeTryCatch = tryStatement.getCatchSections().length == 1 && tryStatement.getFinallyBlock() == null;
+     return new DeleteCatchSectionFix(removeTryCatch);
+ }
+\ No newline at end of file

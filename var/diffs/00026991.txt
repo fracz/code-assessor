@@ -1,0 +1,21 @@
+diff --git a/50fb86ee886f96b2e07c1f894d898022f78d1789 b/d7c596eb3c8bf0582deac7706698781e3711c717
+index 50fb86ee88..d7c596eb3c 100644
+--- a/50fb86ee886f96b2e07c1f894d898022f78d1789
++++ b/d7c596eb3c8bf0582deac7706698781e3711c717
+@@ -1,11 +1,11 @@
+ /**
+  * Returns the predictions for each example in the dataset
+  * @param d the matrix to predict
+  * @return the prediction for the dataset
+  */
+-public int[] predict(DoubleMatrix d) {
+-    DoubleMatrix output = output(d);
+-    int[] ret = new int[d.rows];
+-    for (int i = 0; i < ret.length; i++) ret[i] = SimpleBlas.iamax(output);
++public int[] predict(INDArray d) {
++    INDArray output = output(d);
++    int[] ret = new int[d.rows()];
++    for (int i = 0; i < ret.length; i++) ret[i] = NDArrays.getBlasWrapper().iamax(output.getRow(i));
+     return ret;
+ }
+\ No newline at end of file

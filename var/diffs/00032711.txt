@@ -1,0 +1,19 @@
+diff --git a/581265ae3698387e63b07a48714da33bf6d27832 b/2ceb6f5c4dd387b8fd21b076a73e0256f7d4e760
+index 581265ae36..2ceb6f5c4d 100644
+--- a/581265ae3698387e63b07a48714da33bf6d27832
++++ b/2ceb6f5c4dd387b8fd21b076a73e0256f7d4e760
+@@ -1,12 +1,4 @@
+ @Override
+ public boolean removeAll(final Collection<?> collection) {
+-    checkNotNull(collection);
+-    Predicate<E> combinedPredicate = new Predicate<E>() {
+-
+-        @Override
+-        public boolean apply(E input) {
+-            return predicate.apply(input) && collection.contains(input);
+-        }
+-    };
+-    return Iterables.removeIf(unfiltered, combinedPredicate);
++    return Iterables.removeIf(unfiltered, and(predicate, in(collection)));
+ }
+\ No newline at end of file

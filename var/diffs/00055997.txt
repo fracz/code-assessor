@@ -1,0 +1,14 @@
+diff --git a/21243d0cd9868c58c0075b636fd82253ca63dc3c b/f079b2ac18e77fcd2216e6df545631925cadb945
+index 21243d0cd9..f079b2ac18 100644
+--- a/21243d0cd9868c58c0075b636fd82253ca63dc3c
++++ b/f079b2ac18e77fcd2216e6df545631925cadb945
+@@ -1,6 +1,7 @@
++@Test
+ public void testFactoryBeanAndApplicationListener() {
+-    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("/org/springframework/context/support/test/context*.xml");
++    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(CONTEXT_WILDCARD);
+     ctx.getBeanFactory().registerSingleton("manualFBAAL", new FactoryBeanAndApplicationListener());
+     assertEquals(2, ctx.getBeansOfType(ApplicationListener.class).size());
+     ctx.close();
+ }
+\ No newline at end of file

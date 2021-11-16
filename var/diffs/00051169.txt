@@ -1,0 +1,24 @@
+diff --git a/4c3ee40739a44221e2df5f7c141b14c960875c58 b/d8e206e260841c468a011125043906c68f3c5ad7
+index 4c3ee40739..d8e206e260 100644
+--- a/4c3ee40739a44221e2df5f7c141b14c960875c58
++++ b/d8e206e260841c468a011125043906c68f3c5ad7
+@@ -1,15 +1,15 @@
+ @Override
+ public void widgetSelected(SelectionEvent e) {
+     Object data = e.item.getData();
+     if (data instanceof QueryResultsContainer) {
+-        QueryResultsContainer resultsProvider = (QueryResultsContainer) data;
+-        curQueryProcessor = resultsProvider.queryProcessor;
+-        ResultSetViewer rsv = resultsProvider.getResultSetController();
++        curResultsProvider = (QueryResultsContainer) data;
++        curQueryProcessor = curResultsProvider.queryProcessor;
++        ResultSetViewer rsv = curResultsProvider.getResultSetController();
+         if (rsv != null) {
+         // rsv.getActivePresentation().getControl().setFocus();
+         }
+     } else if (data == outputViewer) {
+         ((CTabItem) e.item).setImage(IMG_OUTPUT);
+         outputViewer.resetNewOutput();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/0968f4fe8d5153cf703c3c3a759ef39b5bef123e b/7d01a507683bd7c4dc7ce26d4cd27da2791149fe
+index 0968f4fe8d..7d01a50768 100644
+--- a/0968f4fe8d5153cf703c3c3a759ef39b5bef123e
++++ b/7d01a507683bd7c4dc7ce26d4cd27da2791149fe
+@@ -1,5 +1,3 @@
+ public void noMoreInteractionsWanted(PrintableInvocation undesired, HasStackTrace actualInvocationStackTrace) {
+-    UndesiredInvocation cause = new UndesiredInvocation(join("Undesired invocation:", undesired.toString()));
+-    cause.setStackTrace(actualInvocationStackTrace.getStackTrace());
+-    throw new NoInteractionsWanted(join("No interactions wanted"), cause);
++    throw new NoInteractionsWanted(join("No interactions wanted here:", "-> at " + new Location(), "But found this interaction:", "-> at " + actualInvocationStackTrace.getStackTrace()[0], ""));
+ }
+\ No newline at end of file

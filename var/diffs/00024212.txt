@@ -1,0 +1,18 @@
+diff --git a/97458dbce7ced0d4b9b05ecb6d44db28d9416182 b/aa3439f5ff60b33cb66f932f8309838de360b073
+index 97458dbce7..aa3439f5ff 100644
+--- a/97458dbce7ced0d4b9b05ecb6d44db28d9416182
++++ b/aa3439f5ff60b33cb66f932f8309838de360b073
+@@ -1,9 +1,5 @@
+-private List<Column> thriftifyColumnsAsColumns(Collection<Cell> cells, long now) {
+-    List<Column> thriftColumns = new ArrayList<Column>(cells.size());
+-    for (Cell cell : cells) {
+-        if (!cell.isLive(now))
+-            continue;
+-        thriftColumns.add(thriftifySubColumn(cell));
+-    }
++private List<Column> thriftifyColumnsAsColumns(CFMetaData metadata, Iterator<LegacyLayout.LegacyCell> cells) {
++    List<Column> thriftColumns = new ArrayList<Column>();
++    while (cells.hasNext()) thriftColumns.add(thriftifySubColumn(metadata, cells.next()));
+     return thriftColumns;
+ }
+\ No newline at end of file

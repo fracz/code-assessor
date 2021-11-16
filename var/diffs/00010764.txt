@@ -1,0 +1,26 @@
+diff --git a/5b81e9ecfcb336c20ad150f0e2bf85e790998181 b/f7fe360fa2e9b6f692a35005ff446e44b7bf6d15
+index 5b81e9ecfc..f7fe360fa2 100644
+--- a/5b81e9ecfcb336c20ad150f0e2bf85e790998181
++++ b/f7fe360fa2e9b6f692a35005ff446e44b7bf6d15
+@@ -1,20 +1,12 @@
+ public void init(StructureConfigurableContext context) {
+     myContext = context;
+     myContext.getDaemonAnalyzer().addListener(new ProjectStructureDaemonAnalyzerListener() {
+
+-        public void usagesCollected(@NotNull ProjectStructureElement containingElement) {
+-            updateTree();
+-        }
+-
+         public void problemsChanged(@NotNull ProjectStructureElement element) {
+-            updateTree();
+-        }
+-
+-        private void updateTree() {
+             if (!myTree.isShowing())
+                 return;
+             myTree.revalidate();
+             myTree.repaint();
+         }
+     });
+ }
+\ No newline at end of file

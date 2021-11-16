@@ -1,0 +1,19 @@
+diff --git a/31b347a4817f6e109333d354bf2568a7628eda03 b/6fd056cd7af49f0e47429a839a81acce456476ea
+index 31b347a481..6fd056cd7a 100644
+--- a/31b347a4817f6e109333d354bf2568a7628eda03
++++ b/6fd056cd7af49f0e47429a839a81acce456476ea
+@@ -1,12 +1,12 @@
+ protected SQLPartitionByHash partitionByHash() {
+     acceptIdentifier("HASH");
+     SQLPartitionByHash partitionByHash = new SQLPartitionByHash();
+     if (lexer.token() == Token.KEY) {
+         lexer.nextToken();
+         partitionByHash.setKey(true);
+     }
+     accept(Token.LPAREN);
+-    partitionByHash.setExpr(this.expr());
++    this.exprList(partitionByHash.getColumns(), partitionByHash);
+     accept(Token.RPAREN);
+     return partitionByHash;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/47f4151d83db1739b6a678607e637743dc3b813a b/796cc3d8e3289040930678522335508c16187900
+index 47f4151d83..796cc3d8e3 100644
+--- a/47f4151d83db1739b6a678607e637743dc3b813a
++++ b/796cc3d8e3289040930678522335508c16187900
+@@ -1,5 +1,7 @@
++/*
++   * Download the file at DEFAULT_URL and when that promise is fulfilled,
++   * then promise to apply function to count lines in that file.
++   */
+ private Promise<Integer> countLines() {
+-    return download(URL).then(fileLocation -> {
+-        return Utility.countLines(fileLocation);
+-    });
++    return download(DEFAULT_URL).thenApply(Utility::countLines);
+ }
+\ No newline at end of file

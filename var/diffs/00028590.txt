@@ -1,0 +1,26 @@
+diff --git a/c92a9e75c1990bf5ce8fd78b584c26c9d1eb5598 b/4917aee0904426161307186d6701cd12ae2f77cd
+index c92a9e75c1..4917aee090 100644
+--- a/c92a9e75c1990bf5ce8fd78b584c26c9d1eb5598
++++ b/4917aee0904426161307186d6701cd12ae2f77cd
+@@ -1,17 +1,17 @@
+ /**
+  * Test serialization and deserialization of the test query.
+  */
+ @Test
+ @Repeat(iterations = 20)
+ public void testSerialization() throws IOException {
+-    testQuery = createTestQueryBuilder();
++    QB testQuery = createTestQueryBuilder();
+     try (BytesStreamOutput output = new BytesStreamOutput()) {
+         testQuery.writeTo(output);
+         try (StreamInput in = StreamInput.wrap(output.bytes())) {
+-            QB deserializedQuery = createEmptyQueryBuilder();
+-            deserializedQuery.readFrom(in);
++            QB deserializedQuery = createEmptyQueryBuilder().readFrom(in);
+             assertEquals(deserializedQuery, testQuery);
++            assertEquals(deserializedQuery.hashCode(), testQuery.hashCode());
+             assertNotSame(deserializedQuery, testQuery);
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,10 @@
+diff --git a/3a8c105cd06422a842a0999568c12a5d812e9186 b/ef06798830292fccd203310c91be1a5e0c0fffa7
+index 3a8c105cd0..ef06798830 100644
+--- a/3a8c105cd06422a842a0999568c12a5d812e9186
++++ b/ef06798830292fccd203310c91be1a5e0c0fffa7
+@@ -1,3 +1,3 @@
+ private Handler<Throwable> getExceptionHandler() {
+-    return exceptionHandler != null ? exceptionHandler : context::reportException;
++    return exceptionHandler != null ? exceptionHandler : conn.getContext()::reportException;
+ }
+\ No newline at end of file

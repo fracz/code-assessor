@@ -1,0 +1,14 @@
+diff --git a/e8c2983ff51e552df42ea6a059d38fc6349791c0 b/8a2afa066957c757f8f630acf65372b110548df0
+index e8c2983ff5..8a2afa0669 100644
+--- a/e8c2983ff51e552df42ea6a059d38fc6349791c0
++++ b/8a2afa066957c757f8f630acf65372b110548df0
+@@ -1,5 +1,5 @@
+ @Nullable
+-protected InspectionGadgetsFix buildFix(PsiElement location) {
+-    // todo pass infos object to here and use that instead of location (currently 48 usages)
+-    return new CollectionsFieldAccessReplaceableByMethodCallFix();
++protected InspectionGadgetsFix buildFix(Object... infos) {
++    final PsiReferenceExpression expression = (PsiReferenceExpression) infos[0];
++    return new CollectionsFieldAccessReplaceableByMethodCallFix(expression.getReferenceName());
+ }
+\ No newline at end of file

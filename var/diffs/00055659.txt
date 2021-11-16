@@ -1,0 +1,16 @@
+diff --git a/49888d26a945e30b1b8006d5264fbf10bf1a4d6c b/f976f0b77e3d7eda8ea0040d568fc3e13efbdf10
+index 49888d26a9..f976f0b77e 100644
+--- a/49888d26a945e30b1b8006d5264fbf10bf1a4d6c
++++ b/f976f0b77e3d7eda8ea0040d568fc3e13efbdf10
+@@ -1,9 +1,9 @@
+ @Test
+ public void testInnerBeanInheritsScopeFromConcreteChildDefinition() {
+     DefaultListableBeanFactory xbf = new DefaultListableBeanFactory();
+     XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(xbf);
+-    reader.loadBeanDefinitions(new ClassPathResource("overrides.xml", getClass()));
++    reader.loadBeanDefinitions(OVERRIDES_CONTEXT);
+     TestBean jenny = (TestBean) xbf.getBean("jennyChild");
+     assertEquals(1, jenny.getFriends().size());
+     assertTrue(jenny.getFriends().iterator().next() instanceof TestBean);
+ }
+\ No newline at end of file

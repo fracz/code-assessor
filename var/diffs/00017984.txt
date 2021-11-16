@@ -1,0 +1,22 @@
+diff --git a/3370026121ea77fc41097cd2121993bb23bbde78 b/f473ff6071193b6c3576a2bfb522e8f1eaaf4f0e
+index 3370026121..f473ff6071 100644
+--- a/3370026121ea77fc41097cd2121993bb23bbde78
++++ b/f473ff6071193b6c3576a2bfb522e8f1eaaf4f0e
+@@ -1,12 +1,13 @@
+ @Override
+ @Before
+ public void setUp() throws Exception {
+     super.setUp();
+     InstanceInfoGenerator instanceInfos = InstanceInfoGenerator.newBuilder(6, 1).build();
+     testApplication = instanceInfos.toApplications().getRegisteredApplications().get(0);
+-    applicationResource = new ApplicationResource(testApplication.getName(), registry, new ResponseCache(registry));
++    applicationResource = new ApplicationResource(testApplication.getName(), serverContext.getServerConfig(), serverContext.getRegistry());
+     for (InstanceInfo instanceInfo : testApplication.getInstances()) {
+-        InstanceInfo changed = new InstanceInfo.Builder(instanceInfo).setASGName(null).build();
+-        registry.register(changed, false);
++        // InstanceInfo changed = new InstanceInfo.Builder(instanceInfo)
++        // .setASGName(null).build();  // null asgName to get around AwsAsgUtil check
++        registry.register(instanceInfo, false);
+     }
+ }
+\ No newline at end of file

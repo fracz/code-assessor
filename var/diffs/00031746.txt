@@ -1,0 +1,14 @@
+diff --git a/6f1f1272b846f5d1ae1c82c717454306b52bf00b b/d58e4d81d36405ac8a75345a6ef752accf7ff879
+index 6f1f1272b8..d58e4d81d3 100644
+--- a/6f1f1272b846f5d1ae1c82c717454306b52bf00b
++++ b/d58e4d81d36405ac8a75345a6ef752accf7ff879
+@@ -1,4 +1,7 @@
+ public AuthorizationPluginInfo pluginInfoFor(GoPluginDescriptor descriptor) {
+     Capabilities capabilities = capabilities(descriptor.id());
+-    return new AuthorizationPluginInfo(descriptor, authConfigSettings(descriptor.id()), roleSettings(descriptor.id(), capabilities), image(descriptor.id()), capabilities);
++    PluggableInstanceSettings authConfigSettings = authConfigSettings(descriptor.id());
++    PluggableInstanceSettings roleSettings = roleSettings(descriptor.id(), capabilities);
++    Image image = image(descriptor.id());
++    return new AuthorizationPluginInfo(descriptor, authConfigSettings, roleSettings, image, capabilities);
+ }
+\ No newline at end of file

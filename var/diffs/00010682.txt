@@ -1,0 +1,16 @@
+diff --git a/cb71e2db2d9bad7d9a3493d8588606272c1c528d b/5578c84025e4a6f8d050873846b17e14242330b8
+index cb71e2db2d..5578c84025 100644
+--- a/cb71e2db2d9bad7d9a3493d8588606272c1c528d
++++ b/5578c84025e4a6f8d050873846b17e14242330b8
+@@ -1,5 +1,7 @@
+-Collection<Pair<MethodRepr, ClassRepr>> findAllMethodsBySpecificity(final MethodRepr m, final ClassRepr c) {
+-    final Collection<Pair<MethodRepr, ClassRepr>> result = findOverridenMethods(m, c, true);
+-    result.addAll(findOverridingMethods(m, c, true));
++private Collection<Pair<MethodRepr, ClassRepr>> findAllMethodsBySpecificity(final MethodRepr m, final ClassRepr c) {
++    final MethodRepr.Predicate predicate = lessSpecific(m);
++    final Collection<Pair<MethodRepr, ClassRepr>> result = new HashSet<Pair<MethodRepr, ClassRepr>>();
++    addOverridenMethods(c, predicate, result);
++    addOverridingMethods(m, c, predicate, result);
+     return result;
+ }
+\ No newline at end of file

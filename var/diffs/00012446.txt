@@ -1,0 +1,17 @@
+diff --git a/0cb927bc3fd10a5249dde4bb69b72d0848064d6e b/7e4389ffbeb80891b4b092674941bd5d2ce99e08
+index 0cb927bc3f..7e4389ffbe 100644
+--- a/0cb927bc3fd10a5249dde4bb69b72d0848064d6e
++++ b/7e4389ffbeb80891b4b092674941bd5d2ce99e08
+@@ -1,9 +1,9 @@
+ @Test
+ public void testDifferenceInNameIsAlwaysCaseSensitive() {
+     DirectoryEntry e1 = new DirectoryEntry(-1, "name");
+     DirectoryEntry e2 = new DirectoryEntry(-1, "NAME");
+     Paths.setCaseSensitive(false);
+-    assertEquals(MODIFIED, e1.getDifferenceWith(e2).getKind());
++    assertEquals(1, e1.getDifferencesWith(e2).size());
+     Paths.setCaseSensitive(true);
+-    assertEquals(MODIFIED, e1.getDifferenceWith(e2).getKind());
++    assertEquals(1, e1.getDifferencesWith(e2).size());
+ }
+\ No newline at end of file

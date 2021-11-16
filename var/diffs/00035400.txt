@@ -1,0 +1,11 @@
+diff --git a/0f682d366738f8f6ea925a23ddb89badecb68eac b/e112bfa6203c3343d1c99ac55727ad84c757326e
+index 0f682d3667..e112bfa620 100644
+--- a/0f682d366738f8f6ea925a23ddb89badecb68eac
++++ b/e112bfa6203c3343d1c99ac55727ad84c757326e
+@@ -1,4 +1,4 @@
+ @Override
+ public String getEtag() {
+-    throw new IllegalStateException(FileDownloadUtils.formatString("No 'etag' in this message %d %d", id, status));
++    throw new NoFieldException("getEtag", this);
+ }
+\ No newline at end of file

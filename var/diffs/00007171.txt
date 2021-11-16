@@ -1,0 +1,23 @@
+diff --git a/ff50ad7cc3a3881ba3c52c73358545beb3da007c b/ba5f0cb6be33ff060f3b0fd7c79165bb43ca7923
+index ff50ad7cc3..ba5f0cb6be 100644
+--- a/ff50ad7cc3a3881ba3c52c73358545beb3da007c
++++ b/ba5f0cb6be33ff060f3b0fd7c79165bb43ca7923
+@@ -1,16 +1,10 @@
+ /**
+  * Serializes child constraints into the currently opened "constraints" tag
+  */
+ public void writeConstraints(final XmlWriter writer, @NotNull final RadComponent child) {
+-    // noinspection ConstantConditions
+-    if (child == null) {
+-        // noinspection HardCodedStringLiteral
+-        throw new IllegalArgumentException("child cannot be null");
+-    }
+     if (child.getParent() != this) {
+         // noinspection HardCodedStringLiteral
+         throw new IllegalArgumentException("parent mismatch: " + child.getParent());
+     }
+-    writeXYConstraints(writer, child);
+-    writeGridConstraints(writer, child);
++    getLayoutManager().writeChildConstraints(writer, child);
+ }
+\ No newline at end of file

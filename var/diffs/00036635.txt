@@ -1,0 +1,23 @@
+diff --git a/fbe288dda612b7456d9e9a756a194aa8beab6fef b/920351bb369ad8c5438de9ea7a5d79eb34985958
+index fbe288dda6..920351bb36 100644
+--- a/fbe288dda612b7456d9e9a756a194aa8beab6fef
++++ b/920351bb369ad8c5438de9ea7a5d79eb34985958
+@@ -1,13 +1,14 @@
+ @Override
+ protected void runChild(FrameworkMethod method, RunNotifier notifier) {
+     TraceContext traceContext = this.testAgent.getTraceContext();
+     beginTracing(traceContext);
+-    ClassLoader originalClassLoader = Thread.currentThread().getContextClassLoader();
++    final Thread thread = Thread.currentThread();
++    final ClassLoader originalClassLoader = thread.getContextClassLoader();
+     try {
+-        Thread.currentThread().setContextClassLoader(this.testClassLoader);
++        thread.setContextClassLoader(this.testClassLoader);
+         super.runChild(method, notifier);
+     } finally {
+-        Thread.currentThread().setContextClassLoader(originalClassLoader);
++        thread.setContextClassLoader(originalClassLoader);
+         endTracing(traceContext);
+     }
+ }
+\ No newline at end of file

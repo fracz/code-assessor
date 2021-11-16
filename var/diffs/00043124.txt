@@ -1,0 +1,32 @@
+diff --git a/3a3ae15382e65a4fd576e2191bb633967cc93322 b/ea4a61fe1afb792ddfbb20f7e102d8145f3eb9d7
+index 3a3ae15382..ea4a61fe1a 100644
+--- a/3a3ae15382e65a4fd576e2191bb633967cc93322
++++ b/ea4a61fe1afb792ddfbb20f7e102d8145f3eb9d7
+@@ -1,22 +1,22 @@
+ public boolean deleteRecord(final ORecordId iRid, final int iVersion) {
+     checkConnection();
+     do {
+         try {
++            final OChannelBinaryClient network = beginRequest(OChannelBinaryProtocol.REQUEST_RECORD_DELETE);
+             try {
+-                beginRequest(OChannelBinaryProtocol.REQUEST_RECORD_DELETE);
+                 network.writeRID(iRid);
+                 network.writeInt(iVersion);
+             } finally {
+-                endRequest();
++                endRequest(network);
+             }
+             try {
+-                beginResponse();
++                beginResponse(network);
+                 return network.readByte() == 1;
+             } finally {
+-                endResponse();
++                endResponse(network);
+             }
+         } catch (Exception e) {
+             handleException("Error on delete record #" + iRid, e);
+         }
+     } while (true);
+ }
+\ No newline at end of file

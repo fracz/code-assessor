@@ -1,0 +1,23 @@
+diff --git a/cbdb84a4659d0b3b1dfd0cbd59f0dc307d0d0d5b b/84f7b1306596127bc881b6b85c4ee143872a0f29
+index cbdb84a465..84f7b13065 100644
+--- a/cbdb84a4659d0b3b1dfd0cbd59f0dc307d0d0d5b
++++ b/84f7b1306596127bc881b6b85c4ee143872a0f29
+@@ -1,11 +1,12 @@
+ @Override
+ public void onNext(T t) {
+-    final DebugNotification<T, C> n = DebugNotification.createOnNext(o, from, t, to);
+-    C context = start.call(n);
++    final DebugNotification<T> n = DebugNotification.createOnNext(o, from, t, to);
++    t = (T) listener.onNext(n);
++    C context = listener.start(n);
+     try {
+-        o.onNext(onNextHook.call(t));
+-        complete.call(context);
++        o.onNext(t);
++        listener.complete(context);
+     } catch (Throwable e) {
+-        error.call(context, e);
++        listener.error(context, e);
+     }
+ }
+\ No newline at end of file

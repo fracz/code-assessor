@@ -1,0 +1,12 @@
+diff --git a/2712a893e35be8abc02ebcc55ee9f85445931230 b/16ce4fc73828a4cad784038f6f5e0599dfd8a0b0
+index 2712a893e3..16ce4fc738 100644
+--- a/2712a893e35be8abc02ebcc55ee9f85445931230
++++ b/16ce4fc73828a4cad784038f6f5e0599dfd8a0b0
+@@ -1,4 +1,5 @@
+ @Override
+ public Control getControl() {
+-    return getControl(getActivePage());
++    int activePage = getActivePage();
++    return activePage < 0 ? null : getControl(activePage);
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/9582822cc6e6990e9e9c28593a3b1a8fd8b1d96f b/be4c20dd03e05a85206407b34c9bd70af00c64e5
+index 9582822cc6..be4c20dd03 100644
+--- a/9582822cc6e6990e9e9c28593a3b1a8fd8b1d96f
++++ b/be4c20dd03e05a85206407b34c9bd70af00c64e5
+@@ -1,14 +1,14 @@
+ /**
+  * Replaces an expression occurrence by appropriate variable declaration
+  */
+ @Nullable
+ private GrVariable replaceOnlyExpression(@NotNull GrExpression expr, GrIntroduceContext context, @NotNull GrVariableDeclaration definition) throws IncorrectOperationException {
+-    if (context.scope.equals(expr.getParent()) && !(context.scope instanceof GrLoopStatement) && !(context.scope instanceof GrClosableBlock)) {
++    if (context.getScope().equals(expr.getParent()) && !(context.getScope() instanceof GrLoopStatement) && !(context.getScope() instanceof GrClosableBlock)) {
+         definition = expr.replaceWithStatement(definition);
+-        if (expr.equals(context.expression)) {
++        if (expr.equals(context.getExpression())) {
+             refreshPositionMarker(definition);
+         }
+         return definition.getVariables()[0];
+     }
+     return null;
+ }
+\ No newline at end of file

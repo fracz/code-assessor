@@ -1,0 +1,21 @@
+diff --git a/c68c04a9a4a20238d9e933307ded715e380ee17f b/7c4f9c0a09cb94fd23b3773b9b071c4e52946eb3
+index c68c04a9a4..7c4f9c0a09 100644
+--- a/c68c04a9a4a20238d9e933307ded715e380ee17f
++++ b/7c4f9c0a09cb94fd23b3773b9b071c4e52946eb3
+@@ -1,13 +1,13 @@
+ @Test
+ public void shouldRemoveSchemaRuleWhenRollingBackTransaction() throws Exception {
+     // GIVEN
+-    WriteTransaction writeTransaction = new WriteTransaction(0, log, transactionState, neoStore, cacheAccessBackDoor, null);
++    WriteTransaction writeTransaction = new WriteTransaction(0, log, transactionState, neoStore, cacheAccessBackDoor, NO_INDEXING);
+     writeTransaction.setCommitTxId(1);
+     // WHEN
+     final long ruleId = schemaStore.nextId();
+-    writeTransaction.createSchemaRule(new IndexRule(ruleId, 10, POPULATING, new long[] { 7 }));
++    writeTransaction.createSchemaRule(new IndexRule(ruleId, 10, POPULATING, 7));
+     writeTransaction.prepare();
+     writeTransaction.rollback();
+     // THEN
+     verifyNoMoreInteractions(cacheAccessBackDoor);
+ }
+\ No newline at end of file

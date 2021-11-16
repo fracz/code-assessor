@@ -1,0 +1,19 @@
+diff --git a/5a8ad50acab5bc47230e6e1942e2a382c41a26fd b/89325de3d488687b45e7a80efbf6a2da4d6ca887
+index 5a8ad50aca..89325de3d4 100644
+--- a/5a8ad50acab5bc47230e6e1942e2a382c41a26fd
++++ b/89325de3d488687b45e7a80efbf6a2da4d6ca887
+@@ -1,9 +1,9 @@
+-private static void applyOverridesRecursive(LithoDebugInfo debugInfo, InternalNode node) {
+-    debugInfo.applyOverrides(node);
++private static void applyOverridesRecursive(InternalNode node) {
++    DebugComponent.getInstance(node, 0).applyOverrides();
+     for (int i = 0, count = node.getChildCount(); i < count; i++) {
+-        applyOverridesRecursive(debugInfo, node.getChildAt(i));
++        applyOverridesRecursive(node.getChildAt(i));
+     }
+     if (node.hasNestedTree()) {
+-        applyOverridesRecursive(debugInfo, node.getNestedTree());
++        applyOverridesRecursive(node.getNestedTree());
+     }
+ }
+\ No newline at end of file

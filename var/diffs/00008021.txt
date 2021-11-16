@@ -1,0 +1,20 @@
+diff --git a/473638b083e5bbca5efb3fdfb26285a7d1aba785 b/38819c375756311eecb49071afb0405f506a1063
+index 473638b083..38819c3757 100644
+--- a/473638b083e5bbca5efb3fdfb26285a7d1aba785
++++ b/38819c375756311eecb49071afb0405f506a1063
+@@ -1,13 +1,10 @@
+ @Nullable
+ public Inliner createInliner(PsiElement element, Settings settings) {
+     if (element instanceof GrVariable) {
+-        return GroovyInlineVariableUtil.createInlinerForVariable((GrVariable) element, settings);
+-    }
+-    if (element instanceof GrAccessorMethod) {
+-        return GroovyInlineVariableUtil.createInlinerForVariable(((GrAccessorMethod) element).getProperty(), settings);
++        return new GrVariableInliner((GrVariable) element, settings);
+     }
+     if (element instanceof GrMethod) {
+         return new GroovyMethodInliner((GrMethod) element);
+     }
+     return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/1b4ac845ca808510e63834a57701bae2ee7ae35b b/1e026835263c4647c93c699e69faf90aa7bc1936
+index 1b4ac845ca..1e02683526 100644
+--- a/1b4ac845ca808510e63834a57701bae2ee7ae35b
++++ b/1e026835263c4647c93c699e69faf90aa7bc1936
+@@ -1,3 +1,6 @@
+ public SQLDeclareItem getResolvedDeclareItem() {
+-    return resolvedDeclareItem;
++    if (resolvedColumn instanceof SQLDeclareItem) {
++        return (SQLDeclareItem) this.resolvedColumn;
++    }
++    return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/30ea19c62129c5de6ed56559f3381f13012d6bbc b/997b94665f751c446acfe846ed3375fcb96d6fdf
+index 30ea19c621..997b94665f 100644
+--- a/30ea19c62129c5de6ed56559f3381f13012d6bbc
++++ b/997b94665f751c446acfe846ed3375fcb96d6fdf
+@@ -1,7 +1,9 @@
+-public void doFix(Project project, ProblemDescriptor descriptor) {
++public void doFix(@NotNull Project project, ProblemDescriptor descriptor) {
+     final PsiElement nameElement = descriptor.getPsiElement();
+     final PsiClass aClass = (PsiClass) nameElement.getParent();
+     final RefactoringActionHandlerFactory factory = RefactoringActionHandlerFactory.getInstance();
+     final RefactoringActionHandler anonymousToInner = factory.createInheritanceToDelegationHandler();
+-    anonymousToInner.invoke(project, new PsiElement[] { aClass }, null);
++    final DataManager dataManager = DataManager.getInstance();
++    final DataContext dataContext = dataManager.getDataContext();
++    anonymousToInner.invoke(project, new PsiElement[] { aClass }, dataContext);
+ }
+\ No newline at end of file

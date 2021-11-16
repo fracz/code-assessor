@@ -1,0 +1,24 @@
+diff --git a/248a7cc402f72859221857698403f0f4a21d2224 b/b6b24805ff2fdc2298868e84038a97ba27244a23
+index 248a7cc402..b6b24805ff 100644
+--- a/248a7cc402f72859221857698403f0f4a21d2224
++++ b/b6b24805ff2fdc2298868e84038a97ba27244a23
+@@ -1,15 +1,15 @@
+ @Test
+ public void testRenamingDirectoryWithContent() {
+-    root.createDirectory(1, "dir1");
+-    root.createDirectory(2, "dir1/dir2");
+-    root.createFile(3, "dir1/dir2/file", null, -1);
++    createDirectory(root, 1, "dir1");
++    createDirectory(root, 2, "dir1/dir2");
++    createFile(root, 3, "dir1/dir2/file", null, -1);
+     Change c = new RenameChange("dir1/dir2", "new dir");
+     c.applyTo(root);
+     assertTrue(root.hasEntry("dir1/new dir"));
+     assertTrue(root.hasEntry("dir1/new dir/file"));
+     assertFalse(root.hasEntry("dir1/dir2"));
+     c.revertOn(root);
+     assertTrue(root.hasEntry("dir1/dir2"));
+     assertTrue(root.hasEntry("dir1/dir2/file"));
+     assertFalse(root.hasEntry("dir1/new dir"));
+ }
+\ No newline at end of file

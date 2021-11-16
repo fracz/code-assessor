@@ -1,0 +1,20 @@
+diff --git a/3305263e33aa0eba7e5d6e6a5ee2999bfb44dc9c b/1006144ef552d5339634398fdc2b2180c9319cc2
+index 3305263e33..1006144ef5 100644
+--- a/3305263e33aa0eba7e5d6e6a5ee2999bfb44dc9c
++++ b/1006144ef552d5339634398fdc2b2180c9319cc2
+@@ -1,9 +1,8 @@
+ @Test
+ public void shouldKnowIfIsMissingMethodMode() throws Exception {
+-    assertTrue(decode(atLeastOnce()).missingMethodMode());
+-    assertTrue(decode(times(1)).missingMethodMode());
+-    assertTrue(decode(times(10)).missingMethodMode());
+-    assertFalse(decode(atLeast(2)).missingMethodMode());
+-    assertFalse(decode(noMoreInteractions()).missingMethodMode());
+-    assertFalse(decode(times(0)).missingMethodMode());
++    assertTrue(decode(VerificationModeFactory.atLeastOnce()).missingMethodMode());
++    assertTrue(decode(VerificationModeFactory.times(1)).missingMethodMode());
++    assertTrue(decode(VerificationModeFactory.times(10)).missingMethodMode());
++    assertFalse(decode(VerificationModeFactory.atLeast(2)).missingMethodMode());
++    assertFalse(decode(VerificationModeFactory.times(0)).missingMethodMode());
+ }
+\ No newline at end of file

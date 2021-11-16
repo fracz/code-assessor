@@ -1,0 +1,19 @@
+diff --git a/9f017720e48e2e4b6061ce941992905eeb92be04 b/db5e2c6405b422264231fff5d04ec4b515cda9ba
+index 9f017720e4..db5e2c6405 100644
+--- a/9f017720e48e2e4b6061ce941992905eeb92be04
++++ b/db5e2c6405b422264231fff5d04ec4b515cda9ba
+@@ -1,10 +1,11 @@
++@Test
+ public void testAliasThatOverridesParent() {
+-    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("/org/springframework/context/support/simpleContext.xml");
++    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(FQ_SIMPLE_CONTEXT);
+     Object someMs = ctx.getBean("someMessageSource");
+-    ClassPathXmlApplicationContext child = new ClassPathXmlApplicationContext(new String[] { "/org/springframework/context/support/aliasThatOverridesParent.xml" }, ctx);
++    ClassPathXmlApplicationContext child = new ClassPathXmlApplicationContext(new String[] { ALIAS_THAT_OVERRIDES_PARENT_CONTEXT }, ctx);
+     Object myMs = child.getBean("myMessageSource");
+     Object someMs2 = child.getBean("someMessageSource");
+     assertSame(myMs, someMs2);
+     assertNotSame(someMs, someMs2);
+     assertOneMessageSourceOnly(child, myMs);
+ }
+\ No newline at end of file

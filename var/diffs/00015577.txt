@@ -1,0 +1,14 @@
+diff --git a/6b022022417986ecc0b70e57d332859fb92d202c b/57337495c044bdbe00e77ad879b0dceed41c5834
+index 6b02202241..57337495c0 100644
+--- a/6b022022417986ecc0b70e57d332859fb92d202c
++++ b/57337495c044bdbe00e77ad879b0dceed41c5834
+@@ -1,6 +1,5 @@
+ @Override
+-public Void visitClass(@NotNull JetClass expression, @NotNull TranslationContext context) {
+-    JsPropertyInitializer value = classDeclarationTranslator.translate(expression);
+-    result.add(value);
++public Void visitClass(@NotNull JetClass declaration, @NotNull TranslationContext context) {
++    result.add(context.classDeclarationTranslator().translate(declaration, context));
+     return null;
+ }
+\ No newline at end of file

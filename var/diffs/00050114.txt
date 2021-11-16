@@ -1,0 +1,22 @@
+diff --git a/60c7bb9e23ac18ae9596579ad1f82bcca0d04d30 b/4cae33f34a87d5ede5666a437de3e723a87897fd
+index 60c7bb9e23..4cae33f34a 100644
+--- a/60c7bb9e23ac18ae9596579ad1f82bcca0d04d30
++++ b/4cae33f34a87d5ede5666a437de3e723a87897fd
+@@ -1,13 +1,14 @@
+ // ////////////////////////////////
+ // Virtual identifier management
+ DBCEntityIdentifier getVirtualEntityIdentifier() {
+     if (!singleSourceCells || CommonUtils.isEmpty(metaColumns)) {
+         return null;
+     }
+-    DBCEntityIdentifier identifier = metaColumns[0].getRowIdentifier().getEntityIdentifier();
+-    if (identifier.getReferrer() instanceof DBVEntityConstraint) {
++    DBDRowIdentifier rowIdentifier = metaColumns[0].getRowIdentifier();
++    DBCEntityIdentifier identifier = rowIdentifier == null ? null : rowIdentifier.getEntityIdentifier();
++    if (identifier != null && identifier.getReferrer() instanceof DBVEntityConstraint) {
+         return identifier;
+     } else {
+         return null;
+     }
+ }
+\ No newline at end of file

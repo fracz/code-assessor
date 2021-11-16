@@ -1,0 +1,14 @@
+diff --git a/8b991ec3100a199f92145a2e70f9f34f97c23464 b/78880d0e63ed88cd4375815b208ab51f4f569b7d
+index 8b991ec310..78880d0e63 100644
+--- a/8b991ec3100a199f92145a2e70f9f34f97c23464
++++ b/78880d0e63ed88cd4375815b208ab51f4f569b7d
+@@ -1,7 +1,6 @@
+ @Test
+ public void shouldGetQueryStringParameters() {
+     assertEquals(2, getRequest.getQueryStringParams().size());
+     assertEquals(0, postRequest.getQueryStringParams().size());
+-    assertTrue(getRequest.getQueryStringParams().containsKey("qsparam"));
+-    assertTrue(getRequest.getQueryStringParams().get("qsparam").equals("value"));
++    assertTrue(getRequest.getQueryStringParams().contains(new Parameter("qsparam", "value")));
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/4412fff0a9ca9b00301b82bd203ee6647e3c5672 b/6487a6b65f973c38d8c4191865da908b1871795a
+index 4412fff0a9..6487a6b65f 100644
+--- a/4412fff0a9ca9b00301b82bd203ee6647e3c5672
++++ b/6487a6b65f973c38d8c4191865da908b1871795a
+@@ -1,15 +1,16 @@
+ @Test
+ public void testInvalidInit() throws SQLException {
+     DruidDataSource dataSource = new DruidDataSource();
+     dataSource.setDriver(MockDriver.instance);
+     dataSource.setFilters("config");
+     dataSource.setConnectionProperties("config.file=abcdefeg");
++    Exception error = null;
+     try {
+         dataSource.init();
+-        Assert.assertTrue("Get here.", false);
+     } catch (IllegalArgumentException e) {
+-        e.printStackTrace();
++        error = e;
+     } finally {
+         JdbcUtils.close(dataSource);
+     }
++    Assert.assertNotNull(error);
+ }
+\ No newline at end of file

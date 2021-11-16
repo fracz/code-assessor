@@ -1,0 +1,14 @@
+diff --git a/0b6f0091b4ad9a9bf46deeb1812754c99d2fd950 b/710da3220b85e121f875b95e0d538972c7d40a92
+index 0b6f0091b4..710da3220b 100644
+--- a/0b6f0091b4ad9a9bf46deeb1812754c99d2fd950
++++ b/710da3220b85e121f875b95e0d538972c7d40a92
+@@ -1,7 +1,7 @@
+ @Test
+ public void decodeToMono() throws InterruptedException {
+     this.decoder = new StringDecoder(false);
+     Flux<DataBuffer> source = Flux.just(stringBuffer("foo"), stringBuffer("bar"), stringBuffer("baz"));
+     Mono<String> output = this.decoder.decodeToMono(source, ResolvableType.forClass(String.class), null, Collections.emptyMap());
+-    TestSubscriber.subscribe(output).assertNoError().assertComplete().assertValues("foobarbaz");
++    ScriptedSubscriber.<String>create().expectNext("foobarbaz").expectComplete().verify(output);
+ }
+\ No newline at end of file

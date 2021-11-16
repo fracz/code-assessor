@@ -1,0 +1,15 @@
+diff --git a/f05136226299b59649441cee0121e19449c8d5f3 b/a3be4f8dd8c6c2b39b7dc7d96e302aa529332743
+index f051362262..a3be4f8dd8 100644
+--- a/f05136226299b59649441cee0121e19449c8d5f3
++++ b/a3be4f8dd8c6c2b39b7dc7d96e302aa529332743
+@@ -1,7 +1,5 @@
+ public void draw(SpriteBatch batch, float parentAlpha) {
+-    if (isCheckedRegion != isChecked) {
+-        isCheckedRegion = isChecked;
+-        image.setRegion(isChecked ? ((CheckBoxStyle) style).checkboxOn : ((CheckBoxStyle) style).checkboxOff);
+-    }
++    CheckBoxStyle style = (CheckBoxStyle) getStyle();
++    image.setRegion(isChecked ? style.checkboxOn : style.checkboxOff);
+     super.draw(batch, parentAlpha);
+ }
+\ No newline at end of file

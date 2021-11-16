@@ -1,0 +1,24 @@
+diff --git a/a44bed5b15c504fcedb92a245f0dc673f8310369 b/34f15544f901d7bc7896e60e932c15958cb8634c
+index a44bed5b15..34f15544f9 100644
+--- a/a44bed5b15c504fcedb92a245f0dc673f8310369
++++ b/34f15544f901d7bc7896e60e932c15958cb8634c
+@@ -1,12 +1,12 @@
+ @Override
+-public List<AstError> visitNewClass(NewClassTree newClassTree, VisitorState visitorState) {
+-    List<AstError> result = new ArrayList<AstError>();
+-    for (ErrorChecker<NewClassTree> newClassChecker : newClassCheckers) {
+-        AstError error = newClassChecker.check(newClassTree, visitorState.withPath(getCurrentPath()));
+-        if (error != null) {
+-            result.add(error);
++public List<MatchDescription> visitNewClass(NewClassTree newClassTree, VisitorState visitorState) {
++    List<MatchDescription> result = new ArrayList<MatchDescription>();
++    for (DescribingMatcher<NewClassTree> newClassChecker : newClassCheckers) {
++        VisitorState state = visitorState.withPath(getCurrentPath());
++        if (newClassChecker.matches(newClassTree, state)) {
++            result.add(newClassChecker.describe(newClassTree, state));
+         }
+     }
+     super.visitNewClass(newClassTree, visitorState);
+     return result;
+ }
+\ No newline at end of file

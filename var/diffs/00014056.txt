@@ -1,0 +1,14 @@
+diff --git a/0df80ee12f764d23012c9e3bb57009f9352fa379 b/6c88cf0b802acff55fcefc40bab8d5a06c83f2ee
+index 0df80ee12f..6c88cf0b80 100644
+--- a/0df80ee12f764d23012c9e3bb57009f9352fa379
++++ b/6c88cf0b802acff55fcefc40bab8d5a06c83f2ee
+@@ -1,5 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiClass aClass = (PsiClass) location.getParent();
+-    final int totalComplexity = calculateTotalComplexity(aClass);
++@NotNull
++public String buildErrorString(Object... infos) {
++    final Integer totalComplexity = (Integer) infos[0];
+     return InspectionGadgetsBundle.message("overly.complex.anonymous.inner.class.problem.descriptor", totalComplexity);
+ }
+\ No newline at end of file

@@ -1,0 +1,30 @@
+diff --git a/1392a8b12468a2fb77a14b507fea7c77166ed428 b/eae264c86cd4097c1b49c28d9495a1a2a9755796
+index 1392a8b124..eae264c86c 100644
+--- a/1392a8b12468a2fb77a14b507fea7c77166ed428
++++ b/eae264c86cd4097c1b49c28d9495a1a2a9755796
+@@ -1,19 +1,19 @@
+ private void handleLocationChanged(Location location, boolean passive) {
+     // create a working copy of the incoming Location so that the service can modify it without
+     // disturbing the caller's copy
+     Location myLocation = new Location(location);
+     String provider = myLocation.getProvider();
+     // forward locations from mock providers, and should not grant them legitimacy in doing so.
+     if (!myLocation.isFromMockProvider() && isMockProvider(provider)) {
+         myLocation.setIsFromMockProvider(true);
+     }
+-    if (!passive) {
+-        // notify passive provider of the new location
+-        mPassiveProvider.updateLocation(myLocation);
+-    }
+     synchronized (mLock) {
+-        if (isAllowedBySettingsLocked(provider, UserHandle.getUid(mCurrentUserId, 0))) {
++        if (isAllowedByCurrentUserSettingsLocked(provider)) {
++            if (!passive) {
++                // notify passive provider of the new location
++                mPassiveProvider.updateLocation(myLocation);
++            }
+             handleLocationChangedLocked(myLocation, passive);
+         }
+     }
+ }
+\ No newline at end of file

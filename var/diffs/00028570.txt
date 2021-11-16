@@ -1,0 +1,23 @@
+diff --git a/d74a899e6d4fdcc47a1654011d2a266a926ca2f8 b/cec09a6210980732291460e504c0ee8ad379faab
+index d74a899e6d..cec09a6210 100644
+--- a/d74a899e6d4fdcc47a1654011d2a266a926ca2f8
++++ b/cec09a6210980732291460e504c0ee8ad379faab
+@@ -1,16 +1,10 @@
+ private void checkReuseConnection(ClientConnection conn) {
+     Waiter waiter = waiters.poll();
+     if (waiter != null) {
+-        vertx.runOnContext(v -> {
+-            try {
+-                waiter.handler.handle(conn);
+-            } catch (Throwable t) {
+-                log.error("Unhandled exception", t);
+-            }
+-        });
++        conn.getContext().execute(() -> waiter.handler.handle(conn), true);
+     } else {
+         // Close it - we don't keep connections hanging around - even keep alive ones if there are
+         // no pending requests
+         conn.close();
+     }
+ }
+\ No newline at end of file

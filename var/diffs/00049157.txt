@@ -1,0 +1,17 @@
+diff --git a/cf99a3eb4e557c71990b7a4e969009c54d879353 b/7e454285c9e0d861f7c1184ba350238043353975
+index cf99a3eb4e..7e454285c9 100644
+--- a/cf99a3eb4e557c71990b7a4e969009c54d879353
++++ b/7e454285c9e0d861f7c1184ba350238043353975
+@@ -1,8 +1,9 @@
+ void clearEntityIdentifier(DBRProgressMonitor monitor) throws DBException {
+-    DBCEntityIdentifier identifier = visibleColumns[0].getRowIdentifier().getEntityIdentifier();
++    DBDAttributeBinding firstColumn = model.getVisibleColumn(0);
++    DBCEntityIdentifier identifier = firstColumn.getRowIdentifier().getEntityIdentifier();
+     DBVEntityConstraint virtualKey = (DBVEntityConstraint) identifier.getReferrer();
+     virtualKey.setAttributes(Collections.<DBSEntityAttribute>emptyList());
+-    identifier.reloadAttributes(monitor, visibleColumns[0].getMetaAttribute().getEntity());
++    identifier.reloadAttributes(monitor, firstColumn.getMetaAttribute().getEntity());
+     virtualKey.getParentObject().setProperty(DBVConstants.PROPERTY_USE_VIRTUAL_KEY_QUIET, null);
+     getDataSource().getContainer().persistConfiguration();
+ }
+\ No newline at end of file

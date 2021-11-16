@@ -1,0 +1,15 @@
+diff --git a/802ac60bce23c78530b62feec654e75b4c280148 b/d4969c4ffc3083bb48b6304f15f6b4526fbfaf81
+index 802ac60bce..d4969c4ffc 100644
+--- a/802ac60bce23c78530b62feec654e75b4c280148
++++ b/d4969c4ffc3083bb48b6304f15f6b4526fbfaf81
+@@ -1,6 +1,7 @@
+-private String getSourceRoot() {
++private File getSourceRoot() {
+     if (sourceRoot == null) {
+-        sourceRoot = testCase.getAbsolutePath(getRelativeToProjectSourceRoot());
++        sourceRootRelativeToProject = getOrCreateModuleName() + "-src";
++        sourceRoot = new File(testCase.getAbsolutePath(sourceRootRelativeToProject));
+     }
+     return sourceRoot;
+ }
+\ No newline at end of file

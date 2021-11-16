@@ -1,0 +1,21 @@
+diff --git a/2344d63042f55282128f98cce3c84930be4af3e7 b/a14d67cdd14d70b03134c998ba01aec2a147d453
+index 2344d63042..a14d67cdd1 100644
+--- a/2344d63042f55282128f98cce3c84930be4af3e7
++++ b/a14d67cdd14d70b03134c998ba01aec2a147d453
+@@ -1,10 +1,10 @@
+ @Test
+ public void addRemoveBlobCluster() {
+-    int prevSize = db.getMetadata().getSchema().getBlobClusters().size();
+-    db.getMetadata().getSchema().addBlobCluster("test_blob");
+-    int newSize = db.getMetadata().getSchema().getBlobClusters().size();
++    int prevSize = db.getBlobClusterIds().size();
++    db.addBlobCluster("test_blob");
++    int newSize = db.getBlobClusterIds().size();
+     assertEquals(prevSize + 1, newSize);
+-    db.getMetadata().getSchema().removeBlobCluster("test_blob");
+-    newSize = db.getMetadata().getSchema().getBlobClusters().size();
++    db.dropCluster("test_blob", true);
++    newSize = db.getBlobClusterIds().size();
+     assertEquals(prevSize, newSize);
+ }
+\ No newline at end of file

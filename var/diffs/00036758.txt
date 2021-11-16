@@ -1,0 +1,15 @@
+diff --git a/94dbcec44f29a1a4f7aa8006ea31f411d1e3e5d6 b/0b28e2af567ef42cfaf587cce8baca97e401446a
+index 94dbcec44f..0b28e2af56 100644
+--- a/94dbcec44f29a1a4f7aa8006ea31f411d1e3e5d6
++++ b/0b28e2af567ef42cfaf587cce8baca97e401446a
+@@ -1,6 +1,6 @@
+-private List<DefaultProfilerPluginContext> load() {
+-    PluginSetup pluginSetup = this.pluginSetup.get();
++private List<SetupResult> load() {
++    PluginSetup pluginSetup = new DefaultPluginSetup(profilerConfig, applicationContext);
+     final ProfilerPluginLoader loader = new ProfilerPluginLoader(profilerConfig, pluginSetup, instrumentation, instrumentEngine, bootstrapJarPaths);
+-    List<DefaultProfilerPluginContext> load = loader.load(pluginJars);
++    List<SetupResult> load = loader.load(pluginJars);
+     return load;
+ }
+\ No newline at end of file

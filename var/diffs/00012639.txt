@@ -1,0 +1,18 @@
+diff --git a/7d81b0f7c4ae292b0f374a17611335e021953ab5 b/b25fccb8cd673b47861c0e12b2c023717a459ec7
+index 7d81b0f7c4..b25fccb8cd 100644
+--- a/7d81b0f7c4ae292b0f374a17611335e021953ab5
++++ b/b25fccb8cd673b47861c0e12b2c023717a459ec7
+@@ -1,10 +1,9 @@
+ /**
+  * shows pop up in the center of "check task" button in study editor
+  */
+ public static void showCheckPopUp(@NotNull final Project project, @NotNull final Balloon balloon) {
+-    final StudyEditor studyEditor = StudyEditor.getSelectedStudyEditor(project);
++    final StudyEditor studyEditor = getSelectedStudyEditor(project);
+     assert studyEditor != null;
+-    final JButton checkButton = studyEditor.getCheckButton();
+-    balloon.showInCenterOf(checkButton);
++    balloon.show(computeLocation(studyEditor.getEditor()), Balloon.Position.above);
+     Disposer.register(project, balloon);
+ }
+\ No newline at end of file

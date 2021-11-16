@@ -1,0 +1,17 @@
+diff --git a/944d8ac19278483ccdac1f49d2b8ace501e24949 b/1e2fd45d58fb7c98d3ee75a46966c60c116a6022
+index 944d8ac192..1e2fd45d58 100644
+--- a/944d8ac19278483ccdac1f49d2b8ace501e24949
++++ b/1e2fd45d58fb7c98d3ee75a46966c60c116a6022
+@@ -1,9 +1,9 @@
+-@Path("branch-create")
+ @POST
++@Path("branch")
+ @Consumes(MediaType.APPLICATION_JSON)
+ @Produces(MediaType.APPLICATION_JSON)
+ public Branch branchCreate(BranchCreateRequest request) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+-        return gitConnection.branchCreate(request);
++        return gitConnection.branchCreate(request.getName(), request.getStartPoint());
+     }
+ }
+\ No newline at end of file

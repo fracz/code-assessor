@@ -1,0 +1,14 @@
+diff --git a/7a93d91292c3a2121e8a81d099a689635e7c5dd6 b/ab0c743be950c51cc5936e1f24b0672b38ad2179
+index 7a93d91292..ab0c743be9 100644
+--- a/7a93d91292c3a2121e8a81d099a689635e7c5dd6
++++ b/ab0c743be950c51cc5936e1f24b0672b38ad2179
+@@ -1,6 +1,6 @@
+ public void fireBeforeEditorTyping(char c, DataContext dataContext) {
+     AnActionListener[] listeners = getActionListeners();
+-    for (int i = 0; i < listeners.length; i++) {
+-        listeners[i].beforeEditorTyping(c, dataContext);
++    for (AnActionListener listener : listeners) {
++        listener.beforeEditorTyping(c, dataContext);
+     }
+ }
+\ No newline at end of file

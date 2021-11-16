@@ -1,0 +1,14 @@
+diff --git a/22c739cd072fc96093bb6405f89f8810486d430f b/7788445c5cbc1f4621826c6b842c27d49cd8da35
+index 22c739cd07..7788445c5c 100644
+--- a/22c739cd072fc96093bb6405f89f8810486d430f
++++ b/7788445c5cbc1f4621826c6b842c27d49cd8da35
+@@ -1,6 +1,6 @@
+-static Collection<PsiElement> suggestCandidates(Project project, final PsiReference reference) {
++static Collection<PsiElement> suggestCandidates(final PsiReference reference) {
+     if (reference == null) {
+         return Collections.emptyList();
+     }
+-    return resolveElements(reference, project);
++    return TargetElementUtilBase.getInstance().getTargetCandidates(reference);
+ }
+\ No newline at end of file

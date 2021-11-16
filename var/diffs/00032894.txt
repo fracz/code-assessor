@@ -1,0 +1,15 @@
+diff --git a/54f55fdbc3ba892251b0de04a7248f022dea0597 b/548054043797518f1bc26949737814ce7d0e3334
+index 54f55fdbc3..5480540437 100644
+--- a/54f55fdbc3ba892251b0de04a7248f022dea0597
++++ b/548054043797518f1bc26949737814ce7d0e3334
+@@ -1,7 +1,7 @@
+ public void run() {
+     try {
+-        providerFactory = injector.getInternalFactory(providerKey);
++        providerFactory = injector.getInternalFactory(providerKey, errors);
+     } catch (ResolveFailedException e) {
+-        injector.errorHandler.handle(e.getMessage(source));
++        errors.merge(e.getErrors());
+     }
+ }
+\ No newline at end of file

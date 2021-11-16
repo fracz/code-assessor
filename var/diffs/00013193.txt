@@ -1,0 +1,16 @@
+diff --git a/3f537d24db75d4ac0df943c00b5ee6cb942e0603 b/222c495a0ac34d444a64ff33a604e60be7d01be0
+index 3f537d24db..222c495a0a 100644
+--- a/3f537d24db75d4ac0df943c00b5ee6cb942e0603
++++ b/222c495a0ac34d444a64ff33a604e60be7d01be0
+@@ -1,9 +1,9 @@
+ static void suppressReloadDuring(@NotNull Runnable action) {
+     Boolean old = SUPPRESS_RELOAD.get();
+     try {
+-        SUPPRESS_RELOAD.set(true);
++        SUPPRESS_RELOAD.set(Boolean.TRUE);
+         action.run();
+     } finally {
+         SUPPRESS_RELOAD.set(old);
+     }
+ }
+\ No newline at end of file

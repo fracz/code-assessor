@@ -1,0 +1,20 @@
+diff --git a/3e2f820ddc2cdb0aaed3e07937f20b16ff87b8b7 b/7a688e320f8ac0a8348470bc5fd725bfbffcf423
+index 3e2f820ddc..7a688e320f 100644
+--- a/3e2f820ddc2cdb0aaed3e07937f20b16ff87b8b7
++++ b/7a688e320f8ac0a8348470bc5fd725bfbffcf423
+@@ -1,11 +1,4 @@
+-public static int getLogglyTimeout(Properties config) {
+-    String val = config.getProperty("forwarder_loggly_timeout");
+-    if (val != null) {
+-        int res = Integer.parseInt(val);
+-        if (res > 0) {
+-            return res * 1000;
+-        }
+-    }
+-    // Default value.
+-    return 3000;
++public int getLogglyTimeout() {
++    int timeout = getInteger("forwarder_loggly_timeout", 3);
++    return timeout * 1000;
+ }
+\ No newline at end of file

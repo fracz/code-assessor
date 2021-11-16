@@ -1,0 +1,28 @@
+diff --git a/e9b35e514abb969ce810ae7353b04a453fd9c56e b/9910d648b75c978a02d3de501133830430222463
+index e9b35e514a..9910d648b7 100644
+--- a/e9b35e514abb969ce810ae7353b04a453fd9c56e
++++ b/9910d648b75c978a02d3de501133830430222463
+@@ -1,14 +1,13 @@
+ @Override
+ public PsiElement handleElementRename(String newElementName) throws IncorrectOperationException {
+-    PsiElement field = resolve();
+-    if (field instanceof PsiField) {
+-        String fqn = ((PsiField) field).getContainingClass().getQualifiedName();
+-        if (fqn.startsWith("com.intellij.icons.")) {
+-            return replace(newElementName, fqn, "com.intellij.icons.", element);
+-        }
+-        if (fqn.startsWith("icons.")) {
+-            return replace(newElementName, fqn, "icons.", element);
+-        }
++    PsiElement element = resolve();
++    PsiElement resultForFile = handleFile(element, lastRef -> lastRef.handleElementRename(newElementName));
++    if (resultForFile != null) {
++        return resultForFile;
++    }
++    PsiElement resultForField = handleField(element, newElementName);
++    if (resultForField != null) {
++        return resultForField;
+     }
+     return super.handleElementRename(newElementName);
+ }
+\ No newline at end of file

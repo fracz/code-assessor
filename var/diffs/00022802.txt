@@ -1,0 +1,33 @@
+diff --git a/441c48108d572202dbce4ef31468320603a806e6 b/be5819d98b70eb985943a065117debefb7398a4c
+index 441c48108d..be5819d98b 100644
+--- a/441c48108d572202dbce4ef31468320603a806e6
++++ b/be5819d98b70eb985943a065117debefb7398a4c
+@@ -1,25 +1,19 @@
+ /**
+  * Execute this SQL statement and return the ID of the row inserted due to this call.
+  * The SQL statement should be an INSERT for this to be a useful call.
+  *
+  * @return the row ID of the last row inserted, if this insert is successful. -1 otherwise.
+  *
+  * @throws android.database.SQLException If the SQL string is invalid for
+  * some reason
+  */
+ public long executeInsert() {
+-    mDatabase.verifyDbIsOpen();
+-    BlockGuard.getThreadPolicy().onWriteToDisk();
+-    long timeStart = SystemClock.uptimeMillis();
+-    mDatabase.lock();
+-    acquireReference();
++    long timeStart = acquireAndLock(WRITE);
+     try {
+-        mDatabase.closePendingStatements();
+         native_execute();
+         mDatabase.logTimeStat(mSql, timeStart);
+         return (mDatabase.lastChangeCount() > 0) ? mDatabase.lastInsertRow() : -1;
+     } finally {
+-        releaseReference();
+-        mDatabase.unlock();
++        releaseAndUnlock();
+     }
+ }
+\ No newline at end of file

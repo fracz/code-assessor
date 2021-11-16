@@ -1,0 +1,21 @@
+diff --git a/a19d2e8735e0ee529755f65388a18e2db7e6c3c6 b/e31282ba28b95264ff38494015b212ead4ae2008
+index a19d2e8735..e31282ba28 100644
+--- a/a19d2e8735e0ee529755f65388a18e2db7e6c3c6
++++ b/e31282ba28b95264ff38494015b212ead4ae2008
+@@ -1,12 +1,13 @@
+ @Test
+ public void testRecreationOfStorageOnLoadingError() {
+-    Content c = s.storeContent(b("abc"));
++    StoredContent oldContent = (StoredContent) s.storeContent(b("abc"));
+     m.myEntryCounter = 10;
+     s.store(m);
+     s.close();
+     corruptFile("storage");
+     initStorage();
+     m = s.load();
+     assertEquals(0, m.myEntryCounter);
+-    assertEquals(c.getId(), s.storeContent(b("abc")).getId());
++    StoredContent newContent = (StoredContent) s.storeContent(b("abc"));
++    assertEquals(oldContent.getId(), newContent.getId());
+ }
+\ No newline at end of file

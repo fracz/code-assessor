@@ -1,0 +1,18 @@
+diff --git a/a62dc816a68f7d4b70b530c979e11657b5f5b37d b/d28274ca81d0fae9ffa8d4d703a462f26868ea3e
+index a62dc816a6..d28274ca81 100644
+--- a/a62dc816a68f7d4b70b530c979e11657b5f5b37d
++++ b/d28274ca81d0fae9ffa8d4d703a462f26868ea3e
+@@ -1,9 +1,9 @@
+ @Override
+ protected void configureSpecificCompilerArguments(@NotNull K2JSCompilerArguments arguments, @NotNull List<File> sourceRoots) throws MojoExecutionException {
+     List<String> friends = getOutputDirectoriesCollector().getOrDefault(project.getArtifactId(), Collections.emptyList());
+-    arguments.friendModules = StringUtil.join(friends, File.pathSeparator);
++    arguments.setFriendModules(StringUtil.join(friends, File.pathSeparator));
+     output = testOutput;
+     super.configureSpecificCompilerArguments(arguments, sourceRoots);
+-    arguments.outputFile = outputFile;
+-    arguments.metaInfo = metaInfo;
++    arguments.setOutputFile(outputFile);
++    arguments.setMetaInfo(metaInfo);
+ }
+\ No newline at end of file

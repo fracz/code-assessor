@@ -1,0 +1,15 @@
+diff --git a/fb1f0885cd23e27b300437a81f8ce8c161b5bc7f b/98b79bf832c3edfca67dd07d8f3b2ae795ca1aa6
+index fb1f0885cd..98b79bf832 100644
+--- a/fb1f0885cd23e27b300437a81f8ce8c161b5bc7f
++++ b/98b79bf832c3edfca67dd07d8f3b2ae795ca1aa6
+@@ -1,8 +1,8 @@
+ private boolean hasChangesOf(DocumentReference ref) {
+     for (UndoableAction action : myCurrentActions) {
+         DocumentReference[] refs = action.getAffectedDocuments();
+         if (refs == null || ArrayUtil.contains(ref, refs))
+             return true;
+     }
+-    return false;
++    return hasActions() && myAdditionalAffectedDocuments.contains(ref);
+ }
+\ No newline at end of file

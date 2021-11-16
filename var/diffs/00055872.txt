@@ -1,0 +1,15 @@
+diff --git a/97132e82eab290dc1de7657aa6366473f4ae39f6 b/d8ae3a3da4b7b202179472b67ce29c418176be1f
+index 97132e82ea..d8ae3a3da4 100644
+--- a/97132e82eab290dc1de7657aa6366473f4ae39f6
++++ b/d8ae3a3da4b7b202179472b67ce29c418176be1f
+@@ -1,8 +1,8 @@
+ @Test
+ public void encode() throws Exception {
+     String s = "foo";
+     Resource resource = new ByteArrayResource(s.getBytes(StandardCharsets.UTF_8));
+     Mono<Resource> source = Mono.just(resource);
+     Flux<DataBuffer> output = this.encoder.encode(source, this.bufferFactory, ResolvableType.forClass(Resource.class), null, Collections.emptyMap());
+-    TestSubscriber.subscribe(output).assertNoError().assertComplete().assertValuesWith(stringConsumer(s));
++    ScriptedSubscriber.<DataBuffer>create().consumeNextWith(stringConsumer(s)).expectComplete().verify(output);
+ }
+\ No newline at end of file

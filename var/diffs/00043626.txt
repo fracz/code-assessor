@@ -1,0 +1,19 @@
+diff --git a/b1a83b21156b1ae1d2bba0fbe23e0c881546677f b/59e84c3842f6877f0305ff944f61418d2396ae5e
+index b1a83b2115..59e84c3842 100644
+--- a/b1a83b21156b1ae1d2bba0fbe23e0c881546677f
++++ b/59e84c3842f6877f0305ff944f61418d2396ae5e
+@@ -1,12 +1,12 @@
+ private void startAcceptingRequests() {
+     // START ALL THE WORKER THREADS (CONFIGURABLE)
+-    final int totalWorkers = OGlobalConfiguration.DISTRIBUTED_DB_WORKERTHREADS.getValueAsInteger();
++    final int totalWorkers = this.manager.getServerInstance().getContextConfiguration().getValueAsInteger(OGlobalConfiguration.DISTRIBUTED_DB_WORKERTHREADS);
+     if (totalWorkers < 1)
+         throw new ODistributedException("Cannot create configured distributed workers (" + totalWorkers + ")");
+     for (int i = 0; i < totalWorkers; ++i) {
+         final ODistributedWorker workerThread = new ODistributedWorker(this, databaseName, i);
+         workerThreads.add(workerThread);
+         workerThread.start();
+         ALL_QUEUES.add(i);
+     }
+ }
+\ No newline at end of file

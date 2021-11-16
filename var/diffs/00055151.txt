@@ -1,0 +1,14 @@
+diff --git a/27b99b259e8364ea7385cce7e12cccd3c532af88 b/61b6b751c56771af0fad84153db3d98026189eda
+index 27b99b259e..61b6b751c5 100644
+--- a/27b99b259e8364ea7385cce7e12cccd3c532af88
++++ b/61b6b751c56771af0fad84153db3d98026189eda
+@@ -1,7 +1,6 @@
+ void init() {
+-    reset();
+     if (outDir == null) {
+-        outDir = new File("jadx-output");
++        outDir = new DefaultJadxArgs().getOutDir();
+     }
+     this.passes = Jadx.getPassesList(args, outDir);
+ }
+\ No newline at end of file

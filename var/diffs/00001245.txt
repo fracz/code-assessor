@@ -1,0 +1,15 @@
+diff --git a/bf1f1beda41819d8e65fd7b0bcffb506218e662d b/cba1d9c916a2140a5b3bc80c1145992178ba24c7
+index bf1f1beda4..cba1d9c916 100644
+--- a/bf1f1beda41819d8e65fd7b0bcffb506218e662d
++++ b/cba1d9c916a2140a5b3bc80c1145992178ba24c7
+@@ -1,6 +1,6 @@
+ @Override
+-protected List<Pair<String, ? extends ChannelHandler>> getBaseChannelHandlers(MessageInput input) {
+-    final List<Pair<String, ? extends ChannelHandler>> baseChannelHandlers = super.getBaseChannelHandlers(input);
+-    baseChannelHandlers.add(Pair.of("connection-counter", connectionCounter));
++protected LinkedHashMap<String, Callable<? extends ChannelHandler>> getBaseChannelHandlers(MessageInput input) {
++    final LinkedHashMap<String, Callable<? extends ChannelHandler>> baseChannelHandlers = super.getBaseChannelHandlers(input);
++    baseChannelHandlers.put("connection-counter", Callables.returning(connectionCounter));
+     return baseChannelHandlers;
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/95f09cf76d18fbb22c98e0892d038c2fa86f35ab b/c5375f684b54613578753ad25632076820ab9bef
+index 95f09cf76d..c5375f684b 100644
+--- a/95f09cf76d18fbb22c98e0892d038c2fa86f35ab
++++ b/c5375f684b54613578753ad25632076820ab9bef
+@@ -1,9 +1,13 @@
+ @Override
+ public void onPrintersAdded(List<PrinterInfo> printers) {
+-    throwIfPrinterIdsForPrinterInfoTampered(printers);
+-    try {
+-        mDecoratedObsever.onPrintersAdded(printers);
+-    } catch (RemoteException re) {
+-        Slog.e(LOG_TAG, "Error delegating to onPrintersAdded", re);
++    RemotePrintService service = mWeakService.get();
++    if (service != null) {
++        throwIfPrinterIdsForPrinterInfoTampered(service.mComponentName, printers);
++        final long identity = Binder.clearCallingIdentity();
++        try {
++            service.mSpooler.onPrintersAdded(printers);
++        } finally {
++            Binder.restoreCallingIdentity(identity);
++        }
+     }
+ }
+\ No newline at end of file

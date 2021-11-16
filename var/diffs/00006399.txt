@@ -1,0 +1,11 @@
+diff --git a/b3eb5d7832ca9ad6a5901ce79c525bfcde44817e b/38bda04bbc46a3b1f353b39cddddd604ccfa6be0
+index b3eb5d7832..38bda04bbc 100644
+--- a/b3eb5d7832ca9ad6a5901ce79c525bfcde44817e
++++ b/38bda04bbc46a3b1f353b39cddddd604ccfa6be0
+@@ -1,4 +1,4 @@
+ public PsiClass getContainingClass() {
+     PsiElement parent = getParent();
+-    return parent instanceof PsiClass ? (PsiClass) parent : null;
++    return parent instanceof PsiClass ? (PsiClass) parent : PsiTreeUtil.getParentOfType(this, JspClass.class);
+ }
+\ No newline at end of file

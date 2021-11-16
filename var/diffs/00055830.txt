@@ -1,0 +1,17 @@
+diff --git a/3a97677c746aff85b7be2fba541ce47cfb27d3ad b/a50e6f81c52ece1dee1dd01df7c506acbda71aa7
+index 3a97677c74..a50e6f81c5 100644
+--- a/3a97677c746aff85b7be2fba541ce47cfb27d3ad
++++ b/a50e6f81c52ece1dee1dd01df7c506acbda71aa7
+@@ -1,7 +1,10 @@
+ @Test
+ public void illegalArgumentExceptionIsWrappedWithInvocationDetails() throws Exception {
+     InvocableHandlerMethod hm = handlerMethod("singleArg");
+     addResolver(hm, Mono.just(1));
+     Mono<HandlerResult> mono = hm.invokeForRequest(this.exchange, new BindingContext());
+-    TestSubscriber.subscribe(mono).assertError(IllegalStateException.class).assertErrorMessage("Failed to invoke controller with resolved arguments: " + "[0][type=java.lang.Integer][value=1] " + "on method [" + hm.getMethod().toGenericString() + "]");
++    ScriptedSubscriber.create().expectNextCount(0).consumeErrorWith(error -> {
++        assertThat(error, instanceOf(IllegalStateException.class));
++        assertThat(error.getMessage(), is("Failed to invoke controller with resolved arguments: " + "[0][type=java.lang.Integer][value=1] " + "on method [" + hm.getMethod().toGenericString() + "]"));
++    }).verify(mono);
+ }
+\ No newline at end of file

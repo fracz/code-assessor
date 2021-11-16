@@ -1,0 +1,12 @@
+diff --git a/8c47e76658c1fb650c128de413b75e92682952b6 b/ffcc6e4216d60099f6066eeada9fb94e0cf30361
+index 8c47e76658..ffcc6e4216 100644
+--- a/8c47e76658c1fb650c128de413b75e92682952b6
++++ b/ffcc6e4216d60099f6066eeada9fb94e0cf30361
+@@ -1,5 +1,5 @@
+ @Override
+ public void preparedStatement_setURL(FilterChain chain, PreparedStatementProxy statement, int parameterIndex, URL x) throws SQLException {
+     preparedStatement_setParameterBefore(statement, parameterIndex, TYPE.URL, x);
+-    super.preparedStatement_setURL(chain, statement, parameterIndex, x);
++    chain.preparedStatement_setURL(statement, parameterIndex, x);
+ }
+\ No newline at end of file

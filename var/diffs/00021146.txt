@@ -1,0 +1,17 @@
+diff --git a/f888f821e3061faae6eb43b1beab049eac9faa8f b/ae693e1fe32ea85acd8eab671e521f4ae9868fe4
+index f888f821e3..ae693e1fe3 100644
+--- a/f888f821e3061faae6eb43b1beab049eac9faa8f
++++ b/ae693e1fe32ea85acd8eab671e521f4ae9868fe4
+@@ -1,8 +1,8 @@
+ public void write(JSONSerializer serializer, Object object, Object fieldName, Type fieldType, int features) throws IOException {
+     if (object == null) {
+         serializer.writeNull();
+-        return;
++    } else {
++        Charset charset = (Charset) object;
++        serializer.write(charset.toString());
+     }
+-    Charset charset = (Charset) object;
+-    serializer.write(charset.toString());
+ }
+\ No newline at end of file

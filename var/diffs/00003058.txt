@@ -1,0 +1,12 @@
+diff --git a/db58eaf7e64cff6efde540ea35f150af787d852f b/d5178837b8f9561e9388e54a0414d5080a307b17
+index db58eaf7e6..d5178837b8 100644
+--- a/db58eaf7e64cff6efde540ea35f150af787d852f
++++ b/d5178837b8f9561e9388e54a0414d5080a307b17
+@@ -1,5 +1,5 @@
+ public void actionPerformed(AnActionEvent e) {
+     final DataContext dataContext = e.getDataContext();
+-    final Module[] modules = (Module[]) dataContext.getData(DataConstants.MODULE_CONTEXT_ARRAY);
++    final Module[] modules = LangDataKeys.MODULE_CONTEXT_ARRAY.getData(dataContext);
+     MoveModulesToGroupAction.doMove(modules, null, dataContext);
+ }
+\ No newline at end of file

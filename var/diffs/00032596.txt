@@ -1,0 +1,12 @@
+diff --git a/c05022dda17878b945a6fb2882572c64533f1c9b b/62f04a6e93108a68448d20b61bf4c35d65ffcd91
+index c05022dda1..62f04a6e93 100644
+--- a/c05022dda17878b945a6fb2882572c64533f1c9b
++++ b/62f04a6e93108a68448d20b61bf4c35d65ffcd91
+@@ -1,3 +1,4 @@
+-public static SuggestedFix prefixWith(Position pos, String s) {
+-    return new SuggestedFix().replace(pos.start, pos.start, s);
++public SuggestedFix prefixWith(Tree node, String prefix) {
++    prefixInsertions.add(new Pair<Tree, String>(node, prefix));
++    return this;
+ }
+\ No newline at end of file

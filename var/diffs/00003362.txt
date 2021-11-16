@@ -1,0 +1,26 @@
+diff --git a/dd651bc254204f89e87ad0aa36852f181b005f68 b/91bbdee5177080f151214a59a708a09e89d1a183
+index dd651bc254..91bbdee517 100644
+--- a/dd651bc254204f89e87ad0aa36852f181b005f68
++++ b/91bbdee5177080f151214a59a708a09e89d1a183
+@@ -1,15 +1,13 @@
+ protected void customizeUsagesView(@NotNull final UsageViewDescriptor viewDescriptor, @NotNull final UsageView usageView) {
+-    final Runnable refactoringRunnable = new Runnable() {
+-
+-        @Override
+-        public void run() {
+-            Set<UsageInfo> usagesToRefactor = UsageViewUtil.getNotExcludedUsageInfos(usageView);
+-            final UsageInfo[] infos = usagesToRefactor.toArray(new UsageInfo[usagesToRefactor.size()]);
++    Runnable refactoringRunnable = () -> {
++        Set<UsageInfo> usagesToRefactor = UsageViewUtil.getNotExcludedUsageInfos(usageView);
++        final UsageInfo[] infos = usagesToRefactor.toArray(new UsageInfo[usagesToRefactor.size()]);
++        TransactionGuard.getInstance().submitTransactionAndWait(() -> {
+             if (ensureElementsWritable(infos, viewDescriptor)) {
+                 execute(infos);
+             }
+-        }
++        });
+     };
+     String canNotMakeString = RefactoringBundle.message("usageView.need.reRun");
+     addDoRefactoringAction(usageView, refactoringRunnable, canNotMakeString);
+ }
+\ No newline at end of file

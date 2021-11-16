@@ -1,0 +1,19 @@
+diff --git a/3ab60fbe421b64f0baeaa2df1752e9bfecf3e009 b/0eb4547f051300511528212abe73b6e0e5e2d498
+index 3ab60fbe42..0eb4547f05 100644
+--- a/3ab60fbe421b64f0baeaa2df1752e9bfecf3e009
++++ b/0eb4547f051300511528212abe73b6e0e5e2d498
+@@ -1,10 +1,11 @@
+ @Test
+ public void shouldAddAndGetByLabel() throws Exception {
+     // GIVEN
+     long labelId = 2, labelId2 = 5, propertyKey = 3;
+     // WHEN
+-    IndexRule rule = state.addIndexRule(labelId, propertyKey);
+-    state.addIndexRule(labelId2, propertyKey);
++    IndexDescriptor rule = new IndexDescriptor(labelId, propertyKey);
++    state.addIndexRule(rule);
++    state.addIndexRule(new IndexDescriptor(labelId2, propertyKey));
+     // THEN
+     assertEquals(asSet(rule), state.getIndexRuleDiffSetsByLabel(labelId).getAdded());
+ }
+\ No newline at end of file

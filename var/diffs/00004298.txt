@@ -1,0 +1,19 @@
+diff --git a/6e1d978beb2704fc72807e190adb4a26383a1f49 b/291e33c3734e2561f80697cf35c26fae6f0d7f67
+index 6e1d978beb..291e33c373 100644
+--- a/6e1d978beb2704fc72807e190adb4a26383a1f49
++++ b/291e33c3734e2561f80697cf35c26fae6f0d7f67
+@@ -1,7 +1,8 @@
+-private static File getMapDir() {
+-    try {
+-        return FileUtil.createTempDirectory(new File(myHomeDir + File.separator + myJPSDir), "mappings", "dir");
+-    } catch (IOException e) {
+-        throw new RuntimeException(e);
++private File getMapDir() {
++    final File f = new File(myProjectSnapshot + ".dir");
++    if (f.exists()) {
++        return f;
+     }
++    assert (f.mkdir());
++    return f;
+ }
+\ No newline at end of file

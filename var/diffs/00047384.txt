@@ -1,0 +1,26 @@
+diff --git a/9141ea3e4d3272394686594abe6dcb01589b6031 b/f3421df98acab578003df91d2ffd0574bbbfc418
+index 9141ea3e4d..f3421df98a 100644
+--- a/9141ea3e4d3272394686594abe6dcb01589b6031
++++ b/f3421df98acab578003df91d2ffd0574bbbfc418
+@@ -1,12 +1,11 @@
+ @Override
+ public void removeListener(int listenerId) {
+-    final RedisPubSubTopicListenerWrapper<String, M> pubSubListener = listeners.remove(listenerId);
+-    promise.get().addListener(new FutureListener<Boolean>() {
+-
+-        @Override
+-        public void operationComplete(io.netty.util.concurrent.Future<Boolean> future) throws Exception {
+-            pubSubEntry.removeListener(pubSubListener);
+-        }
+-    });
+-    lazyUnsubscribe();
++    PubSubConnectionEntry entry = connectionManager.getEntry(getName());
++    if (entry == null) {
++        return;
++    }
++    synchronized (entry) {
++        entry.removeListener(listenerId);
++        connectionManager.unsubscribe(entry, getName());
++    }
+ }
+\ No newline at end of file

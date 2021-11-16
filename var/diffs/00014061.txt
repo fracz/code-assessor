@@ -1,0 +1,15 @@
+diff --git a/84e9884d6d33db8fbbe1f8c24874490d71ff8e89 b/2d84b8b0ba0eff2325b6b6aa2c4f05854d7e4711
+index 84e9884d6d..2d84b8b0ba 100644
+--- a/84e9884d6d33db8fbbe1f8c24874490d71ff8e89
++++ b/2d84b8b0ba0eff2325b6b6aa2c4f05854d7e4711
+@@ -1,8 +1,7 @@
+ public void visitAnonymousClass(@NotNull PsiAnonymousClass aClass) {
+     final int totalMethodCount = calculateTotalMethodCount(aClass);
+     if (totalMethodCount <= getLimit()) {
+         return;
+     }
+-    final PsiJavaCodeReferenceElement classNameIdentifier = aClass.getBaseClassReference();
+-    registerError(classNameIdentifier);
++    registerClassError(aClass, Integer.valueOf(totalMethodCount));
+ }
+\ No newline at end of file

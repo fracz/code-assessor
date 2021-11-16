@@ -1,0 +1,37 @@
+diff --git a/0d1b1146ff42a7d6d30ebfde25181775e069b82b b/6b70c701d73c91f15b69a94bf11373f46473a8b3
+index 0d1b1146ff..6b70c701d7 100644
+--- a/0d1b1146ff42a7d6d30ebfde25181775e069b82b
++++ b/6b70c701d73c91f15b69a94bf11373f46473a8b3
+@@ -1,28 +1,27 @@
+ /**
+  * Clears console, prints output of selected test and scrolls to beginning
+  * of output.
+  * This method must be invoked in Event Dispatch Thread
+  * @param test Selected test
+  */
+-public void updateOnTestSelected(final PrintableTestProxy test) {
++public void updateOnTestSelected(final AbstractTestProxy test) {
+     if (myCurrentPrintable == test) {
+         return;
+     }
+-    myCurrentPrintable.setPrintLinstener(DEAF);
+     myConsole.clear();
+     myMarkOffset = 0;
+     if (test == null) {
+-        myCurrentPrintable = ChangingPrintable.DEAF;
++        myCurrentPrintable = null;
+         return;
+     }
+     myCurrentPrintable = test;
+-    myCurrentPrintable.setPrintLinstener(this);
++    myCurrentPrintable.setPrintListener(this);
+     if (test.isRoot()) {
+         myOutputStorage.printOn(this);
+     }
+     myCurrentPrintable.printOn(this);
+     scrollToBeginning();
+     if (myConsole instanceof ConsoleViewImpl) {
+         ((ConsoleViewImpl) myConsole).foldImmediately();
+     }
+ }
+\ No newline at end of file

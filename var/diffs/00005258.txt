@@ -1,0 +1,10 @@
+diff --git a/b508910afb8baaf8d885cded5f824953157c491e b/4a7206ae12f2b223df3dc806b974182bed9e837e
+index b508910afb..4a7206ae12 100644
+--- a/b508910afb8baaf8d885cded5f824953157c491e
++++ b/4a7206ae12f2b223df3dc806b974182bed9e837e
+@@ -1,3 +1,3 @@
+ public void handleStatus(SVNStatus status) throws SVNException {
+-    processStatus(PeerFactory.getInstance().getVcsContextFactory().createFilePathOn(status.getFile()), status, builder);
++    processStatus(VcsUtil.getFilePath(status.getFile(), status.getKind().equals(SVNNodeKind.DIR)), status, builder);
+ }
+\ No newline at end of file

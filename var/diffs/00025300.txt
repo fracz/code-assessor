@@ -1,0 +1,20 @@
+diff --git a/428c98f6d449e5fe72c2b7854724a4192f29e304 b/dfdb776e60a592da4c5089cef68db321b834e9c1
+index 428c98f6d4..dfdb776e60 100644
+--- a/428c98f6d449e5fe72c2b7854724a4192f29e304
++++ b/dfdb776e60a592da4c5089cef68db321b834e9c1
+@@ -1,10 +1,10 @@
+ @Test
+ public void shouldIterateCacheAndStore() throws Exception {
+     final Bytes key = Bytes.wrap("1".getBytes());
+     underlying.put(WindowStoreUtils.toBinaryKey(key, DEFAULT_TIMESTAMP, 0, WindowStoreUtils.getInnerStateSerde("app-id")), "a".getBytes());
+-    cachingStore.put("1", "b", DEFAULT_TIMESTAMP + WINDOW_SIZE);
+-    final WindowStoreIterator<String> fetch = cachingStore.fetch("1", DEFAULT_TIMESTAMP, DEFAULT_TIMESTAMP + WINDOW_SIZE);
+-    assertEquals(KeyValue.pair(DEFAULT_TIMESTAMP, "a"), fetch.next());
+-    assertEquals(KeyValue.pair(DEFAULT_TIMESTAMP + WINDOW_SIZE, "b"), fetch.next());
++    cachingStore.put(key, bytesValue("b"), DEFAULT_TIMESTAMP + WINDOW_SIZE);
++    final WindowStoreIterator<byte[]> fetch = cachingStore.fetch(bytesKey("1"), DEFAULT_TIMESTAMP, DEFAULT_TIMESTAMP + WINDOW_SIZE);
++    verifyKeyValue(fetch.next(), DEFAULT_TIMESTAMP, "a");
++    verifyKeyValue(fetch.next(), DEFAULT_TIMESTAMP + WINDOW_SIZE, "b");
+     assertFalse(fetch.hasNext());
+ }
+\ No newline at end of file

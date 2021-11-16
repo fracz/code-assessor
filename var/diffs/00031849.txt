@@ -1,0 +1,21 @@
+diff --git a/ac6dda3dc00ae24b97c5523a48631f28094201d8 b/31597021661e400c6a1954b60f4759c4e96412e1
+index ac6dda3dc0..3159702166 100644
+--- a/ac6dda3dc00ae24b97c5523a48631f28094201d8
++++ b/31597021661e400c6a1954b60f4759c4e96412e1
+@@ -1,13 +1,13 @@
+ private void updateMaterial(Material material) {
+     if (skipUpdate)
+         return;
+     try {
+         if (!materialUpdateService.updateMaterial(material)) {
+             retryQueue.add(material);
+         }
+     } catch (Exception e) {
+-        // TODO: ServerHealthCheck
+-        LOGGER.error(format("[Material Update] Error updating dependency material %s", material), e);
++        HealthStateScope scope = HealthStateScope.forMaterialUpdate(material);
++        serverHealthService.update(error(format("Error updating Dependency Material %s", material.getUriForDisplay()), e.getMessage(), general(scope)));
+         retryQueue.add(material);
+     }
+ }
+\ No newline at end of file

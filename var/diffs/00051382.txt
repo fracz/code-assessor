@@ -1,0 +1,11 @@
+diff --git a/2722e942cda7ce232bb931d4120f4e88ca787b55 b/b099234eea655bb0cfe51be8bfcde1d306b30835
+index 2722e942cd..b099234eea 100644
+--- a/2722e942cda7ce232bb931d4120f4e88ca787b55
++++ b/b099234eea655bb0cfe51be8bfcde1d306b30835
+@@ -1,4 +1,4 @@
+ @Override
+ public DBCExecutionContext openIsolatedContext(DBRProgressMonitor monitor, DBCExecutionPurpose purpose, String taskTitle) {
+-    return new JDBCConnectionImpl(this, monitor, purpose, taskTitle, true);
++    return createConnection(monitor, purpose, taskTitle, true);
+ }
+\ No newline at end of file

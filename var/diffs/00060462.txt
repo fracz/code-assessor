@@ -1,0 +1,26 @@
+diff --git a/523fe0ffd4c929115019b2a64c794bdb4ee7a43d b/cef786bb0a70d70d2b21fa154d8b831954f0d25c
+index 523fe0ffd4..cef786bb0a 100644
+--- a/523fe0ffd4c929115019b2a64c794bdb4ee7a43d
++++ b/cef786bb0a70d70d2b21fa154d8b831954f0d25c
+@@ -1,12 +1,18 @@
+ @Override
+ public void sessionModeChanged(Mode mode) {
++    Boolean isEnabled = null;
+     switch(mode) {
+         case safe:
+-            getMenuManualRequestEditor().setEnabled(false);
++            isEnabled = false;
+             break;
+         case protect:
+         case standard:
+-            getMenuManualRequestEditor().setEnabled(true);
++            isEnabled = true;
+             break;
+     }
++    if (isEnabled != null) {
++        for (Entry<Class<? extends Message>, ManualRequestEditorDialog> dialog : dialogues.entrySet()) {
++            dialog.getValue().setEnabled(isEnabled);
++        }
++    }
+ }
+\ No newline at end of file

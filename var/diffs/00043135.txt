@@ -1,0 +1,30 @@
+diff --git a/2d3df66c0cf82a5e593a8943524044f4cd06d8c4 b/59face0be6ebfdf2337217d345ef80b7eac2d439
+index 2d3df66c0c..59face0be6 100644
+--- a/2d3df66c0cf82a5e593a8943524044f4cd06d8c4
++++ b/59face0be6ebfdf2337217d345ef80b7eac2d439
+@@ -1,20 +1,17 @@
+ public long getSize() {
+     checkConnection();
+     do {
+         try {
++            final OChannelBinaryClient network = beginRequest(OChannelBinaryProtocol.REQUEST_DB_SIZE);
++            endRequest(network);
+             try {
+-                beginRequest(OChannelBinaryProtocol.REQUEST_DB_SIZE);
+-            } finally {
+-                endRequest();
+-            }
+-            try {
+-                beginResponse();
++                beginResponse(network);
+                 return network.readLong();
+             } finally {
+-                endResponse();
++                endResponse(network);
+             }
+         } catch (Exception e) {
+             handleException("Error on read database size", e);
+         }
+     } while (true);
+ }
+\ No newline at end of file

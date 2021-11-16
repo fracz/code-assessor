@@ -1,0 +1,12 @@
+diff --git a/4cd22201040e072b3ff04491144f28f06c511145 b/a11715b8967f7460debd2f121c8657ffc8ad678d
+index 4cd2220104..a11715b896 100644
+--- a/4cd22201040e072b3ff04491144f28f06c511145
++++ b/a11715b8967f7460debd2f121c8657ffc8ad678d
+@@ -1,3 +1,4 @@
+-private AgentOption createAgentOption(String agentArgs, Instrumentation instrumentation, ProfilerConfig profilerConfig, URL[] pluginJars, List<String> bootstrapJarPaths, ServiceTypeRegistryService serviceTypeRegistryService, AnnotationKeyRegistryService annotationKeyRegistryService) {
+-    return new DefaultAgentOption(agentArgs, instrumentation, profilerConfig, pluginJars, bootstrapJarPaths, serviceTypeRegistryService, annotationKeyRegistryService);
++private AgentOption createAgentOption(String agentId, String applicationName, ProfilerConfig profilerConfig, Instrumentation instrumentation, URL[] pluginJars, BootstrapJarFile bootstrapJarFile, ServiceTypeRegistryService serviceTypeRegistryService, AnnotationKeyRegistryService annotationKeyRegistryService) {
++    List<String> bootstrapJarPaths = bootstrapJarFile.getJarNameList();
++    return new DefaultAgentOption(instrumentation, agentId, applicationName, profilerConfig, pluginJars, bootstrapJarPaths, serviceTypeRegistryService, annotationKeyRegistryService);
+ }
+\ No newline at end of file

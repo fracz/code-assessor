@@ -1,0 +1,14 @@
+diff --git a/67f088ce10789ef8bf34285a3354cf8b244e92e9 b/bf7c5c067bf80da40785916afa42c1c7906b7d1f
+index 67f088ce10..bf7c5c067b 100644
+--- a/67f088ce10789ef8bf34285a3354cf8b244e92e9
++++ b/bf7c5c067bf80da40785916afa42c1c7906b7d1f
+@@ -1,4 +1,7 @@
+ @Override
+-public void setWhitespaceSkippedCallback(WhitespaceSkippedCallback callback) {
++@Nullable
++public WhitespaceSkippedCallback setWhitespaceSkippedCallback(@Nullable final WhitespaceSkippedCallback callback) {
++    final WhitespaceSkippedCallback oldCallback = myWhitespaceSkippedCallback;
+     myWhitespaceSkippedCallback = callback;
++    return oldCallback;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/cdb8b9eac3b3766a68d7669d204e8d59725fb575 b/3245e51821ef6e3ada0da2273c9898b08fde8c78
+index cdb8b9eac3..3245e51821 100644
+--- a/cdb8b9eac3b3766a68d7669d204e8d59725fb575
++++ b/3245e51821ef6e3ada0da2273c9898b08fde8c78
+@@ -1,6 +1,6 @@
+ @Override
+ public long countRecords() {
+-    OBinaryRequest request = new OCountRecordsRequest();
+-    OBinaryResponse<Long> response = new OCountRecordsResponse();
+-    return networkOperation(request, response, "Error on read database record count");
++    OCountRecordsRequest request = new OCountRecordsRequest();
++    OCountRecordsResponse response = networkOperation(request, "Error on read database record count");
++    return response.getCountRecords();
+ }
+\ No newline at end of file

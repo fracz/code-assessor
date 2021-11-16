@@ -1,0 +1,18 @@
+diff --git a/e21228bdc4ad9d2bf15e0d22161df55701ddcfc4 b/2ba74d0cf21b16473d18f4a61e0d239928d211a2
+index e21228bdc4..2ba74d0cf2 100644
+--- a/e21228bdc4ad9d2bf15e0d22161df55701ddcfc4
++++ b/2ba74d0cf21b16473d18f4a61e0d239928d211a2
+@@ -1,10 +1,10 @@
+ @Test
+ public void shouldPointToTooManyInvocationsChunk() {
+-    Strictly strictly = createStrictOrderVerifier(mock, mockTwo);
++    strictly.verify(mock).simpleMethod(anyInt());
+     try {
+         strictly.verify(mockTwo, times(0)).simpleMethod(anyInt());
+         fail();
+-    } catch (TooManyActualInvocations e) {
++    } catch (StrictVerificationFailure e) {
+         assertThat(e.getCause(), hasFirstMethodInStackTrace("second"));
+     }
+ }
+\ No newline at end of file

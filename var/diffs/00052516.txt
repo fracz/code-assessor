@@ -1,0 +1,21 @@
+diff --git a/227e3f69fcdaadb787688aa288a793188a6cc515 b/cbf4c2fd28e8927332154db4b38f850a531c77a7
+index 227e3f69fc..cbf4c2fd28 100644
+--- a/227e3f69fcdaadb787688aa288a793188a6cc515
++++ b/cbf4c2fd28e8927332154db4b38f850a531c77a7
+@@ -1,14 +1,14 @@
+ void scanHint() {
+-    int position = offset + 4;
+     length = 4;
++    int position = offset + length;
+     while (!('*' == charAt(position) && '/' == charAt(position + 1))) {
+         if (CharTypes.EOI == charAt(position)) {
+             throw new UnterminatedSignException("*/");
+         }
+         position++;
+         length++;
+     }
+     length += 2;
+     literals = input.substring(offset + 4, offset + length - 2);
+     token = GeneralLiterals.HINT;
+ }
+\ No newline at end of file

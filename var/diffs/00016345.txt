@@ -1,0 +1,12 @@
+diff --git a/2b1cccd5f50a14723c15a52afb0260125469c7b8 b/e5e2044cf21737b65b7c03407f7c0350d4df7520
+index 2b1cccd5f5..e5e2044cf2 100644
+--- a/2b1cccd5f50a14723c15a52afb0260125469c7b8
++++ b/e5e2044cf21737b65b7c03407f7c0350d4df7520
+@@ -1,4 +1,4 @@
+-private JsVar getRootPackageDeclaration(@NotNull List<JsExpression> defineInvocation) {
+-    JsExpression rootPackageVar = new JsInvocation(context().namer().rootPackageDefinitionMethodReference(), defineInvocation);
++private JsVar getRootPackageDeclaration(@NotNull DefineInvocation defineInvocation) {
++    JsExpression rootPackageVar = new JsInvocation(context().namer().rootPackageDefinitionMethodReference(), defineInvocation.asList());
+     return new JsVar(context().scope().declareName(Namer.getRootNamespaceName()), rootPackageVar);
+ }
+\ No newline at end of file

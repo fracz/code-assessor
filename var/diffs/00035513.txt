@@ -1,0 +1,21 @@
+diff --git a/eeb6f96496a28e4d0d16d69c529ee31101cf9a63 b/7f070583e5fcb15607b6e63720ef12160d66e7aa
+index eeb6f96496..7f070583e5 100644
+--- a/eeb6f96496a28e4d0d16d69c529ee31101cf9a63
++++ b/7f070583e5fcb15607b6e63720ef12160d66e7aa
+@@ -1,11 +1,12 @@
+ @Override
+-public void startForeground(int id, Notification notification) {
+-    if (getService() == null) {
++public void startForeground(int notificationId, Notification notification) {
++    if (!isConnected()) {
++        DownloadServiceNotConnectedHelper.startForeground(notificationId, notification);
+         return;
+     }
+     try {
+-        getService().startForeground(id, notification);
++        getService().startForeground(notificationId, notification);
+     } catch (RemoteException e) {
+         e.printStackTrace();
+     }
+ }
+\ No newline at end of file

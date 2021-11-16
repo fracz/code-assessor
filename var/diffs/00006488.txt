@@ -1,0 +1,14 @@
+diff --git a/19f5c30b432ddd4a2d475c4e1ef21e82d074f6de b/258f1e4dc8cadb0a6de7561cbed5471d711d0af4
+index 19f5c30b43..258f1e4dc8 100644
+--- a/19f5c30b432ddd4a2d475c4e1ef21e82d074f6de
++++ b/258f1e4dc8cadb0a6de7561cbed5471d711d0af4
+@@ -1,5 +1,5 @@
+-public Profile readScheme(final Document document, final File file) throws InvalidDataException, IOException, JDOMException {
+-    InspectionProfileImpl profile = new InspectionProfileImpl(getProfileName(file), file, myRegistrar, InspectionProfileManager.this);
+-    profile.load();
++public Profile readScheme(final Document document) throws InvalidDataException, IOException, JDOMException {
++    InspectionProfileImpl profile = new InspectionProfileImpl(getProfileName(document), myRegistrar, InspectionProfileManager.this);
++    profile.load(document.getRootElement());
+     return profile;
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/c87deee9e007a296fd53cc4d06f2d51bb250ba7e b/3004244d0d670e69fedc544af399865abc87faad
+index c87deee9e0..3004244d0d 100644
+--- a/c87deee9e007a296fd53cc4d06f2d51bb250ba7e
++++ b/3004244d0d670e69fedc544af399865abc87faad
+@@ -1,9 +1,4 @@
++@Override
+ public FaunusVertexLabel getVertexLabel(String name) {
+-    FaunusVertexLabel vl = vertexLabels.get(name);
+-    if (vl == null) {
+-        vertexLabels.putIfAbsent(name, new FaunusVertexLabel(schemaProvider.getVertexLabel(name)));
+-        vl = vertexLabels.get(name);
+-    }
+-    assert vl != null;
+-    return vl;
++    return vertexLabels.get(name);
+ }
+\ No newline at end of file

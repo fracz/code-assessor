@@ -1,0 +1,25 @@
+diff --git a/d6fb104b992ffb1aa1c558d91bf7189d3dab0257 b/f81b4bff705ef620db75f7df82d79ac82675df85
+index d6fb104b99..f81b4bff70 100644
+--- a/d6fb104b992ffb1aa1c558d91bf7189d3dab0257
++++ b/f81b4bff705ef620db75f7df82d79ac82675df85
+@@ -1,18 +1,8 @@
+ // Node/edge sets are the same, but node/edge connections differ due to graph type.
+ @Test
+ public void equals_directedVsUndirected() {
+     graph.addEdge(E12, N1, N2);
+-    Graph<Integer, String> g2;
+-    switch(graphType) {
+-        case UNDIRECTED:
+-            g2 = Graphs.createDirected();
+-            break;
+-        case DIRECTED:
+-            g2 = Graphs.createUndirected();
+-            break;
+-        default:
+-            throw new IllegalStateException("Unexpected graph type: " + graphType);
+-    }
++    Graph<Integer, String> g2 = createGraph(oppositeType(graphType));
+     g2.addEdge(E12, N1, N2);
+     new EqualsTester().addEqualityGroup(graph).addEqualityGroup(g2).testEquals();
+ }
+\ No newline at end of file

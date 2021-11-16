@@ -1,0 +1,14 @@
+diff --git a/d5fd809b30af943760909b77030f6199bf2a747a b/24b6cee3edf33aac5d2219244e9311151df86e78
+index d5fd809b30..24b6cee3ed 100644
+--- a/d5fd809b30af943760909b77030f6199bf2a747a
++++ b/24b6cee3edf33aac5d2219244e9311151df86e78
+@@ -1,6 +1,6 @@
+ @Override
+-public void applyStartedShards(NodeAllocations nodeAllocations, RoutingNodes routingNodes, DiscoveryNodes nodes, List<? extends ShardRouting> startedShards) {
+-    for (ShardRouting shardRouting : startedShards) {
++public void applyStartedShards(NodeAllocations nodeAllocations, StartedRerouteAllocation allocation) {
++    for (ShardRouting shardRouting : allocation.startedShards()) {
+         cachedStores.remove(shardRouting.shardId());
+     }
+ }
+\ No newline at end of file

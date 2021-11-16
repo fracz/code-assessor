@@ -1,0 +1,20 @@
+diff --git a/205a5bfdd8894ebc8dc63b9a813d48c253269b94 b/27190a241116d8b361fe31427abcc0db2756ce23
+index 205a5bfdd8..27190a2411 100644
+--- a/205a5bfdd8894ebc8dc63b9a813d48c253269b94
++++ b/27190a241116d8b361fe31427abcc0db2756ce23
+@@ -1,10 +1,10 @@
++@Test
+ public void testNoInvokeWhenReturningParameterTypeDoesNotMatch() {
+     // we need a strict mock for this...
+-    mockControl = MockControl.createControl(AfterReturningAdviceBindingCollaborator.class);
+-    mockCollaborator = (AfterReturningAdviceBindingCollaborator) mockControl.getMock();
++    mockCollaborator = createMock(AfterReturningAdviceBindingCollaborator.class);
+     afterAdviceAspect.setCollaborator(mockCollaborator);
+-    mockControl.replay();
++    replay(mockCollaborator);
+     testBeanProxy.setSpouse(this.testBeanProxy);
+     testBeanProxy.getSpouse();
+-    mockControl.verify();
++    verify(mockCollaborator);
+ }
+\ No newline at end of file

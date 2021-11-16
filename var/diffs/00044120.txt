@@ -1,0 +1,12 @@
+diff --git a/30ccf21ca0e017023d543a98895421a36afc6b2f b/4e4341af904b35bce018180716196187ea689cb9
+index 30ccf21ca0..4e4341af90 100644
+--- a/30ccf21ca0e017023d543a98895421a36afc6b2f
++++ b/4e4341af904b35bce018180716196187ea689cb9
+@@ -1,4 +1,5 @@
+ @Override
+ public OCluster[] read(OChannelBinaryAsynchClient network, OStorageRemoteSession session) throws IOException {
+-    return OStorageRemote.readDatabaseInformation(network);
++    this.clusters = OBinaryProtocolHelper.readClustersArray(network);
++    return this.clusters;
+ }
+\ No newline at end of file

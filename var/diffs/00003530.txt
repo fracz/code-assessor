@@ -1,0 +1,25 @@
+diff --git a/1d7ca202b06e94e742622a827f24d27bb9310541 b/51d5506d8bbea325594f6bbfb20a75cd679fc5c3
+index 1d7ca202b0..51d5506d8b 100644
+--- a/1d7ca202b06e94e742622a827f24d27bb9310541
++++ b/51d5506d8bbea325594f6bbfb20a75cd679fc5c3
+@@ -1,15 +1,13 @@
+ private void prepareUserInfoMessage(Set<ImportOptimizer> optimizers) {
++    if (getInfoCollector() == null)
++        return;
+     if (optimizers.size() == 1) {
+         ImportOptimizer optimizer = optimizers.iterator().next();
+         if (optimizer instanceof UserNotificationInfoProvider) {
+             String info = ((UserNotificationInfoProvider) optimizer).getUserNotificationInfo();
+-            if (info != null && getNotificationInfo() != null) {
+-                getNotificationInfo().setOptimizeImportsNotification(info);
+-            }
++            getInfoCollector().setOptimizeImportsNotification(info);
+             return;
+         }
+     }
+-    if (getNotificationInfo() != null) {
+-        getNotificationInfo().setOptimizeImportsNotification("imports optimized");
+-    }
++    getInfoCollector().setOptimizeImportsNotification("imports optimized");
+ }
+\ No newline at end of file

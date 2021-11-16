@@ -1,0 +1,15 @@
+diff --git a/12142990d5aed8f11d0371aa6585d0fc4f2f7584 b/4289ff364e8dce2715f359879762d2c91750582d
+index 12142990d5..4289ff364e 100644
+--- a/12142990d5aed8f11d0371aa6585d0fc4f2f7584
++++ b/4289ff364e8dce2715f359879762d2c91750582d
+@@ -1,3 +1,7 @@
+-public P[] getParameters() {
+-    return myParametersTableModel.getParameters();
++public List<P> getParameters() {
++    List<P> result = new ArrayList<P>(myParametersTableModel.getRowCount());
++    for (ParameterTableModelItemBase<P> item : myParametersTableModel.getItems()) {
++        result.add(item.parameter);
++    }
++    return result;
+ }
+\ No newline at end of file

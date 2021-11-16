@@ -1,0 +1,30 @@
+diff --git a/babb4ed41b95d2a662c55f13ecc9b9f11f8fe9d9 b/603f9fb2db7dd9cbb84f11eb82eb9eea89a8e739
+index babb4ed41b..603f9fb2db 100644
+--- a/babb4ed41b95d2a662c55f13ecc9b9f11f8fe9d9
++++ b/603f9fb2db7dd9cbb84f11eb82eb9eea89a8e739
+@@ -1,23 +1,22 @@
+ private void sendRemote(ServerID theServerID, BaseMessage message) {
+     // We need to deal with the fact that connecting can take some time and is async, and we cannot
+     // block to wait for it. So we add any sends to a pending list if not connected yet.
+     // Once we connect we send them.
+     // This can also be invoked concurrently from different threads, so it gets a little
+     // tricky
+     ConnectionHolder holder = connections.get(theServerID);
+     if (holder == null) {
+-        NetClient client = vertx.createNetClient();
++        NetClient client = vertx.createNetClient(new NetClientOptions().setConnectTimeout(60 * 1000));
+         // When process is creating a lot of connections this can take some time
+         // so increase the timeout
+-        client.setConnectTimeout(60 * 1000);
+         holder = new ConnectionHolder(client);
+         ConnectionHolder prevHolder = connections.putIfAbsent(theServerID, holder);
+         if (prevHolder != null) {
+             // Another one sneaked in
+             holder = prevHolder;
+         } else {
+             holder.connect(client, theServerID);
+         }
+     }
+     holder.writeMessage(message);
+ }
+\ No newline at end of file

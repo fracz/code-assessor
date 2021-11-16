@@ -1,0 +1,17 @@
+diff --git a/08b7b802e37220030ed803956a96dd720cb753ec b/6b9148a5b07631312026246ea6ee1c8c775509a5
+index 08b7b802e3..6b9148a5b0 100644
+--- a/08b7b802e37220030ed803956a96dd720cb753ec
++++ b/6b9148a5b07631312026246ea6ee1c8c775509a5
+@@ -1,6 +1,7 @@
+ public static KSMetaData createKeyspaceFromName(String keyspace) {
+-    Row partition = readSchemaPartitionForKeyspace(KEYSPACES, keyspace);
+-    if (isEmptySchemaPartition(partition))
+-        throw new RuntimeException(String.format("%s not found in the schema definitions keyspaceName (%s).", keyspace, KEYSPACES));
+-    return createKeyspaceFromSchemaPartition(partition);
++    return readSchemaPartitionForKeyspaceAndApply(KEYSPACES, keyspace, partition -> {
++        if (partition.isEmpty())
++            throw new RuntimeException(String.format("%s not found in the schema definitions keyspaceName (%s).", keyspace, KEYSPACES));
++        return createKeyspaceFromSchemaPartition(partition);
++    });
+ }
+\ No newline at end of file

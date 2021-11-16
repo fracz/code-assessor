@@ -1,0 +1,23 @@
+diff --git a/8d6424b8d3e9773131c198a37b92a428b99dcbf1 b/bc89a441a630def0c685b0a6f75dfd233943de25
+index 8d6424b8d3..bc89a441a6 100644
+--- a/8d6424b8d3e9773131c198a37b92a428b99dcbf1
++++ b/bc89a441a630def0c685b0a6f75dfd233943de25
+@@ -1,12 +1,11 @@
+ @Test
+ public void testColumnDelete() {
+     // issue a column delete and test that the configured index instance was notified to update
+-    Mutation rm;
+-    rm = new Mutation(KEYSPACE1, ByteBufferUtil.bytes("k2"));
+-    rm.delete("Indexed1", Util.cellname("indexed"), 1);
+-    rm.applyUnsafe();
+-    ColumnFamily indexedRow = PerRowSecondaryIndexTest.TestIndex.LAST_INDEXED_ROW;
++    CFMetaData cfm = Schema.instance.getCFMetaData(KEYSPACE1, CF_INDEXED);
++    new RowUpdateBuilder(cfm, FBUtilities.timestampMicros(), "k2").noRowMarker().delete("indexed").build().apply();
++    UnfilteredRowIterator indexedRow = PerRowSecondaryIndexTest.TestIndex.LAST_INDEXED_PARTITION;
+     assertNotNull(indexedRow);
+-    for (Cell cell : indexedRow.getSortedColumns()) assertFalse(cell.isLive());
++    // We filter tombstones now...
++    Assert.assertFalse(UnfilteredRowIterators.filter(indexedRow, FBUtilities.nowInSeconds()).hasNext());
+     assertTrue(Arrays.equals("k2".getBytes(), PerRowSecondaryIndexTest.TestIndex.LAST_INDEXED_KEY.array()));
+ }
+\ No newline at end of file

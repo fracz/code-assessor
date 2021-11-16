@@ -1,0 +1,12 @@
+diff --git a/e7da002f148a85d35d781fd848e11fece4eaa507 b/bd8a9009b0af946c772957939273287e8e97ecc5
+index e7da002f14..bd8a9009b0 100644
+--- a/e7da002f148a85d35d781fd848e11fece4eaa507
++++ b/bd8a9009b0af946c772957939273287e8e97ecc5
+@@ -1,5 +1,5 @@
+ @Override
+ public void indexFile(PsiJetFileStub stub, IndexSink sink) {
+     String packageName = stub.getPackageName();
+-    sink.occurrence(JetIndexKeys.PACKAGE_DECLARATION_KEY, packageName == null ? "" : packageName);
++    sink.occurrence(JetPackageDeclarationIndex.getInstance().getKey(), packageName == null ? "" : packageName);
+ }
+\ No newline at end of file

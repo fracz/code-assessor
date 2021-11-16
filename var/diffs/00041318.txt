@@ -1,0 +1,22 @@
+diff --git a/74e2a0e44b2459e406bf630e2828449b5661e3b2 b/549bdb5bcae49720e415f59068369ea53e3500be
+index 74e2a0e44b..549bdb5bca 100644
+--- a/74e2a0e44b2459e406bf630e2828449b5661e3b2
++++ b/549bdb5bcae49720e415f59068369ea53e3500be
+@@ -1,6 +1,12 @@
+-public synchronized ODictionary<ORecordInternal<?>> getDictionary() {
+-    OIndex<?> idx = getIndex(DICTIONARY_NAME);
+-    if (idx == null)
+-        idx = createIndex(DICTIONARY_NAME, OProperty.INDEX_TYPE.DICTIONARY.toString(), OType.STRING, null, null, null, false);
++public ODictionary<ORecordInternal<?>> getDictionary() {
++    acquireExclusiveLock();
++    OIndex<?> idx;
++    try {
++        idx = getIndex(DICTIONARY_NAME);
++        if (idx == null)
++            idx = createIndex(DICTIONARY_NAME, OClass.INDEX_TYPE.DICTIONARY.toString(), new OSimpleKeyIndexDefinition(OType.STRING), null, null);
++    } finally {
++        releaseExclusiveLock();
++    }
+     return new ODictionary<ORecordInternal<?>>((OIndex<OIdentifiable>) idx);
+ }
+\ No newline at end of file

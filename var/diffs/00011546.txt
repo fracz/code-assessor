@@ -1,0 +1,23 @@
+diff --git a/8801b6126a7269a41c716fc5b2c371c828d22c8b b/a55aadb5d0409faf5604419d6ea2400f0f46c46c
+index 8801b6126a..a55aadb5d0 100644
+--- a/8801b6126a7269a41c716fc5b2c371c828d22c8b
++++ b/a55aadb5d0409faf5604419d6ea2400f0f46c46c
+@@ -1,12 +1,13 @@
+ public void actionPerformed(final AnActionEvent e) {
++    final InspectionResultsView view = getInvoker(e);
++    final InspectionTree tree = view.getTree();
++    final InspectionTool tool = tree.getSelectedTool();
+     if (isProblemDescriptorsAcceptable()) {
+-        final InspectionResultsView view = getInvoker(e);
+-        final InspectionTree tree = view.getTree();
+         final ProblemDescriptor[] descriptors = tree.getSelectedDescriptors();
+         if (descriptors.length > 0) {
+-            doApplyFix(view.getProject(), (DescriptorProviderInspection) tree.getSelectedTool(), descriptors, e);
++            doApplyFix(view.getProject(), (DescriptorProviderInspection) tool, descriptors);
+             return;
+         }
+     }
+-    doApplyFix(getSelectedElements(e), getInvoker(e));
++    doApplyFix(getSelectedElements(e), tool, view);
+ }
+\ No newline at end of file

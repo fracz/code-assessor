@@ -1,0 +1,12 @@
+diff --git a/1a0dac131c4073d3393b9dc616336501504826a5 b/41119e73b7323493c029d0ea3383277419c6abae
+index 1a0dac131c..41119e73b7 100644
+--- a/1a0dac131c4073d3393b9dc616336501504826a5
++++ b/41119e73b7323493c029d0ea3383277419c6abae
+@@ -1,4 +1,5 @@
+ @Override
+ public TitanGraphIndex getGraphIndex(String name) {
+-    return new TitanGraphIndexWrapper(getInternalGraphIndex(name, transaction));
++    IndexType index = getGraphIndexDirect(name, transaction);
++    return index == null ? null : new TitanGraphIndexWrapper(index);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/db4555c6baad07d6c968b2bac9cf0618b0236602 b/e049260089f3cd5b32d8b546af0a9e84500d2dbf
+index db4555c6ba..e049260089 100644
+--- a/db4555c6baad07d6c968b2bac9cf0618b0236602
++++ b/e049260089f3cd5b32d8b546af0a9e84500d2dbf
+@@ -1,7 +1,8 @@
+ public void actionPerformed(AnActionEvent e) {
+     DataContext dataContext = e.getDataContext();
+-    CutProvider provider = (CutProvider) dataContext.getData(DataConstants.CUT_PROVIDER);
+-    if (provider == null)
++    CutProvider provider = PlatformDataKeys.CUT_PROVIDER.getData(dataContext);
++    if (provider == null) {
+         return;
++    }
+     provider.performCut(dataContext);
+ }
+\ No newline at end of file

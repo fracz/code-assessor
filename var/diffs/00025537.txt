@@ -1,0 +1,26 @@
+diff --git a/e56643639577b33b037c24e3aa7534cc33964c90 b/6b29c16c6bbb7ba7a360334cbfb138ac6ec4165c
+index e566436395..6b29c16c6b 100644
+--- a/e56643639577b33b037c24e3aa7534cc33964c90
++++ b/6b29c16c6bbb7ba7a360334cbfb138ac6ec4165c
+@@ -1,12 +1,16 @@
++/**
++ * Find a which topology is running on a worker slot
++ * @return the topology using the worker slot.  If worker slot is free then return null
++ */
+ public TopologyDetails findTopologyUsingWorker(WorkerSlot ws) {
+-    for (Entry<String, Set<WorkerSlot>> entry : _topIdToUsedSlots.entrySet()) {
++    for (Entry<String, Map<String, Collection<ExecutorDetails>>> entry : _topIdToUsedSlots.entrySet()) {
+         String topoId = entry.getKey();
+-        Set<WorkerSlot> workers = entry.getValue();
+-        for (WorkerSlot worker : workers) {
+-            if (worker.getNodeId().equals(ws.getNodeId()) && worker.getPort() == ws.getPort()) {
++        Set<String> workerIds = entry.getValue().keySet();
++        for (String workerId : workerIds) {
++            if (ws.getId().equals(workerId)) {
+                 return _topologies.getById(topoId);
+             }
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

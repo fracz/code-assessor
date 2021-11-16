@@ -1,0 +1,25 @@
+diff --git a/b032b4bb8878876c83c8e018e3c9ac98dd5c2f2d b/7f987aa8cfea8446a01db28260bf78eb953b39aa
+index b032b4bb88..7f987aa8cf 100644
+--- a/b032b4bb8878876c83c8e018e3c9ac98dd5c2f2d
++++ b/7f987aa8cfea8446a01db28260bf78eb953b39aa
+@@ -1,11 +1,10 @@
+ public void updateButtons() {
+-    myRemoveBreakpointButton.setEnabled(getSelectedBreakpoints().length > 0);
+-    myGotoSourceButton.setEnabled(myCurrentViewableBreakpoint != null);
+-    myViewSourceButton.setEnabled(myCurrentViewableBreakpoint != null);
+-    if (!myGotoSourceButton.isEnabled() && myGotoSourceButton.hasFocus())
+-        myGotoSourceButton.transferFocus();
+-    if (!myViewSourceButton.isEnabled() && myViewSourceButton.hasFocus())
+-        myViewSourceButton.transferFocus();
+-    if (!myRemoveBreakpointButton.isEnabled() && myRemoveBreakpointButton.hasFocus())
+-        myRemoveBreakpointButton.transferFocus();
++    for (int idx = 0; idx < myActions.length; idx++) {
++        final BreakpointPanelAction action = myActions[idx];
++        final JButton button = action.getButton();
++        action.update();
++        if (!button.isEnabled() && button.hasFocus()) {
++            button.transferFocus();
++        }
++    }
+ }
+\ No newline at end of file

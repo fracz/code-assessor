@@ -1,0 +1,13 @@
+diff --git a/c70f64571d622fcf8d4317421f3e6244c3406761 b/44b76ab3bb310cbe1904ef3669b519d8b7f2e56e
+index c70f64571d..44b76ab3bb 100644
+--- a/c70f64571d622fcf8d4317421f3e6244c3406761
++++ b/44b76ab3bb310cbe1904ef3669b519d8b7f2e56e
+@@ -1,4 +1,4 @@
+-public ORecordAbstract<byte[]> load(final int schemaClusterId) {
+-    setIdentity(schemaClusterId, CLASSES_RECORD_NUM);
+-    return super.load();
++public ODocument load() {
++    recordId.fromString(database.getStorage().getConfiguration().schemaRecordId);
++    return (ODocument) super.load();
+ }
+\ No newline at end of file

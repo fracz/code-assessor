@@ -1,0 +1,20 @@
+diff --git a/b11f917a5609cde1167ad056f9a0dbf4874a0567 b/95ff90a5b9f67a76328ed17062d13162cfc71989
+index b11f917a56..95ff90a5b9 100644
+--- a/b11f917a5609cde1167ad056f9a0dbf4874a0567
++++ b/95ff90a5b9f67a76328ed17062d13162cfc71989
+@@ -1,11 +1,11 @@
+ public void invoke(@NotNull Project project, @NotNull Editor editor, @NotNull PsiFile file) {
+     FeatureUsageTracker.getInstance().triggerFeatureUsed(getFeatureUsedKey());
+     try {
+-        Pair<PsiElement, PsiElement[]> sourceAndTarget = getSourceAndTargetElements(editor, file);
+-        if (sourceAndTarget.first != null) {
+-            show(project, editor, file, sourceAndTarget.first, sourceAndTarget.second);
++        GotoData gotoData = getSourceAndTargetElements(editor, file);
++        if (gotoData.source != null) {
++            show(project, editor, file, gotoData.source, gotoData.targets, gotoData.additionalActions);
+         }
+     } catch (IndexNotReadyException e) {
+         DumbService.getInstance(project).showDumbModeNotification("Navigation is not available here during index update");
+     }
+ }
+\ No newline at end of file

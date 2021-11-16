@@ -1,0 +1,23 @@
+diff --git a/f279d51c12fae4eb8c6e4c0d4fc5d4d8272ae2ee b/ceede3a8031f3168acf482fe816d87c8f88394d8
+index f279d51c12..ceede3a803 100644
+--- a/f279d51c12fae4eb8c6e4c0d4fc5d4d8272ae2ee
++++ b/ceede3a8031f3168acf482fe816d87c8f88394d8
+@@ -1,15 +1,15 @@
+ private void loadTypeParameterTypeInfo(TypeParameterDescriptor typeParameterDescriptor) {
+     final StackValue value = typeParameterExpressions.get(typeParameterDescriptor);
+     if (value != null) {
+         value.put(JetTypeMapper.TYPE_TYPEINFO, v);
+         return;
+     }
+     DeclarationDescriptor containingDeclaration = typeParameterDescriptor.getContainingDeclaration();
+-    if (containingDeclaration == contextType && contextType instanceof ClassDescriptor) {
+-        loadTypeInfo(typeMapper, (ClassDescriptor) contextType, v);
++    if (containingDeclaration == contextType() && contextType() instanceof ClassDescriptor) {
++        loadTypeInfo(typeMapper, (ClassDescriptor) contextType(), v);
+         v.iconst(typeParameterDescriptor.getIndex());
+         v.invokevirtual("jet/typeinfo/TypeInfo", "getTypeParameter", "(I)Ljet/typeinfo/TypeInfo;");
+         return;
+     }
+     throw new UnsupportedOperationException("don't know what this type parameter resolves to");
+ }
+\ No newline at end of file

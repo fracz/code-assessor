@@ -1,0 +1,22 @@
+diff --git a/de87cfd01afbf0e76ac77c487df410d097db0911 b/ab1c6993a6ec6cd578cef2e4b930e1a5ddf7d0be
+index de87cfd01a..ab1c6993a6 100644
+--- a/de87cfd01afbf0e76ac77c487df410d097db0911
++++ b/ab1c6993a6ec6cd578cef2e4b930e1a5ddf7d0be
+@@ -1,3 +1,14 @@
+-public final boolean equalToken(final Token token) {
+-    return this.token == token;
++/**
++ * 判断当前语言标记是否和其中一个传入的标记相等.
++ *
++ * @param tokens 待判断的标记
++ * @return 是否有相等的标记
++ */
++public final boolean equalToken(final Token... tokens) {
++    for (Token each : tokens) {
++        if (each == token) {
++            return true;
++        }
++    }
++    return false;
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/3dca9042f58987bcc47e0176ff574ce24f8584d6 b/84b8c61aeb38c42546f8cfba36525def1bca2b5d
+index 3dca9042f5..84b8c61aeb 100644
+--- a/3dca9042f58987bcc47e0176ff574ce24f8584d6
++++ b/84b8c61aeb38c42546f8cfba36525def1bca2b5d
+@@ -1,17 +1,15 @@
+ /**
+  * Create a file info for the given path.
+  *
+  * @param path the path must exist, otherwise an IllegalArgumentException is thrown
+  * @return the file info object
+- * @throws IOException if any IO error occurs
+- * @throws IllegalArgumentException if the path does not exist or is not readable
+  */
+ @NotNull
+-public static FileInfo forPath(Path path) throws IOException {
++public static FileInfo forPath(Path path) {
+     try {
+         final BasicFileAttributes attributes = Files.readAttributes(path, BasicFileAttributes.class);
+         return FileInfo.builder().path(path).key(attributes.fileKey()).size(attributes.size()).modificationTime(attributes.lastModifiedTime()).build();
+-    } catch (AccessDeniedException | NoSuchFileException e) {
+-        throw new IllegalArgumentException(e);
++    } catch (IOException e) {
++        return FileInfo.builder().key(null).modificationTime(null).size(-1L).path(path).build();
+     }
+ }
+\ No newline at end of file

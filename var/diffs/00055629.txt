@@ -1,0 +1,16 @@
+diff --git a/9ca2cc645f869d801e12bf5fd1ba16f712c9fe91 b/884042b936b6b36335a91c3ff34eb7feb594fda1
+index 9ca2cc645f..884042b936 100644
+--- a/9ca2cc645f869d801e12bf5fd1ba16f712c9fe91
++++ b/884042b936b6b36335a91c3ff34eb7feb594fda1
+@@ -1,8 +1,6 @@
+-/*
+-	 * http://opensource.atlassian.com/projects/spring/browse/SPR-2368
+-	 */
++/* SPR-2368 */
+ @Test
+ public void testCollectionsReferredToAsRefLocals() throws Exception {
+-    XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("local-collections-using-XSD.xml", getClass()));
++    XmlBeanFactory factory = new XmlBeanFactory(COLLECTIONS_XSD_CONTEXT);
+     factory.preInstantiateSingletons();
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/4bb0e7493b1b09226f64d7096e4e1798e77758b7 b/7de2f5af692487da3245d566385164363e261b5d
+index 4bb0e7493b..7de2f5af69 100644
+--- a/4bb0e7493b1b09226f64d7096e4e1798e77758b7
++++ b/7de2f5af692487da3245d566385164363e261b5d
+@@ -1,9 +1,12 @@
+-private static String getQualifiedName(PsiElement element) {
+-    if (element instanceof PsiQualifiedNamedElement) {
++private static String getQualifiedName(PsiElement element, boolean acceptQNames) {
++    if (element instanceof PsiQualifiedNamedElement && acceptQNames) {
+         return ((PsiQualifiedNamedElement) element).getQualifiedName();
+     } else {
+         final Project project = element.getProject();
+-        final VirtualFile virtualFile = ((PsiDirectory) element).getVirtualFile();
++        final VirtualFile virtualFile = PsiUtilCore.getVirtualFile(element);
++        if (virtualFile == null) {
++            return null;
++        }
+         return FilePatternPackageSet.getRelativePath(virtualFile, ProjectRootManager.getInstance(project).getFileIndex(), true, project.getBaseDir());
+     }
+ }
+\ No newline at end of file

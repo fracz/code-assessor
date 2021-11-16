@@ -1,0 +1,18 @@
+diff --git a/c63e5e67f2cfeb92a7222841739d65f8601b2ace b/fe6f34c3ff7a52f9246e1bd0d91a23b78648ac48
+index c63e5e67f2..fe6f34c3ff 100644
+--- a/c63e5e67f2cfeb92a7222841739d65f8601b2ace
++++ b/fe6f34c3ff7a52f9246e1bd0d91a23b78648ac48
+@@ -1,9 +1,11 @@
+ @Override
+ public void testGraphQueryForVertices() {
+     TitanGraph g = (TitanGraph) graphTest.generateGraph();
+     if (g.getRelationType("age") == null) {
+-        PropertyKey age = g.makePropertyKey("age").dataType(Integer.class).cardinality(Cardinality.SINGLE).make();
++        TitanManagement mgmt = g.getManagementSystem();
++        mgmt.makePropertyKey("age").dataType(Integer.class).cardinality(Cardinality.SINGLE).make();
++        mgmt.commit();
+     }
+     g.shutdown();
+     super.testGraphQueryForVertices();
+ }
+\ No newline at end of file

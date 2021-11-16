@@ -1,0 +1,20 @@
+diff --git a/840c2cb2f5d2265b70026b88d5a9b4f888a2d188 b/4ddfe17fdc664099cc8922afd7df2f9a21584cbb
+index 840c2cb2f5..4ddfe17fdc 100644
+--- a/840c2cb2f5d2265b70026b88d5a9b4f888a2d188
++++ b/4ddfe17fdc664099cc8922afd7df2f9a21584cbb
+@@ -1,13 +1,9 @@
+ @Nullable
+ public static DBSDataType resolveDataType(@NotNull DBRProgressMonitor monitor, @NotNull DBPDataSource dataSource, @NotNull String fullTypeName) throws DBException {
+     DBPDataTypeProvider dataTypeProvider = getAdapter(DBPDataTypeProvider.class, dataSource);
+     if (dataTypeProvider == null) {
+         // NoSuchElementException data type provider
+         return null;
+     }
+-    DBSDataType dataType = dataTypeProvider.resolveDataType(monitor, fullTypeName);
+-    if (dataType == null) {
+-    // log.debug("Data type '" + fullTypeName + "' can't be resolved by '" + dataSource + "'");
+-    }
+-    return dataType;
++    return dataTypeProvider.resolveDataType(monitor, fullTypeName);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/907fd0f4d6b5dfa017243bfc413ebdb3700d3f41 b/b80ce0d3a4c35dfb7ce204545ec8575fe25ceddd
+index 907fd0f4d6..b80ce0d3a4 100644
+--- a/907fd0f4d6b5dfa017243bfc413ebdb3700d3f41
++++ b/b80ce0d3a4c35dfb7ce204545ec8575fe25ceddd
+@@ -1,9 +1,4 @@
+ @Test
+ public void testListenNoHandlers2() throws Exception {
+-    try {
+-        server.listen();
+-        fail("Should throw exception");
+-    } catch (IllegalStateException e) {
+-    // Ok
+-    }
++    assertIllegalStateException(() -> server.listen());
+ }
+\ No newline at end of file

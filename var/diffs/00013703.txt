@@ -1,0 +1,17 @@
+diff --git a/33ddcf361c43fb9c599f96b1d2cc6ac384d4c289 b/27f3ac1ec7d16c35e9b26a9b917f3e39be7e3aae
+index 33ddcf361c..27f3ac1ec7 100644
+--- a/33ddcf361c43fb9c599f96b1d2cc6ac384d4c289
++++ b/27f3ac1ec7d16c35e9b26a9b917f3e39be7e3aae
+@@ -1,8 +1,7 @@
+ public void conflictRemoved() {
+-    for (ConflictChange change : myChanges) {
+-        change.getOriginalSide().getHighlighterHolder().removeHighlighters();
+-    }
++    removeHighlighters(myLeftChange);
++    removeHighlighters(myRightChange);
+     myCommonHighlighterHolder.removeHighlighters();
+-    myMergeList.removeChanges(myChanges);
++    myMergeList.removeChanges(myLeftChange, myRightChange);
+     myCommonRange.removeListener(this);
+ }
+\ No newline at end of file

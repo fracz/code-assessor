@@ -1,0 +1,14 @@
+diff --git a/e78b3c76e736a40957ac5d62f13dfb0ff722325f b/0249d887b7570aceb89ed6ef3e5db0f04ef77b4a
+index e78b3c76e7..0249d887b7 100644
+--- a/e78b3c76e736a40957ac5d62f13dfb0ff722325f
++++ b/0249d887b7570aceb89ed6ef3e5db0f04ef77b4a
+@@ -1,7 +1,7 @@
+ @Test
+ public void createDirected_expectedEdgeCount() {
+-    DirectedGraph<Integer, String> directedGraph = Graphs.createDirected(config().expectedEdgeCount(EDGE_COUNT));
++    Graph<Integer, String> directedGraph = GraphBuilder.directed().expectedEdgeCount(EDGE_COUNT).build();
+     assertThat(directedGraph.addEdge(E12, N1, N2)).isTrue();
+     assertThat(directedGraph.edgesConnecting(N1, N2)).isEqualTo(ImmutableSet.of(E12));
+     assertThat(directedGraph.edgesConnecting(N2, N1)).isEmpty();
+ }
+\ No newline at end of file

@@ -1,0 +1,31 @@
+diff --git a/dd3197a6fe826b76a95b7c01e1d7aca54b59d65e b/6bfead2c2ef7a394e4b8242f53ae521f932e32c9
+index dd3197a6fe..6bfead2c2e 100644
+--- a/dd3197a6fe826b76a95b7c01e1d7aca54b59d65e
++++ b/6bfead2c2ef7a394e4b8242f53ae521f932e32c9
+@@ -1,16 +1,16 @@
+ @Override
+ public String get(String name) {
+-    String value = properties.get(name);
+-    if (value == null) {
+-        if (name.equals(PROP_PROJECT_VERSION)) {
+-            value = version;
++    for (MavenArtifactVersion v = MavenArtifactVersion.this; v != null; v = v.parent) {
++        String value = v.properties.get(name);
++        if (value != null) {
++            return value;
++        } else if (name.equals(PROP_PROJECT_VERSION)) {
++            return v.version;
+         } else if (name.equals(PROP_PROJECT_GROUP_ID)) {
+-            value = localVersion.getArtifact().getGroupId();
++            return v.artifact.getGroupId();
+         } else if (name.equals(PROP_PROJECT_ARTIFACT_ID)) {
+-            value = localVersion.getArtifact().getArtifactId();
+-        } else if (parent != null) {
+-            return parent.getMetaData().variableResolver.get(name);
++            return v.artifact.getArtifactId();
+         }
+     }
+-    return value;
++    return null;
+ }
+\ No newline at end of file

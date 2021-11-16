@@ -1,0 +1,20 @@
+diff --git a/bc5e1e4e0278cf846e61347d8e980cd6ae516726 b/f3467047ae6fa804641a8509536daa7110e422fc
+index bc5e1e4e02..f3467047ae 100644
+--- a/bc5e1e4e0278cf846e61347d8e980cd6ae516726
++++ b/f3467047ae6fa804641a8509536daa7110e422fc
+@@ -1,11 +1,9 @@
+ @Test
+ public void getFileStatusTest() throws IOException, TachyonException {
+     String uniqPath = PathUtils.uniqPath();
+     int writeBytes = USER_QUOTA_UNIT_BYTES * 2;
+     TachyonURI uri = new TachyonURI(uniqPath);
+-    TachyonFile f = TachyonFSTestUtils.createByteFile(mTfs, uri.getPath(), writeBytes, mWriteBoth);
+-    Assert.assertTrue(mTfs.getInfo(f).getInMemoryPercentage() == 100);
+-    FileInfo fileInfo = mTfs.getInfo(f);
+-    Assert.assertNotNull(fileInfo);
+-    Assert.assertTrue(fileInfo.getPath().equals(uniqPath));
++    TachyonFSTestUtils.createByteFile(mTfs, uri.getPath(), writeBytes, mWriteBoth);
++    Assert.assertTrue(mTfs.getStatus(uri).getInMemoryPercentage() == 100);
++    Assert.assertTrue(mTfs.getStatus(uri).getPath().equals(uniqPath));
+ }
+\ No newline at end of file

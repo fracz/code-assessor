@@ -1,0 +1,13 @@
+diff --git a/b0f2ee74fdc03ff949311bf2d3911b5f4755400e b/a8555f47928aec2e30b8e03314cc09895fd5110a
+index b0f2ee74fd..a8555f4792 100644
+--- a/b0f2ee74fdc03ff949311bf2d3911b5f4755400e
++++ b/a8555f47928aec2e30b8e03314cc09895fd5110a
+@@ -1,4 +1,6 @@
+ public String check(final String name) {
+-    // TODO[oleg] implement context for name clashes
++    if (myFunction != null && !myFunction.fun(name)) {
++        return PyBundle.message("refactoring.extract.method.error.name.clash");
++    }
+     return null;
+ }
+\ No newline at end of file

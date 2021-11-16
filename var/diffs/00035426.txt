@@ -1,0 +1,14 @@
+diff --git a/f350e67d53f8afa03de75f8927fc3f7b8682cf87 b/bc6ab71322ccc1ef9f70d1d248dd47ac6135c2d3
+index f350e67d53..bc6ab71322 100644
+--- a/f350e67d53f8afa03de75f8927fc3f7b8682cf87
++++ b/bc6ab71322ccc1ef9f70d1d248dd47ac6135c2d3
+@@ -1,5 +1,5 @@
+ void add(final BaseDownloadTask downloadInternal) {
+-    ready(downloadInternal);
+-    // Notify 2 Listener
+-    downloadInternal.getMessenger().notifyBegin();
++    if (downloadInternal.getMessenger().notifyBegin()) {
++        ready(downloadInternal);
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/6441f23394e17a8faf9da1da979d8ac988a6a9b7 b/396a32e7ee2f5cd38fbde356a13f02a4b4f87dc8
+index 6441f23394..396a32e7ee 100644
+--- a/6441f23394e17a8faf9da1da979d8ac988a6a9b7
++++ b/396a32e7ee2f5cd38fbde356a13f02a4b4f87dc8
+@@ -1,11 +1,11 @@
+ private <T> void validateKey(Object source, Key<T> key) {
+     if (key.hasAnnotationType()) {
+         Class<? extends Annotation> annotationType = key.getAnnotationType();
+         if (!Annotations.isRetainedAtRuntime(annotationType)) {
+-            addError(StackTraceElements.forType(annotationType), ErrorMessage.missingRuntimeRetention(source));
++            errors.at(StackTraceElements.forType(annotationType)).missingRuntimeRetention(source);
+         }
+         if (!Key.isBindingAnnotation(annotationType)) {
+-            addError(StackTraceElements.forType(annotationType), ErrorMessage.missingBindingAnnotation(source));
++            errors.at(StackTraceElements.forType(annotationType)).missingBindingAnnotation(source);
+         }
+     }
+ }
+\ No newline at end of file

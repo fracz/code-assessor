@@ -1,0 +1,23 @@
+diff --git a/8046aebe523f2ed9517be7a3475a894c0179201c b/13119ea36edbe19becb6e62a932b10dff9a9f2ed
+index 8046aebe52..13119ea36e 100644
+--- a/8046aebe523f2ed9517be7a3475a894c0179201c
++++ b/13119ea36edbe19becb6e62a932b10dff9a9f2ed
+@@ -1,10 +1,11 @@
+ @Override
+ public ClassDescriptor fun(JetClassLikeInfo classLikeInfo) {
+-    if (classLikeInfo instanceof JetScriptInfo) {
+-        return getClassDescriptorForScript(((JetScriptInfo) classLikeInfo).getScript());
++    if (classLikeInfo instanceof JetClassOrObjectInfo) {
++        // noinspection RedundantCast
++        return getClassDescriptor(((JetClassOrObjectInfo) classLikeInfo).getCorrespondingClassOrObject(), location);
++    } else if (classLikeInfo instanceof JetScriptInfo) {
++        return getScriptDescriptor(((JetScriptInfo) classLikeInfo).getScript());
++    } else {
++        throw new IllegalStateException("Unexpected " + classLikeInfo + " of type " + classLikeInfo.getClass().getName());
+     }
+-    KtClassOrObject classOrObject = classLikeInfo.getCorrespondingClassOrObject();
+-    if (classOrObject == null)
+-        return null;
+-    return getClassDescriptor(classOrObject, location);
+ }
+\ No newline at end of file

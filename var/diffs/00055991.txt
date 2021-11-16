@@ -1,0 +1,15 @@
+diff --git a/873d36daa5e42ebb65a0e2a0c3b7f01a26051c08 b/a9d90590aacab05c1bd9828ab22a8c38b9f783c1
+index 873d36daa5..a9d90590aa 100644
+--- a/873d36daa5e42ebb65a0e2a0c3b7f01a26051c08
++++ b/a9d90590aacab05c1bd9828ab22a8c38b9f783c1
+@@ -1,7 +1,8 @@
++@Test
+ public void testAliasWithPlaceholder() {
+-    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] { "/org/springframework/context/support/test/contextB.xml", "/org/springframework/context/support/test/aliased-contextC.xml", "/org/springframework/context/support/test/contextA.xml" });
++    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] { FQ_CONTEXT_B, FQ_ALIASED_CONTEXT_C, FQ_CONTEXT_A });
+     assertTrue(ctx.containsBean("service"));
+     assertTrue(ctx.containsBean("logicOne"));
+     assertTrue(ctx.containsBean("logicTwo"));
+     ctx.refresh();
+ }
+\ No newline at end of file

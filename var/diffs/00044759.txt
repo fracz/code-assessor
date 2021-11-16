@@ -1,0 +1,20 @@
+diff --git a/717535e84eac0f58954de13db8b048fe4b9f7b50 b/9c592d1f35461661a9161e745f6d530b76efc48a
+index 717535e84e..9c592d1f35 100644
+--- a/717535e84eac0f58954de13db8b048fe4b9f7b50
++++ b/9c592d1f35461661a9161e745f6d530b76efc48a
+@@ -1,11 +1,6 @@
+ @Before
+ public void init() {
+-    initDB();
+-    OSchema schema = databaseDocumentTx.getMetadata().getSchema();
+-    OClass v = schema.getClass("V");
+-    OClass song = schema.createClass("Song");
+-    song.setSuperClass(v);
+-    song.createProperty("title", OType.STRING);
+-    song.createProperty("author", OType.STRING);
+-    databaseDocumentTx.command(new OCommandSQL("create index Song.title on Song (title) FULLTEXT ENGINE LUCENE")).execute();
++    InputStream stream = ClassLoader.getSystemResourceAsStream("testLuceneIndex.sql");
++    db.command(new OCommandScript("sql", getScriptFromStream(stream))).execute();
++    db.command(new OCommandSQL("create index Song.title on Song (title) FULLTEXT ENGINE LUCENE")).execute();
+ }
+\ No newline at end of file

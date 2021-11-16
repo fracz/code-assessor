@@ -1,0 +1,13 @@
+diff --git a/19f470b376dfe2978ba12940dbee62a6a0bb150f b/a16af0af4f3657545141d02625261c7c8a07f090
+index 19f470b376..a16af0af4f 100644
+--- a/19f470b376dfe2978ba12940dbee62a6a0bb150f
++++ b/a16af0af4f3657545141d02625261c7c8a07f090
+@@ -1,5 +1,6 @@
+ @Nullable
+ @Override
+ public String getDescription() {
+-    return this.getAttribute().getDescription();
++    final DBSEntityAttribute attribute = getAttribute();
++    return attribute == null ? null : attribute.getDescription();
+ }
+\ No newline at end of file

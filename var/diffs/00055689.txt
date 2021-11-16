@@ -1,0 +1,16 @@
+diff --git a/2a2a534017082cf94516f645714b78277e2e5a21 b/c8445e652c5637bd62e5cfbd6ae3beb44a9b7aa0
+index 2a2a534017..c8445e652c 100644
+--- a/2a2a534017082cf94516f645714b78277e2e5a21
++++ b/c8445e652c5637bd62e5cfbd6ae3beb44a9b7aa0
+@@ -1,9 +1,9 @@
+ @Test
+ public void testWithDuplicateName() throws Exception {
+     try {
+-        new XmlBeanFactory(new ClassPathResource("testWithDuplicateNames.xml", getClass()));
++        new XmlBeanFactory(TEST_WITH_DUP_NAMES_CONTEXT);
+         fail("Duplicate name not detected");
+     } catch (BeansException ex) {
+         assertTrue(ex.getMessage().indexOf("Bean name 'foo'") > -1);
+     }
+ }
+\ No newline at end of file

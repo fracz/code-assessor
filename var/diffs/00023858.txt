@@ -1,0 +1,23 @@
+diff --git a/161d7925a245a38ea9d90c720cc1df851f5ced34 b/4af47e7ed741493250ecaf141249dc9bc1c5602a
+index 161d7925a2..4af47e7ed7 100644
+--- a/161d7925a245a38ea9d90c720cc1df851f5ced34
++++ b/4af47e7ed741493250ecaf141249dc9bc1c5602a
+@@ -1,15 +1,16 @@
+ @Override
+-public void onAppTransitionStartingLocked(IBinder openToken, IBinder closeToken, final Animation openAnimation, final Animation closeAnimation) {
++public int onAppTransitionStartingLocked(int transit, IBinder openToken, IBinder closeToken, final Animation openAnimation, final Animation closeAnimation) {
+     mHandler.post(new Runnable() {
+
+         @Override
+         public void run() {
+             StatusBarManagerInternal statusbar = getStatusBarInternal();
+             if (statusbar != null) {
+                 long startTime = calculateStatusBarTransitionStartTime(openAnimation, closeAnimation);
+                 long duration = closeAnimation != null || openAnimation != null ? TRANSITION_DURATION : 0;
+                 statusbar.appTransitionStarting(startTime, duration);
+             }
+         }
+     });
++    return 0;
+ }
+\ No newline at end of file

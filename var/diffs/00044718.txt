@@ -1,0 +1,25 @@
+diff --git a/66daa5b014b4a88b05214e9b4d6e296a0483b30d b/0eedf7e7ad5471a8071a743f577413d045d24b7b
+index 66daa5b014..0eedf7e7ad 100644
+--- a/66daa5b014b4a88b05214e9b4d6e296a0483b30d
++++ b/0eedf7e7ad5471a8071a743f577413d045d24b7b
+@@ -1,11 +1,10 @@
+-@Override
+-public int addBlobCluster(String clusterName) {
+-    ODatabaseDocumentInternal db = getDatabase();
+-    int clusterId;
+-    if (db.getStorage() instanceof OStorageProxy) {
+-        clusterId = getDatabase().command(new OCommandSQL("create blob cluster :1")).execute(clusterName);
+-        reload();
+-    } else
+-        clusterId = addBlobClusterIdInternal(clusterName);
++public int addBlobCluster(int clusterId) {
++    acquireSchemaWriteLock();
++    try {
++        checkClusterCanBeAdded(clusterId, null);
++        blobClusters.add(clusterId);
++    } finally {
++        releaseSchemaWriteLock();
++    }
+     return clusterId;
+ }
+\ No newline at end of file

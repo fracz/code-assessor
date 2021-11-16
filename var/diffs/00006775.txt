@@ -1,0 +1,27 @@
+diff --git a/9ac184ff890dd417e396032fa69707a72bc810f6 b/664352b41d5927bea7394307caed4197ae06f9d1
+index 9ac184ff89..664352b41d 100644
+--- a/9ac184ff890dd417e396032fa69707a72bc810f6
++++ b/664352b41d5927bea7394307caed4197ae06f9d1
+@@ -1,18 +1,16 @@
+ private void initializeName() {
+     myNameLabel.setLabelFor(myNameField);
+     myPanel.registerKeyboardAction(new ActionListener() {
+
+         public void actionPerformed(ActionEvent e) {
+             myNameField.requestFocus();
+         }
+     }, KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.ALT_MASK), JComponent.WHEN_IN_FOCUSED_WINDOW);
+-    myNameField.addDocumentListener(new DocumentListener() {
++    myNameField.addDataChangedListener(new NameSuggestionsField.DataChanged() {
+
+-        public void beforeDocumentChange(DocumentEvent event) {
+-        }
+-
+-        public void documentChanged(DocumentEvent event) {
++        @Override
++        public void dataChanged() {
+             updateOkStatus();
+         }
+     });
+ }
+\ No newline at end of file

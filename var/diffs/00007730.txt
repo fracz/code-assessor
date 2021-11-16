@@ -1,0 +1,20 @@
+diff --git a/840874440f97b7958d0a9ad6830cdaa647b32f26 b/8255398883fe5425f21aafb1ab27ddbe97daf741
+index 840874440f..8255398883 100644
+--- a/840874440f97b7958d0a9ad6830cdaa647b32f26
++++ b/8255398883fe5425f21aafb1ab27ddbe97daf741
+@@ -1,13 +1,12 @@
+ private static boolean hasPackages(PsiDirectory directory) {
+     if (directory.getPackage() != null) {
+         return true;
+     }
+     PsiDirectory[] subdirectories = directory.getSubdirectories();
+-    for (int i = 0; i < subdirectories.length; i++) {
+-        PsiDirectory subdirectory = subdirectories[i];
++    for (PsiDirectory subdirectory : subdirectories) {
+         if (hasPackages(subdirectory)) {
+             return true;
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/73814337ded8577aa460905c811475de4223ffe7 b/fa0566235536c98378841843f59c40e8a7ce906d
+index 73814337de..fa05662355 100644
+--- a/73814337ded8577aa460905c811475de4223ffe7
++++ b/fa0566235536c98378841843f59c40e8a7ce906d
+@@ -1,7 +1,4 @@
+-@BackpressureSupport(BackpressureKind.SPECIAL)
+-@SchedulerSupport(SchedulerKind.NONE)
+-public final <R> Observable<R> lift(Operator<? extends R, ? super T> lifter) {
+-    Objects.requireNonNull(lifter, "lifter is null");
+-    // using onSubscribe so the fusing has access to the underlying raw Publisher
+-    return create(new PublisherLift<R, T>(onSubscribe, lifter));
++public final <R> Observable<R> lift(NbpOperator<? extends R, ? super T> onLift) {
++    Objects.requireNonNull(onLift, "onLift is null");
++    return create(new NbpOnSubscribeLift<R, T>(this, onLift));
+ }
+\ No newline at end of file

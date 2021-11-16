@@ -1,0 +1,14 @@
+diff --git a/40cab18b315a36d6bcaa0df741da840f6f85547a b/cbc1515e3c51bdf221f3ba118f757a27ba58892f
+index 40cab18b31..cbc1515e3c 100644
+--- a/40cab18b315a36d6bcaa0df741da840f6f85547a
++++ b/cbc1515e3c51bdf221f3ba118f757a27ba58892f
+@@ -1,6 +1,6 @@
+ @Nullable
+ @Override
+-MethodVisitor visitMethod(MethodNode node, Key key) {
+-    map.put(ClassDataIndexer.compressKey(md, key), null);
++MethodVisitor visitMethod(MethodNode node, Method method, EKey key) {
++    map.put(method.hashed(md), null);
+     return null;
+ }
+\ No newline at end of file

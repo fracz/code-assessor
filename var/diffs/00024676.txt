@@ -1,0 +1,21 @@
+diff --git a/3ac462e6fda569616fc93e20689e16f45f523976 b/db25268d9e5748c0de9d01f7b2c6c426d9c081ae
+index 3ac462e6fd..db25268d9e 100644
+--- a/3ac462e6fda569616fc93e20689e16f45f523976
++++ b/db25268d9e5748c0de9d01f7b2c6c426d9c081ae
+@@ -1,13 +1,10 @@
+ @Test
+ public void testPersistentStatisticsWithSecondaryIndex() {
+     // Create secondary index and flush to disk
+     Keyspace keyspace = Keyspace.open(KEYSPACE1);
+-    ColumnFamilyStore store = keyspace.getColumnFamilyStore("Indexed1");
+-    ByteBuffer key = ByteBufferUtil.bytes(String.valueOf("k1"));
+-    Mutation rm = new Mutation(KEYSPACE1, key);
+-    rm.add("Indexed1", cellname("birthdate"), ByteBufferUtil.bytes(1L), System.currentTimeMillis());
+-    rm.applyUnsafe();
++    ColumnFamilyStore store = keyspace.getColumnFamilyStore(CF_INDEXED);
++    new RowUpdateBuilder(store.metadata, System.currentTimeMillis(), "k1").clustering("0").add("birthdate", 1L).build().applyUnsafe();
+     store.forceBlockingFlush();
+     // check if opening and querying works
+     assertIndexQueryWorks(store);
+ }
+\ No newline at end of file

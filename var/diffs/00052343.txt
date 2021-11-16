@@ -1,0 +1,27 @@
+diff --git a/f2bccb970b777a89a668db34644bf115260a4ee4 b/ec715013b45f426006d68ffdd119f5f1fe8d3606
+index f2bccb970b..ec715013b4 100644
+--- a/f2bccb970b777a89a668db34644bf115260a4ee4
++++ b/ec715013b45f426006d68ffdd119f5f1fe8d3606
+@@ -1,20 +1,18 @@
+ @Override
+ public boolean next() throws SQLException {
+     if (initial) {
+         nextEffectiveResultSets();
+     } else {
+         initial = true;
+     }
+     OrderByRow chosenOrderByValue = null;
+     for (ResultSet each : effectiveResultSetQueue) {
+         OrderByRow eachOrderByValue = new OrderByRow(orderByColumns, each);
+         if (null == chosenOrderByValue || chosenOrderByValue.compareTo(eachOrderByValue) > 0) {
+             chosenOrderByValue = eachOrderByValue;
+             setDelegate(each);
+         }
+     }
+-    if (!effectiveResultSetQueue.isEmpty()) {
+-        log.trace(toString());
+-    }
++    log.trace("Chosen order by value is {}, current result set is {}", chosenOrderByValue, getDelegate().hashCode());
+     return !effectiveResultSetQueue.isEmpty();
+ }
+\ No newline at end of file

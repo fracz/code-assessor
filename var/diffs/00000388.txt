@@ -1,0 +1,19 @@
+diff --git a/0234b3fcf2d9343385d23d8010e0f5fac93c949e b/67176e83b749dcd626e9993ac63fee176e4cc6fe
+index 0234b3fcf2..67176e83b7 100644
+--- a/0234b3fcf2d9343385d23d8010e0f5fac93c949e
++++ b/67176e83b749dcd626e9993ac63fee176e4cc6fe
+@@ -1,4 +1,11 @@
++/**
++ * Promote block after access it
++ *
++ * @param blockIndex the index of the block
++ * @return true if success, false otherwise
++ * @throws IOException
++ */
+ public boolean promoteBlock(int blockIndex) throws IOException {
+-    long blockId = getBlockId(blockIndex);
+-    return mTachyonFS.promoteBlock(blockId);
++    ClientBlockInfo blockInfo = getClientBlockInfo(blockIndex);
++    return mTachyonFS.promoteBlock(blockInfo);
+ }
+\ No newline at end of file

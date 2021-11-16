@@ -1,0 +1,25 @@
+diff --git a/f1ec0641d54e3952ef13033b1488258969945415 b/854c670c9a2eebcf614a6852e184bce94d0ab01a
+index f1ec0641d5..854c670c9a 100644
+--- a/f1ec0641d54e3952ef13033b1488258969945415
++++ b/854c670c9a2eebcf614a6852e184bce94d0ab01a
+@@ -1,13 +1,9 @@
+ public void testMoveJavadocToGetter() throws Exception {
+-    doTest(new PerformAction() {
+-
+-        @Override
+-        public void performAction(VirtualFile rootDir, VirtualFile rootAfter) throws Exception {
+-            final PsiClass aClass = myJavaFacade.findClass("A", GlobalSearchScope.projectScope(myProject));
+-            assertNotNull("Tested class not found", aClass);
+-            final PsiField field = aClass.findFieldByName("i", false);
+-            assertNotNull(field);
+-            doTest(aClass, field, null, true, true);
+-        }
++    doTest((rootDir, rootAfter) -> {
++        final PsiClass aClass = myJavaFacade.findClass("A", GlobalSearchScope.projectScope(myProject));
++        assertNotNull("Tested class not found", aClass);
++        final PsiField field = aClass.findFieldByName("i", false);
++        assertNotNull(field);
++        doTest(aClass, field, null, true, true);
+     });
+ }
+\ No newline at end of file

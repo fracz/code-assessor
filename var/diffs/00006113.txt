@@ -1,0 +1,23 @@
+diff --git a/d594055983801601f7562b838bf8cebdb135ca2c b/59c49345cb13175fa4779248211ac451d39ace88
+index d594055983..59c49345cb 100644
+--- a/d594055983801601f7562b838bf8cebdb135ca2c
++++ b/59c49345cb13175fa4779248211ac451d39ace88
+@@ -1,13 +1,12 @@
+ @NotNull
+-public MutableCommitNode pop(@Nullable Hash hash) {
++public MutableCommit pop(@Nullable Hash hash) {
+     if (hash == null) {
+         return null;
+     }
+-    MutableCommitNode commit = cache.get(hash);
++    MutableCommit commit = cache.get(hash);
+     if (commit == null) {
+-        commit = new MutableCommitNode(hash);
+-    } else {
+-        cache.remove(hash);
++        commit = new MutableCommit(hash);
+     }
++    cache.remove(hash);
+     return commit;
+ }
+\ No newline at end of file

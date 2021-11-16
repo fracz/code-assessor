@@ -1,0 +1,15 @@
+diff --git a/10ccc90272ea1269973d46518f6bdd12c1fd0db5 b/de71695b5ce7ceffbbf9bdb148292a72eca1fb46
+index 10ccc90272..de71695b5c 100644
+--- a/10ccc90272ea1269973d46518f6bdd12c1fd0db5
++++ b/de71695b5ce7ceffbbf9bdb148292a72eca1fb46
+@@ -1,6 +1,4 @@
+-void assertGitInit(@NotNull Collection<String> roots) {
+-    for (String root : roots) {
+-        File rootFile = new File(myProjectRoot, root);
+-        assertTrue(new File(rootFile.getPath(), GitUtil.DOT_GIT).exists());
+-    }
++void assertGitInit(@NotNull String root) {
++    File rootFile = new File(myProjectRoot.getPath(), root);
++    assertTrue(new File(rootFile.getPath(), GitUtil.DOT_GIT).exists());
+ }
+\ No newline at end of file

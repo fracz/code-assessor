@@ -1,0 +1,16 @@
+diff --git a/3ef360abbbdceabf448e6faf3f28b1bfd386db30 b/0f64033cac6f71e705bc9e0c249cb1d4825fe2cc
+index 3ef360abbb..0f64033cac 100644
+--- a/3ef360abbbdceabf448e6faf3f28b1bfd386db30
++++ b/0f64033cac6f71e705bc9e0c249cb1d4825fe2cc
+@@ -1,8 +1,8 @@
+ /**
+  * Sets the fields to be returned as suggestion payload.
+  * Note: Only doc values enabled fields are supported
+  */
+-public CompletionSuggestionBuilder payload(String... fields) {
+-    Collections.addAll(this.payloadFields, fields);
++public CompletionSuggestionBuilder payload(List<String> fields) {
++    this.payloadFields.addAll(fields);
+     return this;
+ }
+\ No newline at end of file

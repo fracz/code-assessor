@@ -1,0 +1,20 @@
+diff --git a/46c61e9098629e5a69cf9d83da3b84239d62d13a b/62e672fd62c8f1b8205d891ab2b4fbf93aed3bcd
+index 46c61e9098..62e672fd62 100644
+--- a/46c61e9098629e5a69cf9d83da3b84239d62d13a
++++ b/62e672fd62c8f1b8205d891ab2b4fbf93aed3bcd
+@@ -1,9 +1,10 @@
+ public Collection<T> loadSchemes() {
+     myBaseDir.mkdirs();
+     final StreamProvider[] providers = getProviders();
+     myDeletedNames.addAll(readDeletedSchemeNames(providers));
+-    readSchemesFromFileSystem();
+-    readSchemesFromProviders(providers);
+-    initLoadedSchemes();
+-    return getAllSchemes();
++    Collection<T> read = new ArrayList<T>();
++    read.addAll(readSchemesFromFileSystem());
++    read.addAll(readSchemesFromProviders(providers));
++    initLoadedSchemes(read);
++    return read;
+ }
+\ No newline at end of file

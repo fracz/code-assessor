@@ -1,0 +1,28 @@
+diff --git a/84870ebd3ddf1d64b9f4064155d82a38cdff6bf3 b/ce0dd356f3ca87697211c3bb43b307d303c150ae
+index 84870ebd3d..ce0dd356f3 100644
+--- a/84870ebd3ddf1d64b9f4064155d82a38cdff6bf3
++++ b/ce0dd356f3ca87697211c3bb43b307d303c150ae
+@@ -1,18 +1,21 @@
+ protected void addImport(final PsiElement element, final Project project, final String selectedImport) {
+     PsiDocumentManager.getInstance(project).commitAllDocuments();
+     CommandProcessor.getInstance().executeCommand(project, new Runnable() {
+
+         @Override
+         public void run() {
+             ApplicationManager.getApplication().runWriteAction(new Runnable() {
+
+                 @Override
+                 public void run() {
+                     // TODO: See {@link com.intellij.codeInsight.daemon.impl.actions.AddImportAction#_addImport} for more ideas.
+                     // TODO: Optimize imports
+-                    ImportClassHelper.addImportDirective(selectedImport, ImportClassHelper.findOuterNamespace(element));
++                    PsiFile file = element.getContainingFile();
++                    if (!(file instanceof JetFile))
++                        return;
++                    ImportClassHelper.addImportDirective(selectedImport, (JetFile) file);
+                 }
+             });
+         }
+     }, QuickFixBundle.message("add.import"), null);
+ }
+\ No newline at end of file

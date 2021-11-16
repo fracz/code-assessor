@@ -1,0 +1,22 @@
+diff --git a/4b68bd14c6fe3bc6caa9bd99ee8e442752db52ae b/e038ca8227d2fa0adfdbd63700fca9a141b778e2
+index 4b68bd14c6..e038ca8227 100644
+--- a/4b68bd14c6fe3bc6caa9bd99ee8e442752db52ae
++++ b/e038ca8227d2fa0adfdbd63700fca9a141b778e2
+@@ -1,11 +1,11 @@
+ @Test
+ public void testCanParseLineBreak() {
+     RunTest(getSampleWithLineBreak());
+-    AssertGridCreate(project, 4, 6);
+-    PrintProject(project);
++    TestTools.AssertGridCreated(project, 4, 6);
++    TestTools.PrintProject(project);
+     Row row = project.rows.get(3);
+     Assert.assertNotNull(row);
+-    Assert.assertNotNull(row.cells);
+-    Assert.assertNotNull(row.cells.get(2));
+-    Assert.assertEquals(row.cells.get(2).value, "With line\n break");
++    Assert.assertEquals(row.cells.size(), 4);
++    Assert.assertNotNull(row.getCell(1));
++    Assert.assertEquals(row.getCell(1).value, "With line\n break");
+ }
+\ No newline at end of file

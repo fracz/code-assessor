@@ -1,0 +1,16 @@
+diff --git a/d90641aeec552804e11dad23e6a21308f09013eb b/d45e97a9e0e152249c1c04f20ee6dda377ce8c58
+index d90641aeec..d45e97a9e0 100644
+--- a/d90641aeec552804e11dad23e6a21308f09013eb
++++ b/d45e97a9e0e152249c1c04f20ee6dda377ce8c58
+@@ -1,6 +1,9 @@
+ private void iterations(List<Point> points) {
+-    for (int i = 0; i < iterationCount; i++) {
++    int iterationCount = 0;
++    while (!endCondition.isSatisfied(iterationHistory)) {
+         clusterSet.removePoints();
+         clusterSet.addPoints(points, true);
++        ClusterSetInfo clusterSetInfo = ClusterUtils.computeClusterSetInfo(clusterSet);
++        iterationHistory.getIterationsInfos().put(iterationCount, new IterationInfo(iterationCount, clusterSetInfo));
+     }
+ }
+\ No newline at end of file

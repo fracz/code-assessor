@@ -1,0 +1,18 @@
+diff --git a/38dc25904d517610c68ba0ca76d22f8eb3113b91 b/1aa50defa67bceddad01b26cfe0bf5222f5ed142
+index 38dc25904d..1aa50defa6 100644
+--- a/38dc25904d517610c68ba0ca76d22f8eb3113b91
++++ b/1aa50defa67bceddad01b26cfe0bf5222f5ed142
+@@ -1,10 +1,11 @@
+ @Override
+ public final ConstraintDefinition create() {
+     assertInUnterminatedTransaction();
+     try {
+-        return actions.createPropertyUniquenessConstraint(label, propertyKey);
++        IndexDefinitionImpl definition = new IndexDefinitionImpl(actions, label, propertyKeys.toArray(new String[propertyKeys.size()]), true);
++        return actions.createPropertyUniquenessConstraint(definition);
+     } catch (KernelException e) {
+         String userMessage = actions.getUserMessage(e);
+         throw new ConstraintViolationException(userMessage, e);
+     }
+ }
+\ No newline at end of file

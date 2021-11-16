@@ -1,0 +1,16 @@
+diff --git a/8c0af854b336a91d328220ca762464588955ed6b b/c6f5b65b0ccaff3a8e4171e4032d83efeac486ce
+index 8c0af854b3..c6f5b65b0c 100644
+--- a/8c0af854b336a91d328220ca762464588955ed6b
++++ b/c6f5b65b0ccaff3a8e4171e4032d83efeac486ce
+@@ -1,4 +1,9 @@
++/**
++ * @param dist the amount of tokens from within the include span can’t have overlap with the exclude span.
++ * Equivalent to setting both pre and post parameter.
++ */
+ public SpanNotQueryBuilder dist(int dist) {
+-    this.dist = dist;
++    pre(dist);
++    post(dist);
+     return this;
+ }
+\ No newline at end of file

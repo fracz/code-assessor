@@ -1,0 +1,19 @@
+diff --git a/9d6f8a52fb14be772ced1856164fad966fe485e7 b/de29f4f6adc214572b9c6ddeef246368f2beb787
+index 9d6f8a52fb..de29f4f6ad 100644
+--- a/9d6f8a52fb14be772ced1856164fad966fe485e7
++++ b/de29f4f6adc214572b9c6ddeef246368f2beb787
+@@ -1,11 +1,11 @@
+ private SSLConnectionSocketFactory buildSSLConnectionSocketFactory() {
+     try {
+         // 优先绕过安全证书
+         return new SSLConnectionSocketFactory(createIgnoreVerifySSL());
+     } catch (KeyManagementException e) {
+-        logger.error(ExceptionUtils.getStackTrace(e));
++        logger.error("ssl connection fail", e);
+     } catch (NoSuchAlgorithmException e) {
+-        logger.error(ExceptionUtils.getStackTrace(e));
++        logger.error("ssl connection fail", e);
+     }
+     return SSLConnectionSocketFactory.getSocketFactory();
+ }
+\ No newline at end of file

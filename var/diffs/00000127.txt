@@ -1,0 +1,27 @@
+diff --git a/664c4008185df6a5c7acc3931ebad8147873c693 b/95449d9587e0d6dc3388cab59dbc8a150c739454
+index 664c400818..95449d9587 100644
+--- a/664c4008185df6a5c7acc3931ebad8147873c693
++++ b/95449d9587e0d6dc3388cab59dbc8a150c739454
+@@ -1,19 +1,20 @@
+ /**
+  * Pins the given file or folder (recursively pinning all children if a folder). Pinned files are
+  * never evicted from memory.
+  *
+  * @param path The TachyonURI path as the input of the command
+  * @return 0 if command is successful, -1 if an error occurred.
+  */
+ public int pin(TachyonURI path) {
+     try {
+         TachyonFile fd = mTfs.open(path);
+-        mTfs.setPin(fd, true);
++        SetStateOptions options = new SetStateOptions.Builder(mTachyonConf).setPinned(true).build();
++        mTfs.setState(fd, options);
+         System.out.println("File '" + path + "' was successfully pinned.");
+         return 0;
+     } catch (Exception e) {
+         e.printStackTrace();
+         System.out.println("File '" + path + "' could not be pinned.");
+         return -1;
+     }
+ }
+\ No newline at end of file

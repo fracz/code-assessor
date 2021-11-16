@@ -1,0 +1,21 @@
+diff --git a/f9eafcb170e4906afbdc39f3da60e1a1ec89fa77 b/dd22ebf5d5ffa7da19dc30b0d77386e6d6cdbb21
+index f9eafcb170..dd22ebf5d5 100644
+--- a/f9eafcb170e4906afbdc39f3da60e1a1ec89fa77
++++ b/dd22ebf5d5ffa7da19dc30b0d77386e6d6cdbb21
+@@ -1,6 +1,10 @@
+-public void attr(Token x) {
+-    // arg, retval, predefined, token ref, rule ref, current rule
+-    System.out.println(x);
+-    if (!r.resolves(x.getText(), alt))
+-        System.err.println("not found: " + x);
++public void attr(String expr, Token x) {
++    // TODO: check for isolated rule ref "+x+" in "+expr);
++    if (node.space.resolveToRuleRef(x.getText(), node)) {
++        ErrorManager.grammarError(ErrorType.ISOLATED_RULE_SCOPE, g.fileName, x, x.getText(), expr);
++        return;
++    }
++    if (!node.space.resolves(x.getText(), node)) {
++        ErrorManager.grammarError(ErrorType.UNKNOWN_SIMPLE_ATTRIBUTE, g.fileName, x, x.getText(), expr);
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/fc477e1ef2b33887f73a951e7ee65b1a9ba39e24 b/82de50374db2cc67b33a2e259c7ff01fb630f62b
+index fc477e1ef2..82de50374d 100644
+--- a/fc477e1ef2b33887f73a951e7ee65b1a9ba39e24
++++ b/82de50374db2cc67b33a2e259c7ff01fb630f62b
+@@ -1,7 +1,7 @@
+-public void deleteByQuery(String querySource, @Nullable String queryParserName, String... types) throws ElasticSearchException {
++public void deleteByQuery(byte[] querySource, @Nullable String queryParserName, String... types) throws ElasticSearchException {
+     writeAllowed();
+     if (types == null) {
+         types = Strings.EMPTY_ARRAY;
+     }
+     innerDeleteByQuery(querySource, queryParserName, types);
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/d36e55e1c59a715ded4fca9b7463f777dfc77c9a b/d34db02dcbb0a86e7dc4fb6eea12a0bcac171b62
+index d36e55e1c5..d34db02dcb 100644
+--- a/d36e55e1c59a715ded4fca9b7463f777dfc77c9a
++++ b/d34db02dcbb0a86e7dc4fb6eea12a0bcac171b62
+@@ -1,4 +1,4 @@
+ @Override
+-public void onRetransformRequest(Class<?> target, final ClassFileTransformer transformer) {
+-    this.dynamicTransformerRegistry.onRetransformRequest(target, transformer);
++public RequestHandle onRetransformRequest(Class<?> target, final ClassFileTransformer transformer) {
++    return this.dynamicTransformerRegistry.onRetransformRequest(target, transformer);
+ }
+\ No newline at end of file

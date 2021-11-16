@@ -1,0 +1,16 @@
+diff --git a/7459aae02123c823d4a0f17e05e29266ff581b53 b/33483ed55ec3e12f4a9c5463b3a1edbaf9836461
+index 7459aae021..33483ed55e 100644
+--- a/7459aae02123c823d4a0f17e05e29266ff581b53
++++ b/33483ed55ec3e12f4a9c5463b3a1edbaf9836461
+@@ -1,8 +1,8 @@
+ /**
+  * Returns the recorded data as a string, where non-printable characters are replaced with a '?'
+  * symbol.
+  */
+-public String getRecordedDataAsString(Charset charsetName) throws UnsupportedEncodingException {
+-    String recordedString = recordedData.toString(charsetName.name());
++public String getRecordedDataAsString() {
++    String recordedString = new String(recordedData.toByteArray(), UTF_8);
+     return NON_PRINTABLE_CHARS.matcher(recordedString).replaceAll("?").trim();
+ }
+\ No newline at end of file

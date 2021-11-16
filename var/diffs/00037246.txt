@@ -1,0 +1,26 @@
+diff --git a/c662fac0809d72fb2c2e6f1784b2e06844c3403b b/10ad926a3cb662704093bcd6dab4425724ceab3a
+index c662fac080..10ad926a3c 100644
+--- a/c662fac0809d72fb2c2e6f1784b2e06844c3403b
++++ b/10ad926a3cb662704093bcd6dab4425724ceab3a
+@@ -1,12 +1,12 @@
+ private void attachTrace(Trace trace) {
+-    // TODO Fix
+-    if (!trace.canSampled()) {
++    if (trace == null) {
+         return;
+     }
+-    if (activeTraceTracking) {
+-        final long spanId = trace.getTraceId().getSpanId();
+-        // fix startTime, find Key;
+-        final ActiveTraceInfo activeTraceInfo = new ActiveTraceInfo(spanId, System.currentTimeMillis());
+-        this.activeTraceRepository.addActiveTrace(spanId, activeTraceInfo);
+-    }
++    // if (activeTraceTracking) {
++    // TODO incomplete state checking.
++    // }
++    final long traceObjectId = trace.getId();
++    // TODO Trace instead of ActiveTraceInfo;
++    final ActiveTraceInfo activeTraceInfo = new ActiveTraceInfo(traceObjectId, System.currentTimeMillis());
++    this.activeTraceRepository.addActiveTrace(traceObjectId, activeTraceInfo);
+ }
+\ No newline at end of file

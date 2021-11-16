@@ -1,0 +1,16 @@
+diff --git a/f9da3f5bacde883c06a52470634caeb13bcd24b3 b/23f72fad1550feda0e7ae77ac730e1e7671d5a1f
+index f9da3f5bac..23f72fad15 100644
+--- a/f9da3f5bacde883c06a52470634caeb13bcd24b3
++++ b/23f72fad1550feda0e7ae77ac730e1e7671d5a1f
+@@ -1,7 +1,8 @@
+ public void testAskingForRevertSubsequentalChanges() throws IOException {
+     VirtualFile f = root.createChildData(null, "f.java");
+     f.setBinaryContent(new byte[1]);
+     Reverter r = createReverter(f, 1);
+-    String question = r.askUserForProceed();
+-    assertEquals("There are some changes that have been done after this one.\nThese changes should be reverted too.", question);
++    List<String> questions = r.askUserForProceeding();
++    String expected = "There are some changes that have been done after this one.\nThese changes should be reverted too.";
++    assertEquals(Collections.singletonList(expected), questions);
+ }
+\ No newline at end of file

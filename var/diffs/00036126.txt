@@ -1,0 +1,17 @@
+diff --git a/5e4606692a3472b551e132955abebf922072c321 b/2ca7527ff1b2fb9b795d2454ced61ba431ed8de8
+index 5e4606692a..2ca7527ff1 100644
+--- a/5e4606692a3472b551e132955abebf922072c321
++++ b/2ca7527ff1b2fb9b795d2454ced61ba431ed8de8
+@@ -1,10 +1,10 @@
+ @Test
+ public void shouldSmartNPEPointToUnstubbedCall() throws Exception {
+     IMethods methods = unstubbedMethodInvokedHere(mock);
+     try {
+         methods.simpleMethod();
+         fail();
+     } catch (SmartNullPointerException e) {
+-        assertThat(e.getCause(), hasMethodInStackTraceAt(0, "unstubbedMethodInvokedHere"));
++        assertContains("unstubbedMethodInvokedHere(", e.getMessage());
+     }
+ }
+\ No newline at end of file

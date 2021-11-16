@@ -1,0 +1,21 @@
+diff --git a/f6febe4be14b2a45227eba5e3cbec447dc896fa9 b/83c2c0a9b9bd9bd411adeba562bcdf3c34d6f087
+index f6febe4be1..83c2c0a9b9 100644
+--- a/f6febe4be14b2a45227eba5e3cbec447dc896fa9
++++ b/83c2c0a9b9bd9bd411adeba562bcdf3c34d6f087
+@@ -1,14 +1,13 @@
+ private void removeInvalidBreakpoints() {
+     LOG.assertTrue(SwingUtilities.isEventDispatchThread());
+     ArrayList<Breakpoint> toDelete = new ArrayList<Breakpoint>();
+     for (Iterator it = getBreakpoints().listIterator(); it.hasNext(); ) {
+         Breakpoint breakpoint = (Breakpoint) it.next();
+         if (!breakpoint.isValid()) {
+             toDelete.add(breakpoint);
+         }
+     }
+     for (Iterator<Breakpoint> iterator = toDelete.iterator(); iterator.hasNext(); ) {
+-        Breakpoint breakpoint = iterator.next();
+-        removeBreakpoint(breakpoint);
++        removeBreakpoint(iterator.next());
+     }
+ }
+\ No newline at end of file

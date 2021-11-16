@@ -1,0 +1,17 @@
+diff --git a/2986047b3a0f07cc2f4495e85f140fb99f30084a b/6b30113ccbb3d7277f0c9049084fc4100f5f6930
+index 2986047b3a..6b30113ccb 100644
+--- a/2986047b3a0f07cc2f4495e85f140fb99f30084a
++++ b/6b30113ccbb3d7277f0c9049084fc4100f5f6930
+@@ -1,9 +1,9 @@
+ protected final void scanWordsInToken(final int occurrenceMask, boolean mayHaveFileRefs, final boolean mayHaveEscapes) {
+     myOccurenceMask = occurrenceMask;
+     final int start = getTokenStart();
+     final int end = getTokenEnd();
+-    IdTableBuilding.scanWords(this, myBuffer, myBufferArray, start, end, mayHaveEscapes);
++    IdTableBuilding.scanWords(this, getBufferSequence(), null, start, end, mayHaveEscapes);
+     if (mayHaveFileRefs) {
+-        processPossibleComplexFileName(myBuffer, myBufferArray, start, end);
++        processPossibleComplexFileName(getBufferSequence(), start, end);
+     }
+ }
+\ No newline at end of file

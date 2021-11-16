@@ -1,0 +1,22 @@
+diff --git a/0f45aeb707b4f174b323b93a80a639bb560deee2 b/60d67c4accfe7b9a11c3029d990055ad79bc4ca5
+index 0f45aeb707..60d67c4acc 100644
+--- a/0f45aeb707b4f174b323b93a80a639bb560deee2
++++ b/60d67c4accfe7b9a11c3029d990055ad79bc4ca5
+@@ -1,14 +1,14 @@
+-public Collection<Long> getIndexedRelationships(String indexName, String key, Object value) throws DatabaseBlockedException {
++public Collection<Long> getIndexedRelationships(String indexName, String key, Object value) {
+     Index<Relationship> index = database.getRelationshipIndex(indexName);
+-    Transaction tx = database.graph.beginTx();
++    Transaction tx = database.getGraph().beginTx();
+     try {
+         Collection<Long> result = new ArrayList<Long>();
+         for (Relationship relationship : index.get(key, value)) {
+             result.add(relationship.getId());
+         }
+         tx.success();
+         return result;
+     } finally {
+         tx.finish();
+     }
+ }
+\ No newline at end of file

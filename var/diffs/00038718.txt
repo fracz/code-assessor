@@ -1,0 +1,19 @@
+diff --git a/bc4815b29d3d7ea091172574e145339ed2b75568 b/e37470e977850b8bdb581e11a3e15f816e0dcbb7
+index bc4815b29d..e37470e977 100644
+--- a/bc4815b29d3d7ea091172574e145339ed2b75568
++++ b/e37470e977850b8bdb581e11a3e15f816e0dcbb7
+@@ -1,11 +1,12 @@
+ private StatementContext createReadOnlyStatementContext() {
+     // I/O
+-    StatementContext result = new StoreStatementContext(propertyKeyTokenHolder, labelTokenHolder, nodeManager, neoStore, indexService, new IndexReaderFactory.Caching(indexService));
++    SchemaStorage schemaStorage = new SchemaStorage(neoStore.getSchemaStore());
++    StatementContext result = new StoreStatementContext(propertyKeyTokenHolder, labelTokenHolder, nodeManager, schemaStorage, neoStore, indexService, new IndexReaderFactory.Caching(indexService));
+     // + Cache
+     result = new CachingStatementContext(result, persistenceCache, schemaCache);
+     // + Read only access
+     result = new ReadOnlyStatementContext(result);
+     // + Schema state handling
+     result = createSchemaStateStatementContext(result);
+     return result;
+ }
+\ No newline at end of file

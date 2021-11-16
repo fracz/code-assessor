@@ -1,0 +1,13 @@
+diff --git a/14e85fbdc198b926386f392318ca796bbcbe0c3a b/c660b52b0feb81576fa84684a6ac23d850bbe69c
+index 14e85fbdc1..c660b52b0f 100644
+--- a/14e85fbdc198b926386f392318ca796bbcbe0c3a
++++ b/c660b52b0feb81576fa84684a6ac23d850bbe69c
+@@ -1,5 +1,5 @@
+-public static synchronized void reportAnd(int count) {
++public synchronized void reportAnd(int count) {
+     Stack<IArgumentMatcher> stack = threadToArgumentMatcherStack.get();
+-    assertState(stack != null, "no matchers found.");
++    assertState(stack != null, missingMatchers());
+     stack.push(new And(popLastArgumentMatchers(count)));
+ }
+\ No newline at end of file

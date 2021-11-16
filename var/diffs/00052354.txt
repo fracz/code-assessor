@@ -1,0 +1,11 @@
+diff --git a/71d57f280009e80a541dab655548538f86136b27 b/3e5d775418d259f500932ae4ef1e29e52474f07f
+index 71d57f2800..3e5d775418 100644
+--- a/71d57f280009e80a541dab655548538f86136b27
++++ b/3e5d775418d259f500932ae4ef1e29e52474f07f
+@@ -1,4 +1,4 @@
+-// TODO 解析 PARTITION
+ @Override
+ protected void parseCustomizedParserBetweenTableAndNextIdentifier(final SQLDeleteStatement deleteStatement) {
++    ((MySqlDeleteStatement) deleteStatement).getPartitionNames().addAll(((MySqlExprParser) getExprParser()).parsePartition());
+ }
+\ No newline at end of file

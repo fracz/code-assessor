@@ -1,0 +1,20 @@
+diff --git a/9fa8422f5d729a675ca70381099c782bd3d67eea b/4c29076fcbad4b34c2e7091a0a01b91bf043cb76
+index 9fa8422f5d..4c29076fcb 100644
+--- a/9fa8422f5d729a675ca70381099c782bd3d67eea
++++ b/4c29076fcbad4b34c2e7091a0a01b91bf043cb76
+@@ -1,13 +1,10 @@
+ @Override
+ @Nullable
+ public VariableDescriptor getLocalVariable(@NotNull Name name) {
+     checkMayRead();
+-    VariableDescriptor variable = writableWorker.getLocalVariable(name);
+-    if (variable != null)
+-        return variable;
+-    variable = getWorkerScope().getLocalVariable(name);
++    VariableDescriptor variable = getWorkerScope().getLocalVariable(name);
+     if (variable != null)
+         return variable;
+     // Imports
+     return super.getLocalVariable(name);
+ }
+\ No newline at end of file

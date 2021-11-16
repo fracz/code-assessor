@@ -1,0 +1,17 @@
+diff --git a/ddae01c70217ac28a7512762e4b49ab38b5fa090 b/c7c3e16ab54ed034b5218ffe477b611e9b4274c5
+index ddae01c702..c7c3e16ab5 100644
+--- a/ddae01c70217ac28a7512762e4b49ab38b5fa090
++++ b/c7c3e16ab54ed034b5218ffe477b611e9b4274c5
+@@ -1,8 +1,8 @@
+ @Override
+ public Throwable getThrowable() {
+     Object o = state.get();
+-    if (o == State.COMPLETE) {
+-        return null;
++    if (NotificationLite.isError(o)) {
++        return NotificationLite.getError(o);
+     }
+-    return (Throwable) o;
++    return null;
+ }
+\ No newline at end of file

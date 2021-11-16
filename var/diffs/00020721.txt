@@ -1,0 +1,20 @@
+diff --git a/f0ce5b002892e293ad8f19dcbb09cc77fd24fe8b b/189840f3948b74030579724225c13ef66703b3e2
+index f0ce5b0028..189840f394 100644
+--- a/f0ce5b002892e293ad8f19dcbb09cc77fd24fe8b
++++ b/189840f3948b74030579724225c13ef66703b3e2
+@@ -1,13 +1,13 @@
+ @Override
+ public void connection_close(FilterChain chain, ConnectionProxy connection) throws SQLException {
+     long nowNano = System.nanoTime();
+     dataSourceStat.getConnectionStat().incrementConnectionCloseCount();
+     JdbcConnectionStat.Entry connectionInfo = getConnectionInfo(connection);
+     long aliveNanoSpan = nowNano - connectionInfo.getEstablishNano();
+     JdbcConnectionStat.Entry existsConnection = dataSourceStat.getConnections().remove(connection.getId());
+     if (existsConnection != null) {
+         dataSourceStat.getConnectionStat().afterClose(aliveNanoSpan);
+     }
+-    super.connection_close(chain, connection);
++    chain.connection_close(connection);
+ // duplicate close, C3P0等连接池，在某些情况下会关闭连接多次。
+ }
+\ No newline at end of file

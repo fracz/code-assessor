@@ -1,0 +1,12 @@
+diff --git a/cafa637abcad6af10283365154c7a23ef1f82128 b/760e024a7cc5a0e347a0325660bc8765624be31b
+index cafa637abc..760e024a7c 100644
+--- a/cafa637abcad6af10283365154c7a23ef1f82128
++++ b/760e024a7cc5a0e347a0325660bc8765624be31b
+@@ -1,4 +1,5 @@
+ public void installSearch(EditorTextField name, final EditorTextField comment) {
+     Document document = name.getDocument();
+-    TaskCompletionContributor.installCompletion(document, myProject, null, false);
++    final ActivateTaskDialog.MyTextFieldWithAutoCompletionListProvider completionProvider = new ActivateTaskDialog.MyTextFieldWithAutoCompletionListProvider(myProject);
++    TextFieldWithAutoCompletionContributor.installCompletion(document, myProject, completionProvider, false);
+ }
+\ No newline at end of file

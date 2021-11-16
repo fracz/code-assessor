@@ -1,0 +1,14 @@
+diff --git a/dc0a82d268869428af131e7e379681369a0da03c b/fd187a7252c8ff458f415f72d363a44843995807
+index dc0a82d268..fd187a7252 100644
+--- a/dc0a82d268869428af131e7e379681369a0da03c
++++ b/fd187a7252c8ff458f415f72d363a44843995807
+@@ -1,3 +1,6 @@
+-public StorageManager openStorageManager() {
+-    return new HBaseStorageManager(StorageSetup.getHBaseStorageConfiguration());
++public StorageManager openStorageManager(short idx) {
++    Configuration sc = StorageSetup.getHBaseStorageConfiguration();
++    sc.addProperty(HBaseStorageManager.LOCAL_LOCK_MEDIATOR_PREFIX_KEY, "hbase-" + idx);
++    sc.addProperty(GraphDatabaseConfiguration.INSTANCE_RID_SHORT_KEY, idx);
++    return new HBaseStorageManager(sc);
+ }
+\ No newline at end of file

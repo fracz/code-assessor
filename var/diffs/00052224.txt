@@ -1,0 +1,14 @@
+diff --git a/2d6ee7cda6c5b45d7ba0e7bfc537d907781efcbf b/ff93df21389d1d799f30b8444570c627b8db9c4b
+index 2d6ee7cda6..ff93df2138 100644
+--- a/2d6ee7cda6c5b45d7ba0e7bfc537d907781efcbf
++++ b/ff93df21389d1d799f30b8444570c627b8db9c4b
+@@ -1,6 +1,6 @@
+-private void parseWhere(final AbstractSQLUpdateStatement sqlUpdateStatement) {
++private void parseWhere(final Table table) {
+     if (getLexer().equalToken(Token.WHERE)) {
+         getLexer().nextToken();
+-        sqlUpdateStatement.setWhere(exprParser.expr());
++        updateSQLContext.getConditionContexts().add(parseConditions(table));
+     }
+ }
+\ No newline at end of file

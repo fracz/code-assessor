@@ -1,0 +1,15 @@
+diff --git a/0bbd718a9a7e7c1d9c2c6d23bdd3d0818b49bef7 b/008e5277938cbbb070fe53b04dc8b11dcbb781ff
+index 0bbd718a9a..008e527793 100644
+--- a/0bbd718a9a7e7c1d9c2c6d23bdd3d0818b49bef7
++++ b/008e5277938cbbb070fe53b04dc8b11dcbb781ff
+@@ -1,6 +1,7 @@
+ public PersistentVector assocN(int i, Object val) {
+-    if (i >= 0 && i < cnt) {
++    if (i >= 0 && i < cnt)
+         return new PersistentVector(meta(), cnt, shift, doAssoc(shift, root, i, val));
+-    }
++    if (i == cnt)
++        return cons(val);
+     throw new IndexOutOfBoundsException();
+ }
+\ No newline at end of file

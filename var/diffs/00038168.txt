@@ -1,0 +1,16 @@
+diff --git a/e8be30f7387289aea5977415af9df3f9c7af320c b/8a4ed55440daa375a88bc9684b95c6327318997a
+index e8be30f738..8a4ed55440 100644
+--- a/e8be30f7387289aea5977415af9df3f9c7af320c
++++ b/8a4ed55440daa375a88bc9684b95c6327318997a
+@@ -1,9 +1,9 @@
+ @Before
+ public void setUp() throws Exception {
+     when(outsideWorld.fileSystem()).thenReturn(new DefaultFileSystemAbstraction());
+     when(outsideWorld.errorStream()).thenReturn(err);
+     when(outsideWorld.outStream()).thenReturn(out);
+     when(ccResult.isSuccessful()).thenReturn(true);
+-    when(consistencyCheckService.runFullConsistencyCheck(any(), any(), any(), any(), any(), anyBoolean(), any(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean())).thenReturn(ccResult);
++    when(consistencyCheckService.runFullConsistencyCheck(any(), any(), any(), any(), any(), anyBoolean(), any(), any(CheckConsistencyConfig.class))).thenReturn(ccResult);
+     configDir = testDirectory.directory("config-dir").toPath();
+ }
+\ No newline at end of file

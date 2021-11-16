@@ -1,0 +1,19 @@
+diff --git a/3b9c4697a95537bf1bfbf84368469033b78bfec8 b/3c66423d39a5f4c7816b4ffaa1347b5d3bf145d6
+index 3b9c4697a9..3c66423d39 100644
+--- a/3b9c4697a95537bf1bfbf84368469033b78bfec8
++++ b/3c66423d39a5f4c7816b4ffaa1347b5d3bf145d6
+@@ -1,11 +1,8 @@
+ private void initLivePreview() {
+     setMatchesLimit(MATCHES_LIMIT);
+-    if (myChanged) {
+-        mySearchResults.clear();
+-        myChanged = false;
+-    }
++    myLivePreviewController.clearIfhanged();
+     updateResults(false);
+     myLivePreview = new LivePreview(mySearchResults);
+-    myLivePreviewController = new MyLivePreviewController();
++    myLivePreviewController.setLivePreview(myLivePreview);
+     mySearchResults.addListener(this);
+ }
+\ No newline at end of file

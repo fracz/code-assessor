@@ -1,0 +1,19 @@
+diff --git a/4b09162da1190e66432f3e4a21b40c21546b0f7d b/5247db31f0506eb82560829bf45ec97704c4db5b
+index 4b09162da1..5247db31f0 100644
+--- a/4b09162da1190e66432f3e4a21b40c21546b0f7d
++++ b/5247db31f0506eb82560829bf45ec97704c4db5b
+@@ -1,11 +1,7 @@
+ @Override
+ public VertexLabel getVertexLabel(String name) {
+     verifyOpen();
+-    if (BaseVertexLabel.DEFAULT_VERTEXLABEL.getName().equals(name))
++    if (BaseVertexLabel.DEFAULT_VERTEXLABEL.name().equals(name))
+         return BaseVertexLabel.DEFAULT_VERTEXLABEL;
+-    VertexLabel vlabel = (VertexLabel) getSchemaVertex(TitanSchemaCategory.VERTEXLABEL.getSchemaName(name));
+-    if (vlabel == null) {
+-        vlabel = config.getAutoSchemaMaker().makeVertexLabel(makeVertexLabel(name));
+-    }
+-    return vlabel;
++    return (VertexLabel) getSchemaVertex(TitanSchemaCategory.VERTEXLABEL.getSchemaName(name));
+ }
+\ No newline at end of file

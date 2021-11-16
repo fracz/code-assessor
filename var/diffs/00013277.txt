@@ -1,0 +1,26 @@
+diff --git a/9241cec61dca7e7be0a076885b18aa5f16a543dc b/dcb6877181a7218981fc4ace5442318d6b86bf2e
+index 9241cec61d..dcb6877181 100644
+--- a/9241cec61dca7e7be0a076885b18aa5f16a543dc
++++ b/dcb6877181a7218981fc4ace5442318d6b86bf2e
+@@ -1,11 +1,10 @@
+-private static JsonValue findTopLevelElement(@NotNull PsiElement element) {
+-    PsiElement current = element;
+-    while (true) {
+-        final JsonValue value = PsiTreeUtil.getParentOfType(current, JsonValue.class, true);
+-        if (value != null && (value.getParent() instanceof PsiFile))
+-            return value;
+-        if (value == null)
+-            return current instanceof JsonValue ? (JsonValue) current : null;
+-        current = value;
+-    }
++private static JsonValueAdapter findTopLevelElement(@NotNull JsonLikePsiWalker walker, @NotNull PsiElement element) {
++    final Ref<PsiElement> ref = new Ref<>();
++    PsiTreeUtil.findFirstParent(element, el -> {
++        final boolean isTop = walker.isTopJsonElement(el);
++        if (!isTop)
++            ref.set(el);
++        return isTop;
++    });
++    return ref.isNull() ? null : walker.createValueAdapter(ref.get());
+ }
+\ No newline at end of file

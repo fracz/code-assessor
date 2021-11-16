@@ -1,0 +1,22 @@
+diff --git a/81aa9df522dc2cfa5d4d3a342d1050d8ffb101bc b/0302f036fe1efe7d61bb7d0211fb7ba233836eff
+index 81aa9df522..0302f036fe 100644
+--- a/81aa9df522dc2cfa5d4d3a342d1050d8ffb101bc
++++ b/0302f036fe1efe7d61bb7d0211fb7ba233836eff
+@@ -1,12 +1,14 @@
+ @Test
+ public void shouldWriteCreatedSchemaRuleToStore() throws Exception {
+     // GIVEN
+     Collection<DynamicRecord> beforeRecords = serialize(rule, id, false, false);
+     Collection<DynamicRecord> afterRecords = serialize(rule, id, true, true);
+-    SchemaRuleCommand command = new SchemaRuleCommand(neoStore, store, indexes, beforeRecords, afterRecords, rule, txId);
++    when(neoStore.getSchemaStore()).thenReturn(store);
++    SchemaRuleCommand command = new SchemaRuleCommand();
++    command.init(beforeRecords, afterRecords, rule, txId);
+     // WHEN
+-    command.execute();
++    executor.execute(command);
+     // THEN
+     verify(store).updateRecord(first(afterRecords));
+     verify(indexes).createIndex(rule);
+ }
+\ No newline at end of file

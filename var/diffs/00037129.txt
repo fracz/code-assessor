@@ -1,0 +1,27 @@
+diff --git a/f3726423d0a4052f974a5dde3f8b55411407c055 b/6f475f98014affae55975bd31cd1e49aee00f52b
+index f3726423d0..6f475f9801 100644
+--- a/f3726423d0a4052f974a5dde3f8b55411407c055
++++ b/6f475f98014affae55975bd31cd1e49aee00f52b
+@@ -1,15 +1,19 @@
+ @Override
+ public void close() {
+-    // TODO check closed ?
++    if (closed) {
++        logger.warn("Alreaed closed trace.");
++        return;
++    }
++    closed = true;
+     if (!callStack.empty()) {
+         PinpointException exception = new PinpointException("Corrupted CallStack found");
+         logger.warn("Corrupted CallStack found. stack is not empty.", exception);
+     }
+-    logSpan(traceHeader.getSpan());
++    logSpan(spanReocrder.getSpan());
+     // If the stack is not handled properly, NullPointerException will be thrown after this. Is it OK?
+     if (this.storage != null) {
+         this.traceId.decrementTraceCount();
+         this.storage.close();
+         this.storage = null;
+     }
+ }
+\ No newline at end of file

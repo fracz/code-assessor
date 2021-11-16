@@ -1,0 +1,19 @@
+diff --git a/39701d7f5aa71a1fc365d192f9bfeca97f09230c b/8122c64f892e18dee1f662c7c0f6c55d48e9e3c8
+index 39701d7f5a..8122c64f89 100644
+--- a/39701d7f5aa71a1fc365d192f9bfeca97f09230c
++++ b/8122c64f892e18dee1f662c7c0f6c55d48e9e3c8
+@@ -1,12 +1,10 @@
+ @Test
+ public void propertySourceAnnotationWithName() throws Exception {
+     SpringApplication application = new SpringApplication(WithPropertySourceAndName.class);
+     application.setWebEnvironment(false);
+     ConfigurableApplicationContext context = application.run();
+     String property = context.getEnvironment().getProperty("my.property");
+     assertThat(property, equalTo("fromspecificlocation"));
+-    // In this case "foo" should be the specificlocation.properties source, but Spring
+-    // will have shifted it to the back of the line.
+-    assertThat(context.getEnvironment().getPropertySources().get("boot.foo"), notNullValue());
++    assertThat(context.getEnvironment(), containsProperySource("foo"));
+     context.close();
+ }
+\ No newline at end of file

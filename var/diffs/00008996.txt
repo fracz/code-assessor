@@ -1,0 +1,22 @@
+diff --git a/0255f38155b7e55b65896af4b77c5c8d0a83a9f9 b/9d822075b6e9c8827b8b722db02dc2f8d2ea265a
+index 0255f38155..9d822075b6 100644
+--- a/0255f38155b7e55b65896af4b77c5c8d0a83a9f9
++++ b/9d822075b6e9c8827b8b722db02dc2f8d2ea265a
+@@ -1,6 +1,13 @@
+ @Nullable
+ @Override
+-public String getPropertiesString(@NotNull JpsSimpleElement<JavaSourceRootProperties> properties) {
+-    String packagePrefix = properties.getData().getPackagePrefix();
+-    return packagePrefix.isEmpty() ? null : " (" + packagePrefix + ")";
++public String getPropertiesString(@NotNull JavaSourceRootProperties properties) {
++    StringBuilder buffer = new StringBuilder();
++    if (properties.isForGeneratedSources()) {
++        buffer.append(" [generated]");
++    }
++    String packagePrefix = properties.getPackagePrefix();
++    if (!packagePrefix.isEmpty()) {
++        buffer.append(" (").append(packagePrefix).append(")");
++    }
++    return buffer.length() > 0 ? buffer.toString() : null;
+ }
+\ No newline at end of file

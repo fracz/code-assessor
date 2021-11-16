@@ -1,0 +1,23 @@
+diff --git a/94718fafb2317e297d762b2d5ff74e1d38829bb5 b/58ea2ab71c8a4521a6d8dc0582a15d974c0ae555
+index 94718fafb2..58ea2ab71c 100644
+--- a/94718fafb2317e297d762b2d5ff74e1d38829bb5
++++ b/58ea2ab71c8a4521a6d8dc0582a15d974c0ae555
+@@ -1,13 +1,13 @@
+ @Override
+ protected OracleTrigger runTask() {
+-    CreateEntityDialog dialog = new CreateEntityDialog(DBeaverUI.getActiveWorkbenchShell(), parent.getDataSource(), OracleMessages.edit_oracle_trigger_manager_dialog_title);
+-    if (dialog.open() != IDialogConstants.OK_ID) {
++    EntityEditPage page = new EntityEditPage(parent.getDataSource(), DBSEntityType.TRIGGER);
++    if (!EditObjectDialog.showDialog(page)) {
+         return null;
+     }
+-    OracleTrigger newTrigger = new OracleTrigger(parent.getContainer(), parent, dialog.getEntityName());
++    OracleTrigger newTrigger = new OracleTrigger(parent.getContainer(), parent, page.getEntityName());
+     newTrigger.setObjectDefinitionText(// $NON-NLS-1$ //$NON-NLS-2$
+-    "TRIGGER " + dialog.getEntityName() + "\n" + // $NON-NLS-1$
++    "TRIGGER " + page.getEntityName() + "\n" + // $NON-NLS-1$
+     "BEGIN\n" + // $NON-NLS-1$
+     "END;");
+     return newTrigger;
+ }
+\ No newline at end of file

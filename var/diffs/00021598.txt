@@ -1,0 +1,15 @@
+diff --git a/3308409cab70271d6db6cc24d2a735718422798e b/09607e1ac8e66806ca72f1c01a0efabfd1e837ad
+index 3308409cab..09607e1ac8 100644
+--- a/3308409cab70271d6db6cc24d2a735718422798e
++++ b/09607e1ac8e66806ca72f1c01a0efabfd1e837ad
+@@ -1,6 +1,8 @@
+ @Override
+ public void onViewCreated(View view, Bundle savedInstanceState) {
+     super.onViewCreated(view, savedInstanceState);
+     this.userDetailsPresenter.setView(this);
+-    this.userDetailsPresenter.initialize();
++    if (savedInstanceState == null) {
++        this.loadUserDetails();
++    }
+ }
+\ No newline at end of file

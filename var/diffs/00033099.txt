@@ -1,0 +1,10 @@
+diff --git a/55b112e73b09f0cf12b0653dc41e757c741a72c4 b/1a1626e27d0452360cab1089a8c149fe068c5070
+index 55b112e73b..1a1626e27d 100644
+--- a/55b112e73b09f0cf12b0653dc41e757c741a72c4
++++ b/1a1626e27d0452360cab1089a8c149fe068c5070
+@@ -1,3 +1,3 @@
+ public FileLock tryLock(RandomAccessFile lockFileAccess, boolean shared) throws IOException {
+-    return lockFileAccess.getChannel().tryLock(0, protocol.getSize(), shared);
++    return lockFileAccess.getChannel().tryLock(REGION_START, stateRegionSize, shared);
+ }
+\ No newline at end of file

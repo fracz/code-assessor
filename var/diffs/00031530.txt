@@ -1,0 +1,22 @@
+diff --git a/92f5ba36f4f9bf8a42ffb7197a7aceba2043eb4e b/1f3608836be1a7b1b7d9cb1b5da74536bda9879b
+index 92f5ba36f4..1f3608836b 100644
+--- a/92f5ba36f4f9bf8a42ffb7197a7aceba2043eb4e
++++ b/1f3608836be1a7b1b7d9cb1b5da74536bda9879b
+@@ -1,14 +1,11 @@
+ /**
+  * Converts this QueryBuilder to a lucene {@link Query}.
+  * Returns <tt>null</tt> if this query should be ignored in the context of
+  * parent queries.
+  *
+  * @param parseContext additional information needed to construct the queries
+  * @return the {@link Query} or <tt>null</tt> if this query should be ignored upstream
+  * @throws QueryParsingException
+  * @throws IOException
+  */
+-// norelease to be made abstract once all query builders override toQuery providing their own specific implementation.
+-public Query toQuery(QueryParseContext parseContext) throws QueryParsingException, IOException {
+-    return parseContext.indexQueryParserService().queryParser(queryId()).parse(parseContext);
+-}
+\ No newline at end of file
++Query toQuery(QueryParseContext parseContext) throws QueryParsingException, IOException;
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/cf9731604545890d246cf2462a1df603cd1ff26d b/45b0c87f141ab2929a3953934243fc8085102013
+index cf97316045..45b0c87f14 100644
+--- a/cf9731604545890d246cf2462a1df603cd1ff26d
++++ b/45b0c87f141ab2929a3953934243fc8085102013
+@@ -1,5 +1,4 @@
+ @Nullable
+ public ClassDescriptor getAnnotationRetentionEnumEntry(@NotNull KotlinRetention retention) {
+-    ClassifierDescriptor result = getAnnotationRetentionEnum().getUnsubstitutedInnerClassesScope().getContributedClassifier(Name.identifier(retention.name()), NoLookupLocation.FROM_BUILTINS);
+-    return result instanceof ClassDescriptor ? (ClassDescriptor) result : null;
++    return getEnumEntry(getAnnotationRetentionEnum(), retention.name());
+ }
+\ No newline at end of file

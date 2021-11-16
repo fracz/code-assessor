@@ -1,0 +1,33 @@
+diff --git a/7ea337e8cc663b24f4e336dd98fa92a0723df233 b/4ecc18f9a73066462e13940e95c453035530b863
+index 7ea337e8cc..4ecc18f9a7 100644
+--- a/7ea337e8cc663b24f4e336dd98fa92a0723df233
++++ b/4ecc18f9a73066462e13940e95c453035530b863
+@@ -1,12 +1,19 @@
+ @Override
+ public void saxEndElement(SAXReader reader, String namespaceURI, String localName) {
+-    if (localName.equals(TAG_CONTAINER)) {
+-        curContainer = curContainer.getParentObject();
+-    } else if (localName.equals(TAG_ENTITY)) {
+-        curEntity = null;
+-    } else if (localName.equals(TAG_CONSTRAINT)) {
+-        curConstraint = null;
+-    } else if (localName.equals(TAG_ATTRIBUTE)) {
+-        curAttribute = null;
++    switch(localName) {
++        case TAG_CONTAINER:
++            curContainer = curContainer.getParentObject();
++            break;
++        case TAG_ENTITY:
++            curEntity = null;
++            break;
++        case TAG_CONSTRAINT:
++            curConstraint = null;
++            break;
++        case TAG_ATTRIBUTE:
++            if (curAttribute != null) {
++                curAttribute = curAttribute.getParent();
++            }
++            break;
+     }
+ }
+\ No newline at end of file

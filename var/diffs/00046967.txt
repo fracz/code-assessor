@@ -1,0 +1,16 @@
+diff --git a/5a98366981bc1ffc4e902963aac2d09b31021160 b/d1252bf8f5d68ba9a0a8a81b5f9de8247738ce7b
+index 5a98366981..d1252bf8f5 100644
+--- a/5a98366981bc1ffc4e902963aac2d09b31021160
++++ b/d1252bf8f5d68ba9a0a8a81b5f9de8247738ce7b
+@@ -1,8 +1,9 @@
+ @Test
+ public void releasingPublicationShouldNotifyMediaDriver() throws Exception {
+     Publication publication = addPublication();
+     willNotifyOperationSucceeded();
+     publication.release();
+-    verifyBuffersReleased(SESSION_ID_1);
++    // TODO: do these verifies as part of a publication test.
++    // verifyBuffersReleased(SESSION_ID_1);
+     verify(driverProxy).removePublication(DESTINATION, SESSION_ID_1, CHANNEL_ID_1);
+ }
+\ No newline at end of file

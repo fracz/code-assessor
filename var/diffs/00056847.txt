@@ -1,0 +1,34 @@
+diff --git a/04f3bc522fd631eb2cf6cfdc72b6ad57046ce9d8 b/b06c85ade194931dcb27c8aafc596405c8d3251c
+index 04f3bc522f..b06c85ade1 100644
+--- a/04f3bc522fd631eb2cf6cfdc72b6ad57046ce9d8
++++ b/b06c85ade194931dcb27c8aafc596405c8d3251c
+@@ -1,24 +1,24 @@
+ @Override
+ public Iterator<E> iterator() {
+     return new Iterator<E>() {
+
+-        private int index = 0;
++        private final List<Integer> sortedKeys = Generics.newArrayList(new TreeSet<Integer>(index2Item.keySet()));
+
+-        private int size = ConcurrentHashIndex.this.size();
++        private int index = 0;
+
+         @Override
+         public boolean hasNext() {
+-            return index < size;
++            return index < sortedKeys.size();
+         }
+
+         @Override
+         public E next() {
+-            return ConcurrentHashIndex.this.get(index++);
++            return index2Item.get(index++);
+         }
+
+         @Override
+         public void remove() {
+             throw new UnsupportedOperationException();
+         }
+     };
+ }
+\ No newline at end of file

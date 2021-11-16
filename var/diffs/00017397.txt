@@ -1,0 +1,15 @@
+diff --git a/7983a335f81822cc6b037db57016290d40ced893 b/423685200a1d439b39754219759a0d4f6dd2c338
+index 7983a335f8..423685200a 100644
+--- a/7983a335f81822cc6b037db57016290d40ced893
++++ b/423685200a1d439b39754219759a0d4f6dd2c338
+@@ -1,4 +1,8 @@
+ @NotNull
+ public TranslationContext newFunctionBody(@NotNull JsFunction fun, @Nullable AliasingContext aliasingContext) {
+-    return new TranslationContext(this, fun, aliasingContext == null ? this.aliasingContext.inner() : aliasingContext, null);
++    DynamicContext dynamicContext = DynamicContext.newContext(fun.getScope(), fun.getBody());
++    if (aliasingContext == null) {
++        aliasingContext = this.aliasingContext.inner();
++    }
++    return new TranslationContext(this, this.staticContext, dynamicContext, aliasingContext, this.usageTracker, null);
+ }
+\ No newline at end of file

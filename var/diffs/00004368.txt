@@ -1,0 +1,16 @@
+diff --git a/673df87eebe54f6a41889cb4cd0382d7c949f28e b/75c17aac9564b03a70fdcdd11b003fbb3f17545a
+index 673df87eeb..75c17aac95 100644
+--- a/673df87eebe54f6a41889cb4cd0382d7c949f28e
++++ b/75c17aac9564b03a70fdcdd11b003fbb3f17545a
+@@ -1,8 +1,3 @@
+-public void moveCursor(boolean forwardOrBackward) {
+-    myToChangeSelection = true;
+-    if (forwardOrBackward) {
+-        mySearchResults.nextOccurrence();
+-    } else {
+-        mySearchResults.prevOccurrence();
+-    }
++public void moveCursor(SearchResults.Direction direction) {
++    myLivePreviewController.moveCursor(direction, true);
+ }
+\ No newline at end of file

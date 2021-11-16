@@ -1,0 +1,17 @@
+diff --git a/c997d78afc78d959024dc88cf35d74629fefd106 b/fd57710845c2595407c24fa83ced56d2b5b74b7e
+index c997d78afc..fd57710845 100644
+--- a/c997d78afc78d959024dc88cf35d74629fefd106
++++ b/fd57710845c2595407c24fa83ced56d2b5b74b7e
+@@ -1,9 +1,10 @@
+ // AutoFillUiCallback
+ @Override
+ public void requestShowFillUi(AutofillId id, int width, int height, IAutofillWindowPresenter presenter) {
+     try {
+-        mClient.requestShowFillUi(mWindowToken, id, width, height, mCurrentViewState.mVirtualBounds, presenter);
++        final ViewState currentView = mViewStates.get(mCurrentViewId);
++        mClient.requestShowFillUi(mWindowToken, id, width, height, currentView.getVirtualBounds(), presenter);
+     } catch (RemoteException e) {
+         Slog.e(TAG, "Error requesting to show fill UI", e);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,27 @@
+diff --git a/9de80afa6ea42fc65c17e9edeb144178a5698fe1 b/74ed660c0249598435a0d287471090261eaaf7f6
+index 9de80afa6e..74ed660c02 100644
+--- a/9de80afa6ea42fc65c17e9edeb144178a5698fe1
++++ b/74ed660c0249598435a0d287471090261eaaf7f6
+@@ -1,15 +1,13 @@
+ public IRubyObject getAttributeByIndex(IRubyObject index) {
+     if (index.isNil())
+         return index;
+     long i = index.convertToInteger().getLongValue();
+     if (i > Integer.MAX_VALUE) {
+-        throw node().ruby.newArgumentError("value too long to be an array index");
+-    }
+-    if (node().attributeValues == null) {
+-        return node().ruby.getNil();
+-    } else if (i < 0 || node().attributeValues.length <= i) {
+-        return node().ruby.getNil();
+-    } else {
+-        return node().attributeValues[(int) i];
++        throw ruby.newArgumentError("value too long to be an array index");
+     }
++    if (attributeList == null)
++        return ruby.getNil();
++    if (i < 0 || attributeList.length <= i)
++        return ruby.getNil();
++    return stringOrBlank(ruby, attributeList.values.get(((Long) i).intValue()));
+ }
+\ No newline at end of file

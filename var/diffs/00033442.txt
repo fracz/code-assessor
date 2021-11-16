@@ -1,0 +1,19 @@
+diff --git a/b5a3be84baf23b1ac509f4411bb7b7aee8d6aa0c b/f9878823ef90a6565741f7052eea736ba4820f16
+index b5a3be84ba..f9878823ef 100644
+--- a/b5a3be84baf23b1ac509f4411bb7b7aee8d6aa0c
++++ b/f9878823ef90a6565741f7052eea736ba4820f16
+@@ -1,10 +1,9 @@
+-private CommandComplete doRunWithExceptionHandling(Command command, Stoppable serverControl, ExecutionListener executionListener) {
++private CommandComplete doRunWithExceptionHandling(Command command, Stoppable serverControl) {
+     LOGGER.info("Executing {}", command);
+     if (command instanceof Stop) {
+         LOGGER.lifecycle("Stopping");
+         serverControl.stop();
+-        return null;
++        return new CommandComplete(null);
+     }
+-    assert command instanceof Build;
+-    return build((Build) command, executionListener);
++    return build((Build) command);
+ }
+\ No newline at end of file

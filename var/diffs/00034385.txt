@@ -1,0 +1,18 @@
+diff --git a/9bea4cdc4a432a3c287186730ff9aa6660bde8ff b/f893df573c7b94544d5469a8a95d1a357818ac80
+index 9bea4cdc4a..f893df573c 100644
+--- a/9bea4cdc4a432a3c287186730ff9aa6660bde8ff
++++ b/f893df573c7b94544d5469a8a95d1a357818ac80
+@@ -1,9 +1,10 @@
+ @Test
+ public void areMoreMessagesAvailable_withoutAdditionalMessages_shouldIssueSearchCommandsUntilAllMessagesSearched() throws Exception {
+     ImapFolder folder = createFolder("Folder");
+     prepareImapFolderForOpen(OPEN_MODE_RW);
++    setupSearchResponse("1 OK SEARCH Completed");
+     folder.open(OPEN_MODE_RW);
+     folder.areMoreMessagesAvailable(600, null);
+-    verify(imapConnection).executeSimpleCommand("SEARCH 100:599 NOT DELETED");
+-    verify(imapConnection).executeSimpleCommand("SEARCH 1:99 NOT DELETED");
++    assertCommandIssued("UID SEARCH 100:599 NOT DELETED");
++    assertCommandIssued("UID SEARCH 1:99 NOT DELETED");
+ }
+\ No newline at end of file

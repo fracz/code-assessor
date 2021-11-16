@@ -1,0 +1,19 @@
+diff --git a/f05f1bccf264bd40d768bff9d0edc32206376598 b/f809eeda7c4cf67fccdab8c5acb35bb3af9b2cb2
+index f05f1bccf2..f809eeda7c 100644
+--- a/f05f1bccf264bd40d768bff9d0edc32206376598
++++ b/f809eeda7c4cf67fccdab8c5acb35bb3af9b2cb2
+@@ -1,11 +1,11 @@
+ /**
+  * Returns the default focus state.
+  */
+ public float getDefaultFocusState() {
+     RecentsActivityLaunchState launchState = Recents.getConfiguration().getLaunchState();
+     RecentsDebugFlags debugFlags = Recents.getDebugFlags();
+     if (launchState.launchedWithAltTab || debugFlags.isInitialStatePaging()) {
+-        return 1f;
++        return STATE_FOCUSED;
+     }
+-    return 0f;
++    return STATE_UNFOCUSED;
+ }
+\ No newline at end of file

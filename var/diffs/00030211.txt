@@ -1,0 +1,15 @@
+diff --git a/548018f1304781cd70674074ea5eac5687dcecd3 b/5f5460aedcb13e24c6f5723ef2e536ac2845bc38
+index 548018f130..5f5460aedc 100644
+--- a/548018f1304781cd70674074ea5eac5687dcecd3
++++ b/5f5460aedcb13e24c6f5723ef2e536ac2845bc38
+@@ -1,8 +1,8 @@
+ @Override
+ protected ClusterBlockException checkRequestBlock(ClusterState state, AnalyzeRequest request) {
+     if (request.index() != null) {
+         request.index(state.metaData().concreteSingleIndex(request.index(), request.indicesOptions()));
+-        return state.blocks().indexBlockedException(ClusterBlockLevel.READ, request.index());
++        return super.checkRequestBlock(state, request);
+     }
+     return null;
+ }
+\ No newline at end of file

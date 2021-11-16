@@ -1,0 +1,15 @@
+diff --git a/f927576be956ceb087e68b7ae6d56a1926e1381c b/439bf73ee61380069d376374d455e8d4bd525f92
+index f927576be9..439bf73ee6 100644
+--- a/f927576be956ceb087e68b7ae6d56a1926e1381c
++++ b/439bf73ee61380069d376374d455e8d4bd525f92
+@@ -1,8 +1,7 @@
+ @Override
+ protected void doXContent(XContentBuilder builder, Params params) throws IOException {
+     builder.startObject(NAME);
+-    builder.field("filter");
+-    filterBuilder.toXContent(builder, params);
++    doXContentInnerBuilder(builder, "filter", filterBuilder, params);
+     builder.field("boost", boost);
+     builder.endObject();
+ }
+\ No newline at end of file

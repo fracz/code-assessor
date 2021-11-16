@@ -1,0 +1,16 @@
+diff --git a/19984dca117d34fa17fe471653027750b78f7364 b/a96338975bf13aa7d088eeaeb66f3a5ee3619e23
+index 19984dca11..a96338975b 100644
+--- a/19984dca117d34fa17fe471653027750b78f7364
++++ b/a96338975bf13aa7d088eeaeb66f3a5ee3619e23
+@@ -1,8 +1,8 @@
+ @Test
+ public void shouldFillSchemaAndCatalogWithDatabaseName() throws SQLException {
+     ResultSet rs = metaData.getTables(null, null, null, null);
+     while (rs.next()) {
+-        assertThat(rs.getString("TABLE_SCHEM")).isEqualTo(name.getMethodName());
+-        assertThat(rs.getString("TABLE_CAT")).isEqualTo(name.getMethodName());
++        assertThat(rs.getString("TABLE_SCHEM")).isEqualTo("perClassTestDatabase");
++        assertThat(rs.getString("TABLE_CAT")).isEqualTo("perClassTestDatabase");
+     }
+ }
+\ No newline at end of file

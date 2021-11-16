@@ -1,0 +1,23 @@
+diff --git a/919c2a41f56550317ff5d873d8b47cded88d0f16 b/fcb8083f3e7c1bd97f32a70006fa4d5d2dabb0e6
+index 919c2a41f5..fcb8083f3e 100644
+--- a/919c2a41f56550317ff5d873d8b47cded88d0f16
++++ b/fcb8083f3e7c1bd97f32a70006fa4d5d2dabb0e6
+@@ -1,16 +1,4 @@
+-/**
+- * Set the body of the message to the given {@link Publisher}.
+- *
+- * <p>Since the HTTP channel is not yet created when this method
+- * is called, the {@code Mono<Void>} return value completes immediately.
+- * For an event that signals that we're done writing the request, check the
+- * {@link #execute()} method.
+- *
+- * @return a publisher that completes immediately.
+- * @see #execute()
+- */
+ @Override
+ public Mono<Void> writeWith(Publisher<DataBuffer> body) {
+-    this.body = Flux.from(body).map(this::toByteBuf);
+-    return Mono.empty();
++    return applyBeforeCommit().then(httpRequest.send(Flux.from(body).map(this::toByteBuf)));
+ }
+\ No newline at end of file

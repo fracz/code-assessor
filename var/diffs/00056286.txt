@@ -1,0 +1,12 @@
+diff --git a/50c0c79a1b91d6bb156520a18f7eb092593fa301 b/4684f11e48c337304a70c46e94ac68211e74ed21
+index 50c0c79a1b..4684f11e48 100644
+--- a/50c0c79a1b91d6bb156520a18f7eb092593fa301
++++ b/4684f11e48c337304a70c46e94ac68211e74ed21
+@@ -1,4 +1,5 @@
+ @Override
+-protected void configureSocket(SSLSocket sslSocket) throws IOException {
++protected SSLSocket configureSocket(SSLSocket sslSocket) throws IOException {
+     socketsCreated.add(sslSocket);
++    return sslSocket;
+ }
+\ No newline at end of file

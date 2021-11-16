@@ -1,0 +1,13 @@
+diff --git a/fb6374e4a42f6840b16429f45cdd892b2f78f93b b/3aa94aa0e129b5a742a027da94f915ff336f8bbe
+index fb6374e4a4..3aa94aa0e1 100644
+--- a/fb6374e4a42f6840b16429f45cdd892b2f78f93b
++++ b/3aa94aa0e129b5a742a027da94f915ff336f8bbe
+@@ -1,4 +1,6 @@
+ @Test(expected = ParserUnsupportedException.class)
+ public void parseInsertAllForOracle() {
+-    new OracleStatementParser(createShardingRule(), Collections.emptyList(), "INSERT ALL INTO TABLE_XXX (field1) VALUES (field1) SELECT field1 FROM TABLE_XXX2").parseStatement();
++    ShardingRule shardingRule = createShardingRule();
++    List<Object> parameters = Collections.emptyList();
++    new SQLStatementParser(DatabaseType.Oracle, shardingRule, parameters, new OracleExprParser(shardingRule, parameters, "INSERT ALL INTO TABLE_XXX (field1) VALUES (field1) SELECT field1 FROM TABLE_XXX2")).parseStatement();
+ }
+\ No newline at end of file

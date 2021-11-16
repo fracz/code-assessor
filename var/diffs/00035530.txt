@@ -1,0 +1,32 @@
+diff --git a/b90fa79bec40296684703aebef8de08bec793a6f b/acf858cd64e2a6758d298bfe7fd70115c63ea3ee
+index b90fa79bec..acf858cd64 100644
+--- a/b90fa79bec40296684703aebef8de08bec793a6f
++++ b/acf858cd64e2a6758d298bfe7fd70115c63ea3ee
+@@ -1,16 +1,16 @@
+ @Override
+ protected boolean _checkCanStart() {
+-    synchronized (NEED_RESTART_LIST) {
+-        if (!FileDownloadServiceUIGuard.getImpl().isConnected()) {
+-            // 没有连上 服务
+-            FileDownloadLog.d(this, "no connect service !! %s", getDownloadId());
+-            FileDownloadServiceUIGuard.getImpl().bindStartByContext(FileDownloadHelper.getAppContext());
+-            NEED_RESTART_LIST.add(this);
+-            return false;
++    if (!FileDownloadServiceUIGuard.getImpl().isConnected()) {
++        synchronized (NEED_RESTART_LIST) {
++            if (!FileDownloadServiceUIGuard.getImpl().isConnected()) {
++                // 没有连上 服务
++                FileDownloadLog.d(this, "no connect service !! %s", getDownloadId());
++                FileDownloadServiceUIGuard.getImpl().bindStartByContext(FileDownloadHelper.getAppContext());
++                NEED_RESTART_LIST.add(this);
++                return false;
++            }
+         }
+     }
+-    synchronized (NEED_RESTART_LIST) {
+-        NEED_RESTART_LIST.remove(this);
+-    }
++    handleNoNeedRestart();
+     return true;
+ }
+\ No newline at end of file

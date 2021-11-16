@@ -1,0 +1,21 @@
+diff --git a/01df35c6debb1040e860bebd8c7e4db545e21f21 b/7d30f76b54dde7d83df10ba1c1aa427c3dfcaaaf
+index 01df35c6de..7d30f76b54 100644
+--- a/01df35c6debb1040e860bebd8c7e4db545e21f21
++++ b/7d30f76b54dde7d83df10ba1c1aa427c3dfcaaaf
+@@ -1,14 +1,14 @@
+ private JDBCResultSetImpl makeResultSet(ResultSet resultSet) throws SQLException {
+     if (resultSet == null) {
+         return null;
+     }
+-    JDBCResultSetImpl dbResult = new JDBCResultSetImpl(this, resultSet);
++    JDBCResultSetImpl dbResult = createResultSet(resultSet);
+     // Scroll original result set if needed
+     if (rsOffset > 0) {
+         JDBCUtils.scrollResultSet(resultSet, rsOffset);
+     }
+     if (rsMaxRows > 0) {
+         dbResult.setMaxRows(rsMaxRows);
+     }
+     return dbResult;
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/04b34ee326b6d1550156daa2337bc4376daee986 b/1db870ac9bd329325806d6b8d151298b0b249734
+index 04b34ee326..1db870ac9b 100644
+--- a/04b34ee326b6d1550156daa2337bc4376daee986
++++ b/1db870ac9bd329325806d6b8d151298b0b249734
+@@ -1,8 +1,17 @@
+-private void limitScale(float pivotX, float pivotY) {
+-    float currentScale = getScaleFactor();
++/**
++ * Keeps the scaling factor within the specified limits.
++ *
++ * @param pivotX x coordinate of the pivot point
++ * @param pivotY y coordinate of the pivot point
++ * @return whether limiting has been applied or not
++ */
++private boolean limitScale(Matrix transform, float pivotX, float pivotY) {
++    float currentScale = getMatrixScaleFactor(transform);
+     float targetScale = limit(currentScale, mMinScaleFactor, mMaxScaleFactor);
+     if (targetScale != currentScale) {
+         float scale = targetScale / currentScale;
+-        mActiveTransform.postScale(scale, scale, pivotX, pivotY);
++        transform.postScale(scale, scale, pivotX, pivotY);
++        return true;
+     }
++    return false;
+ }
+\ No newline at end of file

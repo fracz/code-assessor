@@ -1,0 +1,21 @@
+diff --git a/f347b49a8b8b820b7253fe2d9994c7d50d213abf b/246b7b0e93df7608f3c9aaded0a7bad9b75fc968
+index f347b49a8b..246b7b0e93 100644
+--- a/f347b49a8b8b820b7253fe2d9994c7d50d213abf
++++ b/246b7b0e93df7608f3c9aaded0a7bad9b75fc968
+@@ -1,12 +1,12 @@
+ private void executeSqlScript(SQLiteDatabase db, String file) {
+     try {
+-        final InputStream is = mContext.getAssets().open(MIGRATION_PATH + "/" + file);
+-        final BufferedReader reader = new BufferedReader(new InputStreamReader(is));
++        final InputStream input = Cache.getContext().getAssets().open(MIGRATION_PATH + "/" + file);
++        final BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+         String line = null;
+         while ((line = reader.readLine()) != null) {
+             db.execSQL(line);
+         }
+     } catch (IOException e) {
+-        Log.e(e.getMessage());
++        Log.e("Failed to execute " + file, e);
+     }
+ }
+\ No newline at end of file

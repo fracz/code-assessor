@@ -1,0 +1,25 @@
+diff --git a/d91e9be955bcb105482d51198a8cfd3479f1a57e b/d3949ec23aa30cfce9fe631a416ee2574adab738
+index d91e9be955..d3949ec23a 100644
+--- a/d91e9be955bcb105482d51198a8cfd3479f1a57e
++++ b/d3949ec23aa30cfce9fe631a416ee2574adab738
+@@ -1,14 +1,8 @@
+ @Test
+ public void testRemoteInterpreterSharesTheSameSchedulerInstanceInTheSameGroup() {
+-    Properties p = new Properties();
+-    intpGroup.put("note", new LinkedList<Interpreter>());
+-    RemoteInterpreter intpA = createMockInterpreterA(p);
+-    intpGroup.get("note").add(intpA);
+-    intpA.setInterpreterGroup(intpGroup);
+-    RemoteInterpreter intpB = createMockInterpreterB(p);
+-    intpGroup.get("note").add(intpB);
+-    intpB.setInterpreterGroup(intpGroup);
+-    intpA.open();
+-    intpB.open();
+-    assertEquals(intpA.getScheduler(), intpB.getScheduler());
++    interpreterSetting.getOption().setPerUser(InterpreterOption.SHARED);
++    Interpreter interpreter1 = interpreterSetting.getInterpreter("user1", "note1", "sleep");
++    Interpreter interpreter2 = interpreterSetting.getInterpreter("user1", "note1", "echo");
++    assertEquals(interpreter1.getInterpreterGroup(), interpreter2.getInterpreterGroup());
++    assertEquals(interpreter1.getScheduler(), interpreter2.getScheduler());
+ }
+\ No newline at end of file

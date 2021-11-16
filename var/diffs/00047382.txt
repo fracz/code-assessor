@@ -1,0 +1,20 @@
+diff --git a/c147d1d55c118fda697687f55c527c135f27c6f6 b/b19754ee9f51da4d86923996dce98a249e544868
+index c147d1d55c..b19754ee9f 100644
+--- a/c147d1d55c118fda697687f55c527c135f27c6f6
++++ b/b19754ee9f51da4d86923996dce98a249e544868
+@@ -1,7 +1,12 @@
+-public <K> void unsubscribe(PubSubConnectionEntry entry, K channel) {
+-    entry.unsubscribe(channel);
++public void unsubscribe(PubSubConnectionEntry entry, String channelName) {
++    if (entry.hasListeners(channelName)) {
++        return;
++    }
++    name2PubSubConnection.remove(channelName);
++    entry.unsubscribe(channelName);
++    log.debug("unsubscribed from '{}' channel", channelName);
+     if (entry.tryClose()) {
+         pubSubConnections.remove(entry);
+         activeConnections.release();
+     }
+ }
+\ No newline at end of file

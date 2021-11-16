@@ -1,0 +1,20 @@
+diff --git a/493dc2765fb396d22f88f9e4d9262f433b4de80c b/09fff49f68ff41e71395d094ad29ed7148f24230
+index 493dc2765f..09fff49f68 100644
+--- a/493dc2765fb396d22f88f9e4d9262f433b4de80c
++++ b/09fff49f68ff41e71395d094ad29ed7148f24230
+@@ -1,9 +1,12 @@
+ @Nullable
+ private FindUsagesHandler getHandler(PsiElement element) {
+-    for (final FindUsagesHandler handler : myHandlers) {
+-        if (handler.canFindUsages(element)) {
++    if (element == null)
++        return null;
++    for (final Function<PsiElement, FindUsagesHandler> function : myHandlers) {
++        final FindUsagesHandler handler = function.fun(element);
++        if (handler != null) {
+             return handler;
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

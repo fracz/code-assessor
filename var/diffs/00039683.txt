@@ -1,0 +1,13 @@
+diff --git a/19c93381663ac1d2e55c31d81a32dd6f9b4f784a b/6d8efbec5d0f705464abbcb62e09c398b85a90e8
+index 19c9338166..6d8efbec5d 100644
+--- a/19c93381663ac1d2e55c31d81a32dd6f9b4f784a
++++ b/6d8efbec5d0f705464abbcb62e09c398b85a90e8
+@@ -1,5 +1,6 @@
+ private void givenNodePropExistenceConstraint(String label, String propKey) {
+     int labelId = token(label, labels);
+     int propId = token(propKey, propKeys);
+-    constraints.add(new NodePropertyExistenceConstraint(labelId, propId));
++    NodePropertyDescriptor descriptor = new NodePropertyDescriptor(labelId, propId);
++    constraints.add(new NodePropertyExistenceConstraint(descriptor));
+ }
+\ No newline at end of file

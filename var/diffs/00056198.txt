@@ -1,0 +1,16 @@
+diff --git a/28b3f0fa1a3604b5688dd850b5099fc97bb29e8f b/a6f0497c0648631e728a06528cc6a86fe9c67d7e
+index 28b3f0fa1a..a6f0497c06 100644
+--- a/28b3f0fa1a3604b5688dd850b5099fc97bb29e8f
++++ b/a6f0497c0648631e728a06528cc6a86fe9c67d7e
+@@ -1,8 +1,9 @@
++@Test
+ public void testMatchingFactoryBeanItself() {
+     assertTrue("Matching bean must *not* be advised (proxied)", !(this.testFactoryBean2 instanceof Advised));
+-    FactoryBean fb = (FactoryBean) getApplicationContext().getBean("&testFactoryBean2");
++    FactoryBean<?> fb = (FactoryBean<?>) ctx.getBean("&testFactoryBean2");
+     assertTrue("FactoryBean itself must be advised", fb instanceof Advised);
+     assertTrue(Map.class.isAssignableFrom(fb.getObjectType()));
+     assertTrue(Map.class.isAssignableFrom(fb.getObjectType()));
+     assertEquals("Advice not executed: must have been", 2, this.counterAspect.getCount());
+ }
+\ No newline at end of file

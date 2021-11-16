@@ -1,0 +1,16 @@
+diff --git a/e76dc04287cfd3796b4d416b181569834588a48f b/73235cc954fd82810793389972eaccef6d68b9cd
+index e76dc04287..73235cc954 100644
+--- a/e76dc04287cfd3796b4d416b181569834588a48f
++++ b/73235cc954fd82810793389972eaccef6d68b9cd
+@@ -1,9 +1,9 @@
+ public void unloadContent() {
+     LOG.assertTrue(getTreeElement() != null);
+     clearCaches();
+     myViewProvider.beforeContentsSynchronized();
+-    setTreeElement(null);
+     synchronized (myStubLock) {
++        myTreeElementPointer = null;
+         clearStub();
+     }
+ }
+\ No newline at end of file

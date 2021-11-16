@@ -1,0 +1,20 @@
+diff --git a/45d0b0e9e889a9ceaa9279a62ea740eee89afd91 b/1447c9f488186d79949235c05c85665f20d5afb0
+index 45d0b0e9e8..1447c9f488 100644
+--- a/45d0b0e9e889a9ceaa9279a62ea740eee89afd91
++++ b/1447c9f488186d79949235c05c85665f20d5afb0
+@@ -1,13 +1,10 @@
+ @Override
+ @Nullable
+ public ClassifierDescriptor getClassifier(@NotNull Name name) {
+     checkMayRead();
+-    ClassifierDescriptor classifier = writableWorker.getClassifier(name);
+-    if (classifier != null)
+-        return classifier;
+-    classifier = getWorkerScope().getClassifier(name);
++    ClassifierDescriptor classifier = getWorkerScope().getClassifier(name);
+     if (classifier != null)
+         return classifier;
+     // Imports
+     return super.getClassifier(name);
+ }
+\ No newline at end of file

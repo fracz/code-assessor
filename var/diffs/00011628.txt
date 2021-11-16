@@ -1,0 +1,12 @@
+diff --git a/1a24ed8040add699f5685f5328120047a2510ad6 b/1b2e0f8a31b47f65a375401a3da08f1a93ebd92a
+index 1a24ed8040..1b2e0f8a31 100644
+--- a/1a24ed8040add699f5685f5328120047a2510ad6
++++ b/1b2e0f8a31b47f65a375401a3da08f1a93ebd92a
+@@ -1,5 +1,5 @@
+ @Nullable
+ private BySchemaChecker checkByInnerSchema(@NotNull JsonSchemaObject schema, @NotNull JsonValueAdapter object) {
+-    final MatchResult matchResult = JsonSchemaVariantsTreeBuilder.simplify(myRootSchema, schema);
++    final MatchResult matchResult = new JsonSchemaResolver(myRootSchema, schema).detailedResolve();
+     return checkByMatchResult(object, matchResult, myWalker, myRootSchema);
+ }
+\ No newline at end of file

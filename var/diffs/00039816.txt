@@ -1,0 +1,21 @@
+diff --git a/4a586ed6411545b6e5aa37565341f1e69ef465d1 b/7ddae1ced085ef54d0a6560ee8d86d2da7449e9a
+index 4a586ed641..7ddae1ced0 100644
+--- a/4a586ed6411545b6e5aa37565341f1e69ef465d1
++++ b/7ddae1ced085ef54d0a6560ee8d86d2da7449e9a
+@@ -1,12 +1,13 @@
+ @Test
+ public void shouldReportDuplicatedRelationshipPropertyExistenceConstraintRules() throws Exception {
+     // Given
+     int relTypeId = createRelType();
+     int propertyKeyId = createPropertyKey();
+-    createRelationshipPropertyExistenceConstraint(relTypeId, propertyKeyId);
+-    createRelationshipPropertyExistenceConstraint(relTypeId, propertyKeyId);
++    RelationshipPropertyDescriptor descriptor = new RelationshipPropertyDescriptor(relTypeId, propertyKeyId);
++    createRelationshipPropertyExistenceConstraint(descriptor);
++    createRelationshipPropertyExistenceConstraint(descriptor);
+     // When
+     ConsistencySummaryStatistics stats = check();
+     // Then
+     on(stats).verify(RecordType.SCHEMA, 1).andThatsAllFolks();
+ }
+\ No newline at end of file

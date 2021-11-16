@@ -1,0 +1,15 @@
+diff --git a/8015b765c9ee6db6c765f1b2098933b4cee4f0cc b/5cd82431899c5c5d794b2b64cd8d38ca50dcabad
+index 8015b765c9..5cd8243189 100644
+--- a/8015b765c9ee6db6c765f1b2098933b4cee4f0cc
++++ b/5cd82431899c5c5d794b2b64cd8d38ca50dcabad
+@@ -1,7 +1,8 @@
+ SQLParsedResult parseSQL(final String logicSql, final List<Object> parameters) {
+     this.parameters = parameters;
+     Context context = MetricsContext.start("Parse SQL");
+-    SQLParsedResult result = SQLParserFactory.create(databaseType, logicSql, parameters, shardingRule).parse();
++    log.debug("Logic SQL: {}, {}", logicSql, parameters);
++    SQLParsedResult result = new SQLParseEngine(new SQLParserEngine(databaseType, logicSql, shardingRule, parameters).parseStatement()).parse();
+     MetricsContext.stop(context);
+     return result;
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/5fc809008712cb23dac904ced32c37d6cea1b4ec b/242c3463345f16b9d2780a3bc3ee9e4b5c3401c5
+index 5fc8090087..242c346334 100644
+--- a/5fc809008712cb23dac904ced32c37d6cea1b4ec
++++ b/242c3463345f16b9d2780a3bc3ee9e4b5c3401c5
+@@ -1,12 +1,12 @@
+ @Override
+ public DBDValueHandler getHandler(DBDPreferences preferences, String typeName, int valueType) {
+     if (MySQLConstants.TYPE_NAME_ENUM.equalsIgnoreCase(typeName)) {
+         return MySQLEnumValueHandler.INSTANCE;
+     } else if (MySQLConstants.TYPE_NAME_SET.equalsIgnoreCase(typeName)) {
+         return MySQLSetValueHandler.INSTANCE;
+-    } else if (JDBCDataType.getDataKind(typeName, valueType) == DBSDataKind.DATETIME) {
++    } else if (valueType == Types.DATE || valueType == Types.TIME || valueType == Types.TIMESTAMP) {
+         return new MySQLDateTimeValueHandler(preferences.getDataFormatterProfile());
+     } else {
+         return null;
+     }
+ }
+\ No newline at end of file

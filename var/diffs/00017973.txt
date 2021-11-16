@@ -1,0 +1,14 @@
+diff --git a/f0bcfdc8f16905c4cedb5697e804d3ee5e7169ad b/b460c129fe5b55c04abf7dd2b61f7cae03eb9e02
+index f0bcfdc8f1..b460c129fe 100644
+--- a/f0bcfdc8f16905c4cedb5697e804d3ee5e7169ad
++++ b/b460c129fe5b55c04abf7dd2b61f7cae03eb9e02
+@@ -1,6 +1,6 @@
+-public static ClusterResolver fromURL(String regionName, URL serviceUrl) {
++public static ClusterResolver<EurekaEndpoint> fromURL(String regionName, URL serviceUrl) {
+     boolean isSecure = "https".equalsIgnoreCase(serviceUrl.getProtocol());
+     int defaultPort = isSecure ? 443 : 80;
+     int port = serviceUrl.getPort() == -1 ? defaultPort : serviceUrl.getPort();
+-    return new StaticClusterResolver(regionName, new EurekaEndpoint(serviceUrl.getHost(), port, isSecure, serviceUrl.getPath(), regionName));
++    return new StaticClusterResolver<EurekaEndpoint>(regionName, new DefaultEndpoint(serviceUrl.getHost(), port, isSecure, serviceUrl.getPath()));
+ }
+\ No newline at end of file

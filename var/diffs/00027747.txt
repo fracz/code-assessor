@@ -1,0 +1,20 @@
+diff --git a/bcd5686be25577eae20b0dac15d7c7bd348f576c b/2693e532d808e59cbaee9f8914144be2f70094e1
+index bcd5686be2..2693e532d8 100644
+--- a/bcd5686be25577eae20b0dac15d7c7bd348f576c
++++ b/2693e532d808e59cbaee9f8914144be2f70094e1
+@@ -1,13 +1,13 @@
+ @Override
+ public void removeSegment(DataSegment segment) {
+     try {
+-        announcer.unannounce(makeSegmentPath(segment));
+         serverManager.dropSegment(segment);
+         File segmentInfoCacheFile = new File(config.getSegmentInfoCacheDirectory(), segment.getIdentifier());
+         if (!segmentInfoCacheFile.delete()) {
+             log.warn("Unable to delete segmentInfoCacheFile[%s]", segmentInfoCacheFile);
+         }
++        announcer.unannounceSegment(segment);
+     } catch (Exception e) {
+         log.makeAlert("Failed to remove segment").addData("segment", segment).emit();
+     }
+ }
+\ No newline at end of file

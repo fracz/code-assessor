@@ -1,0 +1,13 @@
+diff --git a/7ba869c125e8f580799232ed214f054e400c48f6 b/ae64a1fd1865c472adaf700ee94e12cdf9576846
+index 7ba869c125..ae64a1fd18 100644
+--- a/7ba869c125e8f580799232ed214f054e400c48f6
++++ b/ae64a1fd1865c472adaf700ee94e12cdf9576846
+@@ -1,6 +1,6 @@
+ @Test(dataProvider = "caches")
+ @CacheSpec(compute = Compute.SYNC, implementation = Implementation.Caffeine, population = Population.EMPTY, maximumSize = MaximumSize.FULL)
+ public void drain_blocksClear(Cache<Integer, Integer> cache) {
+     BoundedLocalCache<Integer, Integer> localCache = asBoundedLocalCache(cache);
+-    checkDrainBlocks(localCache, () -> localCache.clear());
++    checkDrainBlocks(localCache, localCache::clear);
+ }
+\ No newline at end of file

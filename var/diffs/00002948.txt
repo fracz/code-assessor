@@ -1,0 +1,14 @@
+diff --git a/b1fd960adeb62dfd2cd0e1bd3ca4327ceba60b18 b/bf4010957daf705a547e707647a375d7cf49673d
+index b1fd960ade..bf4010957d 100644
+--- a/b1fd960adeb62dfd2cd0e1bd3ca4327ceba60b18
++++ b/bf4010957daf705a547e707647a375d7cf49673d
+@@ -1,6 +1,5 @@
+ private void fillModel(List<CvsRootConfiguration> configurations) {
+-    for (Iterator each = configurations.iterator(); each.hasNext(); ) {
+-        CvsRootConfiguration obj = (CvsRootConfiguration) each.next();
+-        myModel.addElement(obj.getMyCopy());
++    for (final CvsRootConfiguration configuration : configurations) {
++        myModel.addElement(configuration.getMyCopy());
+     }
+ }
+\ No newline at end of file

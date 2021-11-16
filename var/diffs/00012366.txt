@@ -1,0 +1,21 @@
+diff --git a/e80d6ef60f81e72410c6aac2a1c645165a1c6baf b/b4bc4799a77dbe1c2a5bb52628e7bef4d90c1523
+index e80d6ef60f..b4bc4799a7 100644
+--- a/e80d6ef60f81e72410c6aac2a1c645165a1c6baf
++++ b/b4bc4799a77dbe1c2a5bb52628e7bef4d90c1523
+@@ -1,10 +1,8 @@
+ public Collection<DebuggerSession> getSessionsToReload() {
+-    ArrayList<DebuggerSession> result = new ArrayList<DebuggerSession>();
+-    for (Iterator<DebuggerSession> iterator = mySessions.iterator(); iterator.hasNext(); ) {
+-        DebuggerSession debuggerSession = iterator.next();
+-        if (mySessionsToReload.contains(debuggerSession)) {
+-            result.add(debuggerSession);
+-        }
++    final List<SessionItem> markedElements = myElementsChooser.getMarkedElements();
++    final List<DebuggerSession> sessions = new ArrayList<DebuggerSession>(markedElements.size());
++    for (SessionItem item : markedElements) {
++        sessions.add(item.getSession());
+     }
+-    return result;
++    return sessions;
+ }
+\ No newline at end of file

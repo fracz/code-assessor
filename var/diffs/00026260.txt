@@ -1,0 +1,19 @@
+diff --git a/97db7ce5fe5e70503f871614a37c844f28fecd44 b/6eada62f5dd8c3907c3640e3ae767bea3279e2a8
+index 97db7ce5fe..6eada62f5d 100644
+--- a/97db7ce5fe5e70503f871614a37c844f28fecd44
++++ b/6eada62f5dd8c3907c3640e3ae767bea3279e2a8
+@@ -1,8 +1,8 @@
+ @Override
+-public Action generate(int i) {
+-    Artifact archive = (i & 1) == 0 ? archiveA : archiveB;
+-    Artifact treeArtifactToPopulate = (i & 2) == 0 ? treeArtifactToPopulateA : treeArtifactToPopulateB;
+-    Artifact archiveManifest = (i & 4) == 0 ? archiveManifestA : archiveManifestB;
+-    FilesToRunProvider zipper = (i & 8) == 0 ? zipperA : zipperB;
++public Action generate(ImmutableSet<KeyAttributes> attributesToFlip) {
++    Artifact archive = attributesToFlip.contains(KeyAttributes.ARCHIVE) ? archiveA : archiveB;
++    Artifact treeArtifactToPopulate = attributesToFlip.contains(KeyAttributes.TREE_ARTIFACT) ? treeArtifactToPopulateA : treeArtifactToPopulateB;
++    Artifact archiveManifest = attributesToFlip.contains(KeyAttributes.ARCHIVE_MANIFEST) ? archiveManifestA : archiveManifestB;
++    FilesToRunProvider zipper = attributesToFlip.contains(KeyAttributes.ZIPPER) ? zipperA : zipperB;
+     return new PopulateTreeArtifactAction(ActionsTestUtil.NULL_ACTION_OWNER, archive, archiveManifest, treeArtifactToPopulate, zipper);
+ }
+\ No newline at end of file

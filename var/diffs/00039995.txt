@@ -1,0 +1,18 @@
+diff --git a/b3fc0f2036d9e2a04dd4033672cf9cf364fb7164 b/1bfef0ee4cd9e580509c3a84c485f403224f41fd
+index b3fc0f2036..1bfef0ee4c 100644
+--- a/b3fc0f2036d9e2a04dd4033672cf9cf364fb7164
++++ b/1bfef0ee4cd9e580509c3a84c485f403224f41fd
+@@ -1,11 +1,11 @@
+ @Override
+ public boolean equals(Object o) {
+     if (this == o) {
+         return true;
+     }
+     if (o == null || getClass() != o.getClass()) {
+         return false;
+     }
+     NodePropertyConstraint that = (NodePropertyConstraint) o;
+-    return propertyKeyId == that.propertyKeyId && labelId == that.labelId;
++    return this.descriptor.equals(that.descriptor);
+ }
+\ No newline at end of file

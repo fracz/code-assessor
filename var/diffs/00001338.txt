@@ -1,0 +1,23 @@
+diff --git a/9c419cf5ace72d73115ba4c3b624dfe6021f45c7 b/a0dd397a567cd38a2ca9077dd81e8a672a9a8bb1
+index 9c419cf5ac..a0dd397a56 100644
+--- a/9c419cf5ace72d73115ba4c3b624dfe6021f45c7
++++ b/a0dd397a567cd38a2ca9077dd81e8a672a9a8bb1
+@@ -1,13 +1,8 @@
+ @Override
+ public void initToolBar() {
+-    mToolbar.setNavigationIcon(R.drawable.action_button_back_pressed_light);
+-    mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+-
+-        @Override
+-        public void onClick(View v) {
+-            onBackPressed();
+-        }
+-    });
+-    mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
++    setSupportActionBar(mToolbar);
++    ActionBar actionBar = getSupportActionBar();
++    if (actionBar != null)
++        actionBar.setDisplayHomeAsUpEnabled(true);
+     mCollapsingToolbarLayout.setTitle(getString(R.string.about) + "v" + getVersion());
+ }
+\ No newline at end of file

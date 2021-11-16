@@ -1,0 +1,20 @@
+diff --git a/bfc1a4689dfb21c87df2e9a53700676f390fa300 b/a1625c264eca48a4f399bcae1ca5cde565caf3fb
+index bfc1a4689d..a1625c264e 100644
+--- a/bfc1a4689dfb21c87df2e9a53700676f390fa300
++++ b/a1625c264eca48a4f399bcae1ca5cde565caf3fb
+@@ -1,12 +1,13 @@
+ private boolean isAnyReadOffsetReachableFrom(IntArrayList readOffsets, IntArrayList fromOffsets) {
+     if (readOffsets != null && !readOffsets.isEmpty()) {
++        final int[] readOffsetsArray = readOffsets.toArray();
+         for (int j = 0; j < fromOffsets.size(); j++) {
+             int fromOffset = fromOffsets.get(j);
+-            if (areInstructionsReachable(flow, readOffsets.toArray(), fromOffset)) {
++            if (areInstructionsReachable(flow, readOffsetsArray, fromOffset)) {
+                 LOG.debug("reachableFromOffset:", fromOffset);
+                 return true;
+             }
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

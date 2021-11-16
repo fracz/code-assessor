@@ -1,0 +1,25 @@
+diff --git a/3fd74fbf981dc954f0d513916868ab569d77f586 b/65cad2b05425e4c70ed3701c8e16296ca47448be
+index 3fd74fbf98..65cad2b054 100644
+--- a/3fd74fbf981dc954f0d513916868ab569d77f586
++++ b/65cad2b05425e4c70ed3701c8e16296ca47448be
+@@ -1,17 +1,18 @@
+ @Nullable
+ public static DataInputStream readContent(int fileId) {
+     try {
+         int page;
+         try {
+             r.lock();
+-            page = findContentPage(fileId, false);
++            checkFileIsValid(fileId);
++            page = getContentRecordId(fileId);
+             if (page == 0)
+                 return null;
+         } finally {
+             r.unlock();
+         }
+         return getContentStorage().readStream(page);
+     } catch (Throwable e) {
+         throw DbConnection.handleError(e);
+     }
+ }
+\ No newline at end of file

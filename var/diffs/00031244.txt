@@ -1,0 +1,15 @@
+diff --git a/b0a731f161e62a46ca39a5a0d7ffdf73bb407647 b/67a6b3259b72853745cbdaa3e99389da9355787f
+index b0a731f161..67a6b3259b 100644
+--- a/b0a731f161e62a46ca39a5a0d7ffdf73bb407647
++++ b/67a6b3259b72853745cbdaa3e99389da9355787f
+@@ -1,3 +1,7 @@
+-public void increaseRefCount() {
+-    refCount.incrementAndGet();
++/**
++ * Increases the ref count, and returns <tt>true</tt> if it managed to
++ * actually increment it.
++ */
++public boolean increaseRefCount() {
++    return refCount.incrementAndGet() > 1;
+ }
+\ No newline at end of file

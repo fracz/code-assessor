@@ -1,0 +1,17 @@
+diff --git a/8e0346fb9f1d68de4b61f5bdf30b0b3a45d72a82 b/1f6dace45559b287d53791ad82010343da9fff65
+index 8e0346fb9f..1f6dace455 100644
+--- a/8e0346fb9f1d68de4b61f5bdf30b0b3a45d72a82
++++ b/1f6dace45559b287d53791ad82010343da9fff65
+@@ -1,10 +1,10 @@
+ @Override
+ public void init(IStreamDataExporterSite site) throws DBException {
+     super.init(site);
+     out = site.getWriter();
+     formatDateISO = CommonUtils.getBoolean(site.getProperties().get(PROP_FORMAT_DATE_ISO), true);
+     printTableName = CommonUtils.getBoolean(site.getProperties().get(PROP_PRINT_TABLE_NAME), true);
+     TimeZone tz = TimeZone.getTimeZone("UTC");
+-    dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
++    dateFormat = new SimpleDateFormat(DBConstants.DEFAULT_ISO_TIMESTAMP_FORMAT);
+     dateFormat.setTimeZone(tz);
+ }
+\ No newline at end of file

@@ -1,0 +1,30 @@
+diff --git a/a660f0bb1786f9be35ffb337c5f0a38d4d09e6de b/e0bae81c96e42b11446c8c9c771b13e0c4a6ba79
+index a660f0bb17..e0bae81c96 100644
+--- a/a660f0bb1786f9be35ffb337c5f0a38d4d09e6de
++++ b/e0bae81c96e42b11446c8c9c771b13e0c4a6ba79
+@@ -1,23 +1,23 @@
+ /**
+  * If the repository is on branch, returns the current branch
+  * If the repository is being rebased, returns the branch being rebased.
+  * In other cases of the detached HEAD returns {@code null}.
+  */
+ @Nullable
+ GitBranch readCurrentBranch() {
+     Head head = readHead();
+     if (head.isBranch) {
+         String branchName = head.ref;
+         // TODO make this faster, because we know the branch name
+         String hash = readCurrentRevision();
+-        return new GitBranch(branchName, hash == null ? "" : hash, false);
++        return new GitBranch(branchName, hash == null ? GitBranch.DUMMY_HASH : Hash.create(hash), false);
+     }
+     if (isRebaseInProgress()) {
+         GitBranch branch = readRebaseBranch("rebase-apply");
+         if (branch == null) {
+             branch = readRebaseBranch("rebase-merge");
+         }
+         return branch;
+     }
+     return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/6d67d6e2e0a093832b9038dd231ad14580cdb9f8 b/94aca75c82423839eeb3b170c23706ad09af288c
+index 6d67d6e2e0..94aca75c82 100644
+--- a/6d67d6e2e0a093832b9038dd231ad14580cdb9f8
++++ b/94aca75c82423839eeb3b170c23706ad09af288c
+@@ -1,4 +1,4 @@
+-private CounterColumn thriftifySubCounter(Cell cell) {
+-    assert cell instanceof CounterCell;
+-    return new CounterColumn(cell.name().toByteBuffer(), CounterContext.instance().total(cell.value()));
++private CounterColumn thriftifySubCounter(CFMetaData metadata, LegacyLayout.LegacyCell cell) {
++    assert cell.isCounter();
++    return new CounterColumn(cell.name.encode(metadata), CounterContext.instance().total(cell.value));
+ }
+\ No newline at end of file

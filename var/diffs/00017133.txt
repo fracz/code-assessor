@@ -1,0 +1,16 @@
+diff --git a/f06b91bb1e1a76ecd63d83931565e8d69aeca789 b/9b08ac0629620aaf449f0dade3a9421d206c6f4f
+index f06b91bb1e..9b08ac0629 100644
+--- a/f06b91bb1e1a76ecd63d83931565e8d69aeca789
++++ b/9b08ac0629620aaf449f0dade3a9421d206c6f4f
+@@ -1,7 +1,7 @@
+ @NotNull
+-protected static String getPhase(@NotNull Module module, boolean isTest) {
++private static String getPhase(@NotNull Module module, boolean isTest) {
+     if (hasJavaFiles(module)) {
+-        return isTest ? "process-test-sources" : "process-sources";
++        return isTest ? PROCESS_TEST_SOURCES_PHASE : PROCESS_SOURCES_PHASE;
+     }
+-    return isTest ? "test-compile" : "compile";
++    return isTest ? TEST_COMPILE_PHASE : COMPILE_PHASE;
+ }
+\ No newline at end of file

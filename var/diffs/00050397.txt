@@ -1,0 +1,23 @@
+diff --git a/83482bba08ec7fa8d7e0354502a65cf99e3f54ff b/0a5ed237f1b06ad1be6d8266960f7ed66b0a2e36
+index 83482bba08..0a5ed237f1 100644
+--- a/83482bba08ec7fa8d7e0354502a65cf99e3f54ff
++++ b/0a5ed237f1b06ad1be6d8266960f7ed66b0a2e36
+@@ -1,11 +1,14 @@
+ @Override
+ public void widgetSelected(SelectionEvent e) {
+     for (MenuItem item : menu.getItems()) {
+         if (item.getSelection()) {
+-            StreamValueManagerDescriptor newManager = (StreamValueManagerDescriptor) item.getData();
+-            if (newManager != curStreamManager) {
+-                setStreamManager(newManager);
++            Object itemData = item.getData();
++            if (itemData instanceof StreamValueManagerDescriptor) {
++                StreamValueManagerDescriptor newManager = (StreamValueManagerDescriptor) itemData;
++                if (newManager != curStreamManager) {
++                    setStreamManager(newManager);
++                }
+             }
+         }
+     }
+ }
+\ No newline at end of file

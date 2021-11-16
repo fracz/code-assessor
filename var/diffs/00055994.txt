@@ -1,0 +1,14 @@
+diff --git a/b273fb28d28ed2d5c1798ea324bcc6299844fa79 b/6144ac033683579a3bfdcd4f872047a9caaec22c
+index b273fb28d2..6144ac0336 100644
+--- a/b273fb28d28ed2d5c1798ea324bcc6299844fa79
++++ b/6144ac033683579a3bfdcd4f872047a9caaec22c
+@@ -1,6 +1,7 @@
++@Test
+ public void testContextWithClassNameThatContainsPlaceholder() {
+-    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classWithPlaceholder.xml", getClass());
++    ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(CLASS_WITH_PLACEHOLDER_CONTEXT, getClass());
+     assertTrue(ctx.containsBean("someMessageSource"));
+     assertTrue(ctx.getBean("someMessageSource") instanceof StaticMessageSource);
+     ctx.close();
+ }
+\ No newline at end of file

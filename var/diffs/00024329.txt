@@ -1,0 +1,17 @@
+diff --git a/512180d219331e92319f4b69f5a668669797b1d6 b/137918dd8fbc16517f9b43fa0b50bdd0bfba14d0
+index 512180d219..137918dd8f 100644
+--- a/512180d219331e92319f4b69f5a668669797b1d6
++++ b/137918dd8fbc16517f9b43fa0b50bdd0bfba14d0
+@@ -1,5 +1,7 @@
+-public IndexedEntry decodeEntry(DecoratedKey indexedValue, Cell indexEntry) {
+-    CBuilder builder = baseCfs.getComparator().builder();
+-    for (int i = 0; i < columnDef.position(); i++) builder.add(indexEntry.name().get(i + 1));
+-    return new IndexedEntry(indexedValue, indexEntry.name(), indexEntry.timestamp(), indexEntry.name().get(0), builder.build());
++public IndexedEntry decodeEntry(DecoratedKey indexedValue, Row indexEntry) {
++    Clustering clustering = indexEntry.clustering();
++    ClusteringComparator baseComparator = baseCfs.getComparator();
++    CBuilder builder = CBuilder.create(baseComparator);
++    for (int i = 0; i < baseComparator.size(); i++) builder.add(clustering.get(i + 1));
++    return new IndexedEntry(indexedValue, clustering, indexEntry.primaryKeyLivenessInfo().timestamp(), clustering.get(0), builder.build());
+ }
+\ No newline at end of file

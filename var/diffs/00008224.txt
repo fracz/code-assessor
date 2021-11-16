@@ -1,0 +1,30 @@
+diff --git a/94fd88bf266e93530762686720872c05b35e49f6 b/2385cae4dc4fa8e3cb53604075ee304d0bcb66df
+index 94fd88bf26..2385cae4dc 100644
+--- a/94fd88bf266e93530762686720872c05b35e49f6
++++ b/2385cae4dc4fa8e3cb53604075ee304d0bcb66df
+@@ -1,22 +1,21 @@
+ /**
+  * Creates and displays command-line console for user.
+  *
+  * @param module      module to display console for.
+  * @param consoleName Console name (would be used in prompt, history etc)
+  * @param commandList list of commands available for this console. You may pass null here, but in this case no validation nor suggestion
+  * would work. Additionaly, no executor would be registered, so you will need to use
+  * {@link LanguageConsoleBuilder#registerExecuteAction(LanguageConsoleView, Consumer, String, String, Condition)}
+  * by yourself passing this method result as arg to enable execution, history etc.
+  * @return newly created console. You do not need to do anything with this value to display console: it will be displayed automatically
+  */
+ @NotNull
+ public static LanguageConsoleView createConsole(@NotNull final Module module, @NotNull final String consoleName, @Nullable final List<Command> commandList) {
+     final Project project = module.getProject();
+     final CommandConsole console = CommandConsole.createConsole(module, consoleName, commandList);
+-    final ToolWindowApi windowApi = new ToolWindowApi(project, consoleName);
+-    // Add console to the toolwindow wrapping it with tabs
+-    windowApi.add(ConsoleTabsPanel.wrapConsole(console, new MyCloseDelegate(windowApi)));
++    // Show console on "toolwindow"
++    WindowWithActions.showConsoleWithProcess(console, console.getEditor().getComponent(), consoleName, project, null);
+     // Display [arguments]
+     ArgumentHintLayer.attach(console);
+     return console;
+ }
+\ No newline at end of file

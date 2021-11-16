@@ -1,0 +1,17 @@
+diff --git a/4db78364d4661cce7081868c435ff8aa9ea673ba b/c4d4b2633529a20c604eaf7bd679ba5039bdb204
+index 4db78364d4..c4d4b26335 100644
+--- a/4db78364d4661cce7081868c435ff8aa9ea673ba
++++ b/c4d4b2633529a20c604eaf7bd679ba5039bdb204
+@@ -1,10 +1,7 @@
+ @Override
+ public ConnectionClientTransport newClientTransport(SocketAddress serverAddress, String authority, @Nullable String userAgent) {
+     checkState(!closed, "The transport factory is closed.");
+     TransportCreationParamsFilter dparams = transportCreationParamsFilterFactory.create(serverAddress, authority, userAgent);
+-    NettyClientTransport transport = new NettyClientTransport(dparams.getTargetServerAddress(), channelType, channelOptions, group, dparams.getProtocolNegotiator(), flowControlWindow, maxMessageSize, maxHeaderListSize, dparams.getAuthority(), dparams.getUserAgent());
+-    if (enableKeepAlive) {
+-        transport.enableKeepAlive(true, keepAliveDelayNanos, keepAliveTimeoutNanos);
+-    }
++    NettyClientTransport transport = new NettyClientTransport(dparams.getTargetServerAddress(), channelType, channelOptions, group, dparams.getProtocolNegotiator(), flowControlWindow, maxMessageSize, maxHeaderListSize, keepAliveDelayNanos, keepAliveTimeoutNanos, dparams.getAuthority(), dparams.getUserAgent());
+     return transport;
+ }
+\ No newline at end of file

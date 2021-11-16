@@ -1,0 +1,17 @@
+diff --git a/46867c45f62a73895da8104b95a1c67f02577561 b/ff41517a646c439fc0ae912c11a03ee997550bcd
+index 46867c45f6..ff41517a64 100644
+--- a/46867c45f62a73895da8104b95a1c67f02577561
++++ b/ff41517a646c439fc0ae912c11a03ee997550bcd
+@@ -1,9 +1,7 @@
+ private static void updateCreateStatementMethod(ClassPool classPool, CtClass cc) throws Exception {
+     CtClass[] params = new CtClass[2];
+     params[0] = classPool.getCtClass("int");
+     params[1] = classPool.getCtClass("int");
+-    CtMethod serviceMethod = cc.getDeclaredMethod("createStatement", params);
+-    logger.info("Changing createStatement method ");
+-    serviceMethod.insertBefore(getCreateStatementMethodBeforeInsertCode());
+-    serviceMethod.insertAfter(getCreateStatementMethodAfterInsertCode());
++    CtMethod method = cc.getDeclaredMethod("createStatement", params);
++    method.insertAfter("{" + TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".put(" + TomcatProfilerConstant.REQ_DATA_TYPE_DB_CREATE_STATEMENT + "); }");
+ }
+\ No newline at end of file

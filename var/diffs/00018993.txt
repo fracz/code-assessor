@@ -1,0 +1,22 @@
+diff --git a/6e2279dcd36395361e0b7768841f052cec7301a8 b/3fcdb170df77efb50db0e599ddc4197570bd7bfa
+index 6e2279dcd3..3fcdb170df 100644
+--- a/6e2279dcd36395361e0b7768841f052cec7301a8
++++ b/3fcdb170df77efb50db0e599ddc4197570bd7bfa
+@@ -1,15 +1,10 @@
+ public int getCameraPictureOrientation() {
+-    Camera.CameraInfo info = new Camera.CameraInfo();
+-    Camera.getCameraInfo(cameraId, info);
+     if (getActivity().getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED) {
+         outputOrientation = getCameraPictureRotation(getActivity().getWindowManager().getDefaultDisplay().getOrientation());
+-    } else if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
++    } else if (getCameraInfo().facing == CameraInfo.CAMERA_FACING_FRONT) {
+         outputOrientation = (360 - displayOrientation) % 360;
+     } else {
+         outputOrientation = displayOrientation;
+     }
+-    if (lastPictureOrientation != outputOrientation) {
+-        lastPictureOrientation = outputOrientation;
+-    }
+     return outputOrientation;
+ }
+\ No newline at end of file

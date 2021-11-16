@@ -1,0 +1,31 @@
+diff --git a/b0aa2dc029e982f3fa9b7c318a372ff0ba5b7011 b/eace221b4b840e2d7cac2fb8d46f8300739a7be2
+index b0aa2dc029..eace221b4b 100644
+--- a/b0aa2dc029e982f3fa9b7c318a372ff0ba5b7011
++++ b/eace221b4b840e2d7cac2fb8d46f8300739a7be2
+@@ -1,24 +1,18 @@
+ /**
+  * 过滤出所有的Binding表名称.
+  *
+  * @param logicTables 逻辑表名称集合
+  * @return 所有的Binding表名称集合
+  */
+ public Collection<String> filterAllBindingTables(final Collection<String> logicTables) {
+     if (logicTables.isEmpty()) {
+         return Collections.emptyList();
+     }
+-    Optional<BindingTableRule> bindingTableRule = Optional.absent();
+-    for (String each : logicTables) {
+-        bindingTableRule = getBindingTableRule(each);
+-        if (bindingTableRule.isPresent()) {
+-            break;
+-        }
+-    }
++    Optional<BindingTableRule> bindingTableRule = findBindingTableRule(logicTables);
+     if (!bindingTableRule.isPresent()) {
+         return Collections.emptyList();
+     }
+     Collection<String> result = new ArrayList<>(bindingTableRule.get().getAllLogicTables());
+     result.retainAll(logicTables);
+     return result;
+ }
+\ No newline at end of file

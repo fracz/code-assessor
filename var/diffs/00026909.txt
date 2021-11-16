@@ -1,0 +1,23 @@
+diff --git a/30adab7af47244d27a6f90a01fa4447f7698b315 b/fb87377325399eb597a41cf1f66106f509a12277
+index 30adab7af4..fb87377325 100644
+--- a/30adab7af47244d27a6f90a01fa4447f7698b315
++++ b/fb87377325399eb597a41cf1f66106f509a12277
+@@ -1,13 +1,13 @@
+ /**
+  * Binomial sampling of the hidden values given visible
+  * @param v the visible values
+  * @return a binomial distribution containing the expected values and the samples
+  */
+ @Override
+-public Pair<DoubleMatrix, DoubleMatrix> sampleHiddenGivenVisible(DoubleMatrix v) {
+-    FourDTensor h1Mean = propUp(v);
+-    FourDTensor h1Sample = new FourDTensor(binomial(h1Mean, 1, rng));
++public Pair<INDArray, INDArray> sampleHiddenGivenVisible(INDArray v) {
++    INDArray h1Mean = propUp(v);
++    INDArray h1Sample = Sampling.binomial(h1Mean, 1, rng);
+     // apply dropout
+     applyDropOutIfNecessary(h1Sample);
+-    return new Pair<>((DoubleMatrix) h1Mean, (DoubleMatrix) h1Sample);
++    return new Pair<>(h1Mean, h1Sample);
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/b8534bc567ed908187279f72bcc73314123f199c b/1f153ae7ed1e86a3afc4e7d7745ac5f5072475db
+index b8534bc567..1f153ae7ed 100644
+--- a/b8534bc567ed908187279f72bcc73314123f199c
++++ b/1f153ae7ed1e86a3afc4e7d7745ac5f5072475db
+@@ -1,5 +1,7 @@
+ @Override
+ protected void perform(@NotNull Project project, GitVcs vcs, @NotNull List<VcsException> exceptions, @NotNull VirtualFile[] files) throws VcsException {
+-    GitCommand cmd = new GitCommand(project, vcs.getSettings(), GitUtil.getVcsRoot(project, files[0]));
+-    Messages.showInfoMessage(project, GitBundle.message("current.branch.message", cmd.currentBranch()), GitBundle.getString("current.branch.title"));
++    final VirtualFile root = GitUtil.getVcsRoot(project, files[0]);
++    final GitBranch gitBranch = GitBranch.current(project, root);
++    final String branchName = gitBranch != null ? gitBranch.getName() : GitBranch.NO_BRANCH_NAME;
++    Messages.showInfoMessage(project, GitBundle.message("current.branch.message", branchName), GitBundle.getString("current.branch.title"));
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/d3651df37adac4d03cdc422e120c4449910f40a6 b/25009b1c8f9d82a4fa774bca63a34f67c257f831
+index d3651df37a..25009b1c8f 100644
+--- a/d3651df37adac4d03cdc422e120c4449910f40a6
++++ b/25009b1c8f9d82a4fa774bca63a34f67c257f831
+@@ -1,9 +1,7 @@
+ @Override
+ public KeyframeAnimation<Float> createAnimation() {
+     if (!hasAnimation()) {
+         return new StaticKeyframeAnimation<>(initialValue);
+     }
+-    KeyframeAnimation<Float> animation = new NumberKeyframeAnimation<>(duration, composition, keyTimes, Float.class, keyValues, interpolators);
+-    animation.setStartDelay(delay);
+-    return animation;
++    return new NumberKeyframeAnimation<>(keyframes, Float.class);
+ }
+\ No newline at end of file

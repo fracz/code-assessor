@@ -1,0 +1,16 @@
+diff --git a/e44eef9d6a20c720a774b6c4515445da9cda66df b/cd0660df3d9f91138853a06143756adbb8408985
+index e44eef9d6a..cd0660df3d 100644
+--- a/e44eef9d6a20c720a774b6c4515445da9cda66df
++++ b/cd0660df3d9f91138853a06143756adbb8408985
+@@ -1,9 +1,9 @@
+ private void refreshFileStatus() {
+-    VirtualFile f = myReference.getFile();
++    VirtualFile f = getAffectedDocuments()[0].getFile();
+     if (f == null || f instanceof LightVirtualFile)
+         return;
+     for (Project each : ProjectManager.getInstance().getOpenProjects()) {
+         FileStatusManagerImpl statusManager = (FileStatusManagerImpl) FileStatusManager.getInstance(each);
+         statusManager.refreshFileStatusFromDocument(f, getDocument());
+     }
+ }
+\ No newline at end of file

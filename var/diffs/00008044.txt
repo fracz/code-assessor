@@ -1,0 +1,18 @@
+diff --git a/a39b22507bb18e80641ed9b8901f3419732dbd0d b/08ae152145d92f7d5e0c4e781321dcfb910fddb6
+index a39b22507b..08ae152145 100644
+--- a/a39b22507bb18e80641ed9b8901f3419732dbd0d
++++ b/08ae152145d92f7d5e0c4e781321dcfb910fddb6
+@@ -1,9 +1,9 @@
+ public void schemaFileMoved(@NotNull final Project project, @NotNull final String oldRelativePath, @NotNull final String newRelativePath) {
+     synchronized (myLock) {
+         final Optional<UserDefinedJsonSchemaConfiguration> old = myState.values().stream().filter(schema -> FileUtil.pathsEqual(schema.getRelativePathToSchema(), oldRelativePath)).findFirst();
+-        if (old.isPresent()) {
+-            old.get().setRelativePathToSchema(newRelativePath);
++        old.ifPresent(configuration -> {
++            configuration.setRelativePathToSchema(newRelativePath);
+             JsonSchemaService.Impl.get(project).reset();
+-        }
++        });
+     }
+ }
+\ No newline at end of file

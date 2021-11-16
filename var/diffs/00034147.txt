@@ -1,0 +1,21 @@
+diff --git a/36d38de4226b5055e7912ab802dff2c9eda4c639 b/50788a7eb232fecbf7f3ccb831cbf7c2e53c94bf
+index 36d38de422..50788a7eb2 100644
+--- a/36d38de4226b5055e7912ab802dff2c9eda4c639
++++ b/50788a7eb232fecbf7f3ccb831cbf7c2e53c94bf
+@@ -1,14 +1,14 @@
+ protected void setUp() throws Exception {
+     if (!Platform.isWindows())
+         return;
+     events = new HashMap();
+-    listener = new FileListener() {
++    final FileListener listener = new FileListener() {
+
+         public void fileChanged(FileEvent e) {
+             events.put(new Integer(e.getType()), e);
+         }
+     };
+     monitor = FileMonitor.getInstance();
+     monitor.addFileListener(listener);
+     tmpdir = new File(System.getProperty("java.io.tmpdir"));
+ }
+\ No newline at end of file

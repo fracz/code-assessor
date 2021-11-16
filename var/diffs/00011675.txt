@@ -1,0 +1,19 @@
+diff --git a/860a7cbb7a15a27cfeaca0b797f79bf318f33ab3 b/055a408748685781667a587bf86c16dde9410ac8
+index 860a7cbb7a..055a408748 100644
+--- a/860a7cbb7a15a27cfeaca0b797f79bf318f33ab3
++++ b/055a408748685781667a587bf86c16dde9410ac8
+@@ -1,7 +1,12 @@
+ @TestOnly
+-public void initIndex() throws MavenException, MavenRepositoryException {
++public void initIndex() throws MavenException {
+     File baseDir = new File(PathManager.getSystemPath(), "Maven");
+     File projectIndecesDir = new File(baseDir, myProject.getLocationHash());
+     myEmbedder = MavenFactory.createEmbedderForExecute(MavenCore.getInstance(myProject).getState());
+     myIndex = new MavenRepositoryIndex(myEmbedder, projectIndecesDir);
++    try {
++        myIndex.load();
++    } catch (MavenRepositoryException e) {
++        new MavenException("Couldn't load Maven Repositories: " + e.getMessage());
++    }
+ }
+\ No newline at end of file

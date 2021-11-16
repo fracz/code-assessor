@@ -1,0 +1,14 @@
+diff --git a/ad141a587075c23789aeab58a488546bf66cedf9 b/1259307d1881d2a7a3f2556b4a5ec6d11c7c5443
+index ad141a5870..1259307d18 100644
+--- a/ad141a587075c23789aeab58a488546bf66cedf9
++++ b/1259307d1881d2a7a3f2556b4a5ec6d11c7c5443
+@@ -1,7 +1,6 @@
+ String toToken() {
+     if (null == value) {
+         return "";
+     }
+-    Joiner joiner = Joiner.on("");
+-    return label.equals(value) ? joiner.join("[Token(", value, ")]") : joiner.join("[", label, "(", value, ")]");
++    return label.equals(value) ? Joiner.on("").join("[Token(", value, ")]") : Joiner.on("").join("[", label, "(", value, ")]");
+ }
+\ No newline at end of file

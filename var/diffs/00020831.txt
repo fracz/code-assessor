@@ -1,0 +1,14 @@
+diff --git a/c382b9e2ec0f4379c94a679a28197da7029e7234 b/bdc4555db7380ce6c9e54b8b72f9a080e9e31980
+index c382b9e2ec..bdc4555db7 100644
+--- a/c382b9e2ec0f4379c94a679a28197da7029e7234
++++ b/bdc4555db7380ce6c9e54b8b72f9a080e9e31980
+@@ -1,7 +1,7 @@
+ @Override
+ public void setAutoCommit(boolean autoCommit) throws SQLException {
+     if (closed) {
+         throw new MockConnectionClosedException();
+     }
+-    this.autoCommit = autoCommit;
++    super.setAutoCommit(autoCommit);
+ }
+\ No newline at end of file

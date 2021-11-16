@@ -1,0 +1,20 @@
+diff --git a/5104715172a4100f6c26775f374ba36442fe929c b/318d94380796d7a513470b795188811b0cd22af9
+index 5104715172..318d943807 100644
+--- a/5104715172a4100f6c26775f374ba36442fe929c
++++ b/318d94380796d7a513470b795188811b0cd22af9
+@@ -1,14 +1,13 @@
+ @Test
+ public void shouldMapFromRemovedLabelToNodes() throws Exception {
+     // GIVEN
+-    TxState state = new TxState();
+     state.removeLabelFromNode(1, 0);
+     state.removeLabelFromNode(2, 0);
+     state.removeLabelFromNode(1, 1);
+     state.removeLabelFromNode(3, 1);
+     state.removeLabelFromNode(2, 2);
+     // WHEN
+     Iterable<Long> nodes = state.getRemovedNodesWithLabel(2);
+     // THEN
+     assertEquals(asSet(0L, 2L), asSet(nodes));
+ }
+\ No newline at end of file

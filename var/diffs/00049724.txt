@@ -1,0 +1,17 @@
+diff --git a/cb5be9f4485748cbae57e9190800a4f1bd8a62fc b/679ae10031f05ca299c4269b0da110615460fc4f
+index cb5be9f448..679ae10031 100644
+--- a/cb5be9f4485748cbae57e9190800a4f1bd8a62fc
++++ b/679ae10031f05ca299c4269b0da110615460fc4f
+@@ -1,10 +1,10 @@
+ private File getLocalPOM() {
+     if (artifact.getRepository().getType() == MavenRepository.RepositoryType.LOCAL) {
+         try {
+-            return new File(new URI(getRemotePOMLocation()));
++            return new File(GeneralUtils.makeURIFromFilePath(getRemotePOMLocation()));
+         } catch (URISyntaxException e) {
+             log.warn(e);
+         }
+     }
+     return new File(artifact.getRepository().getLocalCacheDir(), artifact.getGroupId() + "/" + artifact.getVersionFileName(version, MavenArtifact.FILE_POM));
+ }
+\ No newline at end of file

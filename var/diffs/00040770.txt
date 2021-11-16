@@ -1,0 +1,21 @@
+diff --git a/3a5c2d71c7af16b869c8f5fab780996ee733c91a b/db67775dbffa0ade19b5eb4385c15a69bf7c7630
+index 3a5c2d71c7..db67775dbf 100644
+--- a/3a5c2d71c7af16b869c8f5fab780996ee733c91a
++++ b/db67775dbffa0ade19b5eb4385c15a69bf7c7630
+@@ -1,13 +1,13 @@
+ /**
+  * Adds <code>provider</code> to the list of {@link BindingProvider}s and
+  * adds <code>this</code> as {@link BindingChangeListener}. If
+  * <code>provider</code> contains any binding an the refresh-Thread is
+  * stopped it will be started.
+  *
+  * @param provider the new {@link BindingProvider} to add
+  */
+ public void addBindingProvider(P provider) {
+-    this.providers.add(provider);
++    super.addBindingProvider(provider);
+     provider.addBindingChangeListener(this);
+-    start();
++    activeService.activate();
+ }
+\ No newline at end of file

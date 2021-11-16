@@ -1,0 +1,21 @@
+diff --git a/669e6de1d807704cdedc5518a703ee1038288ae6 b/672296fbaa89cf8e3eb1aca316c51098674ca934
+index 669e6de1d8..672296fbaa 100644
+--- a/669e6de1d807704cdedc5518a703ee1038288ae6
++++ b/672296fbaa89cf8e3eb1aca316c51098674ca934
+@@ -1,14 +1,14 @@
+ void scanMultiLineComment() {
+-    int position = offset + 3;
+     length = 3;
++    int position = offset + length;
+     while (!('*' == charAt(position) && '/' == charAt(position + 1))) {
+         if (CharTypes.EOI == charAt(position)) {
+             throw new UnterminatedSignException("*/");
+         }
+         position++;
+         length++;
+     }
+     length += 2;
+     literals = input.substring(offset, offset + length);
+     token = GeneralLiterals.COMMENT;
+ }
+\ No newline at end of file

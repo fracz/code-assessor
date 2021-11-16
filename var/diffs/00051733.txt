@@ -1,0 +1,19 @@
+diff --git a/c088be8f7b305def93d67b4d6a694635a5f842d9 b/2863baba4d57055cb30f2245066b2629621ebb48
+index c088be8f7b..2863baba4d 100644
+--- a/c088be8f7b305def93d67b4d6a694635a5f842d9
++++ b/2863baba4d57055cb30f2245066b2629621ebb48
+@@ -1,4 +1,11 @@
+ @Override
+-public Collection<OracleTableBase> getChildren(@NotNull DBRProgressMonitor monitor) throws DBException {
+-    return tableCache.getAllObjects(monitor, this);
++public Collection<DBSObject> getChildren(@NotNull DBRProgressMonitor monitor) throws DBException {
++    List<DBSObject> children = new ArrayList<>();
++    for (OracleTableBase table : tableCache.getAllObjects(monitor, this)) {
++        children.add(table);
++    }
++    for (OraclePackage pack : packageCache.getAllObjects(monitor, this)) {
++        children.add(pack);
++    }
++    return children;
+ }
+\ No newline at end of file

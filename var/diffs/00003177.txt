@@ -1,0 +1,14 @@
+diff --git a/a02ae12d89ca2f4d500cf95b552fe8a8dcb912bf b/0544bf90a783e98bb1270063f2f14bf5b66d6f1b
+index a02ae12d89..0544bf90a7 100644
+--- a/a02ae12d89ca2f4d500cf95b552fe8a8dcb912bf
++++ b/0544bf90a783e98bb1270063f2f14bf5b66d6f1b
+@@ -1,7 +1,3 @@
+ public Refreshable getRefreshableDialog() {
+-    final Object dataFromContext = myContext.getData(Refreshable.PANEL);
+-    if (dataFromContext != null) {
+-        return ((Refreshable) dataFromContext);
+-    }
+-    return null;
++    return Refreshable.PANEL_KEY.getData(myContext);
+ }
+\ No newline at end of file

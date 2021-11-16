@@ -1,0 +1,16 @@
+diff --git a/ef0a516a079f7e15056ab7542048b173247667a1 b/d9c9c6be03dc224462813573e2493efaa05e97c7
+index ef0a516a07..d9c9c6be03 100644
+--- a/ef0a516a079f7e15056ab7542048b173247667a1
++++ b/d9c9c6be03dc224462813573e2493efaa05e97c7
+@@ -1,7 +1,9 @@
+ public static void main(String[] args) {
+     Path homeDir = Paths.get(System.getenv("NEO4J_HOME"));
+     Path configDir = Paths.get(System.getenv("NEO4J_CONF"));
+     String extraHelp = System.getenv("NEO4J_EXTRA_HELP");
+     boolean debug = System.getenv("NEO4J_DEBUG") != null;
+-    new AdminTool(new ServiceCommandLocator(), System.out::println, extraHelp, debug).execute(homeDir, configDir, args).exit();
++    AdminTool tool = new AdminTool(CommandLocator.fromServiceLocator(), System.out::println, extraHelp, debug);
++    Result result = tool.execute(homeDir, configDir, args);
++    result.exit();
+ }
+\ No newline at end of file

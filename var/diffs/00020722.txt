@@ -1,0 +1,12 @@
+diff --git a/09b929bf3fc15d589a4529940a2df30e797d2cf2 b/dff89ed0e4d6b708a270d00004814f52a6c43ead
+index 09b929bf3f..dff89ed0e4 100644
+--- a/09b929bf3fc15d589a4529940a2df30e797d2cf2
++++ b/dff89ed0e4d6b708a270d00004814f52a6c43ead
+@@ -1,5 +1,5 @@
+ @Override
+ public void connection_commit(FilterChain chain, ConnectionProxy connection) throws SQLException {
+-    super.connection_commit(chain, connection);
++    chain.connection_commit(connection);
+     dataSourceStat.getConnectionStat().incrementConnectionCommitCount();
+ }
+\ No newline at end of file

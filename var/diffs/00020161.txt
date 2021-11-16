@@ -1,0 +1,14 @@
+diff --git a/5047e4aa9c2ba973383e3d6f90a71a51987ed2ce b/e80d5456d02d6810f4a3b866b77dc3eeb1d74524
+index 5047e4aa9c..e80d5456d0 100644
+--- a/5047e4aa9c2ba973383e3d6f90a71a51987ed2ce
++++ b/e80d5456d02d6810f4a3b866b77dc3eeb1d74524
+@@ -1,7 +1,7 @@
+ public void test_9() throws Exception {
+     String sql = "SELECT s1 FROM t1 WHERE s1 = SOME (SELECT s1 FROM t2);";
+     SQLStatementParser parser = new MySqlStatementParser(sql);
+     List<SQLStatement> stmtList = parser.parseStatementList();
+     String text = output(stmtList);
+-    Assert.assertEquals("SELECT s1\nFROM t1\nWHERE s1 = SOME (SELECT s1\n\tFROM t2);", text);
++    assertEquals("SELECT s1\n" + "FROM t1\n" + "WHERE s1 = SOME (\n" + "\tSELECT s1\n" + "\tFROM t2\n" + ");", text);
+ }
+\ No newline at end of file

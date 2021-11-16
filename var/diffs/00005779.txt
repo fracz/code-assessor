@@ -1,0 +1,24 @@
+diff --git a/951e95858d17eb17308a1439e7087232ebec4198 b/aaed40b1113ee1cecf22cb73ddc2db079a8d3be4
+index 951e95858d..aaed40b111 100644
+--- a/951e95858d17eb17308a1439e7087232ebec4198
++++ b/aaed40b1113ee1cecf22cb73ddc2db079a8d3be4
+@@ -1,16 +1,5 @@
+ public VirtualFile getProjectFile() {
+-    if (myFilePointer == null)
++    if (myProjectFile == null)
+         return null;
+-    VirtualFile file = myFilePointer.getFile();
+-    /* commented out to fix # 25591
+-    if (file == null){
+-      //???
+-      return ApplicationManager.getApplication().runWriteAction(new Computable<VirtualFile>() {
+-        public VirtualFile compute() {
+-          return VirtualFileManager.getInstance().refreshAndFindFileByUrl(myFilePointer.getUrl());
+-        }
+-      });
+-    }
+-    */
+-    return file;
++    return myProjectFile.getVirtualFile();
+ }
+\ No newline at end of file

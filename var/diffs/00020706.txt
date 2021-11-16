@@ -1,0 +1,12 @@
+diff --git a/229f61dd4797639fb84556e2e38f9cdb07e529a1 b/a68f3aeee10dd76a8efdf953255bc5a6b0d479cb
+index 229f61dd47..a68f3aeee1 100644
+--- a/229f61dd4797639fb84556e2e38f9cdb07e529a1
++++ b/a68f3aeee10dd76a8efdf953255bc5a6b0d479cb
+@@ -1,5 +1,5 @@
+ @Override
+ public void preparedStatement_setBigDecimal(FilterChain chain, PreparedStatementProxy statement, int parameterIndex, BigDecimal x) throws SQLException {
+     preparedStatement_setParameterBefore(statement, parameterIndex, Types.DECIMAL, x);
+-    super.preparedStatement_setBigDecimal(chain, statement, parameterIndex, x);
++    chain.preparedStatement_setBigDecimal(statement, parameterIndex, x);
+ }
+\ No newline at end of file

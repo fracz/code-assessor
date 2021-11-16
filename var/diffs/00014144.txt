@@ -1,0 +1,23 @@
+diff --git a/4108bbcb9f5970723d4ebf7b30e76a2a533325b3 b/1bb29fd7b1570191106e8582dcc0940033ee8797
+index 4108bbcb9f..1bb29fd7b1 100644
+--- a/4108bbcb9f5970723d4ebf7b30e76a2a533325b3
++++ b/1bb29fd7b1570191106e8582dcc0940033ee8797
+@@ -1,14 +1,14 @@
+ public void visitClass(@NotNull PsiClass aClass) {
++    // note: no call to super
+     if (aClass.isEnum()) {
+         return;
+     }
+-    if (aClass instanceof PsiTypeParameter || aClass instanceof PsiAnonymousClass) {
++    if (aClass instanceof PsiTypeParameter) {
+         return;
+     }
+-    // note: no call to super
+     final int inheritanceDepth = getInheritanceDepth(aClass, new HashSet<PsiClass>());
+     if (inheritanceDepth <= getLimit()) {
+         return;
+     }
+-    registerClassError(aClass);
++    registerClassError(aClass, Integer.valueOf(inheritanceDepth));
+ }
+\ No newline at end of file

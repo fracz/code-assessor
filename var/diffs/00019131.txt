@@ -1,0 +1,35 @@
+diff --git a/cf86f0c656e1a9b02da3ea375e394957813ac616 b/625ca3c4c2f7cae72224aae4640d236a3fdb4a7a
+index cf86f0c656..625ca3c4c2 100644
+--- a/cf86f0c656e1a9b02da3ea375e394957813ac616
++++ b/625ca3c4c2f7cae72224aae4640d236a3fdb4a7a
+@@ -1,21 +1,21 @@
+ @Override
+ public void onReceive(Object message) {
+     if (message instanceof Scan) {
+         scan();
+     } else if (message instanceof InitScan) {
+         initScan();
+     } else if (message instanceof CheckNew) {
+         checkNew();
+-    } else if (message instanceof Visible) {
+-        if (((Visible) message).isVisible()) {
+-            visible = true;
+-            if (scanned) {
+-                self().send(new CheckNew());
+-            } else {
++    } else if (message instanceof Show) {
++        visible = true;
++        if (scanned) {
++            self().send(new CheckNew());
++        } else {
++            if (!inited) {
+                 self().send(new InitScan());
+             }
+-        } else {
+-            visible = false;
+         }
++    } else if (message instanceof Hide) {
++        visible = false;
+     }
+ }
+\ No newline at end of file

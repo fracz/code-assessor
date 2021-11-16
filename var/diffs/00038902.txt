@@ -1,0 +1,14 @@
+diff --git a/7393f53c261642a4e0e21e4ae65e49609d3ccf22 b/858a6aaabbdfb6f28eb7955565d072078bea361c
+index 7393f53c26..858a6aaabb 100644
+--- a/7393f53c261642a4e0e21e4ae65e49609d3ccf22
++++ b/858a6aaabbdfb6f28eb7955565d072078bea361c
+@@ -1,4 +1,5 @@
+-public void removeIndexRule(long labelId, long propertyKey) {
+-    LabelState labelState = getState(labelStates, labelId, LABEL_STATE_CREATOR);
+-    labelState.getIndexRuleDiffSets().remove(propertyKey);
++public void removeIndexRule(IndexRule rule) {
++    ruleDiffSets.remove(rule);
++    LabelState labelState = getState(labelStates, rule.getLabel(), LABEL_STATE_CREATOR);
++    labelState.getIndexRuleDiffSets().remove(rule);
+ }
+\ No newline at end of file

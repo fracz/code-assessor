@@ -1,0 +1,19 @@
+diff --git a/dc4933d8eeeae631c2a4f4dddae9cde7dedd2f3c b/db7d04a0eb77bdd4f1ffbaaef067e9fded9cbb25
+index dc4933d8ee..db7d04a0eb 100644
+--- a/dc4933d8eeeae631c2a4f4dddae9cde7dedd2f3c
++++ b/db7d04a0eb77bdd4f1ffbaaef067e9fded9cbb25
+@@ -1,12 +1,9 @@
+ @Override
+ public void onReceive(Context context, Intent intent) {
+     Log.w("MmsListener", "Got MMS broadcast..." + intent.getAction());
+     if (Telephony.Sms.Intents.WAP_PUSH_DELIVER_ACTION.equals(intent.getAction()) || (Telephony.Sms.Intents.WAP_PUSH_RECEIVED_ACTION.equals(intent.getAction()) && isRelevant(context, intent))) {
+         Log.w("MmsListener", "Relevant!");
+-        intent.setAction(SendReceiveService.RECEIVE_MMS_ACTION);
+-        intent.putExtra("ResultCode", this.getResultCode());
+-        intent.setClass(context, SendReceiveService.class);
+-        context.startService(intent);
++        ApplicationContext.getInstance(context).getJobManager().add(new MmsReceiveJob(context, intent.getByteArrayExtra("data")));
+         abortBroadcast();
+     }
+ }
+\ No newline at end of file

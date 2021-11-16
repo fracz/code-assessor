@@ -1,0 +1,14 @@
+diff --git a/08f298778fb57215375797c16ef913d0c49da477 b/fc1d6129c826da48e362391bd1cde5ea950a94a4
+index 08f298778f..fc1d6129c8 100644
+--- a/08f298778fb57215375797c16ef913d0c49da477
++++ b/fc1d6129c826da48e362391bd1cde5ea950a94a4
+@@ -1,7 +1,5 @@
+ public CaOptions addCertValue(Buffer certValue) throws NullPointerException {
+-    if (certValue == null) {
+-        throw new NullPointerException("No null certificate accepted");
+-    }
++    Objects.requireNonNull(certValue, "No null certificate accepted");
+     certValues.add(certValue);
+     return this;
+ }
+\ No newline at end of file

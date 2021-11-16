@@ -1,0 +1,21 @@
+diff --git a/9e9cc7b53677223a02d86a6e92bab886a8e7f031 b/6bea69e78759dd10e9422b1e6c078a4e3f369a18
+index 9e9cc7b536..6bea69e787 100644
+--- a/9e9cc7b53677223a02d86a6e92bab886a8e7f031
++++ b/6bea69e78759dd10e9422b1e6c078a4e3f369a18
+@@ -1,11 +1,10 @@
+-/**
+- * Returns the standard deviation of all recorded values.
+- *
+- * @return the standard deviation of all recorded values
+- */
++/* (non-Javadoc)
++     * @see com.yammer.metrics.core.Summarized#stdDev()
++     */
++@Override
+ public double stdDev() {
+     if (count() > 0) {
+         return sqrt(variance());
+     }
+     return 0.0;
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/66a6a4245760959de80945ba5915b87080ac444c b/f831ed2bcd5ed8698a12675844e24e91bbd554b7
+index 66a6a42457..f831ed2bcd 100644
+--- a/66a6a4245760959de80945ba5915b87080ac444c
++++ b/f831ed2bcd5ed8698a12675844e24e91bbd554b7
+@@ -1,6 +1,6 @@
+ public JSType getInstanceTypeOfCtor() {
+     if (!isGeneric()) {
+         return this.nominalType;
+     }
+-    return getNominalTypeIfSingletonObj(this.nominalType).instantiateGenerics(JSType.MAP_TO_UNKNOWN).getInstanceAsJSType();
++    return getNominalTypeIfSingletonObj(this.nominalType).instantiateGenerics(this.commonTypes.MAP_TO_UNKNOWN).getInstanceAsJSType();
+ }
+\ No newline at end of file

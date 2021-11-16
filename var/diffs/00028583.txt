@@ -1,0 +1,13 @@
+diff --git a/3ebf783be1c4e27309d70ec8bbb19f633bedbf82 b/44fc0ccd4b095d7fbaab60cf8e670e4af8dac6f7
+index 3ebf783be1..44fc0ccd4b 100644
+--- a/3ebf783be1c4e27309d70ec8bbb19f633bedbf82
++++ b/44fc0ccd4b095d7fbaab60cf8e670e4af8dac6f7
+@@ -1,6 +1,6 @@
+ @Test
+ public void testSimpleQueryFacets() throws Exception {
+-    QuerySearchResult queryResult = searchService.executeQueryPhase(searchRequest(searchSource().query(wildcardQuery("name", "te*")).facets(facets().queryFacet("age2", termQuery("age", 2)).queryFacet("age1", termQuery("age", 1)))));
++    QuerySearchResult queryResult = searchService.executeQueryPhase(searchRequest(searchSource().query(wildcardQuery("name", "te*")).facet(FacetBuilders.queryFacet("age1", termQuery("age", 1))).facet(FacetBuilders.queryFacet("age2", termQuery("age", 2)))));
+     assertThat(queryResult.facets().facet(QueryFacet.class, "age2").count(), equalTo(4l));
+     assertThat(queryResult.facets().facet(QueryFacet.class, "age1").count(), equalTo(1l));
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/c0b5379b2231f84e8fe60bfecfe00cc91c504924 b/be82d51162ebb158efaa31ec4523095ebbbb8d4e
+index c0b5379b22..be82d51162 100644
+--- a/c0b5379b2231f84e8fe60bfecfe00cc91c504924
++++ b/be82d51162ebb158efaa31ec4523095ebbbb8d4e
+@@ -1,16 +1,17 @@
+ void onRootPicked(RootInfo root) {
++    // Clicking on the current root removes search
++    mSearchManager.cancelSearch();
+     // Skip refreshing if root nor directory didn't change
+     if (root.equals(getCurrentRoot()) && mState.stack.size() == 1) {
+         return;
+     }
+     mState.derivedMode = LocalPreferences.getViewMode(this, root, MODE_GRID);
+     // Clear entire backstack and start in new root
+     mState.onRootChanged(root);
+-    mSearchManager.update(root);
+     // to ensure a responsive ui.
+     if (mRoots.isRecentsRoot(root)) {
+         refreshCurrentRootAndDirectory(ANIM_NONE);
+     } else {
+         new PickRootTask(this, root).executeOnExecutor(getExecutorForCurrentDirectory());
+     }
+ }
+\ No newline at end of file

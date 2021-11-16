@@ -1,0 +1,21 @@
+diff --git a/166c0e6257d8d1deb0a7ffa14cce017fb7f9f4f7 b/b453fef449043d33b4d085058ccc10978524184f
+index 166c0e6257..b453fef449 100644
+--- a/166c0e6257d8d1deb0a7ffa14cce017fb7f9f4f7
++++ b/b453fef449043d33b4d085058ccc10978524184f
+@@ -1,11 +1,11 @@
+ public void serialize(final PyTargetExpressionStub stub, final StubOutputStream stream) throws IOException {
+     stream.writeName(stub.getName());
+     stream.writeVarInt(stub.getInitializerType().getIndex());
+-    if (stub.getInitializerType() == PyTargetExpressionStub.InitializerType.Property) {
+-        final PropertyStubStorage propertyPack = stub.getPropertyPack();
+-        assert propertyPack != null;
+-        propertyPack.serialize(stream);
++    final CustomTargetExpressionStub customStub = stub.getCustomStub(CustomTargetExpressionStub.class);
++    if (customStub != null) {
++        stream.writeName(customStub.getTypeClass().getCanonicalName());
++        customStub.serialize(stream);
+     } else {
+         PyQualifiedName.serialize(stub.getInitializer(), stream);
+     }
+ }
+\ No newline at end of file

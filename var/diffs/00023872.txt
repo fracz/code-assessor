@@ -1,0 +1,25 @@
+diff --git a/0a1c8e3e40d75674bdd3b4f6b94efd143faf164f b/a44b7b44aa8f6303fcba6da2133b600c946274f6
+index 0a1c8e3e40..a44b7b44aa 100644
+--- a/0a1c8e3e40d75674bdd3b4f6b94efd143faf164f
++++ b/a44b7b44aa8f6303fcba6da2133b600c946274f6
+@@ -1,10 +1,18 @@
+ /**
+  * Called when an app transition gets started
+  *
++ * @param transit transition type indicating what kind of transition gets run, must be one
++ * of AppTransition.TRANSIT_* values
+  * @param openToken the token for the opening app
+  * @param closeToken the token for the closing app
+  * @param openAnimation the animation for the opening app
+  * @param closeAnimation the animation for the closing app
++ *
++ * @return Return any bit set of {@link WindowManagerPolicy#FINISH_LAYOUT_REDO_LAYOUT},
++ * {@link WindowManagerPolicy#FINISH_LAYOUT_REDO_CONFIG},
++ * {@link WindowManagerPolicy#FINISH_LAYOUT_REDO_WALLPAPER},
++ * or {@link WindowManagerPolicy#FINISH_LAYOUT_REDO_ANIM}.
+  */
+-public void onAppTransitionStartingLocked(IBinder openToken, IBinder closeToken, Animation openAnimation, Animation closeAnimation) {
++public int onAppTransitionStartingLocked(int transit, IBinder openToken, IBinder closeToken, Animation openAnimation, Animation closeAnimation) {
++    return 0;
+ }
+\ No newline at end of file

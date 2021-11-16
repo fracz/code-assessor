@@ -1,0 +1,19 @@
+diff --git a/4a6d719edf607349a128b49ef624078a85a916ad b/986e4938d4af393543b2f9b77113ecaf7dd8be1b
+index 4a6d719edf..986e4938d4 100644
+--- a/4a6d719edf607349a128b49ef624078a85a916ad
++++ b/986e4938d4af393543b2f9b77113ecaf7dd8be1b
+@@ -1,4 +1,12 @@
+ @Override
+ public ResultSetMetaData getMetaData() throws SQLException {
+-    return new JDBCResultSetMetaData(this, original == null ? null : original.getMetaData());
++    try {
++        return getResultSetMetaData();
++    } catch (DBCException e) {
++        if (e.getCause() instanceof SQLException) {
++            throw (SQLException) e.getCause();
++        } else {
++            throw new SQLException(e);
++        }
++    }
+ }
+\ No newline at end of file

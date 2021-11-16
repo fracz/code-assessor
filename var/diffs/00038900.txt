@@ -1,0 +1,18 @@
+diff --git a/62a2d611d88f857f8a46c1a3965beb8e54f6c6f5 b/d2a511cb03ce4d7fa531077d2510d844e9181314
+index 62a2d611d8..d2a511cb03 100644
+--- a/62a2d611d88f857f8a46c1a3965beb8e54f6c6f5
++++ b/d2a511cb03ce4d7fa531077d2510d844e9181314
+@@ -1,10 +1,8 @@
+ @Test
+ public void creatingAnIndexShouldBePopulatingStateWithinTX() throws Exception {
+     // GIVEN
+     commitLabels(labelId1);
+-    txContext.addIndexRule(labelId1, key1);
+-    // WHEN
+-    IndexRule.State state = txContext.getIndexState(labelId1, key1);
++    IndexRule rule = txContext.addIndexRule(labelId1, key1);
+     // THEN
+-    assertEquals(IndexRule.State.POPULATING, state);
++    assertEquals(IndexRule.State.POPULATING, rule.getState());
+ }
+\ No newline at end of file

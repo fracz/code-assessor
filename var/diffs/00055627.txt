@@ -1,0 +1,15 @@
+diff --git a/3f9ca4c017d525bf23671da31f93e23fde099dda b/38717b66b688d66ee62fba9235bc6971b6e47816
+index 3f9ca4c017..38717b66b6 100644
+--- a/3f9ca4c017d525bf23671da31f93e23fde099dda
++++ b/38717b66b688d66ee62fba9235bc6971b6e47816
+@@ -1,8 +1,8 @@
+ @Test
+ public void testClassNotFoundWithNoBeanClassLoader() {
+     DefaultListableBeanFactory bf = new DefaultListableBeanFactory();
+     XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(bf);
+     reader.setBeanClassLoader(null);
+-    reader.loadBeanDefinitions(new ClassPathResource("classNotFound.xml", getClass()));
++    reader.loadBeanDefinitions(CLASS_NOT_FOUND_CONTEXT);
+     assertEquals("WhatALotOfRubbish", bf.getBeanDefinition("classNotFound").getBeanClassName());
+ }
+\ No newline at end of file

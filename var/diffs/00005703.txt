@@ -1,0 +1,13 @@
+diff --git a/fb76e64f8cb9046009bd10848b8bff0b00759a33 b/9f44ddce12c54f0ee3fa5f05316ecba23b9b83e9
+index fb76e64f8c..9f44ddce12 100644
+--- a/fb76e64f8cb9046009bd10848b8bff0b00759a33
++++ b/9f44ddce12c54f0ee3fa5f05316ecba23b9b83e9
+@@ -1,4 +1,4 @@
+-@Contract("_, _ -> !null")
+-static TerminalBlock from(PsiVariable variable, PsiStatement statement) {
+-    return new TerminalBlock(variable, new PsiStatement[] { statement });
++@NotNull
++public static TerminalBlock from(PsiVariable variable, PsiStatement statement) {
++    return new TerminalBlock(null, variable, statement).extractOperations();
+ }
+\ No newline at end of file

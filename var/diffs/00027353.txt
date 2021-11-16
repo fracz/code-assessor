@@ -1,0 +1,25 @@
+diff --git a/cef8a7feac33bf505c954442911ba7ac02cacdb4 b/2ede608f367708c0e3c3a83efd196fda1ef8b952
+index cef8a7feac..2ede608f36 100644
+--- a/cef8a7feac33bf505c954442911ba7ac02cacdb4
++++ b/2ede608f367708c0e3c3a83efd196fda1ef8b952
+@@ -1,10 +1,18 @@
++/**
++ * Runs the command line interface given some arguments.
++ *
++ * @param arguments the command line arguments
++ * @throws Exception if something goes wrong
++ */
+ public void run(String[] arguments) throws Exception {
+     try {
+-        final Namespace namespace = parser.parseArgs((arguments.length == 0) ? new String[] { "-h" } : arguments);
++        // assume -h if no arguments are given
++        final String[] args = (arguments.length == 0) ? new String[] { "-h" } : arguments;
++        final Namespace namespace = parser.parseArgs(args);
+         final Command command = commands.get(namespace.getString(COMMAND_NAME_ATTR));
+         command.run(bootstrap, namespace);
+     } catch (ArgumentParserException e) {
+         parser.handleError(e);
+         System.exit(1);
+     }
+ }
+\ No newline at end of file

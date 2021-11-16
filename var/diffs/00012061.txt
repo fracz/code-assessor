@@ -1,0 +1,20 @@
+diff --git a/22b05b6d67b317dde3f4c79095f3a8ec13f969eb b/84f4b7810233c67d43933aeffcd1d3a9f04cc4a9
+index 22b05b6d67..84f4b78102 100644
+--- a/22b05b6d67b317dde3f4c79095f3a8ec13f969eb
++++ b/84f4b7810233c67d43933aeffcd1d3a9f04cc4a9
+@@ -1,12 +1,12 @@
+ @NotNull
+ public static List<InspectionToolWrapper> getInitializedTools(@NotNull Profile foo) {
+     List<InspectionToolWrapper> initialized = new ArrayList<InspectionToolWrapper>();
+-    List<ScopeToolState> tools = ((InspectionProfileImpl) foo).getAllTools();
++    List<ScopeToolState> tools = ((InspectionProfileImpl) foo).getAllTools(getProject());
+     for (ScopeToolState tool : tools) {
+-        InspectionToolWrapper toolWrapper = (InspectionToolWrapper) tool.getTool();
++        InspectionToolWrapper toolWrapper = tool.getTool();
+         if (toolWrapper.isInitialized()) {
+             initialized.add(toolWrapper);
+         }
+     }
+     return initialized;
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/ef5ac94b8911f9fcebaa7378643ec99855ff79af b/f97929d23f58309e61f934ea56c562d838848a8e
+index ef5ac94b89..f97929d23f 100644
+--- a/ef5ac94b8911f9fcebaa7378643ec99855ff79af
++++ b/f97929d23f58309e61f934ea56c562d838848a8e
+@@ -1,13 +1,14 @@
++@Override
+ public void onClick(View v) {
+     /*
+-        		 * Source Tag: perms_tag
+-        		 * Call authorize to get the new permissions
+-        		 */
++                 * Source Tag: perms_tag Call authorize to get the new
++                 * permissions
++                 */
+     if (reqPermVector.isEmpty() && Utility.mFacebook.isSessionValid()) {
+         Toast.makeText(activity.getBaseContext(), "No Permissions selected.", Toast.LENGTH_SHORT).show();
+         PermissionsDialog.this.dismiss();
+     } else {
+-        String[] permissions = (String[]) reqPermVector.toArray(new String[0]);
++        String[] permissions = reqPermVector.toArray(new String[0]);
+         Utility.mFacebook.authorize(activity, permissions, new LoginDialogListener());
+     }
+ }
+\ No newline at end of file

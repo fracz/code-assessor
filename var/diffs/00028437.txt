@@ -1,0 +1,17 @@
+diff --git a/7ff9ce0c43770903235c80a62081641def677150 b/cf4d7f72c88073bcc866f4cddf3912d138ce2abc
+index 7ff9ce0c43..cf4d7f72c8 100644
+--- a/7ff9ce0c43770903235c80a62081641def677150
++++ b/cf4d7f72c88073bcc866f4cddf3912d138ce2abc
+@@ -1,4 +1,8 @@
+-private HttpClientRequest doRequest(String method, String uri, Handler<HttpClientResponse> responseHandler) {
+-    configurable = false;
+-    return new DefaultHttpClientRequest(this, method, uri, responseHandler, actualCtx);
++private HttpClientRequest doRequest(String method, RequestOptions options, Handler<HttpClientResponse> responseHandler) {
++    checkClosed();
++    HttpClientRequest req = new DefaultHttpClientRequest(this, method, options, responseHandler, actualCtx);
++    if (options.getHeaders() != null) {
++        req.headers().set(options.getHeaders());
++    }
++    return req;
+ }
+\ No newline at end of file

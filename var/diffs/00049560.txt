@@ -1,0 +1,12 @@
+diff --git a/ac564f6c4c82a8ac492cb4aee1336b0072ebc19c b/57f9c8218808eab63d573a910fad4688d74e23e4
+index ac564f6c4c..57f9c82188 100644
+--- a/ac564f6c4c82a8ac492cb4aee1336b0072ebc19c
++++ b/57f9c8218808eab63d573a910fad4688d74e23e4
+@@ -1,4 +1,4 @@
+ @Override
+-public void showMessage(String message, boolean error) {
+-    updateStatus(new Status(error ? Status.ERROR : Status.INFO, DBeaverCore.PLUGIN_ID, message));
++public void showMessage(String message, DBPMessageType messageType) {
++    updateStatus(new Status(messageType.getStatusCode(), DBeaverCore.PLUGIN_ID, message));
+ }
+\ No newline at end of file

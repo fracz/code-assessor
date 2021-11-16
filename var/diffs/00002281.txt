@@ -1,0 +1,17 @@
+diff --git a/28755e2dcb540ecf31d8170b3410b3bea584f657 b/26df2c28b9048301e0350ca554f7d7fbbd113e87
+index 28755e2dcb..26df2c28b9 100644
+--- a/28755e2dcb540ecf31d8170b3410b3bea584f657
++++ b/26df2c28b9048301e0350ca554f7d7fbbd113e87
+@@ -1,10 +1,10 @@
+ @Override
+-public void setState(final DebuggerContextImpl context, int state, int event, String description) {
++public void setState(final DebuggerContextImpl context, DebuggerSession.State state, DebuggerSession.Event event, String description) {
+     ApplicationManager.getApplication().assertIsDispatchThread();
+     myDebuggerSession = context.getDebuggerSession();
+     if (myDebuggerSession != null) {
+         myDebuggerSession.getContextManager().setState(context, state, event, description);
+     } else {
+         fireStateChanged(context, event);
+     }
+ }
+\ No newline at end of file

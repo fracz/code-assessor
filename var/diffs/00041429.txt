@@ -1,0 +1,19 @@
+diff --git a/53816e8f9bcd5f950cad900d6e2273c6dea13fb5 b/f098ecb1dad0499ab0fede975cc240d296d8b5e0
+index 53816e8f9b..f098ecb1da 100644
+--- a/53816e8f9bcd5f950cad900d6e2273c6dea13fb5
++++ b/f098ecb1dad0499ab0fede975cc240d296d8b5e0
+@@ -1,11 +1,11 @@
+ /**
+  * Convert the item requested.
+  *
+  * @param iIndex
+  * Position of the item to convert
+  */
+ private void convert(final int iIndex) {
+-    final Object o = super.get(iIndex);
++    final Object o = list.get(iIndex);
+     if (o != null && o instanceof ODocument)
+-        super.set(iIndex, (TYPE) database.getUserObjectByRecord((ORecordInternal<?>) o, fetchPlan));
++        list.set(iIndex, (TYPE) database.getUserObjectByRecord((ORecordInternal<?>) o, fetchPlan));
+ }
+\ No newline at end of file

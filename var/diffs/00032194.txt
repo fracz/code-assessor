@@ -1,0 +1,24 @@
+diff --git a/556827fdc71dbc171299c5d506d24ab1606362f3 b/5ea0878ee1ea3a94b5b158aa01c911fcdd4b535c
+index 556827fdc7..5ea0878ee1 100644
+--- a/556827fdc71dbc171299c5d506d24ab1606362f3
++++ b/5ea0878ee1ea3a94b5b158aa01c911fcdd4b535c
+@@ -1,17 +1,6 @@
+ /**
+  * @return Whether the node is a label name.
+  */
+ static boolean isLabelName(Node n) {
+-    if (n != null && n.getType() == Token.NAME) {
+-        Node parent = n.getParent();
+-        switch(parent.getType()) {
+-            case Token.LABEL:
+-            case Token.BREAK:
+-            case Token.CONTINUE:
+-                if (n == parent.getFirstChild()) {
+-                    return true;
+-                }
+-        }
+-    }
+-    return false;
++    return (n != null && n.getType() == Token.LABEL_NAME);
+ }
+\ No newline at end of file

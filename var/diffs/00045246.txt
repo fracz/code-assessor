@@ -1,0 +1,12 @@
+diff --git a/397bf5b7bd7a768d3e8804080384a32fdd2fe09a b/7dcc790d3877f634b4d177ba02827e039a7dba12
+index 397bf5b7bd..7dcc790d38 100644
+--- a/397bf5b7bd7a768d3e8804080384a32fdd2fe09a
++++ b/7dcc790d3877f634b4d177ba02827e039a7dba12
+@@ -1,5 +1,5 @@
+ @Test
+ public void shouldExceuteBeginBlocktoExpandVariables() throws Exception {
+-    final OETLProcessor processor = OETLProcessor.parseConfigAndParameters(new String[] { "./src/test/resources/comment.json" });
++    final OETLProcessor processor = new OETLProcessorConfigurator().parseConfigAndParameters(new String[] { "./src/test/resources/comment.json" });
+     assertThat(processor.context.getVariable("filePath")).isEqualTo("./src/test/resources/comments.csv");
+ }
+\ No newline at end of file

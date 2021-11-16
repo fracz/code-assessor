@@ -1,0 +1,18 @@
+diff --git a/826e0d7f97169b288a9b221498bc2883ce47aac0 b/089aca532c44ae1f064552718c370ee7459496df
+index 826e0d7f97..089aca532c 100644
+--- a/826e0d7f97169b288a9b221498bc2883ce47aac0
++++ b/089aca532c44ae1f064552718c370ee7459496df
+@@ -1,11 +1,11 @@
+ @Override
+ public void afterPropertiesSet() throws Exception {
+-    initControllerAdviceCache();
+     if (this.argumentResolvers == null) {
+         this.argumentResolvers = getDefaultArgumentResolvers();
+     }
+     if (this.initBinderArgumentResolvers == null) {
+         this.initBinderArgumentResolvers = getDefaultInitBinderArgumentResolvers();
+     }
++    this.controllerMethodResolver = new ControllerMethodResolver(getArgumentResolvers(), getInitBinderArgumentResolvers(), getApplicationContext());
+     this.modelInitializer = new ModelInitializer(getReactiveAdapterRegistry());
+ }
+\ No newline at end of file

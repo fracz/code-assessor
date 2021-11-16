@@ -1,0 +1,12 @@
+diff --git a/dfd6ebd5443322159f31288e894b88ae7f342a2b b/9768b6ae6c16be952de410b42c16dab5ceed18b9
+index dfd6ebd544..9768b6ae6c 100644
+--- a/dfd6ebd5443322159f31288e894b88ae7f342a2b
++++ b/9768b6ae6c16be952de410b42c16dab5ceed18b9
+@@ -1,4 +1,5 @@
+ @Override
+ public boolean supportsReturnType(MethodParameter returnType) {
+-    return (getAdapterFor(returnType.getParameterType()) != null);
++    Class<?> type = returnType.getParameterType();
++    return DeferredResult.class.isAssignableFrom(type) || ListenableFuture.class.isAssignableFrom(type) || CompletionStage.class.isAssignableFrom(type);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/4d200947a39bc76dd60c902aee48617cc7c30210 b/5389ed45a6798d480e5bf23c85d61d96cc08569e
+index 4d200947a3..5389ed45a6 100644
+--- a/4d200947a39bc76dd60c902aee48617cc7c30210
++++ b/5389ed45a6798d480e5bf23c85d61d96cc08569e
+@@ -1,8 +1,4 @@
+-@Nullable
++@NotNull
+ public static IProject getObjectOwnerProject(DBSObject object) {
+-    final DBPDataSource dataSource = object.getDataSource();
+-    if (dataSource != null) {
+-        return dataSource.getContainer().getRegistry().getProject();
+-    }
+-    return null;
++    return getObjectRegistry(object).getProject();
+ }
+\ No newline at end of file

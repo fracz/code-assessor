@@ -1,0 +1,13 @@
+diff --git a/9d574882706b14888dda63db9349a650b4973063 b/67a1238ad0ff2d0fc6328112f9cbf82c9619922a
+index 9d57488270..67a1238ad0 100644
+--- a/9d574882706b14888dda63db9349a650b4973063
++++ b/67a1238ad0ff2d0fc6328112f9cbf82c9619922a
+@@ -1,5 +1,4 @@
+ @Override
+-public Object call() throws Exception {
+-    database.getStorage().commit(OTransactionOptimistic.this, callback);
+-    return null;
++public OUnfinishedCommit call() throws Exception {
++    return new UnfinishedCommit(database.getStorage().initiateCommit(OTransactionOptimistic.this, callback));
+ }
+\ No newline at end of file

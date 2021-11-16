@@ -1,0 +1,21 @@
+diff --git a/4ff4af8ad11cb4bcf1a26b4b61e9f0737c525c58 b/4968d147f1e8fc4e955b4f589b6b7d193781445a
+index 4ff4af8ad1..4968d147f1 100644
+--- a/4ff4af8ad11cb4bcf1a26b4b61e9f0737c525c58
++++ b/4968d147f1e8fc4e955b4f589b6b7d193781445a
+@@ -1,11 +1,13 @@
+ @Override
+ public JComponent getPreferredFocusedComponent() {
+-    if (myFileNameField.isVisible()) {
++    if (myFileNameField.getText().length() == 0) {
+         return myFileNameField;
+     } else if (myResourceTypeCombo.isVisible()) {
+         return myResourceTypeCombo;
+     } else if (myModuleCombo.isVisible()) {
+         return myModuleCombo;
++    } else if (myRootElementFieldWrapper.isVisible()) {
++        return myRootElementField;
+     }
+-    return myDeviceConfiguratorPanel.getAvailableQualifiersList();
++    return myDirectoryNameTextField;
+ }
+\ No newline at end of file

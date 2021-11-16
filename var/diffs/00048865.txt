@@ -1,0 +1,15 @@
+diff --git a/02606833a0f856c9e95e665ddc8ea9efc646e232 b/343d2ed49c4dfecf1ee4341c390a36f3b61427f6
+index 02606833a0..343d2ed49c 100644
+--- a/02606833a0f856c9e95e665ddc8ea9efc646e232
++++ b/343d2ed49c4dfecf1ee4341c390a36f3b61427f6
+@@ -1,3 +1,7 @@
+-public void resetCellValue(@NotNull Object col, @NotNull Object row, boolean delete) {
+-    ((ResultSetViewer) controller).resetCellValue(col, row, delete);
++public void resetCellValue(@NotNull Object colElement, @NotNull Object rowElement, boolean delete) {
++    boolean recordMode = controller.isRecordMode();
++    final DBDAttributeBinding attr = (DBDAttributeBinding) (recordMode ? rowElement : colElement);
++    final ResultSetRow row = (ResultSetRow) (recordMode ? colElement : rowElement);
++    controller.getModel().resetCellValue(attr, row);
++    updateValueView();
+ }
+\ No newline at end of file

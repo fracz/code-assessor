@@ -1,0 +1,23 @@
+diff --git a/9108c77af62a58c17df40c9bb6af13ad085092b6 b/ddacf12540b864521f8f8dd313637f012f366eb7
+index 9108c77af6..ddacf12540 100644
+--- a/9108c77af62a58c17df40c9bb6af13ad085092b6
++++ b/ddacf12540b864521f8f8dd313637f012f366eb7
+@@ -1,14 +1,12 @@
+ @Override
+ public void after(Object target, Object arg0, Object arg1, Object result, Throwable throwable) {
+-    InterceptorGroupInvocation transaction = group.getCurrentInvocation();
++    final InterceptorGroupInvocation transaction = group.getCurrentInvocation();
+     if (transaction.canLeave(policy)) {
+-        if (after != null) {
+-            after.after(target, arg0, arg1, result, throwable);
+-        }
++        this.interceptor.after(target, arg0, arg1, result, throwable);
+         transaction.leave(policy);
+     } else {
+         if (debugEnabled) {
+-            logger.debug("tryAfter() returns false: interceptorGroupTransaction: {}, executionPoint: {}. Skip interceptor {}", new Object[] { transaction, policy, after == null ? null : after.getClass() });
++            logger.debug("tryAfter() returns false: interceptorGroupTransaction: {}, executionPoint: {}. Skip interceptor {}", new Object[] { transaction, policy, interceptor.getClass() });
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/436c46fd452f857e841fd123e693832495e4a7da b/5352a3e75781c73f7f6811858533d60169888c23
+index 436c46fd45..5352a3e757 100644
+--- a/436c46fd452f857e841fd123e693832495e4a7da
++++ b/5352a3e75781c73f7f6811858533d60169888c23
+@@ -1,9 +1,3 @@
+ public Class<? extends IEditorActionBarContributor> getContributorClass() {
+-    if (contributorClass == null) {
+-        if (contributorClassName == null) {
+-            return null;
+-        }
+-        contributorClass = getObjectClass(contributorClassName, IEditorActionBarContributor.class);
+-    }
+-    return contributorClass;
++    return contributorType == null || contributorType.getImplName() == null ? null : contributorType.getObjectClass(IEditorActionBarContributor.class);
+ }
+\ No newline at end of file

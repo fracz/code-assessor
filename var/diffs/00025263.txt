@@ -1,0 +1,20 @@
+diff --git a/96e5e187aa25b313f7a5955d5e27d2401a14e8f9 b/bd12cd0ec1bf9bdf20df3d678a522cf8f2f6cbee
+index 96e5e187aa..bd12cd0ec1 100644
+--- a/96e5e187aa25b313f7a5955d5e27d2401a14e8f9
++++ b/bd12cd0ec1bf9bdf20df3d678a522cf8f2f6cbee
+@@ -1,9 +1,9 @@
+ @Test
+ public void shouldPutAll() {
+-    List<KeyValue<String, String>> entries = new ArrayList<>();
+-    entries.add(new KeyValue<>("a", "1"));
+-    entries.add(new KeyValue<>("b", "2"));
++    List<KeyValue<Bytes, byte[]>> entries = new ArrayList<>();
++    entries.add(new KeyValue<>(bytesKey("a"), bytesValue("1")));
++    entries.add(new KeyValue<>(bytesKey("b"), bytesValue("2")));
+     store.putAll(entries);
+-    assertEquals(store.get("a"), "1");
+-    assertEquals(store.get("b"), "2");
++    assertThat(store.get(bytesKey("a")), equalTo(bytesValue("1")));
++    assertThat(store.get(bytesKey("b")), equalTo(bytesValue("2")));
+ }
+\ No newline at end of file

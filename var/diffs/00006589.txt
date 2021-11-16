@@ -1,0 +1,19 @@
+diff --git a/a9bc093372d8ebc22a9a5dc71a553711a9294a0a b/dcc6f553e2b2fc3fb95a5f051c637796c294914f
+index a9bc093372..dcc6f553e2 100644
+--- a/a9bc093372d8ebc22a9a5dc71a553711a9294a0a
++++ b/dcc6f553e2b2fc3fb95a5f051c637796c294914f
+@@ -1,12 +1,6 @@
+ // private static final String GEN_CLASS_PACKAGE = "dummy";
+ // private static final String GEN_CLASS_FULL_NAME = GEN_CLASS_PACKAGE + '.' + GEN_CLASS_NAME;
+ // private static final String GEN_METHOD_NAME = "invoke";
+ protected String getGenClassQName() {
+-    return ApplicationManager.getApplication().runReadAction(new Computable<String>() {
+-
+-        @Override
+-        public String compute() {
+-            return JVMNameUtil.getNonAnonymousClassName(myData.getGeneratedInnerClass());
+-        }
+-    });
++    return ApplicationManager.getApplication().runReadAction((Computable<String>) () -> JVMNameUtil.getNonAnonymousClassName(myData.getGeneratedInnerClass()));
+ }
+\ No newline at end of file

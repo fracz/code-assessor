@@ -1,0 +1,14 @@
+diff --git a/bf2f9f96849f833fc06d9cf22d02d39adf883e2e b/1eb37b0ce56db315fa02bf0771aa2d2bd54b1c9c
+index bf2f9f9684..1eb37b0ce5 100644
+--- a/bf2f9f96849f833fc06d9cf22d02d39adf883e2e
++++ b/1eb37b0ce56db315fa02bf0771aa2d2bd54b1c9c
+@@ -1,6 +1,5 @@
+ @Override
+ public String getColumnClassName(final int column) throws SQLException {
+-    checkIndex(column);
+-    Object value = autoIncrementValueTable.get(0, column - 1);
+-    return value.getClass().getName();
++    Preconditions.checkArgument(column == 1);
++    return Number.class.getName();
+ }
+\ No newline at end of file

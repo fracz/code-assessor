@@ -1,0 +1,26 @@
+diff --git a/028e2677aa70a59b1623e8d272b10322efff42b2 b/f77c6c1daf2798d20f820965b392d43cbc059304
+index 028e2677aa..f77c6c1daf 100644
+--- a/028e2677aa70a59b1623e8d272b10322efff42b2
++++ b/f77c6c1daf2798d20f820965b392d43cbc059304
+@@ -1,15 +1,15 @@
+ @Test
+-public void testStartReturnsImmediatelyAndFails() {
++public void testStartReturnsImmediatelyAndFails() throws InterruptedException {
+     final ExtractionNamespace extractionNamespace = new ExtractionNamespace() {
+
+         @Override
+         public long getPollMs() {
+             return 0;
+         }
+     };
+-    EasyMock.expect(cacheManager.scheduleOrUpdate(EasyMock.anyString(), EasyMock.eq(extractionNamespace))).andReturn(false).once();
+-    EasyMock.replay(cacheManager);
+-    final NamespaceLookupExtractorFactory namespaceLookupExtractorFactory = new NamespaceLookupExtractorFactory(extractionNamespace, 0, false, cacheManager);
++    EasyMock.expect(scheduler.scheduleAndWait(EasyMock.eq(extractionNamespace), EasyMock.eq(1L))).andReturn(null).once();
++    mockReplay();
++    final NamespaceLookupExtractorFactory namespaceLookupExtractorFactory = new NamespaceLookupExtractorFactory(extractionNamespace, 1, false, scheduler);
+     Assert.assertFalse(namespaceLookupExtractorFactory.start());
+-    EasyMock.verify(cacheManager);
++    mockVerify();
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/43f98797b8c176601c64e14a6fb7b9d900c6a2cd b/ac3f7caa02763043cd79102e7bd4267e83746b70
+index 43f98797b8..ac3f7caa02 100644
+--- a/43f98797b8c176601c64e14a6fb7b9d900c6a2cd
++++ b/ac3f7caa02763043cd79102e7bd4267e83746b70
+@@ -1,7 +1,3 @@
+ public static ChatToolbarFragment create(Peer peer) {
+-    ChatToolbarFragment res = new ChatToolbarFragment();
+-    Bundle args = new Bundle();
+-    args.putLong("peer", peer.getUnuqueId());
+-    res.setArguments(args);
+-    return res;
++    return new ChatToolbarFragment(peer);
+ }
+\ No newline at end of file

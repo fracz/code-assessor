@@ -1,0 +1,18 @@
+diff --git a/81b967c5370c68da66b7379e8f577c3245ea1399 b/7e038629d4f26bc60afc27dd97c01a4fdcf8bb34
+index 81b967c537..7e038629d4 100644
+--- a/81b967c5370c68da66b7379e8f577c3245ea1399
++++ b/7e038629d4f26bc60afc27dd97c01a4fdcf8bb34
+@@ -1,11 +1,11 @@
+ public JSType negate() {
+     if (isTop() || isUnknown()) {
+         return this;
+     }
+     if (isTrueOrTruthy()) {
+-        return FALSY;
++        return this.commonTypes.FALSY;
+     } else if (isFalseOrFalsy()) {
+         return TRUTHY;
+     }
+     return UNKNOWN;
+ }
+\ No newline at end of file

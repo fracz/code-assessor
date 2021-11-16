@@ -1,0 +1,34 @@
+diff --git a/238acbafb17bbb500157cb48217a8d6422a33f1b b/016dd11fa417a558db98812b646d92d2bbbe612b
+index 238acbafb1..016dd11fa4 100644
+--- a/238acbafb17bbb500157cb48217a8d6422a33f1b
++++ b/016dd11fa417a558db98812b646d92d2bbbe612b
+@@ -1,19 +1,22 @@
+ @Override
+ protected void onMessage(RedissonLockEntry value, Long message) {
+     value.getLatch().release(message.intValue());
+-    synchronized (value) {
+-        while (true) {
++    while (true) {
++        Runnable runnableToExecute = null;
++        synchronized (value) {
+             Runnable runnable = value.getListeners().poll();
+             if (runnable != null) {
+                 if (value.getLatch().tryAcquire()) {
+-                    runnable.run();
++                    runnableToExecute = runnable;
+                 } else {
+                     value.addListener(runnable);
+-                    return;
+                 }
+-            } else {
+-                return;
+             }
+         }
++        if (runnableToExecute != null) {
++            runnableToExecute.run();
++        } else {
++            return;
++        }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/263a97f49d0ede0a8efa8defafcef890325b81b3 b/35ebe695392dce6f352840cac58457e93733c66a
+index 263a97f49d..35ebe69539 100644
+--- a/263a97f49d0ede0a8efa8defafcef890325b81b3
++++ b/35ebe695392dce6f352840cac58457e93733c66a
+@@ -1,6 +1,9 @@
+ @Override
+ protected String getPreviewText() {
+     if (myLanguage == null)
+         return "";
+-    return LanguageCodeStyleSettingsProvider.getCodeSample(myLanguage, getSettingsType());
++    String sample = LanguageCodeStyleSettingsProvider.getCodeSample(myLanguage, getSettingsType());
++    if (sample == null)
++        return "";
++    return sample;
+ }
+\ No newline at end of file

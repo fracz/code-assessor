@@ -1,0 +1,24 @@
+diff --git a/0113267e4dc307d86e40dacef01dbae222fef8bb b/350e8511e47393306bfe674d81ef6890ce5e80e3
+index 0113267e4d..350e8511e4 100644
+--- a/0113267e4dc307d86e40dacef01dbae222fef8bb
++++ b/350e8511e47393306bfe674d81ef6890ce5e80e3
+@@ -1,7 +1,13 @@
+ public void listModuleVersions(DependencyMetaData dependency, BuildableModuleVersionSelectionResolveResult result) {
+-    DefaultBuildableModuleVersionMetaDataResolveResult moduleMetadataResult = new DefaultBuildableModuleVersionMetaDataResolveResult();
+-    getDependency(dependency, moduleMetadataResult);
+-    // TODO:DAZ Handle failures/missing
+-    // TODO:DAZ We're now resolving twice
+-    result.listed(new DefaultModuleVersions(moduleMetadataResult.getMetaData().getId().getVersion()));
++    IvyContext.getContext().setResolveData(resolveData);
++    try {
++        ResolvedModuleRevision revision = resolver.getDependency(dependency.getDescriptor(), resolveData);
++        if (revision == null) {
++            result.noVersions();
++        } else {
++            result.listed(new DefaultModuleVersions(revision.getId().getRevision()));
++        }
++    } catch (ParseException e) {
++        throw UncheckedException.throwAsUncheckedException(e);
++    }
+ }
+\ No newline at end of file

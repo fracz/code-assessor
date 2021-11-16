@@ -1,0 +1,18 @@
+diff --git a/581d514193a1aed30d5237348cf7df63fc662433 b/ba8c32fd91aacd0d62d360388f742267f0d3ac60
+index 581d514193..ba8c32fd91 100644
+--- a/581d514193a1aed30d5237348cf7df63fc662433
++++ b/ba8c32fd91aacd0d62d360388f742267f0d3ac60
+@@ -1,8 +1,7 @@
+ public void draw(AnimationState as, int x, int y) {
+     y = Gdx.graphics.getHeight() - y;
+-    GdxFont.FontState fontState = font.evalFontState(as);
+-    TwlRenderer renderer = font.renderer;
+-    setColor(renderer.getColor(fontState.color));
+-    setPosition(x + fontState.offsetX, y + fontState.offsetY);
+-    draw(renderer.spriteBatch);
++    GdxFont.FontState fontState = evalFontState(as);
++    bitmapCache.setColor(renderer.getColor(fontState.color));
++    bitmapCache.setPosition(x + fontState.offsetX, y + fontState.offsetY);
++    bitmapCache.draw(renderer.spriteBatch);
+ }
+\ No newline at end of file

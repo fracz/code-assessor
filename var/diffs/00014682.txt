@@ -1,0 +1,24 @@
+diff --git a/5e250dc95aa5df50178764edf8cd44e0be318d64 b/b8b081714b8ff4c1bbb57c48a05173b8ee039f4d
+index 5e250dc95a..b8b081714b 100644
+--- a/5e250dc95aa5df50178764edf8cd44e0be318d64
++++ b/b8b081714b8ff4c1bbb57c48a05173b8ee039f4d
+@@ -1,12 +1,12 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiElement parent = location.getParent();
+-    assert parent != null;
+-    final PsiMethodCallExpression call = (PsiMethodCallExpression) parent.getParent();
+-    if (isGetSystemProperty(call)) {
++@NotNull
++public String buildErrorString(Object... infos) {
++    final boolean isGetSystemProperty = ((Boolean) infos[0]).booleanValue();
++    final boolean isIntegerGetInteger = ((Boolean) infos[1]).booleanValue();
++    if (isGetSystemProperty) {
+         return InspectionGadgetsBundle.message("system.set.problem.descriptor");
+-    } else if (isIntegerGetInteger(call)) {
++    } else if (isIntegerGetInteger) {
+         return InspectionGadgetsBundle.message("system.properties.problem.descriptor");
+     } else {
+         return InspectionGadgetsBundle.message("system.properties.problem.descriptor1");
+     }
+ }
+\ No newline at end of file

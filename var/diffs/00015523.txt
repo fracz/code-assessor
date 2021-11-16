@@ -1,0 +1,13 @@
+diff --git a/0c66199422862060f99e527856efa31565caf8aa b/190482fa4a707ef68047e394cf2fde803ecd70f1
+index 0c66199422..190482fa4a 100644
+--- a/0c66199422862060f99e527856efa31565caf8aa
++++ b/190482fa4a707ef68047e394cf2fde803ecd70f1
+@@ -1,6 +1,6 @@
+ public static void generateObjectInitializer(@NotNull JetObjectDeclaration declaration, @NotNull List<JsStatement> initializers, @NotNull TranslationContext context) {
++    JsExpression value = ClassTranslator.generateObjectLiteral(declaration, context);
+     ClassDescriptor descriptor = getClassDescriptor(context.bindingContext(), declaration);
+-    JsExpression value = ClassTranslator.generateObjectLiteral(declaration, descriptor, context);
+     JsExpression expression = assignment(new JsNameRef(descriptor.getName().asString(), JsLiteral.THIS), value);
+     initializers.add(expression.makeStmt());
+ }
+\ No newline at end of file

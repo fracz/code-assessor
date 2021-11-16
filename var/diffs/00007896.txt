@@ -1,0 +1,29 @@
+diff --git a/40d40e0b15188cdf1c0c0a36af611ffe1a4f4175 b/d610bf51a3df346020bc7ee8abcd231fabde079c
+index 40d40e0b15..d610bf51a3 100644
+--- a/40d40e0b15188cdf1c0c0a36af611ffe1a4f4175
++++ b/d610bf51a3df346020bc7ee8abcd231fabde079c
+@@ -1,13 +1,21 @@
+ /**
+  * @param className  class where member should be found
+  * @param memberName member that starts with dot (<code>.</code>) is treated as method.
++ * member that starts with dash (<code>#</code>) is treated as attribute.
+  * It is treated parent class otherwise
+  * @return member or null if not found
+  */
+ @NotNull
+ protected PyElement findMember(@NotNull String className, @NotNull String memberName) {
+-    boolean findMethod = memberName.contains(".");
+-    PyElement result = (findMethod ? findMethod(className, memberName.substring(1)) : findClass(memberName));
++    final PyElement result;
++    // TODO: Get rid of this chain of copy pastes
++    if (memberName.contains(".")) {
++        result = findMethod(className, memberName.substring(1));
++    } else if (memberName.contains("#")) {
++        result = findField(className, memberName.substring(1));
++    } else {
++        result = findClass(memberName);
++    }
+     Assert.assertNotNull(String.format("No member %s found in class %s", memberName, className), result);
+     return result;
+ }
+\ No newline at end of file

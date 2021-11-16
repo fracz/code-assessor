@@ -1,0 +1,13 @@
+diff --git a/11c9973b60fc76f85402c4d0de3c56651444ce70 b/bd367f9dffcc499371b5f1e3383480269857a57c
+index 11c9973b60..bd367f9dff 100644
+--- a/11c9973b60fc76f85402c4d0de3c56651444ce70
++++ b/bd367f9dffcc499371b5f1e3383480269857a57c
+@@ -1,6 +1,4 @@
+ @NotNull
+ public JsName getNameForDescriptor(@NotNull DeclarationDescriptor descriptor) {
+-    JsName name = names.get(descriptor.getOriginal());
+-    assert name != null : "Must have name for descriptor";
+-    return name;
++    return getNameForFQNPart(fqnGenerator.generate(descriptor)).get(0);
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/09bde8d0476d07b93c991a94163d75f7923da23e b/6b121d8d049c8d612cc72b543c5a4968b3ba4182
+index 09bde8d047..6b121d8d04 100644
+--- a/09bde8d0476d07b93c991a94163d75f7923da23e
++++ b/6b121d8d049c8d612cc72b543c5a4968b3ba4182
+@@ -1,11 +1,8 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiElement parent = location.getParent();
+-    if (parent instanceof PsiField) {
+-        final PsiField field = (PsiField) parent;
+-        final PsiClass containingClass = field.getContainingClass();
+-        if (TestUtils.isJUnitTestClass(containingClass)) {
+-            return InspectionGadgetsBundle.message("instance.Variable.may.not.be.initialized.problem.descriptor.junit");
+-        }
++@NotNull
++public String buildErrorString(Object... infos) {
++    final Boolean junitTestCase = (Boolean) infos[0];
++    if (junitTestCase.booleanValue()) {
++        return InspectionGadgetsBundle.message("instance.Variable.may.not.be.initialized.problem.descriptor.junit");
+     }
+     return InspectionGadgetsBundle.message("instance.variable.may.not.be.initialized.problem.descriptor");
+ }
+\ No newline at end of file

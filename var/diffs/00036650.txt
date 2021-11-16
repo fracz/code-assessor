@@ -1,0 +1,14 @@
+diff --git a/0d5c0fb1e54c272ad87d4d26a3f4f2cbca724a51 b/466a1c25897f342029297a58712231c9e4ecf178
+index 0d5c0fb1e5..466a1c2589 100644
+--- a/0d5c0fb1e54c272ad87d4d26a3f4f2cbca724a51
++++ b/466a1c25897f342029297a58712231c9e4ecf178
+@@ -1,6 +1,3 @@
+-public AnnotationKeyMatcher findAnnotationKeyMatcher(ServiceType serviceType) {
+-    if (serviceType == null) {
+-        throw new NullPointerException("serviceType must not be null");
+-    }
+-    return annotationMatcherMap.get(serviceType.getCode());
++public AnnotationKeyMatcher findAnnotationKeyMatcher(short serviceType) {
++    return annotationMatcherMap.get(serviceType);
+ }
+\ No newline at end of file

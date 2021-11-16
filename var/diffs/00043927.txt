@@ -1,0 +1,23 @@
+diff --git a/88fbb4f75da918efca943ee27a8f3a1de2128172 b/8afd397eb1c64d479e05113ed71999b9d0932436
+index 88fbb4f75d..8afd397eb1 100644
+--- a/88fbb4f75da918efca943ee27a8f3a1de2128172
++++ b/8afd397eb1c64d479e05113ed71999b9d0932436
+@@ -1,15 +1,12 @@
+ @BeforeClass
+-public void beforeClass() {
+-    if (database.isClosed())
+-        database.open("admin", "admin");
++public void beforeClass() throws Exception {
++    super.beforeClass();
+     final OSchema schema = database.getMetadata().getSchema();
+     final OClass oClass = schema.createClass("PropertyIndexTestClass");
+     oClass.createProperty("prop0", OType.LINK);
+     oClass.createProperty("prop1", OType.STRING);
+     oClass.createProperty("prop2", OType.INTEGER);
+     oClass.createProperty("prop3", OType.BOOLEAN);
+     oClass.createProperty("prop4", OType.INTEGER);
+     oClass.createProperty("prop5", OType.STRING);
+-    schema.save();
+-    database.close();
+ }
+\ No newline at end of file

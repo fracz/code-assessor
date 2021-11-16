@@ -1,0 +1,19 @@
+diff --git a/f0fa828d61c8fe2c5c658d0d818c09a04493c145 b/4bf592994220a6928b8b4a4d06f4d7e0b107d667
+index f0fa828d61..4bf5929942 100644
+--- a/f0fa828d61c8fe2c5c658d0d818c09a04493c145
++++ b/4bf592994220a6928b8b4a4d06f4d7e0b107d667
+@@ -1,12 +1,12 @@
+ @Test
+ public void testTargetSourceNotAtEndOfInterceptorNamesIsRejected() {
+     try {
+-        BeanFactory bf = new XmlBeanFactory(new ClassPathResource("proxyFactoryTargetSourceNotLastTests.xml", getClass()));
++        BeanFactory bf = new XmlBeanFactory(new ClassPathResource(NOTLAST_TARGETSOURCE_CONTEXT, CLASS));
+         bf.getBean("targetSourceNotLast");
+         fail("TargetSource or non-advised object must be last in interceptorNames");
+     } catch (BeanCreationException ex) {
+         // Root cause of the problem must be an AOP exception
+         AopConfigException aex = (AopConfigException) ex.getCause();
+         assertTrue(aex.getMessage().indexOf("interceptorNames") != -1);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/4d0cc8e788ab4a07a57b0ac10e454cabcf757746 b/b711627fa1f0ec69531880057823967da2bf322c
+index 4d0cc8e788..b711627fa1 100644
+--- a/4d0cc8e788ab4a07a57b0ac10e454cabcf757746
++++ b/b711627fa1f0ec69531880057823967da2bf322c
+@@ -1,7 +1,7 @@
+ public void optimize(OptimizeRequest optimize) {
+     verifyStarted();
+     if (logger.isTraceEnabled()) {
+         logger.trace("optimize with {}", optimize);
+     }
+-    engine().forceMerge(optimize.flush(), optimize.maxNumSegments(), optimize.onlyExpungeDeletes(), optimize.upgrade(), optimize.upgradeOnlyAncientSegments());
++    engine().forceMerge(optimize.flush(), optimize.maxNumSegments(), optimize.onlyExpungeDeletes(), false, false);
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/9721fa22c536f44e67c19e9d8d74ef5672b0d6de b/a88cd4b4b77d9156af61f93920d902051905b76b
+index 9721fa22c5..a88cd4b4b7 100644
+--- a/9721fa22c536f44e67c19e9d8d74ef5672b0d6de
++++ b/a88cd4b4b77d9156af61f93920d902051905b76b
+@@ -1,9 +1,7 @@
+ public String substitute(String text, boolean caseSensitive) {
+-    final List<String> index = getPathIndex();
+-    for (Iterator i = index.iterator(); i.hasNext(); ) {
+-        final String path = (String) i.next();
+-        final String macro = myMacroMap.get(path);
++    for (final String path : getPathIndex()) {
++        final String macro = get(path);
+         text = replacePathMacro(text, path, macro, caseSensitive);
+     }
+     return text;
+ }
+\ No newline at end of file

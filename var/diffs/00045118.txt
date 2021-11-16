@@ -1,0 +1,17 @@
+diff --git a/dc94d60d207a545574000f9166b055c451cc7b6c b/3cf2336e2573dd1d35403d34ff529c608529d25b
+index dc94d60d20..3cf2336e25 100644
+--- a/dc94d60d207a545574000f9166b055c451cc7b6c
++++ b/3cf2336e2573dd1d35403d34ff529c608529d25b
+@@ -1,6 +1,8 @@
+ /**
+- * Delegates to the OQueryExecutor the query execution.
++ * Returns only the first record if any.
+  */
+-public T executeFirst() {
+-    return database.getStorage().getCommandExecutor().executeFirst(this);
++public T executeFirst(final Object... iArgs) {
++    setLimit(1);
++    final List<T> result = execute(iArgs);
++    return result != null && result.size() > 0 ? result.get(0) : null;
+ }
+\ No newline at end of file

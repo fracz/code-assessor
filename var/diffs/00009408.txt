@@ -1,0 +1,28 @@
+diff --git a/c5d08b9e0f2f8ad79a5d7046daf563c2666006da b/0bc0136b207ef2e62df0b6421b7c975e4e469d59
+index c5d08b9e0f..0bc0136b20 100644
+--- a/c5d08b9e0f2f8ad79a5d7046daf563c2666006da
++++ b/0bc0136b207ef2e62df0b6421b7c975e4e469d59
+@@ -1,13 +1,13 @@
+ public void markEverythingDirty() {
+-    if (!myIsInitialized || myIsDisposed || myProject.isDisposed())
++    if (myProject.isDisposed())
+         return;
+-    synchronized (myScopes) {
+-        // avoid having leftover scopes or invalid roots in scopes after a directory mapping change (IDEADEV-17166)
+-        myScopes.clear();
++    final boolean done = myLife.doIfAlive(new Runnable() {
++
++        public void run() {
++            myScopes.markEverythingDirty();
++        }
++    });
++    if (done) {
++        myChangeListManager.scheduleUpdate();
+     }
+-    DefaultVcsRootPolicy.getInstance(myProject).markDefaultRootsDirty(this);
+-    synchronized (myScopes) {
+-        myEverythingDirty = true;
+-    }
+-    myChangeListManager.scheduleUpdate();
+ }
+\ No newline at end of file

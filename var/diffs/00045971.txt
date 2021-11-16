@@ -1,0 +1,20 @@
+diff --git a/5aabb49792c2c040e58e60fcb912881927e17c75 b/e11e9c1f0acf7dcc4666369fcf0067f50e8470e0
+index 5aabb49792..e11e9c1f0a 100644
+--- a/5aabb49792c2c040e58e60fcb912881927e17c75
++++ b/e11e9c1f0acf7dcc4666369fcf0067f50e8470e0
+@@ -1,9 +1,9 @@
+-@Test(expected = IOException.class)
++@Test
+ public void testUnauthorized() throws Exception {
+     try {
+-        testUtil.doMethodSecure("GET", "/protected/resource", null);
+-    } catch (Exception e) {
+-        Assert.assertTrue(e.getMessage().contains("401"));
+-        throw e;
++        UrlResponse urlResponse = testUtil.doMethodSecure("GET", "/protected/resource", null);
++        Assert.assertTrue(urlResponse.status == 401);
++    } catch (Throwable e) {
++        throw new RuntimeException(e);
+     }
+ }
+\ No newline at end of file

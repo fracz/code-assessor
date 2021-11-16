@@ -1,0 +1,16 @@
+diff --git a/36b53e7b9a801da6dd6f2a06468bcc1e53474288 b/c0fe8b0d750f416fc53864db48aef908bb1e59fa
+index 36b53e7b9a..c0fe8b0d75 100644
+--- a/36b53e7b9a801da6dd6f2a06468bcc1e53474288
++++ b/c0fe8b0d750f416fc53864db48aef908bb1e59fa
+@@ -1,7 +1,7 @@
+ @Test
+ public void shouldIterateBothStoreAndCache() throws Exception {
+-    final MergedSortedCacheWindowStoreKeyValueIterator<String, String> iterator = createIterator(storeKvs, cacheKvs);
+-    assertThat(iterator.next(), equalTo(KeyValue.pair(new Windowed<>(storeKey, storeWindow), storeKey)));
+-    assertThat(iterator.next(), equalTo(KeyValue.pair(new Windowed<>(cacheKey, cacheWindow), cacheKey)));
++    final MergedSortedCacheWindowStoreKeyValueIterator iterator = createIterator(storeKvs, cacheKvs);
++    assertThat(convertKeyValuePair(iterator.next()), equalTo(KeyValue.pair(new Windowed<>(storeKey, storeWindow), storeKey)));
++    assertThat(convertKeyValuePair(iterator.next()), equalTo(KeyValue.pair(new Windowed<>(cacheKey, cacheWindow), cacheKey)));
+     assertFalse(iterator.hasNext());
+ }
+\ No newline at end of file

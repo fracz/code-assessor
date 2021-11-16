@@ -1,0 +1,28 @@
+diff --git a/6411019b7e5af8feaf6b3d6f8ba80191b559c440 b/e6c29021a4527eb551050f44e134b4dfa0c9caa8
+index 6411019b7e..e6c29021a4 100644
+--- a/6411019b7e5af8feaf6b3d6f8ba80191b559c440
++++ b/e6c29021a4527eb551050f44e134b4dfa0c9caa8
+@@ -1,20 +1,20 @@
+ @Override
+ public final SelectStatement parse() {
+     sqlParser.getLexer().nextToken();
+     parseDistinct();
+     parseBeforeSelectList();
+     parseSelectList();
+     skipToFrom();
+     parseFrom();
+     parseWhere();
+     customizedBetweenWhereAndGroupBy();
+     parseGroupBy();
+     customizedBetweenGroupByAndOrderBy();
+     parseOrderBy();
+-    customizedQuery();
+-    queryRest();
+     customizedSelect();
++    processUnsupportedTokens();
++    // TODO move to rewrite
+     appendDerivedColumns();
+     appendDerivedOrderBy();
+     return selectStatement;
+ }
+\ No newline at end of file

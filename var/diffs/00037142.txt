@@ -1,0 +1,12 @@
+diff --git a/e025960b63831c2d5985aae78cea742bcc90da71 b/657cd817e87164cf49ee49094bbd7400ce985171
+index e025960b63..657cd817e8 100644
+--- a/e025960b63831c2d5985aae78cea742bcc90da71
++++ b/657cd817e87164cf49ee49094bbd7400ce985171
+@@ -1,4 +1,3 @@
+-@Override
+-protected StorageFactory createStorageFactory() {
+-    return new SimpleSpanStorageFactory(super.getSpanDataSender());
++private StorageFactory createStorageFactory(DataSender dataSender) {
++    return new SimpleSpanStorageFactory(dataSender);
+ }
+\ No newline at end of file

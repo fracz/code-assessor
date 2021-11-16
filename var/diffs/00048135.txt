@@ -1,0 +1,16 @@
+diff --git a/8b630a9c67b88c4737280b7bb235cd8ecad8897d b/13b04de984c1dc941822d006430b4555f20f60eb
+index 8b630a9c67..13b04de984 100644
+--- a/8b630a9c67b88c4737280b7bb235cd8ecad8897d
++++ b/13b04de984c1dc941822d006430b4555f20f60eb
+@@ -1,8 +1,8 @@
+ @Override
+ public boolean isDefaultAutoCommit() {
+-    if (preferenceStore.contains(DBeaverPreferences.DEFAULT_AUTO_COMMIT)) {
+-        return preferenceStore.getBoolean(DBeaverPreferences.DEFAULT_AUTO_COMMIT);
++    if (connectionInfo.getBootstrap().getDefaultAutoCommit() != null) {
++        return connectionInfo.getBootstrap().getDefaultAutoCommit();
+     } else {
+         return getConnectionConfiguration().getConnectionType().isAutocommit();
+     }
+ }
+\ No newline at end of file

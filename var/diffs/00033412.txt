@@ -1,0 +1,13 @@
+diff --git a/af5b7df9422be2f25a44c4306a96406051fd3107 b/0e596f6e209f83badd62d4fbb0120959ced39c4c
+index af5b7df942..0e596f6e20 100644
+--- a/af5b7df9422be2f25a44c4306a96406051fd3107
++++ b/0e596f6e209f83badd62d4fbb0120959ced39c4c
+@@ -1,6 +1,3 @@
+ public void store(Address address) {
+-    if (status != null) {
+-        throw new IllegalStateException("store() has already been called for this entry");
+-    }
+-    status = new DaemonStatus(address);
++    statuses.put(address, new DaemonStatus(address));
+ }
+\ No newline at end of file

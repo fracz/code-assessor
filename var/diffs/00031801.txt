@@ -1,0 +1,18 @@
+diff --git a/9d17ee17acd4ef72ed779c65df175b7fccd7ea3c b/f5345d6ae5c2e8179b70430a4217c7e3932972e6
+index 9d17ee17ac..f5345d6ae5 100644
+--- a/9d17ee17acd4ef72ed779c65df175b7fccd7ea3c
++++ b/f5345d6ae5c2e8179b70430a4217c7e3932972e6
+@@ -1,10 +1,7 @@
+ @Test
+ public void shouldReportSecureVariableAsMaskedValue() {
+     EnvironmentVariableContext context = new EnvironmentVariableContext();
+     context.setProperty(PROPERTY_NAME, PROPERTY_VALUE, true);
+-    InMemoryStreamConsumer consumer = ProcessOutputStreamConsumer.inMemoryConsumer();
+-    Map<String, String> map = new HashMap<String, String>();
+-    context.setupRuntimeEnvironment(map, consumer);
+-    assertThat(map.get(PROPERTY_NAME), is(PROPERTY_VALUE));
+-    assertThat(consumer.getAllOutput(), containsString(String.format("[go] setting environment variable 'PROPERTY_NAME' to value '%s'", EnvironmentVariableContext.EnvironmentVariable.MASK_VALUE)));
++    assertThat(context.report().size(), is(1));
++    assertThat(context.report().get(0), is(String.format("[go] setting environment variable 'PROPERTY_NAME' to value '%s'", EnvironmentVariableContext.EnvironmentVariable.MASK_VALUE)));
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/8b85144457048d4de81d3551d4ca5371e489a90d b/e5d4d0d83f9b43dece87bd1966da7441a5412eaa
+index 8b85144457..e5d4d0d83f 100644
+--- a/8b85144457048d4de81d3551d4ca5371e489a90d
++++ b/e5d4d0d83f9b43dece87bd1966da7441a5412eaa
+@@ -1,4 +1,5 @@
+ private void scanHexDecimal() {
+-    term.scanHexDecimal(position);
+-    setTermResult();
++    Tokenizer tokenizer = new Tokenizer(input, dictionary, position);
++    tokenizer.scanHexDecimal();
++    setTokenizerResult(tokenizer);
+ }
+\ No newline at end of file

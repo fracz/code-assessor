@@ -1,0 +1,27 @@
+diff --git a/ffe48ecc26cf6947c7c35fc0cf135cca9364921d b/0afc0a273764d3e642e111bade2cc36e5cd5c2a2
+index ffe48ecc26..0afc0a2737 100644
+--- a/ffe48ecc26cf6947c7c35fc0cf135cca9364921d
++++ b/0afc0a273764d3e642e111bade2cc36e5cd5c2a2
+@@ -1,14 +1,13 @@
+-// TODO Reducer和Coupling大致流程一致, 两个有什么区别
+-private static void buildCoupling(final ResultSetPipelineBuilder builder, final MergeContext mergeContext) throws SQLException {
++private static ResultSet buildCoupling(final ResultSet preResultSet, final MergeContext mergeContext) throws SQLException {
++    ResultSet currentResultSet = preResultSet;
+     if (mergeContext.hasGroupByOrAggregation()) {
+-        // TODO 保持一致, 都new一个CouplingResultSet
+-        builder.join(new GroupByCouplingResultSet(mergeContext.getGroupByColumns(), mergeContext.getAggregationColumns()));
++        currentResultSet = join(new GroupByCouplingResultSet(mergeContext.getGroupByColumns(), mergeContext.getAggregationColumns()), currentResultSet);
+     }
+-    if (mergeContext.hasOrderBy()) {
+-        // TODO 保持一致, 都new一个CouplingResultSet
+-        builder.joinSortCoupling(mergeContext.getOrderByColumns());
++    if (mergeContext.needToSort()) {
++        currentResultSet = join(new MemoryOrderByCouplingResultSet(mergeContext.getCurrentOrderByKeys()), currentResultSet);
+     }
+     if (mergeContext.hasLimit()) {
+-        builder.join(new LimitCouplingResultSet(mergeContext.getLimit()));
++        currentResultSet = join(new LimitCouplingResultSet(mergeContext.getLimit()), currentResultSet);
+     }
++    return currentResultSet;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/badd803a763a6e37c83d7cc79435d8be902b6855 b/851d466ea119625b6c45a634ba6c5bcab818ee57
+index badd803a76..851d466ea1 100644
+--- a/badd803a763a6e37c83d7cc79435d8be902b6855
++++ b/851d466ea119625b6c45a634ba6c5bcab818ee57
+@@ -1,6 +1,5 @@
+ public JComponent createComponent() {
+-    if (myConfigurator == null) {
+-        myConfigurator = new ModulesConfigurator(myProject, myStartModuleWizardOnShow);
+-    }
+-    return myConfigurator.createComponent();
++    // reload changed jdks
++    myProjectJdkConfigurable.createComponent();
++    return myPanel;
+ }
+\ No newline at end of file

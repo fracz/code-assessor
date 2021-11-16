@@ -1,0 +1,17 @@
+diff --git a/859088f8cc2269de49bd467cf300e756047485fe b/7c8542b2d2f10e28e16c78051f001776bd2af8df
+index 859088f8cc..7c8542b2d2 100644
+--- a/859088f8cc2269de49bd467cf300e756047485fe
++++ b/7c8542b2d2f10e28e16c78051f001776bd2af8df
+@@ -1,7 +1,9 @@
+ public void setUp() throws Exception {
+     super.setUp();
+-    Z.configure();
+-    HiveZeppelinDriver driver = new HiveZeppelinDriver(Z.getConf());
++    // Z z = new Z();
++    // z.configure();
++    // Configuration => Driver => Connection
++    driver = new HiveZeppelinDriver(Z.getConf());
+     driver.setClient(client);
+     Z.setDriver(driver);
+ }
+\ No newline at end of file

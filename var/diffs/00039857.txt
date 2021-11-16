@@ -1,0 +1,18 @@
+diff --git a/9cd9bdb840b22fd90ff4a3308e9a11eaae25ec21 b/44d3f054c8fbb467efb829a30367c5fdf8b5a429
+index 9cd9bdb840..44d3f054c8 100644
+--- a/9cd9bdb840b22fd90ff4a3308e9a11eaae25ec21
++++ b/44d3f054c8fbb467efb829a30367c5fdf8b5a429
+@@ -1,11 +1,11 @@
+ @Override
+ public boolean equals(Object other) {
+     if (this == other) {
+         return true;
+     }
+     if (other == null || getClass() != other.getClass()) {
+         return false;
+     }
+     IndexKey indexKey = (IndexKey) other;
+-    return labelId == indexKey.labelId && propertyKeyId == indexKey.propertyKeyId && type == indexKey.type;
++    return indexKey.descriptor.equals(descriptor);
+ }
+\ No newline at end of file

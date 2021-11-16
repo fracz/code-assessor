@@ -1,0 +1,22 @@
+diff --git a/cd0ef429e1f4231590014d00aa4a7c45cc4e21b0 b/e85a37753ea4bac85ac1ac1955e5c1843e43f793
+index cd0ef429e1..e85a37753e 100644
+--- a/cd0ef429e1f4231590014d00aa4a7c45cc4e21b0
++++ b/e85a37753ea4bac85ac1ac1955e5c1843e43f793
+@@ -1,15 +1,15 @@
+ public <T> List<T> filterByDumbAwareness(@Nullable Collection<T> collection) {
+     if (isDumb()) {
+         final ArrayList<T> result = new ArrayList<T>(collection);
+         for (Iterator<T> iterator = result.iterator(); iterator.hasNext(); ) {
+-            if (!(iterator.next() instanceof DumbAware)) {
++            if (!isDumbAware(iterator.next())) {
+                 iterator.remove();
+             }
+         }
+         return result;
+     }
+     if (collection instanceof List) {
+         return (List<T>) collection;
+     }
+     return new ArrayList<T>(collection);
+ }
+\ No newline at end of file

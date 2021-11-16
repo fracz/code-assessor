@@ -1,0 +1,16 @@
+diff --git a/c6f1ede74dc14c6474842e75c8388c970a28cd25 b/e7ac2703f1717535234ef1732ae1ab6898804039
+index c6f1ede74d..e7ac2703f1 100644
+--- a/c6f1ede74dc14c6474842e75c8388c970a28cd25
++++ b/e7ac2703f1717535234ef1732ae1ab6898804039
+@@ -1,9 +1,9 @@
+ @AfterMethod
+ public void afterMethod() throws Exception {
+     database.command(new OCommandSQL("DELETE FROM LinkListIndexTestClass")).execute();
+     List<ODocument> result = database.command(new OCommandSQL("select from LinkListIndexTestClass")).execute();
+     Assert.assertEquals(result.size(), 0);
+     result = database.command(new OCommandSQL("select key, rid from index:linkCollectionIndex")).execute();
+     Assert.assertEquals(result.size(), 0);
+-    database.close();
++    super.afterMethod();
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/03111aff3a487c5053e3bb8a813a281b60ba0bf5 b/9a778457b54b8ea9db3b7758645a319d6fd85850
+index 03111aff3a..9a778457b5 100644
+--- a/03111aff3a487c5053e3bb8a813a281b60ba0bf5
++++ b/9a778457b54b8ea9db3b7758645a319d6fd85850
+@@ -1,7 +1,7 @@
+ private static boolean hasLhsUsages(GrIntroduceContext context) {
+-    if (context.var == null && !(context.expression instanceof GrReferenceExpression))
++    if (context.getVar() == null && !(context.getExpression() instanceof GrReferenceExpression))
+         return false;
+-    if (GrIntroduceHandlerBase.hasLhs(context.occurrences))
++    if (GrIntroduceHandlerBase.hasLhs(context.getOccurrences()))
+         return true;
+     return false;
+ }
+\ No newline at end of file

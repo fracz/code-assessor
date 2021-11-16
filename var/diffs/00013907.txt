@@ -1,0 +1,13 @@
+diff --git a/d64c91b14cc53e244c018085b416307ccb29f9ef b/f8dbce748a8e686b90e6b1a84e6bf8ce59de03e5
+index d64c91b14c..f8dbce748a 100644
+--- a/d64c91b14cc53e244c018085b416307ccb29f9ef
++++ b/f8dbce748a8e686b90e6b1a84e6bf8ce59de03e5
+@@ -1,6 +1,6 @@
+ protected PyClass findClass(final String name) {
+     final Project project = myFixture.getProject();
+     final Collection<PyClass> classes = PyClassNameIndex.find(name, project, false);
+-    assertEquals(1, classes.size());
++    Assert.assertThat(String.format("Expected one class named %s", name), classes, Matchers.hasSize(1));
+     return classes.iterator().next();
+ }
+\ No newline at end of file

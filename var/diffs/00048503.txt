@@ -1,0 +1,18 @@
+diff --git a/ecd2c4b9c1b4a2e5beceb1dd405fa8f4647a676f b/994c42331b448034e110d2bde3fc0ead3a3ad27d
+index ecd2c4b9c1..994c42331b 100644
+--- a/ecd2c4b9c1b4a2e5beceb1dd405fa8f4647a676f
++++ b/994c42331b448034e110d2bde3fc0ead3a3ad27d
+@@ -1,7 +1,8 @@
+-private static DBeaverCore createInstance(DBeaverActivator plugin) {
+-    log.debug("Initializing DBeaver");
+-    log.debug("Host plugin: " + plugin.getBundle().getSymbolicName() + " " + plugin.getBundle().getVersion());
+-    instance = new DBeaverCore(plugin);
++private static DBeaverCore createInstance() {
++    log.debug("Initializing " + getProductTitle());
++    Bundle definingBundle = Platform.getProduct().getDefiningBundle();
++    log.debug("Host plugin: " + definingBundle.getSymbolicName() + " " + definingBundle.getVersion());
++    instance = new DBeaverCore();
+     instance.initialize();
+     return instance;
+ }
+\ No newline at end of file

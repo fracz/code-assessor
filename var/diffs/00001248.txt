@@ -1,0 +1,30 @@
+diff --git a/e1c9993c1e9b1ee6a58daa2e2146780354a1edbb b/e4b68227952cc7d5c36ef0a49b87b7a6923bfc9c
+index e1c9993c1e..e4b6822795 100644
+--- a/e1c9993c1e9b1ee6a58daa2e2146780354a1edbb
++++ b/e4b68227952cc7d5c36ef0a49b87b7a6923bfc9c
+@@ -1,14 +1,20 @@
+ /**
+  * Subclasses can override this to add additional ChannelHandlers to the pipeline to support additional features.
+  * <p/>
+  * Some common use cases are to add SSL/TLS, connection counters or throttling traffic shapers.
+  *
+  * @return the list of initial channelhandlers to add to the {@link org.jboss.netty.channel.ChannelPipelineFactory}
+  * @param input
+  */
+-protected List<Pair<String, ? extends ChannelHandler>> getBaseChannelHandlers(MessageInput input) {
+-    List<Pair<String, ? extends ChannelHandler>> handlerList = Lists.newArrayList();
+-    handlerList.add(Pair.of("packet-meta-dumper", new PacketInformationDumper(input)));
+-    handlerList.add(Pair.of("traffic-counter", throughputCounter));
++protected LinkedHashMap<String, Callable<? extends ChannelHandler>> getBaseChannelHandlers(final MessageInput input) {
++    LinkedHashMap<String, Callable<? extends ChannelHandler>> handlerList = Maps.newLinkedHashMap();
++    handlerList.put("packet-meta-dumper", new Callable<ChannelHandler>() {
++
++        @Override
++        public ChannelHandler call() throws Exception {
++            return new PacketInformationDumper(input);
++        }
++    });
++    handlerList.put("traffic-counter", Callables.returning(throughputCounter));
+     return handlerList;
+ }
+\ No newline at end of file

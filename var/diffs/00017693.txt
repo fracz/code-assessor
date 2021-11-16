@@ -1,0 +1,19 @@
+diff --git a/f2b4a4a2a2a13aebe3a0593bdb63adaa78306ab5 b/9c4c1dc4134b547445ee9093d12d217daf9c0455
+index f2b4a4a2a2..9c4c1dc413 100644
+--- a/f2b4a4a2a2a13aebe3a0593bdb63adaa78306ab5
++++ b/9c4c1dc4134b547445ee9093d12d217daf9c0455
+@@ -1,12 +1,12 @@
+ public void testSmokeWithCompilerOutput() throws IOException {
+     File tempDir = FileUtil.createTempDirectory("compilerTest", "compilerTest");
+     try {
+         File out = new File(tempDir, "out");
+         File stdlib = ForTestCompileStdlib.stdlibJarForTests();
+-        KotlinCompiler.exec("-src", JetParsingTest.getTestDataDir() + "/compiler/smoke/Smoke.kt", "-output", out.getAbsolutePath(), "-stdlib", stdlib.getAbsolutePath());
++        new KotlinCompiler().exec("-src", JetParsingTest.getTestDataDir() + "/compiler/smoke/Smoke.kt", "-output", out.getAbsolutePath(), "-stdlib", stdlib.getAbsolutePath());
+         assertEquals(1, out.listFiles().length);
+         assertEquals(1, out.listFiles()[0].listFiles().length);
+     } finally {
+         FileUtil.delete(tempDir);
+     }
+ }
+\ No newline at end of file

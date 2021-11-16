@@ -1,0 +1,19 @@
+diff --git a/19fc2300e2687816316495e3cf8731a74650097c b/f6b725fdbc86a32679ee64e32bf96a1edc981a98
+index 19fc2300e2..f6b725fdbc 100644
+--- a/19fc2300e2687816316495e3cf8731a74650097c
++++ b/f6b725fdbc86a32679ee64e32bf96a1edc981a98
+@@ -1,12 +1,11 @@
+ @Override
+-public INDArray backprop(INDArray output, Layer layer) {
++public INDArray backprop(INDArray output, int miniBatchSize) {
+     // Need to reshape FeedForward layer epsilons (2d) to 3d (for use in RNN layer backprop calculations)
+     if (output.rank() != 2)
+         throw new IllegalArgumentException("Invalid input: expect NDArray with rank 2 (i.e., epsilons from feed forward layer)");
+     if (output.ordering() == 'f')
+         output = Shape.toOffsetZeroCopy(output, 'c');
+     int[] shape = output.shape();
+-    int miniBatchSize = layer.getInputMiniBatchSize();
+     INDArray reshaped = output.reshape(miniBatchSize, shape[0] / miniBatchSize, shape[1]);
+     return reshaped.permute(0, 2, 1);
+ }
+\ No newline at end of file

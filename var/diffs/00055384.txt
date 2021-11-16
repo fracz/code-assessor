@@ -1,0 +1,15 @@
+diff --git a/3fc9e60c372a671e78de861a0a19a0bd2730f7a3 b/8f114d12ebfd4b757644ef235db5c6d58941ce7f
+index 3fc9e60c37..8f114d12eb 100644
+--- a/3fc9e60c372a671e78de861a0a19a0bd2730f7a3
++++ b/8f114d12ebfd4b757644ef235db5c6d58941ce7f
+@@ -1,8 +1,8 @@
+ @Test
+ public void testLoadNonExistentResource() throws Exception {
+     YamlPropertiesFactoryBean factory = new YamlPropertiesFactoryBean();
+     factory.setResolutionMethod(ResolutionMethod.OVERRIDE_AND_IGNORE);
+     factory.setResources(new Resource[] { new ClassPathResource("no-such-file.yml") });
+     Properties properties = factory.getObject();
+-    assertEquals(0, properties.size());
++    assertThat(properties.size(), equalTo(0));
+ }
+\ No newline at end of file

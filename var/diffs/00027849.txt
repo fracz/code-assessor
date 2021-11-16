@@ -1,0 +1,16 @@
+diff --git a/dc4bdabc757b72209f1942d6fcff29436c6f379a b/7a0dbbcb161353a4f0f2124830ce067cdab32789
+index dc4bdabc75..7a0dbbcb16 100644
+--- a/dc4bdabc757b72209f1942d6fcff29436c6f379a
++++ b/7a0dbbcb161353a4f0f2124830ce067cdab32789
+@@ -1,5 +1,7 @@
+ @BeforeMethod
+-public void setUp() throws Exception {
+-    when(machineManager.createMachineSync(any(), any(), any(), any(LineConsumer.class))).thenAnswer(invocation -> createMachine((MachineConfig) invocation.getArguments()[0]));
+-    runtimes = new WorkspaceRuntimes(machineManager, eventService);
++public void setUp(Method method) throws Exception {
++    runtimes = spy(new WorkspaceRuntimes(eventService, environmentEngine, wsAgentLauncher));
++    List<Instance> machines = asList(createMachine(true), createMachine(false));
++    when(environmentEngine.start(anyString(), any(Environment.class), anyBoolean(), any())).thenReturn(machines);
++    when(environmentEngine.getMachines(WORKSPACE_ID)).thenReturn(machines);
+ }
+\ No newline at end of file

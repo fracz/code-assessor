@@ -1,0 +1,17 @@
+diff --git a/bd74ab434660d1d46ce28bb22916a75e0594a8e6 b/f1c00c68f03e608f11bc03c50dd8894c0c1c19d1
+index bd74ab4346..f1c00c68f0 100644
+--- a/bd74ab434660d1d46ce28bb22916a75e0594a8e6
++++ b/f1c00c68f03e608f11bc03c50dd8894c0c1c19d1
+@@ -1,6 +1,9 @@
+ @Override
+ public synchronized void commit() throws RollbackException, HeuristicMixedException, HeuristicRollbackException, IllegalStateException, SystemException {
+     // make sure tx not suspended
+-    txManager.commit();
+-    transactionContext.commit();
++    try {
++        transactionContext.commit();
++    } catch (TransactionFailureException e) {
++        throw e.unBoxed();
++    }
+ }
+\ No newline at end of file

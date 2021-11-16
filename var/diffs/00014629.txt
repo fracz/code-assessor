@@ -1,0 +1,25 @@
+diff --git a/0cdef040d7727e327f0ea4a3d5bb0f0e0f9537bb b/e208d22253b026921da01273c736bec582dfb9a0
+index 0cdef040d7..e208d22253 100644
+--- a/0cdef040d7727e327f0ea4a3d5bb0f0e0f9537bb
++++ b/e208d22253b026921da01273c736bec582dfb9a0
+@@ -1,16 +1,17 @@
+-private boolean isNewStringBuffer(PsiExpression expression) {
++private static boolean isNewStringBuffer(PsiExpression expression) {
+     if (expression == null) {
+         return false;
+     } else if (expression instanceof PsiNewExpression) {
+         return true;
+     } else if (expression instanceof PsiMethodCallExpression) {
+-        final PsiReferenceExpression methodExpression = ((PsiMethodCallExpression) expression).getMethodExpression();
++        final PsiMethodCallExpression methodCallExpression = (PsiMethodCallExpression) expression;
++        final PsiReferenceExpression methodExpression = methodCallExpression.getMethodExpression();
+         @NonNls final String methodName = methodExpression.getReferenceName();
+         if (!"append".equals(methodName)) {
+             return false;
+         }
+         final PsiExpression qualifier = methodExpression.getQualifierExpression();
+         return isNewStringBuffer(qualifier);
+     }
+     return false;
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/20b71ba763fae683e088d6399b7628bee13311c8 b/367355f02dd192fe8d360540eada713265586b5d
+index 20b71ba763..367355f02d 100644
+--- a/20b71ba763fae683e088d6399b7628bee13311c8
++++ b/367355f02dd192fe8d360540eada713265586b5d
+@@ -1,10 +1,10 @@
+ private StatementExecutor generateExecutor(final String sql) throws SQLException {
+-    StatementExecutor result = new StatementExecutor(shardingConnection.getShardingContext().getExecutorEngine());
+     sqlRouteResult = new StatementRoutingEngine(shardingConnection.getShardingContext()).route(sql);
++    Collection<StatementExecutorWrapper> statementExecutorWrappers = new LinkedList<>();
+     for (SQLExecutionUnit each : sqlRouteResult.getExecutionUnits()) {
+         Statement statement = getStatement(shardingConnection.getConnection(each.getDataSource(), sqlRouteResult.getSqlStatement().getType()), each.getSql());
+         replayMethodsInvocation(statement);
+-        result.addStatement(new StatementExecutorWrapper(statement, each));
++        statementExecutorWrappers.add(new StatementExecutorWrapper(statement, each));
+     }
+-    return result;
++    return new StatementExecutor(shardingConnection.getShardingContext().getExecutorEngine(), statementExecutorWrappers);
+ }
+\ No newline at end of file

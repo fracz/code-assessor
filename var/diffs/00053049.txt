@@ -1,0 +1,20 @@
+diff --git a/67e1b1d4d04c7b06e2e5678c1732fe08c1d99503 b/a8b54d084013b759a55b168901f82c76b174790e
+index 67e1b1d4d0..a8b54d0840 100644
+--- a/67e1b1d4d04c7b06e2e5678c1732fe08c1d99503
++++ b/a8b54d084013b759a55b168901f82c76b174790e
+@@ -1,11 +1,6 @@
+ @Override
+-public OrderByContext parseSelectOrderByItem(final SQLContext sqlContext) {
+-    OrderByContext result = super.parseSelectOrderByItem(sqlContext);
+-    if (skipIfEqual(OracleKeyword.NULLS)) {
+-        getLexer().nextToken();
+-        if (!skipIfEqual(OracleKeyword.FIRST, OracleKeyword.LAST)) {
+-            throw new ParserUnsupportedException(getLexer().getCurrentToken().getType());
+-        }
+-    }
++protected Optional<OrderByContext> parseSelectOrderByItem(final SQLContext sqlContext) {
++    Optional<OrderByContext> result = super.parseSelectOrderByItem(sqlContext);
++    skipAfterOrderByItem();
+     return result;
+ }
+\ No newline at end of file

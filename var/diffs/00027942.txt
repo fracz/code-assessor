@@ -1,0 +1,15 @@
+diff --git a/f3225be7e6501e76266094914e5eafea36e4b1e8 b/dfcd59faa5d9b6b2e182e46493cd6c3cc58facb5
+index f3225be7e6..dfcd59faa5 100644
+--- a/f3225be7e6501e76266094914e5eafea36e4b1e8
++++ b/dfcd59faa5d9b6b2e182e46493cd6c3cc58facb5
+@@ -1,8 +1,8 @@
++@GET
+ @Path("status")
+-@POST
+ @Produces({ MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN })
+ public Status status(@QueryParam("format") StatusFormat format) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+         return gitConnection.status(format);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/619bf2c33f42e80968a842cc47ba6078b59565fb b/1b89d775f2698fb46ae057c97bd0569b7d4c2901
+index 619bf2c33f..1b89d775f2 100644
+--- a/619bf2c33f42e80968a842cc47ba6078b59565fb
++++ b/1b89d775f2698fb46ae057c97bd0569b7d4c2901
+@@ -1,11 +1,11 @@
+ protected void createEditingActions() {
+-    if (myCanMarkSources) {
+-        ToggleSourcesStateAction markSourcesAction = new ToggleSourcesStateAction(myTree, this, false);
+-        markSourcesAction.registerCustomShortcutSet(new CustomShortcutSet(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.ALT_MASK)), myTree);
+-        myEditingActionsGroup.add(markSourcesAction);
+-    }
+-    if (myCanMarkTestSources) {
+-        setupTestsAction();
++    for (ModuleSourceRootEditHandler<?> editor : myEditHandlers) {
++        ToggleSourcesStateAction action = new ToggleSourcesStateAction(myTree, this, editor);
++        CustomShortcutSet shortcutSet = editor.getMarkRootShortcutSet();
++        if (shortcutSet != null) {
++            action.registerCustomShortcutSet(shortcutSet, myTree);
++        }
++        myEditingActionsGroup.add(action);
+     }
+     setupExcludedAction();
+ }
+\ No newline at end of file

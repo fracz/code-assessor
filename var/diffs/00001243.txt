@@ -1,0 +1,19 @@
+diff --git a/e76a0ca3c319ebe1c468ca263ec78af7a3e26e21 b/6ba3a8126c51220f70abfd90db26ab8e8bae4b21
+index e76a0ca3c3..6ba3a8126c 100644
+--- a/e76a0ca3c319ebe1c468ca263ec78af7a3e26e21
++++ b/6ba3a8126c51220f70abfd90db26ab8e8bae4b21
+@@ -1,12 +1,11 @@
+ // lol duplication
+-private int extractSequenceCount() throws Exception {
++private void extractSequenceCount() throws Exception {
+     if (this.sequenceCount == -1) {
+         int seqCnt = this.sliceInteger(HEADER_PART_SEQCNT_START, HEADER_PART_SEQCNT_LENGTH);
+         if (seqCnt >= 0) {
+             this.sequenceCount = seqCnt;
+         } else {
+             throw new Exception("Could not extract sequence count");
+         }
+     }
+-    return this.sequenceCount;
+ }
+\ No newline at end of file

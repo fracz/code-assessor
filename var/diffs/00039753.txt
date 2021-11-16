@@ -1,0 +1,17 @@
+diff --git a/d4725035351945f54f8a57bdb20c8f71e7791435 b/18fe2531b42051a89c83d95c20426c381c82cbb6
+index d472503535..18fe2531b4 100644
+--- a/d4725035351945f54f8a57bdb20c8f71e7791435
++++ b/18fe2531b42051a89c83d95c20426c381c82cbb6
+@@ -1,8 +1,8 @@
+-private void assertIsNotUniqueIndex(IndexDescriptor descriptor, Iterator<IndexDescriptor> uniqueIndexes) throws IndexBelongsToConstraintException {
++private void assertIsNotUniqueIndex(IndexDescriptor index, Iterator<IndexDescriptor> uniqueIndexes) throws IndexBelongsToConstraintException {
+     while (uniqueIndexes.hasNext()) {
+         IndexDescriptor uniqueIndex = uniqueIndexes.next();
+-        if (uniqueIndex.getPropertyKeyId() == descriptor.getPropertyKeyId()) {
+-            throw new IndexBelongsToConstraintException(descriptor);
++        if (uniqueIndex.equals(index)) {
++            throw new IndexBelongsToConstraintException(index.descriptor());
+         }
+     }
+ }
+\ No newline at end of file

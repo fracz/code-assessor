@@ -1,0 +1,22 @@
+diff --git a/37e974b3072abdbb18a5b99642f825b719299e66 b/43b7859ddb750c31c24720b97cb154794e6a4357
+index 37e974b307..43b7859ddb 100644
+--- a/37e974b3072abdbb18a5b99642f825b719299e66
++++ b/43b7859ddb750c31c24720b97cb154794e6a4357
+@@ -1,5 +1,13 @@
++/*
++     * ------------------------------------ Vertex Handling ------------------------------------
++     */
+ @Override
+-public boolean containsVertex(long vertexid) {
+-    // To change body of implemented methods use File | Settings | File Templates.
+-    return false;
++public boolean containsVertex(final long vertexid) {
++    verifyOpen();
++    if (vertexCache.contains(vertexid) && !vertexCache.get(vertexid, vertexConstructor).isRemoved())
++        return true;
++    else if (graph.containsVertexID(vertexid, txHandle))
++        return true;
++    else
++        return false;
+ }
+\ No newline at end of file

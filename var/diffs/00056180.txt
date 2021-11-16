@@ -1,0 +1,22 @@
+diff --git a/df377e6c0a7814137be3d8b0babd0615c3329870 b/ee3900d98f7f2318c64fe4d98a765a3d4cfac410
+index df377e6c0a..ee3900d98f 100644
+--- a/df377e6c0a7814137be3d8b0babd0615c3329870
++++ b/ee3900d98f7f2318c64fe4d98a765a3d4cfac410
+@@ -1,12 +1,7 @@
+-public void testAfterThrowingWithBinding() {
++@Test(expected = Throwable.class)
++public void testAfterThrowingWithBinding() throws Throwable {
+     Throwable t = new Throwable();
+     mockCollaborator.oneThrowable(t);
+-    mockControl.replay();
+-    try {
+-        this.testBean.exceptional(t);
+-        fail("should throw exception");
+-    } catch (Throwable x) {
+-    // no-op
+-    }
+-    mockControl.verify();
++    replay(mockCollaborator);
++    this.testBean.exceptional(t);
+ }
+\ No newline at end of file

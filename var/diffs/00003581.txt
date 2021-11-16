@@ -1,0 +1,24 @@
+diff --git a/218532c6b11f71082657683564ac1965e724f722 b/075f52f6ba370626a44b00fe93a8521dcd97e443
+index 218532c6b1..075f52f6ba 100644
+--- a/218532c6b11f71082657683564ac1965e724f722
++++ b/075f52f6ba370626a44b00fe93a8521dcd97e443
+@@ -1,13 +1,16 @@
+-public JsonSchemaObject findDefinition(@NotNull VirtualFile requestingSchemaKey, @NotNull final String url, @NotNull final String relativePart, @NotNull final JsonSchemaObject rootObject) {
++public JsonSchemaObject findDefinition(@NotNull VirtualFile requestingSchemaKey, @NotNull final String url, @NotNull final String relativePart) {
+     synchronized (myLock) {
+         ensureInitialized();
+         final VirtualFile key = myId2Key.get(url);
+         if (key != null)
+             myCrossDependencies.putValue(key, requestingSchemaKey);
+         final Map<String, JsonSchemaObject> map = myMap.get(url);
+         if (map != null) {
+-            return JsonSchemaReader.findDefinition(key, relativePart, rootObject, map, null);
++            final JsonSchemaObject found = map.get(relativePart);
++            if (found != null)
++                return found;
++        // return JsonSchemaReader.findRelativeDefinition(relativePart, rootObject);
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/2486914c71b74828ea8e3f7c9e30d8abd527e10e b/86c6e29c6f52e16eca3359216d869f0e0a4a5109
+index 2486914c71..86c6e29c6f 100644
+--- a/2486914c71b74828ea8e3f7c9e30d8abd527e10e
++++ b/86c6e29c6f52e16eca3359216d869f0e0a4a5109
+@@ -1,9 +1,9 @@
+-static boolean isUpgraded(HttpRequestBuilder httpClient, String index) throws Exception {
++static boolean isUpgraded(Client client, String index) throws Exception {
+     ESLogger logger = Loggers.getLogger(UpgradeTest.class);
+     int toUpgrade = 0;
+-    for (UpgradeStatus status : getUpgradeStatus(httpClient, upgradePath(index))) {
+-        logger.info("Index: " + status.indexName + ", total: " + status.totalBytes + ", toUpgrade: " + status.toUpgradeBytes);
+-        toUpgrade += status.toUpgradeBytes;
++    for (IndexUpgradeStatus status : getUpgradeStatus(client, index)) {
++        logger.info("Index: " + status.getIndex() + ", total: " + status.getTotalBytes() + ", toUpgrade: " + status.getToUpgradeBytes());
++        toUpgrade += status.getToUpgradeBytes();
+     }
+     return toUpgrade == 0;
+ }
+\ No newline at end of file

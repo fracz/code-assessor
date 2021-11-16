@@ -1,0 +1,15 @@
+diff --git a/e40aced6df1fa5dcebc9c10afe8de9706608e322 b/dbef7989a09640da9f5657ae9356fb26faa18bc1
+index e40aced6df..dbef7989a0 100644
+--- a/e40aced6df1fa5dcebc9c10afe8de9706608e322
++++ b/dbef7989a09640da9f5657ae9356fb26faa18bc1
+@@ -1,7 +1,6 @@
+ @Override
+-public void updateConnectionCount(FileDownloadModel model, int count) {
+-    model.setConnectionCount(count);
++public void updateConnectionCount(int id, int count) {
+     ContentValues values = new ContentValues();
+     values.put(FileDownloadModel.CONNECTION_COUNT, count);
+-    db.update(TABLE_NAME, values, FileDownloadModel.ID + " = ? ", new String[] { Integer.toString(model.getId()) });
++    db.update(TABLE_NAME, values, FileDownloadModel.ID + " = ? ", new String[] { Integer.toString(id) });
+ }
+\ No newline at end of file

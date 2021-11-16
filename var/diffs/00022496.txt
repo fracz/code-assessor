@@ -1,0 +1,29 @@
+diff --git a/b6043b4dcc5e7ff16d92c537e5607227cc0c6cff b/4d25318aa563efe23e631a6711a86da2df4e9e15
+index b6043b4dcc..4d25318aa5 100644
+--- a/b6043b4dcc5e7ff16d92c537e5607227cc0c6cff
++++ b/4d25318aa563efe23e631a6711a86da2df4e9e15
+@@ -1,14 +1,16 @@
+ @Override
+ public long getItemId(int position) {
+-    if (position == DEST_ADAPTER_POSITION_SAVE_AS_PDF) {
+-        return DEST_ADAPTER_ITEM_ID_SAVE_AS_PDF;
+-    }
+     if (mPrinters.isEmpty()) {
+-        if (position == DEST_ADAPTER_POSITION_SEARCHING_FOR_PRINTERS) {
+-            return DEST_ADAPTER_ITEM_ID_SEARCHING_FOR_PRINTERS;
++        if (position == 0) {
++            return DEST_ADAPTER_ITEM_ID_SAVE_AS_PDF;
++        }
++    } else {
++        if (position == 1) {
++            return DEST_ADAPTER_ITEM_ID_SAVE_AS_PDF;
++        }
++        if (position == getCount() - 1) {
++            return DEST_ADAPTER_ITEM_ID_ALL_PRINTERS;
+         }
+-    } else if (position == getCount() - 1) {
+-        return DEST_ADAPTER_ITEM_ID_ALL_PRINTERS;
+     }
+     return position;
+ }
+\ No newline at end of file

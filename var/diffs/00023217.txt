@@ -1,0 +1,24 @@
+diff --git a/533617a702b7668621011d91b0fb5d3b41b69da1 b/9bfa56c34fd5bfcbb9e147a6af1e9e9b4209c185
+index 533617a702..9bfa56c34f 100644
+--- a/533617a702b7668621011d91b0fb5d3b41b69da1
++++ b/9bfa56c34fd5bfcbb9e147a6af1e9e9b4209c185
+@@ -1,15 +1,10 @@
+ @Override
+ protected void onResume() {
+     super.onResume();
+     registerReceiver(mBatteryReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+-    boolean umsOn = false;
+     try {
+-        IMountService mountService = IMountService.Stub.asInterface(ServiceManager.getService("mount"));
+-        if (mountService != null) {
+-            umsOn = mountService.getVolumeShared(Environment.getExternalStorageDirectory().getPath(), "ums");
+-        }
+-    } catch (android.os.RemoteException exc) {
+-    // pass
++        switchDisplay(mStorageManager.isUsbMassStorageEnabled());
++    } catch (Exception ex) {
++        Log.e(TAG, "Failed to read UMS enable state", ex);
+     }
+-    switchDisplay(umsOn);
+ }
+\ No newline at end of file

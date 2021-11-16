@@ -1,0 +1,11 @@
+diff --git a/3cfa1ff912e29bb7a0588dcaf61f43e76adb5f02 b/d73a028b27154c8e56be0e655faf8ab8fbbb7870
+index 3cfa1ff912..d73a028b27 100644
+--- a/3cfa1ff912e29bb7a0588dcaf61f43e76adb5f02
++++ b/d73a028b27154c8e56be0e655faf8ab8fbbb7870
+@@ -1,3 +1,4 @@
+ private String getStringToReplace() {
+-    return (String) myReplaceComboBox.getEditor().getItem();
++    String item = (String) myReplaceComboBox.getEditor().getItem();
++    return item == null ? "" : item;
+ }
+\ No newline at end of file

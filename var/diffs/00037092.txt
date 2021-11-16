@@ -1,0 +1,17 @@
+diff --git a/4d142b3e4757e29c46b5a4b7999fa529bb6a27a6 b/ec231c7dc3bb13371d74d8d3e3ee68bad083b194
+index 4d142b3e47..ec231c7dc3 100644
+--- a/4d142b3e4757e29c46b5a4b7999fa529bb6a27a6
++++ b/ec231c7dc3bb13371d74d8d3e3ee68bad083b194
+@@ -1,7 +1,9 @@
+-private void preparePlugin(ProfilerPlugin plugin, ProfilerPluginSetupContext context) {
++private GuardInstrumentContext preparePlugin(ProfilerPlugin plugin, InstrumentContext context) {
++    GuardInstrumentContext guardInstrumentContext = new GuardInstrumentContext(context);
+     if (plugin instanceof TransformTemplateAware) {
+         logger.info("setTransformTemplate");
+-        TransformTemplate transformTemplate = new DefaultTransformTemplate(context);
++        final TransformTemplate transformTemplate = new TransformTemplate(guardInstrumentContext);
+         ((TransformTemplateAware) plugin).setTransformTemplate(transformTemplate);
+     }
++    return guardInstrumentContext;
+ }
+\ No newline at end of file

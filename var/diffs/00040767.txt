@@ -1,0 +1,28 @@
+diff --git a/00eadbc61c458b348a804b553a636cf05b597734 b/ec21203d597f6bfbcf4f0c3059975574dd7f83db
+index 00eadbc61c..ec21203d59 100644
+--- a/00eadbc61c458b348a804b553a636cf05b597734
++++ b/ec21203d597f6bfbcf4f0c3059975574dd7f83db
+@@ -1,21 +1,21 @@
+ private void startCommunication() {
+     if (this.thread != null && this.thread.isAlive()) {
+         logger.error("Start communication canceled: communication thread is still alive");
+         return;
+     }
+     // start new thread
+     this.thread = new Thread(new Runnable() {
+
+         @Override
+         public void run() {
+             logger.debug("Communication thread started");
+             SatelModule.this.communicationLoop(CommunicationWatchdog.this);
+             logger.debug("Communication thread stopped");
+         }
+     });
+     this.thread.start();
+     // if module is not initialized yet, send version command
+     if (!SatelModule.this.isInitialized()) {
+-        SatelModule.this.sendCommand(IntegraVersionCommand.buildMessage());
++        SatelModule.this.sendCommand(new IntegraVersionCommand());
+     }
+ }
+\ No newline at end of file

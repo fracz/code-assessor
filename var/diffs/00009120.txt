@@ -1,0 +1,14 @@
+diff --git a/f07751f7e0737f7c28d1b4290e10690f18ba576e b/e2df585a2ba15fef9a75cb870e64b16b519d22d9
+index f07751f7e0..e2df585a2b 100644
+--- a/f07751f7e0737f7c28d1b4290e10690f18ba576e
++++ b/e2df585a2ba15fef9a75cb870e64b16b519d22d9
+@@ -1,7 +1,3 @@
+ private static boolean isNullLiteralExpression(PsiElement expr) {
+-    if (expr instanceof PsiLiteralExpression) {
+-        final PsiLiteralExpression literalExpression = (PsiLiteralExpression) expr;
+-        return PsiType.NULL.equals(literalExpression.getType());
+-    }
+-    return false;
++    return expr instanceof PsiExpression && ExpressionUtils.isNullLiteral((PsiExpression) expr);
+ }
+\ No newline at end of file

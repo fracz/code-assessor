@@ -1,0 +1,19 @@
+diff --git a/a5db6af6ca46342b941eb49f4544e9dc99807e00 b/cbbdf1ecd802c4e652f09f7f6508e4c2ba7933e1
+index a5db6af6ca..cbbdf1ecd8 100644
+--- a/a5db6af6ca46342b941eb49f4544e9dc99807e00
++++ b/cbbdf1ecd802c4e652f09f7f6508e4c2ba7933e1
+@@ -1,12 +1,12 @@
+ @Test
+ public void shouldCheckoutNewMaterial() throws Exception {
+     GoConfigMother mother = new GoConfigMother();
+     PipelineConfig pipelineConfig = mother.cruiseConfigWithOnePipelineGroup().getAllPipelineConfigs().get(0);
+-    HgMaterial material = addPipelineToRepositoryAndPush("pipe1.gocd.xml", pipelineConfig);
++    configTestRepo.addPipelineToRepositoryAndPush("pipe1.gocd.xml", pipelineConfig);
+     materialUpdateService.updateMaterial(material);
+     // time for messages to pass through all services
+     waitForMaterialNotInProgress();
+     File flyweightDir = materialRepository.folderFor(material);
+     Assert.assertThat(flyweightDir.exists(), is(true));
+     Assert.assertThat(new File(flyweightDir, "pipe1.gocd.xml").exists(), is(true));
+ }
+\ No newline at end of file

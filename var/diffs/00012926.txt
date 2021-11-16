@@ -1,0 +1,21 @@
+diff --git a/9a0966bb15aa6d5c8262c3df507932d9e8e2c999 b/d482bc7973789a9deb177cd5bf6918e7d89ecc7b
+index 9a0966bb15..d482bc7973 100644
+--- a/9a0966bb15aa6d5c8262c3df507932d9e8e2c999
++++ b/d482bc7973789a9deb177cd5bf6918e7d89ecc7b
+@@ -1,12 +1,10 @@
+ /**
+  * Initializes the GUI.
+  * <p/>
+  * Creating all the swing controls, panels etc.
+  */
+ private void init() {
+-    JTabbedPane pane = new JTabbedPane();
+-    pane.addTab("Settings", initSettingPanel());
+-    pane.addTab("Edit Template", initEditTemplatePanel());
+-    pane.addTab("Template Quick Selection List", initTemplateQuickSelectionPanel());
+-    add(pane);
++    JPanel header = new JPanel(new BorderLayout());
++    header.add(initSettingPanel(), BorderLayout.WEST);
++    add(header, BorderLayout.NORTH);
+ }
+\ No newline at end of file

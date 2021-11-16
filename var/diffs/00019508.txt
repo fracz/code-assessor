@@ -1,0 +1,16 @@
+diff --git a/9992fd367887d4df7d21194dd6ba73ffbdcc9823 b/604b7cbadf7ec8bfccaab04521ad357a1086fb1a
+index 9992fd3678..604b7cbadf 100644
+--- a/9992fd367887d4df7d21194dd6ba73ffbdcc9823
++++ b/604b7cbadf7ec8bfccaab04521ad357a1086fb1a
+@@ -1,9 +1,7 @@
+ @Override
+ public KeyframeAnimation<ScaleXY> createAnimation() {
+     if (!hasAnimation()) {
+         return new StaticKeyframeAnimation<>(initialValue);
+     }
+-    ScaleKeyframeAnimation animation = new ScaleKeyframeAnimation(duration, composition, keyTimes, keyValues, interpolators);
+-    animation.setStartDelay(delay);
+-    return animation;
++    return new ScaleKeyframeAnimation(keyframes);
+ }
+\ No newline at end of file

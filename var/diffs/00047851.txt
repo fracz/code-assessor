@@ -1,0 +1,11 @@
+diff --git a/1b1359946a134a8c42012b56f568ff0820ab6bb7 b/dab41772bd4699eef7e618b5ef88bc7706772a16
+index 1b1359946a..dab41772bd 100644
+--- a/1b1359946a134a8c42012b56f568ff0820ab6bb7
++++ b/dab41772bd4699eef7e618b5ef88bc7706772a16
+@@ -1,4 +1,4 @@
+ @Test
+ public void shouldPreferWidthOverHeight() throws Exception {
+-    assertEquals("sw300dp-sh200dp", ResBundle.pick(asValues("", "sw200dp", "sw200dp-sh300dp", "sw300dp-sh200dp", "sh300dp"), "sw320dp-sh320dp").asString());
++    assertEquals("sw300dp-sh200dp", asResMap("", "sw200dp", "sw200dp-sh300dp", "sw300dp-sh200dp", "sh300dp").pick(resName, "sw320dp-sh320dp").asString());
+ }
+\ No newline at end of file

@@ -1,0 +1,30 @@
+diff --git a/ad6b0f4d99f763b229da1c045c160fc0b429ade4 b/d6298cbca69c1ccf3ca7d7519bed06204580eb50
+index ad6b0f4d99..d6298cbca6 100644
+--- a/ad6b0f4d99f763b229da1c045c160fc0b429ade4
++++ b/d6298cbca69c1ccf3ca7d7519bed06204580eb50
+@@ -1,20 +1,19 @@
+ /**
+  * Creates a new directory specified by the path in argv, including any parent folders that are
+  * required. This method fails if a directory or file with the same path already exists.
+  *
+  * @param path The TachyonURI path as the input of the command
+  * @return 0 if command is successful, -1 if an error occurred.
+  */
+ public int mkdir(TachyonURI path) {
+     try {
+-        mTfs.mkdirs(path, TachyonFileSystem.RECURSIVE);
++        MkdirOptions options = new MkdirOptions.Builder(mTachyonConf).setRecursive(true).build();
++        mTfs.mkdir(path, options);
+         System.out.println("Successfully created directory " + path);
+         return 0;
+-    } catch (IOException ioe) {
++    } catch (IOException e) {
+         return -1;
+-    } catch (FileAlreadyExistException e) {
+-        return -1;
+-    } catch (InvalidPathException e) {
++    } catch (TachyonException e) {
+         return -1;
+     }
+ }
+\ No newline at end of file

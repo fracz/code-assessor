@@ -1,0 +1,13 @@
+diff --git a/4b06c4294bf08666d2a9998666aa966705ad71ef b/5ca348f4e537e0d06b107a7915972fda22dcb0ed
+index 4b06c4294b..5ca348f4e5 100644
+--- a/4b06c4294bf08666d2a9998666aa966705ad71ef
++++ b/5ca348f4e537e0d06b107a7915972fda22dcb0ed
+@@ -1,5 +1,4 @@
+ private static void updateGetConnectionMethod(ClassPool classPool, CtClass cc) throws Exception {
+-    CtMethod serviceMethod = cc.getDeclaredMethod("getConnection", null);
+-    logger.info("Changing getConnection method ");
+-    serviceMethod.insertAfter(getGetConnectionMethodAfterInsertCode());
++    CtMethod method = cc.getDeclaredMethod("getConnection", null);
++    method.insertAfter("{" + TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".putConnection(" + TomcatProfilerConstant.REQ_DATA_TYPE_DB_GET_CONNECTION + ",$0.getUrl()); }");
+ }
+\ No newline at end of file

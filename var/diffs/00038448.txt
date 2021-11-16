@@ -1,0 +1,24 @@
+diff --git a/282c523f2b23484f2ef2a62c93159ce395bae5dd b/671053d12302508496f8bc20cacd59aeac297337
+index 282c523f2b..671053d123 100644
+--- a/282c523f2b23484f2ef2a62c93159ce395bae5dd
++++ b/671053d12302508496f8bc20cacd59aeac297337
+@@ -1,15 +1,15 @@
+ @Test
+-public void shouldBeAbleToStorePropertiesInAnExistingNode() throws DatabaseBlockedException, PropertyValueException, NodeNotFoundException {
++public void shouldBeAbleToStorePropertiesInAnExistingNode() throws PropertyValueException, NodeNotFoundException {
+     long nodeId = graphdbHelper.createNode();
+     Map<String, Object> properties = new HashMap<String, Object>();
+     properties.put("foo", "bar");
+     properties.put("baz", 17);
+     actions.setAllNodeProperties(nodeId, properties);
+-    Transaction tx = database.graph.beginTx();
++    Transaction tx = database.getGraph().beginTx();
+     try {
+-        Node node = database.graph.getNodeById(nodeId);
++        Node node = database.getGraph().getNodeById(nodeId);
+         assertHasProperties(node, properties);
+     } finally {
+         tx.finish();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/deb4dcea61ef4cfb03861cd2fc5f16e038fec2de b/ba6070e13d24b00ac8ee81611afd9217eca3994b
+index deb4dcea61..ba6070e13d 100644
+--- a/deb4dcea61ef4cfb03861cd2fc5f16e038fec2de
++++ b/ba6070e13d24b00ac8ee81611afd9217eca3994b
+@@ -1,4 +1,4 @@
+ @Override
+-public Iterator<NodePropertyConstraint> constraintsGetForLabelAndPropertyKey(int labelId, final int propertyKeyId) {
+-    return schemaStorage.schemaRulesForNodes(NODE_RULE_TO_CONSTRAINT, NodePropertyConstraintRule.class, labelId, rule -> rule.containsPropertyKeyId(propertyKeyId));
++public Iterator<NodePropertyConstraint> constraintsGetForLabelAndPropertyKey(NodePropertyDescriptor descriptor) {
++    return schemaStorage.schemaRulesForNodes(NODE_RULE_TO_CONSTRAINT, NodePropertyConstraintRule.class, descriptor.getLabelId(), rule -> rule.matches(descriptor));
+ }
+\ No newline at end of file

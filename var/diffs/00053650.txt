@@ -1,0 +1,16 @@
+diff --git a/eb3a835998560904092f09f851b23f4e3af284ad b/000960d90f897af82518ea814a22f95a9b13cac4
+index eb3a835998..000960d90f 100644
+--- a/eb3a835998560904092f09f851b23f4e3af284ad
++++ b/000960d90f897af82518ea814a22f95a9b13cac4
+@@ -1,9 +1,8 @@
+ public SQLExpr bitXorRest(SQLExpr expr) {
+     if (getLexer().equalToken(Token.CARET)) {
+         getLexer().nextToken();
+-        SQLExpr rightExp = primary();
+-        expr = new SQLBinaryOpExpr(expr, SQLBinaryOperator.BitwiseXor, rightExp, getDbType());
++        expr = new SQLBinaryOpExpr(expr, SQLBinaryOperator.BitwiseXor, primary(), getDbType());
+         expr = bitXorRest(expr);
+     }
+     return expr;
+ }
+\ No newline at end of file

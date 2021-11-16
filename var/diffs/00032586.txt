@@ -1,0 +1,24 @@
+diff --git a/6de9ad20c0216486b7397472907bd888cdbb4a4b b/998ac50fe1733dbe83143965f99a247a21334418
+index 6de9ad20c0..998ac50fe1 100644
+--- a/6de9ad20c0216486b7397472907bd888cdbb4a4b
++++ b/998ac50fe1733dbe83143965f99a247a21334418
+@@ -1,12 +1,12 @@
+ @Override
+-public List<AstError> visitAnnotation(AnnotationTree annotationTree, VisitorState visitorState) {
+-    List<AstError> result = new ArrayList<AstError>();
+-    for (ErrorChecker<AnnotationTree> annotationChecker : annotationCheckers) {
+-        AstError error = annotationChecker.check(annotationTree, visitorState.withPath(getCurrentPath()));
+-        if (error != null) {
+-            result.add(error);
++public List<MatchDescription> visitAnnotation(AnnotationTree annotationTree, VisitorState visitorState) {
++    List<MatchDescription> result = new ArrayList<MatchDescription>();
++    for (DescribingMatcher<AnnotationTree> annotationChecker : annotationCheckers) {
++        VisitorState state = visitorState.withPath(getCurrentPath());
++        if (annotationChecker.matches(annotationTree, state)) {
++            result.add(annotationChecker.describe(annotationTree, state));
+         }
+     }
+     super.visitAnnotation(annotationTree, visitorState);
+     return result;
+ }
+\ No newline at end of file

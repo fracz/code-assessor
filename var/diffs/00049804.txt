@@ -1,0 +1,15 @@
+diff --git a/d5fea2fb5e5e71225c2c46d0cd596ead491bea43 b/bafb96e54c4f11d42c6d849cfd2500e5e15d7f9e
+index d5fea2fb5e..bafb96e54c 100644
+--- a/d5fea2fb5e5e71225c2c46d0cd596ead491bea43
++++ b/bafb96e54c4f11d42c6d849cfd2500e5e15d7f9e
+@@ -1,8 +1,8 @@
+ @Override
+ public Collection<DBCAttributeMetaData> getAttributesMetaData() {
+     List<DBCAttributeMetaData> attributes = new ArrayList<DBCAttributeMetaData>();
+-    for (DBDAttributeBinding column : this.columns) {
++    for (DBDAttributeBinding column : model.getVisibleColumns()) {
+         attributes.add(column.getMetaAttribute());
+     }
+     return attributes;
+ }
+\ No newline at end of file

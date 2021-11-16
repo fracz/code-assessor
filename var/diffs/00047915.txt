@@ -1,0 +1,18 @@
+diff --git a/6546c0ec786bb5e6f865dbdeeb84a6a3464b2e46 b/848798c3857f34e299cc2e0f408e12c94048371e
+index 6546c0ec78..848798c385 100644
+--- a/6546c0ec786bb5e6f865dbdeeb84a6a3464b2e46
++++ b/848798c3857f34e299cc2e0f408e12c94048371e
+@@ -1,10 +1,4 @@
+ public static void resetAll() {
+-    sThreadLocal = new ThreadLocal<Looper>() {
+-
+-        @Override
+-        protected Looper initialValue() {
+-            return newInstanceOf(Looper.class);
+-        }
+-    };
+-    MAIN_LOOPER = sThreadLocal.get();
++    shadowOf(MAIN_LOOPER).reset();
++    shadowOf(MY_LOOPER).reset();
+ }
+\ No newline at end of file

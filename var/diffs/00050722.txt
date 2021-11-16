@@ -1,0 +1,15 @@
+diff --git a/0196321db4d5b660331f00a20e42758126f6c181 b/8a7bcb076c47175f8fd5b0cae626e8e1ab21d746
+index 0196321db4..8a7bcb076c 100644
+--- a/0196321db4d5b660331f00a20e42758126f6c181
++++ b/8a7bcb076c47175f8fd5b0cae626e8e1ab21d746
+@@ -1,5 +1,8 @@
+ @Override
+ public void updateValueView() {
+     spreadsheet.redrawGrid();
+-    previewValue(false);
++    spreadsheet.updateScrollbars();
++    if (curAttribute != null) {
++        spreadsheet.showColumn(curAttribute);
++    }
+ }
+\ No newline at end of file

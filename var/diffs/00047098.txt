@@ -1,0 +1,10 @@
+diff --git a/6d5412c05cb0a1a545b48691040ce6ea02b585b7 b/606f195a281b2cbaf90168d6b8e575d296f93d8a
+index 6d5412c05c..606f195a28 100644
+--- a/6d5412c05cb0a1a545b48691040ce6ea02b585b7
++++ b/606f195a281b2cbaf90168d6b8e575d296f93d8a
+@@ -1,3 +1,3 @@
+ public void addPublication(final DriverPublication publication) {
+-    publicationBySessionIdMap.getOrDefault(publication.sessionId(), Int2ObjectHashMap::new).put(publication.streamId(), publication);
++    publicationByCompoundIdMap.put(publication.sessionId(), publication.streamId(), publication);
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/2be56a5daa97bbc8d4cbbaac4e8a46cd7ebdfe01 b/6467977801208ca9749d68e792d3aa654c9c5032
+index 2be56a5daa..6467977801 100644
+--- a/2be56a5daa97bbc8d4cbbaac4e8a46cd7ebdfe01
++++ b/6467977801208ca9749d68e792d3aa654c9c5032
+@@ -1,6 +1,6 @@
+ @Test
+ public void handleMissingValue() throws Exception {
+     BindingContext bindingContext = new BindingContext();
+     Mono<Object> mono = this.resolver.resolveArgument(this.paramNamedString, bindingContext, this.exchange);
+-    TestSubscriber.subscribe(mono).assertError(ServerErrorException.class);
++    ScriptedSubscriber.create().expectNextCount(0).expectError(ServerErrorException.class).verify(mono);
+ }
+\ No newline at end of file

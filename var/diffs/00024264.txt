@@ -1,0 +1,23 @@
+diff --git a/069227969caf1e10bb65ee1985b311b264917b3d b/3bea180063a05082fd5bc01342510afe28029660
+index 069227969c..3bea180063 100644
+--- a/069227969caf1e10bb65ee1985b311b264917b3d
++++ b/3bea180063a05082fd5bc01342510afe28029660
+@@ -1,10 +1,9 @@
+-private static ColumnFamily updatesWithPaxosTime(ColumnFamily updates, UUID ballot) {
+-    ColumnFamily cf = updates.cloneMeShallow();
++private static PartitionUpdate updatesWithPaxosTime(PartitionUpdate update, UUID ballot) {
+     long t = UUIDGen.microsTimestamp(ballot);
+-    // For the tombstones, we use t-1 so that when insert a collection literall, the range tombstone that deletes the previous values of
+-    // the collection and we want that to have a lower timestamp and our new values. Since tombstones wins over normal insert, using t-1
+-    // should not be a problem in general (see #6069).
+-    cf.deletionInfo().updateAllTimestamp(t - 1);
+-    for (Cell cell : updates) cf.addAtom(cell.withUpdatedTimestamp(t));
+-    return cf;
++    // Using t-1 for tombstones so deletion doesn't trump newly inserted data (#6069)
++    PartitionUpdate newUpdate = new PartitionUpdate(update.metadata(), update.partitionKey(), update.deletionInfo().updateAllTimestamp(t - 1), update.columns(), update.rowCount());
++    if (!update.staticRow().isEmpty())
++        copyWithUpdatedTimestamp(update.staticRow(), newUpdate.staticWriter(), t);
++    for (Row row : update) copyWithUpdatedTimestamp(row, newUpdate.writer(), t);
++    return newUpdate;
+ }
+\ No newline at end of file

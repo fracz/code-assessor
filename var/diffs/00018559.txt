@@ -1,0 +1,12 @@
+diff --git a/8750b0c42b34eb306b4dbbd1125818f2bd88f847 b/058db514b1031e959ba2f988a4b180afed09dff0
+index 8750b0c42b..058db514b1 100644
+--- a/8750b0c42b34eb306b4dbbd1125818f2bd88f847
++++ b/058db514b1031e959ba2f988a4b180afed09dff0
+@@ -1,4 +1,5 @@
+ @Override
+ public boolean hasComplete() {
+-    return state.get() == State.COMPLETE;
++    Object o = state.get();
++    return o != null && !NotificationLite.isError(o);
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/fd7cbfc0b6a9da33c3d8d6f76765722b38da76e1 b/f4036e490171d043b1648849a6aa648c744b41a0
+index fd7cbfc0b6..f4036e4901 100644
+--- a/fd7cbfc0b6a9da33c3d8d6f76765722b38da76e1
++++ b/f4036e490171d043b1648849a6aa648c744b41a0
+@@ -1,6 +1,5 @@
+ @Test
+-public void testStringToEnum() {
+-    StringToEnum c = new StringToEnum();
+-    assertEquals(Foo.BAR, c.convert("BAR", Foo.class));
+-    assertEquals("BAR", c.convertBack(Foo.BAR, String.class));
++public void testStringToEnum() throws Exception {
++    Converter<String, Foo> c = new StringToEnumFactory().getConverter(Foo.class);
++    assertEquals(Foo.BAR, c.convert("BAR"));
+ }
+\ No newline at end of file

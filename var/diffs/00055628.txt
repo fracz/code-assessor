@@ -1,0 +1,15 @@
+diff --git a/d8446e7799c8c514eb182c01f5707aa7f8565540 b/3783290f28048f25ff94ec230fc38286ffc6b3fa
+index d8446e7799..3783290f28 100644
+--- a/d8446e7799c8c514eb182c01f5707aa7f8565540
++++ b/3783290f28048f25ff94ec230fc38286ffc6b3fa
+@@ -1,8 +1,8 @@
+ @Test
+ public void testClassPathResourceWithImport() {
+-    XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("org/springframework/beans/factory/xml/resource.xml"));
++    XmlBeanFactory xbf = new XmlBeanFactory(RESOURCE_CONTEXT);
+     // comes from "resourceImport.xml"
+     xbf.getBean("resource1", ResourceTestBean.class);
+     // comes from "resource.xml"
+     xbf.getBean("resource2", ResourceTestBean.class);
+ }
+\ No newline at end of file

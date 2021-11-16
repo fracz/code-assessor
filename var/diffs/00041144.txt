@@ -1,0 +1,17 @@
+diff --git a/90f87d0008883800c09eea52426546732274e2cf b/6c73f3a0786ccc29af94ea3f0a117e498dccb127
+index 90f87d0008..6c73f3a078 100644
+--- a/90f87d0008883800c09eea52426546732274e2cf
++++ b/6c73f3a0786ccc29af94ea3f0a117e498dccb127
+@@ -1,8 +1,7 @@
+-private void init() {
+-    final ODatabaseDocument db = ODatabaseRecordThreadLocal.INSTANCE.get();
+-    if (db.getMetadata().getSchema().existsClass(OSequence.CLASS_NAME)) {
++private void init(ODatabaseDocumentInternal database) {
++    if (database.getMetadata().getSchema().existsClass(OSequence.CLASS_NAME)) {
+         return;
+     }
+-    final OClassImpl sequenceClass = (OClassImpl) db.getMetadata().getSchema().createClass(OSequence.CLASS_NAME);
++    final OClassImpl sequenceClass = (OClassImpl) database.getMetadata().getSchema().createClass(OSequence.CLASS_NAME);
+     OSequence.initClass(sequenceClass);
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/7a8ef8ab06c3b739516f78c6d3d45aee7ed7db63 b/950eb1d7de022d7ba9e32ca8cc52f8b1319eca01
+index 7a8ef8ab06..950eb1d7de 100644
+--- a/7a8ef8ab06c3b739516f78c6d3d45aee7ed7db63
++++ b/950eb1d7de022d7ba9e32ca8cc52f8b1319eca01
+@@ -1,6 +1,5 @@
+ @Override
+ public void addBatch() throws SQLException {
+-    for (PreparedStatement each : routedStatements) {
+-        each.addBatch();
+-    }
++    Preconditions.checkArgument(1 == routedStatements.size(), "Cannot support addBatch for DDL");
++    routedStatements.iterator().next().addBatch();
+ }
+\ No newline at end of file

@@ -1,0 +1,33 @@
+diff --git a/69bb623a819ff890513b0d81254696984c662042 b/3a9a65b1ce25c8e06133139b35e30e308e4bb80d
+index 69bb623a81..3a9a65b1ce 100644
+--- a/69bb623a819ff890513b0d81254696984c662042
++++ b/3a9a65b1ce25c8e06133139b35e30e308e4bb80d
+@@ -1,20 +1,16 @@
+ /**
+  * Collect commits (if not yet collected) in background and invoke the given runnable after completion.
+  * @param onComplete Executed after completed (successful or failed) execution of the task.
+  * It is executed in the current thread, so if you need it on AWT, include "invokeLater" to the handler.
+  */
+-void collect(@Nullable ResultHandler onComplete) {
++void collect(@NotNull GitPushSpecs pushSpecs, @Nullable ResultHandler onComplete) {
+     synchronized (STATE_LOCK) {
+-        if (myState == State.READY || myState == State.EMPTY) {
+-            // start initial collecting or refresh already collected info
+-            myState = State.BUSY;
+-            ApplicationManager.getApplication().executeOnPooledThread(new Updater());
+-        } else if (myState == State.BUSY) {
+-            // somebody already started collection => we request more up-to-date info afterwards.
+-            refreshWaiters++;
+-        }
++        // if several collect requests go one by one, it is enough to have only one update: it will receive the up-to-date information.
++        // so we are removing any other pending requests.
++        myProcessor.clear();
++        myProcessor.add(pushSpecs);
+         // register the action that will be run after collection completes.
+-        // important to add at least fake action not to break the order of [collection requested-execute post-action].
+-        completionHandlers.offer(onComplete != null ? onComplete : EMPTY_RESULT_HANDLER);
++        // important to add at least a fake action not to break the order of [collection requested-execute post-action].
++        myResultHandlers.offer(onComplete != null ? onComplete : EMPTY_RESULT_HANDLER);
+     }
+ }
+\ No newline at end of file

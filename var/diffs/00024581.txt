@@ -1,0 +1,13 @@
+diff --git a/8c4f1f11de107e857eb298fbf39d156be3d49b0c b/04255e6ca551011989d981ed908dc94948062d25
+index 8c4f1f11de..04255e6ca5 100644
+--- a/8c4f1f11de107e857eb298fbf39d156be3d49b0c
++++ b/04255e6ca551011989d981ed908dc94948062d25
+@@ -1,5 +1,3 @@
+-protected boolean recordLast(Row last) {
+-    lastReturnedKey = last.key;
+-    // We return false as that means "can that last be in the next query?"
+-    return false;
++protected void recordLast(DecoratedKey key, Row last) {
++    lastReturnedKey = key;
+ }
+\ No newline at end of file

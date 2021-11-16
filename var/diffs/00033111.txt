@@ -1,0 +1,17 @@
+diff --git a/aa70eb1bd48cc7968ca7b3fe00c082d103b51c8f b/a489f2ad981aa7311b6a11a69d338d8f8e7b8b83
+index aa70eb1bd4..a489f2ad98 100644
+--- a/aa70eb1bd48cc7968ca7b3fe00c082d103b51c8f
++++ b/a489f2ad981aa7311b6a11a69d338d8f8e7b8b83
+@@ -1,10 +1,10 @@
+ private java.nio.channels.FileLock lockInformationRegion(LockMode lockMode, long waitUntil) throws IOException, InterruptedException {
+     do {
+-        java.nio.channels.FileLock fileLock = lockRegion(lockMode, INFORMATION_REGION_POS, INFORMATION_REGION_SIZE - INFORMATION_REGION_POS);
++        java.nio.channels.FileLock fileLock = fileLockAccess.tryLockOwnerInfo(lockMode == LockMode.Shared);
+         if (fileLock != null) {
+             return fileLock;
+         }
+         Thread.sleep(200L);
+     } while (System.currentTimeMillis() < waitUntil);
+     return null;
+ }
+\ No newline at end of file

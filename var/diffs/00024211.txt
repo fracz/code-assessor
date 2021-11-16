@@ -1,0 +1,23 @@
+diff --git a/783a56a593ec3955782f709bbd23539e2ee2765d b/d570622447ad129be9e2d8a59c5c2079390f3910
+index 783a56a593..d570622447 100644
+--- a/783a56a593ec3955782f709bbd23539e2ee2765d
++++ b/d570622447ad129be9e2d8a59c5c2079390f3910
+@@ -1,12 +1,8 @@
+-public List<ColumnOrSuperColumn> thriftifyColumns(Collection<Cell> cells, boolean reverseOrder, long now) {
+-    ArrayList<ColumnOrSuperColumn> thriftColumns = new ArrayList<ColumnOrSuperColumn>(cells.size());
+-    for (Cell cell : cells) {
+-        if (!cell.isLive(now))
+-            continue;
+-        thriftColumns.add(thriftifyColumnWithName(cell, cell.name().toByteBuffer()));
++public List<ColumnOrSuperColumn> thriftifyColumns(CFMetaData metadata, Iterator<LegacyLayout.LegacyCell> cells) {
++    ArrayList<ColumnOrSuperColumn> thriftColumns = new ArrayList<ColumnOrSuperColumn>();
++    while (cells.hasNext()) {
++        LegacyLayout.LegacyCell cell = cells.next();
++        thriftColumns.add(thriftifyColumnWithName(metadata, cell, cell.name.encode(metadata)));
+     }
+-    // TODO this is inconvenient for direct users of StorageProxy
+-    if (reverseOrder)
+-        Collections.reverse(thriftColumns);
+     return thriftColumns;
+ }
+\ No newline at end of file

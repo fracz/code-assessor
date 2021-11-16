@@ -1,0 +1,21 @@
+diff --git a/3fbc4af09cb32cb487797a03dedc79652a105e8f b/1e1373160b71ef5dc760d9d967c7848b67f4147c
+index 3fbc4af09c..1e1373160b 100644
+--- a/3fbc4af09cb32cb487797a03dedc79652a105e8f
++++ b/1e1373160b71ef5dc760d9d967c7848b67f4147c
+@@ -1,12 +1,10 @@
+ protected SQLStatement parseLoad() {
+     acceptIdentifier("LOAD");
+     if (getLexer().identifierEquals("DATA")) {
+-        SQLStatement stmt = parseLoadDataInFile();
+-        return stmt;
++        return parseLoadDataInFile();
+     }
+     if (getLexer().identifierEquals("XML")) {
+-        SQLStatement stmt = parseLoadXml();
+-        return stmt;
++        return parseLoadXml();
+     }
+-    throw new ParserException("TODO");
++    throw new ParserUnsupportedException(getLexer().getToken());
+ }
+\ No newline at end of file

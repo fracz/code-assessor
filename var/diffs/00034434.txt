@@ -1,0 +1,34 @@
+diff --git a/8df398f0687758c6a423b3195aee767abc0f5685 b/c42431318c1d268ddbdc807614a6383f739adf84
+index 8df398f068..c42431318c 100644
+--- a/8df398f0687758c6a423b3195aee767abc0f5685
++++ b/c42431318c1d268ddbdc807614a6383f739adf84
+@@ -1,23 +1,22 @@
+ // -----------------------------------------------------------------------------------
+ // Main Rx entities
+-private Observer<String> _getSearchObserver() {
+-    return new Observer<String>() {
++private Observer<OnTextChangeEvent> _getSearchObserver() {
++    return new Observer<OnTextChangeEvent>() {
+
+         @Override
+         public void onCompleted() {
+             Timber.d("--------- onComplete");
+         }
+
+         @Override
+         public void onError(Throwable e) {
+             Timber.e(e, "--------- Woops on error!");
+-            _log(String.format("Dang error. check your logs"));
++            _log("Dang error. check your logs");
+         }
+
+         @Override
+-        public void onNext(String searchText) {
+-            _log(String.format("onNext You searched for %s", searchText));
+-            onCompleted();
++        public void onNext(OnTextChangeEvent onTextChangeEvent) {
++            _log(format("onNext You searched for %s", onTextChangeEvent.text().toString()));
+         }
+     };
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/58662bad7b61d79c4129da3fabdc2580784a617e b/4d9285136b618f071b80f91aa75398ce291f0d88
+index 58662bad7b..4d9285136b 100644
+--- a/58662bad7b61d79c4129da3fabdc2580784a617e
++++ b/4d9285136b618f071b80f91aa75398ce291f0d88
+@@ -1,9 +1,3 @@
+ public List<Invocation> findInvocations(List<Invocation> invocations, InvocationMatcher wanted, VerificationModeImpl mode) {
+-    List<Invocation> actual = new LinkedList<Invocation>();
+-    for (Invocation i : invocations) {
+-        if (wanted.matches(i)) {
+-            actual.add(i);
+-        }
+-    }
+-    return actual;
++    return ListUtil.filter(invocations, new RemoveNotMatching(wanted));
+ }
+\ No newline at end of file

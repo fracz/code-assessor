@@ -1,0 +1,12 @@
+diff --git a/ea803faedee860dd88c58ce61604486000cc1481 b/27ef8721f7ca2f32b3fb80efd02bfcb8493c4fa6
+index ea803faede..27ef8721f7 100644
+--- a/ea803faedee860dd88c58ce61604486000cc1481
++++ b/27ef8721f7ca2f32b3fb80efd02bfcb8493c4fa6
+@@ -1,3 +1,4 @@
+-public void wantedButNotInvokedInOrder(PrintableInvocation wanted, PrintableInvocation previous, HasStackTrace previousStackTrace) {
+-    throw new VerificationInOrderFailure(join("Verification in order failure", "Wanted but not invoked:", wanted.toString(), "-> at " + new Location(), "Wanted anywhere AFTER following interaction:", previous.toString(), "-> at " + previousStackTrace.getStackTrace()[0], ""));
++// TODO merge location into PrintableInvocation?
++public void wantedButNotInvokedInOrder(PrintableInvocation wanted, PrintableInvocation previous, Location previousLocation) {
++    throw new VerificationInOrderFailure(join("Verification in order failure", "Wanted but not invoked:", wanted.toString(), "-> at " + new Location(), "Wanted anywhere AFTER following interaction:", previous.toString(), "-> at " + previousLocation, ""));
+ }
+\ No newline at end of file

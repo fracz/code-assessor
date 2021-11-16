@@ -1,0 +1,33 @@
+diff --git a/e6a02c2bf402de43538501789571a441bdc0b0ef b/522c6f5b8fd0af58f70ec13d2468285f06d769ea
+index e6a02c2bf4..522c6f5b8f 100644
+--- a/e6a02c2bf402de43538501789571a441bdc0b0ef
++++ b/522c6f5b8fd0af58f70ec13d2468285f06d769ea
+@@ -1,24 +1,26 @@
+ /**
+  * Returns an unmodifiable view of the Index.  It is just
+  * a locked index that cannot be unlocked, so if you
+  * try to add something, nothing will happen (it won't throw
+  * an exception).  Trying to unlock it will throw an
+  * UnsupportedOperationException.  If the
+  * underlying Index is modified, the change will
+  * "write-through" to the view.
+  *
+  * @return An unmodifiable view of the Index
+  */
+ public HashIndex<E> unmodifiableView() {
+-    HashIndex<E> newIndex = new HashIndex<E>(objects, indexes) {
++    HashIndex<E> newIndex = new HashIndex<E>() {
+
+         @Override
+         public void unlock() {
+             throw new UnsupportedOperationException("This is an unmodifiable view!");
+         }
+
+         private static final long serialVersionUID = 3415903369787491736L;
+     };
++    newIndex.objects = objects;
++    newIndex.indexes = indexes;
+     newIndex.lock();
+     return newIndex;
+ }
+\ No newline at end of file

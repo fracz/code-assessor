@@ -1,0 +1,16 @@
+diff --git a/704de8bd411c14caecb629fda7c24b910bdd3052 b/3ba2f918d67cf2b29c260e90c7de16fdb1aeeb15
+index 704de8bd41..3ba2f918d6 100644
+--- a/704de8bd411c14caecb629fda7c24b910bdd3052
++++ b/3ba2f918d67cf2b29c260e90c7de16fdb1aeeb15
+@@ -1,7 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiModifierList modifierList = (PsiModifierList) location.getParent();
+-    assert modifierList != null;
+-    final PsiMethod method = (PsiMethod) modifierList.getParent();
+-    assert method != null;
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiMethod method = (PsiMethod) infos[0];
+     return InspectionGadgetsBundle.message("synchronized.method.problem.descriptor", method.getName());
+ }
+\ No newline at end of file

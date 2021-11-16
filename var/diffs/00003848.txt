@@ -1,0 +1,12 @@
+diff --git a/ea7c1e17fc46272ecae66c107524fbe5e6b89007 b/ae7be8d21562da95d563cc40f1511225e4e59653
+index ea7c1e17fc..ae7be8d215 100644
+--- a/ea7c1e17fc46272ecae66c107524fbe5e6b89007
++++ b/ae7be8d21562da95d563cc40f1511225e4e59653
+@@ -1,5 +1,5 @@
+ public void testClassCall() {
+     PyCallExpression.PyMarkedCallee resolved = resolveCallee();
+     assertNotNull(resolved.getCallable());
+-    assertTrue(resolved.getFlags().equals(EnumSet.noneOf(PyFunction.Flag.class)));
++    assertEquals(null, resolved.getModifier());
+ }
+\ No newline at end of file

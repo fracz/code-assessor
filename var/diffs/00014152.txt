@@ -1,0 +1,16 @@
+diff --git a/8d2b4b55ce360360563057da79904803d4daf714 b/478ec5a9e51bb8d15d73f183604df0003de14e15
+index 8d2b4b55ce..478ec5a9e5 100644
+--- a/8d2b4b55ce360360563057da79904803d4daf714
++++ b/478ec5a9e51bb8d15d73f183604df0003de14e15
+@@ -1,6 +1,6 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiClass containingClass = ClassUtils.getContainingClass(location);
+-    assert containingClass != null;
+-    final String containingClassName = containingClass.getName();
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiNamedElement element = (PsiNamedElement) infos[0];
++    final String containingClassName = element.getName();
+     return InspectionGadgetsBundle.message("class.references.subclass.problem.descriptor", containingClassName);
+ }
+\ No newline at end of file

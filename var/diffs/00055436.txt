@@ -1,0 +1,11 @@
+diff --git a/b923c3386f5b437bc0f1b6783cfd73d8445c1fe7 b/8f1c2d986271351d37778a1c517bdf9ef5712871
+index b923c3386f..8f1c2d9862 100644
+--- a/b923c3386f5b437bc0f1b6783cfd73d8445c1fe7
++++ b/8f1c2d986271351d37778a1c517bdf9ef5712871
+@@ -1,4 +1,4 @@
+ @Override
+ public Mono<MultiValueMap<String, Part>> readMono(ResolvableType elementType, ReactiveHttpInputMessage inputMessage, Map<String, Object> hints) {
+-    return Flux.create(new NioMultipartConsumer(inputMessage)).collectMultimap(part -> part.getName()).map(partsMap -> new LinkedMultiValueMap<>(partsMap.entrySet().stream().collect(Collectors.toMap(entry -> entry.getKey(), entry -> new ArrayList<>(entry.getValue())))));
++    return Flux.create(new SynchronossPartGenerator(inputMessage)).collectMultimap(Part::getName).map(this::toMultiValueMap);
+ }
+\ No newline at end of file

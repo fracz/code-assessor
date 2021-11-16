@@ -1,0 +1,19 @@
+diff --git a/9f24b6c855893ad901be5332293e792f5ec115d5 b/e694159d8e87d1c65b62c50fea35cac90762de2e
+index 9f24b6c855..e694159d8e 100644
+--- a/9f24b6c855893ad901be5332293e792f5ec115d5
++++ b/e694159d8e87d1c65b62c50fea35cac90762de2e
+@@ -1,12 +1,11 @@
+ /**
+  * Dumps all the block indicies for this SSTable
+  * at the end of the file.
+  * @throws IOException
+  */
+ private void dumpBlockIndexes() throws IOException {
+-    long position = dataWriter_.getCurrentPosition();
+-    firstBlockPosition_ = position;
++    firstBlockPosition_ = dataWriter_.getCurrentPosition();
+     for (SortedMap<String, BlockMetadata> block : blockIndexes_) {
+         dumpBlockIndex(block);
+     }
+ }
+\ No newline at end of file

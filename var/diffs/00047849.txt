@@ -1,0 +1,11 @@
+diff --git a/a9022c868a854a144eada2f673651fe40b21795b b/88ef2b0b02d0683ea1febb423987bf9291f8c920
+index a9022c868a..88ef2b0b02 100644
+--- a/a9022c868a854a144eada2f673651fe40b21795b
++++ b/88ef2b0b02d0683ea1febb423987bf9291f8c920
+@@ -1,4 +1,4 @@
+ @Test
+ public void shouldMatchQualifiersInSizeRange() throws Exception {
+-    assertEquals("sw300dp-port", ResBundle.pick(asValues("", "sw200dp", "sw350dp-port", "sw300dp-port", "sw300dp"), "sw320dp-port").asString());
++    assertEquals("sw300dp-port", asResMap("", "sw200dp", "sw350dp-port", "sw300dp-port", "sw300dp").pick(resName, "sw320dp-port").asString());
+ }
+\ No newline at end of file

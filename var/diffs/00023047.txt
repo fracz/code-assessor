@@ -1,0 +1,34 @@
+diff --git a/776dce60b6aa42cda0004921440b680ec0266ef2 b/d27633f08a16b94a5e296d6819c930eec75af4de
+index 776dce60b6..d27633f08a 100644
+--- a/776dce60b6aa42cda0004921440b680ec0266ef2
++++ b/d27633f08a16b94a5e296d6819c930eec75af4de
+@@ -1,27 +1,27 @@
+ /**
+  * Gets the rfcomm channel associated with the UUID.
+  * Pulls records from the cache only.
+  *
+  * @param address Address of the remote device
+  * @param uuid ParcelUuid of the service attribute
+  *
+  * @return rfcomm channel associated with the service attribute
+  * -1 on error
+  */
+ public int getRemoteServiceChannel(String address, ParcelUuid uuid) {
+     mContext.enforceCallingOrSelfPermission(BLUETOOTH_PERM, "Need BLUETOOTH permission");
+     if (!isEnabledInternal())
+         return -1;
+     if (!BluetoothAdapter.checkBluetoothAddress(address)) {
+         return BluetoothDevice.ERROR;
+     }
+     // Check if we are recovering from a crash.
+     if (mDeviceProperties.isEmpty()) {
+-        if (!updateRemoteDevicePropertiesCache(address))
++        if (mDeviceProperties.updateCache(address) == null)
+             return -1;
+     }
+     Map<ParcelUuid, Integer> value = mDeviceServiceChannelCache.get(address);
+     if (value != null && value.containsKey(uuid))
+         return value.get(uuid);
+     return -1;
+ }
+\ No newline at end of file

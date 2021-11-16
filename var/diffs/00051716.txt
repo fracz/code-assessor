@@ -1,0 +1,11 @@
+diff --git a/6310b314742c34d6df2d1aca51b887f5e03d28f5 b/b7d6a67949e23121e836459d9cfa6112bca2b88d
+index 6310b31474..b7d6a67949 100644
+--- a/6310b314742c34d6df2d1aca51b887f5e03d28f5
++++ b/b7d6a67949e23121e836459d9cfa6112bca2b88d
+@@ -1,3 +1,3 @@
+-protected JDBCConnectionImpl createConnection(DBRProgressMonitor monitor, DBCExecutionPurpose purpose, String taskTitle, boolean isolated) {
+-    return new JDBCConnectionImpl(this, monitor, purpose, taskTitle, isolated);
++protected JDBCConnectionImpl createConnection(DBRProgressMonitor monitor, JDBCExecutionContext context, DBCExecutionPurpose purpose, String taskTitle, boolean isolated) {
++    return new JDBCConnectionImpl(context, monitor, purpose, taskTitle, isolated);
+ }
+\ No newline at end of file

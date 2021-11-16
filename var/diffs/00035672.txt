@@ -1,0 +1,16 @@
+diff --git a/08257c28624baeb10435e18e6fd9093921793ff5 b/641e59c06098cb8001237ba193d995b437da66fb
+index 08257c2862..641e59c060 100644
+--- a/08257c28624baeb10435e18e6fd9093921793ff5
++++ b/641e59c06098cb8001237ba193d995b437da66fb
+@@ -1,7 +1,8 @@
+ public void maybeRedefineMockName(Object mock, String newName) {
+     MockName mockName = getMockName(mock);
+     // TODO SF hacky...
+-    if (mockName.isDefault() && getMockHandler(mock).getMockSettings() instanceof CreationSettings) {
+-        ((CreationSettings) getMockHandler(mock).getMockSettings()).setMockName(new MockNameImpl(newName));
++    MockCreationSettings mockSettings = getMockHandler(mock).getMockSettings();
++    if (mockName.isDefault() && mockSettings instanceof CreationSettings) {
++        ((CreationSettings) mockSettings).setMockName(new MockNameImpl(newName));
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/a61d86ad3c070c2e6e13261b133411b010cd7d11 b/2a157d87c3b72a924715c09305568265cad3a7c7
+index a61d86ad3c..2a157d87c3 100644
+--- a/a61d86ad3c070c2e6e13261b133411b010cd7d11
++++ b/2a157d87c3b72a924715c09305568265cad3a7c7
+@@ -1,7 +1,8 @@
+ private IndexDescriptor createUniquenessConstraint() throws Exception {
+     SchemaWriteOperations schemaStatement = schemaWriteOperationsInNewTransaction();
+-    schemaStatement.uniquePropertyConstraintCreate(labelId, propertyKeyId);
+-    IndexDescriptor result = schemaStatement.uniqueIndexGetForLabelAndPropertyKey(labelId, propertyKeyId);
++    NodePropertyDescriptor descriptor = new NodePropertyDescriptor(labelId, propertyKeyId);
++    schemaStatement.uniquePropertyConstraintCreate(descriptor);
++    IndexDescriptor result = schemaStatement.uniqueIndexGetForLabelAndPropertyKey(descriptor);
+     commit();
+     return result;
+ }
+\ No newline at end of file

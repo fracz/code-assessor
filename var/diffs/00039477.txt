@@ -1,0 +1,13 @@
+diff --git a/cdefc2700f4de2fd7904ab7af4c693983d3b7993 b/66ebb1128b7e606479e7675eb355ec2a07667f9b
+index cdefc2700f..66ebb1128b 100644
+--- a/cdefc2700f4de2fd7904ab7af4c693983d3b7993
++++ b/66ebb1128b7e606479e7675eb355ec2a07667f9b
+@@ -1,6 +1,3 @@
+ private long nextTicket() {
+-    // Increment both done and received count to have stillWorking() evaluate properly
+-    long ticket = doneBatches.incrementAndGet();
+-    receivedBatches.incrementAndGet();
+-    return ticket;
++    return doneBatches.incrementAndGet();
+ }
+\ No newline at end of file

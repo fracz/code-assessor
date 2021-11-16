@@ -1,0 +1,13 @@
+diff --git a/a6d5678bed62ac32d2acee55ee20a5010de2ecac b/ed784bbec79b5bb3c747f8837e48b1838abfeaeb
+index a6d5678bed..ed784bbec7 100644
+--- a/a6d5678bed62ac32d2acee55ee20a5010de2ecac
++++ b/ed784bbec79b5bb3c747f8837e48b1838abfeaeb
+@@ -1,4 +1,6 @@
+ private String getEncryptedBody(MasterSecret masterSecret, String body) {
+     MasterCipher bodyCipher = new MasterCipher(masterSecret);
+-    return Prefix.SYMMETRIC_ENCRYPT + bodyCipher.encryptBody(body);
++    String ciphertext = bodyCipher.encryptBody(body);
++    plaintextCache.put(ciphertext, body);
++    return ciphertext;
+ }
+\ No newline at end of file

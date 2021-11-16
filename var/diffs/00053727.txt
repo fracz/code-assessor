@@ -1,0 +1,14 @@
+diff --git a/2abd84d6069a9878c17131c435713941819fdc40 b/8cf13ad34a21a2ac9312d44789138747ae32e900
+index 2abd84d606..8cf13ad34a 100644
+--- a/2abd84d6069a9878c17131c435713941819fdc40
++++ b/8cf13ad34a21a2ac9312d44789138747ae32e900
+@@ -1,5 +1,5 @@
+-private TableRule createTableRuleWithDefaultDataSource(final String logicTableName, final DataSourceRule defaultDataSourceRule) {
+-    Map<String, DataSource> defaultDataSourceMap = new HashMap<>(1);
+-    defaultDataSourceMap.put(defaultDataSourceRule.getDefaultDataSourceName(), defaultDataSourceRule.getDefaultDataSource().get());
++private TableRule createTableRuleWithDefaultDataSource(final String logicTableName) {
++    Map<String, DataSource> defaultDataSourceMap = new HashMap<>(1, 1);
++    defaultDataSourceMap.put(dataSourceRule.getDefaultDataSourceName(), dataSourceRule.getDefaultDataSource().get());
+     return TableRule.builder(logicTableName).dataSourceRule(new DataSourceRule(defaultDataSourceMap)).databaseShardingStrategy(new NoneShardingStrategy()).tableShardingStrategy(new NoneShardingStrategy()).build();
+ }
+\ No newline at end of file

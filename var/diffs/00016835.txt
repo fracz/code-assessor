@@ -1,0 +1,14 @@
+diff --git a/236c30a410a9c7e91a0b09e6c36046a1f4eb6bda b/16f2c062a5f043b482f7a75850e9f81feab5c6a6
+index 236c30a410..16f2c062a5 100644
+--- a/236c30a410a9c7e91a0b09e6c36046a1f4eb6bda
++++ b/16f2c062a5f043b482f7a75850e9f81feab5c6a6
+@@ -1,7 +1,6 @@
+ public static boolean isCompareToCall(@NotNull JetBinaryExpression expression, @NotNull TranslationContext context) {
+-    // move to util
+     FunctionDescriptor operationDescriptor = getFunctionDescriptorForOperationExpression(context.bindingContext(), expression);
+     if (operationDescriptor == null)
+         return false;
+-    return (operationDescriptor.getName().equals("compareTo"));
++    return (isCompareTo(operationDescriptor));
+ }
+\ No newline at end of file

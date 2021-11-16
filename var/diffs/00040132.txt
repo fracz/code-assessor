@@ -1,0 +1,14 @@
+diff --git a/26c646f8f1296d10b46f03c380434072444e8261 b/1b0ba34282253bcfa000bc71602387d70d523c74
+index 26c646f8f1..1b0ba34282 100644
+--- a/26c646f8f1296d10b46f03c380434072444e8261
++++ b/1b0ba34282253bcfa000bc71602387d70d523c74
+@@ -1,5 +1,7 @@
+ private ConstraintDefinition createUniquenessConstraint(Label label, String propertyKey) {
+     SchemaHelper.createUniquenessConstraint(db, label, propertyKey);
+     SchemaHelper.awaitIndexes(db);
+-    return new UniquenessConstraintDefinition(mock(InternalSchemaActions.class), label, propertyKey);
++    InternalSchemaActions actions = mock(InternalSchemaActions.class);
++    IndexDefinition index = new IndexDefinitionImpl(actions, label, new String[] { propertyKey }, true);
++    return new UniquenessConstraintDefinition(actions, index);
+ }
+\ No newline at end of file

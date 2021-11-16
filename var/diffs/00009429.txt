@@ -1,0 +1,15 @@
+diff --git a/f0be4415494f7bf2725c694f408a41d44d3529d5 b/6a01c51ad20c306eb1794b6091807c1ee404a138
+index f0be441549..6a01c51ad2 100644
+--- a/f0be4415494f7bf2725c694f408a41d44d3529d5
++++ b/6a01c51ad20c306eb1794b6091807c1ee404a138
+@@ -1,6 +1,8 @@
+ private void doTest(IntroduceHandler.InitPlace initPlace) {
+     myFixture.configureByFile("/refactoring/introduceField/" + getTestName(true) + ".py");
+     FieldIntroduceHandler handler = new FieldIntroduceHandler();
+-    handler.performAction(myFixture.getProject(), myFixture.getEditor(), myFixture.getFile(), "a", initPlace, true, false, false);
++    final IntroduceOperation introduceOperation = new IntroduceOperation(myFixture.getProject(), myFixture.getEditor(), myFixture.getFile(), "a", true, false, false);
++    introduceOperation.setInitPlace(initPlace);
++    handler.performAction(introduceOperation);
+     myFixture.checkResultByFile("/refactoring/introduceField/" + getTestName(true) + ".after.py");
+ }
+\ No newline at end of file

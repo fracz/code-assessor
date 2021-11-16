@@ -1,0 +1,29 @@
+diff --git a/096678b34b630496ef29a1b99aa2d482711577f8 b/0a337817b47f0133538983f4d1dfc8f218b201f6
+index 096678b34b..0a337817b4 100644
+--- a/096678b34b630496ef29a1b99aa2d482711577f8
++++ b/0a337817b47f0133538983f4d1dfc8f218b201f6
+@@ -1,20 +1,22 @@
+ /**
+  * This method initializes btnDecline
+  *
+  * @return javax.swing.JButton
+  */
+ private JButton getBtnDecline() {
+     if (btnDecline == null) {
+         btnDecline = new JButton();
+         btnDecline.setText("Decline");
+         btnDecline.addActionListener(new java.awt.event.ActionListener() {
+
+             @Override
+             public void actionPerformed(java.awt.event.ActionEvent e) {
+                 accepted = false;
+-                System.exit(1);
++                if (postTask != null) {
++                    postTask.run();
++                }
+             }
+         });
+     }
+     return btnDecline;
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/b40eb95f322410adb52c2a2a8f111bc294b24960 b/0b58428fceda335ece939ff31e6fe4c63ce91d1f
+index b40eb95f32..0b58428fce 100644
+--- a/b40eb95f322410adb52c2a2a8f111bc294b24960
++++ b/0b58428fceda335ece939ff31e6fe4c63ce91d1f
+@@ -1,13 +1,9 @@
+ private static TreeVisitor loadTreeVistor(String value) {
+     try {
+         Class c = ClassLoader.getSystemClassLoader().loadClass(value);
+         return (TreeVisitor) c.newInstance();
+-    } catch (ClassNotFoundException e) {
+-        e.printStackTrace();
+-    } catch (InstantiationException e) {
+-        e.printStackTrace();
+-    } catch (IllegalAccessException e) {
++    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+         e.printStackTrace();
+     }
+     return null;
+ }
+\ No newline at end of file

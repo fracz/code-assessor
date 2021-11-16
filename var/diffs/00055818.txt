@@ -1,0 +1,19 @@
+diff --git a/0c81280c179775d460edf07ee1c1f3e9ba9f464e b/843b13153d53ba9f9128e85458540ae4651a452e
+index 0c81280c17..843b13153d 100644
+--- a/0c81280c179775d460edf07ee1c1f3e9ba9f464e
++++ b/843b13153d53ba9f9128e85458540ae4651a452e
+@@ -1,10 +1,12 @@
+ @Test
+ public void render() throws Exception {
+     FreeMarkerView view = new FreeMarkerView();
+     view.setConfiguration(this.freeMarkerConfig);
+     view.setUrl("test.ftl");
+     ModelMap model = new ExtendedModelMap();
+     model.addAttribute("hello", "hi FreeMarker");
+     view.render(model, null, this.exchange);
+-    TestSubscriber.subscribe(this.response.getBody()).assertValuesWith(dataBuffer -> assertEquals("<html><body>hi FreeMarker</body></html>", asString(dataBuffer)));
++    ScriptedSubscriber.<DataBuffer>create().consumeNextWith(buf -> {
++        assertEquals("<html><body>hi FreeMarker</body></html>", asString(buf));
++    }).expectComplete().verify(this.response.getBody());
+ }
+\ No newline at end of file

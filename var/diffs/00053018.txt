@@ -1,0 +1,15 @@
+diff --git a/a8fd22a552d0dffecd3e9ba366b3c29c06a60d5a b/62eee3b4c56be95b5dd248b1c0919db8be50c803
+index a8fd22a552..62eee3b4c5 100644
+--- a/a8fd22a552d0dffecd3e9ba366b3c29c06a60d5a
++++ b/62eee3b4c56be95b5dd248b1c0919db8be50c803
+@@ -1,8 +1,8 @@
+ /**
+  * 生成结果.
+  */
+ public void generateResult() {
+     for (AggregationSelectItem each : aggregationUnitMap.keySet()) {
+-        setCell(each.getIndex(), aggregationUnitMap.get(each).getResult());
++        data[each.getIndex() - 1] = aggregationUnitMap.get(each).getResult();
+     }
+ }
+\ No newline at end of file

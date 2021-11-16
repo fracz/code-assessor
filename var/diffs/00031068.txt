@@ -1,0 +1,21 @@
+diff --git a/91f125eb18007bf70945d939505dc84e644f0d1d b/f6b9db2458843df73cd0969092666eb8a3304e07
+index 91f125eb18..f6b9db2458 100644
+--- a/91f125eb18007bf70945d939505dc84e644f0d1d
++++ b/f6b9db2458843df73cd0969092666eb8a3304e07
+@@ -1,11 +1,13 @@
+ @Override
+ protected void doCollect(int doc) throws IOException {
+-    double key = ((Number) keyScript.execute(doc)).doubleValue();
+-    double value = ((Number) valueScript.execute(doc)).doubleValue();
++    keyScript.setNextDocId(doc);
++    valueScript.setNextDocId(doc);
++    double key = keyScript.runAsDouble();
++    double value = valueScript.runAsDouble();
+     for (RangeFacet.Entry entry : entries) {
+         if (key >= entry.getFrom() && key < entry.getTo()) {
+             entry.count++;
+             entry.total += value;
+         }
+     }
+ }
+\ No newline at end of file

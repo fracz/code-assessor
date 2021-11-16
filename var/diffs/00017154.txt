@@ -1,0 +1,18 @@
+diff --git a/7f25cc6e2b74ccb7e100c91e63ee01ec7dd1b2b3 b/b2834d8c1650dd3b70dc7e8e3e206f5637a38fec
+index 7f25cc6e2b..b2834d8c16 100644
+--- a/7f25cc6e2b74ccb7e100c91e63ee01ec7dd1b2b3
++++ b/b2834d8c1650dd3b70dc7e8e3e206f5637a38fec
+@@ -1,10 +1,9 @@
+ @NotNull
+ private StackValue castToRequiredTypeOfInterfaceIfNeeded(StackValue inner, @NotNull ClassDescriptor provided, @NotNull ClassDescriptor required) {
+     if (!isInterface(provided) && isInterface(required)) {
+-        inner.put(OBJECT_TYPE, v);
++        // TODO: is needed double wrapping?
+         Type type = asmType(required.getDefaultType());
+-        v.checkcast(type);
+-        return StackValue.onStack(type);
++        return StackValue.lazyCast(StackValue.lazyCast(inner, OBJECT_TYPE), type);
+     }
+     return inner;
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/dfe6d426d758dca7fd231b7b5fea4a71eb300e56 b/a478aa4f27aee205e76e75f27bca94611aa2df09
+index dfe6d426d7..a478aa4f27 100644
+--- a/dfe6d426d758dca7fd231b7b5fea4a71eb300e56
++++ b/a478aa4f27aee205e76e75f27bca94611aa2df09
+@@ -1,11 +1,11 @@
+ @Nullable
+ static HighlightInfo checkCannotInheritFromFinal(PsiClass superClass, PsiElement elementToHighlight) {
+     HighlightInfo errorResult = null;
+     if (superClass.hasModifierProperty(PsiModifier.FINAL) || superClass.isEnum()) {
+         String message = JavaErrorMessages.message("inheritance.from.final.class", superClass.getQualifiedName());
+-        errorResult = HighlightInfo.createHighlightInfo(HighlightInfoType.ERROR, elementToHighlight, message);
++        errorResult = HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).range(elementToHighlight).descriptionAndTooltip(message).create();
+         IntentionAction fix = QUICK_FIX_FACTORY.createModifierListFix(superClass, PsiModifier.FINAL, false, false);
+         QuickFixAction.registerQuickFixAction(errorResult, fix);
+     }
+     return errorResult;
+ }
+\ No newline at end of file

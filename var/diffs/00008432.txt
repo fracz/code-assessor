@@ -1,0 +1,15 @@
+diff --git a/1a691d21bd07e49bb9ba1ccfce4af82a1d3edf6a b/725cca493838e5111c27e3d1a98903c9eb1ddfd8
+index 1a691d21bd..725cca4938 100644
+--- a/1a691d21bd07e49bb9ba1ccfce4af82a1d3edf6a
++++ b/725cca493838e5111c27e3d1a98903c9eb1ddfd8
+@@ -1,6 +1,6 @@
+ public void testEmptyVsMap() throws Exception {
+     PsiReference ref = configureByFile("emptyVsMap/A.groovy");
+-    PsiElement resolved = ref.resolve();
+-    assertTrue(resolved instanceof PsiMethod);
+-    assertEquals(0, ((PsiMethod) resolved).getParameterList().getParametersCount());
++    PsiMethod resolved = ((GrNewExpression) ref.getElement().getParent()).resolveConstructor();
++    assertNotNull(resolved);
++    assertEquals(0, resolved.getParameterList().getParametersCount());
+ }
+\ No newline at end of file

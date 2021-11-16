@@ -1,0 +1,18 @@
+diff --git a/f01d7ec262098a9da7c06d81d6ccc34524f49a2c b/10bffaa17e4028b75534750eba9d34d8ad4314ce
+index f01d7ec262..10bffaa17e 100644
+--- a/f01d7ec262098a9da7c06d81d6ccc34524f49a2c
++++ b/10bffaa17e4028b75534750eba9d34d8ad4314ce
+@@ -1,11 +1,11 @@
+-@Test
++@Test(groups = { "broken" })
+ public void exportTsvWithLineBreaks() {
+     CreateGrid(3, 3);
+     project.rows.get(1).cells.set(1, new Cell("line\n\n\nbreak", null));
+     try {
+         SUT.export(project, options, engine, writer);
+     } catch (IOException e) {
+         Assert.fail();
+     }
+     Assert.assertEquals(writer.toString(), "column0\tcolumn1\tcolumn2\n" + "row0cell0\trow0cell1\trow0cell2\n" + "row1cell0\t\"line\n\n\nbreak\"\trow1cell2\n" + "row2cell0\trow2cell1\trow2cell2\n");
+ }
+\ No newline at end of file

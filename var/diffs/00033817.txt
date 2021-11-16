@@ -1,0 +1,11 @@
+diff --git a/9ec95189eb62067cc61782d6ed680e86c47e47bf b/18de2ab765b9b8c26033b125d67d9effbe4f0286
+index 9ec95189eb..18de2ab765 100644
+--- a/9ec95189eb62067cc61782d6ed680e86c47e47bf
++++ b/18de2ab765b9b8c26033b125d67d9effbe4f0286
+@@ -1,3 +1,3 @@
+-public static <T> void registerDao(Class<T> entityClass, Class<? extends AbstractDao<T, ?>> daoClass) {
+-    entityToDaoClass.put(entityClass, daoClass);
++protected void registerDao(Class<?> entityClass, AbstractDao<?, ?> dao) {
++    entityToDao.put(entityClass, dao);
+ }
+\ No newline at end of file

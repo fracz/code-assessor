@@ -1,0 +1,20 @@
+diff --git a/94db61044fc7a3d98f781dccd05e6c32b54b3377 b/3a445a5df95947781fbbc52b0afd8233d2ecdb4a
+index 94db61044f..3a445a5df9 100644
+--- a/94db61044fc7a3d98f781dccd05e6c32b54b3377
++++ b/3a445a5df95947781fbbc52b0afd8233d2ecdb4a
+@@ -1,7 +1,12 @@
+-@SuppressWarnings({ "HardCodedStringLiteral" })
+ public void writeExternal(Element parentNode) {
+-    Element element = new Element("entry_point");
++    Element element = new Element(ENTRY_POINT);
+     element.setAttribute(TYPE_ATTR, myType);
+     element.setAttribute(FQNAME_ATTR, getFQName());
++    if (myRefElement != null) {
++        final RefEntity entity = myRefElement.getOwner();
++        if (entity instanceof RefElement) {
++            new SmartRefElementPointerImpl((RefElement) entity, myIsPersistent).writeExternal(element);
++        }
++    }
+     parentNode.addContent(element);
+ }
+\ No newline at end of file

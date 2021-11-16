@@ -1,0 +1,23 @@
+diff --git a/4c58971a0497cc1bfae9b2c52541a89f11fcf446 b/dd0f7e90707cf962a62a07a5dc8d599f5c51f3a4
+index 4c58971a04..dd0f7e9070 100644
+--- a/4c58971a0497cc1bfae9b2c52541a89f11fcf446
++++ b/dd0f7e90707cf962a62a07a5dc8d599f5c51f3a4
+@@ -1,13 +1,13 @@
+-private ChannelPipelineFactory getPipelineFactory(final List<Pair<String, ? extends ChannelHandler>> handlerList) {
++private ChannelPipelineFactory getPipelineFactory(final LinkedHashMap<String, Callable<? extends ChannelHandler>> handlerList) {
+     return new ChannelPipelineFactory() {
+
+         @Override
+         public ChannelPipeline getPipeline() throws Exception {
+-            ChannelPipeline p = Channels.pipeline();
+-            for (Pair<String, ? extends ChannelHandler> pair : handlerList) {
+-                p.addLast(pair.first(), pair.second());
++            final ChannelPipeline p = Channels.pipeline();
++            for (final Map.Entry<String, Callable<? extends ChannelHandler>> entry : handlerList.entrySet()) {
++                p.addLast(entry.getKey(), entry.getValue().call());
+             }
+             return p;
+         }
+     };
+ }
+\ No newline at end of file

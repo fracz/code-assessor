@@ -1,0 +1,17 @@
+diff --git a/7dca01d3771e98d382e91529a87cc11a3aac4312 b/bf0fb4bca0403dae012b255d5417d2e1c6166916
+index 7dca01d377..bf0fb4bca0 100644
+--- a/7dca01d3771e98d382e91529a87cc11a3aac4312
++++ b/bf0fb4bca0403dae012b255d5417d2e1c6166916
+@@ -1,10 +1,4 @@
+ @Override
+ public long publish(M message) {
+-    // TODO refactor to publishAsync usage
+-    RedisConnection<String, Object> conn = connectionManager.connectionWriteOp();
+-    try {
+-        return conn.publish(getName(), message);
+-    } finally {
+-        connectionManager.release(conn);
+-    }
++    return publishAsync(message).awaitUninterruptibly().getNow();
+ }
+\ No newline at end of file

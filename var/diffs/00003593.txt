@@ -1,0 +1,16 @@
+diff --git a/4b880736cd3cc50288cdf3dc3b6892f5c4a689eb b/7e9276572f01b805ddbb61887f3859872fc863aa
+index 4b880736cd..7e9276572f 100644
+--- a/4b880736cd3cc50288cdf3dc3b6892f5c4a689eb
++++ b/7e9276572f01b805ddbb61887f3859872fc863aa
+@@ -1,6 +1,8 @@
+-private void createTestResultPopUp(String text, Color color, Project project) {
++private void createTestResultPopUp(final String text, Color color, @NotNull final Project project) {
+     BalloonBuilder balloonBuilder = JBPopupFactory.getInstance().createHtmlTextBalloonBuilder(text, null, color, null);
+     Balloon balloon = balloonBuilder.createBalloon();
+-    JButton checkButton = StudyEditor.getSelectedStudyEditor(project).getCheckButton();
++    StudyEditor studyEditor = StudyEditor.getSelectedStudyEditor(project);
++    assert studyEditor != null;
++    JButton checkButton = studyEditor.getCheckButton();
+     balloon.showInCenterOf(checkButton);
+ }
+\ No newline at end of file

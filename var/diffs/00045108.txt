@@ -1,0 +1,21 @@
+diff --git a/fff8132935801828bd6a07c1e105455de2173723 b/a00689d8d7378edbeeb862d574a15106fdd3452e
+index fff8132935..a00689d8d7 100644
+--- a/fff8132935801828bd6a07c1e105455de2173723
++++ b/a00689d8d7378edbeeb862d574a15106fdd3452e
+@@ -1,12 +1,11 @@
+-public List<T> execute(int iLimit) {
++public List<T> execute(final Object... iArgs) {
+     if (!(database.getStorage() instanceof OStorageLocal))
+-        throw new OQueryExecutionException("Native queries can run only in embedded-local version. Not in the remote one.");
+-    limit = iLimit;
++        throw new OCommandExecutionException("Native queries can run only in embedded-local version. Not in the remote one.");
+     queryRecord.setSourceQuery(this);
+     // CHECK IF A CLASS WAS CREATED
+     OClass cls = database.getMetadata().getSchema().getClass(cluster);
+     if (cls == null)
+-        throw new OQueryExecutionException("Cluster " + cluster + " was not found");
++        throw new OCommandExecutionException("Cluster " + cluster + " was not found");
+     ((OStorageLocal) database.getStorage()).browse(database.getId(), cls.getClusterIds(), this, record);
+     return null;
+ }
+\ No newline at end of file

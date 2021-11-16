@@ -1,0 +1,19 @@
+diff --git a/e91b2f804a855243251e383b36bf6cd9933b3685 b/b4afe7242558164f38b0ad7e8373d43112c79061
+index e91b2f804a..b4afe72425 100644
+--- a/e91b2f804a855243251e383b36bf6cd9933b3685
++++ b/b4afe7242558164f38b0ad7e8373d43112c79061
+@@ -1,11 +1,11 @@
+-private void addDynamicAnnotation(Annotation annotation, GrReferenceExpression referenceExpression, final DItemElement itemElement) {
++private void addDynamicAnnotation(Annotation annotation, GrReferenceExpression referenceExpression) {
+     final PsiFile containingFile = referenceExpression.getContainingFile();
+     VirtualFile file;
+     if (containingFile != null) {
+         file = containingFile.getVirtualFile();
+         if (file == null)
+             return;
+     } else
+         return;
+-    annotation.registerFix(new DynamicFix(itemElement, referenceExpression), referenceExpression.getTextRange());
++    annotation.registerFix(new DynamicFix(QuickfixUtil.isCall(referenceExpression), referenceExpression), referenceExpression.getTextRange());
+ }
+\ No newline at end of file

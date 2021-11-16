@@ -1,0 +1,11 @@
+diff --git a/cca0f372246c8905760961edd27bd97512df7e0c b/a6c730632d1bc1b078d41cf35fe9678d3bca7106
+index cca0f37224..a6c730632d 100644
+--- a/cca0f372246c8905760961edd27bd97512df7e0c
++++ b/a6c730632d1bc1b078d41cf35fe9678d3bca7106
+@@ -1,4 +1,4 @@
+ private void addDefaultResolvers(List<PluginResolver> resolvers) {
+     resolvers.add(new PluginRegistryPluginResolver(pluginRegistry));
+-    resolvers.add(new ModuleMappingPluginResolver("jcenter plugin resolver", createDependencyResolutionServices(), instantiator, new JCenterPluginMapper(), new JCenterRepositoryConfigurer()));
++    resolvers.add(jcenterGradleOfficial(instantiator, createDependencyResolutionServices()));
+ }
+\ No newline at end of file

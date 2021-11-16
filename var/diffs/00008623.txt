@@ -1,0 +1,17 @@
+diff --git a/1def17c3f30d647d547c42ce1201d5901c8a51d4 b/6113510fc67abc17ae795f841fea3fec0e7d70cc
+index 1def17c3f3..6113510fc6 100644
+--- a/1def17c3f30d647d547c42ce1201d5901c8a51d4
++++ b/6113510fc67abc17ae795f841fea3fec0e7d70cc
+@@ -1,6 +1,7 @@
+ public void acceptWordAsCorrect(@NotNull String word) {
+-    String lowerCased = word.toLowerCase();
+-    projectWordList.acceptWord(word);
+-    cachedWordList.acceptWord(word);
+-    spellChecker.addToDictionary(lowerCased);
++    final String transformed = spellChecker.getTransformation().transform(word);
++    if (transformed != null) {
++        userDictionary.addToDictionary(transformed);
++        spellChecker.addToDictionary(transformed);
++    }
+ }
+\ No newline at end of file

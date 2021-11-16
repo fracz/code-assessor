@@ -1,0 +1,21 @@
+diff --git a/ad15a16b79cfaaeb0df8260d3004bb4d4d11c10b b/b69946392336f402f276dfbd4dc7e0cc198fc8fe
+index ad15a16b79..b699463923 100644
+--- a/ad15a16b79cfaaeb0df8260d3004bb4d4d11c10b
++++ b/b69946392336f402f276dfbd4dc7e0cc198fc8fe
+@@ -1,10 +1,14 @@
+ @Override
+ public Property resolveProperty(Type type) {
++    if (LOGGER.isDebugEnabled()) {
++        LOGGER.debug(String.format("resolveProperty %s", type));
++    }
++    Property resolvedProperty = null;
+     for (ModelConverter modelConverter : converters) {
+-        Property resolvedProperty = modelConverter.resolveProperty(type, this);
++        resolvedProperty = modelConverter.resolveProperty(type, this);
+         if (resolvedProperty != null) {
+             return resolvedProperty;
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

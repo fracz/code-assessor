@@ -1,0 +1,19 @@
+diff --git a/6c11e1e2d149b10591e06874c0e815b1d118e112 b/95179cc5f9cb06d23c8baf13b7c98fef80a278de
+index 6c11e1e2d1..95179cc5f9 100644
+--- a/6c11e1e2d149b10591e06874c0e815b1d118e112
++++ b/95179cc5f9cb06d23c8baf13b7c98fef80a278de
+@@ -1,10 +1,11 @@
+-private void sendRetrievedAcknowledgement(byte[] transactionId, boolean usingRadio, boolean useProxy) {
++private void sendRetrievedAcknowledgement(byte[] transactionId, boolean usingRadio, boolean useProxy) throws ApnUnavailableException {
+     try {
+         NotifyRespInd notifyResponse = new NotifyRespInd(PduHeaders.CURRENT_MMS_VERSION, transactionId, PduHeaders.STATUS_RETRIEVED);
+-        MmsSendHelper.sendNotificationReceived(context, new PduComposer(context, notifyResponse).make(), radio.getApnInformation(), usingRadio, useProxy);
++        OutgoingMmsConnection connection = new OutgoingMmsConnection(context, radio.getApnInformation(), new PduComposer(context, notifyResponse).make());
++        connection.sendNotificationReceived(usingRadio, useProxy);
+     } catch (InvalidHeaderValueException e) {
+         Log.w("MmsDownloader", e);
+     } catch (IOException e) {
+         Log.w("MmsDownloader", e);
+     }
+ }
+\ No newline at end of file

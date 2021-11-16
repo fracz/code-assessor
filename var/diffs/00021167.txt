@@ -1,0 +1,16 @@
+diff --git a/1d1b391f36f73c487743dc3f9fd2ed10c9f67e38 b/6a80496c79a9fc8efc1b83afe287613db99e2970
+index 1d1b391f36..6a80496c79 100644
+--- a/1d1b391f36f73c487743dc3f9fd2ed10c9f67e38
++++ b/6a80496c79a9fc8efc1b83afe287613db99e2970
+@@ -1,6 +1,6 @@
+ public void close() {
+-    if (sbuf.length <= 1024 * 8) {
+-        sbufRefLocal.set(new SoftReference<char[]>(sbuf));
+-    }
+-    this.sbuf = null;
++    super.close();
++    textRefLocal.set(new SoftReference<char[]>(buf));
++    this.buf = null;
++    IOUtils.close(reader);
+ }
+\ No newline at end of file

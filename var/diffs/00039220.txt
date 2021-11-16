@@ -1,0 +1,18 @@
+diff --git a/efba94fab8a9238a95186346ec2dc3fa178ac108 b/2d635f5a87f84c917f792968a28a7bbb27f71208
+index efba94fab8..2d635f5a87 100644
+--- a/efba94fab8a9238a95186346ec2dc3fa178ac108
++++ b/2d635f5a87f84c917f792968a28a7bbb27f71208
+@@ -1,11 +1,7 @@
+ private void writeOut() {
+-    buf.clear();
+-    buf.putLong(creationTime).putLong(randomIdentifier).putLong(version).putLong(lastCommittedTx).putLong(indexVersion);
+-    buf.flip();
+     try {
+-        fileChannel.position(0);
+-        writeBuffer(fileChannel, buf);
++        write(fileChannel, creationTime, randomIdentifier, version, lastCommittedTx, indexVersion);
+     } catch (IOException e) {
+         throw new RuntimeException(e);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/6f4810d38163f4cb7386dad118af08f328ab87e7 b/4f95b363ddcce01a7d3eb095e418ed96791f0a41
+index 6f4810d381..4f95b363dd 100644
+--- a/6f4810d38163f4cb7386dad118af08f328ab87e7
++++ b/4f95b363ddcce01a7d3eb095e418ed96791f0a41
+@@ -1,9 +1,9 @@
+ @Override
+ @NotNull
+ public JsNode visitNamedFunction(@NotNull JetNamedFunction expression, @NotNull TranslationContext context) {
+-    JsExpression alias = context.literalFunctionTranslator().translate(expression, context);
++    JsExpression alias = new LiteralFunctionTranslator(context).translate(expression, context);
+     FunctionDescriptor descriptor = getFunctionDescriptor(context.bindingContext(), expression);
+     JsName name = context.scope().declareFreshName(descriptor.getName().asString());
+     context.aliasingContext().registerAlias(descriptor, name.makeRef());
+     return new JsVars(new JsVars.JsVar(name, alias)).source(expression);
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/99786bfd2c1befb55464f13851697c2dc58f9bbd b/e27f760a34f7eda35129ee74d8e75fd6a9858d5b
+index 99786bfd2c..e27f760a34 100644
+--- a/99786bfd2c1befb55464f13851697c2dc58f9bbd
++++ b/e27f760a34f7eda35129ee74d8e75fd6a9858d5b
+@@ -1,16 +1,16 @@
+ @Override
+ public boolean performLongClick() {
+     boolean handled = false;
+     if (super.performLongClick()) {
+         handled = true;
+     }
+     if (mEditor != null) {
+-        handled |= getEditor().performLongClick(handled);
++        handled |= mEditor.performLongClick(handled);
+     }
+     if (handled) {
+         performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+         if (mEditor != null)
+-            getEditor().mDiscardNextActionUp = true;
++            mEditor.mDiscardNextActionUp = true;
+     }
+     return handled;
+ }
+\ No newline at end of file

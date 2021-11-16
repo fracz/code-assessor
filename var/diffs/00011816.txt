@@ -1,0 +1,26 @@
+diff --git a/f74ff1cc32cc11e2dfded94fa6ee44fccce7c3d4 b/a95de0f5ef86212c179ac3269c57207221843611
+index f74ff1cc32..a95de0f5ef 100644
+--- a/f74ff1cc32cc11e2dfded94fa6ee44fccce7c3d4
++++ b/a95de0f5ef86212c179ac3269c57207221843611
+@@ -1,17 +1,16 @@
+ public PsiElement addAfter(@NotNull PsiElement element, PsiElement anchor) throws IncorrectOperationException {
+     if (anchor == null) {
+-        add(element);
+-        return element;
++        return add(element);
+     }
+     final GrTypeDefinitionBody body = getBody();
+     assert anchor.getParent() == body;
+     final PsiElement nextChild = anchor.getNextSibling();
+     if (nextChild == null) {
+         add(element);
+         return element;
+     }
+     ASTNode node = element.getNode();
+     assert node != null;
+-    body.getNode().addChild(node, nextChild.getNode());
+-    return element;
++    // body.getNode().addLeaf(GroovyElementTypes.mNLS, "\n", nextChild.getNode());
++    return body.addBefore(element, nextChild);
+ }
+\ No newline at end of file

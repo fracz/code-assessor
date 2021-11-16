@@ -1,0 +1,17 @@
+diff --git a/6d913d24fde8750adfa2880afe62b585c3d70a9b b/449f90cad5e6fc421cd97a801091ab49a9c840b9
+index 6d913d24fd..449f90cad5 100644
+--- a/6d913d24fde8750adfa2880afe62b585c3d70a9b
++++ b/449f90cad5e6fc421cd97a801091ab49a9c840b9
+@@ -1,10 +1,8 @@
+ @NotNull
+ public static AccessTranslator getAccessTranslator(@NotNull KtQualifiedExpression expression, @NotNull TranslationContext context, boolean forceOrderOfEvaluation) {
+     JsExpression receiver = translateReceiver(expression, context);
+     if (forceOrderOfEvaluation && receiver != null) {
+-        TemporaryVariable temporaryVariable = context.declareTemporary(null);
+-        context.addStatementToCurrentBlock(asSyntheticStatement(JsAstUtils.assignment(temporaryVariable.reference(), receiver)));
+-        receiver = temporaryVariable.reference();
++        receiver = context.defineTemporary(receiver);
+     }
+     return VariableAccessTranslator.newInstance(context, getNotNullSimpleNameSelector(expression), receiver);
+ }
+\ No newline at end of file

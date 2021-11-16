@@ -1,0 +1,16 @@
+diff --git a/d8a99a878a76081c626d0e6bf8552bc02db38495 b/2dc601754d165c3867a4244525b4bf355776547b
+index d8a99a878a..2dc601754d 100644
+--- a/d8a99a878a76081c626d0e6bf8552bc02db38495
++++ b/2dc601754d165c3867a4244525b4bf355776547b
+@@ -1,9 +1,9 @@
+ @Test
+ @SuppressWarnings("rawtypes")
+ public void usePrimitivesArgumentCausesPrimitiveTypes() throws ClassNotFoundException, IntrospectionException, InstantiationException, IllegalAccessException, InvocationTargetException {
+-    ClassLoader resultsClassLoader = generateAndCompile("/schema/properties/primitiveProperties.json", "com.example", false, true, false);
++    ClassLoader resultsClassLoader = generateAndCompile("/schema/properties/primitiveProperties.json", "com.example", config("usePrimitives", true));
+     Class generatedType = resultsClassLoader.loadClass("com.example.PrimitiveProperties");
+     assertThat(new PropertyDescriptor("a", generatedType).getReadMethod().getReturnType().getName(), is("int"));
+     assertThat(new PropertyDescriptor("b", generatedType).getReadMethod().getReturnType().getName(), is("double"));
+     assertThat(new PropertyDescriptor("c", generatedType).getReadMethod().getReturnType().getName(), is("boolean"));
+ }
+\ No newline at end of file

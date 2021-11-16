@@ -1,0 +1,13 @@
+diff --git a/771b1675e552fd50a63fd52c805e04ab4cf3e600 b/a2a21b2972c38081e51984d070a52768fd8ee1b3
+index 771b1675e5..a2a21b2972 100644
+--- a/771b1675e552fd50a63fd52c805e04ab4cf3e600
++++ b/a2a21b2972c38081e51984d070a52768fd8ee1b3
+@@ -1,6 +1,4 @@
+ private void simulateEvent(SysuiColorExtractor extractor) {
+     // Let's fake a color event
+-    List<Pair<Color, Integer>> dummyColors = new ArrayList<>();
+-    dummyColors.add(new Pair<>(Color.valueOf(Color.BLACK), 1));
+-    extractor.onColorsChanged(new WallpaperColors(dummyColors), WallpaperManager.FLAG_SYSTEM | WallpaperManager.FLAG_LOCK);
++    extractor.onColorsChanged(new WallpaperColors(Color.valueOf(Color.BLACK), null, null, 0), WallpaperManager.FLAG_SYSTEM | WallpaperManager.FLAG_LOCK);
+ }
+\ No newline at end of file

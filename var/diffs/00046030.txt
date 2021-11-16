@@ -1,0 +1,12 @@
+diff --git a/598b1a8dd33caaa9519747da5031f5bb8542e477 b/5ac0ed744ccae50431d294058d5f21170d012fdc
+index 598b1a8dd3..5ac0ed744c 100644
+--- a/598b1a8dd33caaa9519747da5031f5bb8542e477
++++ b/5ac0ed744ccae50431d294058d5f21170d012fdc
+@@ -1,5 +1,5 @@
+ @Test
+ public void testBoolean() throws Exception {
+-    InternalAggregationFunction booleanAgg = metadata.getFunctionRegistry().getAggregateFunctionImplementation(new Signature("array_agg", AGGREGATE, "array(boolean)", "boolean"));
++    InternalAggregationFunction booleanAgg = metadata.getFunctionRegistry().getAggregateFunctionImplementation(new Signature("array_agg", AGGREGATE, parseTypeSignature("array(boolean)"), parseTypeSignature(StandardTypes.BOOLEAN)));
+     assertAggregation(booleanAgg, 1.0, Arrays.asList(true, false), createBooleansBlock(new Boolean[] { true, false }));
+ }
+\ No newline at end of file

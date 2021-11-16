@@ -1,0 +1,22 @@
+diff --git a/1c23eddc77ed5641c9e8e240507ee73494cc68c4 b/85cbf721b34e733bd42383c0d4e381c6a59d88ca
+index 1c23eddc77..85cbf721b3 100644
+--- a/1c23eddc77ed5641c9e8e240507ee73494cc68c4
++++ b/85cbf721b34e733bd42383c0d4e381c6a59d88ca
+@@ -1,12 +1,11 @@
+ /**
+  * Gets the cluster status.
+  *
+  * @return the JSON containing the current cluster structure
+  */
+ public ODocument clusterStatus() {
+-    OBinaryRequest request = new ODistributedStatusRequest();
+-    OBinaryResponse<ODocument> responseOperation = new ODistributedStatusResponse();
+-    ODocument response = storage.networkOperation(request, responseOperation, "Error on executing Cluster status ");
+-    OLogManager.instance().debug(this, "Cluster status %s", response.toJSON("prettyPrint"));
+-    return response;
++    ODistributedStatusRequest request = new ODistributedStatusRequest();
++    ODistributedStatusResponse response = storage.networkOperation(request, "Error on executing Cluster status ");
++    OLogManager.instance().debug(this, "Cluster status %s", response.getClusterConfig().toJSON("prettyPrint"));
++    return response.getClusterConfig();
+ }
+\ No newline at end of file

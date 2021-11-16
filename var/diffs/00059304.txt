@@ -1,0 +1,12 @@
+diff --git a/69a56efe9d3e304b83e3c962f6ec26fe567f8a0d b/78e279917354c8d6a5f68ab47c74607858a86b27
+index 69a56efe9d..78e2799173 100644
+--- a/69a56efe9d3e304b83e3c962f6ec26fe567f8a0d
++++ b/78e279917354c8d6a5f68ab47c74607858a86b27
+@@ -1,5 +1,5 @@
+ @Test(expected = PermanentLockingException.class)
+ public void expectedValueMismatchCausesMutateFailure() throws StorageException {
+     store[0].acquireLock(k, c1, v1, tx[0][0]);
+-    store[0].mutate(k, Arrays.asList(SimpleEntry.of(c1, v1)), NO_DELETIONS, tx[0][0]);
++    store[0].mutate(k, Arrays.<Entry>asList(new StaticBufferEntry(c1, v1)), NO_DELETIONS, tx[0][0]);
+ }
+\ No newline at end of file

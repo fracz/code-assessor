@@ -1,0 +1,16 @@
+diff --git a/04db3e5a1f1efce763166fcf6a3d9494cf1571a1 b/eb4add19a73f7e809ecb25bf35044820a3167348
+index 04db3e5a1f..eb4add19a7 100644
+--- a/04db3e5a1f1efce763166fcf6a3d9494cf1571a1
++++ b/eb4add19a73f7e809ecb25bf35044820a3167348
+@@ -1,9 +1,9 @@
+ @Test
+ public void shouldMarkAsVerifedAllInvocationsFromThirdChunk() throws Exception {
+-    VerificationMode mode = strict(null, Arrays.asList(new Object()));
++    VerificationMode mode = new VerificationModeBuilder().strict();
+     Invocation doesntMatter = null;
+     marker.markInvocationsAsVerified(invocations, new InvocationMatcher(doesntMatter), mode);
+     marker.markInvocationsAsVerified(invocations, new InvocationMatcher(doesntMatter), mode);
+     marker.markInvocationsAsVerified(invocations, new InvocationMatcher(doesntMatter), mode);
+     assertEquals(true, simpleMethodInvocationThree.isVerifiedStrictly());
+ }
+\ No newline at end of file

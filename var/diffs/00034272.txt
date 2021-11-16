@@ -1,0 +1,27 @@
+diff --git a/cd29408b8bf6921ac2c82885ac68e947167ba03f b/3579315e5140999b21163b08bd940fe09fd44ad9
+index cd29408b8b..3579315e51 100644
+--- a/cd29408b8bf6921ac2c82885ac68e947167ba03f
++++ b/3579315e5140999b21163b08bd940fe09fd44ad9
+@@ -1,16 +1,17 @@
+ private String getRootCauseMessage(Throwable t) {
+     Throwable rootCause = t;
+-    Throwable nextCause = rootCause;
++    Throwable nextCause;
+     do {
+         nextCause = rootCause.getCause();
+         if (nextCause != null) {
+             rootCause = nextCause;
+         }
+     } while (nextCause != null);
+     if (rootCause instanceof MessagingException) {
+         return rootCause.getMessage();
+-    } else {
+-        // notification.
+-        return (rootCause.getLocalizedMessage() != null) ? (rootCause.getClass().getSimpleName() + ": " + rootCause.getLocalizedMessage()) : rootCause.getClass().getSimpleName();
+     }
++    // Remove the namespace on the exception so we have a fighting chance of seeing more of the error in the
++    // notification.
++    String simpleName = rootCause.getClass().getSimpleName();
++    return (rootCause.getLocalizedMessage() != null) ? simpleName + ": " + rootCause.getLocalizedMessage() : simpleName;
+ }
+\ No newline at end of file

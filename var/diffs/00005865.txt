@@ -1,0 +1,33 @@
+diff --git a/4e0a536d69e50f0d9970e9a95f0dccb16eb332cf b/209967acfada4e28623aa51ffecd0be3cee04440
+index 4e0a536d69..209967acfa 100644
+--- a/4e0a536d69e50f0d9970e9a95f0dccb16eb332cf
++++ b/209967acfada4e28623aa51ffecd0be3cee04440
+@@ -1,14 +1,19 @@
+-public void clean() {
+-    synchronized (myBuilderToStampStorageMap) {
++public void clean() throws IOException {
++    try {
++        synchronized (mySourceToOutputLock) {
++            closeOutputToSourceStorages();
++            FileUtil.delete(getSourceToOutputsRoot());
++        }
++    } finally {
+         try {
+-            final BuilderRegistry registry = BuilderRegistry.getInstance();
+-            for (BuilderCategory category : BuilderCategory.values()) {
+-                for (Builder builder : registry.getBuilders(category)) {
+-                    cleanTimestampStorage(builder.getName());
++            wipeStorage(getSourceToFormsRoot(), mySrcToFormMap);
++        } finally {
++            final Mappings mappings = myMappings;
++            if (mappings != null) {
++                synchronized (mappings) {
++                    mappings.clean();
+                 }
+             }
+-        } finally {
+-            myOutputToSourceMap.wipe();
+         }
+     }
+ }
+\ No newline at end of file

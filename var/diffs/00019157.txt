@@ -1,0 +1,14 @@
+diff --git a/debc83b451e484a1d2efe3ca8b8fbf6df9682d76 b/212e24a4009b1331ab6c7f54c45c9c3d3477ba3e
+index debc83b451..212e24a400 100644
+--- a/debc83b451e484a1d2efe3ca8b8fbf6df9682d76
++++ b/212e24a4009b1331ab6c7f54c45c9c3d3477ba3e
+@@ -1,7 +1,3 @@
+ public int getListActionColor() {
+-    if (listActionColor != 0) {
+-        return listActionColor;
+-    } else {
+-        return getMainColor();
+-    }
++    return getColorWithFallback(listActionColor, getMainColor());
+ }
+\ No newline at end of file

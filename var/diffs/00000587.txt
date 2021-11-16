@@ -1,0 +1,16 @@
+diff --git a/a0cf3cdc556bf8c33ad9dbb595a3ce1125ec9965 b/f3309874fddc0fc004d0d5f08065fb7dc748af76
+index a0cf3cdc55..f3309874fd 100644
+--- a/a0cf3cdc556bf8c33ad9dbb595a3ce1125ec9965
++++ b/f3309874fddc0fc004d0d5f08065fb7dc748af76
+@@ -1,9 +1,8 @@
+ @Override
+ public void onClose(int closeCode, String message) {
+-    logger.trace("WebSocket.OnClose.");
+     request.destroy();
+     if (webSocketProcessor == null)
+         return;
+     webSocketProcessor.notifyListener(new WebSocketEventListener.WebSocketEvent("", CLOSE, webSocketProcessor.webSocket()));
+-    webSocketProcessor.close();
++    webSocketProcessor.close(closeCode);
+ }
+\ No newline at end of file

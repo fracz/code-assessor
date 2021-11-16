@@ -1,0 +1,20 @@
+diff --git a/66d6e395429e2a766d669927e3feffdaae0ef730 b/1bb071ea10b9273f54f7e24c7d34139b4b0de255
+index 66d6e39542..1bb071ea10 100644
+--- a/66d6e395429e2a766d669927e3feffdaae0ef730
++++ b/1bb071ea10b9273f54f7e24c7d34139b4b0de255
+@@ -1,12 +1,12 @@
+ @Test
+ public void addingUniquenessConstraintShouldBeIdempotent() throws Exception {
+     // given
+-    UniquenessConstraint constraint1 = new UniquenessConstraint(1, 17);
++    UniquenessConstraint constraint1 = new UniquenessConstraint(descriptor1);
+     state.constraintDoAdd(constraint1, 7);
+     // when
+-    UniquenessConstraint constraint2 = new UniquenessConstraint(1, 17);
++    UniquenessConstraint constraint2 = new UniquenessConstraint(descriptor1);
+     state.constraintDoAdd(constraint2, 19);
+     // then
+     assertEquals(constraint1, constraint2);
+     assertEquals(singleton(constraint1), state.constraintsChangesForLabel(1).getAdded());
+ }
+\ No newline at end of file

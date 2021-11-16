@@ -1,0 +1,22 @@
+diff --git a/66ea52ce90643bea2ec20d364f17ef4830954a3b b/09d0b56b2e120d633a7f8fbb211de78218fce7a0
+index 66ea52ce90..09d0b56b2e 100644
+--- a/66ea52ce90643bea2ec20d364f17ef4830954a3b
++++ b/09d0b56b2e120d633a7f8fbb211de78218fce7a0
+@@ -1,14 +1,14 @@
+ @Test(dependsOnMethods = "testUnderscoreField")
+ public void testUpdateLazyDirtyPropagation() {
+     database = ODatabaseDocumentPool.global().acquire(url, "admin", "admin");
+     for (ODocument rec : database.browseCluster("Profile")) {
+         Assert.assertFalse(rec.isDirty());
+-        List<?> followers = rec.field("followers");
++        Collection<?> followers = rec.field("followers");
+         if (followers != null && followers.size() > 0) {
+-            followers.remove(followers.size() - 1);
++            followers.remove(followers.iterator().next());
+             Assert.assertTrue(rec.isDirty());
+             break;
+         }
+     }
+     database.close();
+ }
+\ No newline at end of file

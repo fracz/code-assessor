@@ -1,0 +1,20 @@
+diff --git a/b80280cf348cd9f3a1da97d13dd7b303b1b62460 b/2b773aed03380f52423045d4dfb271b911589147
+index b80280cf34..2b773aed03 100644
+--- a/b80280cf348cd9f3a1da97d13dd7b303b1b62460
++++ b/2b773aed03380f52423045d4dfb271b911589147
+@@ -1,12 +1,12 @@
+ @Override
+ protected int computeHorizontalScrollRange() {
+     if (mDrawHistory) {
+         return mHistoryWidth;
+-    } else if (mHorizontalScrollBarMode == SCROLLBAR_ALWAYSOFF && (mActualScale - mZoomManager.mMinZoomScale <= MINIMUM_SCALE_INCREMENT)) {
++    } else if (mHorizontalScrollBarMode == SCROLLBAR_ALWAYSOFF && mZoomManager.isZoomedOut()) {
+         // only honor the scrollbar mode when it is at minimum zoom level
+         return computeHorizontalScrollExtent();
+     } else {
+         // to avoid rounding error caused unnecessary scrollbar, use floor
+-        return (int) Math.floor(mContentWidth * mActualScale);
++        return (int) Math.floor(mContentWidth * mZoomManager.mActualScale);
+     }
+ }
+\ No newline at end of file

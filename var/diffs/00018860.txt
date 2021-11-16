@@ -1,0 +1,20 @@
+diff --git a/f07d489f1bb426c90abc4399219cbdfeec523ba3 b/6f108fc5472200e1a4bfffd528c99cb75cb167e0
+index f07d489f1b..6f108fc547 100644
+--- a/f07d489f1bb426c90abc4399219cbdfeec523ba3
++++ b/6f108fc5472200e1a4bfffd528c99cb75cb167e0
+@@ -1,11 +1,4 @@
+-public ArrayList<String> divideMessage(String recipient, String message, WirePrefix prefix) {
+-    try {
+-        byte[] decodedMessage = Base64.decodeWithoutPadding(message);
+-        if (decodedMessage.length <= SmsTransportDetails.SINGLE_MESSAGE_MAX_BYTES)
+-            return buildSingleMessage(decodedMessage, prefix);
+-        else
+-            return buildMultipartMessage(recipient, decodedMessage, prefix);
+-    } catch (IOException ioe) {
+-        throw new AssertionError(ioe);
+-    }
++public ArrayList<String> divideMessage(OutgoingTextMessage message) {
++    byte identifier = getIdForRecipient(message.getRecipients().getPrimaryRecipient().getNumber());
++    return MultipartTransportMessage.getEncoded(message, identifier);
+ }
+\ No newline at end of file

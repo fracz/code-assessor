@@ -1,0 +1,19 @@
+diff --git a/14f51c94aae5a2cba1ba7d798ea9831819fb89fd b/d6391e139bdaf5be3cea41d35c5f23013e063e32
+index 14f51c94aa..d6391e139b 100644
+--- a/14f51c94aae5a2cba1ba7d798ea9831819fb89fd
++++ b/d6391e139bdaf5be3cea41d35c5f23013e063e32
+@@ -1,11 +1,9 @@
+-private boolean isOrphanedPom(DownloadedAndParsedMetaDataArtifact metaDataArtifact, ArtifactResolver artifactResolver) {
+-    ModuleVersionMetaData metaData = metaDataArtifact.moduleVersionMetaData;
++private boolean isOrphanedPom(ModuleVersionMetaData metaData, ArtifactResolver artifactResolver) {
+     if (!metaData.isMetaDataOnly()) {
+-        ResolvedArtifact artifactRef = findAnyArtifact(metaData, artifactResolver);
+-        if (artifactRef == null) {
++        if (!hasArtifacts(metaData, artifactResolver)) {
+             LOGGER.debug("POM file found for module '{}' in repository '{}' but no artifact found. Ignoring.", metaData.getId(), getName());
+             return true;
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

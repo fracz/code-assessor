@@ -1,0 +1,21 @@
+diff --git a/d90dc81a5399681e609adf747a3f644eab1cbfea b/3df5c67d2d721c0a3d1db37b512882cd42146536
+index d90dc81a53..3df5c67d2d 100644
+--- a/d90dc81a5399681e609adf747a3f644eab1cbfea
++++ b/3df5c67d2d721c0a3d1db37b512882cd42146536
+@@ -1,10 +1,8 @@
+-@Path("remote-list")
+-@POST
+-@Consumes(MediaType.APPLICATION_JSON)
+-@Produces({ MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN })
+-public GenericEntity<List<Remote>> remoteList(RemoteListRequest request) throws ApiException {
++@GET
++@Path("remote")
++@Produces(MediaType.APPLICATION_JSON)
++public List<Remote> remoteList(@QueryParam("remoteName") String remoteName, @QueryParam("verbose") boolean verbose) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+-        return new GenericEntity<List<Remote>>(gitConnection.remoteList(request)) {
+-        };
++        return gitConnection.remoteList(remoteName, verbose);
+     }
+ }
+\ No newline at end of file

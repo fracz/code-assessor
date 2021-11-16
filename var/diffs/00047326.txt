@@ -1,0 +1,11 @@
+diff --git a/05f33b20647f70bd813a1e07184fc9bda34bb46c b/91c349ddcd10a6d372472508dabf51f332597d12
+index 05f33b2064..91c349ddcd 100644
+--- a/05f33b20647f70bd813a1e07184fc9bda34bb46c
++++ b/91c349ddcd10a6d372472508dabf51f332597d12
+@@ -1,4 +1,4 @@
+ @Override
+ public Future<Boolean> deleteAsync() {
+-    return commandExecutor.evalWriteAsync(getName(), LongCodec.INSTANCE, RedisCommands.EVAL_BOOLEAN_R1, "if redis.call('del', KEYS[1]) == 1 then " + "redis.call('publish', ARGV[2], ARGV[1]); " + "return true " + "else " + "return false " + "end", Collections.<Object>singletonList(getName()), newCountMessage, getChannelName());
++    return commandExecutor.evalWriteAsync(getName(), LongCodec.INSTANCE, RedisCommands.EVAL_BOOLEAN, "if redis.call('del', KEYS[1]) == 1 then " + "redis.call('publish', KEYS[2], ARGV[1]); " + "return true " + "else " + "return false " + "end", Arrays.<Object>asList(getName(), getChannelName()), newCountMessage);
+ }
+\ No newline at end of file

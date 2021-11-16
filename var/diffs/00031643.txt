@@ -1,0 +1,19 @@
+diff --git a/2ced1691a22a457f1d715ef943639b3d8e2fffbe b/eb5697ef2dc85a96c369e64b41f642b6fbb295c7
+index 2ced1691a2..eb5697ef2d 100644
+--- a/2ced1691a22a457f1d715ef943639b3d8e2fffbe
++++ b/eb5697ef2dc85a96c369e64b41f642b6fbb295c7
+@@ -1,11 +1,12 @@
+ @Override
+ public void onDialogSucceed(final Bundle values) {
+     activity.runOnUiThread(new Runnable() {
+
+         public void run() {
+             App.accessToken = fb.getAccessToken();
+             SessionStore.saveSession(fb, activity);
+-            Login.this.onLogin(values, fb);
++            Login.this.dispatcher.renderWebView();
++            Login.this.onLogin();
+         }
+     });
+ }
+\ No newline at end of file

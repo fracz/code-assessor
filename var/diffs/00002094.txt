@@ -1,0 +1,20 @@
+diff --git a/e60b86bbf82a3eb10c15d663a4f778efbc476dbf b/949d0aba6acc4761a603c5123e53331bafdb83a0
+index e60b86bbf8..949d0aba6a 100644
+--- a/e60b86bbf82a3eb10c15d663a4f778efbc476dbf
++++ b/949d0aba6acc4761a603c5123e53331bafdb83a0
+@@ -1,13 +1,13 @@
+ private void addArgumentNode(PyExpression arg, ASTNode beforeThis, boolean commaFirst) {
+     PyUtil.ensureWritable(this);
+-    ASTNode comma = getLanguage().getElementGenerator().createComma(getProject());
++    ASTNode comma = PyElementGenerator.getInstance(getProject()).createComma();
+     ASTNode node = getNode();
+     ASTNode argNode = arg.getNode();
+     if (commaFirst) {
+         node.addChild(comma, beforeThis);
+         node.addChild(argNode, beforeThis);
+     } else {
+         node.addChild(argNode, beforeThis);
+         node.addChild(comma, beforeThis);
+     }
+ }
+\ No newline at end of file

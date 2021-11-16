@@ -1,0 +1,17 @@
+diff --git a/2f7b878ca1308d8b8f0948c68b75acc47ce93683 b/f7583b2f44b84c5987ed4b4e6162950f4fa53e9a
+index 2f7b878ca1..f7583b2f44 100644
+--- a/2f7b878ca1308d8b8f0948c68b75acc47ce93683
++++ b/f7583b2f44b84c5987ed4b4e6162950f4fa53e9a
+@@ -1,7 +1,6 @@
+-public void parseFrom(SQLSelectQueryBlock queryBlock) {
+-    if (!getLexer().equalToken(Token.FROM)) {
+-        return;
++public void parseFrom(final SQLSelectQueryBlock queryBlock) {
++    if (getLexer().equalToken(Token.FROM)) {
++        getLexer().nextToken();
++        queryBlock.setFrom(parseTableSource());
+     }
+-    getLexer().nextToken();
+-    queryBlock.setFrom(parseTableSource());
+ }
+\ No newline at end of file

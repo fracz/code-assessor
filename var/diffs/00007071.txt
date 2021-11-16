@@ -1,0 +1,17 @@
+diff --git a/985e5d4d825255b41c7a32edffa7b4ec32c6bb0f b/90665d161c540cdaaa416ec764a4b89db0b12c1b
+index 985e5d4d82..90665d161c 100644
+--- a/985e5d4d825255b41c7a32edffa7b4ec32c6bb0f
++++ b/90665d161c540cdaaa416ec764a4b89db0b12c1b
+@@ -1,6 +1,9 @@
+ @Override
+ public void run() {
+-    for (Runnable runnable : runnables) {
+-        runnable.run();
++    CodeStyleManagerImpl.setSequentialProcessingAllowed(false);
++    try {
++        for (Runnable runnable : runnables) runnable.run();
++    } finally {
++        CodeStyleManagerImpl.setSequentialProcessingAllowed(true);
+     }
+ }
+\ No newline at end of file

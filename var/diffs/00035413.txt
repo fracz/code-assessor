@@ -1,0 +1,12 @@
+diff --git a/78e53f3067477176deb5d2ad64f2f1f0e1276f10 b/4f19bfd0d6a6483db3b600643954c010c9f1e81a
+index 78e53f3067..4f19bfd0d6 100644
+--- a/78e53f3067477176deb5d2ad64f2f1f0e1276f10
++++ b/4f19bfd0d6a6483db3b600643954c010c9f1e81a
+@@ -1,4 +1,5 @@
+-void catchException(Throwable ex) {
++MessageSnapshot catchException(Throwable ex) {
+     setStatus(FileDownloadStatus.error);
+     this.ex = ex;
++    return MessageSnapshotTaker.catchException(this);
+ }
+\ No newline at end of file

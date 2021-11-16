@@ -1,0 +1,21 @@
+diff --git a/8a249ed0526064862439b3deda4989ae87bfb0e5 b/1d4d93be33033d43e1456eb88dd9e7b3e1b6e0be
+index 8a249ed052..1d4d93be33 100644
+--- a/8a249ed0526064862439b3deda4989ae87bfb0e5
++++ b/1d4d93be33033d43e1456eb88dd9e7b3e1b6e0be
+@@ -1,10 +1,11 @@
+ @Override
+-public void config(final OServer iServer, final Socket iSocket, final OClientConnection iConnection, final OContextConfiguration iConfig) throws IOException {
+-    server = iServer;
+-    channel = new OChannelBinaryServer(iSocket, iConfig);
+-    connection = iConnection;
++public void config(final OServer iServer, final Socket iSocket, final OContextConfiguration iConfig) throws IOException {
++    // CREATE THE CLIENT CONNECTION
++    connection = OClientConnectionManager.instance().connect(iSocket, this);
++    super.config(iServer, iSocket, iConfig);
+     // SEND PROTOCOL VERSION
+     channel.writeShort((short) OChannelBinaryProtocol.CURRENT_PROTOCOL_VERSION);
+     channel.flush();
+     start();
++    setName("OrientDB <- BinaryClient (" + iSocket.getRemoteSocketAddress() + ")");
+ }
+\ No newline at end of file

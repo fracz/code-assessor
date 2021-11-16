@@ -1,0 +1,13 @@
+diff --git a/f326e2df11d83c1b5618df2e41c75a85a7c5eca0 b/dc7b31aede67322ed021a58b3928b4414a41c838
+index f326e2df11..dc7b31aede 100644
+--- a/f326e2df11d83c1b5618df2e41c75a85a7c5eca0
++++ b/dc7b31aede67322ed021a58b3928b4414a41c838
+@@ -1,6 +1,4 @@
+ @NotNull
+ public VcsShowSettingOption getOrCreateCustomOption(@NotNull String vcsActionName, @NotNull AbstractVcs vcs) {
+-    final VcsShowOptionsSettingImpl option = getOrCreateOption(vcsActionName);
+-    option.addApplicableVcs(vcs);
+-    return option;
++    return myOptionsAndConfirmations.getOrCreateCustomOption(vcsActionName, vcs);
+ }
+\ No newline at end of file

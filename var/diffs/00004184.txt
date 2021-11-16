@@ -1,0 +1,15 @@
+diff --git a/deb05ea289c0bc343dd85f8434d39b1d26309f92 b/2f97e0559bdad47e0b77f63be388f31a5052be84
+index deb05ea289..2f97e0559b 100644
+--- a/deb05ea289c0bc343dd85f8434d39b1d26309f92
++++ b/2f97e0559bdad47e0b77f63be388f31a5052be84
+@@ -1,7 +1,7 @@
+ public void advance() {
+-    baseLexer.advance();
+-    IElementType type = baseLexer.getTokenType();
++    super.advance();
++    IElementType type = getDelegate().getTokenType();
+     TokenHandler tokenHandler = tokenHandlers.get(type);
+     if (tokenHandler != null)
+         tokenHandler.handleElement(this);
+ }
+\ No newline at end of file

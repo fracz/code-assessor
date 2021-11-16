@@ -1,0 +1,18 @@
+diff --git a/52e7de8dc65a408762049f58f3235eaaf8e40c93 b/abb6cd93e0d375dbbe337e5b1d7b93eefbdfb4f1
+index 52e7de8dc6..abb6cd93e0 100644
+--- a/52e7de8dc65a408762049f58f3235eaaf8e40c93
++++ b/abb6cd93e0d375dbbe337e5b1d7b93eefbdfb4f1
+@@ -1,10 +1,10 @@
+ public void checkEntry(final ODocument iRecord) {
+     // GENERATE THE KEY
+     final Object key = generateKey(iRecord);
+-    final OIndexInternal idx = delegate.getInternal();
++    final OIndexInternal idx = getUnderlying().getInternal();
+     try {
+         idx.checkEntry(iRecord, key);
+     } catch (OIndexException e) {
+-        OLogManager.instance().exception("Invalid constraints on index '%s' for key '%s' in record %s for the fields '%s'", e, OIndexException.class, delegate.getName(), key, iRecord.getIdentity(), Arrays.toString(fields));
++        OLogManager.instance().exception("Invalid constraints on index '%s' for key '%s' in record %s for the fields '%s'", e, OIndexException.class, indexName, key, iRecord.getIdentity(), Arrays.toString(fields));
+     }
+ }
+\ No newline at end of file

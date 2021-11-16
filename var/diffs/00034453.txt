@@ -1,0 +1,35 @@
+diff --git a/bf9796577f4f9e5a08fc1e6fd21a5c30b66ca1b1 b/bc5042ccc85229fca04e292ea8f26775ffcdfeab
+index bf9796577f..bc5042ccc8 100644
+--- a/bf9796577f4f9e5a08fc1e6fd21a5c30b66ca1b1
++++ b/bc5042ccc85229fca04e292ea8f26775ffcdfeab
+@@ -1,24 +1,20 @@
+ /**
+- * Displays the next crouton within the queue.
++ * Displays the next {@link Crouton} within the queue.
+  */
+ private void displayCrouton() {
+     if (croutonQueue.isEmpty()) {
+         return;
+     }
+-    // First peek whether the Crouton is being displayed.
++    // First peek whether the Crouton has an activity.
+     final Crouton currentCrouton = croutonQueue.peek();
+-    // If the activity is null we throw away the Crouton.
++    // If the activity is null we poll the Crouton off the queue.
+     if (currentCrouton.getActivity() == null) {
+         croutonQueue.poll();
+     }
+-    final Message msg;
+     if (!currentCrouton.isShowing()) {
+         // Display the Crouton
+-        msg = obtainMessage(MESSAGE_ADD_CROUTON_TO_VIEW);
+-        msg.obj = currentCrouton;
+-        sendMessage(msg);
++        sendMessage(currentCrouton, MESSAGE_ADD_CROUTON_TO_VIEW);
+     } else {
+-        msg = obtainMessage(MESSAGE_DISPLAY_CROUTON);
+-        sendMessageDelayed(msg, currentCrouton.getStyle().duration + inAnimation.getDuration() + outAnimation.getDuration());
++        sendMessageDelayed(currentCrouton, MESSAGE_DISPLAY_CROUTON, currentCrouton.getStyle().duration + inAnimation.getDuration() + outAnimation.getDuration());
+     }
+ }
+\ No newline at end of file

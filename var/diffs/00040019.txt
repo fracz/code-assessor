@@ -1,0 +1,22 @@
+diff --git a/fc17fae1e8d6086b94c9a90345241e1611e2c8c5 b/58f0c9f5d37e3bae4d3a9258ecdc5a4085ca88a9
+index fc17fae1e8..58f0c9f5d3 100644
+--- a/fc17fae1e8d6086b94c9a90345241e1611e2c8c5
++++ b/58f0c9f5d37e3bae4d3a9258ecdc5a4085ca88a9
+@@ -1,11 +1,11 @@
+ // </DataReadCursors>
+ // <SchemaRead>
+ @Override
+-public IndexDescriptor indexGetForLabelAndPropertyKey(int labelId, int propertyKeyId) throws SchemaRuleNotFoundException {
++public IndexDescriptor indexGetForLabelAndPropertyKey(NodePropertyDescriptor descriptor) throws SchemaRuleNotFoundException {
+     statement.assertOpen();
+-    IndexDescriptor descriptor = schemaRead().indexGetForLabelAndPropertyKey(statement, labelId, propertyKeyId);
+-    if (descriptor == null) {
+-        throw new IndexSchemaRuleNotFoundException(labelId, propertyKeyId);
++    IndexDescriptor indexDescriptor = schemaRead().indexGetForLabelAndPropertyKey(statement, descriptor);
++    if (indexDescriptor == null) {
++        throw new IndexSchemaRuleNotFoundException(descriptor);
+     }
+-    return descriptor;
++    return indexDescriptor;
+ }
+\ No newline at end of file

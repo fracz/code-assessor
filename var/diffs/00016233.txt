@@ -1,0 +1,14 @@
+diff --git a/d281429bc62acd2f1130ccc963989055a5c3ea5a b/f952e24e512bf70edc083dd028496232172802ac
+index d281429bc6..f952e24e51 100644
+--- a/d281429bc62acd2f1130ccc963989055a5c3ea5a
++++ b/f952e24e512bf70edc083dd028496232172802ac
+@@ -1,4 +1,7 @@
+ @NotNull
+ protected JsExpression translateIncrementExpression() {
+-    return withTemporariesInitialized(doTranslateIncrementExpression());
++    if (isPrefix(expression)) {
++        return asPrefix();
++    }
++    return asPostfix();
+ }
+\ No newline at end of file

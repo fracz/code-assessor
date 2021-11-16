@@ -1,0 +1,16 @@
+diff --git a/56d4938f99bd57717fa9d997ad0689eba7e68c92 b/29eaecc017952d916b43ace2fbb284bcb2ecdc51
+index 56d4938f99..29eaecc017 100644
+--- a/56d4938f99bd57717fa9d997ad0689eba7e68c92
++++ b/29eaecc017952d916b43ace2fbb284bcb2ecdc51
+@@ -1,8 +1,8 @@
+-@Path("reset")
+ @POST
++@Path("reset")
+ @Consumes(MediaType.APPLICATION_JSON)
+ public void reset(ResetRequest request) throws ApiException {
+     try (GitConnection gitConnection = getGitConnection()) {
+-        gitConnection.reset(request);
++        gitConnection.reset(ResetParams.create(request.getCommit(), request.getType()).withFilePattern(request.getFilePattern()));
+     }
+ }
+\ No newline at end of file

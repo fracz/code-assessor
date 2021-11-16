@@ -1,0 +1,23 @@
+diff --git a/17a02ca6396ec2a4924e1ba9bee8e4c4ceba2dd2 b/293389b90535a09f20d1ca96fcd1affc320cb6e8
+index 17a02ca639..293389b905 100644
+--- a/17a02ca6396ec2a4924e1ba9bee8e4c4ceba2dd2
++++ b/293389b90535a09f20d1ca96fcd1affc320cb6e8
+@@ -1,13 +1,9 @@
+ @Nullable
+-public static PsiElement findEnclosingStatement(@Nullable PsiElement context) {
+-    if (context == null)
+-        return null;
+-    context = PsiTreeUtil.getParentOfType(context, GrStatement.class, false);
++public static GrStatement findEnclosingStatement(@Nullable PsiElement context) {
+     while (context != null) {
+-        final PsiElement parent = context.getParent();
+-        if (parent instanceof GrControlFlowOwner)
+-            return context;
+-        context = parent;
++        if (isExpressionStatement(context))
++            return (GrStatement) context;
++        context = PsiTreeUtil.getParentOfType(context, GrStatement.class, true);
+     }
+     return null;
+ }
+\ No newline at end of file

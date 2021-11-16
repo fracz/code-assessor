@@ -1,0 +1,18 @@
+diff --git a/cdebebdd67c1179d36613e036e705ae6b50a5ab9 b/269de35d9ba583b2d4e057eba1ff87f6d894aa13
+index cdebebdd67..269de35d9b 100644
+--- a/cdebebdd67c1179d36613e036e705ae6b50a5ab9
++++ b/269de35d9ba583b2d4e057eba1ff87f6d894aa13
+@@ -1,8 +1,10 @@
+ @Override
+ public void visitField(PsiField psiField) {
+     super.visitField(psiField);
+-    final MatchingHandler handler = myCompilingVisitor.getContext().getPattern().getHandler(psiField);
++    CompiledPattern pattern = myCompilingVisitor.getContext().getPattern();
++    final MatchingHandler handler = pattern.getHandler(psiField);
+     if (needsSupers(psiField, handler)) {
+-        myCompilingVisitor.getContext().getPattern().setRequestsSuperFields(true);
++        assert pattern instanceof JavaCompiledPattern;
++        ((JavaCompiledPattern) pattern).setRequestsSuperFields(true);
+     }
+ }
+\ No newline at end of file

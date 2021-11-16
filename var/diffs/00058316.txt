@@ -1,0 +1,27 @@
+diff --git a/dd2295f393a07356666f0bc1ecaed50e2e7abc51 b/6ac9b9e5feafd6a2cf3f445ce54ab44623f30653
+index dd2295f393..6ac9b9e5fe 100644
+--- a/dd2295f393a07356666f0bc1ecaed50e2e7abc51
++++ b/6ac9b9e5feafd6a2cf3f445ce54ab44623f30653
+@@ -1,18 +1,20 @@
+ @Ignore
+ public void testOrdering() throws Exception {
+-    Model model = modelResolver().resolve(JsonOrderBean.class, new ModelConverterContextMock());
++    ModelResolver modelResolver = modelResolver();
++    ModelConverterContextImpl context = new ModelConverterContextImpl(modelResolver);
++    Model model = context.resolve(JsonOrderBean.class);
+     Map<String, Property> props = model.getProperties();
+     assertEquals(4, props.size());
+ /*
+     assertEquals("abcd", _concat(props.keySet()));
+
+     model = modelResolver().resolve(PositionBean.class);
+
+     props = model.getProperties();
+     Property prop = props.get("c");
+     assertNotNull(prop);
+     // assertEquals(Integer.valueOf(3), prop.getPosition());
+     assertEquals(4, props.size());
+     assertEquals("abcd", _concat(props.keySet()));
+     */
+ }
+\ No newline at end of file

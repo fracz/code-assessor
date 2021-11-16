@@ -1,0 +1,18 @@
+diff --git a/272095ac30099260f5edcaabeea452793dfc39b5 b/a41718b88a6156bf26ff5c83457fd975d1342965
+index 272095ac30..a41718b88a 100644
+--- a/272095ac30099260f5edcaabeea452793dfc39b5
++++ b/a41718b88a6156bf26ff5c83457fd975d1342965
+@@ -1,11 +1,4 @@
+ @Override
+ public boolean isFileColorsEnabled() {
+-    final boolean enabled = FileColorManagerImpl._isEnabled() && FileColorManagerImpl._isEnabledForProjectView();
+-    final boolean opaque = isOpaque();
+-    if (enabled && opaque) {
+-        setOpaque(false);
+-    } else if (!enabled && !opaque) {
+-        setOpaque(true);
+-    }
+-    return enabled;
++    return isFileColorsEnabledFor(this);
+ }
+\ No newline at end of file

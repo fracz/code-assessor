@@ -1,0 +1,32 @@
+diff --git a/eec4a929d5779e60755207e7bdee8c0a40954b69 b/543c6aee3a84192769d41a2fc6811e39d8de284a
+index eec4a929d5..543c6aee3a 100644
+--- a/eec4a929d5779e60755207e7bdee8c0a40954b69
++++ b/543c6aee3a84192769d41a2fc6811e39d8de284a
+@@ -1,22 +1,24 @@
+ @Before
+ public void setUp() throws Exception {
+     server = new MockWebServer();
+     client = new OkHttpClient();
+     // Sockets on some platforms can have large buffers that mean writes do not block when
+     // required. These socket factories explicitly set the buffer sizes on sockets created.
+     server.setServerSocketFactory(new DelegatingServerSocketFactory(ServerSocketFactory.getDefault()) {
+
+         @Override
+-        protected void configureServerSocket(ServerSocket serverSocket) throws IOException {
++        protected ServerSocket configureServerSocket(ServerSocket serverSocket) throws IOException {
+             serverSocket.setReceiveBufferSize(SOCKET_BUFFER_SIZE);
++            return serverSocket;
+         }
+     });
+     client.setSocketFactory(new DelegatingSocketFactory(SocketFactory.getDefault()) {
+
+         @Override
+-        protected void configureSocket(Socket socket) throws IOException {
++        protected Socket configureSocket(Socket socket) throws IOException {
+             socket.setSendBufferSize(SOCKET_BUFFER_SIZE);
+             socket.setReceiveBufferSize(SOCKET_BUFFER_SIZE);
++            return socket;
+         }
+     });
+ }
+\ No newline at end of file

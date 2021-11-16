@@ -1,0 +1,19 @@
+diff --git a/354bae9e7617389600639b523c9f06b9f26fba56 b/f7f20db7ffc95e5f175f78b05491ec2afae9161d
+index 354bae9e76..f7f20db7ff 100644
+--- a/354bae9e7617389600639b523c9f06b9f26fba56
++++ b/f7f20db7ffc95e5f175f78b05491ec2afae9161d
+@@ -1,8 +1,11 @@
+ /*
+      * annotations
+      *   : annotation*
+      *   ;
+      */
+-public void parseAnnotations(boolean allowShortAnnotations) {
+-    while (parseAnnotation(allowShortAnnotations)) ;
++void parseAnnotations(boolean allowShortAnnotations) {
++    while (true) {
++        if (!(parseAnnotation(allowShortAnnotations)))
++            break;
++    }
+ }
+\ No newline at end of file

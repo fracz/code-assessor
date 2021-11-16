@@ -1,0 +1,12 @@
+diff --git a/037f36604b9ac2d14d69b7b2827077330b4b95a7 b/7d6e8c594b134db04b9f56855113a08375517cfe
+index 037f36604b..7d6e8c594b 100644
+--- a/037f36604b9ac2d14d69b7b2827077330b4b95a7
++++ b/7d6e8c594b134db04b9f56855113a08375517cfe
+@@ -1,4 +1,5 @@
+ public void cleanUp() {
+-    BerkeleyJEHelper.clearEnvironment(StorageSetup.getHomeDirFile());
++    BerkeleyJEStorageManager s = new BerkeleyJEStorageManager(StorageSetup.getBerkeleyJEStorageConfiguration());
++    s.clearStorage();
+     assertFalse(StorageSetup.getHomeDirFile().exists() && StorageSetup.getHomeDirFile().listFiles().length > 0);
+ }
+\ No newline at end of file

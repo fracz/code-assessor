@@ -1,0 +1,18 @@
+diff --git a/ae02c3c7bcc4374432976c69456b91a5caa15bf6 b/829747188f31bb76fcdc9e1db7529378f6328582
+index ae02c3c7bc..829747188f 100644
+--- a/ae02c3c7bcc4374432976c69456b91a5caa15bf6
++++ b/829747188f31bb76fcdc9e1db7529378f6328582
+@@ -1,9 +1,9 @@
+-private static boolean hasV(List<Label> tags) {
+-    for (Label tag : tags) {
+-        String str = tag.toString();
++private static boolean hasV(List tags) {
++    for (int i = 0, tsize = tags.size(); i < tsize; i++) {
++        String str = tags.get(i).toString();
+         if (str.startsWith("V") || str.startsWith("MD")) {
+             return true;
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

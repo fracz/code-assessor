@@ -1,0 +1,12 @@
+diff --git a/5ae7bc36ab83c6add2ba5e1bb94f10e69162732c b/9f171b7335128cf8d421f318bd7e0f494809d221
+index 5ae7bc36ab..9f171b7335 100644
+--- a/5ae7bc36ab83c6add2ba5e1bb94f10e69162732c
++++ b/9f171b7335128cf8d421f318bd7e0f494809d221
+@@ -1,5 +1,4 @@
+ public static byte[] modify(ClassPool classPool, ClassLoader classLoader, String javassistClassName, byte[] classFileBuffer) {
+-    log("DBCPBasicDataSourceModifier modifing");
+-    // printClassInfo(javassistClassName);
++    logger.info("DBCPBasicDataSourceModifier modifing. %s", javassistClassName);
+     return changeMethod(classPool, classLoader, javassistClassName, classFileBuffer);
+ }
+\ No newline at end of file

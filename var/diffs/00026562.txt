@@ -1,0 +1,17 @@
+diff --git a/8738983a417cb75e6289dfe7a2cdc20e6c491b64 b/604a214dd27d6262bfe29acdfde48d9bdcf3eee8
+index 8738983a41..604a214dd2 100644
+--- a/8738983a417cb75e6289dfe7a2cdc20e6c491b64
++++ b/604a214dd27d6262bfe29acdfde48d9bdcf3eee8
+@@ -1,9 +1,9 @@
+ public static void put(Class<? extends ObjectFormatter> objectFormatter) {
+     try {
+         formatterMap.put(objectFormatter.newInstance().clazz(), objectFormatter);
+     } catch (InstantiationException e) {
+-        e.printStackTrace();
++        throw new RuntimeException(e);
+     } catch (IllegalAccessException e) {
+-        e.printStackTrace();
++        throw new RuntimeException(e);
+     }
+ }
+\ No newline at end of file

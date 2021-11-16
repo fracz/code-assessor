@@ -1,0 +1,15 @@
+diff --git a/7fc2d683d6af57de15fdccfa9fd24c1159d7f745 b/69c41994649c99f7389acd09d7aab881c7681fed
+index 7fc2d683d6..69c4199464 100644
+--- a/7fc2d683d6af57de15fdccfa9fd24c1159d7f745
++++ b/69c41994649c99f7389acd09d7aab881c7681fed
+@@ -1,7 +1,8 @@
+ @Test
+ public void testNotFindServiceType() throws IllegalAccessException {
+     StaticFieldLookUp<ServiceType> staticFieldLookUp = new StaticFieldLookUp<ServiceType>(ServiceType.class, ServiceType.class);
+     List<ServiceType> lookup = staticFieldLookUp.lookup();
+-    ServiceType notExist = new ServiceType(Short.MIN_VALUE, "test", "test", HistogramSchema.NORMAL_SCHEMA);
++    final int SERVER_CATEGORY_MAX = 1999;
++    ServiceType notExist = ServiceType.of(SERVER_CATEGORY_MAX, "test", "test");
+     Assert.assertFalse(findType(lookup, notExist));
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/8b0e4d937b49ebb66fa7a7e990f170517993176a b/27cb3ac939bfae667467cb06b5c48b74a30eb6bc
+index 8b0e4d937b..27cb3ac939 100644
+--- a/8b0e4d937b49ebb66fa7a7e990f170517993176a
++++ b/27cb3ac939bfae667467cb06b5c48b74a30eb6bc
+@@ -1,11 +1,11 @@
+ /**
+  * Guess the visible values given the hidden
+  * @param h
+  * @return
+  */
+ @Override
+-public Pair<DoubleMatrix, DoubleMatrix> sampleVisibleGivenHidden(DoubleMatrix h) {
+-    FourDTensor v1Mean = propDown(h);
+-    FourDTensor v1Sample = new FourDTensor(binomial(v1Mean, 1, rng));
+-    return new Pair<>((DoubleMatrix) v1Mean, (DoubleMatrix) v1Sample);
++public Pair<INDArray, INDArray> sampleVisibleGivenHidden(INDArray h) {
++    INDArray v1Mean = propDown(h);
++    INDArray v1Sample = Sampling.binomial(v1Mean, 1, rng);
++    return new Pair<>(v1Mean, v1Sample);
+ }
+\ No newline at end of file

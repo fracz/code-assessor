@@ -1,0 +1,14 @@
+diff --git a/aa18470593ecf895628be1e01341e619b81c7140 b/86a5a6d20534a76466f472527bb0be4959226f88
+index aa18470593..86a5a6d205 100644
+--- a/aa18470593ecf895628be1e01341e619b81c7140
++++ b/86a5a6d20534a76466f472527bb0be4959226f88
+@@ -1,3 +1,6 @@
+-public void setType(StoreRateLimiting.Type type) {
+-    rateLimiting.setType(type);
++public void setType(IndexRateLimitingType type) {
++    this.type = type;
++    if (type.useStoreLimiter() == false) {
++        rateLimiting.setType(type.type);
++    }
+ }
+\ No newline at end of file

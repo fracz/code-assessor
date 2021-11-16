@@ -1,0 +1,15 @@
+diff --git a/7d3a4a83b27e148cb827fa79dccacc42723fe24c b/be15213687303e24549e91e36c2979f690f8ca04
+index 7d3a4a83b2..be15213687 100644
+--- a/7d3a4a83b27e148cb827fa79dccacc42723fe24c
++++ b/be15213687303e24549e91e36c2979f690f8ca04
+@@ -1,5 +1,6 @@
+ private void initToolWindow() {
+-    final JPanel navigatorPanel = new MavenProjectsNavigatorPanel(myProject, myTree, myStatusPanel);
+-    ToolWindow pomToolWindow = ToolWindowManager.getInstance(myProject).registerToolWindow(TOOL_WINDOW_ID, navigatorPanel, ToolWindowAnchor.RIGHT, myProject);
+-    pomToolWindow.setIcon(ICON);
++    JPanel panel = new MavenProjectsNavigatorPanel(myProject, myTree, myStatusPanel);
++    ToolWindowManager manager = ToolWindowManager.getInstance(myProject);
++    ToolWindow toolWindow = manager.registerToolWindow(TOOL_WINDOW_ID, panel, ToolWindowAnchor.RIGHT, myProject, true);
++    toolWindow.setIcon(ICON);
+ }
+\ No newline at end of file

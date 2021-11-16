@@ -1,0 +1,11 @@
+diff --git a/94877d1ac7589df2f168b05742eb4f89a242468f b/eb94438d70aa24af49c031f87935bdcbb80014b8
+index 94877d1ac7..eb94438d70 100644
+--- a/94877d1ac7589df2f168b05742eb4f89a242468f
++++ b/eb94438d70aa24af49c031f87935bdcbb80014b8
+@@ -1,4 +1,4 @@
+ @Override
+ public Publisher<Integer> getSlot(String key) {
+-    return commandExecutor.readReactive(null, RedisCommands.KEYSLOT, key);
++    return commandExecutor.reactive(instance.getSlotAsync(key));
+ }
+\ No newline at end of file

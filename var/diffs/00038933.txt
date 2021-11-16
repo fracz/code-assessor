@@ -1,0 +1,14 @@
+diff --git a/232780be3067e336cf6aff20c0d16837cd6a6a06 b/f26e4b3cdb988837fc38e95178f65db2e301fb5e
+index 232780be30..f26e4b3cdb 100644
+--- a/232780be3067e336cf6aff20c0d16837cd6a6a06
++++ b/f26e4b3cdb988837fc38e95178f65db2e301fb5e
+@@ -1,7 +1,7 @@
+ public ReadableByteChannel getLogicalLog(long version) throws IOException {
+-    String name = fileName + ".v" + version;
++    String name = getFileName(version);
+     if (!new File(name).exists()) {
+         throw new IOException("No such log version:" + version);
+     }
+     return new RandomAccessFile(name, "r").getChannel();
+ }
+\ No newline at end of file

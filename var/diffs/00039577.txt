@@ -1,0 +1,10 @@
+diff --git a/ca46800fd49269cc65f5c533cdb212d0cde4c423 b/8e1cb9ed4fc6fbd24b8d79297c2cf6430fc9f647
+index ca46800fd4..8e1cb9ed4f 100644
+--- a/ca46800fd49269cc65f5c533cdb212d0cde4c423
++++ b/8e1cb9ed4fc6fbd24b8d79297c2cf6430fc9f647
+@@ -1,3 +1,3 @@
+ public void done() {
+-    assertEquals("Unexpected commands found", Collections.emptyList(), commandsToVerify);
++    assert Collections.emptyList().equals(commandsToVerify) : "Unexpected commands found" + commandsToVerify;
+ }
+\ No newline at end of file

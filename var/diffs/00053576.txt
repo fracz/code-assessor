@@ -1,0 +1,13 @@
+diff --git a/6b00b48c4e03de0bbf7f3b5ad18183a2e48d280b b/1580f8deba47c333a20a472cf036f04798126920
+index 6b00b48c4e..1580f8deba 100644
+--- a/6b00b48c4e03de0bbf7f3b5ad18183a2e48d280b
++++ b/1580f8deba47c333a20a472cf036f04798126920
+@@ -1,4 +1,5 @@
+ @Override
+-public Statement getStatement() throws SQLException {
+-    return mergeResultSet.getCurrentResultSet().getStatement();
++public // TODO should return sharding statement in future
++Statement getStatement() throws SQLException {
++    return getResultSets().get(0).getStatement();
+ }
+\ No newline at end of file

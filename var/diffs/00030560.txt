@@ -1,0 +1,21 @@
+diff --git a/65def95dfe9806e781118d065eb51b2d174359b2 b/90fc4c40c1aacf65a46fd26f4cc22b4d8c4c916f
+index 65def95dfe..90fc4c40c1 100644
+--- a/65def95dfe9806e781118d065eb51b2d174359b2
++++ b/90fc4c40c1aacf65a46fd26f4cc22b4d8c4c916f
+@@ -1,13 +1,14 @@
+ @Override
+ public void onFailure(Throwable e) {
+     try {
+         Throwable t = unwrapCause(e);
+         if (t instanceof IndexAlreadyExistsException || t instanceof InvalidIndexNameException) {
+-            channel.sendResponse(new JsonRestResponse(request, BAD_REQUEST, JsonBuilder.jsonBuilder().startObject().field("error", t.getMessage()).endObject()));
++            JsonBuilder builder = RestJsonBuilder.restJsonBuilder(request);
++            channel.sendResponse(new JsonRestResponse(request, BAD_REQUEST, builder.startObject().field("error", t.getMessage()).endObject()));
+         } else {
+             channel.sendResponse(new JsonThrowableRestResponse(request, e));
+         }
+     } catch (IOException e1) {
+         logger.error("Failed to send failure response", e1);
+     }
+ }
+\ No newline at end of file

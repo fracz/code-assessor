@@ -1,0 +1,12 @@
+diff --git a/dd5be98126ead41605e33dac8ae39b81b1e81f6c b/0211cb59bbbb51c251134166d6d1ff487abca3b6
+index dd5be98126..0211cb59bb 100644
+--- a/dd5be98126ead41605e33dac8ae39b81b1e81f6c
++++ b/0211cb59bbbb51c251134166d6d1ff487abca3b6
+@@ -1,4 +1,4 @@
+ @Nullable
+-public static VirtualFile getResourceDirForApkCompiler(Module module, AndroidFacet facet) {
+-    return facet.getConfiguration().USE_CUSTOM_APK_RESOURCE_FOLDER ? getCustomResourceDirForApt(facet) : AndroidRootUtil.getResourceDir(module);
++public static VirtualFile getResourceDirForApkCompiler(@NotNull AndroidFacet facet) {
++    return facet.getConfiguration().USE_CUSTOM_APK_RESOURCE_FOLDER ? getCustomResourceDirForApt(facet) : AndroidRootUtil.getResourceDir(facet);
+ }
+\ No newline at end of file

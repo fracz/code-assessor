@@ -1,0 +1,16 @@
+diff --git a/fffd7626693b7fa7fbdd3d8533d5119c13e51f18 b/44d6d723f21b1cbb038c8e0c98f6bfe655146898
+index fffd762669..44d6d723f2 100644
+--- a/fffd7626693b7fa7fbdd3d8533d5119c13e51f18
++++ b/44d6d723f21b1cbb038c8e0c98f6bfe655146898
+@@ -1,8 +1,8 @@
+ @Override
+-public void notifyError() {
++public void notifyError(MessageSnapshot snapshot) {
+     if (FileDownloadLog.NEED_LOG) {
+         FileDownloadLog.d(this, "notify error %s %s", task, task.getEx());
+     }
+     task.over();
+-    process(FileDownloadStatus.error);
++    process(snapshot);
+ }
+\ No newline at end of file

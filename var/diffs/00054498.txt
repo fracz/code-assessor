@@ -1,0 +1,19 @@
+diff --git a/175e7d8447c440d4cc0f1daaf122fc2cbbf1b6c9 b/44b770df9a577e0f63d38bb4f61f128f56fa6c11
+index 175e7d8447..44b770df9a 100644
+--- a/175e7d8447c440d4cc0f1daaf122fc2cbbf1b6c9
++++ b/44b770df9a577e0f63d38bb4f61f128f56fa6c11
+@@ -1,10 +1,7 @@
+-@Test
++@Test(expected = SQLException.class)
+ public void assertCloseExceptionConnection() throws SQLException {
+     connection.getConnection(DS_NAME, SQLType.SELECT);
+     connection.getConnection(DS_NAME, SQLType.UPDATE);
+-    try {
+-        connection.close();
+-    } catch (final SQLException exp) {
+-        assertNotNull(exp.getNextException());
+-    }
++    connection.close();
++    fail();
+ }
+\ No newline at end of file

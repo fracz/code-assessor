@@ -1,0 +1,11 @@
+diff --git a/62cc08488e67a228bb8ba0bb47fd207cb9a3f9cb b/22e2e9e491fd7b456a6cedd72123f9c0ebd3532d
+index 62cc08488e..22e2e9e491 100644
+--- a/62cc08488e67a228bb8ba0bb47fd207cb9a3f9cb
++++ b/22e2e9e491fd7b456a6cedd72123f9c0ebd3532d
+@@ -1,4 +1,4 @@
+ @Override
+ public void onConfigChange(CruiseConfig newCruiseConfig) {
+-    this.tryAssembleMergedConfig(newCruiseConfig, this.partialConfig.lastPartials());
++    this.tryAssembleMergedConfig(this.fileService.loadConfigHolder(), this.partialConfig.lastPartials());
+ }
+\ No newline at end of file

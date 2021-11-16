@@ -1,0 +1,19 @@
+diff --git a/4984eab174e6324cef566cc4b20f79bb76d79b6f b/9a219225a298b975984fb6b8bf13b6b7bf445ccb
+index 4984eab174..9a219225a2 100644
+--- a/4984eab174e6324cef566cc4b20f79bb76d79b6f
++++ b/9a219225a298b975984fb6b8bf13b6b7bf445ccb
+@@ -1,11 +1,11 @@
+-public static boolean isKeyword(NamesValidator[] validators, PsiElement element, String word) {
++public static boolean isKeyword(Project project, NamesValidator[] validators, String word) {
+     if (validators == null) {
+         return false;
+     }
+     for (NamesValidator validator : validators) {
+-        if (validator.isKeyword(word, element.getProject())) {
++        if (validator.isKeyword(word, project)) {
+             return true;
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

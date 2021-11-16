@@ -1,0 +1,30 @@
+diff --git a/46d27631ad1d9232d25c4d7f59ffee36ab0b3bfc b/f964b5c4ac7ccd43a1282dd820dd17f4323c8ac8
+index 46d27631ad..f964b5c4ac 100644
+--- a/46d27631ad1d9232d25c4d7f59ffee36ab0b3bfc
++++ b/f964b5c4ac7ccd43a1282dd820dd17f4323c8ac8
+@@ -1,20 +1,8 @@
+-/**
+- * Removes user with given identifier.
+- *
+- * @param id
+- * identifier to remove user
+- * @throws NotFoundException
+- * when user with given identifier doesn't exist
+- * @throws ServerException
+- * when some error occurred while removing user
+- * @throws ConflictException
+- * when some error occurred while removing user
+- */
+ @DELETE
+ @Path("/{id}")
+-@GenerateLink(rel = LINK_REL_REMOVE_USER_BY_ID)
+-@ApiOperation(value = "Delete user", notes = "Delete a user from the system")
+-@ApiResponses({ @ApiResponse(code = 204, message = "Deleted"), @ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 409, message = "Impossible to remove user"), @ApiResponse(code = 500, message = "Internal Server Error") })
+-public void remove(@ApiParam(value = "User ID") @PathParam("id") String id) throws NotFoundException, ServerException, ConflictException {
++@GenerateLink(rel = LINK_REL_USER)
++@ApiOperation("Delete user")
++@ApiResponses({ @ApiResponse(code = 204, message = "User successfully removed"), @ApiResponse(code = 409, message = "Couldn't remove user due to conflict(e.g. it has related entities)"), @ApiResponse(code = 500, message = "Couldn't remove user due to internal server error") })
++public void remove(@ApiParam("User identifier") @PathParam("id") String id) throws ServerException, ConflictException {
+     userManager.remove(id);
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/49bedd443328bf93dea0eba9512b3a7bd0b5f4a3 b/5ad75f703e4ef69abf649e67558d054529d40808
+index 49bedd4433..5ad75f703e 100644
+--- a/49bedd443328bf93dea0eba9512b3a7bd0b5f4a3
++++ b/5ad75f703e4ef69abf649e67558d054529d40808
+@@ -1,12 +1,12 @@
+ @NotNull
+-protected PyFunction insertFunction(@NotNull PyFunction newFunction, PyFile newFile) {
+-    final PyFunction replacement;
++protected PyFunction insertFunction(@NotNull PyFunction newFunction, @NotNull PyFile newFile, @Nullable PsiElement anchor) {
+     if (mySourceFile == newFile) {
+-        final PsiElement anchor;
+-        anchor = PyPsiUtils.getParentRightBefore(myFunction, mySourceFile);
+-        replacement = (PyFunction) mySourceFile.addAfter(newFunction, anchor);
+-    } else {
+-        replacement = (PyFunction) newFile.addAfter(newFunction, AddImportHelper.getFileInsertPosition(newFile));
++        // In the same file try inserting generated function at the top level but preferably right after the original scope owner
++        final PsiElement surroundingStatement = PyPsiUtils.getParentRightBefore(myFunction, mySourceFile);
++        if (anchor == null || surroundingStatement.getTextRange().getEndOffset() < anchor.getTextRange().getStartOffset()) {
++            return (PyFunction) mySourceFile.addAfter(newFunction, surroundingStatement);
++        }
+     }
+-    return replacement;
++    // Insert at the end or before first top-level usage in the file
++    return (PyFunction) newFile.addBefore(newFunction, anchor);
+ }
+\ No newline at end of file

@@ -1,0 +1,16 @@
+diff --git a/3d309ba6ad2e90c28edeea0c291d1a7de54b766d b/d51db36421669472cae1ebd02404f2ae76a15c18
+index 3d309ba6ad..d51db36421 100644
+--- a/3d309ba6ad2e90c28edeea0c291d1a7de54b766d
++++ b/d51db36421669472cae1ebd02404f2ae76a15c18
+@@ -1,9 +1,6 @@
+ public void reset() {
+     synchronized (myLock) {
+-        myInitialized = false;
+-        myDirty = false;
+-        myMap.clear();
+-        myCrossDependencies.clear();
++        myFilesToRefresh.addAll(myId2Key.values());
+         myId2Key.clear();
+     }
+ }
+\ No newline at end of file

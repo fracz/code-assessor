@@ -1,0 +1,16 @@
+diff --git a/a4623864c330024bcda761d1ccb991d933f4a5aa b/d5c4f7e91abb84255c1e0dfc2d3cb6dd46b78cb9
+index a4623864c3..d5c4f7e91a 100644
+--- a/a4623864c330024bcda761d1ccb991d933f4a5aa
++++ b/d5c4f7e91abb84255c1e0dfc2d3cb6dd46b78cb9
+@@ -1,9 +1,9 @@
+ // SPR-9603
+ @Test
+ public void getHandlerRequestMethodMatchFalsePositive() throws Exception {
+     ServerWebExchange exchange = createExchange(HttpMethod.GET, "/users");
+     exchange.getRequest().getHeaders().setAccept(Collections.singletonList(MediaType.APPLICATION_XML));
+     this.handlerMapping.registerHandler(new UserController());
+     Mono<Object> mono = this.handlerMapping.getHandler(exchange);
+-    TestSubscriber.subscribe(mono).assertError(NotAcceptableStatusException.class);
++    ScriptedSubscriber.<Object>create().expectError(NotAcceptableStatusException.class).verify(mono);
+ }
+\ No newline at end of file

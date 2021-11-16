@@ -1,0 +1,20 @@
+diff --git a/e5a5af1e0c7c62732208214f77b7b6a83bc5ae94 b/8fbb88b6715ddcf691e2428b23657d39df805124
+index e5a5af1e0c..8fbb88b671 100644
+--- a/e5a5af1e0c7c62732208214f77b7b6a83bc5ae94
++++ b/8fbb88b6715ddcf691e2428b23657d39df805124
+@@ -1,12 +1,12 @@
+ @Override
+ public void update(AnActionEvent event) {
++    EduUtils.enableAction(event, false);
+     final Project project = event.getProject();
+     if (project != null) {
+-        StudyEditor studyEditor = StudyEditor.getSelectedStudyEditor(project);
++        StudyEditor studyEditor = StudyUtils.getSelectedStudyEditor(project);
+         StudyState studyState = new StudyState(studyEditor);
+         if (studyState.isValid()) {
+             EduUtils.enableAction(event, true);
+         }
+     }
+-    EduUtils.enableAction(event, false);
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/e0a10b14f2f7a435036c30a1d9174860903a0e17 b/8c5883882a45bafadfd38ab5b73f8b3aa29d1e57
+index e0a10b14f2..8c5883882a 100644
+--- a/e0a10b14f2f7a435036c30a1d9174860903a0e17
++++ b/8c5883882a45bafadfd38ab5b73f8b3aa29d1e57
+@@ -1,6 +1,6 @@
+ @Override
+ protected void onCreate(@NonNull Context context, @Nullable Bundle savedInstanceState) {
+     super.onCreate(context, savedInstanceState);
+     ((KSApplication) context.getApplicationContext()).component().inject(this);
+-    addSubscription(pushNotificationEnvelope.filter(ObjectUtils::isNotNull).take(1).subscribe(koala::trackPushNotification));
++    pushNotificationEnvelope.filter(ObjectUtils::isNotNull).take(1).compose(bindToLifecycle()).subscribe(koala::trackPushNotification);
+ }
+\ No newline at end of file

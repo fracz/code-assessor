@@ -1,0 +1,17 @@
+diff --git a/c18b3a8d550091c9ed31f1ea3512aa1745e7f7c2 b/a0baad33fe4275cdab4b56ecdd1c86767d7ce52c
+index c18b3a8d55..a0baad33fe 100644
+--- a/c18b3a8d550091c9ed31f1ea3512aa1745e7f7c2
++++ b/a0baad33fe4275cdab4b56ecdd1c86767d7ce52c
+@@ -1,4 +1,10 @@
+ @Override
+ public void refreshCompletely() {
+-    refresh(myRefreshCompletedEvent);
++    refresh(new Runnable() {
++
++        @Override
++        public void run() {
++            notifyAboutDataRefresh();
++        }
++    });
+ }
+\ No newline at end of file

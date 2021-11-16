@@ -1,0 +1,19 @@
+diff --git a/080f7be97cfbbc980fe86d644b18c8d8dce1cc11 b/c2ed7f9c42924602dc0159154517f0af7daa0d7d
+index 080f7be97c..c2ed7f9c42 100644
+--- a/080f7be97cfbbc980fe86d644b18c8d8dce1cc11
++++ b/c2ed7f9c42924602dc0159154517f0af7daa0d7d
+@@ -1,9 +1,9 @@
+ /**
+  * {@link EurekaHttpClient} for remote region replication.
+  */
+-public static EurekaHttpClient createRemoteRegionClient(EurekaServerConfig serverConfig, ServerCodecs serverCodecs, ClusterResolver clusterResolver) {
+-    EurekaHttpClientFactory jerseyFactory = new JerseyRemoteRegionClientFactory(serverConfig, serverCodecs, clusterResolver);
+-    EurekaHttpClientFactory metricsFactory = MetricsCollectingEurekaHttpClient.createFactory(jerseyFactory);
+-    RebalancingEurekaHttpClient client = new RebalancingEurekaHttpClient(RetryableEurekaHttpClient.createFactory(clusterResolver, RedirectingEurekaHttpClient.createFactory(metricsFactory), ServerStatusEvaluators.legacyEvaluator()), RECONNECT_INTERVAL_MINUTES * 60 * 1000);
++public static EurekaHttpClient createRemoteRegionClient(EurekaServerConfig serverConfig, ServerCodecs serverCodecs, ClusterResolver<EurekaEndpoint> clusterResolver) {
++    JerseyRemoteRegionClientFactory jerseyFactory = new JerseyRemoteRegionClientFactory(serverConfig, serverCodecs, clusterResolver.getRegion());
++    TransportClientFactory metricsFactory = MetricsCollectingEurekaHttpClient.createFactory(jerseyFactory);
++    SessionedEurekaHttpClient client = new SessionedEurekaHttpClient(RetryableEurekaHttpClient.createFactory(clusterResolver, createFactory(metricsFactory), ServerStatusEvaluators.legacyEvaluator()), RECONNECT_INTERVAL_MINUTES * 60 * 1000);
+     return client;
+ }
+\ No newline at end of file

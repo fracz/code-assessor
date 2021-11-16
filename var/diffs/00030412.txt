@@ -1,0 +1,18 @@
+diff --git a/9c0b1e5600675296179f4350a0053d96f70be192 b/115b9067249176fa72632b7840edd0ff67c49a8f
+index 9c0b1e5600..115b906724 100644
+--- a/9c0b1e5600675296179f4350a0053d96f70be192
++++ b/115b9067249176fa72632b7840edd0ff67c49a8f
+@@ -1,9 +1,9 @@
+ @Override
+ public ClusterState execute(ClusterState currentState) {
+-    RoutingTable newRoutingTable = shardsAllocation.reroute(currentState);
+-    if (newRoutingTable == currentState.routingTable()) {
++    RoutingAllocation.Result routingResult = shardsAllocation.reroute(currentState);
++    if (!routingResult.changed()) {
+         // no state changed
+         return currentState;
+     }
+-    return newClusterStateBuilder().state(currentState).routingTable(newRoutingTable).build();
++    return newClusterStateBuilder().state(currentState).routingResult(routingResult).build();
+ }
+\ No newline at end of file

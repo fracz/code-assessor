@@ -1,0 +1,39 @@
+diff --git a/64cfd61a293217ceface69470fb73359396f1041 b/b993c9ad416d767cb24399527f4a7826d1c6ea9a
+index 64cfd61a29..b993c9ad41 100644
+--- a/64cfd61a293217ceface69470fb73359396f1041
++++ b/b993c9ad416d767cb24399527f4a7826d1c6ea9a
+@@ -1,29 +1,29 @@
+ /**
+  * Helper function for code readability: only to be called from
+  * checkUpdateRemoteControlDisplay_syncAfRcs() which checks the preconditions for
+  * this method.
+  * Preconditions:
+  * - called synchronized mAudioFocusLock then on mMCStack
+  * - mMCStack.isEmpty() is false
+  */
+ private void updateRemoteControlDisplay_syncAfRcs(int infoChangedFlags) {
+     MediaController mcse = mMCStack.peek();
+     int infoFlagsAboutToBeUsed = infoChangedFlags;
+     // with the new AudioManager.registerRemoteControlClient() API
+-    if (mcse.mRcClient == null) {
++    if (mcse.getRcc() == null) {
+         // Log.w(TAG, "Can't update remote control display with null remote control client");
+         clearRemoteControlDisplay_syncAfRcs();
+         return;
+     }
+     synchronized (mCurrentRcLock) {
+-        if (!mcse.mRcClient.equals(mCurrentRcClient)) {
++        if (!mcse.getRcc().equals(mCurrentRcClient)) {
+             // new RC client, assume every type of information shall be queried
+             infoFlagsAboutToBeUsed = RC_INFO_ALL;
+         }
+-        mCurrentRcClient = mcse.mRcClient;
+-        mCurrentRcClientIntent = mcse.mMediaIntent;
++        mCurrentRcClient = mcse.getRcc();
++        mCurrentRcClientIntent = mcse.getMediaButtonIntent();
+     }
+     // will cause onRcDisplayUpdate() to be called in AudioService's handler thread
+     mEventHandler.sendMessage(mEventHandler.obtainMessage(MSG_RCDISPLAY_UPDATE, infoFlagsAboutToBeUsed, /* arg1 */
+     0, mcse));
+ }
+\ No newline at end of file

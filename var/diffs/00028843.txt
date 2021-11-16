@@ -1,0 +1,12 @@
+diff --git a/f3d20ea9994b18883294ba00248557c6de96ec7f b/e25198fd6c0b898d5a04c0634e755017e46d7227
+index f3d20ea999..e25198fd6c 100644
+--- a/f3d20ea9994b18883294ba00248557c6de96ec7f
++++ b/e25198fd6c0b898d5a04c0634e755017e46d7227
+@@ -1,5 +1,4 @@
+ @Override
+ protected boolean doEquals(CompletionSuggestionBuilder other) {
+-    // NORELEASE
+-    return false;
++    return Objects.equals(payloadFields, other.payloadFields) && Objects.equals(fuzzyOptions, other.fuzzyOptions) && Objects.equals(regexOptions, other.regexOptions) && Objects.equals(queryContexts, other.queryContexts);
+ }
+\ No newline at end of file

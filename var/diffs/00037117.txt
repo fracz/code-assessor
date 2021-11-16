@@ -1,0 +1,17 @@
+diff --git a/7b563dd8b6e83db28b68be8fb6a34d8d1821a906 b/bb504320d1f46915dc3c3dbc42bbd6a9484912b3
+index 7b563dd8b6..bb504320d1 100644
+--- a/7b563dd8b6e83db28b68be8fb6a34d8d1821a906
++++ b/bb504320d1f46915dc3c3dbc42bbd6a9484912b3
+@@ -1,9 +1,4 @@
+ private void dumpSystemProperties() {
+-    if (logger.isInfoEnabled()) {
+-        Properties properties = System.getProperties();
+-        Set<String> strings = properties.stringPropertyNames();
+-        for (String key : strings) {
+-            logger.info("SystemProperties {}={}", key, properties.get(key));
+-        }
+-    }
++    SystemPropertyDumper dumper = new SystemPropertyDumper();
++    dumper.dump();
+ }
+\ No newline at end of file

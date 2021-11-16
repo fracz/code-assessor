@@ -1,0 +1,15 @@
+diff --git a/5cd52c8bdb3aa7b4aacd8e6e0ae3924d79ab9539 b/19948459a7436ec086a5f1566aea9b28cbbb9e60
+index 5cd52c8bdb..19948459a7 100644
+--- a/5cd52c8bdb3aa7b4aacd8e6e0ae3924d79ab9539
++++ b/19948459a7436ec086a5f1566aea9b28cbbb9e60
+@@ -1,4 +1,8 @@
+ public void setRoots(List<FrameworkSupportNodeBase> roots) {
+-    setModel(new DefaultTreeModel(new FrameworksRootNode(roots)));
++    CheckedTreeNode root = new CheckedTreeNode(null);
++    for (FrameworkSupportNodeBase base : roots) {
++        root.add(base);
++    }
++    setModel(new DefaultTreeModel(root));
+     TreeUtil.expandAll(this);
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/b0f415e77cf485d85988ba6c02ca0915d4fc2d40 b/6cb34032cab7e28ee71b52153710606cc2a4f375
+index b0f415e77c..6cb34032ca 100644
+--- a/b0f415e77cf485d85988ba6c02ca0915d4fc2d40
++++ b/6cb34032cab7e28ee71b52153710606cc2a4f375
+@@ -1,10 +1,10 @@
+ @Test
+ public void testKeepingIdOnMoving() {
+-    root.createDirectory(1, "dir1");
+-    root.createDirectory(2, "dir2");
+-    root.createFile(3, "dir1/file", null, -1);
++    createDirectory(root, 1, "dir1");
++    createDirectory(root, 2, "dir2");
++    createFile(root, 3, "dir1/file", null, -1);
+     Change c = new MoveChange("dir1/file", "dir2");
+     c.applyTo(root);
+     c.revertOn(root);
+     assertEquals(3, root.getEntry("dir1/file").getId());
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/2b7144a444c46e48976821ff4847259cb775fd0f b/3136c870d64ec10f38216780f8db60f7dc647ddd
+index 2b7144a444..3136c870d6 100644
+--- a/2b7144a444c46e48976821ff4847259cb775fd0f
++++ b/3136c870d64ec10f38216780f8db60f7dc647ddd
+@@ -1,6 +1,5 @@
+-protected String buildErrorString(PsiElement location) {
+-    final PsiSwitchStatement statement = (PsiSwitchStatement) location.getParent();
+-    final double density = calculateDensity(statement);
+-    final int intDensity = (int) (density * 100.0);
++@NotNull
++protected String buildErrorString(Object... infos) {
++    final Integer intDensity = (Integer) infos[0];
+     return InspectionGadgetsBundle.message("switch.statement.density.problem.descriptor", intDensity);
+ }
+\ No newline at end of file

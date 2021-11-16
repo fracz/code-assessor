@@ -1,0 +1,13 @@
+diff --git a/7f8645229ce56f83260036f5501ca90f55f36d7c b/7e4121466c693f2bf7092d6a144733c98ed110b4
+index 7f8645229c..7e4121466c 100644
+--- a/7f8645229ce56f83260036f5501ca90f55f36d7c
++++ b/7e4121466c693f2bf7092d6a144733c98ed110b4
+@@ -1,5 +1,5 @@
+-private String createTooLittleInvocationsMessage(int wantedCount, int actualCount, PrintableInvocation wanted, HasStackTrace lastActualStackTrace) {
++private String createTooLittleInvocationsMessage(Discrepancy discrepancy, PrintableInvocation wanted, HasStackTrace lastActualStackTrace) {
+     String ending = (lastActualStackTrace != null) ? "-> at " + lastActualStackTrace.getStackTrace()[0] + "\n" : "\n";
+-    String message = join(wanted.toString(), "Wanted " + pluralize(wantedCount) + ":", "-> at " + new Location(), "But was " + pluralize(actualCount) + ":", ending);
++    String message = join(wanted.toString(), "Wanted " + discrepancy.getPluralizedWantedCount() + ":", "-> at " + new Location(), "But was " + discrepancy.getPluralizedActualCount() + ":", ending);
+     return message;
+ }
+\ No newline at end of file

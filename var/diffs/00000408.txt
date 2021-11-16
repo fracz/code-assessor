@@ -1,0 +1,15 @@
+diff --git a/35023c610b1491978051efa81116d96fdc3f73ac b/00eb4d32a9f3eb4fa81bf7bb3f59bd739fe2c5f9
+index 35023c610b..00eb4d32a9 100644
+--- a/35023c610b1491978051efa81116d96fdc3f73ac
++++ b/00eb4d32a9f3eb4fa81bf7bb3f59bd739fe2c5f9
+@@ -1,7 +1,8 @@
+ public static DataServer createDataServer(final InetSocketAddress dataAddress, final BlocksLocker blockLocker, TachyonConf conf) {
+     try {
+-        return CommonUtils.createNewClassInstance(conf.getClass(Constants.WORKER_DATA_SEVRER, Constants.WORKER_DATA_SERVER_CLASS), new Class[] { InetSocketAddress.class, BlocksLocker.class, TachyonConf.class }, new Object[] { dataAddress, blockLocker, conf });
++        return CommonUtils.createNewClassInstance(// conf.getClass(Constants.WORKER_DATA_SEVRER, Constants.WORKER_DATA_SERVER_CLASS),
++        conf.getClass(Constants.WORKER_DATA_SEVRER, tachyon.worker.netty.NettyDataServer.class), new Class[] { InetSocketAddress.class, BlocksLocker.class, TachyonConf.class }, new Object[] { dataAddress, blockLocker, conf });
+     } catch (Exception e) {
+         throw Throwables.propagate(e);
+     }
+ }
+\ No newline at end of file

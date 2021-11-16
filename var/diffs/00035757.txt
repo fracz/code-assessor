@@ -1,0 +1,13 @@
+diff --git a/6e3646a8f73542719fb4e23888e669fb3d90bfa2 b/4092ed4e756a8ccd8ca1f769f2fe3bb2a233e5da
+index 6e3646a8f7..4092ed4e75 100644
+--- a/6e3646a8f73542719fb4e23888e669fb3d90bfa2
++++ b/4092ed4e756a8ccd8ca1f769f2fe3bb2a233e5da
+@@ -1,6 +1,6 @@
+ public String getWarnings() {
+     List<Invocation> unused = new UnusedStubsFinder().find(createdMocks);
+-    List<Invocation> all = new AllInvocationsFinder().find(createdMocks);
++    List<Invocation> all = AllInvocationsFinder.find(createdMocks);
+     List<InvocationMatcher> allInvocationMatchers = InvocationMatcher.createFrom(all);
+     return new WarningsPrinterImpl(unused, allInvocationMatchers, false).print();
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/a146d442bf031ad8c92994f85c4017692613760e b/7ebca9c6a04592c1babed8ea0799ed8d6409a497
+index a146d442bf..7ebca9c6a0 100644
+--- a/a146d442bf031ad8c92994f85c4017692613760e
++++ b/7ebca9c6a04592c1babed8ea0799ed8d6409a497
+@@ -1,12 +1,11 @@
+ @Test
+ public void shouldNotApplyUncommittedCommands() throws Throwable {
+     // given
+-    applicationProcess.start();
+-    // when
+     raftLog.append(new RaftLogEntry(0, operation(nullTx)));
+     raftLog.append(new RaftLogEntry(0, operation(nullTx)));
++    // when
+     applicationProcess.notifyCommitted(-1);
+-    applier.sync(false);
++    applicationProcess.start();
+     // then
+     verifyZeroInteractions(commandDispatcher);
+ }
+\ No newline at end of file

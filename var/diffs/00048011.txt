@@ -1,0 +1,18 @@
+diff --git a/3d999069782c621d9935ab22f91249d93e60dc5b b/89033d260b45ebca8789960610a92f6806fc4fa1
+index 3d99906978..89033d260b 100644
+--- a/3d999069782c621d9935ab22f91249d93e60dc5b
++++ b/89033d260b45ebca8789960610a92f6806fc4fa1
+@@ -1,10 +1,10 @@
+ @Override
+-public String evaluate() throws InvocationTargetException, InterruptedException {
++public String evaluate(DBRProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+     try {
+-        long rowCount = readRowCount(getProgressMonitor());
++        long rowCount = readRowCount(monitor);
+         return ROW_COUNT_FORMAT.format(rowCount);
+     } catch (DBException e) {
+         log.error(e);
+         return e.getMessage();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/4907aa36ad170af567c3269646d6fbbfbfc2d355 b/0165fb402a71c20792bdee466f937105dc990fa4
+index 4907aa36ad..0165fb402a 100644
+--- a/4907aa36ad170af567c3269646d6fbbfbfc2d355
++++ b/0165fb402a71c20792bdee466f937105dc990fa4
+@@ -1,11 +1,11 @@
++@SuppressWarnings("unchecked")
+ @Test
+ public void assertAddTableShardingValueForEquals() {
+     try (HintManager hintManager = HintManager.getInstance()) {
+         hintManager.addTableShardingValue("logicTable", "shardingColumn", 1);
+         ShardingKey shardingKey = new ShardingKey("logicTable", "shardingColumn");
+         assertTrue(HintManagerHolder.getTableShardingValue(shardingKey).isPresent());
+         assertThat(hintManager.getTableShardingValue(shardingKey).getColumnName(), is("shardingColumn"));
+-        assertThat(hintManager.getTableShardingValue(shardingKey).getType(), is(ShardingValue.ShardingValueType.SINGLE));
+-        assertThat(((ShardingValue) hintManager.getTableShardingValue(shardingKey)).getValue(), is((Comparable) 1));
++        assertThat(((ListShardingValue<? extends Comparable>) hintManager.getTableShardingValue(shardingKey)).getValues().iterator().next(), is((Comparable) 1));
+     }
+ }
+\ No newline at end of file

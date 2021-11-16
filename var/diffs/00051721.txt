@@ -1,0 +1,13 @@
+diff --git a/4e15a2121b3c1cfbe8f153f6322c79dc3474fd9a b/0786d6d391c0df91094b9f922ed00549a4011e84
+index 4e15a2121b..0786d6d391 100644
+--- a/4e15a2121b3c1cfbe8f153f6322c79dc3474fd9a
++++ b/0786d6d391c0df91094b9f922ed00549a4011e84
+@@ -1,5 +1,4 @@
+ @Override
+-public DBCSession openIsolatedContext(DBRProgressMonitor monitor, DBCExecutionPurpose purpose, String task) {
+-    // Isolated connections doesn't make sense in WMI
+-    return openSession(monitor, purpose, task);
++public DBCExecutionContext openIsolatedContext(DBRProgressMonitor monitor) throws DBCException {
++    return this;
+ }
+\ No newline at end of file

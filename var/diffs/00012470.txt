@@ -1,0 +1,20 @@
+diff --git a/18d952908dc08fec024203903b009ea7412a2d5a b/46e614f26ede3c541ccd76d54cbb164831dd5034
+index 18d952908d..46e614f26e 100644
+--- a/18d952908dc08fec024203903b009ea7412a2d5a
++++ b/46e614f26ede3c541ccd76d54cbb164831dd5034
+@@ -1,12 +1,13 @@
+ public static SourcePosition createFromLine(final PsiFile file, final int line) {
+     return new SourcePositionCache(file) {
+
+         protected int calcLine() {
+             return line;
+         }
+
+         protected int calcOffset() {
+-            return StringUtil.lineColToOffset(file.getText(), line, 0);
++            final Document document = PsiDocumentManager.getInstance(file.getProject()).getDocument(file);
++            return document.getLineStartOffset(line);
+         }
+     };
+ }
+\ No newline at end of file

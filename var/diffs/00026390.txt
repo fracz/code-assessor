@@ -1,0 +1,13 @@
+diff --git a/488b04719159b67f9e21fae29f3bf95b91554f88 b/95fdf250ba3273f42f5839c70225da0a8b722a0d
+index 488b047191..95fdf250ba 100644
+--- a/488b04719159b67f9e21fae29f3bf95b91554f88
++++ b/95fdf250ba3273f42f5839c70225da0a8b722a0d
+@@ -1,5 +1,5 @@
+ private void checkQueue(Queue<? extends E> queue, DescriptionBuilder builder) {
+     builder.expectThat("empty queue", queue.peek(), is(nullValue()));
+-    checkNoSuchElementException("remove", builder, () -> queue.remove());
+-    checkNoSuchElementException("element", builder, () -> queue.element());
++    checkNoSuchElementException("remove", builder, queue::remove);
++    checkNoSuchElementException("element", builder, queue::element);
+ }
+\ No newline at end of file

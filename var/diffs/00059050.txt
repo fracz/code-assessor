@@ -1,0 +1,13 @@
+diff --git a/20645dd2af268f67cd53a6f5b4f1c5c662a03fd5 b/ed6abfe6a41489b007f363b94e65b03589dc1b5e
+index 20645dd2af..ed6abfe6a4 100644
+--- a/20645dd2af268f67cd53a6f5b4f1c5c662a03fd5
++++ b/ed6abfe6a41489b007f363b94e65b03589dc1b5e
+@@ -1,5 +1,5 @@
+ @Override
+-public TitanKey createPropertyKey(InternalTitanTransaction tx, String name, TypeCategory category, Directionality directionality, TypeVisibility visibility, FunctionalType isfunctional, TitanType[] keysig, TitanType[] compactsig, TypeGroup group, boolean isKey, boolean hasIndex, Class<?> objectType) {
+-    StandardPropertyKey pt = new StandardPropertyKey(name, category, directionality, visibility, isfunctional, convertSignature(keysig), convertSignature(compactsig), group, isKey, hasIndex, objectType);
++public TitanKey createPropertyKey(InternalTitanTransaction tx, String name, TypeCategory category, Directionality directionality, TypeVisibility visibility, FunctionalType isfunctional, TitanType[] keysig, TitanType[] compactsig, TypeGroup group, boolean isUnique, IndexType[] indexes, Class<?> objectType) {
++    StandardPropertyKey pt = new StandardPropertyKey(name, category, directionality, visibility, isfunctional, convertSignature(keysig), convertSignature(compactsig), group, isUnique, indexes, objectType);
+     return factory.createNewPropertyKey(pt, tx);
+ }
+\ No newline at end of file

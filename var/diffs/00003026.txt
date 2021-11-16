@@ -1,0 +1,32 @@
+diff --git a/af900ab8a1546fd2875654d304a5ef7fe833b0ef b/995a155c585615b5851c5adb272061801221d528
+index af900ab8a1..995a155c58 100644
+--- a/af900ab8a1546fd2875654d304a5ef7fe833b0ef
++++ b/995a155c585615b5851c5adb272061801221d528
+@@ -1,18 +1,22 @@
+ protected static DataContext getCurrentEditorDataContext() {
+     final DataContext defaultContext = DataManager.getInstance().getDataContext();
+     return new DataContext() {
+
+         @Nullable
+         public Object getData(@NonNls String dataId) {
+-            if (dataId.equals(DataConstants.EDITOR))
++            if (PlatformDataKeys.EDITOR.is(dataId)) {
+                 return getEditor();
+-            if (dataId.equals(DataConstants.PROJECT))
++            }
++            if (PlatformDataKeys.PROJECT.is(dataId)) {
+                 return getProject();
+-            if (dataId.equals(DataConstants.PSI_FILE))
++            }
++            if (LangDataKeys.PSI_FILE.is(dataId)) {
+                 return getFile();
+-            if (dataId.equals(DataConstants.PSI_ELEMENT))
++            }
++            if (LangDataKeys.PSI_ELEMENT.is(dataId)) {
+                 return getFile().findElementAt(getEditor().getCaretModel().getOffset());
++            }
+             return defaultContext.getData(dataId);
+         }
+     };
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/8b8cd2d23b67086b56c154c222fbdb8547631cfb b/84af743778e6f7bc74f4d3061c776999daa93a9b
+index 8b8cd2d23b..84af743778 100644
+--- a/8b8cd2d23b67086b56c154c222fbdb8547631cfb
++++ b/84af743778e6f7bc74f4d3061c776999daa93a9b
+@@ -1,5 +1,5 @@
+ public void advance() {
+-    myPrevTokenEnd = myOriginal.getTokenEnd();
+-    myOriginal.advance();
++    myPrevTokenEnd = getDelegate().getTokenEnd();
++    super.advance();
+     locateToken();
+ }
+\ No newline at end of file

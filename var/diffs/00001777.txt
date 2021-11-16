@@ -1,0 +1,17 @@
+diff --git a/7d4727f011a29ebd5bd0b10dbc54fefdcc18469f b/c02f93809ea9e0771681306bc27ba48a9a11d559
+index 7d4727f011..c02f93809e 100644
+--- a/7d4727f011a29ebd5bd0b10dbc54fefdcc18469f
++++ b/c02f93809ea9e0771681306bc27ba48a9a11d559
+@@ -1,9 +1,5 @@
+ public void testConstructorException() {
+-    doTest(null, null, null, new SimpleParameterGen(new ParameterInfoImpl[0]), new GenExceptions() {
+-
+-        @Override
+-        public ThrownExceptionInfo[] genExceptions(PsiMethod method) {
+-            return new ThrownExceptionInfo[] { new JavaThrownExceptionInfo(-1, myFactory.createTypeByFQClassName("java.io.IOException", method.getResolveScope())) };
+-        }
++    doTest(null, null, null, new SimpleParameterGen(new ParameterInfoImpl[0]), method -> {
++        return new ThrownExceptionInfo[] { new JavaThrownExceptionInfo(-1, myFactory.createTypeByFQClassName("java.io.IOException", method.getResolveScope())) };
+     }, false);
+ }
+\ No newline at end of file

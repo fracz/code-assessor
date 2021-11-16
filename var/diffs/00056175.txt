@@ -1,0 +1,17 @@
+diff --git a/b77f0ba3b3ab03d10f06aada50414328dc76dcfc b/87e9b7f7172d4bf3ba55e28f5268fdaf8eb3309b
+index b77f0ba3b3..87e9b7f717 100644
+--- a/b77f0ba3b3ab03d10f06aada50414328dc76dcfc
++++ b/87e9b7f7172d4bf3ba55e28f5268fdaf8eb3309b
+@@ -1,8 +1,9 @@
++@Test
+ public void testReturningBeanArray() {
+     this.testBeanTarget.setSpouse(new TestBean());
+     ITestBean[] spouses = (ITestBean[]) this.testBeanTarget.getSpouses();
+     mockCollaborator.testBeanArrayArg(spouses);
+-    mockControl.replay();
++    replay(mockCollaborator);
+     testBeanProxy.getSpouses();
+-    mockControl.verify();
++    verify(mockCollaborator);
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/b9e9a17e36d07c62583fbf2625da39784b8b630b b/f26ed2038bd1802e9d5942879046b5b684caf423
+index b9e9a17e36..f26ed2038b 100644
+--- a/b9e9a17e36d07c62583fbf2625da39784b8b630b
++++ b/f26ed2038bd1802e9d5942879046b5b684caf423
+@@ -1,8 +1,8 @@
+ @Test(expected = IllegalArgumentException.class)
+ public void testClassNotFound() {
+     Yaml yaml = new Yaml(new Constructor(ShardingRuleConfig.class));
+     Map<String, DataSource> dsMap = new HashMap<>();
+     dsMap.put("ds", new BasicDataSource());
+     ShardingRuleConfig config = (ShardingRuleConfig) yaml.load(ShardingRuleBuilderTest.class.getResourceAsStream("/config/config-classNotFound.yaml"));
+-    new ShardingRuleBuilder().setExternalDataSourceMap(dsMap).parse(config).build();
++    new ShardingRuleBuilder("config-classNotFound.yaml", dsMap, config).build();
+ }
+\ No newline at end of file

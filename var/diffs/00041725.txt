@@ -1,0 +1,19 @@
+diff --git a/43a147e3b53b6b798b8d78e09378b70a37948f0c b/2f4199b47feef0f92afdbfe9ca68105f0a60a00d
+index 43a147e3b5..2f4199b47f 100644
+--- a/43a147e3b53b6b798b8d78e09378b70a37948f0c
++++ b/2f4199b47feef0f92afdbfe9ca68105f0a60a00d
+@@ -1,11 +1,11 @@
+ private void checkConnection() throws IOException {
+     final Socket socket;
+-    if (connection.protocol == null || connection.protocol.getChannel() == null)
++    if (connection.getProtocol() == null || connection.getProtocol().getChannel() == null)
+         socket = null;
+     else
+-        socket = connection.protocol.getChannel().socket;
++        socket = connection.getProtocol().getChannel().socket;
+     if (socket == null || socket.isClosed() || socket.isInputShutdown()) {
+         OLogManager.instance().debug(this, "[OHttpResponse] found and removed pending closed channel %d (%s)", connection, socket);
+         throw new IOException("Connection is closed");
+     }
+ }
+\ No newline at end of file

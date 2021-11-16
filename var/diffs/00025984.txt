@@ -1,0 +1,24 @@
+diff --git a/877ae5b53c9454b17dfcbf39f1c4e4faaec382fd b/b94d1a7f89cf509bfe4343e13dabdf470010827a
+index 877ae5b53c..b94d1a7f89 100644
+--- a/877ae5b53c9454b17dfcbf39f1c4e4faaec382fd
++++ b/b94d1a7f89cf509bfe4343e13dabdf470010827a
+@@ -1,17 +1,16 @@
+ private void validateCreateRequest(String path, CreateMode createMode, Request request, long ttl) throws KeeperException {
+     try {
+         EphemeralType.validateTTL(createMode, ttl);
+     } catch (IllegalArgumentException e) {
+-        BadArgumentsException bae = new BadArgumentsException(path);
+-        throw bae;
++        throw new BadArgumentsException(path);
+     }
+     if (createMode.isEphemeral()) {
+         // so we just need to report the error
+         if (request.getException() != null) {
+             throw request.getException();
+         }
+         zks.sessionTracker.checkGlobalSession(request.sessionId, request.getOwner());
+     } else {
+         zks.sessionTracker.checkSession(request.sessionId, request.getOwner());
+     }
+ }
+\ No newline at end of file

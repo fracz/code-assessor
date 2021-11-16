@@ -1,0 +1,12 @@
+diff --git a/2d3d0d108064e50b9be270bd994bd02db1aa2a18 b/fb6bbdc4b1a7dd2d2e5d60c3ec84865921552b24
+index 2d3d0d1080..fb6bbdc4b1 100644
+--- a/2d3d0d108064e50b9be270bd994bd02db1aa2a18
++++ b/fb6bbdc4b1a7dd2d2e5d60c3ec84865921552b24
+@@ -1,4 +1,4 @@
+ @Override
+-protected PsiElement addDeclaration(@NotNull final PsiElement expression, @NotNull final PsiElement declaration, @NotNull final List<PsiElement> occurrences, final boolean replaceAll, InitPlace initInConstructor) {
+-    return doIntroduceVariable(expression, declaration, occurrences, replaceAll);
++protected PsiElement addDeclaration(@NotNull final PsiElement expression, @NotNull final PsiElement declaration, @NotNull IntroduceOperation operation) {
++    return doIntroduceVariable(expression, declaration, operation.getOccurrences(), operation.isReplaceAll());
+ }
+\ No newline at end of file

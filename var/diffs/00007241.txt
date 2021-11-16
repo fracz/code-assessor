@@ -1,0 +1,20 @@
+diff --git a/4a8fd65ccc3d10ddd3fcf53a37fcde79ea1e07f7 b/05db8cc2054c77e07af51f11e43ea4f8beed0891
+index 4a8fd65ccc..05db8cc205 100644
+--- a/4a8fd65ccc3d10ddd3fcf53a37fcde79ea1e07f7
++++ b/05db8cc2054c77e07af51f11e43ea4f8beed0891
+@@ -1,10 +1,9 @@
+ @Override
+-protected IdPath doApplyTo(RootEntry root) {
+-    Entry e = root.getEntry(myPath);
++protected IdPath doApplyTo(Entry r) {
++    Entry e = r.getEntry(myPath);
+     // todo one more hack to support roots...
+     // todo i defitilety have to do something with it...
+     myOldName = Paths.getNameOf(e.getName());
+-    IdPath idPath = e.getIdPath();
+-    root.rename(idPath, myNewName);
+-    return idPath;
++    doRename(e, myNewName);
++    return e.getIdPath();
+ }
+\ No newline at end of file

@@ -1,0 +1,28 @@
+diff --git a/348ec8635476ec8186a161ce4a41aa159883d8e0 b/77d56f9ff8376ae33552b8cc0be7679f0739087a
+index 348ec86354..77d56f9ff8 100644
+--- a/348ec8635476ec8186a161ce4a41aa159883d8e0
++++ b/77d56f9ff8376ae33552b8cc0be7679f0739087a
+@@ -1,18 +1,19 @@
+ protected void end() {
+-    for (OTransformer t : transformers) t.end();
++    for (OETLTransformer t : transformers) t.end();
+     if (source != null)
+         source.end();
+     extractor.end();
+     loader.end();
+-    for (OBlock t : endBlocks) {
++    for (OETLBlock t : endBlocks) {
+         t.begin();
+         t.execute();
+         t.end();
+     }
+     elapsed = System.currentTimeMillis() - startTime;
+     if (dumpTask != null) {
+         dumpTask.cancel();
+     }
+-    out(LOG_LEVELS.INFO, "END ETL PROCESSOR");
++    // out(LOG_LEVELS.INFO, "END ETL PROCESSOR");
++    OLogManager.instance().info(this, "END ETL PROCESSOR");
+     dumpProgress();
+ }
+\ No newline at end of file

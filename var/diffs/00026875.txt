@@ -1,0 +1,17 @@
+diff --git a/4016c1ff49f98a8b81e000a3541d2f51c416cf34 b/60f8119a5a89deb66e4fb054277df39c020e1d5b
+index 4016c1ff49..60f8119a5a 100644
+--- a/4016c1ff49f98a8b81e000a3541d2f51c416cf34
++++ b/60f8119a5a89deb66e4fb054277df39c020e1d5b
+@@ -1,8 +1,8 @@
+-protected void applyDropOutIfNecessary(DoubleMatrix input) {
++protected void applyDropOutIfNecessary(INDArray input) {
+     if (dropOut > 0) {
+-        this.doMask = DoubleMatrix.rand(input.rows, input.columns).gt(dropOut);
++        this.doMask = NDArrays.rand(input.rows(), input.columns()).gt(dropOut);
+     } else
+-        this.doMask = DoubleMatrix.ones(input.rows, input.columns);
++        this.doMask = NDArrays.ones(input.rows(), input.columns());
+     // actually apply drop out
+     input.muli(doMask);
+ }
+\ No newline at end of file

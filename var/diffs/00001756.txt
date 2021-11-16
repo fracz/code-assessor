@@ -1,0 +1,16 @@
+diff --git a/1e93b4f8543569a8ee1e6c53431c5f5953fee5be b/976fd20a0b65180d69e5de0486fdf5c0d343dc92
+index 1e93b4f854..976fd20a0b 100644
+--- a/1e93b4f8543569a8ee1e6c53431c5f5953fee5be
++++ b/976fd20a0b65180d69e5de0486fdf5c0d343dc92
+@@ -1,9 +1,3 @@
+ public void testAddManyFirst() throws Exception {
+-    doTest(new GenParams() {
+-
+-        @Override
+-        public TypeParameterInfo[] gen(PsiClass aClass) throws IncorrectOperationException {
+-            return new TypeParameterInfo[] { new TypeParameterInfo(aClass, "U", "SubjectFace"), new TypeParameterInfo(aClass, "V", "java.util.Set<java.lang.Object>") };
+-        }
+-    }, "Zero.java", "TwoSubjectFaceSetObject.java");
++    doTest(aClass -> new TypeParameterInfo[] { new TypeParameterInfo(aClass, "U", "SubjectFace"), new TypeParameterInfo(aClass, "V", "java.util.Set<java.lang.Object>") }, "Zero.java", "TwoSubjectFaceSetObject.java");
+ }
+\ No newline at end of file

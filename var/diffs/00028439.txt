@@ -1,0 +1,14 @@
+diff --git a/d2e34ca0de6057e5b75904942787d92084dd6b22 b/5af0ef805d8cbbfd1cd5012aaa6e37b9f53a7d87
+index d2e34ca0de..5af0ef805d 100644
+--- a/d2e34ca0de6057e5b75904942787d92084dd6b22
++++ b/5af0ef805d8cbbfd1cd5012aaa6e37b9f53a7d87
+@@ -1,6 +1,3 @@
+-void getConnection(Handler<ClientConnection> handler, Handler<Throwable> connectionExceptionHandler, DefaultContext context) {
+-    if (!keepAlive && pipelining) {
+-        throw new IllegalArgumentException("Cannot have pipelining for non Keep-Alive connection");
+-    }
+-    pool.getConnection(handler, connectionExceptionHandler, context);
++void getConnection(int port, String host, Handler<ClientConnection> handler, Handler<Throwable> connectionExceptionHandler, DefaultContext context) {
++    pool.getConnection(port, host, handler, connectionExceptionHandler, context);
+ }
+\ No newline at end of file

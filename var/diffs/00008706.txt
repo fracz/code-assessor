@@ -1,0 +1,23 @@
+diff --git a/6fed4945c9a25f0ed8531a8e14fbf56d32cb9363 b/115de2babc6fab9349fb7901c453b4e8f828e9f7
+index 6fed4945c9..115de2babc 100644
+--- a/6fed4945c9a25f0ed8531a8e14fbf56d32cb9363
++++ b/115de2babc6fab9349fb7901c453b4e8f828e9f7
+@@ -1,14 +1,13 @@
+ private void setSorted(boolean sorted) {
+     if (mySorted == sorted)
+         return;
+     mySorted = sorted;
+-    Pair pair = storeSelection();
+-    DefaultMutableTreeNode root = (DefaultMutableTreeNode) myTreeModel.getRoot();
+-    Enumeration children = root.children();
++    Pair<ElementNode, List<ElementNode>> pair = storeSelection();
++    Enumeration<ParentNode<T>> children = getRootNodeChildren();
+     while (children.hasMoreElements()) {
+-        DefaultMutableTreeNode classNode = (DefaultMutableTreeNode) children.nextElement();
++        ParentNode<T> classNode = children.nextElement();
+         sortNode(classNode, sorted);
+         myTreeModel.nodeStructureChanged(classNode);
+     }
+     restoreSelection(pair);
+ }
+\ No newline at end of file

@@ -1,0 +1,25 @@
+diff --git a/ef12d4e2ece3a49a918c6cfdd5bbdde2d9ff9f08 b/27e64651e015548f76e0e8107e6da99d09ecdd42
+index ef12d4e2ec..27e64651e0 100644
+--- a/ef12d4e2ece3a49a918c6cfdd5bbdde2d9ff9f08
++++ b/27e64651e015548f76e0e8107e6da99d09ecdd42
+@@ -1,18 +1,18 @@
+ public JSType specialize(JSType other) {
+     JSType t = specializeHelper(other);
+     if (t.isBottom() && (isLoose() || other.isLoose())) {
+         t = autobox().specializeHelper(other.autobox());
+         // just leave the type unspecialized.
+         if (!t.isBottom()) {
+             return this;
+         }
+     }
+     if (t.isLoose()) {
+-        JSType maybeScalar = ObjectType.mayTurnLooseObjectToScalar(t, JSType.commonTypes);
++        JSType maybeScalar = ObjectType.mayTurnLooseObjectToScalar(t, this.commonTypes);
+         if (t != maybeScalar) {
+             // ref equality on purpose
+             return maybeScalar;
+         }
+     }
+     return t;
+ }
+\ No newline at end of file

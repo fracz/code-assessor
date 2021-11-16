@@ -1,0 +1,12 @@
+diff --git a/f6adcb832202388fa9b70c8d9710748d925ba124 b/8e1cbc30493973b8827c307415f2b64ced2e413f
+index f6adcb8322..8e1cbc3049 100644
+--- a/f6adcb832202388fa9b70c8d9710748d925ba124
++++ b/8e1cbc30493973b8827c307415f2b64ced2e413f
+@@ -1,5 +1,5 @@
+ @Override
+ public void setURL(int parameterIndex, URL x) throws SQLException {
+-    setParameter(parameterIndex, new JdbcParameterImpl(TYPE.URL, x));
++    setParameter(parameterIndex, createParameter(TYPE.URL, x));
+     createChain().preparedStatement_setURL(this, parameterIndex, x);
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/d446fd4f136c934f94f0003b2bf7f9de4b921479 b/bd199245c7899fb3923155e68a5f596b19f3f4da
+index d446fd4f13..bd199245c7 100644
+--- a/d446fd4f136c934f94f0003b2bf7f9de4b921479
++++ b/bd199245c7899fb3923155e68a5f596b19f3f4da
+@@ -1,14 +1,14 @@
+ /**
+  * Returns a list of the full names of a simple match regex like pattern against full name and index name.
+  */
+ public List<String> simpleMatchToFullName(String pattern) {
+     List<String> fields = Lists.newArrayList();
+-    for (FieldMapper<?> fieldMapper : mappers) {
++    for (FieldMapper<?> fieldMapper : this) {
+         if (Regex.simpleMatch(pattern, fieldMapper.names().fullName())) {
+             fields.add(fieldMapper.names().fullName());
+         } else if (Regex.simpleMatch(pattern, fieldMapper.names().indexName())) {
+             fields.add(fieldMapper.names().fullName());
+         }
+     }
+     return fields;
+ }
+\ No newline at end of file

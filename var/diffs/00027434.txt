@@ -1,0 +1,19 @@
+diff --git a/b2e03740f59df6678ae232079aefdd3b601b17ff b/f135b3cf187b4a1d7e244ea7448600ffc88e25d0
+index b2e03740f5..f135b3cf18 100644
+--- a/b2e03740f59df6678ae232079aefdd3b601b17ff
++++ b/f135b3cf187b4a1d7e244ea7448600ffc88e25d0
+@@ -1,8 +1,10 @@
+ @Test
+ public void usesSharedRegistries() throws Exception {
+-    SharedMetricRegistries.add("reg", registry);
+-    final InstrumentedAppender shared = new InstrumentedAppender("reg");
++    String registryName = "registry";
++    SharedMetricRegistries.add(registryName, registry);
++    final InstrumentedAppender shared = new InstrumentedAppender(registryName);
+     shared.activateOptions();
++    when(event.getLevel()).thenReturn(Level.INFO);
+     shared.doAppend(event);
+-    assertThat(registry.meter("org.apache.log4j.Appender.info").getCount()).isEqualTo(1);
++    assertThat(registry.meter(METRIC_NAME_PREFIX + ".info").getCount()).isEqualTo(1);
+ }
+\ No newline at end of file

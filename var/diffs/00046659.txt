@@ -1,0 +1,14 @@
+diff --git a/66ee2b3ff1d19debe1d31051d8e2ec8aded9db73 b/7c5baf506464bbaebda2b005bf1cb57d089f9791
+index 66ee2b3ff1..7c5baf5064 100644
+--- a/66ee2b3ff1d19debe1d31051d8e2ec8aded9db73
++++ b/7c5baf506464bbaebda2b005bf1cb57d089f9791
+@@ -1,7 +1,6 @@
+ private void onNewReceiverBuffer(final String destination, final long sessionId, final long channelId, final long termId) {
+     onNewBuffer(sessionId, channelId, termId, rcvNotifiers.get(destination, channelId), this::newReader, LogReader[]::new, (chan, buffers) -> {
+         // TODO: get the counter id
+-        final PositionReporter reporter = statusCounters.reporter(0);
+-        chan.onBuffersMapped(sessionId, termId, buffers, reporter);
++        chan.onBuffersMapped(sessionId, termId, buffers, new BufferPositionReporter(counterValuesBuffer, 0));
+     });
+ }
+\ No newline at end of file

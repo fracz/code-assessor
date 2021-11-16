@@ -1,0 +1,19 @@
+diff --git a/022232a11eb8121e62cebd0aa5a1e946e07f06f7 b/d648385e157f930ea8538ba6c8918873f8e4af83
+index 022232a11e..d648385e15 100644
+--- a/022232a11eb8121e62cebd0aa5a1e946e07f06f7
++++ b/d648385e157f930ea8538ba6c8918873f8e4af83
+@@ -1,9 +1,9 @@
+ @Test
+ public void shouldLoadConstraintsByLabelAndPropertyFromCache() throws Exception {
+     // Given
+-    int labelId = 0, propertyId = 1;
+-    Set<NodePropertyConstraint> constraints = asSet((NodePropertyConstraint) new UniquenessConstraint(labelId, propertyId));
+-    when(schemaCache.constraintsForLabelAndProperty(labelId, propertyId)).thenReturn(constraints.iterator());
++    NodePropertyDescriptor descriptor = new NodePropertyDescriptor(0, 1);
++    Set<NodePropertyConstraint> constraints = asSet((NodePropertyConstraint) new UniquenessConstraint(descriptor));
++    when(schemaCache.constraintsForLabelAndProperty(descriptor)).thenReturn(constraints.iterator());
+     // When & Then
+-    assertThat(asSet(context.constraintsGetForLabelAndPropertyKey(labelId, propertyId)), equalTo(constraints));
++    assertThat(asSet(context.constraintsGetForLabelAndPropertyKey(descriptor)), equalTo(constraints));
+ }
+\ No newline at end of file

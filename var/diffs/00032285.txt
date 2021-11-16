@@ -1,0 +1,27 @@
+diff --git a/cbe0907654c4129c852566374df58a5c3b29af80 b/203c1f49d97f18615fb766ed8212c277f512b71f
+index cbe0907654..203c1f49d9 100644
+--- a/cbe0907654c4129c852566374df58a5c3b29af80
++++ b/203c1f49d97f18615fb766ed8212c277f512b71f
+@@ -1,16 +1,16 @@
+ // We only typecheck the receiver type for a .apply function. To typecheck all
+ // arguments we either need tuple types or special handling in NTI to gather
+ // the types inside the array.
+-public FunctionType transformByApplyProperty(JSTypes commonTypes) {
++public FunctionType transformByApplyProperty() {
+     if (isTopFunction() || isQmarkFunction() || isLoose) {
+-        return QMARK_FUNCTION;
++        return this.commonTypes.QMARK_FUNCTION;
+     }
+     if (isGeneric()) {
+-        return instantiateGenericsWithUnknown(this).transformByApplyProperty(commonTypes);
++        return instantiateGenericsWithUnknown(this).transformByApplyProperty();
+     }
+-    FunctionTypeBuilder builder = new FunctionTypeBuilder();
++    FunctionTypeBuilder builder = new FunctionTypeBuilder(this.commonTypes);
+     builder.addReqFormal(fromReceiverToFirstFormal());
+-    builder.addOptFormal(JSType.join(commonTypes.getArrayInstance(), commonTypes.getArgumentsArrayType()));
++    builder.addOptFormal(JSType.join(this.commonTypes.getArrayInstance(), this.commonTypes.getArgumentsArrayType()));
+     builder.addRetType(this.returnType);
+     return builder.buildFunction();
+ }
+\ No newline at end of file

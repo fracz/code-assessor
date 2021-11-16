@@ -1,0 +1,19 @@
+diff --git a/18073b8cfc49a058cf69b066040367f762c6e570 b/4cafae8dc35f91eb1dbd51a30fbeee66c4540c5e
+index 18073b8cfc..4cafae8dc3 100644
+--- a/18073b8cfc49a058cf69b066040367f762c6e570
++++ b/4cafae8dc35f91eb1dbd51a30fbeee66c4540c5e
+@@ -1,9 +1,12 @@
+ public ConnectionProxy connection_connect(Properties info) throws SQLException {
+     if (this.pos < filterSize) {
+         return nextFilter().connection_connect(this, info);
+     }
+     Driver driver = dataSource.getRawDriver();
+     String url = dataSource.getRawJdbcUrl();
+     Connection nativeConnection = driver.connect(url, info);
+-    return wrap(nativeConnection, info);
++    if (nativeConnection == null) {
++        return null;
++    }
++    return new ConnectionProxyImpl(dataSource, nativeConnection, info, dataSource.createConnectionId());
+ }
+\ No newline at end of file

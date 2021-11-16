@@ -1,0 +1,22 @@
+diff --git a/691b5a0ddcc4b1c02346559452c74a23f2ee1bc8 b/79a8a3f92c377ba620a021d7d776d8177744f2c2
+index 691b5a0ddc..79a8a3f92c 100644
+--- a/691b5a0ddcc4b1c02346559452c74a23f2ee1bc8
++++ b/79a8a3f92c377ba620a021d7d776d8177744f2c2
+@@ -1,12 +1,8 @@
+ @Override
+ public void openDirectory(File directory) throws IOException {
+-    if (isPortableOpenSupported()) {
+-        try {
+-            portableOpen(directory);
+-            return;
+-        } catch (IOException e) {
+-            e.printStackTrace(System.out);
+-        }
++    try {
++        super.openDirectory(directory);
++    } catch (IOException | UnsupportedOperationException ex) {
++        getRuntime().exec(new String[] { "explorer", directory.getAbsolutePath() });
+     }
+-    windowsOpenDirectory(directory);
+ }
+\ No newline at end of file

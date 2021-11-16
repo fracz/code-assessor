@@ -1,0 +1,14 @@
+diff --git a/6c46e06d12befb1d823a774189326786ea4f1b9d b/bc3ad4df800c51aa99c87dc1281022a33c5ab0e4
+index 6c46e06d12..bc3ad4df80 100644
+--- a/6c46e06d12befb1d823a774189326786ea4f1b9d
++++ b/bc3ad4df800c51aa99c87dc1281022a33c5ab0e4
+@@ -1,4 +1,7 @@
+ @Override
+ public void handleException(Throwable exception, SubscriberExceptionContext context) {
+-    logger.log(Level.SEVERE, "Could not dispatch event: " + context.getSubscriber() + " to " + context.getSubscriberMethod(), exception.getCause());
++    Logger logger = logger(context);
++    if (logger.isLoggable(Level.SEVERE)) {
++        logger.log(Level.SEVERE, message(context), exception);
++    }
+ }
+\ No newline at end of file

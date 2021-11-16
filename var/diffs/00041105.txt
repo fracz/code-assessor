@@ -1,0 +1,36 @@
+diff --git a/08c9a13d0b3792fae56f1b7d82fc687d858b0635 b/a9577c39e3948d4ef7c5d4c46d0f7a0b1acc62b7
+index 08c9a13d0b..a9577c39e3 100644
+--- a/08c9a13d0b3792fae56f1b7d82fc687d858b0635
++++ b/a9577c39e3948d4ef7c5d4c46d0f7a0b1acc62b7
+@@ -1,17 +1,23 @@
+ @Test
+ public void testAsynchEventListeners() throws IOException {
+     if (!database.getURL().startsWith("remote:"))
+         return;
+     database.open("admin", "admin");
+-    ((OStorageRemoteThread) database.getStorage()).addRemoteServerEventListener(new ORemoteServerEventListener() {
++    ((OStorageRemoteThread) database.getStorage()).setRemoteServerEventListener(new ORemoteServerEventListener() {
+
+-        public void onRecordPulled(ORecord<?> iRecord) {
+-            onRecordPulled++;
+-        }
+-
+-        public void onClusterConfigurationChange(byte[] clusterConfig) {
+-            onClusterConfigurationChange++;
++        public void onRequest(byte iRequestCode, Object iObject) {
++            switch(iRequestCode) {
++                case OChannelBinaryProtocol.REQUEST_PUSH_RECORD:
++                    onRecordPulled++;
++                    break;
++                case OChannelDistributedProtocol.PUSH_DISTRIBUTED_CONFIG:
++                    onClusterConfigurationChange++;
++                    break;
++                case OChannelDistributedProtocol.PUSH_LEADER_AVAILABLE_DBS:
++                    onAvailableDatabaseChange++;
++                    break;
++            }
+         }
+     });
+     database.close();
+ }
+\ No newline at end of file

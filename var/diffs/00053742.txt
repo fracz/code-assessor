@@ -1,0 +1,13 @@
+diff --git a/84e57ab5f5de15312cf3ca62e85c7ce5dac82af3 b/e1e7c930037ee7191a864123cd17106018261240
+index 84e57ab5f5..e1e7c93003 100644
+--- a/84e57ab5f5de15312cf3ca62e85c7ce5dac82af3
++++ b/e1e7c930037ee7191a864123cd17106018261240
+@@ -1,6 +1,6 @@
+ @Test
+ public void assertFindTableRule() {
+-    ShardingRule actual = ShardingRule.builder().dataSourceRule(createDataSourceRule()).tableRules(Collections.singletonList(createTableRule())).databaseShardingStrategy(createDatabaseShardingStrategy()).tableShardingStrategy(createTableShardingStrategy()).build();
++    ShardingRule actual = ShardingRule.builder().dataSourceRule(createDataSourceRule()).tableRules(Collections.singletonList(createTableRule())).databaseShardingStrategy(new NoneShardingStrategy()).tableShardingStrategy(new NoneShardingStrategy()).build();
+     assertTrue(actual.tryFindTableRule("logicTable").isPresent());
+     assertFalse(actual.tryFindTableRule("null").isPresent());
+ }
+\ No newline at end of file

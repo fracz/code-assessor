@@ -1,0 +1,16 @@
+diff --git a/1873c25f7588c669555744d3dab81cf458a4fa6e b/261e09376a692443ce2cfd8d554861148d70e578
+index 1873c25f75..261e09376a 100644
+--- a/1873c25f7588c669555744d3dab81cf458a4fa6e
++++ b/261e09376a692443ce2cfd8d554861148d70e578
+@@ -1,7 +1,7 @@
+ @Override
+ public Struct createStruct(String typeName, Object[] attributes) throws SQLException {
+-    if (conn != null) {
+-        return conn.createStruct(typeName, attributes);
++    if (conn == null) {
++        throw new SQLException("connection not init");
+     }
+-    throw new SQLException("connection not init");
++    return conn.createStruct(typeName, attributes);
+ }
+\ No newline at end of file

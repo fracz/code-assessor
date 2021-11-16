@@ -1,0 +1,33 @@
+diff --git a/0c1913537424c7c5e53dd6bcfc09651d469368ad b/17ab44a1535d72e64854f2f1a6f29b042eecdb94
+index 0c19135374..17ab44a153 100644
+--- a/0c1913537424c7c5e53dd6bcfc09651d469368ad
++++ b/17ab44a1535d72e64854f2f1a6f29b042eecdb94
+@@ -1,22 +1,22 @@
+ private void endStructure() {
+     context = context.getParent();
+     if (context == null) {
+     // skip
+     } else {
+-        final JSONStreamState state = context.getState();
+-        JSONStreamState newState = null;
++        final int state = context.getState();
++        int newState = -1;
+         switch(state) {
+             case PropertyKey:
+-                newState = JSONStreamState.PropertyValue;
++                newState = PropertyValue;
+                 break;
+             case StartArray:
+-                newState = JSONStreamState.ArrayValue;
++                newState = ArrayValue;
+                 break;
+             default:
+                 break;
+         }
+-        if (newState != null) {
++        if (newState != -1) {
+             context.setState(newState);
+         }
+     }
+ }
+\ No newline at end of file

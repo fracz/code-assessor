@@ -1,0 +1,24 @@
+diff --git a/ce07812ee51d93d05464b3e804990e3467c470e8 b/b354cc2e5967d218e77fad970aea1ccb396f8d76
+index ce07812ee5..b354cc2e59 100644
+--- a/ce07812ee51d93d05464b3e804990e3467c470e8
++++ b/b354cc2e5967d218e77fad970aea1ccb396f8d76
+@@ -1,16 +1,16 @@
+ @Override
+ public final DMLStatement parse() {
+     sqlParser.getLexer().nextToken();
+     parseInto();
+     parseColumns();
+     if (sqlParser.equalAny(DefaultKeyword.SELECT, Symbol.LEFT_PAREN)) {
+         throw new UnsupportedOperationException("Cannot support subquery");
+     }
+-    if (getValuesKeywords().contains(sqlParser.getLexer().getCurrentToken().getType())) {
++    if (sqlParser.equalAny(getValuesKeywords())) {
+         parseValues();
+-    } else if (getCustomizedInsertKeywords().contains(sqlParser.getLexer().getCurrentToken().getType())) {
++    } else if (sqlParser.equalAny(getCustomizedInsertKeywords())) {
+         parseCustomizedInsert();
+     }
+     appendGenerateKey();
+     return insertStatement;
+ }
+\ No newline at end of file

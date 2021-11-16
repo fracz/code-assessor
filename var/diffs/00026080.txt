@@ -1,0 +1,37 @@
+diff --git a/6bd515c4eefcba447ec82758d3699fb7f2977e0c b/ab2d410c299a24610ab00e58a475d8b7f9aa0a3b
+index 6bd515c4ee..ab2d410c29 100644
+--- a/6bd515c4eefcba447ec82758d3699fb7f2977e0c
++++ b/ab2d410c299a24610ab00e58a475d8b7f9aa0a3b
+@@ -1,20 +1,23 @@
+ /**
+- * If this instance is configured with DEPEND_ON_EXTERNAL_PKG and rootedPath is a file that isn't
+- * under a package root then this adds a dependency on the //external package. If the action is
+- * ERROR_OUT, it will throw an error instead.
++ * If this instance is configured with
++ * {@link ExternalFileAction#DEPEND_ON_EXTERNAL_PKG_FOR_EXTERNAL_REPO_PATHS} and
++ * {@code rootedPath} isn't under a package root then this adds a dependency on the //external
++ * package. If the action is
++ * {@link ExternalFileAction#ASSUME_NON_EXISTENT_AND_IMMUTABLE_FOR_EXTERNAL_PATHS}, it will throw
++ * a {@link NonexistentImmutableExternalFileException} instead.
+  */
+ @ThreadSafe
+-void maybeHandleExternalFile(RootedPath rootedPath, SkyFunction.Environment env) throws IOException, InterruptedException {
++void maybeHandleExternalFile(RootedPath rootedPath, SkyFunction.Environment env) throws NonexistentImmutableExternalFileException, IOException, InterruptedException {
+     FileType fileType = getAndNoteFileType(rootedPath);
+     if (fileType == FileType.INTERNAL) {
+         return;
+     }
+-    if (fileType == FileType.OUTPUT || fileType == FileType.EXTERNAL_MUTABLE) {
+-        if (externalFileAction == ExternalFileAction.ERROR_OUT) {
+-            throw new FileOutsidePackageRootsException(rootedPath);
++    if (fileType == FileType.OUTPUT || fileType == FileType.EXTERNAL) {
++        if (externalFileAction == ExternalFileAction.ASSUME_NON_EXISTENT_AND_IMMUTABLE_FOR_EXTERNAL_PATHS) {
++            throw new NonexistentImmutableExternalFileException();
+         }
+         return;
+     }
+-    Preconditions.checkState(externalFileAction == ExternalFileAction.DEPEND_ON_EXTERNAL_PKG_FOR_EXTERNAL_REPO_FILES, externalFileAction);
++    Preconditions.checkState(externalFileAction == ExternalFileAction.DEPEND_ON_EXTERNAL_PKG_FOR_EXTERNAL_REPO_PATHS, externalFileAction);
+     RepositoryFunction.addExternalFilesDependencies(rootedPath, directories, env);
+ }
+\ No newline at end of file

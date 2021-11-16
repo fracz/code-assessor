@@ -1,0 +1,13 @@
+diff --git a/39785c7b2da43cae7d257e14b271231adc3c27ba b/5dfc91607f9a730b3e3a5ec0cbb8a75383cb2899
+index 39785c7b2d..5dfc91607f 100644
+--- a/39785c7b2da43cae7d257e14b271231adc3c27ba
++++ b/5dfc91607f9a730b3e3a5ec0cbb8a75383cb2899
+@@ -1,5 +1,5 @@
+ public OccurenceNavigator.OccurenceInfo goPreviousOccurence() {
+     final FailedTestInfo result = getPreviousOccurenceInfo();
+-    selectFailedTest(result);
+-    return new OccurenceInfo(TestsUIUtil.getOpenFileDescriptor(result.myDefect, myProject, openFailureLine()), result.getDefectNumber(), result.getDefectsCount());
++    myModel.selectAndNotify(result.getDefect());
++    return new OccurenceInfo(TestsUIUtil.getOpenFileDescriptor(result.myDefect, myModel), result.getDefectNumber(), result.getDefectsCount());
+ }
+\ No newline at end of file

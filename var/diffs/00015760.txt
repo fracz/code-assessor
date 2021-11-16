@@ -1,0 +1,22 @@
+diff --git a/3b846b6ca19581c03e705674552f588d78eff874 b/b73f1c6b5279875a539291a08a784309acbda7c3
+index 3b846b6ca1..b73f1c6b52 100644
+--- a/3b846b6ca19581c03e705674552f588d78eff874
++++ b/b73f1c6b5279875a539291a08a784309acbda7c3
+@@ -1,11 +1,11 @@
++@NotNull
+ private static ClassKind getClassKind(@NotNull PsiClass psiClass, @NotNull JetClassAnnotation jetClassAnnotation) {
+     if (psiClass.isInterface()) {
+         return (psiClass.isAnnotationType() ? ClassKind.ANNOTATION_CLASS : ClassKind.TRAIT);
++    }
++    if (psiClass.isEnum()) {
++        return ClassKind.ENUM_CLASS;
+     } else {
+-        if (psiClass.isEnum()) {
+-            return ClassKind.ENUM_CLASS;
+-        } else {
+-            return jetClassAnnotation.kind() == JvmStdlibNames.FLAG_CLASS_KIND_OBJECT ? ClassKind.OBJECT : ClassKind.CLASS;
+-        }
++        return jetClassAnnotation.kind() == JvmStdlibNames.FLAG_CLASS_KIND_OBJECT ? ClassKind.OBJECT : ClassKind.CLASS;
+     }
+ }
+\ No newline at end of file

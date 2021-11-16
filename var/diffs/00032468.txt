@@ -1,0 +1,14 @@
+diff --git a/fc14f8e0948c46791e1389837ea2806f2f23b3d1 b/fd498d12a3347e142921c233067fed93a32db391
+index fc14f8e094..fd498d12a3 100644
+--- a/fc14f8e0948c46791e1389837ea2806f2f23b3d1
++++ b/fd498d12a3347e142921c233067fed93a32db391
+@@ -1,4 +1,6 @@
+ @Override
+-public FunctionTypeI withReturnType(TypeI returnType) {
+-    throw new UnsupportedOperationException("withReturnType not supported in OTI.");
++public Builder withReturnType(TypeI type) {
++    checkArgument(type instanceof JSType);
++    arrow = new ArrowType(registry, arrow.parameters, (JSType) type);
++    return this;
+ }
+\ No newline at end of file

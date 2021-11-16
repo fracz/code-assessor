@@ -1,0 +1,17 @@
+diff --git a/1949330b922d36b1eaa37e84c85cd547079f649b b/de2db9ba2f6d4bb74969e9ab1eb54bafaa88d850
+index 1949330b92..de2db9ba2f 100644
+--- a/1949330b922d36b1eaa37e84c85cd547079f649b
++++ b/de2db9ba2f6d4bb74969e9ab1eb54bafaa88d850
+@@ -1,5 +1,9 @@
+-public static List<TextFilePatch> loadPatches(final String patchPath) throws IOException, PatchSyntaxException {
++// todo problem: control usage
++public static List<TextFilePatch> loadPatches(Project project, final String patchPath, CommitContext commitContext) throws IOException, PatchSyntaxException {
+     char[] text = FileUtil.loadFileText(new File(patchPath));
+     PatchReader reader = new PatchReader(new CharArrayCharSequence(text));
+-    return reader.readAllPatches();
++    final List<TextFilePatch> textFilePatches = reader.readAllPatches();
++    final TransparentlyFailedValue<Map<String, Map<String, CharSequence>>, PatchSyntaxException> additionalInfo = reader.getAdditionalInfo(null);
++    ApplyPatchDefaultExecutor.applyAdditionalInfoBefore(project, additionalInfo, commitContext);
++    return textFilePatches;
+ }
+\ No newline at end of file

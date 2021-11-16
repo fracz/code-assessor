@@ -1,0 +1,17 @@
+diff --git a/7aa8de61870c4561fdcde1c852cadeb5cab4cf53 b/b30727a2ab1a17ee7e5151416fb28e955eb9e6c3
+index 7aa8de6187..b30727a2ab 100644
+--- a/7aa8de61870c4561fdcde1c852cadeb5cab4cf53
++++ b/b30727a2ab1a17ee7e5151416fb28e955eb9e6c3
+@@ -1,10 +1,4 @@
+ @Override
+ public Bundle addAccount(AccountAuthenticatorResponse response, String accountType, String authTokenType, String[] requiredFeatures, Bundle options) throws NetworkErrorException {
+-    Intent intent = new Intent(mContext, AuthenticatorActivity.class).putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, response);
+-    if (!AccountUtils.hasAccount()) {
+-        intent.putExtra(AuthenticatorActivity.EXTRA_AUTH_MODE, AuthenticatorActivity.AUTH_MODE_NEW);
+-    } else {
+-        intent.putExtra(AuthenticatorActivity.EXTRA_AUTH_MODE, AuthenticatorActivity.AUTH_MODE_ADD);
+-    }
+-    return makeIntentBundle(intent);
++    return makeIntentBundle(AuthenticatorActivity.makeIntent(response, AccountUtils.hasAccount() ? AuthenticatorActivity.AUTH_MODE_ADD : AuthenticatorActivity.AUTH_MODE_NEW, mContext));
+ }
+\ No newline at end of file

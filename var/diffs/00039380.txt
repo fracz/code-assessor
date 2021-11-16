@@ -1,0 +1,24 @@
+diff --git a/88b36f02b2ec9bffb4a278b3657068e2be29edfc b/2c48b0d9c7ee7f88ca39fd41590658368c1ed5ac
+index 88b36f02b2..2c48b0d9c7 100644
+--- a/88b36f02b2ec9bffb4a278b3657068e2be29edfc
++++ b/2c48b0d9c7ee7f88ca39fd41590658368c1ed5ac
+@@ -1,13 +1,8 @@
+ @Override
+-public void editFile(File file) throws IOException {
+-    if (isPortableEditFileSupported()) {
+-        try {
+-            portableEditFile(file);
+-        } catch (IOException ioe) {
+-            String[] commands = { "open", "-nt", file.getAbsolutePath() };
+-            Runtime.getRuntime().exec(commands);
+-        }
+-        return;
++public void editFile(File file) throws IOException, SecurityException {
++    try {
++        super.editFile(file);
++    } catch (IOException | UnsupportedOperationException ex) {
++        Runtime.getRuntime().exec(new String[] { "openDirectory", "-nt", file.getAbsolutePath() });
+     }
+-    throw new UnsupportedOperationException("Cannot edit file: " + file);
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/de72b511b53f4da2191fdfa8d076a2e9c3d7205e b/dd80449dd8b136390e63febc23edb871dd5c8d4a
+index de72b511b5..dd80449dd8 100644
+--- a/de72b511b53f4da2191fdfa8d076a2e9c3d7205e
++++ b/dd80449dd8b136390e63febc23edb871dd5c8d4a
+@@ -1,17 +1,17 @@
+ @Override
+ public void handleDataSourceEvent(final DBPEvent event) {
+     if (event.getObject() == getDataSourceContainer()) {
+-        getSite().getShell().getDisplay().asyncExec(new Runnable() {
++        DBeaverUI.asyncExec(new Runnable() {
+
+             @Override
+             public void run() {
+                 switch(event.getAction()) {
+                     case OBJECT_REMOVE:
+                         getSite().getWorkbenchWindow().getActivePage().closeEditor(SQLEditor.this, false);
+                         break;
+                 }
+                 onDataSourceChange();
+             }
+         });
+     }
+ }
+\ No newline at end of file

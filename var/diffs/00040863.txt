@@ -1,0 +1,22 @@
+diff --git a/a6bc6d11c0cdd89ac44b932ba590cdd62c412a82 b/9ef7a2f56e7e7a65db8ed4a72e2b1dd6679f4769
+index a6bc6d11c0..9ef7a2f56e 100644
+--- a/a6bc6d11c0cdd89ac44b932ba590cdd62c412a82
++++ b/9ef7a2f56e7e7a65db8ed4a72e2b1dd6679f4769
+@@ -1,9 +1,11 @@
+ @Override
+-public void temperature(short newTemperature) {
+-    if ((newTemperature > (temperature + threshold)) || (newTemperature < (temperature - threshold))) {
+-        setSensorValue(new DecimalValue(newTemperature / 100.0));
+-        setTemperature(newTemperature);
++public void temperature(short temperature) {
++    DecimalValue newValue = Tools.calculate100(temperature);
++    logger.trace("{} got new value {}", LoggerConstants.TFMODELUPDATE, newValue);
++    if (newValue.compareTo(getSensorValue(), getThreshold()) != 0) {
++        logger.trace("{} setting new value {}", LoggerConstants.TFMODELUPDATE, newValue);
++        setSensorValue(newValue);
+     } else {
+-        logger.trace(String.format("new temperature: %s, old %s", newTemperature, temperature));
++        logger.trace("{} omitting new value {}", LoggerConstants.TFMODELUPDATE, newValue);
+     }
+ }
+\ No newline at end of file

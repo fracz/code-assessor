@@ -1,0 +1,15 @@
+diff --git a/9798f8de0f101278c9273aec8e8caf365e1e624d b/1d549a5b8dffa44d5a00e8eb2ad335ecb97fcc7a
+index 9798f8de0f..1d549a5b8d 100644
+--- a/9798f8de0f101278c9273aec8e8caf365e1e624d
++++ b/1d549a5b8dffa44d5a00e8eb2ad335ecb97fcc7a
+@@ -1,5 +1,6 @@
+-public boolean insertNewMethod(PsiClass clazz, PsiMethod newMethod, Editor editor) throws IncorrectOperationException {
++public PsiMethod insertNewMethod(PsiClass clazz, PsiMethod newMethod, Editor editor) throws IncorrectOperationException {
+     int offset = editor != null ? editor.getCaretModel().getOffset() : clazz.getTextRange().getEndOffset() - 1;
+-    GenerateMembersUtil.insertMembersAtOffset(clazz.getContainingFile(), offset, Arrays.asList(new PsiGenerationInfo(newMethod, false)));
+-    return true;
++    final PsiGenerationInfo generationInfo = new PsiGenerationInfo(newMethod, false);
++    GenerateMembersUtil.insertMembersAtOffset(clazz.getContainingFile(), offset, Arrays.asList(generationInfo));
++    return (PsiMethod) generationInfo.getPsiMember();
+ }
+\ No newline at end of file

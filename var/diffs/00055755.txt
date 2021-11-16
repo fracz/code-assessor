@@ -1,0 +1,14 @@
+diff --git a/0bb057764ec1189a3fd9fb5df30ac387598c7999 b/b79286ada88d32301beabf0fc37d906c1cb4ff62
+index 0bb057764e..b79286ada8 100644
+--- a/0bb057764ec1189a3fd9fb5df30ac387598c7999
++++ b/b79286ada88d32301beabf0fc37d906c1cb4ff62
+@@ -1,7 +1,7 @@
+ @Test
+ public void parseConsumesAndHeaders() {
+     String[] consumes = new String[] { "text/plain" };
+     String[] headers = new String[] { "foo=bar", "accept=application/xml,application/pdf" };
+-    ProducesRequestCondition condition = RequestConditionFactory.parseProduces(consumes, headers);
++    ProducesRequestCondition condition = new ProducesRequestCondition(consumes, headers);
+     assertConditions(condition, "text/plain", "application/xml", "application/pdf");
+ }
+\ No newline at end of file

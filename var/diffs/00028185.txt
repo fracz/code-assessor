@@ -1,0 +1,12 @@
+diff --git a/15e990ad8324e2895f4a88eef3da9f0a9df4d183 b/141c6ab24a62b9bda54841caa84a1af49ec96fc7
+index 15e990ad83..141c6ab24a 100644
+--- a/15e990ad8324e2895f4a88eef3da9f0a9df4d183
++++ b/141c6ab24a62b9bda54841caa84a1af49ec96fc7
+@@ -1,4 +1,5 @@
+ @BeforeMethod
+ public void setUp() {
+-    manager = new UserManager(userDao, profileDao, preferenceDao, new String[0]);
++    initMocks(this);
++    manager = new UserManager(userDao, profileDao, preferencesDao, new String[] { "reserved" });
+ }
+\ No newline at end of file

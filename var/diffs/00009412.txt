@@ -1,0 +1,16 @@
+diff --git a/57554592816de715c09fbfb0fa17484bd0509f92 b/d6cd7adeab8a9ceaefc8abdb2fa7b3a49b98a98e
+index 5755459281..d6cd7adeab 100644
+--- a/57554592816de715c09fbfb0fa17484bd0509f92
++++ b/d6cd7adeab8a9ceaefc8abdb2fa7b3a49b98a98e
+@@ -1,8 +1,9 @@
+-public void filePathsDirty(@Nullable final Collection<FilePath> filesDirty, @Nullable final Collection<FilePath> dirsRecursivelyDirty) {
++public boolean filePathsDirty(@Nullable final Collection<FilePath> filesDirty, @Nullable final Collection<FilePath> dirsRecursivelyDirty) {
+     if (filesDirty != null) {
+         myFiles.addAll(filesDirty);
+     }
+     if (dirsRecursivelyDirty != null) {
+         myDirs.addAll(dirsRecursivelyDirty);
+     }
++    return true;
+ }
+\ No newline at end of file

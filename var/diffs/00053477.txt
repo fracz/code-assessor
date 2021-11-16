@@ -1,0 +1,15 @@
+diff --git a/6c0cfe5621f3b1f04c09300286c1ea7f4bb0bf4d b/cffd68f0c8899de74989122bc337471e844e18ab
+index 6c0cfe5621..cffd68f0c8 100644
+--- a/6c0cfe5621f3b1f04c09300286c1ea7f4bb0bf4d
++++ b/cffd68f0c8899de74989122bc337471e844e18ab
+@@ -1,8 +1,5 @@
+ @Test
+ public void assertToJsonForStandardStrategy() {
+-    StandardShardingStrategyConfiguration actual = new StandardShardingStrategyConfiguration();
+-    actual.setShardingColumn("order_id");
+-    actual.setPreciseAlgorithmClassName("xxx.XXXPreciseAlgorithm");
+-    actual.setRangeAlgorithmClassName("xxx.XXXRangeAlgorithm");
++    StandardShardingStrategyConfiguration actual = new StandardShardingStrategyConfiguration("order_id", "xxx.XXXPreciseAlgorithm", "xxx.XXXRangeAlgorithm");
+     assertThat(ShardingRuleConfigurationConverter.toJson(getCommonShardingRuleConfig(actual)), is(getJsonForStandardStrategy()));
+ }
+\ No newline at end of file

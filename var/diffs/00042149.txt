@@ -1,0 +1,13 @@
+diff --git a/92866fd96f7b3ad122cbaac8a37515a4f7738840 b/e696236e87f215faa63f7bad3b9116143f56e60f
+index 92866fd96f..e696236e87 100644
+--- a/92866fd96f7b3ad122cbaac8a37515a4f7738840
++++ b/e696236e87f215faa63f7bad3b9116143f56e60f
+@@ -1,6 +1,6 @@
+ @SuppressWarnings("unchecked")
+ public <RET extends OServerNetworkListener> RET getListenerByProtocol(final Class<? extends ONetworkProtocol> iProtocolClass) {
+-    for (OServerNetworkListener l : networkListeners) if (l.getProtocolType().equals(iProtocolClass))
++    for (OServerNetworkListener l : networkListeners) if (iProtocolClass.isAssignableFrom(l.getProtocolType()))
+         return (RET) l;
+     return null;
+ }
+\ No newline at end of file

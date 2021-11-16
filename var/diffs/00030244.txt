@@ -1,0 +1,23 @@
+diff --git a/a02d7099d5152911b9e84fc031fe7e3a94f7388b b/331aa3f9ebcb8221e9876419961ea2c4c34f8d20
+index a02d7099d5..331aa3f9eb 100644
+--- a/a02d7099d5152911b9e84fc031fe7e3a94f7388b
++++ b/331aa3f9ebcb8221e9876419961ea2c4c34f8d20
+@@ -1,15 +1,15 @@
+ @Override
+ public void restoreLocalCheckpointFromTranslog() throws IOException {
+     try (ReleasableLock ignored = writeLock.acquire()) {
+         ensureOpen();
+-        final long localCheckpoint = seqNoService().getLocalCheckpoint();
++        final long localCheckpoint = seqNoService.getLocalCheckpoint();
+         try (Translog.Snapshot snapshot = getTranslog().newSnapshotFromMinSeqNo(localCheckpoint + 1)) {
+             Translog.Operation operation;
+             while ((operation = snapshot.next()) != null) {
+                 if (operation.seqNo() > localCheckpoint) {
+-                    seqNoService().markSeqNoAsCompleted(operation.seqNo());
++                    seqNoService.markSeqNoAsCompleted(operation.seqNo());
+                 }
+             }
+         }
+     }
+ }
+\ No newline at end of file

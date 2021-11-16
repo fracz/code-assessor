@@ -1,0 +1,14 @@
+diff --git a/fb7f075dd0d456fb3503e97732c9a4f553fde7d1 b/a6ec732396c896d221daeebcb6377c3efba11b2f
+index fb7f075dd0..a6ec732396 100644
+--- a/fb7f075dd0d456fb3503e97732c9a4f553fde7d1
++++ b/a6ec732396c896d221daeebcb6377c3efba11b2f
+@@ -1,7 +1,6 @@
+ public void loadValues(String[] values) throws StorageException {
+     List<KeyValueEntry> entries = new ArrayList<KeyValueEntry>();
+     for (int i = 0; i < numKeys; i++) {
+-        entries.add(new KeyValueEntry(KeyValueStoreUtil.getBuffer(i), KeyValueStoreUtil.getBuffer(values[i])));
++        store.insert(KeyValueStoreUtil.getBuffer(i), KeyValueStoreUtil.getBuffer(values[i]), tx);
+     }
+-    store.insert(entries, tx);
+ }
+\ No newline at end of file

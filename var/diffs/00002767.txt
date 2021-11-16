@@ -1,0 +1,21 @@
+diff --git a/f325d2168842014a5d9d0836e157960b925a0a38 b/1b562490ae345deab9cedf5a4bf17c011ed56bb9
+index f325d21688..1b562490ae 100644
+--- a/f325d2168842014a5d9d0836e157960b925a0a38
++++ b/1b562490ae345deab9cedf5a4bf17c011ed56bb9
+@@ -1,13 +1,12 @@
+ private void editLibrary(String libName) {
+     if (libName == null)
+         return;
+-    Library lib = myLibTableModel.getLibrary(libName);
++    ScriptingLibraryTable.LibraryModel lib = myLibTableModel.getLibrary(libName);
+     if (lib != null) {
+         EditLibraryDialog editLibDialog = new EditLibraryDialog("Edit Library", myProvider, myProject, lib);
+         editLibDialog.show();
+         if (editLibDialog.isOK()) {
+-            removeLibrary(lib.getName());
+-            myLibTableModel.createLibrary(editLibDialog.getLibName(), editLibDialog.getFiles());
++            myLibTableModel.updateLibrary(libName, editLibDialog.getLibName(), editLibDialog.getFiles());
+         }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,21 @@
+diff --git a/ba378480fe211f9c06d3ec6862b9ef3756bc486f b/0f4fc2fa96f473a09d9daf1aa405e57ba8b5c30b
+index ba378480fe..0f4fc2fa96 100644
+--- a/ba378480fe211f9c06d3ec6862b9ef3756bc486f
++++ b/0f4fc2fa96f473a09d9daf1aa405e57ba8b5c30b
+@@ -1,12 +1,12 @@
+-public void setRelationshipProperties(long relationshipId, Map<String, Object> properties) throws DatabaseBlockedException {
+-    Transaction tx = database.graph.beginTx();
++public void setRelationshipProperties(long relationshipId, Map<String, Object> properties) {
++    Transaction tx = database.getGraph().beginTx();
+     try {
+-        Relationship relationship = database.graph.getRelationshipById(relationshipId);
++        Relationship relationship = database.getGraph().getRelationshipById(relationshipId);
+         for (Map.Entry<String, Object> propertyEntry : properties.entrySet()) {
+             relationship.setProperty(propertyEntry.getKey(), propertyEntry.getValue());
+         }
+         tx.success();
+     } finally {
+         tx.finish();
+     }
+ }
+\ No newline at end of file

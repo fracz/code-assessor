@@ -1,0 +1,20 @@
+diff --git a/58a30c7fd695a3d8f4b8072be8e25942ea95bafc b/f51f39178f52004c35a431e486fdee7caa1c0684
+index 58a30c7fd6..f51f39178f 100644
+--- a/58a30c7fd695a3d8f4b8072be8e25942ea95bafc
++++ b/f51f39178f52004c35a431e486fdee7caa1c0684
+@@ -1,13 +1,13 @@
+ @Test
+ public void testInitRemoteConfigFileBySystemProperty() throws SQLException {
+     DruidDataSource dataSource = new DruidDataSource();
+     dataSource.setFilters("config");
+-    System.setProperty(ConfigFilter.SYS_PROP_CONFIG_FILE, FileConfigLoader.PROTOCOL_PREFIX + this.filePath);
++    System.setProperty(ConfigFilter.SYS_PROP_CONFIG_FILE, "file://" + this.filePath);
+     try {
+         dataSource.init();
+         Assert.assertEquals("The username is " + dataSource.getUsername(), "test1", dataSource.getUsername());
+     } finally {
+         System.clearProperty(ConfigFilter.SYS_PROP_CONFIG_FILE);
+         JdbcUtils.close(dataSource);
+     }
+ }
+\ No newline at end of file

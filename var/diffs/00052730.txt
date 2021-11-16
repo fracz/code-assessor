@@ -1,0 +1,24 @@
+diff --git a/b40be6b7018f914d43cb88657b0d6bbc29ae0fb0 b/e719a2dcfd9fea1367551ec00b33abbe6521f073
+index b40be6b701..e719a2dcfd 100644
+--- a/b40be6b7018f914d43cb88657b0d6bbc29ae0fb0
++++ b/e719a2dcfd9fea1367551ec00b33abbe6521f073
+@@ -1,14 +1,12 @@
+ /**
+  * 构建表规则配置对象.
+  *
+  * @return 表规则配置对象
+  */
+ public TableRule build() {
+-    TableRule result = new TableRule(logicTable, dynamic, actualTables, dataSourceRule, dataSourceNames, databaseShardingStrategy, tableShardingStrategy);
+-    result.autoIncrementColumnMap.putAll(autoIncrementColumnMap);
+-    if (null == tableIdGeneratorClass) {
+-        return result;
++    IdGenerator idGenerator = null;
++    if (null != autoIncrementColumn && null != idGeneratorClass) {
++        idGenerator = KeyGeneratorFactory.createKeyGenerator(idGeneratorClass);
+     }
+-    result.fillIdGenerator(tableIdGeneratorClass);
+-    return result;
++    return new TableRule(logicTable, dynamic, actualTables, dataSourceRule, dataSourceNames, databaseShardingStrategy, tableShardingStrategy, autoIncrementColumn, idGenerator);
+ }
+\ No newline at end of file

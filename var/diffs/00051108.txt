@@ -1,0 +1,22 @@
+diff --git a/2a1cc4e7c4bf98b039a4f8547001debde9f3b952 b/833c4037156b61d054d3d9b5962f2e8f51bea118
+index 2a1cc4e7c4..833c403715 100644
+--- a/2a1cc4e7c4bf98b039a4f8547001debde9f3b952
++++ b/833c4037156b61d054d3d9b5962f2e8f51bea118
+@@ -1,8 +1,10 @@
+-@NotNull
+-private DBDRowIdentifier getDefaultRowIdentifier() throws DBCException {
+-    DBDRowIdentifier rowIdentifier = columns[0].getRowIdentifier();
+-    if (rowIdentifier == null) {
+-        throw new DBCException("Internal error: can't obtain entity identifier");
++@Nullable
++private DBDRowIdentifier getDefaultRowIdentifier() {
++    for (int i = 0; i < columns.length; i++) {
++        DBDRowIdentifier rowIdentifier = columns[0].getRowIdentifier();
++        if (rowIdentifier != null) {
++            return rowIdentifier;
++        }
+     }
+-    return rowIdentifier;
++    return null;
+ }
+\ No newline at end of file

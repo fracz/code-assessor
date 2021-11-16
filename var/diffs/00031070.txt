@@ -1,0 +1,21 @@
+diff --git a/e8ae185851afa6cb8bd8cc149ab6e1db1c631d2f b/9423c23c57a1e0c4964e0206dc7680041e2b0c80
+index e8ae185851..9423c23c57 100644
+--- a/e8ae185851afa6cb8bd8cc149ab6e1db1c631d2f
++++ b/9423c23c57a1e0c4964e0206dc7680041e2b0c80
+@@ -1,13 +1,14 @@
+ @Override
+ protected void doCollect(int doc) throws IOException {
+-    double value = ((Number) script.execute(doc)).doubleValue();
++    script.setNextDocId(doc);
++    double value = script.runAsDouble();
+     if (value < min || Double.isNaN(min)) {
+         min = value;
+     }
+     if (value > max || Double.isNaN(max)) {
+         max = value;
+     }
+     sumOfSquares += value * value;
+     total += value;
+     count++;
+ }
+\ No newline at end of file

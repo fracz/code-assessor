@@ -1,0 +1,23 @@
+diff --git a/8a0b307fb6c29bc77f3c24f3a3bc2c528e45f9c8 b/2a30b4bb888e35de8eba9112382b14b8fd8df12c
+index 8a0b307fb6..2a30b4bb88 100644
+--- a/8a0b307fb6c29bc77f3c24f3a3bc2c528e45f9c8
++++ b/2a30b4bb888e35de8eba9112382b14b8fd8df12c
+@@ -1,13 +1,9 @@
+ private static File[] txLogsIn(File dir) {
+     File[] logs = dir.listFiles(LogFiles.FILENAME_FILTER);
+-    Arrays.sort(logs, new Comparator<File>() {
+-
+-        @Override
+-        public int compare(File f1, File f2) {
+-            long f1Version = PhysicalLogFiles.getLogVersion(f1);
+-            long f2Version = PhysicalLogFiles.getLogVersion(f2);
+-            return Long.compare(f1Version, f2Version);
+-        }
++    Arrays.sort(logs, (f1, f2) -> {
++        long f1Version = PhysicalLogFiles.getLogVersion(f1);
++        long f2Version = PhysicalLogFiles.getLogVersion(f2);
++        return Long.compare(f1Version, f2Version);
+     });
+     return logs;
+ }
+\ No newline at end of file

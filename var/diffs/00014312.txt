@@ -1,0 +1,16 @@
+diff --git a/4cb221dae482898564264bae0b7cc5976e174d40 b/42b033d1234cf9f8a06e120fab81590bc5b4e301
+index 4cb221dae4..42b033d123 100644
+--- a/4cb221dae482898564264bae0b7cc5976e174d40
++++ b/42b033d1234cf9f8a06e120fab81590bc5b4e301
+@@ -1,7 +1,6 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiClass innerClass = (PsiClass) location.getParent();
+-    final PsiClass parentInterface = ClassUtils.getContainingClass(innerClass);
+-    assert parentInterface != null;
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiClass parentInterface = (PsiClass) infos[0];
+     final String interfaceName = parentInterface.getName();
+     return InspectionGadgetsBundle.message("inner.class.on.interface.problem.descriptor", interfaceName);
+ }
+\ No newline at end of file

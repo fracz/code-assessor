@@ -1,0 +1,16 @@
+diff --git a/2d2255b801554dfa533d11366977192df838e127 b/1d08d34408cc7e5fa3226e07737d786f04d8f6bd
+index 2d2255b801..1d08d34408 100644
+--- a/2d2255b801554dfa533d11366977192df838e127
++++ b/1d08d34408cc7e5fa3226e07737d786f04d8f6bd
+@@ -1,9 +1,6 @@
+ public static boolean isBackEdge(BlockNode from, BlockNode to) {
+     if (from.getCleanSuccessors().contains(to))
+         // already checked
+         return false;
+-    if (!from.getSuccessors().contains(to))
+-        // not even successor
+-        return false;
+-    return true;
++    return from.getSuccessors().contains(to);
+ }
+\ No newline at end of file

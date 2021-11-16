@@ -1,0 +1,23 @@
+diff --git a/dd0b330b8e2891ca93785bd33e1fb52da9675c73 b/0745d13225edecdc08e7c942bf54c77b9a7649e8
+index dd0b330b8e..0745d13225 100644
+--- a/dd0b330b8e2891ca93785bd33e1fb52da9675c73
++++ b/0745d13225edecdc08e7c942bf54c77b9a7649e8
+@@ -1,15 +1,8 @@
+-// TODO: refactor
+ @NotNull
+ private JsExpression extensionFunctionCall() {
+-    List<JsExpression> argumentList = new ArrayList<JsExpression>();
+-    if (receiver == null) {
+-        DeclarationDescriptor expectedReceiverDescriptor = getExpectedReceiverDescriptor(descriptor);
+-        assert expectedReceiverDescriptor != null;
+-        receiver = getThisObject(context(), expectedReceiverDescriptor);
+-    }
+-    argumentList.add(receiver);
+-    argumentList.addAll(arguments);
++    receiver = getExtensionFunctionCallReceiver();
++    List<JsExpression> argumentList = generateExtensionCallArgumentList();
+     // Now the rest of the code can work as if it was simple method invocation
+     receiver = null;
+     return AstUtil.newInvocation(calleeReference(), argumentList);
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/3958c9aab2bcb1f0a2d58804cfca036d3cce010c b/8428fc21bea3ed0c39ebbd7d6c0397b0da63109c
+index 3958c9aab2..8428fc21be 100644
+--- a/3958c9aab2bcb1f0a2d58804cfca036d3cce010c
++++ b/8428fc21bea3ed0c39ebbd7d6c0397b0da63109c
+@@ -1,5 +1,4 @@
+ @Nullable
+ public File getModuleOutputDir(JpsModule module, boolean forTests) {
+-    final String url = JpsJavaExtensionService.getInstance().getOutputUrl(module, forTests);
+-    return url != null ? JpsPathUtil.urlToFile(url) : null;
++    return JpsJavaExtensionService.getInstance().getOutputDirectory(module, forTests);
+ }
+\ No newline at end of file

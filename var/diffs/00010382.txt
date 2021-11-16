@@ -1,0 +1,18 @@
+diff --git a/b16932fa6d83207b7de35e722e834280dab4c877 b/6b5331e397beede3f80968f2d8f7d4115ab2130f
+index b16932fa6d..6b5331e397 100644
+--- a/b16932fa6d83207b7de35e722e834280dab4c877
++++ b/6b5331e397beede3f80968f2d8f7d4115ab2130f
+@@ -1,6 +1,7 @@
+-private static GrExpression generateInitializer(GrIntroduceContext context, GrVariable variable) {
+-    final StringPartInfo part = context.getStringPart();
+-    final GrExpression initializer;
+-    initializer = part != null ? GrIntroduceHandlerBase.generateExpressionFromStringPart(context.getStringPart(), context.getProject()) : context.getExpression();
+-    return variable.getInitializerGroovy().replaceWithExpression(initializer, true);
++@NotNull
++private static GrExpression generateInitializer(@NotNull GrIntroduceContext context, @NotNull GrVariable variable) {
++    final GrExpression initializer = context.getStringPart() != null ? GrIntroduceHandlerBase.generateExpressionFromStringPart(context.getStringPart(), context.getProject()) : context.getExpression();
++    final GrExpression dummyInitializer = variable.getInitializerGroovy();
++    assert dummyInitializer != null;
++    return dummyInitializer.replaceWithExpression(initializer, true);
+ }
+\ No newline at end of file

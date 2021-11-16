@@ -1,0 +1,16 @@
+diff --git a/cc7682de355f1f310d5a693ca4522ca66a49ce0f b/0017307af522b7665437b9c8592e65c3f6f0045b
+index cc7682de35..0017307af5 100644
+--- a/cc7682de355f1f310d5a693ca4522ca66a49ce0f
++++ b/0017307af522b7665437b9c8592e65c3f6f0045b
+@@ -1,6 +1,9 @@
+ @Test
+ public void noHandler() throws Exception {
+     this.request.setUri("/does-not-exist");
+     Mono<Void> publisher = this.dispatcherHandler.handle(this.exchange);
+-    TestSubscriber.subscribe(publisher).assertError(ResponseStatusException.class).assertErrorMessage("Request failure [status: 404, reason: \"No matching handler\"]");
++    ScriptedSubscriber.<Void>create().consumeErrorWith(error -> {
++        assertThat(error, instanceOf(ResponseStatusException.class));
++        assertThat(error.getMessage(), is("Request failure [status: 404, reason: \"No matching handler\"]"));
++    }).verify(publisher);
+ }
+\ No newline at end of file

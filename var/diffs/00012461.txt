@@ -1,0 +1,17 @@
+diff --git a/0760600a57ad6cd89e826b32fd4e760a09951da3 b/dcaaf45e57a60ec5591e30236876cafa4f7ede62
+index 0760600a57..dcaaf45e57 100644
+--- a/0760600a57ad6cd89e826b32fd4e760a09951da3
++++ b/dcaaf45e57a60ec5591e30236876cafa4f7ede62
+@@ -1,9 +1,9 @@
+ @Test
+ public void testDifferenceInNameIsAlwaysCaseSensitive() {
+     Entry e1 = new FileEntry(-1, "name", c(""), -1);
+     Entry e2 = new FileEntry(-1, "NAME", c(""), -1);
+     Paths.setCaseSensitive(false);
+-    assertEquals(MODIFIED, e1.getDifferenceWith(e2).getKind());
++    assertEquals(1, e1.getDifferencesWith(e2).size());
+     Paths.setCaseSensitive(true);
+-    assertEquals(MODIFIED, e1.getDifferenceWith(e2).getKind());
++    assertEquals(1, e1.getDifferencesWith(e2).size());
+ }
+\ No newline at end of file

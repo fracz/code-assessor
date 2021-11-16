@@ -1,0 +1,21 @@
+diff --git a/b2262d81081c02fef899217c13ba488cb2df4252 b/f338e1396125be4b2cc4d6562abc1543865e796e
+index b2262d8108..f338e13961 100644
+--- a/b2262d81081c02fef899217c13ba488cb2df4252
++++ b/f338e1396125be4b2cc4d6562abc1543865e796e
+@@ -1,11 +1,9 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiBinaryExpression binaryExp = (PsiBinaryExpression) location.getParent();
+-    assert binaryExp != null;
+-    final PsiExpression rhs = binaryExp.getROperand();
+-    final Integer value = (Integer) ConstantExpressionUtil.computeCastTo(rhs, PsiType.INT);
+-    if (value > 0) {
++@NotNull
++public String buildErrorString(Object... infos) {
++    final Integer value = (Integer) infos[0];
++    if (value.intValue() > 0) {
+         return InspectionGadgetsBundle.message("shift.operation.by.inappropriate.constant.problem.descriptor.too.large");
+     } else {
+         return InspectionGadgetsBundle.message("shift.operation.by.inappropriate.constant.problem.descriptor.negative");
+     }
+ }
+\ No newline at end of file

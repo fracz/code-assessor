@@ -1,0 +1,19 @@
+diff --git a/f170bb27457fc08d22c31a30aa3b0c804996b474 b/931f1c899f1d64424cc00411e23035e2dac5ee09
+index f170bb2745..931f1c899f 100644
+--- a/f170bb27457fc08d22c31a30aa3b0c804996b474
++++ b/931f1c899f1d64424cc00411e23035e2dac5ee09
+@@ -1,12 +1,12 @@
+ @Test
+ public void testInitRemoteConfigAndDecrypt() throws SQLException {
+     DruidDataSource dataSource = new DruidDataSource();
+     dataSource.setFilters("config");
+-    dataSource.setConnectionProperties("config.decrypt=RSA;config.file=" + FileConfigLoader.PROTOCOL_PREFIX + this.filePath);
++    dataSource.setConnectionProperties("config.decrypt=RSA;config.file=" + "file://" + this.filePath);
+     try {
+         dataSource.init();
+         Assert.assertEquals("The password is " + dataSource.getPassword(), "xiaoyu", dataSource.getPassword());
+     } finally {
+         JdbcUtils.close(dataSource);
+     }
+ }
+\ No newline at end of file

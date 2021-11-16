@@ -1,0 +1,23 @@
+diff --git a/ef13f88986d51e5cb1bb923560f10e13cc5fb922 b/2310363c0dcd6b88585b76cdd8ef1c5af3c439ed
+index ef13f88986..2310363c0d 100644
+--- a/ef13f88986d51e5cb1bb923560f10e13cc5fb922
++++ b/2310363c0dcd6b88585b76cdd8ef1c5af3c439ed
+@@ -1,15 +1,15 @@
+ /**
+  * Every JVM_STAT_GAP time, this method is called
++ *
+  * @throws Exception
+  */
+ private void sendJVMState() throws Exception {
+     currentDto = new JVMInfoThriftDTO();
+     currentDto.setAgentHashCode(AgentInfoDTO.staticHostHashCode);
+     currentDto.setDataTime(System.currentTimeMillis());
+     getActiveThreadCount();
+     getGCState();
+     getMemoryState();
+     getProcessCPUUsage();
+-    JVMDataSender sender = new JVMDataSender(currentDto);
+-    sender.send();
++    DataSender.getInstance().addDataToSend(currentDto);
+ }
+\ No newline at end of file

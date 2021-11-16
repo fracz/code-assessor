@@ -1,0 +1,18 @@
+diff --git a/07bb8f4033c43757af4528bf7539198970a23f58 b/327c256b7c6da271d0448d5b3a617b01d2b8cb51
+index 07bb8f4033..327c256b7c 100644
+--- a/07bb8f4033c43757af4528bf7539198970a23f58
++++ b/327c256b7c6da271d0448d5b3a617b01d2b8cb51
+@@ -1,11 +1,10 @@
+-@NotNull
+-private int getAccessFlags(CallableMemberDescriptor descriptor) {
++private static int getAccessFlags(@NotNull CallableMemberDescriptor descriptor) {
+     int flag = getVisibilityAccessFlag(descriptor);
+     if (descriptor instanceof PropertyDescriptor) {
+         PropertyDescriptor propertyDescriptor = (PropertyDescriptor) descriptor;
+         PropertySetterDescriptor setter = propertyDescriptor.getSetter();
+         PropertyGetterDescriptor getter = propertyDescriptor.getGetter();
+         flag |= (getter == null ? 0 : getVisibilityAccessFlag(getter)) | (setter == null ? 0 : getVisibilityAccessFlag(setter));
+     }
+     return flag;
+ }
+\ No newline at end of file

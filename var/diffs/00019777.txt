@@ -1,0 +1,16 @@
+diff --git a/b0b4253b957d3972394fd32e7a409ecfc1184685 b/963553c9e004f3746ae92ce3b35d3d085621dc26
+index b0b4253b95..963553c9e0 100644
+--- a/b0b4253b957d3972394fd32e7a409ecfc1184685
++++ b/963553c9e004f3746ae92ce3b35d3d085621dc26
+@@ -1,7 +1,7 @@
+ @Override
+ public DatabaseMetaData getMetaData() throws SQLException {
+-    if (conn != null) {
+-        return conn.getMetaData();
++    if (conn == null) {
++        throw new SQLException("connection not init");
+     }
+-    throw new SQLException("connection not init");
++    return conn.getMetaData();
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/44b1caf679fbbb988ed1c25d1180dce3758caebf b/69bcb95beb3ac064a255c808bfb30fbb28cc48b2
+index 44b1caf679..69bcb95beb 100644
+--- a/44b1caf679fbbb988ed1c25d1180dce3758caebf
++++ b/69bcb95beb3ac064a255c808bfb30fbb28cc48b2
+@@ -1,4 +1,6 @@
+ @Override
+ protected void skipBetweenUpdateAndTable() {
+-    ((SQLServerParser) getSqlParser()).parseTop(getUpdateStatement());
++    if (getSqlParser().equalAny(SQLServerKeyword.TOP)) {
++        throw new SQLParsingUnsupportedException(getSqlParser().getLexer().getCurrentToken().getType());
++    }
+ }
+\ No newline at end of file

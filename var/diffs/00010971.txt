@@ -1,0 +1,21 @@
+diff --git a/9e71de795feea1c4095e56ceafe58a81dbfcc040 b/47c814728de4684e435d4b965166411825425cb9
+index 9e71de795f..47c814728d 100644
+--- a/9e71de795feea1c4095e56ceafe58a81dbfcc040
++++ b/47c814728de4684e435d4b965166411825425cb9
+@@ -1,14 +1,9 @@
+ @Nullable
+ @Contract("null -> null; !null -> !null")
+ public ThreadReferenceProxyImpl getThreadReferenceProxy(@Nullable ThreadReference thread) {
+     DebuggerManagerThreadImpl.assertIsManagerThread();
+     if (thread == null) {
+         return null;
+     }
+-    ThreadReferenceProxyImpl proxy = myAllThreads.get(thread);
+-    if (proxy == null) {
+-        proxy = new ThreadReferenceProxyImpl(this, thread);
+-        myAllThreads.put(thread, proxy);
+-    }
+-    return proxy;
++    return myAllThreads.computeIfAbsent(thread, t -> new ThreadReferenceProxyImpl(this, t));
+ }
+\ No newline at end of file

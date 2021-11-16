@@ -1,0 +1,18 @@
+diff --git a/67c0b946d8b83bbb86ef950d7d8b3edbed6b8a6b b/ea2b921dc8df6f173a08b09ba15d02fe927c9735
+index 67c0b946d8..ea2b921dc8 100644
+--- a/67c0b946d8b83bbb86ef950d7d8b3edbed6b8a6b
++++ b/ea2b921dc8df6f173a08b09ba15d02fe927c9735
+@@ -1,8 +1,9 @@
+ @Override
+-public void resetCellValue(@NotNull GridCell cell, boolean delete) {
+-    cell = translateVisualPos(cell);
+-    model.resetCellValue(cell);
++public void resetCellValue(@NotNull Object colElement, @NotNull Object rowElement, boolean delete) {
++    final DBDAttributeBinding attr = (DBDAttributeBinding) (recordMode ? rowElement : colElement);
++    final RowData row = (RowData) (recordMode ? colElement : rowElement);
++    model.resetCellValue(attr, row);
+     spreadsheet.redrawGrid();
+     updateEditControls();
+     previewValue();
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/32be868c9eed009fb471e9f04a074f17c7456b26 b/a29a0efd9430240523da53566a356ce84c5daf11
+index 32be868c9e..a29a0efd94 100644
+--- a/32be868c9eed009fb471e9f04a074f17c7456b26
++++ b/a29a0efd9430240523da53566a356ce84c5daf11
+@@ -1,10 +1,10 @@
+-public Scheduler createOrGetRemoteScheduler(String name, String sessionId, RemoteInterpreter remoteInterpreter, int maxConcurrency) {
++public Scheduler createOrGetRemoteScheduler(String name, String noteId, RemoteInterpreterProcess interpreterProcess, int maxConcurrency) {
+     synchronized (schedulers) {
+-        if (!schedulers.containsKey(name)) {
+-            Scheduler s = new RemoteScheduler(name, executor, sessionId, remoteInterpreter, this, maxConcurrency);
++        if (schedulers.containsKey(name) == false) {
++            Scheduler s = new RemoteScheduler(name, executor, noteId, interpreterProcess, this, maxConcurrency);
+             schedulers.put(name, s);
+             executor.execute(s);
+         }
+         return schedulers.get(name);
+     }
+ }
+\ No newline at end of file

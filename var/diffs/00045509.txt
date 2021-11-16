@@ -1,0 +1,27 @@
+diff --git a/06ebcad782904556624fafecfeece0222b6062ce b/6aeeb6d7791305847b04a04d8129038f33cc2afe
+index 06ebcad782..6aeeb6d779 100644
+--- a/06ebcad782904556624fafecfeece0222b6062ce
++++ b/6aeeb6d7791305847b04a04d8129038f33cc2afe
+@@ -1,14 +1,15 @@
+ public void startReplication(final String dbName, final String nodeId, final String mode) throws IOException {
+-    if (manager.itsMe(nodeId))
+-        // DON'T OPEN A CONNECTION TO MYSELF
++    if (manager.itsMe(nodeId)) {
++        // DON'T OPEN A CONNECTION TO MYSELF BUT START REPLICATION
+         return;
++    }
+     // GET THE NODE
+     final ODistributedNode dNode = getOrCreateDistributedNode(nodeId);
+-    if (dNode.getDatabase(dbName) != null)
+-        // ALREADY CONNECTED
+-        return;
++    ODistributedDatabaseInfo db = dNode.getDatabase(dbName);
++    if (db == null)
++        db = dNode.createDatabaseEntry(dbName, SYNCH_TYPE.valueOf(mode.toUpperCase()), replicatorUser.name, replicatorUser.password);
+     if (!localLogs.containsKey(dbName))
+         // INITIALIZING OPERATION LOG
+         localLogs.put(dbName, new OOperationLog(manager.getId(), dbName));
+-    dNode.startDatabaseReplication(dNode.createDatabaseEntry(dbName, SYNCH_TYPE.valueOf(mode.toUpperCase()), replicatorUser.name, replicatorUser.password));
++    dNode.startDatabaseReplication(db);
+ }
+\ No newline at end of file

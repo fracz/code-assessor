@@ -1,0 +1,23 @@
+diff --git a/9b7dd165171c2197bfc1053270b9dab24e6385ac b/dff6ea30b5899ded34b120a5f78d31a746aaaa03
+index 9b7dd16517..dff6ea30b5 100644
+--- a/9b7dd165171c2197bfc1053270b9dab24e6385ac
++++ b/dff6ea30b5899ded34b120a5f78d31a746aaaa03
+@@ -1,8 +1,11 @@
+-private void parseInto(final AbstractSQLInsertStatement sqlInsertStatement) {
+-    parseBetweenInsertAndInfo(sqlInsertStatement);
++private void parseInto(final InsertSQLContext sqlContext) {
++    exprParser.parseHints();
++    if (getUnsupportedIdentifiers().contains(getLexer().getLiterals())) {
++        throw new UnsupportedOperationException(String.format("Cannot support %s for %s.", getLexer().getLiterals(), getDbType()));
++    }
++    parseBetweenInsertAndInfo();
+     accept(Token.INTO);
+-    parseBetweenIntoAndTable(sqlInsertStatement);
+-    sqlInsertStatement.setTableSource(new SQLExprTableSource(exprParser.name()));
+-    parseBetweenTableAndValues(sqlInsertStatement);
+-    parseAlias(sqlInsertStatement);
++    parseBetweenIntoAndTable();
++    parseTable(sqlContext);
++    parseBetweenTableAndValues();
+ }
+\ No newline at end of file

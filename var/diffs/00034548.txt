@@ -1,0 +1,17 @@
+diff --git a/7772297f260dcee890237b424b3c338b871e9395 b/ee9ae27ecfc57ff2ab746a8cedff81d329795b7e
+index 7772297f26..ee9ae27ecf 100644
+--- a/7772297f260dcee890237b424b3c338b871e9395
++++ b/ee9ae27ecfc57ff2ab746a8cedff81d329795b7e
+@@ -1,4 +1,9 @@
+ @Override
+-public void onStateChanged(final boolean playWhenReady, final int playbackState) {
+-    stateChanged.onNext(new Pair<>(playWhenReady, playbackState));
++public void onStateChanged(final boolean playWhenReady, final int state) {
++    playbackState.onNext(state);
++    switch(state) {
++        case ExoPlayer.STATE_ENDED:
++            videoEnded.onNext(null);
++            break;
++    }
+ }
+\ No newline at end of file

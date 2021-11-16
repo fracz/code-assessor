@@ -1,0 +1,14 @@
+diff --git a/52b946bd8d981767a6b32d044e508b231bb88465 b/120b6bbec55616a08637c1091269f257595b32bb
+index 52b946bd8d..120b6bbec5 100644
+--- a/52b946bd8d981767a6b32d044e508b231bb88465
++++ b/120b6bbec55616a08637c1091269f257595b32bb
+@@ -1,6 +1,6 @@
+ public Resource getResource(String location) {
+-    if ("classpath:org/springframework/beans/factory/xml/test.properties".equals(location)) {
+-        return new ClassPathResource("test.properties", ClassPathXmlApplicationContextTests.class);
++    if (FQ_TEST_PROPERTIES.equals(location)) {
++        return new ClassPathResource(TEST_PROPERTIES, ClassPathXmlApplicationContextTests.class);
+     }
+     return super.getResource(location);
+ }
+\ No newline at end of file

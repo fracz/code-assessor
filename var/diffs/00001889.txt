@@ -1,0 +1,14 @@
+diff --git a/470d61ff26b4d57c198f7bae62945659d57e2d22 b/16e9ecde16437a7b143de7e11717bf06a393d999
+index 470d61ff26..16e9ecde16 100644
+--- a/470d61ff26b4d57c198f7bae62945659d57e2d22
++++ b/16e9ecde16437a7b143de7e11717bf06a393d999
+@@ -1,6 +1,6 @@
+ private void registerConstructorCall(PsiConstructorCall constructorCall) {
+     JavaResolveResult resolveResult = constructorCall.resolveMethodGenerics();
+-    if (myRefCountHolder != null) {
+-        myRefCountHolder.registerReference(constructorCall, resolveResult);
++    if (myRefCountHolder != null && resolveResult.getElement() instanceof PsiNamedElement) {
++        myRefCountHolder.registerLocallyReferenced((PsiNamedElement) resolveResult.getElement());
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/618f199d8cd21c3b473ddcc0e5f0b015e15fff2b b/dda39977086990fb275b6124ffec64a48e09aab0
+index 618f199d8c..dda3997708 100644
+--- a/618f199d8cd21c3b473ddcc0e5f0b015e15fff2b
++++ b/dda39977086990fb275b6124ffec64a48e09aab0
+@@ -1,6 +1,7 @@
+ public void redoChanges() {
+-    if (getCommandContext() != null && getCommandContext().getRedoCommand() != null) {
+-        getCommandContext().redoCommand();
++    DBECommandContext commandContext = getCommandContext();
++    if (commandContext != null && commandContext.getRedoCommand() != null) {
++        commandContext.redoCommand();
+         firePropertyChange(IEditorPart.PROP_DIRTY);
+     }
+ }
+\ No newline at end of file

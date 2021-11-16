@@ -1,0 +1,21 @@
+diff --git a/be0058854513955ffd3a55cb9e923a102321d016 b/df051bcf81367a121a67f7dc172e20dfbce950a4
+index be00588545..df051bcf81 100644
+--- a/be0058854513955ffd3a55cb9e923a102321d016
++++ b/df051bcf81367a121a67f7dc172e20dfbce950a4
+@@ -1,14 +1,13 @@
+ public void registerActions() {
+     unregisterActions();
+     // to prevent exception if 2 or more targets have the same name
+     HashSet<String> registeredIds = new HashSet<String>();
+     ActionMacro[] macros = getAllMacros();
+-    for (int i = 0; i < macros.length; i++) {
+-        final ActionMacro macro = macros[i];
++    for (final ActionMacro macro : macros) {
+         String actionId = macro.getActionId();
+         if (!registeredIds.contains(actionId)) {
+             registeredIds.add(actionId);
+             myActionManager.registerAction(actionId, new InvokeMacroAction(macro));
+         }
+     }
+ }
+\ No newline at end of file

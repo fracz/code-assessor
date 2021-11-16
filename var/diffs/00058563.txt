@@ -1,0 +1,26 @@
+diff --git a/762b72e0930e08417abdcb72c3de4094bc163174 b/c7dea2a7f6a05c6283b68e6d7e5dc248ff7722a0
+index 762b72e093..c7dea2a7f6 100644
+--- a/762b72e0930e08417abdcb72c3de4094bc163174
++++ b/c7dea2a7f6a05c6283b68e6d7e5dc248ff7722a0
+@@ -1,17 +1,17 @@
+ private Edge findNext() {
+-    Edge rel = null;
++    TitanEdge rel = null;
+     while (rel == null) {
+         if (currentEdges.hasNext()) {
+-            rel = currentEdges.next();
++            rel = (TitanEdge) currentEdges.next();
+             if (vertices != null && !vertices.contains(rel.getVertex(Direction.IN)))
+                 rel = null;
+         } else {
+             if (vertexIter.hasNext()) {
+                 Vertex nextVertex = vertexIter.next();
+-                currentEdges = nextVertex.getEdges(Direction.OUT).iterator();
++                currentEdges = nextVertex.iterators().edgeIterator(Direction.OUT, Integer.MAX_VALUE);
+             } else
+                 break;
+         }
+     }
+     return rel;
+ }
+\ No newline at end of file

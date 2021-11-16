@@ -1,0 +1,31 @@
+diff --git a/74e97794b799481b79b8f9e08b13620398646621 b/7be72fdbbdaf32d275ef420c0d4feb5e46a84431
+index 74e97794b7..7be72fdbbd 100644
+--- a/74e97794b799481b79b8f9e08b13620398646621
++++ b/7be72fdbbdaf32d275ef420c0d4feb5e46a84431
+@@ -1,15 +1,16 @@
+ private static void updateSetInternalMethod(ClassPool classPool, CtClass cc) throws Exception {
+-    // setInternal(int paramIndex, String val)
+     CtClass[] params1 = new CtClass[2];
+     params1[0] = classPool.getCtClass("int");
+     params1[1] = classPool.getCtClass("java.lang.String");
+     CtMethod serviceMethod1 = cc.getDeclaredMethod("setStringInternal", params1);
+-    logger.info("Changing setInternal(int,String) method");
+-    serviceMethod1.insertBefore(getSetInternal1MethodBeforeInsertCode());
+-// CtClass[] params2=new CtClass[2];
+-// params2[0]=classPool.getCtClass("int");
+-// params2[1]=classPool.getCtClass("byte[]");
+-// CtMethod serviceMethod2=cc.getDeclaredMethod("setInternal", params2);
+-// log("*** Changing setInternal(int,byte[]) method ");
+-// serviceMethod2.insertBefore(getSetInternal2MethodBeforeInsertCode());
++    serviceMethod1.insertBefore("{" + TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".putSqlParam($1,$2); }");
++// CtClass[] params2 = new CtClass[2];
++// params2[0] = classPool.getCtClass("int");
++// params2[1] = classPool.getCtClass("byte[]");
++// CtMethod serviceMethod2 = cc.getDeclaredMethod("setInternal",
++// params2);
++//
++// serviceMethod2.insertBefore("{" +
++// TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER +
++// ".putSqlParam($1,$2); {");
+ }
+\ No newline at end of file

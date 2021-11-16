@@ -1,0 +1,16 @@
+diff --git a/6acb4902daa3681f00698096dac75a1d725fa912 b/07ea539efcc2ecb0647469db507781a22dcec5a2
+index 6acb4902da..07ea539efc 100644
+--- a/6acb4902daa3681f00698096dac75a1d725fa912
++++ b/07ea539efcc2ecb0647469db507781a22dcec5a2
+@@ -1,9 +1,5 @@
+ public void test_mysql_group_0() throws Exception {
+     String sql = "select type, count(*) from t group by type";
+     String result = PagerUtils.count(sql, JdbcConstants.MYSQL);
+-    Assert.assertEquals(//
+-    "SELECT COUNT(*)" + //
+-    "\nFROM (SELECT type, COUNT(*)" + //
+-    "\n\tFROM t" + //
+-    "\n\tGROUP BY type" + "\n\t) ALIAS_COUNT", result);
++    Assert.assertEquals("SELECT COUNT(*)\n" + "FROM (\n" + "\tSELECT type, COUNT(*)\n" + "\tFROM t\n" + "\tGROUP BY type\n" + ") ALIAS_COUNT", result);
+ }
+\ No newline at end of file

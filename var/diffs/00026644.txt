@@ -1,0 +1,16 @@
+diff --git a/3ed31f90bf47d1a589279b30bacef9a7c51a4dc8 b/8cd0c897fcc97cbf90d5d8062ca913162e9268d5
+index 3ed31f90bf..8cd0c897fc 100644
+--- a/3ed31f90bf47d1a589279b30bacef9a7c51a4dc8
++++ b/8cd0c897fcc97cbf90d5d8062ca913162e9268d5
+@@ -1,9 +1,9 @@
+ @Test
+ public void testGravesBidirectionalLSTM() throws Exception {
+     final GravesBidirectionalLSTM glstm = new GravesBidirectionalLSTM.Builder().forgetGateBiasInit(1.5).activation("tanh").nIn(numIn).nOut(numOut).build();
+     checkSerialization(glstm);
+     assertEquals(glstm.getForgetGateBiasInit(), 1.5, 0.0);
+     assertEquals(glstm.nIn, numIn);
+     assertEquals(glstm.nOut, numOut);
+-    assertEquals(glstm.activationFunction, "tanh");
++    assertTrue(glstm.getActivationFn() instanceof ActivationTanH);
+ }
+\ No newline at end of file

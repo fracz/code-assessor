@@ -1,0 +1,26 @@
+diff --git a/9a99cb066156e359247174a9d005bcc9d94aec74 b/b242189dccf7d14cc85c10b2a0e756437725fdb8
+index 9a99cb0661..b242189dcc 100644
+--- a/9a99cb066156e359247174a9d005bcc9d94aec74
++++ b/b242189dccf7d14cc85c10b2a0e756437725fdb8
+@@ -1,12 +1,11 @@
+-private TransactionMetricCollector createTransactionMetricCollector(TraceContext traceContext) {
+-    if (traceContext instanceof DefaultTraceContext) {
+-        TransactionCounter transactionCounter = ((DefaultTraceContext) traceContext).getTransactionCounter();
+-        TransactionMetricSet transactionMetricSet = this.monitorRegistry.registerTpsMonitor(new MonitorName(MetricMonitorValues.TRANSACTION), transactionCounter);
+-        if (logger.isInfoEnabled()) {
+-            logger.info("loaded : {}", transactionMetricSet);
+-        }
+-        return new DefaultTransactionMetricCollector(transactionMetricSet);
+-    } else {
++private TransactionMetricCollector createTransactionMetricCollector(TransactionCounter transactionCounter) {
++    if (transactionCounter == null) {
+         return TransactionMetricCollector.EMPTY_TRANSACTION_METRIC_COLLECTOR;
+     }
++    MonitorName monitorName = new MonitorName(MetricMonitorValues.TRANSACTION);
++    TransactionMetricSet transactionMetricSet = this.monitorRegistry.registerTpsMonitor(monitorName, transactionCounter);
++    if (logger.isInfoEnabled()) {
++        logger.info("loaded : {}", transactionMetricSet);
++    }
++    return new DefaultTransactionMetricCollector(transactionMetricSet);
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/1164dd189d371bb1de007d6b2fac5e552f27fede b/7b737c3a4123721b2618d023c7e95ce1b4a1bd9a
+index 1164dd189d..7b737c3a41 100644
+--- a/1164dd189d371bb1de007d6b2fac5e552f27fede
++++ b/7b737c3a4123721b2618d023c7e95ce1b4a1bd9a
+@@ -1,6 +1,7 @@
+ /**
+  * Returns the Facebook object.
+  */
+-private Facebook getFb() {
+-    return Session.restore(streamHandler.getActivity()).getFb();
++private AsyncFacebook getFb() {
++    Facebook fb = Session.restore(streamHandler.getActivity()).getFb();
++    return new AsyncFacebook(fb);
+ }
+\ No newline at end of file

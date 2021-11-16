@@ -1,0 +1,12 @@
+diff --git a/f8f05d9187dfe7ec76c26ee42e3d6180fc541e9b b/c3a4a38882f41090bd103c256896a11d6bf09dee
+index f8f05d9187..c3a4a38882 100644
+--- a/f8f05d9187dfe7ec76c26ee42e3d6180fc541e9b
++++ b/c3a4a38882f41090bd103c256896a11d6bf09dee
+@@ -1,3 +1,5 @@
+ public Icon getNodeIcon() {
+-    return ElementPresentationManager.getIcon(DomUtil.getRawType(myChildDescription.getType()));
++    Class clazz = DomUtil.getRawType(myChildDescription.getType());
++    // Class arrayClass = Array.newInstance(clazz, 0).getClass();
++    return ElementPresentationManager.getIconForClass(clazz);
+ }
+\ No newline at end of file

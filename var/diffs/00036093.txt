@@ -1,0 +1,17 @@
+diff --git a/5efe2c3a533e9159138ba81eb52bea9c38dbc4bd b/79c8736a7c05e0f993685aeee45ffaf604f04018
+index 5efe2c3a53..79c8736a7c 100644
+--- a/5efe2c3a533e9159138ba81eb52bea9c38dbc4bd
++++ b/79c8736a7c05e0f993685aeee45ffaf604f04018
+@@ -1,10 +1,10 @@
+ @Test
+ public void shouldPointToFourthChunkBecauseTooManyActualInvocations() {
+     inOrder.verify(mock, atLeastOnce()).simpleMethod(anyInt());
+     try {
+         inOrder.verify(mockTwo, times(0)).simpleMethod(anyInt());
+         fail();
+     } catch (VerifcationInOrderFailure e) {
+-        assertThat(e.getCause(), hasFirstMethodInStackTrace("fourthChunk"));
++        assertContains("fourthChunk(", e.getMessage());
+     }
+ }
+\ No newline at end of file

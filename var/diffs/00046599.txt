@@ -1,0 +1,24 @@
+diff --git a/a9dd1a2239d3d3524111bf1bed7a9e66fb95b8f2 b/aa150e30a9d5c7f6ab54022e959671f15afa2117
+index a9dd1a2239..aa150e30a9 100644
+--- a/a9dd1a2239d3d3524111bf1bed7a9e66fb95b8f2
++++ b/aa150e30a9d5c7f6ab54022e959671f15afa2117
+@@ -1,15 +1,11 @@
+ @Override
+ protected void bindFrontTexture() {
+-    usingFrontTex = true;
+     if (USE_JOGL_FBOLAYER) {
++        usingFrontTex = true;
+         if (!texturingIsEnabled(TEXTURE_2D)) {
+             enableTexturing(TEXTURE_2D);
+         }
+         bindTexture(TEXTURE_2D, frontTexAttach.getName());
+-    } else {
+-        if (!texturingIsEnabled(TEXTURE_2D)) {
+-            enableTexturing(TEXTURE_2D);
+-        }
+-        bindTexture(TEXTURE_2D, glColorTex.get(frontTex));
+-    }
++    } else
++        super.bindFrontTexture();
+ }
+\ No newline at end of file

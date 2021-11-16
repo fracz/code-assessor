@@ -1,0 +1,13 @@
+diff --git a/28df967d5226a2cf15cd886b8615e34683b14755 b/ab99535a4b9cdfba2b70b96377bb966cbbc207b9
+index 28df967d52..ab99535a4b 100644
+--- a/28df967d5226a2cf15cd886b8615e34683b14755
++++ b/ab99535a4b9cdfba2b70b96377bb966cbbc207b9
+@@ -1,3 +1,6 @@
+ public byte[] toStream() throws IOException {
+-    return OBinaryProtocol.string2bytes(text);
++    OMemoryOutputStream buffer = new OMemoryOutputStream();
++    buffer.add(text);
++    buffer.add(limit);
++    return buffer.toByteArray();
+ }
+\ No newline at end of file

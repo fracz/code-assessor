@@ -1,0 +1,13 @@
+diff --git a/f0c5d2935b89205170143c18bca1cf2c625e80c3 b/192d15f28c6cc2365946336d55d9a25fd7c07d1d
+index f0c5d2935b..192d15f28c 100644
+--- a/f0c5d2935b89205170143c18bca1cf2c625e80c3
++++ b/192d15f28c6cc2365946336d55d9a25fd7c07d1d
+@@ -1,6 +1,6 @@
+ private void configureProxyCredentials(DefaultHttpClient httpClient, HttpProxySettings proxySettings) {
+     HttpProxySettings.HttpProxy proxy = proxySettings.getProxy();
+     if (proxy != null && proxy.credentials != null) {
+-        useCredentials(httpClient, proxy.credentials, proxy.host, proxy.port, Collections.singleton(AuthScope.ANY_SCHEME));
++        useCredentials(httpClient, proxy.host, proxy.port, Collections.singleton(new AllSchemesAuthentication(null, proxy.credentials)));
+     }
+ }
+\ No newline at end of file

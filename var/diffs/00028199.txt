@@ -1,0 +1,18 @@
+diff --git a/9f7ad7c44e000a33d17e319dcd270ba7c95c490a b/67f9a839dd5c16996c50c35b7b127a1bd4831c68
+index 9f7ad7c44e..67f9a839dd 100644
+--- a/9f7ad7c44e000a33d17e319dcd270ba7c95c490a
++++ b/67f9a839dd5c16996c50c35b7b127a1bd4831c68
+@@ -1,11 +1,11 @@
+ protected void setContributeToBranchName(Context context) {
+     String contributeToBranchName = getBranchFromProjectMetadata(context.getProject());
+     if (contributeToBranchName != null) {
+         context.setContributeToBranchName(contributeToBranchName);
+         return;
+     }
+     vcsServiceProvider.getVcsService(context.getProject()).getBranchName(context.getProject()).then((String branchName) -> {
+         context.setContributeToBranchName(branchName);
+-        context.getProject().getSource().getParameters().put("branch", branchName);
++        setBranchToProjectMetadata(context.getProject(), branchName);
+     });
+ }
+\ No newline at end of file

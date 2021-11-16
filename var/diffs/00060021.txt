@@ -1,0 +1,15 @@
+diff --git a/e7df5af2e81f640e1508da89d3f476cd95df87f4 b/e4f91c2e0d8bf06fb143d2cf02bbc68ece950e3a
+index e7df5af2e8..e4f91c2e0d 100644
+--- a/e7df5af2e81f640e1508da89d3f476cd95df87f4
++++ b/e4f91c2e0d8bf06fb143d2cf02bbc68ece950e3a
+@@ -1,7 +1,7 @@
+-private static void sleepAndConvertInterrupts(final long sleepTime) throws StorageException {
++private static void sleepAndConvertInterrupts(final long millis) throws StorageException {
+     try {
+-        Timestamps.SYSTEM().sleepPast(sleepTime);
++        Timestamps.MILLI.sleepPast(millis, TimeUnit.MILLISECONDS);
+     } catch (InterruptedException e) {
+         throw new PermanentStorageException(e);
+     }
+ }
+\ No newline at end of file

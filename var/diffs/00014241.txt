@@ -1,0 +1,20 @@
+diff --git a/d71f70a134e079c2edb17bdb8ca60937737a5968 b/a9bc64e0dca97a15595a45608b177cc23e60e5c5
+index d71f70a134..a9bc64e0dc 100644
+--- a/d71f70a134e079c2edb17bdb8ca60937737a5968
++++ b/a9bc64e0dca97a15595a45608b177cc23e60e5c5
+@@ -1,11 +1,10 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiField field = (PsiField) location.getParent();
+-    assert field != null;
+-    final String fieldName = field.getName();
++@NotNull
++public String buildErrorString(Object... infos) {
++    final String fieldName = (String) infos[0];
+     if (fieldName.length() < getMinLength()) {
+         return InspectionGadgetsBundle.message("enumerated.constant.naming.convention.problem.descriptor.short");
+     } else if (fieldName.length() > getMaxLength()) {
+         return InspectionGadgetsBundle.message("enumerated.constant.naming.convention.problem.descriptor.long");
+     }
+     return InspectionGadgetsBundle.message("enumerated.constant.naming.convention.problem.descriptor.regex.mismatch", getRegex());
+ }
+\ No newline at end of file

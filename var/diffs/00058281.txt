@@ -1,0 +1,21 @@
+diff --git a/223790efa8e1490ec15a6d199e3a93ad0e50ccb8 b/f16c20ff90d4784a15b4d828ba13292ea5807548
+index 223790efa8..f16c20ff90 100644
+--- a/223790efa8e1490ec15a6d199e3a93ad0e50ccb8
++++ b/f16c20ff90d4784a15b4d828ba13292ea5807548
+@@ -1,11 +1,6 @@
+ public void testRemoveAllDataFromCache() throws Exception {
+-    inFileObjectPersister.saveDataToCacheAndReturnData(new Object(), TEST_CACHE_KEY);
+-    inFileObjectPersister.saveDataToCacheAndReturnData(new Object(), TEST_CACHE_KEY2);
+-    File cacheFile = inFileObjectPersister.getCacheFile(TEST_CACHE_KEY);
+-    assertTrue(cacheFile.exists());
+-    File cacheFile2 = inFileObjectPersister.getCacheFile(TEST_CACHE_KEY2);
+-    assertTrue(cacheFile2.exists());
+-    inFileObjectPersister.removeAllDataFromCache();
+-    assertFalse(cacheFile.exists());
+-    assertFalse(cacheFile2.exists());
++    Map<Object, Object> mapDataToCacheKey = new HashMap<Object, Object>();
++    mapDataToCacheKey.put(new Object(), TEST_CACHE_KEY);
++    mapDataToCacheKey.put(new Object(), TEST_CACHE_KEY2);
++    super.testRemoveAllDataFromCache(mapDataToCacheKey);
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/d3413cd59c9687151d2fda78013b4b2eecdc35fd b/e160241cfcb6063c63628eed2212e2a0b4074d22
+index d3413cd59c..e160241cfc 100644
+--- a/d3413cd59c9687151d2fda78013b4b2eecdc35fd
++++ b/e160241cfcb6063c63628eed2212e2a0b4074d22
+@@ -1,9 +1,11 @@
+ private static String getNextMethodBeforeInsertCode() {
+     StringBuilder sb = new StringBuilder();
+     sb.append("{");
+-    // sb.append("System.out.println(\"PreparedStatement.setInternal(int,String) method is called\");");
+-    // sb.append("System.out.println(\"-----Position=\"+$1+\" Value=\"+$2);");
++    if (logger.isDebugEnabled()) {
++        sb.append("System.out.println(\"PreparedStatement.setInternal(int,String) method is called\");");
++        sb.append("System.out.println(\"-----Position=\"+$1+\" Value=\"+$2);");
++    }
+     sb.append(TomcatProfilerConstant.CLASS_NAME_REQUEST_DATA_TRACER + ".updateFetchCount();");
+     sb.append("}");
+     return sb.toString();
+ }
+\ No newline at end of file

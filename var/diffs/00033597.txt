@@ -1,0 +1,25 @@
+diff --git a/92a278a8bb7cda2e5b3656a551f241cabdf56621 b/58f33811c20bfcd492d5d434579ab5d9f212ecfa
+index 92a278a8bb..58f33811c2 100644
+--- a/92a278a8bb7cda2e5b3656a551f241cabdf56621
++++ b/58f33811c20bfcd492d5d434579ab5d9f212ecfa
+@@ -1,14 +1,11 @@
+-protected void process(DependencyMetaData dependency, ModuleComponentRepositoryAccess moduleAccess, BuildableModuleComponentMetaDataResolveResult resolveResult) {
+-    moduleAccess.listModuleVersions(dependency, selectionResult);
+-    switch(selectionResult.getState()) {
++protected void process(DependencyMetaData dynamicVersionDependency, ModuleComponentRepositoryAccess moduleAccess, BuildableModuleComponentMetaDataResolveResult resolveResult) {
++    moduleAccess.listModuleVersions(dynamicVersionDependency, versionListingResult);
++    switch(versionListingResult.getState()) {
+         case Failed:
+-            resolveResult.failed(selectionResult.getFailure());
++            resolveResult.failed(versionListingResult.getFailure());
+             break;
+         case Listed:
+-            if (resolveDependency(dependency, moduleAccess, resolveResult).hasNoMatch()) {
+-                resolveResult.missing();
+-                resolveResult.setAuthoritative(selectionResult.isAuthoritative());
+-            }
++            selectMatchingVersionAndResolve(dynamicVersionDependency, moduleAccess, resolveResult);
+             break;
+     }
+ }
+\ No newline at end of file

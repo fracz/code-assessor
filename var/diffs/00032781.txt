@@ -1,0 +1,13 @@
+diff --git a/5f31276ace54380e0f34c87e8abe9305aedcd9df b/f3adb37fe5eeee4da36ae88b3239e77b16e69474
+index 5f31276ace..f3adb37fe5 100644
+--- a/5f31276ace54380e0f34c87e8abe9305aedcd9df
++++ b/f3adb37fe5eeee4da36ae88b3239e77b16e69474
+@@ -1,6 +1,5 @@
+ @Override
+ public Boolean visitAddMessageError(AddMessageErrorCommand command) {
+-    String message = String.format(command.getMessage(), command.getArguments());
+-    errorHandler.handle(new Message(command.getSource(), message));
++    errors.at(command.getSource()).userReportedError(command.getMessage(), command.getArguments());
+     return true;
+ }
+\ No newline at end of file

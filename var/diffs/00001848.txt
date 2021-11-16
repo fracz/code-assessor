@@ -1,0 +1,13 @@
+diff --git a/e14b03bdc6793a92b8a8776ee5efd8f71f4bf30d b/868ca4e492bdc32d9a181d2850fb4e2494d571eb
+index e14b03bdc6..868ca4e492 100644
+--- a/e14b03bdc6793a92b8a8776ee5efd8f71f4bf30d
++++ b/868ca4e492bdc32d9a181d2850fb4e2494d571eb
+@@ -1,6 +1,5 @@
+ public final void dispose() {
+     synchronized (LOCK) {
+-        myDisposed = true;
+-        suspend();
++        myState = TimerState.disposed;
+     }
+ }
+\ No newline at end of file

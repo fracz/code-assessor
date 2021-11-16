@@ -1,0 +1,17 @@
+diff --git a/1c1024a359adbbfe7df2fd1bf83b8414a35c2baa b/b9b57b370dc4a1caffe21ff51a3153e1ce0be0a5
+index 1c1024a359..b9b57b370d 100644
+--- a/1c1024a359adbbfe7df2fd1bf83b8414a35c2baa
++++ b/b9b57b370dc4a1caffe21ff51a3153e1ce0be0a5
+@@ -1,8 +1,6 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiModifierList modifierList = (PsiModifierList) location.getParent();
+-    assert modifierList != null;
+-    final PsiParameter parameter = (PsiParameter) modifierList.getParent();
+-    assert parameter != null;
++@NotNull
++public String buildErrorString(Object... infos) {
++    final PsiParameter parameter = (PsiParameter) infos[0];
+     final String parameterName = parameter.getName();
+     return InspectionGadgetsBundle.message("unnecessary.final.on.parameter.problem.descriptor", parameterName);
+ }
+\ No newline at end of file

@@ -1,0 +1,28 @@
+diff --git a/c736424feba5010f53165909d3b0b644c0edbc8f b/66f9a88f3eb36e9bebdde9f7b5b631a38b2943fb
+index c736424feb..66f9a88f3e 100644
+--- a/c736424feba5010f53165909d3b0b644c0edbc8f
++++ b/66f9a88f3eb36e9bebdde9f7b5b631a38b2943fb
+@@ -1,19 +1,19 @@
+ /**
+  * Gets the remote device trust state as boolean.
+  * Note: this value may be
+  * retrieved from cache if we retrieved the data before *
+  *
+- * @return boolean to indicate trust or untrust state
++ * @return boolean to indicate trusted or untrusted state
+  */
+ public synchronized boolean getTrustState(String address) {
+     if (!BluetoothAdapter.checkBluetoothAddress(address)) {
+         mContext.enforceCallingOrSelfPermission(BLUETOOTH_PERM, "Need BLUETOOTH permission");
+         return false;
+     }
+-    String val = getRemoteDeviceProperty(address, "Trusted");
++    String val = mDeviceProperties.getProperty(address, "Trusted");
+     if (val == null) {
+         return false;
+     } else {
+-        return val.equals("true") ? true : false;
++        return val.equals("true");
+     }
+ }
+\ No newline at end of file

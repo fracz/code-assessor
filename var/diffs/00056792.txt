@@ -1,0 +1,19 @@
+diff --git a/534c51bc62c501b89361fa83084f45eca7b04d72 b/491c29594a0aab824faafe81cbf2d3f0090119dd
+index 534c51bc62..491c29594a 100644
+--- a/534c51bc62c501b89361fa83084f45eca7b04d72
++++ b/491c29594a0aab824faafe81cbf2d3f0090119dd
+@@ -1,11 +1,10 @@
+ public void removeZeroCounts() {
+     Set<K1> firstKeySet = Generics.newHashSet(firstKeySet());
+     for (K1 k1 : firstKeySet) {
+         IntCounter<K2> c = getCounter(k1);
+         Counters.retainNonZeros(c);
+-        if (c.isEmpty()) {
+-            // it's empty, get rid of it!
++        // it's empty, get rid of it!
++        if (c.size() == 0)
+             map.remove(k1);
+-        }
+     }
+ }
+\ No newline at end of file

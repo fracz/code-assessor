@@ -1,0 +1,18 @@
+diff --git a/497ae67204eca254e50d2034bc43c408d64b8c4a b/4de82e12a57657c66619978eeced743c7b15d84b
+index 497ae67204..4de82e12a5 100644
+--- a/497ae67204eca254e50d2034bc43c408d64b8c4a
++++ b/4de82e12a57657c66619978eeced743c7b15d84b
+@@ -1,10 +1,10 @@
+ @Test(dataProvider = "GitConnectionFactory", dataProviderClass = org.eclipse.che.git.impl.GitConnectionFactoryProvider.class)
+ public void testMergeNoChanges(GitConnectionFactory connectionFactory) throws Exception {
+     // given
+     GitConnection connection = connectToGitRepositoryWithContent(connectionFactory, repository);
+-    connection.branchCreate(newDto(BranchCreateRequest.class).withName(branchName));
++    connection.branchCreate(branchName, null);
+     // when
+-    MergeResult mergeResult = connection.merge(newDto(MergeRequest.class).withCommit(branchName));
++    MergeResult mergeResult = connection.merge(branchName);
+     // then
+     assertEquals(mergeResult.getMergeStatus(), MergeResult.MergeStatus.ALREADY_UP_TO_DATE);
+ }
+\ No newline at end of file

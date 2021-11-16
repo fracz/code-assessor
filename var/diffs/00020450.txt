@@ -1,0 +1,20 @@
+diff --git a/8452de859461052ca2b4421771ea436169b24996 b/7386f9f34d936ea605ee873e39d95ea8d9a61b19
+index 8452de8594..7386f9f34d 100644
+--- a/8452de859461052ca2b4421771ea436169b24996
++++ b/7386f9f34d936ea605ee873e39d95ea8d9a61b19
+@@ -1,11 +1,12 @@
+ @Override
+ public void close() throws SQLException {
+-    if (closed) {
++    if (closeCount > 0) {
++        closeCount++;
+         return;
+     }
+     if (conn != null) {
+         conn.close();
+     }
+-    this.closed = true;
++    this.closeCount++;
+     multiDataSource.afterConnectionClosed(this);
+ }
+\ No newline at end of file

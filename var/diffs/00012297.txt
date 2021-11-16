@@ -1,0 +1,22 @@
+diff --git a/0634849f7e32ecbc9bd204095233e3ae25efbd19 b/d117cf6bcdda0363ded908a64a42c587d756ef9e
+index 0634849f7e..d117cf6bcd 100644
+--- a/0634849f7e32ecbc9bd204095233e3ae25efbd19
++++ b/d117cf6bcdda0363ded908a64a42c587d756ef9e
+@@ -1,14 +1,8 @@
+ @Nullable
+-protected InspectionGadgetsFix buildFix(PsiElement location) {
+-    final PsiNewExpression newExpression = (PsiNewExpression) location.getParent();
+-    final PsiExpressionList argumentList = newExpression.getArgumentList();
+-    if (argumentList == null) {
+-        return null;
+-    }
+-    final PsiExpression[] arguments = argumentList.getExpressions();
+-    final PsiExpression argument = arguments[0];
++protected InspectionGadgetsFix buildFix(Object... infos) {
++    final PsiExpression argument = (PsiExpression) infos[0];
+     if (!(argument instanceof PsiLiteralExpression)) {
+         return null;
+     }
+     return new NewStringBufferWithCharArgumentFix();
+ }
+\ No newline at end of file

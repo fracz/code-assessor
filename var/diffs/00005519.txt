@@ -1,0 +1,28 @@
+diff --git a/efc0c4111a354b4650c996e7c55391e7cac93185 b/7459d53f5bceaa7255c41d0ba3b481fa744fc973
+index efc0c4111a..7459d53f5b 100644
+--- a/efc0c4111a354b4650c996e7c55391e7cac93185
++++ b/7459d53f5bceaa7255c41d0ba3b481fa744fc973
+@@ -1,20 +1,19 @@
+ @Override
+-@Nullable
+-public FoldingTransferableData extractTransferableData(final Transferable content) {
++public List<FoldingTransferableData> extractTransferableData(final Transferable content) {
+     FoldingTransferableData foldingData = null;
+     try {
+         final DataFlavor flavor = FoldingData.getDataFlavor();
+         if (flavor != null) {
+             foldingData = (FoldingTransferableData) content.getTransferData(flavor);
+         }
+     } catch (UnsupportedFlavorException e) {
+     // do nothing
+     } catch (IOException e) {
+     // do nothing
+     }
+     if (foldingData != null) {
+         // copy to prevent changing of original by convertLineSeparators
+-        return foldingData.clone();
++        return Collections.singletonList(foldingData.clone());
+     }
+     return null;
+ }
+\ No newline at end of file

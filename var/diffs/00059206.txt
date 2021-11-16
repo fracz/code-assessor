@@ -1,0 +1,25 @@
+diff --git a/c9b70eac75df34e4e81404eece68ce0530597f1f b/dd296053fea8a96afd7fab2246327f000a832f85
+index c9b70eac75..dd296053fe 100644
+--- a/c9b70eac75df34e4e81404eece68ce0530597f1f
++++ b/dd296053fea8a96afd7fab2246327f000a832f85
+@@ -1,13 +1,9 @@
+ @Override
+ public StaticBuffer next() {
+-    nextInvocationCounter.inc();
+-    Timer.Context tc = nextTimer.time();
+-    try {
+-        return iterator.next();
+-    } catch (RuntimeException e) {
+-        nextFailureCounter.inc();
+-        throw e;
+-    } finally {
+-        tc.stop();
+-    }
++    return MetricInstrumentedStore.runWithMetrics(p, null, M_NEXT, new UncheckedCallable<StaticBuffer>() {
++
++        public StaticBuffer call() {
++            return iterator.next();
++        }
++    });
+ }
+\ No newline at end of file

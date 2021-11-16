@@ -1,0 +1,23 @@
+diff --git a/7c9aaea2b7caf68eeaf000cb47cacf1c854169f0 b/ae320495d87ec2a4eb04f07474050cff38eac35b
+index 7c9aaea2b7..ae320495d8 100644
+--- a/7c9aaea2b7caf68eeaf000cb47cacf1c854169f0
++++ b/ae320495d87ec2a4eb04f07474050cff38eac35b
+@@ -1,12 +1,9 @@
+-private void sortNode(DefaultMutableTreeNode node, boolean sorted) {
+-    ArrayList<ElementNode> arrayList = new ArrayList<ElementNode>();
+-    Enumeration children = node.children();
++private void sortNode(ParentNode<T> node, boolean sorted) {
++    ArrayList<MemberNode<T>> arrayList = new ArrayList<MemberNode<T>>();
++    Enumeration<MemberNode<T>> children = node.children();
+     while (children.hasMoreElements()) {
+-        arrayList.add((ElementNode) children.nextElement());
++        arrayList.add(children.nextElement());
+     }
+     Collections.sort(arrayList, sorted ? new AlphaComparator() : new OrderComparator());
+-    node.removeAllChildren();
+-    for (int i = 0; i < arrayList.size(); i++) {
+-        node.add(arrayList.get(i));
+-    }
++    replaceChildren(node, arrayList);
+ }
+\ No newline at end of file

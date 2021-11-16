@@ -1,0 +1,21 @@
+diff --git a/a878b189954063e05cb436b37f83d00699588af4 b/8175bd584513fd1a137b784cbb1b2d4f6795356d
+index a878b18995..8175bd5845 100644
+--- a/a878b189954063e05cb436b37f83d00699588af4
++++ b/8175bd584513fd1a137b784cbb1b2d4f6795356d
+@@ -1,12 +1,12 @@
+ private Application createParentApplication(SpanBo span, Map<Long, SpanBo> transactionSpanMap) {
+     final SpanBo parentSpan = transactionSpanMap.get(span.getParentSpanId());
+     if (span.isRoot() || parentSpan == null) {
+         String applicationName = span.getApplicationId();
+         ServiceType serviceType = ServiceType.USER;
+-        return new Application(applicationName, serviceType);
++        return this.applicationFactory.createApplication(applicationName, serviceType);
+     } else {
+         String parentApplicationName = parentSpan.getApplicationId();
+-        ServiceType serviceType = registry.findServiceType(parentSpan.getApplicationServiceType());
+-        return new Application(parentApplicationName, serviceType);
++        short parentServiceType = parentSpan.getApplicationServiceType();
++        return this.applicationFactory.createApplication(parentApplicationName, parentServiceType);
+     }
+ }
+\ No newline at end of file

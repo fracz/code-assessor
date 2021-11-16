@@ -1,0 +1,11 @@
+diff --git a/f6510af197a22c0d41d1ef534a2f075f10ee4ce3 b/7c11283c9b5c301133a692ebbb4e9bee767aff65
+index f6510af197..7c11283c9b 100644
+--- a/f6510af197a22c0d41d1ef534a2f075f10ee4ce3
++++ b/7c11283c9b5c301133a692ebbb4e9bee767aff65
+@@ -1,4 +1,4 @@
+ public static SSTableWriter createWriter(ColumnFamilyStore cfs, File compactionFileLocation, int expectedBloomFilterSize, long repairedAt, SSTableReader sstable) {
+     FileUtils.createDirectory(compactionFileLocation);
+-    return new SSTableWriter(cfs.getTempSSTablePath(compactionFileLocation), expectedBloomFilterSize, repairedAt, cfs.metadata, cfs.partitioner, new MetadataCollector(Collections.singleton(sstable), cfs.metadata.comparator, sstable.getSSTableLevel()));
++    return SSTableWriter.create(Descriptor.fromFilename(cfs.getTempSSTablePath(compactionFileLocation)), expectedBloomFilterSize, repairedAt, sstable.getSSTableLevel());
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/4cce9f117bf50cf2b085b9debb212fabc63fb8bf b/75bc05936ab57ac34c1c24894fd1e036560b5b02
+index 4cce9f117b..75bc05936a 100644
+--- a/4cce9f117bf50cf2b085b9debb212fabc63fb8bf
++++ b/75bc05936ab57ac34c1c24894fd1e036560b5b02
+@@ -1,15 +1,17 @@
+ public SQLStatement parseTruncate() {
+     accept(Token.TRUNCATE);
+-    accept(Token.TABLE);
++    if (lexer.token() == Token.TABLE) {
++        lexer.nextToken();
++    }
+     SQLTruncateStatement stmt = new SQLTruncateStatement();
+     for (; ; ) {
+         SQLName name = this.exprParser.name();
+         stmt.addTableSource(name);
+         if (lexer.token() == Token.COMMA) {
+             lexer.nextToken();
+             continue;
+         }
+         break;
+     }
+     return stmt;
+ }
+\ No newline at end of file

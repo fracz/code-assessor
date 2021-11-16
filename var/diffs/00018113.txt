@@ -1,0 +1,27 @@
+diff --git a/aa3ee4b8a4bea0044fb9766c5d982db1765c4c40 b/91a3cece03f53e5f81798d9b4d81f3396e515f9c
+index aa3ee4b8a4..91a3cece03 100644
+--- a/aa3ee4b8a4bea0044fb9766c5d982db1765c4c40
++++ b/91a3cece03f53e5f81798d9b4d81f3396e515f9c
+@@ -1,16 +1,18 @@
+ public void write(JSONWriter writer, Properties options) throws JSONException {
+     writer.object();
+     writer.key("cellIndex");
+-    writer.value(getCellIndex());
+-    writer.key("headerLabel");
+-    writer.value(getHeaderLabel());
++    writer.value(_cellIndex);
++    writer.key("originalName");
++    writer.value(_originalName);
++    writer.key("name");
++    writer.value(_name);
+     if (_reconConfig != null) {
+         writer.key("reconConfig");
+         _reconConfig.write(writer, options);
+     }
+     if (_reconStats != null) {
+         writer.key("reconStats");
+         _reconStats.write(writer, options);
+     }
+     writer.endObject();
+ }
+\ No newline at end of file

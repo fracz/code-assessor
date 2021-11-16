@@ -1,0 +1,18 @@
+diff --git a/b0e8b73b4e76b48a3e375e3a50757f394c2eeb3a b/f8e5d51c9d5eb03456cf9649e9fd66c4c699e03f
+index b0e8b73b4e..f8e5d51c9d 100644
+--- a/b0e8b73b4e76b48a3e375e3a50757f394c2eeb3a
++++ b/f8e5d51c9d5eb03456cf9649e9fd66c4c699e03f
+@@ -1,4 +1,10 @@
+ @Override
+-public InternalAggregation buildAggregation(long owningBucketOrdinal) {
+-    throw new ElasticsearchIllegalStateException("Invalid context - aggregation must use addResults() to collect child results");
++public InternalAggregation buildAggregation(long bucket) throws IOException {
++    if (bucket < aggregators.size()) {
++        Aggregator aggregator = aggregators.get(bucket);
++        if (aggregator != null) {
++            return aggregator.buildAggregation(0);
++        }
++    }
++    return buildEmptyAggregation();
+ }
+\ No newline at end of file

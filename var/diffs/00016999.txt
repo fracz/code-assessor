@@ -1,0 +1,20 @@
+diff --git a/f136c11da1693ed35d7c62d35ae04c1f636ca5ed b/19e1001fef891da164fe9a16eb0ce7a4338e8635
+index f136c11da1..19e1001fef 100644
+--- a/f136c11da1693ed35d7c62d35ae04c1f636ca5ed
++++ b/19e1001fef891da164fe9a16eb0ce7a4338e8635
+@@ -1,12 +1,7 @@
+ @NotNull
+ @Override
+ protected List<String> additionalKotlinFiles() {
+-    List<String> result = Lists.newArrayList();
+-    List<String> additionalLibraryFiles = getAdditionalLibraryFiles();
+-    additionalLibraryFiles.add(JS_TESTS_KT);
+-    boolean removed = additionalLibraryFiles.remove(Config.LIBRARIES_LOCATION + "/stdlib/testCode.kt");
+-    assert removed;
+-    result.addAll(additionalLibraryFiles);
+-    result.add(Config.LIBRARIES_LOCATION + "/stdlib/TuplesCode.kt");
++    List<String> result = Lists.newArrayList(super.additionalKotlinFiles());
++    result.add(JS_TESTS_KT);
+     return result;
+ }
+\ No newline at end of file

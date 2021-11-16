@@ -1,0 +1,28 @@
+diff --git a/cb262f0f556ff0107fe577db2dafa45a7adf9f05 b/6ecf947e91911f5b61255c2772d7b07d6ab89f40
+index cb262f0f55..6ecf947e91 100644
+--- a/cb262f0f556ff0107fe577db2dafa45a7adf9f05
++++ b/6ecf947e91911f5b61255c2772d7b07d6ab89f40
+@@ -1,19 +1,17 @@
+ /**
+  * @return true, if we should continue processing
+  * @param aCatch
+  * @param processor
+  * @param root
+- * @param options
+  */
+-private static boolean processExn(final PsiParameter aCatch, Processor processor, Root root, FindUsagesOptions options) {
++private static boolean processExn(final PsiParameter aCatch, Processor processor, Root root) {
+     final PsiType type = aCatch.getType();
+     if (type.isAssignableFrom(root.myType)) {
+         processor.process(new UsageInfo(aCatch));
+         return false;
+-    } else if (options.isStrictThrowUsages && !root.isExact && root.myType.isAssignableFrom(type)) {
++    } else if (!root.isExact && root.myType.isAssignableFrom(type)) {
+         processor.process(new UsageInfo(aCatch));
+         return true;
+-    } else {
+-        return true;
+     }
++    return true;
+ }
+\ No newline at end of file

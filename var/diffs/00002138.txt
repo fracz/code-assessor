@@ -1,0 +1,16 @@
+diff --git a/3297c2976844021fc65ebc282b30097a5d82e359 b/9c1cd87bc10748ec2598397c5c77f66a12cc2405
+index 3297c29768..9c1cd87bc1 100644
+--- a/3297c2976844021fc65ebc282b30097a5d82e359
++++ b/9c1cd87bc10748ec2598397c5c77f66a12cc2405
+@@ -1,6 +1,6 @@
+ public void addGlobal(final String name) {
+-    final PyElementGenerator pyElementGenerator = PythonLanguage.getInstance().getElementGenerator();
+-    add(pyElementGenerator.createComma(getProject()).getPsi());
+-    add(pyElementGenerator.createWhiteSpace(getProject(), 1));
+-    add(pyElementGenerator.createFromText(getProject(), PyGlobalStatement.class, "global " + name).getGlobals()[0]);
++    final PyElementGenerator pyElementGenerator = PyElementGenerator.getInstance(getProject());
++    add(pyElementGenerator.createComma().getPsi());
++    add(pyElementGenerator.createWhiteSpace(1));
++    add(pyElementGenerator.createFromText(PyGlobalStatement.class, "global " + name).getGlobals()[0]);
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/17f266174dedfbd45627bd7367e2c06d319da01a b/11b5543d35d03a7bb194ba678dd939766c93bfcf
+index 17f266174d..11b5543d35 100644
+--- a/17f266174dedfbd45627bd7367e2c06d319da01a
++++ b/11b5543d35d03a7bb194ba678dd939766c93bfcf
+@@ -1,9 +1,9 @@
+ public void readExternal(Element element) {
+     final ClassLoader classLoader = getClass().getClassLoader();
+-    for (Iterator i = element.getChildren().iterator(); i.hasNext(); ) {
+-        Element children = (Element) i.next();
++    for (final Object o : element.getChildren()) {
++        Element children = (Element) o;
+         if ("actions".equals(children.getName())) {
+             processActionsElement(children, classLoader, null);
+         }
+     }
+ }
+\ No newline at end of file

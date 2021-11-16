@@ -1,0 +1,16 @@
+diff --git a/3af4d2c5d8c825c9c89e3bfecc8c4cf12977efce b/fbea7dd1cb4027a73deb262ad36f991f8553b50f
+index 3af4d2c5d8..fbea7dd1cb 100644
+--- a/3af4d2c5d8c825c9c89e3bfecc8c4cf12977efce
++++ b/fbea7dd1cb4027a73deb262ad36f991f8553b50f
+@@ -1,6 +1,6 @@
+-public static void writeHeader(byte[] data, int dataLength, long requestId, byte status) {
++public static void writeHeader(byte[] data, int dataOffset, int dataLength, long requestId, byte status) {
+     // no need for the header, already there
+-    writeInt(data, 0, dataLength - 4);
+-    writeLong(data, 4, requestId);
+-    data[12] = status;
++    writeInt(data, dataOffset, dataLength - 4);
++    writeLong(data, dataOffset + 4, requestId);
++    data[dataOffset + 12] = status;
+ }
+\ No newline at end of file

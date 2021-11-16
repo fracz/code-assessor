@@ -1,0 +1,26 @@
+diff --git a/ca14ed2b5badd243ce6d573e7837a24ad137076f b/9a81bbed68acc253897a1f8c3a3f8b0e6b7abb62
+index ca14ed2b5b..9a81bbed68 100644
+--- a/ca14ed2b5badd243ce6d573e7837a24ad137076f
++++ b/9a81bbed68acc253897a1f8c3a3f8b0e6b7abb62
+@@ -1,14 +1,14 @@
+-public static boolean createFolder(IWorkbenchWindow workbenchWindow, final DBNDataSource node, String newName) {
++public static boolean createFolder(IWorkbenchWindow workbenchWindow, final Collection<DBNDataSource> nodes, String newName) {
+     if (newName == null) {
+         newName = EnterNameDialog.chooseName(workbenchWindow.getShell(), "Folder name");
+     }
+-    if (CommonUtils.isEmpty(newName) || newName.equals(node.getNodeName())) {
++    if (CommonUtils.isEmpty(newName)) {
+         return false;
+     }
+-    node.getDataSourceContainer().setFolderPath(newName);
+-    DBNNode parentNode = node.getParentNode();
+-    if (parentNode instanceof DBNProjectDatabases) {
+-        ((DBNProjectDatabases) parentNode).refreshChildren();
++    // DS container will reload folders on refresh
++    for (DBNDataSource node : nodes) {
++        node.setFolderPath(newName);
+     }
++    NavigatorUtils.updateConfigAndRefreshDatabases(nodes.iterator().next());
+     return true;
+ }
+\ No newline at end of file

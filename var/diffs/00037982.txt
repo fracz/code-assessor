@@ -1,0 +1,23 @@
+diff --git a/d3007edacbbbd2e25572dcee3205c6d6ea74470d b/86779924aaa673b58494b7811420014ab65966ee
+index d3007edacb..86779924aa 100644
+--- a/d3007edacbbbd2e25572dcee3205c6d6ea74470d
++++ b/86779924aaa673b58494b7811420014ab65966ee
+@@ -1,16 +1,10 @@
+ @Override
+ public LogExtractor getLogExtractor(long startTxId, long endTxIdHint) throws IOException {
+-    return LogExtractor.from(FS, dir, new XaCommandReaderFactory() {
+-
+-        @Override
+-        public XaCommandReader newInstance(ByteBuffer scratch) {
+-            return new PhysicalLogNeoXaCommandReader(scratch);
+-        }
+-    }, new XaCommandWriterFactory() {
++    return LogExtractor.from(FS, dir, XaCommandReaderFactory.DEFAULT, new XaCommandWriterFactory() {
+
+         @Override
+         public XaCommandWriter newInstance() {
+             return new PhysicalLogNeoXaCommandWriter();
+         }
+     }, new LogEntryWriterv1(), new Monitors().newMonitor(ByteCounterMonitor.class), startTxId);
+ }
+\ No newline at end of file

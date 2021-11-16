@@ -1,0 +1,20 @@
+diff --git a/6a6cfe20efd8c4cee2b33abd92fa46c6fdc96b20 b/f81a5517decec0b1fd127b20db89ddf38b00d29c
+index 6a6cfe20ef..f81a5517de 100644
+--- a/6a6cfe20efd8c4cee2b33abd92fa46c6fdc96b20
++++ b/f81a5517decec0b1fd127b20db89ddf38b00d29c
+@@ -1,11 +1,13 @@
+ @POST
+ @Path("caches")
+ @AuditEvent(type = AuditEventTypes.LOOKUP_CACHE_CREATE)
+ @ApiOperation(value = "Create a new cache")
+ public CacheApi createCache(@ApiParam CacheApi newCache) {
+     try {
+-        return CacheApi.fromDto(cacheService.save(newCache.toDto()));
++        final CacheDto saved = dbCacheService.save(newCache.toDto());
++        clusterBus.post(CachesUpdated.create(saved.id()));
++        return CacheApi.fromDto(saved);
+     } catch (DuplicateKeyException e) {
+         throw new BadRequestException(e.getMessage());
+     }
+ }
+\ No newline at end of file

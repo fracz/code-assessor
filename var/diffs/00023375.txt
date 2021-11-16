@@ -1,0 +1,20 @@
+diff --git a/c0d16b6355f1ef581cae702d07695516f42620b4 b/dc36dcf91d6755d2b5a03d1f205d0c70cf1c7835
+index c0d16b6355..dc36dcf91d 100644
+--- a/c0d16b6355f1ef581cae702d07695516f42620b4
++++ b/dc36dcf91d6755d2b5a03d1f205d0c70cf1c7835
+@@ -1,10 +1,9 @@
+-public ShortcutPackage getPackageShortcuts(ShortcutService s, @NonNull String packageName) {
+-    ShortcutPackage ret = mPackages.get(packageName);
++@NonNull
++public ShortcutPackage getPackageShortcuts(@NonNull String packageName) {
++    ShortcutPackage ret = getPackageShortcutsIfExists(packageName);
+     if (ret == null) {
+-        ret = new ShortcutPackage(s, this, mUserId, packageName);
++        ret = new ShortcutPackage(this, mUserId, packageName);
+         mPackages.put(packageName, ret);
+-    } else {
+-        ret.attemptToRestoreIfNeededAndSave(s);
+     }
+     return ret;
+ }
+\ No newline at end of file

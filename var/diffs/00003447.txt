@@ -1,0 +1,20 @@
+diff --git a/bd69a0a472a1756ef61af01490921046f7bbf0e8 b/e95016e1149e836f31689d7e69f8afd86552d1d0
+index bd69a0a472..e95016e114 100644
+--- a/bd69a0a472a1756ef61af01490921046f7bbf0e8
++++ b/e95016e1149e836f31689d7e69f8afd86552d1d0
+@@ -1,11 +1,12 @@
+ private Module createModule(MavenProjectModel.Node node) {
+-    Module module = myMapping.getModule(node);
++    Module module = node.getModule();
+     if (module == null) {
+-        String path = myMapping.getModuleFilePath(node);
++        String path = node.getModuleFilePath();
+         // for some reason newModule opens the existing iml file, so we
+         // have to remove it beforehand.
+         removeExistingIml(path);
+         module = myModuleModel.newModule(path, StdModuleTypes.JAVA);
++        node.setModule(module);
+     }
+     return module;
+ }
+\ No newline at end of file

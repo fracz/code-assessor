@@ -1,0 +1,18 @@
+diff --git a/ae794908c3d1f2bdf65feee0f21aba240ae48f34 b/c29d5df8c6d3d9090df545fc87c0252b38004673
+index ae794908c3..c29d5df8c6 100644
+--- a/ae794908c3d1f2bdf65feee0f21aba240ae48f34
++++ b/c29d5df8c6d3d9090df545fc87c0252b38004673
+@@ -1,9 +1,9 @@
+ protected ResolvedArtifact findIvyFileRef(DependencyDescriptor dd) {
+     if (isUsepoms()) {
+         ModuleRevisionId moduleRevisionId = dd.getDependencyRevisionId();
+-        // we might need a own implementation of DefaultArtifact here as there is no way to pass extraAttributes AND isMetaData to DefaultArtifact
+-        Artifact pomArtifact = new DefaultArtifact(moduleRevisionId, null, moduleRevisionId.getName(), "pom", "pom", moduleRevisionId.getExtraAttributes());
+-        return findResourceUsingPatterns(moduleRevisionId, getIvyPatterns(), pomArtifact, getMetaDataArtifactModuleDescriptorParser(), null, true);
++        ArtifactRevisionId artifactRevisionId = ArtifactRevisionId.newInstance(moduleRevisionId, moduleRevisionId.getName(), "pom", "pom", moduleRevisionId.getExtraAttributes());
++        Artifact pomArtifact = new DefaultArtifact(artifactRevisionId, null, null, true);
++        return findResourceUsingPatterns(moduleRevisionId, getIvyPatterns(), pomArtifact, true);
+     }
+     return null;
+ }
+\ No newline at end of file

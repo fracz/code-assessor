@@ -1,0 +1,16 @@
+diff --git a/901f72ac84e0b77b7db52321733d37a87093c5da b/9c39a65901b727b3bc6e8dea0825b024a9539164
+index 901f72ac84..9c39a65901 100644
+--- a/901f72ac84e0b77b7db52321733d37a87093c5da
++++ b/9c39a65901b727b3bc6e8dea0825b024a9539164
+@@ -1,3 +1,8 @@
+-void close() {
+-    state(State.CLOSE);
++private int close() {
++    if (writer != null) {
++        writer.close();
++    }
++    archiverConductor.notifyArchiveStopped(streamInstanceId);
++    state(State.DONE);
++    return 1;
+ }
+\ No newline at end of file

@@ -1,0 +1,25 @@
+diff --git a/9515fbad93d85cf4d99a9ebb7ad1e24eed3f91b5 b/c7d33b34e894d06fdd187ea1a974497f679d42bc
+index 9515fbad93..c7d33b34e8 100644
+--- a/9515fbad93d85cf4d99a9ebb7ad1e24eed3f91b5
++++ b/c7d33b34e894d06fdd187ea1a974497f679d42bc
+@@ -1,15 +1,16 @@
+ @Override
+ public void run() {
+     try {
+-        oetlProcessor.out(OETLProcessor.LOG_LEVELS.DEBUG, "Start extracting");
++        // oetlProcessor.out(OETLProcessor.LOG_LEVELS.DEBUG, "Start extracting");
++        OLogManager.instance().debug(this, "Start extracting");
+         while (oetlProcessor.extractor.hasNext()) {
+             // EXTRACTOR
+-            final OExtractedItem current = oetlProcessor.extractor.next();
++            final OETLExtractedItem current = oetlProcessor.extractor.next();
+             // enqueue for transform and load
+             queue.put(current);
+             counter.incrementAndGet();
+         }
+-        queue.put(new OExtractedItem(true));
++        queue.put(new OETLExtractedItem(true));
+     } catch (InterruptedException e) {
+     }
+ }
+\ No newline at end of file

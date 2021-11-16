@@ -1,0 +1,11 @@
+diff --git a/2db5e572296194bf2f353017ccfe171dfab37496 b/b285955505a4c1bf0d8dd821bae922c7064b5fe3
+index 2db5e57229..b285955505 100644
+--- a/2db5e572296194bf2f353017ccfe171dfab37496
++++ b/b285955505a4c1bf0d8dd821bae922c7064b5fe3
+@@ -1,4 +1,4 @@
+ @Test(expected = ParserUnsupportedException.class)
+ public void assertCreate() throws SQLParserException {
+-    SQLParserFactory.create(DatabaseType.MySQL, "CREATE TABLE `order` (id BIGINT(10))", Collections.emptyList(), new ShardingRuleMockBuilder().build());
++    new SQLParserEngine(DatabaseType.MySQL, "CREATE TABLE `order` (id BIGINT(10))", new ShardingRuleMockBuilder().build(), Collections.emptyList()).parseStatement();
+ }
+\ No newline at end of file

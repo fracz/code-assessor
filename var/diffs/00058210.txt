@@ -1,0 +1,24 @@
+diff --git a/111bfc9b7b954d45e478b6a79a5008b20ea57075 b/a11d961849ce5d0ed9848461f0af7c754521456a
+index 111bfc9b7b..a11d961849 100644
+--- a/111bfc9b7b954d45e478b6a79a5008b20ea57075
++++ b/a11d961849ce5d0ed9848461f0af7c754521456a
+@@ -1,12 +1,14 @@
+ /**
+- * Solves the problem using a quasi-newton method (L-BFGS).  The solution
+- * is stored in the {@code lambda} array of {@code prob}.
++ * Solves the problem using QN.  The solution is stored in the
++ * <code>lambda</code> array of <code>prob</code>.
+  */
+ public void solveQN() {
+     LikelihoodFunction df = new LikelihoodFunction(prob, tol, useGaussianPrior, priorSigmaS, sigmaSquareds);
+     MonitorFunction monitor = new MonitorFunction(prob, df, filename);
+     Minimizer<DiffFunction> cgm = new QNMinimizer(monitor, 10);
+     // all parameters are started at 0.0
+-    prob.lambda = cgm.minimize(df, tol, new double[df.domainDimension()]);
+-    printOptimizationResults(df, monitor);
++    double[] result = cgm.minimize(df, tol, new double[df.domainDimension()]);
++    prob.lambda = result;
++    monitor.reportMonitoring(df.valueAt(result));
++    System.err.println("after optimization value is " + df.valueAt(result));
+ }
+\ No newline at end of file

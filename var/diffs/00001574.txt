@@ -1,0 +1,17 @@
+diff --git a/43e131e435edf9b8a69fd215555354e6c685b97f b/c0524a06ae61944a5b5d3486ad3a8b5361f4580b
+index 43e131e435..c0524a06ae 100644
+--- a/43e131e435edf9b8a69fd215555354e6c685b97f
++++ b/c0524a06ae61944a5b5d3486ad3a8b5361f4580b
+@@ -1,6 +1,6 @@
+-public static void saveAndBlock() {
+-    ProjectManagerEx.getInstanceEx().blockReloadingProjectOnExternalChanges();
+-    FileDocumentManager.getInstance().saveAllDocuments();
+-    SaveAndSyncHandler.getInstance().blockSaveOnFrameDeactivation();
+-    SaveAndSyncHandler.getInstance().blockSyncOnFrameActivation();
++public static void saveAndBlock(@NotNull PlatformFacade platformFacade) {
++    platformFacade.getProjectManager().blockReloadingProjectOnExternalChanges();
++    platformFacade.saveAllDocuments();
++    platformFacade.getSaveAndSyncHandler().blockSaveOnFrameDeactivation();
++    platformFacade.getSaveAndSyncHandler().blockSyncOnFrameActivation();
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/9a59c48c0474b35535aa8dfd6d11df25688f90c6 b/e1538c6a900af44e33995d26833ffb25fd4921ba
+index 9a59c48c04..e1538c6a90 100644
+--- a/9a59c48c0474b35535aa8dfd6d11df25688f90c6
++++ b/e1538c6a900af44e33995d26833ffb25fd4921ba
+@@ -1,9 +1,9 @@
+ private JSType makeFalsy() {
+     if (this.isTop()) {
+         return this;
+     }
+     if (this.isUnknown()) {
+-        return FALSY;
++        return this.commonTypes.FALSY;
+     }
+-    return makeType(getMask() & ~TRUE_MASK & ~NON_SCALAR_MASK, NO_OBJS, getTypeVar(), getEnums());
++    return makeType(this.commonTypes, getMask() & ~TRUE_MASK & ~NON_SCALAR_MASK, NO_OBJS, getTypeVar(), getEnums());
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/1bdb1f881476722eed2232a32c8324d8a3b445d4 b/34888e021e0af31f535035a62a2cc909eb5e58ac
+index 1bdb1f8814..34888e021e 100644
+--- a/1bdb1f881476722eed2232a32c8324d8a3b445d4
++++ b/34888e021e0af31f535035a62a2cc909eb5e58ac
+@@ -1,8 +1,10 @@
+ @Override
+-public String populateCache(final String id, final URIExtractionNamespace extractionNamespace, final String lastVersion, final Map<String, String> cache) throws Exception {
+-    // Don't actually read off disk because TravisCI doesn't like that
+-    cache.put(KEY, VALUE);
++public CacheScheduler.VersionedCache populateCache(final URIExtractionNamespace extractionNamespace, final CacheScheduler.EntryImpl<URIExtractionNamespace> id, final String lastVersion, final CacheScheduler scheduler) throws InterruptedException {
+     // To make absolutely sure there is a unique currentTimeMillis
+     Thread.sleep(2);
+-    return Long.toString(System.currentTimeMillis());
++    String version = Long.toString(System.currentTimeMillis());
++    CacheScheduler.VersionedCache versionedCache = scheduler.createVersionedCache(id, version);
++    // Don't actually read off disk because TravisCI doesn't like that
++    versionedCache.getCache().put(KEY, VALUE);
++    return versionedCache;
+ }
+\ No newline at end of file

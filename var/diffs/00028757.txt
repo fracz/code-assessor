@@ -1,0 +1,22 @@
+diff --git a/4a614e622d8bffafa2f7019c2dccf6984512cecd b/ef123541cdcbffc5b24ac6e17cc7314c42d6c104
+index 4a614e622d..ef123541cd 100644
+--- a/4a614e622d8bffafa2f7019c2dccf6984512cecd
++++ b/ef123541cdcbffc5b24ac6e17cc7314c42d6c104
+@@ -1,8 +1,13 @@
+ @Override
+ public QueryValidationException validate() {
+-    QueryValidationException validationExceptions = validateInnerQuery(queryBuilder, null);
++    QueryValidationException validationException = null;
++    if (queryBuilder == null) {
++        validationException = addValidationError("inner clause [query] cannot be null.", validationException);
++    } else {
++        validationException = validateInnerQuery(queryBuilder, validationException);
++    }
+     if (fieldName == null || fieldName.isEmpty()) {
+-        validationExceptions = addValidationError("field name is null or empty", validationExceptions);
++        validationException = addValidationError("field name is null or empty", validationException);
+     }
+-    return validationExceptions;
++    return validationException;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/3afc349c5052691784220ea7960bd54c8008ed2e b/2bc1c806c0714c9e5aaa77e61850a1e4bacb0098
+index 3afc349c50..2bc1c806c0 100644
+--- a/3afc349c5052691784220ea7960bd54c8008ed2e
++++ b/2bc1c806c0714c9e5aaa77e61850a1e4bacb0098
+@@ -1,7 +1,7 @@
+ @Override
+ public void updateUI() {
+     ScrollBarUI ui = getUI();
+-    if (ui instanceof AbstractScrollBarUI)
++    if (ui instanceof DefaultScrollBarUI)
+         return;
+-    setUI(!SystemInfo.isMac && Registry.is("ide.scroll.new.layout") ? new DefaultScrollBarUI() : SystemInfo.isMac && Registry.is("mac.scroll.new.ui") ? new MacScrollBarUI() : ButtonlessScrollBarUI.createNormal());
++    setUI(DefaultScrollBarUI.createUI(this));
+ }
+\ No newline at end of file

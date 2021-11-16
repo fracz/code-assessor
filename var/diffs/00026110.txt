@@ -1,0 +1,25 @@
+diff --git a/f716d13fdb508443171c903338985a2dda523d47 b/3c31f83297eaf98cf037cdbb14a7d532e1d6f017
+index f716d13fdb..3c31f83297 100644
+--- a/f716d13fdb508443171c903338985a2dda523d47
++++ b/3c31f83297eaf98cf037cdbb14a7d532e1d6f017
+@@ -1,15 +1,12 @@
+ // return_stmt ::= RETURN [expr]
+ private ReturnStatement parseReturnStatement() {
+     int start = token.left;
+     int end = token.right;
+     expect(TokenKind.RETURN);
+-    Expression expression;
+-    if (STATEMENT_TERMINATOR_SET.contains(token.kind)) {
+-        // this None makes the AST not correspond to the source exactly anymore
+-        expression = new Identifier("None");
+-        setLocation(expression, start, end);
+-    } else {
++    Expression expression = null;
++    if (!STATEMENT_TERMINATOR_SET.contains(token.kind)) {
+         expression = parseExpression();
++        end = expression.getLocation().getEndOffset();
+     }
+-    return setLocation(new ReturnStatement(expression), start, expression);
++    return setLocation(new ReturnStatement(expression), start, end);
+ }
+\ No newline at end of file

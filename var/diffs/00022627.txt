@@ -1,0 +1,22 @@
+diff --git a/a946de78c34d7c6dbf623065355833d6a1a23973 b/1002ce5e82b00b4d70dfb7cffddd006eb092101e
+index a946de78c3..1002ce5e82 100644
+--- a/a946de78c34d7c6dbf623065355833d6a1a23973
++++ b/1002ce5e82b00b4d70dfb7cffddd006eb092101e
+@@ -1,13 +1,11 @@
+ private void removeHeadsUpEntry(NotificationData.Entry entry) {
+     HeadsUpEntry remove = mHeadsUpEntries.remove(entry.key);
+     mSortedEntries.remove(remove);
+-    mEntryPool.release(remove);
+     entry.row.sendAccessibilityEvent(AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED);
+     entry.row.setHeadsUp(false);
+-    setEntryToShade(remove, true, /* inShade */
+-    false, /* justAdded */
+-    false);
++    setEntryPinned(remove, false);
+     for (OnHeadsUpChangedListener listener : mListeners) {
+-        listener.OnHeadsUpStateChanged(entry, false);
++        listener.onHeadsUpStateChanged(entry, false);
+     }
++    mEntryPool.release(remove);
+ }
+\ No newline at end of file

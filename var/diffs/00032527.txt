@@ -1,0 +1,20 @@
+diff --git a/223a4a37972dbb81d371b28c95ea2f79875ec44b b/1c727e3be28719651f7b2f66810cd7fa12dcfa12
+index 223a4a3797..1c727e3be2 100644
+--- a/223a4a37972dbb81d371b28c95ea2f79875ec44b
++++ b/1c727e3be28719651f7b2f66810cd7fa12dcfa12
+@@ -1,7 +1,10 @@
+ @Override
+-public Void visitEmptyStatement(EmptyStatementTree emptyStatementTree, VisitorState visitorState) {
+-    for (DescribingMatcher<EmptyStatementTree> matcher : emptyStatementMatchers) {
+-        evaluateMatch(emptyStatementTree, visitorState, matcher);
++public Void visitEmptyStatement(EmptyStatementTree tree, VisitorState visitorState) {
++    VisitorState state = visitorState.withPath(getCurrentPath());
++    for (EmptyStatementTreeMatcher matcher : emptyStatementMatchers) {
++        if (isSuppressed(matcher))
++            continue;
++        reportMatch(matcher.matchEmptyStatement(tree, state), tree, state);
+     }
+-    return super.visitEmptyStatement(emptyStatementTree, visitorState);
++    return super.visitEmptyStatement(tree, visitorState);
+ }
+\ No newline at end of file

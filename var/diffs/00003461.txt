@@ -1,0 +1,12 @@
+diff --git a/05741c92698e886314269b7298e59862c33bbbc3 b/d58c6cab7c80e6058bf8cccb84265c427dd0eb7e
+index 05741c9269..d58c6cab7c 100644
+--- a/05741c92698e886314269b7298e59862c33bbbc3
++++ b/d58c6cab7c80e6058bf8cccb84265c427dd0eb7e
+@@ -1,5 +1,5 @@
+ public void testMatchingAllOccurrences() {
+     String text = "some text";
+-    MinusculeMatcher matcher = NameUtil.buildMatcher("*e", NameUtil.MatchingCaseSensitivity.NONE, true);
++    MinusculeMatcher matcher = new AllOccurrencesMatcher("*e", NameUtil.MatchingCaseSensitivity.NONE, "");
+     assertOrderedEquals(matcher.matchingFragments(text), new TextRange(3, 4), new TextRange(6, 7));
+ }
+\ No newline at end of file

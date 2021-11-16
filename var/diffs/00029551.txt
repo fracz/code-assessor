@@ -1,0 +1,12 @@
+diff --git a/ce835f90aa3c1b19f17796289df5ed494ce35792 b/f732bd73db67bdf812fbfeb69e5f53da28e3a6a6
+index ce835f90aa..f732bd73db 100644
+--- a/ce835f90aa3c1b19f17796289df5ed494ce35792
++++ b/f732bd73db67bdf812fbfeb69e5f53da28e3a6a6
+@@ -1,5 +1,5 @@
+ @Override
+ protected ShardExistsRequest newShardRequest(int numShards, ShardRouting shard, ExistsRequest request) {
+-    String[] filteringAliases = clusterService.state().metaData().filteringAliases(shard.index(), request.indices());
++    String[] filteringAliases = indexNameExpressionResolver.filteringAliases(clusterService.state(), shard.index(), request.indices());
+     return new ShardExistsRequest(shard.shardId(), filteringAliases, request);
+ }
+\ No newline at end of file

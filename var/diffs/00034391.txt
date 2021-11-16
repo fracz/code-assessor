@@ -1,0 +1,20 @@
+diff --git a/df1de8bd19da4422db8c51371464d1b2b94a21ed b/686608950b79796320d198e121520108f5b0d065
+index df1de8bd19..686608950b 100644
+--- a/df1de8bd19da4422db8c51371464d1b2b94a21ed
++++ b/686608950b79796320d198e121520108f5b0d065
+@@ -1,13 +1,13 @@
+ @Test
+ public void getHighestUid_imapConnectionThrowsIOException_shouldThrowMessagingException() throws Exception {
+     ImapFolder folder = createFolder("Folder");
+     prepareImapFolderForOpen(OPEN_MODE_RW);
+-    doThrow(IOException.class).when(imapConnection).executeSimpleCommand("UID SEARCH *:*");
++    doThrow(IOException.class).when(imapConnection).executeSelectedStateCommand(any(UidSearchCommand.class));
+     folder.open(OPEN_MODE_RW);
+     try {
+         folder.getHighestUid();
+         fail("Expected MessagingException");
+     } catch (MessagingException e) {
+         assertEquals("IO Error", e.getMessage());
+     }
+ }
+\ No newline at end of file

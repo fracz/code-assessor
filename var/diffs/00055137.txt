@@ -1,0 +1,24 @@
+diff --git a/8beb4cd20dcbf66e8fc378cae5130cd7ed7b60fe b/3e08ceffeeec8adc429d028685c46ca0cd4e8b97
+index 8beb4cd20d..3e08ceffee 100644
+--- a/8beb4cd20dcbf66e8fc378cae5130cd7ed7b60fe
++++ b/3e08ceffeeec8adc429d028685c46ca0cd4e8b97
+@@ -1,16 +1,16 @@
+ public void initClassPath() throws DecodeException {
+     try {
+-        if (!ArgType.isClspSet()) {
++        if (this.clsp == null) {
+             ClspGraph clsp = new ClspGraph();
+             clsp.load();
+             List<ClassNode> classes = new ArrayList<ClassNode>();
+             for (DexNode dexNode : dexNodes) {
+                 classes.addAll(dexNode.getClasses());
+             }
+             clsp.addApp(classes);
+-            ArgType.setClsp(clsp);
++            this.clsp = clsp;
+         }
+     } catch (IOException e) {
+         throw new DecodeException("Error loading classpath", e);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/536a824d6ab5be210c7dc53974f038497ffee9be b/057c21bd4f8061fda6df6f6933067efaa9392be3
+index 536a824d6a..057c21bd4f 100644
+--- a/536a824d6ab5be210c7dc53974f038497ffee9be
++++ b/057c21bd4f8061fda6df6f6933067efaa9392be3
+@@ -1,13 +1,13 @@
+ public synchronized void shutdown() {
+     // catch and log errors, we're in a runtime shutdown hook
+     try {
+         LOG.info("Shutting down cluster...");
+-        if (service != null)
+-            service.destroyCluster(clusterSpec);
+         if (tarball != null)
+             BlobUtils.deleteBlob(config, clusterSpec, tarball);
++        if (service != null)
++            service.destroyCluster(clusterSpec);
+         running = false;
+     } catch (Exception e) {
+-        LOG.error(String.format("Error shutting down cluster: %s", e));
++        LOG.error("Error shutting down cluster.", e);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/38a52079a05d6ede001cfe85b1ae77477a61eaec b/48b8c1f69ebb679d349188a31020bdd45d389b67
+index 38a52079a0..48b8c1f69e 100644
+--- a/38a52079a05d6ede001cfe85b1ae77477a61eaec
++++ b/48b8c1f69ebb679d349188a31020bdd45d389b67
+@@ -1,10 +1,10 @@
+ @Nullable
+ @Override
+-public Color getCellForeground(@NotNull GridCell cell) {
+-    Object value = getCellValue(cell, false);
++public Color getCellForeground(Object colElement, Object rowElement) {
++    Object value = getCellValue(colElement, rowElement, false);
+     if (DBUtils.isNullValue(value)) {
+         return foregroundNull;
+     } else {
+         return null;
+     }
+ }
+\ No newline at end of file

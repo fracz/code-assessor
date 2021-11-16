@@ -1,0 +1,20 @@
+diff --git a/7886eb8586157640a2a53f58b0d6deb6bba4142b b/7747b6c86b2122ee3b357927978b67b7f2e6cddf
+index 7886eb8586..7747b6c86b 100644
+--- a/7886eb8586157640a2a53f58b0d6deb6bba4142b
++++ b/7747b6c86b2122ee3b357927978b67b7f2e6cddf
+@@ -1,13 +1,13 @@
+ @JRubyMethod(name = { "content", "text", "inner_text" })
+ public IRubyObject content(ThreadContext context) {
+-    if (this.content == null) {
++    if (content == null || content.isNil()) {
+         String textContent;
+         if (this instanceof XmlDocument) {
+             textContent = this.node.getChildNodes().item(0).getTextContent();
+         } else {
+             textContent = this.node.getTextContent();
+         }
+         content = stringOrNil(context.getRuntime(), textContent);
+     }
+     return this.content;
+ }
+\ No newline at end of file

@@ -1,0 +1,28 @@
+diff --git a/31e998a32a0043a8365f1e40cadf783d5d5132da b/e25b8add61881b283926231e71c65f037253c112
+index 31e998a32a..e25b8add61 100644
+--- a/31e998a32a0043a8365f1e40cadf783d5d5132da
++++ b/e25b8add61881b283926231e71c65f037253c112
+@@ -1,19 +1,21 @@
+ @Override
+ @NotNull
+ public KotlinDeclarationsCache getDeclarations(boolean allowIncomplete) {
+     synchronized (declarationAnalysisLock) {
+         if (allowIncomplete) {
+             if (incompleteTrace != null) {
++                // saving context to local variable to avoid race condition
++                final BindingContext context = incompleteTrace.getBindingContext();
+                 return new KotlinDeclarationsCache() {
+
+                     @NotNull
+                     @Override
+                     public BindingContext getBindingContext() {
+-                        return incompleteTrace.getBindingContext();
++                        return context;
+                     }
+                 };
+             }
+         }
+         return CachedValuesManager.getManager(project).getCachedValue(project, cachedKey, declarationsProvider, false);
+     }
+ }
+\ No newline at end of file

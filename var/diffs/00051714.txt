@@ -1,0 +1,24 @@
+diff --git a/b83a7e8c7375746966ada0f8a3d1c25a64a891be b/1d0d8894da211b4c858ec006a96fe3d2a3c7416d
+index b83a7e8c73..1d0d8894da 100644
+--- a/b83a7e8c7375746966ada0f8a3d1c25a64a891be
++++ b/1d0d8894da211b4c858ec006a96fe3d2a3c7416d
+@@ -1,15 +1,12 @@
+-private void initExporter(DBCSession session) throws DBCException {
++private void initExporter(DBRProgressMonitor monitor) throws DBCException {
+     containerMapping = settings.getDataMapping(sourceObject);
+     if (containerMapping == null) {
+         throw new DBCException("Can't find container mapping for " + DBUtils.getObjectFullName(sourceObject));
+     }
+     DBPDataSource dataSource = containerMapping.getTarget().getDataSource();
+-    if (settings.isOpenNewConnections()) {
+-        targetSession = dataSource.openIsolatedContext(session.getProgressMonitor(), DBCExecutionPurpose.UTIL, "Data load");
+-    } else {
+-        targetSession = dataSource.openSession(session.getProgressMonitor(), DBCExecutionPurpose.UTIL, "Data load");
+-    }
++    targetContext = settings.isOpenNewConnections() ? dataSource.openIsolatedContext(monitor) : dataSource;
++    targetSession = targetContext.openSession(monitor, DBCExecutionPurpose.UTIL, "Data load");
+     if (settings.isUseTransactions()) {
+         targetSession.getTransactionManager().setAutoCommit(false);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,26 @@
+diff --git a/b32c57035723c28b4da3ba12b415cd39bb03a393 b/d948174137a37b5be5f8b41f415c4f620fbf283a
+index b32c570357..d948174137 100644
+--- a/b32c57035723c28b4da3ba12b415cd39bb03a393
++++ b/d948174137a37b5be5f8b41f415c4f620fbf283a
+@@ -1,17 +1,17 @@
+ /**
+  * Pads an ndarray with zeros
+  *
+  * @param nd          the ndarray to pad
+  * @param targetShape the the new shape
+  * @return the padded ndarray
+  */
+-public static ComplexNDArray padWithZeros(ComplexNDArray nd, int[] targetShape) {
++public static IComplexNDArray padWithZeros(IComplexNDArray nd, int[] targetShape) {
+     if (Arrays.equals(nd.shape(), targetShape))
+         return nd;
+     // no padding required
+     if (ArrayUtil.prod(nd.shape()) >= ArrayUtil.prod(targetShape))
+         return nd;
+-    ComplexNDArray ret = new ComplexNDArray(targetShape);
+-    System.arraycopy(nd.data, 0, ret.data, 0, nd.data.length);
++    IComplexNDArray ret = NDArrays.createComplex(targetShape);
++    System.arraycopy(nd.data(), 0, ret.data(), 0, nd.data().length);
+     return ret;
+ }
+\ No newline at end of file

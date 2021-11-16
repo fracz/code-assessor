@@ -1,0 +1,17 @@
+diff --git a/75b4d8fff159c34da36fecf58783acbd72c06f2c b/d2519dac5c9ad368349a46e2855e61af83575c8b
+index 75b4d8fff1..d2519dac5c 100644
+--- a/75b4d8fff159c34da36fecf58783acbd72c06f2c
++++ b/d2519dac5c9ad368349a46e2855e61af83575c8b
+@@ -1,9 +1,7 @@
+ @Test
+ public void testDifferenceInContent() {
+     FileEntry e1 = new FileEntry(-1, "name", c("content"), -1);
+     FileEntry e2 = new FileEntry(-1, "name", c("another content"), -1);
+-    Difference d = e1.getDifferenceWith(e2);
+-    assertEquals(MODIFIED, d.getKind());
+-    assertSame(e1, d.getLeft());
+-    assertSame(e2, d.getRight());
++    List<Difference> dd = e1.getDifferencesWith(e2);
++    assertDifference(dd, e1, e2);
+ }
+\ No newline at end of file

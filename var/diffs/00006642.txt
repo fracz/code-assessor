@@ -1,0 +1,18 @@
+diff --git a/209c3d2e9cf3e83e9051c105f60b5fdea51a1344 b/b30c000620edd9b872961eba0d32337268613e9c
+index 209c3d2e9c..b30c000620 100644
+--- a/209c3d2e9cf3e83e9051c105f60b5fdea51a1344
++++ b/b30c000620edd9b872961eba0d32337268613e9c
+@@ -1,9 +1,7 @@
+ public void setParameterInfos(List<P> parameterInfos) {
+-    myParameterInfos = parameterInfos;
+-    myTypeCodeFraments = new ArrayList<PsiCodeFragment>(parameterInfos.size());
+-    myDefaultValuesCodeFragments = new ArrayList<PsiCodeFragment>(parameterInfos.size());
++    List<ParameterTableModelItemBase<P>> items = new ArrayList<ParameterTableModelItemBase<P>>(parameterInfos.size());
+     for (P parameterInfo : parameterInfos) {
+-        myTypeCodeFraments.add(createParameterTypeCodeFragment(parameterInfo.getTypeText()));
+-        myDefaultValuesCodeFragments.add(createDefaultValueCodeFragment(parameterInfo.getDefaultValue()));
++        items.add(createRowItem(parameterInfo));
+     }
++    setItems(items);
+ }
+\ No newline at end of file

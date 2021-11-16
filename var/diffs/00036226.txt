@@ -1,0 +1,17 @@
+diff --git a/50003cf426bd3a9c7e2c8a06bf7e040e316b4ca3 b/f032558ac7549fb6d3cbb94d23a0af974e59189c
+index 50003cf426..f032558ac7 100644
+--- a/50003cf426bd3a9c7e2c8a06bf7e040e316b4ca3
++++ b/f032558ac7549fb6d3cbb94d23a0af974e59189c
+@@ -1,9 +1,9 @@
+ @Test
+ public void shouldShareState() throws Exception {
+     // given
+-    ThreadSafeMockingProgress p = new ThreadSafeMockingProgress();
++    MockingProgress p = mockingProgress();
+     p.verificationStarted(new DummyVerificationMode());
+     // then
+-    p = new ThreadSafeMockingProgress();
++    p = mockingProgress();
+     assertNotNull(p.pullVerificationMode());
+ }
+\ No newline at end of file

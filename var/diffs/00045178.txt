@@ -1,0 +1,12 @@
+diff --git a/63b7724b8fa0400e479af17bb154fcbed67c7fb5 b/e99e0cc269fec8f7c84b8538a3910d8b6e5f2c6c
+index 63b7724b8f..e99e0cc269 100644
+--- a/63b7724b8fa0400e479af17bb154fcbed67c7fb5
++++ b/e99e0cc269fec8f7c84b8538a3910d8b6e5f2c6c
+@@ -1,4 +1,5 @@
+ @Override
+ public boolean setLocalResult(String localNodeName, Object localResult) {
+-    return false;
++    List<OTransactionResultPayload> results = addResult((OTransactionResultPayload) localResult);
++    return results.size() > quorum;
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/da43f96e6a28099ee7e4a74ffe34f082fdd69e19 b/4e3dcce4a618fe87541354233ea1c5d8cfa87d62
+index da43f96e6a..4e3dcce4a6 100644
+--- a/da43f96e6a28099ee7e4a74ffe34f082fdd69e19
++++ b/4e3dcce4a618fe87541354233ea1c5d8cfa87d62
+@@ -1,7 +1,8 @@
+ /**
+- * Gets the {@link KafkaSpoutMessageId} for the given record.
+- * @param record The record to fetch the id for
++ * Gets the {@link KafkaSpoutMessageId} for the record on the given topic partition and offset.
++ * @param topicPartition The topic partition of the record
++ * @param offset The offset of the record
+  * @return The id the record was scheduled for retry with,
+  * or a new {@link KafkaSpoutMessageId} if the record was not scheduled for retry.
+  */
+-KafkaSpoutMessageId getMessageId(ConsumerRecord<?, ?> record);
+\ No newline at end of file
++KafkaSpoutMessageId getMessageId(TopicPartition topicPartition, long offset);
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/c2d12aefb1fc2d73ddd6c93d8f75b6c7be570a44 b/0bc4acabdaaedc107e681bcc2acd88657622edea
+index c2d12aefb1..0bc4acabda 100644
+--- a/c2d12aefb1fc2d73ddd6c93d8f75b6c7be570a44
++++ b/0bc4acabdaaedc107e681bcc2acd88657622edea
+@@ -1,11 +1,9 @@
+-/**
+- * Sets the style of this widget.
+- * @param style
+- */
+ public void setStyle(ListStyle style) {
++    if (style == null)
++        throw new IllegalArgumentException("style cannot be null.");
+     this.style = style;
+     if (items != null)
+         setItems(items);
+     else
+         invalidateHierarchy();
+ }
+\ No newline at end of file

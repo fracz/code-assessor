@@ -1,0 +1,13 @@
+diff --git a/de01d1da1e75bbc07ddfb94a372a94e1f3207d00 b/fbfe70f1ab86ec6c10df9424a02dd80495bb2b32
+index de01d1da1e..fbfe70f1ab 100644
+--- a/de01d1da1e75bbc07ddfb94a372a94e1f3207d00
++++ b/fbfe70f1ab86ec6c10df9424a02dd80495bb2b32
+@@ -1,6 +1,4 @@
+ @Override
+ protected void parseBetweenTableAndWhere() {
+-    if (getLexer().equalToken(Token.RIGHT_PAREN)) {
+-        getLexer().nextToken();
+-    }
++    getLexer().skipIfEqual(Token.RIGHT_PAREN);
+ }
+\ No newline at end of file

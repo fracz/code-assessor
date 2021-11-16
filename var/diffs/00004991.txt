@@ -1,0 +1,15 @@
+diff --git a/0b54a8f5f0a52d0c1f95270cd85be1a6b71e021c b/3b2c78537d1ae53bf4b9c9771c8ad17272570207
+index 0b54a8f5f0..3b2c78537d 100644
+--- a/0b54a8f5f0a52d0c1f95270cd85be1a6b71e021c
++++ b/3b2c78537d1ae53bf4b9c9771c8ad17272570207
+@@ -1,7 +1,7 @@
+ @Nls
+-public String getLibraryVersion(@NotNull Library library, LibrariesContainer librariesContainer) {
+-    final String home = LibrariesUtil.getGroovyLibraryHome(librariesContainer.getLibraryFiles(library, OrderRootType.CLASSES));
++public String getLibraryVersion(final VirtualFile[] libraryFiles) {
++    final String home = LibrariesUtil.getGroovyLibraryHome(libraryFiles);
+     if (home == null)
+         return AbstractConfigUtils.UNDEFINED_VERSION;
+     return GroovyConfigUtils.getInstance().getSDKVersion(home);
+ }
+\ No newline at end of file

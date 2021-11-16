@@ -1,0 +1,20 @@
+diff --git a/acb145fd33c27da90a53bd3201556e06978e4a1c b/71dc5eee79f27e1d303b7ed473413dadc94de60d
+index acb145fd33..71dc5eee79 100644
+--- a/acb145fd33c27da90a53bd3201556e06978e4a1c
++++ b/71dc5eee79f27e1d303b7ed473413dadc94de60d
+@@ -1,12 +1,12 @@
+-private long createIndexAndAwaitOnline(Label label, String propertyKey) throws Exception {
++private IndexDescriptor createIndexAndAwaitOnline(Label label, String propertyKey) throws Exception {
+     Transaction tx = db.beginTx();
+     IndexDefinition index = null;
+     try {
+         index = db.schema().indexCreator(label).on(propertyKey).create();
+         tx.success();
+     } finally {
+         tx.finish();
+     }
+     db.schema().awaitIndexOnline(index, 10, SECONDS);
+-    return statement.getIndexRule(statement.getLabelId(label.name()), statement.getPropertyKeyId(propertyKey)).getId();
++    return statement.getIndexRule(statement.getLabelId(label.name()), statement.getPropertyKeyId(propertyKey));
+ }
+\ No newline at end of file

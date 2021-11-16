@@ -1,0 +1,13 @@
+diff --git a/408bb1191d80eb3be2a2dfe859f26eb19732f04c b/bfad45212a808a497060895f958a08d3e22a88d3
+index 408bb1191d..bfad45212a 100644
+--- a/408bb1191d80eb3be2a2dfe859f26eb19732f04c
++++ b/bfad45212a808a497060895f958a08d3e22a88d3
+@@ -1,6 +1,6 @@
+ @Override
+ public void shutdown() throws IOException {
+     LOG.info("Shutting down S3 testing cluster, deleting bucket contents in: " + mS3Bucket);
+     UnderFileSystem ufs = UnderFileSystem.get(mS3Bucket);
+-    ufs.deleteDirectory(mS3Bucket, new DeleteOptions().setRecursive(true));
++    ufs.deleteDirectory(mS3Bucket, DeleteOptions.defaults().setRecursive(true));
+ }
+\ No newline at end of file

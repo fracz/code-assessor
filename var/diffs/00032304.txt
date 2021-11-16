@@ -1,0 +1,23 @@
+diff --git a/9071eb47eac1df0f0f1e0a064b1324bec0d11e2c b/63bc141f9eda20a8e8ad8faa5f33f88f3bc265f8
+index 9071eb47ea..63bc141f9e 100644
+--- a/9071eb47eac1df0f0f1e0a064b1324bec0d11e2c
++++ b/63bc141f9eda20a8e8ad8faa5f33f88f3bc265f8
+@@ -1,16 +1,16 @@
+ // May be called for types that include non-objects, and we ignore the
+ // non-object parts in those cases.
+ public JSType getIndexedType() {
+     if ((getMask() & NON_SCALAR_MASK) == 0) {
+         return null;
+     }
+-    JSType result = BOTTOM;
++    JSType result = this.commonTypes.BOTTOM;
+     for (ObjectType objType : getObjs()) {
+         JSType tmp = objType.getNominalType().getIndexedType();
+         if (tmp == null) {
+             return null;
+         }
+         result = join(result, tmp);
+     }
+     return result.isBottom() ? null : result;
+ }
+\ No newline at end of file

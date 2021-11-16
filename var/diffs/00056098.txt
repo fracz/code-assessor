@@ -1,0 +1,36 @@
+diff --git a/2d8fbddb7a93d00d6feb15fc5501cd8068a51f36 b/28d942d720c766d1b8eacbee028d9de6c59c6471
+index 2d8fbddb7a..28d942d720 100644
+--- a/2d8fbddb7a93d00d6feb15fc5501cd8068a51f36
++++ b/28d942d720c766d1b8eacbee028d9de6c59c6471
+@@ -1,29 +1,29 @@
+ // These two fail the whole bean factory
+ // TODO put in sep file to check quality of error message
+ /*
+ 	@Test
+ 	public void testNoInterceptorNamesWithoutTarget() {
+ 		try {
+ 			ITestBean tb = (ITestBean) factory.getBean("noInterceptorNamesWithoutTarget");
+ 			fail("Should require interceptor names");
+ 		}
+ 		catch (AopConfigException ex) {
+ 			// Ok
+ 		}
+ 	}
+
+ 	@Test
+ 	public void testNoInterceptorNamesWithTarget() {
+ 		ITestBean tb = (ITestBean) factory.getBean("noInterceptorNamesWithoutTarget");
+ 	}
+ 	*/
+ @Test
+ public void testEmptyInterceptorNames() {
+-    XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("invalidProxyFactory.xml", getClass()));
++    XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource(INVALID_CONTEXT, CLASS));
+     try {
+         factory.getBean("emptyInterceptorNames");
+         fail("Interceptor names cannot be empty");
+     } catch (BeanCreationException ex) {
+     // Ok
+     }
+ }
+\ No newline at end of file

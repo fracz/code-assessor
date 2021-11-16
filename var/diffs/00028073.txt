@@ -1,0 +1,13 @@
+diff --git a/29b7ee0ae5a6b9c8d011cc2409000590e6a6ac7e b/cf0e48210faedff6c43ef4bda1f026b2d958e63e
+index 29b7ee0ae5..cf0e48210f 100644
+--- a/29b7ee0ae5a6b9c8d011cc2409000590e6a6ac7e
++++ b/cf0e48210faedff6c43ef4bda1f026b2d958e63e
+@@ -1,5 +1,4 @@
+-@Nullable
+ @Override
+-public CommandType getCommandTypeById(String id) {
+-    return commandTypes.get(id);
++public Optional<CommandType> getCommandTypeById(String id) {
++    return Optional.ofNullable(commandTypes.get(id));
+ }
+\ No newline at end of file

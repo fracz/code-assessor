@@ -1,0 +1,17 @@
+diff --git a/b2c317be0fdadc9a3209f9e8deb4a0af4e2ee821 b/5f41cde642ee1bc7a629a650d37e236c6fa78486
+index b2c317be0f..5f41cde642 100644
+--- a/b2c317be0fdadc9a3209f9e8deb4a0af4e2ee821
++++ b/5f41cde642ee1bc7a629a650d37e236c6fa78486
+@@ -1,6 +1,9 @@
+ @Override
+ public void output(Object testId, TestOutputEvent event) {
+     super.output(testId, event);
+-    TestDescriptorInternal testDescriptorInternal = executing.get(testId).test;
+-    testOutputListener.onOutput(testDescriptorInternal, event);
++    TestState testState = getTestStateFor(testId);
++    if (testState == null) {
++        throw new UnableToFindTest("Unable to notify listener with output event: " + event + ". I couldn't find test with id: " + testId + ". This might be a bug, please report it.");
++    }
++    testOutputListener.onOutput(testState.test, event);
+ }
+\ No newline at end of file

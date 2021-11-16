@@ -1,0 +1,21 @@
+diff --git a/7790e40a3f518f56d24e2d623df3d38a97e22b95 b/0fbbf22c39a1ab40f81aca4e49c97a857c44e48d
+index 7790e40a3f..0fbbf22c39 100644
+--- a/7790e40a3f518f56d24e2d623df3d38a97e22b95
++++ b/0fbbf22c39a1ab40f81aca4e49c97a857c44e48d
+@@ -1,12 +1,11 @@
+ // ///////////////////////////////////////////////
+ // Edit
+ private void closeEditors() {
+     List<IValueEditorStandalone> editors = new ArrayList<IValueEditorStandalone>(openEditors.values());
+     for (IValueEditorStandalone editor : editors) {
+-        editor.closeValueEditor();
+-    }
+-    if (!openEditors.isEmpty()) {
+-        log.warn("Some value editors are still registered at result set: " + openEditors.size());
++        if (editor.getControl() != null && !editor.getControl().isDisposed()) {
++            editor.closeValueEditor();
++        }
+     }
+     openEditors.clear();
+ }
+\ No newline at end of file

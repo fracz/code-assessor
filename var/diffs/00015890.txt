@@ -1,0 +1,22 @@
+diff --git a/c5712d6a2782fe5771ed11c1fdef85e08f4a7797 b/1aacc7bbf9d6a013fea062a3f03550dd927cddea
+index c5712d6a27..1aacc7bbf9 100644
+--- a/c5712d6a2782fe5771ed11c1fdef85e08f4a7797
++++ b/1aacc7bbf9d6a013fea062a3f03550dd927cddea
+@@ -1,11 +1,14 @@
+ @Override
+-public void error(Object message) {
++public void error(Object... messageFragments) {
+     if (!ResolutionDebugInfo.isResolutionDebugEnabled())
+         return;
+     StringBuilder stringBuilder = debugInfo.get(ERRORS);
+     if (stringBuilder == null) {
+         stringBuilder = new StringBuilder();
+         debugInfo.set(ERRORS, stringBuilder);
+     }
+-    stringBuilder.append(message).append("\n");
++    for (Object m : messageFragments) {
++        stringBuilder.append(m);
++    }
++    stringBuilder.append("\n");
+ }
+\ No newline at end of file

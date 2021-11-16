@@ -1,0 +1,28 @@
+diff --git a/aa468ebb96159a0ee5e3987dc3cfa928827764d5 b/47991f7d1084541d26eb8fea0ccd214c2571c42a
+index aa468ebb96..47991f7d10 100644
+--- a/aa468ebb96159a0ee5e3987dc3cfa928827764d5
++++ b/47991f7d1084541d26eb8fea0ccd214c2571c42a
+@@ -1,14 +1,13 @@
+ /**
+- * Hide the following channels.
+- * @param channels The names of the channels to hide.
+- * @return this
++ * Hide these channels, in addition to anything already hidden by upstream handlers.
+  */
+-public RedwoodConfiguration hideChannels(final Object[] channels) {
+-    tasks.add(new Runnable() {
++public static LogRecordHandler hideChannels(final Object... channelsToHide) {
++    return new VisibilityHandler() {
+
+-        public void run() {
+-            Redwood.hideChannels(channels);
++        {
++            for (Object channel : channelsToHide) {
++                alsoHide(channel);
++            }
+         }
+-    });
+-    return this;
++    };
+ }
+\ No newline at end of file

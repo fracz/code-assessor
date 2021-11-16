@@ -1,0 +1,12 @@
+diff --git a/3c75aa8f1b0e9972a49b6e7ab2dae95c80f1d3d3 b/3a68d3ce7c1e140ebbfa7a074b7d0dee42540fa8
+index 3c75aa8f1b..3a68d3ce7c 100644
+--- a/3c75aa8f1b0e9972a49b6e7ab2dae95c80f1d3d3
++++ b/3a68d3ce7c1e140ebbfa7a074b7d0dee42540fa8
+@@ -1,4 +1,4 @@
+ @Override
+-public Token[] tokenize(@NotNull PsiElement element) {
+-    return new Token[] { new Token<PsiElement>(element, element.getText(), false, SplitterFactory.getInstance().getPlainTextSplitter()) };
++public void tokenize(@NotNull PsiElement element, TokenConsumer consumer) {
++    consumer.consumeToken(element, SplitterFactory.getInstance().getPlainTextSplitter());
+ }
+\ No newline at end of file

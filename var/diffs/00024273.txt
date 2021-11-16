@@ -1,0 +1,16 @@
+diff --git a/735e2da73f909a6804f376360f0827804e0b0cc4 b/514404981dcd9cc68965a8b212799fa313a9cd2d
+index 735e2da73f..514404981d 100644
+--- a/735e2da73f909a6804f376360f0827804e0b0cc4
++++ b/514404981dcd9cc68965a8b212799fa313a9cd2d
+@@ -1,8 +1,8 @@
+ // CASSANDRA-3615
+ @Test
+ public void testEqualRecordLimit() throws Exception {
+     CommitLog.instance.resetUnsafe(true);
+-    Mutation rm = new Mutation(KEYSPACE1, bytes("k"));
+-    rm.add(CF1, Util.cellname("c1"), ByteBuffer.allocate(getMaxRecordDataSize()), 0);
++    ColumnFamilyStore cfs = Keyspace.open(KEYSPACE1).getColumnFamilyStore(STANDARD1);
++    Mutation rm = new RowUpdateBuilder(cfs.metadata, 0, "k").clustering("bytes").add("val", ByteBuffer.allocate(getMaxRecordDataSize())).build();
+     CommitLog.instance.add(rm);
+ }
+\ No newline at end of file

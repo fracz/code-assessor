@@ -1,0 +1,18 @@
+diff --git a/bf6d89beef660f7216d7f0c68537e88bd5d0b067 b/027a60bc78a09795268895a473afde4fc8420e4e
+index bf6d89beef..027a60bc78 100644
+--- a/bf6d89beef660f7216d7f0c68537e88bd5d0b067
++++ b/027a60bc78a09795268895a473afde4fc8420e4e
+@@ -1,9 +1,7 @@
+-private CommandHandler newApplier(boolean recovery) {
+-    CommandHandler applier = new NeoStoreBatchTransactionApplier(neoStores, cacheAccess, lockService);
++private BatchTransactionApplier newApplier(boolean recovery) {
++    BatchTransactionApplier applier = new NeoStoreBatchTransactionApplier(neoStores, cacheAccess, lockService);
+     if (recovery) {
+-        applier = new HighIdTransactionApplier(applier, neoStores);
+-        applier = new CacheInvalidationTransactionApplier(applier, neoStores, cacheAccess);
++        applier = newApplierFacade(new HighIdBatchTransactionApplier(neoStores), applier, new CacheInvalidationBatchTransactionApplier(neoStores, cacheAccess));
+     }
+-    // TODO begin?
+     return applier;
+ }
+\ No newline at end of file

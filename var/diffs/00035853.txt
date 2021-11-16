@@ -1,0 +1,25 @@
+diff --git a/ae192ddc8482ec09ccecd2509d481da9ccb9b77a b/1e77d14ca8d4acda72b5ea6be1acf8b0e9f24ef6
+index ae192ddc84..1e77d14ca8 100644
+--- a/ae192ddc8482ec09ccecd2509d481da9ccb9b77a
++++ b/1e77d14ca8d4acda72b5ea6be1acf8b0e9f24ef6
+@@ -1,18 +1,18 @@
+ /**
+  * Finds all unused stubs for given mocks
+  *
+  * @param mocks full list of mocks
+  */
+ public List<Invocation> find(List<?> mocks) {
+     List<Invocation> unused = new LinkedList<Invocation>();
+     for (Object mock : mocks) {
+-        InternalMockHandler<Object> handler = new MockUtil().getMockHandler(mock);
++        InternalMockHandler<Object> handler = MockUtil.getMockHandler(mock);
+         List<StubbedInvocationMatcher> fromSingleMock = handler.getInvocationContainer().getStubbedInvocations();
+         for (StubbedInvocationMatcher s : fromSingleMock) {
+             if (!s.wasUsed()) {
+                 unused.add(s.getInvocation());
+             }
+         }
+     }
+     return unused;
+ }
+\ No newline at end of file

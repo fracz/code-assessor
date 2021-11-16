@@ -1,0 +1,13 @@
+diff --git a/94b4c2e7849ce7342a73a61d525d603d8495e448 b/add3a27dc5138998db71670ad4836c85b5150de3
+index 94b4c2e784..add3a27dc5 100644
+--- a/94b4c2e7849ce7342a73a61d525d603d8495e448
++++ b/add3a27dc5138998db71670ad4836c85b5150de3
+@@ -1,5 +1,5 @@
+-// TODO: IT DOES! @Override
++@Override
+ public void cleanUp() throws StorageException {
+-    HBaseStoreManager s = new HBaseStoreManager(StorageSetup.getHBaseGraphConfiguration().subset(GraphDatabaseConfiguration.STORAGE_NAMESPACE));
++    HBaseStoreManager s = new HBaseStoreManager(HBaseStorageSetup.getHBaseGraphConfiguration().subset(GraphDatabaseConfiguration.STORAGE_NAMESPACE));
+     s.clearStorage();
+ }
+\ No newline at end of file

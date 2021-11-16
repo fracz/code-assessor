@@ -1,0 +1,13 @@
+diff --git a/70bc96df57547cef3fc915dfe7c3a84081983e10 b/aebece1654f45f5a29e0d1099d5c1ba713e85ddf
+index 70bc96df57..aebece1654 100644
+--- a/70bc96df57547cef3fc915dfe7c3a84081983e10
++++ b/aebece1654f45f5a29e0d1099d5c1ba713e85ddf
+@@ -1,5 +1,6 @@
+ @BeforeClass
+ public static void defineSchema() throws ConfigurationException {
+     SchemaLoader.prepareServer();
+-    SchemaLoader.createKeyspace(KEYSPACE1, SimpleStrategy.class, KSMetaData.optsWithRF(1), SchemaLoader.standardCFMD(KEYSPACE1, CF_STANDARD1));
++    cfm = CFMetaData.Builder.create(KEYSPACE1, CF_STANDARD1).addPartitionKey("pKey", AsciiType.instance).addRegularColumn("col1", AsciiType.instance).build();
++    SchemaLoader.createKeyspace(KEYSPACE1, SimpleStrategy.class, KSMetaData.optsWithRF(1), cfm);
+ }
+\ No newline at end of file

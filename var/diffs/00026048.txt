@@ -1,0 +1,20 @@
+diff --git a/067013aaf396a2e39fa9c834975ff6124cff62c2 b/a2817696e1ba62c216f71367b7a5340e61246bfc
+index 067013aaf3..a2817696e1 100644
+--- a/067013aaf396a2e39fa9c834975ff6124cff62c2
++++ b/a2817696e1ba62c216f71367b7a5340e61246bfc
+@@ -1,12 +1,8 @@
+ /**
+  * Sets the interval at which CRL data should be reloaded from CRL resources.
+  *
+  * @param seconds Refresh interval in seconds; MUST be positive integer.
+  */
+-public void setRefreshInterval(final int seconds) {
+-    if (seconds > 0) {
+-        this.refreshInterval = seconds;
+-    } else {
+-        throw new IllegalArgumentException("Refresh interval must be positive integer.");
+-    }
++public void setRefreshInterval(@Min(1) final int seconds) {
++    this.refreshInterval = seconds;
+ }
+\ No newline at end of file

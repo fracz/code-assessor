@@ -1,0 +1,18 @@
+diff --git a/3283400ae71e3d55354a9c2595dde5a14f226c52 b/ebb5e5b9251772749b5591cc1221e37a68956c08
+index 3283400ae7..ebb5e5b925 100644
+--- a/3283400ae71e3d55354a9c2595dde5a14f226c52
++++ b/ebb5e5b9251772749b5591cc1221e37a68956c08
+@@ -1,10 +1,9 @@
+ private void handleEndTransaction(DruidAbstractDataSource dataSource) {
+     if (transactionInfo != null) {
+-        long currentTimeMillis = System.currentTimeMillis();
+-        transactionInfo.setEndTimeMillis(currentTimeMillis);
+-        long transactionMillis = currentTimeMillis - transactionInfo.getStartTimeMillis();
++        transactionInfo.setEndTimeMillis();
++        long transactionMillis = transactionInfo.getEndTimeMillis() - transactionInfo.getStartTimeMillis();
+         dataSource.getTransactionHistogram().recode(transactionMillis);
+         dataSource.logTransaction(transactionInfo);
+         transactionInfo = null;
+     }
+ }
+\ No newline at end of file

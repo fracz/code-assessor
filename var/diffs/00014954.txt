@@ -1,0 +1,13 @@
+diff --git a/35a0bc023df7f6504e0f591247597ca1c1eef002 b/86b4e61e84daced5f19fd479f7d079556a712529
+index 35a0bc023d..86b4e61e84 100644
+--- a/35a0bc023df7f6504e0f591247597ca1c1eef002
++++ b/86b4e61e84daced5f19fd479f7d079556a712529
+@@ -1,4 +1,6 @@
+ @Override
+ public void windowExitedFullScreen(AppEvent.FullScreenEvent event) {
+-    LOG.assertTrue(SystemInfo.isMac, "For mac we set myInFullScreen in the windowWillExitFullScreenCallBack methods");
++    if (!ORACLE_BUG_ID_8003173) {
++        exitFullscreen();
++    }
+ }
+\ No newline at end of file

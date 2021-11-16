@@ -1,0 +1,13 @@
+diff --git a/14aa25cbf53075311b3f98dedfd373095f6227c8 b/0c4e18876f68aa8731666296fe2a72631c77824c
+index 14aa25cbf5..0c4e18876f 100644
+--- a/14aa25cbf53075311b3f98dedfd373095f6227c8
++++ b/0c4e18876f68aa8731666296fe2a72631c77824c
+@@ -1,6 +1,6 @@
+ @Override
+ protected void waitCondition() throws InterruptedException {
+-    MessageEnvelope msg = outgoingMsg.poll(maxWaitTime(), Timestamps.SYSTEM().getUnit());
++    MessageEnvelope msg = outgoingMsg.poll(maxWaitTime(), TimeUnit.MICROSECONDS);
+     if (msg != null)
+         toSend.add(msg);
+ }
+\ No newline at end of file

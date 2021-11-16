@@ -1,0 +1,31 @@
+diff --git a/7c161a5bcc2d2dd734438acf645f2f09d3976666 b/3d44b55bdbdfb89f6961e22c2afcd26ac2a5f792
+index 7c161a5bcc..3d44b55bdb 100644
+--- a/7c161a5bcc2d2dd734438acf645f2f09d3976666
++++ b/3d44b55bdbdfb89f6961e22c2afcd26ac2a5f792
+@@ -1,16 +1,20 @@
+ /**
+  * Adds test to tree and updates status line.
+  * Test proxy should be initialized, proxy parent must be some suite (already added to tree)
+- * If parent is null, then test will be added to tests root.
+  *
+  * @param testProxy Proxy
+- * @param testsTotal Total tests
+- * @param testsCurrentCount Current count
+  */
+-public void onTestStarted(final RTestUnitTestProxy testProxy, final int testsTotal, final int testsCurrentCount) {
++public void onTestStarted(@NotNull final RTestUnitTestProxy testProxy) {
++    // Counters
++    myTestsCurrentCount++;
++    // fix total count if it is corrupted
++    if (myTestsCurrentCount > myTestsTotal) {
++        myTestsTotal = myTestsCurrentCount;
++    }
+     // update progress if total is set
+-    myProgressLine.setFraction(testsTotal != 0 ? (double) testsCurrentCount / testsTotal : 0);
++    myProgressLine.setFraction(myTestsTotal != 0 ? (double) myTestsCurrentCount / myTestsTotal : 0);
+     _addTestOrSuite(testProxy);
++    updateStatusLabel();
+ // TODO if Console.properites.TRACK_RUNNING_TEST.consoleProperties
+ // select(test)
+ }
+\ No newline at end of file

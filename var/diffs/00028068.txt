@@ -1,0 +1,10 @@
+diff --git a/611526da2dddb33e4fbabc9b21c66ed29523eb33 b/6aeebf71c86a182150a19dc9daa5dfb3563b1e53
+index 611526da2d..6aeebf71c8 100644
+--- a/611526da2dddb33e4fbabc9b21c66ed29523eb33
++++ b/6aeebf71c86a182150a19dc9daa5dfb3563b1e53
+@@ -1,3 +1,3 @@
+ private void notifyCommandRemoved(CommandImpl command) {
+-    commandChangedListeners.forEach(listener -> listener.onCommandRemoved(command));
++    eventBus.fireEvent(new CommandRemovedEvent(command));
+ }
+\ No newline at end of file

@@ -1,0 +1,19 @@
+diff --git a/e821f04fa2221e9608be8e7597178d5328ac0270 b/665bbcd965d2cfef3b8ba39067eabf865d05e773
+index e821f04fa2..665bbcd965 100644
+--- a/e821f04fa2221e9608be8e7597178d5328ac0270
++++ b/665bbcd965d2cfef3b8ba39067eabf865d05e773
+@@ -1,11 +1,10 @@
+-@Nullable
++@NotNull
+ public JComponent getAdditionalConfigPanel() {
+     if (myAdditionalConfigPanel == null) {
+-        myAdditionalConfigPanel = myTool.createOptionsPanel();
++        myAdditionalConfigPanel = myToolWrapper.getTool().createOptionsPanel();
+         if (myAdditionalConfigPanel == null) {
+             myAdditionalConfigPanel = new JPanel();
+         }
+-        return myAdditionalConfigPanel;
+     }
+     return myAdditionalConfigPanel;
+ }
+\ No newline at end of file

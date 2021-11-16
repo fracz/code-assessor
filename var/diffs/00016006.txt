@@ -1,0 +1,18 @@
+diff --git a/36e6a671a2482c792f85dec1204b00660447ea82 b/a5ed78cbcf62d1f6c561391ffb933672ae64dcb4
+index 36e6a671a2..a5ed78cbcf 100644
+--- a/36e6a671a2482c792f85dec1204b00660447ea82
++++ b/a5ed78cbcf62d1f6c561391ffb933672ae64dcb4
+@@ -1,5 +1,9 @@
++@Nullable
+ @Override
+-public JetIntentionAction<JetFunction> createAction(DiagnosticWithPsiElement diagnostic) {
+-    assert diagnostic.getPsiElement() instanceof JetFunction;
+-    return new AddFunctionBodyFix((JetFunction) diagnostic.getPsiElement());
++public JetIntentionAction createAction(Diagnostic diagnostic) {
++    PsiElement element = diagnostic.getPsiElement();
++    JetFunction function = PsiTreeUtil.getParentOfType(element, JetFunction.class, false);
++    if (function == null)
++        return null;
++    return new AddFunctionBodyFix(function);
+ }
+\ No newline at end of file

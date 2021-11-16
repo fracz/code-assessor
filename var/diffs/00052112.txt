@@ -1,0 +1,19 @@
+diff --git a/bd1b5415b9b1278bc088db6dac2197d6de2f0135 b/9b4970489a84bb8aa7c6483cc18c11d25768ca46
+index bd1b5415b9..9b4970489a 100644
+--- a/bd1b5415b9b1278bc088db6dac2197d6de2f0135
++++ b/9b4970489a84bb8aa7c6483cc18c11d25768ca46
+@@ -1,10 +1,11 @@
+ /**
+  * Build actual tables.
+  *
+  * @param actualTables actual tables
+  * @return this builder
+  */
+-public TableRuleBuilder actualTables(final List<String> actualTables) {
+-    this.actualTables = actualTables;
++public TableRuleBuilder actualTables(final String... actualTables) {
++    this.actualTables.clear();
++    this.actualTables.addAll(Arrays.asList(actualTables));
+     return this;
+ }
+\ No newline at end of file

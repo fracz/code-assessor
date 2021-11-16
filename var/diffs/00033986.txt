@@ -1,0 +1,18 @@
+diff --git a/2de85bcf2f2b8c4c3b1f89b0bbe2d6dc77a8931b b/9621e3b7643532f26e68f9d1d7d8f0b008dc8fc4
+index 2de85bcf2f..9621e3b764 100644
+--- a/2de85bcf2f2b8c4c3b1f89b0bbe2d6dc77a8931b
++++ b/9621e3b7643532f26e68f9d1d7d8f0b008dc8fc4
+@@ -1,11 +1,10 @@
+ /**
+  * Returns the singular value decomposition.
+  */
+ public SingularValueDecomposition svd() {
+     if (svd != null) {
+-        double[][] V = array();
+-        svd = SingularValueDecomposition.decompose(V);
++        svd = new SingularValueDecomposition(this);
+         rank = svd.rank();
+     }
+     return svd;
+ }
+\ No newline at end of file

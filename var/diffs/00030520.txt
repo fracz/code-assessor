@@ -1,0 +1,18 @@
+diff --git a/1cb8814584bd07633d80e0c3781458514ab6614f b/983fe076d518acdde63d8f1b22f489a69377f6c5
+index 1cb8814584..983fe076d5 100644
+--- a/1cb8814584bd07633d80e0c3781458514ab6614f
++++ b/983fe076d518acdde63d8f1b22f489a69377f6c5
+@@ -1,9 +1,9 @@
+-private String extractSource(Document doc, DocumentMapper documentMapper) {
+-    String source = null;
++private byte[] extractSource(Document doc, DocumentMapper documentMapper) {
++    byte[] source = null;
+     Fieldable sourceField = doc.getFieldable(documentMapper.sourceMapper().names().indexName());
+     if (sourceField != null) {
+-        source = documentMapper.sourceMapper().valueAsString(sourceField);
++        source = documentMapper.sourceMapper().value(sourceField);
+         doc.removeField(documentMapper.sourceMapper().names().indexName());
+     }
+     return source;
+ }
+\ No newline at end of file

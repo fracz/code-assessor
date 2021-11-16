@@ -1,0 +1,19 @@
+diff --git a/65ee0bd8dd79876084227b485e800ddbb88c4f94 b/177f1018db751daa70051a02179744c874220c02
+index 65ee0bd8dd..177f1018db 100644
+--- a/65ee0bd8dd79876084227b485e800ddbb88c4f94
++++ b/177f1018db751daa70051a02179744c874220c02
+@@ -1,8 +1,10 @@
++/*
++   * This convertor returns 'good enough' position, even if exact matching is impossible
++   */
+ @CalledInAwt
+ private int transferLineToOneside(@NotNull Side side, int line) {
+     if (myChangedBlockData == null)
+         return line;
+-    LineNumberConvertor invertedLineConvertor = myChangedBlockData.getLineNumberInvertedConvertor();
+-    TIntFunction convertor = side.isLeft() ? invertedLineConvertor.getConvertor1() : invertedLineConvertor.getConvertor2();
+-    return convertor.execute(line);
++    LineNumberConvertor lineConvertor = myChangedBlockData.getLineNumberConvertor();
++    return side.isLeft() ? lineConvertor.convertApproximateInv1(line) : lineConvertor.convertApproximateInv2(line);
+ }
+\ No newline at end of file

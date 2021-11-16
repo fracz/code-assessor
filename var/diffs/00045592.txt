@@ -1,0 +1,14 @@
+diff --git a/74c479e5443d15e7e3859b02875938234feffc51 b/5119b04ef4cb02290ece94337b16eda0e450effd
+index 74c479e544..5119b04ef4 100644
+--- a/74c479e5443d15e7e3859b02875938234feffc51
++++ b/5119b04ef4cb02290ece94337b16eda0e450effd
+@@ -1,3 +1,6 @@
+-public boolean addAll(final Collection<? extends OIdentifiable> c) {
+-    return delegate.addAll(c);
++@SuppressWarnings("unchecked")
++public boolean addAll(Collection<? extends OIdentifiable> c) {
++    final Iterator<OIdentifiable> it = (Iterator<OIdentifiable>) (c instanceof ORecordLazyMultiValue ? ((ORecordLazyMultiValue) c).rawIterator() : c.iterator());
++    while (it.hasNext()) add(it.next());
++    return true;
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/018293b019c2bed5ba46e15b5f31b2c9a1b232a5 b/576c754887724c0b453f7ccae0990392231ecf78
+index 018293b019..576c754887 100644
+--- a/018293b019c2bed5ba46e15b5f31b2c9a1b232a5
++++ b/576c754887724c0b453f7ccae0990392231ecf78
+@@ -1,15 +1,15 @@
+ /**
+  * Sets a list of sets of mandatory Skylark providers. Every configured target occurring in
+  * this label type attribute has to provide all the providers from one of those sets,
+  * or be one of {@link #allowedRuleClasses}, otherwise an error is produced during
+  * the analysis phase.
+  */
+ public Builder<TYPE> mandatoryProvidersList(Iterable<? extends Iterable<SkylarkProviderIdentifier>> providersList) {
+-    Preconditions.checkState((type == BuildType.LABEL) || (type == BuildType.LABEL_LIST), "must be a label-valued type");
++    Preconditions.checkState(type.getLabelClass() == LabelClass.DEPENDENCY, "must be a label-valued type");
+     ImmutableList.Builder<ImmutableSet<SkylarkProviderIdentifier>> listBuilder = ImmutableList.builder();
+     for (Iterable<SkylarkProviderIdentifier> providers : providersList) {
+         listBuilder.add(ImmutableSet.copyOf(providers));
+     }
+     this.mandatoryProvidersList = listBuilder.build();
+     return this;
+ }
+\ No newline at end of file

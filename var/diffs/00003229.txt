@@ -1,0 +1,11 @@
+diff --git a/e6c64a481633543d736d32df87b4c94b079b3adb b/2ee4c189132ab7f51723b71b8192294d23d5e32b
+index e6c64a4816..2ee4c18913 100644
+--- a/e6c64a481633543d736d32df87b4c94b079b3adb
++++ b/2ee4c189132ab7f51723b71b8192294d23d5e32b
+@@ -1,3 +1,3 @@
+-private static boolean isAssertTrue(@NotNull PsiMethodCallExpression expression) {
+-    return isAssertMethodCall(expression, "assertTrue");
++private static boolean isAssertTrue(AssertHint assertTrueFalseHint) {
++    return "assertTrue".equals(assertTrueFalseHint.getMethod().getName());
+ }
+\ No newline at end of file

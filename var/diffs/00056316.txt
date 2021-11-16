@@ -1,0 +1,23 @@
+diff --git a/675d134009586801ee47d83f688af065ca428db6 b/06a37868fef25aa5ab62126d6ff9db6a291e7434
+index 675d134009..06a37868fe 100644
+--- a/675d134009586801ee47d83f688af065ca428db6
++++ b/06a37868fef25aa5ab62126d6ff9db6a291e7434
+@@ -1,13 +1,9 @@
+-public List<byte[]> getParts() throws Exception {
+-    List<byte[]> parts = new ArrayList<byte[]>();
++public List<byte[]> getParts() throws IOException {
++    List<byte[]> parts = new ArrayList<byte[]>(mimeParts.size());
+     for (MimePart part : mimeParts) {
+         ByteArrayOutputStream bos = new ByteArrayOutputStream();
+-        try {
+-            part.writeTo(bos);
+-            parts.add(bos.toByteArray());
+-        } finally {
+-            bos.close();
+-        }
++        part.writeTo(bos);
++        parts.add(bos.toByteArray());
+     }
+     return parts;
+ }
+\ No newline at end of file

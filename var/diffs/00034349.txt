@@ -1,0 +1,24 @@
+diff --git a/425c6fad6f9da6957172ffbf65620b0bc9194b2e b/6004c486c4e8f40c44b8fc24fa3f2cf2eed456ac
+index 425c6fad6f..6004c486c4 100644
+--- a/425c6fad6f9da6957172ffbf65620b0bc9194b2e
++++ b/6004c486c4e8f40c44b8fc24fa3f2cf2eed456ac
+@@ -1,4 +1,15 @@
+-private void onDelete(MessageInfoHolder holder, int position) {
+-    mAdapter.removeMessage(holder);
+-    mController.deleteMessages(new Message[] { holder.message }, null);
++/**
++ * @param holders
++ * Never {@code null}.
++ */
++private void onDelete(final List<MessageInfoHolder> holders) {
++    // FIXME: removeMessage does it own check on the 'selected' field, we're duplicating the logic here...
++    final List<Message> messagesToRemove = new ArrayList<Message>();
++    for (MessageInfoHolder holder : holders) {
++        if (holder.selected) {
++            messagesToRemove.add(holder.message);
++        }
++    }
++    mHandler.removeMessages(holders);
++    mController.deleteMessages(messagesToRemove.toArray(EMPTY_MESSAGE_ARRAY), null);
+ }
+\ No newline at end of file

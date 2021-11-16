@@ -1,0 +1,23 @@
+diff --git a/c98e56fbb07cc96252be74101af39c83cdad8119 b/f44c2d21044fae7a7827833eb1c4c2373f2208b0
+index c98e56fbb0..f44c2d2104 100644
+--- a/c98e56fbb07cc96252be74101af39c83cdad8119
++++ b/f44c2d21044fae7a7827833eb1c4c2373f2208b0
+@@ -1,13 +1,15 @@
+ /**
+  * Populates the result from the graph traversal state.
+  */
+-private void assembleResult(ResolveState resolveState, ResolvedConfigurationBuilder result, DependencyGraphListener dependencyGraphListener) {
++private void assembleResult(ResolveState resolveState, ResolvedConfigurationBuilder result, ResolvedConfigurationListener listener) {
+     FailureState failureState = new FailureState(resolveState.root);
+     ResolvedConfigurationIdentifier root = toId(resolveState.root);
++    listener.start(root);
+     for (ConfigurationNode resolvedConfiguration : resolveState.getConfigurationNodes()) {
+         resolvedConfiguration.attachToParents(resolvedArtifactFactory, result);
+         resolvedConfiguration.collectFailures(failureState);
+-        notifyListener(dependencyGraphListener, root, resolvedConfiguration);
++        notifyListener(listener, resolvedConfiguration);
+     }
++    listener.completed();
+     failureState.attachFailures(result);
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/55fb9e83eb0f4c6beed19875e2785987636ed0a2 b/4cda63e679a7615e48d62b50951f69f74e09a59e
+index 55fb9e83eb..4cda63e679 100644
+--- a/55fb9e83eb0f4c6beed19875e2785987636ed0a2
++++ b/4cda63e679a7615e48d62b50951f69f74e09a59e
+@@ -1,3 +1,4 @@
+ private void addRequestEditor(ProfilerPluginSetupContext context) {
+-    context.addClassFileTransformer("org.eclipse.jetty.server.Request", PinpointClassFileTransformers.addField("com.navercorp.pinpoint.plugin.jetty.interceptor.TraceAccessor"));
++    final TransformCallback transformCallback = PinpointClassFileTransformers.addField("com.navercorp.pinpoint.plugin.jetty.interceptor.TraceAccessor");
++    context.addClassFileTransformer("org.eclipse.jetty.server.Request", transformCallback);
+ }
+\ No newline at end of file

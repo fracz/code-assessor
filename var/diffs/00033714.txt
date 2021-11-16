@@ -1,0 +1,13 @@
+diff --git a/8929df4b223597a28f673502bca1919c14523bc1 b/b361932c814cc371a525fdde5fd297e99d0d1781
+index 8929df4b22..b361932c81 100644
+--- a/8929df4b223597a28f673502bca1919c14523bc1
++++ b/b361932c814cc371a525fdde5fd297e99d0d1781
+@@ -1,6 +1,6 @@
+ private static long getModificationTime(TarEntry entry) {
+     long lastModified = entry.getModTime().getTime();
+     long excessNanos = entry.getLongGroupId();
+-    lastModified += excessNanos / 1000 / 1000;
++    lastModified += TimeUnit.NANOSECONDS.toMillis(excessNanos) % 1000;
+     return lastModified;
+ }
+\ No newline at end of file

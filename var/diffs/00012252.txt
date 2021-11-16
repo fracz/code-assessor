@@ -1,0 +1,29 @@
+diff --git a/679bda01bee6825435f356836bd4af1b8077822d b/acaccad55a25de4acb48e3f10d27985e8894e32e
+index 679bda01be..acaccad55a 100644
+--- a/679bda01bee6825435f356836bd4af1b8077822d
++++ b/acaccad55a25de4acb48e3f10d27985e8894e32e
+@@ -1,21 +1,21 @@
+ /**
+  * Searches for a module at given directory, unwinding qualifiers and traversing directories as needed.
+  *
+  * @param directory where to start from; top qualifier will be searched for here.
+  * @param sourceFile the file containing the import statement being resolved
+  * @param qualifiedName the qualified name of the module to search
+  * @return module's file, or null.
+  */
+ @Nullable
+-private static PsiElement resolveModuleAt(PsiDirectory directory, PsiFile sourceFile, List<String> qualifiedName) {
++private static PsiElement resolveModuleAt(PsiDirectory directory, PsiFile sourceFile, PyQualifiedName qualifiedName) {
+     // prerequisites
+     if (directory == null || !directory.isValid())
+         return null;
+     if (sourceFile == null || !sourceFile.isValid())
+         return null;
+     PsiElement seeker = directory;
+-    for (String name : qualifiedName) {
++    for (String name : qualifiedName.getComponents()) {
+         seeker = resolveChild(seeker, name, sourceFile, true);
+     }
+     return seeker;
+ }
+\ No newline at end of file

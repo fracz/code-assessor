@@ -1,0 +1,11 @@
+diff --git a/10d6178dcd1eefee35b09b6b888277ac77ac6f29 b/866a45e0a61cf0e38f170904dab8df56f259eafb
+index 10d6178dcd..866a45e0a6 100644
+--- a/10d6178dcd1eefee35b09b6b888277ac77ac6f29
++++ b/866a45e0a61cf0e38f170904dab8df56f259eafb
+@@ -1,4 +1,4 @@
+ public static void savePaxosPromise(Commit promise) {
+     String req = "UPDATE system.%s USING TIMESTAMP ? AND TTL ? SET in_progress_ballot = ? WHERE row_key = ? AND cf_id = ?";
+-    executeInternal(String.format(req, PAXOS), UUIDGen.microsTimestamp(promise.ballot), paxosTtl(promise.update.metadata), promise.ballot, promise.key, promise.update.id());
++    executeInternal(String.format(req, PAXOS), UUIDGen.microsTimestamp(promise.ballot), paxosTtl(promise.update.metadata()), promise.ballot, promise.update.partitionKey().getKey(), promise.update.metadata().cfId);
+ }
+\ No newline at end of file

@@ -1,0 +1,27 @@
+diff --git a/9a77ba451bf54f71f116e3f8742113af5bf90207 b/4ed5589e71b3525790659065c7e67099daeda7d0
+index 9a77ba451b..4ed5589e71 100644
+--- a/9a77ba451bf54f71f116e3f8742113af5bf90207
++++ b/4ed5589e71b3525790659065c7e67099daeda7d0
+@@ -1,19 +1,20 @@
+ @Override
+ protected IStatus run(DBRProgressMonitor monitor) {
+     try {
+         monitor.beginTask("Seeking for completion proposals", 1);
+         try {
+             monitor.subTask("Make structure proposals");
+-            SQLCompletionAnalyzer.makeStructureProposals(monitor, request);
++            SQLCompletionAnalyzer analyzer = new SQLCompletionAnalyzer(monitor, request);
++            analyzer.runAnalyzer();
+         } finally {
+             monitor.done();
+         }
+         applyFilters();
+         return Status.OK_STATUS;
+     } catch (Throwable e) {
+         log.error(e);
+         return Status.CANCEL_STATUS;
+     } finally {
+         finished = true;
+     }
+ }
+\ No newline at end of file

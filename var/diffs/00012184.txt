@@ -1,0 +1,29 @@
+diff --git a/a52e191e81aa8a3b50602cd8621de2349f0a2329 b/0d2c1666f94347d8b50a8836b9c55b368560e902
+index a52e191e81..0d2c1666f9 100644
+--- a/a52e191e81aa8a3b50602cd8621de2349f0a2329
++++ b/0d2c1666f94347d8b50a8836b9c55b368560e902
+@@ -1,21 +1,21 @@
+ private Label label(final LabelImpl impl) {
+     return new Label() {
+
+         @Override
+-        public long getLabelChangeId() {
+-            return impl.getLabelChangeId();
++        public void revert(@NotNull Project project, @NotNull VirtualFile file) {
++            revertToLabel(project, file, impl);
+         }
+
+         @Override
+         public ByteContent getByteContent(final String path) {
+             return ApplicationManager.getApplication().runReadAction(new Computable<ByteContent>() {
+
+                 @Override
+                 public ByteContent compute() {
+                     RootEntry root = myGateway.createTransientRootEntryForPathOnly(path);
+                     return impl.getByteContent(root, path);
+                 }
+             });
+         }
+     };
+ }
+\ No newline at end of file

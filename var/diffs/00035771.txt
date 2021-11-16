@@ -1,0 +1,22 @@
+diff --git a/e10bf0c534c29859900e34ab3946f0bd49c0baf7 b/3290e6fa693fd2e7d80214ea74abc6ba05dc0bbb
+index e10bf0c534..3290e6fa69 100644
+--- a/e10bf0c534c29859900e34ab3946f0bd49c0baf7
++++ b/3290e6fa693fd2e7d80214ea74abc6ba05dc0bbb
+@@ -1,9 +1,10 @@
++@Ignore
+ @Test
+ public void shouldVerifyInOrder() {
+-    strictly.verify(list).add("one");
+-    strictly.verify(map).put("two", "two");
+-    strictly.verify(list, 2).add("three and four");
+-    strictly.verify(map).put("five", "five");
+-    strictly.verify(set).add("six");
+-    verifyNoMoreInteractions(list, map, set);
++    verify(mockOne).simpleMethod(1);
++    verify(mockTwo, 2).simpleMethod(2);
++    verify(mockThree).simpleMethod(3);
++    verify(mockTwo).simpleMethod(2);
++    verify(mockOne).simpleMethod(4);
++    verifyNoMoreInteractions(mockOne, mockTwo, mockThree);
+ }
+\ No newline at end of file

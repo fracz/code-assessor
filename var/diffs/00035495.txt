@@ -1,0 +1,20 @@
+diff --git a/d749d74975c2cd25dc60345b3e8b11ad751bc9e3 b/e7a2456acfd74cc79e7d29c791e7f059adb25c23
+index d749d74975..e7a2456acf 100644
+--- a/d749d74975c2cd25dc60345b3e8b11ad751bc9e3
++++ b/e7a2456acfd74cc79e7d29c791e7f059adb25c23
+@@ -1,10 +1,10 @@
+ @Override
+-protected int _startExecute() {
+-    final int result = FileDownloadServiceUIGuard.getImpl().startDownloader(getUrl(), getPath(), getCallbackProgressTimes(), getAutoRetryTimes());
+-    if (result != 0) {
++protected boolean _startExecute() {
++    final boolean succeed = FileDownloadServiceUIGuard.getImpl().startDownloader(getUrl(), getPath(), getCallbackProgressTimes(), getAutoRetryTimes(), isForceReDownload());
++    if (succeed) {
+         synchronized (NEED_RESTART_LIST) {
+             NEED_RESTART_LIST.remove(this);
+         }
+     }
+-    return result;
++    return succeed;
+ }
+\ No newline at end of file

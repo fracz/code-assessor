@@ -1,0 +1,18 @@
+diff --git a/bf0e20b5386267b4dd32f5d5197df435ffe725cc b/b23ffe3bfa2f1b89fe45c2b29e833bf978bab7f1
+index bf0e20b538..b23ffe3bfa 100644
+--- a/bf0e20b5386267b4dd32f5d5197df435ffe725cc
++++ b/b23ffe3bfa2f1b89fe45c2b29e833bf978bab7f1
+@@ -1,8 +1,8 @@
+-private static PsiElement[] toPsiElementArray(Collection<PsiCrumb> items) {
+-    final PsiElement[] elements = new PsiElement[items.size()];
++private static PsiElement[] toPsiElementArray(Collection<Pair<PsiElement, BreadcrumbsProvider>> pairs) {
++    PsiElement[] elements = new PsiElement[pairs.size()];
+     int index = 0;
+-    for (PsiCrumb item : items) {
+-        elements[index++] = item.anchor.retrieve();
++    for (Pair<PsiElement, BreadcrumbsProvider> pair : pairs) {
++        elements[index++] = pair.first;
+     }
+     return elements;
+ }
+\ No newline at end of file

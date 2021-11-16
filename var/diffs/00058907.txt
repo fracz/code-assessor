@@ -1,0 +1,15 @@
+diff --git a/21b1bb55d97a1c031a8704cde0b15633829e1022 b/e15dad468b89bb614c2a3f10f364427ca7b325ff
+index 21b1bb55d9..e15dad468b 100644
+--- a/21b1bb55d97a1c031a8704cde0b15633829e1022
++++ b/e15dad468b89bb614c2a3f10f364427ca7b325ff
+@@ -1,5 +1,7 @@
+ public void open() throws StorageException {
+     manager = openStorageManager();
+-    tx = manager.beginTransaction();
+-    store = (MultiWriteKeyColumnValueStore) manager.openDatabase(storeName);
++    assertTrue(manager.getFeatures().supportsBatchMutation());
++    tx = new BufferTransaction(manager.beginTransaction(ConsistencyLevel.DEFAULT), manager, bufferSize);
++    store1 = new BufferedKeyColumnValueStore(manager.openDatabase(storeName1), true);
++    store2 = new BufferedKeyColumnValueStore(manager.openDatabase(storeName2), true);
+ }
+\ No newline at end of file

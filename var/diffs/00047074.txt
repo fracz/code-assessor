@@ -1,0 +1,18 @@
+diff --git a/aa90c5b6191cd4f73ed0ee94f94544f14d85007c b/eb849758b2209b048e5813ef807513d24d549fb8
+index aa90c5b619..eb849758b2 100644
+--- a/aa90c5b6191cd4f73ed0ee94f94544f14d85007c
++++ b/eb849758b2209b048e5813ef807513d24d549fb8
+@@ -1,10 +1,7 @@
+ public void onNak(final int termId, final int termOffset) {
+-    if (numOutstanding > 0 && currentGap.isFor(termId, termOffset)) {
++    if (null != timer && timer.isActive() && activeGap.isFor(termId, termOffset)) {
+         // suppress sending NAK if it matches what we are waiting on
+         nakSentTimestamp = wheel.now();
+-        if (timer.isActive()) {
+-            timer.cancel();
+-            scheduleTimer(determineNakDelay());
+-        }
++        scheduleTimer();
+     }
+ }
+\ No newline at end of file

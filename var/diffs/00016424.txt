@@ -1,0 +1,16 @@
+diff --git a/ad305358381145987094968c01356f01ec03ea81 b/00f3526ffb9b085b04923496e56e77ae21fb5c93
+index ad30535838..00f3526ffb 100644
+--- a/ad305358381145987094968c01356f01ec03ea81
++++ b/00f3526ffb9b085b04923496e56e77ae21fb5c93
+@@ -1,9 +1,8 @@
+ @Override
+ public void doSomething(@NotNull ClassBuilder v) {
+-    v.defineClass(sourceFile, V1_6, ACC_PUBLIC | ACC_FINAL, JvmClassName.byFqNameWithoutInnerClasses(getPackageClassFqName(fqName)).getInternalName(), null, // "jet/lang/Namespace",
+-    "java/lang/Object", new String[0]);
++    v.defineClass(sourceFile, V1_6, ACC_PUBLIC | ACC_FINAL, JvmClassName.byFqNameWithoutInnerClasses(getPackageClassFqName(fqName)).getInternalName(), null, "java/lang/Object", ArrayUtil.EMPTY_STRING_ARRAY);
+     // We don't generate any source information for namespace with multiple files
+     if (sourceFile != null) {
+         v.visitSource(sourceFile.getName(), null);
+     }
+ }
+\ No newline at end of file

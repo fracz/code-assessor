@@ -1,0 +1,19 @@
+diff --git a/35902a42b1e9a45e1e8d452547bfb31b2c356bb5 b/bd680365a03fe483b1089208a499c3c1ad530666
+index 35902a42b1..bd680365a0 100644
+--- a/35902a42b1e9a45e1e8d452547bfb31b2c356bb5
++++ b/bd680365a03fe483b1089208a499c3c1ad530666
+@@ -1,10 +1,10 @@
+-public void testWithConstructorArguments() throws InvocationTargetException, NoSuchMethodException {
++public void testWithConstructorArguments() throws InvocationTargetException, NoSuchMethodException, ResolveFailedException {
+     SimpleInterceptor interceptor = new SimpleInterceptor();
+-    ProxyFactoryBuilder builder = new ProxyFactoryBuilder(new InvalidErrorHandler());
++    ProxyFactoryBuilder builder = new ProxyFactoryBuilder();
+     builder.intercept(any(), any(), interceptor);
+     ProxyFactory factory = builder.create();
+-    ConstructionProxy<A> constructor = factory.get(A.class.getDeclaredConstructor(int.class));
++    ConstructionProxy<A> constructor = factory.get(new Errors(), A.class.getDeclaredConstructor(int.class));
+     A a = constructor.newInstance(5);
+     a.a();
+     assertEquals(5, a.i);
+ }
+\ No newline at end of file

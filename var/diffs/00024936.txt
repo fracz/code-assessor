@@ -1,0 +1,13 @@
+diff --git a/ab0753da59796dffb5c0b1db66d40847c3fb3c40 b/8533b0f37d27e13a1a7f5c3be2545641f0efeda6
+index ab0753da59..8533b0f37d 100644
+--- a/ab0753da59796dffb5c0b1db66d40847c3fb3c40
++++ b/8533b0f37d27e13a1a7f5c3be2545641f0efeda6
+@@ -1,6 +1,5 @@
+-@Override
+ public void gossiperStarting() {
+     super.gossiperStarting();
+     Gossiper.instance.addLocalApplicationState(ApplicationState.INTERNAL_IP, StorageService.instance.valueFactory.internalIP(localPrivateAddress));
+-    Gossiper.instance.register(this);
++    Gossiper.instance.register(new ReconnectableSnitchHelper(this, ec2region, true));
+ }
+\ No newline at end of file

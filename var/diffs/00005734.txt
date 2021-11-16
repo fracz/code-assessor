@@ -1,0 +1,14 @@
+diff --git a/4bfae558cf60ec887a9d56c1db143427a29f35bc b/3c7dfb957d7b9f1a7dae9ecfa530a130b0c03c78
+index 4bfae558cf..3c7dfb957d 100644
+--- a/4bfae558cf60ec887a9d56c1db143427a29f35bc
++++ b/3c7dfb957d7b9f1a7dae9ecfa530a130b0c03c78
+@@ -1,7 +1,7 @@
+ private static void verifyResultForAfterAndSame(List<String> names) {
+     assertNotNull(names);
+     assertEquals(names.toString(), 2, names.size());
+-    names.sort(String::compareTo);
++    Collections.sort(names);
+     assertTrue(names.get(0), names.get(0).endsWith("somethingAS.java"));
+     assertTrue(names.get(1), names.get(1).endsWith("somethingAS_after.java"));
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/bd2633f5b707745398d50c3d9026a221e16b0c2f b/d77655688a16908d9001336927c08fab41623656
+index bd2633f5b7..d77655688a 100644
+--- a/bd2633f5b707745398d50c3d9026a221e16b0c2f
++++ b/d77655688a16908d9001336927c08fab41623656
+@@ -1,5 +1,4 @@
+ @Override
+ public LocalCachedMapOptions<K, V> loader(MapLoader<K, V> loader) {
+-    super.loader(loader);
+-    return this;
++    return (LocalCachedMapOptions<K, V>) super.loader(loader);
+ }
+\ No newline at end of file

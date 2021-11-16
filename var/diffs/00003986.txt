@@ -1,0 +1,23 @@
+diff --git a/00aa8d21ccce390099da4ba116060e680b1b1c68 b/633d6301f92cad0623f8926108c03f170502d00d
+index 00aa8d21cc..633d6301f9 100644
+--- a/00aa8d21ccce390099da4ba116060e680b1b1c68
++++ b/633d6301f92cad0623f8926108c03f170502d00d
+@@ -1,14 +1,14 @@
+ @Nullable
+-private static VirtualFile getResourcesDir(Module module, AndroidFacet facet) {
++private static VirtualFile getResourcesDir(@NotNull AndroidFacet facet) {
+     // same as with manifest file we check timestamps of NOT filtered resources, because MavenResourceCompiler spoils
+     // filtered ones and it and they becomes dirty in the next session. Actually we can pass filtered resources to compiler ONLY after
+     // AndroidMavenResourcesCompiler performed task, but MavenResourceCompiler not yet
+-    VirtualFile dir = AndroidAptCompiler.getResourceDirForApkCompiler(module, facet);
++    VirtualFile dir = AndroidAptCompiler.getResourceDirForApkCompiler(facet);
+     if (dir != null) {
+         VirtualFile parent = dir.getParent();
+         if ("combined-resources".equals(parent.getName())) {
+             return dir;
+         }
+     }
+-    return AndroidRootUtil.getResourceDir(module);
++    return AndroidRootUtil.getResourceDir(facet);
+ }
+\ No newline at end of file

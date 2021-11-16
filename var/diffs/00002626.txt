@@ -1,0 +1,13 @@
+diff --git a/83e380ada1b1b1c4457bf96067d449ce8f791278 b/a7d061c30dd167367013c4dbefde1b959b80c7c6
+index 83e380ada1..a7d061c30d 100644
+--- a/83e380ada1b1b1c4457bf96067d449ce8f791278
++++ b/a7d061c30dd167367013c4dbefde1b959b80c7c6
+@@ -1,5 +1,5 @@
+-public static void runTool(@NotNull Project project, @NotNull String sdkPath) {
++public static void runTool(@NotNull String sdkPath) {
+     GeneralCommandLine commandLine = new GeneralCommandLine();
+     commandLine.setExePath(sdkPath + File.separator + AndroidUtils.toolPath(SdkConstants.androidCmdName()));
+-    AndroidUtils.runExternalToolInSeparateThread(project, commandLine);
++    AndroidUtils.runExternalToolInSeparateThread(null, commandLine);
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/28294beccc7ed616b0cdc10c6a1e36029f3cfa02 b/84e0ba553df24abedede2118514511162058ba1c
+index 28294beccc..84e0ba553d 100644
+--- a/28294beccc7ed616b0cdc10c6a1e36029f3cfa02
++++ b/84e0ba553df24abedede2118514511162058ba1c
+@@ -1,11 +1,11 @@
+ @NotNull
+ private static LookupElement createLookupElement(@NotNull PsiElement targetElement, @NotNull String id, @Nullable Module module, @Nullable String mark) {
+     LookupElementBuilder element = LookupElementBuilder.create(targetElement, id);
+     if (module != null) {
+-        element = element.withTypeText(module.getName(), AllIcons.Actions.Module, false);
++        element = element.withTypeText(module.getName(), ModuleType.get(module).getIcon(), false);
+     }
+     if (mark != null) {
+         element = element.withTailText(" {" + mark + "}", true);
+     }
+     return element;
+ }
+\ No newline at end of file

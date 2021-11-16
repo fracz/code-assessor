@@ -1,0 +1,14 @@
+diff --git a/ddbc44b35ecf61da621685c73a506400af31f771 b/b91104787400d08e5ca3606f87e4e09124a9e4aa
+index ddbc44b35e..b911047874 100644
+--- a/ddbc44b35ecf61da621685c73a506400af31f771
++++ b/b91104787400d08e5ca3606f87e4e09124a9e4aa
+@@ -1,5 +1,4 @@
+-public static Cursor makeAlbumCursor(Context paramContext, String paramString, String[] paramArrayOfString) {
+-    ContentResolver localContentResolver = paramContext.getContentResolver();
+-    Uri localUri = MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI;
+-    return localContentResolver.query(localUri, new String[] { "_id", "album", "artist", "artist_id", "numsongs", "minyear" }, paramString, paramArrayOfString, MediaStore.Audio.Albums.DEFAULT_SORT_ORDER);
++public static Cursor makeAlbumCursor(Context context, String selection, String[] paramArrayOfString) {
++    Cursor cursor = context.getContentResolver().query(MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI, new String[] { "_id", "album", "artist", "artist_id", "numsongs", "minyear" }, selection, paramArrayOfString, MediaStore.Audio.Albums.DEFAULT_SORT_ORDER);
++    return cursor;
+ }
+\ No newline at end of file

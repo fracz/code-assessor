@@ -1,0 +1,10 @@
+diff --git a/dce20d6908c69adba49f410003cffea5a6adb9f2 b/afca2300e475ce3544cc169c5a81855782be352a
+index dce20d6908..afca2300e4 100644
+--- a/dce20d6908c69adba49f410003cffea5a6adb9f2
++++ b/afca2300e475ce3544cc169c5a81855782be352a
+@@ -1,3 +1,3 @@
+ private TableRule createTableRuleWithAllStrategies() {
+-    return TableRule.builder("logicTable").actualTables(Arrays.asList("table_0", "table_1", "table_2")).dataSourceRule(createDataSourceRule()).databaseShardingStrategy(createDatabaseShardingStrategy()).tableShardingStrategy(createTableShardingStrategy()).build();
++    return TableRule.builder("logicTable").actualTables(Arrays.asList("table_0", "table_1", "table_2")).dataSourceRule(createDataSourceRule()).databaseShardingStrategy(new StandardShardingStrategy("column", new TestPreciseShardingAlgorithm())).tableShardingStrategy(new NoneShardingStrategy()).build();
+ }
+\ No newline at end of file

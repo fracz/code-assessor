@@ -1,0 +1,31 @@
+diff --git a/5425397d5d2be0113e319c4899fae5f38db953f8 b/238eb976b7e31a39852ea6ad01170d89c289a647
+index 5425397d5d..238eb976b7 100644
+--- a/5425397d5d2be0113e319c4899fae5f38db953f8
++++ b/238eb976b7e31a39852ea6ad01170d89c289a647
+@@ -1,19 +1,20 @@
+ public static void updateImportOfElement(PyImportStatementBase importStatement, PsiNamedElement element) {
+     final String name = getOriginalName(element);
+     if (name != null) {
+         PyImportElement importElement = null;
+         for (PyImportElement e : importStatement.getImportElements()) {
+             if (name.equals(getOriginalName(e))) {
+                 importElement = e;
+             }
+         }
+         if (importElement != null) {
+-            insertImport(importStatement, element, importElement.getAsName());
+-            if (importStatement.getImportElements().length == 1) {
+-                importStatement.delete();
+-            } else {
+-                importElement.delete();
++            if (insertImport(importStatement, element, importElement.getAsName())) {
++                if (importStatement.getImportElements().length == 1) {
++                    importStatement.delete();
++                } else {
++                    importElement.delete();
++                }
+             }
+         }
+     }
+ }
+\ No newline at end of file

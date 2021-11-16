@@ -1,0 +1,23 @@
+diff --git a/907462473b5013504091b043f25e6793ed9a3703 b/4bce7dbb4e5bcd38c8526a38b233531e91d44e95
+index 907462473b..4bce7dbb4e 100644
+--- a/907462473b5013504091b043f25e6793ed9a3703
++++ b/4bce7dbb4e5bcd38c8526a38b233531e91d44e95
+@@ -1,16 +1,13 @@
+ /**
+  * {@inheritDoc}
+  */
+ @Override
+ public void execute() {
+     if (!this.satelModule.isInitialized()) {
+         logger.debug("Module not initialized yet, skipping refresh");
+         return;
+     }
+     // get list of states that have changed
+     logger.trace("Sending 'get new states' command");
+-    if (this.newStatesCommand == null) {
+-        this.newStatesCommand = NewStatesCommand.buildMessage(this.satelModule.getIntegraType() == IntegraType.I256_PLUS);
+-    }
+-    this.satelModule.sendCommand(this.newStatesCommand);
++    this.satelModule.sendCommand(new NewStatesCommand(this.satelModule.getIntegraType() == IntegraType.I256_PLUS));
+ }
+\ No newline at end of file

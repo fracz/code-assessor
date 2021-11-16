@@ -1,0 +1,15 @@
+diff --git a/d7b34901d4031725b114aa11ed52364cecbbb522 b/48a0446ccf70201faa94d8b0dff48f7627e42b38
+index d7b34901d4..48a0446ccf 100644
+--- a/d7b34901d4031725b114aa11ed52364cecbbb522
++++ b/48a0446ccf70201faa94d8b0dff48f7627e42b38
+@@ -1,6 +1,7 @@
+ public PduBody toPduBody() {
+     PduBody body = new PduBody();
+-    Iterator<Slide> iterator = slides.iterator();
+-    while (iterator.hasNext()) body.addPart(iterator.next().getPart());
++    for (Slide slide : slides) {
++        body.addPart(slide.getPart());
++    }
+     return body;
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/821637f30d6ce6eb1a444eec38a40206641511b8 b/551b2007f14b75a728da2d25715892837962ea2a
+index 821637f30d..551b2007f1 100644
+--- a/821637f30d6ce6eb1a444eec38a40206641511b8
++++ b/551b2007f14b75a728da2d25715892837962ea2a
+@@ -1,10 +1,10 @@
+ @Override
+-public void onUIPositionChange(PtrFrameLayout frame, boolean isUnderTouch, byte status, int oldPosition, int currentPosition, float oldPercent, float currentPercent) {
++public void onUIPositionChange(PtrFrameLayout frame, boolean isUnderTouch, byte status, PtrIndicator ptrIndicator) {
+     PtrUIHandlerHolder current = this;
+     do {
+         final PtrUIHandler handler = current.getHandler();
+         if (null != handler) {
+-            handler.onUIPositionChange(frame, isUnderTouch, status, oldPosition, currentPosition, oldPercent, currentPercent);
++            handler.onUIPositionChange(frame, isUnderTouch, status, ptrIndicator);
+         }
+     } while ((current = current.mNext) != null);
+ }
+\ No newline at end of file

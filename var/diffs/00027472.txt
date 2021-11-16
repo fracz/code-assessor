@@ -1,0 +1,13 @@
+diff --git a/2c4a2f4c22b1e061001d90461ee2f9838cb77aa8 b/ba87aee9b39642fe2d167a0866c84da063ba509a
+index 2c4a2f4c22..ba87aee9b3 100644
+--- a/2c4a2f4c22b1e061001d90461ee2f9838cb77aa8
++++ b/ba87aee9b39642fe2d167a0866c84da063ba509a
+@@ -1,4 +1,5 @@
+ @Override
+-public InputRow parse(String input) throws FormattedException {
+-    return inputRowCreator.parse(parser.parse(input));
++public InputRow parse(ByteBuffer input) throws FormattedException {
++    Map<String, Object> theMap = buildStringKeyMap(input);
++    return inputRowCreator.parse(theMap);
+ }
+\ No newline at end of file

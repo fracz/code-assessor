@@ -1,0 +1,12 @@
+diff --git a/5c2824adb780b79579d3b3373835b9da37e4e78e b/31ba5e5128d5f9992a6fe3641450c8b722123de9
+index 5c2824adb7..31ba5e5128 100644
+--- a/5c2824adb780b79579d3b3373835b9da37e4e78e
++++ b/31ba5e5128d5f9992a6fe3641450c8b722123de9
+@@ -1,5 +1,5 @@
+ private static CFMetaData newCFMetaData(String ksname, String cfname) {
+-    CFMetaData metadata = new CFMetaData(ksname, cfname, ColumnFamilyType.Standard, new SimpleSparseCellNameType(UTF8Type.instance));
++    CFMetaData metadata = CFMetaData.Builder.create(ksname, cfname).addPartitionKey("key", UTF8Type.instance).addClusteringColumn("col", UTF8Type.instance).addRegularColumn("value", UTF8Type.instance).build();
+     metadata.caching(CachingOptions.NONE);
+     return metadata;
+ }
+\ No newline at end of file

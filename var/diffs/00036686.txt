@@ -1,0 +1,31 @@
+diff --git a/00f33b8ef77355233ebcd37f004d3cbc04dea9c9 b/675327b873017d401afeceda06eef084927fdaed
+index 00f33b8ef7..675327b873 100644
+--- a/00f33b8ef77355233ebcd37f004d3cbc04dea9c9
++++ b/675327b873017d401afeceda06eef084927fdaed
+@@ -1,19 +1,20 @@
+ private void closeOrFlush() {
+-    if (this.closer == null) {
++    final AsyncState asyncState = this.asyncState;
++    if (asyncState == null) {
+         return;
+     }
+-    if (this.closer.await()) {
++    if (asyncState.await()) {
+         // flush.
+         this.trace.flush();
+         if (isDebug) {
+-            logger.debug("Flush trace={}, closer={}", this, this.closer);
++            logger.debug("Flush trace={}, asyncState={}", this, this.asyncState);
+         }
+     } else {
+         // close.
+         this.trace.close();
+         if (isDebug) {
+-            logger.debug("Close trace={}. closer={}", this, this.closer);
++            logger.debug("Close trace={}. asyncState={}", this, this.asyncState);
+         }
+     }
+-    this.closer = null;
++    this.asyncState = null;
+ }
+\ No newline at end of file

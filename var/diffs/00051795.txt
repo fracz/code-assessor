@@ -1,0 +1,22 @@
+diff --git a/d2c37e0653c140191491259d373aa48868c98690 b/6c40cd21520b510df9bb5f162801c7b27f6898ca
+index d2c37e0653..6c40cd2152 100644
+--- a/d2c37e0653c140191491259d373aa48868c98690
++++ b/6c40cd21520b510df9bb5f162801c7b27f6898ca
+@@ -1,12 +1,8 @@
+ @Override
+-public Image getNodeIcon() {
+-    Image image = super.getNodeIcon();
+-    DataSourceDescriptor dataSource = getDataSourceContainer();
+-    if (dataSource.isConnectionReadOnly()) {
+-        image = DBNModel.getLockedOverlayImage(image);
+-    }
+-    if (dataSource.hasNetworkHandlers()) {
+-        image = DBNModel.getNetworkOverlayImage(image);
++public DBPImage getNodeIcon() {
++    DBPImage image = super.getNodeIcon();
++    if (dataSource.isConnectionReadOnly() || dataSource.hasNetworkHandlers()) {
++        return new DBIconComposite(image, false, null, dataSource.hasNetworkHandlers() ? DBIcon.OVER_EXTERNAL : null, dataSource.isConnectionReadOnly() ? DBIcon.OVER_LOCK : null, null);
+     }
+     return image;
+ }
+\ No newline at end of file

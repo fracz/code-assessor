@@ -1,0 +1,23 @@
+diff --git a/baa12aa2e05825584343ebaf9a0b6428dfe18cae b/9f3e2fd1a882506a2f0bbc783a318de5f00b31bc
+index baa12aa2e0..9f3e2fd1a8 100644
+--- a/baa12aa2e05825584343ebaf9a0b6428dfe18cae
++++ b/9f3e2fd1a882506a2f0bbc783a318de5f00b31bc
+@@ -1,13 +1,14 @@
+-private void process(int status) {
++private void process(MessageSnapshot snapshot) {
+     final boolean send;
++    final byte status = snapshot.getStatus();
+     if (status == FileDownloadStatus.blockComplete || status == FileDownloadStatus.completed) {
+         synchronized (blockCompletedLock) {
+-            send = offer(status);
++            send = offer(snapshot);
+         }
+     } else {
+-        send = offer(status);
++        send = offer(snapshot);
+     }
+     if (send) {
+         FileDownloadMessageStation.getImpl().requestEnqueue(this);
+     }
+ }
+\ No newline at end of file

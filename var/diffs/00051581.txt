@@ -1,0 +1,19 @@
+diff --git a/3614d061ba294487c068f4a29a92ec597a66b577 b/d52bd4557acc1833334a7c65a2cdce0e015c4aed
+index 3614d061ba..d52bd4557a 100644
+--- a/3614d061ba294487c068f4a29a92ec597a66b577
++++ b/d52bd4557acc1833334a7c65a2cdce0e015c4aed
+@@ -1,10 +1,11 @@
+ @Nullable
+ @Override
+ public DBSEntityAttribute getAttribute(DBRProgressMonitor monitor, String attributeName) {
+-    for (DBSAttributeBase attr : values.keySet()) {
++    for (int i = 0; i < attributes.length; i++) {
++        DBSEntityAttribute attr = attributes[i];
+         if (attr.getName().equals(attributeName)) {
+-            return (DBSEntityAttribute) attr;
++            return attr;
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

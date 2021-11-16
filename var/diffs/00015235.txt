@@ -1,0 +1,24 @@
+diff --git a/b208576cc34c64a273f109ac144e66b327a4f47f b/36c96aa0fd1d99f6e8a5e1ddc85077109f5acbdd
+index b208576cc3..36c96aa0fd 100644
+--- a/b208576cc34c64a273f109ac144e66b327a4f47f
++++ b/36c96aa0fd1d99f6e8a5e1ddc85077109f5acbdd
+@@ -1,15 +1,14 @@
+ private void process() {
+     List<JsExpression> arguments = getArguments();
+     List<JsParameter> parameters = getParameters();
+     replaceThis();
+     removeRedundantDefaultInitializers(arguments, parameters, body);
+-    aliasArgumentsIfNeeded(renamingContext, arguments, parameters);
+-    renameLocalNames(renamingContext, invokedFunction);
++    aliasArgumentsIfNeeded(namingContext, arguments, parameters);
++    renameLocalNames(namingContext, invokedFunction);
+     if (canBeExpression(body)) {
+-        applyRenaming();
+         doDirectInline();
+     } else {
+         processReturns();
+-        applyRenaming();
++        namingContext.applyRenameTo(body);
+     }
+ }
+\ No newline at end of file

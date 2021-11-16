@@ -1,0 +1,18 @@
+diff --git a/87f45406a4bf41b5963bddb4fcfcb6101deb3307 b/6f88b48081f0124e5992503d39a60ab98a742646
+index 87f45406a4..6f88b48081 100644
+--- a/87f45406a4bf41b5963bddb4fcfcb6101deb3307
++++ b/6f88b48081f0124e5992503d39a60ab98a742646
+@@ -1,8 +1,11 @@
++// protected void removeEdgeType() {
++// type = null;
++// }
+ @Override
+ public AtomicTitanQuery group(TypeGroup group) {
+     Preconditions.checkNotNull(group);
+     this.group = group;
+-    removeEdgeType();
++    this.types = null;
+     allEdges();
+     return this;
+ }
+\ No newline at end of file

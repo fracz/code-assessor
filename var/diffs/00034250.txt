@@ -1,0 +1,18 @@
+diff --git a/3a354ed73a342d1ded3cdba8da4365b39fc34590 b/a291376a20e43db23ac3472e9bd1f8ba700df4f1
+index 3a354ed73a..a291376a20 100644
+--- a/3a354ed73a342d1ded3cdba8da4365b39fc34590
++++ b/a291376a20e43db23ac3472e9bd1f8ba700df4f1
+@@ -1,3 +1,10 @@
+-public void notifyUserIfCertificateProblem(Exception e, Account account, boolean incoming) {
+-    notificationController.notifyUserIfCertificateProblem(context, e, account, incoming);
++public void notifyUserIfCertificateProblem(Account account, Exception exception, boolean incoming) {
++    if (!(exception instanceof CertificateValidationException)) {
++        return;
++    }
++    CertificateValidationException cve = (CertificateValidationException) exception;
++    if (!cve.needsUserAttention()) {
++        return;
++    }
++    notificationController.showCertificateErrorNotification(account, incoming);
+ }
+\ No newline at end of file

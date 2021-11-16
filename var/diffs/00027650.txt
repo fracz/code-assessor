@@ -1,0 +1,21 @@
+diff --git a/9d0aeecb618a2369a402195f92552b7b5f82b244 b/b69399a1bd2fddee7c926a9c6a8d8f42d8ab8031
+index 9d0aeecb61..b69399a1bd 100644
+--- a/9d0aeecb618a2369a402195f92552b7b5f82b244
++++ b/b69399a1bd2fddee7c926a9c6a8d8f42d8ab8031
+@@ -1,10 +1,14 @@
+ @Nonnull
+ @Override
+ public ExprEval eval(final ObjectBinding bindings) {
++    final String value = arg.eval(bindings).asString();
++    if (value == null) {
++        return ExprEval.of(null);
++    }
+     try {
+-        return ExprEval.of(formatter.parse(arg.eval(bindings).asString()).getMillis());
++        return ExprEval.of(formatter.parse(value).getMillis());
+     } catch (IllegalArgumentException e) {
+         // are returned as nulls.
+         return ExprEval.of(null);
+     }
+ }
+\ No newline at end of file

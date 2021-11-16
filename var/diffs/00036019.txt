@@ -1,0 +1,16 @@
+diff --git a/69eebd23c0ba2e0fb01fb5168db09c84b3404cfb b/6d529fa0d30888574827bbbfd128d4c2cc5dadc6
+index 69eebd23c0..6d529fa0d3 100644
+--- a/69eebd23c0ba2e0fb01fb5168db09c84b3404cfb
++++ b/6d529fa0d30888574827bbbfd128d4c2cc5dadc6
+@@ -1,9 +1,8 @@
+-public List<Invocation> allInvocationsInOrder() {
+-    List<Object> mocks = mode.getAllMocksToBeVerifiedInSequence();
++public List<Invocation> allInvocationsInOrder(List<Object> mocks) {
+     List<Invocation> allInvocations = new LinkedList<Invocation>();
+     for (Object mock : mocks) {
+         List<Invocation> invocationsOfSingleMock = MockUtil.getControl(mock).getRegisteredInvocations();
+         allInvocations.addAll(invocationsOfSingleMock);
+     }
+     return allInvocations;
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/458bd20d404856a0d2f5e90ce72dd13bb8431498 b/db8eef1cbbf360283bc6b50a764a7424efd755cf
+index 458bd20d40..db8eef1cbb 100644
+--- a/458bd20d404856a0d2f5e90ce72dd13bb8431498
++++ b/db8eef1cbbf360283bc6b50a764a7424efd755cf
+@@ -1,7 +1,7 @@
+-private void doTest() throws Exception {
++private void doTest() {
+     final String testName = getTestName(false).toLowerCase();
+     configureByFile(testName + ".py");
+-    final ControlFlow flow = ((PyFile) myFile).getControlFlow();
++    final ControlFlow flow = ControlFlowCache.getControlFlow((PyFile) myFile);
+     final String fullPath = getTestDataPath() + testName + ".txt";
+     check(fullPath, flow);
+ }
+\ No newline at end of file

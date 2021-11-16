@@ -1,0 +1,23 @@
+diff --git a/2597924034cf7f03cd351a1b613932e921c69c99 b/2a643fe1a5986d866825db98d80c6fdcf59d2482
+index 2597924034..2a643fe1a5 100644
+--- a/2597924034cf7f03cd351a1b613932e921c69c99
++++ b/2a643fe1a5986d866825db98d80c6fdcf59d2482
+@@ -1,12 +1,11 @@
+ public void pushSessionId(final String iServerURL, final int iSessionId, byte[] token, Set<OChannelBinary> connections) {
+-    final OStorageRemoteThreadLocal instance = OStorageRemoteThreadLocal.INSTANCE;
+-    if (instance != null) {
+-        final OStorageRemoteSession tl = instance.get();
+-        tl.serverURL = iServerURL;
+-        tl.sessionId = iSessionId;
+-        tl.connections = connections;
++    final OStorageRemoteSession session = getCurrentSession();
++    if (session != null) {
++        session.serverURL = iServerURL;
++        session.sessionId = iSessionId;
++        session.connections = connections;
+     }
+     if (token != null && iServerURL != null) {
+         this.tokens.put(iServerURL, token);
+     }
+ }
+\ No newline at end of file

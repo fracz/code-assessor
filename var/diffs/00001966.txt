@@ -1,0 +1,22 @@
+diff --git a/3924cc1821526ffc67b1a4a20c42c7d67cbda2e3 b/3f5764aad99ad750d0ff2de894677414ceaaebfd
+index 3924cc1821..3f5764aad9 100644
+--- a/3924cc1821526ffc67b1a4a20c42c7d67cbda2e3
++++ b/3f5764aad99ad750d0ff2de894677414ceaaebfd
+@@ -1,13 +1,7 @@
+ private String getProgressTitle() {
+-    String type;
+-    if (myProjectSettings.isCheckIncoming()) {
+-        if (myProjectSettings.isCheckOutgoing()) {
+-            type = "incoming and outgoing";
+-        } else {
+-            type = "incoming";
+-        }
+-    } else {
+-        type = "outgoing";
++    String type = "";
++    if (myProjectSettings.isCheckIncomingOutgoing()) {
++        type = "incoming and outgoing";
+     }
+     return "Checking " + type + " changes";
+ }
+\ No newline at end of file

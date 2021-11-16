@@ -1,0 +1,18 @@
+diff --git a/765f7dc2397d25464f2ee8f11b21e1e0c78364f4 b/54614bf09d1f744457d3d1f5945b7f34c5879c62
+index 765f7dc239..54614bf09d 100644
+--- a/765f7dc2397d25464f2ee8f11b21e1e0c78364f4
++++ b/54614bf09d1f744457d3d1f5945b7f34c5879c62
+@@ -1,8 +1,7 @@
+ @Override
+ public void disposeComponent() {
+-    Disposer.dispose(myKeymapUpdaterAlarm);
+-    if (myKeymapListener != null) {
+-        myKeymapListener.stopListen();
+-        myKeymapListener = null;
+-    }
++    if (!isInitialized.getAndSet(false))
++        return;
++    myKeymapListener.stopListen();
++    MavenKeymapExtension.clearActions(myProject);
+ }
+\ No newline at end of file

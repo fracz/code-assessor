@@ -1,0 +1,14 @@
+diff --git a/3aa4d3881b7bc923d4991e39e7dd805e269c76c5 b/75987efccc60c9fe4c9298cc664dcc0752ba1e76
+index 3aa4d3881b..75987efccc 100644
+--- a/3aa4d3881b7bc923d4991e39e7dd805e269c76c5
++++ b/75987efccc60c9fe4c9298cc664dcc0752ba1e76
+@@ -1,5 +1,5 @@
+-private static void addRegularDescriptor(@NotNull TextRange textRange, @NotNull Token token, @NotNull ProblemsHolder holder) {
+-    SpellCheckerQuickFix[] fixes = new SpellCheckerQuickFix[] { (token.isUseRename() ? new RenameTo() : new ChangeTo()), new AcceptWordAsCorrect() };
+-    final ProblemDescriptor problemDescriptor = createProblemDescriptor(token, holder, textRange, fixes, true);
++private static void addRegularDescriptor(PsiElement element, int offset, @NotNull TextRange textRange, @NotNull ProblemsHolder holder, boolean useRename) {
++    SpellCheckerQuickFix[] fixes = new SpellCheckerQuickFix[] { (useRename ? new RenameTo() : new ChangeTo()), new AcceptWordAsCorrect() };
++    final ProblemDescriptor problemDescriptor = createProblemDescriptor(element, offset, textRange, holder, fixes, true);
+     holder.registerProblem(problemDescriptor);
+ }
+\ No newline at end of file

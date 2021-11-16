@@ -1,0 +1,20 @@
+diff --git a/ffc57268b4244d1e1fbb6a6c71ef447d70395846 b/d1acd47e5c2147d7eb8ae0ec4130c5a700ebedc8
+index ffc57268b4..d1acd47e5c 100644
+--- a/ffc57268b4244d1e1fbb6a6c71ef447d70395846
++++ b/d1acd47e5c2147d7eb8ae0ec4130c5a700ebedc8
+@@ -1,11 +1,11 @@
+ @Override
+ protected void dispose() {
+     for (Map.Entry<EditorTextField, DocumentAdapter> e : myComboBoxListeners.entrySet()) {
+         e.getKey().removeDocumentListener(e.getValue());
+     }
+     myComboBoxListeners.clear();
+-    if (myLivePreviewController != null) {
+-        myLivePreviewController.cleanUp();
+-    }
++    // if (myLivePreviewController != null) {
++    // myLivePreviewController.cleanUp();
++    // }
+     super.dispose();
+ }
+\ No newline at end of file

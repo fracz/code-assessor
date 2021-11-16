@@ -1,0 +1,21 @@
+diff --git a/ebc3d1f271f8a5783f78e75904e081b43b4f4cd5 b/0238aa1807d000837203103d0c29f4ed67951c35
+index ebc3d1f271..0238aa1807 100644
+--- a/ebc3d1f271f8a5783f78e75904e081b43b4f4cd5
++++ b/0238aa1807d000837203103d0c29f4ed67951c35
+@@ -1,13 +1,13 @@
+ public static boolean isExecQuery(@NotNull SQLDialect dialect, String query) {
+     // Check for EXEC query
+-    final Collection<String> executeKeywords = dialect.getExecuteKeywords();
+-    if (!CommonUtils.isEmpty(executeKeywords)) {
++    final String[] executeKeywords = dialect.getExecuteKeywords();
++    if (executeKeywords.length > 0) {
+         final String queryStart = getFirstKeyword(query);
+         for (String keyword : executeKeywords) {
+             if (keyword.equalsIgnoreCase(queryStart)) {
+                 return true;
+             }
+         }
+     }
+     return false;
+ }
+\ No newline at end of file

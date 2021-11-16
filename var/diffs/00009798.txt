@@ -1,0 +1,19 @@
+diff --git a/bba9a48441c15f6135ce7f0e4ec466b059efa1bf b/8bd964241a302298d29d1b5d4c329382d2590f32
+index bba9a48441..8bd964241a 100644
+--- a/bba9a48441c15f6135ce7f0e4ec466b059efa1bf
++++ b/8bd964241a302298d29d1b5d4c329382d2590f32
+@@ -1,6 +1,8 @@
+-public void profilesChanged(List<String> profiles) {
+-    if (!isActivated)
+-        return;
+-    myRoot.setActiveProfiles(profiles);
+-    myTree.repaint();
++public void profilesChanged(final List<String> profiles) {
++    scheduleStructureUpdate(new Runnable() {
++
++        public void run() {
++            myStructure.setActiveProfiles(profiles);
++        }
++    });
+ }
+\ No newline at end of file

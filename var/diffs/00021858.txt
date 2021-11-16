@@ -1,0 +1,21 @@
+diff --git a/4b15abf3644aead4c1b2a4310755fbbb0f557c78 b/6e9dc547a61bbb370b5f21d26becb8218e0836c0
+index 4b15abf364..6e9dc547a6 100644
+--- a/4b15abf3644aead4c1b2a4310755fbbb0f557c78
++++ b/6e9dc547a61bbb370b5f21d26becb8218e0836c0
+@@ -1,13 +1,13 @@
+ /**
+  * Start WPS pin method configuration with pin obtained
+  * from the access point
+  */
+-static boolean startWpsWithPinFromAccessPoint(String bssid, int apPin) {
+-    if (WifiNative.startWpsWithPinFromAccessPointCommand(bssid, apPin)) {
++static boolean startWpsWithPinFromAccessPoint(WpsConfiguration config) {
++    if (WifiNative.startWpsWithPinFromAccessPointCommand(config.BSSID, config.pin)) {
+         /* WPS leaves all networks disabled */
+         markAllNetworksDisabled();
+         return true;
+     }
+     Log.e(TAG, "Failed to start WPS pin method configuration");
+     return false;
+ }
+\ No newline at end of file

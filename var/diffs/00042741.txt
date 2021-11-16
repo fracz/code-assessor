@@ -1,0 +1,23 @@
+diff --git a/402c51a7e2e81ad350c1ed07f41d3041de954448 b/4f9dd8864a71f0bc817748aeb18fd433c2c915a1
+index 402c51a7e2..4f9dd8864a 100644
+--- a/402c51a7e2e81ad350c1ed07f41d3041de954448
++++ b/4f9dd8864a71f0bc817748aeb18fd433c2c915a1
+@@ -1,15 +1,15 @@
+ @Test
+ public void testDuplicatedIndexOnUnique() {
+     database.open("admin", "admin");
+     Profile jayMiner = new Profile("Jay", "Jay", "Miner", null);
+     database.save(jayMiner);
+     Profile jacobMiner = new Profile("Jay", "Jacob", "Miner", null);
+     try {
+         database.save(jacobMiner);
+         // IT SHOULD GIVE ERROR ON DUPLICATED KEY
+         Assert.assertTrue(false);
+-    } catch (ODatabaseException e) {
+-        Assert.assertTrue(e.getCause() instanceof OIndexException);
++    } catch (OIndexException e) {
++        Assert.assertTrue(true);
+     }
+     database.close();
+ }
+\ No newline at end of file

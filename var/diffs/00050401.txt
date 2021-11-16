@@ -1,0 +1,15 @@
+diff --git a/fa2e5d0f6f7862eacb896a7290d0388fc1ce4d6b b/e75cd944f86905de8da3f6369cc0e535c00436ad
+index fa2e5d0f6f..e75cd944f8 100644
+--- a/fa2e5d0f6f7862eacb896a7290d0388fc1ce4d6b
++++ b/e75cd944f86905de8da3f6369cc0e535c00436ad
+@@ -1,8 +1,8 @@
+ // ------------------------
+ // Error Message
+ // ------------------------
+ public static String getMessageFromCode(DB2DataSource db2DataSource, Integer sqlErrorCode) throws SQLException {
+-    try (JDBCSession session = DBUtils.openUtilSession(VoidProgressMonitor.INSTANCE, db2DataSource, "Get Error Code")) {
++    try (JDBCSession session = DBUtils.openUtilSession(new VoidProgressMonitor(), db2DataSource, "Get Error Code")) {
+         return JDBCUtils.queryString(session, GET_MSG, sqlErrorCode);
+     }
+ }
+\ No newline at end of file

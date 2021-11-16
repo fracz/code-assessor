@@ -1,0 +1,18 @@
+diff --git a/5643cca55af0958bfb902756d658d68bc571f5c2 b/fbf32b04c0effbc62b21eeb827052c6cbe255cc2
+index 5643cca55a..fbf32b04c0 100644
+--- a/5643cca55af0958bfb902756d658d68bc571f5c2
++++ b/fbf32b04c0effbc62b21eeb827052c6cbe255cc2
+@@ -1,8 +1,9 @@
+ public void testUpdatingLocalClearsPreviousIndex() throws Exception {
+-    MavenIndex i = new MavenIndex("local", myDataTestFixture.getTestDataPath("local1"), MavenIndex.Kind.LOCAL);
++    MavenIndex i = new LocalMavenIndex("local", myDataTestFixture.getTestDataPath("local1"));
+     myIndices.add(i);
+     myIndices.update(i, myProject, new EmptyProgressIndicator());
+-    assertEquals(3, myIndices.findByArtifactId("junit*").size());
++    assertUnorderedElementsAreEqual(myIndices.getGroupIds(), "junit");
++    myIndices.change(i, "local", myDataTestFixture.getTestDataPath("local2"));
+     myIndices.update(i, myProject, new EmptyProgressIndicator());
+-    assertEquals(3, myIndices.findByArtifactId("junit*").size());
++    assertUnorderedElementsAreEqual(myIndices.getGroupIds(), "jmock");
+ }
+\ No newline at end of file

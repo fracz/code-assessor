@@ -1,0 +1,20 @@
+diff --git a/efac04edb8b5f7c6e4a6fe45598f38b0b61b5fa8 b/e582956973c702f3c0d0256ce915c8e171291647
+index efac04edb8..e582956973 100644
+--- a/efac04edb8b5f7c6e4a6fe45598f38b0b61b5fa8
++++ b/e582956973c702f3c0d0256ce915c8e171291647
+@@ -1,8 +1,13 @@
++/**
++ * Close transport, canceling any pending read operations and closing channel
++ */
+ public void close() {
+     try {
+-        nioSelector.cancelRead(registeredKey);
++        if (null != registeredKey) {
++            registeredKey.cancel();
++        }
+         channel.close();
+     } catch (final Exception ex) {
+         logger.logException(ex);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,22 @@
+diff --git a/47d460c89332878ebe85f58bda1990efe9ed8c24 b/992f9440822eb61c9dd6331bf2e55134f4df1f6b
+index 47d460c893..992f944082 100644
+--- a/47d460c89332878ebe85f58bda1990efe9ed8c24
++++ b/992f9440822eb61c9dd6331bf2e55134f4df1f6b
+@@ -1,10 +1,12 @@
+ private static void rememberReference(PyReferenceExpression node, PsiElement element) {
+-    // we will remember reference in deepest node
+-    if (node.getQualifier() instanceof PyReferenceExpression)
++    // We will remember reference in deepest node (except for references to PyImportedModules, as we need references to modules, not to
++    // their packages)
++    final PyExpression qualifier = node.getQualifier();
++    if (qualifier != null && !(resolveExpression(qualifier) instanceof PyImportedModule)) {
+         return;
+-    final PsiPolyVariantReference ref = node.getReference();
+-    final PsiElement target = ref.resolve();
++    }
++    final PsiElement target = resolveExpression(node);
+     if (target instanceof PsiNamedElement && !PsiTreeUtil.isAncestor(element, target, false)) {
+         node.putCopyableUserData(ENCODED_IMPORT, (PsiNamedElement) target);
+     }
+ }
+\ No newline at end of file

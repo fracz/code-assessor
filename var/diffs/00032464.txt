@@ -1,0 +1,24 @@
+diff --git a/7cddb1667cf97459347fa94cf8861b68d84fa51d b/2105a11fddcaa8efaf22845f81df318a753a553e
+index 7cddb1667c..2105a11fdd 100644
+--- a/7cddb1667cf97459347fa94cf8861b68d84fa51d
++++ b/2105a11fddcaa8efaf22845f81df318a753a553e
+@@ -1,15 +1,15 @@
+ static JSType getDeclaredProp(ImmutableSet<? extends TypeWithProperties> types, QualifiedName qname) {
+     if (types == null) {
+         return null;
+     }
+-    JSType ptype = JSType.BOTTOM;
++    JSType ptype = null;
+     for (TypeWithProperties t : types) {
+         if (t.mayHaveProp(qname)) {
+             JSType declType = t.getDeclaredProp(qname);
+             if (declType != null) {
+-                ptype = JSType.join(ptype, declType);
++                ptype = ptype == null ? declType : JSType.join(ptype, declType);
+             }
+         }
+     }
+-    return ptype.isBottom() ? null : ptype;
++    return ptype;
+ }
+\ No newline at end of file

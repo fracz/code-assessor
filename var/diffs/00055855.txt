@@ -1,0 +1,16 @@
+diff --git a/2d4447d667ab0394c196d9de3f0983fff9391616 b/b52da65874bb74f051f1bf1f3e41517dc5d25a07
+index 2d4447d667..b52da65874 100644
+--- a/2d4447d667ab0394c196d9de3f0983fff9391616
++++ b/b52da65874bb74f051f1bf1f3e41517dc5d25a07
+@@ -1,9 +1,9 @@
+ @Test
+ @SuppressWarnings("unchecked")
+ public void validateFluxTestBean() throws Exception {
+     String body = "[{\"bar\":\"b1\",\"foo\":\"f1\"},{\"bar\":\"b2\"}]";
+     ResolvableType type = forClassWithGenerics(Flux.class, TestBean.class);
+     MethodParameter param = this.testMethod.resolveParam(type);
+     Flux<TestBean> flux = resolveValue(param, body);
+-    TestSubscriber.subscribe(flux).assertValues(new TestBean("f1", "b1")).assertError(ServerWebInputException.class);
++    ScriptedSubscriber.<TestBean>create().expectNext(new TestBean("f1", "b1")).expectError(ServerWebInputException.class).verify(flux);
+ }
+\ No newline at end of file

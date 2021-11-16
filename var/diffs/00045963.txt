@@ -1,0 +1,19 @@
+diff --git a/470bb6ec4932991ccc3a3cd5df7e2168786ec27e b/dacfd7c1f6fd096e48571a5d224f24f8faa10831
+index 470bb6ec49..dacfd7c1f6 100644
+--- a/470bb6ec4932991ccc3a3cd5df7e2168786ec27e
++++ b/dacfd7c1f6fd096e48571a5d224f24f8faa10831
+@@ -1,12 +1,6 @@
+ @Test
+ public void shouldBeAbleToGetTheContextPath() {
+-    HttpServletRequest servletRequest = new MockedHttpServletRequest(new HashMap<String, String[]>()) {
+-
+-        @Override
+-        public String getContextPath() {
+-            return THE_CONTEXT_PATH;
+-        }
+-    };
++    when(servletRequest.getContextPath()).thenReturn(THE_CONTEXT_PATH);
+     Request request = new Request(match, servletRequest);
+     assertEquals("Should have delegated getting the context path", THE_CONTEXT_PATH, request.contextPath());
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/a71f93869546ad1896bbdeb5de6e1f2761e5276b b/c3e73c78773a6a4f141798c2d839a73ff1d7727e
+index a71f938695..c3e73c7877 100644
+--- a/a71f93869546ad1896bbdeb5de6e1f2761e5276b
++++ b/c3e73c78773a6a4f141798c2d839a73ff1d7727e
+@@ -1,12 +1,12 @@
+ public boolean isWriteAsArray(JSONSerializer serializer) {
+-    if (SerializerFeature.isEnabled(features, SerializerFeature.BeanToArray)) {
++    if ((features & SerializerFeature.BeanToArray.mask) != 0) {
+         return true;
+     }
+     boolean writeAsArray;
+-    if (serializer.isEnabled(SerializerFeature.BeanToArray)) {
++    if (serializer.out.isEnabled(SerializerFeature.BeanToArray)) {
+         writeAsArray = true;
+     } else {
+         writeAsArray = false;
+     }
+     return writeAsArray;
+ }
+\ No newline at end of file

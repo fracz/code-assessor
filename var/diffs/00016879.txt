@@ -1,0 +1,17 @@
+diff --git a/6aa279374121e3a5a85472b426549ab91cd789d4 b/80ea402b70ae6fc926a96e8b91eac43c5e319fe5
+index 6aa2793741..80ea402b70 100644
+--- a/6aa279374121e3a5a85472b426549ab91cd789d4
++++ b/80ea402b70ae6fc926a96e8b91eac43c5e319fe5
+@@ -1,6 +1,9 @@
+ @Override
+ @NotNull
+ public JsExpression translateAsGet() {
+-    JsName getterName = getGetterName();
+-    return qualifiedAccessorInvocation(getterName);
++    if (isBackingFieldAccess) {
++        return backingFieldGet();
++    } else {
++        return getterCall();
++    }
+ }
+\ No newline at end of file

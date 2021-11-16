@@ -1,0 +1,21 @@
+diff --git a/dd9d063bfa879dae56a86212c7efcea127048384 b/5132ad8dbe277060df22a7e0a25a94b7b9fcb2e2
+index dd9d063bfa..5132ad8dbe 100644
+--- a/dd9d063bfa879dae56a86212c7efcea127048384
++++ b/5132ad8dbe277060df22a7e0a25a94b7b9fcb2e2
+@@ -1,13 +1,13 @@
+ @Test
+ public void shouldHandleBasicSetupAndTeardown() {
+     Executor executor = Executors.newSingleThreadExecutor();
+     try (final EventLoop evLoop = new EventLoop()) {
+-        RcvFrameHandler rcv = new RcvFrameHandler(new InetSocketAddress(40123), evLoop);
+-        SrcFrameHandler src = new SrcFrameHandler(new InetSocketAddress(0), new InetSocketAddress("localhost", 40123), evLoop);
++        RcvFrameHandler rcv = new RcvFrameHandler(rcvLocalAddr, evLoop);
++        SrcFrameHandler src = new SrcFrameHandler(srcLocalAddr, srcRemoteAddr, evLoop);
+         executor.execute(evLoop);
+         rcv.close();
+         src.close();
+     } catch (Exception e) {
+         e.printStackTrace();
+     }
+ }
+\ No newline at end of file

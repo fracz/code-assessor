@@ -1,0 +1,12 @@
+diff --git a/c4514f6bdd137084208f1c65bbe87033b15867b3 b/3e575774d2512492fae81e2453c464d14c83b6ea
+index c4514f6bdd..3e575774d2 100644
+--- a/c4514f6bdd137084208f1c65bbe87033b15867b3
++++ b/3e575774d2512492fae81e2453c464d14c83b6ea
+@@ -1,5 +1,4 @@
+ @Override
+ public int getAsyncId() {
+-    final int id = asyncId.incrementAndGet();
+-    return id == -1 ? asyncId.incrementAndGet() : id;
++    return this.asyncIdGenerator.nextAsyncId();
+ }
+\ No newline at end of file

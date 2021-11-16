@@ -1,0 +1,21 @@
+diff --git a/119221c9d444f510c5c52ae5f28742df7e89e503 b/6fb830a51dd84aca8542c2ff98d5ac193664520e
+index 119221c9d4..6fb830a51d 100644
+--- a/119221c9d444f510c5c52ae5f28742df7e89e503
++++ b/6fb830a51dd84aca8542c2ff98d5ac193664520e
+@@ -1,14 +1,12 @@
+ public ORecordInternal<T> load() {
+-    if (_database == null)
+-        throw new ODatabaseException("No database assigned to current record");
+     if (!getIdentity().isValid())
+         throw new ORecordNotFoundException("The record has no id, probably it's new or transient yet ");
+     try {
+-        final ORecordInternal<?> result = _database.load(this);
++        final ORecordInternal<?> result = getDatabase().load(this);
+         if (result == null)
+             throw new ORecordNotFoundException("The record with id '" + getIdentity() + "' not found");
+         return (ORecordInternal<T>) result;
+     } catch (Exception e) {
+         throw new ORecordNotFoundException("The record with id '" + getIdentity() + "' not found", e);
+     }
+ }
+\ No newline at end of file

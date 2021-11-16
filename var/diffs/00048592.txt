@@ -1,0 +1,13 @@
+diff --git a/c8f482b30f8705fbab8325819f970a4406362f59 b/3b657acfdb8bce2fc6eeea35c44d50ca6cacc785
+index c8f482b30f..3b657acfdb 100644
+--- a/c8f482b30f8705fbab8325819f970a4406362f59
++++ b/3b657acfdb8bce2fc6eeea35c44d50ca6cacc785
+@@ -1,6 +1,6 @@
+ @Override
+ public Object parseValue(String value) throws ParseException {
+-    synchronized (numberFormat) {
++    synchronized (this) {
+         return numberFormat.parse(value);
+     }
+ }
+\ No newline at end of file

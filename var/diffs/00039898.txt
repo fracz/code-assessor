@@ -1,0 +1,19 @@
+diff --git a/001a3145ed8709a64783d6c879f73ef58fc91acf b/304e335d5bd2585dd1294d0e93fb244ea7551139
+index 001a3145ed..304e335d5b 100644
+--- a/001a3145ed8709a64783d6c879f73ef58fc91acf
++++ b/304e335d5bd2585dd1294d0e93fb244ea7551139
+@@ -1,12 +1,7 @@
+ @Override
+ public int compareTo(CountsKey other) {
+     if (other instanceof IndexStatisticsKey) {
+-        IndexStatisticsKey that = (IndexStatisticsKey) other;
+-        int cmp = this.labelId() - that.labelId();
+-        if (cmp == 0) {
+-            cmp = this.propertyKeyId() - that.propertyKeyId();
+-        }
+-        return cmp;
++        return super.compareTo(other);
+     }
+     return recordType().ordinal() - other.recordType().ordinal();
+ }
+\ No newline at end of file

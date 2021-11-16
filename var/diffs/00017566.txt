@@ -1,0 +1,20 @@
+diff --git a/cba48e7d21e06e2e58920da928255369feccf503 b/78af26ac4ccf349356d6650df99c9b72ff050b48
+index cba48e7d21..78af26ac4c 100644
+--- a/cba48e7d21e06e2e58920da928255369feccf503
++++ b/78af26ac4ccf349356d6650df99c9b72ff050b48
+@@ -1,12 +1,10 @@
+ private JetTypeMapper prepareTypeMapper(JetFile file) {
+     final JetTypeMapper mapper = myTypeMappers.get(file);
+     if (mapper != null) {
+         return mapper;
+     }
+-    final BindingContext bindingContext = WholeProjectAnalyzerFacade.analyzeProjectWithCacheOnAFile(file).getBindingContext();
+-    final JetStandardLibrary standardLibrary = JetStandardLibrary.getInstance();
+-    InjectorForJvmCodegen injector = new InjectorForJvmCodegen(standardLibrary, bindingContext, Collections.singletonList(file), file.getProject());
+-    final JetTypeMapper typeMapper = injector.getJetTypeMapper();
++    final AnalyzeExhaust analyzeExhaust = WholeProjectAnalyzerFacade.analyzeProjectWithCacheOnAFile(file);
++    JetTypeMapper typeMapper = new InjectorForJetTypeMapper(analyzeExhaust.getStandardLibrary(), analyzeExhaust.getBindingContext(), Collections.singletonList(file)).getJetTypeMapper();
+     myTypeMappers.put(file, typeMapper);
+     return typeMapper;
+ }
+\ No newline at end of file

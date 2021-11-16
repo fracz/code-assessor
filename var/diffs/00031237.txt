@@ -1,0 +1,34 @@
+diff --git a/9a29c2dac79cd68d2e0c02e831ca7cf58b95da51 b/3b445498d1a1ff8a17eb632ee0b84f61a21753ff
+index 9a29c2dac7..3b445498d1 100644
+--- a/9a29c2dac79cd68d2e0c02e831ca7cf58b95da51
++++ b/3b445498d1a1ff8a17eb632ee0b84f61a21753ff
+@@ -1,18 +1,16 @@
+ @Override
+ public void clearUnreferenced() {
+-    synchronized (mutex) {
+-        File[] files = location.listFiles();
+-        if (files != null) {
+-            for (File file : files) {
+-                if (file.getName().equals("translog-" + id)) {
+-                    continue;
+-                }
+-                try {
+-                    file.delete();
+-                } catch (Exception e) {
+-                // ignore
+-                }
++    File[] files = location.listFiles();
++    if (files != null) {
++        for (File file : files) {
++            if (file.getName().equals("translog-" + current.id())) {
++                continue;
++            }
++            try {
++                file.delete();
++            } catch (Exception e) {
++            // ignore
+             }
+         }
+     }
+ }
+\ No newline at end of file

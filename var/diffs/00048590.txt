@@ -1,0 +1,22 @@
+diff --git a/b9af9437b634245950f89104007bcee6e2dafa9d b/4a6d23852b062d872d18581c15f6f72d71c3d3dc
+index b9af9437b6..4a6d23852b 100644
+--- a/b9af9437b634245950f89104007bcee6e2dafa9d
++++ b/4a6d23852b062d872d18581c15f6f72d71c3d3dc
+@@ -1,15 +1,15 @@
+ @Nullable
+ @Override
+ public String formatValue(Object value) {
+     if (value == null) {
+         return null;
+     }
+     try {
+-        synchronized (numberFormat) {
++        synchronized (this) {
+             buffer.setLength(0);
+             return numberFormat.format(value, buffer, position).toString();
+         }
+     } catch (Exception e) {
+         return value.toString();
+     }
+ }
+\ No newline at end of file

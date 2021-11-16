@@ -1,0 +1,20 @@
+diff --git a/6e0451f2d6b6f80c99252f6d728a4e53d9da3efa b/4c7396c55897d6af18305e7730cb1cfe36e2f0f7
+index 6e0451f2d6..4c7396c558 100644
+--- a/6e0451f2d6b6f80c99252f6d728a4e53d9da3efa
++++ b/4c7396c55897d6af18305e7730cb1cfe36e2f0f7
+@@ -1,11 +1,10 @@
+ @Test
+ public void renameRefactoringShouldBeAppliedSuccessAndShowWizard() throws OperationException {
+     when(result.getSeverity()).thenReturn(OK);
+-    when(session.isMastShowWizard()).thenReturn(true);
+     refactoringRename.refactor(textEditor);
+-    verify(refactoringServiceClient).createRenameRefactoring(createRenameRefactoringDto);
+-    verify(createRenamePromise).then(renameRefCaptor.capture());
++    refactoringRename.refactor(textEditor);
++    verify(refactoringServiceClient, times(2)).createRenameRefactoring(createRenameRefactoringDto);
++    verify(createRenamePromise, times(2)).then(renameRefCaptor.capture());
+     renameRefCaptor.getValue().apply(session);
+-    verify(session).isMastShowWizard();
+     verify(renamePresenter).show(session);
+ }
+\ No newline at end of file

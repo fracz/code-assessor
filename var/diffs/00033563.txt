@@ -1,0 +1,26 @@
+diff --git a/5d4a0ec346160c53562856b8b39f100efd2c8ee1 b/bd45246cbafd5b78c66c189508cade3ae562cf4f
+index 5d4a0ec346..bd45246cba 100644
+--- a/5d4a0ec346160c53562856b8b39f100efd2c8ee1
++++ b/bd45246cbafd5b78c66c189508cade3ae562cf4f
+@@ -1,19 +1,11 @@
+ /**
+  * Creates instance for Factory implementation with the provided Java home directory. Setting the "java.home" system property is thread-safe
+  * and is set back to the original value of "java.home" after the operation.
+  *
+  * @param javaHomeDir Java home directory
+  * @param factory Factory
+  * @return Instance created by Factory implementation
+  */
+ public <T> T withJavaHome(File javaHomeDir, Factory<T> factory) {
+-    lock.lock();
+-    File originalJavaHomeDir = getJavaHomeDir();
+-    setJavaHomeDir(javaHomeDir);
+-    try {
+-        return factory.create();
+-    } finally {
+-        setJavaHomeDir(originalJavaHomeDir);
+-        lock.unlock();
+-    }
++    return withSystemProperty("java.home", javaHomeDir.getAbsolutePath(), factory);
+ }
+\ No newline at end of file

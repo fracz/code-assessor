@@ -1,0 +1,16 @@
+diff --git a/9a4d83c36bd028f42b3145ccf937b208f8493c39 b/1da1d5e49f9e80ee00a75aa02231f3091efcf87a
+index 9a4d83c36b..1da1d5e49f 100644
+--- a/9a4d83c36bd028f42b3145ccf937b208f8493c39
++++ b/1da1d5e49f9e80ee00a75aa02231f3091efcf87a
+@@ -1,9 +1,9 @@
+ public static void pushDoubleObjectMap(ExtTDoubleObjectHashMap map) {
+     Queue<ExtTDoubleObjectHashMap> ref = doubleObjectHashMap.get();
+     if (ref == null) {
+-        ref = new LinkedTransferQueue<ExtTDoubleObjectHashMap>();
++        ref = ConcurrentCollections.newQueue();
+         doubleObjectHashMap.set(ref);
+     }
+     map.clear();
+     ref.add(map);
+ }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+diff --git a/6979b37a4b4d6400659697c410e4131fce5e98c7 b/67ecbb4f20b92b03711e8ad09081ff788fbc3898
+index 6979b37a4b..67ecbb4f20 100644
+--- a/6979b37a4b4d6400659697c410e4131fce5e98c7
++++ b/67ecbb4f20b92b03711e8ad09081ff788fbc3898
+@@ -1,4 +1,4 @@
+ @Association
+-public Collection<OracleTrigger> getTriggers(DBRProgressMonitor monitor) throws DBException {
+-    return getContainer().triggerCache.getObjects(monitor, getContainer(), this);
++public Collection<OracleTableTrigger> getTriggers(DBRProgressMonitor monitor) throws DBException {
++    return triggerCache.getAllObjects(monitor, this);
+ }
+\ No newline at end of file

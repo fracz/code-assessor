@@ -1,0 +1,17 @@
+diff --git a/0a0d715af1b3d9a261f29daf40f0b1d1bf6f952f b/71c8d32b334186131280bc4d24a002e0123cfde0
+index 0a0d715af1..71c8d32b33 100644
+--- a/0a0d715af1b3d9a261f29daf40f0b1d1bf6f952f
++++ b/71c8d32b334186131280bc4d24a002e0123cfde0
+@@ -1,8 +1,8 @@
+-private static boolean isPrivileged(HttpServletRequest request) {
+-    if (config().isRateLimiterThrottleStandardClients()) {
++private boolean isPrivileged(HttpServletRequest request) {
++    if (serverConfig.isRateLimiterThrottleStandardClients()) {
+         return false;
+     }
+-    Set<String> privilegedClients = config().getRateLimiterPrivilegedClients();
++    Set<String> privilegedClients = serverConfig.getRateLimiterPrivilegedClients();
+     String clientName = request.getHeader(AbstractEurekaIdentity.AUTH_NAME_HEADER_KEY);
+     return privilegedClients.contains(clientName) || DEFAULT_PRIVILEGED_CLIENTS.contains(clientName);
+ }
+\ No newline at end of file

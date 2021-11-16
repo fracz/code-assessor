@@ -1,0 +1,15 @@
+diff --git a/73d6280aba021af7bb868eed0ba2d5dc99d656a8 b/07051a0c236b237a26af39ed8eff1fe86206b23c
+index 73d6280aba..07051a0c23 100644
+--- a/73d6280aba021af7bb868eed0ba2d5dc99d656a8
++++ b/07051a0c236b237a26af39ed8eff1fe86206b23c
+@@ -1,6 +1,8 @@
+ @Test
+ public void controllerThrowsException() throws Exception {
+     this.request.setUri("/raise-exception");
+     Mono<Void> publisher = this.dispatcherHandler.handle(this.exchange);
+-    TestSubscriber.subscribe(publisher).assertErrorWith(ex -> assertSame(EXCEPTION, ex));
++    ScriptedSubscriber.<Void>create().consumeErrorWith(error -> {
++        assertSame(EXCEPTION, error);
++    }).verify(publisher);
+ }
+\ No newline at end of file

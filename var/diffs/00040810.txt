@@ -1,0 +1,21 @@
+diff --git a/6925d44685f816aa7223a411cfb4357bd3bae42d b/4328262f2fae4e9e5d4934e5c5768f4794a1bbc2
+index 6925d44685..4328262f2f 100644
+--- a/6925d44685f816aa7223a411cfb4357bd3bae42d
++++ b/4328262f2fae4e9e5d4934e5c5768f4794a1bbc2
+@@ -1,9 +1,11 @@
+ @Override
+ public void illuminance(int newIlluminance) {
+-    if (newIlluminance > (illuminance + threshold) || newIlluminance < (illuminance - threshold)) {
+-        setSensorValue(new DecimalValue(newIlluminance / 10.0));
+-        setIlluminance(newIlluminance);
++    DecimalValue newValue = Tools.calculate10(newIlluminance);
++    logger.trace("{} got new value {}", LoggerConstants.TFMODELUPDATE, newValue);
++    if (newValue.compareTo(getSensorValue(), getThreshold()) != 0) {
++        logger.trace("{} setting new value {}", LoggerConstants.TFMODELUPDATE, newValue);
++        setSensorValue(newValue);
+     } else {
+-        logger.trace(String.format("new illuminance: %s old: %s", newIlluminance, illuminance));
++        logger.trace("{} omitting new value {}", LoggerConstants.TFMODELUPDATE, newValue);
+     }
+ }
+\ No newline at end of file

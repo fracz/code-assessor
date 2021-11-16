@@ -1,0 +1,17 @@
+diff --git a/82e37c838bedc9ad107a0e10ffdcf94b4f3dd1d8 b/08512c7eec65b683f9d50d75cf10f2b577e3f2cd
+index 82e37c838b..08512c7eec 100644
+--- a/82e37c838bedc9ad107a0e10ffdcf94b4f3dd1d8
++++ b/08512c7eec65b683f9d50d75cf10f2b577e3f2cd
+@@ -1,9 +1,9 @@
+ @Test
+-public void skipUntilByteCount() {
++public void skipUntilByteCount() throws Exception {
+     DataBuffer foo = stringBuffer("foo");
+     DataBuffer bar = stringBuffer("bar");
+     DataBuffer baz = stringBuffer("baz");
+     Flux<DataBuffer> flux = Flux.just(foo, bar, baz);
+     Flux<DataBuffer> result = DataBufferUtils.skipUntilByteCount(flux, 5L);
+-    TestSubscriber.subscribe(result).assertNoError().assertComplete().assertValuesWith(stringConsumer("r"), stringConsumer("baz"));
++    ScriptedSubscriber.<DataBuffer>create().consumeNextWith(stringConsumer("r")).consumeNextWith(stringConsumer("baz")).expectComplete().verify(result);
+ }
+\ No newline at end of file

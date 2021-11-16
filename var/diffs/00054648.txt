@@ -1,0 +1,23 @@
+diff --git a/0a09af95f29806180a5dfd98a515334093f2d6dc b/1068f8007cf6214316952c1228ed0a840d2de2c2
+index 0a09af95f2..1068f8007c 100644
+--- a/0a09af95f29806180a5dfd98a515334093f2d6dc
++++ b/1068f8007cf6214316952c1228ed0a840d2de2c2
+@@ -1,13 +1,13 @@
+-void scanUntil(final char terminatedSign, final TokenType defaultTokenType) {
+-    length = 2;
++Token scanUntil(final char terminatedSign, final TokenType defaultTokenType) {
++    int length = 2;
+     int position = offset + 1;
+     while (terminatedSign != charAt(++position)) {
+         if (CharTypes.EOI == charAt(position)) {
+             throw new UnterminatedSignException(terminatedSign);
+         }
+         length++;
+     }
+     length++;
+-    literals = input.substring(offset, offset + length);
+-    tokenType = dictionary.getToken(literals, defaultTokenType);
++    String literals = input.substring(offset, offset + length);
++    return new Token(dictionary.getToken(literals, defaultTokenType), literals, offset + length);
+ }
+\ No newline at end of file

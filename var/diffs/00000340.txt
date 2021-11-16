@@ -1,0 +1,17 @@
+diff --git a/72713ca8f32435eced747e0c05cecdc1f72f390f b/0c3f683d31a0c5a20f90a10b331def91250ba211
+index 72713ca8f3..0c3f683d31 100644
+--- a/72713ca8f32435eced747e0c05cecdc1f72f390f
++++ b/0c3f683d31a0c5a20f90a10b331def91250ba211
+@@ -1,4 +1,10 @@
+ @Override
+ protected void initChannel(SocketChannel ch) throws Exception {
+-    ch.pipeline().addLast(new BlockRequest.Decoder(), new BlockResponse.Encoder(), new ChunkedWriteHandler(), new DataServerHandler(locker));
++    ChannelPipeline pipeline = ch.pipeline();
++    pipeline.addLast("blockRequestDecoder", new BlockRequest.Decoder());
++    pipeline.addLast("blockRequestEncoder", new BlockResponse.Encoder());
++    pipeline.addLast("nioChunckedWriter", new ChunkedWriteHandler());
++    // TODO move out of worker group
++    // pipeline.addLast(SYNC_GROUP, "dataServerHandler", new DataServerHandler(locker));
++    pipeline.addLast("dataServerHandler", new DataServerHandler(locker));
+ }
+\ No newline at end of file

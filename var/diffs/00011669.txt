@@ -1,0 +1,13 @@
+diff --git a/44ee0d070fe434c1944ec712213bd988e7353c87 b/ac84a55457c5d90498bb0b35178e25b80f607539
+index 44ee0d070f..ac84a55457 100644
+--- a/44ee0d070fe434c1944ec712213bd988e7353c87
++++ b/ac84a55457c5d90498bb0b35178e25b80f607539
+@@ -1,4 +1,5 @@
+ private void initIndex() throws Exception {
+-    embedder = MavenFactory.createEmbedderForExecute(getMavenCoreSettings());
+-    index = new MavenRepositoryIndex(embedder, new File(myDir, "index"));
++    myEmbedder = MavenFactory.createEmbedderForExecute(getMavenCoreSettings());
++    myIndexDir = new File(myDir, "index");
++    myIndex = new MavenRepositoryIndex(myEmbedder, myIndexDir);
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/53a1b8234f2a5f9b7b9fb05b7431c73385b5295d b/aea61299a14edff8ff0edc6a8d9f65734ae7f5d2
+index 53a1b8234f..aea61299a1 100644
+--- a/53a1b8234f2a5f9b7b9fb05b7431c73385b5295d
++++ b/aea61299a14edff8ff0edc6a8d9f65734ae7f5d2
+@@ -1,12 +1,12 @@
+ private void addJDBC4PreparedStatementTransformer(ProfilerPluginSetupContext setupContext) {
+     setupContext.addClassFileTransformer("com.mysql.jdbc.JDBC4PreparedStatement", new PinpointClassFileTransformer() {
+
+         @Override
+         public byte[] transform(Instrumentor instrumentContext, ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) throws InstrumentException {
+             InstrumentClass target = instrumentContext.getInstrumentClass(loader, className, classfileBuffer);
+-            InterceptorGroup group = instrumentContext.getInterceptorGroup(MySqlConstants.GROUP_NAME);
+-            target.addGroupedInterceptor(PreparedStatementBindingMethodFilter.includes("setRowId", "setNClob", "setSQLXML"), "com.navercorp.pinpoint.bootstrap.plugin.jdbc.interceptor.PreparedStatementBindVariableInterceptor", group, ExecutionPolicy.BOUNDARY);
++            final PreparedStatementBindingMethodFilter includes = PreparedStatementBindingMethodFilter.includes("setRowId", "setNClob", "setSQLXML");
++            target.addGroupedInterceptor(includes, "com.navercorp.pinpoint.bootstrap.plugin.jdbc.interceptor.PreparedStatementBindVariableInterceptor", MySqlConstants.GROUP_NAME, ExecutionPolicy.BOUNDARY);
+             return target.toBytecode();
+         }
+     });
+ }
+\ No newline at end of file

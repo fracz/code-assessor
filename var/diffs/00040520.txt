@@ -1,0 +1,18 @@
+diff --git a/640743cd4fcf15a7f24ccc016de5b38742164a09 b/13f857f6b009ae2dc7e85c46f460f184fafbaa86
+index 640743cd4f..13f857f6b0 100644
+--- a/640743cd4fcf15a7f24ccc016de5b38742164a09
++++ b/13f857f6b009ae2dc7e85c46f460f184fafbaa86
+@@ -1,10 +1,11 @@
+ private static Map<String, String> parseResponse(String response) {
+-    logger.debug("Response was:" + response);
+     Map<String, String> device = new HashMap<String, String>();
++    if (response == null)
++        return device;
+     for (String element : response.split(NEWLINE)) {
+         if (element.contains(": "))
+             device.put(element.split(": ")[0], element.split(": ")[1]);
+     }
+     device.put("IP", device.get("LOCATION").split("//")[1].toString());
+     return device;
+ }
+\ No newline at end of file

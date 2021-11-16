@@ -1,0 +1,16 @@
+diff --git a/85db8dcfa22ecb9750d90c6b4d58218ec8c1e11e b/2d76fa844e5ecc5c92ca4c0522c779bfa25ce61a
+index 85db8dcfa2..2d76fa844e 100644
+--- a/85db8dcfa22ecb9750d90c6b4d58218ec8c1e11e
++++ b/2d76fa844e5ecc5c92ca4c0522c779bfa25ce61a
+@@ -1,9 +1,9 @@
+ @Test
+ public void shouldFindFirstRecordByColumnValue() throws IllegalAccessException {
+-    Employee record1 = employees.firstName.findFirst(EmployeesFixture.FIRST_NAMES[1]);
++    Employee record1 = employees.firstName.findFirst(EmployeesFixture.EMPLOYEE1.firstName);
+     assertEquals(1, record1.getPosition());
+     Employee record2 = employees.salary.findFirst(10000);
+     assertEquals(0, record2.getPosition());
+     Employee record3 = employees.salary.findFirst(12345);
+     assertNull(record3);
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/181418eaa2603596897bdd0eb78df9c2a226b07c b/440c4824cb4a632fc5b3b9a5fd5099654e6b5285
+index 181418eaa2..440c4824cb 100644
+--- a/181418eaa2603596897bdd0eb78df9c2a226b07c
++++ b/440c4824cb4a632fc5b3b9a5fd5099654e6b5285
+@@ -1,9 +1,9 @@
+ @NotNull
+-private List<JsParameter> translateParameters(@NotNull List<JetParameter> jetParameters, @NotNull JsScope functionScope) {
++private List<JsParameter> translateParameters(@NotNull List<JetParameter> jetParameters, @NotNull TranslationContext functionBodyContext) {
+     List<JsParameter> jsParameters = new ArrayList<JsParameter>();
+     for (JetParameter jetParameter : jetParameters) {
+-        JsName parameterName = functionScope.declareName(jetParameter.getName());
++        JsName parameterName = declareParameter(jetParameter, functionBodyContext);
+         jsParameters.add(new JsParameter(parameterName));
+     }
+     return jsParameters;
+ }
+\ No newline at end of file

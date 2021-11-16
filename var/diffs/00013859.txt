@@ -1,0 +1,14 @@
+diff --git a/811fae9a18827f40d3059c6e41396bb284678348 b/610716518e8ae2a12dea1dd7edf8890139d8eef9
+index 811fae9a18..610716518e 100644
+--- a/811fae9a18827f40d3059c6e41396bb284678348
++++ b/610716518e8ae2a12dea1dd7edf8890139d8eef9
+@@ -1,7 +1,7 @@
+ private void createVariable(StreamToLoopReplacementContext context, String item) {
+     myMapper.transform(context, item);
+     myVariable = new StreamVariable(myMapper.getResultType());
+     myDownstream.preprocessVariables(context, myVariable, StreamVariable.STUB);
+-    myMapper.suggestFinalOutputNames(context, null, null).forEach(myVariable::addOtherNameCandidate);
++    myMapper.suggestOutputNames(context, myVariable);
+     myVariable.register(context);
+ }
+\ No newline at end of file

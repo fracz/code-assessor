@@ -1,0 +1,19 @@
+diff --git a/d423ad83da6becaf1b24c86b9259f7742b197f09 b/f48615e5c9dd00fa003c6f2e73435ee456a98a91
+index d423ad83da..f48615e5c9 100644
+--- a/d423ad83da6becaf1b24c86b9259f7742b197f09
++++ b/f48615e5c9dd00fa003c6f2e73435ee456a98a91
+@@ -1,12 +1,12 @@
+ @Test
+ public void testRandomKey() {
+     RBucket<String> bucket = redisson.getBucket("test1");
+     bucket.set("someValue1");
+     RBucket<String> bucket2 = redisson.getBucket("test2");
+     bucket2.set("someValue2");
+-    MatcherAssert.assertThat(redisson.getKeys().randomKey(), Matchers.isOneOf("test1", "test2"));
++    assertThat(redisson.getKeys().randomKey()).isIn("test1", "test2");
+     redisson.getKeys().delete("test1");
+     Assert.assertEquals(redisson.getKeys().randomKey(), "test2");
+     redisson.flushdb();
+     Assert.assertNull(redisson.getKeys().randomKey());
+ }
+\ No newline at end of file

@@ -1,0 +1,28 @@
+diff --git a/f753004b0d6011c65e7fdfbeb2ab3f77d0cca4b1 b/4bed0508572a7495376efb0708c37f874127d07b
+index f753004b0d..4bed050857 100644
+--- a/f753004b0d6011c65e7fdfbeb2ab3f77d0cca4b1
++++ b/4bed0508572a7495376efb0708c37f874127d07b
+@@ -1,10 +1,17 @@
+ @Override
+ public AtomicTitanQuery types(TitanType... type) {
+-    if (type.length == 0) {
+-        this.type = null;
+-    } else {
+-        Preconditions.checkArgument(type.length == 1);
+-        type(type[0]);
++    Preconditions.checkNotNull(type);
++    if (type.length == 0)
++        types = null;
++    else if (type.length > 1)
++        throw new IllegalArgumentException("Atomic query does not support multiple labels or keys");
++    else {
++        if (type[0] == null)
++            types = new TitanType[0];
++        else {
++            type(type[0]);
++        }
+     }
++    group = null;
+     return this;
+ }
+\ No newline at end of file

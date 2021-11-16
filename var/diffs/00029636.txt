@@ -1,0 +1,16 @@
+diff --git a/33cbb4724aa2fd0d65bf6101e9c11bd8b5d6c165 b/6a2213b569b17985f110afcd289a8da0b178e831
+index 33cbb4724a..6a2213b569 100644
+--- a/33cbb4724aa2fd0d65bf6101e9c11bd8b5d6c165
++++ b/6a2213b569b17985f110afcd289a8da0b178e831
+@@ -1,9 +1,9 @@
+ @Override
+ public void close() throws ElasticsearchException {
+     try {
+-        searcher.getIndexReader().close();
++        this.reader().close();
+         memoryIndex.reset();
+     } catch (IOException e) {
+         throw new ElasticsearchException("failed to close percolator in-memory index", e);
+     }
+ }
+\ No newline at end of file

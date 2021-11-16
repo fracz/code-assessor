@@ -1,0 +1,16 @@
+diff --git a/30807c58c5b31909100af4b3345b36eaf5b877b2 b/fd11552ab085105aebe40836258e1b3424c62bff
+index 30807c58c5..fd11552ab0 100644
+--- a/30807c58c5b31909100af4b3345b36eaf5b877b2
++++ b/fd11552ab085105aebe40836258e1b3424c62bff
+@@ -1,8 +1,8 @@
+-protected boolean checkNotNullable(DfaMemoryState state, DfaValue value, NullabilityProblem problem, PsiElement anchor) {
++protected boolean checkNotNullable(DfaMemoryState state, DfaValue value, @Nullable NullabilityProblemKind.NullabilityProblem<?> problem) {
+     boolean notNullable = state.checkNotNullable(value);
+-    if (notNullable && problem != NullabilityProblem.passingNullableArgumentToNonAnnotatedParameter) {
++    if (notNullable && !NullabilityProblemKind.passingNullableArgumentToNonAnnotatedParameter.isMyProblem(problem)) {
+         DfaValueFactory factory = ((DfaMemoryStateImpl) state).getFactory();
+         state.applyCondition(factory.createCondition(value, RelationType.NE, factory.getConstFactory().getNull()));
+     }
+     return notNullable;
+ }
+\ No newline at end of file

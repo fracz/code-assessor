@@ -1,0 +1,22 @@
+diff --git a/e03df70450933b3e1350e6b6c3fccc87a0ebe80b b/a19bd27d071291b0fff9baaa2b21b639cc41a338
+index e03df70450..a19bd27d07 100644
+--- a/e03df70450933b3e1350e6b6c3fccc87a0ebe80b
++++ b/a19bd27d071291b0fff9baaa2b21b639cc41a338
+@@ -1,13 +1,10 @@
+ @Test
+ public void shouldPanicIfUnableToApply() throws Throwable {
+     // given
+-    doThrow(IllegalStateException.class).when(commandDispatcher).dispatch(any(ReplicatedTransaction.class), anyLong(), anyCallback());
++    doThrow(IOException.class).when(commandDispatcher).dispatch(any(ReplicatedTransaction.class), anyLong(), anyCallback());
+     applicationProcess.start();
+-    raftLog.append(new RaftLogEntry(0, operation(nullTx)));
+     // when
+-    assertEquals(true, dbHealth.isHealthy());
++    raftLog.append(new RaftLogEntry(0, operation(nullTx)));
+     applicationProcess.notifyCommitted(0);
+-    applier.sync(false);
+-    // then
+-    assertEquals(false, dbHealth.isHealthy());
++    assertEventually("failed apply", dbHealth::isHealthy, is(false), 5, SECONDS);
+ }
+\ No newline at end of file

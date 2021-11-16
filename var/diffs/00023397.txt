@@ -1,0 +1,21 @@
+diff --git a/8ddc81c1e128b7f9a29087a745a1f2c3399b554b b/5482c2e1d660addc0753a107280226236c84a297
+index 8ddc81c1e1..5482c2e1d6 100644
+--- a/8ddc81c1e128b7f9a29087a745a1f2c3399b554b
++++ b/5482c2e1d660addc0753a107280226236c84a297
+@@ -1,13 +1,13 @@
+ private String getWordForDictionary() {
+     if (mLastTouchOffset < 0) {
+         return null;
+     }
+     long wordLimits = getWordLimitsAt(mLastTouchOffset);
+     if (wordLimits >= 0) {
+-        int start = (int) (wordLimits >>> 32);
+-        int end = (int) (wordLimits & 0x00000000FFFFFFFFL);
++        int start = extractRangeStartFromLong(wordLimits);
++        int end = extractRangeEndFromLong(wordLimits);
+         return mTransformed.subSequence(start, end).toString();
+     } else {
+         return null;
+     }
+ }
+\ No newline at end of file

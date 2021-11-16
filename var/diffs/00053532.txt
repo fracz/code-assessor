@@ -1,0 +1,25 @@
+diff --git a/1e9b699e72c8db276faa06c900de88ea9442cb05 b/f19670dcf3cddb2b9130fff75c33a541525cab4a
+index 1e9b699e72..f19670dcf3 100644
+--- a/1e9b699e72c8db276faa06c900de88ea9442cb05
++++ b/f19670dcf3cddb2b9130fff75c33a541525cab4a
+@@ -1,11 +1,16 @@
+ /**
+  *  解析SQL.
+  *
+  * @return SQL解析结果
+  */
+ public SQLParsedResult parse() {
+-    if (sqlStatement instanceof SQLInsertStatement || sqlStatement instanceof SQLUpdateStatement || sqlStatement instanceof SQLDeleteStatement) {
+-        return parseNew();
++    SQLContext sqlContext = getSQLContext();
++    ParseContext parseContext = getParseContext(sqlContext);
++    if (sqlContext instanceof SelectSQLContext) {
++        parseSelect(parseContext, (SelectSQLContext) sqlContext);
++    } else if (sqlContext instanceof InsertSQLContext) {
++        parseInsert(parseContext, (InsertSQLContext) sqlContext);
+     }
+-    return parseOriginal();
++    parseContext.getParsedResult().getRouteContext().setSqlBuilder(sqlContext.toSqlBuilder());
++    return parseContext.getParsedResult();
+ }
+\ No newline at end of file

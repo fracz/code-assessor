@@ -1,0 +1,22 @@
+diff --git a/046e9cf49fd8aa0802889cb086421b4e81425f8b b/0974b27ba69ef77306e9ad30dd6713119de1c5e5
+index 046e9cf49f..0974b27ba6 100644
+--- a/046e9cf49fd8aa0802889cb086421b4e81425f8b
++++ b/0974b27ba69ef77306e9ad30dd6713119de1c5e5
+@@ -1,14 +1,13 @@
+ /**
+  * 解析查询条件.
+  *
+  * @param sqlContext SQL上下文
+  * @return 条件上下文
+  */
+ public final Optional<ConditionContext> parseWhere(final SQLContext sqlContext) {
+     if (skipIfEqual(DefaultKeyword.WHERE)) {
+-        ParseContext parseContext = getParseContext(sqlContext);
+-        parseConditions(sqlContext, parseContext);
+-        return Optional.of(parseContext.getCurrentConditionContext());
++        parseConditions(sqlContext);
++        return Optional.of(sqlContext.getConditionContexts().iterator().next());
+     }
+     return Optional.absent();
+ }
+\ No newline at end of file

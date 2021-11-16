@@ -1,0 +1,21 @@
+diff --git a/28b73dfaa6dc674573d69b95428834f7473c9180 b/7dd08e06f501cff2b9bde91c8c136464a9e68bfc
+index 28b73dfaa6..7dd08e06f5 100644
+--- a/28b73dfaa6dc674573d69b95428834f7473c9180
++++ b/7dd08e06f501cff2b9bde91c8c136464a9e68bfc
+@@ -1,12 +1,5 @@
+ @Override
+-protected void setUp() {
+-    try {
+-        super.setUp();
+-    } catch (Exception e) {
+-        throw new RuntimeException(e);
+-    }
+-    if (!dontCreateApp) {
+-        createApplication();
+-    }
+-    setUpDb();
++protected void setUp() throws Exception {
++    super.setUp();
++    db = createDatabase();
+ }
+\ No newline at end of file

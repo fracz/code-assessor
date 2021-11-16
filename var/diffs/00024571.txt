@@ -1,0 +1,18 @@
+diff --git a/ca6be1eb4dd749fc64c0f1ea835eb291a29372fa b/e7623eb806d5adfa2106df095bbf239457c9e674
+index ca6be1eb4d..e7623eb806 100644
+--- a/ca6be1eb4dd749fc64c0f1ea835eb291a29372fa
++++ b/e7623eb806d5adfa2106df095bbf239457c9e674
+@@ -1,9 +1,8 @@
+ @Test
+ public void namesQueryTest() throws Exception {
+-    QueryPager pager = QueryPagers.localPager(namesQuery("k0", "c1", "c5", "c7", "c8"));
++    QueryPager pager = namesQuery("k0", "c1", "c5", "c7", "c8").getPager(null);
+     assertFalse(pager.isExhausted());
+-    List<Row> page = pager.fetchPage(3);
+-    assertEquals(toString(page), 1, page.size());
+-    assertRow(page.get(0), "k0", "c1", "c5", "c7", "c8");
++    List<FilteredPartition> partition = query(pager, 5, 4);
++    assertRow(partition.get(0), "k0", "c1", "c5", "c7", "c8");
+     assertTrue(pager.isExhausted());
+ }
+\ No newline at end of file

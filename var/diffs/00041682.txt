@@ -1,0 +1,24 @@
+diff --git a/f033f74583065aef3750d7510de8e9c0435f2780 b/0ba7a301af562d3dadc999e79ea24fcdcd39a7fc
+index f033f74583..0ba7a301af 100644
+--- a/f033f74583065aef3750d7510de8e9c0435f2780
++++ b/0ba7a301af562d3dadc999e79ea24fcdcd39a7fc
+@@ -1,17 +1,17 @@
+ @Before
+ public void before() throws IOException {
+     MockitoAnnotations.initMocks(this);
+-    final OStorageRemoteSession session = new OStorageRemoteSession(10);
++    Mockito.when(session.getServerSession(Mockito.anyString())).thenReturn(nodeSession);
+     storage = new OStorageRemote("mock", "mock", "mock") {
+
+         @Override
+         public <T> T baseNetworkOperation(OStorageRemoteOperation<T> operation, String errorMessage, int retry) {
+             try {
+                 return operation.execute(channel, session);
+             } catch (IOException e) {
+                 throw new RuntimeException(e);
+             }
+         }
+     };
+     storage.connectionManager = connectionManager;
+ }
+\ No newline at end of file

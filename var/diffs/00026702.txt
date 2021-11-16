@@ -1,0 +1,14 @@
+diff --git a/6273eb3d200ff2307f035b032e6277324d6c8ec3 b/8a33b6d4d20de1028aa513a3555d4d2bb45487ad
+index 6273eb3d20..8a33b6d4d2 100644
+--- a/6273eb3d200ff2307f035b032e6277324d6c8ec3
++++ b/8a33b6d4d20de1028aa513a3555d4d2bb45487ad
+@@ -1,7 +1,7 @@
+ @Test
+ public void testPreProcessor2to4() {
+     ReshapePreProcessor processor = new ReshapePreProcessor(new int[] { 1, 784 }, new int[] { 1, 1, 28, 28 });
+-    INDArray check2to4 = processor.preProcess(in2D, null);
++    INDArray check2to4 = processor.preProcess(in2D, -1);
+     int val2to4 = check2to4.shape().length;
+     assertTrue(val2to4 == 4);
+ }
+\ No newline at end of file

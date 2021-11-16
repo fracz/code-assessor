@@ -1,0 +1,20 @@
+diff --git a/47116eb4a40ba1753477a283c61b24c6e9582cc9 b/0dca9954f5aa5048b90c92e4dff2079a3ad98cda
+index 47116eb4a4..0dca9954f5 100644
+--- a/47116eb4a40ba1753477a283c61b24c6e9582cc9
++++ b/0dca9954f5aa5048b90c92e4dff2079a3ad98cda
+@@ -1,7 +1,10 @@
+ @Override
+-public Void visitLiteral(LiteralTree literalTree, VisitorState visitorState) {
+-    for (DescribingMatcher<LiteralTree> matcher : literalMatchers) {
+-        evaluateMatch(literalTree, visitorState, matcher);
++public Void visitLiteral(LiteralTree tree, VisitorState visitorState) {
++    VisitorState state = visitorState.withPath(getCurrentPath());
++    for (LiteralTreeMatcher matcher : literalMatchers) {
++        if (isSuppressed(matcher))
++            continue;
++        reportMatch(matcher.matchLiteral(tree, state), tree, state);
+     }
+-    return super.visitLiteral(literalTree, visitorState);
++    return super.visitLiteral(tree, visitorState);
+ }
+\ No newline at end of file

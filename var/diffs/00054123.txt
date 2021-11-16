@@ -1,0 +1,17 @@
+diff --git a/5e96426023715ae6f0c68f980539b2e9f3fb0e5c b/f7536f68c87ae5ca69eceda2918d8db2b7ebd6df
+index 5e96426023..f7536f68c8 100644
+--- a/5e96426023715ae6f0c68f980539b2e9f3fb0e5c
++++ b/f7536f68c87ae5ca69eceda2918d8db2b7ebd6df
+@@ -1,9 +1,6 @@
+ @Test
+ public void assertNextTokenForVariable() {
+     PostgreSQLLexer lexer = new PostgreSQLLexer("SELECT @@x1 FROM TABLE_XXX");
+-    lexer.nextToken();
+-    assertThat(lexer.getToken().getType(), is((TokenType) DefaultKeyword.SELECT));
+-    assertThat(lexer.getToken().getLiterals(), is("SELECT"));
+-    lexer.nextToken();
+-    assertThat(lexer.getToken().getType(), is((TokenType) Assist.ERROR));
++    LexerAssert.assertNextToken(lexer, DefaultKeyword.SELECT, "SELECT");
++    LexerAssert.assertNextToken(lexer, Assist.ERROR, "");
+ }
+\ No newline at end of file

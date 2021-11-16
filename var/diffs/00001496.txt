@@ -1,0 +1,18 @@
+diff --git a/260cb630cadf88b360b7488d3722e83327383387 b/8603471c041f33e77999d3826ac60deb09d57e2e
+index 260cb630ca..8603471c04 100644
+--- a/260cb630cadf88b360b7488d3722e83327383387
++++ b/8603471c041f33e77999d3826ac60deb09d57e2e
+@@ -1,10 +1,10 @@
+-private static boolean testConnection(@NotNull GithubAuthData auth) throws IOException {
++private static boolean testConnection(@NotNull GithubAuthData auth, @Nullable String login) throws IOException {
+     GithubUser user = getCurrentUserInfo(auth);
+     if (user == null) {
+         return false;
+     }
+-    if (!user.getLogin().equalsIgnoreCase(auth.getLogin())) {
++    if (login != null && !login.equalsIgnoreCase(user.getLogin())) {
+         return false;
+     }
+     return true;
+ }
+\ No newline at end of file

@@ -1,0 +1,18 @@
+diff --git a/3a1f74ff84feda25bb39bdd43732aec51131b0d3 b/42311fa58febde2f907fc3c387446ed50f4e1cab
+index 3a1f74ff84..42311fa58f 100644
+--- a/3a1f74ff84feda25bb39bdd43732aec51131b0d3
++++ b/42311fa58febde2f907fc3c387446ed50f4e1cab
+@@ -1,8 +1,9 @@
+ @Test
+-public void mkdirTest() throws IOException, TException {
++public void mkdirTest() throws IOException, TachyonException {
+     String uniqPath = PathUtils.uniqPath();
++    MkdirOptions options = new MkdirOptions.Builder(new TachyonConf()).setRecursive(true).build();
+     for (int k = 0; k < 10; k++) {
+-        Assert.assertTrue(sTfs.mkdirs(new TachyonURI(uniqPath + k), TachyonFileSystem.RECURSIVE));
+-        Assert.assertTrue(sTfs.mkdirs(new TachyonURI(uniqPath + k), TachyonFileSystem.RECURSIVE));
++        Assert.assertTrue(sTfs.mkdir(new TachyonURI(uniqPath + k), options));
++        Assert.assertTrue(sTfs.mkdir(new TachyonURI(uniqPath + k), options));
+     }
+ }
+\ No newline at end of file

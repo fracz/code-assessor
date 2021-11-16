@@ -1,0 +1,21 @@
+diff --git a/d84c4b42030ecb1f51ec6b8f9899ce93c54e5f7e b/0b953728e77d50c9e29515d9664d5b99d081d095
+index d84c4b4203..0b953728e7 100644
+--- a/d84c4b42030ecb1f51ec6b8f9899ce93c54e5f7e
++++ b/0b953728e77d50c9e29515d9664d5b99d081d095
+@@ -1,8 +1,9 @@
+ @Override
+-public ConstraintDefinition createPropertyUniquenessConstraint(Label label, String propertyKey) {
+-    int labelId = getOrCreateLabelId(label.name());
+-    int propertyKeyId = getOrCreatePropertyKeyId(propertyKey);
+-    validateUniquenessConstraintCanBeCreated(labelId, propertyKeyId);
+-    createConstraintRule(new UniquenessConstraint(labelId, propertyKeyId));
+-    return new UniquenessConstraintDefinition(this, label, propertyKey);
++public ConstraintDefinition createPropertyUniquenessConstraint(IndexDefinition indexDefinition) {
++    int labelId = getOrCreateLabelId(indexDefinition.getLabel().name());
++    int[] propertyKeyIds = getOrCreatePropertyKeyIds(indexDefinition.getPropertyKeys());
++    NodePropertyDescriptor descriptor = getNodePropertyDescriptor(labelId, propertyKeyIds);
++    validateUniquenessConstraintCanBeCreated(descriptor);
++    createConstraintRule(new UniquenessConstraint(descriptor));
++    return new UniquenessConstraintDefinition(this, indexDefinition);
+ }
+\ No newline at end of file

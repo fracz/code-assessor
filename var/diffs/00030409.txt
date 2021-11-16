@@ -1,0 +1,19 @@
+diff --git a/8f053c617693d5ef9d46a033e6e9c5c2405ef019 b/0b0852ef0e2f024a9e7e4bdb5acaf37a434e60a5
+index 8f053c6176..0b0852ef0e 100644
+--- a/8f053c617693d5ef9d46a033e6e9c5c2405ef019
++++ b/0b0852ef0e2f024a9e7e4bdb5acaf37a434e60a5
+@@ -1,11 +1,11 @@
+ @Override
+-public boolean canRebalance(ShardRouting shardRouting, RoutingNodes routingNodes, DiscoveryNodes nodes) {
+-    List<MutableShardRouting> shards = routingNodes.shardsRoutingFor(shardRouting);
++public boolean canRebalance(ShardRouting shardRouting, RoutingAllocation allocation) {
++    List<MutableShardRouting> shards = allocation.routingNodes().shardsRoutingFor(shardRouting);
+     // nodes, once relocating, and one initializing
+     for (ShardRouting allShard : shards) {
+         if (!allShard.active()) {
+             return false;
+         }
+     }
+     return true;
+ }
+\ No newline at end of file

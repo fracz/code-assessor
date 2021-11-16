@@ -1,0 +1,17 @@
+diff --git a/8714bc03dd0d8a15e8d9c38d2bbe7f26ff2b3d83 b/8427d10a4f7f9ec951d33f14591a7763e0ca3977
+index 8714bc03dd..8427d10a4f 100644
+--- a/8714bc03dd0d8a15e8d9c38d2bbe7f26ff2b3d83
++++ b/8427d10a4f7f9ec951d33f14591a7763e0ca3977
+@@ -1,10 +1,10 @@
+ @Test
+ public void testNoSuchFactoryBeanMethod() {
+     try {
+-        XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("no-such-factory-method.xml", getClass()));
++        XmlBeanFactory xbf = new XmlBeanFactory(NO_SUCH_FACTORY_METHOD_CONTEXT);
+         assertNotNull(xbf.getBean("defaultTestBean"));
+         fail("Should not get invalid bean");
+     } catch (BeanCreationException ex) {
+     // Ok
+     }
+ }
+\ No newline at end of file

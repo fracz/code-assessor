@@ -1,0 +1,13 @@
+diff --git a/ceb58f33440b6e41cbcd49de9048ed79274d4023 b/0c69eeee6a8061950085973ef34b572f9effff77
+index ceb58f3344..0c69eeee6a 100644
+--- a/ceb58f33440b6e41cbcd49de9048ed79274d4023
++++ b/0c69eeee6a8061950085973ef34b572f9effff77
+@@ -1,6 +1,4 @@
+ @Override
+ public PrimitiveLongIterator augmentNodesGetAll(PrimitiveLongIterator committed) {
+-    ReadableDiffSets<Long> addAndRemoved = addedAndRemovedNodes();
+-    PrimitiveLongIterator augmented = addAndRemoved.augment(committed);
+-    return augmented;
++    return addedAndRemovedNodes().augment(committed);
+ }
+\ No newline at end of file

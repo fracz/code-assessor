@@ -1,0 +1,31 @@
+diff --git a/d9d26249cb421906b4674d8e6531e9bb1c8b1e99 b/255dda029111ffc4afa69dd7dfd59212f7295029
+index d9d26249cb..255dda0291 100644
+--- a/d9d26249cb421906b4674d8e6531e9bb1c8b1e99
++++ b/255dda029111ffc4afa69dd7dfd59212f7295029
+@@ -1,24 +1,23 @@
+ /**
+  * Plays the ValueAnimator in reverse. If the animation is already running,
+  * it will stop itself and play backwards from the point reached when reverse was called.
+  * If the animation is not currently running, then it will start from the end and
+  * play backwards. This behavior is only set for the current animation; future playing
+  * of the animation will use the default behavior of playing forward.
+  */
+ @Override
+ public void reverse() {
+-    mPlayingBackwards = !mPlayingBackwards;
+     if (mRunning) {
+         long currentTime = AnimationUtils.currentAnimationTimeMillis();
+         long currentPlayTime = currentTime - mStartTime;
+-        long timeLeft = mDuration - currentPlayTime;
++        long timeLeft = getScaledDuration() - currentPlayTime;
+         mStartTime = currentTime - timeLeft;
+         // do not allow start time to be compensated for jank
+         mStartTimeCommitted = true;
+         mReversing = !mReversing;
+     } else if (mStarted) {
+         end();
+     } else {
+         start(true);
+     }
+ }
+\ No newline at end of file

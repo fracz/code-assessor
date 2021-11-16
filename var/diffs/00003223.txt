@@ -1,0 +1,16 @@
+diff --git a/856597aa9de9e0b49bf7c2bc11a9502b5c437c93 b/498f7d042061e03b7617ac9e5e4f3ef475e8e2fa
+index 856597aa9d..498f7d0420 100644
+--- a/856597aa9de9e0b49bf7c2bc11a9502b5c437c93
++++ b/498f7d042061e03b7617ac9e5e4f3ef475e8e2fa
+@@ -1,4 +1,8 @@
+-public static boolean isMessageOnFirstPosition(PsiClass containingClass) {
++public static boolean isMessageOnFirstPosition(PsiMethod method, boolean checkTestNG) {
++    PsiClass containingClass = method.getContainingClass();
+     final String qualifiedName = containingClass.getQualifiedName();
+-    return JUnitCommonClassNames.JUNIT_FRAMEWORK_ASSERT.equals(qualifiedName) || JUnitCommonClassNames.ORG_JUNIT_ASSERT.equals(qualifiedName) || JUnitCommonClassNames.JUNIT_FRAMEWORK_TEST_CASE.equals(qualifiedName) || "org.testng.AssertJUnit".equals(qualifiedName);
++    if (checkTestNG) {
++        return "org.testng.AssertJUnit".equals(qualifiedName) || "org.testng.Assert".equals(qualifiedName) && "fail".equals(method.getName());
++    }
++    return JUnitCommonClassNames.JUNIT_FRAMEWORK_ASSERT.equals(qualifiedName) || JUnitCommonClassNames.ORG_JUNIT_ASSERT.equals(qualifiedName) || JUnitCommonClassNames.JUNIT_FRAMEWORK_TEST_CASE.equals(qualifiedName);
+ }
+\ No newline at end of file

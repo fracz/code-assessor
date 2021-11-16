@@ -1,0 +1,12 @@
+diff --git a/119ea80c264c52d92c3e772a998e4dea8cc5ed58 b/45af50448b3ad0e7d744fc7dac4805e886ca2883
+index 119ea80c26..45af50448b 100644
+--- a/119ea80c264c52d92c3e772a998e4dea8cc5ed58
++++ b/45af50448b3ad0e7d744fc7dac4805e886ca2883
+@@ -1,5 +1,5 @@
+ @Before
+ public synchronized void startGraphDb() {
+-    graphDb = new EmbeddedGraphDatabase("target" + File.separator + "var" + File.separator + ManagementBeansTest.class.getSimpleName());
++    graphDb = new EmbeddedGraphDatabase(dir.directory("test").getAbsolutePath());
+     xaManager = graphDb.getSingleManagementBean(XaManager.class);
+ }
+\ No newline at end of file

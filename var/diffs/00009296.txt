@@ -1,0 +1,27 @@
+diff --git a/02c48ef9cf33eb65c93e0fe770597aa94ba81cb9 b/31e50f165dac3940ccea0f7e2032b5f441f30b41
+index 02c48ef9cf..31e50f165d 100644
+--- a/02c48ef9cf33eb65c93e0fe770597aa94ba81cb9
++++ b/31e50f165dac3940ccea0f7e2032b5f441f30b41
+@@ -1,12 +1,15 @@
+ protected void processLeafsNames(@NotNull final PsiElement leafElement, @NotNull final HashSet<String> seenNames) {
+     final Token[] tokens = SpellCheckingInspection.tokenize(leafElement, leafElement.getLanguage());
+     if (tokens != null) {
+-        for (Token token : tokens) {
+-            final List<CheckArea> areas = token.getAreas();
+-            if (areas == null) {
+-                continue;
+-            }
+-            processCheckAreas(areas, seenNames);
++        for (final Token token : tokens) {
++            token.processAreas(new Consumer<TextRange>() {
++
++                @Override
++                public void consume(TextRange textRange) {
++                    final String word = textRange.substring(token.getText());
++                    addSeenWord(seenNames, word);
++                }
++            });
+         }
+     }
+ }
+\ No newline at end of file

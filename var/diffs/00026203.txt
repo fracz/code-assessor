@@ -1,0 +1,21 @@
+diff --git a/ae7e305c6df540f56293bedc455064d479059833 b/50511a365855270835ae8fe4862162b0436814ad
+index ae7e305c6d..50511a3658 100644
+--- a/ae7e305c6df540f56293bedc455064d479059833
++++ b/50511a365855270835ae8fe4862162b0436814ad
+@@ -1,14 +1,14 @@
+ /**
+  * Calculates critical path time that will be saved by eliminating specific
+  * entry from the critical path
+  */
+ public void analyzeCriticalPath(Set<ProfilerTask> ignoredTypes, CriticalPathEntry path) {
+     // by blaze build.
+-    if (path != null && path.task.type == CRITICAL_PATH_COMPONENT) {
++    if (path == null || path.isComponent()) {
+         return;
+     }
+     for (CriticalPathEntry entry = path; entry != null; entry = entry.next) {
+         Map<Task, CriticalPathEntry> cache = Maps.newHashMapWithExpectedSize(1000);
+         entry.setCriticalTime(path.cumulativeDuration - computeCriticalPathForAction(ignoredTypes, Sets.newHashSet(entry.task), getPhaseTask(ProfilePhase.EXECUTE), cache, new ArrayDeque<Task>()).cumulativeDuration);
+     }
+ }
+\ No newline at end of file

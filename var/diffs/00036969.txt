@@ -1,0 +1,12 @@
+diff --git a/986583fbff8a8165c79a7c5906b803045e6d8ae8 b/bc971c26f7f861a49172580f5caa652667a27542
+index 986583fbff..bc971c26f7 100644
+--- a/986583fbff8a8165c79a7c5906b803045e6d8ae8
++++ b/bc971c26f7f861a49172580f5caa652667a27542
+@@ -1,5 +1,4 @@
+ public static byte[] modify(ClassPool classPool, ClassLoader classLoader, String javassistClassName, byte[] classFileBuffer) {
+-    log("MSSQLPreparedStatementModifier modifing");
+-    // printClassInfo(javassistClassName);
++    logger.info("MSSQLPreparedStatementModifier modifing. %s", javassistClassName);
+     return changeMethod(classPool, classLoader, javassistClassName, classFileBuffer);
+ }
+\ No newline at end of file

@@ -1,0 +1,17 @@
+diff --git a/5d9fcc07ac6eb0d2d1d84f961bea03a0e186fb10 b/2f8cd85fa3c69bcc1d8a28cb2e54c70d84dc068f
+index 5d9fcc07ac..2f8cd85fa3 100644
+--- a/5d9fcc07ac6eb0d2d1d84f961bea03a0e186fb10
++++ b/2f8cd85fa3c69bcc1d8a28cb2e54c70d84dc068f
+@@ -1,6 +1,7 @@
+-public ModifiableRootModel getRootModel(Module module) {
++@Override
++public ModuleRootModel getRootModel(Module module) {
+     ModuleRootModel rootModel = modulesProvider.getRootModel(module);
+-    if (rootModel instanceof ModifiableRootModel)
+-        return (ModifiableRootModel) rootModel;
+-    return super.getRootModel(module);
++    if (rootModel != null)
++        return rootModel;
++    return super.getModifiableRootModel(module);
+ }
+\ No newline at end of file

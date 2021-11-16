@@ -1,0 +1,15 @@
+diff --git a/af2cf917950bd614c0a394babb15f70c217d33c0 b/909e4c5355029b2c4abab59f5fa8dab07d8e786e
+index af2cf91795..909e4c5355 100644
+--- a/af2cf917950bd614c0a394babb15f70c217d33c0
++++ b/909e4c5355029b2c4abab59f5fa8dab07d8e786e
+@@ -1,7 +1,7 @@
+ @Before
+ public final void before() throws Exception {
+     mTfs = mLocalTachyonClusterResource.get().getClient();
+     mFSMasterClient = new FileSystemMasterClient(new InetSocketAddress(mLocalTachyonClusterResource.get().getMasterHostname(), mLocalTachyonClusterResource.get().getMasterPort()), mLocalTachyonClusterResource.get().getWorkerTachyonConf());
+-    mSetPinned = new SetStateOptions.Builder().setPinned(true).build();
+-    mUnsetPinned = new SetStateOptions.Builder().setPinned(false).build();
++    mSetPinned = SetAttributeOptions.defaults().setPinned(true);
++    mUnsetPinned = SetAttributeOptions.defaults().setPinned(false);
+ }
+\ No newline at end of file

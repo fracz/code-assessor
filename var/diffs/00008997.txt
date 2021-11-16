@@ -1,0 +1,19 @@
+diff --git a/7e0a07eb417831d760688cf50f78ed0876c333ce b/a3a98489019d25e7f4c29f3ceed77423e653dee7
+index 7e0a07eb41..a3a9848901 100644
+--- a/7e0a07eb417831d760688cf50f78ed0876c333ce
++++ b/a3a98489019d25e7f4c29f3ceed77423e653dee7
+@@ -1,9 +1,9 @@
+ @Override
+ public void run() {
+-    final String message = ProjectBundle.message("module.paths.package.prefix.prompt", ContentRootPanel.toRelativeDisplayPath(folder.getUrl(), folder.getContentEntry().getUrl() + ":"));
+-    final String prefix = Messages.showInputDialog(parentComponent, message, ProjectBundle.message("module.paths.package.prefix.title"), Messages.getQuestionIcon(), folder.getPackagePrefix(), null);
+-    if (prefix != null) {
+-        folder.setPackagePrefix(prefix);
++    JpsElement properties = ((SourceFolderImpl) folder).getJpsElement().getProperties();
++    SourceRootPropertiesDialog dialog = new SourceRootPropertiesDialog(parentComponent, (JavaSourceRootProperties) properties);
++    dialog.show();
++    if (dialog.isOK()) {
+         callback.onSourceRootPropertiesChanged(folder);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,11 @@
+diff --git a/930d4792d6e629e7a2e90df61ecdc5925e56e8cc b/5556e272a221a50320c928e6b87d11f0813fa162
+index 930d4792d6..5556e272a2 100644
+--- a/930d4792d6e629e7a2e90df61ecdc5925e56e8cc
++++ b/5556e272a221a50320c928e6b87d11f0813fa162
+@@ -1,4 +1,4 @@
+ @Override
+ protected Settings nodeSettings(int nodeOrdinal) {
+-    return Settings.builder().put(super.nodeSettings(nodeOrdinal)).put("plugins." + PluginsService.LOAD_PLUGIN_FROM_CLASSPATH, true).build();
++    return Settings.builder().put(super.nodeSettings(nodeOrdinal)).put("plugin.types", CloudGcePlugin.class.getName()).build();
+ }
+\ No newline at end of file

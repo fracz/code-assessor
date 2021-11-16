@@ -1,0 +1,19 @@
+diff --git a/2412b7ca7528151ec7b68246f13dc5fdcec5001b b/f32d2e045f715207f70bea75e9d29725323972bb
+index 2412b7ca75..f32d2e045f 100644
+--- a/2412b7ca7528151ec7b68246f13dc5fdcec5001b
++++ b/f32d2e045f715207f70bea75e9d29725323972bb
+@@ -1,10 +1,8 @@
+ @Test
+ public void testDifferenceInName() {
+     DirectoryEntry e1 = new DirectoryEntry(-1, "name");
+     DirectoryEntry e2 = new DirectoryEntry(-1, "another name");
+-    Difference d = e1.getDifferenceWith(e2);
+-    assertEquals(MODIFIED, d.getKind());
+-    assertFalse(d.isFile());
+-    assertSame(e1, d.getLeft());
+-    assertSame(e2, d.getRight());
++    List<Difference> dd = e1.getDifferencesWith(e2);
++    assertEquals(1, dd.size());
++    assertDirDifference(dd.get(0), e1, e2);
+ }
+\ No newline at end of file

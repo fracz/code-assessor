@@ -1,0 +1,17 @@
+diff --git a/d0cad0524473c7818be702431068b0c831bc6e86 b/d0c2f2e6b5a6d2e44aa318bcf4757a0fb7f2cc1f
+index d0cad05244..d0c2f2e6b5 100644
+--- a/d0cad0524473c7818be702431068b0c831bc6e86
++++ b/d0c2f2e6b5a6d2e44aa318bcf4757a0fb7f2cc1f
+@@ -1,7 +1,8 @@
+ @Override
+ public void visitJspFile(JspFile file) {
+-    final PsiElement[] roots = file.getPsiRoots();
+-    for (PsiElement root : roots) {
+-        visitElement(root);
++    final FileViewProvider viewProvider = file.getViewProvider();
++    final Set<Language> relevantLanguages = viewProvider.getRelevantLanguages();
++    for (Language language : relevantLanguages) {
++        visitElement(viewProvider.getPsi(language));
+     }
+ }
+\ No newline at end of file

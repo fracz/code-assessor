@@ -1,0 +1,18 @@
+diff --git a/d2755afbdccd4264d9677c409773609556c677b1 b/580ee547c52c856ce803723a00a550419c9dba04
+index d2755afbdc..580ee547c5 100644
+--- a/d2755afbdccd4264d9677c409773609556c677b1
++++ b/580ee547c52c856ce803723a00a550419c9dba04
+@@ -1,9 +1,8 @@
+ @Test
+ public void writeFailure() throws Exception {
+-    mEmbeddedChannel = new EmbeddedChannelNoException(new DataServerUFSFileWriteHandler(NettyExecutors.FILE_WRITER_EXECUTOR, mFileSystemWorker));
+-    mEmbeddedChannel.writeInbound(buildWriteRequest(0, 1024));
++    mChannelNoException.writeInbound(buildWriteRequest(0, PACKET_SIZE));
+     mOutputStream.close();
+-    mEmbeddedChannel.writeInbound(buildWriteRequest(1024, 1024));
+-    Object writeResponse = waitForResponse();
++    mChannelNoException.writeInbound(buildWriteRequest(PACKET_SIZE, PACKET_SIZE));
++    Object writeResponse = waitForResponse(mChannelNoException);
+     checkWriteResponse(writeResponse, Protocol.Status.Code.INTERNAL);
+ }
+\ No newline at end of file

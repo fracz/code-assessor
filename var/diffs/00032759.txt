@@ -1,0 +1,17 @@
+diff --git a/7a03bf859c21fe3ae6378ec0f776c0af9ec79616 b/65de85f64054d0b1fe7e63006b2050efbbb57735
+index 7a03bf859c..65de85f640 100644
+--- a/7a03bf859c21fe3ae6378ec0f776c0af9ec79616
++++ b/65de85f64054d0b1fe7e63006b2050efbbb57735
+@@ -1,8 +1,7 @@
+-public Errors errorInProvider(RuntimeException runtimeException) {
+-    Errors newErrors = ProvisionException.getErrors(runtimeException);
+-    if (newErrors != null) {
+-        return merge(newErrors);
++public Errors errorInProvider(RuntimeException runtimeException, Errors errorsFromException) {
++    if (errorsFromException != null) {
++        return merge(errorsFromException);
+     } else {
+         return addMessage(runtimeException, "Error in custom provider, %s", runtimeException);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,24 @@
+diff --git a/fede73356a1eee128cbee8a6accaf6080f2c5990 b/e7726e1158e81de2c90d812e31be1faf81c8178f
+index fede73356a..e7726e1158 100644
+--- a/fede73356a1eee128cbee8a6accaf6080f2c5990
++++ b/e7726e1158e81de2c90d812e31be1faf81c8178f
+@@ -1,12 +1,12 @@
+ private TypeHandler<?> pickSoleHandler(Map<JdbcType, TypeHandler<?>> jdbcHandlerMap) {
+-    boolean onlyChoice = true;
+     TypeHandler<?> soleHandler = null;
+     for (TypeHandler<?> handler : jdbcHandlerMap.values()) {
+-        if (soleHandler != null && !handler.getClass().equals(soleHandler.getClass())) {
+-            onlyChoice = false;
+-            break;
++        if (soleHandler == null) {
++            soleHandler = handler;
++        } else if (!handler.getClass().equals(soleHandler.getClass())) {
++            // More than one type handlers registered.
++            return null;
+         }
+-        soleHandler = handler;
+     }
+-    return onlyChoice ? soleHandler : null;
++    return soleHandler;
+ }
+\ No newline at end of file

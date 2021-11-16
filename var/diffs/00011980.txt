@@ -1,0 +1,21 @@
+diff --git a/aa4b958bd43b03c03a3108e83999f27d16691454 b/6b4f5f7c6e3e5475d72fcf5ae0c3f92585aea951
+index aa4b958bd4..6b4f5f7c6e 100644
+--- a/aa4b958bd43b03c03a3108e83999f27d16691454
++++ b/6b4f5f7c6e3e5475d72fcf5ae0c3f92585aea951
+@@ -1,14 +1,14 @@
+ /**
+  * @return list of branches from refs/heads. active branch is not marked as active - the caller should do this.
+  */
+ @NotNull
+ private Set<GitBranch> readUnpackedLocalBranches() {
+     Set<GitBranch> branches = new HashSet<GitBranch>();
+     for (Map.Entry<String, File> entry : readLocalBranches().entrySet()) {
+         String branchName = entry.getKey();
+         File branchFile = entry.getValue();
+         String hash = loadHashFromBranchFile(branchFile);
+-        branches.add(new GitBranch(branchName, hash == null ? "" : hash, false));
++        branches.add(new GitBranch(branchName, hash == null ? GitBranch.DUMMY_HASH : Hash.create(hash), false));
+     }
+     return branches;
+ }
+\ No newline at end of file

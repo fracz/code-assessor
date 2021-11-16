@@ -1,0 +1,20 @@
+diff --git a/c7e3878e3f165511a06cf9ba918843d604f445f9 b/e5324a349075c531210d71e00720d68b97fabdf9
+index c7e3878e3f..e5324a3490 100644
+--- a/c7e3878e3f165511a06cf9ba918843d604f445f9
++++ b/e5324a349075c531210d71e00720d68b97fabdf9
+@@ -1,13 +1,10 @@
+ @Test(dataProvider = "GitConnectionFactory", dataProviderClass = GitConnectionFactoryProvider.class)
+ public void testAddUrl(GitConnectionFactory connectionFactory) throws GitException, IOException {
+     // given
+     GitConnection connection = connectToGitRepositoryWithContent(connectionFactory, repository);
+     addInitialRemote(connection);
+     // when
+-    RemoteUpdateRequest request = newDto(RemoteUpdateRequest.class);
+-    request.setName("newRemote");
+-    request.setAddUrl(Arrays.asList("new.com"));
+-    connection.remoteUpdate(request);
++    connection.remoteUpdate(RemoteUpdateParams.create("newRemote").withAddUrl(singletonList("new.com")));
+     // then
+     assertTrue(parseAllConfig(connection).get("remote.newRemote.url").contains("new.com"));
+ }
+\ No newline at end of file

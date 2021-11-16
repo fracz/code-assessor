@@ -1,0 +1,18 @@
+diff --git a/fcf7b2a41be07eead9a6869da363a66b71f96ff8 b/7469ae7303265638a5b9897c62bd85297195338d
+index fcf7b2a41b..7469ae7303 100644
+--- a/fcf7b2a41be07eead9a6869da363a66b71f96ff8
++++ b/7469ae7303265638a5b9897c62bd85297195338d
+@@ -1,9 +1,9 @@
+ @Override
+ protected void customizedSelect(final SelectSQLContext sqlContext) {
+     if (getLexer().equalToken(Token.FOR)) {
+-        parseForUpdate();
++        skipForUpdate();
+     }
+-    if (getSqlContext().getOrderByContexts().isEmpty()) {
+-        getSqlContext().getOrderByContexts().addAll(getExprParser().parseOrderBy());
++    if (sqlContext.getOrderByContexts().isEmpty()) {
++        sqlContext.getOrderByContexts().addAll(getExprParser().parseOrderBy());
+     }
+ }
+\ No newline at end of file

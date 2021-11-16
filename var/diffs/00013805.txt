@@ -1,0 +1,16 @@
+diff --git a/5dd5977fe456829832b4663fb09363fae98d6881 b/dd75d570652fb0c1e67c22d1f97879a98a2619fb
+index 5dd5977fe4..dd75d57065 100644
+--- a/5dd5977fe456829832b4663fb09363fae98d6881
++++ b/dd75d570652fb0c1e67c22d1f97879a98a2619fb
+@@ -1,9 +1,8 @@
+ public static void moveToFailedList(final ChangeList changeList, final String commitMessage, final List<Change> failedChanges, final String newChangelistName, final Project project) {
+     // No need to move since we'll get exactly the same changelist.
+     if (failedChanges.containsAll(changeList.getChanges()))
+         return;
+     final ChangeListManager changeListManager = ChangeListManager.getInstance(project);
+-    final LocalChangeList failedList = changeListManager.addChangeList(newChangelistName);
+-    failedList.setComment(commitMessage);
++    final LocalChangeList failedList = changeListManager.addChangeList(newChangelistName, commitMessage);
+     changeListManager.moveChangesTo(failedList, failedChanges.toArray(new Change[failedChanges.size()]));
+ }
+\ No newline at end of file

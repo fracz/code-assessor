@@ -1,0 +1,22 @@
+diff --git a/f4ceb85ca66a1feb9957cd0e22ea3f3135184a2a b/decc8e09a5acb7cf8dc0534f5df1c07e9b31ff0d
+index f4ceb85ca6..decc8e09a5 100644
+--- a/f4ceb85ca66a1feb9957cd0e22ea3f3135184a2a
++++ b/decc8e09a5acb7cf8dc0534f5df1c07e9b31ff0d
+@@ -1,13 +1,15 @@
+ public synchronized void terminate() {
+     if (process != null) {
+         process.destroy();
+         try {
+             exitValue = process.waitFor();
+         } catch (InterruptedException e) {
+         // Skip
+         }
+         // exitValue = process.exitValue();
+         process = null;
+-        ProcessPropertyTester.firePropertyChange(ProcessPropertyTester.PROP_RUNNING);
++        if (processListener != null) {
++            processListener.onProcessTerminated(exitValue);
++        }
+     }
+ }
+\ No newline at end of file

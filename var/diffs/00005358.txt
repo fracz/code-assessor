@@ -1,0 +1,19 @@
+diff --git a/fe817b3d68b2c767e11b09fb29a956ac01d8ca4c b/cdcd8997d47dbc5648c5040f48ec2499b320b7ee
+index fe817b3d68..cdcd8997d4 100644
+--- a/fe817b3d68b2c767e11b09fb29a956ac01d8ca4c
++++ b/cdcd8997d47dbc5648c5040f48ec2499b320b7ee
+@@ -1,8 +1,12 @@
+ @Override
+ public String getDisplayText(XBreakpoint<PyExceptionBreakpointProperties> breakpoint) {
+     PyExceptionBreakpointProperties properties = breakpoint.getProperties();
+     if (properties != null) {
+-        return properties.getException();
++        String exception = properties.getException();
++        if (BASE_EXCEPTION.equals(exception)) {
++            return "All exceptions";
++        }
++        return exception;
+     }
+     return "";
+ }
+\ No newline at end of file

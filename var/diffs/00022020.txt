@@ -1,0 +1,28 @@
+diff --git a/0d86d4bc78430525a1fcc9a8f2c74c2f7d7c9fdd b/e007cb14248b3be3ed85e16454888dbaa48a854c
+index 0d86d4bc78..e007cb1424 100644
+--- a/0d86d4bc78430525a1fcc9a8f2c74c2f7d7c9fdd
++++ b/e007cb14248b3be3ed85e16454888dbaa48a854c
+@@ -1,18 +1,20 @@
+ /**
+  * Sets the target object for all current {@link #getChildAnimations() child animations}
+  * of this AnimatorSet that take targets ({@link ObjectAnimator} and
+  * AnimatorSet).
+  *
+  * @param target The object being animated
+  */
+ @Override
+ public void setTarget(Object target) {
+-    for (Node node : mNodes) {
+-        Animator animation = node.animation;
++    int size = mNodes.size();
++    for (int i = 0; i < size; i++) {
++        Node node = mNodes.get(i);
++        Animator animation = node.mAnimation;
+         if (animation instanceof AnimatorSet) {
+             ((AnimatorSet) animation).setTarget(target);
+         } else if (animation instanceof ObjectAnimator) {
+             ((ObjectAnimator) animation).setTarget(target);
+         }
+     }
+ }
+\ No newline at end of file

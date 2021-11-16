@@ -1,0 +1,12 @@
+diff --git a/57c2127660a3c72a64a151d6be9224f69d7028c2 b/cce4d443c0cd49221af5f4f474efeb4ce43c8f9f
+index 57c2127660..cce4d443c0 100644
+--- a/57c2127660a3c72a64a151d6be9224f69d7028c2
++++ b/cce4d443c0cd49221af5f4f474efeb4ce43c8f9f
+@@ -1,5 +1,4 @@
+ @Nullable
+ public ClassDescriptor getAnnotationTargetEnumEntry(@NotNull KotlinTarget target) {
+-    ClassifierDescriptor result = getAnnotationTargetEnum().getUnsubstitutedInnerClassesScope().getContributedClassifier(Name.identifier(target.name()), NoLookupLocation.FROM_BUILTINS);
+-    return result instanceof ClassDescriptor ? (ClassDescriptor) result : null;
++    return getEnumEntry(getAnnotationTargetEnum(), target.name());
+ }
+\ No newline at end of file

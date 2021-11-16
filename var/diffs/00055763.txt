@@ -1,0 +1,17 @@
+diff --git a/c35ece84b1e3c88016b09f74bd5267b0917c4699 b/9480293f98b8f1958c5d0fb3e4c8c688c7b4886a
+index c35ece84b1..9480293f98 100644
+--- a/c35ece84b1e3c88016b09f74bd5267b0917c4699
++++ b/9480293f98b8f1958c5d0fb3e4c8c688c7b4886a
+@@ -1,9 +1,9 @@
+ @Test
+ public void moreSpecificPatternWins() {
+     request.setRequestURI("/foo");
+     String lookupPath = new UrlPathHelper().getLookupPathForRequest(request);
+     Comparator<RequestMappingInfo> comparator = handlerMapping.getMappingComparator(lookupPath, request);
+-    RequestMappingInfo key1 = new RequestMappingInfo(asList("/fo*"), null);
+-    RequestMappingInfo key2 = new RequestMappingInfo(asList("/foo"), null);
++    RequestMappingInfo key1 = new RequestMappingInfo(new String[] { "/fo*" });
++    RequestMappingInfo key2 = new RequestMappingInfo(new String[] { "/foo" });
+     assertEquals(1, comparator.compare(key1, key2));
+ }
+\ No newline at end of file

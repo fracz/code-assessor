@@ -1,0 +1,16 @@
+diff --git a/3c65f957861e5e70435b270beb84694811f5ab1c b/319164e07ddc74fa266c6426b94cd978cc883cd3
+index 3c65f95786..319164e07d 100644
+--- a/3c65f957861e5e70435b270beb84694811f5ab1c
++++ b/319164e07ddc74fa266c6426b94cd978cc883cd3
+@@ -1,9 +1,9 @@
+ private void onListStreamInstances(final DirectBuffer buffer, final int offset) {
+     requestDecoder.wrap(buffer, offset, headerDecoder.blockLength(), headerDecoder.version());
+     final int from = requestDecoder.from();
+     final int to = requestDecoder.to();
+     final String channel = requestDecoder.replyChannel();
+     final Publication reply = aeron.addPublication(channel, requestDecoder.replyStreamId());
+-    final Session listSession = new ListDescriptorsSession(reply, from, to, archiveIndex, instance2ArchivingSession);
++    final Session listSession = new ListDescriptorsSession(reply, from, to, this);
+     sessions.add(listSession);
+ }
+\ No newline at end of file

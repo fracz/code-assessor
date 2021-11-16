@@ -1,0 +1,16 @@
+diff --git a/747a75fb0c91387e406c9985026e12b39f7a2d70 b/a629b40a9bd788e3bf0246e7ce4ffc6cbbd455d0
+index 747a75fb0c..a629b40a9b 100644
+--- a/747a75fb0c91387e406c9985026e12b39f7a2d70
++++ b/a629b40a9bd788e3bf0246e7ce4ffc6cbbd455d0
+@@ -1,9 +1,9 @@
+ /**
+  * This implementation simply delegates to
+  * {@link #convertFromPayloadInternal(Class, MediaType, byte[])}. Future
+  * implementations might add some default behavior, however.
+  */
+ @Override
+-public T convertFromPayload(Class<? extends T> clazz, MediaType contentType, byte[] payload) throws IOException {
++public Object convertFromPayload(Class<?> clazz, MediaType contentType, byte[] payload) throws IOException, ContentTypeNotSupportedException {
+     return convertFromPayloadInternal(clazz, contentType, payload);
+ }
+\ No newline at end of file

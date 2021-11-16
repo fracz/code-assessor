@@ -1,0 +1,11 @@
+diff --git a/c58c25d4f77c0efeab65f6b4d5539d777bb95bc6 b/728264713e31fc05fa378925789575eb3315157c
+index c58c25d4f7..728264713e 100644
+--- a/c58c25d4f77c0efeab65f6b4d5539d777bb95bc6
++++ b/728264713e31fc05fa378925789575eb3315157c
+@@ -1,4 +1,4 @@
+ @Test
+ public void shouldNeverVerifyWhenModeIsNotMissingMethodMode() {
+-    verifier.verify(null, null, noMoreInteractions());
++    assertFalse(verifier.appliesTo(noMoreInteractions()));
+ }
+\ No newline at end of file

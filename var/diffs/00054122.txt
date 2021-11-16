@@ -1,0 +1,17 @@
+diff --git a/5975591611ab74cc7d5e42b7f5710d745eddad80 b/35d220215af460873d297734b7f302da82b026e4
+index 5975591611..35d220215a 100644
+--- a/5975591611ab74cc7d5e42b7f5710d745eddad80
++++ b/35d220215af460873d297734b7f302da82b026e4
+@@ -1,9 +1,6 @@
+ @Test
+ public void assertNextTokenForVariable() {
+     OracleLexer lexer = new OracleLexer("SELECT @x1:=1 FROM TABLE_XXX");
+-    lexer.nextToken();
+-    assertThat(lexer.getToken().getType(), is((TokenType) DefaultKeyword.SELECT));
+-    assertThat(lexer.getToken().getLiterals(), is("SELECT"));
+-    lexer.nextToken();
+-    assertThat(lexer.getToken().getType(), is((TokenType) Assist.ERROR));
++    LexerAssert.assertNextToken(lexer, DefaultKeyword.SELECT, "SELECT");
++    LexerAssert.assertNextToken(lexer, Assist.ERROR, "");
+ }
+\ No newline at end of file

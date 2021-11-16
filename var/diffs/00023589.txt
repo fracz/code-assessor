@@ -1,0 +1,17 @@
+diff --git a/3f5dbe1b1df1732e16ca8939281827b6cab0968e b/7e99cc49de160015755262b50a9cf1a53c3f8d66
+index 3f5dbe1b1d..7e99cc49de 100644
+--- a/3f5dbe1b1df1732e16ca8939281827b6cab0968e
++++ b/7e99cc49de160015755262b50a9cf1a53c3f8d66
+@@ -1,9 +1,8 @@
+ /**
+  * Removes every {@link AudioStream} in this group.
+  */
+ public void clear() {
+-    synchronized (this) {
+-        mStreams.clear();
+-        nativeRemove(-1);
++    for (AudioStream stream : getStreams()) {
++        stream.join(null);
+     }
+ }
+\ No newline at end of file

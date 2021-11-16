@@ -1,0 +1,13 @@
+diff --git a/24f7816a92a0ce6784ea165c06b3ff6e49261fb8 b/c7365ae1fb0eccc2610809aeeb60420fdb692fc6
+index 24f7816a92..c7365ae1fb 100644
+--- a/24f7816a92a0ce6784ea165c06b3ff6e49261fb8
++++ b/c7365ae1fb0eccc2610809aeeb60420fdb692fc6
+@@ -1,5 +1,5 @@
+-private void scanAlias() {
++private Token scanAlias() {
+     Tokenizer tokenizer = new Tokenizer(input, dictionary, position);
+     tokenizer.scanContentUntil('\"', GeneralLiterals.ALIAS);
+-    setTokenizerResult(tokenizer);
++    return new Token(tokenizer);
+ }
+\ No newline at end of file

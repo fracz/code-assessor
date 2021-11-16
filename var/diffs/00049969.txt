@@ -1,0 +1,25 @@
+diff --git a/e878136209f127709938f193d4a16abd934a83be b/3358dc51ecc41a8afe6193d0f3e68f5410d09e1d
+index e878136209..3358dc51ec 100644
+--- a/e878136209f127709938f193d4a16abd934a83be
++++ b/3358dc51ecc41a8afe6193d0f3e68f5410d09e1d
+@@ -1,17 +1,17 @@
+ /**
+  * Removes row with specified index from data
+  * @param row row
+  * @return true if row was physically removed (only in case if this row was previously added)
+  * or false if it just marked as deleted
+  */
+ boolean deleteRow(@NotNull RowData row) {
+-    if (row.state == RowData.STATE_ADDED) {
++    if (row.getState() == RowData.STATE_ADDED) {
+         cleanupRow(row);
+         return true;
+     } else {
+         // Mark row as deleted
+-        row.state = RowData.STATE_REMOVED;
++        row.setState(RowData.STATE_REMOVED);
+         changesCount++;
+         return false;
+     }
+ }
+\ No newline at end of file

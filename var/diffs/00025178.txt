@@ -1,0 +1,12 @@
+diff --git a/48ed1e793dba27a44dba9973c9e6c919c728b57d b/bd332ec8c3482b49eb442e084121103a8b8cccd0
+index 48ed1e793d..bd332ec8c3 100644
+--- a/48ed1e793dba27a44dba9973c9e6c919c728b57d
++++ b/bd332ec8c3482b49eb442e084121103a8b8cccd0
+@@ -1,5 +1,5 @@
+ @Test(expected = InvalidStateStoreException.class)
+ public void shouldThrowInvalidStoreExceptionIfNotAllStoresAvailable() throws Exception {
+-    storesAvailable = false;
++    mockThread(false);
+     provider.stores("kv-store", QueryableStoreTypes.keyValueStore());
+ }
+\ No newline at end of file

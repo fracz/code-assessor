@@ -1,0 +1,24 @@
+diff --git a/c2c1e97a653d9962c6044c54330bf130fc6b6287 b/47ce130b9c1429d2f6ce1c199cadf983d849b8ea
+index c2c1e97a65..47ce130b9c 100644
+--- a/c2c1e97a653d9962c6044c54330bf130fc6b6287
++++ b/47ce130b9c1429d2f6ce1c199cadf983d849b8ea
+@@ -1,15 +1,14 @@
+-public void addTxOperation(final OTransactionIndexChanges changes) {
++public void addTxOperation(IndexTxSnapshot snapshots, final OTransactionIndexChanges changes) {
+     acquireSharedLock();
+     try {
+-        final IndexTxSnapshot indexTxSnapshot = txSnapshot.get();
+         if (changes.cleared)
+-            clearSnapshot(indexTxSnapshot);
+-        final Map<Object, Object> snapshot = indexTxSnapshot.indexSnapshot;
++            clearSnapshot(snapshots);
++        final Map<Object, Object> snapshot = snapshots.indexSnapshot;
+         for (final OTransactionIndexChangesPerKey entry : changes.changesPerKey.values()) {
+             applyIndexTxEntry(snapshot, entry);
+         }
+         applyIndexTxEntry(snapshot, changes.nullKeyChanges);
+     } finally {
+         releaseSharedLock();
+     }
+ }
+\ No newline at end of file

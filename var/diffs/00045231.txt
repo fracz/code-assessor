@@ -1,0 +1,17 @@
+diff --git a/0c730c6f45b6f1a5e94178da04fd335915487f44 b/7fcc4ff0f02b98c0273d64174abbbe86c0ecadca
+index 0c730c6f45..7fcc4ff0f0 100644
+--- a/0c730c6f45b6f1a5e94178da04fd335915487f44
++++ b/7fcc4ff0f02b98c0273d64174abbbe86c0ecadca
+@@ -1,9 +1,10 @@
+ @Test
+ public void testDoubleWithingQuotes() {
+     Double minDouble = 540282346638528870000000000000000000000.0d;
+     String cfgJson = "{source: { content: { value: 'secondNumber\n\"540282346638528870000000000000000000000.0\"'}  }, extractor : { row: {} }, transformers : [{ csv: {} }], loader: { test: {} } }";
+     process(cfgJson);
+     List<ODocument> res = getResult();
+     ODocument doc = res.get(0);
+-    assertEquals(minDouble, (Double) doc.field("secondNumber"));
++    // assertEquals(minDouble, (Double) doc.field("secondNumber"));
++    Assertions.assertThat(doc.<Double>field("secondNumber")).isEqualTo(minDouble);
+ }
+\ No newline at end of file

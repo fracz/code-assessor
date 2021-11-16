@@ -1,0 +1,26 @@
+diff --git a/b93243c6ef9cc7afdd51f6d0de56d25f46ccc3dc b/5eb6185482c00fbe360ee055148db4a2d35feade
+index b93243c6ef..5eb6185482 100644
+--- a/b93243c6ef9cc7afdd51f6d0de56d25f46ccc3dc
++++ b/5eb6185482c00fbe360ee055148db4a2d35feade
+@@ -1,17 +1,17 @@
+ @Override
+ public Object[] getChildren(Object parentElement) {
+     if (parentElement instanceof DBNDatabaseNode) {
+         try {
+             // Read children with void progress monitor because inline children SHOULD be already cached
+-            List<DBNDatabaseNode> children = ((DBNDatabaseNode) parentElement).getChildren(VoidProgressMonitor.INSTANCE);
+-            if (CommonUtils.isEmpty(children)) {
++            DBNDatabaseNode[] children = ((DBNDatabaseNode) parentElement).getChildren(VoidProgressMonitor.INSTANCE);
++            if (ArrayUtils.isEmpty(children)) {
+                 return null;
+             } else {
+-                return children.toArray();
++                return children;
+             }
+         } catch (DBException e) {
+             log.error(e);
+         }
+     }
+     return null;
+ }
+\ No newline at end of file

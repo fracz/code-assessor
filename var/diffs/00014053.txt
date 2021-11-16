@@ -1,0 +1,22 @@
+diff --git a/8b9e8e2d2e14c8e3e0c269d0e926b7b399e2a4aa b/7de43ec50e19248611e7a3f7885e69909191652b
+index 8b9e8e2d2e..7de43ec50e 100644
+--- a/8b9e8e2d2e14c8e3e0c269d0e926b7b399e2a4aa
++++ b/7de43ec50e19248611e7a3f7885e69909191652b
+@@ -1,11 +1,10 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiClass aClass = (PsiClass) location.getParent();
+-    assert aClass != null;
+-    final String className = aClass.getName();
+-    if (className.length() < getMinLength()) {
++@NotNull
++public String buildErrorString(Object... infos) {
++    final String annotationName = (String) infos[0];
++    if (annotationName.length() < getMinLength()) {
+         return InspectionGadgetsBundle.message("annotation.naming.convention.problem.descriptor.short");
+-    } else if (className.length() > getMaxLength()) {
++    } else if (annotationName.length() > getMaxLength()) {
+         return InspectionGadgetsBundle.message("annotation.naming.convention.problem.descriptor.long");
+     }
+     return InspectionGadgetsBundle.message("annotation.naming.convention.problem.descriptor.regex.mismatch", getRegex());
+ }
+\ No newline at end of file

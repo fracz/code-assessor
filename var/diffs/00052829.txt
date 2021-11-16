@@ -1,0 +1,11 @@
+diff --git a/269ecb3a100ed0003e92058da795d90aed339071 b/0883c450ea17c8a3002357da38c4eddab7928c73
+index 269ecb3a10..0883c450ea 100644
+--- a/269ecb3a100ed0003e92058da795d90aed339071
++++ b/0883c450ea17c8a3002357da38c4eddab7928c73
+@@ -1,4 +1,4 @@
+ @Test
+ public void assertParse() {
+-    assertSQLParsedResult(SQLParserFactory.create(DatabaseType.MySQL, getSql(), Lists.<Object>newArrayList(1), new ShardingRuleMockBuilder().addShardingColumns("user_id").addShardingColumns("order_id").addShardingColumns("state").addAutoIncrementColumn("order", "order_id").addAutoIncrementColumn("payment", "order_id").addAutoIncrementColumn("payment", "pay_no").build()).parse());
++    new SQLParserEngine(DatabaseType.MySQL, getSql(), new ShardingRuleMockBuilder().addShardingColumns("user_id").addShardingColumns("order_id").addShardingColumns("state").addAutoIncrementColumn("order", "order_id").addAutoIncrementColumn("payment", "order_id").addAutoIncrementColumn("payment", "pay_no").build(), Lists.<Object>newArrayList(1)).parseStatement();
+ }
+\ No newline at end of file

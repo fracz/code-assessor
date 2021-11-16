@@ -1,0 +1,16 @@
+diff --git a/a4c5ca14e3b1018c3d4fb840f81cfa98b2323930 b/f8e7259b402760fdefa306ae5bdcc4dbc98b37c3
+index a4c5ca14e3..f8e7259b40 100644
+--- a/a4c5ca14e3b1018c3d4fb840f81cfa98b2323930
++++ b/f8e7259b402760fdefa306ae5bdcc4dbc98b37c3
+@@ -1,9 +1,9 @@
+ public int getLocalCollectionId(int collectionId) {
+     int id = context().getPreferences().getInt("sticker_packs_local_id_map" + collectionId, -1);
+     if (id == -1) {
+         id = context().getPreferences().getInt("sticker_packs_local_id_increment", 0);
+         context().getPreferences().putInt("sticker_packs_local_id_map" + collectionId, id);
+-        context().getPreferences().putInt("sticker_packs_local_id_increment", ++id);
++        context().getPreferences().putInt("sticker_packs_local_id_increment", id + 1);
+     }
+     return id;
+ }
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/ca241d3b5457d0677bfc851799600af24e783ccd b/d0d9e89754be05e353ec1be8643cd9374a2932cf
+index ca241d3b54..d0d9e89754 100644
+--- a/ca241d3b5457d0677bfc851799600af24e783ccd
++++ b/d0d9e89754be05e353ec1be8643cd9374a2932cf
+@@ -1,6 +1,5 @@
+-protected File getHistoryDir() {
+-    // FIXME relies on FileProjectManager
+-    File dir = new File(((FileProjectManager) ProjectManager.singleton).getProjectDir(projectID), "history");
++protected File getHistoryDir(HistoryEntry historyEntry) {
++    File dir = new File(((FileProjectManager) ProjectManager.singleton).getProjectDir(historyEntry.projectID), "history");
+     dir.mkdirs();
+     return dir;
+ }
+\ No newline at end of file

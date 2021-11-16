@@ -1,0 +1,15 @@
+diff --git a/d2a0ad18c9d05c08652a7b09e857080fbfea2ad5 b/a6e3e22454346cc160d3507ccccaaecda36f55a9
+index d2a0ad18c9..a6e3e22454 100644
+--- a/d2a0ad18c9d05c08652a7b09e857080fbfea2ad5
++++ b/a6e3e22454346cc160d3507ccccaaecda36f55a9
+@@ -1,8 +1,7 @@
+ private void checkHiDPIMode() {
+     // if switched from JRE-HiDPI to IDE-HiDPI
+     boolean switchedHiDPIMode = SystemInfo.isJetBrainsJvm && "true".equalsIgnoreCase(System.getProperty("sun.java2d.uiScale.enabled")) && !UIUtil.isJreHiDPIEnabled();
+-    boolean defaultScreenIsHiDPI = JBUI.sysScale() > 1.0;
+-    if (SystemInfo.isWindows && ((switchedHiDPIMode && defaultScreenIsHiDPI) || RemoteDesktopService.isRemoteSession())) {
++    if (SystemInfo.isWindows && ((switchedHiDPIMode && JBUI.isHiDPI(JBUI.sysScale())) || RemoteDesktopService.isRemoteSession())) {
+         showNotification(new KeyHyperlinkAdapter("ide.set.hidpi.mode"));
+     }
+ }
+\ No newline at end of file

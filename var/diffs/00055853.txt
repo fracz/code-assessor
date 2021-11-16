@@ -1,0 +1,19 @@
+diff --git a/154649b991d1515d1e1f8b556605afdcdc24ae14 b/47d227e96296a1f77db6d273edd6be075cff0928
+index 154649b991..47d227e962 100644
+--- a/154649b991d1515d1e1f8b556605afdcdc24ae14
++++ b/47d227e96296a1f77db6d273edd6be075cff0928
+@@ -1,12 +1,12 @@
+ // More extensive "empty body" tests in RequestBody- and HttpEntityArgumentResolverTests
+ // SPR-9942
+ @Test
+ // SPR-9942
+ @SuppressWarnings("unchecked")
+ public void emptyBody() throws Exception {
+     this.request.setHeader("Content-Type", "application/json");
+     ResolvableType type = forClassWithGenerics(Mono.class, TestBean.class);
+     MethodParameter param = this.testMethod.resolveParam(type);
+     Mono<TestBean> result = (Mono<TestBean>) this.resolver.readBody(param, true, this.bindingContext, this.exchange).block();
+-    TestSubscriber.subscribe(result).assertError(ServerWebInputException.class);
++    ScriptedSubscriber.create().expectError(ServerWebInputException.class).verify(result);
+ }
+\ No newline at end of file

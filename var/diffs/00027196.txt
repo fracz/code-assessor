@@ -1,0 +1,15 @@
+diff --git a/bb6233299002fdf89ee287f31020abc5878f7480 b/c593f8f86e029008bc17d0effe193bb46f5aa9b3
+index bb62332990..c593f8f86e 100644
+--- a/bb6233299002fdf89ee287f31020abc5878f7480
++++ b/c593f8f86e029008bc17d0effe193bb46f5aa9b3
+@@ -1,6 +1,7 @@
+ // 1 bias per feature map
+-protected INDArray createBias(NeuralNetConfiguration conf) {
++protected INDArray createBias(NeuralNetConfiguration conf, INDArray biasView) {
+     // the bias is a 1D tensor -- one bias per output feature map
+     org.deeplearning4j.nn.conf.layers.ConvolutionLayer layerConf = (org.deeplearning4j.nn.conf.layers.ConvolutionLayer) conf.getLayer();
+-    return Nd4j.valueArrayOf(layerConf.getNOut(), layerConf.getBiasInit());
++    biasView.assign(layerConf.getBiasInit());
++    return biasView;
+ }
+\ No newline at end of file

@@ -1,0 +1,29 @@
+diff --git a/83be71669d596be46ec657f742d811d270c7257f b/dfb1d5f70d0069beb0c99a56a6b94b8540792bec
+index 83be71669d..dfb1d5f70d 100644
+--- a/83be71669d596be46ec657f742d811d270c7257f
++++ b/dfb1d5f70d0069beb0c99a56a6b94b8540792bec
+@@ -1,18 +1,11 @@
+ public C remove(final D channel, final int sessionId, final int streamId) {
+-    final Int2ObjectHashMap<Int2ObjectHashMap<C>> sessionMap = channelMap.get(channel);
+-    if (sessionMap == null) {
++    final CompoundIdMap<C> idMap = channelMap.get(channel);
++    if (null == idMap) {
+         return null;
+     }
+-    final Int2ObjectHashMap<C> channelMap = sessionMap.get(sessionId);
+-    if (channelMap == null) {
+-        return null;
+-    }
+-    final C value = channelMap.remove(streamId);
+-    if (channelMap.isEmpty()) {
+-        sessionMap.remove(sessionId);
+-        if (sessionMap.isEmpty()) {
+-            this.channelMap.remove(channel);
+-        }
++    final C value = idMap.remove(sessionId, streamId);
++    if (idMap.isEmpty()) {
++        channelMap.remove(channel);
+     }
+     return value;
+ }
+\ No newline at end of file

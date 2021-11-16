@@ -1,0 +1,12 @@
+diff --git a/e5df71debba1f76558f1664be8f99f4043b32093 b/9b7bacc4dc3881ac921bf46aa89cb7a5e12f2a6e
+index e5df71debb..9b7bacc4dc 100644
+--- a/e5df71debba1f76558f1664be8f99f4043b32093
++++ b/9b7bacc4dc3881ac921bf46aa89cb7a5e12f2a6e
+@@ -1,3 +1,5 @@
+ private void addLocalVariable(String name, Class<?> type) throws CannotCompileException, NotFoundException {
+-    behavior.addLocalVariable(name, behavior.getDeclaringClass().getClassPool().get(type.getName()));
++    final String interceptorClassName = type.getName();
++    final CtClass interceptorCtClass = behavior.getDeclaringClass().getClassPool().get(interceptorClassName);
++    behavior.addLocalVariable(name, interceptorCtClass);
+ }
+\ No newline at end of file

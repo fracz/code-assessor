@@ -1,0 +1,24 @@
+diff --git a/d9d214906c381f05b85f957f74e96f623c5ae147 b/8888854d18559f004b932104b2920a1444e59ee7
+index d9d214906c..8888854d18 100644
+--- a/d9d214906c381f05b85f957f74e96f623c5ae147
++++ b/8888854d18559f004b932104b2920a1444e59ee7
+@@ -1,13 +1,16 @@
+ @Override
+ public void widgetSelected(SelectionEvent e) {
+     final IStructuredSelection selection = (IStructuredSelection) consumersTable.getSelection();
+     TransferTarget target;
+     if (!selection.isEmpty()) {
+         target = (TransferTarget) selection.getFirstElement();
+     } else {
+         target = null;
+     }
+-    getWizard().getSettings().setConsumer(target == null ? null : target.consumer);
+-    getWizard().getSettings().setProcessor(target == null ? null : target.processor);
++    if (target == null) {
++        getWizard().getSettings().selectConsumer(null, null);
++    } else {
++        getWizard().getSettings().selectConsumer(target.consumer, target.processor);
++    }
+     updatePageCompletion();
+ }
+\ No newline at end of file

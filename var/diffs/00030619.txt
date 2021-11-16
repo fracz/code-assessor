@@ -1,0 +1,19 @@
+diff --git a/d0b2fc4df315f82aa6db0d21452b3f6ccf852f33 b/70b1bb1e4ce3a756b40f78ae0a2037a46dc25a49
+index d0b2fc4df3..70b1bb1e4c 100644
+--- a/d0b2fc4df315f82aa6db0d21452b3f6ccf852f33
++++ b/70b1bb1e4ce3a756b40f78ae0a2037a46dc25a49
+@@ -1,11 +1,11 @@
+ @Override
+ public void touchFile(String name) throws IOException {
+-    delegate.touchFile(name);
+     synchronized (mutex) {
+         StoreFileMetaData metaData = filesMetadata.get(name);
+         if (metaData != null) {
+-            metaData = new StoreFileMetaData(metaData.name(), metaData.length(), delegate.fileModified(name), metaData.checksum());
++            metaData.directory().touchFile(name);
++            metaData = new StoreFileMetaData(metaData.name(), metaData.length(), metaData.directory().fileModified(name), metaData.checksum(), metaData.directory());
+             filesMetadata = MapBuilder.newMapBuilder(filesMetadata).put(name, metaData).immutableMap();
+         }
+     }
+ }
+\ No newline at end of file

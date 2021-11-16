@@ -1,0 +1,24 @@
+diff --git a/72b0252af989791d32782490c558780b91a0f31d b/ab2f871c076ccab2d1a751d1e4dd8e7fa4ed4a43
+index 72b0252af9..ab2f871c07 100644
+--- a/72b0252af989791d32782490c558780b91a0f31d
++++ b/ab2f871c076ccab2d1a751d1e4dd8e7fa4ed4a43
+@@ -1,16 +1,16 @@
+ @Override
+-public InputType getOutputType(InputType inputType) {
++public InputType getOutputType(int layerIndex, InputType inputType) {
+     if (inputType == null) {
+         throw new IllegalStateException("Invalid input type: Batch norm layer expected input of type CNN, got null for layer \"" + getLayerName() + "\"");
+     }
+     // Can handle CNN, flat CNN or FF input formats only
+     switch(inputType.getType()) {
+         case FF:
+         case CNN:
+         case CNNFlat:
+             // OK
+             return inputType;
+         default:
+-            throw new IllegalStateException("Invalid input type: Batch norm layer expected input of type CNN, CNN Flat or FF, got " + inputType + " for layer " + getLayerName() + "\"");
++            throw new IllegalStateException("Invalid input type: Batch norm layer expected input of type CNN, CNN Flat or FF, got " + inputType + " for layer index " + layerIndex + ", layer name = " + getLayerName());
+     }
+ }
+\ No newline at end of file

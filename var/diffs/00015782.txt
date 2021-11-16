@@ -1,0 +1,21 @@
+diff --git a/6815a8e67f70a758f2bc78de29611f61d42dabd7 b/6bb91f1d90bb70b7dc4aa1c278121575d5917d6d
+index 6815a8e67f..6bb91f1d90 100644
+--- a/6815a8e67f70a758f2bc78de29611f61d42dabd7
++++ b/6bb91f1d90bb70b7dc4aa1c278121575d5917d6d
+@@ -1,13 +1,13 @@
+ @Override
+ public void indexProperty(PsiJetPropertyStub stub, IndexSink sink) {
+     String propertyName = stub.getName();
+     if (propertyName != null) {
+         if (stub.isTopLevel()) {
+             FqName topFQName = stub.getTopFQName();
+             if (topFQName != null) {
+-                sink.occurrence(JetIndexKeys.TOP_LEVEL_PROPERTY_FQN_NAME_KEY, topFQName.toString());
++                sink.occurrence(JetTopLevelPropertiesFqnNameIndex.getInstance().getKey(), topFQName.toString());
+             }
+         }
+-        sink.occurrence(JetIndexKeys.PROPERTIES_SHORT_NAME_KEY, propertyName);
++        sink.occurrence(JetShortPropertiesNameIndex.getInstance().getKey(), propertyName);
+     }
+ }
+\ No newline at end of file

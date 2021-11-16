@@ -1,0 +1,17 @@
+diff --git a/b23f2bdb6f9baef9117b6fe04d92914730e509d4 b/7e8e1e43e31299520faa9030b024fff9536827e4
+index b23f2bdb6f..7e8e1e43e3 100644
+--- a/b23f2bdb6f9baef9117b6fe04d92914730e509d4
++++ b/7e8e1e43e31299520faa9030b024fff9536827e4
+@@ -1,5 +1,8 @@
+ public void precedeElement() {
+-    final Pair<PsiBuilder.Marker, IElementType> pair = myMarkers.pop();
+-    myMarkers.push(new Pair<PsiBuilder.Marker, IElementType>(pair.first.precede(), null));
+-    myMarkers.push(pair);
++    final PsiBuilder.Marker marker = myMarkers.pop();
++    myMarkers.push(marker.precede());
++    myMarkers.push(marker);
++    final IElementType type = myElementTypes.pop();
++    myElementTypes.push(null);
++    myElementTypes.push(type);
+ }
+\ No newline at end of file

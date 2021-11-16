@@ -1,0 +1,18 @@
+diff --git a/971e19f9697c1ee9b0750ab9db40973c82c47d01 b/029246d112a6450c85500f48b3d71f3257c5848b
+index 971e19f969..029246d112 100644
+--- a/971e19f9697c1ee9b0750ab9db40973c82c47d01
++++ b/029246d112a6450c85500f48b3d71f3257c5848b
+@@ -1,6 +1,8 @@
+-private static void markReturnBlocks(MethodNode mth, BlockNode block) {
+-    if (block.getInstructions().size() == 1) {
+-        if (block.getInstructions().get(0).getType() == InsnType.RETURN)
+-            block.getAttributes().add(AttributeFlag.RETURN);
++private static void markReturnBlocks(MethodNode mth) {
++    for (BlockNode block : mth.getBasicBlocks()) {
++        if (block.getInstructions().size() == 1) {
++            if (block.getInstructions().get(0).getType() == InsnType.RETURN)
++                block.getAttributes().add(AttributeFlag.RETURN);
++        }
+     }
+ }
+\ No newline at end of file

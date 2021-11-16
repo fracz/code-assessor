@@ -1,0 +1,16 @@
+diff --git a/ee1fb6a38be4b84d2e2cabfd5872f1d757885bd5 b/50938efd07a9ced2f342d246327a83a6df7df7fc
+index ee1fb6a38b..50938efd07 100644
+--- a/ee1fb6a38be4b84d2e2cabfd5872f1d757885bd5
++++ b/50938efd07a9ced2f342d246327a83a6df7df7fc
+@@ -1,9 +1,9 @@
+ private void parseInto() {
+-    if (getUnsupportedKeywords().contains(sqlParser.getLexer().getCurrentToken().getType())) {
++    if (sqlParser.equalAny(getUnsupportedKeywordsBeforeInto())) {
+         throw new SQLParsingUnsupportedException(sqlParser.getLexer().getCurrentToken().getType());
+     }
+     sqlParser.skipUntil(DefaultKeyword.INTO);
+     sqlParser.getLexer().nextToken();
+     sqlParser.parseSingleTable(insertStatement);
+     skipBetweenTableAndValues();
+ }
+\ No newline at end of file

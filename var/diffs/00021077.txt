@@ -1,0 +1,18 @@
+diff --git a/d503f9a5a630e10540fa38d7f570b4747d87be89 b/9b494fd39ff2dc4f8237967f88799da5f3e1a8a3
+index d503f9a5a6..9b494fd39f 100644
+--- a/d503f9a5a630e10540fa38d7f570b4747d87be89
++++ b/9b494fd39ff2dc4f8237967f88799da5f3e1a8a3
+@@ -1,9 +1,7 @@
+ @SuppressWarnings("unchecked")
+ public <T> T deserialze(DefaultJSONParser parser, Type clazz, Object fieldName) {
+     Object value = parser.parse();
+-    if (value == null) {
+-        return null;
+-    }
+-    String charset = (String) value;
+-    return (T) Charset.forName(charset);
++    return //
++    value == null ? //
++    null : (T) Charset.forName((String) value);
+ }
+\ No newline at end of file

@@ -1,0 +1,23 @@
+diff --git a/c3301a3e0f152ee98ff560d9c229cc5d81ee75a1 b/899d4b962f7e6a168e205130d638afa63f70bd2c
+index c3301a3e0f..899d4b962f 100644
+--- a/c3301a3e0f152ee98ff560d9c229cc5d81ee75a1
++++ b/899d4b962f7e6a168e205130d638afa63f70bd2c
+@@ -1,14 +1,15 @@
+ public ModifiableRootModel applyAndDispose() throws ConfigurationException {
+     for (ModuleConfigurationEditor editor : myEditors) {
+         editor.saveData();
+         editor.apply();
+     }
+-    if (getModule().getModuleType().isJ2EE() && myModifiableRootModel != null) {
+-        final JavaeeModulePropertiesEx j2EEModulePropertiesEx = (JavaeeModulePropertiesEx) JavaeeModuleProperties.getInstance(getModule());
++    final Module module = myModifiableRootModel.getModule();
++    if (module.getModuleType().isJ2EE() && myModifiableRootModel != null) {
++        final JavaeeModulePropertiesEx j2EEModulePropertiesEx = (JavaeeModulePropertiesEx) JavaeeModuleProperties.getInstance(module);
+         if (j2EEModulePropertiesEx != null && j2EEModulePropertiesEx.getModifiableModel() != null) {
+             // start edit was call
+             j2EEModulePropertiesEx.commit(myModifiableRootModel);
+         }
+     }
+     return dispose();
+ }
+\ No newline at end of file

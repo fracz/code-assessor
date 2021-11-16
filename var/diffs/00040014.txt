@@ -1,0 +1,11 @@
+diff --git a/bde7f7ad45070b6a4de354a79194ca4e5aabfd55 b/4c415378cbc563caa6292144e14a22f3bf3bee1c
+index bde7f7ad45..4c415378cb 100644
+--- a/bde7f7ad45070b6a4de354a79194ca4e5aabfd55
++++ b/4c415378cbc563caa6292144e14a22f3bf3bee1c
+@@ -1,4 +1,4 @@
+ @Override
+ public String getUserMessage(TokenNameLookup tokenNameLookup) {
+-    return String.format("Node(%s) with label `%s` has no value for property `%s`", nodeId, tokenNameLookup.labelGetName(constraint.label()), tokenNameLookup.propertyKeyGetName(constraint.propertyKey()));
++    return String.format("Node(%s) with label `%s` has no value for property `%s`", nodeId, tokenNameLookup.labelGetName(constraint.label()), constraint.descriptor().propertyNameText(tokenNameLookup));
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/3b08abbb068b906ae77e5791f6c39fcbc53d165d b/4f6a3188dc7be6faa491577a5f0e8739fe777f47
+index 3b08abbb06..4f6a3188dc 100644
+--- a/3b08abbb068b906ae77e5791f6c39fcbc53d165d
++++ b/4f6a3188dc7be6faa491577a5f0e8739fe777f47
+@@ -1,6 +1,5 @@
+-public String buildErrorString(PsiElement location) {
+-    final PsiMethodCallExpression expression = (PsiMethodCallExpression) location;
+-    final PsiReferenceExpression methodExpression = expression.getMethodExpression();
+-    final String methodName = methodExpression.getReferenceName();
++@NotNull
++public String buildErrorString(Object... infos) {
++    final String methodName = (String) infos[0];
+     return InspectionGadgetsBundle.message("literal.as.arg.to.string.equals.problem.descriptor", methodName);
+ }
+\ No newline at end of file

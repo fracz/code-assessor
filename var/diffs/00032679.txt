@@ -1,0 +1,14 @@
+diff --git a/6287d1dfdeac9821785a74fe113230da0c36096e b/09906b9e87f2a3fbe8be6cbe9db47d6019ce7734
+index 6287d1dfde..09906b9e87 100644
+--- a/6287d1dfdeac9821785a74fe113230da0c36096e
++++ b/09906b9e87f2a3fbe8be6cbe9db47d6019ce7734
+@@ -1,7 +1,7 @@
+ @Test
+ public void createUndirected_expectedNodeCount() {
+-    UndirectedGraph<Integer, String> undirectedGraph = Graphs.createUndirected(config().expectedNodeCount(NODE_COUNT));
++    Graph<Integer, String> undirectedGraph = GraphBuilder.undirected().expectedNodeCount(NODE_COUNT).build();
+     assertThat(undirectedGraph.addEdge(E12, N1, N2)).isTrue();
+     assertThat(undirectedGraph.edgesConnecting(N1, N2)).isEqualTo(ImmutableSet.of(E12));
+     assertThat(undirectedGraph.edgesConnecting(N2, N1)).isEqualTo(ImmutableSet.of(E12));
+ }
+\ No newline at end of file

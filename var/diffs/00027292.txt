@@ -1,0 +1,21 @@
+diff --git a/e2426af184b8c14e6327d241210f89ddd49ad6bb b/1b9d9486507b18ba4fb1ef46c612f617b6a7270e
+index e2426af184..1b9d948650 100644
+--- a/e2426af184b8c14e6327d241210f89ddd49ad6bb
++++ b/1b9d9486507b18ba4fb1ef46c612f617b6a7270e
+@@ -1,13 +1,12 @@
+ private String nextWorker() {
+     while (workers.isEmpty()) {
+         // always update
+         for (String s : stateTracker.workers()) {
+-            if (stateTracker.jobFor(s) == null) {
+-                if (!workers.contains(s))
+-                    workers.add(s);
++            if (stateTracker.jobFor(s) == null && !workers.contains(s)) {
++                workers.add(s);
+             }
+         }
+         log.info("Refilling queue with size of " + workers.size() + " out of " + stateTracker.numWorkers());
+     }
+     return workers.poll();
+ }
+\ No newline at end of file

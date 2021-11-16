@@ -1,0 +1,11 @@
+diff --git a/c536302067b6ca74f8a895e6075b5471fad635de b/c70319a88524541413ff63ed47ca1af515e585ef
+index c536302067..c70319a885 100644
+--- a/c536302067b6ca74f8a895e6075b5471fad635de
++++ b/c70319a88524541413ff63ed47ca1af515e585ef
+@@ -1,4 +1,3 @@
+-// TODO(eaftan): This isn't going to work reflectively.
+ public final Scanner createScanner() {
+-    return new BugCheckingScanner();
++    return ErrorProneScanner.forMatcher(this.getClass());
+ }
+\ No newline at end of file

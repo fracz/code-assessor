@@ -1,0 +1,24 @@
+diff --git a/2d1d9e5576f85f62432331ac7818f065341b66fd b/1b0d325798527a1b813ff16da978803274702262
+index 2d1d9e5576..1b0d325798 100644
+--- a/2d1d9e5576f85f62432331ac7818f065341b66fd
++++ b/1b0d325798527a1b813ff16da978803274702262
+@@ -1,17 +1,7 @@
+ protected ColumnDefinition computeNext() {
+     if (partitionKeyIter.hasNext())
+         return partitionKeyIter.next();
+     if (clusteringIter.hasNext())
+         return clusteringIter.next();
+-    if (staticIter.hasNext())
+-        return staticIter.next();
+-    if (compactValueColumn != null && !valueDone) {
+-        valueDone = true;
+-        // with only a PK. As far as selects are concerned, we should ignore the value.
+-        if (compactValueColumn.name.bytes.hasRemaining())
+-            return compactValueColumn;
+-    }
+-    if (regularIter.hasNext())
+-        return regularIter.next();
+-    return endOfData();
++    return otherColumns.hasNext() ? otherColumns.next() : endOfData();
+ }
+\ No newline at end of file

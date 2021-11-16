@@ -1,0 +1,11 @@
+diff --git a/0b21ec9b2b61c6fe68995de8412a173c1271c05d b/7a903ecc884f83361578f52e52b734c726c04176
+index 0b21ec9b2b..7a903ecc88 100644
+--- a/0b21ec9b2b61c6fe68995de8412a173c1271c05d
++++ b/7a903ecc884f83361578f52e52b734c726c04176
+@@ -1,4 +1,3 @@
+ public static ThumbnailView getThumbnailView(AnActionEvent e) {
+-    DataContext dataContext = e.getDataContext();
+-    return (ThumbnailView) dataContext.getData(ThumbnailView.class.getName());
++    return ThumbnailView.DATA_KEY.getData(e.getDataContext());
+ }
+\ No newline at end of file

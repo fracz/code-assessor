@@ -1,0 +1,13 @@
+diff --git a/708e973ae9ed9c5ba40805c6b9617ab3fc9b1467 b/dea4e6544e9d985f610df766e08063a1ba5a3ff5
+index 708e973ae9..dea4e6544e 100644
+--- a/708e973ae9ed9c5ba40805c6b9617ab3fc9b1467
++++ b/dea4e6544e9d985f610df766e08063a1ba5a3ff5
+@@ -1,5 +1,5 @@
+ @Test
+ public void assertDoDynamicShardingForBetweenSingleKey() {
+-    ShardingStrategy strategy = new ShardingStrategy("column", new TestPreciseShardingAlgorithm(), new TestRangeShardingAlgorithm());
+-    assertThat(strategy.doDynamicSharding(createShardingValues(new RangeShardingValue<>("logicTable", "column", Range.open("1", "3")))), is((Collection<String>) Sets.newHashSet("1", "2", "3")));
++    StandardShardingStrategy strategy = new StandardShardingStrategy("column", new TestPreciseShardingAlgorithm(), new TestRangeShardingAlgorithm());
++    assertThat(strategy.doRangeSharding(Collections.<String>emptyList(), new RangeShardingValue<>("logicTable", "column", Range.open("1", "3"))), is((Collection<String>) Lists.newArrayList("1", "2", "3")));
+ }
+\ No newline at end of file

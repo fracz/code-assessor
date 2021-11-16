@@ -1,0 +1,16 @@
+diff --git a/f48138217b95340df2ee1ed7b959e509cbf1dd69 b/37f43ab55382a28f5ed2487916c2ba0a12a503a8
+index f48138217b..37f43ab553 100644
+--- a/f48138217b95340df2ee1ed7b959e509cbf1dd69
++++ b/37f43ab55382a28f5ed2487916c2ba0a12a503a8
+@@ -1,9 +1,9 @@
+ public File[] getSelectedIOFiles() {
+-    File[] files = (File[]) myContext.getData(VcsDataConstants.IO_FILE_ARRAY);
++    File[] files = VcsDataKeys.IO_FILE_ARRAY.getData(myContext);
+     if (files != null && files.length > 0)
+         return files;
+     File file = getSelectedIOFile();
+     if (file != null)
+         return new File[] { file };
+     return null;
+ }
+\ No newline at end of file

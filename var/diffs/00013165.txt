@@ -1,0 +1,15 @@
+diff --git a/232123e9b94bb550692c805ad5aaa9983fcdeefc b/367b7a73f2e29f94705b81933777e9a756c34200
+index 232123e9b9..367b7a73f2 100644
+--- a/232123e9b94bb550692c805ad5aaa9983fcdeefc
++++ b/367b7a73f2e29f94705b81933777e9a756c34200
+@@ -1,8 +1,8 @@
+ @Override
+ public boolean isSelected(final AnActionEvent e) {
+     final VirtualFile[] selectedFiles = getSelectedFiles();
+     if (selectedFiles.length == 0)
+         return false;
+     final ContentEntryEditor editor = myEntryTreeEditor.getContentEntryEditor();
+-    return myEditTestSources ? editor.isTestSource(selectedFiles[0]) : editor.isSource(selectedFiles[0]);
++    return myEditHandler.getRootType().equals(editor.getRootType(selectedFiles[0]));
+ }
+\ No newline at end of file

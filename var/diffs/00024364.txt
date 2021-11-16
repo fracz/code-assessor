@@ -1,0 +1,12 @@
+diff --git a/6ea099995daa239a1197a565eb79c4b9adfb71e6 b/45e1d40b5419151eb5aeeda9b8726dcc3276bcc0
+index 6ea099995d..45e1d40b54 100644
+--- a/6ea099995daa239a1197a565eb79c4b9adfb71e6
++++ b/45e1d40b5419151eb5aeeda9b8726dcc3276bcc0
+@@ -1,4 +1,3 @@
+-@Override
+-public String toString() {
+-    return Objects.toStringHelper(this).add("keyRange", keyRange).add("sliceFilter", sliceFilter).add("columnFilter", columnFilter).add("firstPartitionColumnStart", firstPartitionColumnStart == null ? "null" : cfm.comparator.getString(firstPartitionColumnStart)).add("lastPartitionColumnFinish", lastPartitionColumnFinish == null ? "null" : cfm.comparator.getString(lastPartitionColumnFinish)).toString();
++public String toString(CFMetaData metadata) {
++    return String.format("range=%s pfilter=%s", keyRange.getString(metadata.getKeyValidator()), clusteringIndexFilter.toString(metadata));
+ }
+\ No newline at end of file

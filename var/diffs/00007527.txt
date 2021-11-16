@@ -1,0 +1,25 @@
+diff --git a/8e34819efb527585f24d6af890039e072fd5ff1d b/244aa7b7bc04abb9461b01487d0bf6e858d7d739
+index 8e34819efb..244aa7b7bc 100644
+--- a/8e34819efb527585f24d6af890039e072fd5ff1d
++++ b/244aa7b7bc04abb9461b01487d0bf6e858d7d739
+@@ -1,9 +1,13 @@
+ @Override
+-protected void moveMembers(@NotNull final PyClass from, @NotNull final PyClass to, @NotNull final Collection<PyClass> members) {
+-    final Set<String> superClassesToMove = Sets.newHashSet(Collections2.filter(Collections2.transform(members, NAME_EXTRACTOR), NotNullPredicate.INSTANCE));
+-    for (final PyElement member : members) {
+-        superClassesToMove.add(member.getName());
++protected void moveMembers(@NotNull PyClass from, @NotNull Collection<PyClass> members, @NotNull PyClass... to) {
++    for (PyClass destClass : to) {
++        PyClassRefactoringUtil.addSuperclasses(from.getProject(), destClass, members.toArray(new PyClass[members.size()]));
++    }
++    for (PyExpression expression : from.getSuperClassExpressions()) {
++        for (PyClass member : members) {
++            if (expression.getText().equals(member.getName())) {
++                expression.delete();
++            }
++        }
+     }
+-    PyClassRefactoringUtil.moveSuperclasses(from, superClassesToMove, to);
+-    PyClassRefactoringUtil.insertImport(to, new ArrayList<PsiNamedElement>(members));
+ }
+\ No newline at end of file

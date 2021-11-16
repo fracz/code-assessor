@@ -1,0 +1,21 @@
+diff --git a/db72151a60594de4f5d6551225530b388bf5e5bf b/1ef8152c30519813cbc436eaa4de32e0bd10b889
+index db72151a60..1ef8152c30 100644
+--- a/db72151a60594de4f5d6551225530b388bf5e5bf
++++ b/1ef8152c30519813cbc436eaa4de32e0bd10b889
+@@ -1,11 +1,11 @@
+ public void handler(TBase<?, ?> tbase, DatagramPacket datagramPacket) {
+-    if (logger.isDebugEnabled()) {
+-        logger.debug("handle " + tbase);
+-    }
++    assert (tbase instanceof Span);
+     try {
+         Span span = (Span) tbase;
+-        System.out.println("span=" + span);
++        if (logger.isInfoEnabled()) {
++            logger.info("Received SPAN=" + span);
++        }
+     } catch (Exception e) {
+         logger.warn("ReadJVMData handle error " + e.getMessage(), e);
+     }
+ }
+\ No newline at end of file

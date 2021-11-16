@@ -1,0 +1,34 @@
+diff --git a/6dab1940d75f299a813c5efa55ee6f8cdf65207a b/817fc394be8293fccc5290e1937178aeda44cd09
+index 6dab1940d7..817fc394be 100644
+--- a/6dab1940d75f299a813c5efa55ee6f8cdf65207a
++++ b/817fc394be8293fccc5290e1937178aeda44cd09
+@@ -1,22 +1,21 @@
+ /**
+  * Ends band select by removing the overlay.
+  */
+ private void endBandSelect() {
+     if (DEBUG)
+         Log.d(TAG, "Ending band select.");
+     mEnvironment.hideBand();
+     mSelection.applyProvisionalSelection();
+     mModel.endSelection();
+-    String firstSelected = mModel.getItemNearestOrigin();
+-    if (!mSelection.contains(firstSelected)) {
++    int firstSelected = mModel.getPositionNearestOrigin();
++    if (!mSelection.contains(mEnvironment.getModelIdFromAdapterPosition(firstSelected))) {
+         Log.w(TAG, "First selected by band is NOT in selection!");
+     // Sadly this is really happening. Need to figure out what's going on.
+-    } else if (firstSelected != null) {
+-    // TODO(stable-id): firstSelected should really be lastSelected, we want to anchor the
+-    // range where the mouse-up occurred. Also figure out how to translate the model ID
+-    // into a position.
+-    // setSelectionRangeBegin(firstSelected);
++    } else if (firstSelected != NOT_SET) {
++        // TODO: firstSelected should really be lastSelected, we want to anchor the item
++        // where the mouse-up occurred.
++        setSelectionRangeBegin(firstSelected);
+     }
+     mModel = null;
+     mOrigin = null;
+ }
+\ No newline at end of file

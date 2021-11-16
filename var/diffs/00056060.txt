@@ -1,0 +1,16 @@
+diff --git a/fd8c603445c7f299e3d177c9b1fa5055ddb8a9e1 b/e7fde527a77f27f6fefa4a9da09b6efc4cb1c9ce
+index fd8c603445..e7fde527a7 100644
+--- a/fd8c603445c7f299e3d177c9b1fa5055ddb8a9e1
++++ b/e7fde527a77f27f6fefa4a9da09b6efc4cb1c9ce
+@@ -1,9 +1,9 @@
+ @Test
+ public void testAspectsAreApplied() {
+-    ClassPathXmlApplicationContext bf = new ClassPathXmlApplicationContext("/org/springframework/aop/aspectj/autoproxy/aspects.xml");
++    ClassPathXmlApplicationContext bf = newContext("aspects.xml");
+     ITestBean tb = (ITestBean) bf.getBean("adrian");
+     assertEquals(68, tb.getAge());
+     MethodInvokingFactoryBean factoryBean = (MethodInvokingFactoryBean) bf.getBean("&factoryBean");
+     assertTrue(AopUtils.isAopProxy(factoryBean.getTargetObject()));
+     assertEquals(68, ((ITestBean) factoryBean.getTargetObject()).getAge());
+ }
+\ No newline at end of file

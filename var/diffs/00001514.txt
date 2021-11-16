@@ -1,0 +1,11 @@
+diff --git a/f8db19ed3f43abccf36f7f5a7f23199924ee98b0 b/0f0a1a6f78248335a53b61c2a4892f6f099c76f3
+index f8db19ed3f..0f0a1a6f78 100644
+--- a/f8db19ed3f43abccf36f7f5a7f23199924ee98b0
++++ b/0f0a1a6f78248335a53b61c2a4892f6f099c76f3
+@@ -1,3 +1,3 @@
+-private static Pair<Integer, Boolean> key(int width, int height, boolean preScaled) {
+-    return (width == height && width < 129) ? Pair.create(width, preScaled) : null;
++private static Integer key(int width, int height, boolean preScaled) {
++    return (width == height && width < 129) ? preScaled ? width : JBUI.scale(width) : null;
+ }
+\ No newline at end of file

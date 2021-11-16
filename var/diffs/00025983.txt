@@ -1,0 +1,20 @@
+diff --git a/cb38a85ef4e1a4c6c7dcd8da1276fb3c43dadde4 b/71c73cfbcf568e0ea52df5a241d4477ac8e45ad5
+index cb38a85ef4..71c73cfbcf 100644
+--- a/cb38a85ef4e1a4c6c7dcd8da1276fb3c43dadde4
++++ b/71c73cfbcf568e0ea52df5a241d4477ac8e45ad5
+@@ -1,11 +1,9 @@
+ private List<ACL> removeDuplicates(List<ACL> acl) {
+-    ArrayList<ACL> retval = new ArrayList<ACL>();
+-    Iterator<ACL> it = acl.iterator();
+-    while (it.hasNext()) {
+-        ACL a = it.next();
+-        if (retval.contains(a) == false) {
++    LinkedList<ACL> retval = new LinkedList<ACL>();
++    for (ACL a : acl) {
++        if (!retval.contains(a)) {
+             retval.add(a);
+         }
+     }
+     return retval;
+ }
+\ No newline at end of file

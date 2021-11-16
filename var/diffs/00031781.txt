@@ -1,0 +1,18 @@
+diff --git a/02edd62a8589e3a0753859accda3d8f6392f71c9 b/60e8bdfee6cb29ae1a6ccc849df25f1f3c64c7b8
+index 02edd62a85..60e8bdfee6 100644
+--- a/02edd62a8589e3a0753859accda3d8f6392f71c9
++++ b/60e8bdfee6cb29ae1a6ccc849df25f1f3c64c7b8
+@@ -1,10 +1,10 @@
+-public static String replaceRevisionsInLabel(String labelTemplate, Map<CaseInsensitiveString, String> materialRevisions) {
+-    final Matcher matcher = PATTERN.matcher(labelTemplate);
++private String replaceRevisionsInLabel(Map<CaseInsensitiveString, String> materialRevisions) {
++    final Matcher matcher = PATTERN.matcher(this.label);
+     final StringBuffer buffer = new StringBuffer();
+     while (matcher.find()) {
+         final String revision = lookupMaterialRevision(matcher, materialRevisions);
+         matcher.appendReplacement(buffer, revision);
+     }
+     matcher.appendTail(buffer);
+     return buffer.toString();
+ }
+\ No newline at end of file

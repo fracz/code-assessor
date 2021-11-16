@@ -1,0 +1,18 @@
+diff --git a/97389fa7588eaae6804e5decaab64be6cef538e3 b/cdb55e5525b35701bb1e50ae14c7a1091da5bf4f
+index 97389fa758..cdb55e5525 100644
+--- a/97389fa7588eaae6804e5decaab64be6cef538e3
++++ b/cdb55e5525b35701bb1e50ae14c7a1091da5bf4f
+@@ -1,9 +1,9 @@
+ @Override
+-public IndexDescriptor indexGetForLabelAndPropertyKey(KernelStatement state, int labelId, int propertyKey) {
+-    IndexDescriptor indexDescriptor = storeLayer.indexGetForLabelAndPropertyKey(labelId, propertyKey);
++public IndexDescriptor indexGetForLabelAndPropertyKey(KernelStatement state, NodePropertyDescriptor descriptor) {
++    IndexDescriptor indexDescriptor = storeLayer.indexGetForLabelAndPropertyKey(descriptor);
+     Iterator<IndexDescriptor> rules = iterator(indexDescriptor);
+     if (state.hasTxStateWithChanges()) {
+-        rules = filterByPropertyKeyId(state.txState().indexDiffSetsByLabel(labelId).apply(rules), propertyKey);
++        rules = filterByPropertyKeyId(state.txState().indexDiffSetsByLabel(descriptor.getLabelId()).apply(rules), descriptor);
+     }
+     return singleOrNull(rules);
+ }
+\ No newline at end of file

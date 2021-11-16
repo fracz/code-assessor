@@ -1,0 +1,25 @@
+diff --git a/dabbe96ff0be66201f2d961ee0be6049551c5a16 b/1922b9b901fac3eac34d1fe21bedf143cc6f3926
+index dabbe96ff0..1922b9b901 100644
+--- a/dabbe96ff0be66201f2d961ee0be6049551c5a16
++++ b/1922b9b901fac3eac34d1fe21bedf143cc6f3926
+@@ -1,15 +1,15 @@
+ /**
+  * Reads data from container and pushes it into receiver
+  *
+- * @param session execution context
++ * @param source       source
++ * @param session source
+  * @param dataReceiver data receiver. Works as a data pipe
+  * @param dataFilter data filter. May be null
+  * @param firstRow first row number (<= 0 means do not use it)
+  * @param maxRows total rows to fetch (<= 0 means fetch everything)
+  * @param flags read flags. See FLAG_ constants
+- * @param source       source
+  * @return number of fetched rows
+  * @throws DBCException on any error
+  */
+ @NotNull
+-DBCStatistics readData(@NotNull DBCSession session, @NotNull DBDDataReceiver dataReceiver, @Nullable DBDDataFilter dataFilter, long firstRow, long maxRows, long flags, Object source) throws DBCException;
+\ No newline at end of file
++DBCStatistics readData(@NotNull DBCExecutionSource source, @NotNull DBCSession session, @NotNull DBDDataReceiver dataReceiver, @Nullable DBDDataFilter dataFilter, long firstRow, long maxRows, long flags) throws DBCException;
+\ No newline at end of file

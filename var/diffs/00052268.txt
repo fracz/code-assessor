@@ -1,0 +1,23 @@
+diff --git a/864445a128d8cda1c7c9394f105b719b448e373e b/df7a3819136991601cc46b428612790fde2299bc
+index 864445a128..df7a381913 100644
+--- a/864445a128d8cda1c7c9394f105b719b448e373e
++++ b/df7a3819136991601cc46b428612790fde2299bc
+@@ -1,13 +1,11 @@
+ @Override
+ protected void skipBetweenTableAndWhere() {
+     if (getLexer().skipIfEqual(Token.USING)) {
+-        while (true) {
+-            getExprParser().name();
+-            if (getLexer().equalToken(Token.COMMA)) {
++        do {
++            getLexer().nextToken();
++            if (getLexer().skipIfEqual(Token.DOT)) {
+                 getLexer().nextToken();
+-                continue;
+             }
+-            break;
+-        }
++        } while (getLexer().equalToken(Token.COMMA));
+     }
+ }
+\ No newline at end of file

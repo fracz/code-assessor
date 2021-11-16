@@ -1,0 +1,16 @@
+diff --git a/6e4c36c73a4bff9f4c61bad0e0467ddded644541 b/c22ebfafc667b912095874ba566c5ad41fd68fe2
+index 6e4c36c73a..c22ebfafc6 100644
+--- a/6e4c36c73a4bff9f4c61bad0e0467ddded644541
++++ b/c22ebfafc667b912095874ba566c5ad41fd68fe2
+@@ -1,8 +1,7 @@
+ public Object returnValueFor(InvocationOnMock invocation) {
+-    Class<?> returnType = invocation.getMethod().getReturnType();
+     if (mocksReturningFakes.contains(invocation.getMock())) {
+-        return returnFake(returnType);
++        return returnFake(invocation);
+     } else {
+-        return null;
++        return defaultValueFor(invocation);
+     }
+ }
+\ No newline at end of file

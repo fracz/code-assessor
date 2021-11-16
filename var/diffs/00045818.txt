@@ -1,0 +1,36 @@
+diff --git a/8a5b429019324f0007d49979d7ea6982a11a0bf9 b/eb9d2931b3d357a2527daed017764038e7b03dae
+index 8a5b429019..eb9d2931b3 100644
+--- a/8a5b429019324f0007d49979d7ea6982a11a0bf9
++++ b/eb9d2931b3d357a2527daed017764038e7b03dae
+@@ -1,17 +1,25 @@
+ public int dictionarySize(final ODatabaseRecord<?> iDatabase) {
+     checkConnection();
+     do {
+-        boolean locked = acquireExclusiveLock();
++        boolean locked = lock.acquireExclusiveLock();
+         try {
+-            writeCommand(OChannelBinaryProtocol.REQUEST_DICTIONARY_SIZE);
+-            network.readStatus();
+-            return network.readInt();
++            try {
++                beginRequest(OChannelBinaryProtocol.REQUEST_DICTIONARY_SIZE);
++            } finally {
++                endRequest();
++            }
++            try {
++                beginResponse();
++                return network.readInt();
++            } finally {
++                endResponse();
++            }
+         } catch (Exception e) {
+             if (handleException("Error on getting size of database's dictionary", e))
+                 break;
+         } finally {
+-            releaseExclusiveLock(locked);
++            lock.releaseExclusiveLock(locked);
+         }
+     } while (true);
+     return -1;
+ }
+\ No newline at end of file

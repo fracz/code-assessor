@@ -1,0 +1,24 @@
+diff --git a/cd0ccf17117ca1ed61cdd28c192cc62b9e344a1d b/e27731001ecf147af8b19a5d0b2624fee51bb194
+index cd0ccf1711..e27731001e 100644
+--- a/cd0ccf17117ca1ed61cdd28c192cc62b9e344a1d
++++ b/e27731001ecf147af8b19a5d0b2624fee51bb194
+@@ -1,16 +1,10 @@
+ /**
+  * Clears all listeners.
+  * <p>
+  * NOTE: This will result in race conditions if {@link #addTimerListener(com.netflix.hystrix.util.HystrixTimer.TimerListener)} is being concurrently called.
+  * </p>
+  */
+ public static void reset() {
+-    // interrupt the thread to shut it down
+-    TickThread t = INSTANCE.tickThread.get();
+-    if (t != null) {
+-        t.interrupt();
+-    }
+-    // clear the queues
+-    INSTANCE.listenersPerInterval.clear();
+-    INSTANCE.intervals.clear();
++    ScheduledExecutor ex = INSTANCE.executor.getAndSet(null);
++    ex.getThreadPool().shutdownNow();
+ }
+\ No newline at end of file

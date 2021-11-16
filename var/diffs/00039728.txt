@@ -1,0 +1,14 @@
+diff --git a/0a88149789bbe16e8be113b8db9b8565893caaf4 b/7f5d8878875e3fb3334ccc6b9385d4bd896a21da
+index 0a88149789..7f5d887887 100644
+--- a/0a88149789bbe16e8be113b8db9b8565893caaf4
++++ b/7f5d8878875e3fb3334ccc6b9385d4bd896a21da
+@@ -1,6 +1,6 @@
+ @Override
+-public void visitIndexStatistics(int labelId, int propertyKeyId, long updates, long size) {
+-    Register.DoubleLongRegister output = tracker.indexUpdatesAndSize(labelId, propertyKeyId, newDoubleLongRegister());
++public void visitIndexStatistics(IndexDescriptor descriptor, long updates, long size) {
++    Register.DoubleLongRegister output = tracker.indexUpdatesAndSize(descriptor, newDoubleLongRegister());
+     assertEquals("Should be able to read visited state.", output.readFirst(), updates);
+     assertEquals("Should be able to read visited state.", output.readSecond(), size);
+ }
+\ No newline at end of file

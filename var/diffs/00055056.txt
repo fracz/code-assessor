@@ -1,0 +1,13 @@
+diff --git a/7460ef5e0156c4aa084cb9365fc747b1bbf91032 b/33b7ea29081feb90832655ef6884e3b65c40f5a0
+index 7460ef5e01..33b7ea2908 100644
+--- a/7460ef5e0156c4aa084cb9365fc747b1bbf91032
++++ b/33b7ea29081feb90832655ef6884e3b65c40f5a0
+@@ -1,3 +1,6 @@
+ public String getNameWithoutPackage() {
+-    return (parentClass != null ? parentClass.getNameWithoutPackage() + "." : "") + name;
++    if (parentClass == null) {
++        return name;
++    }
++    return parentClass.getNameWithoutPackage() + "." + name;
+ }
+\ No newline at end of file
